@@ -126,6 +126,7 @@ abstract class BaseServer {
                 exit('扩展' . $extName . '未加载' . PHP_EOL);
             }
         }
+        
         $this->_configs = Tool::getConfig('syserver.' . SY_ENV . SY_MODULE);
         $this->checkBaseServer();
 
