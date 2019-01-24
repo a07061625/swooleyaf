@@ -102,10 +102,14 @@ abstract class BaseServer {
             exit('环境类型不合法' . PHP_EOL);
         } else if(!in_array($os, Server::$totalEnvSystem)){
             exit('操作系统不支持' . PHP_EOL);
+        } else if(!defined('SWOOLE_VERSION')){
+            exit('swoole版本常量未定义' . PHP_EOL);
+        } else if(version_compare(SWOOLE_VERSION, Server::VERSION_MIN_SWOOLE, '<')){
+            exit('swoole版本必须大于等于' . Server::VERSION_MIN_SWOOLE . PHP_EOL);
         }
 
         //检查必要的扩展是否存在
-        $missList = array_diff([
+        $extensionList = [
             'yac',
             'yaf',
             'PDO',
@@ -116,11 +120,11 @@ abstract class BaseServer {
             'swoole',
             'SeasLog',
             'msgpack',
-        ], get_loaded_extensions());
-        if (!empty($missList)) {
-            exit('扩展' . implode(',', $missList) . '不存在' . PHP_EOL);
-        } else if(version_compare(SWOOLE_VERSION, Server::VERSION_MIN_SWOOLE, '<')){
-            exit('swoole版本必须大于等于' . Server::VERSION_MIN_SWOOLE . PHP_EOL);
+        ];
+        foreach ($extensionList as $extName) {
+            if(!extension_loaded($extName)){
+                exit('扩展' . $extName . '未加载' . PHP_EOL);
+            }
         }
         $this->_configs = Tool::getConfig('syserver.' . SY_ENV . SY_MODULE);
         $this->checkBaseServer();
