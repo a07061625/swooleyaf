@@ -1,0 +1,61 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: 姜伟
+ * Date: 2018/9/11 0011
+ * Time: 17:32
+ */
+namespace Wx\Open;
+
+use Constant\ErrorCode;
+use DesignPatterns\Singletons\WxConfigSingleton;
+use Tool\Tool;
+use Wx\WxBaseOpen;
+use Wx\WxUtilBase;
+use Wx\WxUtilOpenBase;
+
+/**
+ * 绑定应用
+ * @package Wx\Open
+ */
+class AppBind extends WxBaseOpen {
+    /**
+     * 公众号或小程序的app id
+     * @var string
+     */
+    private $appid = '';
+    /**
+     * 开放平台的app id
+     * @var string
+     */
+    private $open_appid = '';
+
+    public function __construct(string $appId){
+        parent::__construct();
+        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/open/bind?access_token=';
+        $this->reqData['appid'] = $appId;
+        $this->reqData['open_appid'] = WxConfigSingleton::getInstance()->getOpenCommonConfig()->getAppId();
+    }
+
+    public function __clone(){
+    }
+
+    public function getDetail() : array {
+        $resArr = [
+            'code' => 0
+        ];
+
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getComponentAccessToken($this->reqData['open_appid']);
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+        $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
+        $sendData = Tool::jsonDecode($sendRes);
+        if ($sendData['errcode'] == 0) {
+            $resArr['data'] = $sendData;
+        } else {
+            $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;
+            $resArr['message'] = $sendData['errmsg'];
+        }
+
+        return $resArr;
+    }
+}

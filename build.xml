@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="swooleyaf" default="dist">
+    <target name="prepare">
+        <mkdir dir="./package"/>
+    </target>
+    <target name="dist" depends="prepare">
+        <tar destfile="./package/sy.tar.gz" compression="gzip">
+            <fileset dir="/home/jw/phpspace/swooleyaf/">
+                <include name="**/**" />
+                <exclude name="install/**" />
+                <exclude name="pidfile/**" />
+                <exclude name=".gitignore" />
+                <exclude name=".git/**" />
+                <exclude name=".idea/**" />
+                <exclude name="package/**" />
+            </fileset>
+        </tar>
+    </target>
+</project>
