@@ -71,7 +71,7 @@ class JsConfig extends WxBaseShop {
      * @throws \Exception\Wx\WxException
      */
     public function setUrl(string $url) {
-        if (preg_match('/^(http|https|ftp)\:\/\/\S+$/', $url) > 0) {
+        if (preg_match('/^(http|https)\:\/\/\S+$/', $url) > 0) {
             $this->url = $url;
         } else {
             throw new WxException('链接不合法', ErrorCode::WX_PARAM_ERROR);
