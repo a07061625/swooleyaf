@@ -16,6 +16,16 @@ abstract class WxBaseCorp extends WxBase {
     const INVOICE_REIMBURSE_STATUS_INIT = 'INVOICE_REIMBURSE_INIT'; //发票报销状态-未锁定
     const INVOICE_REIMBURSE_STATUS_LOCK = 'INVOICE_REIMBURSE_LOCK'; //发票报销状态-已锁定
     const INVOICE_REIMBURSE_STATUS_CLOSURE = 'INVOICE_REIMBURSE_CLOSURE'; //发票报销状态-已核销
+    const MESSAGE_TYPE_NEWS = 'news'; //消息类型-图文
+    const MESSAGE_TYPE_MPNEWS = 'mpnews'; //消息类型-图文
+    const MESSAGE_TYPE_TEXT = 'text'; //消息类型-文本
+    const MESSAGE_TYPE_VOICE = 'voice'; //消息类型-语音
+    const MESSAGE_TYPE_IMAGE = 'image'; //消息类型-图片
+    const MESSAGE_TYPE_VIDEO = 'video'; //消息类型-视频
+    const MESSAGE_TYPE_FILE = 'file'; //消息类型-文件
+    const MESSAGE_TYPE_TEXTCARD = 'textcard'; //消息类型-文本卡片
+    const MESSAGE_TYPE_MARKDOWN = 'markdown'; //消息类型-markdown
+    const MESSAGE_TYPE_MINI_NOTICE = 'miniprogram_notice'; //消息类型-小程序通知
 
     private static $totalAccessTokenType = [
         self::ACCESS_TOKEN_TYPE_CORP => '企业',
@@ -25,6 +35,18 @@ abstract class WxBaseCorp extends WxBase {
         self::INVOICE_REIMBURSE_STATUS_INIT => '未锁定',
         self::INVOICE_REIMBURSE_STATUS_LOCK => '已锁定',
         self::INVOICE_REIMBURSE_STATUS_CLOSURE => '已核销',
+    ];
+    protected static $totalMessageType = [
+        self::MESSAGE_TYPE_NEWS => '图文',
+        self::MESSAGE_TYPE_MPNEWS => '图文',
+        self::MESSAGE_TYPE_TEXT => '文本',
+        self::MESSAGE_TYPE_VOICE => '语音',
+        self::MESSAGE_TYPE_IMAGE => '图片',
+        self::MESSAGE_TYPE_VIDEO => '视频',
+        self::MESSAGE_TYPE_FILE => '文件',
+        self::MESSAGE_TYPE_TEXTCARD => '文本卡片',
+        self::MESSAGE_TYPE_MARKDOWN => 'markdown',
+        self::MESSAGE_TYPE_MINI_NOTICE => '小程序通知',
     ];
 
     /**
