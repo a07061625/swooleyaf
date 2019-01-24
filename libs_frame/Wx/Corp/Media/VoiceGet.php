@@ -15,10 +15,10 @@ use Wx\WxTraitCorp;
 use Wx\WxUtilBase;
 
 /**
- * 获取临时素材
+ * 获取高清语音素材
  * @package Wx\Corp\Media
  */
-class MediaGet extends WxBaseCorp {
+class VoiceGet extends WxBaseCorp {
     use WxTraitCorp;
 
     /**
@@ -34,7 +34,7 @@ class MediaGet extends WxBaseCorp {
 
     public function __construct(string $corpId,string $agentTag){
         parent::__construct();
-        $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/media/get';
+        $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/media/get/jssdkt';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }

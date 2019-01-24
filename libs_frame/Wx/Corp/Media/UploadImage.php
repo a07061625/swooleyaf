@@ -11,10 +11,16 @@ use Constant\ErrorCode;
 use Exception\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
+use Wx\WxTraitCorp;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
+/**
+ * 上传永久图片
+ * @package Wx\Corp\Media
+ */
 class UploadImage extends WxBaseCorp {
+    use WxTraitCorp;
+
     /**
      * 公众号ID
      * @var string
@@ -26,10 +32,11 @@ class UploadImage extends WxBaseCorp {
      */
     private $file_path = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $corpId,string $agentTag){
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=';
-        $this->appid = $appId;
+        $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/media/uploadimg?access_token=';
+        $this->_corpId = $corpId;
+        $this->_agentTag = $agentTag;
     }
 
     private function __clone(){
@@ -56,7 +63,7 @@ class UploadImage extends WxBaseCorp {
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $this->reqData;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
