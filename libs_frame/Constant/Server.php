@@ -37,11 +37,13 @@ final class Server {
     ];
     public static $totalEnvSystem = [
         self::ENV_SYSTEM_BSD,
+        self::ENV_SYSTEM_MAC,
         self::ENV_SYSTEM_LINUX,
     ];
     const ENV_PROJECT_DEV = 'dev'; //项目环境-测试
     const ENV_PROJECT_PRODUCT = 'product'; //项目环境-生产
     const ENV_SYSTEM_BSD = 'FreeBSD'; //系统环境-bsd
+    const ENV_SYSTEM_MAC = 'Darwin'; //系统环境-mac
     const ENV_SYSTEM_LINUX = 'Linux'; //系统环境-linux
 
     //版本常量
