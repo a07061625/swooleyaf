@@ -16,10 +16,10 @@ use Wx\WxTraitCorp;
 use Wx\WxUtilBase;
 
 /**
- * 发送企业消息
+ * 发送互联企业消息
  * @package Wx\Corp\Message
  */
-class MessageSend extends WxBaseCorp {
+class LinkedCorpMessageSend extends WxBaseCorp {
     use WxTraitCorp;
 
     /**
@@ -38,6 +38,11 @@ class MessageSend extends WxBaseCorp {
      */
     private $totag = [];
     /**
+     * 发送消息标识,默认0 0:不发送给应用可见范围内的所有人 1:发送给应用可见范围内的所有人
+     * @var int
+     */
+    private $toall = 0;
+    /**
      * 消息类型
      * @var string
      */
@@ -55,11 +60,12 @@ class MessageSend extends WxBaseCorp {
 
     public function __construct(string $corpId,string $agentTag){
         parent::__construct();
-        $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=';
+        $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/linkedcorp/message/send?access_token=';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
         $agentInfo = WxConfigSingleton::getInstance()->getCorpConfig($corpId)->getAgentInfo($agentTag);
         $this->reqData['agentid'] = $agentInfo['id'];
+        $this->reqData['toall'] = 0;
         $this->reqData['safe'] = 0;
     }
 
@@ -67,31 +73,21 @@ class MessageSend extends WxBaseCorp {
     }
 
     /**
-     * @param string|array $userList
+     * @param array $userList
      * @throws \Exception\Wx\WxException
      */
-    public function setUserList($userList){
-        if(is_string($userList)){
-            if($userList == '@all'){
-                $this->reqData['touser'] = '@all';
-            } else {
-                throw new WxException('成员ID列表不合法', ErrorCode::WX_PARAM_ERROR);
+    public function setUserList(array $userList){
+        $users = [];
+        foreach ($userList as $eUserId) {
+            if(is_string($eUserId) && (strlen($eUserId) > 0)){
+                $userId = strtolower($eUserId);
+                $users[$userId] = 1;
             }
-        } else if(is_array($userList)){
-            $users = [];
-            foreach ($userList as $eUserId) {
-                if(ctype_alnum($eUserId)){
-                    $userId = strtolower($eUserId);
-                    $users[$userId] = 1;
-                }
-            }
-            if(count($users) > 1000){
-                throw new WxException('成员ID不能超过1000个', ErrorCode::WX_PARAM_ERROR);
-            } else {
-                $this->reqData['touser'] = implode('|', array_keys($users));
-            }
+        }
+        if(count($users) > 1000){
+            throw new WxException('成员ID不能超过1000个', ErrorCode::WX_PARAM_ERROR);
         } else {
-            throw new WxException('成员ID列表不合法', ErrorCode::WX_PARAM_ERROR);
+            $this->reqData['touser'] = array_keys($users);
         }
     }
 
@@ -102,14 +98,14 @@ class MessageSend extends WxBaseCorp {
     public function setPartyList(array $partyList){
         $party = [];
         foreach ($partyList as $eParty) {
-            if(is_int($eParty) && ($eParty > 0)){
+            if(is_string($eParty) && (strlen($eParty) > 0)){
                 $party[$eParty] = 1;
             }
         }
         if(count($party) > 100){
             throw new WxException('部门ID不能超过100个', ErrorCode::WX_PARAM_ERROR);
         } else {
-            $this->reqData['toparty'] = implode('|', array_keys($party));
+            $this->reqData['toparty'] = array_keys($party);
         }
     }
 
@@ -127,7 +123,19 @@ class MessageSend extends WxBaseCorp {
         if(count($tags) > 100){
             throw new WxException('标签ID不能超过100个', ErrorCode::WX_PARAM_ERROR);
         } else {
-            $this->reqData['totag'] = implode('|', array_keys($tags));
+            $this->reqData['totag'] = array_keys($tags);
+        }
+    }
+
+    /**
+     * @param int $sendAllFlag
+     * @throws \Exception\Wx\WxException
+     */
+    public function setSendAllFlag(int $sendAllFlag){
+        if (in_array($sendAllFlag, [0, 1])) {
+            $this->reqData['toall'] = $sendAllFlag;
+        } else {
+            throw new WxException('发送消息标识不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
@@ -168,7 +176,7 @@ class MessageSend extends WxBaseCorp {
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . $this->getAccessToken(WxBaseCorp::ACCESS_TOKEN_TYPE_CORP, $this->_corpId, $this->_agentTag);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
