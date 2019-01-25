@@ -117,25 +117,25 @@ class ImageController extends CommonController {
         $imageWidth = (int)\Request\SyRequest::getParams('image_width', 130);
         $imageHeight = (int)\Request\SyRequest::getParams('image_height', 45);
         $image = imagecreate($imageWidth, $imageHeight);
-        imagecolorallocate($image, rand(50, 200), rand(0, 155), rand(0, 155)); //第一次对 imagecolorallocate() 的调用会给基于调色板的图像填充背景色
+        imagecolorallocate($image, mt_rand(50, 200), mt_rand(0, 155), mt_rand(0, 155)); //第一次对 imagecolorallocate() 的调用会给基于调色板的图像填充背景色
         $fontColor = imageColorAllocate($image, 255, 255, 255);   //字体颜色
         $code = '';
         //产生随机字符
-        for ($i = 0; $i < 4; $i++) {
-            $randAsciiNumArray = array(rand(48, 57), rand(65, 90));
-            $randAsciiNum = $randAsciiNumArray[rand(0, 1)];
+        for ($i = 0; $i < 4; $i ++) {
+            $randAsciiNumArray = [mt_rand(48, 57), mt_rand(65, 90)];
+            $randAsciiNum = $randAsciiNumArray[mt_rand(0, 1)];
             $randStr = chr($randAsciiNum);
-            imagettftext($image, 30, rand(0, 20) - rand(0, 25), 5 + $i * 30, rand(30, 35), $fontColor, $fontPath, $randStr);
+            imagettftext($image, 30, mt_rand(0, 20) - mt_rand(0, 25), 5 + $i * 30, mt_rand(30, 35), $fontColor, $fontPath, $randStr);
             $code .= $randStr;
         }
         //干扰线
-        for ($i = 0; $i < 8; $i++) {
-            $lineColor = imagecolorallocate($image, rand(0, 255), rand(0, 255), rand(0, 255));
-            imageline($image, rand(0, $imageWidth), 0, rand(0, $imageWidth), $imageHeight, $lineColor);
+        for ($i = 0; $i < 8; $i ++) {
+            $lineColor = imagecolorallocate($image, mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255));
+            imageline($image, mt_rand(0, $imageWidth), 0, mt_rand(0, $imageWidth), $imageHeight, $lineColor);
         }
         //干扰点
-        for ($i = 0; $i < 250; $i++) {
-            imagesetpixel($image, rand(0, $imageWidth), rand(0, $imageHeight), $fontColor);
+        for ($i = 0; $i < 250; $i ++) {
+            imagesetpixel($image, mt_rand(0, $imageWidth), mt_rand(0, $imageHeight), $fontColor);
         }
 
         ob_start();
