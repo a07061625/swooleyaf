@@ -42,6 +42,7 @@ class AppChatSend extends WxBaseCorp {
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/appchat/send?access_token=';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
+        $this->reqData['safe'] = 0;
     }
 
     private function __clone(){
