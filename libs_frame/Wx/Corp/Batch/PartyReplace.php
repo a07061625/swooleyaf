@@ -5,7 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
-namespace Wx\Corp\User;
+namespace Wx\Corp\Batch;
 
 use Constant\ErrorCode;
 use Exception\Wx\WxException;
@@ -15,55 +15,60 @@ use Wx\WxTraitCorp;
 use Wx\WxUtilBase;
 
 /**
- * 批量删除成员
- * @package Wx\Corp\User
+ * 全量覆盖部门
+ * @package Wx\Corp\Batch
  */
-class UserDeleteBatch extends WxBaseCorp {
+class PartyReplace extends WxBaseCorp {
     use WxTraitCorp;
 
     /**
-     * 用户ID列表
+     * 媒体ID
+     * @var string
+     */
+    private $media_id = '';
+    /**
+     * 回调信息
      * @var array
      */
-    private $useridlist = [];
+    private $callback = [];
 
     public function __construct(string $corpId,string $agentTag){
         parent::__construct();
-        $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/user/batchdelete?access_token=';
+        $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/batch/replaceparty?access_token=';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
-        $this->reqData['useridlist'] = [];
     }
 
     private function __clone(){
     }
 
     /**
-     * @param array $userIdList
+     * @param string $mediaId
      * @throws \Exception\Wx\WxException
      */
-    public function setUserIdList(array $userIdList){
-        $users = [];
-        foreach ($userIdList as $eUserId) {
-            if(ctype_alnum($eUserId)){
-                $userId = strtolower($eUserId);
-                $users[$userId] = 1;
-            }
+    public function setMediaId(string $mediaId){
+        if(strlen($mediaId) > 0){
+            $this->reqData['media_id'] = $mediaId;
+        } else {
+            throw new WxException('媒体ID不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @param array $callback
+     * @throws \Exception\Wx\WxException
+     */
+    public function setCallback(array $callback){
+        if(empty($callback)){
+            throw new WxException('回调信息不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
-        $userNum = count($users);
-        if($userNum > 200){
-            throw new WxException('用户ID列表不能超过200个', ErrorCode::WX_PARAM_ERROR);
-        } else if($userNum == 0){
-            throw new WxException('用户ID列表不能为空', ErrorCode::WX_PARAM_ERROR);
-        }
-
-        $this->reqData['useridlist'] = array_keys($users);
+        $this->reqData['callback'] = $callback;
     }
 
     public function getDetail() : array {
-        if(empty($this->reqData['useridlist'])){
-            throw new WxException('用户ID列表不能为空', ErrorCode::WX_PARAM_ERROR);
+        if(!isset($this->reqData['media_id'])){
+            throw new WxException('媒体ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
