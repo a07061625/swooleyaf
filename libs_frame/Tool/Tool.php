@@ -64,20 +64,18 @@ class Tool {
             return $array[$key] ?? $default;
         }
 
-        $index = strpos($key, '.');
-        if($index === false){
-            return $array[$key] ?? $default;
+        $keyArr = explode('.', (string)$key);
+        $tempData = $array;
+        unset($array);
+        foreach ($keyArr as $eKey) {
+            if(is_array($tempData) && isset($tempData[$eKey])){
+                $tempData = $tempData[$eKey];
+            } else {
+                return $default;
+            }
         }
 
-        $keyFirst = substr($key, 0, $index);
-        if(isset($array[$keyFirst]) && is_array($array[$keyFirst])){
-            $keyLeft = substr($key, ($index + 1));
-            $newData = $array[$keyFirst];
-            unset($array);
-            return self::getArrayVal($newData, $keyLeft, $default, $isRecursion);
-        } else {
-            return $default;
-        }
+        return $tempData;
     }
 
     /**
