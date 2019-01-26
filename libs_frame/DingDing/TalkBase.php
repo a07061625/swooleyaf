@@ -7,26 +7,15 @@
  */
 namespace DingDing;
 
-abstract class TalkBase {
+abstract class TalkBase extends DingBase {
     /**
      * 服务域名
      * @var string
      */
     protected $serviceDomain = '';
-    /**
-     * 请求数据
-     * @var array
-     */
-    protected $reqData = [];
-    /**
-     * curl配置数组
-     * @var array
-     */
-    protected $curlConfigs = [];
 
     public function __construct(){
+        parent::__construct();
         $this->serviceDomain = 'https://oapi.dingtalk.com';
     }
-
-    abstract public function getDetail() : array;
 }

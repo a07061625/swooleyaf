@@ -94,6 +94,10 @@ class ProjectBase {
     const ALI_PAY_STATUS_DISABLE = 0; //状态-无效
     const ALI_PAY_STATUS_ENABLE = 1; //状态-有效
 
+    //钉钉配置常量
+    const DINGTALK_CONFIG_CORP_STATUS_DISABLE = 0; //企业钉钉状态-无效
+    const DINGTALK_CONFIG_CORP_STATUS_ENABLE = 1; //企业钉钉状态-有效
+
     //本地缓存常量
     const LOCAL_CACHE_TAG_WX_ACCOUNT = '001'; //标识-微信账号
     const LOCAL_CACHE_TAG_WXOPEN_AUTHORIZER = '002'; //标识-微信开放平台授权者
@@ -108,6 +112,8 @@ class ProjectBase {
     const TIME_EXPIRE_LOCAL_WXCACHE_CLEAR = 300; //超时时间-本地微信缓存清理,单位为秒
     const TIME_EXPIRE_LOCAL_ALIPAY_REFRESH = 600; //超时时间-本地支付宝支付更新,单位为秒
     const TIME_EXPIRE_LOCAL_ALIPAY_CLEAR = 3600; //超时时间-本地支付宝支付清理,单位为秒
+    const TIME_EXPIRE_LOCAL_DINGTALK_CORP_REFRESH = 600; //超时时间-本地企业钉钉更新,单位为秒
+    const TIME_EXPIRE_LOCAL_DINGTALK_CORP_CLEAR = 3600; //超时时间-本地企业钉钉清理,单位为秒
     const TIME_EXPIRE_SESSION = 259200; //超时时间-session,单位为秒
 
     //任务常量,4位字符串,数字和字母组成,纯数字的为框架内部任务,其他为自定义任务

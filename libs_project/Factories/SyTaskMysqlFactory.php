@@ -8,6 +8,7 @@
 namespace Factories;
 
 use Entities\SyTask\AliconfigPayEntity;
+use Entities\SyTask\DingtalkConfigCorpEntity;
 use Entities\SyTask\TaskBaseEntity;
 use Entities\SyTask\TaskLogEntity;
 use Entities\SyTask\WxconfigBaseEntity;
@@ -75,5 +76,12 @@ class SyTaskMysqlFactory {
      */
     public static function AliconfigPayEntity(string $dbName=''){
         return new AliconfigPayEntity($dbName);
+    }
+    /**
+     * @param string $dbName 数据库名
+     * @return \Entities\SyTask\DingtalkConfigCorpEntity
+     */
+    public static function DingtalkConfigCorpEntity(string $dbName=''){
+        return new DingtalkConfigCorpEntity($dbName);
     }
 }
