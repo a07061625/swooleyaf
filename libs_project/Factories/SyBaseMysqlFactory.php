@@ -10,6 +10,7 @@ namespace Factories;
 use Entities\SyBase\AliconfigPayEntity;
 use Entities\SyBase\AttachmentBaseEntity;
 use Entities\SyBase\AttachmentReferEntity;
+use Entities\SyBase\DingtalkConfigCorpEntity;
 use Entities\SyBase\ImBaseEntity;
 use Entities\SyBase\LogModuleEntity;
 use Entities\SyBase\PayHistoryEntity;
@@ -219,5 +220,12 @@ class SyBaseMysqlFactory {
      */
     public static function AliconfigPayEntity(string $dbName=''){
         return new AliconfigPayEntity($dbName);
+    }
+    /**
+     * @param string $dbName 数据库名
+     * @return \Entities\SyBase\DingtalkConfigCorpEntity
+     */
+    public static function DingtalkConfigCorpEntity(string $dbName=''){
+        return new DingtalkConfigCorpEntity($dbName);
     }
 }
