@@ -71,6 +71,10 @@ class TalkConfigCorp {
      *   id: 应用ID
      *   key: 应用标识
      *   secret: 应用密钥
+     *   token: 消息校验token
+     *   aes_key: 加密密钥
+     *   callback_tags: 监听事件类型列表
+     *   callback_url: 回调地址
      */
     public function getAgentInfo(string $agentTag) : array {
         return $this->agents[$agentTag] ?? [];
