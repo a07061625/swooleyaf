@@ -180,6 +180,11 @@ class ErrorCode {
     const WXPROVIDER_CORP_POST_ERROR = 104701;
     const WXPROVIDER_CORP_GET_ERROR = 104702;
 
+    //钉钉错误,取值范围:104900-104999
+    const DING_TALK_PARAM_ERROR = 104900;
+    const DING_TALK_POST_ERROR = 104901;
+    const DING_TALK_GET_ERROR = 104902;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -290,6 +295,9 @@ class ErrorCode {
         self::WXPROVIDER_CORP_PARAM_ERROR => '企业微信服务商参数错误',
         self::WXPROVIDER_CORP_POST_ERROR => '企业微信服务商发送POST请求出错',
         self::WXPROVIDER_CORP_GET_ERROR => '企业微信服务商发送GET请求出错',
+        self::DING_TALK_PARAM_ERROR => '钉钉参数错误',
+        self::DING_TALK_POST_ERROR => '钉钉发送POST请求出错',
+        self::DING_TALK_GET_ERROR => '钉钉发送GET请求出错',
     ];
 
     /**
