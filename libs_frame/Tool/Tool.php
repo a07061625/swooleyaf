@@ -572,4 +572,42 @@ class Tool {
 
         return $resArr;
     }
+
+    /**
+     * 填充补位需要加密的明文
+     * @param string $text 需要加密的明文
+     * @return string
+     */
+    public static function pkcs7Encode(string $text) : string {
+        $blockSize = 32;
+        $textLength = strlen($text);
+        //计算需要填充的位数
+        $addLength = $blockSize - ($textLength % $blockSize);
+        if ($addLength == 0) {
+            $addLength = $blockSize;
+        }
+
+        //获得补位所用的字符
+        $needChr = chr($addLength);
+        $tmp = '';
+        for ($i = 0; $i < $addLength; $i++) {
+            $tmp .= $needChr;
+        }
+
+        return $text . $tmp;
+    }
+
+    /**
+     * 补位删除解密后的明文
+     * @param string $text 解密后的明文
+     * @return string
+     */
+    public static function pkcs7Decode(string $text) : string {
+        $pad = ord(substr($text, -1));
+        if (($pad < 1) || ($pad > 32)) {
+            $pad = 0;
+        }
+
+        return substr($text, 0, (strlen($text) - $pad));
+    }
 }

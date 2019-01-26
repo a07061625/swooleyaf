@@ -204,7 +204,7 @@ abstract class WxUtilOpenBase extends WxUtilBase {
         $error = '';
         $xml = '';
         $decryptMsg = openssl_decrypt($encryptMsg, 'aes-256-cbc', substr($key, 0, 32), OPENSSL_ZERO_PADDING, $iv);
-        $decodeMsg = self::pkcs7Decode($decryptMsg);
+        $decodeMsg = Tool::pkcs7Decode($decryptMsg);
         if (strlen($decodeMsg) >= 16) {
             $msgContent = substr($decodeMsg, 16);
             $lengthList = unpack("N", substr($msgContent, 0, 4));
@@ -275,7 +275,7 @@ abstract class WxUtilOpenBase extends WxUtilBase {
 
         //获得16位随机字符串，填充到明文之前
         $content1 = $nonce . pack("N", strlen($replyMsg)) . $replyMsg . $appId;
-        $content2 = self::pkcs7Encode($content1);
+        $content2 = Tool::pkcs7Encode($content1);
         return openssl_encrypt($content2, 'aes-256-cbc', substr($key, 0, 32), OPENSSL_ZERO_PADDING, $iv);
     }
 
