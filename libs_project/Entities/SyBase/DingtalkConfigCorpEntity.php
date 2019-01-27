@@ -28,6 +28,12 @@ class DingtalkConfigCorpEntity extends MysqlEntity {
     public $corp_agents = '';
 
     /**
+     * 免登密钥
+     * @var string
+     */
+    public $sso_secret = '';
+
+    /**
      * 状态
      * @var int
      */

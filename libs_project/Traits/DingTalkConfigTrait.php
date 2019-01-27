@@ -76,6 +76,7 @@ trait DingTalkConfigTrait {
         } else {
             $agents = strlen($configInfo['corp_agents']) > 0 ? Tool::jsonDecode($configInfo['corp_agents']) : [];
             $corpConfig->setValid(true);
+            $corpConfig->setSsoSecret((string)$configInfo['sso_secret']);
             $corpConfig->setAgents($agents);
         }
         unset($configInfo, $ormResult1, $dingTalkConfig);

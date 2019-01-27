@@ -38,6 +38,8 @@ class DingTalkConfigSingleton {
 
         //初始化企业服务商公共配置
         $corpProviderConfig = new TalkConfigProvider();
+        $corpProviderConfig->setCorpId((string)Tool::getArrayVal($configs, 'provider.corp.id', '', true));
+        $corpProviderConfig->setSsoSecret((string)Tool::getArrayVal($configs, 'provider.sso.secret', '', true));
         $corpProviderConfig->setToken((string)Tool::getArrayVal($configs, 'provider.token', '', true));
         $corpProviderConfig->setAesKey((string)Tool::getArrayVal($configs, 'provider.aeskey', '', true));
         $corpProviderConfig->setSuiteKey((string)Tool::getArrayVal($configs, 'provider.suite.key', '', true));
