@@ -16,44 +16,46 @@ use Exception\DingDing\TalkException;
 use Tool\Tool;
 
 /**
- * 获取授权企业凭证
+ * 获取授权企业的应用信息
  * @package DingDing\CorpProvider\Common
  */
-class CorpToken extends TalkBaseCorpProvider {
+class AgentGet extends TalkBaseCorpProvider {
+    /**
+     * 套件key
+     * @var string
+     */
+    private $suite_key = '';
     /**
      * 授权企业ID
      * @var string
      */
     private $auth_corpid = '';
+    /**
+     * 用id
+     * @var int
+     */
+    private $agentid = 0;
 
-    public function __construct(){
+    public function __construct(string $corpId,string $agentTag){
         parent::__construct();
+        $agentInfo = DingTalkConfigSingleton::getInstance()->getCorpConfig($corpId)->getAgentInfo($agentTag);
+        $this->reqData['auth_corpid'] = $corpId;
+        $this->reqData['agentid'] = $agentInfo['id'];
     }
 
     private function __clone(){
     }
 
-    /**
-     * @param string $authCorpId
-     * @throws \Exception\DingDing\TalkException
-     */
-    public function setAuthCorpId(string $authCorpId){
-        if (ctype_alnum($authCorpId)) {
-            $this->reqData['auth_corpid'] = $authCorpId;
-        } else {
-            throw new TalkException('授权企业ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
-        }
-    }
-
     public function getDetail() : array {
-        if(!isset($this->reqData['auth_corpid'])){
-            throw new TalkException('授权企业ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
-        }
+        $resArr = [
+            'code' => 0,
+        ];
 
         $providerConfig = DingTalkConfigSingleton::getInstance()->getCorpProviderConfig();
         $timestamp = (string)Tool::getNowTime();
         $suiteTicket = TalkUtilProvider::getSuiteTicket();
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/service/get_corp_token?' . http_build_query([
+        $this->reqData['suite_key'] = $providerConfig->getSuiteKey();
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/service/get_agent?' . http_build_query([
             'timestamp' => $timestamp,
             'accessKey' => $providerConfig->getSuiteKey(),
             'suiteTicket' => $suiteTicket,
@@ -62,12 +64,13 @@ class CorpToken extends TalkBaseCorpProvider {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = TalkUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(!is_array($sendData)){
-            throw new TalkException('获取access token出错', ErrorCode::DING_TALK_POST_ERROR);
-        } else if(!isset($sendData['access_token'])){
-            throw new TalkException($sendData['errmsg'], ErrorCode::DING_TALK_POST_ERROR);
+        if($sendData['errcode'] == 0){
+            $resArr['data'] = $sendData;
+        } else {
+            $resArr['code'] = ErrorCode::DING_TALK_POST_ERROR;
+            $resArr['message'] = $sendData['errmsg'];
         }
 
-        return $sendData;
+        return $resArr;
     }
 }
