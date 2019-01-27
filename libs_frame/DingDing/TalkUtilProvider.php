@@ -37,18 +37,11 @@ final class TalkUtilProvider extends TalkUtilBase {
     /**
      * 生成API接口签名
      * @param string $timestamp 时间戳
-     * @return array
+     * @return string
      */
-    public static function createApiSign(string $timestamp) : array {
-        $providerConfig = DingTalkConfigSingleton::getInstance()->getCorpProviderConfig();
-        $signRes = [
-            'suite_key' => $providerConfig->getSuiteKey(),
-            'suite_ticket' => self::getSuiteTicket(),
-        ];
-
-        $needStr = hash_hmac('sha256', $timestamp . PHP_EOL . $signRes['suite_ticket'], $providerConfig->getSuiteSecret());
-        $signRes['signature'] = base64_encode($needStr);
-        return $signRes;
+    public static function createApiSign(string $signData,string $signSecret) : string {
+        $needStr = hash_hmac('sha256', $signData, $signSecret, true);
+        return base64_encode($needStr);
     }
 
     /**
