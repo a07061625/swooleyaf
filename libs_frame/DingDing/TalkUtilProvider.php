@@ -11,6 +11,7 @@ use Constant\ErrorCode;
 use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
+use DingDing\Corp\Sso\SsoToken;
 use DingDing\CorpProvider\Common\CorpToken;
 use Exception\DingDing\TalkException;
 use Tool\Tool;
@@ -32,6 +33,32 @@ final class TalkUtilProvider extends TalkUtilBase {
         } else {
             throw new TalkException('获取服务商套件缓存失败', ErrorCode::DING_TALK_PARAM_ERROR);
         }
+    }
+
+    /**
+     * 获取sso token
+     * @return string
+     */
+    public static function getSsoToken() : string {
+        $nowTime = Tool::getNowTime();
+        $redisKey = Project::REDIS_PREFIX_DINGTALK_PROVIDER_ACCOUNT . DingTalkConfigSingleton::getInstance()->getCorpProviderConfig()->getCorpId();
+        $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
+        if (isset($redisData['ssoat_key']) && ($redisData['ssoat_key'] == $redisKey) && ($redisData['ssoat_expire'] >= $nowTime)) {
+            return $redisData['ssoat_content'];
+        }
+
+        $ssoTokenObj = new SsoToken('');
+        $ssoTokenDetail = $ssoTokenObj->getDetail();
+        unset($ssoTokenObj);
+
+        CacheSimpleFactory::getRedisInstance()->hMset($redisKey, [
+            'ssoat_content' => $ssoTokenDetail['access_token'],
+            'ssoat_expire' => (int)($nowTime + 7180),
+            'ssoat_key' => $redisKey,
+        ]);
+        CacheSimpleFactory::getRedisInstance()->expire($redisKey, 8000);
+
+        return $ssoTokenDetail['access_token'];
     }
 
     /**

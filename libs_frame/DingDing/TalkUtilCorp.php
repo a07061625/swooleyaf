@@ -11,6 +11,7 @@ use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\Corp\Common\AccessToken;
+use DingDing\Corp\Sso\SsoToken;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
@@ -44,5 +45,32 @@ final class TalkUtilCorp extends TalkUtilBase {
         CacheSimpleFactory::getRedisInstance()->expire($redisKey, 8000);
 
         return $accessTokenDetail['access_token'];
+    }
+
+    /**
+     * 获取sso token
+     * @param string $corpId
+     * @return string
+     */
+    public static function getSsoToken(string $corpId) : string {
+        $nowTime = Tool::getNowTime();
+        $redisKey = Project::REDIS_PREFIX_DINGTALK_CORP . $corpId;
+        $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
+        if (isset($redisData['ssoat_key']) && ($redisData['ssoat_key'] == $redisKey) && ($redisData['ssoat_expire'] >= $nowTime)) {
+            return $redisData['ssoat_content'];
+        }
+
+        $ssoTokenObj = new SsoToken($corpId);
+        $ssoTokenDetail = $ssoTokenObj->getDetail();
+        unset($ssoTokenObj);
+
+        CacheSimpleFactory::getRedisInstance()->hMset($redisKey, [
+            'ssoat_content' => $ssoTokenDetail['access_token'],
+            'ssoat_expire' => (int)($nowTime + 7180),
+            'ssoat_key' => $redisKey,
+        ]);
+        CacheSimpleFactory::getRedisInstance()->expire($redisKey, 8000);
+
+        return $ssoTokenDetail['access_token'];
     }
 }
