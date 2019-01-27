@@ -27,7 +27,7 @@ final class TalkUtilCorp extends TalkUtilBase {
     public static function getAccessToken(string $corpId,string $agentTag) : string {
         $nowTime = Tool::getNowTime();
         $agentInfo = DingTalkConfigSingleton::getInstance()->getCorpConfig($corpId)->getAgentInfo($agentTag);
-        $redisKey = Project::REDIS_PREFIX_DINGTALK_CORP . $corpId . '_' . $agentInfo['key'];
+        $redisKey = Project::REDIS_PREFIX_DINGTALK_CORP . $corpId . '_' . $agentInfo['id'];
         $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
         if (isset($redisData['at_key']) && ($redisData['at_key'] == $redisKey) && ($redisData['at_expire'] >= $nowTime)) {
             return $redisData['at_content'];

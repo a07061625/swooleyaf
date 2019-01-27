@@ -31,6 +31,11 @@ abstract class TalkUtilBase {
         if(!isset($curlConfig[CURLOPT_HEADER])){
             $curlConfig[CURLOPT_HEADER] = false;
         }
+        if(!isset($curlConfig[CURLOPT_HTTPHEADER])){
+            $curlConfig[CURLOPT_HTTPHEADER] = [
+                'Content-Type: application/json; charset=utf-8',
+            ];
+        }
         $sendRes = Tool::sendCurlReq($curlConfig);
         if ($sendRes['res_no'] == 0) {
             return $sendRes['res_content'];
@@ -147,5 +152,15 @@ abstract class TalkUtilBase {
         $content2 = Tool::pkcs7Encode($content1);
         $content3 = openssl_encrypt($content2, 'aes-256-cbc', substr($key, 0, 32), OPENSSL_ZERO_PADDING, $iv);
         return base64_encode($content3);
+    }
+
+    /**
+     * 生成API接口签名
+     * @param string $timestamp 时间戳
+     * @return string
+     */
+    public static function createApiSign(string $signData,string $signSecret) : string {
+        $needStr = hash_hmac('sha256', $signData, $signSecret, true);
+        return base64_encode($needStr);
     }
 }

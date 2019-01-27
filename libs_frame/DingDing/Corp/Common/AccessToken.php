@@ -14,6 +14,10 @@ use DingDing\TalkUtilBase;
 use Exception\DingDing\TalkException;
 use Tool\Tool;
 
+/**
+ * 获取企业凭证
+ * @package DingDing\Corp\Common
+ */
 class AccessToken extends TalkBaseCorp {
     public function __construct(string $corpId,string $agentTag){
         parent::__construct();

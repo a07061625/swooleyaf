@@ -62,16 +62,6 @@ final class TalkUtilProvider extends TalkUtilBase {
     }
 
     /**
-     * 生成API接口签名
-     * @param string $timestamp 时间戳
-     * @return string
-     */
-    public static function createApiSign(string $signData,string $signSecret) : string {
-        $needStr = hash_hmac('sha256', $signData, $signSecret, true);
-        return base64_encode($needStr);
-    }
-
-    /**
      * 获取授权者access token
      * @param string $corpId 授权企业ID
      * @return string
