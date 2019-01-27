@@ -62,9 +62,9 @@ class CorpToken extends TalkBaseCorpProvider {
         $sendRes = TalkUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
         if(!is_array($sendData)){
-            throw new TalkException('获取access token出错', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('获取access token出错', ErrorCode::DING_TALK_POST_ERROR);
         } else if(!isset($sendData['access_token'])){
-            throw new TalkException($sendData['errmsg'], ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException($sendData['errmsg'], ErrorCode::DING_TALK_POST_ERROR);
         }
 
         return $sendData;

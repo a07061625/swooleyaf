@@ -30,9 +30,9 @@ class AccessToken extends TalkBaseCorp {
         $sendRes = TalkUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
         if(!is_array($sendData)){
-            throw new TalkException('获取access token出错', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('获取access token出错', ErrorCode::DING_TALK_GET_ERROR);
         } else if(!isset($sendData['access_token'])){
-            throw new TalkException($sendData['errmsg'], ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException($sendData['errmsg'], ErrorCode::DING_TALK_GET_ERROR);
         }
 
         return $sendData;
