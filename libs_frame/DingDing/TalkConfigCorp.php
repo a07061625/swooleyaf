@@ -17,6 +17,11 @@ class TalkConfigCorp {
      */
     private $corpId = '';
     /**
+     * 免登密钥
+     * @var string
+     */
+    private $ssoSecret = '';
+    /**
      * 应用列表
      * @var array
      */
@@ -54,6 +59,25 @@ class TalkConfigCorp {
             $this->corpId = $corpId;
         } else {
             throw new TalkException('企业ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getSsoSecret() : string {
+        return $this->ssoSecret;
+    }
+
+    /**
+     * @param string $ssoSecret
+     * @throws \Exception\DingDing\TalkException
+     */
+    public function setSsoSecret(string $ssoSecret){
+        if(ctype_alnum($ssoSecret)){
+            $this->ssoSecret = $ssoSecret;
+        } else {
+            throw new TalkException('免登密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 

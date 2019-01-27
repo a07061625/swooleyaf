@@ -12,6 +12,16 @@ use Exception\DingDing\TalkException;
 
 class TalkConfigProvider {
     /**
+     * 企业ID
+     * @var string
+     */
+    private $corpId = '';
+    /**
+     * 免登密钥
+     * @var string
+     */
+    private $ssoSecret = '';
+    /**
      * 消息校验token
      * @var string
      */
@@ -36,6 +46,44 @@ class TalkConfigProvider {
     }
 
     private function __clone() {
+    }
+
+    /**
+     * @return string
+     */
+    public function getCorpId() : string {
+        return $this->corpId;
+    }
+
+    /**
+     * @param string $corpId
+     * @throws \Exception\DingDing\TalkException
+     */
+    public function setCorpId(string $corpId){
+        if(ctype_alnum($corpId)){
+            $this->corpId = $corpId;
+        } else {
+            throw new TalkException('企业ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getSsoSecret() : string {
+        return $this->ssoSecret;
+    }
+
+    /**
+     * @param string $ssoSecret
+     * @throws \Exception\DingDing\TalkException
+     */
+    public function setSsoSecret(string $ssoSecret){
+        if(ctype_alnum($ssoSecret)){
+            $this->ssoSecret = $ssoSecret;
+        } else {
+            throw new TalkException('免登密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+        }
     }
 
     /**
