@@ -1,0 +1,70 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: 姜伟
+ * Date: 19-1-27
+ * Time: 上午10:15
+ */
+namespace DingDing\CorpProvider\Common;
+
+use Constant\ErrorCode;
+use DingDing\TalkBaseCorpProvider;
+use DingDing\TalkUtilBase;
+use DingDing\TalkUtilProvider;
+use Exception\DingDing\TalkException;
+use Tool\Tool;
+
+class CorpToken extends TalkBaseCorpProvider {
+    /**
+     * 授权企业ID
+     * @var string
+     */
+    private $auth_corpid = '';
+
+    public function __construct(){
+        parent::__construct();
+    }
+
+    private function __clone(){
+    }
+
+    /**
+     * @param string $authCorpId
+     * @throws \Exception\DingDing\TalkException
+     */
+    public function setAuthCorpId(string $authCorpId){
+        if (ctype_alnum($authCorpId)) {
+            $this->reqData['auth_corpid'] = $authCorpId;
+        } else {
+            throw new TalkException('授权企业ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+        }
+    }
+
+    public function getDetail() : array {
+        if(!isset($this->reqData['auth_corpid'])){
+            throw new TalkException('授权企业ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
+        }
+
+        $timestamp = (string)Tool::getNowTime();
+        $signRes = TalkUtilProvider::createApiSign($timestamp);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/service/get_corp_token?' . http_build_query([
+            'timestamp' => $timestamp,
+            'accessKey' => $signRes['suite_key'],
+            'suiteTicket' => $signRes['suite_ticket'],
+            'signature' => $signRes['signature'],
+        ]);
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+        $this->curlConfigs[CURLOPT_HTTPHEADER] = [
+            'Content-Type: application/json; charset=utf-8',
+        ];
+        $sendRes = TalkUtilBase::sendPostReq($this->curlConfigs);
+        $sendData = Tool::jsonDecode($sendRes);
+        if(!is_array($sendData)){
+            throw new TalkException('获取access token出错', ErrorCode::DING_TALK_PARAM_ERROR);
+        } else if(!isset($sendData['access_token'])){
+            throw new TalkException($sendData['errmsg'], ErrorCode::DING_TALK_PARAM_ERROR);
+        }
+
+        return $sendData;
+    }
+}
