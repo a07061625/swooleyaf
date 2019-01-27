@@ -8,6 +8,7 @@
 namespace DingDing\CorpProvider\Common;
 
 use Constant\ErrorCode;
+use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\TalkBaseCorpProvider;
 use DingDing\TalkUtilBase;
 use DingDing\TalkUtilProvider;
@@ -45,13 +46,14 @@ class CorpToken extends TalkBaseCorpProvider {
             throw new TalkException('授权企业ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
+        $providerConfig = DingTalkConfigSingleton::getInstance()->getCorpProviderConfig();
         $timestamp = (string)Tool::getNowTime();
-        $signRes = TalkUtilProvider::createApiSign($timestamp);
+        $suiteTicket = TalkUtilProvider::getSuiteTicket();
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/service/get_corp_token?' . http_build_query([
             'timestamp' => $timestamp,
-            'accessKey' => $signRes['suite_key'],
-            'suiteTicket' => $signRes['suite_ticket'],
-            'signature' => $signRes['signature'],
+            'accessKey' => $providerConfig->getSuiteKey(),
+            'suiteTicket' => $suiteTicket,
+            'signature' => TalkUtilProvider::createApiSign($timestamp . PHP_EOL . $suiteTicket, $providerConfig->getSuiteSecret()),
         ]);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $this->curlConfigs[CURLOPT_HTTPHEADER] = [
