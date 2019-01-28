@@ -34,6 +34,24 @@ class DingtalkConfigCorpEntity extends MysqlEntity {
     public $sso_secret = '';
 
     /**
+     * 登陆应用ID
+     * @var string
+     */
+    public $login_app_id = '';
+
+    /**
+     * 登陆应用密钥
+     * @var string
+     */
+    public $login_app_secret = '';
+
+    /**
+     * 登陆应用回调地址
+     * @var string
+     */
+    public $login_url_callback = '';
+
+    /**
      * 状态
      * @var int
      */

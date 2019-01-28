@@ -41,6 +41,21 @@ class TalkConfigProvider {
      * @var string
      */
     private $suiteSecret = '';
+    /**
+     * 登陆应用ID
+     * @var string
+     */
+    private $loginAppId = '';
+    /**
+     * 登陆应用密钥
+     * @var string
+     */
+    private $loginAppSecret = '';
+    /**
+     * 登陆应用回调地址
+     * @var string
+     */
+    private $loginUrlCallback = '';
 
     public function __construct() {
     }
@@ -159,6 +174,63 @@ class TalkConfigProvider {
             $this->suiteSecret = $suiteSecret;
         } else {
             throw new TalkException('套件密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getLoginAppId() : string {
+        return $this->loginAppId;
+    }
+
+    /**
+     * @param string $loginAppId
+     * @throws \Exception\DingDing\TalkException
+     */
+    public function setLoginAppId(string $loginAppId){
+        if(ctype_alnum($loginAppId)){
+            $this->loginAppId = $loginAppId;
+        } else {
+            throw new TalkException('登陆应用ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getLoginAppSecret() : string {
+        return $this->loginAppSecret;
+    }
+
+    /**
+     * @param string $loginAppSecret
+     * @throws \Exception\DingDing\TalkException
+     */
+    public function setLoginAppSecret(string $loginAppSecret){
+        if(strlen($loginAppSecret) > 0){
+            $this->loginAppSecret = $loginAppSecret;
+        } else {
+            throw new TalkException('登陆应用密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getLoginUrlCallback() : string {
+        return $this->loginUrlCallback;
+    }
+
+    /**
+     * @param string $loginUrlCallback
+     * @throws \Exception\DingDing\TalkException
+     */
+    public function setLoginUrlCallback(string $loginUrlCallback){
+        if(preg_match('/^(http|https)\:\/\/\S+$/', $loginUrlCallback) > 0){
+            $this->loginUrlCallback = $loginUrlCallback;
+        } else {
+            throw new TalkException('登陆应用回调地址不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 }

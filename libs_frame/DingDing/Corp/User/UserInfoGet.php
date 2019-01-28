@@ -15,7 +15,7 @@ use Exception\DingDing\TalkException;
 use Tool\Tool;
 
 /**
- * 获取用户id
+ * 获取用户基础信息
  * @package DingDing\Corp\User
  */
 class UserInfoGet extends TalkBaseCorp {
