@@ -2,37 +2,35 @@
 /**
  * Created by PhpStorm.
  * User: 姜伟
- * Date: 19-1-27
- * Time: 下午2:29
+ * Date: 19-1-28
+ * Time: 上午11:15
  */
-namespace DingDing\Corp\Sso;
+namespace DingDing\Corp\User;
 
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
+use DingDing\TalkTraitCorp;
 use DingDing\TalkUtilBase;
-use DingDing\TalkUtilCorp;
-use DingDing\TalkUtilProvider;
 use Exception\DingDing\TalkException;
 use Tool\Tool;
 
 /**
- * 获取应用管理员的身份信息
- * @package DingDing\Corp\Sso
+ * 获取用户id
+ * @package DingDing\Corp\User
  */
 class UserInfoGet extends TalkBaseCorp {
+    use TalkTraitCorp;
+
     /**
      * 授权码
      * @var string
      */
     private $code = '';
 
-    public function __construct(string $corpId){
+    public function __construct(string $corpId,string $agentTag){
         parent::__construct();
-        if (strlen($corpId) > 0) {
-            $this->reqData['access_token'] = TalkUtilCorp::getSsoToken($corpId);
-        } else {
-            $this->reqData['access_token'] = TalkUtilProvider::getSsoToken();
-        }
+        $this->_corpId = $corpId;
+        $this->_agentTag = $agentTag;
     }
 
     private function __clone(){
@@ -59,7 +57,8 @@ class UserInfoGet extends TalkBaseCorp {
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/sso/getuserinfo?' . http_build_query($this->reqData);
+        $this->reqData['access_token'] = $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/user/getuserinfo?' . http_build_query($this->reqData);
         $sendRes = TalkUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
         if($sendData['errcode'] == 0){

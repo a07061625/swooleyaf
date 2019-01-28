@@ -67,6 +67,22 @@ abstract class TalkUtilBase {
     }
 
     /**
+     * 生成回调签名
+     * @param array $data 待校验数据,数据格式如下:
+     *   token: string 服务商或企业应用的消息加解密token
+     *   timestamp: string|int 时间戳
+     *   nonce: string 随机字符串
+     *   encrypt: string 加密数据
+     * @return string
+     */
+    public static function createCallbackSign(array $data){
+        $saveArr = [$data['token'], (string)$data['timestamp'], $data['nonce'], $data['encrypt']];
+        sort($saveArr, SORT_STRING);
+        $needStr = implode('', $saveArr);
+        return sha1($needStr);
+    }
+
+    /**
      * 校验回调签名
      * @param array $data 待校验数据,数据格式如下:
      *   token: string 服务商或企业应用的消息加解密token
@@ -77,10 +93,7 @@ abstract class TalkUtilBase {
      * @return bool
      */
     public static function checkCallbackSign(array $data,string $signature) : bool {
-        $saveArr = [$data['token'], (string)$data['timestamp'], $data['nonce'], $data['encrypt']];
-        sort($saveArr, SORT_STRING);
-        $needStr = implode('', $saveArr);
-        $nowSign = sha1($needStr);
+        $nowSign = self::createCallbackSign($data);
         return $nowSign === $signature;
     }
 
@@ -107,7 +120,7 @@ abstract class TalkUtilBase {
         }
         $error = '';
         $msg = '';
-        $decryptMsg = openssl_decrypt(base64_decode($encryptMsg), 'aes-256-cbc', substr($key, 0, 32), OPENSSL_ZERO_PADDING, $iv);
+        $decryptMsg = openssl_decrypt(base64_decode($encryptMsg), 'AES-256-CBC', $key, OPENSSL_RAW_DATA|OPENSSL_ZERO_PADDING, $iv);
         $decodeMsg = Tool::pkcs7Decode($decryptMsg);
         if (strlen($decodeMsg) >= 16) {
             $msgContent = substr($decodeMsg, 16);
@@ -128,30 +141,46 @@ abstract class TalkUtilBase {
     }
 
     /**
-     * 加密数据
+     * 加密数据,可直接用于回调接口响应钉钉服务器的数据
      * @param string $replyMsg
      * @param string $optionType 操作类型
      * @param string $corpId 企业ID
      * @param string $agentTag 应用标志
-     * @return string
+     * @return array
      */
-    public static function encryptMsg(string $replyMsg,string $optionType,string $corpId='',string $agentTag='') : string {
+    public static function encryptMsg(string $replyMsg,string $optionType,string $corpId='',string $agentTag='') : array {
         if($optionType == self::OPTION_TYPE_PROVIDER){
             $providerConfig = DingTalkConfigSingleton::getInstance()->getCorpProviderConfig();
             $key = base64_decode($providerConfig->getAesKey() . '=');
             $iv = substr($key, 0, 16);
             $checkKey = $providerConfig->getSuiteKey();
+            $token = $providerConfig->getToken();
         } else {
             $agentInfo = DingTalkConfigSingleton::getInstance()->getCorpConfig($corpId)->getAgentInfo($agentTag);
             $key = base64_decode($agentInfo['aes_key'] . '=');
             $iv = substr($key, 0, 16);
             $checkKey = $corpId;
+            $token = $agentInfo['token'];
         }
 
-        $content1 = Tool::createNonceStr(16) . pack("N", strlen($replyMsg)) . $replyMsg . $checkKey;
+        $timestamp = (string)Tool::getNowTime();
+        $nonceStr = Tool::createNonceStr(16);
+        $content1 = $nonceStr . pack("N", strlen($replyMsg)) . $replyMsg . $checkKey;
         $content2 = Tool::pkcs7Encode($content1);
-        $content3 = openssl_encrypt($content2, 'aes-256-cbc', substr($key, 0, 32), OPENSSL_ZERO_PADDING, $iv);
-        return base64_encode($content3);
+        $content3 = openssl_encrypt($content2, 'AES-256-CBC', $key, OPENSSL_RAW_DATA|OPENSSL_ZERO_PADDING, $iv);
+        $encryptData = base64_encode($content3);
+
+        return [
+            'msg_signature' => self::createCallbackSign([
+                'token' => $token,
+                'timestamp' => $timestamp,
+                'nonce' => $nonceStr,
+                'encrypt' => $encryptData,
+            ]),
+            'timestamp' => $timestamp,
+            'nonce' => $nonceStr,
+            'encrypt' => $encryptData,
+        ];
     }
 
     /**
