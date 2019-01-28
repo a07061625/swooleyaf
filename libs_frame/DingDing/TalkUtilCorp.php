@@ -11,6 +11,8 @@ use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\Corp\Common\AccessToken;
+use DingDing\Corp\Sns\SnsTokenGet;
+use DingDing\Corp\Sns\TokenGet;
 use DingDing\Corp\Sso\SsoToken;
 use Tool\Tool;
 use Traits\SimpleTrait;
@@ -72,5 +74,63 @@ final class TalkUtilCorp extends TalkUtilBase {
         CacheSimpleFactory::getRedisInstance()->expire($redisKey, 8000);
 
         return $ssoTokenDetail['access_token'];
+    }
+
+    /**
+     * 获取sns token
+     * @param string $corpId
+     * @return string
+     */
+    public static function getSnsToken(string $corpId) : string {
+        $nowTime = Tool::getNowTime();
+        $redisKey = Project::REDIS_PREFIX_DINGTALK_CORP . $corpId;
+        $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
+        if (isset($redisData['snsat_key']) && ($redisData['snsat_key'] == $redisKey) && ($redisData['snsat_expire'] >= $nowTime)) {
+            return $redisData['snsat_content'];
+        }
+
+        $snsTokenObj = new TokenGet($corpId);
+        $snsTokenDetail = $snsTokenObj->getDetail();
+        unset($snsTokenObj);
+
+        CacheSimpleFactory::getRedisInstance()->hMset($redisKey, [
+            'snsat_content' => $snsTokenDetail['access_token'],
+            'snsat_expire' => (int)($nowTime + 7180),
+            'snsat_key' => $redisKey,
+        ]);
+        CacheSimpleFactory::getRedisInstance()->expire($redisKey, 8000);
+
+        return $snsTokenDetail['access_token'];
+    }
+
+    /**
+     * 获取用户sns token
+     * @param string $corpId
+     * @param string $openid 用户openid
+     * @param string $persistentCode 持久授权码
+     * @return string
+     */
+    public static function getUserSnsToken(string $corpId,string $openid,string $persistentCode) : string {
+        $nowTime = Tool::getNowTime();
+        $redisKey = Project::REDIS_PREFIX_DINGTALK_CORP . $corpId . '_' . $openid;
+        $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
+        if (isset($redisData['sns_key']) && ($redisData['sns_key'] == $redisKey) && ($redisData['sns_expire'] >= $nowTime)) {
+            return $redisData['sns_content'];
+        }
+
+        $snsTokenObj = new SnsTokenGet($corpId);
+        $snsTokenObj->setOpenid($openid);
+        $snsTokenObj->setPersistentCode($persistentCode);
+        $snsTokenDetail = $snsTokenObj->getDetail();
+        unset($snsTokenObj);
+
+        CacheSimpleFactory::getRedisInstance()->hMset($redisKey, [
+            'sns_content' => $snsTokenDetail['sns_token'],
+            'sns_expire' => (int)($nowTime + $snsTokenDetail['expires_in'] - 10),
+            'sns_key' => $redisKey,
+        ]);
+        CacheSimpleFactory::getRedisInstance()->expire($redisKey, 8000);
+
+        return $snsTokenDetail['sns_token'];
     }
 }
