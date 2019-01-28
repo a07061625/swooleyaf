@@ -44,6 +44,9 @@ class DingTalkConfigSingleton {
         $corpProviderConfig->setAesKey((string)Tool::getArrayVal($configs, 'provider.aeskey', '', true));
         $corpProviderConfig->setSuiteKey((string)Tool::getArrayVal($configs, 'provider.suite.key', '', true));
         $corpProviderConfig->setSuiteSecret((string)Tool::getArrayVal($configs, 'provider.suite.secret', '', true));
+        $corpProviderConfig->setLoginAppId((string)Tool::getArrayVal($configs, 'provider.login.app.id', '', true));
+        $corpProviderConfig->setLoginAppSecret((string)Tool::getArrayVal($configs, 'provider.login.app.secret', '', true));
+        $corpProviderConfig->setLoginUrlCallback((string)Tool::getArrayVal($configs, 'provider.login.url.callback', '', true));
         $this->corpProviderConfig = $corpProviderConfig;
     }
 

@@ -5,7 +5,7 @@
  * Date: 19-1-28
  * Time: 上午11:15
  */
-namespace DingDing\Corp\User;
+namespace DingDing\Corp\Sns;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
@@ -16,8 +16,8 @@ use Exception\DingDing\TalkException;
 use Tool\Tool;
 
 /**
- * 获取授权用户的个人信息
- * @package DingDing\Corp\User
+ * 通过临时授权码获取授权用户的个人信息
+ * @package DingDing\Corp\Sns
  */
 class UserInfoGetByCode extends TalkBaseCorp {
     use TalkTraitCorp;
@@ -57,13 +57,13 @@ class UserInfoGetByCode extends TalkBaseCorp {
 
         $timestamp = (string)Tool::getNowTime();
         if ($this->_tokenType == TalkBaseCorp::ACCESS_TOKEN_TYPE_CORP) {
-            $agentInfo = DingTalkConfigSingleton::getInstance()->getCorpConfig($this->_corpId)->getAgentInfo($this->_agentTag);
-            $accessKey = $agentInfo['key'];
-            $signSecret = $agentInfo['secret'];
+            $corpConfig = DingTalkConfigSingleton::getInstance()->getCorpConfig($this->_corpId);
+            $accessKey = $corpConfig->getLoginAppId();
+            $signSecret = $corpConfig->getLoginAppSecret();
         } else {
             $providerConfig = DingTalkConfigSingleton::getInstance()->getCorpProviderConfig();
-            $accessKey = $providerConfig->getSuiteKey();
-            $signSecret = $providerConfig->getSuiteSecret();
+            $accessKey = $providerConfig->getLoginAppId();
+            $signSecret = $providerConfig->getLoginAppSecret();
         }
 
         $resArr = [
