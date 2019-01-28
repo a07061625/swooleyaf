@@ -8,18 +8,19 @@
 namespace DingDing\Corp\Sns;
 
 use Constant\ErrorCode;
-use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
 use DingDing\TalkUtilBase;
+use DingDing\TalkUtilCorp;
+use DingDing\TalkUtilProvider;
 use Exception\DingDing\TalkException;
 use Tool\Tool;
 
 /**
- * 通过临时授权码获取授权用户的个人信息
+ * 获取用户的持久授权码
  * @package DingDing\Corp\Sns
  */
-class UserInfoGetByCode extends TalkBaseCorp {
+class PersistentCodeGet extends TalkBaseCorp {
     use TalkTraitCorp;
 
     /**
@@ -28,10 +29,9 @@ class UserInfoGetByCode extends TalkBaseCorp {
      */
     private $tmp_auth_code = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId){
         parent::__construct();
         $this->_corpId = $corpId;
-        $this->_agentTag = $agentTag;
     }
 
     private function __clone(){
@@ -54,26 +54,19 @@ class UserInfoGetByCode extends TalkBaseCorp {
             throw new TalkException('临时授权码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
-        $timestamp = (string)Tool::getNowTime();
-        if ($this->_tokenType == TalkBaseCorp::ACCESS_TOKEN_TYPE_CORP) {
-            $corpConfig = DingTalkConfigSingleton::getInstance()->getCorpConfig($this->_corpId);
-            $accessKey = $corpConfig->getLoginAppId();
-            $signSecret = $corpConfig->getLoginAppSecret();
-        } else {
-            $providerConfig = DingTalkConfigSingleton::getInstance()->getCorpProviderConfig();
-            $accessKey = $providerConfig->getLoginAppId();
-            $signSecret = $providerConfig->getLoginAppSecret();
-        }
-
         $resArr = [
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/sns/getuserinfo_bycode?' . http_build_query([
-            'signature' => TalkUtilBase::createApiSign($timestamp, $signSecret),
-            'timestamp' => $timestamp,
-            'accessKey' => $accessKey,
-        ]);
+        if (strlen($this->_corpId) > 0) {
+            $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/sns/get_persistent_code?' . http_build_query([
+                'access_token' => TalkUtilCorp::getSnsToken($this->_corpId),
+            ]);
+        } else {
+            $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/sns/get_persistent_code?' . http_build_query([
+                'access_token' => TalkUtilProvider::getSnsToken(),
+            ]);
+        }
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = TalkUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
