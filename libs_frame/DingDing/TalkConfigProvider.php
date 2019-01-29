@@ -32,6 +32,11 @@ class TalkConfigProvider {
      */
     private $aesKey = '';
     /**
+     * 套件ID
+     * @var int
+     */
+    private $suiteId = 0;
+    /**
      * 套件标识
      * @var string
      */
@@ -136,6 +141,25 @@ class TalkConfigProvider {
             $this->aesKey = $aesKey;
         } else {
             throw new TalkException('加密密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @return int
+     */
+    public function getSuiteId() : int {
+        return $this->suiteId;
+    }
+
+    /**
+     * @param int $suiteId
+     * @throws \Exception\DingDing\TalkException
+     */
+    public function setSuiteId(int $suiteId){
+        if($suiteId > 0){
+            $this->suiteId = $suiteId;
+        } else {
+            throw new TalkException('套件ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
