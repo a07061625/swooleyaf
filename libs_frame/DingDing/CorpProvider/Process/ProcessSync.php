@@ -16,10 +16,10 @@ use Exception\DingDing\TalkException;
 use Tool\Tool;
 
 /**
- * 复制审批流
+ * 更新审批流
  * @package DingDing\CorpProvider\Process
  */
-class ProcessCopy extends TalkBaseCorpProvider {
+class ProcessSync extends TalkBaseCorpProvider {
     /**
      * 企业ID
      * @var string
@@ -31,10 +31,15 @@ class ProcessCopy extends TalkBaseCorpProvider {
      */
     private $agent_id = 0;
     /**
-     * 审批码
+     * 源审批码
      * @var string
      */
-    private $process_code = '';
+    private $src_process_code = '';
+    /**
+     * 目标审批码
+     * @var string
+     */
+    private $target_process_code = '';
     /**
      * 业务分类标识
      * @var string
@@ -45,11 +50,6 @@ class ProcessCopy extends TalkBaseCorpProvider {
      * @var string
      */
     private $process_name = '';
-    /**
-     * 审批流描述
-     * @var string
-     */
-    private $description = '';
 
     public function __construct(string $corpId){
         parent::__construct();
@@ -61,14 +61,26 @@ class ProcessCopy extends TalkBaseCorpProvider {
     }
 
     /**
-     * @param string $processCode
+     * @param string $srcProcessCode
      * @throws \Exception\DingDing\TalkException
      */
-    public function setProcessCode(string $processCode){
-        if (strlen($processCode) > 0) {
-            $this->reqData['process_code'] = $processCode;
+    public function setSrcProcessCode(string $srcProcessCode){
+        if (strlen($srcProcessCode) > 0) {
+            $this->reqData['src_process_code'] = $srcProcessCode;
         } else {
-            throw new TalkException('审批码不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('源审批码不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @param string $targetProcessCode
+     * @throws \Exception\DingDing\TalkException
+     */
+    public function setTargetProcessCode(string $targetProcessCode){
+        if (strlen($targetProcessCode) > 0) {
+            $this->reqData['target_process_code'] = $targetProcessCode;
+        } else {
+            throw new TalkException('目标审批码不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
@@ -96,21 +108,12 @@ class ProcessCopy extends TalkBaseCorpProvider {
         }
     }
 
-    /**
-     * @param string $description
-     * @throws \Exception\DingDing\TalkException
-     */
-    public function setDescription(string $description){
-        if (strlen($description) > 0) {
-            $this->reqData['description'] = $description;
-        } else {
-            throw new TalkException('描述不合法', ErrorCode::DING_TALK_PARAM_ERROR);
-        }
-    }
-
     public function getDetail() : array {
-        if(!isset($this->reqData['process_code'])){
-            throw new TalkException('审批码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
+        if(!isset($this->reqData['src_process_code'])){
+            throw new TalkException('源审批码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
+        }
+        if(!isset($this->reqData['target_process_code'])){
+            throw new TalkException('目标审批码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
         if(!isset($this->reqData['biz_category_id'])){
             throw new TalkException('业务分类标识不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -118,15 +121,12 @@ class ProcessCopy extends TalkBaseCorpProvider {
         if(!isset($this->reqData['process_name'])){
             throw new TalkException('名称不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['description'])){
-            throw new TalkException('描述不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
-        }
 
         $resArr = [
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/topapi/process/copy?' . http_build_query([
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/topapi/process/sync?' . http_build_query([
             'access_token' => TalkUtilProvider::getAuthorizerAccessToken($this->corpId),
         ]);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);

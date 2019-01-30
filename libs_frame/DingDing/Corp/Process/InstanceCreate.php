@@ -208,7 +208,7 @@ class InstanceCreate extends TalkBaseCorp {
             'access_token' => $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag),
         ]);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
-        $sendRes = TalkUtilBase::sendGetReq($this->curlConfigs);
+        $sendRes = TalkUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
         if($sendData['errcode'] == 0){
             $resArr['data'] = $sendData;
