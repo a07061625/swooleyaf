@@ -7,12 +7,10 @@
  */
 namespace DingDing\CorpProvider\Common;
 
-use Constant\ErrorCode;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\TalkBaseCorpProvider;
 use DingDing\TalkUtilBase;
 use DingDing\TalkUtilProvider;
-use Exception\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -47,10 +45,6 @@ class AgentGet extends TalkBaseCorpProvider {
     }
 
     public function getDetail() : array {
-        $resArr = [
-            'code' => 0,
-        ];
-
         $providerConfig = DingTalkConfigSingleton::getInstance()->getCorpProviderConfig();
         $timestamp = (string)Tool::getNowTime();
         $suiteTicket = TalkUtilProvider::getSuiteTicket();
@@ -62,15 +56,6 @@ class AgentGet extends TalkBaseCorpProvider {
             'signature' => TalkUtilBase::createApiSign($timestamp . PHP_EOL . $suiteTicket, $providerConfig->getSuiteSecret()),
         ]);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
-        $sendRes = TalkUtilBase::sendPostReq($this->curlConfigs);
-        $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
-            $resArr['data'] = $sendData;
-        } else {
-            $resArr['code'] = ErrorCode::DING_TALK_POST_ERROR;
-            $resArr['message'] = $sendData['errmsg'];
-        }
-
-        return $resArr;
+        return $this->sendRequest('POST');
     }
 }

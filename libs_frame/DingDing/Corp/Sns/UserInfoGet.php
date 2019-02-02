@@ -9,11 +9,9 @@ namespace DingDing\Corp\Sns;
 
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
-use DingDing\TalkUtilBase;
 use DingDing\TalkUtilCorp;
 use DingDing\TalkUtilProvider;
 use Exception\DingDing\TalkException;
-use Tool\Tool;
 
 /**
  * 获取授权用户的个人信息
@@ -71,10 +69,6 @@ class UserInfoGet extends TalkBaseCorp {
             throw new TalkException('持久授权码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
-        $resArr = [
-            'code' => 0,
-        ];
-
         if (strlen($this->_corpId) > 0) {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/sns/getuserinfo?' . http_build_query([
                 'sns_token' => TalkUtilCorp::getUserSnsToken($this->_corpId, $this->openid, $this->persistent_code),
@@ -84,15 +78,6 @@ class UserInfoGet extends TalkBaseCorp {
                 'sns_token' => TalkUtilProvider::getUserSnsToken($this->openid, $this->persistent_code),
             ]);
         }
-        $sendRes = TalkUtilBase::sendGetReq($this->curlConfigs);
-        $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
-            $resArr['data'] = $sendData;
-        } else {
-            $resArr['code'] = ErrorCode::DING_TALK_GET_ERROR;
-            $resArr['message'] = $sendData['errmsg'];
-        }
-
-        return $resArr;
+        return $this->sendRequest('GET');
     }
 }

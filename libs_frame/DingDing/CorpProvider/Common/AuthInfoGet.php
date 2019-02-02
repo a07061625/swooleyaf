@@ -50,10 +50,6 @@ class AuthInfoGet extends TalkBaseCorpProvider {
             throw new TalkException('授权企业ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
-        $resArr = [
-            'code' => 0,
-        ];
-
         $providerConfig = DingTalkConfigSingleton::getInstance()->getCorpProviderConfig();
         $timestamp = (string)Tool::getNowTime();
         $suiteTicket = TalkUtilProvider::getSuiteTicket();
@@ -64,15 +60,6 @@ class AuthInfoGet extends TalkBaseCorpProvider {
             'signature' => TalkUtilBase::createApiSign($timestamp . PHP_EOL . $suiteTicket, $providerConfig->getSuiteSecret()),
         ]);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
-        $sendRes = TalkUtilBase::sendPostReq($this->curlConfigs);
-        $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
-            $resArr['data'] = $sendData;
-        } else {
-            $resArr['code'] = ErrorCode::DING_TALK_POST_ERROR;
-            $resArr['message'] = $sendData['errmsg'];
-        }
-
-        return $resArr;
+        return $this->sendRequest('POST');
     }
 }

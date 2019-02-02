@@ -10,9 +10,7 @@ namespace DingDing\Corp\User;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use DingDing\TalkUtilBase;
 use Exception\DingDing\TalkException;
-use Tool\Tool;
 
 /**
  * 获取用户基础信息
@@ -53,21 +51,8 @@ class UserInfoGet extends TalkBaseCorp {
             throw new TalkException('授权码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
-        $resArr = [
-            'code' => 0,
-        ];
-
         $this->reqData['access_token'] = $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/user/getuserinfo?' . http_build_query($this->reqData);
-        $sendRes = TalkUtilBase::sendGetReq($this->curlConfigs);
-        $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
-            $resArr['data'] = $sendData;
-        } else {
-            $resArr['code'] = ErrorCode::DING_TALK_GET_ERROR;
-            $resArr['message'] = $sendData['errmsg'];
-        }
-
-        return $resArr;
+        return $this->sendRequest('GET');
     }
 }
