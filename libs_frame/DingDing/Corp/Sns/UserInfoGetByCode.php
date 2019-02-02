@@ -65,25 +65,12 @@ class UserInfoGetByCode extends TalkBaseCorp {
             $signSecret = $providerConfig->getLoginAppSecret();
         }
 
-        $resArr = [
-            'code' => 0,
-        ];
-
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/sns/getuserinfo_bycode?' . http_build_query([
             'signature' => TalkUtilBase::createApiSign($timestamp, $signSecret),
             'timestamp' => $timestamp,
             'accessKey' => $accessKey,
         ]);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
-        $sendRes = TalkUtilBase::sendPostReq($this->curlConfigs);
-        $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
-            $resArr['data'] = $sendData;
-        } else {
-            $resArr['code'] = ErrorCode::DING_TALK_POST_ERROR;
-            $resArr['message'] = $sendData['errmsg'];
-        }
-
-        return $resArr;
+        return $this->sendRequest('POST');
     }
 }

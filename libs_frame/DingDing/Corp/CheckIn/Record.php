@@ -10,9 +10,7 @@ namespace DingDing\Corp\CheckIn;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use DingDing\TalkUtilBase;
 use Exception\DingDing\TalkException;
-use Tool\Tool;
 
 /**
  * 获取部门用户签到记录
@@ -138,21 +136,8 @@ class Record extends TalkBaseCorp {
             throw new TalkException('开始时间不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
-        $resArr = [
-            'code' => 0,
-        ];
-
         $this->reqData['access_token'] = $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/checkin/record?' . http_build_query($this->reqData);
-        $sendRes = TalkUtilBase::sendGetReq($this->curlConfigs);
-        $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
-            $resArr['data'] = $sendData;
-        } else {
-            $resArr['code'] = ErrorCode::DING_TALK_GET_ERROR;
-            $resArr['message'] = $sendData['errmsg'];
-        }
-
-        return $resArr;
+        return $this->sendRequest('GET');
     }
 }

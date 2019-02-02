@@ -9,11 +9,9 @@ namespace DingDing\Corp\Sso;
 
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
-use DingDing\TalkUtilBase;
 use DingDing\TalkUtilCorp;
 use DingDing\TalkUtilProvider;
 use Exception\DingDing\TalkException;
-use Tool\Tool;
 
 /**
  * 获取应用管理员的身份信息
@@ -55,20 +53,7 @@ class UserInfoGet extends TalkBaseCorp {
             throw new TalkException('授权码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
-        $resArr = [
-            'code' => 0,
-        ];
-
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/sso/getuserinfo?' . http_build_query($this->reqData);
-        $sendRes = TalkUtilBase::sendGetReq($this->curlConfigs);
-        $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
-            $resArr['data'] = $sendData;
-        } else {
-            $resArr['code'] = ErrorCode::DING_TALK_GET_ERROR;
-            $resArr['message'] = $sendData['errmsg'];
-        }
-
-        return $resArr;
+        return $this->sendRequest('GET');
     }
 }

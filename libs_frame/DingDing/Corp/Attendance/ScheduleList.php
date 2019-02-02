@@ -10,7 +10,6 @@ namespace DingDing\Corp\Attendance;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use DingDing\TalkUtilBase;
 use Exception\DingDing\TalkException;
 use Tool\Tool;
 
@@ -89,23 +88,10 @@ class ScheduleList extends TalkBaseCorp {
             throw new TalkException('排班时间不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
-        $resArr = [
-            'code' => 0,
-        ];
-
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/topapi/attendance/listschedule?' . http_build_query([
             'access_token' => $this->getAccessToken(TalkBaseCorp::ACCESS_TOKEN_TYPE_CORP, $this->_corpId, $this->_agentTag),
         ]);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
-        $sendRes = TalkUtilBase::sendPostReq($this->curlConfigs);
-        $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
-            $resArr['data'] = $sendData;
-        } else {
-            $resArr['code'] = ErrorCode::DING_TALK_POST_ERROR;
-            $resArr['message'] = $sendData['errmsg'];
-        }
-
-        return $resArr;
+        return $this->sendRequest('POST');
     }
 }

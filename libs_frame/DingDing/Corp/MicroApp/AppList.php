@@ -7,10 +7,8 @@
  */
 namespace DingDing\Corp\MicroApp;
 
-use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use DingDing\TalkUtilBase;
 use Tool\Tool;
 
 /**
@@ -30,23 +28,10 @@ class AppList extends TalkBaseCorp {
     }
 
     public function getDetail() : array {
-        $resArr = [
-            'code' => 0,
-        ];
-
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/microapp/list?' . http_build_query([
             'access_token' => $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag),
         ]);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode([], JSON_UNESCAPED_UNICODE);
-        $sendRes = TalkUtilBase::sendPostReq($this->curlConfigs);
-        $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
-            $resArr['data'] = $sendData;
-        } else {
-            $resArr['code'] = ErrorCode::DING_TALK_POST_ERROR;
-            $resArr['message'] = $sendData['errmsg'];
-        }
-
-        return $resArr;
+        return $this->sendRequest('POST');
     }
 }
