@@ -13,10 +13,29 @@ use Exception\DingDing\TalkException;
 abstract class TalkBaseCorp extends TalkBase {
     const ACCESS_TOKEN_TYPE_CORP = 1; //令牌类型-企业
     const ACCESS_TOKEN_TYPE_PROVIDER = 2; //令牌类型-服务商
+    const MESSAGE_TYPE_TEXT = 'text';
+    const MESSAGE_TYPE_IMAGE = 'image';
+    const MESSAGE_TYPE_VOICE = 'voice';
+    const MESSAGE_TYPE_FILE = 'file';
+    const MESSAGE_TYPE_LINK = 'link';
+    const MESSAGE_TYPE_OA = 'oa';
+    const MESSAGE_TYPE_MARKDOWN = 'markdown';
+    const MESSAGE_TYPE_ACTION_CARD = 'action_card';
 
     private static $totalAccessTokenType = [
         self::ACCESS_TOKEN_TYPE_CORP => '企业',
         self::ACCESS_TOKEN_TYPE_PROVIDER => '服务商',
+    ];
+
+    protected static $totalMessageType = [
+        self::MESSAGE_TYPE_TEXT => '文本',
+        self::MESSAGE_TYPE_IMAGE => '图片',
+        self::MESSAGE_TYPE_VOICE => '语音',
+        self::MESSAGE_TYPE_FILE => '文件',
+        self::MESSAGE_TYPE_LINK => '链接',
+        self::MESSAGE_TYPE_OA => 'OA',
+        self::MESSAGE_TYPE_MARKDOWN => 'markdown',
+        self::MESSAGE_TYPE_ACTION_CARD => '卡片',
     ];
 
     /**
