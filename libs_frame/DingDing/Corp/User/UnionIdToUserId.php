@@ -13,52 +13,46 @@ use DingDing\TalkTraitCorp;
 use Exception\DingDing\TalkException;
 
 /**
- * 获取用户详情
+ * 根据unionid获取userid
  * @package DingDing\Corp\User
  */
-class UserGet extends TalkBaseCorp {
+class UnionIdToUserId extends TalkBaseCorp {
     use TalkTraitCorp;
 
     /**
-     * 用户id
+     * 唯一标识
      * @var string
      */
-    private $userid = '';
-    /**
-     * 语言
-     * @var string
-     */
-    private $lang = '';
+    private $unionid = '';
 
     public function __construct(string $corpId,string $agentTag){
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
-        $this->reqData['lang'] = 'zh_CN';
     }
 
     private function __clone(){
     }
 
     /**
-     * @param string $userId
+     * @param string $unionId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserId(string $userId){
-        if(ctype_alnum($userId)){
-            $this->reqData['userid'] = $userId;
+    public function setUnionId(string $unionId){
+        if(strlen($unionId) > 0){
+            $this->reqData['unionid'] = $unionId;
         } else {
-            throw new TalkException('用户id不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('唯一标识不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
     public function getDetail() : array {
-        if(!isset($this->reqData['userid'])){
-            throw new TalkException('用户id不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
+        if(!isset($this->reqData['unionid'])){
+            throw new TalkException('唯一标识不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
         $this->reqData['access_token'] = $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag);
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/user/get?' . http_build_query($this->reqData);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/user/getUseridByUnionid?' . http_build_query($this->reqData);
         return $this->sendRequest('GET');
     }
 }
