@@ -13,52 +13,46 @@ use DingDing\TalkTraitCorp;
 use Exception\DingDing\TalkException;
 
 /**
- * 获取用户详情
+ * 获取部门用户userid列表
  * @package DingDing\Corp\User
  */
-class UserGet extends TalkBaseCorp {
+class DepartmentMemberGet extends TalkBaseCorp {
     use TalkTraitCorp;
 
     /**
-     * 用户id
-     * @var string
+     * 部门id
+     * @var int
      */
-    private $userid = '';
-    /**
-     * 语言
-     * @var string
-     */
-    private $lang = '';
+    private $deptId = 0;
 
     public function __construct(string $corpId,string $agentTag){
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
-        $this->reqData['lang'] = 'zh_CN';
     }
 
     private function __clone(){
     }
 
     /**
-     * @param string $userId
+     * @param int $deptId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserId(string $userId){
-        if(ctype_alnum($userId)){
-            $this->reqData['userid'] = $userId;
+    public function setDeptId(int $deptId){
+        if($deptId > 0){
+            $this->reqData['deptId'] = $deptId;
         } else {
-            throw new TalkException('用户id不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('部门id不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
     public function getDetail() : array {
-        if(!isset($this->reqData['userid'])){
-            throw new TalkException('用户id不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
+        if(!isset($this->reqData['deptId'])){
+            throw new TalkException('部门id不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
         $this->reqData['access_token'] = $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag);
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/user/get?' . http_build_query($this->reqData);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/user/getDeptMember?' . http_build_query($this->reqData);
         return $this->sendRequest('GET');
     }
 }

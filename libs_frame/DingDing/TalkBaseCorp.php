@@ -21,6 +21,9 @@ abstract class TalkBaseCorp extends TalkBase {
     const MESSAGE_TYPE_OA = 'oa';
     const MESSAGE_TYPE_MARKDOWN = 'markdown';
     const MESSAGE_TYPE_ACTION_CARD = 'action_card';
+    const MEDIA_TYPE_IMAGE = 'image';
+    const MEDIA_TYPE_VOICE = 'voice';
+    const MEDIA_TYPE_FILE = 'file';
 
     private static $totalAccessTokenType = [
         self::ACCESS_TOKEN_TYPE_CORP => '企业',
@@ -36,6 +39,11 @@ abstract class TalkBaseCorp extends TalkBase {
         self::MESSAGE_TYPE_OA => 'OA',
         self::MESSAGE_TYPE_MARKDOWN => 'markdown',
         self::MESSAGE_TYPE_ACTION_CARD => '卡片',
+    ];
+    protected static $totalMediaType = [
+        self::MEDIA_TYPE_IMAGE => '图片',
+        self::MEDIA_TYPE_VOICE => '语音',
+        self::MEDIA_TYPE_FILE => '文件',
     ];
 
     /**

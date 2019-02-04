@@ -13,28 +13,22 @@ use DingDing\TalkTraitCorp;
 use Exception\DingDing\TalkException;
 
 /**
- * 获取用户详情
+ * 删除用户
  * @package DingDing\Corp\User
  */
-class UserGet extends TalkBaseCorp {
+class UserDelete extends TalkBaseCorp {
     use TalkTraitCorp;
 
     /**
-     * 用户id
+     * 用户ID
      * @var string
      */
     private $userid = '';
-    /**
-     * 语言
-     * @var string
-     */
-    private $lang = '';
 
     public function __construct(string $corpId,string $agentTag){
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
-        $this->reqData['lang'] = 'zh_CN';
     }
 
     private function __clone(){
@@ -44,21 +38,21 @@ class UserGet extends TalkBaseCorp {
      * @param string $userId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserId(string $userId){
+    public function setUserid(string $userId){
         if(ctype_alnum($userId)){
             $this->reqData['userid'] = $userId;
         } else {
-            throw new TalkException('用户id不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('用户ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
     public function getDetail() : array {
         if(!isset($this->reqData['userid'])){
-            throw new TalkException('用户id不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('用户ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
         $this->reqData['access_token'] = $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag);
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/user/get?' . http_build_query($this->reqData);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/user/delete?' . http_build_query($this->reqData);
         return $this->sendRequest('GET');
     }
 }

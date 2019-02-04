@@ -11,12 +11,13 @@ use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
 use Exception\DingDing\TalkException;
+use Tool\Tool;
 
 /**
- * 获取用户详情
+ * 获取管理员通讯录权限范围
  * @package DingDing\Corp\User
  */
-class UserGet extends TalkBaseCorp {
+class AdminScopeGet extends TalkBaseCorp {
     use TalkTraitCorp;
 
     /**
@@ -24,17 +25,11 @@ class UserGet extends TalkBaseCorp {
      * @var string
      */
     private $userid = '';
-    /**
-     * 语言
-     * @var string
-     */
-    private $lang = '';
 
     public function __construct(string $corpId,string $agentTag){
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
-        $this->reqData['lang'] = 'zh_CN';
     }
 
     private function __clone(){
@@ -57,8 +52,10 @@ class UserGet extends TalkBaseCorp {
             throw new TalkException('用户id不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
-        $this->reqData['access_token'] = $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag);
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/user/get?' . http_build_query($this->reqData);
-        return $this->sendRequest('GET');
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/topapi/user/get_admin_scope?' . http_build_query([
+            'access_token' => $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag),
+        ]);
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+        return $this->sendRequest('POST');
     }
 }
