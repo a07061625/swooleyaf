@@ -12,6 +12,10 @@ use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
 use Exception\DingDing\TalkException;
 
+/**
+ * 上传媒体文件
+ * @package DingDing\Corp\Media
+ */
 class MediaUpload extends TalkBaseCorp {
     use TalkTraitCorp;
 
