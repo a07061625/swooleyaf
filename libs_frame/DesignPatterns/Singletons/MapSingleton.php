@@ -8,6 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use Map\ConfigBaiDu;
+use Map\ConfigGaoDe;
 use Map\ConfigTencent;
 use Tool\Tool;
 use Traits\SingletonTrait;
@@ -22,6 +23,10 @@ class MapSingleton {
      * @var \Map\ConfigTencent
      */
     private $tencentConfig = null;
+    /**
+     * @var \Map\ConfigGaoDe
+     */
+    private $gaoDeConfig = null;
 
     private function __construct(){
         $configs = Tool::getConfig('map.' . SY_ENV . SY_PROJECT);
@@ -35,6 +40,11 @@ class MapSingleton {
         $tencentConfig->setKey((string)Tool::getArrayVal($configs, 'tencent.key', '', true));
         $tencentConfig->setServerIp((string)Tool::getArrayVal($configs, 'tencent.server.ip', '', true));
         $this->tencentConfig = $tencentConfig;
+
+        $gaodeConfig = new ConfigGaoDe();
+        $gaodeConfig->setKey((string)Tool::getArrayVal($configs, 'gaode.key', '', true));
+        $gaodeConfig->setSecret((string)Tool::getArrayVal($configs, 'gaode.secret', '', true));
+        $this->gaoDeConfig = $gaodeConfig;
     }
 
     /**
@@ -60,5 +70,12 @@ class MapSingleton {
      */
     public function getTencentConfig() {
         return $this->tencentConfig;
+    }
+
+    /**
+     * @return \Map\ConfigGaoDe
+     */
+    public function getGaoDeConfig() {
+        return $this->gaoDeConfig;
     }
 }

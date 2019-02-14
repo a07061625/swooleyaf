@@ -117,9 +117,12 @@ class ErrorCode {
     const MAP_TENCENT_PARAM_ERROR = 103400;
     const MAP_TENCENT_GET_ERROR = 103401;
     const MAP_TENCENT_POST_ERROR = 103402;
-    const MAP_BAIDU_PARAM_ERROR = 103450;
-    const MAP_BAIDU_GET_ERROR = 103451;
-    const MAP_BAIDU_POST_ERROR = 103452;
+    const MAP_BAIDU_PARAM_ERROR = 103410;
+    const MAP_BAIDU_GET_ERROR = 103411;
+    const MAP_BAIDU_POST_ERROR = 103412;
+    const MAP_GAODE_PARAM_ERROR = 103420;
+    const MAP_GAODE_GET_ERROR = 103421;
+    const MAP_GAODE_POST_ERROR = 103422;
 
     //Twig错误,取值范围:103600-103699
     const TWIG_PARAM_ERROR = 103600;
@@ -260,6 +263,9 @@ class ErrorCode {
         self::MAP_BAIDU_PARAM_ERROR => '腾讯地图参数错误',
         self::MAP_BAIDU_GET_ERROR => '腾讯地图发送GET请求出错',
         self::MAP_BAIDU_POST_ERROR => '腾讯地图发送POST请求出错',
+        self::MAP_GAODE_PARAM_ERROR => '高德地图参数错误',
+        self::MAP_GAODE_GET_ERROR => '高德地图发送GET请求出错',
+        self::MAP_GAODE_POST_ERROR => '高德地图发送POST请求出错',
         self::TWIG_PARAM_ERROR => 'Twig参数错误',
         self::TIMER_PARAM_ERROR => '定时器参数错误',
         self::TIMER_GET_ERROR => '定时器发送GET请求出错',
