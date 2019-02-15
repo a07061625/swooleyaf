@@ -48,8 +48,7 @@ final class MapUtilGaoDe extends MapUtilBase {
 
         $sendData = Tool::jsonDecode($sendRes);
         if(isset($sendData['status']) && ($sendData['status'] == 1)){
-            $rspKey = $mapBase->getRspDataKey();
-            $resArr['data'] = strlen($rspKey) > 0 ? $sendData[$rspKey] : $sendData;
+            $resArr['data'] = $sendData;
         } else if(isset($sendData['info'])){
             $resArr['code'] = ErrorCode::MAP_GAODE_PARAM_ERROR;
             $resArr['message'] = $sendData['info'];
