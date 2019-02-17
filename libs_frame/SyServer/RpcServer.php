@@ -14,6 +14,7 @@ use Log\Log;
 use Request\RequestSign;
 use Response\Result;
 use Tool\SyPack;
+use Tool\Tool;
 use Traits\RpcServerTrait;
 use Yaf\Registry;
 use Yaf\Request\Http;
@@ -28,7 +29,12 @@ class RpcServer extends BaseServer {
 
     public function __construct(int $port) {
         parent::__construct($port);
-        define('SY_API', false);
+        $projectLength = strlen(SY_PROJECT);
+        $serverType = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.modules.' . substr(SY_MODULE, $projectLength) . '.type');
+        if($serverType != Server::SERVER_TYPE_API_MODULE){
+            exit('服务端类型不支持' . PHP_EOL);
+        }
+        define('SY_SERVER_TYPE', $serverType);
         $this->_configs['swoole']['open_length_check'] = true;
         $this->_configs['swoole']['package_max_length'] = Server::SERVER_PACKAGE_MAX_LENGTH;
         $this->_configs['swoole']['package_length_type'] = 'L';

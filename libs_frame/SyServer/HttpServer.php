@@ -81,7 +81,12 @@ class HttpServer extends BaseServer {
 
     public function __construct(int $port) {
         parent::__construct($port);
-        define('SY_API', true);
+        $projectLength = strlen(SY_PROJECT);
+        $serverType = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.modules.' . substr(SY_MODULE, $projectLength) . '.type');
+        if(!in_array($serverType, [Server::SERVER_TYPE_API_GATE, Server::SERVER_TYPE_FRONT_GATE])){
+            exit('服务端类型不支持' . PHP_EOL);
+        }
+        define('SY_SERVER_TYPE', $serverType);
         $this->_cors = Tool::getConfig('cors.' . SY_ENV . SY_PROJECT);
         $this->_cors['allow']['headerStr'] = isset($this->_cors['allow']['headers']) ? implode(', ', $this->_cors['allow']['headers']) : '';
         $this->_cors['allow']['methodStr'] = isset($this->_cors['allow']['methods']) ? implode(', ', $this->_cors['allow']['methods']) : '';

@@ -8,6 +8,7 @@
 namespace Reflection;
 
 use Constant\ErrorCode;
+use Constant\Server;
 use Exception\Reflection\ReflectException;
 use Log\Log;
 use SyFrame\BaseController;
@@ -48,12 +49,14 @@ class BaseReflect {
             }
 
             $instance = $class->newInstanceWithoutConstructor();
-            if(($instance instanceof BaseController) && $instance->signStatus){
+            if ($instance instanceof BaseController) {
                 if(!isset($annotations[Validator::ANNOTATION_NAME])){
                     $annotations[Validator::ANNOTATION_NAME] = [];
                 }
 
-                $annotations[Validator::ANNOTATION_NAME][] = '{"field":"' . Validator::ANNOTATION_TAG_SIGN . '","explain":"签名值","type":"string","rules":{"sign":3600,"required":1}}';
+                if((SY_SERVER_TYPE == Server::SERVER_TYPE_API_GATE) && $instance->signStatus){
+                    $annotations[Validator::ANNOTATION_NAME][] = '{"field":"' . Validator::ANNOTATION_TAG_SIGN . '","explain":"签名值","type":"string","rules":{"sign":3600,"required":1}}';
+                }
             }
         } catch (ReflectException $e) {
             throw $e;
@@ -75,7 +78,7 @@ class BaseReflect {
         $resArr = [];
         $annotations = self::getMethodDefinedAnnotations($className, $methodName);
         if (isset($annotations[Validator::ANNOTATION_NAME]) && !empty($annotations[Validator::ANNOTATION_NAME])) {
-            $ignoreSign = false;
+            $ignoreSign = SY_SERVER_TYPE == Server::SERVER_TYPE_API_GATE ? false : true;
             foreach ($annotations[Validator::ANNOTATION_NAME] as $eAnnotation) {
                 $data = Tool::jsonDecode($eAnnotation);
                 if(!is_array($data)){
@@ -97,7 +100,7 @@ class BaseReflect {
                     $result->setType($data['type']);
                     $result->setRules($data['rules']);
                     $resArr[$data['field']] = $result;
-                } else {
+                } else if(!$ignoreSign){
                     $ignoreSign = true;
                 }
             }
