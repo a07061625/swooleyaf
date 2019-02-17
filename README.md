@@ -78,7 +78,7 @@
 - SY_SERVER_IP //服务器IP
 - SY_VERSION //框架版本号
 - SY_MODULE //框架模块名称
-- SY_API //框架API标识 true: 是对外的API接口 false:不是对外的API接口
+- SY_SERVER_TYPE //框架服务端类型 api: api入口 rpc:api模块 frontgate: 前端入口
 - SY_REQUEST_MAX_HANDLING //服务同时处理的最大请求数量
 - SY_DATABASE //框架数据库重连标识 true: 检测重连 false:不检测重连
 

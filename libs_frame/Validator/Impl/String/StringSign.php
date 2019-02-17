@@ -9,6 +9,7 @@ namespace Validator\Impl\String;
 
 use Constant\ErrorCode;
 use Constant\Project;
+use Constant\Server;
 use Exception\Validator\ValidatorException;
 use Request\RequestSign;
 use SyServer\HttpServer;
@@ -26,7 +27,7 @@ class StringSign extends BaseValidator implements ValidatorService {
 
     public function validator($data, $compareData) : string {
         $checkRes = true;
-        if (defined('SY_API') && SY_API) {
+        if (SY_SERVER_TYPE == Server::SERVER_TYPE_API_GATE) {
             $sign = RequestSign::checkSign();
             $checkRes = HttpServer::addApiSign($sign);
         }
