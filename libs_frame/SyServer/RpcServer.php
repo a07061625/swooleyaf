@@ -35,6 +35,12 @@ class RpcServer extends BaseServer {
             exit('服务端类型不支持' . PHP_EOL);
         }
         define('SY_SERVER_TYPE', $serverType);
+        $this->_configs['server']['cachenum']['hc'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.hc', 0, true);
+        $this->_configs['server']['cachenum']['modules'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
+        $this->_configs['server']['cachenum']['local'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.local', 0, true);
+        $this->_configs['server']['cachenum']['wx'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.wx', 0, true);
+        $this->_configs['server']['cachenum']['users'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.users', 0, true);
+        $this->checkServerRpc();
         $this->_configs['swoole']['open_length_check'] = true;
         $this->_configs['swoole']['package_max_length'] = Server::SERVER_PACKAGE_MAX_LENGTH;
         $this->_configs['swoole']['package_length_type'] = 'L';
@@ -44,6 +50,16 @@ class RpcServer extends BaseServer {
     }
 
     private function __clone() {
+    }
+
+    private function checkServerRpc() {
+        $this->checkServerBase();
+        $this->checkServerRpcTrait();
+    }
+
+    private function initTableRpc() {
+        $this->initTableBase();
+        $this->initTableRpcTrait();
     }
 
     /**
@@ -75,7 +91,7 @@ class RpcServer extends BaseServer {
     }
 
     public function start() {
-        $this->initTableByStart();
+        $this->initTableRpc();
         //初始化swoole服务
         $this->_server = new \swoole_server($this->_host, $this->_port);
         $this->_server->set($this->_configs['swoole']);
@@ -185,6 +201,11 @@ class RpcServer extends BaseServer {
 
     public function onWorkerStart(\swoole_server $server, $workerId){
         $this->basicWorkStart($server, $workerId);
+
+        if($workerId == 0){
+            $this->addTaskBase($server);
+            $this->addTaskRpcTrait($server);
+        }
     }
 
     public function onWorkerStop(\swoole_server $server, int $workerId){
@@ -196,12 +217,26 @@ class RpcServer extends BaseServer {
     }
 
     public function onTask(\swoole_server $server, int $taskId, int $fromId, string $data){
-        $baseTaskRes = $this->handleBaseTask($server, $taskId, $fromId, $data);
-        if(is_array($baseTaskRes)){
-            return $this->handleRpcTask($baseTaskRes['params']);
-        }
+        $baseRes = $this->handleTaskBase($server, $taskId, $fromId, $data);
+        if(is_array($baseRes)){
+            $taskCommand = Tool::getArrayVal($baseRes['params'], 'task_command', '');
+            switch ($taskCommand) {
+                default:
+                    $traitRes = $this->handleTaskRpcTrait($server, $taskId, $fromId, $baseRes);
+                    if(strlen($traitRes) > 0){
+                        return $traitRes;
+                    }
+                    break;
+            }
 
-        return $baseTaskRes;
+            $result = new Result();
+            $result->setData([
+                'result' => 'success',
+            ]);
+            return $result->getJson();
+        } else {
+            return $baseRes;
+        }
     }
 
     /**

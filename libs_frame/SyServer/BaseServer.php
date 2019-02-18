@@ -11,9 +11,13 @@ use Constant\ErrorCode;
 use Constant\Project;
 use Constant\Server;
 use DesignPatterns\Factories\CacheSimpleFactory;
+use DesignPatterns\Singletons\MysqlSingleton;
+use DesignPatterns\Singletons\RedisSingleton;
 use Exception\Swoole\ServerException;
 use Log\Log;
+use Response\Result;
 use Tool\Dir;
+use Tool\SyPack;
 use Tool\Tool;
 use Traits\BaseServerTrait;
 use Yaf\Application;
@@ -56,6 +60,15 @@ abstract class BaseServer {
      */
     protected $_pidFile = '';
     /**
+     * 配置数组
+     * @var array
+     */
+    protected $_configs = [];
+    /**
+     * @var \Tool\SyPack
+     */
+    protected $_syPack = null;
+    /**
      * 请求ID
      * @var string
      */
@@ -85,6 +98,51 @@ abstract class BaseServer {
      * @var \swoole_table
      */
     protected static $_syHealths = null;
+    /**
+     * 项目缓存列表
+     * @var \swoole_table
+     */
+    protected static $_syProject = null;
+    /**
+     * 用户信息列表
+     * @var \swoole_table
+     */
+    protected static $_syUsers = null;
+    /**
+     * 项目微信缓存列表
+     * @var \swoole_table
+     */
+    protected static $_syWx = null;
+    /**
+     * 最大项目缓存数量
+     * @var int
+     */
+    private static $_syProjectMaxNum = 0;
+    /**
+     * 当前项目缓存数量
+     * @var int
+     */
+    private static $_syProjectNowNum = 0;
+    /**
+     * 最大用户数量
+     * @var int
+     */
+    private static $_syUserMaxNum = 0;
+    /**
+     * 当前用户数量
+     * @var int
+     */
+    private static $_syUserNowNum = 0;
+    /**
+     * 最大微信缓存数量
+     * @var int
+     */
+    private static $_syWxMaxNum = 0;
+    /**
+     * 当前微信缓存数量
+     * @var int
+     */
+    private static $_syWxNowNum = 0;
 
     /**
      * BaseServer constructor.
@@ -128,7 +186,6 @@ abstract class BaseServer {
         }
 
         $this->_configs = Tool::getConfig('syserver.' . SY_ENV . SY_MODULE);
-        $this->checkBaseServer();
 
         define('SY_SERVER_IP', $this->_configs['server']['host']);
         define('SY_REQUEST_MAX_HANDLING', (int)$this->_configs['server']['request']['maxnum']['handling']);
@@ -157,6 +214,7 @@ abstract class BaseServer {
         $this->_host = $this->_configs['server']['host'];
         $this->_port = $this->_configs['server']['port'];
         $this->_pidFile = SY_ROOT . '/pidfile/' . SY_MODULE . $this->_port . '.pid';
+        $this->_syPack = new SyPack();
 
         //生成服务唯一标识
         self::$_serverToken = hash('crc32b', $this->_configs['server']['host'] . ':' . $this->_configs['server']['port']);
@@ -168,10 +226,243 @@ abstract class BaseServer {
     private function __clone() {
     }
 
-    protected function initTableByStart() {
+    protected function checkServerBase() {
+        $numHealthCheck = $this->_configs['server']['cachenum']['hc'];
+        $numModules = $this->_configs['server']['cachenum']['modules'];
+        if ($numHealthCheck < 1) {
+            exit('健康检查缓存数量不能小于1');
+        } else if (($numHealthCheck & ($numHealthCheck - 1)) != 0) {
+            exit('健康检查缓存数量必须是2的指数倍');
+        }
+        if ($numModules < 1) {
+            exit('服务模块缓存数量不能小于1');
+        } else if (($numModules & ($numModules - 1)) != 0) {
+            exit('服务模块缓存数量必须是1的指数倍');
+        }
+
+        self::$_syProjectNowNum = 0;
+        self::$_syProjectMaxNum = $this->_configs['server']['cachenum']['local'];
+        if (self::$_syProjectMaxNum < 1) {
+            exit('项目缓存数量不能小于1');
+        } else if ((self::$_syProjectMaxNum & (self::$_syProjectMaxNum - 1)) != 0) {
+            exit('项目缓存数量必须是2的指数倍');
+        }
+
+        self::$_syUserNowNum = 0;
+        self::$_syUserMaxNum = $this->_configs['server']['cachenum']['users'];
+        if (self::$_syUserMaxNum < 1) {
+            exit('用户信息缓存数量不能小于1');
+        } else if ((self::$_syUserMaxNum & (self::$_syUserMaxNum - 1)) != 0) {
+            exit('用户信息缓存数量必须是2的指数倍');
+        }
+
+        self::$_syWxNowNum = 0;
+        self::$_syWxMaxNum = $this->_configs['server']['cachenum']['wx'];
+        if (self::$_syWxMaxNum < 1) {
+            exit('微信缓存数量不能小于1');
+        } else if ((self::$_syWxMaxNum & (self::$_syWxMaxNum - 1)) != 0) {
+            exit('微信缓存数量必须是2的指数倍');
+        }
+
+        //检测redis服务是否启动
+        RedisSingleton::getInstance()->checkConn();
+
+        $this->checkServerBaseTrait();
+    }
+
+    /**
+     * 设置项目缓存
+     * @param string $key 键名
+     * @param array $data 键值
+     * @return bool
+     */
+    public static function setProjectCache(string $key,array $data) : bool {
+        if(strlen($key) == 0){
+            return false;
+        } else if (empty($data)) {
+            return false;
+        } else if(self::$_syProject->exist($key)){
+            $data['tag'] = $key;
+            self::$_syProject->set($key, $data);
+            return true;
+        } else if(self::$_syProjectNowNum < self::$_syProjectMaxNum){
+            $data['tag'] = $key;
+            self::$_syProject->set($key, $data);
+            self::$_syProjectNowNum++;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 获取项目缓存
+     * @param string $key 键名
+     * @param string $field 字段名
+     * @param mixed $default 默认值
+     * @return mixed
+     */
+    public static function getProjectCache(string $key,string $field='', $default=null){
+        $data = self::$_syProject->get($key);
+        if($data === false){
+            return $default;
+        } else if($field === ''){
+            return $data;
+        } else {
+            return $data[$field] ?? $default;
+        }
+    }
+
+    /**
+     * 删除项目缓存
+     * @param string $key
+     * @return mixed
+     */
+    public static function delProjectCache(string $key) {
+        $delRes = self::$_syProject->del($key);
+        if ($delRes) {
+            self::$_syProjectNowNum--;
+        }
+        return $delRes;
+    }
+
+    /**
+     * 添加本地用户信息
+     * @param string $sessionId 会话ID
+     * @param array $userData
+     * @return bool
+     */
+    public static function addLocalUserInfo(string $sessionId,array $userData) : bool {
+        if (self::$_syUsers->exist($sessionId)) {
+            $userData['session_id'] = $sessionId;
+            $userData['add_time'] = Tool::getNowTime();
+            self::$_syUsers->set($sessionId, $userData);
+            return true;
+        } else if (self::$_syUserNowNum < self::$_syUserMaxNum) {
+            $userData['session_id'] = $sessionId;
+            $userData['add_time'] = Tool::getNowTime();
+            self::$_syUsers->set($sessionId, $userData);
+            self::$_syUserNowNum++;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 获取本地用户信息
+     * @param string $sessionId 会话ID
+     * @return array
+     */
+    public static function getLocalUserInfo(string $sessionId){
+        $data = self::$_syUsers->get($sessionId);
+        return $data === false ? [] : $data;
+    }
+
+    /**
+     * 删除本地用户信息
+     * @param string $sessionId 会话ID
+     * @return bool
+     */
+    public static function delLocalUserInfo(string $sessionId) {
+        $delRes = self::$_syUsers->del($sessionId);
+        if($delRes){
+            self::$_syUserNowNum--;
+        }
+        return $delRes;
+    }
+
+    /**
+     * 清理本地用户信息缓存
+     */
+    protected function clearLocalUsers() {
+        $time = Tool::getNowTime() - Project::TIME_EXPIRE_LOCAL_USER_CACHE;
+        $delKeys = [];
+        foreach (self::$_syUsers as $eUser) {
+            if($eUser['add_time'] <= $time){
+                $delKeys[] = $eUser['session_id'];
+            }
+        }
+        foreach ($delKeys as $eKey) {
+            self::$_syUsers->del($eKey);
+        }
+        self::$_syUserNowNum = count(self::$_syUsers);
+    }
+
+    /**
+     * 设置项目微信缓存
+     * @param string $appTag 微信账号标识
+     * @param array $data 键值
+     * @return bool
+     */
+    public static function setWxCache(string $appTag,array $data) : bool {
+        if(empty($data)){
+            return false;
+        } else if(self::$_syWx->exist($appTag)){
+            $data['app_tag'] = $appTag;
+            self::$_syWx->set($appTag, $data);
+            return true;
+        } else if(self::$_syWxNowNum < self::$_syWxMaxNum){
+            $data['app_tag'] = $appTag;
+            self::$_syWx->set($appTag, $data);
+            self::$_syWxNowNum++;
+            return true;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * 获取项目微信缓存
+     * @param string $appTag 微信账号标识
+     * @param string $field 字段名
+     * @param mixed $default 默认值
+     * @return mixed
+     */
+    public static function getWxCache(string $appTag,string $field='', $default=null){
+        $data = self::$_syWx->get($appTag);
+        if($data === false){
+            return $default;
+        } else if($field === ''){
+            return $data;
+        } else {
+            return $data[$field] ?? $default;
+        }
+    }
+
+    /**
+     * 删除项目微信缓存
+     * @param string $appTag
+     * @return mixed
+     */
+    public static function delWxCache(string $appTag) {
+        $delRes = self::$_syWx->del($appTag);
+        if($delRes){
+            self::$_syWxNowNum--;
+        }
+        return $delRes;
+    }
+
+    /**
+     * 清理项目微信缓存
+     */
+    protected function clearWxCache() {
+        $nowTime = Tool::getNowTime();
+        $delKeys = [];
+        foreach (self::$_syWx as $eToken) {
+            if($eToken['clear_time'] < $nowTime){
+                $delKeys[] = $eToken['app_tag'];
+            }
+        }
+        foreach ($delKeys as $eKey) {
+            self::$_syWx->del($eKey);
+        }
+        self::$_syWxNowNum = count(self::$_syWx);
+    }
+
+    protected function initTableBase() {
         register_shutdown_function('\SyError\ErrorHandler::handleFatalError');
 
-        //创建共享内存数据表
         self::$_syServer = new \swoole_table(1);
         self::$_syServer->column('memory_usage', \swoole_table::TYPE_INT, 4);
         self::$_syServer->column('timer_time', \swoole_table::TYPE_INT, 4);
@@ -184,20 +475,134 @@ abstract class BaseServer {
         self::$_syServer->column('storepath_cache', \swoole_table::TYPE_STRING, 150);
         self::$_syServer->create();
 
-        self::$_syServices = new \swoole_table((int)$this->_configs['server']['cachenum']['modules']);
+        self::$_syHealths = new \swoole_table($this->_configs['server']['cachenum']['hc']);
+        self::$_syHealths->column('tag', \swoole_table::TYPE_STRING, 60);
+        self::$_syHealths->column('module', \swoole_table::TYPE_STRING, 30);
+        self::$_syHealths->column('uri', \swoole_table::TYPE_STRING, 200);
+        self::$_syHealths->create();
+
+        self::$_syServices = new \swoole_table($this->_configs['server']['cachenum']['modules']);
         self::$_syServices->column('module', \swoole_table::TYPE_STRING, 30);
         self::$_syServices->column('host', \swoole_table::TYPE_STRING, 128);
         self::$_syServices->column('port', \swoole_table::TYPE_STRING, 5);
         self::$_syServices->column('type', \swoole_table::TYPE_STRING, 16);
         self::$_syServices->create();
 
-        self::$_syHealths = new \swoole_table((int)$this->_configs['server']['cachenum']['hc']);
-        self::$_syHealths->column('tag', \swoole_table::TYPE_STRING, 60);
-        self::$_syHealths->column('module', \swoole_table::TYPE_STRING, 30);
-        self::$_syHealths->column('uri', \swoole_table::TYPE_STRING, 200);
-        self::$_syHealths->create();
+        self::$_syProject = new \swoole_table($this->_configs['server']['cachenum']['local']);
+        self::$_syProject->column('tag', \swoole_table::TYPE_STRING, 64);
+        self::$_syProject->column('value', \swoole_table::TYPE_STRING, 200);
+        self::$_syProject->column('expire_time', \swoole_table::TYPE_INT, 4);
+        self::$_syProject->create();
 
-        $this->initTableByBaseStart();
+        self::$_syWx = new \swoole_table($this->_configs['server']['cachenum']['wx']);
+        self::$_syWx->column('app_tag', \swoole_table::TYPE_STRING, 24);
+        self::$_syWx->column('at_content', \swoole_table::TYPE_STRING, 200);
+        self::$_syWx->column('at_expire', \swoole_table::TYPE_INT, 4);
+        self::$_syWx->column('jt_content', \swoole_table::TYPE_STRING, 200);
+        self::$_syWx->column('jt_expire', \swoole_table::TYPE_INT, 4);
+        self::$_syWx->column('clear_time', \swoole_table::TYPE_INT, 4);
+        self::$_syWx->create();
+
+        $this->initTableBaseTrait();
+    }
+
+    protected function addTaskBase(\swoole_server $server) {
+        if(SY_SERVER_TYPE == Server::SERVER_TYPE_API_MODULE){
+            $this->_syPack->setCommandAndData(SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ, [
+                'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_USER_CACHE,
+                'task_params' => [],
+            ]);
+            $taskDataUser = $this->_syPack->packData();
+            $this->_syPack->init();
+
+            $this->_syPack->setCommandAndData(SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ, [
+                'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_WX_CACHE,
+                'task_params' => [],
+            ]);
+            $taskDataWx = $this->_syPack->packData();
+            $this->_syPack->init();
+        } else {
+            $this->_syPack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
+                'task_module' => SY_MODULE,
+                'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_USER_CACHE,
+                'task_params' => [],
+            ]);
+            $taskDataUser = $this->_syPack->packData();
+            $this->_syPack->init();
+
+            $this->_syPack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
+                'task_module' => SY_MODULE,
+                'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_WX_CACHE,
+                'task_params' => [],
+            ]);
+            $taskDataWx = $this->_syPack->packData();
+            $this->_syPack->init();
+        }
+
+        $server->tick(Project::TIME_TASK_CLEAR_LOCAL_USER, function() use ($server, $taskDataUser) {
+            $server->task($taskDataUser);
+        });
+        $server->tick(Project::TIME_TASK_CLEAR_LOCAL_WX, function() use ($server, $taskDataWx) {
+            $server->task($taskDataWx);
+        });
+        $this->addTaskBaseTrait($server);
+    }
+
+    /**
+     * @param \swoole_server $server
+     * @param int $taskId
+     * @param int $fromId
+     * @param string $data
+     * @return array|string
+     */
+    protected function handleTaskBase(\swoole_server $server,int $taskId,int $fromId,string $data) {
+        $result = new Result();
+        if(!$this->_syPack->unpackData($data)){
+            $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '数据格式不合法');
+            return $result->getJson();
+        }
+
+        RedisSingleton::getInstance()->reConnect();
+        if(SY_DATABASE){
+            MysqlSingleton::getInstance()->reConnect();
+        }
+
+        $command = $this->_syPack->getCommand();
+        $commandData = $this->_syPack->getData();
+        $this->_syPack->init();
+
+        if(in_array($command, [SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ])){
+            $taskCommand = Tool::getArrayVal($commandData, 'task_command', '');
+            switch ($taskCommand) {
+                case Project::TASK_TYPE_CLEAR_LOCAL_USER_CACHE:
+                    $this->clearLocalUsers();
+                    break;
+                case Project::TASK_TYPE_CLEAR_LOCAL_WX_CACHE:
+                    $this->clearWxCache();
+                    break;
+                default:
+                    $taskData = [
+                        'command' => $command,
+                        'params' => $commandData,
+                    ];
+                    $traitRes = $this->handleTaskBaseTrait($server, $taskId, $fromId, $taskData);
+                    if(strlen($traitRes) == 0){
+                        return $taskData;
+                    } else {
+                        return $traitRes;
+                    }
+            }
+
+            $result->setData([
+                'result' => 'success',
+            ]);
+        } else {
+            $result->setData([
+                'result' => 'fail',
+            ]);
+        }
+
+        return $result->getJson();
     }
 
     /**
@@ -407,10 +812,6 @@ abstract class BaseServer {
                         'type' => $moduleData['type'],
                     ]);
                 }
-            }
-
-            if(SY_TIMER && method_exists($this, 'addTimer')){
-                $this->addTimer($server);
             }
         }
     }
