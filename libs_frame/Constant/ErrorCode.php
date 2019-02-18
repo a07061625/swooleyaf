@@ -21,6 +21,7 @@ class ErrorCode {
     const COMMON_SERVER_FATAL = 10502;
     const COMMON_SERVER_RESOURCE_NOT_EXIST = 10503;
     const COMMON_SERVER_BUSY = 10504;
+    const COMMON_SERVER_TOKEN_EXPIRE = 10505;
     const COMMON_ROUTE_MODULE_NOT_ACCEPT = 11000;
     const COMMON_ROUTE_URI_FORMAT_ERROR = 11001;
     const COMMON_ROUTE_CONTROLLER_NOT_EXIST = 11002;
@@ -196,6 +197,7 @@ class ErrorCode {
         self::COMMON_SERVER_FATAL => '服务出错',
         self::COMMON_SERVER_RESOURCE_NOT_EXIST => '资源不存在',
         self::COMMON_SERVER_BUSY => '服务繁忙',
+        self::COMMON_SERVER_TOKEN_EXPIRE => '令牌已过期',
         self::COMMON_ROUTE_MODULE_NOT_ACCEPT => '模块不支持',
         self::COMMON_ROUTE_URI_FORMAT_ERROR => '路由格式错误',
         self::COMMON_ROUTE_CONTROLLER_NOT_EXIST => '控制器不存在',
