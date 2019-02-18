@@ -475,7 +475,7 @@ abstract class BaseServer {
         self::$_syServer->column('storepath_cache', \swoole_table::TYPE_STRING, 150);
         self::$_syServer->create();
 
-        self::$_syHealths = new \swoole_table((int)$this->_configs['server']['cachenum']['hc']);
+        self::$_syHealths = new \swoole_table($this->_configs['server']['cachenum']['hc']);
         self::$_syHealths->column('tag', \swoole_table::TYPE_STRING, 60);
         self::$_syHealths->column('module', \swoole_table::TYPE_STRING, 30);
         self::$_syHealths->column('uri', \swoole_table::TYPE_STRING, 200);
