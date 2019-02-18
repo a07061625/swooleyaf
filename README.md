@@ -80,13 +80,13 @@
 ### 获取框架概览信息
     请求地址: http://api.xxx.com/syinfo
 
+### 获取php信息
+    请求地址: http://api.xxx.com/phpinfo
+    
 ## etcd
 ### 启动服务
     // ip:当前服务器内网或外网ip port:服务监听端口,默认为2379
     nohup etcd --listen-client-urls http://ip:port --advertise-client-urls http://ip:port >/dev/null &
-
-### 获取php信息
-    请求地址: http://api.xxx.com/phpinfo
         
 ## 定时任务
 1. 定时任务处理都是通过发送HTTP GET请求的方式进行,在执行定时任务之前,必须确保请求接口可正常访问
