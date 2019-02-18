@@ -48,6 +48,11 @@ trait HttpServerTrait {
                 $nowTime = self::$_syServer->incr(self::$_serverToken, 'timer_time', 1);
                 TimerHandler::handle($nowTime);
                 break;
+            case Project::TASK_TYPE_REFRESH_TOKEN_EXPIRE:
+                self::$_syServer->set(self::$_serverToken, [
+                    'token_etime' => 16000000000,
+                ]);
+                break;
             default:
                 $result = new Result();
                 $result->setData([
