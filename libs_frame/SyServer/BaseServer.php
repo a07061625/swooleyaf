@@ -149,7 +149,10 @@ abstract class BaseServer {
      * @param int $port 端口
      */
     public function __construct(int $port) {
-        $this->checkSystemEnv($port);
+        if (($port <= 1000) || ($port > 65535)) {
+            exit('端口不合法' . PHP_EOL);
+        }
+        $this->checkSystemEnv();
         $this->_configs = Tool::getConfig('syserver.' . SY_ENV . SY_MODULE);
 
         define('SY_SERVER_IP', $this->_configs['server']['host']);
@@ -191,7 +194,7 @@ abstract class BaseServer {
     private function __clone() {
     }
 
-    private function checkSystemEnv(int $port) {
+    private function checkSystemEnv() {
         if(version_compare(PHP_VERSION, Server::VERSION_MIN_PHP, '<')){
             exit('PHP版本必须大于等于' . Server::VERSION_MIN_PHP . PHP_EOL);
         }
@@ -206,9 +209,6 @@ abstract class BaseServer {
         }
         if (strlen(SY_TOKEN) != 8) {
             exit('令牌不合法' . PHP_EOL);
-        }
-        if (($port <= 1000) || ($port > 65535)) {
-            exit('端口不合法' . PHP_EOL);
         }
         if(!in_array(SY_ENV, Server::$totalEnvProject)){
             exit('环境类型不合法' . PHP_EOL);
