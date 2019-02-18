@@ -38,6 +38,7 @@ use Validator\Impl\String\StringPhone;
 use Validator\Impl\String\StringRegex;
 use Validator\Impl\String\StringRequired;
 use Validator\Impl\String\StringSign;
+use Validator\Impl\String\StringSyToken;
 use Validator\Impl\String\StringTel;
 use Validator\Impl\String\StringUpper;
 use Validator\Impl\String\StringUrl;
@@ -79,6 +80,7 @@ abstract class BaseValidatorContainer extends BaseContainer {
             ProjectBase::VALIDATOR_STRING_TYPE_DIGIT_UPPER => 1,
             ProjectBase::VALIDATOR_STRING_TYPE_LOWER => 1,
             ProjectBase::VALIDATOR_STRING_TYPE_UPPER => 1,
+            ProjectBase::VALIDATOR_STRING_TYPE_SY_TOKEN => 1,
         ];
 
         $this->bind(ProjectBase::VALIDATOR_INT_TYPE_REQUIRED, function () {
@@ -179,6 +181,9 @@ abstract class BaseValidatorContainer extends BaseContainer {
         });
         $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_UPPER, function () {
             return new StringUpper();
+        });
+        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_SY_TOKEN, function () {
+            return new StringSyToken();
         });
     }
 }

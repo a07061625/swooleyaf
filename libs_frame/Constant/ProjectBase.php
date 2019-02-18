@@ -64,6 +64,7 @@ class ProjectBase {
     const VALIDATOR_STRING_TYPE_UPPER = 'string_upper'; //字符串类型-大写字母
     const VALIDATOR_STRING_TYPE_DIGIT_LOWER = 'string_digitlower'; //字符串类型-数字,小写字母
     const VALIDATOR_STRING_TYPE_DIGIT_UPPER = 'string_digitupper'; //字符串类型-数字,大写字母
+    const VALIDATOR_STRING_TYPE_SY_TOKEN = 'string_sytoken'; //字符串类型-框架令牌
     const VALIDATOR_INT_TYPE_REQUIRED = 'int_required'; //整数类型-必填
     const VALIDATOR_INT_TYPE_MIN = 'int_min'; //整数类型-最小值
     const VALIDATOR_INT_TYPE_MAX = 'int_max'; //整数类型-最大值
