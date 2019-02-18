@@ -884,7 +884,7 @@ abstract class BaseServer {
             'storepath_music' => $config['dir']['store']['music'],
             'storepath_resources' => $config['dir']['store']['resources'],
             'storepath_cache' => $config['dir']['store']['cache'],
-            'token_etime' => 16000000000,
+            'token_etime' => time() + 7200,
         ]);
 
         //设置唯一ID自增基数

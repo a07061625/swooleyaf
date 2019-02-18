@@ -123,12 +123,14 @@ class ProjectBase {
     const TIME_TASK_CLEAR_API_SIGN = 300000; //任务时间-清理api签名,单位为毫秒
     const TIME_TASK_CLEAR_LOCAL_USER = 300000; //任务时间-清理本地用户信息,单位为毫秒
     const TIME_TASK_CLEAR_LOCAL_WX = 300000; //任务时间-清理本地微信,单位为毫秒
+    const TIME_TASK_REFRESH_TOKEN_EXPIRE = 540000; //任务时间-刷新令牌到期时间,单位为毫秒
 
     //任务常量,4位字符串,数字和字母组成,纯数字的为框架内部任务,其他为自定义任务
     const TASK_TYPE_CLEAR_API_SIGN_CACHE = '0001'; //任务类型-清理api签名缓存
     const TASK_TYPE_CLEAR_LOCAL_USER_CACHE = '0002'; //任务类型-清除本地用户信息缓存
     const TASK_TYPE_CLEAR_LOCAL_WX_CACHE = '0003'; //任务类型-清除本地微信缓存
     const TASK_TYPE_TIME_WHEEL_TASK = '0004'; //任务类型-时间轮任务
+    const TASK_TYPE_REFRESH_TOKEN_EXPIRE = '0005'; //任务类型-刷新令牌到期时间
 
     //消息队列常量
     const MESSAGE_QUEUE_TYPE_REDIS = 'redis'; //类型-redis

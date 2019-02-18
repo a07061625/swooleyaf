@@ -226,7 +226,6 @@ class RpcServer extends BaseServer {
                     if(strlen($traitRes) > 0){
                         return $traitRes;
                     }
-                    break;
             }
 
             $result = new Result();
