@@ -107,6 +107,18 @@ class BaseReflect {
             if($ignoreSign){
                 unset($resArr[Validator::ANNOTATION_TAG_SIGN]);
             }
+            if (in_array(SY_SERVER_TYPE, [Server::SERVER_TYPE_API_GATE, Server::SERVER_TYPE_FRONT_GATE])) {
+                $tokenResult = new ValidatorResult();
+                $tokenResult->setExplain('令牌');
+                $tokenResult->setField(Validator::ANNOTATION_TAG_SY_TOKEN);
+                $tokenResult->setType('string');
+                $tokenResult->setRules([
+                    'sytoken' => 1,
+                ]);
+                $resArr[Validator::ANNOTATION_TAG_SY_TOKEN] = $tokenResult;
+            } else {
+                unset($resArr[Validator::ANNOTATION_TAG_SY_TOKEN]);
+            }
         }
 
         return $resArr;
