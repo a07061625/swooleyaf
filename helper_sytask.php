@@ -17,9 +17,6 @@ $needMinute1 = $minute % 5;
 $taskParams = [
     'task_minute' => $minute,
     'task_hour' => $hour,
-    'clear_apisign' => $needMinute1 == 1 ? true : false,
-    'clear_localuser' => $needMinute1 == 2 ? true : false,
-    'clear_localwx' => $needMinute1 == 0 ? true : false,
 ];
 foreach ($projects as $eProject) {
     $taskParams['projects'] = $eProject['listens'];

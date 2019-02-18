@@ -19,15 +19,5 @@ class SyModuleContentTask extends SyModuleTaskBase implements SyModuleTaskInterf
     }
 
     public function handleTask(array $data) {
-        if($data['clear_localuser']){ //清除本地用户信息缓存
-            $this->clearLocalUserCache([
-                'projects' => $data['projects'],
-            ], '');
-        }
-        if($data['clear_localwx']){
-            $this->clearLocalWxCache([
-                'projects' => $data['projects'],
-            ], '');
-        }
     }
 }

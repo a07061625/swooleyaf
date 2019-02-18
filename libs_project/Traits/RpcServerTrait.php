@@ -7,15 +7,24 @@
  */
 namespace Traits;
 
-use Response\Result;
-
 trait RpcServerTrait {
-    protected function handleRpcTask(array $data) {
-        $result = new Result();
-        $result->setData([
-            'result' => 'fail',
-        ]);
+    private function checkServerRpcTrait() {
+    }
 
-        return $result->getJson();
+    private function initTableRpcTrait() {
+    }
+
+    private function addTaskRpcTrait(\swoole_server $server) {
+    }
+
+    /**
+     * @param \swoole_server $server
+     * @param int $taskId
+     * @param int $fromId
+     * @param array $data
+     * @return string 空字符串:执行成功 非空:执行失败
+     */
+    private function handleTaskRpcTrait(\swoole_server $server,int $taskId,int $fromId,array &$data) : string {
+        return '';
     }
 }

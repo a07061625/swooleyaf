@@ -7,7 +7,6 @@
  */
 namespace SyTask;
 
-use Constant\Project;
 use Tool\SyPack;
 use Tool\Tool;
 
@@ -56,56 +55,6 @@ abstract class SyModuleTaskBase {
             Tool::sendSyHttpTaskReq($url, $taskStr);
         } else {
             Tool::sendSyRpcReq($host, $port, $taskStr);
-        }
-    }
-
-    protected function clearLocalUserCache(array $data,string $moduleTag) {
-        if(strlen($moduleTag) == 0){
-            $this->syPack->setCommandAndData(SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ, [
-                'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_USER_CACHE,
-                'task_params' => [],
-            ]);
-            $apiTaskStr = $this->syPack->packData();
-            $this->syPack->init();
-            foreach ($data['projects'] as $eProject) {
-                $this->sendSyTaskReq($eProject['host'], $eProject['port'], $apiTaskStr, 'rpc');
-            }
-        } else {
-            $this->syPack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
-                'task_module' => $moduleTag,
-                'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_USER_CACHE,
-                'task_params' => [],
-            ]);
-            $apiTaskStr = $this->syPack->packData();
-            $this->syPack->init();
-            foreach ($data['projects'] as $eProject) {
-                $this->sendSyTaskReq($eProject['host'], $eProject['port'], $apiTaskStr, 'http');
-            }
-        }
-    }
-
-    protected function clearLocalWxCache(array $data,string $moduleTag) {
-        if(strlen($moduleTag) == 0){
-            $this->syPack->setCommandAndData(SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ, [
-                'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_WX_CACHE,
-                'task_params' => [],
-            ]);
-            $apiTaskStr = $this->syPack->packData();
-            $this->syPack->init();
-            foreach ($data['projects'] as $eProject) {
-                $this->sendSyTaskReq($eProject['host'], $eProject['port'], $apiTaskStr, 'rpc');
-            }
-        } else {
-            $this->syPack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
-                'task_module' => $moduleTag,
-                'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_WX_CACHE,
-                'task_params' => [],
-            ]);
-            $apiTaskStr = $this->syPack->packData();
-            $this->syPack->init();
-            foreach ($data['projects'] as $eProject) {
-                $this->sendSyTaskReq($eProject['host'], $eProject['port'], $apiTaskStr, 'http');
-            }
         }
     }
 }

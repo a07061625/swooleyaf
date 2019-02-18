@@ -78,6 +78,21 @@ class HttpServer extends BaseServer {
      * @var string
      */
     private static $_reqTask = null;
+    /**
+     * 接口签名缓存列表
+     * @var \swoole_table
+     */
+    private static $_sySigns = null;
+    /**
+     * 最大签名缓存数量
+     * @var int
+     */
+    private static $_sySignMaxNum = 0;
+    /**
+     * 当前签名缓存数量
+     * @var int
+     */
+    private static $_sySignNowNum = 0;
 
     public function __construct(int $port) {
         parent::__construct($port);
@@ -87,24 +102,92 @@ class HttpServer extends BaseServer {
             exit('服务端类型不支持' . PHP_EOL);
         }
         define('SY_SERVER_TYPE', $serverType);
+        $this->_configs['server']['cachenum']['hc'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.hc', 0, true);
+        $this->_configs['server']['cachenum']['modules'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
+        $this->_configs['server']['cachenum']['local'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.local', 0, true);
+        if ($serverType == Server::SERVER_TYPE_API_GATE) {
+            $this->_configs['server']['cachenum']['wx'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.wx', 0, true);
+            $this->_configs['server']['cachenum']['users'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.users', 0, true);
+            $this->_configs['server']['cachenum']['sign'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.sign', 0, true);
+        } else {
+            $this->_configs['server']['cachenum']['wx'] = 1;
+            $this->_configs['server']['cachenum']['users'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.users', 0, true);
+            $this->_configs['server']['cachenum']['sign'] = 1;
+        }
+        $this->checkServerHttp();
         $this->_cors = Tool::getConfig('cors.' . SY_ENV . SY_PROJECT);
         $this->_cors['allow']['headerStr'] = isset($this->_cors['allow']['headers']) ? implode(', ', $this->_cors['allow']['headers']) : '';
         $this->_cors['allow']['methodStr'] = isset($this->_cors['allow']['methods']) ? implode(', ', $this->_cors['allow']['methods']) : '';
         $this->_messagePack = new SyPack();
         $this->_moduleContainer = new ModuleContainer();
         $this->_reqCookieDomains = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.domain.cookie');
-
-        $this->checkHttpServer([
-            'cachenum_sign' => (int)$this->_configs['server']['cachenum']['sign']
-        ]);
     }
 
     private function __clone() {
     }
 
+    private function checkServerHttp() {
+        $this->checkServerBase();
+        self::$_sySignNowNum = 0;
+        self::$_sySignMaxNum = $this->_configs['server']['cachenum']['sign'];
+        if (self::$_sySignMaxNum < 1) {
+            exit('签名缓存数量不能小于1');
+        } else if ((self::$_sySignMaxNum & (self::$_sySignMaxNum - 1)) != 0) {
+            exit('签名缓存数量必须是2的指数倍');
+        }
+        $this->checkServerHttpTrait();
+    }
+
+    /**
+     * 添加签名缓存
+     * @param string $sign 签名信息
+     * @return bool
+     */
+    public static function addApiSign(string $sign) : bool {
+        $needSign = substr($sign, 16);
+        if (self::$_sySigns->exist($needSign)) {
+            return false;
+        } else if (self::$_sySignNowNum < self::$_sySignMaxNum) {
+            self::$_sySigns->set($needSign, [
+                'sign' => $needSign,
+                'time' => Tool::getNowTime(),
+            ]);
+            self::$_sySignNowNum++;
+
+            return true;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * 清理签名缓存
+     */
+    private function clearApiSign() {
+        $time = Tool::getNowTime() - Project::TIME_EXPIRE_LOCAL_API_SIGN_CACHE;
+        $delKeys = [];
+        foreach (self::$_sySigns as $eSign) {
+            if($eSign['time'] <= $time){
+                $delKeys[] = $eSign['sign'];
+            }
+        }
+        foreach ($delKeys as $eKey) {
+            self::$_sySigns->del($eKey);
+        }
+        self::$_sySignNowNum = count(self::$_sySigns);
+    }
+
+    private function initTableHttp() {
+        $this->initTableBase();
+        self::$_sySigns = new \swoole_table($this->_configs['server']['cachenum']['sign']);
+        self::$_sySigns->column('sign', \swoole_table::TYPE_STRING, 32);
+        self::$_sySigns->column('time', \swoole_table::TYPE_INT, 4);
+        self::$_sySigns->create();
+        $this->initTableHttpTrait();
+    }
+
     public function start() {
-        $this->initTableByStart();
-        $this->initTableByHttpStart();
+        $this->initTableHttp();
 
         //初始化swoole服务
         $this->_server = new \swoole_websocket_server($this->_host, $this->_port);
@@ -401,6 +484,22 @@ class HttpServer extends BaseServer {
 
     public function onWorkerStart(\swoole_server $server, $workerId){
         $this->basicWorkStart($server, $workerId);
+
+        if($workerId == 0){
+            $this->addTaskBase($server);
+            $this->_messagePack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
+                'task_module' => SY_MODULE,
+                'task_command' => Project::TASK_TYPE_CLEAR_API_SIGN_CACHE,
+                'task_params' => [],
+            ]);
+            $taskDataSign = $this->_messagePack->packData();
+            $this->_messagePack->init();
+
+            $server->tick(Project::TIME_TASK_CLEAR_API_SIGN, function() use ($server, $taskDataSign) {
+                $server->task($taskDataSign);
+            });
+            $this->addTaskHttpTrait($server);
+        }
     }
 
     public function onWorkerStop(\swoole_server $server, int $workerId){
@@ -588,12 +687,29 @@ class HttpServer extends BaseServer {
     }
 
     public function onTask(\swoole_server $server, int $taskId, int $fromId, string $data){
-        $baseTaskRes = $this->handleBaseTask($server, $taskId, $fromId, $data);
-        if(is_array($baseTaskRes)){
-            return $this->handleHttpTask($baseTaskRes['params']);
-        }
+        $baseRes = $this->handleTaskBase($server, $taskId, $fromId, $data);
+        if(is_array($baseRes)){
+            $taskCommand = Tool::getArrayVal($baseRes['params'], 'task_command', '');
+            switch ($taskCommand) {
+                case Project::TASK_TYPE_CLEAR_API_SIGN_CACHE:
+                    $this->clearApiSign();
+                    break;
+                default:
+                    $traitRes = $this->handleTaskHttpTrait($server, $taskId, $fromId, $baseRes);
+                    if(strlen($traitRes) > 0){
+                        return $traitRes;
+                    }
+                    break;
+            }
 
-        return $baseTaskRes;
+            $result = new Result();
+            $result->setData([
+                'result' => 'success',
+            ]);
+            return $result->getJson();
+        } else {
+            return $baseRes;
+        }
     }
 
     /**

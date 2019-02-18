@@ -10,7 +10,6 @@ namespace SyTask;
 use Constant\Project;
 use MessageQueue\Consumer\Redis\AddJsLogService;
 use MessageQueue\Consumer\Redis\AddMysqlLogService;
-use Tool\SyPack;
 
 class SyModuleApiTask extends SyModuleTaskBase implements SyModuleTaskInterface {
     public function __construct() {
@@ -29,28 +28,5 @@ class SyModuleApiTask extends SyModuleTaskBase implements SyModuleTaskInterface 
 //        //添加js日志任务
 //        $jsLogService = new AddJsLogService();
 //        $jsLogService->handleMessage([]);
-
-        if($data['clear_apisign']){ //清理api签名
-            $this->syPack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
-                'task_module' => $this->moduleTag,
-                'task_command' => Project::TASK_TYPE_CLEAR_API_SIGN_CACHE,
-                'task_params' => [],
-            ]);
-            $apiTaskStr = $this->syPack->packData();
-            $this->syPack->init();
-            foreach ($data['projects'] as $eProject) {
-                $this->sendSyTaskReq($eProject['host'], $eProject['port'], $apiTaskStr, 'http');
-            }
-        }
-        if($data['clear_localuser']){ //清除本地用户信息缓存
-            $this->clearLocalUserCache([
-                'projects' => $data['projects'],
-            ], $this->moduleTag);
-        }
-        if($data['clear_localwx']){
-            $this->clearLocalWxCache([
-                'projects' => $data['projects'],
-            ], $this->moduleTag);
-        }
     }
 }
