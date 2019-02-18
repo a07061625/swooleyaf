@@ -149,42 +149,7 @@ abstract class BaseServer {
      * @param int $port 端口
      */
     public function __construct(int $port) {
-        $os = php_uname('s');
-        if(version_compare(PHP_VERSION, Server::VERSION_MIN_PHP, '<')){
-            exit('PHP版本必须大于等于' . Server::VERSION_MIN_PHP . PHP_EOL);
-        } else if (!defined('SY_MODULE')) {
-            exit('模块名称未定义' . PHP_EOL);
-        } else if (($port <= 1000) || ($port > 65535)) {
-            exit('端口不合法' . PHP_EOL);
-        } else if(!in_array(SY_ENV, Server::$totalEnvProject)){
-            exit('环境类型不合法' . PHP_EOL);
-        } else if(!in_array($os, Server::$totalEnvSystem)){
-            exit('操作系统不支持' . PHP_EOL);
-        } else if(!defined('SWOOLE_VERSION')){
-            exit('swoole版本常量未定义' . PHP_EOL);
-        } else if(version_compare(SWOOLE_VERSION, Server::VERSION_MIN_SWOOLE, '<')){
-            exit('swoole版本必须大于等于' . Server::VERSION_MIN_SWOOLE . PHP_EOL);
-        }
-
-        //检查必要的扩展是否存在
-        $extensionList = [
-            'yac',
-            'yaf',
-            'PDO',
-            'pcre',
-            'pcntl',
-            'redis',
-            'yaconf',
-            'swoole',
-            'SeasLog',
-            'msgpack',
-        ];
-        foreach ($extensionList as $extName) {
-            if(!extension_loaded($extName)){
-                exit('扩展' . $extName . '未加载' . PHP_EOL);
-            }
-        }
-
+        $this->checkSystemEnv($port);
         $this->_configs = Tool::getConfig('syserver.' . SY_ENV . SY_MODULE);
 
         define('SY_SERVER_IP', $this->_configs['server']['host']);
@@ -224,6 +189,60 @@ abstract class BaseServer {
     }
 
     private function __clone() {
+    }
+
+    private function checkSystemEnv(int $port) {
+        if(version_compare(PHP_VERSION, Server::VERSION_MIN_PHP, '<')){
+            exit('PHP版本必须大于等于' . Server::VERSION_MIN_PHP . PHP_EOL);
+        }
+        if (!defined('SY_MODULE')) {
+            exit('模块名称未定义' . PHP_EOL);
+        }
+        if (!defined('SY_TOKEN')) {
+            exit('令牌未定义' . PHP_EOL);
+        }
+        if (!ctype_alnum(SY_TOKEN)) {
+            exit('令牌不合法' . PHP_EOL);
+        }
+        if (strlen(SY_TOKEN) != 8) {
+            exit('令牌不合法' . PHP_EOL);
+        }
+        if (($port <= 1000) || ($port > 65535)) {
+            exit('端口不合法' . PHP_EOL);
+        }
+        if(!in_array(SY_ENV, Server::$totalEnvProject)){
+            exit('环境类型不合法' . PHP_EOL);
+        }
+
+        $os = php_uname('s');
+        if(!in_array($os, Server::$totalEnvSystem)){
+            exit('操作系统不支持' . PHP_EOL);
+        }
+        if(!defined('SWOOLE_VERSION')){
+            exit('swoole版本常量未定义' . PHP_EOL);
+        }
+        if(version_compare(SWOOLE_VERSION, Server::VERSION_MIN_SWOOLE, '<')){
+            exit('swoole版本必须大于等于' . Server::VERSION_MIN_SWOOLE . PHP_EOL);
+        }
+
+        //检查必要的扩展是否存在
+        $extensionList = [
+            'yac',
+            'yaf',
+            'PDO',
+            'pcre',
+            'pcntl',
+            'redis',
+            'yaconf',
+            'swoole',
+            'SeasLog',
+            'msgpack',
+        ];
+        foreach ($extensionList as $extName) {
+            if(!extension_loaded($extName)){
+                exit('扩展' . $extName . '未加载' . PHP_EOL);
+            }
+        }
     }
 
     protected function checkServerBase() {
