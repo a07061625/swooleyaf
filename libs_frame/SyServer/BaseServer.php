@@ -195,6 +195,9 @@ abstract class BaseServer {
     }
 
     private function checkSystemEnv() {
+        if(PHP_INT_SIZE < 8){
+            exit('操作系统必须是64位' . PHP_EOL);
+        }
         if(version_compare(PHP_VERSION, Server::VERSION_MIN_PHP, '<')){
             exit('PHP版本必须大于等于' . Server::VERSION_MIN_PHP . PHP_EOL);
         }
@@ -492,6 +495,7 @@ abstract class BaseServer {
         self::$_syServer->column('storepath_music', \swoole_table::TYPE_STRING, 150);
         self::$_syServer->column('storepath_resources', \swoole_table::TYPE_STRING, 150);
         self::$_syServer->column('storepath_cache', \swoole_table::TYPE_STRING, 150);
+        self::$_syServer->column('token_etime', \swoole_table::TYPE_INT, 8);
         self::$_syServer->create();
 
         self::$_syHealths = new \swoole_table($this->_configs['server']['cachenum']['hc']);
@@ -880,6 +884,7 @@ abstract class BaseServer {
             'storepath_music' => $config['dir']['store']['music'],
             'storepath_resources' => $config['dir']['store']['resources'],
             'storepath_cache' => $config['dir']['store']['cache'],
+            'token_etime' => 16000000000,
         ]);
 
         //设置唯一ID自增基数
