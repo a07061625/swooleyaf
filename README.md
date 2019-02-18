@@ -57,8 +57,6 @@
 - 其他目录: 项目模块目录,每一个目录对应一个项目模块
 
 ## 命令
-    //前置命令,必须在开启服务之前运行
-    nohup etcd --listen-client-urls http://10.27.166.170:2379 --advertise-client-urls http://10.27.166.170:2379 >/dev/null & --启动etcd服务
     //服务命令-启动服务
     /usr/local/php7/bin/php helper_service_manager.php -s start-all
     //服务命令-关闭服务
@@ -81,6 +79,11 @@
 ## 服务管理
 ### 获取框架概览信息
     请求地址: http://api.xxx.com/syinfo
+
+## etcd
+### 启动服务
+    // ip:当前服务器内网或外网ip port:服务监听端口,默认为2379
+    nohup etcd --listen-client-urls http://ip:port --advertise-client-urls http://ip:port >/dev/null &
 
 ### 获取php信息
     请求地址: http://api.xxx.com/phpinfo
