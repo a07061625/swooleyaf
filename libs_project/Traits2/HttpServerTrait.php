@@ -7,10 +7,6 @@
  */
 namespace Traits2;
 
-use Constant\Project;
-use Response\Result;
-use Tool\Tool;
-
 trait HttpServerTrait {
     private function checkServerHttpTrait() {
     }
@@ -18,22 +14,17 @@ trait HttpServerTrait {
     private function initTableHttpTrait() {
     }
 
-    protected function handleHttpTask(array $data) {
-        $resData = [
-            'result' => 'success',
-        ];
-        $taskCommand = Tool::getArrayVal($data, 'task_command', '');
-        switch ($taskCommand) {
-            case Project::TASK_TYPE_CLEAR_API_SIGN_CACHE:
-                $this->clearApiSign();
-                break;
-            default:
-                $resData['result'] = 'fail';
-                break;
-        }
+    private function addTaskHttpTrait(\swoole_server $server) {
+    }
 
-        $result = new Result();
-        $result->setData($resData);
-        return $result->getJson();
+    /**
+     * @param \swoole_server $server
+     * @param int $taskId
+     * @param int $fromId
+     * @param array $data
+     * @return string 空字符串:执行成功 非空:执行失败
+     */
+    private function handleTaskHttpTrait(\swoole_server $server,int $taskId,int $fromId,array &$data) : string {
+        return '';
     }
 }

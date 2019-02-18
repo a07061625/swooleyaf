@@ -11,9 +11,11 @@ use Constant\ErrorCode;
 use Constant\Project;
 use Constant\Server;
 use DesignPatterns\Factories\CacheSimpleFactory;
+use DesignPatterns\Singletons\MysqlSingleton;
 use DesignPatterns\Singletons\RedisSingleton;
 use Exception\Swoole\ServerException;
 use Log\Log;
+use Response\Result;
 use Tool\Dir;
 use Tool\SyPack;
 use Tool\Tool;
@@ -504,6 +506,90 @@ abstract class BaseServer {
         $this->initTableBaseTrait();
     }
 
+    protected function addTaskBase(\swoole_server $server) {
+        $clientType = SY_SERVER_TYPE == Server::SERVER_TYPE_API_MODULE ? SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_API_REQ : SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ;
+        $this->_syPack->setCommandAndData($clientType, [
+            'task_module' => SY_MODULE,
+            'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_USER_CACHE,
+            'task_params' => [],
+        ]);
+        $taskDataUser = $this->_syPack->packData();
+        $this->_syPack->init();
+
+        $this->_syPack->setCommandAndData($clientType, [
+            'task_module' => SY_MODULE,
+            'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_WX_CACHE,
+            'task_params' => [],
+        ]);
+        $taskDataWx = $this->_syPack->packData();
+        $this->_syPack->init();
+
+        $server->tick(Project::TIME_TASK_CLEAR_LOCAL_USER, function() use ($server, $taskDataUser) {
+            $server->task($taskDataUser);
+        });
+        $server->tick(Project::TIME_TASK_CLEAR_LOCAL_WX, function() use ($server, $taskDataWx) {
+            $server->task($taskDataWx);
+        });
+        $this->addTaskBaseTrait($server);
+    }
+
+    /**
+     * @param \swoole_server $server
+     * @param int $taskId
+     * @param int $fromId
+     * @param string $data
+     * @return array|string
+     */
+    protected function handleTaskBase(\swoole_server $server,int $taskId,int $fromId,string $data) {
+        $result = new Result();
+        if(!$this->_syPack->unpackData($data)){
+            $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '数据格式不合法');
+            return $result->getJson();
+        }
+
+        RedisSingleton::getInstance()->reConnect();
+        if(SY_DATABASE){
+            MysqlSingleton::getInstance()->reConnect();
+        }
+
+        $command = $this->_syPack->getCommand();
+        $commandData = $this->_syPack->getData();
+        $this->_syPack->init();
+
+        if(in_array($command, [SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ])){
+            $taskCommand = Tool::getArrayVal($commandData, 'task_command', '');
+            switch ($taskCommand) {
+                case Project::TASK_TYPE_CLEAR_LOCAL_USER_CACHE:
+                    $this->clearLocalUsers();
+                    break;
+                case Project::TASK_TYPE_CLEAR_LOCAL_WX_CACHE:
+                    $this->clearWxCache();
+                    break;
+                default:
+                    $taskData = [
+                        'command' => $command,
+                        'params' => $commandData,
+                    ];
+                    $traitRes = $this->handleTaskBaseTrait($server, $taskId, $fromId, $taskData);
+                    if(strlen($traitRes) == 0){
+                        return $taskData;
+                    } else {
+                        return $traitRes;
+                    }
+            }
+
+            $result->setData([
+                'result' => 'success',
+            ]);
+        } else {
+            $result->setData([
+                'result' => 'fail',
+            ]);
+        }
+
+        return $result->getJson();
+    }
+
     /**
      * 创建请求ID
      */
@@ -711,10 +797,6 @@ abstract class BaseServer {
                         'type' => $moduleData['type'],
                     ]);
                 }
-            }
-
-            if(SY_TIMER && method_exists($this, 'addTimer')){
-                $this->addTimer($server);
             }
         }
     }

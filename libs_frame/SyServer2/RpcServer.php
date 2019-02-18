@@ -201,6 +201,11 @@ class RpcServer extends BaseServer {
 
     public function onWorkerStart(\swoole_server $server, $workerId){
         $this->basicWorkStart($server, $workerId);
+
+        if($workerId == 0){
+            $this->addTaskBase($server);
+            $this->addTaskRpcTrait($server);
+        }
     }
 
     public function onWorkerStop(\swoole_server $server, int $workerId){
@@ -212,12 +217,26 @@ class RpcServer extends BaseServer {
     }
 
     public function onTask(\swoole_server $server, int $taskId, int $fromId, string $data){
-        $baseTaskRes = $this->handleBaseTask($server, $taskId, $fromId, $data);
-        if(is_array($baseTaskRes)){
-            return $this->handleRpcTask($baseTaskRes['params']);
-        }
+        $baseRes = $this->handleTaskBase($server, $taskId, $fromId, $data);
+        if(is_array($baseRes)){
+            $taskCommand = Tool::getArrayVal($baseRes['params'], 'task_command', '');
+            switch ($taskCommand) {
+                default:
+                    $traitRes = $this->handleTaskRpcTrait($server, $taskId, $fromId, $baseRes);
+                    if(strlen($traitRes) > 0){
+                        return $traitRes;
+                    }
+                    break;
+            }
 
-        return $baseTaskRes;
+            $result = new Result();
+            $result->setData([
+                'result' => 'success',
+            ]);
+            return $result->getJson();
+        } else {
+            return $baseRes;
+        }
     }
 
     /**

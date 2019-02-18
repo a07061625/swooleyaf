@@ -7,14 +7,6 @@
  */
 namespace Traits2;
 
-use Constant\ErrorCode;
-use Constant\Project;
-use DesignPatterns\Singletons\MysqlSingleton;
-use DesignPatterns\Singletons\RedisSingleton;
-use Response\Result;
-use Tool\SyPack;
-use Tool\Tool;
-
 trait BaseServerTrait {
     private function checkServerBaseTrait() {
     }
@@ -32,47 +24,17 @@ trait BaseServerTrait {
         self::$_syUsers->create();
     }
 
-    protected function handleBaseTask(\swoole_server $server,int $taskId,int $fromId,string $data) {
-        $result = new Result();
-        if(!$this->_syPack->unpackData($data)){
-            $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '数据格式不合法');
-            return $result->getJson();
-        }
+    private function addTaskBaseTrait(\swoole_server $server) {
+    }
 
-        RedisSingleton::getInstance()->reConnect();
-        if(SY_DATABASE){
-            MysqlSingleton::getInstance()->reConnect();
-        }
-
-        $command = $this->_syPack->getCommand();
-        $commandData = $this->_syPack->getData();
-        $this->_syPack->init();
-
-        if(in_array($command, [SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ])){
-            $taskCommand = Tool::getArrayVal($commandData, 'task_command', '');
-            switch ($taskCommand) {
-                case Project::TASK_TYPE_CLEAR_LOCAL_USER_CACHE:
-                    $this->clearLocalUsers();
-                    break;
-                case Project::TASK_TYPE_CLEAR_LOCAL_WX_CACHE:
-                    $this->clearWxCache();
-                    break;
-                default:
-                    return [
-                        'command' => $command,
-                        'params' => $commandData,
-                    ];
-            }
-
-            $result->setData([
-                'result' => 'success',
-            ]);
-        } else {
-            $result->setData([
-                'result' => 'fail',
-            ]);
-        }
-
-        return $result->getJson();
+    /**
+     * @param \swoole_server $server
+     * @param int $taskId
+     * @param int $fromId
+     * @param array $data
+     * @return string 空字符串:执行成功 非空:执行失败
+     */
+    private function handleTaskBaseTrait(\swoole_server $server,int $taskId,int $fromId,array &$data) : string {
+        return '';
     }
 }
