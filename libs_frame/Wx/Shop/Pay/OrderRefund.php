@@ -17,6 +17,11 @@ use Wx\WxUtilShop;
 
 class OrderRefund extends WxBaseShop {
     /**
+     * 商户类型
+     * @var string
+     */
+    private $merchantType = '';
+    /**
      * 公众号ID
      * @var string
      */
@@ -77,12 +82,23 @@ class OrderRefund extends WxBaseShop {
      */
     private $op_user_id = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId,string $merchantType=self::MERCHANT_TYPE_SELF){
         parent::__construct();
+
+        if (!isset(self::$totalMerchantType[$merchantType])) {
+            throw new WxException('商户类型不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/secapi/pay/refund';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
-        $this->reqData['appid'] = $shopConfig->getAppId();
-        $this->reqData['mch_id'] = $shopConfig->getPayMchId();
+        $this->merchantType = $merchantType;
+        if($merchantType == self::MERCHANT_TYPE_SELF){
+            $this->reqData['appid'] = $shopConfig->getAppId();
+            $this->reqData['mch_id'] = $shopConfig->getPayMchId();
+        } else {
+            $this->reqData['sub_appid'] = $shopConfig->getAppId();
+            $this->reqData['sub_mch_id'] = $shopConfig->getPayMchId();
+        }
         $this->reqData['op_user_id'] = $shopConfig->getPayMchId();
         $this->reqData['sign_type'] = 'MD5';
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
@@ -181,13 +197,14 @@ class OrderRefund extends WxBaseShop {
         } else if($this->reqData['refund_fee'] > $this->reqData['total_fee']){
             throw new WxException('订单金额必须大于等于退款金额', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
+        $appId = $this->merchantType == self::MERCHANT_TYPE_SELF ? $this->reqData['appid'] : $this->reqData['sub_appid'];
+        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $appId);
 
         $resArr = [
             'code' => 0
         ];
 
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($this->reqData['appid']);
+        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $tmpKey = tmpfile();
         fwrite($tmpKey, $shopConfig->getSslKey());
         $tmpKeyData = stream_get_meta_data($tmpKey);

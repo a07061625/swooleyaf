@@ -34,6 +34,12 @@ class UnifiedOrder extends WxBaseShop {
     ];
 
     /**
+     * 商户类型
+     * @var string
+     */
+    private $merchantType = '';
+
+    /**
      * 公众账号ID
      * @var string
      */
@@ -158,17 +164,26 @@ class UnifiedOrder extends WxBaseShop {
      */
     private $plat_type = '';
 
-    public function __construct(string $appId,string $tradeType){
+    public function __construct(string $appId,string $tradeType,string $merchantType=self::MERCHANT_TYPE_SELF){
         parent::__construct();
 
         if (!isset(self::$totalTradeType[$tradeType])) {
             throw new WxException('交易类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
+        if (!isset(self::$totalMerchantType[$merchantType])) {
+            throw new WxException('商户类型不合法', ErrorCode::WX_PARAM_ERROR);
+        }
 
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
-        $this->reqData['appid'] = $shopConfig->getAppId();
-        $this->reqData['mch_id'] = $shopConfig->getPayMchId();
+        $this->merchantType = $merchantType;
+        if($merchantType == self::MERCHANT_TYPE_SELF){
+            $this->reqData['appid'] = $shopConfig->getAppId();
+            $this->reqData['mch_id'] = $shopConfig->getPayMchId();
+        } else {
+            $this->reqData['sub_appid'] = $shopConfig->getAppId();
+            $this->reqData['sub_mch_id'] = $shopConfig->getPayMchId();
+        }
         $this->reqData['notify_url'] = $shopConfig->getPayNotifyUrl();
         $this->reqData['fee_type'] = 'CNY';
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
@@ -242,7 +257,11 @@ class UnifiedOrder extends WxBaseShop {
      */
     public function setOpenid(string $openid) {
         if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
-            $this->reqData['openid'] = $openid;
+            if($this->merchantType == self::MERCHANT_TYPE_SELF){
+                $this->reqData['openid'] = $openid;
+            } else {
+                $this->reqData['sub_openid'] = $openid;
+            }
         } else {
             throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);
         }
@@ -387,7 +406,7 @@ class UnifiedOrder extends WxBaseShop {
         if($this->reqData['total_fee'] <= 0){
             throw new WxException('支付金额不能小于0', ErrorCode::WX_PARAM_ERROR);
         }
-        if(($this->reqData['trade_type'] == self::TRADE_TYPE_JSAPI) && !isset($this->reqData['openid'])){
+        if(($this->reqData['trade_type'] == self::TRADE_TYPE_JSAPI) && !isset($this->reqData['openid']) && !isset($this->reqData['sub_openid'])){
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
         } else if(($this->reqData['trade_type'] == self::TRADE_TYPE_NATIVE) && !isset($this->reqData['product_id'])){
             throw new WxException('商品ID不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -415,8 +434,9 @@ class UnifiedOrder extends WxBaseShop {
             $resArr['code'] = ErrorCode::WX_PARAM_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else if($this->reqData['trade_type'] == self::TRADE_TYPE_JSAPI){
+            $appId = $this->merchantType == self::MERCHANT_TYPE_SELF ? $this->reqData['appid'] : $this->reqData['sub_appid'];
             //获取支付参数
-            $payConfig = new JsPayConfig($this->reqData['appid']);
+            $payConfig = new JsPayConfig($appId);
             $payConfig->setTimeStamp((string)Tool::getNowTime());
             $payConfig->setPackage($sendData['prepay_id']);
             $resArr['data'] = [
@@ -426,7 +446,7 @@ class UnifiedOrder extends WxBaseShop {
 
             if(in_array($this->plat_type, [WxUtilBase::PLAT_TYPE_SHOP, WxUtilBase::PLAT_TYPE_OPEN_SHOP,])){
                 //获取js参数
-                $jsConfig = new JsConfig($this->reqData['appid']);
+                $jsConfig = new JsConfig($appId);
                 $jsConfig->setPlatType($this->plat_type);
                 $resArr['data']['config'] = $jsConfig->getDetail();
                 unset($jsConfig);

@@ -17,6 +17,11 @@ use Wx\WxUtilShop;
 
 class OrderQuery extends WxBaseShop {
     /**
+     * 商户类型
+     * @var string
+     */
+    private $merchantType = '';
+    /**
      * 商户号
      * @var string
      */
@@ -42,12 +47,23 @@ class OrderQuery extends WxBaseShop {
      */
     private $sign_type = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId,string $merchantType=self::MERCHANT_TYPE_SELF){
         parent::__construct();
+
+        if (!isset(self::$totalMerchantType[$merchantType])) {
+            throw new WxException('商户类型不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/orderquery';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
-        $this->reqData['appid'] = $shopConfig->getAppId();
-        $this->reqData['mch_id'] = $shopConfig->getPayMchId();
+        $this->merchantType = $merchantType;
+        if($merchantType == self::MERCHANT_TYPE_SELF){
+            $this->reqData['appid'] = $shopConfig->getAppId();
+            $this->reqData['mch_id'] = $shopConfig->getPayMchId();
+        } else {
+            $this->reqData['sub_appid'] = $shopConfig->getAppId();
+            $this->reqData['sub_mch_id'] = $shopConfig->getPayMchId();
+        }
         $this->reqData['sign_type'] = 'MD5';
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
     }
@@ -91,7 +107,9 @@ class OrderQuery extends WxBaseShop {
         } else {
             throw new WxException('微信订单号与商户订单号不能同时为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
+
+        $appId = $this->merchantType == self::MERCHANT_TYPE_SELF ? $this->reqData['appid'] : $this->reqData['sub_appid'];
+        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $appId);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);

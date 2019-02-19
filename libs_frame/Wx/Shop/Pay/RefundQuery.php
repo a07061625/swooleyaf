@@ -17,6 +17,11 @@ use Wx\WxUtilShop;
 
 class RefundQuery extends WxBaseShop {
     /**
+     * 商户类型
+     * @var string
+     */
+    private $merchantType = '';
+    /**
      * 公众账号ID
      * @var string
      */
@@ -62,12 +67,23 @@ class RefundQuery extends WxBaseShop {
      */
     private $out_refund_no = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId,string $merchantType=self::MERCHANT_TYPE_SELF){
         parent::__construct();
+
+        if (!isset(self::$totalMerchantType[$merchantType])) {
+            throw new WxException('商户类型不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/refundquery';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
-        $this->reqData['appid'] = $shopConfig->getAppId();
-        $this->reqData['mch_id'] = $shopConfig->getPayMchId();
+        $this->merchantType = $merchantType;
+        if($merchantType == self::MERCHANT_TYPE_SELF){
+            $this->reqData['appid'] = $shopConfig->getAppId();
+            $this->reqData['mch_id'] = $shopConfig->getPayMchId();
+        } else {
+            $this->reqData['sub_appid'] = $shopConfig->getAppId();
+            $this->reqData['sub_mch_id'] = $shopConfig->getPayMchId();
+        }
         $this->reqData['sign_type'] = 'MD5';
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
     }
@@ -144,7 +160,8 @@ class RefundQuery extends WxBaseShop {
         } else {
             throw new WxException('微信订单号,商户订单号,微信退款单号,商户退款单号必须设置其中一个', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
+        $appId = $this->merchantType == self::MERCHANT_TYPE_SELF ? $this->reqData['appid'] : $this->reqData['sub_appid'];
+        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $appId);
 
         $resArr = [
             'code' => 0
