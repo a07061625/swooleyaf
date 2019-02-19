@@ -19,6 +19,8 @@ abstract class WxBaseShop extends WxBase {
     const MESSAGE_TYPE_IMAGE = 'image';
     const MESSAGE_TYPE_VIDEO = 'video';
     const MESSAGE_TYPE_WXCARD = 'wxcard';
+    const MERCHANT_TYPE_SELF = 'self'; //商户类型-自身
+    const MERCHANT_TYPE_SUB = 'sub'; //商户类型-子商户,属于服务商下
 
     protected static $totalMaterialType = [
         self::MATERIAL_TYPE_IMAGE => '图片',
@@ -34,6 +36,10 @@ abstract class WxBaseShop extends WxBase {
         self::MESSAGE_TYPE_IMAGE => '图片',
         self::MESSAGE_TYPE_VIDEO => '视频',
         self::MESSAGE_TYPE_WXCARD => '卡券',
+    ];
+    protected static $totalMerchantType = [
+        self::MERCHANT_TYPE_SELF => '自身',
+        self::MERCHANT_TYPE_SUB => '子商户',
     ];
 
     public function __construct(){
