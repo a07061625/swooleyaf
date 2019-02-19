@@ -441,6 +441,29 @@ class HttpServer extends BaseServer {
             case '/healthcheck' :
                 $result = 'http server is alive';
                 break;
+            case '/refreshtokenexpire' :
+                $msg = '';
+                $params = $request->get ?? [];
+                $expireTime = $params['expire_time'] ?? '';
+                if(!ctype_digit($expireTime)){
+                    $msg = '过期时间不合法';
+                } else if((strlen($expireTime) > 1) && ($expireTime{0} == '0')){
+                    $msg = '过期时间不合法';
+                }
+
+                $refreshRes = new Result();
+                if(strlen($msg) == 0){
+                    self::$_syServer->set(self::$_serverToken, [
+                        'token_etime' => (int)$expireTime,
+                    ]);
+                    $refreshRes->setData([
+                        'msg' => '更新令牌过期时间成功',
+                    ]);
+                } else {
+                    $refreshRes->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, $msg);
+                }
+                $result = $refreshRes->getJson();
+                break;
             default:
                 $healthTag = $this->sendReqHealthCheckTask($uri);
                 $this->initRequest($request, $initRspHeaders);
