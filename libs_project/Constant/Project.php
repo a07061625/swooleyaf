@@ -47,6 +47,7 @@ final class Project extends ProjectBase {
     const REDIS_PREFIX_ROLE_POWERS = 'sy' . SY_PROJECT . 'a0005_'; //前缀-角色权限列表
     const REDIS_PREFIX_ROLE_LIST = 'sy' . SY_PROJECT . 'a0006_'; //前缀-角色列表
     const REDIS_PREFIX_REGION_LIST = 'sy' . SY_PROJECT . 'a0007_'; //前缀-地区缓存
+    const REDIS_PREFIX_SY_TOKEN = 'sy' . SY_PROJECT . 'a0008_'; //前缀-框架令牌缓存
 
     //消息队列常量
     const MESSAGE_QUEUE_TOPIC_ADD_LOG = '0000'; //主题-添加日志

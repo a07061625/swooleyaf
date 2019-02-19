@@ -21,6 +21,7 @@ use Entities\SyBase\RoleBaseEntity;
 use Entities\SyBase\RolePowerEntity;
 use Entities\SyBase\RoleRelationEntity;
 use Entities\SyBase\SmsRecordEntity;
+use Entities\SyBase\SyTokenBaseEntity;
 use Entities\SyBase\TimedTaskEntity;
 use Entities\SyBase\UserBaseEntity;
 use Entities\SyBase\UserLoginHistoryEntity;
@@ -227,5 +228,12 @@ class SyBaseMysqlFactory {
      */
     public static function DingtalkConfigCorpEntity(string $dbName=''){
         return new DingtalkConfigCorpEntity($dbName);
+    }
+    /**
+     * @param string $dbName 数据库名
+     * @return \Entities\SyBase\SyTokenBaseEntity
+     */
+    public static function SyTokenBaseEntity(string $dbName=''){
+        return new SyTokenBaseEntity($dbName);
     }
 }
