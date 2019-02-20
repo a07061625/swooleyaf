@@ -174,7 +174,7 @@ class HttpServer extends BaseServer {
         foreach ($delKeys as $eKey) {
             self::$_sySigns->del($eKey);
         }
-        self::$_sySignNowNum = count(self::$_sySigns);
+        self::$_sySignNowNum = self::$_sySigns->count();
     }
 
     private function initTableHttp() {

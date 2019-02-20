@@ -408,7 +408,7 @@ abstract class BaseServer {
         foreach ($delKeys as $eKey) {
             self::$_syUsers->del($eKey);
         }
-        self::$_syUserNowNum = count(self::$_syUsers);
+        self::$_syUserNowNum = self::$_syUsers->count();
     }
 
     /**
@@ -479,7 +479,7 @@ abstract class BaseServer {
         foreach ($delKeys as $eKey) {
             self::$_syWx->del($eKey);
         }
-        self::$_syWxNowNum = count(self::$_syWx);
+        self::$_syWxNowNum = self::$_syWx->count();
     }
 
     protected function initTableBase() {
