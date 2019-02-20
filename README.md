@@ -6,7 +6,7 @@
 - inotify
 
 ## 必要扩展
-- swoole4.1.0+
+- swoole4.2.8+
 - msgpack
 - yaf3.0.4+
 - yaconf1.0+

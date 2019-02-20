@@ -54,7 +54,7 @@ final class Server {
 
     //版本常量
     const VERSION_MIN_PHP = '7.1.0'; //最低版本-php
-    const VERSION_MIN_SWOOLE = '4.1.0'; //最低版本-swoole
+    const VERSION_MIN_SWOOLE = '4.2.8'; //最低版本-swoole
 
     //YAC常量,以0000开头的前缀为框架内部前缀,并键名总长度不超过48个字符串
     const YAC_PREFIX_FUSE = '0000'; //前缀-熔断器
