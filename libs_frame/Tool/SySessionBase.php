@@ -25,9 +25,9 @@ class SySessionBase {
         if (strlen($inToken) > 0) {
             $token = $inToken;
         } else if (isset($_COOKIE[Project::DATA_KEY_SESSION_TOKEN])) {
-            $token = $_COOKIE[Project::DATA_KEY_SESSION_TOKEN];
+            $token = (string)$_COOKIE[Project::DATA_KEY_SESSION_TOKEN];
         } else {
-            $token = SyRequest::getParams('session_id', '');
+            $token = (string)SyRequest::getParams('session_id', '');
         }
         if ((strlen($token) == 16) && ctype_alnum($token)) {
             return $token;
