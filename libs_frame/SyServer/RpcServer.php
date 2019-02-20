@@ -15,12 +15,16 @@ use Request\RequestSign;
 use Response\Result;
 use Tool\SyPack;
 use Tool\Tool;
+use Traits\PreProcessRpcFrameTrait;
+use Traits\PreProcessRpcProjectTrait;
 use Traits\RpcServerTrait;
 use Yaf\Registry;
 use Yaf\Request\Http;
 
 class RpcServer extends BaseServer {
     use RpcServerTrait;
+    use PreProcessRpcFrameTrait;
+    use PreProcessRpcProjectTrait;
 
     /**
      * @var \Tool\SyPack
@@ -126,10 +130,22 @@ class RpcServer extends BaseServer {
 
         $error = null;
         $result = '';
-        $httpObj = new Http($data['api_uri']);
+        $httpObj = null;
         try {
             self::checkRequestCurrentLimit();
-            $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
+            if (isset($this->preProcessMapFrame[$data['api_uri']])) {
+                $funcName = $this->preProcessMapFrame[$data['api_uri']];
+            } else if(isset($this->preProcessMapProject[$data['api_uri']])){
+                $funcName = $this->preProcessMapProject[$data['api_uri']];
+            } else {
+                $funcName = '';
+            }
+            if(strlen($funcName) > 0){
+                $result = $this->$funcName($data);
+            } else {
+                $httpObj = new Http($data['api_uri']);
+                $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
+            }
             if(strlen($result) == 0){
                 $error = new Result();
                 $error->setCodeMsg(ErrorCode::SWOOLE_SERVER_NO_RESPONSE_ERROR, '未设置响应数据');

@@ -20,11 +20,15 @@ use SyModule\ModuleContainer;
 use Tool\SyPack;
 use Tool\Tool;
 use Traits\HttpServerTrait;
+use Traits\PreProcessHttpFrameTrait;
+use Traits\PreProcessHttpProjectTrait;
 use Yaf\Registry;
 use Yaf\Request\Http;
 
 class HttpServer extends BaseServer {
     use HttpServerTrait;
+    use PreProcessHttpFrameTrait;
+    use PreProcessHttpProjectTrait;
 
     const RESPONSE_RESULT_TYPE_FORBIDDEN = 0; //响应结果类型-拒绝请求
     const RESPONSE_RESULT_TYPE_ACCEPT = 1; //响应结果类型-允许请求执行业务
@@ -427,79 +431,51 @@ class HttpServer extends BaseServer {
      */
     private function handleReqService(\swoole_http_request $request,array $initRspHeaders) : string {
         $uri = Tool::getArrayVal(self::$_reqServers, 'request_uri', '/');
-        switch ($uri) {
-            case '/syinfo' :
-                self::$_syServer->incr(self::$_serverToken, 'request_times', 1);
-                $result = Tool::jsonEncode($this->_server->stats());
-                break;
-            case '/phpinfo' :
-                ob_start();
-                phpinfo();
-                $result = ob_get_contents();
-                ob_end_clean();
-                break;
-            case '/healthcheck' :
-                $result = 'http server is alive';
-                break;
-            case '/refreshtokenexpire' :
-                $msg = '';
-                $params = $request->get ?? [];
-                $expireTime = $params['expire_time'] ?? '';
-                if(!ctype_digit($expireTime)){
-                    $msg = '过期时间不合法';
-                } else if((strlen($expireTime) > 1) && ($expireTime{0} == '0')){
-                    $msg = '过期时间不合法';
-                }
+        if (isset($this->preProcessMapFrame[$uri])) {
+            $funcName = $this->preProcessMapFrame[$uri];
+        } else if(isset($this->preProcessMapProject[$uri])){
+            $funcName = $this->preProcessMapProject[$uri];
+        } else {
+            $funcName = '';
+        }
+        if(strlen($funcName) > 0){
+            return $this->$funcName($request);
+        }
 
-                $refreshRes = new Result();
-                if(strlen($msg) == 0){
-                    self::$_syServer->set(self::$_serverToken, [
-                        'token_etime' => (int)$expireTime,
-                    ]);
-                    $refreshRes->setData([
-                        'msg' => '更新令牌过期时间成功',
-                    ]);
-                } else {
-                    $refreshRes->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, $msg);
-                }
-                $result = $refreshRes->getJson();
-                break;
-            default:
-                $healthTag = $this->sendReqHealthCheckTask($uri);
-                $this->initRequest($request, $initRspHeaders);
+        $healthTag = $this->sendReqHealthCheckTask($uri);
+        $this->initRequest($request, $initRspHeaders);
 
-                $error = null;
-                $result = '';
-                $httpObj = new Http($uri);
-                try {
-                    self::checkRequestCurrentLimit();
-                    $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
-                    if(strlen($result) == 0){
-                        $error = new Result();
-                        $error->setCodeMsg(ErrorCode::SWOOLE_SERVER_NO_RESPONSE_ERROR, '未设置响应数据');
-                    }
-                } catch (\Exception $e){
-                    SyResponseHttp::header('Content-Type', 'application/json; charset=utf-8');
-                    if (!($e instanceof ValidatorException)) {
-                        Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
-                    }
+        $error = null;
+        $result = '';
+        $httpObj = new Http($uri);
+        try {
+            self::checkRequestCurrentLimit();
+            $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
+            if(strlen($result) == 0){
+                $error = new Result();
+                $error->setCodeMsg(ErrorCode::SWOOLE_SERVER_NO_RESPONSE_ERROR, '未设置响应数据');
+            }
+        } catch (\Exception $e){
+            SyResponseHttp::header('Content-Type', 'application/json; charset=utf-8');
+            if (!($e instanceof ValidatorException)) {
+                Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
+            }
 
-                    $error = new Result();
-                    if(is_numeric($e->getCode())){
-                        $error->setCodeMsg((int)$e->getCode(), $e->getMessage());
-                    } else {
-                        $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务出错');
-                    }
-                } finally {
-                    self::$_syServer->decr(self::$_serverToken, 'request_handling', 1);
-                    $this->reportLongTimeReq($uri, array_merge($_GET, $_POST));
-                    self::$_syHealths->del($healthTag);
-                    unset($httpObj);
-                    if(is_object($error)){
-                        $result = $error->getJson();
-                        unset($error);
-                    }
-                }
+            $error = new Result();
+            if(is_numeric($e->getCode())){
+                $error->setCodeMsg((int)$e->getCode(), $e->getMessage());
+            } else {
+                $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务出错');
+            }
+        } finally {
+            self::$_syServer->decr(self::$_serverToken, 'request_handling', 1);
+            $this->reportLongTimeReq($uri, array_merge($_GET, $_POST));
+            self::$_syHealths->del($healthTag);
+            unset($httpObj);
+            if(is_object($error)){
+                $result = $error->getJson();
+                unset($error);
+            }
         }
 
         return $result;
