@@ -137,10 +137,10 @@ class ProjectBase {
     const MESSAGE_QUEUE_TYPE_KAFKA = 'kafka'; //类型-kafka
     const MESSAGE_QUEUE_TYPE_RABBIT = 'rabbit'; //类型-rabbit
 
-    //服务预处理常量,标识长度为7位,第一位固定为/,接下来两位代表服务类型,00: http服务 01:rpc服务,后四位代表不同预处理操作,其中后四位全为数字的为框架内部预留标识
-    const PRE_PROCESS_TAG_HTTP_FRAME_SERVER_INFO = '/000000'; //HTTP服务框架内部标识-服务信息
-    const PRE_PROCESS_TAG_HTTP_FRAME_PHP_INFO = '/000001'; //HTTP服务框架内部标识-php环境信息
-    const PRE_PROCESS_TAG_HTTP_FRAME_HEALTH_CHECK = '/000002'; //HTTP服务框架内部标识-健康检测
-    const PRE_PROCESS_TAG_HTTP_FRAME_REFRESH_TOKEN_EXPIRE = '/000003'; //HTTP服务框架内部标识-更新令牌过期时间
-    const PRE_PROCESS_TAG_RPC_FRAME_SERVER_INFO = '/010000'; //RPC服务框架内部标识-服务信息
+    //服务预处理常量,标识长度为5位,第一位固定为/,后四位代表不同预处理操作,其中后四位全为数字的为框架内部预留标识
+    const PRE_PROCESS_TAG_HTTP_FRAME_SERVER_INFO = '/0000'; //HTTP服务框架内部标识-服务信息
+    const PRE_PROCESS_TAG_HTTP_FRAME_PHP_INFO = '/0001'; //HTTP服务框架内部标识-php环境信息
+    const PRE_PROCESS_TAG_HTTP_FRAME_HEALTH_CHECK = '/0002'; //HTTP服务框架内部标识-健康检测
+    const PRE_PROCESS_TAG_HTTP_FRAME_REFRESH_TOKEN_EXPIRE = '/0003'; //HTTP服务框架内部标识-更新令牌过期时间
+    const PRE_PROCESS_TAG_RPC_FRAME_SERVER_INFO = '/0000'; //RPC服务框架内部标识-服务信息
 }
