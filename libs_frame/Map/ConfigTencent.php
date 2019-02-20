@@ -21,6 +21,11 @@ class ConfigTencent {
      * @var string
      */
     private $serverIp = '';
+    /**
+     * 域名
+     * @var string
+     */
+    private $domain = '';
 
     public function __construct(){
     }
@@ -63,6 +68,25 @@ class ConfigTencent {
             $this->serverIp = $serverIp;
         } else {
             throw new TencentMapException('服务器IP不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getDomain() : string {
+        return $this->domain;
+    }
+
+    /**
+     * @param string $domain
+     * @throws \Exception\Map\TencentMapException
+     */
+    public function setDomain(string $domain){
+        if(preg_match('/^(http|https)\:\/\/\S+$/', $domain) > 0){
+            $this->domain = $domain;
+        } else {
+            throw new TencentMapException('域名不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }
     }
 }
