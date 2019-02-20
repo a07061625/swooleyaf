@@ -54,22 +54,12 @@ abstract class MapBaseTencent extends MapBase {
 
     public function __construct(){
         parent::__construct();
-        $this->serverIp = MapSingleton::getInstance()->getTencentConfig()->getServerIp();
+        $config = MapSingleton::getInstance()->getTencentConfig();
+        $this->serverIp = $config->getServerIp();
+        $this->webUrl = $config->getDomain();
         $this->getType = self::GET_TYPE_SERVER;
         $this->reqData['output'] = 'json';
-        $this->reqData['key'] = MapSingleton::getInstance()->getTencentConfig()->getKey();
-    }
-
-    /**
-     * @param string $webUrl
-     * @throws \Exception\Map\TencentMapException
-     */
-    public function setWebUrl(string $webUrl) {
-        if(preg_match('/^(http|https)\:\/\/\S+$/', $webUrl) > 0){
-            $this->webUrl = $webUrl;
-        } else {
-            throw new TencentMapException('页面URL不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
-        }
+        $this->reqData['key'] = $config->getKey();
     }
 
     /**
@@ -100,10 +90,6 @@ abstract class MapBaseTencent extends MapBase {
     protected function getContent() : array {
         switch ($this->getType) {
             case self::GET_TYPE_BROWSE:
-                if(strlen($this->webUrl) == 0){
-                    throw new TencentMapException('页面URL不能为空', ErrorCode::MAP_TENCENT_PARAM_ERROR);
-                }
-
                 $this->curlConfigs[CURLOPT_REFERER] = $this->webUrl;
                 $this->curlConfigs[CURLOPT_USERAGENT] = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11';
                 break;
@@ -121,7 +107,6 @@ abstract class MapBaseTencent extends MapBase {
                 $this->curlConfigs[CURLOPT_REFERER] = $this->appIdentifier;
                 break;
         }
-        $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = 'POST';
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         return $this->curlConfigs;
     }

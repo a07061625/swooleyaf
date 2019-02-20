@@ -39,6 +39,7 @@ class MapSingleton {
         $tencentConfig = new ConfigTencent();
         $tencentConfig->setKey((string)Tool::getArrayVal($configs, 'tencent.key', '', true));
         $tencentConfig->setServerIp((string)Tool::getArrayVal($configs, 'tencent.server.ip', '', true));
+        $tencentConfig->setDomain((string)Tool::getArrayVal($configs, 'tencent.domain', '', true));
         $this->tencentConfig = $tencentConfig;
 
         $gaodeConfig = new ConfigGaoDe();
