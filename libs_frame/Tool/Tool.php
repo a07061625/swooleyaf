@@ -634,9 +634,6 @@ class Tool {
         }
 
         $tempArr = explode('/', $tempUri);
-        if(isset($tempArr[4])){
-            return 'URI格式错误';
-        }
         if(!ctype_alnum($tempArr[1])){
             return '模块不合法';
         }
