@@ -5,21 +5,14 @@
  * 调用的次序, 和申明的次序相同
  */
 class Bootstrap extends \Yaf\Bootstrap_Abstract {
-    /**
-     * 首次请求标识,true:首次请求 false:非首次请求
-     * @var bool
-     */
-    private static $firstTag = true;
+    use \Traits\BootstrapTrait;
 
     private function __clone() {
     }
 
     public function _initBoot(\Yaf\Dispatcher $dispatcher) {
         if(self::$firstTag){
-            \SyFrame\BaseBootstrap::initBase($dispatcher);
-            \SyFrame\BaseBootstrap::initRoute($dispatcher);
-            \SyFrame\BaseBootstrap::initPlugins($dispatcher);
-
+            self::universalInit($dispatcher);
             self::$firstTag = false;
         }
     }
