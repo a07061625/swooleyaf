@@ -124,6 +124,16 @@ class RpcServer extends BaseServer {
     }
 
     private function handleApiReceive(array $data) {
+        $uriCheckRes = $this->checkRequestUri($data['api_uri']);
+        if(strlen($uriCheckRes['error']) > 0){
+            $error = new Result();
+            $error->setCodeMsg(ErrorCode::COMMON_ROUTE_URI_FORMAT_ERROR, $uriCheckRes['error']);
+            $result = $error->getJson();
+            unset($error);
+            return $result;
+        }
+        $data['api_uri'] = $uriCheckRes['uri'];
+
         self::$_reqStartTime = microtime(true);
         $healthTag = $this->sendReqHealthCheckTask($data['api_uri']);
         $this->initRequest($data['api_params']);
