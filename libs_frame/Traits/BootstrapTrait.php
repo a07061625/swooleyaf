@@ -50,7 +50,6 @@ trait BootstrapTrait {
         if(empty(self::$appConfigs)){
             throw new ServerException('APP配置不能为空', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
-
         if (isset(self::$appConfigs['application']['modules'])) {
             $moduleArr = explode(',', self::$appConfigs['application']['modules']);
             foreach ($moduleArr as $eModule) {
