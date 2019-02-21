@@ -5,23 +5,17 @@
  * 调用的次序, 和申明的次序相同
  */
 class Bootstrap extends \Yaf\Bootstrap_Abstract {
-    /**
-     * 首次请求标识,true:首次请求 false:非首次请求
-     * @var bool
-     */
-    private static $firstTag = true;
+    use \Traits\BootstrapTrait;
 
     private function __clone() {
     }
 
     public function _initBoot(\Yaf\Dispatcher $dispatcher) {
         if(self::$firstTag){
-            \SyFrame\BaseBootstrap::initBase($dispatcher);
-            \SyFrame\BaseBootstrap::initRoute($dispatcher);
-            \SyFrame\BaseBootstrap::initPlugins($dispatcher);
+            self::universalInit($dispatcher);
 
             //设置视图
-            $twigConfig = \SyFrame\BaseBootstrap::getAppConfigs('twig');
+            $twigConfig = self::getAppConfigs('twig');
             if(empty($twigConfig)){
                 throw new \Exception\Swoole\ServerException('twig配置不存在', \Constant\ErrorCode::TWIG_PARAM_ERROR);
             }
@@ -33,14 +27,13 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
             }
             $dispatcher->setView($twigView);
 
-//            $smartyConfig = \SyFrame\BaseBootstrap::getAppConfigs('smarty');
+//            $smartyConfig = self::getAppConfigs('smarty');
 //            if(empty($smartyConfig)){
 //                throw new \Exception\Swoole\ServerException('smarty配置不存在', \Constant\ErrorCode::SMARTY_PARAM_ERROR);
 //            }
 //
 //            $smartyView = new \DesignPatterns\Adapters\SmartyAdapter(null, $smartyConfig);
 //            $dispatcher->setView($smartyView);
-
             self::$firstTag = false;
         }
     }

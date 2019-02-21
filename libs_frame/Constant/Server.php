@@ -71,6 +71,7 @@ final class Server {
 
     //路由常量
     const ROUTE_TYPE_BASIC = 'basic'; //类型-基础路由
+    const ROUTE_TYPE_SIMPLE = 'simple'; //类型-简单路由
 
     //注册常量
     const REGISTRY_NAME_SERVICE_ERROR = 'SERVICE_ERROR'; //名称-服务错误
