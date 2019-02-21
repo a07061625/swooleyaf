@@ -431,6 +431,17 @@ class HttpServer extends BaseServer {
      */
     private function handleReqService(\swoole_http_request $request,array $initRspHeaders) : string {
         $uri = Tool::getArrayVal(self::$_reqServers, 'request_uri', '/');
+        $uriCheckRes = $this->checkRequestUri($uri);
+        if(strlen($uriCheckRes['error']) > 0){
+            $error = new Result();
+            $error->setCodeMsg(ErrorCode::COMMON_ROUTE_URI_FORMAT_ERROR, $uriCheckRes['error']);
+            $result = $error->getJson();
+            unset($error);
+            return $result;
+        }
+        $uri = $uriCheckRes['uri'];
+        self::$_reqServers['request_uri'] = $uriCheckRes['uri'];
+
         if (isset($this->preProcessMapFrame[$uri])) {
             $funcName = $this->preProcessMapFrame[$uri];
         } else if(isset($this->preProcessMapProject[$uri])){

@@ -704,6 +704,28 @@ abstract class BaseServer {
     }
 
     /**
+     * 检测请求URI
+     * @param string $uri
+     * @return array
+     */
+    protected function checkRequestUri(string $uri) : array {
+        $nowUri = $uri;
+        $checkRes = [
+            'uri' => '',
+            'error' => '',
+        ];
+
+        $uriRes = Tool::handleYafUri($nowUri);
+        if(strlen($uriRes) == 0){
+            $checkRes['uri'] = $nowUri;
+        } else {
+            $checkRes['error'] = $uriRes;
+        }
+
+        return $checkRes;
+    }
+
+    /**
      * 开启服务
      */
     abstract public function start();
