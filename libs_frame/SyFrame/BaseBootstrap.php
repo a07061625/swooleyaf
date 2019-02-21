@@ -8,14 +8,21 @@
 namespace SyFrame;
 
 use Constant\ErrorCode;
+use Constant\Server;
 use Exception\Swoole\ServerException;
+use SyFrame\Plugins\ActionLogPlugin;
+use SyFrame\Plugins\CheckConnectPlugin;
+use SyFrame\Plugins\FinishServicePlugin;
+use SyFrame\Plugins\MethodExistPlugin;
+use SyFrame\Plugins\ValidatorPlugin;
+use SyFrame\Routes\BasicRoute;
 use Tool\Tool;
 use Traits\SimpleTrait;
 use Yaf\Application;
 use Yaf\Dispatcher;
 use Yaf\Registry;
 
-class BaseBootstarp {
+class BaseBootstrap {
     use SimpleTrait;
 
     /**
@@ -99,6 +106,26 @@ class BaseBootstarp {
         $dispatcher->setDefaultModule(self::$defaultModule)
                    ->setDefaultController(self::$defaultController)
                    ->setDefaultAction(self::$defaultAction);
+    }
+
+    /**
+     * 初始化路由
+     * @param \Yaf\Dispatcher $dispatcher
+     */
+    public static function initRoute(Dispatcher $dispatcher) {
+        $dispatcher->getRouter()->addRoute(Server::ROUTE_TYPE_BASIC, new BasicRoute());
+    }
+
+    /**
+     * 初始化插件
+     * @param \Yaf\Dispatcher $dispatcher
+     */
+    public static function initPlugins(Dispatcher $dispatcher) {
+        $dispatcher->registerPlugin(new MethodExistPlugin());
+        $dispatcher->registerPlugin(new CheckConnectPlugin());
+        $dispatcher->registerPlugin(new ValidatorPlugin());
+        $dispatcher->registerPlugin(new FinishServicePlugin());
+        $dispatcher->registerPlugin(new ActionLogPlugin());
     }
 
     /**

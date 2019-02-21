@@ -16,17 +16,9 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
 
     public function _initBoot(\Yaf\Dispatcher $dispatcher) {
         if(self::$firstTag){
-            \SyFrame\BaseBootstarp::initBase($dispatcher);
-
-            //设置路由
-            $dispatcher->getRouter()->addRoute(\Constant\Server::ROUTE_TYPE_BASIC, new \SyFrame\Routes\BasicRoute());
-
-            //设置插件
-            $dispatcher->registerPlugin(new \SyFrame\Plugins\MethodExistPlugin());
-            $dispatcher->registerPlugin(new \SyFrame\Plugins\CheckConnectPlugin());
-            $dispatcher->registerPlugin(new \SyFrame\Plugins\ValidatorPlugin());
-            $dispatcher->registerPlugin(new \SyFrame\Plugins\FinishServicePlugin());
-            $dispatcher->registerPlugin(new \SyFrame\Plugins\ActionLogPlugin());
+            \SyFrame\BaseBootstrap::initBase($dispatcher);
+            \SyFrame\BaseBootstrap::initRoute($dispatcher);
+            \SyFrame\BaseBootstrap::initPlugins($dispatcher);
 
             self::$firstTag = false;
         }

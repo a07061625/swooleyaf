@@ -9,7 +9,7 @@ namespace SyFrame\Routes;
 
 use Constant\ErrorCode;
 use Exception\Validator\ValidatorException;
-use SyFrame\BaseBootstarp;
+use SyFrame\BaseBootstrap;
 use Yaf\Request_Abstract;
 use Yaf\Route_Interface;
 
@@ -36,10 +36,10 @@ class BasicRoute extends Request_Abstract implements Route_Interface {
     private $defaultAction = '';
 
     public function __construct() {
-        $this->acceptModules = BaseBootstarp::getAcceptModules();
-        $this->defaultModule = BaseBootstarp::getDefaultModule();
-        $this->defaultController = BaseBootstarp::getDefaultController();
-        $this->defaultAction = BaseBootstarp::getDefaultAction();
+        $this->acceptModules = BaseBootstrap::getAcceptModules();
+        $this->defaultModule = BaseBootstrap::getDefaultModule();
+        $this->defaultController = BaseBootstrap::getDefaultController();
+        $this->defaultAction = BaseBootstrap::getDefaultAction();
     }
 
     private function __clone() {
