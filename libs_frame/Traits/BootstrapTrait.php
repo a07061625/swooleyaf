@@ -46,11 +46,11 @@ trait BootstrapTrait {
     public static function universalInit(Dispatcher $dispatcher) {
         //设置应用配置
         $config = Application::app()->getConfig();
-        if(empty($config->toArray())){
+        self::$appConfigs = $config->toArray();
+        if(empty(self::$appConfigs)){
             throw new ServerException('APP配置不能为空', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
 
-        self::$appConfigs = $config->toArray();
         if (isset(self::$appConfigs['application']['modules'])) {
             $moduleArr = explode(',', self::$appConfigs['application']['modules']);
             foreach ($moduleArr as $eModule) {
