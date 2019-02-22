@@ -133,14 +133,15 @@ class RpcServer extends BaseServer {
         $error = null;
         $result = '';
         $httpObj = null;
+        $funcName = '';
         try {
             self::checkRequestCurrentLimit();
-            if (isset($this->preProcessMapFrame[$data['api_uri']])) {
-                $funcName = $this->preProcessMapFrame[$data['api_uri']];
-            } else if(isset($this->preProcessMapProject[$data['api_uri']])){
-                $funcName = $this->preProcessMapProject[$data['api_uri']];
-            } else {
-                $funcName = '';
+            if(strlen($data['api_uri']) == 5){
+                if (isset($this->preProcessMapFrame[$data['api_uri']])) {
+                    $funcName = $this->preProcessMapFrame[$data['api_uri']];
+                } else if(isset($this->preProcessMapProject[$data['api_uri']])){
+                    $funcName = $this->preProcessMapProject[$data['api_uri']];
+                }
             }
             if(strlen($funcName) > 0){
                 $result = $this->$funcName($data);

@@ -369,12 +369,13 @@ class HttpServer extends BaseServer {
         $uri = $uriCheckRes['uri'];
         self::$_reqServers['request_uri'] = $uriCheckRes['uri'];
 
-        if (isset($this->preProcessMapFrame[$uri])) {
-            $funcName = $this->preProcessMapFrame[$uri];
-        } else if(isset($this->preProcessMapProject[$uri])){
-            $funcName = $this->preProcessMapProject[$uri];
-        } else {
-            $funcName = '';
+        $funcName = '';
+        if(strlen($uri) == 5){
+            if (isset($this->preProcessMapFrame[$uri])) {
+                $funcName = $this->preProcessMapFrame[$uri];
+            } else if(isset($this->preProcessMapProject[$uri])){
+                $funcName = $this->preProcessMapProject[$uri];
+            }
         }
         if(strlen($funcName) > 0){
             return $this->$funcName($request);
