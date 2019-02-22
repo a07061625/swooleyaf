@@ -2,10 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: 姜伟
- * Date: 19-2-22
- * Time: 上午1:02
+ * Date: 2019/2/22 0022
+ * Time: 9:13
  */
-namespace Traits;
+namespace SyFrame;
 
 use Constant\ErrorCode;
 use Constant\Server;
@@ -18,15 +18,16 @@ use SyFrame\Plugins\ValidatorPlugin;
 use SyFrame\Routes\SimpleRoute;
 use Tool\Tool;
 use Yaf\Application;
+use Yaf\Bootstrap_Abstract;
 use Yaf\Dispatcher;
 use Yaf\Registry;
 
-trait BootstrapTrait {
+abstract class SimpleBootstrap extends Bootstrap_Abstract {
     /**
      * 首次请求标识,true:首次请求 false:非首次请求
      * @var bool
      */
-    private static $firstTag = true;
+    protected static $firstTag = true;
     /**
      * APP配置数组
      * @var array
@@ -43,7 +44,7 @@ trait BootstrapTrait {
      * @param \Yaf\Dispatcher $dispatcher
      * @throws \Exception\Swoole\ServerException
      */
-    public static function universalInit(Dispatcher $dispatcher) {
+    protected function universalInit(Dispatcher $dispatcher) {
         //设置应用配置
         $config = Application::app()->getConfig();
         self::$appConfigs = $config->toArray();
@@ -100,13 +101,13 @@ trait BootstrapTrait {
 
         $dispatcher->setDefaultModule(SY_DEFAULT_MODULE)
                    ->setDefaultController(SY_DEFAULT_CONTROLLER)
-                   ->setDefaultAction(SY_DEFAULT_ACTION);
+                   ->setDefaultAction(SY_DEFAULT_ACTION)
+                   ->registerPlugin(new MethodExistPlugin())
+                   ->registerPlugin(new CheckConnectPlugin())
+                   ->registerPlugin(new ValidatorPlugin())
+                   ->registerPlugin(new FinishServicePlugin())
+                   ->registerPlugin(new ActionLogPlugin());
         $dispatcher->getRouter()->addRoute(Server::ROUTE_TYPE_SIMPLE, new SimpleRoute());
-        $dispatcher->registerPlugin(new MethodExistPlugin());
-        $dispatcher->registerPlugin(new CheckConnectPlugin());
-        $dispatcher->registerPlugin(new ValidatorPlugin());
-        $dispatcher->registerPlugin(new FinishServicePlugin());
-        $dispatcher->registerPlugin(new ActionLogPlugin());
     }
 
     /**

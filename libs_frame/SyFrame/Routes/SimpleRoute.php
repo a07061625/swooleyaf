@@ -9,7 +9,7 @@ namespace SyFrame\Routes;
 
 use Constant\ErrorCode;
 use Exception\Validator\ValidatorException;
-use Traits\BootstrapTrait;
+use SyFrame\SimpleBootstrap;
 use Yaf\Request_Abstract;
 use Yaf\Route_Interface;
 
@@ -21,7 +21,7 @@ class SimpleRoute extends Request_Abstract implements Route_Interface {
     private $acceptModules = [];
 
     public function __construct() {
-        $this->acceptModules = BootstrapTrait::getAcceptModules();
+        $this->acceptModules = SimpleBootstrap::getAcceptModules();
     }
 
     private function __clone() {

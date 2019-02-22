@@ -4,15 +4,13 @@
  * 这些方法, 都接受一个参数:Yaf_Dispatcher $dispatcher
  * 调用的次序, 和申明的次序相同
  */
-class Bootstrap extends \Yaf\Bootstrap_Abstract {
-    use \Traits\BootstrapTrait;
-
+class Bootstrap extends \SyFrame\SimpleBootstrap {
     private function __clone() {
     }
 
     public function _initBoot(\Yaf\Dispatcher $dispatcher) {
         if(self::$firstTag){
-            self::universalInit($dispatcher);
+            $this->universalInit($dispatcher);
 
             //设置视图
             $twigConfig = self::getAppConfigs('twig');
