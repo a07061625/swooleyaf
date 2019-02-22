@@ -141,4 +141,7 @@ final class Project extends ProjectBase {
     const WXMINI_OPTION_STATUS_RELEASED = 6; //小程序操作状态-已发布
     const WXMINI_EXPIRE_TOKEN = 7000; //小程序token超时时间,单位为秒
     const WXMINI_DEFAULT_CLIENT_IP = '127.0.0.1'; //默认客户端IP
+
+    const PRE_PROCESS_TAG_HTTP_PROJECT_TEST = '/a000'; //HTTP服务项目标识-测试
+    const PRE_PROCESS_TAG_RPC_PROJECT_TEST = '/a000'; //RPC服务项目标识-测试
 }
