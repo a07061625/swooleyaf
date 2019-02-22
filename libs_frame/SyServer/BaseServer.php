@@ -84,6 +84,11 @@ abstract class BaseServer {
      */
     protected static $_serverToken = '';
     /**
+     * 唯一码,作为服务端的唯一标识
+     * @var string
+     */
+    protected static $_uniqueToken = '';
+    /**
      * 服务配置信息表
      * @var \swoole_table
      */
@@ -186,6 +191,7 @@ abstract class BaseServer {
 
         //生成服务唯一标识
         self::$_serverToken = hash('crc32b', $this->_configs['server']['host'] . ':' . $this->_configs['server']['port']);
+        $this->createUniqueToken();
 
         //设置日志目录
         Log::setPath(SY_LOG_PATH);
@@ -245,6 +251,23 @@ abstract class BaseServer {
             if(!extension_loaded($extName)){
                 exit('扩展' . $extName . '未加载' . PHP_EOL);
             }
+        }
+    }
+
+    private function createUniqueToken() {
+        $macArr = [];
+        $command = 'ifconfig -a | awk \'{for(i=1;i<=NF;i++)if($i ~ "ethe")print $(i+1);}\'';
+        exec($command, $macArr);
+        foreach ($macArr as $eMac) {
+            $macAddress = trim($eMac);
+            if(strlen($macAddress) > 0){
+                self::$_uniqueToken = hash('crc32b', $macAddress . ':' . $this->_port);
+                break;
+            }
+        }
+
+        if(strlen(self::$_uniqueToken) == 0){
+            exit('生成唯一码失败' . PHP_EOL);
         }
     }
 
@@ -496,6 +519,7 @@ abstract class BaseServer {
         self::$_syServer->column('storepath_resources', \swoole_table::TYPE_STRING, 150);
         self::$_syServer->column('storepath_cache', \swoole_table::TYPE_STRING, 150);
         self::$_syServer->column('token_etime', \swoole_table::TYPE_INT, 8);
+        self::$_syServer->column('unique_num', \swoole_table::TYPE_INT, 8);
         self::$_syServer->create();
 
         self::$_syHealths = new \swoole_table($this->_configs['server']['cachenum']['hc']);
@@ -726,6 +750,17 @@ abstract class BaseServer {
     }
 
     /**
+     * 获取唯一数值
+     * @return array
+     */
+    public static function getUniqueNum() : array {
+        return [
+            'token' => self::$_uniqueToken,
+            'unique_num' => self::$_syServer->incr(self::$_serverToken, 'unique_num'),
+        ];
+    }
+
+    /**
      * 开启服务
      */
     abstract public function start();
@@ -907,6 +942,7 @@ abstract class BaseServer {
             'storepath_resources' => $config['dir']['store']['resources'],
             'storepath_cache' => $config['dir']['store']['cache'],
             'token_etime' => time() + 7200,
+            'unique_num' => 100000000,
         ]);
 
         //设置唯一ID自增基数

@@ -14,6 +14,7 @@ use DesignPatterns\Factories\CacheSimpleFactory;
 use Exception\Common\CheckException;
 use PHPZxing\PHPZxingDecoder;
 use PHPZxing\ZxingImage;
+use SyServer\BaseServer;
 use Traits\SimpleTrait;
 use Yaf\Registry;
 
@@ -44,11 +45,17 @@ class Tool {
 
     /**
      * 生成唯一ID
+     * @param string $createType 生成类型,可选值:redis(默认) swoole
      * @return string
      */
-    public static function createUniqueId() : string {
-        $num = CacheSimpleFactory::getRedisInstance()->incr(Project::DATA_KEY_CACHE_UNIQUE_ID);
-        return date('YmdHis') . substr($num, -8);
+    public static function createUniqueId(string $createType='redis') : string {
+        if($createType == 'redis'){
+            $num = CacheSimpleFactory::getRedisInstance()->incr(Project::DATA_KEY_CACHE_UNIQUE_ID);
+            return date('YmdHis') . substr($num, -8);
+        } else {
+            $arr = BaseServer::getUniqueNum();
+            return $arr['token'] . date('YmdHis') . substr((string)$arr['unique_num'], -8);
+        }
     }
 
     /**
