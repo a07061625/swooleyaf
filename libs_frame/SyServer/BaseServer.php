@@ -256,7 +256,7 @@ abstract class BaseServer {
 
     private function createUniqueToken() {
         $macArr = [];
-        $command = 'ifconfig -a | awk \'{for(i=1;i<=NF;i++)if($i ~ "ethe")print $(i+1);}\'';
+        $command = 'ifconfig -a | awk \'{for(i=1;i<=NF;i++)if($i ~ "ether")print $(i+1);}\'';
         exec($command, $macArr);
         foreach ($macArr as $eMac) {
             $macAddress = trim($eMac);
