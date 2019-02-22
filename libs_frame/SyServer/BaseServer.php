@@ -260,7 +260,7 @@ abstract class BaseServer {
         exec($command, $macArr);
         foreach ($macArr as $eMac) {
             $macAddress = trim($eMac);
-            if(strlen($macAddress) > 0){
+            if(strlen($macAddress) == 17){
                 self::$_uniqueToken = hash('crc32b', $macAddress . ':' . $this->_port);
                 break;
             }
