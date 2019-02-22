@@ -42,7 +42,13 @@ class SimpleRoute extends Request_Abstract implements Route_Interface {
         $controllerName = isset($uriArr[2]) ? ucfirst($uriArr[2]) : SY_DEFAULT_CONTROLLER;
         $actionName = isset($uriArr[3]) ? lcfirst($uriArr[3]) : SY_DEFAULT_ACTION;
 
-        $request->setRequestUri('/' . $moduleName . '/' . $controllerName . '/' . $actionName);
+        $requestUri = '/' . $moduleName . '/' . $controllerName . '/' . $actionName;
+        if (isset($uriArr[4])) {
+            unset($uriArr[0], $uriArr[1], $uriArr[2], $uriArr[3]);
+            $requestUri .= '/' . implode('/', $uriArr);
+        }
+
+        $request->setRequestUri($requestUri);
         $request->setModuleName($moduleName);
         $request->setControllerName($controllerName);
         $request->setActionName($actionName);
