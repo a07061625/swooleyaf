@@ -70,7 +70,6 @@ final class Server {
     const FUSE_MSG_REQUEST_ERROR = '{"code":10001,"data":[],"msg":"服务繁忙,请稍后重试"}'; //请求出错提示消息
 
     //路由常量
-    const ROUTE_TYPE_BASIC = 'basic'; //类型-基础路由
     const ROUTE_TYPE_SIMPLE = 'simple'; //类型-简单路由
 
     //注册常量
