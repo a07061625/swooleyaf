@@ -47,4 +47,7 @@ final class Project extends ProjectBase {
     const MESSAGE_QUEUE_TOPIC_ADD_LOG = 'a000'; //主题-添加日志
     const MESSAGE_QUEUE_TOPIC_REQ_HEALTH_CHECK = 'a001'; //主题-请求健康检查
     const MESSAGE_QUEUE_TOPIC_TEST = SY_ENV . SY_PROJECT . '0000'; //主题-测试
+
+    const PRE_PROCESS_TAG_HTTP_PROJECT_TEST = '/a000'; //HTTP服务项目标识-测试
+    const PRE_PROCESS_TAG_RPC_PROJECT_TEST = '/a000'; //RPC服务项目标识-测试
 }
