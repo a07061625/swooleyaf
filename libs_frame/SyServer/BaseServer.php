@@ -916,7 +916,7 @@ abstract class BaseServer {
             if(!CacheSimpleFactory::getRedisInstance()->set(Project::DATA_KEY_CACHE_UNIQUE_ID, $randomNum)){
                 throw new ServerException('设置唯一ID自增基数出错', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
             };
-        } else if($num > 1000000000){
+        } else if($num > 500000000){
             $reduceNum = $num - 100000000 - ($num % 100000000);
             CacheSimpleFactory::getRedisInstance()->decrBy(Project::DATA_KEY_CACHE_UNIQUE_ID, $reduceNum);
         }
