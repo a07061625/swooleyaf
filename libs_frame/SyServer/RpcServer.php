@@ -18,10 +18,12 @@ use Tool\Tool;
 use Traits\PreProcessRpcFrameTrait;
 use Traits\PreProcessRpcProjectTrait;
 use Traits\RpcServerTrait;
+use Traits\Server\BasicRpcTrait;
 use Yaf\Registry;
 use Yaf\Request\Http;
 
 class RpcServer extends BaseServer {
+    use BasicRpcTrait;
     use RpcServerTrait;
     use PreProcessRpcFrameTrait;
     use PreProcessRpcProjectTrait;
@@ -54,16 +56,6 @@ class RpcServer extends BaseServer {
     }
 
     private function __clone() {
-    }
-
-    private function checkServerRpc() {
-        $this->checkServerBase();
-        $this->checkServerRpcTrait();
-    }
-
-    private function initTableRpc() {
-        $this->initTableBase();
-        $this->initTableRpcTrait();
     }
 
     /**
