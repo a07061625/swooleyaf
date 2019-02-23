@@ -12,6 +12,13 @@ abstract class BaseContainer {
     protected $reflectMap = []; //绑定集合
 
     /**
+     * @return array
+     */
+    public function getRegistryMap() : array {
+        return $this->registryMap;
+    }
+
+    /**
      * 注入绑定
      * @param string $name 绑定名称
      * @param callable $resolver 回调函数
@@ -27,7 +34,7 @@ abstract class BaseContainer {
      */
     public function getObj($tag) {
         $obj = null;
-        $key = $tag . '';
+        $key = (string)$tag;
         if ((strlen($key) > 0) && isset($this->reflectMap[$key])) {
             $resolver = $this->reflectMap[$key];
             $obj = $resolver();
