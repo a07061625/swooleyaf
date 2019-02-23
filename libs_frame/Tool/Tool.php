@@ -658,4 +658,34 @@ class Tool {
         $uri = $tempUri;
         return '';
     }
+
+    /**
+     * 执行系统命令
+     * @param string $command
+     * @return array
+     */
+    public static function execSystemCommand(string $command) : array {
+        $trueCommand = trim($command);
+        if(strlen($trueCommand) == 0){
+            return [
+                'code' => 9999,
+                'msg' => '执行命令不能为空',
+            ];
+        }
+
+        $code = 0;
+        $output = [];
+        $msg = exec($trueCommand, $output, $code);
+        if($code == 0){
+            return [
+                'code' => 0,
+                'data' => $output,
+            ];
+        } else {
+            return [
+                'code' => $code,
+                'msg' => $msg,
+            ];
+        }
+    }
 }

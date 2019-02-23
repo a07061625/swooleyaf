@@ -197,10 +197,12 @@ abstract class BaseServer {
     }
 
     private function createUniqueToken() {
-        $macArr = [];
-        $command = 'ifconfig -a | awk \'{for(i=1;i<=NF;i++)if($i ~ "ether")print $(i+1);}\'';
-        exec($command, $macArr);
-        foreach ($macArr as $eMac) {
+        $execRes = Tool::execSystemCommand('ifconfig -a | awk \'{for(i=1;i<=NF;i++)if($i ~ "ether")print $(i+1);}\'');
+        if($execRes['code'] > 0){
+            exit($execRes['msg'] . PHP_EOL);
+        }
+
+        foreach ($execRes['data'] as $eMac) {
             $macAddress = trim($eMac);
             if(strlen($macAddress) == 17){
                 self::$_uniqueToken = hash('crc32b', $macAddress . ':' . $this->_port);
@@ -465,27 +467,24 @@ abstract class BaseServer {
      */
     public function killZombies(){
         //清除僵尸进程
-        $zombieIds = [];
         $commandZombies = 'ps -A -o pid,ppid,stat,cmd|grep ' . SY_MODULE . '|awk \'{if(($3 == "Z") || ($3 == "z")) print $1}\'';
-        exec($commandZombies, $zombieIds);
-        if(!empty($zombieIds)){
-            system('kill -9 ' . implode(' ', $zombieIds));
+        $execRes = Tool::execSystemCommand($commandZombies);
+        if(($execRes['code'] == 0) && !empty($execRes['data'])){
+            system('kill -9 ' . implode(' ', $execRes['data']));
         }
 
         //清除worker中断进程
-        $workerIds = [];
         $commandWorkers = 'ps -A -o pid,ppid,stat,cmd|grep ' . Server::PROCESS_TYPE_WORKER . SY_MODULE . '|awk \'{if($2 == "1") print $1}\'';
-        exec($commandWorkers, $workerIds);
-        if(!empty($workerIds)){
-            system('kill -9 ' . implode(' ', $workerIds));
+        $execRes = Tool::execSystemCommand($commandWorkers);
+        if(($execRes['code'] == 0) && !empty($execRes['data'])){
+            system('kill -9 ' . implode(' ', $execRes['data']));
         }
 
         //清除task中断进程
-        $taskIds = [];
         $commandTasks = 'ps -A -o pid,ppid,stat,cmd|grep ' . Server::PROCESS_TYPE_TASK . SY_MODULE . '|awk \'{if($2 == "1") print $1}\'';
-        exec($commandTasks, $taskIds);
-        if(!empty($taskIds)){
-            system('kill -9 ' . implode(' ', $taskIds));
+        $execRes = Tool::execSystemCommand($commandTasks);
+        if(($execRes['code'] == 0) && !empty($execRes['data'])){
+            system('kill -9 ' . implode(' ', $execRes['data']));
         }
 
         $commandTip = 'echo -e "\e[1;36m kill ' . SY_MODULE . ' zombies: \e[0m \e[1;32m \t[success] \e[0m"';
