@@ -38,9 +38,6 @@ class MethodExistPlugin extends Plugin_Abstract {
 
     public function routerShutdown(Request_Abstract $request,Response_Abstract $response) {
         $uriArr = explode('/', $request->getRequestUri());
-        if(count($uriArr) != 4){
-            throw new ValidatorException('路由格式错误', ErrorCode::COMMON_ROUTE_URI_FORMAT_ERROR);
-        }
 
         $controllerTag = '\\' . strtolower($uriArr[1] . $uriArr[2]);
         if(!isset($this->existMethods[$controllerTag])){
