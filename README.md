@@ -13,12 +13,6 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restfule api�
 ## 搭建脚本
 请移步至项目 https://github.com/a07061625/swooleyaf_install.git
 
-## 基础环境
-- PHP7.1.0+
-- redis3.2+
-- etcd3
-- inotify
-
 ## 必要扩展
 - swoole4.2.8+
 - msgpack
