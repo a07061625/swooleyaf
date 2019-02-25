@@ -69,11 +69,16 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restfule api�
 - 其他目录: 项目模块目录,每一个目录对应一个项目模块
 
 ## 命令
-    //服务命令-启动服务
+**必须将helper_sytask.php文件加入到linux系统cron执行任务中**
+
+### 启动服务
     /usr/local/php7/bin/php helper_service_manager.php -s start-all
-    //服务命令-关闭服务
+### 关闭服务
     /usr/local/php7/bin/php helper_service_manager.php -s stop-all
-    //必须将helper_sytask.php文件加入到linux系统cron执行任务中
+### 重启服务
+    /usr/local/php7/bin/php helper_service_manager.php -s restart-all
+### 清理僵尸进程
+    /usr/local/php7/bin/php helper_service_manager.php -s kz-all
 
 ## 预定义常量
 - SY_ROOT //框架根目录
