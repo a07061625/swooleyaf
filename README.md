@@ -3,6 +3,7 @@
 [![License](static/images/license.svg)](LICENSE)
 ![](static/images/php.svg)
 ![](static/images/swoole.svg)
+![](static/images/yaf.svg)
 ![](static/images/redis.svg)
 
 俗语云:人无我有,人有我优.佳优框架(SwooleYaf)立志于创造一个优秀的框架,由佳而优,以美好的梦想为起点,为辉煌的未来加油
