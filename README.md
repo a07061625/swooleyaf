@@ -96,10 +96,10 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restfule api�
 
 ## 服务管理
 ### 获取框架概览信息
-    请求地址: http://api.xxx.com/syinfo
+    请求地址: http://api.xxx.com/0000
 
 ### 获取php信息
-    请求地址: http://api.xxx.com/phpinfo
+    请求地址: http://api.xxx.com/0001
 
 ## 性能压测
 系统配置: <br/>
