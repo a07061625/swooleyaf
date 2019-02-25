@@ -369,16 +369,16 @@ class HttpServer extends BaseServer {
         $uri = $uriCheckRes['uri'];
         self::$_reqServers['request_uri'] = $uriCheckRes['uri'];
 
-        $funcName = '';
         if(strlen($uri) == 5){
+            $funcName = '';
             if (isset($this->preProcessMapFrame[$uri])) {
                 $funcName = $this->preProcessMapFrame[$uri];
             } else if(isset($this->preProcessMapProject[$uri])){
                 $funcName = $this->preProcessMapProject[$uri];
             }
-        }
-        if(strlen($funcName) > 0){
-            return $this->$funcName($request);
+            if(strlen($funcName) > 0){
+                return $this->$funcName($request);
+            }
         }
 
         $healthTag = $this->sendReqHealthCheckTask($uri);
