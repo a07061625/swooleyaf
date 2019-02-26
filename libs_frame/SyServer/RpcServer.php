@@ -90,23 +90,18 @@ class RpcServer extends BaseServer {
         $this->initTableRpc();
         //初始化swoole服务
         $this->_server = new \swoole_server($this->_host, $this->_port);
-        $this->_server->set($this->_configs['swoole']);
-        //注册方法
-        $this->_server->on('start', [$this, 'onStart']);
-        $this->_server->on('managerStart', [$this, 'onManagerStart']);
-        $this->_server->on('workerStart', [$this, 'onWorkerStart']);
-        $this->_server->on('workerStop', [$this, 'onWorkerStop']);
-        $this->_server->on('workerError', [$this, 'onWorkerError']);
-        $this->_server->on('shutdown', [$this, 'onShutdown']);
-        $this->_server->on('receive', [$this, 'onReceive']);
-        $this->_server->on('task', [$this, 'onTask']);
-        $this->_server->on('finish', [$this, 'onFinish']);
-        $this->_server->on('close', [$this, 'onClose']);
-
-        echo "\e[1;36m start " . SY_MODULE . ":\e[0m \e[1;32m \t[success] \e[0m" . PHP_EOL;
-
-        //启动服务
-        $this->_server->start();
+        $this->baseStart([
+            'start' => 'onStart',
+            'managerStart' => 'onManagerStart',
+            'workerStart' => 'onWorkerStart',
+            'workerStop' => 'onWorkerStop',
+            'workerError' => 'onWorkerError',
+            'shutdown' => 'onShutdown',
+            'receive' => 'onReceive',
+            'task' => 'onTask',
+            'finish' => 'onFinish',
+            'close' => 'onClose',
+        ]);
     }
 
     private function initReceive(\swoole_server $server) {
