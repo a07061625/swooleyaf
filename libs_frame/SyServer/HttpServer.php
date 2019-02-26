@@ -369,16 +369,15 @@ class HttpServer extends BaseServer {
         $uri = $uriCheckRes['uri'];
         self::$_reqServers['request_uri'] = $uriCheckRes['uri'];
 
-        if(strlen($uri) == 5){
-            $funcName = '';
-            if (isset($this->preProcessMapFrame[$uri])) {
-                $funcName = $this->preProcessMapFrame[$uri];
-            } else if(isset($this->preProcessMapProject[$uri])){
-                $funcName = $this->preProcessMapProject[$uri];
-            }
-            if(strlen($funcName) > 0){
-                return $this->$funcName($request);
-            }
+        $funcName = $this->getPreProcessFunction($uri, $this->preProcessMapFrame, $this->preProcessMapProject);
+        if(is_bool($funcName)){
+            $error = new Result();
+            $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '预处理函数命名不合法');
+            $result = $error->getJson();
+            unset($error);
+            return $result;
+        } else if(strlen($funcName) > 0){
+            return $this->$funcName($request);
         }
 
         $healthTag = $this->sendReqHealthCheckTask($uri);
