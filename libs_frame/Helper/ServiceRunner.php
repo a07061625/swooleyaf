@@ -67,6 +67,9 @@ class ServiceRunner {
             case 'kz' :
                 $server->killZombies();
                 break;
+            case 'startstatus' :
+                $server->getStartStatus();
+                break;
             default :
                 $server->help();
         }

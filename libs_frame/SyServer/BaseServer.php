@@ -449,6 +449,30 @@ abstract class BaseServer {
     }
 
     /**
+     * 基础启动服务
+     * @param array $registerMap
+     */
+    protected function baseStart(array $registerMap) {
+        $this->_server->set($this->_configs['swoole']);
+        //绑定注册方法
+        foreach ($registerMap as $eventName => $funcName) {
+            $this->_server->on($eventName, [$this, $funcName]);
+        }
+
+        //启动服务
+        $tipMsg = '\e[1;36m start ' . SY_MODULE . ': \e[0m';
+        if($this->_server->start()){
+            $tipMsg .= ' \e[1;32m \t[success]';
+        } else {
+            $tipMsg .= ' \e[1;31m \t[fail]';
+        }
+        $tipMsg .= ' \e[0m';
+        $fileObj = fopen(SY_ROOT . '/' . SY_MODULE . '.txt', 'wb');
+        fwrite($fileObj, $tipMsg);
+        fclose($fileObj);
+    }
+
+    /**
      * 开启服务
      */
     abstract public function start();
@@ -458,7 +482,7 @@ abstract class BaseServer {
      */
     public function help(){
         print_r('帮助信息' . PHP_EOL);
-        print_r('-s 操作类型: restart-重启 stop-关闭 start-启动 kz-清理僵尸进程' . PHP_EOL);
+        print_r('-s 操作类型: restart-重启 stop-关闭 start-启动 kz-清理僵尸进程 startstatus-启动状态' . PHP_EOL);
         print_r('-n 项目名' . PHP_EOL);
         print_r('-module 模块名' . PHP_EOL);
         print_r('-port 端口,取值范围为1001-65535' . PHP_EOL);
@@ -468,23 +492,20 @@ abstract class BaseServer {
      * 关闭服务
      */
     public function stop(){
-        $str = 'echo -e "\e[1;36m stop ' . SY_MODULE . ': \e[0m';
         if(is_file($this->_pidFile) && is_readable($this->_pidFile)){
-            $pid = file_get_contents($this->_pidFile);
+            $pid = (int)file_get_contents($this->_pidFile);
         } else {
-            $pid = '';
+            $pid = 0;
         }
-        if($pid){
-            \swoole_process::kill($pid);
+
+        $msg = ' \e[1;31m \t[fail]';
+        if($pid > 0){
+            if(\swoole_process::kill($pid)){
+                $msg = ' \e[1;32m \t[success]';
+            }
             file_put_contents($this->_pidFile, '');
-
-            $str .= ' \e[1;32m \t[success] \e[0m';
-        } else {
-            $str .= ' \e[1;31m \t[fail] \e[0m';
         }
-        $str .= '"';
-        system($str);
-
+        system('echo -e "\e[1;36m stop ' . SY_MODULE . ': \e[0m' . $msg . ' \e[0m"');
         exit();
     }
 
@@ -515,6 +536,22 @@ abstract class BaseServer {
 
         $commandTip = 'echo -e "\e[1;36m kill ' . SY_MODULE . ' zombies: \e[0m \e[1;32m \t[success] \e[0m"';
         system($commandTip);
+    }
+
+    /**
+     * 获取服务启动状态
+     */
+    public function getStartStatus(){
+        $fileName = SY_ROOT . '/' . SY_MODULE . '.txt';
+        $fileContent = file_get_contents($fileName);
+        unlink($fileName);
+        if(is_string($fileContent) && (strlen($fileContent) > 0)){
+            $command = 'echo -e "' . $fileContent . '"';
+        } else {
+            $command = 'echo "get start status fail"';
+        }
+        system($command);
+        exit();
     }
 
     /**
