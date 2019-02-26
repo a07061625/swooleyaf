@@ -11,6 +11,7 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
 - 底层基于高性能通信框架swoole,业务框架以高性能MVC框架yaf为骨架
 - 模块之间消息通信以msgpack为基础,自定义通信协议,降低通信数据大小,提升通信安全性
 - 内置接口签名,异步任务,定时任务等实用功能,生产环境可实现api接口处理平均耗时在20毫秒左右
+- 基于该框架搭建项目请参考下面的搭建项目章节
 
 # 环境要求
 ## 基础环境
@@ -41,6 +42,28 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
 
 ## 其他
 - gcc4.8+ //php7编译用gcc4.8+会开启Global Register for opline and execute_data支持, 这个会带来5%左右的性能提升
+
+# 搭建项目
+## 初始设置
+    //建议在php.ini所在目录创建php-cli.ini和php-fpm-fcgi.ini两个配置文件
+    //前一个为cli模式下的环境配置,后一个为fpm模式下的环境配置
+    //好处在于可以为cli模式和fpm模式设置独立的配置
+    vim php-cli.ini
+        yaconf.directory="yaconf配置目录,不以/结尾"
+    mv yaconf/* yaconf配置目录/
+## 初始设置建议
+**强烈建议将libs_frame目录移出到一个单独的目录,好处在于可以多个项目共用同一个公共库,只要公共库升级,那所有依赖公共库的项目框架自动升级**
+
+    mkdir 公共库目录
+    mv -r libs_frame/ 公共库目录/
+
+## 项目设置
+- 在yaconf配置目录下的所有ini文件中,添加对应的项目配置块
+- 配置块的标识由help_load.php文件中的SY_ENV常量拼接上SY_PROJECT常量组成
+- SY_ENV的取值有dev,product两个,分别代表测试环境和正式环境
+- SY_PROJECT是由数字和小写字母组成的长度为3的字符串,不同项目必须不同
+- 修改yaconf配置目录/project.ini中对应配置块下的dir.libs.frame配置为"公共库目录/libs_frame/"
+- 以上步骤配置完成以后即创建了一个新的项目
 
 # 框架介绍
 ## 使用介绍
