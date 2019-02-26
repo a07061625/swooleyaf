@@ -133,25 +133,23 @@ class RpcServer extends BaseServer {
         $error = null;
         $result = '';
         $httpObj = null;
-        $funcName = '';
         try {
             self::checkRequestCurrentLimit();
-            if(strlen($data['api_uri']) == 5){
-                if (isset($this->preProcessMapFrame[$data['api_uri']])) {
-                    $funcName = $this->preProcessMapFrame[$data['api_uri']];
-                } else if(isset($this->preProcessMapProject[$data['api_uri']])){
-                    $funcName = $this->preProcessMapProject[$data['api_uri']];
-                }
-            }
-            if(strlen($funcName) > 0){
-                $result = $this->$funcName($data);
-            } else {
-                $httpObj = new Http($data['api_uri']);
-                $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
-            }
-            if(strlen($result) == 0){
+            $funcName = $this->getPreProcessFunction($data['api_uri'], $this->preProcessMapFrame, $this->preProcessMapProject);
+            if(is_bool($funcName)){
                 $error = new Result();
-                $error->setCodeMsg(ErrorCode::SWOOLE_SERVER_NO_RESPONSE_ERROR, '未设置响应数据');
+                $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '预处理函数命名不合法');
+            } else {
+                if(strlen($funcName) > 0){
+                    $result = $this->$funcName($data);
+                } else {
+                    $httpObj = new Http($data['api_uri']);
+                    $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
+                }
+                if(strlen($result) == 0){
+                    $error = new Result();
+                    $error->setCodeMsg(ErrorCode::SWOOLE_SERVER_NO_RESPONSE_ERROR, '未设置响应数据');
+                }
             }
         } catch (\Exception $e) {
             if (!($e instanceof ValidatorException)) {
