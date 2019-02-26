@@ -510,22 +510,6 @@ abstract class BaseServer {
     }
 
     /**
-     * 获取服务启动状态
-     */
-    public function getStartStatus(){
-        $fileName = SY_ROOT . '/' . SY_MODULE . '.txt';
-        $fileContent = file_get_contents($fileName);
-        unlink($fileName);
-        if(is_string($fileContent) && (strlen($fileContent) > 0)){
-            $command = 'echo -e "' . $fileContent . '"';
-        } else {
-            $command = 'echo "get start status fail"';
-        }
-        system($command);
-        exit();
-    }
-
-    /**
      * 清理僵尸进程
      */
     public function killZombies(){
@@ -552,6 +536,22 @@ abstract class BaseServer {
 
         $commandTip = 'echo -e "\e[1;36m kill ' . SY_MODULE . ' zombies: \e[0m \e[1;32m \t[success] \e[0m"';
         system($commandTip);
+    }
+
+    /**
+     * 获取服务启动状态
+     */
+    public function getStartStatus(){
+        $fileName = SY_ROOT . '/' . SY_MODULE . '.txt';
+        $fileContent = file_get_contents($fileName);
+        unlink($fileName);
+        if(is_string($fileContent) && (strlen($fileContent) > 0)){
+            $command = 'echo -e "' . $fileContent . '"';
+        } else {
+            $command = 'echo "get start status fail"';
+        }
+        system($command);
+        exit();
     }
 
     /**
