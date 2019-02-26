@@ -548,7 +548,7 @@ abstract class BaseServer {
         if(is_string($fileContent) && (strlen($fileContent) > 0)){
             $command = 'echo -e "' . $fileContent . '"';
         } else {
-            $command = 'echo -e "\e[1;31m start status fail \e[0m"';
+            $command = 'echo -e "\e[1;31m ' . SY_MODULE . ' start status fail \e[0m"';
         }
         system($command);
         exit();
