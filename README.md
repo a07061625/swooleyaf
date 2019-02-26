@@ -56,6 +56,7 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
 
     mkdir 公共库目录
     mv -r libs_frame/ 公共库目录/
+    //建议最好将公共库目录设置为一个git项目,方便后续公共库文件更新
 
 ## 项目设置
 - 在yaconf配置目录下的所有ini文件中,添加对应的项目配置块
