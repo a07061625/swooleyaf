@@ -64,6 +64,10 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
 - 修改yaconf配置目录/project.ini中对应配置块下的dir.libs.frame配置为"公共库目录/libs_frame/"
 - 以上步骤配置完成以后即创建了一个新的项目
 
+## PhpStorm开发配置
+**打开控制面板并如下图设置即可**
+![](static/images/project_phpstorm.png)
+
 # 框架介绍
 ## 使用介绍
 - 操作系统只支持linux,不支持windows,因为pcntl扩展,nohup,inotify只有linux才可用
