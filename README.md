@@ -59,7 +59,7 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
 
 ## 项目设置
 - 在yaconf配置目录下的所有ini文件中,添加对应的项目配置块
-- 配置块的标识由help_load.php文件中的SY_ENV常量拼接上SY_PROJECT常量组成
+- 配置块的标识由helper_load.php文件中的SY_ENV常量拼接上SY_PROJECT常量组成
 - SY_ENV的取值有dev,product两个,分别代表测试环境和正式环境
 - SY_PROJECT是由数字和小写字母组成的长度为3的字符串,不同项目必须不同
 - 修改yaconf配置目录/project.ini中对应配置块下的dir.libs.frame配置为"公共库目录/libs_frame/"
