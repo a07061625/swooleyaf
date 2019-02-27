@@ -71,6 +71,11 @@ abstract class BaseServer {
      */
     protected $_syPack = null;
     /**
+     * 提示文件
+     * @var string
+     */
+    protected $_tipFile = '';
+    /**
      * 请求ID
      * @var string
      */
@@ -129,6 +134,7 @@ abstract class BaseServer {
         $this->_host = $this->_configs['server']['host'];
         $this->_port = $this->_configs['server']['port'];
         $this->_pidFile = SY_ROOT . '/pidfile/' . SY_MODULE . $this->_port . '.pid';
+        $this->_tipFile = SY_ROOT . '/tipfile/' . SY_MODULE . $this->_port . '.txt';
         $this->_syPack = new SyPack();
 
         //生成服务唯一标识
@@ -467,7 +473,7 @@ abstract class BaseServer {
             $tipMsg .= ' \e[1;31m \t[fail]';
         }
         $tipMsg .= ' \e[0m';
-        $fileObj = fopen(SY_ROOT . '/' . SY_MODULE . '.txt', 'wb');
+        $fileObj = fopen($this->_tipFile, 'wb');
         fwrite($fileObj, $tipMsg);
         fclose($fileObj);
     }
@@ -542,13 +548,13 @@ abstract class BaseServer {
      * 获取服务启动状态
      */
     public function getStartStatus(){
-        $fileName = SY_ROOT . '/' . SY_MODULE . '.txt';
-        $fileContent = file_get_contents($fileName);
-        unlink($fileName);
-        if(is_string($fileContent) && (strlen($fileContent) > 0)){
-            $command = 'echo -e "' . $fileContent . '"';
-        } else {
-            $command = 'echo -e "\e[1;31m ' . SY_MODULE . ' start status fail \e[0m"';
+        $fileContent = file_get_contents($this->_tipFile);
+        $command = 'echo -e "\e[1;31m ' . SY_MODULE . ' start status fail \e[0m"';
+        if(is_string($fileContent)){
+            if(strlen($fileContent) > 0){
+                $command = 'echo -e "' . $fileContent . '"';
+            }
+            file_put_contents($this->_tipFile, '');
         }
         system($command);
         exit();
@@ -649,6 +655,8 @@ abstract class BaseServer {
         Dir::create($config['dir']['store']['music']);
         Dir::create($config['dir']['store']['resources']);
         Dir::create($config['dir']['store']['cache']);
+        Dir::create(SY_ROOT . '/pidfile/');
+        Dir::create(SY_ROOT . '/tipfile/');
 
         //为了防止定时任务出现重启服务的时候,导致重启期间(1-3s内)的定时任务无法处理,将定时器时间初始化为当前时间戳之前6秒
         $timerAdvanceTime = (int)Tool::getArrayVal($config, 'timer.time.advance', 6, true);
