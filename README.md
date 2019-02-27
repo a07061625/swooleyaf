@@ -99,6 +99,7 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
 - libs_frame: 框架公共类目录
 - libs_project: 项目公共类目录
 - pidfile: 项目进程pid文件存放目录
+- tipfile: 项目进程提示文件存放目录
 - static: 静态文件目录
 - yaconf: 框架配置文件目录,该目录内的配置文件为样例,使用时需要将配置文件移动到php.ini配置文件中yaconf.directory配置对应的目录下
 - 其他目录: 项目模块目录,每一个目录对应一个项目模块
