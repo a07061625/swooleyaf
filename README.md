@@ -12,7 +12,7 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
 - 底层基于高性能通信框架swoole,业务框架以高性能MVC框架yaf为骨架
 - 模块之间消息通信以msgpack为基础,自定义通信协议,降低通信数据大小,提升通信安全性
 - 内置接口签名,异步任务,定时任务等实用功能,生产环境可实现api接口处理平均耗时在20毫秒左右
-- 基于该框架搭建项目请参考下面的搭建项目章节
+- 基于该框架搭建项目请参考下面的<a href="#1">搭建项目</a>章节
 
 # 环境
 ## 搭建脚本
@@ -41,7 +41,7 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
 ## 其他
 - gcc4.8+ //php7编译用gcc4.8+会开启Global Register for opline and execute_data支持, 这个会带来5%左右的性能提升
 
-# 搭建项目
+# <a name="1">搭建项目</a>
 ## 初始设置
     //建议在php.ini所在目录创建php-cli.ini和php-fpm-fcgi.ini两个配置文件
     //前一个为cli模式下的环境配置,后一个为fpm模式下的环境配置
