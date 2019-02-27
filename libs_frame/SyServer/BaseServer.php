@@ -135,6 +135,17 @@ abstract class BaseServer {
         $this->_port = $this->_configs['server']['port'];
         $this->_pidFile = SY_ROOT . '/pidfile/' . SY_MODULE . $this->_port . '.pid';
         $this->_tipFile = SY_ROOT . '/tipfile/' . SY_MODULE . $this->_port . '.txt';
+        Dir::create(SY_ROOT . '/tipfile/');
+        if(is_dir($this->_tipFile)){
+            exit('提示文件不能是文件夹' . PHP_EOL);
+        } else if(!file_exists($this->_tipFile)){
+            $tipFileObj = fopen($this->_tipFile, 'wb');
+            if(is_bool($tipFileObj)){
+                exit('创建或打开提示文件失败' . PHP_EOL);
+            }
+            fwrite($tipFileObj, '');
+            fclose($tipFileObj);
+        }
         $this->_syPack = new SyPack();
 
         //生成服务唯一标识
@@ -465,18 +476,9 @@ abstract class BaseServer {
             $this->_server->on($eventName, [$this, $funcName]);
         }
 
-        Dir::create(SY_ROOT . '/tipfile/');
+        file_put_contents($this->_tipFile, '\e[1;36m start ' . SY_MODULE . ': \e[0m \e[1;31m \t[fail] \e[0m');
         //启动服务
-        $tipMsg = '\e[1;36m start ' . SY_MODULE . ': \e[0m';
-        if($this->_server->start()){
-            $tipMsg .= ' \e[1;32m \t[success]';
-        } else {
-            $tipMsg .= ' \e[1;31m \t[fail]';
-        }
-        $tipMsg .= ' \e[0m';
-        $fileObj = fopen($this->_tipFile, 'wb');
-        fwrite($fileObj, $tipMsg);
-        fclose($fileObj);
+        $this->_server->start();
     }
 
     /**
@@ -651,6 +653,8 @@ abstract class BaseServer {
         if (file_put_contents($this->_pidFile, $server->master_pid) === false) {
             Log::error('write ' . SY_MODULE . ' pid file error');
         }
+
+        file_put_contents($this->_tipFile, '\e[1;36m start ' . SY_MODULE . ': \e[0m \e[1;32m \t[success] \e[0m');
 
         $config = Tool::getConfig('project.' . SY_ENV . SY_PROJECT);
         Dir::create($config['dir']['store']['image']);
