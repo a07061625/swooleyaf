@@ -2,9 +2,9 @@
 namespace Swoole;
 
 /**
- * @since 4.2.8
+ * @since 4.2.12
  */
-class Mysql
+class MySQL
 {
     const STATE_QUERY = 0;
     const STATE_READ_START = 1;

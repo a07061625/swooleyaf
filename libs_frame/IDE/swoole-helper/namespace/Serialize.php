@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.2.8
+ * @since 4.2.12
  */
 class Serialize
 {
@@ -17,10 +17,10 @@ class Serialize
 
     /**
      * @param $string[required]
-     * @param $args[optional]
+     * @param $flag[optional]
      * @return mixed
      */
-    public static function unpack($string, $args=null){}
+    public static function unpack($string, $flag=null){}
 
 
 }

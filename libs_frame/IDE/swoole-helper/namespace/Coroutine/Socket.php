@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.2.8
+ * @since 4.2.12
  */
 class Socket
 {
@@ -11,10 +11,10 @@ class Socket
     /**
      * @param $domain[required]
      * @param $type[required]
-     * @param $protocol[required]
+     * @param $protocol[optional]
      * @return mixed
      */
-    public function __construct($domain, $type, $protocol){}
+    public function __construct($domain, $type, $protocol=null){}
 
     /**
      * @param $address[required]

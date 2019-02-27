@@ -1,10 +1,10 @@
 <?php
-namespace Swoole\Websocket;
+namespace Swoole\WebSocket;
 
 /**
- * @since 4.2.8
+ * @since 4.2.12
  */
-class Frame
+class CloseFrame extends \Swoole\WebSocket\Frame
 {
 
 

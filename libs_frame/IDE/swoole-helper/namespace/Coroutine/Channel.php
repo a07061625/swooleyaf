@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.2.8
+ * @since 4.2.12
  */
 class Channel
 {
@@ -13,11 +13,6 @@ class Channel
      * @return mixed
      */
     public function __construct($size=null){}
-
-    /**
-     * @return mixed
-     */
-    public function __destruct(){}
 
     /**
      * @param $data[required]
