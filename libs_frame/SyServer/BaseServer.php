@@ -474,7 +474,9 @@ abstract class BaseServer {
             $tipMsg .= ' \e[1;31m \t[fail]';
         }
         $tipMsg .= ' \e[0m';
-        file_put_contents($this->_tipFile, $tipMsg);
+        $fileObj = fopen($this->_tipFile, 'wb');
+        fwrite($fileObj, $tipMsg);
+        fclose($fileObj);
     }
 
     /**
