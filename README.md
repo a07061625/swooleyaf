@@ -55,7 +55,8 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
     mv yaconf/* yaconf配置目录/
 
 ## 初始设置建议
-<font color=red size=7>强烈建议将libs_frame目录移出到一个单独的目录,好处在于可以多个项目共用同一个公共库,只要公共库升级,那所有依赖公共库的项目框架自动升级</font>
+
+<font color=#FF0000> 强烈建议将libs_frame目录移出到一个单独的目录,好处在于可以多个项目共用同一个公共库,只要公共库升级,那所有依赖公共库的项目框架自动升级 </font>
 
     mkdir 公共库目录
     mv libs_frame/ 公共库目录/
