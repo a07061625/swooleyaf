@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine\Http;
 
 /**
- * @since 4.2.8
+ * @since 4.2.12
  */
 class Client
 {
@@ -26,6 +26,17 @@ class Client
      * @return mixed
      */
     public function set($settings){}
+
+    /**
+     * @return mixed
+     */
+    public function getDefer(){}
+
+    /**
+     * @param $defer[optional]
+     * @return mixed
+     */
+    public function setDefer($defer=null){}
 
     /**
      * @param $method[required]
@@ -105,27 +116,6 @@ class Client
     public function addData($path, $name, $type=null, $filename=null){}
 
     /**
-     * @return mixed
-     */
-    public function isConnected(){}
-
-    /**
-     * @return mixed
-     */
-    public function close(){}
-
-    /**
-     * @param $defer[optional]
-     * @return mixed
-     */
-    public function setDefer($defer=null){}
-
-    /**
-     * @return mixed
-     */
-    public function getDefer(){}
-
-    /**
      * @param $timeout[optional]
      * @return mixed
      */
@@ -138,6 +128,11 @@ class Client
      * @return mixed
      */
     public function push($data, $opcode=null, $finish=null){}
+
+    /**
+     * @return mixed
+     */
+    public function close(){}
 
 
 }

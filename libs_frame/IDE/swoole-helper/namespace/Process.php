@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.2.8
+ * @since 4.2.12
  */
 class Process
 {
@@ -80,9 +80,10 @@ class Process
     /**
      * @param $key[optional]
      * @param $mode[optional]
+     * @param $capacity[optional]
      * @return mixed
      */
-    public function useQueue($key=null, $mode=null){}
+    public function useQueue($key=null, $mode=null, $capacity=null){}
 
     /**
      * @return mixed

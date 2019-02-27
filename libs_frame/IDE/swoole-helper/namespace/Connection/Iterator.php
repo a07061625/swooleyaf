@@ -2,7 +2,7 @@
 namespace Swoole\Connection;
 
 /**
- * @since 4.2.8
+ * @since 4.2.12
  */
 class Iterator
 {

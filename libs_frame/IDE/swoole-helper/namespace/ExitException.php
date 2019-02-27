@@ -2,9 +2,9 @@
 namespace Swoole;
 
 /**
- * @since 4.2.8
+ * @since 4.2.12
  */
-class ExitException extends \Exception
+class ExitException extends \Swoole\Exception
 {
 
 

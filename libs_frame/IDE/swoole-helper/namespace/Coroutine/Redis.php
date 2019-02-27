@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.2.8
+ * @since 4.2.12
  */
 class Redis
 {
@@ -21,11 +21,22 @@ class Redis
 
     /**
      * @param $host[required]
-     * @param $port[required]
+     * @param $port[optional]
      * @param $serialize[optional]
      * @return mixed
      */
-    public function connect($host, $port, $serialize=null){}
+    public function connect($host, $port=null, $serialize=null){}
+
+    /**
+     * @return mixed
+     */
+    public function getOptions(){}
+
+    /**
+     * @param $options[required]
+     * @return mixed
+     */
+    public function setOptions($options){}
 
     /**
      * @return mixed

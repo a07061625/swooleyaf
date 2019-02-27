@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.2.8
+ * @since 4.2.12
  */
 class Coroutine
 {
@@ -10,9 +10,10 @@ class Coroutine
 
     /**
      * @param $func[required]
+     * @param $params[optional]
      * @return mixed
      */
-    public static function create($func){}
+    public static function create($func, $params=null){}
 
     /**
      * @param $command[required]
@@ -23,9 +24,16 @@ class Coroutine
     /**
      * @param $domain_name[required]
      * @param $family[optional]
+     * @param $timeout[optional]
      * @return mixed
      */
-    public static function gethostbyname($domain_name, $family=null){}
+    public static function gethostbyname($domain_name, $family=null, $timeout=null){}
+
+    /**
+     * @param $callback[required]
+     * @return mixed
+     */
+    public static function defer($callback){}
 
     /**
      * @param $options[required]
@@ -53,6 +61,11 @@ class Coroutine
      * @return mixed
      */
     public static function stats(){}
+
+    /**
+     * @return mixed
+     */
+    public static function getCid(){}
 
     /**
      * @return mixed

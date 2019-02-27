@@ -2,9 +2,9 @@
 namespace Swoole\Http;
 
 /**
- * @since 4.2.8
+ * @since 4.2.12
  */
-class Server extends \swoole_server
+class Server extends \Swoole\Server
 {
 
 

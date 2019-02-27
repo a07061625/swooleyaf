@@ -1,10 +1,10 @@
 <?php
-namespace Swoole\Websocket;
+namespace Swoole\WebSocket;
 
 /**
- * @since 4.2.8
+ * @since 4.2.12
  */
-class Server extends \swoole_http_server
+class Server extends \Swoole\Http\Server
 {
 
 

@@ -2,9 +2,9 @@
 namespace Swoole;
 
 /**
- * @since 4.2.8
+ * @since 4.2.12
  */
-class Msgqueue
+class MsgQueue
 {
 
 
@@ -46,7 +46,7 @@ class Msgqueue
     /**
      * @return mixed
      */
-    public function destory(){}
+    public function destroy(){}
 
 
 }
