@@ -465,6 +465,7 @@ abstract class BaseServer {
             $this->_server->on($eventName, [$this, $funcName]);
         }
 
+        Dir::create(SY_ROOT . '/tipfile/');
         //启动服务
         $tipMsg = '\e[1;36m start ' . SY_MODULE . ': \e[0m';
         if($this->_server->start()){
@@ -473,9 +474,7 @@ abstract class BaseServer {
             $tipMsg .= ' \e[1;31m \t[fail]';
         }
         $tipMsg .= ' \e[0m';
-        $fileObj = fopen($this->_tipFile, 'wb');
-        fwrite($fileObj, $tipMsg);
-        fclose($fileObj);
+        file_put_contents($this->_tipFile, $tipMsg);
     }
 
     /**
@@ -646,6 +645,7 @@ abstract class BaseServer {
     public function onStart(\swoole_server $server) {
         @cli_set_process_title(Server::PROCESS_TYPE_MAIN . SY_MODULE . $this->_port);
 
+        Dir::create(SY_ROOT . '/pidfile/');
         if (file_put_contents($this->_pidFile, $server->master_pid) === false) {
             Log::error('write ' . SY_MODULE . ' pid file error');
         }
@@ -655,8 +655,6 @@ abstract class BaseServer {
         Dir::create($config['dir']['store']['music']);
         Dir::create($config['dir']['store']['resources']);
         Dir::create($config['dir']['store']['cache']);
-        Dir::create(SY_ROOT . '/pidfile/');
-        Dir::create(SY_ROOT . '/tipfile/');
 
         //为了防止定时任务出现重启服务的时候,导致重启期间(1-3s内)的定时任务无法处理,将定时器时间初始化为当前时间戳之前6秒
         $timerAdvanceTime = (int)Tool::getArrayVal($config, 'timer.time.advance', 6, true);
