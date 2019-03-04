@@ -195,9 +195,6 @@ abstract class BaseServer {
         if(version_compare(SEASLOG_VERSION, Server::VERSION_MIN_SEASLOG, '<')){
             exit('seaslog版本必须大于等于' . Server::VERSION_MIN_SEASLOG . PHP_EOL);
         }
-        if(version_compare(YAC_VERSION, Server::VERSION_MIN_YAC, '<')){
-            exit('yac版本必须大于等于' . Server::VERSION_MIN_YAC . PHP_EOL);
-        }
         if(version_compare(\YAF\VERSION, Server::VERSION_MIN_YAF, '<')){
             exit('yaf版本必须大于等于' . Server::VERSION_MIN_YAF . PHP_EOL);
         }

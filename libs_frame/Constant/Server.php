@@ -56,7 +56,6 @@ final class Server {
     const VERSION_MIN_PHP = '7.1.0'; //最低版本-php
     const VERSION_MIN_SWOOLE = '4.2.8'; //最低版本-swoole
     const VERSION_MIN_SEASLOG = '1.9.0'; //最低版本-seaslog
-    const VERSION_MIN_YAC = '2.0.2'; //最低版本-yac
     const VERSION_MIN_YAF = '3.0.7'; //最低版本-yaf
 
     //YAC常量,以0000开头的前缀为框架内部前缀,并键名总长度不超过48个字符串
