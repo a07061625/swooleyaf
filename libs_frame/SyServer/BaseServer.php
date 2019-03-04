@@ -138,7 +138,7 @@ abstract class BaseServer {
         Dir::create(SY_ROOT . '/tipfile/');
         if(is_dir($this->_tipFile)){
             exit('提示文件不能是文件夹' . PHP_EOL);
-        } else {
+        } else if(!file_exists($this->_tipFile)){
             $tipFileObj = fopen($this->_tipFile, 'wb');
             if(is_bool($tipFileObj)){
                 exit('创建或打开提示文件失败' . PHP_EOL);
