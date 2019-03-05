@@ -27,7 +27,6 @@ final class Server {
     const SERVER_HTTP_TAG_REQUEST_HEADER = 'swoole-yaf'; //服务端http标识-请求头名称
     const SERVER_DATA_KEY_TASK = '_sytask'; //服务端内部数据键名-task
     const SERVER_DATA_KEY_TIMESTAMP = 'SYREQ_TIME'; //服务端内部数据键名-请求时间戳
-    const SERVER_TIME_REQ_HEALTH_MIN = 4000; //服务端时间-请求健康检查最小时间,单位为毫秒
 
     //进程常量
     const PROCESS_TYPE_TASK = 'Task'; //类型-task
