@@ -371,7 +371,7 @@ abstract class BaseServer {
     protected function reportLongTimeReq(string $uri, $data) {
         $handleTime = (int)((microtime(true) - self::$_reqStartTime) * 1000);
         self::$_reqStartTime = 0;
-        if($handleTime > Server::SERVER_TIME_REQ_HANDLE_MAX){ //执行时间超过120毫秒的请求记录到日志便于分析具体情况
+        if($handleTime > Project::TIME_EXPIRE_REQ_HANDLE){ //执行时间超过限制的请求记录到日志便于分析具体情况
             $content = 'handle req use time ' . $handleTime . ' ms,uri:' . $uri . ',data:';
             if(is_string($data)){
                 $content .= $data;
@@ -403,7 +403,7 @@ abstract class BaseServer {
             'module' => SY_MODULE,
             'uri' => $uri,
         ]);
-        $this->_server->after(Server::SERVER_TIME_REQ_HEALTH_MIN, function () use ($tag) {
+        $this->_server->after(Project::TIME_EXPIRE_REQ_HEALTH_CHECK, function () use ($tag) {
             $checkData = self::$_syHealths->get($tag);
             if($checkData !== false){
                 self::$_syHealths->del($tag);

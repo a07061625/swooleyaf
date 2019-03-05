@@ -8,7 +8,6 @@
 namespace MessageQueue\Consumer\Redis;
 
 use Constant\Project;
-use Constant\Server;
 use Log\Log;
 use SyMessageQueue\ConsumerBase;
 
@@ -22,6 +21,6 @@ class ReqHealthCheckService extends ConsumerBase {
     }
 
     public function handleMessage(array $data) {
-        Log::warn('module:' . $data['module'] . ',uri:' . $data['uri'] . ' handle req cost more than ' . Server::SERVER_TIME_REQ_HEALTH_MIN . ' ms');
+        Log::warn('module:' . $data['module'] . ',uri:' . $data['uri'] . ' handle req cost more than ' . Project::TIME_EXPIRE_REQ_HEALTH_CHECK . ' ms');
     }
 }
