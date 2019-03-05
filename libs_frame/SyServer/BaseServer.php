@@ -186,18 +186,6 @@ abstract class BaseServer {
         if(!in_array($os, Server::$totalEnvSystem)){
             exit('操作系统不支持' . PHP_EOL);
         }
-        if(!defined('SWOOLE_VERSION')){
-            exit('swoole版本常量未定义' . PHP_EOL);
-        }
-        if(version_compare(SWOOLE_VERSION, Server::VERSION_MIN_SWOOLE, '<')){
-            exit('swoole版本必须大于等于' . Server::VERSION_MIN_SWOOLE . PHP_EOL);
-        }
-        if(version_compare(SEASLOG_VERSION, Server::VERSION_MIN_SEASLOG, '<')){
-            exit('seaslog版本必须大于等于' . Server::VERSION_MIN_SEASLOG . PHP_EOL);
-        }
-        if(version_compare(\YAF\VERSION, Server::VERSION_MIN_YAF, '<')){
-            exit('yaf版本必须大于等于' . Server::VERSION_MIN_YAF . PHP_EOL);
-        }
 
         //检查必要的扩展是否存在
         $extensionList = [
@@ -216,6 +204,19 @@ abstract class BaseServer {
             if(!extension_loaded($extName)){
                 exit('扩展' . $extName . '未加载' . PHP_EOL);
             }
+        }
+
+        if(version_compare(SWOOLE_VERSION, Server::VERSION_MIN_SWOOLE, '<')){
+            exit('swoole版本必须大于等于' . Server::VERSION_MIN_SWOOLE . PHP_EOL);
+        }
+        if(version_compare(SEASLOG_VERSION, Server::VERSION_MIN_SEASLOG, '<')){
+            exit('seaslog版本必须大于等于' . Server::VERSION_MIN_SEASLOG . PHP_EOL);
+        }
+        if(version_compare(YAC_VERSION, Server::VERSION_MIN_YAC, '<')){
+            exit('yac版本必须大于等于' . Server::VERSION_MIN_YAC . PHP_EOL);
+        }
+        if(version_compare(\YAF\VERSION, Server::VERSION_MIN_YAF, '<')){
+            exit('yaf版本必须大于等于' . Server::VERSION_MIN_YAF . PHP_EOL);
         }
     }
 
