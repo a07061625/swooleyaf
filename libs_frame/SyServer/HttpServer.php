@@ -154,8 +154,8 @@ class HttpServer extends BaseServer {
 
             if(isset($headers['Location'])){
                 $response->status(302);
-            } else if(isset($headers['SyRsp-Status'])){
-                $response->status($headers['SyRsp-Status']);
+            } else if(isset($headers['Syresp-Status'])){
+                $response->status($headers['Syresp-Status']);
             }
         } else {
             $response->header('Access-Control-Allow-Origin', '*');
@@ -674,7 +674,7 @@ class HttpServer extends BaseServer {
                 $this->setRspHeaders($response, $rspHeaders);
             } else {
                 $rspHeaders['Content-Type'] = 'text/plain; charset=utf-8';
-                $rspHeaders['SyRsp-Status'] = 403;
+                $rspHeaders['Syresp-Status'] = 403;
                 $this->setRspHeaders($response, $rspHeaders);
             }
         } else {
