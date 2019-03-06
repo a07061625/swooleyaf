@@ -24,11 +24,116 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
 - 底层基于高性能通信框架swoole,业务框架以高性能MVC框架yaf为骨架
 - 模块之间消息通信以msgpack为基础,自定义通信协议,降低通信数据大小,提升通信安全性
 - 内置接口签名,异步任务,定时任务等实用功能,生产环境可实现api接口处理平均耗时在20毫秒左右
-- 基于该框架搭建项目请参考下面的<a href="#1">搭建项目</a>章节
+- 基于该框架搭建项目请参考下面的<a href="#1">项目部署</a>章节
 
 正式生产环境api接口耗时截图:<br/>
 ![](static/images/apitime_env_product.png)
 <br/>除了少部分非常耗时的接口,大部分接口的平均耗时在20毫秒内,相当多的接口耗时甚至在10毫秒内
+
+# <a name="1">项目部署</a>
+## 初始化环境(首次使用框架需要)
+预备两台服务器
+- 服务器A 操作系统:Linux,其他不限
+- 服务器B 操作系统:Centos7(最好是刚安装完系统,为了避免部分文件夹创建失败) 内存:2G+ IP:192.168.1.1(内网/外网IP均可,只需保证A可以通过该IP连接到B即可)
+
+
+    登录服务器A
+    mkdir /home/download/swooleyaf_install
+    cd /home/download/swooleyaf_install
+    git init
+    git remote add origin https://github.com/a07061625/swooleyaf_install.git
+    git pull origin master
+    vim initcentos7/swooleyaf/configs.py
+        //找到syDicts配置
+        ......
+        'path.package.local': '/home/download/swooleyaf_install',
+        ......
+    mkdir /home/download/syinstall_package
+    通过百度网盘链接 https://pan.baidu.com/s/1Juz2NHdaJiLYegebNbS-Yg 密码：yxq5
+    下载syinstall_package目录下所有文件(不包括syinstall_package目录)到/home/download/syinstall_package
+    mv /home/download/syinstall_package/* /home/download/swooleyaf_install/resources
+    cp resources/python/Python-3.6.4.tar.xz /home/download/
+    cd /home/download
+    mkdir /usr/local/python3
+    tar -Jxvf Python-3.6.4.tar.xz
+    cd Python-3.6.4
+    ./configure --prefix=/usr/local/python3
+    make && make install
+    /usr/local/python3/bin/pip3 install fabric3
+    cd /home/download/swooleyaf_install
+    /usr/local/python3/bin/fab -f fabfile.py installEnv:envType="syBackend",envStep=1,envInit=1
+    输入服务器B的IP
+    输入服务器B的root用户密码
+    等待服务器B的环境安装完成......
+    登录服务器B
+    mkdir /home/phpspace
+    mkdir /home/phpspace/swooleyaf
+    mkdir /home/phpspace/swooleyaf_libs
+    cd /home/phpspace/swooleyaf
+    git init
+    git remote add origin https://github.com/a07061625/swooleyaf.git
+    git pull origin master
+    mkdir /home/configs/yaconf-cli
+    cp yaconf/* /home/configs/yaconf-cli
+    mkdir /home/logs/swoole
+    touch /home/logs/swoole/swoole.log
+    cp -r libs_frame/ /home/phpspace/swooleyaf_libs/
+    systemctl start redis
+
+## 创建项目
+    登录服务器B
+    mkdir /home/phpspace/project_demo
+    cp -r /home/phpspace/swooleyaf/* /home/phpspace/project_demo
+    cd /home/phpspace/project_demo
+    rm -rf .git/ yaconf/ libs_frame/
+    vim helper_load.php
+        ......
+        define('SY_ENV', 'dev'); //环境标识,取值有dev,product两个,分别代表测试环境和正式环境
+        define('SY_PROJECT', 'a01'); //项目标识,小写字母和数字组成的3位长度字符串,每个项目必须不同
+        ......
+    vim helper_projects.php
+        ......
+        0 => [
+            'git_branch' => 'master',
+            'module_type' => 'api', //取值有api和rpc,api为网关,负责对外交互,rpc为内部模块,不对外交互
+            'module_path' => 'sy_api', //项目根目录下的目录名,每一个sy_开头的目录代表一个模块
+            'module_name' => 'a01api', //模块名称,由上一步的项目标识拼接上libs_project/Constant/Project.php文件的MODULE_BASE_开头的常量
+            'listens' => [
+                0 => [
+                    'host' => $serverHost,
+                    'port' => 7100, //模块运行的端口号
+                ],
+            ],
+        ],
+        ......
+    项目yaconf配置：
+    参考/home/configs/yaconf-cli目录下的所有ini文件,增加相应项目标识的配置
+    以下配置需要特别注意
+    1. /home/configs/yaconf-cli/syserver.ini下的配置块标识为helper_load.php设置的SY_ENV+helper_projects.php的module_name
+    2. /home/configs/yaconf-cli/project.ini对应配置块下的dir.libs.frame要设置成/home/phpspace/swooleyaf_libs/libs_frame/
+    项目nginx配置：
+    参考/home/configs/nginx/server/demoapi.conf文件,增加相应项目的配置文件,确保以下两点：
+        upstream的ip和/home/configs/yaconf-cli/syserver.ini的server.host保持一致
+        upstream的端口和helper_projects.php下api模块的端口保持一致
+    参考/home/configs/nginx/strams/a01开头的文件,增加相应项目的配置文件,确保以下四点：
+        upstream的ip和/home/configs/yaconf-cli/syserver.ini的server.host保持一致
+        upstream的端口和helper_projects.php下api模块的端口保持一致
+        server的ip和/home/configs/yaconf-cli/syserver.ini的server.host以及/home/configs/yaconf-cli/project.ini对应配置块下modules开头的配置ip保持一致
+        server的端口和/home/configs/yaconf-cli/project.ini对应配置块下modules开头的配置端口保持一致
+    systemctl restart nginx
+
+## 运行项目
+参见<a href="#2">命令</a>章节
+
+## 更新框架公共库
+    登录服务器B
+    cd /home/phpspace/swooleyaf
+    git pull origin master
+    cp -rf libs_frame/ /home/phpspace/swooleyaf_libs/
+
+## PhpStorm开发配置
+**打开控制面板并如下图设置即可**
+![](static/images/project_phpstorm.png)
 
 # 环境
 ## 搭建脚本
@@ -56,34 +161,6 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
 
 ## 其他
 - gcc4.8+ //php7编译用gcc4.8+会开启Global Register for opline and execute_data支持, 这个会带来5%左右的性能提升
-
-# <a name="1">搭建项目</a>
-## 初始设置
-    //建议在php.ini所在目录创建php-cli.ini和php-fpm-fcgi.ini两个配置文件
-    //前一个为cli模式下的环境配置,后一个为fpm模式下的环境配置
-    //好处在于可以为cli模式和fpm模式设置独立的配置
-    vim php-cli.ini
-        yaconf.directory="yaconf配置目录,不以/结尾"
-    mv yaconf/* yaconf配置目录/
-
-## 初始设置建议
-**强烈建议将libs_frame目录移出到一个单独的目录,好处在于可以多个项目共用同一个公共库,只要公共库升级,那所有依赖公共库的项目框架自动升级**
-
-    mkdir 公共库目录
-    mv libs_frame/ 公共库目录/
-    //建议最好将公共库目录设置为一个git项目,方便后续公共库文件更新
-
-## 项目设置
-- 在yaconf配置目录下的所有ini文件中,添加对应的项目配置块
-- 配置块的标识由helper_load.php文件中的SY_ENV常量拼接上SY_PROJECT常量组成
-- SY_ENV的取值有dev,product两个,分别代表测试环境和正式环境
-- SY_PROJECT是由数字和小写字母组成的长度为3的字符串,不同项目必须不同
-- 修改yaconf配置目录/project.ini中对应配置块下的dir.libs.frame配置为"公共库目录/libs_frame/"
-- 以上步骤配置完成以后即创建了一个新的项目
-
-## PhpStorm开发配置
-**打开控制面板并如下图设置即可**
-![](static/images/project_phpstorm.png)
 
 # 框架介绍
 ## 使用介绍
@@ -114,7 +191,7 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
 - yaconf: 框架配置文件目录,该目录内的配置文件为样例,使用时需要将配置文件移动到php.ini配置文件中yaconf.directory配置对应的目录下
 - 其他目录: 项目模块目录,每一个目录对应一个项目模块
 
-## 命令
+## <a name="2">命令</a>
 **必须将helper_sytask.php文件加入到linux系统cron执行任务中**
 
 ### 启动服务
