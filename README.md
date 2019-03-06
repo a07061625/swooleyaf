@@ -36,7 +36,7 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
 - 服务器A 操作系统:Linux,其他不限
 - 服务器B 操作系统:Centos7(最好是刚安装完系统,为了避免部分文件夹创建失败) 内存:2G+ IP:192.168.1.1(内网/外网IP均可,只需保证A可以通过该IP连接到B即可)
 
-
+```
     登录服务器A
     mkdir /home/download/swooleyaf_install
     cd /home/download/swooleyaf_install
@@ -79,6 +79,7 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
     touch /home/logs/swoole/swoole.log
     cp -r libs_frame/ /home/phpspace/swooleyaf_libs/
     systemctl start redis
+```
 
 ## 创建项目
     登录服务器B
