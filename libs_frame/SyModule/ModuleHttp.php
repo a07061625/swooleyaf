@@ -7,6 +7,7 @@
  */
 namespace SyModule;
 
+use Constant\Project;
 use Log\Log;
 use Request\SyRequestHttp;
 use Tool\SyPack;
@@ -45,7 +46,7 @@ abstract class ModuleHttp extends ModuleBase {
         $serverInfo = $this->getHttpServerInfo($uri, $params);
         $this->syRequest->setHost($serverInfo['host']);
         $this->syRequest->setPort($serverInfo['port']);
-        $this->syRequest->setTimeout(1000);
+        $this->syRequest->setTimeout(Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
         $content = $this->syRequest->sendGetReq($serverInfo['url'], $callback);
         if($content === false){
             Log::error('send get req fail; url=' . $serverInfo['url']);
@@ -68,7 +69,7 @@ abstract class ModuleHttp extends ModuleBase {
         $serverInfo = $this->getHttpServerInfo($uri, []);
         $this->syRequest->setHost($serverInfo['host']);
         $this->syRequest->setPort($serverInfo['port']);
-        $this->syRequest->setTimeout(2000);
+        $this->syRequest->setTimeout(Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
         $content = $this->syRequest->sendPostReq($serverInfo['url'], $params, $callback);
         if($content === false){
             Log::error('send post req fail: url=' . $serverInfo['url'] . '; params=' . Tool::jsonEncode($params));
@@ -102,7 +103,7 @@ abstract class ModuleHttp extends ModuleBase {
         $serverInfo = $this->getHttpServerInfo('/', []);
         $this->syRequest->setHost($serverInfo['host']);
         $this->syRequest->setPort($serverInfo['port']);
-        $this->syRequest->setTimeout(2000);
+        $this->syRequest->setTimeout(Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
         $content = $this->syRequest->sendTaskReq($serverInfo['url'], $packData, $callback);
         if($content === false){
             Log::error('send task req fail: url=' . $serverInfo['url']);

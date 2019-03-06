@@ -122,9 +122,11 @@ abstract class BaseServer {
         $this->_configs['swoole']['reload_async'] = true;
         //进程最大等待时间,单位为秒
         $this->_configs['swoole']['max_wait_time'] = 60;
-        //设置每次请求发送最大数据包尺寸,单位为字节
-        $this->_configs['swoole']['socket_buffer_size'] = Server::SERVER_PACKAGE_MAX_LENGTH;
-        $this->_configs['swoole']['buffer_output_size'] = Server::SERVER_OUTPUT_MAX_LENGTH;
+        //设置请求数据尺寸
+        $this->_configs['swoole']['open_length_check'] = true;
+        $this->_configs['swoole']['package_max_length'] = Project::SIZE_SERVER_PACKAGE_MAX;
+        $this->_configs['swoole']['socket_buffer_size'] = Project::SIZE_CLIENT_SOCKET_BUFFER;
+        $this->_configs['swoole']['buffer_output_size'] = Project::SIZE_CLIENT_BUFFER_OUTPUT;
         $taskNum = isset($this->_configs['swoole']['task_worker_num']) ? (int)$this->_configs['swoole']['task_worker_num'] : 0;
         if($taskNum < 2){
             exit('Task进程的数量必须大于等于2' . PHP_EOL);
@@ -367,11 +369,12 @@ abstract class BaseServer {
      * 记录耗时长的请求
      * @param string $uri 请求uri
      * @param string|array $data 请求数据
+     * @param int $limitTime 限制时间,单位为毫秒
      */
-    protected function reportLongTimeReq(string $uri, $data) {
+    protected function reportLongTimeReq(string $uri, $data,int $limitTime) {
         $handleTime = (int)((microtime(true) - self::$_reqStartTime) * 1000);
         self::$_reqStartTime = 0;
-        if($handleTime > Project::TIME_EXPIRE_REQ_HANDLE){ //执行时间超过限制的请求记录到日志便于分析具体情况
+        if($handleTime > $limitTime){ //执行时间超过限制的请求记录到日志便于分析具体情况
             $content = 'handle req use time ' . $handleTime . ' ms,uri:' . $uri . ',data:';
             if(is_string($data)){
                 $content .= $data;
@@ -394,16 +397,17 @@ abstract class BaseServer {
     /**
      * 发送请求健康检查任务
      * @param string $uri
+     * @param int $clearTime 清理时间,单位为毫秒
      * @return string
      */
-    protected function sendReqHealthCheckTask(string $uri) : string {
+    protected function sendReqHealthCheckTask(string $uri,int $clearTime) : string {
         $tag = $this->createCheckTag();
         self::$_syHealths->set($tag, [
             'tag' => $tag,
             'module' => SY_MODULE,
             'uri' => $uri,
         ]);
-        $this->_server->after(Project::TIME_EXPIRE_REQ_HEALTH_CHECK, function () use ($tag) {
+        $this->_server->after($clearTime, function () use ($tag) {
             $checkData = self::$_syHealths->get($tag);
             if($checkData !== false){
                 self::$_syHealths->del($tag);

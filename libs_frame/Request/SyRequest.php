@@ -108,10 +108,13 @@ abstract class SyRequest {
 
     /**
      * @param int $timeout 超时时间,单位为毫秒
+     * @throws \Exception\Swoole\ServerException
      */
     public function setTimeout(int $timeout) {
         if ($timeout >= 3000) {
             $this->_timeout = $timeout;
+        } else {
+            throw new ServerException('客户端请求超时时间不能低于3秒', ErrorCode::COMMON_SERVER_ERROR);
         }
     }
 
