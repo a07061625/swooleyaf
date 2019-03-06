@@ -387,32 +387,17 @@ abstract class BaseServer {
     }
 
     /**
-     * 生成检查标识
-     * @return string
-     */
-    protected function createCheckTag() : string {
-        return self::$_serverToken . Tool::getNowTime() . Tool::createNonceStr(6);
-    }
-
-    /**
      * 发送请求健康检查任务
      * @param string $uri
-     * @param int $clearTime 清理时间,单位为毫秒
      * @return string
      */
-    protected function sendReqHealthCheckTask(string $uri,int $clearTime) : string {
-        $tag = $this->createCheckTag();
+    protected function sendReqHealthCheckTask(string $uri) : string {
+        $tag = self::$_serverToken . Tool::getNowTime() . Tool::createNonceStr(6);
         self::$_syHealths->set($tag, [
             'tag' => $tag,
             'module' => SY_MODULE,
             'uri' => $uri,
         ]);
-        $this->_server->after($clearTime, function () use ($tag) {
-            $checkData = self::$_syHealths->get($tag);
-            if($checkData !== false){
-                self::$_syHealths->del($tag);
-            }
-        });
 
         return $tag;
     }

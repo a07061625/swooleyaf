@@ -121,7 +121,7 @@ class RpcServer extends BaseServer {
         $data['api_uri'] = $uriCheckRes['uri'];
 
         self::$_reqStartTime = microtime(true);
-        $healthTag = $this->sendReqHealthCheckTask($data['api_uri'], Project::TIME_EXPIRE_SWOOLE_CLIENT_RPC);
+        $healthTag = $this->sendReqHealthCheckTask($data['api_uri']);
         $this->initRequest($data['api_params']);
 
         $error = null;
