@@ -42,7 +42,7 @@ class RpcServer extends BaseServer {
             exit('服务端类型不支持' . PHP_EOL);
         }
         define('SY_SERVER_TYPE', $serverType);
-        $this->_configs['server']['cachenum']['hc'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.hc', 0, true);
+        $this->_configs['server']['cachenum']['hc'] = 1;
         $this->_configs['server']['cachenum']['modules'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
         $this->_configs['server']['cachenum']['local'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.local', 0, true);
         $this->_configs['server']['cachenum']['wx'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.wx', 0, true);
@@ -121,7 +121,6 @@ class RpcServer extends BaseServer {
         $data['api_uri'] = $uriCheckRes['uri'];
 
         self::$_reqStartTime = microtime(true);
-        $healthTag = $this->sendReqHealthCheckTask($data['api_uri']);
         $this->initRequest($data['api_params']);
 
         $error = null;
@@ -160,7 +159,6 @@ class RpcServer extends BaseServer {
             self::$_syServer->decr(self::$_serverToken, 'request_handling', 1);
             $this->clearRequest();
             $this->reportLongTimeReq($data['api_uri'], $data['api_params'], Project::TIME_EXPIRE_SWOOLE_CLIENT_RPC);
-            self::$_syHealths->del($healthTag);
             unset($httpObj);
             if(is_object($error)){
                 $result = $error->getJson();

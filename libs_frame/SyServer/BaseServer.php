@@ -387,22 +387,6 @@ abstract class BaseServer {
     }
 
     /**
-     * 发送请求健康检查任务
-     * @param string $uri
-     * @return string
-     */
-    protected function sendReqHealthCheckTask(string $uri) : string {
-        $tag = self::$_serverToken . Tool::getNowTime() . Tool::createNonceStr(6);
-        self::$_syHealths->set($tag, [
-            'tag' => $tag,
-            'module' => SY_MODULE,
-            'uri' => $uri,
-        ]);
-
-        return $tag;
-    }
-
-    /**
      * 检测请求URI
      * @param string $uri
      * @return array

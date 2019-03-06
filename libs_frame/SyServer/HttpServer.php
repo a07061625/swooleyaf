@@ -93,7 +93,7 @@ class HttpServer extends BaseServer {
             exit('服务端类型不支持' . PHP_EOL);
         }
         define('SY_SERVER_TYPE', $serverType);
-        $this->_configs['server']['cachenum']['hc'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.hc', 0, true);
+        $this->_configs['server']['cachenum']['hc'] = 1;
         $this->_configs['server']['cachenum']['modules'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
         $this->_configs['server']['cachenum']['local'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.local', 0, true);
         if ($serverType == Server::SERVER_TYPE_API_GATE) {
@@ -374,7 +374,6 @@ class HttpServer extends BaseServer {
             return $this->$funcName($request);
         }
 
-        $healthTag = $this->sendReqHealthCheckTask($uri);
         $this->initRequest($request, $initRspHeaders);
 
         $error = null;
@@ -402,7 +401,6 @@ class HttpServer extends BaseServer {
         } finally {
             self::$_syServer->decr(self::$_serverToken, 'request_handling', 1);
             $this->reportLongTimeReq($uri, array_merge($_GET, $_POST), Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
-            self::$_syHealths->del($healthTag);
             unset($httpObj);
             if(is_object($error)){
                 $result = $error->getJson();
