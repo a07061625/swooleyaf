@@ -374,7 +374,7 @@ class HttpServer extends BaseServer {
             return $this->$funcName($request);
         }
 
-        $healthTag = $this->sendReqHealthCheckTask($uri, Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
+        $healthTag = $this->sendReqHealthCheckTask($uri);
         $this->initRequest($request, $initRspHeaders);
 
         $error = null;
