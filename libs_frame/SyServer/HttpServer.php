@@ -374,7 +374,7 @@ class HttpServer extends BaseServer {
             return $this->$funcName($request);
         }
 
-        $healthTag = $this->sendReqHealthCheckTask($uri);
+        $healthTag = $this->sendReqHealthCheckTask($uri, Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
         $this->initRequest($request, $initRspHeaders);
 
         $error = null;
@@ -401,7 +401,7 @@ class HttpServer extends BaseServer {
             }
         } finally {
             self::$_syServer->decr(self::$_serverToken, 'request_handling', 1);
-            $this->reportLongTimeReq($uri, array_merge($_GET, $_POST));
+            $this->reportLongTimeReq($uri, array_merge($_GET, $_POST), Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
             self::$_syHealths->del($healthTag);
             unset($httpObj);
             if(is_object($error)){

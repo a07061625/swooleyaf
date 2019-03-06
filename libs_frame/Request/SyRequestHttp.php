@@ -7,6 +7,7 @@
  */
 namespace Request;
 
+use Constant\Project;
 use Constant\Server;
 use Log\Log;
 use Tool\HttpTool;
@@ -26,8 +27,8 @@ class SyRequestHttp extends SyRequest {
             'open_tcp_nodelay' => true,
             'open_eof_check' => true,
             'package_eof' => Server::SERVER_HTTP_TAG_RESPONSE_EOF,
-            'package_max_length' => Server::SERVER_PACKAGE_MAX_LENGTH,
-            'socket_buffer_size' => Server::SERVER_PACKAGE_MAX_LENGTH,
+            'package_max_length' => Project::SIZE_SERVER_PACKAGE_MAX,
+            'socket_buffer_size' => Project::SIZE_CLIENT_SOCKET_BUFFER,
         ];
     }
 

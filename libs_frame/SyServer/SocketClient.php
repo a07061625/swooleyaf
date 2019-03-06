@@ -8,7 +8,7 @@
 namespace SyServer;
 
 use Constant\ErrorCode;
-use Constant\Server;
+use Constant\Project;
 use Exception\Swoole\HttpServerException;
 use Log\Log;
 use Tool\SyPack;
@@ -93,7 +93,7 @@ class SocketClient {
         $this->socket = new \swoole_client(SWOOLE_SOCK_TCP);
         $this->socket->set([
             'open_tcp_nodelay' => true,
-            'socket_buffer_size' => Server::SERVER_PACKAGE_MAX_LENGTH,
+            'socket_buffer_size' => Project::SIZE_CLIENT_SOCKET_BUFFER,
         ]);
         if(!$this->socket->connect($this->host, $this->port)){
             throw new HttpServerException('连接服务器失败,code=' . $this->socket->errCode . '|msg=' . socket_strerror($this->socket->errCode), ErrorCode::SWOOLE_SERVER_PARAM_ERROR);

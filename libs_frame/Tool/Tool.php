@@ -486,8 +486,8 @@ class Tool {
             'package_length_type' => 'L',
             'package_length_offset' => 4,
             'package_body_offset' => 0,
-            'package_max_length' => Server::SERVER_PACKAGE_MAX_LENGTH,
-            'socket_buffer_size' => Server::SERVER_PACKAGE_MAX_LENGTH,
+            'package_max_length' => Project::SIZE_SERVER_PACKAGE_MAX,
+            'socket_buffer_size' => Project::SIZE_CLIENT_SOCKET_BUFFER,
         ]);
         if(!@$client->connect($host, $port, 2)){
             return false;

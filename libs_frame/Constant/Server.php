@@ -18,8 +18,6 @@ final class Server {
         self::SERVER_TYPE_API_MODULE => 'api模块',
         self::SERVER_TYPE_FRONT_GATE => '前端入口',
     ];
-    const SERVER_PACKAGE_MAX_LENGTH = 12582912; //服务端消息最大长度-12M
-    const SERVER_OUTPUT_MAX_LENGTH = 5242880; //服务端输出内容最大长度-5M
     const SERVER_TYPE_API_GATE = 'api'; //服务端类型-api入口
     const SERVER_TYPE_API_MODULE = 'rpc'; //服务端类型-api模块
     const SERVER_TYPE_FRONT_GATE = 'frontgate'; //服务端类型-前端入口

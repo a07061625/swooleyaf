@@ -8,6 +8,7 @@
 namespace SyServer;
 
 use Constant\ErrorCode;
+use Constant\Project;
 use Constant\Server;
 use Exception\Validator\ValidatorException;
 use Log\Log;
@@ -47,8 +48,6 @@ class RpcServer extends BaseServer {
         $this->_configs['server']['cachenum']['wx'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.wx', 0, true);
         $this->_configs['server']['cachenum']['users'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.users', 0, true);
         $this->checkServerRpc();
-        $this->_configs['swoole']['open_length_check'] = true;
-        $this->_configs['swoole']['package_max_length'] = Server::SERVER_PACKAGE_MAX_LENGTH;
         $this->_configs['swoole']['package_length_type'] = 'L';
         $this->_configs['swoole']['package_length_offset'] = 4;
         $this->_configs['swoole']['package_body_offset'] = 0;
@@ -122,7 +121,7 @@ class RpcServer extends BaseServer {
         $data['api_uri'] = $uriCheckRes['uri'];
 
         self::$_reqStartTime = microtime(true);
-        $healthTag = $this->sendReqHealthCheckTask($data['api_uri']);
+        $healthTag = $this->sendReqHealthCheckTask($data['api_uri'], Project::TIME_EXPIRE_SWOOLE_CLIENT_RPC);
         $this->initRequest($data['api_params']);
 
         $error = null;
@@ -160,7 +159,7 @@ class RpcServer extends BaseServer {
         } finally {
             self::$_syServer->decr(self::$_serverToken, 'request_handling', 1);
             $this->clearRequest();
-            $this->reportLongTimeReq($data['api_uri'], $data['api_params']);
+            $this->reportLongTimeReq($data['api_uri'], $data['api_params'], Project::TIME_EXPIRE_SWOOLE_CLIENT_RPC);
             self::$_syHealths->del($healthTag);
             unset($httpObj);
             if(is_object($error)){

@@ -7,6 +7,7 @@
  */
 namespace SyModule;
 
+use Constant\Project;
 use Constant\Server;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Log\Log;
@@ -126,7 +127,7 @@ abstract class ModuleRpc extends ModuleBase {
         $serverInfo = $this->getRpcServerInfo();
         $this->syRequest->setHost($serverInfo['host']);
         $this->syRequest->setPort($serverInfo['port']);
-        $this->syRequest->setTimeout(2000);
+        $this->syRequest->setTimeout(Project::TIME_EXPIRE_SWOOLE_CLIENT_RPC);
         $apiRsp = $this->syRequest->sendApiReq($uri, $params, $callback);
         if($apiRsp === false){
             Log::error('send api req fail: uri=' . $uri . '; params=' . Tool::jsonEncode($params));
@@ -149,7 +150,7 @@ abstract class ModuleRpc extends ModuleBase {
         $serverInfo = $this->getRpcServerInfo();
         $this->syRequest->setHost($serverInfo['host']);
         $this->syRequest->setPort($serverInfo['port']);
-        $this->syRequest->setTimeout(2000);
+        $this->syRequest->setTimeout(Project::TIME_EXPIRE_SWOOLE_CLIENT_RPC);
         $content = $this->syRequest->sendTaskReq($command, $params, $callback);
         if($content === false){
             Log::error('send task req fail: command=' . $command . ' params=' . Tool::jsonEncode($params, JSON_UNESCAPED_UNICODE));
