@@ -114,8 +114,7 @@ abstract class BaseServer {
         //关闭协程
         $this->_configs['swoole']['enable_coroutine'] = false;
         //日志
-        $this->_configs['swoole']['log_level'] = SWOOLE_LOG_TRACE;
-        $this->_configs['swoole']['trace_flags'] = SWOOLE_TRACE_SERVER | SWOOLE_TRACE_WORKER | SWOOLE_TRACE_PHP;
+        $this->_configs['swoole']['log_level'] = SWOOLE_LOG_INFO;
         //开启TCP快速握手特性,可以提升TCP短连接的响应速度
         $this->_configs['swoole']['tcp_fastopen'] = true;
         //启用异步安全重启特性,Worker进程会等待异步事件完成后再退出
