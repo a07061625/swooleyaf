@@ -93,20 +93,20 @@ class MysqlTool {
     }
 
     private static function help(){
-        echo '显示帮助: php helper_mysql.php -h' . PHP_EOL;
-        echo '生成数据库下所有的实体类: php helper_mysql.php entities -db xxx -path /xxx -namespace xxx -prefix xxx -suffix xxx' . PHP_EOL;
-        echo '    -db:数据库名' . PHP_EOL;
-        echo '    -path:存放实体类文件的目录' . PHP_EOL;
-        echo '    -namespace:命名空间' . PHP_EOL;
-        echo '    -prefix:实体类文件前缀' . PHP_EOL;
-        echo '    -suffix:实体类文件后缀' . PHP_EOL;
-        echo '生成数据库下指定的实体类: php helper_mysql.php entity -db xxx -table xxx -path /xxx -namespace xxx -prefix xxx -suffix xxx' . PHP_EOL;
-        echo '    -db:数据库名' . PHP_EOL;
-        echo '    -table:表名' . PHP_EOL;
-        echo '    -path:存放实体类文件的目录' . PHP_EOL;
-        echo '    -namespace:命名空间' . PHP_EOL;
-        echo '    -prefix:实体类文件前缀' . PHP_EOL;
-        echo '    -suffix:实体类文件后缀' . PHP_EOL;
+        echo '显示帮助: /usr/local/php7/bin/php helper_mysql.php -h' . PHP_EOL;
+        echo '生成数据库下所有的实体类: /usr/local/php7/bin/php helper_mysql.php entities -db xxx -path /xxx -namespace xxx -prefix xxx -suffix xxx' . PHP_EOL;
+        echo '    -db:必填 数据库名' . PHP_EOL;
+        echo '    -path:必填 存放实体类文件的目录,从根目录/开始' . PHP_EOL;
+        echo '    -namespace:选填 命名空间' . PHP_EOL;
+        echo '    -prefix:选填 实体类文件前缀' . PHP_EOL;
+        echo '    -suffix:选填 实体类文件后缀' . PHP_EOL;
+        echo '生成数据库下指定的实体类: /usr/local/php7/bin/php helper_mysql.php entity -db xxx -table xxx -path /xxx -namespace xxx -prefix xxx -suffix xxx' . PHP_EOL;
+        echo '    -db:必填 数据库名' . PHP_EOL;
+        echo '    -table:必填 表名' . PHP_EOL;
+        echo '    -path:必填 存放实体类文件的目录,从根目录/开始' . PHP_EOL;
+        echo '    -namespace:选填 命名空间' . PHP_EOL;
+        echo '    -prefix:选填 实体类文件前缀' . PHP_EOL;
+        echo '    -suffix:选填 实体类文件后缀' . PHP_EOL;
     }
 
     /**
