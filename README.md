@@ -79,6 +79,8 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
     touch /home/logs/swoole/swoole.log
     cp -r libs_frame/ /home/phpspace/swooleyaf_libs/
     systemctl start redis
+    systemctl start crond
+    systemctl enable crond
 ```
 
 ## 创建项目
@@ -107,6 +109,9 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
             ],
         ],
         ......
+    crontab -e
+        * * * * * /usr/local/php7/bin/php /home/phpspace/project_demo/helper_sytask.php >/dev/null 2>&1
+    
     项目yaconf配置：
     参考/home/configs/yaconf-cli目录下的所有ini文件,增加相应项目标识的配置
     以下配置需要特别注意
@@ -193,8 +198,6 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
 - 其他目录: 项目模块目录,每一个目录对应一个项目模块
 
 ## <a name="2">命令</a>
-**必须将helper_sytask.php文件加入到linux系统cron执行任务中**
-
 ### 启动服务
     /usr/local/php7/bin/php helper_service_manager.php -s start-all
 ### 关闭服务
