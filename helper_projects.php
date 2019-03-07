@@ -56,4 +56,16 @@ return [
             ],
         ],
     ],
+    4 => [
+        'git_branch' => 'master',
+        'module_type' => 'rpc',
+        'module_path' => 'sy_content',
+        'module_name' => 'a01content',
+        'listens' => [
+            0 => [
+                'host' => $serverHost,
+                'port' => 7180,
+            ],
+        ],
+    ],
 ];
