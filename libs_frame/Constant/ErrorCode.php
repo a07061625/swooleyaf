@@ -189,6 +189,9 @@ class ErrorCode {
     const DING_TALK_POST_ERROR = 104901;
     const DING_TALK_GET_ERROR = 104902;
 
+    //MEMCACHE错误,取值范围:105000-105099
+    const MEMCACHE_CONNECTION_ERROR = 105000;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -306,6 +309,7 @@ class ErrorCode {
         self::DING_TALK_PARAM_ERROR => '钉钉参数错误',
         self::DING_TALK_POST_ERROR => '钉钉发送POST请求出错',
         self::DING_TALK_GET_ERROR => '钉钉发送GET请求出错',
+        self::MEMCACHE_CONNECTION_ERROR => 'MEMCACHE连接出错',
     ];
 
     /**
