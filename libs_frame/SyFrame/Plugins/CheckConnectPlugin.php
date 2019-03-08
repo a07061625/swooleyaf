@@ -7,6 +7,7 @@
  */
 namespace SyFrame\Plugins;
 
+use DesignPatterns\Singletons\MemCacheSingleton;
 use DesignPatterns\Singletons\MysqlSingleton;
 use DesignPatterns\Singletons\RedisSingleton;
 use Yaf\Plugin_Abstract;
@@ -22,6 +23,9 @@ class CheckConnectPlugin extends Plugin_Abstract {
 
     public function dispatchLoopStartup(Request_Abstract $request,Response_Abstract $response) {
         RedisSingleton::getInstance()->reConnect();
+        if (SY_RECONNECT_MEMCACHE) {
+            MemCacheSingleton::getInstance()->reConnect();
+        }
         if(SY_DATABASE){
             MysqlSingleton::getInstance()->reConnect();
         }
