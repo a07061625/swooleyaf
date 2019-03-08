@@ -11,6 +11,7 @@ use Constant\ErrorCode;
 use Constant\Project;
 use Constant\Server;
 use DesignPatterns\Factories\CacheSimpleFactory;
+use DesignPatterns\Singletons\MemCacheSingleton;
 use DesignPatterns\Singletons\MysqlSingleton;
 use DesignPatterns\Singletons\RedisSingleton;
 use Exception\Swoole\ServerException;
@@ -297,6 +298,9 @@ abstract class BaseServer {
         }
 
         RedisSingleton::getInstance()->reConnect();
+        if (SY_RECONNECT_MEMCACHE) {
+            MemCacheSingleton::getInstance()->reConnect();
+        }
         if(SY_DATABASE){
             MysqlSingleton::getInstance()->reConnect();
         }
