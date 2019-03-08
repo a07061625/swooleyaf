@@ -23,7 +23,7 @@ class CheckConnectPlugin extends Plugin_Abstract {
 
     public function dispatchLoopStartup(Request_Abstract $request,Response_Abstract $response) {
         RedisSingleton::getInstance()->reConnect();
-        if (SY_RECONNECT_MEMCACHE) {
+        if (SY_MEMCACHE) {
             MemCacheSingleton::getInstance()->reConnect();
         }
         if(SY_DATABASE){

@@ -21,9 +21,9 @@ unset($syLogPath);
 if(!defined('SY_DATABASE')){
     define('SY_DATABASE', true);
 }
-//是否重连memcache
-if(!defined('SY_RECONNECT_MEMCACHE')){
-    define('SY_RECONNECT_MEMCACHE', false);
+//是否连接memcache
+if(!defined('SY_MEMCACHE')){
+    define('SY_MEMCACHE', false);
 }
 //是否本地缓存微信账号数据
 if(!defined('SY_LC_WX_ACCOUNT')){
