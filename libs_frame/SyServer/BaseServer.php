@@ -298,7 +298,7 @@ abstract class BaseServer {
         }
 
         RedisSingleton::getInstance()->reConnect();
-        if (SY_RECONNECT_MEMCACHE) {
+        if (SY_MEMCACHE) {
             MemCacheSingleton::getInstance()->reConnect();
         }
         if(SY_DATABASE){
