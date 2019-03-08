@@ -7,6 +7,7 @@
  */
 namespace DesignPatterns\Factories;
 
+use DesignPatterns\Singletons\MemCacheSingleton;
 use DesignPatterns\Singletons\RedisSingleton;
 use DesignPatterns\Singletons\YacSingleton;
 use Traits\SimpleTrait;
@@ -28,5 +29,13 @@ class CacheSimpleFactory {
      */
     public static function getYacInstance() {
         return YacSingleton::getInstance();
+    }
+
+    /**
+     * 获取memcache实例
+     * @return \Memcache
+     */
+    public static function getMemCacheInstance(){
+        return MemCacheSingleton::getInstance()->getConn();
     }
 }
