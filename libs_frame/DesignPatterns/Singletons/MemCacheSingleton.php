@@ -17,7 +17,7 @@ class MemCacheSingleton {
     use SingletonTrait;
 
     /**
-     * @var \Memcache
+     * @var \Memcached
      */
     private $conn = null;
     /**
@@ -31,7 +31,7 @@ class MemCacheSingleton {
 
     public function __destruct(){
         if(!is_null($this->conn)){
-            $this->conn->close();
+            $this->conn->quit();
         }
         self::$instance = null;
     }
@@ -40,22 +40,50 @@ class MemCacheSingleton {
         $this->conn = null;
         $configs = Tool::getConfig('memcache.' . SY_ENV . SY_PROJECT);
 
-        $host = Tool::getArrayVal($configs, 'host');
-        $port = Tool::getArrayVal($configs, 'port');
+        $servers = [];
+        $existServers = (array)Tool::getArrayVal($configs, 'servers', []);
+        foreach ($existServers as $eServer) {
+            $serverHost = trim(Tool::getArrayVal($eServer, 'host', ''));
+            if(strlen($serverHost) > 0){
+                $serverPort = (int)Tool::getArrayVal($eServer, 'port', 11211);
+                $serverWeight = (int)Tool::getArrayVal($eServer, 'weight', 0);
+                $servers[] = [$serverHost, $serverPort, $serverWeight];
+            }
+        }
+        unset($existServers);
+        if(empty($servers)){
+            throw new MemCacheException('Memcache服务端不能为空', ErrorCode::MEMCACHE_CONNECTION_ERROR);
+        }
 
         try {
-            $memcache = new \Memcache();
-            if (!$memcache->connect($host, $port)) {
-                throw new MemCacheException('Memcache连接出错', ErrorCode::MEMCACHE_CONNECTION_ERROR);
-            }
+            $memcached = new \Memcached(SY_ENV . SY_PROJECT);
+            $memcached->setOptions([
+                \Memcached::OPT_COMPRESSION => true,
+                \Memcached::OPT_SERIALIZER => \Memcached::SERIALIZER_MSGPACK,
+                \Memcached::OPT_PREFIX_KEY => '',
+                \Memcached::OPT_HASH => \Memcached::HASH_DEFAULT,
+                \Memcached::OPT_DISTRIBUTION => \Memcached::DISTRIBUTION_MODULA,
+                \Memcached::OPT_BUFFER_WRITES => false,
+                \Memcached::OPT_BINARY_PROTOCOL => false,
+                \Memcached::OPT_NO_BLOCK => false,
+                \Memcached::OPT_TCP_NODELAY => true,
+                \Memcached::OPT_CONNECT_TIMEOUT => 1500,
+                \Memcached::OPT_RETRY_TIMEOUT => 0,
+                \Memcached::OPT_SEND_TIMEOUT => 2000000,
+                \Memcached::OPT_RECV_TIMEOUT => 1500000,
+                \Memcached::OPT_POLL_TIMEOUT => 1000,
+                \Memcached::OPT_CACHE_LOOKUPS => false,
+                \Memcached::OPT_SERVER_FAILURE_LIMIT => 0,
+                \Memcached::OPT_REMOVE_FAILED_SERVERS => true,
+                \Memcached::HAVE_MSGPACK => true,
+                \Memcached::GET_PRESERVE_ORDER => true,
+            ]);
+            $memcached->addServers($servers);
 
-            $this->conn = $memcache;
+            $this->conn = $memcached;
             $this->connTime = Tool::getNowTime();
-        } catch (MemCacheException $e) {
-            throw $e;
         } catch (\Exception $e) {
             Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
-
             throw new MemCacheException('Memcache初始化出错', ErrorCode::MEMCACHE_CONNECTION_ERROR);
         }
     }
@@ -72,7 +100,7 @@ class MemCacheSingleton {
     }
 
     /**
-     * @return \Memcache
+     * @return \Memcached
      */
     public function getConn() {
         return $this->conn;
@@ -82,7 +110,7 @@ class MemCacheSingleton {
      * 关闭连接
      */
     public function close() {
-        $this->conn->close();
+        $this->conn->quit();
         self::$instance = null;
     }
 
@@ -91,7 +119,7 @@ class MemCacheSingleton {
         if (is_null($this->conn)) {
             $this->init();
         } else if ($nowTime - $this->connTime >= 15) {
-            $this->conn->close();
+            $this->conn->quit();
             $this->init();
         }
     }
