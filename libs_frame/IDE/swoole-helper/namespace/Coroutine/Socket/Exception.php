@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine\Socket;
 
 /**
- * @since 4.2.12
+ * @since 4.3.0
  */
 class Exception extends \Swoole\Exception
 {
