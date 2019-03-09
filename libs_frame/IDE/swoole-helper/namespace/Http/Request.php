@@ -2,7 +2,7 @@
 namespace Swoole\Http;
 
 /**
- * @since 4.2.12
+ * @since 4.3.0
  */
 class Request
 {
@@ -11,7 +11,7 @@ class Request
     /**
      * @return mixed
      */
-    public function rawcontent(){}
+    public function rawContent(){}
 
     /**
      * @return mixed

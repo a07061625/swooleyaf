@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.2.12
+ * @since 4.3.0
  */
 class Server
 {
@@ -44,6 +44,12 @@ class Server
      * @return mixed
      */
     public function on($event_name, $callback){}
+
+    /**
+     * @param $event_name[required]
+     * @return mixed
+     */
+    public function getCallback($event_name){}
 
     /**
      * @param $settings[required]
@@ -100,6 +106,12 @@ class Server
      * @return mixed
      */
     public function sendwait($conn_fd, $send_data){}
+
+    /**
+     * @param $fd[required]
+     * @return mixed
+     */
+    public function exists($fd){}
 
     /**
      * @param $fd[required]
