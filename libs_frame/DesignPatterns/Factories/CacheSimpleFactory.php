@@ -33,7 +33,7 @@ class CacheSimpleFactory {
 
     /**
      * 获取memcache实例
-     * @return \Memcache
+     * @return \Memcached
      */
     public static function getMemCacheInstance(){
         return MemCacheSingleton::getInstance()->getConn();
