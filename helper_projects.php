@@ -5,8 +5,6 @@
  * Date: 18-7-1
  * Time: 下午3:49
  */
-$serverHost = \Yaconf::get('syserver.base.server.host');
-
 return [
     0 => [
         'git_branch' => 'master',
@@ -15,7 +13,6 @@ return [
         'module_name' => 'a01api',
         'listens' => [
             0 => [
-                'host' => $serverHost,
                 'port' => 7100,
             ],
         ],
@@ -27,7 +24,6 @@ return [
         'module_name' => 'a01order',
         'listens' => [
             0 => [
-                'host' => $serverHost,
                 'port' => 7120,
             ],
         ],
@@ -39,7 +35,6 @@ return [
         'module_name' => 'a01user',
         'listens' => [
             0 => [
-                'host' => $serverHost,
                 'port' => 7140,
             ],
         ],
@@ -51,7 +46,6 @@ return [
         'module_name' => 'a01services',
         'listens' => [
             0 => [
-                'host' => $serverHost,
                 'port' => 7160,
             ],
         ],
@@ -63,7 +57,6 @@ return [
         'module_name' => 'a01content',
         'listens' => [
             0 => [
-                'host' => $serverHost,
                 'port' => 7180,
             ],
         ],
