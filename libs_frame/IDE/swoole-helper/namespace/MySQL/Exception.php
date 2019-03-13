@@ -1,22 +1,12 @@
 <?php
-namespace Swoole;
+namespace Swoole\MySQL;
 
 /**
  * @since 4.2.12
  */
-class ExitException extends \Swoole\Exception
+class Exception extends \Swoole\Exception
 {
 
-
-    /**
-     * @return mixed
-     */
-    public function getFlags(){}
-
-    /**
-     * @return mixed
-     */
-    public function getStatus(){}
 
     /**
      * @param $message[optional]

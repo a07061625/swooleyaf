@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.3.0
+ * @since 4.2.12
  */
 class Socket
 {
@@ -58,20 +58,6 @@ class Socket
     public function send($data, $timeout=null){}
 
     /**
-     * @param $length[optional]
-     * @param $timeout[optional]
-     * @return mixed
-     */
-    public function recvAll($length=null, $timeout=null){}
-
-    /**
-     * @param $data[required]
-     * @param $timeout[optional]
-     * @return mixed
-     */
-    public function sendAll($data, $timeout=null){}
-
-    /**
      * @param $peername[required]
      * @param $timeout[optional]
      * @return mixed
@@ -87,17 +73,6 @@ class Socket
     public function sendto($addr, $port, $data){}
 
     /**
-     * @param $how[required]
-     * @return mixed
-     */
-    public function shutdown($how){}
-
-    /**
-     * @return mixed
-     */
-    public function close(){}
-
-    /**
      * @return mixed
      */
     public function getpeername(){}
@@ -106,6 +81,11 @@ class Socket
      * @return mixed
      */
     public function getsockname(){}
+
+    /**
+     * @return mixed
+     */
+    public function close(){}
 
 
 }

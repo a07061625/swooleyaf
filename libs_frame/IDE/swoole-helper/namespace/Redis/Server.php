@@ -2,7 +2,7 @@
 namespace Swoole\Redis;
 
 /**
- * @since 4.3.0
+ * @since 4.2.12
  */
 class Server extends \Swoole\Server
 {
@@ -23,15 +23,11 @@ class Server extends \Swoole\Server
     /**
      * @param $command[required]
      * @param $callback[required]
+     * @param $number_of_string_param[optional]
+     * @param $type_of_array_param[optional]
      * @return mixed
      */
-    public function setHandler($command, $callback){}
-
-    /**
-     * @param $command[required]
-     * @return mixed
-     */
-    public function getHandler($command){}
+    public function setHandler($command, $callback, $number_of_string_param=null, $type_of_array_param=null){}
 
     /**
      * @param $type[required]
@@ -78,12 +74,6 @@ class Server extends \Swoole\Server
     public function on($event_name, $callback){}
 
     /**
-     * @param $event_name[required]
-     * @return mixed
-     */
-    public function getCallback($event_name){}
-
-    /**
      * @param $settings[required]
      * @return mixed
      */
@@ -112,12 +102,6 @@ class Server extends \Swoole\Server
      * @return mixed
      */
     public function sendwait($conn_fd, $send_data){}
-
-    /**
-     * @param $fd[required]
-     * @return mixed
-     */
-    public function exists($fd){}
 
     /**
      * @param $fd[required]
