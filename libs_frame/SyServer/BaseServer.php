@@ -556,22 +556,6 @@ abstract class BaseServer {
         return $serviceInfo === false ? [] : $serviceInfo;
     }
 
-    /**
-     * 获取服务配置信息
-     * @param string $field 配置字段名称
-     * @param null $default
-     * @return mixed
-     */
-    public static function getServerConfig(string $field=null, $default=null) {
-        if (is_null($field)) {
-            $data = self::$_syServer->get(self::$_serverToken);
-            return $data === false ? [] : $data;
-        } else {
-            $data = self::$_syServer->get(self::$_serverToken, $field);
-            return $data === false ? $default : $data;
-        }
-    }
-
     protected function basicWorkStart(\swoole_server $server, $workerId){
         //设置错误和异常处理
         set_exception_handler('\SyError\ErrorHandler::handleException');
