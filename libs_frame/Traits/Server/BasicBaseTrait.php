@@ -134,6 +134,16 @@ trait BasicBaseTrait {
     }
 
     /**
+     * 通过模块名称获取注册的服务信息
+     * @param string $moduleName
+     * @return array
+     */
+    public static function getServiceInfo(string $moduleName) {
+        $serviceInfo = self::$_syServices->get($moduleName);
+        return $serviceInfo === false ? [] : $serviceInfo;
+    }
+
+    /**
      * 设置项目缓存
      * @param string $key 键名
      * @param array $data 键值

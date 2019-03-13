@@ -546,16 +546,6 @@ abstract class BaseServer {
         exit();
     }
 
-    /**
-     * 通过模块名称获取注册的服务信息
-     * @param string $moduleName
-     * @return array
-     */
-    public static function getServiceInfo(string $moduleName) {
-        $serviceInfo = self::$_syServices->get($moduleName);
-        return $serviceInfo === false ? [] : $serviceInfo;
-    }
-
     protected function basicWorkStart(\swoole_server $server, $workerId){
         //设置错误和异常处理
         set_exception_handler('\SyError\ErrorHandler::handleException');
