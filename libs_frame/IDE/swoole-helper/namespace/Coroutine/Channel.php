@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.3.0
+ * @since 4.2.12
  */
 class Channel
 {
@@ -16,10 +16,9 @@ class Channel
 
     /**
      * @param $data[required]
-     * @param $timeout[optional]
      * @return mixed
      */
-    public function push($data, $timeout=null){}
+    public function push($data){}
 
     /**
      * @param $timeout[optional]

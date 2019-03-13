@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine\Http2;
 
 /**
- * @since 4.3.0
+ * @since 4.2.12
  */
 class Client
 {

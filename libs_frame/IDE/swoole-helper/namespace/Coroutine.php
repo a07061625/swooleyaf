@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.3.0
+ * @since 4.2.12
  */
 class Coroutine
 {
@@ -42,12 +42,6 @@ class Coroutine
     public static function set($options){}
 
     /**
-     * @param $cid[required]
-     * @return mixed
-     */
-    public static function exists($cid){}
-
-    /**
      * @return mixed
      */
     public static function yield(){}
@@ -58,10 +52,10 @@ class Coroutine
     public static function suspend(){}
 
     /**
-     * @param $cid[required]
+     * @param $uid[required]
      * @return mixed
      */
-    public static function resume($cid){}
+    public static function resume($uid){}
 
     /**
      * @return mixed
@@ -77,17 +71,6 @@ class Coroutine
      * @return mixed
      */
     public static function getuid(){}
-
-    /**
-     * @return mixed
-     */
-    public static function getPcid(){}
-
-    /**
-     * @param $cid[optional]
-     * @return mixed
-     */
-    public static function getContext($cid=null){}
 
     /**
      * @param $seconds[required]
@@ -147,17 +130,12 @@ class Coroutine
     public static function statvfs($path){}
 
     /**
-     * @param $cid[optional]
+     * @param $cid[required]
      * @param $options[optional]
      * @param $limit[optional]
      * @return mixed
      */
-    public static function getBackTrace($cid=null, $options=null, $limit=null){}
-
-    /**
-     * @return mixed
-     */
-    public static function list(){}
+    public static function getBackTrace($cid, $options=null, $limit=null){}
 
     /**
      * @return mixed

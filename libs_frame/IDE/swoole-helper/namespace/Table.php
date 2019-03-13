@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.3.0
+ * @since 4.2.12
  */
 class Table
 {
@@ -60,12 +60,6 @@ class Table
      * @return mixed
      */
     public function del($key){}
-
-    /**
-     * @param $key[required]
-     * @return mixed
-     */
-    public function exists($key){}
 
     /**
      * @param $key[required]
