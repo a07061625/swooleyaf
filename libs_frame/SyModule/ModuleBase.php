@@ -83,7 +83,7 @@ abstract class ModuleBase {
             if (strpos($uri, '?') === false) {
                 $nodeInfo['url'] .= '?' . http_build_query($params);
             } else {
-                $nodeInfo['url'] .= http_build_query($params);
+                $nodeInfo['url'] .= '&' . http_build_query($params);
             }
         }
 
