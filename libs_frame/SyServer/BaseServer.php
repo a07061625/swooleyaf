@@ -15,6 +15,7 @@ use DesignPatterns\Singletons\MemCacheSingleton;
 use DesignPatterns\Singletons\MysqlSingleton;
 use DesignPatterns\Singletons\RedisSingleton;
 use Exception\Swoole\ServerException;
+use Exception\Validator\ValidatorException;
 use Log\Log;
 use Response\Result;
 use Tool\Dir;
@@ -596,6 +597,21 @@ abstract class BaseServer {
             $msg = 'swoole work error. work_id=' . $workId . '|work_pid=' . $workPid . '|exit_code=' . $exitCode . '|err_msg=' . $server->getLastError();
             Log::error($msg);
         }
+    }
+
+    protected function handleReqExceptionByFrame(\Exception $e) {
+        if (!($e instanceof ValidatorException)) {
+            Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
+        }
+
+        $error = new Result();
+        if (is_numeric($e->getCode())) {
+            $error->setCodeMsg((int)$e->getCode(), $e->getMessage());
+        } else {
+            $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务出错');
+        }
+
+        return $error;
     }
 
     /**
