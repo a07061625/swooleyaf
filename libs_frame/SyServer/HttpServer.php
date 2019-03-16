@@ -11,7 +11,6 @@ use Constant\ErrorCode;
 use Constant\Project;
 use Constant\Server;
 use Exception\Swoole\HttpServerException;
-use Exception\Validator\ValidatorException;
 use Log\Log;
 use Request\RequestSign;
 use Response\Result;
@@ -388,15 +387,10 @@ class HttpServer extends BaseServer {
             }
         } catch (\Exception $e){
             SyResponseHttp::header('Content-Type', 'application/json; charset=utf-8');
-            if (!($e instanceof ValidatorException)) {
-                Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
-            }
-
-            $error = new Result();
-            if(is_numeric($e->getCode())){
-                $error->setCodeMsg((int)$e->getCode(), $e->getMessage());
+            if(SY_REQ_EXCEPTION_HANDLE_TYPE){
+                $error = $this->handleReqExceptionByFrame($e);
             } else {
-                $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务出错');
+                $error = $this->handleReqExceptionByProject($e);
             }
         } finally {
             self::$_syServer->decr(self::$_serverToken, 'request_handling', 1);

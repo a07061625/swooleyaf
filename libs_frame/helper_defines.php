@@ -33,6 +33,10 @@ if(!defined('SY_LC_WX_ACCOUNT')){
 if(!defined('SY_LC_WXOPEN_AUTHORIZER')){
     define('SY_LC_WXOPEN_AUTHORIZER', false);
 }
+//请求异常处理类型 true:框架处理 false:项目处理
+if(!defined('SY_REQ_EXCEPTION_HANDLE_TYPE')){
+    define('SY_REQ_EXCEPTION_HANDLE_TYPE', true);
+}
 
 $aliOpenConfigs = \Tool\Tool::getConfig('project.' . SY_ENV . SY_PROJECT);
 $proxyStatus = (int)\Tool\Tool::getArrayVal($aliOpenConfigs, 'aliopen.proxy.status', 0, true);
