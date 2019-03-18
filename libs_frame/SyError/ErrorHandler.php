@@ -32,8 +32,8 @@ class ErrorHandler {
             case E_COMPILE_WARNING:
             case E_USER_NOTICE:
                 Registry::set(Server::REGISTRY_NAME_SERVICE_ERROR, ErrorCode::COMMON_SERVER_ERROR);
-
-                throw new ErrorException($errStr . ' at ' . $errFile . '(' . $errLine . ')', ErrorCode::COMMON_SERVER_ERROR);
+                $errMsg = $errStr . ' at ' . str_replace(SY_ROOT, '.', $errFile) . '(' . $errLine . ')';
+                throw new ErrorException($errMsg, ErrorCode::COMMON_SERVER_ERROR);
                 break;
         }
     }
