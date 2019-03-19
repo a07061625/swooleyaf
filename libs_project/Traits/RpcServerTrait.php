@@ -7,6 +7,8 @@
  */
 namespace Traits;
 
+use Response\Result;
+
 trait RpcServerTrait {
     private function checkServerRpcTrait() {
     }
@@ -26,5 +28,8 @@ trait RpcServerTrait {
      */
     private function handleTaskRpcTrait(\swoole_server $server,int $taskId,int $fromId,array &$data) : string {
         return '';
+    }
+
+    private function handleReqExceptionByProject(\Exception $e) : Result {
     }
 }

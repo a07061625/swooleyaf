@@ -44,11 +44,13 @@ class SyRequestRpc extends SyRequest {
         $rspMsg = $this->sendBaseSyncReq($reqData);
         if ($rspMsg === false) {
             return false;
-        } else if (!$this->syPack->unpackData($rspMsg)) {
+        }
+        if (!$this->syPack->unpackData($rspMsg)) {
             Log::error('unpack sync response data error');
             $this->syPack->init();
             return false;
-        } else if ($this->syPack->getCommand() != SyPack::COMMAND_TYPE_RPC_SERVER_SEND_RSP) {
+        }
+        if ($this->syPack->getCommand() != SyPack::COMMAND_TYPE_RPC_SERVER_SEND_RSP) {
             Log::error('sync response data error,command=' . $this->syPack->getCommand() . ',data=' . Tool::jsonEncode($this->syPack->getData(), JSON_UNESCAPED_UNICODE));
             $this->syPack->init();
             return false;
