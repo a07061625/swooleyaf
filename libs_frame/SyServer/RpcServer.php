@@ -128,20 +128,20 @@ class RpcServer extends BaseServer {
         try {
             self::checkRequestCurrentLimit();
             $funcName = $this->getPreProcessFunction($data['api_uri'], $this->preProcessMapFrame, $this->preProcessMapProject);
-            if(is_bool($funcName)){
-                $error = new Result();
-                $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '预处理函数命名不合法');
-            } else {
-                if(strlen($funcName) > 0){
-                    $result = $this->$funcName($data);
-                } else {
+            if(is_string($funcName)){
+                if(strlen($funcName) == 0){
                     $httpObj = new Http($data['api_uri']);
                     $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
+                } else {
+                    $result = $this->$funcName($data);
                 }
                 if(strlen($result) == 0){
                     $error = new Result();
                     $error->setCodeMsg(ErrorCode::SWOOLE_SERVER_NO_RESPONSE_ERROR, '未设置响应数据');
                 }
+            } else {
+                $error = new Result();
+                $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '预处理函数命名不合法');
             }
         } catch (\Exception $e) {
             if(SY_REQ_EXCEPTION_HANDLE_TYPE){

@@ -84,7 +84,7 @@ trait BasicBaseTrait {
         if ($numModules < 1) {
             exit('服务模块缓存数量不能小于1');
         } else if (($numModules & ($numModules - 1)) != 0) {
-            exit('服务模块缓存数量必须是1的指数倍');
+            exit('服务模块缓存数量必须是2的指数倍');
         }
 
         self::$_syProjectNowNum = 0;

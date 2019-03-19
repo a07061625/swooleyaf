@@ -46,4 +46,7 @@ trait HttpServerTrait {
 
         return '';
     }
+
+    private function handleReqExceptionByProject(\Exception $e) : Result {
+    }
 }
