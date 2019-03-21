@@ -180,21 +180,27 @@ abstract class SyRequest {
             throw new ServerException('服务端端口不合法', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
 
-        $client = new \swoole_client(SWOOLE_TCP, SWOOLE_SOCK_SYNC);
+        $client = new \swoole_client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_SYNC);
         $client->set($this->_clientConfigs);
-        if (!@$client->connect($this->_host, $this->_port, $this->_timeout / 1000)) {
+        if (!$client->connect($this->_host, $this->_port, $this->_timeout / 1000)) {
             Log::error('sync connect address ' . $this->_host . ':' . $this->_port . ' fail' . ',error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode));
             return false;
         }
 
-        if(!$client->send($reqData)){
+        $dataLength = strlen($reqData);
+        $sendLength = $client->send($reqData);
+        if(is_bool($sendLength)){
             $client->close();
             Log::error('send sync data to address ' . $this->_host . ':' . $this->_port . ' fail,error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode));
             return false;
+        } else if($sendLength != $dataLength){
+            $client->close();
+            Log::error('send sync data to address ' . $this->_host . ':' . $this->_port . ' fail,error_msg: lose some data');
+            return false;
         }
 
-        $rspMsg = @$client->recv();
-        if ($rspMsg === false) {
+        $rspMsg = $client->recv();
+        if (is_bool($rspMsg)) {
             Log::error('get sync response data error,error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode));
         }
         $client->close();
@@ -203,7 +209,7 @@ abstract class SyRequest {
     }
 
     protected function sendBaseAsyncReq(string $reqData,callable $callback=null) {
-        $this->_asyncClient = new \swoole_client(SWOOLE_TCP, SWOOLE_SOCK_ASYNC);
+        $this->_asyncClient = new \swoole_client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_ASYNC);
         $this->_asyncClient->set($this->_clientConfigs);
         $this->_asyncClient->on('connect', function (\swoole_client $cli) use ($reqData) {
             if (!$cli->send($reqData)) {

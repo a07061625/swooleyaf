@@ -479,7 +479,7 @@ class Tool {
      * @return bool
      */
     public static function sendSyRpcReq(string $host,int $port,string $content) {
-        $client = new \swoole_client(SWOOLE_TCP);
+        $client = new \swoole_client(SWOOLE_SOCK_TCP);
         $client->set([
             'open_tcp_nodelay' => true,
             'open_length_check' => true,
