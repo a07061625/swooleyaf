@@ -167,10 +167,44 @@ abstract class SyRequest {
         }
     }
 
+    private function handleSyncReq(\swoole_client &$client,string $data) {
+        $handleRes = [
+            'step' => 0,
+            'err_msg' => '',
+            'result' => false,
+        ];
+
+        $client->connect($this->_host, $this->_port, $this->_timeout / 1000);
+        if($client->errCode > 0){
+            $handleRes['err_msg'] = 'sync connect address ' . $this->_host . ':' . $this->_port . ' fail' . ',error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode);
+            return $handleRes;
+        }
+        $handleRes['step']++;
+
+        $dataLength = strlen($data);
+        $sendLength = $client->send($data);
+        if($client->errCode > 0){
+            $handleRes['err_msg'] = 'send sync data to address ' . $this->_host . ':' . $this->_port . ' fail,error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode);
+            return $handleRes;
+        } else if($sendLength != $dataLength){
+            $handleRes['err_msg'] = 'send sync data to address ' . $this->_host . ':' . $this->_port . ' fail,error_msg: lose some data';
+            return $handleRes;
+        }
+        $handleRes['step']++;
+
+        $rspMsg = $client->recv();
+        if($client->errCode == 0){
+            $handleRes['result'] = $rspMsg;
+        } else {
+            $handleRes['err_msg'] = 'get sync response data error,error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode);
+        }
+        return $handleRes;
+    }
+
     /**
      * 发送同步请求
      * @param string $reqData 请求数据
-     * @return bool|mixed
+     * @return bool|string
      * @throws \Exception\Swoole\ServerException
      */
     protected function sendBaseSyncReq(string $reqData) {
@@ -182,30 +216,15 @@ abstract class SyRequest {
 
         $client = new \swoole_client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_SYNC);
         $client->set($this->_clientConfigs);
-        if (!$client->connect($this->_host, $this->_port, $this->_timeout / 1000)) {
-            Log::error('sync connect address ' . $this->_host . ':' . $this->_port . ' fail' . ',error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode));
-            return false;
+        $handleRes = $this->handleSyncReq($client, $reqData);
+        if(strlen($handleRes['err_msg']) > 0){
+            Log::error($handleRes['err_msg']);
         }
-
-        $dataLength = strlen($reqData);
-        $sendLength = $client->send($reqData);
-        if(is_bool($sendLength)){
+        if($handleRes['step'] > 0){
             $client->close();
-            Log::error('send sync data to address ' . $this->_host . ':' . $this->_port . ' fail,error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode));
-            return false;
-        } else if($sendLength != $dataLength){
-            $client->close();
-            Log::error('send sync data to address ' . $this->_host . ':' . $this->_port . ' fail,error_msg: lose some data');
-            return false;
         }
 
-        $rspMsg = $client->recv();
-        if (is_bool($rspMsg)) {
-            Log::error('get sync response data error,error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode));
-        }
-        $client->close();
-
-        return $rspMsg;
+        return $handleRes['result'];
     }
 
     protected function sendBaseAsyncReq(string $reqData,callable $callback=null) {
