@@ -103,7 +103,7 @@ abstract class BaseServer {
      * @param int $port 端口
      */
     public function __construct(int $port) {
-        if (($port <= 1000) || ($port > 65535)) {
+        if (($port <= Server::ENV_PORT_MIN) || ($port > Server::ENV_PORT_MAX)) {
             exit('端口不合法' . PHP_EOL);
         }
         $this->checkSystemEnv();

@@ -8,6 +8,7 @@
 namespace Request;
 
 use Constant\ErrorCode;
+use Constant\Server;
 use Exception\Swoole\ServerException;
 use Log\Log;
 
@@ -210,7 +211,8 @@ abstract class SyRequest {
     protected function sendBaseSyncReq(string $reqData) {
         if (strlen($this->_host) == 0) {
             throw new ServerException('服务端域名不能为空', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
-        } else if (($this->_port <= 1000) || ($this->_port > 65536)) {
+        }
+        if (($this->_port <= Server::ENV_PORT_MIN) || ($this->_port > Server::ENV_PORT_MAX)) {
             throw new ServerException('服务端端口不合法', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
 
