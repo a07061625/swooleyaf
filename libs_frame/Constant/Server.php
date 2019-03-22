@@ -47,6 +47,8 @@ final class Server {
     const ENV_SYSTEM_BSD = 'FreeBSD'; //系统环境-bsd
     const ENV_SYSTEM_MAC = 'Darwin'; //系统环境-mac
     const ENV_SYSTEM_LINUX = 'Linux'; //系统环境-linux
+    const ENV_PORT_MIN = 1024; //端口-最小
+    const ENV_PORT_MAX = 65535; //端口-最大
 
     //版本常量
     const VERSION_MIN_PHP = '7.1.0'; //最低版本-php
