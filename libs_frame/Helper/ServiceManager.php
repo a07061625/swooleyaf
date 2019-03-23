@@ -52,4 +52,36 @@ class ServiceManager {
                 system('echo -e "\e[1;31m command not exist \e[0m"');
         }
     }
+
+    public static function handleAllProcessPool(string $commandPrefix,array $pools){
+        $action = Tool::getClientOption('-s', false, '');
+        switch ($action) {
+            case 'start-all' :
+                foreach ($pools as $ePool) {
+                    foreach ($ePool['listens'] as $eListen) {
+                        $command = $commandPrefix . ' -st processpool -s start -module ' . $ePool['module_name'] . ' -port ' . $eListen['port'] . ' && ' . $commandPrefix . ' -st processpool -s startstatus -module ' . $ePool['module_name'] . ' -port ' . $eListen['port'];
+                        system($command);
+                    }
+                }
+                break;
+            case 'stop-all' :
+                foreach ($pools as $ePool) {
+                    foreach ($ePool['listens'] as $eListen) {
+                        $command = $commandPrefix . ' -st processpool -s stop -module ' . $ePool['module_name'] . ' -port ' . $eListen['port'];
+                        system($command);
+                    }
+                }
+                break;
+            case 'restart-all' :
+                foreach ($pools as $ePool) {
+                    foreach ($ePool['listens'] as $eListen) {
+                        $command = $commandPrefix . ' -st processpool -s restart -module ' . $ePool['module_name'] . ' -port ' . $eListen['port'] . ' && ' . $commandPrefix . ' -st processpool -s startstatus -module ' . $ePool['module_name'] . ' -port ' . $eListen['port'];
+                        system($command);
+                    }
+                }
+                break;
+            default :
+                system('echo -e "\e[1;31m command not exist \e[0m"');
+        }
+    }
 }

@@ -478,7 +478,7 @@ abstract class BaseServer {
         print_r('-s 操作类型: restart-重启 stop-关闭 start-启动 kz-清理僵尸进程 startstatus-启动状态' . PHP_EOL);
         print_r('-n 项目名' . PHP_EOL);
         print_r('-module 模块名' . PHP_EOL);
-        print_r('-port 端口,取值范围为1001-65535' . PHP_EOL);
+        print_r('-port 端口,取值范围为1024-65535' . PHP_EOL);
     }
 
     /**
