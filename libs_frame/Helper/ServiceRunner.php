@@ -8,6 +8,7 @@
 namespace Helper;
 
 use SyServer\HttpServer;
+use SyServer\ProcessPoolServer;
 use SyServer\RpcServer;
 use Tool\Tool;
 use Traits\SimpleTrait;
@@ -66,6 +67,42 @@ class ServiceRunner {
                 break;
             case 'kz' :
                 $server->killZombies();
+                break;
+            case 'startstatus' :
+                $server->getStartStatus();
+                break;
+            default :
+                $server->help();
+        }
+    }
+
+    public static function runProcessPool(){
+        $moduleName = trim(Tool::getClientOption('-module', false, ''));
+        if (strlen($moduleName) == 0) {
+            exit('module name must exist' . PHP_EOL);
+        }
+        define('SY_MODULE', $moduleName);
+
+        $port = trim(Tool::getClientOption('-port', false, ''));
+        if(!ctype_digit($port)){
+            exit('port must exist and is integer' . PHP_EOL);
+        }
+        $truePort = (int)$port;
+
+        $server = new ProcessPoolServer($truePort);
+
+        $action = Tool::getClientOption('-s', false, 'start');
+        switch ($action) {
+            case 'start' :
+                $server->start();
+                break;
+            case 'stop' :
+                $server->stop();
+                break;
+            case 'restart' :
+                $server->stop();
+                sleep(3);
+                $server->start();
                 break;
             case 'startstatus' :
                 $server->getStartStatus();
