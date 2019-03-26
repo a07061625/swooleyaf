@@ -80,8 +80,9 @@ trait BasicHttpTrait {
 
     private function initTableHttp() {
         $this->initTableBase();
+        $signLength = (int)Tool::getArrayVal($this->_configs, 'server.request.sign.length', 32, true);
         self::$_sySigns = new \swoole_table($this->_configs['server']['cachenum']['sign']);
-        self::$_sySigns->column('sign', \swoole_table::TYPE_STRING, 32);
+        self::$_sySigns->column('sign', \swoole_table::TYPE_STRING, $signLength);
         self::$_sySigns->column('time', \swoole_table::TYPE_INT, 4);
         self::$_sySigns->create();
         $this->initTableHttpTrait();
