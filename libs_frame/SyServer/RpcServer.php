@@ -202,13 +202,10 @@ class RpcServer extends BaseServer {
         return $result;
     }
 
-    public function onWorkerStart(\swoole_server $server, $workerId){
-        $this->basicWorkStart($server, $workerId);
-
-        if($workerId == 0){
-            $this->addTaskBase($server);
-            $this->addTaskRpcTrait($server);
-        }
+    public function onStart(\swoole_server $server){
+        $this->basicStart($server);
+        $this->addTaskBase($server);
+        $this->addTaskRpcTrait($server);
     }
 
     public function onWorkerStop(\swoole_server $server, int $workerId){
