@@ -547,79 +547,7 @@ abstract class BaseServer {
         exit();
     }
 
-    protected function basicWorkStart(\swoole_server $server, $workerId){
-        //设置错误和异常处理
-        set_exception_handler('\SyError\ErrorHandler::handleException');
-        set_error_handler('\SyError\ErrorHandler::handleError');
-        //设置时区
-        date_default_timezone_set('PRC');
-        //禁止引用外部xml实体
-        libxml_disable_entity_loader(true);
-        //设置bc数学函数小数点保留位数
-        $bcConfigs = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.bcmath');
-        bcscale($bcConfigs['scale']);
-
-        $this->_app = new Application(APP_PATH . '/conf/application.ini', SY_ENV);
-        $this->_app->bootstrap()->getDispatcher()->returnResponse(true);
-        $this->_app->bootstrap()->getDispatcher()->autoRender(false);
-
-        if($workerId >= $server->setting['worker_num']){
-            @cli_set_process_title(Server::PROCESS_TYPE_TASK . SY_MODULE . $this->_port);
-        } else {
-            @cli_set_process_title(Server::PROCESS_TYPE_WORKER . SY_MODULE . $this->_port);
-        }
-
-        if($workerId == 0){ //保证每一个服务只执行一次定时任务
-            $modules = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.modules');
-            foreach (Project::$totalModuleBase as $eModuleName) {
-                $moduleData = Tool::getArrayVal($modules, $eModuleName, []);
-                if (!empty($moduleData)) {
-                    self::$_syServices->set($eModuleName, [
-                        'module' => $eModuleName,
-                        'host' => $moduleData['host'],
-                        'port' => (string)$moduleData['port'],
-                        'type' => $moduleData['type'],
-                    ]);
-                }
-            }
-        }
-    }
-
-    protected function basicWorkStop(\swoole_server $server,int $workId) {
-        $errCode = $server->getLastError();
-        if($errCode > 0){
-            Log::error('swoole work stop,workId=' . $workId . ',errorCode=' . $errCode . ',errorMsg=' . print_r(error_get_last(), true));
-        }
-    }
-
-    protected function basicWorkError(\swoole_server $server, $workId, $workPid, $exitCode){
-        if($exitCode > 0){
-            $msg = 'swoole work error. work_id=' . $workId . '|work_pid=' . $workPid . '|exit_code=' . $exitCode . '|err_msg=' . $server->getLastError();
-            Log::error($msg);
-        }
-    }
-
-    protected function handleReqExceptionByFrame(\Exception $e) {
-        if (!($e instanceof ValidatorException)) {
-            Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
-        }
-
-        $error = new Result();
-        if (is_numeric($e->getCode())) {
-            $error->setCodeMsg((int)$e->getCode(), $e->getMessage());
-        } else {
-            $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务出错');
-        }
-
-        return $error;
-    }
-
-    /**
-     * 启动主进程服务
-     * @param \swoole_server $server
-     * @throws \Exception\Swoole\ServerException
-     */
-    public function onStart(\swoole_server $server) {
+    protected function basicStart(\swoole_server $server){
         @cli_set_process_title(Server::PROCESS_TYPE_MAIN . SY_MODULE . $this->_port);
 
         Dir::create(SY_ROOT . '/pidfile/');
@@ -665,6 +593,78 @@ abstract class BaseServer {
         }
     }
 
+    protected function basicWorkStop(\swoole_server $server,int $workId) {
+        $errCode = $server->getLastError();
+        if($errCode > 0){
+            Log::error('swoole work stop,workId=' . $workId . ',errorCode=' . $errCode . ',errorMsg=' . print_r(error_get_last(), true));
+        }
+    }
+
+    protected function basicWorkError(\swoole_server $server, $workId, $workPid, $exitCode){
+        if($exitCode > 0){
+            $msg = 'swoole work error. work_id=' . $workId . '|work_pid=' . $workPid . '|exit_code=' . $exitCode . '|err_msg=' . $server->getLastError();
+            Log::error($msg);
+        }
+    }
+
+    protected function handleReqExceptionByFrame(\Exception $e) {
+        if (!($e instanceof ValidatorException)) {
+            Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
+        }
+
+        $error = new Result();
+        if (is_numeric($e->getCode())) {
+            $error->setCodeMsg((int)$e->getCode(), $e->getMessage());
+        } else {
+            $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务出错');
+        }
+
+        return $error;
+    }
+
+    /**
+     * 启动工作进程
+     * @param \swoole_server $server
+     * @param int $workerId 进程编号
+     */
+    public function onWorkerStart(\swoole_server $server, $workerId) {
+        //设置错误和异常处理
+        set_exception_handler('\SyError\ErrorHandler::handleException');
+        set_error_handler('\SyError\ErrorHandler::handleError');
+        //设置时区
+        date_default_timezone_set('PRC');
+        //禁止引用外部xml实体
+        libxml_disable_entity_loader(true);
+        //设置bc数学函数小数点保留位数
+        $bcConfigs = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.bcmath');
+        bcscale($bcConfigs['scale']);
+
+        $this->_app = new Application(APP_PATH . '/conf/application.ini', SY_ENV);
+        $this->_app->bootstrap()->getDispatcher()->returnResponse(true);
+        $this->_app->bootstrap()->getDispatcher()->autoRender(false);
+
+        if($workerId >= $server->setting['worker_num']){
+            @cli_set_process_title(Server::PROCESS_TYPE_TASK . SY_MODULE . $this->_port);
+        } else {
+            @cli_set_process_title(Server::PROCESS_TYPE_WORKER . SY_MODULE . $this->_port);
+        }
+
+        if($workerId == 0){ //保证每一个服务只执行一次定时任务
+            $modules = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.modules');
+            foreach (Project::$totalModuleBase as $eModuleName) {
+                $moduleData = Tool::getArrayVal($modules, $eModuleName, []);
+                if (!empty($moduleData)) {
+                    self::$_syServices->set($eModuleName, [
+                        'module' => $eModuleName,
+                        'host' => $moduleData['host'],
+                        'port' => (string)$moduleData['port'],
+                        'type' => $moduleData['type'],
+                    ]);
+                }
+            }
+        }
+    }
+
     /**
      * 启动管理进程
      * @param \swoole_server $server
@@ -703,11 +703,11 @@ abstract class BaseServer {
     }
 
     /**
-     * 启动工作进程
+     * 启动主进程服务
      * @param \swoole_server $server
-     * @param int $workerId 进程编号
+     * @throws \Exception\Swoole\ServerException
      */
-    abstract public function onWorkerStart(\swoole_server $server, $workerId);
+    abstract public function onStart(\swoole_server $server);
     /**
      * 退出工作进程
      * @param \swoole_server $server

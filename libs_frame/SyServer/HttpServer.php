@@ -405,36 +405,33 @@ class HttpServer extends BaseServer {
         return $result;
     }
 
-    public function onWorkerStart(\swoole_server $server, $workerId){
-        $this->basicWorkStart($server, $workerId);
+    public function onStart(\swoole_server $server){
+        $this->basicStart($server);
+        $this->addTaskBase($server);
+        $this->_messagePack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
+            'task_module' => SY_MODULE,
+            'task_command' => Project::TASK_TYPE_CLEAR_API_SIGN_CACHE,
+            'task_params' => [],
+        ]);
+        $taskDataSign = $this->_messagePack->packData();
+        $this->_messagePack->init();
 
-        if($workerId == 0){
-            $this->addTaskBase($server);
-            $this->_messagePack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
-                'task_module' => SY_MODULE,
-                'task_command' => Project::TASK_TYPE_CLEAR_API_SIGN_CACHE,
-                'task_params' => [],
-            ]);
-            $taskDataSign = $this->_messagePack->packData();
-            $this->_messagePack->init();
+        $server->tick(Project::TIME_TASK_CLEAR_API_SIGN, function() use ($server, $taskDataSign) {
+            $server->task($taskDataSign);
+        });
 
-            $server->tick(Project::TIME_TASK_CLEAR_API_SIGN, function() use ($server, $taskDataSign) {
-                $server->task($taskDataSign);
-            });
+        $this->_messagePack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
+            'task_module' => SY_MODULE,
+            'task_command' => Project::TASK_TYPE_REFRESH_TOKEN_EXPIRE,
+            'task_params' => [],
+        ]);
+        $taskDataToken = $this->_messagePack->packData();
+        $this->_messagePack->init();
 
-            $this->_messagePack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
-                'task_module' => SY_MODULE,
-                'task_command' => Project::TASK_TYPE_REFRESH_TOKEN_EXPIRE,
-                'task_params' => [],
-            ]);
-            $taskDataToken = $this->_messagePack->packData();
-            $this->_messagePack->init();
-
-            $server->tick(Project::TIME_TASK_REFRESH_TOKEN_EXPIRE, function() use ($server, $taskDataToken) {
-                $server->task($taskDataToken);
-            });
-            $this->addTaskHttpTrait($server);
-        }
+        $server->tick(Project::TIME_TASK_REFRESH_TOKEN_EXPIRE, function() use ($server, $taskDataToken) {
+            $server->task($taskDataToken);
+        });
+        $this->addTaskHttpTrait($server);
     }
 
     public function onWorkerStop(\swoole_server $server, int $workerId){
