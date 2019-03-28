@@ -52,7 +52,7 @@ final class Server {
 
     //版本常量
     const VERSION_MIN_PHP = '7.1.0'; //最低版本-php
-    const VERSION_MIN_SWOOLE = '4.2.13'; //最低版本-swoole
+    const VERSION_MIN_SWOOLE = '4.3.1'; //最低版本-swoole
     const VERSION_MIN_SEASLOG = '1.9.0'; //最低版本-seaslog
     const VERSION_MIN_YAC = '2.0.2'; //最低版本-yac
     const VERSION_MIN_YAF = '3.0.7'; //最低版本-yaf
