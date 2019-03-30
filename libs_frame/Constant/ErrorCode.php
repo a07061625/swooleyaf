@@ -192,6 +192,11 @@ class ErrorCode {
     //MEMCACHE错误,取值范围:105000-105099
     const MEMCACHE_CONNECTION_ERROR = 105000;
 
+    //腾讯云错误,取值范围:105100-105999
+    const QCLOUD_COS_PARAM_ERROR = 105100;
+    const QCLOUD_COS_POST_ERROR = 105101;
+    const QCLOUD_COS_GET_ERROR = 105102;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -310,6 +315,9 @@ class ErrorCode {
         self::DING_TALK_POST_ERROR => '钉钉发送POST请求出错',
         self::DING_TALK_GET_ERROR => '钉钉发送GET请求出错',
         self::MEMCACHE_CONNECTION_ERROR => 'MEMCACHE连接出错',
+        self::QCLOUD_COS_PARAM_ERROR => '腾讯云对象存储参数错误',
+        self::QCLOUD_COS_POST_ERROR => '腾讯云对象存储发送POST请求出错',
+        self::QCLOUD_COS_GET_ERROR => '腾讯云对象存储发送GET请求出错',
     ];
 
     /**
