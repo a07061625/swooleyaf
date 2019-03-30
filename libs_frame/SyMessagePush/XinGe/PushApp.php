@@ -13,9 +13,6 @@ use SyMessagePush\PushBaseXinGe;
 use Tool\Tool;
 
 class PushApp extends PushBaseXinGe {
-    const PLATFORM_TYPE_ALL = 'all';
-    const PLATFORM_TYPE_IOS = 'ios';
-    const PLATFORM_TYPE_ANDROID = 'android';
     const MESSAGE_TYPE_NOTIFY = 'notify';
     const MESSAGE_TYPE_SILENT = 'message';
 
