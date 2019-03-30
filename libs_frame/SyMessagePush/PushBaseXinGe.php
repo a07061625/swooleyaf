@@ -13,6 +13,10 @@ use Exception\MessagePush\XinGePushException;
 use Tool\Tool;
 
 abstract class PushBaseXinGe extends PushBase {
+    const PLATFORM_TYPE_ALL = 'all';
+    const PLATFORM_TYPE_IOS = 'ios';
+    const PLATFORM_TYPE_ANDROID = 'android';
+
     /**
      * api接口域名
      * @var string
