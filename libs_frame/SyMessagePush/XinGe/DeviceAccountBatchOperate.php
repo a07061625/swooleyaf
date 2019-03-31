@@ -1,6 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
  * User: 姜伟
  * Date: 2019/3/30 0030
  * Time: 15:35
@@ -11,6 +10,10 @@ use Constant\ErrorCode;
 use Exception\MessagePush\XinGePushException;
 use SyMessagePush\PushBaseXinGe;
 
+/**
+ * 账号绑定与解绑
+ * @package SyMessagePush\XinGe
+ */
 class DeviceAccountBatchOperate extends PushBaseXinGe {
     /**
      * 操作类型

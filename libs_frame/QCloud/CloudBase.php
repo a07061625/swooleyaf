@@ -18,10 +18,18 @@ abstract class CloudBase {
      * @var array
      */
     protected $reqHeader = [];
+    /**
+     * curl配置数组
+     * @var array
+     */
+    protected $curlConfigs = [];
 
     public function __construct(){
     }
 
     private function __clone(){
     }
+
+    abstract protected function getContent() : array;
+    abstract public function getDetail() : array;
 }

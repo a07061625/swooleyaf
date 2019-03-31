@@ -1,6 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
  * User: 姜伟
  * Date: 2018/12/30 0030
  * Time: 11:39
@@ -11,6 +10,10 @@ use Constant\ErrorCode;
 use Exception\MessagePush\XinGePushException;
 use SyMessagePush\PushBaseXinGe;
 
+/**
+ * 标签操作
+ * @package SyMessagePush\XinGe
+ */
 class DeviceTag extends PushBaseXinGe {
     /**
      * 操作类型

@@ -138,8 +138,8 @@ class Tool {
         }
 
         $element = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
-        $jsonStr = Tool::jsonEncode($element);
-        return Tool::jsonDecode($jsonStr);
+        $jsonStr = self::jsonEncode($element);
+        return self::jsonDecode($jsonStr);
     }
 
     /**

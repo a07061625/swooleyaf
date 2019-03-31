@@ -36,6 +36,11 @@ class ConfigCos {
      * @var string
      */
     private $regionTag = '';
+    /**
+     * 请求域名
+     * @var string
+     */
+    private $reqHost = '';
 
     public function __construct(){
     }
@@ -55,7 +60,7 @@ class ConfigCos {
      * @throws \Exception\QCloud\CosException
      */
     public function setAppId(string $appId){
-        if (ctype_alnum($appId)) {
+        if (ctype_digit($appId)) {
             $this->appId = $appId;
         } else {
             throw new CosException('应用ID不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
@@ -136,5 +141,16 @@ class ConfigCos {
         } else {
             throw new CosException('地域标识不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
+    }
+
+    public function createReqHost(){
+        $this->reqHost = $this->bucketName . '-' . $this->appId . '.cos.' . $this->regionTag . '.myqcloud.com';
+    }
+
+    /**
+     * @return string
+     */
+    public function getReqHost() : string {
+        return $this->reqHost;
     }
 }
