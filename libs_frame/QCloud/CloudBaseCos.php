@@ -74,6 +74,7 @@ abstract class CloudBaseCos extends CloudBase {
         $this->reqUri = '/';
         $this->signTag = true;
         $this->signExpireTime = 30;
+        $this->curlConfigs[CURLOPT_RETURNTRANSFER] = true;
     }
 
     private function __clone(){
@@ -95,9 +96,8 @@ abstract class CloudBaseCos extends CloudBase {
         } else {
             $this->reqHost = $reqHost;
         }
-        $this->curlConfigs[CURLOPT_HTTPHEADER] = [
-            'Host: ' . $this->reqHost,
-        ];
+
+        $this->reqHeader['Host'] = $this->reqHost;
         $this->signHeaders = [
             'host' => $this->reqHost,
         ];
@@ -152,14 +152,25 @@ abstract class CloudBaseCos extends CloudBase {
                 'param_list' => $this->signParams,
                 'http_method' => $this->reqMethod,
                 'http_uri' => $this->reqUri,
-            ], $this->curlConfigs);
+            ], $this->reqHeader);
         }
 
         $url = 'http://' . $this->reqHost . $this->reqUri;
         if(strlen($this->reqQuery) > 0){
-            $url .= '?' . $this->reqQuery;
+            if(strpos($url, '?') === false){
+                $url .= '?';
+            } else {
+                $url .= '&';
+            }
+            $url .= $this->reqQuery;
         }
         $this->curlConfigs[CURLOPT_URL] = $url;
+
+        $reqHeaderArr = [];
+        foreach ($this->reqHeader as $headerKey => $headerVal) {
+            $reqHeaderArr[] = $headerKey . ': ' . $headerVal;
+        }
+        $this->curlConfigs[CURLOPT_HTTPHEADER] = $reqHeaderArr;
         return $this->curlConfigs;
     }
 }

@@ -36,10 +36,10 @@ final class CloudUtilCos extends CloudUtilBase {
     /**
      * 生成签名
      * @param array $data
-     * @param array $curlConfigs
+     * @param array $headers
      * @return bool
      */
-    public static function createSign(array $data,array &$curlConfigs) : bool {
+    public static function createSign(array $data,array &$headers) : bool {
         $headerList = (array)Tool::getArrayVal($data, 'header_list', []);
         ksort($headerList);
         $paramList = (array)Tool::getArrayVal($data, 'param_list', []);
@@ -53,12 +53,12 @@ final class CloudUtilCos extends CloudUtilBase {
         $signKey = hash_hmac('sha1', $keyTime, $config->getSecretKey());
         $httpStr = $data['http_method'] . PHP_EOL . $data['http_uri'] . PHP_EOL . self::createParamStr($paramList) . PHP_EOL . self::createParamStr($headerList) . PHP_EOL;
         $signStr = 'sha1' . PHP_EOL . $signTime . PHP_EOL . sha1($httpStr) . PHP_EOL;
-        $curlConfigs[CURLOPT_HTTPHEADER][] = 'Authorization: q-sign-algorithm=sha1&q-ak=' . $config->getSecretId()
-                                             . '&q-sign-time=' . $signTime
-                                             . '&q-key-time=' . $keyTime
-                                             . '&q-header-list=' . implode(';', array_keys($headerList))
-                                             . '&q-url-param-list=' . implode(';', array_keys($paramList))
-                                             . '&q-signature=' . hash_hmac('sha1', $signStr, $signKey);
+        $headers['Authorization'] = 'q-sign-algorithm=sha1&q-ak=' . $config->getSecretId()
+                                    . '&q-sign-time=' . $signTime
+                                    . '&q-key-time=' . $keyTime
+                                    . '&q-header-list=' . implode(';', array_keys($headerList))
+                                    . '&q-url-param-list=' . implode(';', array_keys($paramList))
+                                    . '&q-signature=' . hash_hmac('sha1', $signStr, $signKey);
         return true;
     }
 
