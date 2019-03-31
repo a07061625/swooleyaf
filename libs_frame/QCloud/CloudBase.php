@@ -30,6 +30,17 @@ abstract class CloudBase {
     private function __clone(){
     }
 
+    /**
+     * @param string $headerKey
+     * @param string $headerVal
+     */
+    public function addReqHeader(string $headerKey,string $headerVal){
+        $trueHeaderKey = trim($headerKey);
+        if(strlen($trueHeaderKey) > 0){
+            $this->reqHeader[$trueHeaderKey] = trim($headerVal);
+        }
+    }
+
     abstract protected function getContent() : array;
     abstract public function getDetail() : array;
 }
