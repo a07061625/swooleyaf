@@ -29,6 +29,11 @@ abstract class CloudBaseCos extends CloudBase {
     ];
 
     /**
+     * 请求参数字符串
+     * @var string
+     */
+    private $reqQuery = '';
+    /**
      * 签名标识 true:生成签名 false:不生成签名
      * @var bool
      */
@@ -48,11 +53,6 @@ abstract class CloudBaseCos extends CloudBase {
      * @var string
      */
     protected $reqUri = '';
-    /**
-     * 请求参数字符串
-     * @var string
-     */
-    protected $reqQuery = '';
     /**
      * 参与签名的请求参数列表
      * @var array
@@ -77,6 +77,13 @@ abstract class CloudBaseCos extends CloudBase {
     }
 
     private function __clone(){
+    }
+
+    /**
+     * @param array $urlParams
+     */
+    protected function setReqQuery(array $urlParams){
+        $this->reqQuery = http_build_query($urlParams);
     }
 
     /**
@@ -114,13 +121,6 @@ abstract class CloudBaseCos extends CloudBase {
      */
     public function getReqMethod() : string {
         return $this->reqMethod;
-    }
-
-    /**
-     * @param array $urlParams
-     */
-    protected function setReqQuery(array $urlParams){
-        $this->reqQuery = http_build_query($urlParams);
     }
 
     /**
