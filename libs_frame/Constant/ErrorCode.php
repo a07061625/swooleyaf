@@ -196,6 +196,10 @@ class ErrorCode {
     const QCLOUD_COS_PARAM_ERROR = 105100;
     const QCLOUD_COS_POST_ERROR = 105101;
     const QCLOUD_COS_GET_ERROR = 105102;
+    const QCLOUD_COS_PUT_ERROR = 105103;
+    const QCLOUD_COS_DELETE_ERROR = 105104;
+    const QCLOUD_COS_HEAD_ERROR = 105105;
+    const QCLOUD_COS_OPTIONS_ERROR = 105106;
 
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
@@ -318,6 +322,10 @@ class ErrorCode {
         self::QCLOUD_COS_PARAM_ERROR => '腾讯云对象存储参数错误',
         self::QCLOUD_COS_POST_ERROR => '腾讯云对象存储发送POST请求出错',
         self::QCLOUD_COS_GET_ERROR => '腾讯云对象存储发送GET请求出错',
+        self::QCLOUD_COS_PUT_ERROR => '腾讯云对象存储发送PUT请求出错',
+        self::QCLOUD_COS_DELETE_ERROR => '腾讯云对象存储发送DELETE请求出错',
+        self::QCLOUD_COS_HEAD_ERROR => '腾讯云对象存储发送HEAD请求出错',
+        self::QCLOUD_COS_OPTIONS_ERROR => '腾讯云对象存储发送OPTIONS请求出错',
     ];
 
     /**

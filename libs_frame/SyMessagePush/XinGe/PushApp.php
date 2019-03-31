@@ -1,6 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
  * User: 姜伟
  * Date: 2018/12/30 0030
  * Time: 11:39
@@ -12,6 +11,10 @@ use Exception\MessagePush\XinGePushException;
 use SyMessagePush\PushBaseXinGe;
 use Tool\Tool;
 
+/**
+ * 消息推送
+ * @package SyMessagePush\XinGe
+ */
 class PushApp extends PushBaseXinGe {
     const MESSAGE_TYPE_NOTIFY = 'notify';
     const MESSAGE_TYPE_SILENT = 'message';
