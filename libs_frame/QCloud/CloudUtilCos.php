@@ -92,14 +92,13 @@ final class CloudUtilCos extends CloudUtilBase {
         if(isset($rspData['Error'])){
             $resArr['code'] = $errNo;
             $resArr['msg'] = $rspData['Error']['Message'];
-            return $resArr;
+        } else {
+            $resArr['data'] = [
+                'code' => $sendRes['res_code'],
+                'header' => $sendRes['res_header'],
+                'content' => $rspData,
+            ];
         }
-
-        $resArr['data'] = [
-            'code' => $sendRes['res_code'],
-            'header' => $sendRes['res_header'],
-            'content' => $rspData,
-        ];
         return $resArr;
     }
 }
