@@ -24,6 +24,10 @@ class Tool {
     const CURL_RSP_HEAD_TYPE_EMPTY = 0; //curl响应头类型-空
     const CURL_RSP_HEAD_TYPE_HTTP = 1; //curl响应头类型-HTTP
 
+    private static $totalCurlRspHeadType = [
+        self::CURL_RSP_HEAD_TYPE_EMPTY => 1,
+        self::CURL_RSP_HEAD_TYPE_HTTP => 1,
+    ];
     private static $totalChars = [
         '2', '3', '4', '5', '6', '7', '8', '9',
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
@@ -553,6 +557,10 @@ class Tool {
      * @throws \Exception\Common\CheckException
      */
     public static function sendCurlReq(array $configs,int $rspHeaderType=self::CURL_RSP_HEAD_TYPE_EMPTY) {
+        if (!isset(self::$totalCurlRspHeadType[$rspHeaderType])) {
+            throw new CheckException('响应头类型不支持', ErrorCode::COMMON_PARAM_ERROR);
+        }
+
         $url = $configs[CURLOPT_URL] ?? '';
         if((!is_string($url)) || (strlen($url) == 0)){
             throw new CheckException('请求地址不能为空', ErrorCode::COMMON_PARAM_ERROR);
@@ -569,45 +577,39 @@ class Tool {
             'res_content' => '',
         ];
 
-        switch ($rspHeaderType) {
-            case self::CURL_RSP_HEAD_TYPE_EMPTY:
-                curl_setopt($ch, CURLOPT_HEADER, false);
-                $resArr['res_content'] = curl_exec($ch);
-                $resArr['res_no'] = curl_errno($ch);
-                $resArr['res_msg'] = curl_error($ch);
-                curl_close($ch);
-                break;
-            case self::CURL_RSP_HEAD_TYPE_HTTP:
-                curl_setopt($ch, CURLOPT_HEADER, true);
-                $rspContent = curl_exec($ch);
-                $resArr['res_no'] = curl_errno($ch);
-                $resArr['res_msg'] = curl_error($ch);
-                if($resArr['res_no'] == 0){
-                    $headSize = curl_getinfo($ch,CURLINFO_HEADER_SIZE);
-                    $resArr['res_code'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-                    $resArr['res_content'] = substr($rspContent, $headSize);
-                    $resArr['res_header'] = [];
+        if($rspHeaderType == self::CURL_RSP_HEAD_TYPE_EMPTY){
+            curl_setopt($ch, CURLOPT_HEADER, false);
+            $resArr['res_content'] = curl_exec($ch);
+            $resArr['res_no'] = curl_errno($ch);
+            $resArr['res_msg'] = curl_error($ch);
+        } else if($rspHeaderType == self::CURL_RSP_HEAD_TYPE_HTTP){
+            curl_setopt($ch, CURLOPT_HEADER, true);
+            $rspContent = curl_exec($ch);
+            $resArr['res_no'] = curl_errno($ch);
+            $resArr['res_msg'] = curl_error($ch);
+            if($resArr['res_no'] == 0){
+                $headSize = curl_getinfo($ch,CURLINFO_HEADER_SIZE);
+                $resArr['res_code'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                $resArr['res_content'] = substr($rspContent, $headSize);
+                $resArr['res_header'] = [];
 
-                    $headerStr = substr($rspContent, 0, $headSize);
-                    $headerArr = explode("\r\n", $headerStr);
-                    unset($headerArr[0]);
-                    foreach ($headerArr as $eHeader) {
-                        $pos = strpos($eHeader, ':');
-                        if($pos > 0){
-                            $headerKey = trim(substr($eHeader, 0, $pos));
-                            if(!isset($resArr['res_header'][$headerKey])){
-                                $resArr['res_header'][$headerKey] = [];
-                            }
-                            $resArr['res_header'][$headerKey][] = trim(substr($eHeader, ($pos + 1)));
+                $headerStr = substr($rspContent, 0, $headSize);
+                $headerArr = explode("\r\n", $headerStr);
+                unset($headerArr[0]);
+                foreach ($headerArr as $eHeader) {
+                    $pos = strpos($eHeader, ':');
+                    if($pos > 0){
+                        $headerKey = trim(substr($eHeader, 0, $pos));
+                        if(!isset($resArr['res_header'][$headerKey])){
+                            $resArr['res_header'][$headerKey] = [];
                         }
+                        $resArr['res_header'][$headerKey][] = trim(substr($eHeader, ($pos + 1)));
                     }
-                    unset($headerArr);
                 }
-                curl_close($ch);
-                break;
-            default:
-                throw new CheckException('响应头类型不支持', ErrorCode::COMMON_PARAM_ERROR);
+                unset($headerArr);
+            }
         }
+        curl_close($ch);
 
         return $resArr;
     }
