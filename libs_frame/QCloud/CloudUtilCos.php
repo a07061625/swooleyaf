@@ -72,23 +72,34 @@ final class CloudUtilCos extends CloudUtilBase {
         $errNo = CloudBaseCos::$totalReqMethods[$reqMethod];
         $timeout = (int)Tool::getArrayVal($data, CURLOPT_TIMEOUT_MS, 2000);
         $data[CURLOPT_TIMEOUT_MS] = $timeout;
-        $sendRes = Tool::sendCurlReq($data);
+        $sendRes = Tool::sendCurlReq($data, Tool::CURL_RSP_HEAD_TYPE_HTTP);
         if($sendRes['res_no'] > 0){
             Log::error('对象存储请求失败,curl错误码为' . $sendRes['res_no'], $errNo);
             $resArr['code'] = $errNo;
             $resArr['msg'] = $sendRes['res_msg'];
-        } else if(substr($sendRes['res_content'], 0, 5) != '<?xml'){
-            $resArr['data'] = (string)$sendRes['res_content'];
-        } else {
-            $rspData = Tool::xmlToArray($sendRes['res_content']);
-            if(isset($rspData['Error'])){
-                $resArr['code'] = $errNo;
-                $resArr['msg'] = $rspData['Error']['Message'];
-            } else {
-                $resArr['data'] = $rspData;
-            }
+            return $resArr;
+        }
+        if(substr($sendRes['res_content'], 0, 1) != '<'){
+            $resArr['data'] = [
+                'code' => $sendRes['res_code'],
+                'header' => $sendRes['res_header'],
+                'content' => (string)$sendRes['res_content'],
+            ];
+            return $resArr;
         }
 
+        $rspData = Tool::xmlToArray($sendRes['res_content']);
+        if(isset($rspData['Error'])){
+            $resArr['code'] = $errNo;
+            $resArr['msg'] = $rspData['Error']['Message'];
+            return $resArr;
+        }
+
+        $resArr['data'] = [
+            'code' => $sendRes['res_code'],
+            'header' => $sendRes['res_header'],
+            'content' => $rspData,
+        ];
         return $resArr;
     }
 }
