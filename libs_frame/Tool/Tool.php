@@ -24,6 +24,10 @@ class Tool {
     const CURL_RSP_HEAD_TYPE_EMPTY = 0; //curl响应头类型-空
     const CURL_RSP_HEAD_TYPE_HTTP = 1; //curl响应头类型-HTTP
 
+    private static $totalCurlRspHeadType = [
+        self::CURL_RSP_HEAD_TYPE_EMPTY => 1,
+        self::CURL_RSP_HEAD_TYPE_HTTP => 1,
+    ];
     private static $totalChars = [
         '2', '3', '4', '5', '6', '7', '8', '9',
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
@@ -148,53 +152,91 @@ class Tool {
     /**
      * RSA签名
      * @param string $data 待签名数据
-     * @param string $private_key_path 商户私钥文件路径
+     * @param string $priKeyContent 私钥文件内容
      * @return string 签名结果
      */
-    public static function rsaSign(string $data,string $private_key_path) : string {
-        $priKey = file_get_contents($private_key_path);
-        $res = openssl_get_privatekey($priKey);
-        openssl_sign($data, $sign, $res);
-        openssl_free_key($res);
+    public static function rsaSign(string $data,string $priKeyContent) : string {
+        $priKey = openssl_get_privatekey($priKeyContent);
+        openssl_sign($data, $sign, $priKey);
+        openssl_free_key($priKey);
         return base64_encode($sign);
     }
 
     /**
      * RSA验签
      * @param string $data 待签名数据
-     * @param string $public_key_path 公钥文件路径
+     * @param string $pubKeyContent 公钥文件内容
      * @param string $sign 要校对的的签名结果
      * @return boolean 验证结果
      */
-    public static function rsaVerify(string $data,string $public_key_path,string $sign) : bool {
-        $pubKey = file_get_contents($public_key_path);
-        $res = openssl_get_publickey($pubKey);
-        $result = (boolean)openssl_verify($data, base64_decode($sign), $res);
-        openssl_free_key($res);
+    public static function rsaVerify(string $data,string $pubKeyContent,string $sign) : bool {
+        $pubKey = openssl_get_publickey($pubKeyContent);
+        $result = (boolean)openssl_verify($data, base64_decode($sign), $pubKey);
+        openssl_free_key($pubKey);
         return $result;
     }
 
     /**
-     * RSA解密
-     * @param string $content 需要解密的内容，密文
-     * @param string $private_key_path 私钥文件路径
-     * @return string 解密后内容，明文
+     * RSA加密
+     * @param string $data 待加密数据
+     * @param string $keyContent 密钥文件内容,根据模式不同设置公钥或私钥
+     * @param int $mode 模式 0:公钥加密 1:私钥加密
+     * @return string
      */
-    public static function rsaDecrypt(string $content,string $private_key_path) : string {
-        $priKey = file_get_contents($private_key_path);
-        $res = openssl_get_privatekey($priKey);
-        //用base64将内容还原成二进制
-        $content2 = base64_decode($content);
-        //把需要解密的内容，按128位拆开解密
-        $result = '';
-        $length = strlen($content2) / 128;
-        for ($i = 0; $i < $length; $i++) {
-            $data = substr($content2, $i * 128, 128);
-            openssl_private_decrypt($data, $decrypt, $res);
-            $result .= $decrypt;
+    public static function rsaEncrypt(string $data,string $keyContent,int $mode=0){
+        $dataArr = str_split($data, 117);
+        $encryptArr = [];
+        if ($mode == 0) { //公钥加密
+            $key = openssl_get_publickey($keyContent);
+            foreach ($dataArr as $eData) {
+                $eEncrypt = '';
+                openssl_public_encrypt($eData, $eEncrypt, $key);
+                $encryptArr[] = $eEncrypt;
+            }
+        } else { //私钥加密
+            $key = openssl_get_privatekey($keyContent);
+            foreach ($dataArr as $eData) {
+                $eEncrypt = '';
+                openssl_private_encrypt($eData, $eEncrypt, $key);
+                $encryptArr[] = $eEncrypt;
+            }
         }
-        openssl_free_key($res);
-        return $result;
+        openssl_free_key($key);
+
+        return base64_encode(implode('', $encryptArr));
+    }
+
+    /**
+     * RSA解密
+     * @param string $data 待解密数据
+     * @param string $keyContent 密钥文件内容,根据模式不同设置公钥或私钥
+     * @param int $mode 模式 0:私钥解密 1:公钥解密
+     * @return string
+     */
+    public static function rsaDecrypt(string $data,string $keyContent,int $mode=0){
+        $decryptStr = '';
+        $encryptData = base64_decode($data);
+        $length = strlen($encryptData) / 128;
+        if($mode == 0){ //私钥解密
+            $key = openssl_get_privatekey($keyContent);
+            for ($i = 0; $i < $length; $i++) {
+                $eDecrypt = '';
+                $eEncrypt = substr($encryptData, $i * 128, 128);
+                openssl_private_decrypt($eEncrypt, $eDecrypt, $key);
+                $decryptStr .= $eDecrypt;
+            }
+        } else { //公钥解密
+            $key = openssl_get_publickey($keyContent);
+            for ($i = 0; $i < $length; $i++) {
+                $eDecrypt = '';
+                $eEncrypt = substr($encryptData, $i * 128, 128);
+                openssl_public_decrypt($eEncrypt, $eDecrypt, $key);
+                $decryptStr .= $eDecrypt;
+            }
+        }
+        openssl_free_key($key);
+
+        return $decryptStr;
     }
 
     /**
@@ -513,6 +555,10 @@ class Tool {
      * @throws \Exception\Common\CheckException
      */
     public static function sendCurlReq(array $configs,int $rspHeaderType=self::CURL_RSP_HEAD_TYPE_EMPTY) {
+        if (!isset(self::$totalCurlRspHeadType[$rspHeaderType])) {
+            throw new CheckException('响应头类型不支持', ErrorCode::COMMON_PARAM_ERROR);
+        }
+
         $url = $configs[CURLOPT_URL] ?? '';
         if((!is_string($url)) || (strlen($url) == 0)){
             throw new CheckException('请求地址不能为空', ErrorCode::COMMON_PARAM_ERROR);
@@ -529,45 +575,39 @@ class Tool {
             'res_content' => '',
         ];
 
-        switch ($rspHeaderType) {
-            case self::CURL_RSP_HEAD_TYPE_EMPTY:
-                curl_setopt($ch, CURLOPT_HEADER, false);
-                $resArr['res_content'] = curl_exec($ch);
-                $resArr['res_no'] = curl_errno($ch);
-                $resArr['res_msg'] = curl_error($ch);
-                curl_close($ch);
-                break;
-            case self::CURL_RSP_HEAD_TYPE_HTTP:
-                curl_setopt($ch, CURLOPT_HEADER, true);
-                $rspContent = curl_exec($ch);
-                $resArr['res_no'] = curl_errno($ch);
-                $resArr['res_msg'] = curl_error($ch);
-                if($resArr['res_no'] == 0){
-                    $headSize = curl_getinfo($ch,CURLINFO_HEADER_SIZE);
-                    $resArr['res_code'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-                    $resArr['res_content'] = substr($rspContent, $headSize);
-                    $resArr['res_header'] = [];
+        if($rspHeaderType == self::CURL_RSP_HEAD_TYPE_EMPTY){
+            curl_setopt($ch, CURLOPT_HEADER, false);
+            $resArr['res_content'] = curl_exec($ch);
+            $resArr['res_no'] = curl_errno($ch);
+            $resArr['res_msg'] = curl_error($ch);
+        } else if($rspHeaderType == self::CURL_RSP_HEAD_TYPE_HTTP){
+            curl_setopt($ch, CURLOPT_HEADER, true);
+            $rspContent = curl_exec($ch);
+            $resArr['res_no'] = curl_errno($ch);
+            $resArr['res_msg'] = curl_error($ch);
+            if($resArr['res_no'] == 0){
+                $headSize = curl_getinfo($ch,CURLINFO_HEADER_SIZE);
+                $resArr['res_code'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                $resArr['res_content'] = substr($rspContent, $headSize);
+                $resArr['res_header'] = [];
 
-                    $headerStr = substr($rspContent, 0, $headSize);
-                    $headerArr = explode("\r\n", $headerStr);
-                    unset($headerArr[0]);
-                    foreach ($headerArr as $eHeader) {
-                        $pos = strpos($eHeader, ':');
-                        if($pos > 0){
-                            $headerKey = trim(substr($eHeader, 0, $pos));
-                            if(!isset($resArr['res_header'][$headerKey])){
-                                $resArr['res_header'][$headerKey] = [];
-                            }
-                            $resArr['res_header'][$headerKey][] = trim(substr($eHeader, ($pos + 1)));
+                $headerStr = substr($rspContent, 0, $headSize);
+                $headerArr = explode("\r\n", $headerStr);
+                unset($headerArr[0]);
+                foreach ($headerArr as $eHeader) {
+                    $pos = strpos($eHeader, ':');
+                    if($pos > 0){
+                        $headerKey = trim(substr($eHeader, 0, $pos));
+                        if(!isset($resArr['res_header'][$headerKey])){
+                            $resArr['res_header'][$headerKey] = [];
                         }
+                        $resArr['res_header'][$headerKey][] = trim(substr($eHeader, ($pos + 1)));
                     }
-                    unset($headerArr);
                 }
-                curl_close($ch);
-                break;
-            default:
-                throw new CheckException('响应头类型不支持', ErrorCode::COMMON_PARAM_ERROR);
+                unset($headerArr);
+            }
         }
+        curl_close($ch);
 
         return $resArr;
     }
