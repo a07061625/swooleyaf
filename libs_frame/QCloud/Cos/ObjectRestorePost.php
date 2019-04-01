@@ -64,7 +64,7 @@ class ObjectRestorePost extends CloudBaseCos {
         if(empty($this->reqData)){
             throw new CosException('恢复配置不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
-        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData);
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData, 2);
 
         return $this->getContent();
     }

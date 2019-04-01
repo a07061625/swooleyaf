@@ -113,23 +113,36 @@ class Tool {
     /**
      * array转xml
      * @param array $dataArr
+     * @param int $transferType 转换类型
      * @return string
      * @throws \Exception\Common\CheckException
      */
-    public static function arrayToXml(array $dataArr) : string {
+    public static function arrayToXml(array $dataArr,int $transferType=1) : string {
         if (count($dataArr) == 0) {
             throw new CheckException('数组为空', ErrorCode::COMMON_PARAM_ERROR);
         }
 
-        $xml = '<xml>';
-        foreach ($dataArr as $key => $value) {
-            if (is_numeric($value)) {
+        $xml = '';
+        if($transferType == 1){
+            $xml .= '<xml>';
+            foreach ($dataArr as $key => $value) {
+                if (is_numeric($value)) {
+                    $xml .= '<' . $key . '>' . $value . '</' . $key . '>';
+                } else {
+                    $xml .= '<' . $key . '><![CDATA[' . $value . ']]></' . $key . '>';
+                }
+            }
+            $xml .= '</xml>';
+        } else if($transferType == 2){
+            foreach ($dataArr as $key => $value) {
                 $xml .= '<' . $key . '>' . $value . '</' . $key . '>';
-            } else {
+            }
+        } else {
+            foreach ($dataArr as $key => $value) {
                 $xml .= '<' . $key . '><![CDATA[' . $value . ']]></' . $key . '>';
             }
         }
-        $xml .= '</xml>';
+
         return $xml;
     }
 

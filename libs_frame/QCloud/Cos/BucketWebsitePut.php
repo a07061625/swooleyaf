@@ -44,7 +44,7 @@ class BucketWebsitePut extends CloudBaseCos {
         if(empty($this->reqData)){
             throw new CosException('静态网站配置不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
-        $content = Tool::arrayToXml($this->reqData);
+        $content = Tool::arrayToXml($this->reqData, 2);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $content;
         $this->reqHeader['Content-Length'] = strlen($content);
 
