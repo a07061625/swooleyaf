@@ -148,12 +148,11 @@ class Tool {
     /**
      * RSA签名
      * @param string $data 待签名数据
-     * @param string $privateKeyPath 私钥文件路径
+     * @param string $priKeyContent 私钥文件内容
      * @return string 签名结果
      */
-    public static function rsaSign(string $data,string $privateKeyPath) : string {
-        $priContent = file_get_contents($privateKeyPath);
-        $priKey = openssl_get_privatekey($priContent);
+    public static function rsaSign(string $data,string $priKeyContent) : string {
+        $priKey = openssl_get_privatekey($priKeyContent);
         openssl_sign($data, $sign, $priKey);
         openssl_free_key($priKey);
         return base64_encode($sign);
@@ -162,13 +161,12 @@ class Tool {
     /**
      * RSA验签
      * @param string $data 待签名数据
-     * @param string $publicKeyPath 公钥文件路径
+     * @param string $pubKeyContent 公钥文件内容
      * @param string $sign 要校对的的签名结果
      * @return boolean 验证结果
      */
-    public static function rsaVerify(string $data,string $publicKeyPath,string $sign) : bool {
-        $pubContent = file_get_contents($publicKeyPath);
-        $pubKey = openssl_get_publickey($pubContent);
+    public static function rsaVerify(string $data,string $pubKeyContent,string $sign) : bool {
+        $pubKey = openssl_get_publickey($pubKeyContent);
         $result = (boolean)openssl_verify($data, base64_decode($sign), $pubKey);
         openssl_free_key($pubKey);
         return $result;
@@ -177,14 +175,13 @@ class Tool {
     /**
      * RSA加密
      * @param string $data 待加密数据
-     * @param string $keyPath 密钥文件路径,根据模式不同设置公钥或私钥
+     * @param string $keyContent 密钥文件内容,根据模式不同设置公钥或私钥
      * @param int $mode 模式 0:公钥加密 1:私钥加密
      * @return string
      */
-    public static function rsaEncrypt(string $data,string $keyPath,int $mode=0){
+    public static function rsaEncrypt(string $data,string $keyContent,int $mode=0){
         $dataArr = str_split($data, 117);
         $encryptArr = [];
-        $keyContent = file_get_contents($keyPath);
         if ($mode == 0) { //公钥加密
             $key = openssl_get_publickey($keyContent);
             foreach ($dataArr as $eData) {
@@ -208,15 +205,14 @@ class Tool {
     /**
      * RSA解密
      * @param string $data 待解密数据
-     * @param string $keyPath 密钥文件路径,根据模式不同设置公钥或私钥
+     * @param string $keyContent 密钥文件内容,根据模式不同设置公钥或私钥
      * @param int $mode 模式 0:私钥解密 1:公钥解密
      * @return string
      */
-    public static function rsaDecrypt(string $data,string $keyPath,int $mode=0){
+    public static function rsaDecrypt(string $data,string $keyContent,int $mode=0){
         $decryptStr = '';
         $encryptData = base64_decode($data);
         $length = strlen($encryptData) / 128;
-        $keyContent = file_get_contents($keyPath);
         if($mode == 0){ //私钥解密
             $key = openssl_get_privatekey($keyContent);
             for ($i = 0; $i < $length; $i++) {
