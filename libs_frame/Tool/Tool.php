@@ -148,53 +148,95 @@ class Tool {
     /**
      * RSA签名
      * @param string $data 待签名数据
-     * @param string $private_key_path 商户私钥文件路径
+     * @param string $privateKeyPath 私钥文件路径
      * @return string 签名结果
      */
-    public static function rsaSign(string $data,string $private_key_path) : string {
-        $priKey = file_get_contents($private_key_path);
-        $res = openssl_get_privatekey($priKey);
-        openssl_sign($data, $sign, $res);
-        openssl_free_key($res);
+    public static function rsaSign(string $data,string $privateKeyPath) : string {
+        $priContent = file_get_contents($privateKeyPath);
+        $priKey = openssl_get_privatekey($priContent);
+        openssl_sign($data, $sign, $priKey);
+        openssl_free_key($priKey);
         return base64_encode($sign);
     }
 
     /**
      * RSA验签
      * @param string $data 待签名数据
-     * @param string $public_key_path 公钥文件路径
+     * @param string $publicKeyPath 公钥文件路径
      * @param string $sign 要校对的的签名结果
      * @return boolean 验证结果
      */
-    public static function rsaVerify(string $data,string $public_key_path,string $sign) : bool {
-        $pubKey = file_get_contents($public_key_path);
-        $res = openssl_get_publickey($pubKey);
-        $result = (boolean)openssl_verify($data, base64_decode($sign), $res);
-        openssl_free_key($res);
+    public static function rsaVerify(string $data,string $publicKeyPath,string $sign) : bool {
+        $pubContent = file_get_contents($publicKeyPath);
+        $pubKey = openssl_get_publickey($pubContent);
+        $result = (boolean)openssl_verify($data, base64_decode($sign), $pubKey);
+        openssl_free_key($pubKey);
         return $result;
     }
 
     /**
-     * RSA解密
-     * @param string $content 需要解密的内容，密文
-     * @param string $private_key_path 私钥文件路径
-     * @return string 解密后内容，明文
+     * RSA加密
+     * @param string $data 待加密数据
+     * @param string $keyPath 密钥文件路径,根据模式不同设置公钥或私钥
+     * @param int $mode 模式 0:公钥加密 1:私钥加密
+     * @return string
      */
-    public static function rsaDecrypt(string $content,string $private_key_path) : string {
-        $priKey = file_get_contents($private_key_path);
-        $res = openssl_get_privatekey($priKey);
-        //用base64将内容还原成二进制
-        $content2 = base64_decode($content);
-        //把需要解密的内容，按128位拆开解密
-        $result = '';
-        $length = strlen($content2) / 128;
-        for ($i = 0; $i < $length; $i++) {
-            $data = substr($content2, $i * 128, 128);
-            openssl_private_decrypt($data, $decrypt, $res);
-            $result .= $decrypt;
+    public static function rsaEncrypt(string $data,string $keyPath,int $mode=0){
+        $dataArr = str_split($data, 117);
+        $encryptArr = [];
+        $keyContent = file_get_contents($keyPath);
+        if ($mode == 0) { //公钥加密
+            $key = openssl_get_publickey($keyContent);
+            foreach ($dataArr as $eData) {
+                $eEncrypt = '';
+                openssl_public_encrypt($eData, $eEncrypt, $key);
+                $encryptArr[] = $eEncrypt;
+            }
+        } else { //私钥加密
+            $key = openssl_get_privatekey($keyContent);
+            foreach ($dataArr as $eData) {
+                $eEncrypt = '';
+                openssl_private_encrypt($eData, $eEncrypt, $key);
+                $encryptArr[] = $eEncrypt;
+            }
         }
-        openssl_free_key($res);
-        return $result;
+        openssl_free_key($key);
+
+        return base64_encode(implode('', $encryptArr));
+    }
+
+    /**
+     * RSA解密
+     * @param string $data 待解密数据
+     * @param string $keyPath 密钥文件路径,根据模式不同设置公钥或私钥
+     * @param int $mode 模式 0:私钥解密 1:公钥解密
+     * @return string
+     */
+    public static function rsaDecrypt(string $data,string $keyPath,int $mode=0){
+        $decryptStr = '';
+        $encryptData = base64_decode($data);
+        $length = strlen($encryptData) / 128;
+        $keyContent = file_get_contents($keyPath);
+        if($mode == 0){ //私钥解密
+            $key = openssl_get_privatekey($keyContent);
+            for ($i = 0; $i < $length; $i++) {
+                $eDecrypt = '';
+                $eEncrypt = substr($encryptData, $i * 128, 128);
+                openssl_private_decrypt($eEncrypt, $eDecrypt, $key);
+                $decryptStr .= $eDecrypt;
+            }
+        } else { //公钥解密
+            $key = openssl_get_publickey($keyContent);
+            for ($i = 0; $i < $length; $i++) {
+                $eDecrypt = '';
+                $eEncrypt = substr($encryptData, $i * 128, 128);
+                openssl_public_decrypt($eEncrypt, $eDecrypt, $key);
+                $decryptStr .= $eDecrypt;
+            }
+        }
+        openssl_free_key($key);
+
+        return $decryptStr;
     }
 
     /**
