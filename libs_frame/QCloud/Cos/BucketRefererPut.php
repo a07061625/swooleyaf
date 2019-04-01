@@ -43,7 +43,7 @@ class BucketRefererPut extends CloudBaseCos {
         if(empty($this->reqData)){
             throw new CosException('Referer配置不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
-        $content = Tool::arrayToXml($this->reqData);
+        $content = Tool::arrayToXml($this->reqData, 2);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $content;
         $this->reqHeader['Content-Length'] = strlen($content);
         $this->reqHeader['Content-MD5'] = md5(base64_encode($content));

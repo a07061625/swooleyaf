@@ -44,7 +44,7 @@ class BucketCorsPut extends CloudBaseCos {
         if(empty($this->reqData)){
             throw new CosException('跨域访问配置不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
-        $content = '<?xml version="1.0" encoding="UTF-8" ?>' . Tool::arrayToXml($this->reqData);
+        $content = '<?xml version="1.0" encoding="UTF-8" ?>' . Tool::arrayToXml($this->reqData, 2);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $content;
         $this->reqHeader['Content-Length'] = strlen($content);
         $this->reqHeader['Content-MD5'] = md5(base64_encode($content));
