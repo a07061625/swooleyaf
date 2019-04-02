@@ -292,10 +292,8 @@ abstract class BaseServer {
      * @return array|string
      */
     protected function handleTaskBase(\swoole_server $server,int $taskId,int $fromId,string $data) {
-        $result = new Result();
         if(!$this->_syPack->unpackData($data)){
-            $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '数据格式不合法');
-            return $result->getJson();
+            return '数据格式不合法';
         }
 
         RedisSingleton::getInstance()->reConnect();
@@ -331,17 +329,9 @@ abstract class BaseServer {
                         return $traitRes;
                     }
             }
-
-            $result->setData([
-                'result' => 'success',
-            ]);
-        } else {
-            $result->setData([
-                'result' => 'fail',
-            ]);
         }
 
-        return $result->getJson();
+        return '';
     }
 
     /**
@@ -687,10 +677,6 @@ abstract class BaseServer {
      * @param string $data
      */
     public function onFinish(\swoole_server $server, $taskId,string $data){
-        $dataArr = Tool::jsonDecode($data);
-        if ((!is_array($dataArr)) || ($dataArr['code'] > 0)) {
-            Log::info('handle task fail with msg:' . $data);
-        }
     }
 
     /**

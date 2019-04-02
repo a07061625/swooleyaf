@@ -627,19 +627,8 @@ class HttpServer extends BaseServer {
                     $this->clearApiSign();
                     break;
                 default:
-                    $traitRes = $this->handleTaskHttpTrait($server, $taskId, $fromId, $baseRes);
-                    if(strlen($traitRes) > 0){
-                        return $traitRes;
-                    }
+                    $this->handleTaskHttpTrait($server, $taskId, $fromId, $baseRes);
             }
-
-            $result = new Result();
-            $result->setData([
-                'result' => 'success',
-            ]);
-            return $result->getJson();
-        } else {
-            return $baseRes;
         }
     }
 
