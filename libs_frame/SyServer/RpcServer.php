@@ -222,19 +222,8 @@ class RpcServer extends BaseServer {
             $taskCommand = Tool::getArrayVal($baseRes['params'], 'task_command', '');
             switch ($taskCommand) {
                 default:
-                    $traitRes = $this->handleTaskRpcTrait($server, $taskId, $fromId, $baseRes);
-                    if(strlen($traitRes) > 0){
-                        return $traitRes;
-                    }
+                    $this->handleTaskRpcTrait($server, $taskId, $fromId, $baseRes);
             }
-
-            $result = new Result();
-            $result->setData([
-                'result' => 'success',
-            ]);
-            return $result->getJson();
-        } else {
-            return $baseRes;
         }
     }
 
