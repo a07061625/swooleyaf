@@ -79,7 +79,9 @@ final class CloudUtilCos extends CloudUtilBase {
             $resArr['msg'] = $sendRes['res_msg'];
             return $resArr;
         }
-        if(substr($sendRes['res_content'], 0, 1) != '<'){
+
+        $rspContentType = isset($sendRes['res_header']['Content-Type']) ? strtolower($sendRes['res_header']['Content-Type'][0]) : '';
+        if((strlen($sendRes['res_content']) == 0) || ($rspContentType != 'application/xml')){
             $resArr['data'] = [
                 'code' => $sendRes['res_code'],
                 'header' => $sendRes['res_header'],
