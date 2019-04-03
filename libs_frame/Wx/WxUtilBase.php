@@ -16,7 +16,6 @@ abstract class WxUtilBase {
     const PLAT_TYPE_MINI = 'mini'; //平台类型-小程序
     const PLAT_TYPE_OPEN_SHOP = 'openshop'; //平台类型-第三方平台代理公众号
     const PLAT_TYPE_OPEN_MINI = 'openmini'; //平台类型-第三方平台代理小程序
-    const URL_QRCODE = 'http://paysdk.weixin.qq.com/example/qrcode.php?data=';
 
     public static $totalPlatTypes = [
         self::PLAT_TYPE_SHOP => 1,
