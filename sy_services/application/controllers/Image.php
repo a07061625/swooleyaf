@@ -14,7 +14,7 @@ class ImageController extends CommonController {
      * 生成二维码图片
      * @api {get} /Index/Image/createQrImage 生成二维码图片
      * @apiDescription 生成二维码图片
-     * @apiGroup File
+     * @apiGroup Image
      * @apiParam {string{1..255}} url 链接地址
      * @apiParam {string} [error_level=L] 容错级别，取值为H L M Q，越在前级别越低
      * @apiParam {number{1-10}} [image_size=5] 图片大小
@@ -97,68 +97,10 @@ class ImageController extends CommonController {
     }
 
     /**
-     * 生成验证码图片
-     * @api {get} /Index/Image/createCodeImage 生成验证码图片
-     * @apiDescription 生成验证码图片
-     * @apiGroup File
-     * @apiParam {string{1..64}} session_id 令牌标识
-     * @apiParam {number{50-150}} [image_width=130] 图片宽度
-     * @apiParam {number{20-80}} [image_height=45] 图片高度
-     * @SyFilter-{"field": "session_id","explain": "令牌标识","type": "string","rules": {"required": 1,"min": 1,"max": 150}}
-     * @SyFilter-{"field": "image_width","explain": "图片宽度","type": "int","rules": {"required": 1,"min": 50,"max": 150}}
-     * @SyFilter-{"field": "image_height","explain": "图片高度","type": "int","rules": {"required": 1,"min": 20,"max": 80}}
-     * @apiSuccess {string} Body 图片字节流
-     * @apiUse CommonFail
-     */
-    public function createCodeImageAction() {
-        $fontPath = \SyServer\HttpServer::getServerConfig('storepath_resources') . '/consolas.ttf';
-        //创建图片
-        $imageWidth = (int)\Request\SyRequest::getParams('image_width', 130);
-        $imageHeight = (int)\Request\SyRequest::getParams('image_height', 45);
-        $image = imagecreate($imageWidth, $imageHeight);
-        imagecolorallocate($image, random_int(50, 200), random_int(0, 155), random_int(0, 155)); //第一次对imagecolorallocate()的调用会给基于调色板的图像填充背景色
-        $fontColor = imageColorAllocate($image, 255, 255, 255); //字体颜色
-        $code = '';
-        //产生随机字符
-        for ($i = 0; $i < 4; $i++) {
-            $randAsciiNumArray = [random_int(48, 57), random_int(65, 90)];
-            $randAsciiNum = $randAsciiNumArray[random_int(0, 1)];
-            $randStr = chr($randAsciiNum);
-            imagettftext($image, 30, random_int(0, 20) - random_int(0, 25), 5 + $i * 30, random_int(30, 35), $fontColor, $fontPath, $randStr);
-            $code .= $randStr;
-        }
-        //干扰线
-        for ($i = 0; $i < 8; $i++) {
-            $lineColor = imagecolorallocate($image, random_int(0, 255), random_int(0, 255), random_int(0, 255));
-            imageline($image, random_int(0, $imageWidth), 0, random_int(0, $imageWidth), $imageHeight, $lineColor);
-        }
-        //干扰点
-        for ($i = 0; $i < 250; $i++) {
-            imagesetpixel($image, random_int(0, $imageWidth), random_int(0, $imageHeight), $fontColor);
-        }
-
-        ob_start();
-        imagepng($image);
-        $imageContent = ob_get_contents();
-        ob_end_clean();
-
-        imagedestroy($image);
-
-        //随机字符串放入redis
-        $redisKey = \Constant\Project::REDIS_PREFIX_CODE_IMAGE . \Request\SyRequest::getParams('session_id');
-        \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->set($redisKey, $code, 190);
-
-        $this->SyResult->setData([
-            'image' => 'data:image/png;base64,' . base64_encode($imageContent),
-        ]);
-        $this->sendRsp();
-    }
-
-    /**
      * 图片上传
      * @api {post} /Index/Image/uploadImage 图片上传
      * @apiDescription 图片上传
-     * @apiGroup File
+     * @apiGroup Image
      * @apiParam {string} upload_type 上传类型,4位长度字符串
      * @apiParam {string} [image_base64] 图片base64编码
      * @apiParam {string} [image_url] 图片链接
