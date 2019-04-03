@@ -453,7 +453,7 @@ class UnifiedOrder extends WxBaseShop {
             }
         } else if($this->reqData['trade_type'] == self::TRADE_TYPE_NATIVE){
             $resArr['data'] = [
-                'code_url' => WxUtilBase::URL_QRCODE . urlencode($sendData['code_url']),
+                'code_url' => $sendData['code_url'],
                 'prepay_id' => $sendData['prepay_id'],
             ];
         } else {

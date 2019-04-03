@@ -75,13 +75,13 @@ class ShortUrl extends WxBaseShop {
         $sendData = Tool::xmlToArray($sendRes);
         if ($sendData['return_code'] == 'FAIL') {
             Log::error($sendData['return_msg'], ErrorCode::WX_PARAM_ERROR);
-            $url = WxUtilBase::URL_QRCODE . urlencode($this->reqData['long_url']);
+            $url = $this->reqData['long_url'];
         } else if ($sendData['result_code'] == 'FAIL') {
             $error = Tool::getArrayVal(WxUtilBase::$errorsShortUrl, $sendData['err_code'], $sendData['err_code_des']);
             Log::error($error, ErrorCode::WX_PARAM_ERROR);
-            $url = WxUtilBase::URL_QRCODE . urlencode($this->reqData['long_url']);
+            $url = $this->reqData['long_url'];
         } else {
-            $url = WxUtilBase::URL_QRCODE . urlencode($sendData['short_url']);
+            $url = $sendData['short_url'];
         }
 
         return [
