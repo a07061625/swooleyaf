@@ -630,6 +630,8 @@ class HttpServer extends BaseServer {
                     $this->handleTaskHttpTrait($server, $taskId, $fromId, $baseRes);
             }
         }
+
+        return null;
     }
 
     /**
