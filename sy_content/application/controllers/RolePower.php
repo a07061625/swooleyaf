@@ -172,7 +172,6 @@ class RolePowerController extends CommonController {
         ];
         $delRes = \Dao\RolePowerDao::delPowerByStation($needParams);
         $this->SyResult->setData($delRes);
-
         $this->sendRsp();
     }
 
@@ -196,7 +195,6 @@ class RolePowerController extends CommonController {
         ];
         $getRes = \Dao\RolePowerDao::getPowerInfoByStation($needParams);
         $this->SyResult->setData($getRes);
-
         $this->sendRsp();
     }
 
@@ -229,7 +227,6 @@ class RolePowerController extends CommonController {
         ];
         $getRes = \Dao\RolePowerDao::getPowerListByStation($needParams);
         $this->SyResult->setData($getRes);
-
         $this->sendRsp();
     }
 
@@ -253,7 +250,6 @@ class RolePowerController extends CommonController {
         ];
         $getRes = \Dao\RolePowerDao::getRolePowersByStation($needParams);
         $this->SyResult->setData($getRes);
-
         $this->sendRsp();
     }
 }

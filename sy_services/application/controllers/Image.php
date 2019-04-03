@@ -40,7 +40,6 @@ class ImageController extends CommonController {
         $this->SyResult->setData([
             'image' => 'data:image/png;base64,' . base64_encode($image),
         ]);
-
         $this->sendRsp();
     }
 
@@ -152,7 +151,6 @@ class ImageController extends CommonController {
         $this->SyResult->setData([
             'image' => 'data:image/png;base64,' . base64_encode($imageContent),
         ]);
-
         $this->sendRsp();
     }
 

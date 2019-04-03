@@ -42,7 +42,6 @@ class LoginController extends CommonController {
         ];
         $loginRes = \Dao\LoginDao::login($needParams);
         $this->SyResult->setData($loginRes);
-
         $this->sendRsp();
     }
 }

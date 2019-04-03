@@ -40,7 +40,6 @@ class PayController extends CommonController {
         ];
         $applyRes = \Dao\PayDao::applyPay($needParams);
         $this->SyResult->setData($applyRes);
-
         $this->sendRsp();
     }
 
@@ -108,11 +107,10 @@ class PayController extends CommonController {
 
         //返回结果
         $resData = $returnObj->getDetail();
+        unset($returnObj);
         $this->SyResult->setData([
             'result' => \Tool\Tool::arrayToXml($resData),
         ]);
-        unset($returnObj);
-
         $this->sendRsp();
     }
 
@@ -143,7 +141,6 @@ class PayController extends CommonController {
         $this->SyResult->setData([
             'msg' => '退款处理成功',
         ]);
-
         $this->sendRsp();
     }
 
@@ -185,7 +182,6 @@ class PayController extends CommonController {
         $this->SyResult->setData([
             'msg' => '支付处理成功',
         ]);
-
         $this->sendRsp();
     }
 }

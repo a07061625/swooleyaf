@@ -94,7 +94,6 @@ class RoleBaseController extends CommonController {
         ];
         $getRes = \Dao\RoleBaseDao::getRoleInfoByStation($needParams);
         $this->SyResult->setData($getRes);
-
         $this->sendRsp();
     }
 
@@ -124,7 +123,6 @@ class RoleBaseController extends CommonController {
         ];
         $getRes = \Dao\RoleBaseDao::getRoleListByStation($needParams);
         $this->SyResult->setData($getRes);
-
         $this->sendRsp();
     }
 
@@ -147,7 +145,6 @@ class RoleBaseController extends CommonController {
         ];
         $getRes = \Dao\RoleBaseDao::getRoleListByFront($needParams);
         $this->SyResult->setData($getRes);
-
         $this->sendRsp();
     }
 }

@@ -32,7 +32,6 @@ class WxOpenController extends CommonController {
         $this->SyResult->setData([
             'result' => $handleRes,
         ]);
-
         $this->sendRsp();
     }
 
@@ -68,7 +67,6 @@ class WxOpenController extends CommonController {
         $this->SyResult->setData([
             'result' => $handleRes,
         ]);
-
         $this->sendRsp();
     }
 }
