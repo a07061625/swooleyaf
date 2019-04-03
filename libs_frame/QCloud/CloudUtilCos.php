@@ -62,6 +62,29 @@ final class CloudUtilCos extends CloudUtilBase {
         return true;
     }
 
+    /**
+     * 生成权限策略签名
+     * @param array $policyConfig
+     * @param array $reqData
+     */
+    public static function createPolicySign(array $policyConfig,array &$reqData){
+        $nowTime = Tool::getNowTime();
+        $endTime = $nowTime + 259200;
+        $config = QCloudConfigSingleton::getInstance()->getCosConfig();
+        $reqData['q-sign-algorithm'] = 'sha1';
+        $reqData['q-ak'] = $config->getSecretId();
+        $reqData['q-key-time'] = $nowTime . ';' . $endTime;
+        $signKey = hash_hmac('sha1', $reqData['q-key-time'], $config->getSecretKey());
+
+        $policy = Tool::jsonEncode([
+            'expiration' => gmdate("Y-m-d\TH:i:s.000\Z", $endTime),
+            'conditions' => $policyConfig,
+        ], JSON_UNESCAPED_UNICODE);
+        $policySign = sha1($policy);
+        $reqData['policy'] = base64_encode($policy);
+        $reqData['q-signature'] = hash_hmac('sha1', $policySign, $signKey);
+    }
+
     public static function sendServiceRequest(CloudBaseCos $cosBase) {
         $resArr = [
             'code' => 0
