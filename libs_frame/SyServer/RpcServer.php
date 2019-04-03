@@ -225,6 +225,8 @@ class RpcServer extends BaseServer {
                     $this->handleTaskRpcTrait($server, $taskId, $fromId, $baseRes);
             }
         }
+
+        return null;
     }
 
     /**
