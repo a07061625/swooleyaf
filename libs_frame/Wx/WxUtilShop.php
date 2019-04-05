@@ -12,7 +12,6 @@ use DesignPatterns\Singletons\WxConfigSingleton;
 use Exception\Wx\WxException;
 use Tool\Tool;
 use Traits\SimpleTrait;
-use Wx\Shop\Pay\PayCompanyBankPublicKey;
 
 final class WxUtilShop extends WxUtilBaseAlone {
     use SimpleTrait;
@@ -119,29 +118,12 @@ final class WxUtilShop extends WxUtilBaseAlone {
             throw new WxException('加密数据不能为空', ErrorCode::WX_POST_ERROR);
         }
 
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
-        $fileName = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.dir.store.resources') . '/certs/wxcompanybank_' . $shopConfig->getPayMchId() . '.pem';
-        if(!file_exists($fileName)){
-            $bankPublicKey = new PayCompanyBankPublicKey($appId);
-            $detail = $bankPublicKey->getDetail();
-            unset($bankPublicKey);
-            if($detail['code'] > 0){
-                throw new WxException($detail['message'], $detail['code']);
-            }
-            if(!file_put_contents($fileName, $detail['data']['pub_key'])){
-                throw new WxException('写入银行公钥文件失败', ErrorCode::WX_POST_ERROR);
-            }
-
-            $output = [];
-            $commandStatus = 0;
-            $command = 'openssl rsa -RSAPublicKey_in -in ' . $fileName . ' -out ' . $fileName;
-            exec($command, $output, $commandStatus);
-            if($commandStatus == -1){
-                throw new WxException('生成银行公钥文件失败', ErrorCode::WX_POST_ERROR);
-            }
+        $keyContent = WxConfigSingleton::getInstance()->getShopConfig($appId)->getSslCompanyBank();
+        if (strlen($keyContent) == 0) {
+            throw new WxException('银行卡公钥不能为空', ErrorCode::WX_POST_ERROR);
         }
 
-        $publicKey = openssl_pkey_get_public(file_get_contents($fileName));
+        $publicKey = openssl_pkey_get_public($keyContent);
         $encryptData = [];
         foreach ($data as $key => $val) {
             if(is_string($val) && (strlen($val) > 0)){

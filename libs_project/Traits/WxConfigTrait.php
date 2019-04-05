@@ -96,6 +96,7 @@ trait WxConfigTrait {
             $accountConfig->setPayAuthUrl($wxDefaultConfig['url']['auth']['default']);
             $accountConfig->setSslCert((string)$configInfo['payssl_cert']);
             $accountConfig->setSslKey((string)$configInfo['payssl_key']);
+            $accountConfig->setSslCompanyBank((string)$configInfo['payssl_companybank']);
             if (is_array($templates)) {
                 $accountConfig->setTemplates($templates);
             }

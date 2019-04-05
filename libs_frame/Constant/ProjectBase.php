@@ -94,6 +94,7 @@ class ProjectBase {
     const WX_CONFIG_STATUS_ENABLE = 1; //状态-有效
     const WX_CONFIG_CORP_STATUS_DISABLE = 0; //企业微信状态-无效
     const WX_CONFIG_CORP_STATUS_ENABLE = 1; //企业微信状态-有效
+    const WX_CONFIG_DEFAULT_CLIENT_IP = '127.0.0.1'; //默认客户端IP
 
     //支付宝支付常量
     const ALI_PAY_STATUS_DISABLE = 0; //状态-无效

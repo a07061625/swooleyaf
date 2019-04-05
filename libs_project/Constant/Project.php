@@ -62,7 +62,6 @@ final class Project extends ProjectBase {
     const PAY_TYPE_WX_SHOP_NATIVE_STATIC = 'a002'; //类型-微信公众号静态扫码支付
     const PAY_TYPE_WX_MINI_JS = 'a003'; //类型-微信小程序js支付
     const PAY_TYPE_ALI_CODE = 'a100'; //类型-支付宝扫码支付
-
     const PAY_TYPE_ALI_WEB = 'a101'; //类型-支付宝网页支付
 
     //订单常量
