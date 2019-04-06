@@ -55,16 +55,22 @@ class WxConfigAccount {
     private $payAuthUrl = '';
 
     /**
-     * CERT PEM证书路径
+     * CERT PEM证书内容
      * @var string
      */
     private $sslCert = '';
 
     /**
-     * KEY PEM证书路径
+     * KEY PEM证书内容
      * @var string
      */
     private $sslKey = '';
+
+    /**
+     * 企业付款银行卡公钥内容
+     * @var string
+     */
+    private $sslCompanyBank = '';
 
     /**
      * 模板列表
@@ -232,14 +238,9 @@ class WxConfigAccount {
 
     /**
      * @param string $sslCert
-     * @throws \Exception\WX\WxException
      */
     public function setSslCert(string $sslCert) {
-        if(strlen($sslCert) > 0){
-            $this->sslCert = $sslCert;
-        } else {
-            throw new WxException('cert证书不能为空', ErrorCode::WX_PARAM_ERROR);
-        }
+        $this->sslCert = $sslCert;
     }
 
     /**
@@ -251,14 +252,23 @@ class WxConfigAccount {
 
     /**
      * @param string $sslKey
-     * @throws \Exception\WX\WxException
      */
     public function setSslKey(string $sslKey) {
-        if(strlen($sslKey) > 0){
-            $this->sslKey = $sslKey;
-        } else {
-            throw new WxException('key证书不能为空', ErrorCode::WX_PARAM_ERROR);
-        }
+        $this->sslKey = $sslKey;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSslCompanyBank(): string {
+        return $this->sslCompanyBank;
+    }
+
+    /**
+     * @param string $sslCompanyBank
+     */
+    public function setSslCompanyBank(string $sslCompanyBank) {
+        $this->sslCompanyBank = $sslCompanyBank;
     }
 
     /**
