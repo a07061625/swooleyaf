@@ -87,6 +87,7 @@ class AuthorizeUrl extends WxBaseShop {
         if(!isset($this->reqData['redirect_uri'])){
             throw new WxException('重定向链接不能为空', ErrorCode::WX_PARAM_ERROR);
         }
+        ksort($this->reqData);
 
         return [
             'url' => $this->serviceUrl . '?' . http_build_query($this->reqData) . '#wechat_redirect',
