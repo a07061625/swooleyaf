@@ -7,13 +7,11 @@
  */
 namespace SyModule;
 
-use Constant\ErrorCode;
 use Constant\Project;
 use Constant\Server;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Log\Log;
 use Request\SyRequestRpc;
-use Response\Result;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
@@ -132,16 +130,11 @@ abstract class ModuleRpc extends ModuleBase {
         $this->syRequest->setTimeout(Project::TIME_EXPIRE_SWOOLE_CLIENT_RPC);
         $apiRsp = $this->syRequest->sendApiReq($uri, $params, $callback);
         $this->refreshFuseState($apiRsp);
-        if(is_string($apiRsp)){
-            return $apiRsp;
-        } else {
+        if($apiRsp === false){
             Log::error('send api req fail: uri=' . $uri . '; params=' . Tool::jsonEncode($params));
-            $result = new Result();
-            $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '发送请求失败');
-            $content = $result->getJson();
-            unset($result);
-            return $content;
         }
+
+        return $apiRsp;
     }
 
     /**
