@@ -48,12 +48,11 @@ abstract class ModuleHttp extends ModuleBase {
         $this->syRequest->setPort($serverInfo['port']);
         $this->syRequest->setTimeout(Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
         $content = $this->syRequest->sendGetReq($serverInfo['url'], $callback);
-        if(is_string($content)){
-            return $content;
-        } else {
+        if($content === false){
             Log::error('send get req fail; url=' . $serverInfo['url']);
-            return '发送请求失败';
         }
+
+        return $content;
     }
 
     /**
@@ -72,12 +71,11 @@ abstract class ModuleHttp extends ModuleBase {
         $this->syRequest->setPort($serverInfo['port']);
         $this->syRequest->setTimeout(Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
         $content = $this->syRequest->sendPostReq($serverInfo['url'], $params, $callback);
-        if(is_string($content)){
-            return $content;
-        } else {
+        if($content === false){
             Log::error('send post req fail: url=' . $serverInfo['url'] . '; params=' . Tool::jsonEncode($params));
-            return '发送请求失败';
         }
+
+        return $content;
     }
 
     /**
