@@ -25,7 +25,7 @@ class UserBaseDao {
             'user_role' => 111,
         ];
 
-        SySession::set($cacheData, 1, $sessionId);
+        SySession::set($cacheData, $sessionId);
         $redisKey = Project::REDIS_PREFIX_SESSION_LIST . $cacheData['user_id'];
         CacheSimpleFactory::getRedisInstance()->sAdd($redisKey, $sessionId);
         CacheSimpleFactory::getRedisInstance()->expire($redisKey, Project::TIME_EXPIRE_SESSION);

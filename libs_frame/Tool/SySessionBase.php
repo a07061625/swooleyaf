@@ -59,34 +59,27 @@ class SySessionBase {
 
     /**
      * 设置session值
-     * @param string|array $key hash键名
+     * @param array $data 数据
      * @param mixed $value hash键值
      * @param string $inToken 外部输入的token值
      * @return bool
      */
-    public static function set($key, $value,string $inToken=''){
-        $rspTag = false;
-        $token = SySession::getSessionId($inToken);
-        $redisKey = Project::REDIS_PREFIX_SESSION . $token;
-        if (is_array($key) && !empty($key)) {
-            //用于获取session信息时候的校验
-            $key['session_id'] = $token;
-            $rspTag = CacheSimpleFactory::getRedisInstance()->hMset($redisKey, $key);
-            if($rspTag){
-                CacheSimpleFactory::getRedisInstance()->expire($redisKey, Project::TIME_EXPIRE_SESSION);
-            } else {
-                Log::error('set session data error,key=' . $redisKey);
-            }
-        } else if (is_string($value) || is_numeric($value)) {
-            $rspTag = CacheSimpleFactory::getRedisInstance()->hSet($redisKey, $key, $value);
-            if($rspTag){
-                CacheSimpleFactory::getRedisInstance()->expire($redisKey, Project::TIME_EXPIRE_SESSION);
-            } else {
-                Log::error('set session data error,key=' . $redisKey);
-            }
+    public static function set(array $data,string $inToken=''){
+        if(empty($data)){
+            return false;
         }
 
-        return $rspTag;
+        $token = SySession::getSessionId($inToken);
+        $redisKey = Project::REDIS_PREFIX_SESSION . $token;
+        $data['session_id'] = $token;
+        $setRes = CacheSimpleFactory::getRedisInstance()->hMset($redisKey, $data);
+        if($setRes){
+            CacheSimpleFactory::getRedisInstance()->expire($redisKey, Project::TIME_EXPIRE_SESSION);
+        } else {
+            Log::error('set session data error,key=' . $redisKey . ' data=' . print_r($data, true));
+        }
+
+        return $setRes;
     }
 
     /**
