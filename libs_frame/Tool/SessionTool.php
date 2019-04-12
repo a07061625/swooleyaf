@@ -31,22 +31,12 @@ final class SessionTool {
             'error' => '',
         ];
 
-        $jwt = Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION);
-        if(!is_string($jwt)){
-            $resArr['error'] = '会话数据不存在';
-            return $resArr;
-        }
-        $jwtArr = Tool::unpack($jwt);
-        if(!is_array($jwtArr)){
-            $resArr['error'] = '会话数据格式错误';
-            return $resArr;
-        }
-
-        $sign = hash('md5', $jwtArr['tag'] . $jwtArr['exp'] . SY_SESSION_SECRET);
-        if($sign == $jwtArr['sig']){
-            $resArr['tag'] = $jwtArr['tag'];
-            $resArr['rid'] = $jwtArr['rid'];
-            $resArr['exp'] = (int)$jwtArr['exp'];
+        $jwtData = Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
+        $sign = hash('md5', $jwtData['tag'] . $jwtData['exp'] . SY_SESSION_SECRET);
+        if($sign == $jwtData['sig']){
+            $resArr['tag'] = $jwtData['tag'];
+            $resArr['rid'] = $jwtData['rid'];
+            $resArr['exp'] = (int)$jwtData['exp'];
         } else {
             $resArr['error'] = '会话签名错误';
         }
