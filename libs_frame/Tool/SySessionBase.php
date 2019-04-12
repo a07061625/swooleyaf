@@ -9,6 +9,7 @@ namespace Tool;
 
 use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
+use Log\Log;
 use Request\SyRequest;
 use SyServer\BaseServer;
 use Traits\SimpleTrait;
@@ -58,30 +59,26 @@ class SySessionBase {
 
     /**
      * 设置session值
-     * @param string|array $key hash键名
-     * @param mixed $value hash键值
+     * @param array $data 数据
      * @param string $inToken 外部输入的token值
      * @return bool
      */
-    public static function set($key, $value,string $inToken=''){
+    public static function set(array $data,string $inToken=''){
+        if(empty($data)){
+            return false;
+        }
+
         $token = SySession::getSessionId($inToken);
         $redisKey = Project::REDIS_PREFIX_SESSION . $token;
-        if (is_array($key)) {
-            if (empty($key)) {
-                return false;
-            }
-
-            //用于获取session信息时候的校验
-            $key['session_id'] = $token;
-            CacheSimpleFactory::getRedisInstance()->hMset($redisKey, $key);
+        $data['session_id'] = $token;
+        $setRes = CacheSimpleFactory::getRedisInstance()->hMset($redisKey, $data);
+        if($setRes){
             CacheSimpleFactory::getRedisInstance()->expire($redisKey, Project::TIME_EXPIRE_SESSION);
-            return true;
-        } else if (is_string($value) || is_numeric($value)) {
-            CacheSimpleFactory::getRedisInstance()->hSet($redisKey, $key, $value);
-            CacheSimpleFactory::getRedisInstance()->expire($redisKey, Project::TIME_EXPIRE_SESSION);
-            return true;
+        } else {
+            Log::error('set session data error,key=' . $redisKey . ' data=' . print_r($data, true));
         }
-        return false;
+
+        return $setRes;
     }
 
     /**
