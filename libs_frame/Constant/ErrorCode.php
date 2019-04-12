@@ -201,6 +201,11 @@ class ErrorCode {
     const QCLOUD_COS_HEAD_ERROR = 105105;
     const QCLOUD_COS_OPTIONS_ERROR = 105106;
 
+    //会话错误,取值范围:106000-106099
+    const SESSION_JWT_REFRESH_ERROR = 106000;
+    const SESSION_JWT_DATA_ERROR = 106001;
+    const SESSION_JWT_SIGN_ERROR = 106002;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -326,6 +331,9 @@ class ErrorCode {
         self::QCLOUD_COS_DELETE_ERROR => '腾讯云对象存储发送DELETE请求出错',
         self::QCLOUD_COS_HEAD_ERROR => '腾讯云对象存储发送HEAD请求出错',
         self::QCLOUD_COS_OPTIONS_ERROR => '腾讯云对象存储发送OPTIONS请求出错',
+        self::SESSION_JWT_DATA_ERROR => '会话JWT数据错误',
+        self::SESSION_JWT_SIGN_ERROR => '会话JWT签名错误',
+        self::SESSION_JWT_REFRESH_ERROR => '会话JWT刷新错误',
     ];
 
     /**

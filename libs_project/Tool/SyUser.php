@@ -11,6 +11,14 @@ use Constant\ProjectCode;
 use Exception\User\LoginException;
 use Traits\SimpleTrait;
 
+/**
+ * Class SyUser
+ * 如果会话类型为缓存,继承\Tool\SyUserBase类
+ * 如果会话类型为JWT,继承\Tool\SyUserJwt类
+ * 会话类型为JWT时,会话中数据变动(用户数据,角色权限等)时需要设置REDIS缓存中以\Constant\Project::REDIS_PREFIX_SESSION_JWT_REFRESH为前缀的键名
+ * 其值为新的更新标识字符串
+ * @package Tool
+ */
 class SyUser extends SyUserBase {
     use SimpleTrait;
 

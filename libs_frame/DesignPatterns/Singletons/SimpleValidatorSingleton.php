@@ -28,6 +28,7 @@ use Validator\Impl\String\StringDigitUpper;
 use Validator\Impl\String\StringEmail;
 use Validator\Impl\String\StringIP;
 use Validator\Impl\String\StringJson;
+use Validator\Impl\String\StringJwt;
 use Validator\Impl\String\StringLat;
 use Validator\Impl\String\StringLng;
 use Validator\Impl\String\StringLower;
@@ -84,6 +85,7 @@ class SimpleValidatorSingleton extends BaseContainer {
             ProjectBase::VALIDATOR_STRING_TYPE_LOWER => 1,
             ProjectBase::VALIDATOR_STRING_TYPE_UPPER => 1,
             ProjectBase::VALIDATOR_STRING_TYPE_SY_TOKEN => 1,
+            ProjectBase::VALIDATOR_STRING_TYPE_JWT => 1,
         ];
 
         $this->bind(ProjectBase::VALIDATOR_INT_TYPE_REQUIRED, function () {
@@ -187,6 +189,9 @@ class SimpleValidatorSingleton extends BaseContainer {
         });
         $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_SY_TOKEN, function () {
             return new StringSyToken();
+        });
+        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_JWT, function () {
+            return new StringJwt();
         });
     }
 

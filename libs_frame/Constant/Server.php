@@ -79,6 +79,8 @@ final class Server {
     const REGISTRY_NAME_REQUEST_SERVER = 'REQUEST_SERVER'; //名称-服务器信息
     const REGISTRY_NAME_RESPONSE_HEADER = 'RESPONSE_HEADER'; //名称-响应头
     const REGISTRY_NAME_RESPONSE_COOKIE = 'RESPONSE_COOKIE'; //名称-响应cookie
+    const REGISTRY_NAME_RESPONSE_JWT_SESSION = 'RESPONSE_JWT_SESSION'; //名称-响应jwt会话
+    const REGISTRY_NAME_RESPONSE_JWT_DATA = 'RESPONSE_JWT_DATA'; //名称-响应jwt数据
 
     //图片常量
     public static $totalImageFilterDither = [
@@ -90,4 +92,12 @@ final class Server {
     const IMAGE_MIME_TYPE_GIF = 'image/gif'; //MIME类型-GIF
     const IMAGE_FILTER_DITHER_DIFFUSION = 'diffusion'; //噪点滤镜类型-扩散
     const IMAGE_FILTER_DITHER_ORDERED = 'ordered'; //噪点滤镜类型-规整
+
+    //会话常量
+    public static $totalSessionType = [
+        self::SESSION_TYPE_CACHE => '缓存',
+        self::SESSION_TYPE_JWT => 'JWT',
+    ];
+    const SESSION_TYPE_CACHE = 'cache'; //类型-缓存
+    const SESSION_TYPE_JWT = 'jwt'; //类型-JWT
 }
