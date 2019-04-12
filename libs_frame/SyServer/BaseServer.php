@@ -221,6 +221,16 @@ abstract class BaseServer {
         if(version_compare(\YAF\VERSION, Server::VERSION_MIN_YAF, '<')){
             exit('yaf版本必须大于等于' . Server::VERSION_MIN_YAF . PHP_EOL);
         }
+
+        if(!isset(Server::$totalSessionType[SY_SESSION])){
+            exit('会话类型不支持' . PHP_EOL);
+        }
+        if (!ctype_alnum(SY_SESSION_SECRET)) {
+            exit('会话密钥不合法' . PHP_EOL);
+        }
+        if (strlen(SY_SESSION_SECRET) != 8) {
+            exit('会话密钥不合法' . PHP_EOL);
+        }
     }
 
     private function createUniqueToken() {
