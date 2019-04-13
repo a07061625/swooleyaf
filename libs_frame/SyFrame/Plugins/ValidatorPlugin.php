@@ -36,7 +36,7 @@ class ValidatorPlugin extends Plugin_Abstract {
         $methodName = $request->getActionName() . 'Action';
         $validatorKey = Server::REGISTRY_NAME_VALIDATOR_PREFIX . hash('crc32b', $controllerClass . '_' . $methodName);
         $validatorList = Registry::get($validatorKey);
-        if(!is_array($validatorList)){
+        if(is_null($validatorList)){
             $validatorList = BaseReflect::getValidatorAnnotations($controllerClass, $methodName);
             Registry::set($validatorKey, $validatorList);
         }
