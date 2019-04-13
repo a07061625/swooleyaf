@@ -29,7 +29,7 @@ class ValidatorPlugin extends Plugin_Abstract {
     }
 
     private function getValidatorList(string $controllerName,string $actionName) : array {
-        $key = $controllerName . $actionName;
+        $key = strtolower($controllerName . $actionName);
         $validatorTag = $this->validatorMap[$key] ?? null;
         if (is_string($validatorTag)) {
             return Registry::get($validatorTag);
