@@ -81,6 +81,7 @@ final class Server {
     const REGISTRY_NAME_RESPONSE_COOKIE = 'RESPONSE_COOKIE'; //名称-响应cookie
     const REGISTRY_NAME_RESPONSE_JWT_SESSION = 'RESPONSE_JWT_SESSION'; //名称-响应jwt会话
     const REGISTRY_NAME_RESPONSE_JWT_DATA = 'RESPONSE_JWT_DATA'; //名称-响应jwt数据
+    const REGISTRY_NAME_VALIDATOR_PREFIX = 'VALIDATOR_'; //名称-校验器前缀
 
     //图片常量
     public static $totalImageFilterDither = [
