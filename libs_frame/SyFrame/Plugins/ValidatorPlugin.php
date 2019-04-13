@@ -19,10 +19,28 @@ use Yaf\Request_Abstract;
 use Yaf\Response_Abstract;
 
 class ValidatorPlugin extends Plugin_Abstract {
+    private $validatorMap = [];
+
     public function __construct() {
+        $this->validatorMap = [];
     }
 
     private function __clone() {
+    }
+
+    private function getValidatorList(string $controllerName,string $actionName) : array {
+        $key = $controllerName . $actionName;
+        $validatorTag = $this->validatorMap[$key] ?? null;
+        if (is_string($validatorTag)) {
+            return Registry::get($validatorTag);
+        }
+
+        $validatorList = BaseReflect::getValidatorAnnotations($controllerName, $actionName);
+        $validatorTag = Server::REGISTRY_NAME_VALIDATOR_PREFIX . hash('crc32b', $key);
+        $this->validatorMap[$key] = $validatorTag;
+        Registry::set($validatorTag, $validatorList);
+
+        return $validatorList;
     }
 
     /**
@@ -32,15 +50,9 @@ class ValidatorPlugin extends Plugin_Abstract {
      * @throws \Exception\Validator\ValidatorException
      */
     public function preDispatch(Request_Abstract $request,Response_Abstract $response) {
-        $controllerClass = $request->getControllerName() . 'Controller';
-        $methodName = $request->getActionName() . 'Action';
-        $validatorKey = Server::REGISTRY_NAME_VALIDATOR_PREFIX . hash('crc32b', $controllerClass . '_' . $methodName);
-        $validatorList = Registry::get($validatorKey);
-        if(is_null($validatorList)){
-            $validatorList = BaseReflect::getValidatorAnnotations($controllerClass, $methodName);
-            Registry::set($validatorKey, $validatorList);
-        }
-
+        $controllerName = $request->getControllerName() . 'Controller';
+        $actionName = $request->getActionName() . 'Action';
+        $validatorList = $this->getValidatorList($controllerName, $actionName);
         foreach ($validatorList as $eValidator) {
             $data = SyRequest::getParams($eValidator->getField());
             $verifyRes = Validator::validator($data, $eValidator);
