@@ -406,7 +406,10 @@ abstract class BaseServer {
         if(strlen($uriRes) == 0){
             $checkRes['uri'] = $nowUri;
         } else {
-            $checkRes['error'] = $uriRes;
+            $errRes = new Result();
+            $errRes->setCodeMsg(ErrorCode::COMMON_ROUTE_URI_FORMAT_ERROR, $uriRes);
+            $checkRes['error'] = $errRes->getJson();
+            unset($errRes);
         }
 
         return $checkRes;

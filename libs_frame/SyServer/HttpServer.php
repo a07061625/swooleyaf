@@ -366,11 +366,7 @@ class HttpServer extends BaseServer {
         $uri = Tool::getArrayVal(self::$_reqServers, 'request_uri', '/');
         $uriCheckRes = $this->checkRequestUri($uri);
         if(strlen($uriCheckRes['error']) > 0){
-            $error = new Result();
-            $error->setCodeMsg(ErrorCode::COMMON_ROUTE_URI_FORMAT_ERROR, $uriCheckRes['error']);
-            $result = $error->getJson();
-            unset($error);
-            return $result;
+            return $uriCheckRes['error'];
         }
         $uri = $uriCheckRes['uri'];
         self::$_reqServers['request_uri'] = $uriCheckRes['uri'];
