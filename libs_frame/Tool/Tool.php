@@ -719,40 +719,25 @@ class Tool {
      * @return string
      */
     public static function handleYafUri(string &$uri) : string {
-        $tempUri = preg_replace([
-            '/[^0-9a-zA-Z\_\/]+/',
-            '/\/{2,}/',
-        ], [
-            '',
-            '/',
-        ], urldecode($uri));
-        if((strlen($tempUri) == 0) || ($tempUri == '/')){
+        if((strlen($uri) == 0) || ($uri == '/')){
             $uri = '/';
             return '';
-        } else if(substr($tempUri, 0, 1) != '/'){
+        } else if(substr($uri, 0, 1) != '/'){
             return 'URI格式错误';
-        } else if(substr($tempUri, -1) == '/'){
-            $tempUri = substr($tempUri, 0, -1);
+        }
+        if(substr($uri, -1) == '/'){
+            $uri = substr($uri, 0, -1);
         }
 
-        $tempArr = explode('/', $tempUri);
+        $tempArr = explode('/', $uri);
         if(!ctype_alnum($tempArr[1])){
             return '模块不合法';
-        }
-        if(isset($tempArr[2])){
-            if(!ctype_alnum($tempArr[2])){
-                return '控制器名称不合法';
-            } else if(ctype_digit($tempArr[2]{0})){
-                return '控制器名称不合法';
-            }
-        }
-        if(isset($tempArr[3])){
-            if(ctype_digit($tempArr[3]{0})){
-                return '方法名称不合法';
-            }
+        } else if(isset($tempArr[2]) && !ctype_alnum($tempArr[2])){
+            return '控制器名称不合法';
+        } else if(isset($tempArr[3]) && !ctype_alnum($tempArr[3])){
+            return '方法名称不合法';
         }
 
-        $uri = $tempUri;
         return '';
     }
 
