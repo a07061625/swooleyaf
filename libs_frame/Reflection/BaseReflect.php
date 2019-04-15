@@ -118,7 +118,7 @@ class BaseReflect {
             $jwtResult->setField(Validator::ANNOTATION_TAG_SESSION_JWT);
             $jwtResult->setType('string');
             $jwtResult->setRules([
-                'jwt' => 1,
+                'jwt' => SY_SERVER_TYPE == Server::SERVER_TYPE_API_GATE ? 1 : 0,
             ]);
             $resArr[Validator::ANNOTATION_TAG_SESSION_JWT] = $jwtResult;
         }
