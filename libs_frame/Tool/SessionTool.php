@@ -85,6 +85,8 @@ final class SessionTool {
 
         if (isset($_COOKIE[Project::DATA_KEY_SESSION_TOKEN])) {
             $jwt = (string)$_COOKIE[Project::DATA_KEY_SESSION_TOKEN];
+        } else if(isset($_SERVER['SY-AUTH'])){
+            $jwt = (string)$_SERVER['SY-AUTH'];
         } else {
             $jwt = (string)SyRequest::getParams('session_id', '');
         }
