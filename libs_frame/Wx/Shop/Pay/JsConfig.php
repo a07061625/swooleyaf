@@ -52,7 +52,7 @@ class JsConfig extends WxBaseShop {
      * @param int $timestamp
      */
     public function setTimestamp(int $timestamp) {
-        if(($timestamp > 0) && (strlen($timestamp) == 10)){
+        if($timestamp > 0){
             $this->reqData['timestamp'] = $timestamp;
         }
     }
@@ -61,7 +61,8 @@ class JsConfig extends WxBaseShop {
      * @param string $nonceStr
      */
     public function setNonceStr(string $nonceStr) {
-        if(ctype_alnum($nonceStr) && (strlen($nonceStr) >= 16) && (strlen($nonceStr) <= 32)){
+        $length = strlen($nonceStr);
+        if(ctype_alnum($nonceStr) && ($length >= 16) && ($length <= 32)){
             $this->reqData['nonceStr'] = $nonceStr;
         }
     }
