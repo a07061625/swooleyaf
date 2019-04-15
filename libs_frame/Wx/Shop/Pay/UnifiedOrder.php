@@ -435,9 +435,10 @@ class UnifiedOrder extends WxBaseShop {
             $resArr['message'] = $sendData['err_code_des'];
         } else if($this->reqData['trade_type'] == self::TRADE_TYPE_JSAPI){
             $appId = $this->merchantType == self::MERCHANT_TYPE_SELF ? $this->reqData['appid'] : $this->reqData['sub_appid'];
+            $nowTime = Tool::getNowTime();
             //获取支付参数
             $payConfig = new JsPayConfig($appId);
-            $payConfig->setTimeStamp((string)Tool::getNowTime());
+            $payConfig->setTimeStamp((string)$nowTime);
             $payConfig->setPackage($sendData['prepay_id']);
             $resArr['data'] = [
                 'pay' => $payConfig->getDetail(),
@@ -448,6 +449,8 @@ class UnifiedOrder extends WxBaseShop {
                 //获取js参数
                 $jsConfig = new JsConfig($appId);
                 $jsConfig->setPlatType($this->plat_type);
+                $jsConfig->setTimestamp($nowTime);
+                $jsConfig->setNonceStr($resArr['data']['pay']['nonceStr']);
                 $resArr['data']['config'] = $jsConfig->getDetail();
                 unset($jsConfig);
             }

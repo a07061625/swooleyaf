@@ -50,7 +50,7 @@ class JsPayConfig extends WxBaseShop {
      * @throws \Exception\Wx\WxException
      */
     public function setTimeStamp(string $timeStamp) {
-        if(ctype_digit($timeStamp) && (strlen($timeStamp) == 10) && ($timeStamp{0} != '0')){
+        if(ctype_digit($timeStamp) && ($timeStamp{0} != '0')){
             $this->reqData['timeStamp'] = $timeStamp;
         } else {
             throw new WxException('时间戳不合法', ErrorCode::WX_PARAM_ERROR);
