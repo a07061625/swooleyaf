@@ -54,23 +54,23 @@ final class SessionTool {
      */
     public static function createSessionJwt(array &$data){
         $tag = Tool::getArrayVal($data, 'tag', null);
-        if((!is_string($tag)) && !is_numeric($tag)){
+        if(is_string($tag) || is_numeric($tag)){
+            if(strlen((string)$tag) > 0){
+                $rid = (string)Tool::getArrayVal($data, 'rid', '');
+                if(strlen($rid) == 0){
+                    $redisKey = Project::REDIS_PREFIX_SESSION_JWT_REFRESH . $tag;
+                    $redisData = CacheSimpleFactory::getRedisInstance()->get($redisKey);
+                    $data['rid'] = is_string($redisData) ? $redisData : '';
+                }
+            } else {
+                $data['rid'] = '';
+            }
+            $data['exp'] = time() + 259200;
+            $data['sig'] = hash('md5', $data['tag'] . $data['exp'] . SY_SESSION_SECRET);
+            return Tool::pack($data);
+        } else {
             throw new JwtException('标识不正确', ErrorCode::SESSION_JWT_DATA_ERROR);
         }
-
-        if(strlen((string)$tag) > 0){
-            $rid = (string)Tool::getArrayVal($data, 'rid', '');
-            if(strlen($rid) == 0){
-                $redisKey = Project::REDIS_PREFIX_SESSION_JWT_REFRESH . $tag;
-                $redisData = CacheSimpleFactory::getRedisInstance()->get($redisKey);
-                $data['rid'] = is_string($redisData) ? $redisData : '';
-            }
-        } else {
-            $data['rid'] = '';
-        }
-        $data['exp'] = time() + 259200;
-        $data['sig'] = hash('md5', $data['tag'] . $data['exp'] . SY_SESSION_SECRET);
-        return Tool::pack($data);
     }
 
     /**
