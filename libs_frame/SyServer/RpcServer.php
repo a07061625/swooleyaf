@@ -75,9 +75,7 @@ class RpcServer extends BaseServer {
 
         Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
         if(SY_SESSION == Server::SESSION_TYPE_JWT){
-            $initRes = SessionTool::initSessionJwt();
-            Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION, $initRes['session']);
-            Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_DATA, $initRes['data']);
+            SessionTool::initSessionJwt();
         }
     }
 
