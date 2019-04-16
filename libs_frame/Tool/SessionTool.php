@@ -82,10 +82,26 @@ final class SessionTool {
             }
             $data['exp'] = time() + SY_SESSION_JW_EXPIRE;
             $data['sig'] = hash('md5', $data['tag'] . $data['exp'] . SY_SESSION_SECRET);
-            return base64_encode(Tool::pack($data));
+            $packData = pack('a*', Tool::pack($data));
+            return base64_encode($packData);
         } else {
             throw new JwtException('标识不正确', ErrorCode::SESSION_JWT_DATA_ERROR);
         }
+    }
+
+    /**
+     * 生成默认JWT数据
+     * @return array
+     */
+    private static function createDefaultJwt() : array {
+        $jwtData = [
+            'tag' => '',
+        ];
+
+        return [
+            'session' => self::createSessionJwt($jwtData),
+            'data' => $jwtData,
+        ];
     }
 
     /**
@@ -93,11 +109,6 @@ final class SessionTool {
      * @return array
      */
     public static function initSessionJwt() : array {
-        $initRes = [
-            'session' => '',
-            'data' => [],
-        ];
-
         if (isset($_COOKIE[Project::DATA_KEY_SESSION_TOKEN])) {
             $jwt = (string)$_COOKIE[Project::DATA_KEY_SESSION_TOKEN];
         } else if(isset($_SERVER['SY-AUTH'])){
@@ -106,22 +117,28 @@ final class SessionTool {
             $jwt = (string)SyRequest::getParams('session_id', '');
         }
 
-        $jwtMsg = strlen($jwt) > 0 ? base64_decode($jwt) : false;
-        if(is_string($jwtMsg)){
-            $jwtData = Tool::unpack($jwtMsg);
-            if(is_array($jwtData)){
-                $initRes['data'] = $jwtData;
-                $initRes['session'] = $jwt;
-            }
-        }
-        if(empty($initRes['data'])){
-            $jwtData = [
-                'tag' => '',
-            ];
-            $initRes['session'] = self::createSessionJwt($jwtData);
-            $initRes['data'] = $jwtData;
+        if(strlen($jwt) == 0){
+            return self::createDefaultJwt();
         }
 
-        return $initRes;
+        $decodeData = base64_decode($jwt);
+        if(is_bool($decodeData)){
+            return self::createDefaultJwt();
+        }
+
+        $unpackData = unpack('a*L1', $decodeData);
+        if(!isset($unpackData['L1'])){
+            return self::createDefaultJwt();
+        }
+
+        $jwtData = Tool::unpack($unpackData['L1']);
+        if(is_array($jwtData)){
+            return [
+                'session' => $jwt,
+                'data' => $jwtData,
+            ];
+        } else {
+            return self::createDefaultJwt();
+        }
     }
 }
