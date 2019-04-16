@@ -82,7 +82,7 @@ final class SessionTool {
             }
             $data['exp'] = time() + SY_SESSION_JW_EXPIRE;
             $data['sig'] = hash('md5', $data['tag'] . $data['exp'] . SY_SESSION_SECRET);
-            return Tool::pack($data);
+            return base64_encode(Tool::pack($data));
         } else {
             throw new JwtException('标识不正确', ErrorCode::SESSION_JWT_DATA_ERROR);
         }
@@ -105,8 +105,10 @@ final class SessionTool {
         } else {
             $jwt = (string)SyRequest::getParams('session_id', '');
         }
-        if(strlen($jwt) > 0){
-            $jwtData = Tool::unpack($jwt);
+
+        $jwtMsg = strlen($jwt) > 0 ? base64_decode($jwt) : false;
+        if(is_string($jwtMsg)){
+            $jwtData = Tool::unpack($jwtMsg);
             if(is_array($jwtData)){
                 $initRes['data'] = $jwtData;
                 $initRes['session'] = $jwt;
