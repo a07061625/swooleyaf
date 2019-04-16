@@ -41,10 +41,6 @@ if(!defined('SY_REQ_EXCEPTION_HANDLE_TYPE')){
 if(!defined('SY_SESSION')){
     define('SY_SESSION', 'cache');
 }
-//session密钥
-if(!defined('SY_SESSION_SECRET')){
-    define('SY_SESSION_SECRET', '245dcbf2');
-}
 //jwt会话有效时间,单位为秒
 if(!defined('SY_SESSION_JW_EXPIRE')){
     define('SY_SESSION_JW_EXPIRE', 86400);
