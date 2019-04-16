@@ -45,6 +45,17 @@ if(!defined('SY_SESSION')){
 if(!defined('SY_SESSION_SECRET')){
     define('SY_SESSION_SECRET', '245dcbf2');
 }
+//jwt会话有效时间,单位为秒
+if(!defined('SY_SESSION_JW_EXPIRE')){
+    define('SY_SESSION_JW_EXPIRE', 86400);
+}
+if(!is_int(SY_SESSION_JW_EXPIRE)){
+    exit('jwt会话有效时间必须为整数' . PHP_EOL);
+} else if(SY_SESSION_JW_EXPIRE < 3600){
+    exit('jwt会话有效时间必须不小于3600秒' . PHP_EOL);
+}
+//jwt会话刷新标识有效时间,单位为秒
+define('SY_SESSION_JW_RID_EXPIRE', (SY_SESSION_JW_EXPIRE + 180));
 
 $aliOpenConfigs = \Tool\Tool::getConfig('project.' . SY_ENV . SY_PROJECT);
 $proxyStatus = (int)\Tool\Tool::getArrayVal($aliOpenConfigs, 'aliopen.proxy.status', 0, true);

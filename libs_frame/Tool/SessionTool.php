@@ -45,6 +45,21 @@ final class SessionTool {
     }
 
     /**
+     * 设置会话JWT的刷新标识
+     * @param string $tag
+     * @return bool|string
+     */
+    public static function setSessionJwtRid(string $tag){
+        $redisKey = Project::REDIS_PREFIX_SESSION_JWT_REFRESH . $tag;
+        $rid = Tool::createNonceStr(6, 'numlower') . time();
+        if(CacheSimpleFactory::getRedisInstance()->set($redisKey, $rid, SY_SESSION_JW_RID_EXPIRE)){
+            return $rid;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * 生成会话JWT数据
      * @param array $data
      * 必填字段:
@@ -65,7 +80,7 @@ final class SessionTool {
             } else {
                 $data['rid'] = '';
             }
-            $data['exp'] = time() + 259200;
+            $data['exp'] = time() + SY_SESSION_JW_EXPIRE;
             $data['sig'] = hash('md5', $data['tag'] . $data['exp'] . SY_SESSION_SECRET);
             return Tool::pack($data);
         } else {
