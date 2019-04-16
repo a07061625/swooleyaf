@@ -32,8 +32,8 @@ class StringJwt extends BaseValidator implements ValidatorService {
         if($checkRes['exp'] < time()){
             throw new ValidatorException('会话已过期', ErrorCode::SESSION_JWT_REFRESH_ERROR);
         }
-        if($compareData && (strlen($checkRes['tag']) > 0)){
-            $redisKey = Project::REDIS_PREFIX_SESSION_JWT_REFRESH . $checkRes['tag'];
+        if($compareData && (strlen($checkRes['uid']) > 0)){
+            $redisKey = Project::REDIS_PREFIX_SESSION_JWT_REFRESH . $checkRes['uid'];
             $redisData = CacheSimpleFactory::getRedisInstance()->get($redisKey);
             if(is_string($redisData) && ($redisData != $checkRes['rid'])){
                 throw new ValidatorException('会话已更新', ErrorCode::SESSION_JWT_REFRESH_ERROR);

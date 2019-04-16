@@ -274,9 +274,7 @@ class HttpServer extends BaseServer {
         Registry::set(Server::REGISTRY_NAME_RESPONSE_HEADER, $rspHeaders);
         Registry::set(Server::REGISTRY_NAME_RESPONSE_COOKIE, []);
         if(SY_SESSION == Server::SESSION_TYPE_JWT){
-            $initRes = SessionTool::initSessionJwt();
-            Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION, $initRes['session']);
-            Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_DATA, $initRes['data']);
+            SessionTool::initSessionJwt();
         }
     }
 
