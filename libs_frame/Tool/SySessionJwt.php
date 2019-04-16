@@ -51,7 +51,7 @@ class SySessionJwt {
         $token = SySession::getSessionId();
         $jwtData = Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
         $mergeRes = array_merge($jwtData, $data);
-        $mergeRes['session_id'] = $token;
+        $mergeRes['sid'] = $token;
         SessionTool::createSessionJwt($mergeRes);
         $redisKey = Project::REDIS_PREFIX_SESSION . $token;
         $setRes = CacheSimpleFactory::getRedisInstance()->hMset($redisKey, $mergeRes);
@@ -85,7 +85,7 @@ class SySessionJwt {
      * @return bool|int
      */
     public static function del(string $key){
-        if(in_array($key, ['uid','rid','exp','sig',])){
+        if(in_array($key, ['uid','rid','exp',])){
             return false;
         }
 

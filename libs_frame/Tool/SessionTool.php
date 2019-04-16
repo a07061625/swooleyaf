@@ -20,31 +20,6 @@ final class SessionTool {
     use SimpleTrait;
 
     /**
-     * 校验会话JWT数据
-     * @return array
-     */
-    public static function checkSessionJwt() : array {
-        $resArr = [
-            'uid' => '',
-            'rid' => '',
-            'exp' => 0,
-            'error' => '',
-        ];
-
-        $jwtData = Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
-        $sign = hash('md5', $jwtData['uid'] . $jwtData['exp'] . SY_SESSION_SECRET);
-        if($sign == $jwtData['sig']){
-            $resArr['uid'] = $jwtData['uid'];
-            $resArr['rid'] = $jwtData['rid'];
-            $resArr['exp'] = (int)$jwtData['exp'];
-        } else {
-            $resArr['error'] = '会话签名错误';
-        }
-
-        return $resArr;
-    }
-
-    /**
      * 设置会话JWT的刷新标识
      * @param string $tag
      * @return bool|string
@@ -68,7 +43,7 @@ final class SessionTool {
      */
     public static function createSessionJwt(array &$data){
         $uid = Tool::getArrayVal($data, 'uid', null);
-        if(is_string($uid) || is_numeric($uid)){
+        if(is_string($uid)){
             if(strlen((string)$uid) > 0){
                 $rid = (string)Tool::getArrayVal($data, 'rid', '');
                 if(strlen($rid) == 0){
@@ -80,9 +55,8 @@ final class SessionTool {
                 $data['rid'] = '';
             }
             $data['exp'] = time() + SY_SESSION_JW_EXPIRE;
-            $data['sig'] = hash('md5', $data['uid'] . $data['exp'] . SY_SESSION_SECRET);
         } else {
-            throw new JwtException('标识不正确', ErrorCode::SESSION_JWT_DATA_ERROR);
+            throw new JwtException('用户标识不正确', ErrorCode::SESSION_JWT_DATA_ERROR);
         }
     }
 
@@ -110,14 +84,14 @@ final class SessionTool {
         } else {
             $token = (string)SyRequest::getParams('session_id', '');
         }
-        if ((strlen($token) == 18) && ctype_alnum($token)) {
+        if ((strlen($token) == 16) && ctype_alnum($token)) {
             $redisKey = Project::REDIS_PREFIX_SESSION . $token;
             $cacheData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
-            if((!isset($cacheData['session_id'])) || ($cacheData['session_id'] != $token)){
+            if((!isset($cacheData['sid'])) || ($cacheData['sid'] != $token)){
                 $cacheData = self::createDefaultJwt();
             }
         } else {
-            $token = Tool::createNonceStr(8, 'numlower') . Tool::getNowTime();
+            $token = Tool::createNonceStr(6, 'numlower') . Tool::getNowTime();
             $cacheData = self::createDefaultJwt();
         }
         Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_DATA, $cacheData);

@@ -9,11 +9,12 @@ namespace Validator\Impl\String;
 
 use Constant\ErrorCode;
 use Constant\Project;
+use Constant\Server;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Exception\Validator\ValidatorException;
-use Tool\SessionTool;
 use Validator\BaseValidator;
 use Validator\ValidatorService;
+use Yaf\Registry;
 
 class StringJwt extends BaseValidator implements ValidatorService {
     public function __construct() {
@@ -25,17 +26,14 @@ class StringJwt extends BaseValidator implements ValidatorService {
     }
 
     public function validator($data, $compareData) : string {
-        $checkRes = SessionTool::checkSessionJwt();
-        if(strlen($checkRes['error']) > 0){
-            throw new ValidatorException($checkRes['error'], ErrorCode::SESSION_JWT_SIGN_ERROR);
-        }
-        if($checkRes['exp'] < time()){
+        $jwtData = Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
+        if($jwtData['exp'] < time()){
             throw new ValidatorException('会话已过期', ErrorCode::SESSION_JWT_REFRESH_ERROR);
         }
-        if($compareData && (strlen($checkRes['uid']) > 0)){
-            $redisKey = Project::REDIS_PREFIX_SESSION_JWT_REFRESH . $checkRes['uid'];
+        if($compareData && (strlen($jwtData['uid']) > 0)){
+            $redisKey = Project::REDIS_PREFIX_SESSION_JWT_REFRESH . $jwtData['uid'];
             $redisData = CacheSimpleFactory::getRedisInstance()->get($redisKey);
-            if(is_string($redisData) && ($redisData != $checkRes['rid'])){
+            if(is_string($redisData) && ($redisData != $jwtData['rid'])){
                 throw new ValidatorException('会话已更新', ErrorCode::SESSION_JWT_REFRESH_ERROR);
             }
         }
