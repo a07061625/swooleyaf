@@ -35,7 +35,7 @@ final class RequestSign {
             'sign_nonce' => substr($sign, 0, 6),
         ]);
         if($sign !== $createSign){
-            throw new SignException('签名错误', ErrorCode::SIGN_ERROR);
+            throw new SignException('接口签名错误', ErrorCode::SIGN_ERROR);
         }
 
         return $sign;
