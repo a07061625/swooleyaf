@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine\Http2;
 
 /**
- * @since 4.3.1
+ * @since 4.3.2
  */
 class Client
 {
@@ -70,6 +70,11 @@ class Client
      * @return mixed
      */
     public function goaway($error_code=null, $debug_data=null){}
+
+    /**
+     * @return mixed
+     */
+    public function ping(){}
 
     /**
      * @return mixed
