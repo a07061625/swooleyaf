@@ -16,6 +16,7 @@ final class Validator {
     const ANNOTATION_NAME = '@SyFilter'; //校验注解名称
     const ANNOTATION_TAG_SIGN = '_sign'; //注解标识-接口签名
     const ANNOTATION_TAG_IGNORE_SIGN = '_ignoresign'; //注解标识-取消接口签名
+    const ANNOTATION_TAG_IGNORE_JWT = '_ignorejwt'; //注解标识-取消jwt校验
     const ANNOTATION_TAG_SY_TOKEN = '__sytoken'; //注解标识-框架令牌
     const ANNOTATION_TAG_SESSION_JWT = '__sessionjwt'; //注解标识-JWT会话
 

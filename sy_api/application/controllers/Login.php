@@ -12,6 +12,7 @@ class LoginController extends CommonController {
 
     /**
      * 登录
+     * @SyFilter-{"field": "_ignorejwt","explain": "JWT会话","type": "string","rules": {"min": 0}}
      */
     public function loginAction() {
         $data = \Request\SyRequest::getParams();

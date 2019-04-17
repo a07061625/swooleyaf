@@ -7,7 +7,6 @@
  */
 namespace Traits\Server;
 
-use Constant\Project;
 use DesignPatterns\Singletons\RedisSingleton;
 use Tool\Tool;
 
@@ -33,11 +32,6 @@ trait BasicBaseTrait {
      */
     protected static $_syProject = null;
     /**
-     * 用户信息列表
-     * @var \swoole_table
-     */
-    protected static $_syUsers = null;
-    /**
      * 项目微信缓存列表
      * @var \swoole_table
      */
@@ -52,16 +46,6 @@ trait BasicBaseTrait {
      * @var int
      */
     private static $_syProjectNowNum = 0;
-    /**
-     * 最大用户数量
-     * @var int
-     */
-    private static $_syUserMaxNum = 0;
-    /**
-     * 当前用户数量
-     * @var int
-     */
-    private static $_syUserNowNum = 0;
     /**
      * 最大微信缓存数量
      * @var int
@@ -93,14 +77,6 @@ trait BasicBaseTrait {
             exit('项目缓存数量不能小于1');
         } else if ((self::$_syProjectMaxNum & (self::$_syProjectMaxNum - 1)) != 0) {
             exit('项目缓存数量必须是2的指数倍');
-        }
-
-        self::$_syUserNowNum = 0;
-        self::$_syUserMaxNum = $this->_configs['server']['cachenum']['users'];
-        if (self::$_syUserMaxNum < 1) {
-            exit('用户信息缓存数量不能小于1');
-        } else if ((self::$_syUserMaxNum & (self::$_syUserMaxNum - 1)) != 0) {
-            exit('用户信息缓存数量必须是2的指数倍');
         }
 
         self::$_syWxNowNum = 0;
@@ -197,69 +173,6 @@ trait BasicBaseTrait {
             self::$_syProjectNowNum--;
         }
         return $delRes;
-    }
-
-    /**
-     * 添加本地用户信息
-     * @param string $sessionId 会话ID
-     * @param array $userData
-     * @return bool
-     */
-    public static function addLocalUserInfo(string $sessionId,array $userData) : bool {
-        if (self::$_syUsers->exist($sessionId)) {
-            $userData['session_id'] = $sessionId;
-            $userData['add_time'] = Tool::getNowTime();
-            self::$_syUsers->set($sessionId, $userData);
-            return true;
-        } else if (self::$_syUserNowNum < self::$_syUserMaxNum) {
-            $userData['session_id'] = $sessionId;
-            $userData['add_time'] = Tool::getNowTime();
-            self::$_syUsers->set($sessionId, $userData);
-            self::$_syUserNowNum++;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * 获取本地用户信息
-     * @param string $sessionId 会话ID
-     * @return array
-     */
-    public static function getLocalUserInfo(string $sessionId){
-        $data = self::$_syUsers->get($sessionId);
-        return $data === false ? [] : $data;
-    }
-
-    /**
-     * 删除本地用户信息
-     * @param string $sessionId 会话ID
-     * @return bool
-     */
-    public static function delLocalUserInfo(string $sessionId) {
-        $delRes = self::$_syUsers->del($sessionId);
-        if($delRes){
-            self::$_syUserNowNum--;
-        }
-        return $delRes;
-    }
-
-    /**
-     * 清理本地用户信息缓存
-     */
-    protected function clearLocalUsers() {
-        $time = Tool::getNowTime() - Project::TIME_EXPIRE_LOCAL_USER_CACHE;
-        $delKeys = [];
-        foreach (self::$_syUsers as $eUser) {
-            if($eUser['add_time'] <= $time){
-                $delKeys[] = $eUser['session_id'];
-            }
-        }
-        foreach ($delKeys as $eKey) {
-            self::$_syUsers->del($eKey);
-        }
-        self::$_syUserNowNum = self::$_syUsers->count();
     }
 
     /**

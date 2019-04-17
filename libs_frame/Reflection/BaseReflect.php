@@ -23,6 +23,7 @@ class BaseReflect {
     private static $signTags = [
         Validator::ANNOTATION_TAG_SIGN => 1,
         Validator::ANNOTATION_TAG_IGNORE_SIGN => 1,
+        Validator::ANNOTATION_TAG_IGNORE_JWT => 1,
     ];
 
     /**
@@ -86,6 +87,7 @@ class BaseReflect {
         }
 
         $resArr = [];
+        $ignoreJwt = false;
         foreach ($annotations as $eAnnotation) {
             $data = Tool::jsonDecode($eAnnotation);
             if(!is_array($data)){
@@ -110,19 +112,24 @@ class BaseReflect {
                 $resArr[$data['field']] = $result;
             } else if(($data['field'] == Validator::ANNOTATION_TAG_IGNORE_SIGN) && ($controllerType == 'a1')){
                 $controllerType = 'a2';
+            } else if($data['field'] == Validator::ANNOTATION_TAG_IGNORE_JWT){
+                $ignoreJwt = true;
             }
         }
 
-        if(SY_SESSION == Server::SESSION_TYPE_JWT){
-            $jwtResult = new ValidatorResult();
-            $jwtResult->setExplain('JWT会话');
-            $jwtResult->setField(Validator::ANNOTATION_TAG_SESSION_JWT);
-            $jwtResult->setType('string');
-            $jwtResult->setRules([
-                'jwt' => SY_SERVER_TYPE == Server::SERVER_TYPE_API_GATE ? 1 : 0,
-            ]);
-            $resArr[Validator::ANNOTATION_TAG_SESSION_JWT] = $jwtResult;
+        if(SY_SERVER_TYPE == Server::SERVER_TYPE_API_GATE){
+            $jwtStatus = $ignoreJwt ? 0 : 1;
+        } else {
+            $jwtStatus = 0;
         }
+        $jwtResult = new ValidatorResult();
+        $jwtResult->setExplain('JWT会话');
+        $jwtResult->setField(Validator::ANNOTATION_TAG_SESSION_JWT);
+        $jwtResult->setType('string');
+        $jwtResult->setRules([
+            'jwt' => $jwtStatus,
+        ]);
+        $resArr[Validator::ANNOTATION_TAG_SESSION_JWT] = $jwtResult;
         if ($controllerType == 'b1') {
             unset($resArr[Validator::ANNOTATION_TAG_SY_TOKEN]);
         } else {

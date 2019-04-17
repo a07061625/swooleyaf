@@ -37,10 +37,6 @@ if(!defined('SY_LC_WXOPEN_AUTHORIZER')){
 if(!defined('SY_REQ_EXCEPTION_HANDLE_TYPE')){
     define('SY_REQ_EXCEPTION_HANDLE_TYPE', true);
 }
-//session类型
-if(!defined('SY_SESSION')){
-    define('SY_SESSION', 'cache');
-}
 //jwt会话有效时间,单位为秒
 if(!defined('SY_SESSION_JW_EXPIRE')){
     define('SY_SESSION_JW_EXPIRE', 86400);
