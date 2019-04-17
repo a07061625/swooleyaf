@@ -221,10 +221,6 @@ abstract class BaseServer {
         if(version_compare(\YAF\VERSION, Server::VERSION_MIN_YAF, '<')){
             exit('yaf版本必须大于等于' . Server::VERSION_MIN_YAF . PHP_EOL);
         }
-
-        if(!isset(Server::$totalSessionType[SY_SESSION])){
-            exit('会话类型不支持' . PHP_EOL);
-        }
     }
 
     private function createUniqueToken() {
@@ -249,27 +245,12 @@ abstract class BaseServer {
     protected function addTaskBase(\swoole_server $server) {
         if(SY_SERVER_TYPE == Server::SERVER_TYPE_API_MODULE){
             $this->_syPack->setCommandAndData(SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ, [
-                'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_USER_CACHE,
-                'task_params' => [],
-            ]);
-            $taskDataUser = $this->_syPack->packData();
-            $this->_syPack->init();
-
-            $this->_syPack->setCommandAndData(SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ, [
                 'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_WX_CACHE,
                 'task_params' => [],
             ]);
             $taskDataWx = $this->_syPack->packData();
             $this->_syPack->init();
         } else {
-            $this->_syPack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
-                'task_module' => SY_MODULE,
-                'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_USER_CACHE,
-                'task_params' => [],
-            ]);
-            $taskDataUser = $this->_syPack->packData();
-            $this->_syPack->init();
-
             $this->_syPack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
                 'task_module' => SY_MODULE,
                 'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_WX_CACHE,
@@ -279,9 +260,6 @@ abstract class BaseServer {
             $this->_syPack->init();
         }
 
-        $server->tick(Project::TIME_TASK_CLEAR_LOCAL_USER, function() use ($server, $taskDataUser) {
-            $server->task($taskDataUser);
-        });
         $server->tick(Project::TIME_TASK_CLEAR_LOCAL_WX, function() use ($server, $taskDataWx) {
             $server->task($taskDataWx);
         });
@@ -315,9 +293,6 @@ abstract class BaseServer {
         if(in_array($command, [SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ])){
             $taskCommand = Tool::getArrayVal($commandData, 'task_command', '');
             switch ($taskCommand) {
-                case Project::TASK_TYPE_CLEAR_LOCAL_USER_CACHE:
-                    $this->clearLocalUsers();
-                    break;
                 case Project::TASK_TYPE_CLEAR_LOCAL_WX_CACHE:
                     $this->clearWxCache();
                     break;

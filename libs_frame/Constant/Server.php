@@ -93,12 +93,4 @@ final class Server {
     const IMAGE_MIME_TYPE_GIF = 'image/gif'; //MIME类型-GIF
     const IMAGE_FILTER_DITHER_DIFFUSION = 'diffusion'; //噪点滤镜类型-扩散
     const IMAGE_FILTER_DITHER_ORDERED = 'ordered'; //噪点滤镜类型-规整
-
-    //会话常量
-    public static $totalSessionType = [
-        self::SESSION_TYPE_CACHE => '缓存',
-        self::SESSION_TYPE_JWT => 'JWT',
-    ];
-    const SESSION_TYPE_CACHE = 'cache'; //类型-缓存
-    const SESSION_TYPE_JWT = 'jwt'; //类型-JWT
 }

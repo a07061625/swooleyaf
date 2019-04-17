@@ -46,11 +46,6 @@ class RpcServer extends BaseServer {
         $this->_configs['server']['cachenum']['modules'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
         $this->_configs['server']['cachenum']['local'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.local', 0, true);
         $this->_configs['server']['cachenum']['wx'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.wx', 0, true);
-        if(SY_SESSION == Server::SESSION_TYPE_CACHE){
-            $this->_configs['server']['cachenum']['users'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.users', 0, true);
-        } else {
-            $this->_configs['server']['cachenum']['users'] = 1;
-        }
         $this->checkServerRpc();
         $this->_configs['swoole']['package_length_type'] = 'L';
         $this->_configs['swoole']['package_length_offset'] = 4;
@@ -74,9 +69,7 @@ class RpcServer extends BaseServer {
         unset($_POST[RequestSign::KEY_SIGN]);
 
         Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
-        if(SY_SESSION == Server::SESSION_TYPE_JWT){
-            SessionTool::initSessionJwt();
-        }
+        SessionTool::initSessionJwt();
     }
 
     /**
@@ -90,10 +83,8 @@ class RpcServer extends BaseServer {
         $_SESSION = [];
 
         Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
-        if(SY_SESSION == Server::SESSION_TYPE_JWT){
-            Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION);
-            Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
-        }
+        Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION);
+        Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
     }
 
     public function start() {

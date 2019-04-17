@@ -11,10 +11,8 @@ use Traits\SimpleTrait;
 
 /**
  * Class SySession
- * 如果会话类型为缓存,继承\Tool\SySessionBase类
- * 如果会话类型为JWT,继承\Tool\SySessionJwt类
  * @package Tool
  */
-class SySession extends SySessionBase {
+class SySession extends SySessionJwt {
     use SimpleTrait;
 }

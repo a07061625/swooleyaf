@@ -22,9 +22,8 @@ class ProjectBase {
 
     //REDIS常量 后五位全数字的前缀为框架内部前缀
     const REDIS_PREFIX_SESSION = 'sy' . SY_PROJECT . '00001_'; //前缀-session
-    const REDIS_PREFIX_SESSION_LIST = 'sy' . SY_PROJECT . '00002_'; //前缀-session列表
+    const REDIS_PREFIX_SESSION_JWT_REFRESH = 'sy' . SY_PROJECT . '00002_'; //前缀-会话JWT更新
     const REDIS_PREFIX_UNIQUE_ID = 'sy' . SY_PROJECT . '00003_'; //前缀-唯一ID
-    const REDIS_PREFIX_SESSION_JWT_REFRESH = 'sy' . SY_PROJECT . '00004_'; //前缀-会话JWT更新
     const REDIS_PREFIX_MESSAGE_QUEUE = 'sy' . SY_PROJECT . '10000_'; //前缀-消息队列
     const REDIS_PREFIX_MESSAGE_KAFKA_OFFSET = 'sy' . SY_PROJECT . '10001_'; //前缀-kafka消息位移缓存
     const REDIS_PREFIX_WX_ACCOUNT = 'sy' . SY_PROJECT . '10100_'; //前缀-微信公众号

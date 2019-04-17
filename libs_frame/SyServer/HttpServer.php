@@ -103,11 +103,6 @@ class HttpServer extends BaseServer {
             $this->_configs['server']['cachenum']['wx'] = 1;
             $this->_configs['server']['cachenum']['sign'] = 1;
         }
-        if(SY_SESSION == Server::SESSION_TYPE_CACHE){
-            $this->_configs['server']['cachenum']['users'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.users', 0, true);
-        } else {
-            $this->_configs['server']['cachenum']['users'] = 1;
-        }
         $this->checkServerHttp();
         $this->_cors = Tool::getConfig('cors.' . SY_ENV . SY_PROJECT);
         $this->_cors['allow']['headerStr'] = isset($this->_cors['allow']['headers']) ? implode(', ', $this->_cors['allow']['headers']) : '';
@@ -273,9 +268,7 @@ class HttpServer extends BaseServer {
         Registry::set(Server::REGISTRY_NAME_REQUEST_SERVER, self::$_reqServers);
         Registry::set(Server::REGISTRY_NAME_RESPONSE_HEADER, $rspHeaders);
         Registry::set(Server::REGISTRY_NAME_RESPONSE_COOKIE, []);
-        if(SY_SESSION == Server::SESSION_TYPE_JWT){
-            SessionTool::initSessionJwt();
-        }
+        SessionTool::initSessionJwt();
     }
 
     /**
@@ -302,10 +295,8 @@ class HttpServer extends BaseServer {
         Registry::del(Server::REGISTRY_NAME_REQUEST_SERVER);
         Registry::del(Server::REGISTRY_NAME_RESPONSE_HEADER);
         Registry::del(Server::REGISTRY_NAME_RESPONSE_COOKIE);
-        if(SY_SESSION == Server::SESSION_TYPE_JWT){
-            Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION);
-            Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
-        }
+        Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION);
+        Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
 
         self::$_syServer->set(self::$_serverToken, [
             'memory_usage' => memory_get_usage(),
