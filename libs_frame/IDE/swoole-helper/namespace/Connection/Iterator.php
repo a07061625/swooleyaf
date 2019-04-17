@@ -2,11 +2,21 @@
 namespace Swoole\Connection;
 
 /**
- * @since 4.3.1
+ * @since 4.3.2
  */
 class Iterator
 {
 
+
+    /**
+     * @return mixed
+     */
+    public function __construct(){}
+
+    /**
+     * @return mixed
+     */
+    public function __destruct(){}
 
     /**
      * @return mixed
@@ -37,11 +47,6 @@ class Iterator
      * @return mixed
      */
     public function count(){}
-
-    /**
-     * @return mixed
-     */
-    public function __destruct(){}
 
     /**
      * @param $fd[required]

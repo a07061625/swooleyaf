@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.3.1
+ * @since 4.3.2
  */
 class Context extends \ArrayObject
 {

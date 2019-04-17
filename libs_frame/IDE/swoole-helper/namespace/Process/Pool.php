@@ -2,7 +2,7 @@
 namespace Swoole\Process;
 
 /**
- * @since 4.3.1
+ * @since 4.3.2
  */
 class Pool
 {
@@ -51,6 +51,11 @@ class Pool
      * @return mixed
      */
     public function start(){}
+
+    /**
+     * @return mixed
+     */
+    public function shutdown(){}
 
 
 }

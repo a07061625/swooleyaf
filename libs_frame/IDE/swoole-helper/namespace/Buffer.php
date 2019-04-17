@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.3.1
+ * @since 4.3.2
  */
 class Buffer
 {
@@ -27,10 +27,10 @@ class Buffer
     /**
      * @param $offset[required]
      * @param $length[optional]
-     * @param $seek[optional]
+     * @param $remove[optional]
      * @return mixed
      */
-    public function substr($offset, $length=null, $seek=null){}
+    public function substr($offset, $length=null, $remove=null){}
 
     /**
      * @param $offset[required]
