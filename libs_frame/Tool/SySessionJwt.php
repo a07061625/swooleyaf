@@ -91,7 +91,7 @@ class SySessionJwt {
             return false;
         }
 
-        $token = SySession::getSessionId();
+        $token = Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION);
         $redisKey = Project::REDIS_PREFIX_SESSION . $token;
         if($key === ''){
             $delRes = CacheSimpleFactory::getRedisInstance()->del($redisKey);
