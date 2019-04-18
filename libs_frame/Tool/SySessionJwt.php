@@ -48,16 +48,18 @@ class SySessionJwt {
             return false;
         }
 
-        $token = SySession::getSessionId();
+        $token = Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION);
+        $sessionId = '1' . substr($token, 1);
         $jwtData = Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
         $mergeRes = array_merge($jwtData, $data);
-        $mergeRes['sid'] = $token;
+        $mergeRes['sid'] = $sessionId;
         SessionTool::createSessionJwt($mergeRes);
-        $redisKey = Project::REDIS_PREFIX_SESSION . $token;
+        $redisKey = Project::REDIS_PREFIX_SESSION . $sessionId;
         $setRes = CacheSimpleFactory::getRedisInstance()->hMset($redisKey, $mergeRes);
         if($setRes){
             CacheSimpleFactory::getRedisInstance()->expire($redisKey, Project::TIME_EXPIRE_SESSION);
             Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_DATA, $mergeRes);
+            Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION, $sessionId);
         } else {
             Log::error('set session data error,key=' . $redisKey . ' data=' . print_r($mergeRes, true));
         }

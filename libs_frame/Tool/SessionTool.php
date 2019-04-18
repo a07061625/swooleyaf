@@ -84,17 +84,28 @@ final class SessionTool {
         } else {
             $token = (string)SyRequest::getParams('session_id', '');
         }
+
+        $cacheData = [];
+        $sessionId = '';
         if ((strlen($token) == 16) && ctype_alnum($token)) {
-            $redisKey = Project::REDIS_PREFIX_SESSION . $token;
-            $cacheData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
-            if((!isset($cacheData['sid'])) || ($cacheData['sid'] != $token)){
-                $cacheData = self::createDefaultJwt();
+            if($token{0} == '1'){
+                $sessionId = $token;
+                $redisKey = Project::REDIS_PREFIX_SESSION . $sessionId;
+                $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
+                if(isset($redisData['sid']) && ($redisData['sid'] == $sessionId)){
+                    $cacheData = $redisData;
+                }
+            } else if($token{0} == '0'){
+                $sessionId = $token;
             }
-        } else {
-            $token = Tool::createNonceStr(6, 'numlower') . Tool::getNowTime();
+        }
+        if(!isset($sessionId{0})){
+            $sessionId = '0' . Tool::createNonceStr(5, 'numlower') . Tool::getNowTime();
+        }
+        if(empty($cacheData)){
             $cacheData = self::createDefaultJwt();
         }
         Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_DATA, $cacheData);
-        Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION, $token);
+        Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION, $sessionId);
     }
 }
