@@ -117,10 +117,12 @@ class BaseReflect {
             }
         }
 
-        if(SY_SERVER_TYPE == Server::SERVER_TYPE_API_GATE){
-            $jwtStatus = $ignoreJwt ? 0 : 1;
-        } else {
+        if(SY_SERVER_TYPE == Server::SERVER_TYPE_FRONT_GATE){
             $jwtStatus = 0;
+        } else if(SY_SERVER_TYPE == Server::SERVER_TYPE_API_GATE){
+            $jwtStatus = $ignoreJwt ? 2 : 1;
+        } else {
+            $jwtStatus = 2;
         }
         $jwtResult = new ValidatorResult();
         $jwtResult->setExplain('JWT会话');
