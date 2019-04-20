@@ -87,7 +87,7 @@ class SySessionJwt {
      * @return bool|int
      */
     public static function del(string $key){
-        if(in_array($key, ['uid','rid','exp',])){
+        if(in_array($key, ['uid','rid',])){
             return false;
         }
 

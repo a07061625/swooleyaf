@@ -54,7 +54,6 @@ final class SessionTool {
             } else {
                 $data['rid'] = '';
             }
-            $data['exp'] = time() + SY_SESSION_JW_EXPIRE;
         } else {
             throw new JwtException('用户标识不正确', ErrorCode::SESSION_JWT_DATA_ERROR);
         }
