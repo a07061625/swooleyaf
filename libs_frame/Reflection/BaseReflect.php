@@ -124,14 +124,16 @@ class BaseReflect {
         } else {
             $jwtStatus = 2;
         }
-        $jwtResult = new ValidatorResult();
-        $jwtResult->setExplain('JWT会话');
-        $jwtResult->setField(Validator::ANNOTATION_TAG_SESSION_JWT);
-        $jwtResult->setType('string');
-        $jwtResult->setRules([
-            'jwt' => $jwtStatus,
-        ]);
-        $resArr[Validator::ANNOTATION_TAG_SESSION_JWT] = $jwtResult;
+        if($jwtStatus == 1){
+            $jwtResult = new ValidatorResult();
+            $jwtResult->setExplain('JWT会话');
+            $jwtResult->setField(Validator::ANNOTATION_TAG_SESSION_JWT);
+            $jwtResult->setType('string');
+            $jwtResult->setRules([
+                'jwt' => $jwtStatus,
+            ]);
+            $resArr[Validator::ANNOTATION_TAG_SESSION_JWT] = $jwtResult;
+        }
         if ($controllerType == 'b1') {
             unset($resArr[Validator::ANNOTATION_TAG_SY_TOKEN]);
         } else {
