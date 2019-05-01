@@ -39,6 +39,10 @@ class ProjectBase {
     const REDIS_PREFIX_DINGTALK_PROVIDER_AUTHORIZER = 'sy' . SY_PROJECT . '10302_'; //前缀-服务商授权企业钉钉
     const REDIS_PREFIX_DINGTALK_CORP = 'sy' . SY_PROJECT . '10303_'; //前缀-企业钉钉
 
+    //YAC常量,以0000开头的前缀为框架内部前缀,并键名总长度不超过48个字符串
+    const YAC_PREFIX_FUSE = '0000'; //前缀-熔断器
+    const YAC_PREFIX_API_SIGN = '0001'; //前缀-接口签名
+
     //校验器常量
     const VALIDATOR_STRING_TYPE_REQUIRED = 'string_required'; //字符串类型-必填
     const VALIDATOR_STRING_TYPE_MIN = 'string_min'; //字符串类型-最小长度
@@ -111,7 +115,7 @@ class ProjectBase {
 
     //时间常量
     const TIME_EXPIRE_LOCAL_USER_CACHE = 300; //超时时间-本地用户缓存,单位为秒
-    const TIME_EXPIRE_LOCAL_API_SIGN_CACHE = 300; //超时时间-本地api签名缓存,单位为秒
+    const TIME_EXPIRE_LOCAL_API_SIGN_CACHE = 15; //超时时间-本地api签名缓存,单位为秒
     const TIME_EXPIRE_LOCAL_WXACCOUNT_REFRESH = 600; //超时时间-本地微信账号更新,单位为秒
     const TIME_EXPIRE_LOCAL_WXACCOUNT_CLEAR = 3600; //超时时间-本地微信账号清理,单位为秒
     const TIME_EXPIRE_LOCAL_WXCORP_REFRESH = 600; //超时时间-本地企业微信更新,单位为秒
@@ -124,7 +128,6 @@ class ProjectBase {
     const TIME_EXPIRE_SESSION = 259200; //超时时间-session,单位为秒
     const TIME_EXPIRE_SWOOLE_CLIENT_HTTP = 3000; //超时时间-http服务客户端,单位为毫秒
     const TIME_EXPIRE_SWOOLE_CLIENT_RPC = 3000; //超时时间-rpc服务客户端,单位为毫秒
-    const TIME_TASK_CLEAR_API_SIGN = 300000; //任务时间-清理api签名,单位为毫秒
     const TIME_TASK_CLEAR_LOCAL_USER = 300000; //任务时间-清理本地用户信息,单位为毫秒
     const TIME_TASK_CLEAR_LOCAL_WX = 300000; //任务时间-清理本地微信,单位为毫秒
     const TIME_TASK_REFRESH_TOKEN_EXPIRE = 540000; //任务时间-刷新令牌到期时间,单位为毫秒
