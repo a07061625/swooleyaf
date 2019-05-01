@@ -57,9 +57,6 @@ final class Server {
     const VERSION_MIN_YAC = '2.0.2'; //最低版本-yac
     const VERSION_MIN_YAF = '3.0.7'; //最低版本-yaf
 
-    //YAC常量,以0000开头的前缀为框架内部前缀,并键名总长度不超过48个字符串
-    const YAC_PREFIX_FUSE = '0000'; //前缀-熔断器
-
     //熔断器常量
     const FUSE_STATE_OPEN = 'open'; //状态-开启
     const FUSE_STATE_CLOSED = 'closed'; //状态-关闭

@@ -98,10 +98,8 @@ class HttpServer extends BaseServer {
         $this->_configs['server']['cachenum']['local'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.local', 0, true);
         if ($serverType == Server::SERVER_TYPE_API_GATE) {
             $this->_configs['server']['cachenum']['wx'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.wx', 0, true);
-            $this->_configs['server']['cachenum']['sign'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.sign', 0, true);
         } else {
             $this->_configs['server']['cachenum']['wx'] = 1;
-            $this->_configs['server']['cachenum']['sign'] = 1;
         }
         $this->checkServerHttp();
         $this->_cors = Tool::getConfig('cors.' . SY_ENV . SY_PROJECT);
@@ -408,18 +406,6 @@ class HttpServer extends BaseServer {
         $this->addTaskBase($server);
         $this->_messagePack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
             'task_module' => SY_MODULE,
-            'task_command' => Project::TASK_TYPE_CLEAR_API_SIGN_CACHE,
-            'task_params' => [],
-        ]);
-        $taskDataSign = $this->_messagePack->packData();
-        $this->_messagePack->init();
-
-        $server->tick(Project::TIME_TASK_CLEAR_API_SIGN, function() use ($server, $taskDataSign) {
-            $server->task($taskDataSign);
-        });
-
-        $this->_messagePack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
-            'task_module' => SY_MODULE,
             'task_command' => Project::TASK_TYPE_REFRESH_TOKEN_EXPIRE,
             'task_params' => [],
         ]);
@@ -621,9 +607,6 @@ class HttpServer extends BaseServer {
         if(is_array($baseRes)){
             $taskCommand = Tool::getArrayVal($baseRes['params'], 'task_command', '');
             switch ($taskCommand) {
-                case Project::TASK_TYPE_CLEAR_API_SIGN_CACHE:
-                    $this->clearApiSign();
-                    break;
                 default:
                     $this->handleTaskHttpTrait($server, $taskId, $fromId, $baseRes);
             }

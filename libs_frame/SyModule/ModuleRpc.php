@@ -47,7 +47,7 @@ abstract class ModuleRpc extends ModuleBase {
         parent::init();
         $this->syRequest = new SyRequestRpc();
         $this->fuseState = Server::FUSE_STATE_CLOSED;
-        $this->fuseKey = Server::YAC_PREFIX_FUSE . hash('crc32b', $this->moduleBase);
+        $this->fuseKey = Project::YAC_PREFIX_FUSE . hash('crc32b', $this->moduleBase);
         $this->numFuseHalfSuccess = 0;
         $this->numFuseReqError = 0;
     }
