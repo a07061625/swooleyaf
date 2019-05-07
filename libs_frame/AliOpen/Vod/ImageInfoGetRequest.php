@@ -3,60 +3,72 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class ImageInfoGetRequest extends RpcAcsRequest {
+class ImageInfoGetRequest extends RpcAcsRequest
+{
     private $resourceOwnerId;
     private $imageId;
     private $resourceOwnerAccount;
     private $ownerId;
     private $authTimeout;
 
-    public function __construct(){
-        parent::__construct("vod", "2017-03-21", "GetImageInfo", "vod", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('vod', '2017-03-21', 'GetImageInfo', 'vod', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getImageId(){
+    public function getImageId()
+    {
         return $this->imageId;
     }
 
-    public function setImageId($imageId){
+    public function setImageId($imageId)
+    {
         $this->imageId = $imageId;
-        $this->queryParameters["ImageId"] = $imageId;
+        $this->queryParameters['ImageId'] = $imageId;
     }
 
-    public function getResourceOwnerAccount(){
+    public function getResourceOwnerAccount()
+    {
         return $this->resourceOwnerAccount;
     }
 
-    public function setResourceOwnerAccount($resourceOwnerAccount){
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getAuthTimeout(){
+    public function getAuthTimeout()
+    {
         return $this->authTimeout;
     }
 
-    public function setAuthTimeout($authTimeout){
+    public function setAuthTimeout($authTimeout)
+    {
         $this->authTimeout = $authTimeout;
-        $this->queryParameters["AuthTimeout"] = $authTimeout;
+        $this->queryParameters['AuthTimeout'] = $authTimeout;
     }
 }

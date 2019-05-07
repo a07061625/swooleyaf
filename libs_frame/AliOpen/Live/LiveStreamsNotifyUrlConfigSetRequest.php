@@ -3,60 +3,72 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class LiveStreamsNotifyUrlConfigSetRequest extends RpcAcsRequest {
+class LiveStreamsNotifyUrlConfigSetRequest extends RpcAcsRequest
+{
     private $authKey;
     private $domainName;
     private $notifyUrl;
     private $ownerId;
     private $authType;
 
-    public function __construct(){
-        parent::__construct("live", "2016-11-01", "SetLiveStreamsNotifyUrlConfig", "live", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('live', '2016-11-01', 'SetLiveStreamsNotifyUrlConfig', 'live', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getAuthKey(){
+    public function getAuthKey()
+    {
         return $this->authKey;
     }
 
-    public function setAuthKey($authKey){
+    public function setAuthKey($authKey)
+    {
         $this->authKey = $authKey;
-        $this->queryParameters["AuthKey"] = $authKey;
+        $this->queryParameters['AuthKey'] = $authKey;
     }
 
-    public function getDomainName(){
+    public function getDomainName()
+    {
         return $this->domainName;
     }
 
-    public function setDomainName($domainName){
+    public function setDomainName($domainName)
+    {
         $this->domainName = $domainName;
-        $this->queryParameters["DomainName"] = $domainName;
+        $this->queryParameters['DomainName'] = $domainName;
     }
 
-    public function getNotifyUrl(){
+    public function getNotifyUrl()
+    {
         return $this->notifyUrl;
     }
 
-    public function setNotifyUrl($notifyUrl){
+    public function setNotifyUrl($notifyUrl)
+    {
         $this->notifyUrl = $notifyUrl;
-        $this->queryParameters["NotifyUrl"] = $notifyUrl;
+        $this->queryParameters['NotifyUrl'] = $notifyUrl;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getAuthType(){
+    public function getAuthType()
+    {
         return $this->authType;
     }
 
-    public function setAuthType($authType){
+    public function setAuthType($authType)
+    {
         $this->authType = $authType;
-        $this->queryParameters["AuthType"] = $authType;
+        $this->queryParameters['AuthType'] = $authType;
     }
 }

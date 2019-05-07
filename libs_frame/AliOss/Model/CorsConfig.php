@@ -3,7 +3,8 @@ namespace AliOss\Model;
 
 use AliOss\Core\OssException;
 
-class CorsConfig implements XmlConfig {
+class CorsConfig implements XmlConfig
+{
     const OSS_CORS_ALLOWED_ORIGIN = 'AllowedOrigin';
     const OSS_CORS_ALLOWED_METHOD = 'AllowedMethod';
     const OSS_CORS_ALLOWED_HEADER = 'AllowedHeader';
@@ -19,15 +20,22 @@ class CorsConfig implements XmlConfig {
     /**
      * CorsConfig constructor.
      */
-    public function __construct(){
+    public function __construct()
+    {
         $this->rules = [];
+    }
+
+    public function __toString()
+    {
+        return $this->serializeToXml();
     }
 
     /**
      * Get CorsRule list
      * @return CorsRule[]
      */
-    public function getRules(){
+    public function getRules()
+    {
         return $this->rules;
     }
 
@@ -36,9 +44,10 @@ class CorsConfig implements XmlConfig {
      * @param CorsRule $rule
      * @throws OssException
      */
-    public function addRule($rule){
+    public function addRule($rule)
+    {
         if (count($this->rules) >= self::OSS_MAX_RULES) {
-            throw new OssException("num of rules in the config exceeds self::OSS_MAX_RULES: " . strval(self::OSS_MAX_RULES));
+            throw new OssException('num of rules in the config exceeds self::OSS_MAX_RULES: ' . strval(self::OSS_MAX_RULES));
         }
         $this->rules[] = $rule;
     }
@@ -49,7 +58,8 @@ class CorsConfig implements XmlConfig {
      * @throws OssException
      * @return null
      */
-    public function parseFromXml($strXml){
+    public function parseFromXml($strXml)
+    {
         $xml = simplexml_load_string($strXml);
         if (!isset($xml->CORSRule)) {
             return;
@@ -71,15 +81,14 @@ class CorsConfig implements XmlConfig {
             }
             $this->addRule($corsRule);
         }
-
-        return;
     }
 
     /**
      * Serialize the object into xml string.
      * @return string
      */
-    public function serializeToXml(){
+    public function serializeToXml()
+    {
         $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><CORSConfiguration></CORSConfiguration>');
         foreach ($this->rules as $rule) {
             $xmlRule = $xml->addChild('CORSRule');
@@ -87,9 +96,5 @@ class CorsConfig implements XmlConfig {
         }
 
         return $xml->asXML();
-    }
-
-    public function __toString(){
-        return $this->serializeToXml();
     }
 }

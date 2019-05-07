@@ -11,7 +11,8 @@ use AliPay\AliPayBase;
 use Constant\ErrorCode;
 use Exception\AliPay\AliPayPayException;
 
-class TradeSettle extends AliPayBase {
+class TradeSettle extends AliPayBase
+{
     /**
      * 结算请求流水号
      * @var string
@@ -33,20 +34,23 @@ class TradeSettle extends AliPayBase {
      */
     private $operator_id = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct($appId);
         $this->setMethod('alipay.trade.order.settle');
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $outRequestNo
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setOutRequestNo(string $outRequestNo){
-        if(ctype_digit($outRequestNo)){
+    public function setOutRequestNo(string $outRequestNo)
+    {
+        if (ctype_digit($outRequestNo)) {
             $this->biz_content['out_request_no'] = $outRequestNo;
         } else {
             throw new AliPayPayException('结算请求流水号不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
@@ -57,8 +61,9 @@ class TradeSettle extends AliPayBase {
      * @param string $tradeNo
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setTradeNo(string $tradeNo){
-        if(ctype_digit($tradeNo)){
+    public function setTradeNo(string $tradeNo)
+    {
+        if (ctype_digit($tradeNo)) {
             $this->biz_content['trade_no'] = $tradeNo;
         } else {
             throw new AliPayPayException('订单号不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
@@ -69,8 +74,9 @@ class TradeSettle extends AliPayBase {
      * @param array $royaltyParameters
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setRoyaltyParameters(array $royaltyParameters){
-        if(!empty($royaltyParameters)){
+    public function setRoyaltyParameters(array $royaltyParameters)
+    {
+        if (!empty($royaltyParameters)) {
             $this->biz_content['royalty_parameters'] = $royaltyParameters;
         } else {
             throw new AliPayPayException('分账明细信息不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
@@ -80,18 +86,20 @@ class TradeSettle extends AliPayBase {
     /**
      * @param string $operatorId
      */
-    public function setOperatorId(string $operatorId){
+    public function setOperatorId(string $operatorId)
+    {
         $this->biz_content['operator_id'] = trim($operatorId);
     }
 
-    public function getDetail() : array {
-        if(!isset($this->biz_content['out_request_no'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->biz_content['out_request_no'])) {
             throw new AliPayPayException('结算请求流水号不能为空', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
-        if(!isset($this->biz_content['trade_no'])){
+        if (!isset($this->biz_content['trade_no'])) {
             throw new AliPayPayException('订单号不能为空', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
-        if(!isset($this->biz_content['royalty_parameters'])){
+        if (!isset($this->biz_content['royalty_parameters'])) {
             throw new AliPayPayException('分账明细信息不能为空', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
 

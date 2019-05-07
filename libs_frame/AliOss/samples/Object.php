@@ -1,79 +1,82 @@
 <?php
 require_once __DIR__ . '/Common.php';
 
-use AliOss\OssClient;
 use AliOss\Core\OssException;
+use AliOss\OssClient;
 
 $bucket = Common::getBucketName();
 $ossClient = Common::getOssClient();
-if (is_null($ossClient)) exit(1);
+if (is_null($ossClient)) {
+    exit(1);
+}
 //******************************* Simple usage ***************************************************************
 
 // Upload the in-memory string (hi, oss) to an OSS file
-$result = $ossClient->putObject($bucket, "b.file", "hi, oss");
-Common::println("b.file is created");
+$result = $ossClient->putObject($bucket, 'b.file', 'hi, oss');
+Common::println('b.file is created');
 Common::println($result['x-oss-request-id']);
 Common::println($result['etag']);
 Common::println($result['content-md5']);
 Common::println($result['body']);
 
 // Uploads a local file to an OSS file
-$result = $ossClient->uploadFile($bucket, "c.file", __FILE__);
-Common::println("c.file is created");
-Common::println("b.file is created");
+$result = $ossClient->uploadFile($bucket, 'c.file', __FILE__);
+Common::println('c.file is created');
+Common::println('b.file is created');
 Common::println($result['x-oss-request-id']);
 Common::println($result['etag']);
 Common::println($result['content-md5']);
 Common::println($result['body']);
 
 // Download an oss object as an in-memory variable
-$content = $ossClient->getObject($bucket, "b.file");
-Common::println("b.file is fetched, the content is: " . $content);
+$content = $ossClient->getObject($bucket, 'b.file');
+Common::println('b.file is fetched, the content is: ' . $content);
 
 // Add a symlink to an object
-$content = $ossClient->putSymlink($bucket, "test-symlink", "b.file");
-Common::println("test-symlink is created");
+$content = $ossClient->putSymlink($bucket, 'test-symlink', 'b.file');
+Common::println('test-symlink is created');
 Common::println($result['x-oss-request-id']);
 Common::println($result['etag']);
 
 // Get a symlink
-$content = $ossClient->getSymlink($bucket, "test-symlink");
-Common::println("test-symlink refer to : " . $content[OssClient::OSS_SYMLINK_TARGET]);
+$content = $ossClient->getSymlink($bucket, 'test-symlink');
+Common::println('test-symlink refer to : ' . $content[OssClient::OSS_SYMLINK_TARGET]);
 
 // Download an object to a local file.
-$options = array(
-    OssClient::OSS_FILE_DOWNLOAD => "./c.file.localcopy",
-);
-$ossClient->getObject($bucket, "c.file", $options);
-Common::println("b.file is fetched to the local file: c.file.localcopy");
-Common::println("b.file is created");
+$options = [
+    OssClient::OSS_FILE_DOWNLOAD => './c.file.localcopy',
+];
+$ossClient->getObject($bucket, 'c.file', $options);
+Common::println('b.file is fetched to the local file: c.file.localcopy');
+Common::println('b.file is created');
 
 // Copy an object
-$result = $ossClient->copyObject($bucket, "c.file", $bucket, "c.file.copy");
-Common::println("lastModifiedTime: " . $result[0]);
-Common::println("ETag: " . $result[1]);
+$result = $ossClient->copyObject($bucket, 'c.file', $bucket, 'c.file.copy');
+Common::println('lastModifiedTime: ' . $result[0]);
+Common::println('ETag: ' . $result[1]);
 
 // Check whether an object exists
-$doesExist = $ossClient->doesObjectExist($bucket, "c.file.copy");
-Common::println("file c.file.copy exist? " . ($doesExist ? "yes" : "no"));
+$doesExist = $ossClient->doesObjectExist($bucket, 'c.file.copy');
+Common::println('file c.file.copy exist? ' . ($doesExist ? 'yes' : 'no'));
 
 // Delete an object
-$result = $ossClient->deleteObject($bucket, "c.file.copy");
-Common::println("c.file.copy is deleted");
-Common::println("b.file is created");
+$result = $ossClient->deleteObject($bucket, 'c.file.copy');
+Common::println('c.file.copy is deleted');
+Common::println('b.file is created');
 Common::println($result['x-oss-request-id']);
 
 // Check whether an object exists
-$doesExist = $ossClient->doesObjectExist($bucket, "c.file.copy");
-Common::println("file c.file.copy exist? " . ($doesExist ? "yes" : "no"));
+$doesExist = $ossClient->doesObjectExist($bucket, 'c.file.copy');
+Common::println('file c.file.copy exist? ' . ($doesExist ? 'yes' : 'no'));
 
 // Delete multiple objects in batch
-$result = $ossClient->deleteObjects($bucket, array("b.file", "c.file"));
-foreach($result as $object)
+$result = $ossClient->deleteObjects($bucket, ['b.file', 'c.file']);
+foreach ($result as $object) {
     Common::println($object);
+}
 
 sleep(2);
-unlink("c.file.localcopy");
+unlink('c.file.localcopy');
 
 //******************************* For complete usage, see the following functions ****************************************************
 
@@ -101,13 +104,13 @@ putSymlink($ossClient, $bucket);
 function createObjectDir($ossClient, $bucket)
 {
     try {
-        $ossClient->createObjectDir($bucket, "dir");
+        $ossClient->createObjectDir($bucket, 'dir');
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
 
 /**
@@ -121,9 +124,9 @@ function createObjectDir($ossClient, $bucket)
  */
 function putObject($ossClient, $bucket)
 {
-    $object = "oss-php-sdk-test/upload-test-object-name.txt";
+    $object = 'oss-php-sdk-test/upload-test-object-name.txt';
     $content = file_get_contents(__FILE__);
-    $options = array();
+    $options = [];
     try {
         $ossClient->putObject($bucket, $object, $content, $options);
     } catch (OssException $e) {
@@ -131,9 +134,8 @@ function putObject($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
-
 
 /**
  * Uploads a local file to OSS
@@ -144,9 +146,9 @@ function putObject($ossClient, $bucket)
  */
 function uploadFile($ossClient, $bucket)
 {
-    $object = "oss-php-sdk-test/upload-test-object-name.txt";
+    $object = 'oss-php-sdk-test/upload-test-object-name.txt';
     $filePath = __FILE__;
-    $options = array();
+    $options = [];
 
     try {
         $ossClient->uploadFile($bucket, $object, $filePath, $options);
@@ -155,11 +157,11 @@ function uploadFile($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
 
 /**
- * Lists all files and folders in the bucket. 
+ * Lists all files and folders in the bucket.
  * Note if there's more items than the max-keys specified, the caller needs to use the nextMarker returned as the value for the next call's maker paramter.
  * Loop through all the items returned from ListObjects.
  *
@@ -173,12 +175,12 @@ function listObjects($ossClient, $bucket)
     $delimiter = '/';
     $nextMarker = '';
     $maxkeys = 1000;
-    $options = array(
+    $options = [
         'delimiter' => $delimiter,
         'prefix' => $prefix,
         'max-keys' => $maxkeys,
         'marker' => $nextMarker,
-    );
+    ];
     try {
         $listObjectInfo = $ossClient->listObjects($bucket, $options);
     } catch (OssException $e) {
@@ -186,7 +188,7 @@ function listObjects($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
     $objectList = $listObjectInfo->getObjectList(); // object list
     $prefixList = $listObjectInfo->getPrefixList(); // directory list
     if (!empty($objectList)) {
@@ -213,8 +215,8 @@ function listAllObjects($ossClient, $bucket)
 {
     // Create dir/obj 'folder' and put some files into it.
     for ($i = 0; $i < 100; $i += 1) {
-        $ossClient->putObject($bucket, "dir/obj" . strval($i), "hi");
-        $ossClient->createObjectDir($bucket, "dir/obj" . strval($i));
+        $ossClient->putObject($bucket, 'dir/obj' . strval($i), 'hi');
+        $ossClient->createObjectDir($bucket, 'dir/obj' . strval($i));
     }
 
     $prefix = 'dir/';
@@ -223,12 +225,12 @@ function listAllObjects($ossClient, $bucket)
     $maxkeys = 30;
 
     while (true) {
-        $options = array(
+        $options = [
             'delimiter' => $delimiter,
             'prefix' => $prefix,
             'max-keys' => $maxkeys,
             'marker' => $nextMarker,
-        );
+        ];
         var_dump($options);
         try {
             $listObjectInfo = $ossClient->listObjects($bucket, $options);
@@ -258,8 +260,8 @@ function listAllObjects($ossClient, $bucket)
  */
 function getObject($ossClient, $bucket)
 {
-    $object = "oss-php-sdk-test/upload-test-object-name.txt";
-    $options = array();
+    $object = 'oss-php-sdk-test/upload-test-object-name.txt';
+    $options = [];
     try {
         $content = $ossClient->getObject($bucket, $object, $options);
     } catch (OssException $e) {
@@ -267,11 +269,11 @@ function getObject($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
     if (file_get_contents(__FILE__) === $content) {
-        print(__FUNCTION__ . ": FileContent checked OK" . "\n");
+        print(__FUNCTION__ . ': FileContent checked OK' . "\n");
     } else {
-        print(__FUNCTION__ . ": FileContent checked FAILED" . "\n");
+        print(__FUNCTION__ . ': FileContent checked FAILED' . "\n");
     }
 }
 
@@ -284,8 +286,8 @@ function getObject($ossClient, $bucket)
  */
 function putSymlink($ossClient, $bucket)
 {
-    $symlink = "test-samples-symlink";
-    $object = "test-samples-object";
+    $symlink = 'test-samples-symlink';
+    $object = 'test-samples-object';
     try {
         $ossClient->putObject($bucket, $object, 'test-content');
         $ossClient->putSymlink($bucket, $symlink, $object);
@@ -295,11 +297,11 @@ function putSymlink($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
     if ($content == 'test-content') {
-        print(__FUNCTION__ . ": putSymlink checked OK" . "\n");
+        print(__FUNCTION__ . ': putSymlink checked OK' . "\n");
     } else {
-        print(__FUNCTION__ . ": putSymlink checked FAILED" . "\n");
+        print(__FUNCTION__ . ': putSymlink checked FAILED' . "\n");
     }
 }
 
@@ -312,8 +314,8 @@ function putSymlink($ossClient, $bucket)
  */
 function getSymlink($ossClient, $bucket)
 {
-    $symlink = "test-samples-symlink";
-    $object = "test-samples-object";
+    $symlink = 'test-samples-symlink';
+    $object = 'test-samples-object';
     try {
         $ossClient->putObject($bucket, $object, 'test-content');
         $ossClient->putSymlink($bucket, $symlink, $object);
@@ -323,11 +325,11 @@ function getSymlink($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
     if ($content[OssClient::OSS_SYMLINK_TARGET]) {
-        print(__FUNCTION__ . ": getSymlink checked OK" . "\n");
+        print(__FUNCTION__ . ': getSymlink checked OK' . "\n");
     } else {
-        print(__FUNCTION__ . ": getSymlink checked FAILED" . "\n");
+        print(__FUNCTION__ . ': getSymlink checked FAILED' . "\n");
     }
 }
 
@@ -343,11 +345,11 @@ function getSymlink($ossClient, $bucket)
  */
 function getObjectToLocalFile($ossClient, $bucket)
 {
-    $object = "oss-php-sdk-test/upload-test-object-name.txt";
-    $localfile = "upload-test-object-name.txt";
-    $options = array(
+    $object = 'oss-php-sdk-test/upload-test-object-name.txt';
+    $localfile = 'upload-test-object-name.txt';
+    $options = [
         OssClient::OSS_FILE_DOWNLOAD => $localfile,
-    );
+    ];
 
     try {
         $ossClient->getObject($bucket, $object, $options);
@@ -358,9 +360,9 @@ function getObjectToLocalFile($ossClient, $bucket)
     }
     print(__FUNCTION__ . ": OK, please check localfile: 'upload-test-object-name.txt'" . "\n");
     if (file_get_contents($localfile) === file_get_contents(__FILE__)) {
-        print(__FUNCTION__ . ": FileContent checked OK" . "\n");
+        print(__FUNCTION__ . ': FileContent checked OK' . "\n");
     } else {
-        print(__FUNCTION__ . ": FileContent checked FAILED" . "\n");
+        print(__FUNCTION__ . ': FileContent checked FAILED' . "\n");
     }
     if (file_exists($localfile)) {
         unlink($localfile);
@@ -378,10 +380,10 @@ function getObjectToLocalFile($ossClient, $bucket)
 function copyObject($ossClient, $bucket)
 {
     $fromBucket = $bucket;
-    $fromObject = "oss-php-sdk-test/upload-test-object-name.txt";
+    $fromObject = 'oss-php-sdk-test/upload-test-object-name.txt';
     $toBucket = $bucket;
     $toObject = $fromObject . '.copy';
-    $options = array();
+    $options = [];
 
     try {
         $ossClient->copyObject($fromBucket, $fromObject, $toBucket, $toObject, $options);
@@ -390,7 +392,7 @@ function copyObject($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
 
 /**
@@ -404,15 +406,15 @@ function copyObject($ossClient, $bucket)
 function modifyMetaForObject($ossClient, $bucket)
 {
     $fromBucket = $bucket;
-    $fromObject = "oss-php-sdk-test/upload-test-object-name.txt";
+    $fromObject = 'oss-php-sdk-test/upload-test-object-name.txt';
     $toBucket = $bucket;
     $toObject = $fromObject;
-    $copyOptions = array(
-        OssClient::OSS_HEADERS => array(
+    $copyOptions = [
+        OssClient::OSS_HEADERS => [
             'Cache-Control' => 'max-age=60',
             'Content-Disposition' => 'attachment; filename="xxxxxx"',
-        ),
-    );
+        ],
+    ];
     try {
         $ossClient->copyObject($fromBucket, $fromObject, $toBucket, $toObject, $copyOptions);
     } catch (OssException $e) {
@@ -420,7 +422,7 @@ function modifyMetaForObject($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
 
 /**
@@ -431,7 +433,7 @@ function modifyMetaForObject($ossClient, $bucket)
  */
 function getObjectMeta($ossClient, $bucket)
 {
-    $object = "oss-php-sdk-test/upload-test-object-name.txt";
+    $object = 'oss-php-sdk-test/upload-test-object-name.txt';
     try {
         $objectMeta = $ossClient->getObjectMeta($bucket, $object);
     } catch (OssException $e) {
@@ -439,13 +441,13 @@ function getObjectMeta($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
     if (isset($objectMeta[strtolower('Content-Disposition')]) &&
         'attachment; filename="xxxxxx"' === $objectMeta[strtolower('Content-Disposition')]
     ) {
-        print(__FUNCTION__ . ": ObjectMeta checked OK" . "\n");
+        print(__FUNCTION__ . ': ObjectMeta checked OK' . "\n");
     } else {
-        print(__FUNCTION__ . ": ObjectMeta checked FAILED" . "\n");
+        print(__FUNCTION__ . ': ObjectMeta checked FAILED' . "\n");
     }
 }
 
@@ -458,7 +460,7 @@ function getObjectMeta($ossClient, $bucket)
  */
 function deleteObject($ossClient, $bucket)
 {
-    $object = "oss-php-sdk-test/upload-test-object-name.txt";
+    $object = 'oss-php-sdk-test/upload-test-object-name.txt';
     try {
         $ossClient->deleteObject($bucket, $object);
     } catch (OssException $e) {
@@ -466,9 +468,8 @@ function deleteObject($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
-
 
 /**
  * Delete multiple objects in batch
@@ -479,9 +480,9 @@ function deleteObject($ossClient, $bucket)
  */
 function deleteObjects($ossClient, $bucket)
 {
-    $objects = array();
-    $objects[] = "oss-php-sdk-test/upload-test-object-name.txt";
-    $objects[] = "oss-php-sdk-test/upload-test-object-name.txt.copy";
+    $objects = [];
+    $objects[] = 'oss-php-sdk-test/upload-test-object-name.txt';
+    $objects[] = 'oss-php-sdk-test/upload-test-object-name.txt.copy';
     try {
         $ossClient->deleteObjects($bucket, $objects);
     } catch (OssException $e) {
@@ -489,7 +490,7 @@ function deleteObjects($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
 
 /**
@@ -501,7 +502,7 @@ function deleteObjects($ossClient, $bucket)
  */
 function doesObjectExist($ossClient, $bucket)
 {
-    $object = "oss-php-sdk-test/upload-test-object-name.txt";
+    $object = 'oss-php-sdk-test/upload-test-object-name.txt';
     try {
         $exist = $ossClient->doesObjectExist($bucket, $object);
     } catch (OssException $e) {
@@ -509,7 +510,6 @@ function doesObjectExist($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
     var_dump($exist);
 }
-

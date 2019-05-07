@@ -18,10 +18,12 @@ use Tool\Tool;
  * 获取免登令牌
  * @package DingDing\Corp\Sso
  */
-class SsoToken extends TalkBaseCorp {
-    public function __construct(string $corpId){
+class SsoToken extends TalkBaseCorp
+{
+    public function __construct(string $corpId)
+    {
         parent::__construct();
-        if(strlen($corpId) > 0){
+        if (strlen($corpId) > 0) {
             $corpConfig = DingTalkConfigSingleton::getInstance()->getCorpConfig($corpId);
             $this->reqData['corpid'] = $corpConfig->getCorpId();
             $this->reqData['corpsecret'] = $corpConfig->getSsoSecret();
@@ -32,16 +34,18 @@ class SsoToken extends TalkBaseCorp {
         }
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/sso/gettoken?' . http_build_query($this->reqData);
         $sendRes = TalkUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(!is_array($sendData)){
+        if (!is_array($sendData)) {
             throw new TalkException('获取sso token出错', ErrorCode::DING_TALK_GET_ERROR);
-        } else if(!isset($sendData['access_token'])){
+        } elseif (!isset($sendData['access_token'])) {
             throw new TalkException($sendData['errmsg'], ErrorCode::DING_TALK_GET_ERROR);
         }
 

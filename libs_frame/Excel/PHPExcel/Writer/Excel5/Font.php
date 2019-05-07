@@ -42,6 +42,19 @@ class PHPExcel_Writer_Excel5_Font
     private $font;
 
     /**
+     * Map of BIFF2-BIFF8 codes for underline styles
+     * @static    array of int
+     *
+     */
+    private static $mapUnderline = [
+        PHPExcel_Style_Font::UNDERLINE_NONE => 0x00,
+        PHPExcel_Style_Font::UNDERLINE_SINGLE => 0x01,
+        PHPExcel_Style_Font::UNDERLINE_DOUBLE => 0x02,
+        PHPExcel_Style_Font::UNDERLINE_SINGLEACCOUNTING => 0x21,
+        PHPExcel_Style_Font::UNDERLINE_DOUBLEACCOUNTING => 0x22,
+    ];
+
+    /**
      * Constructor
      *
      * @param PHPExcel_Style_Font $font
@@ -100,7 +113,7 @@ class PHPExcel_Writer_Excel5_Font
         }
 
         $data = pack(
-            "vvvvvCCCC",
+            'vvvvvCCCC',
             // Fontsize (in twips)
             $this->font->getSize() * 20,
             $grbit,
@@ -118,7 +131,7 @@ class PHPExcel_Writer_Excel5_Font
         $data .= PHPExcel_Shared_String::UTF8toBIFF8UnicodeShort($this->font->getName());
 
         $length = strlen($data);
-        $header = pack("vv", $record, $length);
+        $header = pack('vv', $record, $length);
 
         return($header . $data);
     }
@@ -138,22 +151,10 @@ class PHPExcel_Writer_Excel5_Font
     }
 
     /**
-     * Map of BIFF2-BIFF8 codes for underline styles
-     * @static    array of int
-     *
-     */
-    private static $mapUnderline = array(
-        PHPExcel_Style_Font::UNDERLINE_NONE              => 0x00,
-        PHPExcel_Style_Font::UNDERLINE_SINGLE            => 0x01,
-        PHPExcel_Style_Font::UNDERLINE_DOUBLE            => 0x02,
-        PHPExcel_Style_Font::UNDERLINE_SINGLEACCOUNTING  => 0x21,
-        PHPExcel_Style_Font::UNDERLINE_DOUBLEACCOUNTING  => 0x22,
-    );
-
-    /**
      * Map underline
      *
      * @param string
+     * @param mixed $underline
      * @return int
      */
     private static function mapUnderline($underline)

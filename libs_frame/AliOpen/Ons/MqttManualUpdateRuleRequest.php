@@ -3,7 +3,8 @@ namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class MqttManualUpdateRuleRequest extends RpcAcsRequest {
+class MqttManualUpdateRuleRequest extends RpcAcsRequest
+{
     private $preventCache;
     private $onsRegionId;
     private $instanceId;
@@ -11,62 +12,75 @@ class MqttManualUpdateRuleRequest extends RpcAcsRequest {
     private $ownerId;
     private $adminKey;
 
-    public function __construct(){
-        parent::__construct("Ons", "2017-09-18", "OnsMqttManualUpdateRule");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Ons', '2017-09-18', 'OnsMqttManualUpdateRule');
+        $this->setMethod('POST');
     }
 
-    public function getPreventCache(){
+    public function getPreventCache()
+    {
         return $this->preventCache;
     }
 
-    public function setPreventCache($preventCache){
+    public function setPreventCache($preventCache)
+    {
         $this->preventCache = $preventCache;
-        $this->queryParameters["PreventCache"] = $preventCache;
+        $this->queryParameters['PreventCache'] = $preventCache;
     }
 
-    public function getOnsRegionId(){
+    public function getOnsRegionId()
+    {
         return $this->onsRegionId;
     }
 
-    public function setOnsRegionId($onsRegionId){
+    public function setOnsRegionId($onsRegionId)
+    {
         $this->onsRegionId = $onsRegionId;
-        $this->queryParameters["OnsRegionId"] = $onsRegionId;
+        $this->queryParameters['OnsRegionId'] = $onsRegionId;
     }
 
-    public function getInstanceId(){
+    public function getInstanceId()
+    {
         return $this->instanceId;
     }
 
-    public function setInstanceId($instanceId){
+    public function setInstanceId($instanceId)
+    {
         $this->instanceId = $instanceId;
-        $this->queryParameters["InstanceId"] = $instanceId;
+        $this->queryParameters['InstanceId'] = $instanceId;
     }
 
-    public function getOnsPlatform(){
+    public function getOnsPlatform()
+    {
         return $this->onsPlatform;
     }
 
-    public function setOnsPlatform($onsPlatform){
+    public function setOnsPlatform($onsPlatform)
+    {
         $this->onsPlatform = $onsPlatform;
-        $this->queryParameters["OnsPlatform"] = $onsPlatform;
+        $this->queryParameters['OnsPlatform'] = $onsPlatform;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getAdminKey(){
+    public function getAdminKey()
+    {
         return $this->adminKey;
     }
 
-    public function setAdminKey($adminKey){
+    public function setAdminKey($adminKey)
+    {
         $this->adminKey = $adminKey;
-        $this->queryParameters["AdminKey"] = $adminKey;
+        $this->queryParameters['AdminKey'] = $adminKey;
     }
 }

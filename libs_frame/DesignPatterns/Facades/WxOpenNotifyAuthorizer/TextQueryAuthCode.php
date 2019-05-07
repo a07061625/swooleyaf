@@ -13,10 +13,12 @@ use Tool\Tool;
 use Traits\SimpleFacadeTrait;
 use Wx\WxUtilOpenBase;
 
-class TextQueryAuthCode extends WxOpenNotifyAuthorizerFacade {
+class TextQueryAuthCode extends WxOpenNotifyAuthorizerFacade
+{
     use SimpleFacadeTrait;
 
-    protected static function responseNotify(array $data) : array {
+    protected static function responseNotify(array $data) : array
+    {
         $openCommonConfig = WxConfigSingleton::getInstance()->getOpenCommonConfig();
         $authCode = str_replace('QUERY_AUTH_CODE:', '', $data['Content']);
         //使用授权码换取公众号的授权信息

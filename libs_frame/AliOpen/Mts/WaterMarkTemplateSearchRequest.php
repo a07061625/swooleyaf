@@ -3,7 +3,8 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class WaterMarkTemplateSearchRequest extends RpcAcsRequest {
+class WaterMarkTemplateSearchRequest extends RpcAcsRequest
+{
     private $resourceOwnerId;
     private $resourceOwnerAccount;
     private $ownerAccount;
@@ -12,71 +13,86 @@ class WaterMarkTemplateSearchRequest extends RpcAcsRequest {
     private $ownerId;
     private $pageNumber;
 
-    public function __construct(){
-        parent::__construct("Mts", "2014-06-18", "SearchWaterMarkTemplate", "mts", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Mts', '2014-06-18', 'SearchWaterMarkTemplate', 'mts', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getResourceOwnerAccount(){
+    public function getResourceOwnerAccount()
+    {
         return $this->resourceOwnerAccount;
     }
 
-    public function setResourceOwnerAccount($resourceOwnerAccount){
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
-    public function getOwnerAccount(){
+    public function getOwnerAccount()
+    {
         return $this->ownerAccount;
     }
 
-    public function setOwnerAccount($ownerAccount){
+    public function setOwnerAccount($ownerAccount)
+    {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
-    public function getPageSize(){
+    public function getPageSize()
+    {
         return $this->pageSize;
     }
 
-    public function setPageSize($pageSize){
+    public function setPageSize($pageSize)
+    {
         $this->pageSize = $pageSize;
-        $this->queryParameters["PageSize"] = $pageSize;
+        $this->queryParameters['PageSize'] = $pageSize;
     }
 
-    public function getState(){
+    public function getState()
+    {
         return $this->state;
     }
 
-    public function setState($state){
+    public function setState($state)
+    {
         $this->state = $state;
-        $this->queryParameters["State"] = $state;
+        $this->queryParameters['State'] = $state;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getPageNumber(){
+    public function getPageNumber()
+    {
         return $this->pageNumber;
     }
 
-    public function setPageNumber($pageNumber){
+    public function setPageNumber($pageNumber)
+    {
         $this->pageNumber = $pageNumber;
-        $this->queryParameters["PageNumber"] = $pageNumber;
+        $this->queryParameters['PageNumber'] = $pageNumber;
     }
 }

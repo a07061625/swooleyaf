@@ -60,7 +60,7 @@ class PHPExcel_Reader_Excel5_MD5
     public function getContext()
     {
         $s = '';
-        foreach (array('a', 'b', 'c', 'd') as $i) {
+        foreach (['a', 'b', 'c', 'd'] as $i) {
             $v = $this->{$i};
             $s .= chr($v & 0xff);
             $s .= chr(($v >> 8) & 0xff);
@@ -85,10 +85,10 @@ class PHPExcel_Reader_Excel5_MD5
         $C = $this->c;
         $D = $this->d;
 
-        $F = array('PHPExcel_Reader_Excel5_MD5','f');
-        $G = array('PHPExcel_Reader_Excel5_MD5','g');
-        $H = array('PHPExcel_Reader_Excel5_MD5','h');
-        $I = array('PHPExcel_Reader_Excel5_MD5','i');
+        $F = ['PHPExcel_Reader_Excel5_MD5','f'];
+        $G = ['PHPExcel_Reader_Excel5_MD5','g'];
+        $H = ['PHPExcel_Reader_Excel5_MD5','h'];
+        $I = ['PHPExcel_Reader_Excel5_MD5','i'];
 
         /* ROUND 1 */
         self::step($F, $A, $B, $C, $D, $words[0], 7, 0xd76aa478);
@@ -185,7 +185,7 @@ class PHPExcel_Reader_Excel5_MD5
 
     private static function i($X, $Y, $Z)
     {
-        return ($Y ^ ($X | (~ $Z))) ; // Y XOR (X OR NOT Z)
+        return ($Y ^ ($X | (~ $Z))); // Y XOR (X OR NOT Z)
     }
 
     private static function step($func, &$A, $B, $C, $D, $M, $s, $t)
@@ -197,7 +197,7 @@ class PHPExcel_Reader_Excel5_MD5
 
     private static function rotate($decimal, $bits)
     {
-        $binary = str_pad(decbin($decimal), 32, "0", STR_PAD_LEFT);
-        return bindec(substr($binary, $bits).substr($binary, 0, $bits));
+        $binary = str_pad(decbin($decimal), 32, '0', STR_PAD_LEFT);
+        return bindec(substr($binary, $bits) . substr($binary, 0, $bits));
     }
 }

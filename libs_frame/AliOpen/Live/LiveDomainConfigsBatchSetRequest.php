@@ -3,60 +3,72 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class LiveDomainConfigsBatchSetRequest extends RpcAcsRequest {
+class LiveDomainConfigsBatchSetRequest extends RpcAcsRequest
+{
     private $functions;
     private $securityToken;
     private $domainNames;
     private $ownerAccount;
     private $ownerId;
 
-    public function __construct(){
-        parent::__construct("live", "2016-11-01", "BatchSetLiveDomainConfigs", "live", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('live', '2016-11-01', 'BatchSetLiveDomainConfigs', 'live', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getFunctions(){
+    public function getFunctions()
+    {
         return $this->functions;
     }
 
-    public function setFunctions($functions){
+    public function setFunctions($functions)
+    {
         $this->functions = $functions;
-        $this->queryParameters["Functions"] = $functions;
+        $this->queryParameters['Functions'] = $functions;
     }
 
-    public function getSecurityToken(){
+    public function getSecurityToken()
+    {
         return $this->securityToken;
     }
 
-    public function setSecurityToken($securityToken){
+    public function setSecurityToken($securityToken)
+    {
         $this->securityToken = $securityToken;
-        $this->queryParameters["SecurityToken"] = $securityToken;
+        $this->queryParameters['SecurityToken'] = $securityToken;
     }
 
-    public function getDomainNames(){
+    public function getDomainNames()
+    {
         return $this->domainNames;
     }
 
-    public function setDomainNames($domainNames){
+    public function setDomainNames($domainNames)
+    {
         $this->domainNames = $domainNames;
-        $this->queryParameters["DomainNames"] = $domainNames;
+        $this->queryParameters['DomainNames'] = $domainNames;
     }
 
-    public function getOwnerAccount(){
+    public function getOwnerAccount()
+    {
         return $this->ownerAccount;
     }
 
-    public function setOwnerAccount($ownerAccount){
+    public function setOwnerAccount($ownerAccount)
+    {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 }

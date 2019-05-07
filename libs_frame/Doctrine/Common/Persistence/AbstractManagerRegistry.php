@@ -81,28 +81,6 @@ abstract class AbstractManagerRegistry implements ManagerRegistry
     }
 
     /**
-     * Fetches/creates the given services.
-     *
-     * A service in this context is connection or a manager instance.
-     *
-     * @param string $name The name of the service.
-     *
-     * @return object The instance of the given service.
-     */
-    abstract protected function getService($name);
-
-    /**
-     * Resets the given services.
-     *
-     * A service in this context is connection or a manager instance.
-     *
-     * @param string $name The name of the service.
-     *
-     * @return void
-     */
-    abstract protected function resetService($name);
-
-    /**
      * Gets the name of the registry.
      *
      * @return string
@@ -198,7 +176,7 @@ abstract class AbstractManagerRegistry implements ManagerRegistry
 
         if ($proxyClass->implementsInterface($this->proxyInterfaceName)) {
             if (! $parentClass = $proxyClass->getParentClass()) {
-                return null;
+                return;
             }
 
             $class = $parentClass->getName();
@@ -261,4 +239,26 @@ abstract class AbstractManagerRegistry implements ManagerRegistry
 
         return $this->getManager($name);
     }
+
+    /**
+     * Fetches/creates the given services.
+     *
+     * A service in this context is connection or a manager instance.
+     *
+     * @param string $name The name of the service.
+     *
+     * @return object The instance of the given service.
+     */
+    abstract protected function getService($name);
+
+    /**
+     * Resets the given services.
+     *
+     * A service in this context is connection or a manager instance.
+     *
+     * @param string $name The name of the service.
+     *
+     * @return void
+     */
+    abstract protected function resetService($name);
 }

@@ -9,8 +9,10 @@ namespace Exception\SyPrint;
 
 use Exception\BaseException;
 
-class FeYinException extends BaseException {
-    public function __construct($message, $code) {
+class FeYinException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = '飞印打印异常';
     }

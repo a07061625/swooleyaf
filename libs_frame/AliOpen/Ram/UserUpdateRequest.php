@@ -3,7 +3,8 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class UserUpdateRequest extends RpcAcsRequest {
+class UserUpdateRequest extends RpcAcsRequest
+{
     private $newUserName;
     private $newDisplayName;
     private $newMobilePhone;
@@ -11,63 +12,76 @@ class UserUpdateRequest extends RpcAcsRequest {
     private $newEmail;
     private $userName;
 
-    public function __construct(){
-        parent::__construct("Ram", "2015-05-01", "UpdateUser");
-        $this->setProtocol("https");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Ram', '2015-05-01', 'UpdateUser');
+        $this->setProtocol('https');
+        $this->setMethod('POST');
     }
 
-    public function getNewUserName(){
+    public function getNewUserName()
+    {
         return $this->newUserName;
     }
 
-    public function setNewUserName($newUserName){
+    public function setNewUserName($newUserName)
+    {
         $this->newUserName = $newUserName;
-        $this->queryParameters["NewUserName"] = $newUserName;
+        $this->queryParameters['NewUserName'] = $newUserName;
     }
 
-    public function getNewDisplayName(){
+    public function getNewDisplayName()
+    {
         return $this->newDisplayName;
     }
 
-    public function setNewDisplayName($newDisplayName){
+    public function setNewDisplayName($newDisplayName)
+    {
         $this->newDisplayName = $newDisplayName;
-        $this->queryParameters["NewDisplayName"] = $newDisplayName;
+        $this->queryParameters['NewDisplayName'] = $newDisplayName;
     }
 
-    public function getNewMobilePhone(){
+    public function getNewMobilePhone()
+    {
         return $this->newMobilePhone;
     }
 
-    public function setNewMobilePhone($newMobilePhone){
+    public function setNewMobilePhone($newMobilePhone)
+    {
         $this->newMobilePhone = $newMobilePhone;
-        $this->queryParameters["NewMobilePhone"] = $newMobilePhone;
+        $this->queryParameters['NewMobilePhone'] = $newMobilePhone;
     }
 
-    public function getNewComments(){
+    public function getNewComments()
+    {
         return $this->newComments;
     }
 
-    public function setNewComments($newComments){
+    public function setNewComments($newComments)
+    {
         $this->newComments = $newComments;
-        $this->queryParameters["NewComments"] = $newComments;
+        $this->queryParameters['NewComments'] = $newComments;
     }
 
-    public function getNewEmail(){
+    public function getNewEmail()
+    {
         return $this->newEmail;
     }
 
-    public function setNewEmail($newEmail){
+    public function setNewEmail($newEmail)
+    {
         $this->newEmail = $newEmail;
-        $this->queryParameters["NewEmail"] = $newEmail;
+        $this->queryParameters['NewEmail'] = $newEmail;
     }
 
-    public function getUserName(){
+    public function getUserName()
+    {
         return $this->userName;
     }
 
-    public function setUserName($userName){
+    public function setUserName($userName)
+    {
         $this->userName = $userName;
-        $this->queryParameters["UserName"] = $userName;
+        $this->queryParameters['UserName'] = $userName;
     }
 }

@@ -11,7 +11,8 @@ use QCloud\ConfigCos;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
-class QCloudConfigSingleton {
+class QCloudConfigSingleton
+{
     use SingletonTrait;
 
     /**
@@ -20,7 +21,8 @@ class QCloudConfigSingleton {
      */
     private $cosConfig = null;
 
-    private function __construct(){
+    private function __construct()
+    {
         $configs = Tool::getConfig('qcloud.' . SY_ENV . SY_PROJECT);
 
         $cosConfig = new ConfigCos();
@@ -36,8 +38,9 @@ class QCloudConfigSingleton {
     /**
      * @return \DesignPatterns\Singletons\QCloudConfigSingleton
      */
-    public static function getInstance(){
-        if(is_null(self::$instance)){
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -47,7 +50,8 @@ class QCloudConfigSingleton {
     /**
      * @return \QCloud\ConfigCos
      */
-    public function getCosConfig() {
+    public function getCosConfig()
+    {
         return $this->cosConfig;
     }
 }

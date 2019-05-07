@@ -60,11 +60,10 @@ class ProxyDefinition
      */
     public function __construct($proxyClassName, array $identifierFields, array $reflectionFields, $initializer, $cloner)
     {
-        $this->proxyClassName   = $proxyClassName;
+        $this->proxyClassName = $proxyClassName;
         $this->identifierFields = $identifierFields;
         $this->reflectionFields = $reflectionFields;
-        $this->initializer      = $initializer;
-        $this->cloner           = $cloner;
+        $this->initializer = $initializer;
+        $this->cloner = $cloner;
     }
 }
-

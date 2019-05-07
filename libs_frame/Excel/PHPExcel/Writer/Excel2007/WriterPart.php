@@ -40,6 +40,19 @@ abstract class PHPExcel_Writer_Excel2007_WriterPart
      * @param PHPExcel_Writer_IWriter    $pWriter
      * @throws PHPExcel_Writer_Exception
      */
+    public function __construct(PHPExcel_Writer_IWriter $pWriter = null)
+    {
+        if (!is_null($pWriter)) {
+            $this->parentWriter = $pWriter;
+        }
+    }
+
+    /**
+     * Set parent IWriter object
+     *
+     * @param PHPExcel_Writer_IWriter    $pWriter
+     * @throws PHPExcel_Writer_Exception
+     */
     public function setParentWriter(PHPExcel_Writer_IWriter $pWriter = null)
     {
         $this->parentWriter = $pWriter;
@@ -56,20 +69,7 @@ abstract class PHPExcel_Writer_Excel2007_WriterPart
         if (!is_null($this->parentWriter)) {
             return $this->parentWriter;
         } else {
-            throw new PHPExcel_Writer_Exception("No parent PHPExcel_Writer_IWriter assigned.");
-        }
-    }
-
-    /**
-     * Set parent IWriter object
-     *
-     * @param PHPExcel_Writer_IWriter    $pWriter
-     * @throws PHPExcel_Writer_Exception
-     */
-    public function __construct(PHPExcel_Writer_IWriter $pWriter = null)
-    {
-        if (!is_null($pWriter)) {
-            $this->parentWriter = $pWriter;
+            throw new PHPExcel_Writer_Exception('No parent PHPExcel_Writer_IWriter assigned.');
         }
     }
 }

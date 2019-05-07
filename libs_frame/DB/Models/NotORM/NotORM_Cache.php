@@ -7,19 +7,23 @@
  */
 namespace DB\Models\NotORM;
 
-interface NotORM_Cache {
+interface NotORM_Cache
+{
     /**
      * Load stored data
      * @param string
+     * @param mixed $key
      * @return mixed or null if not found
      */
-    function load($key);
+    public function load($key);
 
     /**
      * Save data
      * @param string
      * @param mixed
+     * @param mixed $key
+     * @param mixed $data
      * @return null
      */
-    function save($key, $data);
+    public function save($key, $data);
 }

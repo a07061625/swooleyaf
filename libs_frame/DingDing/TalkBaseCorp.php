@@ -10,7 +10,8 @@ namespace DingDing;
 use Constant\ErrorCode;
 use Exception\DingDing\TalkException;
 
-abstract class TalkBaseCorp extends TalkBase {
+abstract class TalkBaseCorp extends TalkBase
+{
     const ACCESS_TOKEN_TYPE_CORP = 1; //令牌类型-企业
     const ACCESS_TOKEN_TYPE_PROVIDER = 2; //令牌类型-服务商
     const MESSAGE_TYPE_TEXT = 'text';
@@ -24,11 +25,6 @@ abstract class TalkBaseCorp extends TalkBase {
     const MEDIA_TYPE_IMAGE = 'image';
     const MEDIA_TYPE_VOICE = 'voice';
     const MEDIA_TYPE_FILE = 'file';
-
-    private static $totalAccessTokenType = [
-        self::ACCESS_TOKEN_TYPE_CORP => '企业',
-        self::ACCESS_TOKEN_TYPE_PROVIDER => '服务商',
-    ];
 
     protected static $totalMessageType = [
         self::MESSAGE_TYPE_TEXT => '文本',
@@ -62,7 +58,13 @@ abstract class TalkBaseCorp extends TalkBase {
      */
     protected $_agentTag = '';
 
-    public function __construct(){
+    private static $totalAccessTokenType = [
+        self::ACCESS_TOKEN_TYPE_CORP => '企业',
+        self::ACCESS_TOKEN_TYPE_PROVIDER => '服务商',
+    ];
+
+    public function __construct()
+    {
         parent::__construct();
         $this->_tokenType = self::ACCESS_TOKEN_TYPE_CORP;
     }
@@ -71,8 +73,9 @@ abstract class TalkBaseCorp extends TalkBase {
      * @param int $accessTokenType
      * @throws \Exception\DingDing\TalkException
      */
-    public function setAccessTokenType(int $accessTokenType){
-        if(isset(self::$totalAccessTokenType[$accessTokenType])){
+    public function setAccessTokenType(int $accessTokenType)
+    {
+        if (isset(self::$totalAccessTokenType[$accessTokenType])) {
             $this->_tokenType = $accessTokenType;
         } else {
             throw new TalkException('令牌类型不合法', ErrorCode::DING_TALK_PARAM_ERROR);

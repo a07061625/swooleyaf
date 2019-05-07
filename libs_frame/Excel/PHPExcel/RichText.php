@@ -43,12 +43,12 @@ class PHPExcel_RichText implements PHPExcel_IComparable
     public function __construct(PHPExcel_Cell $pCell = null)
     {
         // Initialise variables
-        $this->richTextElements = array();
+        $this->richTextElements = [];
 
         // Rich-Text string attached to cell?
         if ($pCell !== null) {
             // Add cell text and style
-            if ($pCell->getValue() != "") {
+            if ($pCell->getValue() != '') {
                 $objRun = new PHPExcel_RichText_Run($pCell->getValue());
                 $objRun->setFont(clone $pCell->getParent()->getStyle($pCell->getCoordinate())->getFont());
                 $this->addText($objRun);
@@ -56,6 +56,31 @@ class PHPExcel_RichText implements PHPExcel_IComparable
 
             // Set parent value
             $pCell->setValueExplicit($this, PHPExcel_Cell_DataType::TYPE_STRING);
+        }
+    }
+
+    /**
+     * Convert to string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getPlainText();
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if (is_object($value)) {
+                $this->$key = clone $value;
+            } else {
+                $this->$key = $value;
+            }
         }
     }
 
@@ -120,16 +145,6 @@ class PHPExcel_RichText implements PHPExcel_IComparable
     }
 
     /**
-     * Convert to string
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getPlainText();
-    }
-
-    /**
      * Get Rich Text elements
      *
      * @return PHPExcel_RichText_ITextElement[]
@@ -151,7 +166,7 @@ class PHPExcel_RichText implements PHPExcel_IComparable
         if (is_array($pElements)) {
             $this->richTextElements = $pElements;
         } else {
-            throw new PHPExcel_Exception("Invalid PHPExcel_RichText_ITextElement[] array passed.");
+            throw new PHPExcel_Exception('Invalid PHPExcel_RichText_ITextElement[] array passed.');
         }
         return $this;
     }
@@ -172,20 +187,5 @@ class PHPExcel_RichText implements PHPExcel_IComparable
             $hashElements .
             __CLASS__
         );
-    }
-
-    /**
-     * Implement PHP __clone to create a deep clone, not just a shallow copy.
-     */
-    public function __clone()
-    {
-        $vars = get_object_vars($this);
-        foreach ($vars as $key => $value) {
-            if (is_object($value)) {
-                $this->$key = clone $value;
-            } else {
-                $this->$key = $value;
-            }
-        }
     }
 }

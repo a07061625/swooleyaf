@@ -55,9 +55,25 @@ abstract class PHPExcel_Style_Supervisor
     }
 
     /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if ((is_object($value)) && ($key != 'parent')) {
+                $this->$key = clone $value;
+            } else {
+                $this->$key = $value;
+            }
+        }
+    }
+
+    /**
      * Bind parent. Only used for supervisor
      *
      * @param PHPExcel $parent
+     * @param null|mixed $parentPropertyName
      * @return PHPExcel_Style_Supervisor
      */
     public function bindParent($parent, $parentPropertyName = null)
@@ -106,20 +122,5 @@ abstract class PHPExcel_Style_Supervisor
     public function getActiveCell()
     {
         return $this->getActiveSheet()->getActiveCell();
-    }
-
-    /**
-     * Implement PHP __clone to create a deep clone, not just a shallow copy.
-     */
-    public function __clone()
-    {
-        $vars = get_object_vars($this);
-        foreach ($vars as $key => $value) {
-            if ((is_object($value)) && ($key != 'parent')) {
-                $this->$key = clone $value;
-            } else {
-                $this->$key = $value;
-            }
-        }
     }
 }

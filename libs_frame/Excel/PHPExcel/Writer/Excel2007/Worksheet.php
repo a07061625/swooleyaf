@@ -25,7 +25,6 @@
  * @version    ##VERSION##, ##DATE##
  */
 
-
 /**
  * PHPExcel_Writer_Excel2007_Worksheet
  *
@@ -64,75 +63,75 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
             $objWriter->writeAttribute('xmlns', 'http://schemas.openxmlformats.org/spreadsheetml/2006/main');
             $objWriter->writeAttribute('xmlns:r', 'http://schemas.openxmlformats.org/officeDocument/2006/relationships');
 
-                // sheetPr
-                $this->writeSheetPr($objWriter, $pSheet);
+            // sheetPr
+            $this->writeSheetPr($objWriter, $pSheet);
 
-                // Dimension
-                $this->writeDimension($objWriter, $pSheet);
+            // Dimension
+            $this->writeDimension($objWriter, $pSheet);
 
-                // sheetViews
-                $this->writeSheetViews($objWriter, $pSheet);
+            // sheetViews
+            $this->writeSheetViews($objWriter, $pSheet);
 
-                // sheetFormatPr
-                $this->writeSheetFormatPr($objWriter, $pSheet);
+            // sheetFormatPr
+            $this->writeSheetFormatPr($objWriter, $pSheet);
 
-                // cols
-                $this->writeCols($objWriter, $pSheet);
+            // cols
+            $this->writeCols($objWriter, $pSheet);
 
-                // sheetData
-                $this->writeSheetData($objWriter, $pSheet, $pStringTable);
+            // sheetData
+            $this->writeSheetData($objWriter, $pSheet, $pStringTable);
 
-                // sheetProtection
-                $this->writeSheetProtection($objWriter, $pSheet);
+            // sheetProtection
+            $this->writeSheetProtection($objWriter, $pSheet);
 
-                // protectedRanges
-                $this->writeProtectedRanges($objWriter, $pSheet);
+            // protectedRanges
+            $this->writeProtectedRanges($objWriter, $pSheet);
 
-                // autoFilter
-                $this->writeAutoFilter($objWriter, $pSheet);
+            // autoFilter
+            $this->writeAutoFilter($objWriter, $pSheet);
 
-                // mergeCells
-                $this->writeMergeCells($objWriter, $pSheet);
+            // mergeCells
+            $this->writeMergeCells($objWriter, $pSheet);
 
-                // conditionalFormatting
-                $this->writeConditionalFormatting($objWriter, $pSheet);
+            // conditionalFormatting
+            $this->writeConditionalFormatting($objWriter, $pSheet);
 
-                // dataValidations
-                $this->writeDataValidations($objWriter, $pSheet);
+            // dataValidations
+            $this->writeDataValidations($objWriter, $pSheet);
 
-                // hyperlinks
-                $this->writeHyperlinks($objWriter, $pSheet);
+            // hyperlinks
+            $this->writeHyperlinks($objWriter, $pSheet);
 
-                // Print options
-                $this->writePrintOptions($objWriter, $pSheet);
+            // Print options
+            $this->writePrintOptions($objWriter, $pSheet);
 
-                // Page margins
-                $this->writePageMargins($objWriter, $pSheet);
+            // Page margins
+            $this->writePageMargins($objWriter, $pSheet);
 
-                // Page setup
-                $this->writePageSetup($objWriter, $pSheet);
+            // Page setup
+            $this->writePageSetup($objWriter, $pSheet);
 
-                // Header / footer
-                $this->writeHeaderFooter($objWriter, $pSheet);
+            // Header / footer
+            $this->writeHeaderFooter($objWriter, $pSheet);
 
-                // Breaks
-                $this->writeBreaks($objWriter, $pSheet);
+            // Breaks
+            $this->writeBreaks($objWriter, $pSheet);
 
-                // Drawings and/or Charts
-                $this->writeDrawings($objWriter, $pSheet, $includeCharts);
+            // Drawings and/or Charts
+            $this->writeDrawings($objWriter, $pSheet, $includeCharts);
 
-                // LegacyDrawing
-                $this->writeLegacyDrawing($objWriter, $pSheet);
+            // LegacyDrawing
+            $this->writeLegacyDrawing($objWriter, $pSheet);
 
-                // LegacyDrawingHF
-                $this->writeLegacyDrawingHF($objWriter, $pSheet);
+            // LegacyDrawingHF
+            $this->writeLegacyDrawingHF($objWriter, $pSheet);
 
             $objWriter->endElement();
 
             // Return
             return $objWriter->getData();
         } else {
-            throw new PHPExcel_Writer_Exception("Invalid PHPExcel_Worksheet object passed.");
+            throw new PHPExcel_Writer_Exception('Invalid PHPExcel_Worksheet object passed.');
         }
     }
 
@@ -149,7 +148,7 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
         $objWriter->startElement('sheetPr');
         //$objWriter->writeAttribute('codeName',        $pSheet->getTitle());
         if ($pSheet->getParent()->hasMacros()) {//if the workbook have macros, we need to have codeName for the sheet
-            if ($pSheet->hasCodeName()==false) {
+            if ($pSheet->hasCodeName() == false) {
                 $pSheet->setCodeName($pSheet->getTitle());
             }
             $objWriter->writeAttribute('codeName', $pSheet->getCodeName());
@@ -331,7 +330,7 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
         }
 
         // Set Zero Height row
-        if ((string)$pSheet->getDefaultRowDimension()->getZeroHeight()  == '1' ||
+        if ((string)$pSheet->getDefaultRowDimension()->getZeroHeight() == '1' ||
             strtolower((string)$pSheet->getDefaultRowDimension()->getZeroHeight()) == 'true') {
             $objWriter->writeAttribute('zeroHeight', '1');
         }
@@ -905,8 +904,8 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
     private function writeBreaks(PHPExcel_Shared_XMLWriter $objWriter = null, PHPExcel_Worksheet $pSheet = null)
     {
         // Get row and column breaks
-        $aRowBreaks = array();
-        $aColumnBreaks = array();
+        $aRowBreaks = [];
+        $aColumnBreaks = [];
         foreach ($pSheet->getBreaks() as $cell => $breakType) {
             if ($breakType == PHPExcel_Worksheet::BREAK_ROW) {
                 $aRowBreaks[] = $cell;
@@ -976,7 +975,7 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
             $highestRow = $pSheet->getHighestRow();
 
             // Loop through cells
-            $cellsByRow = array();
+            $cellsByRow = [];
             foreach ($pSheet->getCellCollection() as $cellID) {
                 $cellAddress = PHPExcel_Cell::coordinateFromString($cellID);
                 $cellsByRow[$cellAddress[1]][] = $cellID;
@@ -1038,7 +1037,7 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
 
             $objWriter->endElement();
         } else {
-            throw new PHPExcel_Writer_Exception("Invalid parameters passed.");
+            throw new PHPExcel_Writer_Exception('Invalid parameters passed.');
         }
     }
 
@@ -1159,7 +1158,7 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
 
             $objWriter->endElement();
         } else {
-            throw new PHPExcel_Writer_Exception("Invalid parameters passed.");
+            throw new PHPExcel_Writer_Exception('Invalid parameters passed.');
         }
     }
 

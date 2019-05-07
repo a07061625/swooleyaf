@@ -16,7 +16,8 @@ use Exception\DingDing\TalkException;
  * 获取部门用户签到记录
  * @package DingDing\Corp\CheckIn
  */
-class Record extends TalkBaseCorp {
+class Record extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -50,7 +51,8 @@ class Record extends TalkBaseCorp {
      */
     private $order = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -59,14 +61,16 @@ class Record extends TalkBaseCorp {
         $this->reqData['order'] = 'desc';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $departmentId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setDepartmentId(int $departmentId){
+    public function setDepartmentId(int $departmentId)
+    {
         if ($departmentId > 0) {
             $this->reqData['department_id'] = $departmentId;
         } else {
@@ -79,12 +83,13 @@ class Record extends TalkBaseCorp {
      * @param int $endTime
      * @throws \Exception\DingDing\TalkException
      */
-    public function setStartTimeAndEndTime(int $startTime,int $endTime){
+    public function setStartTimeAndEndTime(int $startTime, int $endTime)
+    {
         if ($startTime < 946656000) {
             throw new TalkException('开始时间不合法', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if($endTime < $startTime){
+        } elseif ($endTime < $startTime) {
             throw new TalkException('结束时间不能小于开始时间', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if(($endTime - $startTime) > 3888000){
+        } elseif (($endTime - $startTime) > 3888000) {
             throw new TalkException('结束时间不能超过开始时间45天', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
@@ -96,8 +101,9 @@ class Record extends TalkBaseCorp {
      * @param int $offset
      * @throws \Exception\DingDing\TalkException
      */
-    public function setOffset(int $offset){
-        if($offset >= 0){
+    public function setOffset(int $offset)
+    {
+        if ($offset >= 0) {
             $this->reqData['offset'] = $offset;
         } else {
             throw new TalkException('偏移量不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -108,8 +114,9 @@ class Record extends TalkBaseCorp {
      * @param int $size
      * @throws \Exception\DingDing\TalkException
      */
-    public function setSize(int $size){
-        if($size > 0){
+    public function setSize(int $size)
+    {
+        if ($size > 0) {
             $this->reqData['size'] = $size > 100 ? 100 : $size;
         } else {
             throw new TalkException('分页大小不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -120,19 +127,21 @@ class Record extends TalkBaseCorp {
      * @param string $order
      * @throws \Exception\DingDing\TalkException
      */
-    public function setOrder(string $order){
-        if(in_array($order, ['asc', 'desc'])){
+    public function setOrder(string $order)
+    {
+        if (in_array($order, ['asc', 'desc'], true)) {
             $this->reqData['order'] = $order;
         } else {
             throw new TalkException('排序不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['department_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['department_id'])) {
             throw new TalkException('部门id不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['start_time'])){
+        if (!isset($this->reqData['start_time'])) {
             throw new TalkException('开始时间不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

@@ -3,7 +3,8 @@ namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class EarlyWarningSetRequest extends RpcAcsRequest {
+class EarlyWarningSetRequest extends RpcAcsRequest
+{
     private $timeEnd;
     private $resourceOwnerId;
     private $warnOpen;
@@ -14,89 +15,108 @@ class EarlyWarningSetRequest extends RpcAcsRequest {
     private $timeBegin;
     private $frequency;
 
-    public function __construct(){
-        parent::__construct("afs", "2018-01-12", "SetEarlyWarning");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('afs', '2018-01-12', 'SetEarlyWarning');
+        $this->setMethod('POST');
     }
 
-    public function getTimeEnd(){
+    public function getTimeEnd()
+    {
         return $this->timeEnd;
     }
 
-    public function setTimeEnd($timeEnd){
+    public function setTimeEnd($timeEnd)
+    {
         $this->timeEnd = $timeEnd;
-        $this->queryParameters["TimeEnd"] = $timeEnd;
+        $this->queryParameters['TimeEnd'] = $timeEnd;
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getWarnOpen(){
+    public function getWarnOpen()
+    {
         return $this->warnOpen;
     }
 
-    public function setWarnOpen($warnOpen){
+    public function setWarnOpen($warnOpen)
+    {
         $this->warnOpen = $warnOpen;
-        $this->queryParameters["WarnOpen"] = $warnOpen;
+        $this->queryParameters['WarnOpen'] = $warnOpen;
     }
 
-    public function getSourceIp(){
+    public function getSourceIp()
+    {
         return $this->sourceIp;
     }
 
-    public function setSourceIp($sourceIp){
+    public function setSourceIp($sourceIp)
+    {
         $this->sourceIp = $sourceIp;
-        $this->queryParameters["SourceIp"] = $sourceIp;
+        $this->queryParameters['SourceIp'] = $sourceIp;
     }
 
-    public function getChannel(){
+    public function getChannel()
+    {
         return $this->channel;
     }
 
-    public function setChannel($channel){
+    public function setChannel($channel)
+    {
         $this->channel = $channel;
-        $this->queryParameters["Channel"] = $channel;
+        $this->queryParameters['Channel'] = $channel;
     }
 
-    public function getTitle(){
+    public function getTitle()
+    {
         return $this->title;
     }
 
-    public function setTitle($title){
+    public function setTitle($title)
+    {
         $this->title = $title;
-        $this->queryParameters["Title"] = $title;
+        $this->queryParameters['Title'] = $title;
     }
 
-    public function getTimeOpen(){
+    public function getTimeOpen()
+    {
         return $this->timeOpen;
     }
 
-    public function setTimeOpen($timeOpen){
+    public function setTimeOpen($timeOpen)
+    {
         $this->timeOpen = $timeOpen;
-        $this->queryParameters["TimeOpen"] = $timeOpen;
+        $this->queryParameters['TimeOpen'] = $timeOpen;
     }
 
-    public function getTimeBegin(){
+    public function getTimeBegin()
+    {
         return $this->timeBegin;
     }
 
-    public function setTimeBegin($timeBegin){
+    public function setTimeBegin($timeBegin)
+    {
         $this->timeBegin = $timeBegin;
-        $this->queryParameters["TimeBegin"] = $timeBegin;
+        $this->queryParameters['TimeBegin'] = $timeBegin;
     }
 
-    public function getFrequency(){
+    public function getFrequency()
+    {
         return $this->frequency;
     }
 
-    public function setFrequency($frequency){
+    public function setFrequency($frequency)
+    {
         $this->frequency = $frequency;
-        $this->queryParameters["Frequency"] = $frequency;
+        $this->queryParameters['Frequency'] = $frequency;
     }
 }

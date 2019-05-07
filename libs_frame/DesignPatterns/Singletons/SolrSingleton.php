@@ -13,7 +13,8 @@ use Log\Log;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
-class SolrSingleton {
+class SolrSingleton
+{
     use SingletonTrait;
 
     /**
@@ -29,21 +30,22 @@ class SolrSingleton {
      */
     private $authToken = '';
 
-    private function __construct() {
+    private function __construct()
+    {
         $configs = Tool::getConfig('solr.' . SY_ENV . SY_PROJECT);
 
         $connectUrl = (string)Tool::getArrayVal($configs, 'connect.url', '', true);
-        if(preg_match('/^(http|https)\:\/\/\S+$/', $connectUrl) == 0){
+        if (preg_match('/^(http|https)\:\/\/\S+$/', $connectUrl) == 0) {
             throw new SolrException('服务地址不合法', ErrorCode::SOLR_PARAM_ERROR);
         }
 
         $coreName = (string)Tool::getArrayVal($configs, 'core.name', '', true);
-        if(preg_match('/^[0-9a-zA-Z]{2,50}$/', $coreName) == 0){
+        if (preg_match('/^[0-9a-zA-Z]{2,50}$/', $coreName) == 0) {
             throw new SolrException('core名称不合法', ErrorCode::SOLR_PARAM_ERROR);
         }
 
         $userName = (string)Tool::getArrayVal($configs, 'user.name', '', true);
-        if(strlen($userName) > 0){
+        if (strlen($userName) > 0) {
             $userPwd = (string)Tool::getArrayVal($configs, 'user.password', '', true);
             $this->authToken = 'Basic ' . base64_encode($userName . ':' . $userPwd);
         }
@@ -55,7 +57,8 @@ class SolrSingleton {
     /**
      * @return \DesignPatterns\Singletons\SolrSingleton
      */
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (is_null(self::$instance)) {
             self::$instance = new self();
         }
@@ -69,7 +72,8 @@ class SolrSingleton {
      * @param array $data 数据内容
      * @return array
      */
-    public function add(array $data) : array {
+    public function add(array $data) : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -106,7 +110,8 @@ class SolrSingleton {
      *   inc:递增值(递增字段数据类型必须是数字类型)
      * @return array
      */
-    public function update(array $data) : array {
+    public function update(array $data) : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -146,7 +151,8 @@ class SolrSingleton {
      * @param array $data 删除的数据
      * @return array
      */
-    public function delete(array $data) : array {
+    public function delete(array $data) : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -176,7 +182,8 @@ class SolrSingleton {
      * @param array $data 配置参数数组
      * @return array
      */
-    public function select(array $data) : array {
+    public function select(array $data) : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -201,7 +208,8 @@ class SolrSingleton {
      *   keyword: string 待分词字符串
      * @return array
      */
-    public function analysis(array $data) : array {
+    public function analysis(array $data) : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -230,7 +238,8 @@ class SolrSingleton {
      * @return array
      * @throws \Exception\Solr\SolrException
      */
-    private function httpPost(string $method, array $data) {
+    private function httpPost(string $method, array $data)
+    {
         $dataStr = Tool::jsonEncode($data, JSON_UNESCAPED_UNICODE);
         $url = $this->server . $this->core . $method;
 
@@ -239,21 +248,21 @@ class SolrSingleton {
             'Content-Length: ' . strlen($dataStr),
             'Expect:',
         ];
-        if(strlen($this->authToken) > 0){
+        if (strlen($this->authToken) > 0) {
             $httpHeaders[] = 'Authorization: ' . $this->authToken;
         }
         $sendRes = Tool::sendCurlReq([
             CURLOPT_URL => $url,
-            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => $dataStr,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HEADER => false,
             CURLOPT_HTTPHEADER => $httpHeaders,
         ]);
 
-        if($sendRes['res_no'] == 0){
+        if ($sendRes['res_no'] == 0) {
             $resData = Tool::jsonDecode($sendRes['res_content']);
-            if(is_array($resData)){
+            if (is_array($resData)) {
                 return $resData;
             } else {
                 Log::error('解析POST响应失败,响应数据=' . $sendRes['res_content'], ErrorCode::SOLR_POST_ERROR);
@@ -274,11 +283,12 @@ class SolrSingleton {
      * @return array
      * @throws \Exception\Solr\SolrException
      */
-    private function httpGet(string $method,array $data) {
+    private function httpGet(string $method, array $data)
+    {
         $url = $this->server . $this->core . '/' . $method . '?wt=json';
         foreach ($data as $key => $eData) {
-            if(strlen($key) > 0){
-                if(is_array($eData)){
+            if (strlen($key) > 0) {
+                if (is_array($eData)) {
                     foreach ($eData as $eData1) {
                         $url .= '&' . $key . '=' . $eData1;
                     }
@@ -291,7 +301,7 @@ class SolrSingleton {
         $httpHeaders = [
             'Content-Type: application/json',
         ];
-        if(strlen($this->authToken) > 0){
+        if (strlen($this->authToken) > 0) {
             $httpHeaders[] = 'Authorization: ' . $this->authToken;
         }
 
@@ -301,9 +311,9 @@ class SolrSingleton {
             CURLOPT_HEADER => false,
             CURLOPT_HTTPHEADER => $httpHeaders,
         ]);
-        if($sendRes['res_no'] == 0){
+        if ($sendRes['res_no'] == 0) {
             $resData = Tool::jsonDecode($sendRes['res_content']);
-            if(is_array($resData)){
+            if (is_array($resData)) {
                 return $resData;
             } else {
                 Log::error('解析GET响应失败,响应数据=' . $sendRes['res_content'], ErrorCode::SOLR_GET_ERROR);

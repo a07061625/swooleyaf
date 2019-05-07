@@ -9,9 +9,11 @@ namespace Exception\Common;
 
 use Exception\BaseException;
 
-class CheckException extends BaseException {
-    public function __construct( $message, $code ) {
-        parent::__construct( $message, $code );
+class CheckException extends BaseException
+{
+    public function __construct($message, $code)
+    {
+        parent::__construct($message, $code);
         $this->tipName = '检查异常';
     }
 }

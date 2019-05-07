@@ -3,30 +3,36 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class CasterProgramAddRequest extends RpcAcsRequest {
+class CasterProgramAddRequest extends RpcAcsRequest
+{
     private $casterId;
     private $Episodes;
     private $ownerId;
 
-    function __construct(){
-        parent::__construct("live", "2016-11-01", "AddCasterProgram", "live", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('live', '2016-11-01', 'AddCasterProgram', 'live', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getCasterId(){
+    public function getCasterId()
+    {
         return $this->casterId;
     }
 
-    public function setCasterId($casterId){
+    public function setCasterId($casterId)
+    {
         $this->casterId = $casterId;
-        $this->queryParameters["CasterId"] = $casterId;
+        $this->queryParameters['CasterId'] = $casterId;
     }
 
-    public function getEpisodes(){
+    public function getEpisodes()
+    {
         return $this->Episodes;
     }
 
-    public function setEpisodes($Episodes){
+    public function setEpisodes($Episodes)
+    {
         $this->Episodes = $Episodes;
         for ($i = 0; $i < count($Episodes); $i ++) {
             $this->queryParameters['Episode.' . ($i + 1) . '.ResourceId'] = $Episodes[$i]['ResourceId'];
@@ -41,12 +47,14 @@ class CasterProgramAddRequest extends RpcAcsRequest {
         }
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 }

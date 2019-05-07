@@ -6,18 +6,19 @@ use AliOss\Model\CorsConfig;
 use AliOss\Model\CorsRule;
 
 $ossClient = Common::getOssClient();
-if (is_null($ossClient)) exit(1);
+if (is_null($ossClient)) {
+    exit(1);
+}
 $bucket = Common::getBucketName();
-
 
 //******************************* Simple usage****************************************************************
 
 // Set cors configuration
 $corsConfig = new CorsConfig();
 $rule = new CorsRule();
-$rule->addAllowedHeader("x-oss-header");
-$rule->addAllowedOrigin("http://www.b.com");
-$rule->addAllowedMethod("POST");
+$rule->addAllowedHeader('x-oss-header');
+$rule->addAllowedOrigin('http://www.b.com');
+$rule->addAllowedMethod('POST');
 $rule->setMaxAgeSeconds(10);
 $corsConfig->addRule($rule);
 $ossClient->putBucketCors($bucket, $corsConfig);
@@ -48,9 +49,9 @@ function putBucketCors($ossClient, $bucket)
 {
     $corsConfig = new CorsConfig();
     $rule = new CorsRule();
-    $rule->addAllowedHeader("x-oss-header");
-    $rule->addAllowedOrigin("http://www.b.com");
-    $rule->addAllowedMethod("POST");
+    $rule->addAllowedHeader('x-oss-header');
+    $rule->addAllowedOrigin('http://www.b.com');
+    $rule->addAllowedMethod('POST');
     $rule->setMaxAgeSeconds(10);
     $corsConfig->addRule($rule);
 
@@ -61,7 +62,7 @@ function putBucketCors($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
 
 /**
@@ -80,7 +81,7 @@ function getBucketCors($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
     print($corsConfig->serializeToXml() . "\n");
 }
 
@@ -99,6 +100,5 @@ function deleteBucketCors($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
-

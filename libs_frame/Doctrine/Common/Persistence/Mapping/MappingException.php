@@ -34,8 +34,8 @@ class MappingException extends \Exception
      */
     public static function classNotFoundInNamespaces($className, $namespaces)
     {
-        return new self("The class '" . $className . "' was not found in the ".
-            "chain configured namespaces " . implode(", ", $namespaces));
+        return new self("The class '" . $className . "' was not found in the " .
+            'chain configured namespaces ' . implode(', ', $namespaces));
     }
 
     /**
@@ -43,8 +43,8 @@ class MappingException extends \Exception
      */
     public static function pathRequired()
     {
-        return new self("Specifying the paths to your entities is required ".
-            "in the AnnotationDriver to retrieve all class names.");
+        return new self('Specifying the paths to your entities is required ' .
+            'in the AnnotationDriver to retrieve all class names.');
     }
 
     /**
@@ -54,7 +54,7 @@ class MappingException extends \Exception
      */
     public static function fileMappingDriversRequireConfiguredDirectoryPath($path = null)
     {
-        if ( ! empty($path)) {
+        if (! empty($path)) {
             $path = '[' . $path . ']';
         }
 

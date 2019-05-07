@@ -27,21 +27,25 @@
  */
 class PHPExcel_Worksheet_AutoFilter_Column
 {
-    const AUTOFILTER_FILTERTYPE_FILTER         = 'filters';
-    const AUTOFILTER_FILTERTYPE_CUSTOMFILTER   = 'customFilters';
+    const AUTOFILTER_FILTERTYPE_FILTER = 'filters';
+    const AUTOFILTER_FILTERTYPE_CUSTOMFILTER = 'customFilters';
     //    Supports no more than 2 rules, with an And/Or join criteria
     //        if more than 1 rule is defined
-    const AUTOFILTER_FILTERTYPE_DYNAMICFILTER  = 'dynamicFilter';
+    const AUTOFILTER_FILTERTYPE_DYNAMICFILTER = 'dynamicFilter';
     //    Even though the filter rule is constant, the filtered data can vary
     //        e.g. filtered by date = TODAY
-    const AUTOFILTER_FILTERTYPE_TOPTENFILTER   = 'top10';
+    const AUTOFILTER_FILTERTYPE_TOPTENFILTER = 'top10';
+
+    /* Multiple Rule Connections */
+    const AUTOFILTER_COLUMN_JOIN_AND = 'and';
+    const AUTOFILTER_COLUMN_JOIN_OR = 'or';
 
     /**
      * Types of autofilter rules
      *
      * @var string[]
      */
-    private static $filterTypes = array(
+    private static $filterTypes = [
         //    Currently we're not handling
         //        colorFilter
         //        extLst
@@ -50,21 +54,17 @@ class PHPExcel_Worksheet_AutoFilter_Column
         self::AUTOFILTER_FILTERTYPE_CUSTOMFILTER,
         self::AUTOFILTER_FILTERTYPE_DYNAMICFILTER,
         self::AUTOFILTER_FILTERTYPE_TOPTENFILTER,
-    );
-
-    /* Multiple Rule Connections */
-    const AUTOFILTER_COLUMN_JOIN_AND = 'and';
-    const AUTOFILTER_COLUMN_JOIN_OR  = 'or';
+    ];
 
     /**
      * Join options for autofilter rules
      *
      * @var string[]
      */
-    private static $ruleJoins = array(
+    private static $ruleJoins = [
         self::AUTOFILTER_COLUMN_JOIN_AND,
         self::AUTOFILTER_COLUMN_JOIN_OR,
-    );
+    ];
 
     /**
      * Autofilter
@@ -73,14 +73,12 @@ class PHPExcel_Worksheet_AutoFilter_Column
      */
     private $parent;
 
-
     /**
      * Autofilter Column Index
      *
      * @var string
      */
     private $columnIndex = '';
-
 
     /**
      * Autofilter Column Filter Type
@@ -89,7 +87,6 @@ class PHPExcel_Worksheet_AutoFilter_Column
      */
     private $filterType = self::AUTOFILTER_FILTERTYPE_FILTER;
 
-
     /**
      * Autofilter Multiple Rules And/Or
      *
@@ -97,22 +94,19 @@ class PHPExcel_Worksheet_AutoFilter_Column
      */
     private $join = self::AUTOFILTER_COLUMN_JOIN_OR;
 
-
     /**
      * Autofilter Column Rules
      *
      * @var array of PHPExcel_Worksheet_AutoFilter_Column_Rule
      */
-    private $ruleset = array();
-
+    private $ruleset = [];
 
     /**
      * Autofilter Column Dynamic Attributes
      *
      * @var array of mixed
      */
-    private $attributes = array();
-
+    private $attributes = [];
 
     /**
      * Create a new PHPExcel_Worksheet_AutoFilter_Column
@@ -124,6 +118,34 @@ class PHPExcel_Worksheet_AutoFilter_Column
     {
         $this->columnIndex = $pColumn;
         $this->parent = $pParent;
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if (is_object($value)) {
+                if ($key == 'parent') {
+                    //    Detach from autofilter parent
+                    $this->$key = null;
+                } else {
+                    $this->$key = clone $value;
+                }
+            } elseif ((is_array($value)) && ($key == 'ruleset')) {
+                //    The columns array of PHPExcel_Worksheet_AutoFilter objects
+                $this->$key = [];
+                foreach ($value as $k => $v) {
+                    $this->$key[$k] = clone $v;
+                    // attach the new cloned Rule to this new cloned Autofilter Cloned object
+                    $this->$key[$k]->setParent($this);
+                }
+            } else {
+                $this->$key = $value;
+            }
+        }
     }
 
     /**
@@ -198,7 +220,7 @@ class PHPExcel_Worksheet_AutoFilter_Column
      */
     public function setFilterType($pFilterType = self::AUTOFILTER_FILTERTYPE_FILTER)
     {
-        if (!in_array($pFilterType, self::$filterTypes)) {
+        if (!in_array($pFilterType, self::$filterTypes, true)) {
             throw new PHPExcel_Exception('Invalid filter type for column AutoFilter.');
         }
 
@@ -228,7 +250,7 @@ class PHPExcel_Worksheet_AutoFilter_Column
     {
         // Lowercase And/Or
         $pJoin = strtolower($pJoin);
-        if (!in_array($pJoin, self::$ruleJoins)) {
+        if (!in_array($pJoin, self::$ruleJoins, true)) {
             throw new PHPExcel_Exception('Invalid rule connection for column AutoFilter.');
         }
 
@@ -244,7 +266,7 @@ class PHPExcel_Worksheet_AutoFilter_Column
      *    @throws    PHPExcel_Exception
      *    @return PHPExcel_Worksheet_AutoFilter_Column
      */
-    public function setAttributes($pAttributes = array())
+    public function setAttributes($pAttributes = [])
     {
         $this->attributes = $pAttributes;
 
@@ -287,7 +309,6 @@ class PHPExcel_Worksheet_AutoFilter_Column
         if (isset($this->attributes[$pName])) {
             return $this->attributes[$pName];
         }
-        return null;
     }
 
     /**
@@ -369,37 +390,9 @@ class PHPExcel_Worksheet_AutoFilter_Column
      */
     public function clearRules()
     {
-        $this->ruleset = array();
+        $this->ruleset = [];
         $this->setJoin(self::AUTOFILTER_COLUMN_JOIN_OR);
 
         return $this;
-    }
-
-    /**
-     * Implement PHP __clone to create a deep clone, not just a shallow copy.
-     */
-    public function __clone()
-    {
-        $vars = get_object_vars($this);
-        foreach ($vars as $key => $value) {
-            if (is_object($value)) {
-                if ($key == 'parent') {
-                    //    Detach from autofilter parent
-                    $this->$key = null;
-                } else {
-                    $this->$key = clone $value;
-                }
-            } elseif ((is_array($value)) && ($key == 'ruleset')) {
-                //    The columns array of PHPExcel_Worksheet_AutoFilter objects
-                $this->$key = array();
-                foreach ($value as $k => $v) {
-                    $this->$key[$k] = clone $v;
-                    // attach the new cloned Rule to this new cloned Autofilter Cloned object
-                    $this->$key[$k]->setParent($this);
-                }
-            } else {
-                $this->$key = $value;
-            }
-        }
     }
 }

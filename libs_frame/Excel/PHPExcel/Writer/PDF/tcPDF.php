@@ -87,7 +87,6 @@ class PHPExcel_Writer_PDF_tcPDF extends PHPExcel_Writer_PDF_Core implements PHPE
             $paperSize = self::$paperSizes[$printPaperSize];
         }
 
-
         //  Create PDF
         $pdf = new TCPDF($orientation, 'pt', $paperSize);
         $pdf->setFontSubsetting(false);

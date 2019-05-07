@@ -42,28 +42,31 @@ class PHPExcel_CachedObjectStorage_PHPTemp extends PHPExcel_CachedObjectStorage_
     private $memoryCacheSize = null;
 
     /**
-     * Store cell data in cache for the current cell object if it's "dirty",
-     *     and the 'nullify' the current cell object
+     * Initialise this new cell collection
      *
-     * @return    void
-     * @throws    PHPExcel_Exception
+     * @param    PHPExcel_Worksheet    $parent        The worksheet for this cell collection
+     * @param    array of mixed        $arguments    Additional initialisation arguments
      */
-    protected function storeData()
+    public function __construct(PHPExcel_Worksheet $parent, $arguments)
     {
-        if ($this->currentCellIsDirty && !empty($this->currentObjectID)) {
-            $this->currentObject->detach();
+        $this->memoryCacheSize = (isset($arguments['memoryCacheSize'])) ? $arguments['memoryCacheSize'] : '1MB';
 
-            fseek($this->fileHandle, 0, SEEK_END);
-
-            $this->cellCache[$this->currentObjectID] = array(
-                'ptr' => ftell($this->fileHandle),
-                'sz'  => fwrite($this->fileHandle, serialize($this->currentObject))
-            );
-            $this->currentCellIsDirty = false;
+        parent::__construct($parent);
+        if (is_null($this->fileHandle)) {
+            $this->fileHandle = fopen('php://temp/maxmemory:' . $this->memoryCacheSize, 'a+');
         }
-        $this->currentObjectID = $this->currentObject = null;
     }
 
+    /**
+     * Destroy this cell collection
+     */
+    public function __destruct()
+    {
+        if (!is_null($this->fileHandle)) {
+            fclose($this->fileHandle);
+        }
+        $this->fileHandle = null;
+    }
 
     /**
      * Add or Update a cell in cache identified by coordinate address
@@ -86,7 +89,6 @@ class PHPExcel_CachedObjectStorage_PHPTemp extends PHPExcel_CachedObjectStorage_
         return $cell;
     }
 
-
     /**
      * Get cell at a specific coordinate
      *
@@ -104,7 +106,7 @@ class PHPExcel_CachedObjectStorage_PHPTemp extends PHPExcel_CachedObjectStorage_
         //    Check if the entry that has been requested actually exists
         if (!isset($this->cellCache[$pCoord])) {
             //    Return null if requested entry doesn't exist in cache
-            return null;
+            return;
         }
 
         //    Set current entry to the requested entry
@@ -162,7 +164,7 @@ class PHPExcel_CachedObjectStorage_PHPTemp extends PHPExcel_CachedObjectStorage_
             $this->currentObject->detach();
             $this->currentObject = $this->currentObjectID = null;
         }
-        $this->cellCache = array();
+        $this->cellCache = [];
 
         //    detach ourself from the worksheet, so that it can then delete this object successfully
         $this->parent = null;
@@ -172,29 +174,25 @@ class PHPExcel_CachedObjectStorage_PHPTemp extends PHPExcel_CachedObjectStorage_
     }
 
     /**
-     * Initialise this new cell collection
+     * Store cell data in cache for the current cell object if it's "dirty",
+     *     and the 'nullify' the current cell object
      *
-     * @param    PHPExcel_Worksheet    $parent        The worksheet for this cell collection
-     * @param    array of mixed        $arguments    Additional initialisation arguments
+     * @return    void
+     * @throws    PHPExcel_Exception
      */
-    public function __construct(PHPExcel_Worksheet $parent, $arguments)
+    protected function storeData()
     {
-        $this->memoryCacheSize = (isset($arguments['memoryCacheSize'])) ? $arguments['memoryCacheSize'] : '1MB';
+        if ($this->currentCellIsDirty && !empty($this->currentObjectID)) {
+            $this->currentObject->detach();
 
-        parent::__construct($parent);
-        if (is_null($this->fileHandle)) {
-            $this->fileHandle = fopen('php://temp/maxmemory:' . $this->memoryCacheSize, 'a+');
-        }
-    }
+            fseek($this->fileHandle, 0, SEEK_END);
 
-    /**
-     * Destroy this cell collection
-     */
-    public function __destruct()
-    {
-        if (!is_null($this->fileHandle)) {
-            fclose($this->fileHandle);
+            $this->cellCache[$this->currentObjectID] = [
+                'ptr' => ftell($this->fileHandle),
+                'sz' => fwrite($this->fileHandle, serialize($this->currentObject))
+            ];
+            $this->currentCellIsDirty = false;
         }
-        $this->fileHandle = null;
+        $this->currentObjectID = $this->currentObject = null;
     }
 }

@@ -158,6 +158,26 @@ abstract class FileDriver implements MappingDriver
     }
 
     /**
+     * Retrieves the locator used to discover mapping files by className.
+     *
+     * @return FileLocator
+     */
+    public function getLocator()
+    {
+        return $this->locator;
+    }
+
+    /**
+     * Sets the locator used to discover mapping files by className.
+     *
+     * @param FileLocator $locator
+     */
+    public function setLocator(FileLocator $locator)
+    {
+        $this->locator = $locator;
+    }
+
+    /**
      * Loads a mapping file with the given name and returns a map
      * from class/entity names to their corresponding file driver elements.
      *
@@ -183,7 +203,7 @@ abstract class FileDriver implements MappingDriver
         $this->classCache = [];
         if (null !== $this->globalBasename) {
             foreach ($this->locator->getPaths() as $path) {
-                $file = $path.'/'.$this->globalBasename.$this->locator->getFileExtension();
+                $file = $path . '/' . $this->globalBasename . $this->locator->getFileExtension();
                 if (is_file($file)) {
                     $this->classCache = array_merge(
                         $this->classCache,
@@ -192,25 +212,5 @@ abstract class FileDriver implements MappingDriver
                 }
             }
         }
-    }
-
-    /**
-     * Retrieves the locator used to discover mapping files by className.
-     *
-     * @return FileLocator
-     */
-    public function getLocator()
-    {
-        return $this->locator;
-    }
-
-    /**
-     * Sets the locator used to discover mapping files by className.
-     *
-     * @param FileLocator $locator
-     */
-    public function setLocator(FileLocator $locator)
-    {
-        $this->locator = $locator;
     }
 }

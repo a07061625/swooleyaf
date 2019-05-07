@@ -31,7 +31,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
      *
      * @var array
      */
-    protected $styles = array();
+    protected $styles = [];
 
     /**
      * Character set used in the file
@@ -47,7 +47,6 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
     {
         $this->readFilter = new PHPExcel_Reader_DefaultReadFilter();
     }
-
 
     /**
      * Can the current PHPExcel_Reader_IReader read the file?
@@ -69,10 +68,10 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
         //    Rowset                    xmlns:z="#RowsetSchema"
         //
 
-        $signature = array(
+        $signature = [
                 '<?xml version="1.0"',
                 '<?mso-application progid="Excel.Sheet"?>'
-            );
+            ];
 
         // Open file
         $this->openFile($pFilename);
@@ -100,7 +99,6 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
         return $valid;
     }
 
-
     /**
      * Reads names of the worksheets from a file, without parsing the whole file to a PHPExcel object
      *
@@ -111,13 +109,13 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
     {
         // Check if file exists
         if (!file_exists($pFilename)) {
-            throw new PHPExcel_Reader_Exception("Could not open " . $pFilename . " for reading! File does not exist.");
+            throw new PHPExcel_Reader_Exception('Could not open ' . $pFilename . ' for reading! File does not exist.');
         }
         if (!$this->canRead($pFilename)) {
-            throw new PHPExcel_Reader_Exception($pFilename . " is an Invalid Spreadsheet file.");
+            throw new PHPExcel_Reader_Exception($pFilename . ' is an Invalid Spreadsheet file.');
         }
 
-        $worksheetNames = array();
+        $worksheetNames = [];
 
         $xml = simplexml_load_string($this->securityScan(file_get_contents($pFilename)), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
         $namespaces = $xml->getNamespaces(true);
@@ -131,7 +129,6 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
         return $worksheetNames;
     }
 
-
     /**
      * Return worksheet info (Name, Last Column Letter, Last Column Index, Total Rows, Total Columns)
      *
@@ -142,10 +139,10 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
     {
         // Check if file exists
         if (!file_exists($pFilename)) {
-            throw new PHPExcel_Reader_Exception("Could not open " . $pFilename . " for reading! File does not exist.");
+            throw new PHPExcel_Reader_Exception('Could not open ' . $pFilename . ' for reading! File does not exist.');
         }
 
-        $worksheetInfo = array();
+        $worksheetInfo = [];
 
         $xml = simplexml_load_string($this->securityScan(file_get_contents($pFilename)), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
         $namespaces = $xml->getNamespaces(true);
@@ -155,7 +152,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
         foreach ($xml_ss->Worksheet as $worksheet) {
             $worksheet_ss = $worksheet->attributes($namespaces['ss']);
 
-            $tmpInfo = array();
+            $tmpInfo = [];
             $tmpInfo['worksheetName'] = '';
             $tmpInfo['lastColumnLetter'] = 'A';
             $tmpInfo['lastColumnIndex'] = 0;
@@ -202,7 +199,6 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
         return $worksheetInfo;
     }
 
-
     /**
      * Loads PHPExcel from file
      *
@@ -220,50 +216,6 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
         return $this->loadIntoExisting($pFilename, $objPHPExcel);
     }
 
-    protected static function identifyFixedStyleValue($styleList, &$styleAttributeValue)
-    {
-        $styleAttributeValue = strtolower($styleAttributeValue);
-        foreach ($styleList as $style) {
-            if ($styleAttributeValue == strtolower($style)) {
-                $styleAttributeValue = $style;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * pixel units to excel width units(units of 1/256th of a character width)
-     * @param pxs
-     * @return
-     */
-    protected static function pixel2WidthUnits($pxs)
-    {
-        $UNIT_OFFSET_MAP = array(0, 36, 73, 109, 146, 182, 219);
-
-        $widthUnits = 256 * ($pxs / 7);
-        $widthUnits += $UNIT_OFFSET_MAP[($pxs % 7)];
-        return $widthUnits;
-    }
-
-    /**
-     * excel width units(units of 1/256th of a character width) to pixel units
-     * @param widthUnits
-     * @return
-     */
-    protected static function widthUnits2Pixel($widthUnits)
-    {
-        $pixels = ($widthUnits / 256) * 7;
-        $offsetWidthUnits = $widthUnits % 256;
-        $pixels += round($offsetWidthUnits / (256 / 7));
-        return $pixels;
-    }
-
-    protected static function hex2str($hex)
-    {
-        return chr(hexdec($hex[1]));
-    }
-
     /**
      * Loads PHPExcel from file into PHPExcel instance
      *
@@ -274,41 +226,41 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
      */
     public function loadIntoExisting($pFilename, PHPExcel $objPHPExcel)
     {
-        $fromFormats    = array('\-', '\ ');
-        $toFormats      = array('-', ' ');
+        $fromFormats = ['\-', '\ '];
+        $toFormats = ['-', ' '];
 
-        $underlineStyles = array (
+        $underlineStyles = [
             PHPExcel_Style_Font::UNDERLINE_NONE,
             PHPExcel_Style_Font::UNDERLINE_DOUBLE,
             PHPExcel_Style_Font::UNDERLINE_DOUBLEACCOUNTING,
             PHPExcel_Style_Font::UNDERLINE_SINGLE,
             PHPExcel_Style_Font::UNDERLINE_SINGLEACCOUNTING
-        );
-        $verticalAlignmentStyles = array (
+        ];
+        $verticalAlignmentStyles = [
             PHPExcel_Style_Alignment::VERTICAL_BOTTOM,
             PHPExcel_Style_Alignment::VERTICAL_TOP,
             PHPExcel_Style_Alignment::VERTICAL_CENTER,
             PHPExcel_Style_Alignment::VERTICAL_JUSTIFY
-        );
-        $horizontalAlignmentStyles = array (
+        ];
+        $horizontalAlignmentStyles = [
             PHPExcel_Style_Alignment::HORIZONTAL_GENERAL,
             PHPExcel_Style_Alignment::HORIZONTAL_LEFT,
             PHPExcel_Style_Alignment::HORIZONTAL_RIGHT,
             PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
             PHPExcel_Style_Alignment::HORIZONTAL_CENTER_CONTINUOUS,
             PHPExcel_Style_Alignment::HORIZONTAL_JUSTIFY
-        );
+        ];
 
         $timezoneObj = new DateTimeZone('Europe/London');
         $GMT = new DateTimeZone('UTC');
 
         // Check if file exists
         if (!file_exists($pFilename)) {
-            throw new PHPExcel_Reader_Exception("Could not open " . $pFilename . " for reading! File does not exist.");
+            throw new PHPExcel_Reader_Exception('Could not open ' . $pFilename . ' for reading! File does not exist.');
         }
 
         if (!$this->canRead($pFilename)) {
-            throw new PHPExcel_Reader_Exception($pFilename . " is an Invalid Spreadsheet file.");
+            throw new PHPExcel_Reader_Exception($pFilename . ' is an Invalid Spreadsheet file.');
         }
 
         $xml = simplexml_load_string($this->securityScan(file_get_contents($pFilename)), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
@@ -391,7 +343,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
             $style_ss = $style->attributes($namespaces['ss']);
             $styleID = (string) $style_ss['ID'];
 //            echo 'Style ID = '.$styleID.'<br />';
-            $this->styles[$styleID] = (isset($this->styles['Default'])) ? $this->styles['Default'] : array();
+            $this->styles[$styleID] = (isset($this->styles['Default'])) ? $this->styles['Default'] : [];
             foreach ($style as $styleType => $styleData) {
                 $styleAttributes = $styleData->attributes($namespaces['ss']);
 //                echo $styleType.'<br />';
@@ -420,7 +372,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
                     case 'Borders':
                         foreach ($styleData->Border as $borderStyle) {
                             $borderAttributes = $borderStyle->attributes($namespaces['ss']);
-                            $thisBorder = array();
+                            $thisBorder = [];
                             foreach ($borderAttributes as $borderStyleKey => $borderStyleValue) {
 //                                    echo $borderStyleKey.' = '.$borderStyleValue.'<br />';
                                 switch ($borderStyleKey) {
@@ -518,7 +470,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
             $worksheet_ss = $worksheet->attributes($namespaces['ss']);
 
             if ((isset($this->loadSheetsOnly)) && (isset($worksheet_ss['Name'])) &&
-                (!in_array($worksheet_ss['Name'], $this->loadSheetsOnly))) {
+                (!in_array($worksheet_ss['Name'], $this->loadSheetsOnly, true))) {
                 continue;
             }
 
@@ -540,7 +492,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
                 foreach ($worksheet->Table->Column as $columnData) {
                     $columnData_ss = $columnData->attributes($namespaces['ss']);
                     if (isset($columnData_ss['Index'])) {
-                        $columnID = PHPExcel_Cell::stringFromColumnIndex($columnData_ss['Index']-1);
+                        $columnID = PHPExcel_Cell::stringFromColumnIndex($columnData_ss['Index'] - 1);
                     }
                     if (isset($columnData_ss['Width'])) {
                         $columnWidth = $columnData_ss['Width'];
@@ -566,9 +518,9 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
                     foreach ($rowData->Cell as $cell) {
                         $cell_ss = $cell->attributes($namespaces['ss']);
                         if (isset($cell_ss['Index'])) {
-                            $columnID = PHPExcel_Cell::stringFromColumnIndex($cell_ss['Index']-1);
+                            $columnID = PHPExcel_Cell::stringFromColumnIndex($cell_ss['Index'] - 1);
                         }
-                        $cellRange = $columnID.$rowID;
+                        $cellRange = $columnID . $rowID;
 
                         if ($this->getReadFilter() !== null) {
                             if (!$this->getReadFilter()->readCell($columnID, $rowID, $worksheetName)) {
@@ -580,13 +532,13 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
                             $columnTo = $columnID;
                             if (isset($cell_ss['MergeAcross'])) {
                                 $additionalMergedCells += (int)$cell_ss['MergeAcross'];
-                                $columnTo = PHPExcel_Cell::stringFromColumnIndex(PHPExcel_Cell::columnIndexFromString($columnID) + $cell_ss['MergeAcross'] -1);
+                                $columnTo = PHPExcel_Cell::stringFromColumnIndex(PHPExcel_Cell::columnIndexFromString($columnID) + $cell_ss['MergeAcross'] - 1);
                             }
                             $rowTo = $rowID;
                             if (isset($cell_ss['MergeDown'])) {
                                 $rowTo = $rowTo + $cell_ss['MergeDown'];
                             }
-                            $cellRange .= ':'.$columnTo.$rowTo;
+                            $cellRange .= ':' . $columnTo . $rowTo;
                             $objPHPExcel->getActiveSheet()->mergeCells($cellRange);
                         }
 
@@ -654,7 +606,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
                                     foreach ($temp as &$value) {
                                         //    Only replace in alternate array entries (i.e. non-quoted blocks)
                                         if ($key = !$key) {
-                                            $value = str_replace(array('[.', '.', ']'), '', $value);
+                                            $value = str_replace(['[.', '.', ']'], '', $value);
                                         }
                                     }
                                 } else {
@@ -691,7 +643,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
                                                 if ($columnReference{0} == '[') {
                                                     $columnReference = $columnNumber + trim($columnReference, '[]');
                                                 }
-                                                $A1CellReference = PHPExcel_Cell::stringFromColumnIndex($columnReference-1).$rowReference;
+                                                $A1CellReference = PHPExcel_Cell::stringFromColumnIndex($columnReference - 1) . $rowReference;
                                                 $value = substr_replace($value, $A1CellReference, $cellReference[0][1], strlen($cellReference[0][0]));
                                             }
                                         }
@@ -705,10 +657,10 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 
 //                            echo 'Cell '.$columnID.$rowID.' is a '.$type.' with a value of '.(($hasCalculatedValue) ? $cellDataFormula : $cellValue).'<br />';
 //
-                            $objPHPExcel->getActiveSheet()->getCell($columnID.$rowID)->setValueExplicit((($hasCalculatedValue) ? $cellDataFormula : $cellValue), $type);
+                            $objPHPExcel->getActiveSheet()->getCell($columnID . $rowID)->setValueExplicit((($hasCalculatedValue) ? $cellDataFormula : $cellValue), $type);
                             if ($hasCalculatedValue) {
 //                                echo 'Formula result is '.$cellValue.'<br />';
-                                $objPHPExcel->getActiveSheet()->getCell($columnID.$rowID)->setCalculatedValue($cellValue);
+                                $objPHPExcel->getActiveSheet()->getCell($columnID . $rowID)->setCalculatedValue($cellValue);
                             }
                             $cellIsSet = $rowHasData = true;
                         }
@@ -726,7 +678,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 //                            echo $annotation,'<br />';
                             $annotation = strip_tags($node);
 //                            echo 'Annotation: ', $annotation,'<br />';
-                            $objPHPExcel->getActiveSheet()->getComment($columnID.$rowID)->setAuthor(self::convertStringEncoding($author, $this->charSet))->setText($this->parseRichText($annotation));
+                            $objPHPExcel->getActiveSheet()->getComment($columnID . $rowID)->setAuthor(self::convertStringEncoding($author, $this->charSet))->setText($this->parseRichText($annotation));
                         }
 
                         if (($cellIsSet) && (isset($cell_ss['StyleID']))) {
@@ -736,8 +688,8 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 //                                echo 'Cell '.$columnID.$rowID.'<br />';
 //                                print_r($this->styles[$style]);
 //                                echo '<br />';
-                                if (!$objPHPExcel->getActiveSheet()->cellExists($columnID.$rowID)) {
-                                    $objPHPExcel->getActiveSheet()->getCell($columnID.$rowID)->setValue(null);
+                                if (!$objPHPExcel->getActiveSheet()->cellExists($columnID . $rowID)) {
+                                    $objPHPExcel->getActiveSheet()->getCell($columnID . $rowID)->setValue(null);
                                 }
                                 $objPHPExcel->getActiveSheet()->getStyle($cellRange)->applyFromArray($this->styles[$style]);
                             }
@@ -770,6 +722,51 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
         return $objPHPExcel;
     }
 
+    protected static function identifyFixedStyleValue($styleList, &$styleAttributeValue)
+    {
+        $styleAttributeValue = strtolower($styleAttributeValue);
+        foreach ($styleList as $style) {
+            if ($styleAttributeValue == strtolower($style)) {
+                $styleAttributeValue = $style;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * pixel units to excel width units(units of 1/256th of a character width)
+     * @param pxs
+     * @param mixed $pxs
+     * @return
+     */
+    protected static function pixel2WidthUnits($pxs)
+    {
+        $UNIT_OFFSET_MAP = [0, 36, 73, 109, 146, 182, 219];
+
+        $widthUnits = 256 * ($pxs / 7);
+        $widthUnits += $UNIT_OFFSET_MAP[($pxs % 7)];
+        return $widthUnits;
+    }
+
+    /**
+     * excel width units(units of 1/256th of a character width) to pixel units
+     * @param widthUnits
+     * @param mixed $widthUnits
+     * @return
+     */
+    protected static function widthUnits2Pixel($widthUnits)
+    {
+        $pixels = ($widthUnits / 256) * 7;
+        $offsetWidthUnits = $widthUnits % 256;
+        $pixels += round($offsetWidthUnits / (256 / 7));
+        return $pixels;
+    }
+
+    protected static function hex2str($hex)
+    {
+        return chr(hexdec($hex[1]));
+    }
 
     protected static function convertStringEncoding($string, $charset)
     {
@@ -778,7 +775,6 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
         }
         return $string;
     }
-
 
     protected function parseRichText($is = '')
     {

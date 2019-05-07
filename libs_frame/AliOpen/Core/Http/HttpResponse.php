@@ -1,7 +1,8 @@
 <?php
 namespace AliOpen\Core\Http;
 
-class HttpResponse {
+class HttpResponse
+{
     /**
      * @var string
      */
@@ -14,35 +15,40 @@ class HttpResponse {
     /**
      * @return string
      */
-    public function getBody(){
+    public function getBody()
+    {
         return $this->body;
     }
 
     /**
      * @param $body
      */
-    public function setBody($body){
+    public function setBody($body)
+    {
         $this->body = $body;
     }
 
     /**
      * @return string
      */
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->status;
     }
 
     /**
      * @param $status
      */
-    public function setStatus($status){
+    public function setStatus($status)
+    {
         $this->status = $status;
     }
 
     /**
      * @return bool
      */
-    public function isSuccess(){
+    public function isSuccess()
+    {
         return 200 <= $this->status && 300 > $this->status;
     }
 }

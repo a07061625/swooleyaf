@@ -32,14 +32,14 @@ class PHPExcel_HashTable
      *
      * @var array
      */
-    protected $items = array();
+    protected $items = [];
 
     /**
      * HashTable key map
      *
      * @var array
      */
-    protected $keyMap = array();
+    protected $keyMap = [];
 
     /**
      * Create a new PHPExcel_HashTable
@@ -52,6 +52,19 @@ class PHPExcel_HashTable
         if ($pSource !== null) {
             // Create HashTable
             $this->addFromSource($pSource);
+        }
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if (is_object($value)) {
+                $this->$key = clone $value;
+            }
         }
     }
 
@@ -122,8 +135,8 @@ class PHPExcel_HashTable
      */
     public function clear()
     {
-        $this->items = array();
-        $this->keyMap = array();
+        $this->items = [];
+        $this->keyMap = [];
     }
 
     /**
@@ -144,7 +157,7 @@ class PHPExcel_HashTable
      */
     public function getIndexForHashCode($pHashCode = '')
     {
-        return array_search($pHashCode, $this->keyMap);
+        return array_search($pHashCode, $this->keyMap, true);
     }
 
     /**
@@ -159,8 +172,6 @@ class PHPExcel_HashTable
         if (isset($this->keyMap[$pIndex])) {
             return $this->getByHashCode($this->keyMap[$pIndex]);
         }
-
-        return null;
     }
 
     /**
@@ -175,8 +186,6 @@ class PHPExcel_HashTable
         if (isset($this->items[$pHashCode])) {
             return $this->items[$pHashCode];
         }
-
-        return null;
     }
 
     /**
@@ -187,18 +196,5 @@ class PHPExcel_HashTable
     public function toArray()
     {
         return $this->items;
-    }
-
-    /**
-     * Implement PHP __clone to create a deep clone, not just a shallow copy.
-     */
-    public function __clone()
-    {
-        $vars = get_object_vars($this);
-        foreach ($vars as $key => $value) {
-            if (is_object($value)) {
-                $this->$key = clone $value;
-            }
-        }
     }
 }

@@ -60,14 +60,14 @@ class PHPExcel_Shared_Escher_DggContainer
      *
      * @var array
      */
-    private $OPT = array();
+    private $OPT = [];
 
     /**
      * Array of identifier clusters containg information about the maximum shape identifiers
      *
      * @var array
      */
-    private $IDCLs = array();
+    private $IDCLs = [];
 
     /**
      * Get maximum shape index of all shapes in all drawings (plus one)
@@ -83,6 +83,7 @@ class PHPExcel_Shared_Escher_DggContainer
      * Set maximum shape index of all shapes in all drawings (plus one)
      *
      * @param int
+     * @param mixed $value
      */
     public function setSpIdMax($value)
     {
@@ -103,6 +104,7 @@ class PHPExcel_Shared_Escher_DggContainer
      * Set total number of drawings saved
      *
      * @param int
+     * @param mixed $value
      */
     public function setCDgSaved($value)
     {
@@ -123,6 +125,7 @@ class PHPExcel_Shared_Escher_DggContainer
      * Set total number of shapes saved (including group shapes)
      *
      * @param int
+     * @param mixed $value
      */
     public function setCSpSaved($value)
     {
@@ -171,7 +174,6 @@ class PHPExcel_Shared_Escher_DggContainer
         if (isset($this->OPT[$property])) {
             return $this->OPT[$property];
         }
-        return null;
     }
 
     /**

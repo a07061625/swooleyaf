@@ -3,7 +3,8 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class AIVideoTerrorismRecogJobSubmitRequest extends RpcAcsRequest {
+class AIVideoTerrorismRecogJobSubmitRequest extends RpcAcsRequest
+{
     private $userData;
     private $resourceOwnerId;
     private $resourceOwnerAccount;
@@ -12,71 +13,86 @@ class AIVideoTerrorismRecogJobSubmitRequest extends RpcAcsRequest {
     private $ownerId;
     private $mediaId;
 
-    public function __construct(){
-        parent::__construct("vod", "2017-03-21", "SubmitAIVideoTerrorismRecogJob", "vod", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('vod', '2017-03-21', 'SubmitAIVideoTerrorismRecogJob', 'vod', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getUserData(){
+    public function getUserData()
+    {
         return $this->userData;
     }
 
-    public function setUserData($userData){
+    public function setUserData($userData)
+    {
         $this->userData = $userData;
-        $this->queryParameters["UserData"] = $userData;
+        $this->queryParameters['UserData'] = $userData;
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getResourceOwnerAccount(){
+    public function getResourceOwnerAccount()
+    {
         return $this->resourceOwnerAccount;
     }
 
-    public function setResourceOwnerAccount($resourceOwnerAccount){
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
-    public function getOwnerAccount(){
+    public function getOwnerAccount()
+    {
         return $this->ownerAccount;
     }
 
-    public function setOwnerAccount($ownerAccount){
+    public function setOwnerAccount($ownerAccount)
+    {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
-    public function getAIVideoTerrorismRecogConfig(){
+    public function getAIVideoTerrorismRecogConfig()
+    {
         return $this->aIVideoTerrorismRecogConfig;
     }
 
-    public function setAIVideoTerrorismRecogConfig($aIVideoTerrorismRecogConfig){
+    public function setAIVideoTerrorismRecogConfig($aIVideoTerrorismRecogConfig)
+    {
         $this->aIVideoTerrorismRecogConfig = $aIVideoTerrorismRecogConfig;
-        $this->queryParameters["AIVideoTerrorismRecogConfig"] = $aIVideoTerrorismRecogConfig;
+        $this->queryParameters['AIVideoTerrorismRecogConfig'] = $aIVideoTerrorismRecogConfig;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getMediaId(){
+    public function getMediaId()
+    {
         return $this->mediaId;
     }
 
-    public function setMediaId($mediaId){
+    public function setMediaId($mediaId)
+    {
         $this->mediaId = $mediaId;
-        $this->queryParameters["MediaId"] = $mediaId;
+        $this->queryParameters['MediaId'] = $mediaId;
     }
 }

@@ -39,28 +39,28 @@ class PHPExcel_Writer_CSV extends PHPExcel_Writer_Abstract implements PHPExcel_W
      *
      * @var string
      */
-    private $delimiter    = ',';
+    private $delimiter = ',';
 
     /**
      * Enclosure
      *
      * @var string
      */
-    private $enclosure    = '"';
+    private $enclosure = '"';
 
     /**
      * Line ending
      *
      * @var string
      */
-    private $lineEnding    = PHP_EOL;
+    private $lineEnding = PHP_EOL;
 
     /**
      * Sheet index to write
      *
      * @var int
      */
-    private $sheetIndex    = 0;
+    private $sheetIndex = 0;
 
     /**
      * Whether to write a BOM (for UTF8).
@@ -91,7 +91,7 @@ class PHPExcel_Writer_CSV extends PHPExcel_Writer_Abstract implements PHPExcel_W
      */
     public function __construct(PHPExcel $phpExcel)
     {
-        $this->phpExcel    = $phpExcel;
+        $this->phpExcel = $phpExcel;
     }
 
     /**
@@ -120,7 +120,7 @@ class PHPExcel_Writer_CSV extends PHPExcel_Writer_Abstract implements PHPExcel_W
             $this->setUseBOM(true);                //  Enforce UTF-8 BOM Header
             $this->setIncludeSeparatorLine(true);  //  Set separator line
             $this->setEnclosure('"');              //  Set enclosure to "
-            $this->setDelimiter(";");              //  Set delimiter to a semi-colon
+            $this->setDelimiter(';');              //  Set delimiter to a semi-colon
             $this->setLineEnding("\r\n");
         }
         if ($this->useBOM) {
@@ -139,7 +139,7 @@ class PHPExcel_Writer_CSV extends PHPExcel_Writer_Abstract implements PHPExcel_W
         // Write rows to file
         for ($row = 1; $row <= $maxRow; ++$row) {
             // Convert the row to an array...
-            $cellsArray = $sheet->rangeToArray('A'.$row.':'.$maxCol.$row, '', $this->preCalculateFormulas);
+            $cellsArray = $sheet->rangeToArray('A' . $row . ':' . $maxCol . $row, '', $this->preCalculateFormulas);
             // ... and write to the file
             $this->writeLine($fileHandle, $cellsArray[0]);
         }
@@ -346,7 +346,7 @@ class PHPExcel_Writer_CSV extends PHPExcel_Writer_Abstract implements PHPExcel_W
             // Write to file
             fwrite($pFileHandle, $line);
         } else {
-            throw new PHPExcel_Writer_Exception("Invalid data row passed to CSV writer.");
+            throw new PHPExcel_Writer_Exception('Invalid data row passed to CSV writer.');
         }
     }
 }

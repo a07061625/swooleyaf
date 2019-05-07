@@ -11,7 +11,8 @@ use AliPay\AliPayBase;
 use Constant\ErrorCode;
 use Exception\AliPay\AliPayAuthException;
 
-class AuthToken extends AliPayBase {
+class AuthToken extends AliPayBase
+{
     /**
      * 准许类型
      * @var string
@@ -28,20 +29,23 @@ class AuthToken extends AliPayBase {
      */
     private $refresh_token = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct($appId);
         $this->setMethod('alipay.open.auth.token.app');
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $grantType
      * @throws \Exception\AliPay\AliPayAuthException
      */
-    public function setGrantType(string $grantType){
-        if(in_array($grantType, ['authorization_code', 'refresh_token',])){
+    public function setGrantType(string $grantType)
+    {
+        if (in_array($grantType, ['authorization_code', 'refresh_token',], true)) {
             $this->biz_content['grant_type'] = $grantType;
         } else {
             throw new AliPayAuthException('准许类型不合法', ErrorCode::ALIPAY_AUTH_PARAM_ERROR);
@@ -52,8 +56,9 @@ class AuthToken extends AliPayBase {
      * @param string $code
      * @throws \Exception\AliPay\AliPayAuthException
      */
-    public function setCode(string $code){
-        if(ctype_alnum($code) && (strlen($code) <= 40)){
+    public function setCode(string $code)
+    {
+        if (ctype_alnum($code) && (strlen($code) <= 40)) {
             $this->biz_content['code'] = $code;
             unset($this->biz_content['refresh_token']);
         } else {
@@ -65,8 +70,9 @@ class AuthToken extends AliPayBase {
      * @param string $refreshToken
      * @throws \Exception\AliPay\AliPayAuthException
      */
-    public function setRefreshToken(string $refreshToken){
-        if(ctype_alnum($refreshToken) && (strlen($refreshToken) <= 40)){
+    public function setRefreshToken(string $refreshToken)
+    {
+        if (ctype_alnum($refreshToken) && (strlen($refreshToken) <= 40)) {
             $this->biz_content['refresh_token'] = $refreshToken;
             unset($this->biz_content['code']);
         } else {
@@ -74,13 +80,14 @@ class AuthToken extends AliPayBase {
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         if (!isset($this->biz_content['grant_type'])) {
             throw new AliPayAuthException('准许类型不能为空', ErrorCode::ALIPAY_AUTH_PARAM_ERROR);
         }
-        if(($this->biz_content['grant_type'] == 'authorization_code') && !isset($this->biz_content['code'])){
+        if (($this->biz_content['grant_type'] == 'authorization_code') && !isset($this->biz_content['code'])) {
             throw new AliPayAuthException('授权码不能为空', ErrorCode::ALIPAY_AUTH_PARAM_ERROR);
-        } else if(($this->biz_content['grant_type'] == 'refresh_token') && !isset($this->biz_content['refresh_token'])){
+        } elseif (($this->biz_content['grant_type'] == 'refresh_token') && !isset($this->biz_content['refresh_token'])) {
             throw new AliPayAuthException('刷新令牌不能为空', ErrorCode::ALIPAY_AUTH_PARAM_ERROR);
         }
 

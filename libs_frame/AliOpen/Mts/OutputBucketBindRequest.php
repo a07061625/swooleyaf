@@ -3,7 +3,8 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class OutputBucketBindRequest extends RpcAcsRequest {
+class OutputBucketBindRequest extends RpcAcsRequest
+{
     private $bucket;
     private $resourceOwnerId;
     private $resourceOwnerAccount;
@@ -11,62 +12,75 @@ class OutputBucketBindRequest extends RpcAcsRequest {
     private $ownerAccount;
     private $ownerId;
 
-    public function __construct(){
-        parent::__construct("Mts", "2014-06-18", "BindOutputBucket", "mts", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Mts', '2014-06-18', 'BindOutputBucket', 'mts', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getBucket(){
+    public function getBucket()
+    {
         return $this->bucket;
     }
 
-    public function setBucket($bucket){
+    public function setBucket($bucket)
+    {
         $this->bucket = $bucket;
-        $this->queryParameters["Bucket"] = $bucket;
+        $this->queryParameters['Bucket'] = $bucket;
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getResourceOwnerAccount(){
+    public function getResourceOwnerAccount()
+    {
         return $this->resourceOwnerAccount;
     }
 
-    public function setResourceOwnerAccount($resourceOwnerAccount){
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
-    public function getRoleArn(){
+    public function getRoleArn()
+    {
         return $this->roleArn;
     }
 
-    public function setRoleArn($roleArn){
+    public function setRoleArn($roleArn)
+    {
         $this->roleArn = $roleArn;
-        $this->queryParameters["RoleArn"] = $roleArn;
+        $this->queryParameters['RoleArn'] = $roleArn;
     }
 
-    public function getOwnerAccount(){
+    public function getOwnerAccount()
+    {
         return $this->ownerAccount;
     }
 
-    public function setOwnerAccount($ownerAccount){
+    public function setOwnerAccount($ownerAccount)
+    {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 }

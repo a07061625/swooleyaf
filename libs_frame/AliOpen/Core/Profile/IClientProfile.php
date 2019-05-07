@@ -1,7 +1,8 @@
 <?php
 namespace AliOpen\Core\Profile;
 
-interface IClientProfile {
+interface IClientProfile
+{
     public function getSigner();
 
     public function getRegionId();

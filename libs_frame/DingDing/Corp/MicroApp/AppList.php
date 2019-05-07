@@ -15,19 +15,23 @@ use Tool\Tool;
  * 获取应用列表
  * @package DingDing\Corp\MicroApp
  */
-class AppList extends TalkBaseCorp {
+class AppList extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/microapp/list?' . http_build_query([
             'access_token' => $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag),
         ]);

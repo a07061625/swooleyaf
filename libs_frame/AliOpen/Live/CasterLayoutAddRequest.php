@@ -3,7 +3,8 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class CasterLayoutAddRequest extends RpcAcsRequest {
+class CasterLayoutAddRequest extends RpcAcsRequest
+{
     private $BlendLists;
     private $AudioLayers;
     private $VideoLayers;
@@ -11,27 +12,32 @@ class CasterLayoutAddRequest extends RpcAcsRequest {
     private $MixLists;
     private $ownerId;
 
-    public function __construct(){
-        parent::__construct("live", "2016-11-01", "AddCasterLayout", "live", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('live', '2016-11-01', 'AddCasterLayout', 'live', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getBlendLists(){
+    public function getBlendLists()
+    {
         return $this->BlendLists;
     }
 
-    public function setBlendLists($BlendLists){
+    public function setBlendLists($BlendLists)
+    {
         $this->BlendLists = $BlendLists;
         for ($i = 0; $i < count($BlendLists); $i ++) {
-            $this->queryParameters["BlendList." . ($i + 1)] = $BlendLists[$i];
+            $this->queryParameters['BlendList.' . ($i + 1)] = $BlendLists[$i];
         }
     }
 
-    public function getAudioLayers(){
+    public function getAudioLayers()
+    {
         return $this->AudioLayers;
     }
 
-    public function setAudioLayers($AudioLayers){
+    public function setAudioLayers($AudioLayers)
+    {
         $this->AudioLayers = $AudioLayers;
         for ($i = 0; $i < count($AudioLayers); $i ++) {
             $this->queryParameters['AudioLayer.' . ($i + 1) . '.FixedDelayDuration'] = $AudioLayers[$i]['FixedDelayDuration'];
@@ -40,11 +46,13 @@ class CasterLayoutAddRequest extends RpcAcsRequest {
         }
     }
 
-    public function getVideoLayers(){
+    public function getVideoLayers()
+    {
         return $this->VideoLayers;
     }
 
-    public function setVideoLayers($VideoLayers){
+    public function setVideoLayers($VideoLayers)
+    {
         $this->VideoLayers = $VideoLayers;
         for ($i = 0; $i < count($VideoLayers); $i ++) {
             $this->queryParameters['VideoLayer.' . ($i + 1) . '.FillMode'] = $VideoLayers[$i]['FillMode'];
@@ -59,32 +67,38 @@ class CasterLayoutAddRequest extends RpcAcsRequest {
         }
     }
 
-    public function getCasterId(){
+    public function getCasterId()
+    {
         return $this->casterId;
     }
 
-    public function setCasterId($casterId){
+    public function setCasterId($casterId)
+    {
         $this->casterId = $casterId;
-        $this->queryParameters["CasterId"] = $casterId;
+        $this->queryParameters['CasterId'] = $casterId;
     }
 
-    public function getMixLists(){
+    public function getMixLists()
+    {
         return $this->MixLists;
     }
 
-    public function setMixLists($MixLists){
+    public function setMixLists($MixLists)
+    {
         $this->MixLists = $MixLists;
         for ($i = 0; $i < count($MixLists); $i ++) {
-            $this->queryParameters["MixList." . ($i + 1)] = $MixLists[$i];
+            $this->queryParameters['MixList.' . ($i + 1)] = $MixLists[$i];
         }
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 }

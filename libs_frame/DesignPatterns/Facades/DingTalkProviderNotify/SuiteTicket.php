@@ -12,10 +12,12 @@ use DesignPatterns\Facades\DingTalkProviderNotifyFacade;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Traits\SimpleFacadeTrait;
 
-class SuiteTicket extends DingTalkProviderNotifyFacade {
+class SuiteTicket extends DingTalkProviderNotifyFacade
+{
     use SimpleFacadeTrait;
 
-    protected static function handleNotify(array $data){
+    protected static function handleNotify(array $data)
+    {
         $redisKey = Project::REDIS_PREFIX_DINGTALK_PROVIDER_ACCOUNT_SUITE . $data['SuiteKey'];
         CacheSimpleFactory::getRedisInstance()->hMSet($redisKey, [
             'unique_key' => $redisKey,

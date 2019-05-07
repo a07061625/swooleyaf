@@ -27,11 +27,11 @@
 
 /** Error reporting */
 error_reporting(E_ALL);
-ini_set('display_errors', TRUE);
-ini_set('display_startup_errors', TRUE);
+ini_set('display_errors', true);
+ini_set('display_startup_errors', true);
 date_default_timezone_set('Europe/London');
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 date_default_timezone_set('Europe/London');
 mt_srand(1234567890);
@@ -39,18 +39,17 @@ mt_srand(1234567890);
 /** Include PHPExcel */
 require_once dirname(__FILE__) . '/../Classes/PHPExcel.php';
 
-
 // List functions
-echo date('H:i:s') , " List implemented functions" , EOL;
+echo date('H:i:s') , ' List implemented functions' , EOL;
 $objCalc = PHPExcel_Calculation::getInstance();
 print_r($objCalc->listFunctionNames());
 
 // Create new PHPExcel object
-echo date('H:i:s') , " Create new PHPExcel object" , EOL;
+echo date('H:i:s') , ' Create new PHPExcel object' , EOL;
 $objPHPExcel = new PHPExcel();
 
 // Add some data, we will use some formulas here
-echo date('H:i:s') , " Add some data and formulas" , EOL;
+echo date('H:i:s') , ' Add some data and formulas' , EOL;
 $objPHPExcel->getActiveSheet()->setCellValue('A14', 'Count:')
                               ->setCellValue('A15', 'Sum:')
                               ->setCellValue('A16', 'Max:')
@@ -76,13 +75,12 @@ $objPHPExcel->getActiveSheet()->setCellValue('A31', 'DevSq:')
 
 $objPHPExcel->getActiveSheet()->setCellValue('A37', 'Date:');
 
-
 $objPHPExcel->getActiveSheet()->setCellValue('B1', 'Range 1')
                               ->setCellValue('B2', 2)
                               ->setCellValue('B3', 8)
                               ->setCellValue('B4', 10)
-                              ->setCellValue('B5', True)
-                              ->setCellValue('B6', False)
+                              ->setCellValue('B5', true)
+                              ->setCellValue('B6', false)
                               ->setCellValue('B7', 'Text String')
                               ->setCellValue('B9', '22')
                               ->setCellValue('B10', 4)
@@ -117,7 +115,6 @@ $objPHPExcel->getActiveSheet()->setCellValue('B37', '=DATE(2007, 12, 21)')
                               ->setCellValue('B39', '=DATEVALUE("01-Feb-2006 10:06 AM")')
                               ->setCellValue('B40', '=DAY( DATE(2006, 1, 2) )')
                               ->setCellValue('B41', '=DAYS360( DATE(2002, 2, 3), DATE(2005, 5, 31) )');
-
 
 $objPHPExcel->getActiveSheet()->setCellValue('C1', 'Range 2')
                               ->setCellValue('C2', 1)
@@ -155,7 +152,6 @@ $objPHPExcel->getActiveSheet()->setCellValue('C31', '=DEVSQ(C2:C12)')
                               ->setCellValue('C34', '=VARP(C2:C12)')
                               ->setCellValue('C35', '=VARPA(C2:C12)');
 
-
 $objPHPExcel->getActiveSheet()->setCellValue('D1', 'Range 3')
                               ->setCellValue('D2', 2)
                               ->setCellValue('D3', 3)
@@ -189,22 +185,20 @@ $objPHPExcel->getActiveSheet()->setCellValue('E22', 'Median of both ranges:')
 $objPHPExcel->getActiveSheet()->setCellValue('E23', 'Mode of both ranges:')
                               ->setCellValue('F23', '=MODE(B2:C12)');
 
-
 // Calculated data
-echo date('H:i:s') , " Calculated data" , EOL;
+echo date('H:i:s') , ' Calculated data' , EOL;
 for ($col = 'B'; $col != 'G'; ++$col) {
-    for($row = 14; $row <= 41; ++$row) {
-        if ((!is_null($formula = $objPHPExcel->getActiveSheet()->getCell($col.$row)->getValue())) &&
+    for ($row = 14; $row <= 41; ++$row) {
+        if ((!is_null($formula = $objPHPExcel->getActiveSheet()->getCell($col . $row)->getValue())) &&
             ($formula[0] == '=')) {
             echo 'Value of ' , $col , $row , ' [' , $formula , ']: ' ,
-                               $objPHPExcel->getActiveSheet()->getCell($col.$row)->getCalculatedValue() . EOL;
+                               $objPHPExcel->getActiveSheet()->getCell($col . $row)->getCalculatedValue() . EOL;
         }
     }
 }
 
-
 // Save Excel 2007 file
-echo date('H:i:s') , " Write to Excel2007 format" , EOL;
+echo date('H:i:s') , ' Write to Excel2007 format' , EOL;
 $callStartTime = microtime(true);
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
@@ -221,15 +215,14 @@ $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
 $callEndTime = microtime(true);
 $callTime = $callEndTime - $callStartTime;
 
-echo date('H:i:s') , " File written to " , str_replace('.php', '.xlsx', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
+echo date('H:i:s') , ' File written to ' , str_replace('.php', '.xlsx', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
+echo 'Call time to write Workbook was ' , sprintf('%.4f', $callTime) , ' seconds' , EOL;
 // Echo memory usage
-echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , " MB" , EOL;
-
+echo date('H:i:s') , ' Current memory usage: ' , (memory_get_usage(true) / 1024 / 1024) , ' MB' , EOL;
 
 // Echo memory peak usage
-echo date('H:i:s') , " Peak memory usage: " , (memory_get_peak_usage(true) / 1024 / 1024) , " MB" , EOL;
+echo date('H:i:s') , ' Peak memory usage: ' , (memory_get_peak_usage(true) / 1024 / 1024) , ' MB' , EOL;
 
 // Echo done
-echo date('H:i:s') , " Done writing file" , EOL;
+echo date('H:i:s') , ' Done writing file' , EOL;
 echo 'File has been created in ' , getcwd() , EOL;

@@ -3,12 +3,14 @@ namespace AliOss\Result;
 
 use AliOss\Model\LifecycleConfig;
 
-class GetLifecycleResult extends Result {
+class GetLifecycleResult extends Result
+{
     /**
      *  Parse the LifecycleConfig object from the response
      * @return LifecycleConfig
      */
-    protected function parseDataFromResponse(){
+    protected function parseDataFromResponse()
+    {
         $content = $this->rawResponse->body;
         $config = new LifecycleConfig();
         $config->parseFromXml($content);
@@ -21,7 +23,8 @@ class GetLifecycleResult extends Result {
      * [200-299]: OK, and the LifecycleConfig could be got; [404] The Life cycle config is not found.
      * @return bool
      */
-    protected function isResponseOk(){
+    protected function isResponseOk()
+    {
         $status = $this->rawResponse->status;
         if ((int)(intval($status) / 100) == 2 || (int)(intval($status)) === 404) {
             return true;

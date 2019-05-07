@@ -9,8 +9,10 @@ namespace DB\Entities;
 
 use DB\Containers\MongoContainer;
 
-class MongoEntity extends BaseEntity {
-    public function __construct(string $dbName,string $tableName) {
+class MongoEntity extends BaseEntity
+{
+    public function __construct(string $dbName, string $tableName)
+    {
         parent::__construct();
         $this->_container = new MongoContainer($dbName, $tableName);
         $this->_dbType = BaseEntity::DB_TYPE_MONGO;
@@ -20,7 +22,8 @@ class MongoEntity extends BaseEntity {
     /**
      * @return \DB\Containers\MongoContainer
      */
-    public function getContainer() {
+    public function getContainer()
+    {
         return $this->_container;
     }
 }

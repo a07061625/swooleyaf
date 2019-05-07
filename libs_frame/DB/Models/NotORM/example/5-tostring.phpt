@@ -2,7 +2,7 @@
 Calling __toString()
 --FILE--
 <?php
-include_once dirname(__FILE__) . "/connect.inc.php";
+include_once dirname(__FILE__) . '/connect.inc.php';
 
 foreach ($software->application() as $application) {
     echo "$application\n";

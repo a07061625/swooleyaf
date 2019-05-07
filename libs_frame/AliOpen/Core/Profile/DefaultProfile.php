@@ -13,7 +13,8 @@ use AliOpen\Core\Regions\EndpointProvider;
 use AliOpen\Core\Regions\LocationService;
 use AliOpen\Core\Regions\ProductDomain;
 
-class DefaultProfile implements IClientProfile {
+class DefaultProfile implements IClientProfile
+{
     /**
      * @var \AliOpen\Core\Profile\IClientProfile
      */
@@ -54,7 +55,8 @@ class DefaultProfile implements IClientProfile {
      * @param string $authType
      * @param null $isigner
      */
-    private function __construct($regionId, $credential, $authType = ALIOPEN_AUTH_TYPE_RAM_AK, $isigner = null){
+    private function __construct($regionId, $credential, $authType = ALIOPEN_AUTH_TYPE_RAM_AK, $isigner = null)
+    {
         self::$regionId = $regionId;
         self::$credential = $credential;
         self::$authType = $authType;
@@ -68,9 +70,10 @@ class DefaultProfile implements IClientProfile {
      * @param null $securityToken
      * @return \AliOpen\Core\Profile\DefaultProfile|IClientProfile
      */
-    public static function getProfile($regionId, $accessKeyId, $accessSecret, $securityToken = null){
+    public static function getProfile($regionId, $accessKeyId, $accessSecret, $securityToken = null)
+    {
         $credential = new Credential($accessKeyId, $accessSecret, $securityToken);
-        self::$profile = new DefaultProfile($regionId, $credential);
+        self::$profile = new self($regionId, $credential);
 
         return self::$profile;
     }
@@ -83,9 +86,10 @@ class DefaultProfile implements IClientProfile {
      * @param $roleSessionName
      * @return \AliOpen\Core\Profile\DefaultProfile|IClientProfile
      */
-    public static function getRamRoleArnProfile($regionId, $accessKeyId, $accessSecret, $roleArn, $roleSessionName){
+    public static function getRamRoleArnProfile($regionId, $accessKeyId, $accessSecret, $roleArn, $roleSessionName)
+    {
         $credential = new RamRoleArnCredential($accessKeyId, $accessSecret, $roleArn, $roleSessionName);
-        self::$profile = new DefaultProfile($regionId, $credential, ALIOPEN_AUTH_TYPE_RAM_ROLE_ARN);
+        self::$profile = new self($regionId, $credential, ALIOPEN_AUTH_TYPE_RAM_ROLE_ARN);
 
         return self::$profile;
     }
@@ -95,9 +99,10 @@ class DefaultProfile implements IClientProfile {
      * @param $roleName
      * @return \AliOpen\Core\Profile\DefaultProfile|IClientProfile
      */
-    public static function getEcsRamRoleProfile($regionId, $roleName){
+    public static function getEcsRamRoleProfile($regionId, $roleName)
+    {
         $credential = new EcsRamRoleCredential($roleName);
-        self::$profile = new DefaultProfile($regionId, $credential, ALIOPEN_AUTH_TYPE_ECS_RAM_ROLE);
+        self::$profile = new self($regionId, $credential, ALIOPEN_AUTH_TYPE_ECS_RAM_ROLE);
 
         return self::$profile;
     }
@@ -107,9 +112,10 @@ class DefaultProfile implements IClientProfile {
      * @param $bearerToken
      * @return \AliOpen\Core\Profile\DefaultProfile|IClientProfile
      */
-    public static function getBearerTokenProfile($regionId, $bearerToken){
+    public static function getBearerTokenProfile($regionId, $bearerToken)
+    {
         $credential = new BearerTokenCredential($bearerToken);
-        self::$profile = new DefaultProfile($regionId, $credential, ALIOPEN_AUTH_TYPE_BEARER_TOKEN, new BearTokenSigner());
+        self::$profile = new self($regionId, $credential, ALIOPEN_AUTH_TYPE_BEARER_TOKEN, new BearTokenSigner());
 
         return self::$profile;
     }
@@ -117,7 +123,8 @@ class DefaultProfile implements IClientProfile {
     /**
      * @return \AliOpen\Core\Auth\ISigner|\AliOpen\Core\Auth\ShaHmac1Signer|null
      */
-    public function getSigner(){
+    public function getSigner()
+    {
         if (null == self::$isigner) {
             self::$isigner = new ShaHmac1Signer();
         }
@@ -128,21 +135,24 @@ class DefaultProfile implements IClientProfile {
     /**
      * @return string
      */
-    public function getRegionId(){
+    public function getRegionId()
+    {
         return self::$regionId;
     }
 
     /**
      * @return string
      */
-    public function getFormat(){
+    public function getFormat()
+    {
         return self::$acceptFormat;
     }
 
     /**
      * @return \AliOpen\Core\Auth\AbstractCredential
      */
-    public function getCredential(){
+    public function getCredential()
+    {
         if (null == self::$credential && null != self::$iCredential) {
             self::$credential = self::$iCredential;
         }
@@ -153,21 +163,24 @@ class DefaultProfile implements IClientProfile {
     /**
      * @return bool
      */
-    public function isRamRoleArn(){
+    public function isRamRoleArn()
+    {
         return self::$authType == ALIOPEN_AUTH_TYPE_RAM_ROLE_ARN;
     }
 
     /**
      * @return bool
      */
-    public function isEcsRamRole(){
+    public function isEcsRamRole()
+    {
         return self::$authType == ALIOPEN_AUTH_TYPE_ECS_RAM_ROLE;
     }
 
     /**
      * @return array
      */
-    public static function getEndpoints(){
+    public static function getEndpoints()
+    {
         if (null == self::$endpoints) {
             self::$endpoints = EndpointProvider::getEndpoints();
         }
@@ -181,7 +194,8 @@ class DefaultProfile implements IClientProfile {
      * @param $product
      * @param $domain
      */
-    public static function addEndpoint($endpointName, $regionId, $product, $domain){
+    public static function addEndpoint($endpointName, $regionId, $product, $domain)
+    {
         if (null == self::$endpoints) {
             self::$endpoints = self::getEndpoints();
         }
@@ -199,7 +213,8 @@ class DefaultProfile implements IClientProfile {
      * @param $endpointName
      * @return mixed
      */
-    public static function findEndpointByName($endpointName){
+    public static function findEndpointByName($endpointName)
+    {
         foreach (self::$endpoints as $key => $endpoint) {
             if ($endpoint->getName() == $endpointName) {
                 return $endpoint;
@@ -213,7 +228,8 @@ class DefaultProfile implements IClientProfile {
      * @param $product
      * @param $domain
      */
-    private static function addEndpoint_($endpointName, $regionId, $product, $domain){
+    private static function addEndpoint_($endpointName, $regionId, $product, $domain)
+    {
         $regionIds = [$regionId];
         $productsDomains = [new ProductDomain($product, $domain)];
         $endpoint = new Endpoint($endpointName, $regionIds, $productsDomains);
@@ -226,9 +242,10 @@ class DefaultProfile implements IClientProfile {
      * @param string $domain
      * @param \AliOpen\Core\Regions\Endpoint $endpoint
      */
-    private static function updateEndpoint($regionId, $product, $domain, $endpoint){
+    private static function updateEndpoint($regionId, $product, $domain, $endpoint)
+    {
         $regionIds = $endpoint->getRegionIds();
-        if (!in_array($regionId, $regionIds)) {
+        if (!in_array($regionId, $regionIds, true)) {
             $regionIds[] = $regionId;
             $endpoint->setRegionIds($regionIds);
         }
@@ -247,7 +264,8 @@ class DefaultProfile implements IClientProfile {
      * @param $domain
      * @return string|null
      */
-    private static function findProductDomainAndUpdate($productDomains, $product, $domain){
+    private static function findProductDomainAndUpdate($productDomains, $product, $domain)
+    {
         foreach ($productDomains as $key => $productDomain) {
             if ($productDomain->getProductName() == $product) {
                 $productDomain->setDomainName($domain);
@@ -255,7 +273,5 @@ class DefaultProfile implements IClientProfile {
                 return $productDomain;
             }
         }
-
-        return null;
     }
 }

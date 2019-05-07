@@ -1,11 +1,13 @@
 <?php
 namespace AliOss\Result;
 
-class DeleteObjectsResult extends Result {
+class DeleteObjectsResult extends Result
+{
     /**
      * @return array()
      */
-    protected function parseDataFromResponse(){
+    protected function parseDataFromResponse()
+    {
         $body = $this->rawResponse->body;
         $xml = simplexml_load_string($body);
         $objects = [];

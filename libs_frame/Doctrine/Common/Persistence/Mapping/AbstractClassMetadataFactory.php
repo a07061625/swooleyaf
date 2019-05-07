@@ -46,6 +46,11 @@ abstract class AbstractClassMetadataFactory implements ClassMetadataFactory
     protected $cacheSalt = '$CLASSMETADATA';
 
     /**
+     * @var bool
+     */
+    protected $initialized = false;
+
+    /**
      * @var \Doctrine\Common\Cache\Cache|null
      */
     private $cacheDriver;
@@ -54,11 +59,6 @@ abstract class AbstractClassMetadataFactory implements ClassMetadataFactory
      * @var ClassMetadata[]
      */
     private $loadedMetadata = [];
-
-    /**
-     * @var bool
-     */
-    protected $initialized = false;
 
     /**
      * @var ReflectionService|null
@@ -105,7 +105,7 @@ abstract class AbstractClassMetadataFactory implements ClassMetadataFactory
      */
     public function getAllMetadata()
     {
-        if ( ! $this->initialized) {
+        if (! $this->initialized) {
             $this->initialize();
         }
 
@@ -117,62 +117,6 @@ abstract class AbstractClassMetadataFactory implements ClassMetadataFactory
 
         return $metadata;
     }
-
-    /**
-     * Lazy initialization of this stuff, especially the metadata driver,
-     * since these are not needed at all when a metadata cache is active.
-     *
-     * @return void
-     */
-    abstract protected function initialize();
-
-    /**
-     * Gets the fully qualified class-name from the namespace alias.
-     *
-     * @param string $namespaceAlias
-     * @param string $simpleClassName
-     *
-     * @return string
-     */
-    abstract protected function getFqcnFromAlias($namespaceAlias, $simpleClassName);
-
-    /**
-     * Returns the mapping driver implementation.
-     *
-     * @return \Doctrine\Common\Persistence\Mapping\Driver\MappingDriver
-     */
-    abstract protected function getDriver();
-
-    /**
-     * Wakes up reflection after ClassMetadata gets unserialized from cache.
-     *
-     * @param ClassMetadata     $class
-     * @param ReflectionService $reflService
-     *
-     * @return void
-     */
-    abstract protected function wakeupReflection(ClassMetadata $class, ReflectionService $reflService);
-
-    /**
-     * Initializes Reflection after ClassMetadata was constructed.
-     *
-     * @param ClassMetadata     $class
-     * @param ReflectionService $reflService
-     *
-     * @return void
-     */
-    abstract protected function initializeReflection(ClassMetadata $class, ReflectionService $reflService);
-
-    /**
-     * Checks whether the class metadata is an entity.
-     *
-     * This method should return false for mapped superclasses or embedded classes.
-     *
-     * @param ClassMetadata $class
-     *
-     * @return boolean
-     */
-    abstract protected function isEntity(ClassMetadata $class);
 
     /**
      * Gets the class metadata descriptor for a class.
@@ -269,6 +213,105 @@ abstract class AbstractClassMetadataFactory implements ClassMetadataFactory
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function isTransient($class)
+    {
+        if (! $this->initialized) {
+            $this->initialize();
+        }
+
+        // Check for namespace alias
+        if (strpos($class, ':') !== false) {
+            list($namespaceAlias, $simpleClassName) = explode(':', $class, 2);
+            $class = $this->getFqcnFromAlias($namespaceAlias, $simpleClassName);
+        }
+
+        return $this->getDriver()->isTransient($class);
+    }
+
+    /**
+     * Sets the reflectionService.
+     *
+     * @param ReflectionService $reflectionService
+     *
+     * @return void
+     */
+    public function setReflectionService(ReflectionService $reflectionService)
+    {
+        $this->reflectionService = $reflectionService;
+    }
+
+    /**
+     * Gets the reflection service associated with this metadata factory.
+     *
+     * @return ReflectionService
+     */
+    public function getReflectionService()
+    {
+        if ($this->reflectionService === null) {
+            $this->reflectionService = new RuntimeReflectionService();
+        }
+        return $this->reflectionService;
+    }
+
+    /**
+     * Lazy initialization of this stuff, especially the metadata driver,
+     * since these are not needed at all when a metadata cache is active.
+     *
+     * @return void
+     */
+    abstract protected function initialize();
+
+    /**
+     * Gets the fully qualified class-name from the namespace alias.
+     *
+     * @param string $namespaceAlias
+     * @param string $simpleClassName
+     *
+     * @return string
+     */
+    abstract protected function getFqcnFromAlias($namespaceAlias, $simpleClassName);
+
+    /**
+     * Returns the mapping driver implementation.
+     *
+     * @return \Doctrine\Common\Persistence\Mapping\Driver\MappingDriver
+     */
+    abstract protected function getDriver();
+
+    /**
+     * Wakes up reflection after ClassMetadata gets unserialized from cache.
+     *
+     * @param ClassMetadata     $class
+     * @param ReflectionService $reflService
+     *
+     * @return void
+     */
+    abstract protected function wakeupReflection(ClassMetadata $class, ReflectionService $reflService);
+
+    /**
+     * Initializes Reflection after ClassMetadata was constructed.
+     *
+     * @param ClassMetadata     $class
+     * @param ReflectionService $reflService
+     *
+     * @return void
+     */
+    abstract protected function initializeReflection(ClassMetadata $class, ReflectionService $reflService);
+
+    /**
+     * Checks whether the class metadata is an entity.
+     *
+     * This method should return false for mapped superclasses or embedded classes.
+     *
+     * @param ClassMetadata $class
+     *
+     * @return boolean
+     */
+    abstract protected function isEntity(ClassMetadata $class);
+
+    /**
      * Gets an array of parent classes for the given entity class.
      *
      * @param string $name
@@ -280,7 +323,7 @@ abstract class AbstractClassMetadataFactory implements ClassMetadataFactory
         // Collect parent classes, ignoring transient (not-mapped) classes.
         $parentClasses = [];
         foreach (array_reverse($this->getReflectionService()->getParentClasses($name)) as $parentClass) {
-            if ( ! $this->getDriver()->isTransient($parentClass)) {
+            if (! $this->getDriver()->isTransient($parentClass)) {
                 $parentClasses[] = $parentClass;
             }
         }
@@ -303,7 +346,7 @@ abstract class AbstractClassMetadataFactory implements ClassMetadataFactory
      */
     protected function loadMetadata($name)
     {
-        if ( ! $this->initialized) {
+        if (! $this->initialized) {
             $this->initialize();
         }
 
@@ -360,7 +403,6 @@ abstract class AbstractClassMetadataFactory implements ClassMetadataFactory
      */
     protected function onNotFoundMetadata($className)
     {
-        return null;
     }
 
     /**
@@ -384,47 +426,4 @@ abstract class AbstractClassMetadataFactory implements ClassMetadataFactory
      * @return ClassMetadata
      */
     abstract protected function newClassMetadataInstance($className);
-
-    /**
-     * {@inheritDoc}
-     */
-    public function isTransient($class)
-    {
-        if ( ! $this->initialized) {
-            $this->initialize();
-        }
-
-        // Check for namespace alias
-        if (strpos($class, ':') !== false) {
-            list($namespaceAlias, $simpleClassName) = explode(':', $class, 2);
-            $class = $this->getFqcnFromAlias($namespaceAlias, $simpleClassName);
-        }
-
-        return $this->getDriver()->isTransient($class);
-    }
-
-    /**
-     * Sets the reflectionService.
-     *
-     * @param ReflectionService $reflectionService
-     *
-     * @return void
-     */
-    public function setReflectionService(ReflectionService $reflectionService)
-    {
-        $this->reflectionService = $reflectionService;
-    }
-
-    /**
-     * Gets the reflection service associated with this metadata factory.
-     *
-     * @return ReflectionService
-     */
-    public function getReflectionService()
-    {
-        if ($this->reflectionService === null) {
-            $this->reflectionService = new RuntimeReflectionService();
-        }
-        return $this->reflectionService;
-    }
 }

@@ -1,13 +1,14 @@
 <?php
 namespace AliOss\Model;
 
-class ListPartsInfo {
-    private $bucket = "";
-    private $key = "";
-    private $uploadId = "";
+class ListPartsInfo
+{
+    private $bucket = '';
+    private $key = '';
+    private $uploadId = '';
     private $nextPartNumberMarker = 0;
     private $maxParts = 0;
-    private $isTruncated = "";
+    private $isTruncated = '';
     private $listPart = [];
 
     /**
@@ -20,7 +21,8 @@ class ListPartsInfo {
      * @param string $isTruncated
      * @param array $listPart
      */
-    public function __construct($bucket, $key, $uploadId, $nextPartNumberMarker, $maxParts, $isTruncated, array $listPart){
+    public function __construct($bucket, $key, $uploadId, $nextPartNumberMarker, $maxParts, $isTruncated, array $listPart)
+    {
         $this->bucket = $bucket;
         $this->key = $key;
         $this->uploadId = $uploadId;
@@ -33,49 +35,56 @@ class ListPartsInfo {
     /**
      * @return string
      */
-    public function getBucket(){
+    public function getBucket()
+    {
         return $this->bucket;
     }
 
     /**
      * @return string
      */
-    public function getKey(){
+    public function getKey()
+    {
         return $this->key;
     }
 
     /**
      * @return string
      */
-    public function getUploadId(){
+    public function getUploadId()
+    {
         return $this->uploadId;
     }
 
     /**
      * @return int
      */
-    public function getNextPartNumberMarker(){
+    public function getNextPartNumberMarker()
+    {
         return $this->nextPartNumberMarker;
     }
 
     /**
      * @return int
      */
-    public function getMaxParts(){
+    public function getMaxParts()
+    {
         return $this->maxParts;
     }
 
     /**
      * @return string
      */
-    public function getIsTruncated(){
+    public function getIsTruncated()
+    {
         return $this->isTruncated;
     }
 
     /**
      * @return array
      */
-    public function getListPart(){
+    public function getListPart()
+    {
         return $this->listPart;
     }
 }

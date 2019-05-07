@@ -17,7 +17,8 @@ use Tool\Tool;
  * 获取请假时长
  * @package DingDing\Corp\Attendance
  */
-class LeaveApproveDuration extends TalkBaseCorp {
+class LeaveApproveDuration extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -36,21 +37,24 @@ class LeaveApproveDuration extends TalkBaseCorp {
      */
     private $to_date = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $userId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserId(string $userId){
-        if(ctype_alnum($userId)){
+    public function setUserId(string $userId)
+    {
+        if (ctype_alnum($userId)) {
             $this->reqData['userid'] = $userId;
         } else {
             throw new TalkException('员工用户ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -62,10 +66,11 @@ class LeaveApproveDuration extends TalkBaseCorp {
      * @param int $endTime
      * @throws \Exception\DingDing\TalkException
      */
-    public function setStartTimeAndEndTime(int $startTime,int $endTime){
+    public function setStartTimeAndEndTime(int $startTime, int $endTime)
+    {
         if ($startTime < 946656000) {
             throw new TalkException('开始时间不合法', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if($endTime < $startTime){
+        } elseif ($endTime < $startTime) {
             throw new TalkException('结束时间不能小于开始时间', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
@@ -73,11 +78,12 @@ class LeaveApproveDuration extends TalkBaseCorp {
         $this->reqData['to_date'] = date('Y-m-d H:i:s', $endTime);
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['userid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['userid'])) {
             throw new TalkException('员工用户ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['from_date'])){
+        if (!isset($this->reqData['from_date'])) {
             throw new TalkException('开始时间不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

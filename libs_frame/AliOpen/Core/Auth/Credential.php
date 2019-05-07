@@ -1,7 +1,8 @@
 <?php
 namespace AliOpen\Core\Auth;
 
-class Credential extends AbstractCredential {
+class Credential extends AbstractCredential
+{
     /**
      * @var string
      */
@@ -33,7 +34,8 @@ class Credential extends AbstractCredential {
      * @param $accessSecret
      * @param $securityToken
      */
-    public function __construct($accessKeyId, $accessSecret, $securityToken){
+    public function __construct($accessKeyId, $accessSecret, $securityToken)
+    {
         $this->accessKeyId = $accessKeyId;
         $this->accessSecret = $accessSecret;
         $this->securityToken = $securityToken;
@@ -43,7 +45,8 @@ class Credential extends AbstractCredential {
     /**
      * @return bool
      */
-    public function isExpired(){
+    public function isExpired()
+    {
         if ($this->expiredDate == null) {
             return false;
         }
@@ -57,14 +60,16 @@ class Credential extends AbstractCredential {
     /**
      * @return false|string
      */
-    public function getRefreshDate(){
+    public function getRefreshDate()
+    {
         return $this->refreshDate;
     }
 
     /**
      * @return string
      */
-    public function getExpiredDate(){
+    public function getExpiredDate()
+    {
         return $this->expiredDate;
     }
 
@@ -72,7 +77,8 @@ class Credential extends AbstractCredential {
      * @param $expiredHours
      * @return false|string
      */
-    public function setExpiredDate($expiredHours){
+    public function setExpiredDate($expiredHours)
+    {
         if ($expiredHours > 0) {
             return $this->expiredDate = date($this->dateTimeFormat, strtotime('+' . $expiredHours . ' hour'));
         }
@@ -81,42 +87,48 @@ class Credential extends AbstractCredential {
     /**
      * @return string
      */
-    public function getAccessKeyId(){
+    public function getAccessKeyId()
+    {
         return $this->accessKeyId;
     }
 
     /**
      * @param $accessKeyId
      */
-    public function setAccessKeyId($accessKeyId){
+    public function setAccessKeyId($accessKeyId)
+    {
         $this->accessKeyId = $accessKeyId;
     }
 
     /**
      * @return string
      */
-    public function getAccessSecret(){
+    public function getAccessSecret()
+    {
         return $this->accessSecret;
     }
 
     /**
      * @param $accessSecret
      */
-    public function setAccessSecret($accessSecret){
+    public function setAccessSecret($accessSecret)
+    {
         $this->accessSecret = $accessSecret;
     }
 
     /**
      * @return string
      */
-    public function getSecurityToken(){
+    public function getSecurityToken()
+    {
         return $this->securityToken;
     }
 
     /**
      * @param $securityToken
      */
-    public function setSecurityToken($securityToken){
+    public function setSecurityToken($securityToken)
+    {
         $this->securityToken = $securityToken;
     }
 }

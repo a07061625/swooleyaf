@@ -14,9 +14,10 @@ namespace Cache\Lite;
  * @package Cache_Lite
  * @author Markus Tacker <tacker@php.net>
  */
-class CacheLiteNestedOutput extends CacheLiteOutput {
-    private $nestedIds = array();
-    private $nestedGroups = array();
+class CacheLiteNestedOutput extends CacheLiteOutput
+{
+    private $nestedIds = [];
+    private $nestedGroups = [];
 
     /**
      * Start the cache
@@ -27,7 +28,7 @@ class CacheLiteNestedOutput extends CacheLiteOutput {
      * @return boolean|string false if the cache is not hit else the data
      * @access public
      */
-    function start($id, $group = 'default', $doNotTestCacheValidity = false)
+    public function start($id, $group = 'default', $doNotTestCacheValidity = false)
     {
         $this->nestedIds[] = $id;
         $this->nestedGroups[] = $group;
@@ -46,7 +47,7 @@ class CacheLiteNestedOutput extends CacheLiteOutput {
      * @param boolen
      * @return string return contents of cache
      */
-    function end()
+    public function end()
     {
         $data = ob_get_contents();
         ob_end_clean();

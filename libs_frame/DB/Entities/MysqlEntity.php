@@ -9,8 +9,10 @@ namespace DB\Entities;
 
 use DB\Containers\MysqlContainer;
 
-class MysqlEntity extends BaseEntity {
-    public function __construct(string $dbName,string $tableName,string $primaryKey='id') {
+class MysqlEntity extends BaseEntity
+{
+    public function __construct(string $dbName, string $tableName, string $primaryKey = 'id')
+    {
         parent::__construct();
         $this->_container = new MysqlContainer($dbName, $tableName, $primaryKey);
         $this->_dbType = BaseEntity::DB_TYPE_MYSQL;
@@ -20,7 +22,8 @@ class MysqlEntity extends BaseEntity {
     /**
      * @return \DB\Containers\MysqlContainer
      */
-    public function getContainer() {
+    public function getContainer()
+    {
         return $this->_container;
     }
 }

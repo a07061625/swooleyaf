@@ -27,22 +27,21 @@
 
 /** Error reporting */
 error_reporting(E_ALL);
-ini_set('display_errors', TRUE);
-ini_set('display_startup_errors', TRUE);
+ini_set('display_errors', true);
+ini_set('display_startup_errors', true);
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 date_default_timezone_set('Europe/London');
 
 /** PHPExcel_IOFactory */
 require_once dirname(__FILE__) . '/../Classes/PHPExcel/IOFactory.php';
 
-
-echo date('H:i:s') , " Load from Excel2007 file" , EOL;
+echo date('H:i:s') , ' Load from Excel2007 file' , EOL;
 $objReader = PHPExcel_IOFactory::createReader('Excel2007');
-$objPHPExcel = $objReader->load("./templates/28iterators.xlsx");
+$objPHPExcel = $objReader->load('./templates/28iterators.xlsx');
 
-echo date('H:i:s') , " Iterate worksheets by Row" , EOL;
+echo date('H:i:s') , ' Iterate worksheets by Row' , EOL;
 foreach ($objPHPExcel->getWorksheetIterator() as $worksheet) {
     echo 'Worksheet - ' , $worksheet->getTitle() , EOL;
 
@@ -59,8 +58,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $worksheet) {
     }
 }
 
-
-echo date('H:i:s') , " Iterate worksheets by Column" , EOL;
+echo date('H:i:s') , ' Iterate worksheets by Column' , EOL;
 foreach ($objPHPExcel->getWorksheetIterator() as $worksheet) {
     echo 'Worksheet - ' , $worksheet->getTitle() , EOL;
 
@@ -77,6 +75,5 @@ foreach ($objPHPExcel->getWorksheetIterator() as $worksheet) {
     }
 }
 
-
 // Echo memory peak usage
-echo date('H:i:s') , " Peak memory usage: " , (memory_get_peak_usage(true) / 1024 / 1024) , " MB" , EOL;
+echo date('H:i:s') , ' Peak memory usage: ' , (memory_get_peak_usage(true) / 1024 / 1024) , ' MB' , EOL;

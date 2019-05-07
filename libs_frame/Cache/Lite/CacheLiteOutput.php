@@ -16,7 +16,8 @@ namespace Cache\Lite;
  * @package Cache_Lite
  * @author Fabien MARTY <fab@php.net>
  */
-class CacheLiteOutput extends CacheLite {
+class CacheLiteOutput extends CacheLite
+{
     // --- Public methods ---
 
     /**
@@ -28,7 +29,7 @@ class CacheLiteOutput extends CacheLite {
      * @param array $options options
      * @access public
      */
-    function __construct($options)
+    public function __construct($options)
     {
         parent::__construct($options);
     }
@@ -38,7 +39,7 @@ class CacheLiteOutput extends CacheLite {
      *
      * @param array $options Options
      */
-    function Cache_Lite_Output($options = array(NULL))
+    public function Cache_Lite_Output($options = [null])
     {
         self::__construct($options);
     }
@@ -52,7 +53,7 @@ class CacheLiteOutput extends CacheLite {
      * @return boolean true if the cache is hit (false else)
      * @access public
      */
-    function start($id, $group = 'default', $doNotTestCacheValidity = false)
+    public function start($id, $group = 'default', $doNotTestCacheValidity = false)
     {
         $data = $this->get($id, $group, $doNotTestCacheValidity);
         if ($data !== false) {
@@ -69,7 +70,7 @@ class CacheLiteOutput extends CacheLite {
      *
      * @access public
      */
-    function end()
+    public function end()
     {
         $data = ob_get_contents();
         ob_end_clean();

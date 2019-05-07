@@ -59,11 +59,27 @@ abstract class PHPExcel_Worksheet_Dimension
      * Create a new PHPExcel_Worksheet_Dimension
      *
      * @param int $pIndex Numeric row index
+     * @param null|mixed $initialValue
      */
     public function __construct($initialValue = null)
     {
         // set dimension as unformatted by default
         $this->xfIndex = $initialValue;
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if (is_object($value)) {
+                $this->$key = clone $value;
+            } else {
+                $this->$key = $value;
+            }
+        }
     }
 
     /**
@@ -110,7 +126,7 @@ abstract class PHPExcel_Worksheet_Dimension
     public function setOutlineLevel($pValue)
     {
         if ($pValue < 0 || $pValue > 7) {
-            throw new PHPExcel_Exception("Outline level must range between 0 and 7.");
+            throw new PHPExcel_Exception('Outline level must range between 0 and 7.');
         }
 
         $this->outlineLevel = $pValue;
@@ -159,20 +175,5 @@ abstract class PHPExcel_Worksheet_Dimension
     {
         $this->xfIndex = $pValue;
         return $this;
-    }
-
-    /**
-     * Implement PHP __clone to create a deep clone, not just a shallow copy.
-     */
-    public function __clone()
-    {
-        $vars = get_object_vars($this);
-        foreach ($vars as $key => $value) {
-            if (is_object($value)) {
-                $this->$key = clone $value;
-            } else {
-                $this->$key = $value;
-            }
-        }
     }
 }

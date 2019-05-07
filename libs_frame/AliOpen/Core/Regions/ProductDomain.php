@@ -1,7 +1,8 @@
 <?php
 namespace AliOpen\Core\Regions;
 
-class ProductDomain {
+class ProductDomain
+{
     /**
      * @var string
      */
@@ -16,7 +17,8 @@ class ProductDomain {
      * @param string $product
      * @param string $domain
      */
-    public function __construct($product, $domain){
+    public function __construct($product, $domain)
+    {
         $this->productName = $product;
         $this->domainName = $domain;
     }
@@ -24,28 +26,32 @@ class ProductDomain {
     /**
      * @return string
      */
-    public function getProductName(){
+    public function getProductName()
+    {
         return $this->productName;
     }
 
     /**
      * @param $productName
      */
-    public function setProductName($productName){
+    public function setProductName($productName)
+    {
         $this->productName = $productName;
     }
 
     /**
      * @return string
      */
-    public function getDomainName(){
+    public function getDomainName()
+    {
         return $this->domainName;
     }
 
     /**
      * @param $domainName
      */
-    public function setDomainName($domainName){
+    public function setDomainName($domainName)
+    {
         $this->domainName = $domainName;
     }
 }

@@ -16,7 +16,8 @@ use Exception\DingDing\TalkException;
  * 获取企业员工人数
  * @package DingDing\Corp\User
  */
-class OrgUserCountGet extends TalkBaseCorp {
+class OrgUserCountGet extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -25,29 +26,33 @@ class OrgUserCountGet extends TalkBaseCorp {
      */
     private $onlyActive = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $onlyActive
      * @throws \Exception\DingDing\TalkException
      */
-    public function setOnlyActive(int $onlyActive){
-        if(in_array($onlyActive, [0, 1])){
+    public function setOnlyActive(int $onlyActive)
+    {
+        if (in_array($onlyActive, [0, 1], true)) {
             $this->reqData['onlyActive'] = $onlyActive;
         } else {
             throw new TalkException('激活钉钉标识不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['onlyActive'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['onlyActive'])) {
             throw new TalkException('激活钉钉标识不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

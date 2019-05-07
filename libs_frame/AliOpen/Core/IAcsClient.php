@@ -1,7 +1,8 @@
 <?php
 namespace AliOpen\Core;
 
-interface IAcsClient {
+interface IAcsClient
+{
     /**
      * @param \AliOpen\Core\AcsRequest $request
      * @return mixed

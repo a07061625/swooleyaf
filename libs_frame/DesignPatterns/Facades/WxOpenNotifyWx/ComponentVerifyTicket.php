@@ -11,10 +11,12 @@ use DesignPatterns\Facades\WxOpenNotifyWxFacade;
 use Traits\SimpleFacadeTrait;
 use Wx\WxUtilOpenBase;
 
-class ComponentVerifyTicket extends WxOpenNotifyWxFacade {
+class ComponentVerifyTicket extends WxOpenNotifyWxFacade
+{
     use SimpleFacadeTrait;
 
-    protected static function handleNotify(array $data) {
+    protected static function handleNotify(array $data)
+    {
         WxUtilOpenBase::refreshComponentAccessToken($data['ComponentVerifyTicket']);
     }
 }

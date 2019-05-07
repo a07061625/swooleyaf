@@ -3,7 +3,8 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class MediaDetailPersonRegisterRequest extends RpcAcsRequest {
+class MediaDetailPersonRegisterRequest extends RpcAcsRequest
+{
     private $resourceOwnerId;
     private $images;
     private $resourceOwnerAccount;
@@ -13,80 +14,97 @@ class MediaDetailPersonRegisterRequest extends RpcAcsRequest {
     private $category;
     private $personName;
 
-    public function __construct(){
-        parent::__construct("Mts", "2014-06-18", "RegisterMediaDetailPerson", "mts", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Mts', '2014-06-18', 'RegisterMediaDetailPerson', 'mts', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getImages(){
+    public function getImages()
+    {
         return $this->images;
     }
 
-    public function setImages($images){
+    public function setImages($images)
+    {
         $this->images = $images;
-        $this->queryParameters["Images"] = $images;
+        $this->queryParameters['Images'] = $images;
     }
 
-    public function getResourceOwnerAccount(){
+    public function getResourceOwnerAccount()
+    {
         return $this->resourceOwnerAccount;
     }
 
-    public function setResourceOwnerAccount($resourceOwnerAccount){
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
-    public function getOwnerAccount(){
+    public function getOwnerAccount()
+    {
         return $this->ownerAccount;
     }
 
-    public function setOwnerAccount($ownerAccount){
+    public function setOwnerAccount($ownerAccount)
+    {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
-    public function getPersonLib(){
+    public function getPersonLib()
+    {
         return $this->personLib;
     }
 
-    public function setPersonLib($personLib){
+    public function setPersonLib($personLib)
+    {
         $this->personLib = $personLib;
-        $this->queryParameters["PersonLib"] = $personLib;
+        $this->queryParameters['PersonLib'] = $personLib;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getCategory(){
+    public function getCategory()
+    {
         return $this->category;
     }
 
-    public function setCategory($category){
+    public function setCategory($category)
+    {
         $this->category = $category;
-        $this->queryParameters["Category"] = $category;
+        $this->queryParameters['Category'] = $category;
     }
 
-    public function getPersonName(){
+    public function getPersonName()
+    {
         return $this->personName;
     }
 
-    public function setPersonName($personName){
+    public function setPersonName($personName)
+    {
         $this->personName = $personName;
-        $this->queryParameters["PersonName"] = $personName;
+        $this->queryParameters['PersonName'] = $personName;
     }
 }

@@ -128,100 +128,6 @@ class StaticReflectionParser implements ReflectionProviderInterface
     }
 
     /**
-     * @return void
-     */
-    protected function parse()
-    {
-        if ($this->parsed || !$fileName = $this->finder->findFile($this->className)) {
-            return;
-        }
-        $this->parsed = true;
-        $contents = file_get_contents($fileName);
-        if ($this->classAnnotationOptimize) {
-            if (preg_match("/\A.*^\s*((abstract|final)\s+)?class\s+{$this->shortClassName}\s+/sm", $contents, $matches)) {
-                $contents = $matches[0];
-            }
-        }
-        $tokenParser = new TokenParser($contents);
-        $docComment = '';
-        while ($token = $tokenParser->next(false)) {
-            switch ($token[0]) {
-                case T_USE:
-                    $this->useStatements = array_merge($this->useStatements, $tokenParser->parseUseStatement());
-                    break;
-                case T_DOC_COMMENT:
-                    $docComment = $token[1];
-                    break;
-                case T_CLASS:
-                    $this->docComment['class'] = $docComment;
-                    $docComment = '';
-                    break;
-                case T_VAR:
-                case T_PRIVATE:
-                case T_PROTECTED:
-                case T_PUBLIC:
-                    $token = $tokenParser->next();
-                    if ($token[0] === T_VARIABLE) {
-                        $propertyName = substr($token[1], 1);
-                        $this->docComment['property'][$propertyName] = $docComment;
-                        continue 2;
-                    }
-                    if ($token[0] !== T_FUNCTION) {
-                        // For example, it can be T_FINAL.
-                        continue 2;
-                    }
-                    // No break.
-                case T_FUNCTION:
-                    // The next string after function is the name, but
-                    // there can be & before the function name so find the
-                    // string.
-                    while (($token = $tokenParser->next()) && $token[0] !== T_STRING);
-                    $methodName = $token[1];
-                    $this->docComment['method'][$methodName] = $docComment;
-                    $docComment = '';
-                    break;
-                case T_EXTENDS:
-                    $this->parentClassName = $tokenParser->parseClass();
-                    $nsPos = strpos($this->parentClassName, '\\');
-                    $fullySpecified = false;
-                    if ($nsPos === 0) {
-                        $fullySpecified = true;
-                    } else {
-                        if ($nsPos) {
-                            $prefix = strtolower(substr($this->parentClassName, 0, $nsPos));
-                            $postfix = substr($this->parentClassName, $nsPos);
-                        } else {
-                            $prefix = strtolower($this->parentClassName);
-                            $postfix = '';
-                        }
-                        foreach ($this->useStatements as $alias => $use) {
-                            if ($alias == $prefix) {
-                                $this->parentClassName = '\\' . $use . $postfix;
-                                $fullySpecified = true;
-                          }
-                        }
-                    }
-                    if (!$fullySpecified) {
-                        $this->parentClassName = '\\' . $this->namespace . '\\' . $this->parentClassName;
-                    }
-                    break;
-            }
-        }
-    }
-
-    /**
-     * @return StaticReflectionParser
-     */
-    protected function getParentStaticReflectionParser()
-    {
-        if (empty($this->parentStaticReflectionParser)) {
-            $this->parentStaticReflectionParser = new static($this->parentClassName, $this->finder);
-        }
-
-        return $this->parentStaticReflectionParser;
-    }
-
-    /**
      * @return string
      */
     public function getClassName()
@@ -308,5 +214,99 @@ class StaticReflectionParser implements ReflectionProviderInterface
             return $this->getParentStaticReflectionParser()->getStaticReflectionParserForDeclaringClass($type, $name);
         }
         throw new ReflectionException('Invalid ' . $type . ' "' . $name . '"');
+    }
+
+    /**
+     * @return void
+     */
+    protected function parse()
+    {
+        if ($this->parsed || !$fileName = $this->finder->findFile($this->className)) {
+            return;
+        }
+        $this->parsed = true;
+        $contents = file_get_contents($fileName);
+        if ($this->classAnnotationOptimize) {
+            if (preg_match("/\A.*^\s*((abstract|final)\s+)?class\s+{$this->shortClassName}\s+/sm", $contents, $matches)) {
+                $contents = $matches[0];
+            }
+        }
+        $tokenParser = new TokenParser($contents);
+        $docComment = '';
+        while ($token = $tokenParser->next(false)) {
+            switch ($token[0]) {
+                case T_USE:
+                    $this->useStatements = array_merge($this->useStatements, $tokenParser->parseUseStatement());
+                    break;
+                case T_DOC_COMMENT:
+                    $docComment = $token[1];
+                    break;
+                case T_CLASS:
+                    $this->docComment['class'] = $docComment;
+                    $docComment = '';
+                    break;
+                case T_VAR:
+                case T_PRIVATE:
+                case T_PROTECTED:
+                case T_PUBLIC:
+                    $token = $tokenParser->next();
+                    if ($token[0] === T_VARIABLE) {
+                        $propertyName = substr($token[1], 1);
+                        $this->docComment['property'][$propertyName] = $docComment;
+                        continue 2;
+                    }
+                    if ($token[0] !== T_FUNCTION) {
+                        // For example, it can be T_FINAL.
+                        continue 2;
+                    }
+                    // no break.
+                case T_FUNCTION:
+                    // The next string after function is the name, but
+                    // there can be & before the function name so find the
+                    // string.
+                    while (($token = $tokenParser->next()) && $token[0] !== T_STRING);
+                    $methodName = $token[1];
+                    $this->docComment['method'][$methodName] = $docComment;
+                    $docComment = '';
+                    break;
+                case T_EXTENDS:
+                    $this->parentClassName = $tokenParser->parseClass();
+                    $nsPos = strpos($this->parentClassName, '\\');
+                    $fullySpecified = false;
+                    if ($nsPos === 0) {
+                        $fullySpecified = true;
+                    } else {
+                        if ($nsPos) {
+                            $prefix = strtolower(substr($this->parentClassName, 0, $nsPos));
+                            $postfix = substr($this->parentClassName, $nsPos);
+                        } else {
+                            $prefix = strtolower($this->parentClassName);
+                            $postfix = '';
+                        }
+                        foreach ($this->useStatements as $alias => $use) {
+                            if ($alias == $prefix) {
+                                $this->parentClassName = '\\' . $use . $postfix;
+                                $fullySpecified = true;
+                            }
+                        }
+                    }
+                    if (!$fullySpecified) {
+                        $this->parentClassName = '\\' . $this->namespace . '\\' . $this->parentClassName;
+                    }
+                    break;
+            }
+        }
+    }
+
+    /**
+     * @return StaticReflectionParser
+     */
+    protected function getParentStaticReflectionParser()
+    {
+        if (empty($this->parentStaticReflectionParser)) {
+            $this->parentStaticReflectionParser = new static($this->parentClassName, $this->finder);
+        }
+
+        return $this->parentStaticReflectionParser;
     }
 }

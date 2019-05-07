@@ -9,8 +9,10 @@ namespace Exception\Image;
 
 use Exception\BaseException;
 
-class ImageException extends BaseException {
-    public function __construct($message, $code) {
+class ImageException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = '图片异常';
     }

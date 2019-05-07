@@ -221,14 +221,13 @@ class PHPExcel_Writer_Excel2007_DocProps extends PHPExcel_Writer_Excel2007_Write
         $objWriter->writeAttribute('xmlns', 'http://schemas.openxmlformats.org/officeDocument/2006/custom-properties');
         $objWriter->writeAttribute('xmlns:vt', 'http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes');
 
-
         foreach ($customPropertyList as $key => $customProperty) {
             $propertyValue = $pPHPExcel->getProperties()->getCustomPropertyValue($customProperty);
             $propertyType = $pPHPExcel->getProperties()->getCustomPropertyType($customProperty);
 
             $objWriter->startElement('property');
             $objWriter->writeAttribute('fmtid', '{D5CDD505-2E9C-101B-9397-08002B2CF9AE}');
-            $objWriter->writeAttribute('pid', $key+2);
+            $objWriter->writeAttribute('pid', $key + 2);
             $objWriter->writeAttribute('name', $customProperty);
 
             switch ($propertyType) {
@@ -253,7 +252,6 @@ class PHPExcel_Writer_Excel2007_DocProps extends PHPExcel_Writer_Excel2007_Write
 
             $objWriter->endElement();
         }
-
 
         $objWriter->endElement();
 

@@ -17,7 +17,8 @@ use Exception\DingDing\TalkException;
  * 获取企业下的自定义空间
  * @package DingDing\Corp\CSpace
  */
-class CustomSpaceGet extends TalkBaseCorp {
+class CustomSpaceGet extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -31,16 +32,19 @@ class CustomSpaceGet extends TalkBaseCorp {
      */
     private $domain = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function setAgentId(){
+    public function setAgentId()
+    {
         $agentInfo = DingTalkConfigSingleton::getInstance()->getCorpConfig($this->_corpId)->getAgentInfo($this->_agentTag);
         $this->reqData['agent_id'] = $agentInfo['id'];
         unset($this->reqData['domain']);
@@ -50,8 +54,9 @@ class CustomSpaceGet extends TalkBaseCorp {
      * @param string $domain
      * @throws \Exception\DingDing\TalkException
      */
-    public function setDomain(string $domain){
-        if(ctype_alnum($domain) && (strlen($domain) <= 10)){
+    public function setDomain(string $domain)
+    {
+        if (ctype_alnum($domain) && (strlen($domain) <= 10)) {
             $this->reqData['domain'] = $domain;
             unset($this->reqData['agent_id']);
         } else {
@@ -59,10 +64,11 @@ class CustomSpaceGet extends TalkBaseCorp {
         }
     }
 
-    public function getDetail() : array {
-        if(isset($this->reqData['agent_id'])){
+    public function getDetail() : array
+    {
+        if (isset($this->reqData['agent_id'])) {
             $this->reqData['access_token'] = $this->getAccessToken(TalkBaseCorp::ACCESS_TOKEN_TYPE_PROVIDER, $this->_corpId, $this->_agentTag);
-        } else if(isset($this->reqData['domain'])){
+        } elseif (isset($this->reqData['domain'])) {
             $this->reqData['access_token'] = $this->getAccessToken(TalkBaseCorp::ACCESS_TOKEN_TYPE_CORP, $this->_corpId, $this->_agentTag);
         } else {
             throw new TalkException('域名和应用ID不能同时为空', ErrorCode::DING_TALK_PARAM_ERROR);

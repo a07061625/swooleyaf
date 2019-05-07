@@ -28,15 +28,15 @@
 class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel_IComparable
 {
     /* Colors */
-    const COLOR_BLACK      = 'FF000000';
-    const COLOR_WHITE      = 'FFFFFFFF';
-    const COLOR_RED        = 'FFFF0000';
-    const COLOR_DARKRED    = 'FF800000';
-    const COLOR_BLUE       = 'FF0000FF';
-    const COLOR_DARKBLUE   = 'FF000080';
-    const COLOR_GREEN      = 'FF00FF00';
-    const COLOR_DARKGREEN  = 'FF008000';
-    const COLOR_YELLOW     = 'FFFFFF00';
+    const COLOR_BLACK = 'FF000000';
+    const COLOR_WHITE = 'FFFFFFFF';
+    const COLOR_RED = 'FFFF0000';
+    const COLOR_DARKRED = 'FF800000';
+    const COLOR_BLUE = 'FF0000FF';
+    const COLOR_DARKBLUE = 'FF000080';
+    const COLOR_GREEN = 'FF00FF00';
+    const COLOR_DARKGREEN = 'FF008000';
+    const COLOR_YELLOW = 'FFFFFF00';
     const COLOR_DARKYELLOW = 'FF808000';
 
     /**
@@ -60,7 +60,6 @@ class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel
      */
     protected $parentPropertyName;
 
-
     /**
      * Create a new PHPExcel_Style_Color
      *
@@ -72,7 +71,7 @@ class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel
      *                                    Leave this value at default unless you understand exactly what
      *                                        its ramifications are
      */
-    public function __construct($pARGB = PHPExcel_Style_Color::COLOR_BLACK, $isSupervisor = false, $isConditional = false)
+    public function __construct($pARGB = self::COLOR_BLACK, $isSupervisor = false, $isConditional = false)
     {
         //    Supervisor?
         parent::__construct($isSupervisor);
@@ -135,7 +134,7 @@ class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel
                 break;
 
         }
-        return $this->parent->getStyleArray(array($key => $array));
+        return $this->parent->getStyleArray([$key => $array]);
     }
 
     /**
@@ -163,7 +162,7 @@ class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel
                 }
             }
         } else {
-            throw new PHPExcel_Exception("Invalid style array passed.");
+            throw new PHPExcel_Exception('Invalid style array passed.');
         }
         return $this;
     }
@@ -187,13 +186,13 @@ class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel
      * @param string $pValue
      * @return PHPExcel_Style_Color
      */
-    public function setARGB($pValue = PHPExcel_Style_Color::COLOR_BLACK)
+    public function setARGB($pValue = self::COLOR_BLACK)
     {
         if ($pValue == '') {
-            $pValue = PHPExcel_Style_Color::COLOR_BLACK;
+            $pValue = self::COLOR_BLACK;
         }
         if ($this->isSupervisor) {
-            $styleArray = $this->getStyleArray(array('argb' => $pValue));
+            $styleArray = $this->getStyleArray(['argb' => $pValue]);
             $this->getActiveSheet()->getStyle($this->getSelectedCells())->applyFromArray($styleArray);
         } else {
             $this->argb = $pValue;
@@ -226,31 +225,12 @@ class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel
             $pValue = '000000';
         }
         if ($this->isSupervisor) {
-            $styleArray = $this->getStyleArray(array('argb' => 'FF' . $pValue));
+            $styleArray = $this->getStyleArray(['argb' => 'FF' . $pValue]);
             $this->getActiveSheet()->getStyle($this->getSelectedCells())->applyFromArray($styleArray);
         } else {
             $this->argb = 'FF' . $pValue;
         }
         return $this;
-    }
-
-    /**
-     * Get a specified colour component of an RGB value
-     *
-     * @private
-     * @param    string        $RGB        The colour as an RGB value (e.g. FF00CCCC or CCDDEE
-     * @param    int            $offset        Position within the RGB value to extract
-     * @param    boolean        $hex        Flag indicating whether the component should be returned as a hex or a
-     *                                    decimal value
-     * @return    string        The extracted colour component
-     */
-    private static function getColourComponent($RGB, $offset, $hex = true)
-    {
-        $colour = substr($RGB, $offset, 2);
-        if (!$hex) {
-            $colour = hexdec($colour);
-        }
-        return $colour;
     }
 
     /**
@@ -355,74 +335,74 @@ class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel
 
         // Indexed colors
         if (is_null(self::$indexedColors)) {
-            self::$indexedColors = array(
-                    1    => 'FF000000',    //    System Colour #1 - Black
-                    2    => 'FFFFFFFF',    //    System Colour #2 - White
-                    3    => 'FFFF0000',    //    System Colour #3 - Red
-                    4    => 'FF00FF00',    //    System Colour #4 - Green
-                    5    => 'FF0000FF',    //    System Colour #5 - Blue
-                    6    => 'FFFFFF00',    //    System Colour #6 - Yellow
-                    7    => 'FFFF00FF',    //    System Colour #7- Magenta
-                    8    => 'FF00FFFF',    //    System Colour #8- Cyan
-                    9    => 'FF800000',    //    Standard Colour #9
-                    10    => 'FF008000',    //    Standard Colour #10
-                    11    => 'FF000080',    //    Standard Colour #11
-                    12    => 'FF808000',    //    Standard Colour #12
-                    13    => 'FF800080',    //    Standard Colour #13
-                    14    => 'FF008080',    //    Standard Colour #14
-                    15    => 'FFC0C0C0',    //    Standard Colour #15
-                    16    => 'FF808080',    //    Standard Colour #16
-                    17    => 'FF9999FF',    //    Chart Fill Colour #17
-                    18    => 'FF993366',    //    Chart Fill Colour #18
-                    19    => 'FFFFFFCC',    //    Chart Fill Colour #19
-                    20    => 'FFCCFFFF',    //    Chart Fill Colour #20
-                    21    => 'FF660066',    //    Chart Fill Colour #21
-                    22    => 'FFFF8080',    //    Chart Fill Colour #22
-                    23    => 'FF0066CC',    //    Chart Fill Colour #23
-                    24    => 'FFCCCCFF',    //    Chart Fill Colour #24
-                    25    => 'FF000080',    //    Chart Line Colour #25
-                    26    => 'FFFF00FF',    //    Chart Line Colour #26
-                    27    => 'FFFFFF00',    //    Chart Line Colour #27
-                    28    => 'FF00FFFF',    //    Chart Line Colour #28
-                    29    => 'FF800080',    //    Chart Line Colour #29
-                    30    => 'FF800000',    //    Chart Line Colour #30
-                    31    => 'FF008080',    //    Chart Line Colour #31
-                    32    => 'FF0000FF',    //    Chart Line Colour #32
-                    33    => 'FF00CCFF',    //    Standard Colour #33
-                    34    => 'FFCCFFFF',    //    Standard Colour #34
-                    35    => 'FFCCFFCC',    //    Standard Colour #35
-                    36    => 'FFFFFF99',    //    Standard Colour #36
-                    37    => 'FF99CCFF',    //    Standard Colour #37
-                    38    => 'FFFF99CC',    //    Standard Colour #38
-                    39    => 'FFCC99FF',    //    Standard Colour #39
-                    40    => 'FFFFCC99',    //    Standard Colour #40
-                    41    => 'FF3366FF',    //    Standard Colour #41
-                    42    => 'FF33CCCC',    //    Standard Colour #42
-                    43    => 'FF99CC00',    //    Standard Colour #43
-                    44    => 'FFFFCC00',    //    Standard Colour #44
-                    45    => 'FFFF9900',    //    Standard Colour #45
-                    46    => 'FFFF6600',    //    Standard Colour #46
-                    47    => 'FF666699',    //    Standard Colour #47
-                    48    => 'FF969696',    //    Standard Colour #48
-                    49    => 'FF003366',    //    Standard Colour #49
-                    50    => 'FF339966',    //    Standard Colour #50
-                    51    => 'FF003300',    //    Standard Colour #51
-                    52    => 'FF333300',    //    Standard Colour #52
-                    53    => 'FF993300',    //    Standard Colour #53
-                    54    => 'FF993366',    //    Standard Colour #54
-                    55    => 'FF333399',    //    Standard Colour #55
-                    56    => 'FF333333'    //    Standard Colour #56
-                );
+            self::$indexedColors = [
+                    1 => 'FF000000',    //    System Colour #1 - Black
+                    2 => 'FFFFFFFF',    //    System Colour #2 - White
+                    3 => 'FFFF0000',    //    System Colour #3 - Red
+                    4 => 'FF00FF00',    //    System Colour #4 - Green
+                    5 => 'FF0000FF',    //    System Colour #5 - Blue
+                    6 => 'FFFFFF00',    //    System Colour #6 - Yellow
+                    7 => 'FFFF00FF',    //    System Colour #7- Magenta
+                    8 => 'FF00FFFF',    //    System Colour #8- Cyan
+                    9 => 'FF800000',    //    Standard Colour #9
+                    10 => 'FF008000',    //    Standard Colour #10
+                    11 => 'FF000080',    //    Standard Colour #11
+                    12 => 'FF808000',    //    Standard Colour #12
+                    13 => 'FF800080',    //    Standard Colour #13
+                    14 => 'FF008080',    //    Standard Colour #14
+                    15 => 'FFC0C0C0',    //    Standard Colour #15
+                    16 => 'FF808080',    //    Standard Colour #16
+                    17 => 'FF9999FF',    //    Chart Fill Colour #17
+                    18 => 'FF993366',    //    Chart Fill Colour #18
+                    19 => 'FFFFFFCC',    //    Chart Fill Colour #19
+                    20 => 'FFCCFFFF',    //    Chart Fill Colour #20
+                    21 => 'FF660066',    //    Chart Fill Colour #21
+                    22 => 'FFFF8080',    //    Chart Fill Colour #22
+                    23 => 'FF0066CC',    //    Chart Fill Colour #23
+                    24 => 'FFCCCCFF',    //    Chart Fill Colour #24
+                    25 => 'FF000080',    //    Chart Line Colour #25
+                    26 => 'FFFF00FF',    //    Chart Line Colour #26
+                    27 => 'FFFFFF00',    //    Chart Line Colour #27
+                    28 => 'FF00FFFF',    //    Chart Line Colour #28
+                    29 => 'FF800080',    //    Chart Line Colour #29
+                    30 => 'FF800000',    //    Chart Line Colour #30
+                    31 => 'FF008080',    //    Chart Line Colour #31
+                    32 => 'FF0000FF',    //    Chart Line Colour #32
+                    33 => 'FF00CCFF',    //    Standard Colour #33
+                    34 => 'FFCCFFFF',    //    Standard Colour #34
+                    35 => 'FFCCFFCC',    //    Standard Colour #35
+                    36 => 'FFFFFF99',    //    Standard Colour #36
+                    37 => 'FF99CCFF',    //    Standard Colour #37
+                    38 => 'FFFF99CC',    //    Standard Colour #38
+                    39 => 'FFCC99FF',    //    Standard Colour #39
+                    40 => 'FFFFCC99',    //    Standard Colour #40
+                    41 => 'FF3366FF',    //    Standard Colour #41
+                    42 => 'FF33CCCC',    //    Standard Colour #42
+                    43 => 'FF99CC00',    //    Standard Colour #43
+                    44 => 'FFFFCC00',    //    Standard Colour #44
+                    45 => 'FFFF9900',    //    Standard Colour #45
+                    46 => 'FFFF6600',    //    Standard Colour #46
+                    47 => 'FF666699',    //    Standard Colour #47
+                    48 => 'FF969696',    //    Standard Colour #48
+                    49 => 'FF003366',    //    Standard Colour #49
+                    50 => 'FF339966',    //    Standard Colour #50
+                    51 => 'FF003300',    //    Standard Colour #51
+                    52 => 'FF333300',    //    Standard Colour #52
+                    53 => 'FF993300',    //    Standard Colour #53
+                    54 => 'FF993366',    //    Standard Colour #54
+                    55 => 'FF333399',    //    Standard Colour #55
+                    56 => 'FF333333'    //    Standard Colour #56
+                ];
         }
 
         if (array_key_exists($pIndex, self::$indexedColors)) {
-            return new PHPExcel_Style_Color(self::$indexedColors[$pIndex]);
+            return new self(self::$indexedColors[$pIndex]);
         }
 
         if ($background) {
-            return new PHPExcel_Style_Color(self::COLOR_WHITE);
+            return new self(self::COLOR_WHITE);
         }
-        return new PHPExcel_Style_Color(self::COLOR_BLACK);
+        return new self(self::COLOR_BLACK);
     }
 
     /**
@@ -439,5 +419,24 @@ class PHPExcel_Style_Color extends PHPExcel_Style_Supervisor implements PHPExcel
             $this->argb .
             __CLASS__
         );
+    }
+
+    /**
+     * Get a specified colour component of an RGB value
+     *
+     * @private
+     * @param    string        $RGB        The colour as an RGB value (e.g. FF00CCCC or CCDDEE
+     * @param    int            $offset        Position within the RGB value to extract
+     * @param    boolean        $hex        Flag indicating whether the component should be returned as a hex or a
+     *                                    decimal value
+     * @return    string        The extracted colour component
+     */
+    private static function getColourComponent($RGB, $offset, $hex = true)
+    {
+        $colour = substr($RGB, $offset, 2);
+        if (!$hex) {
+            $colour = hexdec($colour);
+        }
+        return $colour;
     }
 }

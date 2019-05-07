@@ -4,15 +4,30 @@ namespace AliOss\Result;
 use AliOss\Core\OssException;
 use AliOss\Http\ResponseCore;
 
-abstract class Result {
+abstract class Result
+{
+    /**
+     * Indicate whether the request is successful
+     */
+    protected $isOk = false;
+    /**
+     * Data parsed by subclasses
+     */
+    protected $parsedData = null;
+    /**
+     * Store the original Response returned by the auth function
+     * @var ResponseCore
+     */
+    protected $rawResponse;
     /**
      * Result constructor.
      * @param $response ResponseCore
      * @throws OssException
      */
-    public function __construct($response){
+    public function __construct($response)
+    {
         if ($response === null) {
-            throw new OssException("raw response is null");
+            throw new OssException('raw response is null');
         }
         $this->rawResponse = $response;
         $this->parseResponse();
@@ -22,7 +37,8 @@ abstract class Result {
      * Get requestId
      * @return string
      */
-    public function getRequestId(){
+    public function getRequestId()
+    {
         if (isset($this->rawResponse)
             && isset($this->rawResponse->header)
             && isset($this->rawResponse->header['x-oss-request-id'])) {
@@ -36,28 +52,25 @@ abstract class Result {
      * Get the returned data, different request returns the data format is different
      * $return mixed
      */
-    public function getData(){
+    public function getData()
+    {
         return $this->parsedData;
     }
-
-    /**
-     * Subclass implementation, different requests return data has different analytical logic, implemented by subclasses
-     * @return mixed
-     */
-    abstract protected function parseDataFromResponse();
 
     /**
      * Whether the operation is successful
      * @return mixed
      */
-    public function isOK(){
+    public function isOK()
+    {
         return $this->isOk;
     }
 
     /**
      * @throws OssException
      */
-    public function parseResponse(){
+    public function parseResponse()
+    {
         $this->isOk = $this->isResponseOk();
         if ($this->isOk) {
             $this->parsedData = $this->parseDataFromResponse();
@@ -80,11 +93,41 @@ abstract class Result {
     }
 
     /**
+     * Return the original return data
+     * @return ResponseCore
+     */
+    public function getRawResponse()
+    {
+        return $this->rawResponse;
+    }
+
+    /**
+     * Subclass implementation, different requests return data has different analytical logic, implemented by subclasses
+     * @return mixed
+     */
+    abstract protected function parseDataFromResponse();
+
+    /**
+     * Judging from the return http status code, [200-299] that is OK
+     * @return bool
+     */
+    protected function isResponseOk()
+    {
+        $status = $this->rawResponse->status;
+        if ((int)(intval($status) / 100) == 2) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Try to get the error message from body
      * @param $body
      * @return string
      */
-    private function retrieveErrorMessage($body){
+    private function retrieveErrorMessage($body)
+    {
         if (empty($body) || false === strpos($body, '<?xml')) {
             return '';
         }
@@ -101,7 +144,8 @@ abstract class Result {
      * @param $body
      * @return string
      */
-    private function retrieveErrorCode($body){
+    private function retrieveErrorCode($body)
+    {
         if (empty($body) || false === strpos($body, '<?xml')) {
             return '';
         }
@@ -112,39 +156,4 @@ abstract class Result {
 
         return '';
     }
-
-    /**
-     * Judging from the return http status code, [200-299] that is OK
-     * @return bool
-     */
-    protected function isResponseOk(){
-        $status = $this->rawResponse->status;
-        if ((int)(intval($status) / 100) == 2) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Return the original return data
-     * @return ResponseCore
-     */
-    public function getRawResponse(){
-        return $this->rawResponse;
-    }
-
-    /**
-     * Indicate whether the request is successful
-     */
-    protected $isOk = false;
-    /**
-     * Data parsed by subclasses
-     */
-    protected $parsedData = null;
-    /**
-     * Store the original Response returned by the auth function
-     * @var ResponseCore
-     */
-    protected $rawResponse;
 }

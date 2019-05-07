@@ -48,14 +48,12 @@ class PHPExcel_Worksheet_ColumnIterator implements Iterator
      */
     private $startColumn = 0;
 
-
     /**
      * End position
      *
      * @var int
      */
     private $endColumn = 0;
-
 
     /**
      * Create a new column iterator
@@ -180,9 +178,9 @@ class PHPExcel_Worksheet_ColumnIterator implements Iterator
     {
         if ($this->position <= $this->startColumn) {
             throw new PHPExcel_Exception(
-                "Column is already at the beginning of range (" .
-                PHPExcel_Cell::stringFromColumnIndex($this->endColumn) . " - " .
-                PHPExcel_Cell::stringFromColumnIndex($this->endColumn) . ")"
+                'Column is already at the beginning of range (' .
+                PHPExcel_Cell::stringFromColumnIndex($this->endColumn) . ' - ' .
+                PHPExcel_Cell::stringFromColumnIndex($this->endColumn) . ')'
             );
         }
 

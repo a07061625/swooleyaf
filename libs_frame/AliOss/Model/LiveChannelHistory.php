@@ -1,27 +1,33 @@
 <?php
 namespace AliOss\Model;
 
-class LiveChannelHistory implements XmlConfig {
+class LiveChannelHistory implements XmlConfig
+{
     private $startTime;
     private $endTime;
     private $remoteAddr;
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
-    public function getStartTime(){
+    public function getStartTime()
+    {
         return $this->startTime;
     }
 
-    public function getEndTime(){
+    public function getEndTime()
+    {
         return $this->endTime;
     }
 
-    public function getRemoteAddr(){
+    public function getRemoteAddr()
+    {
         return $this->remoteAddr;
     }
 
-    public function parseFromXmlNode($xml){
+    public function parseFromXmlNode($xml)
+    {
         if (isset($xml->StartTime)) {
             $this->startTime = strval($xml->StartTime);
         }
@@ -35,12 +41,14 @@ class LiveChannelHistory implements XmlConfig {
         }
     }
 
-    public function parseFromXml($strXml){
+    public function parseFromXml($strXml)
+    {
         $xml = simplexml_load_string($strXml);
         $this->parseFromXmlNode($xml);
     }
 
-    public function serializeToXml(){
-        throw new OssException("Not implemented.");
+    public function serializeToXml()
+    {
+        throw new OssException('Not implemented.');
     }
 }

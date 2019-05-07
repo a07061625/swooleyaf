@@ -9,9 +9,11 @@ namespace Exception\Mysql;
 
 use Exception\BaseException;
 
-class MysqlException extends BaseException {
-    public function __construct( $message, $code ) {
-        parent::__construct( $message, $code );
+class MysqlException extends BaseException
+{
+    public function __construct($message, $code)
+    {
+        parent::__construct($message, $code);
         $this->tipName = 'MYSQL异常';
     }
 }

@@ -71,7 +71,7 @@ abstract class Parser
         }
 
         $this->lexer->moveNext();
-        if ($this->lexer->isNextTokenAny(array(EmailLexer::GENERIC, EmailLexer::S_EMPTY))) {
+        if ($this->lexer->isNextTokenAny([EmailLexer::GENERIC, EmailLexer::S_EMPTY])) {
             throw new ExpectingATEXT();
         }
 
@@ -100,7 +100,7 @@ abstract class Parser
             throw new CRNoLF();
         }
 
-        if ($this->lexer->isNextToken(EmailLexer::GENERIC) && $previous['type']  !== EmailLexer::S_AT) {
+        if ($this->lexer->isNextToken(EmailLexer::GENERIC) && $previous['type'] !== EmailLexer::S_AT) {
             throw new AtextAfterCFWS();
         }
 
@@ -108,7 +108,7 @@ abstract class Parser
             throw new ExpectingCTEXT();
         }
 
-        if ($this->lexer->isNextToken(EmailLexer::S_AT) || $previous['type']  === EmailLexer::S_AT) {
+        if ($this->lexer->isNextToken(EmailLexer::S_AT) || $previous['type'] === EmailLexer::S_AT) {
             $this->warnings[CFWSNearAt::CODE] = new CFWSNearAt();
         } else {
             $this->warnings[CFWSWithFWS::CODE] = new CFWSWithFWS();
@@ -164,14 +164,13 @@ abstract class Parser
             throw new ExpectingATEXT();
         }
 
-        if (!$this->lexer->isNextTokenAny(array(EmailLexer::S_SP, EmailLexer::S_HTAB, EmailLexer::C_DEL))) {
+        if (!$this->lexer->isNextTokenAny([EmailLexer::S_SP, EmailLexer::S_HTAB, EmailLexer::C_DEL])) {
             return false;
         }
 
         $this->warnings[QuotedPart::CODE] =
             new QuotedPart($this->lexer->getPrevious()['type'], $this->lexer->token['type']);
         return true;
-
     }
 
     protected function checkDQUOTE($hasClosingQuote)
@@ -204,11 +203,11 @@ abstract class Parser
             return;
         }
 
-        if (!$this->lexer->isNextTokenAny(array(EmailLexer::S_SP, EmailLexer::S_HTAB))) {
+        if (!$this->lexer->isNextTokenAny([EmailLexer::S_SP, EmailLexer::S_HTAB])) {
             throw new CRLFX2();
         }
 
-        if (!$this->lexer->isNextTokenAny(array(EmailLexer::S_SP, EmailLexer::S_HTAB))) {
+        if (!$this->lexer->isNextTokenAny([EmailLexer::S_SP, EmailLexer::S_HTAB])) {
             throw new CRLFAtTheEnd();
         }
     }

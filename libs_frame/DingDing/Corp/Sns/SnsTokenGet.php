@@ -20,7 +20,8 @@ use Tool\Tool;
  * 获取用户授权的令牌
  * @package DingDing\Corp\Sns
  */
-class SnsTokenGet extends TalkBaseCorp {
+class SnsTokenGet extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -34,20 +35,23 @@ class SnsTokenGet extends TalkBaseCorp {
      */
     private $persistent_code = '';
 
-    public function __construct(string $corpId){
+    public function __construct(string $corpId)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $openid
      * @throws \Exception\DingDing\TalkException
      */
-    public function setOpenid(string $openid){
-        if(ctype_alnum($openid)){
+    public function setOpenid(string $openid)
+    {
+        if (ctype_alnum($openid)) {
             $this->reqData['openid'] = $openid;
         } else {
             throw new TalkException('用户openid不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -58,19 +62,21 @@ class SnsTokenGet extends TalkBaseCorp {
      * @param string $persistentCode
      * @throws \Exception\DingDing\TalkException
      */
-    public function setPersistentCode(string $persistentCode){
-        if(ctype_alnum($persistentCode)){
+    public function setPersistentCode(string $persistentCode)
+    {
+        if (ctype_alnum($persistentCode)) {
             $this->reqData['persistent_code'] = $persistentCode;
         } else {
             throw new TalkException('持久授权码不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['openid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['openid'])) {
             throw new TalkException('用户openid不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['persistent_code'])){
+        if (!isset($this->reqData['persistent_code'])) {
             throw new TalkException('持久授权码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
@@ -86,9 +92,9 @@ class SnsTokenGet extends TalkBaseCorp {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = TalkUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(!is_array($sendData)){
+        if (!is_array($sendData)) {
             throw new TalkException('获取用户授权令牌出错', ErrorCode::DING_TALK_POST_ERROR);
-        } else if(!isset($sendData['sns_token'])){
+        } elseif (!isset($sendData['sns_token'])) {
             throw new TalkException($sendData['errmsg'], ErrorCode::DING_TALK_POST_ERROR);
         }
 

@@ -5,11 +5,12 @@ use AliOpen\Core\Auth\EcsRamRoleService;
 use AliOpen\Core\Auth\RamRoleArnService;
 use AliOpen\Core\Exception\ClientException;
 use AliOpen\Core\Exception\ServerException;
-use AliOpen\Core\Regions\EndpointProvider;
 use AliOpen\Core\Http\HttpHelper;
+use AliOpen\Core\Regions\EndpointProvider;
 use AliOpen\Core\Regions\LocationService;
 
-class DefaultAcsClient implements IAcsClient {
+class DefaultAcsClient implements IAcsClient
+{
     /**
      * @var \AliOpen\Core\Profile\IClientProfile
      */
@@ -35,7 +36,8 @@ class DefaultAcsClient implements IAcsClient {
      * AliOpen\Core\DefaultAcsClient constructor.
      * @param $iClientProfile
      */
-    public function __construct($iClientProfile){
+    public function __construct($iClientProfile)
+    {
         $this->iClientProfile = $iClientProfile;
         $this->__urlTestFlag__ = false;
         $this->locationService = new LocationService($this->iClientProfile);
@@ -57,11 +59,13 @@ class DefaultAcsClient implements IAcsClient {
      * @throws \AliOpen\Core\Exception\ClientException
      * @throws \AliOpen\Core\Exception\ServerException
      */
-    public function getAcsResponse($request,
+    public function getAcsResponse(
+        $request,
         $iSigner = null,
         $credential = null,
         $autoRetry = true,
-        $maxRetryNumber = 3){
+        $maxRetryNumber = 3
+    ) {
         $httpResponse = $this->doActionImpl($request, $iSigner, $credential, $autoRetry, $maxRetryNumber);
         $respObject = $this->parseAcsResponse($httpResponse->getBody(), $request->getAcceptFormat());
         if (false == $httpResponse->isSuccess()) {
@@ -69,6 +73,22 @@ class DefaultAcsClient implements IAcsClient {
         }
 
         return $respObject;
+    }
+
+    /**
+     * @param \AliOpen\Core\AcsRequest $request
+     * @param null $iSigner
+     * @param null $credential
+     * @param bool $autoRetry
+     * @param int $maxRetryNumber
+     * @return \AliOpen\Core\Http\HttpResponse|mixed
+     * @throws \AliOpen\Core\Exception\ClientException
+     */
+    public function doAction($request, $iSigner = null, $credential = null, $autoRetry = true, $maxRetryNumber = 3)
+    {
+        trigger_error('doAction() is deprecated. Please use getAcsResponse() instead.', E_USER_NOTICE);
+
+        return $this->doActionImpl($request, $iSigner, $credential, $autoRetry, $maxRetryNumber);
     }
 
     /**
@@ -80,7 +100,8 @@ class DefaultAcsClient implements IAcsClient {
      * @return \AliOpen\Core\Http\HttpResponse
      * @throws \AliOpen\Core\Exception\ClientException
      */
-    private function doActionImpl($request, $iSigner = null, $credential = null, $autoRetry = true, $maxRetryNumber = 3){
+    private function doActionImpl($request, $iSigner = null, $credential = null, $autoRetry = true, $maxRetryNumber = 3)
+    {
         if (null == $this->iClientProfile
             && (null == $iSigner || null == $credential
                 || null == $request->getRegionId()
@@ -108,8 +129,12 @@ class DefaultAcsClient implements IAcsClient {
         // Get the domain from the Location Service by speicified `ServiceCode` and `RegionId`.
         $domain = null;
         if (null != $request->getLocationServiceCode()) {
-            $domain = $this->locationService->findProductDomain($request->getRegionId(), $request->getLocationServiceCode(),
-                $request->getLocationEndpointType(), $request->getProduct());
+            $domain = $this->locationService->findProductDomain(
+                $request->getRegionId(),
+                $request->getLocationServiceCode(),
+                $request->getLocationEndpointType(),
+                $request->getProduct()
+            );
         }
         if ($domain == null) {
             $domain = EndpointProvider::findProductDomain($request->getRegionId(), $request->getProduct());
@@ -147,25 +172,11 @@ class DefaultAcsClient implements IAcsClient {
     }
 
     /**
-     * @param \AliOpen\Core\AcsRequest $request
-     * @param null $iSigner
-     * @param null $credential
-     * @param bool $autoRetry
-     * @param int $maxRetryNumber
-     * @return \AliOpen\Core\Http\HttpResponse|mixed
-     * @throws \AliOpen\Core\Exception\ClientException
-     */
-    public function doAction($request, $iSigner = null, $credential = null, $autoRetry = true, $maxRetryNumber = 3){
-        trigger_error('doAction() is deprecated. Please use getAcsResponse() instead.', E_USER_NOTICE);
-
-        return $this->doActionImpl($request, $iSigner, $credential, $autoRetry, $maxRetryNumber);
-    }
-
-    /**
      * @param $request
      * @return mixed
      */
-    private function prepareRequest($request){
+    private function prepareRequest($request)
+    {
         if (null == $request->getRegionId()) {
             $request->setRegionId($this->iClientProfile->getRegionId());
         }
@@ -184,7 +195,8 @@ class DefaultAcsClient implements IAcsClient {
      * @param int $httpStatus
      * @throws \AliOpen\Core\Exception\ServerException
      */
-    private function buildApiException($respObject, $httpStatus){
+    private function buildApiException($respObject, $httpStatus)
+    {
         // Compatible with different results
         if (isset($respObject->Message, $respObject->Code, $respObject->RequestId)) {
             throw new ServerException($respObject->Message, $respObject->Code, $httpStatus, $respObject->RequestId);
@@ -206,7 +218,8 @@ class DefaultAcsClient implements IAcsClient {
      * @param $format
      * @return mixed|\SimpleXMLElement
      */
-    private function parseAcsResponse($body, $format){
+    private function parseAcsResponse($body, $format)
+    {
         if ('JSON' === $format) {
             $respObject = json_decode($body);
         } elseif ('XML' === $format) {

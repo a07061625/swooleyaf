@@ -10,10 +10,11 @@ namespace DesignPatterns\Singletons;
 use Tool\Tool;
 use Traits\SingletonTrait;
 use Traits\WxConfigTrait;
-use Wx\WxConfigOpenCommon;
 use Wx\WxConfigCorpProvider;
+use Wx\WxConfigOpenCommon;
 
-class WxConfigSingleton {
+class WxConfigSingleton
+{
     use SingletonTrait;
     use WxConfigTrait;
 
@@ -28,25 +29,15 @@ class WxConfigSingleton {
      */
     private $corpProviderConfig = null;
 
-    /**
-     * @return \DesignPatterns\Singletons\WxConfigSingleton
-     */
-    public static function getInstance(){
-        if(is_null(self::$instance)){
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
-
-    private function __construct(){
+    private function __construct()
+    {
         $configs = Tool::getConfig('wx.' . SY_ENV . SY_PROJECT);
 
         //初始化开放平台公共配置
         $openCommonConfig = new WxConfigOpenCommon();
-        $openCommonConfig->setExpireComponentAccessToken((int)Tool::getArrayVal($configs,'open.expire.component.accesstoken', 0, true));
-        $openCommonConfig->setExpireAuthorizerJsTicket((int)Tool::getArrayVal($configs,'open.expire.authorizer.jsticket', 0, true));
-        $openCommonConfig->setExpireAuthorizerAccessToken((int)Tool::getArrayVal($configs,'open.expire.authorizer.accesstoken', 0, true));
+        $openCommonConfig->setExpireComponentAccessToken((int)Tool::getArrayVal($configs, 'open.expire.component.accesstoken', 0, true));
+        $openCommonConfig->setExpireAuthorizerJsTicket((int)Tool::getArrayVal($configs, 'open.expire.authorizer.jsticket', 0, true));
+        $openCommonConfig->setExpireAuthorizerAccessToken((int)Tool::getArrayVal($configs, 'open.expire.authorizer.accesstoken', 0, true));
         $openCommonConfig->setAppId((string)Tool::getArrayVal($configs, 'open.appid', '', true));
         $openCommonConfig->setSecret((string)Tool::getArrayVal($configs, 'open.secret', '', true));
         $openCommonConfig->setToken((string)Tool::getArrayVal($configs, 'open.token', '', true));
@@ -73,14 +64,28 @@ class WxConfigSingleton {
         $this->corpProviderConfig = $corpProviderConfig;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
+    }
+
+    /**
+     * @return \DesignPatterns\Singletons\WxConfigSingleton
+     */
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
     }
 
     /**
      * 获取开放平台公共配置
      * @return \Wx\WxConfigOpenCommon
      */
-    public function getOpenCommonConfig(){
+    public function getOpenCommonConfig()
+    {
         return $this->openCommonConfig;
     }
 
@@ -88,7 +93,8 @@ class WxConfigSingleton {
      * 获取企业服务商公共配置
      * @return \Wx\WxConfigCorpProvider
      */
-    public function getCorpProviderConfig() {
+    public function getCorpProviderConfig()
+    {
         return $this->corpProviderConfig;
     }
 }

@@ -1,23 +1,25 @@
 <?php
 require_once __DIR__ . '/Common.php';
 
-use AliOss\OssClient;
 use AliOss\Core\OssException;
 use AliOss\Model\LifecycleAction;
 use AliOss\Model\LifecycleConfig;
 use AliOss\Model\LifecycleRule;
+use AliOss\OssClient;
 
 $bucket = Common::getBucketName();
 $ossClient = Common::getOssClient();
-if (is_null($ossClient)) exit(1);
+if (is_null($ossClient)) {
+    exit(1);
+}
 
 //******************************* Simple Usage *******************************************************
 
 // Set lifecycle configuration
 $lifecycleConfig = new LifecycleConfig();
-$actions = array();
-$actions[] = new LifecycleAction("Expiration", "Days", 3);
-$lifecycleRule = new LifecycleRule("delete obsoleted files", "obsoleted/", "Enabled", $actions);
+$actions = [];
+$actions[] = new LifecycleAction('Expiration', 'Days', 3);
+$lifecycleRule = new LifecycleRule('delete obsoleted files', 'obsoleted/', 'Enabled', $actions);
 $lifecycleConfig->addRule($lifecycleRule);
 $ossClient->putBucketLifecycle($bucket, $lifecycleConfig);
 Common::println("bucket $bucket lifecycleConfig created:" . $lifecycleConfig->serializeToXml());
@@ -29,7 +31,6 @@ Common::println("bucket $bucket lifecycleConfig fetched:" . $lifecycleConfig->se
 // Delete bucket lifecycle configuration
 $ossClient->deleteBucketLifecycle($bucket);
 Common::println("bucket $bucket lifecycleConfig deleted");
-
 
 //***************************** For complete usage, see the following functions  ***********************************************
 
@@ -47,13 +48,13 @@ getBucketLifecycle($ossClient, $bucket);
 function putBucketLifecycle($ossClient, $bucket)
 {
     $lifecycleConfig = new LifecycleConfig();
-    $actions = array();
+    $actions = [];
     $actions[] = new LifecycleAction(OssClient::OSS_LIFECYCLE_EXPIRATION, OssClient::OSS_LIFECYCLE_TIMING_DAYS, 3);
-    $lifecycleRule = new LifecycleRule("delete obsoleted files", "obsoleted/", "Enabled", $actions);
+    $lifecycleRule = new LifecycleRule('delete obsoleted files', 'obsoleted/', 'Enabled', $actions);
     $lifecycleConfig->addRule($lifecycleRule);
-    $actions = array();
+    $actions = [];
     $actions[] = new LifecycleAction(OssClient::OSS_LIFECYCLE_EXPIRATION, OssClient::OSS_LIFECYCLE_TIMING_DATE, '2022-10-12T00:00:00.000Z');
-    $lifecycleRule = new LifecycleRule("delete temporary files", "temporary/", "Enabled", $actions);
+    $lifecycleRule = new LifecycleRule('delete temporary files', 'temporary/', 'Enabled', $actions);
     $lifecycleConfig->addRule($lifecycleRule);
     try {
         $ossClient->putBucketLifecycle($bucket, $lifecycleConfig);
@@ -62,7 +63,7 @@ function putBucketLifecycle($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
 
 /**
@@ -81,7 +82,7 @@ function getBucketLifecycle($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
     print($lifecycleConfig->serializeToXml() . "\n");
 }
 
@@ -100,7 +101,5 @@ function deleteBucketLifecycle($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
-
-

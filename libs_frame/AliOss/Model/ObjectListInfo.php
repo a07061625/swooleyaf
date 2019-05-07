@@ -1,13 +1,14 @@
 <?php
 namespace AliOss\Model;
 
-class ObjectListInfo {
-    private $bucketName = "";
-    private $prefix = "";
-    private $marker = "";
-    private $nextMarker = "";
+class ObjectListInfo
+{
+    private $bucketName = '';
+    private $prefix = '';
+    private $marker = '';
+    private $nextMarker = '';
     private $maxKeys = 0;
-    private $delimiter = "";
+    private $delimiter = '';
     private $isTruncated = null;
     private $objectList = [];
     private $prefixList = [];
@@ -24,7 +25,8 @@ class ObjectListInfo {
      * @param array $objectList
      * @param array $prefixList
      */
-    public function __construct($bucketName,
+    public function __construct(
+        $bucketName,
         $prefix,
         $marker,
         $nextMarker,
@@ -32,7 +34,8 @@ class ObjectListInfo {
         $delimiter,
         $isTruncated,
         array $objectList,
-        array $prefixList){
+        array $prefixList
+    ) {
         $this->bucketName = $bucketName;
         $this->prefix = $prefix;
         $this->marker = $marker;
@@ -47,42 +50,48 @@ class ObjectListInfo {
     /**
      * @return string
      */
-    public function getBucketName(){
+    public function getBucketName()
+    {
         return $this->bucketName;
     }
 
     /**
      * @return string
      */
-    public function getPrefix(){
+    public function getPrefix()
+    {
         return $this->prefix;
     }
 
     /**
      * @return string
      */
-    public function getMarker(){
+    public function getMarker()
+    {
         return $this->marker;
     }
 
     /**
      * @return int
      */
-    public function getMaxKeys(){
+    public function getMaxKeys()
+    {
         return $this->maxKeys;
     }
 
     /**
      * @return string
      */
-    public function getDelimiter(){
+    public function getDelimiter()
+    {
         return $this->delimiter;
     }
 
     /**
      * @return mixed
      */
-    public function getIsTruncated(){
+    public function getIsTruncated()
+    {
         return $this->isTruncated;
     }
 
@@ -90,7 +99,8 @@ class ObjectListInfo {
      * Get the ObjectInfo list.
      * @return ObjectInfo[]
      */
-    public function getObjectList(){
+    public function getObjectList()
+    {
         return $this->objectList;
     }
 
@@ -98,14 +108,16 @@ class ObjectListInfo {
      * Get the PrefixInfo list
      * @return PrefixInfo[]
      */
-    public function getPrefixList(){
+    public function getPrefixList()
+    {
         return $this->prefixList;
     }
 
     /**
      * @return string
      */
-    public function getNextMarker(){
+    public function getNextMarker()
+    {
         return $this->nextMarker;
     }
 }

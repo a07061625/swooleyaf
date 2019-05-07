@@ -1,16 +1,17 @@
 <?php
 namespace AliOss\Model;
 
-class ListMultipartUploadInfo {
-    private $bucket = "";
-    private $keyMarker = "";
-    private $uploadIdMarker = "";
-    private $nextKeyMarker = "";
-    private $nextUploadIdMarker = "";
-    private $delimiter = "";
-    private $prefix = "";
+class ListMultipartUploadInfo
+{
+    private $bucket = '';
+    private $keyMarker = '';
+    private $uploadIdMarker = '';
+    private $nextKeyMarker = '';
+    private $nextUploadIdMarker = '';
+    private $delimiter = '';
+    private $prefix = '';
     private $maxUploads = 0;
-    private $isTruncated = "false";
+    private $isTruncated = 'false';
     private $uploads = [];
 
     /**
@@ -26,7 +27,8 @@ class ListMultipartUploadInfo {
      * @param string $isTruncated
      * @param array $uploads
      */
-    public function __construct($bucket,
+    public function __construct(
+        $bucket,
         $keyMarker,
         $uploadIdMarker,
         $nextKeyMarker,
@@ -35,7 +37,8 @@ class ListMultipartUploadInfo {
         $prefix,
         $maxUploads,
         $isTruncated,
-        array $uploads){
+        array $uploads
+    ) {
         $this->bucket = $bucket;
         $this->keyMarker = $keyMarker;
         $this->uploadIdMarker = $uploadIdMarker;
@@ -52,70 +55,80 @@ class ListMultipartUploadInfo {
      * 得到bucket名称
      * @return string
      */
-    public function getBucket(){
+    public function getBucket()
+    {
         return $this->bucket;
     }
 
     /**
      * @return string
      */
-    public function getKeyMarker(){
+    public function getKeyMarker()
+    {
         return $this->keyMarker;
     }
 
     /**
      * @return string
      */
-    public function getUploadIdMarker(){
+    public function getUploadIdMarker()
+    {
         return $this->uploadIdMarker;
     }
 
     /**
      * @return string
      */
-    public function getNextKeyMarker(){
+    public function getNextKeyMarker()
+    {
         return $this->nextKeyMarker;
     }
 
     /**
      * @return string
      */
-    public function getNextUploadIdMarker(){
+    public function getNextUploadIdMarker()
+    {
         return $this->nextUploadIdMarker;
     }
 
     /**
      * @return string
      */
-    public function getDelimiter(){
+    public function getDelimiter()
+    {
         return $this->delimiter;
     }
 
     /**
      * @return string
      */
-    public function getPrefix(){
+    public function getPrefix()
+    {
         return $this->prefix;
     }
 
     /**
      * @return int
      */
-    public function getMaxUploads(){
+    public function getMaxUploads()
+    {
         return $this->maxUploads;
     }
 
     /**
      * @return string
      */
-    public function getIsTruncated(){
+    public function getIsTruncated()
+    {
         return $this->isTruncated;
     }
 
     /**
      * @return UploadInfo[]
      */
-    public function getUploads(){
+    public function getUploads()
+    {
         return $this->uploads;
     }
 }

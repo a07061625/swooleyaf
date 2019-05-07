@@ -10,7 +10,8 @@ namespace DingDing;
 use Constant\ErrorCode;
 use Exception\DingDing\TalkException;
 
-class TalkConfigProvider {
+class TalkConfigProvider
+{
     /**
      * 企业ID
      * @var string
@@ -62,16 +63,19 @@ class TalkConfigProvider {
      */
     private $loginUrlCallback = '';
 
-    public function __construct() {
+    public function __construct()
+    {
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
     /**
      * @return string
      */
-    public function getCorpId() : string {
+    public function getCorpId() : string
+    {
         return $this->corpId;
     }
 
@@ -79,8 +83,9 @@ class TalkConfigProvider {
      * @param string $corpId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setCorpId(string $corpId){
-        if(ctype_alnum($corpId)){
+    public function setCorpId(string $corpId)
+    {
+        if (ctype_alnum($corpId)) {
             $this->corpId = $corpId;
         } else {
             throw new TalkException('企业ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -90,7 +95,8 @@ class TalkConfigProvider {
     /**
      * @return string
      */
-    public function getSsoSecret() : string {
+    public function getSsoSecret() : string
+    {
         return $this->ssoSecret;
     }
 
@@ -98,8 +104,9 @@ class TalkConfigProvider {
      * @param string $ssoSecret
      * @throws \Exception\DingDing\TalkException
      */
-    public function setSsoSecret(string $ssoSecret){
-        if(ctype_alnum($ssoSecret)){
+    public function setSsoSecret(string $ssoSecret)
+    {
+        if (ctype_alnum($ssoSecret)) {
             $this->ssoSecret = $ssoSecret;
         } else {
             throw new TalkException('免登密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -109,7 +116,8 @@ class TalkConfigProvider {
     /**
      * @return string
      */
-    public function getToken() : string {
+    public function getToken() : string
+    {
         return $this->token;
     }
 
@@ -117,8 +125,9 @@ class TalkConfigProvider {
      * @param string $token
      * @throws \Exception\DingDing\TalkException
      */
-    public function setToken(string $token){
-        if(ctype_alnum($token) && (strlen($token) <= 32)){
+    public function setToken(string $token)
+    {
+        if (ctype_alnum($token) && (strlen($token) <= 32)) {
             $this->token = $token;
         } else {
             throw new TalkException('消息校验token不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -128,7 +137,8 @@ class TalkConfigProvider {
     /**
      * @return string
      */
-    public function getAesKey() : string {
+    public function getAesKey() : string
+    {
         return $this->aesKey;
     }
 
@@ -136,8 +146,9 @@ class TalkConfigProvider {
      * @param string $aesKey
      * @throws \Exception\DingDing\TalkException
      */
-    public function setAesKey(string $aesKey) {
-        if(ctype_alnum($aesKey) && (strlen($aesKey) == 43)){
+    public function setAesKey(string $aesKey)
+    {
+        if (ctype_alnum($aesKey) && (strlen($aesKey) == 43)) {
             $this->aesKey = $aesKey;
         } else {
             throw new TalkException('加密密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -147,7 +158,8 @@ class TalkConfigProvider {
     /**
      * @return int
      */
-    public function getSuiteId() : int {
+    public function getSuiteId() : int
+    {
         return $this->suiteId;
     }
 
@@ -155,8 +167,9 @@ class TalkConfigProvider {
      * @param int $suiteId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setSuiteId(int $suiteId){
-        if($suiteId > 0){
+    public function setSuiteId(int $suiteId)
+    {
+        if ($suiteId > 0) {
             $this->suiteId = $suiteId;
         } else {
             throw new TalkException('套件ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -166,7 +179,8 @@ class TalkConfigProvider {
     /**
      * @return string
      */
-    public function getSuiteKey() : string{
+    public function getSuiteKey() : string
+    {
         return $this->suiteKey;
     }
 
@@ -174,8 +188,9 @@ class TalkConfigProvider {
      * @param string $suiteKey
      * @throws \Exception\DingDing\TalkException
      */
-    public function setSuiteKey(string $suiteKey){
-        if(ctype_alnum($suiteKey)){
+    public function setSuiteKey(string $suiteKey)
+    {
+        if (ctype_alnum($suiteKey)) {
             $this->suiteKey = $suiteKey;
         } else {
             throw new TalkException('套件标识不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -185,7 +200,8 @@ class TalkConfigProvider {
     /**
      * @return string
      */
-    public function getSuiteSecret() : string {
+    public function getSuiteSecret() : string
+    {
         return $this->suiteSecret;
     }
 
@@ -193,8 +209,9 @@ class TalkConfigProvider {
      * @param string $suiteSecret
      * @throws \Exception\DingDing\TalkException
      */
-    public function setSuiteSecret(string $suiteSecret){
-        if(strlen($suiteSecret) > 0){
+    public function setSuiteSecret(string $suiteSecret)
+    {
+        if (strlen($suiteSecret) > 0) {
             $this->suiteSecret = $suiteSecret;
         } else {
             throw new TalkException('套件密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -204,7 +221,8 @@ class TalkConfigProvider {
     /**
      * @return string
      */
-    public function getLoginAppId() : string {
+    public function getLoginAppId() : string
+    {
         return $this->loginAppId;
     }
 
@@ -212,8 +230,9 @@ class TalkConfigProvider {
      * @param string $loginAppId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setLoginAppId(string $loginAppId){
-        if(ctype_alnum($loginAppId)){
+    public function setLoginAppId(string $loginAppId)
+    {
+        if (ctype_alnum($loginAppId)) {
             $this->loginAppId = $loginAppId;
         } else {
             throw new TalkException('登陆应用ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -223,7 +242,8 @@ class TalkConfigProvider {
     /**
      * @return string
      */
-    public function getLoginAppSecret() : string {
+    public function getLoginAppSecret() : string
+    {
         return $this->loginAppSecret;
     }
 
@@ -231,8 +251,9 @@ class TalkConfigProvider {
      * @param string $loginAppSecret
      * @throws \Exception\DingDing\TalkException
      */
-    public function setLoginAppSecret(string $loginAppSecret){
-        if(strlen($loginAppSecret) > 0){
+    public function setLoginAppSecret(string $loginAppSecret)
+    {
+        if (strlen($loginAppSecret) > 0) {
             $this->loginAppSecret = $loginAppSecret;
         } else {
             throw new TalkException('登陆应用密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -242,7 +263,8 @@ class TalkConfigProvider {
     /**
      * @return string
      */
-    public function getLoginUrlCallback() : string {
+    public function getLoginUrlCallback() : string
+    {
         return $this->loginUrlCallback;
     }
 
@@ -250,8 +272,9 @@ class TalkConfigProvider {
      * @param string $loginUrlCallback
      * @throws \Exception\DingDing\TalkException
      */
-    public function setLoginUrlCallback(string $loginUrlCallback){
-        if(preg_match('/^(http|https)\:\/\/\S+$/', $loginUrlCallback) > 0){
+    public function setLoginUrlCallback(string $loginUrlCallback)
+    {
+        if (preg_match('/^(http|https)\:\/\/\S+$/', $loginUrlCallback) > 0) {
             $this->loginUrlCallback = $loginUrlCallback;
         } else {
             throw new TalkException('登陆应用回调地址不合法', ErrorCode::DING_TALK_PARAM_ERROR);

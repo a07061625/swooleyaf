@@ -17,7 +17,8 @@ use Tool\Tool;
  * 批量获取审批实例id
  * @package DingDing\Corp\Process
  */
-class InstanceIdList extends TalkBaseCorp {
+class InstanceIdList extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -51,7 +52,8 @@ class InstanceIdList extends TalkBaseCorp {
      */
     private $userid_list = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -60,14 +62,16 @@ class InstanceIdList extends TalkBaseCorp {
         $this->reqData['userid_list'] = '';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $processCode
      * @throws \Exception\DingDing\TalkException
      */
-    public function setProcessCode(string $processCode){
+    public function setProcessCode(string $processCode)
+    {
         if (strlen($processCode) > 0) {
             $this->reqData['process_code'] = $processCode;
         } else {
@@ -80,10 +84,11 @@ class InstanceIdList extends TalkBaseCorp {
      * @param int $endTime
      * @throws \Exception\DingDing\TalkException
      */
-    public function setStartTimeAndEndTime(int $startTime,int $endTime){
+    public function setStartTimeAndEndTime(int $startTime, int $endTime)
+    {
         if ($startTime < 946656000) {
             throw new TalkException('开始时间不合法', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if($endTime < $startTime){
+        } elseif ($endTime < $startTime) {
             throw new TalkException('结束时间不能小于开始时间', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
@@ -95,8 +100,9 @@ class InstanceIdList extends TalkBaseCorp {
      * @param int $size
      * @throws \Exception\DingDing\TalkException
      */
-    public function setSize(int $size){
-        if($size > 0){
+    public function setSize(int $size)
+    {
+        if ($size > 0) {
             $this->reqData['size'] = $size > 10 ? 10 : $size;
         } else {
             throw new TalkException('每页记录数不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -107,8 +113,9 @@ class InstanceIdList extends TalkBaseCorp {
      * @param int $cursor
      * @throws \Exception\DingDing\TalkException
      */
-    public function setCursor(int $cursor){
-        if($cursor >= 0){
+    public function setCursor(int $cursor)
+    {
+        if ($cursor >= 0) {
             $this->reqData['cursor'] = $cursor;
         } else {
             throw new TalkException('分页游标不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -119,25 +126,27 @@ class InstanceIdList extends TalkBaseCorp {
      * @param array $userIdList
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserIdList(array $userIdList){
+    public function setUserIdList(array $userIdList)
+    {
         $users = [];
         foreach ($userIdList as $eUserId) {
-            if(ctype_alnum($eUserId)){
+            if (ctype_alnum($eUserId)) {
                 $users[$eUserId] = 1;
             }
         }
         
-        if(count($users) > 10){
+        if (count($users) > 10) {
             throw new TalkException('发起人不能超过10个', ErrorCode::DING_TALK_PARAM_ERROR);
         }
         $this->reqData['userid_list'] = implode(',', array_keys($users));
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['process_code'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['process_code'])) {
             throw new TalkException('审批码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['start_time'])){
+        if (!isset($this->reqData['start_time'])) {
             throw new TalkException('开始时间不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

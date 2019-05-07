@@ -1,13 +1,14 @@
 <?php
 namespace AliOss\Model;
 
-class ObjectInfo {
-    private $key = "";
-    private $lastModified = "";
-    private $eTag = "";
-    private $type = "";
+class ObjectInfo
+{
+    private $key = '';
+    private $lastModified = '';
+    private $eTag = '';
+    private $type = '';
     private $size = 0;
-    private $storageClass = "";
+    private $storageClass = '';
 
     /**
      * ObjectInfo constructor.
@@ -18,7 +19,8 @@ class ObjectInfo {
      * @param int $size
      * @param string $storageClass
      */
-    public function __construct($key, $lastModified, $eTag, $type, $size, $storageClass){
+    public function __construct($key, $lastModified, $eTag, $type, $size, $storageClass)
+    {
         $this->key = $key;
         $this->lastModified = $lastModified;
         $this->eTag = $eTag;
@@ -30,42 +32,48 @@ class ObjectInfo {
     /**
      * @return string
      */
-    public function getKey(){
+    public function getKey()
+    {
         return $this->key;
     }
 
     /**
      * @return string
      */
-    public function getLastModified(){
+    public function getLastModified()
+    {
         return $this->lastModified;
     }
 
     /**
      * @return string
      */
-    public function getETag(){
+    public function getETag()
+    {
         return $this->eTag;
     }
 
     /**
      * @return string
      */
-    public function getType(){
+    public function getType()
+    {
         return $this->type;
     }
 
     /**
      * @return int
      */
-    public function getSize(){
+    public function getSize()
+    {
         return $this->size;
     }
 
     /**
      * @return string
      */
-    public function getStorageClass(){
+    public function getStorageClass()
+    {
         return $this->storageClass;
     }
 }

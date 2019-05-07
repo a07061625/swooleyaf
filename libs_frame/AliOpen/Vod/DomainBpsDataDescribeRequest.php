@@ -3,7 +3,8 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class DomainBpsDataDescribeRequest extends RpcAcsRequest {
+class DomainBpsDataDescribeRequest extends RpcAcsRequest
+{
     private $resourceOwnerId;
     private $resourceOwnerAccount;
     private $timeMerge;
@@ -16,107 +17,130 @@ class DomainBpsDataDescribeRequest extends RpcAcsRequest {
     private $ownerId;
     private $interval;
 
-    public function __construct(){
-        parent::__construct("vod", "2017-03-21", "DescribeDomainBpsData", "vod", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('vod', '2017-03-21', 'DescribeDomainBpsData', 'vod', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getResourceOwnerAccount(){
+    public function getResourceOwnerAccount()
+    {
         return $this->resourceOwnerAccount;
     }
 
-    public function setResourceOwnerAccount($resourceOwnerAccount){
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
-    public function getTimeMerge(){
+    public function getTimeMerge()
+    {
         return $this->timeMerge;
     }
 
-    public function setTimeMerge($timeMerge){
+    public function setTimeMerge($timeMerge)
+    {
         $this->timeMerge = $timeMerge;
-        $this->queryParameters["TimeMerge"] = $timeMerge;
+        $this->queryParameters['TimeMerge'] = $timeMerge;
     }
 
-    public function getOwnerAccount(){
+    public function getOwnerAccount()
+    {
         return $this->ownerAccount;
     }
 
-    public function setOwnerAccount($ownerAccount){
+    public function setOwnerAccount($ownerAccount)
+    {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
-    public function getDomainName(){
+    public function getDomainName()
+    {
         return $this->domainName;
     }
 
-    public function setDomainName($domainName){
+    public function setDomainName($domainName)
+    {
         $this->domainName = $domainName;
-        $this->queryParameters["DomainName"] = $domainName;
+        $this->queryParameters['DomainName'] = $domainName;
     }
 
-    public function getEndTime(){
+    public function getEndTime()
+    {
         return $this->endTime;
     }
 
-    public function setEndTime($endTime){
+    public function setEndTime($endTime)
+    {
         $this->endTime = $endTime;
-        $this->queryParameters["EndTime"] = $endTime;
+        $this->queryParameters['EndTime'] = $endTime;
     }
 
-    public function getLocationNameEn(){
+    public function getLocationNameEn()
+    {
         return $this->locationNameEn;
     }
 
-    public function setLocationNameEn($locationNameEn){
+    public function setLocationNameEn($locationNameEn)
+    {
         $this->locationNameEn = $locationNameEn;
-        $this->queryParameters["LocationNameEn"] = $locationNameEn;
+        $this->queryParameters['LocationNameEn'] = $locationNameEn;
     }
 
-    public function getStartTime(){
+    public function getStartTime()
+    {
         return $this->startTime;
     }
 
-    public function setStartTime($startTime){
+    public function setStartTime($startTime)
+    {
         $this->startTime = $startTime;
-        $this->queryParameters["StartTime"] = $startTime;
+        $this->queryParameters['StartTime'] = $startTime;
     }
 
-    public function getIspNameEn(){
+    public function getIspNameEn()
+    {
         return $this->ispNameEn;
     }
 
-    public function setIspNameEn($ispNameEn){
+    public function setIspNameEn($ispNameEn)
+    {
         $this->ispNameEn = $ispNameEn;
-        $this->queryParameters["IspNameEn"] = $ispNameEn;
+        $this->queryParameters['IspNameEn'] = $ispNameEn;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getInterval(){
+    public function getInterval()
+    {
         return $this->interval;
     }
 
-    public function setInterval($interval){
+    public function setInterval($interval)
+    {
         $this->interval = $interval;
-        $this->queryParameters["Interval"] = $interval;
+        $this->queryParameters['Interval'] = $interval;
     }
 }

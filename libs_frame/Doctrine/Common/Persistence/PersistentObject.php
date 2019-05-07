@@ -67,13 +67,38 @@ abstract class PersistentObject implements ObjectManagerAware
     private $cm = null;
 
     /**
+     * Magic methods.
+     *
+     * @param string $method
+     * @param array  $args
+     *
+     * @return mixed
+     *
+     * @throws \BadMethodCallException
+     */
+    public function __call($method, $args)
+    {
+        $command = substr($method, 0, 3);
+        $field = lcfirst(substr($method, 3));
+        if ($command == 'set') {
+            $this->set($field, $args);
+        } elseif ($command == 'get') {
+            return $this->get($field);
+        } elseif ($command == 'add') {
+            $this->add($field, $args);
+        } else {
+            throw new \BadMethodCallException('There is no method ' . $method . ' on ' . $this->cm->getName());
+        }
+    }
+
+    /**
      * Sets the object manager responsible for all persistent object base classes.
      *
      * @param ObjectManager|null $objectManager
      *
      * @return void
      */
-    static public function setObjectManager(ObjectManager $objectManager = null)
+    public static function setObjectManager(ObjectManager $objectManager = null)
     {
         self::$objectManager = $objectManager;
     }
@@ -81,7 +106,7 @@ abstract class PersistentObject implements ObjectManagerAware
     /**
      * @return ObjectManager|null
      */
-    static public function getObjectManager()
+    public static function getObjectManager()
     {
         return self::$objectManager;
     }
@@ -99,8 +124,8 @@ abstract class PersistentObject implements ObjectManagerAware
     public function injectObjectManager(ObjectManager $objectManager, ClassMetadata $classMetadata)
     {
         if ($objectManager !== self::$objectManager) {
-            throw new \RuntimeException("Trying to use PersistentObject with different ObjectManager instances. " .
-                "Was PersistentObject::setObjectManager() called?");
+            throw new \RuntimeException('Trying to use PersistentObject with different ObjectManager instances. ' .
+                'Was PersistentObject::setObjectManager() called?');
         }
 
         $this->cm = $classMetadata;
@@ -123,15 +148,15 @@ abstract class PersistentObject implements ObjectManagerAware
 
         if ($this->cm->hasField($field) && !$this->cm->isIdentifier($field)) {
             $this->$field = $args[0];
-        } else if ($this->cm->hasAssociation($field) && $this->cm->isSingleValuedAssociation($field)) {
+        } elseif ($this->cm->hasAssociation($field) && $this->cm->isSingleValuedAssociation($field)) {
             $targetClass = $this->cm->getAssociationTargetClass($field);
             if (!($args[0] instanceof $targetClass) && $args[0] !== null) {
-                throw new \InvalidArgumentException("Expected persistent object of type '".$targetClass."'");
+                throw new \InvalidArgumentException("Expected persistent object of type '" . $targetClass . "'");
             }
             $this->$field = $args[0];
             $this->completeOwningSide($field, $targetClass, $args[0]);
         } else {
-            throw new \BadMethodCallException("no field with name '".$field."' exists on '".$this->cm->getName()."'");
+            throw new \BadMethodCallException("no field with name '" . $field . "' exists on '" . $this->cm->getName() . "'");
         }
     }
 
@@ -148,10 +173,10 @@ abstract class PersistentObject implements ObjectManagerAware
     {
         $this->initializeDoctrine();
 
-        if ( $this->cm->hasField($field) || $this->cm->hasAssociation($field) ) {
+        if ($this->cm->hasField($field) || $this->cm->hasAssociation($field)) {
             return $this->$field;
         } else {
-            throw new \BadMethodCallException("no field with name '".$field."' exists on '".$this->cm->getName()."'");
+            throw new \BadMethodCallException("no field with name '" . $field . "' exists on '" . $this->cm->getName() . "'");
         }
     }
 
@@ -172,7 +197,7 @@ abstract class PersistentObject implements ObjectManagerAware
             $mappedByField = $this->cm->getAssociationMappedByTargetField($field);
             $targetMetadata = self::$objectManager->getClassMetadata($targetClass);
 
-            $setter = ($targetMetadata->isCollectionValuedAssociation($mappedByField) ? "add" : "set").$mappedByField;
+            $setter = ($targetMetadata->isCollectionValuedAssociation($mappedByField) ? 'add' : 'set') . $mappedByField;
             $targetObject->$setter($this);
         }
     }
@@ -195,7 +220,7 @@ abstract class PersistentObject implements ObjectManagerAware
         if ($this->cm->hasAssociation($field) && $this->cm->isCollectionValuedAssociation($field)) {
             $targetClass = $this->cm->getAssociationTargetClass($field);
             if (!($args[0] instanceof $targetClass)) {
-                throw new \InvalidArgumentException("Expected persistent object of type '".$targetClass."'");
+                throw new \InvalidArgumentException("Expected persistent object of type '" . $targetClass . "'");
             }
             if (!($this->$field instanceof Collection)) {
                 $this->$field = new ArrayCollection($this->$field ?: []);
@@ -203,7 +228,7 @@ abstract class PersistentObject implements ObjectManagerAware
             $this->$field->add($args[0]);
             $this->completeOwningSide($field, $targetClass, $args[0]);
         } else {
-            throw new \BadMethodCallException("There is no method add".$field."() on ".$this->cm->getName());
+            throw new \BadMethodCallException('There is no method add' . $field . '() on ' . $this->cm->getName());
         }
     }
 
@@ -221,34 +246,9 @@ abstract class PersistentObject implements ObjectManagerAware
         }
 
         if (!self::$objectManager) {
-            throw new \RuntimeException("No runtime object manager set. Call PersistentObject#setObjectManager().");
+            throw new \RuntimeException('No runtime object manager set. Call PersistentObject#setObjectManager().');
         }
 
         $this->cm = self::$objectManager->getClassMetadata(get_class($this));
-    }
-
-    /**
-     * Magic methods.
-     *
-     * @param string $method
-     * @param array  $args
-     *
-     * @return mixed
-     *
-     * @throws \BadMethodCallException
-     */
-    public function __call($method, $args)
-    {
-        $command = substr($method, 0, 3);
-        $field = lcfirst(substr($method, 3));
-        if ($command == "set") {
-            $this->set($field, $args);
-        } else if ($command == "get") {
-            return $this->get($field);
-        } else if ($command == "add") {
-            $this->add($field, $args);
-        } else {
-            throw new \BadMethodCallException("There is no method ".$method." on ".$this->cm->getName());
-        }
     }
 }

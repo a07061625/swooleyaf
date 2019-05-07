@@ -51,17 +51,17 @@ class StaticReflectionMethod extends ReflectionMethod
     /**
      * {@inheritDoc}
      */
-    public function getName()
+    public function __toString()
     {
-        return $this->methodName;
+        throw new ReflectionException('Method not implemented');
     }
 
     /**
-     * @return StaticReflectionParser
+     * {@inheritDoc}
      */
-    protected function getStaticReflectionParser()
+    public function getName()
     {
-        return $this->staticReflectionParser->getStaticReflectionParserForDeclaringClass('method', $this->methodName);
+        return $this->methodName;
     }
 
     /**
@@ -219,14 +219,6 @@ class StaticReflectionMethod extends ReflectionMethod
     /**
      * {@inheritDoc}
      */
-    public function __toString()
-    {
-        throw new ReflectionException('Method not implemented');
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getClosureThis()
     {
         throw new ReflectionException('Method not implemented');
@@ -358,5 +350,13 @@ class StaticReflectionMethod extends ReflectionMethod
     public function returnsReference()
     {
         throw new ReflectionException('Method not implemented');
+    }
+
+    /**
+     * @return StaticReflectionParser
+     */
+    protected function getStaticReflectionParser()
+    {
+        return $this->staticReflectionParser->getStaticReflectionParserForDeclaringClass('method', $this->methodName);
     }
 }

@@ -3,31 +3,37 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class RolesListRequest extends RpcAcsRequest {
+class RolesListRequest extends RpcAcsRequest
+{
     private $marker;
     private $maxItems;
 
-    public function __construct(){
-        parent::__construct("Ram", "2015-05-01", "ListRoles");
-        $this->setProtocol("https");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Ram', '2015-05-01', 'ListRoles');
+        $this->setProtocol('https');
+        $this->setMethod('POST');
     }
 
-    public function getMarker(){
+    public function getMarker()
+    {
         return $this->marker;
     }
 
-    public function setMarker($marker){
+    public function setMarker($marker)
+    {
         $this->marker = $marker;
-        $this->queryParameters["Marker"] = $marker;
+        $this->queryParameters['Marker'] = $marker;
     }
 
-    public function getMaxItems(){
+    public function getMaxItems()
+    {
         return $this->maxItems;
     }
 
-    public function setMaxItems($maxItems){
+    public function setMaxItems($maxItems)
+    {
         $this->maxItems = $maxItems;
-        $this->queryParameters["MaxItems"] = $maxItems;
+        $this->queryParameters['MaxItems'] = $maxItems;
     }
 }

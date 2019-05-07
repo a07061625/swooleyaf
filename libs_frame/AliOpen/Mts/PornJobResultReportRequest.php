@@ -3,7 +3,8 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class PornJobResultReportRequest extends RpcAcsRequest {
+class PornJobResultReportRequest extends RpcAcsRequest
+{
     private $jobId;
     private $resourceOwnerId;
     private $resourceOwnerAccount;
@@ -12,71 +13,86 @@ class PornJobResultReportRequest extends RpcAcsRequest {
     private $detail;
     private $ownerId;
 
-    public function __construct(){
-        parent::__construct("Mts", "2014-06-18", "ReportPornJobResult", "mts", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Mts', '2014-06-18', 'ReportPornJobResult', 'mts', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getJobId(){
+    public function getJobId()
+    {
         return $this->jobId;
     }
 
-    public function setJobId($jobId){
+    public function setJobId($jobId)
+    {
         $this->jobId = $jobId;
-        $this->queryParameters["JobId"] = $jobId;
+        $this->queryParameters['JobId'] = $jobId;
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getResourceOwnerAccount(){
+    public function getResourceOwnerAccount()
+    {
         return $this->resourceOwnerAccount;
     }
 
-    public function setResourceOwnerAccount($resourceOwnerAccount){
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
-    public function getOwnerAccount(){
+    public function getOwnerAccount()
+    {
         return $this->ownerAccount;
     }
 
-    public function setOwnerAccount($ownerAccount){
+    public function setOwnerAccount($ownerAccount)
+    {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
-    public function getLabel(){
+    public function getLabel()
+    {
         return $this->label;
     }
 
-    public function setLabel($label){
+    public function setLabel($label)
+    {
         $this->label = $label;
-        $this->queryParameters["Label"] = $label;
+        $this->queryParameters['Label'] = $label;
     }
 
-    public function getDetail(){
+    public function getDetail()
+    {
         return $this->detail;
     }
 
-    public function setDetail($detail){
+    public function setDetail($detail)
+    {
         $this->detail = $detail;
-        $this->queryParameters["Detail"] = $detail;
+        $this->queryParameters['Detail'] = $detail;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 }

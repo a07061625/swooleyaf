@@ -17,7 +17,8 @@ use Tool\Tool;
  * 查询企业离职员工列表
  * @package DingDing\Corp\SmartHrm
  */
-class EmployeeDimissionQuery extends TalkBaseCorp {
+class EmployeeDimissionQuery extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -31,7 +32,8 @@ class EmployeeDimissionQuery extends TalkBaseCorp {
      */
     private $size = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -39,12 +41,17 @@ class EmployeeDimissionQuery extends TalkBaseCorp {
         $this->reqData['size'] = 10;
     }
 
+    private function __clone()
+    {
+    }
+
     /**
      * @param int $offset
      * @throws \Exception\DingDing\TalkException
      */
-    public function setOffset(int $offset){
-        if($offset >= 0){
+    public function setOffset(int $offset)
+    {
+        if ($offset >= 0) {
             $this->reqData['offset'] = $offset;
         } else {
             throw new TalkException('偏移量不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -55,18 +62,17 @@ class EmployeeDimissionQuery extends TalkBaseCorp {
      * @param int $size
      * @throws \Exception\DingDing\TalkException
      */
-    public function setSize(int $size){
-        if($size > 0){
+    public function setSize(int $size)
+    {
+        if ($size > 0) {
             $this->reqData['size'] = $size > 50 ? 50 : $size;
         } else {
             throw new TalkException('分页大小不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    private function __clone(){
-    }
-
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/topapi/smartwork/hrm/employee/querydimission?' . http_build_query([
             'access_token' => $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag),
         ]);

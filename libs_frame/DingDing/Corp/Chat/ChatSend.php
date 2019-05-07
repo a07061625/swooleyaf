@@ -17,7 +17,8 @@ use Tool\Tool;
  * 发送群消息
  * @package DingDing\Corp\Chat
  */
-class ChatSend extends TalkBaseCorp {
+class ChatSend extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -31,20 +32,23 @@ class ChatSend extends TalkBaseCorp {
      */
     private $msg = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $chatId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setChatId(string $chatId){
+    public function setChatId(string $chatId)
+    {
         if (ctype_alnum($chatId)) {
             $this->reqData['chatid'] = $chatId;
         } else {
@@ -57,10 +61,11 @@ class ChatSend extends TalkBaseCorp {
      * @param array $data
      * @throws \Exception\DingDing\TalkException
      */
-    public function setMsgData(string $type,array $data){
-        if(!isset(self::$totalMessageType[$type])){
+    public function setMsgData(string $type, array $data)
+    {
+        if (!isset(self::$totalMessageType[$type])) {
             throw new TalkException('消息类型不支持', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if(empty($data)){
+        } elseif (empty($data)) {
             throw new TalkException('消息数据不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
@@ -70,11 +75,12 @@ class ChatSend extends TalkBaseCorp {
         ];
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['chatid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['chatid'])) {
             throw new TalkException('会话ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['msg'])){
+        if (!isset($this->reqData['msg'])) {
             throw new TalkException('消息内容不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

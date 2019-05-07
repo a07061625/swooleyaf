@@ -73,23 +73,12 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
      */
     private $contiguousRow = -1;
 
-
     /**
      * Create a new PHPExcel_Reader_CSV
      */
     public function __construct()
     {
         $this->readFilter = new PHPExcel_Reader_DefaultReadFilter();
-    }
-
-    /**
-     * Validate that the current file is a CSV file
-     *
-     * @return boolean
-     */
-    protected function isValidFormat()
-    {
-        return true;
     }
 
     /**
@@ -114,58 +103,6 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
     }
 
     /**
-     * Move filepointer past any BOM marker
-     *
-     */
-    protected function skipBOM()
-    {
-        rewind($this->fileHandle);
-
-        switch ($this->inputEncoding) {
-            case 'UTF-8':
-                fgets($this->fileHandle, 4) == "\xEF\xBB\xBF" ?
-                    fseek($this->fileHandle, 3) : fseek($this->fileHandle, 0);
-                break;
-            case 'UTF-16LE':
-                fgets($this->fileHandle, 3) == "\xFF\xFE" ?
-                    fseek($this->fileHandle, 2) : fseek($this->fileHandle, 0);
-                break;
-            case 'UTF-16BE':
-                fgets($this->fileHandle, 3) == "\xFE\xFF" ?
-                    fseek($this->fileHandle, 2) : fseek($this->fileHandle, 0);
-                break;
-            case 'UTF-32LE':
-                fgets($this->fileHandle, 5) == "\xFF\xFE\x00\x00" ?
-                    fseek($this->fileHandle, 4) : fseek($this->fileHandle, 0);
-                break;
-            case 'UTF-32BE':
-                fgets($this->fileHandle, 5) == "\x00\x00\xFE\xFF" ?
-                    fseek($this->fileHandle, 4) : fseek($this->fileHandle, 0);
-                break;
-            default:
-                break;
-        }
-    }
-
-    /**
-     * Identify any separator that is explicitly set in the file
-     *
-     */
-    protected function checkSeparator()
-    {
-        $line = fgets($this->fileHandle);
-        if ($line === false) {
-            return;
-        }
-
-        if ((strlen(trim($line, "\r\n")) == 5) && (stripos($line, 'sep=') === 0)) {
-            $this->delimiter = substr($line, 4, 1);
-            return;
-        }
-        return $this->skipBOM();
-    }
-
-    /**
      * Return worksheet info (Name, Last Column Letter, Last Column Index, Total Rows, Total Columns)
      *
      * @param     string         $pFilename
@@ -177,7 +114,7 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
         $this->openFile($pFilename);
         if (!$this->isValidFormat()) {
             fclose($this->fileHandle);
-            throw new PHPExcel_Reader_Exception($pFilename . " is an Invalid Spreadsheet file.");
+            throw new PHPExcel_Reader_Exception($pFilename . ' is an Invalid Spreadsheet file.');
         }
         $fileHandle = $this->fileHandle;
 
@@ -185,9 +122,9 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
         $this->skipBOM();
         $this->checkSeparator();
 
-        $escapeEnclosures = array( "\\" . $this->enclosure, $this->enclosure . $this->enclosure );
+        $escapeEnclosures = [ '\\' . $this->enclosure, $this->enclosure . $this->enclosure ];
 
-        $worksheetInfo = array();
+        $worksheetInfo = [];
         $worksheetInfo[0]['worksheetName'] = 'Worksheet';
         $worksheetInfo[0]['lastColumnLetter'] = 'A';
         $worksheetInfo[0]['lastColumnIndex'] = 0;
@@ -242,7 +179,7 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
         $this->openFile($pFilename);
         if (!$this->isValidFormat()) {
             fclose($this->fileHandle);
-            throw new PHPExcel_Reader_Exception($pFilename . " is an Invalid Spreadsheet file.");
+            throw new PHPExcel_Reader_Exception($pFilename . ' is an Invalid Spreadsheet file.');
         }
         $fileHandle = $this->fileHandle;
 
@@ -256,9 +193,9 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
         }
         $sheet = $objPHPExcel->setActiveSheetIndex($this->sheetIndex);
 
-        $escapeEnclosures = array( "\\" . $this->enclosure,
+        $escapeEnclosures = [ '\\' . $this->enclosure,
                                    $this->enclosure . $this->enclosure
-                                 );
+                                 ];
 
         // Set our starting row based on whether we're in contiguous mode or not
         $currentRow = 1;
@@ -392,5 +329,67 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
     public function getContiguous()
     {
         return $this->contiguous;
+    }
+
+    /**
+     * Validate that the current file is a CSV file
+     *
+     * @return boolean
+     */
+    protected function isValidFormat()
+    {
+        return true;
+    }
+
+    /**
+     * Move filepointer past any BOM marker
+     *
+     */
+    protected function skipBOM()
+    {
+        rewind($this->fileHandle);
+
+        switch ($this->inputEncoding) {
+            case 'UTF-8':
+                fgets($this->fileHandle, 4) == "\xEF\xBB\xBF" ?
+                    fseek($this->fileHandle, 3) : fseek($this->fileHandle, 0);
+                break;
+            case 'UTF-16LE':
+                fgets($this->fileHandle, 3) == "\xFF\xFE" ?
+                    fseek($this->fileHandle, 2) : fseek($this->fileHandle, 0);
+                break;
+            case 'UTF-16BE':
+                fgets($this->fileHandle, 3) == "\xFE\xFF" ?
+                    fseek($this->fileHandle, 2) : fseek($this->fileHandle, 0);
+                break;
+            case 'UTF-32LE':
+                fgets($this->fileHandle, 5) == "\xFF\xFE\x00\x00" ?
+                    fseek($this->fileHandle, 4) : fseek($this->fileHandle, 0);
+                break;
+            case 'UTF-32BE':
+                fgets($this->fileHandle, 5) == "\x00\x00\xFE\xFF" ?
+                    fseek($this->fileHandle, 4) : fseek($this->fileHandle, 0);
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * Identify any separator that is explicitly set in the file
+     *
+     */
+    protected function checkSeparator()
+    {
+        $line = fgets($this->fileHandle);
+        if ($line === false) {
+            return;
+        }
+
+        if ((strlen(trim($line, "\r\n")) == 5) && (stripos($line, 'sep=') === 0)) {
+            $this->delimiter = substr($line, 4, 1);
+            return;
+        }
+        return $this->skipBOM();
     }
 }

@@ -4,11 +4,13 @@ namespace AliOss\Result;
 use AliOss\Model\BucketInfo;
 use AliOss\Model\BucketListInfo;
 
-class ListBucketsResult extends Result {
+class ListBucketsResult extends Result
+{
     /**
      * @return BucketListInfo
      */
-    protected function parseDataFromResponse(){
+    protected function parseDataFromResponse()
+    {
         $bucketList = [];
         $content = $this->rawResponse->body;
         $xml = new \SimpleXMLElement($content);

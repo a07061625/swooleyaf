@@ -7,50 +7,61 @@
  */
 namespace DB\Models\NotORM;
 
-interface NotORM_Structure {
+interface NotORM_Structure
+{
     /**
      * Get primary key of a table in $db->$table()
      * @param string
+     * @param mixed $table
      * @return string
      */
-    function getPrimary($table);
+    public function getPrimary($table);
 
     /**
      * Get column holding foreign key in $table[$id]->$name()
      * @param string
      * @param string
+     * @param mixed $name
+     * @param mixed $table
      * @return string
      */
-    function getReferencingColumn($name, $table);
+    public function getReferencingColumn($name, $table);
 
     /**
      * Get target table in $table[$id]->$name()
      * @param string
      * @param string
+     * @param mixed $name
+     * @param mixed $table
      * @return string
      */
-    function getReferencingTable($name, $table);
+    public function getReferencingTable($name, $table);
 
     /**
      * Get column holding foreign key in $table[$id]->$name
      * @param string
      * @param string
+     * @param mixed $name
+     * @param mixed $table
      * @return string
      */
-    function getReferencedColumn($name, $table);
+    public function getReferencedColumn($name, $table);
 
     /**
      * Get table holding foreign key in $table[$id]->$name
      * @param string
      * @param string
+     * @param mixed $name
+     * @param mixed $table
      * @return string
      */
-    function getReferencedTable($name, $table);
+    public function getReferencedTable($name, $table);
 
     /**
      * Get sequence name, used by insert
      * @param string
+     * @param mixed $table
      * @return string
      */
-    function getSequence($table);
+    public function getSequence($table);
 }

@@ -14,17 +14,17 @@ class PHPExcel_Chart_Axis extends PHPExcel_Chart_Properties
      *
      * @var  array of mixed
      */
-    private $axisNumber = array(
+    private $axisNumber = [
         'format' => self::FORMAT_CODE_GENERAL,
         'source_linked' => 1
-    );
+    ];
 
     /**
      * Axis Options
      *
      * @var  array of mixed
      */
-    private $axisOptions = array(
+    private $axisOptions = [
         'minimum' => null,
         'maximum' => null,
         'major_unit' => null,
@@ -35,105 +35,106 @@ class PHPExcel_Chart_Axis extends PHPExcel_Chart_Properties
         'axis_labels' => self::AXIS_LABELS_NEXT_TO,
         'horizontal_crosses' => self::HORIZONTAL_CROSSES_AUTOZERO,
         'horizontal_crosses_value' => null
-    );
+    ];
 
     /**
      * Fill Properties
      *
      * @var  array of mixed
      */
-    private $fillProperties = array(
+    private $fillProperties = [
         'type' => self::EXCEL_COLOR_TYPE_ARGB,
         'value' => null,
         'alpha' => 0
-    );
+    ];
 
     /**
      * Line Properties
      *
      * @var  array of mixed
      */
-    private $lineProperties = array(
+    private $lineProperties = [
         'type' => self::EXCEL_COLOR_TYPE_ARGB,
         'value' => null,
         'alpha' => 0
-    );
+    ];
 
     /**
      * Line Style Properties
      *
      * @var  array of mixed
      */
-    private $lineStyleProperties = array(
+    private $lineStyleProperties = [
         'width' => '9525',
         'compound' => self::LINE_STYLE_COMPOUND_SIMPLE,
         'dash' => self::LINE_STYLE_DASH_SOLID,
         'cap' => self::LINE_STYLE_CAP_FLAT,
         'join' => self::LINE_STYLE_JOIN_BEVEL,
-        'arrow' => array(
-            'head' => array(
+        'arrow' => [
+            'head' => [
                 'type' => self::LINE_STYLE_ARROW_TYPE_NOARROW,
                 'size' => self::LINE_STYLE_ARROW_SIZE_5
-            ),
-            'end' => array(
+            ],
+            'end' => [
                 'type' => self::LINE_STYLE_ARROW_TYPE_NOARROW,
                 'size' => self::LINE_STYLE_ARROW_SIZE_8
-            ),
-        )
-    );
+            ],
+        ]
+    ];
 
     /**
      * Shadow Properties
      *
      * @var  array of mixed
      */
-    private $shadowProperties = array(
+    private $shadowProperties = [
         'presets' => self::SHADOW_PRESETS_NOSHADOW,
         'effect' => null,
-        'color' => array(
+        'color' => [
             'type' => self::EXCEL_COLOR_TYPE_STANDARD,
             'value' => 'black',
             'alpha' => 40,
-        ),
-        'size' => array(
+        ],
+        'size' => [
             'sx' => null,
             'sy' => null,
             'kx' => null
-        ),
+        ],
         'blur' => null,
         'direction' => null,
         'distance' => null,
         'algn' => null,
         'rotWithShape' => null
-    );
+    ];
 
     /**
      * Glow Properties
      *
      * @var  array of mixed
      */
-    private $glowProperties = array(
+    private $glowProperties = [
         'size' => null,
-        'color' => array(
+        'color' => [
             'type' => self::EXCEL_COLOR_TYPE_STANDARD,
             'value' => 'black',
             'alpha' => 40
-        )
-    );
+        ]
+    ];
 
     /**
      * Soft Edge Properties
      *
      * @var  array of mixed
      */
-    private $softEdges = array(
+    private $softEdges = [
         'size' => null
-    );
+    ];
 
     /**
      * Get Series Data Type
      *
      * @return  string
+     * @param mixed $format_code
      */
     public function setAxisNumberProperties($format_code)
     {
@@ -337,6 +338,7 @@ class PHPExcel_Chart_Axis extends PHPExcel_Chart_Properties
      * @param float $sh_blur
      * @param int $sh_angle
      * @param float $sh_distance
+     * @param mixed $sh_presets
      *
      */
     public function setShadowProperties($sh_presets, $sh_color_value = null, $sh_color_type = null, $sh_color_alpha = null, $sh_blur = null, $sh_angle = null, $sh_distance = null)
@@ -350,6 +352,72 @@ class PHPExcel_Chart_Axis extends PHPExcel_Chart_Properties
             ->setShadowBlur($sh_blur)
             ->setShadowAngle($sh_angle)
             ->setShadowDistance($sh_distance);
+    }
+
+    /**
+     * Get Glow Property
+     *
+     * @param float $size
+     * @param string $color_value
+     * @param int $color_alpha
+     * @param string $color_type
+     * @param mixed $elements
+     */
+    public function getShadowProperty($elements)
+    {
+        return $this->getArrayElementsValue($this->shadowProperties, $elements);
+    }
+
+    /**
+     * Set Glow Properties
+     *
+     * @param float $size
+     * @param string $color_value
+     * @param int $color_alpha
+     * @param string $color_type
+     */
+    public function setGlowProperties($size, $color_value = null, $color_alpha = null, $color_type = null)
+    {
+        $this->setGlowSize($size)
+            ->setGlowColor(
+                is_null($color_value) ? $this->glowProperties['color']['value'] : $color_value,
+                is_null($color_alpha) ? (int) $this->glowProperties['color']['alpha'] : $color_alpha,
+                is_null($color_type) ? $this->glowProperties['color']['type'] : $color_type
+            );
+    }
+
+    /**
+     * Get Glow Property
+     *
+     * @param array|string $property
+     *
+     * @return string
+     */
+    public function getGlowProperty($property)
+    {
+        return $this->getArrayElementsValue($this->glowProperties, $property);
+    }
+
+    /**
+     * Set Soft Edges Size
+     *
+     * @param float $size
+     */
+    public function setSoftEdges($size)
+    {
+        if (!is_null($size)) {
+            $softEdges['size'] = (string) $this->getExcelPointsWidth($size);
+        }
+    }
+
+    /**
+     * Get Soft Edges Size
+     *
+     * @return string
+     */
+    public function getSoftEdgesSize()
+    {
+        return $this->softEdges['size'];
     }
 
     /**
@@ -463,49 +531,6 @@ class PHPExcel_Chart_Axis extends PHPExcel_Chart_Properties
     }
 
     /**
-     * Get Glow Property
-     *
-     * @param float $size
-     * @param string $color_value
-     * @param int $color_alpha
-     * @param string $color_type
-     */
-    public function getShadowProperty($elements)
-    {
-        return $this->getArrayElementsValue($this->shadowProperties, $elements);
-    }
-
-    /**
-     * Set Glow Properties
-     *
-     * @param float $size
-     * @param string $color_value
-     * @param int $color_alpha
-     * @param string $color_type
-     */
-    public function setGlowProperties($size, $color_value = null, $color_alpha = null, $color_type = null)
-    {
-        $this->setGlowSize($size)
-            ->setGlowColor(
-                is_null($color_value) ? $this->glowProperties['color']['value'] : $color_value,
-                is_null($color_alpha) ? (int) $this->glowProperties['color']['alpha'] : $color_alpha,
-                is_null($color_type) ? $this->glowProperties['color']['type'] : $color_type
-            );
-    }
-
-    /**
-     * Get Glow Property
-     *
-     * @param array|string $property
-     *
-     * @return string
-     */
-    public function getGlowProperty($property)
-    {
-        return $this->getArrayElementsValue($this->glowProperties, $property);
-    }
-
-    /**
      * Set Glow Color
      *
      * @param float $size
@@ -535,27 +560,5 @@ class PHPExcel_Chart_Axis extends PHPExcel_Chart_Properties
         $this->glowProperties['color'] = $this->setColorProperties($color, $alpha, $type);
 
         return $this;
-    }
-
-    /**
-     * Set Soft Edges Size
-     *
-     * @param float $size
-     */
-    public function setSoftEdges($size)
-    {
-        if (!is_null($size)) {
-            $softEdges['size'] = (string) $this->getExcelPointsWidth($size);
-        }
-    }
-
-    /**
-     * Get Soft Edges Size
-     *
-     * @return string
-     */
-    public function getSoftEdgesSize()
-    {
-        return $this->softEdges['size'];
     }
 }

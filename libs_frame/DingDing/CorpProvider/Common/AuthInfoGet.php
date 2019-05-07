@@ -19,25 +19,29 @@ use Tool\Tool;
  * 获取授权企业基本信息
  * @package DingDing\CorpProvider\Common
  */
-class AuthInfoGet extends TalkBaseCorpProvider {
+class AuthInfoGet extends TalkBaseCorpProvider
+{
     /**
      * 授权企业ID
      * @var string
      */
     private $auth_corpid = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $authCorpId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setAuthCorpId(string $authCorpId){
+    public function setAuthCorpId(string $authCorpId)
+    {
         if (ctype_alnum($authCorpId)) {
             $this->reqData['auth_corpid'] = $authCorpId;
         } else {
@@ -45,8 +49,9 @@ class AuthInfoGet extends TalkBaseCorpProvider {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['auth_corpid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['auth_corpid'])) {
             throw new TalkException('授权企业ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

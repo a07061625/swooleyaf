@@ -9,8 +9,10 @@ namespace Exception\Wx;
 
 use Exception\BaseException;
 
-class WxCorpProviderException extends BaseException {
-    public function __construct($message, $code) {
+class WxCorpProviderException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = '微信企业服务商异常';
     }

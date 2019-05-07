@@ -9,8 +9,10 @@ namespace Exception\AliOss;
 
 use Exception\BaseException;
 
-class OssException extends BaseException {
-    public function __construct($message, $code){
+class OssException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = '阿里OSS上传异常';
     }

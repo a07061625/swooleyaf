@@ -27,17 +27,16 @@
 
 /** Error reporting */
 error_reporting(E_ALL);
-ini_set('display_errors', TRUE);
-ini_set('display_startup_errors', TRUE);
+ini_set('display_errors', true);
+ini_set('display_startup_errors', true);
 date_default_timezone_set('Europe/London');
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 date_default_timezone_set('Europe/London');
 
 /** PHPExcel */
 require_once dirname(__FILE__) . '/../Classes/PHPExcel.php';
-
 
 // List functions
 echo date('H:i:s') . " List implemented functions\n";
@@ -56,8 +55,8 @@ $objPHPExcel->getActiveSheet()->setCellValue('B1', 'Range 1');
 $objPHPExcel->getActiveSheet()->setCellValue('B2', 2);
 $objPHPExcel->getActiveSheet()->setCellValue('B3', 8);
 $objPHPExcel->getActiveSheet()->setCellValue('B4', 10);
-$objPHPExcel->getActiveSheet()->setCellValue('B5', True);
-$objPHPExcel->getActiveSheet()->setCellValue('B6', False);
+$objPHPExcel->getActiveSheet()->setCellValue('B5', true);
+$objPHPExcel->getActiveSheet()->setCellValue('B6', false);
 $objPHPExcel->getActiveSheet()->setCellValue('B7', 'Text String');
 $objPHPExcel->getActiveSheet()->setCellValue('B9', '22');
 $objPHPExcel->getActiveSheet()->setCellValue('B10', 4);
@@ -100,9 +99,8 @@ $objPHPExcel->getActiveSheet()->setCellValue('F14', '=COUNT(B2:C12)');
 echo date('H:i:s') . " Calculated data\n";
 echo 'Value of B14 [=COUNT(B2:B12)]: ' . $objPHPExcel->getActiveSheet()->getCell('B14')->getCalculatedValue() . "\r\n";
 
-
 // Echo memory peak usage
-echo date('H:i:s') . " Peak memory usage: " . (memory_get_peak_usage(true) / 1024 / 1024) . " MB\r\n";
+echo date('H:i:s') . ' Peak memory usage: ' . (memory_get_peak_usage(true) / 1024 / 1024) . " MB\r\n";
 
 // Echo done
-echo date('H:i:s') . " Done" , EOL;
+echo date('H:i:s') . ' Done' , EOL;

@@ -38,7 +38,7 @@ class PHPExcel_Shared_Date
      * @public
      * @var    string[]
      */
-    public static $monthNames = array(
+    public static $monthNames = [
         'Jan' => 'January',
         'Feb' => 'February',
         'Mar' => 'March',
@@ -51,7 +51,7 @@ class PHPExcel_Shared_Date
         'Oct' => 'October',
         'Nov' => 'November',
         'Dec' => 'December',
-    );
+    ];
 
     /*
      * Names of the months of the year, indexed by shortname
@@ -60,12 +60,12 @@ class PHPExcel_Shared_Date
      * @public
      * @var    string[]
      */
-    public static $numberSuffixes = array(
+    public static $numberSuffixes = [
         'st',
         'nd',
         'rd',
         'th',
-    );
+    ];
 
     /*
      * Base calendar year to use for calculations
@@ -74,6 +74,8 @@ class PHPExcel_Shared_Date
      * @var    int
      */
     protected static $excelBaseDate = self::CALENDAR_WINDOWS_1900;
+
+    private static $possibleDateFormatCharacters = 'eymdHs';
 
     /**
      * Set the Excel calendar (Windows 1900 or Mac 1904)
@@ -91,7 +93,6 @@ class PHPExcel_Shared_Date
         return false;
     }
 
-
     /**
      * Return the Excel calendar (Windows 1900 or Mac 1904)
      *
@@ -101,7 +102,6 @@ class PHPExcel_Shared_Date
     {
         return self::$excelBaseDate;
     }
-
 
     /**
      *    Convert a date from Excel to PHP
@@ -145,7 +145,6 @@ class PHPExcel_Shared_Date
         return $returnValue + $timezoneAdjustment;
     }
 
-
     /**
      * Convert a date from Excel to a PHP Date/Time object
      *
@@ -161,12 +160,11 @@ class PHPExcel_Shared_Date
         $minutes = round($time / 60) - ($hours * 60);
         $seconds = round($time) - ($hours * 3600) - ($minutes * 60);
 
-        $dateObj = date_create('1-Jan-1970+'.$days.' days');
+        $dateObj = date_create('1-Jan-1970+' . $days . ' days');
         $dateObj->setTime($hours, $minutes, $seconds);
 
         return $dateObj;
     }
-
 
     /**
      *    Convert a date from PHP to Excel
@@ -201,7 +199,6 @@ class PHPExcel_Shared_Date
 
         return $retValue;
     }
-
 
     /**
      * FormattedPHPToExcel
@@ -249,7 +246,6 @@ class PHPExcel_Shared_Date
         return (float) $excelDate + $excelTime;
     }
 
-
     /**
      * Is a given cell a date/time?
      *
@@ -265,7 +261,6 @@ class PHPExcel_Shared_Date
         );
     }
 
-
     /**
      * Is a given number format a date/time?
      *
@@ -276,9 +271,6 @@ class PHPExcel_Shared_Date
     {
         return self::isDateTimeFormatCode($pFormat->getFormatCode());
     }
-
-
-    private static $possibleDateFormatCharacters = 'eymdHs';
 
     /**
      * Is a given number format code a date/time?
@@ -330,7 +322,7 @@ class PHPExcel_Shared_Date
             return false;
         }
         // Try checking for any of the date formatting characters that don't appear within square braces
-        if (preg_match('/(^|\])[^\[]*['.self::$possibleDateFormatCharacters.']/i', $pFormatCode)) {
+        if (preg_match('/(^|\])[^\[]*[' . self::$possibleDateFormatCharacters . ']/i', $pFormatCode)) {
             //    We might also have a format mask containing quoted strings...
             //        we don't want to test for any of our characters within the quoted blocks
             if (strpos($pFormatCode, '"') !== false) {
@@ -338,7 +330,7 @@ class PHPExcel_Shared_Date
                 foreach (explode('"', $pFormatCode) as $subVal) {
                     //    Only test in alternate array entries (the non-quoted blocks)
                     if (($segMatcher = !$segMatcher) &&
-                        (preg_match('/(^|\])[^\[]*['.self::$possibleDateFormatCharacters.']/i', $subVal))) {
+                        (preg_match('/(^|\])[^\[]*[' . self::$possibleDateFormatCharacters . ']/i', $subVal))) {
                         return true;
                     }
                 }
@@ -350,7 +342,6 @@ class PHPExcel_Shared_Date
         // No date...
         return false;
     }
-
 
     /**
      * Convert a date/time string to Excel time

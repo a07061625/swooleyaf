@@ -9,10 +9,12 @@ namespace DesignPatterns\Facades;
 
 use Traits\SimpleFacadeTrait;
 
-abstract class WxProviderCorpNotifyWxFacade {
+abstract class WxProviderCorpNotifyWxFacade
+{
     use SimpleFacadeTrait;
 
-    public static function acceptNotify(array $data){
+    public static function acceptNotify(array $data)
+    {
         static::handleNotify($data);
     }
 

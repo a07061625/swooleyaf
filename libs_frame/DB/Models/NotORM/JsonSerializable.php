@@ -7,6 +7,7 @@
  */
 namespace DB\Models\NotORM;
 
-interface JsonSerializable {
-    function jsonSerialize();
+interface JsonSerializable
+{
+    public function jsonSerialize();
 }

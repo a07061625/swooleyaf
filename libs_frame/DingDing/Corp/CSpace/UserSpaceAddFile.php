@@ -17,7 +17,8 @@ use Exception\DingDing\TalkException;
  * 新增文件到用户钉盘
  * @package DingDing\Corp\CSpace
  */
-class UserSpaceAddFile extends TalkBaseCorp {
+class UserSpaceAddFile extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -56,7 +57,8 @@ class UserSpaceAddFile extends TalkBaseCorp {
      */
     private $overwrite = false;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -65,15 +67,17 @@ class UserSpaceAddFile extends TalkBaseCorp {
         $this->reqData['overwrite'] = false;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $code
      * @throws \Exception\DingDing\TalkException
      */
-    public function setCode(string $code){
-        if(ctype_alnum($code)){
+    public function setCode(string $code)
+    {
+        if (ctype_alnum($code)) {
             $this->reqData['code'] = $code;
         } else {
             throw new TalkException('授权码不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -84,8 +88,9 @@ class UserSpaceAddFile extends TalkBaseCorp {
      * @param string $mediaId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setMediaId(string $mediaId){
-        if(strlen($mediaId) > 0){
+    public function setMediaId(string $mediaId)
+    {
+        if (strlen($mediaId) > 0) {
             $this->reqData['media_id'] = $mediaId;
         } else {
             throw new TalkException('媒体ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -96,8 +101,9 @@ class UserSpaceAddFile extends TalkBaseCorp {
      * @param string $spaceId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setSpaceId(string $spaceId){
-        if(ctype_alnum($spaceId)){
+    public function setSpaceId(string $spaceId)
+    {
+        if (ctype_alnum($spaceId)) {
             $this->reqData['space_id'] = $spaceId;
         } else {
             throw new TalkException('空间ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -108,8 +114,9 @@ class UserSpaceAddFile extends TalkBaseCorp {
      * @param string $folderId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setFolderId(string $folderId){
-        if(strlen($folderId) > 0){
+    public function setFolderId(string $folderId)
+    {
+        if (strlen($folderId) > 0) {
             $this->reqData['folder_id'] = $folderId;
         } else {
             throw new TalkException('文件夹ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -120,8 +127,9 @@ class UserSpaceAddFile extends TalkBaseCorp {
      * @param string $name
      * @throws \Exception\DingDing\TalkException
      */
-    public function setName(string $name){
-        if(strlen($name) > 0){
+    public function setName(string $name)
+    {
+        if (strlen($name) > 0) {
             $this->reqData['name'] = $name;
         } else {
             throw new TalkException('文件名不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -131,24 +139,26 @@ class UserSpaceAddFile extends TalkBaseCorp {
     /**
      * @param bool $overwrite
      */
-    public function setOverwrite(bool $overwrite){
+    public function setOverwrite(bool $overwrite)
+    {
         $this->reqData['overwrite'] = $overwrite;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['code'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['code'])) {
             throw new TalkException('授权码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['media_id'])){
+        if (!isset($this->reqData['media_id'])) {
             throw new TalkException('媒体ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['space_id'])){
+        if (!isset($this->reqData['space_id'])) {
             throw new TalkException('空间ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['folder_id'])){
+        if (!isset($this->reqData['folder_id'])) {
             throw new TalkException('文件夹ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['name'])){
+        if (!isset($this->reqData['name'])) {
             throw new TalkException('文件名不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

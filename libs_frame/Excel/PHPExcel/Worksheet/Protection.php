@@ -25,7 +25,6 @@
  * @version    ##VERSION##, ##DATE##
  */
 
-
 /**
  * PHPExcel_Worksheet_Protection
  *
@@ -40,125 +39,140 @@ class PHPExcel_Worksheet_Protection
      *
      * @var boolean
      */
-    private $sheet                    = false;
+    private $sheet = false;
 
     /**
      * Objects
      *
      * @var boolean
      */
-    private $objects                = false;
+    private $objects = false;
 
     /**
      * Scenarios
      *
      * @var boolean
      */
-    private $scenarios                = false;
+    private $scenarios = false;
 
     /**
      * Format cells
      *
      * @var boolean
      */
-    private $formatCells            = false;
+    private $formatCells = false;
 
     /**
      * Format columns
      *
      * @var boolean
      */
-    private $formatColumns            = false;
+    private $formatColumns = false;
 
     /**
      * Format rows
      *
      * @var boolean
      */
-    private $formatRows            = false;
+    private $formatRows = false;
 
     /**
      * Insert columns
      *
      * @var boolean
      */
-    private $insertColumns            = false;
+    private $insertColumns = false;
 
     /**
      * Insert rows
      *
      * @var boolean
      */
-    private $insertRows            = false;
+    private $insertRows = false;
 
     /**
      * Insert hyperlinks
      *
      * @var boolean
      */
-    private $insertHyperlinks        = false;
+    private $insertHyperlinks = false;
 
     /**
      * Delete columns
      *
      * @var boolean
      */
-    private $deleteColumns            = false;
+    private $deleteColumns = false;
 
     /**
      * Delete rows
      *
      * @var boolean
      */
-    private $deleteRows            = false;
+    private $deleteRows = false;
 
     /**
      * Select locked cells
      *
      * @var boolean
      */
-    private $selectLockedCells        = false;
+    private $selectLockedCells = false;
 
     /**
      * Sort
      *
      * @var boolean
      */
-    private $sort                    = false;
+    private $sort = false;
 
     /**
      * AutoFilter
      *
      * @var boolean
      */
-    private $autoFilter            = false;
+    private $autoFilter = false;
 
     /**
      * Pivot tables
      *
      * @var boolean
      */
-    private $pivotTables            = false;
+    private $pivotTables = false;
 
     /**
      * Select unlocked cells
      *
      * @var boolean
      */
-    private $selectUnlockedCells    = false;
+    private $selectUnlockedCells = false;
 
     /**
      * Password
      *
      * @var string
      */
-    private $password                = '';
+    private $password = '';
 
     /**
      * Create a new PHPExcel_Worksheet_Protection
      */
     public function __construct()
     {
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if (is_object($value)) {
+                $this->$key = clone $value;
+            } else {
+                $this->$key = $value;
+            }
+        }
     }
 
     /**
@@ -562,20 +576,5 @@ class PHPExcel_Worksheet_Protection
         }
         $this->password = $pValue;
         return $this;
-    }
-
-    /**
-     * Implement PHP __clone to create a deep clone, not just a shallow copy.
-     */
-    public function __clone()
-    {
-        $vars = get_object_vars($this);
-        foreach ($vars as $key => $value) {
-            if (is_object($value)) {
-                $this->$key = clone $value;
-            } else {
-                $this->$key = $value;
-            }
-        }
     }
 }

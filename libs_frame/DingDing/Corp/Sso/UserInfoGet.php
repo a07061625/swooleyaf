@@ -17,14 +17,16 @@ use Exception\DingDing\TalkException;
  * 获取应用管理员的身份信息
  * @package DingDing\Corp\Sso
  */
-class UserInfoGet extends TalkBaseCorp {
+class UserInfoGet extends TalkBaseCorp
+{
     /**
      * 授权码
      * @var string
      */
     private $code = '';
 
-    public function __construct(string $corpId){
+    public function __construct(string $corpId)
+    {
         parent::__construct();
         if (strlen($corpId) > 0) {
             $this->reqData['access_token'] = TalkUtilCorp::getSsoToken($corpId);
@@ -33,23 +35,26 @@ class UserInfoGet extends TalkBaseCorp {
         }
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $code
      * @throws \Exception\DingDing\TalkException
      */
-    public function setCode(string $code){
-        if(ctype_alnum($code)){
+    public function setCode(string $code)
+    {
+        if (ctype_alnum($code)) {
             $this->reqData['code'] = $code;
         } else {
             throw new TalkException('授权码不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['code'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['code'])) {
             throw new TalkException('授权码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

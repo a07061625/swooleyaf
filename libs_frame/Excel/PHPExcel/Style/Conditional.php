@@ -25,7 +25,6 @@
  * @version    ##VERSION##, ##DATE##
  */
 
-
 /**
  * PHPExcel_Style_Conditional
  *
@@ -36,24 +35,24 @@
 class PHPExcel_Style_Conditional implements PHPExcel_IComparable
 {
     /* Condition types */
-    const CONDITION_NONE         = 'none';
-    const CONDITION_CELLIS       = 'cellIs';
+    const CONDITION_NONE = 'none';
+    const CONDITION_CELLIS = 'cellIs';
     const CONDITION_CONTAINSTEXT = 'containsText';
-    const CONDITION_EXPRESSION   = 'expression';
+    const CONDITION_EXPRESSION = 'expression';
 
     /* Operator types */
-    const OPERATOR_NONE               = '';
-    const OPERATOR_BEGINSWITH         = 'beginsWith';
-    const OPERATOR_ENDSWITH           = 'endsWith';
-    const OPERATOR_EQUAL              = 'equal';
-    const OPERATOR_GREATERTHAN        = 'greaterThan';
+    const OPERATOR_NONE = '';
+    const OPERATOR_BEGINSWITH = 'beginsWith';
+    const OPERATOR_ENDSWITH = 'endsWith';
+    const OPERATOR_EQUAL = 'equal';
+    const OPERATOR_GREATERTHAN = 'greaterThan';
     const OPERATOR_GREATERTHANOREQUAL = 'greaterThanOrEqual';
-    const OPERATOR_LESSTHAN           = 'lessThan';
-    const OPERATOR_LESSTHANOREQUAL    = 'lessThanOrEqual';
-    const OPERATOR_NOTEQUAL           = 'notEqual';
-    const OPERATOR_CONTAINSTEXT       = 'containsText';
-    const OPERATOR_NOTCONTAINS        = 'notContains';
-    const OPERATOR_BETWEEN            = 'between';
+    const OPERATOR_LESSTHAN = 'lessThan';
+    const OPERATOR_LESSTHANOREQUAL = 'lessThanOrEqual';
+    const OPERATOR_NOTEQUAL = 'notEqual';
+    const OPERATOR_CONTAINSTEXT = 'containsText';
+    const OPERATOR_NOTCONTAINS = 'notContains';
+    const OPERATOR_BETWEEN = 'between';
 
     /**
      * Condition type
@@ -81,7 +80,7 @@ class PHPExcel_Style_Conditional implements PHPExcel_IComparable
      *
      * @var string[]
      */
-    private $condition = array();
+    private $condition = [];
 
     /**
      * Style
@@ -96,11 +95,26 @@ class PHPExcel_Style_Conditional implements PHPExcel_IComparable
     public function __construct()
     {
         // Initialise values
-        $this->conditionType = PHPExcel_Style_Conditional::CONDITION_NONE;
-        $this->operatorType  = PHPExcel_Style_Conditional::OPERATOR_NONE;
-        $this->text          = null;
-        $this->condition     = array();
-        $this->style         = new PHPExcel_Style(false, true);
+        $this->conditionType = self::CONDITION_NONE;
+        $this->operatorType = self::OPERATOR_NONE;
+        $this->text = null;
+        $this->condition = [];
+        $this->style = new PHPExcel_Style(false, true);
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if (is_object($value)) {
+                $this->$key = clone $value;
+            } else {
+                $this->$key = $value;
+            }
+        }
     }
 
     /**
@@ -119,7 +133,7 @@ class PHPExcel_Style_Conditional implements PHPExcel_IComparable
      * @param string $pValue    PHPExcel_Style_Conditional condition type
      * @return PHPExcel_Style_Conditional
      */
-    public function setConditionType($pValue = PHPExcel_Style_Conditional::CONDITION_NONE)
+    public function setConditionType($pValue = self::CONDITION_NONE)
     {
         $this->conditionType = $pValue;
         return $this;
@@ -141,7 +155,7 @@ class PHPExcel_Style_Conditional implements PHPExcel_IComparable
      * @param string $pValue    PHPExcel_Style_Conditional operator type
      * @return PHPExcel_Style_Conditional
      */
-    public function setOperatorType($pValue = PHPExcel_Style_Conditional::OPERATOR_NONE)
+    public function setOperatorType($pValue = self::OPERATOR_NONE)
     {
         $this->operatorType = $pValue;
         return $this;
@@ -194,7 +208,7 @@ class PHPExcel_Style_Conditional implements PHPExcel_IComparable
     public function setCondition($pValue = '')
     {
         if (!is_array($pValue)) {
-            $pValue = array($pValue);
+            $pValue = [$pValue];
         }
 
         return $this->setConditions($pValue);
@@ -219,7 +233,7 @@ class PHPExcel_Style_Conditional implements PHPExcel_IComparable
     public function setConditions($pValue)
     {
         if (!is_array($pValue)) {
-            $pValue = array($pValue);
+            $pValue = [$pValue];
         }
         $this->condition = $pValue;
         return $this;
@@ -256,8 +270,8 @@ class PHPExcel_Style_Conditional implements PHPExcel_IComparable
      */
     public function setStyle(PHPExcel_Style $pValue = null)
     {
-           $this->style = $pValue;
-           return $this;
+        $this->style = $pValue;
+        return $this;
     }
 
     /**
@@ -274,20 +288,5 @@ class PHPExcel_Style_Conditional implements PHPExcel_IComparable
             $this->style->getHashCode() .
             __CLASS__
         );
-    }
-
-    /**
-     * Implement PHP __clone to create a deep clone, not just a shallow copy.
-     */
-    public function __clone()
-    {
-        $vars = get_object_vars($this);
-        foreach ($vars as $key => $value) {
-            if (is_object($value)) {
-                $this->$key = clone $value;
-            } else {
-                $this->$key = $value;
-            }
-        }
     }
 }

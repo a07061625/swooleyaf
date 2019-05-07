@@ -1,7 +1,8 @@
 <?php
 namespace AliOpen\Core\Auth;
 
-class BearerTokenCredential extends AbstractCredential {
+class BearerTokenCredential extends AbstractCredential
+{
     /**
      * @var string
      */
@@ -11,42 +12,45 @@ class BearerTokenCredential extends AbstractCredential {
      * AliOpen\Core\Auth\BearerTokenCredential constructor.
      * @param $bearerToken
      */
-    public function __construct($bearerToken){
+    public function __construct($bearerToken)
+    {
         $this->bearerToken = $bearerToken;
     }
 
     /**
      * @return null
      */
-    public function getAccessKeyId(){
-        return null;
+    public function getAccessKeyId()
+    {
     }
 
     /**
      * @return null
      */
-    public function getAccessSecret(){
-        return null;
+    public function getAccessSecret()
+    {
     }
 
     /**
      * @return string
      */
-    public function getBearerToken(){
+    public function getBearerToken()
+    {
         return $this->bearerToken;
     }
 
     /**
      * @param $bearerToken
      */
-    public function setBearerToken($bearerToken){
+    public function setBearerToken($bearerToken)
+    {
         $this->bearerToken = $bearerToken;
     }
 
     /**
      * @return null
      */
-    public function getSecurityToken(){
-        return null;
+    public function getSecurityToken()
+    {
     }
 }

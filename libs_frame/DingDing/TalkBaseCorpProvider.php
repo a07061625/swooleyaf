@@ -7,8 +7,10 @@
  */
 namespace DingDing;
 
-abstract class TalkBaseCorpProvider extends TalkBase {
-    public function __construct(){
+abstract class TalkBaseCorpProvider extends TalkBase
+{
+    public function __construct()
+    {
         parent::__construct();
     }
 }

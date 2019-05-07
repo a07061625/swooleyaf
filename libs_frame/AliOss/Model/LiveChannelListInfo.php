@@ -1,7 +1,8 @@
 <?php
 namespace AliOss\Model;
 
-class LiveChannelListInfo implements XmlConfig {
+class LiveChannelListInfo implements XmlConfig
+{
     private $bucket = '';
     private $prefix = '';
     private $marker = '';
@@ -13,57 +14,66 @@ class LiveChannelListInfo implements XmlConfig {
     /**
      * @return string
      */
-    public function getBucketName(){
+    public function getBucketName()
+    {
         return $this->bucket;
     }
 
-    public function setBucketName($name){
+    public function setBucketName($name)
+    {
         $this->bucket = $name;
     }
 
     /**
      * @return string
      */
-    public function getPrefix(){
+    public function getPrefix()
+    {
         return $this->prefix;
     }
 
     /**
      * @return string
      */
-    public function getMarker(){
+    public function getMarker()
+    {
         return $this->marker;
     }
 
     /**
      * @return int
      */
-    public function getMaxKeys(){
+    public function getMaxKeys()
+    {
         return $this->maxKeys;
     }
 
     /**
      * @return mixed
      */
-    public function getIsTruncated(){
+    public function getIsTruncated()
+    {
         return $this->isTruncated;
     }
 
     /**
      * @return LiveChannelInfo[]
      */
-    public function getChannelList(){
+    public function getChannelList()
+    {
         return $this->channelList;
     }
 
     /**
      * @return string
      */
-    public function getNextMarker(){
+    public function getNextMarker()
+    {
         return $this->nextMarker;
     }
 
-    public function parseFromXml($strXml){
+    public function parseFromXml($strXml)
+    {
         $xml = simplexml_load_string($strXml);
 
         $this->prefix = strval($xml->Prefix);
@@ -81,7 +91,8 @@ class LiveChannelListInfo implements XmlConfig {
         }
     }
 
-    public function serializeToXml(){
-        throw new OssException("Not implemented.");
+    public function serializeToXml()
+    {
+        throw new OssException('Not implemented.');
     }
 }

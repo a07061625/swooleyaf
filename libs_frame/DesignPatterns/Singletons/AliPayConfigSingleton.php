@@ -10,18 +10,21 @@ namespace DesignPatterns\Singletons;
 use Traits\AliPayConfigTrait;
 use Traits\SingletonTrait;
 
-class AliPayConfigSingleton {
+class AliPayConfigSingleton
+{
     use SingletonTrait;
     use AliPayConfigTrait;
 
-    private function __construct() {
+    private function __construct()
+    {
     }
 
     /**
      * @return \DesignPatterns\Singletons\AliPayConfigSingleton
      */
-    public static function getInstance(){
-        if(is_null(self::$instance)){
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -32,7 +35,8 @@ class AliPayConfigSingleton {
      * 获取所有的支付配置
      * @return array
      */
-    public function getPayConfigs(){
+    public function getPayConfigs()
+    {
         return $this->payConfigs;
     }
 }

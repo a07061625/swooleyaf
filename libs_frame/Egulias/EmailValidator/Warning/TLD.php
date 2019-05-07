@@ -8,6 +8,6 @@ class TLD extends Warning
 
     public function __construct()
     {
-        $this->message = "RFC5321, TLD";
+        $this->message = 'RFC5321, TLD';
     }
 }

@@ -16,7 +16,8 @@ use Exception\DingDing\TalkException;
  * 获取会话
  * @package DingDing\Corp\Chat
  */
-class ChatGet extends TalkBaseCorp {
+class ChatGet extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -25,20 +26,23 @@ class ChatGet extends TalkBaseCorp {
      */
     private $chatid = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $chatId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setChatId(string $chatId){
+    public function setChatId(string $chatId)
+    {
         if (ctype_alnum($chatId)) {
             $this->reqData['chatid'] = $chatId;
         } else {
@@ -46,8 +50,9 @@ class ChatGet extends TalkBaseCorp {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['chatid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['chatid'])) {
             throw new TalkException('会话ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

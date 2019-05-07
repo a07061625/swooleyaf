@@ -17,7 +17,8 @@ use Tool\Tool;
  * 添加外部联系人
  * @package DingDing\Corp\ExtContact
  */
-class ExtContactCreate extends TalkBaseCorp {
+class ExtContactCreate extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -76,7 +77,8 @@ class ExtContactCreate extends TalkBaseCorp {
      */
     private $mobile = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -85,13 +87,15 @@ class ExtContactCreate extends TalkBaseCorp {
         ];
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $title
      */
-    public function setTitle(string $title){
+    public function setTitle(string $title)
+    {
         $this->reqData['contact']['title'] = trim($title);
     }
 
@@ -99,15 +103,16 @@ class ExtContactCreate extends TalkBaseCorp {
      * @param array $labelIds
      * @throws \Exception\DingDing\TalkException
      */
-    public function setLabelIds(array $labelIds){
+    public function setLabelIds(array $labelIds)
+    {
         $labelIdList = [];
         foreach ($labelIds as $eLabelId) {
-            if(is_int($eLabelId) && ($eLabelId > 0)){
+            if (is_int($eLabelId) && ($eLabelId > 0)) {
                 $labelIdList[$eLabelId] = 1;
             }
         }
 
-        if(empty($labelIdList)){
+        if (empty($labelIdList)) {
             throw new TalkException('标签列表不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
         $this->reqData['contact']['label_ids'] = array_keys($labelIdList);
@@ -116,10 +121,11 @@ class ExtContactCreate extends TalkBaseCorp {
     /**
      * @param array $shareDeptIds
      */
-    public function setShareDeptIds(array $shareDeptIds){
+    public function setShareDeptIds(array $shareDeptIds)
+    {
         $deptIdList = [];
         foreach ($shareDeptIds as $eDeptId) {
-            if(is_int($eDeptId) && ($eDeptId > 0)){
+            if (is_int($eDeptId) && ($eDeptId > 0)) {
                 $deptIdList[$eDeptId] = 1;
             }
         }
@@ -129,15 +135,16 @@ class ExtContactCreate extends TalkBaseCorp {
     /**
      * @param string $address
      */
-    public function setAddress(string $address){
+    public function setAddress(string $address)
+    {
         $this->reqData['contact']['address'] = trim($address);
-
     }
 
     /**
      * @param string $remark
      */
-    public function setRemark(string $remark){
+    public function setRemark(string $remark)
+    {
         $this->reqData['contact']['remark'] = trim($remark);
     }
 
@@ -145,8 +152,9 @@ class ExtContactCreate extends TalkBaseCorp {
      * @param string $followerUserId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setFollowerUserId(string $followerUserId){
-        if(ctype_alnum($followerUserId)){
+    public function setFollowerUserId(string $followerUserId)
+    {
+        if (ctype_alnum($followerUserId)) {
             $this->reqData['contact']['follower_user_id'] = $followerUserId;
         } else {
             throw new TalkException('负责人用户id不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -157,8 +165,9 @@ class ExtContactCreate extends TalkBaseCorp {
      * @param string $name
      * @throws \Exception\DingDing\TalkException
      */
-    public function setName(string $name){
-        if(strlen($name) > 0){
+    public function setName(string $name)
+    {
+        if (strlen($name) > 0) {
             $this->reqData['contact']['name'] = $name;
         } else {
             throw new TalkException('名称不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -168,17 +177,19 @@ class ExtContactCreate extends TalkBaseCorp {
     /**
      * @param string $companyName
      */
-    public function setCompanyName(string $companyName){
+    public function setCompanyName(string $companyName)
+    {
         $this->reqData['contact']['company_name'] = trim($companyName);
     }
 
     /**
      * @param array $shareUserIds
      */
-    public function setShareUserIds(array $shareUserIds){
+    public function setShareUserIds(array $shareUserIds)
+    {
         $users = [];
         foreach ($shareUserIds as $eUserId) {
-            if(ctype_alnum($eUserId)){
+            if (ctype_alnum($eUserId)) {
                 $users[$eUserId] = 1;
             }
         }
@@ -189,25 +200,27 @@ class ExtContactCreate extends TalkBaseCorp {
      * @param string $mobile
      * @throws \Exception\DingDing\TalkException
      */
-    public function setMobile(string $mobile){
-        if(ctype_digit($mobile) && (strlen($mobile) == 11) && ($mobile{0} == '1')){
+    public function setMobile(string $mobile)
+    {
+        if (ctype_digit($mobile) && (strlen($mobile) == 11) && ($mobile{0} == '1')) {
             $this->reqData['contact']['mobile'] = $mobile;
         } else {
             throw new TalkException('手机号不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['contact']['label_ids'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['contact']['label_ids'])) {
             throw new TalkException('标签列表不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['contact']['follower_user_id'])){
+        if (!isset($this->reqData['contact']['follower_user_id'])) {
             throw new TalkException('负责人用户id不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['contact']['name'])){
+        if (!isset($this->reqData['contact']['name'])) {
             throw new TalkException('名称不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['contact']['mobile'])){
+        if (!isset($this->reqData['contact']['mobile'])) {
             throw new TalkException('手机号不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

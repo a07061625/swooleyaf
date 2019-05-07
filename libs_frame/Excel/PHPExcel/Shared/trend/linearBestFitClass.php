@@ -1,6 +1,6 @@
 <?php
 
-require_once(PHPEXCEL_ROOT . 'PHPExcel/Shared/trend/bestFitClass.php');
+require_once PHPEXCEL_ROOT . 'PHPExcel/Shared/trend/bestFitClass.php';
 
 /**
  * PHPExcel_Linear_Best_Fit
@@ -35,7 +35,21 @@ class PHPExcel_Linear_Best_Fit extends PHPExcel_Best_Fit
      *
      * @var    string
      **/
-    protected $bestFitType        = 'linear';
+    protected $bestFitType = 'linear';
+
+    /**
+     * Define the regression and calculate the goodness of fit for a set of X and Y data values
+     *
+     * @param    float[]        $yValues    The set of Y-values for this regression
+     * @param    float[]        $xValues    The set of X-values for this regression
+     * @param    boolean        $const
+     */
+    public function __construct($yValues, $xValues = [], $const = true)
+    {
+        if (parent::__construct($yValues, $xValues) !== false) {
+            $this->linearRegression($yValues, $xValues, $const);
+        }
+    }
 
     /**
      * Return the Y-Value for a specified value of X
@@ -58,7 +72,6 @@ class PHPExcel_Linear_Best_Fit extends PHPExcel_Best_Fit
     {
         return ($yValue - $this->getIntersect()) / $this->getSlope();
     }
-
 
     /**
      * Return the Equation of the best-fit line
@@ -84,19 +97,5 @@ class PHPExcel_Linear_Best_Fit extends PHPExcel_Best_Fit
     private function linearRegression($yValues, $xValues, $const)
     {
         $this->leastSquareFit($yValues, $xValues, $const);
-    }
-
-    /**
-     * Define the regression and calculate the goodness of fit for a set of X and Y data values
-     *
-     * @param    float[]        $yValues    The set of Y-values for this regression
-     * @param    float[]        $xValues    The set of X-values for this regression
-     * @param    boolean        $const
-     */
-    public function __construct($yValues, $xValues = array(), $const = true)
-    {
-        if (parent::__construct($yValues, $xValues) !== false) {
-            $this->linearRegression($yValues, $xValues, $const);
-        }
     }
 }

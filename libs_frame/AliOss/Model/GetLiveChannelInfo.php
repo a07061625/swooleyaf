@@ -1,7 +1,8 @@
 <?php
 namespace AliOss\Model;
 
-class GetLiveChannelInfo implements XmlConfig {
+class GetLiveChannelInfo implements XmlConfig
+{
     private $description;
     private $status;
     private $type;
@@ -9,31 +10,38 @@ class GetLiveChannelInfo implements XmlConfig {
     private $fragCount;
     private $playlistName;
 
-    public function getDescription(){
+    public function getDescription()
+    {
         return $this->description;
     }
 
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->status;
     }
 
-    public function getType(){
+    public function getType()
+    {
         return $this->type;
     }
 
-    public function getFragDuration(){
+    public function getFragDuration()
+    {
         return $this->fragDuration;
     }
 
-    public function getFragCount(){
+    public function getFragCount()
+    {
         return $this->fragCount;
     }
 
-    public function getPlayListName(){
+    public function getPlayListName()
+    {
         return $this->playlistName;
     }
 
-    public function parseFromXml($strXml){
+    public function parseFromXml($strXml)
+    {
         $xml = simplexml_load_string($strXml);
 
         $this->description = strval($xml->Description);
@@ -49,7 +57,8 @@ class GetLiveChannelInfo implements XmlConfig {
         }
     }
 
-    public function serializeToXml(){
-        throw new OssException("Not implemented.");
+    public function serializeToXml()
+    {
+        throw new OssException('Not implemented.');
     }
 }

@@ -9,8 +9,10 @@ namespace Exception\Map;
 
 use Exception\BaseException;
 
-class TencentMapException extends BaseException {
-    public function __construct($message, $code) {
+class TencentMapException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = '腾讯地图异常';
     }

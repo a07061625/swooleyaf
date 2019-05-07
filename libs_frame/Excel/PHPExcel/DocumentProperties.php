@@ -30,9 +30,9 @@ class PHPExcel_DocumentProperties
     /** constants */
     const PROPERTY_TYPE_BOOLEAN = 'b';
     const PROPERTY_TYPE_INTEGER = 'i';
-    const PROPERTY_TYPE_FLOAT   = 'f';
-    const PROPERTY_TYPE_DATE    = 'd';
-    const PROPERTY_TYPE_STRING  = 's';
+    const PROPERTY_TYPE_FLOAT = 'f';
+    const PROPERTY_TYPE_DATE = 'd';
+    const PROPERTY_TYPE_STRING = 's';
     const PROPERTY_TYPE_UNKNOWN = 'u';
 
     /**
@@ -117,8 +117,7 @@ class PHPExcel_DocumentProperties
      *
      * @var string
      */
-    private $customProperties = array();
-
+    private $customProperties = [];
 
     /**
      * Create a new PHPExcel_DocumentProperties
@@ -127,8 +126,23 @@ class PHPExcel_DocumentProperties
     {
         // Initialise values
         $this->lastModifiedBy = $this->creator;
-        $this->created  = time();
+        $this->created = time();
         $this->modified = time();
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if (is_object($value)) {
+                $this->$key = clone $value;
+            } else {
+                $this->$key = $value;
+            }
+        }
     }
 
     /**
@@ -425,7 +439,6 @@ class PHPExcel_DocumentProperties
         if (isset($this->customProperties[$propertyName])) {
             return $this->customProperties[$propertyName]['value'];
         }
-
     }
 
     /**
@@ -439,7 +452,6 @@ class PHPExcel_DocumentProperties
         if (isset($this->customProperties[$propertyName])) {
             return $this->customProperties[$propertyName]['type'];
         }
-
     }
 
     /**
@@ -457,11 +469,11 @@ class PHPExcel_DocumentProperties
      */
     public function setCustomProperty($propertyName, $propertyValue = '', $propertyType = null)
     {
-        if (($propertyType === null) || (!in_array($propertyType, array(self::PROPERTY_TYPE_INTEGER,
+        if (($propertyType === null) || (!in_array($propertyType, [self::PROPERTY_TYPE_INTEGER,
                                                                         self::PROPERTY_TYPE_FLOAT,
                                                                         self::PROPERTY_TYPE_STRING,
                                                                         self::PROPERTY_TYPE_DATE,
-                                                                        self::PROPERTY_TYPE_BOOLEAN)))) {
+                                                                        self::PROPERTY_TYPE_BOOLEAN], true))) {
             if ($propertyValue === null) {
                 $propertyType = self::PROPERTY_TYPE_STRING;
             } elseif (is_float($propertyValue)) {
@@ -475,26 +487,11 @@ class PHPExcel_DocumentProperties
             }
         }
 
-        $this->customProperties[$propertyName] = array(
+        $this->customProperties[$propertyName] = [
             'value' => $propertyValue,
             'type' => $propertyType
-        );
+        ];
         return $this;
-    }
-
-    /**
-     * Implement PHP __clone to create a deep clone, not just a shallow copy.
-     */
-    public function __clone()
-    {
-        $vars = get_object_vars($this);
-        foreach ($vars as $key => $value) {
-            if (is_object($value)) {
-                $this->$key = clone $value;
-            } else {
-                $this->$key = $value;
-            }
-        }
     }
 
     public static function convertProperty($propertyValue, $propertyType)
@@ -504,7 +501,7 @@ class PHPExcel_DocumentProperties
                 return '';
                 break;
             case 'null':      //    Null
-                return null;
+                return;
                 break;
             case 'i1':        //    1-Byte Signed Integer
             case 'i2':        //    2-Byte Signed Integer

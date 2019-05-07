@@ -46,10 +46,12 @@ use Validator\Impl\String\StringUpper;
 use Validator\Impl\String\StringUrl;
 use Validator\Impl\String\StringZh;
 
-class SimpleValidatorSingleton extends BaseContainer {
+class SimpleValidatorSingleton extends BaseContainer
+{
     use SingletonTrait;
 
-    private function __construct(){
+    private function __construct()
+    {
         $this->registryMap = [
             ProjectBase::VALIDATOR_INT_TYPE_REQUIRED => 1,
             ProjectBase::VALIDATOR_INT_TYPE_MIN => 1,
@@ -198,8 +200,9 @@ class SimpleValidatorSingleton extends BaseContainer {
     /**
      * @return \DesignPatterns\Singletons\SimpleValidatorSingleton
      */
-    public static function getInstance() {
-        if(is_null(self::$instance)){
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 

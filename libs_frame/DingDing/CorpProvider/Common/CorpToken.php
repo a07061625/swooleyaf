@@ -19,25 +19,29 @@ use Tool\Tool;
  * 获取授权企业凭证
  * @package DingDing\CorpProvider\Common
  */
-class CorpToken extends TalkBaseCorpProvider {
+class CorpToken extends TalkBaseCorpProvider
+{
     /**
      * 授权企业ID
      * @var string
      */
     private $auth_corpid = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $authCorpId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setAuthCorpId(string $authCorpId){
+    public function setAuthCorpId(string $authCorpId)
+    {
         if (ctype_alnum($authCorpId)) {
             $this->reqData['auth_corpid'] = $authCorpId;
         } else {
@@ -45,8 +49,9 @@ class CorpToken extends TalkBaseCorpProvider {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['auth_corpid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['auth_corpid'])) {
             throw new TalkException('授权企业ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
@@ -62,9 +67,9 @@ class CorpToken extends TalkBaseCorpProvider {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = TalkUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(!is_array($sendData)){
+        if (!is_array($sendData)) {
             throw new TalkException('获取access token出错', ErrorCode::DING_TALK_POST_ERROR);
-        } else if(!isset($sendData['access_token'])){
+        } elseif (!isset($sendData['access_token'])) {
             throw new TalkException($sendData['errmsg'], ErrorCode::DING_TALK_POST_ERROR);
         }
 

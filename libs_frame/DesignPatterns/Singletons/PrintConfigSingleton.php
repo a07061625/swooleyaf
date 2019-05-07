@@ -11,7 +11,8 @@ use SyPrint\ConfigFeYin;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
-class PrintConfigSingleton {
+class PrintConfigSingleton
+{
     use SingletonTrait;
 
     /**
@@ -20,7 +21,8 @@ class PrintConfigSingleton {
      */
     private $feYinConfigs = null;
 
-    private function __construct(){
+    private function __construct()
+    {
         $configs = Tool::getConfig('print.' . SY_ENV . SY_PROJECT);
 
         $feYinConfig = new ConfigFeYin();
@@ -33,8 +35,9 @@ class PrintConfigSingleton {
     /**
      * @return \DesignPatterns\Singletons\PrintConfigSingleton
      */
-    public static function getInstance(){
-        if(is_null(self::$instance)){
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -44,21 +47,24 @@ class PrintConfigSingleton {
     /**
      * @return array
      */
-    public function getFeYinConfigs() : array {
+    public function getFeYinConfigs() : array
+    {
         return $this->feYinConfigs;
     }
 
     /**
      * @param \SyPrint\ConfigFeYin $config
      */
-    public function addFeYinConfig(ConfigFeYin $config){
+    public function addFeYinConfig(ConfigFeYin $config)
+    {
         $this->feYinConfigs[$config->getAppId()] = $config;
     }
 
     /**
      * @param string $appId
      */
-    public function removeFeYinConfig(string $appId){
+    public function removeFeYinConfig(string $appId)
+    {
         unset($this->feYinConfigs[$appId]);
     }
 
@@ -66,7 +72,8 @@ class PrintConfigSingleton {
      * @param string $appId
      * @return \SyPrint\ConfigFeYin|null
      */
-    public function getFeYinConfig(string $appId) {
+    public function getFeYinConfig(string $appId)
+    {
         return $this->feYinConfigs[$appId] ?? null;
     }
 }

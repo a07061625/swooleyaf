@@ -27,125 +27,6 @@
 class PHPExcel_Calculation_Database
 {
     /**
-     * fieldExtract
-     *
-     * Extracts the column ID to use for the data field.
-     *
-     * @access    private
-     * @param    mixed[]        $database        The range of cells that makes up the list or database.
-     *                                        A database is a list of related data in which rows of related
-     *                                        information are records, and columns of data are fields. The
-     *                                        first row of the list contains labels for each column.
-     * @param    mixed        $field            Indicates which column is used in the function. Enter the
-     *                                        column label enclosed between double quotation marks, such as
-     *                                        "Age" or "Yield," or a number (without quotation marks) that
-     *                                        represents the position of the column within the list: 1 for
-     *                                        the first column, 2 for the second column, and so on.
-     * @return    string|NULL
-     *
-     */
-    private static function fieldExtract($database, $field)
-    {
-        $field = strtoupper(PHPExcel_Calculation_Functions::flattenSingleValue($field));
-        $fieldNames = array_map('strtoupper', array_shift($database));
-
-        if (is_numeric($field)) {
-            $keys = array_keys($fieldNames);
-            return $keys[$field-1];
-        }
-        $key = array_search($field, $fieldNames);
-        return ($key) ? $key : null;
-    }
-
-    /**
-     * filter
-     *
-     * Parses the selection criteria, extracts the database rows that match those criteria, and
-     * returns that subset of rows.
-     *
-     * @access    private
-     * @param    mixed[]        $database        The range of cells that makes up the list or database.
-     *                                        A database is a list of related data in which rows of related
-     *                                        information are records, and columns of data are fields. The
-     *                                        first row of the list contains labels for each column.
-     * @param    mixed[]        $criteria        The range of cells that contains the conditions you specify.
-     *                                        You can use any range for the criteria argument, as long as it
-     *                                        includes at least one column label and at least one cell below
-     *                                        the column label in which you specify a condition for the
-     *                                        column.
-     * @return    array of mixed
-     *
-     */
-    private static function filter($database, $criteria)
-    {
-        $fieldNames = array_shift($database);
-        $criteriaNames = array_shift($criteria);
-
-        //    Convert the criteria into a set of AND/OR conditions with [:placeholders]
-        $testConditions = $testValues = array();
-        $testConditionsCount = 0;
-        foreach ($criteriaNames as $key => $criteriaName) {
-            $testCondition = array();
-            $testConditionCount = 0;
-            foreach ($criteria as $row => $criterion) {
-                if ($criterion[$key] > '') {
-                    $testCondition[] = '[:'.$criteriaName.']'.PHPExcel_Calculation_Functions::ifCondition($criterion[$key]);
-                    $testConditionCount++;
-                }
-            }
-            if ($testConditionCount > 1) {
-                $testConditions[] = 'OR(' . implode(',', $testCondition) . ')';
-                $testConditionsCount++;
-            } elseif ($testConditionCount == 1) {
-                $testConditions[] = $testCondition[0];
-                $testConditionsCount++;
-            }
-        }
-
-        if ($testConditionsCount > 1) {
-            $testConditionSet = 'AND(' . implode(',', $testConditions) . ')';
-        } elseif ($testConditionsCount == 1) {
-            $testConditionSet = $testConditions[0];
-        }
-
-        //    Loop through each row of the database
-        foreach ($database as $dataRow => $dataValues) {
-            //    Substitute actual values from the database row for our [:placeholders]
-            $testConditionList = $testConditionSet;
-            foreach ($criteriaNames as $key => $criteriaName) {
-                $k = array_search($criteriaName, $fieldNames);
-                if (isset($dataValues[$k])) {
-                    $dataValue = $dataValues[$k];
-                    $dataValue = (is_string($dataValue)) ? PHPExcel_Calculation::wrapResult(strtoupper($dataValue)) : $dataValue;
-                    $testConditionList = str_replace('[:' . $criteriaName . ']', $dataValue, $testConditionList);
-                }
-            }
-            //    evaluate the criteria against the row data
-            $result = PHPExcel_Calculation::getInstance()->_calculateFormulaValue('='.$testConditionList);
-            //    If the row failed to meet the criteria, remove it from the database
-            if (!$result) {
-                unset($database[$dataRow]);
-            }
-        }
-
-        return $database;
-    }
-
-
-    private static function getFilteredColumn($database, $field, $criteria)
-    {
-        //    reduce the database to a set of rows that match all the criteria
-        $database = self::filter($database, $criteria);
-        //    extract an array of values for the requested column
-        $colData = array();
-        foreach ($database as $row) {
-            $colData[] = $row[$field];
-        }
-        
-        return $colData;
-    }
-
-    /**
      * DAVERAGE
      *
      * Averages the values in a column of a list or database that match conditions you specify.
@@ -176,7 +57,7 @@ class PHPExcel_Calculation_Database
     {
         $field = self::fieldExtract($database, $field);
         if (is_null($field)) {
-            return null;
+            return;
         }
 
         // Return
@@ -184,7 +65,6 @@ class PHPExcel_Calculation_Database
             self::getFilteredColumn($database, $field, $criteria)
         );
     }
-
 
     /**
      * DCOUNT
@@ -224,7 +104,7 @@ class PHPExcel_Calculation_Database
     {
         $field = self::fieldExtract($database, $field);
         if (is_null($field)) {
-            return null;
+            return;
         }
 
         // Return
@@ -232,7 +112,6 @@ class PHPExcel_Calculation_Database
             self::getFilteredColumn($database, $field, $criteria)
         );
     }
-
 
     /**
      * DCOUNTA
@@ -268,13 +147,13 @@ class PHPExcel_Calculation_Database
     {
         $field = self::fieldExtract($database, $field);
         if (is_null($field)) {
-            return null;
+            return;
         }
 
         //    reduce the database to a set of rows that match all the criteria
         $database = self::filter($database, $criteria);
         //    extract an array of values for the requested column
-        $colData = array();
+        $colData = [];
         foreach ($database as $row) {
             $colData[] = $row[$field];
         }
@@ -284,7 +163,6 @@ class PHPExcel_Calculation_Database
             self::getFilteredColumn($database, $field, $criteria)
         );
     }
-
 
     /**
      * DGET
@@ -318,7 +196,7 @@ class PHPExcel_Calculation_Database
     {
         $field = self::fieldExtract($database, $field);
         if (is_null($field)) {
-            return null;
+            return;
         }
 
         // Return
@@ -329,7 +207,6 @@ class PHPExcel_Calculation_Database
 
         return $colData[0];
     }
-
 
     /**
      * DMAX
@@ -363,7 +240,7 @@ class PHPExcel_Calculation_Database
     {
         $field = self::fieldExtract($database, $field);
         if (is_null($field)) {
-            return null;
+            return;
         }
 
         // Return
@@ -371,7 +248,6 @@ class PHPExcel_Calculation_Database
             self::getFilteredColumn($database, $field, $criteria)
         );
     }
-
 
     /**
      * DMIN
@@ -405,7 +281,7 @@ class PHPExcel_Calculation_Database
     {
         $field = self::fieldExtract($database, $field);
         if (is_null($field)) {
-            return null;
+            return;
         }
 
         // Return
@@ -413,7 +289,6 @@ class PHPExcel_Calculation_Database
             self::getFilteredColumn($database, $field, $criteria)
         );
     }
-
 
     /**
      * DPRODUCT
@@ -446,7 +321,7 @@ class PHPExcel_Calculation_Database
     {
         $field = self::fieldExtract($database, $field);
         if (is_null($field)) {
-            return null;
+            return;
         }
 
         // Return
@@ -454,7 +329,6 @@ class PHPExcel_Calculation_Database
             self::getFilteredColumn($database, $field, $criteria)
         );
     }
-
 
     /**
      * DSTDEV
@@ -488,7 +362,7 @@ class PHPExcel_Calculation_Database
     {
         $field = self::fieldExtract($database, $field);
         if (is_null($field)) {
-            return null;
+            return;
         }
 
         // Return
@@ -496,7 +370,6 @@ class PHPExcel_Calculation_Database
             self::getFilteredColumn($database, $field, $criteria)
         );
     }
-
 
     /**
      * DSTDEVP
@@ -530,7 +403,7 @@ class PHPExcel_Calculation_Database
     {
         $field = self::fieldExtract($database, $field);
         if (is_null($field)) {
-            return null;
+            return;
         }
 
         // Return
@@ -538,7 +411,6 @@ class PHPExcel_Calculation_Database
             self::getFilteredColumn($database, $field, $criteria)
         );
     }
-
 
     /**
      * DSUM
@@ -571,7 +443,7 @@ class PHPExcel_Calculation_Database
     {
         $field = self::fieldExtract($database, $field);
         if (is_null($field)) {
-            return null;
+            return;
         }
 
         // Return
@@ -579,7 +451,6 @@ class PHPExcel_Calculation_Database
             self::getFilteredColumn($database, $field, $criteria)
         );
     }
-
 
     /**
      * DVAR
@@ -613,7 +484,7 @@ class PHPExcel_Calculation_Database
     {
         $field = self::fieldExtract($database, $field);
         if (is_null($field)) {
-            return null;
+            return;
         }
 
         // Return
@@ -621,7 +492,6 @@ class PHPExcel_Calculation_Database
             self::getFilteredColumn($database, $field, $criteria)
         );
     }
-
 
     /**
      * DVARP
@@ -655,12 +525,129 @@ class PHPExcel_Calculation_Database
     {
         $field = self::fieldExtract($database, $field);
         if (is_null($field)) {
-            return null;
+            return;
         }
 
         // Return
         return PHPExcel_Calculation_Statistical::VARP(
             self::getFilteredColumn($database, $field, $criteria)
         );
+    }
+    /**
+     * fieldExtract
+     *
+     * Extracts the column ID to use for the data field.
+     *
+     * @access    private
+     * @param    mixed[]        $database        The range of cells that makes up the list or database.
+     *                                        A database is a list of related data in which rows of related
+     *                                        information are records, and columns of data are fields. The
+     *                                        first row of the list contains labels for each column.
+     * @param    mixed        $field            Indicates which column is used in the function. Enter the
+     *                                        column label enclosed between double quotation marks, such as
+     *                                        "Age" or "Yield," or a number (without quotation marks) that
+     *                                        represents the position of the column within the list: 1 for
+     *                                        the first column, 2 for the second column, and so on.
+     * @return    string|NULL
+     *
+     */
+    private static function fieldExtract($database, $field)
+    {
+        $field = strtoupper(PHPExcel_Calculation_Functions::flattenSingleValue($field));
+        $fieldNames = array_map('strtoupper', array_shift($database));
+
+        if (is_numeric($field)) {
+            $keys = array_keys($fieldNames);
+            return $keys[$field - 1];
+        }
+        $key = array_search($field, $fieldNames, true);
+        return ($key) ? $key : null;
+    }
+
+    /**
+     * filter
+     *
+     * Parses the selection criteria, extracts the database rows that match those criteria, and
+     * returns that subset of rows.
+     *
+     * @access    private
+     * @param    mixed[]        $database        The range of cells that makes up the list or database.
+     *                                        A database is a list of related data in which rows of related
+     *                                        information are records, and columns of data are fields. The
+     *                                        first row of the list contains labels for each column.
+     * @param    mixed[]        $criteria        The range of cells that contains the conditions you specify.
+     *                                        You can use any range for the criteria argument, as long as it
+     *                                        includes at least one column label and at least one cell below
+     *                                        the column label in which you specify a condition for the
+     *                                        column.
+     * @return    array of mixed
+     *
+     */
+    private static function filter($database, $criteria)
+    {
+        $fieldNames = array_shift($database);
+        $criteriaNames = array_shift($criteria);
+
+        //    Convert the criteria into a set of AND/OR conditions with [:placeholders]
+        $testConditions = $testValues = [];
+        $testConditionsCount = 0;
+        foreach ($criteriaNames as $key => $criteriaName) {
+            $testCondition = [];
+            $testConditionCount = 0;
+            foreach ($criteria as $row => $criterion) {
+                if ($criterion[$key] > '') {
+                    $testCondition[] = '[:' . $criteriaName . ']' . PHPExcel_Calculation_Functions::ifCondition($criterion[$key]);
+                    $testConditionCount++;
+                }
+            }
+            if ($testConditionCount > 1) {
+                $testConditions[] = 'OR(' . implode(',', $testCondition) . ')';
+                $testConditionsCount++;
+            } elseif ($testConditionCount == 1) {
+                $testConditions[] = $testCondition[0];
+                $testConditionsCount++;
+            }
+        }
+
+        if ($testConditionsCount > 1) {
+            $testConditionSet = 'AND(' . implode(',', $testConditions) . ')';
+        } elseif ($testConditionsCount == 1) {
+            $testConditionSet = $testConditions[0];
+        }
+
+        //    Loop through each row of the database
+        foreach ($database as $dataRow => $dataValues) {
+            //    Substitute actual values from the database row for our [:placeholders]
+            $testConditionList = $testConditionSet;
+            foreach ($criteriaNames as $key => $criteriaName) {
+                $k = array_search($criteriaName, $fieldNames, true);
+                if (isset($dataValues[$k])) {
+                    $dataValue = $dataValues[$k];
+                    $dataValue = (is_string($dataValue)) ? PHPExcel_Calculation::wrapResult(strtoupper($dataValue)) : $dataValue;
+                    $testConditionList = str_replace('[:' . $criteriaName . ']', $dataValue, $testConditionList);
+                }
+            }
+            //    evaluate the criteria against the row data
+            $result = PHPExcel_Calculation::getInstance()->_calculateFormulaValue('=' . $testConditionList);
+            //    If the row failed to meet the criteria, remove it from the database
+            if (!$result) {
+                unset($database[$dataRow]);
+            }
+        }
+
+        return $database;
+    }
+
+    private static function getFilteredColumn($database, $field, $criteria)
+    {
+        //    reduce the database to a set of rows that match all the criteria
+        $database = self::filter($database, $criteria);
+        //    extract an array of values for the requested column
+        $colData = [];
+        foreach ($database as $row) {
+            $colData[] = $row[$field];
+        }
+        
+        return $colData;
     }
 }

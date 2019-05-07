@@ -48,14 +48,12 @@ class PHPExcel_Worksheet_RowIterator implements Iterator
      */
     private $startRow = 1;
 
-
     /**
      * End position
      *
      * @var int
      */
     private $endRow = 1;
-
 
     /**
      * Create a new row iterator

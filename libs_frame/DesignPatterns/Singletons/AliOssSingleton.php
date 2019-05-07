@@ -15,7 +15,8 @@ use Log\Log;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
-class AliOssSingleton {
+class AliOssSingleton
+{
     use SingletonTrait;
     /**
      * @var \AliOss\ConfigOss
@@ -26,7 +27,8 @@ class AliOssSingleton {
      */
     private $ossClient = null;
 
-    private function __construct(){
+    private function __construct()
+    {
         $configs = Tool::getConfig('oss.' . SY_ENV . SY_PROJECT);
         $ossConfig = new ConfigOss();
         $ossConfig->setAccessKeyId((string)Tool::getArrayVal($configs, 'access.key.id', '', true));
@@ -51,13 +53,13 @@ class AliOssSingleton {
                     $ossClient = new OssClient($ossConfig->getAccessKeyId(), $ossConfig->getAccessKeySecret(), $ossConfig->getEndpoint(), true);
                     break;
                 case 3:
-                    if(strlen($securityToken) == 0){
+                    if (strlen($securityToken) == 0) {
                         throw new OssException('加密令牌不能为空', ErrorCode::ALIOSS_PARAM_ERROR);
                     }
                     $ossClient = new OssClient($ossConfig->getAccessKeyId(), $ossConfig->getAccessKeySecret(), $ossConfig->getEndpoint(), false, $securityToken);
                     break;
                 case 4:
-                    if(strlen($requestProxy) == 0){
+                    if (strlen($requestProxy) == 0) {
                         throw new OssException('代理地址不能为空', ErrorCode::ALIOSS_PARAM_ERROR);
                     }
                     $ossClient = new OssClient($ossConfig->getAccessKeyId(), $ossConfig->getAccessKeySecret(), $ossConfig->getEndpoint(), false, null, $requestProxy);
@@ -77,14 +79,16 @@ class AliOssSingleton {
         }
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @return \DesignPatterns\Singletons\AliOssSingleton
      */
-    public static function getInstance() {
-        if(is_null(self::$instance)) {
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -94,14 +98,16 @@ class AliOssSingleton {
     /**
      * @return \AliOss\ConfigOss
      */
-    public function getOssConfig() {
+    public function getOssConfig()
+    {
         return $this->ossConfig;
     }
 
     /**
      * @return \AliOss\OssClient
      */
-    public function getOssClient() {
+    public function getOssClient()
+    {
         return $this->ossClient;
     }
 }

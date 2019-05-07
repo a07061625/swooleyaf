@@ -27,17 +27,16 @@
  */
 class PHPExcel_Worksheet_SheetView
 {
-
     /* Sheet View types */
-    const SHEETVIEW_NORMAL             = 'normal';
-    const SHEETVIEW_PAGE_LAYOUT        = 'pageLayout';
+    const SHEETVIEW_NORMAL = 'normal';
+    const SHEETVIEW_PAGE_LAYOUT = 'pageLayout';
     const SHEETVIEW_PAGE_BREAK_PREVIEW = 'pageBreakPreview';
 
-    private static $sheetViewTypes = array(
+    private static $sheetViewTypes = [
         self::SHEETVIEW_NORMAL,
         self::SHEETVIEW_PAGE_LAYOUT,
         self::SHEETVIEW_PAGE_BREAK_PREVIEW,
-    );
+    ];
 
     /**
      * ZoomScale
@@ -74,6 +73,21 @@ class PHPExcel_Worksheet_SheetView
     }
 
     /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if (is_object($value)) {
+                $this->$key = clone $value;
+            } else {
+                $this->$key = $value;
+            }
+        }
+    }
+
+    /**
      * Get ZoomScale
      *
      * @return int
@@ -99,7 +113,7 @@ class PHPExcel_Worksheet_SheetView
         if (($pValue >= 1) || is_null($pValue)) {
             $this->zoomScale = $pValue;
         } else {
-            throw new PHPExcel_Exception("Scale must be greater than or equal to 1.");
+            throw new PHPExcel_Exception('Scale must be greater than or equal to 1.');
         }
         return $this;
     }
@@ -128,7 +142,7 @@ class PHPExcel_Worksheet_SheetView
         if (($pValue >= 1) || is_null($pValue)) {
             $this->zoomScaleNormal = $pValue;
         } else {
-            throw new PHPExcel_Exception("Scale must be greater than or equal to 1.");
+            throw new PHPExcel_Exception('Scale must be greater than or equal to 1.');
         }
         return $this;
     }
@@ -161,27 +175,12 @@ class PHPExcel_Worksheet_SheetView
         if ($pValue === null) {
             $pValue = self::SHEETVIEW_NORMAL;
         }
-        if (in_array($pValue, self::$sheetViewTypes)) {
+        if (in_array($pValue, self::$sheetViewTypes, true)) {
             $this->sheetviewType = $pValue;
         } else {
-            throw new PHPExcel_Exception("Invalid sheetview layout type.");
+            throw new PHPExcel_Exception('Invalid sheetview layout type.');
         }
 
         return $this;
-    }
-
-    /**
-     * Implement PHP __clone to create a deep clone, not just a shallow copy.
-     */
-    public function __clone()
-    {
-        $vars = get_object_vars($this);
-        foreach ($vars as $key => $value) {
-            if (is_object($value)) {
-                $this->$key = clone $value;
-            } else {
-                $this->$key = $value;
-            }
-        }
     }
 }

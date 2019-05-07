@@ -3,12 +3,14 @@ namespace AliOss\Result;
 
 use AliOss\Model\RefererConfig;
 
-class GetRefererResult extends Result {
+class GetRefererResult extends Result
+{
     /**
      * Parse RefererConfig data
      * @return RefererConfig
      */
-    protected function parseDataFromResponse(){
+    protected function parseDataFromResponse()
+    {
         $content = $this->rawResponse->body;
         $config = new RefererConfig();
         $config->parseFromXml($content);
@@ -21,7 +23,8 @@ class GetRefererResult extends Result {
      * 404 is also considered a valid response
      * @return bool
      */
-    protected function isResponseOk(){
+    protected function isResponseOk()
+    {
         $status = $this->rawResponse->status;
         if ((int)(intval($status) / 100) == 2 || (int)(intval($status)) === 404) {
             return true;

@@ -9,8 +9,10 @@ namespace Exception\Mongo;
 
 use Exception\BaseException;
 
-class MongoException extends BaseException {
-    public function __construct($message, $code) {
+class MongoException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = 'Mongo异常';
     }

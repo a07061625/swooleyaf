@@ -32,7 +32,7 @@ class PHPExcel_Shared_Escher_DggContainer_BstoreContainer
      *
      * @var array
      */
-    private $BSECollection = array();
+    private $BSECollection = [];
 
     /**
      * Add a BLIP Store Entry

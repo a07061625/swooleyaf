@@ -1,7 +1,8 @@
 <?php
 namespace AliOss\Model;
 
-class BucketListInfo {
+class BucketListInfo
+{
     /**
      * BucketInfo list
      * @var array
@@ -12,7 +13,8 @@ class BucketListInfo {
      * BucketListInfo constructor.
      * @param array $bucketList
      */
-    public function __construct(array $bucketList){
+    public function __construct(array $bucketList)
+    {
         $this->bucketList = $bucketList;
     }
 
@@ -20,7 +22,8 @@ class BucketListInfo {
      * Get the BucketInfo list
      * @return BucketInfo[]
      */
-    public function getBucketList(){
+    public function getBucketList()
+    {
         return $this->bucketList;
     }
 }

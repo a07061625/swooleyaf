@@ -17,7 +17,8 @@ use Tool\Tool;
  * 创建会话
  * @package DingDing\Corp\Chat
  */
-class ChatCreate extends TalkBaseCorp {
+class ChatCreate extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -61,7 +62,8 @@ class ChatCreate extends TalkBaseCorp {
      */
     private $managementType = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -73,14 +75,16 @@ class ChatCreate extends TalkBaseCorp {
         $this->reqData['managementType'] = 1;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $name
      * @throws \Exception\DingDing\TalkException
      */
-    public function setName(string $name){
+    public function setName(string $name)
+    {
         if (strlen($name) > 0) {
             $this->reqData['name'] = mb_substr($name, 0, 10);
         } else {
@@ -92,7 +96,8 @@ class ChatCreate extends TalkBaseCorp {
      * @param string $owner
      * @throws \Exception\DingDing\TalkException
      */
-    public function setOwner(string $owner){
+    public function setOwner(string $owner)
+    {
         if (ctype_alnum($owner)) {
             $this->reqData['owner'] = $owner;
         } else {
@@ -104,18 +109,19 @@ class ChatCreate extends TalkBaseCorp {
      * @param array $userList
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserList(array $userList){
+    public function setUserList(array $userList)
+    {
         $users = [];
         foreach ($userList as $eUserId) {
-            if(ctype_alnum($eUserId)){
+            if (ctype_alnum($eUserId)) {
                 $users[$eUserId] = 1;
             }
         }
 
         $userNum = count($users);
-        if($userNum == 0){
+        if ($userNum == 0) {
             throw new TalkException('成员列表不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if($userNum > 40){
+        } elseif ($userNum > 40) {
             throw new TalkException('成员不能超过40个', ErrorCode::DING_TALK_PARAM_ERROR);
         }
         $this->reqData['useridlist'] = array_keys($users);
@@ -125,8 +131,9 @@ class ChatCreate extends TalkBaseCorp {
      * @param int $showHistoryType
      * @throws \Exception\DingDing\TalkException
      */
-    public function setShowHistoryType(int $showHistoryType){
-        if(in_array($showHistoryType, [0, 1])){
+    public function setShowHistoryType(int $showHistoryType)
+    {
+        if (in_array($showHistoryType, [0, 1], true)) {
             $this->reqData['showHistoryType'] = $showHistoryType;
         } else {
             throw new TalkException('新成员查看聊天历史消息标识不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -137,8 +144,9 @@ class ChatCreate extends TalkBaseCorp {
      * @param int $searchable
      * @throws \Exception\DingDing\TalkException
      */
-    public function setSearchable(int $searchable){
-        if(in_array($searchable, [0, 1])){
+    public function setSearchable(int $searchable)
+    {
+        if (in_array($searchable, [0, 1], true)) {
             $this->reqData['searchable'] = $searchable;
         } else {
             throw new TalkException('搜索类型不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -149,8 +157,9 @@ class ChatCreate extends TalkBaseCorp {
      * @param int $validationType
      * @throws \Exception\DingDing\TalkException
      */
-    public function setValidationType(int $validationType){
-        if(in_array($validationType, [0, 1])){
+    public function setValidationType(int $validationType)
+    {
+        if (in_array($validationType, [0, 1], true)) {
             $this->reqData['validationType'] = $validationType;
         } else {
             throw new TalkException('验证类型不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -161,8 +170,9 @@ class ChatCreate extends TalkBaseCorp {
      * @param int $mentionAllAuthority
      * @throws \Exception\DingDing\TalkException
      */
-    public function setMentionAllAuthority(int $mentionAllAuthority){
-        if(in_array($mentionAllAuthority, [0, 1])){
+    public function setMentionAllAuthority(int $mentionAllAuthority)
+    {
+        if (in_array($mentionAllAuthority, [0, 1], true)) {
             $this->reqData['mentionAllAuthority'] = $mentionAllAuthority;
         } else {
             throw new TalkException('通知所有人权限不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -173,22 +183,24 @@ class ChatCreate extends TalkBaseCorp {
      * @param int $managementType
      * @throws \Exception\DingDing\TalkException
      */
-    public function setManagementType(int $managementType){
-        if(in_array($managementType, [0, 1])){
+    public function setManagementType(int $managementType)
+    {
+        if (in_array($managementType, [0, 1], true)) {
             $this->reqData['managementType'] = $managementType;
         } else {
             throw new TalkException('管理类型不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['name'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['name'])) {
             throw new TalkException('群名称不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['owner'])){
+        if (!isset($this->reqData['owner'])) {
             throw new TalkException('群主不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(empty($this->reqData['useridlist'])){
+        if (empty($this->reqData['useridlist'])) {
             throw new TalkException('成员列表不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

@@ -17,7 +17,8 @@ use Tool\Tool;
  * 获取应用的可见范围
  * @package DingDing\Corp\MicroApp
  */
-class VisibleScopesGet extends TalkBaseCorp {
+class VisibleScopesGet extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -26,29 +27,33 @@ class VisibleScopesGet extends TalkBaseCorp {
      */
     private $agentId = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $agentId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setAgentId(int $agentId){
-        if($agentId > 0){
+    public function setAgentId(int $agentId)
+    {
+        if ($agentId > 0) {
             $this->reqData['agentId'] = $agentId;
         } else {
             throw new TalkException('应用ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['agentId'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['agentId'])) {
             throw new TalkException('应用ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

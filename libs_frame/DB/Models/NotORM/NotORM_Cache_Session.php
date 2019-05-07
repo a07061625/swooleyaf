@@ -4,15 +4,18 @@
  */
 namespace DB\Models\NotORM;
 
-class NotORM_Cache_Session implements NotORM_Cache {
-    function load($key) {
-        if (!isset($_SESSION["NotORM"][$key])) {
-            return null;
+class NotORM_Cache_Session implements NotORM_Cache
+{
+    public function load($key)
+    {
+        if (!isset($_SESSION['NotORM'][$key])) {
+            return;
         }
-        return $_SESSION["NotORM"][$key];
+        return $_SESSION['NotORM'][$key];
     }
 
-    function save($key, $data) {
-        $_SESSION["NotORM"][$key] = $data;
+    public function save($key, $data)
+    {
+        $_SESSION['NotORM'][$key] = $data;
     }
 }

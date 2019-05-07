@@ -3,7 +3,8 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class MezzanineInfoGetRequest extends RpcAcsRequest {
+class MezzanineInfoGetRequest extends RpcAcsRequest
+{
     private $resourceOwnerId;
     private $resourceOwnerAccount;
     private $videoId;
@@ -13,80 +14,97 @@ class MezzanineInfoGetRequest extends RpcAcsRequest {
     private $ownerId;
     private $authTimeout;
 
-    public function __construct(){
-        parent::__construct("vod", "2017-03-21", "GetMezzanineInfo", "vod", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('vod', '2017-03-21', 'GetMezzanineInfo', 'vod', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getResourceOwnerAccount(){
+    public function getResourceOwnerAccount()
+    {
         return $this->resourceOwnerAccount;
     }
 
-    public function setResourceOwnerAccount($resourceOwnerAccount){
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
-    public function getVideoId(){
+    public function getVideoId()
+    {
         return $this->videoId;
     }
 
-    public function setVideoId($videoId){
+    public function setVideoId($videoId)
+    {
         $this->videoId = $videoId;
-        $this->queryParameters["VideoId"] = $videoId;
+        $this->queryParameters['VideoId'] = $videoId;
     }
 
-    public function getPreviewSegment(){
+    public function getPreviewSegment()
+    {
         return $this->previewSegment;
     }
 
-    public function setPreviewSegment($previewSegment){
+    public function setPreviewSegment($previewSegment)
+    {
         $this->previewSegment = $previewSegment;
-        $this->queryParameters["PreviewSegment"] = $previewSegment;
+        $this->queryParameters['PreviewSegment'] = $previewSegment;
     }
 
-    public function getOutputType(){
+    public function getOutputType()
+    {
         return $this->outputType;
     }
 
-    public function setOutputType($outputType){
+    public function setOutputType($outputType)
+    {
         $this->outputType = $outputType;
-        $this->queryParameters["OutputType"] = $outputType;
+        $this->queryParameters['OutputType'] = $outputType;
     }
 
-    public function getAdditionType(){
+    public function getAdditionType()
+    {
         return $this->additionType;
     }
 
-    public function setAdditionType($additionType){
+    public function setAdditionType($additionType)
+    {
         $this->additionType = $additionType;
-        $this->queryParameters["AdditionType"] = $additionType;
+        $this->queryParameters['AdditionType'] = $additionType;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getAuthTimeout(){
+    public function getAuthTimeout()
+    {
         return $this->authTimeout;
     }
 
-    public function setAuthTimeout($authTimeout){
+    public function setAuthTimeout($authTimeout)
+    {
         $this->authTimeout = $authTimeout;
-        $this->queryParameters["AuthTimeout"] = $authTimeout;
+        $this->queryParameters['AuthTimeout'] = $authTimeout;
     }
 }

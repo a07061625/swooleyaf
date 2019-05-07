@@ -3,7 +3,8 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class WorkFlowUpdateRequest extends RpcAcsRequest {
+class WorkFlowUpdateRequest extends RpcAcsRequest
+{
     private $resourceOwnerId;
     private $resourceOwnerAccount;
     private $name;
@@ -11,62 +12,75 @@ class WorkFlowUpdateRequest extends RpcAcsRequest {
     private $ownerId;
     private $workFlowId;
 
-    public function __construct(){
-        parent::__construct("vod", "2017-03-21", "UpdateWorkFlow", "vod", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('vod', '2017-03-21', 'UpdateWorkFlow', 'vod', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getResourceOwnerAccount(){
+    public function getResourceOwnerAccount()
+    {
         return $this->resourceOwnerAccount;
     }
 
-    public function setResourceOwnerAccount($resourceOwnerAccount){
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function setName($name){
+    public function setName($name)
+    {
         $this->name = $name;
-        $this->queryParameters["Name"] = $name;
+        $this->queryParameters['Name'] = $name;
     }
 
-    public function getActionList(){
+    public function getActionList()
+    {
         return $this->actionList;
     }
 
-    public function setActionList($actionList){
+    public function setActionList($actionList)
+    {
         $this->actionList = $actionList;
-        $this->queryParameters["ActionList"] = $actionList;
+        $this->queryParameters['ActionList'] = $actionList;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getWorkFlowId(){
+    public function getWorkFlowId()
+    {
         return $this->workFlowId;
     }
 
-    public function setWorkFlowId($workFlowId){
+    public function setWorkFlowId($workFlowId)
+    {
         $this->workFlowId = $workFlowId;
-        $this->queryParameters["WorkFlowId"] = $workFlowId;
+        $this->queryParameters['WorkFlowId'] = $workFlowId;
     }
 }

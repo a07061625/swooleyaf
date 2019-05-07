@@ -143,6 +143,18 @@ final class Debug
     }
 
     /**
+     * Returns a string representation of an object.
+     *
+     * @param object $obj
+     *
+     * @return string
+     */
+    public static function toString($obj)
+    {
+        return method_exists($obj, '__toString') ? (string) $obj : get_class($obj) . '@' . spl_object_hash($obj);
+    }
+
+    /**
      * Fill the $return variable with class attributes
      * Based on obj2array function from {@see http://php.net/manual/en/function.get-object-vars.php#47075}
      *
@@ -160,23 +172,11 @@ final class Debug
             $aux = explode("\0", $key);
             $name = end($aux);
             if ($aux[0] === '') {
-                $name.= ':' . ($aux[1] === '*' ? 'protected' : $aux[1].':private');
+                $name .= ':' . ($aux[1] === '*' ? 'protected' : $aux[1] . ':private');
             }
-            $return->$name = self::export($clone[$key], $maxDepth - 1);;
+            $return->$name = self::export($clone[$key], $maxDepth - 1);
         }
 
         return $return;
-    }
-
-    /**
-     * Returns a string representation of an object.
-     *
-     * @param object $obj
-     *
-     * @return string
-     */
-    public static function toString($obj)
-    {
-        return method_exists($obj, '__toString') ? (string) $obj : get_class($obj) . '@' . spl_object_hash($obj);
     }
 }

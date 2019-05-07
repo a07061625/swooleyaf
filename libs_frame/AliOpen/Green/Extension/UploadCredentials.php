@@ -1,7 +1,8 @@
 <?php
 namespace AliOpen\Green\Extension;
 
-class UploadCredentials {
+class UploadCredentials
+{
     private $accessKeyId;
     private $accessKeySecret;
     private $securityToken;
@@ -10,7 +11,8 @@ class UploadCredentials {
     private $uploadBucket;
     private $uploadFolder;
 
-    public function __construct($accessKeyId, $accessKeySecret, $securityToken, $expiredTime, $ossEndpoint, $uploadBucket, $uploadFolder){
+    public function __construct($accessKeyId, $accessKeySecret, $securityToken, $expiredTime, $ossEndpoint, $uploadBucket, $uploadFolder)
+    {
         $this->accessKeyId = $accessKeyId;
         $this->accessKeySecret = $accessKeySecret;
         $this->securityToken = $securityToken;
@@ -23,98 +25,112 @@ class UploadCredentials {
     /**
      * @return mixed
      */
-    public function getAccessKeyId(){
+    public function getAccessKeyId()
+    {
         return $this->accessKeyId;
     }
 
     /**
      * @param mixed $accessKeyId
      */
-    public function setAccessKeyId($accessKeyId){
+    public function setAccessKeyId($accessKeyId)
+    {
         $this->accessKeyId = $accessKeyId;
     }
 
     /**
      * @return mixed
      */
-    public function getAccessKeySecret(){
+    public function getAccessKeySecret()
+    {
         return $this->accessKeySecret;
     }
 
     /**
      * @param mixed $accessKeySecret
      */
-    public function setAccessKeySecret($accessKeySecret){
+    public function setAccessKeySecret($accessKeySecret)
+    {
         $this->accessKeySecret = $accessKeySecret;
     }
 
     /**
      * @return mixed
      */
-    public function getSecurityToken(){
+    public function getSecurityToken()
+    {
         return $this->securityToken;
     }
 
     /**
      * @param mixed $securityToken
      */
-    public function setSecurityToken($securityToken){
+    public function setSecurityToken($securityToken)
+    {
         $this->securityToken = $securityToken;
     }
 
     /**
      * @return mixed
      */
-    public function getExpiredTime(){
+    public function getExpiredTime()
+    {
         return $this->expiredTime;
     }
 
     /**
      * @param mixed $expiredTime
      */
-    public function setExpiredTime($expiredTime){
+    public function setExpiredTime($expiredTime)
+    {
         $this->expiredTime = $expiredTime;
     }
 
     /**
      * @return mixed
      */
-    public function getOssEndpoint(){
+    public function getOssEndpoint()
+    {
         return $this->ossEndpoint;
     }
 
     /**
      * @param mixed $ossEndpoint
      */
-    public function setOssEndpoint($ossEndpoint){
+    public function setOssEndpoint($ossEndpoint)
+    {
         $this->ossEndpoint = $ossEndpoint;
     }
 
     /**
      * @return mixed
      */
-    public function getUploadBucket(){
+    public function getUploadBucket()
+    {
         return $this->uploadBucket;
     }
 
     /**
      * @param mixed $uploadBucket
      */
-    public function setUploadBucket($uploadBucket){
+    public function setUploadBucket($uploadBucket)
+    {
         $this->uploadBucket = $uploadBucket;
     }
 
     /**
      * @return mixed
      */
-    public function getUploadFolder(){
+    public function getUploadFolder()
+    {
         return $this->uploadFolder;
     }
 
     /**
      * @param mixed $uploadFolder
      */
-    public function setUploadFolder($uploadFolder){
+    public function setUploadFolder($uploadFolder)
+    {
         $this->uploadFolder = $uploadFolder;
     }
 }

@@ -19,7 +19,8 @@ use Tool\Tool;
  * 通过临时授权码获取授权用户的个人信息
  * @package DingDing\Corp\Sns
  */
-class UserInfoGetByCode extends TalkBaseCorp {
+class UserInfoGetByCode extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -28,29 +29,33 @@ class UserInfoGetByCode extends TalkBaseCorp {
      */
     private $tmp_auth_code = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $tmpAuthCode
      * @throws \Exception\DingDing\TalkException
      */
-    public function setTmpAuthCode(string $tmpAuthCode){
-        if(ctype_alnum($tmpAuthCode)){
+    public function setTmpAuthCode(string $tmpAuthCode)
+    {
+        if (ctype_alnum($tmpAuthCode)) {
             $this->reqData['tmp_auth_code'] = $tmpAuthCode;
         } else {
             throw new TalkException('临时授权码不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['tmp_auth_code'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['tmp_auth_code'])) {
             throw new TalkException('临时授权码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

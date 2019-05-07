@@ -3,11 +3,21 @@ namespace AliOss\Model;
 
 use AliOss\Core\OssException;
 
-class LifecycleConfig implements XmlConfig {
+class LifecycleConfig implements XmlConfig
+{
     /**
      * @var LifecycleRule[]
      */
     private $rules;
+
+    /**
+     *  Serialize the object into xml string.
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->serializeToXml();
+    }
 
     /**
      * Parse the xml into this object.
@@ -15,7 +25,8 @@ class LifecycleConfig implements XmlConfig {
      * @throws OssException
      * @return null
      */
-    public function parseFromXml($strXml){
+    public function parseFromXml($strXml)
+    {
         $this->rules = [];
         $xml = simplexml_load_string($strXml);
         if (!isset($xml->Rule)) {
@@ -42,16 +53,14 @@ class LifecycleConfig implements XmlConfig {
             }
             $this->rules[] = new LifecycleRule($id, $prefix, $status, $actions);
         }
-
-        return;
     }
 
     /**
      * Serialize the object to xml
      * @return string
      */
-    public function serializeToXml(){
-
+    public function serializeToXml()
+    {
         $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><LifecycleConfiguration></LifecycleConfiguration>');
         foreach ($this->rules as $rule) {
             $xmlRule = $xml->addChild('Rule');
@@ -66,26 +75,20 @@ class LifecycleConfig implements XmlConfig {
      * @param LifecycleRule $lifecycleRule
      * @throws OssException
      */
-    public function addRule($lifecycleRule){
+    public function addRule($lifecycleRule)
+    {
         if (!isset($lifecycleRule)) {
-            throw new OssException("lifecycleRule is null");
+            throw new OssException('lifecycleRule is null');
         }
         $this->rules[] = $lifecycleRule;
-    }
-
-    /**
-     *  Serialize the object into xml string.
-     * @return string
-     */
-    public function __toString(){
-        return $this->serializeToXml();
     }
 
     /**
      * Get all lifecycle rules.
      * @return LifecycleRule[]
      */
-    public function getRules(){
+    public function getRules()
+    {
         return $this->rules;
     }
 }

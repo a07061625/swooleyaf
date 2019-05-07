@@ -9,8 +9,10 @@ namespace Exception\Amqp;
 
 use Exception\BaseException;
 
-class AmqpException extends BaseException {
-    public function __construct($message, $code){
+class AmqpException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = 'amqp异常';
     }

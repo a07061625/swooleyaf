@@ -122,7 +122,7 @@ class StaticPHPDriver implements MappingDriver
         foreach ($declared as $className) {
             $rc = new \ReflectionClass($className);
             $sourceFile = $rc->getFileName();
-            if (in_array($sourceFile, $includedFiles) && !$this->isTransient($className)) {
+            if (in_array($sourceFile, $includedFiles, true) && !$this->isTransient($className)) {
                 $classes[] = $className;
             }
         }

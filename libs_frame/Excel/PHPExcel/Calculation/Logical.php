@@ -38,11 +38,10 @@ class PHPExcel_Calculation_Logical
      * @category Logical Functions
      * @return    boolean        True
      */
-    public static function TRUE()
+    public static function true()
     {
         return true;
     }
-
 
     /**
      * FALSE
@@ -56,11 +55,10 @@ class PHPExcel_Calculation_Logical
      * @category Logical Functions
      * @return    boolean        False
      */
-    public static function FALSE()
+    public static function false()
     {
         return false;
     }
-
 
     /**
      * LOGICAL_AND
@@ -117,7 +115,6 @@ class PHPExcel_Calculation_Logical
         return $returnValue;
     }
 
-
     /**
      * LOGICAL_OR
      *
@@ -172,7 +169,6 @@ class PHPExcel_Calculation_Logical
         }
         return $returnValue;
     }
-
 
     /**
      * NOT
@@ -245,13 +241,12 @@ class PHPExcel_Calculation_Logical
      */
     public static function STATEMENT_IF($condition = true, $returnIfTrue = 0, $returnIfFalse = false)
     {
-        $condition     = (is_null($condition))     ? true :  (boolean) PHPExcel_Calculation_Functions::flattenSingleValue($condition);
-        $returnIfTrue  = (is_null($returnIfTrue))  ? 0 :     PHPExcel_Calculation_Functions::flattenSingleValue($returnIfTrue);
+        $condition = (is_null($condition))     ? true :  (boolean) PHPExcel_Calculation_Functions::flattenSingleValue($condition);
+        $returnIfTrue = (is_null($returnIfTrue))  ? 0 :     PHPExcel_Calculation_Functions::flattenSingleValue($returnIfTrue);
         $returnIfFalse = (is_null($returnIfFalse)) ? false : PHPExcel_Calculation_Functions::flattenSingleValue($returnIfFalse);
 
         return ($condition) ? $returnIfTrue : $returnIfFalse;
     }
-
 
     /**
      * IFERROR

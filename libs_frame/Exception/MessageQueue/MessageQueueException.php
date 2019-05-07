@@ -9,8 +9,10 @@ namespace Exception\MessageQueue;
 
 use Exception\BaseException;
 
-class MessageQueueException extends BaseException {
-    public function __construct($message, $code) {
+class MessageQueueException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = '消息队列异常';
     }

@@ -44,7 +44,6 @@ class EmailParser
             throw new NoLocalPart();
         }
 
-
         $this->localPartParser->parse($str);
         $this->domainPartParser->parse($str);
 
@@ -54,7 +53,7 @@ class EmailParser
             throw new ExpectingATEXT();
         }
 
-        return array('local' => $this->localPart, 'domain' => $this->domainPart);
+        return ['local' => $this->localPart, 'domain' => $this->domainPart];
     }
 
     public function getWarnings()

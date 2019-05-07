@@ -17,7 +17,8 @@ use Tool\Tool;
  * 获取授权企业的应用信息
  * @package DingDing\CorpProvider\Common
  */
-class AgentGet extends TalkBaseCorpProvider {
+class AgentGet extends TalkBaseCorpProvider
+{
     /**
      * 套件key
      * @var string
@@ -34,17 +35,20 @@ class AgentGet extends TalkBaseCorpProvider {
      */
     private $agentid = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $agentInfo = DingTalkConfigSingleton::getInstance()->getCorpConfig($corpId)->getAgentInfo($agentTag);
         $this->reqData['auth_corpid'] = $corpId;
         $this->reqData['agentid'] = $agentInfo['id'];
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $providerConfig = DingTalkConfigSingleton::getInstance()->getCorpProviderConfig();
         $timestamp = (string)Tool::getNowTime();
         $suiteTicket = TalkUtilProvider::getSuiteTicket();

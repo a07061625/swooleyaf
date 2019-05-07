@@ -158,6 +158,139 @@ class PHPExcel_Writer_Excel2007_Style extends PHPExcel_Writer_Excel2007_WriterPa
     }
 
     /**
+     * Get an array of all styles
+     *
+     * @param     PHPExcel                $pPHPExcel
+     * @return     PHPExcel_Style[]        All styles in PHPExcel
+     * @throws     PHPExcel_Writer_Exception
+     */
+    public function allStyles(PHPExcel $pPHPExcel = null)
+    {
+        return $pPHPExcel->getCellXfCollection();
+    }
+
+    /**
+     * Get an array of all conditional styles
+     *
+     * @param     PHPExcel                            $pPHPExcel
+     * @return     PHPExcel_Style_Conditional[]        All conditional styles in PHPExcel
+     * @throws     PHPExcel_Writer_Exception
+     */
+    public function allConditionalStyles(PHPExcel $pPHPExcel = null)
+    {
+        // Get an array of all styles
+        $aStyles = [];
+
+        $sheetCount = $pPHPExcel->getSheetCount();
+        for ($i = 0; $i < $sheetCount; ++$i) {
+            foreach ($pPHPExcel->getSheet($i)->getConditionalStylesCollection() as $conditionalStyles) {
+                foreach ($conditionalStyles as $conditionalStyle) {
+                    $aStyles[] = $conditionalStyle;
+                }
+            }
+        }
+
+        return $aStyles;
+    }
+
+    /**
+     * Get an array of all fills
+     *
+     * @param     PHPExcel                        $pPHPExcel
+     * @return     PHPExcel_Style_Fill[]        All fills in PHPExcel
+     * @throws     PHPExcel_Writer_Exception
+     */
+    public function allFills(PHPExcel $pPHPExcel = null)
+    {
+        // Get an array of unique fills
+        $aFills = [];
+
+        // Two first fills are predefined
+        $fill0 = new PHPExcel_Style_Fill();
+        $fill0->setFillType(PHPExcel_Style_Fill::FILL_NONE);
+        $aFills[] = $fill0;
+
+        $fill1 = new PHPExcel_Style_Fill();
+        $fill1->setFillType(PHPExcel_Style_Fill::FILL_PATTERN_GRAY125);
+        $aFills[] = $fill1;
+        // The remaining fills
+        $aStyles = $this->allStyles($pPHPExcel);
+        foreach ($aStyles as $style) {
+            if (!array_key_exists($style->getFill()->getHashCode(), $aFills)) {
+                $aFills[ $style->getFill()->getHashCode() ] = $style->getFill();
+            }
+        }
+
+        return $aFills;
+    }
+
+    /**
+     * Get an array of all fonts
+     *
+     * @param     PHPExcel                        $pPHPExcel
+     * @return     PHPExcel_Style_Font[]        All fonts in PHPExcel
+     * @throws     PHPExcel_Writer_Exception
+     */
+    public function allFonts(PHPExcel $pPHPExcel = null)
+    {
+        // Get an array of unique fonts
+        $aFonts = [];
+        $aStyles = $this->allStyles($pPHPExcel);
+
+        foreach ($aStyles as $style) {
+            if (!array_key_exists($style->getFont()->getHashCode(), $aFonts)) {
+                $aFonts[ $style->getFont()->getHashCode() ] = $style->getFont();
+            }
+        }
+
+        return $aFonts;
+    }
+
+    /**
+     * Get an array of all borders
+     *
+     * @param     PHPExcel                        $pPHPExcel
+     * @return     PHPExcel_Style_Borders[]        All borders in PHPExcel
+     * @throws     PHPExcel_Writer_Exception
+     */
+    public function allBorders(PHPExcel $pPHPExcel = null)
+    {
+        // Get an array of unique borders
+        $aBorders = [];
+        $aStyles = $this->allStyles($pPHPExcel);
+
+        foreach ($aStyles as $style) {
+            if (!array_key_exists($style->getBorders()->getHashCode(), $aBorders)) {
+                $aBorders[ $style->getBorders()->getHashCode() ] = $style->getBorders();
+            }
+        }
+
+        return $aBorders;
+    }
+
+    /**
+     * Get an array of all number formats
+     *
+     * @param     PHPExcel                                $pPHPExcel
+     * @return     PHPExcel_Style_NumberFormat[]        All number formats in PHPExcel
+     * @throws     PHPExcel_Writer_Exception
+     */
+    public function allNumberFormats(PHPExcel $pPHPExcel = null)
+    {
+        // Get an array of unique number formats
+        $aNumFmts = [];
+        $aStyles = $this->allStyles($pPHPExcel);
+
+        foreach ($aStyles as $style) {
+            if ($style->getNumberFormat()->getBuiltInFormatCode() === false && !array_key_exists($style->getNumberFormat()->getHashCode(), $aNumFmts)) {
+                $aNumFmts[ $style->getNumberFormat()->getHashCode() ] = $style->getNumberFormat();
+            }
+        }
+
+        return $aNumFmts;
+    }
+
+    /**
      * Write Fill
      *
      * @param     PHPExcel_Shared_XMLWriter     $objWriter         XML Writer
@@ -559,138 +692,5 @@ class PHPExcel_Writer_Excel2007_Style extends PHPExcel_Writer_Excel2007_WriterPa
             $objWriter->writeAttribute('formatCode', $formatCode);
             $objWriter->endElement();
         }
-    }
-
-    /**
-     * Get an array of all styles
-     *
-     * @param     PHPExcel                $pPHPExcel
-     * @return     PHPExcel_Style[]        All styles in PHPExcel
-     * @throws     PHPExcel_Writer_Exception
-     */
-    public function allStyles(PHPExcel $pPHPExcel = null)
-    {
-        return $pPHPExcel->getCellXfCollection();
-    }
-
-    /**
-     * Get an array of all conditional styles
-     *
-     * @param     PHPExcel                            $pPHPExcel
-     * @return     PHPExcel_Style_Conditional[]        All conditional styles in PHPExcel
-     * @throws     PHPExcel_Writer_Exception
-     */
-    public function allConditionalStyles(PHPExcel $pPHPExcel = null)
-    {
-        // Get an array of all styles
-        $aStyles = array();
-
-        $sheetCount = $pPHPExcel->getSheetCount();
-        for ($i = 0; $i < $sheetCount; ++$i) {
-            foreach ($pPHPExcel->getSheet($i)->getConditionalStylesCollection() as $conditionalStyles) {
-                foreach ($conditionalStyles as $conditionalStyle) {
-                    $aStyles[] = $conditionalStyle;
-                }
-            }
-        }
-
-        return $aStyles;
-    }
-
-    /**
-     * Get an array of all fills
-     *
-     * @param     PHPExcel                        $pPHPExcel
-     * @return     PHPExcel_Style_Fill[]        All fills in PHPExcel
-     * @throws     PHPExcel_Writer_Exception
-     */
-    public function allFills(PHPExcel $pPHPExcel = null)
-    {
-        // Get an array of unique fills
-        $aFills = array();
-
-        // Two first fills are predefined
-        $fill0 = new PHPExcel_Style_Fill();
-        $fill0->setFillType(PHPExcel_Style_Fill::FILL_NONE);
-        $aFills[] = $fill0;
-
-        $fill1 = new PHPExcel_Style_Fill();
-        $fill1->setFillType(PHPExcel_Style_Fill::FILL_PATTERN_GRAY125);
-        $aFills[] = $fill1;
-        // The remaining fills
-        $aStyles = $this->allStyles($pPHPExcel);
-        foreach ($aStyles as $style) {
-            if (!array_key_exists($style->getFill()->getHashCode(), $aFills)) {
-                $aFills[ $style->getFill()->getHashCode() ] = $style->getFill();
-            }
-        }
-
-        return $aFills;
-    }
-
-    /**
-     * Get an array of all fonts
-     *
-     * @param     PHPExcel                        $pPHPExcel
-     * @return     PHPExcel_Style_Font[]        All fonts in PHPExcel
-     * @throws     PHPExcel_Writer_Exception
-     */
-    public function allFonts(PHPExcel $pPHPExcel = null)
-    {
-        // Get an array of unique fonts
-        $aFonts = array();
-        $aStyles = $this->allStyles($pPHPExcel);
-
-        foreach ($aStyles as $style) {
-            if (!array_key_exists($style->getFont()->getHashCode(), $aFonts)) {
-                $aFonts[ $style->getFont()->getHashCode() ] = $style->getFont();
-            }
-        }
-
-        return $aFonts;
-    }
-
-    /**
-     * Get an array of all borders
-     *
-     * @param     PHPExcel                        $pPHPExcel
-     * @return     PHPExcel_Style_Borders[]        All borders in PHPExcel
-     * @throws     PHPExcel_Writer_Exception
-     */
-    public function allBorders(PHPExcel $pPHPExcel = null)
-    {
-        // Get an array of unique borders
-        $aBorders = array();
-        $aStyles = $this->allStyles($pPHPExcel);
-
-        foreach ($aStyles as $style) {
-            if (!array_key_exists($style->getBorders()->getHashCode(), $aBorders)) {
-                $aBorders[ $style->getBorders()->getHashCode() ] = $style->getBorders();
-            }
-        }
-
-        return $aBorders;
-    }
-
-    /**
-     * Get an array of all number formats
-     *
-     * @param     PHPExcel                                $pPHPExcel
-     * @return     PHPExcel_Style_NumberFormat[]        All number formats in PHPExcel
-     * @throws     PHPExcel_Writer_Exception
-     */
-    public function allNumberFormats(PHPExcel $pPHPExcel = null)
-    {
-        // Get an array of unique number formats
-        $aNumFmts = array();
-        $aStyles = $this->allStyles($pPHPExcel);
-
-        foreach ($aStyles as $style) {
-            if ($style->getNumberFormat()->getBuiltInFormatCode() === false && !array_key_exists($style->getNumberFormat()->getHashCode(), $aNumFmts)) {
-                $aNumFmts[ $style->getNumberFormat()->getHashCode() ] = $style->getNumberFormat();
-            }
-        }
-
-        return $aNumFmts;
     }
 }

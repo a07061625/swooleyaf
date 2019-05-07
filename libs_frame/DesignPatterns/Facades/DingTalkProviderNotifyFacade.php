@@ -9,10 +9,12 @@ namespace DesignPatterns\Facades;
 
 use Traits\SimpleFacadeTrait;
 
-abstract class DingTalkProviderNotifyFacade {
+abstract class DingTalkProviderNotifyFacade
+{
     use SimpleFacadeTrait;
 
-    public static function acceptNotify(array $data){
+    public static function acceptNotify(array $data)
+    {
         static::handleNotify($data);
     }
 

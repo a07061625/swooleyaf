@@ -1,7 +1,8 @@
 <?php
 namespace AliOss\Model;
 
-class BucketInfo {
+class BucketInfo
+{
     /**
      * bucket region
      * @var string
@@ -24,7 +25,8 @@ class BucketInfo {
      * @param string $name
      * @param string $createDate
      */
-    public function __construct($location, $name, $createDate){
+    public function __construct($location, $name, $createDate)
+    {
         $this->location = $location;
         $this->name = $name;
         $this->createDate = $createDate;
@@ -34,7 +36,8 @@ class BucketInfo {
      * Get bucket location
      * @return string
      */
-    public function getLocation(){
+    public function getLocation()
+    {
         return $this->location;
     }
 
@@ -42,7 +45,8 @@ class BucketInfo {
      * Get bucket name
      * @return string
      */
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
 
@@ -50,7 +54,8 @@ class BucketInfo {
      * Get bucket creation time.
      * @return string
      */
-    public function getCreateDate(){
+    public function getCreateDate()
+    {
         return $this->createDate;
     }
 }

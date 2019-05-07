@@ -16,7 +16,8 @@ use Exception\DingDing\TalkException;
  * 查询指定用户的所有上级父部门路径
  * @package DingDing\Corp\Department
  */
-class ParentDepartmentListByUser extends TalkBaseCorp {
+class ParentDepartmentListByUser extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -25,29 +26,33 @@ class ParentDepartmentListByUser extends TalkBaseCorp {
      */
     private $userId = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $userId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserId(string $userId){
-        if(ctype_alnum($userId)){
+    public function setUserId(string $userId)
+    {
+        if (ctype_alnum($userId)) {
             $this->reqData['userId'] = $userId;
         } else {
             throw new TalkException('用户id不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['userId'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['userId'])) {
             throw new TalkException('用户id不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

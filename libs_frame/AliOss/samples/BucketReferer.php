@@ -6,15 +6,17 @@ use AliOss\Model\RefererConfig;
 
 $bucket = Common::getBucketName();
 $ossClient = Common::getOssClient();
-if (is_null($ossClient)) exit(1);
+if (is_null($ossClient)) {
+    exit(1);
+}
 
 //******************************* Simple Usage ****************************************************************
 
 // Set referer whitelist
 $refererConfig = new RefererConfig();
 $refererConfig->setAllowEmptyReferer(true);
-$refererConfig->addReferer("www.aliiyun.com");
-$refererConfig->addReferer("www.aliiyuncs.com");
+$refererConfig->addReferer('www.aliiyun.com');
+$refererConfig->addReferer('www.aliiyuncs.com');
 $ossClient->putBucketReferer($bucket, $refererConfig);
 Common::println("bucket $bucket refererConfig created:" . $refererConfig->serializeToXml());
 // Get referer whitelist
@@ -25,7 +27,6 @@ Common::println("bucket $bucket refererConfig fetched:" . $refererConfig->serial
 $refererConfig = new RefererConfig();
 $ossClient->putBucketReferer($bucket, $refererConfig);
 Common::println("bucket $bucket refererConfig deleted");
-
 
 //******************************* For complete usage, see the following functions ****************************************************
 
@@ -44,8 +45,8 @@ function putBucketReferer($ossClient, $bucket)
 {
     $refererConfig = new RefererConfig();
     $refererConfig->setAllowEmptyReferer(true);
-    $refererConfig->addReferer("www.aliiyun.com");
-    $refererConfig->addReferer("www.aliiyuncs.com");
+    $refererConfig->addReferer('www.aliiyun.com');
+    $refererConfig->addReferer('www.aliiyuncs.com');
     try {
         $ossClient->putBucketReferer($bucket, $refererConfig);
     } catch (OssException $e) {
@@ -53,7 +54,7 @@ function putBucketReferer($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
 
 /**
@@ -72,7 +73,7 @@ function getBucketReferer($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
     print($refererConfig->serializeToXml() . "\n");
 }
 
@@ -93,5 +94,5 @@ function deleteBucketReferer($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }

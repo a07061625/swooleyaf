@@ -3,7 +3,8 @@ namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class SigAuthenticateRequest extends RpcAcsRequest {
+class SigAuthenticateRequest extends RpcAcsRequest
+{
     private $sig;
     private $resourceOwnerId;
     private $remoteIp;
@@ -13,80 +14,97 @@ class SigAuthenticateRequest extends RpcAcsRequest {
     private $token;
     private $scene;
 
-    public function __construct(){
-        parent::__construct("afs", "2018-01-12", "AuthenticateSig");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('afs', '2018-01-12', 'AuthenticateSig');
+        $this->setMethod('POST');
     }
 
-    public function getSig(){
+    public function getSig()
+    {
         return $this->sig;
     }
 
-    public function setSig($sig){
+    public function setSig($sig)
+    {
         $this->sig = $sig;
-        $this->queryParameters["Sig"] = $sig;
+        $this->queryParameters['Sig'] = $sig;
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getRemoteIp(){
+    public function getRemoteIp()
+    {
         return $this->remoteIp;
     }
 
-    public function setRemoteIp($remoteIp){
+    public function setRemoteIp($remoteIp)
+    {
         $this->remoteIp = $remoteIp;
-        $this->queryParameters["RemoteIp"] = $remoteIp;
+        $this->queryParameters['RemoteIp'] = $remoteIp;
     }
 
-    public function getSourceIp(){
+    public function getSourceIp()
+    {
         return $this->sourceIp;
     }
 
-    public function setSourceIp($sourceIp){
+    public function setSourceIp($sourceIp)
+    {
         $this->sourceIp = $sourceIp;
-        $this->queryParameters["SourceIp"] = $sourceIp;
+        $this->queryParameters['SourceIp'] = $sourceIp;
     }
 
-    public function getAppKey(){
+    public function getAppKey()
+    {
         return $this->appKey;
     }
 
-    public function setAppKey($appKey){
+    public function setAppKey($appKey)
+    {
         $this->appKey = $appKey;
-        $this->queryParameters["AppKey"] = $appKey;
+        $this->queryParameters['AppKey'] = $appKey;
     }
 
-    public function getSessionId(){
+    public function getSessionId()
+    {
         return $this->sessionId;
     }
 
-    public function setSessionId($sessionId){
+    public function setSessionId($sessionId)
+    {
         $this->sessionId = $sessionId;
-        $this->queryParameters["SessionId"] = $sessionId;
+        $this->queryParameters['SessionId'] = $sessionId;
     }
 
-    public function getToken(){
+    public function getToken()
+    {
         return $this->token;
     }
 
-    public function setToken($token){
+    public function setToken($token)
+    {
         $this->token = $token;
-        $this->queryParameters["Token"] = $token;
+        $this->queryParameters['Token'] = $token;
     }
 
-    public function getScene(){
+    public function getScene()
+    {
         return $this->scene;
     }
 
-    public function setScene($scene){
+    public function setScene($scene)
+    {
         $this->scene = $scene;
-        $this->queryParameters["Scene"] = $scene;
+        $this->queryParameters['Scene'] = $scene;
     }
 }

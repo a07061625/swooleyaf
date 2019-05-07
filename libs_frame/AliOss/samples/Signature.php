@@ -1,29 +1,31 @@
 <?php
 require_once __DIR__ . '/Common.php';
 
+use AliOss\Core\OssException;
 use AliOss\Http\RequestCore;
 use AliOss\Http\ResponseCore;
 use AliOss\OssClient;
-use AliOss\Core\OssException;
 
 $bucket = Common::getBucketName();
 $ossClient = Common::getOssClient();
-if (is_null($ossClient)) exit(1);
+if (is_null($ossClient)) {
+    exit(1);
+}
 
 //******************************* Simple Usage ***************************************************************
 
-$ossClient->uploadFile($bucket, "a.file", __FILE__);
+$ossClient->uploadFile($bucket, 'a.file', __FILE__);
 
 // Generate a signed url for getting an object. The URL can be used in browser directly to download the file.
-$signedUrl = $ossClient->signUrl($bucket, "a.file", 3600);
+$signedUrl = $ossClient->signUrl($bucket, 'a.file', 3600);
 Common::println($signedUrl);
 
 // Generate the signed url for putting an object. User can use put method with this url to upload a file to "a.file".
-$signedUrl = $ossClient->signUrl($bucket, "a.file", "3600", "PUT");
+$signedUrl = $ossClient->signUrl($bucket, 'a.file', '3600', 'PUT');
 Common::println($signedUrl);
 
 // Generate the signed url for putting an object from local file. The url can be used directly to upload the file to "a.file".
-$signedUrl = $ossClient->signUrl($bucket, "a.file", 3600, "PUT", array('Content-Type' => 'txt'));
+$signedUrl = $ossClient->signUrl($bucket, 'a.file', 3600, 'PUT', ['Content-Type' => 'txt']);
 Common::println($signedUrl);
 
 //******************************* For complete usage, see the following functions ****************************************************
@@ -40,7 +42,7 @@ getSignedUrlForGettingObject($ossClient, $bucket);
  */
 function getSignedUrlForGettingObject($ossClient, $bucket)
 {
-    $object = "test/test-signature-test-upload-and-download.txt";
+    $object = 'test/test-signature-test-upload-and-download.txt';
     $timeout = 3600;
     try {
         $signedUrl = $ossClient->signUrl($bucket, $object, $timeout);
@@ -49,7 +51,7 @@ function getSignedUrlForGettingObject($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": signedUrl: " . $signedUrl . "\n");
+    print(__FUNCTION__ . ': signedUrl: ' . $signedUrl . "\n");
     /**
      * Use similar code to access the object by url, or use browser to access the object.
      */
@@ -59,10 +61,10 @@ function getSignedUrlForGettingObject($ossClient, $bucket)
     $request->send_request();
     $res = new ResponseCore($request->get_response_header(), $request->get_response_body(), $request->get_response_code());
     if ($res->isOK()) {
-        print(__FUNCTION__ . ": OK" . "\n");
+        print(__FUNCTION__ . ': OK' . "\n");
     } else {
-        print(__FUNCTION__ . ": FAILED" . "\n");
-    };
+        print(__FUNCTION__ . ': FAILED' . "\n");
+    }
 }
 
 /**
@@ -75,17 +77,17 @@ function getSignedUrlForGettingObject($ossClient, $bucket)
  */
 function getSignedUrlForPuttingObject($ossClient, $bucket)
 {
-    $object = "test/test-signature-test-upload-and-download.txt";
+    $object = 'test/test-signature-test-upload-and-download.txt';
     $timeout = 3600;
-    $options = NULL;
+    $options = null;
     try {
-        $signedUrl = $ossClient->signUrl($bucket, $object, $timeout, "PUT");
+        $signedUrl = $ossClient->signUrl($bucket, $object, $timeout, 'PUT');
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": signedUrl: " . $signedUrl . "\n");
+    print(__FUNCTION__ . ': signedUrl: ' . $signedUrl . "\n");
     $content = file_get_contents(__FILE__);
 
     $request = new RequestCore($signedUrl);
@@ -94,13 +96,16 @@ function getSignedUrlForPuttingObject($ossClient, $bucket)
     $request->add_header('Content-Length', strlen($content));
     $request->set_body($content);
     $request->send_request();
-    $res = new ResponseCore($request->get_response_header(),
-        $request->get_response_body(), $request->get_response_code());
+    $res = new ResponseCore(
+        $request->get_response_header(),
+        $request->get_response_body(),
+        $request->get_response_code()
+    );
     if ($res->isOK()) {
-        print(__FUNCTION__ . ": OK" . "\n");
+        print(__FUNCTION__ . ': OK' . "\n");
     } else {
-        print(__FUNCTION__ . ": FAILED" . "\n");
-    };
+        print(__FUNCTION__ . ': FAILED' . "\n");
+    }
 }
 
 /**
@@ -112,17 +117,17 @@ function getSignedUrlForPuttingObject($ossClient, $bucket)
 function getSignedUrlForPuttingObjectFromFile($ossClient, $bucket)
 {
     $file = __FILE__;
-    $object = "test/test-signature-test-upload-and-download.txt";
+    $object = 'test/test-signature-test-upload-and-download.txt';
     $timeout = 3600;
-    $options = array('Content-Type' => 'txt');
+    $options = ['Content-Type' => 'txt'];
     try {
-        $signedUrl = $ossClient->signUrl($bucket, $object, $timeout, "PUT", $options);
+        $signedUrl = $ossClient->signUrl($bucket, $object, $timeout, 'PUT', $options);
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": signedUrl: " . $signedUrl . "\n");
+    print(__FUNCTION__ . ': signedUrl: ' . $signedUrl . "\n");
 
     $request = new RequestCore($signedUrl);
     $request->set_method('PUT');
@@ -130,11 +135,14 @@ function getSignedUrlForPuttingObjectFromFile($ossClient, $bucket)
     $request->set_read_file($file);
     $request->set_read_stream_size(filesize($file));
     $request->send_request();
-    $res = new ResponseCore($request->get_response_header(),
-        $request->get_response_body(), $request->get_response_code());
+    $res = new ResponseCore(
+        $request->get_response_header(),
+        $request->get_response_body(),
+        $request->get_response_code()
+    );
     if ($res->isOK()) {
-        print(__FUNCTION__ . ": OK" . "\n");
+        print(__FUNCTION__ . ': OK' . "\n");
     } else {
-        print(__FUNCTION__ . ": FAILED" . "\n");
-    };
+        print(__FUNCTION__ . ': FAILED' . "\n");
+    }
 }

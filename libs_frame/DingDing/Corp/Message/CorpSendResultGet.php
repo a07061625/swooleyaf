@@ -18,7 +18,8 @@ use Tool\Tool;
  * 查询工作通知消息的发送结果
  * @package DingDing\Corp\Message
  */
-class CorpSendResultGet extends TalkBaseCorp {
+class CorpSendResultGet extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -32,7 +33,8 @@ class CorpSendResultGet extends TalkBaseCorp {
      */
     private $task_id = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -40,23 +42,26 @@ class CorpSendResultGet extends TalkBaseCorp {
         $this->reqData['agent_id'] = $agentInfo['id'];
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $taskId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setTaskId(int $taskId){
-        if($taskId > 0){
+    public function setTaskId(int $taskId)
+    {
+        if ($taskId > 0) {
             $this->reqData['task_id'] = $taskId;
         } else {
             throw new TalkException('任务ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['task_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['task_id'])) {
             throw new TalkException('任务ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

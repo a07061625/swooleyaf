@@ -234,8 +234,8 @@ class PHPExcel_Shared_Excel5
         $y1 = $offsetY;
 
         // Initialise end cell to the same as the start cell
-        $col_end    = $col_start;  // Col containing lower right corner of object
-        $row_end    = $row_start;  // Row containing bottom right corner of object
+        $col_end = $col_start;  // Col containing lower right corner of object
+        $row_end = $row_start;  // Row containing bottom right corner of object
 
         // Zero the specified offset if greater than the cell dimensions
         if ($x1 >= self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_start))) {
@@ -245,8 +245,8 @@ class PHPExcel_Shared_Excel5
             $y1 = 0;
         }
 
-        $width      = $width  + $x1 -1;
-        $height     = $height + $y1 -1;
+        $width = $width + $x1 - 1;
+        $height = $height + $y1 - 1;
 
         // Subtract the underlying cell widths to find the end cell of the image
         while ($width >= self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_end))) {
@@ -265,33 +265,33 @@ class PHPExcel_Shared_Excel5
         if (self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_start)) == 0) {
             return;
         }
-        if (self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_end))   == 0) {
+        if (self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_end)) == 0) {
             return;
         }
         if (self::sizeRow($sheet, $row_start + 1) == 0) {
             return;
         }
-        if (self::sizeRow($sheet, $row_end + 1)   == 0) {
+        if (self::sizeRow($sheet, $row_end + 1) == 0) {
             return;
         }
 
         // Convert the pixel values to the percentage value expected by Excel
-        $x1 = $x1     / self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_start))   * 1024;
-        $y1 = $y1     / self::sizeRow($sheet, $row_start + 1)   *  256;
-        $x2 = ($width + 1)  / self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_end))     * 1024; // Distance to right side of object
-        $y2 = ($height + 1) / self::sizeRow($sheet, $row_end + 1)     *  256; // Distance to bottom of object
+        $x1 = $x1 / self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_start)) * 1024;
+        $y1 = $y1 / self::sizeRow($sheet, $row_start + 1) * 256;
+        $x2 = ($width + 1) / self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_end)) * 1024; // Distance to right side of object
+        $y2 = ($height + 1) / self::sizeRow($sheet, $row_end + 1) * 256; // Distance to bottom of object
 
         $startCoordinates = PHPExcel_Cell::stringFromColumnIndex($col_start) . ($row_start + 1);
         $endCoordinates = PHPExcel_Cell::stringFromColumnIndex($col_end) . ($row_end + 1);
 
-        $twoAnchor = array(
+        $twoAnchor = [
             'startCoordinates' => $startCoordinates,
             'startOffsetX' => $x1,
             'startOffsetY' => $y1,
             'endCoordinates' => $endCoordinates,
             'endOffsetX' => $x2,
             'endOffsetY' => $y2,
-        );
+        ];
 
         return  $twoAnchor;
     }

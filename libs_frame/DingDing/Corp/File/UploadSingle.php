@@ -17,7 +17,8 @@ use Exception\DingDing\TalkException;
  * 单步文件上传
  * @package DingDing\Corp\File
  */
-class UploadSingle extends TalkBaseCorp {
+class UploadSingle extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -31,7 +32,8 @@ class UploadSingle extends TalkBaseCorp {
      */
     private $file_size = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -39,15 +41,17 @@ class UploadSingle extends TalkBaseCorp {
         $this->agent_id = $agentInfo['id'];
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $filePath
      * @throws \Exception\DingDing\TalkException
      */
-    public function setFilePath(string $filePath){
-        if(file_exists($filePath) && is_readable($filePath)){
+    public function setFilePath(string $filePath)
+    {
+        if (file_exists($filePath) && is_readable($filePath)) {
             $this->reqData['file'] = new \CURLFile($filePath);
             $this->file_size = filesize($filePath);
         } else {
@@ -55,8 +59,9 @@ class UploadSingle extends TalkBaseCorp {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['file'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['file'])) {
             throw new TalkException('文件不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

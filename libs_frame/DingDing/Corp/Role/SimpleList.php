@@ -17,7 +17,8 @@ use Tool\Tool;
  * 获取角色下的员工列表
  * @package DingDing\Corp\Role
  */
-class SimpleList extends TalkBaseCorp {
+class SimpleList extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -37,7 +38,8 @@ class SimpleList extends TalkBaseCorp {
      */
     private $size = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -45,15 +47,17 @@ class SimpleList extends TalkBaseCorp {
         $this->reqData['size'] = 10;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $roleId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setRoleId(int $roleId){
-        if($roleId > 0){
+    public function setRoleId(int $roleId)
+    {
+        if ($roleId > 0) {
             $this->reqData['role_id'] = $roleId;
         } else {
             throw new TalkException('角色ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -64,8 +68,9 @@ class SimpleList extends TalkBaseCorp {
      * @param int $offset
      * @throws \Exception\DingDing\TalkException
      */
-    public function setOffset(int $offset){
-        if($offset >= 0){
+    public function setOffset(int $offset)
+    {
+        if ($offset >= 0) {
             $this->reqData['offset'] = $offset;
         } else {
             throw new TalkException('偏移量不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -76,16 +81,18 @@ class SimpleList extends TalkBaseCorp {
      * @param int $size
      * @throws \Exception\DingDing\TalkException
      */
-    public function setSize(int $size){
-        if($size > 0){
+    public function setSize(int $size)
+    {
+        if ($size > 0) {
             $this->reqData['size'] = $size > 200 ? 200 : $size;
         } else {
             throw new TalkException('分页大小不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['role_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['role_id'])) {
             throw new TalkException('角色ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

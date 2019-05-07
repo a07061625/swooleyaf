@@ -3,11 +3,13 @@ namespace AliOss\Result;
 
 use AliOss\Model\CorsConfig;
 
-class GetCorsResult extends Result {
+class GetCorsResult extends Result
+{
     /**
      * @return CorsConfig
      */
-    protected function parseDataFromResponse(){
+    protected function parseDataFromResponse()
+    {
         $content = $this->rawResponse->body;
         $config = new CorsConfig();
         $config->parseFromXml($content);
@@ -19,7 +21,8 @@ class GetCorsResult extends Result {
      * Check if the response is OK, according to the http status. [200-299]:OK, the Cors config could be got; [404]: not found--no Cors config.
      * @return bool
      */
-    protected function isResponseOk(){
+    protected function isResponseOk()
+    {
         $status = $this->rawResponse->status;
         if ((int)(intval($status) / 100) == 2 || (int)(intval($status)) === 404) {
             return true;

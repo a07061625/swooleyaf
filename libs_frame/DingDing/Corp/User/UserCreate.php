@@ -17,7 +17,8 @@ use Tool\Tool;
  * 创建用户
  * @package DingDing\Corp\User
  */
-class UserCreate extends TalkBaseCorp {
+class UserCreate extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -96,7 +97,8 @@ class UserCreate extends TalkBaseCorp {
      */
     private $extattr = [];
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -106,15 +108,17 @@ class UserCreate extends TalkBaseCorp {
         $this->reqData['isSenior'] = false;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $userId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserId(string $userId){
-        if(ctype_alnum($userId) && (strlen($userId) <= 64)){
+    public function setUserId(string $userId)
+    {
+        if (ctype_alnum($userId) && (strlen($userId) <= 64)) {
             $this->reqData['userid'] = $userId;
         } else {
             throw new TalkException('用户id不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -125,8 +129,9 @@ class UserCreate extends TalkBaseCorp {
      * @param string $name
      * @throws \Exception\DingDing\TalkException
      */
-    public function setName(string $name){
-        if(strlen($name) > 0){
+    public function setName(string $name)
+    {
+        if (strlen($name) > 0) {
             $this->reqData['name'] = mb_substr($name, 0, 32);
         } else {
             throw new TalkException('名称不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -137,8 +142,9 @@ class UserCreate extends TalkBaseCorp {
      * @param array $departmentOrder
      * @throws \Exception\DingDing\TalkException
      */
-    public function setDepartmentOrder(array $departmentOrder){
-        if(empty($departmentOrder)){
+    public function setDepartmentOrder(array $departmentOrder)
+    {
+        if (empty($departmentOrder)) {
             throw new TalkException('部门排序不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
         $this->reqData['orderInDepts'] = Tool::jsonEncode($departmentOrder, JSON_UNESCAPED_UNICODE);
@@ -148,14 +154,15 @@ class UserCreate extends TalkBaseCorp {
      * @param array $departmentList
      * @throws \Exception\DingDing\TalkException
      */
-    public function setDepartment(array $departmentList){
+    public function setDepartment(array $departmentList)
+    {
         $departments = [];
         foreach ($departmentList as $eDepartmentId) {
-            if(is_int($eDepartmentId) && ($eDepartmentId > 0)){
+            if (is_int($eDepartmentId) && ($eDepartmentId > 0)) {
                 $departments[$eDepartmentId] = 1;
             }
         }
-        if(empty($departments)){
+        if (empty($departments)) {
             throw new TalkException('部门列表不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
         $this->reqData['department'] = array_keys($departments);
@@ -165,7 +172,8 @@ class UserCreate extends TalkBaseCorp {
      * @param string $position
      * @throws \Exception\DingDing\TalkException
      */
-    public function setPosition(string $position){
+    public function setPosition(string $position)
+    {
         if (strlen($position) > 0) {
             $this->reqData['position'] = mb_substr($position, 0, 32);
         } else {
@@ -177,7 +185,8 @@ class UserCreate extends TalkBaseCorp {
      * @param string $mobile
      * @throws \Exception\DingDing\TalkException
      */
-    public function setMobile(string $mobile){
+    public function setMobile(string $mobile)
+    {
         if (ctype_digit($mobile) && (strlen($mobile) == 11) && ($mobile{0} == '1')) {
             $this->reqData['mobile'] = $mobile;
         } else {
@@ -189,7 +198,8 @@ class UserCreate extends TalkBaseCorp {
      * @param string $tel
      * @throws \Exception\DingDing\TalkException
      */
-    public function setTel(string $tel){
+    public function setTel(string $tel)
+    {
         if (strlen($tel) > 0) {
             $this->reqData['tel'] = substr($tel, 0, 50);
         } else {
@@ -201,7 +211,8 @@ class UserCreate extends TalkBaseCorp {
      * @param string $workPlace
      * @throws \Exception\DingDing\TalkException
      */
-    public function setWorkPlace(string $workPlace){
+    public function setWorkPlace(string $workPlace)
+    {
         if (strlen($workPlace) > 0) {
             $this->reqData['workPlace'] = mb_substr($workPlace, 0, 25);
         } else {
@@ -213,7 +224,8 @@ class UserCreate extends TalkBaseCorp {
      * @param string $remark
      * @throws \Exception\DingDing\TalkException
      */
-    public function setRemark(string $remark){
+    public function setRemark(string $remark)
+    {
         if (strlen($remark) > 0) {
             $this->reqData['remark'] = mb_substr($remark, 0, 500);
         } else {
@@ -225,7 +237,8 @@ class UserCreate extends TalkBaseCorp {
      * @param string $email
      * @throws \Exception\DingDing\TalkException
      */
-    public function setEmail(string $email){
+    public function setEmail(string $email)
+    {
         if (strlen($email) > 0) {
             $this->reqData['email'] = substr($email, 0, 64);
         } else {
@@ -237,7 +250,8 @@ class UserCreate extends TalkBaseCorp {
      * @param string $orgEmail
      * @throws \Exception\DingDing\TalkException
      */
-    public function setOrgEmail(string $orgEmail){
+    public function setOrgEmail(string $orgEmail)
+    {
         if (strlen($orgEmail) > 0) {
             $this->reqData['orgEmail'] = $orgEmail;
         } else {
@@ -249,7 +263,8 @@ class UserCreate extends TalkBaseCorp {
      * @param string $jobNumber
      * @throws \Exception\DingDing\TalkException
      */
-    public function setJobNumber(string $jobNumber){
+    public function setJobNumber(string $jobNumber)
+    {
         if (strlen($jobNumber) > 0) {
             $this->reqData['jobnumber'] = substr($jobNumber, 0, 64);
         } else {
@@ -260,14 +275,16 @@ class UserCreate extends TalkBaseCorp {
     /**
      * @param bool $isHide
      */
-    public function setIsHide(bool $isHide){
+    public function setIsHide(bool $isHide)
+    {
         $this->reqData['isHide'] = $isHide;
     }
 
     /**
      * @param bool $isSenior
      */
-    public function setIsSenior(bool $isSenior){
+    public function setIsSenior(bool $isSenior)
+    {
         $this->reqData['isSenior'] = $isSenior;
     }
 
@@ -275,24 +292,26 @@ class UserCreate extends TalkBaseCorp {
      * @param array $extAttr
      * @throws \Exception\DingDing\TalkException
      */
-    public function setExtAttr(array $extAttr){
-        if(empty($extAttr)){
+    public function setExtAttr(array $extAttr)
+    {
+        if (empty($extAttr)) {
             throw new TalkException('扩展属性不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
         $this->reqData['extattr'] = $extAttr;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['name'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['name'])) {
             throw new TalkException('名称不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(empty($this->reqData['department'])){
+        if (empty($this->reqData['department'])) {
             throw new TalkException('部门列表不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['mobile'])){
+        if (!isset($this->reqData['mobile'])) {
             throw new TalkException('手机号码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['jobnumber'])){
+        if (!isset($this->reqData['jobnumber'])) {
             throw new TalkException('工号不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

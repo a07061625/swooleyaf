@@ -17,7 +17,8 @@ use Tool\Tool;
  * 获取用户待办事项
  * @package DingDing\Corp\WorkRecord
  */
-class ListGetByUserId extends TalkBaseCorp {
+class ListGetByUserId extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -41,7 +42,8 @@ class ListGetByUserId extends TalkBaseCorp {
      */
     private $status = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -49,15 +51,17 @@ class ListGetByUserId extends TalkBaseCorp {
         $this->reqData['limit'] = 10;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $userId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserId(string $userId){
-        if(ctype_alnum($userId)){
+    public function setUserId(string $userId)
+    {
+        if (ctype_alnum($userId)) {
             $this->reqData['userid'] = $userId;
         } else {
             throw new TalkException('用户ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -68,8 +72,9 @@ class ListGetByUserId extends TalkBaseCorp {
      * @param int $offset
      * @throws \Exception\DingDing\TalkException
      */
-    public function setOffset(int $offset){
-        if($offset >= 0){
+    public function setOffset(int $offset)
+    {
+        if ($offset >= 0) {
             $this->reqData['offset'] = $offset;
         } else {
             throw new TalkException('偏移量不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -80,8 +85,9 @@ class ListGetByUserId extends TalkBaseCorp {
      * @param int $limit
      * @throws \Exception\DingDing\TalkException
      */
-    public function setLimit(int $limit){
-        if($limit > 0){
+    public function setLimit(int $limit)
+    {
+        if ($limit > 0) {
             $this->reqData['limit'] = $limit > 50 ? 50 : $limit;
         } else {
             throw new TalkException('分页大小不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -92,19 +98,21 @@ class ListGetByUserId extends TalkBaseCorp {
      * @param int $status
      * @throws \Exception\DingDing\TalkException
      */
-    public function setStatus(int $status){
-        if(in_array($status, [0, 1])){
+    public function setStatus(int $status)
+    {
+        if (in_array($status, [0, 1], true)) {
             $this->reqData['status'] = $status;
         } else {
             throw new TalkException('待办状态不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['userid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['userid'])) {
             throw new TalkException('用户ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['status'])){
+        if (!isset($this->reqData['status'])) {
             throw new TalkException('待办状态不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

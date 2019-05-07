@@ -11,7 +11,8 @@ use Cache\Lite\CacheLite;
 use Tool\Dir;
 use Traits\SingletonTrait;
 
-class CacheFileSingleton {
+class CacheFileSingleton
+{
     use SingletonTrait;
 
     /**
@@ -19,7 +20,8 @@ class CacheFileSingleton {
      */
     private $cache = null;
 
-    private function __construct() {
+    private function __construct()
+    {
         $cacheDir = '/tmp/cache/lite';
         Dir::create($cacheDir);
 
@@ -32,8 +34,9 @@ class CacheFileSingleton {
     /**
      * @return \Cache\Lite\CacheLite
      */
-    public static function getInstance() {
-        if(is_null(self::$instance)){
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 

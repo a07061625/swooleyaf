@@ -7,9 +7,17 @@
  */
 namespace DB\Models\NotORM;
 
-abstract class NotORM_Abstract {
-    protected $connection, $driver, $structure, $cache;
-    protected $notORM, $table, $primary, $rows, $referenced = array();
+abstract class NotORM_Abstract
+{
+    protected $connection;
+    protected $driver;
+    protected $structure;
+    protected $cache;
+    protected $notORM;
+    protected $table;
+    protected $primary;
+    protected $rows;
+    protected $referenced = [];
 
     protected $debug = false;
     protected $debugTimer;
@@ -17,6 +25,7 @@ abstract class NotORM_Abstract {
     protected $rowClass = '\DB\Models\NotORM\NotORM_Row';
     protected $jsonAsArray = false;
 
-    protected function access($key, $delete = false) {
+    protected function access($key, $delete = false)
+    {
     }
 }

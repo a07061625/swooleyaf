@@ -1,7 +1,7 @@
 <?php
 $start = microtime(true);
 
-$tests = glob(dirname(__FILE__) . "/*.phpt", GLOB_NOSORT);
+$tests = glob(dirname(__FILE__) . '/*.phpt', GLOB_NOSORT);
 natsort($tests);
 foreach ($tests as $filename) {
     ob_start();

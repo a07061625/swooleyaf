@@ -3,7 +3,8 @@ namespace AliOpen\Core\Auth;
 
 use AliOpen\Core\Http\HttpHelper;
 
-class EcsRamRoleService {
+class EcsRamRoleService
+{
     /**
      * @var \AliOpen\Core\Profile\IClientProfile
      */
@@ -21,7 +22,8 @@ class EcsRamRoleService {
      * AliOpen\Core\Auth\EcsRamRoleService constructor.
      * @param $clientProfile
      */
-    public function __construct($clientProfile){
+    public function __construct($clientProfile)
+    {
         $this->clientProfile = $clientProfile;
     }
 
@@ -29,7 +31,8 @@ class EcsRamRoleService {
      * @return \AliOpen\Core\Auth\Credential|string|null
      * @throws \AliOpen\Core\Exception\ClientException
      */
-    public function getSessionCredential(){
+    public function getSessionCredential()
+    {
         if ($this->lastClearTime != null && $this->sessionCredential != null) {
             $now = time();
             $elapsedTime = $now - $this->lastClearTime;
@@ -41,7 +44,7 @@ class EcsRamRoleService {
         $credential = $this->assumeRole();
 
         if ($credential == null) {
-            return null;
+            return;
         }
 
         $this->sessionCredential = $credential;
@@ -54,21 +57,22 @@ class EcsRamRoleService {
      * @return \AliOpen\Core\Auth\Credential|null
      * @throws \AliOpen\Core\Exception\ClientException
      */
-    private function assumeRole(){
+    private function assumeRole()
+    {
         $ecsRamRoleCredential = $this->clientProfile->getCredential();
 
         $requestUrl = 'http://100.100.100.200/latest/meta-data/ram/security-credentials/' . $ecsRamRoleCredential->getRoleName();
 
         $httpResponse = HttpHelper::curl($requestUrl, 'GET', null, null);
         if (!$httpResponse->isSuccess()) {
-            return null;
+            return;
         }
 
         $respObj = json_decode($httpResponse->getBody());
 
         $code = $respObj->Code;
         if ($code != 'Success') {
-            return null;
+            return;
         }
 
         $sessionAccessKeyId = $respObj->AccessKeyId;

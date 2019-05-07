@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Exception\Validator\ValidatorException;
 use Tool\Tool;
 
-abstract class BaseEntity {
+abstract class BaseEntity
+{
     const DB_TYPE_MYSQL = 'mysql';
     const DB_TYPE_MONGO = 'mongo';
 
@@ -28,7 +29,8 @@ abstract class BaseEntity {
         'string' => 'checkPropertyValString',
     ];
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
     /**
@@ -41,21 +43,22 @@ abstract class BaseEntity {
      * 获取实体属性名列表
      * @return array
      */
-    public function getEntityProperties() : array {
+    public function getEntityProperties() : array
+    {
         $className = get_class($this);
-        if(!isset(self::$_properties[$className])){
+        if (!isset(self::$_properties[$className])) {
             self::$_properties[$className] = [];
             $class = new \ReflectionClass($className);
             $vars = get_class_vars($className);
             foreach ($vars as $eKey => $var) {
                 $key = trim($eKey);
-                if((strlen($key) > 0) && (substr($key, 0, 1) != '_')){
+                if ((strlen($key) > 0) && (substr($key, 0, 1) != '_')) {
                     $docs = $class->getProperty($key)->getDocComment();
                     self::$_properties[$className][$key] = $this->getPropertyType($docs);
                 }
             }
 
-            if($this->_dbType == self::DB_TYPE_MONGO){
+            if ($this->_dbType == self::DB_TYPE_MONGO) {
                 self::$_properties[$className]['_id'] = 'string';
             }
         }
@@ -68,11 +71,12 @@ abstract class BaseEntity {
      * @param array $data
      * @return bool
      */
-    public function initEntity(array $data) : bool {
-        if(!empty($data)){
+    public function initEntity(array $data) : bool
+    {
+        if (!empty($data)) {
             $properties = $this->getEntityProperties();
             foreach ($data as $key => $val) {
-                if(isset($properties[$key])){
+                if (isset($properties[$key])) {
                     $this->$key = $val;
                 }
             }
@@ -88,12 +92,13 @@ abstract class BaseEntity {
      * @param bool $getNull 是否获取值为null的属性 true:获取 false:不获取
      * @return array
      */
-    public function getEntityDataArray(bool $getNull=false) : array {
+    public function getEntityDataArray(bool $getNull = false) : array
+    {
         $dataArr = [];
 
         $properties = $this->getEntityProperties();
         foreach ($properties as $propKey => $propVal) {
-            if(is_null($this->$propKey) && !$getNull){
+            if (is_null($this->$propKey) && !$getNull) {
                 continue;
             }
 
@@ -104,34 +109,57 @@ abstract class BaseEntity {
     }
 
     /**
+     * 校验实体类属性值是否合法
+     * @return bool true:合法
+     * @throws \Exception\Validator\ValidatorException
+     */
+    public function verifyEntityProperties()
+    {
+        $properties = $this->getEntityProperties();
+        foreach ($properties as $propKey => $propVal) {
+            $checkFuncName = Tool::getArrayVal($this->_propVerifyMap, $propVal, null);
+            if (!is_null($checkFuncName)) {
+                $checkRes = $this->$checkFuncName($propKey);
+                if (strlen($checkRes) > 0) {
+                    throw new ValidatorException('实体属性' . $propKey . $checkRes, ErrorCode::VALIDATOR_TYPE_ERROR);
+                }
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * 获取实体类属性的类型,即以var注解标明的类型
      * @param string $propertyDoc 实体属性注解说明
      * @return string
      */
-    private function getPropertyType(string $propertyDoc) : string {
+    private function getPropertyType(string $propertyDoc) : string
+    {
         $propertyType = '';
         $docs = explode(PHP_EOL, $propertyDoc);
         foreach ($docs as $eDoc) {
             $pos = strpos($eDoc, '@var');
-            if($pos !== false){
+            if ($pos !== false) {
                 $needStr = substr($eDoc, $pos);
                 $propertyType = trim(str_replace('@var ', '', $needStr));
                 break;
             }
         }
 
-        if((strlen($propertyType) == 0) || (strpos($propertyType, '|') !== false)){
+        if ((strlen($propertyType) == 0) || (strpos($propertyType, '|') !== false)) {
             $propertyType = 'mixed';
         }
 
         return $propertyType;
     }
 
-    private function checkPropertyValInt(string $propertyName) : string {
+    private function checkPropertyValInt(string $propertyName) : string
+    {
         $data = $this->$propertyName;
-        if(is_null($data)){
+        if (is_null($data)) {
             return '';
-        } else if(is_numeric($data)){
+        } elseif (is_numeric($data)) {
             $this->$propertyName = (int)$data;
             return '';
         } else {
@@ -139,11 +167,12 @@ abstract class BaseEntity {
         }
     }
 
-    private function checkPropertyValFloat(string $propertyName) : string {
+    private function checkPropertyValFloat(string $propertyName) : string
+    {
         $data = $this->$propertyName;
-        if(is_null($data)){
+        if (is_null($data)) {
             return '';
-        } else if(is_numeric($data)){
+        } elseif (is_numeric($data)) {
             $this->$propertyName = (float)$data;
             return '';
         } else {
@@ -151,22 +180,24 @@ abstract class BaseEntity {
         }
     }
 
-    private function checkPropertyValArray(string $propertyName) : string {
+    private function checkPropertyValArray(string $propertyName) : string
+    {
         $data = $this->$propertyName;
-        if(is_null($data)){
+        if (is_null($data)) {
             return '';
-        } else if(is_array($data)){
+        } elseif (is_array($data)) {
             return '';
         } else {
             return '必须是数组';
         }
     }
 
-    private function checkPropertyValDouble(string $propertyName) : string {
+    private function checkPropertyValDouble(string $propertyName) : string
+    {
         $data = $this->$propertyName;
-        if(is_null($data)){
+        if (is_null($data)) {
             return '';
-        } else if(is_numeric($data)){
+        } elseif (is_numeric($data)) {
             $this->$propertyName = (double)$data;
             return '';
         } else {
@@ -174,34 +205,15 @@ abstract class BaseEntity {
         }
     }
 
-    private function checkPropertyValString(string $propertyName) : string {
+    private function checkPropertyValString(string $propertyName) : string
+    {
         $data = $this->$propertyName;
-        if(is_null($data)){
+        if (is_null($data)) {
             return '';
-        } else if(is_string($data)){
+        } elseif (is_string($data)) {
             return '';
         } else {
             return '必须是字符串';
         }
-    }
-
-    /**
-     * 校验实体类属性值是否合法
-     * @return bool true:合法
-     * @throws \Exception\Validator\ValidatorException
-     */
-    public function verifyEntityProperties() {
-        $properties = $this->getEntityProperties();
-        foreach ($properties as $propKey => $propVal) {
-            $checkFuncName = Tool::getArrayVal($this->_propVerifyMap, $propVal, null);
-            if(!is_null($checkFuncName)){
-                $checkRes = $this->$checkFuncName($propKey);
-                if(strlen($checkRes) > 0){
-                    throw new ValidatorException('实体属性' . $propKey . $checkRes, ErrorCode::VALIDATOR_TYPE_ERROR);
-                }
-            }
-        }
-
-        return true;
     }
 }

@@ -16,7 +16,8 @@ use Exception\DingDing\TalkException;
  * 获取部门列表
  * @package DingDing\Corp\Department
  */
-class DepartmentList extends TalkBaseCorp {
+class DepartmentList extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -35,7 +36,8 @@ class DepartmentList extends TalkBaseCorp {
      */
     private $id = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -43,13 +45,15 @@ class DepartmentList extends TalkBaseCorp {
         $this->reqData['fetch_child'] = false;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param bool $fetchChild
      */
-    public function setFetchChild(bool $fetchChild){
+    public function setFetchChild(bool $fetchChild)
+    {
         $this->reqData['fetch_child'] = $fetchChild;
     }
 
@@ -57,16 +61,18 @@ class DepartmentList extends TalkBaseCorp {
      * @param int $id
      * @throws \Exception\DingDing\TalkException
      */
-    public function setId(int $id){
-        if($id > 0){
+    public function setId(int $id)
+    {
+        if ($id > 0) {
             $this->reqData['id'] = $id;
         } else {
             throw new TalkException('部门id不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['id'])) {
             throw new TalkException('部门id不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

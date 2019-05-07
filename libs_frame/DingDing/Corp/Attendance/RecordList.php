@@ -17,7 +17,8 @@ use Tool\Tool;
  * 获取打卡详情
  * @package DingDing\Corp\Attendance
  */
-class RecordList extends TalkBaseCorp {
+class RecordList extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -41,7 +42,8 @@ class RecordList extends TalkBaseCorp {
      */
     private $isI18n = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -49,25 +51,27 @@ class RecordList extends TalkBaseCorp {
         $this->reqData['isI18n'] = 'false';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param array $userList
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserList(array $userList){
+    public function setUserList(array $userList)
+    {
         $users = [];
         foreach ($userList as $eUserId) {
-            if(ctype_alnum($eUserId)){
+            if (ctype_alnum($eUserId)) {
                 $users[$eUserId] = 1;
             }
         }
 
         $userNum = count($users);
-        if($userNum == 0){
+        if ($userNum == 0) {
             throw new TalkException('员工列表不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if($userNum > 50){
+        } elseif ($userNum > 50) {
             throw new TalkException('员工不能超过50个', ErrorCode::DING_TALK_PARAM_ERROR);
         }
         $this->reqData['userIds'] = array_keys($users);
@@ -78,12 +82,13 @@ class RecordList extends TalkBaseCorp {
      * @param int $endTime
      * @throws \Exception\DingDing\TalkException
      */
-    public function setStartTimeAndEndTime(int $startTime,int $endTime){
+    public function setStartTimeAndEndTime(int $startTime, int $endTime)
+    {
         if ($startTime < 946656000) {
             throw new TalkException('开始时间不合法', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if($endTime < $startTime){
+        } elseif ($endTime < $startTime) {
             throw new TalkException('结束时间不能小于开始时间', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if(($endTime - $startTime) > 604800){
+        } elseif (($endTime - $startTime) > 604800) {
             throw new TalkException('结束时间不能超过开始时间7天', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
@@ -95,19 +100,21 @@ class RecordList extends TalkBaseCorp {
      * @param string $isI18n
      * @throws \Exception\DingDing\TalkException
      */
-    public function setIsI18n(string $isI18n){
-        if(in_array($isI18n, ['true', 'false'])){
+    public function setIsI18n(string $isI18n)
+    {
+        if (in_array($isI18n, ['true', 'false'], true)) {
             $this->reqData['isI18n'] = $isI18n;
         } else {
             throw new TalkException('海外使用标识不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(empty($this->reqData['userIds'])){
+    public function getDetail() : array
+    {
+        if (empty($this->reqData['userIds'])) {
             throw new TalkException('员工列表不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['checkDateFrom'])){
+        if (!isset($this->reqData['checkDateFrom'])) {
             throw new TalkException('开始时间不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

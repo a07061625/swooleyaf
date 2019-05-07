@@ -9,8 +9,10 @@ namespace Exception\Session;
 
 use Exception\BaseException;
 
-class JwtException extends BaseException {
-    public function __construct($message, $code) {
+class JwtException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = 'JWT会话异常';
     }

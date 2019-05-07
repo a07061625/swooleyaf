@@ -42,6 +42,14 @@ class StaticReflectionClass extends ReflectionClass
     /**
      * {@inheritDoc}
      */
+    public function __toString()
+    {
+        throw new ReflectionException('Method not implemented');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getName()
     {
         return $this->staticReflectionParser->getClassName();
@@ -419,14 +427,6 @@ class StaticReflectionClass extends ReflectionClass
      * {@inheritDoc}
      */
     public function setStaticPropertyValue($name, $value)
-    {
-        throw new ReflectionException('Method not implemented');
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function __toString()
     {
         throw new ReflectionException('Method not implemented');
     }

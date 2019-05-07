@@ -8,6 +8,6 @@ class CFWSNearAt extends Warning
 
     public function __construct()
     {
-        $this->message = "Deprecated folding white space near @";
+        $this->message = 'Deprecated folding white space near @';
     }
 }

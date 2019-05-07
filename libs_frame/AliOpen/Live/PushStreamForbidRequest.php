@@ -3,60 +3,72 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class PushStreamForbidRequest extends RpcAcsRequest {
+class PushStreamForbidRequest extends RpcAcsRequest
+{
     private $userData;
     private $endTime;
     private $ownerId;
     private $roomId;
     private $appId;
 
-    public function __construct(){
-        parent::__construct("live", "2016-11-01", "ForbidPushStream", "live", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('live', '2016-11-01', 'ForbidPushStream', 'live', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getUserData(){
+    public function getUserData()
+    {
         return $this->userData;
     }
 
-    public function setUserData($userData){
+    public function setUserData($userData)
+    {
         $this->userData = $userData;
-        $this->queryParameters["UserData"] = $userData;
+        $this->queryParameters['UserData'] = $userData;
     }
 
-    public function getEndTime(){
+    public function getEndTime()
+    {
         return $this->endTime;
     }
 
-    public function setEndTime($endTime){
+    public function setEndTime($endTime)
+    {
         $this->endTime = $endTime;
-        $this->queryParameters["EndTime"] = $endTime;
+        $this->queryParameters['EndTime'] = $endTime;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getRoomId(){
+    public function getRoomId()
+    {
         return $this->roomId;
     }
 
-    public function setRoomId($roomId){
+    public function setRoomId($roomId)
+    {
         $this->roomId = $roomId;
-        $this->queryParameters["RoomId"] = $roomId;
+        $this->queryParameters['RoomId'] = $roomId;
     }
 
-    public function getAppId(){
+    public function getAppId()
+    {
         return $this->appId;
     }
 
-    public function setAppId($appId){
+    public function setAppId($appId)
+    {
         $this->appId = $appId;
-        $this->queryParameters["AppId"] = $appId;
+        $this->queryParameters['AppId'] = $appId;
     }
 }
