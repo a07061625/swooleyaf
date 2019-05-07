@@ -12,17 +12,21 @@ use QCloud\CloudBaseCos;
  * 创建存储桶
  * @package QCloud\Cos
  */
-class BucketPut extends CloudBaseCos {
-    public function __construct(){
+class BucketPut extends CloudBaseCos
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_PUT);
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         return $this->getContent();
     }
 }

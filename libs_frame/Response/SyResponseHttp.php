@@ -11,7 +11,8 @@ use Constant\Server;
 use Traits\SimpleTrait;
 use Yaf\Registry;
 
-class SyResponseHttp extends SyResponse {
+class SyResponseHttp extends SyResponse
+{
     use SimpleTrait;
 
     /**
@@ -19,18 +20,20 @@ class SyResponseHttp extends SyResponse {
      * @param $key
      * @param $value
      */
-    public static function header($key,$value){
+    public static function header($key, $value)
+    {
         self::headers([
             $key => $value,
         ]);
     }
 
-    public static function headers(array $headers){
+    public static function headers(array $headers)
+    {
         $existHeaders = Registry::get(Server::REGISTRY_NAME_RESPONSE_HEADER);
-        if($existHeaders !== false){
+        if ($existHeaders !== false) {
             foreach ($headers as $eKey => $eValue) {
                 $headerName = ucwords(preg_replace('/\s+/', '', $eKey), " -\t\r\n\f\v");
-                if(strlen($headerName) > 0){
+                if (strlen($headerName) > 0) {
                     $existHeaders[$headerName] = trim($eValue);
                 }
             }
@@ -50,7 +53,8 @@ class SyResponseHttp extends SyResponse {
      * @param bool $httponly 是否只允许http协议
      * @return void
      */
-    public static function cookie(string $name, $value=null,int $expires=0,string $path='/',string $domain='',bool $secure=false,bool $httponly=false){
+    public static function cookie(string $name, $value = null, int $expires = 0, string $path = '/', string $domain = '', bool $secure = false, bool $httponly = false)
+    {
         self::cookies([
             0 => [
                 'key' => $name,
@@ -64,9 +68,10 @@ class SyResponseHttp extends SyResponse {
         ]);
     }
 
-    public static function cookies(array $cookies){
+    public static function cookies(array $cookies)
+    {
         $existCookies = Registry::get(Server::REGISTRY_NAME_RESPONSE_COOKIE);
-        if($existCookies !== false){
+        if ($existCookies !== false) {
             foreach ($cookies as $eCookie) {
                 $existCookies[] = $eCookie;
             }
@@ -79,8 +84,9 @@ class SyResponseHttp extends SyResponse {
      * 重定向
      * @param string $url 重定向链接地址
      */
-    public static function redirect(string $url) {
-        if(preg_match('/^(http|https)\:\/\/\S+$/', $url) > 0){
+    public static function redirect(string $url)
+    {
+        if (preg_match('/^(http|https)\:\/\/\S+$/', $url) > 0) {
             self::headers([
                 'Location' => $url,
             ]);

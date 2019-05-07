@@ -12,8 +12,10 @@ use QCloud\CloudBaseCos;
  * 获取存储桶的访问权限控制列表
  * @package QCloud\Cos
  */
-class BucketAclGet extends CloudBaseCos {
-    public function __construct(){
+class BucketAclGet extends CloudBaseCos
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_GET);
@@ -21,10 +23,12 @@ class BucketAclGet extends CloudBaseCos {
         $this->signParams['acl'] = '';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         return $this->getContent();
     }
 }

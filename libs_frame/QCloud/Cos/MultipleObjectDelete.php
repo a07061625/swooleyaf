@@ -15,8 +15,10 @@ use Tool\Tool;
  * 批量删除Object
  * @package QCloud\Cos
  */
-class MultipleObjectDelete extends CloudBaseCos {
-    public function __construct(){
+class MultipleObjectDelete extends CloudBaseCos
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_POST);
@@ -25,23 +27,26 @@ class MultipleObjectDelete extends CloudBaseCos {
         $this->reqHeader['Content-Type'] = 'application/xml';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param array $deleteInfo
      * @throws \Exception\QCloud\CosException
      */
-    public function setDeleteInfo(array $deleteInfo){
-        if(empty($deleteInfo)){
+    public function setDeleteInfo(array $deleteInfo)
+    {
+        if (empty($deleteInfo)) {
             throw new CosException('删除信息不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
 
         $this->reqData = $deleteInfo;
     }
 
-    public function getDetail() : array {
-        if(empty($this->reqData)){
+    public function getDetail() : array
+    {
+        if (empty($this->reqData)) {
             throw new CosException('删除信息不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
         $content = Tool::arrayToXml($this->reqData, 2);

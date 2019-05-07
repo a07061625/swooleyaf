@@ -12,8 +12,10 @@ use QCloud\CloudBaseCos;
  * 获取存储桶的跨域访问配置信息
  * @package QCloud\Cos
  */
-class BucketCorsGet extends CloudBaseCos {
-    public function __construct(){
+class BucketCorsGet extends CloudBaseCos
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_GET);
@@ -21,10 +23,12 @@ class BucketCorsGet extends CloudBaseCos {
         $this->signParams['cors'] = '';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         return $this->getContent();
     }
 }

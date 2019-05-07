@@ -12,7 +12,8 @@ use Constant\Server;
 use Exception\Swoole\ServerException;
 use Log\Log;
 
-abstract class SyRequest {
+abstract class SyRequest
+{
     /**
      * 请求主机地址
      * @var string
@@ -44,13 +45,15 @@ abstract class SyRequest {
      */
     protected $_clientConfigs = [];
 
-    public function __construct() {
+    public function __construct()
+    {
     }
 
     /**
      * @return string
      */
-    public function getHost() : string {
+    public function getHost() : string
+    {
         return $this->_host;
     }
 
@@ -58,7 +61,8 @@ abstract class SyRequest {
      * @param string $host
      * @throws \Exception\Swoole\ServerException
      */
-    public function setHost(string $host) {
+    public function setHost(string $host)
+    {
         $trueHost = preg_replace('/\s+/', '', $host);
         if (strlen($trueHost) > 0) {
             $this->_host = $trueHost;
@@ -70,7 +74,8 @@ abstract class SyRequest {
     /**
      * @return int
      */
-    public function getPort() : int {
+    public function getPort() : int
+    {
         return $this->_port;
     }
 
@@ -78,7 +83,8 @@ abstract class SyRequest {
      * @param int $port
      * @throws \Exception\Swoole\ServerException
      */
-    public function setPort(int $port) {
+    public function setPort(int $port)
+    {
         if (($port > 1000) && ($port < 65536)) {
             $this->_port = $port;
         } else {
@@ -89,21 +95,24 @@ abstract class SyRequest {
     /**
      * @param bool $async
      */
-    public function setAsync(bool $async) {
+    public function setAsync(bool $async)
+    {
         $this->_async = $async;
     }
 
     /**
      * @return bool
      */
-    public function isAsync() : bool {
+    public function isAsync() : bool
+    {
         return $this->_async;
     }
 
     /**
      * @return int
      */
-    public function getTimeout() : int {
+    public function getTimeout() : int
+    {
         return $this->_timeout;
     }
 
@@ -111,7 +120,8 @@ abstract class SyRequest {
      * @param int $timeout 超时时间,单位为毫秒
      * @throws \Exception\Swoole\ServerException
      */
-    public function setTimeout(int $timeout) {
+    public function setTimeout(int $timeout)
+    {
         if ($timeout >= 3000) {
             $this->_timeout = $timeout;
         } else {
@@ -119,7 +129,8 @@ abstract class SyRequest {
         }
     }
 
-    public function init(string $protocol) {
+    public function init(string $protocol)
+    {
         $this->_host = '';
         $this->_async = false;
         $this->_timeout = 3000;
@@ -137,12 +148,13 @@ abstract class SyRequest {
      * @param mixed $default 默认值
      * @return array|mixed
      */
-    public static function getParams(string $key=null, $default=null) {
-        if($key === null){
+    public static function getParams(string $key = null, $default = null)
+    {
+        if ($key === null) {
             $val = array_merge($_GET, $_POST);
-        } else if(isset($_GET[$key])){
+        } elseif (isset($_GET[$key])) {
             $val = $_GET[$key];
-        } else if(isset($_POST[$key])){
+        } elseif (isset($_POST[$key])) {
             $val = $_POST[$key];
         } else {
             $val = $default;
@@ -156,50 +168,17 @@ abstract class SyRequest {
      * @param string $key 键名
      * @return bool true:存在 false:不存在
      */
-    public static function existParam(string $key){
-        if($key === null){
+    public static function existParam(string $key)
+    {
+        if ($key === null) {
             return false;
-        } else if(isset($_GET[$key])){
+        } elseif (isset($_GET[$key])) {
             return true;
-        } else if(isset($_POST[$key])){
+        } elseif (isset($_POST[$key])) {
             return true;
         } else {
             return false;
         }
-    }
-
-    private function handleSyncReq(\swoole_client &$client,string $data) {
-        $handleRes = [
-            'step' => 0,
-            'err_msg' => '',
-            'result' => false,
-        ];
-
-        $client->connect($this->_host, $this->_port, $this->_timeout / 1000);
-        if($client->errCode > 0){
-            $handleRes['err_msg'] = 'sync connect address ' . $this->_host . ':' . $this->_port . ' fail' . ',error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode);
-            return $handleRes;
-        }
-        $handleRes['step']++;
-
-        $dataLength = strlen($data);
-        $sendLength = $client->send($data);
-        if($client->errCode > 0){
-            $handleRes['err_msg'] = 'send sync data to address ' . $this->_host . ':' . $this->_port . ' fail,error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode);
-            return $handleRes;
-        } else if($sendLength != $dataLength){
-            $handleRes['err_msg'] = 'send sync data to address ' . $this->_host . ':' . $this->_port . ' fail,error_msg: lose some data';
-            return $handleRes;
-        }
-        $handleRes['step']++;
-
-        $rspMsg = $client->recv();
-        if($client->errCode == 0){
-            $handleRes['result'] = $rspMsg;
-        } else {
-            $handleRes['err_msg'] = 'get sync response data error,error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode);
-        }
-        return $handleRes;
     }
 
     /**
@@ -208,7 +187,8 @@ abstract class SyRequest {
      * @return bool|string
      * @throws \Exception\Swoole\ServerException
      */
-    protected function sendBaseSyncReq(string $reqData) {
+    protected function sendBaseSyncReq(string $reqData)
+    {
         if (strlen($this->_host) == 0) {
             throw new ServerException('服务端域名不能为空', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
@@ -219,17 +199,18 @@ abstract class SyRequest {
         $client = new \swoole_client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_SYNC);
         $client->set($this->_clientConfigs);
         $handleRes = $this->handleSyncReq($client, $reqData);
-        if(strlen($handleRes['err_msg']) > 0){
+        if (strlen($handleRes['err_msg']) > 0) {
             Log::error($handleRes['err_msg']);
         }
-        if($handleRes['step'] > 0){
+        if ($handleRes['step'] > 0) {
             $client->close();
         }
 
         return $handleRes['result'];
     }
 
-    protected function sendBaseAsyncReq(string $reqData,callable $callback=null) {
+    protected function sendBaseAsyncReq(string $reqData, callable $callback = null)
+    {
         $this->_asyncClient = new \swoole_client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_ASYNC);
         $this->_asyncClient->set($this->_clientConfigs);
         $this->_asyncClient->on('connect', function (\swoole_client $cli) use ($reqData) {
@@ -252,5 +233,40 @@ abstract class SyRequest {
         });
         $this->_asyncClient->on('close', function (\swoole_client $cli) {
         });
+    }
+
+    private function handleSyncReq(\swoole_client &$client, string $data)
+    {
+        $handleRes = [
+            'step' => 0,
+            'err_msg' => '',
+            'result' => false,
+        ];
+
+        $client->connect($this->_host, $this->_port, $this->_timeout / 1000);
+        if ($client->errCode > 0) {
+            $handleRes['err_msg'] = 'sync connect address ' . $this->_host . ':' . $this->_port . ' fail' . ',error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode);
+            return $handleRes;
+        }
+        $handleRes['step']++;
+
+        $dataLength = strlen($data);
+        $sendLength = $client->send($data);
+        if ($client->errCode > 0) {
+            $handleRes['err_msg'] = 'send sync data to address ' . $this->_host . ':' . $this->_port . ' fail,error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode);
+            return $handleRes;
+        } elseif ($sendLength != $dataLength) {
+            $handleRes['err_msg'] = 'send sync data to address ' . $this->_host . ':' . $this->_port . ' fail,error_msg: lose some data';
+            return $handleRes;
+        }
+        $handleRes['step']++;
+
+        $rspMsg = $client->recv();
+        if ($client->errCode == 0) {
+            $handleRes['result'] = $rspMsg;
+        } else {
+            $handleRes['err_msg'] = 'get sync response data error,error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode);
+        }
+        return $handleRes;
     }
 }

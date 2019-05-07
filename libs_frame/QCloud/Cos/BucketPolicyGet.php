@@ -12,8 +12,10 @@ use QCloud\CloudBaseCos;
  * 获取存储桶的权限策略
  * @package QCloud\Cos
  */
-class BucketPolicyGet extends CloudBaseCos {
-    public function __construct(){
+class BucketPolicyGet extends CloudBaseCos
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_GET);
@@ -21,10 +23,12 @@ class BucketPolicyGet extends CloudBaseCos {
         $this->signParams['policy'] = '';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         return $this->getContent();
     }
 }

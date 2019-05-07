@@ -6,9 +6,11 @@
  * Time: 12:47
  */
 namespace Qrcode;
+
 include_once 'phpqrcode/phpqrcode.php';
 
-class SyQrCode {
+class SyQrCode
+{
     const QR_ERROR_LEVEL_ONE = 'L';
     const QR_ERROR_LEVEL_TWO = 'M';
     const QR_ERROR_LEVEL_THREE = 'Q';
@@ -29,18 +31,19 @@ class SyQrCode {
      *   image_size: int 图片大小,可选大小:1-10
      *   margin_size: int 外边框间隙大小
      */
-    public static function createImage(string $url,array $options) {
-        if(isset($options['error_level']) && (in_array($options['error_level'], self::$errorLevels))){
+    public static function createImage(string $url, array $options)
+    {
+        if (isset($options['error_level']) && (in_array($options['error_level'], self::$errorLevels, true))) {
             $errorLevel = $options['error_level'];
         } else {
             $errorLevel = self::QR_ERROR_LEVEL_ONE;
         }
-        if(isset($options['image_size']) && is_numeric($options['image_size']) && ($options['image_size'] >= 1) && ($options['image_size'] <= 10)){
+        if (isset($options['image_size']) && is_numeric($options['image_size']) && ($options['image_size'] >= 1) && ($options['image_size'] <= 10)) {
             $imageSize = (int)$options['image_size'];
         } else {
             $imageSize = 5;
         }
-        if(isset($options['margin_size']) && is_numeric($options['margin_size']) && ($options['margin_size'] >= 0) && ($options['margin_size'] <= 200)){
+        if (isset($options['margin_size']) && is_numeric($options['margin_size']) && ($options['margin_size'] >= 0) && ($options['margin_size'] <= 200)) {
             $marginSize = (int)$options['margin_size'];
         } else {
             $marginSize = 2;

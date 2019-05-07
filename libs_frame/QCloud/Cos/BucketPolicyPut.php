@@ -15,8 +15,10 @@ use Tool\Tool;
  * 设置存储桶的权限策略
  * @package QCloud\Cos
  */
-class BucketPolicyPut extends CloudBaseCos {
-    public function __construct(){
+class BucketPolicyPut extends CloudBaseCos
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_PUT);
@@ -25,23 +27,26 @@ class BucketPolicyPut extends CloudBaseCos {
         $this->reqHeader['Content-Type'] = 'application/json';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param array $data
      * @throws \Exception\QCloud\CosException
      */
-    public function setPolicyConfig(array $data){
-        if(empty($data)){
+    public function setPolicyConfig(array $data)
+    {
+        if (empty($data)) {
             throw new CosException('权限策略不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
 
         $this->reqData = $data;
     }
 
-    public function getDetail() : array {
-        if(empty($this->reqData)){
+    public function getDetail() : array
+    {
+        if (empty($this->reqData)) {
             throw new CosException('权限策略不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
         $content = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);

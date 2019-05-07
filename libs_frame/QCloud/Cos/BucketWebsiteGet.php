@@ -12,8 +12,10 @@ use QCloud\CloudBaseCos;
  * 获取存储桶的静态网站配置
  * @package QCloud\Cos
  */
-class BucketWebsiteGet extends CloudBaseCos {
-    public function __construct(){
+class BucketWebsiteGet extends CloudBaseCos
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_GET);
@@ -21,10 +23,12 @@ class BucketWebsiteGet extends CloudBaseCos {
         $this->signParams['website'] = '';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         return $this->getContent();
     }
 }

@@ -14,7 +14,8 @@ use QCloud\CloudBaseCos;
  * 获取进行中的分块上传列表
  * @package QCloud\Cos
  */
-class MultipartUploadList extends CloudBaseCos {
+class MultipartUploadList extends CloudBaseCos
+{
     /**
      * 前缀
      * @var string
@@ -46,7 +47,8 @@ class MultipartUploadList extends CloudBaseCos {
      */
     private $limit = 0;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_GET);
@@ -56,15 +58,17 @@ class MultipartUploadList extends CloudBaseCos {
         $this->reqData['max-uploads'] = 20;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $prefix
      * @throws \Exception\QCloud\CosException
      */
-    public function setPrefix(string $prefix){
-        if(strlen($prefix) > 0){
+    public function setPrefix(string $prefix)
+    {
+        if (strlen($prefix) > 0) {
             $this->reqData['prefix'] = $prefix;
         } else {
             throw new CosException('前缀不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
@@ -75,8 +79,9 @@ class MultipartUploadList extends CloudBaseCos {
      * @param string $delimiter
      * @throws \Exception\QCloud\CosException
      */
-    public function setDelimiter(string $delimiter){
-        if(strlen($delimiter) > 0){
+    public function setDelimiter(string $delimiter)
+    {
+        if (strlen($delimiter) > 0) {
             $this->reqData['delimiter'] = $delimiter;
         } else {
             throw new CosException('定界符不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
@@ -87,8 +92,9 @@ class MultipartUploadList extends CloudBaseCos {
      * @param string $markerKey
      * @throws \Exception\QCloud\CosException
      */
-    public function setMarkerKey(string $markerKey){
-        if(strlen($markerKey) > 0){
+    public function setMarkerKey(string $markerKey)
+    {
+        if (strlen($markerKey) > 0) {
             $this->reqData['key-marker'] = $markerKey;
         } else {
             throw new CosException('起始索引不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
@@ -99,8 +105,9 @@ class MultipartUploadList extends CloudBaseCos {
      * @param string $markerUploadId
      * @throws \Exception\QCloud\CosException
      */
-    public function setMarkerUploadId(string $markerUploadId){
-        if(strlen($markerUploadId) > 0){
+    public function setMarkerUploadId(string $markerUploadId)
+    {
+        if (strlen($markerUploadId) > 0) {
             $this->reqData['upload-id-marker'] = $markerUploadId;
         } else {
             throw new CosException('起始ID不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
@@ -111,15 +118,17 @@ class MultipartUploadList extends CloudBaseCos {
      * @param int $limit
      * @throws \Exception\QCloud\CosException
      */
-    public function setLimit(int $limit){
-        if(($limit > 0) && ($limit <= 1000)){
+    public function setLimit(int $limit)
+    {
+        if (($limit > 0) && ($limit <= 1000)) {
             $this->reqData['max-uploads'] = $limit;
         } else {
             throw new CosException('条目数不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $this->setReqQuery($this->reqData);
         return $this->getContent();
     }

@@ -46,6 +46,26 @@ class Resque_Job
     }
 
     /**
+     * Generate a string representation used to describe the current job.
+     *
+     * @return string The string representation of the job.
+     */
+    public function __toString()
+    {
+        $name = [
+            'Job{' . $this->queue . '}'
+        ];
+        if (!empty($this->payload['id'])) {
+            $name[] = 'ID: ' . $this->payload['id'];
+        }
+        $name[] = $this->payload['class'];
+        if (!empty($this->payload['args'])) {
+            $name[] = json_encode($this->payload['args']);
+        }
+        return '(' . implode(' | ', $name) . ')';
+    }
+
+    /**
      * Create a new job and save it to the specified queue.
      *
      * @param string $queue The name of the queue to place the job in.
@@ -63,19 +83,19 @@ class Resque_Job
             $id = Resque::generateJobId();
         }
 
-        if($args !== null && !is_array($args)) {
+        if ($args !== null && !is_array($args)) {
             throw new InvalidArgumentException(
                 'Supplied $args must be an array.'
             );
         }
-        Resque::push($queue, array(
-            'class'    => $class,
-            'args'    => array($args),
-            'id'    => $id,
+        Resque::push($queue, [
+            'class' => $class,
+            'args' => [$args],
+            'id' => $id,
             'queue_time' => microtime(true),
-        ));
+        ]);
 
-        if($monitor) {
+        if ($monitor) {
             Resque_Job_Status::create($id);
         }
 
@@ -92,11 +112,11 @@ class Resque_Job
     public static function reserve($queue)
     {
         $payload = Resque::pop($queue);
-        if(!is_array($payload)) {
+        if (!is_array($payload)) {
             return false;
         }
 
-        return new Resque_Job($queue, $payload);
+        return new self($queue, $payload);
     }
 
     /**
@@ -111,11 +131,11 @@ class Resque_Job
     {
         $item = Resque::blpop($queues, $timeout);
 
-        if(!is_array($item)) {
+        if (!is_array($item)) {
             return false;
         }
 
-        return new Resque_Job($item['queue'], $item['payload']);
+        return new self($item['queue'], $item['payload']);
     }
 
     /**
@@ -125,7 +145,7 @@ class Resque_Job
      */
     public function updateStatus($status)
     {
-        if(empty($this->payload['id'])) {
+        if (empty($this->payload['id'])) {
             return;
         }
 
@@ -152,7 +172,7 @@ class Resque_Job
     public function getArguments()
     {
         if (!isset($this->payload['args'])) {
-            return array();
+            return [];
         }
 
         return $this->payload['args'][0];
@@ -187,20 +207,20 @@ class Resque_Job
             Resque_Event::trigger('beforePerform', $this);
 
             $instance = $this->getInstance();
-            if(method_exists($instance, 'setUp')) {
+            if (method_exists($instance, 'setUp')) {
                 $instance->setUp();
             }
 
             $instance->perform();
 
-            if(method_exists($instance, 'tearDown')) {
+            if (method_exists($instance, 'tearDown')) {
                 $instance->tearDown();
             }
 
             Resque_Event::trigger('afterPerform', $this);
         }
         // beforePerform/setUp have said don't perform this job. Return.
-        catch(Resque_Job_DontPerform $e) {
+        catch (Resque_Job_DontPerform $e) {
             return false;
         }
 
@@ -214,10 +234,10 @@ class Resque_Job
      */
     public function fail($exception)
     {
-        Resque_Event::trigger('onFailure', array(
+        Resque_Event::trigger('onFailure', [
             'exception' => $exception,
             'job' => $this,
-        ));
+        ]);
 
         $this->updateStatus(Resque_Job_Status::STATUS_FAILED);
         Resque_Failure::create(
@@ -238,31 +258,11 @@ class Resque_Job
     {
         $status = new Resque_Job_Status($this->payload['id']);
         $monitor = false;
-        if($status->isTracking()) {
+        if ($status->isTracking()) {
             $monitor = true;
         }
 
         return self::create($this->queue, $this->payload['class'], $this->getArguments(), $monitor);
-    }
-
-    /**
-     * Generate a string representation used to describe the current job.
-     *
-     * @return string The string representation of the job.
-     */
-    public function __toString()
-    {
-        $name = array(
-            'Job{' . $this->queue .'}'
-        );
-        if(!empty($this->payload['id'])) {
-            $name[] = 'ID: ' . $this->payload['id'];
-        }
-        $name[] = $this->payload['class'];
-        if(!empty($this->payload['args'])) {
-            $name[] = json_encode($this->payload['args']);
-        }
-        return '(' . implode(' | ', $name) . ')';
     }
 
     /**

@@ -8,5 +8,4 @@
  */
 class Resque_Job_DontCreate extends Exception
 {
-
 }

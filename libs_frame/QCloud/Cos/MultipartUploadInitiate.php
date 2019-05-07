@@ -14,28 +14,32 @@ use QCloud\CloudBaseCos;
  * 初始化分片上传
  * @package QCloud\Cos
  */
-class MultipartUploadInitiate extends CloudBaseCos {
+class MultipartUploadInitiate extends CloudBaseCos
+{
     /**
      * 对象名称
      * @var string
      */
     private $objectKey = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_POST);
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $objectKey
      * @throws \Exception\QCloud\CosException
      */
-    public function setObjectKey(string $objectKey){
-        if(strlen($objectKey) > 0){
+    public function setObjectKey(string $objectKey)
+    {
+        if (strlen($objectKey) > 0) {
             $this->reqUri = '/' . $objectKey . '?uploads';
             $this->objectKey = $objectKey;
             $this->signParams['uploads'] = '';
@@ -44,8 +48,9 @@ class MultipartUploadInitiate extends CloudBaseCos {
         }
     }
 
-    public function getDetail() : array {
-        if(strlen($this->objectKey) == 0){
+    public function getDetail() : array
+    {
+        if (strlen($this->objectKey) == 0) {
             throw new CosException('对象名称不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
 

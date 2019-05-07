@@ -14,7 +14,8 @@ use QCloud\CloudBaseCos;
  * 完成分块上传
  * @package QCloud\Cos
  */
-class MultipartUploadComplete extends CloudBaseCos {
+class MultipartUploadComplete extends CloudBaseCos
+{
     /**
      * 对象名称
      * @var string
@@ -31,21 +32,24 @@ class MultipartUploadComplete extends CloudBaseCos {
      */
     private $nodeList = [];
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_POST);
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $objectKey
      * @throws \Exception\QCloud\CosException
      */
-    public function setObjectKey(string $objectKey){
-        if(strlen($objectKey) > 0){
+    public function setObjectKey(string $objectKey)
+    {
+        if (strlen($objectKey) > 0) {
             $this->reqUri = '/' . $objectKey;
             $this->objectKey = $objectKey;
         } else {
@@ -57,8 +61,9 @@ class MultipartUploadComplete extends CloudBaseCos {
      * @param string $uploadId
      * @throws \Exception\QCloud\CosException
      */
-    public function setUploadId(string $uploadId){
-        if(strlen($uploadId) > 0){
+    public function setUploadId(string $uploadId)
+    {
+        if (strlen($uploadId) > 0) {
             $this->signParams['uploadid'] = $uploadId;
             $this->uploadId = $uploadId;
         } else {
@@ -70,22 +75,24 @@ class MultipartUploadComplete extends CloudBaseCos {
      * @param array $nodeList
      * @throws \Exception\QCloud\CosException
      */
-    public function setNodeList(array $nodeList){
-        if(empty($nodeList)){
+    public function setNodeList(array $nodeList)
+    {
+        if (empty($nodeList)) {
             throw new CosException('节点信息不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
 
         $this->nodeList = $nodeList;
     }
 
-    public function getDetail() : array {
-        if(strlen($this->objectKey) == 0){
+    public function getDetail() : array
+    {
+        if (strlen($this->objectKey) == 0) {
             throw new CosException('对象名称不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
-        if(strlen($this->uploadId) == 0){
+        if (strlen($this->uploadId) == 0) {
             throw new CosException('上传ID不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
-        if(empty($this->nodeList)){
+        if (empty($this->nodeList)) {
             throw new CosException('节点信息不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
         $this->setReqQuery([

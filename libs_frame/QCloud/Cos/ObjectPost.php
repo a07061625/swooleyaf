@@ -15,7 +15,8 @@ use QCloud\CloudUtilCos;
  * 对象上传
  * @package QCloud\Cos
  */
-class ObjectPost extends CloudBaseCos {
+class ObjectPost extends CloudBaseCos
+{
     /**
      * 权限策略
      * @var string
@@ -37,7 +38,8 @@ class ObjectPost extends CloudBaseCos {
      */
     private $policy = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_POST);
@@ -45,15 +47,17 @@ class ObjectPost extends CloudBaseCos {
         $this->reqData['acl'] = 'default';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $acl
      * @throws \Exception\QCloud\CosException
      */
-    public function setAcl(string $acl){
-        if(in_array($acl, ['private', 'public-read', 'default',])){
+    public function setAcl(string $acl)
+    {
+        if (in_array($acl, ['private', 'public-read', 'default',], true)) {
             $this->reqData['acl'] = $acl;
         } else {
             throw new CosException('权限策略不合法', ErrorCode::COMMON_PARAM_ERROR);
@@ -64,8 +68,9 @@ class ObjectPost extends CloudBaseCos {
      * @param string $filePath
      * @throws \Exception\QCloud\CosException
      */
-    public function setFilePath(string $filePath){
-        if(is_file($filePath) && is_readable($filePath)){
+    public function setFilePath(string $filePath)
+    {
+        if (is_file($filePath) && is_readable($filePath)) {
             $this->filePath = $filePath;
         } else {
             throw new CosException('文件路径不合法', ErrorCode::COMMON_PARAM_ERROR);
@@ -76,9 +81,10 @@ class ObjectPost extends CloudBaseCos {
      * @param string $fileName
      * @throws \Exception\QCloud\CosException
      */
-    public function setFileName(string $fileName){
+    public function setFileName(string $fileName)
+    {
         $trueName = trim($fileName);
-        if(strlen($trueName) > 0){
+        if (strlen($trueName) > 0) {
             $this->reqData['key'] = $trueName;
         } else {
             throw new CosException('文件名不合法', ErrorCode::COMMON_PARAM_ERROR);
@@ -88,7 +94,8 @@ class ObjectPost extends CloudBaseCos {
     /**
      * @param array $policyConfig
      */
-    public function setPolicy(array $policyConfig){
+    public function setPolicy(array $policyConfig)
+    {
         CloudUtilCos::createPolicySign($policyConfig, $this->reqData);
     }
 
@@ -97,22 +104,24 @@ class ObjectPost extends CloudBaseCos {
      * @param string $val
      * @throws \Exception\QCloud\CosException
      */
-    public function addExtendRedData(string $key,string $val){
-        if(in_array($key, ['acl', 'file', 'key', 'policy',])){
+    public function addExtendRedData(string $key, string $val)
+    {
+        if (in_array($key, ['acl', 'file', 'key', 'policy',], true)) {
             throw new CosException('字段名不允许', ErrorCode::COMMON_PARAM_ERROR);
         }
 
         $this->reqData[$key] = $val;
     }
 
-    public function getDetail() : array {
-        if(strlen($this->filePath) == 0){
+    public function getDetail() : array
+    {
+        if (strlen($this->filePath) == 0) {
             throw new CosException('文件路径不能为空', ErrorCode::COMMON_PARAM_ERROR);
         }
-        if(!isset($this->reqData['key'])){
+        if (!isset($this->reqData['key'])) {
             throw new CosException('文件名不能为空', ErrorCode::COMMON_PARAM_ERROR);
         }
-        if(!isset($this->reqData['policy'])){
+        if (!isset($this->reqData['policy'])) {
             throw new CosException('权限策略不能为空', ErrorCode::COMMON_PARAM_ERROR);
         }
         $this->reqData['file'] = new \CURLFile($this->filePath);

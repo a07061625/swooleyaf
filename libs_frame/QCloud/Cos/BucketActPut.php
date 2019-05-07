@@ -12,8 +12,10 @@ use QCloud\CloudBaseCos;
  * 设置存储桶的访问权限控制
  * @package QCloud\Cos
  */
-class BucketActPut extends CloudBaseCos {
-    public function __construct(){
+class BucketActPut extends CloudBaseCos
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_PUT);
@@ -21,10 +23,12 @@ class BucketActPut extends CloudBaseCos {
         $this->signParams['acl'] = '';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         return $this->getContent();
     }
 }

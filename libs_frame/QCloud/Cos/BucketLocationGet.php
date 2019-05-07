@@ -12,8 +12,10 @@ use QCloud\CloudBaseCos;
  * 获取存储桶的地域信息
  * @package QCloud\Cos
  */
-class BucketLocationGet extends CloudBaseCos {
-    public function __construct(){
+class BucketLocationGet extends CloudBaseCos
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_GET);
@@ -21,10 +23,12 @@ class BucketLocationGet extends CloudBaseCos {
         $this->signParams['location'] = '';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         return $this->getContent();
     }
 }

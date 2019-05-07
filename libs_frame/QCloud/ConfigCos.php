@@ -10,7 +10,8 @@ namespace QCloud;
 use Constant\ErrorCode;
 use Exception\QCloud\CosException;
 
-class ConfigCos {
+class ConfigCos
+{
     /**
      * 应用ID
      * @var string
@@ -42,16 +43,19 @@ class ConfigCos {
      */
     private $reqHost = '';
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @return string
      */
-    public function getAppId() : string {
+    public function getAppId() : string
+    {
         return $this->appId;
     }
 
@@ -59,7 +63,8 @@ class ConfigCos {
      * @param string $appId
      * @throws \Exception\QCloud\CosException
      */
-    public function setAppId(string $appId){
+    public function setAppId(string $appId)
+    {
         if (ctype_digit($appId)) {
             $this->appId = $appId;
         } else {
@@ -70,7 +75,8 @@ class ConfigCos {
     /**
      * @return string
      */
-    public function getSecretId() : string {
+    public function getSecretId() : string
+    {
         return $this->secretId;
     }
 
@@ -78,7 +84,8 @@ class ConfigCos {
      * @param string $secretId
      * @throws \Exception\QCloud\CosException
      */
-    public function setSecretId(string $secretId){
+    public function setSecretId(string $secretId)
+    {
         if (ctype_alnum($secretId)) {
             $this->secretId = $secretId;
         } else {
@@ -89,7 +96,8 @@ class ConfigCos {
     /**
      * @return string
      */
-    public function getSecretKey() : string {
+    public function getSecretKey() : string
+    {
         return $this->secretKey;
     }
 
@@ -97,7 +105,8 @@ class ConfigCos {
      * @param string $secretKey
      * @throws \Exception\QCloud\CosException
      */
-    public function setSecretKey(string $secretKey){
+    public function setSecretKey(string $secretKey)
+    {
         if (ctype_alnum($secretKey)) {
             $this->secretKey = $secretKey;
         } else {
@@ -108,7 +117,8 @@ class ConfigCos {
     /**
      * @return string
      */
-    public function getBucketName() : string {
+    public function getBucketName() : string
+    {
         return $this->bucketName;
     }
 
@@ -116,7 +126,8 @@ class ConfigCos {
      * @param string $bucketName
      * @throws \Exception\QCloud\CosException
      */
-    public function setBucketName(string $bucketName){
+    public function setBucketName(string $bucketName)
+    {
         if (strlen($bucketName) > 0) {
             $this->bucketName = $bucketName;
         } else {
@@ -127,7 +138,8 @@ class ConfigCos {
     /**
      * @return string
      */
-    public function getRegionTag() : string {
+    public function getRegionTag() : string
+    {
         return $this->regionTag;
     }
 
@@ -135,7 +147,8 @@ class ConfigCos {
      * @param string $regionTag
      * @throws \Exception\QCloud\CosException
      */
-    public function setRegionTag(string $regionTag){
+    public function setRegionTag(string $regionTag)
+    {
         if (strlen($regionTag) > 0) {
             $this->regionTag = $regionTag;
         } else {
@@ -143,14 +156,16 @@ class ConfigCos {
         }
     }
 
-    public function createReqHost(){
+    public function createReqHost()
+    {
         $this->reqHost = $this->bucketName . '-' . $this->appId . '.cos.' . $this->regionTag . '.myqcloud.com';
     }
 
     /**
      * @return string
      */
-    public function getReqHost() : string {
+    public function getReqHost() : string
+    {
         return $this->reqHost;
     }
 }
