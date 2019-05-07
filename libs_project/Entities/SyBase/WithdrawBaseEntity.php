@@ -3,12 +3,8 @@ namespace Entities\SyBase;
 
 use DB\Entities\MysqlEntity;
 
-class WithdrawBaseEntity extends MysqlEntity {
-    public function __construct(string $dbName='') {
-        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';
-        parent::__construct($this->_dbName, 'withdraw_base','id');
-    }
-
+class WithdrawBaseEntity extends MysqlEntity
+{
     /**
      * @var int
      */
@@ -115,4 +111,9 @@ class WithdrawBaseEntity extends MysqlEntity {
      * @var int
      */
     public $updated = 0;
+    public function __construct(string $dbName = '')
+    {
+        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';
+        parent::__construct($this->_dbName, 'withdraw_base', 'id');
+    }
 }

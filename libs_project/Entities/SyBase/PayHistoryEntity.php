@@ -3,12 +3,8 @@ namespace Entities\SyBase;
 
 use DB\Entities\MysqlEntity;
 
-class PayHistoryEntity extends MysqlEntity {
-    public function __construct(string $dbName='') {
-        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';
-        parent::__construct($this->_dbName, 'pay_history','id');
-    }
-
+class PayHistoryEntity extends MysqlEntity
+{
     /**
      *
      * @var int
@@ -74,4 +70,9 @@ class PayHistoryEntity extends MysqlEntity {
      * @var int
      */
     public $created = 0;
+    public function __construct(string $dbName = '')
+    {
+        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';
+        parent::__construct($this->_dbName, 'pay_history', 'id');
+    }
 }

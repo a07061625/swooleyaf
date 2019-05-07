@@ -11,16 +11,20 @@ use Constant\Project;
 use MessageQueue\Consumer\Redis\AddJsLogService;
 use MessageQueue\Consumer\Redis\AddMysqlLogService;
 
-class SyModuleApiTask extends SyModuleTaskBase implements SyModuleTaskInterface {
-    public function __construct() {
+class SyModuleApiTask extends SyModuleTaskBase implements SyModuleTaskInterface
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->moduleTag = Project::MODULE_NAME_API;
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    public function handleTask(array $data) {
+    public function handleTask(array $data)
+    {
 //        //添加mysql日志任务
 //        $mysqlLogService = new AddMysqlLogService();
 //        $mysqlLogService->handleMessage([]);

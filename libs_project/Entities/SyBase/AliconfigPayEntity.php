@@ -3,12 +3,8 @@ namespace Entities\SyBase;
 
 use DB\Entities\MysqlEntity;
 
-class AliconfigPayEntity extends MysqlEntity {
-    public function __construct(string $dbName='') {
-        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';
-        parent::__construct($this->_dbName, 'aliconfig_pay','id');
-    }
-
+class AliconfigPayEntity extends MysqlEntity
+{
     /**
      * 主键ID
      * @var int
@@ -74,4 +70,9 @@ class AliconfigPayEntity extends MysqlEntity {
      * @var int
      */
     public $updated = 0;
+    public function __construct(string $dbName = '')
+    {
+        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';
+        parent::__construct($this->_dbName, 'aliconfig_pay', 'id');
+    }
 }

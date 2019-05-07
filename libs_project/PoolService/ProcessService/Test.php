@@ -10,10 +10,12 @@ namespace PoolService\ProcessService;
 use Response\Result;
 use Traits\SimpleTrait;
 
-class Test extends BaseService {
+class Test extends BaseService
+{
     use SimpleTrait;
 
-    protected static function handleMessage(array $data) : Result {
+    protected static function handleMessage(array $data) : Result
+    {
         $result = new Result();
         $result->setData([
             'msg' => 'hello world',

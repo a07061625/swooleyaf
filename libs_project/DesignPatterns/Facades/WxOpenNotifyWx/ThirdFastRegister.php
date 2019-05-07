@@ -13,10 +13,12 @@ use Tool\ProjectTool;
 use Traits\SimpleFacadeTrait;
 use Wx\WxUtilOpenBase;
 
-class ThirdFastRegister extends WxOpenNotifyWxFacade {
+class ThirdFastRegister extends WxOpenNotifyWxFacade
+{
     use SimpleFacadeTrait;
 
-    protected static function handleNotify(array $data){
+    protected static function handleNotify(array $data)
+    {
         if ($data['status'] == 0) {
             ProjectTool::handleAppAuthForWxOpen(Project::WX_COMPONENT_AUTHORIZER_OPTION_TYPE_AUTHORIZED, [
                 'AuthorizerAppid' => $data['appid'],

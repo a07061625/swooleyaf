@@ -12,8 +12,10 @@ use Constant\Project;
 use MessageQueue\Consumer\Kafka\Test;
 use Tool\BaseContainer;
 
-class KafkaConsumerContainer extends BaseContainer {
-    public function __construct(){
+class KafkaConsumerContainer extends BaseContainer
+{
+    public function __construct()
+    {
         $this->registryMap = [
             Project::MESSAGE_QUEUE_TOPIC_TEST,
         ];

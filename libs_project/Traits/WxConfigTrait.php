@@ -13,7 +13,8 @@ use Tool\Tool;
 use Wx\WxConfigAccount;
 use Wx\WxConfigCorp;
 
-trait WxConfigTrait {
+trait WxConfigTrait
+{
     /**
      * 账号配置列表
      * @var array
@@ -39,8 +40,72 @@ trait WxConfigTrait {
      * 获取所有的账号配置
      * @return array
      */
-    public function getAccountConfigs(){
+    public function getAccountConfigs()
+    {
         return $this->accountConfigs;
+    }
+
+    /**
+     * 获取账号配置
+     * @param string $appId
+     * @return \Wx\WxConfigAccount|null
+     */
+    public function getShopConfig(string $appId)
+    {
+        $nowTime = Tool::getNowTime();
+        $accountConfig = $this->getLocalAccountConfig($appId);
+        if (is_null($accountConfig)) {
+            $accountConfig = $this->refreshAccountConfig($appId);
+        } elseif ($accountConfig->getExpireTime() < $nowTime) {
+            $accountConfig = $this->refreshAccountConfig($appId);
+        }
+
+        return $accountConfig->isValid() ? $accountConfig : null;
+    }
+
+    /**
+     * 移除账号配置
+     * @param string $appId
+     */
+    public function removeAccountConfig(string $appId)
+    {
+        unset($this->accountConfigs[$appId]);
+    }
+
+    /**
+     * 获取所有的企业微信配置
+     * @return array
+     */
+    public function getCorpConfigs()
+    {
+        return $this->corpConfigs;
+    }
+
+    /**
+     * 获取企业微信配置
+     * @param string $corpId
+     * @return \Wx\WxConfigCorp|null
+     */
+    public function getCorpConfig(string $corpId)
+    {
+        $nowTime = Tool::getNowTime();
+        $corpConfig = $this->getLocalCorpConfig($corpId);
+        if (is_null($corpConfig)) {
+            $corpConfig = $this->refreshCorpConfig($corpId);
+        } elseif ($corpConfig->getExpireTime() < $nowTime) {
+            $corpConfig = $this->refreshCorpConfig($corpId);
+        }
+
+        return $corpConfig->isValid() ? $corpConfig : null;
+    }
+
+    /**
+     * 移除企业微信配置
+     * @param string $corpId
+     */
+    public function removeCorpConfig(string $corpId)
+    {
+        unset($this->corpConfigs[$corpId]);
     }
 
     /**
@@ -48,12 +113,13 @@ trait WxConfigTrait {
      * @param string $appId
      * @return \Wx\WxConfigAccount|null
      */
-    private function getLocalAccountConfig(string $appId) {
+    private function getLocalAccountConfig(string $appId)
+    {
         $nowTime = Tool::getNowTime();
-        if($this->accountClearTime < $nowTime){
+        if ($this->accountClearTime < $nowTime) {
             $delIds = [];
             foreach ($this->accountConfigs as $eAppId => $accountConfig) {
-                if($accountConfig->getExpireTime() < $nowTime){
+                if ($accountConfig->getExpireTime() < $nowTime) {
                     $delIds[] = $eAppId;
                 }
             }
@@ -72,7 +138,8 @@ trait WxConfigTrait {
      * @param string $appId
      * @return \Wx\WxConfigAccount
      */
-    private function refreshAccountConfig(string $appId) {
+    private function refreshAccountConfig(string $appId)
+    {
         $expireTime = Tool::getNowTime() + Project::TIME_EXPIRE_LOCAL_WXACCOUNT_REFRESH;
         $accountConfig = new WxConfigAccount();
         $accountConfig->setAppId($appId);
@@ -82,7 +149,7 @@ trait WxConfigTrait {
         $ormResult1 = $wxConfigEntity->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`app_id`=? AND `status`=?', [$appId, Project::WX_CONFIG_STATUS_ENABLE]);
         $configInfo = $wxConfigEntity->getContainer()->getModel()->findOne($ormResult1);
-        if(empty($configInfo)){
+        if (empty($configInfo)) {
             $accountConfig->setValid(false);
         } else {
             $wxDefaultConfig = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.wx');
@@ -109,49 +176,17 @@ trait WxConfigTrait {
     }
 
     /**
-     * 获取账号配置
-     * @param string $appId
-     * @return \Wx\WxConfigAccount|null
-     */
-    public function getShopConfig(string $appId) {
-        $nowTime = Tool::getNowTime();
-        $accountConfig = $this->getLocalAccountConfig($appId);
-        if(is_null($accountConfig)){
-            $accountConfig = $this->refreshAccountConfig($appId);
-        } else if($accountConfig->getExpireTime() < $nowTime){
-            $accountConfig = $this->refreshAccountConfig($appId);
-        }
-
-        return $accountConfig->isValid() ? $accountConfig : null;
-    }
-
-    /**
-     * 移除账号配置
-     * @param string $appId
-     */
-    public function removeAccountConfig(string $appId) {
-        unset($this->accountConfigs[$appId]);
-    }
-
-    /**
-     * 获取所有的企业微信配置
-     * @return array
-     */
-    public function getCorpConfigs(){
-        return $this->corpConfigs;
-    }
-
-    /**
      * 获取本地企业微信配置
      * @param string $corpId
      * @return \Wx\WxConfigCorp|null
      */
-    private function getLocalCorpConfig(string $corpId) {
+    private function getLocalCorpConfig(string $corpId)
+    {
         $nowTime = Tool::getNowTime();
-        if($this->corpClearTime < $nowTime){
+        if ($this->corpClearTime < $nowTime) {
             $delIds = [];
             foreach ($this->corpConfigs as $eCorpId => $corpConfig) {
-                if($corpConfig->getExpireTime() < $nowTime){
+                if ($corpConfig->getExpireTime() < $nowTime) {
                     $delIds[] = $eCorpId;
                 }
             }
@@ -170,7 +205,8 @@ trait WxConfigTrait {
      * @param string $corpId
      * @return \Wx\WxConfigCorp
      */
-    private function refreshCorpConfig(string $corpId) {
+    private function refreshCorpConfig(string $corpId)
+    {
         $expireTime = Tool::getNowTime() + Project::TIME_EXPIRE_LOCAL_WXCORP_REFRESH;
         $corpConfig = new WxConfigCorp();
         $corpConfig->setCorpId($corpId);
@@ -180,7 +216,7 @@ trait WxConfigTrait {
         $ormResult1 = $wxConfigEntity->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`corp_id`=? AND `status`=?', [$corpId, Project::WX_CONFIG_CORP_STATUS_ENABLE]);
         $configInfo = $wxConfigEntity->getContainer()->getModel()->findOne($ormResult1);
-        if(empty($configInfo)){
+        if (empty($configInfo)) {
             $corpConfig->setValid(false);
         } else {
             $wxCorpDefaultConfig = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.wxcorp');
@@ -199,30 +235,5 @@ trait WxConfigTrait {
         $this->corpConfigs[$corpId] = $corpConfig;
 
         return $corpConfig;
-    }
-
-    /**
-     * 获取企业微信配置
-     * @param string $corpId
-     * @return \Wx\WxConfigCorp|null
-     */
-    public function getCorpConfig(string $corpId) {
-        $nowTime = Tool::getNowTime();
-        $corpConfig = $this->getLocalCorpConfig($corpId);
-        if(is_null($corpConfig)){
-            $corpConfig = $this->refreshCorpConfig($corpId);
-        } else if($corpConfig->getExpireTime() < $nowTime){
-            $corpConfig = $this->refreshCorpConfig($corpId);
-        }
-
-        return $corpConfig->isValid() ? $corpConfig : null;
-    }
-
-    /**
-     * 移除企业微信配置
-     * @param string $corpId
-     */
-    public function removeCorpConfig(string $corpId) {
-        unset($this->corpConfigs[$corpId]);
     }
 }

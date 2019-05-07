@@ -3,12 +3,8 @@ namespace Entities\SyBase;
 
 use DB\Entities\MysqlEntity;
 
-class LogModuleEntity extends MysqlEntity {
-    public function __construct(string $dbName='') {
-        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';
-        parent::__construct($this->_dbName, 'log_module','id');
-    }
-
+class LogModuleEntity extends MysqlEntity
+{
     /**
      *
      * @var int
@@ -44,4 +40,9 @@ class LogModuleEntity extends MysqlEntity {
      * @var double
      */
     public $created = 0.00;
+    public function __construct(string $dbName = '')
+    {
+        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';
+        parent::__construct($this->_dbName, 'log_module', 'id');
+    }
 }

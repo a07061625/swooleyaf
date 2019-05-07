@@ -13,15 +13,17 @@ use Exception\Common\CheckException;
 use Request\SyRequest;
 use Traits\SimpleFacadeTrait;
 
-class Phone extends UserLoginFacade {
+class Phone extends UserLoginFacade
+{
     use SimpleFacadeTrait;
 
-    protected static function checkParams(array $data) : array {
+    protected static function checkParams(array $data) : array
+    {
         $phone = trim(SyRequest::getParams('user_phone', ''));
         $pwd = (string)SyRequest::getParams('user_pwd', '');
         if (strlen($phone) == 0) {
             throw new CheckException('手机号码不能为空', ErrorCode::COMMON_PARAM_ERROR);
-        } else if (strlen($pwd) == 0) {
+        } elseif (strlen($pwd) == 0) {
             throw new CheckException('密码不能为空', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -31,7 +33,8 @@ class Phone extends UserLoginFacade {
         ];
     }
 
-    protected static function login(array $data) : array {
+    protected static function login(array $data) : array
+    {
         return [];
     }
 }

@@ -3,12 +3,8 @@ namespace Entities\SyBase;
 
 use DB\Entities\MysqlEntity;
 
-class AttachmentReferEntity extends MysqlEntity {
-    public function __construct(string $dbName='') {
-        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';
-        parent::__construct($this->_dbName, 'attachment_refer','id');
-    }
-
+class AttachmentReferEntity extends MysqlEntity
+{
     /**
      * 引用ID
      * @var int
@@ -38,4 +34,9 @@ class AttachmentReferEntity extends MysqlEntity {
      * @var int
      */
     public $created = 0;
+    public function __construct(string $dbName = '')
+    {
+        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';
+        parent::__construct($this->_dbName, 'attachment_refer', 'id');
+    }
 }

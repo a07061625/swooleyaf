@@ -3,14 +3,10 @@ namespace Entities\SyBase;
 
 use DB\Entities\MysqlEntity;
 
-class RoleRelationEntity extends MysqlEntity {
-    public function __construct(string $dbName='') {
-        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';
-        parent::__construct($this->_dbName, 'role_relation', 'id');
-    }
-
+class RoleRelationEntity extends MysqlEntity
+{
     /**
-     * 
+     *
      * @var int
      */
     public $id = null;
@@ -32,4 +28,9 @@ class RoleRelationEntity extends MysqlEntity {
      * @var int
      */
     public $created = 0;
+    public function __construct(string $dbName = '')
+    {
+        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';
+        parent::__construct($this->_dbName, 'role_relation', 'id');
+    }
 }

@@ -12,10 +12,12 @@ use DesignPatterns\Facades\WxProviderCorpNotifyWxFacade;
 use Tool\ProjectTool;
 use Traits\SimpleFacadeTrait;
 
-class AuthCancel extends WxProviderCorpNotifyWxFacade {
+class AuthCancel extends WxProviderCorpNotifyWxFacade
+{
     use SimpleFacadeTrait;
 
-    protected static function handleNotify(array $data){
+    protected static function handleNotify(array $data)
+    {
         ProjectTool::handleAuthForWxCorpProvider(Project::WX_PROVIDER_CORP_AUTHORIZER_OPTION_TYPE_AUTH_CANCEL, $data);
     }
 }

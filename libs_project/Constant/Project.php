@@ -9,24 +9,9 @@ namespace Constant;
 
 use Traits\SimpleTrait;
 
-final class Project extends ProjectBase {
+final class Project extends ProjectBase
+{
     use SimpleTrait;
-
-    //模块常量
-    public static $totalModuleName = [
-        self::MODULE_NAME_API,
-        self::MODULE_NAME_ORDER,
-        self::MODULE_NAME_CONTENT,
-        self::MODULE_NAME_USER,
-        self::MODULE_NAME_SERVICE,
-    ];
-    public static $totalModuleBase = [
-        self::MODULE_BASE_API,
-        self::MODULE_BASE_ORDER,
-        self::MODULE_BASE_CONTENT,
-        self::MODULE_BASE_USER,
-        self::MODULE_BASE_SERVICE,
-    ];
     const MODULE_BASE_API = 'api';
     const MODULE_BASE_ORDER = 'order';
     const MODULE_BASE_CONTENT = 'content';
@@ -67,33 +52,12 @@ final class Project extends ProjectBase {
     //订单常量
     const ORDER_PAY_TYPE_GOODS = '1000'; //支付类型-商品
     const ORDER_REFUND_TYPE_GOODS = '5000'; //退款类型-商品
-
-    //地区常量
-    public static $totalRegionLevelType = [
-        self::REGION_LEVEL_TYPE_PROVINCE => '省',
-        self::REGION_LEVEL_TYPE_CITY => '市',
-        self::REGION_LEVEL_TYPE_COUNTY => '县',
-    ];
     const REGION_LEVEL_TYPE_PROVINCE = 1; //地区类型-省
     const REGION_LEVEL_TYPE_CITY = 2; //地区类型-市
     const REGION_LEVEL_TYPE_COUNTY = 3; //地区类型-县
-
-    //角色常量
-    public static $totalRoleStatus = [
-        self::ROLE_STATUS_DELETE => '已删除',
-        self::ROLE_STATUS_INVALID => '无效',
-        self::ROLE_STATUS_VALID => '有效',
-    ];
     const ROLE_STATUS_DELETE = -1; //状态-已删除
     const ROLE_STATUS_INVALID = 0; //状态-无效
     const ROLE_STATUS_VALID = 1; //状态-有效
-
-    //角色权限常量
-    public static $totalRolePowerLevel = [
-        self::ROLE_POWER_LEVEL_ONE => '第一级',
-        self::ROLE_POWER_LEVEL_TWO => '第二级',
-        self::ROLE_POWER_LEVEL_THREE => '第三级',
-    ];
     const ROLE_POWER_LEVEL_ONE = 1; //层级-第一级
     const ROLE_POWER_LEVEL_TWO = 2; //层级-第二级
     const ROLE_POWER_LEVEL_THREE = 3; //层级-第三级
@@ -106,26 +70,6 @@ final class Project extends ProjectBase {
     const LOGIN_TYPE_WX_AUTH_USER = 'a101'; //类型-微信手动授权
     const LOGIN_TYPE_WX_SCAN = 'a102'; //类型-微信扫码
     const LOGIN_TYPE_QQ = 'a200'; //类型-QQ
-
-    //微信小程序常量
-    public static $totalWxMiniType = [
-        self::WXMINI_TYPE_PLAT_MINI => '平台小程序',
-        self::WXMINI_TYPE_SHOP_MINI => '商户小程序',
-    ];
-    public static $totalWxMiniAuditStatus = [
-        self::WXMINI_AUDIT_STATUS_UNDO => '未提交审核',
-        self::WXMINI_AUDIT_STATUS_SUCCESS => '审核成功',
-        self::WXMINI_AUDIT_STATUS_FAIL => '审核失败',
-        self::WXMINI_AUDIT_STATUS_HANDING => '审核中',
-    ];
-    public static $totalWxMiniOptionStatus = [
-        self::WXMINI_OPTION_STATUS_UN_UPLOAD => '未上传',
-        self::WXMINI_OPTION_STATUS_UPLOADED => '已上传',
-        self::WXMINI_OPTION_STATUS_APPLY_AUDIT => '审核中',
-        self::WXMINI_OPTION_STATUS_AUDIT_SUCCESS => '审核成功',
-        self::WXMINI_OPTION_STATUS_AUDIT_FAIL => '审核失败',
-        self::WXMINI_OPTION_STATUS_RELEASED => '已发布',
-    ];
     const WXMINI_TYPE_PLAT_MINI = 1; //小程序类型-平台小程序
     const WXMINI_TYPE_SHOP_MINI = 2; //小程序类型-商户小程序
     const WXMINI_AUDIT_STATUS_UNDO = -1; //小程序审核状态-未提交审核
@@ -147,4 +91,61 @@ final class Project extends ProjectBase {
 
     //进程池服务标识常量,4位字符串,数字和字母组成,纯数字的为框架内部服务,其他为自定义服务
     const POOL_PROCESS_SERVICE_TAG_TEST = 'a000'; //服务标识-测试
+
+    //模块常量
+    public static $totalModuleName = [
+        self::MODULE_NAME_API,
+        self::MODULE_NAME_ORDER,
+        self::MODULE_NAME_CONTENT,
+        self::MODULE_NAME_USER,
+        self::MODULE_NAME_SERVICE,
+    ];
+    public static $totalModuleBase = [
+        self::MODULE_BASE_API,
+        self::MODULE_BASE_ORDER,
+        self::MODULE_BASE_CONTENT,
+        self::MODULE_BASE_USER,
+        self::MODULE_BASE_SERVICE,
+    ];
+
+    //地区常量
+    public static $totalRegionLevelType = [
+        self::REGION_LEVEL_TYPE_PROVINCE => '省',
+        self::REGION_LEVEL_TYPE_CITY => '市',
+        self::REGION_LEVEL_TYPE_COUNTY => '县',
+    ];
+
+    //角色常量
+    public static $totalRoleStatus = [
+        self::ROLE_STATUS_DELETE => '已删除',
+        self::ROLE_STATUS_INVALID => '无效',
+        self::ROLE_STATUS_VALID => '有效',
+    ];
+
+    //角色权限常量
+    public static $totalRolePowerLevel = [
+        self::ROLE_POWER_LEVEL_ONE => '第一级',
+        self::ROLE_POWER_LEVEL_TWO => '第二级',
+        self::ROLE_POWER_LEVEL_THREE => '第三级',
+    ];
+
+    //微信小程序常量
+    public static $totalWxMiniType = [
+        self::WXMINI_TYPE_PLAT_MINI => '平台小程序',
+        self::WXMINI_TYPE_SHOP_MINI => '商户小程序',
+    ];
+    public static $totalWxMiniAuditStatus = [
+        self::WXMINI_AUDIT_STATUS_UNDO => '未提交审核',
+        self::WXMINI_AUDIT_STATUS_SUCCESS => '审核成功',
+        self::WXMINI_AUDIT_STATUS_FAIL => '审核失败',
+        self::WXMINI_AUDIT_STATUS_HANDING => '审核中',
+    ];
+    public static $totalWxMiniOptionStatus = [
+        self::WXMINI_OPTION_STATUS_UN_UPLOAD => '未上传',
+        self::WXMINI_OPTION_STATUS_UPLOADED => '已上传',
+        self::WXMINI_OPTION_STATUS_APPLY_AUDIT => '审核中',
+        self::WXMINI_OPTION_STATUS_AUDIT_SUCCESS => '审核成功',
+        self::WXMINI_OPTION_STATUS_AUDIT_FAIL => '审核失败',
+        self::WXMINI_OPTION_STATUS_RELEASED => '已发布',
+    ];
 }

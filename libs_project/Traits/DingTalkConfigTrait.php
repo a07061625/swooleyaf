@@ -12,7 +12,8 @@ use DingDing\TalkConfigCorp;
 use Factories\SyBaseMysqlFactory;
 use Tool\Tool;
 
-trait DingTalkConfigTrait {
+trait DingTalkConfigTrait
+{
     /**
      * 企业钉钉配置列表
      * @var array
@@ -28,8 +29,36 @@ trait DingTalkConfigTrait {
      * 获取所有的企业钉钉配置
      * @return array
      */
-    public function getCorpConfigs(){
+    public function getCorpConfigs()
+    {
         return $this->corpConfigs;
+    }
+
+    /**
+     * 获取企业钉钉配置
+     * @param string $corpId
+     * @return \DingDing\TalkConfigCorp|null
+     */
+    public function getCorpConfig(string $corpId)
+    {
+        $nowTime = Tool::getNowTime();
+        $corpConfig = $this->getLocalCorpConfig($corpId);
+        if (is_null($corpConfig)) {
+            $corpConfig = $this->refreshCorpConfig($corpId);
+        } elseif ($corpConfig->getExpireTime() < $nowTime) {
+            $corpConfig = $this->refreshCorpConfig($corpId);
+        }
+
+        return $corpConfig->isValid() ? $corpConfig : null;
+    }
+
+    /**
+     * 移除企业钉钉配置
+     * @param string $corpId
+     */
+    public function removeCorpConfig(string $corpId)
+    {
+        unset($this->corpConfigs[$corpId]);
     }
 
     /**
@@ -37,12 +66,13 @@ trait DingTalkConfigTrait {
      * @param string $corpId
      * @return \DingDing\TalkConfigCorp|null
      */
-    private function getLocalCorpConfig(string $corpId) {
+    private function getLocalCorpConfig(string $corpId)
+    {
         $nowTime = Tool::getNowTime();
-        if($this->corpClearTime < $nowTime){
+        if ($this->corpClearTime < $nowTime) {
             $delIds = [];
             foreach ($this->corpConfigs as $eCorpId => $corpConfig) {
-                if($corpConfig->getExpireTime() < $nowTime){
+                if ($corpConfig->getExpireTime() < $nowTime) {
                     $delIds[] = $eCorpId;
                 }
             }
@@ -61,7 +91,8 @@ trait DingTalkConfigTrait {
      * @param string $corpId
      * @return \DingDing\TalkConfigCorp
      */
-    private function refreshCorpConfig(string $corpId) {
+    private function refreshCorpConfig(string $corpId)
+    {
         $expireTime = Tool::getNowTime() + Project::TIME_EXPIRE_LOCAL_DINGTALK_CORP_REFRESH;
         $corpConfig = new TalkConfigCorp();
         $corpConfig->setCorpId($corpId);
@@ -71,7 +102,7 @@ trait DingTalkConfigTrait {
         $ormResult1 = $dingTalkConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`corp_id`=? AND `status`=?', [$corpId, Project::DINGTALK_CONFIG_CORP_STATUS_ENABLE]);
         $configInfo = $dingTalkConfig->getContainer()->getModel()->findOne($ormResult1);
-        if(empty($configInfo)){
+        if (empty($configInfo)) {
             $corpConfig->setValid(false);
         } else {
             $agents = strlen($configInfo['corp_agents']) > 0 ? Tool::jsonDecode($configInfo['corp_agents']) : [];
@@ -83,30 +114,5 @@ trait DingTalkConfigTrait {
         $this->corpConfigs[$corpId] = $corpConfig;
 
         return $corpConfig;
-    }
-
-    /**
-     * 获取企业钉钉配置
-     * @param string $corpId
-     * @return \DingDing\TalkConfigCorp|null
-     */
-    public function getCorpConfig(string $corpId) {
-        $nowTime = Tool::getNowTime();
-        $corpConfig = $this->getLocalCorpConfig($corpId);
-        if(is_null($corpConfig)){
-            $corpConfig = $this->refreshCorpConfig($corpId);
-        } else if($corpConfig->getExpireTime() < $nowTime){
-            $corpConfig = $this->refreshCorpConfig($corpId);
-        }
-
-        return $corpConfig->isValid() ? $corpConfig : null;
-    }
-
-    /**
-     * 移除企业钉钉配置
-     * @param string $corpId
-     */
-    public function removeCorpConfig(string $corpId) {
-        unset($this->corpConfigs[$corpId]);
     }
 }

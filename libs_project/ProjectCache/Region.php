@@ -15,16 +15,38 @@ use Factories\SyBaseMysqlFactory;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-class Region {
+class Region
+{
     use SimpleTrait;
 
     private static $listKey = Project::REDIS_PREFIX_REGION_LIST . 'regions';
     private static $regionList = [];
     private static $refreshTime = 0;
 
-    private static function refreshRegionList() {
+    public static function getRegionList(string $provinceCode = '')
+    {
+        $nowTime = Tool::getNowTime();
+        if ($nowTime >= self::$refreshTime) {
+            self::refreshRegionList();
+        }
+
+        if (strlen($provinceCode) > 0) {
+            return self::$regionList[$provinceCode] ?? [];
+        } else {
+            return array_values(self::$regionList);
+        }
+    }
+
+    public static function clearRegionList()
+    {
+        CacheSimpleFactory::getRedisInstance()->del(self::$listKey);
+        self::$regionList = [];
+    }
+
+    private static function refreshRegionList()
+    {
         $cacheData = CacheSimpleFactory::getRedisInstance()->hGetAll(self::$listKey);
-        if(empty($cacheData)){
+        if (empty($cacheData)) {
             $cacheData['unique_key'] = self::$listKey;
             $page = 1;
             $cityArr = [];
@@ -39,13 +61,13 @@ class Region {
             ])->select($ormResult1, $page, 100);
             while (!empty($regions)) {
                 foreach ($regions as $eRegion) {
-                    if($eRegion['level'] == Project::REGION_LEVEL_TYPE_PROVINCE){
+                    if ($eRegion['level'] == Project::REGION_LEVEL_TYPE_PROVINCE) {
                         $provinceArr[$eRegion['tag']] = [
                             'tag' => $eRegion['tag'],
                             'title' => $eRegion['title'],
                             'children' => [],
                         ];
-                    } else if($eRegion['level'] == Project::REGION_LEVEL_TYPE_CITY){
+                    } elseif ($eRegion['level'] == Project::REGION_LEVEL_TYPE_CITY) {
                         $cityArr[$eRegion['tag']] = [
                             'tag' => $eRegion['tag'],
                             'title' => $eRegion['title'],
@@ -84,7 +106,7 @@ class Region {
             CacheSimpleFactory::getRedisInstance()->hMset(self::$listKey, $cacheData);
             CacheSimpleFactory::getRedisInstance()->expire(self::$listKey, 86400);
             self::$refreshTime = Tool::getNowTime() + 600;
-        } else if(isset($cacheData['unique_key']) && ($cacheData['unique_key'] == self::$listKey)){
+        } elseif (isset($cacheData['unique_key']) && ($cacheData['unique_key'] == self::$listKey)) {
             unset($cacheData['unique_key']);
             self::$regionList = [];
             foreach ($cacheData as $provinceTag => $provinceRegions) {
@@ -94,23 +116,5 @@ class Region {
         } else {
             throw new CheckException('获取地区信息缓存出错', ErrorCode::COMMON_PARAM_ERROR);
         }
-    }
-
-    public static function getRegionList(string $provinceCode=''){
-        $nowTime = Tool::getNowTime();
-        if($nowTime >= self::$refreshTime){
-            self::refreshRegionList();
-        }
-
-        if(strlen($provinceCode) > 0){
-            return self::$regionList[$provinceCode] ?? [];
-        } else {
-            return array_values(self::$regionList);
-        }
-    }
-
-    public static function clearRegionList(){
-        CacheSimpleFactory::getRedisInstance()->del(self::$listKey);
-        self::$regionList = [];
     }
 }

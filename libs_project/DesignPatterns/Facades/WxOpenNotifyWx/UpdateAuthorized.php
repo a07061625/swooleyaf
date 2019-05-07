@@ -12,10 +12,12 @@ use DesignPatterns\Facades\WxOpenNotifyWxFacade;
 use Tool\ProjectTool;
 use Traits\SimpleFacadeTrait;
 
-class UpdateAuthorized extends WxOpenNotifyWxFacade {
+class UpdateAuthorized extends WxOpenNotifyWxFacade
+{
     use SimpleFacadeTrait;
 
-    protected static function handleNotify(array $data){
+    protected static function handleNotify(array $data)
+    {
         ProjectTool::handleAppAuthForWxOpen(Project::WX_COMPONENT_AUTHORIZER_OPTION_TYPE_AUTHORIZED_UPDATE, $data);
     }
 }

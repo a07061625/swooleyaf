@@ -9,13 +9,15 @@ namespace SyModule;
 
 use Constant\Project;
 
-class SyModuleUser extends ModuleRpc {
+class SyModuleUser extends ModuleRpc
+{
     /**
      * @var \SyModule\SyModuleUser
      */
     private static $instance = null;
 
-    private function __construct() {
+    private function __construct()
+    {
         $this->moduleBase = Project::MODULE_BASE_USER;
         $this->moduleName = Project::MODULE_NAME_USER;
         parent::init();
@@ -24,7 +26,8 @@ class SyModuleUser extends ModuleRpc {
     /**
      * @return \SyModule\SyModuleUser
      */
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (is_null(self::$instance)) {
             self::$instance = new self();
         }

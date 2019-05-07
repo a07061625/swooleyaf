@@ -9,15 +9,19 @@ namespace SyTask;
 
 use Constant\Project;
 
-class SyModuleUserTask extends SyModuleTaskBase implements SyModuleTaskInterface {
-    public function __construct() {
+class SyModuleUserTask extends SyModuleTaskBase implements SyModuleTaskInterface
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->moduleTag = Project::MODULE_NAME_USER;
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    public function handleTask(array $data) {
+    public function handleTask(array $data)
+    {
     }
 }

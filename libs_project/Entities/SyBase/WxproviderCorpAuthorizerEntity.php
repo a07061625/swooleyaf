@@ -3,12 +3,8 @@ namespace Entities\SyBase;
 
 use DB\Entities\MysqlEntity;
 
-class WxproviderCorpAuthorizerEntity extends MysqlEntity {
-    public function __construct(string $dbName='') {
-        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';
-        parent::__construct($this->_dbName, 'wxprovider_corp_authorizer','id');
-    }
-
+class WxproviderCorpAuthorizerEntity extends MysqlEntity
+{
     /**
      * 主键ID
      * @var int
@@ -68,4 +64,9 @@ class WxproviderCorpAuthorizerEntity extends MysqlEntity {
      * @var int
      */
     public $updated = 0;
+    public function __construct(string $dbName = '')
+    {
+        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';
+        parent::__construct($this->_dbName, 'wxprovider_corp_authorizer', 'id');
+    }
 }

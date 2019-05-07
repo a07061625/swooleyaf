@@ -16,12 +16,14 @@ use Request\SyRequest;
 use Tool\Tool;
 use Traits\SimpleFacadeTrait;
 
-class AliWeb extends PayApplyFacade {
+class AliWeb extends PayApplyFacade
+{
     use SimpleFacadeTrait;
 
-    protected static function checkParams(array $data) : array {
+    protected static function checkParams(array $data) : array
+    {
         $returnUrl = (string)SyRequest::getParams('a01_returnurl', '');
-        if(strlen($returnUrl) == 0){
+        if (strlen($returnUrl) == 0) {
             throw new CheckException('同步通知链接不能为空', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -32,7 +34,8 @@ class AliWeb extends PayApplyFacade {
         ];
     }
 
-    protected static function apply(array $data) : array {
+    protected static function apply(array $data) : array
+    {
         $pay = new PayWap($data['a01_appid']);
         $pay->setReturnUrl($data['a01_returnurl']);
         $pay->setSubject($data['content_result']['pay_name']);

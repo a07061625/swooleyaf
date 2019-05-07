@@ -9,13 +9,15 @@ namespace SyModule;
 
 use Constant\Project;
 
-class SyModuleOrder extends ModuleRpc {
+class SyModuleOrder extends ModuleRpc
+{
     /**
      * @var \SyModule\SyModuleOrder
      */
     private static $instance = null;
 
-    private function __construct() {
+    private function __construct()
+    {
         $this->moduleBase = Project::MODULE_BASE_ORDER;
         $this->moduleName = Project::MODULE_NAME_ORDER;
         parent::init();
@@ -24,7 +26,8 @@ class SyModuleOrder extends ModuleRpc {
     /**
      * @return \SyModule\SyModuleOrder
      */
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (is_null(self::$instance)) {
             self::$instance = new self();
         }

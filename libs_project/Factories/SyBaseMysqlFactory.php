@@ -37,203 +37,232 @@ use Entities\SyBase\WxopenAuthorizerEntity;
 use Entities\SyBase\WxproviderCorpAuthorizerEntity;
 use Traits\SimpleTrait;
 
-class SyBaseMysqlFactory {
+class SyBaseMysqlFactory
+{
     use SimpleTrait;
 
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\AttachmentBaseEntity
      */
-    public static function AttachmentBaseEntity(string $dbName=''){
+    public static function AttachmentBaseEntity(string $dbName = '')
+    {
         return new AttachmentBaseEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\AttachmentReferEntity
      */
-    public static function AttachmentReferEntity(string $dbName=''){
+    public static function AttachmentReferEntity(string $dbName = '')
+    {
         return new AttachmentReferEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\ImBaseEntity
      */
-    public static function ImBaseEntity(string $dbName=''){
+    public static function ImBaseEntity(string $dbName = '')
+    {
         return new ImBaseEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\LogModuleEntity
      */
-    public static function LogModuleEntity(string $dbName=''){
+    public static function LogModuleEntity(string $dbName = '')
+    {
         return new LogModuleEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\PayHistoryEntity
      */
-    public static function PayHistoryEntity(string $dbName=''){
+    public static function PayHistoryEntity(string $dbName = '')
+    {
         return new PayHistoryEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\RefundBaseEntity
      */
-    public static function RefundBaseEntity(string $dbName=''){
+    public static function RefundBaseEntity(string $dbName = '')
+    {
         return new RefundBaseEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\RefundHistoryEntity
      */
-    public static function RefundHistoryEntity(string $dbName=''){
+    public static function RefundHistoryEntity(string $dbName = '')
+    {
         return new RefundHistoryEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\SmsRecordEntity
      */
-    public static function SmsRecordEntity(string $dbName=''){
+    public static function SmsRecordEntity(string $dbName = '')
+    {
         return new SmsRecordEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\TimedTaskEntity
      */
-    public static function TimedTaskEntity(string $dbName=''){
+    public static function TimedTaskEntity(string $dbName = '')
+    {
         return new TimedTaskEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\UserBaseEntity
      */
-    public static function UserBaseEntity(string $dbName=''){
+    public static function UserBaseEntity(string $dbName = '')
+    {
         return new UserBaseEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\UserLoginHistoryEntity
      */
-    public static function UserLoginHistoryEntity(string $dbName=''){
+    public static function UserLoginHistoryEntity(string $dbName = '')
+    {
         return new UserLoginHistoryEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\UserMoneyEntity
      */
-    public static function UserMoneyEntity(string $dbName=''){
+    public static function UserMoneyEntity(string $dbName = '')
+    {
         return new UserMoneyEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\UserMoneyHistoryEntity
      */
-    public static function UserMoneyHistoryEntity(string $dbName=''){
+    public static function UserMoneyHistoryEntity(string $dbName = '')
+    {
         return new UserMoneyHistoryEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\WithdrawBaseEntity
      */
-    public static function WithdrawBaseEntity(string $dbName=''){
+    public static function WithdrawBaseEntity(string $dbName = '')
+    {
         return new WithdrawBaseEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\WithdrawHistoryEntity
      */
-    public static function WithdrawHistoryEntity(string $dbName=''){
+    public static function WithdrawHistoryEntity(string $dbName = '')
+    {
         return new WithdrawHistoryEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\WxopenAuthorizerEntity
      */
-    public static function WxopenAuthorizerEntity(string $dbName=''){
+    public static function WxopenAuthorizerEntity(string $dbName = '')
+    {
         return new WxopenAuthorizerEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\WxproviderCorpAuthorizerEntity
      */
-    public static function WxproviderCorpAuthorizerEntity(string $dbName=''){
+    public static function WxproviderCorpAuthorizerEntity(string $dbName = '')
+    {
         return new WxproviderCorpAuthorizerEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\RegionBaseEntity
      */
-    public static function RegionBaseEntity(string $dbName=''){
+    public static function RegionBaseEntity(string $dbName = '')
+    {
         return new RegionBaseEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\RoleBaseEntity
      */
-    public static function RoleBaseEntity(string $dbName=''){
+    public static function RoleBaseEntity(string $dbName = '')
+    {
         return new RoleBaseEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\RolePowerEntity
      */
-    public static function RolePowerEntity(string $dbName=''){
+    public static function RolePowerEntity(string $dbName = '')
+    {
         return new RolePowerEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\RoleRelationEntity
      */
-    public static function RoleRelationEntity(string $dbName=''){
+    public static function RoleRelationEntity(string $dbName = '')
+    {
         return new RoleRelationEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\WxconfigBaseEntity
      */
-    public static function WxconfigBaseEntity(string $dbName=''){
+    public static function WxconfigBaseEntity(string $dbName = '')
+    {
         return new WxconfigBaseEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\WxconfigShopEntity
      */
-    public static function WxconfigShopEntity(string $dbName=''){
+    public static function WxconfigShopEntity(string $dbName = '')
+    {
         return new WxconfigShopEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\WxconfigMiniEntity
      */
-    public static function WxconfigMiniEntity(string $dbName=''){
+    public static function WxconfigMiniEntity(string $dbName = '')
+    {
         return new WxconfigMiniEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\WxconfigCorpEntity
      */
-    public static function WxconfigCorpEntity(string $dbName=''){
+    public static function WxconfigCorpEntity(string $dbName = '')
+    {
         return new WxconfigCorpEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\AliconfigPayEntity
      */
-    public static function AliconfigPayEntity(string $dbName=''){
+    public static function AliconfigPayEntity(string $dbName = '')
+    {
         return new AliconfigPayEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\DingtalkConfigCorpEntity
      */
-    public static function DingtalkConfigCorpEntity(string $dbName=''){
+    public static function DingtalkConfigCorpEntity(string $dbName = '')
+    {
         return new DingtalkConfigCorpEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
      * @return \Entities\SyBase\SyTokenBaseEntity
      */
-    public static function SyTokenBaseEntity(string $dbName=''){
+    public static function SyTokenBaseEntity(string $dbName = '')
+    {
         return new SyTokenBaseEntity($dbName);
     }
 }

@@ -14,16 +14,19 @@ use Tool\Tool;
 use Traits\SimpleFacadeTrait;
 use Wx\Shop\Pay\PayNativePre;
 
-class WxShopNativeStatic extends PayApplyFacade {
+class WxShopNativeStatic extends PayApplyFacade
+{
     use SimpleFacadeTrait;
 
-    protected static function checkParams(array $data) : array {
+    protected static function checkParams(array $data) : array
+    {
         return [
             'a00_appid' => Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.wx.appid.default'),
         ];
     }
 
-    protected static function apply(array $data) : array {
+    protected static function apply(array $data) : array
+    {
         $prePay = new PayNativePre($data['a00_appid']);
         $prePay->setProductId($data['content_result']['pay_sn']);
         $preDetail = $prePay->getDetail();

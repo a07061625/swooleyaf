@@ -14,17 +14,15 @@ use Exception\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use Traits\SimpleTrait;
 
-class SyToken {
+class SyToken
+{
     use SimpleTrait;
 
-    private static function getCacheKey(string $tag) {
-        return Project::REDIS_PREFIX_SY_TOKEN . $tag;
-    }
-
-    public static function getTokenData(string $tag){
+    public static function getTokenData(string $tag)
+    {
         $cacheKey = self::getCacheKey($tag);
         $cacheData = CacheSimpleFactory::getRedisInstance()->hGetAll($cacheKey);
-        if(isset($cacheData['unique_key'])){
+        if (isset($cacheData['unique_key'])) {
             if ($cacheData['unique_key'] == $cacheKey) {
                 unset($cacheData['unique_key']);
                 return $cacheData;
@@ -55,8 +53,14 @@ class SyToken {
         return $cacheData;
     }
 
-    public static function clearTokenData(string $tag){
+    public static function clearTokenData(string $tag)
+    {
         $cacheKey = self::getCacheKey($tag);
         CacheSimpleFactory::getRedisInstance()->del($cacheKey);
+    }
+
+    private static function getCacheKey(string $tag)
+    {
+        return Project::REDIS_PREFIX_SY_TOKEN . $tag;
     }
 }

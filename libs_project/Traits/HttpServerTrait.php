@@ -11,14 +11,18 @@ use Constant\Project;
 use Response\Result;
 use Tool\Tool;
 
-trait HttpServerTrait {
-    private function checkServerHttpTrait() {
+trait HttpServerTrait
+{
+    private function checkServerHttpTrait()
+    {
     }
 
-    private function initTableHttpTrait() {
+    private function initTableHttpTrait()
+    {
     }
 
-    private function addTaskHttpTrait(\swoole_server $server) {
+    private function addTaskHttpTrait(\swoole_server $server)
+    {
     }
 
     /**
@@ -28,7 +32,8 @@ trait HttpServerTrait {
      * @param array $data
      * @return string 空字符串:执行成功 非空:执行失败
      */
-    private function handleTaskHttpTrait(\swoole_server $server,int $taskId,int $fromId,array &$data) : string {
+    private function handleTaskHttpTrait(\swoole_server $server, int $taskId, int $fromId, array &$data) : string
+    {
         $taskCommand = Tool::getArrayVal($data['params'], 'task_command', '');
         switch ($taskCommand) {
             case Project::TASK_TYPE_REFRESH_TOKEN_EXPIRE:
@@ -47,6 +52,7 @@ trait HttpServerTrait {
         return '';
     }
 
-    private function handleReqExceptionByProject(\Exception $e) : Result {
+    private function handleReqExceptionByProject(\Exception $e) : Result
+    {
     }
 }

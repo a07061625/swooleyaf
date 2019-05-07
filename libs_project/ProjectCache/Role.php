@@ -15,15 +15,17 @@ use Factories\SyBaseMysqlFactory;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-class Role {
+class Role
+{
     use SimpleTrait;
 
     private static $roleListKey = Project::REDIS_PREFIX_ROLE_LIST . 'roles';
 
-    public static function getRolePowerList(string $roleTag){
+    public static function getRolePowerList(string $roleTag)
+    {
         $redisKey = Project::REDIS_PREFIX_ROLE_POWERS . $roleTag;
         $cacheData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
-        if(empty($cacheData)){
+        if (empty($cacheData)) {
             $page = 1;
             $powerMap = [];
             $rolePower = SyBaseMysqlFactory::RolePowerEntity();
@@ -51,10 +53,10 @@ class Role {
                 foreach ($relationList as $eRelation) {
                     $powerMap[$eRelation['power_tag']]['selected'] = 1;
                     $tagLength = strlen($eRelation['power_tag']);
-                    if($tagLength == 6){
+                    if ($tagLength == 6) {
                         $subTag = substr($eRelation['power_tag'], 0, 3);
                         $powerMap[$subTag]['selected'] = 0;
-                    } else if($tagLength == 9){
+                    } elseif ($tagLength == 9) {
                         $subTag1 = substr($eRelation['power_tag'], 0, 3);
                         $subTag2 = substr($eRelation['power_tag'], 0, 6);
                         $powerMap[$subTag1]['selected'] = 0;
@@ -69,8 +71,8 @@ class Role {
 
             $savePowers = [];
             foreach ($powerMap as $powerTag => $powerData) {
-                if($powerData['level'] == Project::ROLE_POWER_LEVEL_ONE){
-                    if($powerData['selected'] != -1){
+                if ($powerData['level'] == Project::ROLE_POWER_LEVEL_ONE) {
+                    if ($powerData['selected'] != -1) {
                         $savePowers[$powerTag] = [
                             'tag' => $powerTag,
                             'title' => $powerData['title'],
@@ -79,13 +81,13 @@ class Role {
                             'children' => [],
                         ];
                     }
-                } else if($powerData['level'] == Project::ROLE_POWER_LEVEL_TWO){
+                } elseif ($powerData['level'] == Project::ROLE_POWER_LEVEL_TWO) {
                     $subTag = substr($powerTag, 0, 3);
                     $selectedStatus = $powerData['selected'];
-                    if($powerMap[$subTag]['selected'] == 1){
+                    if ($powerMap[$subTag]['selected'] == 1) {
                         $selectedStatus = 1;
                     }
-                    if($selectedStatus != -1){
+                    if ($selectedStatus != -1) {
                         $savePowers[$subTag]['children'][$powerTag] = [
                             'tag' => $powerTag,
                             'title' => $powerData['title'],
@@ -98,12 +100,12 @@ class Role {
                     $subTag1 = substr($powerTag, 0, 3);
                     $subTag2 = substr($powerTag, 0, 6);
                     $selectedStatus = $powerData['selected'];
-                    if($powerMap[$subTag1]['selected'] == 1){
+                    if ($powerMap[$subTag1]['selected'] == 1) {
                         $selectedStatus = 1;
-                    } else if($powerMap[$subTag2]['selected'] == 1){
+                    } elseif ($powerMap[$subTag2]['selected'] == 1) {
                         $selectedStatus = 1;
                     }
-                    if($selectedStatus != -1){
+                    if ($selectedStatus != -1) {
                         $savePowers[$subTag1]['children'][$subTag2]['children'][] = [
                             'tag' => $powerTag,
                             'title' => $powerData['title'],
@@ -130,7 +132,7 @@ class Role {
             CacheSimpleFactory::getRedisInstance()->sAdd(self::$roleListKey, $roleTag);
 
             return $rolePowers;
-        } else if(isset($cacheData['unique_key']) && ($cacheData['unique_key'] == $redisKey)){
+        } elseif (isset($cacheData['unique_key']) && ($cacheData['unique_key'] == $redisKey)) {
             $rolePowers = Tool::jsonDecode($cacheData['power_list']);
             return is_array($rolePowers) ? $rolePowers : [];
         } else {
@@ -138,8 +140,9 @@ class Role {
         }
     }
 
-    public static function clearRolePowerList(string $roleTag=''){
-        if(strlen($roleTag) > 0){
+    public static function clearRolePowerList(string $roleTag = '')
+    {
+        if (strlen($roleTag) > 0) {
             $redisKey = Project::REDIS_PREFIX_ROLE_POWERS . $roleTag;
             CacheSimpleFactory::getRedisInstance()->del($redisKey);
         } else {
