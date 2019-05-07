@@ -10,7 +10,8 @@ namespace AliOss;
 use DesignPatterns\Singletons\AliOssSingleton;
 use Traits\SimpleTrait;
 
-class OssTool {
+class OssTool
+{
     use SimpleTrait;
 
     /**
@@ -18,7 +19,8 @@ class OssTool {
      * @param array $policy
      * @return array
      */
-    public static function signFrontPolicy(array $policy) : array {
+    public static function signFrontPolicy(array $policy) : array
+    {
         $policySign = base64_encode(json_encode($policy));
         $signature = base64_encode(hash_hmac('sha1', $policySign, AliOssSingleton::getInstance()->getOssConfig()->getAccessKeySecret(), true));
 

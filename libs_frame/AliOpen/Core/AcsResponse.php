@@ -1,7 +1,8 @@
 <?php
 namespace AliOpen\Core;
 
-class AcsResponse {
+class AcsResponse
+{
     /**
      * @var string
      */
@@ -14,28 +15,32 @@ class AcsResponse {
     /**
      * @return string
      */
-    public function getCode(){
+    public function getCode()
+    {
         return $this->code;
     }
 
     /**
      * @param string $code
      */
-    public function setCode($code){
+    public function setCode($code)
+    {
         $this->code = $code;
     }
 
     /**
      * @return string
      */
-    public function getMessage(){
+    public function getMessage()
+    {
         return $this->message;
     }
 
     /**
      * @param string $message
      */
-    public function setMessage($message){
+    public function setMessage($message)
+    {
         $this->message = $message;
     }
 }

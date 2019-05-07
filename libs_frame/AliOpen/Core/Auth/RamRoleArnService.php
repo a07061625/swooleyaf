@@ -4,7 +4,12 @@ namespace AliOpen\Core\Auth;
 use AliOpen\Core\Exception\ClientException;
 use AliOpen\Core\Http\HttpHelper;
 
-class RamRoleArnService {
+class RamRoleArnService
+{
+    /**
+     * @var string
+     */
+    public static $serviceDomain = ALIOPEN_STS_DOMAIN;
     /**
      * @var \AliOpen\Core\Profile\IClientProfile
      */
@@ -17,16 +22,13 @@ class RamRoleArnService {
      * @var null|string
      */
     private $sessionCredential = null;
-    /**
-     * @var string
-     */
-    public static $serviceDomain = ALIOPEN_STS_DOMAIN;
 
     /**
      * AliOpen\Core\Auth\RamRoleArnService constructor.
      * @param $clientProfile
      */
-    public function __construct($clientProfile){
+    public function __construct($clientProfile)
+    {
         $this->clientProfile = $clientProfile;
     }
 
@@ -34,7 +36,8 @@ class RamRoleArnService {
      * @return \AliOpen\Core\Auth\Credential|string|null
      * @throws ClientException
      */
-    public function getSessionCredential(){
+    public function getSessionCredential()
+    {
         if ($this->lastClearTime != null && $this->sessionCredential != null) {
             $now = time();
             $elapsedTime = $now - $this->lastClearTime;
@@ -46,7 +49,7 @@ class RamRoleArnService {
         $credential = $this->assumeRole();
 
         if ($credential == null) {
-            return null;
+            return;
         }
 
         $this->sessionCredential = $credential;
@@ -59,7 +62,8 @@ class RamRoleArnService {
      * @return \AliOpen\Core\Auth\Credential|null
      * @throws ClientException
      */
-    private function assumeRole(){
+    private function assumeRole()
+    {
         $signer = $this->clientProfile->getSigner();
         $ramRoleArnCredential = $this->clientProfile->getCredential();
 
@@ -71,7 +75,7 @@ class RamRoleArnService {
         $httpResponse = HttpHelper::curl($requestUrl, $request->getMethod(), null, $request->getHeaders());
 
         if (!$httpResponse->isSuccess()) {
-            return null;
+            return;
         }
 
         $respObj = json_decode($httpResponse->getBody());

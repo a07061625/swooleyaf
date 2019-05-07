@@ -3,11 +3,8 @@ namespace AliOpen\Core\Regions;
 
 use AliOpen\Core\Http\HttpHelper;
 
-class LocationService {
-    /**
-     * @var \AliOpen\Core\Profile\IClientProfile
-     */
-    private $clientProfile;
+class LocationService
+{
     /**
      * @var array
      */
@@ -20,12 +17,17 @@ class LocationService {
      * @var string
      */
     public static $serviceDomain = ALIOPEN_LOCATION_SERVICE_DOMAIN;
+    /**
+     * @var \AliOpen\Core\Profile\IClientProfile
+     */
+    private $clientProfile;
 
     /**
      * AliOpen\Core\Regions\LocationService constructor.
      * @param $clientProfile
      */
-    public function __construct($clientProfile){
+    public function __construct($clientProfile)
+    {
         $this->clientProfile = $clientProfile;
     }
 
@@ -37,7 +39,8 @@ class LocationService {
      * @return mixed|null
      * @throws \AliOpen\Core\Exception\ClientException
      */
-    public function findProductDomain($regionId, $serviceCode, $endPointType, $product){
+    public function findProductDomain($regionId, $serviceCode, $endPointType, $product)
+    {
         $key = $regionId . '#' . $product;
         $domain = isset(self::$cache[$key]) ? self::$cache[$key] : null;
         if ($domain === null || $this->checkCacheIsExpire($key) == true) {
@@ -53,7 +56,8 @@ class LocationService {
      * @param $product
      * @param $domain
      */
-    public static function addEndPoint($regionId, $product, $domain){
+    public static function addEndPoint($regionId, $product, $domain)
+    {
         $key = $regionId . '#' . $product;
         self::$cache[$key] = $domain;
         $lastClearTime = mktime(0, 0, 0, 1, 1, 2999);
@@ -63,7 +67,8 @@ class LocationService {
     /**
      * @param $domain
      */
-    public static function modifyServiceDomain($domain){
+    public static function modifyServiceDomain($domain)
+    {
         self::$serviceDomain = $domain;
     }
 
@@ -71,7 +76,8 @@ class LocationService {
      * @param $key
      * @return bool
      */
-    private function checkCacheIsExpire($key){
+    private function checkCacheIsExpire($key)
+    {
         $lastClearTime = isset(self::$lastClearTimePerProduct[$key]) ? self::$lastClearTimePerProduct[$key] : null;
         if ($lastClearTime === null) {
             $lastClearTime = time();
@@ -98,7 +104,8 @@ class LocationService {
      * @return string|null
      * @throws \AliOpen\Core\Exception\ClientException
      */
-    private function findProductDomainFromLocationService($regionId, $serviceCode, $endPointType){
+    private function findProductDomainFromLocationService($regionId, $serviceCode, $endPointType)
+    {
         $request = new DescribeEndpointRequest($regionId, $serviceCode, $endPointType);
 
         $signer = $this->clientProfile->getSigner();
@@ -109,7 +116,7 @@ class LocationService {
         $httpResponse = HttpHelper::curl($requestUrl, $request->getMethod(), null, $request->getHeaders());
 
         if (!$httpResponse->isSuccess()) {
-            return null;
+            return;
         }
 
         $respObj = json_decode($httpResponse->getBody());

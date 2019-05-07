@@ -5,7 +5,9 @@ use AliOss\OssClient;
 
 $bucket = Common::getBucketName();
 $ossClient = Common::getOssClient();
-if (is_null($ossClient)) exit(1);
+if (is_null($ossClient)) {
+    exit(1);
+}
 
 //******************************* Simple Usage ***************************************************************
 
@@ -22,15 +24,15 @@ $url =
          "callbackBodyType":"application/x-www-form-urlencoded"
 
     }';
-$var = 
+$var =
     '{
         "x:var1":"value1",
         "x:var2":"值2"
     }';
-$options = array(OssClient::OSS_CALLBACK => $url,
+$options = [OssClient::OSS_CALLBACK => $url,
                  OssClient::OSS_CALLBACK_VAR => $var
-                );
-$result = $ossClient->putObject($bucket, "b.file", "random content", $options);
+                ];
+$result = $ossClient->putObject($bucket, 'b.file', 'random content', $options);
 Common::println($result['body']);
 Common::println($result['info']['http_code']);
 
@@ -40,8 +42,8 @@ Common::println($result['info']['http_code']);
   * The callbackbodytype can be application/json or application/x-www-form-urlencoded,the optional parameters,the default for the application/x - WWW - form - urlencoded
   * Users can choose not to set OSS_BACK_VAR.
  */
-$object = "multipart-callback-test.txt";
-$copiedObject = "multipart-callback-test.txt.copied";
+$object = 'multipart-callback-test.txt';
+$copiedObject = 'multipart-callback-test.txt.copied';
 $ossClient->putObject($bucket, $copiedObject, file_get_contents(__FILE__));
 
 /**
@@ -54,29 +56,29 @@ $upload_id = $ossClient->initiateMultipartUpload($bucket, $object);
  */
 $copyId = 1;
 $eTag = $ossClient->uploadPartCopy($bucket, $copiedObject, $bucket, $object, $copyId, $upload_id);
-$upload_parts[] = array(
+$upload_parts[] = [
     'PartNumber' => $copyId,
     'ETag' => $eTag,
-    );
+    ];
 $listPartsInfo = $ossClient->listParts($bucket, $object, $upload_id);
 
 /**
  * step 3.
  */
-$json = 
+$json =
     '{
         "callbackUrl":"callback.oss-demo.com:23450",
         "callbackHost":"oss-cn-hangzhou.aliyuncs.com",
         "callbackBody":"{\"mimeType\":${mimeType},\"size\":${size},\"x:var1\":${x:var1},\"x:var2\":${x:var2}}",
         "callbackBodyType":"application/json"
     }';
-$var = 
+$var =
     '{
         "x:var1":"value1",
         "x:var2":"值2"
     }';
-$options = array(OssClient::OSS_CALLBACK => $json,
-                 OssClient::OSS_CALLBACK_VAR => $var);
+$options = [OssClient::OSS_CALLBACK => $json,
+                 OssClient::OSS_CALLBACK_VAR => $var];
 
 $result = $ossClient->completeMultipartUpload($bucket, $object, $upload_id, $upload_parts, $options);
 Common::println($result['body']);

@@ -1,10 +1,11 @@
 <?php
 namespace AliOss\Model;
 
-class PartInfo {
+class PartInfo
+{
     private $partNumber = 0;
-    private $lastModified = "";
-    private $eTag = "";
+    private $lastModified = '';
+    private $eTag = '';
     private $size = 0;
 
     /**
@@ -14,7 +15,8 @@ class PartInfo {
      * @param string $eTag
      * @param int $size
      */
-    public function __construct($partNumber, $lastModified, $eTag, $size){
+    public function __construct($partNumber, $lastModified, $eTag, $size)
+    {
         $this->partNumber = $partNumber;
         $this->lastModified = $lastModified;
         $this->eTag = $eTag;
@@ -24,28 +26,32 @@ class PartInfo {
     /**
      * @return int
      */
-    public function getPartNumber(){
+    public function getPartNumber()
+    {
         return $this->partNumber;
     }
 
     /**
      * @return string
      */
-    public function getLastModified(){
+    public function getLastModified()
+    {
         return $this->lastModified;
     }
 
     /**
      * @return string
      */
-    public function getETag(){
+    public function getETag()
+    {
         return $this->eTag;
     }
 
     /**
      * @return int
      */
-    public function getSize(){
+    public function getSize()
+    {
         return $this->size;
     }
 }

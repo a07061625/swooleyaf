@@ -11,7 +11,8 @@ use AliPay\AliPayBase;
 use Constant\ErrorCode;
 use Exception\AliPay\AliPayPayException;
 
-class AccountTransfer extends AliPayBase {
+class AccountTransfer extends AliPayBase
+{
     private $payeeTypes = [
         'ALIPAY_USERID' => 1,
         'ALIPAY_LOGONID' => 1,
@@ -53,19 +54,22 @@ class AccountTransfer extends AliPayBase {
      */
     private $remark = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct($appId);
         $this->setMethod('alipay.fund.trans.toaccount.transfer');
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $outBizNo
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setOutBizNo(string $outBizNo){
+    public function setOutBizNo(string $outBizNo)
+    {
         if (ctype_digit($outBizNo)) {
             $this->biz_content['out_biz_no'] = $outBizNo;
         } else {
@@ -78,10 +82,11 @@ class AccountTransfer extends AliPayBase {
      * @param string $payeeAccount
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setPayeeTypeAndAccount(string $payeeType,string $payeeAccount){
-        if(!isset($this->payeeTypes[$payeeType])){
+    public function setPayeeTypeAndAccount(string $payeeType, string $payeeAccount)
+    {
+        if (!isset($this->payeeTypes[$payeeType])) {
             throw new AliPayPayException('账户类型不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
-        } else if(strlen($payeeAccount) == 0){
+        } elseif (strlen($payeeAccount) == 0) {
             throw new AliPayPayException('账户不能为空', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
 
@@ -93,8 +98,9 @@ class AccountTransfer extends AliPayBase {
      * @param int $amount
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setAmount(int $amount){
-        if($amount >= 10){
+    public function setAmount(int $amount)
+    {
+        if ($amount >= 10) {
             $this->biz_content['amount'] = number_format(($amount / 100), 2, '.', '');
         } else {
             throw new AliPayPayException('转账金额必须大于0.1元', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
@@ -104,32 +110,36 @@ class AccountTransfer extends AliPayBase {
     /**
      * @param string $payerShowName
      */
-    public function setPayerShowName(string $payerShowName){
+    public function setPayerShowName(string $payerShowName)
+    {
         $this->biz_content['payer_show_name'] = $payerShowName;
     }
 
     /**
      * @param string $payeeRealName
      */
-    public function setPayeeRealName(string $payeeRealName){
+    public function setPayeeRealName(string $payeeRealName)
+    {
         $this->biz_content['payee_real_name'] = $payeeRealName;
     }
 
     /**
      * @param string $remark
      */
-    public function setRemark(string $remark){
+    public function setRemark(string $remark)
+    {
         $this->biz_content['remark'] = $remark;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->biz_content['out_biz_no'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->biz_content['out_biz_no'])) {
             throw new AliPayPayException('商户转账单号不能为空', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
-        if(!isset($this->biz_content['amount'])){
+        if (!isset($this->biz_content['amount'])) {
             throw new AliPayPayException('转账金额不能为空', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
-        if(!isset($this->biz_content['payee_type'])){
+        if (!isset($this->biz_content['payee_type'])) {
             throw new AliPayPayException('账户类型不能为空', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
 

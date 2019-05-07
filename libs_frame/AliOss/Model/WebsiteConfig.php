@@ -3,16 +3,18 @@ namespace AliOss\Model;
 
 use AliOss\Core\OssException;
 
-class WebsiteConfig implements XmlConfig {
-    private $indexDocument = "";
-    private $errorDocument = "";
+class WebsiteConfig implements XmlConfig
+{
+    private $indexDocument = '';
+    private $errorDocument = '';
 
     /**
      * WebsiteConfig constructor.
      * @param  string $indexDocument
      * @param  string $errorDocument
      */
-    public function __construct($indexDocument = "", $errorDocument = ""){
+    public function __construct($indexDocument = '', $errorDocument = '')
+    {
         $this->indexDocument = $indexDocument;
         $this->errorDocument = $errorDocument;
     }
@@ -21,7 +23,8 @@ class WebsiteConfig implements XmlConfig {
      * @param string $strXml
      * @return null
      */
-    public function parseFromXml($strXml){
+    public function parseFromXml($strXml)
+    {
         $xml = simplexml_load_string($strXml);
         if (isset($xml->IndexDocument) && isset($xml->IndexDocument->Suffix)) {
             $this->indexDocument = strval($xml->IndexDocument->Suffix);
@@ -36,7 +39,8 @@ class WebsiteConfig implements XmlConfig {
      * @return string
      * @throws OssException
      */
-    public function serializeToXml(){
+    public function serializeToXml()
+    {
         $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><WebsiteConfiguration></WebsiteConfiguration>');
         $index_document_part = $xml->addChild('IndexDocument');
         $error_document_part = $xml->addChild('ErrorDocument');
@@ -49,14 +53,16 @@ class WebsiteConfig implements XmlConfig {
     /**
      * @return string
      */
-    public function getIndexDocument(){
+    public function getIndexDocument()
+    {
         return $this->indexDocument;
     }
 
     /**
      * @return string
      */
-    public function getErrorDocument(){
+    public function getErrorDocument()
+    {
         return $this->errorDocument;
     }
 }

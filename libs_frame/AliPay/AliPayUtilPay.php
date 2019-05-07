@@ -10,7 +10,8 @@ namespace AliPay;
 use AliPay\Pay\PayWap;
 use Traits\SimpleTrait;
 
-final class AliPayUtilPay extends AliPayUtilBase {
+final class AliPayUtilPay extends AliPayUtilBase
+{
     use SimpleTrait;
 
     /**
@@ -18,12 +19,13 @@ final class AliPayUtilPay extends AliPayUtilBase {
      * @param \AliPay\Pay\PayWap $wap
      * @return string
      */
-    public static function createWapPayHtml(PayWap $wap) : string {
+    public static function createWapPayHtml(PayWap $wap) : string
+    {
         $data = $wap->getDetail();
         $html = '<form id="' . $wap->getFormId() . '" name="' . $wap->getFormId() . '" action="' . self::$urlGateWay . '?charset=utf-8" method="POST">';
         foreach ($data as $key => $eData) {
             if (false === self::checkEmpty($eData)) {
-                $val = str_replace("'", "&apos;", $eData);
+                $val = str_replace("'", '&apos;', $eData);
                 $html .= '<input type="hidden" name="' . $key . '" value="' . $val . '" />';
             }
         }

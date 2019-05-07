@@ -3,7 +3,8 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class CasterChannelSetRequest extends RpcAcsRequest {
+class CasterChannelSetRequest extends RpcAcsRequest
+{
     private $resourceId;
     private $playStatus;
     private $casterId;
@@ -11,62 +12,75 @@ class CasterChannelSetRequest extends RpcAcsRequest {
     private $seekOffset;
     private $channelId;
 
-    public function __construct(){
-        parent::__construct("live", "2016-11-01", "SetCasterChannel", "live", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('live', '2016-11-01', 'SetCasterChannel', 'live', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getResourceId(){
+    public function getResourceId()
+    {
         return $this->resourceId;
     }
 
-    public function setResourceId($resourceId){
+    public function setResourceId($resourceId)
+    {
         $this->resourceId = $resourceId;
-        $this->queryParameters["ResourceId"] = $resourceId;
+        $this->queryParameters['ResourceId'] = $resourceId;
     }
 
-    public function getPlayStatus(){
+    public function getPlayStatus()
+    {
         return $this->playStatus;
     }
 
-    public function setPlayStatus($playStatus){
+    public function setPlayStatus($playStatus)
+    {
         $this->playStatus = $playStatus;
-        $this->queryParameters["PlayStatus"] = $playStatus;
+        $this->queryParameters['PlayStatus'] = $playStatus;
     }
 
-    public function getCasterId(){
+    public function getCasterId()
+    {
         return $this->casterId;
     }
 
-    public function setCasterId($casterId){
+    public function setCasterId($casterId)
+    {
         $this->casterId = $casterId;
-        $this->queryParameters["CasterId"] = $casterId;
+        $this->queryParameters['CasterId'] = $casterId;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getSeekOffset(){
+    public function getSeekOffset()
+    {
         return $this->seekOffset;
     }
 
-    public function setSeekOffset($seekOffset){
+    public function setSeekOffset($seekOffset)
+    {
         $this->seekOffset = $seekOffset;
-        $this->queryParameters["SeekOffset"] = $seekOffset;
+        $this->queryParameters['SeekOffset'] = $seekOffset;
     }
 
-    public function getChannelId(){
+    public function getChannelId()
+    {
         return $this->channelId;
     }
 
-    public function setChannelId($channelId){
+    public function setChannelId($channelId)
+    {
         $this->channelId = $channelId;
-        $this->queryParameters["ChannelId"] = $channelId;
+        $this->queryParameters['ChannelId'] = $channelId;
     }
 }

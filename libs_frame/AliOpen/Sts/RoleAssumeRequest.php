@@ -3,51 +3,61 @@ namespace AliOpen\Sts;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class RoleAssumeRequest extends RpcAcsRequest {
+class RoleAssumeRequest extends RpcAcsRequest
+{
     private $roleArn;
     private $roleSessionName;
     private $durationSeconds;
     private $policy;
 
-    public function __construct(){
-        parent::__construct("Sts", "2015-04-01", "AssumeRole");
-        $this->setProtocol("https");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Sts', '2015-04-01', 'AssumeRole');
+        $this->setProtocol('https');
+        $this->setMethod('POST');
     }
 
-    public function getRoleArn(){
+    public function getRoleArn()
+    {
         return $this->roleArn;
     }
 
-    public function setRoleArn($roleArn){
+    public function setRoleArn($roleArn)
+    {
         $this->roleArn = $roleArn;
-        $this->queryParameters["RoleArn"] = $roleArn;
+        $this->queryParameters['RoleArn'] = $roleArn;
     }
 
-    public function getRoleSessionName(){
+    public function getRoleSessionName()
+    {
         return $this->roleSessionName;
     }
 
-    public function setRoleSessionName($roleSessionName){
+    public function setRoleSessionName($roleSessionName)
+    {
         $this->roleSessionName = $roleSessionName;
-        $this->queryParameters["RoleSessionName"] = $roleSessionName;
+        $this->queryParameters['RoleSessionName'] = $roleSessionName;
     }
 
-    public function getDurationSeconds(){
+    public function getDurationSeconds()
+    {
         return $this->durationSeconds;
     }
 
-    public function setDurationSeconds($durationSeconds){
+    public function setDurationSeconds($durationSeconds)
+    {
         $this->durationSeconds = $durationSeconds;
-        $this->queryParameters["DurationSeconds"] = $durationSeconds;
+        $this->queryParameters['DurationSeconds'] = $durationSeconds;
     }
 
-    public function getPolicy(){
+    public function getPolicy()
+    {
         return $this->policy;
     }
 
-    public function setPolicy($policy){
+    public function setPolicy($policy)
+    {
         $this->policy = $policy;
-        $this->queryParameters["Policy"] = $policy;
+        $this->queryParameters['Policy'] = $policy;
     }
 }

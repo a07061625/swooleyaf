@@ -3,7 +3,8 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class CustomLiveStreamTranscodeAddRequest extends RpcAcsRequest {
+class CustomLiveStreamTranscodeAddRequest extends RpcAcsRequest
+{
     private $app;
     private $template;
     private $profile;
@@ -17,116 +18,141 @@ class CustomLiveStreamTranscodeAddRequest extends RpcAcsRequest {
     private $videoBitrate;
     private $height;
 
-    public function __construct(){
-        parent::__construct("live", "2016-11-01", "AddCustomLiveStreamTranscode", "live", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('live', '2016-11-01', 'AddCustomLiveStreamTranscode', 'live', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getApp(){
+    public function getApp()
+    {
         return $this->app;
     }
 
-    public function setApp($app){
+    public function setApp($app)
+    {
         $this->app = $app;
-        $this->queryParameters["App"] = $app;
+        $this->queryParameters['App'] = $app;
     }
 
-    public function getTemplate(){
+    public function getTemplate()
+    {
         return $this->template;
     }
 
-    public function setTemplate($template){
+    public function setTemplate($template)
+    {
         $this->template = $template;
-        $this->queryParameters["Template"] = $template;
+        $this->queryParameters['Template'] = $template;
     }
 
-    public function getProfile(){
+    public function getProfile()
+    {
         return $this->profile;
     }
 
-    public function setProfile($profile){
+    public function setProfile($profile)
+    {
         $this->profile = $profile;
-        $this->queryParameters["Profile"] = $profile;
+        $this->queryParameters['Profile'] = $profile;
     }
 
-    public function getFPS(){
+    public function getFPS()
+    {
         return $this->fPS;
     }
 
-    public function setFPS($fPS){
+    public function setFPS($fPS)
+    {
         $this->fPS = $fPS;
-        $this->queryParameters["FPS"] = $fPS;
+        $this->queryParameters['FPS'] = $fPS;
     }
 
-    public function getGop(){
+    public function getGop()
+    {
         return $this->gop;
     }
 
-    public function setGop($gop){
+    public function setGop($gop)
+    {
         $this->gop = $gop;
-        $this->queryParameters["Gop"] = $gop;
+        $this->queryParameters['Gop'] = $gop;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getTemplateType(){
+    public function getTemplateType()
+    {
         return $this->templateType;
     }
 
-    public function setTemplateType($templateType){
+    public function setTemplateType($templateType)
+    {
         $this->templateType = $templateType;
-        $this->queryParameters["TemplateType"] = $templateType;
+        $this->queryParameters['TemplateType'] = $templateType;
     }
 
-    public function getAudioBitrate(){
+    public function getAudioBitrate()
+    {
         return $this->audioBitrate;
     }
 
-    public function setAudioBitrate($audioBitrate){
+    public function setAudioBitrate($audioBitrate)
+    {
         $this->audioBitrate = $audioBitrate;
-        $this->queryParameters["AudioBitrate"] = $audioBitrate;
+        $this->queryParameters['AudioBitrate'] = $audioBitrate;
     }
 
-    public function getDomain(){
+    public function getDomain()
+    {
         return $this->domain;
     }
 
-    public function setDomain($domain){
+    public function setDomain($domain)
+    {
         $this->domain = $domain;
-        $this->queryParameters["Domain"] = $domain;
+        $this->queryParameters['Domain'] = $domain;
     }
 
-    public function getWidth(){
+    public function getWidth()
+    {
         return $this->width;
     }
 
-    public function setWidth($width){
+    public function setWidth($width)
+    {
         $this->width = $width;
-        $this->queryParameters["Width"] = $width;
+        $this->queryParameters['Width'] = $width;
     }
 
-    public function getVideoBitrate(){
+    public function getVideoBitrate()
+    {
         return $this->videoBitrate;
     }
 
-    public function setVideoBitrate($videoBitrate){
+    public function setVideoBitrate($videoBitrate)
+    {
         $this->videoBitrate = $videoBitrate;
-        $this->queryParameters["VideoBitrate"] = $videoBitrate;
+        $this->queryParameters['VideoBitrate'] = $videoBitrate;
     }
 
-    public function getHeight(){
+    public function getHeight()
+    {
         return $this->height;
     }
 
-    public function setHeight($height){
+    public function setHeight($height)
+    {
         $this->height = $height;
-        $this->queryParameters["Height"] = $height;
+        $this->queryParameters['Height'] = $height;
     }
 }

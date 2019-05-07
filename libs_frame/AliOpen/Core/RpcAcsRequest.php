@@ -3,15 +3,8 @@ namespace AliOpen\Core;
 
 use AliOpen\Core\Auth\BearerTokenCredential;
 
-abstract class RpcAcsRequest extends AcsRequest {
-    /**
-     * @var string
-     */
-    private $dateTimeFormat = 'Y-m-d\TH:i:s\Z';
-    /**
-     * @var array
-     */
-    private $domainParameters = [];
+abstract class RpcAcsRequest extends AcsRequest
+{
     /**
      * @var string
      */
@@ -20,22 +13,14 @@ abstract class RpcAcsRequest extends AcsRequest {
      * @var string
      */
     protected $acceptFormat = 'JSON';
-
     /**
-     * @param string|bool $value
-     * @return string
+     * @var string
      */
-    private function prepareValue($value){
-        if (is_bool($value)) {
-            if ($value) {
-                return 'true';
-            }
-
-            return 'false';
-        }
-
-        return $value;
-    }
+    private $dateTimeFormat = 'Y-m-d\TH:i:s\Z';
+    /**
+     * @var array
+     */
+    private $domainParameters = [];
 
     /**
      * @param $iSigner
@@ -43,7 +28,8 @@ abstract class RpcAcsRequest extends AcsRequest {
      * @param $domain
      * @return bool|mixed|string
      */
-    public function composeUrl($iSigner, $credential, $domain){
+    public function composeUrl($iSigner, $credential, $domain)
+    {
         $apiParams = parent::getQueryParameters();
         foreach ($apiParams as $key => $value) {
             $apiParams[$key] = $this->prepareValue($value);
@@ -86,27 +72,28 @@ abstract class RpcAcsRequest extends AcsRequest {
     }
 
     /**
-     * @param $parameters
-     * @param $accessKeySecret
-     * @param $iSigner
-     * @return mixed
+     * @return array
      */
-    private function computeSignature($parameters, $accessKeySecret, $iSigner){
-        ksort($parameters);
-        $canonicalizedQueryString = '';
-        foreach ($parameters as $key => $value) {
-            $canonicalizedQueryString .= '&' . $this->percentEncode($key) . '=' . $this->percentEncode($value);
-        }
-        $stringToSign = parent::getMethod() . '&%2F&' . $this->percentEncode(substr($canonicalizedQueryString, 1));
+    public function getDomainParameter()
+    {
+        return $this->domainParameters;
+    }
 
-        return $iSigner->signString($stringToSign, $accessKeySecret . '&');
+    /**
+     * @param $name
+     * @param $value
+     */
+    public function putDomainParameters($name, $value)
+    {
+        $this->domainParameters[$name] = $value;
     }
 
     /**
      * @param $str
      * @return string|string[]|null
      */
-    protected function percentEncode($str){
+    protected function percentEncode($str)
+    {
         $res = urlencode($str);
         $res = str_replace(['+', '*'], ['%20', '%2A'], $res);
         $res = preg_replace('/%7E/', '~', $res);
@@ -115,17 +102,37 @@ abstract class RpcAcsRequest extends AcsRequest {
     }
 
     /**
-     * @return array
+     * @param string|bool $value
+     * @return string
      */
-    public function getDomainParameter(){
-        return $this->domainParameters;
+    private function prepareValue($value)
+    {
+        if (is_bool($value)) {
+            if ($value) {
+                return 'true';
+            }
+
+            return 'false';
+        }
+
+        return $value;
     }
 
     /**
-     * @param $name
-     * @param $value
+     * @param $parameters
+     * @param $accessKeySecret
+     * @param $iSigner
+     * @return mixed
      */
-    public function putDomainParameters($name, $value){
-        $this->domainParameters[$name] = $value;
+    private function computeSignature($parameters, $accessKeySecret, $iSigner)
+    {
+        ksort($parameters);
+        $canonicalizedQueryString = '';
+        foreach ($parameters as $key => $value) {
+            $canonicalizedQueryString .= '&' . $this->percentEncode($key) . '=' . $this->percentEncode($value);
+        }
+        $stringToSign = parent::getMethod() . '&%2F&' . $this->percentEncode(substr($canonicalizedQueryString, 1));
+
+        return $iSigner->signString($stringToSign, $accessKeySecret . '&');
     }
 }

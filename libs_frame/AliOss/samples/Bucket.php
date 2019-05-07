@@ -1,11 +1,13 @@
 <?php
 require_once __DIR__ . '/Common.php';
 
-use AliOss\OssClient;
 use AliOss\Core\OssException;
+use AliOss\OssClient;
 
 $ossClient = Common::getOssClient();
-if (is_null($ossClient)) exit(1);
+if (is_null($ossClient)) {
+    exit(1);
+}
 $bucket = Common::getBucketName();
 
 //******************************* Simple Usage****************************************************************
@@ -16,7 +18,7 @@ Common::println("bucket $bucket created");
 
 // Check whether a bucket exists
 $doesExist = $ossClient->doesBucketExist($bucket);
-Common::println("bucket $bucket exist? " . ($doesExist ? "yes" : "no"));
+Common::println("bucket $bucket exist? " . ($doesExist ? 'yes' : 'no'));
 
 // Get the bucket list
 $bucketListInfo = $ossClient->listBuckets();
@@ -27,7 +29,6 @@ Common::println("bucket $bucket acl put");
 // Get bucket ACL
 $acl = $ossClient->getBucketAcl($bucket);
 Common::println("bucket $bucket acl get: " . $acl);
-
 
 //******************************* For complete usage, see the following functions ****************************************************
 
@@ -56,7 +57,7 @@ function createBucket($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
 
 /**
@@ -75,9 +76,9 @@ function doesBucketExist($ossClient, $bucket)
         return;
     }
     if ($res === true) {
-        print(__FUNCTION__ . ": OK" . "\n");
+        print(__FUNCTION__ . ': OK' . "\n");
     } else {
-        print(__FUNCTION__ . ": FAILED" . "\n");
+        print(__FUNCTION__ . ': FAILED' . "\n");
     }
 }
 
@@ -97,7 +98,7 @@ function deleteBucket($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
 
 /**
@@ -116,9 +117,8 @@ function putBucketAcl($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
-
 
 /**
  * Get bucket ACL
@@ -135,10 +135,9 @@ function getBucketAcl($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
     print('acl: ' . $res);
 }
-
 
 /**
  * List all buckets
@@ -155,7 +154,7 @@ function listBuckets($ossClient)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
     $bucketList = $bucketListInfo->getBucketList();
     foreach ($bucketList as $bucket) {
         print($bucket->getLocation() . "\t" . $bucket->getName() . "\t" . $bucket->getCreatedate() . "\n");

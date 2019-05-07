@@ -1,18 +1,20 @@
 <?php
 require_once __DIR__ . '/Common.php';
 
-use AliOss\OssClient;
 use AliOss\Core\OssException;
 use AliOss\Model\WebsiteConfig;
+use AliOss\OssClient;
 
 $bucket = Common::getBucketName();
 $ossClient = Common::getOssClient();
-if (is_null($ossClient)) exit(1);
+if (is_null($ossClient)) {
+    exit(1);
+}
 
 //******************************* Simple Usage ***************************************************************
 
 // Set bucket static website configuration
-$websiteConfig = new WebsiteConfig("index.html", "error.html");
+$websiteConfig = new WebsiteConfig('index.html', 'error.html');
 $ossClient->putBucketWebsite($bucket, $websiteConfig);
 Common::println("bucket $bucket websiteConfig created:" . $websiteConfig->serializeToXml());
 
@@ -40,7 +42,7 @@ getBucketWebsite($ossClient, $bucket);
  */
 function putBucketWebsite($ossClient, $bucket)
 {
-    $websiteConfig = new WebsiteConfig("index.html", "error.html");
+    $websiteConfig = new WebsiteConfig('index.html', 'error.html');
     try {
         $ossClient->putBucketWebsite($bucket, $websiteConfig);
     } catch (OssException $e) {
@@ -48,7 +50,7 @@ function putBucketWebsite($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
 
 /**
@@ -68,7 +70,7 @@ function getBucketWebsite($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
     print($websiteConfig->serializeToXml() . "\n");
 }
 
@@ -88,5 +90,5 @@ function deleteBucketWebsite($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }

@@ -20,7 +20,8 @@ namespace Cache\Lite;
  * @package Cache_Lite
  * @author Fabien MARTY <fab@php.net>
  */
-class CacheLiteFile extends CacheLite {
+class CacheLiteFile extends CacheLite
+{
     // --- Private properties ---
 
     /**
@@ -28,14 +29,14 @@ class CacheLiteFile extends CacheLite {
      *
      * @var string $_masterFile
      */
-    var $_masterFile = '';
+    public $_masterFile = '';
 
     /**
      * Masterfile mtime
      *
      * @var int $_masterFile_mtime
      */
-    var $_masterFile_mtime = 0;
+    public $_masterFile_mtime = 0;
 
     // --- Public methods ----
 
@@ -54,7 +55,7 @@ class CacheLiteFile extends CacheLite {
      * @param array $options options
      * @access public
      */
-    function __construct($options = array(NULL))
+    public function __construct($options = [null])
     {
         $options['lifetime'] = 0;
         parent::__construct($options);
@@ -64,7 +65,7 @@ class CacheLiteFile extends CacheLite {
             return $this->raiseError('Cache_Lite_File : masterFile option must be set !');
         }
         if (!($this->_masterFile_mtime = @filemtime($this->_masterFile))) {
-            return $this->raiseError('Cache_Lite_File : Unable to read masterFile : '.$this->_masterFile, -3);
+            return $this->raiseError('Cache_Lite_File : Unable to read masterFile : ' . $this->_masterFile, -3);
         }
     }
 
@@ -73,7 +74,7 @@ class CacheLiteFile extends CacheLite {
      *
      * @param array $options Options
      */
-    function Cache_Lite_File($options = array(NULL))
+    public function Cache_Lite_File($options = [null])
     {
         self::__construct($options);
     }
@@ -87,7 +88,7 @@ class CacheLiteFile extends CacheLite {
      * @return string data of the cache (else : false)
      * @access public
      */
-    function get($id, $group = 'default', $doNotTestCacheValidity = false)
+    public function get($id, $group = 'default', $doNotTestCacheValidity = false)
     {
         if ($data = parent::get($id, $group, true)) {
             if ($filemtime = $this->lastModified()) {

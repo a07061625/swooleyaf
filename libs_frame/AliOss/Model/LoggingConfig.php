@@ -1,25 +1,36 @@
 <?php
 namespace AliOss\Model;
 
-class LoggingConfig implements XmlConfig {
-    private $targetBucket = "";
-    private $targetPrefix = "";
+class LoggingConfig implements XmlConfig
+{
+    private $targetBucket = '';
+    private $targetPrefix = '';
 
     /**
      * LoggingConfig constructor.
      * @param null $targetBucket
      * @param null $targetPrefix
      */
-    public function __construct($targetBucket = null, $targetPrefix = null){
+    public function __construct($targetBucket = null, $targetPrefix = null)
+    {
         $this->targetBucket = $targetBucket;
         $this->targetPrefix = $targetPrefix;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->serializeToXml();
     }
 
     /**
      * @param $strXml
      * @return null
      */
-    public function parseFromXml($strXml){
+    public function parseFromXml($strXml)
+    {
         $xml = simplexml_load_string($strXml);
         if (!isset($xml->LoggingEnabled)) {
             return;
@@ -39,7 +50,8 @@ class LoggingConfig implements XmlConfig {
     /**
      *  Serialize to xml string
      */
-    public function serializeToXml(){
+    public function serializeToXml()
+    {
         $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><BucketLoggingStatus></BucketLoggingStatus>');
         if (isset($this->targetBucket) && isset($this->targetPrefix)) {
             $loggingEnabled = $xml->addChild('LoggingEnabled');
@@ -53,21 +65,16 @@ class LoggingConfig implements XmlConfig {
     /**
      * @return string
      */
-    public function __toString(){
-        return $this->serializeToXml();
-    }
-
-    /**
-     * @return string
-     */
-    public function getTargetBucket(){
+    public function getTargetBucket()
+    {
         return $this->targetBucket;
     }
 
     /**
      * @return string
      */
-    public function getTargetPrefix(){
+    public function getTargetPrefix()
+    {
         return $this->targetPrefix;
     }
 }

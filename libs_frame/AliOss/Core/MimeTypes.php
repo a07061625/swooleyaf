@@ -1,7 +1,8 @@
 <?php
 namespace AliOss\Core;
 
-class MimeTypes {
+class MimeTypes
+{
     private static $mime_types = [
         'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         'xltx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.template',
@@ -237,7 +238,8 @@ class MimeTypes {
      * @param string $name Default file extension name.
      * @return string content-type
      */
-    public static function getMimetype($name){
+    public static function getMimetype($name)
+    {
         $parts = explode('.', $name);
         if (count($parts) > 1) {
             $ext = strtolower(end($parts));
@@ -245,7 +247,5 @@ class MimeTypes {
                 return self::$mime_types[$ext];
             }
         }
-
-        return null;
     }
 }

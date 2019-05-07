@@ -3,7 +3,8 @@ namespace AliOpen\Core\Http;
 
 use AliOpen\Core\Exception\ClientException;
 
-class HttpHelper {
+class HttpHelper
+{
     /**
      * @var int
      */
@@ -21,7 +22,8 @@ class HttpHelper {
      * @return \AliOpen\Core\Http\HttpResponse
      * @throws \AliOpen\Core\Exception\ClientException
      */
-    public static function curl($url,$httpMethod = 'GET',$postFields = null,$headers = null){
+    public static function curl($url, $httpMethod = 'GET', $postFields = null, $headers = null)
+    {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $httpMethod);
         if (ALIOPEN_ENABLE_HTTP_PROXY) {
@@ -65,7 +67,8 @@ class HttpHelper {
      * @param array $postFields
      * @return bool|string
      */
-    public static function getPostHttpBody($postFields){
+    public static function getPostHttpBody($postFields)
+    {
         $content = '';
         foreach ($postFields as $apiParamKey => $apiParamValue) {
             $content .= $apiParamKey . '=' . urlencode($apiParamValue) . '&';
@@ -78,7 +81,8 @@ class HttpHelper {
      * @param $headers
      * @return array
      */
-    public static function getHttpHearders($headers){
+    public static function getHttpHearders($headers)
+    {
         $httpHeader = [];
         foreach ($headers as $key => $value) {
             $httpHeader[] = $key . ':' . $value;

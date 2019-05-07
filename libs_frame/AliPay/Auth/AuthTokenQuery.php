@@ -11,34 +11,39 @@ use AliPay\AliPayBase;
 use Constant\ErrorCode;
 use Exception\AliPay\AliPayAuthException;
 
-class AuthTokenQuery extends AliPayBase {
+class AuthTokenQuery extends AliPayBase
+{
     /**
      * 应用授权令牌
      * @var string
      */
     private $app_auth_token = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct($appId);
         $this->setMethod('alipay.open.auth.token.app.query');
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $appAuthToken
      * @throws \Exception\AliPay\AliPayAuthException
      */
-    public function setAppAuthToken(string $appAuthToken){
-        if(ctype_alnum($appAuthToken) && (strlen($appAuthToken) <= 128)){
+    public function setAppAuthToken(string $appAuthToken)
+    {
+        if (ctype_alnum($appAuthToken) && (strlen($appAuthToken) <= 128)) {
             $this->biz_content['app_auth_token'] = $appAuthToken;
         } else {
             throw new AliPayAuthException('应用授权令牌不合法', ErrorCode::ALIPAY_AUTH_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         if (!isset($this->biz_content['app_auth_token'])) {
             throw new AliPayAuthException('应用授权令牌不能为空', ErrorCode::ALIPAY_AUTH_PARAM_ERROR);
         }

@@ -9,15 +9,9 @@ namespace Constant;
 
 use Traits\SimpleTrait;
 
-final class Server {
+final class Server
+{
     use SimpleTrait;
-
-    //服务常量
-    public static $totalServerType = [
-        self::SERVER_TYPE_API_GATE => 'api入口',
-        self::SERVER_TYPE_API_MODULE => 'api模块',
-        self::SERVER_TYPE_FRONT_GATE => '前端入口',
-    ];
     const SERVER_TYPE_API_GATE = 'api'; //服务端类型-api入口
     const SERVER_TYPE_API_MODULE = 'rpc'; //服务端类型-api模块
     const SERVER_TYPE_FRONT_GATE = 'frontgate'; //服务端类型-前端入口
@@ -31,17 +25,6 @@ final class Server {
     const PROCESS_TYPE_WORKER = 'Worker'; //类型-worker
     const PROCESS_TYPE_MANAGER = 'Manager'; //类型-manager
     const PROCESS_TYPE_MAIN = 'Main'; //类型-main
-
-    //环境常量
-    public static $totalEnvProject = [
-        self::ENV_PROJECT_DEV,
-        self::ENV_PROJECT_PRODUCT,
-    ];
-    public static $totalEnvSystem = [
-        self::ENV_SYSTEM_BSD,
-        self::ENV_SYSTEM_MAC,
-        self::ENV_SYSTEM_LINUX,
-    ];
     const ENV_PROJECT_DEV = 'dev'; //项目环境-测试
     const ENV_PROJECT_PRODUCT = 'product'; //项目环境-生产
     const ENV_SYSTEM_BSD = 'FreeBSD'; //系统环境-bsd
@@ -79,15 +62,33 @@ final class Server {
     const REGISTRY_NAME_RESPONSE_JWT_SESSION = 'RESPONSE_JWT_SESSION'; //名称-响应jwt会话
     const REGISTRY_NAME_RESPONSE_JWT_DATA = 'RESPONSE_JWT_DATA'; //名称-响应jwt数据
     const REGISTRY_NAME_VALIDATOR_PREFIX = 'VALIDATOR_'; //名称-校验器前缀
+    const IMAGE_MIME_TYPE_PNG = 'image/png'; //MIME类型-PNG
+    const IMAGE_MIME_TYPE_JPEG = 'image/jpeg'; //MIME类型-JPEG
+    const IMAGE_MIME_TYPE_GIF = 'image/gif'; //MIME类型-GIF
+    const IMAGE_FILTER_DITHER_DIFFUSION = 'diffusion'; //噪点滤镜类型-扩散
+    const IMAGE_FILTER_DITHER_ORDERED = 'ordered'; //噪点滤镜类型-规整
+
+    //服务常量
+    public static $totalServerType = [
+        self::SERVER_TYPE_API_GATE => 'api入口',
+        self::SERVER_TYPE_API_MODULE => 'api模块',
+        self::SERVER_TYPE_FRONT_GATE => '前端入口',
+    ];
+
+    //环境常量
+    public static $totalEnvProject = [
+        self::ENV_PROJECT_DEV,
+        self::ENV_PROJECT_PRODUCT,
+    ];
+    public static $totalEnvSystem = [
+        self::ENV_SYSTEM_BSD,
+        self::ENV_SYSTEM_MAC,
+        self::ENV_SYSTEM_LINUX,
+    ];
 
     //图片常量
     public static $totalImageFilterDither = [
         self::IMAGE_FILTER_DITHER_ORDERED,
         self::IMAGE_FILTER_DITHER_DIFFUSION,
     ];
-    const IMAGE_MIME_TYPE_PNG = 'image/png'; //MIME类型-PNG
-    const IMAGE_MIME_TYPE_JPEG = 'image/jpeg'; //MIME类型-JPEG
-    const IMAGE_MIME_TYPE_GIF = 'image/gif'; //MIME类型-GIF
-    const IMAGE_FILTER_DITHER_DIFFUSION = 'diffusion'; //噪点滤镜类型-扩散
-    const IMAGE_FILTER_DITHER_ORDERED = 'ordered'; //噪点滤镜类型-规整
 }

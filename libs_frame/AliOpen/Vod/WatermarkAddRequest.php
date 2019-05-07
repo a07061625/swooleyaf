@@ -3,7 +3,8 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class WatermarkAddRequest extends RpcAcsRequest {
+class WatermarkAddRequest extends RpcAcsRequest
+{
     private $resourceOwnerId;
     private $resourceOwnerAccount;
     private $name;
@@ -12,71 +13,86 @@ class WatermarkAddRequest extends RpcAcsRequest {
     private $type;
     private $watermarkConfig;
 
-    public function __construct(){
-        parent::__construct("vod", "2017-03-21", "AddWatermark", "vod", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('vod', '2017-03-21', 'AddWatermark', 'vod', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getResourceOwnerAccount(){
+    public function getResourceOwnerAccount()
+    {
         return $this->resourceOwnerAccount;
     }
 
-    public function setResourceOwnerAccount($resourceOwnerAccount){
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function setName($name){
+    public function setName($name)
+    {
         $this->name = $name;
-        $this->queryParameters["Name"] = $name;
+        $this->queryParameters['Name'] = $name;
     }
 
-    public function getFileUrl(){
+    public function getFileUrl()
+    {
         return $this->fileUrl;
     }
 
-    public function setFileUrl($fileUrl){
+    public function setFileUrl($fileUrl)
+    {
         $this->fileUrl = $fileUrl;
-        $this->queryParameters["FileUrl"] = $fileUrl;
+        $this->queryParameters['FileUrl'] = $fileUrl;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getType(){
+    public function getType()
+    {
         return $this->type;
     }
 
-    public function setType($type){
+    public function setType($type)
+    {
         $this->type = $type;
-        $this->queryParameters["Type"] = $type;
+        $this->queryParameters['Type'] = $type;
     }
 
-    public function getWatermarkConfig(){
+    public function getWatermarkConfig()
+    {
         return $this->watermarkConfig;
     }
 
-    public function setWatermarkConfig($watermarkConfig){
+    public function setWatermarkConfig($watermarkConfig)
+    {
         $this->watermarkConfig = $watermarkConfig;
-        $this->queryParameters["WatermarkConfig"] = $watermarkConfig;
+        $this->queryParameters['WatermarkConfig'] = $watermarkConfig;
     }
 }

@@ -1,7 +1,8 @@
 <?php
 namespace AliOpen\Core\Regions;
 
-class Endpoint {
+class Endpoint
+{
     /**
      * @var string
      */
@@ -21,7 +22,8 @@ class Endpoint {
      * @param $regionIds
      * @param $productDomains
      */
-    public function __construct($name, $regionIds, $productDomains){
+    public function __construct($name, $regionIds, $productDomains)
+    {
         $this->name = $name;
         $this->regionIds = $regionIds;
         $this->productDomains = $productDomains;
@@ -30,42 +32,48 @@ class Endpoint {
     /**
      * @return string
      */
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
 
     /**
      * @param $name
      */
-    public function setName($name){
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
     /**
      * @return string
      */
-    public function getRegionIds(){
+    public function getRegionIds()
+    {
         return $this->regionIds;
     }
 
     /**
      * @param $regionIds
      */
-    public function setRegionIds($regionIds){
+    public function setRegionIds($regionIds)
+    {
         $this->regionIds = $regionIds;
     }
 
     /**
      * @return string
      */
-    public function getProductDomains(){
+    public function getProductDomains()
+    {
         return $this->productDomains;
     }
 
     /**
      * @param $productDomains
      */
-    public function setProductDomains($productDomains){
+    public function setProductDomains($productDomains)
+    {
         $this->productDomains = $productDomains;
     }
 }

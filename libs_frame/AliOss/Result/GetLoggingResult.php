@@ -3,12 +3,14 @@ namespace AliOss\Result;
 
 use AliOss\Model\LoggingConfig;
 
-class GetLoggingResult extends Result {
+class GetLoggingResult extends Result
+{
     /**
      * Parse LoggingConfig data
      * @return LoggingConfig
      */
-    protected function parseDataFromResponse(){
+    protected function parseDataFromResponse()
+    {
         $content = $this->rawResponse->body;
         $config = new LoggingConfig();
         $config->parseFromXml($content);
@@ -21,7 +23,8 @@ class GetLoggingResult extends Result {
      * 404 is also considered a valid response
      * @return bool
      */
-    protected function isResponseOk(){
+    protected function isResponseOk()
+    {
         $status = $this->rawResponse->status;
         if ((int)(intval($status) / 100) == 2 || (int)(intval($status)) === 404) {
             return true;

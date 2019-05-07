@@ -1,7 +1,8 @@
 <?php
 namespace AliOss\Model;
 
-class LiveChannelInfo implements XmlConfig {
+class LiveChannelInfo implements XmlConfig
+{
     private $name;
     private $description;
     private $publishUrls;
@@ -9,46 +10,56 @@ class LiveChannelInfo implements XmlConfig {
     private $status;
     private $lastModified;
 
-    public function __construct($name = null, $description = null){
+    public function __construct($name = null, $description = null)
+    {
         $this->name = $name;
         $this->description = $description;
         $this->publishUrls = [];
         $this->playUrls = [];
     }
 
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function setName($name){
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
-    public function getPublishUrls(){
+    public function getPublishUrls()
+    {
         return $this->publishUrls;
     }
 
-    public function getPlayUrls(){
+    public function getPlayUrls()
+    {
         return $this->playUrls;
     }
 
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->status;
     }
 
-    public function getLastModified(){
+    public function getLastModified()
+    {
         return $this->lastModified;
     }
 
-    public function getDescription(){
+    public function getDescription()
+    {
         return $this->description;
     }
 
-    public function setDescription($description){
+    public function setDescription($description)
+    {
         $this->description = $description;
     }
 
-    public function parseFromXmlNode($xml){
+    public function parseFromXmlNode($xml)
+    {
         if (isset($xml->Name)) {
             $this->name = strval($xml->Name);
         }
@@ -78,12 +89,14 @@ class LiveChannelInfo implements XmlConfig {
         }
     }
 
-    public function parseFromXml($strXml){
+    public function parseFromXml($strXml)
+    {
         $xml = simplexml_load_string($strXml);
         $this->parseFromXmlNode($xml);
     }
 
-    public function serializeToXml(){
-        throw new OssException("Not implemented.");
+    public function serializeToXml()
+    {
+        throw new OssException('Not implemented.');
     }
 }

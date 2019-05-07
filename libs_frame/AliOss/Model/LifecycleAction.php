@@ -1,7 +1,8 @@
 <?php
 namespace AliOss\Model;
 
-class LifecycleAction {
+class LifecycleAction
+{
     private $action;
     private $timeSpec;
     private $timeValue;
@@ -12,7 +13,8 @@ class LifecycleAction {
      * @param string $timeSpec
      * @param string $timeValue
      */
-    public function __construct($action, $timeSpec, $timeValue){
+    public function __construct($action, $timeSpec, $timeValue)
+    {
         $this->action = $action;
         $this->timeSpec = $timeSpec;
         $this->timeValue = $timeValue;
@@ -21,42 +23,48 @@ class LifecycleAction {
     /**
      * @return LifecycleAction
      */
-    public function getAction(){
+    public function getAction()
+    {
         return $this->action;
     }
 
     /**
      * @param string $action
      */
-    public function setAction($action){
+    public function setAction($action)
+    {
         $this->action = $action;
     }
 
     /**
      * @return string
      */
-    public function getTimeSpec(){
+    public function getTimeSpec()
+    {
         return $this->timeSpec;
     }
 
     /**
      * @param string $timeSpec
      */
-    public function setTimeSpec($timeSpec){
+    public function setTimeSpec($timeSpec)
+    {
         $this->timeSpec = $timeSpec;
     }
 
     /**
      * @return string
      */
-    public function getTimeValue(){
+    public function getTimeValue()
+    {
         return $this->timeValue;
     }
 
     /**
      * @param string $timeValue
      */
-    public function setTimeValue($timeValue){
+    public function setTimeValue($timeValue)
+    {
         $this->timeValue = $timeValue;
     }
 
@@ -64,7 +72,8 @@ class LifecycleAction {
      * Use appendToXml to insert actions into xml.
      * @param \SimpleXMLElement $xmlRule
      */
-    public function appendToXml(&$xmlRule){
+    public function appendToXml(&$xmlRule)
+    {
         $xmlAction = $xmlRule->addChild($this->action);
         $xmlAction->addChild($this->timeSpec, $this->timeValue);
     }

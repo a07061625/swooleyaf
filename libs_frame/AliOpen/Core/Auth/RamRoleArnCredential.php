@@ -1,7 +1,8 @@
 <?php
 namespace AliOpen\Core\Auth;
 
-class RamRoleArnCredential extends AbstractCredential {
+class RamRoleArnCredential extends AbstractCredential
+{
     /**
      * @var string
      */
@@ -26,7 +27,8 @@ class RamRoleArnCredential extends AbstractCredential {
      * @param $roleArn
      * @param $roleSessionName
      */
-    public function __construct($accessKeyId, $accessSecret, $roleArn, $roleSessionName){
+    public function __construct($accessKeyId, $accessSecret, $roleArn, $roleSessionName)
+    {
         $this->accessKeyId = $accessKeyId;
         $this->accessSecret = $accessSecret;
         $this->roleArn = $roleArn;
@@ -36,63 +38,71 @@ class RamRoleArnCredential extends AbstractCredential {
     /**
      * @return string
      */
-    public function getAccessKeyId(){
+    public function getAccessKeyId()
+    {
         return $this->accessKeyId;
     }
 
     /**
      * @param $accessKeyId
      */
-    public function setAccessKeyId($accessKeyId){
+    public function setAccessKeyId($accessKeyId)
+    {
         $this->accessKeyId = $accessKeyId;
     }
 
     /**
      * @return string
      */
-    public function getAccessSecret(){
+    public function getAccessSecret()
+    {
         return $this->accessSecret;
     }
 
     /**
      * @param $accessSecret
      */
-    public function setAccessSecret($accessSecret){
+    public function setAccessSecret($accessSecret)
+    {
         $this->accessSecret = $accessSecret;
     }
 
     /**
      * @return string
      */
-    public function getRoleArn(){
+    public function getRoleArn()
+    {
         return $this->roleArn;
     }
 
     /**
      * @param $roleArn
      */
-    public function setRoleArn($roleArn){
+    public function setRoleArn($roleArn)
+    {
         $this->roleArn = $roleArn;
     }
 
     /**
      * @return string
      */
-    public function getRoleSessionName(){
+    public function getRoleSessionName()
+    {
         return $this->roleSessionName;
     }
 
     /**
      * @param $roleSessionName
      */
-    public function setRoleSessionName($roleSessionName){
+    public function setRoleSessionName($roleSessionName)
+    {
         $this->roleSessionName = $roleSessionName;
     }
 
     /**
      * @return null
      */
-    public function getSecurityToken(){
-        return null;
+    public function getSecurityToken()
+    {
     }
 }

@@ -1,7 +1,8 @@
 <?php
 namespace AliOss\Model;
 
-interface XmlConfig {
+interface XmlConfig
+{
     /**
      * Interface method: Parse the object from the xml.
      * @param string $strXml

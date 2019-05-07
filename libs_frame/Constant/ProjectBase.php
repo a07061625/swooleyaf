@@ -9,7 +9,8 @@ namespace Constant;
 
 use Traits\SimpleTrait;
 
-class ProjectBase {
+class ProjectBase
+{
     use SimpleTrait;
 
     //数据常量

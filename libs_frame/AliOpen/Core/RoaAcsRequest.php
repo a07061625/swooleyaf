@@ -3,7 +3,8 @@ namespace AliOpen\Core;
 
 use AliOpen\Core\Auth\BearerTokenCredential;
 
-abstract class RoaAcsRequest extends AcsRequest {
+abstract class RoaAcsRequest extends AcsRequest
+{
     /**
      * @var string
      */
@@ -12,6 +13,14 @@ abstract class RoaAcsRequest extends AcsRequest {
      * @var array
      */
     protected $pathParameters = [];
+    /**
+     * @var string
+     */
+    protected $method = 'RAW';
+    /**
+     * @var string
+     */
+    protected $acceptFormat = 'JSON';
     /**
      * @var array
      */
@@ -28,14 +37,6 @@ abstract class RoaAcsRequest extends AcsRequest {
      * @var string
      */
     private static $querySeparator = '&';
-    /**
-     * @var string
-     */
-    protected $method = 'RAW';
-    /**
-     * @var string
-     */
-    protected $acceptFormat = 'JSON';
 
     /**
      * @param $iSigner
@@ -43,7 +44,8 @@ abstract class RoaAcsRequest extends AcsRequest {
      * @param $domain
      * @return mixed|string
      */
-    public function composeUrl($iSigner, $credential, $domain){
+    public function composeUrl($iSigner, $credential, $domain)
+    {
         $this->headers['x-acs-version'] = &$this->version;
 
         $this->prepareHeader($iSigner, $credential);
@@ -84,9 +86,61 @@ abstract class RoaAcsRequest extends AcsRequest {
     }
 
     /**
+     * @return array
+     */
+    public function getPathParameters()
+    {
+        return $this->pathParameters;
+    }
+
+    /**
+     * @param $name
+     * @param $value
+     */
+    public function putPathParameter($name, $value)
+    {
+        $this->pathParameters[$name] = $value;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDomainParameter()
+    {
+        return $this->domainParameters;
+    }
+
+    /**
+     * @param $name
+     * @param $value
+     */
+    public function putDomainParameters($name, $value)
+    {
+        $this->domainParameters[$name] = $value;
+    }
+
+    /**
      * @return string
      */
-    private function concatQueryString(){
+    public function getUriPattern()
+    {
+        return $this->uriPattern;
+    }
+
+    /**
+     * @param $uriPattern
+     * @return mixed
+     */
+    public function setUriPattern($uriPattern)
+    {
+        return $this->uriPattern = $uriPattern;
+    }
+
+    /**
+     * @return string
+     */
+    private function concatQueryString()
+    {
         $sortMap = $this->queryParameters;
         if (null == $sortMap || count($sortMap) == 0) {
             return '';
@@ -112,7 +166,8 @@ abstract class RoaAcsRequest extends AcsRequest {
      * @param $iSigner
      * @param $credential
      */
-    private function prepareHeader($iSigner, $credential){
+    private function prepareHeader($iSigner, $credential)
+    {
         $this->headers['Date'] = gmdate($this->dateTimeFormat);
         if (null == $this->acceptFormat) {
             $this->acceptFormat = 'RAW';
@@ -144,7 +199,8 @@ abstract class RoaAcsRequest extends AcsRequest {
     /**
      * @return mixed|string
      */
-    private function replaceOccupiedParameters(){
+    private function replaceOccupiedParameters()
+    {
         $result = $this->uriPattern;
         foreach ($this->pathParameters as $pathParameterKey => $apiParameterValue) {
             $target = '[' . $pathParameterKey . ']';
@@ -157,7 +213,8 @@ abstract class RoaAcsRequest extends AcsRequest {
     /**
      * @return string
      */
-    private function buildCanonicalHeaders(){
+    private function buildCanonicalHeaders()
+    {
         $sortMap = [];
         foreach ($this->headers as $headerKey => $headerValue) {
             $key = strtolower($headerKey);
@@ -178,7 +235,8 @@ abstract class RoaAcsRequest extends AcsRequest {
      * @param $uri
      * @return array
      */
-    private function splitSubResource($uri){
+    private function splitSubResource($uri)
+    {
         $queIndex = strpos($uri, '?');
         $uriParts = [];
         if (null != $queIndex) {
@@ -195,7 +253,8 @@ abstract class RoaAcsRequest extends AcsRequest {
      * @param $uri
      * @return bool|mixed|string
      */
-    private function buildQueryString($uri){
+    private function buildQueryString($uri)
+    {
         $uriParts = $this->splitSubResource($uri);
         $sortMap = $this->queryParameters;
         if (isset($uriParts[1])) {
@@ -224,7 +283,8 @@ abstract class RoaAcsRequest extends AcsRequest {
      * @param $acceptFormat
      * @return string
      */
-    private function formatToAccept($acceptFormat){
+    private function formatToAccept($acceptFormat)
+    {
         if ($acceptFormat === 'JSON') {
             return 'application/json';
         }
@@ -234,50 +294,5 @@ abstract class RoaAcsRequest extends AcsRequest {
         }
 
         return 'application/octet-stream';
-    }
-
-    /**
-     * @return array
-     */
-    public function getPathParameters(){
-        return $this->pathParameters;
-    }
-
-    /**
-     * @param $name
-     * @param $value
-     */
-    public function putPathParameter($name, $value){
-        $this->pathParameters[$name] = $value;
-    }
-
-    /**
-     * @return array
-     */
-    public function getDomainParameter(){
-        return $this->domainParameters;
-    }
-
-    /**
-     * @param $name
-     * @param $value
-     */
-    public function putDomainParameters($name, $value){
-        $this->domainParameters[$name] = $value;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUriPattern(){
-        return $this->uriPattern;
-    }
-
-    /**
-     * @param $uriPattern
-     * @return mixed
-     */
-    public function setUriPattern($uriPattern){
-        return $this->uriPattern = $uriPattern;
     }
 }

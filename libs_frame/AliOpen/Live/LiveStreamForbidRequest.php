@@ -3,7 +3,8 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class LiveStreamForbidRequest extends RpcAcsRequest {
+class LiveStreamForbidRequest extends RpcAcsRequest
+{
     private $resumeTime;
     private $appName;
     private $liveStreamType;
@@ -13,80 +14,97 @@ class LiveStreamForbidRequest extends RpcAcsRequest {
     private $streamName;
     private $controlStreamAction;
 
-    public function __construct(){
-        parent::__construct("live", "2016-11-01", "ForbidLiveStream", "live", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('live', '2016-11-01', 'ForbidLiveStream', 'live', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getResumeTime(){
+    public function getResumeTime()
+    {
         return $this->resumeTime;
     }
 
-    public function setResumeTime($resumeTime){
+    public function setResumeTime($resumeTime)
+    {
         $this->resumeTime = $resumeTime;
-        $this->queryParameters["ResumeTime"] = $resumeTime;
+        $this->queryParameters['ResumeTime'] = $resumeTime;
     }
 
-    public function getAppName(){
+    public function getAppName()
+    {
         return $this->appName;
     }
 
-    public function setAppName($appName){
+    public function setAppName($appName)
+    {
         $this->appName = $appName;
-        $this->queryParameters["AppName"] = $appName;
+        $this->queryParameters['AppName'] = $appName;
     }
 
-    public function getLiveStreamType(){
+    public function getLiveStreamType()
+    {
         return $this->liveStreamType;
     }
 
-    public function setLiveStreamType($liveStreamType){
+    public function setLiveStreamType($liveStreamType)
+    {
         $this->liveStreamType = $liveStreamType;
-        $this->queryParameters["LiveStreamType"] = $liveStreamType;
+        $this->queryParameters['LiveStreamType'] = $liveStreamType;
     }
 
-    public function getDomainName(){
+    public function getDomainName()
+    {
         return $this->domainName;
     }
 
-    public function setDomainName($domainName){
+    public function setDomainName($domainName)
+    {
         $this->domainName = $domainName;
-        $this->queryParameters["DomainName"] = $domainName;
+        $this->queryParameters['DomainName'] = $domainName;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getOneshot(){
+    public function getOneshot()
+    {
         return $this->oneshot;
     }
 
-    public function setOneshot($oneshot){
+    public function setOneshot($oneshot)
+    {
         $this->oneshot = $oneshot;
-        $this->queryParameters["Oneshot"] = $oneshot;
+        $this->queryParameters['Oneshot'] = $oneshot;
     }
 
-    public function getStreamName(){
+    public function getStreamName()
+    {
         return $this->streamName;
     }
 
-    public function setStreamName($streamName){
+    public function setStreamName($streamName)
+    {
         $this->streamName = $streamName;
-        $this->queryParameters["StreamName"] = $streamName;
+        $this->queryParameters['StreamName'] = $streamName;
     }
 
-    public function getControlStreamAction(){
+    public function getControlStreamAction()
+    {
         return $this->controlStreamAction;
     }
 
-    public function setControlStreamAction($controlStreamAction){
+    public function setControlStreamAction($controlStreamAction)
+    {
         $this->controlStreamAction = $controlStreamAction;
-        $this->queryParameters["ControlStreamAction"] = $controlStreamAction;
+        $this->queryParameters['ControlStreamAction'] = $controlStreamAction;
     }
 }

@@ -1,29 +1,43 @@
 <?php
 namespace AliOss\Model;
 
-class StorageCapacityConfig implements XmlConfig {
+class StorageCapacityConfig implements XmlConfig
+{
     private $storageCapacity = 0;
 
     /**
      * StorageCapacityConfig constructor.
      * @param int $storageCapacity
      */
-    public function __construct($storageCapacity){
+    public function __construct($storageCapacity)
+    {
         $this->storageCapacity = $storageCapacity;
     }
 
     /**
-     * Not implemented
+     * To string
+     * @return string
      */
-    public function parseFromXml($strXml){
-        throw new OssException("Not implemented.");
+    public function __toString()
+    {
+        return $this->serializeToXml();
+    }
+
+    /**
+     * Not implemented
+     * @param mixed $strXml
+     */
+    public function parseFromXml($strXml)
+    {
+        throw new OssException('Not implemented.');
     }
 
     /**
      * Serialize StorageCapacityConfig into xml
      * @return string
      */
-    public function serializeToXml(){
+    public function serializeToXml()
+    {
         $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><BucketUserQos></BucketUserQos>');
         $xml->addChild('StorageCapacity', strval($this->storageCapacity));
 
@@ -31,18 +45,11 @@ class StorageCapacityConfig implements XmlConfig {
     }
 
     /**
-     * To string
-     * @return string
-     */
-    public function __toString(){
-        return $this->serializeToXml();
-    }
-
-    /**
      * Set storage capacity
      * @param int $storageCapacity
      */
-    public function setStorageCapacity($storageCapacity){
+    public function setStorageCapacity($storageCapacity)
+    {
         $this->storageCapacity = $storageCapacity;
     }
 
@@ -50,7 +57,8 @@ class StorageCapacityConfig implements XmlConfig {
      * Get storage capacity
      * @return int
      */
-    public function getStorageCapacity(){
+    public function getStorageCapacity()
+    {
         return $this->storageCapacity;
     }
 }

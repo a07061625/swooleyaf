@@ -1,11 +1,13 @@
 <?php
 namespace AliOss\Result;
 
-class CopyObjectResult extends Result {
+class CopyObjectResult extends Result
+{
     /**
      * @return array
      */
-    protected function parseDataFromResponse(){
+    protected function parseDataFromResponse()
+    {
         $body = $this->rawResponse->body;
         $xml = simplexml_load_string($body);
         $result = [];

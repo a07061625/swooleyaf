@@ -3,7 +3,8 @@ namespace AliOss\Model;
 
 use AliOss\Core\OssException;
 
-class CorsRule {
+class CorsRule
+{
     private $allowedHeaders = [];
     private $allowedOrigins = [];
     private $allowedMethods = [];
@@ -14,7 +15,8 @@ class CorsRule {
      * Add an allowedOrigin rule
      * @param string $allowedOrigin
      */
-    public function addAllowedOrigin($allowedOrigin){
+    public function addAllowedOrigin($allowedOrigin)
+    {
         if (!empty($allowedOrigin)) {
             $this->allowedOrigins[] = $allowedOrigin;
         }
@@ -24,7 +26,8 @@ class CorsRule {
      * Add an allowedMethod rule
      * @param string $allowedMethod
      */
-    public function addAllowedMethod($allowedMethod){
+    public function addAllowedMethod($allowedMethod)
+    {
         if (!empty($allowedMethod)) {
             $this->allowedMethods[] = $allowedMethod;
         }
@@ -34,7 +37,8 @@ class CorsRule {
      * Add an allowedHeader rule
      * @param string $allowedHeader
      */
-    public function addAllowedHeader($allowedHeader){
+    public function addAllowedHeader($allowedHeader)
+    {
         if (!empty($allowedHeader)) {
             $this->allowedHeaders[] = $allowedHeader;
         }
@@ -44,7 +48,8 @@ class CorsRule {
      * Add an exposeHeader rule
      * @param string $exposeHeader
      */
-    public function addExposeHeader($exposeHeader){
+    public function addExposeHeader($exposeHeader)
+    {
         if (!empty($exposeHeader)) {
             $this->exposeHeaders[] = $exposeHeader;
         }
@@ -53,14 +58,16 @@ class CorsRule {
     /**
      * @return int
      */
-    public function getMaxAgeSeconds(){
+    public function getMaxAgeSeconds()
+    {
         return $this->maxAgeSeconds;
     }
 
     /**
      * @param int $maxAgeSeconds
      */
-    public function setMaxAgeSeconds($maxAgeSeconds){
+    public function setMaxAgeSeconds($maxAgeSeconds)
+    {
         $this->maxAgeSeconds = $maxAgeSeconds;
     }
 
@@ -68,7 +75,8 @@ class CorsRule {
      * Get the AllowedHeaders list
      * @return string[]
      */
-    public function getAllowedHeaders(){
+    public function getAllowedHeaders()
+    {
         return $this->allowedHeaders;
     }
 
@@ -76,7 +84,8 @@ class CorsRule {
      * Get the AllowedOrigins list
      * @return string[]
      */
-    public function getAllowedOrigins(){
+    public function getAllowedOrigins()
+    {
         return $this->allowedOrigins;
     }
 
@@ -84,7 +93,8 @@ class CorsRule {
      * Get the AllowedMethods list
      * @return string[]
      */
-    public function getAllowedMethods(){
+    public function getAllowedMethods()
+    {
         return $this->allowedMethods;
     }
 
@@ -92,7 +102,8 @@ class CorsRule {
      * Get the ExposeHeaders list
      * @return string[]
      */
-    public function getExposeHeaders(){
+    public function getExposeHeaders()
+    {
         return $this->exposeHeaders;
     }
 
@@ -101,9 +112,10 @@ class CorsRule {
      * @param \SimpleXMLElement $xmlRule
      * @throws OssException
      */
-    public function appendToXml(&$xmlRule){
+    public function appendToXml(&$xmlRule)
+    {
         if (!isset($this->maxAgeSeconds)) {
-            throw new OssException("maxAgeSeconds is not set in the Rule");
+            throw new OssException('maxAgeSeconds is not set in the Rule');
         }
         foreach ($this->allowedOrigins as $allowedOrigin) {
             $xmlRule->addChild(CorsConfig::OSS_CORS_ALLOWED_ORIGIN, $allowedOrigin);

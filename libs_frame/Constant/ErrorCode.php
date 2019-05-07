@@ -9,7 +9,8 @@ namespace Constant;
 
 use Traits\SimpleTrait;
 
-class ErrorCode {
+class ErrorCode
+{
     use SimpleTrait;
 
     //公共错误,取值范围:10000-99999
@@ -341,7 +342,8 @@ class ErrorCode {
      * @param int $errorCode 错误码
      * @return mixed|string
      */
-    public static function getMsg(int $errorCode){
+    public static function getMsg(int $errorCode)
+    {
         return self::$msgArr[$errorCode] ?? '';
     }
 }

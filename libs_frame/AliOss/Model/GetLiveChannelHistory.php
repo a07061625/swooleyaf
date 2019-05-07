@@ -1,14 +1,17 @@
 <?php
 namespace AliOss\Model;
 
-class GetLiveChannelHistory implements XmlConfig {
+class GetLiveChannelHistory implements XmlConfig
+{
     private $liveRecordList = [];
 
-    public function getLiveRecordList(){
+    public function getLiveRecordList()
+    {
         return $this->liveRecordList;
     }
 
-    public function parseFromXml($strXml){
+    public function parseFromXml($strXml)
+    {
         $xml = simplexml_load_string($strXml);
 
         if (isset($xml->LiveRecord)) {
@@ -20,7 +23,8 @@ class GetLiveChannelHistory implements XmlConfig {
         }
     }
 
-    public function serializeToXml(){
-        throw new OssException("Not implemented.");
+    public function serializeToXml()
+    {
+        throw new OssException('Not implemented.');
     }
 }

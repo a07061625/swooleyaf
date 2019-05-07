@@ -1,15 +1,25 @@
 <?php
 namespace AliOss\Model;
 
-class RefererConfig implements XmlConfig {
+class RefererConfig implements XmlConfig
+{
     private $allowEmptyReferer = true;
     private $refererList = [];
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->serializeToXml();
+    }
 
     /**
      * @param string $strXml
      * @return null
      */
-    public function parseFromXml($strXml){
+    public function parseFromXml($strXml)
+    {
         $xml = simplexml_load_string($strXml);
         if (!isset($xml->AllowEmptyReferer)) {
             return;
@@ -29,7 +39,8 @@ class RefererConfig implements XmlConfig {
      * serialize the RefererConfig object into xml string
      * @return string
      */
-    public function serializeToXml(){
+    public function serializeToXml()
+    {
         $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><RefererConfiguration></RefererConfiguration>');
         if ($this->allowEmptyReferer) {
             $xml->addChild('AllowEmptyReferer', 'true');
@@ -45,37 +56,34 @@ class RefererConfig implements XmlConfig {
     }
 
     /**
-     * @return string
-     */
-    public function __toString(){
-        return $this->serializeToXml();
-    }
-
-    /**
      * @param boolean $allowEmptyReferer
      */
-    public function setAllowEmptyReferer($allowEmptyReferer){
+    public function setAllowEmptyReferer($allowEmptyReferer)
+    {
         $this->allowEmptyReferer = $allowEmptyReferer;
     }
 
     /**
      * @param string $referer
      */
-    public function addReferer($referer){
+    public function addReferer($referer)
+    {
         $this->refererList[] = $referer;
     }
 
     /**
      * @return boolean
      */
-    public function isAllowEmptyReferer(){
+    public function isAllowEmptyReferer()
+    {
         return $this->allowEmptyReferer;
     }
 
     /**
      * @return array
      */
-    public function getRefererList(){
+    public function getRefererList()
+    {
         return $this->refererList;
     }
 }

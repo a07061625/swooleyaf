@@ -3,50 +3,60 @@ namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class MqttBuyProduceRequest extends RpcAcsRequest {
+class MqttBuyProduceRequest extends RpcAcsRequest
+{
     private $preventCache;
     private $onsRegionId;
     private $onsPlatform;
     private $data;
 
-    public function __construct(){
-        parent::__construct("Ons", "2017-09-18", "OnsMqttBuyProduce");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Ons', '2017-09-18', 'OnsMqttBuyProduce');
+        $this->setMethod('POST');
     }
 
-    public function getPreventCache(){
+    public function getPreventCache()
+    {
         return $this->preventCache;
     }
 
-    public function setPreventCache($preventCache){
+    public function setPreventCache($preventCache)
+    {
         $this->preventCache = $preventCache;
-        $this->queryParameters["PreventCache"] = $preventCache;
+        $this->queryParameters['PreventCache'] = $preventCache;
     }
 
-    public function getOnsRegionId(){
+    public function getOnsRegionId()
+    {
         return $this->onsRegionId;
     }
 
-    public function setOnsRegionId($onsRegionId){
+    public function setOnsRegionId($onsRegionId)
+    {
         $this->onsRegionId = $onsRegionId;
-        $this->queryParameters["OnsRegionId"] = $onsRegionId;
+        $this->queryParameters['OnsRegionId'] = $onsRegionId;
     }
 
-    public function getOnsPlatform(){
+    public function getOnsPlatform()
+    {
         return $this->onsPlatform;
     }
 
-    public function setOnsPlatform($onsPlatform){
+    public function setOnsPlatform($onsPlatform)
+    {
         $this->onsPlatform = $onsPlatform;
-        $this->queryParameters["OnsPlatform"] = $onsPlatform;
+        $this->queryParameters['OnsPlatform'] = $onsPlatform;
     }
 
-    public function getdata(){
+    public function getdata()
+    {
         return $this->data;
     }
 
-    public function setdata($data){
+    public function setdata($data)
+    {
         $this->data = $data;
-        $this->queryParameters["data"] = $data;
+        $this->queryParameters['data'] = $data;
     }
 }

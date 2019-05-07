@@ -3,7 +3,8 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class VideoPlayInfoGetRequest extends RpcAcsRequest {
+class VideoPlayInfoGetRequest extends RpcAcsRequest
+{
     private $signVersion;
     private $resourceOwnerId;
     private $clientVersion;
@@ -14,89 +15,108 @@ class VideoPlayInfoGetRequest extends RpcAcsRequest {
     private $ownerId;
     private $clientTS;
 
-    public function __construct(){
-        parent::__construct("vod", "2017-03-21", "GetVideoPlayInfo", "vod", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('vod', '2017-03-21', 'GetVideoPlayInfo', 'vod', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getSignVersion(){
+    public function getSignVersion()
+    {
         return $this->signVersion;
     }
 
-    public function setSignVersion($signVersion){
+    public function setSignVersion($signVersion)
+    {
         $this->signVersion = $signVersion;
-        $this->queryParameters["SignVersion"] = $signVersion;
+        $this->queryParameters['SignVersion'] = $signVersion;
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getClientVersion(){
+    public function getClientVersion()
+    {
         return $this->clientVersion;
     }
 
-    public function setClientVersion($clientVersion){
+    public function setClientVersion($clientVersion)
+    {
         $this->clientVersion = $clientVersion;
-        $this->queryParameters["ClientVersion"] = $clientVersion;
+        $this->queryParameters['ClientVersion'] = $clientVersion;
     }
 
-    public function getResourceOwnerAccount(){
+    public function getResourceOwnerAccount()
+    {
         return $this->resourceOwnerAccount;
     }
 
-    public function setResourceOwnerAccount($resourceOwnerAccount){
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
-    public function getChannel(){
+    public function getChannel()
+    {
         return $this->channel;
     }
 
-    public function setChannel($channel){
+    public function setChannel($channel)
+    {
         $this->channel = $channel;
-        $this->queryParameters["Channel"] = $channel;
+        $this->queryParameters['Channel'] = $channel;
     }
 
-    public function getPlaySign(){
+    public function getPlaySign()
+    {
         return $this->playSign;
     }
 
-    public function setPlaySign($playSign){
+    public function setPlaySign($playSign)
+    {
         $this->playSign = $playSign;
-        $this->queryParameters["PlaySign"] = $playSign;
+        $this->queryParameters['PlaySign'] = $playSign;
     }
 
-    public function getVideoId(){
+    public function getVideoId()
+    {
         return $this->videoId;
     }
 
-    public function setVideoId($videoId){
+    public function setVideoId($videoId)
+    {
         $this->videoId = $videoId;
-        $this->queryParameters["VideoId"] = $videoId;
+        $this->queryParameters['VideoId'] = $videoId;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getClientTS(){
+    public function getClientTS()
+    {
         return $this->clientTS;
     }
 
-    public function setClientTS($clientTS){
+    public function setClientTS($clientTS)
+    {
         $this->clientTS = $clientTS;
-        $this->queryParameters["ClientTS"] = $clientTS;
+        $this->queryParameters['ClientTS'] = $clientTS;
     }
 }

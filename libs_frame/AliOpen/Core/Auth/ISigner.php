@@ -1,7 +1,8 @@
 <?php
 namespace AliOpen\Core\Auth;
 
-interface ISigner {
+interface ISigner
+{
     public function getSignatureMethod();
 
     public function getSignatureVersion();

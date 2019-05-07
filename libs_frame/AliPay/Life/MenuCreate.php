@@ -11,7 +11,8 @@ use AliPay\AliPayBase;
 use Constant\ErrorCode;
 use Exception\AliPay\AliPayLifeException;
 
-class MenuCreate extends AliPayBase {
+class MenuCreate extends AliPayBase
+{
     /**
      * 菜单类型
      * @var string
@@ -23,22 +24,25 @@ class MenuCreate extends AliPayBase {
      */
     private $button = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct($appId);
         $this->biz_content['type'] = 'text';
         $this->biz_content['button'] = [];
         $this->setMethod('alipay.open.public.menu.create');
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $type
      * @throws \Exception\AliPay\AliPayLifeException
      */
-    public function setType(string $type){
-        if(in_array($type, ['icon', 'text'])){
+    public function setType(string $type)
+    {
+        if (in_array($type, ['icon', 'text'], true)) {
             $this->biz_content['type'] = $type;
         } else {
             throw new AliPayLifeException('菜单类型不合法', ErrorCode::ALIPAY_LIFE_PARAM_ERROR);
@@ -49,16 +53,18 @@ class MenuCreate extends AliPayBase {
      * @param array $button
      * @throws \Exception\AliPay\AliPayLifeException
      */
-    public function addButton(array $button){
-        if(!empty($button)){
+    public function addButton(array $button)
+    {
+        if (!empty($button)) {
             $this->biz_content['button'][] = $button;
         } else {
             throw new AliPayLifeException('菜单内容不合法', ErrorCode::ALIPAY_LIFE_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(count($this->biz_content['button']) == 0){
+    public function getDetail() : array
+    {
+        if (count($this->biz_content['button']) == 0) {
             throw new AliPayLifeException('菜单列表不能为空', ErrorCode::ALIPAY_LIFE_PARAM_ERROR);
         }
 

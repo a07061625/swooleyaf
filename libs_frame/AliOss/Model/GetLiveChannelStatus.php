@@ -1,7 +1,8 @@
 <?php
 namespace AliOss\Model;
 
-class GetLiveChannelStatus implements XmlConfig {
+class GetLiveChannelStatus implements XmlConfig
+{
     private $status;
     private $connectedTime;
     private $remoteAddr;
@@ -14,51 +15,63 @@ class GetLiveChannelStatus implements XmlConfig {
     private $audioSampleRate;
     private $audioCodec;
 
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->status;
     }
 
-    public function getConnectedTime(){
+    public function getConnectedTime()
+    {
         return $this->connectedTime;
     }
 
-    public function getRemoteAddr(){
+    public function getRemoteAddr()
+    {
         return $this->remoteAddr;
     }
 
-    public function getVideoWidth(){
+    public function getVideoWidth()
+    {
         return $this->videoWidth;
     }
 
-    public function getVideoHeight(){
+    public function getVideoHeight()
+    {
         return $this->videoHeight;
     }
 
-    public function getVideoFrameRate(){
+    public function getVideoFrameRate()
+    {
         return $this->videoFrameRate;
     }
 
-    public function getVideoBandwidth(){
+    public function getVideoBandwidth()
+    {
         return $this->videoBandwidth;
     }
 
-    public function getVideoCodec(){
+    public function getVideoCodec()
+    {
         return $this->videoCodec;
     }
 
-    public function getAudioBandwidth(){
+    public function getAudioBandwidth()
+    {
         return $this->audioBandwidth;
     }
 
-    public function getAudioSampleRate(){
+    public function getAudioSampleRate()
+    {
         return $this->audioSampleRate;
     }
 
-    public function getAudioCodec(){
+    public function getAudioCodec()
+    {
         return $this->audioCodec;
     }
 
-    public function parseFromXml($strXml){
+    public function parseFromXml($strXml)
+    {
         $xml = simplexml_load_string($strXml);
         $this->status = strval($xml->Status);
         $this->connectedTime = strval($xml->ConnectedTime);
@@ -83,7 +96,8 @@ class GetLiveChannelStatus implements XmlConfig {
         }
     }
 
-    public function serializeToXml(){
-        throw new OssException("Not implemented.");
+    public function serializeToXml()
+    {
+        throw new OssException('Not implemented.');
     }
 }

@@ -13,7 +13,8 @@ use DesignPatterns\Singletons\AliPayConfigSingleton;
 use Exception\AliPay\AliPayPayException;
 use Tool\Tool;
 
-class PayWap extends AliPayBase {
+class PayWap extends AliPayBase
+{
     /**
      * 表单ID
      * @var string
@@ -60,7 +61,8 @@ class PayWap extends AliPayBase {
      */
     private $goods_type = '';
 
-    public function __construct(string $appId) {
+    public function __construct(string $appId)
+    {
         parent::__construct($appId);
         $payConfig = AliPayConfigSingleton::getInstance()->getPayConfig($appId);
         $this->formId = 'aliwappay' . Tool::getNowTime();
@@ -72,13 +74,15 @@ class PayWap extends AliPayBase {
         $this->setMethod('alipay.trade.wap.pay');
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @return string
      */
-    public function getFormId() : string {
+    public function getFormId() : string
+    {
         return $this->formId;
     }
 
@@ -86,9 +90,10 @@ class PayWap extends AliPayBase {
      * @param string $subject
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setSubject(string $subject) {
+    public function setSubject(string $subject)
+    {
         $title = mb_substr(trim($subject), 0, 128);
-        if(strlen($title) > 0){
+        if (strlen($title) > 0) {
             $this->biz_content['subject'] = $title;
         } else {
             throw new AliPayPayException('订单标题不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
@@ -99,7 +104,8 @@ class PayWap extends AliPayBase {
      * @param string $outTradeNo
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setOutTradeNo(string $outTradeNo) {
+    public function setOutTradeNo(string $outTradeNo)
+    {
         if (ctype_digit($outTradeNo)) {
             $this->biz_content['out_trade_no'] = $outTradeNo;
         } else {
@@ -110,7 +116,8 @@ class PayWap extends AliPayBase {
     /**
      * @param string $timeoutExpress
      */
-    public function setTimeoutExpress(string $timeoutExpress) {
+    public function setTimeoutExpress(string $timeoutExpress)
+    {
         if (strlen($timeoutExpress) > 0) {
             $this->biz_content['timeout_express'] = $timeoutExpress;
         }
@@ -120,7 +127,8 @@ class PayWap extends AliPayBase {
      * @param int $totalAmount
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setTotalAmount(int $totalAmount) {
+    public function setTotalAmount(int $totalAmount)
+    {
         if ($totalAmount > 0) {
             $this->biz_content['total_amount'] = number_format(($totalAmount / 100), 2, '.', '');
         } else {
@@ -132,11 +140,13 @@ class PayWap extends AliPayBase {
      * @param string $body
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setBody(string $body){
+    public function setBody(string $body)
+    {
         $this->biz_content['body'] = substr(trim($body), 0, 128);
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         if (strlen($this->return_url) == 0) {
             throw new AliPayPayException('同步通知地址不能为空', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }

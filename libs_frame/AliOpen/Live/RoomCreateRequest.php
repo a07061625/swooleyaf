@@ -3,50 +3,60 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class RoomCreateRequest extends RpcAcsRequest {
+class RoomCreateRequest extends RpcAcsRequest
+{
     private $anchorId;
     private $ownerId;
     private $roomId;
     private $appId;
 
-    public function __construct(){
-        parent::__construct("live", "2016-11-01", "CreateRoom", "live", "openAPI");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('live', '2016-11-01', 'CreateRoom', 'live', 'openAPI');
+        $this->setMethod('POST');
     }
 
-    public function getAnchorId(){
+    public function getAnchorId()
+    {
         return $this->anchorId;
     }
 
-    public function setAnchorId($anchorId){
+    public function setAnchorId($anchorId)
+    {
         $this->anchorId = $anchorId;
-        $this->queryParameters["AnchorId"] = $anchorId;
+        $this->queryParameters['AnchorId'] = $anchorId;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getRoomId(){
+    public function getRoomId()
+    {
         return $this->roomId;
     }
 
-    public function setRoomId($roomId){
+    public function setRoomId($roomId)
+    {
         $this->roomId = $roomId;
-        $this->queryParameters["RoomId"] = $roomId;
+        $this->queryParameters['RoomId'] = $roomId;
     }
 
-    public function getAppId(){
+    public function getAppId()
+    {
         return $this->appId;
     }
 
-    public function setAppId($appId){
+    public function setAppId($appId)
+    {
         $this->appId = $appId;
-        $this->queryParameters["AppId"] = $appId;
+        $this->queryParameters['AppId'] = $appId;
     }
 }

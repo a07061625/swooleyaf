@@ -1,10 +1,12 @@
 <?php
 namespace AliOss\Core;
 
-class OssException extends \Exception {
+class OssException extends \Exception
+{
     private $details = [];
 
-    public function __construct($details){
+    public function __construct($details)
+    {
         if (is_array($details)) {
             $message = $details['code'] . ': ' . $details['message'] . ' RequestId: ' . $details['request-id'];
             parent::__construct($message);
@@ -15,23 +17,28 @@ class OssException extends \Exception {
         }
     }
 
-    public function getHTTPStatus(){
+    public function getHTTPStatus()
+    {
         return isset($this->details['status']) ? $this->details['status'] : '';
     }
 
-    public function getRequestId(){
+    public function getRequestId()
+    {
         return isset($this->details['request-id']) ? $this->details['request-id'] : '';
     }
 
-    public function getErrorCode(){
+    public function getErrorCode()
+    {
         return isset($this->details['code']) ? $this->details['code'] : '';
     }
 
-    public function getErrorMessage(){
+    public function getErrorMessage()
+    {
         return isset($this->details['message']) ? $this->details['message'] : '';
     }
 
-    public function getDetails(){
+    public function getDetails()
+    {
         return isset($this->details['body']) ? $this->details['body'] : '';
     }
 }

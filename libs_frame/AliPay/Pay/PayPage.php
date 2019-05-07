@@ -13,7 +13,8 @@ use DesignPatterns\Singletons\AliPayConfigSingleton;
 use Exception\AliPay\AliPayPayException;
 use Tool\Tool;
 
-class PayPage extends AliPayBase {
+class PayPage extends AliPayBase
+{
     /**
      * 商户订单号
      * @var string
@@ -145,7 +146,8 @@ class PayPage extends AliPayBase {
      */
     private $ext_user_info = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct($appId);
         $payConfig = AliPayConfigSingleton::getInstance()->getPayConfig($appId);
         $this->notify_url = $payConfig->getUrlNotify();
@@ -157,15 +159,17 @@ class PayPage extends AliPayBase {
         $this->setMethod('alipay.trade.page.pay');
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $outTradeNo
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setOutTradeNo(string $outTradeNo){
-        if(ctype_digit($outTradeNo)){
+    public function setOutTradeNo(string $outTradeNo)
+    {
+        if (ctype_digit($outTradeNo)) {
             $this->biz_content['out_trade_no'] = $outTradeNo;
         } else {
             throw new AliPayPayException('商户订单号不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
@@ -176,8 +180,9 @@ class PayPage extends AliPayBase {
      * @param int $totalAmount
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setTotalAmount(int $totalAmount){
-        if(($totalAmount > 0) && ($totalAmount <= 10000000000)){
+    public function setTotalAmount(int $totalAmount)
+    {
+        if (($totalAmount > 0) && ($totalAmount <= 10000000000)) {
             $this->biz_content['total_amount'] = number_format(($totalAmount / 100), 2, '.', '');
         } else {
             throw new AliPayPayException('订单总金额不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
@@ -188,9 +193,10 @@ class PayPage extends AliPayBase {
      * @param string $subject
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setSubject(string $subject){
+    public function setSubject(string $subject)
+    {
         $title = mb_substr(trim($subject), 0, 128);
-        if(strlen($title) > 0){
+        if (strlen($title) > 0) {
             $this->biz_content['subject'] = $title;
         } else {
             throw new AliPayPayException('订单标题不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
@@ -200,7 +206,8 @@ class PayPage extends AliPayBase {
     /**
      * @param string $body
      */
-    public function setBody(string $body){
+    public function setBody(string $body)
+    {
         $this->biz_content['body'] = substr(trim($body), 0, 128);
     }
 
@@ -208,8 +215,9 @@ class PayPage extends AliPayBase {
      * @param int $timeExpire
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setTimeExpire(int $timeExpire){
-        if($timeExpire > time()){
+    public function setTimeExpire(int $timeExpire)
+    {
+        if ($timeExpire > time()) {
             $this->biz_content['time_expire'] = date('Y-m-d H:i', $timeExpire);
         } else {
             throw new AliPayPayException('绝对超时时间不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
@@ -219,8 +227,9 @@ class PayPage extends AliPayBase {
     /**
      * @param array $goodsDetail
      */
-    public function setGoodsDetail(array $goodsDetail){
-        if(!empty($goodsDetail)){
+    public function setGoodsDetail(array $goodsDetail)
+    {
+        if (!empty($goodsDetail)) {
             $this->biz_content['goods_detail'] = $goodsDetail;
         }
     }
@@ -228,8 +237,9 @@ class PayPage extends AliPayBase {
     /**
      * @param array $passbackParams
      */
-    public function setPassbackParams(array $passbackParams){
-        if(!empty($passbackParams)){
+    public function setPassbackParams(array $passbackParams)
+    {
+        if (!empty($passbackParams)) {
             $this->biz_content['passback_params'] = http_build_query($passbackParams);
         }
     }
@@ -237,8 +247,9 @@ class PayPage extends AliPayBase {
     /**
      * @param array $extendParams
      */
-    public function setExtendParams(array $extendParams){
-        if(!empty($extendParams)){
+    public function setExtendParams(array $extendParams)
+    {
+        if (!empty($extendParams)) {
             $this->biz_content['extend_params'] = $extendParams;
         }
     }
@@ -247,8 +258,9 @@ class PayPage extends AliPayBase {
      * @param string $goodsType
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setGoodsType(string $goodsType){
-        if(in_array($goodsType, ['0', '1'])){
+    public function setGoodsType(string $goodsType)
+    {
+        if (in_array($goodsType, ['0', '1'], true)) {
             $this->biz_content['goods_type'] = $goodsType;
         } else {
             throw new AliPayPayException('商品主类型不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
@@ -258,8 +270,9 @@ class PayPage extends AliPayBase {
     /**
      * @param string $timeoutExpress
      */
-    public function setTimeoutExpress(string $timeoutExpress){
-        if(strlen($timeoutExpress) > 0){
+    public function setTimeoutExpress(string $timeoutExpress)
+    {
+        if (strlen($timeoutExpress) > 0) {
             $this->biz_content['timeout_express'] = $timeoutExpress;
         }
     }
@@ -267,8 +280,9 @@ class PayPage extends AliPayBase {
     /**
      * @param array $promoParams
      */
-    public function setPromoParams(array $promoParams){
-        if(!empty($promoParams)){
+    public function setPromoParams(array $promoParams)
+    {
+        if (!empty($promoParams)) {
             $this->biz_content['promo_params'] = Tool::jsonEncode($promoParams, JSON_UNESCAPED_UNICODE);
         }
     }
@@ -276,8 +290,9 @@ class PayPage extends AliPayBase {
     /**
      * @param array $royaltyInfo
      */
-    public function setRoyaltyInfo(array $royaltyInfo){
-        if(!empty($royaltyInfo)){
+    public function setRoyaltyInfo(array $royaltyInfo)
+    {
+        if (!empty($royaltyInfo)) {
             $this->biz_content['royalty_info'] = $royaltyInfo;
         }
     }
@@ -285,8 +300,9 @@ class PayPage extends AliPayBase {
     /**
      * @param array $subMerchant
      */
-    public function setSubMerchant(array $subMerchant){
-        if(!empty($subMerchant)){
+    public function setSubMerchant(array $subMerchant)
+    {
+        if (!empty($subMerchant)) {
             $this->biz_content['sub_merchant'] = $subMerchant;
         }
     }
@@ -295,9 +311,10 @@ class PayPage extends AliPayBase {
      * @param array $payChannels
      * @param int $channelType
      */
-    public function setPayChannels(array $payChannels,int $channelType) {
-        if(!empty($payChannels)){
-            if($channelType == 0){
+    public function setPayChannels(array $payChannels, int $channelType)
+    {
+        if (!empty($payChannels)) {
+            if ($channelType == 0) {
                 $this->biz_content['disable_pay_channels'] = implode(',', $payChannels);
             } else {
                 $this->biz_content['enable_pay_channels'] = implode(',', $payChannels);
@@ -308,7 +325,8 @@ class PayPage extends AliPayBase {
     /**
      * @param string $storeId
      */
-    public function setStoreId(string $storeId){
+    public function setStoreId(string $storeId)
+    {
         $this->biz_content['store_id'] = trim($storeId);
     }
 
@@ -316,8 +334,9 @@ class PayPage extends AliPayBase {
      * @param string $qrPayMode
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setQrPayMode(string $qrPayMode){
-        if(in_array($qrPayMode, ['0', '1', '2', '3', '4'])){
+    public function setQrPayMode(string $qrPayMode)
+    {
+        if (in_array($qrPayMode, ['0', '1', '2', '3', '4'], true)) {
             $this->biz_content['qr_pay_mode'] = $qrPayMode;
         } else {
             throw new AliPayPayException('扫码支付方式不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
@@ -327,8 +346,9 @@ class PayPage extends AliPayBase {
     /**
      * @param int $qrcodeWidth
      */
-    public function setQrcodeWidth(int $qrcodeWidth){
-        if($qrcodeWidth > 0){
+    public function setQrcodeWidth(int $qrcodeWidth)
+    {
+        if ($qrcodeWidth > 0) {
             $this->biz_content['qrcode_width'] = $qrcodeWidth;
         }
     }
@@ -336,8 +356,9 @@ class PayPage extends AliPayBase {
     /**
      * @param array $settleInfo
      */
-    public function setSettleInfo(array $settleInfo){
-        if(!empty($settleInfo)){
+    public function setSettleInfo(array $settleInfo)
+    {
+        if (!empty($settleInfo)) {
             $this->biz_content['settle_info'] = $settleInfo;
         }
     }
@@ -345,8 +366,9 @@ class PayPage extends AliPayBase {
     /**
      * @param array $invoiceInfo
      */
-    public function setInvoiceInfo(array $invoiceInfo){
-        if(!empty($invoiceInfo)){
+    public function setInvoiceInfo(array $invoiceInfo)
+    {
+        if (!empty($invoiceInfo)) {
             $this->biz_content['invoice_info'] = $invoiceInfo;
         }
     }
@@ -354,8 +376,9 @@ class PayPage extends AliPayBase {
     /**
      * @param array $agreementSignParams
      */
-    public function setAgreementSignParams(array $agreementSignParams){
-        if(!empty($agreementSignParams)){
+    public function setAgreementSignParams(array $agreementSignParams)
+    {
+        if (!empty($agreementSignParams)) {
             $this->biz_content['agreement_sign_params'] = $agreementSignParams;
         }
     }
@@ -364,8 +387,9 @@ class PayPage extends AliPayBase {
      * @param string $integrationType
      * @throws \Exception\AliPay\AliPayPayException
      */
-    public function setIntegrationType(string $integrationType){
-        if(in_array($integrationType, ['ALIAPP', 'PCWEB'])){
+    public function setIntegrationType(string $integrationType)
+    {
+        if (in_array($integrationType, ['ALIAPP', 'PCWEB'], true)) {
             $this->biz_content['integration_type'] = $integrationType;
         } else {
             throw new AliPayPayException('页面集成方式不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
@@ -375,8 +399,9 @@ class PayPage extends AliPayBase {
     /**
      * @param string $requestFromUrl
      */
-    public function setRequestFromUrl(string $requestFromUrl){
-        if(strlen($requestFromUrl) > 0){
+    public function setRequestFromUrl(string $requestFromUrl)
+    {
+        if (strlen($requestFromUrl) > 0) {
             $this->biz_content['request_from_url'] = $requestFromUrl;
         }
     }
@@ -384,8 +409,9 @@ class PayPage extends AliPayBase {
     /**
      * @param array $businessParams
      */
-    public function setBusinessParams(array $businessParams){
-        if(!empty($businessParams)){
+    public function setBusinessParams(array $businessParams)
+    {
+        if (!empty($businessParams)) {
             $this->biz_content['business_params'] = Tool::jsonEncode($businessParams, JSON_UNESCAPED_UNICODE);
         }
     }
@@ -393,20 +419,22 @@ class PayPage extends AliPayBase {
     /**
      * @param array $extUserInfo
      */
-    public function setExtUserInfo(array $extUserInfo){
-        if(!empty($extUserInfo)){
+    public function setExtUserInfo(array $extUserInfo)
+    {
+        if (!empty($extUserInfo)) {
             $this->biz_content['ext_user_info'] = $extUserInfo;
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->biz_content['out_trade_no'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->biz_content['out_trade_no'])) {
             throw new AliPayPayException('商户订单号不能为空', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
-        if(!isset($this->biz_content['total_amount'])){
+        if (!isset($this->biz_content['total_amount'])) {
             throw new AliPayPayException('订单总金额不能为空', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
-        if(!isset($this->biz_content['subject'])){
+        if (!isset($this->biz_content['subject'])) {
             throw new AliPayPayException('订单标题不能为空', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
 

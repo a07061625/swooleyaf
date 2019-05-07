@@ -1,10 +1,11 @@
 <?php
 namespace AliOss\Model;
 
-class UploadInfo {
-    private $key = "";
-    private $uploadId = "";
-    private $initiated = "";
+class UploadInfo
+{
+    private $key = '';
+    private $uploadId = '';
+    private $initiated = '';
 
     /**
      * UploadInfo constructor.
@@ -12,7 +13,8 @@ class UploadInfo {
      * @param string $uploadId
      * @param string $initiated
      */
-    public function __construct($key, $uploadId, $initiated){
+    public function __construct($key, $uploadId, $initiated)
+    {
         $this->key = $key;
         $this->uploadId = $uploadId;
         $this->initiated = $initiated;
@@ -21,21 +23,24 @@ class UploadInfo {
     /**
      * @return string
      */
-    public function getKey(){
+    public function getKey()
+    {
         return $this->key;
     }
 
     /**
      * @return string
      */
-    public function getUploadId(){
+    public function getUploadId()
+    {
         return $this->uploadId;
     }
 
     /**
      * @return string
      */
-    public function getInitiated(){
+    public function getInitiated()
+    {
         return $this->initiated;
     }
 }

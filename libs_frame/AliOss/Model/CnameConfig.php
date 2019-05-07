@@ -3,12 +3,19 @@ namespace AliOss\Model;
 
 use AliOss\Core\OssException;
 
-class CnameConfig implements XmlConfig {
+class CnameConfig implements XmlConfig
+{
     const OSS_MAX_RULES = 10;
     private $cnameList = [];
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->cnameList = [];
+    }
+
+    public function __toString()
+    {
+        return $this->serializeToXml();
     }
 
     /**
@@ -35,18 +42,21 @@ class CnameConfig implements XmlConfig {
      *    }
      *  }
      */
-    public function getCnames(){
+    public function getCnames()
+    {
         return $this->cnameList;
     }
 
-    public function addCname($cname){
+    public function addCname($cname)
+    {
         if (count($this->cnameList) >= self::OSS_MAX_RULES) {
-            throw new OssException("num of cname in the config exceeds self::OSS_MAX_RULES: " . strval(self::OSS_MAX_RULES));
+            throw new OssException('num of cname in the config exceeds self::OSS_MAX_RULES: ' . strval(self::OSS_MAX_RULES));
         }
         $this->cnameList[] = ['Domain' => $cname];
     }
 
-    public function parseFromXml($strXml){
+    public function parseFromXml($strXml)
+    {
         $xml = simplexml_load_string($strXml);
         if (!isset($xml->Cname)) {
             return;
@@ -60,7 +70,8 @@ class CnameConfig implements XmlConfig {
         }
     }
 
-    public function serializeToXml(){
+    public function serializeToXml()
+    {
         $strXml = <<<EOF
 <?xml version="1.0" encoding="utf-8"?>
 <BucketCnameConfiguration>
@@ -75,9 +86,5 @@ EOF;
         }
 
         return $xml->asXML();
-    }
-
-    public function __toString(){
-        return $this->serializeToXml();
     }
 }

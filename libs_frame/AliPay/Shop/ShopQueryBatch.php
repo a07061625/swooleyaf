@@ -11,7 +11,8 @@ use AliPay\AliPayBase;
 use Constant\ErrorCode;
 use Exception\AliPay\AliPayShopException;
 
-class ShopQueryBatch extends AliPayBase {
+class ShopQueryBatch extends AliPayBase
+{
     /**
      * 调用方身份
      * @var string
@@ -48,22 +49,25 @@ class ShopQueryBatch extends AliPayBase {
      */
     private $page_size = 0;
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct($appId);
         $this->biz_content['page_no'] = 1;
         $this->biz_content['page_size'] = 20;
         $this->setMethod('alipay.offline.market.shop.summary.batchquery');
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $opRole
      * @throws \Exception\AliPay\AliPayShopException
      */
-    public function setOpRole(string $opRole){
-        if(in_array($opRole, ['ISV', 'PROVIDER'])){
+    public function setOpRole(string $opRole)
+    {
+        if (in_array($opRole, ['ISV', 'PROVIDER'], true)) {
             $this->biz_content['op_role'] = $opRole;
         } else {
             throw new AliPayShopException('调用方身份不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -74,8 +78,9 @@ class ShopQueryBatch extends AliPayBase {
      * @param string $queryType
      * @throws \Exception\AliPay\AliPayShopException
      */
-    public function setQueryType(string $queryType){
-        if(in_array($queryType, ['BRAND_RELATION', 'MALL_SELF', 'MALL_RELATION', 'MERCHANT_SELF', 'KB_PROMOTER'])){
+    public function setQueryType(string $queryType)
+    {
+        if (in_array($queryType, ['BRAND_RELATION', 'MALL_SELF', 'MALL_RELATION', 'MERCHANT_SELF', 'KB_PROMOTER'], true)) {
             $this->biz_content['query_type'] = $queryType;
         } else {
             throw new AliPayShopException('查询类型不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -86,8 +91,9 @@ class ShopQueryBatch extends AliPayBase {
      * @param string $relatedPartnerId
      * @throws \Exception\AliPay\AliPayShopException
      */
-    public function setRelatedPartnerId(string $relatedPartnerId){
-        if(ctype_digit($relatedPartnerId) && (strlen($relatedPartnerId) <= 16)){
+    public function setRelatedPartnerId(string $relatedPartnerId)
+    {
+        if (ctype_digit($relatedPartnerId) && (strlen($relatedPartnerId) <= 16)) {
             $this->biz_content['related_partner_id'] = $relatedPartnerId;
         } else {
             throw new AliPayShopException('关联商户PID不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -98,8 +104,9 @@ class ShopQueryBatch extends AliPayBase {
      * @param string $shopId
      * @throws \Exception\AliPay\AliPayShopException
      */
-    public function setShopId(string $shopId){
-        if(ctype_digit($shopId) && (strlen($shopId) <= 32)){
+    public function setShopId(string $shopId)
+    {
+        if (ctype_digit($shopId) && (strlen($shopId) <= 32)) {
             $this->biz_content['shop_id'] = $shopId;
         } else {
             throw new AliPayShopException('门店ID不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -110,8 +117,9 @@ class ShopQueryBatch extends AliPayBase {
      * @param string $shopStatus
      * @throws \Exception\AliPay\AliPayShopException
      */
-    public function addShopStatus(string $shopStatus){
-        if(in_array($shopStatus, ['OPEN', 'PAUSED', 'INIT', 'FREEZE', 'CLOSED'])){
+    public function addShopStatus(string $shopStatus)
+    {
+        if (in_array($shopStatus, ['OPEN', 'PAUSED', 'INIT', 'FREEZE', 'CLOSED'], true)) {
             $this->shop_status[$shopStatus] = 1;
         } else {
             throw new AliPayShopException('门店状态不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -122,8 +130,9 @@ class ShopQueryBatch extends AliPayBase {
      * @param int $pageNo
      * @throws \Exception\AliPay\AliPayShopException
      */
-    public function setPageNo(int $pageNo){
-        if($pageNo > 0){
+    public function setPageNo(int $pageNo)
+    {
+        if ($pageNo > 0) {
             $this->biz_content['page_no'] = $pageNo;
         } else {
             throw new AliPayShopException('页码不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -134,22 +143,24 @@ class ShopQueryBatch extends AliPayBase {
      * @param int $pageSize
      * @throws \Exception\AliPay\AliPayShopException
      */
-    public function setPageSize(int $pageSize){
-        if(($pageSize > 0) && ($pageSize <= 100)){
+    public function setPageSize(int $pageSize)
+    {
+        if (($pageSize > 0) && ($pageSize <= 100)) {
             $this->biz_content['page_size'] = $pageSize;
         } else {
             throw new AliPayShopException('每页记录数不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->biz_content['op_role'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->biz_content['op_role'])) {
             throw new AliPayShopException('调用方身份不能为空', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
         }
-        if(!isset($this->biz_content['query_type'])){
+        if (!isset($this->biz_content['query_type'])) {
             throw new AliPayShopException('查询类型不能为空', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
         }
-        if(!empty($this->shop_status)){
+        if (!empty($this->shop_status)) {
             $this->biz_content['shop_status'] = implode(',', array_keys($this->shop_status));
         }
 

@@ -3,41 +3,49 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class UserPolicyDetachRequest extends RpcAcsRequest {
+class UserPolicyDetachRequest extends RpcAcsRequest
+{
     private $policyType;
     private $policyName;
     private $userName;
 
-    public function __construct(){
-        parent::__construct("Ram", "2015-05-01", "DetachPolicyFromUser");
-        $this->setProtocol("https");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Ram', '2015-05-01', 'DetachPolicyFromUser');
+        $this->setProtocol('https');
+        $this->setMethod('POST');
     }
 
-    public function getPolicyType(){
+    public function getPolicyType()
+    {
         return $this->policyType;
     }
 
-    public function setPolicyType($policyType){
+    public function setPolicyType($policyType)
+    {
         $this->policyType = $policyType;
-        $this->queryParameters["PolicyType"] = $policyType;
+        $this->queryParameters['PolicyType'] = $policyType;
     }
 
-    public function getPolicyName(){
+    public function getPolicyName()
+    {
         return $this->policyName;
     }
 
-    public function setPolicyName($policyName){
+    public function setPolicyName($policyName)
+    {
         $this->policyName = $policyName;
-        $this->queryParameters["PolicyName"] = $policyName;
+        $this->queryParameters['PolicyName'] = $policyName;
     }
 
-    public function getUserName(){
+    public function getUserName()
+    {
         return $this->userName;
     }
 
-    public function setUserName($userName){
+    public function setUserName($userName)
+    {
         $this->userName = $userName;
-        $this->queryParameters["UserName"] = $userName;
+        $this->queryParameters['UserName'] = $userName;
     }
 }

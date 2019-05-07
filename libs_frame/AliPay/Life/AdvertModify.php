@@ -11,7 +11,8 @@ use AliPay\AliPayBase;
 use Constant\ErrorCode;
 use Exception\AliPay\AliPayLifeException;
 
-class AdvertModify extends AliPayBase {
+class AdvertModify extends AliPayBase
+{
     /**
      * 广告ID
      * @var string
@@ -23,21 +24,24 @@ class AdvertModify extends AliPayBase {
      */
     private $advert_items = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct($appId);
         $this->biz_content['advert_items'] = [];
         $this->setMethod('alipay.open.public.advert.modify');
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $advertId
      * @throws \Exception\AliPay\AliPayLifeException
      */
-    public function setAdvertId(string $advertId){
-        if(ctype_alnum($advertId) && (strlen($advertId) <= 20)){
+    public function setAdvertId(string $advertId)
+    {
+        if (ctype_alnum($advertId) && (strlen($advertId) <= 20)) {
             $this->biz_content['advert_id'] = $advertId;
         } else {
             throw new AliPayLifeException('广告ID不合法', ErrorCode::ALIPAY_LIFE_PARAM_ERROR);
@@ -48,21 +52,23 @@ class AdvertModify extends AliPayBase {
      * @param array $advertItem
      * @throws \Exception\AliPay\AliPayLifeException
      */
-    public function addAdvertItems(array $advertItem){
-        if(count($this->biz_content['advert_items']) >= 3){
+    public function addAdvertItems(array $advertItem)
+    {
+        if (count($this->biz_content['advert_items']) >= 3) {
             throw new AliPayLifeException('广告内容列表超过限制', ErrorCode::ALIPAY_LIFE_PARAM_ERROR);
         }
-        if(empty($advertItem)){
+        if (empty($advertItem)) {
             throw new AliPayLifeException('广告内容不合法', ErrorCode::ALIPAY_LIFE_PARAM_ERROR);
         }
         $this->biz_content['advert_items'][] = $advertItem;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->biz_content['advert_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->biz_content['advert_id'])) {
             throw new AliPayLifeException('广告ID不能为空', ErrorCode::ALIPAY_LIFE_PARAM_ERROR);
         }
-        if(count($this->biz_content['advert_items']) == 0){
+        if (count($this->biz_content['advert_items']) == 0) {
             throw new AliPayLifeException('广告内容列表不能为空', ErrorCode::ALIPAY_LIFE_PARAM_ERROR);
         }
 

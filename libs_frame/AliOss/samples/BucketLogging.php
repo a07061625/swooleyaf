@@ -1,25 +1,27 @@
 <?php
 require_once __DIR__ . '/Common.php';
 
-use AliOss\OssClient;
 use AliOss\Core\OssException;
+use AliOss\OssClient;
 
 $bucket = Common::getBucketName();
 $ossClient = Common::getOssClient();
-if (is_null($ossClient)) exit(1);
+if (is_null($ossClient)) {
+    exit(1);
+}
 
 //*******************************Simple Usage ***************************************************************
 
 // Set bucket access logging rules. Access logs are stored under the same bucket with a 'access.log' prefix.
-$ossClient->putBucketLogging($bucket, $bucket, "access.log", array());
+$ossClient->putBucketLogging($bucket, $bucket, 'access.log', []);
 Common::println("bucket $bucket lifecycleConfig created");
 
 // Get bucket access logging rules
-$loggingConfig = $ossClient->getBucketLogging($bucket, array());
+$loggingConfig = $ossClient->getBucketLogging($bucket, []);
 Common::println("bucket $bucket lifecycleConfig fetched:" . $loggingConfig->serializeToXml());
 
 // Delete bucket access logging rules
-$loggingConfig = $ossClient->getBucketLogging($bucket, array());
+$loggingConfig = $ossClient->getBucketLogging($bucket, []);
 Common::println("bucket $bucket lifecycleConfig deleted");
 
 //******************************* For complete usage, see the following functions ****************************************************
@@ -38,10 +40,10 @@ getBucketLogging($ossClient, $bucket);
  */
 function putBucketLogging($ossClient, $bucket)
 {
-    $option = array();
+    $option = [];
     // Access logs are stored in the same bucket.
     $targetBucket = $bucket;
-    $targetPrefix = "access.log";
+    $targetPrefix = 'access.log';
 
     try {
         $ossClient->putBucketLogging($bucket, $targetBucket, $targetPrefix, $option);
@@ -50,7 +52,7 @@ function putBucketLogging($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }
 
 /**
@@ -63,7 +65,7 @@ function putBucketLogging($ossClient, $bucket)
 function getBucketLogging($ossClient, $bucket)
 {
     $loggingConfig = null;
-    $options = array();
+    $options = [];
     try {
         $loggingConfig = $ossClient->getBucketLogging($bucket, $options);
     } catch (OssException $e) {
@@ -71,7 +73,7 @@ function getBucketLogging($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
     print($loggingConfig->serializeToXml() . "\n");
 }
 
@@ -91,5 +93,5 @@ function deleteBucketLogging($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": OK" . "\n");
+    print(__FUNCTION__ . ': OK' . "\n");
 }

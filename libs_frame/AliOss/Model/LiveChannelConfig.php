@@ -1,15 +1,17 @@
 <?php
 namespace AliOss\Model;
 
-class LiveChannelConfig implements XmlConfig {
+class LiveChannelConfig implements XmlConfig
+{
     private $description;
-    private $status = "enabled";
+    private $status = 'enabled';
     private $type;
     private $fragDuration = 5;
     private $fragCount = 3;
-    private $playListName = "playlist.m3u8";
+    private $playListName = 'playlist.m3u8';
 
-    public function __construct($option = []){
+    public function __construct($option = [])
+    {
         if (isset($option['description'])) {
             $this->description = $option['description'];
         }
@@ -30,31 +32,43 @@ class LiveChannelConfig implements XmlConfig {
         }
     }
 
-    public function getDescription(){
+    public function __toString()
+    {
+        return $this->serializeToXml();
+    }
+
+    public function getDescription()
+    {
         return $this->description;
     }
 
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->status;
     }
 
-    public function getType(){
+    public function getType()
+    {
         return $this->type;
     }
 
-    public function getFragDuration(){
+    public function getFragDuration()
+    {
         return $this->fragDuration;
     }
 
-    public function getFragCount(){
+    public function getFragCount()
+    {
         return $this->fragCount;
     }
 
-    public function getPlayListName(){
+    public function getPlayListName()
+    {
         return $this->playListName;
     }
 
-    public function parseFromXml($strXml){
+    public function parseFromXml($strXml)
+    {
         $xml = simplexml_load_string($strXml);
         $this->description = strval($xml->Description);
         $this->status = strval($xml->Status);
@@ -65,7 +79,8 @@ class LiveChannelConfig implements XmlConfig {
         $this->playListName = strval($target->PlayListName);
     }
 
-    public function serializeToXml(){
+    public function serializeToXml()
+    {
         $strXml = <<<EOF
 <?xml version="1.0" encoding="utf-8"?>
 <LiveChannelConfiguration>
@@ -96,9 +111,5 @@ EOF;
         }
 
         return $xml->asXML();
-    }
-
-    public function __toString(){
-        return $this->serializeToXml();
     }
 }

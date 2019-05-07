@@ -21,7 +21,8 @@ namespace Cache\Lite;
  * @author Sebastian BERGMANN <sb@sebastian-bergmann.de>
  * @author Fabien MARTY <fab@php.net>
  */
-class CacheLiteFunction extends CacheLite {
+class CacheLiteFunction extends CacheLite
+{
     // --- Private properties ---
 
     /**
@@ -29,7 +30,7 @@ class CacheLiteFunction extends CacheLite {
      *
      * @var string $_defaultGroup
      */
-    var $_defaultGroup = 'Cache_Lite_Function';
+    public $_defaultGroup = 'Cache_Lite_Function';
 
     /**
      * Don't cache the method call when its output contains the string "NOCACHE"
@@ -39,28 +40,28 @@ class CacheLiteFunction extends CacheLite {
      *
      * @var boolean $_dontCacheWhenTheOutputContainsNOCACHE
      */
-    var $_dontCacheWhenTheOutputContainsNOCACHE = false;
+    public $_dontCacheWhenTheOutputContainsNOCACHE = false;
 
     /**
      * Don't cache the method call when its result is false
      *
      * @var boolean $_dontCacheWhenTheResultIsFalse
      */
-    var $_dontCacheWhenTheResultIsFalse = false;
+    public $_dontCacheWhenTheResultIsFalse = false;
 
     /**
      * Don't cache the method call when its result is null
      *
      * @var boolean $_dontCacheWhenTheResultIsNull
      */
-    var $_dontCacheWhenTheResultIsNull = false;
+    public $_dontCacheWhenTheResultIsNull = false;
 
     /**
      * Debug the Cache_Lite_Function caching process
      *
      * @var boolean $_debugCacheLiteFunction
      */
-    var $_debugCacheLiteFunction = false;
+    public $_debugCacheLiteFunction = false;
 
     // --- Public methods ----
 
@@ -83,12 +84,12 @@ class CacheLiteFunction extends CacheLite {
      * @param array $options options
      * @access public
      */
-    function __construct($options = array(NULL))
+    public function __construct($options = [null])
     {
-        $availableOptions = array('debugCacheLiteFunction', 'defaultGroup', 'dontCacheWhenTheOutputContainsNOCACHE', 'dontCacheWhenTheResultIsFalse', 'dontCacheWhenTheResultIsNull');
+        $availableOptions = ['debugCacheLiteFunction', 'defaultGroup', 'dontCacheWhenTheOutputContainsNOCACHE', 'dontCacheWhenTheResultIsFalse', 'dontCacheWhenTheResultIsNull'];
         while (list($name, $value) = each($options)) {
-            if (in_array($name, $availableOptions)) {
-                $property = '_'.$name;
+            if (in_array($name, $availableOptions, true)) {
+                $property = '_' . $name;
                 $this->$property = $value;
             }
         }
@@ -101,7 +102,7 @@ class CacheLiteFunction extends CacheLite {
      *
      * @param array $options Options
      */
-    function Cache_Lite_Function($options = array(NULL))
+    public function Cache_Lite_Function($options = [null])
     {
         self::__construct($options);
     }
@@ -117,7 +118,7 @@ class CacheLiteFunction extends CacheLite {
      * @return mixed result of the function/method
      * @access public
      */
-    function call()
+    public function call()
     {
         $arguments = func_get_args();
         $id = $this->_makeId($arguments);
@@ -140,17 +141,17 @@ class CacheLiteFunction extends CacheLite {
                 // in this case, $target is for example array($obj, 'method')
                 $object = $target[0];
                 $method = $target[1];
-                $result = call_user_func_array(array(&$object, $method), $arguments);
+                $result = call_user_func_array([&$object, $method], $arguments);
             } else {
                 if (strstr($target, '::')) { // classname::staticMethod
                     list($class, $method) = explode('::', $target);
-                    $result = call_user_func_array(array($class, $method), $arguments);
-                } else if (strstr($target, '->')) { // object->method
+                    $result = call_user_func_array([$class, $method], $arguments);
+                } elseif (strstr($target, '->')) { // object->method
                     // use a stupid name ($objet_123456789 because) of problems where the object
                     // name is the same as this var name
                     list($object_123456789, $method) = explode('->', $target);
                     global $$object_123456789;
-                    $result = call_user_func_array(array($$object_123456789, $method), $arguments);
+                    $result = call_user_func_array([$$object_123456789, $method], $arguments);
                 } else { // function
                     $result = call_user_func_array($target, $arguments);
                 }
@@ -193,7 +194,7 @@ class CacheLiteFunction extends CacheLite {
      * @return boolean true if no problem
      * @access public
      */
-    function drop()
+    public function drop()
     {
         $id = $this->_makeId(func_get_args());
         return $this->remove($id, $this->_defaultGroup);
@@ -205,8 +206,9 @@ class CacheLiteFunction extends CacheLite {
      * @var array result of func_get_args for the call() or the remove() method
      * @return string id
      * @access private
+     * @param mixed $arguments
      */
-    function _makeId($arguments)
+    public function _makeId($arguments)
     {
         $id = serialize($arguments); // Generate a cache id
         if (!$this->_fileNameProtection) {

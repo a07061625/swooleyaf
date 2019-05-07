@@ -1,13 +1,15 @@
 <?php
 require_once __DIR__ . '/Common.php';
 
-use AliOss\OssClient;
-use AliOss\Core\OssUtil;
 use AliOss\Core\OssException;
+use AliOss\Core\OssUtil;
+use AliOss\OssClient;
 
 $bucket = Common::getBucketName();
 $ossClient = Common::getOssClient();
-if (is_null($ossClient)) exit(1);
+if (is_null($ossClient)) {
+    exit(1);
+}
 
 //******************************* Simple usage ***************************************************************
 
@@ -16,18 +18,15 @@ if (is_null($ossClient)) exit(1);
  */
 
 // Upload a file using the multipart upload interface, which determines to use simple upload or multipart upload based on the file size.
-$ossClient->multiuploadFile($bucket, "file.php", __FILE__, array());
-Common::println("local file " . __FILE__ . " is uploaded to the bucket $bucket, file.php");
-
+$ossClient->multiuploadFile($bucket, 'file.php', __FILE__, []);
+Common::println('local file ' . __FILE__ . " is uploaded to the bucket $bucket, file.php");
 
 // Upload local directory's data into target dir
-$ossClient->uploadDir($bucket, "targetdir", __DIR__);
-Common::println("local dir " . __DIR__ . " is uploaded to the bucket $bucket, targetdir/");
-
+$ossClient->uploadDir($bucket, 'targetdir', __DIR__);
+Common::println('local dir ' . __DIR__ . " is uploaded to the bucket $bucket, targetdir/");
 
 // List the incomplete multipart uploads
-$listMultipartUploadInfo = $ossClient->listMultipartUploads($bucket, array());
-
+$listMultipartUploadInfo = $ossClient->listMultipartUploads($bucket, []);
 
 //******************************* For complete usage, see the following functions ****************************************************
 
@@ -45,9 +44,9 @@ listMultipartUploads($ossClient, $bucket);
  */
 function multiuploadFile($ossClient, $bucket)
 {
-    $object = "test/multipart-test.txt";
+    $object = 'test/multipart-test.txt';
     $file = __FILE__;
-    $options = array();
+    $options = [];
 
     try {
         $ossClient->multiuploadFile($bucket, $object, $file, $options);
@@ -56,7 +55,7 @@ function multiuploadFile($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ":  OK" . "\n");
+    print(__FUNCTION__ . ':  OK' . "\n");
 }
 
 /**
@@ -68,7 +67,7 @@ function multiuploadFile($ossClient, $bucket)
  */
 function putObjectByRawApis($ossClient, $bucket)
 {
-    $object = "test/multipart-test.txt";
+    $object = 'test/multipart-test.txt';
     /**
      *  step 1. Initialize a block upload event, that is, a multipart upload process to get an upload id
      */
@@ -79,7 +78,7 @@ function putObjectByRawApis($ossClient, $bucket)
         printf($e->getMessage() . "\n");
         return;
     }
-    print(__FUNCTION__ . ": initiateMultipartUpload OK" . "\n");
+    print(__FUNCTION__ . ': initiateMultipartUpload OK' . "\n");
     /*
      * step 2. Upload parts
      */
@@ -87,19 +86,19 @@ function putObjectByRawApis($ossClient, $bucket)
     $uploadFile = __FILE__;
     $uploadFileSize = filesize($uploadFile);
     $pieces = $ossClient->generateMultiuploadParts($uploadFileSize, $partSize);
-    $responseUploadPart = array();
+    $responseUploadPart = [];
     $uploadPosition = 0;
     $isCheckMd5 = true;
     foreach ($pieces as $i => $piece) {
         $fromPos = $uploadPosition + (integer)$piece[$ossClient::OSS_SEEK_TO];
         $toPos = (integer)$piece[$ossClient::OSS_LENGTH] + $fromPos - 1;
-        $upOptions = array(
+        $upOptions = [
             $ossClient::OSS_FILE_UPLOAD => $uploadFile,
             $ossClient::OSS_PART_NUM => ($i + 1),
             $ossClient::OSS_SEEK_TO => $fromPos,
             $ossClient::OSS_LENGTH => $toPos - $fromPos + 1,
             $ossClient::OSS_CHECK_MD5 => $isCheckMd5,
-        );
+        ];
         if ($isCheckMd5) {
             $contentMd5 = OssUtil::getMd5SumForFile($uploadFile, $fromPos, $toPos);
             $upOptions[$ossClient::OSS_CONTENT_MD5] = $contentMd5;
@@ -114,12 +113,12 @@ function putObjectByRawApis($ossClient, $bucket)
         }
         printf(__FUNCTION__ . ": initiateMultipartUpload, uploadPart - part#{$i} OK\n");
     }
-    $uploadParts = array();
+    $uploadParts = [];
     foreach ($responseUploadPart as $i => $eTag) {
-        $uploadParts[] = array(
+        $uploadParts[] = [
             'PartNumber' => ($i + 1),
             'ETag' => $eTag,
-        );
+        ];
     }
     /**
      * step 3. Complete the upload
@@ -143,8 +142,8 @@ function putObjectByRawApis($ossClient, $bucket)
  */
 function uploadDir($ossClient, $bucket)
 {
-    $localDirectory = ".";
-    $prefix = "samples/codes";
+    $localDirectory = '.';
+    $prefix = 'samples/codes';
     try {
         $ossClient->uploadDir($bucket, $prefix, $localDirectory);
     } catch (OssException $e) {
@@ -163,12 +162,12 @@ function uploadDir($ossClient, $bucket)
  */
 function listMultipartUploads($ossClient, $bucket)
 {
-    $options = array(
+    $options = [
         'max-uploads' => 100,
         'key-marker' => '',
         'prefix' => '',
         'upload-id-marker' => ''
-    );
+    ];
     try {
         $listMultipartUploadInfo = $ossClient->listMultipartUploads($bucket, $options);
     } catch (OssException $e) {
