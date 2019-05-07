@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Exception\Cron\CronException;
 use Tool\Tool;
 
-class CronData {
+class CronData
+{
     /**
      * 允许的秒钟值
      * @var array
@@ -48,20 +49,24 @@ class CronData {
      */
     private $cron = '';
 
-    public function __construct() {
+    public function __construct()
+    {
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return Tool::jsonEncode($this->getDetail(), JSON_UNESCAPED_UNICODE);
     }
 
     /**
      * @return array
      */
-    public function getSeconds() : array {
+    public function getSeconds() : array
+    {
         return $this->acceptSeconds;
     }
 
@@ -69,9 +74,10 @@ class CronData {
      * @param array $seconds
      * @throws \Exception\Cron\CronException
      */
-    public function setSeconds(array $seconds) {
+    public function setSeconds(array $seconds)
+    {
         $checkRes = CronTool::checkSeconds($seconds);
-        if(!is_array($checkRes)){
+        if (!is_array($checkRes)) {
             throw new CronException('秒值不合法', ErrorCode::CRON_SECOND_ERROR);
         }
 
@@ -81,7 +87,8 @@ class CronData {
     /**
      * @return array
      */
-    public function getMinutes() : array {
+    public function getMinutes() : array
+    {
         return $this->acceptMinutes;
     }
 
@@ -89,9 +96,10 @@ class CronData {
      * @param array $minutes
      * @throws \Exception\Cron\CronException
      */
-    public function setMinutes(array $minutes) {
+    public function setMinutes(array $minutes)
+    {
         $checkRes = CronTool::checkMinutes($minutes);
-        if(!is_array($checkRes)){
+        if (!is_array($checkRes)) {
             throw new CronException('分钟值不合法', ErrorCode::CRON_MINUTE_ERROR);
         }
 
@@ -101,7 +109,8 @@ class CronData {
     /**
      * @return array
      */
-    public function getHours() : array {
+    public function getHours() : array
+    {
         return $this->acceptHours;
     }
 
@@ -109,9 +118,10 @@ class CronData {
      * @param array $hours
      * @throws \Exception\Cron\CronException
      */
-    public function setHours(array $hours) {
+    public function setHours(array $hours)
+    {
         $checkRes = CronTool::checkHours($hours);
-        if(!is_array($checkRes)){
+        if (!is_array($checkRes)) {
             throw new CronException('小时值不合法', ErrorCode::CRON_HOUR_ERROR);
         }
 
@@ -121,7 +131,8 @@ class CronData {
     /**
      * @return array
      */
-    public function getDays() : array {
+    public function getDays() : array
+    {
         return $this->acceptDays;
     }
 
@@ -129,9 +140,10 @@ class CronData {
      * @param array $days
      * @throws \Exception\Cron\CronException
      */
-    public function setDays(array $days) {
+    public function setDays(array $days)
+    {
         $checkRes = CronTool::checkDays($days);
-        if(!is_array($checkRes)){
+        if (!is_array($checkRes)) {
             throw new CronException('日期值不合法', ErrorCode::CRON_DAY_ERROR);
         }
 
@@ -141,7 +153,8 @@ class CronData {
     /**
      * @return array
      */
-    public function getMonths() : array {
+    public function getMonths() : array
+    {
         return $this->acceptMonths;
     }
 
@@ -149,9 +162,10 @@ class CronData {
      * @param array $months
      * @throws \Exception\Cron\CronException
      */
-    public function setMonths(array $months) {
+    public function setMonths(array $months)
+    {
         $checkRes = CronTool::checkMonths($months);
-        if(!is_array($checkRes)){
+        if (!is_array($checkRes)) {
             throw new CronException('月份值不合法', ErrorCode::CRON_MONTH_ERROR);
         }
 
@@ -161,7 +175,8 @@ class CronData {
     /**
      * @return array
      */
-    public function getWeeks() : array {
+    public function getWeeks() : array
+    {
         return $this->acceptWeeks;
     }
 
@@ -169,9 +184,10 @@ class CronData {
      * @param array $weeks
      * @throws \Exception\Cron\CronException
      */
-    public function setWeeks(array $weeks) {
+    public function setWeeks(array $weeks)
+    {
         $checkRes = CronTool::checkWeeks($weeks);
-        if(!is_array($checkRes)){
+        if (!is_array($checkRes)) {
             throw new CronException('星期值不合法', ErrorCode::CRON_WEEK_ERROR);
         }
 
@@ -181,7 +197,8 @@ class CronData {
     /**
      * @return string
      */
-    public function getCron() : string {
+    public function getCron() : string
+    {
         return $this->cron;
     }
 
@@ -189,8 +206,9 @@ class CronData {
      * @param string $cron
      * @throws \Exception\Cron\CronException
      */
-    public function setCron(string $cron) {
-        if(preg_match('/^(\s{1}(\*|\d+(\,\d+)*|\d+\-\d+(\,\d+\-\d+)*)(\/\d+){0,1}){6}$/', ' ' . $cron) == 0){
+    public function setCron(string $cron)
+    {
+        if (preg_match('/^(\s{1}(\*|\d+(\,\d+)*|\d+\-\d+(\,\d+\-\d+)*)(\/\d+){0,1}){6}$/', ' ' . $cron) == 0) {
             throw new CronException('cron格式不合法', ErrorCode::CRON_FORMAT_ERROR);
         }
 
@@ -200,7 +218,8 @@ class CronData {
     /**
      * @return array
      */
-    public function getDetail() {
+    public function getDetail()
+    {
         return [
             'cron' => $this->cron,
             'seconds' => $this->acceptSeconds,
@@ -216,7 +235,8 @@ class CronData {
      * @param int $second
      * @return bool
      */
-    public function checkSecond(int $second) : bool {
+    public function checkSecond(int $second) : bool
+    {
         return in_array($second, $this->acceptSeconds, true);
     }
 
@@ -224,7 +244,8 @@ class CronData {
      * @param int $minute
      * @return bool
      */
-    public function checkMinute(int $minute) : bool {
+    public function checkMinute(int $minute) : bool
+    {
         return in_array($minute, $this->acceptMinutes, true);
     }
 
@@ -232,7 +253,8 @@ class CronData {
      * @param int $hour
      * @return bool
      */
-    public function checkHour(int $hour) : bool {
+    public function checkHour(int $hour) : bool
+    {
         return in_array($hour, $this->acceptHours, true);
     }
 
@@ -240,7 +262,8 @@ class CronData {
      * @param int $day
      * @return bool
      */
-    public function checkDay(int $day) : bool {
+    public function checkDay(int $day) : bool
+    {
         return in_array($day, $this->acceptDays, true);
     }
 
@@ -248,7 +271,8 @@ class CronData {
      * @param int $month
      * @return bool
      */
-    public function checkMonth(int $month) : bool {
+    public function checkMonth(int $month) : bool
+    {
         return in_array($month, $this->acceptMonths, true);
     }
 
@@ -256,7 +280,8 @@ class CronData {
      * @param int $week
      * @return bool
      */
-    public function checkWeek(int $week) : bool {
+    public function checkWeek(int $week) : bool
+    {
         return in_array($week, $this->acceptWeeks, true);
     }
 
@@ -265,7 +290,8 @@ class CronData {
      * @param array $timeArr
      * @return bool
      */
-    public function checkTime(array $timeArr) : bool {
+    public function checkTime(array $timeArr) : bool
+    {
         if (empty($timeArr)) {
             return false;
         }

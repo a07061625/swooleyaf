@@ -10,7 +10,8 @@ namespace Tool;
 use Log\Log;
 use Traits\SimpleTrait;
 
-final class HttpTool {
+final class HttpTool
+{
     use SimpleTrait;
 
     //支持解析的协议列表
@@ -20,32 +21,13 @@ final class HttpTool {
         'HTTP/2.0',
     ];
 
-    private static function parseResponseCookie(string $rspCookie) {
-        $cookie = [];
-        $saveArr = explode(';', $rspCookie);
-        foreach ($saveArr as $key1 => $val1) {
-            list($key2, $val2) = explode('=', $val1);
-            $trueKey = trim($key2);
-            $trueVal = trim($val2);
-            if (($key1 > 0) && ($trueKey != 'expires')) {
-                $cookie[$trueKey] = $trueVal;
-            } else if ($trueKey == 'expires') {
-                $cookie['expires'] = strtotime($trueVal);
-            } else {
-                $cookie['key'] = $trueKey;
-                $cookie['value'] = urldecode($trueVal);
-            }
-        }
-
-        return $cookie;
-    }
-
     /**
      * 解析http响应消息
      * @param string $rspMessage 响应消息字符串
      * @return array|bool
      */
-    public static function parseResponse(string $rspMessage) {
+    public static function parseResponse(string $rspMessage)
+    {
         $resArr = [
             'status' => 200,
             'headers' => [],
@@ -63,13 +45,13 @@ final class HttpTool {
         $headerData = preg_replace('/\s{2,}/', ' ', explode("\r\n", $rspData[0]));
         //解析响应状态信息
         $rspStatus = explode(' ', $headerData[0]);
-        if(!in_array($rspStatus[0], self::$protocols)){
+        if (!in_array($rspStatus[0], self::$protocols, true)) {
             Log::error('response protocol invalid');
             return false;
-        } else if (!isset($rspStatus[1])) {
+        } elseif (!isset($rspStatus[1])) {
             Log::error('response status not exist');
             return false;
-        } else if (!is_numeric($rspStatus[1])) {
+        } elseif (!is_numeric($rspStatus[1])) {
             Log::error('response status invalid');
             return false;
         } else {
@@ -120,8 +102,9 @@ final class HttpTool {
      * @param array $cookies cookie数组
      * @return string
      */
-    public static function getReqHeaderStr(string $method,string $uri,array $headers,array $cookies=[]) : string {
-        $reqHeaderStr = $method . " " . $uri . " HTTP/1.1\r\n\r\n";
+    public static function getReqHeaderStr(string $method, string $uri, array $headers, array $cookies = []) : string
+    {
+        $reqHeaderStr = $method . ' ' . $uri . " HTTP/1.1\r\n\r\n";
         if (!empty($cookies)) {
             $cookieStr = '';
             foreach ($cookies as $cookieName => $cookieVal) {
@@ -134,5 +117,26 @@ final class HttpTool {
         }
 
         return $reqHeaderStr;
+    }
+
+    private static function parseResponseCookie(string $rspCookie)
+    {
+        $cookie = [];
+        $saveArr = explode(';', $rspCookie);
+        foreach ($saveArr as $key1 => $val1) {
+            list($key2, $val2) = explode('=', $val1);
+            $trueKey = trim($key2);
+            $trueVal = trim($val2);
+            if (($key1 > 0) && ($trueKey != 'expires')) {
+                $cookie[$trueKey] = $trueVal;
+            } elseif ($trueKey == 'expires') {
+                $cookie['expires'] = strtotime($trueVal);
+            } else {
+                $cookie['key'] = $trueKey;
+                $cookie['value'] = urldecode($trueVal);
+            }
+        }
+
+        return $cookie;
     }
 }

@@ -13,7 +13,7 @@ $finder = PhpCsFixer\Finder::create()
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
 $fixers = [
-    'psr4' => true,
+    '@PSR2' => true,
     'array_syntax' => ['syntax' => 'short'],
     'combine_consecutive_unsets' => true,
     'single_quote' => true, //简单字符串应该使用单引号代替双引号

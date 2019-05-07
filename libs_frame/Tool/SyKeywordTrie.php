@@ -7,7 +7,8 @@
  */
 namespace Tool;
 
-class SyKeywordTrie {
+class SyKeywordTrie
+{
     /**
      * node structure
      *
@@ -25,21 +26,56 @@ class SyKeywordTrie {
      */
     private $matched = [];
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->root = [
             'depth' => 0,
             'next' => [],
         ];
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
     /**
      * @return array
      */
-    public function getNodes() {
+    public function getNodes()
+    {
         return $this->root;
+    }
+
+    /**
+     * 添加关键词
+     * @param string $keyword
+     */
+    public function append(string $keyword)
+    {
+        $words = preg_split('/(?<!^)(?!$)/u', $keyword);
+        array_push($words, '`');
+        $this->insert($this->root, $words);
+    }
+
+    /**
+     * 匹配关键词
+     * @param string $str
+     * @return array
+     */
+    public function match(string $str) : array
+    {
+        $this->matched = [];
+        $words = preg_split('/(?<!^)(?!$)/u', $str);
+        while (count($words) > 0) {
+            $matched = [];
+            $res = $this->query($this->root, $words, $matched);
+            if ($res) {
+                $this->matched[] = implode('', $matched);
+            }
+            array_shift($words);
+        }
+
+        return $this->matched;
     }
 
     /**
@@ -47,7 +83,8 @@ class SyKeywordTrie {
      * @param array $node
      * @param array $words
      */
-    private function insert(array &$node,array $words) {
+    private function insert(array &$node, array $words)
+    {
         if (empty($words)) {
             return;
         }
@@ -67,23 +104,14 @@ class SyKeywordTrie {
     }
 
     /**
-     * 添加关键词
-     * @param string $keyword
-     */
-    public function append(string $keyword) {
-        $words = preg_split('/(?<!^)(?!$)/u', $keyword);
-        array_push($words, '`');
-        $this->insert($this->root, $words);
-    }
-
-    /**
      * 查询关键词
      * @param array $node
      * @param array $words
      * @param array $matched
      * @return bool
      */
-    private function query(array $node,array $words,array &$matched) : bool {
+    private function query(array $node, array $words, array &$matched) : bool
+    {
         $word = array_shift($words);
         if (isset($node['next'][$word])) {
             array_push($matched, $word);
@@ -96,25 +124,5 @@ class SyKeywordTrie {
             $matched = [];
             return false;
         }
-    }
-
-    /**
-     * 匹配关键词
-     * @param string $str
-     * @return array
-     */
-    public function match(string $str) : array {
-        $this->matched = [];
-        $words = preg_split('/(?<!^)(?!$)/u', $str);
-        while (count($words) > 0) {
-            $matched = [];
-            $res = $this->query($this->root, $words, $matched);
-            if ($res) {
-                $this->matched[] = implode('', $matched);
-            }
-            array_shift($words);
-        }
-
-        return $this->matched;
     }
 }
