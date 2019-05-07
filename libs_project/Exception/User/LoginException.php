@@ -9,8 +9,10 @@ namespace Exception\User;
 
 use Exception\BaseException;
 
-class LoginException extends BaseException {
-    public function __construct($message, $code) {
+class LoginException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = '登录异常';
     }

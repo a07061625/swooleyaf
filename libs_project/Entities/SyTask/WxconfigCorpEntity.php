@@ -3,14 +3,10 @@ namespace Entities\SyTask;
 
 use DB\Entities\MysqlEntity;
 
-class WxconfigCorpEntity extends MysqlEntity {
-    public function __construct(string $dbName='') {
-        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_task';
-        parent::__construct($this->_dbName, 'wxconfig_corp', 'id');
-    }
-
+class WxconfigCorpEntity extends MysqlEntity
+{
     /**
-     * 
+     *
      * @var int
      */
     public $id = null;
@@ -74,4 +70,9 @@ class WxconfigCorpEntity extends MysqlEntity {
      * @var int
      */
     public $updated = 0;
+    public function __construct(string $dbName = '')
+    {
+        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_task';
+        parent::__construct($this->_dbName, 'wxconfig_corp', 'id');
+    }
 }

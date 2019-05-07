@@ -10,8 +10,10 @@ namespace SyModule;
 use Constant\Project;
 use Tool\BaseContainer;
 
-class ModuleContainer extends BaseContainer {
-    public function __construct(){
+class ModuleContainer extends BaseContainer
+{
+    public function __construct()
+    {
         $this->registryMap = [
             Project::MODULE_NAME_API,
         ];

@@ -9,12 +9,8 @@ namespace Entities\SyTask;
 
 use DB\Entities\MysqlEntity;
 
-class TaskLogEntity extends MysqlEntity {
-    public function __construct(string $dbName='') {
-        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_task';
-        parent::__construct($this->_dbName, 'task_log');
-    }
-
+class TaskLogEntity extends MysqlEntity
+{
     /**
      * 主键ID
      * @var int
@@ -38,4 +34,9 @@ class TaskLogEntity extends MysqlEntity {
      * @var int
      */
     public $created = 0;
+    public function __construct(string $dbName = '')
+    {
+        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_task';
+        parent::__construct($this->_dbName, 'task_log');
+    }
 }

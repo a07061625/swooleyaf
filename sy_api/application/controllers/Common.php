@@ -5,10 +5,12 @@
  * Date: 17-4-5
  * Time: 下午8:34
  */
-class CommonController extends \SyFrame\BaseController {
+class CommonController extends \SyFrame\BaseController
+{
     public $signStatus = false;
 
-    public function init() {
+    public function init()
+    {
         parent::init();
         $this->signStatus = false;
 

@@ -11,8 +11,10 @@ use Constant\Project;
 use MessageQueue\Consumer\Rabbit\Test;
 use Tool\BaseContainer;
 
-class RabbitConsumerContainer extends BaseContainer {
-    public function __construct(){
+class RabbitConsumerContainer extends BaseContainer
+{
+    public function __construct()
+    {
         $this->registryMap = [
             Project::MESSAGE_QUEUE_TOPIC_TEST,
         ];

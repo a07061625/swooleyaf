@@ -1,6 +1,8 @@
 <?php
-class TaskController extends CommonController {
-    public function init() {
+class TaskController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
@@ -27,7 +29,8 @@ class TaskController extends CommonController {
      * @SyFilter-{"field": "task_params","explain": "任务参数","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "task_desc","explain": "任务描述","type": "string","rules": {"min": 0}}
      */
-    public function addTaskAction() {
+    public function addTaskAction()
+    {
         $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('task_title'));
         $titleLength = mb_strlen($title);
         $method = strtoupper(trim(\Request\SyRequest::getParams('task_method', 'GET')));
@@ -35,11 +38,11 @@ class TaskController extends CommonController {
         $paramData = strlen($paramStr) > 0 ? \Tool\Tool::jsonDecode($paramStr) : [];
         if ($titleLength == 0) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '任务标题不能为空');
-        } else if ($titleLength > 100) {
+        } elseif ($titleLength > 100) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '任务标题不能大于100个字');
-        } else if(!in_array($method, ['GET', 'POST'])){
+        } elseif (!in_array($method, ['GET', 'POST'], true)) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '任务方式不合法');
-        } else if (!is_array($paramData)) {
+        } elseif (!is_array($paramData)) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '任务参数不合法');
         } else {
             $needParams = [
@@ -66,7 +69,8 @@ class TaskController extends CommonController {
      * @apiParam {string} task_tag 任务标识
      * @SyFilter-{"field": "task_tag","explain": "任务标识","type": "string","rules": {"required": 1,"min": 16,"max": 16}}
      */
-    public function delTaskAction() {
+    public function delTaskAction()
+    {
         $needParams = [
             'task_tag' => trim(\Request\SyRequest::getParams('task_tag')),
         ];
@@ -83,7 +87,8 @@ class TaskController extends CommonController {
      * @apiParam {string} task_tag 任务标识
      * @SyFilter-{"field": "task_tag","explain": "任务标识","type": "string","rules": {"required": 1,"min": 16,"max": 16}}
      */
-    public function refreshTaskAction() {
+    public function refreshTaskAction()
+    {
         $needParams = [
             'task_tag' => trim(\Request\SyRequest::getParams('task_tag')),
         ];
@@ -106,7 +111,8 @@ class TaskController extends CommonController {
      * @SyFilter-{"field": "persist_type","explain": "持久化类型","type": "int","rules": {"min": 0}}
      * @SyFilter-{"field": "task_status","explain": "任务状态","type": "int","rules": {"min": -2}}
      */
-    public function getTaskListAction() {
+    public function getTaskListAction()
+    {
         $needParams = [
             'page' => (int)\Request\SyRequest::getParams('page', 1),
             'limit' => (int)\Request\SyRequest::getParams('limit', \Constant\Project::COMMON_LIMIT_DEFAULT),
@@ -130,7 +136,8 @@ class TaskController extends CommonController {
      * @SyFilter-{"field": "limit","explain": "分页限制","type": "int","rules": {"min": 1,"max": 100}}
      * @SyFilter-{"field": "task_tag","explain": "任务标识","type": "string","rules": {"required": 1,"min": 16,"max": 16}}
      */
-    public function getTaskLogListAction() {
+    public function getTaskLogListAction()
+    {
         $needParams = [
             'page' => (int)\Request\SyRequest::getParams('page', 1),
             'limit' => (int)\Request\SyRequest::getParams('limit', \Constant\Project::COMMON_LIMIT_DEFAULT),

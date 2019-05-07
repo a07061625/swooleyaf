@@ -7,8 +7,10 @@
  */
 namespace Validator\Containers;
 
-class ValidatorContainer extends BaseValidatorContainer {
-    public function __construct() {
+class ValidatorContainer extends BaseValidatorContainer
+{
+    public function __construct()
+    {
         parent::__construct();
     }
 }

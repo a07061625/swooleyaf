@@ -13,14 +13,18 @@ use Response\Result;
 use Tool\SyPack;
 use Tool\Tool;
 
-trait HttpServerTrait {
-    private function checkServerHttpTrait() {
+trait HttpServerTrait
+{
+    private function checkServerHttpTrait()
+    {
     }
 
-    private function initTableHttpTrait() {
+    private function initTableHttpTrait()
+    {
     }
 
-    private function addTaskHttpTrait(\swoole_server $server) {
+    private function addTaskHttpTrait(\swoole_server $server)
+    {
         $this->_messagePack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
             'task_module' => SY_MODULE,
             'task_command' => Project::TASK_TYPE_TIME_WHEEL_TASK,
@@ -29,7 +33,7 @@ trait HttpServerTrait {
         $taskDataTimeWheel = $this->_messagePack->packData();
         $this->_messagePack->init();
 
-        $server->tick(1000, function() use ($server, $taskDataTimeWheel) {
+        $server->tick(1000, function () use ($server, $taskDataTimeWheel) {
             $server->task($taskDataTimeWheel);
         });
     }
@@ -41,7 +45,8 @@ trait HttpServerTrait {
      * @param array $data
      * @return string 空字符串:执行成功 非空:执行失败
      */
-    private function handleTaskHttpTrait(\swoole_server $server,int $taskId,int $fromId,array &$data) : string {
+    private function handleTaskHttpTrait(\swoole_server $server, int $taskId, int $fromId, array &$data) : string
+    {
         $taskCommand = Tool::getArrayVal($data['params'], 'task_command', '');
         switch ($taskCommand) {
             case Project::TASK_TYPE_TIME_WHEEL_TASK:
@@ -64,6 +69,7 @@ trait HttpServerTrait {
         return '';
     }
 
-    private function handleReqExceptionByProject(\Exception $e) : Result {
+    private function handleReqExceptionByProject(\Exception $e) : Result
+    {
     }
 }

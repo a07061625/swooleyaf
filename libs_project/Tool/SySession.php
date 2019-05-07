@@ -13,6 +13,7 @@ use Traits\SimpleTrait;
  * Class SySession
  * @package Tool
  */
-class SySession extends SySessionJwt {
+class SySession extends SySessionJwt
+{
     use SimpleTrait;
 }

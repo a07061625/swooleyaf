@@ -16,7 +16,8 @@ use Request\SyRequest;
 use Tool\Tool;
 use Traits\SimpleDaoTrait;
 
-class TaskDao {
+class TaskDao
+{
     use SimpleDaoTrait;
 
     private static $addTaskMap = [
@@ -24,56 +25,8 @@ class TaskDao {
         Project::TASK_PERSIST_TYPE_INTERVAL => 'addIntervalTask',
     ];
 
-    private static function setTaskCache(array $data) {
-        $needTime = $data['start_time'] + $data['interval_time'];
-        $expireTime = $needTime + Project::TASK_CACHE_EXPIRE_TIME;
-        if($data['persist_type'] == Project::TASK_PERSIST_TYPE_SINGLE){
-            $redisKeyQueue = Project::REDIS_PREFIX_TIMER_QUEUE . $needTime;
-        } else {
-            $redisKeyQueue = Project::REDIS_PREFIX_TIMER_QUEUE . $data['start_time'];
-        }
-        $listNum = CacheSimpleFactory::getRedisInstance()->rPush($redisKeyQueue, $data['task_tag']);
-        if(in_array($listNum, [1, 2, 3])){
-            CacheSimpleFactory::getRedisInstance()->expireAt($redisKeyQueue, $expireTime);
-        }
-
-        $redisKeyContent = Project::REDIS_PREFIX_TIMER_CONTENT . $data['task_tag'];
-        CacheSimpleFactory::getRedisInstance()->hMset($redisKeyContent, [
-            'unique_key' => $data['task_tag'],
-            'persist_type' => $data['persist_type'],
-            'exec_method' => $data['task_method'],
-            'exec_url' => $data['task_url'],
-            'exec_params' => empty($data['task_params']) ? '_tp=' : http_build_query($data['task_params']),
-            'interval_time' => $data['interval_time'],
-        ]);
-        if($data['persist_type'] == Project::TASK_PERSIST_TYPE_SINGLE){
-            CacheSimpleFactory::getRedisInstance()->expireAt($redisKeyContent, $expireTime);
-        }
-    }
-
-    private static function addSingleTask(array &$data) {
-        $needTime = Tool::getNowTime() + 10;
-        $startTime = (int)SyRequest::getParams('start_time', $needTime);
-        if($startTime < $needTime){
-            throw new CheckException('任务开始时间必须超过当前时间10秒', ErrorCode::COMMON_PARAM_ERROR);
-        }
-
-        $data['start_time'] = $startTime;
-    }
-
-    private static function addIntervalTask(array &$data) {
-        $nowTime = Tool::getNowTime();
-        $startTime = (int)SyRequest::getParams('start_time', 0);
-        if($startTime <= 0){
-            throw new CheckException('开始时间不能为空', ErrorCode::COMMON_PARAM_ERROR);
-        } else if(($startTime - $nowTime) < 5){
-            throw new CheckException('开始时间必须超过当前时间5秒', ErrorCode::COMMON_PARAM_ERROR);
-        }
-
-        $data['start_time'] = $startTime;
-    }
-
-    public static function addTask(array $data) {
+    public static function addTask(array $data)
+    {
         $funcName = Tool::getArrayVal(self::$addTaskMap, $data['persist_type'], null);
         if (is_null($funcName)) {
             throw new CheckException('持久化类型不支持', ErrorCode::COMMON_PARAM_ERROR);
@@ -117,7 +70,8 @@ class TaskDao {
         ];
     }
 
-    public static function delTask(array $data) {
+    public static function delTask(array $data)
+    {
         $taskBase = SyTaskMysqlFactory::TaskBaseEntity();
         $ormResult1 = $taskBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['task_tag']]);
@@ -135,14 +89,15 @@ class TaskDao {
         ];
     }
 
-    public static function refreshTask(array $data){
+    public static function refreshTask(array $data)
+    {
         $taskBase = SyTaskMysqlFactory::TaskBaseEntity();
         $ormResult1 = $taskBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['task_tag']]);
         $taskBaseInfo = $taskBase->getContainer()->getModel()->findOne($ormResult1);
-        if(empty($taskBaseInfo)){
+        if (empty($taskBaseInfo)) {
             throw new CheckException('任务信息不存在', ErrorCode::COMMON_PARAM_ERROR);
-        } else if($taskBaseInfo['status'] != Project::TASK_STATUS_VALID){
+        } elseif ($taskBaseInfo['status'] != Project::TASK_STATUS_VALID) {
             throw new CheckException('只有有效的任务才能刷新', ErrorCode::COMMON_PARAM_ERROR);
         }
         unset($ormResult1, $taskBase);
@@ -162,7 +117,8 @@ class TaskDao {
         ];
     }
 
-    public static function getTaskList(array $data) {
+    public static function getTaskList(array $data)
+    {
         $taskBase = SyTaskMysqlFactory::TaskBaseEntity();
         $ormResult1 = $taskBase->getContainer()->getModel()->getOrmDbTable();
         if ($data['persist_type'] > 0) {
@@ -181,7 +137,8 @@ class TaskDao {
         return $taskList;
     }
 
-    public static function getTaskLogList(array $data) {
+    public static function getTaskLogList(array $data)
+    {
         $taskLog = SyTaskMysqlFactory::TaskLogEntity();
         $ormResult1 = $taskLog->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['task_tag']])->order('`created` DESC,`id` DESC');
@@ -189,5 +146,57 @@ class TaskDao {
         unset($ormResult1, $taskLog);
 
         return $logList;
+    }
+
+    private static function setTaskCache(array $data)
+    {
+        $needTime = $data['start_time'] + $data['interval_time'];
+        $expireTime = $needTime + Project::TASK_CACHE_EXPIRE_TIME;
+        if ($data['persist_type'] == Project::TASK_PERSIST_TYPE_SINGLE) {
+            $redisKeyQueue = Project::REDIS_PREFIX_TIMER_QUEUE . $needTime;
+        } else {
+            $redisKeyQueue = Project::REDIS_PREFIX_TIMER_QUEUE . $data['start_time'];
+        }
+        $listNum = CacheSimpleFactory::getRedisInstance()->rPush($redisKeyQueue, $data['task_tag']);
+        if (in_array($listNum, [1, 2, 3], true)) {
+            CacheSimpleFactory::getRedisInstance()->expireAt($redisKeyQueue, $expireTime);
+        }
+
+        $redisKeyContent = Project::REDIS_PREFIX_TIMER_CONTENT . $data['task_tag'];
+        CacheSimpleFactory::getRedisInstance()->hMset($redisKeyContent, [
+            'unique_key' => $data['task_tag'],
+            'persist_type' => $data['persist_type'],
+            'exec_method' => $data['task_method'],
+            'exec_url' => $data['task_url'],
+            'exec_params' => empty($data['task_params']) ? '_tp=' : http_build_query($data['task_params']),
+            'interval_time' => $data['interval_time'],
+        ]);
+        if ($data['persist_type'] == Project::TASK_PERSIST_TYPE_SINGLE) {
+            CacheSimpleFactory::getRedisInstance()->expireAt($redisKeyContent, $expireTime);
+        }
+    }
+
+    private static function addSingleTask(array &$data)
+    {
+        $needTime = Tool::getNowTime() + 10;
+        $startTime = (int)SyRequest::getParams('start_time', $needTime);
+        if ($startTime < $needTime) {
+            throw new CheckException('任务开始时间必须超过当前时间10秒', ErrorCode::COMMON_PARAM_ERROR);
+        }
+
+        $data['start_time'] = $startTime;
+    }
+
+    private static function addIntervalTask(array &$data)
+    {
+        $nowTime = Tool::getNowTime();
+        $startTime = (int)SyRequest::getParams('start_time', 0);
+        if ($startTime <= 0) {
+            throw new CheckException('开始时间不能为空', ErrorCode::COMMON_PARAM_ERROR);
+        } elseif (($startTime - $nowTime) < 5) {
+            throw new CheckException('开始时间必须超过当前时间5秒', ErrorCode::COMMON_PARAM_ERROR);
+        }
+
+        $data['start_time'] = $startTime;
     }
 }

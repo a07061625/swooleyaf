@@ -15,15 +15,17 @@ use Traits\SimpleTrait;
  * Class SyUser
  * @package Tool
  */
-class SyUser extends SyUserJwt {
+class SyUser extends SyUserJwt
+{
     use SimpleTrait;
 
     /**
      * 检查是否已登录
      * @throws \Exception\User\LoginException
      */
-    public static function checkLogin(){
-        if(empty(self::getUserInfo())){
+    public static function checkLogin()
+    {
+        if (empty(self::getUserInfo())) {
             throw new LoginException('请先登录', ProjectCode::USER_NOT_LOGIN);
         }
     }
@@ -32,7 +34,8 @@ class SyUser extends SyUserJwt {
      * 获取用户ID
      * @return string
      */
-    public static function getUid() : string {
+    public static function getUid() : string
+    {
         $userInfo = self::getUserInfo();
         return is_array($userInfo) ? Tool::getArrayVal($userInfo, 'uid', '') : '';
     }
@@ -41,7 +44,8 @@ class SyUser extends SyUserJwt {
      * 获取用户openid
      * @return string
      */
-    public static function getOpenId() : string {
+    public static function getOpenId() : string
+    {
         $userInfo = self::getUserInfo();
         return is_array($userInfo) ? Tool::getArrayVal($userInfo, 'user_openid', '') : '';
     }

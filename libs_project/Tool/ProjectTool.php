@@ -18,7 +18,8 @@ use Traits\SimpleTrait;
 use Wx\CorpProvider\Common\AuthInfoGet;
 use Wx\CorpProvider\Common\PermanentCode;
 
-final class ProjectTool {
+final class ProjectTool
+{
     use SimpleTrait;
 
     /**
@@ -27,7 +28,8 @@ final class ProjectTool {
      * @param array $data
      * @throws \Exception\Wx\WxOpenException
      */
-    public static function handleAppAuthForWxOpen(int $optionType,array $data) {
+    public static function handleAppAuthForWxOpen(int $optionType, array $data)
+    {
         $nowTime = Tool::getNowTime();
         $openCommonConfig = WxConfigSingleton::getInstance()->getOpenCommonConfig();
         $entity = SyTaskMysqlFactory::WxopenAuthorizerEntity();
@@ -118,15 +120,16 @@ final class ProjectTool {
      * @return array
      * @throws \Exception\Wx\WxOpenException
      */
-    public static function getWxOpenAuthorizerInfo(string $appId){
+    public static function getWxOpenAuthorizerInfo(string $appId)
+    {
         $entity = SyTaskMysqlFactory::WxopenAuthorizerEntity();
         $ormResult1 = $entity->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`component_appid`=? AND `authorizer_appid`=?', [WxConfigSingleton::getInstance()->getOpenCommonConfig()->getAppId(), $appId,]);
         $authorizerInfo = $entity->getContainer()->getModel()->findOne($ormResult1);
         unset($ormResult1, $entity);
-        if(empty($authorizerInfo)){
+        if (empty($authorizerInfo)) {
             throw new WxOpenException('授权公众号不存在', ErrorCode::WXOPEN_PARAM_ERROR);
-        } else if($authorizerInfo['authorizer_status'] != Project::WX_COMPONENT_AUTHORIZER_STATUS_ALLOW){
+        } elseif ($authorizerInfo['authorizer_status'] != Project::WX_COMPONENT_AUTHORIZER_STATUS_ALLOW) {
             throw new WxOpenException('授权公众号已取消授权', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 
@@ -138,7 +141,8 @@ final class ProjectTool {
      * @param string $appId 授权公众号app id
      * @param array $data
      */
-    public static function updateWxOpenAuthorizerInfo(string $appId,array $data){
+    public static function updateWxOpenAuthorizerInfo(string $appId, array $data)
+    {
         $entity = SyTaskMysqlFactory::WxopenAuthorizerEntity();
         $ormResult1 = $entity->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`component_appid`=? AND `authorizer_appid`=?', [WxConfigSingleton::getInstance()->getOpenCommonConfig()->getAppId(), $appId,]);
@@ -157,7 +161,8 @@ final class ProjectTool {
      * @param array $data
      * @throws \Exception\Wx\WxCorpProviderException
      */
-    public static function handleAuthForWxCorpProvider(int $optionType,array $data) {
+    public static function handleAuthForWxCorpProvider(int $optionType, array $data)
+    {
         $nowTime = Tool::getNowTime();
         $entity = SyTaskMysqlFactory::WxproviderCorpAuthorizerEntity();
         $ormResult1 = $entity->getContainer()->getModel()->getOrmDbTable();
@@ -168,7 +173,7 @@ final class ProjectTool {
                 $permanentCode->setAuthCode($data['AuthCode']);
                 $permanentCodeDetail = $permanentCode->getDetail();
                 unset($permanentCode);
-                if($permanentCodeDetail['code'] > 0){
+                if ($permanentCodeDetail['code'] > 0) {
                     throw new WxCorpProviderException($permanentCodeDetail['message'], $permanentCodeDetail['code']);
                 }
 
@@ -224,9 +229,9 @@ final class ProjectTool {
             case Project::WX_PROVIDER_CORP_AUTHORIZER_OPTION_TYPE_AUTH_CHANGE:
                 $ormResult1->where('`suite_id`=? AND `authorizer_corpid`=?', [$data['SuiteId'], $data['AuthCorpId']]);
                 $authorizerInfo = $entity->getContainer()->getModel()->findOne($ormResult1);
-                if(empty($authorizerInfo)){
+                if (empty($authorizerInfo)) {
                     throw new WxCorpProviderException('企业微信未授权', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
-                } else if($authorizerInfo['authorizer_status'] != Project::WX_PROVIDER_CORP_AUTHORIZER_STATUS_ALLOW){
+                } elseif ($authorizerInfo['authorizer_status'] != Project::WX_PROVIDER_CORP_AUTHORIZER_STATUS_ALLOW) {
                     throw new WxCorpProviderException('企业微信已取消授权', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
                 }
 
@@ -235,7 +240,7 @@ final class ProjectTool {
                 $authInfoGet->setPermanentCode($authorizerInfo['authorizer_permanentcode']);
                 $authInfoGetDetail = $authInfoGet->getDetail();
                 unset($authInfoGet);
-                if($authInfoGetDetail['code'] > 0){
+                if ($authInfoGetDetail['code'] > 0) {
                     throw new WxCorpProviderException($authInfoGetDetail['message'], $authInfoGetDetail['code']);
                 }
 
@@ -264,15 +269,16 @@ final class ProjectTool {
      * @return array
      * @throws \Exception\Wx\WxOpenException
      */
-    public static function getWxCorpProviderAuthorizerInfo(string $corpId){
+    public static function getWxCorpProviderAuthorizerInfo(string $corpId)
+    {
         $entity = SyTaskMysqlFactory::WxproviderCorpAuthorizerEntity();
         $ormResult1 = $entity->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`suite_id`=? AND `authorizer_corpid`=?', [WxConfigSingleton::getInstance()->getCorpProviderConfig()->getSuiteId(), $corpId,]);
         $authorizerInfo = $entity->getContainer()->getModel()->findOne($ormResult1);
         unset($ormResult1, $entity);
-        if(empty($authorizerInfo)){
+        if (empty($authorizerInfo)) {
             throw new WxOpenException('授权企业微信不存在', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
-        } else if($authorizerInfo['authorizer_status'] != Project::WX_PROVIDER_CORP_AUTHORIZER_STATUS_ALLOW){
+        } elseif ($authorizerInfo['authorizer_status'] != Project::WX_PROVIDER_CORP_AUTHORIZER_STATUS_ALLOW) {
             throw new WxOpenException('企业微信已取消授权', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
 
@@ -285,7 +291,8 @@ final class ProjectTool {
      * @param string $salt 加密盐
      * @return string
      */
-    public static function encryptPassword(string $pwd,string $salt) : string {
+    public static function encryptPassword(string $pwd, string $salt) : string
+    {
         return hash('sha256', $pwd . $salt);
     }
 
@@ -296,7 +303,8 @@ final class ProjectTool {
      * @param string $sign 当前密文
      * @return bool
      */
-    public static function checkPassword(string $pwd,string $salt,string $sign){
+    public static function checkPassword(string $pwd, string $salt, string $sign)
+    {
         $nowSign = hash('sha256', $pwd . $salt);
         return $nowSign === $sign;
     }
@@ -311,14 +319,15 @@ final class ProjectTool {
      *     3：去除前后空格
      * @return string
      */
-    public static function filterStr(string $inStr,int $formatType=1) : string {
+    public static function filterStr(string $inStr, int $formatType = 1) : string
+    {
         if (strlen($inStr . '') > 0) {
             $patterns = [
                 "'<script[^>]*?>.*?</script>'si",
                 '/[\xf0-\xf7].{3}/',
             ];
             $replaces = [
-                "",
+                '',
                 '',
             ];
             if ($formatType == 1) {
@@ -326,7 +335,7 @@ final class ProjectTool {
                 $patterns[] = '/\s+/';
                 $replaces[] = '';
                 $replaces[] = ' ';
-            } else if ($formatType == 2) {
+            } elseif ($formatType == 2) {
                 $patterns[] = '/\s+/';
                 $replaces[] = ' ';
             }

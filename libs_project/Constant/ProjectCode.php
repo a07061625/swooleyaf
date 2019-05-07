@@ -9,7 +9,8 @@ namespace Constant;
 
 use Traits\SimpleTrait;
 
-class ProjectCode extends ErrorCode {
+class ProjectCode extends ErrorCode
+{
     use SimpleTrait;
 
     //用户错误,取值范围:500000-500999
@@ -26,7 +27,8 @@ class ProjectCode extends ErrorCode {
      * @param int $errorCode 错误码
      * @return mixed|string
      */
-    public static function getMsg(int $errorCode){
+    public static function getMsg(int $errorCode)
+    {
         $msgArr = array_merge(self::$projectMsgArr, self::$msgArr);
         return $msgArr[$errorCode] ?? '';
     }

@@ -11,16 +11,20 @@ use Constant\Project;
 use Log\Log;
 use SyMessageQueue\ConsumerBase;
 
-class ReqHealthCheckService extends ConsumerBase {
-    public function __construct() {
+class ReqHealthCheckService extends ConsumerBase
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->setMqTypeAndTopic(Project::MESSAGE_QUEUE_TYPE_REDIS, Project::MESSAGE_QUEUE_TOPIC_REQ_HEALTH_CHECK);
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    public function handleMessage(array $data) {
+    public function handleMessage(array $data)
+    {
         Log::warn('module:' . $data['module'] . ',uri:' . $data['uri'] . ' handle req cost time large than limit');
     }
 }

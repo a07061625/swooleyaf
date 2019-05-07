@@ -11,12 +11,14 @@ set_error_handler('\SyError\ErrorHandler::handleError');
  * 消息队列消费
  */
 
-function syMessageQueueHelp(){
+function syMessageQueueHelp()
+{
     print_r('帮助信息' . PHP_EOL);
     print_r('-t 消息队列类型: redis kafka' . PHP_EOL);
 }
 
-function handleKafkaMessage() {
+function handleKafkaMessage()
+{
     global $kafka;
     $kafka->refresh();
     $kafka->handleMessage();

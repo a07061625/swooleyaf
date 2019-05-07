@@ -11,13 +11,16 @@ use Constant\Project;
 use Log\Log;
 use SyMessageQueue\ConsumerBase;
 
-class Test extends ConsumerBase {
-    public function __construct(){
+class Test extends ConsumerBase
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->setMqTypeAndTopic(Project::MESSAGE_QUEUE_TYPE_KAFKA, Project::MESSAGE_QUEUE_TOPIC_TEST);
     }
 
-    public function handleMessage(array $data){
+    public function handleMessage(array $data)
+    {
         Log::info('kafka msg:' . print_r($data, true));
     }
 }

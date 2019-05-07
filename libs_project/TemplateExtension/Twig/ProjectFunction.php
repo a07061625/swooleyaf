@@ -9,7 +9,8 @@ namespace TemplateExtension\Twig;
 
 use Tool\Tool;
 
-class ProjectFunction {
+class ProjectFunction
+{
     /**
      * @var \TemplateExtension\Twig\ProjectFunction
      */
@@ -17,17 +18,20 @@ class ProjectFunction {
 
     private $funcMap = [];
 
-    private function __construct(){
-        $this->funcMap['syFunca01'] = new BaseFunction('syDate', function($time) {
+    private function __construct()
+    {
+        $this->funcMap['syFunca01'] = new BaseFunction('syDate', function ($time) {
             echo date('Y-m-d H:i:s', $time);
         });
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public static function getInstance(){
-        if(is_null(self::$instance)){
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -38,8 +42,9 @@ class ProjectFunction {
      * @param string $tag
      * @return array|\Twig_SimpleFunction|null
      */
-    public function getFunction(string $tag='') {
-        if(strlen($tag) > 0){
+    public function getFunction(string $tag = '')
+    {
+        if (strlen($tag) > 0) {
             return Tool::getArrayVal($this->funcMap, $tag, null);
         }
 
