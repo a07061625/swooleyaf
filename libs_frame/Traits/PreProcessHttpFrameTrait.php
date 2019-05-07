@@ -16,7 +16,8 @@ use Tool\Tool;
  * 框架内部HTTP服务预处理性状类
  * @package Traits
  */
-trait PreProcessHttpFrameTrait {
+trait PreProcessHttpFrameTrait
+{
     private $preProcessMapFrame = [
         ProjectBase::PRE_PROCESS_TAG_HTTP_FRAME_SERVER_INFO => 'preProcessFrameServerInfo',
         ProjectBase::PRE_PROCESS_TAG_HTTP_FRAME_PHP_INFO => 'preProcessFramePhpInfo',
@@ -24,12 +25,14 @@ trait PreProcessHttpFrameTrait {
         ProjectBase::PRE_PROCESS_TAG_HTTP_FRAME_REFRESH_TOKEN_EXPIRE => 'preProcessFrameRefreshTokenExpire',
     ];
 
-    private function preProcessFrameServerInfo(\swoole_http_request $request) : string {
+    private function preProcessFrameServerInfo(\swoole_http_request $request) : string
+    {
         self::$_syServer->incr(self::$_serverToken, 'request_times', 1);
         return Tool::jsonEncode($this->_server->stats());
     }
 
-    private function preProcessFramePhpInfo(\swoole_http_request $request) : string {
+    private function preProcessFramePhpInfo(\swoole_http_request $request) : string
+    {
         ob_start();
         phpinfo();
         $phpInfo = ob_get_contents();
@@ -37,22 +40,24 @@ trait PreProcessHttpFrameTrait {
         return $phpInfo;
     }
 
-    private function preProcessFrameHealthCheck(\swoole_http_request $request) : string {
+    private function preProcessFrameHealthCheck(\swoole_http_request $request) : string
+    {
         return 'http server is alive';
     }
 
-    private function preProcessFrameRefreshTokenExpire(\swoole_http_request $request) : string {
+    private function preProcessFrameRefreshTokenExpire(\swoole_http_request $request) : string
+    {
         $msg = '';
         $params = $request->get ?? [];
         $expireTime = $params['expire_time'] ?? '';
-        if(!ctype_digit($expireTime)){
+        if (!ctype_digit($expireTime)) {
             $msg = '过期时间不合法';
-        } else if((strlen($expireTime) > 1) && ($expireTime{0} == '0')){
+        } elseif ((strlen($expireTime) > 1) && ($expireTime{0} == '0')) {
             $msg = '过期时间不合法';
         }
 
         $refreshRes = new Result();
-        if(strlen($msg) == 0){
+        if (strlen($msg) == 0) {
             self::$_syServer->set(self::$_serverToken, [
                 'token_etime' => (int)$expireTime,
             ]);

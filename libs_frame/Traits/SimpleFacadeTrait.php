@@ -7,10 +7,13 @@
  */
 namespace Traits;
 
-trait SimpleFacadeTrait {
-    private function __construct(){
+trait SimpleFacadeTrait
+{
+    private function __construct()
+    {
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 }

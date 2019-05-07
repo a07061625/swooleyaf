@@ -10,18 +10,15 @@ namespace Traits\Server;
 use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 
-trait BasicHttpTrait {
-    private function checkServerHttp() {
-        $this->checkServerBase();
-        $this->checkServerHttpTrait();
-    }
-
+trait BasicHttpTrait
+{
     /**
      * 添加签名缓存
      * @param string $sign 签名信息
      * @return bool
      */
-    public static function addApiSign(string $sign) : bool {
+    public static function addApiSign(string $sign) : bool
+    {
         $signKey = Project::YAC_PREFIX_API_SIGN . substr($sign, 0, 16);
         $cacheData = CacheSimpleFactory::getYacInstance()->get($signKey);
         if (is_string($cacheData)) {
@@ -31,8 +28,14 @@ trait BasicHttpTrait {
             return true;
         }
     }
+    private function checkServerHttp()
+    {
+        $this->checkServerBase();
+        $this->checkServerHttpTrait();
+    }
 
-    private function initTableHttp() {
+    private function initTableHttp()
+    {
         $this->initTableBase();
         $this->initTableHttpTrait();
     }

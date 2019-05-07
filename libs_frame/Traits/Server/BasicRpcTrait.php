@@ -7,13 +7,16 @@
  */
 namespace Traits\Server;
 
-trait BasicRpcTrait {
-    private function checkServerRpc() {
+trait BasicRpcTrait
+{
+    private function checkServerRpc()
+    {
         $this->checkServerBase();
         $this->checkServerRpcTrait();
     }
 
-    private function initTableRpc() {
+    private function initTableRpc()
+    {
         $this->initTableBase();
         $this->initTableRpcTrait();
     }
