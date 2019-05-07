@@ -15,35 +15,40 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class AdminRebind extends WxBaseOpenMini {
+class AdminRebind extends WxBaseOpenMini
+{
     /**
      * 任务ID
      * @var string
      */
     private $taskId = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/account/componentrebindadmin?access_token=';
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $taskId
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setTaskId(string $taskId){
-        if(strlen($taskId) > 0){
+    public function setTaskId(string $taskId)
+    {
+        if (strlen($taskId) > 0) {
             $this->reqData['taskid'] = $taskId;
         } else {
             throw new WxOpenException('任务ID不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['taskid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['taskid'])) {
             throw new WxOpenException('任务ID不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 
@@ -57,7 +62,7 @@ class AdminRebind extends WxBaseOpenMini {
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

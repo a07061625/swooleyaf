@@ -19,7 +19,8 @@ use Wx\WxUtilCorp;
  * 查询付款记录
  * @package Wx\Corp\Pay\Payment
  */
-class PocketQuery extends WxBaseCorp {
+class PocketQuery extends WxBaseCorp
+{
     /**
      * 企业ID
      * @var string
@@ -41,7 +42,8 @@ class PocketQuery extends WxBaseCorp {
      */
     private $partner_trade_no = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/querywwsptrans2pocket';
         $corpConfig = WxConfigSingleton::getInstance()->getCorpConfig($corpId);
@@ -50,23 +52,26 @@ class PocketQuery extends WxBaseCorp {
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $partnerTradeNo
      * @throws \Exception\Wx\WxException
      */
-    public function setPartnerTradeNo(string $partnerTradeNo) {
-        if(ctype_digit($partnerTradeNo) && (strlen($partnerTradeNo) <= 32)){
+    public function setPartnerTradeNo(string $partnerTradeNo)
+    {
+        if (ctype_digit($partnerTradeNo) && (strlen($partnerTradeNo) <= 32)) {
             $this->reqData['partner_trade_no'] = $partnerTradeNo;
         } else {
             throw new WxException('商户订单号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['partner_trade_no'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['partner_trade_no'])) {
             throw new WxException('商户订单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -96,7 +101,7 @@ class PocketQuery extends WxBaseCorp {
         if ($sendData['return_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } else if ($sendData['result_code'] == 'FAIL') {
+        } elseif ($sendData['result_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {

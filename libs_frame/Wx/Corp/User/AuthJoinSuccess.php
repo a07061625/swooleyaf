@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 二次验证成员加入
  * @package Wx\Corp\User
  */
-class AuthJoinSuccess extends WxBaseCorp {
+class AuthJoinSuccess extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -27,21 +28,24 @@ class AuthJoinSuccess extends WxBaseCorp {
      */
     private $userid = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/user/authsucc';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $userId
      * @throws \Exception\Wx\WxException
      */
-    public function setUserId(string $userId){
+    public function setUserId(string $userId)
+    {
         if (ctype_alnum($userId) && (strlen($userId) <= 32)) {
             $this->reqData['userid'] = strtolower($userId);
         } else {
@@ -49,8 +53,9 @@ class AuthJoinSuccess extends WxBaseCorp {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['userid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['userid'])) {
             throw new WxException('用户ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -62,7 +67,7 @@ class AuthJoinSuccess extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

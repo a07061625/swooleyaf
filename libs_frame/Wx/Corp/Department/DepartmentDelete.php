@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 删除部门
  * @package Wx\Corp\Department
  */
-class DepartmentDelete extends WxBaseCorp {
+class DepartmentDelete extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -27,21 +28,24 @@ class DepartmentDelete extends WxBaseCorp {
      */
     private $id = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/department/delete';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $id
      * @throws \Exception\Wx\WxException
      */
-    public function setId(int $id){
+    public function setId(int $id)
+    {
         if ($id > 0) {
             $this->reqData['id'] = $id;
         } else {
@@ -49,8 +53,9 @@ class DepartmentDelete extends WxBaseCorp {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['id'])) {
             throw new WxException('部门id不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -62,7 +67,7 @@ class DepartmentDelete extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

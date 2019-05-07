@@ -7,7 +7,8 @@
  */
 namespace Wx;
 
-abstract class WxBaseShop extends WxBase {
+abstract class WxBaseShop extends WxBase
+{
     const MATERIAL_TYPE_IMAGE = 'image';
     const MATERIAL_TYPE_VOICE = 'voice';
     const MATERIAL_TYPE_VIDEO = 'video';
@@ -42,7 +43,8 @@ abstract class WxBaseShop extends WxBase {
         self::MERCHANT_TYPE_SUB => '子商户',
     ];
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
     }
 }

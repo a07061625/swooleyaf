@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class Statistics extends WxBaseShop {
+class Statistics extends WxBaseShop
+{
     const TYPE_USER_DAY_CHANGE = '0100';
     const TYPE_USER_DAY_TOTAL = '0101';
     const TYPE_ARTICLE_SEND_DAY_CHANGE = '0200';
@@ -54,7 +55,8 @@ class Statistics extends WxBaseShop {
      */
     private $max_date = 0;
 
-    public function __construct(string $appId,string $type){
+    public function __construct(string $appId, string $type)
+    {
         parent::__construct();
         $this->appid = $appId;
 
@@ -132,20 +134,22 @@ class Statistics extends WxBaseShop {
         }
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function setDate(int $beginTime,int $endTime){
+    public function setDate(int $beginTime, int $endTime)
+    {
         $nowDayTime = strtotime(date('Ymd'));
-        if($beginTime < 1417363200){
+        if ($beginTime < 1417363200) {
             throw new WxException('起始时间不能小于2014年12月1日', ErrorCode::WX_PARAM_ERROR);
-        } else if($endTime < 1417363200){
+        } elseif ($endTime < 1417363200) {
             throw new WxException('结束时间不能小于2014年12月1日', ErrorCode::WX_PARAM_ERROR);
-        } else if($beginTime > $endTime){
+        } elseif ($beginTime > $endTime) {
             throw new WxException('起始时间不能大于结束时间', ErrorCode::WX_PARAM_ERROR);
-        } else if($beginTime >= $nowDayTime){
+        } elseif ($beginTime >= $nowDayTime) {
             throw new WxException('起始时间必须小于今天', ErrorCode::WX_PARAM_ERROR);
-        } else if($endTime >= $nowDayTime){
+        } elseif ($endTime >= $nowDayTime) {
             throw new WxException('结束时间必须小于今天', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -154,7 +158,7 @@ class Statistics extends WxBaseShop {
         $beginDayTime = strtotime($beginDay);
         $endDayTime = strtotime($endDay);
         $dayNum = (int)(($endDayTime - $beginDayTime) / 86400);
-        if($dayNum >= $this->max_date){
+        if ($dayNum >= $this->max_date) {
             throw new WxException('时间跨度必须小于最大限定天数', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -162,8 +166,9 @@ class Statistics extends WxBaseShop {
         $this->reqData['end_date'] = $endDay;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['begin_date'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['begin_date'])) {
             throw new WxException('起始时间不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -175,7 +180,7 @@ class Statistics extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['errcode'])){
+        if (isset($sendData['errcode'])) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['errmsg'];
         } else {

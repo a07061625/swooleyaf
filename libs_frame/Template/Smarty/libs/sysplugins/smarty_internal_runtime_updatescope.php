@@ -10,7 +10,6 @@
  **/
 class Smarty_Internal_Runtime_UpdateScope
 {
-
     /**
      * Update new assigned template or config variable in other effected scopes
      *
@@ -24,7 +23,9 @@ class Smarty_Internal_Runtime_UpdateScope
         if ($tagScope) {
             $this->_updateVarStack($tpl, $varName);
             $tagScope = $tagScope & ~Smarty::SCOPE_LOCAL;
-            if (!$tpl->scope && !$tagScope) return;
+            if (!$tpl->scope && !$tagScope) {
+                return;
+            }
         }
         $mergedScope = $tagScope | $tpl->scope;
         if ($mergedScope) {
@@ -34,8 +35,9 @@ class Smarty_Internal_Runtime_UpdateScope
             // update scopes
             foreach ($this->_getAffectedScopes($tpl, $mergedScope) as $ptr) {
                 $this->_updateVariableInOtherScope($ptr->tpl_vars, $tpl, $varName);
-                if($tagScope && $ptr->_objType == 2 && isset($tpl->_cache[ 'varStack' ])) {
-                    $this->_updateVarStack($ptr, $varName);              }
+                if ($tagScope && $ptr->_objType == 2 && isset($tpl->_cache[ 'varStack' ])) {
+                    $this->_updateVarStack($ptr, $varName);
+                }
             }
         }
     }
@@ -50,7 +52,7 @@ class Smarty_Internal_Runtime_UpdateScope
      */
     public function _getAffectedScopes(Smarty_Internal_Template $tpl, $mergedScope)
     {
-        $_stack = array();
+        $_stack = [];
         $ptr = $tpl->parent;
         if ($mergedScope && isset($ptr) && $ptr->_objType == 2) {
             $_stack[] = $ptr;
@@ -62,8 +64,8 @@ class Smarty_Internal_Runtime_UpdateScope
             $ptr = $ptr->parent;
         }
         while (isset($ptr) && $ptr->_objType == 2) {
-                $_stack[] = $ptr;
-             $ptr = $ptr->parent;
+            $_stack[] = $ptr;
+            $ptr = $ptr->parent;
         }
         if ($mergedScope & Smarty::SCOPE_SMARTY) {
             if (isset($tpl->smarty)) {

@@ -15,7 +15,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class AuthCodeToOpenid extends WxBaseShop {
+class AuthCodeToOpenid extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -37,7 +38,8 @@ class AuthCodeToOpenid extends WxBaseShop {
      */
     private $nonce_str = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/tools/authcodetoopenid';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
@@ -46,23 +48,26 @@ class AuthCodeToOpenid extends WxBaseShop {
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $authCode
      * @throws \Exception\Wx\WxException
      */
-    public function setAuthCode(string $authCode){
-        if(ctype_digit($authCode) && (strlen($authCode) == 18) && ($authCode{0} == '1')){
+    public function setAuthCode(string $authCode)
+    {
+        if (ctype_digit($authCode) && (strlen($authCode) == 18) && ($authCode{0} == '1')) {
             $this->reqData['auth_code'] = $authCode;
         } else {
             throw new WxException('授权码不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['auth_code'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['auth_code'])) {
             throw new WxException('授权码不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
@@ -78,7 +83,7 @@ class AuthCodeToOpenid extends WxBaseShop {
         if ($sendData['return_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } else if ($sendData['result_code'] == 'FAIL') {
+        } elseif ($sendData['result_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code'];
         } else {

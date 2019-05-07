@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class NewsAdd extends WxBaseShop {
+class NewsAdd extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -26,7 +27,8 @@ class NewsAdd extends WxBaseShop {
      */
     private $articles = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
 
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=';
@@ -34,21 +36,23 @@ class NewsAdd extends WxBaseShop {
         $this->reqData['articles'] = [];
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param array $articles
      * @throws \Exception\Wx\WxException
      */
-    public function setArticles(array $articles){
+    public function setArticles(array $articles)
+    {
         $trueArticles = [];
         foreach ($articles as $eArticle) {
-            if(is_array($eArticle) && (!empty($eArticle))){
+            if (is_array($eArticle) && (!empty($eArticle))) {
                 $trueArticles[] = $eArticle;
             }
         }
-        if(empty($trueArticles)){
+        if (empty($trueArticles)) {
             throw new WxException('文章不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -59,16 +63,18 @@ class NewsAdd extends WxBaseShop {
      * @param array $article
      * @throws \Exception\Wx\WxException
      */
-    public function addArticle(array $article){
-        if(empty($article)){
+    public function addArticle(array $article)
+    {
+        if (empty($article)) {
             throw new WxException('文章不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $this->reqData['articles'][] = $article;
     }
 
-    public function getDetail() : array {
-        if(empty($this->reqData['articles'])){
+    public function getDetail() : array
+    {
+        if (empty($this->reqData['articles'])) {
             throw new WxException('文章不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -80,7 +86,7 @@ class NewsAdd extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['media_id'])){
+        if (isset($sendData['media_id'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

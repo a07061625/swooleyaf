@@ -43,7 +43,7 @@ abstract class Smarty_Resource_Uncompiled extends Smarty_Resource
         $compiled->exists = $_template->source->exists;
         if ($_template->smarty->merge_compiled_includes || $_template->source->handler->checkTimestamps()) {
             $compiled->file_dependency[ $_template->source->uid ] =
-                array($compiled->filepath, $compiled->timestamp, $_template->source->type,);
+                [$compiled->filepath, $compiled->timestamp, $_template->source->type,];
         }
     }
 }

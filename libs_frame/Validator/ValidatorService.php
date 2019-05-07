@@ -7,7 +7,8 @@
  */
 namespace Validator;
 
-interface ValidatorService {
+interface ValidatorService
+{
     /**
      * @param mixed $data 要校验的数据
      * @param mixed $compareData 比对的数据

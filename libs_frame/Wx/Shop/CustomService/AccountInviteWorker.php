@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class AccountInviteWorker extends WxBaseShop {
+class AccountInviteWorker extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -31,22 +32,25 @@ class AccountInviteWorker extends WxBaseShop {
      */
     private $invite_wx = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/customservice/kfaccount/inviteworker?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $kfAccount
      * @throws \Exception\Wx\WxException
      */
-    public function setKfAccount(string $kfAccount){
+    public function setKfAccount(string $kfAccount)
+    {
         $accountLength = strlen($kfAccount);
-        if(($accountLength > 0) && ($accountLength <= 30)){
+        if (($accountLength > 0) && ($accountLength <= 30)) {
             $this->reqData['kf_account'] = $kfAccount;
         } else {
             throw new WxException('客服帐号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -57,19 +61,21 @@ class AccountInviteWorker extends WxBaseShop {
      * @param string $inviteWx
      * @throws \Exception\Wx\WxException
      */
-    public function setInviteWx(string $inviteWx){
-        if(strlen($inviteWx) > 0){
+    public function setInviteWx(string $inviteWx)
+    {
+        if (strlen($inviteWx) > 0) {
             $this->reqData['invite_wx'] = $inviteWx;
         } else {
             throw new WxException('客服微信号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['kf_account'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['kf_account'])) {
             throw new WxException('客服帐号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['invite_wx'])){
+        if (!isset($this->reqData['invite_wx'])) {
             throw new WxException('客服微信号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -81,7 +87,7 @@ class AccountInviteWorker extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

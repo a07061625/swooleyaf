@@ -14,7 +14,8 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class NicknameAuditQuery extends WxBaseOpenMini {
+class NicknameAuditQuery extends WxBaseOpenMini
+{
     /**
      * 应用ID
      * @var string
@@ -26,29 +27,33 @@ class NicknameAuditQuery extends WxBaseOpenMini {
      */
     private $audit_id = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/wxa/api_wxa_querynickname?access_token=';
         $this->appId = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $auditId
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setAuditId(string $auditId){
-        if(ctype_alnum($auditId)){
+    public function setAuditId(string $auditId)
+    {
+        if (ctype_alnum($auditId)) {
             $this->reqData['audit_id'] = $auditId;
         } else {
             throw new WxOpenException('审核id不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['audit_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['audit_id'])) {
             throw new WxOpenException('审核id不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 
@@ -62,7 +67,7 @@ class NicknameAuditQuery extends WxBaseOpenMini {
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

@@ -22,16 +22,16 @@ class Smarty_Internal_Compile_Assign extends Smarty_Internal_CompileBase
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $option_flags = array('nocache', 'noscope');
+    public $option_flags = ['nocache', 'noscope'];
 
-   /**
-     * Valid scope names
-     *
-     * @var array
-     */
-    public $valid_scopes = array('local' => Smarty::SCOPE_LOCAL, 'parent' => Smarty::SCOPE_PARENT,
+    /**
+      * Valid scope names
+      *
+      * @var array
+      */
+    public $valid_scopes = ['local' => Smarty::SCOPE_LOCAL, 'parent' => Smarty::SCOPE_PARENT,
                                  'root' => Smarty::SCOPE_ROOT, 'global' => Smarty::SCOPE_GLOBAL,
-                                 'tpl_root' => Smarty::SCOPE_TPL_ROOT, 'smarty' => Smarty::SCOPE_SMARTY);
+                                 'tpl_root' => Smarty::SCOPE_TPL_ROOT, 'smarty' => Smarty::SCOPE_SMARTY];
 
     /**
      * Compiles code for the {assign} tag
@@ -46,10 +46,10 @@ class Smarty_Internal_Compile_Assign extends Smarty_Internal_CompileBase
     public function compile($args, Smarty_Internal_TemplateCompilerBase $compiler, $parameter)
     {
         // the following must be assigned at runtime because it will be overwritten in Smarty_Internal_Compile_Append
-        $this->required_attributes = array('var', 'value');
-        $this->shorttag_order = array('var', 'value');
-        $this->optional_attributes = array('scope');
-        $this->mapCache = array();
+        $this->required_attributes = ['var', 'value'];
+        $this->shorttag_order = ['var', 'value'];
+        $this->optional_attributes = ['scope'];
+        $this->mapCache = [];
         $_nocache = false;
         // check and get attributes
         $_attr = $this->getAttributes($compiler, $args);
@@ -71,7 +71,7 @@ class Smarty_Internal_Compile_Assign extends Smarty_Internal_CompileBase
             $_scope = $compiler->convertScope($_attr, $this->valid_scopes);
         }
         // optional parameter
-        $_params = "";
+        $_params = '';
         if ($_nocache || $_scope) {
             $_params .= ' ,' . var_export($_nocache, true);
         }

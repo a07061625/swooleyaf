@@ -17,7 +17,8 @@ use Wx\WxBaseCorpProvider;
  * 获取网页登录服务商授权引导地址
  * @package Wx\CorpProvider\Authorize
  */
-class LoginAuthUrlWebProvider extends WxBaseCorpProvider {
+class LoginAuthUrlWebProvider extends WxBaseCorpProvider
+{
     /**
      * 套件ID
      * @var string
@@ -47,7 +48,8 @@ class LoginAuthUrlWebProvider extends WxBaseCorpProvider {
      */
     private $state = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $providerConfig = WxConfigSingleton::getInstance()->getCorpProviderConfig();
         $this->reqData['appid'] = $providerConfig->getSuiteId();
@@ -56,15 +58,17 @@ class LoginAuthUrlWebProvider extends WxBaseCorpProvider {
         $this->reqData['state'] = Tool::createNonceStr(8);
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $scope
      * @throws \Exception\Wx\WxCorpProviderException
      */
-    public function setScope(string $scope){
-        if(in_array($scope, ['snsapi_base', 'snsapi_userinfo', 'snsapi_privateinfo'])){
+    public function setScope(string $scope)
+    {
+        if (in_array($scope, ['snsapi_base', 'snsapi_userinfo', 'snsapi_privateinfo'], true)) {
             $this->reqData['scope'] = $scope;
         } else {
             throw new WxCorpProviderException('授权作用域不合法', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
@@ -75,16 +79,18 @@ class LoginAuthUrlWebProvider extends WxBaseCorpProvider {
      * @param string $state
      * @throws \Exception\Wx\WxCorpProviderException
      */
-    public function setState(string $state){
-        if(ctype_alnum($state) && (strlen($state) <= 128)){
+    public function setState(string $state)
+    {
+        if (ctype_alnum($state) && (strlen($state) <= 128)) {
             $this->reqData['state'] = $state;
         } else {
             throw new WxCorpProviderException('防跨域攻击标识不合法', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['scope'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['scope'])) {
             throw new WxCorpProviderException('授权作用域不能为空', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
 

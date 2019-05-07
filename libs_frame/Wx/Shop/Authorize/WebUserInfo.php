@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 网站应用获取用户信息
  * @package Wx\Shop\Authorize
  */
-class WebUserInfo extends WxBaseShop {
+class WebUserInfo extends WxBaseShop
+{
     private $urlAccessToken = '';
     private $urlUserInfo = '';
     /**
@@ -27,7 +28,8 @@ class WebUserInfo extends WxBaseShop {
      */
     private $code = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->urlAccessToken = 'https://api.weixin.qq.com/sns/oauth2/access_token';
         $this->urlUserInfo = 'https://api.weixin.qq.com/sns/userinfo?lang=zh_CN&access_token=';
@@ -37,23 +39,26 @@ class WebUserInfo extends WxBaseShop {
         $this->reqData['grant_type'] = 'authorization_code';
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $code
      * @throws \Exception\Wx\WxException
      */
-    public function setCode(string $code){
-        if(strlen($code) > 0){
+    public function setCode(string $code)
+    {
+        if (strlen($code) > 0) {
             $this->reqData['code'] = $code;
         } else {
             throw new WxException('授权码不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['code'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['code'])) {
             throw new WxException('授权码不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -73,7 +78,7 @@ class WebUserInfo extends WxBaseShop {
         $this->curlConfigs[CURLOPT_URL] = $this->urlUserInfo . $sendData['access_token'] . '&openid=' . $sendData['openid'];
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['openid'])){
+        if (isset($sendData['openid'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

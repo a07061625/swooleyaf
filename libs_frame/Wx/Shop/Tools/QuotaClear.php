@@ -15,7 +15,8 @@ use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 use Wx\WxUtilOpenBase;
 
-class QuotaClear extends WxBaseShop {
+class QuotaClear extends WxBaseShop
+{
     /**
      * 公众号APPID
      * @var string
@@ -27,29 +28,33 @@ class QuotaClear extends WxBaseShop {
      */
     private $platType = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/clear_quota?access_token=';
         $this->reqData['appid'] = $appId;
         $this->platType = WxUtilBase::PLAT_TYPE_SHOP;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $platType
      * @throws \Exception\Wx\WxException
      */
-    public function setPlatType(string $platType){
-        if(in_array($platType, [WxUtilBase::PLAT_TYPE_SHOP, WxUtilBase::PLAT_TYPE_OPEN_SHOP])){
+    public function setPlatType(string $platType)
+    {
+        if (in_array($platType, [WxUtilBase::PLAT_TYPE_SHOP, WxUtilBase::PLAT_TYPE_OPEN_SHOP], true)) {
             $this->platType = $platType;
         } else {
             throw new WxException('平台类型不支持', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0
         ];

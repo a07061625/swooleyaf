@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Exception\Wx\WxException;
 use Tool\Tool;
 
-abstract class WxUtilBase {
+abstract class WxUtilBase
+{
     const PLAT_TYPE_SHOP = 'shop'; //平台类型-公众号
     const PLAT_TYPE_MINI = 'mini'; //平台类型-小程序
     const PLAT_TYPE_OPEN_SHOP = 'openshop'; //平台类型-第三方平台代理公众号
@@ -40,19 +41,20 @@ abstract class WxUtilBase {
      * @return mixed
      * @throws \Exception\Wx\WxException
      */
-    public static function sendPostReq(array $curlConfig) {
+    public static function sendPostReq(array $curlConfig)
+    {
         $curlConfig[CURLOPT_POST] = true;
         $curlConfig[CURLOPT_RETURNTRANSFER] = true;
-        if(!isset($curlConfig[CURLOPT_TIMEOUT_MS])){
+        if (!isset($curlConfig[CURLOPT_TIMEOUT_MS])) {
             $curlConfig[CURLOPT_TIMEOUT_MS] = 2000;
         }
-        if(!isset($curlConfig[CURLOPT_HEADER])){
+        if (!isset($curlConfig[CURLOPT_HEADER])) {
             $curlConfig[CURLOPT_HEADER] = false;
         }
-        if(!isset($curlConfig[CURLOPT_SSL_VERIFYPEER])){
+        if (!isset($curlConfig[CURLOPT_SSL_VERIFYPEER])) {
             $curlConfig[CURLOPT_SSL_VERIFYPEER] = true;
         }
-        if(!isset($curlConfig[CURLOPT_SSL_VERIFYHOST])){
+        if (!isset($curlConfig[CURLOPT_SSL_VERIFYHOST])) {
             $curlConfig[CURLOPT_SSL_VERIFYHOST] = 2;
         }
         $sendRes = Tool::sendCurlReq($curlConfig);
@@ -69,12 +71,13 @@ abstract class WxUtilBase {
      * @return mixed
      * @throws \Exception\Wx\WxException
      */
-    public static function sendGetReq(array $curlConfig) {
+    public static function sendGetReq(array $curlConfig)
+    {
         $curlConfig[CURLOPT_SSL_VERIFYPEER] = false;
         $curlConfig[CURLOPT_SSL_VERIFYHOST] = false;
         $curlConfig[CURLOPT_HEADER] = false;
         $curlConfig[CURLOPT_RETURNTRANSFER] = true;
-        if(!isset($curlConfig[CURLOPT_TIMEOUT_MS])){
+        if (!isset($curlConfig[CURLOPT_TIMEOUT_MS])) {
             $curlConfig[CURLOPT_TIMEOUT_MS] = 2000;
         }
         $sendRes = Tool::sendCurlReq($curlConfig);
@@ -93,7 +96,8 @@ abstract class WxUtilBase {
      * @param string $encryptMsg 密文消息
      * @return string
      */
-    protected static function getSha1Val(string $token,string $timestamp,string $nonce,string $encryptMsg) : string {
+    protected static function getSha1Val(string $token, string $timestamp, string $nonce, string $encryptMsg) : string
+    {
         $saveArr = [$token, $timestamp, $nonce, $encryptMsg];
         sort($saveArr, SORT_STRING);
         $needStr = implode('', $saveArr);

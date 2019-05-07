@@ -32,6 +32,11 @@ class Twig_TokenParser_Include extends Twig_TokenParser
         return new Twig_Node_Include($expr, $variables, $only, $ignoreMissing, $token->getLine(), $this->getTag());
     }
 
+    public function getTag()
+    {
+        return 'include';
+    }
+
     protected function parseArguments()
     {
         $stream = $this->parser->getStream();
@@ -55,11 +60,6 @@ class Twig_TokenParser_Include extends Twig_TokenParser
 
         $stream->expect(Twig_Token::BLOCK_END_TYPE);
 
-        return array($variables, $only, $ignoreMissing);
-    }
-
-    public function getTag()
-    {
-        return 'include';
+        return [$variables, $only, $ignoreMissing];
     }
 }

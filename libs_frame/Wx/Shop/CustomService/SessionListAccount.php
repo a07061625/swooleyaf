@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class SessionListAccount extends WxBaseShop {
+class SessionListAccount extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -26,30 +27,34 @@ class SessionListAccount extends WxBaseShop {
      */
     private $kf_account = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/customservice/kfsession/getsessionlist?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $kfAccount
      * @throws \Exception\Wx\WxException
      */
-    public function setKfAccount(string $kfAccount){
+    public function setKfAccount(string $kfAccount)
+    {
         $accountLength = strlen($kfAccount);
-        if(($accountLength > 0) && ($accountLength <= 30)){
+        if (($accountLength > 0) && ($accountLength <= 30)) {
             $this->reqData['kf_account'] = $kfAccount;
         } else {
             throw new WxException('客服帐号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['kf_account'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['kf_account'])) {
             throw new WxException('客服帐号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -60,7 +65,7 @@ class SessionListAccount extends WxBaseShop {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid) . '&kf_account=' . urlencode($this->reqData['kf_account']);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['sessionlist'])){
+        if (isset($sendData['sessionlist'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

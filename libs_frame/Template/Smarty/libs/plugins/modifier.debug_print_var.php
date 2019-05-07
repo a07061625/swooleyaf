@@ -4,6 +4,11 @@
  *
  * @package    Smarty
  * @subpackage Debug
+ * @param mixed $var
+ * @param mixed $max
+ * @param mixed $length
+ * @param mixed $depth
+ * @param mixed $objects
  */
 
 /**
@@ -22,11 +27,11 @@
  *
  * @return string
  */
-function smarty_modifier_debug_print_var($var, $max = 10, $length = 40, $depth = 0, $objects = array())
+function smarty_modifier_debug_print_var($var, $max = 10, $length = 40, $depth = 0, $objects = [])
 {
-    $_replace = array("\n" => '\n', "\r" => '\r', "\t" => '\t');
+    $_replace = ["\n" => '\n', "\r" => '\r', "\t" => '\t'];
     switch (gettype($var)) {
-        case 'array' :
+        case 'array':
             $results = '<b>Array (' . count($var) . ')</b>';
             if ($depth == $max) {
                 break;
@@ -39,10 +44,10 @@ function smarty_modifier_debug_print_var($var, $max = 10, $length = 40, $depth =
             }
             break;
 
-        case 'object' :
+        case 'object':
             $object_vars = get_object_vars($var);
             $results = '<b>' . get_class($var) . ' Object (' . count($object_vars) . ')</b>';
-            if (in_array($var, $objects)) {
+            if (in_array($var, $objects, true)) {
                 $results .= ' called recursive';
                 break;
             }
@@ -57,9 +62,9 @@ function smarty_modifier_debug_print_var($var, $max = 10, $length = 40, $depth =
             }
             break;
 
-        case 'boolean' :
-        case 'NULL' :
-        case 'resource' :
+        case 'boolean':
+        case 'NULL':
+        case 'resource':
             if (true === $var) {
                 $results = 'true';
             } elseif (false === $var) {
@@ -72,12 +77,12 @@ function smarty_modifier_debug_print_var($var, $max = 10, $length = 40, $depth =
             $results = '<i>' . $results . '</i>';
             break;
 
-        case 'integer' :
-        case 'float' :
+        case 'integer':
+        case 'float':
             $results = htmlspecialchars((string) $var);
             break;
 
-        case 'string' :
+        case 'string':
             $results = strtr($var, $_replace);
             if (Smarty::$_MBSTRING) {
                 if (mb_strlen($var, Smarty::$_CHARSET) > $length) {
@@ -92,8 +97,8 @@ function smarty_modifier_debug_print_var($var, $max = 10, $length = 40, $depth =
             $results = htmlspecialchars('"' . $results . '"', ENT_QUOTES, Smarty::$_CHARSET);
             break;
 
-        case 'unknown type' :
-        default :
+        case 'unknown type':
+        default:
             $results = strtr((string) $var, $_replace);
             if (Smarty::$_MBSTRING) {
                 if (mb_strlen($results, Smarty::$_CHARSET) > $length) {

@@ -4,6 +4,9 @@
  *
  * @package    Smarty
  * @subpackage PluginsBlock
+ * @param mixed $params
+ * @param mixed $content
+ * @param mixed $template
  */
 
 /**
@@ -84,15 +87,18 @@ function smarty_block_textformat($params, $content, $template, &$repeat)
         }
         // convert mult. spaces & special chars to single space
         $_paragraph =
-            preg_replace(array('!\s+!' . Smarty::$_UTF8_MODIFIER, '!(^\s+)|(\s+$)!' . Smarty::$_UTF8_MODIFIER),
-                         array(' ', ''), $_paragraph);
+            preg_replace(
+                ['!\s+!' . Smarty::$_UTF8_MODIFIER, '!(^\s+)|(\s+$)!' . Smarty::$_UTF8_MODIFIER],
+                         [' ', ''],
+                $_paragraph
+            );
         // indent first line
         if ($indent_first > 0) {
             $_paragraph = str_repeat($indent_char, $indent_first) . $_paragraph;
         }
         // wordwrap sentences
         if (Smarty::$_MBSTRING) {
-            require_once(SMARTY_PLUGINS_DIR . 'shared.mb_wordwrap.php');
+            require_once SMARTY_PLUGINS_DIR . 'shared.mb_wordwrap.php';
             $_paragraph = smarty_mb_wordwrap($_paragraph, $wrap - $indent, $wrap_char, $wrap_cut);
         } else {
             $_paragraph = wordwrap($_paragraph, $wrap - $indent, $wrap_char, $wrap_cut);

@@ -15,7 +15,8 @@ use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 use Wx\WxUtilOpenBase;
 
-class MsgTemplateTitleKeywords extends WxBaseMini {
+class MsgTemplateTitleKeywords extends WxBaseMini
+{
     /**
      * 应用ID
      * @var string
@@ -32,21 +33,24 @@ class MsgTemplateTitleKeywords extends WxBaseMini {
      */
     private $platType = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/wxopen/template/library/get?access_token=';
         $this->appId = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $titleId
      * @throws \Exception\Wx\WxException
      */
-    public function setTitleId(string $titleId) {
-        if(strlen($titleId) > 0){
+    public function setTitleId(string $titleId)
+    {
+        if (strlen($titleId) > 0) {
             $this->reqData['id'] = $titleId;
         } else {
             throw new WxException('模板标题id不合法', ErrorCode::WX_PARAM_ERROR);
@@ -57,16 +61,18 @@ class MsgTemplateTitleKeywords extends WxBaseMini {
      * @param string $platType
      * @throws \Exception\Wx\WxException
      */
-    public function setPlatType(string $platType) {
-        if(in_array($platType, [WxUtilBase::PLAT_TYPE_MINI, WxUtilBase::PLAT_TYPE_OPEN_MINI])){
+    public function setPlatType(string $platType)
+    {
+        if (in_array($platType, [WxUtilBase::PLAT_TYPE_MINI, WxUtilBase::PLAT_TYPE_OPEN_MINI], true)) {
             $this->platType = $platType;
         } else {
             throw new WxException('平台类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['id'])) {
             throw new WxException('模板标题id不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -74,7 +80,7 @@ class MsgTemplateTitleKeywords extends WxBaseMini {
             'code' => 0
         ];
 
-        if($this->platType == WxUtilBase::PLAT_TYPE_MINI){
+        if ($this->platType == WxUtilBase::PLAT_TYPE_MINI) {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilBaseAlone::getAccessToken($this->appId);
         } else {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getAuthorizerAccessToken($this->appId);
@@ -84,7 +90,7 @@ class MsgTemplateTitleKeywords extends WxBaseMini {
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['id'])){
+        if (isset($sendData['id'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

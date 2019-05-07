@@ -23,7 +23,7 @@ class Smarty_Internal_Compile_Insert extends Smarty_Internal_CompileBase
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $required_attributes = array('name');
+    public $required_attributes = ['name'];
 
     /**
      * Attribute definition: Overwrites base class.
@@ -31,7 +31,7 @@ class Smarty_Internal_Compile_Insert extends Smarty_Internal_CompileBase
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $shorttag_order = array('name');
+    public $shorttag_order = ['name'];
 
     /**
      * Attribute definition: Overwrites base class.
@@ -39,7 +39,7 @@ class Smarty_Internal_Compile_Insert extends Smarty_Internal_CompileBase
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $optional_attributes = array('_any');
+    public $optional_attributes = ['_any'];
 
     /**
      * Compiles code for the {insert} tag
@@ -112,8 +112,11 @@ class Smarty_Internal_Compile_Insert extends Smarty_Internal_CompileBase
             $_output .= "require_once '{$_filepath}' ;";
             require_once $_filepath;
             if (!is_callable($_function)) {
-                $compiler->trigger_template_error(" {insert} function '{$_function}' is not callable in script file '{$_script}'",
-                                                  null, true);
+                $compiler->trigger_template_error(
+                    " {insert} function '{$_function}' is not callable in script file '{$_script}'",
+                                                  null,
+                    true
+                );
             }
         } else {
             $_filepath = 'null';
@@ -122,19 +125,22 @@ class Smarty_Internal_Compile_Insert extends Smarty_Internal_CompileBase
             if (!is_callable($_function)) {
                 // try plugin
                 if (!$_function = $compiler->getPlugin($_name, 'insert')) {
-                    $compiler->trigger_template_error("{insert} no function or plugin found for '{$_name}'", null,
-                                                      true);
+                    $compiler->trigger_template_error(
+                        "{insert} no function or plugin found for '{$_name}'",
+                        null,
+                                                      true
+                    );
                 }
             }
         }
         // delete {insert} standard attributes
         unset($_attr[ 'name' ], $_attr[ 'assign' ], $_attr[ 'script' ], $_attr[ 'nocache' ]);
         // convert attributes into parameter array string
-        $_paramsArray = array();
+        $_paramsArray = [];
         foreach ($_attr as $_key => $_value) {
             $_paramsArray[] = "'$_key' => $_value";
         }
-        $_params = 'array(' . implode(", ", $_paramsArray) . ')';
+        $_params = 'array(' . implode(', ', $_paramsArray) . ')';
         // call insert
         if (isset($_assign)) {
             if ($_smarty_tpl->caching && !$nocacheParam) {

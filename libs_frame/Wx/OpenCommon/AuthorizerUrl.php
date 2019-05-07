@@ -15,14 +15,16 @@ use Wx\WxBaseOpenCommon;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class AuthorizerUrl extends WxBaseOpenCommon {
+class AuthorizerUrl extends WxBaseOpenCommon
+{
     /**
      * @var string
      */
     private $urlPreAuth = '';
     private $urlAuthCallback = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/component/api_create_preauthcode?component_access_token=';
         $this->urlPreAuth = 'https://mp.weixin.qq.com/cgi-bin/componentloginpage';
@@ -31,10 +33,12 @@ class AuthorizerUrl extends WxBaseOpenCommon {
         $this->urlAuthCallback = $openCommonConfig->getUrlAuthCallback();
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getComponentAccessToken($this->reqData['component_appid']);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);

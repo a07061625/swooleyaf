@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class OrderSetDelivery extends WxBaseShop {
+class OrderSetDelivery extends WxBaseShop
+{
     const DELIVERY_STATUS_NO = 0; //物流状态-不需要
     const DELIVERY_STATUS_YES = 1; //物流状态-需要
 
@@ -49,7 +50,8 @@ class OrderSetDelivery extends WxBaseShop {
      */
     private $is_others = 0;
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/merchant/order/setdelivery?access_token=';
         $this->appid = $appId;
@@ -57,15 +59,17 @@ class OrderSetDelivery extends WxBaseShop {
         $this->reqData['is_others'] = 0;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $orderId
      * @throws \Exception\Wx\WxException
      */
-    public function setOrderId(string $orderId){
-        if(ctype_digit($orderId) && (strlen($orderId) <= 32)){
+    public function setOrderId(string $orderId)
+    {
+        if (ctype_digit($orderId) && (strlen($orderId) <= 32)) {
             $this->reqData['order_id'] = $orderId;
         } else {
             throw new WxException('订单ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -76,8 +80,9 @@ class OrderSetDelivery extends WxBaseShop {
      * @param string $deliveryCompany
      * @throws \Exception\Wx\WxException
      */
-    public function setDeliveryCompany(string $deliveryCompany){
-        if(strlen($deliveryCompany) > 0){
+    public function setDeliveryCompany(string $deliveryCompany)
+    {
+        if (strlen($deliveryCompany) > 0) {
             $this->reqData['delivery_company'] = $deliveryCompany;
         } else {
             throw new WxException('物流公司不合法', ErrorCode::WX_PARAM_ERROR);
@@ -88,8 +93,9 @@ class OrderSetDelivery extends WxBaseShop {
      * @param string $deliveryTrackNo
      * @throws \Exception\Wx\WxException
      */
-    public function setDeliveryTrackNo(string $deliveryTrackNo){
-        if(strlen($deliveryTrackNo) > 0){
+    public function setDeliveryTrackNo(string $deliveryTrackNo)
+    {
+        if (strlen($deliveryTrackNo) > 0) {
             $this->reqData['delivery_track_no'] = $deliveryTrackNo;
         } else {
             throw new WxException('运单ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -100,8 +106,9 @@ class OrderSetDelivery extends WxBaseShop {
      * @param int $needDelivery
      * @throws \Exception\Wx\WxException
      */
-    public function setNeedDelivery(int $needDelivery){
-        if(in_array($needDelivery, [self::DELIVERY_STATUS_NO, self::DELIVERY_STATUS_YES])){
+    public function setNeedDelivery(int $needDelivery)
+    {
+        if (in_array($needDelivery, [self::DELIVERY_STATUS_NO, self::DELIVERY_STATUS_YES], true)) {
             $this->reqData['need_delivery'] = $needDelivery;
         } else {
             throw new WxException('物流状态不合法', ErrorCode::WX_PARAM_ERROR);
@@ -112,23 +119,25 @@ class OrderSetDelivery extends WxBaseShop {
      * @param int $isOthers
      * @throws \Exception\Wx\WxException
      */
-    public function setIsOthers(int $isOthers){
-        if(in_array($isOthers, [0, 1])){
+    public function setIsOthers(int $isOthers)
+    {
+        if (in_array($isOthers, [0, 1], true)) {
             $this->reqData['is_others'] = $isOthers;
         } else {
             throw new WxException('其它物流公司状态不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['order_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['order_id'])) {
             throw new WxException('订单ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if($this->reqData['need_delivery'] == self::DELIVERY_STATUS_YES){
-            if(!isset($this->reqData['delivery_company'])){
+        if ($this->reqData['need_delivery'] == self::DELIVERY_STATUS_YES) {
+            if (!isset($this->reqData['delivery_company'])) {
                 throw new WxException('物流公司不能为空', ErrorCode::WX_PARAM_ERROR);
             }
-            if(!isset($this->reqData['delivery_track_no'])){
+            if (!isset($this->reqData['delivery_track_no'])) {
                 throw new WxException('运单ID不能为空', ErrorCode::WX_PARAM_ERROR);
             }
         }
@@ -141,7 +150,7 @@ class OrderSetDelivery extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

@@ -4,6 +4,9 @@
  *
  * @package    Smarty
  * @subpackage PluginsShared
+ * @param mixed $params
+ * @param mixed $index
+ * @param null|mixed $default
  */
 
 /**
@@ -30,7 +33,7 @@ function smarty_literal_compiler_param($params, $index, $default = null)
     }
 
     $t = null;
-    eval("\$t = " . $params[ $index ] . ";");
+    eval('$t = ' . $params[ $index ] . ';');
 
     return $t;
 }

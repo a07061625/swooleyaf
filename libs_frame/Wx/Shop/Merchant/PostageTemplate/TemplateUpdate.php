@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class TemplateUpdate extends WxBaseShop {
+class TemplateUpdate extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -46,22 +47,25 @@ class TemplateUpdate extends WxBaseShop {
      */
     private $TopFee = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/merchant/express/update?access_token=';
         $this->appid = $appId;
         $this->reqData['Valuation'] = 0;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $templateId
      * @throws \Exception\Wx\WxException
      */
-    public function setTemplateId(string $templateId){
-        if(ctype_alnum($templateId)){
+    public function setTemplateId(string $templateId)
+    {
+        if (ctype_alnum($templateId)) {
             $this->template_id = $templateId;
         } else {
             throw new WxException('模板ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -72,8 +76,9 @@ class TemplateUpdate extends WxBaseShop {
      * @param string $name
      * @throws \Exception\Wx\WxException
      */
-    public function setName(string $name){
-        if(strlen($name) == 0){
+    public function setName(string $name)
+    {
+        if (strlen($name) == 0) {
             $this->reqData['Name'] = $name;
         } else {
             throw new WxException('模板名称不合法', ErrorCode::WX_PARAM_ERROR);
@@ -84,8 +89,9 @@ class TemplateUpdate extends WxBaseShop {
      * @param int $assumer
      * @throws \Exception\Wx\WxException
      */
-    public function setAssumer(int $assumer){
-        if(in_array($assumer, [0, 1])){
+    public function setAssumer(int $assumer)
+    {
+        if (in_array($assumer, [0, 1], true)) {
             $this->reqData['Assumer'] = $assumer;
         } else {
             throw new WxException('支付方式不合法', ErrorCode::WX_PARAM_ERROR);
@@ -95,9 +101,10 @@ class TemplateUpdate extends WxBaseShop {
     /**
      * @param array $feeList
      */
-    public function setTopFee(array $feeList){
+    public function setTopFee(array $feeList)
+    {
         foreach ($feeList as $eFee) {
-            if(isset($eFee['Type']) && ctype_digit($eFee['Type'])){
+            if (isset($eFee['Type']) && ctype_digit($eFee['Type'])) {
                 $this->TopFee[$eFee['Type']] = $eFee;
             }
         }
@@ -107,25 +114,27 @@ class TemplateUpdate extends WxBaseShop {
      * @param array $feeInfo
      * @throws \Exception\Wx\WxException
      */
-    public function addFee(array $feeInfo){
-        if(isset($feeInfo['Type']) && ctype_digit($feeInfo['Type'])){
+    public function addFee(array $feeInfo)
+    {
+        if (isset($feeInfo['Type']) && ctype_digit($feeInfo['Type'])) {
             $this->TopFee[$feeInfo['Type']] = $feeInfo;
         } else {
             throw new WxException('运费计算信息不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(strlen($this->template_id) == 0){
+    public function getDetail() : array
+    {
+        if (strlen($this->template_id) == 0) {
             throw new WxException('模板ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['Name'])){
+        if (!isset($this->reqData['Name'])) {
             throw new WxException('模板名称不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['Assumer'])){
+        if (!isset($this->reqData['Assumer'])) {
             throw new WxException('支付方式不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(empty($this->TopFee)){
+        if (empty($this->TopFee)) {
             throw new WxException('运费计算列表不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['TopFee'] = array_values($this->TopFee);
@@ -141,7 +150,7 @@ class TemplateUpdate extends WxBaseShop {
         ], JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

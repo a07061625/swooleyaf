@@ -13,7 +13,8 @@ use Exception\Wx\WxException;
 use Wx\WxBaseShop;
 use Wx\WxUtilShop;
 
-class NativeReturn extends WxBaseShop {
+class NativeReturn extends WxBaseShop
+{
     /**
      * 返回状态码
      * @var string
@@ -62,7 +63,8 @@ class NativeReturn extends WxBaseShop {
      */
     private $err_code_des = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->reqData['appid'] = $shopConfig->getAppId();
@@ -71,15 +73,17 @@ class NativeReturn extends WxBaseShop {
         $this->reqData['return_code'] = 'SUCCESS';
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $nonceStr
      * @throws \Exception\Wx\WxException
      */
-    public function setNonceStr(string $nonceStr) {
-        if(ctype_alnum($nonceStr)){
+    public function setNonceStr(string $nonceStr)
+    {
+        if (ctype_alnum($nonceStr)) {
             $this->reqData['nonce_str'] = $nonceStr;
         } else {
             throw new WxException('随机字符串不合法', ErrorCode::WX_PARAM_ERROR);
@@ -90,8 +94,9 @@ class NativeReturn extends WxBaseShop {
      * @param string $prepayId
      * @throws \Exception\Wx\WxException
      */
-    public function setPrepayId(string $prepayId) {
-        if(ctype_alnum($prepayId)){
+    public function setPrepayId(string $prepayId)
+    {
+        if (ctype_alnum($prepayId)) {
             $this->reqData['prepay_id'] = $prepayId;
         } else {
             throw new WxException('预支付ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -103,10 +108,11 @@ class NativeReturn extends WxBaseShop {
      * @param string $returnMsg 返回微信的信息
      * @throws \Exception\Wx\WxException
      */
-    public function setErrorMsg(string $errDes,string $returnMsg) {
+    public function setErrorMsg(string $errDes, string $returnMsg)
+    {
         if (strlen($errDes) == 0) {
             throw new WxException('错误描述不能为空', ErrorCode::WX_PARAM_ERROR);
-        } else if (strlen($returnMsg) == 0) {
+        } elseif (strlen($returnMsg) == 0) {
             throw new WxException('返回信息不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -116,11 +122,12 @@ class NativeReturn extends WxBaseShop {
         $this->reqData['err_code_des'] = mb_substr($errDes, 0, 40);
     }
 
-    public function getDetail() : array {
-        if($this->reqData['return_code'] == 'SUCCESS'){
-            if(!isset($this->reqData['nonce_str'])){
+    public function getDetail() : array
+    {
+        if ($this->reqData['return_code'] == 'SUCCESS') {
+            if (!isset($this->reqData['nonce_str'])) {
                 throw new WxException('随机字符串不能为空', ErrorCode::WX_PARAM_ERROR);
-            } else if(!isset($this->reqData['prepay_id'])){
+            } elseif (!isset($this->reqData['prepay_id'])) {
                 throw new WxException('预支付ID不能为空', ErrorCode::WX_PARAM_ERROR);
             }
         }

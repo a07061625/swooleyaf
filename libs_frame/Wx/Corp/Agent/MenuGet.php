@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 获取菜单
  * @package Wx\Corp\Agent
  */
-class MenuGet extends WxBaseCorp {
+class MenuGet extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -27,7 +28,8 @@ class MenuGet extends WxBaseCorp {
      */
     private $agentid = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/menu/get';
         $this->_corpId = $corpId;
@@ -36,10 +38,12 @@ class MenuGet extends WxBaseCorp {
         $this->reqData['agentid'] = $agentInfo['id'];
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -48,7 +52,7 @@ class MenuGet extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

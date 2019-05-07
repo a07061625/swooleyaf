@@ -33,11 +33,15 @@ if (!function_exists('smarty_mb_wordwrap')) {
 
         foreach ($tokens as $_token) {
             $token_length = mb_strlen($_token, Smarty::$_CHARSET);
-            $_tokens = array($_token);
+            $_tokens = [$_token];
             if ($token_length > $width) {
                 if ($cut) {
-                    $_tokens = preg_split('!(.{' . $width . '})!S' . Smarty::$_UTF8_MODIFIER, $_token, - 1,
-                                          PREG_SPLIT_NO_EMPTY + PREG_SPLIT_DELIM_CAPTURE);
+                    $_tokens = preg_split(
+                        '!(.{' . $width . '})!S' . Smarty::$_UTF8_MODIFIER,
+                        $_token,
+                        - 1,
+                                          PREG_SPLIT_NO_EMPTY + PREG_SPLIT_DELIM_CAPTURE
+                    );
                 }
             }
 

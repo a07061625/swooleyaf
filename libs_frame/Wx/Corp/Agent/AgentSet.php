@@ -19,7 +19,8 @@ use Wx\WxUtilBase;
  * 设置应用
  * @package Wx\Corp\Agent
  */
-class AgentSet extends WxBaseCorp {
+class AgentSet extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -63,7 +64,8 @@ class AgentSet extends WxBaseCorp {
      */
     private $home_url = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/agent/set?access_token=';
         $this->_corpId = $corpId;
@@ -74,15 +76,17 @@ class AgentSet extends WxBaseCorp {
         $this->reqData['isreportenter'] = 0;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $reportLocationFlag
      * @throws \Exception\Wx\WxException
      */
-    public function setReportLocationFlag(int $reportLocationFlag){
-        if(in_array($reportLocationFlag, [0, 1])){
+    public function setReportLocationFlag(int $reportLocationFlag)
+    {
+        if (in_array($reportLocationFlag, [0, 1], true)) {
             $this->reqData['report_location_flag'] = $reportLocationFlag;
         } else {
             throw new WxException('地理位置上报标识不合法', ErrorCode::WX_PARAM_ERROR);
@@ -92,8 +96,9 @@ class AgentSet extends WxBaseCorp {
     /**
      * @param string $logoMediaId
      */
-    public function setLogoMediaId(string $logoMediaId){
-        if(strlen($logoMediaId) > 0){
+    public function setLogoMediaId(string $logoMediaId)
+    {
+        if (strlen($logoMediaId) > 0) {
             $this->reqData['logo_mediaid'] = $logoMediaId;
         } else {
             unset($this->reqData['logo_mediaid']);
@@ -104,8 +109,9 @@ class AgentSet extends WxBaseCorp {
      * @param string $name
      * @throws \Exception\Wx\WxException
      */
-    public function setName(string $name){
-        if(strlen($name) > 0){
+    public function setName(string $name)
+    {
+        if (strlen($name) > 0) {
             $this->reqData['name'] = mb_substr($name, 0, 16);
         } else {
             throw new WxException('应用名称不合法', ErrorCode::WX_PARAM_ERROR);
@@ -116,11 +122,12 @@ class AgentSet extends WxBaseCorp {
      * @param string $description
      * @throws \Exception\Wx\WxException
      */
-    public function setDescription(string $description){
+    public function setDescription(string $description)
+    {
         $length = strlen($description);
-        if($length < 4){
+        if ($length < 4) {
             throw new WxException('应用详情不能少于4个字节', ErrorCode::WX_PARAM_ERROR);
-        } else if($length > 120){
+        } elseif ($length > 120) {
             throw new WxException('应用详情不能大于120个字节', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -131,8 +138,9 @@ class AgentSet extends WxBaseCorp {
      * @param string $redirectDomain
      * @throws \Exception\Wx\WxException
      */
-    public function setRedirectDomain(string $redirectDomain){
-        if(strlen($redirectDomain) > 0){
+    public function setRedirectDomain(string $redirectDomain)
+    {
+        if (strlen($redirectDomain) > 0) {
             $this->reqData['redirect_domain'] = $redirectDomain;
         } else {
             throw new WxException('应用可信域名不合法', ErrorCode::WX_PARAM_ERROR);
@@ -143,8 +151,9 @@ class AgentSet extends WxBaseCorp {
      * @param int $reportEnterFlag
      * @throws \Exception\Wx\WxException
      */
-    public function setReportEnterFlag(int $reportEnterFlag){
-        if(in_array($reportEnterFlag, [0, 1])){
+    public function setReportEnterFlag(int $reportEnterFlag)
+    {
+        if (in_array($reportEnterFlag, [0, 1], true)) {
             $this->reqData['isreportenter'] = $reportEnterFlag;
         } else {
             throw new WxException('用户进入上报标识不合法', ErrorCode::WX_PARAM_ERROR);
@@ -155,7 +164,8 @@ class AgentSet extends WxBaseCorp {
      * @param string $homeUrl
      * @throws \Exception\Wx\WxException
      */
-    public function setHomeUrl(string $homeUrl){
+    public function setHomeUrl(string $homeUrl)
+    {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $homeUrl) > 0) {
             $this->reqData['home_url'] = $homeUrl;
         } else {
@@ -163,7 +173,8 @@ class AgentSet extends WxBaseCorp {
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -171,7 +182,7 @@ class AgentSet extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . $this->getAccessToken(WxBaseCorp::ACCESS_TOKEN_TYPE_CORP, $this->_corpId, $this->_agentTag);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

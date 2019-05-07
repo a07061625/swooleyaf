@@ -39,12 +39,12 @@ abstract class Smarty_Resource
      *
      * @var array
      */
-    public static $sysplugins = array('file' => 'smarty_internal_resource_file.php',
+    public static $sysplugins = ['file' => 'smarty_internal_resource_file.php',
                                       'string' => 'smarty_internal_resource_string.php',
                                       'extends' => 'smarty_internal_resource_extends.php',
                                       'stream' => 'smarty_internal_resource_stream.php',
                                       'eval' => 'smarty_internal_resource_eval.php',
-                                      'php' => 'smarty_internal_resource_php.php');
+                                      'php' => 'smarty_internal_resource_php.php'];
 
     /**
      * Flag if resource does implement populateCompiledFilepath() method
@@ -136,7 +136,7 @@ abstract class Smarty_Resource
         // try registered resource
         if (isset($smarty->registered_resources[ $type ])) {
             return $smarty->_cache[ 'resource_handlers' ][ $type ] =
-                $smarty->registered_resources[ $type ] instanceof Smarty_Resource ?
+                $smarty->registered_resources[ $type ] instanceof self ?
                     $smarty->registered_resources[ $type ] : new Smarty_Internal_Resource_Registered();
         }
 
@@ -152,9 +152,11 @@ abstract class Smarty_Resource
             if (class_exists($_resource_class, false)) {
                 return $smarty->_cache[ 'resource_handlers' ][ $type ] = new $_resource_class();
             } else {
-                $smarty->registerResource($type,
-                                          array("smarty_resource_{$type}_source", "smarty_resource_{$type}_timestamp",
-                                                "smarty_resource_{$type}_secure", "smarty_resource_{$type}_trusted"));
+                $smarty->registerResource(
+                    $type,
+                                          ["smarty_resource_{$type}_source", "smarty_resource_{$type}_timestamp",
+                                                "smarty_resource_{$type}_secure", "smarty_resource_{$type}_trusted"]
+                );
                 // give it another try, now that the resource is registered properly
                 return self::load($smarty, $type);
             }
@@ -162,7 +164,7 @@ abstract class Smarty_Resource
 
         // try streams
         $_known_stream = stream_get_wrappers();
-        if (in_array($type, $_known_stream)) {
+        if (in_array($type, $_known_stream, true)) {
             // is known stream
             if (is_object($smarty->security_policy)) {
                 $smarty->security_policy->isTrustedStream($type);
@@ -196,7 +198,7 @@ abstract class Smarty_Resource
             $type = $default_resource;
             $name = $resource_name;
         }
-        return array($name, $type);
+        return [$name, $type];
     }
 
     /**
@@ -212,13 +214,13 @@ abstract class Smarty_Resource
         $smarty = $obj->_objType == 2 ? $obj->smarty : $obj;
         list($name, $type) = self::parseResourceName($template_resource, $smarty->default_resource_type);
         // TODO: optimize for Smarty's internal resource types
-        $resource = Smarty_Resource::load($smarty, $type);
+        $resource = self::load($smarty, $type);
         // go relative to a given template?
         $_file_is_dotted = $name[ 0 ] == '.' && ($name[ 1 ] == '.' || $name[ 1 ] == '/');
         if ($obj->_objType == 2 && $_file_is_dotted &&
             ($obj->source->type == 'file' || $obj->parent->source->type == 'extends')
         ) {
-             $name = $smarty->_realpath(dirname($obj->parent->source->filepath) . DS . $name);
+            $name = $smarty->_realpath(dirname($obj->parent->source->filepath) . DS . $name);
         }
         return $resource->buildUniqueResourceName($smarty, $name);
     }
@@ -245,10 +247,11 @@ abstract class Smarty_Resource
      *
      * @return Smarty_Template_Source   Source Object
      */
-    public static function source(Smarty_Internal_Template $_template = null, Smarty $smarty = null,
-                                  $template_resource = null)
-    {
+    public static function source(
+        Smarty_Internal_Template $_template = null,
+        Smarty $smarty = null,
+                                  $template_resource = null
+    ) {
         return Smarty_Template_Source::load($_template, $smarty, $template_resource);
     }
 }
-

@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class AccountAdd extends WxBaseShop {
+class AccountAdd extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -31,22 +32,25 @@ class AccountAdd extends WxBaseShop {
      */
     private $nickname = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/customservice/kfaccount/add?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $kfAccount
      * @throws \Exception\Wx\WxException
      */
-    public function setKfAccount(string $kfAccount){
+    public function setKfAccount(string $kfAccount)
+    {
         $accountLength = strlen($kfAccount);
-        if(($accountLength > 0) && ($accountLength <= 30)){
+        if (($accountLength > 0) && ($accountLength <= 30)) {
             $this->reqData['kf_account'] = $kfAccount;
         } else {
             throw new WxException('客服帐号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -57,20 +61,22 @@ class AccountAdd extends WxBaseShop {
      * @param string $nickname
      * @throws \Exception\Wx\WxException
      */
-    public function setNickname(string $nickname){
+    public function setNickname(string $nickname)
+    {
         $nameLength = mb_strlen($nickname);
-        if(($nameLength > 0) && ($nameLength <= 16)){
+        if (($nameLength > 0) && ($nameLength <= 16)) {
             $this->reqData['nickname'] = $nickname;
         } else {
             throw new WxException('客服昵称不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['kf_account'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['kf_account'])) {
             throw new WxException('客服帐号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['nickname'])){
+        if (!isset($this->reqData['nickname'])) {
             throw new WxException('客服昵称不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -82,7 +88,7 @@ class AccountAdd extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

@@ -11,16 +11,20 @@ use Constant\Project;
 use Validator\BaseValidator;
 use Validator\ValidatorService;
 
-class StringUrl extends BaseValidator implements ValidatorService {
-    public function __construct() {
+class StringUrl extends BaseValidator implements ValidatorService
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->validatorType = Project::VALIDATOR_STRING_TYPE_URL;
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    public function validator($data, $compareData) : string {
+    public function validator($data, $compareData) : string
+    {
         if ($data === null) {
             return '';
         }
@@ -28,9 +32,9 @@ class StringUrl extends BaseValidator implements ValidatorService {
         $trueData = $this->verifyStringData($data);
         if ($trueData === null) {
             return '必须是字符串';
-        } else if((strlen($trueData) == 0) && !$compareData){
+        } elseif ((strlen($trueData) == 0) && !$compareData) {
             return '';
-        } else if(preg_match('/^(http|https|ftp)\:\/\/\S+$/', $trueData) > 0){
+        } elseif (preg_match('/^(http|https|ftp)\:\/\/\S+$/', $trueData) > 0) {
             return '';
         } else {
             return '格式必须是URL地址';

@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 创建部门
  * @package Wx\Corp\Department
  */
-class DepartmentCreate extends WxBaseCorp {
+class DepartmentCreate extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -42,7 +43,8 @@ class DepartmentCreate extends WxBaseCorp {
      */
     private $id = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/department/create?access_token=';
         $this->_corpId = $corpId;
@@ -51,14 +53,16 @@ class DepartmentCreate extends WxBaseCorp {
         $this->reqData['parentid'] = 0;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $name
      * @throws \Exception\Wx\WxException
      */
-    public function setName(string $name){
+    public function setName(string $name)
+    {
         if (strlen($name) > 0) {
             $this->reqData['name'] = mb_substr($name, 0, 16);
         } else {
@@ -70,7 +74,8 @@ class DepartmentCreate extends WxBaseCorp {
      * @param int $parentId
      * @throws \Exception\Wx\WxException
      */
-    public function setParentId(int $parentId){
+    public function setParentId(int $parentId)
+    {
         if ($parentId >= 0) {
             $this->reqData['parentid'] = $parentId;
         } else {
@@ -82,7 +87,8 @@ class DepartmentCreate extends WxBaseCorp {
      * @param int $order
      * @throws \Exception\Wx\WxException
      */
-    public function setOrder(int $order){
+    public function setOrder(int $order)
+    {
         if ($order >= 0) {
             $this->reqData['order'] = $order;
         } else {
@@ -94,7 +100,8 @@ class DepartmentCreate extends WxBaseCorp {
      * @param int $id
      * @throws \Exception\Wx\WxException
      */
-    public function setId(int $id){
+    public function setId(int $id)
+    {
         if ($id > 0) {
             $this->reqData['id'] = $id;
         } else {
@@ -102,8 +109,9 @@ class DepartmentCreate extends WxBaseCorp {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['name'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['name'])) {
             throw new WxException('名称不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -115,7 +123,7 @@ class DepartmentCreate extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

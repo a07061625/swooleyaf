@@ -39,9 +39,9 @@ class Smarty_Internal_Compile_Private_Modifier extends Smarty_Internal_CompileBa
             $params = implode(',', $single_modifier);
             // check if we know already the type of modifier
             if (isset($compiler->known_modifier_type[ $modifier ])) {
-                $modifier_types = array($compiler->known_modifier_type[ $modifier ]);
+                $modifier_types = [$compiler->known_modifier_type[ $modifier ]];
             } else {
-                $modifier_types = array(1, 2, 3, 4, 5, 6);
+                $modifier_types = [1, 2, 3, 4, 5, 6];
             }
             foreach ($modifier_types as $type) {
                 switch ($type) {
@@ -68,8 +68,11 @@ class Smarty_Internal_Compile_Private_Modifier extends Smarty_Internal_CompileBa
                         // registered modifier compiler
                         if (isset($compiler->smarty->registered_plugins[ Smarty::PLUGIN_MODIFIERCOMPILER ][ $modifier ][ 0 ])) {
                             $output =
-                                call_user_func($compiler->smarty->registered_plugins[ Smarty::PLUGIN_MODIFIERCOMPILER ][ $modifier ][ 0 ],
-                                               $single_modifier, $compiler->smarty);
+                                call_user_func(
+                                    $compiler->smarty->registered_plugins[ Smarty::PLUGIN_MODIFIERCOMPILER ][ $modifier ][ 0 ],
+                                               $single_modifier,
+                                    $compiler->smarty
+                                );
                             $compiler->known_modifier_type[ $modifier ] = $type;
                             break 2;
                         }
@@ -129,7 +132,7 @@ class Smarty_Internal_Compile_Private_Modifier extends Smarty_Internal_CompileBa
                                     $output = "{$function}({$params})";
                                 } else {
                                     if (is_object($function[ 0 ])) {
-                                        $output =  $function[ 0 ] . '->'. $function[ 1 ] . '(' . $params . ')';
+                                        $output = $function[ 0 ] . '->' . $function[ 1 ] . '(' . $params . ')';
                                     } else {
                                         $output = $function[ 0 ] . '::' . $function[ 1 ] . '(' . $params . ')';
                                     }
@@ -148,7 +151,7 @@ class Smarty_Internal_Compile_Private_Modifier extends Smarty_Internal_CompileBa
                 }
             }
             if (!isset($compiler->known_modifier_type[ $modifier ])) {
-                $compiler->trigger_template_error("unknown modifier \"" . $modifier . "\"", null, true);
+                $compiler->trigger_template_error('unknown modifier "' . $modifier . '"', null, true);
             }
         }
 

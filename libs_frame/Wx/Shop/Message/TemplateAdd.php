@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class TemplateAdd extends WxBaseShop {
+class TemplateAdd extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -26,29 +27,33 @@ class TemplateAdd extends WxBaseShop {
      */
     private $template_id_short = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/template/api_add_template?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $templateIdShort
      * @throws \Exception\Wx\WxException
      */
-    public function setTemplateIdShort(string $templateIdShort){
-        if(strlen($templateIdShort) > 0){
+    public function setTemplateIdShort(string $templateIdShort)
+    {
+        if (strlen($templateIdShort) > 0) {
             $this->reqData['template_id_short'] = $templateIdShort;
         } else {
             throw new WxException('模板编号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['template_id_short'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['template_id_short'])) {
             throw new WxException('模板编号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -60,7 +65,7 @@ class TemplateAdd extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

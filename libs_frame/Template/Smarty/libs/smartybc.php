@@ -28,7 +28,7 @@
 /**
  * @ignore
  */
-require_once(dirname(__FILE__) . '/smarty.php');
+require_once dirname(__FILE__) . '/smarty.php';
 
 /**
  * Smarty Backward Compatibility Wrapper Class
@@ -49,7 +49,7 @@ class SmartyBC extends Smarty
      *
      * @var array
      */
-    public $trusted_dir = array();
+    public $trusted_dir = [];
 
     /**
      * Initialize new SmartyBC object
@@ -128,9 +128,13 @@ class SmartyBC extends Smarty
      * @throws SmartyException
      * @internal param array $block_functs list of methods that are block format
      */
-    public function register_object($object, $object_impl, $allowed = array(), $smarty_args = true,
-                                    $block_methods = array())
-    {
+    public function register_object(
+        $object,
+        $object_impl,
+        $allowed = [],
+        $smarty_args = true,
+                                    $block_methods = []
+    ) {
         settype($allowed, 'array');
         settype($smarty_args, 'boolean');
         $this->registerObject($object, $object_impl, $allowed, $smarty_args, $block_methods);

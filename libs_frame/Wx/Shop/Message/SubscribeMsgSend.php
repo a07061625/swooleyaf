@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class SubscribeMsgSend extends WxBaseShop {
+class SubscribeMsgSend extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -56,20 +57,23 @@ class SubscribeMsgSend extends WxBaseShop {
      */
     private $data = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/message/template/subscribe?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $openid
      * @throws \Exception\Wx\WxException
      */
-    public function setOpenid(string $openid) {
+    public function setOpenid(string $openid)
+    {
         if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
             $this->reqData['touser'] = $openid;
         } else {
@@ -81,7 +85,8 @@ class SubscribeMsgSend extends WxBaseShop {
      * @param string $templateId
      * @throws \Exception\Wx\WxException
      */
-    public function setTemplateId(string $templateId) {
+    public function setTemplateId(string $templateId)
+    {
         if (strlen($templateId) > 0) {
             $this->reqData['template_id'] = $templateId;
         } else {
@@ -93,7 +98,8 @@ class SubscribeMsgSend extends WxBaseShop {
      * @param string $url
      * @throws \Exception\Wx\WxException
      */
-    public function setUrl(string $url) {
+    public function setUrl(string $url)
+    {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $url) > 0) {
             $this->reqData['url'] = $url;
         } else {
@@ -105,8 +111,9 @@ class SubscribeMsgSend extends WxBaseShop {
      * @param array $miniProgram
      * @throws \Exception\Wx\WxException
      */
-    public function setMiniProgram(array $miniProgram){
-        if(empty($miniProgram)){
+    public function setMiniProgram(array $miniProgram)
+    {
+        if (empty($miniProgram)) {
             throw new WxException('小程序跳转数据不合法', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['miniprogram'] = $miniProgram;
@@ -116,8 +123,9 @@ class SubscribeMsgSend extends WxBaseShop {
      * @param int $scene
      * @throws \Exception\Wx\WxException
      */
-    public function setScene(int $scene){
-        if(($scene >= 0) && ($scene <= 10000)){
+    public function setScene(int $scene)
+    {
+        if (($scene >= 0) && ($scene <= 10000)) {
             $this->reqData['scene'] = (string)$scene;
         } else {
             throw new WxException('订阅场景值不合法', ErrorCode::WX_PARAM_ERROR);
@@ -128,9 +136,10 @@ class SubscribeMsgSend extends WxBaseShop {
      * @param string $title
      * @throws \Exception\Wx\WxException
      */
-    public function setTitle(string $title){
+    public function setTitle(string $title)
+    {
         $titleLength = mb_strlen($title);
-        if(($titleLength > 0) && ($titleLength <= 15)){
+        if (($titleLength > 0) && ($titleLength <= 15)) {
             $this->reqData['title'] = $title;
         } else {
             throw new WxException('消息标题不合法', ErrorCode::WX_PARAM_ERROR);
@@ -141,12 +150,13 @@ class SubscribeMsgSend extends WxBaseShop {
      * @param array $data
      * @throws \Exception\Wx\WxException
      */
-    public function setData(array $data){
+    public function setData(array $data)
+    {
         $content = isset($data['value']) && is_string($data['value']) ? $data['value'] : '';
         $contentLength = mb_strlen($content);
-        if($contentLength == 0){
+        if ($contentLength == 0) {
             throw new WxException('消息内容不能为空', ErrorCode::WX_PARAM_ERROR);
-        } else if($contentLength > 200){
+        } elseif ($contentLength > 200) {
             throw new WxException('消息内容不能超过200个字', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -158,20 +168,21 @@ class SubscribeMsgSend extends WxBaseShop {
         ];
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['touser'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['touser'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['template_id'])){
+        if (!isset($this->reqData['template_id'])) {
             throw new WxException('模版ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['scene'])){
+        if (!isset($this->reqData['scene'])) {
             throw new WxException('订阅场景值不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['title'])){
+        if (!isset($this->reqData['title'])) {
             throw new WxException('消息标题不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['data'])){
+        if (!isset($this->reqData['data'])) {
             throw new WxException('消息内容不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -183,7 +194,7 @@ class SubscribeMsgSend extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

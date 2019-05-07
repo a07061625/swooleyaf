@@ -17,23 +17,27 @@ use Wx\WxUtilBaseAlone;
  * 获取开放平台
  * @package Wx\Open
  */
-class OpenGet extends WxBaseOpen {
+class OpenGet extends WxBaseOpen
+{
     /**
      * 公众号或小程序的app id
      * @var string
      */
     private $appid = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/open/get?access_token=';
         $this->reqData['appid'] = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0
         ];

@@ -10,7 +10,8 @@ namespace Wx;
 use Constant\ErrorCode;
 use Exception\Wx\WxException;
 
-class WxConfigCorp {
+class WxConfigCorp
+{
     /**
      * 企业ID
      * @var string
@@ -77,16 +78,19 @@ class WxConfigCorp {
      */
     private $expireTime = 0;
 
-    public function __construct() {
+    public function __construct()
+    {
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
     /**
      * @return string
      */
-    public function getCorpId() : string {
+    public function getCorpId() : string
+    {
         return $this->corpId;
     }
 
@@ -94,8 +98,9 @@ class WxConfigCorp {
      * @param string $corpId
      * @throws \Exception\Wx\WxException
      */
-    public function setCorpId(string $corpId){
-        if(ctype_alnum($corpId)){
+    public function setCorpId(string $corpId)
+    {
+        if (ctype_alnum($corpId)) {
             $this->corpId = $corpId;
         } else {
             throw new WxException('企业ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -105,7 +110,8 @@ class WxConfigCorp {
     /**
      * @return array
      */
-    public function getAgents() : array {
+    public function getAgents() : array
+    {
         return $this->agents;
     }
 
@@ -116,21 +122,24 @@ class WxConfigCorp {
      *   id: 应用ID
      *   secret: 应用密钥
      */
-    public function getAgentInfo(string $agentTag) : array {
+    public function getAgentInfo(string $agentTag) : array
+    {
         return $this->agents[$agentTag] ?? [];
     }
 
     /**
      * @param array $agents
      */
-    public function setAgents(array $agents){
+    public function setAgents(array $agents)
+    {
         $this->agents = $agents;
     }
 
     /**
      * @return string
      */
-    public function getClientIp(): string {
+    public function getClientIp(): string
+    {
         return $this->clientIp;
     }
 
@@ -138,8 +147,9 @@ class WxConfigCorp {
      * @param string $clientIp
      * @throws \Exception\WX\WxException
      */
-    public function setClientIp(string $clientIp) {
-        if(preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $clientIp) > 0){
+    public function setClientIp(string $clientIp)
+    {
+        if (preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $clientIp) > 0) {
             $this->clientIp = $clientIp;
         } else {
             throw new WxException('客户端IP不合法', ErrorCode::WX_PARAM_ERROR);
@@ -149,7 +159,8 @@ class WxConfigCorp {
     /**
      * @return string
      */
-    public function getPayMchId(): string {
+    public function getPayMchId(): string
+    {
         return $this->payMchId;
     }
 
@@ -157,8 +168,9 @@ class WxConfigCorp {
      * @param string $payMchId
      * @throws \Exception\WX\WxException
      */
-    public function setPayMchId(string $payMchId) {
-        if(ctype_digit($payMchId)){
+    public function setPayMchId(string $payMchId)
+    {
+        if (ctype_digit($payMchId)) {
             $this->payMchId = $payMchId;
         } else {
             throw new WxException('商户号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -168,7 +180,8 @@ class WxConfigCorp {
     /**
      * @return string
      */
-    public function getPayKey(): string {
+    public function getPayKey(): string
+    {
         return $this->payKey;
     }
 
@@ -176,8 +189,9 @@ class WxConfigCorp {
      * @param string $payKey
      * @throws \Exception\WX\WxException
      */
-    public function setPayKey(string $payKey) {
-        if(ctype_alnum($payKey) && (strlen($payKey) == 32)){
+    public function setPayKey(string $payKey)
+    {
+        if (ctype_alnum($payKey) && (strlen($payKey) == 32)) {
             $this->payKey = $payKey;
         } else {
             throw new WxException('支付密钥不合法', ErrorCode::WX_PARAM_ERROR);
@@ -187,7 +201,8 @@ class WxConfigCorp {
     /**
      * @return string
      */
-    public function getPayNotifyUrl(): string {
+    public function getPayNotifyUrl(): string
+    {
         return $this->payNotifyUrl;
     }
 
@@ -195,8 +210,9 @@ class WxConfigCorp {
      * @param string $payNotifyUrl
      * @throws \Exception\WX\WxException
      */
-    public function setPayNotifyUrl(string $payNotifyUrl) {
-        if(preg_match('/^(http|https)\:\/\/\S+$/', $payNotifyUrl) > 0){
+    public function setPayNotifyUrl(string $payNotifyUrl)
+    {
+        if (preg_match('/^(http|https)\:\/\/\S+$/', $payNotifyUrl) > 0) {
             $this->payNotifyUrl = $payNotifyUrl;
         } else {
             throw new WxException('支付异步消息通知URL不合法', ErrorCode::WX_PARAM_ERROR);
@@ -206,7 +222,8 @@ class WxConfigCorp {
     /**
      * @return string
      */
-    public function getPayAuthUrl(): string {
+    public function getPayAuthUrl(): string
+    {
         return $this->payAuthUrl;
     }
 
@@ -214,8 +231,9 @@ class WxConfigCorp {
      * @param string $payAuthUrl
      * @throws \Exception\WX\WxException
      */
-    public function setPayAuthUrl(string $payAuthUrl) {
-        if(preg_match('/^(http|https)\:\/\/\S+$/', $payAuthUrl) > 0){
+    public function setPayAuthUrl(string $payAuthUrl)
+    {
+        if (preg_match('/^(http|https)\:\/\/\S+$/', $payAuthUrl) > 0) {
             $this->payAuthUrl = $payAuthUrl;
         } else {
             throw new WxException('支付授权URL不合法', ErrorCode::WX_PARAM_ERROR);
@@ -225,7 +243,8 @@ class WxConfigCorp {
     /**
      * @return string
      */
-    public function getSslCert(): string {
+    public function getSslCert(): string
+    {
         return $this->sslCert;
     }
 
@@ -233,8 +252,9 @@ class WxConfigCorp {
      * @param string $sslCert
      * @throws \Exception\WX\WxException
      */
-    public function setSslCert(string $sslCert) {
-        if(strlen($sslCert) > 0){
+    public function setSslCert(string $sslCert)
+    {
+        if (strlen($sslCert) > 0) {
             $this->sslCert = $sslCert;
         } else {
             throw new WxException('cert证书不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -244,7 +264,8 @@ class WxConfigCorp {
     /**
      * @return string
      */
-    public function getSslKey(): string {
+    public function getSslKey(): string
+    {
         return $this->sslKey;
     }
 
@@ -252,8 +273,9 @@ class WxConfigCorp {
      * @param string $sslKey
      * @throws \Exception\WX\WxException
      */
-    public function setSslKey(string $sslKey) {
-        if(strlen($sslKey) > 0){
+    public function setSslKey(string $sslKey)
+    {
+        if (strlen($sslKey) > 0) {
             $this->sslKey = $sslKey;
         } else {
             throw new WxException('key证书不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -263,7 +285,8 @@ class WxConfigCorp {
     /**
      * @return string
      */
-    public function getUrlAuthLogin() : string {
+    public function getUrlAuthLogin() : string
+    {
         return $this->urlAuthLogin;
     }
 
@@ -271,8 +294,9 @@ class WxConfigCorp {
      * @param string $urlAuthLogin
      * @throws \Exception\Wx\WxException
      */
-    public function setUrlAuthLogin(string $urlAuthLogin){
-        if(preg_match('/^(http|https)\:\/\/\S+$/', $urlAuthLogin) > 0){
+    public function setUrlAuthLogin(string $urlAuthLogin)
+    {
+        if (preg_match('/^(http|https)\:\/\/\S+$/', $urlAuthLogin) > 0) {
             $this->urlAuthLogin = $urlAuthLogin;
         } else {
             throw new WxException('登录授权地址不合法', ErrorCode::WX_PARAM_ERROR);
@@ -282,28 +306,32 @@ class WxConfigCorp {
     /**
      * @return bool
      */
-    public function isValid() : bool {
+    public function isValid() : bool
+    {
         return $this->valid;
     }
 
     /**
      * @param bool $valid
      */
-    public function setValid(bool $valid){
+    public function setValid(bool $valid)
+    {
         $this->valid = $valid;
     }
 
     /**
      * @return int
      */
-    public function getExpireTime() : int {
+    public function getExpireTime() : int
+    {
         return $this->expireTime;
     }
 
     /**
      * @param int $expireTime
      */
-    public function setExpireTime(int $expireTime){
+    public function setExpireTime(int $expireTime)
+    {
         $this->expireTime = $expireTime;
     }
 }

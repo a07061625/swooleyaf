@@ -47,7 +47,7 @@ class Smarty_Internal_Data
      *
      * @var Smarty_Variable[]
      */
-    public $tpl_vars = array();
+    public $tpl_vars = [];
 
     /**
      * parent template (if any)
@@ -61,7 +61,7 @@ class Smarty_Internal_Data
      *
      * @var string[]
      */
-    public $config_vars = array();
+    public $config_vars = [];
 
     /**
      * extension handler
@@ -79,6 +79,20 @@ class Smarty_Internal_Data
     {
         $this->ext = new Smarty_Internal_Extension_Handler();
         $this->ext->objType = $this->_objType;
+    }
+
+    /**
+     * Handle unknown class methods
+     *
+     * @param string $name unknown method-name
+     * @param array  $args argument array
+     *
+     * @return mixed
+     * @throws SmartyException
+     */
+    public function __call($name, $args)
+    {
+        return $this->ext->_callExternalMethod($this, $name, $args);
     }
 
     /**
@@ -199,9 +213,12 @@ class Smarty_Internal_Data
      * @return Smarty_Variable|Smarty_Undefined_Variable the object of the variable
      * @deprecated since 3.1.28 please use Smarty_Internal_Data::getTemplateVars() instead.
      */
-    public function getVariable($variable = null, Smarty_Internal_Data $_ptr = null, $searchParents = true,
-                                $error_enable = true)
-    {
+    public function getVariable(
+        $variable = null,
+        Smarty_Internal_Data $_ptr = null,
+        $searchParents = true,
+                                $error_enable = true
+    ) {
         return $this->ext->getTemplateVars->_getVariable($this, $variable, $_ptr, $searchParents, $error_enable);
     }
 
@@ -225,19 +242,5 @@ class Smarty_Internal_Data
         if (isset($this->parent)) {
             $this->parent->_mergeVars($data);
         }
-    }
-
-    /**
-     * Handle unknown class methods
-     *
-     * @param string $name unknown method-name
-     * @param array  $args argument array
-     *
-     * @return mixed
-     * @throws SmartyException
-     */
-    public function __call($name, $args)
-    {
-        return $this->ext->_callExternalMethod($this, $name, $args);
     }
 }

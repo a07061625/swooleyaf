@@ -15,7 +15,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class UserAuthorizeInfo extends WxBaseShop {
+class UserAuthorizeInfo extends WxBaseShop
+{
     private $urlAccessToken = '';
     private $urlAuthorizeInfo = '';
     private $urlUserInfo = '';
@@ -25,7 +26,8 @@ class UserAuthorizeInfo extends WxBaseShop {
      */
     private $code = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->urlAccessToken = 'https://api.weixin.qq.com/sns/oauth2/access_token';
         $this->urlAuthorizeInfo = 'https://api.weixin.qq.com/sns/userinfo?lang=zh_CN&access_token=';
@@ -36,23 +38,26 @@ class UserAuthorizeInfo extends WxBaseShop {
         $this->reqData['grant_type'] = 'authorization_code';
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $code
      * @throws \Exception\Wx\WxException
      */
-    public function setCode(string $code){
-        if(strlen($code) > 0){
+    public function setCode(string $code)
+    {
+        if (strlen($code) > 0) {
             $this->reqData['code'] = $code;
         } else {
             throw new WxException('授权码不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['code'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['code'])) {
             throw new WxException('授权码不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -73,13 +78,13 @@ class UserAuthorizeInfo extends WxBaseShop {
         $this->curlConfigs[CURLOPT_URL] = $this->urlAuthorizeInfo . $sendData['access_token'] . '&openid=' . $openid;
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['errcode']) && ($sendData['errcode'] == 40001)){
+        if (isset($sendData['errcode']) && ($sendData['errcode'] == 40001)) {
             $this->curlConfigs[CURLOPT_URL] = $this->urlUserInfo . WxUtilBaseAlone::getAccessToken($this->reqData['appid']) . '&openid=' . $openid;
             $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
             $sendData = Tool::jsonDecode($sendRes);
         }
 
-        if(isset($sendData['openid'])){
+        if (isset($sendData['openid'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

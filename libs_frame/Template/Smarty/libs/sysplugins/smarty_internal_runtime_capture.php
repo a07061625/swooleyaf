@@ -21,7 +21,7 @@ class Smarty_Internal_Runtime_Capture
      *
      * @var array
      */
-    private $captureStack = array();
+    private $captureStack = [];
 
     /**
      * Current open capture sections
@@ -35,14 +35,14 @@ class Smarty_Internal_Runtime_Capture
      *
      * @var int[]
      */
-    private $countStack = array();
+    private $countStack = [];
 
     /**
      * Named buffer
      *
      * @var string[]
      */
-    private $namedBuffer = array();
+    private $namedBuffer = [];
 
     /**
      * Flag if callbacks are registered
@@ -64,22 +64,9 @@ class Smarty_Internal_Runtime_Capture
         if (!$this->isRegistered) {
             $this->register($_template);
         }
-        $this->captureStack[] = array($buffer, $assign, $append);
+        $this->captureStack[] = [$buffer, $assign, $append];
         $this->captureCount ++;
         ob_start();
-    }
-
-    /**
-     * Register callbacks in template class
-     *
-     * @param \Smarty_Internal_Template $_template
-     */
-    private function register(Smarty_Internal_Template $_template)
-    {
-        $_template->startRenderCallbacks[] = array($this, 'startRender');
-        $_template->endRenderCallbacks[] = array($this, 'endRender');
-        $this->startRender($_template);
-        $this->isRegistered = true;
     }
 
     /**
@@ -158,4 +145,16 @@ class Smarty_Internal_Runtime_Capture
         }
     }
 
+    /**
+     * Register callbacks in template class
+     *
+     * @param \Smarty_Internal_Template $_template
+     */
+    private function register(Smarty_Internal_Template $_template)
+    {
+        $_template->startRenderCallbacks[] = [$this, 'startRender'];
+        $_template->endRenderCallbacks[] = [$this, 'endRender'];
+        $this->startRender($_template);
+        $this->isRegistered = true;
+    }
 }

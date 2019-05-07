@@ -22,7 +22,7 @@ class Smarty_Internal_Compile_Break extends Smarty_Internal_CompileBase
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $optional_attributes = array('levels');
+    public $optional_attributes = ['levels'];
 
     /**
      * Attribute definition: Overwrites base class.
@@ -30,7 +30,7 @@ class Smarty_Internal_Compile_Break extends Smarty_Internal_CompileBase
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $shorttag_order = array('levels');
+    public $shorttag_order = ['levels'];
 
     /**
      * Compiles code for the {break} tag
@@ -44,7 +44,7 @@ class Smarty_Internal_Compile_Break extends Smarty_Internal_CompileBase
      */
     public function compile($args, Smarty_Internal_TemplateCompilerBase $compiler, $parameter)
     {
-        static $_is_loopy = array('for' => true, 'foreach' => true, 'while' => true, 'section' => true);
+        static $_is_loopy = ['for' => true, 'foreach' => true, 'while' => true, 'section' => true];
         // check and get attributes
         $_attr = $this->getAttributes($compiler, $args);
 

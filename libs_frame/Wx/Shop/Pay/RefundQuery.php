@@ -15,7 +15,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class RefundQuery extends WxBaseShop {
+class RefundQuery extends WxBaseShop
+{
     /**
      * 商户类型
      * @var string
@@ -67,7 +68,8 @@ class RefundQuery extends WxBaseShop {
      */
     private $out_refund_no = '';
 
-    public function __construct(string $appId,string $merchantType=self::MERCHANT_TYPE_SELF){
+    public function __construct(string $appId, string $merchantType = self::MERCHANT_TYPE_SELF)
+    {
         parent::__construct();
 
         if (!isset(self::$totalMerchantType[$merchantType])) {
@@ -77,7 +79,7 @@ class RefundQuery extends WxBaseShop {
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/refundquery';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->merchantType = $merchantType;
-        if($merchantType == self::MERCHANT_TYPE_SELF){
+        if ($merchantType == self::MERCHANT_TYPE_SELF) {
             $this->reqData['appid'] = $shopConfig->getAppId();
             $this->reqData['mch_id'] = $shopConfig->getPayMchId();
         } else {
@@ -88,14 +90,16 @@ class RefundQuery extends WxBaseShop {
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $deviceInfo
      */
-    public function setDeviceInfo(string $deviceInfo) {
-        if(strlen($deviceInfo) > 0){
+    public function setDeviceInfo(string $deviceInfo)
+    {
+        if (strlen($deviceInfo) > 0) {
             $this->reqData['device_info'] = $deviceInfo;
         }
     }
@@ -104,8 +108,9 @@ class RefundQuery extends WxBaseShop {
      * @param string $transactionId
      * @throws \Exception\Wx\WxException
      */
-    public function setTransactionId(string $transactionId) {
-        if(ctype_digit($transactionId) && (strlen($transactionId) == 27)){
+    public function setTransactionId(string $transactionId)
+    {
+        if (ctype_digit($transactionId) && (strlen($transactionId) == 27)) {
             $this->transaction_id = $transactionId;
         } else {
             throw new WxException('微信订单号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -116,8 +121,9 @@ class RefundQuery extends WxBaseShop {
      * @param string $outTradeNo
      * @throws \Exception\Wx\WxException
      */
-    public function setOutTradeNo(string $outTradeNo) {
-        if(ctype_alnum($outTradeNo) && (strlen($outTradeNo) <= 32)){
+    public function setOutTradeNo(string $outTradeNo)
+    {
+        if (ctype_alnum($outTradeNo) && (strlen($outTradeNo) <= 32)) {
             $this->out_trade_no = $outTradeNo;
         } else {
             throw new WxException('商户订单号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -128,8 +134,9 @@ class RefundQuery extends WxBaseShop {
      * @param string $refundId
      * @throws \Exception\Wx\WxException
      */
-    public function setRefundId(string $refundId) {
-        if(ctype_digit($refundId) && (strlen($refundId) == 28)){
+    public function setRefundId(string $refundId)
+    {
+        if (ctype_digit($refundId) && (strlen($refundId) == 28)) {
             $this->refund_id = $refundId;
         } else {
             throw new WxException('微信退款单号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -140,22 +147,24 @@ class RefundQuery extends WxBaseShop {
      * @param string $outRefundNo
      * @throws \Exception\Wx\WxException
      */
-    public function setOutRefundNo(string $outRefundNo) {
-        if(ctype_alnum($outRefundNo) && (strlen($outRefundNo) <= 32)){
+    public function setOutRefundNo(string $outRefundNo)
+    {
+        if (ctype_alnum($outRefundNo) && (strlen($outRefundNo) <= 32)) {
             $this->out_refund_no = $outRefundNo;
         } else {
             throw new WxException('商户退款单号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(strlen($this->transaction_id) > 0){
+    public function getDetail() : array
+    {
+        if (strlen($this->transaction_id) > 0) {
             $this->reqData['transaction_id'] = $this->transaction_id;
-        } else if(strlen($this->out_trade_no) > 0){
+        } elseif (strlen($this->out_trade_no) > 0) {
             $this->reqData['out_trade_no'] = $this->out_trade_no;
-        } else if(strlen($this->refund_id) > 0){
+        } elseif (strlen($this->refund_id) > 0) {
             $this->reqData['refund_id'] = $this->refund_id;
-        } else if(strlen($this->out_refund_no) > 0){
+        } elseif (strlen($this->out_refund_no) > 0) {
             $this->reqData['out_refund_no'] = $this->out_refund_no;
         } else {
             throw new WxException('微信订单号,商户订单号,微信退款单号,商户退款单号必须设置其中一个', ErrorCode::WX_PARAM_ERROR);
@@ -174,7 +183,7 @@ class RefundQuery extends WxBaseShop {
         if ($sendData['return_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } else if ($sendData['result_code'] == 'FAIL') {
+        } elseif ($sendData['result_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {

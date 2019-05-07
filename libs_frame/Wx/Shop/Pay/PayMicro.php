@@ -15,7 +15,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class PayMicro extends WxBaseShop {
+class PayMicro extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -112,7 +113,8 @@ class PayMicro extends WxBaseShop {
      */
     private $scene_info = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/micropay';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
@@ -125,14 +127,16 @@ class PayMicro extends WxBaseShop {
         $this->reqData['total_fee'] = 0;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $body
      * @throws \Exception\Wx\WxException
      */
-    public function setBody(string $body) {
+    public function setBody(string $body)
+    {
         if (strlen($body) > 0) {
             $this->reqData['body'] = mb_substr($body, 0, 40);
         } else {
@@ -144,7 +148,8 @@ class PayMicro extends WxBaseShop {
      * @param string $attach
      * @throws \Exception\Wx\WxException
      */
-    public function setAttach(string $attach) {
+    public function setAttach(string $attach)
+    {
         if (strlen($attach) <= 127) {
             $this->reqData['attach'] = $attach;
         } else {
@@ -156,8 +161,9 @@ class PayMicro extends WxBaseShop {
      * @param string $outTradeNo
      * @throws \Exception\Wx\WxException
      */
-    public function setOutTradeNo(string $outTradeNo) {
-        if(ctype_digit($outTradeNo) && (strlen($outTradeNo) <= 32)){
+    public function setOutTradeNo(string $outTradeNo)
+    {
+        if (ctype_digit($outTradeNo) && (strlen($outTradeNo) <= 32)) {
             $this->reqData['out_trade_no'] = $outTradeNo;
         } else {
             throw new WxException('商户单号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -168,7 +174,8 @@ class PayMicro extends WxBaseShop {
      * @param int $totalFee
      * @throws \Exception\Wx\WxException
      */
-    public function setTotalFee(int $totalFee) {
+    public function setTotalFee(int $totalFee)
+    {
         if ($totalFee > 0) {
             $this->reqData['total_fee'] = $totalFee;
         } else {
@@ -180,8 +187,9 @@ class PayMicro extends WxBaseShop {
      * @param string $authCode
      * @throws \Exception\Wx\WxException
      */
-    public function setAuthCode(string $authCode) {
-        if(ctype_digit($authCode) && (strlen($authCode) == 18) && ($authCode{0} == '1')){
+    public function setAuthCode(string $authCode)
+    {
+        if (ctype_digit($authCode) && (strlen($authCode) == 18) && ($authCode{0} == '1')) {
             $this->reqData['auth_code'] = $authCode;
         } else {
             throw new WxException('授权码不合法', ErrorCode::WX_PARAM_ERROR);
@@ -191,8 +199,9 @@ class PayMicro extends WxBaseShop {
     /**
      * @param string $deviceInfo
      */
-    public function setDeviceInfo(string $deviceInfo) {
-        if(strlen($deviceInfo) > 0){
+    public function setDeviceInfo(string $deviceInfo)
+    {
+        if (strlen($deviceInfo) > 0) {
             $this->reqData['device_info'] = $deviceInfo;
         }
     }
@@ -200,8 +209,9 @@ class PayMicro extends WxBaseShop {
     /**
      * @param string $detail
      */
-    public function setDetail(string $detail) {
-        if(strlen($detail) > 0){
+    public function setDetail(string $detail)
+    {
+        if (strlen($detail) > 0) {
             $this->reqData['detail'] = $detail;
         }
     }
@@ -209,8 +219,9 @@ class PayMicro extends WxBaseShop {
     /**
      * @param string $goodsTag
      */
-    public function setGoodsTag(string $goodsTag) {
-        if(strlen($goodsTag) > 0){
+    public function setGoodsTag(string $goodsTag)
+    {
+        if (strlen($goodsTag) > 0) {
             $this->reqData['goods_tag'] = $goodsTag;
         }
     }
@@ -219,10 +230,11 @@ class PayMicro extends WxBaseShop {
      * @param string $limitPay
      * @throws \Exception\Wx\WxException
      */
-    public function setLimitPay(string $limitPay){
-        if($limitPay === ''){
+    public function setLimitPay(string $limitPay)
+    {
+        if ($limitPay === '') {
             unset($this->reqData['limit_pay']);
-        } else if($limitPay == 'no_credit'){
+        } elseif ($limitPay == 'no_credit') {
             $this->reqData['limit_pay'] = $limitPay;
         } else {
             throw new WxException('指定支付方式不合法', ErrorCode::WX_PARAM_ERROR);
@@ -234,24 +246,25 @@ class PayMicro extends WxBaseShop {
      * @param int $timeExpire
      * @throws \Exception\Wx\WxException
      */
-    public function setTime(int $timeStart, int $timeExpire){
+    public function setTime(int $timeStart, int $timeExpire)
+    {
         $nowTime = Tool::getNowTime();
-        if($timeStart < 0){
+        if ($timeStart < 0) {
             throw new WxException('交易起始时间不合法', ErrorCode::WX_PARAM_ERROR);
-        } else if($timeExpire < 0){
+        } elseif ($timeExpire < 0) {
             throw new WxException('交易结束时间不合法', ErrorCode::WX_PARAM_ERROR);
-        } else if(($timeExpire > 0) && ($timeExpire <= $nowTime)){
+        } elseif (($timeExpire > 0) && ($timeExpire <= $nowTime)) {
             throw new WxException('交易结束时间不能小于当前时间', ErrorCode::WX_PARAM_ERROR);
-        } else if(($timeStart > 0) && ($timeExpire > 0) && ($timeStart >= $timeExpire)){
+        } elseif (($timeStart > 0) && ($timeExpire > 0) && ($timeStart >= $timeExpire)) {
             throw new WxException('交易起始时间必须小于交易结束时间', ErrorCode::WX_PARAM_ERROR);
         }
 
-        unset($this->reqData['time_start']);
-        unset($this->reqData['time_expire']);
-        if($timeStart > 0){
+        unset($this->reqData['time_start'], $this->reqData['time_expire']);
+        
+        if ($timeStart > 0) {
             $this->reqData['time_start'] = date('YmdHis', $timeStart);
         }
-        if($timeExpire > 0){
+        if ($timeExpire > 0) {
             $this->reqData['time_expire'] = date('YmdHis', $timeExpire);
         }
     }
@@ -260,10 +273,11 @@ class PayMicro extends WxBaseShop {
      * @param string $receipt
      * @throws \Exception\Wx\WxException
      */
-    public function setReceipt(string $receipt){
-        if($receipt === ''){
+    public function setReceipt(string $receipt)
+    {
+        if ($receipt === '') {
             unset($this->reqData['receipt']);
-        } else if($receipt == 'Y'){
+        } elseif ($receipt == 'Y') {
             $this->reqData['receipt'] = $receipt;
         } else {
             throw new WxException('电子发票入口开放标识不合法', ErrorCode::WX_PARAM_ERROR);
@@ -273,8 +287,9 @@ class PayMicro extends WxBaseShop {
     /**
      * @param array $sceneInfo
      */
-    public function setSceneInfo(array $sceneInfo){
-        if(empty($sceneInfo)){
+    public function setSceneInfo(array $sceneInfo)
+    {
+        if (empty($sceneInfo)) {
             unset($this->reqData['scene_info']);
         } else {
             $this->reqData['scene_info'] = Tool::jsonEncode([
@@ -283,17 +298,18 @@ class PayMicro extends WxBaseShop {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['body'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['body'])) {
             throw new WxException('商品名称不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['out_trade_no'])){
+        if (!isset($this->reqData['out_trade_no'])) {
             throw new WxException('商户单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if($this->reqData['total_fee'] <= 0){
+        if ($this->reqData['total_fee'] <= 0) {
             throw new WxException('支付金额必须大于0', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['auth_code'])){
+        if (!isset($this->reqData['auth_code'])) {
             throw new WxException('授权码不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
@@ -309,7 +325,7 @@ class PayMicro extends WxBaseShop {
         if ($sendData['return_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } else if ($sendData['result_code'] == 'FAIL') {
+        } elseif ($sendData['result_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {

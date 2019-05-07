@@ -13,23 +13,27 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class MenuGet extends WxBaseShop {
+class MenuGet extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
      */
     private $appid = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/menu/get?access_token=';
         $this->appid = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0
         ];

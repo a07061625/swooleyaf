@@ -11,16 +11,20 @@ use Constant\Project;
 use Validator\BaseValidator;
 use Validator\ValidatorService;
 
-class IntIn extends BaseValidator implements ValidatorService {
-    public function __construct() {
+class IntIn extends BaseValidator implements ValidatorService
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->validatorType = Project::VALIDATOR_INT_TYPE_IN;
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    public function validator($data, $compareData) : string {
+    public function validator($data, $compareData) : string
+    {
         if ($data === null) {
             return '';
         }
@@ -28,16 +32,16 @@ class IntIn extends BaseValidator implements ValidatorService {
         $trueData = $this->verifyIntData($data);
         if ($trueData === null) {
             return '必须是整数';
-        } else if((!is_string($compareData)) && (!is_numeric($compareData))){
+        } elseif ((!is_string($compareData)) && (!is_numeric($compareData))) {
             return '取值规则不合法';
-        } else if(preg_match('/^(\,[\-]?\d+)+$/', ',' . $compareData) > 0){
+        } elseif (preg_match('/^(\,[\-]?\d+)+$/', ',' . $compareData) > 0) {
             $acceptTag = false;
             $acceptArr = explode(',', $compareData);
             array_unique($acceptArr);
 
-            foreach($acceptArr as $eAccept) {
+            foreach ($acceptArr as $eAccept) {
                 $eNum = (int)$eAccept;
-                if($eNum === $trueData) {
+                if ($eNum === $trueData) {
                     $acceptTag = true;
                     break;
                 }

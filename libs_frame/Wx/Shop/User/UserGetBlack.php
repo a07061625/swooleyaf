@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class UserGetBlack extends WxBaseShop {
+class UserGetBlack extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -26,21 +27,24 @@ class UserGetBlack extends WxBaseShop {
      */
     private $begin_openid = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/tags/members/getblacklist?access_token=';
         $this->appid = $appId;
         $this->reqData['begin_openid'] = '';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $beginOpenid
      * @throws \Exception\Wx\WxException
      */
-    public function setBeginOpenid(string $beginOpenid){
+    public function setBeginOpenid(string $beginOpenid)
+    {
         if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $beginOpenid) > 0) {
             $this->reqData['begin_openid'] = $beginOpenid;
         } else {
@@ -48,7 +52,8 @@ class UserGetBlack extends WxBaseShop {
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -57,7 +62,7 @@ class UserGetBlack extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['errcode'])){
+        if (isset($sendData['errcode'])) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['errmsg'];
         } else {

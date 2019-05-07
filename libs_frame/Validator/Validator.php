@@ -10,7 +10,8 @@ namespace Validator;
 use Traits\SimpleTrait;
 use Validator\Containers\ValidatorContainer;
 
-final class Validator {
+final class Validator
+{
     use SimpleTrait;
 
     const ANNOTATION_NAME = '@SyFilter'; //校验注解名称
@@ -24,33 +25,13 @@ final class Validator {
     private static $services = [];
 
     /**
-     * @param string $serviceType
-     * @return \Validator\ValidatorService
-     */
-    private static function getService(string $serviceType) {
-        if(is_null(self::$container)){
-            self::$container = new ValidatorContainer();
-        }
-
-        if(isset(self::$services[$serviceType])){
-            $service = self::$services[$serviceType];
-        } else {
-            $service = self::$container->getObj($serviceType);
-            if(!is_null($service)){
-                self::$services[$serviceType] = $service;
-            }
-        }
-
-        return $service;
-    }
-
-    /**
      * 数据校验
      * @param mixed $data 待校验数据
      * @param ValidatorResult $result 校验规则数组
      * @return string
      */
-    public static function validator($data,ValidatorResult $result) : string {
+    public static function validator($data, ValidatorResult $result) : string
+    {
         $errorStr = '';
         $rules = $result->getRules();
         foreach ($rules as $ruleKey => $ruleValue) {
@@ -68,5 +49,27 @@ final class Validator {
         }
 
         return $result->getFullError($errorStr);
+    }
+
+    /**
+     * @param string $serviceType
+     * @return \Validator\ValidatorService
+     */
+    private static function getService(string $serviceType)
+    {
+        if (is_null(self::$container)) {
+            self::$container = new ValidatorContainer();
+        }
+
+        if (isset(self::$services[$serviceType])) {
+            $service = self::$services[$serviceType];
+        } else {
+            $service = self::$container->getObj($serviceType);
+            if (!is_null($service)) {
+                self::$services[$serviceType] = $service;
+            }
+        }
+
+        return $service;
     }
 }

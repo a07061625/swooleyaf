@@ -21,7 +21,7 @@ class Smarty_Resource_Extendsall extends Smarty_Internal_Resource_Extends
     public function populate(Smarty_Template_Source $source, Smarty_Internal_Template $_template = null)
     {
         $uid = '';
-        $sources = array();
+        $sources = [];
         $timestamp = 0;
         foreach ($source->smarty->getTemplateDir() as $key => $directory) {
             try {
@@ -32,8 +32,7 @@ class Smarty_Resource_Extendsall extends Smarty_Internal_Resource_Extends
                 $sources[ $s->uid ] = $s;
                 $uid .= $s->filepath;
                 $timestamp = $s->timestamp > $timestamp ? $s->timestamp : $timestamp;
-            }
-            catch (SmartyException $e) {
+            } catch (SmartyException $e) {
             }
         }
         if (!$sources) {
@@ -61,5 +60,4 @@ class Smarty_Resource_Extendsall extends Smarty_Internal_Resource_Extends
     {
         return false;
     }
-
 }

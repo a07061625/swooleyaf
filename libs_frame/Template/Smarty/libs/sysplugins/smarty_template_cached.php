@@ -70,7 +70,7 @@ class Smarty_Template_Cached extends Smarty_Template_Resource_Base
      *
      * @var array
      */
-    public $hashes = array();
+    public $hashes = [];
 
     /**
      * Flag if this is a cache resource
@@ -100,9 +100,9 @@ class Smarty_Template_Cached extends Smarty_Template_Resource_Base
      *
      * @return Smarty_Template_Cached
      */
-    static function load(Smarty_Internal_Template $_template)
+    public static function load(Smarty_Internal_Template $_template)
     {
-        $_template->cached = new Smarty_Template_Cached($_template);
+        $_template->cached = new self($_template);
         $_template->cached->handler->populate($_template->cached, $_template);
         // caching enabled ?
         if (!($_template->caching == Smarty::CACHING_LIFETIME_CURRENT ||

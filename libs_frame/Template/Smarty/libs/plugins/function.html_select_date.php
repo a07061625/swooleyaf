@@ -9,11 +9,11 @@
 /**
  * @ignore
  */
-require_once(SMARTY_PLUGINS_DIR . 'shared.escape_special_chars.php');
+require_once SMARTY_PLUGINS_DIR . 'shared.escape_special_chars.php';
 /**
  * @ignore
  */
-require_once(SMARTY_PLUGINS_DIR . 'shared.make_timestamp.php');
+require_once SMARTY_PLUGINS_DIR . 'shared.make_timestamp.php';
 
 /**
  * Smarty {html_select_date} plugin
@@ -57,25 +57,25 @@ function smarty_function_html_select_date($params)
     static $_current_year = null;
     if ($_month_timestamps === null) {
         $_current_year = date('Y');
-        $_month_timestamps = array();
+        $_month_timestamps = [];
         for ($i = 1; $i <= 12; $i ++) {
             $_month_timestamps[ $i ] = mktime(0, 0, 0, $i, 1, 2000);
         }
     }
 
     /* Default values. */
-    $prefix = "Date_";
+    $prefix = 'Date_';
     $start_year = null;
     $end_year = null;
     $display_days = true;
     $display_months = true;
     $display_years = true;
-    $month_format = "%B";
+    $month_format = '%B';
     /* Write months as numbers by default  GL */
-    $month_value_format = "%m";
-    $day_format = "%02d";
+    $month_value_format = '%m';
+    $day_format = '%02d';
     /* Write day values using this format MB */
-    $day_value_format = "%d";
+    $day_value_format = '%d';
     $year_as_text = false;
     /* Display years in reverse order? Ie. 2000,1999,.... */
     $reverse_years = false;
@@ -124,7 +124,7 @@ function smarty_function_html_select_date($params)
                 if (is_array($_value) && count($_value) == 12) {
                     $$_key = $_value;
                 } else {
-                    trigger_error("html_select_date: month_names must be an array of 12 strings", E_USER_NOTICE);
+                    trigger_error('html_select_date: month_names must be an array of 12 strings', E_USER_NOTICE);
                 }
                 break;
 
@@ -180,7 +180,7 @@ function smarty_function_html_select_date($params)
     if (isset($params[ 'time' ]) && is_array($params[ 'time' ])) {
         if (isset($params[ 'time' ][ $prefix . 'Year' ])) {
             // $_REQUEST[$field_array] given
-            foreach (array('Y' => 'Year', 'm' => 'Month', 'd' => 'Day') as $_elementKey => $_elementName) {
+            foreach (['Y' => 'Year', 'm' => 'Month', 'd' => 'Day'] as $_elementKey => $_elementName) {
                 $_variableName = '_' . strtolower($_elementName);
                 $$_variableName =
                     isset($params[ 'time' ][ $prefix . $_elementName ]) ? $params[ 'time' ][ $prefix . $_elementName ] :
@@ -188,7 +188,7 @@ function smarty_function_html_select_date($params)
             }
         } elseif (isset($params[ 'time' ][ $field_array ][ $prefix . 'Year' ])) {
             // $_REQUEST given
-            foreach (array('Y' => 'Year', 'm' => 'Month', 'd' => 'Day') as $_elementKey => $_elementName) {
+            foreach (['Y' => 'Year', 'm' => 'Month', 'd' => 'Day'] as $_elementKey => $_elementName) {
                 $_variableName = '_' . strtolower($_elementName);
                 $$_variableName = isset($params[ 'time' ][ $field_array ][ $prefix . $_elementName ]) ?
                     $params[ 'time' ][ $field_array ][ $prefix . $_elementName ] : date($_elementKey);
@@ -209,7 +209,7 @@ function smarty_function_html_select_date($params)
 
     // make syntax "+N" or "-N" work with $start_year and $end_year
     // Note preg_match('!^(\+|\-)\s*(\d+)$!', $end_year, $match) is slower than trim+substr
-    foreach (array('start', 'end') as $key) {
+    foreach (['start', 'end'] as $key) {
         $key .= '_year';
         $t = $$key;
         if ($t === null) {
@@ -304,8 +304,8 @@ function smarty_function_html_select_date($params)
         for ($i = 1; $i <= 12; $i ++) {
             $_val = sprintf('%02d', $i);
             $_text = isset($month_names) ? smarty_function_escape_special_chars($month_names[ $i ]) :
-                ($month_format == "%m" ? $_val : strftime($month_format, $_month_timestamps[ $i ]));
-            $_value = $month_value_format == "%m" ? $_val : strftime($month_value_format, $_month_timestamps[ $i ]);
+                ($month_format == '%m' ? $_val : strftime($month_format, $_month_timestamps[ $i ]));
+            $_value = $month_value_format == '%m' ? $_val : strftime($month_value_format, $_month_timestamps[ $i ]);
             $_html_months .= '<option value="' . $_value . '"' . ($_val == $_month ? ' selected="selected"' : '') .
                              '>' . $_text . '</option>' . $option_separator;
         }

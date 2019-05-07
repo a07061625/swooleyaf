@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class TemplateIndustrySet extends WxBaseShop {
+class TemplateIndustrySet extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -31,21 +32,24 @@ class TemplateIndustrySet extends WxBaseShop {
      */
     private $industry_id2 = 0;
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/template/api_set_industry?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $industryId1
      * @throws \Exception\Wx\WxException
      */
-    public function setIndustryId1(int $industryId1){
-        if($industryId1 > 0){
+    public function setIndustryId1(int $industryId1)
+    {
+        if ($industryId1 > 0) {
             $this->reqData['industry_id1'] = $industryId1;
         } else {
             throw new WxException('行业编号1不合法', ErrorCode::WX_PARAM_ERROR);
@@ -56,19 +60,21 @@ class TemplateIndustrySet extends WxBaseShop {
      * @param int $industryId2
      * @throws \Exception\Wx\WxException
      */
-    public function setIndustryId2(int $industryId2){
-        if($industryId2 > 0){
+    public function setIndustryId2(int $industryId2)
+    {
+        if ($industryId2 > 0) {
             $this->reqData['industry_id2'] = $industryId2;
         } else {
             throw new WxException('行业编号2不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['industry_id1'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['industry_id1'])) {
             throw new WxException('行业编号1不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['industry_id2'])){
+        if (!isset($this->reqData['industry_id2'])) {
             throw new WxException('行业编号2不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -80,7 +86,7 @@ class TemplateIndustrySet extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

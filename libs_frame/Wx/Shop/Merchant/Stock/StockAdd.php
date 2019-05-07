@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class StockAdd extends WxBaseShop {
+class StockAdd extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -36,21 +37,24 @@ class StockAdd extends WxBaseShop {
      */
     private $quantity = 0;
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/merchant/stock/add?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $productId
      * @throws \Exception\Wx\WxException
      */
-    public function setProductId(string $productId){
-        if(strlen($productId) > 0){
+    public function setProductId(string $productId)
+    {
+        if (strlen($productId) > 0) {
             $this->reqData['product_id'] = $productId;
         } else {
             throw new WxException('商品ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -61,8 +65,9 @@ class StockAdd extends WxBaseShop {
      * @param string $skuInfo
      * @throws \Exception\Wx\WxException
      */
-    public function setSkuInfo(string $skuInfo){
-        if(strlen($skuInfo) > 0){
+    public function setSkuInfo(string $skuInfo)
+    {
+        if (strlen($skuInfo) > 0) {
             $this->reqData['sku_info'] = $skuInfo;
         } else {
             throw new WxException('sku信息不合法', ErrorCode::WX_PARAM_ERROR);
@@ -73,22 +78,24 @@ class StockAdd extends WxBaseShop {
      * @param int $quantity
      * @throws \Exception\Wx\WxException
      */
-    public function setQuantity(int $quantity){
-        if($quantity > 0){
+    public function setQuantity(int $quantity)
+    {
+        if ($quantity > 0) {
             $this->reqData['quantity'] = $quantity;
         } else {
             throw new WxException('库存数量不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['product_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['product_id'])) {
             throw new WxException('商品ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['sku_info'])){
+        if (!isset($this->reqData['sku_info'])) {
             throw new WxException('sku信息不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['quantity'])){
+        if (!isset($this->reqData['quantity'])) {
             throw new WxException('库存数量不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -100,7 +107,7 @@ class StockAdd extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

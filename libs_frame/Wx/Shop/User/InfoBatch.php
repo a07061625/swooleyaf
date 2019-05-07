@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class InfoBatch extends WxBaseShop {
+class InfoBatch extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -26,21 +27,24 @@ class InfoBatch extends WxBaseShop {
      */
     private $openidList = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token=';
         $this->appid = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param array $openidList
      */
-    public function setOpenidList(array $openidList) {
+    public function setOpenidList(array $openidList)
+    {
         foreach ($openidList as $eOpenid) {
-            if(is_string($eOpenid) && (strlen($eOpenid) == 28)){
+            if (is_string($eOpenid) && (strlen($eOpenid) == 28)) {
                 $this->openidList[$eOpenid] = 1;
             }
         }
@@ -50,19 +54,21 @@ class InfoBatch extends WxBaseShop {
      * @param string $openid
      * @throws \Exception\Wx\WxException
      */
-    public function addOpenid(string $openid){
-        if(strlen($openid) == 28){
+    public function addOpenid(string $openid)
+    {
+        if (strlen($openid) == 28) {
             $this->openidList[$openid] = 1;
         } else {
             throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $num = count($this->openidList);
-        if($num == 0){
+        if ($num == 0) {
             throw new WxException('用户openid列表不能为空', ErrorCode::WX_PARAM_ERROR);
-        } else if($num > 100){
+        } elseif ($num > 100) {
             throw new WxException('用户openid列表超过100个', ErrorCode::WX_PARAM_ERROR);
         }
 

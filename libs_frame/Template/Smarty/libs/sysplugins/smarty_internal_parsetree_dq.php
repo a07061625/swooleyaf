@@ -45,12 +45,16 @@ class Smarty_Internal_ParseTree_Dq extends Smarty_Internal_ParseTree
         ) {
             if ($subtree instanceof Smarty_Internal_ParseTree_Code) {
                 $this->subtrees[ $last_subtree ]->data =
-                    $parser->compiler->appendCode($this->subtrees[ $last_subtree ]->data,
-                                                  '<?php echo ' . $subtree->data . ';?>');
+                    $parser->compiler->appendCode(
+                        $this->subtrees[ $last_subtree ]->data,
+                                                  '<?php echo ' . $subtree->data . ';?>'
+                    );
             } elseif ($subtree instanceof Smarty_Internal_ParseTree_DqContent) {
                 $this->subtrees[ $last_subtree ]->data =
-                    $parser->compiler->appendCode($this->subtrees[ $last_subtree ]->data,
-                                                  '<?php echo "' . $subtree->data . '";?>');
+                    $parser->compiler->appendCode(
+                        $this->subtrees[ $last_subtree ]->data,
+                                                  '<?php echo "' . $subtree->data . '";?>'
+                    );
             } else {
                 $this->subtrees[ $last_subtree ]->data =
                     $parser->compiler->appendCode($this->subtrees[ $last_subtree ]->data, $subtree->data);
@@ -74,8 +78,8 @@ class Smarty_Internal_ParseTree_Dq extends Smarty_Internal_ParseTree
     {
         $code = '';
         foreach ($this->subtrees as $subtree) {
-            if ($code !== "") {
-                $code .= ".";
+            if ($code !== '') {
+                $code .= '.';
             }
             if ($subtree instanceof Smarty_Internal_ParseTree_Tag) {
                 $more_php = $subtree->assign_to_var($parser);

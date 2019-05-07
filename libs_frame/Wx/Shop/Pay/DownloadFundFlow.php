@@ -15,7 +15,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class DownloadFundFlow extends WxBaseShop {
+class DownloadFundFlow extends WxBaseShop
+{
     const ACCOUNT_TYPE_BASIC = 'Basic';
     const ACCOUNT_TYPE_OPERATION = 'Operation';
     const ACCOUNT_TYPE_FEES = 'Fees';
@@ -70,7 +71,8 @@ class DownloadFundFlow extends WxBaseShop {
         self::ACCOUNT_TYPE_FEES => 1,
     ];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/downloadfundflow';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
@@ -81,15 +83,17 @@ class DownloadFundFlow extends WxBaseShop {
         $this->reqData['tar_type'] = 'GZIP';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $billDate
      * @throws \Exception\Wx\WxException
      */
-    public function setBillDate(string $billDate) {
-        if(ctype_digit($billDate) && (strlen($billDate) == 8)){
+    public function setBillDate(string $billDate)
+    {
+        if (ctype_digit($billDate) && (strlen($billDate) == 8)) {
             $this->reqData['bill_date'] = $billDate;
         } else {
             throw new WxException('资金账单日期不合法', ErrorCode::WX_PARAM_ERROR);
@@ -100,7 +104,8 @@ class DownloadFundFlow extends WxBaseShop {
      * @param string $accountType
      * @throws \Exception\Wx\WxException
      */
-    public function setAccountType(string $accountType){
+    public function setAccountType(string $accountType)
+    {
         if (isset(self::$totalAccountType[$accountType])) {
             $this->reqData['account_type'] = $accountType;
         } else {
@@ -111,20 +116,22 @@ class DownloadFundFlow extends WxBaseShop {
     /**
      * @param string $outputFile
      */
-    public function setOutputFile(string $outputFile){
-        if(strlen($outputFile) > 0){
+    public function setOutputFile(string $outputFile)
+    {
+        if (strlen($outputFile) > 0) {
             $this->output_file = $outputFile;
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['bill_date'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['bill_date'])) {
             throw new WxException('资金账单日期不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['account_type'])){
+        if (!isset($this->reqData['account_type'])) {
             throw new WxException('资金账户类型不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(strlen($this->output_file) == 0){
+        if (strlen($this->output_file) == 0) {
             throw new WxException('输出文件不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid'], 'sha256');

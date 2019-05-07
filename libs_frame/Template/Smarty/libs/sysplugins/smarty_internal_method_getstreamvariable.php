@@ -45,7 +45,7 @@ class Smarty_Internal_Method_GetStreamVariable
         if ($smarty->error_unassigned) {
             throw new SmartyException('Undefined stream variable "' . $variable . '"');
         } else {
-            return null;
+            return;
         }
     }
 }

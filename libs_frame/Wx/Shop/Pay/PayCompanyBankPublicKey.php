@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class PayCompanyBankPublicKey extends WxBaseShop {
+class PayCompanyBankPublicKey extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -36,7 +37,8 @@ class PayCompanyBankPublicKey extends WxBaseShop {
      */
     private $sign_type = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://fraud.mch.weixin.qq.com/risk/getpublickey';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
@@ -46,10 +48,12 @@ class PayCompanyBankPublicKey extends WxBaseShop {
         $this->reqData['sign_type'] = 'MD5';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->appid);
 
         $resArr = [
@@ -76,7 +80,7 @@ class PayCompanyBankPublicKey extends WxBaseShop {
         if ($sendData['return_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } else if ($sendData['result_code'] == 'FAIL') {
+        } elseif ($sendData['result_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {

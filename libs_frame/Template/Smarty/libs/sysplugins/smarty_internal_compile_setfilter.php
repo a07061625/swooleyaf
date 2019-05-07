@@ -60,7 +60,7 @@ class Smarty_Internal_Compile_Setfilterclose extends Smarty_Internal_CompileBase
         if (count($compiler->variable_filter_stack)) {
             $compiler->variable_filters = array_pop($compiler->variable_filter_stack);
         } else {
-            $compiler->variable_filters = array();
+            $compiler->variable_filters = [];
         }
         // this tag does not return compiled code
         $compiler->has_code = false;

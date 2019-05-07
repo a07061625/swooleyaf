@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class UploadImage extends WxBaseShop {
+class UploadImage extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -31,21 +32,24 @@ class UploadImage extends WxBaseShop {
      */
     private $image_content = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/merchant/common/upload_img?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $imageName
      * @throws \Exception\Wx\WxException
      */
-    public function setImageName(string $imageName){
-        if(strlen($imageName) > 0){
+    public function setImageName(string $imageName)
+    {
+        if (strlen($imageName) > 0) {
             $this->image_name = $imageName;
         } else {
             throw new WxException('图片名不合法', ErrorCode::WX_PARAM_ERROR);
@@ -56,19 +60,21 @@ class UploadImage extends WxBaseShop {
      * @param string $imageContent
      * @throws \Exception\Wx\WxException
      */
-    public function setImageContent(string $imageContent){
-        if(strlen($imageContent) > 0){
+    public function setImageContent(string $imageContent)
+    {
+        if (strlen($imageContent) > 0) {
             $this->image_content = $imageContent;
         } else {
             throw new WxException('图片内容不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(strlen($this->image_name) == 0){
+    public function getDetail() : array
+    {
+        if (strlen($this->image_name) == 0) {
             throw new WxException('图片名不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(strlen($this->image_content) == 0){
+        if (strlen($this->image_content) == 0) {
             throw new WxException('图片内容不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -81,7 +87,7 @@ class UploadImage extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $this->image_content;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

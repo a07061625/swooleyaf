@@ -10,23 +10,27 @@ namespace Wx\OpenMini;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use Wx\WxBaseOpenMini;
 
-class AdminRebindUrl extends WxBaseOpenMini {
+class AdminRebindUrl extends WxBaseOpenMini
+{
     /**
      * 应用ID
      * @var string
      */
     private $appId = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://mp.weixin.qq.com/wxopen/componentrebindadmin';
         $this->appId = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $openCommonConfig = WxConfigSingleton::getInstance()->getOpenCommonConfig();
         return [
             'url' => $this->serviceUrl . '?' . http_build_query([

@@ -12,7 +12,8 @@ use Wx\WxUtilBase;
  * 查询电子发票
  * @package Wx\Corp\Invoice
  */
-class InvoiceInfoGet extends WxBaseCorp {
+class InvoiceInfoGet extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -26,22 +27,25 @@ class InvoiceInfoGet extends WxBaseCorp {
      */
     private $encrypt_code = '';
 
-    public function __construct(string $corpId,string $agentTag) {
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/card/invoice/reimburse/getinvoiceinfo?access_token=';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
     /**
      * @param string $cardId
      * @throws \Exception\Wx\WxException
      */
-    public function setCardId(string $cardId){
-        if(strlen($cardId) > 0){
+    public function setCardId(string $cardId)
+    {
+        if (strlen($cardId) > 0) {
             $this->reqData['card_id'] = $cardId;
         } else {
             throw new WxException('发票id不合法', ErrorCode::WX_PARAM_ERROR);
@@ -52,19 +56,21 @@ class InvoiceInfoGet extends WxBaseCorp {
      * @param string $encryptCode
      * @throws \Exception\Wx\WxException
      */
-    public function setEncryptCode(string $encryptCode){
-        if(strlen($encryptCode) > 0){
+    public function setEncryptCode(string $encryptCode)
+    {
+        if (strlen($encryptCode) > 0) {
             $this->reqData['encrypt_code'] = $encryptCode;
         } else {
             throw new WxException('加密密码不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail(): array {
-        if(!isset($this->reqData['card_id'])){
+    public function getDetail(): array
+    {
+        if (!isset($this->reqData['card_id'])) {
             throw new WxException('发票id不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['encrypt_code'])){
+        if (!isset($this->reqData['encrypt_code'])) {
             throw new WxException('加密密码不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -76,7 +82,7 @@ class InvoiceInfoGet extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

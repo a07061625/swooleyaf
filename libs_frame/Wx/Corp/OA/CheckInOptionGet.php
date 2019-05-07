@@ -12,7 +12,8 @@ use Wx\WxUtilBase;
  * 获取打卡规则
  * @package Wx\Corp\OA
  */
-class CheckInOptionGet extends WxBaseCorp {
+class CheckInOptionGet extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -26,7 +27,8 @@ class CheckInOptionGet extends WxBaseCorp {
      */
     private $useridlist = [];
 
-    public function __construct(string $corpId,string $agentTag) {
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/checkin/getcheckinoption?access_token=';
         $this->reqData['useridlist'] = [];
@@ -34,15 +36,17 @@ class CheckInOptionGet extends WxBaseCorp {
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
     /**
      * @param int $datetime
      * @throws \Exception\Wx\WxException
      */
-    public function setDatetime(int $datetime){
-        if(($datetime > 0) && (($datetime % 86400) == 0)){
+    public function setDatetime(int $datetime)
+    {
+        if (($datetime > 0) && (($datetime % 86400) == 0)) {
             $this->reqData['datetime'] = $datetime;
         } else {
             throw new WxException('日期不合法', ErrorCode::WX_PARAM_ERROR);
@@ -53,29 +57,31 @@ class CheckInOptionGet extends WxBaseCorp {
      * @param array $userIdList
      * @throws \Exception\Wx\WxException
      */
-    public function setUserIdList(array $userIdList){
+    public function setUserIdList(array $userIdList)
+    {
         $idList = [];
         foreach ($userIdList as $eUserId) {
-            if(ctype_alnum($eUserId)){
+            if (ctype_alnum($eUserId)) {
                 $idList[$eUserId] = 1;
             }
         }
 
         $userNum = count($idList);
-        if($userNum == 0){
+        if ($userNum == 0) {
             throw new WxException('用户列表不能为空', ErrorCode::WX_PARAM_ERROR);
-        } else if($userNum > 100){
+        } elseif ($userNum > 100) {
             throw new WxException('用户列表不能超过100个', ErrorCode::WX_PARAM_ERROR);
         }
 
         $this->reqData['useridlist'] = array_keys($idList);
     }
 
-    public function getDetail(): array {
-        if(!isset($this->reqData['datetime'])){
+    public function getDetail(): array
+    {
+        if (!isset($this->reqData['datetime'])) {
             throw new WxException('日期不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(empty($this->reqData['useridlist'])){
+        if (empty($this->reqData['useridlist'])) {
             throw new WxException('用户列表不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -87,7 +93,7 @@ class CheckInOptionGet extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

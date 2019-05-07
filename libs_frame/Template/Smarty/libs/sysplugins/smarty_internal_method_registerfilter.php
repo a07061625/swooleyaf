@@ -23,7 +23,7 @@ class Smarty_Internal_Method_RegisterFilter
      *
      * @var array
      */
-    private $filterTypes = array('pre' => true, 'post' => true, 'output' => true, 'variable' => true);
+    private $filterTypes = ['pre' => true, 'post' => true, 'output' => true, 'variable' => true];
 
     /**
      * Registers a filter function

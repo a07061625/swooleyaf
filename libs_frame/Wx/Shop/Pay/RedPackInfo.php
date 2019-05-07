@@ -15,7 +15,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class RedPackInfo extends WxBaseShop {
+class RedPackInfo extends WxBaseShop
+{
     /**
      * 随机字符串
      * @var string
@@ -42,7 +43,8 @@ class RedPackInfo extends WxBaseShop {
      */
     private $bill_type = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/gethbinfo';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
@@ -51,23 +53,26 @@ class RedPackInfo extends WxBaseShop {
         $this->reqData['appid'] = $shopConfig->getAppId();
         $this->reqData['bill_type'] = 'MCHT';
     }
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $mchBillNo
      * @throws \Exception\Wx\WxException
      */
-    public function setMchBillNo(string $mchBillNo){
-        if(ctype_alnum($mchBillNo) && (strlen($mchBillNo) <= 32)){
+    public function setMchBillNo(string $mchBillNo)
+    {
+        if (ctype_alnum($mchBillNo) && (strlen($mchBillNo) <= 32)) {
             $this->reqData['mch_billno'] = $mchBillNo;
         } else {
             throw new WxException('商户订单号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array{
-        if(!isset($this->reqData['mch_billno'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['mch_billno'])) {
             throw new WxException('商户订单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
@@ -96,7 +101,7 @@ class RedPackInfo extends WxBaseShop {
         if ($sendData['return_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } else if ($sendData['result_code'] == 'FAIL') {
+        } elseif ($sendData['result_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {

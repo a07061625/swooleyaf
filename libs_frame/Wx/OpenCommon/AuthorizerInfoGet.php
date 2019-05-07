@@ -14,7 +14,8 @@ use Wx\WxBaseOpenCommon;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class AuthorizerInfoGet extends WxBaseOpenCommon {
+class AuthorizerInfoGet extends WxBaseOpenCommon
+{
     /**
      * 第三方平台appid
      * @var string
@@ -26,17 +27,20 @@ class AuthorizerInfoGet extends WxBaseOpenCommon {
      */
     private $authorizer_appid = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/component/api_get_authorizer_info?component_access_token=';
         $this->reqData['component_appid'] = WxConfigSingleton::getInstance()->getOpenCommonConfig()->getAppId();
         $this->reqData['authorizer_appid'] = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -45,7 +49,7 @@ class AuthorizerInfoGet extends WxBaseOpenCommon {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['authorizer_info'])){
+        if (isset($sendData['authorizer_info'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class OrderList extends WxBaseShop {
+class OrderList extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -36,21 +37,24 @@ class OrderList extends WxBaseShop {
      */
     private $endtime = 0;
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/merchant/order/getbyfilter?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $status
      * @throws \Exception\Wx\WxException
      */
-    public function setStatus(int $status){
-        if(in_array($status, [2, 3, 5, 8])){
+    public function setStatus(int $status)
+    {
+        if (in_array($status, [2, 3, 5, 8], true)) {
             $this->reqData['status'] = $status;
         } else {
             throw new WxException('订单状态不合法', ErrorCode::WX_PARAM_ERROR);
@@ -62,24 +66,26 @@ class OrderList extends WxBaseShop {
      * @param int $endTime
      * @throws \Exception\Wx\WxException
      */
-    public function setCreateTime(int $beginTime,int $endTime){
-        if($beginTime < 0){
+    public function setCreateTime(int $beginTime, int $endTime)
+    {
+        if ($beginTime < 0) {
             throw new WxException('创建起始时间不合法', ErrorCode::WX_PARAM_ERROR);
-        } else if($endTime < 0){
+        } elseif ($endTime < 0) {
             throw new WxException('创建终止时间不合法', ErrorCode::WX_PARAM_ERROR);
-        } else if(($beginTime > 0) && ($endTime > 0) && ($beginTime > $endTime)){
+        } elseif (($beginTime > 0) && ($endTime > 0) && ($beginTime > $endTime)) {
             throw new WxException('创建起始时间不能大于终止时间', ErrorCode::WX_PARAM_ERROR);
         }
 
-        if($beginTime > 0){
+        if ($beginTime > 0) {
             $this->reqData['begintime'] = $beginTime;
         }
-        if($endTime > 0){
+        if ($endTime > 0) {
             $this->reqData['endtime'] = $endTime;
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -88,7 +94,7 @@ class OrderList extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 批量删除成员
  * @package Wx\Corp\User
  */
-class UserDeleteBatch extends WxBaseCorp {
+class UserDeleteBatch extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -27,7 +28,8 @@ class UserDeleteBatch extends WxBaseCorp {
      */
     private $useridlist = [];
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/user/batchdelete?access_token=';
         $this->_corpId = $corpId;
@@ -35,34 +37,37 @@ class UserDeleteBatch extends WxBaseCorp {
         $this->reqData['useridlist'] = [];
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param array $userIdList
      * @throws \Exception\Wx\WxException
      */
-    public function setUserIdList(array $userIdList){
+    public function setUserIdList(array $userIdList)
+    {
         $users = [];
         foreach ($userIdList as $eUserId) {
-            if(ctype_alnum($eUserId)){
+            if (ctype_alnum($eUserId)) {
                 $userId = strtolower($eUserId);
                 $users[$userId] = 1;
             }
         }
 
         $userNum = count($users);
-        if($userNum > 200){
+        if ($userNum > 200) {
             throw new WxException('用户ID列表不能超过200个', ErrorCode::WX_PARAM_ERROR);
-        } else if($userNum == 0){
+        } elseif ($userNum == 0) {
             throw new WxException('用户ID列表不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $this->reqData['useridlist'] = array_keys($users);
     }
 
-    public function getDetail() : array {
-        if(empty($this->reqData['useridlist'])){
+    public function getDetail() : array
+    {
+        if (empty($this->reqData['useridlist'])) {
             throw new WxException('用户ID列表不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -74,7 +79,7 @@ class UserDeleteBatch extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

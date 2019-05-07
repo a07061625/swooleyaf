@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class GroupAdd extends WxBaseShop {
+class GroupAdd extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -31,21 +32,24 @@ class GroupAdd extends WxBaseShop {
      */
     private $product_list = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/merchant/group/add?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $groupName
      * @throws \Exception\Wx\WxException
      */
-    public function setGroupName(string $groupName){
-        if(strlen($groupName) > 0){
+    public function setGroupName(string $groupName)
+    {
+        if (strlen($groupName) > 0) {
             $this->reqData['group_name'] = $groupName;
         } else {
             throw new WxException('分组名称不合法', ErrorCode::WX_PARAM_ERROR);
@@ -55,9 +59,10 @@ class GroupAdd extends WxBaseShop {
     /**
      * @param array $productList
      */
-    public function setProductList(array $productList){
+    public function setProductList(array $productList)
+    {
         foreach ($productList as $eProductId) {
-            if(is_string($eProductId) && (strlen($eProductId) > 0)){
+            if (is_string($eProductId) && (strlen($eProductId) > 0)) {
                 $this->product_list[$eProductId] = 1;
             }
         }
@@ -67,19 +72,21 @@ class GroupAdd extends WxBaseShop {
      * @param string $productId
      * @throws \Exception\Wx\WxException
      */
-    public function addProduct(string $productId){
-        if(strlen($productId) > 0){
+    public function addProduct(string $productId)
+    {
+        if (strlen($productId) > 0) {
             $this->product_list[$productId] = 1;
         } else {
             throw new WxException('商品ID不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['group_name'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['group_name'])) {
             throw new WxException('分组名称不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(empty($this->product_list)){
+        if (empty($this->product_list)) {
             throw new WxException('商品ID列表不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['product_list'] = array_keys($this->product_list);
@@ -94,7 +101,7 @@ class GroupAdd extends WxBaseShop {
         ], JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

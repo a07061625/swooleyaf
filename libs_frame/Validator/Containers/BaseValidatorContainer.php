@@ -10,8 +10,10 @@ namespace Validator\Containers;
 use DesignPatterns\Singletons\SimpleValidatorSingleton;
 use Tool\BaseContainer;
 
-abstract class BaseValidatorContainer extends BaseContainer {
-    public function __construct(){
+abstract class BaseValidatorContainer extends BaseContainer
+{
+    public function __construct()
+    {
     }
 
     /**
@@ -19,7 +21,8 @@ abstract class BaseValidatorContainer extends BaseContainer {
      * @param string|int $tag 对象类型标识
      * @return null|mixed
      */
-    public function getObj($tag) {
+    public function getObj($tag)
+    {
         $obj = SimpleValidatorSingleton::getInstance()->getObj($tag);
         if (is_null($obj)) {
             $obj = parent::getObj($tag);

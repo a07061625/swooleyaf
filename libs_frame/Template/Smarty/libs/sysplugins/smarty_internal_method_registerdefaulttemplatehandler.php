@@ -35,7 +35,7 @@ class Smarty_Internal_Method_RegisterDefaultTemplateHandler
         if (is_callable($callback)) {
             $smarty->default_template_handler_func = $callback;
         } else {
-            throw new SmartyException("Default template handler not callable");
+            throw new SmartyException('Default template handler not callable');
         }
         return $obj;
     }
@@ -55,14 +55,16 @@ class Smarty_Internal_Method_RegisterDefaultTemplateHandler
             $default_handler = $source->smarty->default_template_handler_func;
         }
         $_content = $_timestamp = null;
-        $_return = call_user_func_array($default_handler,
-                                        array($source->type, $source->name, &$_content, &$_timestamp, $source->smarty));
+        $_return = call_user_func_array(
+            $default_handler,
+                                        [$source->type, $source->name, &$_content, &$_timestamp, $source->smarty]
+        );
         if (is_string($_return)) {
             $source->exists = is_file($_return);
             if ($source->exists) {
                 $source->timestamp = filemtime($_return);
             } else {
-                throw new SmartyException("Default handler: Unable to load " .
+                throw new SmartyException('Default handler: Unable to load ' .
                                           ($source->isConfig ? 'config' : 'template') .
                                           " default file '{$_return}' for '{$source->type}:{$source->name}'");
             }

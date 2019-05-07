@@ -15,7 +15,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class CouponSend extends WxBaseShop {
+class CouponSend extends WxBaseShop
+{
     /**
      * 代金券批次id
      * @var string
@@ -72,7 +73,8 @@ class CouponSend extends WxBaseShop {
      */
     private $type = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/send_coupon';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
@@ -85,15 +87,17 @@ class CouponSend extends WxBaseShop {
         $this->reqData['type'] = 'XML';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $couponStockId
      * @throws \Exception\Wx\WxException
      */
-    public function setCouponStockId(string $couponStockId){
-        if(ctype_digit($couponStockId) && (strlen($couponStockId) <= 64)){
+    public function setCouponStockId(string $couponStockId)
+    {
+        if (ctype_digit($couponStockId) && (strlen($couponStockId) <= 64)) {
             $this->reqData['coupon_stock_id'] = $couponStockId;
         } else {
             throw new WxException('代金券批次id不合法', ErrorCode::WX_PARAM_ERROR);
@@ -104,8 +108,9 @@ class CouponSend extends WxBaseShop {
      * @param string $partnerTradeNo
      * @throws \Exception\Wx\WxException
      */
-    public function setPartnerTradeNo(string $partnerTradeNo){
-        if(ctype_digit($partnerTradeNo)){
+    public function setPartnerTradeNo(string $partnerTradeNo)
+    {
+        if (ctype_digit($partnerTradeNo)) {
             $this->reqData['partner_trade_no'] = $this->reqData['mch_id'] . date('Ymd') . $partnerTradeNo;
         } else {
             throw new WxException('商户单据号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -116,7 +121,8 @@ class CouponSend extends WxBaseShop {
      * @param string $openid
      * @throws \Exception\Wx\WxException
      */
-    public function setOpenid(string $openid){
+    public function setOpenid(string $openid)
+    {
         if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
             $this->reqData['openid'] = $openid;
         } else {
@@ -128,8 +134,9 @@ class CouponSend extends WxBaseShop {
      * @param string $opUserId
      * @throws \Exception\Wx\WxException
      */
-    public function setOpUserId(string $opUserId){
-        if(ctype_digit($opUserId)){
+    public function setOpUserId(string $opUserId)
+    {
+        if (ctype_digit($opUserId)) {
             $this->reqData['op_user_id'] = $opUserId;
         } else {
             throw new WxException('操作员不合法', ErrorCode::WX_PARAM_ERROR);
@@ -139,8 +146,9 @@ class CouponSend extends WxBaseShop {
     /**
      * @param string $deviceInfo
      */
-    public function setDeviceInfo(string $deviceInfo){
-        if(strlen($deviceInfo) > 0){
+    public function setDeviceInfo(string $deviceInfo)
+    {
+        if (strlen($deviceInfo) > 0) {
             $this->reqData['device_info'] = $deviceInfo;
         }
     }
@@ -148,20 +156,22 @@ class CouponSend extends WxBaseShop {
     /**
      * @param string $version
      */
-    public function setVersion(string $version){
-        if(strlen($version) > 0){
+    public function setVersion(string $version)
+    {
+        if (strlen($version) > 0) {
             $this->reqData['version'] = $version;
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['coupon_stock_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['coupon_stock_id'])) {
             throw new WxException('代金券批次id不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['partner_trade_no'])){
+        if (!isset($this->reqData['partner_trade_no'])) {
             throw new WxException('商户单据号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['openid'])){
+        if (!isset($this->reqData['openid'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
@@ -190,7 +200,7 @@ class CouponSend extends WxBaseShop {
         if ($sendData['return_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } else if ($sendData['result_code'] == 'FAIL') {
+        } elseif ($sendData['result_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {

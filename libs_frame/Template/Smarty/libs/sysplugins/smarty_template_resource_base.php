@@ -63,7 +63,7 @@ abstract class Smarty_Template_Resource_Base
      *
      * @var array
      */
-    public $file_dependency = array();
+    public $file_dependency = [];
 
     /**
      * Content buffer
@@ -77,14 +77,14 @@ abstract class Smarty_Template_Resource_Base
      *
      * @var array
      */
-    public $required_plugins = array();
+    public $required_plugins = [];
 
     /**
      * Included subtemplates
      *
      * @var array
      */
-    public $includes = array();
+    public $includes = [];
 
     /**
      * Flag if this is a cache resource
@@ -130,8 +130,7 @@ abstract class Smarty_Template_Resource_Base
                 call_user_func($callback, $_template);
             }
             $_template->isRenderingCache = false;
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             $_template->isRenderingCache = false;
             while (ob_get_level() > $level) {
                 ob_end_clean();

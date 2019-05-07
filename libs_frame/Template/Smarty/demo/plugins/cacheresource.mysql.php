@@ -36,9 +36,8 @@ class Smarty_CacheResource_Mysql extends Smarty_CacheResource_Custom
     public function __construct()
     {
         try {
-            $this->db = new PDO("mysql:dbname=test;host=127.0.0.1", "smarty");
-        }
-        catch (PDOException $e) {
+            $this->db = new PDO('mysql:dbname=test;host=127.0.0.1', 'smarty');
+        } catch (PDOException $e) {
             throw new SmartyException('Mysql Resource failed: ' . $e->getMessage());
         }
         $this->fetch = $this->db->prepare('SELECT modified, content FROM output_cache WHERE id = :id');
@@ -61,7 +60,7 @@ class Smarty_CacheResource_Mysql extends Smarty_CacheResource_Custom
      */
     protected function fetch($id, $name, $cache_id, $compile_id, &$content, &$mtime)
     {
-        $this->fetch->execute(array('id' => $id));
+        $this->fetch->execute(['id' => $id]);
         $row = $this->fetch->fetch();
         $this->fetch->closeCursor();
         if ($row) {
@@ -87,7 +86,7 @@ class Smarty_CacheResource_Mysql extends Smarty_CacheResource_Custom
      */
     protected function fetchTimestamp($id, $name, $cache_id, $compile_id)
     {
-        $this->fetchTimestamp->execute(array('id' => $id));
+        $this->fetchTimestamp->execute(['id' => $id]);
         $mtime = strtotime($this->fetchTimestamp->fetchColumn());
         $this->fetchTimestamp->closeCursor();
 
@@ -108,8 +107,8 @@ class Smarty_CacheResource_Mysql extends Smarty_CacheResource_Custom
      */
     protected function save($id, $name, $cache_id, $compile_id, $exp_time, $content)
     {
-        $this->save->execute(array('id' => $id, 'name' => $name, 'cache_id' => $cache_id, 'compile_id' => $compile_id,
-                                   'content' => $content,));
+        $this->save->execute(['id' => $id, 'name' => $name, 'cache_id' => $cache_id, 'compile_id' => $compile_id,
+                                   'content' => $content,]);
 
         return !!$this->save->rowCount();
     }
@@ -134,7 +133,7 @@ class Smarty_CacheResource_Mysql extends Smarty_CacheResource_Custom
             return - 1;
         }
         // build the filter
-        $where = array();
+        $where = [];
         // equal test name
         if ($name !== null) {
             $where[] = 'name = ' . $this->db->quote($name);

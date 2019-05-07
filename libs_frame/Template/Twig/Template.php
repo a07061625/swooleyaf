@@ -26,13 +26,13 @@ abstract class Twig_Template implements Twig_TemplateInterface
     /**
      * @internal
      */
-    protected static $cache = array();
+    protected static $cache = [];
 
     protected $parent;
-    protected $parents = array();
+    protected $parents = [];
     protected $env;
-    protected $blocks = array();
-    protected $traits = array();
+    protected $blocks = [];
+    protected $traits = [];
 
     public function __construct(Twig_Environment $env)
     {
@@ -63,7 +63,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
      */
     public function getDebugInfo()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -75,7 +75,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
      */
     public function getSource()
     {
-        @trigger_error('The '.__METHOD__.' method is deprecated since version 1.27 and will be removed in 2.0. Use getSourceContext() instead.', E_USER_DEPRECATED);
+        @trigger_error('The ' . __METHOD__ . ' method is deprecated since version 1.27 and will be removed in 2.0. Use getSourceContext() instead.', E_USER_DEPRECATED);
 
         return '';
     }
@@ -95,7 +95,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
      */
     public function getEnvironment()
     {
-        @trigger_error('The '.__METHOD__.' method is deprecated since version 1.20 and will be removed in 2.0.', E_USER_DEPRECATED);
+        @trigger_error('The ' . __METHOD__ . ' method is deprecated since version 1.20 and will be removed in 2.0.', E_USER_DEPRECATED);
 
         return $this->env;
     }
@@ -142,11 +142,6 @@ abstract class Twig_Template implements Twig_TemplateInterface
         return $this->parents[$parent];
     }
 
-    protected function doGetParent(array $context)
-    {
-        return false;
-    }
-
     public function isTraitable()
     {
         return true;
@@ -164,7 +159,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
      *
      * @internal
      */
-    public function displayParentBlock($name, array $context, array $blocks = array())
+    public function displayParentBlock($name, array $context, array $blocks = [])
     {
         $name = (string) $name;
 
@@ -190,7 +185,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
      *
      * @internal
      */
-    public function displayBlock($name, array $context, array $blocks = array(), $useBlocks = true)
+    public function displayBlock($name, array $context, array $blocks = [], $useBlocks = true)
     {
         $name = (string) $name;
 
@@ -250,7 +245,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
      *
      * @internal
      */
-    public function renderParentBlock($name, array $context, array $blocks = array())
+    public function renderParentBlock($name, array $context, array $blocks = [])
     {
         ob_start();
         $this->displayParentBlock($name, $context, $blocks);
@@ -273,7 +268,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
      *
      * @internal
      */
-    public function renderBlock($name, array $context, array $blocks = array(), $useBlocks = true)
+    public function renderBlock($name, array $context, array $blocks = [], $useBlocks = true)
     {
         ob_start();
         $this->displayBlock($name, $context, $blocks, $useBlocks);
@@ -295,10 +290,10 @@ abstract class Twig_Template implements Twig_TemplateInterface
      *
      * @internal
      */
-    public function hasBlock($name, array $context = null, array $blocks = array())
+    public function hasBlock($name, array $context = null, array $blocks = [])
     {
         if (null === $context) {
-            @trigger_error('The '.__METHOD__.' method is internal and should never be called; calling it directly is deprecated since version 1.28 and won\'t be possible anymore in 2.0.', E_USER_DEPRECATED);
+            @trigger_error('The ' . __METHOD__ . ' method is internal and should never be called; calling it directly is deprecated since version 1.28 and won\'t be possible anymore in 2.0.', E_USER_DEPRECATED);
 
             return isset($this->blocks[(string) $name]);
         }
@@ -331,10 +326,10 @@ abstract class Twig_Template implements Twig_TemplateInterface
      *
      * @internal
      */
-    public function getBlockNames(array $context = null, array $blocks = array())
+    public function getBlockNames(array $context = null, array $blocks = [])
     {
         if (null === $context) {
-            @trigger_error('The '.__METHOD__.' method is internal and should never be called; calling it directly is deprecated since version 1.28 and won\'t be possible anymore in 2.0.', E_USER_DEPRECATED);
+            @trigger_error('The ' . __METHOD__ . ' method is internal and should never be called; calling it directly is deprecated since version 1.28 and won\'t be possible anymore in 2.0.', E_USER_DEPRECATED);
 
             return array_keys($this->blocks);
         }
@@ -346,6 +341,54 @@ abstract class Twig_Template implements Twig_TemplateInterface
         }
 
         return array_unique($names);
+    }
+
+    /**
+     * Returns all blocks.
+     *
+     * This method is for internal use only and should never be called
+     * directly.
+     *
+     * @return array An array of blocks
+     *
+     * @internal
+     */
+    public function getBlocks()
+    {
+        return $this->blocks;
+    }
+
+    public function display(array $context, array $blocks = [])
+    {
+        $this->displayWithErrorHandling($this->env->mergeGlobals($context), array_merge($this->blocks, $blocks));
+    }
+
+    public function render(array $context)
+    {
+        $level = ob_get_level();
+        ob_start();
+        try {
+            $this->display($context);
+        } catch (Exception $e) {
+            while (ob_get_level() > $level) {
+                ob_end_clean();
+            }
+
+            throw $e;
+        } catch (Throwable $e) {
+            while (ob_get_level() > $level) {
+                ob_end_clean();
+            }
+
+            throw $e;
+        }
+
+        return ob_get_clean();
+    }
+
+    protected function doGetParent(array $context)
+    {
+        return false;
     }
 
     protected function loadTemplate($template, $templateName = null, $line = null, $index = null)
@@ -383,50 +426,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
         }
     }
 
-    /**
-     * Returns all blocks.
-     *
-     * This method is for internal use only and should never be called
-     * directly.
-     *
-     * @return array An array of blocks
-     *
-     * @internal
-     */
-    public function getBlocks()
-    {
-        return $this->blocks;
-    }
-
-    public function display(array $context, array $blocks = array())
-    {
-        $this->displayWithErrorHandling($this->env->mergeGlobals($context), array_merge($this->blocks, $blocks));
-    }
-
-    public function render(array $context)
-    {
-        $level = ob_get_level();
-        ob_start();
-        try {
-            $this->display($context);
-        } catch (Exception $e) {
-            while (ob_get_level() > $level) {
-                ob_end_clean();
-            }
-
-            throw $e;
-        } catch (Throwable $e) {
-            while (ob_get_level() > $level) {
-                ob_end_clean();
-            }
-
-            throw $e;
-        }
-
-        return ob_get_clean();
-    }
-
-    protected function displayWithErrorHandling(array $context, array $blocks = array())
+    protected function displayWithErrorHandling(array $context, array $blocks = [])
     {
         try {
             $this->doDisplay($context, $blocks);
@@ -454,7 +454,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
      * @param array $context An array of parameters to pass to the template
      * @param array $blocks  An array of blocks to pass to the template
      */
-    abstract protected function doDisplay(array $context, array $blocks = array());
+    abstract protected function doDisplay(array $context, array $blocks = []);
 
     /**
      * Returns a variable from the context.
@@ -506,7 +506,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
      *
      * @internal
      */
-    protected function getAttribute($object, $item, array $arguments = array(), $type = self::ANY_CALL, $isDefinedTest = false, $ignoreStrictCheck = false)
+    protected function getAttribute($object, $item, array $arguments = [], $type = self::ANY_CALL, $isDefinedTest = false, $ignoreStrictCheck = false)
     {
         // array
         if (self::METHOD_CALL !== $type) {
@@ -597,7 +597,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
             // get_class_methods returns all methods accessible in the scope, but we only want public ones to be accessible in templates
             if ($object instanceof self) {
                 $ref = new ReflectionClass($class);
-                $methods = array();
+                $methods = [];
 
                 foreach ($ref->getMethods(ReflectionMethod::IS_PUBLIC) as $refMethod) {
                     // Accessing the environment from templates is forbidden to prevent untrusted changes to the environment
@@ -611,7 +611,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
             // sort values to have consistent behavior, so that "get" methods win precedence over "is" methods
             sort($methods);
 
-            $cache = array();
+            $cache = [];
 
             foreach ($methods as $method) {
                 $cache[$method] = $method;
@@ -671,7 +671,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
             if (!$arguments) {
                 $ret = $object->$method();
             } else {
-                $ret = call_user_func_array(array($object, $method), $arguments);
+                $ret = call_user_func_array([$object, $method], $arguments);
             }
         } catch (BadMethodCallException $e) {
             if ($call && ($ignoreStrictCheck || !$this->env->isStrictVariables())) {

@@ -19,7 +19,8 @@ use Wx\WxUtilOpenBase;
  * 第三方平台创建小程序
  * @package Wx\Open
  */
-class WeappFastRegister extends WxBaseOpen {
+class WeappFastRegister extends WxBaseOpen
+{
     /**
      * 企业名
      * @var string
@@ -51,20 +52,23 @@ class WeappFastRegister extends WxBaseOpen {
      */
     private $component_phone = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/component/fastregisterweapp?action=create&component_access_token=';
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $name
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setName(string $name){
-        if(strlen($name) > 0){
+    public function setName(string $name)
+    {
+        if (strlen($name) > 0) {
             $this->reqData['name'] = $name;
         } else {
             throw new WxOpenException('企业名不合法', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -75,8 +79,9 @@ class WeappFastRegister extends WxBaseOpen {
      * @param string $code
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setCode(string $code){
-        if(strlen($code) > 0){
+    public function setCode(string $code)
+    {
+        if (strlen($code) > 0) {
             $this->reqData['code'] = $code;
         } else {
             throw new WxOpenException('企业代码不合法', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -87,8 +92,9 @@ class WeappFastRegister extends WxBaseOpen {
      * @param int $codeType
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setCodeType(int $codeType){
-        if (in_array($codeType, [1, 2, 3])) {
+    public function setCodeType(int $codeType)
+    {
+        if (in_array($codeType, [1, 2, 3], true)) {
             $this->reqData['code_type'] = $codeType;
         } else {
             throw new WxOpenException('企业代码类型不合法', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -99,8 +105,9 @@ class WeappFastRegister extends WxBaseOpen {
      * @param string $legalPersonaWechat
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setLegalPersonaWechat(string $legalPersonaWechat){
-        if(strlen($legalPersonaWechat) > 0){
+    public function setLegalPersonaWechat(string $legalPersonaWechat)
+    {
+        if (strlen($legalPersonaWechat) > 0) {
             $this->reqData['legal_persona_wechat'] = $legalPersonaWechat;
         } else {
             throw new WxOpenException('法人微信号不合法', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -111,8 +118,9 @@ class WeappFastRegister extends WxBaseOpen {
      * @param string $legalPersonaName
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setLegalPersonaName(string $legalPersonaName){
-        if(strlen($legalPersonaName) > 0){
+    public function setLegalPersonaName(string $legalPersonaName)
+    {
+        if (strlen($legalPersonaName) > 0) {
             $this->reqData['legal_persona_name'] = $legalPersonaName;
         } else {
             throw new WxOpenException('法人姓名不合法', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -123,31 +131,33 @@ class WeappFastRegister extends WxBaseOpen {
      * @param string $componentPhone
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setComponentPhone(string $componentPhone){
-        if(strlen($componentPhone) > 0){
+    public function setComponentPhone(string $componentPhone)
+    {
+        if (strlen($componentPhone) > 0) {
             $this->reqData['component_phone'] = $componentPhone;
         } else {
             throw new WxOpenException('第三方联系电话不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['name'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['name'])) {
             throw new WxOpenException('企业名不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
-        if(!isset($this->reqData['code'])){
+        if (!isset($this->reqData['code'])) {
             throw new WxOpenException('企业代码不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
-        if(!isset($this->reqData['code_type'])){
+        if (!isset($this->reqData['code_type'])) {
             throw new WxOpenException('企业代码类型不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
-        if(!isset($this->reqData['legal_persona_wechat'])){
+        if (!isset($this->reqData['legal_persona_wechat'])) {
             throw new WxOpenException('法人微信号不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
-        if(!isset($this->reqData['legal_persona_name'])){
+        if (!isset($this->reqData['legal_persona_name'])) {
             throw new WxOpenException('法人姓名不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
-        if(!isset($this->reqData['component_phone'])){
+        if (!isset($this->reqData['component_phone'])) {
             throw new WxOpenException('第三方联系电话不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 

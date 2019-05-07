@@ -47,27 +47,6 @@ class Smarty_Internal_Resource_Eval extends Smarty_Resource_Recompiled
     }
 
     /**
-     * decode base64 and urlencode
-     *
-     * @param  string $string template_resource to decode
-     *
-     * @return string decoded template_resource
-     */
-    protected function decode($string)
-    {
-        // decode if specified
-        if (($pos = strpos($string, ':')) !== false) {
-            if (!strncmp($string, 'base64', 6)) {
-                return base64_decode(substr($string, 7));
-            } elseif (!strncmp($string, 'urlencode', 9)) {
-                return urldecode(substr($string, 10));
-            }
-        }
-
-        return $string;
-    }
-
-    /**
      * modify resource_name according to resource handlers specifications
      *
      * @param  Smarty  $smarty        Smarty instance
@@ -91,5 +70,26 @@ class Smarty_Internal_Resource_Eval extends Smarty_Resource_Recompiled
     public function getBasename(Smarty_Template_Source $source)
     {
         return '';
+    }
+
+    /**
+     * decode base64 and urlencode
+     *
+     * @param  string $string template_resource to decode
+     *
+     * @return string decoded template_resource
+     */
+    protected function decode($string)
+    {
+        // decode if specified
+        if (($pos = strpos($string, ':')) !== false) {
+            if (!strncmp($string, 'base64', 6)) {
+                return base64_decode(substr($string, 7), true);
+            } elseif (!strncmp($string, 'urlencode', 9)) {
+                return urldecode(substr($string, 10));
+            }
+        }
+
+        return $string;
     }
 }

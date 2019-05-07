@@ -16,7 +16,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class ShortUrl extends WxBaseShop {
+class ShortUrl extends WxBaseShop
+{
     /**
      * 商户号
      * @var string
@@ -38,7 +39,8 @@ class ShortUrl extends WxBaseShop {
      */
     private $sign_type = '';
 
-    public function __construct(string $appId) {
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/tools/shorturl';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
@@ -48,14 +50,16 @@ class ShortUrl extends WxBaseShop {
         $this->reqData['sign_type'] = 'MD5';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $longUrl
      * @throws \Exception\Wx\WxException
      */
-    public function setLongUrl(string $longUrl) {
+    public function setLongUrl(string $longUrl)
+    {
         if (preg_match('/^weixin/', $longUrl) > 0) {
             $this->reqData['long_url'] = $longUrl;
         } else {
@@ -63,8 +67,9 @@ class ShortUrl extends WxBaseShop {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['long_url'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['long_url'])) {
             throw  new WxException('长链接不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -76,7 +81,7 @@ class ShortUrl extends WxBaseShop {
         if ($sendData['return_code'] == 'FAIL') {
             Log::error($sendData['return_msg'], ErrorCode::WX_PARAM_ERROR);
             $url = $this->reqData['long_url'];
-        } else if ($sendData['result_code'] == 'FAIL') {
+        } elseif ($sendData['result_code'] == 'FAIL') {
             $error = Tool::getArrayVal(WxUtilBase::$errorsShortUrl, $sendData['err_code'], $sendData['err_code_des']);
             Log::error($error, ErrorCode::WX_PARAM_ERROR);
             $url = $this->reqData['long_url'];

@@ -13,7 +13,8 @@ use Exception\Wx\WxException;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-final class WxUtilShop extends WxUtilBaseAlone {
+final class WxUtilShop extends WxUtilBaseAlone
+{
     use SimpleTrait;
 
     /**
@@ -23,28 +24,29 @@ final class WxUtilShop extends WxUtilBaseAlone {
      * @param string $signType
      * @return string
      */
-    public static function createSign(array $data,string $appId,string $signType='md5') {
+    public static function createSign(array $data, string $appId, string $signType = 'md5')
+    {
         //签名步骤一：按字典序排序参数
         ksort($data);
         //签名步骤二：格式化后加入KEY
         $needStr1 = '';
         foreach ($data as $key => $value) {
-            if($key == 'sign'){
+            if ($key == 'sign') {
                 continue;
             }
-            if((!is_string($value)) && !is_numeric($value)){
+            if ((!is_string($value)) && !is_numeric($value)) {
                 continue;
             }
-            if(strlen($value) == 0){
+            if (strlen($value) == 0) {
                 continue;
             }
             $needStr1 .= $key . '=' . $value . '&';
         }
 
         $payKey = WxConfigSingleton::getInstance()->getShopConfig($appId)->getPayKey();
-        $needStr1 .= 'key='. $payKey;
+        $needStr1 .= 'key=' . $payKey;
         //签名步骤三：加密
-        if($signType == 'md5'){
+        if ($signType == 'md5') {
             $needStr2 = md5($needStr1);
         } else {
             $needStr2 = hash_hmac('sha256', $needStr1, $payKey);
@@ -59,7 +61,8 @@ final class WxUtilShop extends WxUtilBaseAlone {
      * @param string $appId
      * @return bool
      */
-    public static function checkSign(array $data,string $appId) : bool {
+    public static function checkSign(array $data, string $appId) : bool
+    {
         if (isset($data['sign']) && is_string($data['sign'])) {
             $nowSign = self::createSign($data, $appId);
             return $nowSign === $data['sign'];
@@ -73,19 +76,20 @@ final class WxUtilShop extends WxUtilBaseAlone {
      * @param array $data
      * @return array
      */
-    public static function handleRefundNotify(array $data) : array {
+    public static function handleRefundNotify(array $data) : array
+    {
         $resArr = [
             'code' => 0
         ];
 
-        if($data['return_code'] == 'FAIL'){
+        if ($data['return_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $data['return_msg'];
             return $resArr;
         }
 
         $decryptData = base64_decode($data['req_info'], true);
-        if(is_bool($decryptData)){
+        if (is_bool($decryptData)) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = '解密数据失败';
             return $resArr;
@@ -94,7 +98,7 @@ final class WxUtilShop extends WxUtilBaseAlone {
         $password = md5(WxConfigSingleton::getInstance()->getShopConfig($data['appid'])->getPayKey());
         $decryptMsg = openssl_decrypt($decryptData, 'aes-256-ecb', $password, OPENSSL_RAW_DATA);
         $refundData = Tool::xmlToArray($decryptMsg);
-        if(isset($refundData['refund_id'])){
+        if (isset($refundData['refund_id'])) {
             $resArr['data'] = $refundData;
             $resArr['data']['appid'] = $data['appid'];
             $resArr['data']['mch_id'] = $data['mch_id'];
@@ -113,8 +117,9 @@ final class WxUtilShop extends WxUtilBaseAlone {
      * @return array
      * @throws \Exception\Wx\WxException
      */
-    public static function encryptRsaCompanyBank(string $appId,array $data) : array {
-        if(empty($data)){
+    public static function encryptRsaCompanyBank(string $appId, array $data) : array
+    {
+        if (empty($data)) {
             throw new WxException('加密数据不能为空', ErrorCode::WX_POST_ERROR);
         }
 
@@ -126,7 +131,7 @@ final class WxUtilShop extends WxUtilBaseAlone {
         $publicKey = openssl_pkey_get_public($keyContent);
         $encryptData = [];
         foreach ($data as $key => $val) {
-            if(is_string($val) && (strlen($val) > 0)){
+            if (is_string($val) && (strlen($val) > 0)) {
                 $encryptStr = '';
                 openssl_public_encrypt($val, $encryptStr, $publicKey, OPENSSL_PKCS1_OAEP_PADDING);
                 $encryptData[$key] = $encryptStr;

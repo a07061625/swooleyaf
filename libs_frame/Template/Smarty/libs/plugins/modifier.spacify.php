@@ -4,6 +4,8 @@
  *
  * @package    Smarty
  * @subpackage PluginsModifier
+ * @param mixed $string
+ * @param mixed $spacify_char
  */
 
 /**

@@ -22,7 +22,7 @@ class Smarty_Internal_Compile_Private_Print_Expression extends Smarty_Internal_C
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $optional_attributes = array('assign');
+    public $optional_attributes = ['assign'];
 
     /**
      * Attribute definition: Overwrites base class.
@@ -30,7 +30,7 @@ class Smarty_Internal_Compile_Private_Print_Expression extends Smarty_Internal_C
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $option_flags = array('nocache', 'nofilter');
+    public $option_flags = ['nocache', 'nofilter'];
 
     /**
      * Compiles code for generating output from any expression
@@ -49,9 +49,12 @@ class Smarty_Internal_Compile_Private_Print_Expression extends Smarty_Internal_C
         $output = $parameter[ 'value' ];
         // tag modifier
         if (!empty($parameter[ 'modifierlist' ])) {
-            $output = $compiler->compileTag('private_modifier', array(),
-                                            array('modifierlist' => $parameter[ 'modifierlist' ],
-                                                  'value' => $output));
+            $output = $compiler->compileTag(
+                'private_modifier',
+                [],
+                                            ['modifierlist' => $parameter[ 'modifierlist' ],
+                                                  'value' => $output]
+            );
         }
         if (isset($_attr[ 'assign' ])) {
             // assign output to variable
@@ -62,10 +65,13 @@ class Smarty_Internal_Compile_Private_Print_Expression extends Smarty_Internal_C
                 // default modifier
                 if (!empty($compiler->smarty->default_modifiers)) {
                     if (empty($compiler->default_modifier_list)) {
-                        $modifierlist = array();
+                        $modifierlist = [];
                         foreach ($compiler->smarty->default_modifiers as $key => $single_default_modifier) {
-                            preg_match_all('/(\'[^\'\\\\]*(?:\\\\.[^\'\\\\]*)*\'|"[^"\\\\]*(?:\\\\.[^"\\\\]*)*"|:|[^:]+)/',
-                                           $single_default_modifier, $mod_array);
+                            preg_match_all(
+                                '/(\'[^\'\\\\]*(?:\\\\.[^\'\\\\]*)*\'|"[^"\\\\]*(?:\\\\.[^"\\\\]*)*"|:|[^:]+)/',
+                                           $single_default_modifier,
+                                $mod_array
+                            );
                             for ($i = 0, $count = count($mod_array[ 0 ]); $i < $count; $i ++) {
                                 if ($mod_array[ 0 ][ $i ] != ':') {
                                     $modifierlist[ $key ][] = $mod_array[ 0 ][ $i ];
@@ -74,9 +80,12 @@ class Smarty_Internal_Compile_Private_Print_Expression extends Smarty_Internal_C
                         }
                         $compiler->default_modifier_list = $modifierlist;
                     }
-                    $output = $compiler->compileTag('private_modifier', array(),
-                                                    array('modifierlist' => $compiler->default_modifier_list,
-                                                          'value' => $output));
+                    $output = $compiler->compileTag(
+                        'private_modifier',
+                        [],
+                                                    ['modifierlist' => $compiler->default_modifier_list,
+                                                          'value' => $output]
+                    );
                 }
                 // autoescape html
                 if ($compiler->template->smarty->escape_html) {
@@ -98,8 +107,7 @@ class Smarty_Internal_Compile_Private_Print_Expression extends Smarty_Internal_C
                 }
                 // auto loaded filters
                 if (isset($compiler->smarty->autoload_filters[ Smarty::FILTER_VARIABLE ])) {
-                    foreach ((array) $compiler->template->smarty->autoload_filters[ Smarty::FILTER_VARIABLE ] as $name)
-                    {
+                    foreach ((array) $compiler->template->smarty->autoload_filters[ Smarty::FILTER_VARIABLE ] as $name) {
                         $result = $this->compile_output_filter($compiler, $name, $output);
                         if ($result !== false) {
                             $output = $result;
@@ -115,8 +123,11 @@ class Smarty_Internal_Compile_Private_Print_Expression extends Smarty_Internal_C
                     ) {
                         $output = $result;
                     } else {
-                        $output = $compiler->compileTag('private_modifier', array(),
-                                                        array('modifierlist' => array($filter), 'value' => $output));
+                        $output = $compiler->compileTag(
+                            'private_modifier',
+                            [],
+                                                        ['modifierlist' => [$filter], 'value' => $output]
+                        );
                     }
                 }
             }

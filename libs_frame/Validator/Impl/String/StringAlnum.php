@@ -11,16 +11,20 @@ use Constant\Project;
 use Validator\BaseValidator;
 use Validator\ValidatorService;
 
-class StringAlnum extends BaseValidator implements ValidatorService {
-    public function __construct() {
+class StringAlnum extends BaseValidator implements ValidatorService
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->validatorType = Project::VALIDATOR_STRING_TYPE_ALNUM;
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    public function validator($data, $compareData) : string {
+    public function validator($data, $compareData) : string
+    {
         if ($data === null) {
             return '';
         }
@@ -28,9 +32,9 @@ class StringAlnum extends BaseValidator implements ValidatorService {
         $trueData = $this->verifyStringData($data);
         if ($trueData === null) {
             return '必须是字符串';
-        } else if((strlen($trueData) == 0) && !$compareData){
+        } elseif ((strlen($trueData) == 0) && !$compareData) {
             return '';
-        } else if(ctype_alnum($trueData)){
+        } elseif (ctype_alnum($trueData)) {
             return '';
         } else {
             return '格式必须都是数字和字母';

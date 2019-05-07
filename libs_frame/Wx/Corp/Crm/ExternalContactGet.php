@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 获取外部联系人详情
  * @package Wx\Corp\Crm
  */
-class ExternalContactGet extends WxBaseCorp {
+class ExternalContactGet extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -27,21 +28,24 @@ class ExternalContactGet extends WxBaseCorp {
      */
     private $external_userid = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/crm/get_external_contact';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $externalUserId
      * @throws \Exception\Wx\WxException
      */
-    public function setExternalUserId(string $externalUserId){
+    public function setExternalUserId(string $externalUserId)
+    {
         if (ctype_alnum($externalUserId)) {
             $this->reqData['external_userid'] = $externalUserId;
         } else {
@@ -49,8 +53,9 @@ class ExternalContactGet extends WxBaseCorp {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['external_userid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['external_userid'])) {
             throw new WxException('外部联系人用户ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -62,7 +67,7 @@ class ExternalContactGet extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

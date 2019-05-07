@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 全量覆盖成员
  * @package Wx\Corp\Batch
  */
-class UserReplace extends WxBaseCorp {
+class UserReplace extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -37,7 +38,8 @@ class UserReplace extends WxBaseCorp {
      */
     private $callback = [];
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/batch/replaceuser?access_token=';
         $this->_corpId = $corpId;
@@ -45,15 +47,17 @@ class UserReplace extends WxBaseCorp {
         $this->reqData['to_invite'] = true;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $mediaId
      * @throws \Exception\Wx\WxException
      */
-    public function setMediaId(string $mediaId){
-        if(strlen($mediaId) > 0){
+    public function setMediaId(string $mediaId)
+    {
+        if (strlen($mediaId) > 0) {
             $this->reqData['media_id'] = $mediaId;
         } else {
             throw new WxException('媒体ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -63,7 +67,8 @@ class UserReplace extends WxBaseCorp {
     /**
      * @param bool $inviteFlag
      */
-    public function setInviteFlag(bool $inviteFlag){
+    public function setInviteFlag(bool $inviteFlag)
+    {
         $this->reqData['to_invite'] = $inviteFlag;
     }
 
@@ -71,16 +76,18 @@ class UserReplace extends WxBaseCorp {
      * @param array $callback
      * @throws \Exception\Wx\WxException
      */
-    public function setCallback(array $callback){
-        if(empty($callback)){
+    public function setCallback(array $callback)
+    {
+        if (empty($callback)) {
             throw new WxException('回调信息不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
         $this->reqData['callback'] = $callback;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['media_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['media_id'])) {
             throw new WxException('媒体ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -92,7 +99,7 @@ class UserReplace extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

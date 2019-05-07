@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Exception\Wx\WxException;
 use Tool\Tool;
 
-class WxConfigAccount {
+class WxConfigAccount
+{
     /**
      * 客户端IP
      * @var string
@@ -90,16 +91,24 @@ class WxConfigAccount {
      */
     private $expireTime = 0;
 
-    public function __construct() {
+    public function __construct()
+    {
     }
 
-    private function __clone() {
+    private function __clone()
+    {
+    }
+
+    public function __toString()
+    {
+        return Tool::jsonEncode($this->getConfigs(), JSON_UNESCAPED_UNICODE);
     }
 
     /**
      * @return string
      */
-    public function getClientIp(): string {
+    public function getClientIp(): string
+    {
         return $this->clientIp;
     }
 
@@ -107,8 +116,9 @@ class WxConfigAccount {
      * @param string $clientIp
      * @throws \Exception\WX\WxException
      */
-    public function setClientIp(string $clientIp) {
-        if(preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $clientIp) > 0){
+    public function setClientIp(string $clientIp)
+    {
+        if (preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $clientIp) > 0) {
             $this->clientIp = $clientIp;
         } else {
             throw new WxException('客户端IP不合法', ErrorCode::WX_PARAM_ERROR);
@@ -118,7 +128,8 @@ class WxConfigAccount {
     /**
      * @return string
      */
-    public function getAppId(): string {
+    public function getAppId(): string
+    {
         return $this->appId;
     }
 
@@ -126,8 +137,9 @@ class WxConfigAccount {
      * @param string $appId
      * @throws \Exception\WX\WxException
      */
-    public function setAppId(string $appId) {
-        if(ctype_alnum($appId) && (strlen($appId) == 18)){
+    public function setAppId(string $appId)
+    {
+        if (ctype_alnum($appId) && (strlen($appId) == 18)) {
             $this->appId = $appId;
         } else {
             throw new WxException('app id不合法', ErrorCode::WX_PARAM_ERROR);
@@ -137,7 +149,8 @@ class WxConfigAccount {
     /**
      * @return string
      */
-    public function getSecret(): string {
+    public function getSecret(): string
+    {
         return $this->secret;
     }
 
@@ -145,8 +158,9 @@ class WxConfigAccount {
      * @param string $secret
      * @throws \Exception\WX\WxException
      */
-    public function setSecret(string $secret) {
-        if(ctype_alnum($secret) && (strlen($secret) == 32)){
+    public function setSecret(string $secret)
+    {
+        if (ctype_alnum($secret) && (strlen($secret) == 32)) {
             $this->secret = $secret;
         } else {
             throw new WxException('secret不合法', ErrorCode::WX_PARAM_ERROR);
@@ -156,7 +170,8 @@ class WxConfigAccount {
     /**
      * @return string
      */
-    public function getPayMchId(): string {
+    public function getPayMchId(): string
+    {
         return $this->payMchId;
     }
 
@@ -164,8 +179,9 @@ class WxConfigAccount {
      * @param string $payMchId
      * @throws \Exception\WX\WxException
      */
-    public function setPayMchId(string $payMchId) {
-        if(ctype_digit($payMchId)){
+    public function setPayMchId(string $payMchId)
+    {
+        if (ctype_digit($payMchId)) {
             $this->payMchId = $payMchId;
         } else {
             throw new WxException('商户号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -175,7 +191,8 @@ class WxConfigAccount {
     /**
      * @return string
      */
-    public function getPayKey(): string {
+    public function getPayKey(): string
+    {
         return $this->payKey;
     }
 
@@ -183,8 +200,9 @@ class WxConfigAccount {
      * @param string $payKey
      * @throws \Exception\WX\WxException
      */
-    public function setPayKey(string $payKey) {
-        if(ctype_alnum($payKey) && (strlen($payKey) == 32)){
+    public function setPayKey(string $payKey)
+    {
+        if (ctype_alnum($payKey) && (strlen($payKey) == 32)) {
             $this->payKey = $payKey;
         } else {
             throw new WxException('支付密钥不合法', ErrorCode::WX_PARAM_ERROR);
@@ -194,7 +212,8 @@ class WxConfigAccount {
     /**
      * @return string
      */
-    public function getPayNotifyUrl(): string {
+    public function getPayNotifyUrl(): string
+    {
         return $this->payNotifyUrl;
     }
 
@@ -202,8 +221,9 @@ class WxConfigAccount {
      * @param string $payNotifyUrl
      * @throws \Exception\WX\WxException
      */
-    public function setPayNotifyUrl(string $payNotifyUrl) {
-        if(preg_match('/^(http|https)\:\/\/\S+$/', $payNotifyUrl) > 0){
+    public function setPayNotifyUrl(string $payNotifyUrl)
+    {
+        if (preg_match('/^(http|https)\:\/\/\S+$/', $payNotifyUrl) > 0) {
             $this->payNotifyUrl = $payNotifyUrl;
         } else {
             throw new WxException('支付异步消息通知URL不合法', ErrorCode::WX_PARAM_ERROR);
@@ -213,7 +233,8 @@ class WxConfigAccount {
     /**
      * @return string
      */
-    public function getPayAuthUrl(): string {
+    public function getPayAuthUrl(): string
+    {
         return $this->payAuthUrl;
     }
 
@@ -221,8 +242,9 @@ class WxConfigAccount {
      * @param string $payAuthUrl
      * @throws \Exception\WX\WxException
      */
-    public function setPayAuthUrl(string $payAuthUrl) {
-        if(preg_match('/^(http|https)\:\/\/\S+$/', $payAuthUrl) > 0){
+    public function setPayAuthUrl(string $payAuthUrl)
+    {
+        if (preg_match('/^(http|https)\:\/\/\S+$/', $payAuthUrl) > 0) {
             $this->payAuthUrl = $payAuthUrl;
         } else {
             throw new WxException('支付授权URL不合法', ErrorCode::WX_PARAM_ERROR);
@@ -232,49 +254,56 @@ class WxConfigAccount {
     /**
      * @return string
      */
-    public function getSslCert(): string {
+    public function getSslCert(): string
+    {
         return $this->sslCert;
     }
 
     /**
      * @param string $sslCert
      */
-    public function setSslCert(string $sslCert) {
+    public function setSslCert(string $sslCert)
+    {
         $this->sslCert = $sslCert;
     }
 
     /**
      * @return string
      */
-    public function getSslKey(): string {
+    public function getSslKey(): string
+    {
         return $this->sslKey;
     }
 
     /**
      * @param string $sslKey
      */
-    public function setSslKey(string $sslKey) {
+    public function setSslKey(string $sslKey)
+    {
         $this->sslKey = $sslKey;
     }
 
     /**
      * @return string
      */
-    public function getSslCompanyBank(): string {
+    public function getSslCompanyBank(): string
+    {
         return $this->sslCompanyBank;
     }
 
     /**
      * @param string $sslCompanyBank
      */
-    public function setSslCompanyBank(string $sslCompanyBank) {
+    public function setSslCompanyBank(string $sslCompanyBank)
+    {
         $this->sslCompanyBank = $sslCompanyBank;
     }
 
     /**
      * @return array
      */
-    public function getTemplates() : array {
+    public function getTemplates() : array
+    {
         return $this->templates;
     }
 
@@ -282,54 +311,57 @@ class WxConfigAccount {
      * @param string $templateTag 模板标识
      * @return string
      */
-    public function getTemplateId(string $templateTag) : string {
+    public function getTemplateId(string $templateTag) : string
+    {
         return $this->templates[$templateTag] ?? '';
     }
 
     /**
      * @param array $templates
      */
-    public function setTemplates(array $templates) {
+    public function setTemplates(array $templates)
+    {
         $this->templates = $templates;
     }
 
     /**
      * @return bool
      */
-    public function isValid() : bool {
+    public function isValid() : bool
+    {
         return $this->valid;
     }
 
     /**
      * @param bool $valid
      */
-    public function setValid(bool $valid){
+    public function setValid(bool $valid)
+    {
         $this->valid = $valid;
     }
 
     /**
      * @return int
      */
-    public function getExpireTime() : int {
+    public function getExpireTime() : int
+    {
         return $this->expireTime;
     }
 
     /**
      * @param int $expireTime
      */
-    public function setExpireTime(int $expireTime){
+    public function setExpireTime(int $expireTime)
+    {
         $this->expireTime = $expireTime;
-    }
-
-    public function __toString() {
-        return Tool::jsonEncode($this->getConfigs(), JSON_UNESCAPED_UNICODE);
     }
 
     /**
      * 获取配置数组
      * @return array
      */
-    public function getConfigs() : array {
+    public function getConfigs() : array
+    {
         return [
             'appid' => $this->appId,
             'secret' => $this->secret,

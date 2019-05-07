@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class MenuConditionalAdd extends WxBaseShop {
+class MenuConditionalAdd extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -31,21 +32,24 @@ class MenuConditionalAdd extends WxBaseShop {
      */
     private $matchrule = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/menu/addconditional?access_token=';
         $this->appid = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param array $button
      * @throws \Exception\Wx\WxException
      */
-    public function addButton(array $button){
-        if(count($this->button) >= 3){
+    public function addButton(array $button)
+    {
+        if (count($this->button) >= 3) {
             throw new WxException('菜单数量不能超过3个', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -56,19 +60,21 @@ class MenuConditionalAdd extends WxBaseShop {
      * @param array $matchRule
      * @throws \Exception\Wx\WxException
      */
-    public function setMatchRule(array $matchRule){
-        if(empty($matchRule)){
+    public function setMatchRule(array $matchRule)
+    {
+        if (empty($matchRule)) {
             throw new WxException('菜单匹配规则不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
         $this->reqData['matchrule'] = $matchRule;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['matchrule'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['matchrule'])) {
             throw new WxException('菜单匹配规则不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(empty($this->button)){
+        if (empty($this->button)) {
             throw new WxException('菜单不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['button'] = $this->button;

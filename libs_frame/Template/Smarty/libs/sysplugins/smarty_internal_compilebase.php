@@ -20,7 +20,7 @@ abstract class Smarty_Internal_CompileBase
      *
      * @var array
      */
-    public $required_attributes = array();
+    public $required_attributes = [];
 
     /**
      * Array of names of optional attribute required by tag
@@ -28,35 +28,35 @@ abstract class Smarty_Internal_CompileBase
      *
      * @var array
      */
-    public $optional_attributes = array();
+    public $optional_attributes = [];
 
     /**
      * Shorttag attribute order defined by its names
      *
      * @var array
      */
-    public $shorttag_order = array();
+    public $shorttag_order = [];
 
     /**
      * Array of names of valid option flags
      *
      * @var array
      */
-    public $option_flags = array('nocache');
+    public $option_flags = ['nocache'];
 
     /**
      * Mapping array for boolqn option value
-     * 
+     *
      * @var array
      */
-    public $optionMap = array(1 => true, 0 => false, 'true' => true, 'false' => false);
+    public $optionMap = [1 => true, 0 => false, 'true' => true, 'false' => false];
 
     /**
      * Mapping array with attributes as key
-     * 
+     *
      * @var array
      */
-    public $mapCache = array();
+    public $mapCache = [];
 
     /**
      * This function checks if the attributes passed are valid
@@ -72,7 +72,7 @@ abstract class Smarty_Internal_CompileBase
      */
     public function getAttributes($compiler, $attributes)
     {
-        $_indexed_attr = array();
+        $_indexed_attr = [];
         if (!isset($this->mapCache[ 'option' ])) {
             $this->mapCache[ 'option' ] = array_fill_keys($this->option_flags, true);
         }
@@ -117,19 +117,22 @@ abstract class Smarty_Internal_CompileBase
         // check if all required attributes present
         foreach ($this->required_attributes as $attr) {
             if (!isset($_indexed_attr[ $attr ])) {
-                $compiler->trigger_template_error("missing \"" . $attr . "\" attribute", null, true);
+                $compiler->trigger_template_error('missing "' . $attr . '" attribute', null, true);
             }
         }
         // check for not allowed attributes
-        if ($this->optional_attributes != array('_any')) {
+        if ($this->optional_attributes != ['_any']) {
             if (!isset($this->mapCache[ 'all' ])) {
                 $this->mapCache[ 'all' ] =
-                    array_fill_keys(array_merge($this->required_attributes, $this->optional_attributes,
-                                                $this->option_flags), true);
+                    array_fill_keys(array_merge(
+                        $this->required_attributes,
+                        $this->optional_attributes,
+                                                $this->option_flags
+                    ), true);
             }
             foreach ($_indexed_attr as $key => $dummy) {
                 if (!isset($this->mapCache[ 'all' ][ $key ]) && $key !== 0) {
-                    $compiler->trigger_template_error("unexpected \"" . $key . "\" attribute", null, true);
+                    $compiler->trigger_template_error('unexpected "' . $key . '" attribute', null, true);
                 }
             }
         }
@@ -155,7 +158,7 @@ abstract class Smarty_Internal_CompileBase
      */
     public function openTag($compiler, $openTag, $data = null)
     {
-        array_push($compiler->_tag_stack, array($openTag, $data));
+        array_push($compiler->_tag_stack, [$openTag, $data]);
     }
 
     /**
@@ -173,7 +176,7 @@ abstract class Smarty_Internal_CompileBase
             // get stacked info
             list($_openTag, $_data) = array_pop($compiler->_tag_stack);
             // open tag must match with the expected ones
-            if (in_array($_openTag, (array) $expectedTag)) {
+            if (in_array($_openTag, (array) $expectedTag, true)) {
                 if (is_null($_data)) {
                     // return opening tag
                     return $_openTag;
@@ -189,8 +192,6 @@ abstract class Smarty_Internal_CompileBase
             return;
         }
         // wrong nesting of tags
-        $compiler->trigger_template_error("unexpected closing tag", null, true);
-
-        return;
+        $compiler->trigger_template_error('unexpected closing tag', null, true);
     }
 }

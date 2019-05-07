@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 删除标签
  * @package Wx\Corp\Tag
  */
-class TagDelete extends WxBaseCorp {
+class TagDelete extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -27,21 +28,24 @@ class TagDelete extends WxBaseCorp {
      */
     private $tagid = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/tag/delete';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $tagId
      * @throws \Exception\Wx\WxException
      */
-    public function setTagId(int $tagId){
+    public function setTagId(int $tagId)
+    {
         if ($tagId > 0) {
             $this->reqData['tagid'] = $tagId;
         } else {
@@ -49,8 +53,9 @@ class TagDelete extends WxBaseCorp {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['tagid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['tagid'])) {
             throw new WxException('标签id不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -62,7 +67,7 @@ class TagDelete extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

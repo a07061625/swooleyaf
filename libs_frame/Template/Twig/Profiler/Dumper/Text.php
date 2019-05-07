@@ -55,7 +55,7 @@ class Twig_Profiler_Dumper_Text
         $percent = $this->root ? $profile->getDuration() / $this->root * 100 : 0;
 
         if ($profile->getDuration() * 1000 < 1) {
-            $str = $start."\n";
+            $str = $start . "\n";
         } else {
             $str = sprintf("%s %s\n", $start, $this->formatTime($profile, $percent));
         }

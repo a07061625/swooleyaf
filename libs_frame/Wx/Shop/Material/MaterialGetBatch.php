@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class MaterialGetBatch extends WxBaseShop {
+class MaterialGetBatch extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -36,7 +37,8 @@ class MaterialGetBatch extends WxBaseShop {
      */
     private $count = 0;
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
 
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=';
@@ -45,15 +47,17 @@ class MaterialGetBatch extends WxBaseShop {
         $this->reqData['count'] = 20;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $type
      * @throws \Exception\Wx\WxException
      */
-    public function setType(string $type){
-        if(isset(self::$totalMaterialType[$type])){
+    public function setType(string $type)
+    {
+        if (isset(self::$totalMaterialType[$type])) {
             $this->reqData['type'] = $type;
         } else {
             throw new WxException('素材类型不合法', ErrorCode::WX_PARAM_ERROR);
@@ -64,8 +68,9 @@ class MaterialGetBatch extends WxBaseShop {
      * @param int $offset
      * @throws \Exception\Wx\WxException
      */
-    public function setOffset(int $offset){
-        if($offset >= 0){
+    public function setOffset(int $offset)
+    {
+        if ($offset >= 0) {
             $this->reqData['offset'] = $offset;
         } else {
             throw new WxException('偏移位置不合法', ErrorCode::WX_PARAM_ERROR);
@@ -76,16 +81,18 @@ class MaterialGetBatch extends WxBaseShop {
      * @param int $count
      * @throws \Exception\Wx\WxException
      */
-    public function setCount(int $count){
-        if(($count > 0) && ($count <= 20)){
+    public function setCount(int $count)
+    {
+        if (($count > 0) && ($count <= 20)) {
             $this->reqData['count'] = $count;
         } else {
             throw new WxException('条数不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['type'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['type'])) {
             throw new WxException('素材类型不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -97,7 +104,7 @@ class MaterialGetBatch extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['errcode'])){
+        if (isset($sendData['errcode'])) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['errmsg'];
         } else {

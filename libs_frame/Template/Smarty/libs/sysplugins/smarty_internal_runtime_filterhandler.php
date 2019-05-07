@@ -38,15 +38,15 @@ class Smarty_Internal_Runtime_FilterHandler
                 $plugin_name = "Smarty_{$type}filter_{$name}";
                 if (function_exists($plugin_name)) {
                     $callback = $plugin_name;
-                } elseif (class_exists($plugin_name, false) && is_callable(array($plugin_name, 'execute'))) {
-                    $callback = array($plugin_name, 'execute');
+                } elseif (class_exists($plugin_name, false) && is_callable([$plugin_name, 'execute'])) {
+                    $callback = [$plugin_name, 'execute'];
                 } elseif ($template->smarty->loadPlugin($plugin_name, false)) {
                     if (function_exists($plugin_name)) {
                         // use loaded Smarty style plugin
                         $callback = $plugin_name;
-                    } elseif (class_exists($plugin_name, false) && is_callable(array($plugin_name, 'execute'))) {
+                    } elseif (class_exists($plugin_name, false) && is_callable([$plugin_name, 'execute'])) {
                         // loaded class of filter plugin
-                        $callback = array($plugin_name, 'execute');
+                        $callback = [$plugin_name, 'execute'];
                     } else {
                         throw new SmartyException("Auto load {$type}-filter plugin method \"{$plugin_name}::execute\" not callable");
                     }

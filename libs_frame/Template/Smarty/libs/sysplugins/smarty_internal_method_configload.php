@@ -68,7 +68,7 @@ class Smarty_Internal_Method_ConfigLoad
         $confObj->compiled->render($confObj);
         if ($data->_objType == 2) {
             $data->compiled->file_dependency[ $confObj->source->uid ] =
-                array($confObj->source->filepath, $confObj->source->getTimeStamp(), $confObj->source->type);
+                [$confObj->source->filepath, $confObj->source->getTimeStamp(), $confObj->source->type];
         }
     }
 
@@ -179,6 +179,5 @@ class Smarty_Internal_Method_ConfigLoad
             // force a notice
             $x = $$varName;
         }
-        return null;
     }
 }

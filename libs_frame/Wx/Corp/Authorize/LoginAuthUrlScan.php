@@ -17,7 +17,8 @@ use Wx\WxBaseCorp;
  * 获取扫码登录授权引导地址
  * @package Wx\Corp\Authorize
  */
-class LoginAuthUrlScan extends WxBaseCorp {
+class LoginAuthUrlScan extends WxBaseCorp
+{
     /**
      * 企业ID
      * @var string
@@ -39,7 +40,8 @@ class LoginAuthUrlScan extends WxBaseCorp {
      */
     private $state = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $corpConfig = WxConfigSingleton::getInstance()->getCorpConfig($corpId);
         $agentInfo = $corpConfig->getAgentInfo($agentTag);
@@ -49,22 +51,25 @@ class LoginAuthUrlScan extends WxBaseCorp {
         $this->reqData['state'] = Tool::createNonceStr(8);
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $state
      * @throws \Exception\Wx\WxException
      */
-    public function setState(string $state){
-        if(ctype_alnum($state) && (strlen($state) <= 128)){
+    public function setState(string $state)
+    {
+        if (ctype_alnum($state) && (strlen($state) <= 128)) {
             $this->reqData['state'] = $state;
         } else {
             throw new WxException('防跨域攻击标识不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         return [
             'url' => 'https://open.work.weixin.qq.com/wwopen/sso/qrConnect?' . http_build_query($this->reqData),
         ];

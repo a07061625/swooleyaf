@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 获取异步任务结果
  * @package Wx\Corp\Batch
  */
-class ResultGet extends WxBaseCorp {
+class ResultGet extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -27,30 +28,34 @@ class ResultGet extends WxBaseCorp {
      */
     private $jobid = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/batch/getresult';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $jobId
      * @throws \Exception\Wx\WxException
      */
-    public function setJobId(string $jobId){
-        if(strlen($jobId) > 0){
+    public function setJobId(string $jobId)
+    {
+        if (strlen($jobId) > 0) {
             $this->reqData['jobid'] = $jobId;
         } else {
             throw new WxException('任务id不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['jobid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['jobid'])) {
             throw new WxException('任务id不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -62,7 +67,7 @@ class ResultGet extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

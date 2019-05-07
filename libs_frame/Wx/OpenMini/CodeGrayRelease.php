@@ -14,7 +14,8 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class CodeGrayRelease extends WxBaseOpenMini {
+class CodeGrayRelease extends WxBaseOpenMini
+{
     /**
      * 应用ID
      * @var string
@@ -26,20 +27,23 @@ class CodeGrayRelease extends WxBaseOpenMini {
      */
     private $percentage = 0;
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/wxa/grayrelease?access_token=';
         $this->appId = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param int $percentage
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setPercentage(int $percentage){
+    public function setPercentage(int $percentage)
+    {
         if (($percentage > 0) && ($percentage <= 100)) {
             $this->reqData['gray_percentage'] = $percentage;
         } else {
@@ -47,8 +51,9 @@ class CodeGrayRelease extends WxBaseOpenMini {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['gray_percentage'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['gray_percentage'])) {
             throw new WxOpenException('灰度百分比不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 
@@ -62,7 +67,7 @@ class CodeGrayRelease extends WxBaseOpenMini {
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

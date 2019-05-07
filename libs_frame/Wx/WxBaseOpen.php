@@ -7,8 +7,10 @@
  */
 namespace Wx;
 
-abstract class WxBaseOpen extends WxBase {
-    public function __construct(){
+abstract class WxBaseOpen extends WxBase
+{
+    public function __construct()
+    {
         parent::__construct();
     }
 }

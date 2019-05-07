@@ -16,7 +16,6 @@
  */
 abstract class Smarty_Internal_ParseTree
 {
-
     /**
      * Buffer content
      *
@@ -29,16 +28,7 @@ abstract class Smarty_Internal_ParseTree
      *
      * @var array
      */
-    public $subtrees = array();
-
-    /**
-     * Return buffer
-     *
-     * @param \Smarty_Internal_Templateparser $parser
-     *
-     * @return string buffer content
-     */
-    abstract public function to_smarty_php(Smarty_Internal_Templateparser $parser);
+    public $subtrees = [];
 
     /**
      * Template data object destructor
@@ -49,6 +39,12 @@ abstract class Smarty_Internal_ParseTree
         $this->subtrees = null;
     }
 
+    /**
+     * Return buffer
+     *
+     * @param \Smarty_Internal_Templateparser $parser
+     *
+     * @return string buffer content
+     */
+    abstract public function to_smarty_php(Smarty_Internal_Templateparser $parser);
 }
-
-

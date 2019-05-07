@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class TagCreate extends WxBaseShop {
+class TagCreate extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -26,30 +27,34 @@ class TagCreate extends WxBaseShop {
      */
     private $name = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/tags/create?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $name
      * @throws \Exception\Wx\WxException
      */
-    public function setName(string $name){
+    public function setName(string $name)
+    {
         $nameLength = strlen($name);
-        if(($nameLength > 0) && ($nameLength <= 30)){
+        if (($nameLength > 0) && ($nameLength <= 30)) {
             $this->reqData['name'] = $name;
         } else {
             throw new WxException('标签名不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['name'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['name'])) {
             throw new WxException('标签名不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -63,7 +68,7 @@ class TagCreate extends WxBaseShop {
         ], JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['tag'])){
+        if (isset($sendData['tag'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
