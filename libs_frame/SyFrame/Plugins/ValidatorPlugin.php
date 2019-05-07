@@ -18,17 +18,41 @@ use Yaf\Registry;
 use Yaf\Request_Abstract;
 use Yaf\Response_Abstract;
 
-class ValidatorPlugin extends Plugin_Abstract {
+class ValidatorPlugin extends Plugin_Abstract
+{
     private $validatorMap = [];
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->validatorMap = [];
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    private function getValidatorList(string $controllerName,string $actionName) : array {
+    /**
+     * @param \Yaf\Request_Abstract $request
+     * @param \Yaf\Response_Abstract $response
+     * @return void
+     * @throws \Exception\Validator\ValidatorException
+     */
+    public function preDispatch(Request_Abstract $request, Response_Abstract $response)
+    {
+        $controllerName = $request->getControllerName() . 'Controller';
+        $actionName = $request->getActionName() . 'Action';
+        $validatorList = $this->getValidatorList($controllerName, $actionName);
+        foreach ($validatorList as $eValidator) {
+            $data = SyRequest::getParams($eValidator->getField());
+            $verifyRes = Validator::validator($data, $eValidator);
+            if (strlen($verifyRes) > 0) {
+                throw new ValidatorException($verifyRes, ErrorCode::COMMON_PARAM_ERROR);
+            }
+        }
+    }
+
+    private function getValidatorList(string $controllerName, string $actionName) : array
+    {
         $key = strtolower($controllerName . $actionName);
         $validatorTag = $this->validatorMap[$key] ?? null;
         if (is_string($validatorTag)) {
@@ -41,24 +65,5 @@ class ValidatorPlugin extends Plugin_Abstract {
         Registry::set($validatorTag, $validatorList);
 
         return $validatorList;
-    }
-
-    /**
-     * @param \Yaf\Request_Abstract $request
-     * @param \Yaf\Response_Abstract $response
-     * @return void
-     * @throws \Exception\Validator\ValidatorException
-     */
-    public function preDispatch(Request_Abstract $request,Response_Abstract $response) {
-        $controllerName = $request->getControllerName() . 'Controller';
-        $actionName = $request->getActionName() . 'Action';
-        $validatorList = $this->getValidatorList($controllerName, $actionName);
-        foreach ($validatorList as $eValidator) {
-            $data = SyRequest::getParams($eValidator->getField());
-            $verifyRes = Validator::validator($data, $eValidator);
-            if (strlen($verifyRes) > 0) {
-                throw new ValidatorException($verifyRes, ErrorCode::COMMON_PARAM_ERROR);
-            }
-        }
     }
 }

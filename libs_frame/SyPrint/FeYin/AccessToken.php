@@ -14,8 +14,10 @@ use SyPrint\PrintBaseFeYin;
 use SyPrint\PrintUtilBase;
 use Tool\Tool;
 
-class AccessToken extends PrintBaseFeYin {
-    public function __construct(string $appId){
+class AccessToken extends PrintBaseFeYin
+{
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $config = PrintConfigSingleton::getInstance()->getFeYinConfig($appId);
         $this->reqData['code'] = $config->getMemberCode();
@@ -23,16 +25,18 @@ class AccessToken extends PrintBaseFeYin {
         $this->reqData['appid'] = $config->getAppId();
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/token?' . http_build_query($this->reqData);
         $sendRes = PrintUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(!is_array($sendData)){
+        if (!is_array($sendData)) {
             throw new FeYinException('获取access token出错', ErrorCode::PRINT_GET_ERROR);
-        } else if(!isset($sendData['access_token'])){
+        } elseif (!isset($sendData['access_token'])) {
             throw new FeYinException($sendData['errmsg'], ErrorCode::PRINT_GET_ERROR);
         }
 

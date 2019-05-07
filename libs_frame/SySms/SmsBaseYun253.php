@@ -9,7 +9,13 @@ namespace SySms;
 
 use DesignPatterns\Singletons\SmsConfigSingleton;
 
-abstract class SmsBaseYun253 extends SmsBase {
+abstract class SmsBaseYun253 extends SmsBase
+{
+    /**
+     * 服务地址
+     * @var string
+     */
+    protected $serviceUrl = '';
     /**
      * API账号
      * @var string
@@ -20,26 +26,25 @@ abstract class SmsBaseYun253 extends SmsBase {
      * @var string
      */
     private $password = '';
-    /**
-     * 服务地址
-     * @var string
-     */
-    protected $serviceUrl = '';
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @return string
      */
-    public function getServiceUrl() : string {
+    public function getServiceUrl() : string
+    {
         return $this->serviceUrl;
     }
 
-    protected function getContent() : array {
+    protected function getContent() : array
+    {
         $this->reqData['account'] = SmsConfigSingleton::getInstance()->getYun253Config()->getAppKey();
         $this->reqData['password'] = SmsConfigSingleton::getInstance()->getYun253Config()->getAppSecret();
         return $this->reqData;

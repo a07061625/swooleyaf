@@ -19,9 +19,15 @@ use Tool\Tool;
 use Traits\ProcessPoolFrameTrait;
 use Traits\ProcessPoolProjectTrait;
 
-class ProcessPoolServer {
+class ProcessPoolServer
+{
     use ProcessPoolFrameTrait;
     use ProcessPoolProjectTrait;
+    /**
+     * 提示文件
+     * @var string
+     */
+    protected $_tipFile = '';
 
     /**
      * 连接池对象
@@ -44,11 +50,6 @@ class ProcessPoolServer {
      */
     private $_pidFile = '';
     /**
-     * 提示文件
-     * @var string
-     */
-    protected $_tipFile = '';
-    /**
      * 配置数组
      * @var array
      */
@@ -59,7 +60,8 @@ class ProcessPoolServer {
      */
     private $serviceManager = null;
 
-    public function __construct(int $port){
+    public function __construct(int $port)
+    {
         if (($port <= Server::ENV_PORT_MIN) || ($port > Server::ENV_PORT_MAX)) {
             exit('端口不合法' . PHP_EOL);
         }
@@ -79,11 +81,11 @@ class ProcessPoolServer {
         $this->_port = $this->_configs['process']['port'];
         $this->_pidFile = SY_ROOT . '/pidfile/' . SY_MODULE . $this->_port . '.pid';
         $this->_tipFile = SY_ROOT . '/tipfile/' . SY_MODULE . $this->_port . '.txt';
-        if(is_dir($this->_tipFile)){
+        if (is_dir($this->_tipFile)) {
             exit('提示文件不能是文件夹' . PHP_EOL);
-        } else if(!file_exists($this->_tipFile)){
+        } elseif (!file_exists($this->_tipFile)) {
             $tipFileObj = fopen($this->_tipFile, 'wb');
-            if(is_bool($tipFileObj)){
+            if (is_bool($tipFileObj)) {
                 exit('创建或打开提示文件失败' . PHP_EOL);
             }
             fwrite($tipFileObj, '');
@@ -95,73 +97,24 @@ class ProcessPoolServer {
         Log::setPath(SY_LOG_PATH);
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    private function checkSystemEnv() {
-        if(PHP_INT_SIZE < 8){
-            exit('操作系统必须是64位' . PHP_EOL);
-        }
-        if(version_compare(PHP_VERSION, Server::VERSION_MIN_PHP, '<')){
-            exit('PHP版本必须大于等于' . Server::VERSION_MIN_PHP . PHP_EOL);
-        }
-        if (!defined('SY_MODULE')) {
-            exit('模块名称未定义' . PHP_EOL);
-        }
-        if(!in_array(SY_ENV, Server::$totalEnvProject)){
-            exit('环境类型不合法' . PHP_EOL);
-        }
-
-        $os = php_uname('s');
-        if(!in_array($os, Server::$totalEnvSystem)){
-            exit('操作系统不支持' . PHP_EOL);
-        }
-
-        //检查必要的扩展是否存在
-        $extensionList = [
-            'yac',
-            'yaf',
-            'PDO',
-            'pcre',
-            'pcntl',
-            'redis',
-            'yaconf',
-            'swoole',
-            'SeasLog',
-            'msgpack',
-        ];
-        foreach ($extensionList as $extName) {
-            if(!extension_loaded($extName)){
-                exit('扩展' . $extName . '未加载' . PHP_EOL);
-            }
-        }
-
-        if(version_compare(SWOOLE_VERSION, Server::VERSION_MIN_SWOOLE, '<')){
-            exit('swoole版本必须大于等于' . Server::VERSION_MIN_SWOOLE . PHP_EOL);
-        }
-        if(version_compare(SEASLOG_VERSION, Server::VERSION_MIN_SEASLOG, '<')){
-            exit('seaslog版本必须大于等于' . Server::VERSION_MIN_SEASLOG . PHP_EOL);
-        }
-        if(version_compare(YAC_VERSION, Server::VERSION_MIN_YAC, '<')){
-            exit('yac版本必须大于等于' . Server::VERSION_MIN_YAC . PHP_EOL);
-        }
-        if(version_compare(\YAF\VERSION, Server::VERSION_MIN_YAF, '<')){
-            exit('yaf版本必须大于等于' . Server::VERSION_MIN_YAF . PHP_EOL);
-        }
-    }
-
-    public function help(){
+    public function help()
+    {
         print_r('帮助信息' . PHP_EOL);
         print_r('-s 操作类型: restart-重启 stop-关闭 start-启动 startstatus-启动状态' . PHP_EOL);
         print_r('-module 模块名' . PHP_EOL);
         print_r('-port 端口,取值范围为1024-65535' . PHP_EOL);
     }
 
-    public function start(){
+    public function start()
+    {
         $execRes = Tool::execSystemCommand('lsof -i:' . $this->_port);
-        if($execRes['code'] > 0){
+        if ($execRes['code'] > 0) {
             exit($execRes['msg'] . PHP_EOL);
-        } else if(!empty($execRes['data'])){
+        } elseif (!empty($execRes['data'])) {
             exit('端口被占用' . PHP_EOL);
         }
 
@@ -192,16 +145,17 @@ class ProcessPoolServer {
         $this->pool->start();
     }
 
-    public function stop(){
-        if(is_file($this->_pidFile) && is_readable($this->_pidFile)){
+    public function stop()
+    {
+        if (is_file($this->_pidFile) && is_readable($this->_pidFile)) {
             $pid = (int)file_get_contents($this->_pidFile);
         } else {
             $pid = 0;
         }
 
         $msg = ' \e[1;31m \t[fail]';
-        if($pid > 0){
-            if(\swoole_process::kill($pid)){
+        if ($pid > 0) {
+            if (\swoole_process::kill($pid)) {
                 $msg = ' \e[1;32m \t[success]';
             }
             file_put_contents($this->_pidFile, '');
@@ -213,11 +167,12 @@ class ProcessPoolServer {
     /**
      * 获取服务启动状态
      */
-    public function getStartStatus(){
+    public function getStartStatus()
+    {
         $fileContent = file_get_contents($this->_tipFile);
         $command = 'echo -e "\e[1;31m ' . SY_MODULE . ' start status fail \e[0m"';
-        if(is_string($fileContent)){
-            if(strlen($fileContent) > 0){
+        if (is_string($fileContent)) {
+            if (strlen($fileContent) > 0) {
                 $command = 'echo -e "' . $fileContent . '"';
             }
             file_put_contents($this->_tipFile, '');
@@ -225,32 +180,9 @@ class ProcessPoolServer {
         system($command);
         exit();
     }
-
-    private function handleData(array $data) {
-        $serviceClass = $this->serviceManager->getServiceName($data['service_tag']);
-        if(strlen($serviceClass) > 0){
-            $serviceParams = Tool::getArrayVal($data, 'service_params', []);
-
-            try {
-                $result = $serviceClass::execMessage($serviceParams);
-            } catch (\Exception $e) {
-                Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
-                $result = new Result();
-                if(is_int($e->getCode())){
-                    $result->setCodeMsg($e->getCode(), $e->getMessage());
-                } else {
-                    $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, $e->getMessage());
-                }
-            }
-        } else {
-            $result = new Result();
-            $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '服务不存在');
-        }
-
-        return $result;
-    }
     
-    public function onWorkerStart(\swoole_process_pool $pool,int $workerId){
+    public function onWorkerStart(\swoole_process_pool $pool, int $workerId)
+    {
         @cli_set_process_title(Server::PROCESS_TYPE_WORKER . SY_MODULE . $this->_port);
 
         //设置错误和异常处理
@@ -264,29 +196,31 @@ class ProcessPoolServer {
         $bcConfigs = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.bcmath');
         bcscale($bcConfigs['scale']);
 
-        if($workerId == 0){
+        if ($workerId == 0) {
             file_put_contents($this->_tipFile, '\e[1;36m start ' . SY_MODULE . ': \e[0m \e[1;32m \t[success] \e[0m');
         }
 
         $this->handleProjectWorkerStart($pool, $workerId);
     }
 
-    public function onWorkerStop(\swoole_process_pool $pool,int $workerId){
+    public function onWorkerStop(\swoole_process_pool $pool, int $workerId)
+    {
         $this->handleProjectWorkerStop($pool, $workerId);
     }
 
-    public function onMessage(\swoole_process_pool $pool,string $data){
+    public function onMessage(\swoole_process_pool $pool, string $data)
+    {
         $result = new Result();
         $dataArr = Tool::jsonDecode($data);
-        if(!is_array($dataArr)){
+        if (!is_array($dataArr)) {
             $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '数据格式错误');
-        } else if(!isset($dataArr['service_tag'])){
+        } elseif (!isset($dataArr['service_tag'])) {
             $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '数据格式错误');
-        } else if(!ctype_alnum($dataArr['service_tag'])){
+        } elseif (!ctype_alnum($dataArr['service_tag'])) {
             $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '服务标识格式错误');
         } else {
             RedisSingleton::getInstance()->reConnect();
-            if(SY_DATABASE){
+            if (SY_DATABASE) {
                 MysqlSingleton::getInstance()->reConnect();
             }
 
@@ -294,5 +228,83 @@ class ProcessPoolServer {
         }
 
         $pool->write($result->getJson());
+    }
+
+    private function checkSystemEnv()
+    {
+        if (PHP_INT_SIZE < 8) {
+            exit('操作系统必须是64位' . PHP_EOL);
+        }
+        if (version_compare(PHP_VERSION, Server::VERSION_MIN_PHP, '<')) {
+            exit('PHP版本必须大于等于' . Server::VERSION_MIN_PHP . PHP_EOL);
+        }
+        if (!defined('SY_MODULE')) {
+            exit('模块名称未定义' . PHP_EOL);
+        }
+        if (!in_array(SY_ENV, Server::$totalEnvProject, true)) {
+            exit('环境类型不合法' . PHP_EOL);
+        }
+
+        $os = php_uname('s');
+        if (!in_array($os, Server::$totalEnvSystem, true)) {
+            exit('操作系统不支持' . PHP_EOL);
+        }
+
+        //检查必要的扩展是否存在
+        $extensionList = [
+            'yac',
+            'yaf',
+            'PDO',
+            'pcre',
+            'pcntl',
+            'redis',
+            'yaconf',
+            'swoole',
+            'SeasLog',
+            'msgpack',
+        ];
+        foreach ($extensionList as $extName) {
+            if (!extension_loaded($extName)) {
+                exit('扩展' . $extName . '未加载' . PHP_EOL);
+            }
+        }
+
+        if (version_compare(SWOOLE_VERSION, Server::VERSION_MIN_SWOOLE, '<')) {
+            exit('swoole版本必须大于等于' . Server::VERSION_MIN_SWOOLE . PHP_EOL);
+        }
+        if (version_compare(SEASLOG_VERSION, Server::VERSION_MIN_SEASLOG, '<')) {
+            exit('seaslog版本必须大于等于' . Server::VERSION_MIN_SEASLOG . PHP_EOL);
+        }
+        if (version_compare(YAC_VERSION, Server::VERSION_MIN_YAC, '<')) {
+            exit('yac版本必须大于等于' . Server::VERSION_MIN_YAC . PHP_EOL);
+        }
+        if (version_compare(\YAF\VERSION, Server::VERSION_MIN_YAF, '<')) {
+            exit('yaf版本必须大于等于' . Server::VERSION_MIN_YAF . PHP_EOL);
+        }
+    }
+
+    private function handleData(array $data)
+    {
+        $serviceClass = $this->serviceManager->getServiceName($data['service_tag']);
+        if (strlen($serviceClass) > 0) {
+            $serviceParams = Tool::getArrayVal($data, 'service_params', []);
+
+            try {
+                $result = $serviceClass::execMessage($serviceParams);
+            } catch (\Exception $e) {
+                Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
+                $result = new Result();
+                if (is_int($e->getCode())) {
+                    $result->setCodeMsg($e->getCode(), $e->getMessage());
+                } else {
+                    $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, $e->getMessage());
+                }
+            }
+        } else {
+            $result = new Result();
+            $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '服务不存在');
+        }
+
+        return $result;
     }
 }

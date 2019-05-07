@@ -10,7 +10,8 @@ namespace SyMessageQueue\Kafka;
 use DesignPatterns\Singletons\MessageQueueSingleton;
 use Tool\Tool;
 
-class Producer {
+class Producer
+{
     /**
      * @var \SyMessageQueue\Kafka\Producer
      */
@@ -20,17 +21,20 @@ class Producer {
      */
     private $obj = null;
 
-    private function __construct(){
+    private function __construct()
+    {
         $this->obj = MessageQueueSingleton::getInstance()->getKafkaProducer();
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @return \SyMessageQueue\Kafka\Producer
      */
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (is_null(self::$instance)) {
             self::$instance = new self();
         }
@@ -43,7 +47,8 @@ class Producer {
      * @param string $topic 主题名称
      * @param array $data 数据
      */
-    public function addTopicData(string $topic,array $data) {
+    public function addTopicData(string $topic, array $data)
+    {
         $topicName = SY_ENV . SY_PROJECT . $topic;
         $topicObj = $this->obj->newTopic($topicName);
         foreach ($data as $eData) {

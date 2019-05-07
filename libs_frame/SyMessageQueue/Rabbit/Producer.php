@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Exception\Amqp\AmqpException;
 use Tool\Tool;
 
-class Producer {
+class Producer
+{
     /**
      * @var \AMQPConnection|null
      */
@@ -21,13 +22,14 @@ class Producer {
      */
     private $exchange = null;
 
-    public function __construct(){
+    public function __construct()
+    {
         $configs = Tool::getConfig('messagequeue.' . SY_ENV . SY_PROJECT . '.rabbit');
 
         try {
             $this->conn = new \AMQPConnection($configs['conn']);
             $this->conn->pconnect();
-            if(!$this->conn->isPersistent()){
+            if (!$this->conn->isPersistent()) {
                 throw new AmqpException('amqp连接出错', ErrorCode::AMQP_CONNECT_ERROR);
             }
 
@@ -54,23 +56,13 @@ class Producer {
         }
     }
 
-    public function __destruct(){
+    public function __destruct()
+    {
         $this->destroy();
     }
 
-    private function __clone(){
-    }
-
-    private function destroy() {
-        if(!is_null($this->exchange)){
-            $this->exchange = null;
-        }
-        if(!is_null($this->conn)){
-            if($this->conn->isPersistent()){
-                $this->conn->pdisconnect();
-            }
-            $this->conn = null;
-        }
+    private function __clone()
+    {
     }
 
     /**
@@ -78,12 +70,26 @@ class Producer {
      * @param string $topic
      * @param array $data
      */
-    public function sendTopicData(string $topic,array $data){
+    public function sendTopicData(string $topic, array $data)
+    {
         $trueTopic = SY_ENV . SY_PROJECT . '.' . $topic;
         foreach ($data as $eData) {
             $this->exchange->publish(Tool::jsonEncode($eData, JSON_UNESCAPED_UNICODE), $trueTopic, AMQP_MANDATORY, [
                 'delivery_mode' => 2,
             ]);
+        }
+    }
+
+    private function destroy()
+    {
+        if (!is_null($this->exchange)) {
+            $this->exchange = null;
+        }
+        if (!is_null($this->conn)) {
+            if ($this->conn->isPersistent()) {
+                $this->conn->pdisconnect();
+            }
+            $this->conn = null;
         }
     }
 }

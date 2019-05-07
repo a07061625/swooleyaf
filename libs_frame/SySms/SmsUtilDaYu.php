@@ -12,7 +12,8 @@ use Log\Log;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-abstract class SmsUtilDaYu extends SmsUtilBase {
+abstract class SmsUtilDaYu extends SmsUtilBase
+{
     use SimpleTrait;
 
     protected static $urlHttp = 'http://gw.api.taobao.com/router/rest';
@@ -23,7 +24,8 @@ abstract class SmsUtilDaYu extends SmsUtilBase {
      * @param string $appSecret 应用密钥
      * @return void
      */
-    public static function createSign(array &$data,string $appSecret){
+    public static function createSign(array &$data, string $appSecret)
+    {
         unset($data['sign']);
         ksort($data);
         $needStr = $appSecret;
@@ -39,7 +41,8 @@ abstract class SmsUtilDaYu extends SmsUtilBase {
      * @param \SySms\SmsBaseDaYu $daYuBase
      * @return array
      */
-    public static function sendServiceRequest(SmsBaseDaYu $daYuBase) {
+    public static function sendServiceRequest(SmsBaseDaYu $daYuBase)
+    {
         $resArr = [
             'code' => 0
         ];
@@ -62,7 +65,7 @@ abstract class SmsUtilDaYu extends SmsUtilBase {
         $rspData = Tool::jsonDecode($sendRes);
         if (isset($rspData[$responseTag])) {
             $resArr['data'] = $rspData[$responseTag];
-        } else if(isset($rspData['error_response'])){
+        } elseif (isset($rspData['error_response'])) {
             $resArr['code'] = ErrorCode::SMS_POST_ERROR;
             $resArr['msg'] = $rspData['error_response']['sub_msg'];
         } else {

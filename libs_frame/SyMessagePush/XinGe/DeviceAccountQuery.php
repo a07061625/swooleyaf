@@ -14,7 +14,8 @@ use SyMessagePush\PushBaseXinGe;
  * 账号-设备绑定查询
  * @package SyMessagePush\XinGe
  */
-class DeviceAccountQuery extends PushBaseXinGe {
+class DeviceAccountQuery extends PushBaseXinGe
+{
     /**
      * 操作类型
      * @var int
@@ -46,21 +47,24 @@ class DeviceAccountQuery extends PushBaseXinGe {
      */
     private $op_id = '';
 
-    public function __construct(string $platform){
+    public function __construct(string $platform)
+    {
         parent::__construct($platform);
         $this->apiPath = 'device';
         $this->apiMethod = 'account/query';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $operatorType
      * @throws \Exception\MessagePush\XinGePushException
      */
-    public function setOperatorType(int $operatorType){
-        if(($operatorType > 0) && ($operatorType <= 2)){
+    public function setOperatorType(int $operatorType)
+    {
+        if (($operatorType > 0) && ($operatorType <= 2)) {
             $this->reqData['operator_type'] = $operatorType;
         } else {
             throw new XinGePushException('操作类型不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
@@ -71,8 +75,9 @@ class DeviceAccountQuery extends PushBaseXinGe {
      * @param string $platform
      * @throws \Exception\MessagePush\XinGePushException
      */
-    public function setPlatform(string $platform){
-        if(in_array($platform, [self::PLATFORM_TYPE_IOS, self::PLATFORM_TYPE_ANDROID])){
+    public function setPlatform(string $platform)
+    {
+        if (in_array($platform, [self::PLATFORM_TYPE_IOS, self::PLATFORM_TYPE_ANDROID], true)) {
             $this->reqData['platform'] = $platform;
         } else {
             throw new XinGePushException('平台类型不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
@@ -83,8 +88,9 @@ class DeviceAccountQuery extends PushBaseXinGe {
      * @param array $accountList
      * @throws \Exception\MessagePush\XinGePushException
      */
-    public function setAccountList(array $accountList){
-        if(empty($accountList)){
+    public function setAccountList(array $accountList)
+    {
+        if (empty($accountList)) {
             throw new XinGePushException('账号列表不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
 
@@ -95,8 +101,9 @@ class DeviceAccountQuery extends PushBaseXinGe {
      * @param array $tokenList
      * @throws \Exception\MessagePush\XinGePushException
      */
-    public function setTokenList(array $tokenList){
-        if(empty($tokenList)){
+    public function setTokenList(array $tokenList)
+    {
+        if (empty($tokenList)) {
             throw new XinGePushException('设备列表不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
 
@@ -107,8 +114,9 @@ class DeviceAccountQuery extends PushBaseXinGe {
      * @param string $opType
      * @throws \Exception\MessagePush\XinGePushException
      */
-    public function setOpType(string $opType){
-        if(in_array($opType, ['qq', 'rtx', 'email', 'other'])){
+    public function setOpType(string $opType)
+    {
+        if (in_array($opType, ['qq', 'rtx', 'email', 'other'], true)) {
             $this->reqData['op_type'] = $opType;
         } else {
             throw new XinGePushException('操作人员类型不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
@@ -119,19 +127,21 @@ class DeviceAccountQuery extends PushBaseXinGe {
      * @param string $opId
      * @throws \Exception\MessagePush\XinGePushException
      */
-    public function setOpId(string $opId){
-        if(strlen($opId) > 0){
+    public function setOpId(string $opId)
+    {
+        if (strlen($opId) > 0) {
             $this->reqData['op_id'] = $opId;
         } else {
             throw new XinGePushException('接口操作人员id不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['operator_type'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['operator_type'])) {
             throw new XinGePushException('操作类型不能为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
-        if(!isset($this->reqData['platform'])){
+        if (!isset($this->reqData['platform'])) {
             throw new XinGePushException('平台类型不能为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
 

@@ -14,7 +14,8 @@ use SyPrint\PrintUtilBase;
 use SyPrint\PrintUtilFeYin;
 use Tool\Tool;
 
-class DeviceLogoSet extends PrintBaseFeYin {
+class DeviceLogoSet extends PrintBaseFeYin
+{
     /**
      * 应用ID
      * @var string
@@ -36,21 +37,24 @@ class DeviceLogoSet extends PrintBaseFeYin {
      */
     private $threshold = 0;
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->appid = $appId;
         $this->reqData['threshold'] = 200;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $deviceNo
      * @throws \Exception\SyPrint\FeYinException
      */
-    public function setDeviceNo(string $deviceNo){
-        if(ctype_digit($deviceNo)){
+    public function setDeviceNo(string $deviceNo)
+    {
+        if (ctype_digit($deviceNo)) {
             $this->device_no = $deviceNo;
         } else {
             throw new FeYinException('机器编号不合法', ErrorCode::PRINT_PARAM_ERROR);
@@ -61,8 +65,9 @@ class DeviceLogoSet extends PrintBaseFeYin {
      * @param string $path
      * @throws \Exception\SyPrint\FeYinException
      */
-    public function setPath(string $path){
-        if(preg_match('/^(http|https)\:\/\/\S+$/', $path) > 0){
+    public function setPath(string $path)
+    {
+        if (preg_match('/^(http|https)\:\/\/\S+$/', $path) > 0) {
             $this->reqData['path'] = $path;
         } else {
             throw new FeYinException('LOGO图片链接不合法', ErrorCode::PRINT_PARAM_ERROR);
@@ -73,19 +78,21 @@ class DeviceLogoSet extends PrintBaseFeYin {
      * @param int $threshold
      * @throws \Exception\SyPrint\FeYinException
      */
-    public function setThreshold(int $threshold){
-        if(($threshold > 0) && ($threshold <= 255)){
+    public function setThreshold(int $threshold)
+    {
+        if (($threshold > 0) && ($threshold <= 255)) {
             $this->reqData['threshold'] = $threshold;
         } else {
             throw new FeYinException('图片灰度值不合法', ErrorCode::PRINT_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(strlen($this->device_no) == 0){
+    public function getDetail() : array
+    {
+        if (strlen($this->device_no) == 0) {
             throw new FeYinException('机器编号不能为空', ErrorCode::PRINT_PARAM_ERROR);
         }
-        if(!isset($this->reqData['path'])){
+        if (!isset($this->reqData['path'])) {
             throw new FeYinException('LOGO图片链接不能为空', ErrorCode::PRINT_PARAM_ERROR);
         }
 
@@ -100,7 +107,7 @@ class DeviceLogoSet extends PrintBaseFeYin {
         ];
         $sendRes = PrintUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::PRINT_POST_ERROR;

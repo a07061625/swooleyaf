@@ -7,6 +7,7 @@
  */
 namespace SyTask;
 
-interface SyModuleTaskInterface {
+interface SyModuleTaskInterface
+{
     public function handleTask(array $data);
 }

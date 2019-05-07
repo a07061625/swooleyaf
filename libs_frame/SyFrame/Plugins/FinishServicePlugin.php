@@ -15,14 +15,18 @@ use Yaf\Registry;
 use Yaf\Request_Abstract;
 use Yaf\Response_Abstract;
 
-class FinishServicePlugin extends Plugin_Abstract {
-    public function __construct() {
+class FinishServicePlugin extends Plugin_Abstract
+{
+    public function __construct()
+    {
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    public function dispatchLoopShutdown(Request_Abstract $request, Response_Abstract $response) {
+    public function dispatchLoopShutdown(Request_Abstract $request, Response_Abstract $response)
+    {
         $errorCode = Registry::get(Server::REGISTRY_NAME_SERVICE_ERROR);
         if ($errorCode) {
             SyResponseHttp::header('Content-Type', 'application/json; charset=utf-8');

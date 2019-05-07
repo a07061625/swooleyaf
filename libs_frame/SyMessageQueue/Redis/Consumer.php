@@ -13,7 +13,8 @@ use DesignPatterns\Singletons\MessageQueueSingleton;
 use Log\Log;
 use Tool\Tool;
 
-class Consumer {
+class Consumer
+{
     /**
      * @var \SyMessageQueue\Redis\Consumer
      */
@@ -47,7 +48,8 @@ class Consumer {
      */
     private $continueTimes = 0;
 
-    private function __construct(){
+    private function __construct()
+    {
         $this->keyManager = Project::REDIS_PREFIX_MESSAGE_QUEUE . 'manager';
         $config = MessageQueueSingleton::getInstance()->getRedisConfig();
         $this->msgMaxIndex = $config->getConsumerBatchMsgNum() - 1;
@@ -55,13 +57,15 @@ class Consumer {
         $this->init();
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @return \SyMessageQueue\Redis\Consumer
      */
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (is_null(self::$instance)) {
             self::$instance = new self();
         }
@@ -69,55 +73,27 @@ class Consumer {
         return self::$instance;
     }
 
-    private function init() {
-        $this->continueTimes = 0;
-        $this->topics = [];
-        $this->consumers = [];
-        $cacheData = CacheSimpleFactory::getRedisInstance()->hGetAll($this->keyManager);
-        if(isset($cacheData['unique_key']) && ($cacheData['unique_key'] == $this->keyManager)){
-            unset($cacheData['unique_key']);
-            $this->topics = $cacheData;
-        }
-    }
-
-    /**
-     * 获取消费者
-     * @param string $topic
-     * @return \SyMessageQueue\ConsumerBase|null
-     */
-    private function getConsumer(string $topic) {
-        if(isset($this->consumers[$topic])){
-            return $this->consumers[$topic];
-        }
-        if(isset($this->topics[$topic])){
-            $className = $this->topics[$topic];
-            $class = new $className();
-            $this->consumers[$topic] = $class;
-            return $class;
-        }
-        return null;
-    }
-
-    public function handleData(){
+    public function handleData()
+    {
         $this->continueTimes++;
-        if($this->continueTimes >= $this->resetTimes){
+        if ($this->continueTimes >= $this->resetTimes) {
             $this->init();
         }
 
         foreach ($this->topics as $topic => $className) {
             $consumer = $this->getConsumer($topic);
-            if(is_null($consumer)){
+            if (is_null($consumer)) {
                 continue;
             }
 
             $redisKey = Project::REDIS_PREFIX_MESSAGE_QUEUE . $topic;
             $dataList = CacheSimpleFactory::getRedisInstance()->lRange($redisKey, 0, $this->msgMaxIndex);
             $dataNum = count($dataList);
-            if($dataNum > 0){
+            if ($dataNum > 0) {
                 CacheSimpleFactory::getRedisInstance()->lTrim($redisKey, $dataNum, -1);
                 foreach ($dataList as $eData) {
                     $consumerData = Tool::jsonDecode($eData);
-                    if(is_array($consumerData)){
+                    if (is_array($consumerData)) {
                         try {
                             $consumer->handleMessage($consumerData);
                         } catch (\Exception $e) {
@@ -128,6 +104,36 @@ class Consumer {
                     }
                 }
             }
+        }
+    }
+
+    private function init()
+    {
+        $this->continueTimes = 0;
+        $this->topics = [];
+        $this->consumers = [];
+        $cacheData = CacheSimpleFactory::getRedisInstance()->hGetAll($this->keyManager);
+        if (isset($cacheData['unique_key']) && ($cacheData['unique_key'] == $this->keyManager)) {
+            unset($cacheData['unique_key']);
+            $this->topics = $cacheData;
+        }
+    }
+
+    /**
+     * 获取消费者
+     * @param string $topic
+     * @return \SyMessageQueue\ConsumerBase|null
+     */
+    private function getConsumer(string $topic)
+    {
+        if (isset($this->consumers[$topic])) {
+            return $this->consumers[$topic];
+        }
+        if (isset($this->topics[$topic])) {
+            $className = $this->topics[$topic];
+            $class = new $className();
+            $this->consumers[$topic] = $class;
+            return $class;
         }
     }
 }

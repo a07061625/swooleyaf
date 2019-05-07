@@ -13,10 +13,12 @@ use SyPrint\FeYin\AccessToken;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-final class PrintUtilFeYin extends PrintUtilBase {
+final class PrintUtilFeYin extends PrintUtilBase
+{
     use SimpleTrait;
 
-    public static function getAccessToken(string $appId) : string {
+    public static function getAccessToken(string $appId) : string
+    {
         $nowTime = Tool::getNowTime();
         $redisKey = Project::REDIS_PREFIX_PRINT_FEYIN_ACCOUNT . $appId;
         $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);

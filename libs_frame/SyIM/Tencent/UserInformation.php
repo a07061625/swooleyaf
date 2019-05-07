@@ -10,7 +10,8 @@ namespace SyIM\Tencent;
 use Constant\ErrorCode;
 use Exception\IM\TencentException;
 
-class UserInformation {
+class UserInformation
+{
     /**
      * 用户ID
      * @var string
@@ -22,16 +23,19 @@ class UserInformation {
      */
     private $userItems = [];
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @return string
      */
-    public function getUserId() : string {
+    public function getUserId() : string
+    {
         return $this->userId;
     }
 
@@ -39,8 +43,9 @@ class UserInformation {
      * @param string $userId
      * @throws \Exception\IM\TencentException
      */
-    public function setUserId(string $userId){
-        if(strlen($userId) <= 32){
+    public function setUserId(string $userId)
+    {
+        if (strlen($userId) <= 32) {
             $this->userId = $userId;
         } else {
             throw new TencentException('用户ID不合法', ErrorCode::IM_PARAM_ERROR);
@@ -50,32 +55,36 @@ class UserInformation {
     /**
      * @return array
      */
-    public function getUserItems() : array {
+    public function getUserItems() : array
+    {
         return $this->userItems;
     }
 
     /**
      * @param array $userItems
      */
-    public function setUserItems(array $userItems) {
+    public function setUserItems(array $userItems)
+    {
         $this->userItems = $userItems;
     }
 
     /**
      * @param array $userItem
      */
-    public function addUserItem(array $userItem){
+    public function addUserItem(array $userItem)
+    {
         $this->userItems[] = [
             'Tag' => $userItem['tag'],
             'Value' => $userItem['value'],
         ];
     }
 
-    public function getDetail() : array {
-        if(strlen($this->userId) == 0){
+    public function getDetail() : array
+    {
+        if (strlen($this->userId) == 0) {
             throw new TencentException('用户ID不能为空', ErrorCode::IM_PARAM_ERROR);
         }
-        if(empty($this->userItems)){
+        if (empty($this->userItems)) {
             throw new TencentException('用户资料不能为空', ErrorCode::IM_PARAM_ERROR);
         }
 

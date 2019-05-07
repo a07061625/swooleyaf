@@ -7,14 +7,16 @@
  */
 namespace SyPrint;
 
-abstract class PrintBaseFeYin extends PrintBase {
+abstract class PrintBaseFeYin extends PrintBase
+{
     /**
      * 服务域名
      * @var string
      */
     protected $serviceDomain = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceDomain = 'https://api.open.feyin.net';
     }

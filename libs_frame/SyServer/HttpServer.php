@@ -26,7 +26,8 @@ use Traits\Server\BasicHttpTrait;
 use Yaf\Registry;
 use Yaf\Request\Http;
 
-class HttpServer extends BaseServer {
+class HttpServer extends BaseServer
+{
     use BasicHttpTrait;
     use HttpServerTrait;
     use PreProcessHttpFrameTrait;
@@ -85,11 +86,12 @@ class HttpServer extends BaseServer {
      */
     private static $_reqTask = null;
 
-    public function __construct(int $port) {
+    public function __construct(int $port)
+    {
         parent::__construct($port);
         $projectLength = strlen(SY_PROJECT);
         $serverType = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.modules.' . substr(SY_MODULE, $projectLength) . '.type');
-        if(!in_array($serverType, [Server::SERVER_TYPE_API_GATE, Server::SERVER_TYPE_FRONT_GATE])){
+        if (!in_array($serverType, [Server::SERVER_TYPE_API_GATE, Server::SERVER_TYPE_FRONT_GATE], true)) {
             exit('服务端类型不支持' . PHP_EOL);
         }
         define('SY_SERVER_TYPE', $serverType);
@@ -110,10 +112,12 @@ class HttpServer extends BaseServer {
         $this->_reqCookieDomains = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.domain.cookie');
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    public function start() {
+    public function start()
+    {
         $this->initTableHttp();
         //初始化swoole服务
         $this->_server = new \swoole_websocket_server($this->_host, $this->_port);
@@ -134,69 +138,21 @@ class HttpServer extends BaseServer {
     }
 
     /**
-     * 设置响应头信息
-     * @param \swoole_http_response $response
-     * @param array|bool $headers
-     */
-    private function setRspHeaders(\swoole_http_response $response, $headers) {
-        if(is_array($headers)){
-            if(!isset($headers['Content-Type'])){
-                $response->header('Content-Type', 'application/json; charset=utf-8');
-            }
-
-            foreach ($headers as $headerName => $headerVal) {
-                $response->header($headerName, $headerVal);
-            }
-
-            if(isset($headers['Location'])){
-                $response->status(302);
-            } else if(isset($headers['Syresp-Status'])){
-                $response->status($headers['Syresp-Status']);
-            }
-        } else {
-            $response->header('Access-Control-Allow-Origin', '*');
-            $response->header('Content-Type', 'application/json; charset=utf-8');
-        }
-    }
-
-    /**
-     * 设置响应cookie信息
-     * @param \swoole_http_response $response
-     * @param array|bool $cookies
-     */
-    private function setRspCookies(\swoole_http_response $response, $cookies) {
-        if(is_array($cookies)){
-            foreach ($cookies as $cookie) {
-                if(is_array($cookie) && isset($cookie['key'])
-                   && (is_string($cookie['key']) || is_numeric($cookie['key']))){
-                    $cookieName = preg_replace('/[^0-9a-zA-Z\-\_]+/', '', $cookie['key']);
-                    $value = Tool::getArrayVal($cookie, 'value', null);
-                    $expires = Tool::getArrayVal($cookie, 'expires', 0);
-                    $path = Tool::getArrayVal($cookie, 'path', '/');
-                    $domain = Tool::getArrayVal($cookie, 'domain', '');
-                    $secure = Tool::getArrayVal($cookie, 'secure', false);
-                    $httpOnly = Tool::getArrayVal($cookie, 'httponly', false);
-                    $response->cookie($cookieName, $value, $expires, $path, $domain, $secure, $httpOnly);
-                }
-            }
-        }
-    }
-
-    /**
      * 生成web socket服务端签名
      * @param string $socketKey 客户端密钥
      * @return bool|string
      */
-    public static function createSocketAccept(string $socketKey) {
+    public static function createSocketAccept(string $socketKey)
+    {
         if (is_null($socketKey)) {
             return false;
-        } else if(preg_match('/^[0-9a-zA-Z\+\/]{21}[AQgw]\={2}$/', $socketKey) == 0){
+        } elseif (preg_match('/^[0-9a-zA-Z\+\/]{21}[AQgw]\={2}$/', $socketKey) == 0) {
             return false;
-        } else if(strlen(base64_decode($socketKey)) != 16){
+        } elseif (strlen(base64_decode($socketKey, true)) != 16) {
             return false;
         }
 
-        return base64_encode(sha1($socketKey . '258EAFA5-E914-47DA-95CA-C5AB0DC85B11',true));
+        return base64_encode(sha1($socketKey . '258EAFA5-E914-47DA-95CA-C5AB0DC85B11', true));
     }
 
     /**
@@ -206,7 +162,8 @@ class HttpServer extends BaseServer {
      * @return bool
      * @throws \Exception\Swoole\HttpServerException
      */
-    public static function checkSocketAccept(string $socketKey,string $socketAccept) : bool {
+    public static function checkSocketAccept(string $socketKey, string $socketAccept) : bool
+    {
         if (is_null($socketAccept)) {
             throw new HttpServerException('服务端签名不能为空', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
@@ -219,189 +176,8 @@ class HttpServer extends BaseServer {
         }
     }
 
-    /**
-     * 初始化公共数据
-     * @param \swoole_http_request $request
-     */
-    private function initReceive(\swoole_http_request $request) {
-        Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
-        $_POST = $request->post ?? [];
-        $_SESSION = [];
-        self::$_reqHeaders = $request->header ?? [];
-        self::$_reqServers = $request->server ?? [];
-        self::$_reqTag = isset(self::$_reqHeaders[Server::SERVER_HTTP_TAG_REQUEST_HEADER]) ? false : true;
-        self::$_rspMsg = '';
-        $this->createReqId();
-
-        $taskData = $_POST[Server::SERVER_DATA_KEY_TASK] ?? '';
-        self::$_reqTask = is_string($taskData) && (strlen($taskData) > 0) ? $taskData : null;
-
-        $_SERVER = [];
-        foreach (self::$_reqServers as $key => $val) {
-            $_SERVER[strtoupper($key)] = $val;
-        }
-        foreach (self::$_reqHeaders as $key => $val) {
-            $_SERVER[strtoupper($key)] = $val;
-        }
-        if(!isset($_SERVER['HTTP_HOST'])){
-            $_SERVER['HTTP_HOST'] = $this->_host . ':' . $this->_port;
-        }
-        if(!isset($_SERVER['REQUEST_URI'])){
-            $_SERVER['REQUEST_URI'] = '/';
-        }
-        $_SERVER[Server::SERVER_DATA_KEY_TIMESTAMP] = time();
-    }
-
-    private function initRequest(\swoole_http_request $request,array $rspHeaders) {
-        self::$_reqStartTime = microtime(true);
-        self::$_syServer->incr(self::$_serverToken, 'request_times', 1);
-        $_GET = $request->get ?? [];
-        $_FILES = $request->files ?? [];
-        $_COOKIE = $request->cookie ?? [];
-        $GLOBALS['HTTP_RAW_POST_DATA'] = $request->rawContent();
-        $_POST[RequestSign::KEY_SIGN] = $_GET[RequestSign::KEY_SIGN] ?? '';
-        unset($_GET[RequestSign::KEY_SIGN]);
-        //注册全局信息
-        Registry::set(Server::REGISTRY_NAME_REQUEST_HEADER, self::$_reqHeaders);
-        Registry::set(Server::REGISTRY_NAME_REQUEST_SERVER, self::$_reqServers);
-        Registry::set(Server::REGISTRY_NAME_RESPONSE_HEADER, $rspHeaders);
-        Registry::set(Server::REGISTRY_NAME_RESPONSE_COOKIE, []);
-        SessionTool::initSessionJwt();
-    }
-
-    /**
-     * 清理请求数据
-     */
-    private function clearRequest() {
-        $_GET = [];
-        $_POST = [];
-        $_FILES = [];
-        $_COOKIE = [];
-        $_SERVER = [];
-        $_SESSION = [];
-        $GLOBALS['HTTP_RAW_POST_DATA'] = '';
-        self::$_reqTag = true;
-        self::$_reqTask = null;
-        self::$_reqHeaders = [];
-        self::$_reqServers = [];
-        self::$_response = null;
-        self::$_reqId = '';
-        self::$_rspMsg = '';
-
-        //清除yaf注册常量
-        Registry::del(Server::REGISTRY_NAME_REQUEST_HEADER);
-        Registry::del(Server::REGISTRY_NAME_REQUEST_SERVER);
-        Registry::del(Server::REGISTRY_NAME_RESPONSE_HEADER);
-        Registry::del(Server::REGISTRY_NAME_RESPONSE_COOKIE);
-        Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION);
-        Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
-
-        self::$_syServer->set(self::$_serverToken, [
-            'memory_usage' => memory_get_usage(),
-        ]);
-    }
-
-    /**
-     * 处理请求头
-     * @param array $headers 响应头配置
-     * @return int
-     */
-    private function handleReqHeader(array &$headers) : int {
-        $headers['Access-Control-Allow-Origin'] = $_SERVER['ORIGIN'] ?? '*';
-        $headers['Access-Control-Allow-Credentials'] = 'true';
-        if (isset($_SERVER['ACCESS-CONTROL-REQUEST-METHOD'])) { //校验请求方式
-            $methodStr = ', ' . strtoupper(trim($_SERVER['ACCESS-CONTROL-REQUEST-METHOD']));
-            if (strpos(', ' . $this->_cors['allow']['methodStr'], $methodStr) === false) {
-                return self::RESPONSE_RESULT_TYPE_FORBIDDEN;
-            }
-        }
-        if (isset($_SERVER['ACCESS-CONTROL-REQUEST-HEADERS'])) { //校验请求头
-            $controlReqHeaders = explode(',', strtolower($_SERVER['ACCESS-CONTROL-REQUEST-HEADERS']));
-            foreach ($controlReqHeaders as $eHeader) {
-                $headerName = trim($eHeader);
-                if ((strlen($headerName) > 0) && !in_array($headerName, $this->_cors['allow']['headers'])) {
-                    return self::RESPONSE_RESULT_TYPE_FORBIDDEN;
-                }
-            }
-        }
-
-        $domainTag = $_SERVER['SY-DOMAIN'] ?? 'base';
-        $cookieDomain = $this->_reqCookieDomains[$domainTag] ?? null;
-        if(is_null($cookieDomain)){
-            return self::RESPONSE_RESULT_TYPE_FORBIDDEN;
-        }
-        $_SERVER['SY-DOMAIN'] = $cookieDomain;
-
-        $reqMethod = strtoupper(Tool::getArrayVal($_SERVER, 'REQUEST_METHOD', 'GET'));
-        if ($reqMethod == 'OPTIONS') {
-            //预请求OPTIONS的响应结果有效时间
-            $headers['Access-Control-Max-Age'] = $this->_cors['options']['maxage'];
-            $headers['Access-Control-Allow-Methods'] = $this->_cors['allow']['headerStr'];
-            $headers['Access-Control-Allow-Headers'] = $this->_cors['allow']['methodStr'];
-            return self::RESPONSE_RESULT_TYPE_ALLOW;
-        }
-        return self::RESPONSE_RESULT_TYPE_ACCEPT;
-    }
-
-    /**
-     * 处理请求业务
-     * @param \swoole_http_request $request
-     * @param array $initRspHeaders 初始化响应头
-     * @return string
-     */
-    private function handleReqService(\swoole_http_request $request,array $initRspHeaders) : string {
-        $uri = Tool::getArrayVal(self::$_reqServers, 'request_uri', '/');
-        $uriCheckRes = $this->checkRequestUri($uri);
-        if(strlen($uriCheckRes['error']) > 0){
-            return $uriCheckRes['error'];
-        }
-        $uri = $uriCheckRes['uri'];
-        self::$_reqServers['request_uri'] = $uriCheckRes['uri'];
-
-        $funcName = $this->getPreProcessFunction($uri, $this->preProcessMapFrame, $this->preProcessMapProject);
-        if(is_bool($funcName)){
-            $error = new Result();
-            $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '预处理函数命名不合法');
-            $result = $error->getJson();
-            unset($error);
-            return $result;
-        } else if(strlen($funcName) > 0){
-            return $this->$funcName($request);
-        }
-
-        $this->initRequest($request, $initRspHeaders);
-
-        $error = null;
-        $result = '';
-        $httpObj = new Http($uri);
-        try {
-            self::checkRequestCurrentLimit();
-            $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
-            if(strlen($result) == 0){
-                $error = new Result();
-                $error->setCodeMsg(ErrorCode::SWOOLE_SERVER_NO_RESPONSE_ERROR, '未设置响应数据');
-            }
-        } catch (\Exception $e){
-            SyResponseHttp::header('Content-Type', 'application/json; charset=utf-8');
-            if(SY_REQ_EXCEPTION_HANDLE_TYPE){
-                $error = $this->handleReqExceptionByFrame($e);
-            } else {
-                $error = $this->handleReqExceptionByProject($e);
-            }
-        } finally {
-            self::$_syServer->decr(self::$_serverToken, 'request_handling', 1);
-            $this->reportLongTimeReq($uri, array_merge($_GET, $_POST), Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
-            unset($httpObj);
-            if(is_object($error)){
-                $result = $error->getJson();
-                unset($error);
-            }
-        }
-
-        return $result;
-    }
-
-    public function onStart(\swoole_server $server){
+    public function onStart(\swoole_server $server)
+    {
         $this->basicStart($server);
         $this->addTaskBase($server);
 
@@ -413,17 +189,19 @@ class HttpServer extends BaseServer {
         $taskDataToken = $this->_messagePack->packData();
         $this->_messagePack->init();
 
-        $server->tick(Project::TIME_TASK_REFRESH_TOKEN_EXPIRE, function() use ($server, $taskDataToken) {
+        $server->tick(Project::TIME_TASK_REFRESH_TOKEN_EXPIRE, function () use ($server, $taskDataToken) {
             $server->task($taskDataToken);
         });
         $this->addTaskHttpTrait($server);
     }
 
-    public function onWorkerStop(\swoole_server $server, int $workerId){
+    public function onWorkerStop(\swoole_server $server, int $workerId)
+    {
         $this->basicWorkStop($server, $workerId);
     }
 
-    public function onWorkerError(\swoole_server $server, $workId, $workPid, $exitCode){
+    public function onWorkerError(\swoole_server $server, $workId, $workPid, $exitCode)
+    {
         $this->basicWorkError($server, $workId, $workPid, $exitCode);
 
         if (self::$_response) {
@@ -446,7 +224,8 @@ class HttpServer extends BaseServer {
      * @param \swoole_http_response $response
      * @return bool
      */
-    public function onHandshake(\swoole_http_request $request,\swoole_http_response $response) {
+    public function onHandshake(\swoole_http_request $request, \swoole_http_response $response)
+    {
         $socketAccept = self::createSocketAccept(Tool::getArrayVal($request->header, 'sec-websocket-key', null));
         if ($socketAccept === false) {
             $response->end();
@@ -465,7 +244,7 @@ class HttpServer extends BaseServer {
                 }
             }
 
-            if(!$checkRes){
+            if (!$checkRes) {
                 $response->end();
                 return false;
             }
@@ -481,8 +260,8 @@ class HttpServer extends BaseServer {
 
         $fd = $request->fd;
         $server = $this->_server;
-        $this->_server->defer(function() use ($fd, $server) {
-            $server->push($fd, "hello, welcome", WEBSOCKET_OPCODE_TEXT);
+        $this->_server->defer(function () use ($fd, $server) {
+            $server->push($fd, 'hello, welcome', WEBSOCKET_OPCODE_TEXT);
         });
 
         return true;
@@ -502,13 +281,14 @@ class HttpServer extends BaseServer {
      * @param \swoole_websocket_server $server
      * @param \swoole_websocket_frame $frame
      */
-    public function onMessage(\swoole_websocket_server $server,\swoole_websocket_frame $frame) {
+    public function onMessage(\swoole_websocket_server $server, \swoole_websocket_frame $frame)
+    {
         $result = new Result();
         if ($frame->opcode != WEBSOCKET_OPCODE_BINARY) {
             $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '只接受二进制数据');
             $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
             return;
-        } else if (!$frame->finish) { //数据未发送完
+        } elseif (!$frame->finish) { //数据未发送完
             return;
         }
 
@@ -546,11 +326,11 @@ class HttpServer extends BaseServer {
                 $module = $this->_moduleContainer->getObj($commandData['api_module']);
 
                 try {
-                    if(is_null($module)){
+                    if (is_null($module)) {
                         $handleRes = false;
-                    } else if (($commandData['api_module'] == Project::MODULE_NAME_API) && ($commandData['api_method'] == 'GET')) {
+                    } elseif (($commandData['api_module'] == Project::MODULE_NAME_API) && ($commandData['api_method'] == 'GET')) {
                         $handleRes = $module->sendGetReq($commandData['api_uri'], $commandData['api_params']);
-                    } else if ($commandData['api_module'] == Project::MODULE_NAME_API) {
+                    } elseif ($commandData['api_module'] == Project::MODULE_NAME_API) {
                         $handleRes = $module->sendPostReq($commandData['api_uri'], $commandData['api_params']);
                     } else {
                         $handleRes = $module->sendApiReq($commandData['api_uri'], $commandData['api_params']);
@@ -576,7 +356,7 @@ class HttpServer extends BaseServer {
                 $module = $this->_moduleContainer->getObj($commandData['task_module']);
 
                 try {
-                    if(is_null($module)){
+                    if (is_null($module)) {
                         $handleRes = false;
                     } else {
                         $handleRes = $module->sendTaskReq($commandData['task_command'], $commandData['task_params']);
@@ -603,17 +383,16 @@ class HttpServer extends BaseServer {
         }
     }
 
-    public function onTask(\swoole_server $server, int $taskId, int $fromId, string $data){
+    public function onTask(\swoole_server $server, int $taskId, int $fromId, string $data)
+    {
         $baseRes = $this->handleTaskBase($server, $taskId, $fromId, $data);
-        if(is_array($baseRes)){
+        if (is_array($baseRes)) {
             $taskCommand = Tool::getArrayVal($baseRes['params'], 'task_command', '');
             switch ($taskCommand) {
                 default:
                     $this->handleTaskHttpTrait($server, $taskId, $fromId, $baseRes);
             }
         }
-
-        return null;
     }
 
     /**
@@ -621,17 +400,18 @@ class HttpServer extends BaseServer {
      * @param \swoole_http_request $request
      * @param \swoole_http_response $response
      */
-    public function onRequest(\swoole_http_request $request,\swoole_http_response $response){
+    public function onRequest(\swoole_http_request $request, \swoole_http_response $response)
+    {
         self::$_response = $response;
         $this->initReceive($request);
-        if(is_null(self::$_reqTask)){
+        if (is_null(self::$_reqTask)) {
             $rspHeaders = [];
             $handleHeaderRes = $this->handleReqHeader($rspHeaders);
-            if($handleHeaderRes == HttpServer::RESPONSE_RESULT_TYPE_ACCEPT){
+            if ($handleHeaderRes == self::RESPONSE_RESULT_TYPE_ACCEPT) {
                 self::$_rspMsg = $this->handleReqService($request, $rspHeaders);
                 $this->setRspCookies($response, Registry::get(Server::REGISTRY_NAME_RESPONSE_COOKIE));
                 $this->setRspHeaders($response, Registry::get(Server::REGISTRY_NAME_RESPONSE_HEADER));
-            } else if($handleHeaderRes == HttpServer::RESPONSE_RESULT_TYPE_ALLOW){
+            } elseif ($handleHeaderRes == self::RESPONSE_RESULT_TYPE_ALLOW) {
                 $rspHeaders['Content-Type'] = 'application/json; charset=utf-8';
                 $this->setRspHeaders($response, $rspHeaders);
             } else {
@@ -657,5 +437,243 @@ class HttpServer extends BaseServer {
         }
 
         $this->clearRequest();
+    }
+
+    /**
+     * 设置响应头信息
+     * @param \swoole_http_response $response
+     * @param array|bool $headers
+     */
+    private function setRspHeaders(\swoole_http_response $response, $headers)
+    {
+        if (is_array($headers)) {
+            if (!isset($headers['Content-Type'])) {
+                $response->header('Content-Type', 'application/json; charset=utf-8');
+            }
+
+            foreach ($headers as $headerName => $headerVal) {
+                $response->header($headerName, $headerVal);
+            }
+
+            if (isset($headers['Location'])) {
+                $response->status(302);
+            } elseif (isset($headers['Syresp-Status'])) {
+                $response->status($headers['Syresp-Status']);
+            }
+        } else {
+            $response->header('Access-Control-Allow-Origin', '*');
+            $response->header('Content-Type', 'application/json; charset=utf-8');
+        }
+    }
+
+    /**
+     * 设置响应cookie信息
+     * @param \swoole_http_response $response
+     * @param array|bool $cookies
+     */
+    private function setRspCookies(\swoole_http_response $response, $cookies)
+    {
+        if (is_array($cookies)) {
+            foreach ($cookies as $cookie) {
+                if (is_array($cookie) && isset($cookie['key'])
+                   && (is_string($cookie['key']) || is_numeric($cookie['key']))) {
+                    $cookieName = preg_replace('/[^0-9a-zA-Z\-\_]+/', '', $cookie['key']);
+                    $value = Tool::getArrayVal($cookie, 'value', null);
+                    $expires = Tool::getArrayVal($cookie, 'expires', 0);
+                    $path = Tool::getArrayVal($cookie, 'path', '/');
+                    $domain = Tool::getArrayVal($cookie, 'domain', '');
+                    $secure = Tool::getArrayVal($cookie, 'secure', false);
+                    $httpOnly = Tool::getArrayVal($cookie, 'httponly', false);
+                    $response->cookie($cookieName, $value, $expires, $path, $domain, $secure, $httpOnly);
+                }
+            }
+        }
+    }
+
+    /**
+     * 初始化公共数据
+     * @param \swoole_http_request $request
+     */
+    private function initReceive(\swoole_http_request $request)
+    {
+        Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
+        $_POST = $request->post ?? [];
+        $_SESSION = [];
+        self::$_reqHeaders = $request->header ?? [];
+        self::$_reqServers = $request->server ?? [];
+        self::$_reqTag = isset(self::$_reqHeaders[Server::SERVER_HTTP_TAG_REQUEST_HEADER]) ? false : true;
+        self::$_rspMsg = '';
+        $this->createReqId();
+
+        $taskData = $_POST[Server::SERVER_DATA_KEY_TASK] ?? '';
+        self::$_reqTask = is_string($taskData) && (strlen($taskData) > 0) ? $taskData : null;
+
+        $_SERVER = [];
+        foreach (self::$_reqServers as $key => $val) {
+            $_SERVER[strtoupper($key)] = $val;
+        }
+        foreach (self::$_reqHeaders as $key => $val) {
+            $_SERVER[strtoupper($key)] = $val;
+        }
+        if (!isset($_SERVER['HTTP_HOST'])) {
+            $_SERVER['HTTP_HOST'] = $this->_host . ':' . $this->_port;
+        }
+        if (!isset($_SERVER['REQUEST_URI'])) {
+            $_SERVER['REQUEST_URI'] = '/';
+        }
+        $_SERVER[Server::SERVER_DATA_KEY_TIMESTAMP] = time();
+    }
+
+    private function initRequest(\swoole_http_request $request, array $rspHeaders)
+    {
+        self::$_reqStartTime = microtime(true);
+        self::$_syServer->incr(self::$_serverToken, 'request_times', 1);
+        $_GET = $request->get ?? [];
+        $_FILES = $request->files ?? [];
+        $_COOKIE = $request->cookie ?? [];
+        $GLOBALS['HTTP_RAW_POST_DATA'] = $request->rawContent();
+        $_POST[RequestSign::KEY_SIGN] = $_GET[RequestSign::KEY_SIGN] ?? '';
+        unset($_GET[RequestSign::KEY_SIGN]);
+        //注册全局信息
+        Registry::set(Server::REGISTRY_NAME_REQUEST_HEADER, self::$_reqHeaders);
+        Registry::set(Server::REGISTRY_NAME_REQUEST_SERVER, self::$_reqServers);
+        Registry::set(Server::REGISTRY_NAME_RESPONSE_HEADER, $rspHeaders);
+        Registry::set(Server::REGISTRY_NAME_RESPONSE_COOKIE, []);
+        SessionTool::initSessionJwt();
+    }
+
+    /**
+     * 清理请求数据
+     */
+    private function clearRequest()
+    {
+        $_GET = [];
+        $_POST = [];
+        $_FILES = [];
+        $_COOKIE = [];
+        $_SERVER = [];
+        $_SESSION = [];
+        $GLOBALS['HTTP_RAW_POST_DATA'] = '';
+        self::$_reqTag = true;
+        self::$_reqTask = null;
+        self::$_reqHeaders = [];
+        self::$_reqServers = [];
+        self::$_response = null;
+        self::$_reqId = '';
+        self::$_rspMsg = '';
+
+        //清除yaf注册常量
+        Registry::del(Server::REGISTRY_NAME_REQUEST_HEADER);
+        Registry::del(Server::REGISTRY_NAME_REQUEST_SERVER);
+        Registry::del(Server::REGISTRY_NAME_RESPONSE_HEADER);
+        Registry::del(Server::REGISTRY_NAME_RESPONSE_COOKIE);
+        Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION);
+        Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
+
+        self::$_syServer->set(self::$_serverToken, [
+            'memory_usage' => memory_get_usage(),
+        ]);
+    }
+
+    /**
+     * 处理请求头
+     * @param array $headers 响应头配置
+     * @return int
+     */
+    private function handleReqHeader(array &$headers) : int
+    {
+        $headers['Access-Control-Allow-Origin'] = $_SERVER['ORIGIN'] ?? '*';
+        $headers['Access-Control-Allow-Credentials'] = 'true';
+        if (isset($_SERVER['ACCESS-CONTROL-REQUEST-METHOD'])) { //校验请求方式
+            $methodStr = ', ' . strtoupper(trim($_SERVER['ACCESS-CONTROL-REQUEST-METHOD']));
+            if (strpos(', ' . $this->_cors['allow']['methodStr'], $methodStr) === false) {
+                return self::RESPONSE_RESULT_TYPE_FORBIDDEN;
+            }
+        }
+        if (isset($_SERVER['ACCESS-CONTROL-REQUEST-HEADERS'])) { //校验请求头
+            $controlReqHeaders = explode(',', strtolower($_SERVER['ACCESS-CONTROL-REQUEST-HEADERS']));
+            foreach ($controlReqHeaders as $eHeader) {
+                $headerName = trim($eHeader);
+                if ((strlen($headerName) > 0) && !in_array($headerName, $this->_cors['allow']['headers'], true)) {
+                    return self::RESPONSE_RESULT_TYPE_FORBIDDEN;
+                }
+            }
+        }
+
+        $domainTag = $_SERVER['SY-DOMAIN'] ?? 'base';
+        $cookieDomain = $this->_reqCookieDomains[$domainTag] ?? null;
+        if (is_null($cookieDomain)) {
+            return self::RESPONSE_RESULT_TYPE_FORBIDDEN;
+        }
+        $_SERVER['SY-DOMAIN'] = $cookieDomain;
+
+        $reqMethod = strtoupper(Tool::getArrayVal($_SERVER, 'REQUEST_METHOD', 'GET'));
+        if ($reqMethod == 'OPTIONS') {
+            //预请求OPTIONS的响应结果有效时间
+            $headers['Access-Control-Max-Age'] = $this->_cors['options']['maxage'];
+            $headers['Access-Control-Allow-Methods'] = $this->_cors['allow']['headerStr'];
+            $headers['Access-Control-Allow-Headers'] = $this->_cors['allow']['methodStr'];
+            return self::RESPONSE_RESULT_TYPE_ALLOW;
+        }
+        return self::RESPONSE_RESULT_TYPE_ACCEPT;
+    }
+
+    /**
+     * 处理请求业务
+     * @param \swoole_http_request $request
+     * @param array $initRspHeaders 初始化响应头
+     * @return string
+     */
+    private function handleReqService(\swoole_http_request $request, array $initRspHeaders) : string
+    {
+        $uri = Tool::getArrayVal(self::$_reqServers, 'request_uri', '/');
+        $uriCheckRes = $this->checkRequestUri($uri);
+        if (strlen($uriCheckRes['error']) > 0) {
+            return $uriCheckRes['error'];
+        }
+        $uri = $uriCheckRes['uri'];
+        self::$_reqServers['request_uri'] = $uriCheckRes['uri'];
+
+        $funcName = $this->getPreProcessFunction($uri, $this->preProcessMapFrame, $this->preProcessMapProject);
+        if (is_bool($funcName)) {
+            $error = new Result();
+            $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '预处理函数命名不合法');
+            $result = $error->getJson();
+            unset($error);
+            return $result;
+        } elseif (strlen($funcName) > 0) {
+            return $this->$funcName($request);
+        }
+
+        $this->initRequest($request, $initRspHeaders);
+
+        $error = null;
+        $result = '';
+        $httpObj = new Http($uri);
+        try {
+            self::checkRequestCurrentLimit();
+            $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
+            if (strlen($result) == 0) {
+                $error = new Result();
+                $error->setCodeMsg(ErrorCode::SWOOLE_SERVER_NO_RESPONSE_ERROR, '未设置响应数据');
+            }
+        } catch (\Exception $e) {
+            SyResponseHttp::header('Content-Type', 'application/json; charset=utf-8');
+            if (SY_REQ_EXCEPTION_HANDLE_TYPE) {
+                $error = $this->handleReqExceptionByFrame($e);
+            } else {
+                $error = $this->handleReqExceptionByProject($e);
+            }
+        } finally {
+            self::$_syServer->decr(self::$_serverToken, 'request_handling', 1);
+            $this->reportLongTimeReq($uri, array_merge($_GET, $_POST), Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
+            unset($httpObj);
+            if (is_object($error)) {
+                $result = $error->getJson();
+                unset($error);
+            }
+        }
+
+        return $result;
     }
 }

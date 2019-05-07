@@ -14,7 +14,8 @@ use SyPrint\PrintUtilBase;
 use SyPrint\PrintUtilFeYin;
 use Tool\Tool;
 
-class DeviceMsgClear extends PrintBaseFeYin {
+class DeviceMsgClear extends PrintBaseFeYin
+{
     /**
      * 应用ID
      * @var string
@@ -26,28 +27,32 @@ class DeviceMsgClear extends PrintBaseFeYin {
      */
     private $device_no = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $deviceNo
      * @throws \Exception\SyPrint\FeYinException
      */
-    public function setDeviceNo(string $deviceNo){
-        if(ctype_digit($deviceNo)){
+    public function setDeviceNo(string $deviceNo)
+    {
+        if (ctype_digit($deviceNo)) {
             $this->device_no = $deviceNo;
         } else {
             throw new FeYinException('机器编号不合法', ErrorCode::PRINT_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(strlen($this->device_no) == 0){
+    public function getDetail() : array
+    {
+        if (strlen($this->device_no) == 0) {
             throw new FeYinException('机器编号不能为空', ErrorCode::PRINT_PARAM_ERROR);
         }
 
@@ -62,7 +67,7 @@ class DeviceMsgClear extends PrintBaseFeYin {
         ];
         $sendRes = PrintUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['clear_cnt'])){
+        if (isset($sendData['clear_cnt'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::PRINT_POST_ERROR;

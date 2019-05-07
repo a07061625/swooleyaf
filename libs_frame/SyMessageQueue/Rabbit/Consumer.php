@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Exception\Amqp\AmqpException;
 use Tool\Tool;
 
-class Consumer {
+class Consumer
+{
     /**
      * @var \AMQPConnection
      */
@@ -21,13 +22,14 @@ class Consumer {
      */
     private $queue = null;
 
-    public function __construct(){
+    public function __construct()
+    {
         $configs = Tool::getConfig('messagequeue.' . SY_ENV . SY_PROJECT . '.rabbit');
 
         try {
             $this->conn = new \AMQPConnection($configs['conn']);
             $this->conn->pconnect();
-            if(!$this->conn->isPersistent()){
+            if (!$this->conn->isPersistent()) {
                 throw new AmqpException('amqp连接出错', ErrorCode::AMQP_CONNECT_ERROR);
             }
 
@@ -54,29 +56,33 @@ class Consumer {
         }
     }
 
-    public function __destruct(){
+    public function __destruct()
+    {
         $this->destroy();
     }
 
-    private function __clone(){
-    }
-
-    private function destroy() {
-        if(!is_null($this->queue)){
-            $this->queue = null;
-        }
-        if(!is_null($this->conn)){
-            if($this->conn->isPersistent()){
-                $this->conn->pdisconnect();
-            }
-            $this->conn = null;
-        }
+    private function __clone()
+    {
     }
 
     /**
      * @return \AMQPQueue
      */
-    public function getQueue() {
+    public function getQueue()
+    {
         return $this->queue;
+    }
+
+    private function destroy()
+    {
+        if (!is_null($this->queue)) {
+            $this->queue = null;
+        }
+        if (!is_null($this->conn)) {
+            if ($this->conn->isPersistent()) {
+                $this->conn->pdisconnect();
+            }
+            $this->conn = null;
+        }
     }
 }

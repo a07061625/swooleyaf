@@ -3,7 +3,8 @@ namespace SySms\AliYun;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class QuerySendDetailsRequest extends RpcAcsRequest {
+class QuerySendDetailsRequest extends RpcAcsRequest
+{
     private $sendDate;
     private $pageSize;
     private $phoneNumber;
@@ -13,80 +14,97 @@ class QuerySendDetailsRequest extends RpcAcsRequest {
     private $resourceOwnerId;
     private $ownerId;
 
-    public function __construct(){
-        parent::__construct("Dysmsapi", "2017-05-25", "QuerySendDetails");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Dysmsapi', '2017-05-25', 'QuerySendDetails');
+        $this->setMethod('POST');
     }
 
-    public function getSendDate(){
+    public function getSendDate()
+    {
         return $this->sendDate;
     }
 
-    public function setSendDate($sendDate){
+    public function setSendDate($sendDate)
+    {
         $this->sendDate = $sendDate;
-        $this->queryParameters["SendDate"] = $sendDate;
+        $this->queryParameters['SendDate'] = $sendDate;
     }
 
-    public function getPageSize(){
+    public function getPageSize()
+    {
         return $this->pageSize;
     }
 
-    public function setPageSize($pageSize){
+    public function setPageSize($pageSize)
+    {
         $this->pageSize = $pageSize;
-        $this->queryParameters["PageSize"] = $pageSize;
+        $this->queryParameters['PageSize'] = $pageSize;
     }
 
-    public function getPhoneNumber(){
+    public function getPhoneNumber()
+    {
         return $this->phoneNumber;
     }
 
-    public function setPhoneNumber($phoneNumber){
+    public function setPhoneNumber($phoneNumber)
+    {
         $this->phoneNumber = $phoneNumber;
-        $this->queryParameters["PhoneNumber"] = $phoneNumber;
+        $this->queryParameters['PhoneNumber'] = $phoneNumber;
     }
 
-    public function getResourceOwnerAccount(){
+    public function getResourceOwnerAccount()
+    {
         return $this->resourceOwnerAccount;
     }
 
-    public function setResourceOwnerAccount($resourceOwnerAccount){
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
-    public function getCurrentPage(){
+    public function getCurrentPage()
+    {
         return $this->currentPage;
     }
 
-    public function setCurrentPage($currentPage){
+    public function setCurrentPage($currentPage)
+    {
         $this->currentPage = $currentPage;
-        $this->queryParameters["CurrentPage"] = $currentPage;
+        $this->queryParameters['CurrentPage'] = $currentPage;
     }
 
-    public function getBizId(){
+    public function getBizId()
+    {
         return $this->bizId;
     }
 
-    public function setBizId($bizId){
+    public function setBizId($bizId)
+    {
         $this->bizId = $bizId;
-        $this->queryParameters["BizId"] = $bizId;
+        $this->queryParameters['BizId'] = $bizId;
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 }

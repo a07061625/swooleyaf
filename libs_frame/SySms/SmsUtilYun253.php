@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-abstract class SmsUtilYun253 extends SmsUtilBase {
+abstract class SmsUtilYun253 extends SmsUtilBase
+{
     use SimpleTrait;
 
     /**
@@ -19,7 +20,8 @@ abstract class SmsUtilYun253 extends SmsUtilBase {
      * @param \SySms\SmsBaseYun253 $yun253Base
      * @return array
      */
-    public static function sendServiceRequest(SmsBaseYun253 $yun253Base){
+    public static function sendServiceRequest(SmsBaseYun253 $yun253Base)
+    {
         $resArr = [
             'code' => 0
         ];
@@ -38,16 +40,16 @@ abstract class SmsUtilYun253 extends SmsUtilBase {
             ],
             CURLOPT_TIMEOUT_MS => 2000,
         ]);
-        if($sendRes === false){
+        if ($sendRes === false) {
             $resArr['code'] = ErrorCode::SMS_POST_ERROR;
             $resArr['msg'] = '发送短信请求失败';
             return $resArr;
         }
 
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['code']) && ($sendData['code'] == 0)){
+        if (isset($sendData['code']) && ($sendData['code'] == 0)) {
             $resArr['data'] = $sendData;
-        } else if(isset($sendData['errorMsg'])){
+        } elseif (isset($sendData['errorMsg'])) {
             $resArr['code'] = ErrorCode::SMS_POST_ERROR;
             $resArr['msg'] = $sendData['errorMsg'];
         } else {

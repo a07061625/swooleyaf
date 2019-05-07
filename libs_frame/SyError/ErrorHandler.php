@@ -13,8 +13,10 @@ use Exception\Common\ErrorException;
 use Log\Log;
 use Yaf\Registry;
 
-class ErrorHandler {
-    private function __construct(){
+class ErrorHandler
+{
+    private function __construct()
+    {
     }
 
     /**
@@ -25,7 +27,8 @@ class ErrorHandler {
      * @param int $errLine
      * @throws \Exception\Common\ErrorException
      */
-    public static function handleError($errNo, $errStr, $errFile, $errLine) {
+    public static function handleError($errNo, $errStr, $errFile, $errLine)
+    {
         switch ($errNo) {
             case E_NOTICE:
             case E_WARNING:
@@ -41,7 +44,8 @@ class ErrorHandler {
     /**
      * 处理未捕获异常
      */
-    public static function handleException(\Throwable $exception) {
+    public static function handleException(\Throwable $exception)
+    {
         $msg = 'sy exception - ' . $exception->getMessage();
         Log::error($msg, $exception->getCode(), $exception->getTraceAsString());
 
@@ -51,10 +55,11 @@ class ErrorHandler {
     /**
      * 处理致命错误
      */
-    public static function handleFatalError(){
+    public static function handleFatalError()
+    {
         $error = error_get_last();
         if (!empty($error)) {
-            switch($error['type']){
+            switch ($error['type']) {
                 case E_ERROR:
                 case E_PARSE:
                 case E_CORE_ERROR:

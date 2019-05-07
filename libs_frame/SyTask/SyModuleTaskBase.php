@@ -10,7 +10,8 @@ namespace SyTask;
 use Tool\SyPack;
 use Tool\Tool;
 
-abstract class SyModuleTaskBase {
+abstract class SyModuleTaskBase
+{
     /**
      * @var \Tool\SyPack
      */
@@ -20,16 +21,19 @@ abstract class SyModuleTaskBase {
      */
     protected $moduleTag = '';
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->syPack = new SyPack();
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    public function sendSyHttpReq(string $url,array $params,$method='GET') {
+    public function sendSyHttpReq(string $url, array $params, $method = 'GET')
+    {
         $sendUrl = $url;
-        if(($method == 'GET') && !empty($params)){
+        if (($method == 'GET') && !empty($params)) {
             $sendUrl .= '?' . http_build_query($params);
         }
         $curlConfigs = [
@@ -40,7 +44,7 @@ abstract class SyModuleTaskBase {
             CURLOPT_HEADER => false,
             CURLOPT_RETURNTRANSFER => true,
         ];
-        if($method == 'POST'){
+        if ($method == 'POST') {
             $curlConfigs[CURLOPT_POST] = true;
             $curlConfigs[CURLOPT_POSTFIELDS] = http_build_query($params);
         }
@@ -49,7 +53,8 @@ abstract class SyModuleTaskBase {
         return $sendRes['res_no'] == 0 ? $sendRes['res_content'] : false;
     }
 
-    public function sendSyTaskReq(string $host,int $port,string $taskStr,string $protocol) {
+    public function sendSyTaskReq(string $host, int $port, string $taskStr, string $protocol)
+    {
         if ($protocol == 'http') {
             $url = 'http://' . $host . ':' . $port;
             Tool::sendSyHttpTaskReq($url, $taskStr);

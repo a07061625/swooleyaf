@@ -7,7 +7,8 @@
  */
 namespace SyPrint;
 
-abstract class PrintBase {
+abstract class PrintBase
+{
     /**
      * curl配置
      * @var array
@@ -19,7 +20,8 @@ abstract class PrintBase {
      */
     protected $reqData = [];
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
     abstract public function getDetail() : array;

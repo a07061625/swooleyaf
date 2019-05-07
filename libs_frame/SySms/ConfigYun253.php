@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Exception\Sms\Yun253Exception;
 use Tool\Tool;
 
-class ConfigYun253 {
+class ConfigYun253
+{
     /**
      * APP KEY
      * @var string
@@ -28,16 +29,24 @@ class ConfigYun253 {
      */
     private $urlSmsSend = '';
 
-    public function __construct() {
+    public function __construct()
+    {
     }
 
-    private function __clone() {
+    private function __clone()
+    {
+    }
+
+    public function __toString()
+    {
+        return Tool::jsonEncode($this->getConfigs(), JSON_UNESCAPED_UNICODE);
     }
 
     /**
      * @return string
      */
-    public function getAppKey() : string {
+    public function getAppKey() : string
+    {
         return $this->appKey;
     }
 
@@ -45,7 +54,8 @@ class ConfigYun253 {
      * @param string $appKey
      * @throws \Exception\Sms\Yun253Exception
      */
-    public function setAppKey(string $appKey) {
+    public function setAppKey(string $appKey)
+    {
         if (ctype_alnum($appKey)) {
             $this->appKey = $appKey;
         } else {
@@ -56,7 +66,8 @@ class ConfigYun253 {
     /**
      * @return string
      */
-    public function getAppSecret() : string {
+    public function getAppSecret() : string
+    {
         return $this->appSecret;
     }
 
@@ -64,7 +75,8 @@ class ConfigYun253 {
      * @param string $appSecret
      * @throws \Exception\Sms\Yun253Exception
      */
-    public function setAppSecret(string $appSecret) {
+    public function setAppSecret(string $appSecret)
+    {
         if (ctype_alnum($appSecret)) {
             $this->appSecret = $appSecret;
         } else {
@@ -75,7 +87,8 @@ class ConfigYun253 {
     /**
      * @return string
      */
-    public function getUrlSmsSend() : string {
+    public function getUrlSmsSend() : string
+    {
         return $this->urlSmsSend;
     }
 
@@ -83,23 +96,21 @@ class ConfigYun253 {
      * @param string $urlSmsSend
      * @throws \Exception\Sms\Yun253Exception
      */
-    public function setUrlSmsSend(string $urlSmsSend){
-        if(preg_match('/^(http|https)\:\/\/\S+$/', $urlSmsSend) > 0){
+    public function setUrlSmsSend(string $urlSmsSend)
+    {
+        if (preg_match('/^(http|https)\:\/\/\S+$/', $urlSmsSend) > 0) {
             $this->urlSmsSend = $urlSmsSend;
         } else {
             throw new Yun253Exception('短信下发链接不合法', ErrorCode::SMS_PARAM_ERROR);
         }
     }
 
-    public function __toString() {
-        return Tool::jsonEncode($this->getConfigs(), JSON_UNESCAPED_UNICODE);
-    }
-
     /**
      * 获取配置数组
      * @return array
      */
-    public function getConfigs() : array {
+    public function getConfigs() : array
+    {
         return [
             'app.key' => $this->appKey,
             'app.secret' => $this->appSecret,
