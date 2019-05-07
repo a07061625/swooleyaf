@@ -19,10 +19,6 @@
  */
 class Twig_Token
 {
-    protected $value;
-    protected $type;
-    protected $lineno;
-
     const EOF_TYPE = -1;
     const TEXT_TYPE = 0;
     const BLOCK_START_TYPE = 1;
@@ -36,6 +32,9 @@ class Twig_Token
     const PUNCTUATION_TYPE = 9;
     const INTERPOLATION_START_TYPE = 10;
     const INTERPOLATION_END_TYPE = 11;
+    protected $value;
+    protected $type;
+    protected $lineno;
 
     /**
      * @param int    $type   The type of the token
@@ -76,7 +75,7 @@ class Twig_Token
 
         return ($this->type === $type) && (
             null === $values ||
-            (is_array($values) && in_array($this->value, $values)) ||
+            (is_array($values) && in_array($this->value, $values, true)) ||
             $this->value == $values
         );
     }
@@ -159,7 +158,7 @@ class Twig_Token
                 throw new LogicException(sprintf('Token of type "%s" does not exist.', $type));
         }
 
-        return $short ? $name : 'Twig_Token::'.$name;
+        return $short ? $name : 'Twig_Token::' . $name;
     }
 
     /**

@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class GroupProductModify extends WxBaseShop {
+class GroupProductModify extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -31,21 +32,24 @@ class GroupProductModify extends WxBaseShop {
      */
     private $product = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/merchant/group/productmod?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $groupId
      * @throws \Exception\Wx\WxException
      */
-    public function setGroupId(int $groupId){
-        if($groupId > 0){
+    public function setGroupId(int $groupId)
+    {
+        if ($groupId > 0) {
             $this->reqData['group_id'] = $groupId;
         } else {
             throw new WxException('分组ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -55,10 +59,11 @@ class GroupProductModify extends WxBaseShop {
     /**
      * @param array $productList
      */
-    public function setProduct(array $productList){
+    public function setProduct(array $productList)
+    {
         foreach ($productList as $eProductInfo) {
-            if(isset($eProductInfo['product_id']) && is_string($eProductInfo['product_id']) && (strlen($eProductInfo['product_id']) > 0)
-               && isset($eProductInfo['mod_action']) && in_array($eProductInfo['mod_action'], [0, 1], true)){
+            if (isset($eProductInfo['product_id']) && is_string($eProductInfo['product_id']) && (strlen($eProductInfo['product_id']) > 0)
+               && isset($eProductInfo['mod_action']) && in_array($eProductInfo['mod_action'], [0, 1], true)) {
                 $this->product[$eProductInfo['product_id']] = [
                     'product_id' => $eProductInfo['product_id'],
                     'mod_action' => $eProductInfo['mod_action'],
@@ -71,9 +76,10 @@ class GroupProductModify extends WxBaseShop {
      * @param array $productInfo
      * @throws \Exception\Wx\WxException
      */
-    public function addProduct(array $productInfo){
-        if(isset($productInfo['product_id']) && is_string($productInfo['product_id']) && (strlen($productInfo['product_id']) > 0)
-           && isset($productInfo['mod_action']) && in_array($productInfo['mod_action'], [0, 1], true)){
+    public function addProduct(array $productInfo)
+    {
+        if (isset($productInfo['product_id']) && is_string($productInfo['product_id']) && (strlen($productInfo['product_id']) > 0)
+           && isset($productInfo['mod_action']) && in_array($productInfo['mod_action'], [0, 1], true)) {
             $this->product[$productInfo['product_id']] = [
                 'product_id' => $productInfo['product_id'],
                 'mod_action' => $productInfo['mod_action'],
@@ -83,11 +89,12 @@ class GroupProductModify extends WxBaseShop {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['group_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['group_id'])) {
             throw new WxException('分组ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(empty($this->product)){
+        if (empty($this->product)) {
             throw new WxException('商品列表不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['product'] = array_values($this->product);
@@ -100,7 +107,7 @@ class GroupProductModify extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

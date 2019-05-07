@@ -26,7 +26,7 @@ class Twig_TokenParser_From extends Twig_TokenParser
         $stream = $this->parser->getStream();
         $stream->expect('import');
 
-        $targets = array();
+        $targets = [];
         do {
             $name = $stream->expect(Twig_Token::NAME_TYPE)->getValue();
 
@@ -51,7 +51,7 @@ class Twig_TokenParser_From extends Twig_TokenParser
                 throw new Twig_Error_Syntax(sprintf('"%s" cannot be an imported macro as it is a reserved keyword.', $name), $token->getLine(), $stream->getSourceContext());
             }
 
-            $this->parser->addImportedSymbol('function', $alias, 'get'.$name, $node->getNode('var'));
+            $this->parser->addImportedSymbol('function', $alias, 'get' . $name, $node->getNode('var'));
         }
 
         return $node;

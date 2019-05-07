@@ -18,16 +18,21 @@
  */
 class Twig_NodeVisitor_Escaper extends Twig_BaseNodeVisitor
 {
-    protected $statusStack = array();
-    protected $blocks = array();
+    protected $statusStack = [];
+    protected $blocks = [];
     protected $safeAnalysis;
     protected $traverser;
     protected $defaultStrategy = false;
-    protected $safeVars = array();
+    protected $safeVars = [];
 
     public function __construct()
     {
         $this->safeAnalysis = new Twig_NodeVisitor_SafeAnalysis();
+    }
+
+    public function getPriority()
+    {
+        return 0;
     }
 
     protected function doEnterNode(Twig_Node $node, Twig_Environment $env)
@@ -36,8 +41,8 @@ class Twig_NodeVisitor_Escaper extends Twig_BaseNodeVisitor
             if ($env->hasExtension('Twig_Extension_Escaper') && $defaultStrategy = $env->getExtension('Twig_Extension_Escaper')->getDefaultStrategy($node->getTemplateName())) {
                 $this->defaultStrategy = $defaultStrategy;
             }
-            $this->safeVars = array();
-            $this->blocks = array();
+            $this->safeVars = [];
+            $this->blocks = [];
         } elseif ($node instanceof Twig_Node_AutoEscape) {
             $this->statusStack[] = $node->getAttribute('value');
         } elseif ($node instanceof Twig_Node_Block) {
@@ -53,8 +58,8 @@ class Twig_NodeVisitor_Escaper extends Twig_BaseNodeVisitor
     {
         if ($node instanceof Twig_Node_Module) {
             $this->defaultStrategy = false;
-            $this->safeVars = array();
-            $this->blocks = array();
+            $this->safeVars = [];
+            $this->blocks = [];
         } elseif ($node instanceof Twig_Node_Expression_Filter) {
             return $this->preEscapeFilterNode($node, $env);
         } elseif ($node instanceof Twig_Node_Print) {
@@ -115,7 +120,7 @@ class Twig_NodeVisitor_Escaper extends Twig_BaseNodeVisitor
 
         if (null === $safe) {
             if (null === $this->traverser) {
-                $this->traverser = new Twig_NodeTraverser($env, array($this->safeAnalysis));
+                $this->traverser = new Twig_NodeTraverser($env, [$this->safeAnalysis]);
             }
 
             $this->safeAnalysis->setSafeVars($this->safeVars);
@@ -124,7 +129,7 @@ class Twig_NodeVisitor_Escaper extends Twig_BaseNodeVisitor
             $safe = $this->safeAnalysis->getSafe($expression);
         }
 
-        return in_array($type, $safe) || in_array('all', $safe);
+        return in_array($type, $safe, true) || in_array('all', $safe, true);
     }
 
     protected function needEscaping(Twig_Environment $env)
@@ -140,13 +145,8 @@ class Twig_NodeVisitor_Escaper extends Twig_BaseNodeVisitor
     {
         $line = $node->getTemplateLine();
         $name = new Twig_Node_Expression_Constant('escape', $line);
-        $args = new Twig_Node(array(new Twig_Node_Expression_Constant((string) $type, $line), new Twig_Node_Expression_Constant(null, $line), new Twig_Node_Expression_Constant(true, $line)));
+        $args = new Twig_Node([new Twig_Node_Expression_Constant((string) $type, $line), new Twig_Node_Expression_Constant(null, $line), new Twig_Node_Expression_Constant(true, $line)]);
 
         return new Twig_Node_Expression_Filter($node, $name, $args, $line);
-    }
-
-    public function getPriority()
-    {
-        return 0;
     }
 }

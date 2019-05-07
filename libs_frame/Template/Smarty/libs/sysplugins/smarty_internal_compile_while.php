@@ -33,8 +33,8 @@ class Smarty_Internal_Compile_While extends Smarty_Internal_CompileBase
         $_attr = $this->getAttributes($compiler, $args);
         $this->openTag($compiler, 'while', $compiler->nocache);
 
-        if (!array_key_exists("if condition", $parameter)) {
-            $compiler->trigger_template_error("missing while condition", null, true);
+        if (!array_key_exists('if condition', $parameter)) {
+            $compiler->trigger_template_error('missing while condition', null, true);
         }
 
         // maybe nocache because of nocache variables
@@ -53,17 +53,20 @@ class Smarty_Internal_Compile_While extends Smarty_Internal_CompileBase
                 $_nocache = '';
             }
             $assignCompiler = new Smarty_Internal_Compile_Assign();
-            $assignAttr = array();
+            $assignAttr = [];
             $assignAttr[][ 'value' ] = $parameter[ 'if condition' ][ 'value' ];
             if (is_array($parameter[ 'if condition' ][ 'var' ])) {
                 $assignAttr[][ 'var' ] = $parameter[ 'if condition' ][ 'var' ][ 'var' ];
-                $_output = "<?php while (" . $parameter[ 'if condition' ][ 'value' ] . ") {?>";
-                $_output .= $assignCompiler->compile($assignAttr, $compiler,
-                                                     array('smarty_internal_index' => $parameter[ 'if condition' ][ 'var' ][ 'smarty_internal_index' ]));
+                $_output = '<?php while (' . $parameter[ 'if condition' ][ 'value' ] . ') {?>';
+                $_output .= $assignCompiler->compile(
+                    $assignAttr,
+                    $compiler,
+                                                     ['smarty_internal_index' => $parameter[ 'if condition' ][ 'var' ][ 'smarty_internal_index' ]]
+                );
             } else {
                 $assignAttr[][ 'var' ] = $parameter[ 'if condition' ][ 'var' ];
-                $_output = "<?php while (" . $parameter[ 'if condition' ][ 'value' ] . ") {?>";
-                $_output .= $assignCompiler->compile($assignAttr, $compiler, array());
+                $_output = '<?php while (' . $parameter[ 'if condition' ][ 'value' ] . ') {?>';
+                $_output .= $assignCompiler->compile($assignAttr, $compiler, []);
             }
 
             return $_output;
@@ -96,7 +99,7 @@ class Smarty_Internal_Compile_Whileclose extends Smarty_Internal_CompileBase
         if ($compiler->nocache) {
             $compiler->tag_nocache = true;
         }
-        $compiler->nocache = $this->closeTag($compiler, array('while'));
+        $compiler->nocache = $this->closeTag($compiler, ['while']);
         return "<?php }?>\n";
     }
 }

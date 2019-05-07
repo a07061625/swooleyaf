@@ -16,7 +16,7 @@ class Smarty_Internal_Method_LoadPlugin
      *
      * @var array
      */
-    public $plugin_files = array();
+    public $plugin_files = [];
 
     /**
      * Takes unknown classes and loads plugin files for them
@@ -50,7 +50,7 @@ class Smarty_Internal_Method_LoadPlugin
             } else {
                 if (is_file($file)) {
                     $this->plugin_files[ $file ] = $file;
-                    require_once($file);
+                    require_once $file;
                     return $file;
                 } else {
                     $this->plugin_files[ $file ] = false;
@@ -75,7 +75,7 @@ class Smarty_Internal_Method_LoadPlugin
                 }
             }
         }
-        $_file_names = array($_plugin_filename);
+        $_file_names = [$_plugin_filename];
         if ($_lower_filename != $_plugin_filename) {
             $_file_names[] = $_lower_filename;
         }
@@ -87,7 +87,7 @@ class Smarty_Internal_Method_LoadPlugin
                     $file = $_plugin_dir . $name;
                     if (is_file($file)) {
                         $this->plugin_files[ 'plugins_dir' ][ $_lower_filename ] = $file;
-                        require_once($file);
+                        require_once $file;
                         return $file;
                     }
                     $this->plugin_files[ 'plugins_dir' ][ $_lower_filename ] = false;
@@ -100,7 +100,7 @@ class Smarty_Internal_Method_LoadPlugin
                 $file = $smarty->ext->_getIncludePath->getIncludePath($_p_dirs, $_file_name, $smarty);
                 $this->plugin_files[ 'include_path' ][ $_lower_filename ] = $file;
                 if ($file !== false) {
-                    require_once($file);
+                    require_once $file;
                     return $file;
                 }
             }

@@ -14,16 +14,20 @@ use SyServer\BaseServer;
 use Validator\BaseValidator;
 use Validator\ValidatorService;
 
-class StringSyToken extends BaseValidator implements ValidatorService {
-    public function __construct() {
+class StringSyToken extends BaseValidator implements ValidatorService
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->validatorType = Project::VALIDATOR_STRING_TYPE_SY_TOKEN;
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    public function validator($data, $compareData) : string {
+    public function validator($data, $compareData) : string
+    {
         $expireTime = BaseServer::getServerConfig('token_etime', 0);
         if (time() < $expireTime) {
             return '';

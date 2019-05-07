@@ -75,6 +75,8 @@ class Twig_TokenStream
      * Tests a token, sets the pointer to the next one and returns it or throws a syntax error.
      *
      * @return Twig_Token|null The next token if the condition is true, null otherwise
+     * @param mixed $primary
+     * @param null|mixed $secondary
      */
     public function nextIf($primary, $secondary = null)
     {
@@ -87,16 +89,24 @@ class Twig_TokenStream
      * Tests a token and returns it or throws a syntax error.
      *
      * @return Twig_Token
+     * @param mixed $type
+     * @param null|mixed $value
+     * @param null|mixed $message
      */
     public function expect($type, $value = null, $message = null)
     {
         $token = $this->tokens[$this->current];
         if (!$token->test($type, $value)) {
             $line = $token->getLine();
-            throw new Twig_Error_Syntax(sprintf('%sUnexpected token "%s" of value "%s" ("%s" expected%s).',
-                $message ? $message.'. ' : '',
-                Twig_Token::typeToEnglish($token->getType()), $token->getValue(),
-                Twig_Token::typeToEnglish($type), $value ? sprintf(' with value "%s"', $value) : ''),
+            throw new Twig_Error_Syntax(
+                sprintf(
+                '%sUnexpected token "%s" of value "%s" ("%s" expected%s).',
+                $message ? $message . '. ' : '',
+                Twig_Token::typeToEnglish($token->getType()),
+                $token->getValue(),
+                Twig_Token::typeToEnglish($type),
+                $value ? sprintf(' with value "%s"', $value) : ''
+            ),
                 $line,
                 $this->source
             );
@@ -126,6 +136,8 @@ class Twig_TokenStream
      * Tests the current token.
      *
      * @return bool
+     * @param mixed $primary
+     * @param null|mixed $secondary
      */
     public function test($primary, $secondary = null)
     {

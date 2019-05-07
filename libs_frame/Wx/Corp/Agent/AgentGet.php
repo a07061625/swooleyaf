@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 获取指定的应用详情
  * @package Wx\Corp\Agent
  */
-class AgentGet extends WxBaseCorp {
+class AgentGet extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -27,7 +28,8 @@ class AgentGet extends WxBaseCorp {
      */
     private $agentid = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/agent/get';
         $this->_corpId = $corpId;
@@ -36,10 +38,12 @@ class AgentGet extends WxBaseCorp {
         $this->reqData['agentid'] = $agentInfo['id'];
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -48,7 +52,7 @@ class AgentGet extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

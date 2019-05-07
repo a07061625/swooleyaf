@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class UploadVideo extends WxBaseShop {
+class UploadVideo extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -36,22 +37,25 @@ class UploadVideo extends WxBaseShop {
      */
     private $description = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/media/uploadvideo?access_token=';
         $this->appid = $appId;
         $this->reqData['description'] = '';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $mediaId
      * @throws \Exception\Wx\WxException
      */
-    public function setMediaId(string $mediaId){
-        if(strlen($mediaId) > 0){
+    public function setMediaId(string $mediaId)
+    {
+        if (strlen($mediaId) > 0) {
             $this->reqData['media_id'] = $mediaId;
         } else {
             throw new WxException('媒体ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -62,8 +66,9 @@ class UploadVideo extends WxBaseShop {
      * @param string $title
      * @throws \Exception\Wx\WxException
      */
-    public function setTitle(string $title){
-        if(strlen($title) > 0){
+    public function setTitle(string $title)
+    {
+        if (strlen($title) > 0) {
             $this->reqData['title'] = $title;
         } else {
             throw new WxException('视频标题不合法', ErrorCode::WX_PARAM_ERROR);
@@ -73,15 +78,17 @@ class UploadVideo extends WxBaseShop {
     /**
      * @param string $description
      */
-    public function setDescription(string $description){
+    public function setDescription(string $description)
+    {
         $this->reqData['description'] = $description;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['media_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['media_id'])) {
             throw new WxException('媒体ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['title'])){
+        if (!isset($this->reqData['title'])) {
             throw new WxException('视频标题不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -93,7 +100,7 @@ class UploadVideo extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['media_id'])){
+        if (isset($sendData['media_id'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

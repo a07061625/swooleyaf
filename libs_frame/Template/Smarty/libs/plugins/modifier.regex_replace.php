@@ -4,6 +4,10 @@
  *
  * @package    Smarty
  * @subpackage PluginsModifier
+ * @param mixed $string
+ * @param mixed $search
+ * @param mixed $replace
+ * @param mixed $limit
  */
 
 /**

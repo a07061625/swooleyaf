@@ -1,5 +1,6 @@
 <?php
-final class SyFrameLoader {
+final class SyFrameLoader
+{
     /**
      * @var \SyFrameLoader
      */
@@ -38,7 +39,8 @@ final class SyFrameLoader {
      */
     private $aliOpenCoreStatus = true;
 
-    private function __construct() {
+    private function __construct()
+    {
         $this->preHandleMap = [
             'FPdf' => 'preHandleFPdf',
             'Twig' => 'preHandleTwig',
@@ -56,22 +58,48 @@ final class SyFrameLoader {
         ];
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
     /**
      * @return \SyFrameLoader
      */
-    public static function getInstance() {
-        if(is_null(self::$instance)){
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 
         return self::$instance;
     }
 
-    private function preHandleFPdf(string $className) : string {
-        if($this->fpdfStatus){
+    /**
+     * 加载文件
+     * @param string $className 类名
+     * @return bool
+     */
+    public function loadFile(string $className) : bool
+    {
+        $nameArr = explode('/', $className);
+        $funcName = $this->preHandleMap[$nameArr[0]] ?? null;
+        if (is_null($funcName)) {
+            $nameArr = explode('_', $className);
+            $funcName = $this->preHandleMap[$nameArr[0]] ?? null;
+        }
+
+        $file = is_null($funcName) ? SY_FRAME_LIBS_ROOT . $className . '.php' : $this->$funcName($className);
+        if (is_file($file) && is_readable($file)) {
+            require_once $file;
+            return true;
+        }
+
+        return false;
+    }
+
+    private function preHandleFPdf(string $className) : string
+    {
+        if ($this->fpdfStatus) {
             define('FPDF_VERSION', '1.81');
             $this->fpdfStatus = false;
         }
@@ -79,12 +107,14 @@ final class SyFrameLoader {
         return SY_FRAME_LIBS_ROOT . $className . '.php';
     }
 
-    private function preHandleTwig(string $className) : string {
+    private function preHandleTwig(string $className) : string
+    {
         return SY_FRAME_LIBS_ROOT . 'Template/' . str_replace('_', '/', $className) . '.php';
     }
 
-    private function preHandleSwift(string $className) : string {
-        if($this->swiftMailerStatus){ //加载swift mailer依赖文件
+    private function preHandleSwift(string $className) : string
+    {
+        if ($this->swiftMailerStatus) { //加载swift mailer依赖文件
             $this->swiftMailerStatus = false;
             require_once SY_FRAME_LIBS_ROOT . 'Mailer/Swift/depends/cache_deps.php';
             require_once SY_FRAME_LIBS_ROOT . 'Mailer/Swift/depends/mime_deps.php';
@@ -96,11 +126,13 @@ final class SyFrameLoader {
         return SY_FRAME_LIBS_ROOT . 'Mailer/' . str_replace('_', '/', $className) . '.php';
     }
 
-    private function preHandleResque(string $className) : string {
+    private function preHandleResque(string $className) : string
+    {
         return SY_FRAME_LIBS_ROOT . 'Queue/' . str_replace('_', '/', $className) . '.php';
     }
 
-    private function preHandleSmarty(string $className) : string {
+    private function preHandleSmarty(string $className) : string
+    {
         if ($this->smartyStatus) {
             $smartyLibDir = SY_FRAME_LIBS_ROOT . 'Template/Smarty/libs/';
             define('SMARTY_DIR', $smartyLibDir);
@@ -111,15 +143,16 @@ final class SyFrameLoader {
         }
 
         $lowerClassName = strtolower($className);
-        if(isset($this->smartyRootClasses[$lowerClassName])){
+        if (isset($this->smartyRootClasses[$lowerClassName])) {
             return SMARTY_DIR . $this->smartyRootClasses[$lowerClassName];
         } else {
             return SMARTY_SYSPLUGINS_DIR . $lowerClassName . '.php';
         }
     }
 
-    private function preHandlePhpExcel(string $className) : string {
-        if($this->excelStatus){
+    private function preHandlePhpExcel(string $className) : string
+    {
+        if ($this->excelStatus) {
             define('PHPEXCEL_ROOT', SY_FRAME_LIBS_ROOT . 'Excel/');
 
             $this->excelStatus = false;
@@ -128,8 +161,9 @@ final class SyFrameLoader {
         return SY_FRAME_LIBS_ROOT . 'Excel/' . str_replace('_', '/', $className) . '.php';
     }
 
-    private function preHandleAliOpen(string $className) : string {
-        if($this->aliOpenCoreStatus){
+    private function preHandleAliOpen(string $className) : string
+    {
+        if ($this->aliOpenCoreStatus) {
             define('ALIOPEN_STS_PRODUCT_NAME', 'Sts');
             define('ALIOPEN_STS_DOMAIN', 'sts.aliyuncs.com');
             define('ALIOPEN_STS_VERSION', '2015-04-01');
@@ -154,44 +188,25 @@ final class SyFrameLoader {
 
         return SY_FRAME_LIBS_ROOT . $className . '.php';
     }
-
-    /**
-     * 加载文件
-     * @param string $className 类名
-     * @return bool
-     */
-    public function loadFile(string $className) : bool {
-        $nameArr = explode('/', $className);
-        $funcName = $this->preHandleMap[$nameArr[0]] ?? null;
-        if(is_null($funcName)){
-            $nameArr = explode('_', $className);
-            $funcName = $this->preHandleMap[$nameArr[0]] ?? null;
-        }
-
-        $file = is_null($funcName) ? SY_FRAME_LIBS_ROOT . $className . '.php' : $this->$funcName($className);
-        if(is_file($file) && is_readable($file)){
-            require_once $file;
-            return true;
-        }
-
-        return false;
-    }
 }
 
-final class SyProjectLoader {
+final class SyProjectLoader
+{
     /**
      * @var \SyProjectLoader
      */
     private static $instance = null;
 
-    private function __construct(){
+    private function __construct()
+    {
     }
 
     /**
      * @return \SyProjectLoader
      */
-    public static function getInstance(){
-        if(is_null(self::$instance)){
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -203,9 +218,10 @@ final class SyProjectLoader {
      * @param string $className 类名
      * @return bool
      */
-    public function loadFile(string $className) : bool {
+    public function loadFile(string $className) : bool
+    {
         $file = SY_PROJECT_LIBS_ROOT . $className . '.php';
-        if(is_file($file) && is_readable($file)){
+        if (is_file($file) && is_readable($file)) {
             require_once $file;
             return true;
         }
@@ -219,7 +235,8 @@ final class SyProjectLoader {
  * @param string $className 类全名
  * @return bool
  */
-function syFrameAutoload(string $className) {
+function syFrameAutoload(string $className)
+{
     $trueName = str_replace([
         '\\',
         "\0",
@@ -235,7 +252,8 @@ function syFrameAutoload(string $className) {
  * @param string $className 类全名
  * @return bool
  */
-function syProjectAutoload(string $className) {
+function syProjectAutoload(string $className)
+{
     $trueName = str_replace([
         '\\',
         "\0",

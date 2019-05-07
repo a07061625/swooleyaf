@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 获取群聊会话
  * @package Wx\Corp\Message
  */
-class AppChatGet extends WxBaseCorp {
+class AppChatGet extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -27,21 +28,24 @@ class AppChatGet extends WxBaseCorp {
      */
     private $chatid = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/appchat/get';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $chatId
      * @throws \Exception\Wx\WxException
      */
-    public function setChatId(string $chatId){
+    public function setChatId(string $chatId)
+    {
         if (ctype_alnum($chatId) && (strlen($chatId) <= 32)) {
             $this->reqData['chatid'] = $chatId;
         } else {
@@ -49,8 +53,9 @@ class AppChatGet extends WxBaseCorp {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['chatid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['chatid'])) {
             throw new WxException('群id不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -62,7 +67,7 @@ class AppChatGet extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

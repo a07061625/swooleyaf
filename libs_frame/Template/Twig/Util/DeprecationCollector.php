@@ -36,8 +36,10 @@ class Twig_Util_DeprecationCollector
     {
         $iterator = new RegexIterator(
             new RecursiveIteratorIterator(
-                new RecursiveDirectoryIterator($dir), RecursiveIteratorIterator::LEAVES_ONLY
-            ), '{'.preg_quote($ext).'$}'
+                new RecursiveDirectoryIterator($dir),
+                RecursiveIteratorIterator::LEAVES_ONLY
+            ),
+            '{' . preg_quote($ext) . '$}'
         );
 
         return $this->collect(new Twig_Util_TemplateDirIterator($iterator));
@@ -52,9 +54,9 @@ class Twig_Util_DeprecationCollector
      */
     public function collect(Traversable $iterator)
     {
-        $this->deprecations = array();
+        $this->deprecations = [];
 
-        set_error_handler(array($this, 'errorHandler'));
+        set_error_handler([$this, 'errorHandler']);
 
         foreach ($iterator as $name => $contents) {
             try {
@@ -67,13 +69,15 @@ class Twig_Util_DeprecationCollector
         restore_error_handler();
 
         $deprecations = $this->deprecations;
-        $this->deprecations = array();
+        $this->deprecations = [];
 
         return $deprecations;
     }
 
     /**
      * @internal
+     * @param mixed $type
+     * @param mixed $msg
      */
     public function errorHandler($type, $msg)
     {

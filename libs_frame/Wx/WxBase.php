@@ -7,7 +7,8 @@
  */
 namespace Wx;
 
-abstract class WxBase {
+abstract class WxBase
+{
     /**
      * 服务地址
      * @var string
@@ -24,7 +25,8 @@ abstract class WxBase {
      */
     protected $curlConfigs = [];
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
     abstract public function getDetail() : array;

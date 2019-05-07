@@ -30,13 +30,15 @@ class Smarty_Internal_Runtime_UpdateCache
      *
      * @throws \SmartyException
      */
-    public function removeNoCacheHash(Smarty_Template_Cached $cached, Smarty_Internal_Template $_template,
-                                      $no_output_filter)
-    {
+    public function removeNoCacheHash(
+        Smarty_Template_Cached $cached,
+        Smarty_Internal_Template $_template,
+                                      $no_output_filter
+    ) {
         $content = ob_get_clean();
         unset($cached->hashes[ $_template->compiled->nocache_hash ]);
         if (!empty($cached->hashes)) {
-            $hash_array = array();
+            $hash_array = [];
             foreach ($cached->hashes as $hash => $foo) {
                 $hash_array[] = "/{$hash}/";
             }
@@ -45,17 +47,25 @@ class Smarty_Internal_Runtime_UpdateCache
         $_template->cached->has_nocache_code = false;
         // get text between non-cached items
         $cache_split =
-            preg_split("!/\*%%SmartyNocache:{$_template->compiled->nocache_hash}%%\*\/(.+?)/\*/%%SmartyNocache:{$_template->compiled->nocache_hash}%%\*/!s",
-                       $content);
+            preg_split(
+                "!/\*%%SmartyNocache:{$_template->compiled->nocache_hash}%%\*\/(.+?)/\*/%%SmartyNocache:{$_template->compiled->nocache_hash}%%\*/!s",
+                       $content
+            );
         // get non-cached items
-        preg_match_all("!/\*%%SmartyNocache:{$_template->compiled->nocache_hash}%%\*\/(.+?)/\*/%%SmartyNocache:{$_template->compiled->nocache_hash}%%\*/!s",
-                       $content, $cache_parts);
+        preg_match_all(
+            "!/\*%%SmartyNocache:{$_template->compiled->nocache_hash}%%\*\/(.+?)/\*/%%SmartyNocache:{$_template->compiled->nocache_hash}%%\*/!s",
+                       $content,
+            $cache_parts
+        );
         $content = '';
         // loop over items, stitch back together
         foreach ($cache_split as $curr_idx => $curr_split) {
             // escape PHP tags in template content
-            $content .= preg_replace('/(<%|%>|<\?php|<\?|\?>|<script\s+language\s*=\s*[\"\']?\s*php\s*[\"\']?\s*>)/',
-                                     "<?php echo '\$1'; ?>\n", $curr_split);
+            $content .= preg_replace(
+                '/(<%|%>|<\?php|<\?|\?>|<script\s+language\s*=\s*[\"\']?\s*php\s*[\"\']?\s*>)/',
+                                     "<?php echo '\$1'; ?>\n",
+                $curr_split
+            );
             if (isset($cache_parts[ 0 ][ $curr_idx ])) {
                 $_template->cached->has_nocache_code = true;
                 $content .= $cache_parts[ 1 ][ $curr_idx ];
@@ -161,5 +171,4 @@ class Smarty_Internal_Runtime_UpdateCache
 
         return false;
     }
-
 }

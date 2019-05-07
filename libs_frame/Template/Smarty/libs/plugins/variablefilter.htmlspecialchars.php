@@ -4,6 +4,7 @@
  *
  * @package    Smarty
  * @subpackage PluginsFilter
+ * @param mixed $source
  */
 
 /**

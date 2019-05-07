@@ -14,6 +14,10 @@ abstract class Twig_Test_NodeTestCase extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider getTests
+     * @param mixed $node
+     * @param mixed $source
+     * @param null|mixed $environment
+     * @param mixed $isPattern
      */
     public function testCompile($node, $source, $environment = null, $isPattern = false)
     {
@@ -39,7 +43,7 @@ abstract class Twig_Test_NodeTestCase extends PHPUnit_Framework_TestCase
 
     protected function getEnvironment()
     {
-        return new Twig_Environment(new Twig_Loader_Array(array()));
+        return new Twig_Environment(new Twig_Loader_Array([]));
     }
 
     protected function getVariableGetter($name, $line = false)

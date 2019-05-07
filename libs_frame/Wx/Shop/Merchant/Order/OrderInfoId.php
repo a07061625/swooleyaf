@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class OrderInfoId extends WxBaseShop {
+class OrderInfoId extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -26,29 +27,33 @@ class OrderInfoId extends WxBaseShop {
      */
     private $order_id = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/merchant/order/getbyid?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $orderId
      * @throws \Exception\Wx\WxException
      */
-    public function setOrderId(string $orderId){
-        if(ctype_digit($orderId) && (strlen($orderId) <= 32)){
+    public function setOrderId(string $orderId)
+    {
+        if (ctype_digit($orderId) && (strlen($orderId) <= 32)) {
             $this->reqData['order_id'] = $orderId;
         } else {
             throw new WxException('订单ID不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['order_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['order_id'])) {
             throw new WxException('订单ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -60,7 +65,7 @@ class OrderInfoId extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

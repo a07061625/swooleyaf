@@ -17,7 +17,7 @@
  */
 class Twig_Parser implements Twig_ParserInterface
 {
-    protected $stack = array();
+    protected $stack = [];
     protected $stream;
     protected $parent;
     protected $handlers;
@@ -30,7 +30,7 @@ class Twig_Parser implements Twig_ParserInterface
     protected $reservedMacroNames;
     protected $importedSymbols;
     protected $traits;
-    protected $embeddedTemplates = array();
+    protected $embeddedTemplates = [];
 
     public function __construct(Twig_Environment $env)
     {
@@ -42,7 +42,7 @@ class Twig_Parser implements Twig_ParserInterface
      */
     public function getEnvironment()
     {
-        @trigger_error('The '.__METHOD__.' method is deprecated since version 1.27 and will be removed in 2.0.', E_USER_DEPRECATED);
+        @trigger_error('The ' . __METHOD__ . ' method is deprecated since version 1.27 and will be removed in 2.0.', E_USER_DEPRECATED);
 
         return $this->env;
     }
@@ -67,7 +67,7 @@ class Twig_Parser implements Twig_ParserInterface
         // push all variables into the stack to keep the current state of the parser
         // using get_object_vars() instead of foreach would lead to https://bugs.php.net/71336
         // This hack can be removed when min version if PHP 7.0
-        $vars = array();
+        $vars = [];
         foreach ($this as $k => $v) {
             $vars[$k] = $v;
         }
@@ -92,12 +92,12 @@ class Twig_Parser implements Twig_ParserInterface
 
         $this->stream = $stream;
         $this->parent = null;
-        $this->blocks = array();
-        $this->macros = array();
-        $this->traits = array();
-        $this->blockStack = array();
-        $this->importedSymbols = array(array());
-        $this->embeddedTemplates = array();
+        $this->blocks = [];
+        $this->macros = [];
+        $this->traits = [];
+        $this->blockStack = [];
+        $this->importedSymbols = [[]];
+        $this->embeddedTemplates = [];
 
         try {
             $body = $this->subparse($test, $dropNeedle);
@@ -117,7 +117,7 @@ class Twig_Parser implements Twig_ParserInterface
             throw $e;
         }
 
-        $node = new Twig_Node_Module(new Twig_Node_Body(array($body)), $this->parent, new Twig_Node($this->blocks), new Twig_Node($this->macros), new Twig_Node($this->traits), $this->embeddedTemplates, $stream->getSourceContext());
+        $node = new Twig_Node_Module(new Twig_Node_Body([$body]), $this->parent, new Twig_Node($this->blocks), new Twig_Node($this->macros), new Twig_Node($this->traits), $this->embeddedTemplates, $stream->getSourceContext());
 
         $traverser = new Twig_NodeTraverser($this->env, $this->visitors);
 
@@ -134,7 +134,7 @@ class Twig_Parser implements Twig_ParserInterface
     public function subparse($test, $dropNeedle = false)
     {
         $lineno = $this->getCurrentToken()->getLine();
-        $rv = array();
+        $rv = [];
         while (!$this->stream->isEOF()) {
             switch ($this->getCurrentToken()->getType()) {
                 case Twig_Token::TEXT_TYPE:
@@ -166,7 +166,7 @@ class Twig_Parser implements Twig_ParserInterface
                             return $rv[0];
                         }
 
-                        return new Twig_Node($rv, array(), $lineno);
+                        return new Twig_Node($rv, [], $lineno);
                     }
 
                     $subparser = $this->handlers->getTokenParser($token->getValue());
@@ -202,15 +202,17 @@ class Twig_Parser implements Twig_ParserInterface
             return $rv[0];
         }
 
-        return new Twig_Node($rv, array(), $lineno);
+        return new Twig_Node($rv, [], $lineno);
     }
 
     /**
      * @deprecated since 1.27 (to be removed in 2.0)
+     * @param mixed $name
+     * @param mixed $class
      */
     public function addHandler($name, $class)
     {
-        @trigger_error('The '.__METHOD__.' method is deprecated since version 1.27 and will be removed in 2.0.', E_USER_DEPRECATED);
+        @trigger_error('The ' . __METHOD__ . ' method is deprecated since version 1.27 and will be removed in 2.0.', E_USER_DEPRECATED);
 
         $this->handlers[$name] = $class;
     }
@@ -220,7 +222,7 @@ class Twig_Parser implements Twig_ParserInterface
      */
     public function addNodeVisitor(Twig_NodeVisitorInterface $visitor)
     {
-        @trigger_error('The '.__METHOD__.' method is deprecated since version 1.27 and will be removed in 2.0.', E_USER_DEPRECATED);
+        @trigger_error('The ' . __METHOD__ . ' method is deprecated since version 1.27 and will be removed in 2.0.', E_USER_DEPRECATED);
 
         $this->visitors[] = $visitor;
     }
@@ -257,7 +259,7 @@ class Twig_Parser implements Twig_ParserInterface
 
     public function setBlock($name, Twig_Node_Block $value)
     {
-        $this->blocks[$name] = new Twig_Node_Body(array($value), array(), $value->getTemplateLine());
+        $this->blocks[$name] = new Twig_Node_Body([$value], [], $value->getTemplateLine());
     }
 
     public function hasMacro($name)
@@ -277,7 +279,7 @@ class Twig_Parser implements Twig_ParserInterface
     public function isReservedMacroName($name)
     {
         if (null === $this->reservedMacroNames) {
-            $this->reservedMacroNames = array();
+            $this->reservedMacroNames = [];
             $r = new ReflectionClass($this->env->getBaseTemplateClass());
             foreach ($r->getMethods() as $method) {
                 $methodName = strtolower($method->getName());
@@ -288,7 +290,7 @@ class Twig_Parser implements Twig_ParserInterface
             }
         }
 
-        return in_array(strtolower($name), $this->reservedMacroNames);
+        return in_array(strtolower($name), $this->reservedMacroNames, true);
     }
 
     public function addTrait($trait)
@@ -310,7 +312,7 @@ class Twig_Parser implements Twig_ParserInterface
 
     public function addImportedSymbol($type, $alias, $name = null, Twig_Node_Expression $node = null)
     {
-        $this->importedSymbols[0][$type][$alias] = array('name' => $name, 'node' => $node);
+        $this->importedSymbols[0][$type][$alias] = ['name' => $name, 'node' => $node];
     }
 
     public function getImportedSymbol($type, $alias)
@@ -329,7 +331,7 @@ class Twig_Parser implements Twig_ParserInterface
 
     public function pushLocalScope()
     {
-        array_unshift($this->importedSymbols, array());
+        array_unshift($this->importedSymbols, []);
     }
 
     public function popLocalScope()
@@ -379,7 +381,7 @@ class Twig_Parser implements Twig_ParserInterface
             ||
             (!$node instanceof Twig_Node_Text && !$node instanceof Twig_Node_BlockReference && $node instanceof Twig_NodeOutputInterface)
         ) {
-            if (false !== strpos((string) $node, chr(0xEF).chr(0xBB).chr(0xBF))) {
+            if (false !== strpos((string) $node, chr(0xEF) . chr(0xBB) . chr(0xBF))) {
                 throw new Twig_Error_Syntax('A template that extends another one cannot start with a byte order mark (BOM); it must be removed.', $node->getTemplateLine(), $this->stream->getSourceContext());
             }
 

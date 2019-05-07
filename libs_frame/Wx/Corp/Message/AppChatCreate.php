@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 创建群聊会话
  * @package Wx\Corp\Message
  */
-class AppChatCreate extends WxBaseCorp {
+class AppChatCreate extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -42,7 +43,8 @@ class AppChatCreate extends WxBaseCorp {
      */
     private $chatid = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/appchat/create?access_token=';
         $this->_corpId = $corpId;
@@ -50,14 +52,16 @@ class AppChatCreate extends WxBaseCorp {
         $this->reqData['chatid'] = Tool::createNonceStr('8', 'numlower') . Tool::getNowTime();
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $name
      * @throws \Exception\Wx\WxException
      */
-    public function setName(string $name){
+    public function setName(string $name)
+    {
         if (strlen($name) > 0) {
             $this->reqData['name'] = mb_substr($name, 0, 25);
         } else {
@@ -69,7 +73,8 @@ class AppChatCreate extends WxBaseCorp {
      * @param string $owner
      * @throws \Exception\Wx\WxException
      */
-    public function setOwner(string $owner){
+    public function setOwner(string $owner)
+    {
         if (ctype_alnum($owner)) {
             $this->reqData['owner'] = $owner;
         } else {
@@ -81,10 +86,11 @@ class AppChatCreate extends WxBaseCorp {
      * @param array $userList
      * @throws \Exception\Wx\WxException
      */
-    public function setUserList(array $userList){
+    public function setUserList(array $userList)
+    {
         $users = [];
         foreach ($userList as $eUserId) {
-            if(ctype_alnum($eUserId)){
+            if (ctype_alnum($eUserId)) {
                 $userId = strtolower($eUserId);
                 $users[$userId] = 1;
             }
@@ -92,7 +98,7 @@ class AppChatCreate extends WxBaseCorp {
         $userNum = count($users);
         if ($userNum < 2) {
             throw new WxException('群成员不能少于2个', ErrorCode::WX_PARAM_ERROR);
-        } else if($userNum > 500){
+        } elseif ($userNum > 500) {
             throw new WxException('群成员不能超过500个', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -103,7 +109,8 @@ class AppChatCreate extends WxBaseCorp {
      * @param string $chatId
      * @throws \Exception\Wx\WxException
      */
-    public function setChatId(string $chatId){
+    public function setChatId(string $chatId)
+    {
         if (ctype_alnum($chatId) && (strlen($chatId) <= 32)) {
             $this->reqData['chatid'] = $chatId;
         } else {
@@ -111,8 +118,9 @@ class AppChatCreate extends WxBaseCorp {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['name'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['name'])) {
             throw new WxException('群聊名不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -124,7 +132,7 @@ class AppChatCreate extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

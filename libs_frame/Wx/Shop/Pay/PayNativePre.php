@@ -15,7 +15,8 @@ use Wx\Shop\Tools\ShortUrl;
 use Wx\WxBaseShop;
 use Wx\WxUtilShop;
 
-class PayNativePre extends WxBaseShop {
+class PayNativePre extends WxBaseShop
+{
     /**
      * 商户号
      * @var string
@@ -37,7 +38,8 @@ class PayNativePre extends WxBaseShop {
      */
     private $product_id = '';
 
-    public function __construct(string $appId) {
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->reqData['appid'] = $shopConfig->getAppId();
@@ -46,15 +48,17 @@ class PayNativePre extends WxBaseShop {
         $this->reqData['nonce_str'] = Tool::createNonceStr(32);
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $productId
      * @throws \Exception\Wx\WxException
      */
-    public function setProductId(string $productId) {
-        if(ctype_alnum($productId) && (strlen($productId) <= 32)){
+    public function setProductId(string $productId)
+    {
+        if (ctype_alnum($productId) && (strlen($productId) <= 32)) {
             $this->reqData['product_id'] = $productId;
         } else {
             throw  new WxException('商品ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -66,8 +70,9 @@ class PayNativePre extends WxBaseShop {
      * @return array
      * @throws \Exception\Wx\WxException
      */
-    public function getDetail() : array {
-        if(!isset($this->reqData['product_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['product_id'])) {
             throw  new WxException('商品ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 

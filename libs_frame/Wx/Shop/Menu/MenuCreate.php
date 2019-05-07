@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class MenuCreate extends WxBaseShop {
+class MenuCreate extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -26,29 +27,33 @@ class MenuCreate extends WxBaseShop {
      */
     private $menuList = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=';
         $this->appid = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param \Wx\Shop\Menu\Menu $menu
      * @throws \Exception\Wx\WxException
      */
-    public function addMenu(Menu $menu){
-        if(count($this->menuList) >= 3){
+    public function addMenu(Menu $menu)
+    {
+        if (count($this->menuList) >= 3) {
             throw new WxException('菜单数量不能超过3个', ErrorCode::WX_PARAM_ERROR);
         }
 
         $this->menuList[] = $menu;
     }
 
-    public function getDetail() : array {
-        if(empty($this->menuList)){
+    public function getDetail() : array
+    {
+        if (empty($this->menuList)) {
             throw new WxException('菜单列表不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 

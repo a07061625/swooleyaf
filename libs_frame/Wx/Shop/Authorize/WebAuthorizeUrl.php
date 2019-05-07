@@ -15,7 +15,8 @@ use Wx\WxBaseShop;
  * 网站应用授权地址
  * @package Wx\Shop\Authorize
  */
-class WebAuthorizeUrl extends WxBaseShop {
+class WebAuthorizeUrl extends WxBaseShop
+{
     /**
      * 重定向链接
      * @var string
@@ -27,7 +28,8 @@ class WebAuthorizeUrl extends WxBaseShop {
      */
     private $state = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://open.weixin.qq.com/connect/qrconnect';
         $this->reqData['appid'] = $appId;
@@ -36,14 +38,16 @@ class WebAuthorizeUrl extends WxBaseShop {
         $this->reqData['state'] = 'STATE';
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $redirectUrl
      * @throws \Exception\Wx\WxException
      */
-    public function setRedirectUrl(string $redirectUrl){
+    public function setRedirectUrl(string $redirectUrl)
+    {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $redirectUrl) > 0) {
             $this->reqData['redirect_uri'] = $redirectUrl;
         } else {
@@ -55,16 +59,18 @@ class WebAuthorizeUrl extends WxBaseShop {
      * @param string $state
      * @throws \Exception\Wx\WxException
      */
-    public function setState(string $state) {
-        if(ctype_alnum($state) && (strlen($state) <= 32)){
+    public function setState(string $state)
+    {
+        if (ctype_alnum($state) && (strlen($state) <= 32)) {
             $this->reqData['state'] = $state;
         } else {
             throw new WxException('防csrf攻击标识不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['redirect_uri'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['redirect_uri'])) {
             throw new WxException('重定向链接不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 

@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class SessionClose extends WxBaseShop {
+class SessionClose extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -31,22 +32,25 @@ class SessionClose extends WxBaseShop {
      */
     private $openid = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/customservice/kfsession/close?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $kfAccount
      * @throws \Exception\Wx\WxException
      */
-    public function setKfAccount(string $kfAccount){
+    public function setKfAccount(string $kfAccount)
+    {
         $accountLength = strlen($kfAccount);
-        if(($accountLength > 0) && ($accountLength <= 30)){
+        if (($accountLength > 0) && ($accountLength <= 30)) {
             $this->reqData['kf_account'] = $kfAccount;
         } else {
             throw new WxException('客服帐号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -57,7 +61,8 @@ class SessionClose extends WxBaseShop {
      * @param string $openid
      * @throws \Exception\Wx\WxException
      */
-    public function setOpenid(string $openid) {
+    public function setOpenid(string $openid)
+    {
         if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
             $this->reqData['openid'] = $openid;
         } else {
@@ -65,11 +70,12 @@ class SessionClose extends WxBaseShop {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['kf_account'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['kf_account'])) {
             throw new WxException('客服帐号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['openid'])){
+        if (!isset($this->reqData['openid'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -81,7 +87,7 @@ class SessionClose extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

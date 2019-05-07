@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 创建标签
  * @package Wx\Corp\Tag
  */
-class TagCreate extends WxBaseCorp {
+class TagCreate extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -32,21 +33,24 @@ class TagCreate extends WxBaseCorp {
      */
     private $tagid = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/tag/create?access_token=';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $tagName
      * @throws \Exception\Wx\WxException
      */
-    public function setTagName(string $tagName){
+    public function setTagName(string $tagName)
+    {
         if (strlen($tagName) > 0) {
             $this->reqData['tagname'] = mb_substr($tagName, 0, 16);
         } else {
@@ -58,7 +62,8 @@ class TagCreate extends WxBaseCorp {
      * @param int $tagId
      * @throws \Exception\Wx\WxException
      */
-    public function setTagId(int $tagId){
+    public function setTagId(int $tagId)
+    {
         if ($tagId > 0) {
             $this->reqData['tagid'] = $tagId;
         } else {
@@ -66,8 +71,9 @@ class TagCreate extends WxBaseCorp {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['tagname'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['tagname'])) {
             throw new WxException('名称不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -79,7 +85,7 @@ class TagCreate extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

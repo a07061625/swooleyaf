@@ -7,8 +7,10 @@
  */
 namespace TemplateExtension\Twig;
 
-class BaseFunction extends \Twig_SimpleFunction {
-    public function __construct(string $callableName,callable $callable,array $params=[]){
+class BaseFunction extends \Twig_SimpleFunction
+{
+    public function __construct(string $callableName, callable $callable, array $params = [])
+    {
         parent::__construct($callableName, $callable, $params);
     }
 }

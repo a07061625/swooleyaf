@@ -15,7 +15,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class PayCompanyBank extends WxBaseShop {
+class PayCompanyBank extends WxBaseShop
+{
     const BANK_CODE_CMB = '1001';
     const BANK_CODE_ICBC = '1002';
     const BANK_CODE_CCB = '1003';
@@ -100,7 +101,8 @@ class PayCompanyBank extends WxBaseShop {
      */
     private $desc = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaysptrans/pay_bank';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
@@ -109,15 +111,17 @@ class PayCompanyBank extends WxBaseShop {
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $partnerTradeNo
      * @throws \Exception\Wx\WxException
      */
-    public function setPartnerTradeNo(string $partnerTradeNo){
-        if(ctype_digit($partnerTradeNo) && (strlen($partnerTradeNo) <= 32)){
+    public function setPartnerTradeNo(string $partnerTradeNo)
+    {
+        if (ctype_digit($partnerTradeNo) && (strlen($partnerTradeNo) <= 32)) {
             $this->reqData['partner_trade_no'] = $partnerTradeNo;
         } else {
             throw new WxException('付款单号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -130,18 +134,19 @@ class PayCompanyBank extends WxBaseShop {
      * @param string $accountName
      * @throws \Exception\Wx\WxException
      */
-    public function setBankInfo(string $bankCode,string $accountNo,string $accountName){
-        if(!isset(self::$totalBank[$bankCode])){
+    public function setBankInfo(string $bankCode, string $accountNo, string $accountName)
+    {
+        if (!isset(self::$totalBank[$bankCode])) {
             throw new WxException('收款方开户行不支持', ErrorCode::WX_PARAM_ERROR);
         }
-        if(strlen($accountNo) > 32){
+        if (strlen($accountNo) > 32) {
             throw new WxException('收款方银行卡号不合法', ErrorCode::WX_PARAM_ERROR);
-        } else if(!ctype_alnum($accountNo)){
+        } elseif (!ctype_alnum($accountNo)) {
             throw new WxException('收款方银行卡号不合法', ErrorCode::WX_PARAM_ERROR);
         }
-        if(strlen($accountName) == 0){
+        if (strlen($accountName) == 0) {
             throw new WxException('收款方用户名不合法', ErrorCode::WX_PARAM_ERROR);
-        } else if(mb_strlen($accountName) > 50){
+        } elseif (mb_strlen($accountName) > 50) {
             throw new WxException('收款方用户名不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -158,8 +163,9 @@ class PayCompanyBank extends WxBaseShop {
      * @param int $amount
      * @throws \Exception\Wx\WxException
      */
-    public function setAmount(int $amount){
-        if(($amount > 0) && ($amount <= 2000000)){
+    public function setAmount(int $amount)
+    {
+        if (($amount > 0) && ($amount <= 2000000)) {
             $this->reqData['amount'] = $amount;
         } else {
             throw new WxException('付款金额不合法', ErrorCode::WX_PARAM_ERROR);
@@ -169,20 +175,22 @@ class PayCompanyBank extends WxBaseShop {
     /**
      * @param string $desc
      */
-    public function setDesc(string $desc){
-        if(strlen($desc) > 0){
+    public function setDesc(string $desc)
+    {
+        if (strlen($desc) > 0) {
             $this->reqData['desc'] = mb_substr($desc, 0, 50);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['partner_trade_no'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['partner_trade_no'])) {
             throw new WxException('付款单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['enc_bank_no'])){
+        if (!isset($this->reqData['enc_bank_no'])) {
             throw new WxException('银行信息不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['amount'])){
+        if (!isset($this->reqData['amount'])) {
             throw new WxException('付款金额不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->appid);
@@ -211,7 +219,7 @@ class PayCompanyBank extends WxBaseShop {
         if ($sendData['return_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } else if ($sendData['result_code'] == 'FAIL') {
+        } elseif ($sendData['result_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['wx_code'] = $sendData['err_code'];
             $resArr['message'] = $sendData['err_code_des'];

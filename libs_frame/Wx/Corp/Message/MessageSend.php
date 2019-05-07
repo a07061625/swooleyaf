@@ -19,7 +19,8 @@ use Wx\WxUtilBase;
  * 发送企业消息
  * @package Wx\Corp\Message
  */
-class MessageSend extends WxBaseCorp {
+class MessageSend extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -53,7 +54,8 @@ class MessageSend extends WxBaseCorp {
      */
     private $safe = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=';
         $this->_corpId = $corpId;
@@ -63,29 +65,31 @@ class MessageSend extends WxBaseCorp {
         $this->reqData['safe'] = 0;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string|array $userList
      * @throws \Exception\Wx\WxException
      */
-    public function setUserList($userList){
-        if(is_string($userList)){
-            if($userList == '@all'){
+    public function setUserList($userList)
+    {
+        if (is_string($userList)) {
+            if ($userList == '@all') {
                 $this->reqData['touser'] = '@all';
             } else {
                 throw new WxException('成员ID列表不合法', ErrorCode::WX_PARAM_ERROR);
             }
-        } else if(is_array($userList)){
+        } elseif (is_array($userList)) {
             $users = [];
             foreach ($userList as $eUserId) {
-                if(ctype_alnum($eUserId)){
+                if (ctype_alnum($eUserId)) {
                     $userId = strtolower($eUserId);
                     $users[$userId] = 1;
                 }
             }
-            if(count($users) > 1000){
+            if (count($users) > 1000) {
                 throw new WxException('成员ID不能超过1000个', ErrorCode::WX_PARAM_ERROR);
             } else {
                 $this->reqData['touser'] = implode('|', array_keys($users));
@@ -99,14 +103,15 @@ class MessageSend extends WxBaseCorp {
      * @param array $partyList
      * @throws \Exception\Wx\WxException
      */
-    public function setPartyList(array $partyList){
+    public function setPartyList(array $partyList)
+    {
         $party = [];
         foreach ($partyList as $eParty) {
-            if(is_int($eParty) && ($eParty > 0)){
+            if (is_int($eParty) && ($eParty > 0)) {
                 $party[$eParty] = 1;
             }
         }
-        if(count($party) > 100){
+        if (count($party) > 100) {
             throw new WxException('部门ID不能超过100个', ErrorCode::WX_PARAM_ERROR);
         } else {
             $this->reqData['toparty'] = implode('|', array_keys($party));
@@ -117,14 +122,15 @@ class MessageSend extends WxBaseCorp {
      * @param array $tagList
      * @throws \Exception\Wx\WxException
      */
-    public function setTagList(array $tagList){
+    public function setTagList(array $tagList)
+    {
         $tags = [];
         foreach ($tagList as $eTag) {
-            if(is_int($eTag) && ($eTag > 0)){
+            if (is_int($eTag) && ($eTag > 0)) {
                 $tags[$eTag] = 1;
             }
         }
-        if(count($tags) > 100){
+        if (count($tags) > 100) {
             throw new WxException('标签ID不能超过100个', ErrorCode::WX_PARAM_ERROR);
         } else {
             $this->reqData['totag'] = implode('|', array_keys($tags));
@@ -136,10 +142,11 @@ class MessageSend extends WxBaseCorp {
      * @param array $data
      * @throws \Exception\Wx\WxException
      */
-    public function setMsgData(string $type,array $data){
-        if(!isset(self::$totalMessageType[$type])){
+    public function setMsgData(string $type, array $data)
+    {
+        if (!isset(self::$totalMessageType[$type])) {
             throw new WxException('消息类型不支持', ErrorCode::WX_PARAM_ERROR);
-        } else if(empty($data)){
+        } elseif (empty($data)) {
             throw new WxException('消息数据不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -151,16 +158,18 @@ class MessageSend extends WxBaseCorp {
      * @param int $safe
      * @throws \Exception\Wx\WxException
      */
-    public function setSafe(int $safe){
-        if (in_array($safe, [0, 1])) {
+    public function setSafe(int $safe)
+    {
+        if (in_array($safe, [0, 1], true)) {
             $this->reqData['safe'] = $safe;
         } else {
             throw new WxException('保密消息标识不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['msgtype'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['msgtype'])) {
             throw new WxException('消息类型不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -172,7 +181,7 @@ class MessageSend extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

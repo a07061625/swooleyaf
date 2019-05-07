@@ -14,7 +14,8 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class AccountSignatureModify extends WxBaseOpenMini {
+class AccountSignatureModify extends WxBaseOpenMini
+{
     /**
      * 应用ID
      * @var string
@@ -26,29 +27,33 @@ class AccountSignatureModify extends WxBaseOpenMini {
      */
     private $signature = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/account/modifysignature?access_token=';
         $this->appId = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $signature
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setSignature(string $signature){
-        if(strlen($signature) > 0){
+    public function setSignature(string $signature)
+    {
+        if (strlen($signature) > 0) {
             $this->reqData['signature'] = $signature;
         } else {
             throw new WxOpenException('功能介绍不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['signature'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['signature'])) {
             throw new WxOpenException('功能介绍不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 
@@ -62,7 +67,7 @@ class AccountSignatureModify extends WxBaseOpenMini {
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

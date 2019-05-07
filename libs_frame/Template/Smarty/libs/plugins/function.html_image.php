@@ -4,6 +4,8 @@
  *
  * @package    Smarty
  * @subpackage PluginsFunction
+ * @param mixed $params
+ * @param mixed $template
  */
 
 /**
@@ -38,7 +40,7 @@
  */
 function smarty_function_html_image($params, $template)
 {
-    require_once(SMARTY_PLUGINS_DIR . 'shared.escape_special_chars.php');
+    require_once SMARTY_PLUGINS_DIR . 'shared.escape_special_chars.php';
 
     $alt = '';
     $file = '';
@@ -64,7 +66,7 @@ function smarty_function_html_image($params, $template)
                 if (!is_array($_val)) {
                     $$_key = smarty_function_escape_special_chars($_val);
                 } else {
-                    throw new SmartyException ("html_image: extra attribute '$_key' cannot be an array", E_USER_NOTICE);
+                    throw new SmartyException("html_image: extra attribute '$_key' cannot be an array", E_USER_NOTICE);
                 }
                 break;
 
@@ -78,7 +80,7 @@ function smarty_function_html_image($params, $template)
                 if (!is_array($_val)) {
                     $extra .= ' ' . $_key . '="' . smarty_function_escape_special_chars($_val) . '"';
                 } else {
-                    throw new SmartyException ("html_image: extra attribute '$_key' cannot be an array", E_USER_NOTICE);
+                    throw new SmartyException("html_image: extra attribute '$_key' cannot be an array", E_USER_NOTICE);
                 }
                 break;
         }

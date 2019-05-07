@@ -21,7 +21,7 @@ class Twig_Compiler implements Twig_CompilerInterface
     protected $source;
     protected $indentation;
     protected $env;
-    protected $debugInfo = array();
+    protected $debugInfo = [];
     protected $sourceOffset;
     protected $sourceLine;
     protected $filename;
@@ -73,7 +73,7 @@ class Twig_Compiler implements Twig_CompilerInterface
     {
         $this->lastLine = null;
         $this->source = '';
-        $this->debugInfo = array();
+        $this->debugInfo = [];
         $this->sourceOffset = 0;
         // source code starts at 1 (as we then increment it when we encounter new lines)
         $this->sourceLine = 1;
@@ -123,7 +123,7 @@ class Twig_Compiler implements Twig_CompilerInterface
     {
         $strings = func_get_args();
         foreach ($strings as $string) {
-            $this->source .= str_repeat(' ', $this->indentation * 4).$string;
+            $this->source .= str_repeat(' ', $this->indentation * 4) . $string;
         }
 
         return $this;
@@ -138,7 +138,7 @@ class Twig_Compiler implements Twig_CompilerInterface
      */
     public function addIndentation()
     {
-        @trigger_error('The '.__METHOD__.' method is deprecated since version 1.27 and will be removed in 2.0. Use write(\'\') instead.', E_USER_DEPRECATED);
+        @trigger_error('The ' . __METHOD__ . ' method is deprecated since version 1.27 and will be removed in 2.0. Use write(\'\') instead.', E_USER_DEPRECATED);
 
         $this->source .= str_repeat(' ', $this->indentation * 4);
 

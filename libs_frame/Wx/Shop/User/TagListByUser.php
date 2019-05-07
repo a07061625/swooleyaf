@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class TagListByUser extends WxBaseShop {
+class TagListByUser extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -26,20 +27,23 @@ class TagListByUser extends WxBaseShop {
      */
     private $openid = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/tags/getidlist?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $openid
      * @throws \Exception\Wx\WxException
      */
-    public function setOpenid(string $openid) {
+    public function setOpenid(string $openid)
+    {
         if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
             $this->reqData['openid'] = $openid;
         } else {
@@ -47,8 +51,9 @@ class TagListByUser extends WxBaseShop {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['openid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['openid'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -60,7 +65,7 @@ class TagListByUser extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['errcode'])){
+        if (isset($sendData['errcode'])) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['errmsg'];
         } else {

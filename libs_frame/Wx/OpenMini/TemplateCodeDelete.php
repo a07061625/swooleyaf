@@ -15,35 +15,40 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class TemplateCodeDelete extends WxBaseOpenMini {
+class TemplateCodeDelete extends WxBaseOpenMini
+{
     /**
      * 模板ID
      * @var string
      */
     private $templateId = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/wxa/deletetemplate?access_token=';
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $templateId
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setTemplateId(string $templateId){
-        if(strlen($templateId) > 0){
+    public function setTemplateId(string $templateId)
+    {
+        if (strlen($templateId) > 0) {
             $this->reqData['template_id'] = $templateId;
         } else {
             throw new WxOpenException('模板ID不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['template_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['template_id'])) {
             throw new WxOpenException('模板ID不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 
@@ -57,7 +62,7 @@ class TemplateCodeDelete extends WxBaseOpenMini {
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

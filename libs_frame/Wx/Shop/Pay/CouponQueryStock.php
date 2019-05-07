@@ -15,7 +15,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class CouponQueryStock extends WxBaseShop {
+class CouponQueryStock extends WxBaseShop
+{
     /**
      * 代金券批次id
      * @var string
@@ -57,7 +58,8 @@ class CouponQueryStock extends WxBaseShop {
      */
     private $type = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/query_coupon_stock';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
@@ -69,15 +71,17 @@ class CouponQueryStock extends WxBaseShop {
         $this->reqData['type'] = 'XML';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $couponStockId
      * @throws \Exception\Wx\WxException
      */
-    public function setCouponStockId(string $couponStockId){
-        if(ctype_digit($couponStockId) && (strlen($couponStockId) <= 64)){
+    public function setCouponStockId(string $couponStockId)
+    {
+        if (ctype_digit($couponStockId) && (strlen($couponStockId) <= 64)) {
             $this->reqData['coupon_stock_id'] = $couponStockId;
         } else {
             throw new WxException('代金券批次id不合法', ErrorCode::WX_PARAM_ERROR);
@@ -88,8 +92,9 @@ class CouponQueryStock extends WxBaseShop {
      * @param string $opUserId
      * @throws \Exception\Wx\WxException
      */
-    public function setOpUserId(string $opUserId){
-        if(ctype_digit($opUserId)){
+    public function setOpUserId(string $opUserId)
+    {
+        if (ctype_digit($opUserId)) {
             $this->reqData['op_user_id'] = $opUserId;
         } else {
             throw new WxException('操作员不合法', ErrorCode::WX_PARAM_ERROR);
@@ -99,14 +104,16 @@ class CouponQueryStock extends WxBaseShop {
     /**
      * @param string $deviceInfo
      */
-    public function setDeviceInfo(string $deviceInfo){
-        if(strlen($deviceInfo) > 0){
+    public function setDeviceInfo(string $deviceInfo)
+    {
+        if (strlen($deviceInfo) > 0) {
             $this->reqData['device_info'] = $deviceInfo;
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['coupon_stock_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['coupon_stock_id'])) {
             throw new WxException('代金券批次id不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
@@ -122,7 +129,7 @@ class CouponQueryStock extends WxBaseShop {
         if ($sendData['return_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } else if ($sendData['result_code'] == 'FAIL') {
+        } elseif ($sendData['result_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {

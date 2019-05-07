@@ -14,27 +14,31 @@ use Wx\WxBaseOpenCommon;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class AuthorizerInfo extends WxBaseOpenCommon {
+class AuthorizerInfo extends WxBaseOpenCommon
+{
     /**
      * 授权码
      * @var string
      */
     private $authCode = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/component/api_query_auth?component_access_token=';
         $this->reqData['component_appid'] = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $authCode
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setAuthCode(string $authCode) {
+    public function setAuthCode(string $authCode)
+    {
         if (strlen($authCode) > 0) {
             $this->reqData['authorization_code'] = $authCode;
         } else {
@@ -42,8 +46,9 @@ class AuthorizerInfo extends WxBaseOpenCommon {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['authorization_code'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['authorization_code'])) {
             throw new WxOpenException('授权码不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 

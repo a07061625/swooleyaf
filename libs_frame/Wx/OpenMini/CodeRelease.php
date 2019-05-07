@@ -13,23 +13,27 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class CodeRelease extends WxBaseOpenMini {
+class CodeRelease extends WxBaseOpenMini
+{
     /**
      * 应用ID
      * @var string
      */
     private $appId = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/wxa/release?access_token=';
         $this->appId = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -40,7 +44,7 @@ class CodeRelease extends WxBaseOpenMini {
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

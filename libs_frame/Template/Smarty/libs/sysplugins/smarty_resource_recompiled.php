@@ -40,8 +40,8 @@ abstract class Smarty_Resource_Recompiled extends Smarty_Resource
     public function process(Smarty_Internal_Template $_smarty_tpl)
     {
         $compiled = &$_smarty_tpl->compiled;
-        $compiled->file_dependency = array();
-        $compiled->includes = array();
+        $compiled->file_dependency = [];
+        $compiled->includes = [];
         $compiled->nocache_hash = null;
         $compiled->unifunc = null;
         $level = ob_get_level();
@@ -49,9 +49,8 @@ abstract class Smarty_Resource_Recompiled extends Smarty_Resource
         $_smarty_tpl->loadCompiler();
         // call compiler
         try {
-            eval("?>" . $_smarty_tpl->compiler->compileTemplate($_smarty_tpl));
-        }
-        catch (Exception $e) {
+            eval('?>' . $_smarty_tpl->compiler->compileTemplate($_smarty_tpl));
+        } catch (Exception $e) {
             unset($_smarty_tpl->compiler);
             while (ob_get_level() > $level) {
                 ob_end_clean();

@@ -43,6 +43,11 @@ class Twig_Node_Expression_Test_Defined extends Twig_Node_Expression_Test
         parent::__construct($node, $name, $arguments, $lineno);
     }
 
+    public function compile(Twig_Compiler $compiler)
+    {
+        $compiler->subcompile($this->getNode('node'));
+    }
+
     protected function changeIgnoreStrictCheck(Twig_Node_Expression_GetAttr $node)
     {
         $node->setAttribute('ignore_strict_check', true);
@@ -50,10 +55,5 @@ class Twig_Node_Expression_Test_Defined extends Twig_Node_Expression_Test
         if ($node->getNode('node') instanceof Twig_Node_Expression_GetAttr) {
             $this->changeIgnoreStrictCheck($node->getNode('node'));
         }
-    }
-
-    public function compile(Twig_Compiler $compiler)
-    {
-        $compiler->subcompile($this->getNode('node'));
     }
 }

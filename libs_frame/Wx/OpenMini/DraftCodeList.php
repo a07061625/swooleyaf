@@ -14,16 +14,20 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class DraftCodeList extends WxBaseOpenMini {
-    public function __construct(){
+class DraftCodeList extends WxBaseOpenMini
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/wxa/gettemplatedraftlist?access_token=';
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -31,7 +35,7 @@ class DraftCodeList extends WxBaseOpenMini {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getComponentAccessToken(WxConfigSingleton::getInstance()->getOpenCommonConfig()->getAppId());
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_GET_ERROR;

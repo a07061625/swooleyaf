@@ -15,7 +15,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class DownloadBill extends WxBaseShop {
+class DownloadBill extends WxBaseShop
+{
     /**
      * 商户类型
      * @var string
@@ -67,7 +68,8 @@ class DownloadBill extends WxBaseShop {
      */
     private $output_file = '';
 
-    public function __construct(string $appId,string $merchantType=self::MERCHANT_TYPE_SELF){
+    public function __construct(string $appId, string $merchantType = self::MERCHANT_TYPE_SELF)
+    {
         parent::__construct();
 
         if (!isset(self::$totalMerchantType[$merchantType])) {
@@ -77,7 +79,7 @@ class DownloadBill extends WxBaseShop {
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/downloadbill';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->merchantType = $merchantType;
-        if($merchantType == self::MERCHANT_TYPE_SELF){
+        if ($merchantType == self::MERCHANT_TYPE_SELF) {
             $this->reqData['appid'] = $shopConfig->getAppId();
             $this->reqData['mch_id'] = $shopConfig->getPayMchId();
         } else {
@@ -90,14 +92,16 @@ class DownloadBill extends WxBaseShop {
         $this->reqData['bill_type'] = 'ALL';
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $deviceInfo
      */
-    public function setDeviceInfo(string $deviceInfo) {
-        if(strlen($deviceInfo) > 0){
+    public function setDeviceInfo(string $deviceInfo)
+    {
+        if (strlen($deviceInfo) > 0) {
             $this->reqData['device_info'] = $deviceInfo;
         }
     }
@@ -106,8 +110,9 @@ class DownloadBill extends WxBaseShop {
      * @param string $billDate
      * @throws \Exception\Wx\WxException
      */
-    public function setBillDate(string $billDate) {
-        if(ctype_digit($billDate) && (strlen($billDate) == 8)){
+    public function setBillDate(string $billDate)
+    {
+        if (ctype_digit($billDate) && (strlen($billDate) == 8)) {
             $this->reqData['bill_date'] = $billDate;
         } else {
             throw new WxException('对账单日期不合法', ErrorCode::WX_PARAM_ERROR);
@@ -118,8 +123,9 @@ class DownloadBill extends WxBaseShop {
      * @param string $billType
      * @throws \Exception\Wx\WxException
      */
-    public function setBillType(string $billType) {
-        if (in_array($billType, ['ALL', 'SUCCESS', 'REFUND', 'RECHARGE_REFUND'])) {
+    public function setBillType(string $billType)
+    {
+        if (in_array($billType, ['ALL', 'SUCCESS', 'REFUND', 'RECHARGE_REFUND'], true)) {
             $this->reqData['bill_type'] = $billType;
         } else {
             throw new WxException('账单类型不合法', ErrorCode::WX_PARAM_ERROR);
@@ -129,17 +135,19 @@ class DownloadBill extends WxBaseShop {
     /**
      * @param string $outputFile
      */
-    public function setOutputFile(string $outputFile){
-        if(strlen($outputFile) > 0){
+    public function setOutputFile(string $outputFile)
+    {
+        if (strlen($outputFile) > 0) {
             $this->output_file = $outputFile;
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['bill_date'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['bill_date'])) {
             throw new WxException('对账单日期不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(strlen($this->output_file) == 0){
+        if (strlen($this->output_file) == 0) {
             throw new WxException('输出文件不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $appId = $this->merchantType == self::MERCHANT_TYPE_SELF ? $this->reqData['appid'] : $this->reqData['sub_appid'];

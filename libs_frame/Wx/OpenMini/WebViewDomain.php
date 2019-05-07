@@ -14,7 +14,8 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class WebViewDomain extends WxBaseOpenMini {
+class WebViewDomain extends WxBaseOpenMini
+{
     /**
      * 应用ID
      * @var string
@@ -26,13 +27,15 @@ class WebViewDomain extends WxBaseOpenMini {
      */
     private $data = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/wxa/setwebviewdomain?access_token=';
         $this->appId = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
@@ -40,11 +43,12 @@ class WebViewDomain extends WxBaseOpenMini {
      * @param array $domains
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setData(string $action,array $domains=[]){
-        if(!in_array($action, ['add', 'delete', 'set', 'get'])){
+    public function setData(string $action, array $domains = [])
+    {
+        if (!in_array($action, ['add', 'delete', 'set', 'get'], true)) {
             throw new WxOpenException('操作类型不支持', ErrorCode::WXOPEN_PARAM_ERROR);
-        } else if($action != 'get'){
-            if(empty($domains)){
+        } elseif ($action != 'get') {
+            if (empty($domains)) {
                 throw new WxOpenException('域名不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
             }
 
@@ -57,8 +61,9 @@ class WebViewDomain extends WxBaseOpenMini {
         }
     }
 
-    public function getDetail() : array {
-        if(empty($this->data)){
+    public function getDetail() : array
+    {
+        if (empty($this->data)) {
             throw new WxOpenException('数据不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 
@@ -72,7 +77,7 @@ class WebViewDomain extends WxBaseOpenMini {
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

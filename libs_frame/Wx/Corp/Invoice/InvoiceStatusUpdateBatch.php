@@ -12,7 +12,8 @@ use Wx\WxUtilBase;
  * 批量更新发票状态
  * @package Wx\Corp\Invoice
  */
-class InvoiceStatusUpdateBatch extends WxBaseCorp {
+class InvoiceStatusUpdateBatch extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -31,7 +32,8 @@ class InvoiceStatusUpdateBatch extends WxBaseCorp {
      */
     private $invoice_list = [];
 
-    public function __construct(string $corpId,string $agentTag) {
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/card/invoice/reimburse/updatestatusbatch?access_token=';
         $this->reqData['invoice_list'] = [];
@@ -39,14 +41,16 @@ class InvoiceStatusUpdateBatch extends WxBaseCorp {
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
     /**
      * @param string $openid
      * @throws \Exception\Wx\WxException
      */
-    public function setOpenid(string $openid) {
+    public function setOpenid(string $openid)
+    {
         if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
             $this->reqData['openid'] = $openid;
         } else {
@@ -58,8 +62,9 @@ class InvoiceStatusUpdateBatch extends WxBaseCorp {
      * @param string $reimburseStatus
      * @throws \Exception\Wx\WxException
      */
-    public function setReimburseStatus(string $reimburseStatus){
-        if(isset(self::$totalInvoiceReimburseStatus[$reimburseStatus])){
+    public function setReimburseStatus(string $reimburseStatus)
+    {
+        if (isset(self::$totalInvoiceReimburseStatus[$reimburseStatus])) {
             $this->reqData['reimburse_status'] = $reimburseStatus;
         } else {
             throw new WxException('报销状态不合法', ErrorCode::WX_PARAM_ERROR);
@@ -70,22 +75,24 @@ class InvoiceStatusUpdateBatch extends WxBaseCorp {
      * @param array $invoiceList
      * @throws \Exception\Wx\WxException
      */
-    public function setInvoiceList(array $invoiceList){
-        if(empty($invoiceList)){
+    public function setInvoiceList(array $invoiceList)
+    {
+        if (empty($invoiceList)) {
             throw new WxException('发票列表不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
         $this->reqData['invoice_list'] = $invoiceList;
     }
 
-    public function getDetail(): array {
-        if(!isset($this->reqData['openid'])){
+    public function getDetail(): array
+    {
+        if (!isset($this->reqData['openid'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['reimburse_status'])){
+        if (!isset($this->reqData['reimburse_status'])) {
             throw new WxException('报销状态不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(empty($this->reqData['invoice_list'])){
+        if (empty($this->reqData['invoice_list'])) {
             throw new WxException('发票列表不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -97,7 +104,7 @@ class InvoiceStatusUpdateBatch extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

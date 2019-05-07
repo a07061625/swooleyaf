@@ -15,7 +15,8 @@ use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 use Wx\WxUtilOpenBase;
 
-class CustomMsgSend extends WxBaseShop {
+class CustomMsgSend extends WxBaseShop
+{
     /**
      * 应用ID
      * @var string
@@ -37,22 +38,25 @@ class CustomMsgSend extends WxBaseShop {
      */
     private $platType = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=';
         $this->platType = WxUtilBase::PLAT_TYPE_SHOP;
         $this->appId = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $accessToken
      * @throws \Exception\Wx\WxException
      */
-    public function setAccessToken(string $accessToken) {
-        if(strlen($accessToken) > 0){
+    public function setAccessToken(string $accessToken)
+    {
+        if (strlen($accessToken) > 0) {
             $this->accessToken = $accessToken;
         } else {
             throw new WxException('令牌不合法', ErrorCode::WX_PARAM_ERROR);
@@ -63,8 +67,9 @@ class CustomMsgSend extends WxBaseShop {
      * @param array $msgData
      * @throws \Exception\Wx\WxException
      */
-    public function setMsgData(array $msgData){
-        if(empty($msgData)){
+    public function setMsgData(array $msgData)
+    {
+        if (empty($msgData)) {
             throw new WxException('消息数据不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -75,16 +80,18 @@ class CustomMsgSend extends WxBaseShop {
      * @param string $platType
      * @throws \Exception\Wx\WxException
      */
-    public function setPlatType(string $platType) {
-        if(in_array($platType, [WxUtilBase::PLAT_TYPE_SHOP, WxUtilBase::PLAT_TYPE_OPEN_SHOP])){
+    public function setPlatType(string $platType)
+    {
+        if (in_array($platType, [WxUtilBase::PLAT_TYPE_SHOP, WxUtilBase::PLAT_TYPE_OPEN_SHOP], true)) {
             $this->platType = $platType;
         } else {
             throw new WxException('平台类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(empty($this->msgData)){
+    public function getDetail() : array
+    {
+        if (empty($this->msgData)) {
             throw new WxException('消息数据不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -92,9 +99,9 @@ class CustomMsgSend extends WxBaseShop {
             'code' => 0,
         ];
 
-        if(strlen($this->accessToken) > 0){
+        if (strlen($this->accessToken) > 0) {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . $this->accessToken;
-        } else if($this->platType == WxUtilBase::PLAT_TYPE_SHOP){
+        } elseif ($this->platType == WxUtilBase::PLAT_TYPE_SHOP) {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilBaseAlone::getAccessToken($this->appId);
         } else {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getAuthorizerAccessToken($this->appId);

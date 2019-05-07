@@ -14,13 +14,15 @@ use Tool\Tool;
 use Wx\WxBaseMini;
 use Wx\WxUtilBase;
 
-class UserAuthorize extends WxBaseMini {
+class UserAuthorize extends WxBaseMini
+{
     /**
      * @var string
      */
     private $code = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/sns/jscode2session';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
@@ -29,23 +31,26 @@ class UserAuthorize extends WxBaseMini {
         $this->reqData['grant_type'] = 'authorization_code';
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $code
      * @throws \Exception\Wx\WxException
      */
-    public function setCode(string $code) {
-        if(strlen($code) > 0){
+    public function setCode(string $code)
+    {
+        if (strlen($code) > 0) {
             $this->reqData['js_code'] = $code;
         } else {
             throw new WxException('授权码不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['js_code'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['js_code'])) {
             throw new WxException('授权码不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -56,7 +61,7 @@ class UserAuthorize extends WxBaseMini {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['openid'])){
+        if (isset($sendData['openid'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

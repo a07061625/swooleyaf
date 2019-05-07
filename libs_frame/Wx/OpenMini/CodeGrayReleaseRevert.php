@@ -13,23 +13,27 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class CodeGrayReleaseRevert extends WxBaseOpenMini {
+class CodeGrayReleaseRevert extends WxBaseOpenMini
+{
     /**
      * 应用ID
      * @var string
      */
     private $appId = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/wxa/revertgrayrelease?access_token=';
         $this->appId = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -37,7 +41,7 @@ class CodeGrayReleaseRevert extends WxBaseOpenMini {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getAuthorizerAccessToken($this->appId);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_GET_ERROR;

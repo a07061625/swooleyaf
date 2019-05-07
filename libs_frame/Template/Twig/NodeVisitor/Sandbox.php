@@ -23,13 +23,18 @@ class Twig_NodeVisitor_Sandbox extends Twig_BaseNodeVisitor
     protected $filters;
     protected $functions;
 
+    public function getPriority()
+    {
+        return 0;
+    }
+
     protected function doEnterNode(Twig_Node $node, Twig_Environment $env)
     {
         if ($node instanceof Twig_Node_Module) {
             $this->inAModule = true;
-            $this->tags = array();
-            $this->filters = array();
-            $this->functions = array();
+            $this->tags = [];
+            $this->filters = [];
+            $this->functions = [];
 
             return $node;
         } elseif ($this->inAModule) {
@@ -62,14 +67,9 @@ class Twig_NodeVisitor_Sandbox extends Twig_BaseNodeVisitor
         if ($node instanceof Twig_Node_Module) {
             $this->inAModule = false;
 
-            $node->setNode('display_start', new Twig_Node(array(new Twig_Node_CheckSecurity($this->filters, $this->tags, $this->functions), $node->getNode('display_start'))));
+            $node->setNode('display_start', new Twig_Node([new Twig_Node_CheckSecurity($this->filters, $this->tags, $this->functions), $node->getNode('display_start')]));
         }
 
         return $node;
-    }
-
-    public function getPriority()
-    {
-        return 0;
     }
 }

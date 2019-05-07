@@ -14,7 +14,8 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class CodeUpload extends WxBaseOpenMini {
+class CodeUpload extends WxBaseOpenMini
+{
     /**
      * 应用ID
      * @var string
@@ -42,21 +43,24 @@ class CodeUpload extends WxBaseOpenMini {
      */
     private $extData = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/wxa/commit?access_token=';
         $this->appId = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $templateId
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setTemplateId(string $templateId) {
-        if(strlen($templateId) > 0){
+    public function setTemplateId(string $templateId)
+    {
+        if (strlen($templateId) > 0) {
             $this->reqData['template_id'] = $templateId;
         } else {
             throw new WxOpenException('代码模板ID不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -67,8 +71,9 @@ class CodeUpload extends WxBaseOpenMini {
      * @param string $userVersion
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setUserVersion(string $userVersion){
-        if(strlen($userVersion) > 0){
+    public function setUserVersion(string $userVersion)
+    {
+        if (strlen($userVersion) > 0) {
             $this->reqData['user_version'] = $userVersion;
         } else {
             throw new WxOpenException('自定义代码版本号不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -79,8 +84,9 @@ class CodeUpload extends WxBaseOpenMini {
      * @param string $userDesc
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setUserDesc(string $userDesc){
-        if(strlen($userDesc) > 0){
+    public function setUserDesc(string $userDesc)
+    {
+        if (strlen($userDesc) > 0) {
             $this->reqData['user_desc'] = $userDesc;
         } else {
             throw new WxOpenException('自定义代码描述不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -91,19 +97,21 @@ class CodeUpload extends WxBaseOpenMini {
      * @param array $extData
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setExtData(array $extData){
-        if(empty($extData)){
+    public function setExtData(array $extData)
+    {
+        if (empty($extData)) {
             throw new WxOpenException('自定义配置不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 
         $this->extData = $extData;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['template_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['template_id'])) {
             throw new WxOpenException('模板ID不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
-        if(empty($this->extData)){
+        if (empty($this->extData)) {
             throw new WxOpenException('自定义配置不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
         $this->reqData['ext_json'] = Tool::jsonEncode($this->extData, JSON_UNESCAPED_UNICODE);
@@ -118,7 +126,7 @@ class CodeUpload extends WxBaseOpenMini {
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

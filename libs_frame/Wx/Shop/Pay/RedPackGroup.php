@@ -15,7 +15,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class RedPackGroup extends WxBaseShop {
+class RedPackGroup extends WxBaseShop
+{
     /**
      * 随机字符串
      * @var string
@@ -99,7 +100,8 @@ class RedPackGroup extends WxBaseShop {
 
     private $totalScene = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->totalScene = [
             'PRODUCT_1' => 1,
@@ -121,15 +123,17 @@ class RedPackGroup extends WxBaseShop {
         $this->reqData['client_ip'] = $shopConfig->getClientIp();
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $mchBillNo
      * @throws \Exception\Wx\WxException
      */
-    public function setMchBillNo(string $mchBillNo){
-        if(ctype_alnum($mchBillNo) && (strlen($mchBillNo) <= 32)){
+    public function setMchBillNo(string $mchBillNo)
+    {
+        if (ctype_alnum($mchBillNo) && (strlen($mchBillNo) <= 32)) {
             $this->reqData['mch_billno'] = $mchBillNo;
         } else {
             throw new WxException('商户订单号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -140,8 +144,9 @@ class RedPackGroup extends WxBaseShop {
      * @param string $sendName
      * @throws \Exception\Wx\WxException
      */
-    public function setSendName(string $sendName){
-        if(strlen($sendName) > 0){
+    public function setSendName(string $sendName)
+    {
+        if (strlen($sendName) > 0) {
             $this->reqData['send_name'] = mb_substr($sendName, 0, 16);
         } else {
             throw new WxException('商户名称不合法', ErrorCode::WX_PARAM_ERROR);
@@ -152,7 +157,8 @@ class RedPackGroup extends WxBaseShop {
      * @param string $openid
      * @throws \Exception\Wx\WxException
      */
-    public function setReOpenid(string $openid){
+    public function setReOpenid(string $openid)
+    {
         if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
             $this->reqData['re_openid'] = $openid;
         } else {
@@ -164,8 +170,9 @@ class RedPackGroup extends WxBaseShop {
      * @param int $totalAmount
      * @throws \Exception\Wx\WxException
      */
-    public function setTotalAmount(int $totalAmount){
-        if($totalAmount > 0){
+    public function setTotalAmount(int $totalAmount)
+    {
+        if ($totalAmount > 0) {
             $this->reqData['total_amount'] = $totalAmount;
         } else {
             throw new WxException('付款金额不合法', ErrorCode::WX_PARAM_ERROR);
@@ -176,8 +183,9 @@ class RedPackGroup extends WxBaseShop {
      * @param int $totalNum
      * @throws \Exception\Wx\WxException
      */
-    public function setTotalNum(int $totalNum){
-        if($totalNum > 0){
+    public function setTotalNum(int $totalNum)
+    {
+        if ($totalNum > 0) {
             $this->reqData['total_num'] = $totalNum;
         } else {
             throw new WxException('红包发放总人数不合法', ErrorCode::WX_PARAM_ERROR);
@@ -188,8 +196,9 @@ class RedPackGroup extends WxBaseShop {
      * @param string $wishing
      * @throws \Exception\Wx\WxException
      */
-    public function setWishing(string $wishing){
-        if(strlen($wishing) > 0){
+    public function setWishing(string $wishing)
+    {
+        if (strlen($wishing) > 0) {
             $this->reqData['wishing'] = mb_substr($wishing, 0, 64);
         } else {
             throw new WxException('红包祝福语不合法', ErrorCode::WX_PARAM_ERROR);
@@ -200,8 +209,9 @@ class RedPackGroup extends WxBaseShop {
      * @param string $actName
      * @throws \Exception\Wx\WxException
      */
-    public function setActName(string $actName){
-        if(strlen($actName) > 0){
+    public function setActName(string $actName)
+    {
+        if (strlen($actName) > 0) {
             $this->reqData['act_name'] = mb_substr($actName, 0, 16);
         } else {
             throw new WxException('活动名称不合法', ErrorCode::WX_PARAM_ERROR);
@@ -212,8 +222,9 @@ class RedPackGroup extends WxBaseShop {
      * @param string $remark
      * @throws \Exception\Wx\WxException
      */
-    public function setRemark(string $remark){
-        if(strlen($remark) > 0){
+    public function setRemark(string $remark)
+    {
+        if (strlen($remark) > 0) {
             $this->reqData['remark'] = mb_substr($remark, 0, 128);
         } else {
             throw new WxException('备注不合法', ErrorCode::WX_PARAM_ERROR);
@@ -224,8 +235,9 @@ class RedPackGroup extends WxBaseShop {
      * @param string $sceneId
      * @throws \Exception\Wx\WxException
      */
-    public function setSceneId(string $sceneId){
-        if(isset($this->totalScene[$sceneId])){
+    public function setSceneId(string $sceneId)
+    {
+        if (isset($this->totalScene[$sceneId])) {
             $this->reqData['scene_id'] = $sceneId;
         } else {
             throw new WxException('场景id不合法', ErrorCode::WX_PARAM_ERROR);
@@ -235,15 +247,16 @@ class RedPackGroup extends WxBaseShop {
     /**
      * @param array $riskInfo
      */
-    public function setRiskInfo(array $riskInfo){
+    public function setRiskInfo(array $riskInfo)
+    {
         $infoStr = '';
         foreach ($riskInfo as $key => $val) {
-            if(in_array($key, ['posttime','mobile','deviceid','clientversion',]) && (strlen($val) > 0)){
+            if (in_array($key, ['posttime','mobile','deviceid','clientversion',], true) && (strlen($val) > 0)) {
                 $infoStr .= '&' . $key . '=' . $val;
             }
         }
 
-        if(strlen($infoStr) > 0){
+        if (strlen($infoStr) > 0) {
             $this->reqData['risk_info'] = urlencode(substr($infoStr, 1));
         }
     }
@@ -252,37 +265,39 @@ class RedPackGroup extends WxBaseShop {
      * @param string $consumeMchId
      * @throws \Exception\Wx\WxException
      */
-    public function setConsumeMchId(string $consumeMchId){
-        if(ctype_alnum($consumeMchId) && (strlen($consumeMchId) <= 32)){
+    public function setConsumeMchId(string $consumeMchId)
+    {
+        if (ctype_alnum($consumeMchId) && (strlen($consumeMchId) <= 32)) {
             $this->reqData['consume_mch_id'] = $consumeMchId;
         } else {
             throw new WxException('资金授权商户号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['mch_billno'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['mch_billno'])) {
             throw new WxException('商户订单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['send_name'])){
+        if (!isset($this->reqData['send_name'])) {
             throw new WxException('商户名称不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['re_openid'])){
+        if (!isset($this->reqData['re_openid'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['total_amount'])){
+        if (!isset($this->reqData['total_amount'])) {
             throw new WxException('付款金额不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['wishing'])){
+        if (!isset($this->reqData['wishing'])) {
             throw new WxException('红包祝福语不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['act_name'])){
+        if (!isset($this->reqData['act_name'])) {
             throw new WxException('活动名称不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['remark'])){
+        if (!isset($this->reqData['remark'])) {
             throw new WxException('备注不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if((($this->reqData['total_amount'] < 100) || ($this->reqData['total_amount'] > 20000)) && (!isset($this->reqData['scene_id']))){
+        if ((($this->reqData['total_amount'] < 100) || ($this->reqData['total_amount'] > 20000)) && (!isset($this->reqData['scene_id']))) {
             throw new WxException('场景id不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['wxappid']);
@@ -311,7 +326,7 @@ class RedPackGroup extends WxBaseShop {
         if ($sendData['return_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } else if ($sendData['result_code'] == 'FAIL') {
+        } elseif ($sendData['result_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {

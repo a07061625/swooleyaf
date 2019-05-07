@@ -14,7 +14,8 @@ use Wx\WxBaseMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class Qrcode extends WxBaseMini {
+class Qrcode extends WxBaseMini
+{
     /**
      * 应用ID
      * @var string
@@ -51,7 +52,8 @@ class Qrcode extends WxBaseMini {
      */
     private $is_hyaline = false;
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=';
         $this->app_id = $appId;
@@ -65,19 +67,21 @@ class Qrcode extends WxBaseMini {
         $this->reqData['is_hyaline'] = false;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $scene
      * @throws \Exception\Wx\WxException
      */
-    public function setScene(string $scene){
+    public function setScene(string $scene)
+    {
         $trueScene = trim($scene);
         $length = strlen($trueScene);
-        if($length == 0){
+        if ($length == 0) {
             throw new WxException('场景标识不能为空', ErrorCode::WX_PARAM_ERROR);
-        } else if($length > 32){
+        } elseif ($length > 32) {
             throw new WxException('场景标识不能超过32个字符', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -88,9 +92,10 @@ class Qrcode extends WxBaseMini {
      * @param string $page
      * @throws \Exception\Wx\WxException
      */
-    public function setPage(string $page){
+    public function setPage(string $page)
+    {
         $truePage = trim($page);
-        if(strlen($truePage) > 0){
+        if (strlen($truePage) > 0) {
             $this->reqData['page'] = $truePage;
         } else {
             throw new WxException('页面地址不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -101,7 +106,8 @@ class Qrcode extends WxBaseMini {
      * @param int $width
      * @throws \Exception\Wx\WxException
      */
-    public function setWidth(int $width){
+    public function setWidth(int $width)
+    {
         if ($width > 0) {
             $this->reqData['width'] = $width;
         } else {
@@ -112,7 +118,8 @@ class Qrcode extends WxBaseMini {
     /**
      * @param bool $autoColor
      */
-    public function setAutoColor(bool $autoColor){
+    public function setAutoColor(bool $autoColor)
+    {
         $this->reqData['auto_color'] = $autoColor;
     }
 
@@ -122,12 +129,13 @@ class Qrcode extends WxBaseMini {
      * @param int $blue
      * @throws \Exception\Wx\WxException
      */
-    public function setLineColor(int $red,int $green,int $blue){
-        if(($red < 0) || ($red > 255)){
+    public function setLineColor(int $red, int $green, int $blue)
+    {
+        if (($red < 0) || ($red > 255)) {
             throw new WxException('线条颜色red不合法', ErrorCode::WX_PARAM_ERROR);
-        } else if(($green < 0) || ($green > 255)){
+        } elseif (($green < 0) || ($green > 255)) {
             throw new WxException('线条颜色green不合法', ErrorCode::WX_PARAM_ERROR);
-        } else if(($blue < 0) || ($blue > 255)){
+        } elseif (($blue < 0) || ($blue > 255)) {
             throw new WxException('线条颜色blue不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -141,14 +149,16 @@ class Qrcode extends WxBaseMini {
     /**
      * @param bool $isHyaline true:需要透明底色 false:不需要透明底色
      */
-    public function setIsHyaline(bool $isHyaline){
+    public function setIsHyaline(bool $isHyaline)
+    {
         $this->reqData['is_hyaline'] = $isHyaline;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['scene'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['scene'])) {
             throw new WxException('场景标识必须填写', ErrorCode::WX_PARAM_ERROR);
-        } else if(!isset($this->reqData['page'])){
+        } elseif (!isset($this->reqData['page'])) {
             throw new WxException('页面地址必须填写', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -160,7 +170,7 @@ class Qrcode extends WxBaseMini {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(is_array($sendData)){
+        if (is_array($sendData)) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['errmsg'];
         } else {

@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 全量覆盖部门
  * @package Wx\Corp\Batch
  */
-class PartyReplace extends WxBaseCorp {
+class PartyReplace extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -32,22 +33,25 @@ class PartyReplace extends WxBaseCorp {
      */
     private $callback = [];
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/batch/replaceparty?access_token=';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $mediaId
      * @throws \Exception\Wx\WxException
      */
-    public function setMediaId(string $mediaId){
-        if(strlen($mediaId) > 0){
+    public function setMediaId(string $mediaId)
+    {
+        if (strlen($mediaId) > 0) {
             $this->reqData['media_id'] = $mediaId;
         } else {
             throw new WxException('媒体ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -58,16 +62,18 @@ class PartyReplace extends WxBaseCorp {
      * @param array $callback
      * @throws \Exception\Wx\WxException
      */
-    public function setCallback(array $callback){
-        if(empty($callback)){
+    public function setCallback(array $callback)
+    {
+        if (empty($callback)) {
             throw new WxException('回调信息不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
         $this->reqData['callback'] = $callback;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['media_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['media_id'])) {
             throw new WxException('媒体ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -79,7 +85,7 @@ class PartyReplace extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

@@ -18,7 +18,8 @@ use Wx\WxUtilOpenBase;
  * 绑定应用
  * @package Wx\Open
  */
-class AppBind extends WxBaseOpen {
+class AppBind extends WxBaseOpen
+{
     /**
      * 公众号或小程序的app id
      * @var string
@@ -30,17 +31,20 @@ class AppBind extends WxBaseOpen {
      */
     private $open_appid = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/open/bind?access_token=';
         $this->reqData['appid'] = $appId;
         $this->reqData['open_appid'] = WxConfigSingleton::getInstance()->getOpenCommonConfig()->getAppId();
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0
         ];

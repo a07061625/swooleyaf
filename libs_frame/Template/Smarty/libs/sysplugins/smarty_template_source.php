@@ -155,9 +155,11 @@ class Smarty_Template_Source
      * @return Smarty_Template_Source Source Object
      * @throws SmartyException
      */
-    public static function load(Smarty_Internal_Template $_template = null, Smarty $smarty = null,
-                                $template_resource = null)
-    {
+    public static function load(
+        Smarty_Internal_Template $_template = null,
+        Smarty $smarty = null,
+                                $template_resource = null
+    ) {
         if ($_template) {
             $smarty = $_template->smarty;
             $template_resource = $_template->template_resource;
@@ -176,7 +178,7 @@ class Smarty_Template_Source
             $name = $template_resource;
         }
         // create new source  object
-        $source = new Smarty_Template_Source($smarty, $template_resource, $type, $name);
+        $source = new self($smarty, $template_resource, $type, $name);
         $source->handler->populate($source, $_template);
         if (!$source->exists && isset($_template->smarty->default_template_handler_func)) {
             Smarty_Internal_Method_RegisterDefaultTemplateHandler::_getDefaultTemplate($source);

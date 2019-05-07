@@ -4,6 +4,7 @@
  *
  * @package    Smarty
  * @subpackage PluginsFunction
+ * @param mixed $params
  */
 
 /**
@@ -140,7 +141,7 @@ function smarty_function_html_table($params)
 
     $output .= "<tbody>\n";
     for ($r = 0; $r < $rows; $r ++) {
-        $output .= "<tr" . smarty_function_html_table_cycle('tr', $tr_attr, $r) . ">\n";
+        $output .= '<tr' . smarty_function_html_table_cycle('tr', $tr_attr, $r) . ">\n";
         $rx = ($vdir == 'down') ? $r * $cols_count : ($rows - 1 - $r) * $cols_count;
 
         for ($c = 0; $c < $cols_count; $c ++) {
@@ -151,9 +152,9 @@ function smarty_function_html_table($params)
             }
 
             if ($x < $loop_count) {
-                $output .= "<td" . smarty_function_html_table_cycle('td', $td_attr, $c) . ">" . $loop[ $x ] . "</td>\n";
+                $output .= '<td' . smarty_function_html_table_cycle('td', $td_attr, $c) . '>' . $loop[ $x ] . "</td>\n";
             } else {
-                $output .= "<td" . smarty_function_html_table_cycle('td', $td_attr, $c) . ">$trailpad</td>\n";
+                $output .= '<td' . smarty_function_html_table_cycle('td', $td_attr, $c) . ">$trailpad</td>\n";
             }
         }
         $output .= "</tr>\n";

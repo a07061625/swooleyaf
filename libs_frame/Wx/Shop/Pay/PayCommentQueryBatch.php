@@ -15,7 +15,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class PayCommentQueryBatch extends WxBaseShop {
+class PayCommentQueryBatch extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -62,7 +63,8 @@ class PayCommentQueryBatch extends WxBaseShop {
      */
     private $output_file = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/billcommentsp/batchquerycomment';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
@@ -74,7 +76,8 @@ class PayCommentQueryBatch extends WxBaseShop {
         $this->reqData['limit'] = 100;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
@@ -82,12 +85,13 @@ class PayCommentQueryBatch extends WxBaseShop {
      * @param int $endTime
      * @throws \Exception\Wx\WxException
      */
-    public function setTime(int $beginTime,int $endTime){
-        if($beginTime <= 0){
+    public function setTime(int $beginTime, int $endTime)
+    {
+        if ($beginTime <= 0) {
             throw new WxException('开始时间不合法', ErrorCode::WX_PARAM_ERROR);
-        } else if($endTime <= 0){
+        } elseif ($endTime <= 0) {
             throw new WxException('结束时间不合法', ErrorCode::WX_PARAM_ERROR);
-        } else if($beginTime > $endTime){
+        } elseif ($beginTime > $endTime) {
             throw new WxException('结束时间不能小于开始时间', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -99,8 +103,9 @@ class PayCommentQueryBatch extends WxBaseShop {
      * @param int $offset
      * @throws \Exception\Wx\WxException
      */
-    public function setOffset(int $offset){
-        if($offset < 0){
+    public function setOffset(int $offset)
+    {
+        if ($offset < 0) {
             $this->reqData['offset'] = $offset;
         } else {
             throw new WxException('位移不合法', ErrorCode::WX_PARAM_ERROR);
@@ -111,8 +116,9 @@ class PayCommentQueryBatch extends WxBaseShop {
      * @param int $limit
      * @throws \Exception\Wx\WxException
      */
-    public function setLimit(int $limit){
-        if(($limit > 0) && ($limit <= 200)){
+    public function setLimit(int $limit)
+    {
+        if (($limit > 0) && ($limit <= 200)) {
             $this->reqData['limit'] = $limit;
         } else {
             throw new WxException('条数不合法', ErrorCode::WX_PARAM_ERROR);
@@ -122,20 +128,22 @@ class PayCommentQueryBatch extends WxBaseShop {
     /**
      * @param string $outputFile
      */
-    public function setOutputFile(string $outputFile){
-        if(strlen($outputFile) > 0){
+    public function setOutputFile(string $outputFile)
+    {
+        if (strlen($outputFile) > 0) {
             $this->output_file = $outputFile;
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['begin_time'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['begin_time'])) {
             throw new WxException('开始时间不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['end_time'])){
+        if (!isset($this->reqData['end_time'])) {
             throw new WxException('结束时间不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(strlen($this->output_file) == 0){
+        if (strlen($this->output_file) == 0) {
             throw new WxException('输出文件不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid'], 'sha256');

@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class ProductListStatus extends WxBaseShop {
+class ProductListStatus extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -26,30 +27,34 @@ class ProductListStatus extends WxBaseShop {
      */
     private $status = 0;
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/merchant/getbystatus?access_token=';
         $this->appid = $appId;
         $this->reqData['status'] = 0;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $status
      * @throws \Exception\Wx\WxException
      */
-    public function setStatus(int $status){
-        if(in_array($status, [0, 1, 2])){
+    public function setStatus(int $status)
+    {
+        if (in_array($status, [0, 1, 2], true)) {
             $this->reqData['status'] = $status;
         } else {
             throw new WxException('商品状态不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['status'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['status'])) {
             throw new WxException('商品状态不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -61,7 +66,7 @@ class ProductListStatus extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

@@ -35,7 +35,7 @@ class Smarty_Internal_Resource_Extends extends Smarty_Resource
     public function populate(Smarty_Template_Source $source, Smarty_Internal_Template $_template = null)
     {
         $uid = '';
-        $sources = array();
+        $sources = [];
         $components = explode('|', $source->name);
         $exists = true;
         foreach ($components as $component) {

@@ -15,7 +15,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class PayReport extends WxBaseShop {
+class PayReport extends WxBaseShop
+{
     /**
      * 商户类型
      * @var string
@@ -57,7 +58,8 @@ class PayReport extends WxBaseShop {
      */
     private $trades = '';
 
-    public function __construct(string $appId,string $merchantType=self::MERCHANT_TYPE_SELF){
+    public function __construct(string $appId, string $merchantType = self::MERCHANT_TYPE_SELF)
+    {
         parent::__construct();
 
         if (!isset(self::$totalMerchantType[$merchantType])) {
@@ -67,7 +69,7 @@ class PayReport extends WxBaseShop {
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/payitil/report';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->merchantType = $merchantType;
-        if($merchantType == self::MERCHANT_TYPE_SELF){
+        if ($merchantType == self::MERCHANT_TYPE_SELF) {
             $this->reqData['appid'] = $shopConfig->getAppId();
             $this->reqData['mch_id'] = $shopConfig->getPayMchId();
         } else {
@@ -79,14 +81,16 @@ class PayReport extends WxBaseShop {
         $this->reqData['user_ip'] = $shopConfig->getClientIp();
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $deviceInfo
      */
-    public function setDeviceInfo(string $deviceInfo){
-        if(strlen($deviceInfo) > 0){
+    public function setDeviceInfo(string $deviceInfo)
+    {
+        if (strlen($deviceInfo) > 0) {
             $this->reqData['device_info'] = $deviceInfo;
         }
     }
@@ -95,16 +99,18 @@ class PayReport extends WxBaseShop {
      * @param array $trades
      * @throws \Exception\Wx\WxException
      */
-    public function setTrades(array $trades){
-        if(empty($trades)){
+    public function setTrades(array $trades)
+    {
+        if (empty($trades)) {
             throw new WxException('上报数据包不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
         $this->reqData['trades'] = Tool::jsonEncode($trades, JSON_UNESCAPED_UNICODE);
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['trades'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['trades'])) {
             throw new WxException('上报数据包不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $appId = $this->merchantType == self::MERCHANT_TYPE_SELF ? $this->reqData['appid'] : $this->reqData['sub_appid'];
@@ -121,7 +127,7 @@ class PayReport extends WxBaseShop {
         if ($sendData['return_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } else if ($sendData['result_code'] == 'FAIL') {
+        } elseif ($sendData['result_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = '上报失败';
         } else {

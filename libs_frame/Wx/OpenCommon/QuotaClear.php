@@ -18,23 +18,27 @@ use Wx\WxUtilOpenBase;
  * 调用接口次数清零
  * @package Wx\OpenCommon
  */
-class QuotaClear extends WxBaseOpenCommon {
+class QuotaClear extends WxBaseOpenCommon
+{
     /**
      * 第三方平台APPID
      * @var string
      */
     private $component_appid = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/component/clear_quota?component_access_token=';
         $this->reqData['component_appid'] = WxConfigSingleton::getInstance()->getOpenCommonConfig()->getAppId();
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0
         ];

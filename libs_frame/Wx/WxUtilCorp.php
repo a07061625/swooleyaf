@@ -17,7 +17,8 @@ use Traits\SimpleTrait;
 use Wx\Corp\Common\AccessToken;
 use Wx\Corp\Common\JsTicket;
 
-final class WxUtilCorp extends WxUtilBase {
+final class WxUtilCorp extends WxUtilBase
+{
     use SimpleTrait;
 
     /**
@@ -26,7 +27,8 @@ final class WxUtilCorp extends WxUtilBase {
      * @param string $agentTag
      * @return string
      */
-    public static function getAccessToken(string $corpId,string $agentTag) : string {
+    public static function getAccessToken(string $corpId, string $agentTag) : string
+    {
         $nowTime = Tool::getNowTime();
         $agentInfo = WxConfigSingleton::getInstance()->getCorpConfig($corpId)->getAgentInfo($agentTag);
         $redisKey = Project::REDIS_PREFIX_WX_CORP . $corpId . '_' . $agentInfo['id'];
@@ -55,7 +57,8 @@ final class WxUtilCorp extends WxUtilBase {
      * @param string $agentTag
      * @return string
      */
-    public static function getJsTicket(string $corpId,string $agentTag) : string {
+    public static function getJsTicket(string $corpId, string $agentTag) : string
+    {
         $nowTime = Tool::getNowTime();
         $agentInfo = WxConfigSingleton::getInstance()->getCorpConfig($corpId)->getAgentInfo($agentTag);
         $redisKey = Project::REDIS_PREFIX_WX_CORP . $corpId . '_' . $agentInfo['id'];
@@ -86,19 +89,20 @@ final class WxUtilCorp extends WxUtilBase {
      * @param string $payKey 支付密钥
      * @return string
      */
-    public static function createWxSign(array $data,string $payKey) {
+    public static function createWxSign(array $data, string $payKey)
+    {
         //签名步骤一：按字典序排序参数
         ksort($data);
         //签名步骤二：格式化后加入KEY
         $needStr1 = '';
         foreach ($data as $key => $value) {
-            if($key == 'sign'){
+            if ($key == 'sign') {
                 continue;
             }
-            if((!is_string($value)) && !is_numeric($value)){
+            if ((!is_string($value)) && !is_numeric($value)) {
                 continue;
             }
-            if(strlen($value) == 0){
+            if (strlen($value) == 0) {
                 continue;
             }
             $needStr1 .= '&' . $key . '=' . $value;
@@ -116,10 +120,11 @@ final class WxUtilCorp extends WxUtilBase {
      * @return string
      * @throws \Exception\Wx\WxException
      */
-    public static function createCorpSign(array $data,array $acceptKeys,string $agentSecret) {
+    public static function createCorpSign(array $data, array $acceptKeys, string $agentSecret)
+    {
         $dataKeys = array_keys($data);
         $missArr = array_diff($acceptKeys, $dataKeys);
-        if(!empty($missArr)){
+        if (!empty($missArr)) {
             throw new WxException('缺少字段' . implode(',', $missArr), ErrorCode::WX_PARAM_ERROR);
         }
 

@@ -16,7 +16,8 @@ use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 use Wx\WxUtilShop;
 
-class JsConfig extends WxBaseShop {
+class JsConfig extends WxBaseShop
+{
     /**
      * @var int
      */
@@ -35,7 +36,8 @@ class JsConfig extends WxBaseShop {
      */
     private $platType = '';
 
-    public function __construct(string $appId) {
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->reqData['appId'] = $shopConfig->getAppId();
@@ -45,14 +47,16 @@ class JsConfig extends WxBaseShop {
         $this->platType = WxUtilBase::PLAT_TYPE_SHOP;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $timestamp
      */
-    public function setTimestamp(int $timestamp) {
-        if($timestamp > 0){
+    public function setTimestamp(int $timestamp)
+    {
+        if ($timestamp > 0) {
             $this->reqData['timestamp'] = $timestamp;
         }
     }
@@ -60,9 +64,10 @@ class JsConfig extends WxBaseShop {
     /**
      * @param string $nonceStr
      */
-    public function setNonceStr(string $nonceStr) {
+    public function setNonceStr(string $nonceStr)
+    {
         $length = strlen($nonceStr);
-        if(ctype_alnum($nonceStr) && ($length >= 16) && ($length <= 32)){
+        if (ctype_alnum($nonceStr) && ($length >= 16) && ($length <= 32)) {
             $this->reqData['nonceStr'] = $nonceStr;
         }
     }
@@ -71,7 +76,8 @@ class JsConfig extends WxBaseShop {
      * @param string $url
      * @throws \Exception\Wx\WxException
      */
-    public function setUrl(string $url) {
+    public function setUrl(string $url)
+    {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $url) > 0) {
             $this->url = $url;
         } else {
@@ -83,8 +89,9 @@ class JsConfig extends WxBaseShop {
      * @param string $platType
      * @throws \Exception\Wx\WxException
      */
-    public function setPlatType(string $platType){
-        if(in_array($platType, [WxUtilBase::PLAT_TYPE_SHOP, WxUtilBase::PLAT_TYPE_OPEN_SHOP])){
+    public function setPlatType(string $platType)
+    {
+        if (in_array($platType, [WxUtilBase::PLAT_TYPE_SHOP, WxUtilBase::PLAT_TYPE_OPEN_SHOP], true)) {
             $this->platType = $platType;
         } else {
             throw new WxException('平台类型不支持', ErrorCode::WX_PARAM_ERROR);
@@ -95,7 +102,8 @@ class JsConfig extends WxBaseShop {
      * @param string $platType 平台类型 shop：公众号 openshop：第三方平台代理公众号
      * @return array
      */
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         if ($this->platType == WxUtilBase::PLAT_TYPE_SHOP) { //公众号获取jsapi_ticket
             $ticket = WxUtilShop::getJsTicket($this->reqData['appId']);
         } else { //第三方平台获取jsapi_ticket

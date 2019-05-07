@@ -19,8 +19,10 @@ class Twig_Node_Expression_BlockReference extends Twig_Node_Expression
 {
     /**
      * @param Twig_Node|null $template
+     * @param mixed $lineno
+     * @param null|mixed $tag
      */
-    public function __construct(Twig_NodeInterface $name, $template = null, $lineno, $tag = null)
+    public function __construct(Twig_NodeInterface $name, $template, $lineno, $tag = null)
     {
         if (is_bool($template)) {
             @trigger_error(sprintf('The %s method "$asString" argument is deprecated since version 1.28 and will be removed in 2.0.', __METHOD__), E_USER_DEPRECATED);
@@ -28,12 +30,12 @@ class Twig_Node_Expression_BlockReference extends Twig_Node_Expression
             $template = null;
         }
 
-        $nodes = array('name' => $name);
+        $nodes = ['name' => $name];
         if (null !== $template) {
             $nodes['template'] = $template;
         }
 
-        parent::__construct($nodes, array('is_defined_test' => false, 'output' => false), $lineno, $tag);
+        parent::__construct($nodes, ['is_defined_test' => false, 'output' => false], $lineno, $tag);
     }
 
     public function compile(Twig_Compiler $compiler)

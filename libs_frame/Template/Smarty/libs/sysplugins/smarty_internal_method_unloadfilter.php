@@ -31,7 +31,7 @@ class Smarty_Internal_Method_UnloadFilter extends Smarty_Internal_Method_LoadFil
         if (isset($smarty->registered_filters[ $type ])) {
             $_filter_name = "smarty_{$type}filter_{$name}";
             if (isset($smarty->registered_filters[ $type ][ $_filter_name ])) {
-                unset ($smarty->registered_filters[ $type ][ $_filter_name ]);
+                unset($smarty->registered_filters[ $type ][ $_filter_name ]);
                 if (empty($smarty->registered_filters[ $type ])) {
                     unset($smarty->registered_filters[ $type ]);
                 }

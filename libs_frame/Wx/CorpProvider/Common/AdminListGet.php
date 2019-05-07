@@ -12,7 +12,8 @@ use Wx\WxUtilCorpProvider;
  * 获取应用的管理员列表
  * @package Wx\CorpProvider\Common
  */
-class AdminListGet extends WxBaseCorpProvider {
+class AdminListGet extends WxBaseCorpProvider
+{
     /**
      * 授权企业ID
      * @var string
@@ -24,29 +25,33 @@ class AdminListGet extends WxBaseCorpProvider {
      */
     private $agentid = '';
 
-    public function __construct(string $corpId) {
+    public function __construct(string $corpId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/service/get_admin_list?suite_access_token=';
         $this->reqData['auth_corpid'] = $corpId;
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
     /**
      * @param string $agentId
      * @throws \Exception\Wx\WxCorpProviderException
      */
-    public function setAgentId(string $agentId){
-        if(ctype_alnum($agentId)){
+    public function setAgentId(string $agentId)
+    {
+        if (ctype_alnum($agentId)) {
             $this->reqData['agentid'] = $agentId;
         } else {
             throw new WxCorpProviderException('应用ID不合法', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
     }
 
-    public function getDetail(): array {
-        if(!isset($this->reqData['agentid'])){
+    public function getDetail(): array
+    {
+        if (!isset($this->reqData['agentid'])) {
             throw new WxCorpProviderException('应用ID不能为空', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
 
@@ -58,7 +63,7 @@ class AdminListGet extends WxBaseCorpProvider {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXPROVIDER_CORP_POST_ERROR;

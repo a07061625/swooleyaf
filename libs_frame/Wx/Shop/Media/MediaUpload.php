@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class MediaUpload extends WxBaseShop {
+class MediaUpload extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -26,9 +27,10 @@ class MediaUpload extends WxBaseShop {
      */
     private $file_path = '';
 
-    public function __construct(string $appId,string $type){
+    public function __construct(string $appId, string $type)
+    {
         parent::__construct();
-        if(!isset(self::$totalMaterialType[$type])){
+        if (!isset(self::$totalMaterialType[$type])) {
             throw new WxException('类型不支持', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -36,23 +38,26 @@ class MediaUpload extends WxBaseShop {
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $filePath
      * @throws \Exception\Wx\WxException
      */
-    public function setFilePath(string $filePath){
-        if(file_exists($filePath) && is_readable($filePath)){
+    public function setFilePath(string $filePath)
+    {
+        if (file_exists($filePath) && is_readable($filePath)) {
             $this->reqData['media'] = new \CURLFile($filePath);
         } else {
             throw new WxException('文件不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['media'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['media'])) {
             throw new WxException('文件不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -64,7 +69,7 @@ class MediaUpload extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $this->reqData;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['media_id'])){
+        if (isset($sendData['media_id'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

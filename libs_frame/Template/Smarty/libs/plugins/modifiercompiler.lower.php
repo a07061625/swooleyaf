@@ -4,6 +4,7 @@
  *
  * @package    Smarty
  * @subpackage PluginsModifierCompiler
+ * @param mixed $params
  */
 
 /**

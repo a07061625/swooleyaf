@@ -14,7 +14,8 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class SearchStatusChange extends WxBaseOpenMini {
+class SearchStatusChange extends WxBaseOpenMini
+{
     /**
      * 应用ID
      * @var string
@@ -26,29 +27,33 @@ class SearchStatusChange extends WxBaseOpenMini {
      */
     private $searchStatus = 0;
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/wxa/changewxasearchstatus?access_token=';
         $this->appId = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param int $searchStatus
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setSearchStatus(int $searchStatus){
-        if(in_array($searchStatus, [0, 1])){
+    public function setSearchStatus(int $searchStatus)
+    {
+        if (in_array($searchStatus, [0, 1], true)) {
             $this->reqData['status'] = $searchStatus;
         } else {
             throw new WxOpenException('搜索状态不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['status'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['status'])) {
             throw new WxOpenException('搜索状态不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 
@@ -62,7 +67,7 @@ class SearchStatusChange extends WxBaseOpenMini {
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

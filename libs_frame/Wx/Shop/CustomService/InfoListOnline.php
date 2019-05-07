@@ -13,23 +13,27 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class InfoList extends WxBaseShop {
+class InfoList extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
      */
     private $appid = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/customservice/getonlinekflist?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0
         ];

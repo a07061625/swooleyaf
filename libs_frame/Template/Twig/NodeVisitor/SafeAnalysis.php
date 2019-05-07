@@ -14,8 +14,8 @@
  */
 class Twig_NodeVisitor_SafeAnalysis extends Twig_BaseNodeVisitor
 {
-    protected $data = array();
-    protected $safeVars = array();
+    protected $data = [];
+    protected $safeVars = [];
 
     public function setSafeVars($safeVars)
     {
@@ -34,12 +34,17 @@ class Twig_NodeVisitor_SafeAnalysis extends Twig_BaseNodeVisitor
                 continue;
             }
 
-            if (in_array('html_attr', $bucket['value'])) {
+            if (in_array('html_attr', $bucket['value'], true)) {
                 $bucket['value'][] = 'html';
             }
 
             return $bucket['value'];
         }
+    }
+
+    public function getPriority()
+    {
+        return 0;
     }
 
     protected function setSafe(Twig_NodeInterface $node, array $safe)
@@ -54,10 +59,10 @@ class Twig_NodeVisitor_SafeAnalysis extends Twig_BaseNodeVisitor
                 }
             }
         }
-        $this->data[$hash][] = array(
+        $this->data[$hash][] = [
             'key' => $node,
             'value' => $safe,
-        );
+        ];
     }
 
     protected function doEnterNode(Twig_Node $node, Twig_Environment $env)
@@ -69,13 +74,13 @@ class Twig_NodeVisitor_SafeAnalysis extends Twig_BaseNodeVisitor
     {
         if ($node instanceof Twig_Node_Expression_Constant) {
             // constants are marked safe for all
-            $this->setSafe($node, array('all'));
+            $this->setSafe($node, ['all']);
         } elseif ($node instanceof Twig_Node_Expression_BlockReference) {
             // blocks are safe by definition
-            $this->setSafe($node, array('all'));
+            $this->setSafe($node, ['all']);
         } elseif ($node instanceof Twig_Node_Expression_Parent) {
             // parent block is safe by definition
-            $this->setSafe($node, array('all'));
+            $this->setSafe($node, ['all']);
         } elseif ($node instanceof Twig_Node_Expression_Conditional) {
             // intersect safeness of both operands
             $safe = $this->intersectSafe($this->getSafe($node->getNode('expr2')), $this->getSafe($node->getNode('expr3')));
@@ -91,7 +96,7 @@ class Twig_NodeVisitor_SafeAnalysis extends Twig_BaseNodeVisitor
                 }
                 $this->setSafe($node, $safe);
             } else {
-                $this->setSafe($node, array());
+                $this->setSafe($node, []);
             }
         } elseif ($node instanceof Twig_Node_Expression_Function) {
             // function expression is safe when the function is safe
@@ -101,24 +106,24 @@ class Twig_NodeVisitor_SafeAnalysis extends Twig_BaseNodeVisitor
             if (false !== $function) {
                 $this->setSafe($node, $function->getSafe($args));
             } else {
-                $this->setSafe($node, array());
+                $this->setSafe($node, []);
             }
         } elseif ($node instanceof Twig_Node_Expression_MethodCall) {
             if ($node->getAttribute('safe')) {
-                $this->setSafe($node, array('all'));
+                $this->setSafe($node, ['all']);
             } else {
-                $this->setSafe($node, array());
+                $this->setSafe($node, []);
             }
         } elseif ($node instanceof Twig_Node_Expression_GetAttr && $node->getNode('node') instanceof Twig_Node_Expression_Name) {
             $name = $node->getNode('node')->getAttribute('name');
             // attributes on template instances are safe
-            if ('_self' == $name || in_array($name, $this->safeVars)) {
-                $this->setSafe($node, array('all'));
+            if ('_self' == $name || in_array($name, $this->safeVars, true)) {
+                $this->setSafe($node, ['all']);
             } else {
-                $this->setSafe($node, array());
+                $this->setSafe($node, []);
             }
         } else {
-            $this->setSafe($node, array());
+            $this->setSafe($node, []);
         }
 
         return $node;
@@ -127,22 +132,17 @@ class Twig_NodeVisitor_SafeAnalysis extends Twig_BaseNodeVisitor
     protected function intersectSafe(array $a = null, array $b = null)
     {
         if (null === $a || null === $b) {
-            return array();
+            return [];
         }
 
-        if (in_array('all', $a)) {
+        if (in_array('all', $a, true)) {
             return $b;
         }
 
-        if (in_array('all', $b)) {
+        if (in_array('all', $b, true)) {
             return $a;
         }
 
         return array_intersect($a, $b);
-    }
-
-    public function getPriority()
-    {
-        return 0;
     }
 }

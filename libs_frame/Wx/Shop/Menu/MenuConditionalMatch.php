@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class MenuConditionalMatch extends WxBaseShop {
+class MenuConditionalMatch extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -26,29 +27,33 @@ class MenuConditionalMatch extends WxBaseShop {
      */
     private $user_id = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/menu/trymatch?access_token=';
         $this->appid = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $userId
      * @throws \Exception\Wx\WxException
      */
-    public function setUserId(string $userId){
-        if(strlen($userId) > 0){
+    public function setUserId(string $userId)
+    {
+        if (strlen($userId) > 0) {
             $this->reqData['user_id'] = $userId;
         } else {
             throw new WxException('用户ID不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['user_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['user_id'])) {
             throw new WxException('用户ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 

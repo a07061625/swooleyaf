@@ -27,35 +27,35 @@ class Smarty_Internal_Runtime_GetIncludePath
      *
      * @var array
      */
-    public $_include_dirs = array();
+    public $_include_dirs = [];
 
     /**
      * include path directory cache
      *
      * @var array
      */
-    public $_user_dirs = array();
+    public $_user_dirs = [];
 
     /**
      * stream cache
      *
      * @var string[]
      */
-    public $isFile = array();
+    public $isFile = [];
 
     /**
      * stream cache
      *
      * @var string[]
      */
-    public $isPath = array();
+    public $isPath = [];
 
     /**
      * stream cache
      *
      * @var int[]
      */
-    public $number = array();
+    public $number = [];
 
     /**
      * status cache
@@ -82,7 +82,7 @@ class Smarty_Internal_Runtime_GetIncludePath
     {
         $_i_path = get_include_path();
         if ($this->_include_path != $_i_path) {
-            $this->_include_dirs = array();
+            $this->_include_dirs = [];
             $this->_include_path = $_i_path;
             $_dirs = (array) explode(PATH_SEPARATOR, $_i_path);
             foreach ($_dirs as $_path) {

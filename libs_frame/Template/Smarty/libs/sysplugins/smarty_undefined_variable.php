@@ -21,7 +21,7 @@ class Smarty_Undefined_Variable
         if ($name == 'nocache') {
             return false;
         } else {
-            return null;
+            return;
         }
     }
 
@@ -32,6 +32,6 @@ class Smarty_Undefined_Variable
      */
     public function __toString()
     {
-        return "";
+        return '';
     }
 }

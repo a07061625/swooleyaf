@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 更新成员
  * @package Wx\Corp\User
  */
-class UserUpdate extends WxBaseCorp {
+class UserUpdate extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -107,21 +108,24 @@ class UserUpdate extends WxBaseCorp {
      */
     private $external_position = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/user/update?access_token=';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $userId
      * @throws \Exception\Wx\WxException
      */
-    public function setUserId(string $userId){
+    public function setUserId(string $userId)
+    {
         if (ctype_alnum($userId) && (strlen($userId) <= 32)) {
             $this->reqData['userid'] = strtolower($userId);
         } else {
@@ -133,7 +137,8 @@ class UserUpdate extends WxBaseCorp {
      * @param string $name
      * @throws \Exception\Wx\WxException
      */
-    public function setName(string $name){
+    public function setName(string $name)
+    {
         if (strlen($name) > 0) {
             $this->reqData['name'] = mb_substr($name, 0, 32);
         } else {
@@ -145,7 +150,8 @@ class UserUpdate extends WxBaseCorp {
      * @param string $alias
      * @throws \Exception\Wx\WxException
      */
-    public function setAlias(string $alias){
+    public function setAlias(string $alias)
+    {
         if (strlen($alias) > 0) {
             $this->reqData['alias'] = mb_substr($alias, 0, 16);
         } else {
@@ -157,7 +163,8 @@ class UserUpdate extends WxBaseCorp {
      * @param string $mobile
      * @throws \Exception\Wx\WxException
      */
-    public function setMobile(string $mobile){
+    public function setMobile(string $mobile)
+    {
         if (ctype_digit($mobile) && (strlen($mobile) == 11) && ($mobile{0} == '1')) {
             $this->reqData['mobile'] = $mobile;
         } else {
@@ -169,29 +176,30 @@ class UserUpdate extends WxBaseCorp {
      * @param array $departmentInfo
      * @throws \Exception\Wx\WxException
      */
-    public function addDepartmentInfo(array $departmentInfo){
-        if(count($this->reqData['department']) >= 20){
+    public function addDepartmentInfo(array $departmentInfo)
+    {
+        if (count($this->reqData['department']) >= 20) {
             throw new WxException('部门id列表不能超过20个', ErrorCode::WX_PARAM_ERROR);
         }
 
         $departmentId = Tool::getArrayVal($departmentInfo, 'depart_id', 0);
-        if(!is_int($departmentId)){
+        if (!is_int($departmentId)) {
             throw new WxException('部门id必须是整数', ErrorCode::WX_PARAM_ERROR);
-        } else if($departmentId <= 0){
+        } elseif ($departmentId <= 0) {
             throw new WxException('部门id必须大于0', ErrorCode::WX_PARAM_ERROR);
         }
 
         $orderNum = Tool::getArrayVal($departmentInfo, 'order_num', -1);
-        if(!is_int($orderNum)){
+        if (!is_int($orderNum)) {
             throw new WxException('排序值必须是整数', ErrorCode::WX_PARAM_ERROR);
-        } else if($orderNum < 0){
+        } elseif ($orderNum < 0) {
             throw new WxException('排序值必须大于等于0', ErrorCode::WX_PARAM_ERROR);
         }
 
         $leaderFlag = Tool::getArrayVal($departmentInfo, 'leader_flag', -1);
-        if(!is_int($leaderFlag)){
+        if (!is_int($leaderFlag)) {
             throw new WxException('上级标识必须是整数', ErrorCode::WX_PARAM_ERROR);
-        } else if(!in_array($leaderFlag, [0, 1])){
+        } elseif (!in_array($leaderFlag, [0, 1], true)) {
             throw new WxException('上级标识不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -203,7 +211,8 @@ class UserUpdate extends WxBaseCorp {
     /**
      * @param string $position
      */
-    public function setPosition(string $position){
+    public function setPosition(string $position)
+    {
         $this->reqData['position'] = mb_substr($position, 0, 64);
     }
 
@@ -211,8 +220,9 @@ class UserUpdate extends WxBaseCorp {
      * @param int $gender
      * @throws \Exception\Wx\WxException
      */
-    public function setGender(int $gender){
-        if (in_array($gender, [1, 2])) {
+    public function setGender(int $gender)
+    {
+        if (in_array($gender, [1, 2], true)) {
             $this->reqData['gender'] = $gender;
         } else {
             throw new WxException('性别不合法', ErrorCode::WX_PARAM_ERROR);
@@ -223,7 +233,8 @@ class UserUpdate extends WxBaseCorp {
      * @param string $email
      * @throws \Exception\Wx\WxException
      */
-    public function setEmail(string $email){
+    public function setEmail(string $email)
+    {
         if (strlen($email) > 0) {
             $this->reqData['email'] = $email;
         } else {
@@ -235,7 +246,8 @@ class UserUpdate extends WxBaseCorp {
      * @param string $telephone
      * @throws \Exception\Wx\WxException
      */
-    public function setTelephone(string $telephone){
+    public function setTelephone(string $telephone)
+    {
         $trueTelephone = preg_replace('/[^0-9\-]+/', '', $telephone);
         if (strlen($trueTelephone) > 0) {
             $this->reqData['telephone'] = $trueTelephone;
@@ -248,7 +260,8 @@ class UserUpdate extends WxBaseCorp {
      * @param string $avatarMediaId
      * @throws \Exception\Wx\WxException
      */
-    public function setAvatarMediaId(string $avatarMediaId){
+    public function setAvatarMediaId(string $avatarMediaId)
+    {
         if (strlen($avatarMediaId) > 0) {
             $this->reqData['avatar_mediaid'] = $avatarMediaId;
         } else {
@@ -260,8 +273,9 @@ class UserUpdate extends WxBaseCorp {
      * @param int $enable
      * @throws \Exception\Wx\WxException
      */
-    public function setEnable(int $enable){
-        if (in_array($enable, [0, 1])) {
+    public function setEnable(int $enable)
+    {
+        if (in_array($enable, [0, 1], true)) {
             $this->reqData['enable'] = $enable;
         } else {
             throw new WxException('成员标识不合法', ErrorCode::WX_PARAM_ERROR);
@@ -272,8 +286,9 @@ class UserUpdate extends WxBaseCorp {
      * @param array $extAttr
      * @throws \Exception\Wx\WxException
      */
-    public function setExtAttr(array $extAttr){
-        if(empty($extAttr)){
+    public function setExtAttr(array $extAttr)
+    {
+        if (empty($extAttr)) {
             throw new WxException('扩展属性不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -283,7 +298,8 @@ class UserUpdate extends WxBaseCorp {
     /**
      * @param bool $inviteFlag
      */
-    public function setInviteFlag(bool $inviteFlag){
+    public function setInviteFlag(bool $inviteFlag)
+    {
         $this->reqData['to_invite'] = $inviteFlag;
     }
 
@@ -291,8 +307,9 @@ class UserUpdate extends WxBaseCorp {
      * @param array $externalProfile
      * @throws \Exception\Wx\WxException
      */
-    public function setExternalProfile(array $externalProfile){
-        if(empty($externalProfile)){
+    public function setExternalProfile(array $externalProfile)
+    {
+        if (empty($externalProfile)) {
             throw new WxException('对外属性不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -303,7 +320,8 @@ class UserUpdate extends WxBaseCorp {
      * @param string $externalPosition
      * @throws \Exception\Wx\WxException
      */
-    public function setExternalPosition(string $externalPosition){
+    public function setExternalPosition(string $externalPosition)
+    {
         if (strlen($externalPosition) > 0) {
             $this->reqData['external_position'] = mb_substr($externalPosition, 0, 12);
         } else {
@@ -311,8 +329,9 @@ class UserUpdate extends WxBaseCorp {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['userid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['userid'])) {
             throw new WxException('用户ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -324,7 +343,7 @@ class UserUpdate extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

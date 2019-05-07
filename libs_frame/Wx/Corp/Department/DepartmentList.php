@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 获取部门列表
  * @package Wx\Corp\Department
  */
-class DepartmentList extends WxBaseCorp {
+class DepartmentList extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -27,21 +28,24 @@ class DepartmentList extends WxBaseCorp {
      */
     private $id = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/department/list';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $id
      * @throws \Exception\Wx\WxException
      */
-    public function setId(int $id){
+    public function setId(int $id)
+    {
         if ($id > 0) {
             $this->reqData['id'] = $id;
         } else {
@@ -49,7 +53,8 @@ class DepartmentList extends WxBaseCorp {
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -58,7 +63,7 @@ class DepartmentList extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

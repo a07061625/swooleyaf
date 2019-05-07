@@ -14,7 +14,8 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class MiniVersionSet extends WxBaseOpenMini {
+class MiniVersionSet extends WxBaseOpenMini
+{
     /**
      * 应用ID
      * @var string
@@ -26,29 +27,33 @@ class MiniVersionSet extends WxBaseOpenMini {
      */
     private $version = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/wxopen/setweappsupportversion?access_token=';
         $this->appId = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $version
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setVersion(string $version){
-        if(strlen($version) > 0){
+    public function setVersion(string $version)
+    {
+        if (strlen($version) > 0) {
             $this->reqData['version'] = $version;
         } else {
             throw new WxOpenException('最低版本号不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['version'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['version'])) {
             throw new WxOpenException('最低版本号不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 
@@ -62,7 +67,7 @@ class MiniVersionSet extends WxBaseOpenMini {
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

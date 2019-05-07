@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class TemplateMsgSend extends WxBaseShop {
+class TemplateMsgSend extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -46,7 +47,8 @@ class TemplateMsgSend extends WxBaseShop {
      */
     private $template_data = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=';
         $this->appid = $appId;
@@ -54,14 +56,16 @@ class TemplateMsgSend extends WxBaseShop {
         $this->reqData['data'] = [];
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $openid
      * @throws \Exception\Wx\WxException
      */
-    public function setOpenid(string $openid) {
+    public function setOpenid(string $openid)
+    {
         if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
             $this->reqData['touser'] = $openid;
         } else {
@@ -73,7 +77,8 @@ class TemplateMsgSend extends WxBaseShop {
      * @param string $templateId
      * @throws \Exception\Wx\WxException
      */
-    public function setTemplateId(string $templateId) {
+    public function setTemplateId(string $templateId)
+    {
         if (strlen($templateId) > 0) {
             $this->reqData['template_id'] = $templateId;
         } else {
@@ -85,7 +90,8 @@ class TemplateMsgSend extends WxBaseShop {
      * @param string $redirectUrl
      * @throws \Exception\Wx\WxException
      */
-    public function setRedirectUrl(string $redirectUrl) {
+    public function setRedirectUrl(string $redirectUrl)
+    {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $redirectUrl) > 0) {
             $this->reqData['url'] = $redirectUrl;
         } else {
@@ -97,8 +103,9 @@ class TemplateMsgSend extends WxBaseShop {
      * @param array $miniProgram
      * @throws \Exception\Wx\WxException
      */
-    public function setMiniProgram(array $miniProgram){
-        if(empty($miniProgram)){
+    public function setMiniProgram(array $miniProgram)
+    {
+        if (empty($miniProgram)) {
             throw new WxException('小程序跳转数据不合法', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['miniprogram'] = $miniProgram;
@@ -120,11 +127,13 @@ class TemplateMsgSend extends WxBaseShop {
      *
      *@param array $templateData
      */
-    public function setTemplateData(array $templateData) {
+    public function setTemplateData(array $templateData)
+    {
         $this->reqData['data'] = $templateData;
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         if (!isset($this->reqData['touser'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
         }

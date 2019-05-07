@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * user id转openid
  * @package Wx\Corp\User
  */
-class UserIdToOpenId extends WxBaseCorp {
+class UserIdToOpenId extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -27,30 +28,34 @@ class UserIdToOpenId extends WxBaseCorp {
      */
     private $userid = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/user/convert_to_openid?access_token=';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $userId
      * @throws \Exception\Wx\WxException
      */
-    public function setUserId(string $userId){
-        if(ctype_alnum($userId)){
+    public function setUserId(string $userId)
+    {
+        if (ctype_alnum($userId)) {
             $this->reqData['userid'] = $userId;
         } else {
             throw new WxException('用户ID不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['userid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['userid'])) {
             throw new WxException('用户ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -62,7 +67,7 @@ class UserIdToOpenId extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

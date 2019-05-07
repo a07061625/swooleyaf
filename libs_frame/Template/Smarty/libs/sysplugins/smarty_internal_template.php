@@ -93,14 +93,14 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
      *
      * @var callback[]
      */
-    public $startRenderCallbacks = array();
+    public $startRenderCallbacks = [];
 
     /**
      * Callbacks called after rendering template
      *
      * @var callback[]
      */
-    public $endRenderCallbacks = array();
+    public $endRenderCallbacks = [];
 
     /**
      * Create template data object
@@ -118,9 +118,15 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
      *
      * @throws \SmartyException
      */
-    public function __construct($template_resource, Smarty $smarty, Smarty_Internal_Data $_parent = null,
-                                $_cache_id = null, $_compile_id = null, $_caching = null, $_cache_lifetime = null)
-    {
+    public function __construct(
+        $template_resource,
+        Smarty $smarty,
+        Smarty_Internal_Data $_parent = null,
+                                $_cache_id = null,
+        $_compile_id = null,
+        $_caching = null,
+        $_cache_lifetime = null
+    ) {
         $this->smarty = $smarty;
         // Smarty parameter
         $this->cache_id = $_cache_id === null ? $this->smarty->cache_id : $_cache_id;
@@ -138,6 +144,92 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
         if ($smarty->security_policy && method_exists($smarty->security_policy, 'registerCallBacks')) {
             $smarty->security_policy->registerCallBacks($this);
         }
+    }
+
+    /**
+     * Template data object destructor
+     */
+    public function __destruct()
+    {
+        if ($this->smarty->cache_locking && isset($this->cached) && $this->cached->is_locked) {
+            $this->cached->handler->releaseLock($this->smarty, $this->cached);
+        }
+    }
+
+    /**
+     * Handle unknown class methods
+     *
+     * @param string $name unknown method-name
+     * @param array  $args argument array
+     *
+     * @return mixed
+     * @throws SmartyException
+     */
+    public function __call($name, $args)
+    {
+        // method of Smarty object?
+        if (method_exists($this->smarty, $name)) {
+            return call_user_func_array([$this->smarty, $name], $args);
+        }
+        // parent
+        return parent::__call($name, $args);
+    }
+
+    /**
+     * set Smarty property in template context
+     *
+     * @param string $property_name property name
+     * @param mixed  $value         value
+     *
+     * @throws SmartyException
+     */
+    public function __set($property_name, $value)
+    {
+        switch ($property_name) {
+            case 'compiled':
+            case 'cached':
+            case 'compiler':
+                $this->$property_name = $value;
+                return;
+            default:
+                // Smarty property ?
+                if (property_exists($this->smarty, $property_name)) {
+                    $this->smarty->$property_name = $value;
+                    return;
+                }
+        }
+        throw new SmartyException("invalid template property '$property_name'.");
+    }
+
+    /**
+     * get Smarty property in template context
+     *
+     * @param string $property_name property name
+     *
+     * @return mixed|Smarty_Template_Cached
+     * @throws SmartyException
+     */
+    public function __get($property_name)
+    {
+        switch ($property_name) {
+            case 'compiled':
+                $this->loadCompiled();
+                return $this->compiled;
+
+            case 'cached':
+                $this->loadCached();
+                return $this->cached;
+
+            case 'compiler':
+                $this->loadCompiler();
+                return $this->compiler;
+            default:
+                // Smarty property ?
+                if (property_exists($this->smarty, $property_name)) {
+                    return $this->smarty->$property_name;
+                }
+        }
+        throw new SmartyException("template property '$property_name' does not exist.");
     }
 
     /**
@@ -187,8 +279,11 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
         // display or fetch
         if ($display) {
             if ($this->caching && $this->smarty->cache_modified_check) {
-                $this->smarty->ext->_cacheModify->cacheModifiedCheck($this->cached, $this,
-                                                                     isset($content) ? $content : ob_get_clean());
+                $this->smarty->ext->_cacheModify->cacheModifiedCheck(
+                    $this->cached,
+                    $this,
+                                                                     isset($content) ? $content : ob_get_clean()
+                );
             } else {
                 if ((!$this->caching || $this->cached->has_nocache_code || $this->source->handler->recompiled) &&
                     !$no_output_filter && (isset($this->smarty->autoload_filters[ 'output' ]) ||
@@ -229,7 +324,7 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
                 return $this->smarty->ext->_filterHandler->runFilter('output', ob_get_clean(), $this);
             }
             // return cache content
-            return null;
+            return;
         }
     }
 
@@ -248,9 +343,18 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
      * @param string  $content_func   function name
      *
      */
-    public function _subTemplateRender($template, $cache_id, $compile_id, $caching, $cache_lifetime, $data, $scope,
-                                       $forceTplCache, $uid = null, $content_func = null)
-    {
+    public function _subTemplateRender(
+        $template,
+        $cache_id,
+        $compile_id,
+        $caching,
+        $cache_lifetime,
+        $data,
+        $scope,
+                                       $forceTplCache,
+        $uid = null,
+        $content_func = null
+    ) {
         $tpl = clone $this;
         $tpl->parent = $this;
         $smarty = &$this->smarty;
@@ -329,7 +433,7 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
                 $this->cached->hashes[ $tpl->compiled->nocache_hash ] = true;
             }
         }
-        $tpl->_cache = array();
+        $tpl->_cache = [];
         if (isset($uid)) {
             if ($smarty->debugging) {
                 if (!isset($smarty->_debug)) {
@@ -464,7 +568,7 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
         } else {
             $tpl->mustCompile = !$is_valid;
             $resource = $tpl->compiled;
-            $resource->includes = isset($properties[ 'includes' ]) ? $properties[ 'includes' ] : array();
+            $resource->includes = isset($properties[ 'includes' ]) ? $properties[ 'includes' ] : [];
         }
         if ($is_valid) {
             $resource->unifunc = $properties[ 'unifunc' ];
@@ -556,8 +660,8 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
      */
     public function _cleanUp()
     {
-        $this->startRenderCallbacks = array();
-        $this->endRenderCallbacks = array();
+        $this->startRenderCallbacks = [];
+        $this->endRenderCallbacks = [];
         $this->inheritance = null;
     }
 
@@ -572,93 +676,10 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
             $this->smarty->loadPlugin($this->source->compiler_class);
         }
         $this->compiler =
-            new $this->source->compiler_class($this->source->template_lexer_class, $this->source->template_parser_class,
-                                              $this->smarty);
-    }
-
-    /**
-     * Handle unknown class methods
-     *
-     * @param string $name unknown method-name
-     * @param array  $args argument array
-     *
-     * @return mixed
-     * @throws SmartyException
-     */
-    public function __call($name, $args)
-    {
-        // method of Smarty object?
-        if (method_exists($this->smarty, $name)) {
-            return call_user_func_array(array($this->smarty, $name), $args);
-        }
-        // parent
-        return parent::__call($name, $args);
-    }
-
-    /**
-     * set Smarty property in template context
-     *
-     * @param string $property_name property name
-     * @param mixed  $value         value
-     *
-     * @throws SmartyException
-     */
-    public function __set($property_name, $value)
-    {
-        switch ($property_name) {
-            case 'compiled':
-            case 'cached':
-            case 'compiler':
-                $this->$property_name = $value;
-                return;
-            default:
-                // Smarty property ?
-                if (property_exists($this->smarty, $property_name)) {
-                    $this->smarty->$property_name = $value;
-                    return;
-                }
-        }
-        throw new SmartyException("invalid template property '$property_name'.");
-    }
-
-    /**
-     * get Smarty property in template context
-     *
-     * @param string $property_name property name
-     *
-     * @return mixed|Smarty_Template_Cached
-     * @throws SmartyException
-     */
-    public function __get($property_name)
-    {
-        switch ($property_name) {
-            case 'compiled':
-                $this->loadCompiled();
-                return $this->compiled;
-
-            case 'cached':
-                $this->loadCached();
-                return $this->cached;
-
-            case 'compiler':
-                $this->loadCompiler();
-                return $this->compiler;
-            default:
-                // Smarty property ?
-                if (property_exists($this->smarty, $property_name)) {
-                    return $this->smarty->$property_name;
-                }
-        }
-        throw new SmartyException("template property '$property_name' does not exist.");
-    }
-
-    /**
-     * Template data object destructor
-     */
-    public function __destruct()
-    {
-        if ($this->smarty->cache_locking && isset($this->cached) && $this->cached->is_locked) {
-            $this->cached->handler->releaseLock($this->smarty, $this->cached);
-        }
+            new $this->source->compiler_class(
+                $this->source->template_lexer_class,
+                $this->source->template_parser_class,
+                                              $this->smarty
+            );
     }
 }

@@ -32,7 +32,7 @@ class Twig_Node_Module extends Twig_Node
             $this->source = $name;
         }
 
-        $nodes = array(
+        $nodes = [
             'body' => $body,
             'blocks' => $blocks,
             'macros' => $macros,
@@ -42,20 +42,20 @@ class Twig_Node_Module extends Twig_Node
             'constructor_start' => new Twig_Node(),
             'constructor_end' => new Twig_Node(),
             'class_end' => new Twig_Node(),
-        );
+        ];
         if (null !== $parent) {
             $nodes['parent'] = $parent;
         }
 
         // embedded templates are set as attributes so that they are only visited once by the visitors
-        parent::__construct($nodes, array(
+        parent::__construct($nodes, [
             // source to be remove in 2.0
             'source' => $this->source->getCode(),
             // filename to be remove in 2.0 (use getTemplateName() instead)
             'filename' => $this->source->getName(),
             'index' => null,
             'embedded_templates' => $embeddedTemplates,
-        ), 1);
+        ], 1);
 
         // populate the template name of all node children
         $this->setTemplateName($this->source->getName());
@@ -155,8 +155,8 @@ class Twig_Node_Module extends Twig_Node
         $compiler
             ->write("\n\n")
             // if the template name contains */, add a blank to avoid a PHP parse error
-            ->write('/* '.str_replace('*/', '* /', $this->source->getName())." */\n")
-            ->write('class '.$compiler->getEnvironment()->getTemplateClass($this->source->getName(), $this->getAttribute('index')))
+            ->write('/* ' . str_replace('*/', '* /', $this->source->getName()) . " */\n")
+            ->write('class ' . $compiler->getEnvironment()->getTemplateClass($this->source->getName(), $this->getAttribute('index')))
             ->raw(sprintf(" extends %s\n", $compiler->getEnvironment()->getBaseTemplateClass()))
             ->write("{\n")
             ->indent()
@@ -239,7 +239,7 @@ class Twig_Node_Module extends Twig_Node
 
                 for ($i = 0; $i < $countTraits; ++$i) {
                     $compiler
-                        ->write(sprintf('$_trait_%s_blocks'.($i == $countTraits - 1 ? '' : ',')."\n", $i))
+                        ->write(sprintf('$_trait_%s_blocks' . ($i == $countTraits - 1 ? '' : ',') . "\n", $i))
                     ;
                 }
 
@@ -364,7 +364,7 @@ class Twig_Node_Module extends Twig_Node
             }
 
             if (!count($nodes)) {
-                $nodes = new Twig_Node(array($nodes));
+                $nodes = new Twig_Node([$nodes]);
             }
 
             foreach ($nodes as $node) {

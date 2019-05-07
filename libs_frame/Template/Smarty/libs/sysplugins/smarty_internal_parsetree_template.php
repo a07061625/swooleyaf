@@ -18,13 +18,12 @@
  */
 class Smarty_Internal_ParseTree_Template extends Smarty_Internal_ParseTree
 {
-
     /**
      * Array of template elements
      *
      * @var array
      */
-    public $subtrees = Array();
+    public $subtrees = [];
 
     /**
      * Create root of parse tree for template elements
@@ -57,7 +56,7 @@ class Smarty_Internal_ParseTree_Template extends Smarty_Internal_ParseTree
      * @param \Smarty_Internal_Templateparser $parser
      * @param \Smarty_Internal_ParseTree[]    $array
      */
-    public function append_array(Smarty_Internal_Templateparser $parser, $array = array())
+    public function append_array(Smarty_Internal_Templateparser $parser, $array = [])
     {
         if (!empty($array)) {
             $this->subtrees = array_merge($this->subtrees, (array) $array);
@@ -70,7 +69,7 @@ class Smarty_Internal_ParseTree_Template extends Smarty_Internal_ParseTree
      * @param \Smarty_Internal_Templateparser $parser
      * @param \Smarty_Internal_ParseTree[]    $array
      */
-    public function prepend_array(Smarty_Internal_Templateparser $parser, $array = array())
+    public function prepend_array(Smarty_Internal_Templateparser $parser, $array = [])
     {
         if (!empty($array)) {
             $this->subtrees = array_merge((array) $array, $this->subtrees);
@@ -101,8 +100,11 @@ class Smarty_Internal_ParseTree_Template extends Smarty_Internal_ParseTree
                 if ($subtree == '') {
                     continue;
                 }
-                $code .= preg_replace('/((<%)|(%>)|(<\?php)|(<\?)|(\?>)|(<\/?script))/', "<?php echo '\$1'; ?>\n",
-                                      $subtree);
+                $code .= preg_replace(
+                    '/((<%)|(%>)|(<\?php)|(<\?)|(\?>)|(<\/?script))/',
+                    "<?php echo '\$1'; ?>\n",
+                                      $subtree
+                );
                 continue;
             }
             if ($this->subtrees[ $key ] instanceof Smarty_Internal_ParseTree_Tag) {

@@ -15,7 +15,8 @@ use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 use Wx\WxUtilOpenBase;
 
-class MsgTemplateDelete extends WxBaseMini {
+class MsgTemplateDelete extends WxBaseMini
+{
     /**
      * 应用ID
      * @var string
@@ -32,22 +33,25 @@ class MsgTemplateDelete extends WxBaseMini {
      */
     private $platType = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/wxopen/template/del?access_token=';
         $this->appId = $appId;
         $this->platType = WxUtilBase::PLAT_TYPE_MINI;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $templateId
      * @throws \Exception\Wx\WxException
      */
-    public function setTemplateId(string $templateId) {
-        if(strlen($templateId) > 0){
+    public function setTemplateId(string $templateId)
+    {
+        if (strlen($templateId) > 0) {
             $this->reqData['template_id'] = $templateId;
         } else {
             throw new WxException('模板ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -58,16 +62,18 @@ class MsgTemplateDelete extends WxBaseMini {
      * @param string $platType
      * @throws \Exception\Wx\WxException
      */
-    public function setPlatType(string $platType) {
-        if(in_array($platType, [WxUtilBase::PLAT_TYPE_MINI, WxUtilBase::PLAT_TYPE_OPEN_MINI])){
+    public function setPlatType(string $platType)
+    {
+        if (in_array($platType, [WxUtilBase::PLAT_TYPE_MINI, WxUtilBase::PLAT_TYPE_OPEN_MINI], true)) {
             $this->platType = $platType;
         } else {
             throw new WxException('平台类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['template_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['template_id'])) {
             throw new WxException('模板ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -75,7 +81,7 @@ class MsgTemplateDelete extends WxBaseMini {
             'code' => 0
         ];
 
-        if($this->platType == WxUtilBase::PLAT_TYPE_MINI){
+        if ($this->platType == WxUtilBase::PLAT_TYPE_MINI) {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilBaseAlone::getAccessToken($this->appId);
         } else {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getAuthorizerAccessToken($this->appId);
@@ -85,7 +91,7 @@ class MsgTemplateDelete extends WxBaseMini {
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

@@ -14,8 +14,10 @@ use Tool\Tool;
 use Wx\WxBaseAlone;
 use Wx\WxUtilBase;
 
-class AccessToken extends WxBaseAlone {
-    public function __construct(string $appId){
+class AccessToken extends WxBaseAlone
+{
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/token';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
@@ -24,16 +26,18 @@ class AccessToken extends WxBaseAlone {
         $this->reqData['grant_type'] = 'client_credential';
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(!is_array($sendData)){
+        if (!is_array($sendData)) {
             throw new WxException('获取access token出错', ErrorCode::WX_PARAM_ERROR);
-        } else if(!isset($sendData['access_token'])){
+        } elseif (!isset($sendData['access_token'])) {
             throw new WxException($sendData['errmsg'], ErrorCode::WX_PARAM_ERROR);
         }
 

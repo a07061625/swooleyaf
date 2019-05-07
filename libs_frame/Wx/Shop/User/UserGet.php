@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class UserGet extends WxBaseShop {
+class UserGet extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -26,21 +27,24 @@ class UserGet extends WxBaseShop {
      */
     private $next_openid = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/user/get?access_token=';
         $this->appid = $appId;
         $this->reqData['next_openid'] = '';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $nextOpenid
      * @throws \Exception\Wx\WxException
      */
-    public function setNextOpenid(string $nextOpenid){
+    public function setNextOpenid(string $nextOpenid)
+    {
         if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $nextOpenid) > 0) {
             $this->reqData['next_openid'] = $nextOpenid;
         } else {
@@ -48,7 +52,8 @@ class UserGet extends WxBaseShop {
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -56,7 +61,7 @@ class UserGet extends WxBaseShop {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid) . '&next_openid=' . $this->reqData['next_openid'];
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['errcode'])){
+        if (isset($sendData['errcode'])) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['errmsg'];
         } else {

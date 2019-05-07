@@ -18,7 +18,8 @@ use Wx\WxUtilOpenBase;
  * 添加已设置的类目
  * @package Wx\OpenMini
  */
-class CategorySetAdd extends WxBaseOpenMini {
+class CategorySetAdd extends WxBaseOpenMini
+{
     /**
      * 应用ID
      * @var string
@@ -30,29 +31,33 @@ class CategorySetAdd extends WxBaseOpenMini {
      */
     private $categories = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/wxopen/addcategory?access_token=';
         $this->appId = $appId;
         $this->reqData['categories'] = [];
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param array $categoryInfo
      * @throws \Exception\Wx\WxOpenException
      */
-    public function addCategory(array $categoryInfo){
-        if(empty($categoryInfo)){
+    public function addCategory(array $categoryInfo)
+    {
+        if (empty($categoryInfo)) {
             throw new WxOpenException('类目信息不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
         $this->reqData['categories'][] = $categoryInfo;
     }
 
-    public function getDetail() : array {
-        if(empty($this->reqData['categories'])){
+    public function getDetail() : array
+    {
+        if (empty($this->reqData['categories'])) {
             throw new WxOpenException('类目信息不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 
@@ -64,7 +69,7 @@ class CategorySetAdd extends WxBaseOpenMini {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

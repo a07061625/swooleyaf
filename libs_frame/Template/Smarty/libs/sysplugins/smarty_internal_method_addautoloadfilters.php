@@ -11,7 +11,6 @@
  */
 class Smarty_Internal_Method_AddAutoloadFilters extends Smarty_Internal_Method_SetAutoloadFilters
 {
-
     /**
      * Add autoload filters
      *

@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 获取部门成员
  * @package Wx\Corp\User
  */
-class UserSimpleList extends WxBaseCorp {
+class UserSimpleList extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -32,7 +33,8 @@ class UserSimpleList extends WxBaseCorp {
      */
     private $fetch_child = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/user/simplelist';
         $this->_corpId = $corpId;
@@ -40,15 +42,17 @@ class UserSimpleList extends WxBaseCorp {
         $this->reqData['fetch_child'] = 0;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $departmentId
      * @throws \Exception\Wx\WxException
      */
-    public function setDepartmentId(int $departmentId){
-        if($departmentId > 0){
+    public function setDepartmentId(int $departmentId)
+    {
+        if ($departmentId > 0) {
             $this->reqData['department_id'] = $departmentId;
         } else {
             throw new WxException('部门id不合法', ErrorCode::WX_PARAM_ERROR);
@@ -59,16 +63,18 @@ class UserSimpleList extends WxBaseCorp {
      * @param int $fetchChild
      * @throws \Exception\Wx\WxException
      */
-    public function setFetchChild(int $fetchChild){
-        if(in_array($fetchChild, [0, 1])){
+    public function setFetchChild(int $fetchChild)
+    {
+        if (in_array($fetchChild, [0, 1], true)) {
             $this->reqData['fetch_child'] = $fetchChild;
         } else {
             throw new WxException('匹配子部门标识不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['department_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['department_id'])) {
             throw new WxException('部门id不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -80,7 +86,7 @@ class UserSimpleList extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;

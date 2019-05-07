@@ -18,13 +18,13 @@
  */
 class Twig_Loader_Chain implements Twig_LoaderInterface, Twig_ExistsLoaderInterface, Twig_SourceContextLoaderInterface
 {
-    private $hasSourceCache = array();
-    protected $loaders = array();
+    protected $loaders = [];
+    private $hasSourceCache = [];
 
     /**
      * @param Twig_LoaderInterface[] $loaders
      */
-    public function __construct(array $loaders = array())
+    public function __construct(array $loaders = [])
     {
         foreach ($loaders as $loader) {
             $this->addLoader($loader);
@@ -34,14 +34,14 @@ class Twig_Loader_Chain implements Twig_LoaderInterface, Twig_ExistsLoaderInterf
     public function addLoader(Twig_LoaderInterface $loader)
     {
         $this->loaders[] = $loader;
-        $this->hasSourceCache = array();
+        $this->hasSourceCache = [];
     }
 
     public function getSource($name)
     {
         @trigger_error(sprintf('Calling "getSource" on "%s" is deprecated since 1.27. Use getSourceContext() instead.', get_class($this)), E_USER_DEPRECATED);
 
-        $exceptions = array();
+        $exceptions = [];
         foreach ($this->loaders as $loader) {
             if ($loader instanceof Twig_ExistsLoaderInterface && !$loader->exists($name)) {
                 continue;
@@ -54,12 +54,12 @@ class Twig_Loader_Chain implements Twig_LoaderInterface, Twig_ExistsLoaderInterf
             }
         }
 
-        throw new Twig_Error_Loader(sprintf('Template "%s" is not defined%s.', $name, $exceptions ? ' ('.implode(', ', $exceptions).')' : ''));
+        throw new Twig_Error_Loader(sprintf('Template "%s" is not defined%s.', $name, $exceptions ? ' (' . implode(', ', $exceptions) . ')' : ''));
     }
 
     public function getSourceContext($name)
     {
-        $exceptions = array();
+        $exceptions = [];
         foreach ($this->loaders as $loader) {
             if ($loader instanceof Twig_ExistsLoaderInterface && !$loader->exists($name)) {
                 continue;
@@ -76,7 +76,7 @@ class Twig_Loader_Chain implements Twig_LoaderInterface, Twig_ExistsLoaderInterf
             }
         }
 
-        throw new Twig_Error_Loader(sprintf('Template "%s" is not defined%s.', $name, $exceptions ? ' ('.implode(', ', $exceptions).')' : ''));
+        throw new Twig_Error_Loader(sprintf('Template "%s" is not defined%s.', $name, $exceptions ? ' (' . implode(', ', $exceptions) . ')' : ''));
     }
 
     public function exists($name)
@@ -113,7 +113,7 @@ class Twig_Loader_Chain implements Twig_LoaderInterface, Twig_ExistsLoaderInterf
 
     public function getCacheKey($name)
     {
-        $exceptions = array();
+        $exceptions = [];
         foreach ($this->loaders as $loader) {
             if ($loader instanceof Twig_ExistsLoaderInterface && !$loader->exists($name)) {
                 continue;
@@ -122,16 +122,16 @@ class Twig_Loader_Chain implements Twig_LoaderInterface, Twig_ExistsLoaderInterf
             try {
                 return $loader->getCacheKey($name);
             } catch (Twig_Error_Loader $e) {
-                $exceptions[] = get_class($loader).': '.$e->getMessage();
+                $exceptions[] = get_class($loader) . ': ' . $e->getMessage();
             }
         }
 
-        throw new Twig_Error_Loader(sprintf('Template "%s" is not defined%s.', $name, $exceptions ? ' ('.implode(', ', $exceptions).')' : ''));
+        throw new Twig_Error_Loader(sprintf('Template "%s" is not defined%s.', $name, $exceptions ? ' (' . implode(', ', $exceptions) . ')' : ''));
     }
 
     public function isFresh($name, $time)
     {
-        $exceptions = array();
+        $exceptions = [];
         foreach ($this->loaders as $loader) {
             if ($loader instanceof Twig_ExistsLoaderInterface && !$loader->exists($name)) {
                 continue;
@@ -140,10 +140,10 @@ class Twig_Loader_Chain implements Twig_LoaderInterface, Twig_ExistsLoaderInterf
             try {
                 return $loader->isFresh($name, $time);
             } catch (Twig_Error_Loader $e) {
-                $exceptions[] = get_class($loader).': '.$e->getMessage();
+                $exceptions[] = get_class($loader) . ': ' . $e->getMessage();
             }
         }
 
-        throw new Twig_Error_Loader(sprintf('Template "%s" is not defined%s.', $name, $exceptions ? ' ('.implode(', ', $exceptions).')' : ''));
+        throw new Twig_Error_Loader(sprintf('Template "%s" is not defined%s.', $name, $exceptions ? ' (' . implode(', ', $exceptions) . ')' : ''));
     }
 }

@@ -4,6 +4,8 @@
  *
  * @package    Smarty
  * @subpackage PluginsFunction
+ * @param mixed $params
+ * @param mixed $template
  */
 
 /**

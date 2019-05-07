@@ -7,21 +7,26 @@
  */
 namespace Validator;
 
-abstract class BaseValidator {
+abstract class BaseValidator
+{
     public $validatorType = ''; //校验器类型
 
-    public function __construct() {
+    public function __construct()
+    {
     }
 
-    public function verifyIntData($data) {
+    public function verifyIntData($data)
+    {
         return is_numeric($data) && (strpos($data, '.') === false) ? (int)$data : null;
     }
 
-    public function verifyDoubleData($data) {
+    public function verifyDoubleData($data)
+    {
         return is_numeric($data) ? (double)$data : null;
     }
 
-    public function verifyStringData($data) {
+    public function verifyStringData($data)
+    {
         return is_string($data) ? (string)$data : null;
     }
 }

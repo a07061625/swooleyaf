@@ -39,13 +39,13 @@ class Smarty_CacheResource_Memcache extends Smarty_CacheResource_KeyValueStore
      */
     protected function read(array $keys)
     {
-        $_keys = $lookup = array();
+        $_keys = $lookup = [];
         foreach ($keys as $k) {
             $_k = sha1($k);
             $_keys[] = $_k;
             $lookup[ $_k ] = $k;
         }
-        $_res = array();
+        $_res = [];
         $res = $this->memcache->get($_keys);
         foreach ($res as $k => $v) {
             $_res[ $lookup[ $k ] ] = $v;

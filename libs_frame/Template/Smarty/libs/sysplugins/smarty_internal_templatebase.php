@@ -80,7 +80,7 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data
      *
      * @var array()
      */
-    public $_cache = array();
+    public $_cache = [];
 
     /**
      * fetches a rendered Smarty template
@@ -130,6 +130,125 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data
     public function isCached($template = null, $cache_id = null, $compile_id = null, $parent = null)
     {
         return $this->_execute($template, $cache_id, $compile_id, $parent, 2);
+    }
+
+    /**
+     * Registers plugin to be used in templates
+     *
+     * @api  Smarty::registerPlugin()
+     * @link http://www.smarty.net/docs/en/api.register.plugin.tpl
+     *
+     * @param  string   $type       plugin type
+     * @param  string   $name       name of template tag
+     * @param  callback $callback   PHP callback to register
+     * @param  bool     $cacheable  if true (default) this function is cache able
+     * @param  mixed    $cache_attr caching attributes if any
+     *
+     * @return \Smarty|\Smarty_Internal_Template
+     * @throws SmartyException              when the plugin tag is invalid
+     */
+    public function registerPlugin($type, $name, $callback, $cacheable = true, $cache_attr = null)
+    {
+        return $this->ext->registerPlugin->registerPlugin($this, $type, $name, $callback, $cacheable, $cache_attr);
+    }
+
+    /**
+     * load a filter of specified type and name
+     *
+     * @api  Smarty::loadFilter()
+     * @link http://www.smarty.net/docs/en/api.load.filter.tpl
+     *
+     * @param  string $type filter type
+     * @param  string $name filter name
+     *
+     * @return bool
+     * @throws SmartyException if filter could not be loaded
+     */
+    public function loadFilter($type, $name)
+    {
+        return $this->ext->loadFilter->loadFilter($this, $type, $name);
+    }
+
+    /**
+     * Registers a filter function
+     *
+     * @api  Smarty::registerFilter()
+     * @link http://www.smarty.net/docs/en/api.register.filter.tpl
+     *
+     * @param  string      $type filter type
+     * @param  callback    $callback
+     * @param  string|null $name optional filter name
+     *
+     * @return \Smarty|\Smarty_Internal_Template
+     * @throws \SmartyException
+     */
+    public function registerFilter($type, $callback, $name = null)
+    {
+        return $this->ext->registerFilter->registerFilter($this, $type, $callback, $name);
+    }
+
+    /**
+     * Registers object to be used in templates
+     *
+     * @api  Smarty::registerObject()
+     * @link http://www.smarty.net/docs/en/api.register.object.tpl
+     *
+     * @param  string $object_name
+     * @param  object $object                     the referenced PHP object to register
+     * @param  array  $allowed_methods_properties list of allowed methods (empty = all)
+     * @param  bool   $format                     smarty argument format, else traditional
+     * @param  array  $block_methods              list of block-methods
+     *
+     * @return \Smarty|\Smarty_Internal_Template
+     * @throws \SmartyException
+     */
+    public function registerObject(
+        $object_name,
+        $object,
+        $allowed_methods_properties = [],
+        $format = true,
+                                   $block_methods = []
+    ) {
+        return $this->ext->registerObject->registerObject(
+            $this,
+            $object_name,
+            $object,
+            $allowed_methods_properties,
+                                                          $format,
+            $block_methods
+        );
+    }
+
+    /**
+     * @param boolean $caching
+     */
+    public function setCaching($caching)
+    {
+        $this->caching = $caching;
+    }
+
+    /**
+     * @param int $cache_lifetime
+     */
+    public function setCacheLifetime($cache_lifetime)
+    {
+        $this->cache_lifetime = $cache_lifetime;
+    }
+
+    /**
+     * @param string $compile_id
+     */
+    public function setCompileId($compile_id)
+    {
+        $this->compile_id = $compile_id;
+    }
+
+    /**
+     * @param string $cache_id
+     */
+    public function setCacheId($cache_id)
+    {
+        $this->cache_id = $cache_id;
     }
 
     /**
@@ -204,7 +323,7 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data
                 } else {
                     if (!$function && !isset($smarty->_cache[ 'tplObjects' ][ $template->templateId ])) {
                         $template->parent = null;
-                        $template->tpl_vars = $template->config_vars = array();
+                        $template->tpl_vars = $template->config_vars = [];
                         $smarty->_cache[ 'tplObjects' ][ $template->templateId ] = $template;
                     }
                 }
@@ -213,8 +332,7 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data
                 error_reporting($_smarty_old_error_level);
             }
             return $result;
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             while (ob_get_level() > $level) {
                 ob_end_clean();
             }
@@ -224,115 +342,4 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data
             throw $e;
         }
     }
-
-    /**
-     * Registers plugin to be used in templates
-     *
-     * @api  Smarty::registerPlugin()
-     * @link http://www.smarty.net/docs/en/api.register.plugin.tpl
-     *
-     * @param  string   $type       plugin type
-     * @param  string   $name       name of template tag
-     * @param  callback $callback   PHP callback to register
-     * @param  bool     $cacheable  if true (default) this function is cache able
-     * @param  mixed    $cache_attr caching attributes if any
-     *
-     * @return \Smarty|\Smarty_Internal_Template
-     * @throws SmartyException              when the plugin tag is invalid
-     */
-    public function registerPlugin($type, $name, $callback, $cacheable = true, $cache_attr = null)
-    {
-        return $this->ext->registerPlugin->registerPlugin($this, $type, $name, $callback, $cacheable, $cache_attr);
-    }
-
-    /**
-     * load a filter of specified type and name
-     *
-     * @api  Smarty::loadFilter()
-     * @link http://www.smarty.net/docs/en/api.load.filter.tpl
-     *
-     * @param  string $type filter type
-     * @param  string $name filter name
-     *
-     * @return bool
-     * @throws SmartyException if filter could not be loaded
-     */
-    public function loadFilter($type, $name)
-    {
-        return $this->ext->loadFilter->loadFilter($this, $type, $name);
-    }
-
-    /**
-     * Registers a filter function
-     *
-     * @api  Smarty::registerFilter()
-     * @link http://www.smarty.net/docs/en/api.register.filter.tpl
-     *
-     * @param  string      $type filter type
-     * @param  callback    $callback
-     * @param  string|null $name optional filter name
-     *
-     * @return \Smarty|\Smarty_Internal_Template
-     * @throws \SmartyException
-     */
-    public function registerFilter($type, $callback, $name = null)
-    {
-        return $this->ext->registerFilter->registerFilter($this, $type, $callback, $name);
-    }
-
-    /**
-     * Registers object to be used in templates
-     *
-     * @api  Smarty::registerObject()
-     * @link http://www.smarty.net/docs/en/api.register.object.tpl
-     *
-     * @param  string $object_name
-     * @param  object $object                     the referenced PHP object to register
-     * @param  array  $allowed_methods_properties list of allowed methods (empty = all)
-     * @param  bool   $format                     smarty argument format, else traditional
-     * @param  array  $block_methods              list of block-methods
-     *
-     * @return \Smarty|\Smarty_Internal_Template
-     * @throws \SmartyException
-     */
-    public function registerObject($object_name, $object, $allowed_methods_properties = array(), $format = true,
-                                   $block_methods = array())
-    {
-        return $this->ext->registerObject->registerObject($this, $object_name, $object, $allowed_methods_properties,
-                                                          $format, $block_methods);
-    }
-
-    /**
-     * @param boolean $caching
-     */
-    public function setCaching($caching)
-    {
-        $this->caching = $caching;
-    }
-
-    /**
-     * @param int $cache_lifetime
-     */
-    public function setCacheLifetime($cache_lifetime)
-    {
-        $this->cache_lifetime = $cache_lifetime;
-    }
-
-    /**
-     * @param string $compile_id
-     */
-    public function setCompileId($compile_id)
-    {
-        $this->compile_id = $compile_id;
-    }
-
-    /**
-     * @param string $cache_id
-     */
-    public function setCacheId($cache_id)
-    {
-        $this->cache_id = $cache_id;
-    }
-
 }
-

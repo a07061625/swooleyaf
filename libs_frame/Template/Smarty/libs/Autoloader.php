@@ -38,7 +38,7 @@ class Smarty_Autoloader
      *
      * @var array
      */
-    public static $rootClasses = array('smarty' => 'Smarty.class.php', 'smartybc' => 'SmartyBC.class.php',);
+    public static $rootClasses = ['smarty' => 'Smarty.class.php', 'smartybc' => 'SmartyBC.class.php',];
 
     /**
      * Registers Smarty_Autoloader backward compatible to older installations.
@@ -76,9 +76,9 @@ class Smarty_Autoloader
         self::$SMARTY_SYSPLUGINS_DIR = defined('SMARTY_SYSPLUGINS_DIR') ? SMARTY_SYSPLUGINS_DIR :
             self::$SMARTY_DIR . 'sysplugins' . DIRECTORY_SEPARATOR;
         if (version_compare(phpversion(), '5.3.0', '>=')) {
-            spl_autoload_register(array(__CLASS__, 'autoload'), true, $prepend);
+            spl_autoload_register([__CLASS__, 'autoload'], true, $prepend);
         } else {
-            spl_autoload_register(array(__CLASS__, 'autoload'));
+            spl_autoload_register([__CLASS__, 'autoload']);
         }
     }
 
@@ -96,12 +96,11 @@ class Smarty_Autoloader
         $file = self::$SMARTY_SYSPLUGINS_DIR . $_class . '.php';
         if (is_file($file)) {
             include $file;
-        } else if (isset(self::$rootClasses[ $_class ])) {
+        } elseif (isset(self::$rootClasses[ $_class ])) {
             $file = self::$SMARTY_DIR . self::$rootClasses[ $_class ];
             if (is_file($file)) {
                 include $file;
             }
         }
-        return;
     }
 }

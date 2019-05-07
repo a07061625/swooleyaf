@@ -29,10 +29,10 @@ class Twig_NodeVisitor_Optimizer extends Twig_BaseNodeVisitor
     const OPTIMIZE_RAW_FILTER = 4;
     const OPTIMIZE_VAR_ACCESS = 8;
 
-    protected $loops = array();
-    protected $loopsTargets = array();
+    protected $loops = [];
+    protected $loopsTargets = [];
     protected $optimizers;
-    protected $prependedNodes = array();
+    protected $prependedNodes = [];
     protected $inABody = false;
 
     /**
@@ -47,6 +47,11 @@ class Twig_NodeVisitor_Optimizer extends Twig_BaseNodeVisitor
         $this->optimizers = $optimizers;
     }
 
+    public function getPriority()
+    {
+        return 255;
+    }
+
     protected function doEnterNode(Twig_Node $node, Twig_Environment $env)
     {
         if (self::OPTIMIZE_FOR === (self::OPTIMIZE_FOR & $this->optimizers)) {
@@ -57,7 +62,7 @@ class Twig_NodeVisitor_Optimizer extends Twig_BaseNodeVisitor
             if ($this->inABody) {
                 if (!$node instanceof Twig_Node_Expression) {
                     if (get_class($node) !== 'Twig_Node') {
-                        array_unshift($this->prependedNodes, array());
+                        array_unshift($this->prependedNodes, []);
                     }
                 } else {
                     $node = $this->optimizeVariables($node, $env);
@@ -89,7 +94,7 @@ class Twig_NodeVisitor_Optimizer extends Twig_BaseNodeVisitor
                 $this->inABody = false;
             } elseif ($this->inABody) {
                 if (!$expression && get_class($node) !== 'Twig_Node' && $prependedNodes = array_shift($this->prependedNodes)) {
-                    $nodes = array();
+                    $nodes = [];
                     foreach (array_unique($prependedNodes) as $name) {
                         $nodes[] = new Twig_Node_SetTemp($name, $node->getTemplateLine());
                     }
@@ -181,7 +186,7 @@ class Twig_NodeVisitor_Optimizer extends Twig_BaseNodeVisitor
         }
 
         // optimize access to loop targets
-        elseif ($node instanceof Twig_Node_Expression_Name && in_array($node->getAttribute('name'), $this->loopsTargets)) {
+        elseif ($node instanceof Twig_Node_Expression_Name && in_array($node->getAttribute('name'), $this->loopsTargets, true)) {
             $node->setAttribute('always_defined', true);
         }
 
@@ -198,7 +203,8 @@ class Twig_NodeVisitor_Optimizer extends Twig_BaseNodeVisitor
         // include function without the with_context=false parameter
         elseif ($node instanceof Twig_Node_Expression_Function
             && 'include' === $node->getAttribute('name')
-            && (!$node->getNode('arguments')->hasNode('with_context')
+            && (
+                !$node->getNode('arguments')->hasNode('with_context')
                  || false !== $node->getNode('arguments')->getNode('with_context')->getAttribute('value')
                )
         ) {
@@ -207,11 +213,14 @@ class Twig_NodeVisitor_Optimizer extends Twig_BaseNodeVisitor
 
         // the loop variable is referenced via an attribute
         elseif ($node instanceof Twig_Node_Expression_GetAttr
-            && (!$node->getNode('attribute') instanceof Twig_Node_Expression_Constant
+            && (
+                !$node->getNode('attribute') instanceof Twig_Node_Expression_Constant
                 || 'parent' === $node->getNode('attribute')->getAttribute('value')
                )
-            && (true === $this->loops[0]->getAttribute('with_loop')
-                || ($node->getNode('node') instanceof Twig_Node_Expression_Name
+            && (
+                true === $this->loops[0]->getAttribute('with_loop')
+                || (
+                    $node->getNode('node') instanceof Twig_Node_Expression_Name
                     && 'loop' === $node->getNode('node')->getAttribute('name')
                    )
                )
@@ -242,10 +251,5 @@ class Twig_NodeVisitor_Optimizer extends Twig_BaseNodeVisitor
         foreach ($this->loops as $loop) {
             $loop->setAttribute('with_loop', true);
         }
-    }
-
-    public function getPriority()
-    {
-        return 255;
     }
 }

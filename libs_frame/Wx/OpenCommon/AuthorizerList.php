@@ -18,7 +18,8 @@ use Wx\WxUtilOpenBase;
  * 拉取当前所有已授权的帐号基本信息列表
  * @package Wx\OpenCommon
  */
-class AuthorizerList extends WxBaseOpenCommon {
+class AuthorizerList extends WxBaseOpenCommon
+{
     /**
      * 第三方平台APPID
      * @var string
@@ -35,7 +36,8 @@ class AuthorizerList extends WxBaseOpenCommon {
      */
     private $count = 0;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/component/api_get_authorizer_list?component_access_token=';
         $this->reqData['component_appid'] = WxConfigSingleton::getInstance()->getOpenCommonConfig()->getAppId();
@@ -43,7 +45,8 @@ class AuthorizerList extends WxBaseOpenCommon {
         $this->reqData['count'] = 20;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
@@ -51,13 +54,15 @@ class AuthorizerList extends WxBaseOpenCommon {
      * @param int $page
      * @param int $limit
      */
-    public function setRange(int $page,int $limit){
+    public function setRange(int $page, int $limit)
+    {
         $truePage = $page > 0 ? $page : 1;
         $this->reqData['count'] = ($limit > 0) && ($limit <= 500) ? $limit : 500;
         $this->reqData['offset'] = ($truePage - 1) * $this->reqData['count'];
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0
         ];

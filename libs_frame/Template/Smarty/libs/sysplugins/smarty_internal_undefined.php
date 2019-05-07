@@ -11,6 +11,19 @@
  */
 class Smarty_Internal_Undefined
 {
+    /**
+     * Call error handler for undefined method
+     *
+     * @param string $name unknown method-name
+     * @param array  $args argument array
+     *
+     * @return mixed
+     * @throws SmartyException
+     */
+    public function __call($name, $args)
+    {
+        throw new SmartyException(get_class($args[ 0 ]) . "->{$name}() undefined method");
+    }
 
     /**
      * This function is executed automatically when a compiled or cached template file is included
@@ -31,19 +44,5 @@ class Smarty_Internal_Undefined
             $tpl->mustCompile = true;
         }
         return false;
-    }
-
-    /**
-     * Call error handler for undefined method
-     *
-     * @param string $name unknown method-name
-     * @param array  $args argument array
-     *
-     * @return mixed
-     * @throws SmartyException
-     */
-    public function __call($name, $args)
-    {
-        throw new SmartyException(get_class($args[ 0 ]) . "->{$name}() undefined method");
     }
 }

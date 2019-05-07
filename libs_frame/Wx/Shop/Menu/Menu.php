@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Exception\Wx\WxException;
 use Wx\WxBaseShop;
 
-class Menu extends WxBaseShop {
+class Menu extends WxBaseShop
+{
     private static $typeList = [
         'pic_weixin',
         'pic_sysphoto',
@@ -61,18 +62,21 @@ class Menu extends WxBaseShop {
      */
     private $media_id = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $name
      * @throws \Exception\Wx\WxException
      */
-    public function setName(string $name) {
+    public function setName(string $name)
+    {
         if (strlen($name) > 0) {
             $this->reqData['name'] = mb_substr($name, 0, 5);
         } else {
@@ -84,7 +88,8 @@ class Menu extends WxBaseShop {
      * @param array $sub
      * @throws \Exception\Wx\WxException
      */
-    public function addSub(array $sub) {
+    public function addSub(array $sub)
+    {
         if (empty($sub)) {
             throw new WxException('子菜单不能为空', ErrorCode::WX_PARAM_ERROR);
         }
@@ -100,8 +105,9 @@ class Menu extends WxBaseShop {
      * @param string $type
      * @throws \Exception\Wx\WxException
      */
-    public function setType(string $type) {
-        if (in_array($type, self::$typeList)) {
+    public function setType(string $type)
+    {
+        if (in_array($type, self::$typeList, true)) {
             $this->reqData['type'] = $type;
         } else {
             throw  new WxException('响应动作类型不合法', ErrorCode::WX_PARAM_ERROR);
@@ -111,8 +117,9 @@ class Menu extends WxBaseShop {
     /**
      * @param string $key
      */
-    public function setKey(string $key) {
-        if(strlen($key) > 0){
+    public function setKey(string $key)
+    {
+        if (strlen($key) > 0) {
             $this->reqData['key'] = substr($key, 0, 128);
         }
     }
@@ -121,7 +128,8 @@ class Menu extends WxBaseShop {
      * @param string $url
      * @throws \Exception\Wx\WxException
      */
-    public function setUrl(string $url) {
+    public function setUrl(string $url)
+    {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $url) > 0) {
             $this->reqData['url'] = $url;
         } else {
@@ -133,7 +141,8 @@ class Menu extends WxBaseShop {
      * @param string $mediaId
      * @throws \Exception\Wx\WxException
      */
-    public function setMediaId(string $mediaId) {
+    public function setMediaId(string $mediaId)
+    {
         if (strlen($mediaId) > 0) {
             $this->reqData['media_id'] = $mediaId;
         } else {
@@ -141,11 +150,12 @@ class Menu extends WxBaseShop {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['name'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['name'])) {
             throw new WxException('菜单名称不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['type'])){
+        if (!isset($this->reqData['type'])) {
             throw new WxException('响应动作类型不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['sub_button'] = $this->sub_button;

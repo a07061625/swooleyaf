@@ -22,7 +22,7 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_Compile_Private_Fo
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $required_attributes = array('from', 'item');
+    public $required_attributes = ['from', 'item'];
 
     /**
      * Attribute definition: Overwrites base class.
@@ -30,7 +30,7 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_Compile_Private_Fo
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $optional_attributes = array('name', 'key', 'properties');
+    public $optional_attributes = ['name', 'key', 'properties'];
 
     /**
      * Attribute definition: Overwrites base class.
@@ -38,7 +38,7 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_Compile_Private_Fo
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $shorttag_order = array('from', 'item', 'key', 'name');
+    public $shorttag_order = ['from', 'item', 'key', 'name'];
 
     /**
      * counter
@@ -59,14 +59,14 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_Compile_Private_Fo
      *
      * @var array
      */
-    public $nameProperties = array('first', 'last', 'index', 'iteration', 'show', 'total');
+    public $nameProperties = ['first', 'last', 'index', 'iteration', 'show', 'total'];
 
     /**
      * Valid properties of $item@xxx variable
      *
      * @var array
      */
-    public $itemProperties = array('first', 'last', 'index', 'iteration', 'show', 'total', 'key');
+    public $itemProperties = ['first', 'last', 'index', 'iteration', 'show', 'total', 'key'];
 
     /**
      * Flag if tag had name attribute
@@ -98,7 +98,7 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_Compile_Private_Fo
             $item = $compiler->getVariableName($_attr[ 'item' ]);
         }
         $key = $name = null;
-        $attributes = array('item' => $item);
+        $attributes = ['item' => $item];
         if (isset($_attr[ 'key' ])) {
             $key = $compiler->getId($_attr[ 'key' ]);
             if ($key === false) {
@@ -117,10 +117,13 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_Compile_Private_Fo
         }
         $fromName = $compiler->getVariableName($_attr[ 'from' ]);
         if ($fromName) {
-            foreach (array('item', 'key') as $a) {
+            foreach (['item', 'key'] as $a) {
                 if (isset($attributes[ $a ]) && $attributes[ $a ] == $fromName) {
-                    $compiler->trigger_template_error("'{$a}' and 'from' may not have same variable name '{$fromName}'",
-                                                      null, true);
+                    $compiler->trigger_template_error(
+                        "'{$a}' and 'from' may not have same variable name '{$fromName}'",
+                                                      null,
+                        true
+                    );
                 }
             }
         }
@@ -128,8 +131,8 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_Compile_Private_Fo
         $itemVar = "\$_smarty_tpl->tpl_vars['{$item}']";
         $local = '$__foreach_' . $attributes[ 'item' ] . '_' . $this->counter ++ . '_';
         // search for used tag attributes
-        $itemAttr = array();
-        $namedAttr = array();
+        $itemAttr = [];
+        $namedAttr = [];
         $this->scanForProperties($attributes, $compiler);
         if (!empty($this->matchResults[ 'item' ])) {
             $itemAttr = $this->matchResults[ 'item' ];
@@ -139,7 +142,7 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_Compile_Private_Fo
         }
         if (isset($_attr[ 'properties' ]) && preg_match_all("/['](.*?)[']/", $_attr[ 'properties' ], $match)) {
             foreach ($match[ 1 ] as $prop) {
-                if (in_array($prop, $this->itemProperties)) {
+                if (in_array($prop, $this->itemProperties, true)) {
                     $itemAttr[ $prop ] = true;
                 } else {
                     $compiler->trigger_template_error("Invalid property '{$prop}'", null, true);
@@ -147,7 +150,7 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_Compile_Private_Fo
             }
             if ($this->isNamed) {
                 foreach ($match[ 1 ] as $prop) {
-                    if (in_array($prop, $this->nameProperties)) {
+                    if (in_array($prop, $this->nameProperties, true)) {
                         $nameAttr[ $prop ] = true;
                     } else {
                         $compiler->trigger_template_error("Invalid property '{$prop}'", null, true);
@@ -187,8 +190,11 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_Compile_Private_Fo
         }
         $needTotal = isset($itemAttr[ 'total' ]);
         // Register tag
-        $this->openTag($compiler, 'foreach',
-                       array('foreach', $compiler->nocache, $local, $itemVar, empty($itemAttr) ? 1 : 2));
+        $this->openTag(
+            $compiler,
+            'foreach',
+                       ['foreach', $compiler->nocache, $local, $itemVar, empty($itemAttr) ? 1 : 2]
+        );
         // maybe nocache because of nocache variables
         $compiler->nocache = $compiler->nocache | $compiler->tag_nocache;
         // generate output code
@@ -248,7 +254,7 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_Compile_Private_Fo
         if (!empty($itemAttr)) {
             $output .= "{$local}saved = {$itemVar};\n";
         }
-        $output .= "?>";
+        $output .= '?>';
 
         return $output;
     }
@@ -276,8 +282,8 @@ class Smarty_Internal_Compile_Foreachelse extends Smarty_Internal_CompileBase
         // check and get attributes
         $_attr = $this->getAttributes($compiler, $args);
 
-        list($openTag, $nocache, $local, $itemVar, $restore) = $this->closeTag($compiler, array('foreach'));
-        $this->openTag($compiler, 'foreachelse', array('foreachelse', $nocache, $local, $itemVar, 0));
+        list($openTag, $nocache, $local, $itemVar, $restore) = $this->closeTag($compiler, ['foreach']);
+        $this->openTag($compiler, 'foreachelse', ['foreachelse', $nocache, $local, $itemVar, 0]);
         $output = "<?php\n";
         if ($restore == 2) {
             $output .= "{$itemVar} = {$local}saved;\n";
@@ -313,7 +319,7 @@ class Smarty_Internal_Compile_Foreachclose extends Smarty_Internal_CompileBase
         }
 
         list($openTag, $compiler->nocache, $local, $itemVar, $restore) =
-            $this->closeTag($compiler, array('foreach', 'foreachelse'));
+            $this->closeTag($compiler, ['foreach', 'foreachelse']);
         $output = "<?php\n";
 
         if ($restore == 2) {

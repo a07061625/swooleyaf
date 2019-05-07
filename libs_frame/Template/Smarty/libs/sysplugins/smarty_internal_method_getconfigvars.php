@@ -33,7 +33,7 @@ class Smarty_Internal_Method_GetConfigVars
     public function getConfigVars(Smarty_Internal_Data $data, $varname = null, $search_parents = true)
     {
         $_ptr = $data;
-        $var_array = array();
+        $var_array = [];
         while ($_ptr !== null) {
             if (isset($varname)) {
                 if (isset($_ptr->config_vars[ $varname ])) {

@@ -19,7 +19,8 @@ use Wx\WxUtilCorp;
  * 查询红包记录
  * @package Wx\Corp\Pay\WorkRedPack
  */
-class RedPackQuery extends WxBaseCorp {
+class RedPackQuery extends WxBaseCorp
+{
     /**
      * 随机字符串
      * @var string
@@ -41,7 +42,8 @@ class RedPackQuery extends WxBaseCorp {
      */
     private $appid = '';
 
-    public function __construct(string $corpId){
+    public function __construct(string $corpId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/queryworkwxredpack';
         $corpConfig = WxConfigSingleton::getInstance()->getCorpConfig($corpId);
@@ -50,23 +52,26 @@ class RedPackQuery extends WxBaseCorp {
         $this->reqData['appid'] = $corpConfig->getCorpId();
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $mchBillNo
      * @throws \Exception\Wx\WxException
      */
-    public function setMchBillNo(string $mchBillNo){
-        if(ctype_alnum($mchBillNo) && (strlen($mchBillNo) <= 32)){
+    public function setMchBillNo(string $mchBillNo)
+    {
+        if (ctype_alnum($mchBillNo) && (strlen($mchBillNo) <= 32)) {
             $this->reqData['mch_billno'] = $mchBillNo;
         } else {
             throw new WxException('商户订单号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['mch_billno'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['mch_billno'])) {
             throw new WxException('商户订单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -96,7 +101,7 @@ class RedPackQuery extends WxBaseCorp {
         if ($sendData['return_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } else if ($sendData['result_code'] == 'FAIL') {
+        } elseif ($sendData['result_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {

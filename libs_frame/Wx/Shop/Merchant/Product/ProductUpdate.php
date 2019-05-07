@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class ProductUpdate extends WxBaseShop {
+class ProductUpdate extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -81,22 +82,25 @@ class ProductUpdate extends WxBaseShop {
      */
     private $delivery_info = [];
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/merchant/update?access_token=';
         $this->appid = $appId;
         $this->reqData['product_base'] = [];
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $productId
      * @throws \Exception\Wx\WxException
      */
-    public function setProductId(string $productId){
-        if(strlen($productId) > 0){
+    public function setProductId(string $productId)
+    {
+        if (strlen($productId) > 0) {
             $this->reqData['product_id'] = $productId;
         } else {
             throw new WxException('商品ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -107,8 +111,9 @@ class ProductUpdate extends WxBaseShop {
      * @param string $name
      * @throws \Exception\Wx\WxException
      */
-    public function setName(string $name){
-        if(strlen($name) > 0){
+    public function setName(string $name)
+    {
+        if (strlen($name) > 0) {
             $this->reqData['product_base']['name'] = $name;
         } else {
             throw new WxException('商品名称不合法', ErrorCode::WX_PARAM_ERROR);
@@ -118,9 +123,10 @@ class ProductUpdate extends WxBaseShop {
     /**
      * @param array $categoryIdList
      */
-    public function setCategoryId(array $categoryIdList){
+    public function setCategoryId(array $categoryIdList)
+    {
         foreach ($categoryIdList as $eCategoryId) {
-            if(is_int($eCategoryId) && ($eCategoryId > 0)){
+            if (is_int($eCategoryId) && ($eCategoryId > 0)) {
                 $this->category_id[$eCategoryId] = 1;
             }
         }
@@ -130,8 +136,9 @@ class ProductUpdate extends WxBaseShop {
      * @param int $categoryId
      * @throws \Exception\Wx\WxException
      */
-    public function addCategoryId(int $categoryId){
-        if($categoryId > 0){
+    public function addCategoryId(int $categoryId)
+    {
+        if ($categoryId > 0) {
             $this->category_id[$categoryId] = 1;
         } else {
             throw new WxException('商品分类ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -142,7 +149,8 @@ class ProductUpdate extends WxBaseShop {
      * @param string $mainImg
      * @throws \Exception\Wx\WxException
      */
-    public function setMainImg(string $mainImg){
+    public function setMainImg(string $mainImg)
+    {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $mainImg) > 0) {
             $this->reqData['product_base']['main_img'] = $mainImg;
         } else {
@@ -153,9 +161,10 @@ class ProductUpdate extends WxBaseShop {
     /**
      * @param array $imgList
      */
-    public function setImg(array $imgList){
+    public function setImg(array $imgList)
+    {
         foreach ($imgList as $eImage) {
-            if(is_string($eImage) && (preg_match('/^(http|https)\:\/\/\S+$/', $eImage) > 0)){
+            if (is_string($eImage) && (preg_match('/^(http|https)\:\/\/\S+$/', $eImage) > 0)) {
                 $this->img[] = $eImage;
             }
         }
@@ -165,7 +174,8 @@ class ProductUpdate extends WxBaseShop {
      * @param string $img
      * @throws \Exception\Wx\WxException
      */
-    public function addImg(string $img){
+    public function addImg(string $img)
+    {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $img) > 0) {
             $this->img[] = $img;
         } else {
@@ -176,9 +186,10 @@ class ProductUpdate extends WxBaseShop {
     /**
      * @param array $detailList
      */
-    public function setDetail(array $detailList){
+    public function setDetail(array $detailList)
+    {
         foreach ($detailList as $eDetail) {
-            if(is_array($eDetail) && (!empty($eDetail))){
+            if (is_array($eDetail) && (!empty($eDetail))) {
                 $this->detail[] = $eDetail;
             }
         }
@@ -188,8 +199,9 @@ class ProductUpdate extends WxBaseShop {
      * @param array $detailInfo
      * @throws \Exception\Wx\WxException
      */
-    public function addDetail(array $detailInfo){
-        if(empty($detailInfo)){
+    public function addDetail(array $detailInfo)
+    {
+        if (empty($detailInfo)) {
             throw new WxException('商品详情信息不合法', ErrorCode::WX_PARAM_ERROR);
         }
         $this->detail[] = $detailInfo;
@@ -198,9 +210,10 @@ class ProductUpdate extends WxBaseShop {
     /**
      * @param array $propertyList
      */
-    public function setProperty(array $propertyList){
+    public function setProperty(array $propertyList)
+    {
         foreach ($propertyList as $eProperty) {
-            if(is_array($eProperty) && (!empty($eProperty))){
+            if (is_array($eProperty) && (!empty($eProperty))) {
                 $this->property[] = $eProperty;
             }
         }
@@ -210,8 +223,9 @@ class ProductUpdate extends WxBaseShop {
      * @param array $propertyInfo
      * @throws \Exception\Wx\WxException
      */
-    public function addProperty(array $propertyInfo){
-        if(empty($propertyInfo)){
+    public function addProperty(array $propertyInfo)
+    {
+        if (empty($propertyInfo)) {
             throw new WxException('商品属性信息不合法', ErrorCode::WX_PARAM_ERROR);
         }
         $this->property[] = $propertyInfo;
@@ -220,9 +234,10 @@ class ProductUpdate extends WxBaseShop {
     /**
      * @param array $skuInfoList
      */
-    public function setSkuInfo(array $skuInfoList){
+    public function setSkuInfo(array $skuInfoList)
+    {
         foreach ($skuInfoList as $eSkuInfo) {
-            if(is_array($eSkuInfo) && (!empty($eSkuInfo))){
+            if (is_array($eSkuInfo) && (!empty($eSkuInfo))) {
                 $this->sku_info[] = $eSkuInfo;
             }
         }
@@ -232,8 +247,9 @@ class ProductUpdate extends WxBaseShop {
      * @param array $skuInfo
      * @throws \Exception\Wx\WxException
      */
-    public function addSkuInfo(array $skuInfo){
-        if(empty($skuInfo)){
+    public function addSkuInfo(array $skuInfo)
+    {
+        if (empty($skuInfo)) {
             throw new WxException('商品sku信息不合法', ErrorCode::WX_PARAM_ERROR);
         }
         $this->sku_info[] = $skuInfo;
@@ -243,8 +259,9 @@ class ProductUpdate extends WxBaseShop {
      * @param int $buyLimit
      * @throws \Exception\Wx\WxException
      */
-    public function setBuyLimit(int $buyLimit){
-        if($buyLimit > 0){
+    public function setBuyLimit(int $buyLimit)
+    {
+        if ($buyLimit > 0) {
             $this->reqData['product_base']['buy_limit'] = $buyLimit;
         } else {
             throw new WxException('商品限购数量不合法', ErrorCode::WX_PARAM_ERROR);
@@ -254,9 +271,10 @@ class ProductUpdate extends WxBaseShop {
     /**
      * @param array $skuList
      */
-    public function setSkuList(array $skuList){
+    public function setSkuList(array $skuList)
+    {
         foreach ($skuList as $eSku) {
-            if(is_array($eSku) && (!empty($eSku))){
+            if (is_array($eSku) && (!empty($eSku))) {
                 $this->sku_list[] = $eSku;
             }
         }
@@ -266,8 +284,9 @@ class ProductUpdate extends WxBaseShop {
      * @param array $sku
      * @throws \Exception\Wx\WxException
      */
-    public function addSkuList(array $sku){
-        if(empty($sku)){
+    public function addSkuList(array $sku)
+    {
+        if (empty($sku)) {
             throw new WxException('商品sku不合法', ErrorCode::WX_PARAM_ERROR);
         }
         $this->sku_list[] = $sku;
@@ -277,8 +296,9 @@ class ProductUpdate extends WxBaseShop {
      * @param array $attrext
      * @throws \Exception\Wx\WxException
      */
-    public function setAttrext(array $attrext){
-        if(empty($attrext)){
+    public function setAttrext(array $attrext)
+    {
+        if (empty($attrext)) {
             throw new WxException('商品其他属性不合法', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['attrext'] = $attrext;
@@ -288,46 +308,48 @@ class ProductUpdate extends WxBaseShop {
      * @param array $deliveryInfo
      * @throws \Exception\Wx\WxException
      */
-    public function setDeliveryInfo(array $deliveryInfo){
-        if(empty($deliveryInfo)){
+    public function setDeliveryInfo(array $deliveryInfo)
+    {
+        if (empty($deliveryInfo)) {
             throw new WxException('商品运费信息不合法', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['delivery_info'] = $deliveryInfo;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['product_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['product_id'])) {
             throw new WxException('商品ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['product_base']['name'])){
+        if (!isset($this->reqData['product_base']['name'])) {
             throw new WxException('商品名称不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(empty($this->category_id)){
+        if (empty($this->category_id)) {
             throw new WxException('商品分类ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['product_base']['category_id'] = array_keys($this->category_id);
-        if(!isset($this->reqData['product_base']['main_img'])){
+        if (!isset($this->reqData['product_base']['main_img'])) {
             throw new WxException('商品主图不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(empty($this->img)){
+        if (empty($this->img)) {
             throw new WxException('商品图片列表不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['product_base']['img'] = $this->img;
-        if(empty($this->detail)){
+        if (empty($this->detail)) {
             throw new WxException('商品详情列表不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['product_base']['detail'] = $this->detail;
-        if(empty($this->sku_list)){
+        if (empty($this->sku_list)) {
             throw new WxException('商品sku列表不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if(!isset($this->reqData['delivery_info'])){
+        if (!isset($this->reqData['delivery_info'])) {
             throw new WxException('商品运费信息不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['sku_list'] = $this->sku_list;
-        if(!empty($this->property)){
+        if (!empty($this->property)) {
             $this->reqData['product_base']['property'] = $this->property;
         }
-        if(!empty($this->sku_info)){
+        if (!empty($this->sku_info)) {
             $this->reqData['product_base']['sku_info'] = $this->sku_info;
         }
 
@@ -339,7 +361,7 @@ class ProductUpdate extends WxBaseShop {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

@@ -35,15 +35,15 @@ class Smarty_Internal_Compile_Private_Registered_Block extends Smarty_Internal_C
                 if (is_object($callback[ 0 ])) {
                     $callable = "array(\$_block_plugin{$this->nesting}, '{$callback[1]}')";
                     $callback =
-                        array("\$_smarty_tpl->smarty->registered_plugins['block']['{$tag}'][0][0]", "->{$callback[1]}");
+                        ["\$_smarty_tpl->smarty->registered_plugins['block']['{$tag}'][0][0]", "->{$callback[1]}"];
                 } else {
                     $callable = "array(\$_block_plugin{$this->nesting}, '{$callback[1]}')";
                     $callback =
-                        array("\$_smarty_tpl->smarty->registered_plugins['block']['{$tag}'][0][0]", "::{$callback[1]}");
+                        ["\$_smarty_tpl->smarty->registered_plugins['block']['{$tag}'][0][0]", "::{$callback[1]}"];
                 }
             } else {
                 $callable = "\$_block_plugin{$this->nesting}";
-                $callback = array("\$_smarty_tpl->smarty->registered_plugins['block']['{$tag}'][0]", '');
+                $callback = ["\$_smarty_tpl->smarty->registered_plugins['block']['{$tag}'][0]", ''];
             }
         } else {
             $tag_info = $compiler->default_handler_plugins[ Smarty::PLUGIN_BLOCK ][ $tag ];
@@ -56,17 +56,17 @@ class Smarty_Internal_Compile_Private_Registered_Block extends Smarty_Internal_C
             }
         }
         $compiler->tag_nocache = !$tag_info[ 1 ] | $compiler->tag_nocache;
-        $_paramsArray = array();
+        $_paramsArray = [];
         foreach ($_attr as $_key => $_value) {
             if (is_int($_key)) {
                 $_paramsArray[] = "$_key=>$_value";
-            } elseif ($compiler->template->caching && in_array($_key, $tag_info[ 2 ])) {
-                $_value = str_replace("'", "^#^", $_value);
+            } elseif ($compiler->template->caching && in_array($_key, $tag_info[ 2 ], true)) {
+                $_value = str_replace("'", '^#^', $_value);
                 $_paramsArray[] = "'$_key'=>^#^.var_export($_value,true).^#^";
             } else {
                 $_paramsArray[] = "'$_key'=>$_value";
             }
         }
-        return array($callback, $_paramsArray, $callable);
+        return [$callback, $_paramsArray, $callable];
     }
 }

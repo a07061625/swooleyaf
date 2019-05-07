@@ -15,7 +15,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;
 
-class OrderQuery extends WxBaseShop {
+class OrderQuery extends WxBaseShop
+{
     /**
      * 商户类型
      * @var string
@@ -47,7 +48,8 @@ class OrderQuery extends WxBaseShop {
      */
     private $sign_type = '';
 
-    public function __construct(string $appId,string $merchantType=self::MERCHANT_TYPE_SELF){
+    public function __construct(string $appId, string $merchantType = self::MERCHANT_TYPE_SELF)
+    {
         parent::__construct();
 
         if (!isset(self::$totalMerchantType[$merchantType])) {
@@ -57,7 +59,7 @@ class OrderQuery extends WxBaseShop {
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/orderquery';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->merchantType = $merchantType;
-        if($merchantType == self::MERCHANT_TYPE_SELF){
+        if ($merchantType == self::MERCHANT_TYPE_SELF) {
             $this->reqData['appid'] = $shopConfig->getAppId();
             $this->reqData['mch_id'] = $shopConfig->getPayMchId();
         } else {
@@ -68,15 +70,17 @@ class OrderQuery extends WxBaseShop {
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $transactionId
      * @throws \Exception\Wx\WxException
      */
-    public function setTransactionId(string $transactionId) {
-        if(ctype_digit($transactionId) && (strlen($transactionId) == 27)){
+    public function setTransactionId(string $transactionId)
+    {
+        if (ctype_digit($transactionId) && (strlen($transactionId) == 27)) {
             $this->transaction_id = $transactionId;
         } else {
             throw new WxException('微信订单号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -87,22 +91,24 @@ class OrderQuery extends WxBaseShop {
      * @param string $outTradeNo
      * @throws \Exception\Wx\WxException
      */
-    public function setOutTradeNo(string $outTradeNo) {
-        if(ctype_alnum($outTradeNo) && (strlen($outTradeNo) <= 32)){
+    public function setOutTradeNo(string $outTradeNo)
+    {
+        if (ctype_alnum($outTradeNo) && (strlen($outTradeNo) <= 32)) {
             $this->out_trade_no = $outTradeNo;
         } else {
             throw new WxException('商户订单号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $resArr = [
             'code' => 0
         ];
 
-        if(strlen($this->transaction_id) > 0){
+        if (strlen($this->transaction_id) > 0) {
             $this->reqData['transaction_id'] = $this->transaction_id;
-        } else if(strlen($this->out_trade_no) > 0){
+        } elseif (strlen($this->out_trade_no) > 0) {
             $this->reqData['out_trade_no'] = $this->out_trade_no;
         } else {
             throw new WxException('微信订单号与商户订单号不能同时为空', ErrorCode::WX_PARAM_ERROR);
@@ -117,7 +123,7 @@ class OrderQuery extends WxBaseShop {
         if ($sendData['return_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } else if ($sendData['result_code'] == 'FAIL') {
+        } elseif ($sendData['result_code'] == 'FAIL') {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {

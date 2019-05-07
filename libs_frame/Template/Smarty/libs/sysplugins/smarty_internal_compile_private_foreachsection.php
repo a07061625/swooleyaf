@@ -16,28 +16,6 @@
  */
 class Smarty_Internal_Compile_Private_ForeachSection extends Smarty_Internal_CompileBase
 {
-
-    /**
-     * Preg search pattern
-     *
-     * @var string
-     */
-    private $propertyPreg = '';
-
-    /**
-     * Offsets in preg match result
-     *
-     * @var array
-     */
-    private $resultOffsets = array();
-
-    /**
-     * Start offset
-     *
-     * @var int
-     */
-    private $startOffset = 0;
-
     /**
      * Name of this tag
      *
@@ -50,7 +28,7 @@ class Smarty_Internal_Compile_Private_ForeachSection extends Smarty_Internal_Com
      *
      * @var array
      */
-    public $nameProperties = array();
+    public $nameProperties = [];
 
     /**
      * {section} tag has no item properties
@@ -69,7 +47,28 @@ class Smarty_Internal_Compile_Private_ForeachSection extends Smarty_Internal_Com
     /**
      * @var array
      */
-    public $matchResults = array();
+    public $matchResults = [];
+
+    /**
+     * Preg search pattern
+     *
+     * @var string
+     */
+    private $propertyPreg = '';
+
+    /**
+     * Offsets in preg match result
+     *
+     * @var array
+     */
+    private $resultOffsets = [];
+
+    /**
+     * Start offset
+     *
+     * @var int
+     */
+    private $startOffset = 0;
 
     /**
      * Scan sources for used tag attributes
@@ -81,8 +80,8 @@ class Smarty_Internal_Compile_Private_ForeachSection extends Smarty_Internal_Com
     {
         $this->propertyPreg = '~(';
         $this->startOffset = 0;
-        $this->resultOffsets = array();
-        $this->matchResults = array('named' => array(), 'item' => array());
+        $this->resultOffsets = [];
+        $this->matchResults = ['named' => [], 'item' => []];
         if ($this->isNamed) {
             $this->buildPropertyPreg(true, $attributes);
         }
@@ -176,8 +175,11 @@ class Smarty_Internal_Compile_Private_ForeachSection extends Smarty_Internal_Com
                     if ((isset($nextCompiler->smarty->autoload_filters[ 'pre' ]) ||
                          isset($nextCompiler->smarty->registered_filters[ 'pre' ]))
                     ) {
-                        $_content = $nextCompiler->smarty->ext->_filterHandler->runFilter('pre', $_content,
-                                                                                          $nextCompiler->template);
+                        $_content = $nextCompiler->smarty->ext->_filterHandler->runFilter(
+                            'pre',
+                            $_content,
+                                                                                          $nextCompiler->template
+                        );
                     }
                     $this->matchProperty($_content);
                 }
@@ -212,7 +214,7 @@ class Smarty_Internal_Compile_Private_ForeachSection extends Smarty_Internal_Com
             $compiler->trigger_template_error("missing or illegal \$smarty.{$tag} name attribute", null, true);
         }
         $property = isset($parameter[ 2 ]) ? strtolower($compiler->getId($parameter[ 2 ])) : false;
-        if (!$property || !in_array($property, $this->nameProperties)) {
+        if (!$property || !in_array($property, $this->nameProperties, true)) {
             $compiler->trigger_template_error("missing or illegal \$smarty.{$tag} property attribute", null, true);
         }
         $tagVar = "'__smarty_{$tag}_{$name}'";

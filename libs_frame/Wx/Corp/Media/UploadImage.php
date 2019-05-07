@@ -18,7 +18,8 @@ use Wx\WxUtilBase;
  * 上传永久图片
  * @package Wx\Corp\Media
  */
-class UploadImage extends WxBaseCorp {
+class UploadImage extends WxBaseCorp
+{
     use WxTraitCorp;
 
     /**
@@ -32,30 +33,34 @@ class UploadImage extends WxBaseCorp {
      */
     private $file_path = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://qyapi.weixin.qq.com/cgi-bin/media/uploadimg?access_token=';
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $filePath
      * @throws \Exception\Wx\WxException
      */
-    public function setFilePath(string $filePath){
-        if(file_exists($filePath) && is_readable($filePath)){
+    public function setFilePath(string $filePath)
+    {
+        if (file_exists($filePath) && is_readable($filePath)) {
             $this->reqData['media'] = new \CURLFile($filePath);
         } else {
             throw new WxException('文件不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['media'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['media'])) {
             throw new WxException('文件不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -67,7 +72,7 @@ class UploadImage extends WxBaseCorp {
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $this->reqData;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['url'])){
+        if (isset($sendData['url'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

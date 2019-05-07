@@ -10,8 +10,10 @@ namespace Wx\OpenShop;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use Wx\WxBaseOpenShop;
 
-class MiniFastRegisterAuth extends WxBaseOpenShop {
-    public function __construct(string $appId){
+class MiniFastRegisterAuth extends WxBaseOpenShop
+{
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://mp.weixin.qq.com/cgi-bin/fastregisterauth';
         $openCommonConfig = WxConfigSingleton::getInstance()->getOpenCommonConfig();
@@ -21,10 +23,12 @@ class MiniFastRegisterAuth extends WxBaseOpenShop {
         $this->reqData['redirect_uri'] = $openCommonConfig->getUrlMiniFastRegister();
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         return [
             'url' => $this->serviceUrl . '?' . http_build_query($this->reqData),
         ];

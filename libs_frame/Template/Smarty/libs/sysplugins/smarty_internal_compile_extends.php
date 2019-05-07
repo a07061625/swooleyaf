@@ -23,7 +23,7 @@ class Smarty_Internal_Compile_Extends extends Smarty_Internal_Compile_Shared_Inh
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $required_attributes = array('file');
+    public $required_attributes = ['file'];
 
     /**
      * Array of names of optional attribute required by tag
@@ -31,7 +31,7 @@ class Smarty_Internal_Compile_Extends extends Smarty_Internal_Compile_Shared_Inh
      *
      * @var array
      */
-    public $optional_attributes = array('extends_resource');
+    public $optional_attributes = ['extends_resource'];
 
     /**
      * Attribute definition: Overwrites base class.
@@ -39,7 +39,7 @@ class Smarty_Internal_Compile_Extends extends Smarty_Internal_Compile_Shared_Inh
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $shorttag_order = array('file');
+    public $shorttag_order = ['file'];
 
     /**
      * Compiles code for the {extends} tag extends: resource
@@ -92,14 +92,32 @@ class Smarty_Internal_Compile_Extends extends Smarty_Internal_Compile_Shared_Inh
     }
 
     /**
+     * Create source code for {extends} from source components array
+     *
+     * @param []\Smarty_Internal_Template_Source $components
+     *
+     * @return string
+     */
+    public static function extendsSourceArrayCode($components)
+    {
+        $resources = [];
+        foreach ($components as $source) {
+            $resources[] = $source->resource;
+        }
+        return '{extends file=\'extends:' . join('|', $resources) . '\' extends_resource=true}';
+    }
+
+    /**
      * Add code for inheritance endChild() method to end of template
      *
      * @param \Smarty_Internal_TemplateCompilerBase $compiler
      */
     private function compileEndChild(Smarty_Internal_TemplateCompilerBase $compiler)
     {
-        $compiler->parser->template_postfix[] = new Smarty_Internal_ParseTree_Tag($compiler->parser,
-                                                                                  "<?php \$_smarty_tpl->inheritance->endChild();\n?>\n");
+        $compiler->parser->template_postfix[] = new Smarty_Internal_ParseTree_Tag(
+            $compiler->parser,
+                                                                                  "<?php \$_smarty_tpl->inheritance->endChild();\n?>\n"
+        );
     }
 
     /**
@@ -110,25 +128,13 @@ class Smarty_Internal_Compile_Extends extends Smarty_Internal_Compile_Shared_Inh
      */
     private function compileInclude(Smarty_Internal_TemplateCompilerBase $compiler, $file)
     {
-        $compiler->parser->template_postfix[] = new Smarty_Internal_ParseTree_Tag($compiler->parser,
-                                                                                  $compiler->compileTag('include',
-                                                                                                        array($file,
-                                                                                                              array('scope' => 'parent'))));
-    }
-
-    /**
-     * Create source code for {extends} from source components array
-     *
-     * @param []\Smarty_Internal_Template_Source $components
-     *
-     * @return string
-     */
-    public static function extendsSourceArrayCode($components)
-    {
-        $resources = array();
-        foreach ($components as $source) {
-            $resources[] = $source->resource;
-        }
-        return '{extends file=\'extends:' . join('|', $resources) . '\' extends_resource=true}';
+        $compiler->parser->template_postfix[] = new Smarty_Internal_ParseTree_Tag(
+            $compiler->parser,
+                                                                                  $compiler->compileTag(
+                                                                                      'include',
+                                                                                                        [$file,
+                                                                                                              ['scope' => 'parent']]
+                                                                                  )
+        );
     }
 }

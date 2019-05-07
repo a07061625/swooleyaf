@@ -16,14 +16,16 @@ use Tool\Tool;
 use Wx\WxBaseOpenCommon;
 use Wx\WxUtilBase;
 
-class ComponentAccessToken extends WxBaseOpenCommon {
+class ComponentAccessToken extends WxBaseOpenCommon
+{
     /**
      * 校验令牌
      * @var string
      */
     private $verifyTicket = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/component/api_component_token';
         $openCommonConfig = WxConfigSingleton::getInstance()->getOpenCommonConfig();
@@ -31,23 +33,26 @@ class ComponentAccessToken extends WxBaseOpenCommon {
         $this->reqData['component_appsecret'] = $openCommonConfig->getSecret();
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $verifyTicket
      * @throws \Exception\Wx\WxOpenException
      */
-    public function setVerifyTicket(string $verifyTicket){
-        if(strlen($verifyTicket) > 0){
+    public function setVerifyTicket(string $verifyTicket)
+    {
+        if (strlen($verifyTicket) > 0) {
             $this->reqData['component_verify_ticket'] = $verifyTicket;
         } else {
             throw new WxOpenException('校验令牌不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['component_verify_ticket'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['component_verify_ticket'])) {
             throw new WxOpenException('校验令牌不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 

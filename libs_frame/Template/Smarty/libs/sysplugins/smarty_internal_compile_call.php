@@ -22,7 +22,7 @@ class Smarty_Internal_Compile_Call extends Smarty_Internal_CompileBase
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $required_attributes = array('name');
+    public $required_attributes = ['name'];
 
     /**
      * Attribute definition: Overwrites base class.
@@ -30,7 +30,7 @@ class Smarty_Internal_Compile_Call extends Smarty_Internal_CompileBase
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $shorttag_order = array('name');
+    public $shorttag_order = ['name'];
 
     /**
      * Attribute definition: Overwrites base class.
@@ -38,7 +38,7 @@ class Smarty_Internal_Compile_Call extends Smarty_Internal_CompileBase
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $optional_attributes = array('_any');
+    public $optional_attributes = ['_any'];
 
     /**
      * Compiles the calls of user defined tags defined by {function}
@@ -66,7 +66,7 @@ class Smarty_Internal_Compile_Call extends Smarty_Internal_CompileBase
         } else {
             $_nocache = 'false';
         }
-        $_paramsArray = array();
+        $_paramsArray = [];
         foreach ($_attr as $_key => $_value) {
             if (is_int($_key)) {
                 $_paramsArray[] = "$_key=>$_value";
@@ -74,7 +74,7 @@ class Smarty_Internal_Compile_Call extends Smarty_Internal_CompileBase
                 $_paramsArray[] = "'$_key'=>$_value";
             }
         }
-        $_params = 'array(' . implode(",", $_paramsArray) . ')';
+        $_params = 'array(' . implode(',', $_paramsArray) . ')';
         //$compiler->suppressNocacheProcessing = true;
         // was there an assign attribute
         if (isset($_assign)) {

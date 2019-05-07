@@ -20,7 +20,7 @@ abstract class Smarty_CacheResource
      *
      * @var array
      */
-    protected static $sysplugins = array('file' => 'smarty_internal_cacheresource_file.php',);
+    protected static $sysplugins = ['file' => 'smarty_internal_cacheresource_file.php',];
 
     /**
      * populate Cached Object with meta data from Resource
@@ -50,8 +50,11 @@ abstract class Smarty_CacheResource
      *
      * @return boolean true or false if the cached content does not exist
      */
-    abstract public function process(Smarty_Internal_Template $_template, Smarty_Template_Cached $cached = null,
-                                     $update = false);
+    abstract public function process(
+        Smarty_Internal_Template $_template,
+        Smarty_Template_Cached $cached = null,
+                                     $update = false
+    );
 
     /**
      * Write the rendered template output to cache
@@ -70,7 +73,7 @@ abstract class Smarty_CacheResource
      *
      * @return string  content
      */
-    abstract function readCachedContent(Smarty_Internal_Template $_template);
+    abstract public function readCachedContent(Smarty_Internal_Template $_template);
 
     /**
      * Return cached content
@@ -87,8 +90,6 @@ abstract class Smarty_CacheResource
             $unifunc($_template);
             return ob_get_clean();
         }
-
-        return null;
     }
 
     /**

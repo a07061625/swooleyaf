@@ -14,7 +14,8 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class InfoSingle extends WxBaseShop {
+class InfoSingle extends WxBaseShop
+{
     /**
      * 公众号ID
      * @var string
@@ -26,20 +27,23 @@ class InfoSingle extends WxBaseShop {
      */
     private $openid = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/user/info?lang=zh_CN&access_token=';
         $this->appid = $appId;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $openid
      * @throws \Exception\Wx\WxException
      */
-    public function setOpenid(string $openid) {
+    public function setOpenid(string $openid)
+    {
         if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
             $this->reqData['openid'] = $openid;
         } else {
@@ -47,8 +51,9 @@ class InfoSingle extends WxBaseShop {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['openid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['openid'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
