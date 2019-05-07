@@ -18,7 +18,8 @@ use SyServer\BaseServer;
 use Traits\SimpleTrait;
 use Yaf\Registry;
 
-class Tool {
+class Tool
+{
     use SimpleTrait;
 
     const CURL_RSP_HEAD_TYPE_EMPTY = 0; //curl响应头类型-空
@@ -55,8 +56,9 @@ class Tool {
      * @param string $createType 生成类型,可选值:redis(默认) swoole
      * @return string
      */
-    public static function createUniqueId(string $createType='redis') : string {
-        if($createType == 'redis'){
+    public static function createUniqueId(string $createType = 'redis') : string
+    {
+        if ($createType == 'redis') {
             $num = CacheSimpleFactory::getRedisInstance()->incr(Project::DATA_KEY_CACHE_UNIQUE_ID);
             return date('YmdHis') . substr($num, -8);
         } else {
@@ -73,8 +75,9 @@ class Tool {
      * @param bool $isRecursion 是否递归查找,false:不递归 true:递归
      * @return mixed
      */
-    public static function getArrayVal(array $array, $key, $default=null,bool $isRecursion=false){
-        if(!$isRecursion){
+    public static function getArrayVal(array $array, $key, $default = null, bool $isRecursion = false)
+    {
+        if (!$isRecursion) {
             return $array[$key] ?? $default;
         }
 
@@ -82,7 +85,7 @@ class Tool {
         $tempData = $array;
         unset($array);
         foreach ($keyArr as $eKey) {
-            if(is_array($tempData) && isset($tempData[$eKey])){
+            if (is_array($tempData) && isset($tempData[$eKey])) {
                 $tempData = $tempData[$eKey];
             } else {
                 return $default;
@@ -99,11 +102,12 @@ class Tool {
      * @param mixed $default 默认值
      * @return mixed
      */
-    public static function getConfig(string $tag,string $field='', $default=null){
+    public static function getConfig(string $tag, string $field = '', $default = null)
+    {
         $configs = \Yaconf::get($tag);
-        if(is_null($configs)){
+        if (is_null($configs)) {
             return $default;
-        } else if(is_array($configs) && (strlen($field) > 0)){
+        } elseif (is_array($configs) && (strlen($field) > 0)) {
             return self::getArrayVal($configs, $field, $default);
         } else {
             return $configs;
@@ -117,13 +121,14 @@ class Tool {
      * @return string
      * @throws \Exception\Common\CheckException
      */
-    public static function arrayToXml(array $dataArr,int $transferType=1) : string {
+    public static function arrayToXml(array $dataArr, int $transferType = 1) : string
+    {
         if (count($dataArr) == 0) {
             throw new CheckException('数组为空', ErrorCode::COMMON_PARAM_ERROR);
         }
 
         $xml = '';
-        if($transferType == 1){
+        if ($transferType == 1) {
             $xml .= '<xml>';
             foreach ($dataArr as $key => $value) {
                 if (is_numeric($value)) {
@@ -133,7 +138,7 @@ class Tool {
                 }
             }
             $xml .= '</xml>';
-        } else if($transferType == 2){
+        } elseif ($transferType == 2) {
             foreach ($dataArr as $key => $value) {
                 $xml .= '<' . $key . '>' . $value . '</' . $key . '>';
             }
@@ -152,7 +157,8 @@ class Tool {
      * @return array
      * @throws \Exception\Common\CheckException
      */
-    public static function xmlToArray(string $xml) {
+    public static function xmlToArray(string $xml)
+    {
         if (strlen($xml) == 0) {
             throw new CheckException('xml数据异常', ErrorCode::COMMON_PARAM_ERROR);
         }
@@ -168,7 +174,8 @@ class Tool {
      * @param string $priKeyContent 私钥文件内容
      * @return string 签名结果
      */
-    public static function rsaSign(string $data,string $priKeyContent) : string {
+    public static function rsaSign(string $data, string $priKeyContent) : string
+    {
         $priKey = openssl_get_privatekey($priKeyContent);
         openssl_sign($data, $sign, $priKey);
         openssl_free_key($priKey);
@@ -182,9 +189,10 @@ class Tool {
      * @param string $sign 要校对的的签名结果
      * @return boolean 验证结果
      */
-    public static function rsaVerify(string $data,string $pubKeyContent,string $sign) : bool {
+    public static function rsaVerify(string $data, string $pubKeyContent, string $sign) : bool
+    {
         $pubKey = openssl_get_publickey($pubKeyContent);
-        $result = (boolean)openssl_verify($data, base64_decode($sign), $pubKey);
+        $result = (boolean)openssl_verify($data, base64_decode($sign, true), $pubKey);
         openssl_free_key($pubKey);
         return $result;
     }
@@ -196,7 +204,8 @@ class Tool {
      * @param int $mode 模式 0:公钥加密 1:私钥加密
      * @return string
      */
-    public static function rsaEncrypt(string $data,string $keyContent,int $mode=0){
+    public static function rsaEncrypt(string $data, string $keyContent, int $mode = 0)
+    {
         $dataArr = str_split($data, 117);
         $encryptArr = [];
         if ($mode == 0) { //公钥加密
@@ -226,11 +235,12 @@ class Tool {
      * @param int $mode 模式 0:私钥解密 1:公钥解密
      * @return string
      */
-    public static function rsaDecrypt(string $data,string $keyContent,int $mode=0){
+    public static function rsaDecrypt(string $data, string $keyContent, int $mode = 0)
+    {
         $decryptStr = '';
-        $encryptData = base64_decode($data);
+        $encryptData = base64_decode($data, true);
         $length = strlen($encryptData) / 128;
-        if($mode == 0){ //私钥解密
+        if ($mode == 0) { //私钥解密
             $key = openssl_get_privatekey($keyContent);
             for ($i = 0; $i < $length; $i++) {
                 $eDecrypt = '';
@@ -258,7 +268,8 @@ class Tool {
      * @param string $key 私钥
      * @return string 签名结果
      */
-    public static function md5Sign(string $needStr,string $key) : string {
+    public static function md5Sign(string $needStr, string $key) : string
+    {
         return md5($needStr . $key);
     }
 
@@ -269,7 +280,8 @@ class Tool {
      * @param string $key 私钥
      * @return boolean 签名结果
      */
-    public static function md5Verify(string $needStr,string $sign,string $key) : bool {
+    public static function md5Verify(string $needStr, string $sign, string $key) : bool
+    {
         $nowSign = md5($needStr . $key);
         return $nowSign === $sign;
     }
@@ -280,7 +292,8 @@ class Tool {
      * @param string $key 密钥
      * @return string
      */
-    public static function encrypt(string $content,string $key){
+    public static function encrypt(string $content, string $key)
+    {
         $iv = self::createNonceStr(16);
         $data = [
             'iv' => $iv,
@@ -295,9 +308,10 @@ class Tool {
      * @param string $key 密钥
      * @return bool|string
      */
-    public static function decrypt(string $content,string $key){
-        $data = self::jsonDecode(base64_decode($content));
-        if(is_array($data) && (!empty($data))){
+    public static function decrypt(string $content, string $key)
+    {
+        $data = self::jsonDecode(base64_decode($content, true));
+        if (is_array($data) && (!empty($data))) {
             return openssl_decrypt($data['value'], 'AES-256-CBC', $key, 0, $data['iv']);
         }
         return false;
@@ -310,18 +324,19 @@ class Tool {
      * @param mixed $default 默认值
      * @return mixed
      */
-    public static function getClientOption($key,bool $isIndexKey=false, $default=null) {
+    public static function getClientOption($key, bool $isIndexKey = false, $default = null)
+    {
         global $argv;
 
         $option = $default;
-        if($isIndexKey){
-            if(isset($argv[$key])){
+        if ($isIndexKey) {
+            if (isset($argv[$key])) {
                 $option = $argv[$key];
             }
         } else {
             foreach ($argv as $eKey => $eVal) {
-                if(($key == $eVal) && isset($argv[$eKey+1])){
-                    $option = $argv[$eKey+1];
+                if (($key == $eVal) && isset($argv[$eKey + 1])) {
+                    $option = $argv[$eKey + 1];
                     break;
                 }
             }
@@ -335,7 +350,8 @@ class Tool {
      * @param mixed $data 需要压缩的数据
      * @return bool|string
      */
-    public static function pack($data) {
+    public static function pack($data)
+    {
         return msgpack_pack($data);
     }
 
@@ -345,8 +361,9 @@ class Tool {
      * @param string $className 解压类型名称
      * @return mixed
      */
-    public static function unpack(string $data,string $className='array') {
-        if($className == 'array'){
+    public static function unpack(string $data, string $className = 'array')
+    {
+        if ($className == 'array') {
             return msgpack_unpack($data);
         } else {
             return msgpack_unpack($data, $className);
@@ -358,7 +375,8 @@ class Tool {
      * @param mixed $data
      * @return string
      */
-    public static function serialize($data){
+    public static function serialize($data)
+    {
         return msgpack_serialize($data);
     }
 
@@ -368,8 +386,9 @@ class Tool {
      * @param string $className
      * @return mixed
      */
-    public static function unserialize(string $str,string $className='array'){
-        if($className == 'array'){
+    public static function unserialize(string $str, string $className = 'array')
+    {
+        if ($className == 'array') {
             return msgpack_unserialize($str);
         } else {
             return msgpack_unserialize($str, $className);
@@ -382,8 +401,9 @@ class Tool {
      * @param int|string $options
      * @return bool|string
      */
-    public static function jsonEncode($arr, $options=JSON_OBJECT_AS_ARRAY){
-        if(is_array($arr) || is_object($arr)){
+    public static function jsonEncode($arr, $options = JSON_OBJECT_AS_ARRAY)
+    {
+        if (is_array($arr) || is_object($arr)) {
             return json_encode($arr, $options);
         }
         return false;
@@ -395,8 +415,9 @@ class Tool {
      * @param int|string $assoc
      * @return bool|mixed
      */
-    public static function jsonDecode($json, $assoc=JSON_OBJECT_AS_ARRAY){
-        if(is_string($json)){
+    public static function jsonDecode($json, $assoc = JSON_OBJECT_AS_ARRAY)
+    {
+        if (is_string($json)) {
             return json_decode($json, $assoc);
         }
         return false;
@@ -411,7 +432,8 @@ class Tool {
      *   numlower: 数字,小写字母
      * @return string
      */
-    public static function createNonceStr(int $length,string $dataType='total') : string {
+    public static function createNonceStr(int $length, string $dataType = 'total') : string
+    {
         $resStr = '';
 
         switch ($dataType) {
@@ -439,12 +461,13 @@ class Tool {
      * @param int $model 模式类型 1:从$_SERVER获取 2:从swoole_http_request中获取
      * @return bool|string
      */
-    public static function getClientIP(int $model) {
-        if($model == 1){
-            if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
+    public static function getClientIP(int $model)
+    {
+        if ($model == 1) {
+            if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
                 $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
                 return trim($ips[0]);
-            } else if(isset($_SERVER['HTTP_X_REAL_IP'])){
+            } elseif (isset($_SERVER['HTTP_X_REAL_IP'])) {
                 return trim($_SERVER['HTTP_X_REAL_IP']);
             } else {
                 return self::getArrayVal($_SERVER, 'REMOTE_ADDR', '');
@@ -479,33 +502,34 @@ class Tool {
      * @return bool
      * @throws \Exception
      */
-    public static function extractZip(string $file,string $dist){
+    public static function extractZip(string $file, string $dist)
+    {
         $zip = null;
 
-        try{
+        try {
             if (!is_file($file)) {
                 throw new CheckException('解压对象不是文件', ErrorCode::COMMON_PARAM_ERROR);
-            } else if(!is_readable($file)){
+            } elseif (!is_readable($file)) {
                 throw new CheckException('文件不可读', ErrorCode::COMMON_PARAM_ERROR);
-            } else if(!is_dir($dist)){
+            } elseif (!is_dir($dist)) {
                 throw new CheckException('解压目录不存在', ErrorCode::COMMON_PARAM_ERROR);
-            } else if(!is_writeable($dist)){
+            } elseif (!is_writeable($dist)) {
                 throw new CheckException('解压目录不可写', ErrorCode::COMMON_PARAM_ERROR);
             }
 
             $zip = new \ZipArchive();
-            if($zip->open($file) !== true){
+            if ($zip->open($file) !== true) {
                 throw new CheckException('读取文件失败', ErrorCode::COMMON_PARAM_ERROR);
             }
-            if(!$zip->extractTo($dist)){
+            if (!$zip->extractTo($dist)) {
                 throw new CheckException('解压失败', ErrorCode::COMMON_PARAM_ERROR);
             }
 
             return true;
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             throw $e;
         } finally {
-            if($zip){
+            if ($zip) {
                 $zip->close();
             }
         }
@@ -517,7 +541,8 @@ class Tool {
      * @param string $content 请求内容
      * @return bool|mixed
      */
-    public static function sendSyHttpTaskReq(string $url,string $content) {
+    public static function sendSyHttpTaskReq(string $url, string $content)
+    {
         $sendRes = self::sendCurlReq([
             CURLOPT_URL => $url,
             CURLOPT_POST => true,
@@ -538,7 +563,8 @@ class Tool {
      * @param string $content 请求内容
      * @return bool
      */
-    public static function sendSyRpcReq(string $host,int $port,string $content) {
+    public static function sendSyRpcReq(string $host, int $port, string $content)
+    {
         $client = new \swoole_client(SWOOLE_SOCK_TCP);
         $client->set([
             'open_tcp_nodelay' => true,
@@ -549,10 +575,10 @@ class Tool {
             'package_max_length' => Project::SIZE_SERVER_PACKAGE_MAX,
             'socket_buffer_size' => Project::SIZE_CLIENT_SOCKET_BUFFER,
         ]);
-        if(!@$client->connect($host, $port, 2)){
+        if (!@$client->connect($host, $port, 2)) {
             return false;
         }
-        if(!$client->send($content)){
+        if (!$client->send($content)) {
             $client->close();
             return false;
         }
@@ -569,13 +595,14 @@ class Tool {
      * @return array
      * @throws \Exception\Common\CheckException
      */
-    public static function sendCurlReq(array $configs,int $rspHeaderType=self::CURL_RSP_HEAD_TYPE_EMPTY) {
+    public static function sendCurlReq(array $configs, int $rspHeaderType = self::CURL_RSP_HEAD_TYPE_EMPTY)
+    {
         if (!isset(self::$totalCurlRspHeadType[$rspHeaderType])) {
             throw new CheckException('响应头类型不支持', ErrorCode::COMMON_PARAM_ERROR);
         }
 
         $url = $configs[CURLOPT_URL] ?? '';
-        if((!is_string($url)) || (strlen($url) == 0)){
+        if ((!is_string($url)) || (strlen($url) == 0)) {
             throw new CheckException('请求地址不能为空', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -590,18 +617,18 @@ class Tool {
             'res_content' => '',
         ];
 
-        if($rspHeaderType == self::CURL_RSP_HEAD_TYPE_EMPTY){
+        if ($rspHeaderType == self::CURL_RSP_HEAD_TYPE_EMPTY) {
             curl_setopt($ch, CURLOPT_HEADER, false);
             $resArr['res_content'] = curl_exec($ch);
             $resArr['res_no'] = curl_errno($ch);
             $resArr['res_msg'] = curl_error($ch);
-        } else if($rspHeaderType == self::CURL_RSP_HEAD_TYPE_HTTP){
+        } elseif ($rspHeaderType == self::CURL_RSP_HEAD_TYPE_HTTP) {
             curl_setopt($ch, CURLOPT_HEADER, true);
             $rspContent = curl_exec($ch);
             $resArr['res_no'] = curl_errno($ch);
             $resArr['res_msg'] = curl_error($ch);
-            if($resArr['res_no'] == 0){
-                $headSize = curl_getinfo($ch,CURLINFO_HEADER_SIZE);
+            if ($resArr['res_no'] == 0) {
+                $headSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
                 $resArr['res_code'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                 $resArr['res_content'] = substr($rspContent, $headSize);
                 $resArr['res_header'] = [];
@@ -611,9 +638,9 @@ class Tool {
                 unset($headerArr[0]);
                 foreach ($headerArr as $eHeader) {
                     $pos = strpos($eHeader, ':');
-                    if($pos > 0){
+                    if ($pos > 0) {
                         $headerKey = trim(substr($eHeader, 0, $pos));
-                        if(!isset($resArr['res_header'][$headerKey])){
+                        if (!isset($resArr['res_header'][$headerKey])) {
                             $resArr['res_header'][$headerKey] = [];
                         }
                         $resArr['res_header'][$headerKey][] = trim(substr($eHeader, ($pos + 1)));
@@ -631,7 +658,8 @@ class Tool {
      * 获取当前时间戳
      * @return int
      */
-    public static function getNowTime(){
+    public static function getNowTime()
+    {
         return $_SERVER[Server::SERVER_DATA_KEY_TIMESTAMP] ?? time();
     }
 
@@ -641,7 +669,8 @@ class Tool {
      * @param string $javaPath
      * @return array
      */
-    public static function readQrCode(string $qrPath,string $javaPath=''){
+    public static function readQrCode(string $qrPath, string $javaPath = '')
+    {
         $resArr = [
             'code' => 0,
         ];
@@ -649,7 +678,7 @@ class Tool {
         $decoder = new PHPZxingDecoder([
             'try_harder' => true,
         ]);
-        if(strlen($javaPath) > 0){
+        if (strlen($javaPath) > 0) {
             $decoder->setJavaPath($javaPath);
         }
 
@@ -666,7 +695,7 @@ class Tool {
          *   getImagePath 获取图像的路径
          */
         $decodedData = $decoder->decode($qrPath);
-        if($decodedData instanceof ZxingImage){
+        if ($decodedData instanceof ZxingImage) {
             $resArr['data'] = $decodedData->getImageValue();
         } else {
             $resArr['code'] = ErrorCode::COMMON_PARAM_ERROR;
@@ -682,7 +711,8 @@ class Tool {
      * @param string $text 需要加密的明文
      * @return string
      */
-    public static function pkcs7Encode(string $text) : string {
+    public static function pkcs7Encode(string $text) : string
+    {
         $blockSize = 32;
         $textLength = strlen($text);
         //计算需要填充的位数
@@ -706,7 +736,8 @@ class Tool {
      * @param string $text 解密后的明文
      * @return string
      */
-    public static function pkcs7Decode(string $text) : string {
+    public static function pkcs7Decode(string $text) : string
+    {
         $pad = ord(substr($text, -1));
         if (($pad < 1) || ($pad > 32)) {
             $pad = 0;
@@ -720,23 +751,24 @@ class Tool {
      * @param string $uri
      * @return string
      */
-    public static function handleYafUri(string &$uri) : string {
-        if((strlen($uri) == 0) || ($uri == '/')){
+    public static function handleYafUri(string &$uri) : string
+    {
+        if ((strlen($uri) == 0) || ($uri == '/')) {
             $uri = '/';
             return '';
-        } else if(substr($uri, 0, 1) != '/'){
+        } elseif (substr($uri, 0, 1) != '/') {
             return 'URI格式错误';
         }
-        if(substr($uri, -1) == '/'){
+        if (substr($uri, -1) == '/') {
             $uri = substr($uri, 0, -1);
         }
 
         $tempArr = explode('/', $uri);
-        if(!ctype_alnum($tempArr[1])){
+        if (!ctype_alnum($tempArr[1])) {
             return '模块不合法';
-        } else if(isset($tempArr[2]) && !ctype_alnum($tempArr[2])){
+        } elseif (isset($tempArr[2]) && !ctype_alnum($tempArr[2])) {
             return '控制器名称不合法';
-        } else if(isset($tempArr[3]) && !ctype_alnum($tempArr[3])){
+        } elseif (isset($tempArr[3]) && !ctype_alnum($tempArr[3])) {
             return '方法名称不合法';
         }
 
@@ -748,9 +780,10 @@ class Tool {
      * @param string $command
      * @return array
      */
-    public static function execSystemCommand(string $command) : array {
+    public static function execSystemCommand(string $command) : array
+    {
         $trueCommand = trim($command);
-        if(strlen($trueCommand) == 0){
+        if (strlen($trueCommand) == 0) {
             return [
                 'code' => 9999,
                 'msg' => '执行命令不能为空',
@@ -760,7 +793,7 @@ class Tool {
         $code = 0;
         $output = [];
         $msg = exec($trueCommand, $output, $code);
-        if($code == 0){
+        if ($code == 0) {
             return [
                 'code' => 0,
                 'data' => $output,

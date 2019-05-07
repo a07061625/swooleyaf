@@ -16,7 +16,8 @@ use Request\SyRequest;
 use Traits\SimpleTrait;
 use Yaf\Registry;
 
-final class SessionTool {
+final class SessionTool
+{
     use SimpleTrait;
 
     /**
@@ -24,10 +25,11 @@ final class SessionTool {
      * @param string $tag
      * @return bool|string
      */
-    public static function setSessionJwtRid(string $tag){
+    public static function setSessionJwtRid(string $tag)
+    {
         $redisKey = Project::REDIS_PREFIX_SESSION_JWT_REFRESH . $tag;
         $rid = Tool::createNonceStr(6, 'numlower') . time();
-        if(CacheSimpleFactory::getRedisInstance()->set($redisKey, $rid, SY_SESSION_JW_RID_EXPIRE)){
+        if (CacheSimpleFactory::getRedisInstance()->set($redisKey, $rid, SY_SESSION_JW_RID_EXPIRE)) {
             return $rid;
         } else {
             return false;
@@ -41,12 +43,13 @@ final class SessionTool {
      *   uid: string|int 用户标识
      * @throws \Exception\Session\JwtException
      */
-    public static function createSessionJwt(array &$data){
+    public static function createSessionJwt(array &$data)
+    {
         $uid = Tool::getArrayVal($data, 'uid', null);
-        if(is_string($uid)){
-            if(strlen((string)$uid) > 0){
+        if (is_string($uid)) {
+            if (strlen((string)$uid) > 0) {
                 $rid = (string)Tool::getArrayVal($data, 'rid', '');
-                if(strlen($rid) == 0){
+                if (strlen($rid) == 0) {
                     $redisKey = Project::REDIS_PREFIX_SESSION_JWT_REFRESH . $uid;
                     $redisData = CacheSimpleFactory::getRedisInstance()->get($redisKey);
                     $data['rid'] = is_string($redisData) ? $redisData : '';
@@ -63,7 +66,8 @@ final class SessionTool {
      * 生成默认JWT数据
      * @return array
      */
-    public static function createDefaultJwt() : array {
+    public static function createDefaultJwt() : array
+    {
         $jwtData = [
             'uid' => '',
         ];
@@ -75,10 +79,11 @@ final class SessionTool {
     /**
      * 初始化会话JWT数据
      */
-    public static function initSessionJwt() {
+    public static function initSessionJwt()
+    {
         if (isset($_COOKIE[Project::DATA_KEY_SESSION_TOKEN])) {
             $token = (string)$_COOKIE[Project::DATA_KEY_SESSION_TOKEN];
-        } else if(isset($_SERVER['SY-AUTH'])){
+        } elseif (isset($_SERVER['SY-AUTH'])) {
             $token = (string)$_SERVER['SY-AUTH'];
         } else {
             $token = (string)SyRequest::getParams('session_id', '');
@@ -87,21 +92,21 @@ final class SessionTool {
         $cacheData = [];
         $sessionId = '';
         if ((strlen($token) == 16) && ctype_alnum($token)) {
-            if($token{0} == '1'){
+            if ($token{0} == '1') {
                 $sessionId = $token;
                 $redisKey = Project::REDIS_PREFIX_SESSION . $sessionId;
                 $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
-                if(isset($redisData['sid']) && ($redisData['sid'] == $sessionId)){
+                if (isset($redisData['sid']) && ($redisData['sid'] == $sessionId)) {
                     $cacheData = $redisData;
                 }
-            } else if($token{0} == '0'){
+            } elseif ($token{0} == '0') {
                 $sessionId = $token;
             }
         }
-        if(!isset($sessionId{0})){
+        if (!isset($sessionId{0})) {
             $sessionId = '0' . Tool::createNonceStr(5, 'numlower') . Tool::getNowTime();
         }
-        if(empty($cacheData)){
+        if (empty($cacheData)) {
             $cacheData = self::createDefaultJwt();
         }
         Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_DATA, $cacheData);

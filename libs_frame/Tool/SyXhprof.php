@@ -12,14 +12,16 @@ use Traits\SimpleTrait;
 include_once __DIR__ . '/xhprof/xhprof_lib.php';
 include_once __DIR__ . '/xhprof/xhprof_runs.php';
 
-class SyXhprof {
+class SyXhprof
+{
     use SimpleTrait;
 
     /**
      * 开启性能分析
      */
-    public static function start(){
-        xhprof_enable(XHPROF_FLAGS_CPU|XHPROF_FLAGS_MEMORY, [
+    public static function start()
+    {
+        xhprof_enable(XHPROF_FLAGS_CPU | XHPROF_FLAGS_MEMORY, [
             'ignored_functions' => [
                 'call_user_func',
                 'call_user_func_array',
@@ -32,7 +34,8 @@ class SyXhprof {
      * @param string $sourceTitle
      * @return array
      */
-    public static function run(string $sourceTitle) : array {
+    public static function run(string $sourceTitle) : array
+    {
         $title = strlen($sourceTitle) > 0 ? $sourceTitle : 'xhprof';
         $runs = new \XHProfRuns_Default();
         $runId = $runs->save_run(xhprof_disable(), $title);

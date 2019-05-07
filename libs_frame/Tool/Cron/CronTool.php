@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Exception\Cron\CronException;
 use Traits\SimpleTrait;
 
-class CronTool {
+class CronTool
+{
     use SimpleTrait;
 
     const DATA_TYPE_ALL = 1; //数据类型-所有数据
@@ -86,9 +87,10 @@ class CronTool {
      * @param array $seconds
      * @return array|bool
      */
-    public static function checkSeconds(array $seconds){
+    public static function checkSeconds(array $seconds)
+    {
         array_unique($seconds);
-        if(empty($seconds) || (count($seconds) > 60)){
+        if (empty($seconds) || (count($seconds) > 60)) {
             return false;
         }
 
@@ -109,9 +111,10 @@ class CronTool {
      * @param array $minutes
      * @return array|bool
      */
-    public static function checkMinutes(array $minutes){
+    public static function checkMinutes(array $minutes)
+    {
         array_unique($minutes);
-        if(empty($minutes) || (count($minutes) > 60)){
+        if (empty($minutes) || (count($minutes) > 60)) {
             return false;
         }
 
@@ -132,9 +135,10 @@ class CronTool {
      * @param array $hours
      * @return array|bool
      */
-    public static function checkHours(array $hours){
+    public static function checkHours(array $hours)
+    {
         array_unique($hours);
-        if(empty($hours) || (count($hours) > 24)){
+        if (empty($hours) || (count($hours) > 24)) {
             return false;
         }
 
@@ -155,9 +159,10 @@ class CronTool {
      * @param array $days
      * @return array|bool
      */
-    public static function checkDays(array $days){
+    public static function checkDays(array $days)
+    {
         array_unique($days);
-        if(empty($days) || (count($days) > 31)){
+        if (empty($days) || (count($days) > 31)) {
             return false;
         }
 
@@ -178,9 +183,10 @@ class CronTool {
      * @param array $months
      * @return array|bool
      */
-    public static function checkMonths(array $months){
+    public static function checkMonths(array $months)
+    {
         array_unique($months);
-        if(empty($months) || (count($months) > 12)){
+        if (empty($months) || (count($months) > 12)) {
             return false;
         }
 
@@ -201,9 +207,10 @@ class CronTool {
      * @param array $weeks
      * @return array|bool
      */
-    public static function checkWeeks(array $weeks){
+    public static function checkWeeks(array $weeks)
+    {
         array_unique($weeks);
-        if(empty($weeks) || (count($weeks) > 7)){
+        if (empty($weeks) || (count($weeks) > 7)) {
             return false;
         }
 
@@ -221,10 +228,38 @@ class CronTool {
     }
 
     /**
+     * @param string $cron
+     * @return \Tool\Cron\CronData
+     * @throws \Exception\Cron\CronException
+     */
+    public static function analyseCron(string $cron)
+    {
+        $cronStr = preg_replace('/\s+/', '=', trim($cron));
+        if (preg_match('/^(\=(\*|\d+(\,\d+)*|\d+\-\d+(\,\d+\-\d+)*)(\/\d+){0,1}){6}$/', '=' . $cronStr) == 0) {
+            throw new CronException('cron格式不合法', ErrorCode::CRON_FORMAT_ERROR);
+        }
+
+        $cronArr = explode('=', $cronStr);
+        $handleRes = self::handleCron($cronArr);
+
+        $cronData = new CronData();
+        $cronData->setCron(preg_replace('/\=/', ' ', $cronStr));
+        $cronData->setSeconds(self::analyseCronSecond($handleRes['second']));
+        $cronData->setMinutes(self::analyseCronMinute($handleRes['minute']));
+        $cronData->setHours(self::analyseCronHour($handleRes['hour']));
+        $cronData->setDays(self::analyseCronDay($handleRes['day']));
+        $cronData->setMonths(self::analyseCronMonth($handleRes['month']));
+        $cronData->setWeeks(self::analyseCronWeek($handleRes['week']));
+
+        return $cronData;
+    }
+
+    /**
      * @param array $cronData
      * @return array
      */
-    private static function handleCron(array $cronData) : array {
+    private static function handleCron(array $cronData) : array
+    {
         $resArr = [];
         $keys = [
             'second',
@@ -235,7 +270,7 @@ class CronTool {
             'week',
         ];
 
-        for ($i=0; $i<6; $i++) {
+        for ($i = 0; $i < 6; $i++) {
             $data = [];
             $needArr1 = explode('/', $cronData[$i]);
             $data['num'] = count($needArr1) == 1 ? 1 : (int)$needArr1[1];
@@ -243,7 +278,7 @@ class CronTool {
             if ($needArr2[0] == '*') {
                 $data['type'] = self::DATA_TYPE_ALL;
                 $data['data'] = ['*'];
-            } else if (is_numeric($needArr2[0])) {
+            } elseif (is_numeric($needArr2[0])) {
                 $data['type'] = self::DATA_TYPE_SINGLE;
                 $save = [];
                 foreach ($needArr2 as $eNeed) {
@@ -274,7 +309,8 @@ class CronTool {
      * @return array
      * @throws \Exception\Cron\CronException
      */
-    private static function analyseCronSecond(array $secondData) {
+    private static function analyseCronSecond(array $secondData)
+    {
         if (($secondData['num'] <= 0) || ($secondData['num'] > 60)) {
             throw new CronException('秒钟格式不合法', ErrorCode::CRON_SECOND_ERROR);
         }
@@ -304,17 +340,17 @@ class CronTool {
                 foreach ($secondData['data'] as $eData) {
                     if ($eData['min'] < 0) {
                         throw new CronException('秒钟格式不合法', ErrorCode::CRON_SECOND_ERROR);
-                    } else if ($eData['min'] >= 60) {
+                    } elseif ($eData['min'] >= 60) {
                         throw new CronException('秒钟格式不合法', ErrorCode::CRON_SECOND_ERROR);
-                    } else if ($eData['max'] < 0) {
+                    } elseif ($eData['max'] < 0) {
                         throw new CronException('秒钟格式不合法', ErrorCode::CRON_SECOND_ERROR);
-                    } else if ($eData['max'] >= 60) {
+                    } elseif ($eData['max'] >= 60) {
                         throw new CronException('秒钟格式不合法', ErrorCode::CRON_SECOND_ERROR);
-                    } else if ($eData['min'] > $eData['max']) {
+                    } elseif ($eData['min'] > $eData['max']) {
                         throw new CronException('秒钟格式不合法', ErrorCode::CRON_SECOND_ERROR);
                     }
 
-                    for ($i=$eData['min']; $i<=$eData['max']; $i++) {
+                    for ($i = $eData['min']; $i <= $eData['max']; $i++) {
                         if (($i % $secondData['num']) == 0) {
                             $resArr[] = $i;
                         }
@@ -338,7 +374,8 @@ class CronTool {
      * @return array
      * @throws \Exception\Cron\CronException
      */
-    private static function analyseCronMinute(array $minuteData) {
+    private static function analyseCronMinute(array $minuteData)
+    {
         if (($minuteData['num'] <= 0) || ($minuteData['num'] > 60)) {
             throw new CronException('分钟格式不合法', ErrorCode::CRON_MINUTE_ERROR);
         }
@@ -368,17 +405,17 @@ class CronTool {
                 foreach ($minuteData['data'] as $eData) {
                     if ($eData['min'] < 0) {
                         throw new CronException('分钟格式不合法', ErrorCode::CRON_MINUTE_ERROR);
-                    } else if ($eData['min'] >= 60) {
+                    } elseif ($eData['min'] >= 60) {
                         throw new CronException('分钟格式不合法', ErrorCode::CRON_MINUTE_ERROR);
-                    } else if ($eData['max'] < 0) {
+                    } elseif ($eData['max'] < 0) {
                         throw new CronException('分钟格式不合法', ErrorCode::CRON_MINUTE_ERROR);
-                    } else if ($eData['max'] >= 60) {
+                    } elseif ($eData['max'] >= 60) {
                         throw new CronException('分钟格式不合法', ErrorCode::CRON_MINUTE_ERROR);
-                    } else if ($eData['min'] > $eData['max']) {
+                    } elseif ($eData['min'] > $eData['max']) {
                         throw new CronException('分钟格式不合法', ErrorCode::CRON_MINUTE_ERROR);
                     }
 
-                    for ($i=$eData['min']; $i<=$eData['max']; $i++) {
+                    for ($i = $eData['min']; $i <= $eData['max']; $i++) {
                         if (($i % $minuteData['num']) == 0) {
                             $resArr[] = $i;
                         }
@@ -402,7 +439,8 @@ class CronTool {
      * @return array
      * @throws \Exception\Cron\CronException
      */
-    private static function analyseCronHour(array $hourData) {
+    private static function analyseCronHour(array $hourData)
+    {
         if (($hourData['num'] <= 0) || ($hourData['num'] > 24)) {
             throw new CronException('小时格式不合法', ErrorCode::CRON_HOUR_ERROR);
         }
@@ -432,17 +470,17 @@ class CronTool {
                 foreach ($hourData['data'] as $eData) {
                     if ($eData['min'] < 0) {
                         throw new CronException('小时格式不合法', ErrorCode::CRON_HOUR_ERROR);
-                    } else if ($eData['min'] >= 24) {
+                    } elseif ($eData['min'] >= 24) {
                         throw new CronException('小时格式不合法', ErrorCode::CRON_HOUR_ERROR);
-                    } else if ($eData['max'] < 0) {
+                    } elseif ($eData['max'] < 0) {
                         throw new CronException('小时格式不合法', ErrorCode::CRON_HOUR_ERROR);
-                    } else if ($eData['max'] >= 24) {
+                    } elseif ($eData['max'] >= 24) {
                         throw new CronException('小时格式不合法', ErrorCode::CRON_HOUR_ERROR);
-                    } else if ($eData['min'] > $eData['max']) {
+                    } elseif ($eData['min'] > $eData['max']) {
                         throw new CronException('小时格式不合法', ErrorCode::CRON_HOUR_ERROR);
                     }
 
-                    for ($i=$eData['min']; $i<=$eData['max']; $i++) {
+                    for ($i = $eData['min']; $i <= $eData['max']; $i++) {
                         if (($i % $hourData['num']) == 0) {
                             $resArr[] = $i;
                         }
@@ -466,7 +504,8 @@ class CronTool {
      * @return array
      * @throws \Exception\Cron\CronException
      */
-    private static function analyseCronDay(array $dayData) {
+    private static function analyseCronDay(array $dayData)
+    {
         if (($dayData['num'] <= 0) || ($dayData['num'] > 32)) {
             throw new CronException('日期格式不合法', ErrorCode::CRON_DAY_ERROR);
         }
@@ -496,17 +535,17 @@ class CronTool {
                 foreach ($dayData['data'] as $eData) {
                     if ($eData['min'] < 0) {
                         throw new CronException('日期格式不合法', ErrorCode::CRON_DAY_ERROR);
-                    } else if ($eData['min'] >= 32) {
+                    } elseif ($eData['min'] >= 32) {
                         throw new CronException('日期格式不合法', ErrorCode::CRON_DAY_ERROR);
-                    } else if ($eData['max'] < 0) {
+                    } elseif ($eData['max'] < 0) {
                         throw new CronException('日期格式不合法', ErrorCode::CRON_DAY_ERROR);
-                    } else if ($eData['max'] >= 32) {
+                    } elseif ($eData['max'] >= 32) {
                         throw new CronException('日期格式不合法', ErrorCode::CRON_DAY_ERROR);
-                    } else if ($eData['min'] > $eData['max']) {
+                    } elseif ($eData['min'] > $eData['max']) {
                         throw new CronException('日期格式不合法', ErrorCode::CRON_DAY_ERROR);
                     }
 
-                    for ($i=$eData['min']; $i<=$eData['max']; $i++) {
+                    for ($i = $eData['min']; $i <= $eData['max']; $i++) {
                         if (($i % $dayData['num']) == 0) {
                             $resArr[] = $i;
                         }
@@ -530,7 +569,8 @@ class CronTool {
      * @return array
      * @throws \Exception\Cron\CronException
      */
-    private static function analyseCronMonth(array $monthData) {
+    private static function analyseCronMonth(array $monthData)
+    {
         if (($monthData['num'] <= 0) || ($monthData['num'] > 12)) {
             throw new CronException('月份格式不合法', ErrorCode::CRON_MONTH_ERROR);
         }
@@ -560,17 +600,17 @@ class CronTool {
                 foreach ($monthData['data'] as $eData) {
                     if ($eData['min'] < 0) {
                         throw new CronException('月份格式不合法', ErrorCode::CRON_MONTH_ERROR);
-                    } else if ($eData['min'] >= 12) {
+                    } elseif ($eData['min'] >= 12) {
                         throw new CronException('月份格式不合法', ErrorCode::CRON_MONTH_ERROR);
-                    } else if ($eData['max'] < 0) {
+                    } elseif ($eData['max'] < 0) {
                         throw new CronException('月份格式不合法', ErrorCode::CRON_MONTH_ERROR);
-                    } else if ($eData['max'] >= 12) {
+                    } elseif ($eData['max'] >= 12) {
                         throw new CronException('月份格式不合法', ErrorCode::CRON_MONTH_ERROR);
-                    } else if ($eData['min'] > $eData['max']) {
+                    } elseif ($eData['min'] > $eData['max']) {
                         throw new CronException('月份格式不合法', ErrorCode::CRON_MONTH_ERROR);
                     }
 
-                    for ($i=$eData['min']; $i<=$eData['max']; $i++) {
+                    for ($i = $eData['min']; $i <= $eData['max']; $i++) {
                         if (($i % $monthData['num']) == 0) {
                             $resArr[] = $i;
                         }
@@ -594,7 +634,8 @@ class CronTool {
      * @return array
      * @throws \Exception\Cron\CronException
      */
-    private static function analyseCronWeek(array $weekData) {
+    private static function analyseCronWeek(array $weekData)
+    {
         if (($weekData['num'] <= 0) || ($weekData['num'] > 7)) {
             throw new CronException('星期格式不合法', ErrorCode::CRON_WEEK_ERROR);
         }
@@ -624,17 +665,17 @@ class CronTool {
                 foreach ($weekData['data'] as $eData) {
                     if ($eData['min'] < 0) {
                         throw new CronException('星期格式不合法', ErrorCode::CRON_WEEK_ERROR);
-                    } else if ($eData['min'] >= 7) {
+                    } elseif ($eData['min'] >= 7) {
                         throw new CronException('星期格式不合法', ErrorCode::CRON_WEEK_ERROR);
-                    } else if ($eData['max'] < 0) {
+                    } elseif ($eData['max'] < 0) {
                         throw new CronException('星期格式不合法', ErrorCode::CRON_WEEK_ERROR);
-                    } else if ($eData['max'] >= 7) {
+                    } elseif ($eData['max'] >= 7) {
                         throw new CronException('星期格式不合法', ErrorCode::CRON_WEEK_ERROR);
-                    } else if ($eData['min'] > $eData['max']) {
+                    } elseif ($eData['min'] > $eData['max']) {
                         throw new CronException('星期格式不合法', ErrorCode::CRON_WEEK_ERROR);
                     }
 
-                    for ($i=$eData['min']; $i<=$eData['max']; $i++) {
+                    for ($i = $eData['min']; $i <= $eData['max']; $i++) {
                         if (($i % $weekData['num']) == 0) {
                             $resArr[] = $i;
                         }
@@ -651,31 +692,5 @@ class CronTool {
         array_unique($resArr);
 
         return $resArr;
-    }
-
-    /**
-     * @param string $cron
-     * @return \Tool\Cron\CronData
-     * @throws \Exception\Cron\CronException
-     */
-    public static function analyseCron(string $cron){
-        $cronStr = preg_replace('/\s+/', '=', trim($cron));
-        if(preg_match('/^(\=(\*|\d+(\,\d+)*|\d+\-\d+(\,\d+\-\d+)*)(\/\d+){0,1}){6}$/', '=' . $cronStr) == 0){
-            throw new CronException('cron格式不合法', ErrorCode::CRON_FORMAT_ERROR);
-        }
-
-        $cronArr = explode('=', $cronStr);
-        $handleRes = self::handleCron($cronArr);
-
-        $cronData = new CronData();
-        $cronData->setCron(preg_replace('/\=/', ' ', $cronStr));
-        $cronData->setSeconds(self::analyseCronSecond($handleRes['second']));
-        $cronData->setMinutes(self::analyseCronMinute($handleRes['minute']));
-        $cronData->setHours(self::analyseCronHour($handleRes['hour']));
-        $cronData->setDays(self::analyseCronDay($handleRes['day']));
-        $cronData->setMonths(self::analyseCronMonth($handleRes['month']));
-        $cronData->setWeeks(self::analyseCronWeek($handleRes['week']));
-
-        return $cronData;
     }
 }

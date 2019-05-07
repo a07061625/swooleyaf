@@ -9,7 +9,8 @@ namespace Tool\Debug;
 
 use Traits\SimpleTrait;
 
-final class SyXDebug{
+final class SyXDebug
+{
     use SimpleTrait;
 
     /**
@@ -22,8 +23,9 @@ final class SyXDebug{
      * 开启代码覆盖分析
      * @return bool
      */
-    public static function startCoverage(){
-        if((!self::$coverageStatus) && xdebug_code_coverage_started()){
+    public static function startCoverage()
+    {
+        if ((!self::$coverageStatus) && xdebug_code_coverage_started()) {
             xdebug_start_code_coverage(XDEBUG_CC_DEAD_CODE | XDEBUG_CC_UNUSED);
             self::$coverageStatus = true;
         }
@@ -35,8 +37,9 @@ final class SyXDebug{
      * 关闭代码覆盖分析
      * @return bool
      */
-    public static function stopCoverage(){
-        if(self::$coverageStatus){
+    public static function stopCoverage()
+    {
+        if (self::$coverageStatus) {
             xdebug_stop_code_coverage();
             self::$coverageStatus = false;
         }
@@ -57,8 +60,9 @@ final class SyXDebug{
      * </pre>
      * @return array|bool
      */
-    public static function getCoverageResult(){
-        if(self::$coverageStatus){
+    public static function getCoverageResult()
+    {
+        if (self::$coverageStatus) {
             return xdebug_get_code_coverage();
         }
 

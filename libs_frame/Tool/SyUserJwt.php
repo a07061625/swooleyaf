@@ -9,7 +9,8 @@ namespace Tool;
 
 use Traits\SimpleTrait;
 
-class SyUserJwt {
+class SyUserJwt
+{
     use SimpleTrait;
 
     protected static $info = null;
@@ -19,8 +20,9 @@ class SyUserJwt {
      * @param bool $force 是否强制获取用户信息,true:是 false:否
      * @return array
      */
-    public static function getUserInfo($force=false){
-        if($force || is_null(self::$info)){
+    public static function getUserInfo($force = false)
+    {
+        if ($force || is_null(self::$info)) {
             self::$info = SySession::refreshLocalCache();
         }
 

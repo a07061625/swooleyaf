@@ -7,10 +7,13 @@
  */
 namespace Traits;
 
-trait SimpleDaoTrait {
-    private function __construct(){
+trait SimpleDaoTrait
+{
+    private function __construct()
+    {
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 }

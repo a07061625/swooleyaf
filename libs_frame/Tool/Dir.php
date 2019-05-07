@@ -9,7 +9,8 @@ namespace Tool;
 
 use Traits\SimpleTrait;
 
-class Dir {
+class Dir
+{
     use SimpleTrait;
 
     /**
@@ -17,7 +18,8 @@ class Dir {
      * @param string $dirName 目录名称
      * @return string
      */
-    public static function getDirPath(string $dirName) : string {
+    public static function getDirPath(string $dirName) : string
+    {
         $formatName = preg_replace([
             '/\s+/',
             '/\/{2,}/',
@@ -26,7 +28,7 @@ class Dir {
             '/',
         ], $dirName);
 
-        return substr($formatName, -1) == "/" ? $formatName : $formatName . "/";
+        return substr($formatName, -1) == '/' ? $formatName : $formatName . '/';
     }
 
     /**
@@ -34,7 +36,8 @@ class Dir {
      * @param string $dirName
      * @return bool
      */
-    public static function del(string $dirName) : bool {
+    public static function del(string $dirName) : bool
+    {
         if (is_file($dirName)) {
             unlink($dirName);
             return true;
@@ -45,7 +48,7 @@ class Dir {
             return true;
         }
 
-        foreach (glob($dirPath . "*") as $eFile) {
+        foreach (glob($dirPath . '*') as $eFile) {
             is_dir($eFile) ? self::del($eFile) : unlink($eFile);
         }
 
@@ -58,11 +61,12 @@ class Dir {
      * @param int $auth 权限
      * @return bool
      */
-    public static function create(string $dirName, $auth=0755) : bool {
+    public static function create(string $dirName, $auth = 0755) : bool
+    {
         $dirPath = self::getDirPath($dirName);
         if (is_dir($dirPath)) {
             return true;
-        } else if(is_file($dirPath)){
+        } elseif (is_file($dirPath)) {
             return false;
         } else {
             return mkdir($dirPath, $auth, true);
