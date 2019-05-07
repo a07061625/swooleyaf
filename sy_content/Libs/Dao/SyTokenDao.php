@@ -14,15 +14,17 @@ use ProjectCache\SyToken;
 use Tool\Tool;
 use Traits\SimpleDaoTrait;
 
-class SyTokenDao {
+class SyTokenDao
+{
     use SimpleDaoTrait;
 
-    public static function addTokenByStation(array $data){
+    public static function addTokenByStation(array $data)
+    {
         $tokenBase = SyBaseMysqlFactory::SyTokenBaseEntity();
         $ormResult1 = $tokenBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['tag']]);
         $tokenInfo = $tokenBase->getContainer()->getModel()->findOne($ormResult1);
-        if(!empty($tokenInfo)){
+        if (!empty($tokenInfo)) {
             throw new CheckException('令牌标识已存在', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -41,12 +43,13 @@ class SyTokenDao {
         ];
     }
 
-    public static function editTokenByStation(array $data){
+    public static function editTokenByStation(array $data)
+    {
         $tokenBase = SyBaseMysqlFactory::SyTokenBaseEntity();
         $ormResult1 = $tokenBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['tag']]);
         $tokenInfo = $tokenBase->getContainer()->getModel()->findOne($ormResult1);
-        if(empty($tokenInfo)){
+        if (empty($tokenInfo)) {
             throw new CheckException('令牌信息不存在', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -64,20 +67,22 @@ class SyTokenDao {
         ];
     }
 
-    public static function getTokenInfoByStation(array $data){
+    public static function getTokenInfoByStation(array $data)
+    {
         $tokenBase = SyBaseMysqlFactory::SyTokenBaseEntity();
         $ormResult1 = $tokenBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['tag']]);
         $tokenInfo = $tokenBase->getContainer()->getModel()->findOne($ormResult1);
         unset($ormResult1, $tokenBase);
-        if(empty($tokenInfo)){
+        if (empty($tokenInfo)) {
             throw new CheckException('令牌信息不存在', ErrorCode::COMMON_PARAM_ERROR);
         }
 
         return $tokenInfo;
     }
 
-    public static function getTokenListByStation(array $data){
+    public static function getTokenListByStation(array $data)
+    {
         $tokenBase = SyBaseMysqlFactory::SyTokenBaseEntity();
         $ormResult1 = $tokenBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->order('`id` DESC');

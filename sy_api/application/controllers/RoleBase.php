@@ -5,15 +5,18 @@
  * Date: 2018/6/23 0023
  * Time: 9:19
  */
-class RoleBaseController extends CommonController {
-    public function init() {
+class RoleBaseController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
     /**
      * 总站添加角色
      */
-    public function addRoleByStationAction(){
+    public function addRoleByStationAction()
+    {
         $data = $_POST;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $addRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/addRoleByStation', $data);
@@ -23,7 +26,8 @@ class RoleBaseController extends CommonController {
     /**
      * 总站修改角色
      */
-    public function editRoleByStationAction(){
+    public function editRoleByStationAction()
+    {
         $data = $_POST;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $editRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/editRoleByStation', $data);
@@ -33,7 +37,8 @@ class RoleBaseController extends CommonController {
     /**
      * 总站获取角色信息
      */
-    public function getRoleInfoByStationAction(){
+    public function getRoleInfoByStationAction()
+    {
         $data = $_GET;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/getRoleInfoByStation', $data);
@@ -43,7 +48,8 @@ class RoleBaseController extends CommonController {
     /**
      * 总站获取角色列表
      */
-    public function getRoleListByStationAction(){
+    public function getRoleListByStationAction()
+    {
         $data = $_GET;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/getRoleListByStation', $data);
@@ -53,7 +59,8 @@ class RoleBaseController extends CommonController {
     /**
      * 前端获取角色列表
      */
-    public function getRoleListByFrontAction(){
+    public function getRoleListByFrontAction()
+    {
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/getRoleListByFront', $_GET);
         $this->sendRsp($getRes);
     }

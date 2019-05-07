@@ -5,8 +5,10 @@
  * Date: 2018/7/17 0017
  * Time: 11:06
  */
-class WxOpenMiniController extends CommonController {
-    public function init(){
+class WxOpenMiniController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
@@ -20,7 +22,8 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getDraftCodeListAction(){
+    public function getDraftCodeListAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $getRes = \Dao\WxOpenMiniDao::getDraftCodeList([]);
@@ -38,7 +41,8 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getTemplateCodeListAction(){
+    public function getTemplateCodeListAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $getRes = \Dao\WxOpenMiniDao::getTemplateCodeList([]);
@@ -58,7 +62,8 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function addTemplateCodeAction(){
+    public function addTemplateCodeAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $needParams = [
@@ -81,7 +86,8 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function delTemplateCodeAction(){
+    public function delTemplateCodeAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $needParams = [
@@ -108,15 +114,16 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function modifyServerDomainAction(){
+    public function modifyServerDomainAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $domainStr = trim(\Request\SyRequest::getParams('domains', ''));
         $domainArr = strlen($domainStr) > 0 ? \Tool\Tool::jsonDecode($domainStr) : [];
         $actionType = (string)\Request\SyRequest::getParams('action_type');
-        if(!in_array($actionType, ['add','delete','set','get'])){
+        if (!in_array($actionType, ['add','delete','set','get'], true)) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '操作类型不支持');
-        } else if(($actionType != 'get') && empty($domainArr)){
+        } elseif (($actionType != 'get') && empty($domainArr)) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '域名不能为空');
         } else {
             $needParams = [
@@ -147,15 +154,16 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function setWebViewDomainAction(){
+    public function setWebViewDomainAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $domainStr = trim(\Request\SyRequest::getParams('domains', ''));
         $domainArr = strlen($domainStr) > 0 ? \Tool\Tool::jsonDecode($domainStr) : [];
         $actionType = (string)\Request\SyRequest::getParams('action_type');
-        if(!in_array($actionType, ['add','delete','set','get'])){
+        if (!in_array($actionType, ['add','delete','set','get'], true)) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '操作类型不支持');
-        } else if(($actionType != 'get') && empty($domainArr)){
+        } elseif (($actionType != 'get') && empty($domainArr)) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '域名不能为空');
         } else {
             $needParams = [
@@ -182,7 +190,8 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getMiniCategoryListAction(){
+    public function getMiniCategoryListAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $needParams = [
@@ -205,7 +214,8 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getMiniPageConfigAction(){
+    public function getMiniPageConfigAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $needParams = [
@@ -236,11 +246,12 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function uploadMiniCodeAction(){
+    public function uploadMiniCodeAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $extData = \Tool\Tool::jsonDecode(\Request\SyRequest::getParams('ext_json'));
-        if(empty($extData)){
+        if (empty($extData)) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '自定义配置不能为空');
         } else {
             $needParams = [
@@ -271,11 +282,12 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function auditMiniCodeAction(){
+    public function auditMiniCodeAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $auditItems = \Tool\Tool::jsonDecode(\Request\SyRequest::getParams('audit_items'));
-        if(empty($auditItems)){
+        if (empty($auditItems)) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '审核列表不能为空');
         } else {
             $needParams = [
@@ -303,7 +315,8 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function refreshMiniCodeAuditResultAction(){
+    public function refreshMiniCodeAuditResultAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $needParams = [
@@ -327,7 +340,8 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function releaseMiniCodeAction(){
+    public function releaseMiniCodeAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $needParams = [
@@ -352,12 +366,13 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function autoUploadMiniCodeAction(){
+    public function autoUploadMiniCodeAction()
+    {
         $templateId = trim(\Request\SyRequest::getParams('template_id'));
         $preRes = \Dao\WxOpenMiniDao::preUploadMiniCode([
             'template_id' => $templateId,
         ]);
-        if(strlen($preRes['app_id']) == 0){
+        if (strlen($preRes['app_id']) == 0) {
             $this->SyResult->setData([
                 'msg' => '上传代码成功',
             ]);
@@ -391,9 +406,10 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function autoAuditMiniCodeAction(){
+    public function autoAuditMiniCodeAction()
+    {
         $preRes = \Dao\WxOpenMiniDao::preAuditMiniCode([]);
-        if(strlen($preRes['app_id']) == 0){
+        if (strlen($preRes['app_id']) == 0) {
             $this->SyResult->setData([
                 'msg' => '提交审核成功',
             ]);
@@ -417,9 +433,10 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function autoRefreshMiniCodeAuditResultAction(){
+    public function autoRefreshMiniCodeAuditResultAction()
+    {
         $preRes = \Dao\WxOpenMiniDao::preRefreshMiniCodeAuditResult([]);
-        if(strlen($preRes['app_id']) == 0){
+        if (strlen($preRes['app_id']) == 0) {
             $this->SyResult->setData([
                 'msg' => '更新审核结果成功',
             ]);
@@ -443,9 +460,10 @@ class WxOpenMiniController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function autoReleaseMiniCodeAction(){
+    public function autoReleaseMiniCodeAction()
+    {
         $preRes = \Dao\WxOpenMiniDao::preReleaseMiniCode([]);
-        if(strlen($preRes['app_id']) == 0){
+        if (strlen($preRes['app_id']) == 0) {
             $this->SyResult->setData([
                 'msg' => '发布代码成功',
             ]);

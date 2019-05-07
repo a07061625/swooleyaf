@@ -5,15 +5,18 @@
  * Date: 19-2-19
  * Time: 下午10:58
  */
-class SyTokenController extends CommonController {
-    public function init(){
+class SyTokenController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
     /**
      * 总站添加令牌
      */
-    public function addTokenByStationAction(){
+    public function addTokenByStationAction()
+    {
         $data = $_POST;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $addRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/SyToken/addTokenByStation', $data);
@@ -23,7 +26,8 @@ class SyTokenController extends CommonController {
     /**
      * 总站修改令牌
      */
-    public function editTokenByStationAction(){
+    public function editTokenByStationAction()
+    {
         $data = $_POST;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $editRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/SyToken/editTokenByStation', $data);
@@ -33,7 +37,8 @@ class SyTokenController extends CommonController {
     /**
      * 总站获取令牌信息
      */
-    public function getTokenInfoByStationAction(){
+    public function getTokenInfoByStationAction()
+    {
         $data = $_GET;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/SyToken/getTokenInfoByStation', $data);
@@ -43,7 +48,8 @@ class SyTokenController extends CommonController {
     /**
      * 总站获取令牌列表
      */
-    public function getTokenListByStationAction(){
+    public function getTokenListByStationAction()
+    {
         $data = $_GET;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/SyToken/getTokenListByStation', $data);
@@ -60,7 +66,8 @@ class SyTokenController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getTokenInfoByFrontAction(){
+    public function getTokenInfoByFrontAction()
+    {
         $tag = (string)\Request\SyRequest::getParams('tag');
         $tokenInfo = \ProjectCache\SyToken::getTokenData($tag);
         $this->SyResult->setData($tokenInfo);

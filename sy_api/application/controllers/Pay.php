@@ -5,15 +5,18 @@
  * Date: 17-4-19
  * Time: 下午1:55
  */
-class PayController extends CommonController {
-    public function init() {
+class PayController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
     /**
      * 发起支付申请
      */
-    public function applyPayAction() {
+    public function applyPayAction()
+    {
         $allParams = \Request\SyRequest::getParams();
         $allParams['session_id'] = \Tool\SySession::getSessionId();
         $applyRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/applyPay', $allParams);
@@ -27,14 +30,15 @@ class PayController extends CommonController {
      * @apiGroup Pay
      * @SyFilter-{"field": "_ignoresign","explain": "签名标识","type": "string","rules": {"min": 0}}
      */
-    public function handleWxPayNotifyAction() {
+    public function handleWxPayNotifyAction()
+    {
         $wxMsg = \Tool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
         \Log\Log::log('wx pay data:' . $wxMsg);
         $xmlData = \Tool\Tool::xmlToArray($wxMsg);
         if (Wx\WxUtilShop::checkSign($xmlData, $xmlData['appid'])) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleWxPayNotify', $xmlData);
             $handleData = \Tool\Tool::jsonDecode($handleRes);
-            if(is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \Constant\ErrorCode::COMMON_SUCCESS)){
+            if (is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \Constant\ErrorCode::COMMON_SUCCESS)) {
                 $error = '';
             } else {
                 $error = '处理失败';
@@ -60,7 +64,8 @@ class PayController extends CommonController {
      * @apiGroup Pay
      * @SyFilter-{"field": "_ignoresign","explain": "签名标识","type": "string","rules": {"min": 0}}
      */
-    public function handleWxPrePayNotifyAction() {
+    public function handleWxPrePayNotifyAction()
+    {
         $wxMsg = \Tool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
         \Log\Log::log('wx pre pay data:' . $wxMsg);
         $xmlData = \Tool\Tool::xmlToArray($wxMsg);
@@ -90,14 +95,15 @@ class PayController extends CommonController {
      * @apiSuccessExample fail:
      *     fail
      */
-    public function handleAliPayNotifyAction() {
+    public function handleAliPayNotifyAction()
+    {
         $resultMsg = 'fail';
         $allParams = \Request\SyRequest::getParams();
         \Log\Log::log('ali pay data:' . \Tool\Tool::jsonEncode($allParams, JSON_UNESCAPED_UNICODE));
-        if(AliPay\AliPayUtilBase::verifyData($allParams, '2', 'RSA2')){
+        if (AliPay\AliPayUtilBase::verifyData($allParams, '2', 'RSA2')) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleAliPayNotify', $allParams);
             $handleData = \Tool\Tool::jsonDecode($handleRes);
-            if(is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \Constant\ErrorCode::COMMON_SUCCESS)){
+            if (is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \Constant\ErrorCode::COMMON_SUCCESS)) {
                 $resultMsg = 'success';
             }
         }
@@ -123,7 +129,8 @@ class PayController extends CommonController {
      * @apiSuccessExample fail:
      *     跳转地址不正确
      */
-    public function handleAliWebRedirectAction() {
+    public function handleAliWebRedirectAction()
+    {
         $expireTime = \Tool\Tool::getNowTime() + 604800;
         $sessionId = \Tool\SySession::getSessionId();
         $redirectUrl = \Request\SyRequest::getParams('url');
@@ -145,14 +152,15 @@ class PayController extends CommonController {
      * @apiSuccessExample fail:
      *     fail
      */
-    public function handleAliRefundNotifyAction() {
+    public function handleAliRefundNotifyAction()
+    {
         $resultMsg = 'fail';
         $allParams = \Request\SyRequest::getParams();
         \Log\Log::log('ali refund data:' . \Tool\Tool::jsonEncode($allParams, JSON_UNESCAPED_UNICODE));
-        if(AliPay\AliPayUtilBase::verifyData($allParams, '2', 'RSA2')){
+        if (AliPay\AliPayUtilBase::verifyData($allParams, '2', 'RSA2')) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleAliRefundNotify', $allParams);
             $handleData = \Tool\Tool::jsonDecode($handleRes);
-            if(is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \Constant\ErrorCode::COMMON_SUCCESS)){
+            if (is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \Constant\ErrorCode::COMMON_SUCCESS)) {
                 $resultMsg = 'success';
             }
         }

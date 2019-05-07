@@ -5,8 +5,10 @@
  * Date: 17-4-5
  * Time: 下午8:34
  */
-class CommonController extends \SyFrame\BaseController {
-    public function init() {
+class CommonController extends \SyFrame\BaseController
+{
+    public function init()
+    {
         parent::init();
     }
 }

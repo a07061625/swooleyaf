@@ -5,8 +5,10 @@
  * Date: 17-4-19
  * Time: 下午4:56
  */
-class LoginController extends CommonController {
-    public function init() {
+class LoginController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
@@ -36,7 +38,8 @@ class LoginController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function loginAction() {
+    public function loginAction()
+    {
         $needParams = [
             'login_type' => (string)\Request\SyRequest::getParams('login_type'),
         ];

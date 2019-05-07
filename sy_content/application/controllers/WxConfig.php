@@ -1,6 +1,8 @@
 <?php
-class WxConfigController extends CommonController {
-    public function init() {
+class WxConfigController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
@@ -30,7 +32,8 @@ class WxConfigController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function setConfigAction() {
+    public function setConfigAction()
+    {
         \Tool\SyUser::checkLogin();
 
         $templateStr = trim(\Request\SyRequest::getParams('app_templates', ''));
@@ -88,7 +91,8 @@ class WxConfigController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function refreshSslCompanyBankAction() {
+    public function refreshSslCompanyBankAction()
+    {
         \Tool\SyUser::checkLogin();
 
         $needParams = [

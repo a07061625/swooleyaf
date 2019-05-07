@@ -1,8 +1,10 @@
 <?php
-class WxOpenController extends CommonController {
+class WxOpenController extends CommonController
+{
     public $signStatus = false;
 
-    public function init() {
+    public function init()
+    {
         parent::init();
         $this->signStatus = false;
     }
@@ -10,7 +12,8 @@ class WxOpenController extends CommonController {
     /**
      * 处理微信服务器消息通知
      */
-    public function handleWxNotifyAction() {
+    public function handleWxNotifyAction()
+    {
         $data = \Request\SyRequest::getParams();
         $data['wx_xml'] = \Tool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
         $handleRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpen/handleWxNotify', $data);
@@ -25,7 +28,8 @@ class WxOpenController extends CommonController {
     /**
      * 处理授权者公众号消息
      */
-    public function handleAuthorizerNotifyAction() {
+    public function handleAuthorizerNotifyAction()
+    {
         $data = \Request\SyRequest::getParams();
         $data['wx_xml'] = \Tool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
         $handleRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpen/handleAuthorizerNotify', $data);
@@ -45,11 +49,12 @@ class WxOpenController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getComponentAuthUrlAction() {
+    public function getComponentAuthUrlAction()
+    {
         $authorizerUrl = new \Wx\OpenCommon\AuthorizerUrl();
         $detail = $authorizerUrl->getDetail();
         unset($authorizerUrl);
-        if(strlen($detail['url']) > 0){
+        if (strlen($detail['url']) > 0) {
             $this->SyResult->setData($detail);
         } else {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '获取授权地址失败');

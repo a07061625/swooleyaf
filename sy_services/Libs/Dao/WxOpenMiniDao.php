@@ -26,37 +26,41 @@ use Wx\OpenMini\TemplateCodeDelete;
 use Wx\OpenMini\TemplateCodeList;
 use Wx\OpenMini\WebViewDomain;
 
-class WxOpenMiniDao {
+class WxOpenMiniDao
+{
     use SimpleDaoTrait;
 
-    public static function getDraftCodeList(array $data){
+    public static function getDraftCodeList(array $data)
+    {
         $draftCodeList = new DraftCodeList();
         $codeList = $draftCodeList->getDetail();
         unset($draftCodeList);
-        if($codeList['code'] > 0){
+        if ($codeList['code'] > 0) {
             throw new CheckException($codeList['message'], $codeList['code']);
         }
 
         return $codeList['data']['draft_list'];
     }
 
-    public static function getTemplateCodeList(array $data){
+    public static function getTemplateCodeList(array $data)
+    {
         $templateCodeList = new TemplateCodeList();
         $codeList = $templateCodeList->getDetail();
         unset($templateCodeList);
-        if($codeList['code'] > 0){
+        if ($codeList['code'] > 0) {
             throw new CheckException($codeList['message'], $codeList['code']);
         }
 
         return $codeList['data']['template_list'];
     }
 
-    public static function addTemplateCode(array $data){
+    public static function addTemplateCode(array $data)
+    {
         $templateCodeAdd = new TemplateCodeAdd();
         $templateCodeAdd->setDraftId($data['draft_id']);
         $addRes = $templateCodeAdd->getDetail();
         unset($templateCodeAdd);
-        if($addRes['code'] > 0){
+        if ($addRes['code'] > 0) {
             throw new CheckException($addRes['message'], $addRes['code']);
         }
 
@@ -65,12 +69,13 @@ class WxOpenMiniDao {
         ];
     }
 
-    public static function delTemplateCode(array $data){
+    public static function delTemplateCode(array $data)
+    {
         $templateCodeDelete = new TemplateCodeDelete();
         $templateCodeDelete->setTemplateId($data['template_id']);
         $delRes = $templateCodeDelete->getDetail();
         unset($templateCodeDelete);
-        if($delRes['code'] > 0){
+        if ($delRes['code'] > 0) {
             throw new CheckException($delRes['message'], $delRes['code']);
         }
 
@@ -79,53 +84,58 @@ class WxOpenMiniDao {
         ];
     }
 
-    public static function modifyServerDomain(array $data){
+    public static function modifyServerDomain(array $data)
+    {
         $serverDomain = new ServerDomain($data['wxmini_appid']);
         $serverDomain->setModifyData($data['action_type'], $data['domains']);
         $modifyRes = $serverDomain->getDetail();
         unset($serverDomain);
-        if($modifyRes['code'] > 0){
+        if ($modifyRes['code'] > 0) {
             throw new CheckException($modifyRes['message'], $modifyRes['code']);
         }
 
         return $modifyRes['data'];
     }
 
-    public static function setWebViewDomain(array $data){
+    public static function setWebViewDomain(array $data)
+    {
         $webViewDomain = new WebViewDomain($data['wxmini_appid']);
         $webViewDomain->setData($data['action_type'], $data['domains']);
         $setRes = $webViewDomain->getDetail();
         unset($webViewDomain);
-        if($setRes['code'] > 0){
+        if ($setRes['code'] > 0) {
             throw new CheckException($setRes['message'], $setRes['code']);
         }
 
         return $setRes['data'];
     }
 
-    public static function getMiniCategoryList(array $data){
+    public static function getMiniCategoryList(array $data)
+    {
         $categoryGet = new CategoryGet($data['wxmini_appid']);
         $getRes = $categoryGet->getDetail();
         unset($categoryGet);
-        if($getRes['code'] > 0){
+        if ($getRes['code'] > 0) {
             throw new CheckException($getRes['message'], $getRes['code']);
         }
 
         return $getRes['data']['category_list'];
     }
 
-    public static function getMiniPageConfig(array $data){
+    public static function getMiniPageConfig(array $data)
+    {
         $pageGet = new PageGet($data['wxmini_appid']);
         $getRes = $pageGet->getDetail();
         unset($pageGet);
-        if($getRes['code'] > 0){
+        if ($getRes['code'] > 0) {
             throw new CheckException($getRes['message'], $getRes['code']);
         }
 
         return $getRes['data']['page_list'];
     }
 
-    public static function uploadMiniCode(array $data){
+    public static function uploadMiniCode(array $data)
+    {
         $codeUpload = new CodeUpload($data['wxmini_appid']);
         $codeUpload->setTemplateId($data['template_id']);
         $codeUpload->setExtData($data['ext_json']);
@@ -133,7 +143,7 @@ class WxOpenMiniDao {
         $codeUpload->setUserDesc($data['user_desc']);
         $uploadRes = $codeUpload->getDetail();
         unset($codeUpload);
-        if($uploadRes['code'] > 0){
+        if ($uploadRes['code'] > 0) {
             throw new CheckException($uploadRes['message'], $uploadRes['code']);
         }
 
@@ -155,14 +165,15 @@ class WxOpenMiniDao {
         ];
     }
 
-    public static function auditMiniCode(array $data){
+    public static function auditMiniCode(array $data)
+    {
         $wxMiniConfig = SyBaseMysqlFactory::WxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`app_id`=?', [$data['wxmini_appid']]);
         $wxInfo = $wxMiniConfig->getContainer()->getModel()->findOne($ormResult1);
-        if(empty($wxInfo)){
+        if (empty($wxInfo)) {
             throw new CheckException('微信信息不存在', ErrorCode::COMMON_PARAM_ERROR);
-        } else if($wxInfo['option_status'] != Project::WXMINI_OPTION_STATUS_UPLOADED){
+        } elseif ($wxInfo['option_status'] != Project::WXMINI_OPTION_STATUS_UPLOADED) {
             throw new CheckException('未上传代码', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -170,7 +181,7 @@ class WxOpenMiniDao {
         $codeAudit->setAuditList($data['audit_items']);
         $auditRes = $codeAudit->getDetail();
         unset($codeAudit);
-        if($auditRes['code'] > 0){
+        if ($auditRes['code'] > 0) {
             throw new CheckException($auditRes['message'], $auditRes['code']);
         }
 
@@ -190,18 +201,19 @@ class WxOpenMiniDao {
         ];
     }
 
-    public static function refreshMiniCodeAuditResult(array $data){
+    public static function refreshMiniCodeAuditResult(array $data)
+    {
         $wxMiniConfig = SyBaseMysqlFactory::WxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`app_id`=?', [$data['wxmini_appid']]);
         $wxInfo = $wxMiniConfig->getContainer()->getModel()->findOne($ormResult1);
-        if(empty($wxInfo)){
+        if (empty($wxInfo)) {
             throw new CheckException('微信信息不存在', ErrorCode::COMMON_PARAM_ERROR);
-        } else if($wxInfo['audit_id'] != $data['audit_id']){
+        } elseif ($wxInfo['audit_id'] != $data['audit_id']) {
             throw new CheckException('微信appid和审核ID不匹配', ErrorCode::COMMON_PARAM_ERROR);
-        } else if(!in_array($wxInfo['audit_status'], [Project::WXMINI_AUDIT_STATUS_UNDO, Project::WXMINI_AUDIT_STATUS_HANDING,])){
+        } elseif (!in_array($wxInfo['audit_status'], [Project::WXMINI_AUDIT_STATUS_UNDO, Project::WXMINI_AUDIT_STATUS_HANDING,], true)) {
             throw new CheckException('审核状态不支持', ErrorCode::COMMON_PARAM_ERROR);
-        } else if(in_array($wxInfo['audit_status'], [Project::WXMINI_AUDIT_STATUS_SUCCESS, Project::WXMINI_AUDIT_STATUS_FAIL,])){
+        } elseif (in_array($wxInfo['audit_status'], [Project::WXMINI_AUDIT_STATUS_SUCCESS, Project::WXMINI_AUDIT_STATUS_FAIL,], true)) {
             return [
                 'audit_status' => $wxInfo['audit_status'],
                 'audit_desc' => $wxInfo['audit_desc'],
@@ -213,27 +225,27 @@ class WxOpenMiniDao {
         $codeAuditStatus->setAuditId($data['audit_id']);
         $getRes = $codeAuditStatus->getDetail();
         unset($codeAuditStatus);
-        if($getRes['code'] > 0){
+        if ($getRes['code'] > 0) {
             throw new CheckException($getRes['message'], $getRes['code']);
         }
 
         $ormResult2 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult2->where('`app_id`=? AND `audit_status`=?', [$data['wxmini_appid'], $wxInfo['audit_status'],]);
-        if($getRes['data']['status'] == Project::WXMINI_AUDIT_STATUS_FAIL){
+        if ($getRes['data']['status'] == Project::WXMINI_AUDIT_STATUS_FAIL) {
             $wxMiniConfig->getContainer()->getModel()->update($ormResult2, [
                 'audit_status' => Project::WXMINI_AUDIT_STATUS_FAIL,
                 'audit_desc' => $getRes['data']['reason'],
                 'option_status' => Project::WXMINI_OPTION_STATUS_AUDIT_FAIL,
                 'updated' => Tool::getNowTime(),
             ]);
-        } else if($getRes['data']['status'] == Project::WXMINI_AUDIT_STATUS_SUCCESS){
+        } elseif ($getRes['data']['status'] == Project::WXMINI_AUDIT_STATUS_SUCCESS) {
             $wxMiniConfig->getContainer()->getModel()->update($ormResult2, [
                 'audit_status' => Project::WXMINI_AUDIT_STATUS_SUCCESS,
                 'audit_desc' => '',
                 'option_status' => Project::WXMINI_OPTION_STATUS_AUDIT_SUCCESS,
                 'updated' => Tool::getNowTime(),
             ]);
-        } else if($wxInfo['audit_status'] == Project::WXMINI_AUDIT_STATUS_UNDO){
+        } elseif ($wxInfo['audit_status'] == Project::WXMINI_AUDIT_STATUS_UNDO) {
             $wxMiniConfig->getContainer()->getModel()->update($ormResult2, [
                 'audit_id' => '',
                 'audit_status' => Project::WXMINI_AUDIT_STATUS_HANDING,
@@ -251,24 +263,24 @@ class WxOpenMiniDao {
         ];
     }
 
-    public static function releaseMiniCode(array $data){
+    public static function releaseMiniCode(array $data)
+    {
         $wxMiniConfig = SyBaseMysqlFactory::WxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`app_id`=?', [$data['wxmini_appid']]);
         $wxInfo = $wxMiniConfig->getContainer()->getModel()->findOne($ormResult1);
-        if(empty($wxInfo)){
+        if (empty($wxInfo)) {
             throw new CheckException('微信信息不存在', ErrorCode::COMMON_PARAM_ERROR);
-        } else if($wxInfo['option_status'] != Project::WXMINI_OPTION_STATUS_AUDIT_SUCCESS){
+        } elseif ($wxInfo['option_status'] != Project::WXMINI_OPTION_STATUS_AUDIT_SUCCESS) {
             throw new CheckException('只有审核成功才允许发布', ErrorCode::COMMON_PARAM_ERROR);
         }
 
         $codeRelease = new CodeRelease($data['wxmini_appid']);
         $releaseRes = $codeRelease->getDetail();
         unset($codeRelease);
-        if(($releaseRes['code'] > 0) && (strpos($releaseRes['message'], 'app is already released') === false)){
+        if (($releaseRes['code'] > 0) && (strpos($releaseRes['message'], 'app is already released') === false)) {
             throw new CheckException($releaseRes['message'], $releaseRes['code']);
         }
-
 
         $ormResult2 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult2->where('`app_id`=? AND `option_status`=?', [$data['wxmini_appid'], Project::WXMINI_OPTION_STATUS_AUDIT_SUCCESS,]);
@@ -284,7 +296,8 @@ class WxOpenMiniDao {
         ];
     }
 
-    public static function preUploadMiniCode(array $data){
+    public static function preUploadMiniCode(array $data)
+    {
         $resArr = [
             'app_id' => '',
         ];
@@ -294,7 +307,7 @@ class WxOpenMiniDao {
         $ormResult1->where('`status`=? AND `wtype`=? AND `latest_code`<>?', [Project::WX_CONFIG_STATUS_ENABLE, Project::WXMINI_TYPE_SHOP_MINI, $data['template_id'],])
                    ->order('`id` ASC');
         $wxInfo = $wxMiniConfig->getContainer()->getModel()->findOne($ormResult1);
-        if(!empty($wxInfo)){
+        if (!empty($wxInfo)) {
             $resArr['app_id'] = $wxInfo['app_id'];
         }
         unset($ormResult1, $wxMiniConfig);
@@ -302,17 +315,18 @@ class WxOpenMiniDao {
         return $resArr;
     }
 
-    public static function preAuditMiniCode(array $data){
+    public static function preAuditMiniCode(array $data)
+    {
         $resArr = [
             'app_id' => '',
         ];
 
-        $wxMiniConfig = SyBaseMysqlFactory::WxconfigMiniEntity();;
+        $wxMiniConfig = SyBaseMysqlFactory::WxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`wtype`=? AND `status`=? AND `option_status`=?', [Project::WXMINI_TYPE_SHOP_MINI, Project::WX_CONFIG_STATUS_ENABLE, Project::WXMINI_OPTION_STATUS_UPLOADED,])
                    ->order('`id` ASC');
         $wxInfo = $wxMiniConfig->getContainer()->getModel()->findOne($ormResult1);
-        if(empty($wxInfo)){
+        if (empty($wxInfo)) {
             unset($ormResult1, $wxMiniConfig);
             return $resArr;
         }
@@ -321,9 +335,9 @@ class WxOpenMiniDao {
         $categoryGet = new CategoryGet($wxInfo['app_id']);
         $getRes = $categoryGet->getDetail();
         unset($categoryGet);
-        if($getRes['code'] > 0){
+        if ($getRes['code'] > 0) {
             throw new CheckException($getRes['message'], $getRes['code']);
-        } else if(empty($getRes['data']['category_list'])){
+        } elseif (empty($getRes['data']['category_list'])) {
             throw new CheckException('可选类目为空', ErrorCode::COMMON_PARAM_ERROR);
         }
         unset($ormResult1, $bindWx);
@@ -337,7 +351,8 @@ class WxOpenMiniDao {
         return $resArr;
     }
 
-    public static function preRefreshMiniCodeAuditResult(array $data){
+    public static function preRefreshMiniCodeAuditResult(array $data)
+    {
         $resArr = [
             'app_id' => '',
         ];
@@ -348,7 +363,7 @@ class WxOpenMiniDao {
                    ->order('`id` ASC');
         $wxInfo = $wxMiniConfig->getContainer()->getModel()->findOne($ormResult1);
         unset($ormResult1, $wxMiniConfig);
-        if(!empty($wxInfo)){
+        if (!empty($wxInfo)) {
             $resArr['app_id'] = $wxInfo['app_id'];
             $resArr['audit_id'] = $wxInfo['audit_id'];
         }
@@ -356,7 +371,8 @@ class WxOpenMiniDao {
         return $resArr;
     }
 
-    public static function preReleaseMiniCode(array $data){
+    public static function preReleaseMiniCode(array $data)
+    {
         $resArr = [
             'app_id' => '',
         ];
@@ -367,7 +383,7 @@ class WxOpenMiniDao {
                    ->order('`id` ASC');
         $wxInfo = $wxMiniConfig->getContainer()->getModel()->findOne($ormResult1);
         unset($ormResult1, $wxMiniConfig);
-        if(!empty($wxInfo)){
+        if (!empty($wxInfo)) {
             $resArr['app_id'] = $wxInfo['app_id'];
         }
 

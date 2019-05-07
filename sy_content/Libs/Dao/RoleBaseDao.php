@@ -15,15 +15,17 @@ use ProjectCache\Role;
 use Tool\Tool;
 use Traits\SimpleDaoTrait;
 
-class RoleBaseDao {
+class RoleBaseDao
+{
     use SimpleDaoTrait;
 
-    public static function addRoleByStation(array $data){
+    public static function addRoleByStation(array $data)
+    {
         $roleBase = SyBaseMysqlFactory::RoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['tag']]);
         $roleBaseInfo = $roleBase->getContainer()->getModel()->findOne($ormResult1);
-        if(!empty($roleBaseInfo)){
+        if (!empty($roleBaseInfo)) {
             throw new CheckException('标识已存在', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -34,7 +36,7 @@ class RoleBaseDao {
         $roleBase->created = $nowTime;
         $roleBase->updated = $nowTime;
         $roleId = $roleBase->getContainer()->getModel()->insert($roleBase->getEntityDataArray());
-        if(!$roleId){
+        if (!$roleId) {
             throw new CheckException('添加角色失败', ErrorCode::COMMON_SERVER_ERROR);
         }
         unset($ormResult1, $roleBase);
@@ -44,12 +46,13 @@ class RoleBaseDao {
         ];
     }
 
-    public static function editRoleByStation(array $data){
+    public static function editRoleByStation(array $data)
+    {
         $roleBase = SyBaseMysqlFactory::RoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['tag']]);
         $roleBaseInfo = $roleBase->getContainer()->getModel()->findOne($ormResult1);
-        if(empty($roleBaseInfo)){
+        if (empty($roleBaseInfo)) {
             throw new CheckException('角色信息不存在', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -66,12 +69,13 @@ class RoleBaseDao {
         ];
     }
 
-    public static function getRoleInfoByStation(array $data){
+    public static function getRoleInfoByStation(array $data)
+    {
         $roleBase = SyBaseMysqlFactory::RoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['role_tag']]);
         $roleBaseInfo = $roleBase->getContainer()->getModel()->findOne($ormResult1);
-        if(empty($roleBaseInfo)){
+        if (empty($roleBaseInfo)) {
             throw new CheckException('角色信息不存在', ErrorCode::COMMON_PARAM_ERROR);
         }
         $roleBaseInfo['total_status'] = Project::$totalRoleStatus;
@@ -80,10 +84,11 @@ class RoleBaseDao {
         return $roleBaseInfo;
     }
 
-    public static function getRoleListByStation(array $data){
+    public static function getRoleListByStation(array $data)
+    {
         $roleBase = SyBaseMysqlFactory::RoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
-        if($data['role_status'] > -2){
+        if ($data['role_status'] > -2) {
             $ormResult1->where('`status`=?', [$data['role_status']]);
         } else {
             $ormResult1->where('status', array_keys(Project::$totalRoleStatus));
@@ -96,7 +101,8 @@ class RoleBaseDao {
         return $roleList;
     }
 
-    public static function getRoleListByFront(array $data){
+    public static function getRoleListByFront(array $data)
+    {
         $roleBase = SyBaseMysqlFactory::RoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`status`=?', [Project::ROLE_STATUS_VALID])

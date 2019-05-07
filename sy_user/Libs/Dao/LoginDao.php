@@ -13,7 +13,8 @@ use Exception\Common\CheckException;
 use Tool\Tool;
 use Traits\SimpleDaoTrait;
 
-class LoginDao {
+class LoginDao
+{
     use SimpleDaoTrait;
 
     private static $loginMap = [
@@ -26,7 +27,8 @@ class LoginDao {
         Project::LOGIN_TYPE_WX_SCAN => '\DesignPatterns\Facades\UserLogin\WxScan',
     ];
 
-    public static function login(array $data) {
+    public static function login(array $data)
+    {
         $className = Tool::getArrayVal(self::$loginMap, $data['login_type'], null);
         if (is_null($className)) {
             throw new CheckException('登录类型不支持', ErrorCode::COMMON_PARAM_ERROR);

@@ -5,8 +5,10 @@
  * Date: 19-2-19
  * Time: 下午10:58
  */
-class SyTokenController extends CommonController {
-    public function init(){
+class SyTokenController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
@@ -28,11 +30,12 @@ class SyTokenController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function addTokenByStationAction(){
+    public function addTokenByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
-        if(strlen($title) == 0){
+        if (strlen($title) == 0) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
             $needParams = [
@@ -66,11 +69,12 @@ class SyTokenController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function editTokenByStationAction(){
+    public function editTokenByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
-        if(strlen($title) == 0){
+        if (strlen($title) == 0) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
             $needParams = [
@@ -98,7 +102,8 @@ class SyTokenController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getTokenInfoByStationAction(){
+    public function getTokenInfoByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $needParams = [
@@ -123,7 +128,8 @@ class SyTokenController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getTokenListByStationAction(){
+    public function getTokenListByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $needParams = [

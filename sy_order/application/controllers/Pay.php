@@ -5,8 +5,10 @@
  * Date: 17-4-19
  * Time: 下午1:26
  */
-class PayController extends CommonController {
-    public function init() {
+class PayController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
@@ -32,7 +34,8 @@ class PayController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function applyPayAction() {
+    public function applyPayAction()
+    {
         $needParams = [
             'pay_type' => trim(\Request\SyRequest::getParams('pay_type')),
             'pay_content' => trim(\Request\SyRequest::getParams('pay_content')),
@@ -46,7 +49,8 @@ class PayController extends CommonController {
     /**
      * 处理微信支付通知
      */
-    public function handleWxPayNotifyAction() {
+    public function handleWxPayNotifyAction()
+    {
         $allParams = \Request\SyRequest::getParams();
         $wxResultCode = (string)\Tool\Tool::getArrayVal($allParams, 'result_code', '');
         $wxReturnCode = (string)\Tool\Tool::getArrayVal($allParams, 'return_code', '');
@@ -65,7 +69,7 @@ class PayController extends CommonController {
             $this->SyResult->setData([
                 'msg' => '支付成功',
             ]);
-        } else if($wxResultCode == 'SUCCESS') { //业务出错
+        } elseif ($wxResultCode == 'SUCCESS') { //业务出错
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_SERVER_ERROR, $allParams['err_code_des']);
         } else { //通信出错
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_SERVER_ERROR, $allParams['return_msg']);
@@ -77,7 +81,8 @@ class PayController extends CommonController {
     /**
      * 处理微信扫码预支付通知
      */
-    public function handleWxPrePayNotifyAction() {
+    public function handleWxPrePayNotifyAction()
+    {
         $appId = (string)\Request\SyRequest::getParams('appid');
         $productId = (string)\Request\SyRequest::getParams('product_id', '');
         $returnObj = new \Wx\Shop\Pay\NativeReturn($appId);
@@ -95,7 +100,7 @@ class PayController extends CommonController {
             $order->setAttach($cacheData['pay_attach']);
             $applyRes = $order->getDetail();
             unset($order);
-            if($applyRes['code'] == 0){
+            if ($applyRes['code'] == 0) {
                 $returnObj->setNonceStr($nonceStr);
                 $returnObj->setPrepayId($applyRes['data']['prepay_id']);
             } else {
@@ -117,15 +122,16 @@ class PayController extends CommonController {
     /**
      * 处理支付宝退款异步通知消息
      */
-    public function handleAliRefundNotifyAction() {
+    public function handleAliRefundNotifyAction()
+    {
         $allParams = \Request\SyRequest::getParams();
-        if($allParams['notify_type'] == 'batch_refund_notify'){ //即时到账批量退款
+        if ($allParams['notify_type'] == 'batch_refund_notify') { //即时到账批量退款
             $needData = [
                 'refund_sn' => $allParams['batch_no'],
                 'list' => []
             ];
             $dataArr = explode('#', $allParams['result_details']);
-            foreach($dataArr as $eData) {
+            foreach ($dataArr as $eData) {
                 $eData1 = explode('$', $eData);
                 $eData2 = explode('^', $eData1[0]);
                 $needData['list'][] = [
@@ -147,19 +153,20 @@ class PayController extends CommonController {
     /**
      * 处理支付宝付款异步通知消息
      */
-    public function handleAliPayNotifyAction() {
+    public function handleAliPayNotifyAction()
+    {
         $allParams = \Request\SyRequest::getParams();
-        if(($allParams['notify_type'] == 'trade_status_sync')
+        if (($allParams['notify_type'] == 'trade_status_sync')
             && in_array($allParams['trade_status'], [
                 'TRADE_SUCCESS',
                 'TRADE_FINISHED',
-            ])) {
-            if(isset($allParams['payment_type'])) { //网页支付
+            ], true)) {
+            if (isset($allParams['payment_type'])) { //网页支付
                 $payMoney = isset($allParams['total_fee']) && is_numeric($allParams['total_fee']) ? (int)($allParams['total_fee'] * 1000 / 10) : 0;
             } else { //二维码支付
-                if(isset($allParams['buyer_pay_amount']) && is_numeric($allParams['buyer_pay_amount'])) {
+                if (isset($allParams['buyer_pay_amount']) && is_numeric($allParams['buyer_pay_amount'])) {
                     $payMoney = (int)($allParams['buyer_pay_amount'] * 1000 / 10);
-                } else if(isset($allParams['total_amount']) && is_numeric($allParams['total_amount'])) {
+                } elseif (isset($allParams['total_amount']) && is_numeric($allParams['total_amount'])) {
                     $payMoney = (int)($allParams['total_amount'] * 1000 / 10);
                 } else {
                     $payMoney = 0;

@@ -5,8 +5,10 @@
  * Date: 18-3-10
  * Time: 下午1:10
  */
-class LoginController extends CommonController {
-    public function init() {
+class LoginController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
@@ -14,7 +16,8 @@ class LoginController extends CommonController {
      * 登录
      * @SyFilter-{"field": "_ignorejwt","explain": "JWT会话","type": "string","rules": {"min": 0}}
      */
-    public function loginAction() {
+    public function loginAction()
+    {
         $data = \Request\SyRequest::getParams();
         $data['session_id'] = \Tool\SySession::getSessionId();
         $applyRes = \SyModule\SyModuleUser::getInstance()->sendApiReq('/Index/Login/login', $data);
@@ -29,7 +32,8 @@ class LoginController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function logoutAction() {
+    public function logoutAction()
+    {
         $userInfo = \Tool\SyUser::getUserInfo();
         if (!empty($userInfo)) {
             \Tool\SySession::del('');

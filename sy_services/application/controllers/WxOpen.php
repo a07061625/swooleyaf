@@ -1,6 +1,8 @@
 <?php
-class WxOpenController extends CommonController {
-    public function init() {
+class WxOpenController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
@@ -26,7 +28,8 @@ class WxOpenController extends CommonController {
      * @SyFilter-{"field": "encrypt_type","explain": "加密方式","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "timestamp","explain": "时间戳","type": "string","rules": {"required": 1,"min": 1}}
      */
-    public function handleWxNotifyAction() {
+    public function handleWxNotifyAction()
+    {
         $needParams = \Request\SyRequest::getParams();
         $handleRes = \Dao\WxOpenDao::handleNotifyWx($needParams);
         $this->SyResult->setData([
@@ -61,7 +64,8 @@ class WxOpenController extends CommonController {
      * @SyFilter-{"field": "encrypt_type","explain": "加密方式","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "timestamp","explain": "时间戳","type": "string","rules": {"required": 1,"min": 1}}
      */
-    public function handleAuthorizerNotifyAction() {
+    public function handleAuthorizerNotifyAction()
+    {
         $needParams = \Request\SyRequest::getParams();
         $handleRes = \Dao\WxOpenDao::handleNotifyAuthorizer($needParams);
         $this->SyResult->setData([

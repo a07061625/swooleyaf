@@ -5,10 +5,12 @@
  * Date: 17-4-17
  * Time: 下午10:23
  */
-class ImageController extends CommonController {
+class ImageController extends CommonController
+{
     public $signStatus = false;
 
-    public function init() {
+    public function init()
+    {
         parent::init();
         $this->signStatus = false;
     }
@@ -23,17 +25,19 @@ class ImageController extends CommonController {
      * @SyFilter-{"field": "action","explain": "动作名称","type": "string","rules": {"min": 1,"required":1}}
      * @SyFilter-{"field": "callback","explain": "回调函数名","type": "string","rules": {"min": 0}}
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         $action = (string)\Request\SyRequest::getParams('action');
         $handleRes = \Dao\ApiImageDao::indexUeditorHandle($action);
-        if(is_string($handleRes)){
+        if (is_string($handleRes)) {
             $this->sendRsp($handleRes);
         } else {
             $this->sendRsp(\Tool\Tool::jsonEncode($handleRes));
         }
     }
 
-    public function createQrImageAction() {
+    public function createQrImageAction()
+    {
         $res = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/Image/createQrImage', $_GET);
         $this->sendRsp($res);
     }
@@ -41,7 +45,8 @@ class ImageController extends CommonController {
     /**
      * 生成微信小程序二维码图片
      */
-    public function createQrImageWxMiniAction() {
+    public function createQrImageWxMiniAction()
+    {
         $res = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/Image/createQrImageWxMini', $_GET);
         $this->sendRsp($res);
     }
@@ -60,7 +65,8 @@ class ImageController extends CommonController {
      * @apiSuccess {string} Body 图片字节流
      * @apiUse CommonFail
      */
-    public function createCodeImageAction() {
+    public function createCodeImageAction()
+    {
         $fontPath = \SyServer\HttpServer::getServerConfig('storepath_resources') . '/consolas.ttf';
         //创建图片
         $imageWidth = (int)\Request\SyRequest::getParams('image_width', 130);
@@ -110,7 +116,8 @@ class ImageController extends CommonController {
      * @SyFilter-{"field": "image_url","explain": "图片链接","type": "string","rules": {"url": 1}}
      * @SyFilter-{"field": "image_wxmedia","explain": "微信媒体ID","type": "string","rules": {"min": 1}}
      */
-    public function uploadImageAction() {
+    public function uploadImageAction()
+    {
         //思想-不管何种方式的图片上传,都转换成base64编码传递给services服务
         //上传类型 1:文件上传 2:base64上传 3:url上传 4:微信媒体上传
         $uploadType = (int)\Request\SyRequest::getParams('upload_type');
@@ -129,9 +136,10 @@ class ImageController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getFrontOSSConfigAction(){
+    public function getFrontOSSConfigAction()
+    {
         $uploadType = (string)\Request\SyRequest::getParams('upload_type');
-        if(!in_array($uploadType, ['video', 'image'])){
+        if (!in_array($uploadType, ['video', 'image'], true)) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '上传类型不支持');
         } else {
             $nowTime = \Tool\Tool::getNowTime();

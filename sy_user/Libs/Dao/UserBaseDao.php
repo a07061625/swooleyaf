@@ -10,10 +10,12 @@ namespace Dao;
 use Tool\SySession;
 use Traits\SimpleDaoTrait;
 
-class UserBaseDao {
+class UserBaseDao
+{
     use SimpleDaoTrait;
 
-    public static function refreshUserSession(string $uid) {
+    public static function refreshUserSession(string $uid)
+    {
         $cacheData = [
             'uid' => $uid,
             'user_account' => 111,

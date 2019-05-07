@@ -14,17 +14,21 @@ use Interfaces\PayBase;
 use Interfaces\PayService;
 use Request\SyRequest;
 
-class OrderGoods extends PayBase implements PayService {
-    public function __construct() {
+class OrderGoods extends PayBase implements PayService
+{
+    public function __construct()
+    {
         $this->payType = Project::ORDER_PAY_TYPE_GOODS;
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    public function checkPayParams() : array {
+    public function checkPayParams() : array
+    {
         $orderSn = trim(SyRequest::getParams('goods_ordersn', ''));
-        if(strlen($orderSn) == 0){
+        if (strlen($orderSn) == 0) {
             throw new CheckException('订单单号不能为空', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -33,15 +37,18 @@ class OrderGoods extends PayBase implements PayService {
         ];
     }
 
-    public function getPayInfo(array $data) : array {
+    public function getPayInfo(array $data) : array
+    {
         // TODO: Implement getPayInfo() method.
     }
 
-    public function handlePaySuccess(array $data) : array {
+    public function handlePaySuccess(array $data) : array
+    {
         // TODO: Implement handlePaySuccess() method.
     }
 
-    public function handlePaySuccessAttach(array $data) {
+    public function handlePaySuccessAttach(array $data)
+    {
         // TODO: Implement handlePaySuccessAttach() method.
     }
 }

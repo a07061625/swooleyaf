@@ -5,15 +5,18 @@
  * Date: 2018/6/23 0023
  * Time: 9:19
  */
-class RolePowerController extends CommonController {
-    public function init() {
+class RolePowerController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
     /**
      * 总站添加权限信息
      */
-    public function addPowerByStationAction(){
+    public function addPowerByStationAction()
+    {
         $data = $_POST;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $addRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RolePower/addPowerByStation', $data);
@@ -23,7 +26,8 @@ class RolePowerController extends CommonController {
     /**
      * 总站修改权限信息
      */
-    public function editPowerByStationAction(){
+    public function editPowerByStationAction()
+    {
         $data = $_POST;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $editRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RolePower/editPowerByStation', $data);
@@ -33,7 +37,8 @@ class RolePowerController extends CommonController {
     /**
      * 总站修改角色权限
      */
-    public function editRolePowersByStationAction(){
+    public function editRolePowersByStationAction()
+    {
         $data = $_POST;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $editRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RolePower/editRolePowersByStation', $data);
@@ -43,7 +48,8 @@ class RolePowerController extends CommonController {
     /**
      * 总站删除权限信息
      */
-    public function delPowerByStationAction(){
+    public function delPowerByStationAction()
+    {
         $data = $_GET;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $delRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RolePower/delPowerByStation', $data);
@@ -53,7 +59,8 @@ class RolePowerController extends CommonController {
     /**
      * 总站获取权限信息
      */
-    public function getPowerInfoByStationAction(){
+    public function getPowerInfoByStationAction()
+    {
         $data = $_GET;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RolePower/getPowerInfoByStation', $data);
@@ -63,7 +70,8 @@ class RolePowerController extends CommonController {
     /**
      * 总站获取权限列表
      */
-    public function getPowerListByStationAction(){
+    public function getPowerListByStationAction()
+    {
         $data = $_GET;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RolePower/getPowerListByStation', $data);
@@ -73,7 +81,8 @@ class RolePowerController extends CommonController {
     /**
      * 总站获取角色权限列表
      */
-    public function getRolePowersByStationAction(){
+    public function getRolePowersByStationAction()
+    {
         $data = $_GET;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RolePower/getRolePowersByStation', $data);
@@ -90,7 +99,8 @@ class RolePowerController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getRolePowersByFrontAction(){
+    public function getRolePowersByFrontAction()
+    {
         $roleTag = (string)\Request\SyRequest::getParams('role_tag');
         $rolePowers = \ProjectCache\Role::getRolePowerList($roleTag);
         $this->SyResult->setData($rolePowers);

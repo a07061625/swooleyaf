@@ -1,10 +1,13 @@
 <?php
-class IndexController extends CommonController {
-    public function init() {
+class IndexController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
-    public function testAction() {
+    public function testAction()
+    {
         \Response\SyResponseHttp::header('Content-Type', 'text/html; charset=utf-8');
         $renderRes = $this->getView()->render('index/index.html', [
             'aaa' => 'xxdd'
@@ -13,7 +16,8 @@ class IndexController extends CommonController {
         $this->sendRsp($renderRes);
     }
 
-    public function test2Action() {
+    public function test2Action()
+    {
         \Response\SyResponseHttp::header('Content-Type', 'text/html; charset=utf-8');
         $renderRes = $this->getView()->render('index.tpl', [
             'aaa' => 'xxdd',
@@ -25,7 +29,8 @@ class IndexController extends CommonController {
     /**
      * @SyFilter-{"field": "url","explain": "链接","type": "string","rules": {"required": 1,"url": 1}}
      */
-    public function indexAction(){
+    public function indexAction()
+    {
         $this->SyResult->setData([
             'short_url' => \SyServer\HttpServer::getServerConfig('cookiedomain_base'),
         ]);
@@ -33,7 +38,8 @@ class IndexController extends CommonController {
         $this->sendRsp();
     }
 
-    public function debugAction(){
+    public function debugAction()
+    {
         xdebug_start_trace();
         $ip = \Tool\Tool::getClientIP(2);
 

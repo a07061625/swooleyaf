@@ -5,8 +5,10 @@
  * Date: 2018/6/23 0023
  * Time: 9:19
  */
-class RolePowerController extends CommonController {
-    public function init() {
+class RolePowerController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
@@ -32,11 +34,12 @@ class RolePowerController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function addPowerByStationAction(){
+    public function addPowerByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
-        if(strlen($title) == 0){
+        if (strlen($title) == 0) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
             $parentTag = (string)\Request\SyRequest::getParams('ptag', '');
@@ -77,11 +80,12 @@ class RolePowerController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function editPowerByStationAction(){
+    public function editPowerByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
-        if(strlen($title) == 0){
+        if (strlen($title) == 0) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
             $needParams = [
@@ -112,11 +116,12 @@ class RolePowerController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function editRolePowersByStationAction(){
+    public function editRolePowersByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $rolePowers = trim(\Request\SyRequest::getParams('role_powers', ''));
-        if((strlen($rolePowers) > 0) && (preg_match('/^(\,[0-9a-z]{3}|\,[0-9a-z]{6}|\,[0-9a-z]{9})+$/', ',' . $rolePowers) == 0)){
+        if ((strlen($rolePowers) > 0) && (preg_match('/^(\,[0-9a-z]{3}|\,[0-9a-z]{6}|\,[0-9a-z]{9})+$/', ',' . $rolePowers) == 0)) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '权限标识不合法');
         } else {
             $powerList = [];
@@ -125,17 +130,17 @@ class RolePowerController extends CommonController {
             sort($rolePowerList, SORT_STRING);
             foreach ($rolePowerList as $ePowerTag) {
                 $tagLength = strlen($ePowerTag);
-                if($tagLength == 3){
+                if ($tagLength == 3) {
                     $powerList[$ePowerTag] = 1;
-                } else if($tagLength == 6){
+                } elseif ($tagLength == 6) {
                     $subTag = substr($ePowerTag, 0, 3);
-                    if(!isset($powerList[$subTag])){
+                    if (!isset($powerList[$subTag])) {
                         $powerList[$ePowerTag] = 1;
                     }
                 } else {
                     $subTag1 = substr($ePowerTag, 0, 3);
                     $subTag2 = substr($ePowerTag, 3, 3);
-                    if((!isset($powerList[$subTag1])) && (!isset($powerList[$subTag2]))){
+                    if ((!isset($powerList[$subTag1])) && (!isset($powerList[$subTag2]))) {
                         $powerList[$ePowerTag] = 1;
                     }
                 }
@@ -164,7 +169,8 @@ class RolePowerController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function delPowerByStationAction(){
+    public function delPowerByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $needParams = [
@@ -187,7 +193,8 @@ class RolePowerController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getPowerInfoByStationAction(){
+    public function getPowerInfoByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $needParams = [
@@ -214,7 +221,8 @@ class RolePowerController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getPowerListByStationAction(){
+    public function getPowerListByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $parentTag = (string)\Request\SyRequest::getParams('ptag', '');
@@ -242,7 +250,8 @@ class RolePowerController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getRolePowersByStationAction(){
+    public function getRolePowersByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $needParams = [

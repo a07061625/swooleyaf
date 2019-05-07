@@ -5,8 +5,10 @@
  * Date: 2017-04-16
  * Time: 18:02
  */
-class ImageController extends CommonController {
-    public function init() {
+class ImageController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
@@ -26,7 +28,8 @@ class ImageController extends CommonController {
      * @SyFilter-{"field": "image_size","explain": "图片大小","type": "int","rules": {"min": 1,"max": 10}}
      * @SyFilter-{"field": "margin_size","explain": "外边框间隙","type": "int","rules": {"min": 0,"max": 200}}
      */
-    public function createQrImageAction() {
+    public function createQrImageAction()
+    {
         $url = (string)\Request\SyRequest::getParams('url');
         ob_start();
         \Qrcode\SyQrCode::createImage($url, [
@@ -61,15 +64,16 @@ class ImageController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function createQrImageWxMiniAction() {
+    public function createQrImageWxMiniAction()
+    {
         $wxAppId = trim(\Request\SyRequest::getParams('wx_appid'));
         $pageUrl = trim(\Request\SyRequest::getParams('page_url'));
         $pageScene = trim(\Request\SyRequest::getParams('page_scene'));
-        if(strlen($wxAppId) == 0){
+        if (strlen($wxAppId) == 0) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '小程序appid不能为空');
-        } else if(strlen($pageUrl) == 0){
+        } elseif (strlen($pageUrl) == 0) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '页面地址不能为空');
-        } else if(strlen($pageScene) == 0){
+        } elseif (strlen($pageScene) == 0) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '页面场景不能为空');
         } else {
             $imageSize = (int)\Request\SyRequest::getParams('image_size', 430);
@@ -79,14 +83,14 @@ class ImageController extends CommonController {
             $qrCode->setScene($pageScene);
             $qrCode->setAutoColor(false);
             $qrCode->setWidth($imageSize);
-            if($hyaline == 1){
+            if ($hyaline == 1) {
                 $qrCode->setIsHyaline(true);
             } else {
                 $qrCode->setIsHyaline(false);
             }
             $createRes = $qrCode->getDetail();
             unset($qrCode);
-            if($createRes['code'] == 0){
+            if ($createRes['code'] == 0) {
                 $this->SyResult->setData($createRes['data']);
             } else {
                 $this->SyResult->setCodeMsg($createRes['code'], $createRes['message']);
@@ -113,7 +117,8 @@ class ImageController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function uploadImageAction() {
+    public function uploadImageAction()
+    {
         $cacheKey = \Constant\Project::REDIS_PREFIX_IMAGE_DATA . \Request\SyRequest::getParams('_syfile_tag', '');
         $cacheData = \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->get($cacheKey);
         if ($cacheData === false) {

@@ -1,10 +1,13 @@
 <?php
-class IndexController extends CommonController {
-    public function init() {
+class IndexController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
-    public function checkAction(){
+    public function checkAction()
+    {
         $this->SyResult->setData([
             'msg' => '检测成功',
         ]);

@@ -4,17 +4,20 @@
  * 这些方法, 都接受一个参数:Yaf_Dispatcher $dispatcher
  * 调用的次序, 和申明的次序相同
  */
-class Bootstrap extends \SyFrame\SimpleBootstrap {
-    private function __clone() {
+class Bootstrap extends \SyFrame\SimpleBootstrap
+{
+    private function __clone()
+    {
     }
 
-    public function _initBoot(\Yaf\Dispatcher $dispatcher) {
-        if(self::$firstTag){
+    public function _initBoot(\Yaf\Dispatcher $dispatcher)
+    {
+        if (self::$firstTag) {
             $this->universalInit($dispatcher);
 
             //设置视图
             $twigConfig = self::getAppConfigs('twig');
-            if(empty($twigConfig)){
+            if (empty($twigConfig)) {
                 throw new \Exception\Swoole\ServerException('twig配置不存在', \Constant\ErrorCode::TWIG_PARAM_ERROR);
             }
 

@@ -12,7 +12,8 @@ use Tool\Tool;
 use Traits\SimpleDaoTrait;
 use Wx\WxUtilOpenBase;
 
-class WxOpenDao {
+class WxOpenDao
+{
     use SimpleDaoTrait;
 
     private static $notifyWxMap = [
@@ -29,7 +30,8 @@ class WxOpenDao {
         'text_test_component' => '\DesignPatterns\Facades\WxOpenNotifyAuthorizer\TextTestComponent',
     ];
 
-    public static function handleNotifyWx(array $data) {
+    public static function handleNotifyWx(array $data)
+    {
         $incomeData = Tool::xmlToArray($data['wx_xml']);
         if (!isset($incomeData['Encrypt'])) {
             return 'fail';
@@ -49,13 +51,42 @@ class WxOpenDao {
         return 'success';
     }
 
-    private static function getAuthorizerNotifyTag(array $data) : string {
+    public static function handleNotifyAuthorizer(array $data)
+    {
+        $incomeData = Tool::xmlToArray($data['wx_xml']);
+        if (!isset($incomeData['Encrypt'])) {
+            return 'fail';
+        }
+        if (!isset($incomeData['AppId'])) {
+            return 'fail';
+        }
+
+        $openCommonConfig = WxConfigSingleton::getInstance()->getOpenCommonConfig();
+        $decryptRes = WxUtilOpenBase::decryptMsg($incomeData['Encrypt'], $openCommonConfig->getAppId(), $openCommonConfig->getToken(), $data['msg_signature'], $data['nonce'], $data['timestamp']);
+        $msgData = Tool::xmlToArray($decryptRes['content']);
+        if (!isset($msgData['MsgType'])) {
+            return 'fail';
+        }
+
+        $notifyTag = self::getAuthorizerNotifyTag($msgData);
+        $className = Tool::getArrayVal(self::$notifyAuthorizerMap, $notifyTag, null);
+        if (is_null($className)) {
+            return 'fail';
+        }
+
+        $handleRes = $className::acceptNotify($msgData);
+        $replyXml = Tool::arrayToXml($handleRes);
+        return WxUtilOpenBase::encryptMsg($replyXml, $openCommonConfig->getAppId(), $openCommonConfig->getToken(), $decryptRes['aes_key']);
+    }
+
+    private static function getAuthorizerNotifyTag(array $data) : string
+    {
         switch ($data['MsgType']) {
             case 'text':
                 $tag = 'text_';
-                if($data['Content'] == 'TESTCOMPONENT_MSG_TYPE_TEXT'){
+                if ($data['Content'] == 'TESTCOMPONENT_MSG_TYPE_TEXT') {
                     $tag .= 'test_component';
-                } else if(strpos($data['Content'], 'QUERY_AUTH_CODE:') === 0){ //全网开通专用
+                } elseif (strpos($data['Content'], 'QUERY_AUTH_CODE:') === 0) { //全网开通专用
                     $tag .= 'query_auth_code';
                 } else {
                     $tag .= 'default';
@@ -69,32 +100,5 @@ class WxOpenDao {
         }
 
         return $tag;
-    }
-
-    public static function handleNotifyAuthorizer(array $data) {
-        $incomeData = Tool::xmlToArray($data['wx_xml']);
-        if(!isset($incomeData['Encrypt'])){
-            return 'fail';
-        }
-        if(!isset($incomeData['AppId'])){
-            return 'fail';
-        }
-
-        $openCommonConfig = WxConfigSingleton::getInstance()->getOpenCommonConfig();
-        $decryptRes = WxUtilOpenBase::decryptMsg($incomeData['Encrypt'], $openCommonConfig->getAppId(), $openCommonConfig->getToken(), $data['msg_signature'], $data['nonce'], $data['timestamp']);
-        $msgData = Tool::xmlToArray($decryptRes['content']);
-        if(!isset($msgData['MsgType'])){
-            return 'fail';
-        }
-
-        $notifyTag = self::getAuthorizerNotifyTag($msgData);
-        $className = Tool::getArrayVal(self::$notifyAuthorizerMap, $notifyTag, null);
-        if(is_null($className)){
-            return 'fail';
-        }
-
-        $handleRes = $className::acceptNotify($msgData);
-        $replyXml = Tool::arrayToXml($handleRes);
-        return WxUtilOpenBase::encryptMsg($replyXml, $openCommonConfig->getAppId(), $openCommonConfig->getToken(), $decryptRes['aes_key']);
     }
 }

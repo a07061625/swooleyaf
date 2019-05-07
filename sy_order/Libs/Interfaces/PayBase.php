@@ -7,9 +7,11 @@
  */
 namespace Interfaces;
 
-abstract class PayBase {
+abstract class PayBase
+{
     public $payType = '';
 
-    public function __construct() {
+    public function __construct()
+    {
     }
 }

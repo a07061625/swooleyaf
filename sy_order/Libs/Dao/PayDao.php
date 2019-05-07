@@ -17,7 +17,8 @@ use Log\Log;
 use Tool\Tool;
 use Traits\SimpleDaoTrait;
 
-class PayDao {
+class PayDao
+{
     use SimpleDaoTrait;
 
     private static $payApplyMap = [
@@ -34,27 +35,16 @@ class PayDao {
      */
     private static $payContainer = null;
 
-    /**
-     * @param string $payContent
-     * @return \Interfaces\PayService|null
-     */
-    private static function getPayService(string $payContent) {
-        if (is_null(self::$payContainer)) {
-            self::$payContainer = new PayContainer();
-        }
-
-        return self::$payContainer->getObj($payContent);
-    }
-
-    public static function applyPay(array $data) {
+    public static function applyPay(array $data)
+    {
         $redisKey = Project::REDIS_PREFIX_PAY_HASH . $data['pay_hash'];
         $cacheData = CacheSimpleFactory::getRedisInstance()->get($redisKey);
-        if($cacheData !== false){
+        if ($cacheData !== false) {
             throw new CheckException('支付处理中,请不要重复申请', ErrorCode::COMMON_PARAM_ERROR);
         }
 
         $payApplyClass = Tool::getArrayVal(self::$payApplyMap, $data['pay_type'], null);
-        if(is_null($payApplyClass)){
+        if (is_null($payApplyClass)) {
             throw new CheckException('支付类型不支持', ErrorCode::COMMON_PARAM_ERROR);
         }
         $payCheckRes = $payApplyClass::handleCheckParams($data);
@@ -72,7 +62,8 @@ class PayDao {
         return $payApplyClass::handleApply($nowData);
     }
 
-    public static function completePay(array $data){
+    public static function completePay(array $data)
+    {
         //添加支付原始记录
         $payHistory = SyBaseMysqlFactory::PayHistoryEntity();
         $payHistory->trade_type = $data['pay_type'];
@@ -94,7 +85,7 @@ class PayDao {
 
         $payContent = substr($data['pay_sellersn'], 0, 4);
         $payService = self::getPayService($payContent);
-        if(is_null($payService)){
+        if (is_null($payService)) {
             throw new CheckException('支付内容不支持', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -109,10 +100,23 @@ class PayDao {
 
             throw new CheckException('支付处理失败', ErrorCode::COMMON_SERVER_ERROR);
         } finally {
-            if(!empty($successRes)){
+            if (!empty($successRes)) {
                 $payService->handlePaySuccessAttach($successRes);
             }
             unset($ormResult1, $payHistory, $payService);
         }
+    }
+
+    /**
+     * @param string $payContent
+     * @return \Interfaces\PayService|null
+     */
+    private static function getPayService(string $payContent)
+    {
+        if (is_null(self::$payContainer)) {
+            self::$payContainer = new PayContainer();
+        }
+
+        return self::$payContainer->getObj($payContent);
     }
 }

@@ -5,15 +5,18 @@
  * Date: 2018/5/30 0030
  * Time: 17:05
  */
-class RegionController extends CommonController {
-    public function init(){
+class RegionController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
     /**
      * 总站添加地区
      */
-    public function addRegionByStationAction(){
+    public function addRegionByStationAction()
+    {
         $data = $_POST;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $addRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/Region/addRegionByStation', $data);
@@ -23,7 +26,8 @@ class RegionController extends CommonController {
     /**
      * 总站修改地区
      */
-    public function editRegionByStationAction(){
+    public function editRegionByStationAction()
+    {
         $data = $_POST;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $editRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/Region/editRegionByStation', $data);
@@ -33,7 +37,8 @@ class RegionController extends CommonController {
     /**
      * 总站删除地区
      */
-    public function deleteRegionByStationAction(){
+    public function deleteRegionByStationAction()
+    {
         $data = $_GET;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $delRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/Region/deleteRegionByStation', $data);
@@ -43,7 +48,8 @@ class RegionController extends CommonController {
     /**
      * 总站获取单个地区信息
      */
-    public function getRegionInfoByStationAction(){
+    public function getRegionInfoByStationAction()
+    {
         $data = $_GET;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/Region/getRegionInfoByStation', $data);
@@ -53,7 +59,8 @@ class RegionController extends CommonController {
     /**
      * 总站获取地区列表
      */
-    public function getRegionListByStationAction(){
+    public function getRegionListByStationAction()
+    {
         $data = $_GET;
         $data['session_id'] = \Tool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/Region/getRegionListByStation', $data);
@@ -63,7 +70,8 @@ class RegionController extends CommonController {
     /**
      * 前端获取单个地区信息
      */
-    public function getRegionInfoByFrontAction(){
+    public function getRegionInfoByFrontAction()
+    {
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/Region/getRegionInfoByFront', $_GET);
         $this->sendRsp($getRes);
     }
@@ -78,7 +86,8 @@ class RegionController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getRegionListByFrontAction(){
+    public function getRegionListByFrontAction()
+    {
         $regionTag = trim(\Request\SyRequest::getParams('region_tag', ''));
         $regionList = \ProjectCache\Region::getRegionList($regionTag);
         $this->SyResult->setData($regionList);

@@ -5,8 +5,10 @@
  * Date: 2018/6/23 0023
  * Time: 9:19
  */
-class RoleBaseController extends CommonController {
-    public function init() {
+class RoleBaseController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
@@ -24,11 +26,12 @@ class RoleBaseController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function addRoleByStationAction(){
+    public function addRoleByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
-        if(strlen($title) == 0){
+        if (strlen($title) == 0) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
             $needParams = [
@@ -56,11 +59,12 @@ class RoleBaseController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function editRoleByStationAction(){
+    public function editRoleByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
-        if(strlen($title) == 0){
+        if (strlen($title) == 0) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
             $needParams = [
@@ -86,7 +90,8 @@ class RoleBaseController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getRoleInfoByStationAction(){
+    public function getRoleInfoByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $needParams = [
@@ -113,7 +118,8 @@ class RoleBaseController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getRoleListByStationAction(){
+    public function getRoleListByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $needParams = [
@@ -138,7 +144,8 @@ class RoleBaseController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getRoleListByFrontAction(){
+    public function getRoleListByFrontAction()
+    {
         $needParams = [
             'page' => (int)\Request\SyRequest::getParams('page', 1),
             'limit' => (int)\Request\SyRequest::getParams('limit', \Constant\Project::COMMON_LIMIT_DEFAULT),

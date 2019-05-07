@@ -5,8 +5,10 @@
  * Date: 2018/5/30 0030
  * Time: 17:05
  */
-class RegionController extends CommonController {
-    public function init(){
+class RegionController extends CommonController
+{
+    public function init()
+    {
         parent::init();
     }
 
@@ -28,16 +30,17 @@ class RegionController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function addRegionByStationAction(){
+    public function addRegionByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $regionName = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('region_name'));
         $nameLength = mb_strlen($regionName);
-        if($nameLength == 0){
+        if ($nameLength == 0) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能为空');
-        } else if($nameLength < 2){
+        } elseif ($nameLength < 2) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能小于两个字');
-        } else if($nameLength > 100){
+        } elseif ($nameLength > 100) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能大于100个字');
         } else {
             $needParams = [
@@ -70,14 +73,15 @@ class RegionController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function editRegionByStationAction(){
+    public function editRegionByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $regionName = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('region_name', ''));
         $nameLength = mb_strlen($regionName);
-        if($nameLength > 100){
+        if ($nameLength > 100) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能大于100个字');
-        } else if($nameLength == 1){
+        } elseif ($nameLength == 1) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能小于两个字');
         } else {
             $needParams = [
@@ -104,7 +108,8 @@ class RegionController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function deleteRegionByStationAction(){
+    public function deleteRegionByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $needParams = [
@@ -127,12 +132,13 @@ class RegionController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getRegionInfoByStationAction(){
+    public function getRegionInfoByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $regionTag = (string)\Request\SyRequest::getParams('region_tag');
         $tagLength = strlen($regionTag);
-        if(!in_array($tagLength, [3, 6, 9])){
+        if (!in_array($tagLength, [3, 6, 9], true)) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '地区标识不合法');
         } else {
             $needParams = [
@@ -162,12 +168,13 @@ class RegionController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getRegionListByStationAction(){
+    public function getRegionListByStationAction()
+    {
         \Tool\SyUser::checkStationLogin();
 
         $ptag = trim(\Request\SyRequest::getParams('region_ptag', ''));
         $tagLength = strlen($ptag);
-        if(!in_array($tagLength, [0, 3, 6])){
+        if (!in_array($tagLength, [0, 3, 6], true)) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '父地区标识不合法');
         } else {
             $needParams = [
@@ -175,9 +182,9 @@ class RegionController extends CommonController {
                 'limit' => (int)\Request\SyRequest::getParams('limit', \Constant\Project::COMMON_LIMIT_DEFAULT),
                 'region_ptag' => $ptag,
             ];
-            if($tagLength == 0){
+            if ($tagLength == 0) {
                 $needParams['region_level'] = \Constant\Project::REGION_LEVEL_TYPE_PROVINCE;
-            } else if($tagLength == 3){
+            } elseif ($tagLength == 3) {
                 $needParams['region_level'] = \Constant\Project::REGION_LEVEL_TYPE_CITY;
             } else {
                 $needParams['region_level'] = \Constant\Project::REGION_LEVEL_TYPE_COUNTY;
@@ -199,10 +206,11 @@ class RegionController extends CommonController {
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
-    public function getRegionInfoByFrontAction(){
+    public function getRegionInfoByFrontAction()
+    {
         $regionTag = (string)\Request\SyRequest::getParams('region_tag');
         $tagLength = strlen($regionTag);
-        if(in_array($tagLength, [3, 6, 9])){
+        if (in_array($tagLength, [3, 6, 9], true)) {
             $needParams = [
                 'region_tag' => $regionTag,
             ];

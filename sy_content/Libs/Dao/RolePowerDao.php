@@ -15,25 +15,27 @@ use ProjectCache\Role;
 use Tool\Tool;
 use Traits\SimpleDaoTrait;
 
-class RolePowerDao {
+class RolePowerDao
+{
     use SimpleDaoTrait;
 
-    public static function addPowerByStation(array $data){
+    public static function addPowerByStation(array $data)
+    {
         $rolePower = SyBaseMysqlFactory::RolePowerEntity();
         $ormResult1 = $rolePower->getContainer()->getModel()->getOrmDbTable();
-        if($data['level'] > Project::ROLE_POWER_LEVEL_ONE){
+        if ($data['level'] > Project::ROLE_POWER_LEVEL_ONE) {
             $ormResult1->where('tag', [$data['ptag'], $data['tag'],])
                        ->order('`tag` ASC');
             $powerList = $rolePower->getContainer()->getModel()->select($ormResult1, 1, 10);
-            if(empty($powerList)){
+            if (empty($powerList)) {
                 throw new CheckException('上级权限信息不存在', ErrorCode::COMMON_PARAM_ERROR);
-            } else if(count($powerList) > 1){
+            } elseif (count($powerList) > 1) {
                 throw new CheckException('已存在相同标识的权限', ErrorCode::COMMON_PARAM_ERROR);
             }
         } else {
             $ormResult1->where('`tag`=?', [$data['tag']]);
             $powerInfo = $rolePower->getContainer()->getModel()->findOne($ormResult1);
-            if(!empty($powerInfo)){
+            if (!empty($powerInfo)) {
                 throw new CheckException('已存在相同标识的权限', ErrorCode::COMMON_PARAM_ERROR);
             }
         }
@@ -48,7 +50,7 @@ class RolePowerDao {
         $rolePower->created = $nowTime;
         $rolePower->updated = $nowTime;
         $powerId = $rolePower->getContainer()->getModel()->insert($rolePower->getEntityDataArray());
-        if(!$powerId){
+        if (!$powerId) {
             throw new CheckException('添加权限信息失败,请稍候重试', ErrorCode::COMMON_SERVER_ERROR);
         }
         unset($ormResult1, $rolePower);
@@ -60,12 +62,13 @@ class RolePowerDao {
         ];
     }
 
-    public static function getPowerInfoByStation(array $data){
+    public static function getPowerInfoByStation(array $data)
+    {
         $rolePower = SyBaseMysqlFactory::RolePowerEntity();
         $ormResult1 = $rolePower->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['power_tag']]);
         $powerInfo = $rolePower->getContainer()->getModel()->findOne($ormResult1);
-        if(empty($powerInfo)){
+        if (empty($powerInfo)) {
             throw new CheckException('权限信息不存在', ErrorCode::COMMON_PARAM_ERROR);
         }
         $powerInfo['total_level'] = Project::$totalRolePowerLevel;
@@ -74,12 +77,13 @@ class RolePowerDao {
         return $powerInfo;
     }
 
-    public static function editPowerByStation(array $data){
+    public static function editPowerByStation(array $data)
+    {
         $rolePower = SyBaseMysqlFactory::RolePowerEntity();
         $ormResult1 = $rolePower->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['power_tag']]);
         $powerInfo = $rolePower->getContainer()->getModel()->findOne($ormResult1);
-        if(empty($powerInfo)){
+        if (empty($powerInfo)) {
             throw new CheckException('权限信息不存在', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -99,12 +103,13 @@ class RolePowerDao {
         ];
     }
 
-    public static function delPowerByStation(array $data){
+    public static function delPowerByStation(array $data)
+    {
         $rolePower = SyBaseMysqlFactory::RolePowerEntity();
         $ormResult1 = $rolePower->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['power_tag']]);
         $powerInfo = $rolePower->getContainer()->getModel()->findOne($ormResult1);
-        if(empty($powerInfo)){
+        if (empty($powerInfo)) {
             throw new CheckException('权限信息不存在', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -125,12 +130,13 @@ class RolePowerDao {
         ];
     }
 
-    public static function editRolePowersByStation(array $data){
+    public static function editRolePowersByStation(array $data)
+    {
         $roleBase = SyBaseMysqlFactory::RoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['role_tag']]);
         $roleInfo = $roleBase->getContainer()->getModel()->findOne($ormResult1);
-        if(empty($roleInfo)){
+        if (empty($roleInfo)) {
             throw new CheckException('角色信息不存在', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -139,7 +145,7 @@ class RolePowerDao {
         $ormResult2->where('`role_tag`=?', [$data['role_tag']]);
         $roleRelation->getContainer()->getModel()->delete($ormResult2);
 
-        if(!empty($data['role_powers'])){
+        if (!empty($data['role_powers'])) {
             $nowTime = Tool::getNowTime();
             foreach ($data['role_powers'] as $eRolePower) {
                 $roleRelation->getContainer()->getModel()->insert([
@@ -158,10 +164,11 @@ class RolePowerDao {
         ];
     }
 
-    public static function getPowerListByStation(array $data){
+    public static function getPowerListByStation(array $data)
+    {
         $rolePower = SyBaseMysqlFactory::RolePowerEntity();
         $ormResult1 = $rolePower->getContainer()->getModel()->getOrmDbTable();
-        if($data['level'] == Project::ROLE_POWER_LEVEL_ONE){
+        if ($data['level'] == Project::ROLE_POWER_LEVEL_ONE) {
             $ormResult1->where('`level`=?', [Project::ROLE_POWER_LEVEL_ONE]);
         } else {
             $ormResult1->where('`tag` LIKE ? AND `level`=?', [$data['ptag'] . '%', $data['level'],]);
@@ -174,7 +181,8 @@ class RolePowerDao {
         return $powerList;
     }
 
-    public static function getRolePowersByStation(array $data){
+    public static function getRolePowersByStation(array $data)
+    {
         $page = 1;
         $powerMap = [];
         $rolePower = SyBaseMysqlFactory::RolePowerEntity();
@@ -210,7 +218,7 @@ class RolePowerDao {
 
         $resArr = [];
         foreach ($powerMap as $powerTag => $powerData) {
-            if($powerData['level'] == Project::ROLE_POWER_LEVEL_ONE){
+            if ($powerData['level'] == Project::ROLE_POWER_LEVEL_ONE) {
                 $resArr[$powerTag] = [
                     'tag' => $powerTag,
                     'title' => $powerData['title'],
@@ -219,7 +227,7 @@ class RolePowerDao {
                     'selected' => $powerData['selected'],
                     'children' => [],
                 ];
-            } else if($powerData['level'] == Project::ROLE_POWER_LEVEL_TWO){
+            } elseif ($powerData['level'] == Project::ROLE_POWER_LEVEL_TWO) {
                 $subTag = substr($powerTag, 0, 3);
                 $resArr[$subTag]['children'][$powerTag] = [
                     'tag' => $powerTag,
@@ -232,9 +240,9 @@ class RolePowerDao {
             } else {
                 $subTag1 = substr($powerTag, 0, 3);
                 $subTag2 = substr($powerTag, 0, 6);
-                if($powerMap[$subTag1]['selected'] == 1){
+                if ($powerMap[$subTag1]['selected'] == 1) {
                     $selectedStatus = 1;
-                } else if($powerMap[$subTag2]['selected'] == 1){
+                } elseif ($powerMap[$subTag2]['selected'] == 1) {
                     $selectedStatus = 1;
                 } else {
                     $selectedStatus = $powerMap[$powerTag]['selected'];

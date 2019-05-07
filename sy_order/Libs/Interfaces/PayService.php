@@ -7,7 +7,8 @@
  */
 namespace Interfaces;
 
-interface PayService {
+interface PayService
+{
     /**
      * 校验支付参数
      * @return array
