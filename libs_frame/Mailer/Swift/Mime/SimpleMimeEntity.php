@@ -27,6 +27,8 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
     /** An entity which nests with the same precedence as embedded content */
     const LEVEL_RELATED = 65536;
 
+    protected $userContentType;
+
     /** A collection of Headers for this mime entity */
     private $headers;
 
@@ -43,14 +45,14 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
     private $boundary;
 
     /** Mime types to be used based on the nesting level */
-    private $compositeRanges = array(
-        'multipart/mixed' => array(self::LEVEL_TOP, self::LEVEL_MIXED),
-        'multipart/alternative' => array(self::LEVEL_MIXED, self::LEVEL_ALTERNATIVE),
-        'multipart/related' => array(self::LEVEL_ALTERNATIVE, self::LEVEL_RELATED),
-    );
+    private $compositeRanges = [
+        'multipart/mixed' => [self::LEVEL_TOP, self::LEVEL_MIXED],
+        'multipart/alternative' => [self::LEVEL_MIXED, self::LEVEL_ALTERNATIVE],
+        'multipart/related' => [self::LEVEL_ALTERNATIVE, self::LEVEL_RELATED],
+    ];
 
     /** A set of filter rules to define what level an entity should be nested at */
-    private $compoundLevelFilters = array();
+    private $compoundLevelFilters = [];
 
     /** The nesting level of this entity */
     private $nestingLevel = self::LEVEL_ALTERNATIVE;
@@ -59,28 +61,26 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
     private $cache;
 
     /** Direct descendants of this entity */
-    private $immediateChildren = array();
+    private $immediateChildren = [];
 
     /** All descendants of this entity */
-    private $children = array();
+    private $children = [];
 
     /** The maximum line length of the body of this entity */
     private $maxLineLength = 78;
 
     /** The order in which alternative mime types should appear */
-    private $alternativePartOrder = array(
+    private $alternativePartOrder = [
         'text/plain' => 1,
         'text/html' => 2,
         'multipart/related' => 3,
-    );
+    ];
 
     /** The CID of this entity */
     private $id;
 
     /** The key used for accessing the cache */
     private $cacheKey;
-
-    protected $userContentType;
 
     /**
      * Create a new SimpleMimeEntity with $headers, $encoder and $cache.
@@ -92,12 +92,12 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
      */
     public function __construct(Swift_Mime_SimpleHeaderSet $headers, Swift_Mime_ContentEncoder $encoder, Swift_KeyCache $cache, Swift_IdGenerator $idGenerator)
     {
-        $this->cacheKey = md5(uniqid(getmypid().mt_rand(), true));
+        $this->cacheKey = md5(uniqid(getmypid() . mt_rand(), true));
         $this->cache = $cache;
         $this->headers = $headers;
         $this->idGenerator = $idGenerator;
         $this->setEncoder($encoder);
-        $this->headers->defineOrdering(array('Content-Type', 'Content-Transfer-Encoding'));
+        $this->headers->defineOrdering(['Content-Type', 'Content-Transfer-Encoding']);
 
         // This array specifies that, when the entire MIME document contains
         // $compoundLevel, then for each child within $level, if its Content-Type
@@ -112,16 +112,53 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
         //   )
         // )
 
-        $this->compoundLevelFilters = array(
-            (self::LEVEL_ALTERNATIVE + self::LEVEL_RELATED) => array(
-                self::LEVEL_ALTERNATIVE => array(
+        $this->compoundLevelFilters = [
+            (self::LEVEL_ALTERNATIVE + self::LEVEL_RELATED) => [
+                self::LEVEL_ALTERNATIVE => [
                     'text/plain' => self::LEVEL_ALTERNATIVE,
                     'text/html' => self::LEVEL_RELATED,
-                    ),
-                ),
-            );
+                    ],
+                ],
+            ];
 
         $this->id = $this->idGenerator->generateId();
+    }
+
+    /**
+     * Empties it's own contents from the cache.
+     */
+    public function __destruct()
+    {
+        if ($this->cache instanceof Swift_KeyCache) {
+            $this->cache->clearAll($this->cacheKey);
+        }
+    }
+
+    /**
+     * Returns a string representation of this object.
+     *
+     * @see toString()
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->toString();
+    }
+
+    /**
+     * Make a deep copy of object.
+     */
+    public function __clone()
+    {
+        $this->headers = clone $this->headers;
+        $this->encoder = clone $this->encoder;
+        $this->cacheKey = md5(uniqid(getmypid() . mt_rand(), true));
+        $children = [];
+        foreach ($this->children as $pos => $child) {
+            $children[$pos] = clone $child;
+        }
+        $this->setChildren($children);
     }
 
     /**
@@ -294,15 +331,15 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
     {
         // TODO: Try to refactor this logic
         $compoundLevel = $compoundLevel ?? $this->getCompoundLevel($children);
-        $immediateChildren = array();
-        $grandchildren = array();
+        $immediateChildren = [];
+        $grandchildren = [];
         $newContentType = $this->userContentType;
 
         foreach ($children as $child) {
             $level = $this->getNeededChildLevel($child, $compoundLevel);
             if (empty($immediateChildren)) {
                 //first iteration
-                $immediateChildren = array($child);
+                $immediateChildren = [$child];
             } else {
                 $nextLevel = $this->getNeededChildLevel($immediateChildren[0], $compoundLevel);
                 if ($nextLevel == $level) {
@@ -311,7 +348,7 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
                     // Re-assign immediateChildren to grandchildren
                     $grandchildren = array_merge($grandchildren, $immediateChildren);
                     // Set new children
-                    $immediateChildren = array($child);
+                    $immediateChildren = [$child];
                 } else {
                     $grandchildren[] = $child;
                 }
@@ -420,7 +457,7 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
     public function getBoundary()
     {
         if (!isset($this->boundary)) {
-            $this->boundary = '_=_swift_v4_'.time().'_'.md5(getmypid().mt_rand().uniqid('', true)).'_=_';
+            $this->boundary = '_=_swift_v4_' . time() . '_' . md5(getmypid() . mt_rand() . uniqid('', true)) . '_=_';
         }
 
         return $this->boundary;
@@ -479,6 +516,19 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
     }
 
     /**
+     * Write this entire entity to a {@see Swift_InputByteStream}.
+     *
+     * @param Swift_InputByteStream
+     */
+    public function toByteStream(Swift_InputByteStream $is)
+    {
+        $is->write($this->headers->toString());
+        $is->commit();
+
+        $this->bodyToByteStream($is);
+    }
+
+    /**
      * Get this entire entity as a string.
      *
      * @return string
@@ -491,7 +541,7 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
             if ($this->cache->hasKey($this->cacheKey, 'body')) {
                 $body = $this->cache->getString($this->cacheKey, 'body');
             } else {
-                $body = "\r\n".$this->encoder->encodeString($this->getBody(), 0, $this->getMaxLineLength());
+                $body = "\r\n" . $this->encoder->encodeString($this->getBody(), 0, $this->getMaxLineLength());
                 $this->cache->setString($this->cacheKey, 'body', $body, Swift_KeyCache::MODE_WRITE);
             }
             $string .= $body;
@@ -499,38 +549,13 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
 
         if (!empty($this->immediateChildren)) {
             foreach ($this->immediateChildren as $child) {
-                $string .= "\r\n\r\n--".$this->getBoundary()."\r\n";
+                $string .= "\r\n\r\n--" . $this->getBoundary() . "\r\n";
                 $string .= $child->toString();
             }
-            $string .= "\r\n\r\n--".$this->getBoundary()."--\r\n";
+            $string .= "\r\n\r\n--" . $this->getBoundary() . "--\r\n";
         }
 
         return $string;
-    }
-
-    /**
-     * Returns a string representation of this object.
-     *
-     * @see toString()
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->toString();
-    }
-
-    /**
-     * Write this entire entity to a {@see Swift_InputByteStream}.
-     *
-     * @param Swift_InputByteStream
-     */
-    public function toByteStream(Swift_InputByteStream $is)
-    {
-        $is->write($this->headers->toString());
-        $is->commit();
-
-        $this->bodyToByteStream($is);
     }
 
     /**
@@ -569,10 +594,10 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
 
         if (!empty($this->immediateChildren)) {
             foreach ($this->immediateChildren as $child) {
-                $is->write("\r\n\r\n--".$this->getBoundary()."\r\n");
+                $is->write("\r\n\r\n--" . $this->getBoundary() . "\r\n");
                 $child->toByteStream($is);
             }
-            $is->write("\r\n\r\n--".$this->getBoundary()."--\r\n");
+            $is->write("\r\n\r\n--" . $this->getBoundary() . "--\r\n");
         }
     }
 
@@ -586,6 +611,7 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
 
     /**
      * Get the model data (usually an array or a string) for $field.
+     * @param mixed $field
      */
     protected function getHeaderFieldModel($field)
     {
@@ -596,6 +622,8 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
 
     /**
      * Set the model data for $field.
+     * @param mixed $field
+     * @param mixed $model
      */
     protected function setHeaderFieldModel($field, $model)
     {
@@ -610,6 +638,8 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
 
     /**
      * Get the parameter value of $parameter on $field header.
+     * @param mixed $field
+     * @param mixed $parameter
      */
     protected function getHeaderParameter($field, $parameter)
     {
@@ -620,6 +650,9 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
 
     /**
      * Set the parameter value of $parameter on $field header.
+     * @param mixed $field
+     * @param mixed $parameter
+     * @param mixed $value
      */
     protected function setHeaderParameter($field, $parameter, $value)
     {
@@ -638,7 +671,9 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
     protected function fixHeaders()
     {
         if (count($this->immediateChildren)) {
-            $this->setHeaderParameter('Content-Type', 'boundary',
+            $this->setHeaderParameter(
+                'Content-Type',
+                'boundary',
                 $this->getBoundary()
                 );
             $this->headers->remove('Content-Transfer-Encoding');
@@ -726,7 +761,7 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
 
     private function getNeededChildLevel($child, $compoundLevel)
     {
-        $filter = array();
+        $filter = [];
         foreach ($this->compoundLevelFilters as $bitmask => $rules) {
             if (($compoundLevel & $bitmask) === $bitmask) {
                 $filter = $rules + $filter;
@@ -778,13 +813,13 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
         // Sort in order of preference, if there is one
         if ($shouldSort) {
             // Group the messages by order of preference
-            $sorted = array();
+            $sorted = [];
             foreach ($this->immediateChildren as $child) {
                 $type = $child->getContentType();
                 $level = array_key_exists($type, $this->alternativePartOrder) ? $this->alternativePartOrder[$type] : max($this->alternativePartOrder) + 1;
 
                 if (empty($sorted[$level])) {
-                    $sorted[$level] = array();
+                    $sorted[$level] = [];
                 }
 
                 $sorted[$level][] = $child;
@@ -792,32 +827,7 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
 
             ksort($sorted);
 
-            $this->immediateChildren = array_reduce($sorted, 'array_merge', array());
+            $this->immediateChildren = array_reduce($sorted, 'array_merge', []);
         }
-    }
-
-    /**
-     * Empties it's own contents from the cache.
-     */
-    public function __destruct()
-    {
-        if ($this->cache instanceof Swift_KeyCache) {
-            $this->cache->clearAll($this->cacheKey);
-        }
-    }
-
-    /**
-     * Make a deep copy of object.
-     */
-    public function __clone()
-    {
-        $this->headers = clone $this->headers;
-        $this->encoder = clone $this->encoder;
-        $this->cacheKey = md5(uniqid(getmypid().mt_rand(), true));
-        $children = array();
-        foreach ($this->children as $pos => $child) {
-            $children[$pos] = clone $child;
-        }
-        $this->setChildren($children);
     }
 }

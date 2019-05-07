@@ -12,8 +12,10 @@ use QCloud\CloudBaseCos;
  * 删除存储桶的生命周期配置
  * @package QCloud\Cos
  */
-class BucketLifecycleDelete extends CloudBaseCos {
-    public function __construct(){
+class BucketLifecycleDelete extends CloudBaseCos
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_DELETE);
@@ -21,10 +23,12 @@ class BucketLifecycleDelete extends CloudBaseCos {
         $this->signParams['lifecycle'] = '';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         return $this->getContent();
     }
 }

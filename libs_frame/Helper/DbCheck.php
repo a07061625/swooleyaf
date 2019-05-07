@@ -10,13 +10,15 @@ namespace Helper;
 use Tool\SyPack;
 use Tool\Tool;
 
-class DbCheck {
+class DbCheck
+{
     /**
      * @var string
      */
     private $sendContent = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         $syPack = new SyPack();
         $syPack->setCommandAndData(SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_API_REQ, [
             'api_uri' => '/Index/Index/check',
@@ -26,12 +28,14 @@ class DbCheck {
         unset($syPack);
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function check(array $projects){
+    public function check(array $projects)
+    {
         foreach ($projects as $eProject) {
-            if($eProject['module_type'] == 'rpc'){
+            if ($eProject['module_type'] == 'rpc') {
                 foreach ($eProject['listens'] as $eListen) {
                     Tool::sendSyRpcReq($eListen['host'], $eListen['port'], $this->sendContent);
                 }

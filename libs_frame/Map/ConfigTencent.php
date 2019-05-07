@@ -10,7 +10,8 @@ namespace Map;
 use Constant\ErrorCode;
 use Exception\Map\TencentMapException;
 
-class ConfigTencent {
+class ConfigTencent
+{
     /**
      * 开发密钥
      * @var string
@@ -27,16 +28,19 @@ class ConfigTencent {
      */
     private $domain = '';
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @return string
      */
-    public function getKey() : string {
+    public function getKey() : string
+    {
         return $this->key;
     }
 
@@ -44,8 +48,9 @@ class ConfigTencent {
      * @param string $key
      * @throws \Exception\Map\TencentMapException
      */
-    public function setKey(string $key) {
-        if(preg_match('/^(\-[0-9A-Z]{5}){6}$/', '-' . $key) > 0){
+    public function setKey(string $key)
+    {
+        if (preg_match('/^(\-[0-9A-Z]{5}){6}$/', '-' . $key) > 0) {
             $this->key = $key;
         } else {
             throw new TencentMapException('密钥不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
@@ -55,7 +60,8 @@ class ConfigTencent {
     /**
      * @return string
      */
-    public function getServerIp() : string {
+    public function getServerIp() : string
+    {
         return $this->serverIp;
     }
 
@@ -63,8 +69,9 @@ class ConfigTencent {
      * @param string $serverIp
      * @throws \Exception\Map\TencentMapException
      */
-    public function setServerIp(string $serverIp){
-        if(preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $serverIp) > 0){
+    public function setServerIp(string $serverIp)
+    {
+        if (preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $serverIp) > 0) {
             $this->serverIp = $serverIp;
         } else {
             throw new TencentMapException('服务器IP不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
@@ -74,7 +81,8 @@ class ConfigTencent {
     /**
      * @return string
      */
-    public function getDomain() : string {
+    public function getDomain() : string
+    {
         return $this->domain;
     }
 
@@ -82,8 +90,9 @@ class ConfigTencent {
      * @param string $domain
      * @throws \Exception\Map\TencentMapException
      */
-    public function setDomain(string $domain){
-        if(preg_match('/^(http|https)\:\/\/\S+$/', $domain) > 0){
+    public function setDomain(string $domain)
+    {
+        if (preg_match('/^(http|https)\:\/\/\S+$/', $domain) > 0) {
             $this->domain = $domain;
         } else {
             throw new TencentMapException('域名不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);

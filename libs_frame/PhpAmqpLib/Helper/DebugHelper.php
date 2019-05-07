@@ -21,8 +21,11 @@ class DebugHelper
     /**
      * @param string $PROTOCOL_CONSTANTS_CLASS
      */
-    public function __construct($PROTOCOL_CONSTANTS_CLASS) {
-        if(!defined('STDOUT')) define('STDOUT', fopen('php://stdout', 'w'));
+    public function __construct($PROTOCOL_CONSTANTS_CLASS)
+    {
+        if (!defined('STDOUT')) {
+            define('STDOUT', fopen('php://stdout', 'w'));
+        }
 
         $this->debug = defined('AMQP_DEBUG') ? AMQP_DEBUG : false;
         $this->debug_output = defined('AMQP_DEBUG_OUTPUT') ? AMQP_DEBUG_OUTPUT : STDOUT;
@@ -32,7 +35,8 @@ class DebugHelper
     /**
      * @param string $msg
      */
-    public function debug_msg($msg) {
+    public function debug_msg($msg)
+    {
         if ($this->debug) {
             $this->print_msg($msg);
         }
@@ -41,7 +45,8 @@ class DebugHelper
     /**
      * @param array $allowed_methods
      */
-    public function debug_allowed_methods($allowed_methods) {
+    public function debug_allowed_methods($allowed_methods)
+    {
         if ($allowed_methods) {
             $msg = 'waiting for ' . implode(', ', $allowed_methods);
         } else {
@@ -53,7 +58,8 @@ class DebugHelper
     /**
      * @param string $method_sig
      */
-    public function debug_method_signature1($method_sig) {
+    public function debug_method_signature1($method_sig)
+    {
         $this->debug_method_signature('< %s:', $method_sig);
     }
 
@@ -61,7 +67,8 @@ class DebugHelper
      * @param string $msg
      * @param string $method_sig
      */
-    public function debug_method_signature($msg, $method_sig) {
+    public function debug_method_signature($msg, $method_sig)
+    {
         if ($this->debug) {
             $protocolClass = $this->PROTOCOL_CONSTANTS_CLASS;
             $this->debug_msg(sprintf(
@@ -75,7 +82,8 @@ class DebugHelper
     /**
      * @param string $data
      */
-    public function debug_hexdump($data) {
+    public function debug_hexdump($data)
+    {
         if ($this->debug) {
             $this->debug_msg(sprintf(
                 '< [hex]: %s%s',
@@ -92,7 +100,8 @@ class DebugHelper
      * @param array $mechanisms
      * @param array $locales
      */
-    public function debug_connection_start($version_major, $version_minor, $server_properties, $mechanisms, $locales) {
+    public function debug_connection_start($version_major, $version_minor, $server_properties, $mechanisms, $locales)
+    {
         if ($this->debug) {
             $this->debug_msg(sprintf(
                 'Start from server, version: %d.%d, properties: %s, mechanisms: %s, locales: %s',
@@ -108,7 +117,8 @@ class DebugHelper
     /**
      * @param string $s
      */
-    protected function print_msg($s) {
+    protected function print_msg($s)
+    {
         fwrite($this->debug_output, $s . PHP_EOL);
     }
 }

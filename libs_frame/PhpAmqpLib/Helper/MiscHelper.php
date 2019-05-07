@@ -36,7 +36,7 @@ class MiscHelper
      */
     public static function splitSecondsMicroseconds($number)
     {
-        return array(floor($number), ($number - floor($number)) * 1000000);
+        return [floor($number), ($number - floor($number)) * 1000000];
     }
 
     /**
@@ -74,7 +74,7 @@ class MiscHelper
             // Convert to hexidecimal
             // We must use concatenation here because the $hexFormat value
             // is needed for sprintf() to parse the format
-            $hexi .= sprintf('%02' .  $hexFormat . ' ', ord($data[$i]));
+            $hexi .= sprintf('%02' . $hexFormat . ' ', ord($data[$i]));
 
             // Replace non-viewable bytes with '.'
             if (ord($data[$i]) >= 32) {
@@ -125,7 +125,7 @@ class MiscHelper
      */
     public static function dump_table($table)
     {
-        $tokens = array();
+        $tokens = [];
         foreach ($table as $name => $value) {
             switch ($value[0]) {
                 case 'D':

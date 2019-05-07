@@ -20,69 +20,8 @@ class AMQPWriter extends AbstractClient
         parent::__construct();
 
         $this->out = '';
-        $this->bits = array();
+        $this->bits = [];
         $this->bitcount = 0;
-    }
-
-    /**
-     * Packs integer into raw byte string in big-endian order
-     * Supports positive and negative ints represented as PHP int or string (except scientific notation)
-     *
-     * Floats has some precision issues and so intentionally not supported.
-     * Beware that floats out of PHP_INT_MAX range will be represented in scientific (exponential) notation when casted to string
-     *
-     * @param int|string $x Value to pack
-     * @param int $bytes Must be multiply of 2
-     * @return string
-     */
-    private static function packBigEndian($x, $bytes)
-    {
-        if (($bytes <= 0) || ($bytes % 2)) {
-            throw new AMQPInvalidArgumentException(sprintf('Expected bytes count must be multiply of 2, %s given', $bytes));
-        }
-
-        $ox = $x; //purely for dbg purposes (overflow exception)
-        $isNeg = false;
-
-        if (is_int($x)) {
-            if ($x < 0) {
-                $isNeg = true;
-                $x = abs($x);
-            }
-        } elseif (is_string($x)) {
-            if (!is_numeric($x)) {
-                throw new AMQPInvalidArgumentException(sprintf('Unknown numeric string format: %s', $x));
-            }
-            $x = preg_replace('/^-/', '', $x, 1, $isNeg);
-        } else {
-            throw new AMQPInvalidArgumentException('Only integer and numeric string values are supported');
-        }
-
-        if ($isNeg) {
-            $x = bcadd($x, -1, 0);
-        } //in negative domain starting point is -1, not 0
-
-        $res = array();
-        for ($b = 0; $b < $bytes; $b += 2) {
-            $chnk = (int) bcmod($x, 65536);
-            $x = bcdiv($x, 65536, 0);
-            $res[] = pack('n', $isNeg ? ~$chnk : $chnk);
-        }
-
-        if ($x || ($isNeg && ($chnk & 0x8000))) {
-            throw new AMQPOutOfBoundsException(sprintf('Overflow detected while attempting to pack %s into %s bytes', $ox, $bytes));
-        }
-
-        return implode(array_reverse($res));
-    }
-
-    private function flushbits()
-    {
-        if (!empty($this->bits)) {
-            $this->out .= implode('', array_map('chr', $this->bits));
-            $this->bits = array();
-            $this->bitcount = 0;
-        }
     }
 
     /**
@@ -242,22 +181,6 @@ class AMQPWriter extends AbstractClient
     }
 
     /**
-     * @param int $n
-     * @return $this
-     */
-    private function write_signed_long($n)
-    {
-        if (($n < -2147483648) || ($n > 2147483647)) {
-            throw new AMQPInvalidArgumentException('Signed long out of range: ' . $n);
-        }
-
-        //on my 64bit debian this approach is slightly faster than splitIntoQuads()
-        $this->out .= $this->correctEndianness(pack('l', $n));
-
-        return $this;
-    }
-
-    /**
      * Write an integer as an unsigned 64-bit value
      *
      * @param int $n
@@ -320,17 +243,6 @@ class AMQPWriter extends AbstractClient
         }
 
         return $this;
-    }
-
-    /**
-     * @param int|string $n
-     * @return integer[]
-     */
-    private function splitIntoQuads($n)
-    {
-        $n = (int) $n;
-
-        return array($n >> 32, $n & 0x00000000ffffffff);
     }
 
     /**
@@ -418,7 +330,7 @@ class AMQPWriter extends AbstractClient
     {
         $typeIsSym = !($d instanceof AMQPTable); //purely for back-compat purposes
 
-        $table_data = new AMQPWriter();
+        $table_data = new self();
         foreach ($d as $k => $va) {
             list($ftype, $v) = $va;
             $table_data->write_shortstr($k);
@@ -436,11 +348,100 @@ class AMQPWriter extends AbstractClient
      * for compat with method mapping used by AMQPMessage
      *
      * @param AMQPTable|array
+     * @param mixed $d
      * @return $this
      */
     public function write_table_object($d)
     {
         return $this->write_table($d);
+    }
+
+    /**
+     * Packs integer into raw byte string in big-endian order
+     * Supports positive and negative ints represented as PHP int or string (except scientific notation)
+     *
+     * Floats has some precision issues and so intentionally not supported.
+     * Beware that floats out of PHP_INT_MAX range will be represented in scientific (exponential) notation when casted to string
+     *
+     * @param int|string $x Value to pack
+     * @param int $bytes Must be multiply of 2
+     * @return string
+     */
+    private static function packBigEndian($x, $bytes)
+    {
+        if (($bytes <= 0) || ($bytes % 2)) {
+            throw new AMQPInvalidArgumentException(sprintf('Expected bytes count must be multiply of 2, %s given', $bytes));
+        }
+
+        $ox = $x; //purely for dbg purposes (overflow exception)
+        $isNeg = false;
+
+        if (is_int($x)) {
+            if ($x < 0) {
+                $isNeg = true;
+                $x = abs($x);
+            }
+        } elseif (is_string($x)) {
+            if (!is_numeric($x)) {
+                throw new AMQPInvalidArgumentException(sprintf('Unknown numeric string format: %s', $x));
+            }
+            $x = preg_replace('/^-/', '', $x, 1, $isNeg);
+        } else {
+            throw new AMQPInvalidArgumentException('Only integer and numeric string values are supported');
+        }
+
+        if ($isNeg) {
+            $x = bcadd($x, -1, 0);
+        } //in negative domain starting point is -1, not 0
+
+        $res = [];
+        for ($b = 0; $b < $bytes; $b += 2) {
+            $chnk = (int) bcmod($x, 65536);
+            $x = bcdiv($x, 65536, 0);
+            $res[] = pack('n', $isNeg ? ~$chnk : $chnk);
+        }
+
+        if ($x || ($isNeg && ($chnk & 0x8000))) {
+            throw new AMQPOutOfBoundsException(sprintf('Overflow detected while attempting to pack %s into %s bytes', $ox, $bytes));
+        }
+
+        return implode(array_reverse($res));
+    }
+
+    private function flushbits()
+    {
+        if (!empty($this->bits)) {
+            $this->out .= implode('', array_map('chr', $this->bits));
+            $this->bits = [];
+            $this->bitcount = 0;
+        }
+    }
+
+    /**
+     * @param int $n
+     * @return $this
+     */
+    private function write_signed_long($n)
+    {
+        if (($n < -2147483648) || ($n > 2147483647)) {
+            throw new AMQPInvalidArgumentException('Signed long out of range: ' . $n);
+        }
+
+        //on my 64bit debian this approach is slightly faster than splitIntoQuads()
+        $this->out .= $this->correctEndianness(pack('l', $n));
+
+        return $this;
+    }
+
+    /**
+     * @param int|string $n
+     * @return integer[]
+     */
+    private function splitIntoQuads($n)
+    {
+        $n = (int) $n;
+
+        return [$n >> 32, $n & 0x00000000ffffffff];
     }
 
     /**

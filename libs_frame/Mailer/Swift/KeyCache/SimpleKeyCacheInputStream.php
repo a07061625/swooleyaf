@@ -28,6 +28,15 @@ class Swift_KeyCache_SimpleKeyCacheInputStream implements Swift_KeyCache_KeyCach
     private $writeThrough = null;
 
     /**
+     * Any implementation should be cloneable, allowing the clone to access a
+     * separate $nsKey and $itemKey.
+     */
+    public function __clone()
+    {
+        $this->writeThrough = null;
+    }
+
+    /**
      * Set the KeyCache to wrap.
      *
      * @param Swift_KeyCache $keyCache
@@ -56,7 +65,10 @@ class Swift_KeyCache_SimpleKeyCacheInputStream implements Swift_KeyCache_KeyCach
     public function write($bytes, Swift_InputByteStream $is = null)
     {
         $this->keyCache->setString(
-            $this->nsKey, $this->itemKey, $bytes, Swift_KeyCache::MODE_APPEND
+            $this->nsKey,
+            $this->itemKey,
+            $bytes,
+            Swift_KeyCache::MODE_APPEND
             );
         if (isset($is)) {
             $is->write($bytes);
@@ -114,14 +126,5 @@ class Swift_KeyCache_SimpleKeyCacheInputStream implements Swift_KeyCache_KeyCach
     public function setItemKey($itemKey)
     {
         $this->itemKey = $itemKey;
-    }
-
-    /**
-     * Any implementation should be cloneable, allowing the clone to access a
-     * separate $nsKey and $itemKey.
-     */
-    public function __clone()
-    {
-        $this->writeThrough = null;
     }
 }

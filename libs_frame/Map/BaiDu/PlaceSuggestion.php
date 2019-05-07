@@ -12,7 +12,8 @@ use Exception\Map\BaiduMapException;
 use Map\MapBaseBaiDu;
 use Tool\Tool;
 
-class PlaceSuggestion extends MapBaseBaiDu {
+class PlaceSuggestion extends MapBaseBaiDu
+{
     /**
      * 关键词
      * @var string
@@ -44,7 +45,8 @@ class PlaceSuggestion extends MapBaseBaiDu {
      */
     private $coordTypeReturn = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUri = '/place/v2/suggestion';
         $this->reqData['city_limit'] = 'true';
@@ -53,15 +55,17 @@ class PlaceSuggestion extends MapBaseBaiDu {
         $this->reqData['timestamp'] = Tool::getNowTime();
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $keyword
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setKeyword(string $keyword){
-        if(strlen($keyword) > 0){
+    public function setKeyword(string $keyword)
+    {
+        if (strlen($keyword) > 0) {
             $this->reqData['query'] = $keyword;
         } else {
             throw new BaiduMapException('关键词不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -72,8 +76,9 @@ class PlaceSuggestion extends MapBaseBaiDu {
      * @param string $region
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setRegion(string $region){
-        if(strlen($region) > 0){
+    public function setRegion(string $region)
+    {
+        if (strlen($region) > 0) {
             $this->reqData['region'] = $region;
         } else {
             throw new BaiduMapException('区域不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -84,8 +89,9 @@ class PlaceSuggestion extends MapBaseBaiDu {
      * @param string $cityLimit
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setCityLimit(string $cityLimit){
-        if(in_array($cityLimit, ['true', 'false'])){
+    public function setCityLimit(string $cityLimit)
+    {
+        if (in_array($cityLimit, ['true', 'false'], true)) {
             $this->reqData['city_limit'] = $cityLimit;
         } else {
             throw new BaiduMapException('区域限制不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -96,7 +102,8 @@ class PlaceSuggestion extends MapBaseBaiDu {
      * @param double $lat
      * @param double $lng
      */
-    public function setLocation($lat, $lng){
+    public function setLocation($lat, $lng)
+    {
         $this->reqData['location'] = $lat . ',' . $lng;
     }
 
@@ -104,8 +111,9 @@ class PlaceSuggestion extends MapBaseBaiDu {
      * @param int $coordType
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setCoordType(int $coordType){
-        if(in_array($coordType, [1, 2, 3, 4,])){
+    public function setCoordType(int $coordType)
+    {
+        if (in_array($coordType, [1, 2, 3, 4,], true)) {
             $this->reqData['coord_type'] = $coordType;
         } else {
             throw new BaiduMapException('坐标类型不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -116,18 +124,20 @@ class PlaceSuggestion extends MapBaseBaiDu {
      * @param string $coordTypeReturn
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setCoordTypeReturn(string $coordTypeReturn){
-        if(strlen($coordTypeReturn) > 0){
+    public function setCoordTypeReturn(string $coordTypeReturn)
+    {
+        if (strlen($coordTypeReturn) > 0) {
             $this->reqData['ret_coordtype'] = $coordTypeReturn;
         } else {
             throw new BaiduMapException('返回坐标类型不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['query'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['query'])) {
             throw new BaiduMapException('关键词不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
-        } else if(!isset($this->reqData['region'])){
+        } elseif (!isset($this->reqData['region'])) {
             throw new BaiduMapException('地区不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 

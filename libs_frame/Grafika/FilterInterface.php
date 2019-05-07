@@ -5,13 +5,12 @@ namespace Grafika;
  * Interface FilterInterface
  * @package Grafika
  */
-interface FilterInterface {
-
+interface FilterInterface
+{
     /**
      * @param ImageInterface $image
      *
      * @return ImageInterface
      */
-    public function apply( $image );
-
+    public function apply($image);
 }

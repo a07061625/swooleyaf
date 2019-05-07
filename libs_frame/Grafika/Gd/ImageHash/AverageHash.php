@@ -22,7 +22,6 @@ use Grafika\Gd\Image;
  */
 class AverageHash
 {
-
     /**
      * Generate and get the average hash of the image.
      *
@@ -43,7 +42,7 @@ class AverageHash
         $gd = $image->getCore();
 
         // Create an array of greyscale pixel values.
-        $pixels = array();
+        $pixels = [];
         for ($y = 0; $y < $height; $y++) {
             for ($x = 0; $x < $width; $x++) {
                 $rgba = imagecolorat($gd, $x, $y);

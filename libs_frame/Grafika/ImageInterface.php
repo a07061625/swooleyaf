@@ -7,7 +7,6 @@ namespace Grafika;
  */
 interface ImageInterface
 {
-
     /**
      * Output a binary raw dump of an image in a specified format.
      *
@@ -76,5 +75,4 @@ interface ImageInterface
      * @return bool True if animated GIF or false otherwise.
      */
     public function isAnimated();
-
 }

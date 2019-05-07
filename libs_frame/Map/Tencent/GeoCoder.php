@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Exception\Map\TencentMapException;
 use Map\MapBaseTencent;
 
-class GeoCoder extends MapBaseTencent {
+class GeoCoder extends MapBaseTencent
+{
     /**
      * 地址
      * @var string
@@ -23,21 +24,24 @@ class GeoCoder extends MapBaseTencent {
      */
     private $region = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUrl = 'https://apis.map.qq.com/ws/geocoder/v1/';
         $this->rspDataKey = 'result';
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $address
      * @throws \Exception\Map\TencentMapException
      */
-    public function setAddress(string $address){
-        if(strlen($address) > 0){
+    public function setAddress(string $address)
+    {
+        if (strlen($address) > 0) {
             $this->reqData['address'] = $address;
         } else {
             throw new TencentMapException('地址不能为空', ErrorCode::MAP_TENCENT_PARAM_ERROR);
@@ -47,12 +51,14 @@ class GeoCoder extends MapBaseTencent {
     /**
      * @param string $region
      */
-    public function setRegion(string $region){
+    public function setRegion(string $region)
+    {
         $this->reqData['region'] = $region;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['address'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['address'])) {
             throw new TencentMapException('地址不能为空', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }
 

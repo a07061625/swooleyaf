@@ -11,10 +11,16 @@ use Constant\ErrorCode;
 use DesignPatterns\Singletons\MapSingleton;
 use Exception\Map\TencentMapException;
 
-abstract class MapBaseTencent extends MapBase {
+abstract class MapBaseTencent extends MapBase
+{
     const GET_TYPE_SERVER = 'server'; //获取类型-服务端
     const GET_TYPE_MOBILE = 'mobile'; //获取类型-移动端
     const GET_TYPE_BROWSE = 'browse'; //获取类型-网页端
+    /**
+     * 服务请求地址
+     * @var string
+     */
+    protected $serviceUrl = '';
 
     /**
      * 返回格式,默认JSON
@@ -46,13 +52,9 @@ abstract class MapBaseTencent extends MapBase {
      * @var string
      */
     private $getType = '';
-    /**
-     * 服务请求地址
-     * @var string
-     */
-    protected $serviceUrl = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $config = MapSingleton::getInstance()->getTencentConfig();
         $this->serverIp = $config->getServerIp();
@@ -66,9 +68,10 @@ abstract class MapBaseTencent extends MapBase {
      * @param string $appIdentifier
      * @throws \Exception\Map\TencentMapException
      */
-    public function setAppIdentifier(string $appIdentifier) {
+    public function setAppIdentifier(string $appIdentifier)
+    {
         $identifier = trim($appIdentifier);
-        if(strlen($identifier) > 0){
+        if (strlen($identifier) > 0) {
             $this->appIdentifier = $identifier;
         } else {
             throw new TencentMapException('应用标识符不能为空', ErrorCode::MAP_TENCENT_PARAM_ERROR);
@@ -79,15 +82,17 @@ abstract class MapBaseTencent extends MapBase {
      * @param string $getType
      * @throws \Exception\Map\TencentMapException
      */
-    public function setGetType(string $getType){
-        if(in_array($getType, [self::GET_TYPE_MOBILE, self::GET_TYPE_SERVER, self::GET_TYPE_BROWSE])){
+    public function setGetType(string $getType)
+    {
+        if (in_array($getType, [self::GET_TYPE_MOBILE, self::GET_TYPE_SERVER, self::GET_TYPE_BROWSE], true)) {
             $this->getType = $getType;
         } else {
             throw new TencentMapException('获取类型不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }
     }
 
-    protected function getContent() : array {
+    protected function getContent() : array
+    {
         switch ($this->getType) {
             case self::GET_TYPE_BROWSE:
                 $this->curlConfigs[CURLOPT_REFERER] = $this->webUrl;
@@ -100,7 +105,7 @@ abstract class MapBaseTencent extends MapBase {
                 ];
                 break;
             case self::GET_TYPE_MOBILE:
-                if(strlen($this->appIdentifier) == 0){
+                if (strlen($this->appIdentifier) == 0) {
                     throw new TencentMapException('应用标识符不能为空', ErrorCode::MAP_TENCENT_PARAM_ERROR);
                 }
 

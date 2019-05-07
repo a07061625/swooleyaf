@@ -9,7 +9,6 @@ use Grafika\Color;
  */
 abstract class QuadraticBezier
 {
-
     /**
      * Starting point.
      * @var array
@@ -85,5 +84,4 @@ abstract class QuadraticBezier
     {
         return $this->color;
     }
-    
 }

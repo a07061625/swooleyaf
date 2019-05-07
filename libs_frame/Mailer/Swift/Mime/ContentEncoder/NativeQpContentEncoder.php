@@ -52,7 +52,8 @@ class Swift_Mime_ContentEncoder_NativeQpContentEncoder implements Swift_Mime_Con
     {
         if ($this->charset !== 'utf-8') {
             throw new RuntimeException(
-                sprintf('Charset "%s" not supported. NativeQpContentEncoder only supports "utf-8"', $this->charset));
+                sprintf('Charset "%s" not supported. NativeQpContentEncoder only supports "utf-8"', $this->charset)
+            );
         }
 
         $string = '';
@@ -89,7 +90,8 @@ class Swift_Mime_ContentEncoder_NativeQpContentEncoder implements Swift_Mime_Con
     {
         if ($this->charset !== 'utf-8') {
             throw new RuntimeException(
-                sprintf('Charset "%s" not supported. NativeQpContentEncoder only supports "utf-8"', $this->charset));
+                sprintf('Charset "%s" not supported. NativeQpContentEncoder only supports "utf-8"', $this->charset)
+            );
         }
 
         return $this->standardize(quoted_printable_encode($string));
@@ -107,7 +109,7 @@ class Swift_Mime_ContentEncoder_NativeQpContentEncoder implements Swift_Mime_Con
         // transform CR or LF to CRLF
         $string = preg_replace('~=0D(?!=0A)|(?<!=0D)=0A~', '=0D=0A', $string);
         // transform =0D=0A to CRLF
-        $string = str_replace(array("\t=0D=0A", ' =0D=0A', '=0D=0A'), array("=09\r\n", "=20\r\n", "\r\n"), $string);
+        $string = str_replace(["\t=0D=0A", ' =0D=0A', '=0D=0A'], ["=09\r\n", "=20\r\n", "\r\n"], $string);
 
         switch ($end = ord(substr($string, -1))) {
             case 0x09:

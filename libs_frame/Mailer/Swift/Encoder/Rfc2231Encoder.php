@@ -33,6 +33,14 @@ class Swift_Encoder_Rfc2231Encoder implements Swift_Encoder
     }
 
     /**
+     * Make a deep copy of object.
+     */
+    public function __clone()
+    {
+        $this->charStream = clone $this->charStream;
+    }
+
+    /**
      * Takes an unencoded string and produces a string encoded according to
      * RFC 2231 from it.
      *
@@ -44,7 +52,7 @@ class Swift_Encoder_Rfc2231Encoder implements Swift_Encoder
      */
     public function encodeString($string, $firstLineOffset = 0, $maxLineLength = 0)
     {
-        $lines = array();
+        $lines = [];
         $lineCount = 0;
         $lines[] = '';
         $currentLine = &$lines[$lineCount++];
@@ -61,7 +69,7 @@ class Swift_Encoder_Rfc2231Encoder implements Swift_Encoder
         while (false !== $char = $this->charStream->read(4)) {
             $encodedChar = rawurlencode($char);
             if (0 != strlen($currentLine)
-                && strlen($currentLine.$encodedChar) > $thisLineLength) {
+                && strlen($currentLine . $encodedChar) > $thisLineLength) {
                 $lines[] = '';
                 $currentLine = &$lines[$lineCount++];
                 $thisLineLength = $maxLineLength;
@@ -80,13 +88,5 @@ class Swift_Encoder_Rfc2231Encoder implements Swift_Encoder
     public function charsetChanged($charset)
     {
         $this->charStream->setCharacterSet($charset);
-    }
-
-    /**
-     * Make a deep copy of object.
-     */
-    public function __clone()
-    {
-        $this->charStream = clone $this->charStream;
     }
 }

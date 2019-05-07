@@ -48,11 +48,11 @@ class Swift_Transport_Esmtp_Auth_XOAuth2Authenticator implements Swift_Transport
     {
         try {
             $param = $this->constructXOAuth2Params($email, $token);
-            $agent->executeCommand('AUTH XOAUTH2 '.$param."\r\n", array(235));
+            $agent->executeCommand('AUTH XOAUTH2 ' . $param . "\r\n", [235]);
 
             return true;
         } catch (Swift_TransportException $e) {
-            $agent->executeCommand("RSET\r\n", array(250));
+            $agent->executeCommand("RSET\r\n", [250]);
 
             return false;
         }
@@ -62,6 +62,8 @@ class Swift_Transport_Esmtp_Auth_XOAuth2Authenticator implements Swift_Transport
      * Construct the auth parameter.
      *
      * @see https://developers.google.com/google-apps/gmail/xoauth2_protocol#the_sasl_xoauth2_mechanism
+     * @param mixed $email
+     * @param mixed $token
      */
     protected function constructXOAuth2Params($email, $token)
     {

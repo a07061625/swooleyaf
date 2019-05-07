@@ -11,25 +11,27 @@ use Constant\ErrorCode;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-final class MapUtilTencent extends MapUtilBase {
+final class MapUtilTencent extends MapUtilBase
+{
     use SimpleTrait;
 
-    public static function sendServiceRequest(MapBaseTencent $mapBase){
+    public static function sendServiceRequest(MapBaseTencent $mapBase)
+    {
         $resArr = [
             'code' => 0,
         ];
 
         $sendRes = self::sendCurl($mapBase->getDetail());
-        if($sendRes === false){
+        if ($sendRes === false) {
             $resArr['code'] = ErrorCode::MAP_TENCENT_PARAM_ERROR;
             $resArr['message'] = '发送请求出错';
         }
 
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['status']) && ($sendData['status'] == 0)){
+        if (isset($sendData['status']) && ($sendData['status'] == 0)) {
             $rspKey = $mapBase->getRspDataKey();
             $resArr['data'] = strlen($rspKey) > 0 ? $sendData[$rspKey] : $sendData;
-        } else if(isset($sendData['message'])){
+        } elseif (isset($sendData['message'])) {
             $resArr['code'] = ErrorCode::MAP_TENCENT_PARAM_ERROR;
             $resArr['message'] = $sendData['message'];
         } else {

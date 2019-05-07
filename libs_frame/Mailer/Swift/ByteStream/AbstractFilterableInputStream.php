@@ -25,7 +25,7 @@ abstract class Swift_ByteStream_AbstractFilterableInputStream implements Swift_I
      *
      * @var Swift_StreamFilter[]
      */
-    private $filters = array();
+    private $filters = [];
 
     /**
      * A buffer for writing.
@@ -37,19 +37,7 @@ abstract class Swift_ByteStream_AbstractFilterableInputStream implements Swift_I
      *
      * @var Swift_InputByteStream[]
      */
-    private $mirrors = array();
-
-    /**
-     * Commit the given bytes to the storage medium immediately.
-     *
-     * @param string $bytes
-     */
-    abstract protected function doCommit($bytes);
-
-    /**
-     * Flush any buffers/content with immediate effect.
-     */
-    abstract protected function flush();
+    private $mirrors = [];
 
     /**
      * Add a StreamFilter to this InputByteStream.
@@ -156,6 +144,18 @@ abstract class Swift_ByteStream_AbstractFilterableInputStream implements Swift_I
             $stream->flushBuffers();
         }
     }
+
+    /**
+     * Commit the given bytes to the storage medium immediately.
+     *
+     * @param string $bytes
+     */
+    abstract protected function doCommit($bytes);
+
+    /**
+     * Flush any buffers/content with immediate effect.
+     */
+    abstract protected function flush();
 
     /** Run $bytes through all filters */
     private function filter($bytes)

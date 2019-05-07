@@ -14,7 +14,8 @@ use QCloud\CloudBaseCos;
  * 获取特定上传事件中已上传的块
  * @package QCloud\Cos
  */
-class PartList extends CloudBaseCos {
+class PartList extends CloudBaseCos
+{
     /**
      * 对象名称
      * @var string
@@ -36,7 +37,8 @@ class PartList extends CloudBaseCos {
      */
     private $limit = 0;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_GET);
@@ -45,15 +47,17 @@ class PartList extends CloudBaseCos {
         $this->reqData['max-parts'] = 20;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $objectKey
      * @throws \Exception\QCloud\CosException
      */
-    public function setObjectKey(string $objectKey){
-        if(strlen($objectKey) > 0){
+    public function setObjectKey(string $objectKey)
+    {
+        if (strlen($objectKey) > 0) {
             $this->reqUri = '/' . $objectKey;
             $this->objectKey = $objectKey;
         } else {
@@ -65,8 +69,9 @@ class PartList extends CloudBaseCos {
      * @param string $uploadId
      * @throws \Exception\QCloud\CosException
      */
-    public function setUploadId(string $uploadId){
-        if(strlen($uploadId) > 0){
+    public function setUploadId(string $uploadId)
+    {
+        if (strlen($uploadId) > 0) {
             $this->signParams['uploadid'] = $uploadId;
             $this->reqData['uploadId'] = $uploadId;
         } else {
@@ -78,9 +83,10 @@ class PartList extends CloudBaseCos {
      * @param int $startIndex
      * @throws \Exception\QCloud\CosException
      */
-    public function setStartIndex(int $startIndex){
+    public function setStartIndex(int $startIndex)
+    {
         $this->startIndex = $startIndex;
-        if($startIndex > 0){
+        if ($startIndex > 0) {
             $this->reqData['part-number-marker'] = $startIndex;
         } else {
             throw new CosException('起始索引不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
@@ -91,19 +97,21 @@ class PartList extends CloudBaseCos {
      * @param int $limit
      * @throws \Exception\QCloud\CosException
      */
-    public function setLimit(int $limit){
-        if(($limit > 0) && ($limit <= 1000)){
+    public function setLimit(int $limit)
+    {
+        if (($limit > 0) && ($limit <= 1000)) {
             $this->reqData['max-parts'] = $limit;
         } else {
             throw new CosException('条目数不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(strlen($this->objectKey) == 0){
+    public function getDetail() : array
+    {
+        if (strlen($this->objectKey) == 0) {
             throw new CosException('对象名称不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
-        if(!isset($this->reqData['uploadId'])){
+        if (!isset($this->reqData['uploadId'])) {
             throw new CosException('上传ID不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
         $this->setReqQuery($this->reqData);

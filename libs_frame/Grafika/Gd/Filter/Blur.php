@@ -10,7 +10,6 @@ use Grafika\Gd\Image;
  */
 class Blur implements FilterInterface
 {
-
     /**
      * @var int
      */
@@ -32,7 +31,7 @@ class Blur implements FilterInterface
      */
     public function apply($image)
     {
-        for ($i=0; $i < $this->amount; $i++) {
+        for ($i = 0; $i < $this->amount; $i++) {
             imagefilter($image->getCore(), IMG_FILTER_GAUSSIAN_BLUR);
         }
         return $image;

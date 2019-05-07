@@ -10,7 +10,8 @@ namespace Map;
 use Constant\ErrorCode;
 use Exception\Map\BaiduMapException;
 
-class ConfigBaiDu {
+class ConfigBaiDu
+{
     /**
      * 开发密钥
      * @var string
@@ -22,16 +23,19 @@ class ConfigBaiDu {
      */
     private $serverIp = '';
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @return string
      */
-    public function getAk() : string {
+    public function getAk() : string
+    {
         return $this->ak;
     }
 
@@ -39,8 +43,9 @@ class ConfigBaiDu {
      * @param string $ak
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setAk(string $ak){
-        if(ctype_alnum($ak) && (strlen($ak) == 32)){
+    public function setAk(string $ak)
+    {
+        if (ctype_alnum($ak) && (strlen($ak) == 32)) {
             $this->ak = $ak;
         } else {
             throw new BaiduMapException('密钥不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -50,7 +55,8 @@ class ConfigBaiDu {
     /**
      * @return string
      */
-    public function getServerIp() : string {
+    public function getServerIp() : string
+    {
         return $this->serverIp;
     }
 
@@ -58,8 +64,9 @@ class ConfigBaiDu {
      * @param string $serverIp
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setServerIp(string $serverIp){
-        if(preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $serverIp) > 0){
+    public function setServerIp(string $serverIp)
+    {
+        if (preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $serverIp) > 0) {
             $this->serverIp = $serverIp;
         } else {
             throw new BaiduMapException('服务器IP不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);

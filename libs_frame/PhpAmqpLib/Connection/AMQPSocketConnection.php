@@ -50,7 +50,8 @@ class AMQPSocketConnection extends AbstractConnection
         );
     }
 
-    protected static function try_create_connection($host, $port, $user, $password, $vhost, $options){
+    protected static function try_create_connection($host, $port, $user, $password, $vhost, $options)
+    {
         $insist = isset($options['insist']) ?
                         $options['insist'] : false;
         $login_method = isset($options['login_method']) ?

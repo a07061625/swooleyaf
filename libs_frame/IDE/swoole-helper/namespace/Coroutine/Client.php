@@ -11,23 +11,28 @@ class Client
     const MSG_DONTWAIT = 64;
     const MSG_WAITALL = 256;
 
-
     /**
      * @param $type[required]
      * @return mixed
      */
-    public function __construct($type){}
+    public function __construct($type)
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function __destruct(){}
+    public function __destruct()
+    {
+    }
 
     /**
      * @param $settings[required]
      * @return mixed
      */
-    public function set($settings){}
+    public function set($settings)
+    {
+    }
 
     /**
      * @param $host[required]
@@ -36,25 +41,33 @@ class Client
      * @param $sock_flag[optional]
      * @return mixed
      */
-    public function connect($host, $port=null, $timeout=null, $sock_flag=null){}
+    public function connect($host, $port = null, $timeout = null, $sock_flag = null)
+    {
+    }
 
     /**
      * @param $timeout[optional]
      * @return mixed
      */
-    public function recv($timeout=null){}
+    public function recv($timeout = null)
+    {
+    }
 
     /**
      * @param $length[optional]
      * @return mixed
      */
-    public function peek($length=null){}
+    public function peek($length = null)
+    {
+    }
 
     /**
      * @param $data[required]
      * @return mixed
      */
-    public function send($data){}
+    public function send($data)
+    {
+    }
 
     /**
      * @param $filename[required]
@@ -62,7 +75,9 @@ class Client
      * @param $length[optional]
      * @return mixed
      */
-    public function sendfile($filename, $offset=null, $length=null){}
+    public function sendfile($filename, $offset = null, $length = null)
+    {
+    }
 
     /**
      * @param $address[required]
@@ -70,7 +85,9 @@ class Client
      * @param $data[required]
      * @return mixed
      */
-    public function sendto($address, $port, $data){}
+    public function sendto($address, $port, $data)
+    {
+    }
 
     /**
      * @param $length[required]
@@ -78,42 +95,56 @@ class Client
      * @param $port[optional]
      * @return mixed
      */
-    public function recvfrom($length, $address, $port=null){}
+    public function recvfrom($length, $address, $port = null)
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function enableSSL(){}
+    public function enableSSL()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function getPeerCert(){}
+    public function getPeerCert()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function verifyPeerCert(){}
+    public function verifyPeerCert()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function isConnected(){}
+    public function isConnected()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function getsockname(){}
+    public function getsockname()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function getpeername(){}
+    public function getpeername()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function close(){}
-
-
+    public function close()
+    {
+    }
 }

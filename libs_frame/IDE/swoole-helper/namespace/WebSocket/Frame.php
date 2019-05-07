@@ -6,12 +6,12 @@ namespace Swoole\WebSocket;
  */
 class Frame
 {
-
-
     /**
      * @return mixed
      */
-    public function __toString(){}
+    public function __toString()
+    {
+    }
 
     /**
      * @param $data[required]
@@ -20,13 +20,15 @@ class Frame
      * @param $mask[optional]
      * @return mixed
      */
-    public static function pack($data, $opcode=null, $finish=null, $mask=null){}
+    public static function pack($data, $opcode = null, $finish = null, $mask = null)
+    {
+    }
 
     /**
      * @param $data[required]
      * @return mixed
      */
-    public static function unpack($data){}
-
-
+    public static function unpack($data)
+    {
+    }
 }

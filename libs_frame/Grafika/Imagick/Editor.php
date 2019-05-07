@@ -2,13 +2,13 @@
 
 namespace Grafika\Imagick;
 
+use Grafika\Color;
 use Grafika\DrawingObjectInterface;
 use Grafika\EditorInterface;
 use Grafika\FilterInterface;
 use Grafika\Grafika;
 use Grafika\ImageInterface;
 use Grafika\ImageType;
-use Grafika\Color;
 use Grafika\Imagick\ImageHash\DifferenceHash;
 use Grafika\Position;
 
@@ -18,7 +18,6 @@ use Grafika\Position;
  */
 final class Editor implements EditorInterface
 {
-
     /**
      * Apply a filter to the image. See Filters section for a list of available filters.
      *
@@ -29,7 +28,6 @@ final class Editor implements EditorInterface
      */
     public function apply(&$image, $filter)
     {
-
         if ($image->isAnimated()) { // Ignore animated GIF for now
             return $this;
         }
@@ -53,7 +51,8 @@ final class Editor implements EditorInterface
      * @return Editor
      * @throws \Exception When added image is outside of canvas or invalid blend type
      */
-    public function blend(&$image1, $image2, $type='normal', $opacity = 1.0, $position = 'top-left', $offsetX = 0, $offsetY = 0 ){
+    public function blend(&$image1, $image2, $type = 'normal', $opacity = 1.0, $position = 'top-left', $offsetX = 0, $offsetY = 0)
+    {
 
         // Turn into position object
         $position = new Position($position, $offsetX, $offsetY);
@@ -62,18 +61,17 @@ final class Editor implements EditorInterface
         list($offsetX, $offsetY) = $position->getXY($image1->getWidth(), $image1->getHeight(), $image2->getWidth(), $image2->getHeight());
 
         // Check if it overlaps
-        if( ($offsetX >= $image1->getWidth() ) or
+        if (($offsetX >= $image1->getWidth()) or
             ($offsetX + $image2->getWidth() <= 0) or
-            ($offsetY >= $image1->getHeight() ) or
-            ($offsetY + $image2->getHeight() <= 0)){
-
+            ($offsetY >= $image1->getHeight()) or
+            ($offsetY + $image2->getHeight() <= 0)) {
             throw new \Exception('Invalid blending. Image 2 is outside the canvas.');
         }
 
         // Loop start X
         $loopStartX = 0;
         $canvasStartX = $offsetX;
-        if($canvasStartX < 0){
+        if ($canvasStartX < 0) {
             $diff = 0 - $canvasStartX;
             $loopStartX += $diff;
         }
@@ -81,23 +79,23 @@ final class Editor implements EditorInterface
         // Loop start Y
         $loopStartY = 0;
         $canvasStartY = $offsetY;
-        if($canvasStartY < 0){
+        if ($canvasStartY < 0) {
             $diff = 0 - $canvasStartY;
             $loopStartY += $diff;
         }
 
-        if ( $opacity !== 1 ) {
+        if ($opacity !== 1) {
             $this->opacity($image2, $opacity);
         }
 
-        $type = strtolower( $type );
-        if($type==='normal') {
+        $type = strtolower($type);
+        if ($type === 'normal') {
             $image1->getCore()->compositeImage($image2->getCore(), \Imagick::COMPOSITE_OVER, $loopStartX + $offsetX, $loopStartY + $offsetY);
-        } else if($type==='multiply'){
+        } elseif ($type === 'multiply') {
             $image1->getCore()->compositeImage($image2->getCore(), \Imagick::COMPOSITE_MULTIPLY, $loopStartX + $offsetX, $loopStartY + $offsetY);
-        } else if($type==='overlay'){
+        } elseif ($type === 'overlay') {
             $image1->getCore()->compositeImage($image2->getCore(), \Imagick::COMPOSITE_OVERLAY, $loopStartX + $offsetX, $loopStartY + $offsetY);
-        } else if($type==='screen'){
+        } elseif ($type === 'screen') {
             $image1->getCore()->compositeImage($image2->getCore(), \Imagick::COMPOSITE_SCREEN, $loopStartX + $offsetX, $loopStartY + $offsetY);
         } else {
             throw new \Exception(sprintf('Invalid blend type "%s".', $type));
@@ -117,23 +115,22 @@ final class Editor implements EditorInterface
      */
     public function compare($image1, $image2)
     {
-
         if (is_string($image1)) { // If string passed, turn it into a Image object
             $image1 = Image::createFromFile($image1);
-            $this->flatten( $image1 );
+            $this->flatten($image1);
         }
 
         if (is_string($image2)) { // If string passed, turn it into a Image object
             $image2 = Image::createFromFile($image2);
-            $this->flatten( $image2 );
+            $this->flatten($image2);
         }
 
         $hash = new DifferenceHash();
 
-        $bin1     = $hash->hash($image1, $this);
-        $bin2     = $hash->hash($image2, $this);
-        $str1     = str_split($bin1);
-        $str2     = str_split($bin2);
+        $bin1 = $hash->hash($image1, $this);
+        $bin2 = $hash->hash($image2, $this);
+        $str1 = str_split($bin1);
+        $str2 = str_split($bin2);
         $distance = 0;
         foreach ($str1 as $i => $char) {
             if ($char !== $str2[$i]) {
@@ -142,7 +139,6 @@ final class Editor implements EditorInterface
         }
 
         return $distance;
-
     }
 
     /**
@@ -160,20 +156,18 @@ final class Editor implements EditorInterface
      */
     public function crop(&$image, $cropWidth, $cropHeight, $position = 'center', $offsetX = 0, $offsetY = 0)
     {
-
         if ($image->isAnimated()) { // Ignore animated GIF for now
             return $this;
         }
 
-        if ( 'smart' === $position ) { // Smart crop
-            list( $x, $y ) = $this->_smartCrop( $image, $cropWidth, $cropHeight );
+        if ('smart' === $position) { // Smart crop
+            list($x, $y) = $this->_smartCrop($image, $cropWidth, $cropHeight);
         } else {
             // Turn into an instance of Position
-            $position = new Position( $position, $offsetX, $offsetY );
+            $position = new Position($position, $offsetX, $offsetY);
 
             // Crop position as x,y coordinates
-            list( $x, $y ) = $position->getXY( $image->getWidth(), $image->getHeight(), $cropWidth, $cropHeight );
-
+            list($x, $y) = $position->getXY($image->getWidth(), $image->getHeight(), $cropWidth, $cropHeight);
         }
 
         $image->getCore()->cropImage($cropWidth, $cropHeight, $x, $y);
@@ -191,7 +185,6 @@ final class Editor implements EditorInterface
      */
     public function draw(&$image, $drawingObject)
     {
-
         if ($image->isAnimated()) { // Ignore animated GIF for now
             return $this;
         }
@@ -212,22 +205,19 @@ final class Editor implements EditorInterface
      */
     public function equal($image1, $image2)
     {
-
         if (is_string($image1)) { // If string passed, turn it into a Image object
             $image1 = Image::createFromFile($image1);
-            $this->flatten( $image1 );
+            $this->flatten($image1);
         }
 
         if (is_string($image2)) { // If string passed, turn it into a Image object
             $image2 = Image::createFromFile($image2);
-            $this->flatten( $image2 );
+            $this->flatten($image2);
         }
 
         // Check if image dimensions are equal
         if ($image1->getWidth() !== $image2->getWidth() or $image1->getHeight() !== $image2->getHeight()) {
-
             return false;
-
         } else {
 
             // Loop using image1
@@ -271,7 +261,6 @@ final class Editor implements EditorInterface
      */
     public function fill(&$image, $color, $x = 0, $y = 0)
     {
-
         if ($image->isAnimated()) { // Ignore animated GIF for now
             return $this;
         }
@@ -289,8 +278,9 @@ final class Editor implements EditorInterface
      *
      * @return self
      */
-    public function flatten(&$image){
-        if($image->isAnimated()){
+    public function flatten(&$image)
+    {
+        if ($image->isAnimated()) {
             $imagick = $image->getCore()->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
             $image = new Image(
                 $imagick,
@@ -314,10 +304,11 @@ final class Editor implements EditorInterface
      * @return Editor
      * @throws \Exception
      */
-    public function flip(&$image, $mode){
+    public function flip(&$image, $mode)
+    {
         if ($mode === 'h') {
             $image->getCore()->flopImage();
-        } else if ($mode === 'v') {
+        } elseif ($mode === 'v') {
             $image->getCore()->flipImage();
         } else {
             throw new \Exception(sprintf('Unsupported mode "%s"', $mode));
@@ -332,7 +323,7 @@ final class Editor implements EditorInterface
      *
      * @return Editor
      */
-    public function free( &$image )
+    public function free(&$image)
     {
         $image->getCore()->clear();
         return $this;
@@ -369,7 +360,6 @@ final class Editor implements EditorInterface
      */
     public function opacity(&$image, $opacity)
     {
-
         if ($image->isAnimated()) { // Ignore animated GIF for now
             return $this;
         }
@@ -391,8 +381,9 @@ final class Editor implements EditorInterface
      *
      * @return Editor
      */
-    public function open(&$image, $imageFile){
-        $image = Image::createFromFile( $imageFile );
+    public function open(&$image, $imageFile)
+    {
+        $image = Image::createFromFile($imageFile);
         return $this;
     }
 
@@ -449,7 +440,6 @@ final class Editor implements EditorInterface
      */
     public function resizeExact(&$image, $newWidth, $newHeight)
     {
-
         $this->_resize($image, $newWidth, $newHeight);
 
         return $this;
@@ -465,13 +455,12 @@ final class Editor implements EditorInterface
      */
     public function resizeExactHeight(&$image, $newHeight)
     {
-
-        $width  = $image->getWidth();
+        $width = $image->getWidth();
         $height = $image->getHeight();
-        $ratio  = $width / $height;
+        $ratio = $width / $height;
 
         $resizeHeight = $newHeight;
-        $resizeWidth  = $newHeight * $ratio;
+        $resizeWidth = $newHeight * $ratio;
 
         $this->_resize($image, $resizeWidth, $resizeHeight);
 
@@ -488,12 +477,11 @@ final class Editor implements EditorInterface
      */
     public function resizeExactWidth(&$image, $newWidth)
     {
-
-        $width  = $image->getWidth();
+        $width = $image->getWidth();
         $height = $image->getHeight();
-        $ratio  = $width / $height;
+        $ratio = $width / $height;
 
-        $resizeWidth  = $newWidth;
+        $resizeWidth = $newWidth;
         $resizeHeight = round($newWidth / $ratio);
 
         $this->_resize($image, $resizeWidth, $resizeHeight);
@@ -512,17 +500,17 @@ final class Editor implements EditorInterface
      */
     public function resizeFill(&$image, $newWidth, $newHeight)
     {
-        $width  = $image->getWidth();
+        $width = $image->getWidth();
         $height = $image->getHeight();
-        $ratio  = $width / $height;
+        $ratio = $width / $height;
 
         // Base optimum size on new width
-        $optimumWidth  = $newWidth;
+        $optimumWidth = $newWidth;
         $optimumHeight = round($newWidth / $ratio);
 
         if (($optimumWidth < $newWidth) or ($optimumHeight < $newHeight)) { // Oops, where trying to fill and there are blank areas
             // So base optimum size on height instead
-            $optimumWidth  = $newHeight * $ratio;
+            $optimumWidth = $newHeight * $ratio;
             $optimumHeight = $newHeight;
         }
 
@@ -543,19 +531,18 @@ final class Editor implements EditorInterface
      */
     public function resizeFit(&$image, $newWidth, $newHeight)
     {
-
-        $width  = $image->getWidth();
+        $width = $image->getWidth();
         $height = $image->getHeight();
-        $ratio  = $width / $height;
+        $ratio = $width / $height;
 
         // Try basing it on width first
-        $resizeWidth  = $newWidth;
+        $resizeWidth = $newWidth;
         $resizeHeight = round($newWidth / $ratio);
 
         if (($resizeWidth > $newWidth) or ($resizeHeight > $newHeight)) { // Oops, either with or height does not fit
             // So base on height instead
             $resizeHeight = $newHeight;
-            $resizeWidth  = $newHeight * $ratio;
+            $resizeWidth = $newHeight * $ratio;
         }
 
         $this->_resize($image, $resizeWidth, $resizeHeight);
@@ -574,7 +561,6 @@ final class Editor implements EditorInterface
      */
     public function rotate(&$image, $angle, $color = null)
     {
-
         if ($image->isAnimated()) { // Ignore animated GIF for now
             return $this;
         }
@@ -600,11 +586,9 @@ final class Editor implements EditorInterface
      * @return Editor
      * @throws \Exception
      */
-    public function save( $image, $file, $type = null, $quality = null, $interlace = false, $permission = 0755)
+    public function save($image, $file, $type = null, $quality = null, $interlace = false, $permission = 0755)
     {
-
         if (null === $type) {
-
             $type = $this->_getImageTypeFromFileName($file); // Null given, guess type from file extension
             if (ImageType::UNKNOWN === $type) {
                 $type = $image->getType(); // 0 result, use original image type
@@ -614,17 +598,17 @@ final class Editor implements EditorInterface
         $targetDir = dirname($file); // $file's directory
         if (false === is_dir($targetDir)) { // Check if $file's directory exist
             // Create and set default perms to 0755
-            if ( ! mkdir($targetDir, $permission, true)) {
+            if (! mkdir($targetDir, $permission, true)) {
                 throw new \Exception(sprintf('Cannot create %s', $targetDir));
             }
         }
 
         switch (strtoupper($type)) {
-            case ImageType::GIF :
+            case ImageType::GIF:
                 $image->getCore()->writeImages($file, true); // Support animated image. Eg. GIF
                 break;
 
-            case ImageType::PNG :
+            case ImageType::PNG:
                 // PNG is lossless and does not need compression. Although GD allow values 0-9 (0 = no compression), we leave it alone.
                 $image->getCore()->setImageFormat($type);
                 $image->getCore()->writeImage($file);
@@ -664,7 +648,6 @@ final class Editor implements EditorInterface
      */
     public function text(&$image, $text, $size = 12, $x = 0, $y = 0, $color = null, $font = '', $angle = 0)
     {
-
         if ($image->isAnimated()) { // Ignore animated GIF for now
             return $this;
         }
@@ -672,7 +655,7 @@ final class Editor implements EditorInterface
         $y += $size;
 
         $color = ($color !== null) ? $color : new Color('#000000');
-        $font  = ($font !== '') ? $font : Grafika::fontsDir() . DIRECTORY_SEPARATOR . 'LiberationSans-Regular.ttf';
+        $font = ($font !== '') ? $font : Grafika::fontsDir() . DIRECTORY_SEPARATOR . 'LiberationSans-Regular.ttf';
 
         list($r, $g, $b, $alpha) = $color->getRgba();
 
@@ -703,18 +686,19 @@ final class Editor implements EditorInterface
      *
      * @return float|int
      */
-    private function _entropy($hist){
+    private function _entropy($hist)
+    {
         $entropy = 0;
         $hist_size = array_sum($hist['r']) + array_sum($hist['g']) + array_sum($hist['b']);
-        foreach($hist['r'] as $p){
+        foreach ($hist['r'] as $p) {
             $p = $p / $hist_size;
             $entropy += $p * log($p, 2);
         }
-        foreach($hist['g'] as $p){
+        foreach ($hist['g'] as $p) {
             $p = $p / $hist_size;
             $entropy += $p * log($p, 2);
         }
-        foreach($hist['b'] as $p){
+        foreach ($hist['b'] as $p) {
             $p = $p / $hist_size;
             $entropy += $p * log($p, 2);
         }
@@ -730,7 +714,8 @@ final class Editor implements EditorInterface
      *
      * @return array
      */
-    private function _smartCrop($oldImage, $cropW, $cropH){
+    private function _smartCrop($oldImage, $cropW, $cropH)
+    {
         $image = clone $oldImage;
 
         $this->resizeFit($image, 30, 30);
@@ -745,26 +730,26 @@ final class Editor implements EditorInterface
 
         $step = 1;
 
-        for($y = 0; $y < $resizeH-$smallCropH; $y+=$step){
-            for($x = 0; $x < $resizeW-$smallCropW; $x+=$step){
-                $hist[$x.'-'.$y] = $this->_entropy($image->histogram(array(array($x, $y), array($smallCropW, $smallCropH))));
+        for ($y = 0; $y < $resizeH - $smallCropH; $y += $step) {
+            for ($x = 0; $x < $resizeW - $smallCropW; $x += $step) {
+                $hist[$x . '-' . $y] = $this->_entropy($image->histogram([[$x, $y], [$smallCropW, $smallCropH]]));
             }
-            if($resizeW-$smallCropW <= 0){
-                $hist['0-'.$y] = $this->_entropy($image->histogram(array(array(0, 0), array($smallCropW, $smallCropH))));
+            if ($resizeW - $smallCropW <= 0) {
+                $hist['0-' . $y] = $this->_entropy($image->histogram([[0, 0], [$smallCropW, $smallCropH]]));
             }
         }
-        if($resizeH-$smallCropH <= 0){
-            $hist['0-0'] = $this->_entropy($image->histogram(array(array(0, 0), array($smallCropW, $smallCropH))));
+        if ($resizeH - $smallCropH <= 0) {
+            $hist['0-0'] = $this->_entropy($image->histogram([[0, 0], [$smallCropW, $smallCropH]]));
         }
 
         asort($hist);
         end($hist);
         $pos = key($hist); // last key
         list($x, $y) = explode('-', $pos);
-        $x = round($x*($origW / $resizeW));
-        $y = round($y*($origH / $resizeH));
+        $x = round($x * ($origW / $resizeW));
+        $y = round($y * ($origH / $resizeH));
 
-        return array($x,$y);
+        return [$x,$y];
     }
 
     /**
@@ -779,7 +764,6 @@ final class Editor implements EditorInterface
      */
     private function _resize(&$image, $newWidth, $newHeight)
     {
-
         if ('GIF' == $image->getType()) { // Animated image. Eg. GIF
 
             $imagick = $image->getCore()->coalesceImages();
@@ -790,16 +774,25 @@ final class Editor implements EditorInterface
             }
 
             // Assign new image with frames
-            $image = new Image($imagick->deconstructImages(), $image->getImageFile(), $newWidth, $newHeight,
-                $image->getType());
+            $image = new Image(
+                $imagick->deconstructImages(),
+                $image->getImageFile(),
+                $newWidth,
+                $newHeight,
+                $image->getType()
+            );
         } else { // Single frame image. Eg. JPEG, PNG
 
             $image->getCore()->resizeImage($newWidth, $newHeight, \Imagick::FILTER_LANCZOS, 1, false);
             // Assign new image
-            $image = new Image($image->getCore(), $image->getImageFile(), $newWidth, $newHeight,
-                $image->getType());
+            $image = new Image(
+                $image->getCore(),
+                $image->getImageFile(),
+                $newWidth,
+                $newHeight,
+                $image->getType()
+            );
         }
-
     }
 
     /**
@@ -815,13 +808,12 @@ final class Editor implements EditorInterface
 
         if ('jpg' == $ext or 'jpeg' == $ext) {
             return ImageType::JPEG;
-        } else if ('gif' == $ext) {
+        } elseif ('gif' == $ext) {
             return ImageType::GIF;
-        } else if ('png' == $ext) {
+        } elseif ('png' == $ext) {
             return ImageType::PNG;
         } else {
             return ImageType::UNKNOWN;
         }
     }
-
 }

@@ -2,7 +2,6 @@
 
 class Resque_Job_Factory implements Resque_Job_FactoryInterface
 {
-
     /**
      * @param $className
      * @param array $args

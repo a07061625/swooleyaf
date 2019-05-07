@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use DesignPatterns\Singletons\MapSingleton;
 use Exception\Map\BaiduMapException;
 
-abstract class MapBaseBaiDu extends MapBase {
+abstract class MapBaseBaiDu extends MapBase
+{
     const CHECK_TYPE_SERVER_IP = 'server-ip'; //校验类型-服务端ip
     const CHECK_TYPE_SERVER_SN = 'server-sn'; //校验类型-服务端签名
     const CHECK_TYPE_BROWSE = 'browse'; //校验类型-浏览器
@@ -21,6 +22,11 @@ abstract class MapBaseBaiDu extends MapBase {
         self::CHECK_TYPE_SERVER_SN => 1,
         self::CHECK_TYPE_BROWSE => 1,
     ];
+    /**
+     * 服务uri
+     * @var string
+     */
+    protected $serviceUri = '';
 
     /**
      * 应用密钥
@@ -62,13 +68,9 @@ abstract class MapBaseBaiDu extends MapBase {
      * @var string
      */
     private $reqReferer = '';
-    /**
-     * 服务uri
-     * @var string
-     */
-    protected $serviceUri = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceDomain = 'http://api.map.baidu.com';
         $this->ak = MapSingleton::getInstance()->getBaiduConfig()->getAk();
@@ -78,16 +80,13 @@ abstract class MapBaseBaiDu extends MapBase {
         $this->reqMethod = 'GET';
     }
 
-    protected function getServiceUrl() {
-        return $this->serviceDomain . $this->serviceUri;
-    }
-
     /**
      * @param string $checkType
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setCheckType(string $checkType) {
-        if(isset($this->checkTypes[$checkType])){
+    public function setCheckType(string $checkType)
+    {
+        if (isset($this->checkTypes[$checkType])) {
             $this->checkType = $checkType;
         } else {
             throw new BaiduMapException('校验类型不支持', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -98,8 +97,9 @@ abstract class MapBaseBaiDu extends MapBase {
      * @param string $reqMethod
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setReqMethod(string $reqMethod) {
-        if(in_array($reqMethod, ['GET', 'POST'], true)){
+    public function setReqMethod(string $reqMethod)
+    {
+        if (in_array($reqMethod, ['GET', 'POST'], true)) {
             $this->reqMethod = $reqMethod;
         } else {
             throw new BaiduMapException('请求方式不支持', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -110,7 +110,8 @@ abstract class MapBaseBaiDu extends MapBase {
      * @param string $sk
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setSk(string $sk) {
+    public function setSk(string $sk)
+    {
         if (ctype_alnum($sk) && (strlen($sk) == 32)) {
             $this->sk = $sk;
         } else {
@@ -122,15 +123,22 @@ abstract class MapBaseBaiDu extends MapBase {
      * @param string $reqReferer
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setReqReferer(string $reqReferer) {
-        if(preg_match('/^(http|https)\:\/\/\S+$/', $reqReferer) > 0){
+    public function setReqReferer(string $reqReferer)
+    {
+        if (preg_match('/^(http|https)\:\/\/\S+$/', $reqReferer) > 0) {
             $this->reqReferer = $reqReferer;
         } else {
             throw new BaiduMapException('请求引用地址不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
     }
 
-    protected function getContent() : array {
+    protected function getServiceUrl()
+    {
+        return $this->serviceDomain . $this->serviceUri;
+    }
+
+    protected function getContent() : array
+    {
         $this->reqData['ak'] = $this->ak;
         $this->reqData['output'] = $this->output;
         switch ($this->checkType) {
@@ -141,10 +149,10 @@ abstract class MapBaseBaiDu extends MapBase {
                 ];
                 break;
             case self::CHECK_TYPE_SERVER_SN:
-                if(strlen($this->sk) == 0){
+                if (strlen($this->sk) == 0) {
                     throw new BaiduMapException('签名校验码不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
                 }
-                if ($this->reqMethod === 'POST'){
+                if ($this->reqMethod === 'POST') {
                     ksort($this->reqData);
                 }
 
@@ -152,7 +160,7 @@ abstract class MapBaseBaiDu extends MapBase {
                 $this->reqData['sn'] = md5(urlencode($snStr));
                 break;
             case self::CHECK_TYPE_BROWSE:
-                if(strlen($this->reqReferer) == 0){
+                if (strlen($this->reqReferer) == 0) {
                     throw new BaiduMapException('请求引用地址不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
                 }
 

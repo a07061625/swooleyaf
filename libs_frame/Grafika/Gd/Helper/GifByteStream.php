@@ -27,7 +27,7 @@ final class GifByteStream
     public function __construct($bytes)
     {
         $this->position = 0;
-        $this->bytes    = $bytes;
+        $this->bytes = $bytes;
     }
 
     /**

@@ -23,10 +23,10 @@ class Swift_Plugins_DecoratorPlugin implements Swift_Events_SendListener, Swift_
     private $originalBody;
 
     /** The original headers of the message, before replacements */
-    private $originalHeaders = array();
+    private $originalHeaders = [];
 
     /** Bodies of children before they are replaced */
-    private $originalChildBodies = array();
+    private $originalChildBodies = [];
 
     /** The Message that was last replaced */
     private $lastMessage;
@@ -88,7 +88,9 @@ class Swift_Plugins_DecoratorPlugin implements Swift_Events_SendListener, Swift_
             $search = array_keys($replacements);
             $replace = array_values($replacements);
             $bodyReplaced = str_replace(
-                $search, $replace, $body
+                $search,
+                $replace,
+                $body
                 );
             if ($body != $bodyReplaced) {
                 $this->originalBody = $body;
@@ -99,7 +101,7 @@ class Swift_Plugins_DecoratorPlugin implements Swift_Events_SendListener, Swift_
                 $body = $header->getFieldBodyModel();
                 $count = 0;
                 if (is_array($body)) {
-                    $bodyReplaced = array();
+                    $bodyReplaced = [];
                     foreach ($body as $key => $value) {
                         $count1 = 0;
                         $count2 = 0;
@@ -127,7 +129,9 @@ class Swift_Plugins_DecoratorPlugin implements Swift_Events_SendListener, Swift_
                 if ('text' == $type) {
                     $body = $child->getBody();
                     $bodyReplaced = str_replace(
-                        $search, $replace, $body
+                        $search,
+                        $replace,
+                        $body
                         );
                     if ($body != $bodyReplaced) {
                         $child->setBody($bodyReplaced);
@@ -186,7 +190,7 @@ class Swift_Plugins_DecoratorPlugin implements Swift_Events_SendListener, Swift_
                         $header->setFieldBodyModel($this->originalHeaders[$header->getFieldName()]);
                     }
                 }
-                $this->originalHeaders = array();
+                $this->originalHeaders = [];
             }
             if (!empty($this->originalChildBodies)) {
                 $children = (array) $message->getChildren();
@@ -196,7 +200,7 @@ class Swift_Plugins_DecoratorPlugin implements Swift_Events_SendListener, Swift_
                         $child->setBody($this->originalChildBodies[$id]);
                     }
                 }
-                $this->originalChildBodies = array();
+                $this->originalChildBodies = [];
             }
             $this->lastMessage = null;
         }

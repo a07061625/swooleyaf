@@ -8,8 +8,8 @@ use Grafika\Gd\Image;
 /**
  * Change the contrast of an image. Contrast is the difference in luminance or colour that makes an object distinguishable.
  */
-class Contrast implements FilterInterface{
-
+class Contrast implements FilterInterface
+{
     /**
      * @var int
      */
@@ -29,10 +29,9 @@ class Contrast implements FilterInterface{
      *
      * @return Image
      */
-    public function apply( $image ) {
-
+    public function apply($image)
+    {
         imagefilter($image->getCore(), IMG_FILTER_CONTRAST, ($this->amount * -1));
         return $image;
     }
-
 }

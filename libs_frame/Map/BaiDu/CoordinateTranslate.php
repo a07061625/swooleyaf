@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Exception\Map\BaiduMapException;
 use Map\MapBaseBaiDu;
 
-class CoordinateTranslate extends MapBaseBaiDu {
+class CoordinateTranslate extends MapBaseBaiDu
+{
     const COORDINATE_TYPE_GPS = 1; //坐标类型-GPS角度
     const COORDINATE_TYPE_GPS_MS = 2; //坐标类型-GPS米制
     const COORDINATE_TYPE_GOOGLE = 3; //坐标类型-google
@@ -48,7 +49,8 @@ class CoordinateTranslate extends MapBaseBaiDu {
      */
     private $toType = 0;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUri = '/geoconv/v1/';
         $this->rspDataKey = 'result';
@@ -56,7 +58,8 @@ class CoordinateTranslate extends MapBaseBaiDu {
         $this->reqData['to'] = self::COORDINATE_TYPE_BD;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
@@ -65,14 +68,15 @@ class CoordinateTranslate extends MapBaseBaiDu {
      * @param string $lat
      * @throws \Exception\Map\BaiduMapException
      */
-    public function addCoordinate(string $lng,string $lat) {
-        if(count($this->coords) >= 100){
+    public function addCoordinate(string $lng, string $lat)
+    {
+        if (count($this->coords) >= 100) {
             throw new BaiduMapException('源坐标数量超过限制', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
-        if(preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng) == 0){
+        if (preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng) == 0) {
             throw new BaiduMapException('源坐标经度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
-        if(preg_match('/^[\-]?(\d(\.\d+)?|[1-8]\d(\.\d+)?|90)$/', $lat) == 0){
+        if (preg_match('/^[\-]?(\d(\.\d+)?|[1-8]\d(\.\d+)?|90)$/', $lat) == 0) {
             throw new BaiduMapException('源坐标纬度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 
@@ -84,7 +88,8 @@ class CoordinateTranslate extends MapBaseBaiDu {
      * @param int $fromType
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setFromType(int $fromType) {
+    public function setFromType(int $fromType)
+    {
         if (isset($this->totalCoordinateTypes[$fromType])) {
             $this->reqData['from'] = $fromType;
         } else {
@@ -96,15 +101,17 @@ class CoordinateTranslate extends MapBaseBaiDu {
      * @param int $toType
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setToType(int $toType) {
-        if(in_array($toType, [self::COORDINATE_TYPE_BD, self::COORDINATE_TYPE_BD_MS], true)){
+    public function setToType(int $toType)
+    {
+        if (in_array($toType, [self::COORDINATE_TYPE_BD, self::COORDINATE_TYPE_BD_MS], true)) {
             $this->reqData['to'] = $toType;
         } else {
             throw new BaiduMapException('目的坐标类型不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         if (empty($this->coords)) {
             throw new BaiduMapException('源坐标不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }

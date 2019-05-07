@@ -12,7 +12,7 @@ requires:
 - Zxing - javase.jar
 
 Provides: PHPZxingDecoder
-- 
+-
 ...
 * PHPZxingDecoder
 * Version 1.0.1
@@ -41,7 +41,8 @@ Provides: PHPZxingDecoder
 */
 namespace PHPZxing;
 
-class PHPZxingDecoder extends PHPZxingBase  {
+class PHPZxingDecoder extends PHPZxingBase
+{
     // Java De-coder Class that takes the Command line
     public $JAVA_DECODER_CLASS = 'com.google.zxing.client.j2se.CommandLineRunner';
     // Checks if the image is a single one
@@ -49,7 +50,7 @@ class PHPZxingDecoder extends PHPZxingBase  {
     // Store for multiple array images
     private $_ARRAY_IMAGES = null;
     // Space while creating the command
-    private $SPACE = " ";
+    private $SPACE = ' ';
     // Use the TRY_HARDER hint, default is normal (mobile) mode
     private $try_harder = false;
     // Scans image for multiple barcodes in single image
@@ -58,79 +59,148 @@ class PHPZxingDecoder extends PHPZxingBase  {
     private $crop = false;
     
     // Constructor for PHPZxingDecoder
-    public function __construct($config = array()) {
-        if(isset($config['try_harder']) && array_key_exists('try_harder', $config)) {
+    public function __construct($config = [])
+    {
+        if (isset($config['try_harder']) && array_key_exists('try_harder', $config)) {
             $this->try_harder = boolval($config['try_harder']);
         }
         
-        if(isset($config['multiple_bar_codes']) && array_key_exists('multiple_bar_codes', $config)) {
+        if (isset($config['multiple_bar_codes']) && array_key_exists('multiple_bar_codes', $config)) {
             $this->multiple_bar_codes = boolval($config['multiple_bar_codes']);
         }
 
-        if(isset($config['crop']) && array_key_exists('crop', $config)) {
+        if (isset($config['crop']) && array_key_exists('crop', $config)) {
             $this->crop = strval($config['crop']);
         }
 
-        if(isset($config['returnAs']) && array_key_exists('returnAs', $config)) {
+        if (isset($config['returnAs']) && array_key_exists('returnAs', $config)) {
             $this->returnAs = strval($config['returnAs']);
         }
     }
 
-    private function basePrepare() {
-        $command = "";
-        $command = $command . $this->getJavaPath() . $this->SPACE . "-cp" . $this->SPACE;
-        $command = $command . $this->getJARPath() . PATH_SEPARATOR . $this->getCorePAth() . PATH_SEPARATOR . $this->getJcommanderPath() . $this->SPACE;
-        $command = $command . $this->JAVA_DECODER_CLASS . $this->SPACE;
-        return $command;        
+    /**
+     * Function that creates a command using the options provided
+     */
+    public function prepare()
+    {
+        if (is_array($this->_ARRAY_IMAGES)) {
+            return $this->prepareImageArray();
+        } else {
+            return $this->prepareSingleImage();
+        }
     }
 
-    private function prepareImageArray() {
-        $image = array();
+    public function setSingleImage($image)
+    {
+        $this->_SINGLE_IMAGE = $image;
+    }
+
+    public function setArrayImages($images)
+    {
+        $this->_ARRAY_IMAGES = $images;
+    }
+
+    /**
+     * Send an image and returns an Object of ZxingImage
+     * @return [Array]     ZxingImage
+     * @param null|mixed $image
+     */
+    public function decode($image = null)
+    {
+        try {
+            if (is_array($image)) {
+                $this->setArrayImages($image);
+
+                if ($this->_ARRAY_IMAGES == null) {
+                    throw new \Exception('Nothing to decode');
+                }
+            } else {
+                if (!file_exists($image)) {
+                    throw new \Exception('File/Folder does not exist');
+                }
+
+                $this->setSingleImage($image);
+
+                if ($this->_SINGLE_IMAGE == null) {
+                    throw new \Exception('Nothing to decode');
+                }
+            }
+
+            $image = $this->prepare();
+
+            if (empty($image)) {
+                throw new \Exception('Is the java PATH set correctly ? Current Path set is : ' . $this->getJavaPath());
+            }
+
+            // If the image is single then return the actual image
+            if (count($image) == 1) {
+                return current($image);
+            }
+
+            return $image;
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    private function basePrepare()
+    {
+        $command = '';
+        $command = $command . $this->getJavaPath() . $this->SPACE . '-cp' . $this->SPACE;
+        $command = $command . $this->getJARPath() . PATH_SEPARATOR . $this->getCorePAth() . PATH_SEPARATOR . $this->getJcommanderPath() . $this->SPACE;
+        $command = $command . $this->JAVA_DECODER_CLASS . $this->SPACE;
+        return $command;
+    }
+
+    private function prepareImageArray()
+    {
+        $image = [];
         foreach ($this->_ARRAY_IMAGES as $arrayImage) {
             try {
-                if(!file_exists($arrayImage)) {
-                    throw new \Exception($arrayImage . ": file does not exist");
+                if (!file_exists($arrayImage)) {
+                    throw new \Exception($arrayImage . ': file does not exist');
                 }
 
                 $command = $this->basePrepare();
                 $command = $command . $arrayImage . $this->SPACE;
                 
-                if($this->try_harder == true) {
-                    $command = $command . "--try_harder" . $this->SPACE;
+                if ($this->try_harder == true) {
+                    $command = $command . '--try_harder' . $this->SPACE;
                 }
 
-                if($this->multiple_bar_codes == true) {
-                    $command = $command . "--multi" . $this->SPACE;
+                if ($this->multiple_bar_codes == true) {
+                    $command = $command . '--multi' . $this->SPACE;
                 }
 
-                if($this->crop != false) {
-                    $command = $command . "--crop=" . $this->crop . $this->SPACE;
+                if ($this->crop != false) {
+                    $command = $command . '--crop=' . $this->crop . $this->SPACE;
                 }
 
-                $script_output = "";
+                $script_output = '';
                 exec($command, $script_output);
                 $image[] = current($this->createImages($script_output));
-            } catch(\Exception $e) {
+            } catch (\Exception $e) {
                 echo $e->getMessage();
             }
         }
         return $image;
     }
 
-    private function prepareSingleImage() {
+    private function prepareSingleImage()
+    {
         $command = $this->basePrepare();
         $command = $command . $this->_SINGLE_IMAGE . $this->SPACE;
         
-        if($this->try_harder == true) {
-            $command = $command . "--try_harder" . $this->SPACE;
+        if ($this->try_harder == true) {
+            $command = $command . '--try_harder' . $this->SPACE;
         }
 
-        if($this->multiple_bar_codes == true) {
-            $command = $command . "--multi" . $this->SPACE;
+        if ($this->multiple_bar_codes == true) {
+            $command = $command . '--multi' . $this->SPACE;
         }
 
-        if($this->crop != false) {
-            $command = $command . "--crop=" . $this->crop . $this->SPACE;
+        if ($this->crop != false) {
+            $command = $command . '--crop=' . $this->crop . $this->SPACE;
         }
 
         exec($command, $script_output);
@@ -139,100 +209,38 @@ class PHPZxingDecoder extends PHPZxingBase  {
 
     /**
      * Function creates images array that gives the decoded data in array
+     * @param mixed $output
      */
-    private function createImages($output) {
-        $image = array();
+    private function createImages($output)
+    {
+        $image = [];
         
         foreach ($output as $key => $singleLine) {
             if (preg_match('/\(format/', $singleLine)) {
-                $imageInfo  = $singleLine;
-                $startPos   = strpos($imageInfo, "(") + 1;
-                $endPos     = strpos($imageInfo, ")");
-                $dataStr   = substr($imageInfo, $startPos, $endPos - $startPos);
+                $imageInfo = $singleLine;
+                $startPos = strpos($imageInfo, '(') + 1;
+                $endPos = strpos($imageInfo, ')');
+                $dataStr = substr($imageInfo, $startPos, $endPos - $startPos);
 
-                $dataExplode    = explode(",", $dataStr);
-                $contentFormat  = explode(":", $dataExplode[0]);
-                $format         = $contentFormat[1];
-                $contentFormat  = explode(":", $dataExplode[1]);
-                $type         = $contentFormat[1];
+                $dataExplode = explode(',', $dataStr);
+                $contentFormat = explode(':', $dataExplode[0]);
+                $format = $contentFormat[1];
+                $contentFormat = explode(':', $dataExplode[1]);
+                $type = $contentFormat[1];
 
                 $imageValue = $output[$key + 2];
 
-                $exploded = explode(" ", $singleLine);
+                $exploded = explode(' ', $singleLine);
                 $imagePath = array_shift($exploded);
 
                 $image[] = new ZxingImage($imagePath, $imageValue, $format, $type);
-
-            } else if(preg_match('/No barcode found/', $singleLine)) {
-                
-                $exploded = explode(" ", $singleLine);
+            } elseif (preg_match('/No barcode found/', $singleLine)) {
+                $exploded = explode(' ', $singleLine);
                 $imagePath = array_shift($exploded);
-                $image[] = new ZxingBarNotFound($imagePath, 101, "No barcode found");
+                $image[] = new ZxingBarNotFound($imagePath, 101, 'No barcode found');
             }
         }
 
         return $image;
-    }
-
-    /**
-     * Function that creates a command using the options provided
-     */
-    public function prepare() {
-        if(is_array($this->_ARRAY_IMAGES)) {
-            return $this->prepareImageArray();
-        } else {
-            return $this->prepareSingleImage();
-        }
-    }
-
-    public function setSingleImage($image) {
-        $this->_SINGLE_IMAGE = $image;
-    }
-
-    public function setArrayImages($images) {
-        $this->_ARRAY_IMAGES = $images;
-    }
-
-    /**
-     * Send an image and returns an Object of ZxingImage
-     * @return [Array]     ZxingImage   
-     */
-    public function decode($image = null) {
-        try {
-            
-            if(is_array($image)) {
-                $this->setArrayImages($image);
-
-                if($this->_ARRAY_IMAGES == null) {
-                    throw new \Exception("Nothing to decode");
-                }
-
-            } else {
-                if(!file_exists($image)) {
-                    throw new \Exception("File/Folder does not exist");
-                }
-
-                $this->setSingleImage($image);
-
-                if($this->_SINGLE_IMAGE == null) {
-                    throw new \Exception("Nothing to decode");
-                }
-            }
-
-            $image = $this->prepare();
-
-            if(empty($image)) {
-                throw new \Exception("Is the java PATH set correctly ? Current Path set is : " . $this->getJavaPath());
-            }
-
-            // If the image is single then return the actual image
-            if(count($image) == 1) {
-                return current($image);
-            }
-
-            return $image;
-        } catch(\Exception $e) {
-            echo $e->getMessage();
-        }
     }
 }

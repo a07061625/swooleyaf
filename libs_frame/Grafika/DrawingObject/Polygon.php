@@ -50,8 +50,8 @@ abstract class Polygon
      * @param Color|string|bool $borderColor Border color. Defaults to black. Set to null for no color.
      * @param Color|string|bool $fillColor Fill color. Defaults to white. Set to null for no color.
      */
-    public function __construct($points = array(array(0,0), array(0,0), array(0,0)), $borderSize = 1, $borderColor = '#000000', $fillColor = '#FFFFFF') {
-
+    public function __construct($points = [[0,0], [0,0], [0,0]], $borderSize = 1, $borderColor = '#000000', $fillColor = '#FFFFFF')
+    {
         if (is_string($borderColor)) {
             $borderColor = new Color($borderColor);
         }
@@ -111,6 +111,4 @@ abstract class Polygon
     {
         return $this->borderColor;
     }
-
-
 }

@@ -21,7 +21,6 @@ use Grafika\Gd\Image;
  */
 class DifferenceHash
 {
-
     /**
      * Generate and get the difference hash of image.
      *
@@ -33,7 +32,7 @@ class DifferenceHash
      */
     public function hash($image, $editor)
     {
-        $width  = 9;
+        $width = 9;
         $height = 8;
 
         $image = clone $image; // Make sure we are working on the clone if Image is passed
@@ -45,17 +44,17 @@ class DifferenceHash
         for ($y = 0; $y < $height; $y++) {
             // Get the pixel value for the leftmost pixel.
             $rgba = imagecolorat($gd, 0, $y);
-            $r    = ($rgba >> 16) & 0xFF;
-            $g    = ($rgba >> 8) & 0xFF;
-            $b    = $rgba & 0xFF;
+            $r = ($rgba >> 16) & 0xFF;
+            $g = ($rgba >> 8) & 0xFF;
+            $b = $rgba & 0xFF;
 
             $left = floor(($r + $g + $b) / 3);
             for ($x = 1; $x < $width; $x++) {
                 // Get the pixel value for each pixel starting from position 1.
-                $rgba  = imagecolorat($gd, $x, $y);
-                $r     = ($rgba >> 16) & 0xFF;
-                $g     = ($rgba >> 8) & 0xFF;
-                $b     = $rgba & 0xFF;
+                $rgba = imagecolorat($gd, $x, $y);
+                $r = ($rgba >> 16) & 0xFF;
+                $g = ($rgba >> 8) & 0xFF;
+                $b = $rgba & 0xFF;
                 $right = floor(($r + $g + $b) / 3);
                 // Each hash bit is set based on whether the left pixel is brighter than the right pixel.
                 if ($left > $right) {
@@ -67,7 +66,7 @@ class DifferenceHash
                 $left = $right;
             }
         }
-        $editor->free( $image );
+        $editor->free($image);
         return $hash;
     }
 }

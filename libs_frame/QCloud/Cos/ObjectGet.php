@@ -14,7 +14,8 @@ use QCloud\CloudBaseCos;
  * 下载单个对象
  * @package QCloud\Cos
  */
-class ObjectGet extends CloudBaseCos {
+class ObjectGet extends CloudBaseCos
+{
     /**
      * 对象名称
      * @var string
@@ -51,21 +52,24 @@ class ObjectGet extends CloudBaseCos {
      */
     private $response_content_encoding = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_GET);
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $objectKey
      * @throws \Exception\QCloud\CosException
      */
-    public function setObjectKey(string $objectKey){
-        if(strlen($objectKey) > 0){
+    public function setObjectKey(string $objectKey)
+    {
+        if (strlen($objectKey) > 0) {
             $this->reqUri = '/' . $objectKey;
             $this->objectKey = $objectKey;
         } else {
@@ -77,8 +81,9 @@ class ObjectGet extends CloudBaseCos {
      * @param string $contentType
      * @throws \Exception\QCloud\CosException
      */
-    public function setResponseContentType(string $contentType){
-        if(strlen($contentType) > 0){
+    public function setResponseContentType(string $contentType)
+    {
+        if (strlen($contentType) > 0) {
             $this->reqData['response-content-type'] = $contentType;
             $this->signParams['response-content-type'] = $contentType;
         } else {
@@ -90,8 +95,9 @@ class ObjectGet extends CloudBaseCos {
      * @param string $contentLanguage
      * @throws \Exception\QCloud\CosException
      */
-    public function setResponseContentLanguage(string $contentLanguage){
-        if(strlen($contentLanguage) > 0){
+    public function setResponseContentLanguage(string $contentLanguage)
+    {
+        if (strlen($contentLanguage) > 0) {
             $this->reqData['response-content-language'] = $contentLanguage;
             $this->signParams['response-content-language'] = $contentLanguage;
         } else {
@@ -103,8 +109,9 @@ class ObjectGet extends CloudBaseCos {
      * @param string $expires
      * @throws \Exception\QCloud\CosException
      */
-    public function setResponseExpires(string $expires){
-        if(strlen($expires) > 0){
+    public function setResponseExpires(string $expires)
+    {
+        if (strlen($expires) > 0) {
             $this->reqData['response-expires'] = $expires;
             $this->signParams['response-expires'] = $expires;
         } else {
@@ -116,8 +123,9 @@ class ObjectGet extends CloudBaseCos {
      * @param string $cacheControl
      * @throws \Exception\QCloud\CosException
      */
-    public function setResponseCacheControl(string $cacheControl){
-        if(strlen($cacheControl) > 0){
+    public function setResponseCacheControl(string $cacheControl)
+    {
+        if (strlen($cacheControl) > 0) {
             $this->reqData['response-cache-control'] = $cacheControl;
             $this->signParams['response-cache-control'] = $cacheControl;
         } else {
@@ -129,8 +137,9 @@ class ObjectGet extends CloudBaseCos {
      * @param string $contentDisposition
      * @throws \Exception\QCloud\CosException
      */
-    public function setResponseContentDisposition(string $contentDisposition){
-        if(strlen($contentDisposition) > 0){
+    public function setResponseContentDisposition(string $contentDisposition)
+    {
+        if (strlen($contentDisposition) > 0) {
             $this->reqData['response-content-disposition'] = $contentDisposition;
             $this->signParams['response-content-disposition'] = $contentDisposition;
         } else {
@@ -142,8 +151,9 @@ class ObjectGet extends CloudBaseCos {
      * @param string $contentEncoding
      * @throws \Exception\QCloud\CosException
      */
-    public function setResponseContentEncoding(string $contentEncoding){
-        if(strlen($contentEncoding) > 0){
+    public function setResponseContentEncoding(string $contentEncoding)
+    {
+        if (strlen($contentEncoding) > 0) {
             $this->reqData['response-content-encoding'] = $contentEncoding;
             $this->signParams['response-content-encoding'] = $contentEncoding;
         } else {
@@ -151,8 +161,9 @@ class ObjectGet extends CloudBaseCos {
         }
     }
 
-    public function getDetail() : array {
-        if(strlen($this->objectKey) == 0){
+    public function getDetail() : array
+    {
+        if (strlen($this->objectKey) == 0) {
             throw new CosException('对象名称不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
         $this->setReqQuery($this->reqData);

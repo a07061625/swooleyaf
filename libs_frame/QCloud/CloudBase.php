@@ -7,7 +7,8 @@
  */
 namespace QCloud;
 
-abstract class CloudBase {
+abstract class CloudBase
+{
     /**
      * 请求数据
      * @var array
@@ -24,23 +25,26 @@ abstract class CloudBase {
      */
     protected $curlConfigs = [];
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $headerKey
      * @param string $headerVal
      */
-    public function addReqHeader(string $headerKey,string $headerVal){
+    public function addReqHeader(string $headerKey, string $headerVal)
+    {
         $trueHeaderKey = trim($headerKey);
-        if(strlen($trueHeaderKey) > 0){
+        if (strlen($trueHeaderKey) > 0) {
             $this->reqHeader[$trueHeaderKey] = trim($headerVal);
         }
     }
+    abstract public function getDetail() : array;
 
     abstract protected function getContent() : array;
-    abstract public function getDetail() : array;
 }

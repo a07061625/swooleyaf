@@ -7,8 +7,8 @@ namespace Grafika;
  *
  * @package Grafika
  */
-class Position {
-
+class Position
+{
     /**
      * Top left of the canvas.
      */
@@ -66,7 +66,8 @@ class Position {
      * @param int $offsetX Defaults to 0.
      * @param int $offsetY Defaults to 0.
      */
-    public function __construct($position='center', $offsetX=0, $offsetY=0) {
+    public function __construct($position = 'center', $offsetX = 0, $offsetY = 0)
+    {
         $this->position = $position;
         $this->offsetX = $offsetX;
         $this->offsetY = $offsetY;
@@ -83,64 +84,66 @@ class Position {
      * @return array Array of X and Y coordinates: array($x, $y).
      * @throws \Exception When invalid position.
      */
-    public function getXY($canvasWidth, $canvasHeight, $imageWidth, $imageHeight){
-        if ( self::TOP_LEFT === $this->position) {
+    public function getXY($canvasWidth, $canvasHeight, $imageWidth, $imageHeight)
+    {
+        if (self::TOP_LEFT === $this->position) {
             $x = 0;
             $y = 0;
-        } else if ( self::TOP_CENTER === $this->position) {
+        } elseif (self::TOP_CENTER === $this->position) {
             $x = (int)round(($canvasWidth / 2) - ($imageWidth / 2));
             $y = 0;
-        } else if ( self::TOP_RIGHT === $this->position) {
+        } elseif (self::TOP_RIGHT === $this->position) {
             $x = $canvasWidth - $imageWidth;
             $y = 0;
-        } else if ( self::CENTER_LEFT === $this->position) {
+        } elseif (self::CENTER_LEFT === $this->position) {
             $x = 0;
             $y = (int)round(($canvasHeight / 2) - ($imageHeight / 2));
-        } else if ( self::CENTER_RIGHT === $this->position) {
+        } elseif (self::CENTER_RIGHT === $this->position) {
             $x = $canvasWidth - $imageWidth;
             $y = (int)round(($canvasHeight / 2) - ($imageHeight / 2));
-        } else if ( self::BOTTOM_LEFT === $this->position) {
+        } elseif (self::BOTTOM_LEFT === $this->position) {
             $x = 0;
             $y = $canvasHeight - $imageHeight;
-        } else if ( self::BOTTOM_CENTER === $this->position) {
+        } elseif (self::BOTTOM_CENTER === $this->position) {
             $x = (int)round(($canvasWidth / 2) - ($imageWidth / 2));
             $y = $canvasHeight - $imageHeight;
-        } else if ( self::BOTTOM_RIGHT === $this->position) {
+        } elseif (self::BOTTOM_RIGHT === $this->position) {
             $x = $canvasWidth - $imageWidth;
             $y = $canvasHeight - $imageHeight;
-        } else if ( self::CENTER === $this->position) {
+        } elseif (self::CENTER === $this->position) {
             $x = (int)round(($canvasWidth / 2) - ($imageWidth / 2));
             $y = (int)round(($canvasHeight / 2) - ($imageHeight / 2));
         } else {
-            throw new \Exception( sprintf( 'Invalid position "%s".', $this->position ) );
+            throw new \Exception(sprintf('Invalid position "%s".', $this->position));
         }
 
-        return array(
+        return [
             $x + $this->offsetX,
             $y + $this->offsetY
-        );
+        ];
     }
 
     /**
      * @return string
      */
-    public function getText() {
+    public function getText()
+    {
         return $this->position;
     }
 
     /**
      * @return int
      */
-    public function getOffsetY() {
+    public function getOffsetY()
+    {
         return $this->offsetY;
     }
 
     /**
      * @return int
      */
-    public function getOffsetX() {
+    public function getOffsetX()
+    {
         return $this->offsetX;
     }
-
-
 }

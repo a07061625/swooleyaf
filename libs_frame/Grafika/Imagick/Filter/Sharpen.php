@@ -8,8 +8,8 @@ use Grafika\Imagick\Image;
 /**
  * Sharpen an image.
  */
-class Sharpen implements FilterInterface{
-
+class Sharpen implements FilterInterface
+{
     /**
      * @var int $amount
      */
@@ -29,9 +29,9 @@ class Sharpen implements FilterInterface{
      *
      * @return Image
      */
-    public function apply( $image ) {
+    public function apply($image)
+    {
         $image->getCore()->unsharpMaskImage(1, 1, $this->amount / 6.25, 0);
         return $image;
     }
-
 }

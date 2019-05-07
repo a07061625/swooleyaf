@@ -9,6 +9,7 @@ namespace QCloud;
 
 use Traits\SimpleTrait;
 
-abstract class CloudUtilBase {
+abstract class CloudUtilBase
+{
     use SimpleTrait;
 }

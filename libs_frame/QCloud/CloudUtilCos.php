@@ -12,26 +12,9 @@ use Log\Log;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-final class CloudUtilCos extends CloudUtilBase {
+final class CloudUtilCos extends CloudUtilBase
+{
     use SimpleTrait;
-
-    /**
-     * 生成参数字符串
-     * @param array $data
-     * @return string
-     */
-    private static function createParamStr(array $data) : string {
-        $paramStr = '';
-        if(!empty($data)){
-            foreach ($data as $key => $value) {
-                if(is_string($value) || is_numeric($value)){
-                    $paramStr .= '&' . $key . '=' . urlencode($value);
-                }
-            }
-        }
-
-        return isset($paramStr{0}) ? substr($paramStr, 1) : '';
-    }
 
     /**
      * 生成签名
@@ -39,7 +22,8 @@ final class CloudUtilCos extends CloudUtilBase {
      * @param array $headers
      * @return bool
      */
-    public static function createSign(array $data,array &$headers) : bool {
+    public static function createSign(array $data, array &$headers) : bool
+    {
         $headerList = (array)Tool::getArrayVal($data, 'header_list', []);
         ksort($headerList);
         $paramList = (array)Tool::getArrayVal($data, 'param_list', []);
@@ -67,7 +51,8 @@ final class CloudUtilCos extends CloudUtilBase {
      * @param array $policyConfig
      * @param array $reqData
      */
-    public static function createPolicySign(array $policyConfig,array &$reqData){
+    public static function createPolicySign(array $policyConfig, array &$reqData)
+    {
         $nowTime = Tool::getNowTime();
         $endTime = $nowTime + 259200;
         $config = QCloudConfigSingleton::getInstance()->getCosConfig();
@@ -85,7 +70,8 @@ final class CloudUtilCos extends CloudUtilBase {
         $reqData['q-signature'] = hash_hmac('sha1', $policySign, $signKey);
     }
 
-    public static function sendServiceRequest(CloudBaseCos $cosBase) {
+    public static function sendServiceRequest(CloudBaseCos $cosBase)
+    {
         $resArr = [
             'code' => 0
         ];
@@ -96,7 +82,7 @@ final class CloudUtilCos extends CloudUtilBase {
         $timeout = (int)Tool::getArrayVal($data, CURLOPT_TIMEOUT_MS, 2000);
         $data[CURLOPT_TIMEOUT_MS] = $timeout;
         $sendRes = Tool::sendCurlReq($data, Tool::CURL_RSP_HEAD_TYPE_HTTP);
-        if($sendRes['res_no'] > 0){
+        if ($sendRes['res_no'] > 0) {
             Log::error('对象存储请求失败,curl错误码为' . $sendRes['res_no'], $errNo);
             $resArr['code'] = $errNo;
             $resArr['msg'] = $sendRes['res_msg'];
@@ -104,7 +90,7 @@ final class CloudUtilCos extends CloudUtilBase {
         }
 
         $rspContentType = isset($sendRes['res_header']['Content-Type']) ? strtolower($sendRes['res_header']['Content-Type'][0]) : '';
-        if((strlen($sendRes['res_content']) == 0) || ($rspContentType != 'application/xml')){
+        if ((strlen($sendRes['res_content']) == 0) || ($rspContentType != 'application/xml')) {
             $resArr['data'] = [
                 'code' => $sendRes['res_code'],
                 'header' => $sendRes['res_header'],
@@ -114,7 +100,7 @@ final class CloudUtilCos extends CloudUtilBase {
         }
 
         $rspData = Tool::xmlToArray($sendRes['res_content']);
-        if(isset($rspData['Error'])){
+        if (isset($rspData['Error'])) {
             $resArr['code'] = $errNo;
             $resArr['msg'] = $rspData['Error']['Message'];
         } else {
@@ -125,5 +111,24 @@ final class CloudUtilCos extends CloudUtilBase {
             ];
         }
         return $resArr;
+    }
+
+    /**
+     * 生成参数字符串
+     * @param array $data
+     * @return string
+     */
+    private static function createParamStr(array $data) : string
+    {
+        $paramStr = '';
+        if (!empty($data)) {
+            foreach ($data as $key => $value) {
+                if (is_string($value) || is_numeric($value)) {
+                    $paramStr .= '&' . $key . '=' . urlencode($value);
+                }
+            }
+        }
+
+        return isset($paramStr{0}) ? substr($paramStr, 1) : '';
     }
 }

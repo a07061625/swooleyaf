@@ -15,8 +15,10 @@ use Tool\Tool;
  * 设置存储桶的静态网站配置
  * @package QCloud\Cos
  */
-class BucketWebsitePut extends CloudBaseCos {
-    public function __construct(){
+class BucketWebsitePut extends CloudBaseCos
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_PUT);
@@ -25,23 +27,26 @@ class BucketWebsitePut extends CloudBaseCos {
         $this->reqHeader['Content-Type'] = 'application/xml';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param array $data
      * @throws \Exception\QCloud\CosException
      */
-    public function setWebsiteConfig(array $data){
-        if(empty($data)){
+    public function setWebsiteConfig(array $data)
+    {
+        if (empty($data)) {
             throw new CosException('静态网站配置不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
 
         $this->reqData = $data;
     }
 
-    public function getDetail() : array {
-        if(empty($this->reqData)){
+    public function getDetail() : array
+    {
+        if (empty($this->reqData)) {
             throw new CosException('静态网站配置不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
         $content = Tool::arrayToXml($this->reqData, 2);

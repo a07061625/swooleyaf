@@ -55,7 +55,7 @@ abstract class Rectangle
     public function __construct(
         $width,
         $height,
-        $pos = array(0, 0),
+        $pos = [0, 0],
         $borderSize = 1,
         $borderColor = '#000000',
         $fillColor = '#FFFFFF'
@@ -121,6 +121,4 @@ abstract class Rectangle
     {
         return $this->borderColor;
     }
-
-
 }

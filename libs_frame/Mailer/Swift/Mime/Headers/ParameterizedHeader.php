@@ -34,7 +34,7 @@ class Swift_Mime_Headers_ParameterizedHeader extends Swift_Mime_Headers_Unstruct
      *
      * @var string[]
      */
-    private $params = array();
+    private $params = [];
 
     /**
      * Creates a new ParameterizedHeader with $name.
@@ -83,7 +83,7 @@ class Swift_Mime_Headers_ParameterizedHeader extends Swift_Mime_Headers_Unstruct
      */
     public function setParameter($parameter, $value)
     {
-        $this->setParameters(array_merge($this->getParameters(), array($parameter => $value)));
+        $this->setParameters(array_merge($this->getParameters(), [$parameter => $value]));
     }
 
     /**
@@ -132,7 +132,7 @@ class Swift_Mime_Headers_ParameterizedHeader extends Swift_Mime_Headers_Unstruct
         foreach ($this->params as $name => $value) {
             if (null !== $value) {
                 // Add the parameter
-                $body .= '; '.$this->createParameter($name, $value);
+                $body .= '; ' . $this->createParameter($name, $value);
             }
         }
 
@@ -159,7 +159,7 @@ class Swift_Mime_Headers_ParameterizedHeader extends Swift_Mime_Headers_Unstruct
                 // Add the semi-colon separator
                 $tokens[count($tokens) - 1] .= ';';
                 $tokens = array_merge($tokens, $this->generateTokenLines(
-                    ' '.$this->createParameter($name, $value)
+                    ' ' . $this->createParameter($name, $value)
                     ));
             }
         }
@@ -181,19 +181,19 @@ class Swift_Mime_Headers_ParameterizedHeader extends Swift_Mime_Headers_Unstruct
 
         $encoded = false;
         // Allow room for parameter name, indices, "=" and DQUOTEs
-        $maxValueLength = $this->getMaxLineLength() - strlen($name.'=*N"";') - 1;
+        $maxValueLength = $this->getMaxLineLength() - strlen($name . '=*N"";') - 1;
         $firstLineOffset = 0;
 
         // If it's not already a valid parameter value...
-        if (!preg_match('/^'.self::TOKEN_REGEX.'$/D', $value)) {
+        if (!preg_match('/^' . self::TOKEN_REGEX . '$/D', $value)) {
             // TODO: text, or something else??
             // ... and it's not ascii
             if (!preg_match('/^[\x00-\x08\x0B\x0C\x0E-\x7F]*$/D', $value)) {
                 $encoded = true;
                 // Allow space for the indices, charset and language
-                $maxValueLength = $this->getMaxLineLength() - strlen($name.'*N*="";') - 1;
+                $maxValueLength = $this->getMaxLineLength() - strlen($name . '*N*="";') - 1;
                 $firstLineOffset = strlen(
-                    $this->getCharset()."'".$this->getLanguage()."'"
+                    $this->getCharset() . "'" . $this->getLanguage() . "'"
                     );
             }
         }
@@ -202,7 +202,10 @@ class Swift_Mime_Headers_ParameterizedHeader extends Swift_Mime_Headers_Unstruct
         if ($encoded || strlen($value) > $maxValueLength) {
             if (isset($this->paramEncoder)) {
                 $value = $this->paramEncoder->encodeString(
-                    $origValue, $firstLineOffset, $maxValueLength, $this->getCharset()
+                    $origValue,
+                    $firstLineOffset,
+                    $maxValueLength,
+                    $this->getCharset()
                     );
             } else {
                 // We have to go against RFC 2183/2231 in some areas for interoperability
@@ -211,20 +214,22 @@ class Swift_Mime_Headers_ParameterizedHeader extends Swift_Mime_Headers_Unstruct
             }
         }
 
-        $valueLines = isset($this->paramEncoder) ? explode("\r\n", $value) : array($value);
+        $valueLines = isset($this->paramEncoder) ? explode("\r\n", $value) : [$value];
 
         // Need to add indices
         if (count($valueLines) > 1) {
-            $paramLines = array();
+            $paramLines = [];
             foreach ($valueLines as $i => $line) {
-                $paramLines[] = $name.'*'.$i.
+                $paramLines[] = $name . '*' . $i .
                     $this->getEndOfParameterValue($line, true, $i == 0);
             }
 
             return implode(";\r\n ", $paramLines);
         } else {
-            return $name.$this->getEndOfParameterValue(
-                $valueLines[0], $encoded, true
+            return $name . $this->getEndOfParameterValue(
+                $valueLines[0],
+                $encoded,
+                true
                 );
         }
     }
@@ -240,18 +245,18 @@ class Swift_Mime_Headers_ParameterizedHeader extends Swift_Mime_Headers_Unstruct
      */
     private function getEndOfParameterValue($value, $encoded = false, $firstLine = false)
     {
-        if (!preg_match('/^'.self::TOKEN_REGEX.'$/D', $value)) {
-            $value = '"'.$value.'"';
+        if (!preg_match('/^' . self::TOKEN_REGEX . '$/D', $value)) {
+            $value = '"' . $value . '"';
         }
         $prepend = '=';
         if ($encoded) {
             $prepend = '*=';
             if ($firstLine) {
-                $prepend = '*='.$this->getCharset()."'".$this->getLanguage().
+                $prepend = '*=' . $this->getCharset() . "'" . $this->getLanguage() .
                     "'";
             }
         }
 
-        return $prepend.$value;
+        return $prepend . $value;
     }
 }

@@ -9,7 +9,6 @@ use Grafika\Color;
  */
 abstract class Ellipse
 {
-
     /**
      * Image width in pixels
      * @var int
@@ -42,7 +41,6 @@ abstract class Ellipse
      * @var Color
      */
     protected $borderColor;
-
 
     /**
      * Creates an ellipse.
@@ -123,6 +121,4 @@ abstract class Ellipse
     {
         return $this->borderColor;
     }
-
-
 }

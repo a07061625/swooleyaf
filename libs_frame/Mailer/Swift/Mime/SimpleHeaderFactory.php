@@ -49,6 +49,15 @@ class Swift_Mime_SimpleHeaderFactory implements Swift_Mime_CharsetObserver
     }
 
     /**
+     * Make a deep copy of object.
+     */
+    public function __clone()
+    {
+        $this->encoder = clone $this->encoder;
+        $this->paramEncoder = clone $this->paramEncoder;
+    }
+
+    /**
      * Create a new Mailbox Header with a list of $addresses.
      *
      * @param string            $name
@@ -114,7 +123,7 @@ class Swift_Mime_SimpleHeaderFactory implements Swift_Mime_CharsetObserver
      *
      * @return Swift_Mime_Headers_ParameterizedHeader
      */
-    public function createParameterizedHeader($name, $value = null, $params = array())
+    public function createParameterizedHeader($name, $value = null, $params = [])
     {
         $header = new Swift_Mime_Headers_ParameterizedHeader($name, $this->encoder, (strtolower($name) == 'content-disposition') ? $this->paramEncoder : null);
         if (isset($value)) {
@@ -176,15 +185,6 @@ class Swift_Mime_SimpleHeaderFactory implements Swift_Mime_CharsetObserver
         $this->charset = $charset;
         $this->encoder->charsetChanged($charset);
         $this->paramEncoder->charsetChanged($charset);
-    }
-
-    /**
-     * Make a deep copy of object.
-     */
-    public function __clone()
-    {
-        $this->encoder = clone $this->encoder;
-        $this->paramEncoder = clone $this->paramEncoder;
     }
 
     /** Apply the charset to the Header */

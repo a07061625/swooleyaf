@@ -12,17 +12,21 @@ use QCloud\CloudBaseCos;
  * 获取所有存储空间列表
  * @package QCloud\Cos
  */
-class ServiceGet extends CloudBaseCos {
-    public function __construct(){
+class ServiceGet extends CloudBaseCos
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost('service.cos.myqcloud.com');
         $this->setReqMethod(self::REQ_METHOD_GET);
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         return $this->getContent();
     }
 }

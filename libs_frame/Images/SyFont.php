@@ -10,7 +10,8 @@ namespace Images;
 use Constant\ErrorCode;
 use Exception\Image\ImageException;
 
-class SyFont {
+class SyFont
+{
     /**
      * 字体三原色-黄色值
      * @var int
@@ -42,18 +43,21 @@ class SyFont {
      */
     private $file = '';
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->size = 18;
         $this->file = SY_ROOT . '/static/fonts/stsong.ttf';
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
     /**
      * @return int
      */
-    public function getColorRed() : int {
+    public function getColorRed() : int
+    {
         return $this->colorRed;
     }
 
@@ -61,7 +65,8 @@ class SyFont {
      * @param int $colorRed
      * @throws \Exception\Image\ImageException
      */
-    public function setColorRed(int $colorRed) {
+    public function setColorRed(int $colorRed)
+    {
         if (($colorRed < 0) || ($colorRed > 255)) {
             throw new ImageException('字体颜色设置不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
@@ -72,7 +77,8 @@ class SyFont {
     /**
      * @return int
      */
-    public function getColorGreen() : int {
+    public function getColorGreen() : int
+    {
         return $this->colorGreen;
     }
 
@@ -80,7 +86,8 @@ class SyFont {
      * @param int $colorGreen
      * @throws \Exception\Image\ImageException
      */
-    public function setColorGreen(int $colorGreen) {
+    public function setColorGreen(int $colorGreen)
+    {
         if (($colorGreen < 0) || ($colorGreen > 255)) {
             throw new ImageException('字体颜色设置不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
@@ -91,7 +98,8 @@ class SyFont {
     /**
      * @return int
      */
-    public function getColorBlue() : int {
+    public function getColorBlue() : int
+    {
         return $this->colorBlue;
     }
 
@@ -99,7 +107,8 @@ class SyFont {
      * @param int $colorBlue
      * @throws \Exception\Image\ImageException
      */
-    public function setColorBlue(int $colorBlue) {
+    public function setColorBlue(int $colorBlue)
+    {
         if (($colorBlue < 0) || ($colorBlue > 255)) {
             throw new ImageException('字体颜色设置不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
@@ -110,21 +119,24 @@ class SyFont {
     /**
      * @return int
      */
-    public function getColorAlpha() : int {
+    public function getColorAlpha() : int
+    {
         return $this->colorAlpha;
     }
 
     /**
      * @return string
      */
-    public function getRGB() : string {
+    public function getRGB() : string
+    {
         return 'rgb(' . $this->colorRed . ',' . $this->colorGreen . ',' . $this->colorBlue . ')';
     }
 
     /**
      * @return string
      */
-    public function getRGBA() : string {
+    public function getRGBA() : string
+    {
         return 'rgba(' . $this->colorRed . ',' . $this->colorGreen . ',' . $this->colorBlue . ',' . number_format(($this->colorAlpha / 100), 2, '.', '') . ')';
     }
 
@@ -132,7 +144,8 @@ class SyFont {
      * @param int $colorAlpha
      * @throws \Exception\Image\ImageException
      */
-    public function setColorAlpha(int $colorAlpha) {
+    public function setColorAlpha(int $colorAlpha)
+    {
         if (($colorAlpha < 0) || ($colorAlpha > 100)) {
             throw new ImageException('字体透明度设置不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
@@ -143,7 +156,8 @@ class SyFont {
     /**
      * @return int
      */
-    public function getSize() : int {
+    public function getSize() : int
+    {
         return $this->size;
     }
 
@@ -151,7 +165,8 @@ class SyFont {
      * @param int $size
      * @throws \Exception\Image\ImageException
      */
-    public function setSize(int $size) {
+    public function setSize(int $size)
+    {
         if (($size < 0) || ($size > 200)) {
             throw new ImageException('字体大小设置不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
@@ -162,7 +177,8 @@ class SyFont {
     /**
      * @return string
      */
-    public function getFile() : string {
+    public function getFile() : string
+    {
         return $this->file;
     }
 
@@ -170,14 +186,14 @@ class SyFont {
      * @param string $file
      * @throws \Exception\Image\ImageException
      */
-    public function setFile(string $file) {
+    public function setFile(string $file)
+    {
         if (!is_file($file)) {
             throw new ImageException('字体文件不存在', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
-        } else if (!is_readable($file)) {
+        } elseif (!is_readable($file)) {
             throw new ImageException('字体文件不可读', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
 
         $this->file = $file;
     }
-
 }

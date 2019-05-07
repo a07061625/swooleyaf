@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Exception\Map\TencentMapException;
 use Map\MapBaseTencent;
 
-class GeoCoderReverse extends MapBaseTencent {
+class GeoCoderReverse extends MapBaseTencent
+{
     /**
      * 坐标
      * @var string
@@ -28,21 +29,24 @@ class GeoCoderReverse extends MapBaseTencent {
      */
     private $poiOptions = [];
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUrl = 'https://apis.map.qq.com/ws/geocoder/v1/';
         $this->rspDataKey = 'result';
         $this->reqData['get_poi'] = 0;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param double $lat
      * @param double $lng
      */
-    public function setLocation($lat, $lng){
+    public function setLocation($lat, $lng)
+    {
         $this->reqData['location'] = $lat . ',' . $lng;
     }
 
@@ -50,8 +54,9 @@ class GeoCoderReverse extends MapBaseTencent {
      * @param int $poiStatus
      * @throws \Exception\Map\TencentMapException
      */
-    public function setPoiStatus(int $poiStatus){
-        if(in_array($poiStatus, [0, 1])){
+    public function setPoiStatus(int $poiStatus)
+    {
+        if (in_array($poiStatus, [0, 1], true)) {
             $this->reqData['get_poi'] = $poiStatus;
         } else {
             throw new TencentMapException('poi状态不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
@@ -61,7 +66,8 @@ class GeoCoderReverse extends MapBaseTencent {
     /**
      * @param array $poiOptions
      */
-    public function addPoiOptions(array $poiOptions){
+    public function addPoiOptions(array $poiOptions)
+    {
         foreach ($poiOptions as $poiKey => $poiVal) {
             $this->poiOptions[$poiKey] = $poiVal;
         }
@@ -70,16 +76,18 @@ class GeoCoderReverse extends MapBaseTencent {
     /**
      * @param array $poiOptions
      */
-    public function setPoiOptions(array $poiOptions){
+    public function setPoiOptions(array $poiOptions)
+    {
         $this->poiOptions = $poiOptions;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['location'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['location'])) {
             throw new TencentMapException('坐标不能为空', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }
 
-        if(!empty($this->poiOptions)){
+        if (!empty($this->poiOptions)) {
             $optionStr = '';
             foreach ($this->poiOptions as $optKey => $optVal) {
                 $optionStr = ';' . $optKey . '=' . $optVal;

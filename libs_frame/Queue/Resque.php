@@ -40,9 +40,9 @@ class Resque
      */
     public static function setBackend($server, $database = 0)
     {
-        self::$redisServer   = $server;
+        self::$redisServer = $server;
         self::$redisDatabase = $database;
-        self::$redis         = null;
+        self::$redis = null;
     }
 
     /**
@@ -76,7 +76,7 @@ class Resque
      */
     public static function fork()
     {
-        if(!function_exists('pcntl_fork')) {
+        if (!function_exists('pcntl_fork')) {
             return false;
         }
 
@@ -85,7 +85,7 @@ class Resque
         self::$redis = null;
 
         $pid = pcntl_fork();
-        if($pid === -1) {
+        if ($pid === -1) {
             throw new RuntimeException('Unable to fork child worker.');
         }
 
@@ -124,7 +124,7 @@ class Resque
     {
         $item = self::redis()->lpop('queue:' . $queue);
 
-        if(!$item) {
+        if (!$item) {
             return;
         }
 
@@ -138,12 +138,12 @@ class Resque
      * @param array $items
      * @return integer number of deleted items
      */
-    public static function dequeue($queue, $items = Array())
+    public static function dequeue($queue, $items = [])
     {
-        if(count($items) > 0) {
-        return self::removeItems($queue, $items);
+        if (count($items) > 0) {
+            return self::removeItems($queue, $items);
         } else {
-        return self::removeList($queue);
+            return self::removeList($queue);
         }
     }
 
@@ -170,15 +170,15 @@ class Resque
      */
     public static function blpop(array $queues, $timeout)
     {
-        $list = array();
-        foreach($queues AS $queue) {
-        $list[] = 'queue:' . $queue;
+        $list = [];
+        foreach ($queues as $queue) {
+            $list[] = 'queue:' . $queue;
         }
 
         $item = self::redis()->blpop($list, (int)$timeout);
 
-        if(!$item) {
-        return;
+        if (!$item) {
+            return;
         }
 
         /**
@@ -188,10 +188,10 @@ class Resque
          */
         $queue = substr($item[0], strlen(self::redis()->getPrefix() . 'queue:'));
 
-        return array(
-        'queue'   => $queue,
+        return [
+        'queue' => $queue,
         'payload' => json_decode($item[1], true)
-        );
+        ];
     }
 
     /**
@@ -218,17 +218,16 @@ class Resque
      */
     public static function enqueue($queue, $class, $args = null, $trackStatus = false)
     {
-        $id         = Resque::generateJobId();
-        $hookParams = array(
+        $id = self::generateJobId();
+        $hookParams = [
             'class' => $class,
-            'args'  => $args,
+            'args' => $args,
             'queue' => $queue,
-            'id'    => $id,
-        );
+            'id' => $id,
+        ];
         try {
             Resque_Event::trigger('beforeEnqueue', $hookParams);
-        }
-        catch(Resque_Job_DontCreate $e) {
+        } catch (Resque_Job_DontCreate $e) {
             return false;
         }
 
@@ -257,10 +256,20 @@ class Resque
     public static function queues()
     {
         $queues = self::redis()->smembers('queues');
-        if(!is_array($queues)) {
-            $queues = array();
+        if (!is_array($queues)) {
+            $queues = [];
         }
         return $queues;
+    }
+
+    /*
+     * Generate an identifier to attach to a job for status tracking.
+     *
+     * @return string
+     */
+    public static function generateJobId()
+    {
+        return md5(uniqid('', true));
     }
 
     /**
@@ -275,12 +284,12 @@ class Resque
      * @param array $items
      * @return integer number of deleted items
      */
-    private static function removeItems($queue, $items = Array())
+    private static function removeItems($queue, $items = [])
     {
         $counter = 0;
-        $originalQueue = 'queue:'. $queue;
-        $tempQueue = $originalQueue. ':temp:'. time();
-        $requeueQueue = $tempQueue. ':requeue';
+        $originalQueue = 'queue:' . $queue;
+        $tempQueue = $originalQueue . ':temp:' . time();
+        $requeueQueue = $tempQueue . ':requeue';
 
         // move each item from original queue to temp queue and process it
         $finished = false;
@@ -288,7 +297,7 @@ class Resque
             $string = self::redis()->rpoplpush($originalQueue, self::redis()->getPrefix() . $tempQueue);
 
             if (!empty($string)) {
-                if(self::matchItem($string, $items)) {
+                if (self::matchItem($string, $items)) {
                     self::redis()->rpop($tempQueue);
                     $counter++;
                 } else {
@@ -302,7 +311,7 @@ class Resque
         // move back from temp queue to original queue
         $finished = false;
         while (!$finished) {
-            $string = self::redis()->rpoplpush($requeueQueue, self::redis()->getPrefix() .$originalQueue);
+            $string = self::redis()->rpoplpush($requeueQueue, self::redis()->getPrefix() . $originalQueue);
             if (empty($string)) {
                 $finished = true;
             }
@@ -324,30 +333,32 @@ class Resque
      * @params $items
      *
      * @return (bool)
+     * @param mixed $string
+     * @param mixed $items
      */
     private static function matchItem($string, $items)
     {
         $decoded = json_decode($string, true);
 
-        foreach($items as $key => $val) {
-        # class name only  ex: item[0] = ['class']
-        if (is_numeric($key)) {
-            if($decoded['class'] == $val) {
-            return true;
-            }
-        # class name with args , example: item[0] = ['class' => {'foo' => 1, 'bar' => 2}]
+        foreach ($items as $key => $val) {
+            # class name only  ex: item[0] = ['class']
+            if (is_numeric($key)) {
+                if ($decoded['class'] == $val) {
+                    return true;
+                }
+                # class name with args , example: item[0] = ['class' => {'foo' => 1, 'bar' => 2}]
             } elseif (is_array($val)) {
-            $decodedArgs = (array)$decoded['args'][0];
-            if ($decoded['class'] == $key &&
+                $decodedArgs = (array)$decoded['args'][0];
+                if ($decoded['class'] == $key &&
             count($decodedArgs) > 0 && count(array_diff($decodedArgs, $val)) == 0) {
-            return true;
+                    return true;
+                }
+                # class name with ID, example: item[0] = ['class' => 'id']
+            } else {
+                if ($decoded['class'] == $key && $decoded['id'] == $val) {
+                    return true;
+                }
             }
-        # class name with ID, example: item[0] = ['class' => 'id']
-        } else {
-            if ($decoded['class'] == $key && $decoded['id'] == $val) {
-            return true;
-            }
-        }
         }
         return false;
     }
@@ -359,21 +370,12 @@ class Resque
      *
      * @params string $queue the name of the queue
      * @return integer number of deleted items belongs to this list
+     * @param mixed $queue
      */
     private static function removeList($queue)
     {
         $counter = self::size($queue);
         $result = self::redis()->del('queue:' . $queue);
         return ($result == 1) ? $counter : 0;
-    }
-
-    /*
-     * Generate an identifier to attach to a job for status tracking.
-     *
-     * @return string
-     */
-    public static function generateJobId()
-    {
-        return md5(uniqid('', true));
     }
 }

@@ -5,13 +5,12 @@ namespace Grafika;
  * Interface DrawingObjectInterface
  * @package Grafika
  */
-interface DrawingObjectInterface {
-
+interface DrawingObjectInterface
+{
     /**
      * @param ImageInterface $image
      *
      * @return ImageInterface
      */
-    public function draw( $image );
-
+    public function draw($image);
 }

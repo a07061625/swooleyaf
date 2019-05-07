@@ -19,48 +19,90 @@ namespace {
 }
 
 namespace  {
-    class SeasLog {
-        public function __construct(){}
+    class SeasLog
+    {
+        public function __construct()
+        {
+        }
 
-        public function __destruct(){}
+        public function __destruct()
+        {
+        }
 
-        public static function setBasePath($base_path){}
+        public static function setBasePath($base_path)
+        {
+        }
 
-        public static function getBasePath(){}
+        public static function getBasePath()
+        {
+        }
 
-        public static function setLogger($logger){}
+        public static function setLogger($logger)
+        {
+        }
 
-        public static function getLastLogger(){}
+        public static function getLastLogger()
+        {
+        }
 
-        public static function setDatetimeFormat($format){}
+        public static function setDatetimeFormat($format)
+        {
+        }
 
-        public static function getDatetimeFormat(){}
+        public static function getDatetimeFormat()
+        {
+        }
 
-        public static function analyzerCount($level, $log_path = null, $key_word = null){}
+        public static function analyzerCount($level, $log_path = null, $key_word = null)
+        {
+        }
 
-        public static function analyzerDetail($level, $log_path = null, $key_word = null, $start = null, $limit = null, $order = null){}
+        public static function analyzerDetail($level, $log_path = null, $key_word = null, $start = null, $limit = null, $order = null)
+        {
+        }
 
-        public static function getBuffer(){}
+        public static function getBuffer()
+        {
+        }
 
-        public static function flushBuffer(){}
+        public static function flushBuffer()
+        {
+        }
 
-        public static function log($level, $message = null, $content = null, $logger = null){}
+        public static function log($level, $message = null, $content = null, $logger = null)
+        {
+        }
 
-        public static function debug($message, $content = null, $logger = null){}
+        public static function debug($message, $content = null, $logger = null)
+        {
+        }
 
-        public static function info($message, $content = null, $logger = null){}
+        public static function info($message, $content = null, $logger = null)
+        {
+        }
 
-        public static function notice($message, $content = null, $logger = null){}
+        public static function notice($message, $content = null, $logger = null)
+        {
+        }
 
-        public static function warning($message, $content = null, $logger = null){}
+        public static function warning($message, $content = null, $logger = null)
+        {
+        }
 
-        public static function error($message, $content = null, $logger = null){}
+        public static function error($message, $content = null, $logger = null)
+        {
+        }
 
-        public static function critical($message, $content = null, $logger = null){}
+        public static function critical($message, $content = null, $logger = null)
+        {
+        }
 
-        public static function alert($message, $content = null, $logger = null){}
+        public static function alert($message, $content = null, $logger = null)
+        {
+        }
 
-        public static function emergency($message, $content = null, $logger = null){}
+        public static function emergency($message, $content = null, $logger = null)
+        {
+        }
     }
 }
-

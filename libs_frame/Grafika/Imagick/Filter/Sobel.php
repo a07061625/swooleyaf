@@ -9,18 +9,17 @@ use Grafika\Imagick\Image;
  * Sobel filter is an edge detection filter.
  * @link https://en.wikipedia.org/wiki/Sobel_operator
  */
-class Sobel implements FilterInterface{
-
-
+class Sobel implements FilterInterface
+{
     /**
      * @param Image $image
      *
      * @return Image
      */
-    public function apply( $image ) {
-
-        $pixels = array();
-        $finalPx = array();
+    public function apply($image)
+    {
+        $pixels = [];
+        $finalPx = [];
         // Localize vars
         $width = $image->getWidth();
         $height = $image->getHeight();
@@ -28,7 +27,7 @@ class Sobel implements FilterInterface{
         // Loop
         $pixelIterator = $image->getCore()->getPixelIterator();
         foreach ($pixelIterator as $y => $rows) { /* Loop through pixel rows */
-            foreach ( $rows as $x => $px ) { /* Loop through the pixels in the row (columns) */
+            foreach ($rows as $x => $px) { /* Loop through the pixels in the row (columns) */
 
                 // row 0
                 if ($x > 0 and $y > 0) {
@@ -93,7 +92,6 @@ class Sobel implements FilterInterface{
                 $finalPx[] = $edge; // R
                 $finalPx[] = $edge; // G
                 $finalPx[] = $edge; // B
-
             }
             $pixelIterator->syncIterator(); /* Sync the iterator, this is important to do on each iteration */
         }
@@ -102,13 +100,12 @@ class Sobel implements FilterInterface{
         $new->newImage($width, $height, new \ImagickPixel('black'));
         /* Import the pixels into image.
         width * height * strlen("RGB") must match count($pixels) */
-        $new->importImagePixels(0, 0, $width, $height, "RGB", \Imagick::PIXEL_CHAR, $finalPx);
+        $new->importImagePixels(0, 0, $width, $height, 'RGB', \Imagick::PIXEL_CHAR, $finalPx);
 
         $type = $image->getType();
         $file = $image->getImageFile();
 
-        return new Image( $new, $file, $width, $height, $type ); // Create new image with updated core
-
+        return new Image($new, $file, $width, $height, $type); // Create new image with updated core
     }
 
     private function convolve($matrix)

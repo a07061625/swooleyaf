@@ -32,21 +32,7 @@ class Swift_Mime_ContentEncoder_QpContentEncoder extends Swift_Encoder_QpEncoder
 
     public function __sleep()
     {
-        return array('charStream', 'filter', 'dotEscape');
-    }
-
-    protected function getSafeMapShareId()
-    {
-        return get_class($this).($this->dotEscape ? '.dotEscape' : '');
-    }
-
-    protected function initSafeMap()
-    {
-        parent::initSafeMap();
-        if ($this->dotEscape) {
-            /* Encode . as =2e for buggy remote servers */
-            unset($this->safeMap[0x2e]);
-        }
+        return ['charStream', 'filter', 'dotEscape'];
     }
 
     /**
@@ -100,7 +86,7 @@ class Swift_Mime_ContentEncoder_QpContentEncoder extends Swift_Encoder_QpEncoder
             $newLineLength = $lineLen + ($i === false ? $size : $i);
 
             if ($currentLine && $newLineLength >= $thisLineLength) {
-                $is->write($prepend.$this->standardize($currentLine));
+                $is->write($prepend . $this->standardize($currentLine));
                 $currentLine = '';
                 $prepend = "=\r\n";
                 $thisLineLength = $maxLineLength;
@@ -117,7 +103,7 @@ class Swift_Mime_ContentEncoder_QpContentEncoder extends Swift_Encoder_QpEncoder
             }
         }
         if (strlen($currentLine)) {
-            $is->write($prepend.$this->standardize($currentLine));
+            $is->write($prepend . $this->standardize($currentLine));
         }
     }
 
@@ -130,5 +116,19 @@ class Swift_Mime_ContentEncoder_QpContentEncoder extends Swift_Encoder_QpEncoder
     public function getName()
     {
         return 'quoted-printable';
+    }
+
+    protected function getSafeMapShareId()
+    {
+        return get_class($this) . ($this->dotEscape ? '.dotEscape' : '');
+    }
+
+    protected function initSafeMap()
+    {
+        parent::initSafeMap();
+        if ($this->dotEscape) {
+            /* Encode . as =2e for buggy remote servers */
+            unset($this->safeMap[0x2e]);
+        }
     }
 }

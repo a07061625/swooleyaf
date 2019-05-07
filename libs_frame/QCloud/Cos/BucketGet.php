@@ -14,7 +14,8 @@ use QCloud\CloudBaseCos;
  * 获取存储桶的对象列表
  * @package QCloud\Cos
  */
-class BucketGet extends CloudBaseCos {
+class BucketGet extends CloudBaseCos
+{
     /**
      * 前缀
      * @var string
@@ -41,7 +42,8 @@ class BucketGet extends CloudBaseCos {
      */
     private $limit = 0;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_GET);
@@ -51,15 +53,17 @@ class BucketGet extends CloudBaseCos {
         $this->reqData['max-keys'] = 20;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $prefix
      * @throws \Exception\QCloud\CosException
      */
-    public function setPrefix(string $prefix){
-        if(strlen($prefix) > 0){
+    public function setPrefix(string $prefix)
+    {
+        if (strlen($prefix) > 0) {
             $this->reqData['prefix'] = $prefix;
         } else {
             throw new CosException('前缀不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
@@ -70,8 +74,9 @@ class BucketGet extends CloudBaseCos {
      * @param string $delimiter
      * @throws \Exception\QCloud\CosException
      */
-    public function setDelimiter(string $delimiter){
-        if(strlen($delimiter) > 0){
+    public function setDelimiter(string $delimiter)
+    {
+        if (strlen($delimiter) > 0) {
             $this->reqData['delimiter'] = $delimiter;
         } else {
             throw new CosException('定界符不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
@@ -82,8 +87,9 @@ class BucketGet extends CloudBaseCos {
      * @param int $offset
      * @throws \Exception\QCloud\CosException
      */
-    public function setOffset(int $offset){
-        if($offset > 0){
+    public function setOffset(int $offset)
+    {
+        if ($offset > 0) {
             $this->reqData['marker'] = $offset;
         } else {
             throw new CosException('偏移量不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
@@ -94,15 +100,17 @@ class BucketGet extends CloudBaseCos {
      * @param int $limit
      * @throws \Exception\QCloud\CosException
      */
-    public function setLimit(int $limit){
-        if(($limit > 0) && ($limit <= 1000)){
+    public function setLimit(int $limit)
+    {
+        if (($limit > 0) && ($limit <= 1000)) {
             $this->reqData['max-keys'] = $limit;
         } else {
             throw new CosException('条目数不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $this->setReqQuery($this->reqData);
         return $this->getContent();
     }

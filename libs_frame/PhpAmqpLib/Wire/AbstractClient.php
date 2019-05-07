@@ -1,10 +1,8 @@
 <?php
 namespace PhpAmqpLib\Wire;
 
-
 class AbstractClient
 {
-
     /**
      * @var bool
      */

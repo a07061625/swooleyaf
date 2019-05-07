@@ -6,7 +6,4 @@ namespace Swoole\Http2;
  */
 class Request
 {
-
-
-
 }

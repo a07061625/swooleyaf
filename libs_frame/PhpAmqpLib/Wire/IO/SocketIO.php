@@ -63,9 +63,9 @@ class SocketIO extends AbstractIO
         $this->sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 
         list($sec, $uSec) = MiscHelper::splitSecondsMicroseconds($this->send_timeout);
-        socket_set_option($this->sock, SOL_SOCKET, SO_SNDTIMEO, array('sec' => $sec, 'usec' => $uSec));
+        socket_set_option($this->sock, SOL_SOCKET, SO_SNDTIMEO, ['sec' => $sec, 'usec' => $uSec]);
         list($sec, $uSec) = MiscHelper::splitSecondsMicroseconds($this->read_timeout);
-        socket_set_option($this->sock, SOL_SOCKET, SO_RCVTIMEO, array('sec' => $sec, 'usec' => $uSec));
+        socket_set_option($this->sock, SOL_SOCKET, SO_RCVTIMEO, ['sec' => $sec, 'usec' => $uSec]);
 
         if (!socket_connect($this->sock, $this->host, $this->port)) {
             $errno = socket_last_error($this->sock);
@@ -200,23 +200,11 @@ class SocketIO extends AbstractIO
      */
     public function select($sec, $usec)
     {
-        $read = array($this->sock);
+        $read = [$this->sock];
         $write = null;
         $except = null;
 
         return socket_select($read, $write, $except, $sec, $usec);
-    }
-
-    /**
-     * @throws \PhpAmqpLib\Exception\AMQPIOException
-     */
-    protected function enable_keepalive()
-    {
-        if (!defined('SOL_SOCKET') || !defined('SO_KEEPALIVE')) {
-            throw new AMQPIOException('Can not enable keepalive: SOL_SOCKET or SO_KEEPALIVE is not defined');
-        }
-
-        socket_set_option($this->sock, SOL_SOCKET, SO_KEEPALIVE, 1);
     }
 
     /**
@@ -234,7 +222,7 @@ class SocketIO extends AbstractIO
             // server has gone away
             if (($this->heartbeat * 2) < $t_read) {
                 $this->close();
-                throw new AMQPRuntimeException("Missed server heartbeat");
+                throw new AMQPRuntimeException('Missed server heartbeat');
             }
 
             // time for client to send a heartbeat
@@ -242,6 +230,18 @@ class SocketIO extends AbstractIO
                 $this->write_heartbeat();
             }
         }
+    }
+
+    /**
+     * @throws \PhpAmqpLib\Exception\AMQPIOException
+     */
+    protected function enable_keepalive()
+    {
+        if (!defined('SOL_SOCKET') || !defined('SO_KEEPALIVE')) {
+            throw new AMQPIOException('Can not enable keepalive: SOL_SOCKET or SO_KEEPALIVE is not defined');
+        }
+
+        socket_set_option($this->sock, SOL_SOCKET, SO_KEEPALIVE, 1);
     }
 
     /**

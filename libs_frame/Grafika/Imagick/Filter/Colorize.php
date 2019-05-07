@@ -8,8 +8,8 @@ use Grafika\Imagick\Image;
 /**
  * Change the values for red, green and blue in an image.
  */
-class Colorize implements FilterInterface{
-
+class Colorize implements FilterInterface
+{
     /**
      * @var int
      */
@@ -41,7 +41,8 @@ class Colorize implements FilterInterface{
      *
      * @return Image
      */
-    public function apply( $image ) {
+    public function apply($image)
+    {
 
         // normalize colorize levels
         $red = $this->normalizeLevel($this->red);
@@ -59,9 +60,9 @@ class Colorize implements FilterInterface{
     private function normalizeLevel($level)
     {
         if ($level > 0) {
-            return $level/5;
+            return $level / 5;
         } else {
-            return ($level+100)/100;
+            return ($level + 100) / 100;
         }
     }
 }

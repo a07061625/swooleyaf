@@ -11,7 +11,6 @@ use Grafika\Gd\Image;
  */
 class Line extends Base implements DrawingObjectInterface
 {
-
     /**
      * @param Image $image
      *
@@ -19,18 +18,15 @@ class Line extends Base implements DrawingObjectInterface
      */
     public function draw($image)
     {
-
-        list( $x1, $y1 ) = $this->point1;
-        list( $x2, $y2 ) = $this->point2;
-        list( $r, $g, $b ) = $this->color->getRgb();
-        $color = imagecolorallocate( $image->getCore(), $r, $g, $b );
-        if ( function_exists( 'imageantialias' ) ) { // Not available on some if PHP is not precompiled with it even if GD is enabled
-            imageantialias( $image->getCore(), true );
+        list($x1, $y1) = $this->point1;
+        list($x2, $y2) = $this->point2;
+        list($r, $g, $b) = $this->color->getRgb();
+        $color = imagecolorallocate($image->getCore(), $r, $g, $b);
+        if (function_exists('imageantialias')) { // Not available on some if PHP is not precompiled with it even if GD is enabled
+            imageantialias($image->getCore(), true);
         }
-        imageline( $image->getCore(), $x1, $y1, $x2, $y2, $color );
+        imageline($image->getCore(), $x1, $y1, $x2, $y2, $color);
 
         return $image;
     }
-
-
 }

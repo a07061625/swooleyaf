@@ -46,8 +46,8 @@ class Swift_Mime_IdGenerator implements Swift_IdGenerator
      */
     public function generateId()
     {
-        $idLeft = md5(getmypid().'.'.time().'.'.uniqid(mt_rand(), true));
+        $idLeft = md5(getmypid() . '.' . time() . '.' . uniqid(mt_rand(), true));
 
-        return $idLeft.'@'.$this->idRight;
+        return $idLeft . '@' . $this->idRight;
     }
 }

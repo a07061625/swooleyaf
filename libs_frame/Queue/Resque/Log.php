@@ -10,7 +10,8 @@ class Resque_Log extends \Psr\Log\AbstractLogger
 {
     public $verbose;
 
-    public function __construct($verbose = false) {
+    public function __construct($verbose = false)
+    {
         $this->verbose = $verbose;
     }
 
@@ -22,7 +23,7 @@ class Resque_Log extends \Psr\Log\AbstractLogger
      * @param array   $context  Variables to replace { placeholder }
      * @return null
      */
-    public function log($level, $message, array $context = array())
+    public function log($level, $message, array $context = [])
     {
         if ($this->verbose) {
             fwrite(
@@ -48,10 +49,10 @@ class Resque_Log extends \Psr\Log\AbstractLogger
      * @param  array   $context  Array of variables to use in message
      * @return string
      */
-    public function interpolate($message, array $context = array())
+    public function interpolate($message, array $context = [])
     {
         // build a replacement array with braces around the context keys
-        $replace = array();
+        $replace = [];
         foreach ($context as $key => $val) {
             $replace['{' . $key . '}'] = $val;
         }

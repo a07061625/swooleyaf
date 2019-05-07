@@ -3,8 +3,8 @@ namespace Grafika\Imagick\DrawingObject;
 
 use Grafika\DrawingObject\QuadraticBezier as Base;
 use Grafika\DrawingObjectInterface;
-use Grafika\Imagick\Image;
 use Grafika\ImageInterface;
+use Grafika\Imagick\Image;
 
 /**
  * Class QuadraticBezier
@@ -32,16 +32,16 @@ class QuadraticBezier extends Base implements DrawingObjectInterface
         $draw->setStrokeColor($strokeColor);
         $draw->setFillColor($fillColor);
 
-
-
         list($x1, $y1) = $this->point1;
         list($x2, $y2) = $this->control;
         list($x3, $y3) = $this->point2;
         $draw->pathStart();
         $draw->pathMoveToAbsolute($x1, $y1);
         $draw->pathCurveToQuadraticBezierAbsolute(
-            $x2, $y2,
-            $x3, $y3
+            $x2,
+            $y2,
+            $x3,
+            $y3
         );
         $draw->pathFinish();
 

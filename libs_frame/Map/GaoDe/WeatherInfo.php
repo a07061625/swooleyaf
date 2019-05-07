@@ -15,7 +15,8 @@ use Map\MapBaseGaoDe;
  * 天气查询
  * @package Map\GaoDe
  */
-class WeatherInfo extends MapBaseGaoDe {
+class WeatherInfo extends MapBaseGaoDe
+{
     /**
      * 城市编码
      * @var string
@@ -27,7 +28,8 @@ class WeatherInfo extends MapBaseGaoDe {
      */
     private $extensions = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUri = '/weather/weatherInfo';
         $this->reqData['extensions'] = 'base';
@@ -37,8 +39,9 @@ class WeatherInfo extends MapBaseGaoDe {
      * @param string $city
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setCity(string $city){
-        if(ctype_digit($city) && (strlen($city) == 6)){
+    public function setCity(string $city)
+    {
+        if (ctype_digit($city) && (strlen($city) == 6)) {
             $this->reqData['city'] = $city;
         } else {
             throw new GaoDeMapException('城市编码不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
@@ -49,16 +52,18 @@ class WeatherInfo extends MapBaseGaoDe {
      * @param string $extensions
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setExtensions(string $extensions){
-        if(in_array($extensions, ['base', 'all'])){
+    public function setExtensions(string $extensions)
+    {
+        if (in_array($extensions, ['base', 'all'], true)) {
             $this->reqData['extensions'] = $extensions;
         } else {
             throw new GaoDeMapException('气象类型不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['city'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['city'])) {
             throw new GaoDeMapException('城市编码不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 

@@ -4,8 +4,8 @@
 
 namespace PhpAmqpLib\Helper\Protocol;
 
-use PhpAmqpLib\Wire\AMQPWriter;
 use PhpAmqpLib\Wire\AMQPReader;
+use PhpAmqpLib\Wire\AMQPWriter;
 
 class Protocol091
 {
@@ -17,15 +17,15 @@ class Protocol091
      * @param string $locales
      * @return array
      */
-    public function connectionStart($version_major = 0, $version_minor = 9, $server_properties, $mechanisms = 'PLAIN', $locales = 'en_US')
+    public function connectionStart($version_major, $version_minor, $server_properties, $mechanisms = 'PLAIN', $locales = 'en_US')
     {
         $writer = new AMQPWriter();
         $writer->write_octet($version_major);
         $writer->write_octet($version_minor);
-        $writer->write_table(empty($server_properties) ? array() : $server_properties);
+        $writer->write_table(empty($server_properties) ? [] : $server_properties);
         $writer->write_longstr($mechanisms);
         $writer->write_longstr($locales);
-        return array(10, 10, $writer);
+        return [10, 10, $writer];
     }
 
     /**
@@ -34,7 +34,7 @@ class Protocol091
      */
     public static function connectionStartOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         $response[] = $reader->read_table();
         $response[] = $reader->read_shortstr();
         $response[] = $reader->read_longstr();
@@ -50,7 +50,7 @@ class Protocol091
     {
         $writer = new AMQPWriter();
         $writer->write_longstr($challenge);
-        return array(10, 20, $writer);
+        return [10, 20, $writer];
     }
 
     /**
@@ -59,7 +59,7 @@ class Protocol091
      */
     public static function connectionSecureOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         $response[] = $reader->read_longstr();
         return $response;
     }
@@ -76,7 +76,7 @@ class Protocol091
         $writer->write_short($channel_max);
         $writer->write_long($frame_max);
         $writer->write_short($heartbeat);
-        return array(10, 30, $writer);
+        return [10, 30, $writer];
     }
 
     /**
@@ -85,7 +85,7 @@ class Protocol091
      */
     public static function connectionTuneOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         $response[] = $reader->read_short();
         $response[] = $reader->read_long();
         $response[] = $reader->read_short();
@@ -103,8 +103,8 @@ class Protocol091
         $writer = new AMQPWriter();
         $writer->write_shortstr($virtual_host);
         $writer->write_shortstr($capabilities);
-        $writer->write_bits(array($insist));
-        return array(10, 40, $writer);
+        $writer->write_bits([$insist]);
+        return [10, 40, $writer];
     }
 
     /**
@@ -113,7 +113,7 @@ class Protocol091
      */
     public static function connectionOpenOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         $response[] = $reader->read_shortstr();
         return $response;
     }
@@ -125,14 +125,14 @@ class Protocol091
      * @param int $method_id
      * @return array
      */
-    public function connectionClose($reply_code, $reply_text = '', $class_id, $method_id)
+    public function connectionClose($reply_code, $reply_text, $class_id, $method_id)
     {
         $writer = new AMQPWriter();
         $writer->write_short($reply_code);
         $writer->write_shortstr($reply_text);
         $writer->write_short($class_id);
         $writer->write_short($method_id);
-        return array(10, 50, $writer);
+        return [10, 50, $writer];
     }
 
     /**
@@ -141,7 +141,7 @@ class Protocol091
      */
     public static function connectionCloseOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         return $response;
     }
 
@@ -153,7 +153,7 @@ class Protocol091
     {
         $writer = new AMQPWriter();
         $writer->write_shortstr($reason);
-        return array(10, 60, $writer);
+        return [10, 60, $writer];
     }
 
     /**
@@ -162,7 +162,7 @@ class Protocol091
      */
     public static function connectionUnblocked(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         return $response;
     }
 
@@ -174,7 +174,7 @@ class Protocol091
     {
         $writer = new AMQPWriter();
         $writer->write_shortstr($out_of_band);
-        return array(20, 10, $writer);
+        return [20, 10, $writer];
     }
 
     /**
@@ -183,7 +183,7 @@ class Protocol091
      */
     public static function channelOpenOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         $response[] = $reader->read_longstr();
         return $response;
     }
@@ -195,8 +195,8 @@ class Protocol091
     public function channelFlow($active)
     {
         $writer = new AMQPWriter();
-        $writer->write_bits(array($active));
-        return array(20, 20, $writer);
+        $writer->write_bits([$active]);
+        return [20, 20, $writer];
     }
 
     /**
@@ -205,7 +205,7 @@ class Protocol091
      */
     public static function channelFlowOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         $response[] = $reader->read_bit();
         return $response;
     }
@@ -217,14 +217,14 @@ class Protocol091
      * @param int $method_id
      * @return array
      */
-    public function channelClose($reply_code, $reply_text = '', $class_id, $method_id)
+    public function channelClose($reply_code, $reply_text, $class_id, $method_id)
     {
         $writer = new AMQPWriter();
         $writer->write_short($reply_code);
         $writer->write_shortstr($reply_text);
         $writer->write_short($class_id);
         $writer->write_short($method_id);
-        return array(20, 40, $writer);
+        return [20, 40, $writer];
     }
 
     /**
@@ -233,7 +233,7 @@ class Protocol091
      */
     public static function channelCloseOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         return $response;
     }
 
@@ -250,8 +250,8 @@ class Protocol091
     {
         $writer = new AMQPWriter();
         $writer->write_shortstr($realm);
-        $writer->write_bits(array($exclusive, $passive, $active, $write, $read));
-        return array(30, 10, $writer);
+        $writer->write_bits([$exclusive, $passive, $active, $write, $read]);
+        return [30, 10, $writer];
     }
 
     /**
@@ -260,7 +260,7 @@ class Protocol091
      */
     public static function accessRequestOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         $response[] = $reader->read_short();
         return $response;
     }
@@ -277,15 +277,15 @@ class Protocol091
      * @param array $arguments
      * @return array
      */
-    public function exchangeDeclare($ticket = 0, $exchange, $type = 'direct', $passive = false, $durable = false, $auto_delete = false, $internal = false, $nowait = false, $arguments = array())
+    public function exchangeDeclare($ticket, $exchange, $type = 'direct', $passive = false, $durable = false, $auto_delete = false, $internal = false, $nowait = false, $arguments = [])
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
         $writer->write_shortstr($exchange);
         $writer->write_shortstr($type);
-        $writer->write_bits(array($passive, $durable, $auto_delete, $internal, $nowait));
-        $writer->write_table(empty($arguments) ? array() : $arguments);
-        return array(40, 10, $writer);
+        $writer->write_bits([$passive, $durable, $auto_delete, $internal, $nowait]);
+        $writer->write_table(empty($arguments) ? [] : $arguments);
+        return [40, 10, $writer];
     }
 
     /**
@@ -294,7 +294,7 @@ class Protocol091
      */
     public static function exchangeDeclareOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         return $response;
     }
 
@@ -305,13 +305,13 @@ class Protocol091
      * @param bool $nowait
      * @return array
      */
-    public function exchangeDelete($ticket = 0, $exchange, $if_unused = false, $nowait = false)
+    public function exchangeDelete($ticket, $exchange, $if_unused = false, $nowait = false)
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
         $writer->write_shortstr($exchange);
-        $writer->write_bits(array($if_unused, $nowait));
-        return array(40, 20, $writer);
+        $writer->write_bits([$if_unused, $nowait]);
+        return [40, 20, $writer];
     }
 
     /**
@@ -320,7 +320,7 @@ class Protocol091
      */
     public static function exchangeDeleteOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         return $response;
     }
 
@@ -333,16 +333,16 @@ class Protocol091
      * @param array $arguments
      * @return array
      */
-    public function exchangeBind($ticket = 0, $destination, $source, $routing_key = '', $nowait = false, $arguments = array())
+    public function exchangeBind($ticket, $destination, $source, $routing_key = '', $nowait = false, $arguments = [])
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
         $writer->write_shortstr($destination);
         $writer->write_shortstr($source);
         $writer->write_shortstr($routing_key);
-        $writer->write_bits(array($nowait));
-        $writer->write_table(empty($arguments) ? array() : $arguments);
-        return array(40, 30, $writer);
+        $writer->write_bits([$nowait]);
+        $writer->write_table(empty($arguments) ? [] : $arguments);
+        return [40, 30, $writer];
     }
 
     /**
@@ -351,7 +351,7 @@ class Protocol091
      */
     public static function exchangeBindOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         return $response;
     }
 
@@ -364,16 +364,16 @@ class Protocol091
      * @param array $arguments
      * @return array
      */
-    public function exchangeUnbind($ticket = 0, $destination, $source, $routing_key = '', $nowait = false, $arguments = array())
+    public function exchangeUnbind($ticket, $destination, $source, $routing_key = '', $nowait = false, $arguments = [])
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
         $writer->write_shortstr($destination);
         $writer->write_shortstr($source);
         $writer->write_shortstr($routing_key);
-        $writer->write_bits(array($nowait));
-        $writer->write_table(empty($arguments) ? array() : $arguments);
-        return array(40, 40, $writer);
+        $writer->write_bits([$nowait]);
+        $writer->write_table(empty($arguments) ? [] : $arguments);
+        return [40, 40, $writer];
     }
 
     /**
@@ -382,7 +382,7 @@ class Protocol091
      */
     public static function exchangeUnbindOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         return $response;
     }
 
@@ -397,14 +397,14 @@ class Protocol091
      * @param array $arguments
      * @return array
      */
-    public function queueDeclare($ticket = 0, $queue = '', $passive = false, $durable = false, $exclusive = false, $auto_delete = false, $nowait = false, $arguments = array())
+    public function queueDeclare($ticket = 0, $queue = '', $passive = false, $durable = false, $exclusive = false, $auto_delete = false, $nowait = false, $arguments = [])
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
         $writer->write_shortstr($queue);
-        $writer->write_bits(array($passive, $durable, $exclusive, $auto_delete, $nowait));
-        $writer->write_table(empty($arguments) ? array() : $arguments);
-        return array(50, 10, $writer);
+        $writer->write_bits([$passive, $durable, $exclusive, $auto_delete, $nowait]);
+        $writer->write_table(empty($arguments) ? [] : $arguments);
+        return [50, 10, $writer];
     }
 
     /**
@@ -413,7 +413,7 @@ class Protocol091
      */
     public static function queueDeclareOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         $response[] = $reader->read_shortstr();
         $response[] = $reader->read_long();
         $response[] = $reader->read_long();
@@ -429,16 +429,16 @@ class Protocol091
      * @param array $arguments
      * @return array
      */
-    public function queueBind($ticket = 0, $queue = '', $exchange, $routing_key = '', $nowait = false, $arguments = array())
+    public function queueBind($ticket, $queue, $exchange, $routing_key = '', $nowait = false, $arguments = [])
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
         $writer->write_shortstr($queue);
         $writer->write_shortstr($exchange);
         $writer->write_shortstr($routing_key);
-        $writer->write_bits(array($nowait));
-        $writer->write_table(empty($arguments) ? array() : $arguments);
-        return array(50, 20, $writer);
+        $writer->write_bits([$nowait]);
+        $writer->write_table(empty($arguments) ? [] : $arguments);
+        return [50, 20, $writer];
     }
 
     /**
@@ -447,7 +447,7 @@ class Protocol091
      */
     public static function queueBindOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         return $response;
     }
 
@@ -462,8 +462,8 @@ class Protocol091
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
         $writer->write_shortstr($queue);
-        $writer->write_bits(array($nowait));
-        return array(50, 30, $writer);
+        $writer->write_bits([$nowait]);
+        return [50, 30, $writer];
     }
 
     /**
@@ -472,7 +472,7 @@ class Protocol091
      */
     public static function queuePurgeOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         $response[] = $reader->read_long();
         return $response;
     }
@@ -490,8 +490,8 @@ class Protocol091
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
         $writer->write_shortstr($queue);
-        $writer->write_bits(array($if_unused, $if_empty, $nowait));
-        return array(50, 40, $writer);
+        $writer->write_bits([$if_unused, $if_empty, $nowait]);
+        return [50, 40, $writer];
     }
 
     /**
@@ -500,7 +500,7 @@ class Protocol091
      */
     public static function queueDeleteOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         $response[] = $reader->read_long();
         return $response;
     }
@@ -513,15 +513,15 @@ class Protocol091
      * @param array $arguments
      * @return array
      */
-    public function queueUnbind($ticket = 0, $queue = '', $exchange, $routing_key = '', $arguments = array())
+    public function queueUnbind($ticket, $queue, $exchange, $routing_key = '', $arguments = [])
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
         $writer->write_shortstr($queue);
         $writer->write_shortstr($exchange);
         $writer->write_shortstr($routing_key);
-        $writer->write_table(empty($arguments) ? array() : $arguments);
-        return array(50, 50, $writer);
+        $writer->write_table(empty($arguments) ? [] : $arguments);
+        return [50, 50, $writer];
     }
 
     /**
@@ -530,7 +530,7 @@ class Protocol091
      */
     public static function queueUnbindOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         return $response;
     }
 
@@ -545,8 +545,8 @@ class Protocol091
         $writer = new AMQPWriter();
         $writer->write_long($prefetch_size);
         $writer->write_short($prefetch_count);
-        $writer->write_bits(array($global));
-        return array(60, 10, $writer);
+        $writer->write_bits([$global]);
+        return [60, 10, $writer];
     }
 
     /**
@@ -555,7 +555,7 @@ class Protocol091
      */
     public static function basicQosOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         return $response;
     }
 
@@ -570,15 +570,15 @@ class Protocol091
      * @param array $arguments
      * @return array
      */
-    public function basicConsume($ticket = 0, $queue = '', $consumer_tag = '', $no_local = false, $no_ack = false, $exclusive = false, $nowait = false, $arguments = array())
+    public function basicConsume($ticket = 0, $queue = '', $consumer_tag = '', $no_local = false, $no_ack = false, $exclusive = false, $nowait = false, $arguments = [])
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
         $writer->write_shortstr($queue);
         $writer->write_shortstr($consumer_tag);
-        $writer->write_bits(array($no_local, $no_ack, $exclusive, $nowait));
-        $writer->write_table(empty($arguments) ? array() : $arguments);
-        return array(60, 20, $writer);
+        $writer->write_bits([$no_local, $no_ack, $exclusive, $nowait]);
+        $writer->write_table(empty($arguments) ? [] : $arguments);
+        return [60, 20, $writer];
     }
 
     /**
@@ -587,7 +587,7 @@ class Protocol091
      */
     public static function basicConsumeOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         $response[] = $reader->read_shortstr();
         return $response;
     }
@@ -601,8 +601,8 @@ class Protocol091
     {
         $writer = new AMQPWriter();
         $writer->write_shortstr($consumer_tag);
-        $writer->write_bits(array($nowait));
-        return array(60, 30, $writer);
+        $writer->write_bits([$nowait]);
+        return [60, 30, $writer];
     }
 
     /**
@@ -611,7 +611,7 @@ class Protocol091
      */
     public static function basicCancelOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         $response[] = $reader->read_shortstr();
         return $response;
     }
@@ -630,8 +630,8 @@ class Protocol091
         $writer->write_short($ticket);
         $writer->write_shortstr($exchange);
         $writer->write_shortstr($routing_key);
-        $writer->write_bits(array($mandatory, $immediate));
-        return array(60, 40, $writer);
+        $writer->write_bits([$mandatory, $immediate]);
+        return [60, 40, $writer];
     }
 
     /**
@@ -641,14 +641,14 @@ class Protocol091
      * @param string $routing_key
      * @return array
      */
-    public function basicReturn($reply_code, $reply_text = '', $exchange, $routing_key)
+    public function basicReturn($reply_code, $reply_text, $exchange, $routing_key)
     {
         $writer = new AMQPWriter();
         $writer->write_short($reply_code);
         $writer->write_shortstr($reply_text);
         $writer->write_shortstr($exchange);
         $writer->write_shortstr($routing_key);
-        return array(60, 50, $writer);
+        return [60, 50, $writer];
     }
 
     /**
@@ -659,15 +659,15 @@ class Protocol091
      * @param string $routing_key
      * @return array
      */
-    public function basicDeliver($consumer_tag, $delivery_tag, $redelivered = false, $exchange, $routing_key)
+    public function basicDeliver($consumer_tag, $delivery_tag, $redelivered, $exchange, $routing_key)
     {
         $writer = new AMQPWriter();
         $writer->write_shortstr($consumer_tag);
         $writer->write_longlong($delivery_tag);
-        $writer->write_bits(array($redelivered));
+        $writer->write_bits([$redelivered]);
         $writer->write_shortstr($exchange);
         $writer->write_shortstr($routing_key);
-        return array(60, 60, $writer);
+        return [60, 60, $writer];
     }
 
     /**
@@ -681,8 +681,8 @@ class Protocol091
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
         $writer->write_shortstr($queue);
-        $writer->write_bits(array($no_ack));
-        return array(60, 70, $writer);
+        $writer->write_bits([$no_ack]);
+        return [60, 70, $writer];
     }
 
     /**
@@ -691,7 +691,7 @@ class Protocol091
      */
     public static function basicGetOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         $response[] = $reader->read_longlong();
         $response[] = $reader->read_bit();
         $response[] = $reader->read_shortstr();
@@ -706,7 +706,7 @@ class Protocol091
      */
     public static function basicGetEmpty(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         $response[] = $reader->read_shortstr();
         return $response;
     }
@@ -720,8 +720,8 @@ class Protocol091
     {
         $writer = new AMQPWriter();
         $writer->write_longlong($delivery_tag);
-        $writer->write_bits(array($multiple));
-        return array(60, 80, $writer);
+        $writer->write_bits([$multiple]);
+        return [60, 80, $writer];
     }
 
     /**
@@ -733,8 +733,8 @@ class Protocol091
     {
         $writer = new AMQPWriter();
         $writer->write_longlong($delivery_tag);
-        $writer->write_bits(array($requeue));
-        return array(60, 90, $writer);
+        $writer->write_bits([$requeue]);
+        return [60, 90, $writer];
     }
 
     /**
@@ -744,8 +744,8 @@ class Protocol091
     public function basicRecoverAsync($requeue = false)
     {
         $writer = new AMQPWriter();
-        $writer->write_bits(array($requeue));
-        return array(60, 100, $writer);
+        $writer->write_bits([$requeue]);
+        return [60, 100, $writer];
     }
 
     /**
@@ -755,8 +755,8 @@ class Protocol091
     public function basicRecover($requeue = false)
     {
         $writer = new AMQPWriter();
-        $writer->write_bits(array($requeue));
-        return array(60, 110, $writer);
+        $writer->write_bits([$requeue]);
+        return [60, 110, $writer];
     }
 
     /**
@@ -765,7 +765,7 @@ class Protocol091
      */
     public static function basicRecoverOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         return $response;
     }
 
@@ -779,8 +779,8 @@ class Protocol091
     {
         $writer = new AMQPWriter();
         $writer->write_longlong($delivery_tag);
-        $writer->write_bits(array($multiple, $requeue));
-        return array(60, 120, $writer);
+        $writer->write_bits([$multiple, $requeue]);
+        return [60, 120, $writer];
     }
 
     /**
@@ -790,7 +790,7 @@ class Protocol091
     public function txSelect()
     {
         $writer = new AMQPWriter();
-        return array(90, 10, $writer);
+        return [90, 10, $writer];
     }
 
     /**
@@ -799,7 +799,7 @@ class Protocol091
      */
     public static function txSelectOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         return $response;
     }
 
@@ -810,7 +810,7 @@ class Protocol091
     public function txCommit()
     {
         $writer = new AMQPWriter();
-        return array(90, 20, $writer);
+        return [90, 20, $writer];
     }
 
     /**
@@ -819,7 +819,7 @@ class Protocol091
      */
     public static function txCommitOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         return $response;
     }
 
@@ -830,7 +830,7 @@ class Protocol091
     public function txRollback()
     {
         $writer = new AMQPWriter();
-        return array(90, 30, $writer);
+        return [90, 30, $writer];
     }
 
     /**
@@ -839,7 +839,7 @@ class Protocol091
      */
     public static function txRollbackOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         return $response;
     }
 
@@ -850,8 +850,8 @@ class Protocol091
     public function confirmSelect($nowait = false)
     {
         $writer = new AMQPWriter();
-        $writer->write_bits(array($nowait));
-        return array(85, 10, $writer);
+        $writer->write_bits([$nowait]);
+        return [85, 10, $writer];
     }
 
     /**
@@ -860,7 +860,7 @@ class Protocol091
      */
     public static function confirmSelectOk(AMQPReader $reader)
     {
-        $response = array();
+        $response = [];
         return $response;
     }
 }
