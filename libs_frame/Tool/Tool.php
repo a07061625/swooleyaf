@@ -194,7 +194,7 @@ class Tool
     public static function rsaVerify(string $data, string $pubKeyContent, string $sign) : bool
     {
         $pubKey = openssl_get_publickey($pubKeyContent);
-        $result = (boolean)openssl_verify($data, base64_decode($sign), $pubKey);
+        $result = (boolean)openssl_verify($data, base64_decode($sign, true), $pubKey);
         openssl_free_key($pubKey);
 
         return $result;
@@ -241,7 +241,7 @@ class Tool
     public static function rsaDecrypt(string $data, string $keyContent, int $mode = 0)
     {
         $decryptStr = '';
-        $encryptData = base64_decode($data);
+        $encryptData = base64_decode($data, true);
         $length = strlen($encryptData) / 128;
         if ($mode == 0) { //私钥解密
             $key = openssl_get_privatekey($keyContent);
@@ -315,7 +315,7 @@ class Tool
      */
     public static function decrypt(string $content, string $key)
     {
-        $data = self::jsonDecode(base64_decode($content));
+        $data = self::jsonDecode(base64_decode($content, true));
         if (is_array($data) && (!empty($data))) {
             return openssl_decrypt($data['value'], 'AES-256-CBC', $key, 0, $data['iv']);
         }
