@@ -10,7 +10,8 @@ namespace DingDing;
 use Constant\ErrorCode;
 use Tool\Tool;
 
-abstract class TalkBase {
+abstract class TalkBase
+{
     /**
      * 服务域名
      * @var string
@@ -27,21 +28,25 @@ abstract class TalkBase {
      */
     protected $curlConfigs = [];
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->serviceDomain = 'https://oapi.dingtalk.com';
     }
+
+    abstract public function getDetail() : array;
 
     /**
      * 发送请求
      * @param string $reqMethod 请求方式 GET POST
      * @return array
      */
-    protected function sendRequest(string $reqMethod) : array {
+    protected function sendRequest(string $reqMethod) : array
+    {
         $resArr = [
             'code' => 0,
         ];
 
-        if($reqMethod == 'GET'){
+        if ($reqMethod == 'GET') {
             $errorCode = ErrorCode::DING_TALK_GET_ERROR;
             $sendRes = TalkUtilBase::sendGetReq($this->curlConfigs);
         } else {
@@ -49,7 +54,7 @@ abstract class TalkBase {
             $sendRes = TalkUtilBase::sendPostReq($this->curlConfigs);
         }
         $sendData = Tool::jsonDecode($sendRes);
-        if($sendData['errcode'] == 0){
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = $errorCode;
@@ -58,6 +63,4 @@ abstract class TalkBase {
 
         return $resArr;
     }
-
-    abstract public function getDetail() : array;
 }

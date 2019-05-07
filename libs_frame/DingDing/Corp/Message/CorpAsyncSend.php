@@ -18,7 +18,8 @@ use Tool\Tool;
  * 发送工作通知消息
  * @package DingDing\Corp\Message
  */
-class CorpAsyncSend extends TalkBaseCorp {
+class CorpAsyncSend extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -47,7 +48,8 @@ class CorpAsyncSend extends TalkBaseCorp {
      */
     private $msg = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -56,25 +58,27 @@ class CorpAsyncSend extends TalkBaseCorp {
         $this->reqData['agent_id'] = $agentInfo['id'];
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param array $userList
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserList(array $userList){
+    public function setUserList(array $userList)
+    {
         $users = [];
         foreach ($userList as $eUserId) {
-            if(ctype_alnum($eUserId)){
+            if (ctype_alnum($eUserId)) {
                 $users[$eUserId] = 1;
             }
         }
 
         $userNum = count($users);
-        if($userNum == 0){
+        if ($userNum == 0) {
             throw new TalkException('用户列表不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if($userNum > 20){
+        } elseif ($userNum > 20) {
             throw new TalkException('用户不能超过20个', ErrorCode::DING_TALK_PARAM_ERROR);
         }
         $this->reqData['userid_list'] = implode(',', array_keys($users));
@@ -84,18 +88,19 @@ class CorpAsyncSend extends TalkBaseCorp {
      * @param array $departList
      * @throws \Exception\DingDing\TalkException
      */
-    public function setDepartmentList(array $departList){
+    public function setDepartmentList(array $departList)
+    {
         $departs = [];
         foreach ($departList as $eDepartId) {
-            if(is_int($eDepartId) && ($eDepartId > 0)){
+            if (is_int($eDepartId) && ($eDepartId > 0)) {
                 $departs[$eDepartId] = 1;
             }
         }
 
         $departNum = count($departs);
-        if($departNum == 0){
+        if ($departNum == 0) {
             throw new TalkException('部门列表不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if($departNum > 20){
+        } elseif ($departNum > 20) {
             throw new TalkException('部门不能超过20个', ErrorCode::DING_TALK_PARAM_ERROR);
         }
         $this->reqData['dept_id_list'] = implode(',', array_keys($departs));
@@ -104,7 +109,8 @@ class CorpAsyncSend extends TalkBaseCorp {
     /**
      * @param bool $toAllUser
      */
-    public function setToAllUser(bool $toAllUser){
+    public function setToAllUser(bool $toAllUser)
+    {
         $this->reqData['to_all_user'] = $toAllUser;
     }
 
@@ -113,10 +119,11 @@ class CorpAsyncSend extends TalkBaseCorp {
      * @param array $data
      * @throws \Exception\DingDing\TalkException
      */
-    public function setMsgData(string $type,array $data){
-        if(!isset(self::$totalMessageType[$type])){
+    public function setMsgData(string $type, array $data)
+    {
+        if (!isset(self::$totalMessageType[$type])) {
             throw new TalkException('消息类型不支持', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if(empty($data)){
+        } elseif (empty($data)) {
             throw new TalkException('消息数据不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
@@ -126,11 +133,12 @@ class CorpAsyncSend extends TalkBaseCorp {
         ];
     }
 
-    public function getDetail() : array {
-        if((!isset($this->reqData['userid_list'])) && !isset($this->reqData['dept_id_list'])){
+    public function getDetail() : array
+    {
+        if ((!isset($this->reqData['userid_list'])) && !isset($this->reqData['dept_id_list'])) {
             throw new TalkException('用户列表和部门列表不能同时为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['msg'])){
+        if (!isset($this->reqData['msg'])) {
             throw new TalkException('消息内容不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

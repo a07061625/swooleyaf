@@ -171,26 +171,26 @@ class PHPExcel_Shared_ZipStreamWrapper
         switch ($whence) {
             case SEEK_SET:
                 if ($offset < strlen($this->data) && $offset >= 0) {
-                     $this->position = $offset;
-                     return true;
+                    $this->position = $offset;
+                    return true;
                 } else {
-                     return false;
+                    return false;
                 }
                 break;
             case SEEK_CUR:
                 if ($offset >= 0) {
-                     $this->position += $offset;
-                     return true;
+                    $this->position += $offset;
+                    return true;
                 } else {
-                     return false;
+                    return false;
                 }
                 break;
             case SEEK_END:
                 if (strlen($this->data) + $offset >= 0) {
-                     $this->position = strlen($this->data) + $offset;
-                     return true;
+                    $this->position = strlen($this->data) + $offset;
+                    return true;
                 } else {
-                     return false;
+                    return false;
                 }
                 break;
             default:

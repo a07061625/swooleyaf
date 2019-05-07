@@ -17,7 +17,8 @@ use DingDing\Corp\Sso\SsoToken;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-final class TalkUtilCorp extends TalkUtilBase {
+final class TalkUtilCorp extends TalkUtilBase
+{
     use SimpleTrait;
 
     /**
@@ -26,7 +27,8 @@ final class TalkUtilCorp extends TalkUtilBase {
      * @param string $agentTag
      * @return string
      */
-    public static function getAccessToken(string $corpId,string $agentTag) : string {
+    public static function getAccessToken(string $corpId, string $agentTag) : string
+    {
         $nowTime = Tool::getNowTime();
         $agentInfo = DingTalkConfigSingleton::getInstance()->getCorpConfig($corpId)->getAgentInfo($agentTag);
         $redisKey = Project::REDIS_PREFIX_DINGTALK_CORP . $corpId . '_' . $agentInfo['id'];
@@ -54,7 +56,8 @@ final class TalkUtilCorp extends TalkUtilBase {
      * @param string $corpId
      * @return string
      */
-    public static function getSsoToken(string $corpId) : string {
+    public static function getSsoToken(string $corpId) : string
+    {
         $nowTime = Tool::getNowTime();
         $redisKey = Project::REDIS_PREFIX_DINGTALK_CORP . $corpId;
         $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
@@ -81,7 +84,8 @@ final class TalkUtilCorp extends TalkUtilBase {
      * @param string $corpId
      * @return string
      */
-    public static function getSnsToken(string $corpId) : string {
+    public static function getSnsToken(string $corpId) : string
+    {
         $nowTime = Tool::getNowTime();
         $redisKey = Project::REDIS_PREFIX_DINGTALK_CORP . $corpId;
         $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
@@ -110,7 +114,8 @@ final class TalkUtilCorp extends TalkUtilBase {
      * @param string $persistentCode 持久授权码
      * @return string
      */
-    public static function getUserSnsToken(string $corpId,string $openid,string $persistentCode) : string {
+    public static function getUserSnsToken(string $corpId, string $openid, string $persistentCode) : string
+    {
         $nowTime = Tool::getNowTime();
         $redisKey = Project::REDIS_PREFIX_DINGTALK_CORP . $corpId . '_' . $openid;
         $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);

@@ -9,8 +9,10 @@ namespace Exception\QCloud;
 
 use Exception\BaseException;
 
-class CosException extends BaseException {
-    public function __construct($message, $code) {
+class CosException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = '腾讯对象存储异常';
     }

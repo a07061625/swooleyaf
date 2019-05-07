@@ -9,7 +9,6 @@ use Grafika\Color;
  */
 abstract class Line
 {
-
     /**
      * X,Y pos 1.
      * @var array
@@ -82,5 +81,4 @@ abstract class Line
     {
         return $this->color;
     }
-
 }

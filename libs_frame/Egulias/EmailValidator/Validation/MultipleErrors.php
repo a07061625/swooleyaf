@@ -7,7 +7,7 @@ use Egulias\EmailValidator\Exception\InvalidEmail;
 class MultipleErrors extends InvalidEmail
 {
     const CODE = 999;
-    const REASON = "Accumulated errors for multiple validations";
+    const REASON = 'Accumulated errors for multiple validations';
     /**
      * @var array
      */

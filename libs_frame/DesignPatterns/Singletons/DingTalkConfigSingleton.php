@@ -12,7 +12,8 @@ use Tool\Tool;
 use Traits\DingTalkConfigTrait;
 use Traits\SingletonTrait;
 
-class DingTalkConfigSingleton {
+class DingTalkConfigSingleton
+{
     use SingletonTrait;
     use DingTalkConfigTrait;
 
@@ -22,18 +23,8 @@ class DingTalkConfigSingleton {
      */
     private $corpProviderConfig = null;
 
-    /**
-     * @return \DesignPatterns\Singletons\DingTalkConfigSingleton
-     */
-    public static function getInstance(){
-        if(is_null(self::$instance)){
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
-
-    private function __construct(){
+    private function __construct()
+    {
         $configs = Tool::getConfig('dingtalk.' . SY_ENV . SY_PROJECT);
 
         //初始化企业服务商公共配置
@@ -51,14 +42,28 @@ class DingTalkConfigSingleton {
         $this->corpProviderConfig = $corpProviderConfig;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
+    }
+
+    /**
+     * @return \DesignPatterns\Singletons\DingTalkConfigSingleton
+     */
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
     }
 
     /**
      * 获取企业服务商公共配置
      * @return \DingDing\TalkConfigProvider
      */
-    public function getCorpProviderConfig() {
+    public function getCorpProviderConfig()
+    {
         return $this->corpProviderConfig;
     }
 }

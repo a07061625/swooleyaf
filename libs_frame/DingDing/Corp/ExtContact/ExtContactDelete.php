@@ -17,7 +17,8 @@ use Tool\Tool;
  * 删除外部联系人
  * @package DingDing\Corp\ExtContact
  */
-class ExtContactDelete extends TalkBaseCorp {
+class ExtContactDelete extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -26,29 +27,33 @@ class ExtContactDelete extends TalkBaseCorp {
      */
     private $user_id = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $userId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserId(string $userId){
-        if(ctype_alnum($userId)){
+    public function setUserId(string $userId)
+    {
+        if (ctype_alnum($userId)) {
             $this->reqData['user_id'] = $userId;
         } else {
             throw new TalkException('用户id不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['user_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['user_id'])) {
             throw new TalkException('用户id不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

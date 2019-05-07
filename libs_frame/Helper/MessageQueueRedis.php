@@ -11,26 +11,24 @@ use SyMessageQueue\ConsumerBase;
 use SyMessageQueue\Redis\Producer;
 use Tool\Tool;
 
-class MessageQueueRedis {
-    public function __construct(){
+class MessageQueueRedis
+{
+    public function __construct()
+    {
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    private function help() {
-        print_r('redis帮助信息' . PHP_EOL);
-        print_r('-action 操作类型类型: add delete' . PHP_EOL);
-        print_r('-classname 消费者类名,从\\开始' . PHP_EOL);
-    }
-
-    public function handleOption(){
+    public function handleOption()
+    {
         $action = Tool::getClientOption('-action', false, '');
         $className = Tool::getClientOption('-classname', false, '');
         switch ($action) {
             case 'add':
                 $class = new $className();
-                if($class instanceof ConsumerBase){
+                if ($class instanceof ConsumerBase) {
                     Producer::getInstance()->addConsumer($class);
                 } else {
                     print_r('类名不合法' . PHP_EOL);
@@ -38,7 +36,7 @@ class MessageQueueRedis {
                 break;
             case 'delete':
                 $class = new $className();
-                if($class instanceof ConsumerBase){
+                if ($class instanceof ConsumerBase) {
                     Producer::getInstance()->deleteConsumer($class);
                 } else {
                     print_r('类名不合法' . PHP_EOL);
@@ -47,5 +45,12 @@ class MessageQueueRedis {
             default:
                 $this->help();
         }
+    }
+
+    private function help()
+    {
+        print_r('redis帮助信息' . PHP_EOL);
+        print_r('-action 操作类型类型: add delete' . PHP_EOL);
+        print_r('-classname 消费者类名,从\\开始' . PHP_EOL);
     }
 }

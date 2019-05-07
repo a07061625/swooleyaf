@@ -17,7 +17,8 @@ use Tool\Tool;
  * 发送普通消息
  * @package DingDing\Corp\Message
  */
-class ConversationSend extends TalkBaseCorp {
+class ConversationSend extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -36,21 +37,24 @@ class ConversationSend extends TalkBaseCorp {
      */
     private $msg = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $sender
      * @throws \Exception\DingDing\TalkException
      */
-    public function setSender(string $sender){
-        if(ctype_alnum($sender)){
+    public function setSender(string $sender)
+    {
+        if (ctype_alnum($sender)) {
             $this->reqData['sender'] = $sender;
         } else {
             throw new TalkException('发送者不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -61,8 +65,9 @@ class ConversationSend extends TalkBaseCorp {
      * @param string $cid
      * @throws \Exception\DingDing\TalkException
      */
-    public function setCid(string $cid){
-        if(ctype_alnum($cid)){
+    public function setCid(string $cid)
+    {
+        if (ctype_alnum($cid)) {
             $this->reqData['cid'] = $cid;
         } else {
             throw new TalkException('会话ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -74,10 +79,11 @@ class ConversationSend extends TalkBaseCorp {
      * @param array $data
      * @throws \Exception\DingDing\TalkException
      */
-    public function setMsgData(string $type,array $data){
-        if(!isset(self::$totalMessageType[$type])){
+    public function setMsgData(string $type, array $data)
+    {
+        if (!isset(self::$totalMessageType[$type])) {
             throw new TalkException('消息类型不支持', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if(empty($data)){
+        } elseif (empty($data)) {
             throw new TalkException('消息数据不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 
@@ -87,14 +93,15 @@ class ConversationSend extends TalkBaseCorp {
         ];
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['sender'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['sender'])) {
             throw new TalkException('发送者不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['cid'])){
+        if (!isset($this->reqData['cid'])) {
             throw new TalkException('会话ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['msg'])){
+        if (!isset($this->reqData['msg'])) {
             throw new TalkException('消息内容不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

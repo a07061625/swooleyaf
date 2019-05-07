@@ -18,7 +18,8 @@ use Tool\Tool;
  * 更新审批流
  * @package DingDing\CorpProvider\Process
  */
-class ProcessSync extends TalkBaseCorpProvider {
+class ProcessSync extends TalkBaseCorpProvider
+{
     /**
      * 企业ID
      * @var string
@@ -50,20 +51,23 @@ class ProcessSync extends TalkBaseCorpProvider {
      */
     private $process_name = '';
 
-    public function __construct(string $corpId){
+    public function __construct(string $corpId)
+    {
         parent::__construct();
         $this->corpId = $corpId;
         $this->reqData['agent_id'] = DingTalkConfigSingleton::getInstance()->getCorpProviderConfig()->getSuiteId();
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $srcProcessCode
      * @throws \Exception\DingDing\TalkException
      */
-    public function setSrcProcessCode(string $srcProcessCode){
+    public function setSrcProcessCode(string $srcProcessCode)
+    {
         if (strlen($srcProcessCode) > 0) {
             $this->reqData['src_process_code'] = $srcProcessCode;
         } else {
@@ -75,7 +79,8 @@ class ProcessSync extends TalkBaseCorpProvider {
      * @param string $targetProcessCode
      * @throws \Exception\DingDing\TalkException
      */
-    public function setTargetProcessCode(string $targetProcessCode){
+    public function setTargetProcessCode(string $targetProcessCode)
+    {
         if (strlen($targetProcessCode) > 0) {
             $this->reqData['target_process_code'] = $targetProcessCode;
         } else {
@@ -87,7 +92,8 @@ class ProcessSync extends TalkBaseCorpProvider {
      * @param string $bizCategoryId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setBizCategoryId(string $bizCategoryId){
+    public function setBizCategoryId(string $bizCategoryId)
+    {
         if (ctype_alnum($bizCategoryId) && (strlen($bizCategoryId) <= 64)) {
             $this->reqData['biz_category_id'] = $bizCategoryId;
         } else {
@@ -99,7 +105,8 @@ class ProcessSync extends TalkBaseCorpProvider {
      * @param string $processName
      * @throws \Exception\DingDing\TalkException
      */
-    public function setProcessName(string $processName){
+    public function setProcessName(string $processName)
+    {
         if (strlen($processName) > 0) {
             $this->reqData['process_name'] = mb_substr($processName, 0, 32);
         } else {
@@ -107,17 +114,18 @@ class ProcessSync extends TalkBaseCorpProvider {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['src_process_code'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['src_process_code'])) {
             throw new TalkException('源审批码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['target_process_code'])){
+        if (!isset($this->reqData['target_process_code'])) {
             throw new TalkException('目标审批码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['biz_category_id'])){
+        if (!isset($this->reqData['biz_category_id'])) {
             throw new TalkException('业务分类标识不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['process_name'])){
+        if (!isset($this->reqData['process_name'])) {
             throw new TalkException('名称不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

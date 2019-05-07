@@ -13,7 +13,8 @@ use Map\ConfigTencent;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
-class MapSingleton {
+class MapSingleton
+{
     use SingletonTrait;
     /**
      * @var \Map\ConfigBaiDu
@@ -28,7 +29,8 @@ class MapSingleton {
      */
     private $gaoDeConfig = null;
 
-    private function __construct(){
+    private function __construct()
+    {
         $configs = Tool::getConfig('map.' . SY_ENV . SY_PROJECT);
 
         $baiduConfig = new ConfigBaiDu();
@@ -51,8 +53,9 @@ class MapSingleton {
     /**
      * @return \DesignPatterns\Singletons\MapSingleton
      */
-    public static function getInstance() {
-        if(is_null(self::$instance)){
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -62,21 +65,24 @@ class MapSingleton {
     /**
      * @return \Map\ConfigBaiDu
      */
-    public function getBaiduConfig() {
+    public function getBaiduConfig()
+    {
         return $this->baiduConfig;
     }
 
     /**
      * @return \Map\ConfigTencent
      */
-    public function getTencentConfig() {
+    public function getTencentConfig()
+    {
         return $this->tencentConfig;
     }
 
     /**
      * @return \Map\ConfigGaoDe
      */
-    public function getGaoDeConfig() {
+    public function getGaoDeConfig()
+    {
         return $this->gaoDeConfig;
     }
 }

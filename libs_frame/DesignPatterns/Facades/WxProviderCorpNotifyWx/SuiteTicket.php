@@ -12,10 +12,12 @@ use DesignPatterns\Facades\WxProviderCorpNotifyWxFacade;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Traits\SimpleFacadeTrait;
 
-class SuiteTicket extends WxProviderCorpNotifyWxFacade {
+class SuiteTicket extends WxProviderCorpNotifyWxFacade
+{
     use SimpleFacadeTrait;
 
-    protected static function handleNotify(array $data){
+    protected static function handleNotify(array $data)
+    {
         $redisKey = Project::REDIS_PREFIX_WX_PROVIDER_CORP_ACCOUNT_SUITE . $data['SuiteId'];
         CacheSimpleFactory::getRedisInstance()->hMSet($redisKey, [
             'unique_key' => $redisKey,

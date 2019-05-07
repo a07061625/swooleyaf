@@ -26,7 +26,6 @@
  * @version    ##VERSION##, ##DATE##
  */
 
-
 /**
  * PHPExcel_Shared_TimeZone
  *
@@ -42,7 +41,7 @@ class PHPExcel_Shared_TimeZone
      * @private
      * @var    string
      */
-    protected static $timezone    = 'UTC';
+    protected static $timezone = 'UTC';
 
     /**
      * Validate a Timezone name
@@ -52,7 +51,7 @@ class PHPExcel_Shared_TimeZone
      */
     public static function _validateTimeZone($timezone)
     {
-        if (in_array($timezone, DateTimeZone::listIdentifiers())) {
+        if (in_array($timezone, DateTimeZone::listIdentifiers(), true)) {
             return true;
         }
         return false;
@@ -73,7 +72,6 @@ class PHPExcel_Shared_TimeZone
         return false;
     }
 
-
     /**
      * Return the Default Timezone used for date/time conversions
      *
@@ -82,31 +80,6 @@ class PHPExcel_Shared_TimeZone
     public static function getTimeZone()
     {
         return self::$timezone;
-    }
-
-
-    /**
-     *    Return the Timezone transition for the specified timezone and timestamp
-     *
-     *    @param        DateTimeZone         $objTimezone    The timezone for finding the transitions
-     *    @param        integer                 $timestamp        PHP date/time value for finding the current transition
-     *    @return         array                The current transition details
-     */
-    private static function getTimezoneTransitions($objTimezone, $timestamp)
-    {
-        $allTransitions = $objTimezone->getTransitions();
-        $transitions = array();
-        foreach ($allTransitions as $key => $transition) {
-            if ($transition['ts'] > $timestamp) {
-                $transitions[] = ($key > 0) ? $allTransitions[$key - 1] : $transition;
-                break;
-            }
-            if (empty($transitions)) {
-                $transitions[] = end($allTransitions);
-            }
-        }
-
-        return $transitions;
     }
 
     /**
@@ -122,7 +95,7 @@ class PHPExcel_Shared_TimeZone
     {
         if ($timezone !== null) {
             if (!self::_validateTimezone($timezone)) {
-                throw new PHPExcel_Exception("Invalid timezone " . $timezone);
+                throw new PHPExcel_Exception('Invalid timezone ' . $timezone);
             }
         } else {
             $timezone = self::$timezone;
@@ -140,5 +113,29 @@ class PHPExcel_Shared_TimeZone
         }
 
         return (count($transitions) > 0) ? $transitions[0]['offset'] : 0;
+    }
+
+    /**
+     *    Return the Timezone transition for the specified timezone and timestamp
+     *
+     *    @param        DateTimeZone         $objTimezone    The timezone for finding the transitions
+     *    @param        integer                 $timestamp        PHP date/time value for finding the current transition
+     *    @return         array                The current transition details
+     */
+    private static function getTimezoneTransitions($objTimezone, $timestamp)
+    {
+        $allTransitions = $objTimezone->getTransitions();
+        $transitions = [];
+        foreach ($allTransitions as $key => $transition) {
+            if ($transition['ts'] > $timestamp) {
+                $transitions[] = ($key > 0) ? $allTransitions[$key - 1] : $transition;
+                break;
+            }
+            if (empty($transitions)) {
+                $transitions[] = end($allTransitions);
+            }
+        }
+
+        return $transitions;
     }
 }

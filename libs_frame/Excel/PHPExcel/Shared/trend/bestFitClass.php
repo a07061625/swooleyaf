@@ -53,14 +53,14 @@ class PHPExcel_Best_Fit
      *
      * @var    float[]
      **/
-    protected $xValues = array();
+    protected $xValues = [];
 
     /**
      * Y-value dataseries of values
      *
      * @var    float[]
      **/
-    protected $yValues = array();
+    protected $yValues = [];
 
     /**
      * Flag indicating whether values should be adjusted to Y=0
@@ -74,7 +74,7 @@ class PHPExcel_Best_Fit
      *
      * @var    float[]
      **/
-    protected $yBestFitValues = array();
+    protected $yBestFitValues = [];
 
     protected $goodnessOfFit = 1;
 
@@ -104,12 +104,38 @@ class PHPExcel_Best_Fit
 
     protected $yOffset = 0;
 
+    /**
+     * Define the regression
+     *
+     * @param    float[]        $yValues    The set of Y-values for this regression
+     * @param    float[]        $xValues    The set of X-values for this regression
+     * @param    boolean        $const
+     */
+    public function __construct($yValues, $xValues = [], $const = true)
+    {
+        //    Calculate number of points
+        $nY = count($yValues);
+        $nX = count($xValues);
+
+        //    Define X Values if necessary
+        if ($nX == 0) {
+            $xValues = range(1, $nY);
+            $nX = $nY;
+        } elseif ($nY != $nX) {
+            //    Ensure both arrays of points are the same size
+            $this->error = true;
+            return false;
+        }
+
+        $this->valueCount = $nY;
+        $this->xValues = $xValues;
+        $this->yValues = $yValues;
+    }
 
     public function getError()
     {
         return $this->error;
     }
-
 
     public function getBestFitType()
     {
@@ -393,33 +419,5 @@ class PHPExcel_Best_Fit
         }
 
         $this->calculateGoodnessOfFit($x_sum, $y_sum, $xx_sum, $yy_sum, $xy_sum, $meanX, $meanY, $const);
-    }
-
-    /**
-     * Define the regression
-     *
-     * @param    float[]        $yValues    The set of Y-values for this regression
-     * @param    float[]        $xValues    The set of X-values for this regression
-     * @param    boolean        $const
-     */
-    public function __construct($yValues, $xValues = array(), $const = true)
-    {
-        //    Calculate number of points
-        $nY = count($yValues);
-        $nX = count($xValues);
-
-        //    Define X Values if necessary
-        if ($nX == 0) {
-            $xValues = range(1, $nY);
-            $nX = $nY;
-        } elseif ($nY != $nX) {
-            //    Ensure both arrays of points are the same size
-            $this->error = true;
-            return false;
-        }
-
-        $this->valueCount = $nY;
-        $this->xValues = $xValues;
-        $this->yValues = $yValues;
     }
 }

@@ -9,7 +9,8 @@ namespace DesignPatterns\Singletons;
 
 use Traits\SingletonTrait;
 
-class YacSingleton  {
+class YacSingleton
+{
     use SingletonTrait;
 
     /**
@@ -17,15 +18,17 @@ class YacSingleton  {
      */
     private $conn = null;
 
-    private function __construct() {
+    private function __construct()
+    {
         $this->conn = new \Yac(SY_ENV . SY_PROJECT . '_');
     }
 
     /**
      * @return \Yac
      */
-    public static function getInstance() {
-        if(is_null(self::$instance)){
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 

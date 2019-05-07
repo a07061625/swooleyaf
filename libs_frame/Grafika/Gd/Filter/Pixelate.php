@@ -8,8 +8,8 @@ use Grafika\Gd\Image;
 /**
  * Pixelate an image.
  */
-class Pixelate implements FilterInterface{
-
+class Pixelate implements FilterInterface
+{
     /**
      * @var int $amount Pixelate size from >= 1
      */
@@ -29,10 +29,9 @@ class Pixelate implements FilterInterface{
      *
      * @return Image
      */
-    public function apply( $image ) {
-
+    public function apply($image)
+    {
         imagefilter($image->getCore(), IMG_FILTER_PIXELATE, $this->amount, true);
         return $image;
     }
-
 }

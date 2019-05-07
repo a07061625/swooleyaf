@@ -17,6 +17,7 @@
  * <http://www.doctrine-project.org>.
  */
 namespace Doctrine\Common\Lexer;
+
 /**
  * Base class for writing simple lexers, i.e. for creating small DSLs.
  *
@@ -27,6 +28,18 @@ namespace Doctrine\Common\Lexer;
  */
 abstract class AbstractLexer
 {
+    /**
+     * The next token in the input.
+     *
+     * @var array
+     */
+    public $lookahead;
+    /**
+     * The last matched/seen token.
+     *
+     * @var array
+     */
+    public $token;
     /**
      * Lexer original input string.
      *
@@ -44,7 +57,7 @@ abstract class AbstractLexer
      *
      * @var array
      */
-    private $tokens = array();
+    private $tokens = [];
     /**
      * Current lexer position in input string.
      *
@@ -58,18 +71,6 @@ abstract class AbstractLexer
      */
     private $peek = 0;
     /**
-     * The next token in the input.
-     *
-     * @var array
-     */
-    public $lookahead;
-    /**
-     * The last matched/seen token.
-     *
-     * @var array
-     */
-    public $token;
-    /**
      * Sets the input data to be tokenized.
      *
      * The Lexer is immediately reset and the new input tokenized.
@@ -81,8 +82,8 @@ abstract class AbstractLexer
      */
     public function setInput($input)
     {
-        $this->input  = $input;
-        $this->tokens = array();
+        $this->input = $input;
+        $this->tokens = [];
         $this->reset();
         $this->scan($input);
     }
@@ -199,7 +200,7 @@ abstract class AbstractLexer
         if (isset($this->tokens[$this->position + $this->peek])) {
             return $this->tokens[$this->position + $this->peek++];
         } else {
-            return null;
+            return;
         }
     }
     /**
@@ -212,36 +213,6 @@ abstract class AbstractLexer
         $peek = $this->peek();
         $this->peek = 0;
         return $peek;
-    }
-    /**
-     * Scans the input string for tokens.
-     *
-     * @param string $input A query string.
-     *
-     * @return void
-     */
-    protected function scan($input)
-    {
-        static $regex;
-        if ( ! isset($regex)) {
-            $regex = sprintf(
-                '/(%s)|%s/%s',
-                implode(')|(', $this->getCatchablePatterns()),
-                implode('|', $this->getNonCatchablePatterns()),
-                $this->getModifiers()
-            );
-        }
-        $flags = PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_OFFSET_CAPTURE;
-        $matches = preg_split($regex, $input, -1, $flags);
-        foreach ($matches as $match) {
-            // Must remain before 'value' assignment since it can change content
-            $type = $this->getType($match[0]);
-            $this->tokens[] = array(
-                'value' => $match[0],
-                'type'  => $type,
-                'position' => $match[1],
-            );
-        }
     }
     /**
      * Gets the literal for a given token.
@@ -261,6 +232,36 @@ abstract class AbstractLexer
             }
         }
         return $token;
+    }
+    /**
+     * Scans the input string for tokens.
+     *
+     * @param string $input A query string.
+     *
+     * @return void
+     */
+    protected function scan($input)
+    {
+        static $regex;
+        if (! isset($regex)) {
+            $regex = sprintf(
+                '/(%s)|%s/%s',
+                implode(')|(', $this->getCatchablePatterns()),
+                implode('|', $this->getNonCatchablePatterns()),
+                $this->getModifiers()
+            );
+        }
+        $flags = PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_OFFSET_CAPTURE;
+        $matches = preg_split($regex, $input, -1, $flags);
+        foreach ($matches as $match) {
+            // Must remain before 'value' assignment since it can change content
+            $type = $this->getType($match[0]);
+            $this->tokens[] = [
+                'value' => $match[0],
+                'type' => $type,
+                'position' => $match[1],
+            ];
+        }
     }
     /**
      * Regex modifiers

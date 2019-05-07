@@ -19,15 +19,14 @@ date_default_timezone_set('Europe/London');
 
 echo '<h1>PHPExcel Calculation Function Examples</h1>';
 
-$exampleTypeList = glob('./*',GLOB_ONLYDIR);
+$exampleTypeList = glob('./*', GLOB_ONLYDIR);
 
-foreach($exampleTypeList as $exampleType) {
+foreach ($exampleTypeList as $exampleType) {
+    echo '<h2>' . pathinfo($exampleType, PATHINFO_BASENAME) . ' Function Examples</h2>';
 
-    echo '<h2>' . pathinfo($exampleType,PATHINFO_BASENAME) . ' Function Examples</h2>';
+    $exampleList = glob('./' . $exampleType . '/*.php');
 
-    $exampleList = glob('./'.$exampleType.'/*.php');
-
-    foreach($exampleList as $exampleFile) {
+    foreach ($exampleList as $exampleFile) {
         $fileData = file_get_contents($exampleFile);
 
         $h1Pattern = '#<h1>(.*?)</h1>#';
@@ -42,7 +41,6 @@ foreach($exampleTypeList as $exampleType) {
                 echo $h2Text,'<br />';
             }
         }
-
     }
 }
 

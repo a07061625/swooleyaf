@@ -28,7 +28,7 @@
 class PHPExcel_Reader_Excel5_RC4
 {
     // Context
-    protected $s = array();
+    protected $s = [];
     protected $i = 0;
     protected $j = 0;
 

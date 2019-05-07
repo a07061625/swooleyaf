@@ -27,39 +27,38 @@
 
 /** Error reporting */
 error_reporting(E_ALL);
-ini_set('display_errors', TRUE);
-ini_set('display_startup_errors', TRUE);
+ini_set('display_errors', true);
+ini_set('display_startup_errors', true);
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+define('EOL', (PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 date_default_timezone_set('Europe/London');
 
 /** Include PHPExcel */
 require_once dirname(__FILE__) . '/../Classes/PHPExcel.php';
 
-
 // Create new PHPExcel object
-echo date('H:i:s') , " Create new PHPExcel object" , EOL;
+echo date('H:i:s') , ' Create new PHPExcel object' , EOL;
 $objPHPExcel = new PHPExcel();
 
 // Set document properties
-echo date('H:i:s') , " Set document properties" , EOL;
-$objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
-                             ->setLastModifiedBy("Maarten Balliauw")
-                             ->setTitle("Office 2007 XLSX Test Document")
-                             ->setSubject("Office 2007 XLSX Test Document")
-                             ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.")
-                             ->setKeywords("office 2007 openxml php")
-                             ->setCategory("Test result file");
+echo date('H:i:s') , ' Set document properties' , EOL;
+$objPHPExcel->getProperties()->setCreator('Maarten Balliauw')
+                             ->setLastModifiedBy('Maarten Balliauw')
+                             ->setTitle('Office 2007 XLSX Test Document')
+                             ->setSubject('Office 2007 XLSX Test Document')
+                             ->setDescription('Test document for Office 2007 XLSX, generated using PHP classes.')
+                             ->setKeywords('office 2007 openxml php')
+                             ->setCategory('Test result file');
 
 // Generate an image
-echo date('H:i:s') , " Generate an image" , EOL;
+echo date('H:i:s') , ' Generate an image' , EOL;
 $gdImage = @imagecreatetruecolor(120, 20) or die('Cannot Initialize new GD image stream');
 $textColor = imagecolorallocate($gdImage, 255, 255, 255);
-imagestring($gdImage, 1, 5, 5,  'Created with PHPExcel', $textColor);
+imagestring($gdImage, 1, 5, 5, 'Created with PHPExcel', $textColor);
 
 // Add a drawing to the worksheet
-echo date('H:i:s') , " Add a drawing to the worksheet" , EOL;
+echo date('H:i:s') , ' Add a drawing to the worksheet' , EOL;
 $objDrawing = new PHPExcel_Worksheet_MemoryDrawing();
 $objDrawing->setName('Sample image');
 $objDrawing->setDescription('Sample image');
@@ -69,21 +68,19 @@ $objDrawing->setMimeType(PHPExcel_Worksheet_MemoryDrawing::MIMETYPE_DEFAULT);
 $objDrawing->setHeight(36);
 $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 
-echo date('H:i:s') , " Write to Excel2007 format" , EOL;
+echo date('H:i:s') , ' Write to Excel2007 format' , EOL;
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-echo date('H:i:s') , " File written to " , str_replace('.php', '.xlsx', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
+echo date('H:i:s') , ' File written to ' , str_replace('.php', '.xlsx', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
 
-
-echo date('H:i:s') , " Write to HTML format" , EOL;
+echo date('H:i:s') , ' Write to HTML format' , EOL;
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'HTML');
 $objWriter->save(str_replace('.php', '.html', __FILE__));
-echo date('H:i:s') , " File written to " , str_replace('.php', '.html', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
-
+echo date('H:i:s') , ' File written to ' , str_replace('.php', '.html', pathinfo(__FILE__, PATHINFO_BASENAME)) , EOL;
 
 // Echo memory peak usage
-echo date('H:i:s') , " Peak memory usage: " , (memory_get_peak_usage(true) / 1024 / 1024) , " MB" , EOL;
+echo date('H:i:s') , ' Peak memory usage: ' , (memory_get_peak_usage(true) / 1024 / 1024) , ' MB' , EOL;
 
 // Echo done
-echo date('H:i:s') , " Done writing file" , EOL;
+echo date('H:i:s') , ' Done writing file' , EOL;
 echo 'Files have been created in ' , getcwd() , EOL;

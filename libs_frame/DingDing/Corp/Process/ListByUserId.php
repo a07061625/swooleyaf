@@ -17,7 +17,8 @@ use Tool\Tool;
  * 获取用户可见的审批模板
  * @package DingDing\Corp\Process
  */
-class ListByUserId extends TalkBaseCorp {
+class ListByUserId extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -36,7 +37,8 @@ class ListByUserId extends TalkBaseCorp {
      */
     private $size = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -44,14 +46,16 @@ class ListByUserId extends TalkBaseCorp {
         $this->reqData['size'] = 10;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $userId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserId(string $userId){
+    public function setUserId(string $userId)
+    {
         if (ctype_alnum($userId)) {
             $this->reqData['userid'] = $userId;
         } else {
@@ -63,7 +67,8 @@ class ListByUserId extends TalkBaseCorp {
      * @param int $offset
      * @throws \Exception\DingDing\TalkException
      */
-    public function setOffset(int $offset){
+    public function setOffset(int $offset)
+    {
         if ($offset >= 0) {
             $this->reqData['offset'] = $offset;
         } else {
@@ -75,7 +80,8 @@ class ListByUserId extends TalkBaseCorp {
      * @param int $size
      * @throws \Exception\DingDing\TalkException
      */
-    public function setSize(int $size){
+    public function setSize(int $size)
+    {
         if ($size > 0) {
             $this->reqData['size'] = $size > 100 ? 100 : $size;
         } else {
@@ -83,7 +89,8 @@ class ListByUserId extends TalkBaseCorp {
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/topapi/process/listbyuserid?' . http_build_query([
             'access_token' => $this->getAccessToken(TalkBaseCorp::ACCESS_TOKEN_TYPE_CORP, $this->_corpId, $this->_agentTag),
         ]);

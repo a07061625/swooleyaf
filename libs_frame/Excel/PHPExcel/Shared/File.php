@@ -35,7 +35,6 @@ class PHPExcel_Shared_File
      */
     protected static $useUploadTempDirectory = false;
 
-
     /**
      * Set the flag indicating whether the File Upload Temp directory should be used for temporary files
      *
@@ -46,7 +45,6 @@ class PHPExcel_Shared_File
         self::$useUploadTempDirectory = (boolean) $useUploadTempDir;
     }
 
-
     /**
      * Get the flag indicating whether the File Upload Temp directory should be used for temporary files
      *
@@ -56,7 +54,6 @@ class PHPExcel_Shared_File
     {
         return self::$useUploadTempDirectory;
     }
-
 
     /**
       * Verify if a file exists
@@ -71,7 +68,7 @@ class PHPExcel_Shared_File
         // doing the original file_exists on ZIP archives...
         if (strtolower(substr($pFilename, 0, 3)) == 'zip') {
             // Open ZIP file and verify if the file exists
-            $zipFile     = substr($pFilename, 6, strpos($pFilename, '#') - 6);
+            $zipFile = substr($pFilename, 6, strpos($pFilename, '#') - 6);
             $archiveFile = substr($pFilename, strpos($pFilename, '#') + 1);
 
             $zip = new ZipArchive();
@@ -107,11 +104,11 @@ class PHPExcel_Shared_File
         // Found something?
         if ($returnValue == '' || ($returnValue === null)) {
             $pathArray = explode('/', $pFilename);
-            while (in_array('..', $pathArray) && $pathArray[0] != '..') {
+            while (in_array('..', $pathArray, true) && $pathArray[0] != '..') {
                 for ($i = 0; $i < count($pathArray); ++$i) {
                     if ($pathArray[$i] == '..' && $i > 0) {
-                        unset($pathArray[$i]);
-                        unset($pathArray[$i - 1]);
+                        unset($pathArray[$i], $pathArray[$i - 1]);
+                        
                         break;
                     }
                 }
@@ -169,7 +166,7 @@ class PHPExcel_Shared_File
                 return realpath(dirname($temp));
             }
 
-            return null;
+            return;
         }
 
         // use ordinary built-in PHP function

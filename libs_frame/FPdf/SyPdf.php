@@ -7,7 +7,8 @@
  */
 namespace FPdf;
 
-class SyPdf extends BasePdf {
+class SyPdf extends BasePdf
+{
     /**
      * @var array
      */
@@ -17,7 +18,8 @@ class SyPdf extends BasePdf {
      */
     private $widthGB = [];
 
-    public function __construct($orientation = 'P', $unit = 'mm', $size = 'A4'){
+    public function __construct($orientation = 'P', $unit = 'mm', $size = 'A4')
+    {
         parent::__construct($orientation, $unit, $size);
         $this->widthBig5 = [
             ' ' => 250,
@@ -216,7 +218,8 @@ class SyPdf extends BasePdf {
         ];
     }
 
-    public function AddCIDFont($family, $style, $name, $cw, $CMap, $registry){
+    public function AddCIDFont($family, $style, $name, $cw, $CMap, $registry)
+    {
         $fontkey = strtolower($family) . strtoupper($style);
         if (isset($this->fonts[$fontkey])) {
             $this->Error("Font already added: $family $style");
@@ -235,21 +238,24 @@ class SyPdf extends BasePdf {
         ];
     }
 
-    public function AddCIDFonts($family, $name, $cw, $CMap, $registry){
+    public function AddCIDFonts($family, $name, $cw, $CMap, $registry)
+    {
         $this->AddCIDFont($family, '', $name, $cw, $CMap, $registry);
         $this->AddCIDFont($family, 'B', $name . ',Bold', $cw, $CMap, $registry);
         $this->AddCIDFont($family, 'I', $name . ',Italic', $cw, $CMap, $registry);
         $this->AddCIDFont($family, 'BI', $name . ',BoldItalic', $cw, $CMap, $registry);
     }
 
-    public function AddBig5Font($family = 'PMingLiU', $name = 'MSungStd-Light-Acro'){
+    public function AddBig5Font($family = 'PMingLiU', $name = 'MSungStd-Light-Acro')
+    {
         //Add Big5 font with proportional Latin
         $CMap = 'ETenms-B5-H';
         $registry = ['ordering' => 'CNS1', 'supplement' => 0];
         $this->AddCIDFonts($family, $name, $this->widthBig5, $CMap, $registry);
     }
 
-    public function AddBig5hwFont($family = 'PMingLiU', $name = 'MSungStd-Light-Acro'){
+    public function AddBig5hwFont($family = 'PMingLiU', $name = 'MSungStd-Light-Acro')
+    {
         //Add Big5 font with half-witdh Latin
         for ($i = 32; $i <= 126; $i ++) {
             $cw[chr($i)] = 500;
@@ -259,14 +265,16 @@ class SyPdf extends BasePdf {
         $this->AddCIDFonts($family, $name, $cw, $CMap, $registry);
     }
 
-    public function AddGBFont($family = 'GB', $name = 'STSongStd-Light-Acro'){
+    public function AddGBFont($family = 'GB', $name = 'STSongStd-Light-Acro')
+    {
         //Add GB font with proportional Latin
         $CMap = 'GBKp-EUC-H';
         $registry = ['ordering' => 'GB1', 'supplement' => 2];
         $this->AddCIDFonts($family, $name, $this->widthGB, $CMap, $registry);
     }
 
-    public function AddGBhwFont($family = 'GB-hw', $name = 'STSongStd-Light-Acro'){
+    public function AddGBhwFont($family = 'GB-hw', $name = 'STSongStd-Light-Acro')
+    {
         //Add GB font with half-width Latin
         for ($i = 32; $i <= 126; $i ++) {
             $cw[chr($i)] = 500;
@@ -276,7 +284,8 @@ class SyPdf extends BasePdf {
         $this->AddCIDFonts($family, $name, $cw, $CMap, $registry);
     }
 
-    public function GetStringWidth($s){
+    public function GetStringWidth($s)
+    {
         if ($this->CurrentFont['type'] == 'Type0') {
             return $this->GetMBStringWidth($s);
         } else {
@@ -284,10 +293,11 @@ class SyPdf extends BasePdf {
         }
     }
 
-    public function GetMBStringWidth($s){
+    public function GetMBStringWidth($s)
+    {
         //Multi-byte version of GetStringWidth()
         $l = 0;
-        $cw =& $this->CurrentFont['cw'];
+        $cw = & $this->CurrentFont['cw'];
         $nb = strlen($s);
         $i = 0;
         while ($i < $nb) {
@@ -304,7 +314,8 @@ class SyPdf extends BasePdf {
         return $l * $this->FontSize / 1000;
     }
 
-    public function MultiCell($w, $h, $txt, $border = 0, $align = 'L', $fill = 0){
+    public function MultiCell($w, $h, $txt, $border = 0, $align = 'L', $fill = 0)
+    {
         if ($this->CurrentFont['type'] == 'Type0') {
             $this->MBMultiCell($w, $h, $txt, $border, $align, $fill);
         } else {
@@ -312,9 +323,10 @@ class SyPdf extends BasePdf {
         }
     }
 
-    public function MBMultiCell($w, $h, $txt, $border = 0, $align = 'L', $fill = 0){
+    public function MBMultiCell($w, $h, $txt, $border = 0, $align = 'L', $fill = 0)
+    {
         //Multi-byte version of MultiCell()
-        $cw =& $this->CurrentFont['cw'];
+        $cw = & $this->CurrentFont['cw'];
         if ($w == 0) {
             $w = $this->w - $this->rMargin - $this->x;
         }
@@ -402,7 +414,8 @@ class SyPdf extends BasePdf {
         $this->x = $this->lMargin;
     }
 
-    public function Write($h, $txt, $link = ''){
+    public function Write($h, $txt, $link = '')
+    {
         if ($this->CurrentFont['type'] == 'Type0') {
             $this->MBWrite($h, $txt, $link);
         } else {
@@ -410,9 +423,10 @@ class SyPdf extends BasePdf {
         }
     }
 
-    public function MBWrite($h, $txt, $link){
+    public function MBWrite($h, $txt, $link)
+    {
         //Multi-byte version of Write()
-        $cw =& $this->CurrentFont['cw'];
+        $cw = & $this->CurrentFont['cw'];
         $w = $this->w - $this->rMargin - $this->x;
         $wmax = ($w - 2 * $this->cMargin) * 1000 / $this->FontSize;
         $s = str_replace("\r", '', $txt);
@@ -486,7 +500,8 @@ class SyPdf extends BasePdf {
         }
     }
 
-    public function _putfonts(){
+    public function _putfonts()
+    {
         $nf = $this->n;
         foreach ($this->diffs as $diff) {
             //Encodings
@@ -558,7 +573,7 @@ class SyPdf extends BasePdf {
                 if ($font['type'] != 'core') {
                     //Widths
                     $this->_newobj();
-                    $cw =& $font['cw'];
+                    $cw = & $font['cw'];
                     $s = '[';
                     for ($i = 32; $i <= 255; $i ++) {
                         $s .= $cw[chr($i)] . ' ';
@@ -582,7 +597,8 @@ class SyPdf extends BasePdf {
         }
     }
 
-    public function _putType0($font){
+    public function _putType0($font)
+    {
         //Type0
         $this->_out('/Subtype /Type0');
         $this->_out('/BaseFont /' . $font['name'] . '-' . $font['CMap']);

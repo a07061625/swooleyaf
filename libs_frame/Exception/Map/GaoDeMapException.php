@@ -9,8 +9,10 @@ namespace Exception\Map;
 
 use Exception\BaseException;
 
-class GaoDeMapException extends BaseException {
-    public function __construct($message, $code) {
+class GaoDeMapException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = '高德地图异常';
     }

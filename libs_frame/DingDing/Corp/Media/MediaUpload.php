@@ -16,7 +16,8 @@ use Exception\DingDing\TalkException;
  * 上传媒体文件
  * @package DingDing\Corp\Media
  */
-class MediaUpload extends TalkBaseCorp {
+class MediaUpload extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -31,21 +32,24 @@ class MediaUpload extends TalkBaseCorp {
      */
     private $file_path = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $type
      * @throws \Exception\DingDing\TalkException
      */
-    public function setType(string $type){
-        if(isset(self::$totalMediaType[$type])){
+    public function setType(string $type)
+    {
+        if (isset(self::$totalMediaType[$type])) {
             $this->type = $type;
         } else {
             throw new TalkException('文件类型不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -56,19 +60,21 @@ class MediaUpload extends TalkBaseCorp {
      * @param string $filePath
      * @throws \Exception\DingDing\TalkException
      */
-    public function setFilePath(string $filePath){
-        if(file_exists($filePath) && is_readable($filePath)){
+    public function setFilePath(string $filePath)
+    {
+        if (file_exists($filePath) && is_readable($filePath)) {
             $this->reqData['media'] = new \CURLFile($filePath);
         } else {
             throw new TalkException('文件不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(strlen($this->type) == 0){
+    public function getDetail() : array
+    {
+        if (strlen($this->type) == 0) {
             throw new TalkException('文件类型不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['media'])){
+        if (!isset($this->reqData['media'])) {
             throw new TalkException('文件不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

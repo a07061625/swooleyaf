@@ -17,7 +17,8 @@ use Tool\Tool;
  * 发起待办
  * @package DingDing\Corp\WorkRecord
  */
-class WorkRecordAdd extends TalkBaseCorp {
+class WorkRecordAdd extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -46,22 +47,25 @@ class WorkRecordAdd extends TalkBaseCorp {
      */
     private $formItemList = [];
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
         $this->reqData['formItemList'] = [];
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $userId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserId(string $userId){
-        if(ctype_alnum($userId)){
+    public function setUserId(string $userId)
+    {
+        if (ctype_alnum($userId)) {
             $this->reqData['userid'] = $userId;
         } else {
             throw new TalkException('用户ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -72,8 +76,9 @@ class WorkRecordAdd extends TalkBaseCorp {
      * @param int $createTime
      * @throws \Exception\DingDing\TalkException
      */
-    public function setCreateTime(int $createTime){
-        if($createTime > Tool::getNowTime()){
+    public function setCreateTime(int $createTime)
+    {
+        if ($createTime > Tool::getNowTime()) {
             $this->reqData['create_time'] = 1000 * $createTime;
         } else {
             throw new TalkException('待办时间不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -84,8 +89,9 @@ class WorkRecordAdd extends TalkBaseCorp {
      * @param string $title
      * @throws \Exception\DingDing\TalkException
      */
-    public function setTitle(string $title){
-        if(strlen($title) > 0){
+    public function setTitle(string $title)
+    {
+        if (strlen($title) > 0) {
             $this->reqData['title'] = $title;
         } else {
             throw new TalkException('标题不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -96,7 +102,8 @@ class WorkRecordAdd extends TalkBaseCorp {
      * @param string $url
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUrl(string $url){
+    public function setUrl(string $url)
+    {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $url) > 0) {
             $this->reqData['url'] = $url;
         } else {
@@ -108,27 +115,29 @@ class WorkRecordAdd extends TalkBaseCorp {
      * @param array $formItem
      * @throws \Exception\DingDing\TalkException
      */
-    public function addFormItem(array $formItem){
-        if(empty($formItem)){
+    public function addFormItem(array $formItem)
+    {
+        if (empty($formItem)) {
             throw new TalkException('表单不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
         $this->reqData['formItemList'][] = $formItem;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['userid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['userid'])) {
             throw new TalkException('用户ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['create_time'])){
+        if (!isset($this->reqData['create_time'])) {
             throw new TalkException('待办时间不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['title'])){
+        if (!isset($this->reqData['title'])) {
             throw new TalkException('标题不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['url'])){
+        if (!isset($this->reqData['url'])) {
             throw new TalkException('跳转链接不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(empty($this->reqData['formItemList'])){
+        if (empty($this->reqData['formItemList'])) {
             throw new TalkException('表单列表不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

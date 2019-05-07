@@ -29,11 +29,11 @@
 error_reporting(E_ALL);
 
 if (PHP_SAPI != 'cli') {
-    die ('This script executes all tests, and should only be run from the command line');
+    die('This script executes all tests, and should only be run from the command line');
 }
 
 // List of tests
-$aTests = array(
+$aTests = [
       '01simple.php'
     , '01simplePCLZip.php'
     , '02types.php'
@@ -110,15 +110,15 @@ $aTests = array(
     , 'Excel2003XMLReader.php'
     , 'XMLReader.php'
     , 'GnumericReader.php'
-);
+];
 
 // First, clear all previous run results
 foreach ($aTests as $sTest) {
-    @unlink( str_replace('.php', '.xls',     $sTest) );
-    @unlink( str_replace('.php', '.xlsx',     $sTest) );
-    @unlink( str_replace('.php', '.csv',    $sTest) );
-    @unlink( str_replace('.php', '.htm',    $sTest) );
-    @unlink( str_replace('.php', '.pdf',    $sTest) );
+    @unlink(str_replace('.php', '.xls', $sTest));
+    @unlink(str_replace('.php', '.xlsx', $sTest));
+    @unlink(str_replace('.php', '.csv', $sTest));
+    @unlink(str_replace('.php', '.htm', $sTest));
+    @unlink(str_replace('.php', '.pdf', $sTest));
 }
 
 // Run all tests

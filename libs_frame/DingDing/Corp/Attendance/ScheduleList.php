@@ -17,7 +17,8 @@ use Tool\Tool;
  * 企业考勤排班详情
  * @package DingDing\Corp\Attendance
  */
-class ScheduleList extends TalkBaseCorp {
+class ScheduleList extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -36,7 +37,8 @@ class ScheduleList extends TalkBaseCorp {
      */
     private $size = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -44,15 +46,17 @@ class ScheduleList extends TalkBaseCorp {
         $this->reqData['size'] = 10;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $timeStamp
      * @throws \Exception\DingDing\TalkException
      */
-    public function setWorkDate(int $timeStamp){
-        if($timeStamp > 0){
+    public function setWorkDate(int $timeStamp)
+    {
+        if ($timeStamp > 0) {
             $this->reqData['workDate'] = date('Y-m-d H:i:s', $timeStamp);
         } else {
             throw new TalkException('排班时间不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -63,8 +67,9 @@ class ScheduleList extends TalkBaseCorp {
      * @param int $offset
      * @throws \Exception\DingDing\TalkException
      */
-    public function setOffset(int $offset){
-        if($offset >= 0){
+    public function setOffset(int $offset)
+    {
+        if ($offset >= 0) {
             $this->reqData['offset'] = $offset;
         } else {
             throw new TalkException('偏移量不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -75,16 +80,18 @@ class ScheduleList extends TalkBaseCorp {
      * @param int $size
      * @throws \Exception\DingDing\TalkException
      */
-    public function setSize(int $size){
-        if($size > 0){
+    public function setSize(int $size)
+    {
+        if ($size > 0) {
             $this->reqData['size'] = $size > 200 ? 200 : $size;
         } else {
             throw new TalkException('分页大小不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['workDate'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['workDate'])) {
             throw new TalkException('排班时间不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

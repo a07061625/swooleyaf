@@ -107,165 +107,295 @@ namespace {
 }
 
 namespace  {
-    abstract class RdKafka {
+    abstract class RdKafka
+    {
         /* properties */
         private $error_cb = null;
         private $dr_cb = null;
 
-        public function addBrokers($broker_list){}
+        public function __destruct()
+        {
+        }
 
-        public function getMetadata($all_topics, $only_topic = null, $timeout_ms = null){}
+        public function addBrokers($broker_list)
+        {
+        }
 
-        public function getOutQLen(){}
+        public function getMetadata($all_topics, $only_topic = null, $timeout_ms = null)
+        {
+        }
 
-        public function metadata($all_topics, $only_topic = null, $timeout_ms = null){}
+        public function getOutQLen()
+        {
+        }
 
-        public function setLogLevel($level){}
+        public function metadata($all_topics, $only_topic = null, $timeout_ms = null)
+        {
+        }
 
-        public function newQueue(){}
+        public function setLogLevel($level)
+        {
+        }
 
-        public function newTopic($topic_name, $topic_conf = null){}
+        public function newQueue()
+        {
+        }
 
-        public function outqLen(){}
+        public function newTopic($topic_name, $topic_conf = null)
+        {
+        }
 
-        public function poll($timeout_ms){}
+        public function outqLen()
+        {
+        }
 
-        public function setLogger($logger){}
+        public function poll($timeout_ms)
+        {
+        }
 
-        public function __destruct(){}
+        public function setLogger($logger)
+        {
+        }
     }
 }
 
 namespace RdKafka {
-    class Consumer extends \RdKafka {
-        public function __construct($conf = null){}
+    class Consumer extends \RdKafka
+    {
+        public function __construct($conf = null)
+        {
+        }
 
-        public function addBrokers($broker_list){}
+        public function __destruct()
+        {
+        }
 
-        public function getMetadata($all_topics, $only_topic = null, $timeout_ms = null){}
+        public function addBrokers($broker_list)
+        {
+        }
 
-        public function getOutQLen(){}
+        public function getMetadata($all_topics, $only_topic = null, $timeout_ms = null)
+        {
+        }
 
-        public function metadata($all_topics, $only_topic = null, $timeout_ms = null){}
+        public function getOutQLen()
+        {
+        }
 
-        public function setLogLevel($level){}
+        public function metadata($all_topics, $only_topic = null, $timeout_ms = null)
+        {
+        }
 
-        public function newQueue(){}
+        public function setLogLevel($level)
+        {
+        }
 
-        public function newTopic($topic_name, $topic_conf = null){}
+        public function newQueue()
+        {
+        }
 
-        public function outqLen(){}
+        public function newTopic($topic_name, $topic_conf = null)
+        {
+        }
 
-        public function poll($timeout_ms){}
+        public function outqLen()
+        {
+        }
 
-        public function setLogger($logger){}
+        public function poll($timeout_ms)
+        {
+        }
 
-        public function __destruct(){}
+        public function setLogger($logger)
+        {
+        }
     }
 
-    class Producer extends \RdKafka {
-        public function __construct($conf = null){}
+    class Producer extends \RdKafka
+    {
+        public function __construct($conf = null)
+        {
+        }
 
-        public function addBrokers($broker_list){}
+        public function __destruct()
+        {
+        }
 
-        public function getMetadata($all_topics, $only_topic = null, $timeout_ms = null){}
+        public function addBrokers($broker_list)
+        {
+        }
 
-        public function getOutQLen(){}
+        public function getMetadata($all_topics, $only_topic = null, $timeout_ms = null)
+        {
+        }
 
-        public function metadata($all_topics, $only_topic = null, $timeout_ms = null){}
+        public function getOutQLen()
+        {
+        }
 
-        public function setLogLevel($level){}
+        public function metadata($all_topics, $only_topic = null, $timeout_ms = null)
+        {
+        }
 
-        public function newQueue(){}
+        public function setLogLevel($level)
+        {
+        }
+
+        public function newQueue()
+        {
+        }
 
         /**
          * @param string $topic_name
          * @param array $topic_conf
          * @return ProducerTopic
          */
-        public function newTopic($topic_name, $topic_conf = null){}
+        public function newTopic($topic_name, $topic_conf = null)
+        {
+        }
 
-        public function outqLen(){}
+        public function outqLen()
+        {
+        }
 
-        public function poll($timeout_ms){}
+        public function poll($timeout_ms)
+        {
+        }
 
-        public function setLogger($logger){}
-
-        public function __destruct(){}
+        public function setLogger($logger)
+        {
+        }
     }
 
-    class Exception extends \Exception implements \Throwable {
+    class Exception extends \Exception implements \Throwable
+    {
         /* properties */
         protected $message = '';
         protected $code = 0;
         protected $file = null;
         protected $line = null;
 
-        final private function __clone(){}
+        public function __construct($message = null, $code = null, $previous = null)
+        {
+        }
 
-        public function __construct($message = null, $code = null, $previous = null){}
+        final private function __clone()
+        {
+        }
 
-        public function __wakeup(){}
+        public function __wakeup()
+        {
+        }
 
-        public function __toString(){}
+        public function __toString()
+        {
+        }
     }
 
-    class Conf {
-        public function __construct(){}
+    class Conf
+    {
+        public function __construct()
+        {
+        }
 
-        public function dump(){}
+        public function dump()
+        {
+        }
 
-        public function set($name, $value){}
+        public function set($name, $value)
+        {
+        }
 
-        public function setDefaultTopicConf($topic_conf){}
+        public function setDefaultTopicConf($topic_conf)
+        {
+        }
 
-        public function setErrorCb($callback){}
+        public function setErrorCb($callback)
+        {
+        }
 
-        public function setDrMsgCb($callback){}
+        public function setDrMsgCb($callback)
+        {
+        }
 
-        public function setRebalanceCb($callback){}
+        public function setRebalanceCb($callback)
+        {
+        }
     }
 
-    class TopicConf {
-        public function __construct(){}
+    class TopicConf
+    {
+        public function __construct()
+        {
+        }
 
-        public function dump(){}
+        public function dump()
+        {
+        }
 
-        public function set(){}
+        public function set()
+        {
+        }
 
-        public function setPartitioner($partitioner){}
+        public function setPartitioner($partitioner)
+        {
+        }
     }
 
-    class KafkaConsumer {
+    class KafkaConsumer
+    {
         /* properties */
         private $error_cb = null;
         private $rebalance_cb = null;
         private $dr_msg_cb = null;
 
-        public function __construct($conf){}
+        public function __construct($conf)
+        {
+        }
 
-        public function assign($topic_partitions = null){}
+        public function assign($topic_partitions = null)
+        {
+        }
 
-        public function getAssignment(){}
+        public function getAssignment()
+        {
+        }
 
-        public function commit($message_or_offsets = null){}
+        public function commit($message_or_offsets = null)
+        {
+        }
 
-        public function commitAsync($message_or_offsets = null){}
+        public function commitAsync($message_or_offsets = null)
+        {
+        }
 
-        public function consume($timeout_ms){}
+        public function consume($timeout_ms)
+        {
+        }
 
-        public function subscribe($topics){}
+        public function subscribe($topics)
+        {
+        }
 
-        public function getSubscription(){}
+        public function getSubscription()
+        {
+        }
 
-        public function unsubscribe(){}
+        public function unsubscribe()
+        {
+        }
 
-        public function getMetadata($all_topics, $only_topic, $timeout_ms){}
+        public function getMetadata($all_topics, $only_topic, $timeout_ms)
+        {
+        }
 
-        public function newTopic($topic_name, $topic_conf = null){}
+        public function newTopic($topic_name, $topic_conf = null)
+        {
+        }
     }
 
-    class Message {
+    class Message
+    {
         /* properties */
         public $err = null;
         public $topic_name = null;
@@ -274,119 +404,219 @@ namespace RdKafka {
         public $key = null;
         public $offset = null;
 
-        public function errstr(){}
+        public function errstr()
+        {
+        }
     }
 
-    class Metadata {
-        public function getOrigBrokerId(){}
+    class Metadata
+    {
+        public function getOrigBrokerId()
+        {
+        }
 
-        public function getOrigBrokerName(){}
+        public function getOrigBrokerName()
+        {
+        }
 
-        public function getBrokers(){}
+        public function getBrokers()
+        {
+        }
 
-        public function getTopics(){}
+        public function getTopics()
+        {
+        }
     }
 
-    class TopicPartition {
-        public function __construct(){}
+    class TopicPartition
+    {
+        public function __construct()
+        {
+        }
 
-        public function getTopic(){}
+        public function getTopic()
+        {
+        }
 
-        public function setTopic($topic_name){}
+        public function setTopic($topic_name)
+        {
+        }
 
-        public function getPartition(){}
+        public function getPartition()
+        {
+        }
 
-        public function setPartition($partition){}
+        public function setPartition($partition)
+        {
+        }
 
-        public function getOffset(){}
+        public function getOffset()
+        {
+        }
 
-        public function setOffset($offset){}
+        public function setOffset($offset)
+        {
+        }
     }
 
-    class Queue {
-        private function __construct(){}
+    class Queue
+    {
+        private function __construct()
+        {
+        }
 
-        public function consume($timeout_ms){}
+        public function consume($timeout_ms)
+        {
+        }
     }
 
-    abstract class Topic {
-        public function getName(){}
+    abstract class Topic
+    {
+        public function getName()
+        {
+        }
     }
 
-    class ConsumerTopic extends \RdKafka\Topic {
-        private function __construct(){}
+    class ConsumerTopic extends \RdKafka\Topic
+    {
+        private function __construct()
+        {
+        }
 
-        public function consumeQueueStart($partition, $offset, $queue){}
+        public function consumeQueueStart($partition, $offset, $queue)
+        {
+        }
 
-        public function consumeStart($partition, $offset){}
+        public function consumeStart($partition, $offset)
+        {
+        }
 
-        public function consumeStop($partition){}
+        public function consumeStop($partition)
+        {
+        }
 
-        public function consume($partition, $timeout_ms){}
+        public function consume($partition, $timeout_ms)
+        {
+        }
 
-        public function offsetStore($partition, $offset){}
+        public function offsetStore($partition, $offset)
+        {
+        }
 
-        public function getName(){}
+        public function getName()
+        {
+        }
     }
 
-    class KafkaConsumerTopic extends \RdKafka\Topic {
-        private function __construct(){}
+    class KafkaConsumerTopic extends \RdKafka\Topic
+    {
+        private function __construct()
+        {
+        }
 
-        public function offsetStore($partition, $offset){}
+        public function offsetStore($partition, $offset)
+        {
+        }
 
-        public function getName(){}
+        public function getName()
+        {
+        }
     }
 
-    class ProducerTopic extends \RdKafka\Topic {
-        private function __construct(){}
+    class ProducerTopic extends \RdKafka\Topic
+    {
+        private function __construct()
+        {
+        }
 
-        public function produce($partition, $msgflags, $payload, $key = null){}
+        public function produce($partition, $msgflags, $payload, $key = null)
+        {
+        }
 
-        public function getName(){}
+        public function getName()
+        {
+        }
     }
 }
 
 namespace RdKafka\Metadata {
-    class Topic {
-        public function getTopic(){}
+    class Topic
+    {
+        public function getTopic()
+        {
+        }
 
-        public function getPartitions(){}
+        public function getPartitions()
+        {
+        }
 
-        public function getErr(){}
+        public function getErr()
+        {
+        }
     }
 
-    class Broker {
-        public function getId(){}
+    class Broker
+    {
+        public function getId()
+        {
+        }
 
-        public function getHost(){}
+        public function getHost()
+        {
+        }
 
-        public function getPort(){}
+        public function getPort()
+        {
+        }
     }
 
-    class Partition {
-        public function getId(){}
+    class Partition
+    {
+        public function getId()
+        {
+        }
 
-        public function getErr(){}
+        public function getErr()
+        {
+        }
 
-        public function getLeader(){}
+        public function getLeader()
+        {
+        }
 
-        public function getReplicas(){}
+        public function getReplicas()
+        {
+        }
 
-        public function getIsrs(){}
+        public function getIsrs()
+        {
+        }
     }
 
-    class Collection implements \Countable, \Iterator {
-        public function count(){}
+    class Collection implements \Countable, \Iterator
+    {
+        public function count()
+        {
+        }
 
-        public function current(){}
+        public function current()
+        {
+        }
 
-        public function key(){}
+        public function key()
+        {
+        }
 
-        public function next(){}
+        public function next()
+        {
+        }
 
-        public function rewind(){}
+        public function rewind()
+        {
+        }
 
-        public function valid(){}
+        public function valid()
+        {
+        }
     }
 }
-

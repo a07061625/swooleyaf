@@ -2,10 +2,12 @@
 Structure for non-conventional column
 --FILE--
 <?php
-include_once dirname(__FILE__) . "/connect.inc.php";
+include_once dirname(__FILE__) . '/connect.inc.php';
 
-class SoftwareConvention extends NotORM_Structure_Convention {
-    function getReferencedTable($name, $table) {
+class SoftwareConvention extends NotORM_Structure_Convention
+{
+    public function getReferencedTable($name, $table)
+    {
         switch ($name) {
             case 'maintainer': return parent::getReferencedTable('author', $table);
         }

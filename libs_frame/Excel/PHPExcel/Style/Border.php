@@ -28,27 +28,27 @@
 class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExcel_IComparable
 {
     /* Border style */
-    const BORDER_NONE             = 'none';
-    const BORDER_DASHDOT          = 'dashDot';
-    const BORDER_DASHDOTDOT       = 'dashDotDot';
-    const BORDER_DASHED           = 'dashed';
-    const BORDER_DOTTED           = 'dotted';
-    const BORDER_DOUBLE           = 'double';
-    const BORDER_HAIR             = 'hair';
-    const BORDER_MEDIUM           = 'medium';
-    const BORDER_MEDIUMDASHDOT    = 'mediumDashDot';
+    const BORDER_NONE = 'none';
+    const BORDER_DASHDOT = 'dashDot';
+    const BORDER_DASHDOTDOT = 'dashDotDot';
+    const BORDER_DASHED = 'dashed';
+    const BORDER_DOTTED = 'dotted';
+    const BORDER_DOUBLE = 'double';
+    const BORDER_HAIR = 'hair';
+    const BORDER_MEDIUM = 'medium';
+    const BORDER_MEDIUMDASHDOT = 'mediumDashDot';
     const BORDER_MEDIUMDASHDOTDOT = 'mediumDashDotDot';
-    const BORDER_MEDIUMDASHED     = 'mediumDashed';
-    const BORDER_SLANTDASHDOT     = 'slantDashDot';
-    const BORDER_THICK            = 'thick';
-    const BORDER_THIN             = 'thin';
+    const BORDER_MEDIUMDASHED = 'mediumDashed';
+    const BORDER_SLANTDASHDOT = 'slantDashDot';
+    const BORDER_THICK = 'thick';
+    const BORDER_THIN = 'thin';
 
     /**
      * Border style
      *
      * @var string
      */
-    protected $borderStyle = PHPExcel_Style_Border::BORDER_NONE;
+    protected $borderStyle = self::BORDER_NONE;
 
     /**
      * Border color
@@ -80,7 +80,7 @@ class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExce
         parent::__construct($isSupervisor);
 
         // Initialise values
-        $this->color    = new PHPExcel_Style_Color(PHPExcel_Style_Color::COLOR_BLACK, $isSupervisor);
+        $this->color = new PHPExcel_Style_Color(PHPExcel_Style_Color::COLOR_BLACK, $isSupervisor);
 
         // bind parent if we are a supervisor
         if ($isSupervisor) {
@@ -154,7 +154,7 @@ class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExce
                 $key = strtolower('vertical');
                 break;
         }
-        return $this->parent->getStyleArray(array($key => $array));
+        return $this->parent->getStyleArray([$key => $array]);
     }
 
     /**
@@ -189,7 +189,7 @@ class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExce
                 }
             }
         } else {
-            throw new PHPExcel_Exception("Invalid style array passed.");
+            throw new PHPExcel_Exception('Invalid style array passed.');
         }
         return $this;
     }
@@ -215,16 +215,15 @@ class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExce
      *                                and TRUE to PHPExcel_Style_Border::BORDER_MEDIUM
      * @return PHPExcel_Style_Border
      */
-    public function setBorderStyle($pValue = PHPExcel_Style_Border::BORDER_NONE)
+    public function setBorderStyle($pValue = self::BORDER_NONE)
     {
-
         if (empty($pValue)) {
-            $pValue = PHPExcel_Style_Border::BORDER_NONE;
+            $pValue = self::BORDER_NONE;
         } elseif (is_bool($pValue) && $pValue) {
-            $pValue = PHPExcel_Style_Border::BORDER_MEDIUM;
+            $pValue = self::BORDER_MEDIUM;
         }
         if ($this->isSupervisor) {
-            $styleArray = $this->getStyleArray(array('style' => $pValue));
+            $styleArray = $this->getStyleArray(['style' => $pValue]);
             $this->getActiveSheet()->getStyle($this->getSelectedCells())->applyFromArray($styleArray);
         } else {
             $this->borderStyle = $pValue;
@@ -255,7 +254,7 @@ class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExce
         $color = $pValue->getIsSupervisor() ? $pValue->getSharedComponent() : $pValue;
 
         if ($this->isSupervisor) {
-            $styleArray = $this->getColor()->getStyleArray(array('argb' => $color->getARGB()));
+            $styleArray = $this->getColor()->getStyleArray(['argb' => $color->getARGB()]);
             $this->getActiveSheet()->getStyle($this->getSelectedCells())->applyFromArray($styleArray);
         } else {
             $this->color = $color;

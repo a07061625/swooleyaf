@@ -6,34 +6,40 @@ namespace Swoole\Coroutine;
  */
 class Socket
 {
-
-
     /**
      * @param $domain[required]
      * @param $type[required]
      * @param $protocol[optional]
      * @return mixed
      */
-    public function __construct($domain, $type, $protocol=null){}
+    public function __construct($domain, $type, $protocol = null)
+    {
+    }
 
     /**
      * @param $address[required]
      * @param $port[optional]
      * @return mixed
      */
-    public function bind($address, $port=null){}
+    public function bind($address, $port = null)
+    {
+    }
 
     /**
      * @param $backlog[optional]
      * @return mixed
      */
-    public function listen($backlog=null){}
+    public function listen($backlog = null)
+    {
+    }
 
     /**
      * @param $timeout[optional]
      * @return mixed
      */
-    public function accept($timeout=null){}
+    public function accept($timeout = null)
+    {
+    }
 
     /**
      * @param $host[required]
@@ -41,42 +47,54 @@ class Socket
      * @param $timeout[optional]
      * @return mixed
      */
-    public function connect($host, $port=null, $timeout=null){}
+    public function connect($host, $port = null, $timeout = null)
+    {
+    }
 
     /**
      * @param $length[optional]
      * @param $timeout[optional]
      * @return mixed
      */
-    public function recv($length=null, $timeout=null){}
+    public function recv($length = null, $timeout = null)
+    {
+    }
 
     /**
      * @param $data[required]
      * @param $timeout[optional]
      * @return mixed
      */
-    public function send($data, $timeout=null){}
+    public function send($data, $timeout = null)
+    {
+    }
 
     /**
      * @param $length[optional]
      * @param $timeout[optional]
      * @return mixed
      */
-    public function recvAll($length=null, $timeout=null){}
+    public function recvAll($length = null, $timeout = null)
+    {
+    }
 
     /**
      * @param $data[required]
      * @param $timeout[optional]
      * @return mixed
      */
-    public function sendAll($data, $timeout=null){}
+    public function sendAll($data, $timeout = null)
+    {
+    }
 
     /**
      * @param $peername[required]
      * @param $timeout[optional]
      * @return mixed
      */
-    public function recvfrom($peername, $timeout=null){}
+    public function recvfrom($peername, $timeout = null)
+    {
+    }
 
     /**
      * @param $addr[required]
@@ -84,14 +102,18 @@ class Socket
      * @param $data[required]
      * @return mixed
      */
-    public function sendto($addr, $port, $data){}
+    public function sendto($addr, $port, $data)
+    {
+    }
 
     /**
      * @param $level[required]
      * @param $opt_name[required]
      * @return mixed
      */
-    public function getOption($level, $opt_name){}
+    public function getOption($level, $opt_name)
+    {
+    }
 
     /**
      * @param $level[required]
@@ -99,28 +121,36 @@ class Socket
      * @param $opt_value[required]
      * @return mixed
      */
-    public function setOption($level, $opt_name, $opt_value){}
+    public function setOption($level, $opt_name, $opt_value)
+    {
+    }
 
     /**
      * @param $how[required]
      * @return mixed
      */
-    public function shutdown($how){}
+    public function shutdown($how)
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function close(){}
+    public function close()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function getpeername(){}
+    public function getpeername()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function getsockname(){}
-
-
+    public function getsockname()
+    {
+    }
 }

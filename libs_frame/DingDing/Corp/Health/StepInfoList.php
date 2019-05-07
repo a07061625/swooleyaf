@@ -17,7 +17,8 @@ use Tool\Tool;
  * 获取个人或部门的钉钉运动数据
  * @package DingDing\Corp\Health
  */
-class StepInfoList extends TalkBaseCorp {
+class StepInfoList extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -36,13 +37,15 @@ class StepInfoList extends TalkBaseCorp {
      */
     private $stat_dates = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
@@ -50,12 +53,13 @@ class StepInfoList extends TalkBaseCorp {
      * @param string $objectId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setTypeAndObjectId(int $type,string $objectId){
-        if (!in_array($type, [0, 1])) {
+    public function setTypeAndObjectId(int $type, string $objectId)
+    {
+        if (!in_array($type, [0, 1], true)) {
             throw new TalkException('数据类型不合法', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if(($type == 0) && !ctype_alnum($objectId)){
+        } elseif (($type == 0) && !ctype_alnum($objectId)) {
             throw new TalkException('用户ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if(($type == 1) && !ctype_digit($objectId)){
+        } elseif (($type == 1) && !ctype_digit($objectId)) {
             throw new TalkException('部门ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
         
@@ -67,28 +71,30 @@ class StepInfoList extends TalkBaseCorp {
      * @param array $statDates
      * @throws \Exception\DingDing\TalkException
      */
-    public function setStatDates(array $statDates){
+    public function setStatDates(array $statDates)
+    {
         $dateList = [];
         foreach ($statDates as $eDate) {
-            if(ctype_digit($eDate) && (strlen($eDate) == 8) && ($eDate{0} == '2')){
+            if (ctype_digit($eDate) && (strlen($eDate) == 8) && ($eDate{0} == '2')) {
                 $dateList[$eDate] = 1;
             }
         }
 
         $dateNum = count($dateList);
-        if($dateNum == 0){
+        if ($dateNum == 0) {
             throw new TalkException('时间列表不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if($dateNum > 31){
+        } elseif ($dateNum > 31) {
             throw new TalkException('时间总数不能超过31天', ErrorCode::DING_TALK_PARAM_ERROR);
         }
         $this->reqData['stat_dates'] = implode(',', array_keys($dateList));
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['type'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['type'])) {
             throw new TalkException('数据类型不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['stat_dates'])){
+        if (!isset($this->reqData['stat_dates'])) {
             throw new TalkException('时间列表不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

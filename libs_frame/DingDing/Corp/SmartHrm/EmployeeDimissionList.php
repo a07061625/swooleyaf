@@ -17,7 +17,8 @@ use Tool\Tool;
  * 获取离职员工离职信息
  * @package DingDing\Corp\SmartHrm
  */
-class EmployeeDimissionList extends TalkBaseCorp {
+class EmployeeDimissionList extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -26,38 +27,42 @@ class EmployeeDimissionList extends TalkBaseCorp {
      */
     private $userid_list = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
+    }
+
+    private function __clone()
+    {
     }
 
     /**
      * @param array $userList
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserList(array $userList){
+    public function setUserList(array $userList)
+    {
         $users = [];
         foreach ($userList as $eUserId) {
-            if(ctype_alnum($eUserId)){
+            if (ctype_alnum($eUserId)) {
                 $users[$eUserId] = 1;
             }
         }
 
         $userNum = count($users);
-        if($userNum == 0){
+        if ($userNum == 0) {
             throw new TalkException('员工列表不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
-        } else if($userNum > 50){
+        } elseif ($userNum > 50) {
             throw new TalkException('员工不能超过50个', ErrorCode::DING_TALK_PARAM_ERROR);
         }
         $this->reqData['userid_list'] = implode(',', array_keys($users));
     }
 
-    private function __clone(){
-    }
-
-    public function getDetail() : array {
-        if(!isset($this->reqData['userid_list'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['userid_list'])) {
             throw new TalkException('员工列表不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

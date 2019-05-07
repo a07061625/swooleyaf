@@ -9,8 +9,10 @@ namespace Exception\DingDing;
 
 use Exception\BaseException;
 
-class TalkException extends BaseException {
-    public function __construct($message, $code) {
+class TalkException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = '钉钉异常';
     }

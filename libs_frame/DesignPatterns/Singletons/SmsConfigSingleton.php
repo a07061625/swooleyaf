@@ -13,7 +13,8 @@ use SySms\ConfigYun253;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
-class SmsConfigSingleton {
+class SmsConfigSingleton
+{
     use SingletonTrait;
 
     /**
@@ -32,7 +33,8 @@ class SmsConfigSingleton {
      */
     private $yun253Config = null;
 
-    private function __construct(){
+    private function __construct()
+    {
         $configs = Tool::getConfig('sms.' . SY_ENV . SY_PROJECT);
 
         $aliYunConfig = new ConfigAliYun();
@@ -55,8 +57,9 @@ class SmsConfigSingleton {
     /**
      * @return \DesignPatterns\Singletons\SmsConfigSingleton
      */
-    public static function getInstance(){
-        if(is_null(self::$instance)){
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -66,21 +69,24 @@ class SmsConfigSingleton {
     /**
      * @return \SySms\ConfigAliYun
      */
-    public function getAliYunConfig() {
+    public function getAliYunConfig()
+    {
         return $this->aliYunConfig;
     }
 
     /**
      * @return \SySms\ConfigDaYu
      */
-    public function getDaYuConfig() {
+    public function getDaYuConfig()
+    {
         return $this->daYuConfig;
     }
 
     /**
      * @return \SySms\ConfigYun253
      */
-    public function getYun253Config() {
+    public function getYun253Config()
+    {
         return $this->yun253Config;
     }
 }

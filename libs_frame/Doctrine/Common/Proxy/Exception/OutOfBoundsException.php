@@ -37,6 +37,6 @@ class OutOfBoundsException extends BaseOutOfBoundsException implements ProxyExce
      */
     public static function missingPrimaryKeyValue($className, $idField)
     {
-        return new self(sprintf("Missing value for primary key %s on %s", $idField, $className));
+        return new self(sprintf('Missing value for primary key %s on %s', $idField, $className));
     }
 }

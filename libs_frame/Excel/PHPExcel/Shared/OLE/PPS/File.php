@@ -19,7 +19,6 @@
 //
 // $Id: File.php,v 1.11 2007/02/13 21:00:42 schmidt Exp $
 
-
 /**
 * Class for creating File PPS's for OLE containers
 *
@@ -38,7 +37,7 @@ class PHPExcel_Shared_OLE_PPS_File extends PHPExcel_Shared_OLE_PPS
     */
     public function __construct($name)
     {
-        parent::__construct(null, $name, PHPExcel_Shared_OLE::OLE_PPS_TYPE_FILE, null, null, null, null, null, '', array());
+        parent::__construct(null, $name, PHPExcel_Shared_OLE::OLE_PPS_TYPE_FILE, null, null, null, null, null, '', []);
     }
 
     /**

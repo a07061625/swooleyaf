@@ -9,13 +9,15 @@ namespace DB\Containers;
 
 use SplObserver;
 
-abstract class BaseContainer implements \SplSubject {
+abstract class BaseContainer implements \SplSubject
+{
     protected $_model = null;
 
     private $_observers = null;
     private $_subjectObj = null;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->_observers = new \SplObjectStorage();
     }
 
@@ -23,19 +25,23 @@ abstract class BaseContainer implements \SplSubject {
      * 设置观察者模式中被观察者的标识对象
      * @param object|array $subjectObj
      */
-    public function setSubjectObj($subjectObj) {
+    public function setSubjectObj($subjectObj)
+    {
         $this->_subjectObj = $subjectObj;
     }
 
-    public function attach(SplObserver $observer) {
+    public function attach(SplObserver $observer)
+    {
         $this->_observers->attach($observer);
     }
 
-    public function detach(SplObserver $observer) {
+    public function detach(SplObserver $observer)
+    {
         $this->_observers->detach($observer);
     }
 
-    public function detachAll(){
+    public function detachAll()
+    {
         $this->_observers->removeAll($this->_observers);
     }
 
@@ -44,14 +50,16 @@ abstract class BaseContainer implements \SplSubject {
      * @param \SplObserver $observer 观察者对象
      * @return bool
      */
-    public function existObserver(SplObserver $observer) : bool {
+    public function existObserver(SplObserver $observer) : bool
+    {
         return $this->_observers->contains($observer);
     }
 
-    public function notify() {
+    public function notify()
+    {
         $this->_observers->rewind();
 
-        if(is_null($this->_subjectObj)){
+        if (is_null($this->_subjectObj)) {
             while ($this->_observers->valid()) {
                 $this->_observers->current()->update($this);
                 $this->_observers->next();

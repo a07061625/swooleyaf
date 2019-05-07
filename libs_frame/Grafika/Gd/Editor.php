@@ -2,6 +2,7 @@
 
 namespace Grafika\Gd;
 
+use Grafika\Color;
 use Grafika\DrawingObjectInterface;
 use Grafika\EditorInterface;
 use Grafika\FilterInterface;
@@ -10,7 +11,6 @@ use Grafika\Gd\ImageHash\DifferenceHash;
 use Grafika\Grafika;
 use Grafika\ImageInterface;
 use Grafika\ImageType;
-use Grafika\Color;
 use Grafika\Position;
 
 /**
@@ -19,7 +19,6 @@ use Grafika\Position;
  */
 final class Editor implements EditorInterface
 {
-
     /**
      * Apply a filter to the image. See Filters section for a list of available filters.
      *
@@ -28,9 +27,8 @@ final class Editor implements EditorInterface
      *
      * @return Editor
      */
-    public function apply( &$image, $filter)
+    public function apply(&$image, $filter)
     {
-
         if ($image->isAnimated()) { // Ignore animated GIF for now
             return $this;
         }
@@ -54,7 +52,8 @@ final class Editor implements EditorInterface
      * @return Editor
      * @throws \Exception When added image is outside of canvas or invalid blend type
      */
-    public function blend(&$image1, $image2, $type='normal', $opacity = 1.0, $position = 'top-left', $offsetX = 0, $offsetY = 0 ){
+    public function blend(&$image1, $image2, $type = 'normal', $opacity = 1.0, $position = 'top-left', $offsetX = 0, $offsetY = 0)
+    {
 
         // Turn into position object
         $position = new Position($position, $offsetX, $offsetY);
@@ -63,18 +62,17 @@ final class Editor implements EditorInterface
         list($offsetX, $offsetY) = $position->getXY($image1->getWidth(), $image1->getHeight(), $image2->getWidth(), $image2->getHeight());
 
         // Check if it overlaps
-        if( ($offsetX >= $image1->getWidth() ) or
+        if (($offsetX >= $image1->getWidth()) or
             ($offsetX + $image2->getWidth() <= 0) or
-            ($offsetY >= $image1->getHeight() ) or
-            ($offsetY + $image2->getHeight() <= 0)){
-
+            ($offsetY >= $image1->getHeight()) or
+            ($offsetY + $image2->getHeight() <= 0)) {
             throw new \Exception('Invalid blending. Image 2 is outside the canvas.');
         }
 
         // Loop start X
         $loopStartX = 0;
         $canvasStartX = $offsetX;
-        if($canvasStartX < 0){
+        if ($canvasStartX < 0) {
             $diff = 0 - $canvasStartX;
             $loopStartX += $diff;
         }
@@ -82,7 +80,7 @@ final class Editor implements EditorInterface
         // Loop end X
         $loopEndX = $image2->getWidth();
         $canvasEndX = $offsetX + $image2->getWidth();
-        if($canvasEndX > $image1->getWidth()){
+        if ($canvasEndX > $image1->getWidth()) {
             $diff = $canvasEndX - $image1->getWidth();
             $loopEndX -= $diff;
         }
@@ -90,7 +88,7 @@ final class Editor implements EditorInterface
         // Loop start Y
         $loopStartY = 0;
         $canvasStartY = $offsetY;
-        if($canvasStartY < 0){
+        if ($canvasStartY < 0) {
             $diff = 0 - $canvasStartY;
             $loopStartY += $diff;
         }
@@ -98,36 +96,36 @@ final class Editor implements EditorInterface
         // Loop end Y
         $loopEndY = $image2->getHeight();
         $canvasEndY = $offsetY + $image2->getHeight();
-        if($canvasEndY > $image1->getHeight()){
+        if ($canvasEndY > $image1->getHeight()) {
             $diff = $canvasEndY - ($image1->getHeight());
             $loopEndY -= $diff;
         }
 
-        $w   = $image1->getWidth();
-        $h   = $image1->getHeight();
+        $w = $image1->getWidth();
+        $h = $image1->getHeight();
         $gd1 = $image1->getCore();
         $gd2 = $image2->getCore();
 
-        $canvas = imagecreatetruecolor( $w, $h );
-        imagecopy( $canvas, $gd1, 0, 0, 0, 0, $w, $h );
+        $canvas = imagecreatetruecolor($w, $h);
+        imagecopy($canvas, $gd1, 0, 0, 0, 0, $w, $h);
 
-        $type = strtolower( $type );
-        if($type==='normal') {
-            if ( $opacity !== 1 ) {
+        $type = strtolower($type);
+        if ($type === 'normal') {
+            if ($opacity !== 1) {
                 $this->opacity($image2, $opacity);
             }
-            imagecopy( $canvas, $gd2, $loopStartX + $offsetX, $loopStartY + $offsetY, 0, 0, $image2->getWidth(), $image2->getHeight());
-        } else if($type==='multiply'){
-            $this->_blendMultiply( $canvas, $gd1, $gd2, $loopStartY, $loopEndY, $loopStartX, $loopEndX, $offsetX, $offsetY, $opacity );
-        } else if($type==='overlay'){
-            $this->_blendOverlay( $canvas, $gd1, $gd2, $loopStartY, $loopEndY, $loopStartX, $loopEndX, $offsetX, $offsetY, $opacity );
-        } else if($type==='screen'){
-            $this->_blendScreen( $canvas, $gd1, $gd2, $loopStartY, $loopEndY, $loopStartX, $loopEndX, $offsetX, $offsetY, $opacity );
+            imagecopy($canvas, $gd2, $loopStartX + $offsetX, $loopStartY + $offsetY, 0, 0, $image2->getWidth(), $image2->getHeight());
+        } elseif ($type === 'multiply') {
+            $this->_blendMultiply($canvas, $gd1, $gd2, $loopStartY, $loopEndY, $loopStartX, $loopEndX, $offsetX, $offsetY, $opacity);
+        } elseif ($type === 'overlay') {
+            $this->_blendOverlay($canvas, $gd1, $gd2, $loopStartY, $loopEndY, $loopStartX, $loopEndX, $offsetX, $offsetY, $opacity);
+        } elseif ($type === 'screen') {
+            $this->_blendScreen($canvas, $gd1, $gd2, $loopStartY, $loopEndY, $loopStartX, $loopEndX, $offsetX, $offsetY, $opacity);
         } else {
             throw new \Exception(sprintf('Invalid blend type "%s".', $type));
         }
 
-        imagedestroy( $gd1 ); // Free resource
+        imagedestroy($gd1); // Free resource
 
         $image1 = new Image(
             $canvas,
@@ -151,23 +149,22 @@ final class Editor implements EditorInterface
      */
     public function compare($image1, $image2)
     {
-
         if (is_string($image1)) { // If string passed, turn it into a Image object
             $image1 = Image::createFromFile($image1);
-            $this->flatten( $image1 );
+            $this->flatten($image1);
         }
 
         if (is_string($image2)) { // If string passed, turn it into a Image object
             $image2 = Image::createFromFile($image2);
-            $this->flatten( $image2 );
+            $this->flatten($image2);
         }
 
         $hash = new DifferenceHash();
 
-        $bin1     = $hash->hash($image1, $this);
-        $bin2     = $hash->hash($image2, $this);
-        $str1     = str_split($bin1);
-        $str2     = str_split($bin2);
+        $bin1 = $hash->hash($image1, $this);
+        $bin2 = $hash->hash($image2, $this);
+        $str1 = str_split($bin1);
+        $str2 = str_split($bin2);
         $distance = 0;
         foreach ($str1 as $i => $char) {
             if ($char !== $str2[$i]) {
@@ -176,7 +173,6 @@ final class Editor implements EditorInterface
         }
 
         return $distance;
-
     }
 
     /**
@@ -192,22 +188,20 @@ final class Editor implements EditorInterface
      * @return Editor
      * @throws \Exception
      */
-    public function crop( &$image, $cropWidth, $cropHeight, $position = 'center', $offsetX = 0, $offsetY = 0)
+    public function crop(&$image, $cropWidth, $cropHeight, $position = 'center', $offsetX = 0, $offsetY = 0)
     {
-
         if ($image->isAnimated()) { // Ignore animated GIF for now
             return $this;
         }
 
-        if ( 'smart' === $position ) { // Smart crop
-            list( $x, $y ) = $this->_smartCrop( $image, $cropWidth, $cropHeight );
+        if ('smart' === $position) { // Smart crop
+            list($x, $y) = $this->_smartCrop($image, $cropWidth, $cropHeight);
         } else {
             // Turn into an instance of Position
-            $position = new Position( $position, $offsetX, $offsetY );
+            $position = new Position($position, $offsetX, $offsetY);
 
             // Crop position as x,y coordinates
-            list( $x, $y ) = $position->getXY( $image->getWidth(), $image->getHeight(), $cropWidth, $cropHeight );
-
+            list($x, $y) = $position->getXY($image->getWidth(), $image->getHeight(), $cropWidth, $cropHeight);
         }
 
         // Create blank image
@@ -250,9 +244,8 @@ final class Editor implements EditorInterface
      *
      * @return $this
      */
-    public function draw( &$image, $drawingObject)
+    public function draw(&$image, $drawingObject)
     {
-
         if ($image->isAnimated()) { // Ignore animated GIF for now
             return $this;
         }
@@ -273,22 +266,19 @@ final class Editor implements EditorInterface
      */
     public function equal($image1, $image2)
     {
-
         if (is_string($image1)) { // If string passed, turn it into a Image object
             $image1 = Image::createFromFile($image1);
-            $this->flatten( $image1 );
+            $this->flatten($image1);
         }
 
         if (is_string($image2)) { // If string passed, turn it into a Image object
             $image2 = Image::createFromFile($image2);
-            $this->flatten( $image2 );
+            $this->flatten($image2);
         }
 
         // Check if image dimensions are equal
         if ($image1->getWidth() !== $image2->getWidth() or $image1->getHeight() !== $image2->getHeight()) {
-
             return false;
-
         } else {
 
             // Loop using image1
@@ -297,15 +287,15 @@ final class Editor implements EditorInterface
 
                     // Get image1 pixel
                     $rgb1 = imagecolorat($image1->getCore(), $x, $y);
-                    $r1   = ($rgb1 >> 16) & 0xFF;
-                    $g1   = ($rgb1 >> 8) & 0xFF;
-                    $b1   = $rgb1 & 0xFF;
+                    $r1 = ($rgb1 >> 16) & 0xFF;
+                    $g1 = ($rgb1 >> 8) & 0xFF;
+                    $b1 = $rgb1 & 0xFF;
 
                     // Get image2 pixel
                     $rgb2 = imagecolorat($image2->getCore(), $x, $y);
-                    $r2   = ($rgb2 >> 16) & 0xFF;
-                    $g2   = ($rgb2 >> 8) & 0xFF;
-                    $b2   = $rgb2 & 0xFF;
+                    $r2 = ($rgb2 >> 16) & 0xFF;
+                    $g2 = ($rgb2 >> 8) & 0xFF;
+                    $b2 = $rgb2 & 0xFF;
 
                     // Compare pixel value
                     if (
@@ -332,17 +322,21 @@ final class Editor implements EditorInterface
      *
      * @return Editor
      */
-    public function fill( &$image, $color, $x = 0, $y = 0)
+    public function fill(&$image, $color, $x = 0, $y = 0)
     {
-
         if ($image->isAnimated()) { // Ignore animated GIF for now
             return $this;
         }
 
         list($r, $g, $b, $alpha) = $color->getRgba();
 
-        $colorResource = imagecolorallocatealpha($image->getCore(), $r, $g, $b,
-            $this->gdAlpha($alpha));
+        $colorResource = imagecolorallocatealpha(
+            $image->getCore(),
+            $r,
+            $g,
+            $b,
+            $this->gdAlpha($alpha)
+        );
         imagefill($image->getCore(), $x, $y, $colorResource);
 
         return $this;
@@ -355,15 +349,15 @@ final class Editor implements EditorInterface
      *
      * @return Editor
      */
-    public function flatten(&$image){
-
-        if($image->isAnimated()) {
+    public function flatten(&$image)
+    {
+        if ($image->isAnimated()) {
             $old = $image->getCore();
             $gift = new GifHelper();
-            $hex  = $gift->encode($image->getBlocks());
-            $gd   = imagecreatefromstring(pack('H*', $hex)); // Recreate resource from blocks
+            $hex = $gift->encode($image->getBlocks());
+            $gd = imagecreatefromstring(pack('H*', $hex)); // Recreate resource from blocks
 
-            imagedestroy( $old ); // Free resource
+            imagedestroy($old); // Free resource
             $image = new Image(
                 $gd,
                 $image->getImageFile(),
@@ -386,8 +380,8 @@ final class Editor implements EditorInterface
      * @return Editor
      * @throws \Exception
      */
-    public function flip(&$image, $mode){
-
+    public function flip(&$image, $mode)
+    {
         $image = $this->_flip($image, $mode);
         return $this;
     }
@@ -399,7 +393,7 @@ final class Editor implements EditorInterface
      *
      * @return Editor
      */
-    public function free( &$image )
+    public function free(&$image)
     {
         imagedestroy($image->getCore());
         return $this;
@@ -414,7 +408,6 @@ final class Editor implements EditorInterface
      */
     public static function gdAlpha($alpha)
     {
-
         $scale = round(127 * $alpha);
 
         return $invert = 127 - $scale;
@@ -432,8 +425,7 @@ final class Editor implements EditorInterface
         }
 
         // On some setups GD library does not provide imagerotate()
-        if ( ! function_exists('imagerotate')) {
-
+        if (! function_exists('imagerotate')) {
             return false;
         }
 
@@ -450,9 +442,8 @@ final class Editor implements EditorInterface
      * @return Editor
      * @throws \Exception
      */
-    public function opacity( &$image, $opacity )
+    public function opacity(&$image, $opacity)
     {
-
         if ($image->isAnimated()) { // Ignore animated GIF for now
             return $this;
         }
@@ -463,11 +454,11 @@ final class Editor implements EditorInterface
 
         for ($y = 0; $y < $image->getHeight(); $y++) {
             for ($x = 0; $x < $image->getWidth(); $x++) {
-                $rgb   = imagecolorat($image->getCore(), $x, $y);
+                $rgb = imagecolorat($image->getCore(), $x, $y);
                 $alpha = ($rgb >> 24) & 0x7F; // 127 in hex. These are binary operations.
-                $r     = ($rgb >> 16) & 0xFF;
-                $g     = ($rgb >> 8) & 0xFF;
-                $b     = $rgb & 0xFF;
+                $r = ($rgb >> 16) & 0xFF;
+                $g = ($rgb >> 8) & 0xFF;
+                $b = $rgb & 0xFF;
 
                 // Reverse alpha values from 127-0 (transparent to opaque) to 0-127 for easy math
                 // Previously: 0 = opaque, 127 = transparent.
@@ -476,8 +467,12 @@ final class Editor implements EditorInterface
                 $reverse = round($reverse * $opacity);
 
                 if ($alpha < 127) { // Process non transparent pixels only
-                    imagesetpixel($image->getCore(), $x, $y,
-                        imagecolorallocatealpha($image->getCore(), $r, $g, $b, 127 - $reverse));
+                    imagesetpixel(
+                        $image->getCore(),
+                        $x,
+                        $y,
+                        imagecolorallocatealpha($image->getCore(), $r, $g, $b, 127 - $reverse)
+                    );
                 }
             }
         }
@@ -493,8 +488,9 @@ final class Editor implements EditorInterface
      *
      * @return Editor
      */
-    public function open(&$image, $imageFile){
-        $image = Image::createFromFile( $imageFile );
+    public function open(&$image, $imageFile)
+    {
+        $image = Image::createFromFile($imageFile);
         return $this;
     }
 
@@ -551,7 +547,6 @@ final class Editor implements EditorInterface
      */
     public function resizeExact(&$image, $newWidth, $newHeight)
     {
-
         $this->_resize($image, $newWidth, $newHeight);
 
         return $this;
@@ -567,13 +562,12 @@ final class Editor implements EditorInterface
      */
     public function resizeExactHeight(&$image, $newHeight)
     {
-
-        $width  = $image->getWidth();
+        $width = $image->getWidth();
         $height = $image->getHeight();
-        $ratio  = $width / $height;
+        $ratio = $width / $height;
 
         $resizeHeight = $newHeight;
-        $resizeWidth  = $newHeight * $ratio;
+        $resizeWidth = $newHeight * $ratio;
 
         $this->_resize($image, $resizeWidth, $resizeHeight);
 
@@ -590,12 +584,11 @@ final class Editor implements EditorInterface
      */
     public function resizeExactWidth(&$image, $newWidth)
     {
-
-        $width  = $image->getWidth();
+        $width = $image->getWidth();
         $height = $image->getHeight();
-        $ratio  = $width / $height;
+        $ratio = $width / $height;
 
-        $resizeWidth  = $newWidth;
+        $resizeWidth = $newWidth;
         $resizeHeight = round($newWidth / $ratio);
 
         $this->_resize($image, $resizeWidth, $resizeHeight);
@@ -614,17 +607,17 @@ final class Editor implements EditorInterface
      */
     public function resizeFill(&$image, $newWidth, $newHeight)
     {
-        $width  = $image->getWidth();
+        $width = $image->getWidth();
         $height = $image->getHeight();
-        $ratio  = $width / $height;
+        $ratio = $width / $height;
 
         // Base optimum size on new width
-        $optimumWidth  = $newWidth;
+        $optimumWidth = $newWidth;
         $optimumHeight = round($newWidth / $ratio);
 
         if (($optimumWidth < $newWidth) or ($optimumHeight < $newHeight)) { // Oops, where trying to fill and there are blank areas
             // So base optimum size on height instead
-            $optimumWidth  = $newHeight * $ratio;
+            $optimumWidth = $newHeight * $ratio;
             $optimumHeight = $newHeight;
         }
 
@@ -645,19 +638,18 @@ final class Editor implements EditorInterface
      */
     public function resizeFit(&$image, $newWidth, $newHeight)
     {
-
-        $width  = $image->getWidth();
+        $width = $image->getWidth();
         $height = $image->getHeight();
-        $ratio  = $width / $height;
+        $ratio = $width / $height;
 
         // Try basing it on width first
-        $resizeWidth  = $newWidth;
+        $resizeWidth = $newWidth;
         $resizeHeight = round($newWidth / $ratio);
 
         if (($resizeWidth > $newWidth) or ($resizeHeight > $newHeight)) { // Oops, either with or height does not fit
             // So base on height instead
             $resizeHeight = $newHeight;
-            $resizeWidth  = $newHeight * $ratio;
+            $resizeWidth = $newHeight * $ratio;
         }
 
         $this->_resize($image, $resizeWidth, $resizeHeight);
@@ -677,7 +669,6 @@ final class Editor implements EditorInterface
      */
     public function rotate(&$image, $angle, $color = null)
     {
-
         if ($image->isAnimated()) { // Ignore animated GIF for now
             return $this;
         }
@@ -688,12 +679,12 @@ final class Editor implements EditorInterface
         $old = $image->getCore();
         $new = imagerotate($old, $angle, imagecolorallocatealpha($old, $r, $g, $b, $alpha));
 
-        if(false === $new){
+        if (false === $new) {
             throw new \Exception('Error rotating image.');
         }
 
-        imagedestroy( $old ); // Free resource
-        $image = new Image( $new, $image->getImageFile(), $image->getWidth(), $image->getHeight(), $image->getType() );
+        imagedestroy($old); // Free resource
+        $image = new Image($new, $image->getImageFile(), $image->getWidth(), $image->getHeight(), $image->getType());
 
         return $this;
     }
@@ -713,9 +704,7 @@ final class Editor implements EditorInterface
      */
     public function save($image, $file, $type = null, $quality = null, $interlace = false, $permission = 0755)
     {
-
         if (null === $type) {
-
             $type = $this->_getImageTypeFromFileName($file); // Null given, guess type from file extension
             if (ImageType::UNKNOWN === $type) {
                 $type = $image->getType(); // 0 result, use original image type
@@ -725,14 +714,14 @@ final class Editor implements EditorInterface
         $targetDir = dirname($file); // $file's directory
         if (false === is_dir($targetDir)) { // Check if $file's directory exist
             // Create and set default perms to 0755
-            if ( ! mkdir($targetDir, $permission, true)) {
+            if (! mkdir($targetDir, $permission, true)) {
                 throw new \Exception(sprintf('Cannot create %s', $targetDir));
             }
         }
 
         switch (strtoupper($type)) {
-            case ImageType::GIF :
-                if($image->isAnimated()){
+            case ImageType::GIF:
+                if ($image->isAnimated()) {
                     $blocks = $image->getBlocks();
                     $gift = new GifHelper();
                     $hex = $gift->encode($blocks);
@@ -743,7 +732,7 @@ final class Editor implements EditorInterface
 
                 break;
 
-            case ImageType::PNG :
+            case ImageType::PNG:
                 // PNG is lossless and does not need compression. Although GD allow values 0-9 (0 = no compression), we leave it alone.
                 imagepng($image->getCore(), $file);
                 break;
@@ -776,7 +765,6 @@ final class Editor implements EditorInterface
      */
     public function text(&$image, $text, $size = 12, $x = 0, $y = 0, $color = null, $font = '', $angle = 0)
     {
-
         if ($image->isAnimated()) { // Ignore animated GIF for now
             return $this;
         }
@@ -784,13 +772,15 @@ final class Editor implements EditorInterface
         $y += $size;
 
         $color = ($color !== null) ? $color : new Color('#000000');
-        $font  = ($font !== '') ? $font : Grafika::fontsDir() . DIRECTORY_SEPARATOR . 'LiberationSans-Regular.ttf';
+        $font = ($font !== '') ? $font : Grafika::fontsDir() . DIRECTORY_SEPARATOR . 'LiberationSans-Regular.ttf';
 
         list($r, $g, $b, $alpha) = $color->getRgba();
 
         $colorResource = imagecolorallocatealpha(
             $image->getCore(),
-            $r, $g, $b,
+            $r,
+            $g,
+            $b,
             $this->gdAlpha($alpha)
         );
 
@@ -823,22 +813,22 @@ final class Editor implements EditorInterface
      *
      * @return $this
      */
-    private function _blendMultiply($canvas, $gd1, $gd2, $loopStartY, $loopEndY, $loopStartX, $loopEndX, $offsetX, $offsetY, $opacity){
+    private function _blendMultiply($canvas, $gd1, $gd2, $loopStartY, $loopEndY, $loopStartX, $loopEndX, $offsetX, $offsetY, $opacity)
+    {
+        for ($y = $loopStartY; $y < $loopEndY; $y++) {
+            for ($x = $loopStartX; $x < $loopEndX; $x++) {
+                $canvasX = $x + $offsetX;
+                $canvasY = $y + $offsetY;
+                $argb1 = imagecolorat($gd1, $canvasX, $canvasY);
+                $r1 = ($argb1 >> 16) & 0xFF;
+                $g1 = ($argb1 >> 8) & 0xFF;
+                $b1 = $argb1 & 0xFF;
 
-        for ( $y = $loopStartY; $y < $loopEndY; $y++ ) {
-            for ( $x = $loopStartX; $x < $loopEndX; $x++ ) {
-                $canvasX    = $x + $offsetX;
-                $canvasY    = $y + $offsetY;
-                $argb1 = imagecolorat( $gd1, $canvasX, $canvasY );
-                $r1    = ( $argb1 >> 16 ) & 0xFF;
-                $g1    = ( $argb1 >> 8 ) & 0xFF;
-                $b1    = $argb1 & 0xFF;
-
-                $argb2 = imagecolorat( $gd2, $x, $y );
+                $argb2 = imagecolorat($gd2, $x, $y);
                 $a2 = ($argb2 >> 24) & 0x7F; // 127 in hex. These are binary operations.
-                $r2    = ( $argb2 >> 16 ) & 0xFF;
-                $g2    = ( $argb2 >> 8 ) & 0xFF;
-                $b2    = $argb2 & 0xFF;
+                $r2 = ($argb2 >> 16) & 0xFF;
+                $g2 = ($argb2 >> 8) & 0xFF;
+                $b2 = $argb2 & 0xFF;
 
                 $r3 = round($r1 * $r2 / 255);
                 $g3 = round($g1 * $g2 / 255);
@@ -847,8 +837,8 @@ final class Editor implements EditorInterface
                 $reverse = 127 - $a2;
                 $reverse = round($reverse * $opacity);
 
-                $argb3 = imagecolorallocatealpha( $canvas, $r3, $g3, $b3, 127 - $reverse );
-                imagesetpixel( $canvas, $canvasX, $canvasY, $argb3 );
+                $argb3 = imagecolorallocatealpha($canvas, $r3, $g3, $b3, 127 - $reverse);
+                imagesetpixel($canvas, $canvasX, $canvasY, $argb3);
             }
         }
         return $canvas;
@@ -869,29 +859,29 @@ final class Editor implements EditorInterface
      *
      * @return $this
      */
-    private function _blendOverlay($canvas, $gd1, $gd2, $loopStartY, $loopEndY, $loopStartX, $loopEndX, $offsetX, $offsetY, $opacity){
+    private function _blendOverlay($canvas, $gd1, $gd2, $loopStartY, $loopEndY, $loopStartX, $loopEndX, $offsetX, $offsetY, $opacity)
+    {
+        for ($y = $loopStartY; $y < $loopEndY; $y++) {
+            for ($x = $loopStartX; $x < $loopEndX; $x++) {
+                $canvasX = $x + $offsetX;
+                $canvasY = $y + $offsetY;
+                $argb1 = imagecolorat($gd1, $canvasX, $canvasY);
+                $r1 = ($argb1 >> 16) & 0xFF;
+                $g1 = ($argb1 >> 8) & 0xFF;
+                $b1 = $argb1 & 0xFF;
 
-        for ( $y = $loopStartY; $y < $loopEndY; $y++ ) {
-            for ( $x = $loopStartX; $x < $loopEndX; $x++ ) {
-                $canvasX    = $x + $offsetX;
-                $canvasY    = $y + $offsetY;
-                $argb1 = imagecolorat( $gd1, $canvasX, $canvasY );
-                $r1    = ( $argb1 >> 16 ) & 0xFF;
-                $g1    = ( $argb1 >> 8 ) & 0xFF;
-                $b1    = $argb1 & 0xFF;
-
-                $argb2 = imagecolorat( $gd2, $x, $y );
+                $argb2 = imagecolorat($gd2, $x, $y);
                 $a2 = ($argb2 >> 24) & 0x7F; // 127 in hex. These are binary operations.
-                $r2    = ( $argb2 >> 16 ) & 0xFF;
-                $g2    = ( $argb2 >> 8 ) & 0xFF;
-                $b2    = $argb2 & 0xFF;
+                $r2 = ($argb2 >> 16) & 0xFF;
+                $g2 = ($argb2 >> 8) & 0xFF;
+                $b2 = $argb2 & 0xFF;
 
                 $r1 /= 255;
                 $r2 /= 255;
                 if ($r1 < 0.5) {
                     $r3 = 2 * ($r1 * $r2);
                 } else {
-                    $r3 = (1 - (2 *(1-$r1)) * (1-$r2));
+                    $r3 = (1 - (2 * (1 - $r1)) * (1 - $r2));
                 }
 
                 $g1 /= 255;
@@ -899,7 +889,7 @@ final class Editor implements EditorInterface
                 if ($g1 < 0.5) {
                     $g3 = 2 * ($g1 * $g2);
                 } else {
-                    $g3 = (1 - (2 *(1-$g1)) * (1-$g2));
+                    $g3 = (1 - (2 * (1 - $g1)) * (1 - $g2));
                 }
 
                 $b1 /= 255;
@@ -907,14 +897,14 @@ final class Editor implements EditorInterface
                 if ($b1 < 0.5) {
                     $b3 = 2 * ($b1 * $b2);
                 } else {
-                    $b3 = (1 - (2 *(1-$b1)) * (1-$b2));
+                    $b3 = (1 - (2 * (1 - $b1)) * (1 - $b2));
                 }
 
                 $reverse = 127 - $a2;
                 $reverse = round($reverse * $opacity);
 
-                $argb3 = imagecolorallocatealpha( $canvas, $r3*255, $g3*255, $b3*255, 127 - $reverse );
-                imagesetpixel( $canvas, $canvasX, $canvasY, $argb3 );
+                $argb3 = imagecolorallocatealpha($canvas, $r3 * 255, $g3 * 255, $b3 * 255, 127 - $reverse);
+                imagesetpixel($canvas, $canvasX, $canvasY, $argb3);
             }
         }
         return $canvas;
@@ -927,18 +917,19 @@ final class Editor implements EditorInterface
      *
      * @return float|int
      */
-    private function _entropy($hist){
+    private function _entropy($hist)
+    {
         $entropy = 0;
         $hist_size = array_sum($hist['r']) + array_sum($hist['g']) + array_sum($hist['b']);
-        foreach($hist['r'] as $p){
+        foreach ($hist['r'] as $p) {
             $p = $p / $hist_size;
             $entropy += $p * log($p, 2);
         }
-        foreach($hist['g'] as $p){
+        foreach ($hist['g'] as $p) {
             $p = $p / $hist_size;
             $entropy += $p * log($p, 2);
         }
-        foreach($hist['b'] as $p){
+        foreach ($hist['b'] as $p) {
             $p = $p / $hist_size;
             $entropy += $p * log($p, 2);
         }
@@ -960,32 +951,32 @@ final class Editor implements EditorInterface
      *
      * @return $this
      */
-    private function _blendScreen($canvas, $gd1, $gd2, $loopStartY, $loopEndY, $loopStartX, $loopEndX, $offsetX, $offsetY, $opacity){
+    private function _blendScreen($canvas, $gd1, $gd2, $loopStartY, $loopEndY, $loopStartX, $loopEndX, $offsetX, $offsetY, $opacity)
+    {
+        for ($y = $loopStartY; $y < $loopEndY; $y++) {
+            for ($x = $loopStartX; $x < $loopEndX; $x++) {
+                $canvasX = $x + $offsetX;
+                $canvasY = $y + $offsetY;
+                $argb1 = imagecolorat($gd1, $canvasX, $canvasY);
+                $r1 = ($argb1 >> 16) & 0xFF;
+                $g1 = ($argb1 >> 8) & 0xFF;
+                $b1 = $argb1 & 0xFF;
 
-        for ( $y = $loopStartY; $y < $loopEndY; $y++ ) {
-            for ( $x = $loopStartX; $x < $loopEndX; $x++ ) {
-                $canvasX    = $x + $offsetX;
-                $canvasY    = $y + $offsetY;
-                $argb1 = imagecolorat( $gd1, $canvasX, $canvasY );
-                $r1    = ( $argb1 >> 16 ) & 0xFF;
-                $g1    = ( $argb1 >> 8 ) & 0xFF;
-                $b1    = $argb1 & 0xFF;
-
-                $argb2 = imagecolorat( $gd2, $x, $y );
+                $argb2 = imagecolorat($gd2, $x, $y);
                 $a2 = ($argb2 >> 24) & 0x7F; // 127 in hex. These are binary operations.
-                $r2    = ( $argb2 >> 16 ) & 0xFF;
-                $g2    = ( $argb2 >> 8 ) & 0xFF;
-                $b2    = $argb2 & 0xFF;
+                $r2 = ($argb2 >> 16) & 0xFF;
+                $g2 = ($argb2 >> 8) & 0xFF;
+                $b2 = $argb2 & 0xFF;
 
-                $r3 = 255 - ( ( 255 - $r1 ) * ( 255 - $r2 ) ) / 255;
-                $g3 = 255 - ( ( 255 - $g1 ) * ( 255 - $g2 ) ) / 255;
-                $b3 = 255 - ( ( 255 - $b1 ) * ( 255 - $b2 ) ) / 255;
+                $r3 = 255 - ((255 - $r1) * (255 - $r2)) / 255;
+                $g3 = 255 - ((255 - $g1) * (255 - $g2)) / 255;
+                $b3 = 255 - ((255 - $b1) * (255 - $b2)) / 255;
 
                 $reverse = 127 - $a2;
                 $reverse = round($reverse * $opacity);
 
-                $argb3 = imagecolorallocatealpha( $canvas, $r3, $g3, $b3, 127 - $reverse );
-                imagesetpixel( $canvas, $canvasX, $canvasY, $argb3 );
+                $argb3 = imagecolorallocatealpha($canvas, $r3, $g3, $b3, 127 - $reverse);
+                imagesetpixel($canvas, $canvasX, $canvasY, $argb3);
             }
         }
         return $canvas;
@@ -1002,8 +993,8 @@ final class Editor implements EditorInterface
     private function _flip($image, $mode)
     {
         $old = $image->getCore();
-        $w   = $image->getWidth();
-        $h   = $image->getHeight();
+        $w = $image->getWidth();
+        $h = $image->getHeight();
         if ($mode === 'h') {
             $new = imagecreatetruecolor($w, $h);
             for ($x = 0; $x < $w; $x++) {
@@ -1019,7 +1010,7 @@ final class Editor implements EditorInterface
                 $image->getBlocks(),
                 $image->isAnimated()
             );
-        } else if ($mode === 'v') {
+        } elseif ($mode === 'v') {
             $new = imagecreatetruecolor($w, $h);
             for ($y = 0; $y < $h; $y++) {
                 imagecopy($new, $old, 0, $h - $y - 1, 0, $y, $w, 1);
@@ -1052,11 +1043,11 @@ final class Editor implements EditorInterface
 
         if ('jpg' === $ext or 'jpeg' === $ext) {
             return ImageType::JPEG;
-        } else if ('gif' === $ext) {
+        } elseif ('gif' === $ext) {
             return ImageType::GIF;
-        } else if ('png' === $ext) {
+        } elseif ('png' === $ext) {
             return ImageType::PNG;
-        } else if ('wbm' === $ext or 'wbmp' === $ext) {
+        } elseif ('wbm' === $ext or 'wbmp' === $ext) {
             return ImageType::WBMP;
         } else {
             return ImageType::UNKNOWN;
@@ -1127,7 +1118,6 @@ final class Editor implements EditorInterface
                 $newHeight,
                 $image->getType()
             );
-
         }
     }
 
@@ -1140,7 +1130,8 @@ final class Editor implements EditorInterface
      *
      * @return array
      */
-    private function _smartCrop($oldImage, $cropW, $cropH){
+    private function _smartCrop($oldImage, $cropW, $cropH)
+    {
         $image = clone $oldImage;
 
         $this->resizeFit($image, 30, 30);
@@ -1155,25 +1146,25 @@ final class Editor implements EditorInterface
 
         $step = 1;
 
-        for($y = 0; $y < $resizeH-$smallCropH; $y+=$step){
-            for($x = 0; $x < $resizeW-$smallCropW; $x+=$step){
-                $hist[$x.'-'.$y] = $this->_entropy($image->histogram(array(array($x, $y), array($smallCropW, $smallCropH))));
+        for ($y = 0; $y < $resizeH - $smallCropH; $y += $step) {
+            for ($x = 0; $x < $resizeW - $smallCropW; $x += $step) {
+                $hist[$x . '-' . $y] = $this->_entropy($image->histogram([[$x, $y], [$smallCropW, $smallCropH]]));
             }
-            if($resizeW-$smallCropW <= 0){
-                $hist['0-'.$y] = $this->_entropy($image->histogram(array(array(0, 0), array($smallCropW, $smallCropH))));
+            if ($resizeW - $smallCropW <= 0) {
+                $hist['0-' . $y] = $this->_entropy($image->histogram([[0, 0], [$smallCropW, $smallCropH]]));
             }
         }
-        if($resizeH-$smallCropH <= 0){
-            $hist['0-0'] = $this->_entropy($image->histogram(array(array(0, 0), array($smallCropW, $smallCropH))));
+        if ($resizeH - $smallCropH <= 0) {
+            $hist['0-0'] = $this->_entropy($image->histogram([[0, 0], [$smallCropW, $smallCropH]]));
         }
 
         asort($hist);
         end($hist);
         $pos = key($hist); // last key
         list($x, $y) = explode('-', $pos);
-        $x = round($x*($origW / $resizeW));
-        $y = round($y*($origH / $resizeH));
+        $x = round($x * ($origW / $resizeW));
+        $y = round($y * ($origH / $resizeH));
 
-        return array($x,$y);
+        return [$x,$y];
     }
 }

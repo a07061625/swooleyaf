@@ -17,7 +17,8 @@ use Tool\Tool;
  * 获取角色组
  * @package DingDing\Corp\Role
  */
-class RoleGroupGet extends TalkBaseCorp {
+class RoleGroupGet extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -26,29 +27,33 @@ class RoleGroupGet extends TalkBaseCorp {
      */
     private $group_id = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $groupId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setGroupId(int $groupId){
-        if($groupId > 0){
+    public function setGroupId(int $groupId)
+    {
+        if ($groupId > 0) {
             $this->reqData['group_id'] = $groupId;
         } else {
             throw new TalkException('角色组ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['group_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['group_id'])) {
             throw new TalkException('角色组ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

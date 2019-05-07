@@ -8,8 +8,8 @@ use Grafika\Imagick\Image;
 /**
  * Change the contrast of an image. Contrast is the difference in luminance or colour that makes an object distinguishable.
  */
-class Contrast implements FilterInterface{
-
+class Contrast implements FilterInterface
+{
     /**
      * @var int
      */
@@ -29,10 +29,9 @@ class Contrast implements FilterInterface{
      *
      * @return Image
      */
-    public function apply( $image ) {
-
+    public function apply($image)
+    {
         $image->getCore()->sigmoidalContrastImage($this->amount > 0, $this->amount / 4, 0);
         return $image;
     }
-
 }

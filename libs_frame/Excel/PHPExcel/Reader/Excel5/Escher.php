@@ -27,24 +27,24 @@
  */
 class PHPExcel_Reader_Excel5_Escher
 {
-    const DGGCONTAINER      = 0xF000;
-    const BSTORECONTAINER   = 0xF001;
-    const DGCONTAINER       = 0xF002;
-    const SPGRCONTAINER     = 0xF003;
-    const SPCONTAINER       = 0xF004;
-    const DGG               = 0xF006;
-    const BSE               = 0xF007;
-    const DG                = 0xF008;
-    const SPGR              = 0xF009;
-    const SP                = 0xF00A;
-    const OPT               = 0xF00B;
-    const CLIENTTEXTBOX     = 0xF00D;
-    const CLIENTANCHOR      = 0xF010;
-    const CLIENTDATA        = 0xF011;
-    const BLIPJPEG          = 0xF01D;
-    const BLIPPNG           = 0xF01E;
-    const SPLITMENUCOLORS   = 0xF11E;
-    const TERTIARYOPT       = 0xF122;
+    const DGGCONTAINER = 0xF000;
+    const BSTORECONTAINER = 0xF001;
+    const DGCONTAINER = 0xF002;
+    const SPGRCONTAINER = 0xF003;
+    const SPCONTAINER = 0xF004;
+    const DGG = 0xF006;
+    const BSE = 0xF007;
+    const DG = 0xF008;
+    const SPGR = 0xF009;
+    const SP = 0xF00A;
+    const OPT = 0xF00B;
+    const CLIENTTEXTBOX = 0xF00D;
+    const CLIENTANCHOR = 0xF010;
+    const CLIENTDATA = 0xF011;
+    const BLIPJPEG = 0xF01D;
+    const BLIPPNG = 0xF01E;
+    const SPLITMENUCOLORS = 0xF11E;
+    const TERTIARYOPT = 0xF122;
 
     /**
      * Escher stream data (binary)
@@ -202,7 +202,7 @@ class PHPExcel_Reader_Excel5_Escher
         // record is a container, read contents
         $dggContainer = new PHPExcel_Shared_Escher_DggContainer();
         $this->object->setDggContainer($dggContainer);
-        $reader = new PHPExcel_Reader_Excel5_Escher($dggContainer);
+        $reader = new self($dggContainer);
         $reader->load($recordData);
     }
 
@@ -232,7 +232,7 @@ class PHPExcel_Reader_Excel5_Escher
         // record is a container, read contents
         $bstoreContainer = new PHPExcel_Shared_Escher_DggContainer_BstoreContainer();
         $this->object->setBstoreContainer($bstoreContainer);
-        $reader = new PHPExcel_Reader_Excel5_Escher($bstoreContainer);
+        $reader = new self($bstoreContainer);
         $reader->load($recordData);
     }
 
@@ -298,7 +298,7 @@ class PHPExcel_Reader_Excel5_Escher
         $blipData = substr($recordData, 36 + $cbName);
 
         // record is a container, read contents
-        $reader = new PHPExcel_Reader_Excel5_Escher($BSE);
+        $reader = new self($BSE);
         $reader->load($blipData);
     }
 
@@ -325,7 +325,7 @@ class PHPExcel_Reader_Excel5_Escher
         $pos += 16;
 
         // offset: 16; size: 16; rgbUid2 (MD4 digest), only if $recInstance = 0x46B or 0x6E3
-        if (in_array($recInstance, array(0x046B, 0x06E3))) {
+        if (in_array($recInstance, [0x046B, 0x06E3], true)) {
             $rgbUid2 = substr($recordData, 16, 16);
             $pos += 16;
         }
@@ -446,7 +446,7 @@ class PHPExcel_Reader_Excel5_Escher
         // record is a container, read contents
         $dgContainer = new PHPExcel_Shared_Escher_DgContainer();
         $this->object->setDgContainer($dgContainer);
-        $reader = new PHPExcel_Reader_Excel5_Escher($dgContainer);
+        $reader = new self($dgContainer);
         $escher = $reader->load($recordData);
     }
 
@@ -486,7 +486,7 @@ class PHPExcel_Reader_Excel5_Escher
             $this->object->addChild($spgrContainer);
         }
 
-        $reader = new PHPExcel_Reader_Excel5_Escher($spgrContainer);
+        $reader = new self($spgrContainer);
         $escher = $reader->load($recordData);
     }
 
@@ -506,7 +506,7 @@ class PHPExcel_Reader_Excel5_Escher
         $this->pos += 8 + $length;
 
         // record is a container, read contents
-        $reader = new PHPExcel_Reader_Excel5_Escher($spContainer);
+        $reader = new self($spContainer);
         $escher = $reader->load($recordData);
     }
 

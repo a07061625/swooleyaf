@@ -55,6 +55,7 @@ class PHPExcel_Shared_Escher_DggContainer_BstoreContainer_BSE_Blip
      * Set the raw image data
      *
      * @param string
+     * @param mixed $data
      */
     public function setData($data)
     {

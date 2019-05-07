@@ -9,8 +9,10 @@ namespace Exception\MemCache;
 
 use Exception\BaseException;
 
-class MemCacheException extends BaseException {
-    public function __construct($message, $code) {
+class MemCacheException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = 'MEMCACHE异常';
     }

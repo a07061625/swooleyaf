@@ -9,8 +9,10 @@ namespace Exception\Solr;
 
 use Exception\BaseException;
 
-class SolrException extends BaseException {
-    public function __construct($message, $code) {
+class SolrException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = 'Solr异常';
     }

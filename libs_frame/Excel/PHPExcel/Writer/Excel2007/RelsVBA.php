@@ -58,6 +58,5 @@ class PHPExcel_Writer_Excel2007_RelsVBA extends PHPExcel_Writer_Excel2007_Writer
         $objWriter->endElement();
 
         return $objWriter->getData();
-
     }
 }

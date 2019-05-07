@@ -8,6 +8,11 @@ abstract class Warning
     protected $message;
     protected $rfcNumber;
 
+    public function __toString()
+    {
+        return $this->message() . ' rfc: ' . $this->rfcNumber . 'interal code: ' . static::CODE;
+    }
+
     public function message()
     {
         return $this->message;
@@ -21,10 +26,5 @@ abstract class Warning
     public function RFCNumber()
     {
         return $this->rfcNumber;
-    }
-
-    public function __toString()
-    {
-        return $this->message() . " rfc: " .  $this->rfcNumber . "interal code: " . static::CODE;
     }
 }

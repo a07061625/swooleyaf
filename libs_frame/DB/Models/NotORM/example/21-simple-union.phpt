@@ -2,11 +2,11 @@
 Simple UNION
 --FILE--
 <?php
-include_once dirname(__FILE__) . "/connect.inc.php";
+include_once dirname(__FILE__) . '/connect.inc.php';
 
-$applications = $software->application()->select("id");
-$tags = $software->tag()->select("id");
-foreach ($applications->union($tags)->order("id DESC") as $row) {
+$applications = $software->application()->select('id');
+$tags = $software->tag()->select('id');
+foreach ($applications->union($tags)->order('id DESC') as $row) {
     echo "$row[id]\n";
 }
 ?>

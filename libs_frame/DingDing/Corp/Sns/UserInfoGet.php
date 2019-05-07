@@ -17,7 +17,8 @@ use Exception\DingDing\TalkException;
  * 获取授权用户的个人信息
  * @package DingDing\Corp\Sns
  */
-class UserInfoGet extends TalkBaseCorp {
+class UserInfoGet extends TalkBaseCorp
+{
     /**
      * 用户openid
      * @var string
@@ -29,20 +30,23 @@ class UserInfoGet extends TalkBaseCorp {
      */
     private $persistent_code = '';
 
-    public function __construct(string $corpId){
+    public function __construct(string $corpId)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $openid
      * @throws \Exception\DingDing\TalkException
      */
-    public function setOpenid(string $openid){
-        if(ctype_alnum($openid)){
+    public function setOpenid(string $openid)
+    {
+        if (ctype_alnum($openid)) {
             $this->openid = $openid;
         } else {
             throw new TalkException('用户openid不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -53,19 +57,21 @@ class UserInfoGet extends TalkBaseCorp {
      * @param string $persistentCode
      * @throws \Exception\DingDing\TalkException
      */
-    public function setPersistentCode(string $persistentCode){
-        if(ctype_alnum($persistentCode)){
+    public function setPersistentCode(string $persistentCode)
+    {
+        if (ctype_alnum($persistentCode)) {
             $this->persistent_code = $persistentCode;
         } else {
             throw new TalkException('持久授权码不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(strlen($this->openid) == 0){
+    public function getDetail() : array
+    {
+        if (strlen($this->openid) == 0) {
             throw new TalkException('用户openid不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(strlen($this->persistent_code) == 0){
+        if (strlen($this->persistent_code) == 0) {
             throw new TalkException('持久授权码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

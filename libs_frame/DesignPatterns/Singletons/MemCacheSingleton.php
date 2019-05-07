@@ -13,7 +13,8 @@ use Log\Log;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
-class MemCacheSingleton {
+class MemCacheSingleton
+{
     use SingletonTrait;
 
     /**
@@ -25,18 +26,61 @@ class MemCacheSingleton {
      */
     private $connTime = 0;
 
-    private function __construct(){
+    private function __construct()
+    {
         $this->init();
     }
 
-    public function __destruct(){
-        if(!is_null($this->conn)){
+    public function __destruct()
+    {
+        if (!is_null($this->conn)) {
             $this->conn->quit();
         }
         self::$instance = null;
     }
 
-    private function init() {
+    /**
+     * @return \DesignPatterns\Singletons\MemCacheSingleton
+     */
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
+    }
+
+    /**
+     * @return \Memcached
+     */
+    public function getConn()
+    {
+        return $this->conn;
+    }
+
+    /**
+     * 关闭连接
+     */
+    public function close()
+    {
+        $this->conn->quit();
+        self::$instance = null;
+    }
+
+    public function reConnect()
+    {
+        $nowTime = time();
+        if (is_null($this->conn)) {
+            $this->init();
+        } elseif ($nowTime - $this->connTime >= 15) {
+            $this->conn->quit();
+            $this->init();
+        }
+    }
+
+    private function init()
+    {
         $this->conn = null;
         $configs = Tool::getConfig('memcache.' . SY_ENV . SY_PROJECT);
 
@@ -44,14 +88,14 @@ class MemCacheSingleton {
         $existServers = (array)Tool::getArrayVal($configs, 'servers', []);
         foreach ($existServers as $eServer) {
             $serverHost = trim(Tool::getArrayVal($eServer, 'host', ''));
-            if(strlen($serverHost) > 0){
+            if (strlen($serverHost) > 0) {
                 $serverPort = (int)Tool::getArrayVal($eServer, 'port', 11211);
                 $serverWeight = (int)Tool::getArrayVal($eServer, 'weight', 0);
                 $servers[] = [$serverHost, $serverPort, $serverWeight];
             }
         }
         unset($existServers);
-        if(empty($servers)){
+        if (empty($servers)) {
             throw new MemCacheException('Memcache服务端不能为空', ErrorCode::MEMCACHE_CONNECTION_ERROR);
         }
 
@@ -85,42 +129,6 @@ class MemCacheSingleton {
         } catch (\Exception $e) {
             Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
             throw new MemCacheException('Memcache初始化出错', ErrorCode::MEMCACHE_CONNECTION_ERROR);
-        }
-    }
-
-    /**
-     * @return \DesignPatterns\Singletons\MemCacheSingleton
-     */
-    public static function getInstance() {
-        if (is_null(self::$instance)) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
-
-    /**
-     * @return \Memcached
-     */
-    public function getConn() {
-        return $this->conn;
-    }
-
-    /**
-     * 关闭连接
-     */
-    public function close() {
-        $this->conn->quit();
-        self::$instance = null;
-    }
-
-    public function reConnect() {
-        $nowTime = time();
-        if (is_null($this->conn)) {
-            $this->init();
-        } else if ($nowTime - $this->connTime >= 15) {
-            $this->conn->quit();
-            $this->init();
         }
     }
 }

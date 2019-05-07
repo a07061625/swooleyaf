@@ -9,8 +9,10 @@ namespace DB\Containers;
 
 use DB\Models\MysqlModel;
 
-class MysqlContainer extends BaseContainer {
-    public function __construct(string $dbName,string $tableName,string $primaryKey='id') {
+class MysqlContainer extends BaseContainer
+{
+    public function __construct(string $dbName, string $tableName, string $primaryKey = 'id')
+    {
         parent::__construct();
         $this->_model = new MysqlModel($dbName, $tableName, $primaryKey);
     }
@@ -18,7 +20,8 @@ class MysqlContainer extends BaseContainer {
     /**
      * @return \DB\Models\MysqlModel
      */
-    public function getModel() {
+    public function getModel()
+    {
         return $this->_model;
     }
 
@@ -29,9 +32,10 @@ class MysqlContainer extends BaseContainer {
      * @param object|array $obj 观察者对象
      * @return mixed
      */
-    public function update($result,array $data, $obj){
+    public function update($result, array $data, $obj)
+    {
         $affectNum = $this->_model->update($result, $data);
-        if($affectNum !== false){
+        if ($affectNum !== false) {
             $this->setSubjectObj($obj);
             $this->notify();
         }
@@ -45,9 +49,10 @@ class MysqlContainer extends BaseContainer {
      * @param object|array $obj 观察者对象
      * @return int|string
      */
-    public function insert(array $data, $obj){
+    public function insert(array $data, $obj)
+    {
         $affectNum = $this->_model->insert($data);
-        if($affectNum !== false){
+        if ($affectNum !== false) {
             $this->setSubjectObj($obj);
             $this->notify();
         }
@@ -64,7 +69,8 @@ class MysqlContainer extends BaseContainer {
      * @param object|array $obj 观察者对象
      * @return mixed
      */
-    public function insertOrUpdate($result,array $unique,array $insert,array $update, $obj) {
+    public function insertOrUpdate($result, array $unique, array $insert, array $update, $obj)
+    {
         $affectNum = $this->_model->insertOrUpdate($result, $unique, $insert, $update);
         if ($affectNum !== false) {
             $this->setSubjectObj($obj);
@@ -80,7 +86,8 @@ class MysqlContainer extends BaseContainer {
      * @param object|array $obj 观察者对象
      * @return mixed
      */
-    public function delete($result, $obj) {
+    public function delete($result, $obj)
+    {
         $affectNum = $this->_model->delete($result);
         if ($affectNum !== false) {
             $this->setSubjectObj($obj);

@@ -51,17 +51,17 @@ class StaticReflectionProperty extends ReflectionProperty
     /**
      * {@inheritDoc}
      */
-    public function getName()
+    public function __toString()
     {
-        return $this->propertyName;
+        throw new ReflectionException('Method not implemented');
     }
 
     /**
-     * @return StaticReflectionParser
+     * {@inheritDoc}
      */
-    protected function getStaticReflectionParser()
+    public function getName()
     {
-        return $this->staticReflectionParser->getStaticReflectionParserForDeclaringClass('property', $this->propertyName);
+        return $this->propertyName;
     }
 
     /**
@@ -169,10 +169,10 @@ class StaticReflectionProperty extends ReflectionProperty
     }
 
     /**
-     * {@inheritDoc}
+     * @return StaticReflectionParser
      */
-    public function __toString()
+    protected function getStaticReflectionParser()
     {
-        throw new ReflectionException('Method not implemented');
+        return $this->staticReflectionParser->getStaticReflectionParserForDeclaringClass('property', $this->propertyName);
     }
 }

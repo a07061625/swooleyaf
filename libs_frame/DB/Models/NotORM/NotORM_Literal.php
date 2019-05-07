@@ -4,19 +4,21 @@
  */
 namespace DB\Models\NotORM;
 
-class NotORM_Literal {
-    protected $value = '';
-
+class NotORM_Literal
+{
     /** @var array */
-    public $parameters = array();
+    public $parameters = [];
+    protected $value = '';
 
     /**
      * Create literal value
      * @param string
      * @param mixed parameter
      * @param mixed ...
+     * @param mixed $value
      */
-    function __construct($value) {
+    public function __construct($value)
+    {
         $this->value = $value;
         $this->parameters = func_get_args();
         array_shift($this->parameters);
@@ -26,7 +28,8 @@ class NotORM_Literal {
      * Get literal value
      * @return string
      */
-    function __toString() {
+    public function __toString()
+    {
         return $this->value;
     }
 }

@@ -9,8 +9,10 @@ namespace Exception\Mail;
 
 use Exception\BaseException;
 
-class MailException extends BaseException {
-    public function __construct($message, $code) {
+class MailException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = '邮件异常';
     }

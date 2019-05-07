@@ -44,29 +44,33 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
     private $cacheTime = 600;
 
     /**
-     * Store cell data in cache for the current cell object if it's "dirty",
-     *     and the 'nullify' the current cell object
+     * Initialise this new cell collection
      *
-     * @access  private
-     * @return  void
-     * @throws  PHPExcel_Exception
+     * @param  PHPExcel_Worksheet  $parent     The worksheet for this cell collection
+     * @param  array of mixed      $arguments  Additional initialisation arguments
      */
-    protected function storeData()
+    public function __construct(PHPExcel_Worksheet $parent, $arguments)
     {
-        if ($this->currentCellIsDirty && !empty($this->currentObjectID)) {
-            $this->currentObject->detach();
+        $cacheTime = (isset($arguments['cacheTime'])) ? $arguments['cacheTime'] : 600;
 
-            if (!apc_store(
-                $this->cachePrefix . $this->currentObjectID . '.cache',
-                serialize($this->currentObject),
-                $this->cacheTime
-            )) {
-                $this->__destruct();
-                throw new PHPExcel_Exception('Failed to store cell ' . $this->currentObjectID . ' in APC');
-            }
-            $this->currentCellIsDirty = false;
+        if ($this->cachePrefix === null) {
+            $baseUnique = $this->getUniqueID();
+            $this->cachePrefix = substr(md5($baseUnique), 0, 8) . '.';
+            $this->cacheTime = $cacheTime;
+
+            parent::__construct($parent);
         }
-        $this->currentObjectID = $this->currentObject = null;
+    }
+
+    /**
+     * Destroy this cell collection
+     */
+    public function __destruct()
+    {
+        $cacheList = $this->getCellList();
+        foreach ($cacheList as $cellID) {
+            apc_delete($this->cachePrefix . $cellID . '.cache');
+        }
     }
 
     /**
@@ -108,11 +112,11 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
                 return true;
             }
             //    Check if the requested entry still exists in apc
-            $success = apc_fetch($this->cachePrefix.$pCoord.'.cache');
+            $success = apc_fetch($this->cachePrefix . $pCoord . '.cache');
             if ($success === false) {
                 //    Entry no longer exists in APC, so clear it from the cache array
                 parent::deleteCacheData($pCoord);
-                throw new PHPExcel_Exception('Cell entry '.$pCoord.' no longer exists in APC cache');
+                throw new PHPExcel_Exception('Cell entry ' . $pCoord . ' no longer exists in APC cache');
             }
             return true;
         }
@@ -140,11 +144,11 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
             if ($obj === false) {
                 //    Entry no longer exists in APC, so clear it from the cache array
                 parent::deleteCacheData($pCoord);
-                throw new PHPExcel_Exception('Cell entry '.$pCoord.' no longer exists in APC cache');
+                throw new PHPExcel_Exception('Cell entry ' . $pCoord . ' no longer exists in APC cache');
             }
         } else {
             //    Return null if requested entry doesn't exist in cache
-            return null;
+            return;
         }
 
         //    Set current entry to the requested entry
@@ -181,7 +185,7 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
     public function deleteCacheData($pCoord)
     {
         //    Delete the entry from APC
-        apc_delete($this->cachePrefix.$pCoord.'.cache');
+        apc_delete($this->cachePrefix . $pCoord . '.cache');
 
         //    Delete the entry from our cell address array
         parent::deleteCacheData($pCoord);
@@ -234,40 +238,10 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
         //    Flush the APC cache
         $this->__destruct();
 
-        $this->cellCache = array();
+        $this->cellCache = [];
 
         //    detach ourself from the worksheet, so that it can then delete this object successfully
         $this->parent = null;
-    }
-
-    /**
-     * Initialise this new cell collection
-     *
-     * @param  PHPExcel_Worksheet  $parent     The worksheet for this cell collection
-     * @param  array of mixed      $arguments  Additional initialisation arguments
-     */
-    public function __construct(PHPExcel_Worksheet $parent, $arguments)
-    {
-        $cacheTime = (isset($arguments['cacheTime'])) ? $arguments['cacheTime'] : 600;
-
-        if ($this->cachePrefix === null) {
-            $baseUnique = $this->getUniqueID();
-            $this->cachePrefix = substr(md5($baseUnique), 0, 8) . '.';
-            $this->cacheTime = $cacheTime;
-
-            parent::__construct($parent);
-        }
-    }
-
-    /**
-     * Destroy this cell collection
-     */
-    public function __destruct()
-    {
-        $cacheList = $this->getCellList();
-        foreach ($cacheList as $cellID) {
-            apc_delete($this->cachePrefix . $cellID . '.cache');
-        }
     }
 
     /**
@@ -286,5 +260,31 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
         }
 
         return true;
+    }
+
+    /**
+     * Store cell data in cache for the current cell object if it's "dirty",
+     *     and the 'nullify' the current cell object
+     *
+     * @access  private
+     * @return  void
+     * @throws  PHPExcel_Exception
+     */
+    protected function storeData()
+    {
+        if ($this->currentCellIsDirty && !empty($this->currentObjectID)) {
+            $this->currentObject->detach();
+
+            if (!apc_store(
+                $this->cachePrefix . $this->currentObjectID . '.cache',
+                serialize($this->currentObject),
+                $this->cacheTime
+            )) {
+                $this->__destruct();
+                throw new PHPExcel_Exception('Failed to store cell ' . $this->currentObjectID . ' in APC');
+            }
+            $this->currentCellIsDirty = false;
+        }
+        $this->currentObjectID = $this->currentObject = null;
     }
 }

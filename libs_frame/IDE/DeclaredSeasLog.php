@@ -7,15 +7,19 @@
  */
 namespace IDE;
 
-class DeclaredSeasLog extends BaseModuleGenerator {
-    public function __construct() {
+class DeclaredSeasLog extends BaseModuleGenerator
+{
+    public function __construct()
+    {
         parent::__construct('SeasLog');
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    protected function getModuleClasses() : array {
+    protected function getModuleClasses() : array
+    {
         $classes = array_merge(get_declared_classes(), get_declared_interfaces());
         foreach ($classes as $key => $value) {
             if (strncasecmp($value, 'SeasLog', 7) != 0) {

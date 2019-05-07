@@ -12,14 +12,16 @@ use DesignPatterns\Singletons\RedisSingleton;
 use DesignPatterns\Singletons\YacSingleton;
 use Traits\SimpleTrait;
 
-class CacheSimpleFactory {
+class CacheSimpleFactory
+{
     use SimpleTrait;
 
     /**
      * 获取redis实例
      * @return \Redis
      */
-    public static function getRedisInstance() {
+    public static function getRedisInstance()
+    {
         return RedisSingleton::getInstance()->getConn();
     }
 
@@ -27,7 +29,8 @@ class CacheSimpleFactory {
      * 获取yac实例
      * @return \Yac
      */
-    public static function getYacInstance() {
+    public static function getYacInstance()
+    {
         return YacSingleton::getInstance();
     }
 
@@ -35,7 +38,8 @@ class CacheSimpleFactory {
      * 获取memcache实例
      * @return \Memcached
      */
-    public static function getMemCacheInstance(){
+    public static function getMemCacheInstance()
+    {
         return MemCacheSingleton::getInstance()->getConn();
     }
 }

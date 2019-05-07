@@ -12,7 +12,6 @@ use Grafika\ImageInterface;
  */
 class CubicBezier extends Base implements DrawingObjectInterface
 {
-
     /**
      * @param ImageInterface $image
      * @return Image
@@ -58,7 +57,7 @@ class CubicBezier extends Base implements DrawingObjectInterface
         $fy3 = 0;
         $t1 = $xb * $xb - $xa * $xc;
         $t2 = 0;
-        $t = array();
+        $t = [];
         /* sub-divide curve at gradient sign changes */
         if ($xa == 0) { /* horizontal */
             if (abs($xc) < 2 * abs($xb)) {

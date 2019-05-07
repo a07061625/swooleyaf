@@ -7,33 +7,38 @@
  */
 namespace DB\Models;
 
-abstract class BaseModel {
+abstract class BaseModel
+{
     protected $_dbConn = null;
     protected $_dbName = '';
     protected $_tableName = '';
     protected $_primaryKey = '';
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
     /**
      * @return string
      */
-    public function getPrimaryKey() : string {
+    public function getPrimaryKey() : string
+    {
         return $this->_primaryKey;
     }
 
     /**
      * @return string
      */
-    public function getDbName() : string {
+    public function getDbName() : string
+    {
         return $this->_dbName;
     }
 
     /**
      * @return string
      */
-    public function getTableName() : string {
+    public function getTableName() : string
+    {
         return $this->_tableName;
     }
 

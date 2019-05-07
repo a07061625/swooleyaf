@@ -28,14 +28,14 @@
 class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
 {
     /* Shadow alignment */
-    const SHADOW_BOTTOM       = 'b';
-    const SHADOW_BOTTOM_LEFT  = 'bl';
+    const SHADOW_BOTTOM = 'b';
+    const SHADOW_BOTTOM_LEFT = 'bl';
     const SHADOW_BOTTOM_RIGHT = 'br';
-    const SHADOW_CENTER       = 'ctr';
-    const SHADOW_LEFT         = 'l';
-    const SHADOW_TOP          = 't';
-    const SHADOW_TOP_LEFT     = 'tl';
-    const SHADOW_TOP_RIGHT    = 'tr';
+    const SHADOW_CENTER = 'ctr';
+    const SHADOW_LEFT = 'l';
+    const SHADOW_TOP = 't';
+    const SHADOW_TOP_LEFT = 'tl';
+    const SHADOW_TOP_RIGHT = 'tr';
 
     /**
      * Visible
@@ -96,13 +96,28 @@ class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
     public function __construct()
     {
         // Initialise values
-        $this->visible     = false;
-        $this->blurRadius  = 6;
-        $this->distance    = 2;
-        $this->direction   = 0;
-        $this->alignment   = PHPExcel_Worksheet_Drawing_Shadow::SHADOW_BOTTOM_RIGHT;
-        $this->color       = new PHPExcel_Style_Color(PHPExcel_Style_Color::COLOR_BLACK);
-        $this->alpha       = 50;
+        $this->visible = false;
+        $this->blurRadius = 6;
+        $this->distance = 2;
+        $this->direction = 0;
+        $this->alignment = self::SHADOW_BOTTOM_RIGHT;
+        $this->color = new PHPExcel_Style_Color(PHPExcel_Style_Color::COLOR_BLACK);
+        $this->alpha = 50;
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if (is_object($value)) {
+                $this->$key = clone $value;
+            } else {
+                $this->$key = $value;
+            }
+        }
     }
 
     /**
@@ -193,11 +208,11 @@ class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
         return $this;
     }
 
-   /**
-     * Get Shadow alignment
-     *
-     * @return int
-     */
+    /**
+      * Get Shadow alignment
+      *
+      * @return int
+      */
     public function getAlignment()
     {
         return $this->alignment;
@@ -215,11 +230,11 @@ class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
         return $this;
     }
 
-   /**
-     * Get Color
-     *
-     * @return PHPExcel_Style_Color
-     */
+    /**
+      * Get Color
+      *
+      * @return PHPExcel_Style_Color
+      */
     public function getColor()
     {
         return $this->color;
@@ -234,15 +249,15 @@ class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
      */
     public function setColor(PHPExcel_Style_Color $pValue = null)
     {
-           $this->color = $pValue;
-           return $this;
+        $this->color = $pValue;
+        return $this;
     }
 
-   /**
-     * Get Alpha
-     *
-     * @return int
-     */
+    /**
+      * Get Alpha
+      *
+      * @return int
+      */
     public function getAlpha()
     {
         return $this->alpha;
@@ -277,20 +292,5 @@ class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
             $this->alpha .
             __CLASS__
         );
-    }
-
-    /**
-     * Implement PHP __clone to create a deep clone, not just a shallow copy.
-     */
-    public function __clone()
-    {
-        $vars = get_object_vars($this);
-        foreach ($vars as $key => $value) {
-            if (is_object($value)) {
-                $this->$key = clone $value;
-            } else {
-                $this->$key = $value;
-            }
-        }
     }
 }

@@ -9,8 +9,10 @@ namespace Exception\Swoole;
 
 use Exception\BaseException;
 
-class ServerException extends BaseException {
-    public function __construct($message, $code) {
+class ServerException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = 'SWOOLE服务异常';
     }

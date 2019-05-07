@@ -12,7 +12,8 @@ use DingDing\TalkBaseCorpProvider;
 use DingDing\TalkUtilProvider;
 use Exception\DingDing\TalkException;
 
-class AccessCan extends TalkBaseCorpProvider {
+class AccessCan extends TalkBaseCorpProvider
+{
     /**
      * 企业ID
      * @var string
@@ -29,19 +30,22 @@ class AccessCan extends TalkBaseCorpProvider {
      */
     private $userId = '';
 
-    public function __construct(string $corpId){
+    public function __construct(string $corpId)
+    {
         parent::__construct();
         $this->corpId = $corpId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $appId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setAppId(string $appId){
+    public function setAppId(string $appId)
+    {
         if (ctype_alnum($appId)) {
             $this->reqData['appId'] = $appId;
         } else {
@@ -53,7 +57,8 @@ class AccessCan extends TalkBaseCorpProvider {
      * @param string $userId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserId(string $userId){
+    public function setUserId(string $userId)
+    {
         if (ctype_alnum($userId)) {
             $this->reqData['userId'] = $userId;
         } else {
@@ -61,11 +66,12 @@ class AccessCan extends TalkBaseCorpProvider {
         }
     }
 
-    public function getDetail() : array{
-        if(!isset($this->reqData['appId'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['appId'])) {
             throw new TalkException('应用ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['userId'])){
+        if (!isset($this->reqData['userId'])) {
             throw new TalkException('用户ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

@@ -17,15 +17,14 @@ date_default_timezone_set('Europe/London');
 
 <?php
 
-$exampleTypeList = glob('./*',GLOB_ONLYDIR);
+$exampleTypeList = glob('./*', GLOB_ONLYDIR);
 
-foreach($exampleTypeList as $exampleType) {
+foreach ($exampleTypeList as $exampleType) {
+    echo '<h1>PHPExcel ' . pathinfo($exampleType, PATHINFO_BASENAME) . ' Examples</h1>';
 
-    echo '<h1>PHPExcel ' . pathinfo($exampleType,PATHINFO_BASENAME) . ' Examples</h1>';
+    $exampleList = glob('./' . $exampleType . '/*.php');
 
-    $exampleList = glob('./'.$exampleType.'/*.php');
-
-    foreach($exampleList as $exampleFile) {
+    foreach ($exampleList as $exampleFile) {
         $fileData = file_get_contents($exampleFile);
 
         $h1Pattern = '#<h1>(.*?)</h1>#';
@@ -37,11 +36,10 @@ foreach($exampleTypeList as $exampleType) {
 
             echo '<a href="',$exampleFile,'">',$h1Text,'</a><br />';
             if (($h2Text > '') &&
-                (pathinfo($exampleType,PATHINFO_BASENAME) != 'Calculations')) {
+                (pathinfo($exampleType, PATHINFO_BASENAME) != 'Calculations')) {
                 echo $h2Text,'<br />';
             }
         }
-
     }
 }
 

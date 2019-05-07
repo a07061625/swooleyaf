@@ -27,19 +27,25 @@ class SplClassLoader
      * @param $namespace string 命名空间前缀（多个前缀以英文逗号分隔）
      * @param $local_library_path string 本地类库全路径
      */
-    public function __construct($namespace, $local_library_path){}
+    public function __construct($namespace, $local_library_path)
+    {
+    }
     /**
      * 将SplClassLoader注册到SPL __autoload函数栈中
      *
      * @return Boolean
      */
-    public function register(){}
+    public function register()
+    {
+    }
     /**
      * 将SplClassLoader从到SPL __autoload函数栈中移出
      *
      * @return Boolean
      */
-    public function unregister(){}
+    public function unregister()
+    {
+    }
     /**
      * 装载指定的类
      *
@@ -47,7 +53,9 @@ class SplClassLoader
      *
      * @return Boolean
      */
-    public function loadClass($class_name){}
+    public function loadClass($class_name)
+    {
+    }
     /**
      * 设置全局或者本地类库的路径
      *
@@ -56,7 +64,9 @@ class SplClassLoader
      *
      * @return SplClassLoader
      */
-    public function setLibraryPath($path, $global = false){}
+    public function setLibraryPath($path, $global = false)
+    {
+    }
     /**
      * 获取全局或者本地类库的路径
      *
@@ -64,7 +74,9 @@ class SplClassLoader
      *
      * @return SplClassLoader
      */
-    public function getLibraryPath($global = false){}
+    public function getLibraryPath($global = false)
+    {
+    }
     /**
      * 设置PHP文件扩展名（会覆盖ini中设置的splclassloader.ext值）
      *
@@ -72,13 +84,17 @@ class SplClassLoader
      *
      * @return SplClassLoader
      */
-    public function setFileExtension($ext){}
+    public function setFileExtension($ext)
+    {
+    }
     /**
      * 获取当前自动加载器实例的PHP文件扩展名
      *
      * @return string
      */
-    public function getFileExtension(){}
+    public function getFileExtension()
+    {
+    }
     /**
      * 获取指定类名的文件全路径
      *
@@ -86,13 +102,17 @@ class SplClassLoader
      *
      * @return string
      */
-    public function getPath($class_name){}
+    public function getPath($class_name)
+    {
+    }
     /**
      * 获取当前自动加载器实例的本地类的命名空间前缀
      *
      * @return string
      */
-    public function getLocalNamespace(){}
+    public function getLocalNamespace()
+    {
+    }
     /**
      * 注册本地命名空间前缀
      *
@@ -100,7 +120,9 @@ class SplClassLoader
      *
      * @return SplClassLoader
      */
-    public function registerLocalNamespace($namespace_prefix){}
+    public function registerLocalNamespace($namespace_prefix)
+    {
+    }
     /**
      * 判断前缀是否为已注册的本地命名空间前缀
      *
@@ -108,11 +130,15 @@ class SplClassLoader
      *
      * @return Boolean
      */
-    public function isLocalNamespace($namespace){}
+    public function isLocalNamespace($namespace)
+    {
+    }
     /**
      * 清楚已注册的本地命名空间前缀
      *
      * @return Boolean
      */
-    public function clearLocalNamespace(){}
+    public function clearLocalNamespace()
+    {
+    }
 }

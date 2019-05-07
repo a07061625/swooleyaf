@@ -24,13 +24,23 @@ define('XHPROF_FLAGS_CPU', 2);
 define('XHPROF_FLAGS_MEMORY', 4);
 define('XHPROF_SAMPLING_INTERVAL', 100000);
 define('XHPROF_MAX_IGNORED_FUNCTIONS', 256);
-define('XHPROF_IGNORED_FUNCTION_FILTER_SIZE', (XHPROF_MAX_IGNORED_FUNCTIONS + 7)/8);
+define('XHPROF_IGNORED_FUNCTION_FILTER_SIZE', (XHPROF_MAX_IGNORED_FUNCTIONS + 7) / 8);
 define('XHPROF_VERSION', '0.9.2');
 define('ROOT_SYMBOL', 'main()');
 define('SCRATCH_BUF_LEN', 512);
 define('XHPROF_MODE_HIERARCHICAL', 1);
 define('XHPROF_MODE_SAMPLED', 620002);
-function xhprof_disable(){return array();}
-function xhprof_enable($flags = 0, $options = array()){}
-function xhprof_sample_disable(){return array();}
-function xhprof_sample_enable(){}
+function xhprof_disable()
+{
+    return [];
+}
+function xhprof_enable($flags = 0, $options = [])
+{
+}
+function xhprof_sample_disable()
+{
+    return [];
+}
+function xhprof_sample_enable()
+{
+}

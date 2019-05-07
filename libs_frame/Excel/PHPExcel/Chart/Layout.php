@@ -25,7 +25,6 @@
  * @version        ##VERSION##, ##DATE##
  */
 
-
 /**
  * PHPExcel_Chart_Layout
  *
@@ -139,11 +138,11 @@ class PHPExcel_Chart_Layout
      */
     private $showLeaderLines;
 
-
     /**
      * Create a new PHPExcel_Chart_Layout
+     * @param mixed $layout
      */
-    public function __construct($layout = array())
+    public function __construct($layout = [])
     {
         if (isset($layout['layoutTarget'])) {
             $this->layoutTarget = $layout['layoutTarget'];
@@ -321,7 +320,6 @@ class PHPExcel_Chart_Layout
         $this->height = $value;
         return $this;
     }
-
 
     /**
      * Get show legend key

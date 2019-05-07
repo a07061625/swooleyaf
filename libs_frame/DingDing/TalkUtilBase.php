@@ -12,7 +12,8 @@ use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use Exception\DingDing\TalkException;
 use Tool\Tool;
 
-abstract class TalkUtilBase {
+abstract class TalkUtilBase
+{
     const OPTION_TYPE_CROP = 'crop'; //操作类型-企业
     const OPTION_TYPE_PROVIDER = 'provider'; //操作类型-服务商
 
@@ -22,16 +23,17 @@ abstract class TalkUtilBase {
      * @return mixed
      * @throws \Exception\DingDing\TalkException
      */
-    public static function sendPostReq(array $curlConfig) {
+    public static function sendPostReq(array $curlConfig)
+    {
         $curlConfig[CURLOPT_POST] = true;
         $curlConfig[CURLOPT_RETURNTRANSFER] = true;
-        if(!isset($curlConfig[CURLOPT_TIMEOUT_MS])){
+        if (!isset($curlConfig[CURLOPT_TIMEOUT_MS])) {
             $curlConfig[CURLOPT_TIMEOUT_MS] = 3000;
         }
-        if(!isset($curlConfig[CURLOPT_HEADER])){
+        if (!isset($curlConfig[CURLOPT_HEADER])) {
             $curlConfig[CURLOPT_HEADER] = false;
         }
-        if(!isset($curlConfig[CURLOPT_HTTPHEADER])){
+        if (!isset($curlConfig[CURLOPT_HTTPHEADER])) {
             $curlConfig[CURLOPT_HTTPHEADER] = [
                 'Content-Type: application/json; charset=utf-8',
             ];
@@ -50,12 +52,13 @@ abstract class TalkUtilBase {
      * @return mixed
      * @throws \Exception\DingDing\TalkException
      */
-    public static function sendGetReq(array $curlConfig) {
+    public static function sendGetReq(array $curlConfig)
+    {
         $curlConfig[CURLOPT_SSL_VERIFYPEER] = false;
         $curlConfig[CURLOPT_SSL_VERIFYHOST] = false;
         $curlConfig[CURLOPT_HEADER] = false;
         $curlConfig[CURLOPT_RETURNTRANSFER] = true;
-        if(!isset($curlConfig[CURLOPT_TIMEOUT_MS])){
+        if (!isset($curlConfig[CURLOPT_TIMEOUT_MS])) {
             $curlConfig[CURLOPT_TIMEOUT_MS] = 2000;
         }
         $sendRes = Tool::sendCurlReq($curlConfig);
@@ -75,7 +78,8 @@ abstract class TalkUtilBase {
      *   encrypt: string 加密数据
      * @return string
      */
-    public static function createCallbackSign(array $data){
+    public static function createCallbackSign(array $data)
+    {
         $saveArr = [$data['token'], (string)$data['timestamp'], $data['nonce'], $data['encrypt']];
         sort($saveArr, SORT_STRING);
         $needStr = implode('', $saveArr);
@@ -92,7 +96,8 @@ abstract class TalkUtilBase {
      * @param string $signature 用于比对的签名
      * @return bool
      */
-    public static function checkCallbackSign(array $data,string $signature) : bool {
+    public static function checkCallbackSign(array $data, string $signature) : bool
+    {
         $nowSign = self::createCallbackSign($data);
         return $nowSign === $signature;
     }
@@ -106,28 +111,29 @@ abstract class TalkUtilBase {
      * @return string
      * @throws \Exception\DingDing\TalkException
      */
-    public static function decryptMsg(string $encryptMsg,string $optionType,string $corpId='',string $agentTag='') : string {
-        if($optionType == self::OPTION_TYPE_PROVIDER){
+    public static function decryptMsg(string $encryptMsg, string $optionType, string $corpId = '', string $agentTag = '') : string
+    {
+        if ($optionType == self::OPTION_TYPE_PROVIDER) {
             $providerConfig = DingTalkConfigSingleton::getInstance()->getCorpProviderConfig();
-            $key = base64_decode($providerConfig->getAesKey() . '=');
+            $key = base64_decode($providerConfig->getAesKey() . '=', true);
             $iv = substr($key, 0, 16);
             $checkKey = $providerConfig->getSuiteKey();
         } else {
             $agentInfo = DingTalkConfigSingleton::getInstance()->getCorpConfig($corpId)->getAgentInfo($agentTag);
-            $key = base64_decode($agentInfo['aes_key'] . '=');
+            $key = base64_decode($agentInfo['aes_key'] . '=', true);
             $iv = substr($key, 0, 16);
             $checkKey = $corpId;
         }
         $error = '';
         $msg = '';
-        $decryptMsg = openssl_decrypt(base64_decode($encryptMsg), 'AES-256-CBC', $key, OPENSSL_RAW_DATA|OPENSSL_ZERO_PADDING, $iv);
+        $decryptMsg = openssl_decrypt(base64_decode($encryptMsg, true), 'AES-256-CBC', $key, OPENSSL_RAW_DATA | OPENSSL_ZERO_PADDING, $iv);
         $decodeMsg = Tool::pkcs7Decode($decryptMsg);
         if (strlen($decodeMsg) >= 16) {
             $msgContent = substr($decodeMsg, 16);
-            $lengthList = unpack("N", substr($msgContent, 0, 4));
+            $lengthList = unpack('N', substr($msgContent, 0, 4));
             $msg = substr($msgContent, 4, $lengthList[1]);
             $receiveId = substr($msgContent, ($lengthList[1] + 4));
-            if($receiveId != $checkKey){
+            if ($receiveId != $checkKey) {
                 $error = $optionType == self::OPTION_TYPE_PROVIDER ? '套件标识不匹配' : '企业ID不匹配';
             }
         } else {
@@ -148,16 +154,17 @@ abstract class TalkUtilBase {
      * @param string $agentTag 应用标志
      * @return array
      */
-    public static function encryptMsg(string $replyMsg,string $optionType,string $corpId='',string $agentTag='') : array {
-        if($optionType == self::OPTION_TYPE_PROVIDER){
+    public static function encryptMsg(string $replyMsg, string $optionType, string $corpId = '', string $agentTag = '') : array
+    {
+        if ($optionType == self::OPTION_TYPE_PROVIDER) {
             $providerConfig = DingTalkConfigSingleton::getInstance()->getCorpProviderConfig();
-            $key = base64_decode($providerConfig->getAesKey() . '=');
+            $key = base64_decode($providerConfig->getAesKey() . '=', true);
             $iv = substr($key, 0, 16);
             $checkKey = $providerConfig->getSuiteKey();
             $token = $providerConfig->getToken();
         } else {
             $agentInfo = DingTalkConfigSingleton::getInstance()->getCorpConfig($corpId)->getAgentInfo($agentTag);
-            $key = base64_decode($agentInfo['aes_key'] . '=');
+            $key = base64_decode($agentInfo['aes_key'] . '=', true);
             $iv = substr($key, 0, 16);
             $checkKey = $corpId;
             $token = $agentInfo['token'];
@@ -165,9 +172,9 @@ abstract class TalkUtilBase {
 
         $timestamp = (string)Tool::getNowTime();
         $nonceStr = Tool::createNonceStr(16);
-        $content1 = $nonceStr . pack("N", strlen($replyMsg)) . $replyMsg . $checkKey;
+        $content1 = $nonceStr . pack('N', strlen($replyMsg)) . $replyMsg . $checkKey;
         $content2 = Tool::pkcs7Encode($content1);
-        $content3 = openssl_encrypt($content2, 'AES-256-CBC', $key, OPENSSL_RAW_DATA|OPENSSL_ZERO_PADDING, $iv);
+        $content3 = openssl_encrypt($content2, 'AES-256-CBC', $key, OPENSSL_RAW_DATA | OPENSSL_ZERO_PADDING, $iv);
         $encryptData = base64_encode($content3);
 
         return [
@@ -188,7 +195,8 @@ abstract class TalkUtilBase {
      * @param string $timestamp 时间戳
      * @return string
      */
-    public static function createApiSign(string $signData,string $signSecret) : string {
+    public static function createApiSign(string $signData, string $signSecret) : string
+    {
         $needStr = hash_hmac('sha256', $signData, $signSecret, true);
         return base64_encode($needStr);
     }

@@ -89,7 +89,6 @@ class PHPExcel_Writer_PDF_mPDF extends PHPExcel_Writer_PDF_Core implements PHPEx
             $paperSize = self::$paperSizes[$printPaperSize];
         }
 
-
         //  Create PDF
         $pdf = new mpdf();
         $ortmp = $orientation;

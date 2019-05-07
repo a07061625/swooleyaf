@@ -9,8 +9,10 @@ namespace Exception\Twig;
 
 use Exception\BaseException;
 
-class TwigException extends BaseException {
-    public function __construct($message, $code) {
+class TwigException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = 'Twig异常';
     }

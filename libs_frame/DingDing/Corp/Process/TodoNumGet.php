@@ -17,7 +17,8 @@ use Tool\Tool;
  * 获取用户待审批数量
  * @package DingDing\Corp\Process
  */
-class TodoNumGet extends TalkBaseCorp {
+class TodoNumGet extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -26,20 +27,23 @@ class TodoNumGet extends TalkBaseCorp {
      */
     private $userid = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $userId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserId(string $userId){
+    public function setUserId(string $userId)
+    {
         if (ctype_alnum($userId)) {
             $this->reqData['userid'] = $userId;
         } else {
@@ -47,8 +51,9 @@ class TodoNumGet extends TalkBaseCorp {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['userid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['userid'])) {
             throw new TalkException('用户id不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

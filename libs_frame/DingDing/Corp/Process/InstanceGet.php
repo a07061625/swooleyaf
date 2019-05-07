@@ -17,7 +17,8 @@ use Tool\Tool;
  * 获取单个审批实例
  * @package DingDing\Corp\Process
  */
-class InstanceGet extends TalkBaseCorp {
+class InstanceGet extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -26,20 +27,23 @@ class InstanceGet extends TalkBaseCorp {
      */
     private $process_instance_id = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $processInstanceId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setProcessInstanceId(string $processInstanceId){
+    public function setProcessInstanceId(string $processInstanceId)
+    {
         if (strlen($processInstanceId) > 0) {
             $this->reqData['process_instance_id'] = $processInstanceId;
         } else {
@@ -47,8 +51,9 @@ class InstanceGet extends TalkBaseCorp {
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['process_instance_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['process_instance_id'])) {
             throw new TalkException('实例id不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

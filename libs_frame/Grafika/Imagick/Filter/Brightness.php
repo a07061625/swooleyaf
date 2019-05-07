@@ -10,8 +10,8 @@ use Grafika\Imagick\Image;
  *
  * TODO: param checks
  */
-class Brightness implements FilterInterface{
-
+class Brightness implements FilterInterface
+{
     /**
      * @var int
      */
@@ -31,9 +31,9 @@ class Brightness implements FilterInterface{
      *
      * @return Image
      */
-    public function apply( $image ) {
+    public function apply($image)
+    {
         $image->getCore()->modulateImage(100 + $this->amount, 100, 100);
         return $image;
     }
-
 }

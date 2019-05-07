@@ -9,8 +9,10 @@ namespace Exception\IM;
 
 use Exception\BaseException;
 
-class TencentException extends BaseException {
-    public function __construct($message, $code) {
+class TencentException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = '腾讯即时通讯异常';
     }

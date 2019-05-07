@@ -4,12 +4,16 @@
  */
 namespace DB\Models\NotORM;
 
-class NotORM_Row extends NotORM_Abstract implements \IteratorAggregate, \ArrayAccess, \Countable, JsonSerializable {
-    private $modified = array();
-    protected $row, $result, $primary;
+class NotORM_Row extends NotORM_Abstract implements \IteratorAggregate, \ArrayAccess, \Countable, JsonSerializable
+{
+    protected $row;
+    protected $result;
+    protected $primary;
+    private $modified = [];
 
     /** @access protected must be public because it is called from Result */
-    function __construct(array $row,NotORM_Result $result) {
+    public function __construct(array $row, NotORM_Result $result)
+    {
         $this->row = $row;
         $this->result = $result;
         if (array_key_exists($result->primary, $row)) {
@@ -21,20 +25,23 @@ class NotORM_Row extends NotORM_Abstract implements \IteratorAggregate, \ArrayAc
      * Get primary key value
      * @return string
      */
-    function __toString() {
+    public function __toString()
+    {
         return (string) $this[$this->result->primary]; // (string) - PostgreSQL returns int
     }
 
     /**
      * Get referenced row
      * @param string
+     * @param mixed $name
      * @return NotORM_Row or null if the row does not exist
      */
-    function __get($name) {
+    public function __get($name)
+    {
         $column = $this->result->notORM->structure->getReferencedColumn($name, $this->result->table);
         $referenced = &$this->result->referenced[$name];
         if (!isset($referenced)) {
-            $keys = array();
+            $keys = [];
             foreach ($this->result->rows as $row) {
                 if ($row[$column] !== null) {
                     $keys[$row[$column]] = null;
@@ -45,11 +52,11 @@ class NotORM_Row extends NotORM_Abstract implements \IteratorAggregate, \ArrayAc
                 $referenced = new NotORM_Result($table, $this->result->notORM);
                 $referenced->where("$table." . $this->result->notORM->structure->getPrimary($table), array_keys($keys));
             } else {
-                $referenced = array();
+                $referenced = [];
             }
         }
         if (!isset($referenced[$this[$column]])) { // referenced row may not exist
-            return null;
+            return;
         }
         return $referenced[$this[$column]];
     }
@@ -57,9 +64,11 @@ class NotORM_Row extends NotORM_Abstract implements \IteratorAggregate, \ArrayAc
     /**
      * Test if referenced row exists
      * @param string
+     * @param mixed $name
      * @return bool
      */
-    function __isset($name) {
+    public function __isset($name)
+    {
         return ($this->__get($name) !== null);
     }
 
@@ -67,9 +76,11 @@ class NotORM_Row extends NotORM_Abstract implements \IteratorAggregate, \ArrayAc
      * Store referenced value
      * @param string
      * @param NotORM_Row|null
+     * @param mixed $name
      * @return null
      */
-    function __set($name, NotORM_Row $value = null) {
+    public function __set($name, NotORM_Row $value = null)
+    {
         $column = $this->result->notORM->structure->getReferencedColumn($name, $this->result->table);
         $this[$column] = $value;
     }
@@ -77,9 +88,11 @@ class NotORM_Row extends NotORM_Abstract implements \IteratorAggregate, \ArrayAc
     /**
      * Remove referenced column from data
      * @param string
+     * @param mixed $name
      * @return null
      */
-    function __unset($name) {
+    public function __unset($name)
+    {
         $column = $this->result->notORM->structure->getReferencedColumn($name, $this->result->table);
         unset($this[$column]);
     }
@@ -88,15 +101,17 @@ class NotORM_Row extends NotORM_Abstract implements \IteratorAggregate, \ArrayAc
      * Get referencing rows
      * @param string table name
      * @param array (["condition"[, array("value")]])
+     * @param mixed $name
      * @return NotORM_MultiResult
      */
-    function __call($name, array $args) {
+    public function __call($name, array $args)
+    {
         $table = $this->result->notORM->structure->getReferencingTable($name, $this->result->table);
         $column = $this->result->notORM->structure->getReferencingColumn($table, $this->result->table);
         $return = new NotORM_MultiResult($table, $this->result, $column, $this[$this->result->primary]);
         $return->where("$table.$column", array_keys((array) $this->result->rows)); // (array) - is null after insert
         if ($args) {
-            call_user_func_array(array($return, 'where'), $args);
+            call_user_func_array([$return, 'where'], $args);
         }
         return $return;
     }
@@ -104,9 +119,11 @@ class NotORM_Row extends NotORM_Abstract implements \IteratorAggregate, \ArrayAc
     /**
      * Update row
      * @param array|null for all modified values
+     * @param null|mixed $data
      * @return int number of affected rows or false in case of an error
      */
-    function update($data = null) {
+    public function update($data = null)
+    {
         // update is an SQL keyword
         if (!isset($data)) {
             $data = $this->modified;
@@ -121,7 +138,8 @@ class NotORM_Row extends NotORM_Abstract implements \IteratorAggregate, \ArrayAc
      * Delete row
      * @return int number of affected rows or false in case of an error
      */
-    function delete() {
+    public function delete()
+    {
         // delete is an SQL keyword
         $result = new NotORM_Result($this->result->table, $this->result->notORM);
         $return = $result->where($this->result->primary, $this->primary)->delete();
@@ -129,21 +147,16 @@ class NotORM_Row extends NotORM_Abstract implements \IteratorAggregate, \ArrayAc
         return $return;
     }
 
-    protected function access($key, $delete = false) {
-        if ($this->result->notORM->cache && !isset($this->modified[$key]) && $this->result->access($key, $delete)) {
-            $id = (isset($this->primary) ? $this->primary : $this->row);
-            $this->row = $this->result[$id]->row;
-        }
-    }
-
     // IteratorAggregate implementation
-    function getIterator() {
+    public function getIterator()
+    {
         $this->access(null);
         return new \ArrayIterator($this->row);
     }
 
     // Countable implementation
-    function count() {
+    public function count()
+    {
         return count($this->row);
     }
 
@@ -151,9 +164,11 @@ class NotORM_Row extends NotORM_Abstract implements \IteratorAggregate, \ArrayAc
     /**
      * Test if column exists
      * @param string column name
+     * @param mixed $key
      * @return bool
      */
-    function offsetExists($key) {
+    public function offsetExists($key)
+    {
         $this->access($key);
         $return = array_key_exists($key, $this->row);
         if (!$return) {
@@ -165,9 +180,11 @@ class NotORM_Row extends NotORM_Abstract implements \IteratorAggregate, \ArrayAc
     /**
      * Get value of column
      * @param string column name
+     * @param mixed $key
      * @return string
      */
-    function offsetGet($key) {
+    public function offsetGet($key)
+    {
         $this->access($key);
         if (!array_key_exists($key, $this->row)) {
             $this->access($key, true);
@@ -178,9 +195,12 @@ class NotORM_Row extends NotORM_Abstract implements \IteratorAggregate, \ArrayAc
     /**
      * Store value in column
      * @param string column name
+     * @param mixed $key
+     * @param mixed $value
      * @return null
      */
-    function offsetSet($key, $value) {
+    public function offsetSet($key, $value)
+    {
         $this->row[$key] = $value;
         $this->modified[$key] = $value;
     }
@@ -188,15 +208,25 @@ class NotORM_Row extends NotORM_Abstract implements \IteratorAggregate, \ArrayAc
     /**
      * Remove column from data
      * @param string column name
+     * @param mixed $key
      * @return null
      */
-    function offsetUnset($key) {
-        unset($this->row[$key]);
-        unset($this->modified[$key]);
+    public function offsetUnset($key)
+    {
+        unset($this->row[$key], $this->modified[$key]);
     }
 
     // JsonSerializable implementation
-    function jsonSerialize() {
+    public function jsonSerialize()
+    {
         return $this->row;
+    }
+
+    protected function access($key, $delete = false)
+    {
+        if ($this->result->notORM->cache && !isset($this->modified[$key]) && $this->result->access($key, $delete)) {
+            $id = (isset($this->primary) ? $this->primary : $this->row);
+            $this->row = $this->result[$id]->row;
+        }
     }
 }

@@ -69,7 +69,7 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
             // Loop through charts and write the chart position
             if ($chartCount > 0) {
                 for ($c = 0; $c < $chartCount; ++$c) {
-                    $this->writeChart($objWriter, $pWorksheet->getChartByIndex($c), $c+$i);
+                    $this->writeChart($objWriter, $pWorksheet->getChartByIndex($c), $c + $i);
                 }
             }
         }
@@ -97,57 +97,57 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
 
         $objWriter->startElement('xdr:twoCellAnchor');
 
-            $objWriter->startElement('xdr:from');
-                $objWriter->writeElement('xdr:col', PHPExcel_Cell::columnIndexFromString($tl['colRow'][0]) - 1);
-                $objWriter->writeElement('xdr:colOff', PHPExcel_Shared_Drawing::pixelsToEMU($tl['xOffset']));
-                $objWriter->writeElement('xdr:row', $tl['colRow'][1] - 1);
-                $objWriter->writeElement('xdr:rowOff', PHPExcel_Shared_Drawing::pixelsToEMU($tl['yOffset']));
-            $objWriter->endElement();
-            $objWriter->startElement('xdr:to');
-                $objWriter->writeElement('xdr:col', PHPExcel_Cell::columnIndexFromString($br['colRow'][0]) - 1);
-                $objWriter->writeElement('xdr:colOff', PHPExcel_Shared_Drawing::pixelsToEMU($br['xOffset']));
-                $objWriter->writeElement('xdr:row', $br['colRow'][1] - 1);
-                $objWriter->writeElement('xdr:rowOff', PHPExcel_Shared_Drawing::pixelsToEMU($br['yOffset']));
-            $objWriter->endElement();
+        $objWriter->startElement('xdr:from');
+        $objWriter->writeElement('xdr:col', PHPExcel_Cell::columnIndexFromString($tl['colRow'][0]) - 1);
+        $objWriter->writeElement('xdr:colOff', PHPExcel_Shared_Drawing::pixelsToEMU($tl['xOffset']));
+        $objWriter->writeElement('xdr:row', $tl['colRow'][1] - 1);
+        $objWriter->writeElement('xdr:rowOff', PHPExcel_Shared_Drawing::pixelsToEMU($tl['yOffset']));
+        $objWriter->endElement();
+        $objWriter->startElement('xdr:to');
+        $objWriter->writeElement('xdr:col', PHPExcel_Cell::columnIndexFromString($br['colRow'][0]) - 1);
+        $objWriter->writeElement('xdr:colOff', PHPExcel_Shared_Drawing::pixelsToEMU($br['xOffset']));
+        $objWriter->writeElement('xdr:row', $br['colRow'][1] - 1);
+        $objWriter->writeElement('xdr:rowOff', PHPExcel_Shared_Drawing::pixelsToEMU($br['yOffset']));
+        $objWriter->endElement();
 
-            $objWriter->startElement('xdr:graphicFrame');
-                $objWriter->writeAttribute('macro', '');
-                $objWriter->startElement('xdr:nvGraphicFramePr');
-                    $objWriter->startElement('xdr:cNvPr');
-                        $objWriter->writeAttribute('name', 'Chart '.$pRelationId);
-                        $objWriter->writeAttribute('id', 1025 * $pRelationId);
-                    $objWriter->endElement();
-                    $objWriter->startElement('xdr:cNvGraphicFramePr');
-                        $objWriter->startElement('a:graphicFrameLocks');
-                        $objWriter->endElement();
-                    $objWriter->endElement();
-                $objWriter->endElement();
+        $objWriter->startElement('xdr:graphicFrame');
+        $objWriter->writeAttribute('macro', '');
+        $objWriter->startElement('xdr:nvGraphicFramePr');
+        $objWriter->startElement('xdr:cNvPr');
+        $objWriter->writeAttribute('name', 'Chart ' . $pRelationId);
+        $objWriter->writeAttribute('id', 1025 * $pRelationId);
+        $objWriter->endElement();
+        $objWriter->startElement('xdr:cNvGraphicFramePr');
+        $objWriter->startElement('a:graphicFrameLocks');
+        $objWriter->endElement();
+        $objWriter->endElement();
+        $objWriter->endElement();
 
-                $objWriter->startElement('xdr:xfrm');
-                    $objWriter->startElement('a:off');
-                        $objWriter->writeAttribute('x', '0');
-                        $objWriter->writeAttribute('y', '0');
-                    $objWriter->endElement();
-                    $objWriter->startElement('a:ext');
-                        $objWriter->writeAttribute('cx', '0');
-                        $objWriter->writeAttribute('cy', '0');
-                    $objWriter->endElement();
-                $objWriter->endElement();
+        $objWriter->startElement('xdr:xfrm');
+        $objWriter->startElement('a:off');
+        $objWriter->writeAttribute('x', '0');
+        $objWriter->writeAttribute('y', '0');
+        $objWriter->endElement();
+        $objWriter->startElement('a:ext');
+        $objWriter->writeAttribute('cx', '0');
+        $objWriter->writeAttribute('cy', '0');
+        $objWriter->endElement();
+        $objWriter->endElement();
 
-                $objWriter->startElement('a:graphic');
-                    $objWriter->startElement('a:graphicData');
-                        $objWriter->writeAttribute('uri', 'http://schemas.openxmlformats.org/drawingml/2006/chart');
-                        $objWriter->startElement('c:chart');
-                            $objWriter->writeAttribute('xmlns:c', 'http://schemas.openxmlformats.org/drawingml/2006/chart');
-                            $objWriter->writeAttribute('xmlns:r', 'http://schemas.openxmlformats.org/officeDocument/2006/relationships');
-                            $objWriter->writeAttribute('r:id', 'rId'.$pRelationId);
-                        $objWriter->endElement();
-                    $objWriter->endElement();
-                $objWriter->endElement();
-            $objWriter->endElement();
+        $objWriter->startElement('a:graphic');
+        $objWriter->startElement('a:graphicData');
+        $objWriter->writeAttribute('uri', 'http://schemas.openxmlformats.org/drawingml/2006/chart');
+        $objWriter->startElement('c:chart');
+        $objWriter->writeAttribute('xmlns:c', 'http://schemas.openxmlformats.org/drawingml/2006/chart');
+        $objWriter->writeAttribute('xmlns:r', 'http://schemas.openxmlformats.org/officeDocument/2006/relationships');
+        $objWriter->writeAttribute('r:id', 'rId' . $pRelationId);
+        $objWriter->endElement();
+        $objWriter->endElement();
+        $objWriter->endElement();
+        $objWriter->endElement();
 
-            $objWriter->startElement('xdr:clientData');
-            $objWriter->endElement();
+        $objWriter->startElement('xdr:clientData');
+        $objWriter->endElement();
 
         $objWriter->endElement();
     }
@@ -166,8 +166,8 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
             // xdr:oneCellAnchor
             $objWriter->startElement('xdr:oneCellAnchor');
             // Image location
-            $aCoordinates         = PHPExcel_Cell::coordinateFromString($pDrawing->getCoordinates());
-            $aCoordinates[0]     = PHPExcel_Cell::columnIndexFromString($aCoordinates[0]);
+            $aCoordinates = PHPExcel_Cell::coordinateFromString($pDrawing->getCoordinates());
+            $aCoordinates[0] = PHPExcel_Cell::columnIndexFromString($aCoordinates[0]);
 
             // xdr:from
             $objWriter->startElement('xdr:from');
@@ -219,7 +219,7 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
 
             // a:stretch
             $objWriter->startElement('a:stretch');
-                $objWriter->writeElement('a:fillRect', null);
+            $objWriter->writeElement('a:fillRect', null);
             $objWriter->endElement();
 
             $objWriter->endElement();
@@ -248,39 +248,39 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
 //                            $objWriter->startElement('a:srgbClr');
 //                            $objWriter->writeAttribute('val', 'FFFFFF');
 
-///* SHADE
+            ///* SHADE
 //                                // a:shade
 //                                $objWriter->startElement('a:shade');
 //                                $objWriter->writeAttribute('val', '85000');
 //                                $objWriter->endElement();
-//*/
+            //*/
 
 //                            $objWriter->endElement();
 
 //                        $objWriter->endElement();
-/*
-            // a:ln
-            $objWriter->startElement('a:ln');
-            $objWriter->writeAttribute('w', '88900');
-            $objWriter->writeAttribute('cap', 'sq');
-
-                // a:solidFill
-                $objWriter->startElement('a:solidFill');
-
-                    // a:srgbClr
-                    $objWriter->startElement('a:srgbClr');
-                    $objWriter->writeAttribute('val', 'FFFFFF');
-                    $objWriter->endElement();
-
-                $objWriter->endElement();
-
-                // a:miter
-                $objWriter->startElement('a:miter');
-                $objWriter->writeAttribute('lim', '800000');
-                $objWriter->endElement();
-
-            $objWriter->endElement();
-*/
+            /*
+                        // a:ln
+                        $objWriter->startElement('a:ln');
+                        $objWriter->writeAttribute('w', '88900');
+                        $objWriter->writeAttribute('cap', 'sq');
+            
+                            // a:solidFill
+                            $objWriter->startElement('a:solidFill');
+            
+                                // a:srgbClr
+                                $objWriter->startElement('a:srgbClr');
+                                $objWriter->writeAttribute('val', 'FFFFFF');
+                                $objWriter->endElement();
+            
+                            $objWriter->endElement();
+            
+                            // a:miter
+                            $objWriter->startElement('a:miter');
+                            $objWriter->writeAttribute('lim', '800000');
+                            $objWriter->endElement();
+            
+                        $objWriter->endElement();
+            */
 
             if ($pDrawing->getShadow()->getVisible()) {
                 // a:effectLst
@@ -309,54 +309,54 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
 
                 $objWriter->endElement();
             }
-/*
-
-                // a:scene3d
-                $objWriter->startElement('a:scene3d');
-
-                    // a:camera
-                    $objWriter->startElement('a:camera');
-                    $objWriter->writeAttribute('prst', 'orthographicFront');
-                    $objWriter->endElement();
-
-                    // a:lightRig
-                    $objWriter->startElement('a:lightRig');
-                    $objWriter->writeAttribute('rig', 'twoPt');
-                    $objWriter->writeAttribute('dir', 't');
-
-                        // a:rot
-                        $objWriter->startElement('a:rot');
-                        $objWriter->writeAttribute('lat', '0');
-                        $objWriter->writeAttribute('lon', '0');
-                        $objWriter->writeAttribute('rev', '0');
-                        $objWriter->endElement();
-
-                    $objWriter->endElement();
-
-                $objWriter->endElement();
-*/
-/*
-                // a:sp3d
-                $objWriter->startElement('a:sp3d');
-
-                    // a:bevelT
-                    $objWriter->startElement('a:bevelT');
-                    $objWriter->writeAttribute('w', '25400');
-                    $objWriter->writeAttribute('h', '19050');
-                    $objWriter->endElement();
-
-                    // a:contourClr
-                    $objWriter->startElement('a:contourClr');
-
-                        // a:srgbClr
-                        $objWriter->startElement('a:srgbClr');
-                        $objWriter->writeAttribute('val', 'FFFFFF');
-                        $objWriter->endElement();
-
-                    $objWriter->endElement();
-
-                $objWriter->endElement();
-*/
+            /*
+            
+                            // a:scene3d
+                            $objWriter->startElement('a:scene3d');
+            
+                                // a:camera
+                                $objWriter->startElement('a:camera');
+                                $objWriter->writeAttribute('prst', 'orthographicFront');
+                                $objWriter->endElement();
+            
+                                // a:lightRig
+                                $objWriter->startElement('a:lightRig');
+                                $objWriter->writeAttribute('rig', 'twoPt');
+                                $objWriter->writeAttribute('dir', 't');
+            
+                                    // a:rot
+                                    $objWriter->startElement('a:rot');
+                                    $objWriter->writeAttribute('lat', '0');
+                                    $objWriter->writeAttribute('lon', '0');
+                                    $objWriter->writeAttribute('rev', '0');
+                                    $objWriter->endElement();
+            
+                                $objWriter->endElement();
+            
+                            $objWriter->endElement();
+            */
+            /*
+                            // a:sp3d
+                            $objWriter->startElement('a:sp3d');
+            
+                                // a:bevelT
+                                $objWriter->startElement('a:bevelT');
+                                $objWriter->writeAttribute('w', '25400');
+                                $objWriter->writeAttribute('h', '19050');
+                                $objWriter->endElement();
+            
+                                // a:contourClr
+                                $objWriter->startElement('a:contourClr');
+            
+                                    // a:srgbClr
+                                    $objWriter->startElement('a:srgbClr');
+                                    $objWriter->writeAttribute('val', 'FFFFFF');
+                                    $objWriter->endElement();
+            
+                                $objWriter->endElement();
+            
+                            $objWriter->endElement();
+            */
             $objWriter->endElement();
 
             $objWriter->endElement();
@@ -366,7 +366,7 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
 
             $objWriter->endElement();
         } else {
-            throw new PHPExcel_Writer_Exception("Invalid parameters passed.");
+            throw new PHPExcel_Writer_Exception('Invalid parameters passed.');
         }
     }
 
@@ -518,6 +518,33 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
     }
 
     /**
+     * Get an array of all drawings
+     *
+     * @param     PHPExcel                            $pPHPExcel
+     * @return     PHPExcel_Worksheet_Drawing[]        All drawings in PHPExcel
+     * @throws     PHPExcel_Writer_Exception
+     */
+    public function allDrawings(PHPExcel $pPHPExcel = null)
+    {
+        // Get an array of all drawings
+        $aDrawings = [];
+
+        // Loop through PHPExcel
+        $sheetCount = $pPHPExcel->getSheetCount();
+        for ($i = 0; $i < $sheetCount; ++$i) {
+            // Loop through images and add to array
+            $iterator = $pPHPExcel->getSheet($i)->getDrawingCollection()->getIterator();
+            while ($iterator->valid()) {
+                $aDrawings[] = $iterator->current();
+
+                $iterator->next();
+            }
+        }
+
+        return $aDrawings;
+    }
+
+    /**
      * Write VML comment to XML format
      *
      * @param     PHPExcel_Shared_XMLWriter        $objWriter             XML Writer
@@ -557,33 +584,5 @@ class PHPExcel_Writer_Excel2007_Drawing extends PHPExcel_Writer_Excel2007_Writer
         $objWriter->endElement();
 
         $objWriter->endElement();
-    }
-
-
-    /**
-     * Get an array of all drawings
-     *
-     * @param     PHPExcel                            $pPHPExcel
-     * @return     PHPExcel_Worksheet_Drawing[]        All drawings in PHPExcel
-     * @throws     PHPExcel_Writer_Exception
-     */
-    public function allDrawings(PHPExcel $pPHPExcel = null)
-    {
-        // Get an array of all drawings
-        $aDrawings    = array();
-
-        // Loop through PHPExcel
-        $sheetCount = $pPHPExcel->getSheetCount();
-        for ($i = 0; $i < $sheetCount; ++$i) {
-            // Loop through images and add to array
-            $iterator = $pPHPExcel->getSheet($i)->getDrawingCollection()->getIterator();
-            while ($iterator->valid()) {
-                $aDrawings[] = $iterator->current();
-
-                  $iterator->next();
-            }
-        }
-
-        return $aDrawings;
     }
 }

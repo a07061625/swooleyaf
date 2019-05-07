@@ -12,7 +12,8 @@ use SyMessagePush\ConfigXinGe;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
-class MessagePushConfigSingleton {
+class MessagePushConfigSingleton
+{
     use SingletonTrait;
 
     /**
@@ -31,7 +32,8 @@ class MessagePushConfigSingleton {
      */
     private $xinGeIosConfig = null;
 
-    private function __construct(){
+    private function __construct()
+    {
         $configs = Tool::getConfig('messagepush.' . SY_ENV . SY_PROJECT);
 
         //设置阿里配置
@@ -59,8 +61,9 @@ class MessagePushConfigSingleton {
     /**
      * @return \DesignPatterns\Singletons\MessagePushConfigSingleton
      */
-    public static function getInstance(){
-        if(is_null(self::$instance)){
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -70,21 +73,24 @@ class MessagePushConfigSingleton {
     /**
      * @return \SyMessagePush\ConfigAli
      */
-    public function getAliConfig() {
+    public function getAliConfig()
+    {
         return $this->aliConfig;
     }
 
     /**
      * @return \SyMessagePush\ConfigXinGe
      */
-    public function getXinGeAndroidConfig() {
+    public function getXinGeAndroidConfig()
+    {
         return $this->xinGeAndroidConfig;
     }
 
     /**
      * @return \SyMessagePush\ConfigXinGe
      */
-    public function getXinGeIosConfig() {
+    public function getXinGeIosConfig()
+    {
         return $this->xinGeIosConfig;
     }
 }

@@ -14,12 +14,13 @@ use RdKafka\KafkaConsumer;
 use RdKafka\Producer;
 use RdKafka\TopicConf;
 use SyMessageQueue\ConfigRedis;
-use SyMessageQueue\Rabbit\Producer as RabbitProducer;
 use SyMessageQueue\Rabbit\Consumer as RabbitConsumer;
+use SyMessageQueue\Rabbit\Producer as RabbitProducer;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
-class MessageQueueSingleton {
+class MessageQueueSingleton
+{
     use SingletonTrait;
     /**
      * @var \SyMessageQueue\ConfigRedis
@@ -42,14 +43,16 @@ class MessageQueueSingleton {
      */
     private $rabbitConsumer = null;
 
-    private function __construct(){
+    private function __construct()
+    {
     }
 
     /**
      * @return \DesignPatterns\Singletons\MessageQueueSingleton
      */
-    public static function getInstance() {
-        if(is_null(self::$instance)) {
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -59,8 +62,9 @@ class MessageQueueSingleton {
     /**
      * @return \SyMessageQueue\ConfigRedis
      */
-    public function getRedisConfig() {
-        if(is_null($this->redisConfig)){
+    public function getRedisConfig()
+    {
+        if (is_null($this->redisConfig)) {
             $configs = Tool::getConfig('messagequeue.' . SY_ENV . SY_PROJECT . '.redis');
             $redisConfig = new ConfigRedis();
             $redisConfig->setConsumerBatchMsgNum((int)Tool::getArrayVal($configs, 'consumer.batch.msg.num', 100, true));
@@ -75,11 +79,12 @@ class MessageQueueSingleton {
      * @return \RdKafka\Producer
      * @throws \Exception\MessageQueue\MessageQueueException
      */
-    public function getKafkaProducer() {
+    public function getKafkaProducer()
+    {
         if (is_null($this->kafkaProducer)) {
             $configs = Tool::getConfig('messagequeue.' . SY_ENV . SY_PROJECT . '.kafka');
             $brokers = trim(Tool::getArrayVal($configs, 'common.metadata.broker.list', '', true));
-            if(strlen($brokers) == 0){
+            if (strlen($brokers) == 0) {
                 throw new MessageQueueException('broker不能为空', ErrorCode::MESSAGE_QUEUE_PARAM_ERROR);
             }
 
@@ -98,11 +103,12 @@ class MessageQueueSingleton {
      * @return \RdKafka\KafkaConsumer
      * @throws \Exception\MessageQueue\MessageQueueException
      */
-    public function getKafkaConsumer() {
-        if(is_null($this->kafkaConsumer)){
+    public function getKafkaConsumer()
+    {
+        if (is_null($this->kafkaConsumer)) {
             $configs = Tool::getConfig('messagequeue.' . SY_ENV . SY_PROJECT . '.kafka');
             $brokers = trim(Tool::getArrayVal($configs, 'common.metadata.broker.list', '', true));
-            if(strlen($brokers) == 0){
+            if (strlen($brokers) == 0) {
                 throw new MessageQueueException('broker不能为空', ErrorCode::MESSAGE_QUEUE_PARAM_ERROR);
             }
 
@@ -119,7 +125,7 @@ class MessageQueueSingleton {
             $consumerConf->set('offset.store.method', 'broker');
             $consumerConf->set('fetch.wait.max.ms', (int)Tool::getArrayVal($configs, 'consumer.fetch.wait.max.ms', 2000, true));
             $consumerConf->setDefaultTopicConf($consumerTopicConf);
-            $consumerConf->setRebalanceCb(function (KafkaConsumer $kafka, $err,array $partitions=null) {
+            $consumerConf->setRebalanceCb(function (KafkaConsumer $kafka, $err, array $partitions = null) {
                 switch ($err) {
                     case RD_KAFKA_RESP_ERR__ASSIGN_PARTITIONS:
                         $kafka->assign($partitions);
@@ -143,8 +149,9 @@ class MessageQueueSingleton {
     /**
      * @return \SyMessageQueue\Rabbit\Producer
      */
-    public function getRabbitProducer(){
-        if(is_null($this->rabbitProducer)){
+    public function getRabbitProducer()
+    {
+        if (is_null($this->rabbitProducer)) {
             $this->rabbitProducer = new RabbitProducer();
         }
 
@@ -154,8 +161,9 @@ class MessageQueueSingleton {
     /**
      * @return \SyMessageQueue\Rabbit\Consumer
      */
-    public function getRabbitConsumer(){
-        if(is_null($this->rabbitConsumer)){
+    public function getRabbitConsumer()
+    {
+        if (is_null($this->rabbitConsumer)) {
             $this->rabbitConsumer = new RabbitConsumer();
         }
 

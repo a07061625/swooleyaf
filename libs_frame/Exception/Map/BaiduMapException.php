@@ -9,8 +9,10 @@ namespace Exception\Map;
 
 use Exception\BaseException;
 
-class BaiduMapException extends BaseException {
-    public function __construct($message, $code) {
+class BaiduMapException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = '百度地图异常';
     }

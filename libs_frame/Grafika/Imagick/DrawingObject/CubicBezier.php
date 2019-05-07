@@ -3,8 +3,8 @@ namespace Grafika\Imagick\DrawingObject;
 
 use Grafika\DrawingObject\CubicBezier as Base;
 use Grafika\DrawingObjectInterface;
-use Grafika\Imagick\Image;
 use Grafika\ImageInterface;
+use Grafika\Imagick\Image;
 
 /**
  * Class CubicBezier
@@ -12,7 +12,6 @@ use Grafika\ImageInterface;
  */
 class CubicBezier extends Base implements DrawingObjectInterface
 {
-
     /**
      * @param ImageInterface $image
      * @return Image
@@ -33,12 +32,12 @@ class CubicBezier extends Base implements DrawingObjectInterface
         $draw->setStrokeColor($strokeColor);
         $draw->setFillColor($fillColor);
 
-        $points = array(
-            array('x'=> $this->point1[0], 'y'=> $this->point1[1]),
-            array('x'=> $this->control1[0], 'y'=> $this->control1[1]),
-            array('x'=> $this->control2[0], 'y'=> $this->control2[1]),
-            array('x'=> $this->point2[0], 'y'=> $this->point2[1]),
-        );
+        $points = [
+            ['x' => $this->point1[0], 'y' => $this->point1[1]],
+            ['x' => $this->control1[0], 'y' => $this->control1[1]],
+            ['x' => $this->control2[0], 'y' => $this->control2[1]],
+            ['x' => $this->point2[0], 'y' => $this->point2[1]],
+        ];
         $draw->bezier($points);
 
         // Render the draw commands in the ImagickDraw object

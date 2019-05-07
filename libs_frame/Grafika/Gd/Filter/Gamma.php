@@ -8,8 +8,8 @@ use Grafika\Gd\Image;
 /**
  * Performs a gamma correction on an image.
  */
-class Gamma implements FilterInterface{
-
+class Gamma implements FilterInterface
+{
     /**
      * @var float
      */
@@ -29,10 +29,9 @@ class Gamma implements FilterInterface{
      *
      * @return Image
      */
-    public function apply( $image ) {
-
+    public function apply($image)
+    {
         imagegammacorrect($image->getCore(), 1, $this->amount);
         return $image;
     }
-
 }

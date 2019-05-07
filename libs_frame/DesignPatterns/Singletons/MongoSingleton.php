@@ -15,7 +15,8 @@ use MongoDB\Driver\Manager;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
-class MongoSingleton {
+class MongoSingleton
+{
     use SingletonTrait;
 
     /**
@@ -28,14 +29,15 @@ class MongoSingleton {
      */
     private $conn = null;
 
-    private function __construct() {
+    private function __construct()
+    {
         $configs = Tool::getConfig('mongo.' . SY_ENV . SY_PROJECT);
         $hostStr = '';
         foreach ($configs['hosts'] as $key => $host) {
             $port = isset($configs['ports'][$key]) ? $configs['ports'][$key] : 27017;
             $hostStr .= ',' . $host . ':' . $port;
         }
-        if(strlen($hostStr) == 0){
+        if (strlen($hostStr) == 0) {
             throw new MongoException('连接域名不正确', ErrorCode::MONGO_CONNECTION_ERROR);
         }
 
@@ -48,7 +50,7 @@ class MongoSingleton {
         $uriOptions['wTimeoutMS'] = 3000;
         $driverOptions = Tool::getArrayVal($configs, 'driver', []);
 
-        try{
+        try {
             $this->conn = new Manager($url, $uriOptions, $driverOptions);
             $this->dbName = $db;
         } catch (\Exception $e) {
@@ -61,8 +63,9 @@ class MongoSingleton {
     /**
      * @return \DesignPatterns\Singletons\MongoSingleton
      */
-    public static function getInstance() {
-        if(is_null(self::$instance)){
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -72,7 +75,8 @@ class MongoSingleton {
     /**
      * @return Manager
      */
-    public function getConn() {
+    public function getConn()
+    {
         return $this->conn;
     }
 
@@ -81,7 +85,8 @@ class MongoSingleton {
      * @param string $dbName 数据库名称
      * @throws \Exception\Mongo\MongoException
      */
-    public function changeDb(string $dbName) {
+    public function changeDb(string $dbName)
+    {
         if ((strlen($dbName) > 0) && ($dbName != $this->dbName)) {
             $command = new Command([
                 'ping' => 1,

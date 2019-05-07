@@ -43,11 +43,11 @@ class PHPExcel_Worksheet_RowDimension extends PHPExcel_Worksheet_Dimension
      */
     private $height = -1;
 
-     /**
-     * ZeroHeight for Row?
-     *
-     * @var bool
-     */
+    /**
+    * ZeroHeight for Row?
+    *
+    * @var bool
+    */
     private $zeroHeight = false;
 
     /**

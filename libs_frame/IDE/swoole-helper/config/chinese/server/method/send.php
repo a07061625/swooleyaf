@@ -1,5 +1,5 @@
 <?php
-return array(
+return [
     //注释
     'comment' => '
  * 向客户端发送数据
@@ -24,4 +24,4 @@ return array(
  *',
     //返回值
     'return' => 'bool'
-);
+];

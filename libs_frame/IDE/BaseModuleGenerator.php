@@ -9,7 +9,8 @@ namespace IDE;
 
 use Tool\Tool;
 
-abstract class BaseModuleGenerator {
+abstract class BaseModuleGenerator
+{
     /**
      * 扩展名称
      * @var string
@@ -26,7 +27,8 @@ abstract class BaseModuleGenerator {
      */
     private $definedParamClasses = [];
 
-    public function __construct($moduleName){
+    public function __construct($moduleName)
+    {
         $this->moduleName = $moduleName;
         $this->moduleContents = [
             'constants' => [],
@@ -41,47 +43,12 @@ abstract class BaseModuleGenerator {
         ];
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    private function getHelperName() : string {
-        $str1 = preg_replace('/[^0-9a-zA-Z]+/', ' ', $this->moduleName);
-        $str2 = preg_replace('/\s+/', '', ucwords($str1));
-
-        return __DIR__ . '/Helper' . $str2 . '.php';
-    }
-
-    private function generatorFile() {
-        $fileContent = '<?php' . PHP_EOL;
-        if(!empty($this->moduleContents['constants'])){
-            $fileContent .= 'namespace {' . PHP_EOL;
-            foreach ($this->moduleContents['constants'] as $constantKey => $constantVal) {
-                $fileContent .= "    define('" . $constantKey . "', ";
-                if(is_bool($constantVal)){
-                    $fileContent .= $constantVal ? 'true' : 'false';
-                } else if(is_null($constantVal)){
-                    $fileContent .= 'null';
-                } else if(is_string($constantVal)){
-                    $fileContent .= "'" . $constantVal . "'";
-                } else {
-                    $fileContent .= $constantVal;
-                }
-                $fileContent .= ');' . PHP_EOL;
-            }
-            $fileContent .= '}' . PHP_EOL . PHP_EOL;
-        }
-        if(!empty($this->moduleContents['classes'])){
-            foreach ($this->moduleContents['classes'] as $namespaceName => $classes) {
-                $fileContent .= 'namespace ' . $namespaceName . ' {' . PHP_EOL;
-                $fileContent .= implode(PHP_EOL, $classes);
-                $fileContent .= '}' . PHP_EOL . PHP_EOL;
-            }
-        }
-
-        file_put_contents($this->getHelperName(), $fileContent);
-    }
-
-    public function createHelper() {
+    public function createHelper()
+    {
         //获取扩展定义的常量
         $totalConstants = get_defined_constants(true);
         $this->moduleContents['constants'] = Tool::getArrayVal($totalConstants, $this->moduleName, []);
@@ -90,7 +57,7 @@ abstract class BaseModuleGenerator {
         foreach ($classes as $eClassName) {
             $class = new \ReflectionClass($eClassName);
             $backslash = strrpos($eClassName, '\\');
-            if($backslash !== false){
+            if ($backslash !== false) {
                 $namespaceName = substr($eClassName, 0, $backslash);
                 $className = substr($eClassName, $backslash + 1);
             } else {
@@ -98,18 +65,18 @@ abstract class BaseModuleGenerator {
                 $className = $eClassName;
             }
 
-            if(!isset($this->moduleContents['classes'][$namespaceName])){
+            if (!isset($this->moduleContents['classes'][$namespaceName])) {
                 $this->moduleContents['classes'][$namespaceName] = [];
             }
 
             $indent = '    ';
-            $classContent =  $indent;
-            if($class->isInterface()){
+            $classContent = $indent;
+            if ($class->isInterface()) {
                 $classContent .= 'interface ';
             } else {
-                if($class->isFinal()){
+                if ($class->isFinal()) {
                     $classContent .= 'final ';
-                } else if($class->isAbstract()){
+                } elseif ($class->isAbstract()) {
                     $classContent .= 'abstract ';
                 }
                 $classContent .= 'class ';
@@ -122,7 +89,7 @@ abstract class BaseModuleGenerator {
             $interfaces = $class->getInterfaceNames();
             if (count($interfaces) > 0) {
                 $needStr1 = ', \\' . implode(', \\', $interfaces);
-                if(in_array('Iterator', $interfaces) && in_array('Traversable', $interfaces)){
+                if (in_array('Iterator', $interfaces, true) && in_array('Traversable', $interfaces, true)) {
                     $needStr2 = str_replace(', \\Traversable', '', $needStr1);
                     $classContent .= ' implements ' . substr($needStr2, 2);
                 } else {
@@ -133,15 +100,15 @@ abstract class BaseModuleGenerator {
             $indent .= '    ';
 
             $constants = $class->getConstants();
-            if(count($constants) > 0){
+            if (count($constants) > 0) {
                 $classContent .= $indent . '/* constants */' . PHP_EOL;
                 foreach ($constants as $key => $val) {
                     $classContent .= $indent . 'const ' . $key . ' = ';
-                    if(is_bool($val)){
+                    if (is_bool($val)) {
                         $classContent .= $val ? 'true' : 'false';
-                    } else if(is_null($val)){
+                    } elseif (is_null($val)) {
                         $classContent .= 'null';
-                    } else if(is_string($val)){
+                    } elseif (is_string($val)) {
                         $classContent .= "'" . $val . "'";
                     } else {
                         $classContent .= $val;
@@ -152,33 +119,33 @@ abstract class BaseModuleGenerator {
             }
 
             $properties = $class->getProperties();
-            if(count($properties) > 0){
+            if (count($properties) > 0) {
                 $classContent .= $indent . '/* properties */' . PHP_EOL;
                 $propValues = $class->getDefaultProperties();
                 foreach ($properties as $eProp) {
                     $classContent .= $indent;
-                    if($eProp->isPublic()){
+                    if ($eProp->isPublic()) {
                         $classContent .= 'public ';
-                    } else if($eProp->isProtected()){
+                    } elseif ($eProp->isProtected()) {
                         $classContent .= 'protected ';
                     } else {
                         $classContent .= 'private ';
                     }
-                    if($eProp->isStatic()){
+                    if ($eProp->isStatic()) {
                         $classContent .= 'static ';
                     }
 
                     $ePropName = $eProp->getName();
                     $classContent .= '$' . $ePropName . ' = ';
-                    if(!isset($propValues[$ePropName])){
+                    if (!isset($propValues[$ePropName])) {
                         $classContent .= 'null';
-                    } else if(is_bool($propValues[$ePropName])){
+                    } elseif (is_bool($propValues[$ePropName])) {
                         $classContent .= $propValues[$ePropName] ? 'true' : 'false';
-                    } else if(is_null($propValues[$ePropName])){
+                    } elseif (is_null($propValues[$ePropName])) {
                         $classContent .= 'null';
-                    } else if(is_string($propValues[$ePropName])){
+                    } elseif (is_string($propValues[$ePropName])) {
                         $classContent .= "'" . $propValues[$ePropName] . "'";
-                    } else if(is_array($propValues[$ePropName])){
+                    } elseif (is_array($propValues[$ePropName])) {
                         $classContent .= '[]';
                     } else {
                         $classContent .= $propValues[$ePropName];
@@ -189,45 +156,45 @@ abstract class BaseModuleGenerator {
             }
 
             $methods = $class->getMethods();
-            if(count($methods) > 0){
+            if (count($methods) > 0) {
                 $methodIndex = 0;
                 foreach ($methods as $method) {
-                    if($methodIndex > 0){
+                    if ($methodIndex > 0) {
                         $classContent .= PHP_EOL;
                     }
                     $methodComments = preg_replace('/\n\s+/', PHP_EOL . $indent . ' ', $method->getDocComment());
-                    if(strlen($methodComments) > 0){
+                    if (strlen($methodComments) > 0) {
                         $classContent .= $indent . $methodComments . PHP_EOL;
                     }
                     $modifierNames = \Reflection::getModifierNames($method->getModifiers());
-                    if((!in_array('public', $modifierNames))
-                       && (!in_array('private', $modifierNames))
-                       && (!in_array('protected', $modifierNames))){
+                    if ((!in_array('public', $modifierNames, true))
+                       && (!in_array('private', $modifierNames, true))
+                       && (!in_array('protected', $modifierNames, true))) {
                         $modifierNames[] = 'public';
                     }
                     sort($modifierNames);
                     $classContent .= $indent . implode(' ', $modifierNames);
                     $classContent .= ' function ' . $method->getName() . '(';
-                    if($method->isAbstract()){
+                    if ($method->isAbstract()) {
                         $classContent .= ');' . PHP_EOL . PHP_EOL;
                         continue;
                     }
 
                     $parameters = $method->getParameters();
                     $number = count($parameters);
-                    $index  = 0;
+                    $index = 0;
                     foreach ($parameters as $parameter) {
-                        if($parameter->isArray()){
+                        if ($parameter->isArray()) {
                             $classContent .= 'array ';
                         } else {
                             $parameterClass = $parameter->getClass();
-                            if(is_null($parameterClass)){
-                                if($index > 0){
+                            if (is_null($parameterClass)) {
+                                if ($index > 0) {
                                     $classContent .= ' ';
                                 }
                             } else {
                                 $parameterClassName = $parameterClass->getName();
-                                if(in_array($parameterClassName, $this->definedParamClasses, true)){
+                                if (in_array($parameterClassName, $this->definedParamClasses, true)) {
                                     $classContent .= $parameterClassName . ' ';
                                 } else {
                                     $classContent .= '\\' . $parameterClassName . ' ';
@@ -235,28 +202,28 @@ abstract class BaseModuleGenerator {
                             }
                         }
 
-                        if($parameter->isPassedByReference()){
+                        if ($parameter->isPassedByReference()) {
                             $classContent .= '&';
                         }
 
                         $parameterName = $parameter->getName();
-                        if($parameterName == '...'){
+                        if ($parameterName == '...') {
                             $classContent .= '$_="..."';
                         } else {
                             $classContent .= '$' . $parameterName;
                         }
 
-                        if($parameter->isOptional()){
+                        if ($parameter->isOptional()) {
                             $classContent .= ' = ';
-                            if($parameter->isDefaultValueAvailable()){
+                            if ($parameter->isDefaultValueAvailable()) {
                                 $defaultValue = $parameter->getDefaultValue();
-                                if(is_bool($defaultValue)){
+                                if (is_bool($defaultValue)) {
                                     $classContent .= $defaultValue ? 'true' : 'false';
-                                } else if(is_null($defaultValue)){
+                                } elseif (is_null($defaultValue)) {
                                     $classContent .= 'null';
-                                } else if(is_string($defaultValue)){
+                                } elseif (is_string($defaultValue)) {
                                     $classContent .= "'" . $defaultValue . "'";
-                                } else if(is_array($defaultValue)){
+                                } elseif (is_array($defaultValue)) {
                                     $classContent .= '[]';
                                 } else {
                                     $classContent .= $defaultValue;
@@ -267,7 +234,7 @@ abstract class BaseModuleGenerator {
                         }
 
                         $index++;
-                        if($index < $number){
+                        if ($index < $number) {
                             $classContent .= ',';
                         }
                     }
@@ -284,4 +251,43 @@ abstract class BaseModuleGenerator {
     }
 
     abstract protected function getModuleClasses() : array;
+
+    private function getHelperName() : string
+    {
+        $str1 = preg_replace('/[^0-9a-zA-Z]+/', ' ', $this->moduleName);
+        $str2 = preg_replace('/\s+/', '', ucwords($str1));
+
+        return __DIR__ . '/Helper' . $str2 . '.php';
+    }
+
+    private function generatorFile()
+    {
+        $fileContent = '<?php' . PHP_EOL;
+        if (!empty($this->moduleContents['constants'])) {
+            $fileContent .= 'namespace {' . PHP_EOL;
+            foreach ($this->moduleContents['constants'] as $constantKey => $constantVal) {
+                $fileContent .= "    define('" . $constantKey . "', ";
+                if (is_bool($constantVal)) {
+                    $fileContent .= $constantVal ? 'true' : 'false';
+                } elseif (is_null($constantVal)) {
+                    $fileContent .= 'null';
+                } elseif (is_string($constantVal)) {
+                    $fileContent .= "'" . $constantVal . "'";
+                } else {
+                    $fileContent .= $constantVal;
+                }
+                $fileContent .= ');' . PHP_EOL;
+            }
+            $fileContent .= '}' . PHP_EOL . PHP_EOL;
+        }
+        if (!empty($this->moduleContents['classes'])) {
+            foreach ($this->moduleContents['classes'] as $namespaceName => $classes) {
+                $fileContent .= 'namespace ' . $namespaceName . ' {' . PHP_EOL;
+                $fileContent .= implode(PHP_EOL, $classes);
+                $fileContent .= '}' . PHP_EOL . PHP_EOL;
+            }
+        }
+
+        file_put_contents($this->getHelperName(), $fileContent);
+    }
 }

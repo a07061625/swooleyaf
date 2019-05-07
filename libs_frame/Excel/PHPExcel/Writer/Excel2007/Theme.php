@@ -25,7 +25,6 @@
  * @version    ##VERSION##, ##DATE##
  */
 
-
 /**
  * PHPExcel_Writer_Excel2007_Theme
  *
@@ -40,7 +39,7 @@ class PHPExcel_Writer_Excel2007_Theme extends PHPExcel_Writer_Excel2007_WriterPa
      * @static    array of string
      *
      */
-    private static $majorFonts = array(
+    private static $majorFonts = [
         'Jpan' => 'ＭＳ Ｐゴシック',
         'Hang' => '맑은 고딕',
         'Hans' => '宋体',
@@ -71,14 +70,14 @@ class PHPExcel_Writer_Excel2007_Theme extends PHPExcel_Writer_Excel2007_WriterPa
         'Viet' => 'Times New Roman',
         'Uigh' => 'Microsoft Uighur',
         'Geor' => 'Sylfaen',
-    );
+    ];
 
     /**
      * Map of Minor fonts to write
      * @static    array of string
      *
      */
-    private static $minorFonts = array(
+    private static $minorFonts = [
         'Jpan' => 'ＭＳ Ｐゴシック',
         'Hang' => '맑은 고딕',
         'Hans' => '宋体',
@@ -109,25 +108,25 @@ class PHPExcel_Writer_Excel2007_Theme extends PHPExcel_Writer_Excel2007_WriterPa
         'Viet' => 'Arial',
         'Uigh' => 'Microsoft Uighur',
         'Geor' => 'Sylfaen',
-    );
+    ];
 
     /**
      * Map of core colours
      * @static    array of string
      *
      */
-    private static $colourScheme = array(
-        'dk2'        => '1F497D',
-        'lt2'        => 'EEECE1',
-        'accent1'    => '4F81BD',
-        'accent2'    => 'C0504D',
-        'accent3'    => '9BBB59',
-        'accent4'    => '8064A2',
-        'accent5'    => '4BACC6',
-        'accent6'    => 'F79646',
-        'hlink'        => '0000FF',
-        'folHlink'    => '800080',
-    );
+    private static $colourScheme = [
+        'dk2' => '1F497D',
+        'lt2' => 'EEECE1',
+        'accent1' => '4F81BD',
+        'accent2' => 'C0504D',
+        'accent3' => '9BBB59',
+        'accent4' => '8064A2',
+        'accent5' => '4BACC6',
+        'accent6' => 'F79646',
+        'hlink' => '0000FF',
+        'folHlink' => '800080',
+    ];
             
     /**
      * Write theme to XML format
@@ -154,658 +153,656 @@ class PHPExcel_Writer_Excel2007_Theme extends PHPExcel_Writer_Excel2007_WriterPa
         $objWriter->writeAttribute('xmlns:a', 'http://schemas.openxmlformats.org/drawingml/2006/main');
         $objWriter->writeAttribute('name', 'Office Theme');
 
-            // a:themeElements
-            $objWriter->startElement('a:themeElements');
+        // a:themeElements
+        $objWriter->startElement('a:themeElements');
 
-                // a:clrScheme
-                $objWriter->startElement('a:clrScheme');
-                $objWriter->writeAttribute('name', 'Office');
+        // a:clrScheme
+        $objWriter->startElement('a:clrScheme');
+        $objWriter->writeAttribute('name', 'Office');
 
-                    // a:dk1
-                    $objWriter->startElement('a:dk1');
+        // a:dk1
+        $objWriter->startElement('a:dk1');
 
-                        // a:sysClr
-                        $objWriter->startElement('a:sysClr');
-                        $objWriter->writeAttribute('val', 'windowText');
-                        $objWriter->writeAttribute('lastClr', '000000');
-                        $objWriter->endElement();
+        // a:sysClr
+        $objWriter->startElement('a:sysClr');
+        $objWriter->writeAttribute('val', 'windowText');
+        $objWriter->writeAttribute('lastClr', '000000');
+        $objWriter->endElement();
 
-                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                    // a:lt1
-                    $objWriter->startElement('a:lt1');
+        // a:lt1
+        $objWriter->startElement('a:lt1');
 
-                        // a:sysClr
-                        $objWriter->startElement('a:sysClr');
-                        $objWriter->writeAttribute('val', 'window');
-                        $objWriter->writeAttribute('lastClr', 'FFFFFF');
-                        $objWriter->endElement();
+        // a:sysClr
+        $objWriter->startElement('a:sysClr');
+        $objWriter->writeAttribute('val', 'window');
+        $objWriter->writeAttribute('lastClr', 'FFFFFF');
+        $objWriter->endElement();
 
-                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                    // a:dk2
-                    $this->writeColourScheme($objWriter);
+        // a:dk2
+        $this->writeColourScheme($objWriter);
 
-                $objWriter->endElement();
+        $objWriter->endElement();
 
-                // a:fontScheme
-                $objWriter->startElement('a:fontScheme');
-                $objWriter->writeAttribute('name', 'Office');
+        // a:fontScheme
+        $objWriter->startElement('a:fontScheme');
+        $objWriter->writeAttribute('name', 'Office');
 
-                    // a:majorFont
-                    $objWriter->startElement('a:majorFont');
-                        $this->writeFonts($objWriter, 'Cambria', self::$majorFonts);
-                    $objWriter->endElement();
+        // a:majorFont
+        $objWriter->startElement('a:majorFont');
+        $this->writeFonts($objWriter, 'Cambria', self::$majorFonts);
+        $objWriter->endElement();
 
-                    // a:minorFont
-                    $objWriter->startElement('a:minorFont');
-                        $this->writeFonts($objWriter, 'Calibri', self::$minorFonts);
-                    $objWriter->endElement();
+        // a:minorFont
+        $objWriter->startElement('a:minorFont');
+        $this->writeFonts($objWriter, 'Calibri', self::$minorFonts);
+        $objWriter->endElement();
 
-                $objWriter->endElement();
+        $objWriter->endElement();
 
-                // a:fmtScheme
-                $objWriter->startElement('a:fmtScheme');
-                $objWriter->writeAttribute('name', 'Office');
+        // a:fmtScheme
+        $objWriter->startElement('a:fmtScheme');
+        $objWriter->writeAttribute('name', 'Office');
 
-                    // a:fillStyleLst
-                    $objWriter->startElement('a:fillStyleLst');
+        // a:fillStyleLst
+        $objWriter->startElement('a:fillStyleLst');
 
-                        // a:solidFill
-                        $objWriter->startElement('a:solidFill');
+        // a:solidFill
+        $objWriter->startElement('a:solidFill');
 
-                            // a:schemeClr
-                            $objWriter->startElement('a:schemeClr');
-                            $objWriter->writeAttribute('val', 'phClr');
-                            $objWriter->endElement();
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
+        $objWriter->endElement();
 
-                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                        // a:gradFill
-                        $objWriter->startElement('a:gradFill');
-                        $objWriter->writeAttribute('rotWithShape', '1');
+        // a:gradFill
+        $objWriter->startElement('a:gradFill');
+        $objWriter->writeAttribute('rotWithShape', '1');
 
-                            // a:gsLst
-                            $objWriter->startElement('a:gsLst');
+        // a:gsLst
+        $objWriter->startElement('a:gsLst');
 
-                                // a:gs
-                                $objWriter->startElement('a:gs');
-                                $objWriter->writeAttribute('pos', '0');
+        // a:gs
+        $objWriter->startElement('a:gs');
+        $objWriter->writeAttribute('pos', '0');
 
-                                    // a:schemeClr
-                                    $objWriter->startElement('a:schemeClr');
-                                    $objWriter->writeAttribute('val', 'phClr');
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
 
-                                        // a:tint
-                                        $objWriter->startElement('a:tint');
-                                        $objWriter->writeAttribute('val', '50000');
-                                        $objWriter->endElement();
+        // a:tint
+        $objWriter->startElement('a:tint');
+        $objWriter->writeAttribute('val', '50000');
+        $objWriter->endElement();
 
-                                        // a:satMod
-                                        $objWriter->startElement('a:satMod');
-                                        $objWriter->writeAttribute('val', '300000');
-                                        $objWriter->endElement();
+        // a:satMod
+        $objWriter->startElement('a:satMod');
+        $objWriter->writeAttribute('val', '300000');
+        $objWriter->endElement();
 
-                                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                                $objWriter->endElement();
+        $objWriter->endElement();
 
-                                // a:gs
-                                $objWriter->startElement('a:gs');
-                                $objWriter->writeAttribute('pos', '35000');
+        // a:gs
+        $objWriter->startElement('a:gs');
+        $objWriter->writeAttribute('pos', '35000');
 
-                                    // a:schemeClr
-                                    $objWriter->startElement('a:schemeClr');
-                                    $objWriter->writeAttribute('val', 'phClr');
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
 
-                                        // a:tint
-                                        $objWriter->startElement('a:tint');
-                                        $objWriter->writeAttribute('val', '37000');
-                                        $objWriter->endElement();
+        // a:tint
+        $objWriter->startElement('a:tint');
+        $objWriter->writeAttribute('val', '37000');
+        $objWriter->endElement();
 
-                                        // a:satMod
-                                        $objWriter->startElement('a:satMod');
-                                        $objWriter->writeAttribute('val', '300000');
-                                        $objWriter->endElement();
+        // a:satMod
+        $objWriter->startElement('a:satMod');
+        $objWriter->writeAttribute('val', '300000');
+        $objWriter->endElement();
 
-                                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                                $objWriter->endElement();
+        $objWriter->endElement();
 
-                                // a:gs
-                                $objWriter->startElement('a:gs');
-                                $objWriter->writeAttribute('pos', '100000');
+        // a:gs
+        $objWriter->startElement('a:gs');
+        $objWriter->writeAttribute('pos', '100000');
 
-                                    // a:schemeClr
-                                    $objWriter->startElement('a:schemeClr');
-                                    $objWriter->writeAttribute('val', 'phClr');
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
 
-                                        // a:tint
-                                        $objWriter->startElement('a:tint');
-                                        $objWriter->writeAttribute('val', '15000');
-                                        $objWriter->endElement();
+        // a:tint
+        $objWriter->startElement('a:tint');
+        $objWriter->writeAttribute('val', '15000');
+        $objWriter->endElement();
 
-                                        // a:satMod
-                                        $objWriter->startElement('a:satMod');
-                                        $objWriter->writeAttribute('val', '350000');
-                                        $objWriter->endElement();
+        // a:satMod
+        $objWriter->startElement('a:satMod');
+        $objWriter->writeAttribute('val', '350000');
+        $objWriter->endElement();
 
-                                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                                $objWriter->endElement();
+        $objWriter->endElement();
 
-                            $objWriter->endElement();
+        $objWriter->endElement();
 
-                            // a:lin
-                            $objWriter->startElement('a:lin');
-                            $objWriter->writeAttribute('ang', '16200000');
-                            $objWriter->writeAttribute('scaled', '1');
-                            $objWriter->endElement();
+        // a:lin
+        $objWriter->startElement('a:lin');
+        $objWriter->writeAttribute('ang', '16200000');
+        $objWriter->writeAttribute('scaled', '1');
+        $objWriter->endElement();
 
-                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                        // a:gradFill
-                        $objWriter->startElement('a:gradFill');
-                        $objWriter->writeAttribute('rotWithShape', '1');
+        // a:gradFill
+        $objWriter->startElement('a:gradFill');
+        $objWriter->writeAttribute('rotWithShape', '1');
 
-                            // a:gsLst
-                            $objWriter->startElement('a:gsLst');
+        // a:gsLst
+        $objWriter->startElement('a:gsLst');
 
-                                // a:gs
-                                $objWriter->startElement('a:gs');
-                                $objWriter->writeAttribute('pos', '0');
+        // a:gs
+        $objWriter->startElement('a:gs');
+        $objWriter->writeAttribute('pos', '0');
 
-                                    // a:schemeClr
-                                    $objWriter->startElement('a:schemeClr');
-                                    $objWriter->writeAttribute('val', 'phClr');
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
 
-                                        // a:shade
-                                        $objWriter->startElement('a:shade');
-                                        $objWriter->writeAttribute('val', '51000');
-                                        $objWriter->endElement();
+        // a:shade
+        $objWriter->startElement('a:shade');
+        $objWriter->writeAttribute('val', '51000');
+        $objWriter->endElement();
 
-                                        // a:satMod
-                                        $objWriter->startElement('a:satMod');
-                                        $objWriter->writeAttribute('val', '130000');
-                                        $objWriter->endElement();
+        // a:satMod
+        $objWriter->startElement('a:satMod');
+        $objWriter->writeAttribute('val', '130000');
+        $objWriter->endElement();
 
-                                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                                $objWriter->endElement();
+        $objWriter->endElement();
 
-                                // a:gs
-                                $objWriter->startElement('a:gs');
-                                $objWriter->writeAttribute('pos', '80000');
+        // a:gs
+        $objWriter->startElement('a:gs');
+        $objWriter->writeAttribute('pos', '80000');
 
-                                    // a:schemeClr
-                                    $objWriter->startElement('a:schemeClr');
-                                    $objWriter->writeAttribute('val', 'phClr');
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
 
-                                        // a:shade
-                                        $objWriter->startElement('a:shade');
-                                        $objWriter->writeAttribute('val', '93000');
-                                        $objWriter->endElement();
+        // a:shade
+        $objWriter->startElement('a:shade');
+        $objWriter->writeAttribute('val', '93000');
+        $objWriter->endElement();
 
-                                        // a:satMod
-                                        $objWriter->startElement('a:satMod');
-                                        $objWriter->writeAttribute('val', '130000');
-                                        $objWriter->endElement();
+        // a:satMod
+        $objWriter->startElement('a:satMod');
+        $objWriter->writeAttribute('val', '130000');
+        $objWriter->endElement();
 
-                                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                                $objWriter->endElement();
+        $objWriter->endElement();
 
-                                // a:gs
-                                $objWriter->startElement('a:gs');
-                                $objWriter->writeAttribute('pos', '100000');
+        // a:gs
+        $objWriter->startElement('a:gs');
+        $objWriter->writeAttribute('pos', '100000');
 
-                                    // a:schemeClr
-                                    $objWriter->startElement('a:schemeClr');
-                                    $objWriter->writeAttribute('val', 'phClr');
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
 
-                                        // a:shade
-                                        $objWriter->startElement('a:shade');
-                                        $objWriter->writeAttribute('val', '94000');
-                                        $objWriter->endElement();
+        // a:shade
+        $objWriter->startElement('a:shade');
+        $objWriter->writeAttribute('val', '94000');
+        $objWriter->endElement();
 
-                                        // a:satMod
-                                        $objWriter->startElement('a:satMod');
-                                        $objWriter->writeAttribute('val', '135000');
-                                        $objWriter->endElement();
+        // a:satMod
+        $objWriter->startElement('a:satMod');
+        $objWriter->writeAttribute('val', '135000');
+        $objWriter->endElement();
 
-                                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                                $objWriter->endElement();
+        $objWriter->endElement();
 
-                            $objWriter->endElement();
+        $objWriter->endElement();
 
-                            // a:lin
-                            $objWriter->startElement('a:lin');
-                            $objWriter->writeAttribute('ang', '16200000');
-                            $objWriter->writeAttribute('scaled', '0');
-                            $objWriter->endElement();
+        // a:lin
+        $objWriter->startElement('a:lin');
+        $objWriter->writeAttribute('ang', '16200000');
+        $objWriter->writeAttribute('scaled', '0');
+        $objWriter->endElement();
 
-                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                    // a:lnStyleLst
-                    $objWriter->startElement('a:lnStyleLst');
+        // a:lnStyleLst
+        $objWriter->startElement('a:lnStyleLst');
 
-                        // a:ln
-                        $objWriter->startElement('a:ln');
-                        $objWriter->writeAttribute('w', '9525');
-                        $objWriter->writeAttribute('cap', 'flat');
-                        $objWriter->writeAttribute('cmpd', 'sng');
-                        $objWriter->writeAttribute('algn', 'ctr');
+        // a:ln
+        $objWriter->startElement('a:ln');
+        $objWriter->writeAttribute('w', '9525');
+        $objWriter->writeAttribute('cap', 'flat');
+        $objWriter->writeAttribute('cmpd', 'sng');
+        $objWriter->writeAttribute('algn', 'ctr');
 
-                            // a:solidFill
-                            $objWriter->startElement('a:solidFill');
+        // a:solidFill
+        $objWriter->startElement('a:solidFill');
 
-                                // a:schemeClr
-                                $objWriter->startElement('a:schemeClr');
-                                $objWriter->writeAttribute('val', 'phClr');
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
 
-                                        // a:shade
-                                        $objWriter->startElement('a:shade');
-                                        $objWriter->writeAttribute('val', '95000');
-                                        $objWriter->endElement();
+        // a:shade
+        $objWriter->startElement('a:shade');
+        $objWriter->writeAttribute('val', '95000');
+        $objWriter->endElement();
 
-                                        // a:satMod
-                                        $objWriter->startElement('a:satMod');
-                                        $objWriter->writeAttribute('val', '105000');
-                                        $objWriter->endElement();
+        // a:satMod
+        $objWriter->startElement('a:satMod');
+        $objWriter->writeAttribute('val', '105000');
+        $objWriter->endElement();
 
-                                $objWriter->endElement();
+        $objWriter->endElement();
 
-                            $objWriter->endElement();
+        $objWriter->endElement();
 
-                            // a:prstDash
-                            $objWriter->startElement('a:prstDash');
-                            $objWriter->writeAttribute('val', 'solid');
-                            $objWriter->endElement();
+        // a:prstDash
+        $objWriter->startElement('a:prstDash');
+        $objWriter->writeAttribute('val', 'solid');
+        $objWriter->endElement();
 
-                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                        // a:ln
-                        $objWriter->startElement('a:ln');
-                        $objWriter->writeAttribute('w', '25400');
-                        $objWriter->writeAttribute('cap', 'flat');
-                        $objWriter->writeAttribute('cmpd', 'sng');
-                        $objWriter->writeAttribute('algn', 'ctr');
+        // a:ln
+        $objWriter->startElement('a:ln');
+        $objWriter->writeAttribute('w', '25400');
+        $objWriter->writeAttribute('cap', 'flat');
+        $objWriter->writeAttribute('cmpd', 'sng');
+        $objWriter->writeAttribute('algn', 'ctr');
 
-                            // a:solidFill
-                            $objWriter->startElement('a:solidFill');
+        // a:solidFill
+        $objWriter->startElement('a:solidFill');
 
-                                // a:schemeClr
-                                $objWriter->startElement('a:schemeClr');
-                                $objWriter->writeAttribute('val', 'phClr');
-                                $objWriter->endElement();
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
+        $objWriter->endElement();
 
-                            $objWriter->endElement();
+        $objWriter->endElement();
 
-                            // a:prstDash
-                            $objWriter->startElement('a:prstDash');
-                            $objWriter->writeAttribute('val', 'solid');
-                            $objWriter->endElement();
+        // a:prstDash
+        $objWriter->startElement('a:prstDash');
+        $objWriter->writeAttribute('val', 'solid');
+        $objWriter->endElement();
 
-                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                        // a:ln
-                        $objWriter->startElement('a:ln');
-                        $objWriter->writeAttribute('w', '38100');
-                        $objWriter->writeAttribute('cap', 'flat');
-                        $objWriter->writeAttribute('cmpd', 'sng');
-                        $objWriter->writeAttribute('algn', 'ctr');
+        // a:ln
+        $objWriter->startElement('a:ln');
+        $objWriter->writeAttribute('w', '38100');
+        $objWriter->writeAttribute('cap', 'flat');
+        $objWriter->writeAttribute('cmpd', 'sng');
+        $objWriter->writeAttribute('algn', 'ctr');
 
-                            // a:solidFill
-                            $objWriter->startElement('a:solidFill');
+        // a:solidFill
+        $objWriter->startElement('a:solidFill');
 
-                                // a:schemeClr
-                                $objWriter->startElement('a:schemeClr');
-                                $objWriter->writeAttribute('val', 'phClr');
-                                $objWriter->endElement();
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
+        $objWriter->endElement();
 
-                            $objWriter->endElement();
+        $objWriter->endElement();
 
-                            // a:prstDash
-                            $objWriter->startElement('a:prstDash');
-                            $objWriter->writeAttribute('val', 'solid');
-                            $objWriter->endElement();
+        // a:prstDash
+        $objWriter->startElement('a:prstDash');
+        $objWriter->writeAttribute('val', 'solid');
+        $objWriter->endElement();
 
-                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                    $objWriter->endElement();
+        $objWriter->endElement();
 
+        // a:effectStyleLst
+        $objWriter->startElement('a:effectStyleLst');
 
+        // a:effectStyle
+        $objWriter->startElement('a:effectStyle');
 
-                    // a:effectStyleLst
-                    $objWriter->startElement('a:effectStyleLst');
+        // a:effectLst
+        $objWriter->startElement('a:effectLst');
 
-                        // a:effectStyle
-                        $objWriter->startElement('a:effectStyle');
+        // a:outerShdw
+        $objWriter->startElement('a:outerShdw');
+        $objWriter->writeAttribute('blurRad', '40000');
+        $objWriter->writeAttribute('dist', '20000');
+        $objWriter->writeAttribute('dir', '5400000');
+        $objWriter->writeAttribute('rotWithShape', '0');
 
-                            // a:effectLst
-                            $objWriter->startElement('a:effectLst');
+        // a:srgbClr
+        $objWriter->startElement('a:srgbClr');
+        $objWriter->writeAttribute('val', '000000');
 
-                                // a:outerShdw
-                                $objWriter->startElement('a:outerShdw');
-                                $objWriter->writeAttribute('blurRad', '40000');
-                                $objWriter->writeAttribute('dist', '20000');
-                                $objWriter->writeAttribute('dir', '5400000');
-                                $objWriter->writeAttribute('rotWithShape', '0');
+        // a:alpha
+        $objWriter->startElement('a:alpha');
+        $objWriter->writeAttribute('val', '38000');
+        $objWriter->endElement();
 
-                                    // a:srgbClr
-                                    $objWriter->startElement('a:srgbClr');
-                                    $objWriter->writeAttribute('val', '000000');
+        $objWriter->endElement();
 
-                                        // a:alpha
-                                        $objWriter->startElement('a:alpha');
-                                        $objWriter->writeAttribute('val', '38000');
-                                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                                $objWriter->endElement();
+        $objWriter->endElement();
 
-                            $objWriter->endElement();
+        // a:effectStyle
+        $objWriter->startElement('a:effectStyle');
 
-                        $objWriter->endElement();
+        // a:effectLst
+        $objWriter->startElement('a:effectLst');
 
-                        // a:effectStyle
-                        $objWriter->startElement('a:effectStyle');
+        // a:outerShdw
+        $objWriter->startElement('a:outerShdw');
+        $objWriter->writeAttribute('blurRad', '40000');
+        $objWriter->writeAttribute('dist', '23000');
+        $objWriter->writeAttribute('dir', '5400000');
+        $objWriter->writeAttribute('rotWithShape', '0');
 
-                            // a:effectLst
-                            $objWriter->startElement('a:effectLst');
+        // a:srgbClr
+        $objWriter->startElement('a:srgbClr');
+        $objWriter->writeAttribute('val', '000000');
 
-                                // a:outerShdw
-                                $objWriter->startElement('a:outerShdw');
-                                $objWriter->writeAttribute('blurRad', '40000');
-                                $objWriter->writeAttribute('dist', '23000');
-                                $objWriter->writeAttribute('dir', '5400000');
-                                $objWriter->writeAttribute('rotWithShape', '0');
+        // a:alpha
+        $objWriter->startElement('a:alpha');
+        $objWriter->writeAttribute('val', '35000');
+        $objWriter->endElement();
 
-                                    // a:srgbClr
-                                    $objWriter->startElement('a:srgbClr');
-                                    $objWriter->writeAttribute('val', '000000');
+        $objWriter->endElement();
 
-                                        // a:alpha
-                                        $objWriter->startElement('a:alpha');
-                                        $objWriter->writeAttribute('val', '35000');
-                                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                                $objWriter->endElement();
+        $objWriter->endElement();
 
-                            $objWriter->endElement();
+        // a:effectStyle
+        $objWriter->startElement('a:effectStyle');
 
-                        $objWriter->endElement();
+        // a:effectLst
+        $objWriter->startElement('a:effectLst');
 
-                        // a:effectStyle
-                        $objWriter->startElement('a:effectStyle');
+        // a:outerShdw
+        $objWriter->startElement('a:outerShdw');
+        $objWriter->writeAttribute('blurRad', '40000');
+        $objWriter->writeAttribute('dist', '23000');
+        $objWriter->writeAttribute('dir', '5400000');
+        $objWriter->writeAttribute('rotWithShape', '0');
 
-                            // a:effectLst
-                            $objWriter->startElement('a:effectLst');
+        // a:srgbClr
+        $objWriter->startElement('a:srgbClr');
+        $objWriter->writeAttribute('val', '000000');
 
-                                // a:outerShdw
-                                $objWriter->startElement('a:outerShdw');
-                                $objWriter->writeAttribute('blurRad', '40000');
-                                $objWriter->writeAttribute('dist', '23000');
-                                $objWriter->writeAttribute('dir', '5400000');
-                                $objWriter->writeAttribute('rotWithShape', '0');
+        // a:alpha
+        $objWriter->startElement('a:alpha');
+        $objWriter->writeAttribute('val', '35000');
+        $objWriter->endElement();
 
-                                    // a:srgbClr
-                                    $objWriter->startElement('a:srgbClr');
-                                    $objWriter->writeAttribute('val', '000000');
+        $objWriter->endElement();
 
-                                        // a:alpha
-                                        $objWriter->startElement('a:alpha');
-                                        $objWriter->writeAttribute('val', '35000');
-                                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                                $objWriter->endElement();
+        // a:scene3d
+        $objWriter->startElement('a:scene3d');
 
-                            $objWriter->endElement();
+        // a:camera
+        $objWriter->startElement('a:camera');
+        $objWriter->writeAttribute('prst', 'orthographicFront');
 
-                            // a:scene3d
-                            $objWriter->startElement('a:scene3d');
+        // a:rot
+        $objWriter->startElement('a:rot');
+        $objWriter->writeAttribute('lat', '0');
+        $objWriter->writeAttribute('lon', '0');
+        $objWriter->writeAttribute('rev', '0');
+        $objWriter->endElement();
 
-                                // a:camera
-                                $objWriter->startElement('a:camera');
-                                $objWriter->writeAttribute('prst', 'orthographicFront');
+        $objWriter->endElement();
 
-                                    // a:rot
-                                    $objWriter->startElement('a:rot');
-                                    $objWriter->writeAttribute('lat', '0');
-                                    $objWriter->writeAttribute('lon', '0');
-                                    $objWriter->writeAttribute('rev', '0');
-                                    $objWriter->endElement();
+        // a:lightRig
+        $objWriter->startElement('a:lightRig');
+        $objWriter->writeAttribute('rig', 'threePt');
+        $objWriter->writeAttribute('dir', 't');
 
-                                $objWriter->endElement();
+        // a:rot
+        $objWriter->startElement('a:rot');
+        $objWriter->writeAttribute('lat', '0');
+        $objWriter->writeAttribute('lon', '0');
+        $objWriter->writeAttribute('rev', '1200000');
+        $objWriter->endElement();
 
-                                // a:lightRig
-                                $objWriter->startElement('a:lightRig');
-                                $objWriter->writeAttribute('rig', 'threePt');
-                                $objWriter->writeAttribute('dir', 't');
+        $objWriter->endElement();
 
-                                    // a:rot
-                                    $objWriter->startElement('a:rot');
-                                    $objWriter->writeAttribute('lat', '0');
-                                    $objWriter->writeAttribute('lon', '0');
-                                    $objWriter->writeAttribute('rev', '1200000');
-                                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                                $objWriter->endElement();
+        // a:sp3d
+        $objWriter->startElement('a:sp3d');
 
-                            $objWriter->endElement();
+        // a:bevelT
+        $objWriter->startElement('a:bevelT');
+        $objWriter->writeAttribute('w', '63500');
+        $objWriter->writeAttribute('h', '25400');
+        $objWriter->endElement();
 
-                            // a:sp3d
-                            $objWriter->startElement('a:sp3d');
+        $objWriter->endElement();
 
-                                // a:bevelT
-                                $objWriter->startElement('a:bevelT');
-                                $objWriter->writeAttribute('w', '63500');
-                                $objWriter->writeAttribute('h', '25400');
-                                $objWriter->endElement();
+        $objWriter->endElement();
 
-                            $objWriter->endElement();
+        $objWriter->endElement();
 
-                        $objWriter->endElement();
+        // a:bgFillStyleLst
+        $objWriter->startElement('a:bgFillStyleLst');
 
-                    $objWriter->endElement();
+        // a:solidFill
+        $objWriter->startElement('a:solidFill');
 
-                    // a:bgFillStyleLst
-                    $objWriter->startElement('a:bgFillStyleLst');
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
+        $objWriter->endElement();
 
-                        // a:solidFill
-                        $objWriter->startElement('a:solidFill');
+        $objWriter->endElement();
 
-                            // a:schemeClr
-                            $objWriter->startElement('a:schemeClr');
-                            $objWriter->writeAttribute('val', 'phClr');
-                            $objWriter->endElement();
+        // a:gradFill
+        $objWriter->startElement('a:gradFill');
+        $objWriter->writeAttribute('rotWithShape', '1');
 
-                        $objWriter->endElement();
+        // a:gsLst
+        $objWriter->startElement('a:gsLst');
 
-                        // a:gradFill
-                        $objWriter->startElement('a:gradFill');
-                        $objWriter->writeAttribute('rotWithShape', '1');
+        // a:gs
+        $objWriter->startElement('a:gs');
+        $objWriter->writeAttribute('pos', '0');
 
-                            // a:gsLst
-                            $objWriter->startElement('a:gsLst');
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
 
-                                // a:gs
-                                $objWriter->startElement('a:gs');
-                                $objWriter->writeAttribute('pos', '0');
+        // a:tint
+        $objWriter->startElement('a:tint');
+        $objWriter->writeAttribute('val', '40000');
+        $objWriter->endElement();
 
-                                    // a:schemeClr
-                                    $objWriter->startElement('a:schemeClr');
-                                    $objWriter->writeAttribute('val', 'phClr');
+        // a:satMod
+        $objWriter->startElement('a:satMod');
+        $objWriter->writeAttribute('val', '350000');
+        $objWriter->endElement();
 
-                                        // a:tint
-                                        $objWriter->startElement('a:tint');
-                                        $objWriter->writeAttribute('val', '40000');
-                                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                                        // a:satMod
-                                        $objWriter->startElement('a:satMod');
-                                        $objWriter->writeAttribute('val', '350000');
-                                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                                    $objWriter->endElement();
+        // a:gs
+        $objWriter->startElement('a:gs');
+        $objWriter->writeAttribute('pos', '40000');
 
-                                $objWriter->endElement();
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
 
-                                // a:gs
-                                $objWriter->startElement('a:gs');
-                                $objWriter->writeAttribute('pos', '40000');
+        // a:tint
+        $objWriter->startElement('a:tint');
+        $objWriter->writeAttribute('val', '45000');
+        $objWriter->endElement();
 
-                                    // a:schemeClr
-                                    $objWriter->startElement('a:schemeClr');
-                                    $objWriter->writeAttribute('val', 'phClr');
+        // a:shade
+        $objWriter->startElement('a:shade');
+        $objWriter->writeAttribute('val', '99000');
+        $objWriter->endElement();
 
-                                        // a:tint
-                                        $objWriter->startElement('a:tint');
-                                        $objWriter->writeAttribute('val', '45000');
-                                        $objWriter->endElement();
+        // a:satMod
+        $objWriter->startElement('a:satMod');
+        $objWriter->writeAttribute('val', '350000');
+        $objWriter->endElement();
 
-                                        // a:shade
-                                        $objWriter->startElement('a:shade');
-                                        $objWriter->writeAttribute('val', '99000');
-                                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                                        // a:satMod
-                                        $objWriter->startElement('a:satMod');
-                                        $objWriter->writeAttribute('val', '350000');
-                                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                                    $objWriter->endElement();
+        // a:gs
+        $objWriter->startElement('a:gs');
+        $objWriter->writeAttribute('pos', '100000');
 
-                                $objWriter->endElement();
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
 
-                                // a:gs
-                                $objWriter->startElement('a:gs');
-                                $objWriter->writeAttribute('pos', '100000');
+        // a:shade
+        $objWriter->startElement('a:shade');
+        $objWriter->writeAttribute('val', '20000');
+        $objWriter->endElement();
 
-                                    // a:schemeClr
-                                    $objWriter->startElement('a:schemeClr');
-                                    $objWriter->writeAttribute('val', 'phClr');
+        // a:satMod
+        $objWriter->startElement('a:satMod');
+        $objWriter->writeAttribute('val', '255000');
+        $objWriter->endElement();
 
-                                        // a:shade
-                                        $objWriter->startElement('a:shade');
-                                        $objWriter->writeAttribute('val', '20000');
-                                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                                        // a:satMod
-                                        $objWriter->startElement('a:satMod');
-                                        $objWriter->writeAttribute('val', '255000');
-                                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                                $objWriter->endElement();
+        // a:path
+        $objWriter->startElement('a:path');
+        $objWriter->writeAttribute('path', 'circle');
 
-                            $objWriter->endElement();
+        // a:fillToRect
+        $objWriter->startElement('a:fillToRect');
+        $objWriter->writeAttribute('l', '50000');
+        $objWriter->writeAttribute('t', '-80000');
+        $objWriter->writeAttribute('r', '50000');
+        $objWriter->writeAttribute('b', '180000');
+        $objWriter->endElement();
 
-                            // a:path
-                            $objWriter->startElement('a:path');
-                            $objWriter->writeAttribute('path', 'circle');
+        $objWriter->endElement();
 
-                                // a:fillToRect
-                                $objWriter->startElement('a:fillToRect');
-                                $objWriter->writeAttribute('l', '50000');
-                                $objWriter->writeAttribute('t', '-80000');
-                                $objWriter->writeAttribute('r', '50000');
-                                $objWriter->writeAttribute('b', '180000');
-                                $objWriter->endElement();
+        $objWriter->endElement();
 
-                            $objWriter->endElement();
+        // a:gradFill
+        $objWriter->startElement('a:gradFill');
+        $objWriter->writeAttribute('rotWithShape', '1');
 
-                        $objWriter->endElement();
+        // a:gsLst
+        $objWriter->startElement('a:gsLst');
 
-                        // a:gradFill
-                        $objWriter->startElement('a:gradFill');
-                        $objWriter->writeAttribute('rotWithShape', '1');
+        // a:gs
+        $objWriter->startElement('a:gs');
+        $objWriter->writeAttribute('pos', '0');
 
-                            // a:gsLst
-                            $objWriter->startElement('a:gsLst');
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
 
-                                // a:gs
-                                $objWriter->startElement('a:gs');
-                                $objWriter->writeAttribute('pos', '0');
+        // a:tint
+        $objWriter->startElement('a:tint');
+        $objWriter->writeAttribute('val', '80000');
+        $objWriter->endElement();
 
-                                    // a:schemeClr
-                                    $objWriter->startElement('a:schemeClr');
-                                    $objWriter->writeAttribute('val', 'phClr');
+        // a:satMod
+        $objWriter->startElement('a:satMod');
+        $objWriter->writeAttribute('val', '300000');
+        $objWriter->endElement();
 
-                                        // a:tint
-                                        $objWriter->startElement('a:tint');
-                                        $objWriter->writeAttribute('val', '80000');
-                                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                                        // a:satMod
-                                        $objWriter->startElement('a:satMod');
-                                        $objWriter->writeAttribute('val', '300000');
-                                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                                    $objWriter->endElement();
+        // a:gs
+        $objWriter->startElement('a:gs');
+        $objWriter->writeAttribute('pos', '100000');
 
-                                $objWriter->endElement();
+        // a:schemeClr
+        $objWriter->startElement('a:schemeClr');
+        $objWriter->writeAttribute('val', 'phClr');
 
-                                // a:gs
-                                $objWriter->startElement('a:gs');
-                                $objWriter->writeAttribute('pos', '100000');
+        // a:shade
+        $objWriter->startElement('a:shade');
+        $objWriter->writeAttribute('val', '30000');
+        $objWriter->endElement();
 
-                                    // a:schemeClr
-                                    $objWriter->startElement('a:schemeClr');
-                                    $objWriter->writeAttribute('val', 'phClr');
+        // a:satMod
+        $objWriter->startElement('a:satMod');
+        $objWriter->writeAttribute('val', '200000');
+        $objWriter->endElement();
 
-                                        // a:shade
-                                        $objWriter->startElement('a:shade');
-                                        $objWriter->writeAttribute('val', '30000');
-                                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                                        // a:satMod
-                                        $objWriter->startElement('a:satMod');
-                                        $objWriter->writeAttribute('val', '200000');
-                                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                                $objWriter->endElement();
+        // a:path
+        $objWriter->startElement('a:path');
+        $objWriter->writeAttribute('path', 'circle');
 
-                            $objWriter->endElement();
+        // a:fillToRect
+        $objWriter->startElement('a:fillToRect');
+        $objWriter->writeAttribute('l', '50000');
+        $objWriter->writeAttribute('t', '50000');
+        $objWriter->writeAttribute('r', '50000');
+        $objWriter->writeAttribute('b', '50000');
+        $objWriter->endElement();
 
-                            // a:path
-                            $objWriter->startElement('a:path');
-                            $objWriter->writeAttribute('path', 'circle');
+        $objWriter->endElement();
 
-                                // a:fillToRect
-                                $objWriter->startElement('a:fillToRect');
-                                $objWriter->writeAttribute('l', '50000');
-                                $objWriter->writeAttribute('t', '50000');
-                                $objWriter->writeAttribute('r', '50000');
-                                $objWriter->writeAttribute('b', '50000');
-                                $objWriter->endElement();
+        $objWriter->endElement();
 
-                            $objWriter->endElement();
+        $objWriter->endElement();
 
-                        $objWriter->endElement();
+        $objWriter->endElement();
 
-                    $objWriter->endElement();
+        $objWriter->endElement();
 
-                $objWriter->endElement();
+        // a:objectDefaults
+        $objWriter->writeElement('a:objectDefaults', null);
 
-            $objWriter->endElement();
-
-            // a:objectDefaults
-            $objWriter->writeElement('a:objectDefaults', null);
-
-            // a:extraClrSchemeLst
-            $objWriter->writeElement('a:extraClrSchemeLst', null);
+        // a:extraClrSchemeLst
+        $objWriter->writeElement('a:extraClrSchemeLst', null);
 
         $objWriter->endElement();
 
@@ -841,8 +838,8 @@ class PHPExcel_Writer_Excel2007_Theme extends PHPExcel_Writer_Excel2007_WriterPa
 
         foreach ($fontSet as $fontScript => $typeface) {
             $objWriter->startElement('a:font');
-                $objWriter->writeAttribute('script', $fontScript);
-                $objWriter->writeAttribute('typeface', $typeface);
+            $objWriter->writeAttribute('script', $fontScript);
+            $objWriter->writeAttribute('typeface', $typeface);
             $objWriter->endElement();
         }
     }
@@ -857,11 +854,11 @@ class PHPExcel_Writer_Excel2007_Theme extends PHPExcel_Writer_Excel2007_WriterPa
     private function writeColourScheme($objWriter)
     {
         foreach (self::$colourScheme as $colourName => $colourValue) {
-            $objWriter->startElement('a:'.$colourName);
+            $objWriter->startElement('a:' . $colourName);
 
-                $objWriter->startElement('a:srgbClr');
-                    $objWriter->writeAttribute('val', $colourValue);
-                $objWriter->endElement();
+            $objWriter->startElement('a:srgbClr');
+            $objWriter->writeAttribute('val', $colourValue);
+            $objWriter->endElement();
 
             $objWriter->endElement();
         }

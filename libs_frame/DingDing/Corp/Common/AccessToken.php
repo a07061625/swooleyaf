@@ -18,24 +18,28 @@ use Tool\Tool;
  * 获取企业凭证
  * @package DingDing\Corp\Common
  */
-class AccessToken extends TalkBaseCorp {
-    public function __construct(string $corpId,string $agentTag){
+class AccessToken extends TalkBaseCorp
+{
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $agentInfo = DingTalkConfigSingleton::getInstance()->getCorpConfig($corpId)->getAgentInfo($agentTag);
         $this->reqData['appkey'] = $agentInfo['key'];
         $this->reqData['appsecret'] = $agentInfo['secret'];
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/gettoken?' . http_build_query($this->reqData);
         $sendRes = TalkUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(!is_array($sendData)){
+        if (!is_array($sendData)) {
             throw new TalkException('获取access token出错', ErrorCode::DING_TALK_GET_ERROR);
-        } else if(!isset($sendData['access_token'])){
+        } elseif (!isset($sendData['access_token'])) {
             throw new TalkException($sendData['errmsg'], ErrorCode::DING_TALK_GET_ERROR);
         }
 

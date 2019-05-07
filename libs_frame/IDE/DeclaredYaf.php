@@ -7,15 +7,19 @@
  */
 namespace IDE;
 
-class DeclaredYaf extends BaseModuleGenerator {
-    public function __construct() {
+class DeclaredYaf extends BaseModuleGenerator
+{
+    public function __construct()
+    {
         parent::__construct('yaf');
     }
 
-    private function __clone() {
+    private function __clone()
+    {
     }
 
-    protected function getModuleClasses() : array {
+    protected function getModuleClasses() : array
+    {
         $classes = array_merge(get_declared_classes(), get_declared_interfaces());
         foreach ($classes as $key => $value) {
             if (strncasecmp($value, 'Yaf\\', 4) != 0) {

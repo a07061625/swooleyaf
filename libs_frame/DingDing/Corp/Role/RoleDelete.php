@@ -17,7 +17,8 @@ use Tool\Tool;
  * 删除角色
  * @package DingDing\Corp\Role
  */
-class RoleDelete extends TalkBaseCorp {
+class RoleDelete extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -26,29 +27,33 @@ class RoleDelete extends TalkBaseCorp {
      */
     private $role_id = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $roleId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setRoleId(int $roleId){
-        if($roleId > 0){
+    public function setRoleId(int $roleId)
+    {
+        if ($roleId > 0) {
             $this->reqData['role_id'] = $roleId;
         } else {
             throw new TalkException('角色ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['role_id'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['role_id'])) {
             throw new TalkException('角色ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

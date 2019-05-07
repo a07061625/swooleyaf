@@ -28,15 +28,6 @@
 class PHPExcel_CachedObjectStorage_Memory extends PHPExcel_CachedObjectStorage_CacheBase implements PHPExcel_CachedObjectStorage_ICache
 {
     /**
-     * Dummy method callable from CacheBase, but unused by Memory cache
-     *
-     * @return    void
-     */
-    protected function storeData()
-    {
-    }
-
-    /**
      * Add or Update a cell in cache identified by coordinate address
      *
      * @param    string            $pCoord        Coordinate address of the cell to update
@@ -54,7 +45,6 @@ class PHPExcel_CachedObjectStorage_Memory extends PHPExcel_CachedObjectStorage_C
         return $cell;
     }
 
-
     /**
      * Get cell at a specific coordinate
      *
@@ -68,7 +58,7 @@ class PHPExcel_CachedObjectStorage_Memory extends PHPExcel_CachedObjectStorage_C
         if (!isset($this->cellCache[$pCoord])) {
             $this->currentObjectID = null;
             //    Return null if requested entry doesn't exist in cache
-            return null;
+            return;
         }
 
         //    Set current entry to the requested entry
@@ -77,7 +67,6 @@ class PHPExcel_CachedObjectStorage_Memory extends PHPExcel_CachedObjectStorage_C
         //    Return requested entry
         return $this->cellCache[$pCoord];
     }
-
 
     /**
      * Clone the cell collection
@@ -88,7 +77,7 @@ class PHPExcel_CachedObjectStorage_Memory extends PHPExcel_CachedObjectStorage_C
     {
         parent::copyCellCollection($parent);
 
-        $newCollection = array();
+        $newCollection = [];
         foreach ($this->cellCache as $k => &$cell) {
             $newCollection[$k] = clone $cell;
             $newCollection[$k]->attach($this);
@@ -110,9 +99,17 @@ class PHPExcel_CachedObjectStorage_Memory extends PHPExcel_CachedObjectStorage_C
         }
         unset($cell);
 
-        $this->cellCache = array();
+        $this->cellCache = [];
 
         //    detach ourself from the worksheet, so that it can then delete this object successfully
         $this->parent = null;
+    }
+    /**
+     * Dummy method callable from CacheBase, but unused by Memory cache
+     *
+     * @return    void
+     */
+    protected function storeData()
+    {
     }
 }

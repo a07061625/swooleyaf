@@ -9,8 +9,10 @@ namespace Exception\Cron;
 
 use Exception\BaseException;
 
-class CronException extends BaseException {
-    public function __construct($message, $code) {
+class CronException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = 'Cron计划任务异常';
     }

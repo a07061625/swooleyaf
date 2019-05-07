@@ -4,8 +4,13 @@
  */
 namespace DB\Models\NotORM;
 
-class NotORM_Structure_Convention implements NotORM_Structure {
-    protected $primary, $foreign, $table, $dbName, $prefix;
+class NotORM_Structure_Convention implements NotORM_Structure
+{
+    protected $primary;
+    protected $foreign;
+    protected $table;
+    protected $dbName;
+    protected $prefix;
 
     /**
      * Create conventional structure
@@ -13,8 +18,13 @@ class NotORM_Structure_Convention implements NotORM_Structure {
      * @param string %1$s stands for key used after ->, %2$s for table name
      * @param string %1$s stands for key used after ->, %2$s for table name
      * @param string prefix for all tables
+     * @param mixed $primary
+     * @param mixed $foreign
+     * @param mixed $table
+     * @param mixed $prefix
      */
-    function __construct($primary = 'id', $foreign = '%s_id', $table = '%s', $prefix = '') {
+    public function __construct($primary = 'id', $foreign = '%s_id', $table = '%s', $prefix = '')
+    {
         $needArr = explode('.', $table);
         $this->primary = $primary;
         $this->foreign = $foreign;
@@ -23,31 +33,37 @@ class NotORM_Structure_Convention implements NotORM_Structure {
         $this->prefix = $prefix;
     }
 
-    function getPrimary($table) {
+    public function getPrimary($table)
+    {
         return sprintf($this->primary, $this->getColumnFromTable($table));
     }
 
-    function getReferencingColumn($name, $table) {
+    public function getReferencingColumn($name, $table)
+    {
         return $this->getReferencedColumn(substr($table, strlen($this->prefix)), $this->prefix . $name);
     }
 
-    function getReferencingTable($name, $table) {
+    public function getReferencingTable($name, $table)
+    {
         return '`' . $this->dbName . '`.`' . $this->prefix . $name . '`';
     }
 
-    function getReferencedColumn($name, $table) {
+    public function getReferencedColumn($name, $table)
+    {
         return sprintf($this->foreign, $this->getColumnFromTable($name), substr($table, strlen($this->prefix)));
     }
 
-    function getReferencedTable($name, $table) {
+    public function getReferencedTable($name, $table)
+    {
         return $this->prefix . sprintf($this->table, $name, $table);
     }
 
-    function getSequence($table) {
-        return null;
+    public function getSequence($table)
+    {
     }
 
-    protected function getColumnFromTable($name) {
+    protected function getColumnFromTable($name)
+    {
         if ($this->table != '%s' && preg_match('(^' . str_replace('%s', '(.*)', preg_quote($this->table)) . '$)', $name, $match)) {
             return $match[1];
         }

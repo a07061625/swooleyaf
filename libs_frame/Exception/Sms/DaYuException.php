@@ -9,8 +9,10 @@ namespace Exception\Sms;
 
 use Exception\BaseException;
 
-class DaYuException extends BaseException {
-    public function __construct($message, $code) {
+class DaYuException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = '大鱼短信异常';
     }

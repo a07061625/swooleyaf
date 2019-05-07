@@ -9,8 +9,10 @@ namespace Exception\Etcd;
 
 use Exception\BaseException;
 
-class EtcdException extends BaseException {
-    public function __construct($message, $code) {
+class EtcdException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = 'Etcd配置异常';
     }

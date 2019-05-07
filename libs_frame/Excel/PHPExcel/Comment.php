@@ -98,10 +98,35 @@ class PHPExcel_Comment implements PHPExcel_IComparable
     public function __construct()
     {
         // Initialise variables
-        $this->author    = 'Author';
-        $this->text      = new PHPExcel_RichText();
+        $this->author = 'Author';
+        $this->text = new PHPExcel_RichText();
         $this->fillColor = new PHPExcel_Style_Color('FFFFFFE1');
         $this->alignment = PHPExcel_Style_Alignment::HORIZONTAL_GENERAL;
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if (is_object($value)) {
+                $this->$key = clone $value;
+            } else {
+                $this->$key = $value;
+            }
+        }
+    }
+
+    /**
+     * Convert to string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->text->getPlainText();
     }
 
     /**
@@ -309,30 +334,5 @@ class PHPExcel_Comment implements PHPExcel_IComparable
             $this->alignment .
             __CLASS__
         );
-    }
-
-    /**
-     * Implement PHP __clone to create a deep clone, not just a shallow copy.
-     */
-    public function __clone()
-    {
-        $vars = get_object_vars($this);
-        foreach ($vars as $key => $value) {
-            if (is_object($value)) {
-                $this->$key = clone $value;
-            } else {
-                $this->$key = $value;
-            }
-        }
-    }
-
-    /**
-     * Convert to string
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->text->getPlainText();
     }
 }

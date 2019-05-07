@@ -7,12 +7,15 @@
  */
 namespace IDE;
 
-class DeclaredRdKafka extends BaseModuleGenerator {
-    public function __construct() {
+class DeclaredRdKafka extends BaseModuleGenerator
+{
+    public function __construct()
+    {
         parent::__construct('rdkafka');
     }
 
-    protected function getModuleClasses() : array {
+    protected function getModuleClasses() : array
+    {
         $classes = array_merge(get_declared_classes(), get_declared_interfaces());
         foreach ($classes as $key => $value) {
             if (strncasecmp($value, 'RdKafka', 7) != 0) {

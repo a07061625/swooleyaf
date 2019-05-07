@@ -14,19 +14,23 @@ use DingDing\TalkTraitCorp;
  * 获取管理员列表
  * @package DingDing\Corp\User
  */
-class AdminGet extends TalkBaseCorp {
+class AdminGet extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/user/get_admin?' . http_build_query([
             'access_token' => $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag),
         ]);

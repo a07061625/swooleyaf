@@ -16,7 +16,8 @@ use Exception\DingDing\TalkException;
  * 获取用户基础信息
  * @package DingDing\Corp\User
  */
-class UserInfoGet extends TalkBaseCorp {
+class UserInfoGet extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -25,29 +26,33 @@ class UserInfoGet extends TalkBaseCorp {
      */
     private $code = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $code
      * @throws \Exception\DingDing\TalkException
      */
-    public function setCode(string $code){
-        if(ctype_alnum($code)){
+    public function setCode(string $code)
+    {
+        if (ctype_alnum($code)) {
             $this->reqData['code'] = $code;
         } else {
             throw new TalkException('授权码不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['code'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['code'])) {
             throw new TalkException('授权码不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

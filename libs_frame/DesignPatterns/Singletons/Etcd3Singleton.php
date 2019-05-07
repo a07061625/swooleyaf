@@ -13,7 +13,8 @@ use Log\Log;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
-class Etcd3Singleton {
+class Etcd3Singleton
+{
     use SingletonTrait;
 
     const METHOD_GET = 'GET';
@@ -42,7 +43,8 @@ class Etcd3Singleton {
      */
     private $prefixProjects = '';
 
-    private function __construct() {
+    private function __construct()
+    {
         Log::setPath(SY_LOG_PATH);
         $this->methods = [
             self::METHOD_GET,
@@ -71,8 +73,9 @@ class Etcd3Singleton {
     /**
      * @return \DesignPatterns\Singletons\Etcd3Singleton
      */
-    public static function getInstance() {
-        if(is_null(self::$instance)){
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -82,22 +85,180 @@ class Etcd3Singleton {
     /**
      * @return string
      */
-    public function getBaseDomain() : string {
+    public function getBaseDomain() : string
+    {
         return $this->baseDomain;
     }
 
     /**
      * @return string
      */
-    public function getPrefixBase() : string {
+    public function getPrefixBase() : string
+    {
         return $this->prefixBase;
     }
 
     /**
      * @return string
      */
-    public function getPrefixProjects() : string {
+    public function getPrefixProjects() : string
+    {
         return $this->prefixProjects;
+    }
+
+    /**
+     * 获取单个键值
+     * @param string $key 键名
+     * @return bool|string
+     */
+    public function get(string $key)
+    {
+        $trueKey = $this->formatKey($key);
+
+        $getRes = $this->sendReq($this->baseDomain . '/v3alpha/kv/range', [
+            'key' => base64_encode($trueKey),
+        ], [
+            'method' => self::METHOD_POST,
+        ]);
+        $getData = Tool::jsonDecode($getRes);
+        if (!is_array($getData)) {
+            Log::error('解析数据失败,错误信息为：' . $getRes);
+            return false;
+        } elseif (isset($getData['error'])) {
+            Log::error('获取数据失败,错误信息为：' . $getRes);
+            return false;
+        }
+
+        return isset($getData['kvs']) && !empty($getData['kvs']) ? base64_decode($getData['kvs'][0]['value'], true) : false;
+    }
+
+    /**
+     * 获取多个键值
+     * @param string $key 前缀键名
+     * @param array $extends 扩展数组
+     * @return array|bool
+     */
+    public function getList(string $key, array $extends = [])
+    {
+        $trueKey = $this->formatKey($key);
+        unset($extends['range_end'], $extends['key']);
+        $prefix = $this->incrementString($trueKey);
+
+        $data = [
+            'key' => base64_encode($trueKey),
+            'range_end' => base64_encode($prefix),
+        ];
+        foreach ($extends as $eKey => $eVal) {
+            $data[$eKey] = $eVal;
+        }
+
+        $getRes = $this->sendReq($this->baseDomain . '/v3alpha/kv/range', $data, [
+            'method' => self::METHOD_POST,
+        ]);
+        $getData = Tool::jsonDecode($getRes);
+        if (!is_array($getData)) {
+            Log::error('解析数据失败,错误信息为：' . $getRes);
+            return false;
+        } elseif (isset($getData['error'])) {
+            Log::error('获取数据失败,错误信息为：' . $getRes);
+            return false;
+        }
+
+        $resArr = [
+            'data' => [],
+            'count' => $getData['count'] ?? 0,
+            'more' => $getData['more'] ?? false,
+        ];
+        if (isset($getData['kvs'])) {
+            foreach ($getData['kvs'] as $eData) {
+                $resArr['data'][] = [
+                    'key' => base64_decode($eData['key'], true),
+                    'value' => isset($eData['value']) ? base64_decode($eData['value'], true) : false,
+                ];
+            }
+        }
+
+        return $resArr;
+    }
+
+    /**
+     * 设置配置
+     * @param string $key 键名
+     * @param string|int $value 键值
+     * @param int $ttl 超时时间,单位为秒
+     * @return bool true:设置成功 false:设置失败
+     */
+    public function set(string $key, $value, int $ttl = 0)
+    {
+        $trueKey = $this->formatKey($key);
+
+        $data = [
+            'key' => base64_encode($trueKey),
+            'value' => base64_encode((string)$value),
+        ];
+        if ($ttl > 0) {
+            $grantRes = $this->sendReq($this->baseDomain . '/v3alpha/lease/grant', [
+                'TTL' => $ttl,
+            ], [
+                'method' => self::METHOD_POST,
+            ]);
+            $grantData = Tool::jsonDecode($grantRes);
+            if (!is_array($grantData)) {
+                Log::error('解析etcd数据出错,错误信息为：' . $grantRes);
+                return false;
+            } elseif (!isset($grantData['ID'])) {
+                Log::error('申请租约失败,错误信息为：' . $grantRes);
+                return false;
+            }
+            $data['lease'] = $grantData['ID'];
+        }
+
+        $setRes = $this->sendReq($this->baseDomain . '/v3alpha/kv/put', $data, [
+            'method' => self::METHOD_POST,
+        ]);
+        $setData = Tool::jsonDecode($setRes);
+        if (!is_array($setData)) {
+            Log::error('解析数据出错,返回数据为' . $setRes);
+            return false;
+        } elseif (isset($setData['error'])) {
+            Log::error('设置数据出错,返回数据为' . $setRes);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * 删除数据
+     * @param string $key 键名
+     * @param bool $multi 前缀删除标识,true:删除以键名为前缀的所有数据 false:仅删除键名对应的值
+     * @return bool|int
+     */
+    public function del(string $key, bool $multi = false)
+    {
+        $trueKey = $this->formatKey($key);
+
+        $data = [
+            'key' => base64_encode($trueKey),
+        ];
+        if ($multi) {
+            $prefix = $this->incrementString($trueKey);
+            $data['range_end'] = base64_encode($prefix);
+        }
+
+        $delRes = $this->sendReq($this->baseDomain . '/v3alpha/kv/deleterange', $data, [
+            'method' => self::METHOD_POST,
+        ]);
+        $delData = Tool::jsonDecode($delRes);
+        if (!is_array($delData)) {
+            Log::error('解析数据出错,返回数据为' . $delRes);
+            return false;
+        } elseif (isset($delData['error'])) {
+            Log::error('删除数据出错,返回数据为' . $delRes);
+            return false;
+        } else {
+            return isset($delData['deleted']) ? (int)$delData['deleted'] : 0;
+        }
     }
 
     /**
@@ -108,9 +269,10 @@ class Etcd3Singleton {
      * @return string
      * @throws \Exception\Etcd\EtcdException
      */
-    private function sendReq(string $url,array $data,array $extends=[]) {
+    private function sendReq(string $url, array $data, array $extends = [])
+    {
         $method = strtoupper(Tool::getArrayVal($extends, 'method', self::METHOD_GET));
-        if (!in_array($method, $this->methods)) {
+        if (!in_array($method, $this->methods, true)) {
             throw new EtcdException('请求方式不支持', ErrorCode::ETCD_PARAM_ERROR);
         }
 
@@ -168,7 +330,8 @@ class Etcd3Singleton {
      * @return mixed
      * @throws \Exception\Etcd\EtcdException
      */
-    private function formatKey(string $key) {
+    private function formatKey(string $key)
+    {
         $trueKey = preg_replace('/[^0-9a-zA-Z\-\_\/]+/', '', (string)$key);
         if (strlen($trueKey) == 0) {
             throw new EtcdException('键名不能为空', ErrorCode::ETCD_PARAM_ERROR);
@@ -183,166 +346,16 @@ class Etcd3Singleton {
      * @return string
      * @throws \Exception\Etcd\EtcdException
      */
-    private function incrementString(string $key) {
+    private function incrementString(string $key)
+    {
         $length = strlen($key);
-        if($length == 0){
+        if ($length == 0) {
             throw new EtcdException('键名不能为空', ErrorCode::ETCD_PARAM_ERROR);
-        } else if($length == 1){
+        } elseif ($length == 1) {
             return chr(ord($key) + 1);
         } else {
             $needStr = substr($key, -1);
             return substr($key, 0, ($length - 1)) . chr(ord($needStr) + 1);
-        }
-    }
-
-    /**
-     * 获取单个键值
-     * @param string $key 键名
-     * @return bool|string
-     */
-    public function get(string $key) {
-        $trueKey = $this->formatKey($key);
-
-        $getRes = $this->sendReq($this->baseDomain . '/v3alpha/kv/range', [
-            'key' => base64_encode($trueKey),
-        ], [
-            'method' => self::METHOD_POST,
-        ]);
-        $getData = Tool::jsonDecode($getRes);
-        if (!is_array($getData)) {
-            Log::error('解析数据失败,错误信息为：' . $getRes);
-            return false;
-        } else if (isset($getData['error'])) {
-            Log::error('获取数据失败,错误信息为：' . $getRes);
-            return false;
-        }
-
-        return isset($getData['kvs']) && !empty($getData['kvs']) ? base64_decode($getData['kvs'][0]['value']) : false;
-    }
-
-    /**
-     * 获取多个键值
-     * @param string $key 前缀键名
-     * @param array $extends 扩展数组
-     * @return array|bool
-     */
-    public function getList(string $key,array $extends=[]) {
-        $trueKey = $this->formatKey($key);
-        unset($extends['range_end'], $extends['key']);
-        $prefix = $this->incrementString($trueKey);
-
-        $data = [
-            'key' => base64_encode($trueKey),
-            'range_end' => base64_encode($prefix),
-        ];
-        foreach ($extends as $eKey => $eVal) {
-            $data[$eKey] = $eVal;
-        }
-
-        $getRes = $this->sendReq($this->baseDomain . '/v3alpha/kv/range', $data, [
-            'method' => self::METHOD_POST,
-        ]);
-        $getData = Tool::jsonDecode($getRes);
-        if (!is_array($getData)) {
-            Log::error('解析数据失败,错误信息为：' . $getRes);
-            return false;
-        } else if (isset($getData['error'])) {
-            Log::error('获取数据失败,错误信息为：' . $getRes);
-            return false;
-        }
-
-        $resArr = [
-            'data' => [],
-            'count' => $getData['count'] ?? 0,
-            'more' => $getData['more'] ?? false,
-        ];
-        if (isset($getData['kvs'])) {
-            foreach ($getData['kvs'] as $eData) {
-                $resArr['data'][] = [
-                    'key' => base64_decode($eData['key']),
-                    'value' => isset($eData['value']) ? base64_decode($eData['value']) : false,
-                ];
-            }
-        }
-
-        return $resArr;
-    }
-
-    /**
-     * 设置配置
-     * @param string $key 键名
-     * @param string|int $value 键值
-     * @param int $ttl 超时时间,单位为秒
-     * @return bool true:设置成功 false:设置失败
-     */
-    public function set(string $key, $value,int $ttl=0) {
-        $trueKey = $this->formatKey($key);
-
-        $data = [
-            'key' => base64_encode($trueKey),
-            'value' => base64_encode((string)$value),
-        ];
-        if($ttl > 0){
-            $grantRes = $this->sendReq($this->baseDomain . '/v3alpha/lease/grant', [
-                'TTL' => $ttl,
-            ], [
-                'method' => self::METHOD_POST,
-            ]);
-            $grantData = Tool::jsonDecode($grantRes);
-            if (!is_array($grantData)) {
-                Log::error('解析etcd数据出错,错误信息为：' . $grantRes);
-                return false;
-            } else if(!isset($grantData['ID'])){
-                Log::error('申请租约失败,错误信息为：' . $grantRes);
-                return false;
-            }
-            $data['lease'] = $grantData['ID'];
-        }
-
-        $setRes = $this->sendReq($this->baseDomain . '/v3alpha/kv/put', $data, [
-            'method' => self::METHOD_POST,
-        ]);
-        $setData = Tool::jsonDecode($setRes);
-        if (!is_array($setData)) {
-            Log::error('解析数据出错,返回数据为' . $setRes);
-            return false;
-        } else if (isset($setData['error'])) {
-            Log::error('设置数据出错,返回数据为' . $setRes);
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    /**
-     * 删除数据
-     * @param string $key 键名
-     * @param bool $multi 前缀删除标识,true:删除以键名为前缀的所有数据 false:仅删除键名对应的值
-     * @return bool|int
-     */
-    public function del(string $key,bool $multi=false) {
-        $trueKey = $this->formatKey($key);
-
-        $data = [
-            'key' => base64_encode($trueKey),
-        ];
-        if($multi){
-            $prefix = $this->incrementString($trueKey);
-            $data['range_end'] = base64_encode($prefix);
-        }
-
-        $delRes = $this->sendReq($this->baseDomain . '/v3alpha/kv/deleterange', $data, [
-            'method' => self::METHOD_POST,
-        ]);
-        $delData = Tool::jsonDecode($delRes);
-        if (!is_array($delData)) {
-            Log::error('解析数据出错,返回数据为' . $delRes);
-            return false;
-        } else if (isset($delData['error'])) {
-            Log::error('删除数据出错,返回数据为' . $delRes);
-            return false;
-        } else {
-            return isset($delData['deleted']) ? (int)$delData['deleted'] : 0;
         }
     }
 }

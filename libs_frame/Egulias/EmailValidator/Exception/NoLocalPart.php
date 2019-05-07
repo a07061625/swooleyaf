@@ -5,5 +5,5 @@ namespace Egulias\EmailValidator\Exception;
 class NoLocalPart extends InvalidEmail
 {
     const CODE = 130;
-    const REASON = "No local part";
+    const REASON = 'No local part';
 }

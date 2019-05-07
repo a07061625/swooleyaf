@@ -16,7 +16,8 @@ use Exception\DingDing\TalkException;
  * 查询群消息已读人员列表
  * @package DingDing\Corp\Chat
  */
-class ReadListGet extends TalkBaseCorp {
+class ReadListGet extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -35,7 +36,8 @@ class ReadListGet extends TalkBaseCorp {
      */
     private $size = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -43,14 +45,16 @@ class ReadListGet extends TalkBaseCorp {
         $this->reqData['size'] = 10;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $messageId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setMessageId(string $messageId){
+    public function setMessageId(string $messageId)
+    {
         if (ctype_alnum($messageId)) {
             $this->reqData['messageId'] = $messageId;
         } else {
@@ -62,8 +66,9 @@ class ReadListGet extends TalkBaseCorp {
      * @param int $cursor
      * @throws \Exception\DingDing\TalkException
      */
-    public function setCursor(int $cursor){
-        if($cursor >= 0){
+    public function setCursor(int $cursor)
+    {
+        if ($cursor >= 0) {
             $this->reqData['cursor'] = $cursor;
         } else {
             throw new TalkException('分页游标不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -74,16 +79,18 @@ class ReadListGet extends TalkBaseCorp {
      * @param int $size
      * @throws \Exception\DingDing\TalkException
      */
-    public function setSize(int $size){
-        if($size > 0){
+    public function setSize(int $size)
+    {
+        if ($size > 0) {
             $this->reqData['size'] = $size > 100 ? 100 : $size;
         } else {
             throw new TalkException('分页大小不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['messageId'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['messageId'])) {
             throw new TalkException('消息ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

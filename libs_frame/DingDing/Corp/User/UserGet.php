@@ -16,7 +16,8 @@ use Exception\DingDing\TalkException;
  * 获取用户详情
  * @package DingDing\Corp\User
  */
-class UserGet extends TalkBaseCorp {
+class UserGet extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -30,30 +31,34 @@ class UserGet extends TalkBaseCorp {
      */
     private $lang = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
         $this->reqData['lang'] = 'zh_CN';
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $userId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUserId(string $userId){
-        if(ctype_alnum($userId)){
+    public function setUserId(string $userId)
+    {
+        if (ctype_alnum($userId)) {
             $this->reqData['userid'] = $userId;
         } else {
             throw new TalkException('用户id不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['userid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['userid'])) {
             throw new TalkException('用户id不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

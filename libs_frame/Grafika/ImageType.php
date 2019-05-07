@@ -7,8 +7,8 @@ namespace Grafika;
  *
  * @package Grafika
  */
-class ImageType {
-
+class ImageType
+{
     const UNKNOWN = '';
 
     const GIF = 'GIF';

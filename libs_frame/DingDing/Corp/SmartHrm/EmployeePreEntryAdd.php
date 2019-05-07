@@ -17,7 +17,8 @@ use Tool\Tool;
  * 添加企业待入职员工
  * @package DingDing\Corp\SmartHrm
  */
-class EmployeePreEntryAdd extends TalkBaseCorp {
+class EmployeePreEntryAdd extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -46,19 +47,25 @@ class EmployeePreEntryAdd extends TalkBaseCorp {
      */
     private $extend_info = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
         $this->reqData['param'] = [];
     }
 
+    private function __clone()
+    {
+    }
+
     /**
      * @param string $name
      * @throws \Exception\DingDing\TalkException
      */
-    public function setName(string $name){
-        if(strlen($name) > 0){
+    public function setName(string $name)
+    {
+        if (strlen($name) > 0) {
             $this->reqData['param']['name'] = $name;
         } else {
             throw new TalkException('姓名不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -69,8 +76,9 @@ class EmployeePreEntryAdd extends TalkBaseCorp {
      * @param string $mobile
      * @throws \Exception\DingDing\TalkException
      */
-    public function setMobile(string $mobile){
-        if(ctype_digit($mobile) && (strlen($mobile) == 11) && ($mobile{0} == '1')){
+    public function setMobile(string $mobile)
+    {
+        if (ctype_digit($mobile) && (strlen($mobile) == 11) && ($mobile{0} == '1')) {
             $this->reqData['param']['mobile'] = $mobile;
         } else {
             throw new TalkException('手机号不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -81,8 +89,9 @@ class EmployeePreEntryAdd extends TalkBaseCorp {
      * @param int $preEntryTime
      * @throws \Exception\DingDing\TalkException
      */
-    public function setPreEntryTime(int $preEntryTime){
-        if($preEntryTime > 946656000){
+    public function setPreEntryTime(int $preEntryTime)
+    {
+        if ($preEntryTime > 946656000) {
             $this->reqData['param']['pre_entry_time'] = date('Y-m-d H:i:s', $preEntryTime);
         } else {
             throw new TalkException('预期入职时间不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -93,8 +102,9 @@ class EmployeePreEntryAdd extends TalkBaseCorp {
      * @param string $opUserId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setOpUserId(string $opUserId){
-        if(ctype_alnum($opUserId)){
+    public function setOpUserId(string $opUserId)
+    {
+        if (ctype_alnum($opUserId)) {
             $this->reqData['param']['op_userid'] = $opUserId;
         } else {
             throw new TalkException('操作人用户ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -105,21 +115,20 @@ class EmployeePreEntryAdd extends TalkBaseCorp {
      * @param array $extendInfo
      * @throws \Exception\DingDing\TalkException
      */
-    public function setExtendInfo(array $extendInfo){
-        if(empty($extendInfo)){
+    public function setExtendInfo(array $extendInfo)
+    {
+        if (empty($extendInfo)) {
             throw new TalkException('扩展信息不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
         $this->reqData['param']['extend_info'] = Tool::jsonEncode($extendInfo, JSON_UNESCAPED_UNICODE);
     }
 
-    private function __clone(){
-    }
-
-    public function getDetail() : array {
-        if(!isset($this->reqData['param']['name'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['param']['name'])) {
             throw new TalkException('姓名不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['param']['mobile'])){
+        if (!isset($this->reqData['param']['mobile'])) {
             throw new TalkException('手机号不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

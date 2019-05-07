@@ -1,6 +1,6 @@
 <?php
 
-require_once(PHPEXCEL_ROOT . 'PHPExcel/Shared/trend/bestFitClass.php');
+require_once PHPEXCEL_ROOT . 'PHPExcel/Shared/trend/bestFitClass.php';
 
 /**
  * PHPExcel_Exponential_Best_Fit
@@ -35,7 +35,21 @@ class PHPExcel_Exponential_Best_Fit extends PHPExcel_Best_Fit
      *
      * @var    string
      **/
-    protected $bestFitType        = 'exponential';
+    protected $bestFitType = 'exponential';
+
+    /**
+     * Define the regression and calculate the goodness of fit for a set of X and Y data values
+     *
+     * @param    float[]        $yValues    The set of Y-values for this regression
+     * @param    float[]        $xValues    The set of X-values for this regression
+     * @param    boolean        $const
+     */
+    public function __construct($yValues, $xValues = [], $const = true)
+    {
+        if (parent::__construct($yValues, $xValues) !== false) {
+            $this->exponentialRegression($yValues, $xValues, $const);
+        }
+    }
 
     /**
      * Return the Y-Value for a specified value of X
@@ -120,19 +134,5 @@ class PHPExcel_Exponential_Best_Fit extends PHPExcel_Best_Fit
         unset($value);
 
         $this->leastSquareFit($yValues, $xValues, $const);
-    }
-
-    /**
-     * Define the regression and calculate the goodness of fit for a set of X and Y data values
-     *
-     * @param    float[]        $yValues    The set of Y-values for this regression
-     * @param    float[]        $xValues    The set of X-values for this regression
-     * @param    boolean        $const
-     */
-    public function __construct($yValues, $xValues = array(), $const = true)
-    {
-        if (parent::__construct($yValues, $xValues) !== false) {
-            $this->exponentialRegression($yValues, $xValues, $const);
-        }
     }
 }

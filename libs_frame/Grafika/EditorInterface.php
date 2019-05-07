@@ -5,8 +5,8 @@ namespace Grafika;
  * Interface EditorInterface
  * @package Grafika
  */
-interface EditorInterface {
-
+interface EditorInterface
+{
     /**
      * Apply a filter to the image. See Filters section for a list of available filters.
      *
@@ -15,7 +15,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function apply( &$image, $filter );
+    public function apply(&$image, $filter);
 
     /**
      * Blend two images together with the first image as the base and the second image on top. Supports several blend modes.
@@ -30,7 +30,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function blend(&$image1, $image2, $type='normal', $opacity = 1.0, $position = 'top-left', $offsetX = 0, $offsetY = 0 );
+    public function blend(&$image1, $image2, $type = 'normal', $opacity = 1.0, $position = 'top-left', $offsetX = 0, $offsetY = 0);
 
     /**
      * Compare two images and returns a hamming distance. A value of 0 indicates a likely similar picture. A value between 1 and 10 is potentially a variation. A value greater than 10 is likely a different image.
@@ -41,7 +41,7 @@ interface EditorInterface {
      * @return int Hamming distance. Note: This breaks the chain if you are doing fluent api calls as it does not return an Editor.
      * @throws \Exception
      */
-    public function compare( $image1, $image2 );
+    public function compare($image1, $image2);
 
     /**
      * Crop the image to the given dimension and position.
@@ -55,7 +55,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function crop( &$image, $cropWidth, $cropHeight, $position = 'center', $offsetX = 0, $offsetY = 0 );
+    public function crop(&$image, $cropWidth, $cropHeight, $position = 'center', $offsetX = 0, $offsetY = 0);
 
     /**
      * Draw a DrawingObject on the image. See Drawing Objects section.
@@ -65,7 +65,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function draw( &$image, $drawingObject );
+    public function draw(&$image, $drawingObject);
 
     /**
      * Compare if two images are equal. It will compare if the two images are of the same width and height. If the dimensions differ, it will return false. If the dimensions are equal, it will loop through each pixels. If one of the pixel don't match, it will return false. The pixels are compared using their RGB (Red, Green, Blue) values.
@@ -76,7 +76,7 @@ interface EditorInterface {
      * @return bool True if equals false if not. Note: This breaks the chain if you are doing fluent api calls as it does not return an Editor.
      * @throws \Exception
      */
-    public function equal( $image1, $image2 );
+    public function equal($image1, $image2);
     
     /**
      * Fill entire image with color.
@@ -88,7 +88,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function fill( &$image, $color, $x = 0, $y = 0 );
+    public function fill(&$image, $color, $x = 0, $y = 0);
 
     /**
      * Flatten if animated GIF. Do nothing otherwise.
@@ -97,7 +97,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function flatten( &$image );
+    public function flatten(&$image);
 
     /**
      * Flip an image.
@@ -107,7 +107,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function flip( &$image, $mode);
+    public function flip(&$image, $mode);
 
     /**
      * Free the image clearing resources associated with it.
@@ -116,7 +116,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function free( &$image );
+    public function free(&$image);
 
     /**
      * Checks the PHP install if the editor is available.
@@ -133,7 +133,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function opacity( &$image, $opacity );
+    public function opacity(&$image, $opacity);
 
     /**
      * Open an image file and assign Image to first parameter. Grafika officially supports JPEG, PNG, GIF, and animated GIF. In theory, Grafika can open and edit other image formats as long as they are supported by GD and Imagick but it is currently untested.
@@ -143,7 +143,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function open( &$image, $imageFile );
+    public function open(&$image, $imageFile);
     
     /**
      * Wrapper function for the resizeXXX family of functions. Resize an image to a given width, height and mode.
@@ -155,7 +155,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function resize( &$image, $newWidth, $newHeight, $mode='fit' );
+    public function resize(&$image, $newWidth, $newHeight, $mode = 'fit');
 
     /**
      * Resize image to exact dimensions ignoring aspect ratio. Useful if you want to force exact width and height.
@@ -166,7 +166,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function resizeExact( &$image, $newWidth, $newHeight );
+    public function resizeExact(&$image, $newWidth, $newHeight);
 
     /**
      * Resize image to exact height. Width is auto calculated. Useful for creating row of images with the same height.
@@ -176,7 +176,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function resizeExactHeight( &$image, $newHeight );
+    public function resizeExactHeight(&$image, $newHeight);
 
     /**
      * Resize image to exact width. Height is auto calculated. Useful for creating column of images with the same width.
@@ -186,7 +186,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function resizeExactWidth( &$image, $newWidth );
+    public function resizeExactWidth(&$image, $newWidth);
 
     /**
      * Resize image to fill all the space in the given dimension. Excess parts are cropped.
@@ -197,7 +197,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function resizeFill( &$image, $newWidth, $newHeight );
+    public function resizeFill(&$image, $newWidth, $newHeight);
 
     /**
      * Resize an image to fit within the given width and height. The re-sized image will not exceed the given dimension. Useful if you want to preserve the aspect ratio.
@@ -208,7 +208,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function resizeFit( &$image, $newWidth, $newHeight );
+    public function resizeFit(&$image, $newWidth, $newHeight);
 
     /**
      * Rotate an image counter-clockwise.
@@ -219,7 +219,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function rotate( &$image, $angle, $color = null );
+    public function rotate(&$image, $angle, $color = null);
 
     /**
      * Save the image to an image format.
@@ -233,7 +233,7 @@ interface EditorInterface {
      *
      * @return EditorInterface An instance of Editor.
      */
-    public function save( $image, $file, $type = null, $quality = null, $interlace = false, $permission = 0755 );
+    public function save($image, $file, $type = null, $quality = null, $interlace = false, $permission = 0755);
 
     /**
      * Write text to image.
@@ -250,6 +250,5 @@ interface EditorInterface {
      * @return EditorInterface An instance of Editor.
      * @throws \Exception
      */
-    public function text( &$image, $text, $size = 12, $x = 0, $y = 12, $color = null, $font = '', $angle = 0 );
-
+    public function text(&$image, $text, $size = 12, $x = 0, $y = 12, $color = null, $font = '', $angle = 0);
 }

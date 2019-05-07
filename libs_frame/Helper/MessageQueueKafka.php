@@ -16,7 +16,8 @@ use MessageQueue\Consumer\KafkaConsumerContainer;
 use RdKafka\Message;
 use Tool\Tool;
 
-class MessageQueueKafka {
+class MessageQueueKafka
+{
     /**
      * @var \MessageQueue\Consumer\KafkaConsumerContainer
      */
@@ -30,33 +31,49 @@ class MessageQueueKafka {
      */
     private $messageHandleMaxNum = 0;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->consumerContainer = new KafkaConsumerContainer();
         $this->offsetExpireTime = (int)Tool::getConfig('messagequeue.' . SY_ENV . SY_PROJECT . '.kafka.common.offset.expire');
         $this->messageHandleMaxNum = (int)Tool::getConfig('messagequeue.' . SY_ENV . SY_PROJECT . '.kafka.common.message.handle.max');
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function refresh(){
+    public function refresh()
+    {
         RedisSingleton::getInstance()->close();
-        if(SY_DATABASE){
+        if (SY_DATABASE) {
             MysqlSingleton::getInstance()->reConnect();
         }
     }
 
-    private function handle(Message $message,int &$totalNum){
+    public function handleMessage()
+    {
+        $totalNum = $this->messageHandleMaxNum;
+
+        while ($totalNum > 0) {
+            $message = MessageQueueSingleton::getInstance()->getKafkaConsumer()->consume(31536000000);
+            $totalNum--;
+
+            $this->handle($message, $totalNum);
+        }
+    }
+
+    private function handle(Message $message, int &$totalNum)
+    {
         switch ($message->err) {
             case RD_KAFKA_RESP_ERR_NO_ERROR:
                 $consumer = $this->consumerContainer->getObj($message->topic_name);
-                if(is_null($consumer)){
+                if (is_null($consumer)) {
                     break;
                 }
 
                 $redisKey = Project::REDIS_PREFIX_MESSAGE_KAFKA_OFFSET . $message->topic_name . '_' . $message->partition . '_' . $message->offset;
                 $cacheData = RedisSingleton::getInstance()->getConn()->get($redisKey);
-                if($cacheData !== false){
+                if ($cacheData !== false) {
                     unset($consumer);
                     break;
                 }
@@ -83,17 +100,6 @@ class MessageQueueKafka {
             default:
                 Log::error($message->errstr(), $message->err);
                 break;
-        }
-    }
-
-    public function handleMessage(){
-        $totalNum = $this->messageHandleMaxNum;
-
-        while ($totalNum > 0) {
-            $message = MessageQueueSingleton::getInstance()->getKafkaConsumer()->consume(31536000000);
-            $totalNum--;
-
-            $this->handle($message, $totalNum);
         }
     }
 }

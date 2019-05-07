@@ -32,11 +32,9 @@ require_once PHPEXCEL_ROOT . 'PHPExcel/Shared/PCLZip/pclzip.lib.php';
  */
 class PHPExcel_Shared_ZipArchive
 {
-
     /**    constants */
     const OVERWRITE = 'OVERWRITE';
-    const CREATE    = 'CREATE';
-
+    const CREATE = 'CREATE';
 
     /**
      * Temporary storage directory
@@ -52,7 +50,6 @@ class PHPExcel_Shared_ZipArchive
      */
     private $zip;
 
-
     /**
      * Open a new zip archive
      *
@@ -67,7 +64,6 @@ class PHPExcel_Shared_ZipArchive
         return true;
     }
 
-
     /**
      * Close this zip archive
      *
@@ -75,7 +71,6 @@ class PHPExcel_Shared_ZipArchive
     public function close()
     {
     }
-
 
     /**
      * Add a new file to the zip archive from a string of raw data.
@@ -87,16 +82,16 @@ class PHPExcel_Shared_ZipArchive
     {
         $filenameParts = pathinfo($localname);
 
-        $handle = fopen($this->tempDir.'/'.$filenameParts["basename"], "wb");
+        $handle = fopen($this->tempDir . '/' . $filenameParts['basename'], 'wb');
         fwrite($handle, $contents);
         fclose($handle);
 
-        $res = $this->zip->add($this->tempDir.'/'.$filenameParts["basename"], PCLZIP_OPT_REMOVE_PATH, $this->tempDir, PCLZIP_OPT_ADD_PATH, $filenameParts["dirname"]);
+        $res = $this->zip->add($this->tempDir . '/' . $filenameParts['basename'], PCLZIP_OPT_REMOVE_PATH, $this->tempDir, PCLZIP_OPT_ADD_PATH, $filenameParts['dirname']);
         if ($res == 0) {
-            throw new PHPExcel_Writer_Exception("Error zipping files : " . $this->zip->errorInfo(true));
+            throw new PHPExcel_Writer_Exception('Error zipping files : ' . $this->zip->errorInfo(true));
         }
 
-        unlink($this->tempDir.'/'.$filenameParts["basename"]);
+        unlink($this->tempDir . '/' . $filenameParts['basename']);
     }
 
     /**
@@ -113,8 +108,8 @@ class PHPExcel_Shared_ZipArchive
         $listCount = count($list);
         $index = -1;
         for ($i = 0; $i < $listCount; ++$i) {
-            if (strtolower($list[$i]["filename"]) == $fileName ||
-                strtolower($list[$i]["stored_filename"]) == $fileName) {
+            if (strtolower($list[$i]['filename']) == $fileName ||
+                strtolower($list[$i]['stored_filename']) == $fileName) {
                 $index = $i;
                 break;
             }
@@ -145,17 +140,18 @@ class PHPExcel_Shared_ZipArchive
 
         $contents = $extracted;
         if ((is_array($extracted)) && ($extracted != 0)) {
-            $contents = $extracted[0]["content"];
+            $contents = $extracted[0]['content'];
         }
 
         return $contents;
     }
     
-    public function getFromIndex($index) {
+    public function getFromIndex($index)
+    {
         $extracted = $this->zip->extractByIndex($index, PCLZIP_OPT_EXTRACT_AS_STRING);
         $contents = '';
         if ((is_array($extracted)) && ($extracted != 0)) {
-            $contents = $extracted[0]["content"];
+            $contents = $extracted[0]['content'];
         }
 
         return $contents;

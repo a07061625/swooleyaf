@@ -17,7 +17,8 @@ use Tool\Tool;
  * 创建角色
  * @package DingDing\Corp\Role
  */
-class RoleAdd extends TalkBaseCorp {
+class RoleAdd extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -31,21 +32,24 @@ class RoleAdd extends TalkBaseCorp {
      */
     private $groupId = 0;
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $roleName
      * @throws \Exception\DingDing\TalkException
      */
-    public function setRoleName(string $roleName){
-        if(strlen($roleName) > 0){
+    public function setRoleName(string $roleName)
+    {
+        if (strlen($roleName) > 0) {
             $this->reqData['roleName'] = $roleName;
         } else {
             throw new TalkException('角色名称不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -56,19 +60,21 @@ class RoleAdd extends TalkBaseCorp {
      * @param int $groupId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setGroupId(int $groupId){
-        if($groupId > 0){
+    public function setGroupId(int $groupId)
+    {
+        if ($groupId > 0) {
             $this->reqData['groupId'] = $groupId;
         } else {
             throw new TalkException('角色组ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['roleName'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['roleName'])) {
             throw new TalkException('角色名称不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        if(!isset($this->reqData['groupId'])){
+        if (!isset($this->reqData['groupId'])) {
             throw new TalkException('角色组ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

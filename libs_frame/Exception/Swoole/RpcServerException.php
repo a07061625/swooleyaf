@@ -9,8 +9,10 @@ namespace Exception\Swoole;
 
 use Exception\BaseException;
 
-class RpcServerException extends BaseException {
-    public function __construct($message, $code) {
+class RpcServerException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = 'SWOOLE-RPC服务异常';
     }

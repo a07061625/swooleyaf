@@ -19,13 +19,12 @@
 //
 // $Id: OLE.php,v 1.13 2007/03/07 14:38:25 schmidt Exp $
 
-
 /**
 * Array for storing OLE instances that are accessed from
 * OLE_ChainedBlockStream::stream_open().
 * @var  array
 */
-$GLOBALS['_OLE_INSTANCES'] = array();
+$GLOBALS['_OLE_INSTANCES'] = [];
 
 /**
 * OLE package base class.
@@ -37,12 +36,12 @@ $GLOBALS['_OLE_INSTANCES'] = array();
 */
 class PHPExcel_Shared_OLE
 {
-    const OLE_PPS_TYPE_ROOT   =      5;
-    const OLE_PPS_TYPE_DIR    =      1;
-    const OLE_PPS_TYPE_FILE   =      2;
+    const OLE_PPS_TYPE_ROOT = 5;
+    const OLE_PPS_TYPE_DIR = 1;
+    const OLE_PPS_TYPE_FILE = 2;
     const OLE_DATA_SIZE_SMALL = 0x1000;
-    const OLE_LONG_INT_SIZE   =      4;
-    const OLE_PPS_SIZE        =   0x80;
+    const OLE_LONG_INT_SIZE = 4;
+    const OLE_PPS_SIZE = 0x80;
 
     /**
      * The file handle for reading an OLE container
@@ -54,7 +53,7 @@ class PHPExcel_Shared_OLE
     * Array of PPS's found on the OLE container
     * @var array
     */
-    public $_list = array();
+    public $_list = [];
 
     /**
      * Root directory of OLE container
@@ -95,7 +94,7 @@ class PHPExcel_Shared_OLE
     */
     public function read($file)
     {
-        $fh = fopen($file, "r");
+        $fh = fopen($file, 'r');
         if (!$fh) {
             throw new PHPExcel_Reader_Exception("Can't open file $file");
         }
@@ -108,11 +107,11 @@ class PHPExcel_Shared_OLE
         fseek($fh, 28);
         if (fread($fh, 2) != "\xFE\xFF") {
             // This shouldn't be a problem in practice
-            throw new PHPExcel_Reader_Exception("Only Little-Endian encoding is supported.");
+            throw new PHPExcel_Reader_Exception('Only Little-Endian encoding is supported.');
         }
         // Size of blocks and short blocks in bytes
         $this->bigBlockSize = pow(2, self::_readInt2($fh));
-        $this->smallBlockSize  = pow(2, self::_readInt2($fh));
+        $this->smallBlockSize = pow(2, self::_readInt2($fh));
 
         // Skip UID, revision number and version number
         fseek($fh, 44);
@@ -134,11 +133,11 @@ class PHPExcel_Shared_OLE
         $mbatFirstBlockId = self::_readInt4($fh);
         // Number of blocks in Master Block Allocation Table
         $mbbatBlockCount = self::_readInt4($fh);
-        $this->bbat = array();
+        $this->bbat = [];
 
         // Remaining 4 * 109 bytes of current block is beginning of Master
         // Block Allocation Table
-        $mbatBlocks = array();
+        $mbatBlocks = [];
         for ($i = 0; $i < 109; ++$i) {
             $mbatBlocks[] = self::_readInt4($fh);
         }
@@ -165,7 +164,7 @@ class PHPExcel_Shared_OLE
         }
 
         // Read short block allocation table (SBAT)
-        $this->sbat = array();
+        $this->sbat = [];
         $shortBlockCount = $sbbatBlockCount * $this->bigBlockSize / 4;
         $sbatFh = $this->getStream($sbatFirstBlockId);
         for ($blockId = 0; $blockId < $shortBlockCount; ++$blockId) {
@@ -181,6 +180,7 @@ class PHPExcel_Shared_OLE
     /**
      * @param  int  block id
      * @param  int  byte offset from beginning of file
+     * @param mixed $blockId
      * @access public
      */
     public function _getBlockOffset($blockId)
@@ -192,6 +192,7 @@ class PHPExcel_Shared_OLE
     * Returns a stream for use with fread() etc. External callers should
     * use PHPExcel_Shared_OLE_PPS_File::getStream().
     * @param   int|PPS   block id or PPS
+    * @param mixed $blockIdOrPps
     * @return  resource  read-only stream
     */
     public function getStream($blockIdOrPps)
@@ -219,47 +220,12 @@ class PHPExcel_Shared_OLE
     }
 
     /**
-     * Reads a signed char.
-     * @param   resource  file handle
-     * @return  int
-     * @access public
-     */
-    private static function _readInt1($fh)
-    {
-        list(, $tmp) = unpack("c", fread($fh, 1));
-        return $tmp;
-    }
-
-    /**
-     * Reads an unsigned short (2 octets).
-     * @param   resource  file handle
-     * @return  int
-     * @access public
-     */
-    private static function _readInt2($fh)
-    {
-        list(, $tmp) = unpack("v", fread($fh, 2));
-        return $tmp;
-    }
-
-    /**
-     * Reads an unsigned long (4 octets).
-     * @param   resource  file handle
-     * @return  int
-     * @access public
-     */
-    private static function _readInt4($fh)
-    {
-        list(, $tmp) = unpack("V", fread($fh, 4));
-        return $tmp;
-    }
-
-    /**
     * Gets information about all PPS's on the OLE container from the PPS WK's
     * creates an OLE_PPS object for each one.
     *
     * @access public
     * @param  integer  the block id of the first block
+    * @param mixed $blockId
     * @return mixed true on success, PEAR_Error on failure
     */
     public function _readPpsWks($blockId)
@@ -271,15 +237,15 @@ class PHPExcel_Shared_OLE
             $nameLength = self::_readInt2($fh);
             $nameUtf16 = substr($nameUtf16, 0, $nameLength - 2);
             // Simple conversion from UTF-16LE to ISO-8859-1
-            $name = str_replace("\x00", "", $nameUtf16);
+            $name = str_replace("\x00", '', $nameUtf16);
             $type = self::_readInt1($fh);
             switch ($type) {
                 case self::OLE_PPS_TYPE_ROOT:
-                    $pps = new PHPExcel_Shared_OLE_PPS_Root(null, null, array());
+                    $pps = new PHPExcel_Shared_OLE_PPS_Root(null, null, []);
                     $this->root = $pps;
                     break;
                 case self::OLE_PPS_TYPE_DIR:
-                    $pps = new PHPExcel_Shared_OLE_PPS(null, null, null, null, null, null, null, null, null, array());
+                    $pps = new PHPExcel_Shared_OLE_PPS(null, null, null, null, null, null, null, null, null, []);
                     break;
                 case self::OLE_PPS_TYPE_FILE:
                     $pps = new PHPExcel_Shared_OLE_PPS_File($name);
@@ -288,11 +254,11 @@ class PHPExcel_Shared_OLE
                     continue;
             }
             fseek($fh, 1, SEEK_CUR);
-            $pps->Type    = $type;
-            $pps->Name    = $name;
+            $pps->Type = $type;
+            $pps->Name = $name;
             $pps->PrevPps = self::_readInt4($fh);
             $pps->NextPps = self::_readInt4($fh);
-            $pps->DirPps  = self::_readInt4($fh);
+            $pps->DirPps = self::_readInt4($fh);
             fseek($fh, 20, SEEK_CUR);
             $pps->Time1st = self::OLE2LocalDate(fread($fh, 8));
             $pps->Time2nd = self::OLE2LocalDate(fread($fh, 8));
@@ -311,8 +277,8 @@ class PHPExcel_Shared_OLE
         // Initialize $pps->children on directories
         foreach ($this->_list as $pps) {
             if ($pps->Type == self::OLE_PPS_TYPE_DIR || $pps->Type == self::OLE_PPS_TYPE_ROOT) {
-                $nos = array($pps->DirPps);
-                $pps->children = array();
+                $nos = [$pps->DirPps];
+                $pps->children = [];
                 while ($nos) {
                     $no = array_pop($nos);
                     if ($no != -1) {
@@ -469,7 +435,7 @@ class PHPExcel_Shared_OLE
         // days from 1-1-1601 until the beggining of UNIX era
         $days = 134774;
         // calculate seconds
-        $big_date = $days*24*3600 + gmmktime(date("H", $date), date("i", $date), date("s", $date), date("m", $date), date("d", $date), date("Y", $date));
+        $big_date = $days * 24 * 3600 + gmmktime(date('H', $date), date('i', $date), date('s', $date), date('m', $date), date('d', $date), date('Y', $date));
         // multiply just to make MS happy
         $big_date *= 10000000;
 
@@ -504,7 +470,7 @@ class PHPExcel_Shared_OLE
     public static function OLE2LocalDate($string)
     {
         if (strlen($string) != 8) {
-            return new PEAR_Error("Expecting 8 byte string");
+            return new PEAR_Error('Expecting 8 byte string');
         }
 
         // factor used for separating numbers into 4 bytes parts
@@ -522,5 +488,44 @@ class PHPExcel_Shared_OLE
         // translate to seconds from beggining of UNIX era
         $big_date -= $days * 24 * 3600;
         return floor($big_date);
+    }
+
+    /**
+     * Reads a signed char.
+     * @param   resource  file handle
+     * @param mixed $fh
+     * @return  int
+     * @access public
+     */
+    private static function _readInt1($fh)
+    {
+        list(, $tmp) = unpack('c', fread($fh, 1));
+        return $tmp;
+    }
+
+    /**
+     * Reads an unsigned short (2 octets).
+     * @param   resource  file handle
+     * @param mixed $fh
+     * @return  int
+     * @access public
+     */
+    private static function _readInt2($fh)
+    {
+        list(, $tmp) = unpack('v', fread($fh, 2));
+        return $tmp;
+    }
+
+    /**
+     * Reads an unsigned long (4 octets).
+     * @param   resource  file handle
+     * @param mixed $fh
+     * @return  int
+     * @access public
+     */
+    private static function _readInt4($fh)
+    {
+        list(, $tmp) = unpack('V', fread($fh, 4));
+        return $tmp;
     }
 }

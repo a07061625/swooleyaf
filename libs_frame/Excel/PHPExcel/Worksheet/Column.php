@@ -50,7 +50,7 @@ class PHPExcel_Worksheet_Column
     public function __construct(PHPExcel_Worksheet $parent = null, $columnIndex = 'A')
     {
         // Set parent and column index
-        $this->parent         = $parent;
+        $this->parent = $parent;
         $this->columnIndex = $columnIndex;
     }
 

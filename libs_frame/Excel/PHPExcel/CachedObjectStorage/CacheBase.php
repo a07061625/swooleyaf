@@ -61,7 +61,7 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
      *
      * @var array of mixed
      */
-    protected $cellCache = array();
+    protected $cellCache = [];
 
     /**
      * Initialise this new cell collection
@@ -171,7 +171,7 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
      */
     public function getSortedCellList()
     {
-        $sortKeys = array();
+        $sortKeys = [];
         foreach ($this->getCellList() as $coord) {
             sscanf($coord, '%[A-Z]%d', $column, $row);
             $sortKeys[sprintf('%09d%3s', $row, $column)] = $coord;
@@ -189,12 +189,12 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
     public function getHighestRowAndColumn()
     {
         // Lookup highest column and highest row
-        $col = array('A' => '1A');
-        $row = array(1);
+        $col = ['A' => '1A'];
+        $row = [1];
         foreach ($this->getCellList() as $coord) {
             sscanf($coord, '%[A-Z]%d', $c, $r);
             $row[$r] = $r;
-            $col[$c] = strlen($c).$c;
+            $col[$c] = strlen($c) . $c;
         }
         if (!empty($row)) {
             // Determine highest column and row
@@ -202,10 +202,10 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
             $highestColumn = substr(max($col), 1);
         }
 
-        return array(
-            'row'    => $highestRow,
+        return [
+            'row' => $highestRow,
             'column' => $highestColumn
-        );
+        ];
     }
 
     /**
@@ -254,7 +254,7 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
             return $colRow['column'];
         }
 
-        $columnList = array(1);
+        $columnList = [1];
         foreach ($this->getCellList() as $coord) {
             sscanf($coord, '%[A-Z]%d', $c, $r);
             if ($r != $row) {
@@ -279,7 +279,7 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
             return $colRow['row'];
         }
 
-        $rowList = array(0);
+        $rowList = [0];
         foreach ($this->getCellList() as $coord) {
             sscanf($coord, '%[A-Z]%d', $c, $r);
             if ($c != $column) {
@@ -289,21 +289,6 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
         }
 
         return max($rowList);
-    }
-
-    /**
-     * Generate a unique ID for cache referencing
-     *
-     * @return string Unique Reference
-     */
-    protected function getUniqueID()
-    {
-        if (function_exists('posix_getpid')) {
-            $baseUnique = posix_getpid();
-        } else {
-            $baseUnique = mt_rand();
-        }
-        return uniqid($baseUnique, true);
     }
 
     /**
@@ -364,5 +349,20 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
     public static function cacheMethodIsAvailable()
     {
         return true;
+    }
+
+    /**
+     * Generate a unique ID for cache referencing
+     *
+     * @return string Unique Reference
+     */
+    protected function getUniqueID()
+    {
+        if (function_exists('posix_getpid')) {
+            $baseUnique = posix_getpid();
+        } else {
+            $baseUnique = mt_rand();
+        }
+        return uniqid($baseUnique, true);
     }
 }

@@ -17,7 +17,8 @@ use Tool\Tool;
  * 设置应用的可见范围
  * @package DingDing\Corp\MicroApp
  */
-class VisibleScopesSet extends TalkBaseCorp {
+class VisibleScopesSet extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -41,7 +42,8 @@ class VisibleScopesSet extends TalkBaseCorp {
      */
     private $userVisibleScopes = [];
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
@@ -50,15 +52,17 @@ class VisibleScopesSet extends TalkBaseCorp {
         $this->reqData['userVisibleScopes'] = [];
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param int $agentId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setAgentId(int $agentId){
-        if($agentId > 0){
+    public function setAgentId(int $agentId)
+    {
+        if ($agentId > 0) {
             $this->reqData['agentId'] = $agentId;
         } else {
             throw new TalkException('应用ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -68,17 +72,19 @@ class VisibleScopesSet extends TalkBaseCorp {
     /**
      * @param bool $isHidden
      */
-    public function setIsHidden(bool $isHidden){
+    public function setIsHidden(bool $isHidden)
+    {
         $this->reqData['isHidden'] = $isHidden;
     }
 
     /**
      * @param array $deptVisibleScopes
      */
-    public function setDeptVisibleScopes(array $deptVisibleScopes){
+    public function setDeptVisibleScopes(array $deptVisibleScopes)
+    {
         $deptList = [];
         foreach ($deptVisibleScopes as $eDeptId) {
-            if(is_int($eDeptId) && ($eDeptId > 0)){
+            if (is_int($eDeptId) && ($eDeptId > 0)) {
                 $deptList[$eDeptId] = 1;
             }
         }
@@ -89,10 +95,11 @@ class VisibleScopesSet extends TalkBaseCorp {
     /**
      * @param array $userVisibleScopes
      */
-    public function setUserVisibleScopes(array $userVisibleScopes){
+    public function setUserVisibleScopes(array $userVisibleScopes)
+    {
         $userList = [];
         foreach ($userVisibleScopes as $eUserId) {
-            if(ctype_alnum($eUserId)){
+            if (ctype_alnum($eUserId)) {
                 $userList[$eUserId] = 1;
             }
         }
@@ -100,8 +107,9 @@ class VisibleScopesSet extends TalkBaseCorp {
         $this->reqData['userVisibleScopes'] = array_keys($userList);
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['agentId'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['agentId'])) {
             throw new TalkException('应用ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

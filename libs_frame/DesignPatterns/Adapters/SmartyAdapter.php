@@ -9,7 +9,8 @@ namespace DesignPatterns\Adapters;
 
 use Yaf\View_Interface;
 
-class SmartyAdapter implements View_Interface {
+class SmartyAdapter implements View_Interface
+{
     /**
      * Smarty object
      * @var \Smarty
@@ -23,7 +24,8 @@ class SmartyAdapter implements View_Interface {
      * @throws \Exception
      * @return void
      */
-    public function __construct($templatePath = null,array $extraParams = []) {
+    public function __construct($templatePath = null, array $extraParams = [])
+    {
         $this->_smarty = new \Smarty();
 
         if ($templatePath !== null) {
@@ -36,10 +38,42 @@ class SmartyAdapter implements View_Interface {
     }
 
     /**
+     * Assign a variable to the template
+     * @param string $key The variable name.
+     * @param mixed $val The variable value.
+     * @return void
+     */
+    public function __set($key, $val)
+    {
+        $this->_smarty->assign($key, $val);
+    }
+
+    /**
+     * Allows testing with empty() and isset() to work
+     * @param string $key
+     * @return boolean
+     */
+    public function __isset($key)
+    {
+        return $this->_smarty->getTemplateVars($key) !== null;
+    }
+
+    /**
+     * Allows unset() on object properties to work
+     * @param string $key
+     * @return void
+     */
+    public function __unset($key)
+    {
+        $this->_smarty->clearAssign($key);
+    }
+
+    /**
      * Return the template engine object
      * @return \Smarty
      */
-    public function getEngine() {
+    public function getEngine()
+    {
         return $this->_smarty;
     }
 
@@ -49,7 +83,8 @@ class SmartyAdapter implements View_Interface {
      * @throws \Exception
      * @return void
      */
-    public function setScriptPath($path) {
+    public function setScriptPath($path)
+    {
         if (is_dir($path) && is_readable($path)) {
             $this->_smarty->template_dir = $path;
             return;
@@ -62,7 +97,8 @@ class SmartyAdapter implements View_Interface {
      * Retrieve the current template directory
      * @return string
      */
-    public function getScriptPath() {
+    public function getScriptPath()
+    {
         return $this->_smarty->template_dir;
     }
 
@@ -72,7 +108,8 @@ class SmartyAdapter implements View_Interface {
      * @param string $prefix Unused
      * @return void
      */
-    public function setBasePath($path, $prefix = 'Zend_View') {
+    public function setBasePath($path, $prefix = 'Zend_View')
+    {
         $this->setScriptPath($path);
     }
 
@@ -82,36 +119,9 @@ class SmartyAdapter implements View_Interface {
      * @param string $prefix Unused
      * @return void
      */
-    public function addBasePath($path, $prefix = 'Zend_View') {
+    public function addBasePath($path, $prefix = 'Zend_View')
+    {
         $this->setScriptPath($path);
-    }
-
-    /**
-     * Assign a variable to the template
-     * @param string $key The variable name.
-     * @param mixed $val The variable value.
-     * @return void
-     */
-    public function __set($key, $val) {
-        $this->_smarty->assign($key, $val);
-    }
-
-    /**
-     * Allows testing with empty() and isset() to work
-     * @param string $key
-     * @return boolean
-     */
-    public function __isset($key) {
-        return $this->_smarty->getTemplateVars($key) !== null;
-    }
-
-    /**
-     * Allows unset() on object properties to work
-     * @param string $key
-     * @return void
-     */
-    public function __unset($key) {
-        $this->_smarty->clearAssign($key);
     }
 
     /**
@@ -125,7 +135,8 @@ class SmartyAdapter implements View_Interface {
      * use this as the value.
      * @return void
      */
-    public function assign($spec, $value = null) {
+    public function assign($spec, $value = null)
+    {
         if (is_array($spec)) {
             $this->_smarty->assign($spec);
             return;
@@ -141,11 +152,13 @@ class SmartyAdapter implements View_Interface {
      * ({@link __get()}/{@link __set()}).
      * @return void
      */
-    public function clearVars() {
+    public function clearVars()
+    {
         $this->_smarty->clearAllAssign();
     }
 
-    public function cleanCache(string $name = '') {
+    public function cleanCache(string $name = '')
+    {
         if ($name === '') {
             $this->_smarty->clearCache($name);
             $this->_smarty->clearCompiledTemplate($name);
@@ -158,9 +171,11 @@ class SmartyAdapter implements View_Interface {
     /**
      * Processes a template and returns the output.
      * @param string $name The template to process.
+     * @param mixed $tpl_vars
      * @return string The output.
      */
-    public function render($name,$tpl_vars = []) {
+    public function render($name, $tpl_vars = [])
+    {
         if (!empty($tpl_vars)) {
             $this->assign($tpl_vars);
         }
@@ -168,7 +183,8 @@ class SmartyAdapter implements View_Interface {
         return $this->_smarty->fetch($name);
     }
 
-    public function display($name,$tpl_vars = []) {
+    public function display($name, $tpl_vars = [])
+    {
         if (!empty($tpl_vars)) {
             $this->assign($tpl_vars);
         }
@@ -176,8 +192,9 @@ class SmartyAdapter implements View_Interface {
         echo $this->_smarty->fetch($name);
     }
 
-    public function registerFunction(string $type, $function, $params) {
-        if (in_array($type, ['function', 'modifier'])) {
+    public function registerFunction(string $type, $function, $params)
+    {
+        if (in_array($type, ['function', 'modifier'], true)) {
             $this->_smarty->registerPlugin($type, $function, $params);
             return true;
         } else {

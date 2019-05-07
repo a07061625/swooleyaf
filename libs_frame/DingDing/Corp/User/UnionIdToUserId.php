@@ -16,7 +16,8 @@ use Exception\DingDing\TalkException;
  * 根据unionid获取userid
  * @package DingDing\Corp\User
  */
-class UnionIdToUserId extends TalkBaseCorp {
+class UnionIdToUserId extends TalkBaseCorp
+{
     use TalkTraitCorp;
 
     /**
@@ -25,29 +26,33 @@ class UnionIdToUserId extends TalkBaseCorp {
      */
     private $unionid = '';
 
-    public function __construct(string $corpId,string $agentTag){
+    public function __construct(string $corpId, string $agentTag)
+    {
         parent::__construct();
         $this->_corpId = $corpId;
         $this->_agentTag = $agentTag;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $unionId
      * @throws \Exception\DingDing\TalkException
      */
-    public function setUnionId(string $unionId){
-        if(strlen($unionId) > 0){
+    public function setUnionId(string $unionId)
+    {
+        if (strlen($unionId) > 0) {
             $this->reqData['unionid'] = $unionId;
         } else {
             throw new TalkException('唯一标识不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['unionid'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['unionid'])) {
             throw new TalkException('唯一标识不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
         }
 

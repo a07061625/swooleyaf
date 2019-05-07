@@ -9,9 +9,11 @@ namespace Exception\Common;
 
 use Exception\BaseException;
 
-class ContentNotExistException extends BaseException {
-    public function __construct( $message, $code ) {
-        parent::__construct( $message, $code );
+class ContentNotExistException extends BaseException
+{
+    public function __construct($message, $code)
+    {
+        parent::__construct($message, $code);
         $this->tipName = '内容不存在异常';
     }
 }

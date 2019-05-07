@@ -25,7 +25,6 @@
  * @version    ##VERSION##, ##DATE##
  */
 
-
 /**
  * PHPExcel_Writer_OpenDocument_Content
  *
@@ -64,51 +63,51 @@ class PHPExcel_Writer_OpenDocument_Content extends PHPExcel_Writer_OpenDocument_
 
         // Content
         $objWriter->startElement('office:document-content');
-            $objWriter->writeAttribute('xmlns:office', 'urn:oasis:names:tc:opendocument:xmlns:office:1.0');
-            $objWriter->writeAttribute('xmlns:style', 'urn:oasis:names:tc:opendocument:xmlns:style:1.0');
-            $objWriter->writeAttribute('xmlns:text', 'urn:oasis:names:tc:opendocument:xmlns:text:1.0');
-            $objWriter->writeAttribute('xmlns:table', 'urn:oasis:names:tc:opendocument:xmlns:table:1.0');
-            $objWriter->writeAttribute('xmlns:draw', 'urn:oasis:names:tc:opendocument:xmlns:drawing:1.0');
-            $objWriter->writeAttribute('xmlns:fo', 'urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0');
-            $objWriter->writeAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
-            $objWriter->writeAttribute('xmlns:dc', 'http://purl.org/dc/elements/1.1/');
-            $objWriter->writeAttribute('xmlns:meta', 'urn:oasis:names:tc:opendocument:xmlns:meta:1.0');
-            $objWriter->writeAttribute('xmlns:number', 'urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0');
-            $objWriter->writeAttribute('xmlns:presentation', 'urn:oasis:names:tc:opendocument:xmlns:presentation:1.0');
-            $objWriter->writeAttribute('xmlns:svg', 'urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0');
-            $objWriter->writeAttribute('xmlns:chart', 'urn:oasis:names:tc:opendocument:xmlns:chart:1.0');
-            $objWriter->writeAttribute('xmlns:dr3d', 'urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0');
-            $objWriter->writeAttribute('xmlns:math', 'http://www.w3.org/1998/Math/MathML');
-            $objWriter->writeAttribute('xmlns:form', 'urn:oasis:names:tc:opendocument:xmlns:form:1.0');
-            $objWriter->writeAttribute('xmlns:script', 'urn:oasis:names:tc:opendocument:xmlns:script:1.0');
-            $objWriter->writeAttribute('xmlns:ooo', 'http://openoffice.org/2004/office');
-            $objWriter->writeAttribute('xmlns:ooow', 'http://openoffice.org/2004/writer');
-            $objWriter->writeAttribute('xmlns:oooc', 'http://openoffice.org/2004/calc');
-            $objWriter->writeAttribute('xmlns:dom', 'http://www.w3.org/2001/xml-events');
-            $objWriter->writeAttribute('xmlns:xforms', 'http://www.w3.org/2002/xforms');
-            $objWriter->writeAttribute('xmlns:xsd', 'http://www.w3.org/2001/XMLSchema');
-            $objWriter->writeAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
-            $objWriter->writeAttribute('xmlns:rpt', 'http://openoffice.org/2005/report');
-            $objWriter->writeAttribute('xmlns:of', 'urn:oasis:names:tc:opendocument:xmlns:of:1.2');
-            $objWriter->writeAttribute('xmlns:xhtml', 'http://www.w3.org/1999/xhtml');
-            $objWriter->writeAttribute('xmlns:grddl', 'http://www.w3.org/2003/g/data-view#');
-            $objWriter->writeAttribute('xmlns:tableooo', 'http://openoffice.org/2009/table');
-            $objWriter->writeAttribute('xmlns:field', 'urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0');
-            $objWriter->writeAttribute('xmlns:formx', 'urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0');
-            $objWriter->writeAttribute('xmlns:css3t', 'http://www.w3.org/TR/css3-text/');
-            $objWriter->writeAttribute('office:version', '1.2');
+        $objWriter->writeAttribute('xmlns:office', 'urn:oasis:names:tc:opendocument:xmlns:office:1.0');
+        $objWriter->writeAttribute('xmlns:style', 'urn:oasis:names:tc:opendocument:xmlns:style:1.0');
+        $objWriter->writeAttribute('xmlns:text', 'urn:oasis:names:tc:opendocument:xmlns:text:1.0');
+        $objWriter->writeAttribute('xmlns:table', 'urn:oasis:names:tc:opendocument:xmlns:table:1.0');
+        $objWriter->writeAttribute('xmlns:draw', 'urn:oasis:names:tc:opendocument:xmlns:drawing:1.0');
+        $objWriter->writeAttribute('xmlns:fo', 'urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0');
+        $objWriter->writeAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
+        $objWriter->writeAttribute('xmlns:dc', 'http://purl.org/dc/elements/1.1/');
+        $objWriter->writeAttribute('xmlns:meta', 'urn:oasis:names:tc:opendocument:xmlns:meta:1.0');
+        $objWriter->writeAttribute('xmlns:number', 'urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0');
+        $objWriter->writeAttribute('xmlns:presentation', 'urn:oasis:names:tc:opendocument:xmlns:presentation:1.0');
+        $objWriter->writeAttribute('xmlns:svg', 'urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0');
+        $objWriter->writeAttribute('xmlns:chart', 'urn:oasis:names:tc:opendocument:xmlns:chart:1.0');
+        $objWriter->writeAttribute('xmlns:dr3d', 'urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0');
+        $objWriter->writeAttribute('xmlns:math', 'http://www.w3.org/1998/Math/MathML');
+        $objWriter->writeAttribute('xmlns:form', 'urn:oasis:names:tc:opendocument:xmlns:form:1.0');
+        $objWriter->writeAttribute('xmlns:script', 'urn:oasis:names:tc:opendocument:xmlns:script:1.0');
+        $objWriter->writeAttribute('xmlns:ooo', 'http://openoffice.org/2004/office');
+        $objWriter->writeAttribute('xmlns:ooow', 'http://openoffice.org/2004/writer');
+        $objWriter->writeAttribute('xmlns:oooc', 'http://openoffice.org/2004/calc');
+        $objWriter->writeAttribute('xmlns:dom', 'http://www.w3.org/2001/xml-events');
+        $objWriter->writeAttribute('xmlns:xforms', 'http://www.w3.org/2002/xforms');
+        $objWriter->writeAttribute('xmlns:xsd', 'http://www.w3.org/2001/XMLSchema');
+        $objWriter->writeAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
+        $objWriter->writeAttribute('xmlns:rpt', 'http://openoffice.org/2005/report');
+        $objWriter->writeAttribute('xmlns:of', 'urn:oasis:names:tc:opendocument:xmlns:of:1.2');
+        $objWriter->writeAttribute('xmlns:xhtml', 'http://www.w3.org/1999/xhtml');
+        $objWriter->writeAttribute('xmlns:grddl', 'http://www.w3.org/2003/g/data-view#');
+        $objWriter->writeAttribute('xmlns:tableooo', 'http://openoffice.org/2009/table');
+        $objWriter->writeAttribute('xmlns:field', 'urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0');
+        $objWriter->writeAttribute('xmlns:formx', 'urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0');
+        $objWriter->writeAttribute('xmlns:css3t', 'http://www.w3.org/TR/css3-text/');
+        $objWriter->writeAttribute('office:version', '1.2');
 
-            $objWriter->writeElement('office:scripts');
-            $objWriter->writeElement('office:font-face-decls');
-            $objWriter->writeElement('office:automatic-styles');
+        $objWriter->writeElement('office:scripts');
+        $objWriter->writeElement('office:font-face-decls');
+        $objWriter->writeElement('office:automatic-styles');
 
-            $objWriter->startElement('office:body');
-                $objWriter->startElement('office:spreadsheet');
-                    $objWriter->writeElement('table:calculation-settings');
-                    $this->writeSheets($objWriter);
-                    $objWriter->writeElement('table:named-expressions');
-                $objWriter->endElement();
-            $objWriter->endElement();
+        $objWriter->startElement('office:body');
+        $objWriter->startElement('office:spreadsheet');
+        $objWriter->writeElement('table:calculation-settings');
+        $this->writeSheets($objWriter);
+        $objWriter->writeElement('table:named-expressions');
+        $objWriter->endElement();
+        $objWriter->endElement();
         $objWriter->endElement();
 
         return $objWriter->getData();
@@ -127,12 +126,12 @@ class PHPExcel_Writer_OpenDocument_Content extends PHPExcel_Writer_OpenDocument_
         for ($i = 0; $i < $sheet_count; $i++) {
             //$this->getWriterPart('Worksheet')->writeWorksheet());
             $objWriter->startElement('table:table');
-                $objWriter->writeAttribute('table:name', $pPHPExcel->getSheet($i)->getTitle());
-                $objWriter->writeElement('office:forms');
-                $objWriter->startElement('table:table-column');
-                    $objWriter->writeAttribute('table:number-columns-repeated', self::NUMBER_COLS_REPEATED_MAX);
-                $objWriter->endElement();
-                $this->writeRows($objWriter, $pPHPExcel->getSheet($i));
+            $objWriter->writeAttribute('table:name', $pPHPExcel->getSheet($i)->getTitle());
+            $objWriter->writeElement('office:forms');
+            $objWriter->startElement('table:table-column');
+            $objWriter->writeAttribute('table:number-columns-repeated', self::NUMBER_COLS_REPEATED_MAX);
+            $objWriter->endElement();
+            $this->writeRows($objWriter, $pPHPExcel->getSheet($i));
             $objWriter->endElement();
         }
     }
@@ -158,7 +157,7 @@ class PHPExcel_Writer_OpenDocument_Content extends PHPExcel_Writer_OpenDocument_
                         $objWriter->writeAttribute('table:number-rows-repeated', $span_row);
                     }
                     $objWriter->startElement('table:table-cell');
-                        $objWriter->writeAttribute('table:number-columns-repeated', self::NUMBER_COLS_REPEATED_MAX);
+                    $objWriter->writeAttribute('table:number-columns-repeated', self::NUMBER_COLS_REPEATED_MAX);
                     $objWriter->endElement();
                     $objWriter->endElement();
                     $span_row = 0;
@@ -265,7 +264,7 @@ class PHPExcel_Writer_OpenDocument_Content extends PHPExcel_Writer_OpenDocument_
             $objWriter->writeElement('table:table-cell');
         } elseif ($diff > 1) {
             $objWriter->startElement('table:table-cell');
-                $objWriter->writeAttribute('table:number-columns-repeated', $diff);
+            $objWriter->writeAttribute('table:number-columns-repeated', $diff);
             $objWriter->endElement();
         }
     }

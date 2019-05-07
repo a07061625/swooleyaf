@@ -9,8 +9,10 @@ namespace Exception\AliPay;
 
 use Exception\BaseException;
 
-class AliPayShopException extends BaseException {
-    public function __construct($message, $code) {
+class AliPayShopException extends BaseException
+{
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
         $this->tipName = '支付宝店铺异常';
     }

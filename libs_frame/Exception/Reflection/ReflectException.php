@@ -9,9 +9,11 @@ namespace Exception\Reflection;
 
 use Exception\BaseException;
 
-class ReflectException extends BaseException {
-    public function __construct( $message, $code ) {
-        parent::__construct( $message, $code );
+class ReflectException extends BaseException
+{
+    public function __construct($message, $code)
+    {
+        parent::__construct($message, $code);
         $this->tipName = '反射异常';
     }
 }

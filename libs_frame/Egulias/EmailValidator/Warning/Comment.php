@@ -8,6 +8,6 @@ class Comment extends Warning
 
     public function __construct()
     {
-        $this->message = "Comments found in this email";
+        $this->message = 'Comments found in this email';
     }
 }

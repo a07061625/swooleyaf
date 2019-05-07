@@ -4,8 +4,8 @@ namespace Egulias\EmailValidator\Validation;
 
 use Egulias\EmailValidator\EmailLexer;
 use Egulias\EmailValidator\Exception\InvalidEmail;
-use Egulias\EmailValidator\Warning\NoDNSMXRecord;
 use Egulias\EmailValidator\Exception\NoDNSRecord;
+use Egulias\EmailValidator\Warning\NoDNSMXRecord;
 
 class DNSCheckValidation implements EmailValidation
 {

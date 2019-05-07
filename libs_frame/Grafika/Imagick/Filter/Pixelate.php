@@ -8,8 +8,8 @@ use Grafika\Imagick\Image;
 /**
  * Pixelate an image.
  */
-class Pixelate implements FilterInterface{
-
+class Pixelate implements FilterInterface
+{
     /**
      * @var int $amount Pixelate size from >= 1
      */
@@ -29,8 +29,8 @@ class Pixelate implements FilterInterface{
      *
      * @return Image
      */
-    public function apply( $image ) {
-
+    public function apply($image)
+    {
         $size = $this->amount;
         $width = $image->getWidth();
         $height = $image->getHeight();
@@ -38,5 +38,4 @@ class Pixelate implements FilterInterface{
         $image->getCore()->scaleImage($width, $height);
         return $image;
     }
-
 }

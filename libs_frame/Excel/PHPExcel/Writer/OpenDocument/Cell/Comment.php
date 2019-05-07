@@ -25,7 +25,6 @@
  * @version    ##VERSION##, ##DATE##
  */
 
-
 /**
  * PHPExcel_Writer_OpenDocument_Cell_Comment
  *
@@ -45,19 +44,19 @@ class PHPExcel_Writer_OpenDocument_Cell_Comment
         $comment = $comments[$cell->getCoordinate()];
 
         $objWriter->startElement('office:annotation');
-            //$objWriter->writeAttribute('draw:style-name', 'gr1');
-            //$objWriter->writeAttribute('draw:text-style-name', 'P1');
-            $objWriter->writeAttribute('svg:width', $comment->getWidth());
-            $objWriter->writeAttribute('svg:height', $comment->getHeight());
-            $objWriter->writeAttribute('svg:x', $comment->getMarginLeft());
-            $objWriter->writeAttribute('svg:y', $comment->getMarginTop());
-            //$objWriter->writeAttribute('draw:caption-point-x', $comment->getMarginLeft());
-            //$objWriter->writeAttribute('draw:caption-point-y', $comment->getMarginTop());
-                $objWriter->writeElement('dc:creator', $comment->getAuthor());
-                // TODO: Not realized in PHPExcel_Comment yet.
-                //$objWriter->writeElement('dc:date', $comment->getDate());
-                $objWriter->writeElement('text:p', $comment->getText()->getPlainText());
-                    //$objWriter->writeAttribute('draw:text-style-name', 'P1');
+        //$objWriter->writeAttribute('draw:style-name', 'gr1');
+        //$objWriter->writeAttribute('draw:text-style-name', 'P1');
+        $objWriter->writeAttribute('svg:width', $comment->getWidth());
+        $objWriter->writeAttribute('svg:height', $comment->getHeight());
+        $objWriter->writeAttribute('svg:x', $comment->getMarginLeft());
+        $objWriter->writeAttribute('svg:y', $comment->getMarginTop());
+        //$objWriter->writeAttribute('draw:caption-point-x', $comment->getMarginLeft());
+        //$objWriter->writeAttribute('draw:caption-point-y', $comment->getMarginTop());
+        $objWriter->writeElement('dc:creator', $comment->getAuthor());
+        // TODO: Not realized in PHPExcel_Comment yet.
+        //$objWriter->writeElement('dc:date', $comment->getDate());
+        $objWriter->writeElement('text:p', $comment->getText()->getPlainText());
+        //$objWriter->writeAttribute('draw:text-style-name', 'P1');
         $objWriter->endElement();
     }
 }

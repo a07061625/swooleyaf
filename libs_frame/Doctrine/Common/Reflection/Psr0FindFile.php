@@ -73,7 +73,5 @@ class Psr0FindFile implements ClassFinderInterface
                 }
             }
         }
-
-        return null;
     }
 }

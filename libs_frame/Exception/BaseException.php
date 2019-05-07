@@ -7,10 +7,12 @@
  */
 namespace Exception;
 
-class BaseException extends \Exception {
+class BaseException extends \Exception
+{
     public $tipName = '';
 
-    public function __construct($message, $code) {
+    public function __construct($message, $code)
+    {
         parent::__construct($message, $code);
     }
 }

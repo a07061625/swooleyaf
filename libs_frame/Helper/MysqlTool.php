@@ -11,10 +11,41 @@ use DesignPatterns\Singletons\MysqlSingleton;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-class MysqlTool {
+class MysqlTool
+{
     use SimpleTrait;
 
-    private static function handlePath(){
+    public static function generator()
+    {
+        $option = Tool::getClientOption(1, true);
+        switch ($option) {
+            case 'entities':
+                self::createDbEntities([
+                    'db' => trim(Tool::getClientOption('-db', false, '')),
+                    'path' => self::handlePath(),
+                    'namespace' => self::handleNamespace(),
+                    'prefix' => trim(Tool::getClientOption('-prefix', false, '')),
+                    'suffix' => trim(Tool::getClientOption('-suffix', false, '')),
+                ]);
+                break;
+            case 'entity':
+                self::createDbEntity([
+                    'db' => trim(Tool::getClientOption('-db', false, '')),
+                    'table' => trim(Tool::getClientOption('-table', false, '')),
+                    'path' => self::handlePath(),
+                    'namespace' => self::handleNamespace(),
+                    'prefix' => trim(Tool::getClientOption('-prefix', false, '')),
+                    'suffix' => trim(Tool::getClientOption('-suffix', false, '')),
+                ]);
+                break;
+            default:
+                self::help();
+                break;
+        }
+    }
+
+    private static function handlePath()
+    {
         $needStr1 = Tool::getClientOption('-path', false, '');
         $needStr2 = preg_replace([
             '/\s+/',
@@ -25,9 +56,9 @@ class MysqlTool {
         ], $needStr1);
         $needStr3 = trim($needStr2);
         $length = strlen($needStr3);
-        if($length == 0){
+        if ($length == 0) {
             $path = '';
-        } else if(substr($needStr3, ($length - 1), 1) == '/'){
+        } elseif (substr($needStr3, ($length - 1), 1) == '/') {
             $path = $needStr3;
         } else {
             $path = $needStr3 . '/';
@@ -36,9 +67,10 @@ class MysqlTool {
         return $path;
     }
 
-    private static function handleNamespace() {
+    private static function handleNamespace()
+    {
         $namespace = Tool::getClientOption('-namespace', false, '');
-        if((strlen($namespace) > 0) && (!ctype_alnum($namespace))){
+        if ((strlen($namespace) > 0) && (!ctype_alnum($namespace))) {
             exit('命名空间不合法' . PHP_EOL);
         }
 
@@ -50,7 +82,8 @@ class MysqlTool {
      * @param string $name 表名或数据库名
      * @return string
      */
-    private static function transferName(string $name) : string {
+    private static function transferName(string $name) : string
+    {
         $str1 = strtolower($name);
         $str2 = preg_replace([
             '/[^0-9a-z]+/',
@@ -64,35 +97,8 @@ class MysqlTool {
         return str_replace(' ', '', $str3);
     }
 
-    public static function generator(){
-        $option = Tool::getClientOption(1, true);
-        switch ($option) {
-            case 'entities' :
-                self::createDbEntities([
-                    'db' => trim(Tool::getClientOption('-db', false, '')),
-                    'path' => self::handlePath(),
-                    'namespace' => self::handleNamespace(),
-                    'prefix' => trim(Tool::getClientOption('-prefix', false, '')),
-                    'suffix' => trim(Tool::getClientOption('-suffix', false, '')),
-                ]);
-                break;
-            case 'entity' :
-                self::createDbEntity([
-                    'db' => trim(Tool::getClientOption('-db', false, '')),
-                    'table' => trim(Tool::getClientOption('-table', false, '')),
-                    'path' => self::handlePath(),
-                    'namespace' => self::handleNamespace(),
-                    'prefix' => trim(Tool::getClientOption('-prefix', false, '')),
-                    'suffix' => trim(Tool::getClientOption('-suffix', false, '')),
-                ]);
-                break;
-            default :
-                self::help();
-                break;
-        }
-    }
-
-    private static function help(){
+    private static function help()
+    {
         echo '显示帮助: /usr/local/php7/bin/php helper_mysql.php -h' . PHP_EOL;
         echo '生成数据库下所有的实体类: /usr/local/php7/bin/php helper_mysql.php entities -db xxx -path /xxx -namespace xxx -prefix xxx -suffix xxx' . PHP_EOL;
         echo '    -db:必填 数据库名' . PHP_EOL;
@@ -112,8 +118,9 @@ class MysqlTool {
     /**
      * 创建数据库下所有的实体类
      */
-    private static function createDbEntities(array $configs){
-        if(!$configs['db']){
+    private static function createDbEntities(array $configs)
+    {
+        if (!$configs['db']) {
             exit('数据库名不能为空' . PHP_EOL);
         }
 
@@ -136,10 +143,11 @@ class MysqlTool {
     /**
      * 创建数据库下指定的实体类
      */
-    private static function createDbEntity(array $configs){
-        if(!$configs['db']){
+    private static function createDbEntity(array $configs)
+    {
+        if (!$configs['db']) {
             exit('数据库名不能为空' . PHP_EOL);
-        } else if(!$configs['table']){
+        } elseif (!$configs['table']) {
             exit('数据库表名不能为空' . PHP_EOL);
         }
 
@@ -151,8 +159,8 @@ class MysqlTool {
         foreach ($fields as $eField) {
             if (strpos($eField['Type'], 'int') !== false) {
                 $varType = 'int';
-                if(is_null($eField['Default'])){
-                    if($eField['Key'] == 'PRI'){
+                if (is_null($eField['Default'])) {
+                    if ($eField['Key'] == 'PRI') {
                         $primaryKey = $eField['Field'];
                         $default = 'null';
                     } else {
@@ -161,10 +169,10 @@ class MysqlTool {
                 } else {
                     $default = (int)$eField['Default'];
                 }
-            } else if (strpos($eField['Type'], 'float') !== false) {
+            } elseif (strpos($eField['Type'], 'float') !== false) {
                 $varType = 'double';
-                if(is_null($eField['Default'])){
-                    if($eField['Key'] == 'PRI'){
+                if (is_null($eField['Default'])) {
+                    if ($eField['Key'] == 'PRI') {
                         $primaryKey = $eField['Field'];
                         $default = 'null';
                     } else {
@@ -173,10 +181,10 @@ class MysqlTool {
                 } else {
                     $default = (double)$eField['Default'];
                 }
-            } else if (strpos($eField['Type'], 'decimal') !== false) {
+            } elseif (strpos($eField['Type'], 'decimal') !== false) {
                 $varType = 'double';
-                if(is_null($eField['Default'])){
-                    if($eField['Key'] == 'PRI'){
+                if (is_null($eField['Default'])) {
+                    if ($eField['Key'] == 'PRI') {
                         $primaryKey = $eField['Field'];
                         $default = 'null';
                     } else {
@@ -185,10 +193,10 @@ class MysqlTool {
                 } else {
                     $default = (double)$eField['Default'];
                 }
-            } else if (strpos($eField['Type'], 'double') !== false) {
+            } elseif (strpos($eField['Type'], 'double') !== false) {
                 $varType = 'double';
-                if(is_null($eField['Default'])){
-                    if($eField['Key'] == 'PRI'){
+                if (is_null($eField['Default'])) {
+                    if ($eField['Key'] == 'PRI') {
                         $primaryKey = $eField['Field'];
                         $default = 'null';
                     } else {
@@ -199,8 +207,8 @@ class MysqlTool {
                 }
             } else {
                 $varType = 'string';
-                if(is_null($eField['Default'])){
-                    if($eField['Key'] == 'PRI'){
+                if (is_null($eField['Default'])) {
+                    if ($eField['Key'] == 'PRI') {
                         $primaryKey = $eField['Field'];
                         $default = 'null';
                     } else {
@@ -217,7 +225,7 @@ class MysqlTool {
             $filedStr .= '     */' . PHP_EOL;
             $filedStr .= '    public $' . $eField['Field'] . ' = ' . $default . ';' . PHP_EOL;
         }
-        if(strlen($configs['namespace']) > 0){
+        if (strlen($configs['namespace']) > 0) {
             $content = '<?php' . PHP_EOL . 'namespace Entities\\' . $configs['namespace'] . ';' . PHP_EOL . PHP_EOL;
         } else {
             $content = '<?php' . PHP_EOL . 'namespace Entities\\' . self::transferName($configs['db']) . ';' . PHP_EOL . PHP_EOL;

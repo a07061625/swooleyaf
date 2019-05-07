@@ -21,7 +21,6 @@ use Grafika\Imagick\Image;
  */
 class DifferenceHash
 {
-
     /**
      * Generate and get the difference hash of image.
      *
@@ -33,7 +32,7 @@ class DifferenceHash
      */
     public function hash($image, $editor)
     {
-        $width  = 9;
+        $width = 9;
         $height = 8;
 
         $image = clone $image; // Make sure we are working on the clone if Image is passed
@@ -49,7 +48,7 @@ class DifferenceHash
             $left = floor(($rgba['r'] + $rgba['g'] + $rgba['b']) / 3);
             for ($x = 1; $x < $width; $x++) {
                 // Get the pixel value for each pixel starting from position 1.
-                $rgba  = $imagick->getImagePixelColor($x, $y)->getColor();
+                $rgba = $imagick->getImagePixelColor($x, $y)->getColor();
                 $right = floor(($rgba['r'] + $rgba['g'] + $rgba['b']) / 3);
                 // Each hash bit is set based on whether the left pixel is brighter than the right pixel.
                 if ($left > $right) {
@@ -61,7 +60,7 @@ class DifferenceHash
                 $left = $right;
             }
         }
-        $editor->free( $image );
+        $editor->free($image);
         return $hash;
     }
 }

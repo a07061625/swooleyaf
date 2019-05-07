@@ -9,7 +9,6 @@ use Grafika\Color;
  */
 abstract class CubicBezier
 {
-
     /**
      * Starting point. Array of X Y values.
      * @var array
@@ -59,7 +58,6 @@ abstract class CubicBezier
         $this->control2 = $control2;
         $this->point2 = $point2;
         $this->color = $color;
-
     }
 
     /**
@@ -101,5 +99,4 @@ abstract class CubicBezier
     {
         return $this->color;
     }
-
 }

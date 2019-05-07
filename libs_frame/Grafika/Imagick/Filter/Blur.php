@@ -8,8 +8,8 @@ use Grafika\Imagick\Image;
 /**
  * Blurs the image.
  */
-class Blur implements FilterInterface{
-
+class Blur implements FilterInterface
+{
     /**
      * @var int
      */
@@ -29,9 +29,9 @@ class Blur implements FilterInterface{
      *
      * @return Image
      */
-    public function apply( $image ) {
+    public function apply($image)
+    {
         $image->getCore()->blurImage(1 * $this->amount, 0.5 * $this->amount);
         return $image;
     }
-
 }

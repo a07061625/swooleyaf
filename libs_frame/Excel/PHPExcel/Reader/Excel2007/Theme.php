@@ -25,7 +25,6 @@
  * @version    ##VERSION##, ##DATE##
  */
 
-
 /**
  * PHPExcel_Reader_Excel2007_Theme
  *
@@ -56,7 +55,6 @@ class PHPExcel_Reader_Excel2007_Theme
      */
     private $colourMapValues;
 
-
     /**
      * Colour Map
      *
@@ -64,17 +62,34 @@ class PHPExcel_Reader_Excel2007_Theme
      */
     private $colourMap;
 
-
     /**
      * Create a new PHPExcel_Theme
      *
+     * @param mixed $themeName
+     * @param mixed $colourSchemeName
+     * @param mixed $colourMap
      */
     public function __construct($themeName, $colourSchemeName, $colourMap)
     {
         // Initialise values
-        $this->themeName        = $themeName;
+        $this->themeName = $themeName;
         $this->colourSchemeName = $colourSchemeName;
-        $this->colourMap        = $colourMap;
+        $this->colourMap = $colourMap;
+    }
+
+    /**
+     * Implement PHP __clone to create a deep clone, not just a shallow copy.
+     */
+    public function __clone()
+    {
+        $vars = get_object_vars($this);
+        foreach ($vars as $key => $value) {
+            if ((is_object($value)) && ($key != '_parent')) {
+                $this->$key = clone $value;
+            } else {
+                $this->$key = $value;
+            }
+        }
     }
 
     /**
@@ -101,27 +116,12 @@ class PHPExcel_Reader_Excel2007_Theme
      * Get colour Map Value by Position
      *
      * @return string
+     * @param mixed $index
      */
     public function getColourByIndex($index = 0)
     {
         if (isset($this->colourMap[$index])) {
             return $this->colourMap[$index];
-        }
-        return null;
-    }
-
-    /**
-     * Implement PHP __clone to create a deep clone, not just a shallow copy.
-     */
-    public function __clone()
-    {
-        $vars = get_object_vars($this);
-        foreach ($vars as $key => $value) {
-            if ((is_object($value)) && ($key != '_parent')) {
-                $this->$key = clone $value;
-            } else {
-                $this->$key = $value;
-            }
         }
     }
 }

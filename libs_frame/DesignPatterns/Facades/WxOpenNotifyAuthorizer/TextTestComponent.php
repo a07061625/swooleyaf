@@ -10,10 +10,12 @@ namespace DesignPatterns\Facades\WxOpenNotifyAuthorizer;
 use DesignPatterns\Facades\WxOpenNotifyAuthorizerFacade;
 use Traits\SimpleFacadeTrait;
 
-class TextTestComponent extends WxOpenNotifyAuthorizerFacade {
+class TextTestComponent extends WxOpenNotifyAuthorizerFacade
+{
     use SimpleFacadeTrait;
 
-    protected static function responseNotify(array $data) : array {
+    protected static function responseNotify(array $data) : array
+    {
         return [
             'ToUserName' => $data['FromUserName'],
             'FromUserName' => $data['ToUserName'],

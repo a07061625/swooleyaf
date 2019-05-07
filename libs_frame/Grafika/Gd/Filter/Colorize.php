@@ -8,8 +8,8 @@ use Grafika\Gd\Image;
 /**
  * Change the values for red, green and blue in an image.
  */
-class Colorize implements FilterInterface{
-
+class Colorize implements FilterInterface
+{
     /**
      * @var int
      */
@@ -41,10 +41,9 @@ class Colorize implements FilterInterface{
      *
      * @return Image
      */
-    public function apply( $image ) {
-
+    public function apply($image)
+    {
         imagefilter($image->getCore(), IMG_FILTER_COLORIZE, $this->red, $this->green, $this->blue);
         return $image;
     }
-
 }

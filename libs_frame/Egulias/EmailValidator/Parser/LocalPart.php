@@ -2,10 +2,9 @@
 
 namespace Egulias\EmailValidator\Parser;
 
+use Egulias\EmailValidator\EmailLexer;
 use Egulias\EmailValidator\Exception\DotAtEnd;
 use Egulias\EmailValidator\Exception\DotAtStart;
-use Egulias\EmailValidator\EmailLexer;
-use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Exception\ExpectingAT;
 use Egulias\EmailValidator\Exception\ExpectingATEXT;
 use Egulias\EmailValidator\Exception\UnclosedQuotedString;
@@ -70,18 +69,18 @@ class LocalPart extends Parser
     protected function parseDoubleQuote()
     {
         $parseAgain = true;
-        $special = array(
+        $special = [
             EmailLexer::S_CR => true,
             EmailLexer::S_HTAB => true,
             EmailLexer::S_LF => true
-        );
+        ];
 
-        $invalid = array(
+        $invalid = [
             EmailLexer::C_NUL => true,
             EmailLexer::S_HTAB => true,
             EmailLexer::S_CR => true,
             EmailLexer::S_LF => true
-        );
+        ];
         $setSpecialsWarning = true;
 
         $this->lexer->moveNext();
@@ -120,7 +119,7 @@ class LocalPart extends Parser
 
     protected function isInvalidToken($token, $closingQuote)
     {
-        $forbidden = array(
+        $forbidden = [
             EmailLexer::S_COMMA,
             EmailLexer::S_CLOSEBRACKET,
             EmailLexer::S_OPENBRACKET,
@@ -129,9 +128,9 @@ class LocalPart extends Parser
             EmailLexer::S_COLON,
             EmailLexer::S_SEMICOLON,
             EmailLexer::INVALID
-        );
+        ];
 
-        if (in_array($token['type'], $forbidden) && !$closingQuote) {
+        if (in_array($token['type'], $forbidden, true) && !$closingQuote) {
             throw new ExpectingATEXT();
         }
     }

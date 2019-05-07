@@ -21,7 +21,8 @@ namespace Yaf {
      *
      * @package Yaf
      */
-    final class Application {
+    final class Application
+    {
         /**
          * 全局配置实例
          *
@@ -33,7 +34,7 @@ namespace Yaf {
          *
          * @var Config_Abstract
          */
-        protected $config = NULL;
+        protected $config = null;
         /**
          * Dispatcher实例,即分发器.
          *
@@ -42,7 +43,7 @@ namespace Yaf {
          *
          * @var Dispatcher
          */
-        protected $dispatcher = NULL;
+        protected $dispatcher = null;
         /**
          * 过特殊的方式实现了单例模式, 此属性保存当前实例.
          *
@@ -51,7 +52,7 @@ namespace Yaf {
          *
          * @var Application
          */
-        static protected $_app = NULL;
+        protected static $_app = null;
         /**
          * 存在的模块名, 从配置文件中ap.modules读取.
          *
@@ -60,7 +61,7 @@ namespace Yaf {
          *
          * @var String
          */
-        protected $_modules = NULL;
+        protected $_modules = null;
         /**
          * 指明当前的Application是否已经运行.
          *
@@ -76,7 +77,7 @@ namespace Yaf {
          *
          * @var String
          */
-        protected $_environ = "dev";
+        protected $_environ = 'dev';
         /**
          * 最近一次发生的错误代码.
          *
@@ -85,7 +86,7 @@ namespace Yaf {
          *
          * @var Int
          */
-        protected $_err_no = "0";
+        protected $_err_no = '0';
         /**
          * 最近一次产生的错误信息.
          *
@@ -94,7 +95,7 @@ namespace Yaf {
          *
          * @var String
          */
-        protected $_err_msg = "";
+        protected $_err_msg = '';
 
         /**
          * 构造函数，根据配置初始化Application
@@ -103,16 +104,51 @@ namespace Yaf {
          *                      如果是一个ini配置文件，那配置文件中应该有一个定义了yaf.environ 的配置节.这个在生产环境中是默认的.
          *                      如果你使用了ini配置文件作为你应用配置的容器，你需要打开yaf.cache_config 来提升性能.
          * @param string $section 加载的配置节点，使用该节点的配置初始化应用.
+         * @param null|mixed $environ
          * @return Application
          */
-        public function __construct($config, $environ = NULL) {
+        public function __construct($config, $environ = null)
+        {
+        }
+        /**
+         * 重置__destruct魔术方法.
+         *
+         * @return void
+         */
+        public function __destruct()
+        {
+        }
+        /**
+         * 重置__clone魔术方法，防止克隆Application（因为是单例模式）.
+         *
+         * @return void
+         */
+        private function __clone()
+        {
+        }
+        /**
+         * 重置__sleep魔术方法.
+         *
+         * @return void
+         */
+        private function __sleep()
+        {
+        }
+        /**
+         * 重置__wakeup魔术方法.
+         *
+         * @return void
+         */
+        private function __wakeup()
+        {
         }
         /**
          * 运行Yaf Application
          *
          * @return Boolean
          */
-        public function run() {
+        public function run()
+        {
         }
         /**
          * 运行回调函数，一般在命令行模式下运行.
@@ -122,21 +158,24 @@ namespace Yaf {
          *
          * @return void
          */
-        public function execute(callable $entry, $parameter = "...") {
+        public function execute(callable $entry, $parameter = '...')
+        {
         }
         /**
          * 获取当前的Application实例.
          *
          * @return Application
          */
-        public static function app() {
+        public static function app()
+        {
         }
         /**
          * 获取当前Application的环境名,它被定义在yaf.environ，默认值为"product".
          *
          * @return String
          */
-        public function environ() {
+        public function environ()
+        {
         }
         /**
          * 调用bootstrap
@@ -144,29 +183,34 @@ namespace Yaf {
          * 指示Application去寻找Bootstrap，并按照声明的顺序，执行所有在Bootstrap类中定义的以_init开头的方法.（php.net文档有误）.
          *
          * @return Application
+         * @param null|mixed $bootstrap
          */
-        public function bootstrap($bootstrap = NULL) {
+        public function bootstrap($bootstrap = null)
+        {
         }
         /**
          * 获取全局配置实例,即$this->config
          *
          * @return Config_Abstract
          */
-        public function getConfig() {
+        public function getConfig()
+        {
         }
         /**
          * 获取在配置文件中声明的模块，如果没有声明，它的默认值将是"Index".
          *
          * @return String
          */
-        public function getModules() {
+        public function getModules()
+        {
         }
         /**
          * 获取当前请求的分发器Dispatcher的实例
          *
          * @return Dispatcher
          */
-        public function getDispatcher() {
+        public function getDispatcher()
+        {
         }
         /**
          * 设置应用的主目录
@@ -175,63 +219,40 @@ namespace Yaf {
          *
          * @return Application
          */
-        public function setAppDirectory($directory) {
+        public function setAppDirectory($directory)
+        {
         }
         /**
          * 获取当前应用的主目录
          *
          * @return String
          */
-        public function getAppDirectory() {
+        public function getAppDirectory()
+        {
         }
         /**
          * 获取最近产生的错误代码.
          *
          * @return Int
          */
-        public function getLastErrorNo() {
+        public function getLastErrorNo()
+        {
         }
         /**
          * 获取最近产生的错误信息.
          *
          * @return String
          */
-        public function getLastErrorMsg() {
+        public function getLastErrorMsg()
+        {
         }
         /**
          * 清除最近的错误信息，将设置$this->_err_no=0,$this->_err_msg=''.
          *
          * @return Application
          */
-        public function clearLastError() {
-        }
-        /**
-         * 重置__destruct魔术方法.
-         *
-         * @return void
-         */
-        public function __destruct() {
-        }
-        /**
-         * 重置__clone魔术方法，防止克隆Application（因为是单例模式）.
-         *
-         * @return void
-         */
-        private function __clone() {
-        }
-        /**
-         * 重置__sleep魔术方法.
-         *
-         * @return void
-         */
-        private function __sleep() {
-        }
-        /**
-         * 重置__wakeup魔术方法.
-         *
-         * @return void
-         */
-        private function __wakeup() {
+        public function clearLastError()
+        {
         }
     }
     /**
@@ -243,7 +264,9 @@ namespace Yaf {
      *
      * @package Yaf
      */
-    abstract class Bootstrap_Abstract {}
+    abstract class Bootstrap_Abstract
+    {
+    }
 
     /**
      * Class Dispatcher
@@ -253,7 +276,8 @@ namespace Yaf {
      *
      * @package Yaf
      */
-    final class Dispatcher {
+    final class Dispatcher
+    {
         /**
          * 当前请求对象（包含请求的所有信息）.
          *
@@ -290,7 +314,7 @@ namespace Yaf {
          *
          * @var Dispatcher
          */
-        static protected $_instance;
+        protected static $_instance;
         /**
          * 自动渲染功能开关，默认1.
          * 自动渲染是指根据当前请求的控制器Controller和动作Action自动寻找模块文件，加载与渲染模块，之后返回结果或者输出.
@@ -367,19 +391,53 @@ namespace Yaf {
          * @var array
          */
         protected $_plugins;
+        /**
+         * 重置__construct魔术方法.
+         */
+        private function __construct()
+        {
+        }
+        /**
+         * 重置__clone魔术方法，防止克隆Dispatcher（因为是单例模式）.
+         *
+         * @return void
+         */
+        private function __clone()
+        {
+        }
+        /**
+         * 重置__sleep魔术方法.
+         *
+         * @return void
+         */
+        private function __sleep()
+        {
+        }
+        /**
+         * 重置__wakeup魔术方法.
+         *
+         * @return void
+         */
+        private function __wakeup()
+        {
+        }
 
         /**
          * 关闭自动渲染模板
          *
          * @return Dispatcher
          */
-        public function disableView(){}
+        public function disableView()
+        {
+        }
         /**
          * 开启自动渲染模板
          *
          * @return Dispatcher
          */
-        public function enableView(){}
+        public function enableView()
+        {
+        }
         /**
          * 初始化视图对象
          *
@@ -388,7 +446,9 @@ namespace Yaf {
          *
          * @return View_Interface
          */
-        public function initView($tpl_dir, $options = null){}
+        public function initView($tpl_dir, $options = null)
+        {
+        }
         /**
          * 设置视图对象
          *
@@ -396,7 +456,9 @@ namespace Yaf {
          *
          * @return View_Interface
          */
-        public function setView(View_Interface $view){}
+        public function setView(View_Interface $view)
+        {
+        }
         /**
          * 设置请求对象（在命令行或者其他API模式下构造请求很有用）
          *
@@ -404,25 +466,33 @@ namespace Yaf {
          *
          * @return Dispatcher
          */
-        public function setRequest(Request_Abstract $request){}
+        public function setRequest(Request_Abstract $request)
+        {
+        }
         /**
          * 返回应用实例
          *
          * @return Application
          */
-        public function getApplication(){}
+        public function getApplication()
+        {
+        }
         /**
          * 返回路由器实例
          *
          * @return Router
          */
-        public function getRouter(){}
+        public function getRouter()
+        {
+        }
         /**
          * 返回请求对象实例
          *
          * @return Request_Abstract
          */
-        public function getRequest(){}
+        public function getRequest()
+        {
+        }
         /**
          * 设置一个用户定义的错误处理函数（封装了PHP内置的set_error_handler函数）
          *
@@ -431,7 +501,9 @@ namespace Yaf {
          *
          * @return Dispatcher
          */
-        public function setErrorHandler(callable $callback, $error_type = 32767){}
+        public function setErrorHandler(callable $callback, $error_type = 32767)
+        {
+        }
         /**
          * 设置默认模块
          *
@@ -439,7 +511,9 @@ namespace Yaf {
          *
          * @return Dispatcher
          */
-        public function setDefaultModule($module){}
+        public function setDefaultModule($module)
+        {
+        }
         /**
          * 设置默认的控制器
          *
@@ -447,7 +521,9 @@ namespace Yaf {
          *
          * @return Dispatcher
          */
-        public function setDefaultController($controller){}
+        public function setDefaultController($controller)
+        {
+        }
         /**
          * 设置默认的动作名
          *
@@ -455,7 +531,9 @@ namespace Yaf {
          *
          * @return Dispatcher
          */
-        public function setDefaultAction($action){}
+        public function setDefaultAction($action)
+        {
+        }
         /**
          * 设置或者返回$this->_return_response属性的值
          * 当传递$flag参数时，设置$this->_return_response=$flag，并返回Dispatcher
@@ -465,7 +543,9 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function returnResponse($flag){}
+        public function returnResponse($flag)
+        {
+        }
         /**
          * 设置或者返回$this->_auto_render属性的值
          * 当传递$flag参数时，设置$this->_auto_render=$flag，并返回Dispatcher
@@ -475,7 +555,9 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function autoRender($flag){}
+        public function autoRender($flag)
+        {
+        }
         /**
          * 设置或者返回$this->_instantly_flush属性的值
          * 当传递$flag参数时，设置$this->_instantly_flush=$flag，并返回Dispatcher
@@ -485,13 +567,17 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function flushInstantly($flag){}
+        public function flushInstantly($flag)
+        {
+        }
         /**
          * 返回当前Dispatcher实例（单例模式）
          *
          * @return Dispatcher
          */
-        public static function getInstance(){}
+        public static function getInstance()
+        {
+        }
         /**
          * 手动分发请求
          *
@@ -499,7 +585,9 @@ namespace Yaf {
          *
          * @return Response_Abstract
          */
-        public function dispatch(Request_Abstract $request){}
+        public function dispatch(Request_Abstract $request)
+        {
+        }
         /**
          * 开启/关闭异常抛出或返回当前状态
          *
@@ -510,7 +598,9 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function throwException($flag){}
+        public function throwException($flag)
+        {
+        }
         /**
          * 开启/关闭自动异常捕获功能或返回当前状态
          *
@@ -524,7 +614,9 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function catchException($flag){}
+        public function catchException($flag)
+        {
+        }
         /**
          * 注册插件
          *
@@ -532,29 +624,9 @@ namespace Yaf {
          *
          * @return Dispatcher
          */
-        public function registerPlugin(Plugin_Abstract $plugin){}
-        /**
-         * 重置__construct魔术方法.
-         */
-        private function __construct(){}
-        /**
-         * 重置__clone魔术方法，防止克隆Dispatcher（因为是单例模式）.
-         *
-         * @return void
-         */
-        private function __clone(){}
-        /**
-         * 重置__sleep魔术方法.
-         *
-         * @return void
-         */
-        private function __sleep(){}
-        /**
-         * 重置__wakeup魔术方法.
-         *
-         * @return void
-         */
-        private function __wakeup(){}
+        public function registerPlugin(Plugin_Abstract $plugin)
+        {
+        }
     }
 
     /**
@@ -589,35 +661,45 @@ namespace Yaf {
          *
          * @var Loader
          */
-        static protected $_instance;
+        protected static $_instance;
         /**
          * 重置__construct魔术方法.
          */
-        private function __construct(){}
-        /**
-         * 重置__clone魔术方法，防止克隆Yaf_Loader（因为是单例模式）.
-         *
-         * @return void
-         */
-        private function __clone(){}
+        private function __construct()
+        {
+        }
         /**
          * 重置__destruct魔术方法.
          *
          * @return void
          */
-        public function __destruct(){}
+        public function __destruct()
+        {
+        }
+        /**
+         * 重置__clone魔术方法，防止克隆Yaf_Loader（因为是单例模式）.
+         *
+         * @return void
+         */
+        private function __clone()
+        {
+        }
         /**
          * 重置__sleep魔术方法.
          *
          * @return void
          */
-        private function __sleep(){}
+        private function __sleep()
+        {
+        }
         /**
          * 重置__wakeup魔术方法.
          *
          * @return void
          */
-        private function __wakeup(){}
+        private function __wakeup()
+        {
+        }
         /**
          * 自动装载类
          *
@@ -625,7 +707,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function autoload($class){}
+        public function autoload($class)
+        {
+        }
         /**
          * 获取Loader实例
          *
@@ -634,7 +718,9 @@ namespace Yaf {
          *
          * @return Loader
          */
-        public static function getInstance($library = null, $global = null){}
+        public static function getInstance($library = null, $global = null)
+        {
+        }
         /**
          * 注册本地类前缀
          *
@@ -642,19 +728,25 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function registerLocalNamespace($namespace){}
+        public function registerLocalNamespace($namespace)
+        {
+        }
         /**
          * 获取当前已经注册的本地类前缀
          *
          * @return String
          */
-        public function getLocalNamespace(){}
+        public function getLocalNamespace()
+        {
+        }
         /**
          * 清空已注册的本地类前缀
          *
          * @return void
          */
-        public function clearLocalNamespace(){}
+        public function clearLocalNamespace()
+        {
+        }
         /**
          * 判断一个类, 是否是本地类.
          *
@@ -662,7 +754,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function isLocalName($class_name){}
+        public function isLocalName($class_name)
+        {
+        }
         /**
          * 手动导入文件
          *
@@ -670,7 +764,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public static function import($file){}
+        public static function import($file)
+        {
+        }
         /**
          * 设置本地或者全局类库目录
          *
@@ -679,7 +775,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function setLibraryPath($library, $global = false){}
+        public function setLibraryPath($library, $global = false)
+        {
+        }
         /**
          * 获取本地或者全局类库目录
          *
@@ -687,7 +785,9 @@ namespace Yaf {
          *
          * @return String
          */
-        public function getLibraryPath($global = false){}
+        public function getLibraryPath($global = false)
+        {
+        }
     }
 
     /**
@@ -699,8 +799,8 @@ namespace Yaf {
      */
     abstract class Request_Abstract
     {
-        const SCHEME_HTTP = "http";
-        const SCHEME_HTTPS = "https";
+        const SCHEME_HTTP = 'http';
+        const SCHEME_HTTPS = 'https';
 
         /**
          * 当前请求的模块名
@@ -803,43 +903,57 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function isGet(){}
+        public function isGet()
+        {
+        }
         /**
          * 判断是否为POST请求
          *
          * @return Boolean
          */
-        public function isPost(){}
+        public function isPost()
+        {
+        }
         /**
          * 判断是否为PUT请求
          *
          * @return Boolean
          */
-        public function isPut(){}
+        public function isPut()
+        {
+        }
         /**
          * 判断是否为HEAD请求
          *
          * @return Boolean
          */
-        public function isHead(){}
+        public function isHead()
+        {
+        }
         /**
          * 判断是否为Options请求
          *
          * @return Boolean
          */
-        public function isOptions(){}
+        public function isOptions()
+        {
+        }
         /**
          * 判断是否为CLI请求
          *
          * @return Boolean
          */
-        public function isCli(){}
+        public function isCli()
+        {
+        }
         /**
          * 判断是否为AJAX请求
          *
          * @return Boolean
          */
-        public function isXmlHttpRequest(){}
+        public function isXmlHttpRequest()
+        {
+        }
         /**
          * 获取服务器$_SERVER全局变量中的值
          *
@@ -848,7 +962,9 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function getServer($name, $default = null){}
+        public function getServer($name, $default = null)
+        {
+        }
         /**
          * 获取环境变量$_ENV全局变量中的值
          *
@@ -857,7 +973,9 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function getEnv($name, $default = null){}
+        public function getEnv($name, $default = null)
+        {
+        }
         /**
          * 设置请求的参数
          * 当只有一个参数且为Array类型，如果存在对应的键值将覆盖
@@ -867,7 +985,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function setParam($name, $value){}
+        public function setParam($name, $value)
+        {
+        }
         /**
          * 获取请求的参数
          *
@@ -876,13 +996,17 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function getParam($name, $default = null){}
+        public function getParam($name, $default = null)
+        {
+        }
         /**
          * 获取请求全部的参数
          *
          * @return array
          */
-        public function getParams(){}
+        public function getParams()
+        {
+        }
         /**
          * 获取异常对象
          *
@@ -890,25 +1014,33 @@ namespace Yaf {
          *
          * @return \Exception
          */
-        public function getException(){}
+        public function getException()
+        {
+        }
         /**
          * 获取当前模块名
          *
          * @return String
          */
-        public function getModuleName(){}
+        public function getModuleName()
+        {
+        }
         /**
          * 获取当前控制器名
          *
          * @return String
          */
-        public function getControllerName(){}
+        public function getControllerName()
+        {
+        }
         /**
          * 获取当前动作名
          *
          * @return String
          */
-        public function getActionName(){}
+        public function getActionName()
+        {
+        }
         /**
          * 设置请求的模块名
          *
@@ -916,7 +1048,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function setModuleName($name){}
+        public function setModuleName($name)
+        {
+        }
         /**
          * 设置请求的控制器名
          *
@@ -924,7 +1058,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function setControllerName($name){}
+        public function setControllerName($name)
+        {
+        }
         /**
          * 设置请求的动作名
          *
@@ -932,19 +1068,25 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function setActionName($name){}
+        public function setActionName($name)
+        {
+        }
         /**
          * 获取当前请求的方法
          *
          * @return String
          */
-        public function getMethod(){}
+        public function getMethod()
+        {
+        }
         /**
          * 获取当前请求的请求
          *
          * @return String
          */
-        public function getLanguage(){}
+        public function getLanguage()
+        {
+        }
         /**
          * 设置请求的Base URI
          *
@@ -952,19 +1094,25 @@ namespace Yaf {
          *
          * @return Request_Abstract
          */
-        public function setBaseUri($baseuri){}
+        public function setBaseUri($baseuri)
+        {
+        }
         /**
          * 获取请求的Base URI
          *
          * @return String
          */
-        public function getBaseUri(){}
+        public function getBaseUri()
+        {
+        }
         /**
          * 获取请求的uri
          *
          * @return String
          */
-        public function getRequestUri(){}
+        public function getRequestUri()
+        {
+        }
         /**
          * 设置请求的URI
          *
@@ -972,31 +1120,41 @@ namespace Yaf {
          *
          * @return Request_Abstract
          */
-        public function setRequestUri($uri){}
+        public function setRequestUri($uri)
+        {
+        }
         /**
          * 判断请求是否完成了分发
          *
          * @return Boolean
          */
-        public function isDispatched(){}
+        public function isDispatched()
+        {
+        }
         /**
          * 设置请求已经完成分发
          *
          * @return Boolean
          */
-        public function setDispatched(){}
+        public function setDispatched()
+        {
+        }
         /**
          * 判断请求是否完成了路由
          *
          * @return Boolean
          */
-        public function isRouted(){}
+        public function isRouted()
+        {
+        }
         /**
          * 设置请求已经完成了路由
          *
          * @return Request_Abstract
          */
-        public function setRouted(){}
+        public function setRouted()
+        {
+        }
     }
 
     /**
@@ -1008,7 +1166,7 @@ namespace Yaf {
      */
     abstract class Response_Abstract
     {
-        const DEFAULT_BODY = "content";
+        const DEFAULT_BODY = 'content';
 
         /**
          * 响应报头
@@ -1031,23 +1189,31 @@ namespace Yaf {
         /**
          * 构造方法
          */
-        public function __construct(){}
+        public function __construct()
+        {
+        }
         /**
          * 析构方法
          */
-        public function __destruct(){}
+        public function __destruct()
+        {
+        }
         /**
          * 重置__clone魔术方法
          *
          * @return void
          */
-        private function __clone(){}
+        private function __clone()
+        {
+        }
         /**
          * 返回响应正文的字符串
          *
          * @return String
          */
-        public function __toString(){}
+        public function __toString()
+        {
+        }
         /**
          * 设置类型为$name的响应正文内容
          *
@@ -1056,7 +1222,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function setBody($body, $name = 'content'){}
+        public function setBody($body, $name = 'content')
+        {
+        }
         /**
          * 获取类型为$name的响应正文内容
          *
@@ -1064,7 +1232,9 @@ namespace Yaf {
          *
          * @return String
          */
-        public function getBody($name = 'content'){}
+        public function getBody($name = 'content')
+        {
+        }
         /**
          * 设置类型为$name的响应正文内容, 如已存在，则追加到原来正文的后面
          *
@@ -1073,7 +1243,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function appendBody($body, $name = 'content'){}
+        public function appendBody($body, $name = 'content')
+        {
+        }
         /**
          * 设置类型为$name的响应正文内容, 如已存在，则追加到原来正文的前面
          *
@@ -1082,7 +1254,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function prependBody($body, $name = 'content'){}
+        public function prependBody($body, $name = 'content')
+        {
+        }
         /**
          * 清空响应正文
          *
@@ -1090,7 +1264,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function clearBody(){}
+        public function clearBody()
+        {
+        }
         /**
          * 将当前请求重定向到指定的URL（内部实现是通过发送Location报头实现，如：header("Location:http//www.phpboy.net/"））
          *
@@ -1098,13 +1274,17 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function setRedirect($url){}
+        public function setRedirect($url)
+        {
+        }
         /**
          * 输出所有的响应正文
          *
          * @return Boolean
          */
-        public function response(){}
+        public function response()
+        {
+        }
     }
 
     /**
@@ -1132,7 +1312,7 @@ namespace Yaf {
          *
          * @var Boolean
          */
-        protected $_readonly = "1";
+        protected $_readonly = '1';
         /**
          * 获取配置节点的值
          * 当不传递$name参数时，返回配置对象本身
@@ -1140,7 +1320,7 @@ namespace Yaf {
          * @param string $name
          * @return Config_Abstract
          */
-        abstract function get($name);
+        abstract public function get($name);
         /**
          * 设置配置节点的值
          *
@@ -1148,19 +1328,19 @@ namespace Yaf {
          * @param mixed $value
          * @return boolean
          */
-        abstract function set($name, $value);
+        abstract public function set($name, $value);
         /**
          * 返回配置只读的状态
          *
          * @return boolean
          */
-        abstract function readonly();
+        abstract public function readonly();
         /**
          * 将配置转换为数组
          *
          * @return array
          */
-        abstract function toArray();
+        abstract public function toArray();
     }
 
     /**
@@ -1241,43 +1421,42 @@ namespace Yaf {
          * @var View_Interface
          */
         protected $_view;
-
         /**
-         * 渲染动作对应的模板，并返回结果
-         *
-         * @param string $action_name 动作名
-         * @param array $var_array 传递到视图对象的参数
-         *
-         * @return String
+         * 屏蔽构造方法
          */
-        protected function render($action_name, $var_array = array()){}
+        final private function __construct()
+        {
+        }
         /**
-         * 渲染动作对应的模板，并直接输出结果
-         *
-         * @param string $action_name 动作名
-         * @param array $var_array 传递到视图对象的参数
-         *
-         * @return String
+         * 屏蔽克隆的魔术方法
          */
-        protected function display($action_name, $var_array = array()){}
+        final private function __clone()
+        {
+        }
         /**
          * 获取请求对象
          *
          * @return Request_Abstract
          */
-        public function getRequest(){}
+        public function getRequest()
+        {
+        }
         /**
          * 获取响应对象
          *
          * @return Response_Abstract
          */
-        public function getResponse(){}
+        public function getResponse()
+        {
+        }
         /**
          * 获取当前模块名
          *
          * @return String
          */
-        public function getModuleName(){}
+        public function getModuleName()
+        {
+        }
         /**
          * 初始化视图对象
          *
@@ -1285,13 +1464,17 @@ namespace Yaf {
          *
          * @return Controller_Abstract
          */
-        public function initView(){}
+        public function initView()
+        {
+        }
         /**
          * 返回视图对象
          *
          * @return \Yaf\View_Interface
          */
-        public function getView(){}
+        public function getView()
+        {
+        }
         /**
          * 设置模板文件目录
          *
@@ -1299,13 +1482,17 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function setViewPath($path){}
+        public function setViewPath($path)
+        {
+        }
         /**
          * 获取模板文件目录
          *
          * @return String
          */
-        public function getViewPath(){}
+        public function getViewPath()
+        {
+        }
         /**
          * 将当前的请求转交给另外的Action（对用户来说是透明的，相当于Web服务器的代理）.
          *
@@ -1320,7 +1507,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function forward($module, $controller = null, $action = null, $parameters = null){}
+        public function forward($module, $controller = null, $action = null, $parameters = null)
+        {
+        }
         /**
          * 将当前请求重定向到指定的URL（内部实现是通过发送Location报头实现，如：header("Location:http//www.phpboy.net/"））
          *
@@ -1328,13 +1517,17 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function redirect($url){}
+        public function redirect($url)
+        {
+        }
         /**
          * 获取全部调用参数
          *
          * @return array
          */
-        public function getInvokeArgs(){}
+        public function getInvokeArgs()
+        {
+        }
         /**
          * 获取指定调用参数名的值
          *
@@ -1342,15 +1535,32 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function getInvokeArg($name){}
+        public function getInvokeArg($name)
+        {
+        }
+
         /**
-         * 屏蔽构造方法
+         * 渲染动作对应的模板，并返回结果
+         *
+         * @param string $action_name 动作名
+         * @param array $var_array 传递到视图对象的参数
+         *
+         * @return String
          */
-        final private function __construct(){}
+        protected function render($action_name, $var_array = [])
+        {
+        }
         /**
-         * 屏蔽克隆的魔术方法
+         * 渲染动作对应的模板，并直接输出结果
+         *
+         * @param string $action_name 动作名
+         * @param array $var_array 传递到视图对象的参数
+         *
+         * @return String
          */
-        final private function __clone(){}
+        protected function display($action_name, $var_array = [])
+        {
+        }
     }
 
     /**
@@ -1374,7 +1584,9 @@ namespace Yaf {
          *
          * @return Controller_Abstract
          */
-        public function getController(){}
+        public function getController()
+        {
+        }
         /**
          * 动作入口方法，由Yaf框架自动调用
          *
@@ -1411,7 +1623,7 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function display($tpl, $var_array = array());
+        public function display($tpl, $var_array = []);
         /**
          * 渲染模板并返回结果
          *
@@ -1420,7 +1632,7 @@ namespace Yaf {
          *
          * @return String
          */
-        public function render($tpl, $var_array = array());
+        public function render($tpl, $var_array = []);
         /**
          * 设置模板文件目录
          *
@@ -1454,7 +1666,9 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function routerStartup(Request_Abstract $request, Response_Abstract $response){}
+        public function routerStartup(Request_Abstract $request, Response_Abstract $response)
+        {
+        }
         /**
          * 路由结束之后触发
          *
@@ -1463,7 +1677,9 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function routerShutdown(Request_Abstract $request, Response_Abstract $response){}
+        public function routerShutdown(Request_Abstract $request, Response_Abstract $response)
+        {
+        }
         /**
          * 分发循环开始之前被触发
          *
@@ -1472,7 +1688,9 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function dispatchLoopStartup(Request_Abstract $request, Response_Abstract $response){}
+        public function dispatchLoopStartup(Request_Abstract $request, Response_Abstract $response)
+        {
+        }
         /**
          * 分发之前触发
          *
@@ -1481,7 +1699,9 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function preDispatch(Request_Abstract $request, Response_Abstract $response){}
+        public function preDispatch(Request_Abstract $request, Response_Abstract $response)
+        {
+        }
         /**
          * 分发结束之后触发
          *
@@ -1490,7 +1710,9 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function postDispatch(Request_Abstract $request, Response_Abstract $response){}
+        public function postDispatch(Request_Abstract $request, Response_Abstract $response)
+        {
+        }
         /**
          * dispatchLoopShutdown
          *
@@ -1499,7 +1721,9 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function dispatchLoopShutdown(Request_Abstract $request, Response_Abstract $response){}
+        public function dispatchLoopShutdown(Request_Abstract $request, Response_Abstract $response)
+        {
+        }
         /**
          * 响应之前触发
          *
@@ -1508,7 +1732,8 @@ namespace Yaf {
          *
          * @return mixed
          */
-        public function preResponse(Request_Abstract $request, Response_Abstract $response) {
+        public function preResponse(Request_Abstract $request, Response_Abstract $response)
+        {
         }
     }
 
@@ -1529,7 +1754,7 @@ namespace Yaf {
          *
          * @var Registry
          */
-        static protected $_instance;
+        protected static $_instance;
         /**
          * 注册变量栈
          *
@@ -1539,13 +1764,17 @@ namespace Yaf {
         /**
          * 重置__construct魔术方法.
          */
-        private function __construct(){}
+        private function __construct()
+        {
+        }
         /**
          * 重置__clone魔术方法，防止克隆Dispatcher（因为是单例模式）.
          *
          * @return void
          */
-        private function __clone(){}
+        private function __clone()
+        {
+        }
         /**
          * 获取注册变量值
          *
@@ -1553,7 +1782,9 @@ namespace Yaf {
          *
          * @return mixed
          */
-        static public function get($name){}
+        public static function get($name)
+        {
+        }
         /**
          * 检测变量是否存在
          *
@@ -1561,7 +1792,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        static public function has($name){}
+        public static function has($name)
+        {
+        }
         /**
          * 注册变量
          *
@@ -1570,7 +1803,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        static public function set($name, $value){}
+        public static function set($name, $value)
+        {
+        }
         /**
          * 删除变量
          *
@@ -1578,7 +1813,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        static public function del($name){}
+        public static function del($name)
+        {
+        }
     }
 
     /**
@@ -1605,7 +1842,7 @@ namespace Yaf {
          * @param mixed $query
          * @return String
          */
-        public function assemble(array $info, array $query = NULL);
+        public function assemble(array $info, array $query = null);
     }
 
     /**
@@ -1624,7 +1861,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function match(){}
+        public function match()
+        {
+        }
         /**
          * 路由请求
          *
@@ -1632,7 +1871,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function route($request){}
+        public function route($request)
+        {
+        }
         /**
          * 组合uri，路由解析的逆操作
          *
@@ -1640,7 +1881,9 @@ namespace Yaf {
          * @param mixed $query
          * @return String
          */
-        public function assemble(array $info, array $query = NULL){}
+        public function assemble(array $info, array $query = null)
+        {
+        }
     }
 
     /**
@@ -1668,7 +1911,9 @@ namespace Yaf {
         /**
          * 构造方法
          */
-        public function __construct(){}
+        public function __construct()
+        {
+        }
         /**
          * 往Router中添加新的路由
          *
@@ -1677,7 +1922,9 @@ namespace Yaf {
          *
          * @return Router
          */
-        public function addRoute($name, Route_Interface $route){}
+        public function addRoute($name, Route_Interface $route)
+        {
+        }
         /**
          * 向Router中添加配置文件或者配置数组定义的路由
          *
@@ -1685,7 +1932,9 @@ namespace Yaf {
          *
          * @return Router
          */
-        public function addConfig($config){}
+        public function addConfig($config)
+        {
+        }
         /**
          * 路由请求
          *
@@ -1693,7 +1942,9 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function route(Request_Abstract $request){}
+        public function route(Request_Abstract $request)
+        {
+        }
         /**
          * 获取路由名对应的路由协议实例
          *
@@ -1701,19 +1952,25 @@ namespace Yaf {
          *
          * @return Route_Interface
          */
-        public function getRoute($name){}
+        public function getRoute($name)
+        {
+        }
         /**
          * 获取已注册的所有路由协议
          *
          * @return array
          */
-        public function getRoutes(){}
+        public function getRoutes()
+        {
+        }
         /**
          * 获取当前路由成功的路由协议实例
          *
          * @return Route_Interface
          */
-        public function getCurrentRoute(){}
+        public function getCurrentRoute()
+        {
+        }
     }
 
     /**
@@ -1729,12 +1986,12 @@ namespace Yaf {
          * 单例对象
          * @var Session
          */
-        protected static $_instance = NULL;
+        protected static $_instance = null;
         /**
          * 数据数组
          * @var array
          */
-        protected $_session = NULL;
+        protected $_session = null;
         /**
          * 数据数组开始下标
          * @var int
@@ -1744,149 +2001,42 @@ namespace Yaf {
         /**
          * 重置__construct魔术方法.
          */
-        private function __construct(){}
-        /**
-         * 重置__clone魔术方法（因为是单例模式）.
-         *
-         * @return void
-         */
-        private function __clone(){}
-        /**
-         * 重置__sleep魔术方法.
-         *
-         * @return void
-         */
-        private function __sleep(){}
-        /**
-         * 重置__wakeup魔术方法.
-         *
-         * @return void
-         */
-        private function __wakeup(){}
-        /**
-         * 获取Session实例（单例模式）
-         *
-         * @return Session
-         */
-        public static function getInstance(){}
-        /**
-         * 开启会话
-         *
-         * @return Session
-         */
-        public function start(){}
+        private function __construct()
+        {
+        }
         /**
          * (Yaf >= 2.2.9)
          * 重置__destruct魔术方法.
          *
          * @return void
          */
-        public function __destruct(){}
+        public function __destruct()
+        {
+        }
         /**
-         * 获取session变量
-         *
-         * @param string $name 变量名
-         *
-         * @return mixed
-         */
-        public function get($name){}
-        /**
-         * 设置session变量
-         *
-         * @param string $name 变量名
-         * @param mixed $value 变量值
-         *
-         * @return Session
-         */
-        public function set($name, $value){}
-        /**
-         * 撤消session变量
-         *
-         * @param string $name 变量名
-         *
-         * @return Session
-         */
-        public function del($name){}
-
-        /**
-         * 是否存在session变量
-         * @param $name
-         */
-        public function has($name) {}
-
-        /**
-         * 清空session
-         */
-        public function clear() {}
-        /**
-         * 返回session变量的数量
-         *
-         * @return Int
-         */
-        public function count(){}
-        /**
-         * 重置遍历位置
+         * 重置__clone魔术方法（因为是单例模式）.
          *
          * @return void
          */
-        public function rewind(){}
+        private function __clone()
+        {
+        }
         /**
-         * 返回当前变量
-         *
-         * @return mixed
-         */
-        public function current(){}
-        /**
-         * 向前移动到下一个元素
+         * 重置__sleep魔术方法.
          *
          * @return void
          */
-        public function next(){}
+        private function __sleep()
+        {
+        }
         /**
-         * 判断是否可以继续遍历
+         * 重置__wakeup魔术方法.
          *
          * @return void
          */
-        public function valid(){}
-        /**
-         * 返回当前配置节点的key
-         *
-         * @return mixed
-         */
-        public function key(){}
-        /**
-         * 撤消某个session变量
-         *
-         * @param string $name 变量名
-         *
-         * @return Session
-         */
-        public function offsetUnset($name){}
-        /**
-         * 测试某个session变量是否存在
-         *
-         * @param mixed $name 变量名
-         *
-         * @return Boolean
-         */
-        public function offsetExists($name){}
-        /**
-         * 获取session变量
-         *
-         * @param string $name 变量名
-         *
-         * @return Session
-         */
-        public function offsetGet($name){}
-        /**
-         * 设置session变量
-         *
-         * @param string $name 变量名
-         * @param mixed $value 变量值
-         *
-         * @return Session
-         */
-        public function offsetSet($name, $value){}
+        private function __wakeup()
+        {
+        }
         /**
          * 获取session变量值
          * 当不传递$name参数时，返回全部变量
@@ -1894,7 +2044,9 @@ namespace Yaf {
          * @param string $name
          * @return mixed
          */
-        public function __get($name){}
+        public function __get($name)
+        {
+        }
         /**
          * 设置session变量
          *
@@ -1903,7 +2055,9 @@ namespace Yaf {
          *
          * @return Session
          */
-        public function __set($name, $value){}
+        public function __set($name, $value)
+        {
+        }
         /**
          * 魔术方法，当isset()检测session变量存在时调用
          *
@@ -1911,12 +2065,167 @@ namespace Yaf {
          *
          * @return Boolean
          */
-        public function __isset($name){}
+        public function __isset($name)
+        {
+        }
         /**
          * 魔术方法，当unset()检测session变量不存在时调用
          * @param string $name 变量名
          */
-        public function __unset(string $name){}
+        public function __unset(string $name)
+        {
+        }
+        /**
+         * 获取Session实例（单例模式）
+         *
+         * @return Session
+         */
+        public static function getInstance()
+        {
+        }
+        /**
+         * 开启会话
+         *
+         * @return Session
+         */
+        public function start()
+        {
+        }
+        /**
+         * 获取session变量
+         *
+         * @param string $name 变量名
+         *
+         * @return mixed
+         */
+        public function get($name)
+        {
+        }
+        /**
+         * 设置session变量
+         *
+         * @param string $name 变量名
+         * @param mixed $value 变量值
+         *
+         * @return Session
+         */
+        public function set($name, $value)
+        {
+        }
+        /**
+         * 撤消session变量
+         *
+         * @param string $name 变量名
+         *
+         * @return Session
+         */
+        public function del($name)
+        {
+        }
+
+        /**
+         * 是否存在session变量
+         * @param $name
+         */
+        public function has($name)
+        {
+        }
+
+        /**
+         * 清空session
+         */
+        public function clear()
+        {
+        }
+        /**
+         * 返回session变量的数量
+         *
+         * @return Int
+         */
+        public function count()
+        {
+        }
+        /**
+         * 重置遍历位置
+         *
+         * @return void
+         */
+        public function rewind()
+        {
+        }
+        /**
+         * 返回当前变量
+         *
+         * @return mixed
+         */
+        public function current()
+        {
+        }
+        /**
+         * 向前移动到下一个元素
+         *
+         * @return void
+         */
+        public function next()
+        {
+        }
+        /**
+         * 判断是否可以继续遍历
+         *
+         * @return void
+         */
+        public function valid()
+        {
+        }
+        /**
+         * 返回当前配置节点的key
+         *
+         * @return mixed
+         */
+        public function key()
+        {
+        }
+        /**
+         * 撤消某个session变量
+         *
+         * @param string $name 变量名
+         *
+         * @return Session
+         */
+        public function offsetUnset($name)
+        {
+        }
+        /**
+         * 测试某个session变量是否存在
+         *
+         * @param mixed $name 变量名
+         *
+         * @return Boolean
+         */
+        public function offsetExists($name)
+        {
+        }
+        /**
+         * 获取session变量
+         *
+         * @param string $name 变量名
+         *
+         * @return Session
+         */
+        public function offsetGet($name)
+        {
+        }
+        /**
+         * 设置session变量
+         *
+         * @param string $name 变量名
+         * @param mixed $value 变量值
+         *
+         * @return Session
+         */
+        public function offsetSet($name, $value)
+        {
+        }
     }
 
     /**
@@ -1946,13 +2255,21 @@ namespace Yaf {
          * @var Exception
          */
         protected $previous;
-        protected $file = NULL;
-        protected $line = NULL;
+        protected $file = null;
+        protected $line = null;
 
-        public function __construct($message = NULL, $code = NULL, $previous = NULL) {}
-        final private function __clone() {}
-        public function __wakeup() {}
-        public function __toString() {}
+        public function __construct($message = null, $code = null, $previous = null)
+        {
+        }
+        final private function __clone()
+        {
+        }
+        public function __wakeup()
+        {
+        }
+        public function __toString()
+        {
+        }
     }
 }
 
@@ -1964,14 +2281,25 @@ namespace Yaf\Request {
      *
      * @package Yaf\Request
      */
-    class Http extends \Yaf\Request_Abstract {
+    class Http extends \Yaf\Request_Abstract
+    {
         /**
          * 构造方法
          *
          * @param string $request_uri Request URI（可选）
          * @param string $base_uri Base URI（可选）
          */
-        public function __construct($request_uri = null, $base_uri = null){}
+        public function __construct($request_uri = null, $base_uri = null)
+        {
+        }
+        /**
+         * 重置__clone魔术方法
+         *
+         * @return void
+         */
+        private function __clone()
+        {
+        }
         /**
          * 获取$_GET中名为$name的参数值
          *
@@ -1980,7 +2308,9 @@ namespace Yaf\Request {
          *
          * @return mixed
          */
-        public function getQuery($name = null, $default = null){}
+        public function getQuery($name = null, $default = null)
+        {
+        }
         /**
          * 获取$_REQUEST中名为$name的参数值
          *
@@ -1988,7 +2318,9 @@ namespace Yaf\Request {
          *
          * @return mixed
          */
-        public function getRequest($name = null){}
+        public function getRequest($name = null)
+        {
+        }
         /**
          * 获取$_POST中名为$name的参数值
          *
@@ -1997,7 +2329,9 @@ namespace Yaf\Request {
          *
          * @return mixed
          */
-        public function getPost($name = null, $default = null){}
+        public function getPost($name = null, $default = null)
+        {
+        }
         /**
          * 获取$_COOKIE中名为$name的参数值
          *
@@ -2005,7 +2339,9 @@ namespace Yaf\Request {
          *
          * @return mixed
          */
-        public function getCookie($name = null){}
+        public function getCookie($name = null)
+        {
+        }
         /**
          * 获取$_FILES中名为$name的参数值
          *
@@ -2013,7 +2349,9 @@ namespace Yaf\Request {
          *
          * @return mixed
          */
-        public function getFiles($name = null){}
+        public function getFiles($name = null)
+        {
+        }
         /**
          * 获取全局变量中的值（扫描顺序为$_POST，$_GET，$_COOKIE，$_SERVER）
          *
@@ -2022,15 +2360,13 @@ namespace Yaf\Request {
          *
          * @return mixed
          */
-        public function get($name, $default = null){}
-        /**
-         * 重置__clone魔术方法
-         *
-         * @return void
-         */
-        private function __clone(){}
+        public function get($name, $default = null)
+        {
+        }
 
-        public function getException() {}
+        public function getException()
+        {
+        }
     }
 
     /**
@@ -2051,7 +2387,17 @@ namespace Yaf\Request {
          * @param mixed | string $action 动作名
          * @param mixed | array $parameters 请求的参数
          */
-        public function __construct($method = null, $module = null, $controller = null, $action = null, $parameters = null){}
+        public function __construct($method = null, $module = null, $controller = null, $action = null, $parameters = null)
+        {
+        }
+        /**
+         * 重置__clone魔术方法
+         *
+         * @return void
+         */
+        private function __clone()
+        {
+        }
         /**
          * 获取$_GET中名为$name的参数值
          *
@@ -2059,7 +2405,9 @@ namespace Yaf\Request {
          *
          * @return mixed
          */
-        public function getQuery($name = null){}
+        public function getQuery($name = null)
+        {
+        }
         /**
          * 获取$_REQUEST中名为$name的参数值
          *
@@ -2067,7 +2415,9 @@ namespace Yaf\Request {
          *
          * @return mixed
          */
-        public function getRequest($name = null){}
+        public function getRequest($name = null)
+        {
+        }
         /**
          * 获取$_POST中名为$name的参数值
          *
@@ -2075,7 +2425,9 @@ namespace Yaf\Request {
          *
          * @return mixed
          */
-        public function getPost($name = null){}
+        public function getPost($name = null)
+        {
+        }
         /**
          * 获取$_COOKIE中名为$name的参数值
          *
@@ -2083,7 +2435,9 @@ namespace Yaf\Request {
          *
          * @return mixed
          */
-        public function getCookie($name = null){}
+        public function getCookie($name = null)
+        {
+        }
         /**
          * 获取$_FILES中名为$name的参数值
          *
@@ -2091,7 +2445,9 @@ namespace Yaf\Request {
          *
          * @return mixed
          */
-        public function getFiles($name = null){}
+        public function getFiles($name = null)
+        {
+        }
         /**
          * 获取全局变量中的值（扫描顺序为$_POST，$_GET，$_COOKIE，$_SERVER）
          *
@@ -2100,14 +2456,12 @@ namespace Yaf\Request {
          *
          * @return mixed
          */
-        public function get($name, $default = null){}
-        public function getException() {}
-        /**
-         * 重置__clone魔术方法
-         *
-         * @return void
-         */
-        private function __clone(){}
+        public function get($name, $default = null)
+        {
+        }
+        public function getException()
+        {
+        }
     }
 }
 
@@ -2119,7 +2473,8 @@ namespace Yaf\Response {
      *
      * @package Yaf\Response
      */
-    class Http extends \Yaf\Response_Abstract {
+    class Http extends \Yaf\Response_Abstract
+    {
         /**
          * 响应状态码
          *
@@ -2127,14 +2482,30 @@ namespace Yaf\Response {
          */
         protected $_response_code = 200;
 
-        public function __construct() {}
-        public function __destruct() {}
-        private function __clone() {}
-        public function __toString() {}
-        public function setHeader($name, $value, $rep = NULL, $response_code = NULL) {}
-        public function setAllHeaders($headers) {}
-        public function getHeader($name = NULL) {}
-        public function clearHeaders() {}
+        public function __construct()
+        {
+        }
+        public function __destruct()
+        {
+        }
+        private function __clone()
+        {
+        }
+        public function __toString()
+        {
+        }
+        public function setHeader($name, $value, $rep = null, $response_code = null)
+        {
+        }
+        public function setAllHeaders($headers)
+        {
+        }
+        public function getHeader($name = null)
+        {
+        }
+        public function clearHeaders()
+        {
+        }
     }
 
     /**
@@ -2144,11 +2515,20 @@ namespace Yaf\Response {
      *
      * @package Yaf\Response
      */
-    class Cli extends \Yaf\Response_Abstract {
-        public function __construct() {}
-        public function __destruct() {}
-        private function __clone() {}
-        public function __toString() {}
+    class Cli extends \Yaf\Response_Abstract
+    {
+        public function __construct()
+        {
+        }
+        public function __destruct()
+        {
+        }
+        private function __clone()
+        {
+        }
+        public function __toString()
+        {
+        }
     }
 }
 
@@ -2161,7 +2541,8 @@ namespace Yaf\View {
      *
      * @package Yaf\View
      */
-    class Simple implements \Yaf\View_Interface {
+    class Simple implements \Yaf\View_Interface
+    {
         /**
          * 储存所有模板变量
          *
@@ -2189,7 +2570,9 @@ namespace Yaf\View {
          * @param string $tpl_dir 模板文件目录
          * @param array $options 此属性在php-5.4以下版本中适用，用以设置模板渲染的方式
          */
-        public function __construct($tpl_dir, $options){}
+        public function __construct($tpl_dir, $options)
+        {
+        }
         /**
          * 当isset检测某个属性是否存在时自动调用（判断是否传递某个模板变量）
          *
@@ -2197,7 +2580,9 @@ namespace Yaf\View {
          *
          * @return Boolean
          */
-        public function __isset($name){}
+        public function __isset($name)
+        {
+        }
         /**
          * 获取某个模板变量的值
          *
@@ -2207,17 +2592,9 @@ namespace Yaf\View {
          *
          * @return mixed
          */
-        public function __get($name){}
-        /**
-         * 获取某个模板变量的值
-         *
-         * 当不传递参数是，返回全部的模板变量数组
-         *
-         * @param string $name 模板变量名
-         *
-         * @return mixed
-         */
-        public function get($name){}
+        public function __get($name)
+        {
+        }
         /**
          * 传递变量到模板
          *
@@ -2228,7 +2605,21 @@ namespace Yaf\View {
          *
          * @return Boolean
          */
-        public function __set($name, $value){}
+        public function __set($name, $value)
+        {
+        }
+        /**
+         * 获取某个模板变量的值
+         *
+         * 当不传递参数是，返回全部的模板变量数组
+         *
+         * @param string $name 模板变量名
+         *
+         * @return mixed
+         */
+        public function get($name)
+        {
+        }
         /**
          * 清空某个模板变量的值
          *
@@ -2238,7 +2629,9 @@ namespace Yaf\View {
          *
          * @return mixed
          */
-        public function clear($name){}
+        public function clear($name)
+        {
+        }
         /**
          * 以引用的方式传递变量到模板
          *
@@ -2249,13 +2642,27 @@ namespace Yaf\View {
          *
          * @return Boolean
          */
-        public function assignRef($name, $value){}
-        public function eval($tpl_str, $vars = NULL) {}
-        public function assign($name, $value = null){}
-        public function display($tpl, $var_array = array()){}
-        public function render($tpl, $var_array = array()){}
-        public function setScriptPath($tpl_dir){}
-        public function getScriptPath(){}
+        public function assignRef($name, $value)
+        {
+        }
+        public function eval($tpl_str, $vars = null)
+        {
+        }
+        public function assign($name, $value = null)
+        {
+        }
+        public function display($tpl, $var_array = [])
+        {
+        }
+        public function render($tpl, $var_array = [])
+        {
+        }
+        public function setScriptPath($tpl_dir)
+        {
+        }
+        public function getScriptPath()
+        {
+        }
     }
 }
 
@@ -2270,14 +2677,17 @@ namespace Yaf\Config {
      *
      * @package Yaf\Config
      */
-    final class Ini extends \Yaf\Config_Abstract implements \Iterator, \ArrayAccess, \Countable {
+    final class Ini extends \Yaf\Config_Abstract implements \Iterator, \ArrayAccess, \Countable
+    {
         /**
          * 构造方法，初始化Ini对象
          *
          * @param string $filename ini文件全路径
          * @param string $section 初始化时的配置节点名称
          */
-        public function __construct($filename, $section = null){}
+        public function __construct($filename, $section = null)
+        {
+        }
         /**
          * 魔术方法，当isset()检测某个配置节点是否存在时调用
          *
@@ -2285,7 +2695,31 @@ namespace Yaf\Config {
          *
          * @return Boolean
          */
-        public function __isset($name){}
+        public function __isset($name)
+        {
+        }
+        /**
+         * 获取配置节点的值
+         * 当不传递$name参数时，返回配置对象本身
+         *
+         * @param string $name
+         * @return Ini
+         */
+        public function __get($name)
+        {
+        }
+        /**
+         * 设置配置节点值（无效）
+         *
+         * @deprecated 约定ini文件的配置不可写
+         * @param string $name 变量名
+         * @param mixed $value
+         *
+         * @return false
+         */
+        public function __set($name, $value)
+        {
+        }
         /**
          * (Yaf >= 2.2.9)
          * 设置配置节点值（无效）
@@ -2296,43 +2730,57 @@ namespace Yaf\Config {
          *
          * @return false
          */
-        public function set($name, $value){}
+        public function set($name, $value)
+        {
+        }
         /**
          * 返回配置节点的数量
          *
          * @return Int
          */
-        public function count(){}
+        public function count()
+        {
+        }
         /**
          * 重置遍历位置（php.net文档有误）
          *
          * @return void
          */
-        public function rewind(){}
+        public function rewind()
+        {
+        }
         /**
          * 返回当前节点
          *
          * @return Ini
          */
-        public function current(){}
+        public function current()
+        {
+        }
         /**
          * 向前移动到下一个元素
          *
          * @return void
          */
-        public function next(){}
+        public function next()
+        {
+        }
         /**
          * 判断是否可以继续遍历
          *
          * @return void
          */
-        public function valid(){}
+        public function valid()
+        {
+        }
         /**
          * 返回当前配置节点的key
          *
          * @return mixed
          */
-        public function key(){}
+        public function key()
+        {
+        }
         /**
          * 撤消某个配置节点（无效）
          *
@@ -2341,7 +2789,9 @@ namespace Yaf\Config {
          *
          * @return false
          */
-        public function offsetUnset($name){}
+        public function offsetUnset($name)
+        {
+        }
         /**
          * 测某个配置节点是否存在
          *
@@ -2349,7 +2799,9 @@ namespace Yaf\Config {
          *
          * @return Boolean
          */
-        public function offsetExists($name){}
+        public function offsetExists($name)
+        {
+        }
         /**
          * 设置配置节点值（无效）
          *
@@ -2359,7 +2811,9 @@ namespace Yaf\Config {
          *
          * @return false
          */
-        public function offsetSet($name, $value){}
+        public function offsetSet($name, $value)
+        {
+        }
         /**
          * 获取配置节点的值
          * 当不传递$name参数时，返回配置对象本身
@@ -2367,7 +2821,9 @@ namespace Yaf\Config {
          * @param string $name
          * @return Ini
          */
-        public function offsetGet($name){}
+        public function offsetGet($name)
+        {
+        }
         /**
          * (Yaf >= 2.2.9)
          * 获取配置节点的值
@@ -2376,27 +2832,15 @@ namespace Yaf\Config {
          * @param string $name
          * @return Ini
          */
-        public function get($name){}
-        /**
-         * 获取配置节点的值
-         * 当不传递$name参数时，返回配置对象本身
-         *
-         * @param string $name
-         * @return Ini
-         */
-        public function __get($name){}
-        /**
-         * 设置配置节点值（无效）
-         *
-         * @deprecated 约定ini文件的配置不可写
-         * @param string $name 变量名
-         * @param mixed $value
-         *
-         * @return false
-         */
-        public function __set($name, $value){}
-        public function readonly(){}
-        public function toArray(){}
+        public function get($name)
+        {
+        }
+        public function readonly()
+        {
+        }
+        public function toArray()
+        {
+        }
     }
 
     /**
@@ -2406,14 +2850,17 @@ namespace Yaf\Config {
      *
      * @package Yaf\Config
      */
-    final class Simple extends \Yaf\Config_Abstract implements \Iterator, \ArrayAccess, \Countable {
+    final class Simple extends \Yaf\Config_Abstract implements \Iterator, \ArrayAccess, \Countable
+    {
         /**
          * 构造方法，初始化Simple对象
          *
          * @param string $config 储存配置的数组
          * @param string $readonly 是否只读
          */
-        public function __construct($config, $readonly = null){}
+        public function __construct($config, $readonly = null)
+        {
+        }
         /**
          * 魔术方法，当isset()检测某个配置节点是否存在时调用
          *
@@ -2421,43 +2868,78 @@ namespace Yaf\Config {
          *
          * @return Boolean
          */
-        public function __isset($name){}
+        public function __isset($name)
+        {
+        }
+        /**
+         * 获取配置节点的值
+         * 当不传递$name参数时，返回配置对象本身
+         *
+         * @param string $name
+         * @return Simple
+         */
+        public function __get($name)
+        {
+        }
+        /**
+         * 设置配置节点值
+         *
+         * @param string $name 节点名称
+         * @param mixed $value 节点值
+         *
+         * @return Boolean
+         */
+        public function __set($name, $value)
+        {
+        }
         /**
          * 返回配置节点的数量
          *
          * @return Int
          */
-        public function count(){}
+        public function count()
+        {
+        }
         /**
          * 重置遍历位置（php.net文档有误）
          *
          * @return void
          */
-        public function rewind(){}
+        public function rewind()
+        {
+        }
         /**
          * 返回当前节点
          *
          * @return Simple
          */
-        public function current(){}
+        public function current()
+        {
+        }
         /**
          * 向前移动到下一个元素
          *
          * @return void
          */
-        public function next(){}
+        public function next()
+        {
+        }
         /**
          * 判断是否可以继续遍历
          *
          * @return void
          */
-        public function valid(){}
+        public function valid()
+        {
+        }
         /**
          * 返回当前配置节点的key
          *
          * @return mixed
          */
-        public function key(){}
+        public function key()
+        {
+        }
         /**
          * 撤消某个配置节点
          *
@@ -2465,7 +2947,9 @@ namespace Yaf\Config {
          *
          * @return Boolean
          */
-        public function offsetUnset($name){}
+        public function offsetUnset($name)
+        {
+        }
         /**
          * 测某个配置节点是否存在
          *
@@ -2473,7 +2957,9 @@ namespace Yaf\Config {
          *
          * @return Boolean
          */
-        public function offsetExists($name){}
+        public function offsetExists($name)
+        {
+        }
         /**
          * 获取配置节点的值
          * 当不传递$name参数时，返回配置对象本身
@@ -2481,7 +2967,9 @@ namespace Yaf\Config {
          * @param string $name
          * @return Simple
          */
-        public function offsetGet($name){}
+        public function offsetGet($name)
+        {
+        }
         /**
          * 设置配置节点值
          *
@@ -2490,38 +2978,31 @@ namespace Yaf\Config {
          *
          * @return Boolean
          */
-        public function offsetSet($name, $value){}
-        /**
-         * 获取配置节点的值
-         * 当不传递$name参数时，返回配置对象本身
-         *
-         * @param string $name
-         * @return Simple
-         */
-        public function __get($name){}
-        /**
-         * 设置配置节点值
-         *
-         * @param string $name 节点名称
-         * @param mixed $value 节点值
-         *
-         * @return Boolean
-         */
-        public function __set($name, $value){}
+        public function offsetSet($name, $value)
+        {
+        }
         /**
          * 将配置转化为数组
          *
          * @return array|void
          */
-        public function toArray(){}
+        public function toArray()
+        {
+        }
         /**
          * 检测配置是否只读
          *
          * @return Boolean
          */
-        public function readonly(){}
-        public function get($name){}
-        public function set($name, $value){}
+        public function readonly()
+        {
+        }
+        public function get($name)
+        {
+        }
+        public function set($name, $value)
+        {
+        }
     }
 }
 
@@ -2533,29 +3014,36 @@ namespace Yaf\Route {
      *
      * @package Yaf\Route
      */
-    final class Simple implements \Yaf\Route_Interface {
+    final class Simple implements \Yaf\Route_Interface
+    {
         /**
          * 控制器名
          *
          * @var String
          */
-        protected $controller = NULL;
+        protected $controller = null;
         /**
          * 模块名
          *
          * @var String
          */
-        protected $module = NULL;
+        protected $module = null;
         /**
          * 动作名
          *
          * @var String
          */
-        protected $action = NULL;
+        protected $action = null;
 
-        public function __construct($module_name, $controller_name, $action_name) {}
-        public function route($request) {}
-        public function assemble(array $info, array $query = NULL) {}
+        public function __construct($module_name, $controller_name, $action_name)
+        {
+        }
+        public function route($request)
+        {
+        }
+        public function assemble(array $info, array $query = null)
+        {
+        }
     }
 
     /**
@@ -2565,18 +3053,25 @@ namespace Yaf\Route {
      *
      * @package Yaf\Route
      */
-    final class Supervar implements \Yaf\Route_Interface {
+    final class Supervar implements \Yaf\Route_Interface
+    {
         /**
          * 全局路由变量名
          *
          * @var String
          */
-        protected $_var_name = NULL;
+        protected $_var_name = null;
 
         /* methods */
-        public function __construct($supervar_name) {}
-        public function route($request) {}
-        public function assemble(array $info, array $query = NULL) {}
+        public function __construct($supervar_name)
+        {
+        }
+        public function route($request)
+        {
+        }
+        public function assemble(array $info, array $query = null)
+        {
+        }
     }
 
     /**
@@ -2586,13 +3081,14 @@ namespace Yaf\Route {
      *
      * @package Yaf\Route
      */
-    final class Rewrite implements \Yaf\Route_Interface {
+    final class Rewrite implements \Yaf\Route_Interface
+    {
         /**
          * 匹配模式（正则表达式）
          *
          * @var String
          */
-        protected $_route = NULL;
+        protected $_route = null;
         /**
          * 路由信息
          *
@@ -2600,17 +3096,23 @@ namespace Yaf\Route {
          *
          * @var array
          */
-        protected $_default = NULL;
+        protected $_default = null;
         /**
          * 哥也不清楚（实在没有查到作用，源码也没看出所以然，问鸟哥！）
          *
          * @var array
          */
-        protected $_verify = NULL;
+        protected $_verify = null;
 
-        public function __construct($match, array $route, array $verify = NULL) {}
-        public function route($request) {}
-        public function assemble(array $info, array $query = NULL) {}
+        public function __construct($match, array $route, array $verify = null)
+        {
+        }
+        public function route($request)
+        {
+        }
+        public function assemble(array $info, array $query = null)
+        {
+        }
     }
 
     /**
@@ -2620,13 +3122,14 @@ namespace Yaf\Route {
      *
      * @package Yaf\Route
      */
-    final class Regex implements \Yaf\Route_Interface {
+    final class Regex implements \Yaf\Route_Interface
+    {
         /**
          * 匹配模式（正则表达式）
          *
          * @var String
          */
-        protected $_route = NULL;
+        protected $_route = null;
         /**
          * (Yaf >= 2.2.9)
          * 路由信息
@@ -2635,7 +3138,7 @@ namespace Yaf\Route {
          *
          * @var array
          */
-        protected $_default = NULL;
+        protected $_default = null;
         /**
          * 模式分组的映射关系
          *
@@ -2643,13 +3146,19 @@ namespace Yaf\Route {
          *
          * @var array
          */
-        protected $_maps = NULL;
-        protected $_verify = NULL;
-        protected $_reverse = NULL;
+        protected $_maps = null;
+        protected $_verify = null;
+        protected $_reverse = null;
 
-        public function __construct($match, array $route, array $map = NULL, array $verify = NULL, $reverse = NULL) {}
-        public function route($request) {}
-        public function assemble(array $info, array $query = NULL) {}
+        public function __construct($match, array $route, array $map = null, array $verify = null, $reverse = null)
+        {
+        }
+        public function route($request)
+        {
+        }
+        public function assemble(array $info, array $query = null)
+        {
+        }
     }
 
     /**
@@ -2659,19 +3168,20 @@ namespace Yaf\Route {
      *
      * @package Yaf\Route
      */
-    final class Map implements \Yaf\Route_Interface {
+    final class Map implements \Yaf\Route_Interface
+    {
         /**
          * 表示路由结果是作为动作的路由结果，还是控制器的路由结果，默认的是动作路由结果.
          *
          * @var Int
          */
-        protected $_ctl_router = "";
+        protected $_ctl_router = '';
         /**
          * 分隔符
          *
          * @var String
          */
-        protected $_delimiter = NULL;
+        protected $_delimiter = null;
 
         /**
          * (Yaf >= 2.2.9)
@@ -2679,10 +3189,17 @@ namespace Yaf\Route {
          *
          * @param $controller_prefer boolean 表示路由结果是作为动作的路由结果，还是控制器的路由结果，默认的是动作路由结果.
          * @param $delim string 表示一个分隔符，如果设置了这个分隔符，那么在REQUEST_URI中，分隔符之前的作为路由信息载体，而之后的作为请求参数.
+         * @param null|mixed $delimiter
          */
-        public function __construct($controller_prefer = NULL, $delimiter = NULL) {}
-        public function route($request) {}
-        public function assemble(array $info, array $query = NULL) {}
+        public function __construct($controller_prefer = null, $delimiter = null)
+        {
+        }
+        public function route($request)
+        {
+        }
+        public function assemble(array $info, array $query = null)
+        {
+        }
     }
 }
 
@@ -2694,7 +3211,9 @@ namespace Yaf\Exception {
      *
      * @package Yaf\Exception
      */
-    class StartupError extends \Yaf\Exception implements \Throwable {}
+    class StartupError extends \Yaf\Exception implements \Throwable
+    {
+    }
 
     /**
      * Class RouterFailed
@@ -2703,7 +3222,9 @@ namespace Yaf\Exception {
      *
      * @package Yaf\Exception
      */
-    class RouterFailed extends \Yaf\Exception implements \Throwable {}
+    class RouterFailed extends \Yaf\Exception implements \Throwable
+    {
+    }
 
     /**
      * Class DispatchFailed
@@ -2712,7 +3233,9 @@ namespace Yaf\Exception {
      *
      * @package Yaf\Exception
      */
-    class DispatchFailed extends \Yaf\Exception implements \Throwable {}
+    class DispatchFailed extends \Yaf\Exception implements \Throwable
+    {
+    }
 
     /**
      * Class LoadFailed
@@ -2721,7 +3244,9 @@ namespace Yaf\Exception {
      *
      * @package Yaf\Exception
      */
-    class LoadFailed extends \Yaf\Exception implements \Throwable {}
+    class LoadFailed extends \Yaf\Exception implements \Throwable
+    {
+    }
 
     /**
      * Class TypeError
@@ -2730,7 +3255,9 @@ namespace Yaf\Exception {
      *
      * @package Yaf\Exception
      */
-    class TypeError extends \Yaf\Exception implements \Throwable {}
+    class TypeError extends \Yaf\Exception implements \Throwable
+    {
+    }
 }
 
 namespace Yaf\Exception\LoadFailed {
@@ -2741,7 +3268,9 @@ namespace Yaf\Exception\LoadFailed {
      *
      * @package Yaf\Exception\LoadFailed
      */
-    class Module extends \Yaf\Exception\LoadFailed implements \Throwable {}
+    class Module extends \Yaf\Exception\LoadFailed implements \Throwable
+    {
+    }
 
     /**
      * Class Controller
@@ -2750,7 +3279,9 @@ namespace Yaf\Exception\LoadFailed {
      *
      * @package Yaf\Exception\LoadFailed
      */
-    class Controller extends \Yaf\Exception\LoadFailed implements \Throwable {}
+    class Controller extends \Yaf\Exception\LoadFailed implements \Throwable
+    {
+    }
 
     /**
      * Class Action
@@ -2759,7 +3290,9 @@ namespace Yaf\Exception\LoadFailed {
      *
      * @package Yaf\Exception\LoadFailed
      */
-    class Action extends \Yaf\Exception\LoadFailed implements \Throwable {}
+    class Action extends \Yaf\Exception\LoadFailed implements \Throwable
+    {
+    }
 
     /**
      * Class View
@@ -2768,5 +3301,7 @@ namespace Yaf\Exception\LoadFailed {
      *
      * @package Yaf\Exception\LoadFailed
      */
-    class View extends \Yaf\Exception\LoadFailed implements \Throwable {}
+    class View extends \Yaf\Exception\LoadFailed implements \Throwable
+    {
+    }
 }

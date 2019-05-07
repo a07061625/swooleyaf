@@ -13,10 +13,12 @@ use Traits\SimpleFacadeTrait;
 use Wx\OpenCommon\AuthorizerInfo;
 use Wx\Shop\Message\CustomMsgSend;
 
-class TextQueryAuthCode extends WxOpenNotifyAuthorizerFacade {
+class TextQueryAuthCode extends WxOpenNotifyAuthorizerFacade
+{
     use SimpleFacadeTrait;
 
-    protected static function responseNotify(array $data) : array {
+    protected static function responseNotify(array $data) : array
+    {
         //去除QUERY_AUTH_CODE:
         $authCode = substr($data['Content'], 16);
         $openCommonConfig = WxConfigSingleton::getInstance()->getOpenCommonConfig();

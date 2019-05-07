@@ -89,11 +89,11 @@ class DomainPart extends Parser
             $this->warnings[IPV6ColonEnd::CODE] = new IPV6ColonEnd();
         }
 
-        $IPv6       = substr($addressLiteral, 5);
+        $IPv6 = substr($addressLiteral, 5);
         //Daniel Marschall's new IPv6 testing strategy
-        $matchesIP  = explode(':', $IPv6);
+        $matchesIP = explode(':', $IPv6);
         $groupCount = count($matchesIP);
-        $colons     = strpos($IPv6, '::');
+        $colons = strpos($IPv6, '::');
 
         if (count(preg_grep('/^[0-9A-Fa-f]{0,4}$/', $matchesIP, PREG_GREP_INVERT)) !== 0) {
             $this->warnings[IPV6BadChar::CODE] = new IPV6BadChar();
@@ -171,14 +171,6 @@ class DomainPart extends Parser
         return $domain;
     }
 
-    private function checkNotAllowedChars($token)
-    {
-        $notAllowed = [EmailLexer::S_BACKSLASH => true, EmailLexer::S_SLASH=> true];
-        if (isset($notAllowed[$token['type']])) {
-            throw new CharNotAllowed();
-        }
-    }
-
     protected function parseDomainLiteral()
     {
         if ($this->lexer->isNextToken(EmailLexer::S_COLON)) {
@@ -205,18 +197,18 @@ class DomainPart extends Parser
             }
 
             if ($this->lexer->token['type'] === EmailLexer::INVALID ||
-                $this->lexer->token['type'] === EmailLexer::C_DEL   ||
+                $this->lexer->token['type'] === EmailLexer::C_DEL ||
                 $this->lexer->token['type'] === EmailLexer::S_LF
             ) {
                 $this->warnings[ObsoleteDTEXT::CODE] = new ObsoleteDTEXT();
             }
 
-            if ($this->lexer->isNextTokenAny(array(EmailLexer::S_OPENQBRACKET, EmailLexer::S_OPENBRACKET))) {
+            if ($this->lexer->isNextTokenAny([EmailLexer::S_OPENQBRACKET, EmailLexer::S_OPENBRACKET])) {
                 throw new ExpectingDTEXT();
             }
 
             if ($this->lexer->isNextTokenAny(
-                array(EmailLexer::S_HTAB, EmailLexer::S_SP, $this->lexer->token['type'] === EmailLexer::CRLF)
+                [EmailLexer::S_HTAB, EmailLexer::S_SP, $this->lexer->token['type'] === EmailLexer::CRLF]
             )) {
                 $this->warnings[CFWSWithFWS::CODE] = new CFWSWithFWS();
                 $this->parseFWS();
@@ -240,7 +232,6 @@ class DomainPart extends Parser
             }
 
             $addressLiteral .= $this->lexer->token['value'];
-
         } while ($this->lexer->moveNext());
 
         $addressLiteral = str_replace('[', '', $addressLiteral);
@@ -264,7 +255,7 @@ class DomainPart extends Parser
 
     protected function checkIPV4Tag($addressLiteral)
     {
-        $matchesIP  = array();
+        $matchesIP = [];
 
         // Extract IPv4 part from the end of the address-literal (if there is one)
         if (preg_match(
@@ -287,12 +278,12 @@ class DomainPart extends Parser
 
     protected function checkDomainPartExceptions($prev)
     {
-        $invalidDomainTokens = array(
+        $invalidDomainTokens = [
             EmailLexer::S_DQUOTE => true,
             EmailLexer::S_SEMICOLON => true,
             EmailLexer::S_GREATERTHAN => true,
             EmailLexer::S_LOWERTHAN => true,
-        );
+        ];
 
         if (isset($invalidDomainTokens[$this->lexer->token['type']])) {
             throw new ExpectingATEXT();
@@ -363,6 +354,14 @@ class DomainPart extends Parser
     {
         if ($this->warnings[DomainLiteral::CODE]) {
             $this->warnings[TLD::CODE] = new TLD();
+        }
+    }
+
+    private function checkNotAllowedChars($token)
+    {
+        $notAllowed = [EmailLexer::S_BACKSLASH => true, EmailLexer::S_SLASH => true];
+        if (isset($notAllowed[$token['type']])) {
+            throw new CharNotAllowed();
         }
     }
 }

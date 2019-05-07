@@ -11,7 +11,6 @@ use Grafika\Imagick\Image;
  */
 class Line extends Base implements DrawingObjectInterface
 {
-
     /**
      * @param Image $image
      *
@@ -19,7 +18,6 @@ class Line extends Base implements DrawingObjectInterface
      */
     public function draw($image)
     {
-
         $strokeColor = new \ImagickPixel($this->getColor()->getHexString());
 
         $draw = new \ImagickDraw();
@@ -36,6 +34,4 @@ class Line extends Base implements DrawingObjectInterface
 
         return $image;
     }
-
-
 }
