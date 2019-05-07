@@ -77,8 +77,8 @@ abstract class AbstractChannel
         $this->connection = $connection;
         $this->channel_id = $channel_id;
         $connection->channels[$channel_id] = $this;
-        $this->frame_queue = array(); // Lower level queue for frames
-        $this->method_queue = array(); // Higher level queue for methods
+        $this->frame_queue = []; // Lower level queue for frames
+        $this->method_queue = []; // Higher level queue for methods
         $this->auto_decode = false;
 
         $this->msg_property_reader = new AMQPReader(null);
@@ -121,7 +121,7 @@ abstract class AbstractChannel
     {
         $protocol = defined('AMQP_PROTOCOL') ? AMQP_PROTOCOL : self::PROTOCOL_091;
         //adding check here to catch unknown protocol ASAP, as this method may be called from the outside
-        if (!in_array($protocol, array(self::PROTOCOL_080, self::PROTOCOL_091), TRUE)) {
+        if (!in_array($protocol, [self::PROTOCOL_080, self::PROTOCOL_091], true)) {
             throw new AMQPOutOfRangeException(sprintf('Protocol version %s not implemented.', $protocol));
         }
 
@@ -204,10 +204,10 @@ abstract class AbstractChannel
         $this->dispatch_reader->reuse($args);
 
         if ($amqpMessage == null) {
-            return call_user_func(array($this, $amqp_method), $this->dispatch_reader);
+            return call_user_func([$this, $amqp_method], $this->dispatch_reader);
         }
 
-        return call_user_func(array($this, $amqp_method), $this->dispatch_reader, $amqpMessage);
+        return call_user_func([$this, $amqp_method], $this->dispatch_reader, $amqpMessage);
     }
 
     /**
@@ -223,32 +223,6 @@ abstract class AbstractChannel
         }
 
         return $this->connection->wait_channel($this->channel_id, $timeout);
-    }
-
-    /**
-     * @param array $method_sig
-     * @param \PhpAmqpLib\Wire\AMQPWriter|string $args
-     */
-    protected function send_method_frame($method_sig, $args = '')
-    {
-        if ($this->connection === null) {
-            throw new AMQPRuntimeException('Channel connection is closed.');
-        }
-
-        $this->connection->send_channel_method_frame($this->channel_id, $method_sig, $args);
-    }
-
-    /**
-     * This is here for performance reasons to batch calls to fwrite from basic.publish
-     *
-     * @param array $method_sig
-     * @param \PhpAmqpLib\Wire\AMQPWriter|string $args
-     * @param \PhpAmqpLib\Wire\AMQPWriter $pkt
-     * @return \PhpAmqpLib\Wire\AMQPWriter
-     */
-    protected function prepare_method_frame($method_sig, $args = '', $pkt = null)
-    {
-        return $this->connection->prepare_channel_method_frame($this->channel_id, $method_sig, $args, $pkt);
     }
 
     /**
@@ -273,40 +247,6 @@ abstract class AbstractChannel
             $this->msg_property_reader,
             $this->wait_content_reader
         );
-    }
-
-    /**
-     * @param AMQPReader $propertyReader
-     * @param AMQPReader $contentReader
-     * @return \PhpAmqpLib\Message\AMQPMessage
-     */
-    protected function createMessage($propertyReader, $contentReader)
-    {
-        $bodyChunks = array();
-        $bodyReceivedBytes = 0;
-
-        $message = new AMQPMessage();
-        $message
-            ->load_properties($propertyReader)
-            ->setBodySize($contentReader->read_longlong());
-
-        while (bccomp($message->getBodySize(), $bodyReceivedBytes, 0) == 1) {
-            list($frame_type, $payload) = $this->next_frame();
-
-            $this->validate_body_frame($frame_type);
-            $bodyReceivedBytes = bcadd($bodyReceivedBytes, mb_strlen($payload, 'ASCII'), 0);
-
-            if (is_int($this->maxBodySize) && $bodyReceivedBytes > $this->maxBodySize ) {
-                $message->setIsTruncated(true);
-                continue;
-            }
-
-            $bodyChunks[] = $payload;
-        }
-
-        $message->setBody(implode('', $bodyChunks));
-
-        return $message;
     }
 
     /**
@@ -350,12 +290,72 @@ abstract class AbstractChannel
 
             // Wasn't what we were looking for? save it for later
             $this->debug->debug_method_signature('Queueing for later: %s', $method_sig);
-            $this->method_queue[] = array($method_sig, $args, $amqpMessage);
+            $this->method_queue[] = [$method_sig, $args, $amqpMessage];
 
             if ($non_blocking) {
                 break;
             }
         }
+    }
+
+    /**
+     * @param array $method_sig
+     * @param \PhpAmqpLib\Wire\AMQPWriter|string $args
+     */
+    protected function send_method_frame($method_sig, $args = '')
+    {
+        if ($this->connection === null) {
+            throw new AMQPRuntimeException('Channel connection is closed.');
+        }
+
+        $this->connection->send_channel_method_frame($this->channel_id, $method_sig, $args);
+    }
+
+    /**
+     * This is here for performance reasons to batch calls to fwrite from basic.publish
+     *
+     * @param array $method_sig
+     * @param \PhpAmqpLib\Wire\AMQPWriter|string $args
+     * @param \PhpAmqpLib\Wire\AMQPWriter $pkt
+     * @return \PhpAmqpLib\Wire\AMQPWriter
+     */
+    protected function prepare_method_frame($method_sig, $args = '', $pkt = null)
+    {
+        return $this->connection->prepare_channel_method_frame($this->channel_id, $method_sig, $args, $pkt);
+    }
+
+    /**
+     * @param AMQPReader $propertyReader
+     * @param AMQPReader $contentReader
+     * @return \PhpAmqpLib\Message\AMQPMessage
+     */
+    protected function createMessage($propertyReader, $contentReader)
+    {
+        $bodyChunks = [];
+        $bodyReceivedBytes = 0;
+
+        $message = new AMQPMessage();
+        $message
+            ->load_properties($propertyReader)
+            ->setBodySize($contentReader->read_longlong());
+
+        while (bccomp($message->getBodySize(), $bodyReceivedBytes, 0) == 1) {
+            list($frame_type, $payload) = $this->next_frame();
+
+            $this->validate_body_frame($frame_type);
+            $bodyReceivedBytes = bcadd($bodyReceivedBytes, mb_strlen($payload, 'ASCII'), 0);
+
+            if (is_int($this->maxBodySize) && $bodyReceivedBytes > $this->maxBodySize) {
+                $message->setIsTruncated(true);
+                continue;
+            }
+
+            $bodyChunks[] = $payload;
+        }
+
+        $message->setBody(implode('', $bodyChunks));
+
+        return $message;
     }
 
     /**
@@ -365,14 +365,14 @@ abstract class AbstractChannel
     protected function process_deferred_methods($allowed_methods)
     {
         $dispatch = false;
-        $queued_method = array();
+        $queued_method = [];
 
         foreach ($this->method_queue as $qk => $qm) {
             $this->debug->debug_msg('checking queue method ' . $qk);
 
             $method_sig = $qm[0];
 
-            if ($allowed_methods == null || in_array($method_sig, $allowed_methods)) {
+            if ($allowed_methods == null || in_array($method_sig, $allowed_methods, true)) {
                 unset($this->method_queue[$qk]);
                 $dispatch = true;
                 $queued_method = $qm;
@@ -380,7 +380,7 @@ abstract class AbstractChannel
             }
         }
 
-        return array('dispatch' => $dispatch, 'queued_method' => $queued_method);
+        return ['dispatch' => $dispatch, 'queued_method' => $queued_method];
     }
 
     /**
@@ -480,8 +480,8 @@ abstract class AbstractChannel
         $protocolClass = self::$PROTOCOL_CONSTANTS_CLASS;
 
         return $allowed_methods == null
-            || in_array($method_sig, $allowed_methods)
-            || in_array($method_sig, $protocolClass::$CLOSE_METHODS);
+            || in_array($method_sig, $allowed_methods, true)
+            || in_array($method_sig, $protocolClass::$CLOSE_METHODS, true);
     }
 
     /**
@@ -493,7 +493,7 @@ abstract class AbstractChannel
         $protocolClass = self::$PROTOCOL_CONSTANTS_CLASS;
         $amqpMessage = null;
 
-        if (in_array($method_sig, $protocolClass::$CONTENT_METHODS)) {
+        if (in_array($method_sig, $protocolClass::$CONTENT_METHODS, true)) {
             $amqpMessage = $this->wait_content();
         }
 

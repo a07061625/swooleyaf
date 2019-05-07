@@ -15,7 +15,8 @@ use Map\MapBaseGaoDe;
  * 输入提示
  * @package Map\GaoDe
  */
-class AssistantInputTips extends MapBaseGaoDe {
+class AssistantInputTips extends MapBaseGaoDe
+{
     /**
      * 关键字
      * @var string
@@ -47,7 +48,8 @@ class AssistantInputTips extends MapBaseGaoDe {
      */
     private $datatype = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUri = '/assistant/inputtips';
         $this->reqData['citylimit'] = 'false';
@@ -58,8 +60,9 @@ class AssistantInputTips extends MapBaseGaoDe {
      * @param string $keyword
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setKeywords(string $keyword){
-        if(strlen($keyword) > 0){
+    public function setKeywords(string $keyword)
+    {
+        if (strlen($keyword) > 0) {
             $this->reqData['keywords'] = $keyword;
         } else {
             throw new GaoDeMapException('关键字不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
@@ -70,15 +73,16 @@ class AssistantInputTips extends MapBaseGaoDe {
      * @param array $typeList
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setType(array $typeList){
+    public function setType(array $typeList)
+    {
         $types = [];
         foreach ($typeList as $eType) {
-            if(ctype_digit($eType) && (strlen($eType) == 6)){
+            if (ctype_digit($eType) && (strlen($eType) == 6)) {
                 $types[$eType] = 1;
             }
         }
 
-        if(empty($types)){
+        if (empty($types)) {
             throw new GaoDeMapException('POI类型不能为空', ErrorCode::MAP_GAODE_PARAM_ERROR);
         }
         $this->reqData['type'] = implode('|', array_keys($types));
@@ -88,7 +92,8 @@ class AssistantInputTips extends MapBaseGaoDe {
      * @param double $lat
      * @param double $lng
      */
-    public function setLocation($lat, $lng){
+    public function setLocation($lat, $lng)
+    {
         $this->reqData['location'] = $lng . ',' . $lat;
     }
 
@@ -96,8 +101,9 @@ class AssistantInputTips extends MapBaseGaoDe {
      * @param string $city
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setCity(string $city){
-        if(ctype_alnum($city)){
+    public function setCity(string $city)
+    {
+        if (ctype_alnum($city)) {
             $this->reqData['city'] = $city;
         } else {
             throw new GaoDeMapException('城市不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
@@ -108,8 +114,9 @@ class AssistantInputTips extends MapBaseGaoDe {
      * @param string $cityLimit
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setCityLimit(string $cityLimit){
-        if(in_array($cityLimit, ['true', 'false'])){
+    public function setCityLimit(string $cityLimit)
+    {
+        if (in_array($cityLimit, ['true', 'false'], true)) {
             $this->reqData['citylimit'] = $cityLimit;
         } else {
             throw new GaoDeMapException('指定城市标识不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
@@ -120,21 +127,23 @@ class AssistantInputTips extends MapBaseGaoDe {
      * @param array $dataTypeList
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setDataType(array $dataTypeList){
+    public function setDataType(array $dataTypeList)
+    {
         $dataTypes = [];
         foreach ($dataTypeList as $eDataType) {
-            if(is_string($eDataType) && in_array($eDataType, ['all', 'poi', 'bus', 'busline'])){
+            if (is_string($eDataType) && in_array($eDataType, ['all', 'poi', 'bus', 'busline'], true)) {
                 $dataTypes[$eDataType] = 1;
             }
         }
-        if(empty($dataTypes)){
+        if (empty($dataTypes)) {
             throw new GaoDeMapException('返回数据类型不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
         }
         $this->reqData['datatype'] = implode('|', array_keys($dataTypes));
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['keywords'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['keywords'])) {
             throw new GaoDeMapException('关键字不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 

@@ -24,7 +24,7 @@ class AMQPMessage extends GenericContent
     public $content_encoding;
 
     /** @var array */
-    protected static $propertyDefinitions = array(
+    protected static $propertyDefinitions = [
         'content_type' => 'shortstr',
         'content_encoding' => 'shortstr',
         'application_headers' => 'table_object',
@@ -39,13 +39,13 @@ class AMQPMessage extends GenericContent
         'user_id' => 'shortstr',
         'app_id' => 'shortstr',
         'cluster_id' => 'shortstr',
-    );
+    ];
 
     /**
      * @param string $body
      * @param array $properties
      */
-    public function __construct($body = '', $properties = array())
+    public function __construct($body = '', $properties = [])
     {
         $this->setBody($body);
         parent::__construct($properties, static::$propertyDefinitions);

@@ -18,8 +18,8 @@ class AMQPSSLConnection extends AMQPStreamConnection
         $user,
         $password,
         $vhost = '/',
-        $ssl_options = array(),
-        $options = array()
+        $ssl_options = [],
+        $options = []
     ) {
         $ssl_context = empty($ssl_options) ? null : $this->create_ssl_context($ssl_options);
         parent::__construct(
@@ -40,7 +40,8 @@ class AMQPSSLConnection extends AMQPStreamConnection
         );
     }
 
-    public static function try_create_connection($host, $port, $user, $password, $vhost, $options) {
+    public static function try_create_connection($host, $port, $user, $password, $vhost, $options)
+    {
         $ssl_options = isset($options['ssl_options']) ? $options['ssl_options'] : [];
         return new static($host, $port, $user, $password, $vhost, $ssl_options, $options);
     }

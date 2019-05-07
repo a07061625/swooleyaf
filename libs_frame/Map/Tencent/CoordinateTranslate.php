@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Exception\Map\TencentMapException;
 use Map\MapBaseTencent;
 
-class CoordinateTranslate extends MapBaseTencent {
+class CoordinateTranslate extends MapBaseTencent
+{
     const COORDINATE_TYPE_GPS = 1; //坐标类型-GPS
     const COORDINATE_TYPE_SOGOU = 2; //坐标类型-搜狗
     const COORDINATE_TYPE_BD = 3; //坐标类型-百度
@@ -39,14 +40,16 @@ class CoordinateTranslate extends MapBaseTencent {
      */
     private $fromType = 0;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUrl = 'https://apis.map.qq.com/ws/coord/v1/translate';
         $this->rspDataKey = 'locations';
         $this->reqData['type'] = self::COORDINATE_TYPE_GOOGLE;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
@@ -55,11 +58,12 @@ class CoordinateTranslate extends MapBaseTencent {
      * @param string $lat
      * @throws \Exception\Map\TencentMapException
      */
-    public function addCoordinate(string $lng,string $lat) {
-        if(preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng) == 0){
+    public function addCoordinate(string $lng, string $lat)
+    {
+        if (preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng) == 0) {
             throw new TencentMapException('源坐标经度不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }
-        if(preg_match('/^[\-]?(\d(\.\d+)?|[1-8]\d(\.\d+)?|90)$/', $lat) == 0){
+        if (preg_match('/^[\-]?(\d(\.\d+)?|[1-8]\d(\.\d+)?|90)$/', $lat) == 0) {
             throw new TencentMapException('源坐标纬度不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }
 
@@ -71,15 +75,17 @@ class CoordinateTranslate extends MapBaseTencent {
      * @param int $fromType
      * @throws \Exception\Map\TencentMapException
      */
-    public function setFromType(int $fromType) {
-        if(isset($this->totalCoordinateTypes[$fromType])){
+    public function setFromType(int $fromType)
+    {
+        if (isset($this->totalCoordinateTypes[$fromType])) {
             $this->reqData['type'] = $fromType;
         } else {
             throw new TencentMapException('源坐标类型不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
+    public function getDetail() : array
+    {
         if (empty($this->coords)) {
             throw new TencentMapException('源坐标不能为空', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }

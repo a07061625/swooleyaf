@@ -15,7 +15,8 @@ use Map\MapBaseGaoDe;
  * 周边搜索
  * @package Map\GaoDe
  */
-class PlaceAround extends MapBaseGaoDe {
+class PlaceAround extends MapBaseGaoDe
+{
     /**
      * 中心点坐标
      * @var string
@@ -62,7 +63,8 @@ class PlaceAround extends MapBaseGaoDe {
      */
     private $extensions = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUri = '/place/around';
         $this->reqData['radius'] = 3000;
@@ -76,7 +78,8 @@ class PlaceAround extends MapBaseGaoDe {
      * @param double $lat
      * @param double $lng
      */
-    public function setLocation($lat, $lng){
+    public function setLocation($lat, $lng)
+    {
         $this->reqData['location'] = $lng . ',' . $lat;
     }
 
@@ -84,15 +87,16 @@ class PlaceAround extends MapBaseGaoDe {
      * @param array $keywordList
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setKeywords(array $keywordList){
+    public function setKeywords(array $keywordList)
+    {
         $keywords = [];
         foreach ($keywordList as $eKeyword) {
-            if(is_string($eKeyword) && (strlen($eKeyword) > 0)){
+            if (is_string($eKeyword) && (strlen($eKeyword) > 0)) {
                 $keywords[] = $eKeyword;
             }
         }
         array_unique($keywords);
-        if(empty($keywords)){
+        if (empty($keywords)) {
             throw new GaoDeMapException('关键字不能为空', ErrorCode::MAP_GAODE_PARAM_ERROR);
         }
         $this->reqData['keywords'] = implode('|', $keywords);
@@ -102,15 +106,16 @@ class PlaceAround extends MapBaseGaoDe {
      * @param array $typeList
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setTypes(array $typeList){
+    public function setTypes(array $typeList)
+    {
         $types = [];
         foreach ($typeList as $eType) {
-            if(ctype_digit($eType) && (strlen($eType) == 6)){
+            if (ctype_digit($eType) && (strlen($eType) == 6)) {
                 $types[$eType] = 1;
             }
         }
 
-        if(empty($types)){
+        if (empty($types)) {
             throw new GaoDeMapException('POI类型不能为空', ErrorCode::MAP_GAODE_PARAM_ERROR);
         }
         $this->reqData['types'] = implode('|', array_keys($types));
@@ -120,8 +125,9 @@ class PlaceAround extends MapBaseGaoDe {
      * @param string $city
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setCity(string $city){
-        if(ctype_alnum($city)){
+    public function setCity(string $city)
+    {
+        if (ctype_alnum($city)) {
             $this->reqData['city'] = $city;
         } else {
             throw new GaoDeMapException('城市不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
@@ -132,8 +138,9 @@ class PlaceAround extends MapBaseGaoDe {
      * @param int $radius
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setRadius(int $radius){
-        if(($radius > 0) && ($radius <= 50000)){
+    public function setRadius(int $radius)
+    {
+        if (($radius > 0) && ($radius <= 50000)) {
             $this->reqData['radius'] = $radius;
         } else {
             throw new GaoDeMapException('搜索半径不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
@@ -144,8 +151,9 @@ class PlaceAround extends MapBaseGaoDe {
      * @param string $sortRule
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setSortRule(string $sortRule){
-        if(in_array($sortRule, ['distance', 'weight'])){
+    public function setSortRule(string $sortRule)
+    {
+        if (in_array($sortRule, ['distance', 'weight'], true)) {
             $this->reqData['sortrule'] = $sortRule;
         } else {
             throw new GaoDeMapException('排序规则不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
@@ -156,8 +164,9 @@ class PlaceAround extends MapBaseGaoDe {
      * @param int $offset
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setOffset(int $offset){
-        if(($offset > 0) && ($offset <= 25)){
+    public function setOffset(int $offset)
+    {
+        if (($offset > 0) && ($offset <= 25)) {
             $this->reqData['offset'] = $offset;
         } else {
             throw new GaoDeMapException('每页记录数不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
@@ -168,8 +177,9 @@ class PlaceAround extends MapBaseGaoDe {
      * @param int $page
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setPage(int $page){
-        if(($page > 0) && ($page <= 100)){
+    public function setPage(int $page)
+    {
+        if (($page > 0) && ($page <= 100)) {
             $this->reqData['page'] = $page;
         } else {
             throw new GaoDeMapException('当前页数不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
@@ -180,16 +190,18 @@ class PlaceAround extends MapBaseGaoDe {
      * @param string $extensions
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setExtensions(string $extensions){
-        if(in_array($extensions, ['base', 'all'])){
+    public function setExtensions(string $extensions)
+    {
+        if (in_array($extensions, ['base', 'all'], true)) {
             $this->reqData['extensions'] = $extensions;
         } else {
             throw new GaoDeMapException('返回结果标识不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['location'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['location'])) {
             throw new GaoDeMapException('中心点坐标不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 

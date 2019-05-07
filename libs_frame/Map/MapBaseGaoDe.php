@@ -9,7 +9,13 @@ namespace Map;
 
 use DesignPatterns\Singletons\MapSingleton;
 
-abstract class MapBaseGaoDe extends MapBase {
+abstract class MapBaseGaoDe extends MapBase
+{
+    /**
+     * 服务uri
+     * @var string
+     */
+    protected $serviceUri = '';
     /**
      * 应用key
      * @var string
@@ -20,26 +26,25 @@ abstract class MapBaseGaoDe extends MapBase {
      * @var string
      */
     private $serviceDomain = '';
-    /**
-     * 服务uri
-     * @var string
-     */
-    protected $serviceUri = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceDomain = 'https://restapi.amap.com/v3';
         $this->key = MapSingleton::getInstance()->getGaoDeConfig()->getKey();
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
-    protected function getServiceUrl() {
+    protected function getServiceUrl()
+    {
         return $this->serviceDomain . $this->serviceUri;
     }
 
-    protected function getContent() : array {
+    protected function getContent() : array
+    {
         $this->reqData['key'] = $this->key;
         $this->reqData['output'] = 'JSON';
         MapUtilGaoDe::createSign($this->reqData);

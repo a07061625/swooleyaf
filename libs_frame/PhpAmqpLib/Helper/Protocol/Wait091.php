@@ -9,7 +9,7 @@ class Wait091
     /**
      * @var array
      */
-    protected $wait = array(
+    protected $wait = [
         'connection.start' => '10,10',
         'connection.start_ok' => '10,11',
         'connection.secure' => '10,20',
@@ -74,11 +74,12 @@ class Wait091
         'tx.rollback_ok' => '90,31',
         'confirm.select' => '85,10',
         'confirm.select_ok' => '85,11',
-    );
+    ];
 
     /**
      * @var string $method
      * @return string
+     * @param mixed $method
      */
     public function get_wait($method)
     {

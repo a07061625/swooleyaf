@@ -17,7 +17,8 @@ use Grafika\Grafika;
  * Class SyImageFilter
  * @package Images
  */
-class SyImageFilter {
+class SyImageFilter
+{
     /**
      * 来源文件全路径
      * @var string
@@ -41,11 +42,12 @@ class SyImageFilter {
      * @param string $srcFile 来源全路径文件名
      * @throws \Exception\Image\ImageException
      */
-    public function __construct(string $srcFile){
+    public function __construct(string $srcFile)
+    {
         $imageInfo = getimagesize($srcFile);
         if ($imageInfo === false) {
             throw new ImageException('解析图片失败', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
-        } else if (!in_array($imageInfo[2], [1, 2, 3])) {
+        } elseif (!in_array($imageInfo[2], [1, 2, 3], true)) {
             throw new ImageException('图片类型不支持', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
 
@@ -55,29 +57,33 @@ class SyImageFilter {
         $this->dstFile = $srcFile;
     }
 
-    private function __clone(){
-    }
-
-    public function __destruct(){
-        if(!is_null($this->image)){
+    public function __destruct()
+    {
+        if (!is_null($this->image)) {
             unset($this->image);
         }
-        if(!is_null($this->editor)){
+        if (!is_null($this->editor)) {
             unset($this->editor);
         }
+    }
+
+    private function __clone()
+    {
     }
 
     /**
      * @return string
      */
-    public function getSrcFile() : string {
+    public function getSrcFile() : string
+    {
         return $this->srcFile;
     }
 
     /**
      * @return string
      */
-    public function getDstFile() : string {
+    public function getDstFile() : string
+    {
         return $this->dstFile;
     }
 
@@ -85,7 +91,8 @@ class SyImageFilter {
      * @param string $dstFile
      * @throws \Exception\Image\ImageException
      */
-    public function setDstFile(string $dstFile){
+    public function setDstFile(string $dstFile)
+    {
         $trueFile = preg_replace([
             '/\s+/',
             '/\\+/',
@@ -95,7 +102,7 @@ class SyImageFilter {
             '/',
             '/',
         ], $dstFile);
-        if(strlen($trueFile) > 0){
+        if (strlen($trueFile) > 0) {
             $this->dstFile = $trueFile;
         } else {
             throw new ImageException('目标文件不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
@@ -108,8 +115,9 @@ class SyImageFilter {
      * @return $this
      * @throws \Exception\Image\ImageException
      */
-    public function handleBlur(int $blur) {
-        if(($blur >= 0) && ($blur <= 100)){
+    public function handleBlur(int $blur)
+    {
+        if (($blur >= 0) && ($blur <= 100)) {
             $filter = Grafika::createFilter('Blur', $blur);
             $this->editor->apply($this->image, $filter);
         } else {
@@ -125,8 +133,9 @@ class SyImageFilter {
      * @return $this
      * @throws \Exception\Image\ImageException
      */
-    public function handleBrightness(int $brightness){
-        if(($brightness >= -100) && ($brightness <= 100)){
+    public function handleBrightness(int $brightness)
+    {
+        if (($brightness >= -100) && ($brightness <= 100)) {
             $filter = Grafika::createFilter('Brightness', $brightness);
             $this->editor->apply($this->image, $filter);
         } else {
@@ -144,14 +153,15 @@ class SyImageFilter {
      * @return $this
      * @throws \Exception\Image\ImageException
      */
-    public function handleColorize(int $red,int $green,int $blue){
-        if(($red < -100) || ($red > 100)){
+    public function handleColorize(int $red, int $green, int $blue)
+    {
+        if (($red < -100) || ($red > 100)) {
             throw new ImageException('红色色值不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
-        if(($green < -100) || ($green > 100)){
+        if (($green < -100) || ($green > 100)) {
             throw new ImageException('绿色色值不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
-        if(($blue < -100) || ($blue > 100)){
+        if (($blue < -100) || ($blue > 100)) {
             throw new ImageException('蓝色色值不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
 
@@ -167,8 +177,9 @@ class SyImageFilter {
      * @return $this
      * @throws \Exception\Image\ImageException
      */
-    public function handleContrast(int $contrast){
-        if(($contrast >= -100) && ($contrast <= 100)){
+    public function handleContrast(int $contrast)
+    {
+        if (($contrast >= -100) && ($contrast <= 100)) {
             $filter = Grafika::createFilter('Contrast', $contrast);
             $this->editor->apply($this->image, $filter);
         } else {
@@ -184,8 +195,9 @@ class SyImageFilter {
      * @return $this
      * @throws \Exception\Image\ImageException
      */
-    public function handleDither(string $ditherType){
-        if(in_array($ditherType, Server::$totalImageFilterDither)){
+    public function handleDither(string $ditherType)
+    {
+        if (in_array($ditherType, Server::$totalImageFilterDither, true)) {
             $filter = Grafika::createFilter('Dither', $ditherType);
             $this->editor->apply($this->image, $filter);
         } else {
@@ -201,8 +213,9 @@ class SyImageFilter {
      * @return $this
      * @throws \Exception\Image\ImageException
      */
-    public function handleGamma($gamma){
-        if(is_numeric($gamma) && ($gamma >= 1.0)){
+    public function handleGamma($gamma)
+    {
+        if (is_numeric($gamma) && ($gamma >= 1.0)) {
             $filter = Grafika::createFilter('Gamma', (float)$gamma);
             $this->editor->apply($this->image, $filter);
         } else {
@@ -216,7 +229,8 @@ class SyImageFilter {
      * 图片灰度,只保留黑白两种颜色
      * @return $this
      */
-    public function handleGrayscale(){
+    public function handleGrayscale()
+    {
         $filter = Grafika::createFilter('Grayscale');
         $this->editor->apply($this->image, $filter);
 
@@ -227,7 +241,8 @@ class SyImageFilter {
      * 图像反色处理
      * @return $this
      */
-    public function handleInvert(){
+    public function handleInvert()
+    {
         $filter = Grafika::createFilter('Invert');
         $this->editor->apply($this->image, $filter);
 
@@ -240,8 +255,9 @@ class SyImageFilter {
      * @return $this
      * @throws \Exception\Image\ImageException
      */
-    public function handlePixelate(int $pixel){
-        if($pixel >= 1){
+    public function handlePixelate(int $pixel)
+    {
+        if ($pixel >= 1) {
             $filter = Grafika::createFilter('Pixelate', $pixel);
             $this->editor->apply($this->image, $filter);
         } else {
@@ -257,8 +273,9 @@ class SyImageFilter {
      * @return $this
      * @throws \Exception\Image\ImageException
      */
-    public function handleSharpen(int $sharpen){
-        if(($sharpen >= 1) && ($sharpen <= 100)){
+    public function handleSharpen(int $sharpen)
+    {
+        if (($sharpen >= 1) && ($sharpen <= 100)) {
             $filter = Grafika::createFilter('Sharpen', $sharpen);
             $this->editor->apply($this->image, $filter);
         } else {
@@ -272,7 +289,8 @@ class SyImageFilter {
      * 图像查找边缘,检测出图像的边缘
      * @return $this
      */
-    public function handleSobel(){
+    public function handleSobel()
+    {
         $filter = Grafika::createFilter('Sobel');
         $this->editor->apply($this->image, $filter);
 
@@ -282,7 +300,8 @@ class SyImageFilter {
     /**
      * 保存文件
      */
-    public function save(){
+    public function save()
+    {
         $this->editor->save($this->image, $this->dstFile);
     }
 }

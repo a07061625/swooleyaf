@@ -7,12 +7,14 @@
  */
 namespace Mailer\PHP;
 
-class MailerException extends \Exception {
+class MailerException extends \Exception
+{
     /**
      * Prettify error message output
      * @return string
      */
-    public function errorMessage() {
+    public function errorMessage()
+    {
         return '<strong>' . $this->getMessage() . "</strong><br />\n";
     }
 }

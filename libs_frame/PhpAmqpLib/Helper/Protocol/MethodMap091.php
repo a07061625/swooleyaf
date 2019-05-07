@@ -9,7 +9,7 @@ class MethodMap091
     /**
      * @var array
      */
-    protected $method_map = array(
+    protected $method_map = [
         '10,10' => 'connection_start',
         '10,11' => 'connection_start_ok',
         '10,20' => 'connection_secure',
@@ -74,11 +74,12 @@ class MethodMap091
         '90,31' => 'tx_rollback_ok',
         '85,10' => 'confirm_select',
         '85,11' => 'confirm_select_ok',
-    );
+    ];
 
     /**
      * @var string $method_sig
      * @return string
+     * @param mixed $method_sig
      */
     public function get_method($method_sig)
     {
@@ -88,6 +89,7 @@ class MethodMap091
     /**
      * @var string $method_sig
      * @return bool
+     * @param mixed $method_sig
      */
     public function valid_method($method_sig)
     {

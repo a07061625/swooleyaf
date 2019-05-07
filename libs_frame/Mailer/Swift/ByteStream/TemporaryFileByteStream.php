@@ -24,6 +24,13 @@ class Swift_ByteStream_TemporaryFileByteStream extends Swift_ByteStream_FileByte
         parent::__construct($filePath, true);
     }
 
+    public function __destruct()
+    {
+        if (file_exists($this->getPath())) {
+            @unlink($this->getPath());
+        }
+    }
+
     public function getContent()
     {
         if (($content = file_get_contents($this->getPath())) === false) {
@@ -31,12 +38,5 @@ class Swift_ByteStream_TemporaryFileByteStream extends Swift_ByteStream_FileByte
         }
 
         return $content;
-    }
-
-    public function __destruct()
-    {
-        if (file_exists($this->getPath())) {
-            @unlink($this->getPath());
-        }
     }
 }

@@ -10,7 +10,8 @@ namespace Map;
 use Constant\ErrorCode;
 use Exception\Map\GaoDeMapException;
 
-class ConfigGaoDe {
+class ConfigGaoDe
+{
     /**
      * 应用KEY
      * @var string
@@ -22,16 +23,19 @@ class ConfigGaoDe {
      */
     private $secret = '';
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @return string
      */
-    public function getKey() : string {
+    public function getKey() : string
+    {
         return $this->key;
     }
 
@@ -39,8 +43,9 @@ class ConfigGaoDe {
      * @param string $key
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setKey(string $key){
-        if(ctype_alnum($key)){
+    public function setKey(string $key)
+    {
+        if (ctype_alnum($key)) {
             $this->key = $key;
         } else {
             throw new GaoDeMapException('应用KEY不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
@@ -50,7 +55,8 @@ class ConfigGaoDe {
     /**
      * @return string
      */
-    public function getSecret() : string {
+    public function getSecret() : string
+    {
         return $this->secret;
     }
 
@@ -58,8 +64,9 @@ class ConfigGaoDe {
      * @param string $secret
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setSecret(string $secret){
-        if(ctype_alnum($secret)){
+    public function setSecret(string $secret)
+    {
+        if (ctype_alnum($secret)) {
             $this->secret = $secret;
         } else {
             throw new GaoDeMapException('私钥不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);

@@ -7,7 +7,8 @@
  */
 namespace Map;
 
-abstract class MapBase {
+abstract class MapBase
+{
     /**
      * curl配置
      * @var array
@@ -24,23 +25,26 @@ abstract class MapBase {
      */
     protected $rspDataKey = '';
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
     /**
      * @return array
      */
-    public function getCurlConfigs() : array {
+    public function getCurlConfigs() : array
+    {
         return $this->curlConfigs;
     }
 
     /**
      * @return string
      */
-    public function getRspDataKey() : string {
+    public function getRspDataKey() : string
+    {
         return $this->rspDataKey;
     }
+    abstract public function getDetail() : array;
 
     abstract protected function getContent() : array;
-    abstract public function getDetail() : array;
 }

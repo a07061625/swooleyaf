@@ -8,14 +8,16 @@ namespace Psr\Log;
  * reduce boilerplate code that a simple Logger that does the same thing with
  * messages regardless of the error level has to implement.
  */
-trait LoggerTrait {
+trait LoggerTrait
+{
     /**
      * System is unusable.
      * @param string $message
      * @param array $context
      * @return null
      */
-    public function emergency($message, array $context = []){
+    public function emergency($message, array $context = [])
+    {
         $this->log(LogLevel::EMERGENCY, $message, $context);
     }
 
@@ -27,7 +29,8 @@ trait LoggerTrait {
      * @param array $context
      * @return null
      */
-    public function alert($message, array $context = []){
+    public function alert($message, array $context = [])
+    {
         $this->log(LogLevel::ALERT, $message, $context);
     }
 
@@ -38,7 +41,8 @@ trait LoggerTrait {
      * @param array $context
      * @return null
      */
-    public function critical($message, array $context = []){
+    public function critical($message, array $context = [])
+    {
         $this->log(LogLevel::CRITICAL, $message, $context);
     }
 
@@ -49,7 +53,8 @@ trait LoggerTrait {
      * @param array $context
      * @return null
      */
-    public function error($message, array $context = []){
+    public function error($message, array $context = [])
+    {
         $this->log(LogLevel::ERROR, $message, $context);
     }
 
@@ -61,7 +66,8 @@ trait LoggerTrait {
      * @param array $context
      * @return null
      */
-    public function warning($message, array $context = []){
+    public function warning($message, array $context = [])
+    {
         $this->log(LogLevel::WARNING, $message, $context);
     }
 
@@ -71,7 +77,8 @@ trait LoggerTrait {
      * @param array $context
      * @return null
      */
-    public function notice($message, array $context = []){
+    public function notice($message, array $context = [])
+    {
         $this->log(LogLevel::NOTICE, $message, $context);
     }
 
@@ -82,7 +89,8 @@ trait LoggerTrait {
      * @param array $context
      * @return null
      */
-    public function info($message, array $context = []){
+    public function info($message, array $context = [])
+    {
         $this->log(LogLevel::INFO, $message, $context);
     }
 
@@ -92,7 +100,8 @@ trait LoggerTrait {
      * @param array $context
      * @return null
      */
-    public function debug($message, array $context = []){
+    public function debug($message, array $context = [])
+    {
         $this->log(LogLevel::DEBUG, $message, $context);
     }
 

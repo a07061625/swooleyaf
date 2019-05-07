@@ -12,7 +12,8 @@ use Exception\Map\BaiduMapException;
 use Map\MapBaseBaiDu;
 use Tool\Tool;
 
-class PlaceDetail extends MapBaseBaiDu {
+class PlaceDetail extends MapBaseBaiDu
+{
     const SCOPE_BASE = 1; //结果详细程度-基本信息
     const SCOPE_DETAIL = 2; //结果详细程度-POI详细信息
 
@@ -27,7 +28,8 @@ class PlaceDetail extends MapBaseBaiDu {
      */
     private $scope = 0;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUri = '/place/v2/detail';
         $this->rspDataKey = 'result';
@@ -35,7 +37,8 @@ class PlaceDetail extends MapBaseBaiDu {
         $this->reqData['timestamp'] = Tool::getNowTime();
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
@@ -43,11 +46,12 @@ class PlaceDetail extends MapBaseBaiDu {
      * @param string $uid
      * @throws \Exception\Map\BaiduMapException
      */
-    public function addUid(string $uid) {
+    public function addUid(string $uid)
+    {
         if (count($this->uids) >= 10) {
             throw new BaiduMapException('uid数量超过限制', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
-        if(ctype_alnum($uid) && (strlen($uid) == 24)){
+        if (ctype_alnum($uid) && (strlen($uid) == 24)) {
             $this->uids[$uid] = 1;
         } else {
             throw new BaiduMapException('uid不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -58,16 +62,18 @@ class PlaceDetail extends MapBaseBaiDu {
      * @param int $scope
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setScope(int $scope) {
-        if(in_array($scope, [self::SCOPE_BASE, self::SCOPE_DETAIL], true)){
+    public function setScope(int $scope)
+    {
+        if (in_array($scope, [self::SCOPE_BASE, self::SCOPE_DETAIL], true)) {
             $this->reqData['scope'] = $scope;
         } else {
             throw new BaiduMapException('结果详细程度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(empty($this->uids)){
+    public function getDetail() : array
+    {
+        if (empty($this->uids)) {
             throw new BaiduMapException('uid不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
         $this->reqData['uids'] = implode(',', array_keys($this->uids));

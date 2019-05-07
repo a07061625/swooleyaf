@@ -12,14 +12,16 @@ use DesignPatterns\Singletons\MapSingleton;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-final class MapUtilGaoDe extends MapUtilBase {
+final class MapUtilGaoDe extends MapUtilBase
+{
     use SimpleTrait;
 
     /**
      * 生成数字签名
      * @param array $data
      */
-    public static function createSign(array &$data){
+    public static function createSign(array &$data)
+    {
         unset($data['sig']);
         ksort($data);
         $needStr1 = '';
@@ -35,21 +37,22 @@ final class MapUtilGaoDe extends MapUtilBase {
      * @param \Map\MapBaseGaoDe $mapBase
      * @return array
      */
-    public static function sendServiceRequest(MapBaseGaoDe $mapBase) {
+    public static function sendServiceRequest(MapBaseGaoDe $mapBase)
+    {
         $resArr = [
             'code' => 0,
         ];
 
         $sendRes = self::sendCurl($mapBase->getDetail());
-        if($sendRes === false){
+        if ($sendRes === false) {
             $resArr['code'] = ErrorCode::MAP_GAODE_PARAM_ERROR;
             $resArr['message'] = '发送请求出错';
         }
 
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['status']) && ($sendData['status'] == 1)){
+        if (isset($sendData['status']) && ($sendData['status'] == 1)) {
             $resArr['data'] = $sendData;
-        } else if(isset($sendData['info'])){
+        } elseif (isset($sendData['info'])) {
             $resArr['code'] = ErrorCode::MAP_GAODE_PARAM_ERROR;
             $resArr['message'] = $sendData['info'];
         } else {

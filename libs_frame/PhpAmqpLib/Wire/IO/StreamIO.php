@@ -89,27 +89,17 @@ class StreamIO extends AbstractIO
         if (is_null($this->context)) {
             // tcp_nodelay was added in 7.1.0
             if (PHP_VERSION_ID >= 70100) {
-                $this->context = stream_context_create(array(
-                    "socket" => array(
-                        "tcp_nodelay" => true
-                    )
-                ));
+                $this->context = stream_context_create([
+                    'socket' => [
+                        'tcp_nodelay' => true
+                    ]
+                ]);
             } else {
                 $this->context = stream_context_create();
             }
         } else {
             $this->protocol = 'ssl';
         }
-    }
-
-    /**
-     * @return bool
-     */
-    private function isPcntlSignalEnabled()
-    {
-        return extension_loaded('pcntl')
-            && function_exists('pcntl_signal_dispatch')
-            && (defined('AMQP_WITHOUT_SIGNALS') ? !AMQP_WITHOUT_SIGNALS : true);
     }
 
     /**
@@ -129,7 +119,7 @@ class StreamIO extends AbstractIO
             $this->port
         );
 
-        set_error_handler(array($this, 'error_handler'));
+        set_error_handler([$this, 'error_handler']);
 
         try {
             $this->sock = stream_socket_client(
@@ -216,7 +206,7 @@ class StreamIO extends AbstractIO
                 throw new AMQPRuntimeException('Broken pipe or closed connection');
             }
 
-            set_error_handler(array($this, 'error_handler'));
+            set_error_handler([$this, 'error_handler']);
             try {
                 $buffer = fread($this->sock, ($len - $read));
             } catch (\ErrorException $e) {
@@ -267,12 +257,11 @@ class StreamIO extends AbstractIO
         $len = mb_strlen($data, 'ASCII');
 
         while ($written < $len) {
-
             if (!is_resource($this->sock)) {
                 throw new AMQPRuntimeException('Broken pipe or closed connection');
             }
 
-            set_error_handler(array($this, 'error_handler'));
+            set_error_handler([$this, 'error_handler']);
             // OpenSSL's C library function SSL_write() can balk on buffers > 8192
             // bytes in length, so we're limiting the write size here. On both TLS
             // and plaintext connections, the write loop will continue until the
@@ -323,14 +312,14 @@ class StreamIO extends AbstractIO
 
         // fwrite notice that the stream isn't ready
         if (strstr($errstr, 'Resource temporarily unavailable')) {
-             // it's allowed to retry
-            return null;
+            // it's allowed to retry
+            return;
         }
 
         // stream_select warning that it has been interrupted by a signal
         if (strstr($errstr, 'Interrupted system call')) {
-             // it's allowed while processing signals
-            return null;
+            // it's allowed while processing signals
+            return;
         }
 
         // raise all other issues to exceptions
@@ -352,7 +341,7 @@ class StreamIO extends AbstractIO
             // server has gone away
             if (($this->heartbeat * 2) < $t_read) {
                 $this->close();
-                throw new AMQPRuntimeException("Missed server heartbeat");
+                throw new AMQPRuntimeException('Missed server heartbeat');
             }
 
             // time for client to send a heartbeat
@@ -360,19 +349,6 @@ class StreamIO extends AbstractIO
                 $this->write_heartbeat();
             }
         }
-    }
-
-    /**
-     * Sends a heartbeat message
-     */
-    protected function write_heartbeat()
-    {
-        $pkt = new AMQPWriter();
-        $pkt->write_octet(8);
-        $pkt->write_short(0);
-        $pkt->write_long(0);
-        $pkt->write_octet(0xCE);
-        $this->write($pkt->getvalue());
     }
 
     public function close()
@@ -412,7 +388,7 @@ class StreamIO extends AbstractIO
     {
         $this->check_heartbeat();
 
-        $read = array($this->sock);
+        $read = [$this->sock];
         $write = null;
         $except = null;
         $result = false;
@@ -421,7 +397,7 @@ class StreamIO extends AbstractIO
             $usec = is_int($usec) ? $usec : 0;
         }
 
-        set_error_handler(array($this, 'error_handler'));
+        set_error_handler([$this, 'error_handler']);
         try {
             $result = stream_select($read, $write, $except, $sec, $usec);
         } catch (\ErrorException $e) {
@@ -431,6 +407,39 @@ class StreamIO extends AbstractIO
         restore_error_handler();
 
         return $result;
+    }
+
+    /**
+     * @return $this
+     */
+    public function disableHeartbeat()
+    {
+        $this->heartbeat = 0;
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function reenableHeartbeat()
+    {
+        $this->heartbeat = $this->initial_heartbeat;
+
+        return $this;
+    }
+
+    /**
+     * Sends a heartbeat message
+     */
+    protected function write_heartbeat()
+    {
+        $pkt = new AMQPWriter();
+        $pkt->write_octet(8);
+        $pkt->write_short(0);
+        $pkt->write_long(0);
+        $pkt->write_octet(0xCE);
+        $this->write($pkt->getvalue());
     }
 
     /**
@@ -462,22 +471,12 @@ class StreamIO extends AbstractIO
     }
 
     /**
-     * @return $this
+     * @return bool
      */
-    public function disableHeartbeat()
+    private function isPcntlSignalEnabled()
     {
-        $this->heartbeat = 0;
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function reenableHeartbeat()
-    {
-        $this->heartbeat = $this->initial_heartbeat;
-
-        return $this;
+        return extension_loaded('pcntl')
+            && function_exists('pcntl_signal_dispatch')
+            && (defined('AMQP_WITHOUT_SIGNALS') ? !AMQP_WITHOUT_SIGNALS : true);
     }
 }

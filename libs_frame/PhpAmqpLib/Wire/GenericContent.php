@@ -10,23 +10,23 @@ use PhpAmqpLib\Channel\AMQPChannel;
 abstract class GenericContent
 {
     /** @var array */
-    public $delivery_info = array();
+    public $delivery_info = [];
 
     /** @var array Final property definitions */
     protected $prop_types;
 
-    /** @var array Properties content */
-    private $properties = array();
-
-    /** @var string Compiled properties */
-    private $serialized_properties;
-
     /**
      * @var array
      */
-    protected static $propertyDefinitions = array(
+    protected static $propertyDefinitions = [
         'dummy' => 'shortstr'
-    );
+    ];
+
+    /** @var array Properties content */
+    private $properties = [];
+
+    /** @var string Compiled properties */
+    private $serialized_properties;
 
     /**
      * @param array $properties Message property content
@@ -119,7 +119,7 @@ abstract class GenericContent
     public function load_properties(AMQPReader $reader)
     {
         // Read 16-bit shorts until we get one with a low bit set to zero
-        $flags = array();
+        $flags = [];
 
         while (true) {
             $flag_bits = $reader->read_short();
@@ -131,7 +131,7 @@ abstract class GenericContent
         }
 
         $shift = 0;
-        $data = array();
+        $data = [];
 
         foreach ($this->prop_types as $key => $proptype) {
             if ($shift === 0) {
@@ -154,7 +154,6 @@ abstract class GenericContent
         return $this;
     }
 
-
     /**
      * Serializes the 'properties' attribute (a dictionary) into the
      * raw bytes making up a set of property flags and a property
@@ -171,7 +170,7 @@ abstract class GenericContent
 
         $shift = 15;
         $flag_bits = 0;
-        $flags = array();
+        $flags = [];
         $raw_bytes = new AMQPWriter();
 
         foreach ($this->prop_types as $key => $prototype) {

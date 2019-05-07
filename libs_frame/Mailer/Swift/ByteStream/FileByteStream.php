@@ -128,7 +128,7 @@ class Swift_ByteStream_FileByteStream extends Swift_ByteStream_AbstractFilterabl
         if (!isset($this->reader)) {
             $pointer = @fopen($this->path, 'rb');
             if (!$pointer) {
-                throw new Swift_IoException('Unable to open file for reading ['.$this->path.']');
+                throw new Swift_IoException('Unable to open file for reading [' . $this->path . ']');
             }
             $this->reader = $pointer;
             if ($this->offset != 0) {
@@ -146,7 +146,7 @@ class Swift_ByteStream_FileByteStream extends Swift_ByteStream_AbstractFilterabl
         if (!isset($this->writer)) {
             if (!$this->writer = fopen($this->path, $this->mode)) {
                 throw new Swift_IoException(
-                    'Unable to open file for writing ['.$this->path.']'
+                    'Unable to open file for writing [' . $this->path . ']'
                 );
             }
         }
@@ -203,7 +203,7 @@ class Swift_ByteStream_FileByteStream extends Swift_ByteStream_AbstractFilterabl
         fclose($this->reader);
         $source = fopen($this->path, 'rb');
         if (!$source) {
-            throw new Swift_IoException('Unable to open file for copying ['.$this->path.']');
+            throw new Swift_IoException('Unable to open file for copying [' . $this->path . ']');
         }
         fseek($tmpFile, 0, SEEK_SET);
         while (!feof($source)) {

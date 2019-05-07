@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Exception\Map\BaiduMapException;
 use Map\MapBaseBaiDu;
 
-class GeoCoderReverse extends MapBaseBaiDu {
+class GeoCoderReverse extends MapBaseBaiDu
+{
     /**
      * 坐标地址
      * @var string
@@ -38,26 +39,30 @@ class GeoCoderReverse extends MapBaseBaiDu {
      */
     private $poiRadius = 0;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUri = '/geocoder/v2/';
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param double $lat 纬度
      * @param double $lng 经度
      */
-    public function setLocation($lat, $lng){
+    public function setLocation($lat, $lng)
+    {
         $this->reqData['location'] = $lat . ',' . $lng;
     }
 
     /**
      * @param string $coordType
      */
-    public function setCoordType(string $coordType){
+    public function setCoordType(string $coordType)
+    {
         $this->reqData['coordtype'] = $coordType;
         $this->reqData['ret_coordtype'] = $coordType;
     }
@@ -65,7 +70,8 @@ class GeoCoderReverse extends MapBaseBaiDu {
     /**
      * @param string $coordTypeReturn
      */
-    public function setCoordTypeReturn(string $coordTypeReturn){
+    public function setCoordTypeReturn(string $coordTypeReturn)
+    {
         $this->reqData['ret_coordtype'] = $coordTypeReturn;
     }
 
@@ -73,10 +79,11 @@ class GeoCoderReverse extends MapBaseBaiDu {
      * @param int $poiStatus
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setPoiStatusAndRadius(int $poiStatus,int $poiRadius){
-        if(!in_array($poiStatus, [0, 1])){
+    public function setPoiStatusAndRadius(int $poiStatus, int $poiRadius)
+    {
+        if (!in_array($poiStatus, [0, 1], true)) {
             throw new BaiduMapException('poi召回状态不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
-        } else if(($poiRadius < 0) || ($poiRadius > 1000)){
+        } elseif (($poiRadius < 0) || ($poiRadius > 1000)) {
             throw new BaiduMapException('poi召回半径不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 
@@ -84,8 +91,9 @@ class GeoCoderReverse extends MapBaseBaiDu {
         $this->reqData['radius'] = $poiRadius;
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['location'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['location'])) {
             throw new BaiduMapException('坐标地址不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 

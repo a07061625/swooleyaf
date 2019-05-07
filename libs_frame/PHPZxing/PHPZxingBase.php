@@ -34,36 +34,43 @@ authors:
 */
 namespace PHPZxing;
 
-class PHPZxingBase  {
+class PHPZxingBase
+{
     // name of the javase.jar file located in /src/bin directory
     private $_JAVASE_PATH = 'javase-3.3.3.jar';
     // name of the core.jar file located in /src/bin directory
-    private $_CORE_PATH = "core-3.3.3.jar";
+    private $_CORE_PATH = 'core-3.3.3.jar';
     // name of the jcommander.jar file located in /src/bin directory
-    private $_JCOMMANDER_PATH = "jcommander-1.72.jar";
+    private $_JCOMMANDER_PATH = 'jcommander-1.72.jar';
     // location of java in your machine
-    private $_JAVA_PATH = "/usr/bin/java";
+    private $_JAVA_PATH = '/usr/bin/java';
 
-    public function getJavaPath() {
+    public function getJavaPath()
+    {
         return $this->_JAVA_PATH;
     }
 
-    public function getJARPath() {
+    public function getJARPath()
+    {
         return SY_FRAME_LIBS_ROOT . 'PHPZxing/bin/' . $this->_JAVASE_PATH;
     }
 
-    public function getCorePAth() {
+    public function getCorePAth()
+    {
         return SY_FRAME_LIBS_ROOT . 'PHPZxing/bin/' . $this->_CORE_PATH;
     }
 
-    public function getJcommanderPath() {
+    public function getJcommanderPath()
+    {
         return SY_FRAME_LIBS_ROOT . 'PHPZxing/bin/' . $this->_JCOMMANDER_PATH;
     }
 
     /**
      * Set the default java path which we will use for decoding
+     * @param mixed $javaPath
      */
-    public function setJavaPath($javaPath = "/usr/bin/java") {
+    public function setJavaPath($javaPath = '/usr/bin/java')
+    {
         $this->_JAVA_PATH = $javaPath;
     }
 }

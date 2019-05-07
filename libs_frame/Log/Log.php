@@ -10,10 +10,12 @@ namespace Log;
 use Tool\Dir;
 use Traits\SimpleTrait;
 
-final class Log {
+final class Log
+{
     use SimpleTrait;
 
-    public static function log($msg, $level=SEASLOG_INFO){
+    public static function log($msg, $level = SEASLOG_INFO)
+    {
         $log = SY_SERVER_IP . ' | ' . SY_MODULE . ' | ' . PHP_EOL;
         if (is_string($msg)) {
             $log .= $msg;
@@ -22,16 +24,16 @@ final class Log {
         }
 
         switch ($level) {
-            case SEASLOG_DEBUG :
+            case SEASLOG_DEBUG:
                 \SeasLog::debug($log);
                 break;
-            case SEASLOG_INFO :
+            case SEASLOG_INFO:
                 \SeasLog::info($log);
                 break;
-            case SEASLOG_WARNING :
+            case SEASLOG_WARNING:
                 \SeasLog::warning($log);
                 break;
-            case SEASLOG_ERROR :
+            case SEASLOG_ERROR:
                 \SeasLog::error($log);
                 break;
             default:
@@ -42,15 +44,18 @@ final class Log {
         unset($log);
     }
 
-    public static function debug($msg){
+    public static function debug($msg)
+    {
         self::log($msg, SEASLOG_DEBUG);
     }
 
-    public static function info($msg){
+    public static function info($msg)
+    {
         self::log($msg, SEASLOG_INFO);
     }
 
-    public static function warn($msg){
+    public static function warn($msg)
+    {
         self::log($msg, SEASLOG_WARNING);
     }
 
@@ -60,7 +65,8 @@ final class Log {
      * @param int|string $code 错误码
      * @param string $trace 异常堆栈信息
      */
-    public static function error(string $msg, $code=0,string $trace=''){
+    public static function error(string $msg, $code = 0, string $trace = '')
+    {
         $content = 'code=' . $code . PHP_EOL . 'msg=' . $msg . PHP_EOL;
         if (strlen($trace . '') == 0) {
             $trackArr = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
@@ -81,7 +87,7 @@ final class Log {
                 if (empty($eTrack['args'])) {
                     $content .= '()';
                 } else {
-                    $content .= '(' . implode( ', ', $eTrack['args'] ) . ')';
+                    $content .= '(' . implode(', ', $eTrack['args']) . ')';
                 }
                 $content .= PHP_EOL;
             }
@@ -98,8 +104,9 @@ final class Log {
      * @param string $basePath 基目录
      * @param string $logger 存储目录
      */
-    public static function setPath(string $basePath, string $logger=''){
-        if(!is_dir($basePath . '/' . $logger)){
+    public static function setPath(string $basePath, string $logger = '')
+    {
+        if (!is_dir($basePath . '/' . $logger)) {
             Dir::create($basePath . '/' . $logger);
         }
 

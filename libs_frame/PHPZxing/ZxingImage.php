@@ -34,7 +34,8 @@ authors:
 */
 namespace PHPZxing;
 
-class ZxingImage implements PHPZxingInterface {
+class ZxingImage implements PHPZxingInterface
+{
     // Decoded Value from source
     private $imageValue = null;
     // Format of decoded data - CODE_39 etc..
@@ -44,30 +45,36 @@ class ZxingImage implements PHPZxingInterface {
     // Path of the image decoded
     private $imagePath = null;
 
-    public function __construct($imagePath, $imageValue , $format, $type) {
+    public function __construct($imagePath, $imageValue, $format, $type)
+    {
         $this->imageValue = $imageValue;
         $this->format = $format;
         $this->type = $type;
         $this->imagePath = $imagePath;
     }
 
-    public function isFound() {
+    public function isFound()
+    {
         return true;
     }
 
-    public function getImageValue() {
+    public function getImageValue()
+    {
         return $this->imageValue;
     }
 
-    public function getFormat() {
+    public function getFormat()
+    {
         return $this->format;
     }
 
-    public function getType() {
+    public function getType()
+    {
         return $this->type;
     }
 
-    public function getImagePath() {
+    public function getImagePath()
+    {
         return $this->imagePath;
     }
 }

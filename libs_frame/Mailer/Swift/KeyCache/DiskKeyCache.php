@@ -43,7 +43,7 @@ class Swift_KeyCache_DiskKeyCache implements Swift_KeyCache
      *
      * @var array
      */
-    private $keys = array();
+    private $keys = [];
 
     /**
      * Create a new DiskKeyCache with the given $stream for cloning to make
@@ -56,6 +56,16 @@ class Swift_KeyCache_DiskKeyCache implements Swift_KeyCache
     {
         $this->stream = $stream;
         $this->path = $path;
+    }
+
+    /**
+     * Destructor.
+     */
+    public function __destruct()
+    {
+        foreach ($this->keys as $nsKey => $null) {
+            $this->clearAll($nsKey);
+        }
     }
 
     /**
@@ -82,8 +92,8 @@ class Swift_KeyCache_DiskKeyCache implements Swift_KeyCache
                 break;
             default:
                 throw new Swift_SwiftException(
-                    'Invalid mode ['.$mode.'] used to set nsKey='.
-                    $nsKey.', itemKey='.$itemKey
+                    'Invalid mode [' . $mode . '] used to set nsKey=' .
+                    $nsKey . ', itemKey=' . $itemKey
                     );
                 break;
         }
@@ -115,8 +125,8 @@ class Swift_KeyCache_DiskKeyCache implements Swift_KeyCache
                 break;
             default:
                 throw new Swift_SwiftException(
-                    'Invalid mode ['.$mode.'] used to set nsKey='.
-                    $nsKey.', itemKey='.$itemKey
+                    'Invalid mode [' . $mode . '] used to set nsKey=' .
+                    $nsKey . ', itemKey=' . $itemKey
                     );
                 break;
         }
@@ -203,7 +213,7 @@ class Swift_KeyCache_DiskKeyCache implements Swift_KeyCache
      */
     public function hasKey($nsKey, $itemKey)
     {
-        return is_file($this->path.'/'.$nsKey.'/'.$itemKey);
+        return is_file($this->path . '/' . $nsKey . '/' . $itemKey);
     }
 
     /**
@@ -216,7 +226,7 @@ class Swift_KeyCache_DiskKeyCache implements Swift_KeyCache
     {
         if ($this->hasKey($nsKey, $itemKey)) {
             $this->freeHandle($nsKey, $itemKey);
-            unlink($this->path.'/'.$nsKey.'/'.$itemKey);
+            unlink($this->path . '/' . $nsKey . '/' . $itemKey);
         }
     }
 
@@ -231,8 +241,8 @@ class Swift_KeyCache_DiskKeyCache implements Swift_KeyCache
             foreach ($this->keys[$nsKey] as $itemKey => $null) {
                 $this->clearKey($nsKey, $itemKey);
             }
-            if (is_dir($this->path.'/'.$nsKey)) {
-                rmdir($this->path.'/'.$nsKey);
+            if (is_dir($this->path . '/' . $nsKey)) {
+                rmdir($this->path . '/' . $nsKey);
             }
             unset($this->keys[$nsKey]);
         }
@@ -245,12 +255,12 @@ class Swift_KeyCache_DiskKeyCache implements Swift_KeyCache
      */
     private function prepareCache($nsKey)
     {
-        $cacheDir = $this->path.'/'.$nsKey;
+        $cacheDir = $this->path . '/' . $nsKey;
         if (!is_dir($cacheDir)) {
             if (!mkdir($cacheDir)) {
-                throw new Swift_IoException('Failed to create cache directory '.$cacheDir);
+                throw new Swift_IoException('Failed to create cache directory ' . $cacheDir);
             }
-            $this->keys[$nsKey] = array();
+            $this->keys[$nsKey] = [];
         }
     }
 
@@ -267,7 +277,7 @@ class Swift_KeyCache_DiskKeyCache implements Swift_KeyCache
     {
         if (!isset($this->keys[$nsKey][$itemKey])) {
             $openMode = $this->hasKey($nsKey, $itemKey) ? 'r+b' : 'w+b';
-            $fp = fopen($this->path.'/'.$nsKey.'/'.$itemKey, $openMode);
+            $fp = fopen($this->path . '/' . $nsKey . '/' . $itemKey, $openMode);
             $this->keys[$nsKey][$itemKey] = $fp;
         }
         if (self::POSITION_START == $position) {
@@ -284,15 +294,5 @@ class Swift_KeyCache_DiskKeyCache implements Swift_KeyCache
         $fp = $this->getHandle($nsKey, $itemKey, self::POSITION_CURRENT);
         fclose($fp);
         $this->keys[$nsKey][$itemKey] = null;
-    }
-
-    /**
-     * Destructor.
-     */
-    public function __destruct()
-    {
-        foreach ($this->keys as $nsKey => $null) {
-            $this->clearAll($nsKey);
-        }
     }
 }

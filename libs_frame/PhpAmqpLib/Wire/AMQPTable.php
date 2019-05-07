@@ -3,10 +3,8 @@ namespace PhpAmqpLib\Wire;
 
 use PhpAmqpLib\Exception;
 
-
 class AMQPTable extends AMQPAbstractCollection
 {
-
     /**
      * @return int
      */

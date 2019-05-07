@@ -34,6 +34,7 @@ authors:
 */
 namespace PHPZxing;
 
-interface PHPZxingInterface  {
+interface PHPZxingInterface
+{
     public function isFound();
 }

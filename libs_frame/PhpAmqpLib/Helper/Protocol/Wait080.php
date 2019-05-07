@@ -9,7 +9,7 @@ class Wait080
     /**
      * @var array
      */
-    protected $wait = array(
+    protected $wait = [
         'connection.start' => '10,10',
         'connection.start_ok' => '10,11',
         'connection.secure' => '10,20',
@@ -103,11 +103,12 @@ class Wait080
         'test.table_ok' => '120,31',
         'test.content' => '120,40',
         'test.content_ok' => '120,41',
-    );
+    ];
 
     /**
      * @var string $method
      * @return string
+     * @param mixed $method
      */
     public function get_wait($method)
     {

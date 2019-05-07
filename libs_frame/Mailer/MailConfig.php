@@ -10,7 +10,8 @@ namespace Mailer;
 use Mailer\Configs\Smtp;
 use Tool\Tool;
 
-class MailConfig {
+class MailConfig
+{
     /**
      * @var MailConfig
      */
@@ -21,30 +22,21 @@ class MailConfig {
      */
     private $smtpConfigs = [];
 
-    private function __construct() {
+    private function __construct()
+    {
         $this->init();
     }
 
-    private function __clone() {
-    }
-
-    private function init() {
-        $configs = Tool::getConfig('email.' . SY_ENV . SY_PROJECT);
-        foreach ($configs['smtp'] as $node => $config) {
-            $smtp = new Smtp();
-            $smtp->setHost($config['host']);
-            $smtp->setPort($config['port']);
-            $smtp->setUser($config['user']);
-            $smtp->setPwd($config['pwd']);
-            $this->smtpConfigs[$node] = $smtp;
-        }
+    private function __clone()
+    {
     }
 
     /**
      * @return \Mailer\MailConfig
      */
-    public static function getInstance(){
-        if(is_null(self::$instance)){
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -56,7 +48,21 @@ class MailConfig {
      * @param string $node 节点标识
      * @return \Mailer\Configs\Smtp|null
      */
-    public function getSmtpConfig(string $node) {
+    public function getSmtpConfig(string $node)
+    {
         return $this->smtpConfigs[$node] ?? null;
+    }
+
+    private function init()
+    {
+        $configs = Tool::getConfig('email.' . SY_ENV . SY_PROJECT);
+        foreach ($configs['smtp'] as $node => $config) {
+            $smtp = new Smtp();
+            $smtp->setHost($config['host']);
+            $smtp->setPort($config['port']);
+            $smtp->setUser($config['user']);
+            $smtp->setPwd($config['pwd']);
+            $this->smtpConfigs[$node] = $smtp;
+        }
     }
 }

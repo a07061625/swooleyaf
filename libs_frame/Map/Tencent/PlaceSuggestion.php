@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Exception\Map\TencentMapException;
 use Map\MapBaseTencent;
 
-class PlaceSuggestion extends MapBaseTencent {
+class PlaceSuggestion extends MapBaseTencent
+{
     /**
      * 关键词
      * @var string
@@ -58,7 +59,8 @@ class PlaceSuggestion extends MapBaseTencent {
      */
     private $limit = 0;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUrl = 'https://apis.map.qq.com/ws/place/v1/suggestion';
         $this->reqData['region_fix'] = 0;
@@ -68,15 +70,17 @@ class PlaceSuggestion extends MapBaseTencent {
         $this->reqData['page_size'] = 10;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
      * @param string $keyword
      * @throws \Exception\Map\TencentMapException
      */
-    public function setKeyword(string $keyword){
-        if(strlen($keyword) > 0){
+    public function setKeyword(string $keyword)
+    {
+        if (strlen($keyword) > 0) {
             $this->reqData['keyword'] = $keyword;
         } else {
             throw new TencentMapException('关键词不能为空', ErrorCode::MAP_TENCENT_PARAM_ERROR);
@@ -87,8 +91,9 @@ class PlaceSuggestion extends MapBaseTencent {
      * @param string $region
      * @throws \Exception\Map\TencentMapException
      */
-    public function setRegion(string $region){
-        if(strlen($region) > 0){
+    public function setRegion(string $region)
+    {
+        if (strlen($region) > 0) {
             $this->reqData['region'] = $region;
         } else {
             throw new TencentMapException('地区不能为空', ErrorCode::MAP_TENCENT_PARAM_ERROR);
@@ -99,8 +104,9 @@ class PlaceSuggestion extends MapBaseTencent {
      * @param int $regionLimit
      * @throws \Exception\Map\TencentMapException
      */
-    public function setRegionLimit(int $regionLimit){
-        if(in_array($regionLimit, [0, 1])){
+    public function setRegionLimit(int $regionLimit)
+    {
+        if (in_array($regionLimit, [0, 1], true)) {
             $this->reqData['region_fix'] = $regionLimit;
         } else {
             throw new TencentMapException('地区限制不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
@@ -111,7 +117,8 @@ class PlaceSuggestion extends MapBaseTencent {
      * @param double $lat
      * @param double $lng
      */
-    public function setLocation($lat, $lng){
+    public function setLocation($lat, $lng)
+    {
         $this->reqData['location'] = $lat . ',' . $lng;
     }
 
@@ -119,8 +126,9 @@ class PlaceSuggestion extends MapBaseTencent {
      * @param int $subLimit
      * @throws \Exception\Map\TencentMapException
      */
-    public function setSubLimit(int $subLimit){
-        if(in_array($subLimit, [0, 1])){
+    public function setSubLimit(int $subLimit)
+    {
+        if (in_array($subLimit, [0, 1], true)) {
             $this->reqData['get_subpois'] = $subLimit;
         } else {
             throw new TencentMapException('子地点限制不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
@@ -130,14 +138,16 @@ class PlaceSuggestion extends MapBaseTencent {
     /**
      * @param int $policy
      */
-    public function setPolicy(int $policy){
+    public function setPolicy(int $policy)
+    {
         $this->reqData['policy'] = $policy;
     }
 
     /**
      * @param array $filters
      */
-    public function addFilters(array $filters){
+    public function addFilters(array $filters)
+    {
         foreach ($filters as $key => $val) {
             $this->filters[$key] = $val;
         }
@@ -146,14 +156,16 @@ class PlaceSuggestion extends MapBaseTencent {
     /**
      * @param array $filters
      */
-    public function setFilters(array $filters){
+    public function setFilters(array $filters)
+    {
         $this->filters = $filters;
     }
 
     /**
      * @param int $page
      */
-    public function setPage(int $page){
+    public function setPage(int $page)
+    {
         $this->reqData['page_index'] = $page > 0 ? $page : 1;
     }
 
@@ -161,22 +173,24 @@ class PlaceSuggestion extends MapBaseTencent {
      * @param int $limit
      * @throws \Exception\Map\TencentMapException
      */
-    public function setLimit(int $limit){
-        if(($limit > 0) && ($limit <= 20)){
+    public function setLimit(int $limit)
+    {
+        if (($limit > 0) && ($limit <= 20)) {
             $this->reqData['page_size'] = $limit;
         } else {
             throw new TencentMapException('每页条数不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['keyword'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['keyword'])) {
             throw new TencentMapException('关键词不能为空', ErrorCode::MAP_TENCENT_PARAM_ERROR);
-        } else if(!isset($this->reqData['region'])){
+        } elseif (!isset($this->reqData['region'])) {
             throw new TencentMapException('地区不能为空', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }
 
-        if(!empty($this->filters)){
+        if (!empty($this->filters)) {
             $filterStr = '';
             foreach ($this->filters as $key => $val) {
                 $filterStr .= ',' . $key . '=' . $val;

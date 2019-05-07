@@ -57,6 +57,7 @@ class Swift_Mime_ContentEncoder_RawContentEncoder implements Swift_Mime_ContentE
 
     /**
      * Not used.
+     * @param mixed $charset
      */
     public function charsetChanged($charset)
     {

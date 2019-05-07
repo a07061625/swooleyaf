@@ -15,7 +15,8 @@ use Map\MapBaseGaoDe;
  * 逆地理编码
  * @package Map\GaoDe
  */
-class GeoCoderReverse extends MapBaseGaoDe {
+class GeoCoderReverse extends MapBaseGaoDe
+{
     /**
      * 经纬度坐标
      * @var string
@@ -52,7 +53,8 @@ class GeoCoderReverse extends MapBaseGaoDe {
      */
     private $homeorcorp = 0;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUri = '/geocode/regeo';
         $this->reqData['radius'] = 1000;
@@ -66,11 +68,12 @@ class GeoCoderReverse extends MapBaseGaoDe {
      * @param array $locationList
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setLocation(array $locationList){
+    public function setLocation(array $locationList)
+    {
         $locationNum = count($locationList);
-        if($locationNum == 0){
+        if ($locationNum == 0) {
             throw new GaoDeMapException('经纬度坐标不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
-        } else if($locationNum > 20){
+        } elseif ($locationNum > 20) {
             throw new GaoDeMapException('经纬度坐标不能超过20个', ErrorCode::MAP_GAODE_PARAM_ERROR);
         }
         $this->reqData['location'] = implode('|', $locationList);
@@ -80,7 +83,8 @@ class GeoCoderReverse extends MapBaseGaoDe {
      * @param array $poiTypeList
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setPoiType(array $poiTypeList){
+    public function setPoiType(array $poiTypeList)
+    {
         if (empty($poiTypeList)) {
             throw new GaoDeMapException('POI类型不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
         }
@@ -91,8 +95,9 @@ class GeoCoderReverse extends MapBaseGaoDe {
      * @param int $radius
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setRadius(int $radius){
-        if(($radius > 0) && ($radius <= 3000)){
+    public function setRadius(int $radius)
+    {
+        if (($radius > 0) && ($radius <= 3000)) {
             $this->reqData['radius'] = $radius;
         } else {
             throw new GaoDeMapException('搜索半径不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
@@ -103,8 +108,9 @@ class GeoCoderReverse extends MapBaseGaoDe {
      * @param string $extensions
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setExtensions(string $extensions){
-        if(in_array($extensions, ['base', 'all'])){
+    public function setExtensions(string $extensions)
+    {
+        if (in_array($extensions, ['base', 'all'], true)) {
             $this->reqData['extensions'] = $extensions;
         } else {
             throw new GaoDeMapException('返回结果标识不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
@@ -115,8 +121,9 @@ class GeoCoderReverse extends MapBaseGaoDe {
      * @param string $batch
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setBatch(string $batch){
-        if(in_array($batch, ['true', 'false'])){
+    public function setBatch(string $batch)
+    {
+        if (in_array($batch, ['true', 'false'], true)) {
             $this->reqData['batch'] = $batch;
         } else {
             throw new GaoDeMapException('批量查询标识不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
@@ -127,8 +134,9 @@ class GeoCoderReverse extends MapBaseGaoDe {
      * @param int $roadLevel
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setRoadLevel(int $roadLevel){
-        if(in_array($roadLevel, [0, 1])){
+    public function setRoadLevel(int $roadLevel)
+    {
+        if (in_array($roadLevel, [0, 1], true)) {
             $this->reqData['roadlevel'] = $roadLevel;
         } else {
             throw new GaoDeMapException('道路等级不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
@@ -139,16 +147,18 @@ class GeoCoderReverse extends MapBaseGaoDe {
      * @param int $homeOrCorp
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setHomeOrCorp(int $homeOrCorp){
-        if(in_array($homeOrCorp, [0, 1, 2])){
+    public function setHomeOrCorp(int $homeOrCorp)
+    {
+        if (in_array($homeOrCorp, [0, 1, 2], true)) {
             $this->reqData['homeorcorp'] = $homeOrCorp;
         } else {
             throw new GaoDeMapException('POI返回排序不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['location'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['location'])) {
             throw new GaoDeMapException('经纬度坐标不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 

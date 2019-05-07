@@ -92,10 +92,10 @@ class Swift_FileSpool extends Swift_ConfigurableSpool
     public function queueMessage(Swift_Mime_SimpleMessage $message)
     {
         $ser = serialize($message);
-        $fileName = $this->path.'/'.$this->getRandomString(10);
+        $fileName = $this->path . '/' . $this->getRandomString(10);
         for ($i = 0; $i < $this->retryLimit; ++$i) {
             /* We try an exclusive creation of the file. This is an atomic operation, it avoid locking mechanism */
-            $fp = @fopen($fileName.'.message', 'xb');
+            $fp = @fopen($fileName . '.message', 'xb');
             if (false !== $fp) {
                 if (false === fwrite($fp, $ser)) {
                     return false;
@@ -163,12 +163,12 @@ class Swift_FileSpool extends Swift_ConfigurableSpool
             }
 
             /* We try a rename, it's an atomic operation, and avoid locking the file */
-            if (rename($file, $file.'.sending')) {
-                $message = unserialize(file_get_contents($file.'.sending'));
+            if (rename($file, $file . '.sending')) {
+                $message = unserialize(file_get_contents($file . '.sending'));
 
                 $count += $transport->send($message, $failedRecipients);
 
-                unlink($file.'.sending');
+                unlink($file . '.sending');
             } else {
                 /* This message has just been catched by another process */
                 continue;

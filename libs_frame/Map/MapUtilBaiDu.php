@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-final class MapUtilBaiDu extends MapUtilBase {
+final class MapUtilBaiDu extends MapUtilBase
+{
     use SimpleTrait;
 
     /**
@@ -19,22 +20,23 @@ final class MapUtilBaiDu extends MapUtilBase {
      * @param \Map\MapBaseBaiDu $mapBase
      * @return array
      */
-    public static function sendServiceRequest(MapBaseBaiDu $mapBase) {
+    public static function sendServiceRequest(MapBaseBaiDu $mapBase)
+    {
         $resArr = [
             'code' => 0,
         ];
 
         $sendRes = self::sendCurl($mapBase->getDetail());
-        if($sendRes === false){
+        if ($sendRes === false) {
             $resArr['code'] = ErrorCode::MAP_BAIDU_PARAM_ERROR;
             $resArr['message'] = '发送请求出错';
         }
 
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['status']) && ($sendData['status'] == 0)){
+        if (isset($sendData['status']) && ($sendData['status'] == 0)) {
             $rspKey = $mapBase->getRspDataKey();
             $resArr['data'] = strlen($rspKey) > 0 ? $sendData[$rspKey] : $sendData;
-        } else if(isset($sendData['message'])){
+        } elseif (isset($sendData['message'])) {
             $resArr['code'] = ErrorCode::MAP_BAIDU_PARAM_ERROR;
             $resArr['message'] = $sendData['message'];
         } else {

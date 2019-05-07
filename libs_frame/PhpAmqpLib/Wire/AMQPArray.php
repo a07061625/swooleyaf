@@ -1,10 +1,8 @@
 <?php
 namespace PhpAmqpLib\Wire;
 
-
 class AMQPArray extends AMQPAbstractCollection
 {
-
     /**
      * @param array|null $data
      */

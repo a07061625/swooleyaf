@@ -39,6 +39,6 @@ class AMQPProtocolException extends \Exception implements AMQPExceptionInterface
             ? $protocolClass::$GLOBAL_METHOD_NAMES[$ms]
             : $mn = '';
 
-        $this->args = array($reply_code, $reply_text, $method_sig, $mn);
+        $this->args = [$reply_code, $reply_text, $method_sig, $mn];
     }
 }

@@ -12,7 +12,8 @@ use Exception\Map\BaiduMapException;
 use Map\MapBaseBaiDu;
 use Tool\Tool;
 
-class PlaceSearch extends MapBaseBaiDu {
+class PlaceSearch extends MapBaseBaiDu
+{
     const LL_COORDINATE_TYPE_WGS = 1; //经纬度坐标类型-GPS
     const LL_COORDINATE_TYPE_GCJ = 2; //经纬度坐标类型-国测局
     const LL_COORDINATE_TYPE_BD = 3; //经纬度坐标类型-百度
@@ -111,7 +112,8 @@ class PlaceSearch extends MapBaseBaiDu {
      */
     private $areaRectangleLat2 = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUri = '/place/v2/search';
         $this->reqData['scope'] = self::SCOPE_BASE;
@@ -122,7 +124,8 @@ class PlaceSearch extends MapBaseBaiDu {
         $this->areaRegionCityLimit = self::PLACE_SEARCH_REGION_CITY_LIMIT_NO;
     }
 
-    public function __clone(){
+    public function __clone()
+    {
     }
 
     /**
@@ -130,8 +133,9 @@ class PlaceSearch extends MapBaseBaiDu {
      * @param string $keyword 检索关键字
      * @throws \Exception\Map\BaiduMapException
      */
-    public function addKeyword(string $keyword) {
-        if(count($this->keywords) >= 10){
+    public function addKeyword(string $keyword)
+    {
+        if (count($this->keywords) >= 10) {
             throw new BaiduMapException('检索关键字数量超过最大限制', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 
@@ -143,11 +147,11 @@ class PlaceSearch extends MapBaseBaiDu {
             ' ',
         ], $keyword);
         $str2 = trim($str1);
-        if(strlen($str2) == 0){
+        if (strlen($str2) == 0) {
             throw new BaiduMapException('检索关键字不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 
-        if(!in_array($str2, $this->keywords, true)){
+        if (!in_array($str2, $this->keywords, true)) {
             $this->keywords[] = $str2;
         }
     }
@@ -157,7 +161,8 @@ class PlaceSearch extends MapBaseBaiDu {
      * @param string $tag 标签
      * @throws \Exception\Map\BaiduMapException
      */
-    public function addTag(string $tag) {
+    public function addTag(string $tag)
+    {
         $str1 = preg_replace([
             '/\,+/',
             '/\s+/'
@@ -166,7 +171,7 @@ class PlaceSearch extends MapBaseBaiDu {
             ' ',
         ], $tag);
         $str2 = trim($str1);
-        if(strlen($str2) == 0){
+        if (strlen($str2) == 0) {
             throw new BaiduMapException('标签不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 
@@ -177,8 +182,9 @@ class PlaceSearch extends MapBaseBaiDu {
      * @param int $scope
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setScope(int $scope) {
-        if(in_array($scope, [self::SCOPE_BASE, self::SCOPE_DETAIL], true)){
+    public function setScope(int $scope)
+    {
+        if (in_array($scope, [self::SCOPE_BASE, self::SCOPE_DETAIL], true)) {
             $this->reqData['scope'] = $scope;
         } else {
             throw new BaiduMapException('结果详细程度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -189,9 +195,10 @@ class PlaceSearch extends MapBaseBaiDu {
      * @param string $filter
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setFilter(string $filter) {
+    public function setFilter(string $filter)
+    {
         $trueFilter = trim($filter);
-        if(strlen($trueFilter) > 0){
+        if (strlen($trueFilter) > 0) {
             $this->reqData['filter'] = $trueFilter;
         } else {
             throw new BaiduMapException('过滤条件不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -202,8 +209,9 @@ class PlaceSearch extends MapBaseBaiDu {
      * @param int $coordinateType
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setCoordinateType(int $coordinateType) {
-        if(in_array($coordinateType, [self::LL_COORDINATE_TYPE_WGS, self::LL_COORDINATE_TYPE_GCJ, self::LL_COORDINATE_TYPE_BD, self::LL_COORDINATE_TYPE_BD_MC], true)){
+    public function setCoordinateType(int $coordinateType)
+    {
+        if (in_array($coordinateType, [self::LL_COORDINATE_TYPE_WGS, self::LL_COORDINATE_TYPE_GCJ, self::LL_COORDINATE_TYPE_BD, self::LL_COORDINATE_TYPE_BD_MC], true)) {
             $this->reqData['coord_type'] = $coordinateType;
         } else {
             throw new BaiduMapException('坐标类型不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -214,8 +222,9 @@ class PlaceSearch extends MapBaseBaiDu {
      * @param int $pageSize
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setPageSize(int $pageSize) {
-        if(($pageSize > 0) && ($pageSize <= 20)){
+    public function setPageSize(int $pageSize)
+    {
+        if (($pageSize > 0) && ($pageSize <= 20)) {
             $this->reqData['page_size'] = $pageSize;
         } else {
             throw new BaiduMapException('每页条目数只能在1-20之间', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -226,8 +235,9 @@ class PlaceSearch extends MapBaseBaiDu {
      * @param int $pageIndex
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setPageIndex(int $pageIndex) {
-        if($pageIndex > 0){
+    public function setPageIndex(int $pageIndex)
+    {
+        if ($pageIndex > 0) {
             $this->reqData['page_num'] = $pageIndex;
         } else {
             throw new BaiduMapException('页数必须大于0', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -238,7 +248,8 @@ class PlaceSearch extends MapBaseBaiDu {
      * @param string $areaRegionName
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setAreaRegionName(string $areaRegionName) {
+    public function setAreaRegionName(string $areaRegionName)
+    {
         $str1 = preg_replace([
             '/[\-\_\.\~\!\*\'\(\)\;\:\@\&\=\+\$\,\/\?\%\#\[\]]+/',
             '/\s+/',
@@ -247,7 +258,7 @@ class PlaceSearch extends MapBaseBaiDu {
             ' ',
         ], $areaRegionName);
         $str2 = trim($str1);
-        if(strlen($str2) == 0){
+        if (strlen($str2) == 0) {
             throw new BaiduMapException('区域名称不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 
@@ -258,8 +269,9 @@ class PlaceSearch extends MapBaseBaiDu {
      * @param string $areaRegionCityLimit
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setAreaRegionCityLimit(string $areaRegionCityLimit) {
-        if(in_array($areaRegionCityLimit, [self::PLACE_SEARCH_REGION_CITY_LIMIT_NO, self::PLACE_SEARCH_REGION_CITY_LIMIT_YES], true)){
+    public function setAreaRegionCityLimit(string $areaRegionCityLimit)
+    {
+        if (in_array($areaRegionCityLimit, [self::PLACE_SEARCH_REGION_CITY_LIMIT_NO, self::PLACE_SEARCH_REGION_CITY_LIMIT_YES], true)) {
             $this->areaRegionCityLimit = $areaRegionCityLimit;
         } else {
             throw new BaiduMapException('城市限制标识不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -271,11 +283,12 @@ class PlaceSearch extends MapBaseBaiDu {
      * @param string $lat 纬度
      * @throws \Exception\Map\BaiduMapException
      */
-    public function getAreaNearbyLngAndLat(string $lng,string $lat) {
-        if(preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng) == 0){
+    public function getAreaNearbyLngAndLat(string $lng, string $lat)
+    {
+        if (preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng) == 0) {
             throw new BaiduMapException('圆形范围搜索中心点经度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
-        if(preg_match('/^[\-]?(\d(\.\d+)?|[1-8]\d(\.\d+)?|90)$/', $lat) == 0){
+        if (preg_match('/^[\-]?(\d(\.\d+)?|[1-8]\d(\.\d+)?|90)$/', $lat) == 0) {
             throw new BaiduMapException('圆形范围搜索中心点纬度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 
@@ -287,8 +300,9 @@ class PlaceSearch extends MapBaseBaiDu {
      * @param int $areaNearbyRadius
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setAreaNearbyRadius(int $areaNearbyRadius) {
-        if($areaNearbyRadius > 0){
+    public function setAreaNearbyRadius(int $areaNearbyRadius)
+    {
+        if ($areaNearbyRadius > 0) {
             $this->areaNearbyRadius = $areaNearbyRadius;
         } else {
             throw new BaiduMapException('圆形范围搜索半径必须大于0', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -302,20 +316,21 @@ class PlaceSearch extends MapBaseBaiDu {
      * @param string $lat2 东北角纬度
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setAreaRectangLngAndLat(string $lng1,string $lat1,string $lng2,string $lat2) {
-        if(preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng1) == 0){
+    public function setAreaRectangLngAndLat(string $lng1, string $lat1, string $lng2, string $lat2)
+    {
+        if (preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng1) == 0) {
             throw new BaiduMapException('矩形范围搜索西南角经度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
-        if(preg_match('/^[\-]?(\d(\.\d+)?|[1-8]\d(\.\d+)?|90)$/', $lat1) == 0){
+        if (preg_match('/^[\-]?(\d(\.\d+)?|[1-8]\d(\.\d+)?|90)$/', $lat1) == 0) {
             throw new BaiduMapException('矩形范围搜索西南角纬度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
-        if(preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng2) == 0){
+        if (preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng2) == 0) {
             throw new BaiduMapException('矩形范围搜索东北角经度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
-        if(preg_match('/^[\-]?(\d(\.\d+)?|[1-8]\d(\.\d+)?|90)$/', $lat2) == 0){
+        if (preg_match('/^[\-]?(\d(\.\d+)?|[1-8]\d(\.\d+)?|90)$/', $lat2) == 0) {
             throw new BaiduMapException('矩形范围搜索东北角纬度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
-        if((double)$lat1 >= (double)$lat2){
+        if ((double)$lat1 >= (double)$lat2) {
             throw new BaiduMapException('矩形范围搜索东北角纬度必须大于西南角纬度', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 
@@ -329,41 +344,43 @@ class PlaceSearch extends MapBaseBaiDu {
      * @param string $searchType 搜索类型 region:地区搜索 nearby:圆形区域搜索 rectangle:矩形区域搜索
      * @throws \Exception\Map\BaiduMapException
      */
-    public function setSearchType(string $searchType){
-        if(in_array($searchType, [self::PLACE_SEARCH_TYPE_REGION, self::PLACE_SEARCH_TYPE_NEARBY, self::PLACE_SEARCH_TYPE_RECTANGLE])){
+    public function setSearchType(string $searchType)
+    {
+        if (in_array($searchType, [self::PLACE_SEARCH_TYPE_REGION, self::PLACE_SEARCH_TYPE_NEARBY, self::PLACE_SEARCH_TYPE_RECTANGLE], true)) {
             $this->searchType = $searchType;
         } else {
             throw new BaiduMapException('区域搜索类型不支持', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(empty($this->keywords)){
+    public function getDetail() : array
+    {
+        if (empty($this->keywords)) {
             throw new BaiduMapException('检索关键字不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
-        } else if(strlen($this->searchType) == 0){
+        } elseif (strlen($this->searchType) == 0) {
             throw new BaiduMapException('区域搜索类型不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 
         switch ($this->searchType) {
             case self::PLACE_SEARCH_TYPE_REGION:
-                if(strlen($this->areaRegionName) == 0){
+                if (strlen($this->areaRegionName) == 0) {
                     throw new BaiduMapException('区域名称不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
                 }
                 $this->reqData['region'] = $this->areaRegionName;
                 $this->reqData['city_limit'] = $this->areaRegionCityLimit;
                 break;
             case self::PLACE_SEARCH_TYPE_NEARBY:
-                if((strlen($this->areaNearbyLat) == 0) || (strlen($this->areaNearbyLng) == 0)){
+                if ((strlen($this->areaNearbyLat) == 0) || (strlen($this->areaNearbyLng) == 0)) {
                     throw new BaiduMapException('中心点经度和纬度都不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
                 }
-                if($this->areaNearbyRadius <= 0){
+                if ($this->areaNearbyRadius <= 0) {
                     throw new BaiduMapException('搜索半径必须大于0', ErrorCode::MAP_BAIDU_PARAM_ERROR);
                 }
                 $this->reqData['location'] = $this->areaNearbyLat . ',' . $this->areaNearbyLng;
                 $this->reqData['radius'] = $this->areaNearbyRadius;
                 break;
             case self::PLACE_SEARCH_TYPE_RECTANGLE:
-                if(strlen($this->areaRectangleLng1) == 0){
+                if (strlen($this->areaRectangleLng1) == 0) {
                     throw new BaiduMapException('矩形范围搜索经度和纬度都不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
                 }
                 $this->reqData['bounds'] = $this->areaRectangleLat1 . ',' . $this->areaRectangleLng1 . ',' . $this->areaRectangleLat2 . ',' . $this->areaRectangleLng2;
@@ -371,7 +388,7 @@ class PlaceSearch extends MapBaseBaiDu {
         }
         $this->reqData['query'] = implode('', $this->keywords);
 
-        if(!empty($this->tags)){
+        if (!empty($this->tags)) {
             $this->reqData['tag'] = implode(',', array_keys($this->tags));
         }
 

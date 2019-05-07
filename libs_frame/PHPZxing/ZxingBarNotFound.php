@@ -35,7 +35,8 @@ authors:
 */
 namespace PHPZxing;
 
-class ZxingBarNotFound implements PHPZxingInterface  {
+class ZxingBarNotFound implements PHPZxingInterface
+{
     // Path of the image decoded
     private $imagePath = null;
     // Error Code of the image
@@ -43,25 +44,30 @@ class ZxingBarNotFound implements PHPZxingInterface  {
     // Message of error
     private $message = null;
 
-    public function __construct($imagePath, $imageErrorCode , $message) {
+    public function __construct($imagePath, $imageErrorCode, $message)
+    {
         $this->imagePath = $imagePath;
         $this->imageErrorCode = $imageErrorCode;
         $this->message = $message;
     }
 
-    public function getImagePath() {
+    public function getImagePath()
+    {
         return $this->imagePath;
     }
 
-    public function getImageErrorCode() {
+    public function getImageErrorCode()
+    {
         return $this->imageErrorCode;
     }
 
-    public function getErrorMessage() {
+    public function getErrorMessage()
+    {
         return $this->message;
     }
 
-    public function isFound() {
+    public function isFound()
+    {
         return false;
-    }    
+    }
 }

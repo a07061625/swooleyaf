@@ -15,7 +15,8 @@ use Map\MapBaseGaoDe;
  * 距离测量
  * @package Map\GaoDe
  */
-class Distance extends MapBaseGaoDe {
+class Distance extends MapBaseGaoDe
+{
     /**
      * 出发点
      * @var string
@@ -32,7 +33,8 @@ class Distance extends MapBaseGaoDe {
      */
     private $type = 0;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->serviceUri = '/distance';
         $this->reqData['type'] = 1;
@@ -42,11 +44,12 @@ class Distance extends MapBaseGaoDe {
      * @param array $originList
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setOrigins(array $originList){
+    public function setOrigins(array $originList)
+    {
         $originNum = count($originList);
-        if($originNum == 0){
+        if ($originNum == 0) {
             throw new GaoDeMapException('出发点不能为空', ErrorCode::MAP_GAODE_PARAM_ERROR);
-        } else if($originNum > 100){
+        } elseif ($originNum > 100) {
             throw new GaoDeMapException('出发点不能超过100个', ErrorCode::MAP_GAODE_PARAM_ERROR);
         }
         $this->reqData['origins'] = implode('|', $originList);
@@ -56,7 +59,8 @@ class Distance extends MapBaseGaoDe {
      * @param double $lat
      * @param double $lng
      */
-    public function setDestination($lat, $lng){
+    public function setDestination($lat, $lng)
+    {
         $this->reqData['destination'] = $lng . ',' . $lat;
     }
 
@@ -64,19 +68,21 @@ class Distance extends MapBaseGaoDe {
      * @param int $type
      * @throws \Exception\Map\GaoDeMapException
      */
-    public function setType(int $type){
-        if(in_array($type, [0, 1, 2, 3])){
+    public function setType(int $type)
+    {
+        if (in_array($type, [0, 1, 2, 3], true)) {
             $this->reqData['type'] = $type;
         } else {
             throw new GaoDeMapException('距离计算类型不合法', ErrorCode::MAP_GAODE_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(!isset($this->reqData['origins'])){
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['origins'])) {
             throw new GaoDeMapException('出发点不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
-        if(!isset($this->reqData['destination'])){
+        if (!isset($this->reqData['destination'])) {
             throw new GaoDeMapException('目的地不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 
