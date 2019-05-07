@@ -3,50 +3,60 @@ namespace SySms\AliYun;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class QueryInterSmsIsoInfoRequest extends RpcAcsRequest {
+class QueryInterSmsIsoInfoRequest extends RpcAcsRequest
+{
     private $resourceOwnerAccount;
     private $countryName;
     private $resourceOwnerId;
     private $ownerId;
 
-    public function __construct(){
-        parent::__construct("Dysmsapi", "2017-05-25", "QueryInterSmsIsoInfo");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Dysmsapi', '2017-05-25', 'QueryInterSmsIsoInfo');
+        $this->setMethod('POST');
     }
 
-    public function getResourceOwnerAccount(){
+    public function getResourceOwnerAccount()
+    {
         return $this->resourceOwnerAccount;
     }
 
-    public function setResourceOwnerAccount($resourceOwnerAccount){
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
-    public function getCountryName(){
+    public function getCountryName()
+    {
         return $this->countryName;
     }
 
-    public function setCountryName($countryName){
+    public function setCountryName($countryName)
+    {
         $this->countryName = $countryName;
-        $this->queryParameters["CountryName"] = $countryName;
+        $this->queryParameters['CountryName'] = $countryName;
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 }

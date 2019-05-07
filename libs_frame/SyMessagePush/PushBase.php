@@ -7,7 +7,8 @@
  */
 namespace SyMessagePush;
 
-abstract class PushBase {
+abstract class PushBase
+{
     /**
      * curl配置
      * @var array
@@ -19,16 +20,18 @@ abstract class PushBase {
      */
     protected $reqData = [];
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
     /**
      * @return array
      */
-    public function getCurlConfigs() : array {
+    public function getCurlConfigs() : array
+    {
         return $this->curlConfigs;
     }
+    abstract public function getDetail() : array;
 
     abstract protected function getContent() : array;
-    abstract public function getDetail() : array;
 }

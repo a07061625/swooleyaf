@@ -12,7 +12,8 @@ use Exception\Swoole\ServerException;
 use SyServer\BaseServer;
 use Traits\SimpleTrait;
 
-abstract class ModuleBase {
+abstract class ModuleBase
+{
     use SimpleTrait;
 
     const NODE_TYPE_HTTP = 'http';
@@ -29,39 +30,8 @@ abstract class ModuleBase {
      */
     protected $moduleName = '';
 
-    protected function init() {
-    }
-
-    /**
-     * 通过节点类型设置节点信息
-     * @param string $nodeType 节点类型
-     * @param array $nodeInfo 节点信息
-     */
-    private function setNodeInfoByType(string $nodeType,array &$nodeInfo) {
-        if ($nodeType == self::NODE_TYPE_HTTP) {
-            $nodeInfo['url'] = 'http://' . $nodeInfo['host'] . ':' . $nodeInfo['port'];
-        }
-    }
-
-    /**
-     * 获取节点服务信息
-     * @param string $nodeType 节点类型
-     * @return array
-     * @throws \Exception\Swoole\ServerException
-     */
-    private function getNodeServerInfo(string $nodeType) {
-        $serviceInfo = BaseServer::getServiceInfo($this->moduleBase);
-        if (empty($serviceInfo)) {
-            throw new ServerException('服务不存在', ErrorCode::SWOOLE_SERVER_NOT_EXIST_ERROR);
-        }
-
-        $nodeInfo = [
-            'port' => $serviceInfo['port'],
-            'host' => $serviceInfo['host'],
-        ];
-        $this->setNodeInfoByType($nodeType, $nodeInfo);
-
-        return $nodeInfo;
+    protected function init()
+    {
     }
 
     /**
@@ -76,10 +46,11 @@ abstract class ModuleBase {
      * @param array  $params 数据参数数组
      * @return array
      */
-    protected function getHttpServerInfo(string $uri,array $params=[]) {
+    protected function getHttpServerInfo(string $uri, array $params = [])
+    {
         $nodeInfo = $this->getNodeServerInfo(self::NODE_TYPE_HTTP);
         $nodeInfo['url'] .= $uri;
-        if(!empty($params)){
+        if (!empty($params)) {
             if (strpos($uri, '?') === false) {
                 $nodeInfo['url'] .= '?' . http_build_query($params);
             } else {
@@ -99,8 +70,43 @@ abstract class ModuleBase {
      * ]
      * @return array
      */
-    protected function getRpcServerInfo() {
+    protected function getRpcServerInfo()
+    {
         $nodeInfo = $this->getNodeServerInfo(self::NODE_TYPE_RPC);
+
+        return $nodeInfo;
+    }
+
+    /**
+     * 通过节点类型设置节点信息
+     * @param string $nodeType 节点类型
+     * @param array $nodeInfo 节点信息
+     */
+    private function setNodeInfoByType(string $nodeType, array &$nodeInfo)
+    {
+        if ($nodeType == self::NODE_TYPE_HTTP) {
+            $nodeInfo['url'] = 'http://' . $nodeInfo['host'] . ':' . $nodeInfo['port'];
+        }
+    }
+
+    /**
+     * 获取节点服务信息
+     * @param string $nodeType 节点类型
+     * @return array
+     * @throws \Exception\Swoole\ServerException
+     */
+    private function getNodeServerInfo(string $nodeType)
+    {
+        $serviceInfo = BaseServer::getServiceInfo($this->moduleBase);
+        if (empty($serviceInfo)) {
+            throw new ServerException('服务不存在', ErrorCode::SWOOLE_SERVER_NOT_EXIST_ERROR);
+        }
+
+        $nodeInfo = [
+            'port' => $serviceInfo['port'],
+            'host' => $serviceInfo['host'],
+        ];
+        $this->setNodeInfoByType($nodeType, $nodeInfo);
 
         return $nodeInfo;
     }

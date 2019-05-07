@@ -3,7 +3,8 @@ namespace SySms\AliYun;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class SendInterSmsRequest extends RpcAcsRequest {
+class SendInterSmsRequest extends RpcAcsRequest
+{
     private $templateCode;
     private $phoneNumbers;
     private $countryCode;
@@ -14,89 +15,108 @@ class SendInterSmsRequest extends RpcAcsRequest {
     private $ownerId;
     private $outId;
 
-    public function __construct(){
-        parent::__construct("Dysmsapi", "2017-05-25", "SendInterSms");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Dysmsapi', '2017-05-25', 'SendInterSms');
+        $this->setMethod('POST');
     }
 
-    public function getTemplateCode(){
+    public function getTemplateCode()
+    {
         return $this->templateCode;
     }
 
-    public function setTemplateCode($templateCode){
+    public function setTemplateCode($templateCode)
+    {
         $this->templateCode = $templateCode;
-        $this->queryParameters["TemplateCode"] = $templateCode;
+        $this->queryParameters['TemplateCode'] = $templateCode;
     }
 
-    public function getPhoneNumbers(){
+    public function getPhoneNumbers()
+    {
         return $this->phoneNumbers;
     }
 
-    public function setPhoneNumbers($phoneNumbers){
+    public function setPhoneNumbers($phoneNumbers)
+    {
         $this->phoneNumbers = $phoneNumbers;
-        $this->queryParameters["PhoneNumbers"] = $phoneNumbers;
+        $this->queryParameters['PhoneNumbers'] = $phoneNumbers;
     }
 
-    public function getCountryCode(){
+    public function getCountryCode()
+    {
         return $this->countryCode;
     }
 
-    public function setCountryCode($countryCode){
+    public function setCountryCode($countryCode)
+    {
         $this->countryCode = $countryCode;
-        $this->queryParameters["CountryCode"] = $countryCode;
+        $this->queryParameters['CountryCode'] = $countryCode;
     }
 
-    public function getSignName(){
+    public function getSignName()
+    {
         return $this->signName;
     }
 
-    public function setSignName($signName){
+    public function setSignName($signName)
+    {
         $this->signName = $signName;
-        $this->queryParameters["SignName"] = $signName;
+        $this->queryParameters['SignName'] = $signName;
     }
 
-    public function getResourceOwnerAccount(){
+    public function getResourceOwnerAccount()
+    {
         return $this->resourceOwnerAccount;
     }
 
-    public function setResourceOwnerAccount($resourceOwnerAccount){
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
-    public function getTemplateParam(){
+    public function getTemplateParam()
+    {
         return $this->templateParam;
     }
 
-    public function setTemplateParam($templateParam){
+    public function setTemplateParam($templateParam)
+    {
         $this->templateParam = $templateParam;
-        $this->queryParameters["TemplateParam"] = $templateParam;
+        $this->queryParameters['TemplateParam'] = $templateParam;
     }
 
-    public function getResourceOwnerId(){
+    public function getResourceOwnerId()
+    {
         return $this->resourceOwnerId;
     }
 
-    public function setResourceOwnerId($resourceOwnerId){
+    public function setResourceOwnerId($resourceOwnerId)
+    {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerId;
     }
 
-    public function setOwnerId($ownerId){
+    public function setOwnerId($ownerId)
+    {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
-    public function getOutId(){
+    public function getOutId()
+    {
         return $this->outId;
     }
 
-    public function setOutId($outId){
+    public function setOutId($outId)
+    {
         $this->outId = $outId;
-        $this->queryParameters["OutId"] = $outId;
+        $this->queryParameters['OutId'] = $outId;
     }
 }

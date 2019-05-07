@@ -14,7 +14,8 @@ use Tool\SyPack;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-abstract class ModuleHttp extends ModuleBase {
+abstract class ModuleHttp extends ModuleBase
+{
     use SimpleTrait;
 
     /**
@@ -26,12 +27,6 @@ abstract class ModuleHttp extends ModuleBase {
      */
     private $syRequest = null;
 
-    protected function init() {
-        parent::init();
-        $this->syPack = new SyPack();
-        $this->syRequest = new SyRequestHttp();
-    }
-
     /**
      * 发送GET请求
      * @param string $uri 请求uri
@@ -40,7 +35,8 @@ abstract class ModuleHttp extends ModuleBase {
      * @param callable $callback 回调函数
      * @return bool|string
      */
-    public function sendGetReq(string $uri,array $params,bool $async=false,callable $callback=null) {
+    public function sendGetReq(string $uri, array $params, bool $async = false, callable $callback = null)
+    {
         $this->syRequest->init('http');
         $this->syRequest->setAsync($async);
         $serverInfo = $this->getHttpServerInfo($uri, $params);
@@ -48,7 +44,7 @@ abstract class ModuleHttp extends ModuleBase {
         $this->syRequest->setPort($serverInfo['port']);
         $this->syRequest->setTimeout(Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
         $content = $this->syRequest->sendGetReq($serverInfo['url'], $callback);
-        if($content === false){
+        if ($content === false) {
             Log::error('send get req fail; url=' . $serverInfo['url']);
         }
 
@@ -63,7 +59,8 @@ abstract class ModuleHttp extends ModuleBase {
      * @param callable $callback 回调函数
      * @return bool|string
      */
-    public function sendPostReq(string $uri,array $params,bool $async=false,callable $callback=null) {
+    public function sendPostReq(string $uri, array $params, bool $async = false, callable $callback = null)
+    {
         $this->syRequest->init('http');
         $this->syRequest->setAsync($async);
         $serverInfo = $this->getHttpServerInfo($uri, []);
@@ -71,7 +68,7 @@ abstract class ModuleHttp extends ModuleBase {
         $this->syRequest->setPort($serverInfo['port']);
         $this->syRequest->setTimeout(Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
         $content = $this->syRequest->sendPostReq($serverInfo['url'], $params, $callback);
-        if($content === false){
+        if ($content === false) {
             Log::error('send post req fail: url=' . $serverInfo['url'] . '; params=' . Tool::jsonEncode($params));
         }
 
@@ -85,7 +82,8 @@ abstract class ModuleHttp extends ModuleBase {
      * @param callable $callback 回调函数
      * @return bool|string
      */
-    public function sendTaskReq(string $command,array $params,callable $callback=null) {
+    public function sendTaskReq(string $command, array $params, callable $callback = null)
+    {
         $this->syPack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
             'task_module' => $this->moduleName,
             'task_command' => $command,
@@ -93,7 +91,7 @@ abstract class ModuleHttp extends ModuleBase {
         ]);
         $packData = $this->syPack->packData();
         $this->syPack->init();
-        if($packData === false){
+        if ($packData === false) {
             Log::error('task pack data error.command=' . $command . ' params=' . Tool::jsonEncode($params, JSON_UNESCAPED_UNICODE));
             return false;
         }
@@ -105,10 +103,17 @@ abstract class ModuleHttp extends ModuleBase {
         $this->syRequest->setPort($serverInfo['port']);
         $this->syRequest->setTimeout(Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
         $content = $this->syRequest->sendTaskReq($serverInfo['url'], $packData, $callback);
-        if($content === false){
+        if ($content === false) {
             Log::error('send task req fail: url=' . $serverInfo['url']);
         }
 
         return $content;
+    }
+
+    protected function init()
+    {
+        parent::init();
+        $this->syPack = new SyPack();
+        $this->syRequest = new SyRequestHttp();
     }
 }

@@ -10,7 +10,8 @@ namespace SyMessagePush;
 use Constant\ErrorCode;
 use Exception\MessagePush\AliPushException;
 
-class ConfigAli {
+class ConfigAli
+{
     /**
      * 访问ID
      * @var string
@@ -27,16 +28,19 @@ class ConfigAli {
      */
     private $regionId = '';
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @return string
      */
-    public function getAccessKey() : string {
+    public function getAccessKey() : string
+    {
         return $this->accessKey;
     }
 
@@ -44,8 +48,9 @@ class ConfigAli {
      * @param string $accessKey
      * @throws \Exception\MessagePush\AliPushException
      */
-    public function setAccessKey(string $accessKey){
-        if(ctype_alnum($accessKey)){
+    public function setAccessKey(string $accessKey)
+    {
+        if (ctype_alnum($accessKey)) {
             $this->accessKey = $accessKey;
         } else {
             throw new AliPushException('访问ID不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
@@ -55,7 +60,8 @@ class ConfigAli {
     /**
      * @return string
      */
-    public function getAccessSecret() : string {
+    public function getAccessSecret() : string
+    {
         return $this->accessSecret;
     }
 
@@ -63,8 +69,9 @@ class ConfigAli {
      * @param string $accessSecret
      * @throws \Exception\MessagePush\AliPushException
      */
-    public function setAccessSecret(string $accessSecret){
-        if(ctype_alnum($accessSecret)){
+    public function setAccessSecret(string $accessSecret)
+    {
+        if (ctype_alnum($accessSecret)) {
             $this->accessSecret = $accessSecret;
         } else {
             throw new AliPushException('访问密钥不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
@@ -74,7 +81,8 @@ class ConfigAli {
     /**
      * @return string
      */
-    public function getRegionId() : string {
+    public function getRegionId() : string
+    {
         return $this->regionId;
     }
 
@@ -82,8 +90,9 @@ class ConfigAli {
      * @param string $regionId
      * @throws \Exception\MessagePush\AliPushException
      */
-    public function setRegionId(string $regionId){
-        if(strlen($regionId) > 0){
+    public function setRegionId(string $regionId)
+    {
+        if (strlen($regionId) > 0) {
             $this->regionId = $regionId;
         } else {
             throw new AliPushException('区域ID不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);

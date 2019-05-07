@@ -3,30 +3,36 @@ namespace SyMessagePush\Ali;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class CancelPushRequest extends RpcAcsRequest {
+class CancelPushRequest extends RpcAcsRequest
+{
     private $messageId;
     private $appKey;
 
-    public function __construct(){
-        parent::__construct("Push", "2016-08-01", "CancelPush");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Push', '2016-08-01', 'CancelPush');
+        $this->setMethod('POST');
     }
 
-    public function getMessageId(){
+    public function getMessageId()
+    {
         return $this->messageId;
     }
 
-    public function setMessageId($messageId){
+    public function setMessageId($messageId)
+    {
         $this->messageId = $messageId;
-        $this->queryParameters["MessageId"] = $messageId;
+        $this->queryParameters['MessageId'] = $messageId;
     }
 
-    public function getAppKey(){
+    public function getAppKey()
+    {
         return $this->appKey;
     }
 
-    public function setAppKey($appKey){
+    public function setAppKey($appKey)
+    {
         $this->appKey = $appKey;
-        $this->queryParameters["AppKey"] = $appKey;
+        $this->queryParameters['AppKey'] = $appKey;
     }
 }

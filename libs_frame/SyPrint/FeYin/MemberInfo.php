@@ -14,7 +14,8 @@ use SyPrint\PrintUtilBase;
 use SyPrint\PrintUtilFeYin;
 use Tool\Tool;
 
-class MemberInfo extends PrintBaseFeYin {
+class MemberInfo extends PrintBaseFeYin
+{
     /**
      * 应用ID
      * @var string
@@ -26,28 +27,32 @@ class MemberInfo extends PrintBaseFeYin {
      */
     private $uid = '';
 
-    public function __construct(string $appId){
+    public function __construct(string $appId)
+    {
         parent::__construct();
         $this->appid = $appId;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @param string $uid
      * @throws \Exception\SyPrint\FeYinException
      */
-    public function setUid(string $uid){
-        if(ctype_alnum($uid)){
+    public function setUid(string $uid)
+    {
+        if (ctype_alnum($uid)) {
             $this->uid = $uid;
         } else {
             throw new FeYinException('商户id不合法', ErrorCode::PRINT_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array {
-        if(strlen($this->uid) == 0){
+    public function getDetail() : array
+    {
+        if (strlen($this->uid) == 0) {
             throw new FeYinException('商户id不能为空', ErrorCode::PRINT_PARAM_ERROR);
         }
 
@@ -58,7 +63,7 @@ class MemberInfo extends PrintBaseFeYin {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . '/member/' . $this->uid . '?access_token=' . PrintUtilFeYin::getAccessToken($this->appid);
         $sendRes = PrintUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if(isset($sendData['errcode'])){
+        if (isset($sendData['errcode'])) {
             $resArr['code'] = ErrorCode::PRINT_GET_ERROR;
             $resArr['message'] = $sendData['errmsg'];
         } else {

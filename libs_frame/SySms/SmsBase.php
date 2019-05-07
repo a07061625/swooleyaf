@@ -7,19 +7,22 @@
  */
 namespace SySms;
 
-abstract class SmsBase {
+abstract class SmsBase
+{
     /**
      * 请求数据
      * @var array
      */
     protected $reqData = [];
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
+    abstract public function getDetail() : array;
 
     abstract protected function getContent() : array;
-    abstract public function getDetail() : array;
 }

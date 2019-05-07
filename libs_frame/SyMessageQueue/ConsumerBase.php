@@ -11,7 +11,8 @@ use Constant\ErrorCode;
 use Constant\Project;
 use Exception\MessageQueue\MessageQueueException;
 
-abstract class ConsumerBase {
+abstract class ConsumerBase
+{
     /**
      * 主题
      * @var string
@@ -23,29 +24,40 @@ abstract class ConsumerBase {
      */
     private $mqType = '';
 
-    public function __construct() {
+    public function __construct()
+    {
     }
 
     /**
      * @return string
      */
-    public function getTopic() : string {
+    public function getTopic() : string
+    {
         return $this->topic;
     }
 
     /**
      * @return string
      */
-    public function getMqType() : string {
+    public function getMqType() : string
+    {
         return $this->mqType;
     }
+
+    /**
+     * 处理消息
+     * @param array $data
+     * @return mixed
+     */
+    abstract public function handleMessage(array $data);
 
     /**
      * @param string $mqType
      * @param string $topic
      * @throws \Exception\MessageQueue\MessageQueueException
      */
-    protected function setMqTypeAndTopic(string $mqType,string $topic){
+    protected function setMqTypeAndTopic(string $mqType, string $topic)
+    {
         switch ($mqType) {
             case Project::MESSAGE_QUEUE_TYPE_REDIS:
                 $this->mqType = $mqType;
@@ -63,11 +75,4 @@ abstract class ConsumerBase {
                 throw new MessageQueueException('消息队列类型不支持', ErrorCode::MESSAGE_QUEUE_PARAM_ERROR);
         }
     }
-
-    /**
-     * 处理消息
-     * @param array $data
-     * @return mixed
-     */
-    abstract public function handleMessage(array $data);
 }

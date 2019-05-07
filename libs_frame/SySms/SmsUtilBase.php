@@ -12,7 +12,8 @@ use Log\Log;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-abstract class SmsUtilBase {
+abstract class SmsUtilBase
+{
     use SimpleTrait;
 
     /**
@@ -22,9 +23,10 @@ abstract class SmsUtilBase {
      * @param array $curlConfig curl配置数组
      * @return mixed
      */
-    protected static function sendCurlReq(array $curlConfig){
+    protected static function sendCurlReq(array $curlConfig)
+    {
         $sendRes = Tool::sendCurlReq($curlConfig);
-        if($sendRes['res_no'] > 0){
+        if ($sendRes['res_no'] > 0) {
             Log::error('短信请求失败,curl错误码为' . $sendRes['res_no'], ErrorCode::SMS_POST_ERROR);
         }
 

@@ -3,7 +3,8 @@ namespace SyMessagePush\Ali;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class PushRequest extends RpcAcsRequest {
+class PushRequest extends RpcAcsRequest
+{
     private $androidNotificationBarType;
     private $smsSendPolicy;
     private $androidExtParameters;
@@ -49,404 +50,493 @@ class PushRequest extends RpcAcsRequest {
     private $androidXiaoMiNotifyTitle;
     private $pushType;
 
-    public function __construct(){
-        parent::__construct("Push", "2016-08-01", "Push");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Push', '2016-08-01', 'Push');
+        $this->setMethod('POST');
     }
 
-    public function getAndroidNotificationBarType(){
+    public function getAndroidNotificationBarType()
+    {
         return $this->androidNotificationBarType;
     }
 
-    public function setAndroidNotificationBarType($androidNotificationBarType){
+    public function setAndroidNotificationBarType($androidNotificationBarType)
+    {
         $this->androidNotificationBarType = $androidNotificationBarType;
-        $this->queryParameters["AndroidNotificationBarType"] = $androidNotificationBarType;
+        $this->queryParameters['AndroidNotificationBarType'] = $androidNotificationBarType;
     }
 
-    public function getSmsSendPolicy(){
+    public function getSmsSendPolicy()
+    {
         return $this->smsSendPolicy;
     }
 
-    public function setSmsSendPolicy($smsSendPolicy){
+    public function setSmsSendPolicy($smsSendPolicy)
+    {
         $this->smsSendPolicy = $smsSendPolicy;
-        $this->queryParameters["SmsSendPolicy"] = $smsSendPolicy;
+        $this->queryParameters['SmsSendPolicy'] = $smsSendPolicy;
     }
 
-    public function getAndroidExtParameters(){
+    public function getAndroidExtParameters()
+    {
         return $this->androidExtParameters;
     }
 
-    public function setAndroidExtParameters($androidExtParameters){
+    public function setAndroidExtParameters($androidExtParameters)
+    {
         $this->androidExtParameters = $androidExtParameters;
-        $this->queryParameters["AndroidExtParameters"] = $androidExtParameters;
+        $this->queryParameters['AndroidExtParameters'] = $androidExtParameters;
     }
 
-    public function getiOSBadge(){
+    public function getiOSBadge()
+    {
         return $this->iOSBadge;
     }
 
-    public function setiOSBadge($iOSBadge){
+    public function setiOSBadge($iOSBadge)
+    {
         $this->iOSBadge = $iOSBadge;
-        $this->queryParameters["iOSBadge"] = $iOSBadge;
+        $this->queryParameters['iOSBadge'] = $iOSBadge;
     }
 
-    public function getiOSBadgeAutoIncrement(){
+    public function getiOSBadgeAutoIncrement()
+    {
         return $this->iOSBadgeAutoIncrement;
     }
 
-    public function setiOSBadgeAutoIncrement($iOSBadgeAutoIncrement){
+    public function setiOSBadgeAutoIncrement($iOSBadgeAutoIncrement)
+    {
         $this->iOSBadgeAutoIncrement = $iOSBadgeAutoIncrement;
-        $this->queryParameters["iOSBadgeAutoIncrement"] = $iOSBadgeAutoIncrement;
+        $this->queryParameters['iOSBadgeAutoIncrement'] = $iOSBadgeAutoIncrement;
     }
 
-    public function getAndroidOpenType(){
+    public function getAndroidOpenType()
+    {
         return $this->androidOpenType;
     }
 
-    public function setAndroidOpenType($androidOpenType){
+    public function setAndroidOpenType($androidOpenType)
+    {
         $this->androidOpenType = $androidOpenType;
-        $this->queryParameters["AndroidOpenType"] = $androidOpenType;
+        $this->queryParameters['AndroidOpenType'] = $androidOpenType;
     }
 
-    public function getTitle(){
+    public function getTitle()
+    {
         return $this->title;
     }
 
-    public function setTitle($title){
+    public function setTitle($title)
+    {
         $this->title = $title;
-        $this->queryParameters["Title"] = $title;
+        $this->queryParameters['Title'] = $title;
     }
 
-    public function getBody(){
+    public function getBody()
+    {
         return $this->body;
     }
 
-    public function setBody($body){
+    public function setBody($body)
+    {
         $this->body = $body;
-        $this->queryParameters["Body"] = $body;
+        $this->queryParameters['Body'] = $body;
     }
 
-    public function getDeviceType(){
+    public function getDeviceType()
+    {
         return $this->deviceType;
     }
 
-    public function setDeviceType($deviceType){
+    public function setDeviceType($deviceType)
+    {
         $this->deviceType = $deviceType;
-        $this->queryParameters["DeviceType"] = $deviceType;
+        $this->queryParameters['DeviceType'] = $deviceType;
     }
 
-    public function getPushTime(){
+    public function getPushTime()
+    {
         return $this->pushTime;
     }
 
-    public function setPushTime($pushTime){
+    public function setPushTime($pushTime)
+    {
         $this->pushTime = $pushTime;
-        $this->queryParameters["PushTime"] = $pushTime;
+        $this->queryParameters['PushTime'] = $pushTime;
     }
 
-    public function getSmsDelaySecs(){
+    public function getSmsDelaySecs()
+    {
         return $this->smsDelaySecs;
     }
 
-    public function setSmsDelaySecs($smsDelaySecs){
+    public function setSmsDelaySecs($smsDelaySecs)
+    {
         $this->smsDelaySecs = $smsDelaySecs;
-        $this->queryParameters["SmsDelaySecs"] = $smsDelaySecs;
+        $this->queryParameters['SmsDelaySecs'] = $smsDelaySecs;
     }
 
-    public function getSendSpeed(){
+    public function getSendSpeed()
+    {
         return $this->sendSpeed;
     }
 
-    public function setSendSpeed($sendSpeed){
+    public function setSendSpeed($sendSpeed)
+    {
         $this->sendSpeed = $sendSpeed;
-        $this->queryParameters["SendSpeed"] = $sendSpeed;
+        $this->queryParameters['SendSpeed'] = $sendSpeed;
     }
 
-    public function getAndroidPopupActivity(){
+    public function getAndroidPopupActivity()
+    {
         return $this->androidPopupActivity;
     }
 
-    public function setAndroidPopupActivity($androidPopupActivity){
+    public function setAndroidPopupActivity($androidPopupActivity)
+    {
         $this->androidPopupActivity = $androidPopupActivity;
-        $this->queryParameters["AndroidPopupActivity"] = $androidPopupActivity;
+        $this->queryParameters['AndroidPopupActivity'] = $androidPopupActivity;
     }
 
-    public function getiOSRemindBody(){
+    public function getiOSRemindBody()
+    {
         return $this->iOSRemindBody;
     }
 
-    public function setiOSRemindBody($iOSRemindBody){
+    public function setiOSRemindBody($iOSRemindBody)
+    {
         $this->iOSRemindBody = $iOSRemindBody;
-        $this->queryParameters["iOSRemindBody"] = $iOSRemindBody;
+        $this->queryParameters['iOSRemindBody'] = $iOSRemindBody;
     }
 
-    public function getiOSExtParameters(){
+    public function getiOSExtParameters()
+    {
         return $this->iOSExtParameters;
     }
 
-    public function setiOSExtParameters($iOSExtParameters){
+    public function setiOSExtParameters($iOSExtParameters)
+    {
         $this->iOSExtParameters = $iOSExtParameters;
-        $this->queryParameters["iOSExtParameters"] = $iOSExtParameters;
+        $this->queryParameters['iOSExtParameters'] = $iOSExtParameters;
     }
 
-    public function getAndroidNotifyType(){
+    public function getAndroidNotifyType()
+    {
         return $this->androidNotifyType;
     }
 
-    public function setAndroidNotifyType($androidNotifyType){
+    public function setAndroidNotifyType($androidNotifyType)
+    {
         $this->androidNotifyType = $androidNotifyType;
-        $this->queryParameters["AndroidNotifyType"] = $androidNotifyType;
+        $this->queryParameters['AndroidNotifyType'] = $androidNotifyType;
     }
 
-    public function getAndroidPopupTitle(){
+    public function getAndroidPopupTitle()
+    {
         return $this->androidPopupTitle;
     }
 
-    public function setAndroidPopupTitle($androidPopupTitle){
+    public function setAndroidPopupTitle($androidPopupTitle)
+    {
         $this->androidPopupTitle = $androidPopupTitle;
-        $this->queryParameters["AndroidPopupTitle"] = $androidPopupTitle;
+        $this->queryParameters['AndroidPopupTitle'] = $androidPopupTitle;
     }
 
-    public function getiOSMusic(){
+    public function getiOSMusic()
+    {
         return $this->iOSMusic;
     }
 
-    public function setiOSMusic($iOSMusic){
+    public function setiOSMusic($iOSMusic)
+    {
         $this->iOSMusic = $iOSMusic;
-        $this->queryParameters["iOSMusic"] = $iOSMusic;
+        $this->queryParameters['iOSMusic'] = $iOSMusic;
     }
 
-    public function getiOSApnsEnv(){
+    public function getiOSApnsEnv()
+    {
         return $this->iOSApnsEnv;
     }
 
-    public function setiOSApnsEnv($iOSApnsEnv){
+    public function setiOSApnsEnv($iOSApnsEnv)
+    {
         $this->iOSApnsEnv = $iOSApnsEnv;
-        $this->queryParameters["iOSApnsEnv"] = $iOSApnsEnv;
+        $this->queryParameters['iOSApnsEnv'] = $iOSApnsEnv;
     }
 
-    public function getiOSMutableContent(){
+    public function getiOSMutableContent()
+    {
         return $this->iOSMutableContent;
     }
 
-    public function setiOSMutableContent($iOSMutableContent){
+    public function setiOSMutableContent($iOSMutableContent)
+    {
         $this->iOSMutableContent = $iOSMutableContent;
-        $this->queryParameters["iOSMutableContent"] = $iOSMutableContent;
+        $this->queryParameters['iOSMutableContent'] = $iOSMutableContent;
     }
 
-    public function getAndroidNotificationBarPriority(){
+    public function getAndroidNotificationBarPriority()
+    {
         return $this->androidNotificationBarPriority;
     }
 
-    public function setAndroidNotificationBarPriority($androidNotificationBarPriority){
+    public function setAndroidNotificationBarPriority($androidNotificationBarPriority)
+    {
         $this->androidNotificationBarPriority = $androidNotificationBarPriority;
-        $this->queryParameters["AndroidNotificationBarPriority"] = $androidNotificationBarPriority;
+        $this->queryParameters['AndroidNotificationBarPriority'] = $androidNotificationBarPriority;
     }
 
-    public function getExpireTime(){
+    public function getExpireTime()
+    {
         return $this->expireTime;
     }
 
-    public function setExpireTime($expireTime){
+    public function setExpireTime($expireTime)
+    {
         $this->expireTime = $expireTime;
-        $this->queryParameters["ExpireTime"] = $expireTime;
+        $this->queryParameters['ExpireTime'] = $expireTime;
     }
 
-    public function getSmsTemplateName(){
+    public function getSmsTemplateName()
+    {
         return $this->smsTemplateName;
     }
 
-    public function setSmsTemplateName($smsTemplateName){
+    public function setSmsTemplateName($smsTemplateName)
+    {
         $this->smsTemplateName = $smsTemplateName;
-        $this->queryParameters["SmsTemplateName"] = $smsTemplateName;
+        $this->queryParameters['SmsTemplateName'] = $smsTemplateName;
     }
 
-    public function getAndroidPopupBody(){
+    public function getAndroidPopupBody()
+    {
         return $this->androidPopupBody;
     }
 
-    public function setAndroidPopupBody($androidPopupBody){
+    public function setAndroidPopupBody($androidPopupBody)
+    {
         $this->androidPopupBody = $androidPopupBody;
-        $this->queryParameters["AndroidPopupBody"] = $androidPopupBody;
+        $this->queryParameters['AndroidPopupBody'] = $androidPopupBody;
     }
 
-    public function getiOSNotificationCategory(){
+    public function getiOSNotificationCategory()
+    {
         return $this->iOSNotificationCategory;
     }
 
-    public function setiOSNotificationCategory($iOSNotificationCategory){
+    public function setiOSNotificationCategory($iOSNotificationCategory)
+    {
         $this->iOSNotificationCategory = $iOSNotificationCategory;
-        $this->queryParameters["iOSNotificationCategory"] = $iOSNotificationCategory;
+        $this->queryParameters['iOSNotificationCategory'] = $iOSNotificationCategory;
     }
 
-    public function getStoreOffline(){
+    public function getStoreOffline()
+    {
         return $this->storeOffline;
     }
 
-    public function setStoreOffline($storeOffline){
+    public function setStoreOffline($storeOffline)
+    {
         $this->storeOffline = $storeOffline;
-        $this->queryParameters["StoreOffline"] = $storeOffline;
+        $this->queryParameters['StoreOffline'] = $storeOffline;
     }
 
-    public function getiOSSilentNotification(){
+    public function getiOSSilentNotification()
+    {
         return $this->iOSSilentNotification;
     }
 
-    public function setiOSSilentNotification($iOSSilentNotification){
+    public function setiOSSilentNotification($iOSSilentNotification)
+    {
         $this->iOSSilentNotification = $iOSSilentNotification;
-        $this->queryParameters["iOSSilentNotification"] = $iOSSilentNotification;
+        $this->queryParameters['iOSSilentNotification'] = $iOSSilentNotification;
     }
 
-    public function getSmsParams(){
+    public function getSmsParams()
+    {
         return $this->smsParams;
     }
 
-    public function setSmsParams($smsParams){
+    public function setSmsParams($smsParams)
+    {
         $this->smsParams = $smsParams;
-        $this->queryParameters["SmsParams"] = $smsParams;
+        $this->queryParameters['SmsParams'] = $smsParams;
     }
 
-    public function getJobKey(){
+    public function getJobKey()
+    {
         return $this->jobKey;
     }
 
-    public function setJobKey($jobKey){
+    public function setJobKey($jobKey)
+    {
         $this->jobKey = $jobKey;
-        $this->queryParameters["JobKey"] = $jobKey;
+        $this->queryParameters['JobKey'] = $jobKey;
     }
 
-    public function getTarget(){
+    public function getTarget()
+    {
         return $this->target;
     }
 
-    public function setTarget($target){
+    public function setTarget($target)
+    {
         $this->target = $target;
-        $this->queryParameters["Target"] = $target;
+        $this->queryParameters['Target'] = $target;
     }
 
-    public function getAndroidOpenUrl(){
+    public function getAndroidOpenUrl()
+    {
         return $this->androidOpenUrl;
     }
 
-    public function setAndroidOpenUrl($androidOpenUrl){
+    public function setAndroidOpenUrl($androidOpenUrl)
+    {
         $this->androidOpenUrl = $androidOpenUrl;
-        $this->queryParameters["AndroidOpenUrl"] = $androidOpenUrl;
+        $this->queryParameters['AndroidOpenUrl'] = $androidOpenUrl;
     }
 
-    public function getAndroidNotificationChannel(){
+    public function getAndroidNotificationChannel()
+    {
         return $this->androidNotificationChannel;
     }
 
-    public function setAndroidNotificationChannel($androidNotificationChannel){
+    public function setAndroidNotificationChannel($androidNotificationChannel)
+    {
         $this->androidNotificationChannel = $androidNotificationChannel;
-        $this->queryParameters["AndroidNotificationChannel"] = $androidNotificationChannel;
+        $this->queryParameters['AndroidNotificationChannel'] = $androidNotificationChannel;
     }
 
-    public function getAndroidRemind(){
+    public function getAndroidRemind()
+    {
         return $this->androidRemind;
     }
 
-    public function setAndroidRemind($androidRemind){
+    public function setAndroidRemind($androidRemind)
+    {
         $this->androidRemind = $androidRemind;
-        $this->queryParameters["AndroidRemind"] = $androidRemind;
+        $this->queryParameters['AndroidRemind'] = $androidRemind;
     }
 
-    public function getAndroidActivity(){
+    public function getAndroidActivity()
+    {
         return $this->androidActivity;
     }
 
-    public function setAndroidActivity($androidActivity){
+    public function setAndroidActivity($androidActivity)
+    {
         $this->androidActivity = $androidActivity;
-        $this->queryParameters["AndroidActivity"] = $androidActivity;
+        $this->queryParameters['AndroidActivity'] = $androidActivity;
     }
 
-    public function getAndroidXiaoMiNotifyBody(){
+    public function getAndroidXiaoMiNotifyBody()
+    {
         return $this->androidXiaoMiNotifyBody;
     }
 
-    public function setAndroidXiaoMiNotifyBody($androidXiaoMiNotifyBody){
+    public function setAndroidXiaoMiNotifyBody($androidXiaoMiNotifyBody)
+    {
         $this->androidXiaoMiNotifyBody = $androidXiaoMiNotifyBody;
-        $this->queryParameters["AndroidXiaoMiNotifyBody"] = $androidXiaoMiNotifyBody;
+        $this->queryParameters['AndroidXiaoMiNotifyBody'] = $androidXiaoMiNotifyBody;
     }
 
-    public function getiOSSubtitle(){
+    public function getiOSSubtitle()
+    {
         return $this->iOSSubtitle;
     }
 
-    public function setiOSSubtitle($iOSSubtitle){
+    public function setiOSSubtitle($iOSSubtitle)
+    {
         $this->iOSSubtitle = $iOSSubtitle;
-        $this->queryParameters["iOSSubtitle"] = $iOSSubtitle;
+        $this->queryParameters['iOSSubtitle'] = $iOSSubtitle;
     }
 
-    public function getSmsSignName(){
+    public function getSmsSignName()
+    {
         return $this->smsSignName;
     }
 
-    public function setSmsSignName($smsSignName){
+    public function setSmsSignName($smsSignName)
+    {
         $this->smsSignName = $smsSignName;
-        $this->queryParameters["SmsSignName"] = $smsSignName;
+        $this->queryParameters['SmsSignName'] = $smsSignName;
     }
 
-    public function getiOSRemind(){
+    public function getiOSRemind()
+    {
         return $this->iOSRemind;
     }
 
-    public function setiOSRemind($iOSRemind){
+    public function setiOSRemind($iOSRemind)
+    {
         $this->iOSRemind = $iOSRemind;
-        $this->queryParameters["iOSRemind"] = $iOSRemind;
+        $this->queryParameters['iOSRemind'] = $iOSRemind;
     }
 
-    public function getAppKey(){
+    public function getAppKey()
+    {
         return $this->appKey;
     }
 
-    public function setAppKey($appKey){
+    public function setAppKey($appKey)
+    {
         $this->appKey = $appKey;
-        $this->queryParameters["AppKey"] = $appKey;
+        $this->queryParameters['AppKey'] = $appKey;
     }
 
-    public function getTargetValue(){
+    public function getTargetValue()
+    {
         return $this->targetValue;
     }
 
-    public function setTargetValue($targetValue){
+    public function setTargetValue($targetValue)
+    {
         $this->targetValue = $targetValue;
-        $this->queryParameters["TargetValue"] = $targetValue;
+        $this->queryParameters['TargetValue'] = $targetValue;
     }
 
-    public function getAndroidMusic(){
+    public function getAndroidMusic()
+    {
         return $this->androidMusic;
     }
 
-    public function setAndroidMusic($androidMusic){
+    public function setAndroidMusic($androidMusic)
+    {
         $this->androidMusic = $androidMusic;
-        $this->queryParameters["AndroidMusic"] = $androidMusic;
+        $this->queryParameters['AndroidMusic'] = $androidMusic;
     }
 
-    public function getAndroidXiaoMiActivity(){
+    public function getAndroidXiaoMiActivity()
+    {
         return $this->androidXiaoMiActivity;
     }
 
-    public function setAndroidXiaoMiActivity($androidXiaoMiActivity){
+    public function setAndroidXiaoMiActivity($androidXiaoMiActivity)
+    {
         $this->androidXiaoMiActivity = $androidXiaoMiActivity;
-        $this->queryParameters["AndroidXiaoMiActivity"] = $androidXiaoMiActivity;
+        $this->queryParameters['AndroidXiaoMiActivity'] = $androidXiaoMiActivity;
     }
 
-    public function getAndroidXiaoMiNotifyTitle(){
+    public function getAndroidXiaoMiNotifyTitle()
+    {
         return $this->androidXiaoMiNotifyTitle;
     }
 
-    public function setAndroidXiaoMiNotifyTitle($androidXiaoMiNotifyTitle){
+    public function setAndroidXiaoMiNotifyTitle($androidXiaoMiNotifyTitle)
+    {
         $this->androidXiaoMiNotifyTitle = $androidXiaoMiNotifyTitle;
-        $this->queryParameters["AndroidXiaoMiNotifyTitle"] = $androidXiaoMiNotifyTitle;
+        $this->queryParameters['AndroidXiaoMiNotifyTitle'] = $androidXiaoMiNotifyTitle;
     }
 
-    public function getPushType(){
+    public function getPushType()
+    {
         return $this->pushType;
     }
 
-    public function setPushType($pushType){
+    public function setPushType($pushType)
+    {
         $this->pushType = $pushType;
-        $this->queryParameters["PushType"] = $pushType;
+        $this->queryParameters['PushType'] = $pushType;
     }
 }

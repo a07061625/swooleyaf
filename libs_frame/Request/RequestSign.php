@@ -12,7 +12,8 @@ use Exception\Validator\SignException;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-final class RequestSign {
+final class RequestSign
+{
     use SimpleTrait;
 
     const KEY_SIGN = '_sign';
@@ -22,11 +23,12 @@ final class RequestSign {
      * @return string
      * @throws \Exception\Validator\SignException
      */
-    public static function checkSign() : string {
+    public static function checkSign() : string
+    {
         $sign = Tool::getArrayVal($_POST, self::KEY_SIGN);
-        if(!is_string($sign)){
+        if (!is_string($sign)) {
             throw new SignException('签名值出错', ErrorCode::SIGN_ERROR);
-        } else if (strlen($sign) <= 16) {
+        } elseif (strlen($sign) <= 16) {
             throw new SignException('签名值出错', ErrorCode::SIGN_ERROR);
         }
 
@@ -34,7 +36,7 @@ final class RequestSign {
             'sign_time' => substr($sign, 6, 10),
             'sign_nonce' => substr($sign, 0, 6),
         ]);
-        if($sign != $createSign){
+        if ($sign != $createSign) {
             throw new SignException('接口签名错误', ErrorCode::SIGN_ERROR);
         }
 
@@ -45,11 +47,12 @@ final class RequestSign {
      * 生成带签名的URL
      * @param $url
      */
-    public static function makeSignUrl(&$url){
+    public static function makeSignUrl(&$url)
+    {
         $urlArr = explode('#', $url);
         $arr = explode('?', $urlArr[0]);
         $params = [];
-        if(isset($arr[1])){
+        if (isset($arr[1])) {
             parse_str($arr[1], $params);
         }
         $params[self::KEY_SIGN] = self::createSign();
@@ -62,8 +65,9 @@ final class RequestSign {
      * @param array $data
      * @return string
      */
-    public static function createSign(array $data=[]) {
-        if(empty($data)){
+    public static function createSign(array $data = [])
+    {
+        if (empty($data)) {
             $signTime = Tool::getNowTime();
             $signNonce = Tool::createNonceStr(6);
         } else {

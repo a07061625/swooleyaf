@@ -17,7 +17,8 @@ use Traits\SimpleTrait;
 use Validator\Validator;
 use Validator\ValidatorResult;
 
-class BaseReflect {
+class BaseReflect
+{
     use SimpleTrait;
 
     private static $signTags = [
@@ -37,10 +38,11 @@ class BaseReflect {
      * @return array
      * @throws \Exception\Reflection\ReflectException
      */
-    public static function getControllerFilterAnnotations(string $className,string $methodName,string &$controllerType) : array {
+    public static function getControllerFilterAnnotations(string $className, string $methodName, string &$controllerType) : array
+    {
         $annotations = [];
 
-        try{
+        try {
             $class = new \ReflectionClass($className);
             $instance = $class->newInstanceWithoutConstructor();
             if ($instance instanceof BaseController) {
@@ -55,7 +57,7 @@ class BaseReflect {
 
                 if (SY_SERVER_TYPE == Server::SERVER_TYPE_API_GATE) {
                     $controllerType = $instance->signStatus ? 'a1' : 'a2';
-                } else if (SY_SERVER_TYPE == Server::SERVER_TYPE_API_MODULE) {
+                } elseif (SY_SERVER_TYPE == Server::SERVER_TYPE_API_MODULE) {
                     $controllerType = 'b1';
                 } else {
                     $controllerType = 'c1';
@@ -79,10 +81,11 @@ class BaseReflect {
      * @return array
      * @throws \Exception\Reflection\ReflectException
      */
-    public static function getValidatorAnnotations(string $className,string $methodName) : array {
+    public static function getValidatorAnnotations(string $className, string $methodName) : array
+    {
         $controllerType = '';
         $annotations = self::getControllerFilterAnnotations($className, $methodName, $controllerType);
-        if(strlen($controllerType) == 0){
+        if (strlen($controllerType) == 0) {
             return [];
         }
 
@@ -90,40 +93,40 @@ class BaseReflect {
         $ignoreJwt = false;
         foreach ($annotations as $eAnnotation) {
             $data = Tool::jsonDecode($eAnnotation);
-            if(!is_array($data)){
+            if (!is_array($data)) {
                 throw new ReflectException('数据校验格式不正确', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
-            } else if(!is_string($data['field'])){
+            } elseif (!is_string($data['field'])) {
                 throw new ReflectException('字段名称必须为字符串', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
-            } else if(!is_string($data['explain'])){
+            } elseif (!is_string($data['explain'])) {
                 throw new ReflectException('字段解释必须为字符串', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
-            } else if(!is_string($data['type'])){
+            } elseif (!is_string($data['type'])) {
                 throw new ReflectException('校验器类型必须为字符串', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
-            } else if(!is_array($data['rules'])){
+            } elseif (!is_array($data['rules'])) {
                 throw new ReflectException('校验规则必须为数组', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
             }
 
-            if(!isset(self::$signTags[$data['field']])){
+            if (!isset(self::$signTags[$data['field']])) {
                 $result = new ValidatorResult();
                 $result->setExplain($data['explain']);
                 $result->setField($data['field']);
                 $result->setType($data['type']);
                 $result->setRules($data['rules']);
                 $resArr[$data['field']] = $result;
-            } else if(($data['field'] == Validator::ANNOTATION_TAG_IGNORE_SIGN) && ($controllerType == 'a1')){
+            } elseif (($data['field'] == Validator::ANNOTATION_TAG_IGNORE_SIGN) && ($controllerType == 'a1')) {
                 $controllerType = 'a2';
-            } else if($data['field'] == Validator::ANNOTATION_TAG_IGNORE_JWT){
+            } elseif ($data['field'] == Validator::ANNOTATION_TAG_IGNORE_JWT) {
                 $ignoreJwt = true;
             }
         }
 
-        if(SY_SERVER_TYPE == Server::SERVER_TYPE_FRONT_GATE){
+        if (SY_SERVER_TYPE == Server::SERVER_TYPE_FRONT_GATE) {
             $jwtStatus = 0;
-        } else if(SY_SERVER_TYPE == Server::SERVER_TYPE_API_GATE){
+        } elseif (SY_SERVER_TYPE == Server::SERVER_TYPE_API_GATE) {
             $jwtStatus = $ignoreJwt ? 2 : 1;
         } else {
             $jwtStatus = 2;
         }
-        if($jwtStatus == 1){
+        if ($jwtStatus == 1) {
             $jwtResult = new ValidatorResult();
             $jwtResult->setExplain('JWT会话');
             $jwtResult->setField(Validator::ANNOTATION_TAG_SESSION_JWT);

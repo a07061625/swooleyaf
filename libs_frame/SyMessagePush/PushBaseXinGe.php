@@ -12,7 +12,8 @@ use DesignPatterns\Singletons\MessagePushConfigSingleton;
 use Exception\MessagePush\XinGePushException;
 use Tool\Tool;
 
-abstract class PushBaseXinGe extends PushBase {
+abstract class PushBaseXinGe extends PushBase
+{
     const PLATFORM_TYPE_ALL = 'all';
     const PLATFORM_TYPE_IOS = 'ios';
     const PLATFORM_TYPE_ANDROID = 'android';
@@ -38,13 +39,14 @@ abstract class PushBaseXinGe extends PushBase {
      */
     protected $reqHeaders = [];
 
-    public function __construct(string $platform){
+    public function __construct(string $platform)
+    {
         parent::__construct();
         $this->apiDomain = 'https://openapi.xg.qq.com/v3/';
 
-        if($platform == ConfigXinGe::PLATFORM_TYPE_IOS){
+        if ($platform == ConfigXinGe::PLATFORM_TYPE_IOS) {
             $config = MessagePushConfigSingleton::getInstance()->getXinGeIosConfig();
-        } else if($platform == ConfigXinGe::PLATFORM_TYPE_ANDROID){
+        } elseif ($platform == ConfigXinGe::PLATFORM_TYPE_ANDROID) {
             $config = MessagePushConfigSingleton::getInstance()->getXinGeAndroidConfig();
         } else {
             throw new XinGePushException('平台类型不支持', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
@@ -52,7 +54,8 @@ abstract class PushBaseXinGe extends PushBase {
         $this->reqHeaders['Authorization'] = 'Basic ' . base64_encode($config->getAppId() . ':' . $config->getAppSecret());
     }
 
-    protected function getContent() : array {
+    protected function getContent() : array
+    {
         $this->curlConfigs[CURLOPT_URL] = $this->apiDomain . $this->apiPath . '/' . $this->apiMethod;
         $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = 'POST';
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);

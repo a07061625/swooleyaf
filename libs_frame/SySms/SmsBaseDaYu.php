@@ -7,7 +7,18 @@
  */
 namespace SySms;
 
-abstract class SmsBaseDaYu extends SmsBase {
+abstract class SmsBaseDaYu extends SmsBase
+{
+    /**
+     * 应用标识
+     * @var string
+     */
+    protected $appKey = '';
+    /**
+     * 应用密钥
+     * @var string
+     */
+    protected $appSecret = '';
     /**
      * API接口名称
      * @var string
@@ -38,43 +49,38 @@ abstract class SmsBaseDaYu extends SmsBase {
      * @var string
      */
     private $responseTag = '';
-    /**
-     * 应用标识
-     * @var string
-     */
-    protected $appKey = '';
-    /**
-     * 应用密钥
-     * @var string
-     */
-    protected $appSecret = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->signMethod = 'md5';
         $this->format = 'json';
         $this->version = '2.0';
         $this->timestamp = date('Y-m-d H:i:s');
     }
 
-    private function __clone(){
-    }
-
-    /**
-     * @param string $method
-     */
-    protected function setMethod(string $method) {
-        $this->method = $method;
-        $this->responseTag = str_replace('.', '_', $method) . '_response';
+    private function __clone()
+    {
     }
 
     /**
      * @return string
      */
-    public function getResponseTag() : string {
+    public function getResponseTag() : string
+    {
         return $this->responseTag;
     }
 
-    protected function getContent() : array {
+    /**
+     * @param string $method
+     */
+    protected function setMethod(string $method)
+    {
+        $this->method = $method;
+        $this->responseTag = str_replace('.', '_', $method) . '_response';
+    }
+
+    protected function getContent() : array
+    {
         $this->reqData['v'] = $this->version;
         $this->reqData['app_key'] = $this->appKey;
         $this->reqData['sign_method'] = $this->signMethod;

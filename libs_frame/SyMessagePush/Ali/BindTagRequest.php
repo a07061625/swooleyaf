@@ -3,50 +3,60 @@ namespace SyMessagePush\Ali;
 
 use AliOpen\Core\RpcAcsRequest;
 
-class BindTagRequest extends RpcAcsRequest {
+class BindTagRequest extends RpcAcsRequest
+{
     private $tagName;
     private $clientKey;
     private $appKey;
     private $keyType;
 
-    public function __construct(){
-        parent::__construct("Push", "2016-08-01", "BindTag");
-        $this->setMethod("POST");
+    public function __construct()
+    {
+        parent::__construct('Push', '2016-08-01', 'BindTag');
+        $this->setMethod('POST');
     }
 
-    public function getTagName(){
+    public function getTagName()
+    {
         return $this->tagName;
     }
 
-    public function setTagName($tagName){
+    public function setTagName($tagName)
+    {
         $this->tagName = $tagName;
-        $this->queryParameters["TagName"] = $tagName;
+        $this->queryParameters['TagName'] = $tagName;
     }
 
-    public function getClientKey(){
+    public function getClientKey()
+    {
         return $this->clientKey;
     }
 
-    public function setClientKey($clientKey){
+    public function setClientKey($clientKey)
+    {
         $this->clientKey = $clientKey;
-        $this->queryParameters["ClientKey"] = $clientKey;
+        $this->queryParameters['ClientKey'] = $clientKey;
     }
 
-    public function getAppKey(){
+    public function getAppKey()
+    {
         return $this->appKey;
     }
 
-    public function setAppKey($appKey){
+    public function setAppKey($appKey)
+    {
         $this->appKey = $appKey;
-        $this->queryParameters["AppKey"] = $appKey;
+        $this->queryParameters['AppKey'] = $appKey;
     }
 
-    public function getKeyType(){
+    public function getKeyType()
+    {
         return $this->keyType;
     }
 
-    public function setKeyType($keyType){
+    public function setKeyType($keyType)
+    {
         $this->keyType = $keyType;
-        $this->queryParameters["KeyType"] = $keyType;
+        $this->queryParameters['KeyType'] = $keyType;
     }
 }

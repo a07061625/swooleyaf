@@ -10,7 +10,8 @@ namespace SyPrint;
 use Constant\ErrorCode;
 use Exception\SyPrint\FeYinException;
 
-class ConfigFeYin {
+class ConfigFeYin
+{
     /**
      * 应用id
      * @var string
@@ -27,16 +28,19 @@ class ConfigFeYin {
      */
     private $memberCode = '';
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
      * @return string
      */
-    public function getAppId() : string {
+    public function getAppId() : string
+    {
         return $this->appId;
     }
 
@@ -44,8 +48,9 @@ class ConfigFeYin {
      * @param string $appId
      * @throws \Exception\SyPrint\FeYinException
      */
-    public function setAppId(string $appId){
-        if(ctype_alnum($appId)){
+    public function setAppId(string $appId)
+    {
+        if (ctype_alnum($appId)) {
             $this->appId = $appId;
         } else {
             throw new FeYinException('应用id不合法', ErrorCode::PRINT_PARAM_ERROR);
@@ -55,7 +60,8 @@ class ConfigFeYin {
     /**
      * @return string
      */
-    public function getAppKey() : string {
+    public function getAppKey() : string
+    {
         return $this->appKey;
     }
 
@@ -63,8 +69,9 @@ class ConfigFeYin {
      * @param string $appKey
      * @throws \Exception\SyPrint\FeYinException
      */
-    public function setAppKey(string $appKey){
-        if(ctype_alnum($appKey)){
+    public function setAppKey(string $appKey)
+    {
+        if (ctype_alnum($appKey)) {
             $this->appKey = $appKey;
         } else {
             throw new FeYinException('API密钥不合法', ErrorCode::PRINT_PARAM_ERROR);
@@ -74,7 +81,8 @@ class ConfigFeYin {
     /**
      * @return string
      */
-    public function getMemberCode() : string {
+    public function getMemberCode() : string
+    {
         return $this->memberCode;
     }
 
@@ -82,8 +90,9 @@ class ConfigFeYin {
      * @param string $memberCode
      * @throws \Exception\SyPrint\FeYinException
      */
-    public function setMemberCode(string $memberCode){
-        if(ctype_alnum($memberCode)){
+    public function setMemberCode(string $memberCode)
+    {
+        if (ctype_alnum($memberCode)) {
             $this->memberCode = $memberCode;
         } else {
             throw new FeYinException('商户编码不合法', ErrorCode::PRINT_PARAM_ERROR);

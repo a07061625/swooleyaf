@@ -7,7 +7,9 @@
  */
 namespace Response;
 
-abstract class SyResponse {
-    private function __construct() {
+abstract class SyResponse
+{
+    private function __construct()
+    {
     }
 }

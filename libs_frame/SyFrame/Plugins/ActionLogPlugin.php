@@ -11,7 +11,8 @@ use Yaf\Plugin_Abstract;
 use Yaf\Request_Abstract;
 use Yaf\Response_Abstract;
 
-class ActionLogPlugin extends Plugin_Abstract {
+class ActionLogPlugin extends Plugin_Abstract
+{
     /**
      * 请求开始毫秒级时间戳
      * @var float
@@ -23,11 +24,13 @@ class ActionLogPlugin extends Plugin_Abstract {
      */
     private $preLogContent = '';
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->preLogContent = SY_SERVER_IP . ' | ' . SY_MODULE . ' | ' . PHP_EOL;
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     /**
@@ -35,7 +38,8 @@ class ActionLogPlugin extends Plugin_Abstract {
      * @param \Yaf\Response_Abstract $response
      * @return void
      */
-    public function dispatchLoopStartup(Request_Abstract $request, Response_Abstract $response){
+    public function dispatchLoopStartup(Request_Abstract $request, Response_Abstract $response)
+    {
         $this->reqStartTime = microtime(true);
         \SeasLog::info($this->preLogContent . $request->getControllerName() . 'Controller::' . $request->getActionName() . 'Action start,memory:' . memory_get_usage());
     }
@@ -45,7 +49,8 @@ class ActionLogPlugin extends Plugin_Abstract {
      * @param \Yaf\Response_Abstract $response
      * @return void
      */
-    public function dispatchLoopShutdown(Request_Abstract $request, Response_Abstract $response){
+    public function dispatchLoopShutdown(Request_Abstract $request, Response_Abstract $response)
+    {
         \SeasLog::info($this->preLogContent . $request->getControllerName() . 'Controller::' . $request->getActionName() . 'Action end,memory:' . memory_get_usage() . ',time:' . (microtime(true) - $this->reqStartTime));
     }
 }
