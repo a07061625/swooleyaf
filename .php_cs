@@ -14,6 +14,7 @@ $finder = PhpCsFixer\Finder::create()
     ->ignoreVCS(true);
 $fixers = [
     '@PSR2' => true,
+    'encoding' => true,
     'array_syntax' => ['syntax' => 'short'],
     'combine_consecutive_unsets' => true,
     'single_quote' => true, //简单字符串应该使用单引号代替双引号
@@ -21,6 +22,7 @@ $fixers = [
     'binary_operator_spaces' => ['default' => 'single_space'], //二进制操作符两端有一个空格
     'include' => true, //include 和文件路径之间需要有一个空格,文件路径不需要用括号括起来
     'standardize_not_equals' => true, //使用 <> 代替 !=
+    'no_closing_tag' => true,
     'no_unused_imports' => true, //删除没用到的use
     'no_singleline_whitespace_before_semicolons' => true, //禁止只有单行空格和分号的写法
     'no_empty_statement' => true, //多余的分号
