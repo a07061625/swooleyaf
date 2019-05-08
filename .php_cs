@@ -45,4 +45,4 @@ $fixers = [
 return PhpCsFixer\Config::create()
     ->setRules($fixers)
     ->setFinder($finder)
-    ->setUsingCache(false);
+    ->setUsingCache(true);
