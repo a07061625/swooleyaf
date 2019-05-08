@@ -117,6 +117,7 @@ class MysqlTool
 
     /**
      * 创建数据库下所有的实体类
+     * @param array $configs 配置数组
      */
     private static function createDbEntities(array $configs)
     {
@@ -142,6 +143,7 @@ class MysqlTool
 
     /**
      * 创建数据库下指定的实体类
+     * @param array $configs 配置数组
      */
     private static function createDbEntity(array $configs)
     {
@@ -219,8 +221,14 @@ class MysqlTool
                 }
             }
 
-            $filedStr .= PHP_EOL . '    /**' . PHP_EOL;
-            $filedStr .= '     * ' . $eField['Comment'] . PHP_EOL;
+            $tempComment = trim($eField['Comment']);
+            if (strlen($tempComment) > 0) {
+                $commentStr = ' ' . $tempComment;
+            } else {
+                $commentStr = '';
+            }
+            $filedStr .= '    /**' . PHP_EOL;
+            $filedStr .= '     *' . $commentStr . PHP_EOL;
             $filedStr .= '     * @var ' . $varType . PHP_EOL;
             $filedStr .= '     */' . PHP_EOL;
             $filedStr .= '    public $' . $eField['Field'] . ' = ' . $default . ';' . PHP_EOL;
@@ -231,12 +239,14 @@ class MysqlTool
             $content = '<?php' . PHP_EOL . 'namespace Entities\\' . self::transferName($configs['db']) . ';' . PHP_EOL . PHP_EOL;
         }
         $content .= 'use DB\\Entities\\MysqlEntity;' . PHP_EOL . PHP_EOL;
-        $content .= 'class ' . $fileName . ' extends MysqlEntity {' . PHP_EOL;
-        $content .= '    public function __construct(string $dbName=\'\') {' . PHP_EOL;
+        $content .= 'class ' . $fileName . ' extends MysqlEntity' . PHP_EOL;
+        $content .= '{' . PHP_EOL;
+        $content .= $filedStr . PHP_EOL;
+        $content .= '    public function __construct(string $dbName = \'\')' . PHP_EOL;
+        $content .= '    {' . PHP_EOL;
         $content .= '        $this->_dbName = isset($dbName{0}) ? $dbName : \'' . $configs['db'] . '\';' . PHP_EOL;
         $content .= '        parent::__construct($this->_dbName, \'' . $configs['table'] . '\', \'' . $primaryKey . '\');' . PHP_EOL;
         $content .= '    }' . PHP_EOL;
-        $content .= $filedStr;
         $content .= '}' . PHP_EOL;
 
         file_put_contents($configs['path'] . $fileName . '.php', $content);
