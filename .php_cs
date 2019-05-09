@@ -39,7 +39,7 @@ $fixers = [
     'phpdoc_add_missing_param_annotation' => true,
     'phpdoc_order' => false,
     'strict_comparison' => false,
-    'strict_param' => true,
+    'strict_param' => false,
     'concat_space' => ['spacing' => 'one'],
     'simplified_null_return' => true,
     'pre_increment' => false,
