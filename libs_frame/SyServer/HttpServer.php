@@ -35,13 +35,7 @@ class HttpServer extends BaseServer
 
     const RESPONSE_RESULT_TYPE_FORBIDDEN = 0; //响应结果类型-拒绝请求
     const RESPONSE_RESULT_TYPE_ACCEPT = 1; //响应结果类型-允许请求执行业务
-    const RESPONSE_RESULT_TYPE_ALLOW = 2; //响应结果类型-不执行业务，直接返回响应
 
-    /**
-     * 跨域共享资源数组
-     * @var array
-     */
-    protected $_cors = [];
     /**
      * swoole请求cookie域名数组
      * @var array
@@ -104,9 +98,6 @@ class HttpServer extends BaseServer
             $this->_configs['server']['cachenum']['wx'] = 1;
         }
         $this->checkServerHttp();
-        $this->_cors = Tool::getConfig('cors.' . SY_ENV . SY_PROJECT);
-        $this->_cors['allow']['headerStr'] = isset($this->_cors['allow']['headers']) ? implode(', ', $this->_cors['allow']['headers']) : '';
-        $this->_cors['allow']['methodStr'] = isset($this->_cors['allow']['methods']) ? implode(', ', $this->_cors['allow']['methods']) : '';
         $this->_messagePack = new SyPack();
         $this->_moduleContainer = new ModuleContainer();
         $this->_reqCookieDomains = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.domain.cookie');
@@ -229,24 +220,6 @@ class HttpServer extends BaseServer
         if ($socketAccept === false) {
             $response->end();
             return false;
-        }
-
-        $origin = isset($request->header['origin']) ? trim($request->header['origin']) : '';
-        $origins = Tool::getArrayVal($this->_cors, 'allow.origins', [], true);
-        if ((strlen($origin) > 0) && !empty($origins)) { //校验origin是否允许
-            $checkRes = false;
-            foreach ($origins as $eOrigin) {
-                $startIndex = -1 * strlen($eOrigin);
-                if (substr($origin, $startIndex) === $eOrigin) {
-                    $checkRes = true;
-                    break;
-                }
-            }
-
-            if (!$checkRes) {
-                $response->end();
-                return false;
-            }
         }
 
         $response->header('Upgrade', 'websocket');
@@ -410,9 +383,6 @@ class HttpServer extends BaseServer
                 self::$_rspMsg = $this->handleReqService($request, $rspHeaders);
                 $this->setRspCookies($response, Registry::get(Server::REGISTRY_NAME_RESPONSE_COOKIE));
                 $this->setRspHeaders($response, Registry::get(Server::REGISTRY_NAME_RESPONSE_HEADER));
-            } elseif ($handleHeaderRes == self::RESPONSE_RESULT_TYPE_ALLOW) {
-                $rspHeaders['Content-Type'] = 'application/json; charset=utf-8';
-                $this->setRspHeaders($response, $rspHeaders);
             } else {
                 $rspHeaders['Content-Type'] = 'text/plain; charset=utf-8';
                 $rspHeaders['Syresp-Status'] = 403;
@@ -581,39 +551,12 @@ class HttpServer extends BaseServer
      */
     private function handleReqHeader(array &$headers) : int
     {
-        $headers['Access-Control-Allow-Origin'] = $_SERVER['ORIGIN'] ?? '*';
-        $headers['Access-Control-Allow-Credentials'] = 'true';
-        if (isset($_SERVER['ACCESS-CONTROL-REQUEST-METHOD'])) { //校验请求方式
-            $methodStr = ', ' . strtoupper(trim($_SERVER['ACCESS-CONTROL-REQUEST-METHOD']));
-            if (strpos(', ' . $this->_cors['allow']['methodStr'], $methodStr) === false) {
-                return self::RESPONSE_RESULT_TYPE_FORBIDDEN;
-            }
-        }
-        if (isset($_SERVER['ACCESS-CONTROL-REQUEST-HEADERS'])) { //校验请求头
-            $controlReqHeaders = explode(',', strtolower($_SERVER['ACCESS-CONTROL-REQUEST-HEADERS']));
-            foreach ($controlReqHeaders as $eHeader) {
-                $headerName = trim($eHeader);
-                if ((strlen($headerName) > 0) && !in_array($headerName, $this->_cors['allow']['headers'], true)) {
-                    return self::RESPONSE_RESULT_TYPE_FORBIDDEN;
-                }
-            }
-        }
-
         $domainTag = $_SERVER['SY-DOMAIN'] ?? 'base';
         $cookieDomain = $this->_reqCookieDomains[$domainTag] ?? null;
         if (is_null($cookieDomain)) {
             return self::RESPONSE_RESULT_TYPE_FORBIDDEN;
         }
         $_SERVER['SY-DOMAIN'] = $cookieDomain;
-
-        $reqMethod = strtoupper(Tool::getArrayVal($_SERVER, 'REQUEST_METHOD', 'GET'));
-        if ($reqMethod == 'OPTIONS') {
-            //预请求OPTIONS的响应结果有效时间
-            $headers['Access-Control-Max-Age'] = $this->_cors['options']['maxage'];
-            $headers['Access-Control-Allow-Methods'] = $this->_cors['allow']['headerStr'];
-            $headers['Access-Control-Allow-Headers'] = $this->_cors['allow']['methodStr'];
-            return self::RESPONSE_RESULT_TYPE_ALLOW;
-        }
         return self::RESPONSE_RESULT_TYPE_ACCEPT;
     }
 
