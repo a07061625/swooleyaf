@@ -7,6 +7,8 @@
  */
 namespace SyFrame\Plugins;
 
+use Log\Log;
+use SyServer\BaseServer;
 use Yaf\Plugin_Abstract;
 use Yaf\Request_Abstract;
 use Yaf\Response_Abstract;
@@ -18,15 +20,9 @@ class ActionLogPlugin extends Plugin_Abstract
      * @var float
      */
     private $reqStartTime = 0.00;
-    /**
-     * 日志内容前缀
-     * @var string
-     */
-    private $preLogContent = '';
 
     public function __construct()
     {
-        $this->preLogContent = SY_SERVER_IP . ' | ' . SY_MODULE . ' | ' . PHP_EOL;
     }
 
     private function __clone()
@@ -41,7 +37,12 @@ class ActionLogPlugin extends Plugin_Abstract
     public function dispatchLoopStartup(Request_Abstract $request, Response_Abstract $response)
     {
         $this->reqStartTime = microtime(true);
-        \SeasLog::info($this->preLogContent . $request->getControllerName() . 'Controller::' . $request->getActionName() . 'Action start,memory:' . memory_get_usage());
+        $logStr = 'req_id: ' . BaseServer::getReqId() . PHP_EOL
+                  . 'trace_type: action-enter' . PHP_EOL
+                  . 'controller_name: ' . $request->getControllerName() . PHP_EOL
+                  . 'action_name: ' . $request->getActionName() . PHP_EOL
+                  . 'memory_usage: ' . memory_get_usage();
+        Log::log($logStr);
     }
 
     /**
@@ -51,6 +52,12 @@ class ActionLogPlugin extends Plugin_Abstract
      */
     public function dispatchLoopShutdown(Request_Abstract $request, Response_Abstract $response)
     {
-        \SeasLog::info($this->preLogContent . $request->getControllerName() . 'Controller::' . $request->getActionName() . 'Action end,memory:' . memory_get_usage() . ',time:' . (microtime(true) - $this->reqStartTime));
+        $logStr = 'req_id: ' . BaseServer::getReqId() . PHP_EOL
+                  . 'trace_type: action-exit' . PHP_EOL
+                  . 'controller_name: ' . $request->getControllerName() . PHP_EOL
+                  . 'action_name: ' . $request->getActionName() . PHP_EOL
+                  . 'memory_usage: ' . memory_get_usage() . PHP_EOL
+                  . 'use_time: ' . (microtime(true) - $this->reqStartTime) . 's';
+        Log::log($logStr);
     }
 }

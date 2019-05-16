@@ -473,7 +473,6 @@ class HttpServer extends BaseServer
         self::$_reqServers = $request->server ?? [];
         self::$_reqTag = isset(self::$_reqHeaders[Server::SERVER_HTTP_TAG_REQUEST_HEADER]) ? false : true;
         self::$_rspMsg = '';
-        $this->createReqId();
 
         $taskData = $_POST[Server::SERVER_DATA_KEY_TASK] ?? '';
         self::$_reqTask = is_string($taskData) && (strlen($taskData) > 0) ? $taskData : null;
@@ -491,7 +490,10 @@ class HttpServer extends BaseServer
         if (!isset($_SERVER['REQUEST_URI'])) {
             $_SERVER['REQUEST_URI'] = '/';
         }
-        $_SERVER[Server::SERVER_DATA_KEY_TIMESTAMP] = time();
+
+        $nowTime = time();
+        $_SERVER[Server::SERVER_DATA_KEY_TIMESTAMP] = $nowTime;
+        $_SERVER['SYREQ_ID'] = hash('md4', $nowTime . Tool::createNonceStr(8));
     }
 
     private function initRequest(\swoole_http_request $request, array $rspHeaders)
@@ -529,7 +531,6 @@ class HttpServer extends BaseServer
         self::$_reqHeaders = [];
         self::$_reqServers = [];
         self::$_response = null;
-        self::$_reqId = '';
         self::$_rspMsg = '';
 
         //清除yaf注册常量

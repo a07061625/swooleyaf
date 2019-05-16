@@ -40,8 +40,6 @@ final class Log
                 \SeasLog::info($log);
                 break;
         }
-
-        unset($log);
     }
 
     public static function debug($msg)

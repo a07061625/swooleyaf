@@ -128,7 +128,6 @@ class RpcServer extends BaseServer
         if (!$sendRes) {
             Log::error('rpc send response error, error_code:' . $server->getLastError());
         }
-        self::$_reqId = '';
     }
 
     /**
@@ -142,7 +141,9 @@ class RpcServer extends BaseServer
         $_COOKIE = [];
         $_FILES = [];
         $_SESSION = [];
+        $_SERVER['SYREQ_ID'] = $data['__req_id'];
         unset($_POST[RequestSign::KEY_SIGN]);
+        unset($_POST['__req_id']);
 
         Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
         SessionTool::initSessionJwt();
@@ -158,6 +159,7 @@ class RpcServer extends BaseServer
         $_COOKIE = [];
         $_FILES = [];
         $_SESSION = [];
+        unset($_SERVER['SYREQ_ID']);
 
         Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
         Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION);
@@ -166,7 +168,6 @@ class RpcServer extends BaseServer
 
     private function initReceive(\swoole_server $server)
     {
-        $this->createReqId();
         self::$_syServer->incr(self::$_serverToken, 'request_times', 1);
         $_SERVER[Server::SERVER_DATA_KEY_TIMESTAMP] = time();
     }
