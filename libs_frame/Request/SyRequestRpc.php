@@ -9,6 +9,7 @@ namespace Request;
 
 use Constant\Project;
 use Log\Log;
+use SyServer\BaseServer;
 use Tool\SyPack;
 use Tool\Tool;
 
@@ -39,6 +40,35 @@ class SyRequestRpc extends SyRequest
     }
 
     /**
+     * @param array $data 打包数据
+     * @param string $packType 打包类型 api: 接口 task: 任务
+     * @return bool|string
+     */
+    private function getPackData(array $data, string $packType)
+    {
+        $params = $data['params'];
+        $params['__req_id'] = BaseServer::getReqId();
+        if ($packType == 'api') {
+            $this->syPack->setCommandAndData(SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_API_REQ, [
+                'api_uri' => $data['uri'],
+                'api_params' => $params,
+            ]);
+        } else {
+            $this->syPack->setCommandAndData(SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ, [
+                'task_command' => $data['command'],
+                'task_params' => $params,
+            ]);
+        }
+
+        $packData = $this->syPack->packData();
+        $this->syPack->init();
+        if ($packData === false) {
+            Log::error('pack ' . $packType . ' data fail');
+        }
+        return $packData;
+    }
+
+    /**
      * 发送api请求
      * @param string $uri 请求uri
      * @param array $params 请求参数数组
@@ -47,17 +77,13 @@ class SyRequestRpc extends SyRequest
      */
     public function sendApiReq(string $uri, array $params, callable $callback = null)
     {
-        $this->syPack->setCommandAndData(SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_API_REQ, [
-            'api_uri' => $uri,
-            'api_params' => $params,
-        ]);
-        $packData = $this->syPack->packData();
-        $this->syPack->init();
-        if ($packData === false) {
-            Log::error('pack api data fail');
-            return false;
+        $packData = $this->getPackData([
+            'uri' => $uri,
+            'params' => $params,
+        ], 'api');
+        if (is_bool($packData)) {
+            return $packData;
         }
-
         if ($this->_async) {
             return $this->sendAsyncReq($packData, $callback);
         } else {
@@ -74,15 +100,12 @@ class SyRequestRpc extends SyRequest
      */
     public function sendTaskReq(string $command, array $params, callable $callback = null)
     {
-        $this->syPack->setCommandAndData(SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ, [
-            'task_command' => $command,
-            'task_params' => $params,
-        ]);
-        $packData = $this->syPack->packData();
-        $this->syPack->init();
-        if ($packData === false) {
-            Log::error('pack task data fail');
-            return false;
+        $packData = $this->getPackData([
+            'command' => $command,
+            'params' => $params,
+        ], 'task');
+        if (is_bool($packData)) {
+            return $packData;
         }
 
         return $this->sendAsyncReq($packData, $callback);

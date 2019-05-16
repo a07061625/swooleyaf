@@ -79,11 +79,6 @@ abstract class BaseServer
      */
     protected $_tipFile = '';
     /**
-     * 请求ID
-     * @var string
-     */
-    protected static $_reqId = '';
-    /**
      * 请求开始毫秒级时间戳
      * @var float
      */
@@ -170,7 +165,12 @@ abstract class BaseServer
      */
     public static function getReqId() : string
     {
-        return self::$_reqId;
+        if (isset($_SERVER['SYREQ_ID'])) {
+            return $_SERVER['SYREQ_ID'];
+        }
+        $reqId = hash('md4', Tool::getNowTime() . Tool::createNonceStr(8));
+        $_SERVER['SYREQ_ID'] = $reqId;
+        return $reqId;
     }
 
     /**
@@ -454,14 +454,6 @@ abstract class BaseServer
         }
 
         return '';
-    }
-
-    /**
-     * 创建请求ID
-     */
-    protected function createReqId()
-    {
-        self::$_reqId = hash('md4', Tool::getNowTime() . Tool::createNonceStr(5));
     }
 
     /**
