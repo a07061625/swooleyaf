@@ -7,6 +7,7 @@
  */
 namespace Log;
 
+use SyServer\BaseServer;
 use Tool\Dir;
 use Traits\SimpleTrait;
 
@@ -16,7 +17,7 @@ final class Log
 
     public static function log($msg, $level = SEASLOG_INFO)
     {
-        $log = SY_SERVER_IP . ' | ' . SY_MODULE . ' | ' . PHP_EOL;
+        $log = SY_SERVER_IP . ' | ' . SY_MODULE . ' | ' . BaseServer::getReqId() . ' | ' . PHP_EOL;
         if (is_string($msg)) {
             $log .= $msg;
         } else {
