@@ -26,7 +26,6 @@ class SyRequestHttp extends SyRequest
         $this->_port = 80;
         $this->headerName = ucwords(Server::SERVER_HTTP_TAG_REQUEST_HEADER, '-');
         $this->_clientConfigs = [
-            'open_tcp_nodelay' => true,
             'open_eof_check' => true,
             'package_eof' => Server::SERVER_HTTP_TAG_RESPONSE_EOF,
             'package_max_length' => Project::SIZE_SERVER_PACKAGE_MAX,
