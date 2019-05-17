@@ -18,11 +18,6 @@ use Wx\WxUtilShop;
 class DownloadBill extends WxBaseShop
 {
     /**
-     * 商户类型
-     * @var string
-     */
-    private $merchantType = '';
-    /**
      * 公众号ID
      * @var string
      */
@@ -75,7 +70,6 @@ class DownloadBill extends WxBaseShop
         if (!isset(self::$totalMerchantType[$merchantType])) {
             throw new WxException('商户类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
-
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/downloadbill';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->merchantType = $merchantType;
@@ -144,6 +138,7 @@ class DownloadBill extends WxBaseShop
 
     public function getDetail() : array
     {
+        $this->checkMerchantParams();
         if (!isset($this->reqData['bill_date'])) {
             throw new WxException('对账单日期不能为空', ErrorCode::WX_PARAM_ERROR);
         }

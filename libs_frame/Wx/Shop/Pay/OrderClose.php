@@ -18,11 +18,6 @@ use Wx\WxUtilShop;
 class OrderClose extends WxBaseShop
 {
     /**
-     * 商户类型
-     * @var string
-     */
-    private $merchantType = '';
-    /**
      * 公众号ID
      * @var string
      */
@@ -55,7 +50,6 @@ class OrderClose extends WxBaseShop
         if (!isset(self::$totalMerchantType[$merchantType])) {
             throw new WxException('商户类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
-
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/closeorder';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->merchantType = $merchantType;
@@ -89,10 +83,10 @@ class OrderClose extends WxBaseShop
 
     public function getDetail() : array
     {
+        $this->checkMerchantParams();
         if (!isset($this->reqData['out_trade_no'])) {
             throw new WxException('商户单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-
         $appId = $this->merchantType == self::MERCHANT_TYPE_SELF ? $this->reqData['appid'] : $this->reqData['sub_appid'];
         $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $appId);
 
