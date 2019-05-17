@@ -18,11 +18,6 @@ use Wx\WxUtilShop;
 class OrderQuery extends WxBaseShop
 {
     /**
-     * 商户类型
-     * @var string
-     */
-    private $merchantType = '';
-    /**
      * 商户号
      * @var string
      */
@@ -55,7 +50,6 @@ class OrderQuery extends WxBaseShop
         if (!isset(self::$totalMerchantType[$merchantType])) {
             throw new WxException('商户类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
-
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/orderquery';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->merchantType = $merchantType;
@@ -102,10 +96,7 @@ class OrderQuery extends WxBaseShop
 
     public function getDetail() : array
     {
-        $resArr = [
-            'code' => 0
-        ];
-
+        $this->checkMerchantParams();
         if (strlen($this->transaction_id) > 0) {
             $this->reqData['transaction_id'] = $this->transaction_id;
         } elseif (strlen($this->out_trade_no) > 0) {
@@ -113,9 +104,13 @@ class OrderQuery extends WxBaseShop
         } else {
             throw new WxException('微信订单号与商户订单号不能同时为空', ErrorCode::WX_PARAM_ERROR);
         }
-
         $appId = $this->merchantType == self::MERCHANT_TYPE_SELF ? $this->reqData['appid'] : $this->reqData['sub_appid'];
         $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $appId);
+
+        $resArr = [
+            'code' => 0
+        ];
+
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);

@@ -18,11 +18,6 @@ use Wx\WxUtilShop;
 class OrderRefund extends WxBaseShop
 {
     /**
-     * 商户类型
-     * @var string
-     */
-    private $merchantType = '';
-    /**
      * 公众号ID
      * @var string
      */
@@ -90,7 +85,6 @@ class OrderRefund extends WxBaseShop
         if (!isset(self::$totalMerchantType[$merchantType])) {
             throw new WxException('商户类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
-
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/secapi/pay/refund';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->merchantType = $merchantType;
@@ -190,6 +184,7 @@ class OrderRefund extends WxBaseShop
 
     public function getDetail() : array
     {
+        $this->checkMerchantParams();
         if (strlen($this->transaction_id) > 0) {
             $this->reqData['transaction_id'] = $this->transaction_id;
         } elseif (strlen($this->out_trade_no) > 0) {

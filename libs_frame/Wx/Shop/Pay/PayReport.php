@@ -18,11 +18,6 @@ use Wx\WxUtilShop;
 class PayReport extends WxBaseShop
 {
     /**
-     * 商户类型
-     * @var string
-     */
-    private $merchantType = '';
-    /**
      * 公众号ID
      * @var string
      */
@@ -65,7 +60,6 @@ class PayReport extends WxBaseShop
         if (!isset(self::$totalMerchantType[$merchantType])) {
             throw new WxException('商户类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
-
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/payitil/report';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->merchantType = $merchantType;
@@ -110,6 +104,7 @@ class PayReport extends WxBaseShop
 
     public function getDetail() : array
     {
+        $this->checkMerchantParams();
         if (!isset($this->reqData['trades'])) {
             throw new WxException('上报数据包不能为空', ErrorCode::WX_PARAM_ERROR);
         }
