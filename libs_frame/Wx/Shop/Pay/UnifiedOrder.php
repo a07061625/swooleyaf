@@ -33,12 +33,6 @@ class UnifiedOrder extends WxBaseShop
     ];
 
     /**
-     * 商户类型
-     * @var string
-     */
-    private $merchantType = '';
-
-    /**
      * 公众账号ID
      * @var string
      */
@@ -428,41 +422,9 @@ class UnifiedOrder extends WxBaseShop
         $this->reqData['profit_sharing'] = $profit_sharing;
     }
 
-    /**
-     * @param string $app_id
-     * @throws \Exception\Wx\WxException
-     */
-    public function setMerchantAppId(string $app_id)
-    {
-        if ($this->merchantType != self::MERCHANT_TYPE_SUB) {
-            throw new WxException('非服务商支付', ErrorCode::WX_PARAM_ERROR);
-        }
-        if (ctype_alnum($app_id)) {
-            throw new WxException('服务商应用ID不合法', ErrorCode::WX_PARAM_ERROR);
-        }
-        if (strlen($app_id) != 18) {
-            throw new WxException('服务商应用ID不合法', ErrorCode::WX_PARAM_ERROR);
-        }
-        $this->reqData['appid'] = $app_id;
-    }
-
-    /**
-     * @param string $mch_id
-     * @throws \Exception\Wx\WxException
-     */
-    public function setMerchantMchId(string $mch_id)
-    {
-        if ($this->merchantType != self::MERCHANT_TYPE_SUB) {
-            throw new WxException('非服务商支付', ErrorCode::WX_PARAM_ERROR);
-        }
-        if (!ctype_digit($mch_id)) {
-            throw new WxException('服务商商户号不合法', ErrorCode::WX_PARAM_ERROR);
-        }
-        $this->reqData['mch_id'] = $mch_id;
-    }
-
     public function getDetail() : array
     {
+        $this->checkMerchantParams();
         if (!isset($this->reqData['trade_type'])) {
             throw new WxException('交易类型不能为空', ErrorCode::WX_PARAM_ERROR);
         }
@@ -492,12 +454,6 @@ class UnifiedOrder extends WxBaseShop
         } else {
             if (($this->reqData['trade_type'] == self::TRADE_TYPE_JSAPI) && !isset($this->reqData['sub_openid'])) {
                 throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
-            }
-            if (!isset($this->reqData['appid'])) {
-                throw new WxException('服务商应用ID不能为空', ErrorCode::WX_PARAM_ERROR);
-            }
-            if (!isset($this->reqData['mch_id'])) {
-                throw new WxException('服务商商户号不能为空', ErrorCode::WX_PARAM_ERROR);
             }
             $appId = $this->reqData['sub_appid'];
         }
