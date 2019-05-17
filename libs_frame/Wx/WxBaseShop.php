@@ -7,6 +7,9 @@
  */
 namespace Wx;
 
+use Constant\ErrorCode;
+use Exception\Wx\WxException;
+
 abstract class WxBaseShop extends WxBase
 {
     const MATERIAL_TYPE_IMAGE = 'image';
@@ -43,8 +46,63 @@ abstract class WxBaseShop extends WxBase
         self::MERCHANT_TYPE_SUB => '子商户',
     ];
 
+    /**
+     * 商户类型
+     * @var string
+     */
+    protected $merchantType = '';
+
     public function __construct()
     {
         parent::__construct();
+        $this->merchantType = self::MERCHANT_TYPE_SELF;
+    }
+
+    /**
+     * @param string $app_id
+     * @throws \Exception\Wx\WxException
+     */
+    public function setMerchantAppId(string $app_id)
+    {
+        if ($this->merchantType != self::MERCHANT_TYPE_SUB) {
+            throw new WxException('非服务商', ErrorCode::WX_PARAM_ERROR);
+        }
+        if (ctype_alnum($app_id)) {
+            throw new WxException('服务商应用ID不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+        if (strlen($app_id) != 18) {
+            throw new WxException('服务商应用ID不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+        $this->reqData['appid'] = $app_id;
+    }
+
+    /**
+     * @param string $mch_id
+     * @throws \Exception\Wx\WxException
+     */
+    public function setMerchantMchId(string $mch_id)
+    {
+        if ($this->merchantType != self::MERCHANT_TYPE_SUB) {
+            throw new WxException('非服务商', ErrorCode::WX_PARAM_ERROR);
+        }
+        if (!ctype_digit($mch_id)) {
+            throw new WxException('服务商商户号不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+        $this->reqData['mch_id'] = $mch_id;
+    }
+
+    /**
+     * @throws \Exception\Wx\WxException
+     */
+    protected function checkMerchantParams()
+    {
+        if ($this->merchantType == self::MERCHANT_TYPE_SUB) {
+            if (!isset($this->reqData['appid'])) {
+                throw new WxException('服务商应用ID不能为空', ErrorCode::WX_PARAM_ERROR);
+            }
+            if (!isset($this->reqData['mch_id'])) {
+                throw new WxException('服务商商户号不能为空', ErrorCode::WX_PARAM_ERROR);
+            }
+        }
     }
 }
