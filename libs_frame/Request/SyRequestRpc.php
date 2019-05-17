@@ -25,7 +25,6 @@ class SyRequestRpc extends SyRequest
         parent::__construct();
         $this->syPack = new SyPack();
         $this->_clientConfigs = [
-            'open_tcp_nodelay' => true,
             'open_length_check' => true,
             'package_length_type' => 'L',
             'package_length_offset' => 4,
