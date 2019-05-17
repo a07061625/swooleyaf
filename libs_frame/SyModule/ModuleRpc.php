@@ -7,9 +7,11 @@
  */
 namespace SyModule;
 
+use Constant\ErrorCode;
 use Constant\Project;
 use Constant\Server;
 use DesignPatterns\Factories\CacheSimpleFactory;
+use Exception\Swoole\ServerException;
 use Log\Log;
 use Request\SyRequestRpc;
 use Tool\Tool;
@@ -51,6 +53,7 @@ abstract class ModuleRpc extends ModuleBase
      * @param bool $async 是否异步 true:异步 false:同步
      * @param callable $callback 回调函数
      * @return bool|string
+     * @throws \Exception\Swoole\ServerException
      */
     public function sendApiReq(string $uri, array $params, bool $async = false, callable $callback = null)
     {
@@ -69,6 +72,7 @@ abstract class ModuleRpc extends ModuleBase
         $this->refreshFuseState($apiRsp);
         if ($apiRsp === false) {
             Log::error('send api req fail: uri=' . $uri . '; params=' . Tool::jsonEncode($params));
+            throw new ServerException('发送请求失败', ErrorCode::SWOOLE_SERVER_REQUEST_FAIL);
         }
 
         return $apiRsp;
@@ -80,6 +84,7 @@ abstract class ModuleRpc extends ModuleBase
      * @param array $params 请求参数数组
      * @param callable $callback 回调函数
      * @return bool|string
+     * @throws \Exception\Swoole\ServerException
      */
     public function sendTaskReq(string $command, array $params, callable $callback = null)
     {
@@ -92,6 +97,7 @@ abstract class ModuleRpc extends ModuleBase
         $content = $this->syRequest->sendTaskReq($command, $params, $callback);
         if ($content === false) {
             Log::error('send task req fail: command=' . $command . ' params=' . Tool::jsonEncode($params, JSON_UNESCAPED_UNICODE));
+            throw new ServerException('发送请求失败', ErrorCode::SWOOLE_SERVER_REQUEST_FAIL);
         }
 
         return $content;
