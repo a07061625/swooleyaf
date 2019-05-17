@@ -157,6 +157,13 @@ class UnifiedOrder extends WxBaseShop
      * @var string
      */
     private $scene_info = '';
+
+    /**
+     * 服务商分账状态,默认不分账 Y:需要分账 N:不分账
+     * @var string
+     */
+    private $profit_sharing = '';
+
     /**
      * 平台类型
      * @var string
@@ -406,6 +413,54 @@ class UnifiedOrder extends WxBaseShop
         }
     }
 
+    /**
+     * @param string $profit_sharing
+     * @throws \Exception\Wx\WxException
+     */
+    public function setProfitSharing(string $profit_sharing)
+    {
+        if ($this->merchantType != self::MERCHANT_TYPE_SUB) {
+            throw new WxException('非服务商支付', ErrorCode::WX_PARAM_ERROR);
+        }
+        if (!in_array($profit_sharing, ['Y', 'N'])) {
+            throw new WxException('服务商分账状态不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+        $this->reqData['profit_sharing'] = $profit_sharing;
+    }
+
+    /**
+     * @param string $app_id
+     * @throws \Exception\Wx\WxException
+     */
+    public function setMerchantAppId(string $app_id)
+    {
+        if ($this->merchantType != self::MERCHANT_TYPE_SUB) {
+            throw new WxException('非服务商支付', ErrorCode::WX_PARAM_ERROR);
+        }
+        if (ctype_alnum($app_id)) {
+            throw new WxException('服务商应用ID不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+        if (strlen($app_id) != 18) {
+            throw new WxException('服务商应用ID不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+        $this->reqData['appid'] = $app_id;
+    }
+
+    /**
+     * @param string $mch_id
+     * @throws \Exception\Wx\WxException
+     */
+    public function setMerchantMchId(string $mch_id)
+    {
+        if ($this->merchantType != self::MERCHANT_TYPE_SUB) {
+            throw new WxException('非服务商支付', ErrorCode::WX_PARAM_ERROR);
+        }
+        if (!ctype_digit($mch_id)) {
+            throw new WxException('服务商商户号不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+        $this->reqData['mch_id'] = $mch_id;
+    }
+
     public function getDetail() : array
     {
         if (!isset($this->reqData['trade_type'])) {
@@ -420,9 +475,7 @@ class UnifiedOrder extends WxBaseShop
         if ($this->reqData['total_fee'] <= 0) {
             throw new WxException('支付金额不能小于0', ErrorCode::WX_PARAM_ERROR);
         }
-        if (($this->reqData['trade_type'] == self::TRADE_TYPE_JSAPI) && !isset($this->reqData['openid']) && !isset($this->reqData['sub_openid'])) {
-            throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif (($this->reqData['trade_type'] == self::TRADE_TYPE_NATIVE) && !isset($this->reqData['product_id'])) {
+        if (($this->reqData['trade_type'] == self::TRADE_TYPE_NATIVE) && !isset($this->reqData['product_id'])) {
             throw new WxException('商品ID不能为空', ErrorCode::WX_PARAM_ERROR);
         } elseif ($this->reqData['trade_type'] == self::TRADE_TYPE_MWEB) {
             if (!isset($this->reqData['spbill_create_ip'])) {
@@ -431,7 +484,24 @@ class UnifiedOrder extends WxBaseShop
                 throw new WxException('场景信息不能为空', ErrorCode::WX_PARAM_ERROR);
             }
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
+        if ($this->merchantType == self::MERCHANT_TYPE_SELF) {
+            if (($this->reqData['trade_type'] == self::TRADE_TYPE_JSAPI) && !isset($this->reqData['openid'])) {
+                throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
+            }
+            $appId = $this->reqData['appid'];
+        } else {
+            if (($this->reqData['trade_type'] == self::TRADE_TYPE_JSAPI) && !isset($this->reqData['sub_openid'])) {
+                throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
+            }
+            if (!isset($this->reqData['appid'])) {
+                throw new WxException('服务商应用ID不能为空', ErrorCode::WX_PARAM_ERROR);
+            }
+            if (!isset($this->reqData['mch_id'])) {
+                throw new WxException('服务商商户号不能为空', ErrorCode::WX_PARAM_ERROR);
+            }
+            $appId = $this->reqData['sub_appid'];
+        }
+        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $appId);
 
         $resArr = [
             'code' => 0,
@@ -448,7 +518,6 @@ class UnifiedOrder extends WxBaseShop
             $resArr['code'] = ErrorCode::WX_PARAM_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } elseif ($this->reqData['trade_type'] == self::TRADE_TYPE_JSAPI) {
-            $appId = $this->merchantType == self::MERCHANT_TYPE_SELF ? $this->reqData['appid'] : $this->reqData['sub_appid'];
             $nowTime = Tool::getNowTime();
             //获取支付参数
             $payConfig = new JsPayConfig($appId);
