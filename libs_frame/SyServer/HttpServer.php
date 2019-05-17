@@ -445,17 +445,13 @@ class HttpServer extends BaseServer
     {
         if (is_array($cookies)) {
             foreach ($cookies as $cookie) {
-                if (is_array($cookie) && isset($cookie['key'])
-                   && (is_string($cookie['key']) || is_numeric($cookie['key']))) {
-                    $cookieName = preg_replace('/[^0-9a-zA-Z\-\_]+/', '', $cookie['key']);
-                    $value = Tool::getArrayVal($cookie, 'value', null);
-                    $expires = Tool::getArrayVal($cookie, 'expires', 0);
-                    $path = Tool::getArrayVal($cookie, 'path', '/');
-                    $domain = Tool::getArrayVal($cookie, 'domain', '');
-                    $secure = Tool::getArrayVal($cookie, 'secure', false);
-                    $httpOnly = Tool::getArrayVal($cookie, 'httponly', false);
-                    $response->cookie($cookieName, $value, $expires, $path, $domain, $secure, $httpOnly);
-                }
+                $value = Tool::getArrayVal($cookie, 'value', null);
+                $expires = Tool::getArrayVal($cookie, 'expires', 0);
+                $path = Tool::getArrayVal($cookie, 'path', '/');
+                $domain = Tool::getArrayVal($cookie, 'domain', '');
+                $secure = Tool::getArrayVal($cookie, 'secure', false);
+                $httpOnly = Tool::getArrayVal($cookie, 'httponly', false);
+                $response->cookie($cookie['key'], $value, $expires, $path, $domain, $secure, $httpOnly);
             }
         }
     }
