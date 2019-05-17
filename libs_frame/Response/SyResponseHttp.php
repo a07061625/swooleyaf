@@ -8,6 +8,7 @@
 namespace Response;
 
 use Constant\Server;
+use Tool\Tool;
 use Traits\SimpleTrait;
 use Yaf\Registry;
 
@@ -73,7 +74,10 @@ class SyResponseHttp extends SyResponse
         $existCookies = Registry::get(Server::REGISTRY_NAME_RESPONSE_COOKIE);
         if ($existCookies !== false) {
             foreach ($cookies as $eCookie) {
-                $existCookies[] = $eCookie;
+                $cookieKey = trim(Tool::getArrayVal($eCookie, 'key', ''));
+                if (strlen($cookieKey) > 0) {
+                    $existCookies[] = $eCookie;
+                }
             }
 
             Registry::set(Server::REGISTRY_NAME_RESPONSE_COOKIE, $existCookies);
