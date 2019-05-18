@@ -129,6 +129,7 @@ class ProjectBase
     const TIME_EXPIRE_SESSION = 259200; //超时时间-session,单位为秒
     const TIME_EXPIRE_SWOOLE_CLIENT_HTTP = 3000; //超时时间-http服务客户端,单位为毫秒
     const TIME_EXPIRE_SWOOLE_CLIENT_RPC = 3000; //超时时间-rpc服务客户端,单位为毫秒
+    const TIME_EXPIRE_SWOOLE_CLIENT_SYNC_REQUEST = 2; //超时时间-swoole同步客户端请求,单位为秒
     const TIME_TASK_CLEAR_LOCAL_USER = 300000; //任务时间-清理本地用户信息,单位为毫秒
     const TIME_TASK_CLEAR_LOCAL_WX = 300000; //任务时间-清理本地微信,单位为毫秒
     const TIME_TASK_REFRESH_TOKEN_EXPIRE = 540000; //任务时间-刷新令牌到期时间,单位为毫秒

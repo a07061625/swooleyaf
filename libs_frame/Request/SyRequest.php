@@ -8,6 +8,7 @@
 namespace Request;
 
 use Constant\ErrorCode;
+use Constant\Project;
 use Constant\Server;
 use Exception\Swoole\ServerException;
 use Log\Log;
@@ -188,33 +189,60 @@ abstract class SyRequest
      */
     protected function sendBaseSyncReq(string $reqData)
     {
-        $client = new \swoole_client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_SYNC);
-        $client->set($this->_clientConfigs);
-        $client->connect($this->_host, $this->_port, $this->_timeout / 1000);
-        if ($client->errCode > 0) {
-            Log::error('sync connect address ' . $this->_host . ':' . $this->_port . ' fail' . ',error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode));
-            return false;
-        }
-
+        $rspMsg = false;
+        $connectTag = false;
         $dataLength = strlen($reqData);
-        $sendLength = $client->send($reqData);
-        if ($client->errCode > 0) {
-            Log::error('send sync data to address ' . $this->_host . ':' . $this->_port . ' fail,error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode));
-            $client->close();
-            return false;
-        }
-        if ($sendLength != $dataLength) {
-            Log::error('send sync data to address ' . $this->_host . ':' . $this->_port . ' fail,error_msg: lose some data');
-            $client->close();
-            return false;
-        }
+        //为了处理Resource temporarily unavailable [11]问题,循环三次发送
+        $partMsg = ' sync address ' . $this->_host . ':' . $this->_port . ' fail';
+        $loopNum = 3;
+        while ($loopNum > 0) {
+            try {
+                $client = new \swoole_client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_SYNC);
+                $client->set($this->_clientConfigs);
+                $client->connect($this->_host, $this->_port, Project::TIME_EXPIRE_SWOOLE_CLIENT_SYNC_REQUEST);
+                if ($client->errCode == 0) {
+                    $connectTag = true;
+                } else {
+                    $errMsg = 'connect' . $partMsg .
+                              ',error_code:' . $client->errCode .
+                              ',error_msg:' . socket_strerror($client->errCode);
+                    throw new ServerException($errMsg, ErrorCode::SWOOLE_SERVER_REQUEST_FAIL);
+                }
 
-        $rspMsg = $client->recv();
-        if ($client->errCode > 0) {
-            Log::error('get sync response data error,error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode));
-            $rspMsg = false;
+                $sendLength = $client->send($reqData);
+                if ($client->errCode > 0) {
+                    $errMsg = 'send data to' . $partMsg .
+                              ',error_code:' . $client->errCode .
+                              ',error_msg:' . socket_strerror($client->errCode);
+                    throw new ServerException($errMsg, ErrorCode::SWOOLE_SERVER_REQUEST_FAIL);
+                }
+                if ($sendLength != $dataLength) {
+                    $errMsg = 'send data to' . $partMsg . ',error_msg: lose some data';
+                    throw new ServerException($errMsg, ErrorCode::SWOOLE_SERVER_REQUEST_FAIL);
+                }
+
+                $rspMsg = $client->recv();
+                if ($client->errCode > 0) {
+                    $errMsg = 'get response from' . $partMsg .
+                              ',error_code:' . $client->errCode .
+                              ',error_msg:' . socket_strerror($client->errCode);
+                    throw new ServerException($errMsg, ErrorCode::SWOOLE_SERVER_REQUEST_FAIL);
+                }
+            } catch (\Exception $e) {
+                Log::error($e->getMessage(), ErrorCode::SWOOLE_SERVER_REQUEST_FAIL, $e->getTraceAsString());
+                $rspMsg = false;
+            } finally {
+                if ($connectTag) {
+                    $client->close();
+                    $connectTag = false;
+                }
+            }
+            if ($rspMsg !== false) {
+                break;
+            }
+
+            $loopNum--;
         }
-        $client->close();
 
         return $rspMsg;
     }
