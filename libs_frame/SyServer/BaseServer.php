@@ -120,6 +120,9 @@ abstract class BaseServer
         $this->_configs['swoole']['reload_async'] = true;
         //进程最大等待时间,单位为秒
         $this->_configs['swoole']['max_wait_time'] = 60;
+        //dispatch_mode=1或3后,系统无法保证onConnect/onReceive/onClose的顺序,因此可能会有一些请求数据在连接关闭后才能到达Worker进程
+        //设置为false表示无论连接是否关闭Worker进程都会处理数据请求
+        $this->_configs['swoole']['discard_timeout_request'] = false;
         //设置请求数据尺寸
         $this->_configs['swoole']['open_length_check'] = true;
         $this->_configs['swoole']['package_max_length'] = Project::SIZE_SERVER_PACKAGE_MAX;

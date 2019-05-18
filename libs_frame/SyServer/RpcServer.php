@@ -141,7 +141,7 @@ class RpcServer extends BaseServer
         $_COOKIE = [];
         $_FILES = [];
         $_SESSION = [];
-        $_SERVER['SYREQ_ID'] = $data['__req_id'];
+        $_SERVER['SYREQ_ID'] = $data['__req_id'] ?? hash('md4', Tool::getNowTime() . Tool::createNonceStr(8));
         unset($_POST[RequestSign::KEY_SIGN]);
         unset($_POST['__req_id']);
 
