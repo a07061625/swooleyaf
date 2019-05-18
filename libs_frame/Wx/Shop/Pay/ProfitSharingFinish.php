@@ -59,7 +59,7 @@ class ProfitSharingFinish extends WxBaseShop
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/secapi/pay/profitsharingfinish';
         $this->merchantType = self::MERCHANT_TYPE_SUB;
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
-        $this->reqData['sub_appid'] = $shopConfig->getAppId();
+        $this->sub_appid = $shopConfig->getAppId();
         $this->reqData['sub_mch_id'] = $shopConfig->getPayMchId();
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['sign_type'] = 'HMAC-SHA256';
@@ -120,13 +120,13 @@ class ProfitSharingFinish extends WxBaseShop
         if (!isset($this->reqData['description'])) {
             throw new WxException('分账完结描述不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['sub_appid'], 'sha256');
+        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->sub_appid, 'sha256');
 
         $resArr = [
             'code' => 0
         ];
 
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($this->reqData['sub_appid']);
+        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($this->sub_appid);
         $tmpKey = tmpfile();
         fwrite($tmpKey, $shopConfig->getSslKey());
         $tmpKeyData = stream_get_meta_data($tmpKey);
