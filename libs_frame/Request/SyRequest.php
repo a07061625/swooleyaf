@@ -12,6 +12,7 @@ use Constant\Project;
 use Constant\Server;
 use Exception\Swoole\ServerException;
 use Log\Log;
+use Yaf\Registry;
 
 abstract class SyRequest
 {
@@ -230,6 +231,7 @@ abstract class SyRequest
                 }
             } catch (\Exception $e) {
                 Log::error($e->getMessage(), ErrorCode::SWOOLE_SERVER_REQUEST_FAIL, $e->getTraceAsString());
+                Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
                 $rspMsg = false;
             } finally {
                 if ($connectTag) {
