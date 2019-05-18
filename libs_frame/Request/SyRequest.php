@@ -193,7 +193,7 @@ abstract class SyRequest
         $connectTag = false;
         $dataLength = strlen($reqData);
         //为了处理Resource temporarily unavailable [11]问题,循环三次发送
-        $partMsg = ' sync address ' . $this->_host . ':' . $this->_port . ' fail,';
+        $partMsg = ' sync address ' . $this->_host . ':' . $this->_port . ' fail';
         $loopNum = 3;
         while ($loopNum > 0) {
             try {
@@ -204,7 +204,7 @@ abstract class SyRequest
                     $connectTag = true;
                 } else {
                     $errMsg = 'connect' . $partMsg .
-                              'error_code:' . $client->errCode .
+                              ',error_code:' . $client->errCode .
                               ',error_msg:' . socket_strerror($client->errCode);
                     throw new ServerException($errMsg, ErrorCode::SWOOLE_SERVER_REQUEST_FAIL);
                 }
@@ -212,7 +212,7 @@ abstract class SyRequest
                 $sendLength = $client->send($reqData);
                 if ($client->errCode > 0) {
                     $errMsg = 'send data to' . $partMsg .
-                              'error_code:' . $client->errCode .
+                              ',error_code:' . $client->errCode .
                               ',error_msg:' . socket_strerror($client->errCode);
                     throw new ServerException($errMsg, ErrorCode::SWOOLE_SERVER_REQUEST_FAIL);
                 }
@@ -224,7 +224,7 @@ abstract class SyRequest
                 $rspMsg = $client->recv();
                 if ($client->errCode > 0) {
                     $errMsg = 'get response from' . $partMsg .
-                              'error_code:' . $client->errCode .
+                              ',error_code:' . $client->errCode .
                               ',error_msg:' . socket_strerror($client->errCode);
                     throw new ServerException($errMsg, ErrorCode::SWOOLE_SERVER_REQUEST_FAIL);
                 }
