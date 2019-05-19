@@ -128,6 +128,12 @@ abstract class BaseServer
         $this->_configs['swoole']['package_max_length'] = Project::SIZE_SERVER_PACKAGE_MAX;
         $this->_configs['swoole']['socket_buffer_size'] = Project::SIZE_CLIENT_SOCKET_BUFFER;
         $this->_configs['swoole']['buffer_output_size'] = Project::SIZE_CLIENT_BUFFER_OUTPUT;
+        //设置线程数量
+        $execRes = Tool::execSystemCommand('cat /proc/cpuinfo | grep "processor" | wc -l');
+        $this->_configs['swoole']['reactor_num'] = (int)(2 * $execRes['data'][0]);
+        //设置慢日志追踪
+        $this->_configs['swoole']['trace_event_worker'] = true;
+
         $taskNum = isset($this->_configs['swoole']['task_worker_num']) ? (int)$this->_configs['swoole']['task_worker_num'] : 0;
         if ($taskNum < 2) {
             exit('Task进程的数量必须大于等于2' . PHP_EOL);
