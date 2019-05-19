@@ -131,8 +131,6 @@ abstract class BaseServer
         //设置线程数量
         $execRes = Tool::execSystemCommand('cat /proc/cpuinfo | grep "processor" | wc -l');
         $this->_configs['swoole']['reactor_num'] = (int)(2 * $execRes['data'][0]);
-        //设置慢日志追踪
-        $this->_configs['swoole']['trace_event_worker'] = true;
 
         $taskNum = isset($this->_configs['swoole']['task_worker_num']) ? (int)$this->_configs['swoole']['task_worker_num'] : 0;
         if ($taskNum < 2) {
