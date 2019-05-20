@@ -169,7 +169,7 @@ class MysqlSingleton
         $nowTime = time();
         if (is_null($this->conn)) {
             $this->init();
-        } elseif ($nowTime - $this->connTime >= 1500) {
+        } elseif ($nowTime - $this->connTime >= 30) {
             $checkRes = false;
             try {
                 $this->conn->query('SELECT 1');
