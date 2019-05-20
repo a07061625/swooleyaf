@@ -166,26 +166,29 @@ class MysqlSingleton
      */
     public function reConnect()
     {
-        $nowTime = Tool::getNowTime();
+        $nowTime = time();
         if (is_null($this->conn)) {
             $this->init();
-        } elseif ($nowTime - $this->connTime >= 30) {
+        } elseif ($nowTime - $this->connTime >= 1500) {
+            $checkRes = false;
             try {
-                $this->conn->getAttribute(\PDO::ATTR_SERVER_INFO);
-            } catch (\PDOException $e) {
-                if (in_array((int)$e->errorInfo[1], $this->reconnectCodes, true)) {
+                $this->conn->query('SELECT 1');
+                $checkRes = true;
+            } catch (\Exception $e) {
+                $errCode = 0;
+                if ($e instanceof \PDOException) {
+                    $errCode = (int)$e->errorInfo[1];
+                }
+                if (in_array($errCode, $this->reconnectCodes, true)) {
                     $this->init();
                 } else {
-                    Log::error($e->errorInfo[2], $e->errorInfo[1], $e->getTraceAsString());
-
+                    Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
                     throw new MysqlException('MySQL连接出错', ErrorCode::MYSQL_CONNECTION_ERROR);
                 }
-            } catch (\Exception $e) {
-                Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
-
-                throw new MysqlException('MySQL连接出错', ErrorCode::MYSQL_CONNECTION_ERROR);
             } finally {
-                $this->connTime = $nowTime;
+                if ($checkRes) {
+                    $this->connTime = $nowTime;
+                }
             }
         }
     }
