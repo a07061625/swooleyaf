@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 查询单个门店信息接口
  * User: 姜伟
  * Date: 2018/11/2 0002
  * Time: 9:07

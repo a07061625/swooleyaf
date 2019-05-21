@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 创建门店信息
  * User: 姜伟
  * Date: 2018/11/2 0002
  * Time: 9:03

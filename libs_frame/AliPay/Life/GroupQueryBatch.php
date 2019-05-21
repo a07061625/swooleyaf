@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 查询用户分组列表
  * User: 姜伟
  * Date: 2018/11/1 0001
  * Time: 14:42

@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 查询对账单下载地址
  * User: 姜伟
  * Date: 2018/9/6 0006
  * Time: 15:20

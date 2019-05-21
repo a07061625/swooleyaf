@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 统一收单线下交易预创建
  * User: 姜伟
  * Date: 2018/9/6 0006
  * Time: 14:49

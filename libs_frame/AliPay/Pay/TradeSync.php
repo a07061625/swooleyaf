@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 支付宝订单信息同步接口
  * User: 姜伟
  * Date: 18-9-8
  * Time: 上午12:13

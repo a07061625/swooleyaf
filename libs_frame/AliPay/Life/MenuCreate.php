@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 默认菜单创建接口
  * User: 姜伟
  * Date: 2018/11/1 0001
  * Time: 16:58

@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 查询某个应用授权AppAuthToken的授权信息
  * User: 姜伟
  * Date: 2018/11/1 0001
  * Time: 10:08
