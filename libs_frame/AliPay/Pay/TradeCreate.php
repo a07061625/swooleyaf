@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 统一收单交易创建接口
  * User: 姜伟
  * Date: 18-9-7
  * Time: 下午9:54

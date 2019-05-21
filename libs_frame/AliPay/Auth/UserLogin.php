@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 用户登陆授权
  * User: 姜伟
  * Date: 2018/11/1 0001
  * Time: 9:40

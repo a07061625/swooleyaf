@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 消息模板领取接口
  * User: 姜伟
  * Date: 2018/11/1 0001
  * Time: 10:55

@@ -82,6 +82,7 @@ class ErrorCode
     const ALIPAY_LIFE_PARAM_ERROR = 101851;
     const ALIPAY_PAY_PARAM_ERROR = 101852;
     const ALIPAY_SHOP_PARAM_ERROR = 101853;
+    const ALIPAY_FUND_PARAM_ERROR = 101854;
 
     //短信错误,取值范围:102000-102199
     const SMS_PARAM_ERROR = 102000;
@@ -256,6 +257,7 @@ class ErrorCode
         self::ALIPAY_LIFE_PARAM_ERROR => '支付宝生活号参数错误',
         self::ALIPAY_PAY_PARAM_ERROR => '支付宝支付参数错误',
         self::ALIPAY_SHOP_PARAM_ERROR => '支付宝店铺参数错误',
+        self::ALIPAY_FUND_PARAM_ERROR => '支付宝资金参数错误',
         self::SMS_PARAM_ERROR => '短信参数错误',
         self::SMS_POST_ERROR => '短信发送POST请求出错',
         self::SMS_GET_ERROR => '短信发送GET请求出错',

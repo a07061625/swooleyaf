@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 统一收单下单并支付页面接口
  * User: 姜伟
  * Date: 18-9-8
  * Time: 上午12:32

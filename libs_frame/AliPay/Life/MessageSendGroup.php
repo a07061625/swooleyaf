@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 分组消息发送接口
  * User: 姜伟
  * Date: 2018/11/1 0001
  * Time: 14:39

@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 生活号广告位添加接口
  * User: 姜伟
  * Date: 2018/11/1 0001
  * Time: 15:00

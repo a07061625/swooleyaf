@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 异步单发消息
  * User: 姜伟
  * Date: 2018/11/1 0001
  * Time: 11:41

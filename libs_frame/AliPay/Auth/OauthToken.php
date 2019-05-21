@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 换取授权访问令牌
  * User: 姜伟
  * Date: 2018/11/1 0001
  * Time: 10:26

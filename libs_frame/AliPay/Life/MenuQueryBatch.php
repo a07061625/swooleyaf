@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 菜单列表查询接口
  * User: 姜伟
  * Date: 2018/11/1 0001
  * Time: 16:56

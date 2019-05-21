@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 手机网站支付接口2.0
  * User: 姜伟
  * Date: 2018/9/6 0006
  * Time: 14:41

@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 上传门店照片和视频接口
  * User: 姜伟
  * Date: 2018/11/1 0001
  * Time: 17:52
@@ -19,7 +19,7 @@ class ImageUpload extends AliPayBase
      */
     private $image_type = '';
     /**
-     * 	图片名称
+     * 图片名称
      * @var string
      */
     private $image_name = '';
