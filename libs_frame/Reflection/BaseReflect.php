@@ -69,6 +69,48 @@ class BaseReflect
     }
 
     /**
+     * 获取控制器切面注解
+     * 切面注解格式如下：
+     *   name   -    xxx
+     *   注解名 分隔符 切面类全名,以\开头
+     * @param string $className 类全名
+     * @param string $methodName 方法名称
+     * @param string $controllerType
+     * @return array
+     * @throws \Exception\Reflection\ReflectException
+     */
+    public static function getControllerAspectAnnotations(string $className, string $methodName, string &$controllerType) : array
+    {
+        $annotations = [
+            Server::ANNOTATION_NAME_ASPECT_BEFORE => [],
+            Server::ANNOTATION_NAME_ASPECT_AFTER => [],
+        ];
+
+        try {
+            $class = new \ReflectionClass($className);
+            $instance = $class->newInstanceWithoutConstructor();
+            if ($instance instanceof BaseController) {
+                $doc = $class->getMethod($methodName)->getDocComment();
+                $docs = preg_filter('/\s+/', '', explode(PHP_EOL, $doc));
+                foreach ($docs as $eDoc) {
+                    preg_match('/\@([a-zA-Z0-9]+)\-(\S+)/', $eDoc, $saveDoc);
+                    if (isset($saveDoc[1]) && isset(Server::$annotationAspects[$saveDoc[1]])) {
+                        $annotations[$saveDoc[1]][] = $saveDoc[2];
+                    }
+                }
+                runkit_method_rename($className, $methodName, '_' . $methodName);
+            }
+        } catch (ReflectException $e) {
+            throw $e;
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            throw new ReflectException(ErrorCode::getMsg(ErrorCode::REFLECT_RESOURCE_NOT_EXIST), ErrorCode::REFLECT_RESOURCE_NOT_EXIST);
+        }
+
+        return $annotations;
+    }
+
+    /**
      * @param string $className 类全名
      * @param string $methodName 方法名称
      * @return array
