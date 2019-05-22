@@ -37,7 +37,7 @@ class ExtensionGenerator {
     private static function getExtConstants($reflectionObj) {
         $constants = $reflectionObj->getConstants();
         foreach ($constants as $key => $val) {
-            $constantStr = "define('" . $key . "', ";
+            $constantStr = "    define('" . $key . "', ";
             if (is_bool($val)) {
                 $constantStr .= $val ? 'true' : 'false';
             } elseif (is_null($val)) {
@@ -246,7 +246,7 @@ class ExtensionGenerator {
             }
 
             $classContent .= '    }' . PHP_EOL;
-            self::$contents['classes'][$namespaceName] = $classContent;
+            self::$contents['classes'][$namespaceName][] = $classContent;
         }
     }
 
@@ -303,17 +303,18 @@ class ExtensionGenerator {
                 self::getExtFunctions($reflectionObj);
 
                 $fileContent = '<?php' . PHP_EOL;
-                foreach (self::$contents['constants'] as $eConstant) {
-                    $fileContent .= $eConstant;
-                }
-                if (count(self::$contents['constants']) > 0) {
-                    $fileContent .= PHP_EOL;
+                if (!empty(self::$contents['constants'])) {
+                    $fileContent .= 'namespace {' . PHP_EOL;
+                    foreach (self::$contents['constants'] as $eConstant) {
+                        $fileContent .= $eConstant;
+                    }
+                    $fileContent .= '}' . PHP_EOL . PHP_EOL;
                 }
 
                 foreach (self::$contents['classes'] as $namespaceName => $classes) {
                     $fileContent .= 'namespace ' . $namespaceName . ' {' . PHP_EOL;
                     $fileContent .= implode(PHP_EOL, $classes);
-                    $fileContent .= '}' . PHP_EOL . PHP_EOL;
+                    $fileContent .= '}' . PHP_EOL;
                 }
 
                 foreach (self::$contents['functions'] as $eFunction) {
