@@ -14,18 +14,11 @@ use Log\Log;
 use SyFrame\BaseController;
 use Tool\Tool;
 use Traits\SimpleTrait;
-use Validator\Validator;
 use Validator\ValidatorResult;
 
 class BaseReflect
 {
     use SimpleTrait;
-
-    private static $signTags = [
-        Validator::ANNOTATION_TAG_SIGN => 1,
-        Validator::ANNOTATION_TAG_IGNORE_SIGN => 1,
-        Validator::ANNOTATION_TAG_IGNORE_JWT => 1,
-    ];
 
     /**
      * 获取控制器过滤器注解
@@ -49,8 +42,8 @@ class BaseReflect
                 $doc = $class->getMethod($methodName)->getDocComment();
                 $docs = preg_filter('/\s+/', '', explode(PHP_EOL, $doc));
                 foreach ($docs as $eDoc) {
-                    preg_match('/(\@[a-zA-Z0-9]+)\-(\{\S+\})/', $eDoc, $saveDoc);
-                    if (isset($saveDoc[1]) && ($saveDoc[1] == Validator::ANNOTATION_NAME)) {
+                    preg_match('/\@([a-zA-Z0-9]+)\-(\{\S+\})/', $eDoc, $saveDoc);
+                    if (isset($saveDoc[1]) && ($saveDoc[1] == Server::ANNOTATION_NAME_FILTER)) {
                         $annotations[] = $saveDoc[2];
                     }
                 }
@@ -105,16 +98,16 @@ class BaseReflect
                 throw new ReflectException('校验规则必须为数组', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
             }
 
-            if (!isset(self::$signTags[$data['field']])) {
+            if (!isset(Server::$annotationSignTags[$data['field']])) {
                 $result = new ValidatorResult();
                 $result->setExplain($data['explain']);
                 $result->setField($data['field']);
                 $result->setType($data['type']);
                 $result->setRules($data['rules']);
                 $resArr[$data['field']] = $result;
-            } elseif (($data['field'] == Validator::ANNOTATION_TAG_IGNORE_SIGN) && ($controllerType == 'a1')) {
+            } elseif (($data['field'] == Server::ANNOTATION_TAG_IGNORE_SIGN) && ($controllerType == 'a1')) {
                 $controllerType = 'a2';
-            } elseif ($data['field'] == Validator::ANNOTATION_TAG_IGNORE_JWT) {
+            } elseif ($data['field'] == Server::ANNOTATION_TAG_IGNORE_JWT) {
                 $ignoreJwt = true;
             }
         }
@@ -129,35 +122,35 @@ class BaseReflect
         if ($jwtStatus == 1) {
             $jwtResult = new ValidatorResult();
             $jwtResult->setExplain('JWT会话');
-            $jwtResult->setField(Validator::ANNOTATION_TAG_SESSION_JWT);
+            $jwtResult->setField(Server::ANNOTATION_TAG_SESSION_JWT);
             $jwtResult->setType('string');
             $jwtResult->setRules([
                 'jwt' => $jwtStatus,
             ]);
-            $resArr[Validator::ANNOTATION_TAG_SESSION_JWT] = $jwtResult;
+            $resArr[Server::ANNOTATION_TAG_SESSION_JWT] = $jwtResult;
         }
         if ($controllerType == 'b1') {
-            unset($resArr[Validator::ANNOTATION_TAG_SY_TOKEN]);
+            unset($resArr[Server::ANNOTATION_TAG_SY_TOKEN]);
         } else {
             $tokenResult = new ValidatorResult();
             $tokenResult->setExplain('令牌');
-            $tokenResult->setField(Validator::ANNOTATION_TAG_SY_TOKEN);
+            $tokenResult->setField(Server::ANNOTATION_TAG_SY_TOKEN);
             $tokenResult->setType('string');
             $tokenResult->setRules([
                 'sytoken' => 1,
             ]);
-            $resArr[Validator::ANNOTATION_TAG_SY_TOKEN] = $tokenResult;
+            $resArr[Server::ANNOTATION_TAG_SY_TOKEN] = $tokenResult;
 
             if ($controllerType == 'a1') {
                 $signResult = new ValidatorResult();
                 $signResult->setExplain('签名值');
-                $signResult->setField(Validator::ANNOTATION_TAG_SIGN);
+                $signResult->setField(Server::ANNOTATION_TAG_SIGN);
                 $signResult->setType('string');
                 $signResult->setRules([
                     'sign' => 3600,
                     'required' => 1,
                 ]);
-                $resArr[Validator::ANNOTATION_TAG_SIGN] = $signResult;
+                $resArr[Server::ANNOTATION_TAG_SIGN] = $signResult;
             }
         }
 
