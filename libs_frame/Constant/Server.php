@@ -68,6 +68,21 @@ final class Server
     const IMAGE_FILTER_DITHER_DIFFUSION = 'diffusion'; //噪点滤镜类型-扩散
     const IMAGE_FILTER_DITHER_ORDERED = 'ordered'; //噪点滤镜类型-规整
 
+    //注解常量
+    public static $annotationSignTags = [
+        self::ANNOTATION_TAG_SIGN => 1,
+        self::ANNOTATION_TAG_IGNORE_SIGN => 1,
+        self::ANNOTATION_TAG_IGNORE_JWT => 1,
+    ];
+    const ANNOTATION_NAME_FILTER = 'SyFilter'; //名称-数据校验器
+    const ANNOTATION_NAME_ASPECT_BEFORE = 'SyAspectBefore'; //名称-前置切面
+    const ANNOTATION_NAME_ASPECT_AFTER = 'SyAspectAfter'; //名称-后置切面
+    const ANNOTATION_TAG_SIGN = '_sign'; //标识-接口签名
+    const ANNOTATION_TAG_IGNORE_SIGN = '_ignoresign'; //标识-取消接口签名
+    const ANNOTATION_TAG_IGNORE_JWT = '_ignorejwt'; //标识-取消jwt校验
+    const ANNOTATION_TAG_SY_TOKEN = '__sytoken'; //标识-框架令牌
+    const ANNOTATION_TAG_SESSION_JWT = '__sessionjwt'; //标识-JWT会话
+
     //服务常量
     public static $totalServerType = [
         self::SERVER_TYPE_API_GATE => 'api入口',
