@@ -74,6 +74,10 @@ final class Server
         self::ANNOTATION_TAG_IGNORE_SIGN => 1,
         self::ANNOTATION_TAG_IGNORE_JWT => 1,
     ];
+    public static $annotationAspects = [
+        self::ANNOTATION_NAME_ASPECT_BEFORE => 1,
+        self::ANNOTATION_NAME_ASPECT_AFTER => 1,
+    ];
     const ANNOTATION_NAME_FILTER = 'SyFilter'; //名称-数据校验器
     const ANNOTATION_NAME_ASPECT_BEFORE = 'SyAspectBefore'; //名称-前置切面
     const ANNOTATION_NAME_ASPECT_AFTER = 'SyAspectAfter'; //名称-后置切面
