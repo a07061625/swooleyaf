@@ -286,30 +286,6 @@ class ExtensionGenerator {
         }
     }
 
-    private static function generatorExtHelperFile(string $extensionName) {
-        $fileContent = '<?php' . PHP_EOL;
-        foreach (self::$contents['constants'] as $eConstant) {
-            $fileContent .= $eConstant;
-        }
-        if (count(self::$contents['constants']) > 0) {
-            $fileContent .= PHP_EOL;
-        }
-
-        foreach (self::$contents['classes'] as $namespaceName => $classes) {
-            $fileContent .= 'namespace ' . $namespaceName . ' {' . PHP_EOL;
-            $fileContent .= implode(PHP_EOL, $classes);
-            $fileContent .= '}' . PHP_EOL . PHP_EOL;
-        }
-
-        foreach (self::$contents['functions'] as $eFunction) {
-            $fileContent .= $eFunction . PHP_EOL;
-        }
-
-        $needName = preg_replace('/[^0-9a-zA-Z]+/', '', $extensionName);
-        $fileName = __DIR__ . '/Helper' . ucwords($needName) . '.php';
-        file_put_contents($fileName, $fileContent);
-    }
-
     public static function createHelper()
     {
         $option = Tool::getClientOption(1, true);
@@ -320,12 +296,33 @@ class ExtensionGenerator {
                     exit('extension name must be input');
                 }
 
-                $reflectionObj = new \ReflectionExtension($moduleName);
+                $reflectionObj = new \ReflectionExtension($extensionName);
                 self::init();
                 self::getExtConstants($reflectionObj);
                 self::getExtClasses($reflectionObj);
                 self::getExtFunctions($reflectionObj);
 
+                $fileContent = '<?php' . PHP_EOL;
+                foreach (self::$contents['constants'] as $eConstant) {
+                    $fileContent .= $eConstant;
+                }
+                if (count(self::$contents['constants']) > 0) {
+                    $fileContent .= PHP_EOL;
+                }
+
+                foreach (self::$contents['classes'] as $namespaceName => $classes) {
+                    $fileContent .= 'namespace ' . $namespaceName . ' {' . PHP_EOL;
+                    $fileContent .= implode(PHP_EOL, $classes);
+                    $fileContent .= '}' . PHP_EOL . PHP_EOL;
+                }
+
+                foreach (self::$contents['functions'] as $eFunction) {
+                    $fileContent .= $eFunction . PHP_EOL;
+                }
+
+                $needName = preg_replace('/[^0-9a-zA-Z]+/', '', $extensionName);
+                $fileName = __DIR__ . '/Helper' . ucwords($needName) . '.php';
+                file_put_contents($fileName, $fileContent);
                 break;
             default:
                 self::help();
