@@ -7,6 +7,10 @@
  */
 namespace DesignPatterns\Singletons;
 
+use Constant\ErrorCode;
+use Constant\Project;
+use Exception\Wx\WxCorpProviderException;
+use Exception\Wx\WxException;
 use Tool\Tool;
 use Traits\SingletonTrait;
 use Traits\WxConfigTrait;
@@ -28,6 +32,26 @@ class WxConfigSingleton
      * @var \Wx\WxConfigCorpProvider
      */
     private $corpProviderConfig = null;
+    /**
+     * 账号配置列表
+     * @var array
+     */
+    private $accountConfigs = [];
+    /**
+     * 账号配置清理时间戳
+     * @var int
+     */
+    private $accountClearTime = 0;
+    /**
+     * 企业微信配置列表
+     * @var array
+     */
+    private $corpConfigs = [];
+    /**
+     * 企业微信配置清理时间戳
+     * @var int
+     */
+    private $corpClearTime = 0;
 
     private function __construct()
     {
@@ -96,5 +120,137 @@ class WxConfigSingleton
     public function getCorpProviderConfig()
     {
         return $this->corpProviderConfig;
+    }
+
+    /**
+     * 获取所有的账号配置
+     * @return array
+     */
+    public function getAccountConfigs()
+    {
+        return $this->accountConfigs;
+    }
+
+    /**
+     * 获取本地账号配置
+     * @param string $appId
+     * @return \Wx\WxConfigAccount|null
+     */
+    private function getLocalAccountConfig(string $appId)
+    {
+        $nowTime = Tool::getNowTime();
+        if ($this->accountClearTime < $nowTime) {
+            $delIds = [];
+            foreach ($this->accountConfigs as $eAppId => $accountConfig) {
+                if ($accountConfig->getExpireTime() < $nowTime) {
+                    $delIds[] = $eAppId;
+                }
+            }
+            foreach ($delIds as $eAppId) {
+                unset($this->accountConfigs[$eAppId]);
+            }
+
+            $this->accountClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_WXACCOUNT_CLEAR;
+        }
+
+        return Tool::getArrayVal($this->accountConfigs, $appId, null);
+    }
+
+    /**
+     * 获取账号配置
+     * @param string $appId
+     * @return \Wx\WxConfigAccount
+     * @throws \Exception\Wx\WxException
+     */
+    public function getShopConfig(string $appId)
+    {
+        $nowTime = Tool::getNowTime();
+        $accountConfig = $this->getLocalAccountConfig($appId);
+        if (is_null($accountConfig)) {
+            $accountConfig = $this->refreshAccountConfig($appId);
+        } elseif ($accountConfig->getExpireTime() < $nowTime) {
+            $accountConfig = $this->refreshAccountConfig($appId);
+        }
+
+        if ($accountConfig->isValid()) {
+            return $accountConfig;
+        } else {
+            throw new WxException('微信配置不存在', ErrorCode::WX_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * 移除账号配置
+     * @param string $appId
+     */
+    public function removeAccountConfig(string $appId)
+    {
+        unset($this->accountConfigs[$appId]);
+    }
+
+    /**
+     * 获取所有的企业微信配置
+     * @return array
+     */
+    public function getCorpConfigs()
+    {
+        return $this->corpConfigs;
+    }
+
+    /**
+     * 获取本地企业微信配置
+     * @param string $corpId
+     * @return \Wx\WxConfigCorp|null
+     */
+    private function getLocalCorpConfig(string $corpId)
+    {
+        $nowTime = Tool::getNowTime();
+        if ($this->corpClearTime < $nowTime) {
+            $delIds = [];
+            foreach ($this->corpConfigs as $eCorpId => $corpConfig) {
+                if ($corpConfig->getExpireTime() < $nowTime) {
+                    $delIds[] = $eCorpId;
+                }
+            }
+            foreach ($delIds as $eCorpId) {
+                unset($this->corpConfigs[$eCorpId]);
+            }
+
+            $this->corpClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_WXCORP_CLEAR;
+        }
+
+        return Tool::getArrayVal($this->corpConfigs, $corpId, null);
+    }
+
+    /**
+     * 获取企业微信配置
+     * @param string $corpId
+     * @return \Wx\WxConfigCorp
+     * @throws \Exception\Wx\WxCorpProviderException
+     */
+    public function getCorpConfig(string $corpId)
+    {
+        $nowTime = Tool::getNowTime();
+        $corpConfig = $this->getLocalCorpConfig($corpId);
+        if (is_null($corpConfig)) {
+            $corpConfig = $this->refreshCorpConfig($corpId);
+        } elseif ($corpConfig->getExpireTime() < $nowTime) {
+            $corpConfig = $this->refreshCorpConfig($corpId);
+        }
+
+        if ($corpConfig->isValid()) {
+            return $corpConfig;
+        } else {
+            throw new WxCorpProviderException('微信企业配置不存在', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * 移除企业微信配置
+     * @param string $corpId
+     */
+    public function removeCorpConfig(string $corpId)
+    {
+        unset($this->corpConfigs[$corpId]);
     }
 }
