@@ -54,22 +54,34 @@ class WxconfigBaseEntity extends MysqlEntity
     public $pay_key = '';
 
     /**
-     * 公众号商户证书内容，去除证书文件的第一行和最后一行以及所有换行
+     * 公众号商户证书内容,去除证书文件的第一行和最后一行以及所有换行
      * @var string
      */
     public $payssl_cert = '';
 
     /**
-     * 公众号商户密钥内容，去除密钥文件的第一行和最后一行以及所有换行
+     * 公众号商户密钥内容,去除密钥文件的第一行和最后一行以及所有换行
      * @var string
      */
     public $payssl_key = '';
 
     /**
-     * 企业付款银行卡密钥内容，去除密钥文件的第一行和最后一行以及所有换行
+     * 企业付款银行卡密钥内容,去除密钥文件的第一行和最后一行以及所有换行
      * @var string
      */
     public $payssl_companybank = '';
+
+    /**
+     * 服务商微信号
+     * @var string
+     */
+    public $merchant_appid = '';
+
+    /**
+     * 服务商商户号
+     * @var string
+     */
+    public $merchant_mchid = '';
 
     /**
      * 状态
@@ -88,6 +100,7 @@ class WxconfigBaseEntity extends MysqlEntity
      * @var int
      */
     public $updated = 0;
+
     public function __construct(string $dbName = '')
     {
         $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';

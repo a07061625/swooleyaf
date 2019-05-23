@@ -49,8 +49,7 @@ class ProfitSharingReceiverAdd extends WxBaseShop
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/profitsharingaddreceiver';
         $this->merchantType = self::MERCHANT_TYPE_SUB;
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
-        $this->reqData['sub_appid'] = $shopConfig->getAppId();
-        $this->reqData['sub_mch_id'] = $shopConfig->getPayMchId();
+        $this->setAppIdAndMchId($shopConfig);
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['sign_type'] = 'HMAC-SHA256';
     }
@@ -73,7 +72,6 @@ class ProfitSharingReceiverAdd extends WxBaseShop
 
     public function getDetail() : array
     {
-        $this->checkMerchantParams();
         if (empty($this->receiver)) {
             throw new WxException('分账接收方不能为空', ErrorCode::WX_PARAM_ERROR);
         }

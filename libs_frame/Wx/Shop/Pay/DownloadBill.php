@@ -73,13 +73,7 @@ class DownloadBill extends WxBaseShop
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/downloadbill';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->merchantType = $merchantType;
-        if ($merchantType == self::MERCHANT_TYPE_SELF) {
-            $this->reqData['appid'] = $shopConfig->getAppId();
-            $this->reqData['mch_id'] = $shopConfig->getPayMchId();
-        } else {
-            $this->reqData['sub_appid'] = $shopConfig->getAppId();
-            $this->reqData['sub_mch_id'] = $shopConfig->getPayMchId();
-        }
+        $this->setAppIdAndMchId($shopConfig);
         $this->reqData['sign_type'] = 'MD5';
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['tar_type'] = 'GZIP';
@@ -138,7 +132,6 @@ class DownloadBill extends WxBaseShop
 
     public function getDetail() : array
     {
-        $this->checkMerchantParams();
         if (!isset($this->reqData['bill_date'])) {
             throw new WxException('对账单日期不能为空', ErrorCode::WX_PARAM_ERROR);
         }
