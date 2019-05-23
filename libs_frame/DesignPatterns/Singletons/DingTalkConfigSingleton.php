@@ -7,7 +7,10 @@
  */
 namespace DesignPatterns\Singletons;
 
+use Constant\ErrorCode;
+use Constant\Project;
 use DingDing\TalkConfigProvider;
+use Exception\DingDing\TalkException;
 use Tool\Tool;
 use Traits\DingTalkConfigTrait;
 use Traits\SingletonTrait;
@@ -22,6 +25,16 @@ class DingTalkConfigSingleton
      * @var \DingDing\TalkConfigProvider
      */
     private $corpProviderConfig = null;
+    /**
+     * 企业钉钉配置列表
+     * @var array
+     */
+    private $corpConfigs = [];
+    /**
+     * 企业钉钉配置清理时间戳
+     * @var int
+     */
+    private $corpClearTime = 0;
 
     private function __construct()
     {
@@ -65,5 +78,71 @@ class DingTalkConfigSingleton
     public function getCorpProviderConfig()
     {
         return $this->corpProviderConfig;
+    }
+
+    /**
+     * 获取所有的企业钉钉配置
+     * @return array
+     */
+    public function getCorpConfigs()
+    {
+        return $this->corpConfigs;
+    }
+
+    /**
+     * 获取本地企业钉钉配置
+     * @param string $corpId
+     * @return \DingDing\TalkConfigCorp|null
+     */
+    private function getLocalCorpConfig(string $corpId)
+    {
+        $nowTime = Tool::getNowTime();
+        if ($this->corpClearTime < $nowTime) {
+            $delIds = [];
+            foreach ($this->corpConfigs as $eCorpId => $corpConfig) {
+                if ($corpConfig->getExpireTime() < $nowTime) {
+                    $delIds[] = $eCorpId;
+                }
+            }
+            foreach ($delIds as $eCorpId) {
+                unset($this->corpConfigs[$eCorpId]);
+            }
+
+            $this->corpClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_DINGTALK_CORP_CLEAR;
+        }
+
+        return Tool::getArrayVal($this->corpConfigs, $corpId, null);
+    }
+
+    /**
+     * 获取企业钉钉配置
+     * @param string $corpId
+     * @return \DingDing\TalkConfigCorp
+     * @throws \Exception\DingDing\TalkException
+     */
+    public function getCorpConfig(string $corpId)
+    {
+        $nowTime = Tool::getNowTime();
+        $corpConfig = $this->getLocalCorpConfig($corpId);
+        if (is_null($corpConfig)) {
+            $corpConfig = $this->refreshCorpConfig($corpId);
+        } elseif ($corpConfig->getExpireTime() < $nowTime) {
+            $corpConfig = $this->refreshCorpConfig($corpId);
+        }
+
+        if ($corpConfig->isValid()) {
+            return $corpConfig;
+        } else {
+            throw new TalkException('企业钉钉配置不存在', ErrorCode::DING_TALK_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * 移除企业钉钉配置
+     * @param string $corpId
+     */
+    public function removeCorpConfig(string $corpId)
+    {
+        unset($this->corpConfigs[$corpId]);
     }
 }
