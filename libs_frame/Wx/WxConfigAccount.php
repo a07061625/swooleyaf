@@ -80,6 +80,18 @@ class WxConfigAccount
     private $templates = [];
 
     /**
+     * 服务商微信号
+     * @var string
+     */
+    private $merchantAppId = '';
+
+    /**
+     * 服务商商户号
+     * @var string
+     */
+    private $merchantMchId = '';
+
+    /**
      * 配置有效状态
      * @var bool
      */
@@ -322,6 +334,52 @@ class WxConfigAccount
     public function setTemplates(array $templates)
     {
         $this->templates = $templates;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMerchantAppId() : string
+    {
+        return $this->merchantAppId;
+    }
+
+    /**
+     * @param string $merchantAppId
+     * @throws \Exception\Wx\WxException
+     */
+    public function setMerchantAppId(string $merchantAppId)
+    {
+        $length = strlen($merchantAppId);
+        if ($length > 0) {
+            if ($length != 18) {
+                throw new WxException('服务商微信号不合法', ErrorCode::WX_PARAM_ERROR);
+            }
+            if (!ctype_alnum($merchantAppId)) {
+                throw new WxException('服务商微信号不合法', ErrorCode::WX_PARAM_ERROR);
+            }
+        }
+        $this->merchantAppId = $merchantAppId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMerchantMchId() : string
+    {
+        return $this->merchantMchId;
+    }
+
+    /**
+     * @param string $merchantMchId
+     * @throws \Exception\Wx\WxException
+     */
+    public function setMerchantMchId(string $merchantMchId)
+    {
+        if ((strlen($merchantMchId) > 0) && !ctype_digit($merchantMchId)) {
+            throw new WxException('服务商商户号不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+        $this->merchantMchId = $merchantMchId;
     }
 
     /**

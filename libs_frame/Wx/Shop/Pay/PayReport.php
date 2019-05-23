@@ -63,13 +63,7 @@ class PayReport extends WxBaseShop
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/payitil/report';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->merchantType = $merchantType;
-        if ($merchantType == self::MERCHANT_TYPE_SELF) {
-            $this->reqData['appid'] = $shopConfig->getAppId();
-            $this->reqData['mch_id'] = $shopConfig->getPayMchId();
-        } else {
-            $this->reqData['sub_appid'] = $shopConfig->getAppId();
-            $this->reqData['sub_mch_id'] = $shopConfig->getPayMchId();
-        }
+        $this->setAppIdAndMchId($shopConfig);
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['interface_url'] = 'https://api.mch.weixin.qq.com/pay/batchreport/micropay/total';
         $this->reqData['user_ip'] = $shopConfig->getClientIp();
@@ -104,7 +98,6 @@ class PayReport extends WxBaseShop
 
     public function getDetail() : array
     {
-        $this->checkMerchantParams();
         if (!isset($this->reqData['trades'])) {
             throw new WxException('上报数据包不能为空', ErrorCode::WX_PARAM_ERROR);
         }

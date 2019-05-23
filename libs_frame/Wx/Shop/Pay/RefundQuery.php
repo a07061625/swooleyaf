@@ -73,13 +73,7 @@ class RefundQuery extends WxBaseShop
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/refundquery';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->merchantType = $merchantType;
-        if ($merchantType == self::MERCHANT_TYPE_SELF) {
-            $this->reqData['appid'] = $shopConfig->getAppId();
-            $this->reqData['mch_id'] = $shopConfig->getPayMchId();
-        } else {
-            $this->reqData['sub_appid'] = $shopConfig->getAppId();
-            $this->reqData['sub_mch_id'] = $shopConfig->getPayMchId();
-        }
+        $this->setAppIdAndMchId($shopConfig);
         $this->reqData['sign_type'] = 'MD5';
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
     }
@@ -152,15 +146,14 @@ class RefundQuery extends WxBaseShop
 
     public function getDetail() : array
     {
-        $this->checkMerchantParams();
-        if (strlen($this->transaction_id) > 0) {
-            $this->reqData['transaction_id'] = $this->transaction_id;
-        } elseif (strlen($this->out_trade_no) > 0) {
-            $this->reqData['out_trade_no'] = $this->out_trade_no;
-        } elseif (strlen($this->refund_id) > 0) {
+        if (strlen($this->refund_id) > 0) {
             $this->reqData['refund_id'] = $this->refund_id;
         } elseif (strlen($this->out_refund_no) > 0) {
             $this->reqData['out_refund_no'] = $this->out_refund_no;
+        } elseif (strlen($this->transaction_id) > 0) {
+            $this->reqData['transaction_id'] = $this->transaction_id;
+        } elseif (strlen($this->out_trade_no) > 0) {
+            $this->reqData['out_trade_no'] = $this->out_trade_no;
         } else {
             throw new WxException('微信订单号,商户订单号,微信退款单号,商户退款单号必须设置其中一个', ErrorCode::WX_PARAM_ERROR);
         }

@@ -178,13 +178,7 @@ class UnifiedOrder extends WxBaseShop
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->merchantType = $merchantType;
-        if ($merchantType == self::MERCHANT_TYPE_SELF) {
-            $this->reqData['appid'] = $shopConfig->getAppId();
-            $this->reqData['mch_id'] = $shopConfig->getPayMchId();
-        } else {
-            $this->reqData['sub_appid'] = $shopConfig->getAppId();
-            $this->reqData['sub_mch_id'] = $shopConfig->getPayMchId();
-        }
+        $this->setAppIdAndMchId($shopConfig);
         $this->reqData['notify_url'] = $shopConfig->getPayNotifyUrl();
         $this->reqData['fee_type'] = 'CNY';
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
@@ -424,7 +418,6 @@ class UnifiedOrder extends WxBaseShop
 
     public function getDetail() : array
     {
-        $this->checkMerchantParams();
         if (!isset($this->reqData['trade_type'])) {
             throw new WxException('交易类型不能为空', ErrorCode::WX_PARAM_ERROR);
         }

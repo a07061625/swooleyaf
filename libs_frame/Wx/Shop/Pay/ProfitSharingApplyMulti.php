@@ -59,8 +59,7 @@ class ProfitSharingApplyMulti extends WxBaseShop
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/secapi/pay/multiprofitsharing';
         $this->merchantType = self::MERCHANT_TYPE_SUB;
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
-        $this->reqData['sub_appid'] = $shopConfig->getAppId();
-        $this->reqData['sub_mch_id'] = $shopConfig->getPayMchId();
+        $this->setAppIdAndMchId($shopConfig);
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['sign_type'] = 'HMAC-SHA256';
     }
@@ -109,7 +108,6 @@ class ProfitSharingApplyMulti extends WxBaseShop
 
     public function getDetail() : array
     {
-        $this->checkMerchantParams();
         if (!isset($this->reqData['transaction_id'])) {
             throw new WxException('微信单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }

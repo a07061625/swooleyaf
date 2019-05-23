@@ -53,13 +53,7 @@ class OrderClose extends WxBaseShop
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/closeorder';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->merchantType = $merchantType;
-        if ($merchantType == self::MERCHANT_TYPE_SELF) {
-            $this->reqData['appid'] = $shopConfig->getAppId();
-            $this->reqData['mch_id'] = $shopConfig->getPayMchId();
-        } else {
-            $this->reqData['sub_appid'] = $shopConfig->getAppId();
-            $this->reqData['sub_mch_id'] = $shopConfig->getPayMchId();
-        }
+        $this->setAppIdAndMchId($shopConfig);
         $this->reqData['sign_type'] = 'MD5';
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
     }
@@ -83,7 +77,6 @@ class OrderClose extends WxBaseShop
 
     public function getDetail() : array
     {
-        $this->checkMerchantParams();
         if (!isset($this->reqData['out_trade_no'])) {
             throw new WxException('商户单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }

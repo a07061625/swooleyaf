@@ -164,6 +164,8 @@ trait WxConfigTrait
             $accountConfig->setSslCert((string)$configInfo['payssl_cert']);
             $accountConfig->setSslKey((string)$configInfo['payssl_key']);
             $accountConfig->setSslCompanyBank((string)$configInfo['payssl_companybank']);
+            $accountConfig->setMerchantAppId((string)$configInfo['merchant_appid']);
+            $accountConfig->setMerchantMchId((string)$configInfo['merchant_mchid']);
             if (is_array($templates)) {
                 $accountConfig->setTemplates($templates);
             }
