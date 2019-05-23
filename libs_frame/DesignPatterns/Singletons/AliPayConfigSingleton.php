@@ -7,6 +7,10 @@
  */
 namespace DesignPatterns\Singletons;
 
+use Constant\ErrorCode;
+use Constant\Project;
+use Exception\AliPay\AliPayPayException;
+use Tool\Tool;
 use Traits\AliPayConfigTrait;
 use Traits\SingletonTrait;
 
@@ -14,6 +18,17 @@ class AliPayConfigSingleton
 {
     use SingletonTrait;
     use AliPayConfigTrait;
+
+    /**
+     * 支付配置列表
+     * @var array
+     */
+    private $payConfigs = [];
+    /**
+     * 支付配置清理时间戳
+     * @var int
+     */
+    private $payClearTime = 0;
 
     private function __construct()
     {
@@ -38,5 +53,62 @@ class AliPayConfigSingleton
     public function getPayConfigs()
     {
         return $this->payConfigs;
+    }
+
+    /**
+     * 获取支付配置
+     * @param string $appId
+     * @return \AliPay\PayConfig
+     * @throws \Exception\AliPay\AliPayPayException
+     */
+    public function getPayConfig(string $appId)
+    {
+        $nowTime = Tool::getNowTime();
+        $payConfig = $this->getLocalPayConfig($appId);
+        if (is_null($payConfig)) {
+            $payConfig = $this->refreshPayConfig($appId);
+        } elseif ($payConfig->getExpireTime() < $nowTime) {
+            $payConfig = $this->refreshPayConfig($appId);
+        }
+
+        if ($payConfig->isValid()) {
+            return $payConfig;
+        } else {
+            throw new AliPayPayException('支付配置不存在', ErrorCode::ALIPAY_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * 移除支付配置
+     * @param string $appId
+     */
+    public function removePayConfig(string $appId)
+    {
+        unset($this->payConfigs[$appId]);
+    }
+
+    /**
+     * 获取本地支付配置
+     * @param string $appId
+     * @return \AliPay\PayConfig|null
+     */
+    private function getLocalPayConfig(string $appId)
+    {
+        $nowTime = Tool::getNowTime();
+        if ($this->payClearTime < $nowTime) {
+            $delIds = [];
+            foreach ($this->payConfigs as $eAppId => $payConfig) {
+                if ($payConfig->getExpireTime() < $nowTime) {
+                    $delIds[] = $eAppId;
+                }
+            }
+            foreach ($delIds as $eAppId) {
+                unset($this->payConfigs[$eAppId]);
+            }
+
+            $this->payClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_ALIPAY_CLEAR;
+        }
+
+        return Tool::getArrayVal($this->payConfigs, $appId, null);
     }
 }
