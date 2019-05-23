@@ -10,7 +10,8 @@ namespace IDE;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-class ExtensionGenerator {
+class ExtensionGenerator
+{
     use SimpleTrait;
 
     private static $contents = [];
@@ -23,7 +24,54 @@ class ExtensionGenerator {
         'callable',
     ];
 
-    private static function init() {
+    public static function createHelper()
+    {
+        $option = Tool::getClientOption(1, true);
+        switch ($option) {
+            case 'helper':
+                $extensionName = trim(Tool::getClientOption('-name', false, ''));
+                if (strlen($extensionName) == 0) {
+                    exit('extension name must be input');
+                }
+
+                $reflectionObj = new \ReflectionExtension($extensionName);
+                self::init();
+                self::getExtConstants($reflectionObj);
+                self::getExtClasses($reflectionObj);
+                self::getExtFunctions($reflectionObj);
+
+                $fileContent = '<?php' . PHP_EOL;
+                if (!empty(self::$contents['constants'])) {
+                    $fileContent .= 'namespace {' . PHP_EOL;
+                    foreach (self::$contents['constants'] as $eConstant) {
+                        $fileContent .= $eConstant;
+                    }
+                    $fileContent .= '}' . PHP_EOL . PHP_EOL;
+                }
+
+                foreach (self::$contents['classes'] as $namespaceName => $classes) {
+                    $fileContent .= 'namespace ' . $namespaceName . ' {' . PHP_EOL;
+                    $fileContent .= implode(PHP_EOL, $classes);
+                    $fileContent .= '}' . PHP_EOL . PHP_EOL;
+                }
+
+                if (!empty(self::$contents['functions'])) {
+                    $fileContent .= 'namespace {' . PHP_EOL;
+                    $fileContent .= implode(PHP_EOL, self::$contents['functions']);
+                    $fileContent .= '}' . PHP_EOL;
+                }
+
+                $needName = preg_replace('/[^0-9a-zA-Z]+/', '', $extensionName);
+                $fileName = __DIR__ . '/Helper' . ucwords($needName) . '.php';
+                file_put_contents($fileName, $fileContent);
+                break;
+            default:
+                self::help();
+        }
+    }
+
+    private static function init()
+    {
         self::$contents = [
             'constants' => [],
             'classes' => [],
@@ -34,7 +82,8 @@ class ExtensionGenerator {
     /**
      * @param \ReflectionExtension $reflectionObj
      */
-    private static function getExtConstants($reflectionObj) {
+    private static function getExtConstants($reflectionObj)
+    {
         $constants = $reflectionObj->getConstants();
         foreach ($constants as $key => $val) {
             $constantStr = "    define('" . $key . "', ";
@@ -55,7 +104,8 @@ class ExtensionGenerator {
     /**
      * @param \ReflectionExtension $reflectionObj
      */
-    private static function getExtClasses($reflectionObj) {
+    private static function getExtClasses($reflectionObj)
+    {
         $classes = $reflectionObj->getClasses();
         foreach ($classes as $eClassName => $eClass) {
             $backslash = strrpos($eClassName, '\\');
@@ -253,84 +303,46 @@ class ExtensionGenerator {
     /**
      * @param \ReflectionExtension $reflectionObj
      */
-    private static function getExtFunctions($reflectionObj) {
+    private static function getExtFunctions($reflectionObj)
+    {
         $functions = $reflectionObj->getFunctions();
         foreach ($functions as $funcName => $eFunc) {
-            $comment = '/**' . PHP_EOL;
+            $paramComment = '';
             $funcParams = [];
             $params = $eFunc->getParameters();
             foreach ($params as $eParam) {
-                $comment .= ' * @param $' . $eParam->name;
-                if($eParam->isOptional()){
-                    $comment .= ' [optional]' . PHP_EOL;
+                $paramComment .= '     * @param $' . $eParam->name;
+                if ($eParam->isOptional()) {
+                    $paramComment .= ' [optional]' . PHP_EOL;
                     $funcParams[] = '$' . $eParam->name . '=null';
                 } else {
-                    $comment .= ' [required]' . PHP_EOL;
-                    $funcParams[] = '$' . $eParam->name . '=null';
+                    $paramComment .= ' [required]' . PHP_EOL;
+                    $funcParams[] = '$' . $eParam->name;
                 }
             }
-            if($eFunc->hasReturnType()){
-                $comment .= ' * @return ';
+            if ($eFunc->hasReturnType()) {
+                $paramComment .= '     * @return ';
                 $returnType = $eFunc->getReturnType();
                 if (is_null($returnType)) {
-                    $comment .= 'null';
+                    $paramComment .= 'null';
                 } else {
-                    $comment .= $returnType;
+                    $paramComment .= $returnType;
                 }
-                $comment .= PHP_EOL;
+                $paramComment .= PHP_EOL;
             }
-            $comment .= ' */' . PHP_EOL;
-            $comment .= sprintf("function %s(%s){}", $funcName, join(', ', $funcParams));
+            if (strlen($paramComment) > 0) {
+                $comment = '    /**' . PHP_EOL . $paramComment . '     */' . PHP_EOL;
+            } else {
+                $comment = '';
+            }
+            $comment .= sprintf('    function %s(%s){}', $funcName, join(', ', $funcParams));
             $comment .= PHP_EOL;
             self::$contents['functions'][] = $comment;
         }
     }
 
-    public static function createHelper()
+    private static function help()
     {
-        $option = Tool::getClientOption(1, true);
-        switch ($option) {
-            case 'helper':
-                $extensionName = trim(Tool::getClientOption('-name', false, ''));
-                if (strlen($extensionName) == 0) {
-                    exit('extension name must be input');
-                }
-
-                $reflectionObj = new \ReflectionExtension($extensionName);
-                self::init();
-                self::getExtConstants($reflectionObj);
-                self::getExtClasses($reflectionObj);
-                self::getExtFunctions($reflectionObj);
-
-                $fileContent = '<?php' . PHP_EOL;
-                if (!empty(self::$contents['constants'])) {
-                    $fileContent .= 'namespace {' . PHP_EOL;
-                    foreach (self::$contents['constants'] as $eConstant) {
-                        $fileContent .= $eConstant;
-                    }
-                    $fileContent .= '}' . PHP_EOL . PHP_EOL;
-                }
-
-                foreach (self::$contents['classes'] as $namespaceName => $classes) {
-                    $fileContent .= 'namespace ' . $namespaceName . ' {' . PHP_EOL;
-                    $fileContent .= implode(PHP_EOL, $classes);
-                    $fileContent .= '}' . PHP_EOL;
-                }
-
-                foreach (self::$contents['functions'] as $eFunction) {
-                    $fileContent .= $eFunction . PHP_EOL;
-                }
-
-                $needName = preg_replace('/[^0-9a-zA-Z]+/', '', $extensionName);
-                $fileName = __DIR__ . '/Helper' . ucwords($needName) . '.php';
-                file_put_contents($fileName, $fileContent);
-                break;
-            default:
-                self::help();
-        }
-    }
-
-    private static function help() {
         echo '显示帮助: /usr/local/php7/bin/php helper_extension.php -h' . PHP_EOL;
         echo '生成扩展帮助文档: /usr/local/php7/bin/php helper_extension.php helper -name xxx' . PHP_EOL;
         echo '    -name:必填 扩展名' . PHP_EOL;

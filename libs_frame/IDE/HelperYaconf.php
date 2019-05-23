@@ -3,7 +3,7 @@ namespace  {
     class Yaconf
     {
         /**
-         * @param $name
+         * @param string $name
          * @return mixed
          */
         public static function get($name)
@@ -11,7 +11,7 @@ namespace  {
         }
 
         /**
-         * @param $name
+         * @param string $name
          * @return bool
          */
         public static function has($name)

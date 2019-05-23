@@ -8,28 +8,49 @@ namespace {
 }
 
 namespace  {
-    class Yac {
+    class Yac
+    {
         /* properties */
         protected $_prefix = '';
 
-        public function __construct($prefix = null){}
+        public function __construct($prefix = null)
+        {
+        }
 
-        public function add($keys, $value = null, $ttl = null){}
+        public function __set($key, $value)
+        {
+        }
 
-        public function set($keys, $value = null, $ttl = null){}
+        public function __get($key)
+        {
+        }
 
-        public function __set($key, $value){}
+        public function add($keys, $value = null, $ttl = null)
+        {
+        }
 
-        public function get($keys){}
+        public function set($keys, $value = null, $ttl = null)
+        {
+        }
 
-        public function __get($key){}
+        public function get($keys)
+        {
+        }
 
-        public function delete($keys, $ttl = null){}
+        public function delete($keys, $ttl = null)
+        {
+        }
 
-        public function flush(){}
+        public function flush()
+        {
+        }
 
-        public function info(){}
+        public function info()
+        {
+        }
 
-        public function dump(){}
+        public function dump()
+        {
+        }
     }
 }

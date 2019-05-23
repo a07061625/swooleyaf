@@ -1,21 +1,27 @@
 <?php
 namespace {
-    define('SEASLOG_VERSION', '1.6.9');
+    define('SEASLOG_VERSION', '1.9.0');
     define('SEASLOG_AUTHOR', 'Chitao.Gao  [ neeke@php.net ]');
-    define('SEASLOG_ALL', 'all');
-    define('SEASLOG_DEBUG', 'debug');
-    define('SEASLOG_INFO', 'info');
-    define('SEASLOG_NOTICE', 'notice');
-    define('SEASLOG_WARNING', 'warning');
-    define('SEASLOG_ERROR', 'error');
-    define('SEASLOG_CRITICAL', 'critical');
-    define('SEASLOG_ALERT', 'alert');
-    define('SEASLOG_EMERGENCY', 'emergency');
+    define('SEASLOG_ALL', 'ALL');
+    define('SEASLOG_DEBUG', 'DEBUG');
+    define('SEASLOG_INFO', 'INFO');
+    define('SEASLOG_NOTICE', 'NOTICE');
+    define('SEASLOG_WARNING', 'WARNING');
+    define('SEASLOG_ERROR', 'ERROR');
+    define('SEASLOG_CRITICAL', 'CRITICAL');
+    define('SEASLOG_ALERT', 'ALERT');
+    define('SEASLOG_EMERGENCY', 'EMERGENCY');
     define('SEASLOG_DETAIL_ORDER_ASC', 1);
     define('SEASLOG_DETAIL_ORDER_DESC', 2);
     define('SEASLOG_APPENDER_FILE', 1);
     define('SEASLOG_APPENDER_TCP', 2);
     define('SEASLOG_APPENDER_UDP', 3);
+    define('SEASLOG_CLOSE_LOGGER_STREAM_MOD_ALL', 1);
+    define('SEASLOG_CLOSE_LOGGER_STREAM_MOD_ASSIGN', 2);
+    define('SEASLOG_REQUEST_VARIABLE_DOMAIN_PORT', 1);
+    define('SEASLOG_REQUEST_VARIABLE_REQUEST_URI', 2);
+    define('SEASLOG_REQUEST_VARIABLE_REQUEST_METHOD', 3);
+    define('SEASLOG_REQUEST_VARIABLE_CLIENT_IP', 4);
 }
 
 namespace  {
@@ -41,7 +47,19 @@ namespace  {
         {
         }
 
+        public static function closeLoggerStream($model, $logger = null)
+        {
+        }
+
         public static function getLastLogger()
+        {
+        }
+
+        public static function setRequestID($request_id)
+        {
+        }
+
+        public static function getRequestID()
         {
         }
 
@@ -50,6 +68,14 @@ namespace  {
         }
 
         public static function getDatetimeFormat()
+        {
+        }
+
+        public static function setRequestVariable($key, $value = null)
+        {
+        }
+
+        public static function getRequestVariable($key)
         {
         }
 
@@ -62,6 +88,10 @@ namespace  {
         }
 
         public static function getBuffer()
+        {
+        }
+
+        public static function getBufferEnabled()
         {
         }
 
@@ -104,5 +134,15 @@ namespace  {
         public static function emergency($message, $content = null, $logger = null)
         {
         }
+    }
+}
+
+namespace {
+    function seaslog_get_version()
+    {
+    }
+
+    function seaslog_get_author()
+    {
     }
 }
