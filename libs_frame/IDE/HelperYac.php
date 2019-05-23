@@ -1,6 +1,6 @@
 <?php
 namespace {
-    define('YAC_VERSION', '2.0.1');
+    define('YAC_VERSION', '2.0.2');
     define('YAC_MAX_KEY_LEN', 48);
     define('YAC_MAX_VALUE_RAW_LEN', 67108863);
     define('YAC_MAX_RAW_COMPRESSED_LEN', 1048576);
@@ -33,10 +33,6 @@ namespace  {
         {
         }
 
-        /**
-         * @param $keys
-         * @return mixed
-         */
         public function get($keys)
         {
         }
