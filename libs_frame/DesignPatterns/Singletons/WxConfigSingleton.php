@@ -241,7 +241,7 @@ class WxConfigSingleton
         if ($corpConfig->isValid()) {
             return $corpConfig;
         } else {
-            throw new WxCorpProviderException('微信企业配置不存在', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
+            throw new WxCorpProviderException('企业微信配置不存在', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
     }
 
