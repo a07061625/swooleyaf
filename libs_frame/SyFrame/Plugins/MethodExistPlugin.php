@@ -68,7 +68,7 @@ class MethodExistPlugin extends Plugin_Abstract
         $uriArr = explode('/', $request->getRequestUri());
         $actions = $this->getActions($uriArr[1], $uriArr[2]);
         $actionName = strtolower($uriArr[3]);
-        if(!isset($actions['list'][$actionName])){
+        if (!isset($actions['list'][$actionName])) {
             if (method_exists('\\' . $uriArr[2] . 'Controller', $uriArr[3] . 'Action')) {
                 $actions['list'][$actionName] = 1;
                 Registry::set($actions['tag'], $actions['list']);
