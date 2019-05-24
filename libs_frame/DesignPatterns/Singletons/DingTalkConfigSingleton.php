@@ -26,12 +26,12 @@ class DingTalkConfigSingleton
      */
     private $corpProviderConfig = null;
     /**
-     * 企业钉钉配置列表
+     * 企业配置列表
      * @var array
      */
     private $corpConfigs = [];
     /**
-     * 企业钉钉配置清理时间戳
+     * 企业配置清理时间戳
      * @var int
      */
     private $corpClearTime = 0;
@@ -81,7 +81,7 @@ class DingTalkConfigSingleton
     }
 
     /**
-     * 获取所有的企业钉钉配置
+     * 获取所有的企业配置
      * @return array
      */
     public function getCorpConfigs()
@@ -90,7 +90,7 @@ class DingTalkConfigSingleton
     }
 
     /**
-     * 获取本地企业钉钉配置
+     * 获取本地企业配置
      * @param string $corpId
      * @return \DingDing\TalkConfigCorp|null
      */
@@ -115,7 +115,7 @@ class DingTalkConfigSingleton
     }
 
     /**
-     * 获取企业钉钉配置
+     * 获取企业配置
      * @param string $corpId
      * @return \DingDing\TalkConfigCorp
      * @throws \Exception\DingDing\TalkException
@@ -133,12 +133,12 @@ class DingTalkConfigSingleton
         if ($corpConfig->isValid()) {
             return $corpConfig;
         } else {
-            throw new TalkException('企业钉钉配置不存在', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('企业配置不存在', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
     /**
-     * 移除企业钉钉配置
+     * 移除企业配置
      * @param string $corpId
      */
     public function removeCorpConfig(string $corpId)
