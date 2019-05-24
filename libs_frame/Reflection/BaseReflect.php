@@ -75,15 +75,14 @@ class BaseReflect
      *   注解名 分隔符 切面类全名,以\开头
      * @param string $className 类全名
      * @param string $methodName 方法名称
-     * @param string $controllerType
      * @return array
      * @throws \Exception\Reflection\ReflectException
      */
-    public static function getControllerAspectAnnotations(string $className, string $methodName, string &$controllerType) : array
+    public static function getControllerAspectAnnotations(string $className, string $methodName) : array
     {
         $annotations = [
-            Server::ANNOTATION_NAME_ASPECT_BEFORE => [],
-            Server::ANNOTATION_NAME_ASPECT_AFTER => [],
+            'before' => [],
+            'after' => [],
         ];
 
         try {
@@ -94,11 +93,17 @@ class BaseReflect
                 $docs = preg_filter('/\s+/', '', explode(PHP_EOL, $doc));
                 foreach ($docs as $eDoc) {
                     preg_match('/\@([a-zA-Z0-9]+)\-(\S+)/', $eDoc, $saveDoc);
-                    if (isset($saveDoc[1]) && isset(Server::$annotationAspects[$saveDoc[1]])) {
-                        $annotations[$saveDoc[1]][] = $saveDoc[2];
+                    if (isset($saveDoc[1])) {
+                        if ($saveDoc[1] == Server::ANNOTATION_NAME_ASPECT) {
+                            $annotations['before'][] = $saveDoc[2];
+                            $annotations['after'][] = $saveDoc[2];
+                        } elseif ($saveDoc[1] == Server::ANNOTATION_NAME_ASPECT_BEFORE) {
+                            $annotations['before'][] = $saveDoc[2];
+                        } elseif ($saveDoc[1] == Server::ANNOTATION_NAME_ASPECT_AFTER) {
+                            $annotations['after'][] = $saveDoc[2];
+                        }
                     }
                 }
-                runkit_method_rename($className, $methodName, '_' . $methodName);
             }
         } catch (ReflectException $e) {
             throw $e;
