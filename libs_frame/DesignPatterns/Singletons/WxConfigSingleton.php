@@ -43,12 +43,12 @@ class WxConfigSingleton
      */
     private $accountClearTime = 0;
     /**
-     * 企业微信配置列表
+     * 企业配置列表
      * @var array
      */
     private $corpConfigs = [];
     /**
-     * 企业微信配置清理时间戳
+     * 企业配置清理时间戳
      * @var int
      */
     private $corpClearTime = 0;
@@ -175,7 +175,7 @@ class WxConfigSingleton
         if ($accountConfig->isValid()) {
             return $accountConfig;
         } else {
-            throw new WxException('微信配置不存在', ErrorCode::WX_PARAM_ERROR);
+            throw new WxException('账号配置不存在', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
@@ -189,7 +189,7 @@ class WxConfigSingleton
     }
 
     /**
-     * 获取所有的企业微信配置
+     * 获取所有的企业配置
      * @return array
      */
     public function getCorpConfigs()
@@ -198,7 +198,7 @@ class WxConfigSingleton
     }
 
     /**
-     * 获取本地企业微信配置
+     * 获取本地企业配置
      * @param string $corpId
      * @return \Wx\WxConfigCorp|null
      */
@@ -223,7 +223,7 @@ class WxConfigSingleton
     }
 
     /**
-     * 获取企业微信配置
+     * 获取企业配置
      * @param string $corpId
      * @return \Wx\WxConfigCorp
      * @throws \Exception\Wx\WxCorpProviderException
@@ -241,12 +241,12 @@ class WxConfigSingleton
         if ($corpConfig->isValid()) {
             return $corpConfig;
         } else {
-            throw new WxCorpProviderException('企业微信配置不存在', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
+            throw new WxCorpProviderException('企业配置不存在', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
     }
 
     /**
-     * 移除企业微信配置
+     * 移除企业配置
      * @param string $corpId
      */
     public function removeCorpConfig(string $corpId)
