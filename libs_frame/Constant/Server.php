@@ -62,7 +62,8 @@ final class Server
     const REGISTRY_NAME_RESPONSE_COOKIE = 'RESPONSE_COOKIE'; //名称-响应cookie
     const REGISTRY_NAME_RESPONSE_JWT_SESSION = 'RESPONSE_JWT_SESSION'; //名称-响应jwt会话
     const REGISTRY_NAME_RESPONSE_JWT_DATA = 'RESPONSE_JWT_DATA'; //名称-响应jwt数据
-    const REGISTRY_NAME_VALIDATOR_PREFIX = 'VALIDATOR_'; //名称-校验器前缀
+    const REGISTRY_NAME_PREFIX_VALIDATOR = 'VALIDATOR_'; //名称前缀-校验器
+    const REGISTRY_NAME_PREFIX_CONTROLLER = 'CONTROLLER_'; //名称前缀-控制器
     const IMAGE_MIME_TYPE_PNG = 'image/png'; //MIME类型-PNG
     const IMAGE_MIME_TYPE_JPEG = 'image/jpeg'; //MIME类型-JPEG
     const IMAGE_MIME_TYPE_GIF = 'image/gif'; //MIME类型-GIF
