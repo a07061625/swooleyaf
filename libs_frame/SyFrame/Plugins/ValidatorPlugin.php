@@ -60,7 +60,7 @@ class ValidatorPlugin extends Plugin_Abstract
         }
 
         $validatorList = BaseReflect::getValidatorAnnotations($controllerName, $actionName);
-        $validatorTag = Server::REGISTRY_NAME_VALIDATOR_PREFIX . hash('crc32b', $key);
+        $validatorTag = Server::REGISTRY_NAME_PREFIX_VALIDATOR . hash('crc32b', $key);
         $this->validatorMap[$key] = $validatorTag;
         Registry::set($validatorTag, $validatorList);
 
