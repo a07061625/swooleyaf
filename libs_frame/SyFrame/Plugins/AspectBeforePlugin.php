@@ -7,48 +7,39 @@
  */
 namespace SyFrame\Plugins;
 
-use Constant\Server;
 use Log\Log;
-use Reflection\BaseReflect;
 use Yaf\Plugin_Abstract;
-use Yaf\Registry;
 use Yaf\Request_Abstract;
 use Yaf\Response_Abstract;
 
 class AspectBeforePlugin extends Plugin_Abstract
 {
     /**
-     * 切面标识数组
+     * 方法映射数组
      * @var array
      */
-    private $aspectMap = [];
+    private $actionMap = [];
 
     public function __construct()
     {
+        $this->actionMap = [];
     }
 
     private function __clone()
     {
     }
 
-    private function getAspectList(string $controllerName, string $actionName)
+    private function getActionTag(string $controllerName, string $actionName)
     {
-        $aspectKey = strtolower($controllerName . $actionName);
-        $aspectTag = $this->aspectMap[$aspectKey] ?? null;
-        if (is_string($aspectTag)) {
-            return Registry::get($aspectTag);
+        $actionKey = strtolower($controllerName . $actionName);
+        $actionTag = $this->actionMap[$actionKey] ?? null;
+        if (is_string($actionTag)) {
+            return $actionTag;
+        } else {
+            $actionTag = hash('crc32b', $actionKey);
+            $this->actionMap[$actionKey] = $actionTag;
+            return $actionTag;
         }
-
-        $controller = $controllerName . 'Controller';
-        $action = $actionName  . 'Action';
-        $aspectList = BaseReflect::getControllerAspectAnnotations($controller, $action);
-        $needStr = hash('crc32b', $aspectKey);
-        $aspectBeforeTag = Server::REGISTRY_NAME_PREFIX_ASPECT_BEFORE . $needStr;
-        $aspectAfterTag = Server::REGISTRY_NAME_PREFIX_ASPECT_AFTER . $needStr;
-        $this->aspectMap[$aspectKey] = $aspectBeforeTag;
-        Registry::set($aspectBeforeTag, $aspectList['before']);
-        Registry::set($aspectAfterTag, $aspectList['after']);
-        return $aspectList['before'];
     }
 
     /**
@@ -56,18 +47,14 @@ class AspectBeforePlugin extends Plugin_Abstract
      * @param \Yaf\Response_Abstract $response
      * @return void
      */
-    public function dispatchLoopStartup(Request_Abstract $request, Response_Abstract $response)
+    public function preDispatch(Request_Abstract $request, Response_Abstract $response)
     {
         $controllerName = $request->getControllerName();
         $actionName = $request->getActionName();
-        $aspectList = $this->getAspectList($controllerName, $actionName);
-
-        $_SERVER['SYACTION_START'] = microtime(true);
+        $actionTag = $this->getActionTag($controllerName, $actionName);
+        $_SERVER['SYSTART_' . $actionTag] = microtime(true);
         $logStr = $controllerName . 'Controller::' . $actionName . 'Action enter' . PHP_EOL
                   . 'memory_usage: ' . memory_get_usage();
         Log::log($logStr);
-        foreach ($aspectList as $aspectName) {
-            $aspectName::handleBefore();
-        }
     }
 }
