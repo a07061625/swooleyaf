@@ -14,7 +14,8 @@ use Tool\SyUser;
 use Yaf\Controller_Abstract;
 use Yaf\Registry;
 
-abstract class BaseController extends Controller_Abstract {
+abstract class BaseController extends Controller_Abstract
+{
     /**
      * @var \Response\Result
      */
@@ -54,7 +55,8 @@ abstract class BaseController extends Controller_Abstract {
         return $aspectList['before'];
     }
 
-    public function init(){
+    public function init()
+    {
         $this->SyResult = new Result();
         $this->user = SyUser::getUserInfo(true);
 
@@ -75,8 +77,9 @@ abstract class BaseController extends Controller_Abstract {
      * </pre>
      * @param string $data
      */
-    public function sendRsp(?string $data=null){
-        if(is_null($data)){
+    public function sendRsp(?string $data = null)
+    {
+        if (is_null($data)) {
             $this->getResponse()->setBody($this->SyResult->getJson());
         } else {
             $this->getResponse()->setBody((string)$data);
