@@ -76,7 +76,7 @@ class ProfitSharingReceiverAdd extends WxBaseShop
             throw new WxException('分账接收方不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['receiver'] = Tool::jsonEncode($this->receiver, JSON_UNESCAPED_UNICODE);
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['sub_appid'], 'sha256');
+        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid'], 'sha256');
 
         $resArr = [
             'code' => 0

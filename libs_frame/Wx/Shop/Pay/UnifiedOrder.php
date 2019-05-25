@@ -450,7 +450,7 @@ class UnifiedOrder extends WxBaseShop
             }
             $appId = $this->reqData['sub_appid'];
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $appId);
+        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
             'code' => 0,

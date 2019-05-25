@@ -33,11 +33,6 @@ class ProfitSharingFinish extends WxBaseShop
      */
     private $appid = '';
     /**
-     * 子商户公众账号ID
-     * @var string
-     */
-    private $sub_appid = '';
-    /**
      * 微信单号
      * @var string
      */
@@ -61,7 +56,6 @@ class ProfitSharingFinish extends WxBaseShop
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->setAppIdAndMchId($shopConfig);
         unset($this->reqData['sub_appid']);
-        $this->sub_appid = $shopConfig->getAppId();
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['sign_type'] = 'HMAC-SHA256';
     }
@@ -120,13 +114,13 @@ class ProfitSharingFinish extends WxBaseShop
         if (!isset($this->reqData['description'])) {
             throw new WxException('分账完结描述不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->sub_appid, 'sha256');
+        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid'], 'sha256');
 
         $resArr = [
             'code' => 0
         ];
 
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($this->sub_appid);
+        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($this->reqData['appid']);
         $tmpKey = tmpfile();
         fwrite($tmpKey, $shopConfig->getSslKey());
         $tmpKeyData = stream_get_meta_data($tmpKey);

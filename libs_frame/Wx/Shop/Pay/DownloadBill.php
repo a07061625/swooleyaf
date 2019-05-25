@@ -138,8 +138,7 @@ class DownloadBill extends WxBaseShop
         if (strlen($this->output_file) == 0) {
             throw new WxException('输出文件不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $appId = $this->merchantType == self::MERCHANT_TYPE_SELF ? $this->reqData['appid'] : $this->reqData['sub_appid'];
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $appId);
+        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
             'code' => 0

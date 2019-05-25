@@ -78,12 +78,6 @@ class WxconfigBaseEntity extends MysqlEntity
     public $merchant_appid = '';
 
     /**
-     * 服务商商户号
-     * @var string
-     */
-    public $merchant_mchid = '';
-
-    /**
      * 状态
      * @var int
      */

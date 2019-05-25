@@ -86,12 +86,6 @@ class WxConfigAccount
     private $merchantAppId = '';
 
     /**
-     * 服务商商户号
-     * @var string
-     */
-    private $merchantMchId = '';
-
-    /**
      * 配置有效状态
      * @var bool
      */
@@ -360,26 +354,6 @@ class WxConfigAccount
             }
         }
         $this->merchantAppId = $merchantAppId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMerchantMchId() : string
-    {
-        return $this->merchantMchId;
-    }
-
-    /**
-     * @param string $merchantMchId
-     * @throws \Exception\Wx\WxException
-     */
-    public function setMerchantMchId(string $merchantMchId)
-    {
-        if ((strlen($merchantMchId) > 0) && !ctype_digit($merchantMchId)) {
-            throw new WxException('服务商商户号不合法', ErrorCode::WX_PARAM_ERROR);
-        }
-        $this->merchantMchId = $merchantMchId;
     }
 
     /**

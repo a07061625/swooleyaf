@@ -195,14 +195,13 @@ class OrderRefund extends WxBaseShop
         } elseif ($this->reqData['refund_fee'] > $this->reqData['total_fee']) {
             throw new WxException('订单金额必须大于等于退款金额', ErrorCode::WX_PARAM_ERROR);
         }
-        $appId = $this->merchantType == self::MERCHANT_TYPE_SELF ? $this->reqData['appid'] : $this->reqData['sub_appid'];
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $appId);
+        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
             'code' => 0
         ];
 
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
+        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($this->reqData['appid']);
         $tmpKey = tmpfile();
         fwrite($tmpKey, $shopConfig->getSslKey());
         $tmpKeyData = stream_get_meta_data($tmpKey);

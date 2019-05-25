@@ -80,8 +80,7 @@ class OrderClose extends WxBaseShop
         if (!isset($this->reqData['out_trade_no'])) {
             throw new WxException('商户单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $appId = $this->merchantType == self::MERCHANT_TYPE_SELF ? $this->reqData['appid'] : $this->reqData['sub_appid'];
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $appId);
+        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
             'code' => 0
