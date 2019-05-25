@@ -35,8 +35,7 @@ class PayController extends CommonController
         $wxMsg = \Tool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
         \Log\Log::log('wx pay data:' . $wxMsg);
         $xmlData = \Tool\Tool::xmlToArray($wxMsg);
-        $appId = $xmlData['sub_appid'] ?? $xmlData['appid'];
-        if (\Wx\WxUtilShop::checkSign($xmlData, $appId)) {
+        if (\Wx\WxUtilShop::checkSign($xmlData, $xmlData['appid'])) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleWxPayNotify', $xmlData);
             $handleData = \Tool\Tool::jsonDecode($handleRes);
             if (is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \Constant\ErrorCode::COMMON_SUCCESS)) {
@@ -70,8 +69,7 @@ class PayController extends CommonController
         $wxMsg = \Tool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
         \Log\Log::log('wx pre pay data:' . $wxMsg);
         $xmlData = \Tool\Tool::xmlToArray($wxMsg);
-        $appId = $xmlData['sub_appid'] ?? $xmlData['appid'];
-        if (\Wx\WxUtilShop::checkSign($xmlData, $appId)) {
+        if (\Wx\WxUtilShop::checkSign($xmlData, $xmlData['appid'])) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleWxPrePayNotify', $xmlData);
             $resData = \Tool\Tool::jsonDecode($handleRes);
             if (is_array($resData) && isset($resData['code']) && ($resData['code'] == \Constant\ErrorCode::COMMON_SUCCESS)) {

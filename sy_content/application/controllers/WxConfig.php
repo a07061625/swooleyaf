@@ -21,7 +21,6 @@ class WxConfigController extends CommonController
      * @apiParam {string} payssl_cert 商户证书内容
      * @apiParam {string} payssl_key 商户密钥内容
      * @apiParam {string} [merchant_appid] 服务商微信号
-     * @apiParam {string} [merchant_mchid] 服务商商户号
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "app_id","explain": "公众号ID","type": "string","rules": {"required": 1,"alnum": 1,"min": 18,"max": 18}}
      * @SyFilter-{"field": "app_secret","explain": "公众号密钥","type": "string","rules": {"alnum": 0,"max": 32}}
@@ -32,7 +31,6 @@ class WxConfigController extends CommonController
      * @SyFilter-{"field": "payssl_cert","explain": "商户证书内容","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "payssl_key","explain": "商户密钥内容","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "merchant_appid","explain": "服务商微信号","type": "string","rules": {"alnum": 0}}
-     * @SyFilter-{"field": "merchant_mchid","explain": "服务商商户号","type": "string","rules": {"digit": 0}}
      * @apiUse CommonSuccess
      * @apiUse CommonFail
      */
@@ -78,7 +76,6 @@ class WxConfigController extends CommonController
                 '',
             ], (string)\Request\SyRequest::getParams('payssl_key', '')),
             'merchant_appid' => (string)\Request\SyRequest::getParams('merchant_appid', ''),
-            'merchant_mchid' => (string)\Request\SyRequest::getParams('merchant_mchid', ''),
         ];
         $setRes = \Dao\WxConfigDao::setConfig($needParams);
         $this->SyResult->setData($setRes);

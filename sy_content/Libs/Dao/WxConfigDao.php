@@ -33,7 +33,6 @@ class WxConfigDao
             'payssl_key' => $data['payssl_key'],
             'payssl_companybank' => '',
             'merchant_appid' => $data['merchant_appid'],
-            'merchant_mchid' => $data['merchant_mchid'],
             'status' => Project::WX_CONFIG_STATUS_ENABLE,
             'created' => $nowTime,
             'updated' => $nowTime,
@@ -47,7 +46,6 @@ class WxConfigDao
             'payssl_key' => $data['payssl_key'],
             'payssl_companybank' => '',
             'merchant_appid' => $data['merchant_appid'],
-            'merchant_mchid' => $data['merchant_mchid'],
             'updated' => $nowTime,
         ]);
         unset($ormResult1, $wxConfigBase);

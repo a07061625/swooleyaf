@@ -23,10 +23,10 @@ class ProfitSharingQuery extends WxBaseShop
      */
     private $mch_id = '';
     /**
-     * 子商户公众账号ID
+     * 公众账号ID
      * @var string
      */
-    private $sub_appid = '';
+    private $appid = '';
     /**
      * 子商户号
      * @var string
@@ -50,9 +50,9 @@ class ProfitSharingQuery extends WxBaseShop
         $this->merchantType = self::MERCHANT_TYPE_SUB;
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->setAppIdAndMchId($shopConfig);
+        $this->appid = $this->reqData['appid'];
         unset($this->reqData['sub_appid']);
         unset($this->reqData['appid']);
-        $this->sub_appid = $shopConfig->getAppId();
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['sign_type'] = 'HMAC-SHA256';
     }
@@ -95,7 +95,7 @@ class ProfitSharingQuery extends WxBaseShop
         if (!isset($this->reqData['out_order_no'])) {
             throw new WxException('商户分账单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->sub_appid, 'sha256');
+        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->appid, 'sha256');
 
         $resArr = [
             'code' => 0
