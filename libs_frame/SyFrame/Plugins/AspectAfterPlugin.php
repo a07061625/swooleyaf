@@ -24,6 +24,7 @@ class AspectAfterPlugin extends Plugin_Abstract
 
     public function __construct()
     {
+        $this->aspectMap = [];
     }
 
     private function __clone()
@@ -34,13 +35,14 @@ class AspectAfterPlugin extends Plugin_Abstract
     {
         $aspectKey = strtolower($controllerName . $actionName);
         $aspectTag = $this->aspectMap[$aspectKey] ?? null;
-        if (is_string($aspectTag)) {
-            return Registry::get($aspectTag);
-        } else {
-            $aspectTag = Server::REGISTRY_NAME_PREFIX_ASPECT_AFTER . hash('crc32b', $aspectKey);
+        if (is_null($aspectTag)) {
+            $aspectTag = hash('crc32b', $aspectKey);
             $this->aspectMap[$aspectKey] = $aspectTag;
-            return Registry::get($aspectTag);
         }
+        return [
+            'tag' => $aspectTag,
+            'list' => Registry::get(Server::REGISTRY_NAME_PREFIX_ASPECT_AFTER . $aspectTag),
+        ];
     }
 
     /**
@@ -48,18 +50,18 @@ class AspectAfterPlugin extends Plugin_Abstract
      * @param \Yaf\Response_Abstract $response
      * @return void
      */
-    public function dispatchLoopShutdown(Request_Abstract $request, Response_Abstract $response)
+    public function postDispatch(Request_Abstract $request, Response_Abstract $response)
     {
         $controllerName = $request->getControllerName();
         $actionName = $request->getActionName();
         $aspectList = $this->getAspectList($controllerName, $actionName);
-        foreach ($aspectList as $aspectName) {
+        foreach ($aspectList['list'] as $aspectName) {
             $aspectName::handleAfter();
         }
 
         $logStr = $controllerName . 'Controller::' . $actionName . 'Action exit' . PHP_EOL
                   . 'memory_usage: ' . memory_get_usage() . PHP_EOL
-                  . 'use_time: ' . (microtime(true) - $_SERVER['SYACTION_START']) . 's';
+                  . 'use_time: ' . (microtime(true) - $_SERVER['SYSTART_' . $aspectList['tag']]) . 's';
         Log::log($logStr);
     }
 }

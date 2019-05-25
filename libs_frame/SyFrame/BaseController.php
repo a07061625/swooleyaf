@@ -7,9 +7,12 @@
  */
 namespace SyFrame;
 
+use Constant\Server;
+use Reflection\BaseReflect;
 use Response\Result;
 use Tool\SyUser;
 use Yaf\Controller_Abstract;
+use Yaf\Registry;
 
 abstract class BaseController extends Controller_Abstract {
     /**
@@ -25,10 +28,43 @@ abstract class BaseController extends Controller_Abstract {
      * @var bool
      */
     public $signStatus = false;
+    /**
+     * 切面标识数组
+     * @var array
+     */
+    private $aspectMap = [];
+
+    private function getAspectList(string $controllerName, string $actionName)
+    {
+        $aspectKey = strtolower($controllerName . $actionName);
+        $aspectTag = $this->aspectMap[$aspectKey] ?? null;
+        if (is_string($aspectTag)) {
+            return Registry::get($aspectTag);
+        }
+
+        $controller = $controllerName . 'Controller';
+        $action = $actionName  . 'Action';
+        $aspectList = BaseReflect::getControllerAspectAnnotations($controller, $action);
+        $needStr = hash('crc32b', $aspectKey);
+        $aspectBeforeTag = Server::REGISTRY_NAME_PREFIX_ASPECT_BEFORE . $needStr;
+        $aspectAfterTag = Server::REGISTRY_NAME_PREFIX_ASPECT_AFTER . $needStr;
+        $this->aspectMap[$aspectKey] = $aspectBeforeTag;
+        Registry::set($aspectBeforeTag, $aspectList['before']);
+        Registry::set($aspectAfterTag, $aspectList['after']);
+        return $aspectList['before'];
+    }
 
     public function init(){
         $this->SyResult = new Result();
         $this->user = SyUser::getUserInfo(true);
+
+        //执行前置切面
+        $controllerName = $this->getRequest()->getControllerName();
+        $actionName = $this->getRequest()->getActionName();
+        $aspectList = $this->getAspectList($controllerName, $actionName);
+        foreach ($aspectList as $aspectName) {
+            $aspectName::handleBefore();
+        }
     }
 
     /**
