@@ -169,3 +169,27 @@ nginx配置: <br/>
 
 ## 图片处理
 - https://github.com/kosinix/grafika //参考地址
+
+## 切面支持
+说明:
+- 切面类必须继承\SyAspect\BaseAspect
+- 只支持在控制器的action方法注释上添加切面注释
+- 支持的切面注释为SyAspect(环绕切面),SyAspectBefore(前置切面),SyAspectAfter(后置切面)
+### 环绕切面
+    /**
+     * 登录
+     * @SyAspect-\SyAspect\Demo
+     */
+    public function loginAction()
+### 前置切面
+    /**
+     * 登录
+     * @SyAspectBefore-\SyAspect\Demo
+     */
+    public function loginAction()
+### 后置切面
+    /**
+     * 登录
+     * @SyAspectAfter-\SyAspect\Demo
+     */
+    public function loginAction()
