@@ -25,6 +25,7 @@ interface PayService
      *      'pay_money' => 100 --支付金额,单位为分,必须大于0
      *      'pay_attach' => '123_daf' --附加数据,没有则设置成空字符串,只设置一些关键数据且长度不能超过127字节
      *      'pay_sn' => '00002017061322131212345678' --支付单号
+     *      'pay_ps' => 0 --分账状态 0:不支持分账 1:不分账 2:分账
      * ]
      */
     public function getPayInfo(array $data) : array;
