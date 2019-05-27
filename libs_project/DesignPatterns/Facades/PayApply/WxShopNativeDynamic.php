@@ -29,9 +29,9 @@ class WxShopNativeDynamic extends PayApplyFacade
     {
         $profitSharingStatus = (int)Tool::getArrayVal($data['content_result'], 'pay_ps', 0);
         if ($profitSharingStatus == 0) {
-            $order = new UnifiedOrder($data['a00_appid'], UnifiedOrder::TRADE_TYPE_JSAPI);
+            $order = new UnifiedOrder($data['a00_appid'], UnifiedOrder::TRADE_TYPE_NATIVE);
         } else {
-            $order = new UnifiedOrder($data['a00_appid'], UnifiedOrder::TRADE_TYPE_JSAPI, UnifiedOrder::MERCHANT_TYPE_SUB);
+            $order = new UnifiedOrder($data['a00_appid'], UnifiedOrder::TRADE_TYPE_NATIVE, UnifiedOrder::MERCHANT_TYPE_SUB);
         }
         $order->setBody($data['content_result']['pay_name']);
         $order->setTotalFee($data['content_result']['pay_money']);
