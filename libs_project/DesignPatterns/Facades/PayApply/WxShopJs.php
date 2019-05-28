@@ -41,6 +41,11 @@ class WxShopJs extends PayApplyFacade
             $order = new UnifiedOrder($data['a00_appid'], UnifiedOrder::TRADE_TYPE_JSAPI);
         } else {
             $order = new UnifiedOrder($data['a00_appid'], UnifiedOrder::TRADE_TYPE_JSAPI, UnifiedOrder::MERCHANT_TYPE_SUB);
+            if ($profitSharingStatus == 1) {
+                $order->setProfitSharing('N');
+            } else {
+                $order->setProfitSharing('Y');
+            }
         }
         $order->setBody($data['content_result']['pay_name']);
         $order->setTotalFee($data['content_result']['pay_money']);
@@ -48,11 +53,6 @@ class WxShopJs extends PayApplyFacade
         $order->setAttach($data['content_result']['pay_attach']);
         $order->setOpenid($data['a00_openid']);
         $order->setPlatType(WxUtilBase::PLAT_TYPE_SHOP);
-        if ($profitSharingStatus == 1) {
-            $order->setProfitSharing('N');
-        } else {
-            $order->setProfitSharing('Y');
-        }
         $applyRes = $order->getDetail();
         unset($order);
         if ($applyRes['code'] > 0) {
