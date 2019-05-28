@@ -37,7 +37,7 @@ abstract class BaseController extends Controller_Abstract
 
     private function getAspectList(string $controllerName, string $actionName)
     {
-        $aspectKey = strtolower($controllerName . $actionName);
+        $aspectKey = $_SERVER['SYKEY-CA'];
         $aspectTag = $this->aspectMap[$aspectKey] ?? null;
         if (is_string($aspectTag)) {
             return Registry::get($aspectTag);

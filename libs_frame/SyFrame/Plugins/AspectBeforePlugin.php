@@ -29,9 +29,9 @@ class AspectBeforePlugin extends Plugin_Abstract
     {
     }
 
-    private function getActionTag(string $controllerName, string $actionName)
+    private function getActionTag()
     {
-        $actionKey = strtolower($controllerName . $actionName);
+        $actionKey = $_SERVER['SYKEY-CA'];
         $actionTag = $this->actionMap[$actionKey] ?? null;
         if (is_string($actionTag)) {
             return $actionTag;
@@ -49,11 +49,9 @@ class AspectBeforePlugin extends Plugin_Abstract
      */
     public function preDispatch(Request_Abstract $request, Response_Abstract $response)
     {
-        $controllerName = $request->getControllerName();
-        $actionName = $request->getActionName();
-        $actionTag = $this->getActionTag($controllerName, $actionName);
+        $actionTag = $this->getActionTag();
         $_SERVER['SYSTART_' . $actionTag] = microtime(true);
-        $logStr = $controllerName . 'Controller::' . $actionName . 'Action enter' . PHP_EOL
+        $logStr = $request->getControllerName() . 'Controller::' . $request->getActionName() . 'Action enter' . PHP_EOL
                   . 'memory_usage: ' . memory_get_usage();
         Log::log($logStr);
     }
