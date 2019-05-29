@@ -53,7 +53,7 @@ class ValidatorPlugin extends Plugin_Abstract
 
     private function getValidatorList(string $controllerName, string $actionName) : array
     {
-        $key = strtolower($controllerName . $actionName);
+        $key = $_SERVER['SYKEY-CA'];
         $validatorTag = $this->validatorMap[$key] ?? null;
         if (is_string($validatorTag)) {
             return Registry::get($validatorTag);

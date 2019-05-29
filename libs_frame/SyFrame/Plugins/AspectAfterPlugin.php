@@ -31,9 +31,9 @@ class AspectAfterPlugin extends Plugin_Abstract
     {
     }
 
-    private function getAspectList(string $controllerName, string $actionName)
+    private function getAspectList()
     {
-        $aspectKey = strtolower($controllerName . $actionName);
+        $aspectKey = $_SERVER['SYKEY-CA'];
         $aspectTag = $this->aspectMap[$aspectKey] ?? null;
         if (is_null($aspectTag)) {
             $aspectTag = hash('crc32b', $aspectKey);
@@ -52,14 +52,12 @@ class AspectAfterPlugin extends Plugin_Abstract
      */
     public function postDispatch(Request_Abstract $request, Response_Abstract $response)
     {
-        $controllerName = $request->getControllerName();
-        $actionName = $request->getActionName();
-        $aspectList = $this->getAspectList($controllerName, $actionName);
+        $aspectList = $this->getAspectList();
         foreach ($aspectList['list'] as $aspectName) {
             $aspectName::handleAfter();
         }
 
-        $logStr = $controllerName . 'Controller::' . $actionName . 'Action exit' . PHP_EOL
+        $logStr = $request->getControllerName() . 'Controller::' . $request->getActionName() . 'Action exit' . PHP_EOL
                   . 'memory_usage: ' . memory_get_usage() . PHP_EOL
                   . 'use_time: ' . (microtime(true) - $_SERVER['SYSTART_' . $aspectList['tag']]) . 's';
         Log::log($logStr);

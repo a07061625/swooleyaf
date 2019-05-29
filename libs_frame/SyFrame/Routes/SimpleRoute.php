@@ -56,6 +56,8 @@ class SimpleRoute extends Request_Abstract implements Route_Interface
         $request->setModuleName($moduleName);
         $request->setControllerName($controllerName);
         $request->setActionName($actionName);
+        $_SERVER['SYKEY-MC'] = strtolower($moduleName . $controllerName);
+        $_SERVER['SYKEY-CA'] = strtolower($controllerName . $actionName);
 
         return true;
     }

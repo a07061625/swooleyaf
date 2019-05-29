@@ -34,7 +34,7 @@ class MethodExistPlugin extends Plugin_Abstract
 
     private function getActions(string $moduleName, string $controllerName) : array
     {
-        $controllerKey = strtolower($moduleName . $controllerName);
+        $controllerKey = $_SERVER['SYKEY-MC'];
         $controllerTag = $this->controllerMap[$controllerKey] ?? null;
         if (is_string($controllerTag)) {
             return [
