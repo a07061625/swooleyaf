@@ -82,7 +82,7 @@ class MemCacheSingleton
     private function init()
     {
         $this->conn = null;
-        $configs = Tool::getConfig('memcache.' . SY_ENV . SY_PROJECT);
+        $configs = Tool::getConfig('caches.' . SY_ENV . SY_PROJECT . '.memcache');
 
         $servers = [];
         $existServers = (array)Tool::getArrayVal($configs, 'servers', []);
