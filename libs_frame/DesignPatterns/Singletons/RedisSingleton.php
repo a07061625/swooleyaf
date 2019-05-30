@@ -160,7 +160,7 @@ class RedisSingleton
     private function init()
     {
         $this->conn = null;
-        $configs = Tool::getConfig('redis.' . SY_ENV . SY_PROJECT);
+        $configs = Tool::getConfig('caches.' . SY_ENV . SY_PROJECT . '.redis');
 
         $host = Tool::getArrayVal($configs, 'host');
         $port = Tool::getArrayVal($configs, 'port');
