@@ -12,7 +12,7 @@ use Tool\Dir;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
-class CacheFileSingleton
+class CacheFileLiteSingleton
 {
     use SingletonTrait;
 
