@@ -83,7 +83,6 @@ class SolrSingleton
             $resArr['data'] = $result;
         } else {
             Log::error(Tool::jsonEncode($result, JSON_UNESCAPED_UNICODE), ErrorCode::SOLR_ADD_ERROR);
-
             $resArr['code'] = ErrorCode::SOLR_ADD_ERROR;
             $resArr['message'] = '添加失败';
         }
@@ -121,7 +120,6 @@ class SolrSingleton
             $resArr['data'] = $result;
         } else {
             Log::error(Tool::jsonEncode($result, JSON_UNESCAPED_UNICODE), ErrorCode::SOLR_UPDATE_ERROR);
-
             $resArr['code'] = ErrorCode::SOLR_UPDATE_ERROR;
             $resArr['message'] = '更新失败';
         }
@@ -162,7 +160,6 @@ class SolrSingleton
             $resArr['data'] = $result;
         } else {
             Log::error(Tool::jsonEncode($result, JSON_UNESCAPED_UNICODE), ErrorCode::SOLR_DELETE_ERROR);
-
             $resArr['code'] = ErrorCode::SOLR_DELETE_ERROR;
             $resArr['message'] = '删除失败';
         }
@@ -193,7 +190,6 @@ class SolrSingleton
             $resArr['data'] = $result;
         } else {
             Log::error(Tool::jsonEncode($result, JSON_UNESCAPED_UNICODE), ErrorCode::SOLR_SELECT_ERROR);
-
             $resArr['code'] = ErrorCode::SOLR_SELECT_ERROR;
             $resArr['message'] = '查询失败';
         }
@@ -223,7 +219,6 @@ class SolrSingleton
             $resArr['data'] = $result;
         } else {
             Log::error(Tool::jsonEncode($result, JSON_UNESCAPED_UNICODE), ErrorCode::SOLR_ANALYSIS_ERROR);
-
             $resArr['code'] = ErrorCode::SOLR_ANALYSIS_ERROR;
             $resArr['message'] = '分词失败';
         }
@@ -266,12 +261,10 @@ class SolrSingleton
                 return $resData;
             } else {
                 Log::error('解析POST响应失败,响应数据=' . $sendRes['res_content'], ErrorCode::SOLR_POST_ERROR);
-
                 throw new SolrException('解析POST响应失败', ErrorCode::SOLR_POST_ERROR);
             }
         } else {
             Log::error('curl发送solr post请求出错,错误码=' . $sendRes['res_no'] . ',错误信息=' . $sendRes['res_msg'], ErrorCode::SOLR_POST_ERROR);
-
             throw new SolrException('POST请求出错', ErrorCode::SOLR_POST_ERROR);
         }
     }
@@ -279,7 +272,7 @@ class SolrSingleton
     /**
      * 发送GET请求
      * @param string $method 操作类型
-     * @param array $params 数据数组
+     * @param array $data 数据数组
      * @return array
      * @throws \Exception\Solr\SolrException
      */
@@ -317,12 +310,10 @@ class SolrSingleton
                 return $resData;
             } else {
                 Log::error('解析GET响应失败,响应数据=' . $sendRes['res_content'], ErrorCode::SOLR_GET_ERROR);
-
                 throw new SolrException('解析GET响应失败', ErrorCode::SOLR_GET_ERROR);
             }
         } else {
             Log::error('curl发送solr get请求出错,错误码=' . $sendRes['res_no'] . ',错误信息=' . $sendRes['res_msg'], ErrorCode::SOLR_GET_ERROR);
-
             throw new SolrException('GET请求出错', ErrorCode::SOLR_GET_ERROR);
         }
     }
