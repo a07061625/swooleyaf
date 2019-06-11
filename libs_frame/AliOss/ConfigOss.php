@@ -18,6 +18,16 @@ class ConfigOss
      */
     private $endpoint = '';
     /**
+     * 终端节点域名
+     * @var string
+     */
+    private $endpointDomain = '';
+    /**
+     * 终端节点协议
+     * @var string
+     */
+    private $endpointProtocol = '';
+    /**
      * 帐号ID
      * @var string
      */
@@ -55,16 +65,38 @@ class ConfigOss
     }
 
     /**
-     * @param string $endpoint
+     * @return string
+     */
+    public function getEndpointDomain() : string
+    {
+        return $this->endpointDomain;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEndpointProtocol() : string
+    {
+        return $this->endpointProtocol;
+    }
+
+    /**
+     * @param string $endpointProtocol
+     * @param string $endpointDomain
      * @throws \Exception\AliOss\OssException
      */
-    public function setEndpoint(string $endpoint)
+    public function setEndpointProtocolAndDomain(string $endpointProtocol, string $endpointDomain)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $endpoint) > 0) {
-            $this->endpoint = $endpoint;
-        } else {
-            throw new OssException('终端节点不合法', ErrorCode::ALIOSS_PARAM_ERROR);
+        if (!ctype_alpha($endpointProtocol)) {
+            throw new OssException('终端节点协议不合法', ErrorCode::ALIOSS_PARAM_ERROR);
         }
+        $trueDomain = trim($endpointDomain);
+        if (strlen($trueDomain) == 0) {
+            throw new OssException('终端节点域名不合法', ErrorCode::ALIOSS_PARAM_ERROR);
+        }
+        $this->endpointProtocol = strtolower($endpointProtocol);
+        $this->endpointDomain = $trueDomain;
+        $this->endpoint = $this->endpointProtocol . '://' . $trueDomain;
     }
 
     /**

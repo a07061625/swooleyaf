@@ -30,10 +30,12 @@ class AliOssSingleton
     private function __construct()
     {
         $configs = Tool::getConfig('oss.' . SY_ENV . SY_PROJECT);
+        $endpointDomain = (string)Tool::getArrayVal($configs, 'endpoint.domain', '', true);
+        $endpointProtocol = (string)Tool::getArrayVal($configs, 'endpoint.protocol', 'http', true);
         $ossConfig = new ConfigOss();
         $ossConfig->setAccessKeyId((string)Tool::getArrayVal($configs, 'access.key.id', '', true));
         $ossConfig->setAccessKeySecret((string)Tool::getArrayVal($configs, 'access.key.secret', '', true));
-        $ossConfig->setEndpoint((string)Tool::getArrayVal($configs, 'endpoint', '', true));
+        $ossConfig->setEndpointProtocolAndDomain($endpointProtocol, $endpointDomain);
         $ossConfig->setBucketName((string)Tool::getArrayVal($configs, 'bucket.name', '', true));
         $ossConfig->setBucketDomain((string)Tool::getArrayVal($configs, 'bucket.domain', '', true));
         $this->ossConfig = $ossConfig;

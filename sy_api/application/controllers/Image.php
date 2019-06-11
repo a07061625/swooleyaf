@@ -163,7 +163,7 @@ class ImageController extends CommonController
                 'signature' => $signRes['signature'],
                 'upload_path' => $uploadPath,
                 'bucket_domain' => $ossConfig->getBucketDomain(),
-                'oss_host' => 'http://' . $ossConfig->getBucketName() . '.oss-cn-shenzhen.aliyuncs.com',
+                'oss_host' => 'http://' . $ossConfig->getBucketName() . '.' . $ossConfig->getEndpointDomain(),
                 'max_size' => $maxFileSize,
                 'success_status' => $successStatus,
                 'expire_time' => $expireTime,
