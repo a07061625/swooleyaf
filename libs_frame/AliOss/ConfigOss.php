@@ -87,16 +87,16 @@ class ConfigOss
      */
     public function setEndpointProtocolAndDomain(string $endpointProtocol, string $endpointDomain)
     {
-        if (!ctype_alpha($endpointProtocol)) {
+        if (!in_array($endpointProtocol, ['http', 'https'])) {
             throw new OssException('终端节点协议不合法', ErrorCode::ALIOSS_PARAM_ERROR);
         }
         $trueDomain = trim($endpointDomain);
         if (strlen($trueDomain) == 0) {
             throw new OssException('终端节点域名不合法', ErrorCode::ALIOSS_PARAM_ERROR);
         }
-        $this->endpointProtocol = strtolower($endpointProtocol);
+        $this->endpointProtocol = $endpointProtocol;
         $this->endpointDomain = $trueDomain;
-        $this->endpoint = $this->endpointProtocol . '://' . $trueDomain;
+        $this->endpoint = $endpointProtocol . '://' . $trueDomain;
     }
 
     /**
