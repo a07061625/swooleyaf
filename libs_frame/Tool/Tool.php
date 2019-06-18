@@ -805,4 +805,25 @@ class Tool
             ];
         }
     }
+
+    /**
+     * 计算两个点之间的经纬度距离
+     * @param float $lng1 起点经度
+     * @param float $lat1 起点纬度
+     * @param float $lng2 终点经度
+     * @param float $lat2 终点纬度
+     * @return int 距离,单位为米
+     */
+    public static function getDistance($lng1, $lat1, $lng2, $lat2)
+    {
+        //将角度转为狐度
+        $radLng1 = deg2rad($lng1);
+        $radLat1 = deg2rad($lat1);
+        $radLng2 = deg2rad($lng2);
+        $radLat2 = deg2rad($lat2);
+        $num1 = pow(sin(($radLat1 - $radLat2) / 2), 2);
+        $num2 = pow(sin(($radLng1 - $radLng2) / 2), 2);
+        $num3 = $num1 + cos($radLat1) * cos($radLat2) * $num2;
+        return (int)(12756274 * asin(sqrt($num3)));
+    }
 }
