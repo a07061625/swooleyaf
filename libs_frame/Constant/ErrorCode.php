@@ -209,6 +209,11 @@ class ErrorCode
     const SESSION_JWT_DATA_ERROR = 106001;
     const SESSION_JWT_SIGN_ERROR = 106002;
 
+    //物流错误,取值范围:106100-106199
+    const LOGISTICS_PARAM_ERROR = 106100;
+    const LOGISTICS_POST_ERROR = 106101;
+    const LOGISTICS_GET_ERROR = 106102;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -339,6 +344,9 @@ class ErrorCode
         self::SESSION_JWT_DATA_ERROR => '会话JWT数据错误',
         self::SESSION_JWT_SIGN_ERROR => '会话JWT签名错误',
         self::SESSION_JWT_REFRESH_ERROR => '会话JWT刷新错误',
+        self::LOGISTICS_PARAM_ERROR => '物流参数错误',
+        self::LOGISTICS_POST_ERROR => '物流发送POST请求出错',
+        self::LOGISTICS_GET_ERROR => '物流发送GET请求出错',
     ];
 
     /**
