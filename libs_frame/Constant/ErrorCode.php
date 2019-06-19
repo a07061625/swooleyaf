@@ -213,6 +213,8 @@ class ErrorCode
     const LOGISTICS_PARAM_ERROR = 106100;
     const LOGISTICS_POST_ERROR = 106101;
     const LOGISTICS_GET_ERROR = 106102;
+    const LOGISTICS_REQ_ALIMART_ERROR = 106110;
+    const LOGISTICS_REQ_KD100_ERROR = 106111;
 
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
@@ -347,6 +349,8 @@ class ErrorCode
         self::LOGISTICS_PARAM_ERROR => '物流参数错误',
         self::LOGISTICS_POST_ERROR => '物流发送POST请求出错',
         self::LOGISTICS_GET_ERROR => '物流发送GET请求出错',
+        self::LOGISTICS_REQ_ALIMART_ERROR => '物流阿里云市场发送请求出错',
+        self::LOGISTICS_REQ_KD100_ERROR => '物流快递100发送请求出错',
     ];
 
     /**
