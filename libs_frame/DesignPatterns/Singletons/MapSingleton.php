@@ -31,23 +31,6 @@ class MapSingleton
 
     private function __construct()
     {
-        $configs = Tool::getConfig('map.' . SY_ENV . SY_PROJECT);
-
-        $baiduConfig = new ConfigBaiDu();
-        $baiduConfig->setAk((string)Tool::getArrayVal($configs, 'baidu.ak', '', true));
-        $baiduConfig->setServerIp((string)Tool::getArrayVal($configs, 'baidu.server.ip', '', true));
-        $this->baiduConfig = $baiduConfig;
-
-        $tencentConfig = new ConfigTencent();
-        $tencentConfig->setKey((string)Tool::getArrayVal($configs, 'tencent.key', '', true));
-        $tencentConfig->setServerIp((string)Tool::getArrayVal($configs, 'tencent.server.ip', '', true));
-        $tencentConfig->setDomain((string)Tool::getArrayVal($configs, 'tencent.domain', '', true));
-        $this->tencentConfig = $tencentConfig;
-
-        $gaodeConfig = new ConfigGaoDe();
-        $gaodeConfig->setKey((string)Tool::getArrayVal($configs, 'gaode.key', '', true));
-        $gaodeConfig->setSecret((string)Tool::getArrayVal($configs, 'gaode.secret', '', true));
-        $this->gaoDeConfig = $gaodeConfig;
     }
 
     /**
@@ -67,6 +50,14 @@ class MapSingleton
      */
     public function getBaiduConfig()
     {
+        if (is_null($this->baiduConfig)) {
+            $configs = Tool::getConfig('map.' . SY_ENV . SY_PROJECT);
+            $baiduConfig = new ConfigBaiDu();
+            $baiduConfig->setAk((string)Tool::getArrayVal($configs, 'baidu.ak', '', true));
+            $baiduConfig->setServerIp((string)Tool::getArrayVal($configs, 'baidu.server.ip', '', true));
+            $this->baiduConfig = $baiduConfig;
+        }
+
         return $this->baiduConfig;
     }
 
@@ -75,6 +66,15 @@ class MapSingleton
      */
     public function getTencentConfig()
     {
+        if (is_null($this->tencentConfig)) {
+            $configs = Tool::getConfig('map.' . SY_ENV . SY_PROJECT);
+            $tencentConfig = new ConfigTencent();
+            $tencentConfig->setKey((string)Tool::getArrayVal($configs, 'tencent.key', '', true));
+            $tencentConfig->setServerIp((string)Tool::getArrayVal($configs, 'tencent.server.ip', '', true));
+            $tencentConfig->setDomain((string)Tool::getArrayVal($configs, 'tencent.domain', '', true));
+            $this->tencentConfig = $tencentConfig;
+        }
+
         return $this->tencentConfig;
     }
 
@@ -83,6 +83,14 @@ class MapSingleton
      */
     public function getGaoDeConfig()
     {
+        if (is_null($this->gaoDeConfig)) {
+            $configs = Tool::getConfig('map.' . SY_ENV . SY_PROJECT);
+            $gaodeConfig = new ConfigGaoDe();
+            $gaodeConfig->setKey((string)Tool::getArrayVal($configs, 'gaode.key', '', true));
+            $gaodeConfig->setSecret((string)Tool::getArrayVal($configs, 'gaode.secret', '', true));
+            $this->gaoDeConfig = $gaodeConfig;
+        }
+
         return $this->gaoDeConfig;
     }
 }
