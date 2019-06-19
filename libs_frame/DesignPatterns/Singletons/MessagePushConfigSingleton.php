@@ -34,28 +34,6 @@ class MessagePushConfigSingleton
 
     private function __construct()
     {
-        $configs = Tool::getConfig('messagepush.' . SY_ENV . SY_PROJECT);
-
-        //设置阿里配置
-        $aliConfig = new ConfigAli();
-        $aliConfig->setAccessKey((string)Tool::getArrayVal($configs, 'ali.access.key', '', true));
-        $aliConfig->setAccessSecret((string)Tool::getArrayVal($configs, 'ali.access.secret', '', true));
-        $aliConfig->setRegionId((string)Tool::getArrayVal($configs, 'ali.region.id', '', true));
-        $this->aliConfig = $aliConfig;
-
-        //设置信鸽安卓配置
-        $xinGeAndroidConfig = new ConfigXinGe();
-        $xinGeAndroidConfig->setPlatform(ConfigXinGe::PLATFORM_TYPE_ANDROID);
-        $xinGeAndroidConfig->setAppId((string)Tool::getArrayVal($configs, 'xinge.android.app.id', '', true));
-        $xinGeAndroidConfig->setAppSecret((string)Tool::getArrayVal($configs, 'xinge.android.app.secret', '', true));
-        $this->xinGeAndroidConfig = $xinGeAndroidConfig;
-
-        //设置信鸽苹果配置
-        $xinGeIosConfig = new ConfigXinGe();
-        $xinGeIosConfig->setPlatform(ConfigXinGe::PLATFORM_TYPE_IOS);
-        $xinGeIosConfig->setAppId((string)Tool::getArrayVal($configs, 'xinge.ios.app.id', '', true));
-        $xinGeIosConfig->setAppSecret((string)Tool::getArrayVal($configs, 'xinge.ios.app.secret', '', true));
-        $this->xinGeIosConfig = $xinGeIosConfig;
     }
 
     /**
@@ -75,6 +53,15 @@ class MessagePushConfigSingleton
      */
     public function getAliConfig()
     {
+        if (is_null($this->aliConfig)) {
+            $configs = Tool::getConfig('messagepush.' . SY_ENV . SY_PROJECT);
+            $aliConfig = new ConfigAli();
+            $aliConfig->setAccessKey((string)Tool::getArrayVal($configs, 'ali.access.key', '', true));
+            $aliConfig->setAccessSecret((string)Tool::getArrayVal($configs, 'ali.access.secret', '', true));
+            $aliConfig->setRegionId((string)Tool::getArrayVal($configs, 'ali.region.id', '', true));
+            $this->aliConfig = $aliConfig;
+        }
+
         return $this->aliConfig;
     }
 
@@ -83,6 +70,15 @@ class MessagePushConfigSingleton
      */
     public function getXinGeAndroidConfig()
     {
+        if (is_null($this->xinGeAndroidConfig)) {
+            $configs = Tool::getConfig('messagepush.' . SY_ENV . SY_PROJECT);
+            $xinGeConfig = new ConfigXinGe();
+            $xinGeConfig->setPlatform(ConfigXinGe::PLATFORM_TYPE_ANDROID);
+            $xinGeConfig->setAppId((string)Tool::getArrayVal($configs, 'xinge.android.app.id', '', true));
+            $xinGeConfig->setAppSecret((string)Tool::getArrayVal($configs, 'xinge.android.app.secret', '', true));
+            $this->xinGeAndroidConfig = $xinGeConfig;
+        }
+
         return $this->xinGeAndroidConfig;
     }
 
@@ -91,6 +87,15 @@ class MessagePushConfigSingleton
      */
     public function getXinGeIosConfig()
     {
+        if (is_null($this->xinGeIosConfig)) {
+            $configs = Tool::getConfig('messagepush.' . SY_ENV . SY_PROJECT);
+            $xinGeConfig = new ConfigXinGe();
+            $xinGeConfig->setPlatform(ConfigXinGe::PLATFORM_TYPE_IOS);
+            $xinGeConfig->setAppId((string)Tool::getArrayVal($configs, 'xinge.ios.app.id', '', true));
+            $xinGeConfig->setAppSecret((string)Tool::getArrayVal($configs, 'xinge.ios.app.secret', '', true));
+            $this->xinGeIosConfig = $xinGeConfig;
+        }
+
         return $this->xinGeIosConfig;
     }
 }
