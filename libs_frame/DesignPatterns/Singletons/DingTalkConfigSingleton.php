@@ -38,21 +38,6 @@ class DingTalkConfigSingleton
 
     private function __construct()
     {
-        $configs = Tool::getConfig('dingtalk.' . SY_ENV . SY_PROJECT);
-
-        //初始化企业服务商公共配置
-        $corpProviderConfig = new TalkConfigProvider();
-        $corpProviderConfig->setCorpId((string)Tool::getArrayVal($configs, 'provider.corp.id', '', true));
-        $corpProviderConfig->setSsoSecret((string)Tool::getArrayVal($configs, 'provider.sso.secret', '', true));
-        $corpProviderConfig->setToken((string)Tool::getArrayVal($configs, 'provider.token', '', true));
-        $corpProviderConfig->setAesKey((string)Tool::getArrayVal($configs, 'provider.aeskey', '', true));
-        $corpProviderConfig->setSuiteId((int)Tool::getArrayVal($configs, 'provider.suite.id', 0, true));
-        $corpProviderConfig->setSuiteKey((string)Tool::getArrayVal($configs, 'provider.suite.key', '', true));
-        $corpProviderConfig->setSuiteSecret((string)Tool::getArrayVal($configs, 'provider.suite.secret', '', true));
-        $corpProviderConfig->setLoginAppId((string)Tool::getArrayVal($configs, 'provider.login.app.id', '', true));
-        $corpProviderConfig->setLoginAppSecret((string)Tool::getArrayVal($configs, 'provider.login.app.secret', '', true));
-        $corpProviderConfig->setLoginUrlCallback((string)Tool::getArrayVal($configs, 'provider.login.url.callback', '', true));
-        $this->corpProviderConfig = $corpProviderConfig;
     }
 
     private function __clone()
@@ -77,6 +62,22 @@ class DingTalkConfigSingleton
      */
     public function getCorpProviderConfig()
     {
+        if (is_null($this->corpProviderConfig)) {
+            $configs = Tool::getConfig('dingtalk.' . SY_ENV . SY_PROJECT);
+            $corpProviderConfig = new TalkConfigProvider();
+            $corpProviderConfig->setCorpId((string)Tool::getArrayVal($configs, 'provider.corp.id', '', true));
+            $corpProviderConfig->setSsoSecret((string)Tool::getArrayVal($configs, 'provider.sso.secret', '', true));
+            $corpProviderConfig->setToken((string)Tool::getArrayVal($configs, 'provider.token', '', true));
+            $corpProviderConfig->setAesKey((string)Tool::getArrayVal($configs, 'provider.aeskey', '', true));
+            $corpProviderConfig->setSuiteId((int)Tool::getArrayVal($configs, 'provider.suite.id', 0, true));
+            $corpProviderConfig->setSuiteKey((string)Tool::getArrayVal($configs, 'provider.suite.key', '', true));
+            $corpProviderConfig->setSuiteSecret((string)Tool::getArrayVal($configs, 'provider.suite.secret', '', true));
+            $corpProviderConfig->setLoginAppId((string)Tool::getArrayVal($configs, 'provider.login.app.id', '', true));
+            $corpProviderConfig->setLoginAppSecret((string)Tool::getArrayVal($configs, 'provider.login.app.secret', '', true));
+            $corpProviderConfig->setLoginUrlCallback((string)Tool::getArrayVal($configs, 'provider.login.url.callback', '', true));
+            $this->corpProviderConfig = $corpProviderConfig;
+        }
+
         return $this->corpProviderConfig;
     }
 

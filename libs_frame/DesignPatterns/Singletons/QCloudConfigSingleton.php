@@ -23,16 +23,6 @@ class QCloudConfigSingleton
 
     private function __construct()
     {
-        $configs = Tool::getConfig('qcloud.' . SY_ENV . SY_PROJECT);
-
-        $cosConfig = new ConfigCos();
-        $cosConfig->setAppId((string)Tool::getArrayVal($configs, 'cos.app.id', '', true));
-        $cosConfig->setSecretId((string)Tool::getArrayVal($configs, 'cos.secret.id', '', true));
-        $cosConfig->setSecretKey((string)Tool::getArrayVal($configs, 'cos.secret.key', '', true));
-        $cosConfig->setBucketName((string)Tool::getArrayVal($configs, 'cos.bucket.name', '', true));
-        $cosConfig->setRegionTag((string)Tool::getArrayVal($configs, 'cos.region.tag', '', true));
-        $cosConfig->createReqHost();
-        $this->cosConfig = $cosConfig;
     }
 
     /**
@@ -52,6 +42,18 @@ class QCloudConfigSingleton
      */
     public function getCosConfig()
     {
+        if (is_null($this->cosConfig)) {
+            $configs = Tool::getConfig('qcloud.' . SY_ENV . SY_PROJECT);
+            $cosConfig = new ConfigCos();
+            $cosConfig->setAppId((string)Tool::getArrayVal($configs, 'cos.app.id', '', true));
+            $cosConfig->setSecretId((string)Tool::getArrayVal($configs, 'cos.secret.id', '', true));
+            $cosConfig->setSecretKey((string)Tool::getArrayVal($configs, 'cos.secret.key', '', true));
+            $cosConfig->setBucketName((string)Tool::getArrayVal($configs, 'cos.bucket.name', '', true));
+            $cosConfig->setRegionTag((string)Tool::getArrayVal($configs, 'cos.region.tag', '', true));
+            $cosConfig->createReqHost();
+            $this->cosConfig = $cosConfig;
+        }
+
         return $this->cosConfig;
     }
 }
