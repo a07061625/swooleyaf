@@ -34,16 +34,19 @@ abstract class LogisticsUtilAliMart extends LogisticsUtilBase
             return $resArr;
         }
         $rspData = Tool::jsonDecode($sendRes['res_content']);
-        if ($rspData['showapi_res_code'] == 0) {
+        if (isset($rspData['showapi_res_code']) && ($rspData['showapi_res_code'] == 0)) {
             if ($rspData['showapi_res_body']['ret_code'] == 0) {
                 $resArr['data'] = $rspData['showapi_res_body'];
             } else {
                 $resArr['code'] = ErrorCode::LOGISTICS_REQ_ALIMART_ERROR;
                 $resArr['msg'] = $rspData['showapi_res_body']['msg'];
             }
-        } else {
+        } elseif (isset($rspData['showapi_res_error'])) {
             $resArr['code'] = ErrorCode::LOGISTICS_REQ_ALIMART_ERROR;
             $resArr['msg'] = $rspData['showapi_res_error'];
+        } else {
+            $resArr['code'] = ErrorCode::LOGISTICS_REQ_ALIMART_ERROR;
+            $resArr['msg'] = '解析响应数据出错';
         }
         return $resArr;
     }
