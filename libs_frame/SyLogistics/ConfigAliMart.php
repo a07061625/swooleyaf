@@ -149,7 +149,7 @@ class ConfigAliMart
             throw new AliMartException('服务协议不合法', ErrorCode::LOGISTICS_PARAM_ERROR);
         }
         $trueDomain = trim($domain);
-        if (strlen($trueDomain)) {
+        if (strlen($trueDomain) == 0) {
             throw new AliMartException('服务域名不合法', ErrorCode::LOGISTICS_PARAM_ERROR);
         }
         $this->serviceProtocol = $protocol;
