@@ -14,6 +14,11 @@ use Tool\Tool;
 class ConfigAliYun
 {
     /**
+     * 区域ID
+     * @var string
+     */
+    private $regionId = '';
+    /**
      * APP KEY
      * @var string
      */
@@ -35,6 +40,27 @@ class ConfigAliYun
     public function __toString()
     {
         return Tool::jsonEncode($this->getConfigs(), JSON_UNESCAPED_UNICODE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getRegionId() : string
+    {
+        return $this->regionId;
+    }
+
+    /**
+     * @param string $regionId
+     * @throws \Exception\Sms\AliYunException
+     */
+    public function setRegionId(string $regionId)
+    {
+        if (strlen($regionId) > 0) {
+            $this->regionId = $regionId;
+        } else {
+            throw new AliYunException('区域ID不合法', ErrorCode::SMS_PARAM_ERROR);
+        }
     }
 
     /**
@@ -86,6 +112,7 @@ class ConfigAliYun
     public function getConfigs() : array
     {
         return [
+            'region.id' => $this->regionId,
             'app.key' => $this->appKey,
             'app.secret' => $this->appSecret,
         ];

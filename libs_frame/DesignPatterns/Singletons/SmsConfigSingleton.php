@@ -57,6 +57,7 @@ class SmsConfigSingleton
         if (is_null($this->aliYunConfig)) {
             $configs = Tool::getConfig('sms.' . SY_ENV . SY_PROJECT);
             $aliYunConfig = new ConfigAliYun();
+            $aliYunConfig->setRegionId((string)Tool::getArrayVal($configs, 'aliyun.region.id', '', true));
             $aliYunConfig->setAppKey((string)Tool::getArrayVal($configs, 'aliyun.app.key', '', true));
             $aliYunConfig->setAppSecret((string)Tool::getArrayVal($configs, 'aliyun.app.secret', '', true));
             $this->aliYunConfig = $aliYunConfig;
