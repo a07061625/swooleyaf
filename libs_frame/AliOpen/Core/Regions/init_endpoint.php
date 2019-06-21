@@ -6,9 +6,9 @@
  * Time: 14:19
  */
 $endpointData = file_get_contents(__DIR__ . '/endpoints.json');
-
+$totalPoints = \Tool\Tool::jsonDecode($endpointData);
 $endpoints = [];
-foreach ($endpointData['Endpoints'] as $eEndpoint) {
+foreach ($totalPoints as $eEndpoint) {
     $productDomains = [];
     foreach ($eEndpoint['Products'] as $eProduct) {
         $productDomains[$eProduct['ProductName']] = new \AliOpen\Core\Regions\ProductDomain($eProduct['ProductName'], $eProduct['DomainName']);
