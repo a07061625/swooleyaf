@@ -473,7 +473,6 @@ class Tool
         if ($model == 1) {
             if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
                 $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-
                 return trim($ips[0]);
             } elseif (isset($_SERVER['HTTP_X_REAL_IP'])) {
                 return trim($_SERVER['HTTP_X_REAL_IP']);
