@@ -8,6 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use SyMessagePush\ConfigAli;
+use SyMessagePush\ConfigJPush;
 use SyMessagePush\ConfigXinGe;
 use Tool\Tool;
 use Traits\SingletonTrait;
@@ -31,6 +32,11 @@ class MessagePushConfigSingleton
      * @var \SyMessagePush\ConfigXinGe
      */
     private $xinGeIosConfig = null;
+    /**
+     * 极光配置
+     * @var \SyMessagePush\ConfigJPush
+     */
+    private $jPushConfig = null;
 
     private function __construct()
     {
@@ -97,5 +103,28 @@ class MessagePushConfigSingleton
         }
 
         return $this->xinGeIosConfig;
+    }
+
+    /**
+     * @return \SyMessagePush\ConfigJPush
+     */
+    public function getJPushConfig()
+    {
+        if (is_null($this->jPushConfig)) {
+            $configs = Tool::getConfig('messagepush.' . SY_ENV . SY_PROJECT);
+            $appKey = (string)Tool::getArrayVal($configs, 'jpush.app.key', '', true);
+            $masterSecret = (string)Tool::getArrayVal($configs, 'jpush.master.secret', '', true);
+            $devKey = (string)Tool::getArrayVal($configs, 'jpush.dev.key', '', true);
+            $devSecret = (string)Tool::getArrayVal($configs, 'jpush.dev.secret', '', true);
+            $groupKey = (string)Tool::getArrayVal($configs, 'jpush.group.key', '', true);
+            $groupSecret = (string)Tool::getArrayVal($configs, 'jpush.group.secret', '', true);
+            $jPushConfig = new ConfigJPush();
+            $jPushConfig->setAppConfig($appKey, $masterSecret);
+            $jPushConfig->setDevConfig($devKey, $devSecret);
+            $jPushConfig->setGroupConfig($groupKey, $groupSecret);
+            $this->jPushConfig = $jPushConfig;
+        }
+
+        return $this->jPushConfig;
     }
 }

@@ -23,7 +23,7 @@ final class PushUtilXinGe extends PushUtilBase
 
         $sendRes = self::sendCurl($pushBase->getDetail());
         if ($sendRes === false) {
-            $resArr['code'] = ErrorCode::MESSAGE_PUSH_POST_ERROR;
+            $resArr['code'] = ErrorCode::MESSAGE_PUSH_REQ_XINGE_ERROR;
             $resArr['message'] = '发送请求出错';
         }
 
@@ -31,10 +31,10 @@ final class PushUtilXinGe extends PushUtilBase
         if (isset($sendData['ret_code']) && ($sendData['ret_code'] == 0)) {
             $resArr['data'] = $sendData;
         } elseif (isset($sendData['err_msg'])) {
-            $resArr['code'] = ErrorCode::MESSAGE_PUSH_PARAM_ERROR;
+            $resArr['code'] = ErrorCode::MESSAGE_PUSH_REQ_XINGE_ERROR;
             $resArr['message'] = $sendData['err_msg'];
         } else {
-            $resArr['code'] = ErrorCode::MESSAGE_PUSH_PARAM_ERROR;
+            $resArr['code'] = ErrorCode::MESSAGE_PUSH_REQ_XINGE_ERROR;
             $resArr['message'] = '解析响应数据出错';
         }
 
