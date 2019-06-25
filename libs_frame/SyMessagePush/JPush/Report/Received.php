@@ -10,6 +10,7 @@ namespace SyMessagePush\JPush\Report;
 use Constant\ErrorCode;
 use Exception\MessagePush\JPushException;
 use SyMessagePush\JPush\ReportBase;
+use SyMessagePush\PushUtilJPush;
 
 class Received extends ReportBase
 {
@@ -19,9 +20,11 @@ class Received extends ReportBase
      */
     private $msg_ids = [];
 
-    public function __construct()
+    public function __construct(string $key)
     {
-        parent::__construct('app');
+        parent::__construct();
+        $this->reqHeader['Authorization'] = PushUtilJPush::getReqAuth($key, 'app');
+        $this->objKey = $key;
         $this->reqMethod = self::REQ_METHOD_GET;
         $this->serviceUri = '/v3/received';
     }

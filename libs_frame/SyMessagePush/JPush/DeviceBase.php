@@ -11,9 +11,9 @@ use SyMessagePush\PushBaseJPush;
 
 abstract class DeviceBase extends PushBaseJPush
 {
-    public function __construct(string $authType)
+    public function __construct()
     {
-        parent::__construct($authType);
+        parent::__construct();
         $this->serviceDomain = 'https://device.jpush.cn';
     }
 }

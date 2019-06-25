@@ -10,6 +10,7 @@ namespace SyMessagePush\JPush\Push;
 use Constant\ErrorCode;
 use Exception\MessagePush\JPushException;
 use SyMessagePush\JPush\PushBase;
+use SyMessagePush\PushUtilJPush;
 
 class CidList extends PushBase
 {
@@ -24,9 +25,11 @@ class CidList extends PushBase
      */
     private $type = '';
 
-    public function __construct()
+    public function __construct(string $key)
     {
-        parent::__construct('app');
+        parent::__construct();
+        $this->reqHeader['Authorization'] = PushUtilJPush::getReqAuth($key, 'app');
+        $this->objKey = $key;
         $this->reqMethod = self::REQ_METHOD_GET;
         $this->serviceUri = '/v3/push/cid';
         $this->reqData['count'] = 1;

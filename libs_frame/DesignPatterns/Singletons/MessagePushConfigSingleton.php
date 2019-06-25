@@ -7,15 +7,20 @@
  */
 namespace DesignPatterns\Singletons;
 
+use Constant\ErrorCode;
+use Constant\Project;
+use Exception\MessagePush\JPushException;
 use SyMessagePush\ConfigAli;
-use SyMessagePush\ConfigJPush;
+use SyMessagePush\ConfigJPushDev;
 use SyMessagePush\ConfigXinGe;
 use Tool\Tool;
+use Traits\JPushConfigTrait;
 use Traits\SingletonTrait;
 
 class MessagePushConfigSingleton
 {
     use SingletonTrait;
+    use JPushConfigTrait;
 
     /**
      * 阿里配置
@@ -33,10 +38,30 @@ class MessagePushConfigSingleton
      */
     private $xinGeIosConfig = null;
     /**
-     * 极光配置
-     * @var \SyMessagePush\ConfigJPush
+     * 极光开发配置
+     * @var \SyMessagePush\ConfigJPushDev
      */
-    private $jPushConfig = null;
+    private $jPushDevConfig = null;
+    /**
+     * 极光应用配置列表
+     * @var array
+     */
+    private $jPushAppConfigs = [];
+    /**
+     * 极光应用配置清理时间戳
+     * @var int
+     */
+    private $jPushAppClearTime = 0;
+    /**
+     * 极光分组配置列表
+     * @var array
+     */
+    private $jPushGroupConfigs = [];
+    /**
+     * 极光分组配置清理时间戳
+     * @var int
+     */
+    private $jPushGroupClearTime = 0;
 
     private function __construct()
     {
@@ -106,25 +131,143 @@ class MessagePushConfigSingleton
     }
 
     /**
-     * @return \SyMessagePush\ConfigJPush
+     * @return \SyMessagePush\ConfigJPushDev
      */
-    public function getJPushConfig()
+    public function getJPushDevConfig()
     {
-        if (is_null($this->jPushConfig)) {
+        if (is_null($this->jPushDevConfig)) {
             $configs = Tool::getConfig('messagepush.' . SY_ENV . SY_PROJECT);
-            $appKey = (string)Tool::getArrayVal($configs, 'jpush.app.key', '', true);
-            $masterSecret = (string)Tool::getArrayVal($configs, 'jpush.master.secret', '', true);
             $devKey = (string)Tool::getArrayVal($configs, 'jpush.dev.key', '', true);
             $devSecret = (string)Tool::getArrayVal($configs, 'jpush.dev.secret', '', true);
-            $groupKey = (string)Tool::getArrayVal($configs, 'jpush.group.key', '', true);
-            $groupSecret = (string)Tool::getArrayVal($configs, 'jpush.group.secret', '', true);
-            $jPushConfig = new ConfigJPush();
-            $jPushConfig->setAppConfig($appKey, $masterSecret);
-            $jPushConfig->setDevConfig($devKey, $devSecret);
-            $jPushConfig->setGroupConfig($groupKey, $groupSecret);
-            $this->jPushConfig = $jPushConfig;
+            $devConfig = new ConfigJPushDev();
+            $devConfig->setKeyAndSecret($devKey, $devSecret);
+            $this->jPushDevConfig = $devConfig;
         }
 
-        return $this->jPushConfig;
+        return $this->jPushDevConfig;
+    }
+
+    /**
+     * @return array
+     */
+    public function getJPushAppConfigs()
+    {
+        return $this->jPushAppConfigs;
+    }
+
+    /**
+     * @param string $key
+     * @return \SyMessagePush\ConfigJPushApp|null
+     */
+    private function getLocalJPushAppConfig(string $key)
+    {
+        $nowTime = Tool::getNowTime();
+        if ($this->jPushAppClearTime < $nowTime) {
+            $delIds = [];
+            foreach ($this->jPushAppConfigs as $eKey => $appConfig) {
+                if ($appConfig->getExpireTime() < $nowTime) {
+                    $delIds[] = $eKey;
+                }
+            }
+            foreach ($delIds as $eKey) {
+                unset($this->jPushAppConfigs[$eKey]);
+            }
+
+            $this->jPushAppClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_JPUSH_APP_CLEAR;
+        }
+
+        return Tool::getArrayVal($this->jPushAppConfigs, $key, null);
+    }
+
+    /**
+     * @param string $key
+     * @return \SyMessagePush\ConfigJPushApp
+     * @throws \Exception\MessagePush\JPushException
+     */
+    public function getJPushAppConfig(string $key)
+    {
+        $nowTime = Tool::getNowTime();
+        $appConfig = $this->getLocalJPushAppConfig($key);
+        if (is_null($appConfig)) {
+            $appConfig = $this->refreshJPushAppConfig($key);
+        } elseif ($appConfig->getExpireTime() < $nowTime) {
+            $appConfig = $this->refreshJPushAppConfig($key);
+        }
+
+        if ($appConfig->isValid()) {
+            return $appConfig;
+        } else {
+            throw new JPushException('应用配置不存在', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @param string $key
+     */
+    public function removeJPushAppConfig(string $key)
+    {
+        unset($this->jPushAppConfigs[$key]);
+    }
+
+    /**
+     * @return array
+     */
+    public function getJPushGroupConfigs()
+    {
+        return $this-$this->jPushGroupConfigs;
+    }
+
+    /**
+     * @param string $key
+     * @return \SyMessagePush\ConfigJPushGroup|null
+     */
+    private function getLocalJPushGroupConfig(string $key)
+    {
+        $nowTime = Tool::getNowTime();
+        if ($this->jPushGroupClearTime < $nowTime) {
+            $delIds = [];
+            foreach ($this->jPushGroupConfigs as $eKey => $groupConfig) {
+                if ($groupConfig->getExpireTime() < $nowTime) {
+                    $delIds[] = $eKey;
+                }
+            }
+            foreach ($delIds as $eKey) {
+                unset($this->jPushGroupConfigs[$eKey]);
+            }
+
+            $this->jPushGroupClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_JPUSH_GROUP_CLEAR;
+        }
+
+        return Tool::getArrayVal($this->jPushGroupConfigs, $key, null);
+    }
+
+    /**
+     * @param string $key
+     * @return \SyMessagePush\ConfigJPushGroup
+     * @throws \Exception\MessagePush\JPushException
+     */
+    public function getJPushGroupConfig(string $key)
+    {
+        $nowTime = Tool::getNowTime();
+        $groupConfig = $this->getLocalJPushGroupConfig($key);
+        if (is_null($groupConfig)) {
+            $groupConfig = $this->refreshJPushGroupConfig($key);
+        } elseif ($groupConfig->getExpireTime() < $nowTime) {
+            $groupConfig = $this->refreshJPushGroupConfig($key);
+        }
+
+        if ($groupConfig->isValid()) {
+            return $groupConfig;
+        } else {
+            throw new JPushException('分组配置不存在', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @param string $key
+     */
+    public function removeJPushGroupConfig(string $key)
+    {
+        unset($this->jPushGroupConfigs[$key]);
     }
 }
