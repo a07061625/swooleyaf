@@ -7,7 +7,6 @@
  */
 namespace SyMessagePush;
 
-use DesignPatterns\Singletons\MessagePushConfigSingleton;
 use Tool\Tool;
 
 abstract class PushBaseJPush extends PushBase
@@ -37,22 +36,16 @@ abstract class PushBaseJPush extends PushBase
      * @var string
      */
     protected $serviceUri = '';
-
     /**
-     * @param string $authType 授权类型 app:应用 dev:开发
+     * 标识
+     * @var string
      */
-    public function __construct(string $authType)
+    protected $objKey = '';
+
+    public function __construct()
     {
         parent::__construct();
         $this->reqHeader['Content-Type'] = 'application/json';
-        $config = MessagePushConfigSingleton::getInstance()->getJPushConfig();
-        if ($authType == 'app') {
-            $this->reqHeader['Authorization'] = $config->getAppAuth();
-        } elseif ($authType == 'dev') {
-            $this->reqHeader['Authorization'] = $config->getDevAuth();
-        } else {
-            $this->reqHeader['Authorization'] = $config->getGroupAuth();
-        }
     }
 
     protected function getContent() : array

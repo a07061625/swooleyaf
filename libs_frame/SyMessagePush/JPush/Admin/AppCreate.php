@@ -10,6 +10,7 @@ namespace SyMessagePush\JPush\Admin;
 use Constant\ErrorCode;
 use Exception\MessagePush\JPushException;
 use SyMessagePush\JPush\AdminBase;
+use SyMessagePush\PushUtilJPush;
 
 class AppCreate extends AdminBase
 {
@@ -29,9 +30,11 @@ class AppCreate extends AdminBase
      */
     private $group_name = '';
 
-    public function __construct()
+    public function __construct(string $key)
     {
-        parent::__construct('dev');
+        parent::__construct();
+        $this->reqHeader['Authorization'] = PushUtilJPush::getReqAuth($key, 'dev');
+        $this->objKey = $key;
         $this->reqMethod = self::REQ_METHOD_POST;
         $this->serviceUri = '/v1/app';
         $this->reqData['group_name'] = '';

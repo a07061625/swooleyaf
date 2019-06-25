@@ -10,6 +10,7 @@ namespace SyMessagePush\JPush\Schedules;
 use Constant\ErrorCode;
 use Exception\MessagePush\JPushException;
 use SyMessagePush\JPush\SchedulesBase;
+use SyMessagePush\PushUtilJPush;
 
 class SchedulesGet extends SchedulesBase
 {
@@ -19,9 +20,11 @@ class SchedulesGet extends SchedulesBase
      */
     private $schedule_id = '';
 
-    public function __construct()
+    public function __construct(string $key)
     {
-        parent::__construct('app');
+        parent::__construct();
+        $this->reqHeader['Authorization'] = PushUtilJPush::getReqAuth($key, 'app');
+        $this->objKey = $key;
         $this->reqMethod = self::REQ_METHOD_GET;
         $this->serviceUri = '/v1/app';
     }
@@ -43,8 +46,6 @@ class SchedulesGet extends SchedulesBase
             throw new JPushException('任务ID不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
     }
-
-
 
     public function getDetail() : array
     {

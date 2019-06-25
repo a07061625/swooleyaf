@@ -8,12 +8,33 @@
 namespace SyMessagePush;
 
 use Constant\ErrorCode;
+use DesignPatterns\Singletons\MessagePushConfigSingleton;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
 class PushUtilJPush extends PushUtilBase
 {
     use SimpleTrait;
+
+    /**
+     * 获取授权字符串
+     * @param string $key
+     * @param string $authType 授权类型 app:应用 group:分组 dev:开发
+     * @return string
+     */
+    public static function getReqAuth(string $key, string $authType)
+    {
+        if ($authType == 'app') {
+            $config = MessagePushConfigSingleton::getInstance()->getJPushAppConfig($key);
+            return $config->getAuth();
+        } elseif ($authType == 'group') {
+            $config = MessagePushConfigSingleton::getInstance()->getJPushGroupConfig($key);
+            return $config->getAuth();
+        } else {
+            $config = MessagePushConfigSingleton::getInstance()->getJPushDevConfig();
+            return $config->getAuth();
+        }
+    }
 
     public static function sendServiceRequest(PushBaseJPush $pushBase)
     {

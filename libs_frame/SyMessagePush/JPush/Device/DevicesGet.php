@@ -10,6 +10,7 @@ namespace SyMessagePush\JPush\Device;
 use Constant\ErrorCode;
 use Exception\MessagePush\JPushException;
 use SyMessagePush\JPush\DeviceBase;
+use SyMessagePush\PushUtilJPush;
 
 class DevicesGet extends DeviceBase
 {
@@ -19,9 +20,11 @@ class DevicesGet extends DeviceBase
      */
     private $registration_id = '';
 
-    public function __construct()
+    public function __construct(string $key)
     {
-        parent::__construct('app');
+        parent::__construct();
+        $this->reqHeader['Authorization'] = PushUtilJPush::getReqAuth($key, 'app');
+        $this->objKey = $key;
         $this->reqMethod = self::REQ_METHOD_GET;
     }
 
