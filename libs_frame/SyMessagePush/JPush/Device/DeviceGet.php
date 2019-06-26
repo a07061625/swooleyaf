@@ -12,7 +12,7 @@ use Exception\MessagePush\JPushException;
 use SyMessagePush\JPush\DeviceBase;
 use SyMessagePush\PushUtilJPush;
 
-class DevicesGet extends DeviceBase
+class DeviceGet extends DeviceBase
 {
     /**
      * 设备ID
@@ -22,10 +22,8 @@ class DevicesGet extends DeviceBase
 
     public function __construct(string $key)
     {
-        parent::__construct();
+        parent::__construct($key);
         $this->reqHeader['Authorization'] = PushUtilJPush::getReqAuth($key, 'app');
-        $this->objKey = $key;
-        $this->reqMethod = self::REQ_METHOD_GET;
     }
 
     private function __clone()
@@ -38,7 +36,7 @@ class DevicesGet extends DeviceBase
      */
     public function setRegistrationId(string $registrationId)
     {
-        if (strlen($registrationId) > 0) {
+        if (ctype_alnum($registrationId)) {
             $this->registration_id = $registrationId;
             $this->serviceUri = '/v3/devices/' . $registrationId;
         } else {
@@ -51,6 +49,8 @@ class DevicesGet extends DeviceBase
         if (strlen($this->registration_id) == 0) {
             throw new JPushException('设备ID不能为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
+
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . $this->serviceUri;
         return $this->getContent();
     }
 }

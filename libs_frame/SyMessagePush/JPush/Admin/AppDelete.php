@@ -22,10 +22,8 @@ class AppDelete extends AdminBase
 
     public function __construct(string $key)
     {
-        parent::__construct();
+        parent::__construct($key);
         $this->reqHeader['Authorization'] = PushUtilJPush::getReqAuth($key, 'dev');
-        $this->objKey = $key;
-        $this->reqMethod = self::REQ_METHOD_POST;
     }
 
     private function __clone()
@@ -51,6 +49,9 @@ class AppDelete extends AdminBase
         if (strlen($this->app_key) == 0) {
             throw new JPushException('应用标识不能为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
+
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . $this->serviceUri;
+        $this->curlConfigs[CURLOPT_POST] = true;
         return $this->getContent();
     }
 }
