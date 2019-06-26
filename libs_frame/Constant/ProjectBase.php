@@ -39,6 +39,8 @@ class ProjectBase
     const REDIS_PREFIX_DINGTALK_PROVIDER_ACCOUNT_SUITE = 'sy' . SY_PROJECT . '10301_'; //前缀-企业钉钉服务商套件
     const REDIS_PREFIX_DINGTALK_PROVIDER_AUTHORIZER = 'sy' . SY_PROJECT . '10302_'; //前缀-服务商授权企业钉钉
     const REDIS_PREFIX_DINGTALK_CORP = 'sy' . SY_PROJECT . '10303_'; //前缀-企业钉钉
+    const REDIS_PREFIX_JPUSH_APP_CID_PUSH = 'sy' . SY_PROJECT . '10400_'; //前缀-极光推送推送唯一标识符
+    const REDIS_PREFIX_JPUSH_APP_CID_SCHEDULE = 'sy' . SY_PROJECT . '10401_'; //前缀-极光推送定时任务唯一标识符
 
     //YAC常量,以0000开头的前缀为框架内部前缀,并键名总长度不超过48个字符串
     const YAC_PREFIX_FUSE = '0000'; //前缀-熔断器

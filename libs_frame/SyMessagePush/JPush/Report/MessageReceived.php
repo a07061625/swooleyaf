@@ -12,7 +12,7 @@ use Exception\MessagePush\JPushException;
 use SyMessagePush\JPush\ReportBase;
 use SyMessagePush\PushUtilJPush;
 
-class Received extends ReportBase
+class MessageReceived extends ReportBase
 {
     /**
      * 消息ID列表

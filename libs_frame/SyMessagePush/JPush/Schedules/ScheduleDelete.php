@@ -1,9 +1,9 @@
 <?php
 /**
- * 获取定时任务
+ * 删除定时任务
  * User: 姜伟
- * Date: 2019/6/25 0025
- * Time: 16:25
+ * Date: 2019/6/26 0026
+ * Time: 15:18
  */
 namespace SyMessagePush\JPush\Schedules;
 
@@ -12,7 +12,7 @@ use Exception\MessagePush\JPushException;
 use SyMessagePush\JPush\SchedulesBase;
 use SyMessagePush\PushUtilJPush;
 
-class ScheduleGet extends SchedulesBase
+class ScheduleDelete extends SchedulesBase
 {
     /**
      * 任务ID
@@ -51,6 +51,7 @@ class ScheduleGet extends SchedulesBase
         }
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . $this->serviceUri;
+        $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = 'DELETE';
         return $this->getContent();
     }
 }

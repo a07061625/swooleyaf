@@ -8,7 +8,11 @@
 namespace SyMessagePush;
 
 use Constant\ErrorCode;
+use Constant\Project;
+use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\MessagePushConfigSingleton;
+use Exception\MessagePush\JPushException;
+use SyMessagePush\JPush\Push\CidList;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
@@ -60,5 +64,44 @@ class PushUtilJPush extends PushUtilBase
             $resArr['msg'] = '解析响应数据出错';
         }
         return $resArr;
+    }
+
+    /**
+     * 获取APP唯一标识符
+     * @param string $key
+     * @param string $type 类型 push:推送 schedule:定时任务
+     * @return string
+     * @throws \Exception\MessagePush\JPushException
+     */
+    public static function getAppCid(string $key, string $type)
+    {
+        if ($type == 'push') {
+            $redisKey = Project::REDIS_PREFIX_JPUSH_APP_CID_PUSH . $key;
+        } else {
+            $redisKey = Project::REDIS_PREFIX_JPUSH_APP_CID_SCHEDULE . $key;
+        }
+        $cid = CacheSimpleFactory::getRedisInstance()->lPop($redisKey);
+        if (is_string($cid)) {
+            return $cid;
+        }
+
+        $cidList = new CidList($key);
+        $cidList->setType($type);
+        $cidList->setCount(800);
+        $sendRes = PushUtilJPush::sendServiceRequest($cidList);
+        if ($sendRes['code'] > 0) {
+            throw new JPushException($sendRes['msg'], $sendRes['code']);
+        }
+
+        $cid = $sendRes['data']['cidlist'][0];
+        unset($sendRes['data']['cidlist'][0]);
+        $pipe = CacheSimpleFactory::getRedisInstance()->multi(\Redis::PIPELINE);
+        foreach ($sendRes['data']['cidlist'] as $eCid) {
+            $pipe->rPush($redisKey, $eCid);
+        }
+        $pipe->exec();
+        CacheSimpleFactory::getRedisInstance()->expire($redisKey, 86400);
+
+        return $cid;
     }
 }
