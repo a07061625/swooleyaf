@@ -1,9 +1,9 @@
 <?php
 /**
- * 获取定时任务
+ * 获取定时任务对应的所有消息ID
  * User: 姜伟
- * Date: 2019/6/25 0025
- * Time: 16:25
+ * Date: 2019/6/26 0026
+ * Time: 15:18
  */
 namespace SyMessagePush\JPush\Schedules;
 
@@ -12,7 +12,7 @@ use Exception\MessagePush\JPushException;
 use SyMessagePush\JPush\SchedulesBase;
 use SyMessagePush\PushUtilJPush;
 
-class ScheduleGet extends SchedulesBase
+class MsgIdList extends SchedulesBase
 {
     /**
      * 任务ID
@@ -38,7 +38,7 @@ class ScheduleGet extends SchedulesBase
     {
         if (strlen($scheduleId) > 0) {
             $this->schedule_id = $scheduleId;
-            $this->serviceUri = '/v3/schedules/' . $scheduleId;
+            $this->serviceUri = '/v3/schedules/' . $scheduleId . '/msg_ids';
         } else {
             throw new JPushException('任务ID不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }

@@ -1,9 +1,9 @@
 <?php
 /**
- * 获取定时任务
+ * 获取有效的定时任务列表
  * User: 姜伟
- * Date: 2019/6/25 0025
- * Time: 16:25
+ * Date: 2019/6/26 0026
+ * Time: 15:18
  */
 namespace SyMessagePush\JPush\Schedules;
 
@@ -12,18 +12,20 @@ use Exception\MessagePush\JPushException;
 use SyMessagePush\JPush\SchedulesBase;
 use SyMessagePush\PushUtilJPush;
 
-class ScheduleGet extends SchedulesBase
+class ScheduleList extends SchedulesBase
 {
     /**
-     * 任务ID
-     * @var string
+     * 页数
+     * @var int
      */
-    private $schedule_id = '';
+    private $page = 0;
 
     public function __construct(string $key)
     {
         parent::__construct($key);
         $this->reqHeader['Authorization'] = PushUtilJPush::getReqAuth($key, 'app');
+        $this->serviceUri = '/v3/schedules';
+        $this->reqData['page'] = 1;
     }
 
     private function __clone()
@@ -31,14 +33,13 @@ class ScheduleGet extends SchedulesBase
     }
 
     /**
-     * @param string $scheduleId
+     * @param int $page
      * @throws \Exception\MessagePush\JPushException
      */
-    public function setScheduleId(string $scheduleId)
+    public function setPage(int $page)
     {
-        if (strlen($scheduleId) > 0) {
-            $this->schedule_id = $scheduleId;
-            $this->serviceUri = '/v3/schedules/' . $scheduleId;
+        if ($page > 0) {
+            $this->reqData['page'] = $page;
         } else {
             throw new JPushException('任务ID不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
@@ -46,11 +47,8 @@ class ScheduleGet extends SchedulesBase
 
     public function getDetail() : array
     {
-        if (strlen($this->schedule_id) == 0) {
-            throw new JPushException('任务ID不能为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
-        }
-
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . $this->serviceUri;
+        $url = $this->serviceDomain . $this->serviceUri . '?' . http_build_query($this->reqData);
+        $this->curlConfigs[CURLOPT_URL] = $url;
         return $this->getContent();
     }
 }
