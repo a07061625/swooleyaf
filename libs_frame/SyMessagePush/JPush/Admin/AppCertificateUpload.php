@@ -42,11 +42,9 @@ class AppCertificateUpload extends AdminBase
 
     public function __construct(string $key)
     {
-        parent::__construct();
+        parent::__construct($key);
         $this->reqHeader['Authorization'] = PushUtilJPush::getReqAuth($key, 'dev');
         $this->reqHeader['Content-Type'] = 'multipart/form-data';
-        $this->objKey = $key;
-        $this->reqMethod = self::REQ_METHOD_POST;
     }
 
     private function __clone()
@@ -113,6 +111,10 @@ class AppCertificateUpload extends AdminBase
         if ((!isset($this->reqData['devCertificateFile'])) && !isset($this->reqData['proCertificateFile'])) {
             throw new JPushException('生产环境和测试环境证书不能同时为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
+
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . $this->serviceUri;
+        $this->curlConfigs[CURLOPT_POST] = true;
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = http_build_query($this->reqData);
         return $this->getContent();
     }
 }

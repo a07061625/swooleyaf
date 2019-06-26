@@ -27,10 +27,8 @@ class CidList extends PushBase
 
     public function __construct(string $key)
     {
-        parent::__construct();
+        parent::__construct($key);
         $this->reqHeader['Authorization'] = PushUtilJPush::getReqAuth($key, 'app');
-        $this->objKey = $key;
-        $this->reqMethod = self::REQ_METHOD_GET;
         $this->serviceUri = '/v3/push/cid';
         $this->reqData['count'] = 1;
         $this->reqData['type'] = 'push';
@@ -68,6 +66,8 @@ class CidList extends PushBase
 
     public function getDetail() : array
     {
+        $url = $this->serviceDomain . $this->serviceUri . '?' . http_build_query($this->reqData);
+        $this->curlConfigs[CURLOPT_URL] = $url;
         return $this->getContent();
     }
 }

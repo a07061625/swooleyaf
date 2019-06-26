@@ -11,9 +11,9 @@ use SyMessagePush\PushBaseJPush;
 
 abstract class PushBase extends PushBaseJPush
 {
-    public function __construct()
+    public function __construct(string $key)
     {
-        parent::__construct();
+        parent::__construct($key);
         $this->serviceDomain = 'https://api.jpush.cn';
     }
 }

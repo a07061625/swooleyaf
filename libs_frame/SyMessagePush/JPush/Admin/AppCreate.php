@@ -11,6 +11,7 @@ use Constant\ErrorCode;
 use Exception\MessagePush\JPushException;
 use SyMessagePush\JPush\AdminBase;
 use SyMessagePush\PushUtilJPush;
+use Tool\Tool;
 
 class AppCreate extends AdminBase
 {
@@ -32,10 +33,8 @@ class AppCreate extends AdminBase
 
     public function __construct(string $key)
     {
-        parent::__construct();
+        parent::__construct($key);
         $this->reqHeader['Authorization'] = PushUtilJPush::getReqAuth($key, 'dev');
-        $this->objKey = $key;
-        $this->reqMethod = self::REQ_METHOD_POST;
         $this->serviceUri = '/v1/app';
         $this->reqData['group_name'] = '';
     }
@@ -88,6 +87,10 @@ class AppCreate extends AdminBase
         if (!isset($this->reqData['android_package'])) {
             throw new JPushException('应用Android包名不能为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
+
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . $this->serviceUri;
+        $this->curlConfigs[CURLOPT_POST] = true;
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         return $this->getContent();
     }
 }

@@ -12,7 +12,7 @@ use Exception\MessagePush\JPushException;
 use SyMessagePush\JPush\SchedulesBase;
 use SyMessagePush\PushUtilJPush;
 
-class SchedulesGet extends SchedulesBase
+class ScheduleGet extends SchedulesBase
 {
     /**
      * 任务ID
@@ -22,11 +22,8 @@ class SchedulesGet extends SchedulesBase
 
     public function __construct(string $key)
     {
-        parent::__construct();
+        parent::__construct($key);
         $this->reqHeader['Authorization'] = PushUtilJPush::getReqAuth($key, 'app');
-        $this->objKey = $key;
-        $this->reqMethod = self::REQ_METHOD_GET;
-        $this->serviceUri = '/v1/app';
     }
 
     private function __clone()
@@ -52,6 +49,8 @@ class SchedulesGet extends SchedulesBase
         if (strlen($this->schedule_id) == 0) {
             throw new JPushException('任务ID不能为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
+
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . $this->serviceUri;
         return $this->getContent();
     }
 }

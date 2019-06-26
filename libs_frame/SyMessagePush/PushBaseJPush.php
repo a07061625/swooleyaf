@@ -7,25 +7,24 @@
  */
 namespace SyMessagePush;
 
-use Tool\Tool;
-
 abstract class PushBaseJPush extends PushBase
 {
-    const REQ_METHOD_GET = 'GET';
-    const REQ_METHOD_POST = 'POST';
-    const REQ_METHOD_PUT = 'PUT';
-    const REQ_METHOD_DELETE = 'DELETE';
+    const PLATFORM_TYPE_ANDROID = 'android'; //平台类型-android
+    const PLATFORM_TYPE_IOS = 'ios'; //平台类型-ios
+    const PLATFORM_TYPE_WINPHONE = 'winphone'; //平台类型-winphone
+    const PLATFORM_TYPE_ALL = 'all'; //平台类型-all
+
+    public static $totalPlatFormType = [
+        self::PLATFORM_TYPE_ANDROID => '安卓',
+        self::PLATFORM_TYPE_IOS => '苹果',
+        self::PLATFORM_TYPE_WINPHONE => '微软手机',
+    ];
 
     /**
      * 请求头
      * @var array
      */
     protected $reqHeader = [];
-    /**
-     * 请求方式
-     * @var string
-     */
-    protected $reqMethod = '';
     /**
      * 服务域名
      * @var string
@@ -42,32 +41,15 @@ abstract class PushBaseJPush extends PushBase
      */
     protected $objKey = '';
 
-    public function __construct()
+    public function __construct(string $key)
     {
         parent::__construct();
+        $this->objKey = $key;
         $this->reqHeader['Content-Type'] = 'application/json';
     }
 
     protected function getContent() : array
     {
-        $url = $this->serviceDomain . $this->serviceUri;
-        if ($this->reqMethod == self::REQ_METHOD_GET) {
-            if (!empty($this->reqData)) {
-                $url .= '?' . http_build_query($this->reqData);
-            }
-        } elseif ($this->reqMethod == self::REQ_METHOD_DELETE) {
-            $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = 'DELETE';
-            if (!empty($this->reqData)) {
-                $url .= '?' . http_build_query($this->reqData);
-            }
-        } elseif ($this->reqMethod == self::REQ_METHOD_POST) {
-            $this->curlConfigs[CURLOPT_POST] = true;
-            $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
-        } elseif ($this->reqMethod == self::REQ_METHOD_PUT) {
-            $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
-            $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = 'PUT';
-        }
-        $this->curlConfigs[CURLOPT_URL] = $url;
         $this->curlConfigs[CURLOPT_RETURNTRANSFER] = true;
         $this->curlConfigs[CURLOPT_SSL_VERIFYPEER] = false;
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
