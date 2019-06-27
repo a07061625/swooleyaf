@@ -38,7 +38,6 @@ trait DingTalkConfigTrait
             $corpConfig->setSsoSecret((string)$configInfo['sso_secret']);
             $corpConfig->setAgents($agents);
         }
-        unset($configInfo, $ormResult1, $dingTalkConfig);
         $this->corpConfigs[$corpId] = $corpConfig;
 
         return $corpConfig;
