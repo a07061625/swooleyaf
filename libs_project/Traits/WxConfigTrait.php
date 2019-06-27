@@ -51,7 +51,6 @@ trait WxConfigTrait
                 $accountConfig->setTemplates($templates);
             }
         }
-        unset($configInfo, $ormResult1, $wxConfigEntity);
         $this->accountConfigs[$appId] = $accountConfig;
 
         return $accountConfig;
@@ -88,7 +87,6 @@ trait WxConfigTrait
             $corpConfig->setSslKey((string)$configInfo['payssl_key']);
             $corpConfig->setAgents($agents);
         }
-        unset($configInfo, $ormResult1, $wxConfigEntity);
         $this->corpConfigs[$corpId] = $corpConfig;
 
         return $corpConfig;
