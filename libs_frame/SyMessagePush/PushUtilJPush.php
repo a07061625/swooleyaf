@@ -40,6 +40,11 @@ class PushUtilJPush extends PushUtilBase
         }
     }
 
+    /**
+     * 发送服务请求
+     * @param \SyMessagePush\PushBaseJPush $pushBase
+     * @return array
+     */
     public static function sendServiceRequest(PushBaseJPush $pushBase)
     {
         $resArr = [

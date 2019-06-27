@@ -41,7 +41,6 @@ trait AliPayConfigTrait
             $payConfig->setPubRsaKey((string)$configInfo['pubkey_rsa']);
             $payConfig->setPubAliKey((string)$configInfo['pubkey_ali']);
         }
-        unset($configInfo, $ormResult1, $aliConfigEntity);
         $this->payConfigs[$appId] = $payConfig;
 
         return $payConfig;
