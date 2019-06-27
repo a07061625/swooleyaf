@@ -41,6 +41,7 @@ abstract class PushBaseBaiDu extends PushBase
         $this->reqData['timestamp'] = $nowTime;
         $this->reqData['expires'] = $nowTime + 60;
         $this->serviceDomain = 'https://api.tuisong.baidu.com';
+        $this->serviceUri = '/rest/3.0';
     }
 
     protected function getContent() : array
