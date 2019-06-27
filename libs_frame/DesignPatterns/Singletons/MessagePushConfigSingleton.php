@@ -11,6 +11,7 @@ use Constant\ErrorCode;
 use Constant\Project;
 use Exception\MessagePush\JPushException;
 use SyMessagePush\ConfigAli;
+use SyMessagePush\ConfigBaiDu;
 use SyMessagePush\ConfigJPushDev;
 use SyMessagePush\ConfigXinGe;
 use Tool\Tool;
@@ -62,6 +63,11 @@ class MessagePushConfigSingleton
      * @var int
      */
     private $jPushGroupClearTime = 0;
+    /**
+     * 极光开发配置
+     * @var \SyMessagePush\ConfigBaiDu
+     */
+    private $baiDuConfig = null;
 
     private function __construct()
     {
@@ -269,5 +275,21 @@ class MessagePushConfigSingleton
     public function removeJPushGroupConfig(string $key)
     {
         unset($this->jPushGroupConfigs[$key]);
+    }
+
+    /**
+     * @return \SyMessagePush\ConfigBaiDu
+     */
+    public function getBaiDuConfig()
+    {
+        if (is_null($this->baiDuConfig)) {
+            $configs = Tool::getConfig('messagepush.' . SY_ENV . SY_PROJECT);
+            $baiDuConfig = new ConfigBaiDu();
+            $baiDuConfig->setAppKey((string)Tool::getArrayVal($configs, 'baidu.app.key', '', true));
+            $baiDuConfig->setAppSecret((string)Tool::getArrayVal($configs, 'baidu.app.secret', '', true));
+            $this->jPushDevConfig = $baiDuConfig;
+        }
+
+        return $this->baiDuConfig;
     }
 }
