@@ -39,7 +39,7 @@ abstract class PushBaseBaiDu extends PushBase
         $this->reqHeader['User-Agent'] = $config->getHttpUserAgent();
         $this->reqData['apikey'] = $config->getAppKey();
         $this->reqData['timestamp'] = $nowTime;
-        $this->reqData['expires'] = $nowTime + 600;
+        $this->reqData['expires'] = $nowTime + 60;
         $this->serviceDomain = 'https://api.tuisong.baidu.com';
     }
 
