@@ -16,7 +16,7 @@ use SyMessagePush\JPush\Push\CidList;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
-class PushUtilJPush extends PushUtilBase
+final class PushUtilJPush extends PushUtilBase
 {
     use SimpleTrait;
 
