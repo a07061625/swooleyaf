@@ -9,6 +9,7 @@ namespace DesignPatterns\Singletons;
 
 use SyLogistics\ConfigAliMart;
 use SyLogistics\ConfigKd100;
+use SyLogistics\ConfigKdNiao;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
@@ -23,6 +24,10 @@ class LogisticsConfigSingleton
      * @var \SyLogistics\ConfigKd100
      */
     private $kd100Config = null;
+    /**
+     * @var \SyLogistics\ConfigKdNiao
+     */
+    private $kdNiaoConfig = null;
 
     private function __construct()
     {
@@ -74,5 +79,21 @@ class LogisticsConfigSingleton
         }
 
         return $this->kd100Config;
+    }
+
+    /**
+     * @return \SyLogistics\ConfigKdNiao
+     */
+    public function getKdNiaoConfig()
+    {
+        if (is_null($this->kdNiaoConfig)) {
+            $configs = Tool::getConfig('logistics.' . SY_ENV . SY_PROJECT);
+            $kdNiaoConfig = new ConfigKdNiao();
+            $kdNiaoConfig->setBusinessId((string)Tool::getArrayVal($configs, 'kdniao.business.id', '', true));
+            $kdNiaoConfig->setAppKey((string)Tool::getArrayVal($configs, 'kdniao.app.key', '', true));
+            $this->kdNiaoConfig = $kdNiaoConfig;
+        }
+
+        return $this->kdNiaoConfig;
     }
 }
