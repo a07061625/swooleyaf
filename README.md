@@ -90,6 +90,8 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
     /usr/local/php7/bin/php helper_service_manager.php -s kz-all
 ### mysql工具
     /usr/local/php7/bin/php helper_mysql.php -h
+### nginx工具
+    /usr/local/php7/bin/php helper_nginx.php -h
 
 ## 预定义常量
 - SY_ROOT //框架根目录
