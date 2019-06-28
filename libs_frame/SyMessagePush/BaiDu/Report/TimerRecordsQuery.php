@@ -1,17 +1,17 @@
 <?php
 /**
- * 查询定时任务列表
+ * 查询定时消息的发送记录
  * User: 姜伟
  * Date: 2019/6/27 0027
- * Time: 19:02
+ * Time: 18:57
  */
-namespace SyMessagePush\BaiDu\Timer;
+namespace SyMessagePush\BaiDu\Report;
 
 use Constant\ErrorCode;
 use Exception\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
 
-class TimerList extends PushBaseBaiDu
+class TimerRecordsQuery extends PushBaseBaiDu
 {
     /**
      * 定时任务ID
@@ -28,13 +28,23 @@ class TimerList extends PushBaseBaiDu
      * @var int
      */
     private $limit = 0;
+    /**
+     * 起始时间戳
+     * @var int
+     */
+    private $range_start = 0;
+    /**
+     * 截止时间戳
+     * @var int
+     */
+    private $range_end = 0;
 
     public function __construct()
     {
         parent::__construct();
-        $this->serviceUri .= '/timer/query_list';
+        $this->serviceUri .= '/report/query_timer_records';
         $this->reqData['start'] = 0;
-        $this->reqData['limit'] = 10;
+        $this->reqData['limit'] = 100;
     }
 
     private function __clone()
@@ -73,15 +83,45 @@ class TimerList extends PushBaseBaiDu
      */
     public function setLimit(int $limit)
     {
-        if (($limit > 0) && ($limit <= 10)) {
+        if (($limit > 0) && ($limit <= 100)) {
             $this->reqData['limit'] = $limit;
         } else {
             throw new BaiDuPushException('记录条数不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
     }
 
+    /**
+     * @param int $rangeStart
+     * @param int $rangeEnd
+     * @throws \Exception\MessagePush\BaiDuPushException
+     */
+    public function setRangeStartAndEnd(int $rangeStart, int $rangeEnd)
+    {
+        if ($rangeStart < 0) {
+            throw new BaiDuPushException('起始时间不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+        } elseif ($rangeEnd < 0) {
+            throw new BaiDuPushException('截止时间不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+        }
+        unset($this->reqData['range_start'], $this->reqData['range_end']);
+
+        if (($rangeStart > 0) && ($rangeEnd > 0)) {
+            if ($rangeStart > $rangeEnd) {
+                throw new BaiDuPushException('起始时间不能大于截止时间', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+            }
+            $this->reqData['range_start'] = $rangeStart;
+            $this->reqData['range_end'] = $rangeEnd;
+        } elseif ($rangeStart > 0) {
+            $this->reqData['range_start'] = $rangeStart;
+        } elseif ($rangeEnd > 0) {
+            $this->reqData['range_end'] = $rangeEnd;
+        }
+    }
+
     public function getDetail() : array
     {
+        if (!isset($this->reqData['timer_id'])) {
+            throw new BaiDuPushException('定时任务ID不能为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+        }
         return $this->getContent();
     }
 }

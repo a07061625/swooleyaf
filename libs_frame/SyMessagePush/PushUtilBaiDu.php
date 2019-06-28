@@ -53,11 +53,11 @@ final class PushUtilBaiDu extends PushUtilBase
             return $resArr;
         }
         $rspData = Tool::jsonDecode($sendRes['res_content']);
-        if (isset($rspData['response_params'])) {
-            $resArr['data'] = $rspData['response_params'];
-        } elseif (isset($rspData['error_code'])) {
+        if (isset($rspData['error_code'])) {
             $resArr['code'] = ErrorCode::MESSAGE_PUSH_REQ_BAIDU_ERROR;
             $resArr['msg'] = $rspData['error_msg'];
+        } elseif (is_array($rspData)) {
+            $resArr['data'] = $rspData['response_params'] ?? [];
         } else {
             $resArr['code'] = ErrorCode::MESSAGE_PUSH_REQ_BAIDU_ERROR;
             $resArr['msg'] = '解析响应数据出错';

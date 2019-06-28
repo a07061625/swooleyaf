@@ -7,10 +7,18 @@
  */
 namespace SyMessagePush\BaiDu\Report;
 
+use Constant\ErrorCode;
+use Exception\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
 
 class MsgStatusQuery extends PushBaseBaiDu
 {
+    /**
+     * 消息ID
+     * @var string
+     */
+    private $msg_id = '';
+
     public function __construct()
     {
         parent::__construct();
@@ -21,8 +29,24 @@ class MsgStatusQuery extends PushBaseBaiDu
     {
     }
 
+    /**
+     * @param string $msgId
+     * @throws \Exception\MessagePush\BaiDuPushException
+     */
+    public function setMsgId(string $msgId)
+    {
+        if (ctype_alnum($msgId)) {
+            $this->reqData['msg_id'] = $msgId;
+        } else {
+            throw new BaiDuPushException('消息ID不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+        }
+    }
+
     public function getDetail() : array
     {
+        if (!isset($this->reqData['msg_id'])) {
+            throw new BaiDuPushException('消息ID不能为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+        }
         return $this->getContent();
     }
 }

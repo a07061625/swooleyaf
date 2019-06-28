@@ -12,6 +12,14 @@ use Exception\MessagePush\BaiDuPushException;
 
 class ConfigBaiDu
 {
+    const DEVICE_TYPE_ALL = 0; //设备类型-所有
+    const DEVICE_TYPE_ANDROID = 3; //设备类型-安卓
+    const DEVICE_TYPE_IOS = 4; //设备类型-苹果
+    public static $totalDeviceType = [
+        self::DEVICE_TYPE_ANDROID => '安卓',
+        self::DEVICE_TYPE_IOS => '苹果',
+    ];
+
     /**
      * 应用ID
      * @var string
@@ -22,6 +30,11 @@ class ConfigBaiDu
      * @var string
      */
     private $appSecret = '';
+    /**
+     * 设备类型
+     * @var int
+     */
+    private $deviceType = 0;
     /**
      * HTTP客户端信息
      * @var string
@@ -78,6 +91,27 @@ class ConfigBaiDu
             $this->appSecret = $appSecret;
         } else {
             throw new BaiDuPushException('应用密钥不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @return int
+     */
+    public function getDeviceType() : int
+    {
+        return $this->deviceType;
+    }
+
+    /**
+     * @param int $deviceType
+     * @throws \Exception\MessagePush\BaiDuPushException
+     */
+    public function setDeviceType(int $deviceType)
+    {
+        if (in_array($deviceType, [self::DEVICE_TYPE_ALL, self::DEVICE_TYPE_ANDROID, self::DEVICE_TYPE_IOS])) {
+            $this->deviceType = $deviceType;
+        } else {
+            throw new BaiDuPushException('设备类型不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
     }
 

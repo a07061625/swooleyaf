@@ -1,6 +1,6 @@
 <?php
 /**
- * 推送消息到单台设备
+ * 推送广播消息
  * User: 姜伟
  * Date: 2019/6/27 0027
  * Time: 18:53
@@ -12,13 +12,8 @@ use Exception\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
 use Tool\Tool;
 
-class MsgDeviceSingle extends PushBaseBaiDu
+class MsgDeviceAll extends PushBaseBaiDu
 {
-    /**
-     * 设备ID
-     * @var string
-     */
-    private $channel_id = '';
     /**
      * 消息类型 0:消息 1:通知
      * @var int
@@ -39,11 +34,16 @@ class MsgDeviceSingle extends PushBaseBaiDu
      * @var int
      */
     private $deploy_status = 0;
+    /**
+     * 发送时间
+     * @var int
+     */
+    private $send_time = 0;
 
     public function __construct()
     {
         parent::__construct();
-        $this->serviceUri .= '/push/single_device';
+        $this->serviceUri .= '/push/all';
         $this->reqData['msg_type'] = 0;
         $this->reqData['msg_expires'] = 18000;
         $this->reqData['deploy_status'] = 1;
@@ -51,19 +51,6 @@ class MsgDeviceSingle extends PushBaseBaiDu
 
     private function __clone()
     {
-    }
-
-    /**
-     * @param string $channelId
-     * @throws \Exception\MessagePush\BaiDuPushException
-     */
-    public function setChannelId(string $channelId)
-    {
-        if (strlen($channelId) > 0) {
-            $this->reqData['channel_id'] = $channelId;
-        } else {
-            throw new BaiDuPushException('设备ID不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
-        }
     }
 
     /**
@@ -117,11 +104,21 @@ class MsgDeviceSingle extends PushBaseBaiDu
         }
     }
 
+    /**
+     * @param int $sendTime
+     * @throws \Exception\MessagePush\BaiDuPushException
+     */
+    public function setSendTime(int $sendTime)
+    {
+        if (($sendTime - $this->reqData['timestamp']) > 60) {
+            $this->reqData['send_time'] = $sendTime;
+        } else {
+            throw new BaiDuPushException('发送时间不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+        }
+    }
+
     public function getDetail() : array
     {
-        if (!isset($this->reqData['channel_id'])) {
-            throw new BaiDuPushException('设备ID不能为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
-        }
         if (!isset($this->reqData['msg'])) {
             throw new BaiDuPushException('消息内容不能为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }

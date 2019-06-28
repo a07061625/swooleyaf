@@ -7,14 +7,18 @@
  */
 namespace SyMessagePush;
 
+use Constant\ErrorCode;
 use DesignPatterns\Singletons\MessagePushConfigSingleton;
+use Exception\MessagePush\BaiDuPushException;
 use Tool\Tool;
 
 abstract class PushBaseBaiDu extends PushBase
 {
-    const DEVICE_TYPE_ANDROID = 3; //设备类型-安卓
-    const DEVICE_TYPE_IOS = 4; //设备类型-苹果
-
+    /**
+     * 设备类型
+     * @var int
+     */
+    private $deviceType = 0;
     /**
      * 请求头
      * @var array
@@ -40,8 +44,30 @@ abstract class PushBaseBaiDu extends PushBase
         $this->reqData['apikey'] = $config->getAppKey();
         $this->reqData['timestamp'] = $nowTime;
         $this->reqData['expires'] = $nowTime + 60;
+        if ($config->getDeviceType() == ConfigBaiDu::DEVICE_TYPE_ALL) {
+            $this->reqData['device_type'] = ConfigBaiDu::DEVICE_TYPE_ANDROID;
+        } else {
+            $this->reqData['device_type'] = $config->getDeviceType();
+        }
         $this->serviceDomain = 'https://api.tuisong.baidu.com';
         $this->serviceUri = '/rest/3.0';
+    }
+
+    /**
+     * @param int $deviceType
+     * @throws \Exception\MessagePush\BaiDuPushException
+     */
+    public function setDeviceType(int $deviceType)
+    {
+        $config = MessagePushConfigSingleton::getInstance()->getBaiDuConfig();
+        if ($config->getDeviceType() != ConfigBaiDu::DEVICE_TYPE_ALL) {
+            throw new BaiDuPushException('设备类型不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+        }
+        if (!isset(ConfigBaiDu::$totalDeviceType[$deviceType])) {
+            throw new BaiDuPushException('设备类型不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+        }
+
+        $this->reqData['device_type'] = $deviceType;
     }
 
     protected function getContent() : array

@@ -1,6 +1,6 @@
 <?php
 /**
- * 推送消息到单台设备
+ * 推送消息到给定的一组设备
  * User: 姜伟
  * Date: 2019/6/27 0027
  * Time: 18:53
@@ -12,13 +12,13 @@ use Exception\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
 use Tool\Tool;
 
-class MsgDeviceSingle extends PushBaseBaiDu
+class MsgDeviceBatch extends PushBaseBaiDu
 {
     /**
-     * 设备ID
-     * @var string
+     * 设备ID列表
+     * @var array
      */
-    private $channel_id = '';
+    private $channel_ids = [];
     /**
      * 消息类型 0:消息 1:通知
      * @var int
@@ -35,18 +35,17 @@ class MsgDeviceSingle extends PushBaseBaiDu
      */
     private $msg_expires = 0;
     /**
-     * 部署状态 1:开发 2:生产
-     * @var int
+     * 分类主题标识
+     * @var string
      */
-    private $deploy_status = 0;
+    private $topic_id = '';
 
     public function __construct()
     {
         parent::__construct();
-        $this->serviceUri .= '/push/single_device';
+        $this->serviceUri .= '/push/batch_device';
         $this->reqData['msg_type'] = 0;
-        $this->reqData['msg_expires'] = 18000;
-        $this->reqData['deploy_status'] = 1;
+        $this->reqData['msg_expires'] = 86400;
     }
 
     private function __clone()
@@ -54,15 +53,22 @@ class MsgDeviceSingle extends PushBaseBaiDu
     }
 
     /**
-     * @param string $channelId
+     * @param array $channelIds
      * @throws \Exception\MessagePush\BaiDuPushException
      */
-    public function setChannelId(string $channelId)
+    public function setChannelIds(array $channelIds)
     {
-        if (strlen($channelId) > 0) {
-            $this->reqData['channel_id'] = $channelId;
-        } else {
-            throw new BaiDuPushException('设备ID不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+        $needNum = count($channelIds);
+        if ($needNum == 0) {
+            throw new BaiDuPushException('设备ID列表不能为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+        } elseif ($needNum > 10000) {
+            throw new BaiDuPushException('设备ID列表不能超过10000个', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+        }
+        $this->channel_ids = [];
+        foreach ($channelIds as $eChannelId) {
+            if (strlen($eChannelId) > 0) {
+                $this->channel_ids[$eChannelId] = 1;
+            }
         }
     }
 
@@ -97,7 +103,7 @@ class MsgDeviceSingle extends PushBaseBaiDu
      */
     public function setMsgExpires(int $msgExpires)
     {
-        if (($msgExpires >= 0) && ($msgExpires <= 604800)) {
+        if (($msgExpires >= 1) && ($msgExpires <= 86400)) {
             $this->reqData['msg_expires'] = $msgExpires;
         } else {
             throw new BaiDuPushException('消息过期时间不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
@@ -105,26 +111,27 @@ class MsgDeviceSingle extends PushBaseBaiDu
     }
 
     /**
-     * @param int $deployStatus
+     * @param string $topicId
      * @throws \Exception\MessagePush\BaiDuPushException
      */
-    public function setDeployStatus(int $deployStatus)
+    public function setTopicId(string $topicId)
     {
-        if (in_array($deployStatus, [1, 2])) {
-            $this->reqData['deploy_status'] = $deployStatus;
+        if (ctype_alnum($topicId) && (strlen($topicId) <= 128)) {
+            $this->reqData['topic_id'] = $topicId;
         } else {
-            throw new BaiDuPushException('部署状态不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+            throw new BaiDuPushException('分类主题标识不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
     }
 
     public function getDetail() : array
     {
-        if (!isset($this->reqData['channel_id'])) {
-            throw new BaiDuPushException('设备ID不能为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
-        }
         if (!isset($this->reqData['msg'])) {
             throw new BaiDuPushException('消息内容不能为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
+        if (empty($this->channel_ids)) {
+            throw new BaiDuPushException('设备ID列表不能为空', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+        }
+        $this->reqData['channel_ids'] = Tool::jsonEncode(array_keys($this->channel_ids), JSON_UNESCAPED_UNICODE);
         return $this->getContent();
     }
 }
