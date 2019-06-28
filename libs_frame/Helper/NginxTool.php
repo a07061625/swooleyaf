@@ -15,17 +15,24 @@ class NginxTool
     use SimpleTrait;
 
     /**
-     * 生产stream配置文件
+     * 生产流配置文件
      * @param array $projects
-     * @param array $configs
      */
-    public static function createStreamFile(array $projects, array $configs)
+    public static function createStreamFile(array $projects)
     {
+        $configPath = Tool::getClientOption('-path', false, '');
+        if (!is_dir($configPath)) {
+            exit('配置文件存放目录不合法' . PHP_EOL);
+        }
+        $logPath = Tool::getClientOption('-logpath', false, '/home/logs/nginx');
+        if (!is_dir($logPath)) {
+            exit('日志文件存放目录不合法' . PHP_EOL);
+        }
         $tagLength = strlen(SY_PROJECT);
         $moduleConfigs = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.modules');
         foreach ($projects as $eProject) {
             $moduleTag = substr($eProject['module_name'], $tagLength);
-            $fileName = $configs['config_path'] . '/' . $eProject['module_name'] . '.conf';
+            $fileName = $configPath . '/' . $eProject['module_name'] . '.conf';
             $fileContent = 'upstream rpc_' . $eProject['module_name'] . ' {' . PHP_EOL;
             $fileContent .= '    zone rpc_' . $eProject['module_name'] . ' 64k;' . PHP_EOL;
             $fileContent .= '    least_conn;' . PHP_EOL;
@@ -40,7 +47,7 @@ class NginxTool
                             . ':' . $moduleConfigs[$moduleTag]['port']
                             . ' so_keepalive=60s::;' . PHP_EOL;
             $fileContent .= '    tcp_nodelay on;' . PHP_EOL;
-            $fileContent .= '    access_log ' . $configs['log_path']
+            $fileContent .= '    access_log ' . $logPath
                             . '/rpc' . $eProject['module_name']
                             . '.log rpc;' . PHP_EOL;
             $fileContent .= '    proxy_connect_timeout 1s;' . PHP_EOL;
@@ -51,5 +58,16 @@ class NginxTool
             $fileContent .= '}' . PHP_EOL;
             file_put_contents($fileName, $fileContent);
         }
+    }
+
+    public static function help()
+    {
+        echo '用法: /usr/local/php7/bin/php helper_nginx.php 脚本参数' . PHP_EOL;
+        echo '公共脚本参数:' . PHP_EOL;
+        echo '    -h: 帮助' . PHP_EOL;
+        echo '    -ct: 生成类型 streams:生成流配置文件' . PHP_EOL;
+        echo '生成流配置脚本参数:' . PHP_EOL;
+        echo '    -path: 配置文件存放目录,以/开头且不以/结尾' . PHP_EOL;
+        echo '    -logpath: 日志文件存放目录,以/开头且不以/结尾,默认为/home/logs/nginx' . PHP_EOL;
     }
 }
