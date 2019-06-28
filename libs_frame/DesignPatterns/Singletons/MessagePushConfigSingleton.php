@@ -287,6 +287,7 @@ class MessagePushConfigSingleton
             $baiDuConfig = new ConfigBaiDu();
             $baiDuConfig->setAppKey((string)Tool::getArrayVal($configs, 'baidu.app.key', '', true));
             $baiDuConfig->setAppSecret((string)Tool::getArrayVal($configs, 'baidu.app.secret', '', true));
+            $baiDuConfig->setDeviceType((int)Tool::getArrayVal($configs, 'baidu.device.type', -1, true));
             $this->jPushDevConfig = $baiDuConfig;
         }
 
