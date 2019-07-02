@@ -11,6 +11,7 @@ use Entities\SyTask\AliconfigPayEntity;
 use Entities\SyTask\DingtalkConfigCorpEntity;
 use Entities\SyTask\TaskBaseEntity;
 use Entities\SyTask\TaskLogEntity;
+use Entities\SyTask\WebhookEntity;
 use Entities\SyTask\WxconfigBaseEntity;
 use Entities\SyTask\WxconfigCorpEntity;
 use Entities\SyTask\WxconfigShopEntity;
@@ -93,5 +94,13 @@ class SyTaskMysqlFactory
     public static function DingtalkConfigCorpEntity(string $dbName = '')
     {
         return new DingtalkConfigCorpEntity($dbName);
+    }
+    /**
+     * @param string $dbName 数据库名
+     * @return \Entities\SyTask\WebhookEntity
+     */
+    public static function WebhookEntity(string $dbName = '')
+    {
+        return new WebhookEntity($dbName);
     }
 }

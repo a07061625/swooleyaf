@@ -12,6 +12,7 @@ use Project\TimerHandler;
 use Response\Result;
 use Tool\SyPack;
 use Tool\Tool;
+use Tool\WebHook;
 
 trait HttpServerTrait
 {
@@ -27,14 +28,14 @@ trait HttpServerTrait
     {
         $this->_messagePack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
             'task_module' => SY_MODULE,
-            'task_command' => Project::TASK_TYPE_TIME_WHEEL_TASK,
+            'task_command' => Project::TASK_TYPE_CODE_WEBHOOK,
             'task_params' => [],
         ]);
-        $taskDataTimeWheel = $this->_messagePack->packData();
+        $taskDataToken = $this->_messagePack->packData();
         $this->_messagePack->init();
 
-        $server->tick(1000, function () use ($server, $taskDataTimeWheel) {
-            $server->task($taskDataTimeWheel);
+        $server->tick(Project::TIME_TASK_CODE_WEBHOOK, function () use ($server, $taskDataToken) {
+            $server->task($taskDataToken);
         });
     }
 
@@ -53,10 +54,8 @@ trait HttpServerTrait
                 $nowTime = self::$_syServer->incr(self::$_serverToken, 'timer_time', 1);
                 TimerHandler::handle($nowTime);
                 break;
-            case Project::TASK_TYPE_REFRESH_TOKEN_EXPIRE:
-                self::$_syServer->set(self::$_serverToken, [
-                    'token_etime' => 16000000000,
-                ]);
+            case Project::TASK_TYPE_CODE_WEBHOOK:
+                WebHook::handleHook();
                 break;
             default:
                 $result = new Result();

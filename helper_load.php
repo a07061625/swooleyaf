@@ -1,7 +1,7 @@
 <?php
 define('SY_ROOT', __DIR__);
 define('SY_ENV', 'dev');
-define('SY_PROJECT', 'z01');
+define('SY_PROJECT', 'm01');
 define('SY_DATABASE', true);
 define('SY_LC_WX_ACCOUNT', false);
 define('SY_LC_WXOPEN_AUTHORIZER', false);
