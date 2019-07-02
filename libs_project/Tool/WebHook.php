@@ -36,11 +36,8 @@ final class WebHook
         try {
             $commands = \ProjectCache\WebHook::getCommandList($queueArr['tag'], $queueArr['event'], $queueArr['msg_prefix']);
             foreach ($commands as $command) {
-                $execRes = Tool::execSystemCommand($command);
-                if ($execRes['code'] > 0) {
-                    Log::log('webhook exec command: ' . $command . ',err_msg:' . $execRes['msg']);
-                    break;
-                }
+                Tool::execSystemCommand($command);
+                Log::log('webhook exec command: ' . $command);
             }
         } catch (\Exception $e) {
             Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
