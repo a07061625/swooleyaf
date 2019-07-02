@@ -41,6 +41,9 @@ class ProjectBase
     const REDIS_PREFIX_DINGTALK_CORP = 'sy' . SY_PROJECT . '10303_'; //前缀-企业钉钉
     const REDIS_PREFIX_JPUSH_APP_CID_PUSH = 'sy' . SY_PROJECT . '10400_'; //前缀-极光推送推送唯一标识符
     const REDIS_PREFIX_JPUSH_APP_CID_SCHEDULE = 'sy' . SY_PROJECT . '10401_'; //前缀-极光推送定时任务唯一标识符
+    const REDIS_PREFIX_CODE_WEBHOOK_QUEUE = 'sy' . SY_PROJECT . '10500_'; //前缀-代码WebHook队列
+    const REDIS_PREFIX_CODE_WEBHOOK_STATUS = 'sy' . SY_PROJECT . '10501_'; //前缀-代码WebHook状态
+    const REDIS_PREFIX_CODE_WEBHOOK_COMMAND = 'sy' . SY_PROJECT . '10502_'; //前缀-代码WebHook命令
 
     //YAC常量,以0000开头的前缀为框架内部前缀,并键名总长度不超过48个字符串
     const YAC_PREFIX_FUSE = '0000'; //前缀-熔断器
@@ -139,6 +142,7 @@ class ProjectBase
     const TIME_TASK_CLEAR_LOCAL_USER = 300000; //任务时间-清理本地用户信息,单位为毫秒
     const TIME_TASK_CLEAR_LOCAL_WX = 300000; //任务时间-清理本地微信,单位为毫秒
     const TIME_TASK_REFRESH_TOKEN_EXPIRE = 540000; //任务时间-刷新令牌到期时间,单位为毫秒
+    const TIME_TASK_CODE_WEBHOOK = 3000; //任务时间-代码WebHook,单位为毫秒
 
     //任务常量,4位字符串,数字和字母组成,纯数字的为框架内部任务,其他为自定义任务
     const TASK_TYPE_CLEAR_API_SIGN_CACHE = '0001'; //任务类型-清理api签名缓存
@@ -146,6 +150,7 @@ class ProjectBase
     const TASK_TYPE_CLEAR_LOCAL_WX_CACHE = '0003'; //任务类型-清除本地微信缓存
     const TASK_TYPE_TIME_WHEEL_TASK = '0004'; //任务类型-时间轮任务
     const TASK_TYPE_REFRESH_TOKEN_EXPIRE = '0005'; //任务类型-刷新令牌到期时间
+    const TASK_TYPE_CODE_WEBHOOK = '1000'; //任务类型-代码WebHook
 
     //消息队列常量
     const MESSAGE_QUEUE_TYPE_REDIS = 'redis'; //类型-redis
