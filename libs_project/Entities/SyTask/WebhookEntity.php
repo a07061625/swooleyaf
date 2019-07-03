@@ -18,6 +18,12 @@ class WebhookEntity extends MysqlEntity
     public $tag = '';
 
     /**
+     * 令牌
+     * @var string
+     */
+    public $token = '';
+
+    /**
      * 代码地址
      * @var string
      */

@@ -30,13 +30,15 @@ class WebHookController extends CommonController
         } else {
             $postArr = [];
         }
-
-        if (!isset($postArr['ref'])) {
+        $tag = hash('crc32b', $postArr['repository']['url'] . $postArr['ref']);
+        $nowSign = \Tool\WebHook::createCodingSign($tag, $postData);
+        $reqSign = $_SERVER['X-CODING-SIGNATURE'] ?? '';
+        if ($nowSign !== $reqSign) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '数据不合法');
         } else {
             $redisKey = \ProjectCache\WebHook::getCacheQueueKey();
             \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->lPush($redisKey, \Tool\Tool::jsonEncode([
-                'tag' => hash('crc32b', $postArr['repository']['url'] . $postArr['ref']),
+                'tag' => $tag,
                 'event' => $_SERVER['X-CODING-EVENT'],
                 'msg_prefix' => substr($postArr['head_commit']['message'], 0, 4),
             ]));

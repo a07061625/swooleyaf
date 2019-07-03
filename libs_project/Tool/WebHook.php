@@ -15,6 +15,23 @@ final class WebHook
 {
     use SimpleTrait;
 
+    /**
+     * 生成码市签名
+     * @param string $tag
+     * @param string $body 请求体数据
+     * @return string
+     */
+    public static function createCodingSign(string $tag, string $body)
+    {
+        $hookInfo = \ProjectCache\WebHook::getHookInfo($tag);
+        $token = $hookInfo['token'] ?? '';
+        if (strlen($token) == 0) {
+            return '';
+        }
+
+        return 'sha1=' . hash_hmac('sha1', $body, $token);
+    }
+
     public static function handleHook()
     {
         $queueKey = \ProjectCache\WebHook::getCacheQueueKey();
