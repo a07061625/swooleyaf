@@ -54,7 +54,7 @@ class NginxTool
             $fileContent .= '    proxy_timeout 30s;' . PHP_EOL;
             $fileContent .= '    proxy_buffer_size 32k;' . PHP_EOL;
             $fileContent .= '    proxy_next_upstream on;' . PHP_EOL;
-            $fileContent .= '    proxy_pass rpc_a01api;' . PHP_EOL;
+            $fileContent .= '    proxy_pass rpc_' . $eProject['module_name'] . ';' . PHP_EOL;
             $fileContent .= '}' . PHP_EOL;
             file_put_contents($fileName, $fileContent);
         }
