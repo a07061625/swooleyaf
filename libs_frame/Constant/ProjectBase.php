@@ -44,6 +44,7 @@ class ProjectBase
     const REDIS_PREFIX_CODE_WEBHOOK_QUEUE = 'sy' . SY_PROJECT . '10500_'; //前缀-代码WebHook队列
     const REDIS_PREFIX_CODE_WEBHOOK_STATUS = 'sy' . SY_PROJECT . '10501_'; //前缀-代码WebHook状态
     const REDIS_PREFIX_CODE_WEBHOOK_COMMAND = 'sy' . SY_PROJECT . '10502_'; //前缀-代码WebHook命令
+    const REDIS_PREFIX_CODE_WEBHOOK_INFO = 'sy' . SY_PROJECT . '10503_'; //前缀-代码WebHook信息
 
     //YAC常量,以0000开头的前缀为框架内部前缀,并键名总长度不超过48个字符串
     const YAC_PREFIX_FUSE = '0000'; //前缀-熔断器
