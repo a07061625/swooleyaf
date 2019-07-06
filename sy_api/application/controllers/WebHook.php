@@ -40,7 +40,7 @@ class WebHookController extends CommonController
             \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->lPush($redisKey, \Tool\Tool::jsonEncode([
                 'tag' => $tag,
                 'event' => $_SERVER['X-CODING-EVENT'],
-                'msg_prefix' => substr($postArr['head_commit']['message'], 0, 4),
+                'msg_prefix' => mb_substr($postArr['head_commit']['message'], 0, 4),
             ]));
             \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->expire($redisKey, 86400);
             $this->SyResult->setData([
