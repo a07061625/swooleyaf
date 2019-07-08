@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.3.2
+ * @since 4.4.0
  */
 class Client
 {
@@ -14,29 +14,24 @@ class Client
     const SHUT_RD = 0;
     const SHUT_WR = 1;
 
+
     /**
      * @param $type[required]
      * @param $async[optional]
      * @return mixed
      */
-    public function __construct($type, $async = null)
-    {
-    }
+    public function __construct($type, $async=null){}
 
     /**
      * @return mixed
      */
-    public function __destruct()
-    {
-    }
+    public function __destruct(){}
 
     /**
      * @param $settings[required]
      * @return mixed
      */
-    public function set($settings)
-    {
-    }
+    public function set($settings){}
 
     /**
      * @param $host[required]
@@ -45,35 +40,27 @@ class Client
      * @param $sock_flag[optional]
      * @return mixed
      */
-    public function connect($host, $port = null, $timeout = null, $sock_flag = null)
-    {
-    }
+    public function connect($host, $port=null, $timeout=null, $sock_flag=null){}
 
     /**
      * @param $size[optional]
      * @param $flag[optional]
      * @return mixed
      */
-    public function recv($size = null, $flag = null)
-    {
-    }
+    public function recv($size=null, $flag=null){}
 
     /**
      * @param $data[required]
      * @param $flag[optional]
      * @return mixed
      */
-    public function send($data, $flag = null)
-    {
-    }
+    public function send($data, $flag=null){}
 
     /**
      * @param $dst_socket[required]
      * @return mixed
      */
-    public function pipe($dst_socket)
-    {
-    }
+    public function pipe($dst_socket){}
 
     /**
      * @param $filename[required]
@@ -81,9 +68,7 @@ class Client
      * @param $length[optional]
      * @return mixed
      */
-    public function sendfile($filename, $offset = null, $length = null)
-    {
-    }
+    public function sendfile($filename, $offset=null, $length=null){}
 
     /**
      * @param $ip[required]
@@ -91,103 +76,82 @@ class Client
      * @param $data[required]
      * @return mixed
      */
-    public function sendto($ip, $port, $data)
-    {
-    }
+    public function sendto($ip, $port, $data){}
 
     /**
      * @return mixed
      */
-    public function sleep()
-    {
-    }
+    public function sleep(){}
 
     /**
      * @return mixed
      */
-    public function wakeup()
-    {
-    }
+    public function wakeup(){}
 
     /**
      * @return mixed
      */
-    public function pause()
-    {
-    }
+    public function pause(){}
 
     /**
      * @return mixed
      */
-    public function resume()
-    {
-    }
+    public function resume(){}
 
     /**
      * @param $how[required]
      * @return mixed
      */
-    public function shutdown($how)
-    {
-    }
+    public function shutdown($how){}
 
     /**
      * @param $callback[optional]
      * @return mixed
      */
-    public function enableSSL($callback = null)
-    {
-    }
+    public function enableSSL($callback=null){}
 
     /**
      * @return mixed
      */
-    public function getPeerCert()
-    {
-    }
+    public function getPeerCert(){}
 
     /**
      * @return mixed
      */
-    public function verifyPeerCert()
-    {
-    }
+    public function verifyPeerCert(){}
 
     /**
      * @return mixed
      */
-    public function isConnected()
-    {
-    }
+    public function isConnected(){}
 
     /**
      * @return mixed
      */
-    public function getsockname()
-    {
-    }
+    public function getsockname(){}
 
     /**
      * @return mixed
      */
-    public function getpeername()
-    {
-    }
+    public function getpeername(){}
 
     /**
      * @param $force[optional]
      * @return mixed
      */
-    public function close($force = null)
-    {
-    }
+    public function close($force=null){}
 
     /**
      * @param $event_name[required]
      * @param $callback[required]
      * @return mixed
      */
-    public function on($event_name, $callback)
-    {
-    }
+    public function on($event_name, $callback){}
+
+    /**
+     * @return mixed
+     */
+    public function getSocket(){}
+
+
 }

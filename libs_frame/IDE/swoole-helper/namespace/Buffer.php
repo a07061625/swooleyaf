@@ -2,31 +2,27 @@
 namespace Swoole;
 
 /**
- * @since 4.3.2
+ * @since 4.4.0
  */
 class Buffer
 {
+
+
     /**
      * @param $size[optional]
      * @return mixed
      */
-    public function __construct($size = null)
-    {
-    }
+    public function __construct($size=null){}
 
     /**
      * @return mixed
      */
-    public function __destruct()
-    {
-    }
+    public function __destruct(){}
 
     /**
      * @return mixed
      */
-    public function __toString()
-    {
-    }
+    public function __toString(){}
 
     /**
      * @param $offset[required]
@@ -34,55 +30,43 @@ class Buffer
      * @param $remove[optional]
      * @return mixed
      */
-    public function substr($offset, $length = null, $remove = null)
-    {
-    }
+    public function substr($offset, $length=null, $remove=null){}
 
     /**
      * @param $offset[required]
      * @param $data[required]
      * @return mixed
      */
-    public function write($offset, $data)
-    {
-    }
+    public function write($offset, $data){}
 
     /**
      * @param $offset[required]
      * @param $length[required]
      * @return mixed
      */
-    public function read($offset, $length)
-    {
-    }
+    public function read($offset, $length){}
 
     /**
      * @param $data[required]
      * @return mixed
      */
-    public function append($data)
-    {
-    }
+    public function append($data){}
 
     /**
      * @param $size[required]
      * @return mixed
      */
-    public function expand($size)
-    {
-    }
+    public function expand($size){}
 
     /**
      * @return mixed
      */
-    public function recycle()
-    {
-    }
+    public function recycle(){}
 
     /**
      * @return mixed
      */
-    public function clear()
-    {
-    }
+    public function clear(){}
+
+
 }

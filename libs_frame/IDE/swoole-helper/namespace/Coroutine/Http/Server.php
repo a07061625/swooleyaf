@@ -1,17 +1,17 @@
 <?php
-namespace Swoole\Server;
+namespace Swoole\Coroutine\Http;
 
 /**
  * @since 4.4.0
  */
-class Port
+class Server
 {
 
 
     /**
      * @return mixed
      */
-    private function __construct(){}
+    public function __construct(){}
 
     /**
      * @return mixed
@@ -25,22 +25,26 @@ class Port
     public function set($settings){}
 
     /**
-     * @param $event_name[required]
+     * @param $pattern[required]
      * @param $callback[required]
      * @return mixed
      */
-    public function on($event_name, $callback){}
-
-    /**
-     * @param $event_name[required]
-     * @return mixed
-     */
-    public function getCallback($event_name){}
+    public function handle($pattern, $callback){}
 
     /**
      * @return mixed
      */
-    public function getSocket(){}
+    public function onAccept(){}
+
+    /**
+     * @return mixed
+     */
+    public function start(){}
+
+    /**
+     * @return mixed
+     */
+    public function shutdown(){}
 
 
 }
