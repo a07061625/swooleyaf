@@ -2,15 +2,17 @@
 namespace Swoole\Server;
 
 /**
- * @since 4.3.2
+ * @since 4.4.0
  */
 class Task
 {
+
+
     /**
      * @param $data[required]
      * @return mixed
      */
-    public function finish($data)
-    {
-    }
+    public function finish($data){}
+
+
 }
