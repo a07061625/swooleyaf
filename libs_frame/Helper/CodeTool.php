@@ -23,15 +23,17 @@ class CodeTool
     {
         $fileSize = filesize($fileName);
         if ($fileSize > 0) {
+            $originContent = file_get_contents($fileName);
+            $encryptFile = $fileName . '.txt';
+            $encryptStr = Tool::encrypt($originContent, $key);
+            file_put_contents($encryptFile, $encryptStr);
+
             $fp = fopen($fileName, 'rb+');
             $originContent = fread($fp, $fileSize);
             $data = tonyenc_encode($originContent);
             if (($data !== false) && (file_put_contents($fileName, '') !== false)) {
                 rewind($fp);
                 fwrite($fp, $data);
-                $encryptFile = $fileName . '.txt';
-                $encryptStr = Tool::encrypt($originContent, $key);
-                file_put_contents($encryptFile, $encryptStr);
             }
             fclose($fp);
         }

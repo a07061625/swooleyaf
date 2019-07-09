@@ -315,7 +315,7 @@ class Tool
      */
     public static function decrypt(string $content, string $key)
     {
-        $data = self::jsonDecode(base64_decode($content, true));
+        $data = self::jsonDecode(base64_decode($content));
         if (is_array($data) && (!empty($data))) {
             return openssl_decrypt($data['value'], 'AES-256-CBC', $key, 0, $data['iv']);
         }
