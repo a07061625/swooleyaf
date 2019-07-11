@@ -10,6 +10,7 @@ namespace DesignPatterns\Singletons;
 use SyLogistics\ConfigAliMart;
 use SyLogistics\ConfigKd100;
 use SyLogistics\ConfigKdNiao;
+use SyLogistics\ConfigTaoBao;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
@@ -28,6 +29,10 @@ class LogisticsConfigSingleton
      * @var \SyLogistics\ConfigKdNiao
      */
     private $kdNiaoConfig = null;
+    /**
+     * @var \SyLogistics\ConfigTaoBao
+     */
+    private $taoBaoConfig = null;
 
     private function __construct()
     {
@@ -95,5 +100,21 @@ class LogisticsConfigSingleton
         }
 
         return $this->kdNiaoConfig;
+    }
+
+    /**
+     * @return \SyLogistics\ConfigTaoBao
+     */
+    public function getTaoBaoConfig()
+    {
+        if (is_null($this->taoBaoConfig)) {
+            $configs = Tool::getConfig('logistics.' . SY_ENV . SY_PROJECT);
+            $taoBaoConfig = new ConfigTaoBao();
+            $taoBaoConfig->setAppKey((string)Tool::getArrayVal($configs, 'taobao.app.key', '', true));
+            $taoBaoConfig->setAppSecret((string)Tool::getArrayVal($configs, 'taobao.app.secret', '', true));
+            $this->taoBaoConfig = $taoBaoConfig;
+        }
+
+        return $this->taoBaoConfig;
     }
 }
