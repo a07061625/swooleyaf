@@ -42,6 +42,7 @@ abstract class ServiceBase
         $this->reqData['format'] = 'json';
         $this->reqData['simplify'] = true;
         $this->reqData['timestamp'] = date('Y-m-d H:i:s');
+        $this->curlConfigs[CURLOPT_URL] = SY_TAOBAO_ENV;
     }
 
     private function __clone()

@@ -10,10 +10,10 @@ namespace SySms\DaYu;
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\SmsConfigSingleton;
 use Exception\Sms\DaYuException;
-use SySms\SmsBaseDaYu;
+use TaoBao\ServiceBase;
 use Tool\Tool;
 
-class SmsSend extends SmsBaseDaYu
+class SmsSend extends ServiceBase
 {
     /**
      * 短信类型
@@ -48,8 +48,9 @@ class SmsSend extends SmsBaseDaYu
     public function __construct()
     {
         parent::__construct();
-        $this->appKey = SmsConfigSingleton::getInstance()->getDayuConfig()->getAppKey();
-        $this->appSecret = SmsConfigSingleton::getInstance()->getDayuConfig()->getAppSecret();
+        $config = SmsConfigSingleton::getInstance()->getDayuConfig();
+        $this->appKey = $config->getAppKey();
+        $this->appSecret = $config->getAppSecret();
         $this->reqData['sms_type'] = 'normal';
         $this->badSmsSignNames = [
             '大鱼测试',

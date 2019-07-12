@@ -9,7 +9,6 @@ namespace SyLogistics;
 
 use DesignPatterns\Singletons\LogisticsConfigSingleton;
 use TaoBao\ServiceBase;
-use TaoBao\UtilBase;
 
 abstract class LogisticsBaseTaoBao extends ServiceBase
 {
@@ -19,7 +18,6 @@ abstract class LogisticsBaseTaoBao extends ServiceBase
         $config = LogisticsConfigSingleton::getInstance()->getTaoBaoConfig();
         $this->appKey = $config->getAppKey();
         $this->appSecret = $config->getAppSecret();
-        $this->curlConfigs[CURLOPT_URL] = UtilBase::getEnvUrl(UtilBase::ENV_TYPE_PRODUCT);
     }
 
     private function __clone()
