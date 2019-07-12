@@ -88,6 +88,9 @@ class ErrorCode
     const SMS_PARAM_ERROR = 102000;
     const SMS_POST_ERROR = 102001;
     const SMS_GET_ERROR = 102002;
+    const SMS_REQ_ALIYUN_ERROR = 102010;
+    const SMS_REQ_DAYU_ERROR = 102011;
+    const SMS_REQ_YUN253_ERROR = 102012;
 
     //图片错误,取值范围:102200-102399
     const IMAGE_UPLOAD_PARAM_ERROR = 102200;
@@ -274,6 +277,9 @@ class ErrorCode
         self::SMS_PARAM_ERROR => '短信参数错误',
         self::SMS_POST_ERROR => '短信发送POST请求出错',
         self::SMS_GET_ERROR => '短信发送GET请求出错',
+        self::SMS_REQ_ALIYUN_ERROR => '短信阿里云发送请求出错',
+        self::SMS_REQ_DAYU_ERROR => '短信阿里大鱼发送请求出错',
+        self::SMS_REQ_YUN253_ERROR => '短信253云发送请求出错',
         self::IMAGE_UPLOAD_PARAM_ERROR => '图片上传参数错误',
         self::IMAGE_UPLOAD_FAIL => '图片上传失败',
         self::SIGN_ERROR => '签名值错误',
