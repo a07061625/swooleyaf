@@ -41,7 +41,7 @@ abstract class SmsUtilYun253 extends SmsUtilBase
             CURLOPT_TIMEOUT_MS => 2000,
         ]);
         if ($sendRes === false) {
-            $resArr['code'] = ErrorCode::SMS_POST_ERROR;
+            $resArr['code'] = ErrorCode::SMS_REQ_YUN253_ERROR;
             $resArr['msg'] = '发送短信请求失败';
             return $resArr;
         }
@@ -50,10 +50,10 @@ abstract class SmsUtilYun253 extends SmsUtilBase
         if (isset($sendData['code']) && ($sendData['code'] == 0)) {
             $resArr['data'] = $sendData;
         } elseif (isset($sendData['errorMsg'])) {
-            $resArr['code'] = ErrorCode::SMS_POST_ERROR;
+            $resArr['code'] = ErrorCode::SMS_REQ_YUN253_ERROR;
             $resArr['msg'] = $sendData['errorMsg'];
         } else {
-            $resArr['code'] = ErrorCode::SMS_POST_ERROR;
+            $resArr['code'] = ErrorCode::SMS_REQ_YUN253_ERROR;
             $resArr['msg'] = '解析请求数据失败';
         }
 
