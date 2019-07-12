@@ -49,6 +49,11 @@ if (!is_int(SY_SESSION_JW_EXPIRE)) {
 //jwt会话刷新标识有效时间,单位为秒
 define('SY_SESSION_JW_RID_EXPIRE', (SY_SESSION_JW_EXPIRE + 180));
 
+//淘宝环境链接
+if (!defined('SY_TAOBAO_ENV')) {
+    define('SY_TAOBAO_ENV', 'https://eco.taobao.com/router/rest');
+}
+
 $aliOpenConfigs = \Tool\Tool::getConfig('project.' . SY_ENV . SY_PROJECT);
 $proxyStatus = (int)\Tool\Tool::getArrayVal($aliOpenConfigs, 'aliopen.proxy.status', 0, true);
 if ($proxyStatus > 0) {

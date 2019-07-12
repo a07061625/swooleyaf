@@ -7,36 +7,12 @@
  */
 namespace TaoBao;
 
-use Constant\ErrorCode;
-use Exception\Common\CheckException;
 use Tool\Tool;
+use Traits\SimpleTrait;
 
 abstract class UtilBase
 {
-    const ENV_TYPE_SANDBOX = 'sandbox'; //环境类型-沙箱
-    const ENV_TYPE_PRODUCT = 'product'; //环境类型-正式
-    const ENV_TYPE_OVERSEA = 'oversea'; //环境类型-海外
-
-    private static $totalEnvType = [
-        self::ENV_TYPE_SANDBOX => 'https://gw.api.tbsandbox.com/router/rest',
-        self::ENV_TYPE_PRODUCT => 'https://eco.taobao.com/router/rest',
-        self::ENV_TYPE_OVERSEA => 'https://api.taobao.com/router/rest',
-    ];
-
-    /**
-     * 获取环境链接
-     * @param string $envType
-     * @return string
-     * @throws \Exception\Common\CheckException
-     */
-    public static function getEnvUrl(string $envType)
-    {
-        if (isset(self::$totalEnvType[$envType])) {
-            return self::$totalEnvType[$envType];
-        } else {
-            throw new CheckException('环境类型不存在', ErrorCode::COMMON_PARAM_ERROR);
-        }
-    }
+    use SimpleTrait;
 
     /**
      * 生成签名字符串
@@ -67,7 +43,7 @@ abstract class UtilBase
      * @param int $errorCode
      * @return array
      */
-    public static function sendServiceRequest(ServiceBase $serviceBase, int $errorCode)
+    public static function sendRequest(ServiceBase $serviceBase, int $errorCode)
     {
         $resArr = [
             'code' => 0

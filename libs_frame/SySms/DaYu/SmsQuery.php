@@ -10,9 +10,9 @@ namespace SySms\DaYu;
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\SmsConfigSingleton;
 use Exception\Sms\DaYuException;
-use SySms\SmsBaseDaYu;
+use TaoBao\ServiceBase;
 
-class SmsQuery extends SmsBaseDaYu
+class SmsQuery extends ServiceBase
 {
     /**
      * 流水号
@@ -43,8 +43,9 @@ class SmsQuery extends SmsBaseDaYu
     public function __construct()
     {
         parent::__construct();
-        $this->appKey = SmsConfigSingleton::getInstance()->getDaYuConfig()->getAppKey();
-        $this->appSecret = SmsConfigSingleton::getInstance()->getDaYuConfig()->getAppSecret();
+        $config = SmsConfigSingleton::getInstance()->getDaYuConfig();
+        $this->appKey = $config->getAppKey();
+        $this->appSecret = $config->getAppSecret();
         $this->reqData['current_page'] = 1;
         $this->reqData['page_size'] = 10;
         $this->setMethod('alibaba.aliqin.fc.sms.num.query');
