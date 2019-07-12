@@ -23,6 +23,6 @@ class SmsUtilDaYu extends UtilBase
      */
     public static function sendServiceRequest(ServiceBase $service)
     {
-        return parent::sendRequest($service, ErrorCode::SMS_POST_ERROR);
+        return parent::sendRequest($service, ErrorCode::SMS_REQ_DAYU_ERROR);
     }
 }
