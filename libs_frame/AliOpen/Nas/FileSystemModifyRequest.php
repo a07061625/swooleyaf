@@ -23,14 +23,14 @@ use AliOpen\Core\RpcAcsRequest;
 
 class FileSystemModifyRequest extends RpcAcsRequest
 {
+    private $description;
+    private $fileSystemId;
+
     public function __construct()
     {
         parent::__construct("NAS", "2017-06-26", "ModifyFileSystem", "nas", "openAPI");
         $this->setMethod("POST");
     }
-
-    private $description;
-    private $fileSystemId;
 
     public function getDescription()
     {

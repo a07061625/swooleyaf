@@ -23,18 +23,18 @@ use AliOpen\Core\RpcAcsRequest;
 
 class AccessRuleModifyRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("NAS", "2017-06-26", "ModifyAccessRule", "nas", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $rWAccessType;
     private $sourceCidrIp;
     private $userAccessType;
     private $priority;
     private $accessGroupName;
     private $accessRuleId;
+
+    public function __construct()
+    {
+        parent::__construct("NAS", "2017-06-26", "ModifyAccessRule", "nas", "openAPI");
+        $this->setMethod("POST");
+    }
 
     public function getRWAccessType()
     {

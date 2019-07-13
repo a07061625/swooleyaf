@@ -23,14 +23,14 @@ use AliOpen\Core\RpcAcsRequest;
 
 class AccessRuleDeleteRequest extends RpcAcsRequest
 {
+    private $accessGroupName;
+    private $accessRuleId;
+
     public function __construct()
     {
         parent::__construct("NAS", "2017-06-26", "DeleteAccessRule", "nas", "openAPI");
         $this->setMethod("POST");
     }
-
-    private $accessGroupName;
-    private $accessRuleId;
 
     public function getAccessGroupName()
     {
