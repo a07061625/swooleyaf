@@ -23,15 +23,15 @@ use AliOpen\Core\RpcAcsRequest;
 
 class FileSystemsDescribeRequest extends RpcAcsRequest
 {
+    private $pageSize;
+    private $pageNumber;
+    private $fileSystemId;
+
     public function __construct()
     {
         parent::__construct("NAS", "2017-06-26", "DescribeFileSystems", "nas", "openAPI");
         $this->setMethod("POST");
     }
-
-    private $pageSize;
-    private $pageNumber;
-    private $fileSystemId;
 
     public function getPageSize()
     {

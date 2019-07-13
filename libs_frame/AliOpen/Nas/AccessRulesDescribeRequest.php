@@ -23,16 +23,16 @@ use AliOpen\Core\RpcAcsRequest;
 
 class AccessRulesDescribeRequest extends RpcAcsRequest
 {
+    private $pageSize;
+    private $accessGroupName;
+    private $accessRuleId;
+    private $pageNumber;
+
     public function __construct()
     {
         parent::__construct("NAS", "2017-06-26", "DescribeAccessRules", "nas", "openAPI");
         $this->setMethod("POST");
     }
-
-    private $pageSize;
-    private $accessGroupName;
-    private $accessRuleId;
-    private $pageNumber;
 
     public function getPageSize()
     {

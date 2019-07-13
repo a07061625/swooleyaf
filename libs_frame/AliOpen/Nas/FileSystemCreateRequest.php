@@ -23,15 +23,15 @@ use AliOpen\Core\RpcAcsRequest;
 
 class FileSystemCreateRequest extends RpcAcsRequest
 {
+    private $description;
+    private $protocolType;
+    private $storageType;
+
     public function __construct()
     {
         parent::__construct("NAS", "2017-06-26", "CreateFileSystem", "nas", "openAPI");
         $this->setMethod("POST");
     }
-
-    private $description;
-    private $protocolType;
-    private $storageType;
 
     public function getDescription()
     {

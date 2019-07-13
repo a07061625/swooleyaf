@@ -23,15 +23,15 @@ use AliOpen\Core\RpcAcsRequest;
 
 class AccessGroupCreateRequest extends RpcAcsRequest
 {
+    private $description;
+    private $accessGroupType;
+    private $accessGroupName;
+
     public function __construct()
     {
         parent::__construct("NAS", "2017-06-26", "CreateAccessGroup", "nas", "openAPI");
         $this->setMethod("POST");
     }
-
-    private $description;
-    private $accessGroupType;
-    private $accessGroupName;
 
     public function getDescription()
     {
