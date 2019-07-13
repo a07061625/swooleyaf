@@ -23,16 +23,16 @@ use AliOpen\Core\RpcAcsRequest;
 
 class MountTargetsDescribeRequest extends RpcAcsRequest
 {
+    private $mountTargetDomain;
+    private $pageSize;
+    private $pageNumber;
+    private $fileSystemId;
+
     public function __construct()
     {
         parent::__construct("NAS", "2017-06-26", "DescribeMountTargets", "nas", "openAPI");
         $this->setMethod("POST");
     }
-
-    private $mountTargetDomain;
-    private $pageSize;
-    private $pageNumber;
-    private $fileSystemId;
 
     public function getMountTargetDomain()
     {

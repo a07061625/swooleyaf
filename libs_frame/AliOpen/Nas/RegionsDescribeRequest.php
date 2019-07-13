@@ -23,14 +23,14 @@ use AliOpen\Core\RpcAcsRequest;
 
 class RegionsDescribeRequest extends RpcAcsRequest
 {
+    private $pageSize;
+    private $pageNumber;
+
     public function __construct()
     {
         parent::__construct("NAS", "2017-06-26", "DescribeRegions", "nas", "openAPI");
         $this->setMethod("POST");
     }
-
-    private $pageSize;
-    private $pageNumber;
 
     public function getPageSize()
     {

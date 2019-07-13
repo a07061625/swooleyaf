@@ -23,13 +23,13 @@ use AliOpen\Core\RpcAcsRequest;
 
 class FileSystemDeleteRequest extends RpcAcsRequest
 {
+    private $fileSystemId;
+
     public function __construct()
     {
         parent::__construct("NAS", "2017-06-26", "DeleteFileSystem", "nas", "openAPI");
         $this->setMethod("POST");
     }
-
-    private $fileSystemId;
 
     public function getFileSystemId()
     {

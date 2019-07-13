@@ -23,14 +23,14 @@ use AliOpen\Core\RpcAcsRequest;
 
 class MountTargetDeleteRequest extends RpcAcsRequest
 {
+    private $mountTargetDomain;
+    private $fileSystemId;
+
     public function __construct()
     {
         parent::__construct("NAS", "2017-06-26", "DeleteMountTarget", "nas", "openAPI");
         $this->setMethod("POST");
     }
-
-    private $mountTargetDomain;
-    private $fileSystemId;
 
     public function getMountTargetDomain()
     {

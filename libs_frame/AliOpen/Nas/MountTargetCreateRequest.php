@@ -23,17 +23,17 @@ use AliOpen\Core\RpcAcsRequest;
 
 class MountTargetCreateRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("NAS", "2017-06-26", "CreateMountTarget", "nas", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $vSwitchId;
     private $vpcId;
     private $networkType;
     private $accessGroupName;
     private $fileSystemId;
+
+    public function __construct()
+    {
+        parent::__construct("NAS", "2017-06-26", "CreateMountTarget", "nas", "openAPI");
+        $this->setMethod("POST");
+    }
 
     public function getVSwitchId()
     {

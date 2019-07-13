@@ -23,13 +23,13 @@ use AliOpen\Core\RpcAcsRequest;
 
 class AccessGroupDeleteRequest extends RpcAcsRequest
 {
+    private $accessGroupName;
+
     public function __construct()
     {
         parent::__construct("NAS", "2017-06-26", "DeleteAccessGroup", "nas", "openAPI");
         $this->setMethod("POST");
     }
-
-    private $accessGroupName;
 
     public function getAccessGroupName()
     {
