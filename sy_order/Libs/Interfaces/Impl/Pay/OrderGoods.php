@@ -9,7 +9,7 @@ namespace Interfaces\Impl\Pay;
 
 use Constant\ErrorCode;
 use Constant\Project;
-use Exception\Common\CheckException;
+use SyException\Common\CheckException;
 use Interfaces\PayBase;
 use Interfaces\PayService;
 use Request\SyRequest;

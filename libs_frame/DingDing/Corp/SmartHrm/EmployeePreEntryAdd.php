@@ -10,7 +10,7 @@ namespace DingDing\Corp\SmartHrm;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -61,7 +61,7 @@ class EmployeePreEntryAdd extends TalkBaseCorp
 
     /**
      * @param string $name
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setName(string $name)
     {
@@ -74,7 +74,7 @@ class EmployeePreEntryAdd extends TalkBaseCorp
 
     /**
      * @param string $mobile
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setMobile(string $mobile)
     {
@@ -87,7 +87,7 @@ class EmployeePreEntryAdd extends TalkBaseCorp
 
     /**
      * @param int $preEntryTime
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setPreEntryTime(int $preEntryTime)
     {
@@ -100,7 +100,7 @@ class EmployeePreEntryAdd extends TalkBaseCorp
 
     /**
      * @param string $opUserId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOpUserId(string $opUserId)
     {
@@ -113,7 +113,7 @@ class EmployeePreEntryAdd extends TalkBaseCorp
 
     /**
      * @param array $extendInfo
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setExtendInfo(array $extendInfo)
     {

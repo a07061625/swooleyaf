@@ -9,7 +9,7 @@ namespace AliPay\Life;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayLifeException;
+use SyException\AliPay\AliPayLifeException;
 
 class AdvertCreate extends AliPayBase
 {
@@ -32,7 +32,7 @@ class AdvertCreate extends AliPayBase
 
     /**
      * @param array $advertItem
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function addAdvertItems(array $advertItem)
     {

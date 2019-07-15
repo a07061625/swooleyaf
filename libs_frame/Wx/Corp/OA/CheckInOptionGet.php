@@ -2,7 +2,7 @@
 namespace Wx\Corp\OA;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -42,7 +42,7 @@ class CheckInOptionGet extends WxBaseCorp
 
     /**
      * @param int $datetime
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setDatetime(int $datetime)
     {
@@ -55,7 +55,7 @@ class CheckInOptionGet extends WxBaseCorp
 
     /**
      * @param array $userIdList
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setUserIdList(array $userIdList)
     {

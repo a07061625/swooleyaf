@@ -9,7 +9,7 @@ namespace DesignPatterns\Facades\UserLogin;
 
 use Constant\ErrorCode;
 use DesignPatterns\Facades\UserLoginFacade;
-use Exception\Common\CheckException;
+use SyException\Common\CheckException;
 use Request\SyRequest;
 use Traits\SimpleFacadeTrait;
 

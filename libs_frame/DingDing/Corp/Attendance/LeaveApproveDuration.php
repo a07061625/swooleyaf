@@ -10,7 +10,7 @@ namespace DingDing\Corp\Attendance;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -50,7 +50,7 @@ class LeaveApproveDuration extends TalkBaseCorp
 
     /**
      * @param string $userId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserId(string $userId)
     {
@@ -64,7 +64,7 @@ class LeaveApproveDuration extends TalkBaseCorp
     /**
      * @param int $startTime
      * @param int $endTime
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setStartTimeAndEndTime(int $startTime, int $endTime)
     {

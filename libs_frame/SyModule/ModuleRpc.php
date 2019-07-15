@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use Constant\Project;
 use Constant\Server;
 use DesignPatterns\Factories\CacheSimpleFactory;
-use Exception\Swoole\ServerException;
+use SyException\Swoole\ServerException;
 use Log\Log;
 use Request\SyRequestRpc;
 use Tool\Tool;
@@ -53,7 +53,7 @@ abstract class ModuleRpc extends ModuleBase
      * @param bool $async 是否异步 true:异步 false:同步
      * @param callable $callback 回调函数
      * @return bool|string
-     * @throws \Exception\Swoole\ServerException
+     * @throws \SyException\Swoole\ServerException
      */
     public function sendApiReq(string $uri, array $params, bool $async = false, callable $callback = null)
     {
@@ -84,7 +84,7 @@ abstract class ModuleRpc extends ModuleBase
      * @param array $params 请求参数数组
      * @param callable $callback 回调函数
      * @return bool|string
-     * @throws \Exception\Swoole\ServerException
+     * @throws \SyException\Swoole\ServerException
      */
     public function sendTaskReq(string $command, array $params, callable $callback = null)
     {

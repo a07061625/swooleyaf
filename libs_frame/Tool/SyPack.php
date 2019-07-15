@@ -9,7 +9,7 @@ namespace Tool;
 
 use Constant\ErrorCode;
 use Constant\Project;
-use Exception\Common\CheckException;
+use SyException\Common\CheckException;
 
 class SyPack
 {
@@ -91,7 +91,7 @@ class SyPack
     /**
      * @param string $command
      * @param array $data
-     * @throws \Exception\Common\CheckException
+     * @throws \SyException\Common\CheckException
      */
     public function setCommandAndData(string $command, array $data)
     {

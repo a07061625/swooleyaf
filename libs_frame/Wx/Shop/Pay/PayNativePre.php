@@ -9,7 +9,7 @@ namespace Wx\Shop\Pay;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\Shop\Tools\ShortUrl;
 use Wx\WxBaseShop;
@@ -54,7 +54,7 @@ class PayNativePre extends WxBaseShop
 
     /**
      * @param string $productId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setProductId(string $productId)
     {
@@ -68,7 +68,7 @@ class PayNativePre extends WxBaseShop
     /**
      * 获取预支付订单详情
      * @return array
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function getDetail() : array
     {

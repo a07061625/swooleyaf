@@ -8,7 +8,7 @@
 namespace SyPrint\FeYin;
 
 use Constant\ErrorCode;
-use Exception\SyPrint\FeYinException;
+use SyException\SyPrint\FeYinException;
 use SyPrint\PrintBaseFeYin;
 use SyPrint\PrintUtilBase;
 use SyPrint\PrintUtilFeYin;
@@ -39,7 +39,7 @@ class MsgCancel extends PrintBaseFeYin
 
     /**
      * @param string $msgNo
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setMsgNo(string $msgNo)
     {

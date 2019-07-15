@@ -9,7 +9,7 @@ namespace AliPay\Auth;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayAuthException;
+use SyException\AliPay\AliPayAuthException;
 
 class AuthTokenQuery extends AliPayBase
 {
@@ -31,7 +31,7 @@ class AuthTokenQuery extends AliPayBase
 
     /**
      * @param string $appAuthToken
-     * @throws \Exception\AliPay\AliPayAuthException
+     * @throws \SyException\AliPay\AliPayAuthException
      */
     public function setAppAuthToken(string $appAuthToken)
     {

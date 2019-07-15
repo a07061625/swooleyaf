@@ -8,7 +8,7 @@
 namespace Mailer;
 
 use Constant\ErrorCode;
-use Exception\Mail\MailException;
+use SyException\Mail\MailException;
 use Log\Log;
 use Mailer\PHP\PHPMailer;
 
@@ -51,7 +51,7 @@ class SyPhpMailer
     /**
      * 设置调试模式
      * @param int $mode
-     * @throws \Exception\Mail\MailException
+     * @throws \SyException\Mail\MailException
      */
     public function setDebugMode(int $mode)
     {
@@ -66,7 +66,7 @@ class SyPhpMailer
      * 设置发送者名称和邮箱
      * @param string $email
      * @param string $name
-     * @throws \Exception\Mail\MailException
+     * @throws \SyException\Mail\MailException
      */
     public function setSenderNameAndEmail(string $email, string $name)
     {
@@ -81,7 +81,7 @@ class SyPhpMailer
      * 添加接收者
      * @param string $email
      * @param string $name
-     * @throws \Exception\Mail\MailException
+     * @throws \SyException\Mail\MailException
      */
     public function addReceiver(string $email, string $name)
     {
@@ -96,7 +96,7 @@ class SyPhpMailer
      * 添加回复者
      * @param string $email
      * @param string $name
-     * @throws \Exception\Mail\MailException
+     * @throws \SyException\Mail\MailException
      */
     public function addReplier(string $email, string $name)
     {
@@ -111,7 +111,7 @@ class SyPhpMailer
      * 添加抄送者
      * @param string $email
      * @param string $name
-     * @throws \Exception\Mail\MailException
+     * @throws \SyException\Mail\MailException
      */
     public function addCC(string $email, string $name)
     {
@@ -126,7 +126,7 @@ class SyPhpMailer
      * 添加密送者
      * @param string $email
      * @param string $name
-     * @throws \Exception\Mail\MailException
+     * @throws \SyException\Mail\MailException
      */
     public function addBCC(string $email, string $name)
     {
@@ -140,7 +140,7 @@ class SyPhpMailer
     /**
      * 设置邮件标题
      * @param string $title
-     * @throws \Exception\Mail\MailException
+     * @throws \SyException\Mail\MailException
      */
     public function setTitle(string $title)
     {
@@ -173,7 +173,7 @@ class SyPhpMailer
     /**
      * 添加附件
      * @param string $attach
-     * @throws \Exception\Mail\MailException
+     * @throws \SyException\Mail\MailException
      */
     public function addAttachment(string $attach)
     {

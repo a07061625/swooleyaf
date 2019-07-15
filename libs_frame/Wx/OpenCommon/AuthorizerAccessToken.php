@@ -9,7 +9,7 @@ namespace Wx\OpenCommon;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use Tool\Tool;
 use Wx\WxBaseOpenCommon;
 use Wx\WxUtilBase;
@@ -37,7 +37,7 @@ class AuthorizerAccessToken extends WxBaseOpenCommon
 
     /**
      * @param string $refreshToken
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setRefreshToken(string $refreshToken)
     {

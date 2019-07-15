@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkUtilCorp;
 use DingDing\TalkUtilProvider;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 /**
  * 获取应用管理员的身份信息
@@ -41,7 +41,7 @@ class UserInfoGet extends TalkBaseCorp
 
     /**
      * @param string $code
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setCode(string $code)
     {

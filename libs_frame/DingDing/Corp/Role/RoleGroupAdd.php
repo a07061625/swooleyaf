@@ -10,7 +10,7 @@ namespace DingDing\Corp\Role;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -40,7 +40,7 @@ class RoleGroupAdd extends TalkBaseCorp
 
     /**
      * @param string $name
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setName(string $name)
     {

@@ -9,7 +9,7 @@ namespace Wx\Corp\Pay\Payment;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Log\Log;
 use Tool\Tool;
 use Wx\WxBaseCorp;
@@ -136,7 +136,7 @@ class PocketPay extends WxBaseCorp
 
     /**
      * @param string $deviceInfo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setDeviceInfo(string $deviceInfo)
     {
@@ -149,7 +149,7 @@ class PocketPay extends WxBaseCorp
 
     /**
      * @param string $partnerTradeNo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPartnerTradeNo(string $partnerTradeNo)
     {
@@ -162,7 +162,7 @@ class PocketPay extends WxBaseCorp
 
     /**
      * @param string $openid
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
     {
@@ -175,7 +175,7 @@ class PocketPay extends WxBaseCorp
 
     /**
      * @param string $checkName
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setCheckName(string $checkName)
     {
@@ -201,7 +201,7 @@ class PocketPay extends WxBaseCorp
 
     /**
      * @param int $amount
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAmount(int $amount)
     {
@@ -214,7 +214,7 @@ class PocketPay extends WxBaseCorp
 
     /**
      * @param string $desc
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setDesc(string $desc)
     {
@@ -227,7 +227,7 @@ class PocketPay extends WxBaseCorp
 
     /**
      * @param string $msgType
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMsgType(string $msgType)
     {
@@ -244,7 +244,7 @@ class PocketPay extends WxBaseCorp
 
     /**
      * @param string $approvalNumber
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setApprovalNumber(string $approvalNumber)
     {
@@ -259,7 +259,7 @@ class PocketPay extends WxBaseCorp
 
     /**
      * @param string $actName
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setActName(string $actName)
     {

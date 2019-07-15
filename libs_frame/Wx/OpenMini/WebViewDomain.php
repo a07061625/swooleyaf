@@ -8,7 +8,7 @@
 namespace Wx\OpenMini;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use Tool\Tool;
 use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
@@ -41,7 +41,7 @@ class WebViewDomain extends WxBaseOpenMini
     /**
      * @param string $action
      * @param array $domains
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setData(string $action, array $domains = [])
     {

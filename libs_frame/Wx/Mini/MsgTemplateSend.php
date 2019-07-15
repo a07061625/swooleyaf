@@ -8,7 +8,7 @@
 namespace Wx\Mini;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseMini;
 use Wx\WxUtilBase;
@@ -74,7 +74,7 @@ class MsgTemplateSend extends WxBaseMini
 
     /**
      * @param string $openid
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
     {
@@ -87,7 +87,7 @@ class MsgTemplateSend extends WxBaseMini
 
     /**
      * @param string $templateId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTemplateId(string $templateId)
     {
@@ -100,7 +100,7 @@ class MsgTemplateSend extends WxBaseMini
 
     /**
      * @param string $redirectUrl
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setRedirectUrl(string $redirectUrl)
     {
@@ -113,7 +113,7 @@ class MsgTemplateSend extends WxBaseMini
 
     /**
      * @param string $formId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setFormId(string $formId)
     {
@@ -134,7 +134,7 @@ class MsgTemplateSend extends WxBaseMini
 
     /**
      * @param string $emphasisKeyword
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setEmphasisKeyword(string $emphasisKeyword)
     {
@@ -147,7 +147,7 @@ class MsgTemplateSend extends WxBaseMini
 
     /**
      * @param string $platType
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPlatType(string $platType)
     {

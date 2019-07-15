@@ -10,7 +10,7 @@ namespace DingDing\Corp\User;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -114,7 +114,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $userId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserId(string $userId)
     {
@@ -127,7 +127,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $name
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setName(string $name)
     {
@@ -140,7 +140,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param array $departmentOrder
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setDepartmentOrder(array $departmentOrder)
     {
@@ -152,7 +152,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param array $departmentList
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setDepartment(array $departmentList)
     {
@@ -170,7 +170,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $position
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setPosition(string $position)
     {
@@ -183,7 +183,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $mobile
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setMobile(string $mobile)
     {
@@ -196,7 +196,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $tel
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setTel(string $tel)
     {
@@ -209,7 +209,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $workPlace
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setWorkPlace(string $workPlace)
     {
@@ -222,7 +222,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $remark
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setRemark(string $remark)
     {
@@ -235,7 +235,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $email
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setEmail(string $email)
     {
@@ -248,7 +248,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $orgEmail
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOrgEmail(string $orgEmail)
     {
@@ -261,7 +261,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $jobNumber
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setJobNumber(string $jobNumber)
     {
@@ -290,7 +290,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param array $extAttr
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setExtAttr(array $extAttr)
     {

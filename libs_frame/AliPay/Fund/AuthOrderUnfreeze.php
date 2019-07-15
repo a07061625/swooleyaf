@@ -9,7 +9,7 @@ namespace AliPay\Fund;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayFundException;
+use SyException\AliPay\AliPayFundException;
 use Tool\Tool;
 
 class AuthOrderUnfreeze extends AliPayBase
@@ -52,7 +52,7 @@ class AuthOrderUnfreeze extends AliPayBase
 
     /**
      * @param string $authNo
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setAuthNo(string $authNo)
     {
@@ -65,7 +65,7 @@ class AuthOrderUnfreeze extends AliPayBase
 
     /**
      * @param string $outRequestNo
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOutRequestNo(string $outRequestNo)
     {
@@ -78,7 +78,7 @@ class AuthOrderUnfreeze extends AliPayBase
 
     /**
      * @param int $amount
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setAmount(int $amount)
     {
@@ -92,7 +92,7 @@ class AuthOrderUnfreeze extends AliPayBase
 
     /**
      * @param string $remark
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setRemark(string $remark)
     {
@@ -105,7 +105,7 @@ class AuthOrderUnfreeze extends AliPayBase
 
     /**
      * @param array $extraParam
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setExtraParam(array $extraParam)
     {

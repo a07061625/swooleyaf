@@ -9,7 +9,7 @@ namespace AliPay;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\AliPayConfigSingleton;
-use Exception\AliPay\AliPayPayException;
+use SyException\AliPay\AliPayPayException;
 use Log\Log;
 use Tool\Tool;
 use Traits\SimpleTrait;
@@ -167,7 +167,7 @@ abstract class AliPayUtilBase
      * @param array $data 请求参数
      * @param array $curlConfig curl配置数组
      * @return mixed
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     protected static function sendPostReq(string $url, array $data, array $curlConfig = [])
     {

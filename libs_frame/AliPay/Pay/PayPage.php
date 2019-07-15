@@ -10,7 +10,7 @@ namespace AliPay\Pay;
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\AliPayConfigSingleton;
-use Exception\AliPay\AliPayPayException;
+use SyException\AliPay\AliPayPayException;
 use Tool\Tool;
 
 class PayPage extends AliPayBase
@@ -165,7 +165,7 @@ class PayPage extends AliPayBase
 
     /**
      * @param string $outTradeNo
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setOutTradeNo(string $outTradeNo)
     {
@@ -178,7 +178,7 @@ class PayPage extends AliPayBase
 
     /**
      * @param int $totalAmount
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setTotalAmount(int $totalAmount)
     {
@@ -191,7 +191,7 @@ class PayPage extends AliPayBase
 
     /**
      * @param string $subject
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setSubject(string $subject)
     {
@@ -213,7 +213,7 @@ class PayPage extends AliPayBase
 
     /**
      * @param int $timeExpire
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setTimeExpire(int $timeExpire)
     {
@@ -256,7 +256,7 @@ class PayPage extends AliPayBase
 
     /**
      * @param string $goodsType
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setGoodsType(string $goodsType)
     {
@@ -332,7 +332,7 @@ class PayPage extends AliPayBase
 
     /**
      * @param string $qrPayMode
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setQrPayMode(string $qrPayMode)
     {
@@ -385,7 +385,7 @@ class PayPage extends AliPayBase
 
     /**
      * @param string $integrationType
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setIntegrationType(string $integrationType)
     {

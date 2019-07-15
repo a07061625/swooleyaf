@@ -8,7 +8,7 @@
 namespace SyMessagePush;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\BaiDuPushException;
+use SyException\MessagePush\BaiDuPushException;
 
 class ConfigBaiDu
 {
@@ -62,7 +62,7 @@ class ConfigBaiDu
 
     /**
      * @param string $appKey
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setAppKey(string $appKey)
     {
@@ -83,7 +83,7 @@ class ConfigBaiDu
 
     /**
      * @param string $appSecret
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setAppSecret(string $appSecret)
     {
@@ -104,7 +104,7 @@ class ConfigBaiDu
 
     /**
      * @param int $deviceType
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setDeviceType(int $deviceType)
     {

@@ -8,7 +8,7 @@
 namespace SyFrame\Routes;
 
 use Constant\ErrorCode;
-use Exception\Validator\ValidatorException;
+use SyException\Validator\ValidatorException;
 use SyFrame\SimpleBootstrap;
 use Yaf\Request_Abstract;
 use Yaf\Route_Interface;
@@ -33,7 +33,7 @@ class SimpleRoute extends Request_Abstract implements Route_Interface
     /**
      * @param \Yaf\Request_Abstract $request
      * @return bool
-     * @throws \Exception\Validator\ValidatorException
+     * @throws \SyException\Validator\ValidatorException
      */
     public function route($request)
     {

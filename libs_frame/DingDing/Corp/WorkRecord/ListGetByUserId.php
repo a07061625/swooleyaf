@@ -10,7 +10,7 @@ namespace DingDing\Corp\WorkRecord;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -57,7 +57,7 @@ class ListGetByUserId extends TalkBaseCorp
 
     /**
      * @param string $userId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserId(string $userId)
     {
@@ -70,7 +70,7 @@ class ListGetByUserId extends TalkBaseCorp
 
     /**
      * @param int $offset
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOffset(int $offset)
     {
@@ -83,7 +83,7 @@ class ListGetByUserId extends TalkBaseCorp
 
     /**
      * @param int $limit
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setLimit(int $limit)
     {
@@ -96,7 +96,7 @@ class ListGetByUserId extends TalkBaseCorp
 
     /**
      * @param int $status
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setStatus(int $status)
     {

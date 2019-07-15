@@ -8,7 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use Constant\ErrorCode;
-use Exception\Mysql\MysqlException;
+use SyException\Mysql\MysqlException;
 use Log\Log;
 use Tool\Tool;
 use Traits\SingletonTrait;
@@ -162,7 +162,7 @@ class MysqlSingleton
 
     /**
      * 检测连接
-     * @throws \Exception\Mysql\MysqlException
+     * @throws \SyException\Mysql\MysqlException
      */
     public function reConnect()
     {
@@ -194,7 +194,7 @@ class MysqlSingleton
     }
 
     /**
-     * @throws \Exception\Mysql\MysqlException
+     * @throws \SyException\Mysql\MysqlException
      */
     private function init()
     {

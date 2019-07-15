@@ -8,7 +8,7 @@
 namespace Map\GaoDe;
 
 use Constant\ErrorCode;
-use Exception\Map\GaoDeMapException;
+use SyException\Map\GaoDeMapException;
 use Map\MapBaseGaoDe;
 
 /**
@@ -85,7 +85,7 @@ class PlaceAround extends MapBaseGaoDe
 
     /**
      * @param array $keywordList
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setKeywords(array $keywordList)
     {
@@ -104,7 +104,7 @@ class PlaceAround extends MapBaseGaoDe
 
     /**
      * @param array $typeList
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setTypes(array $typeList)
     {
@@ -123,7 +123,7 @@ class PlaceAround extends MapBaseGaoDe
 
     /**
      * @param string $city
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setCity(string $city)
     {
@@ -136,7 +136,7 @@ class PlaceAround extends MapBaseGaoDe
 
     /**
      * @param int $radius
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setRadius(int $radius)
     {
@@ -149,7 +149,7 @@ class PlaceAround extends MapBaseGaoDe
 
     /**
      * @param string $sortRule
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setSortRule(string $sortRule)
     {
@@ -162,7 +162,7 @@ class PlaceAround extends MapBaseGaoDe
 
     /**
      * @param int $offset
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setOffset(int $offset)
     {
@@ -175,7 +175,7 @@ class PlaceAround extends MapBaseGaoDe
 
     /**
      * @param int $page
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setPage(int $page)
     {
@@ -188,7 +188,7 @@ class PlaceAround extends MapBaseGaoDe
 
     /**
      * @param string $extensions
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setExtensions(string $extensions)
     {

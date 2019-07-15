@@ -9,7 +9,7 @@ namespace Wx;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 
 abstract class WxBaseShop extends WxBase
 {
@@ -61,7 +61,7 @@ abstract class WxBaseShop extends WxBase
 
     /**
      * @param \Wx\WxConfigAccount $configAccount
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     protected function setAppIdAndMchId(WxConfigAccount $configAccount)
     {
@@ -71,7 +71,7 @@ abstract class WxBaseShop extends WxBase
         } else {
             $merchantAppId = $configAccount->getMerchantAppId();
             if (strlen($merchantAppId) == 0) {
-                throw new WxException('服务商微信号不能为空', ErrorCode::WX_PARAM_ERROR);
+                throw new \SyException\Wx\WxException('服务商微信号不能为空', ErrorCode::WX_PARAM_ERROR);
             }
             $merchantConfig = WxConfigSingleton::getInstance()->getShopConfig($merchantAppId);
             $this->reqData['appid'] = $merchantConfig->getAppId();

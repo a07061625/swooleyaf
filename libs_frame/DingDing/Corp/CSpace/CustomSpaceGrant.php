@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 /**
  * 授权用户访问企业自定义空间
@@ -81,7 +81,7 @@ class CustomSpaceGrant extends TalkBaseCorp
 
     /**
      * @param string $domain
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setDomain(string $domain)
     {
@@ -95,7 +95,7 @@ class CustomSpaceGrant extends TalkBaseCorp
 
     /**
      * @param string $type
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setType(string $type)
     {
@@ -108,7 +108,7 @@ class CustomSpaceGrant extends TalkBaseCorp
 
     /**
      * @param string $userId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserId(string $userId)
     {
@@ -121,7 +121,7 @@ class CustomSpaceGrant extends TalkBaseCorp
 
     /**
      * @param string $path
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setPath(string $path)
     {
@@ -134,7 +134,7 @@ class CustomSpaceGrant extends TalkBaseCorp
 
     /**
      * @param array $fileIds
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setFileIds(array $fileIds)
     {
@@ -152,7 +152,7 @@ class CustomSpaceGrant extends TalkBaseCorp
 
     /**
      * @param int $duration
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setDuration(int $duration)
     {

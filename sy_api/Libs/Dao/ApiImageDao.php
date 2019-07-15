@@ -10,7 +10,7 @@ namespace Dao;
 use Constant\ErrorCode;
 use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
-use Exception\Common\CheckException;
+use SyException\Common\CheckException;
 use Log\Log;
 use Request\SyRequest;
 use SyModule\SyModuleService;
@@ -37,7 +37,7 @@ class ApiImageDao
      * 处理图片上传
      * @param int $uploadType
      * @return array
-     * @throws \Exception\Common\CheckException
+     * @throws \SyException\Common\CheckException
      */
     public static function uploadImageHandle(int $uploadType)
     {

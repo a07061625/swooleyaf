@@ -9,7 +9,7 @@ namespace Wx;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
@@ -115,7 +115,7 @@ final class WxUtilShop extends WxUtilBaseAlone
      * @param string $appId
      * @param array $data
      * @return array
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public static function encryptRsaCompanyBank(string $appId, array $data) : array
     {

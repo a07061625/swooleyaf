@@ -9,7 +9,7 @@ namespace Wx\Shop\Pay;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -198,7 +198,7 @@ class UnifiedOrder extends WxBaseShop
 
     /**
      * @param string $body
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setBody(string $body)
     {
@@ -211,7 +211,7 @@ class UnifiedOrder extends WxBaseShop
 
     /**
      * @param string $attach
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAttach(string $attach)
     {
@@ -224,7 +224,7 @@ class UnifiedOrder extends WxBaseShop
 
     /**
      * @param string $outTradeNo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOutTradeNo(string $outTradeNo)
     {
@@ -240,7 +240,7 @@ class UnifiedOrder extends WxBaseShop
 
     /**
      * @param int $totalFee
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTotalFee(int $totalFee)
     {
@@ -253,7 +253,7 @@ class UnifiedOrder extends WxBaseShop
 
     /**
      * @param string $openid
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
     {
@@ -270,7 +270,7 @@ class UnifiedOrder extends WxBaseShop
 
     /**
      * @param string $ip
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTerminalIp(string $ip)
     {
@@ -285,7 +285,7 @@ class UnifiedOrder extends WxBaseShop
      * @param string $type
      * @param string $name
      * @param string $desc
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setSceneInfo(string $type, string $name, string $desc)
     {
@@ -354,7 +354,7 @@ class UnifiedOrder extends WxBaseShop
 
     /**
      * @param string $time_start 格式为yyyyMMddHHmmss
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTimeStart(string $time_start)
     {
@@ -367,7 +367,7 @@ class UnifiedOrder extends WxBaseShop
 
     /**
      * @param string $time_expire 格式为yyyyMMddHHmmss
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTimeExpire(string $time_expire)
     {
@@ -390,7 +390,7 @@ class UnifiedOrder extends WxBaseShop
 
     /**
      * @param string $plat_type
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPlatType(string $plat_type)
     {
@@ -403,7 +403,7 @@ class UnifiedOrder extends WxBaseShop
 
     /**
      * @param string $profit_sharing
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setProfitSharing(string $profit_sharing)
     {

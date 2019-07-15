@@ -8,7 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use Constant\ErrorCode;
-use Exception\Etcd\EtcdException;
+use SyException\Etcd\EtcdException;
 use Log\Log;
 use Tool\Tool;
 use Traits\SingletonTrait;
@@ -267,7 +267,7 @@ class Etcd3Singleton
      * @param array $data 请求参数数组
      * @param array $extends 扩展参数数组
      * @return string
-     * @throws \Exception\Etcd\EtcdException
+     * @throws \SyException\Etcd\EtcdException
      */
     private function sendReq(string $url, array $data, array $extends = [])
     {
@@ -328,7 +328,7 @@ class Etcd3Singleton
      * 格式化键名
      * @param string $key 键名
      * @return mixed
-     * @throws \Exception\Etcd\EtcdException
+     * @throws \SyException\Etcd\EtcdException
      */
     private function formatKey(string $key)
     {
@@ -344,7 +344,7 @@ class Etcd3Singleton
      * 字符串递增
      * @param string $key
      * @return string
-     * @throws \Exception\Etcd\EtcdException
+     * @throws \SyException\Etcd\EtcdException
      */
     private function incrementString(string $key)
     {

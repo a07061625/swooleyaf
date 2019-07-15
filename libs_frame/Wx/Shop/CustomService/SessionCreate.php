@@ -8,7 +8,7 @@
 namespace Wx\Shop\CustomService;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -45,7 +45,7 @@ class SessionCreate extends WxBaseShop
 
     /**
      * @param string $kfAccount
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setKfAccount(string $kfAccount)
     {
@@ -59,7 +59,7 @@ class SessionCreate extends WxBaseShop
 
     /**
      * @param string $openid
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
     {

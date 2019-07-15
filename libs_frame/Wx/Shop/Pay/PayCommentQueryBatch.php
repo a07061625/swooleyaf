@@ -9,7 +9,7 @@ namespace Wx\Shop\Pay;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -83,7 +83,7 @@ class PayCommentQueryBatch extends WxBaseShop
     /**
      * @param int $beginTime
      * @param int $endTime
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTime(int $beginTime, int $endTime)
     {
@@ -101,7 +101,7 @@ class PayCommentQueryBatch extends WxBaseShop
 
     /**
      * @param int $offset
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOffset(int $offset)
     {
@@ -114,7 +114,7 @@ class PayCommentQueryBatch extends WxBaseShop
 
     /**
      * @param int $limit
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setLimit(int $limit)
     {

@@ -8,7 +8,7 @@
 namespace Wx\OpenMini;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use Tool\Tool;
 use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
@@ -40,7 +40,7 @@ class MiniVersionSet extends WxBaseOpenMini
 
     /**
      * @param string $version
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setVersion(string $version)
     {

@@ -9,7 +9,7 @@ namespace SyServer;
 
 use Constant\ErrorCode;
 use Constant\Project;
-use Exception\Swoole\HttpServerException;
+use SyException\Swoole\HttpServerException;
 use Log\Log;
 use Tool\SyPack;
 use Tool\Tool;
@@ -64,12 +64,11 @@ class SocketClient
 
     /**
      * SocketClient constructor.
-     *
      * @param string $host
      * @param int    $port
      * @param string $uri
      * @param string $origin
-     * @throws \Exception\Swoole\HttpServerException
+     * @throws \SyException\Swoole\HttpServerException
      */
     public function __construct(string $host, int $port, string $uri = '/', string $origin = '')
     {
@@ -240,7 +239,7 @@ class SocketClient
      * Parse received data
      * @param string $response
      * @return mixed
-     * @throws \Exception\Swoole\HttpServerException
+     * @throws \SyException\Swoole\HttpServerException
      */
     private function parseData(string $response)
     {

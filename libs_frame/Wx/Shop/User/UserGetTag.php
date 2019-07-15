@@ -8,7 +8,7 @@
 namespace Wx\Shop\User;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -46,7 +46,7 @@ class UserGetTag extends WxBaseShop
 
     /**
      * @param int $tagId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTagId(int $tagId)
     {
@@ -59,7 +59,7 @@ class UserGetTag extends WxBaseShop
 
     /**
      * @param string $nextOpenid
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setNextOpenid(string $nextOpenid)
     {

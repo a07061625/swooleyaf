@@ -8,7 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use Constant\ErrorCode;
-use Exception\Redis\RedisException;
+use SyException\Redis\RedisException;
 use Log\Log;
 use Tool\Tool;
 use Traits\SingletonTrait;
@@ -72,7 +72,7 @@ class RedisSingleton
     /**
      * 切换数据库
      * @param int $dbIndex 数据库索引
-     * @throws \Exception\Redis\RedisException
+     * @throws \SyException\Redis\RedisException
      */
     public function changeDb(int $dbIndex)
     {
@@ -156,7 +156,7 @@ class RedisSingleton
     }
 
     /**
-     * @throws \Exception\Redis\RedisException
+     * @throws \SyException\Redis\RedisException
      */
     private function init()
     {

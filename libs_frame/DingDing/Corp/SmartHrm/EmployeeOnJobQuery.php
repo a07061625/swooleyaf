@@ -10,7 +10,7 @@ namespace DingDing\Corp\SmartHrm;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -52,7 +52,7 @@ class EmployeeOnJobQuery extends TalkBaseCorp
 
     /**
      * @param array $statusList
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setStatusList(array $statusList)
     {
@@ -71,7 +71,7 @@ class EmployeeOnJobQuery extends TalkBaseCorp
 
     /**
      * @param int $offset
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOffset(int $offset)
     {
@@ -84,7 +84,7 @@ class EmployeeOnJobQuery extends TalkBaseCorp
 
     /**
      * @param int $size
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSize(int $size)
     {

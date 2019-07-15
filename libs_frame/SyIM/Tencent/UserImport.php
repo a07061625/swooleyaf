@@ -8,7 +8,7 @@
 namespace SyIM\Tencent;
 
 use Constant\ErrorCode;
-use Exception\IM\TencentException;
+use SyException\IM\TencentException;
 
 class UserImport
 {
@@ -51,7 +51,7 @@ class UserImport
 
     /**
      * @param string $userId
-     * @throws \Exception\IM\TencentException
+     * @throws \SyException\IM\TencentException
      */
     public function setUserId(string $userId)
     {
@@ -72,7 +72,7 @@ class UserImport
 
     /**
      * @param int $userType
-     * @throws \Exception\IM\TencentException
+     * @throws \SyException\IM\TencentException
      */
     public function setUserType(int $userType)
     {
@@ -109,7 +109,7 @@ class UserImport
 
     /**
      * @param string $headImage
-     * @throws \Exception\IM\TencentException
+     * @throws \SyException\IM\TencentException
      */
     public function setHeadImage(string $headImage)
     {

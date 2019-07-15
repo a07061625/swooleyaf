@@ -8,7 +8,7 @@
 namespace SyLogistics\AliMart;
 
 use Constant\ErrorCode;
-use Exception\Logistics\AliMartException;
+use SyException\Logistics\AliMartException;
 use SyLogistics\LogisticsBaseAliMart;
 
 class ExpressInfo extends LogisticsBaseAliMart
@@ -46,7 +46,7 @@ class ExpressInfo extends LogisticsBaseAliMart
 
     /**
      * @param string $com
-     * @throws \Exception\Logistics\AliMartException
+     * @throws \SyException\Logistics\AliMartException
      */
     public function setCom(string $com)
     {
@@ -59,7 +59,7 @@ class ExpressInfo extends LogisticsBaseAliMart
 
     /**
      * @param string $nu
-     * @throws \Exception\Logistics\AliMartException
+     * @throws \SyException\Logistics\AliMartException
      */
     public function setNu(string $nu)
     {
@@ -72,7 +72,7 @@ class ExpressInfo extends LogisticsBaseAliMart
 
     /**
      * @param string $receiverPhone
-     * @throws \Exception\Logistics\AliMartException
+     * @throws \SyException\Logistics\AliMartException
      */
     public function setReceiverPhone(string $receiverPhone)
     {
@@ -85,7 +85,7 @@ class ExpressInfo extends LogisticsBaseAliMart
 
     /**
      * @param string $senderPhone
-     * @throws \Exception\Logistics\AliMartException
+     * @throws \SyException\Logistics\AliMartException
      */
     public function setSenderPhone(string $senderPhone)
     {

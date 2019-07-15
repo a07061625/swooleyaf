@@ -2,7 +2,7 @@
 namespace Wx\Corp\Invoice;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -47,7 +47,7 @@ class InvoiceStatusUpdateBatch extends WxBaseCorp
 
     /**
      * @param string $openid
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
     {
@@ -60,7 +60,7 @@ class InvoiceStatusUpdateBatch extends WxBaseCorp
 
     /**
      * @param string $reimburseStatus
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setReimburseStatus(string $reimburseStatus)
     {
@@ -73,7 +73,7 @@ class InvoiceStatusUpdateBatch extends WxBaseCorp
 
     /**
      * @param array $invoiceList
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setInvoiceList(array $invoiceList)
     {

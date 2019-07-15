@@ -8,7 +8,7 @@
 namespace QCloud;
 
 use Constant\ErrorCode;
-use Exception\QCloud\CosException;
+use SyException\QCloud\CosException;
 
 class ConfigCos
 {
@@ -61,7 +61,7 @@ class ConfigCos
 
     /**
      * @param string $appId
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setAppId(string $appId)
     {
@@ -82,7 +82,7 @@ class ConfigCos
 
     /**
      * @param string $secretId
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setSecretId(string $secretId)
     {
@@ -103,14 +103,14 @@ class ConfigCos
 
     /**
      * @param string $secretKey
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setSecretKey(string $secretKey)
     {
         if (ctype_alnum($secretKey)) {
             $this->secretKey = $secretKey;
         } else {
-            throw new CosException('帐户密钥不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
+            throw new \SyException\QCloud\CosException('帐户密钥不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
     }
 
@@ -124,7 +124,7 @@ class ConfigCos
 
     /**
      * @param string $bucketName
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setBucketName(string $bucketName)
     {
@@ -145,14 +145,14 @@ class ConfigCos
 
     /**
      * @param string $regionTag
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setRegionTag(string $regionTag)
     {
         if (strlen($regionTag) > 0) {
             $this->regionTag = $regionTag;
         } else {
-            throw new CosException('地域标识不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
+            throw new \SyException\QCloud\CosException('地域标识不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
     }
 

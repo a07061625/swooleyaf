@@ -8,7 +8,7 @@
 namespace SyMessagePush\JPush\Schedules;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\SchedulesBase;
 use SyMessagePush\PushUtilJPush;
 use Tool\Tool;
@@ -53,7 +53,7 @@ class ScheduleEdit extends SchedulesBase
 
     /**
      * @param string $scheduleId
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setScheduleId(string $scheduleId)
     {
@@ -67,7 +67,7 @@ class ScheduleEdit extends SchedulesBase
 
     /**
      * @param string $name
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setName(string $name)
     {
@@ -90,7 +90,7 @@ class ScheduleEdit extends SchedulesBase
 
     /**
      * @param array $trigger
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setTrigger(array $trigger)
     {
@@ -102,7 +102,7 @@ class ScheduleEdit extends SchedulesBase
 
     /**
      * @param array $push
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setPush(array $push)
     {

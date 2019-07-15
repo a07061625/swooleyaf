@@ -8,7 +8,7 @@
 namespace Wx\Shop\Media;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -44,7 +44,7 @@ class MediaUpload extends WxBaseShop
 
     /**
      * @param string $filePath
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setFilePath(string $filePath)
     {

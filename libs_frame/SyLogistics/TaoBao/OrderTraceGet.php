@@ -8,7 +8,7 @@
 namespace SyLogistics\TaoBao;
 
 use Constant\ErrorCode;
-use Exception\Logistics\TaoBaoException;
+use SyException\Logistics\TaoBaoException;
 use SyLogistics\LogisticsBaseTaoBao;
 
 class OrderTraceGet extends LogisticsBaseTaoBao
@@ -42,7 +42,7 @@ class OrderTraceGet extends LogisticsBaseTaoBao
 
     /**
      * @param string $companyCode
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setCompanyCode(string $companyCode)
     {
@@ -55,7 +55,7 @@ class OrderTraceGet extends LogisticsBaseTaoBao
 
     /**
      * @param string $mailNo
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setMailNo(string $mailNo)
     {

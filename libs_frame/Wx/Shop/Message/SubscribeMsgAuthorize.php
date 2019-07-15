@@ -8,7 +8,7 @@
 namespace Wx\Shop\Message;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 
@@ -59,7 +59,7 @@ class SubscribeMsgAuthorize extends WxBaseShop
 
     /**
      * @param int $scene
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setScene(int $scene)
     {
@@ -72,7 +72,7 @@ class SubscribeMsgAuthorize extends WxBaseShop
 
     /**
      * @param string $templateId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTemplateId(string $templateId)
     {
@@ -85,7 +85,7 @@ class SubscribeMsgAuthorize extends WxBaseShop
 
     /**
      * @param string $redirectUrl
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setRedirectUrl(string $redirectUrl)
     {
@@ -98,7 +98,7 @@ class SubscribeMsgAuthorize extends WxBaseShop
 
     /**
      * @param string $reserved
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setReserved(string $reserved)
     {

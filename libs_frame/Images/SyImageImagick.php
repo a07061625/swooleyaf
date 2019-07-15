@@ -9,7 +9,7 @@ namespace Images;
 
 use Constant\ErrorCode;
 use Constant\Server;
-use Exception\Image\ImageException;
+use SyException\Image\ImageException;
 use Log\Log;
 use Tool\Tool;
 
@@ -28,7 +28,7 @@ class SyImageImagick extends SyImageBase
 
     /**
      * @param string $byteStr 图片二进制流字符串
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function __construct(string $byteStr)
     {

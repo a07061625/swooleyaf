@@ -9,7 +9,7 @@ namespace Reflection;
 
 use Constant\ErrorCode;
 use Constant\Server;
-use Exception\Reflection\ReflectException;
+use SyException\Reflection\ReflectException;
 use Log\Log;
 use SyFrame\BaseController;
 use Tool\Tool;
@@ -29,7 +29,7 @@ class BaseReflect
      * @param string $methodName 方法名称
      * @param string $controllerType
      * @return array
-     * @throws \Exception\Reflection\ReflectException
+     * @throws \SyException\Reflection\ReflectException
      */
     public static function getControllerFilterAnnotations(string $className, string $methodName, string &$controllerType) : array
     {
@@ -76,7 +76,7 @@ class BaseReflect
      * @param string $className 类全名
      * @param string $methodName 方法名称
      * @return array
-     * @throws \Exception\Reflection\ReflectException
+     * @throws \SyException\Reflection\ReflectException
      */
     public static function getControllerAspectAnnotations(string $className, string $methodName) : array
     {
@@ -109,7 +109,7 @@ class BaseReflect
             throw $e;
         } catch (\Exception $e) {
             Log::error($e->getMessage());
-            throw new ReflectException(ErrorCode::getMsg(ErrorCode::REFLECT_RESOURCE_NOT_EXIST), ErrorCode::REFLECT_RESOURCE_NOT_EXIST);
+            throw new \SyException\Reflection\ReflectException(ErrorCode::getMsg(ErrorCode::REFLECT_RESOURCE_NOT_EXIST), ErrorCode::REFLECT_RESOURCE_NOT_EXIST);
         }
 
         return $annotations;
@@ -119,7 +119,7 @@ class BaseReflect
      * @param string $className 类全名
      * @param string $methodName 方法名称
      * @return array
-     * @throws \Exception\Reflection\ReflectException
+     * @throws \SyException\Reflection\ReflectException
      */
     public static function getValidatorAnnotations(string $className, string $methodName) : array
     {

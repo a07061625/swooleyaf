@@ -9,7 +9,7 @@ namespace Map;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\MapSingleton;
-use Exception\Map\BaiduMapException;
+use SyException\Map\BaiduMapException;
 
 abstract class MapBaseBaiDu extends MapBase
 {
@@ -82,7 +82,7 @@ abstract class MapBaseBaiDu extends MapBase
 
     /**
      * @param string $checkType
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setCheckType(string $checkType)
     {
@@ -95,40 +95,40 @@ abstract class MapBaseBaiDu extends MapBase
 
     /**
      * @param string $reqMethod
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setReqMethod(string $reqMethod)
     {
         if (in_array($reqMethod, ['GET', 'POST'], true)) {
             $this->reqMethod = $reqMethod;
         } else {
-            throw new BaiduMapException('请求方式不支持', ErrorCode::MAP_BAIDU_PARAM_ERROR);
+            throw new \SyException\Map\BaiduMapException('请求方式不支持', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
     }
 
     /**
      * @param string $sk
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setSk(string $sk)
     {
         if (ctype_alnum($sk) && (strlen($sk) == 32)) {
             $this->sk = $sk;
         } else {
-            throw new BaiduMapException('用户签名不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
+            throw new \SyException\Map\BaiduMapException('用户签名不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
     }
 
     /**
      * @param string $reqReferer
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setReqReferer(string $reqReferer)
     {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $reqReferer) > 0) {
             $this->reqReferer = $reqReferer;
         } else {
-            throw new BaiduMapException('请求引用地址不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
+            throw new \SyException\Map\BaiduMapException('请求引用地址不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
     }
 

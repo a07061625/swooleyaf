@@ -8,7 +8,7 @@
 namespace Map\Tencent;
 
 use Constant\ErrorCode;
-use Exception\Map\TencentMapException;
+use SyException\Map\TencentMapException;
 use Map\MapBaseTencent;
 
 class GeoCoder extends MapBaseTencent
@@ -37,7 +37,7 @@ class GeoCoder extends MapBaseTencent
 
     /**
      * @param string $address
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setAddress(string $address)
     {

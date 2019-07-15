@@ -9,7 +9,7 @@ namespace SyFrame\Plugins;
 
 use Constant\ErrorCode;
 use Constant\Server;
-use Exception\Validator\ValidatorException;
+use SyException\Validator\ValidatorException;
 use Yaf\Plugin_Abstract;
 use Yaf\Registry;
 use Yaf\Request_Abstract;

@@ -9,7 +9,7 @@ namespace Images;
 
 use Constant\ErrorCode;
 use Constant\Server;
-use Exception\Image\ImageException;
+use SyException\Image\ImageException;
 
 abstract class SyImageBase
 {
@@ -51,7 +51,7 @@ abstract class SyImageBase
 
     /**
      * @param string $byteStr 图片二进制流字符串
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function __construct(string $byteStr)
     {
@@ -152,7 +152,7 @@ abstract class SyImageBase
      * 设置图片质量
      * @param int $quality 压缩质量,1-100,数字越大压缩质量越好
      * @return $this
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     abstract public function setQuality(int $quality);
     /**
@@ -162,7 +162,7 @@ abstract class SyImageBase
      * @param int $startY 文本起始纵坐标
      * @param \Images\SyFont $font 字体信息对象
      * @return $this
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     abstract public function addWaterTxt(string $txt, int $startX, int $startY, SyFont $font);
 
@@ -173,7 +173,7 @@ abstract class SyImageBase
      * @param int $startY 起始纵坐标
      * @param int $alpha 透明度
      * @return $this
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     abstract public function addWaterImage(string $filePath, int $startX, int $startY, int $alpha);
 
@@ -184,7 +184,7 @@ abstract class SyImageBase
      * @param int $width 宽度
      * @param int $height 高度
      * @return $this
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     abstract public function cropImage(int $startX, int $startY, int $width, int $height);
 
@@ -192,7 +192,7 @@ abstract class SyImageBase
      * 写图片文件
      * @param string $path 文件目录
      * @return string
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     abstract public function writeImage(string $path);
 
@@ -201,7 +201,7 @@ abstract class SyImageBase
      * @param string $filePath 图片路径
      * @param int $type 图片类型 1:水印图片
      * @return array|bool
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     protected function checkImage(string $filePath, int $type)
     {
@@ -241,7 +241,7 @@ abstract class SyImageBase
      * @param int $width 截图宽度
      * @param int $height 截图高度
      * @return array
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     protected function checkCropData(int $startX, int $startY, int $width, int $height)
     {

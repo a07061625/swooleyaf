@@ -10,7 +10,7 @@ namespace DingDing\Corp\User;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 /**
  * 删除用户
@@ -39,7 +39,7 @@ class UserDelete extends TalkBaseCorp
 
     /**
      * @param string $userId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserid(string $userId)
     {

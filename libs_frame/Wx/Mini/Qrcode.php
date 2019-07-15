@@ -8,7 +8,7 @@
 namespace Wx\Mini;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseMini;
 use Wx\WxUtilBase;
@@ -73,7 +73,7 @@ class Qrcode extends WxBaseMini
 
     /**
      * @param string $scene
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setScene(string $scene)
     {
@@ -90,7 +90,7 @@ class Qrcode extends WxBaseMini
 
     /**
      * @param string $page
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPage(string $page)
     {
@@ -104,7 +104,7 @@ class Qrcode extends WxBaseMini
 
     /**
      * @param int $width
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setWidth(int $width)
     {
@@ -127,7 +127,7 @@ class Qrcode extends WxBaseMini
      * @param int $red
      * @param int $green
      * @param int $blue
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setLineColor(int $red, int $green, int $blue)
     {

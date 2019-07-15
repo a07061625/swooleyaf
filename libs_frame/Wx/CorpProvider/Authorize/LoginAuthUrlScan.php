@@ -9,7 +9,7 @@ namespace Wx\CorpProvider\Authorize;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxCorpProviderException;
+use SyException\Wx\WxCorpProviderException;
 use Tool\Tool;
 use Wx\WxBaseCorpProvider;
 
@@ -56,7 +56,7 @@ class LoginAuthUrlScan extends WxBaseCorpProvider
 
     /**
      * @param string $state
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setState(string $state)
     {
@@ -69,7 +69,7 @@ class LoginAuthUrlScan extends WxBaseCorpProvider
 
     /**
      * @param string $userType
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setUserType(string $userType)
     {

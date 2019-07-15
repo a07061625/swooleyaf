@@ -8,7 +8,7 @@
 namespace DingDing;
 
 use Constant\ErrorCode;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 trait TalkTraitCorp
 {
@@ -18,7 +18,7 @@ trait TalkTraitCorp
      * @param string $corpId 企业ID
      * @param string $agentTag 应用标识
      * @return string
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     private function getAccessToken(int $type, string $corpId, string $agentTag = '') : string
     {
@@ -29,7 +29,7 @@ trait TalkTraitCorp
         switch ($type) {
             case TalkBaseCorp::ACCESS_TOKEN_TYPE_CORP:
                 if (!ctype_alnum($agentTag)) {
-                    throw new TalkException('应用标识不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+                    throw new \SyException\DingDing\TalkException('应用标识不合法', ErrorCode::DING_TALK_PARAM_ERROR);
                 }
                 $accessToken = TalkUtilCorp::getAccessToken($corpId, $agentTag);
                 break;

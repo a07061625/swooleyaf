@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use Tool\Tool;
 use Wx\WxBaseOpenCommon;
 use Wx\WxUtilBase;
@@ -39,7 +39,7 @@ class ComponentAccessToken extends WxBaseOpenCommon
 
     /**
      * @param string $verifyTicket
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setVerifyTicket(string $verifyTicket)
     {

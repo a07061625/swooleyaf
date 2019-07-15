@@ -8,7 +8,7 @@
 namespace SyLogistics\TaoBao;
 
 use Constant\ErrorCode;
-use Exception\Logistics\TaoBaoException;
+use SyException\Logistics\TaoBaoException;
 use SyLogistics\LogisticsBaseTaoBao;
 
 class TraceSearch extends LogisticsBaseTaoBao
@@ -42,7 +42,7 @@ class TraceSearch extends LogisticsBaseTaoBao
 
     /**
      * @param int $tid
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setTid(int $tid)
     {
@@ -55,7 +55,7 @@ class TraceSearch extends LogisticsBaseTaoBao
 
     /**
      * @param int $isSplit
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setIsSplit(int $isSplit)
     {
@@ -68,7 +68,7 @@ class TraceSearch extends LogisticsBaseTaoBao
 
     /**
      * @param array $subTidList
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setSubTidList(array $subTidList)
     {

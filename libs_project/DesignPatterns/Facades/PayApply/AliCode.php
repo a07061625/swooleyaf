@@ -11,7 +11,7 @@ use AliPay\AliPayUtilPay;
 use AliPay\Pay\PayQrCode;
 use Constant\ErrorCode;
 use DesignPatterns\Facades\PayApplyFacade;
-use Exception\Common\CheckException;
+use SyException\Common\CheckException;
 use Request\SyRequest;
 use Tool\Tool;
 use Traits\SimpleFacadeTrait;

@@ -10,7 +10,7 @@ namespace DingDing\Corp\Department;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 /**
  * 获取部门详情
@@ -45,7 +45,7 @@ class DepartmentGet extends TalkBaseCorp
 
     /**
      * @param int $id
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setId(int $id)
     {

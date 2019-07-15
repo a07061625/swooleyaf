@@ -10,7 +10,7 @@ namespace DingDing\Corp\Department;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 /**
  * 获取子部门ID列表
@@ -39,7 +39,7 @@ class IdList extends TalkBaseCorp
 
     /**
      * @param int $id
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setId(int $id)
     {

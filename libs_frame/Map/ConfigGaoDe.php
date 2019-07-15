@@ -8,7 +8,7 @@
 namespace Map;
 
 use Constant\ErrorCode;
-use Exception\Map\GaoDeMapException;
+use SyException\Map\GaoDeMapException;
 
 class ConfigGaoDe
 {
@@ -41,7 +41,7 @@ class ConfigGaoDe
 
     /**
      * @param string $key
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setKey(string $key)
     {
@@ -62,7 +62,7 @@ class ConfigGaoDe
 
     /**
      * @param string $secret
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setSecret(string $secret)
     {

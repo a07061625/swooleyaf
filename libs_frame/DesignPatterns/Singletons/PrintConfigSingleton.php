@@ -8,7 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use Constant\ErrorCode;
-use Exception\SyPrint\FeYinException;
+use SyException\SyPrint\FeYinException;
 use SyPrint\ConfigFeYin;
 use Tool\Tool;
 use Traits\SingletonTrait;
@@ -57,7 +57,7 @@ class PrintConfigSingleton
     /**
      * @param string $appId
      * @return \SyPrint\ConfigFeYin
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function getFeYinConfig(string $appId)
     {

@@ -8,7 +8,7 @@
 namespace AliOss;
 
 use Constant\ErrorCode;
-use Exception\AliOss\OssException;
+use SyException\AliOss\OssException;
 
 class ConfigOss
 {
@@ -83,7 +83,7 @@ class ConfigOss
     /**
      * @param string $endpointProtocol
      * @param string $endpointDomain
-     * @throws \Exception\AliOss\OssException
+     * @throws \SyException\AliOss\OssException
      */
     public function setEndpointProtocolAndDomain(string $endpointProtocol, string $endpointDomain)
     {
@@ -92,7 +92,7 @@ class ConfigOss
         }
         $trueDomain = trim($endpointDomain);
         if (strlen($trueDomain) == 0) {
-            throw new OssException('终端节点域名不合法', ErrorCode::ALIOSS_PARAM_ERROR);
+            throw new \SyException\AliOss\OssException('终端节点域名不合法', ErrorCode::ALIOSS_PARAM_ERROR);
         }
         $this->endpointProtocol = $endpointProtocol;
         $this->endpointDomain = $trueDomain;
@@ -109,7 +109,7 @@ class ConfigOss
 
     /**
      * @param string $accessKeyId
-     * @throws \Exception\AliOss\OssException
+     * @throws \SyException\AliOss\OssException
      */
     public function setAccessKeyId(string $accessKeyId)
     {
@@ -130,7 +130,7 @@ class ConfigOss
 
     /**
      * @param string $accessKeySecret
-     * @throws \Exception\AliOss\OssException
+     * @throws \SyException\AliOss\OssException
      */
     public function setAccessKeySecret(string $accessKeySecret)
     {
@@ -151,14 +151,14 @@ class ConfigOss
 
     /**
      * @param string $bucketName
-     * @throws \Exception\AliOss\OssException
+     * @throws \SyException\AliOss\OssException
      */
     public function setBucketName(string $bucketName)
     {
         if (strlen($bucketName) > 0) {
             $this->bucketName = $bucketName;
         } else {
-            throw new OssException('桶名称不合法', ErrorCode::ALIOSS_PARAM_ERROR);
+            throw new \SyException\AliOss\OssException('桶名称不合法', ErrorCode::ALIOSS_PARAM_ERROR);
         }
     }
 
@@ -172,7 +172,7 @@ class ConfigOss
 
     /**
      * @param string $bucketDomain
-     * @throws \Exception\AliOss\OssException
+     * @throws \SyException\AliOss\OssException
      */
     public function setBucketDomain(string $bucketDomain)
     {

@@ -8,7 +8,7 @@
 namespace Map;
 
 use Constant\ErrorCode;
-use Exception\Map\BaiduMapException;
+use SyException\Map\BaiduMapException;
 
 class ConfigBaiDu
 {
@@ -41,14 +41,14 @@ class ConfigBaiDu
 
     /**
      * @param string $ak
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setAk(string $ak)
     {
         if (ctype_alnum($ak) && (strlen($ak) == 32)) {
             $this->ak = $ak;
         } else {
-            throw new BaiduMapException('密钥不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
+            throw new \SyException\Map\BaiduMapException('密钥不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
     }
 
@@ -62,14 +62,14 @@ class ConfigBaiDu
 
     /**
      * @param string $serverIp
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setServerIp(string $serverIp)
     {
         if (preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $serverIp) > 0) {
             $this->serverIp = $serverIp;
         } else {
-            throw new BaiduMapException('服务器IP不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
+            throw new \SyException\Map\BaiduMapException('服务器IP不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
     }
 }

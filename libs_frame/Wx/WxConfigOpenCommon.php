@@ -8,7 +8,7 @@
 namespace Wx;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use Tool\Tool;
 
 class WxConfigOpenCommon
@@ -108,7 +108,7 @@ class WxConfigOpenCommon
 
     /**
      * @param int $expireComponentAccessToken
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setExpireComponentAccessToken(int $expireComponentAccessToken)
     {
@@ -129,14 +129,14 @@ class WxConfigOpenCommon
 
     /**
      * @param int $expireAuthorizerAccessToken
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setExpireAuthorizerAccessToken(int $expireAuthorizerAccessToken)
     {
         if (($expireAuthorizerAccessToken > 0) && ($expireAuthorizerAccessToken <= 7200)) {
             $this->expireAuthorizerAccessToken = $expireAuthorizerAccessToken;
         } else {
-            throw new WxOpenException('授权者access token超时时间不合法', ErrorCode::WXOPEN_PARAM_ERROR);
+            throw new \SyException\Wx\WxOpenException('授权者access token超时时间不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
@@ -150,14 +150,14 @@ class WxConfigOpenCommon
 
     /**
      * @param int $expireAuthorizerJsTicket
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setExpireAuthorizerJsTicket(int $expireAuthorizerJsTicket)
     {
         if (($expireAuthorizerJsTicket > 0) && ($expireAuthorizerJsTicket <= 7200)) {
             $this->expireAuthorizerJsTicket = $expireAuthorizerJsTicket;
         } else {
-            throw new WxOpenException('授权者js ticket超时时间不合法', ErrorCode::WXOPEN_PARAM_ERROR);
+            throw new \SyException\Wx\WxOpenException('授权者js ticket超时时间不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
@@ -171,7 +171,7 @@ class WxConfigOpenCommon
 
     /**
      * @param string $appId
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setAppId(string $appId)
     {
@@ -192,14 +192,14 @@ class WxConfigOpenCommon
 
     /**
      * @param string $secret
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setSecret(string $secret)
     {
         if (ctype_alnum($secret) && (strlen($secret) == 32)) {
             $this->secret = $secret;
         } else {
-            throw new WxOpenException('secret不合法', ErrorCode::WXOPEN_PARAM_ERROR);
+            throw new \SyException\Wx\WxOpenException('secret不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
@@ -213,14 +213,14 @@ class WxConfigOpenCommon
 
     /**
      * @param string $token
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setToken(string $token)
     {
         if (ctype_alnum($token) && (strlen($token) <= 32)) {
             $this->token = $token;
         } else {
-            throw new WxOpenException('消息校验Token不合法', ErrorCode::WXOPEN_PARAM_ERROR);
+            throw new \SyException\Wx\WxOpenException('消息校验Token不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
@@ -234,14 +234,14 @@ class WxConfigOpenCommon
 
     /**
      * @param string $aesKeyBefore
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setAesKeyBefore(string $aesKeyBefore)
     {
         if (ctype_alnum($aesKeyBefore) && (strlen($aesKeyBefore) == 43)) {
             $this->aesKeyBefore = $aesKeyBefore;
         } else {
-            throw new WxOpenException('旧消息加解密Key不合法', ErrorCode::WXOPEN_PARAM_ERROR);
+            throw new \SyException\Wx\WxOpenException('旧消息加解密Key不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
@@ -255,14 +255,14 @@ class WxConfigOpenCommon
 
     /**
      * @param string $aesKeyNow
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setAesKeyNow(string $aesKeyNow)
     {
         if (ctype_alnum($aesKeyNow) && (strlen($aesKeyNow) == 43)) {
             $this->aesKeyNow = $aesKeyNow;
         } else {
-            throw new WxOpenException('新消息加解密Key不合法', ErrorCode::WXOPEN_PARAM_ERROR);
+            throw new \SyException\Wx\WxOpenException('新消息加解密Key不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
@@ -276,14 +276,14 @@ class WxConfigOpenCommon
 
     /**
      * @param string $urlAuth
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setUrlAuth(string $urlAuth)
     {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $urlAuth) > 0) {
             $this->urlAuth = $urlAuth;
         } else {
-            throw new WxOpenException('授权页面URL不合法', ErrorCode::WXOPEN_PARAM_ERROR);
+            throw new \SyException\Wx\WxOpenException('授权页面URL不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
@@ -297,14 +297,14 @@ class WxConfigOpenCommon
 
     /**
      * @param string $urlAuthCallback
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setUrlAuthCallback(string $urlAuthCallback)
     {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $urlAuthCallback) > 0) {
             $this->urlAuthCallback = $urlAuthCallback;
         } else {
-            throw new WxOpenException('授权页面回跳URL不合法', ErrorCode::WXOPEN_PARAM_ERROR);
+            throw new \SyException\Wx\WxOpenException('授权页面回跳URL不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
@@ -318,14 +318,14 @@ class WxConfigOpenCommon
 
     /**
      * @param string $urlMiniRebindAdmin
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setUrlMiniRebindAdmin(string $urlMiniRebindAdmin)
     {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $urlMiniRebindAdmin) > 0) {
             $this->urlMiniRebindAdmin = $urlMiniRebindAdmin;
         } else {
-            throw new WxOpenException('换绑小程序管理员回跳URL不合法', ErrorCode::WXOPEN_PARAM_ERROR);
+            throw new \SyException\Wx\WxOpenException('换绑小程序管理员回跳URL不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
@@ -339,7 +339,7 @@ class WxConfigOpenCommon
 
     /**
      * @param string $urlMiniFastRegister
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setUrlMiniFastRegister(string $urlMiniFastRegister)
     {
@@ -348,7 +348,7 @@ class WxConfigOpenCommon
         } elseif (preg_match('/^(http|https)\:\/\/\S+$/', $urlMiniFastRegister) > 0) {
             $this->urlMiniFastRegister = $urlMiniFastRegister;
         } else {
-            throw new WxOpenException('快速注册小程序回跳地址不合法', ErrorCode::WXOPEN_PARAM_ERROR);
+            throw new \SyException\Wx\WxOpenException('快速注册小程序回跳地址不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 

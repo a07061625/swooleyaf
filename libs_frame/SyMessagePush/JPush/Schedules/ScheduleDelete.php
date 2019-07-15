@@ -8,7 +8,7 @@
 namespace SyMessagePush\JPush\Schedules;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\SchedulesBase;
 use SyMessagePush\PushUtilJPush;
 
@@ -32,7 +32,7 @@ class ScheduleDelete extends SchedulesBase
 
     /**
      * @param string $scheduleId
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setScheduleId(string $scheduleId)
     {

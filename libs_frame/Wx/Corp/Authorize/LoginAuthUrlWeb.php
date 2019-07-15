@@ -9,7 +9,7 @@ namespace Wx\Corp\Authorize;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 
@@ -62,7 +62,7 @@ class LoginAuthUrlWeb extends WxBaseCorp
 
     /**
      * @param string $state
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setState(string $state)
     {

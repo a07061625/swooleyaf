@@ -8,7 +8,7 @@
 namespace Wx\Shop\CustomService;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -40,7 +40,7 @@ class AccountDel extends WxBaseShop
 
     /**
      * @param string $kfAccount
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setKfAccount(string $kfAccount)
     {

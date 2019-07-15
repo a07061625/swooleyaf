@@ -8,7 +8,7 @@
 namespace Wx\OpenMini;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use Tool\Tool;
 use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
@@ -49,7 +49,7 @@ class CategorySetDelete extends WxBaseOpenMini
 
     /**
      * @param int $first
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setFirst(int $first)
     {
@@ -62,7 +62,7 @@ class CategorySetDelete extends WxBaseOpenMini
 
     /**
      * @param int $second
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setSecond(int $second)
     {

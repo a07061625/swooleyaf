@@ -8,7 +8,7 @@
 namespace AliPay;
 
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayPayException;
+use SyException\AliPay\AliPayPayException;
 use Tool\Tool;
 
 class PayConfig
@@ -102,14 +102,14 @@ class PayConfig
 
     /**
      * @param string $appId
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setAppId(string $appId)
     {
         if (ctype_digit($appId) && (strlen($appId) == 16)) {
             $this->appId = $appId;
         } else {
-            throw new AliPayPayException('app id不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
+            throw new \SyException\AliPay\AliPayPayException('app id不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
     }
 
@@ -123,7 +123,7 @@ class PayConfig
 
     /**
      * @param string $sellerId
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setSellerId(string $sellerId)
     {
@@ -144,14 +144,14 @@ class PayConfig
 
     /**
      * @param string $urlNotify
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setUrlNotify(string $urlNotify)
     {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $urlNotify) > 0) {
             $this->urlNotify = $urlNotify;
         } else {
-            throw new AliPayPayException('异步消息通知URL不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
+            throw new \SyException\AliPay\AliPayPayException('异步消息通知URL不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
     }
 
@@ -165,14 +165,14 @@ class PayConfig
 
     /**
      * @param string $urlReturn
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setUrlReturn(string $urlReturn)
     {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $urlReturn) > 0) {
             $this->urlReturn = $urlReturn;
         } else {
-            throw new AliPayPayException('同步消息通知URL不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
+            throw new \SyException\AliPay\AliPayPayException('同步消息通知URL不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
     }
 
@@ -186,7 +186,7 @@ class PayConfig
 
     /**
      * @param string $priRsaKey
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setPriRsaKey(string $priRsaKey)
     {
@@ -194,7 +194,7 @@ class PayConfig
             $this->priRsaKey = $priRsaKey;
             $this->priRsaKeyFull = '-----BEGIN RSA PRIVATE KEY-----' . PHP_EOL . wordwrap($priRsaKey, 64, "\n", true) . PHP_EOL . '-----END RSA PRIVATE KEY-----';
         } else {
-            throw new AliPayPayException('rsa私钥不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
+            throw new \SyException\AliPay\AliPayPayException('rsa私钥不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
     }
 
@@ -216,14 +216,14 @@ class PayConfig
 
     /**
      * @param string $pubRsaKey
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setPubRsaKey(string $pubRsaKey)
     {
         if (strlen($pubRsaKey) >= 256) {
             $this->pubRsaKey = $pubRsaKey;
         } else {
-            throw new AliPayPayException('rsa公钥不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
+            throw new \SyException\AliPay\AliPayPayException('rsa公钥不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
     }
 
@@ -237,7 +237,7 @@ class PayConfig
 
     /**
      * @param string $pubAliKey
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setPubAliKey(string $pubAliKey)
     {
@@ -245,7 +245,7 @@ class PayConfig
             $this->pubAliKey = $pubAliKey;
             $this->pubAliKeyFull = '-----BEGIN PUBLIC KEY-----' . PHP_EOL . wordwrap($pubAliKey, 64, "\n", true) . PHP_EOL . '-----END PUBLIC KEY-----';
         } else {
-            throw new AliPayPayException('支付宝公钥不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
+            throw new \SyException\AliPay\AliPayPayException('支付宝公钥不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
     }
 

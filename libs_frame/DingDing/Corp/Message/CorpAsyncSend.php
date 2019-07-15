@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -64,7 +64,7 @@ class CorpAsyncSend extends TalkBaseCorp
 
     /**
      * @param array $userList
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserList(array $userList)
     {
@@ -86,7 +86,7 @@ class CorpAsyncSend extends TalkBaseCorp
 
     /**
      * @param array $departList
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setDepartmentList(array $departList)
     {
@@ -117,7 +117,7 @@ class CorpAsyncSend extends TalkBaseCorp
     /**
      * @param string $type
      * @param array $data
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setMsgData(string $type, array $data)
     {

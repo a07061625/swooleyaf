@@ -10,7 +10,7 @@ namespace DesignPatterns\Singletons;
 use Constant\ErrorCode;
 use Constant\Project;
 use Exception\Wx\WxCorpProviderException;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Traits\SingletonTrait;
 use Traits\WxConfigTrait;
@@ -163,7 +163,7 @@ class WxConfigSingleton
      * 获取账号配置
      * @param string $appId
      * @return \Wx\WxConfigAccount
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function getShopConfig(string $appId)
     {

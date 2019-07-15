@@ -10,7 +10,7 @@ namespace DesignPatterns\Singletons;
 use Constant\ErrorCode;
 use Constant\Project;
 use DingDing\TalkConfigProvider;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 use Traits\DingTalkConfigTrait;
 use Traits\SingletonTrait;
@@ -119,7 +119,7 @@ class DingTalkConfigSingleton
      * 获取企业配置
      * @param string $corpId
      * @return \DingDing\TalkConfigCorp
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function getCorpConfig(string $corpId)
     {

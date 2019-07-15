@@ -8,7 +8,7 @@
 namespace Wx;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 
 class WxConfigAccount
@@ -120,7 +120,7 @@ class WxConfigAccount
 
     /**
      * @param string $clientIp
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setClientIp(string $clientIp)
     {
@@ -141,7 +141,7 @@ class WxConfigAccount
 
     /**
      * @param string $appId
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAppId(string $appId)
     {
@@ -162,7 +162,7 @@ class WxConfigAccount
 
     /**
      * @param string $secret
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setSecret(string $secret)
     {
@@ -183,7 +183,7 @@ class WxConfigAccount
 
     /**
      * @param string $payMchId
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPayMchId(string $payMchId)
     {
@@ -204,7 +204,7 @@ class WxConfigAccount
 
     /**
      * @param string $payKey
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPayKey(string $payKey)
     {
@@ -225,7 +225,7 @@ class WxConfigAccount
 
     /**
      * @param string $payNotifyUrl
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPayNotifyUrl(string $payNotifyUrl)
     {
@@ -246,14 +246,14 @@ class WxConfigAccount
 
     /**
      * @param string $payAuthUrl
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPayAuthUrl(string $payAuthUrl)
     {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $payAuthUrl) > 0) {
             $this->payAuthUrl = $payAuthUrl;
         } else {
-            throw new WxException('支付授权URL不合法', ErrorCode::WX_PARAM_ERROR);
+            throw new \SyException\Wx\WxException('支付授权URL不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
@@ -340,14 +340,14 @@ class WxConfigAccount
 
     /**
      * @param string $merchantAppId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMerchantAppId(string $merchantAppId)
     {
         $length = strlen($merchantAppId);
         if ($length > 0) {
             if ($length != 18) {
-                throw new WxException('服务商微信号不合法', ErrorCode::WX_PARAM_ERROR);
+                throw new \SyException\Wx\WxException('服务商微信号不合法', ErrorCode::WX_PARAM_ERROR);
             }
             if (!ctype_alnum($merchantAppId)) {
                 throw new WxException('服务商微信号不合法', ErrorCode::WX_PARAM_ERROR);

@@ -10,7 +10,7 @@ namespace ProjectCache;
 use Constant\ErrorCode;
 use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
-use Exception\Common\CheckException;
+use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use Traits\SimpleTrait;
 

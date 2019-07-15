@@ -8,7 +8,7 @@
 namespace Map;
 
 use Constant\ErrorCode;
-use Exception\Map\TencentMapException;
+use SyException\Map\TencentMapException;
 
 class ConfigTencent
 {
@@ -46,7 +46,7 @@ class ConfigTencent
 
     /**
      * @param string $key
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setKey(string $key)
     {
@@ -67,14 +67,14 @@ class ConfigTencent
 
     /**
      * @param string $serverIp
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setServerIp(string $serverIp)
     {
         if (preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $serverIp) > 0) {
             $this->serverIp = $serverIp;
         } else {
-            throw new TencentMapException('服务器IP不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
+            throw new \SyException\Map\TencentMapException('服务器IP不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }
     }
 
@@ -88,14 +88,14 @@ class ConfigTencent
 
     /**
      * @param string $domain
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setDomain(string $domain)
     {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $domain) > 0) {
             $this->domain = $domain;
         } else {
-            throw new TencentMapException('域名不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
+            throw new \SyException\Map\TencentMapException('域名不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }
     }
 }

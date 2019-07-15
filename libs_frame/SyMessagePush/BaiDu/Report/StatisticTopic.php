@@ -8,7 +8,7 @@
 namespace SyMessagePush\BaiDu\Report;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\BaiDuPushException;
+use SyException\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
 
 class StatisticTopic extends PushBaseBaiDu
@@ -31,7 +31,7 @@ class StatisticTopic extends PushBaseBaiDu
 
     /**
      * @param string $topicId
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setTopicId(string $topicId)
     {

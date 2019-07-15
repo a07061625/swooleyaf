@@ -15,7 +15,7 @@ use DingDing\Corp\Sns\SnsTokenGet;
 use DingDing\Corp\Sns\TokenGet;
 use DingDing\Corp\Sso\SsoToken;
 use DingDing\CorpProvider\Common\CorpToken;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
@@ -26,7 +26,7 @@ final class TalkUtilProvider extends TalkUtilBase
     /**
      * 获取服务商套件ticket
      * @return string
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public static function getSuiteTicket() : string
     {
@@ -35,7 +35,7 @@ final class TalkUtilProvider extends TalkUtilBase
         if (isset($redisData['unique_key']) && ($redisData['unique_key'] == $redisKey)) {
             return $redisData['ticket'];
         } else {
-            throw new TalkException('获取服务商套件缓存失败', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new \SyException\DingDing\TalkException('获取服务商套件缓存失败', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 

@@ -8,7 +8,7 @@
 namespace Wx\Shop\Merchant\Group;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -50,7 +50,7 @@ class GroupPropertyModify extends WxBaseShop
 
     /**
      * @param int $groupId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setGroupId(int $groupId)
     {
@@ -63,7 +63,7 @@ class GroupPropertyModify extends WxBaseShop
 
     /**
      * @param string $groupName
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setGroupName(string $groupName)
     {

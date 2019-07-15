@@ -8,7 +8,7 @@
 namespace SyLogistics\AliMart;
 
 use Constant\ErrorCode;
-use Exception\Logistics\AliMartException;
+use SyException\Logistics\AliMartException;
 use SyLogistics\LogisticsBaseAliMart;
 
 class ExpressCompanies extends LogisticsBaseAliMart
@@ -51,7 +51,7 @@ class ExpressCompanies extends LogisticsBaseAliMart
 
     /**
      * @param int $maxSize
-     * @throws \Exception\Logistics\AliMartException
+     * @throws \SyException\Logistics\AliMartException
      */
     public function setMaxSize(int $maxSize)
     {
@@ -64,7 +64,7 @@ class ExpressCompanies extends LogisticsBaseAliMart
 
     /**
      * @param int $page
-     * @throws \Exception\Logistics\AliMartException
+     * @throws \SyException\Logistics\AliMartException
      */
     public function setPage(int $page)
     {

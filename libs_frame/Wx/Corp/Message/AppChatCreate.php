@@ -8,7 +8,7 @@
 namespace Wx\Corp\Message;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -58,7 +58,7 @@ class AppChatCreate extends WxBaseCorp
 
     /**
      * @param string $name
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setName(string $name)
     {
@@ -71,7 +71,7 @@ class AppChatCreate extends WxBaseCorp
 
     /**
      * @param string $owner
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOwner(string $owner)
     {
@@ -84,7 +84,7 @@ class AppChatCreate extends WxBaseCorp
 
     /**
      * @param array $userList
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setUserList(array $userList)
     {
@@ -107,7 +107,7 @@ class AppChatCreate extends WxBaseCorp
 
     /**
      * @param string $chatId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setChatId(string $chatId)
     {

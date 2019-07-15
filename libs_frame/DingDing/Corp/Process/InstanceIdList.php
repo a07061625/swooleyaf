@@ -10,7 +10,7 @@ namespace DingDing\Corp\Process;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -68,7 +68,7 @@ class InstanceIdList extends TalkBaseCorp
 
     /**
      * @param string $processCode
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setProcessCode(string $processCode)
     {
@@ -82,7 +82,7 @@ class InstanceIdList extends TalkBaseCorp
     /**
      * @param int $startTime
      * @param int $endTime
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setStartTimeAndEndTime(int $startTime, int $endTime)
     {
@@ -98,7 +98,7 @@ class InstanceIdList extends TalkBaseCorp
 
     /**
      * @param int $size
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSize(int $size)
     {
@@ -111,7 +111,7 @@ class InstanceIdList extends TalkBaseCorp
 
     /**
      * @param int $cursor
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setCursor(int $cursor)
     {
@@ -124,7 +124,7 @@ class InstanceIdList extends TalkBaseCorp
 
     /**
      * @param array $userIdList
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserIdList(array $userIdList)
     {

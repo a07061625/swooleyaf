@@ -8,7 +8,7 @@
 namespace Dao;
 
 use Constant\ErrorCode;
-use Exception\Common\CheckException;
+use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use ProjectCache\SyToken;
 use Tool\Tool;

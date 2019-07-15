@@ -8,7 +8,7 @@
 namespace Wx\Shop\Material;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -53,7 +53,7 @@ class MaterialGetBatch extends WxBaseShop
 
     /**
      * @param string $type
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setType(string $type)
     {
@@ -66,7 +66,7 @@ class MaterialGetBatch extends WxBaseShop
 
     /**
      * @param int $offset
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOffset(int $offset)
     {
@@ -79,7 +79,7 @@ class MaterialGetBatch extends WxBaseShop
 
     /**
      * @param int $count
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setCount(int $count)
     {

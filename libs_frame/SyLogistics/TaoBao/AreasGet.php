@@ -8,7 +8,7 @@
 namespace SyLogistics\TaoBao;
 
 use Constant\ErrorCode;
-use Exception\Logistics\TaoBaoException;
+use SyException\Logistics\TaoBaoException;
 use SyLogistics\LogisticsBaseTaoBao;
 
 class AreasGet extends LogisticsBaseTaoBao
@@ -31,7 +31,7 @@ class AreasGet extends LogisticsBaseTaoBao
 
     /**
      * @param array $fields
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setFields(array $fields)
     {

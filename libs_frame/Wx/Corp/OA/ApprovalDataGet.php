@@ -2,7 +2,7 @@
 namespace Wx\Corp\OA;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -47,7 +47,7 @@ class ApprovalDataGet extends WxBaseCorp
     /**
      * @param int $startTime
      * @param int $endTime
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setStartTimeAndEndTime(int $startTime, int $endTime)
     {
@@ -65,7 +65,7 @@ class ApprovalDataGet extends WxBaseCorp
 
     /**
      * @param string $nextSpnum
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setNextSpnum(string $nextSpnum)
     {

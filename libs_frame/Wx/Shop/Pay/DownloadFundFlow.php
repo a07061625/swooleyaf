@@ -9,7 +9,7 @@ namespace Wx\Shop\Pay;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -89,7 +89,7 @@ class DownloadFundFlow extends WxBaseShop
 
     /**
      * @param string $billDate
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setBillDate(string $billDate)
     {
@@ -102,7 +102,7 @@ class DownloadFundFlow extends WxBaseShop
 
     /**
      * @param string $accountType
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAccountType(string $accountType)
     {

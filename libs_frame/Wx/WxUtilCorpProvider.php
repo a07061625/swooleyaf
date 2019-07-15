@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxCorpProviderException;
+use SyException\Wx\WxCorpProviderException;
 use Tool\ProjectTool;
 use Tool\Tool;
 use Traits\SimpleTrait;
@@ -27,7 +27,7 @@ final class WxUtilCorpProvider extends WxUtilBase
     /**
      * 获取服务商凭证
      * @return string
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public static function getProviderToken() : string
     {
@@ -38,7 +38,7 @@ final class WxUtilCorpProvider extends WxUtilBase
         if (isset($redisData['unique_key']) && ($redisData['unique_key'] == $redisKey) && ($redisData['ct_expire'] >= $nowTime)) {
             return $redisData['ct_content'];
         } elseif (isset($redisData['unique_key']) && ($redisData['unique_key'] != $redisKey)) {
-            throw new WxCorpProviderException('获取服务商凭证缓存失败', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
+            throw new \SyException\Wx\WxCorpProviderException('获取服务商凭证缓存失败', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
 
         $providerToken = new ProviderToken();
@@ -63,7 +63,7 @@ final class WxUtilCorpProvider extends WxUtilBase
      * @param string $nonceStr 随机串,对应URL参数的nonce
      * @param string $timestamp 时间戳,对应URL参数的timestamp
      * @return string
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public static function decryptMsg(string $encryptXml, string $msgSignature, string $nonceStr, string $timestamp = '') : string
     {
@@ -76,7 +76,7 @@ final class WxUtilCorpProvider extends WxUtilBase
         $providerToken = WxConfigSingleton::getInstance()->getCorpProviderConfig()->getToken();
         $signature = self::getSha1Val($providerToken, $nowTime, $nonceStr, $encryptXml);
         if ($signature != $msgSignature) {
-            throw new WxCorpProviderException('签名验证错误', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
+            throw new \SyException\Wx\WxCorpProviderException('签名验证错误', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
 
         return self::decrypt($encryptXml);
@@ -86,7 +86,7 @@ final class WxUtilCorpProvider extends WxUtilBase
      * 明文加密
      * @param string $replyMsg 服务商待回复用户的消息,xml格式的字符串
      * @return string 加密后的可以直接回复用户的密文,包括msg_signature, timestamp, nonce, encrypt的xml格式的字符串
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public static function encryptMsg(string $replyMsg) : string
     {
@@ -102,7 +102,7 @@ final class WxUtilCorpProvider extends WxUtilBase
     /**
      * 获取微信服务商套件ticket
      * @return string
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public static function getSuiteTicket() : string
     {
@@ -111,14 +111,14 @@ final class WxUtilCorpProvider extends WxUtilBase
         if (isset($redisData['unique_key']) && ($redisData['unique_key'] == $redisKey)) {
             return $redisData['ticket'];
         } else {
-            throw new WxCorpProviderException('获取微信服务商套件缓存失败', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
+            throw new \SyException\Wx\WxCorpProviderException('获取微信服务商套件缓存失败', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
     }
 
     /**
      * 获取第三方应用凭证
      * @return string
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public static function getSuiteToken() : string
     {
@@ -128,7 +128,7 @@ final class WxUtilCorpProvider extends WxUtilBase
         if (isset($redisData['at_key']) && ($redisData['at_key'] == $redisKey) && ($redisData['at_expire'] >= $nowTime)) {
             return $redisData['at_content'];
         } elseif (isset($redisData['at_key']) && ($redisData['at_key'] != $redisKey)) {
-            throw new WxCorpProviderException('获取第三方应用凭证缓存失败', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
+            throw new \SyException\Wx\WxCorpProviderException('获取第三方应用凭证缓存失败', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
 
         $suiteAccessToken = new SuiteAccessToken();
@@ -234,7 +234,7 @@ final class WxUtilCorpProvider extends WxUtilBase
      * 消息解密
      * @param string $encryptMsg 加密消息
      * @return string
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     private static function decrypt(string $encryptMsg) : string
     {
@@ -258,7 +258,7 @@ final class WxUtilCorpProvider extends WxUtilBase
             $error = '解密失败';
         }
         if (strlen($error) > 0) {
-            throw new WxCorpProviderException($error, ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
+            throw new \SyException\Wx\WxCorpProviderException($error, ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
 
         return $xml;

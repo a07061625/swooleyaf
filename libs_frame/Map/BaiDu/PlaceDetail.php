@@ -8,7 +8,7 @@
 namespace Map\BaiDu;
 
 use Constant\ErrorCode;
-use Exception\Map\BaiduMapException;
+use SyException\Map\BaiduMapException;
 use Map\MapBaseBaiDu;
 use Tool\Tool;
 
@@ -44,7 +44,7 @@ class PlaceDetail extends MapBaseBaiDu
     /**
      * 添加uid
      * @param string $uid
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function addUid(string $uid)
     {
@@ -60,7 +60,7 @@ class PlaceDetail extends MapBaseBaiDu
 
     /**
      * @param int $scope
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setScope(int $scope)
     {

@@ -9,7 +9,7 @@ namespace QCloud;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\QCloudConfigSingleton;
-use Exception\QCloud\CosException;
+use SyException\QCloud\CosException;
 
 abstract class CloudBaseCos extends CloudBase
 {
@@ -118,7 +118,7 @@ abstract class CloudBaseCos extends CloudBase
 
     /**
      * @param string $reqMethod
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     protected function setReqMethod(string $reqMethod)
     {
@@ -126,33 +126,33 @@ abstract class CloudBaseCos extends CloudBase
             $this->reqMethod = strtolower($reqMethod);
             $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = $reqMethod;
         } else {
-            throw new CosException('请求方式不支持', ErrorCode::QCLOUD_COS_PARAM_ERROR);
+            throw new \SyException\QCloud\CosException('请求方式不支持', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
     }
 
     /**
      * @param int $signExpireTime
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     protected function setSignExpireTime(int $signExpireTime)
     {
         if ($signExpireTime > 0) {
             $this->signExpireTime = $signExpireTime;
         } else {
-            throw new CosException('签名有效时间不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
+            throw new \SyException\QCloud\CosException('签名有效时间不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
     }
 
     protected function getContent() : array
     {
         if (!isset($this->reqMethod{0})) {
-            throw new CosException('请求方式不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
+            throw new \SyException\QCloud\CosException('请求方式不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
         if (!isset($this->reqUri{0})) {
             throw new CosException('请求uri不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
         if (empty($this->signHeaders)) {
-            throw new CosException('签名请求头不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
+            throw new \SyException\QCloud\CosException('签名请求头不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
         if ($this->signTag) {
             CloudUtilCos::createSign([

@@ -9,7 +9,7 @@ namespace AliPay\Life;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayLifeException;
+use SyException\AliPay\AliPayLifeException;
 
 class AdvertDelete extends AliPayBase
 {
@@ -31,7 +31,7 @@ class AdvertDelete extends AliPayBase
 
     /**
      * @param string $advertId
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setAdvertId(string $advertId)
     {

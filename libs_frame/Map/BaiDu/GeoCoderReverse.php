@@ -8,7 +8,7 @@
 namespace Map\BaiDu;
 
 use Constant\ErrorCode;
-use Exception\Map\BaiduMapException;
+use SyException\Map\BaiduMapException;
 use Map\MapBaseBaiDu;
 
 class GeoCoderReverse extends MapBaseBaiDu
@@ -77,7 +77,7 @@ class GeoCoderReverse extends MapBaseBaiDu
 
     /**
      * @param int $poiStatus
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setPoiStatusAndRadius(int $poiStatus, int $poiRadius)
     {

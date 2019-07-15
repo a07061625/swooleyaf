@@ -9,7 +9,7 @@ namespace Dao;
 
 use Constant\ErrorCode;
 use Constant\Project;
-use Exception\Common\CheckException;
+use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use Tool\Tool;
 use Traits\SimpleDaoTrait;

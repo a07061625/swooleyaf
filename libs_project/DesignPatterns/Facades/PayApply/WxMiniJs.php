@@ -10,7 +10,7 @@ namespace DesignPatterns\Facades\PayApply;
 use Constant\ErrorCode;
 use Constant\ProjectCode;
 use DesignPatterns\Facades\PayApplyFacade;
-use Exception\Common\CheckException;
+use SyException\Common\CheckException;
 use Tool\SyUser;
 use Tool\Tool;
 use Traits\SimpleFacadeTrait;

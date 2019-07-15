@@ -9,7 +9,7 @@ namespace SySms\DaYu;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\SmsConfigSingleton;
-use Exception\Sms\DaYuException;
+use SyException\Sms\DaYuException;
 use TaoBao\ServiceBase;
 use Tool\Tool;
 
@@ -69,7 +69,7 @@ class SmsSend extends ServiceBase
 
     /**
      * @param array $recNumList
-     * @throws \Exception\Sms\DaYuException
+     * @throws \SyException\Sms\DaYuException
      */
     public function setRecNumList(array $recNumList)
     {
@@ -90,7 +90,7 @@ class SmsSend extends ServiceBase
 
     /**
      * @param string $recNum
-     * @throws \Exception\Sms\DaYuException
+     * @throws \SyException\Sms\DaYuException
      */
     public function addRecNum(string $recNum)
     {
@@ -106,7 +106,7 @@ class SmsSend extends ServiceBase
 
     /**
      * @param string $signName
-     * @throws \Exception\Sms\DaYuException
+     * @throws \SyException\Sms\DaYuException
      */
     public function setSignName(string $signName)
     {
@@ -121,7 +121,7 @@ class SmsSend extends ServiceBase
 
     /**
      * @param string $templateId
-     * @throws \Exception\Sms\DaYuException
+     * @throws \SyException\Sms\DaYuException
      */
     public function setTemplateId(string $templateId)
     {

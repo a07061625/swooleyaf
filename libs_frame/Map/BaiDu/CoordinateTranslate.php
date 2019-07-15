@@ -8,7 +8,7 @@
 namespace Map\BaiDu;
 
 use Constant\ErrorCode;
-use Exception\Map\BaiduMapException;
+use SyException\Map\BaiduMapException;
 use Map\MapBaseBaiDu;
 
 class CoordinateTranslate extends MapBaseBaiDu
@@ -66,7 +66,7 @@ class CoordinateTranslate extends MapBaseBaiDu
      * 添加坐标
      * @param string $lng
      * @param string $lat
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function addCoordinate(string $lng, string $lat)
     {
@@ -86,7 +86,7 @@ class CoordinateTranslate extends MapBaseBaiDu
 
     /**
      * @param int $fromType
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setFromType(int $fromType)
     {
@@ -99,7 +99,7 @@ class CoordinateTranslate extends MapBaseBaiDu
 
     /**
      * @param int $toType
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setToType(int $toType)
     {

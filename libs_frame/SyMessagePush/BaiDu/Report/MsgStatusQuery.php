@@ -8,7 +8,7 @@
 namespace SyMessagePush\BaiDu\Report;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\BaiDuPushException;
+use SyException\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
 
 class MsgStatusQuery extends PushBaseBaiDu
@@ -31,7 +31,7 @@ class MsgStatusQuery extends PushBaseBaiDu
 
     /**
      * @param string $msgId
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setMsgId(string $msgId)
     {

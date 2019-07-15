@@ -8,7 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use Constant\ErrorCode;
-use Exception\MessageQueue\MessageQueueException;
+use SyException\MessageQueue\MessageQueueException;
 use RdKafka\Conf;
 use RdKafka\KafkaConsumer;
 use RdKafka\Producer;
@@ -77,7 +77,7 @@ class MessageQueueSingleton
 
     /**
      * @return \RdKafka\Producer
-     * @throws \Exception\MessageQueue\MessageQueueException
+     * @throws \SyException\MessageQueue\MessageQueueException
      */
     public function getKafkaProducer()
     {
@@ -101,7 +101,7 @@ class MessageQueueSingleton
 
     /**
      * @return \RdKafka\KafkaConsumer
-     * @throws \Exception\MessageQueue\MessageQueueException
+     * @throws \SyException\MessageQueue\MessageQueueException
      */
     public function getKafkaConsumer()
     {

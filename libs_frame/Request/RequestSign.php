@@ -8,7 +8,7 @@
 namespace Request;
 
 use Constant\ErrorCode;
-use Exception\Validator\SignException;
+use SyException\Validator\SignException;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
@@ -21,7 +21,7 @@ final class RequestSign
     /**
      * 校验签名是否合法
      * @return string
-     * @throws \Exception\Validator\SignException
+     * @throws \SyException\Validator\SignException
      */
     public static function checkSign() : string
     {

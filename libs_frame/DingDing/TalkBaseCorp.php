@@ -8,7 +8,7 @@
 namespace DingDing;
 
 use Constant\ErrorCode;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 abstract class TalkBaseCorp extends TalkBase
 {
@@ -71,7 +71,7 @@ abstract class TalkBaseCorp extends TalkBase
 
     /**
      * @param int $accessTokenType
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setAccessTokenType(int $accessTokenType)
     {

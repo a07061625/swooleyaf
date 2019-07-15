@@ -9,7 +9,7 @@ namespace AliPay\Life;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayLifeException;
+use SyException\AliPay\AliPayLifeException;
 
 class PersonalMenuCreate extends AliPayBase
 {
@@ -44,7 +44,7 @@ class PersonalMenuCreate extends AliPayBase
 
     /**
      * @param string $type
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setType(string $type)
     {
@@ -57,7 +57,7 @@ class PersonalMenuCreate extends AliPayBase
 
     /**
      * @param array $button
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function addButton(array $button)
     {
@@ -70,7 +70,7 @@ class PersonalMenuCreate extends AliPayBase
 
     /**
      * @param array $labelRule
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function addLabelRule(array $labelRule)
     {

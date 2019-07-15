@@ -7,7 +7,7 @@
 namespace QCloud\Cos;
 
 use Constant\ErrorCode;
-use Exception\QCloud\CosException;
+use SyException\QCloud\CosException;
 use QCloud\CloudBaseCos;
 use Tool\Tool;
 
@@ -32,7 +32,7 @@ class BucketRefererPut extends CloudBaseCos
 
     /**
      * @param array $data
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setRefererConfig(array $data)
     {

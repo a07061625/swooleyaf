@@ -8,7 +8,7 @@
 namespace SySms;
 
 use Constant\ErrorCode;
-use Exception\Sms\Yun253Exception;
+use SyException\Sms\Yun253Exception;
 use Tool\Tool;
 
 class ConfigYun253
@@ -52,7 +52,7 @@ class ConfigYun253
 
     /**
      * @param string $appKey
-     * @throws \Exception\Sms\Yun253Exception
+     * @throws \SyException\Sms\Yun253Exception
      */
     public function setAppKey(string $appKey)
     {
@@ -73,7 +73,7 @@ class ConfigYun253
 
     /**
      * @param string $appSecret
-     * @throws \Exception\Sms\Yun253Exception
+     * @throws \SyException\Sms\Yun253Exception
      */
     public function setAppSecret(string $appSecret)
     {
@@ -94,7 +94,7 @@ class ConfigYun253
 
     /**
      * @param string $urlSmsSend
-     * @throws \Exception\Sms\Yun253Exception
+     * @throws \SyException\Sms\Yun253Exception
      */
     public function setUrlSmsSend(string $urlSmsSend)
     {

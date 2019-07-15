@@ -8,7 +8,7 @@
 namespace SyMessagePush\BaiDu\Report;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\BaiDuPushException;
+use SyException\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
 
 class TopicRecordsQuery extends PushBaseBaiDu
@@ -53,7 +53,7 @@ class TopicRecordsQuery extends PushBaseBaiDu
 
     /**
      * @param string $topicId
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setTopicId(string $topicId)
     {
@@ -66,7 +66,7 @@ class TopicRecordsQuery extends PushBaseBaiDu
 
     /**
      * @param int $start
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setStart(int $start)
     {
@@ -79,7 +79,7 @@ class TopicRecordsQuery extends PushBaseBaiDu
 
     /**
      * @param int $limit
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setLimit(int $limit)
     {
@@ -93,7 +93,7 @@ class TopicRecordsQuery extends PushBaseBaiDu
     /**
      * @param int $rangeStart
      * @param int $rangeEnd
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setRangeStartAndEnd(int $rangeStart, int $rangeEnd)
     {

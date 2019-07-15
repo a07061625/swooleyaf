@@ -8,7 +8,7 @@
 namespace Map\GaoDe;
 
 use Constant\ErrorCode;
-use Exception\Map\GaoDeMapException;
+use SyException\Map\GaoDeMapException;
 use Map\MapBaseGaoDe;
 
 /**
@@ -81,7 +81,7 @@ class PlaceText extends MapBaseGaoDe
 
     /**
      * @param array $keywordList
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setKeywords(array $keywordList)
     {
@@ -100,7 +100,7 @@ class PlaceText extends MapBaseGaoDe
 
     /**
      * @param string $types
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setTypes(string $types)
     {
@@ -113,7 +113,7 @@ class PlaceText extends MapBaseGaoDe
 
     /**
      * @param string $city
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setCity(string $city)
     {
@@ -126,7 +126,7 @@ class PlaceText extends MapBaseGaoDe
 
     /**
      * @param string $cityLimit
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setCityLimit(string $cityLimit)
     {
@@ -139,7 +139,7 @@ class PlaceText extends MapBaseGaoDe
 
     /**
      * @param int $children
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setChildren(int $children)
     {
@@ -152,7 +152,7 @@ class PlaceText extends MapBaseGaoDe
 
     /**
      * @param int $offset
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setOffset(int $offset)
     {
@@ -165,7 +165,7 @@ class PlaceText extends MapBaseGaoDe
 
     /**
      * @param int $page
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setPage(int $page)
     {
@@ -178,7 +178,7 @@ class PlaceText extends MapBaseGaoDe
 
     /**
      * @param string $building
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setBuilding(string $building)
     {
@@ -199,7 +199,7 @@ class PlaceText extends MapBaseGaoDe
 
     /**
      * @param string $extensions
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setExtensions(string $extensions)
     {

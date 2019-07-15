@@ -14,8 +14,8 @@ use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\MemCacheSingleton;
 use DesignPatterns\Singletons\MysqlSingleton;
 use DesignPatterns\Singletons\RedisSingleton;
-use Exception\Swoole\ServerException;
-use Exception\Validator\ValidatorException;
+use SyException\Swoole\ServerException;
+use SyException\Validator\ValidatorException;
 use Log\Log;
 use Response\Result;
 use Tool\Dir;
@@ -362,7 +362,7 @@ abstract class BaseServer
     /**
      * 启动主进程服务
      * @param \swoole_server $server
-     * @throws \Exception\Swoole\ServerException
+     * @throws \SyException\Swoole\ServerException
      */
     abstract public function onStart(\swoole_server $server);
     /**
@@ -465,7 +465,7 @@ abstract class BaseServer
 
     /**
      * 检查请求限流
-     * @throws \Exception\Swoole\ServerException
+     * @throws \SyException\Swoole\ServerException
      */
     protected static function checkRequestCurrentLimit()
     {

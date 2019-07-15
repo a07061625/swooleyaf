@@ -10,7 +10,7 @@ namespace Dao;
 use Constant\ErrorCode;
 use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
-use Exception\Common\CheckException;
+use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use Interfaces\PayContainer;
 use Log\Log;

@@ -10,7 +10,7 @@ namespace AliPay\Pay;
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\AliPayConfigSingleton;
-use Exception\AliPay\AliPayPayException;
+use SyException\AliPay\AliPayPayException;
 use Tool\Tool;
 
 class TradePay extends AliPayBase
@@ -143,7 +143,7 @@ class TradePay extends AliPayBase
 
     /**
      * @param string $outTradeNo
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setOutTradeNo(string $outTradeNo)
     {
@@ -156,7 +156,7 @@ class TradePay extends AliPayBase
 
     /**
      * @param string $scene
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setScene(string $scene)
     {
@@ -169,7 +169,7 @@ class TradePay extends AliPayBase
 
     /**
      * @param string $authCode
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setAuthCode(string $authCode)
     {
@@ -182,7 +182,7 @@ class TradePay extends AliPayBase
 
     /**
      * @param string $productCode
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setProductCode(string $productCode)
     {
@@ -195,7 +195,7 @@ class TradePay extends AliPayBase
 
     /**
      * @param string $subject
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setSubject(string $subject)
     {
@@ -209,7 +209,7 @@ class TradePay extends AliPayBase
 
     /**
      * @param string $buyerId
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setBuyerId(string $buyerId)
     {
@@ -222,7 +222,7 @@ class TradePay extends AliPayBase
 
     /**
      * @param string $transCurrency
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setTransCurrency(string $transCurrency)
     {
@@ -235,7 +235,7 @@ class TradePay extends AliPayBase
 
     /**
      * @param string $settleCurrency
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setSettleCurrency(string $settleCurrency)
     {
@@ -248,7 +248,7 @@ class TradePay extends AliPayBase
 
     /**
      * @param int $totalAmount
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setTotalAmount(int $totalAmount)
     {
@@ -262,7 +262,7 @@ class TradePay extends AliPayBase
 
     /**
      * @param int $discountableAmount
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setDiscountableAmount(int $discountableAmount)
     {
@@ -338,7 +338,7 @@ class TradePay extends AliPayBase
 
     /**
      * @param string $authConfirmMode
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setAuthConfirmMode(string $authConfirmMode)
     {

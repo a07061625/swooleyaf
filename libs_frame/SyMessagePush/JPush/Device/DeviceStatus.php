@@ -8,7 +8,7 @@
 namespace SyMessagePush\JPush\Device;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\DeviceBase;
 use SyMessagePush\PushUtilJPush;
 use Tool\Tool;
@@ -34,7 +34,7 @@ class DeviceStatus extends DeviceBase
 
     /**
      * @param array $registrationIds
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setRegistrationIds(array $registrationIds)
     {

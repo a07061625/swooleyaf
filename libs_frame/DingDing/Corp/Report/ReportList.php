@@ -10,7 +10,7 @@ namespace DingDing\Corp\Report;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -68,7 +68,7 @@ class ReportList extends TalkBaseCorp
     /**
      * @param int $startTime
      * @param int $endTime
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setStartTimeAndEndTime(int $startTime, int $endTime)
     {
@@ -84,7 +84,7 @@ class ReportList extends TalkBaseCorp
 
     /**
      * @param string $templateName
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setTemplateName(string $templateName)
     {
@@ -97,7 +97,7 @@ class ReportList extends TalkBaseCorp
 
     /**
      * @param string $userId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserId(string $userId)
     {
@@ -110,7 +110,7 @@ class ReportList extends TalkBaseCorp
 
     /**
      * @param int $cursor
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setCursor(int $cursor)
     {
@@ -123,7 +123,7 @@ class ReportList extends TalkBaseCorp
 
     /**
      * @param int $size
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSize(int $size)
     {

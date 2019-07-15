@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use Constant\Project;
 use Constant\Server;
 use DesignPatterns\Factories\CacheSimpleFactory;
-use Exception\Common\CheckException;
+use SyException\Common\CheckException;
 use PHPZxing\PHPZxingDecoder;
 use PHPZxing\ZxingImage;
 use SyServer\BaseServer;
@@ -119,7 +119,7 @@ class Tool
      * @param array $dataArr
      * @param int $transferType 转换类型
      * @return string
-     * @throws \Exception\Common\CheckException
+     * @throws \SyException\Common\CheckException
      */
     public static function arrayToXml(array $dataArr, int $transferType = 1) : string
     {
@@ -155,7 +155,7 @@ class Tool
      * xml转为array
      * @param string $xml
      * @return array
-     * @throws \Exception\Common\CheckException
+     * @throws \SyException\Common\CheckException
      */
     public static function xmlToArray(string $xml)
     {
@@ -604,7 +604,7 @@ class Tool
      * @param array $configs 配置数组
      * @param int $rspHeaderType 响应头类型
      * @return array
-     * @throws \Exception\Common\CheckException
+     * @throws \SyException\Common\CheckException
      */
     public static function sendCurlReq(array $configs, int $rspHeaderType = self::CURL_RSP_HEAD_TYPE_EMPTY)
     {

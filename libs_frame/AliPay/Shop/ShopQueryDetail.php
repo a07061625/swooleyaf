@@ -9,7 +9,7 @@ namespace AliPay\Shop;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayShopException;
+use SyException\AliPay\AliPayShopException;
 
 class ShopQueryDetail extends AliPayBase
 {
@@ -36,7 +36,7 @@ class ShopQueryDetail extends AliPayBase
 
     /**
      * @param string $shopId
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setShopId(string $shopId)
     {
@@ -49,7 +49,7 @@ class ShopQueryDetail extends AliPayBase
 
     /**
      * @param string $opRole
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setOpRole(string $opRole)
     {

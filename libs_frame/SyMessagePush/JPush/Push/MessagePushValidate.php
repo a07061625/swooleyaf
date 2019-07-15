@@ -8,7 +8,7 @@
 namespace SyMessagePush\JPush\Push;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\PushBase;
 use SyMessagePush\PushUtilJPush;
 use Tool\Tool;
@@ -64,7 +64,7 @@ class MessagePushValidate extends PushBase
 
     /**
      * @param string $cid
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setCid(string $cid)
     {
@@ -89,7 +89,7 @@ class MessagePushValidate extends PushBase
 
     /**
      * @param array $audience
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setAudience(array $audience)
     {
@@ -102,7 +102,7 @@ class MessagePushValidate extends PushBase
 
     /**
      * @param array $notification
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setNotification(array $notification)
     {
@@ -115,7 +115,7 @@ class MessagePushValidate extends PushBase
 
     /**
      * @param array $message
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setMessage(array $message)
     {
@@ -128,7 +128,7 @@ class MessagePushValidate extends PushBase
 
     /**
      * @param array $smsMessage
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setSmsMessage(array $smsMessage)
     {
@@ -141,7 +141,7 @@ class MessagePushValidate extends PushBase
 
     /**
      * @param array $options
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setOptions(array $options)
     {

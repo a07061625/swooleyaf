@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -77,7 +77,7 @@ class InstanceCreate extends TalkBaseCorp
 
     /**
      * @param string $processCode
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setProcessCode(string $processCode)
     {
@@ -90,7 +90,7 @@ class InstanceCreate extends TalkBaseCorp
 
     /**
      * @param string $originatorUserId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOriginatorUserId(string $originatorUserId)
     {
@@ -103,7 +103,7 @@ class InstanceCreate extends TalkBaseCorp
 
     /**
      * @param int $deptId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setDeptId(int $deptId)
     {
@@ -116,7 +116,7 @@ class InstanceCreate extends TalkBaseCorp
 
     /**
      * @param array $appRovers
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setAppRovers(array $appRovers)
     {
@@ -138,7 +138,7 @@ class InstanceCreate extends TalkBaseCorp
 
     /**
      * @param array $ccList
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setCcList(array $ccList)
     {
@@ -160,7 +160,7 @@ class InstanceCreate extends TalkBaseCorp
 
     /**
      * @param string $ccPosition
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setCcPosition(string $ccPosition)
     {
@@ -173,7 +173,7 @@ class InstanceCreate extends TalkBaseCorp
 
     /**
      * @param array $componentValue
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function addComponentValue(array $componentValue)
     {

@@ -8,7 +8,7 @@
 namespace SyLogistics\TaoBao;
 
 use Constant\ErrorCode;
-use Exception\Logistics\TaoBaoException;
+use SyException\Logistics\TaoBaoException;
 use SyLogistics\LogisticsBaseTaoBao;
 use Tool\Tool;
 
@@ -32,7 +32,7 @@ class AddressReachableBatchGet extends LogisticsBaseTaoBao
 
     /**
      * @param array $addressList
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setAddressList(array $addressList)
     {

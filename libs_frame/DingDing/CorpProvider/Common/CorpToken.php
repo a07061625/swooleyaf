@@ -12,7 +12,7 @@ use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\TalkBaseCorpProvider;
 use DingDing\TalkUtilBase;
 use DingDing\TalkUtilProvider;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -38,7 +38,7 @@ class CorpToken extends TalkBaseCorpProvider
 
     /**
      * @param string $authCorpId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setAuthCorpId(string $authCorpId)
     {

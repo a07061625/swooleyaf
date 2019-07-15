@@ -18,7 +18,7 @@ class Bootstrap extends \SyFrame\SimpleBootstrap
             //设置视图
             $twigConfig = self::getAppConfigs('twig');
             if (empty($twigConfig)) {
-                throw new \Exception\Swoole\ServerException('twig配置不存在', \Constant\ErrorCode::TWIG_PARAM_ERROR);
+                throw new \SyException\Swoole\ServerException('twig配置不存在', \Constant\ErrorCode::TWIG_PARAM_ERROR);
             }
 
             $twigView = new \DesignPatterns\Adapters\TwigAdapter(APP_PATH . '/application/views/', $twigConfig);
@@ -30,7 +30,7 @@ class Bootstrap extends \SyFrame\SimpleBootstrap
 
 //            $smartyConfig = self::getAppConfigs('smarty');
 //            if(empty($smartyConfig)){
-//                throw new \Exception\Swoole\ServerException('smarty配置不存在', \Constant\ErrorCode::SMARTY_PARAM_ERROR);
+//                throw new \SyException\Swoole\ServerException('smarty配置不存在', \Constant\ErrorCode::SMARTY_PARAM_ERROR);
 //            }
 //
 //            $smartyView = new \DesignPatterns\Adapters\SmartyAdapter(null, $smartyConfig);

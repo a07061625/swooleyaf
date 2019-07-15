@@ -9,7 +9,7 @@ namespace Wx\Open;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use Tool\Tool;
 use Wx\WxBaseOpen;
 use Wx\WxUtilBase;
@@ -64,7 +64,7 @@ class WeappFastRegister extends WxBaseOpen
 
     /**
      * @param string $name
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setName(string $name)
     {
@@ -77,7 +77,7 @@ class WeappFastRegister extends WxBaseOpen
 
     /**
      * @param string $code
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setCode(string $code)
     {
@@ -90,7 +90,7 @@ class WeappFastRegister extends WxBaseOpen
 
     /**
      * @param int $codeType
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setCodeType(int $codeType)
     {
@@ -103,7 +103,7 @@ class WeappFastRegister extends WxBaseOpen
 
     /**
      * @param string $legalPersonaWechat
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setLegalPersonaWechat(string $legalPersonaWechat)
     {
@@ -116,7 +116,7 @@ class WeappFastRegister extends WxBaseOpen
 
     /**
      * @param string $legalPersonaName
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setLegalPersonaName(string $legalPersonaName)
     {
@@ -129,7 +129,7 @@ class WeappFastRegister extends WxBaseOpen
 
     /**
      * @param string $componentPhone
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setComponentPhone(string $componentPhone)
     {

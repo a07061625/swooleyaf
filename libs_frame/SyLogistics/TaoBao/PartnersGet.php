@@ -8,7 +8,7 @@
 namespace SyLogistics\TaoBao;
 
 use Constant\ErrorCode;
-use Exception\Logistics\TaoBaoException;
+use SyException\Logistics\TaoBaoException;
 use SyLogistics\LogisticsBaseTaoBao;
 
 class PartnersGet extends LogisticsBaseTaoBao
@@ -55,7 +55,7 @@ class PartnersGet extends LogisticsBaseTaoBao
 
     /**
      * @param string $sourceId
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setSourceId(string $sourceId)
     {
@@ -68,7 +68,7 @@ class PartnersGet extends LogisticsBaseTaoBao
 
     /**
      * @param string $targetId
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setTargetId(string $targetId)
     {
@@ -81,7 +81,7 @@ class PartnersGet extends LogisticsBaseTaoBao
 
     /**
      * @param string $serviceType
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setServiceType(string $serviceType)
     {
@@ -94,7 +94,7 @@ class PartnersGet extends LogisticsBaseTaoBao
 
     /**
      * @param double $goodsValue
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setGoodsValue($goodsValue)
     {

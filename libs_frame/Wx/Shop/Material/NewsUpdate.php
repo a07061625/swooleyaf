@@ -8,7 +8,7 @@
 namespace Wx\Shop\Material;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -50,7 +50,7 @@ class NewsUpdate extends WxBaseShop
 
     /**
      * @param string $mediaId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMediaId(string $mediaId)
     {
@@ -63,7 +63,7 @@ class NewsUpdate extends WxBaseShop
 
     /**
      * @param int $index
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setIndex(int $index)
     {
@@ -76,7 +76,7 @@ class NewsUpdate extends WxBaseShop
 
     /**
      * @param array $articles
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setArticles(array $articles)
     {

@@ -8,7 +8,7 @@
 namespace DingDing;
 
 use Constant\ErrorCode;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 class TalkConfigCorp
 {
@@ -71,7 +71,7 @@ class TalkConfigCorp
 
     /**
      * @param string $corpId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setCorpId(string $corpId)
     {
@@ -92,14 +92,14 @@ class TalkConfigCorp
 
     /**
      * @param string $ssoSecret
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSsoSecret(string $ssoSecret)
     {
         if (ctype_alnum($ssoSecret)) {
             $this->ssoSecret = $ssoSecret;
         } else {
-            throw new TalkException('免登密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new \SyException\DingDing\TalkException('免登密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
@@ -146,7 +146,7 @@ class TalkConfigCorp
 
     /**
      * @param string $loginAppId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setLoginAppId(string $loginAppId)
     {
@@ -167,7 +167,7 @@ class TalkConfigCorp
 
     /**
      * @param string $loginAppSecret
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setLoginAppSecret(string $loginAppSecret)
     {
@@ -188,7 +188,7 @@ class TalkConfigCorp
 
     /**
      * @param string $loginUrlCallback
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setLoginUrlCallback(string $loginUrlCallback)
     {

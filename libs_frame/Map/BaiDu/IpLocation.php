@@ -8,7 +8,7 @@
 namespace Map\BaiDu;
 
 use Constant\ErrorCode;
-use Exception\Map\BaiduMapException;
+use SyException\Map\BaiduMapException;
 use Map\MapBaseBaiDu;
 
 class IpLocation extends MapBaseBaiDu
@@ -40,7 +40,7 @@ class IpLocation extends MapBaseBaiDu
 
     /**
      * @param string $ip
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setIp(string $ip)
     {
@@ -53,7 +53,7 @@ class IpLocation extends MapBaseBaiDu
 
     /**
      * @param string $returnCoordType
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setReturnCoordType(string $returnCoordType)
     {

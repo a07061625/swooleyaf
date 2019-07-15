@@ -8,7 +8,7 @@
 namespace Map\GaoDe;
 
 use Constant\ErrorCode;
-use Exception\Map\GaoDeMapException;
+use SyException\Map\GaoDeMapException;
 use Map\MapBaseGaoDe;
 
 /**
@@ -59,7 +59,7 @@ class PlacePolygon extends MapBaseGaoDe
 
     /**
      * @param array $polygonList
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setPolygon(array $polygonList)
     {
@@ -71,7 +71,7 @@ class PlacePolygon extends MapBaseGaoDe
 
     /**
      * @param array $keywordList
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setKeywords(array $keywordList)
     {
@@ -90,7 +90,7 @@ class PlacePolygon extends MapBaseGaoDe
 
     /**
      * @param array $typeList
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setTypes(array $typeList)
     {
@@ -109,7 +109,7 @@ class PlacePolygon extends MapBaseGaoDe
 
     /**
      * @param int $offset
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setOffset(int $offset)
     {
@@ -122,7 +122,7 @@ class PlacePolygon extends MapBaseGaoDe
 
     /**
      * @param int $page
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setPage(int $page)
     {
@@ -135,7 +135,7 @@ class PlacePolygon extends MapBaseGaoDe
 
     /**
      * @param string $extensions
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setExtensions(string $extensions)
     {

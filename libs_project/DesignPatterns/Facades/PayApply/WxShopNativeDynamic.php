@@ -9,7 +9,7 @@ namespace DesignPatterns\Facades\PayApply;
 
 use Constant\ErrorCode;
 use DesignPatterns\Facades\PayApplyFacade;
-use Exception\Common\CheckException;
+use SyException\Common\CheckException;
 use Tool\Tool;
 use Traits\SimpleFacadeTrait;
 use Wx\Shop\Pay\UnifiedOrder;

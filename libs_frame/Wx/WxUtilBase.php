@@ -8,7 +8,7 @@
 namespace Wx;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 
 abstract class WxUtilBase
@@ -39,7 +39,7 @@ abstract class WxUtilBase
      * 发送post请求
      * @param array $curlConfig
      * @return mixed
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public static function sendPostReq(array $curlConfig)
     {
@@ -69,7 +69,7 @@ abstract class WxUtilBase
      * 发送get请求
      * @param array $curlConfig
      * @return mixed
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public static function sendGetReq(array $curlConfig)
     {

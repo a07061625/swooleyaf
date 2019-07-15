@@ -11,7 +11,7 @@ namespace AliPay\Auth;
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\AliPayConfigSingleton;
-use Exception\AliPay\AliPayAuthException;
+use SyException\AliPay\AliPayAuthException;
 
 class UserLogin extends AliPayBase
 {
@@ -40,7 +40,7 @@ class UserLogin extends AliPayBase
 
     /**
      * @param string $scope
-     * @throws \Exception\AliPay\AliPayAuthException
+     * @throws \SyException\AliPay\AliPayAuthException
      */
     public function setScopes(string $scope)
     {
@@ -55,7 +55,7 @@ class UserLogin extends AliPayBase
 
     /**
      * @param string $state
-     * @throws \Exception\AliPay\AliPayAuthException
+     * @throws \SyException\AliPay\AliPayAuthException
      */
     public function setState(string $state)
     {

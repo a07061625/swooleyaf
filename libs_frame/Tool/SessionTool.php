@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use Constant\Project;
 use Constant\Server;
 use DesignPatterns\Factories\CacheSimpleFactory;
-use Exception\Session\JwtException;
+use SyException\Session\JwtException;
 use Request\SyRequest;
 use Traits\SimpleTrait;
 use Yaf\Registry;
@@ -41,7 +41,7 @@ final class SessionTool
      * @param array $data
      * 必填字段:
      *   uid: string|int 用户标识
-     * @throws \Exception\Session\JwtException
+     * @throws \SyException\Session\JwtException
      */
     public static function createSessionJwt(array &$data)
     {

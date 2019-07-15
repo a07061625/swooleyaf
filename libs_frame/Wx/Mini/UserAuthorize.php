@@ -9,7 +9,7 @@ namespace Wx\Mini;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseMini;
 use Wx\WxUtilBase;
@@ -37,7 +37,7 @@ class UserAuthorize extends WxBaseMini
 
     /**
      * @param string $code
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setCode(string $code)
     {

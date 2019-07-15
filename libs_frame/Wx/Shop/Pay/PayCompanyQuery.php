@@ -9,7 +9,7 @@ namespace Wx\Shop\Pay;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Log\Log;
 use Tool\Tool;
 use Wx\WxBaseShop;
@@ -55,7 +55,7 @@ class PayCompanyQuery extends WxBaseShop
 
     /**
      * @param string $outTradeNo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOutTradeNo(string $outTradeNo)
     {

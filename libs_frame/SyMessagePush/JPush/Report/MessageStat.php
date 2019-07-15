@@ -8,7 +8,7 @@
 namespace SyMessagePush\JPush\Report;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\ReportBase;
 use SyMessagePush\PushUtilJPush;
 
@@ -33,7 +33,7 @@ class MessageStat extends ReportBase
 
     /**
      * @param array $msgIds
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setMsgIds(array $msgIds)
     {

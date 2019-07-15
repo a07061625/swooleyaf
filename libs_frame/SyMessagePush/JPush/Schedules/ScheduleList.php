@@ -8,7 +8,7 @@
 namespace SyMessagePush\JPush\Schedules;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\SchedulesBase;
 use SyMessagePush\PushUtilJPush;
 
@@ -34,7 +34,7 @@ class ScheduleList extends SchedulesBase
 
     /**
      * @param int $page
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setPage(int $page)
     {

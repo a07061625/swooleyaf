@@ -2,7 +2,7 @@
 namespace Wx\CorpProvider\Common;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxCorpProviderException;
+use SyException\Wx\WxCorpProviderException;
 use Tool\Tool;
 use Wx\WxBaseCorpProvider;
 use Wx\WxUtilBase;
@@ -37,7 +37,7 @@ class CorpToken extends WxBaseCorpProvider
 
     /**
      * @param string $authCorpId
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setAuthCorpId(string $authCorpId)
     {
@@ -50,7 +50,7 @@ class CorpToken extends WxBaseCorpProvider
 
     /**
      * @param string $permanentCode
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setPermanentCode(string $permanentCode)
     {

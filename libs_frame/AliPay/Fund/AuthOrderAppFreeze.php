@@ -9,7 +9,7 @@ namespace AliPay\Fund;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayFundException;
+use SyException\AliPay\AliPayFundException;
 use Tool\Tool;
 
 class AuthOrderAppFreeze extends AliPayBase
@@ -122,7 +122,7 @@ class AuthOrderAppFreeze extends AliPayBase
 
     /**
      * @param string $outOrderNo
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOutOrderNo(string $outOrderNo)
     {
@@ -135,7 +135,7 @@ class AuthOrderAppFreeze extends AliPayBase
 
     /**
      * @param string $outRequestNo
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOutRequestNo(string $outRequestNo)
     {
@@ -148,7 +148,7 @@ class AuthOrderAppFreeze extends AliPayBase
 
     /**
      * @param string $orderTitle
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOrderTitle(string $orderTitle)
     {
@@ -161,7 +161,7 @@ class AuthOrderAppFreeze extends AliPayBase
 
     /**
      * @param int $amount
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setAmount(int $amount)
     {
@@ -175,7 +175,7 @@ class AuthOrderAppFreeze extends AliPayBase
 
     /**
      * @param string $payeeLogonId
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setPayeeLogonId(string $payeeLogonId)
     {
@@ -188,7 +188,7 @@ class AuthOrderAppFreeze extends AliPayBase
 
     /**
      * @param string $payeeUserId
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setPayeeUserId(string $payeeUserId)
     {
@@ -201,7 +201,7 @@ class AuthOrderAppFreeze extends AliPayBase
 
     /**
      * @param string $payTimeout
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setPayTimeout(string $payTimeout)
     {
@@ -214,7 +214,7 @@ class AuthOrderAppFreeze extends AliPayBase
 
     /**
      * @param array $extraParam
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setExtraParam(array $extraParam)
     {
@@ -226,7 +226,7 @@ class AuthOrderAppFreeze extends AliPayBase
 
     /**
      * @param string $sceneCode
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setSceneCode(string $sceneCode)
     {
@@ -239,7 +239,7 @@ class AuthOrderAppFreeze extends AliPayBase
 
     /**
      * @param string $transCurrency
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setTransCurrency(string $transCurrency)
     {
@@ -252,7 +252,7 @@ class AuthOrderAppFreeze extends AliPayBase
 
     /**
      * @param string $settleCurrency
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setSettleCurrency(string $settleCurrency)
     {
@@ -265,7 +265,7 @@ class AuthOrderAppFreeze extends AliPayBase
 
     /**
      * @param string $payChannel
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function addPayChannel(string $payChannel)
     {

@@ -8,7 +8,7 @@
 namespace SyLogistics;
 
 use Constant\ErrorCode;
-use Exception\Logistics\KdNiaoException;
+use SyException\Logistics\KdNiaoException;
 
 class ConfigKdNiao
 {
@@ -41,7 +41,7 @@ class ConfigKdNiao
 
     /**
      * @param string $businessId
-     * @throws \Exception\Logistics\KdNiaoException
+     * @throws \SyException\Logistics\KdNiaoException
      */
     public function setBusinessId(string $businessId)
     {
@@ -62,7 +62,7 @@ class ConfigKdNiao
 
     /**
      * @param string $appKey
-     * @throws \Exception\Logistics\KdNiaoException
+     * @throws \SyException\Logistics\KdNiaoException
      */
     public function setAppKey(string $appKey)
     {

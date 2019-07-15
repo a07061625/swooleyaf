@@ -9,7 +9,7 @@ namespace Wx\Shop\Pay;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -133,7 +133,7 @@ class PayMicro extends WxBaseShop
 
     /**
      * @param string $body
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setBody(string $body)
     {
@@ -146,7 +146,7 @@ class PayMicro extends WxBaseShop
 
     /**
      * @param string $attach
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAttach(string $attach)
     {
@@ -159,7 +159,7 @@ class PayMicro extends WxBaseShop
 
     /**
      * @param string $outTradeNo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOutTradeNo(string $outTradeNo)
     {
@@ -172,7 +172,7 @@ class PayMicro extends WxBaseShop
 
     /**
      * @param int $totalFee
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTotalFee(int $totalFee)
     {
@@ -185,7 +185,7 @@ class PayMicro extends WxBaseShop
 
     /**
      * @param string $authCode
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAuthCode(string $authCode)
     {
@@ -228,7 +228,7 @@ class PayMicro extends WxBaseShop
 
     /**
      * @param string $limitPay
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setLimitPay(string $limitPay)
     {
@@ -244,7 +244,7 @@ class PayMicro extends WxBaseShop
     /**
      * @param int $timeStart
      * @param int $timeExpire
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTime(int $timeStart, int $timeExpire)
     {
@@ -271,7 +271,7 @@ class PayMicro extends WxBaseShop
 
     /**
      * @param string $receipt
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setReceipt(string $receipt)
     {

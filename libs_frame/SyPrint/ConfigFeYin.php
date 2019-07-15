@@ -8,7 +8,7 @@
 namespace SyPrint;
 
 use Constant\ErrorCode;
-use Exception\SyPrint\FeYinException;
+use SyException\SyPrint\FeYinException;
 
 class ConfigFeYin
 {
@@ -46,7 +46,7 @@ class ConfigFeYin
 
     /**
      * @param string $appId
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setAppId(string $appId)
     {
@@ -67,7 +67,7 @@ class ConfigFeYin
 
     /**
      * @param string $appKey
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setAppKey(string $appKey)
     {
@@ -88,14 +88,14 @@ class ConfigFeYin
 
     /**
      * @param string $memberCode
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setMemberCode(string $memberCode)
     {
         if (ctype_alnum($memberCode)) {
             $this->memberCode = $memberCode;
         } else {
-            throw new FeYinException('商户编码不合法', ErrorCode::PRINT_PARAM_ERROR);
+            throw new \SyException\SyPrint\FeYinException('商户编码不合法', ErrorCode::PRINT_PARAM_ERROR);
         }
     }
 }

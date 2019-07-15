@@ -8,7 +8,7 @@
 namespace SyMessagePush\BaiDu\Push;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\BaiDuPushException;
+use SyException\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
 use Tool\Tool;
 
@@ -54,7 +54,7 @@ class MsgDeviceBatch extends PushBaseBaiDu
 
     /**
      * @param array $channelIds
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setChannelIds(array $channelIds)
     {
@@ -74,7 +74,7 @@ class MsgDeviceBatch extends PushBaseBaiDu
 
     /**
      * @param int $msgType
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setMsgType(int $msgType)
     {
@@ -87,7 +87,7 @@ class MsgDeviceBatch extends PushBaseBaiDu
 
     /**
      * @param array $msg
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setMsg(array $msg)
     {
@@ -99,7 +99,7 @@ class MsgDeviceBatch extends PushBaseBaiDu
 
     /**
      * @param int $msgExpires
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setMsgExpires(int $msgExpires)
     {
@@ -112,7 +112,7 @@ class MsgDeviceBatch extends PushBaseBaiDu
 
     /**
      * @param string $topicId
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setTopicId(string $topicId)
     {
