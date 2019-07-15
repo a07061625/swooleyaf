@@ -8,7 +8,7 @@
 namespace Wx\Corp\Department;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -59,7 +59,7 @@ class DepartmentCreate extends WxBaseCorp
 
     /**
      * @param string $name
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setName(string $name)
     {
@@ -72,7 +72,7 @@ class DepartmentCreate extends WxBaseCorp
 
     /**
      * @param int $parentId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setParentId(int $parentId)
     {
@@ -85,7 +85,7 @@ class DepartmentCreate extends WxBaseCorp
 
     /**
      * @param int $order
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOrder(int $order)
     {
@@ -98,7 +98,7 @@ class DepartmentCreate extends WxBaseCorp
 
     /**
      * @param int $id
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setId(int $id)
     {

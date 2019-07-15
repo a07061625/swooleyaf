@@ -120,7 +120,7 @@ class WxConfigAccount
 
     /**
      * @param string $clientIp
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\WX\WxException
      */
     public function setClientIp(string $clientIp)
     {
@@ -141,7 +141,7 @@ class WxConfigAccount
 
     /**
      * @param string $appId
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\WX\WxException
      */
     public function setAppId(string $appId)
     {
@@ -162,7 +162,7 @@ class WxConfigAccount
 
     /**
      * @param string $secret
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\WX\WxException
      */
     public function setSecret(string $secret)
     {
@@ -183,7 +183,7 @@ class WxConfigAccount
 
     /**
      * @param string $payMchId
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\WX\WxException
      */
     public function setPayMchId(string $payMchId)
     {
@@ -204,7 +204,7 @@ class WxConfigAccount
 
     /**
      * @param string $payKey
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\WX\WxException
      */
     public function setPayKey(string $payKey)
     {
@@ -225,7 +225,7 @@ class WxConfigAccount
 
     /**
      * @param string $payNotifyUrl
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\WX\WxException
      */
     public function setPayNotifyUrl(string $payNotifyUrl)
     {
@@ -246,7 +246,7 @@ class WxConfigAccount
 
     /**
      * @param string $payAuthUrl
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\WX\WxException
      */
     public function setPayAuthUrl(string $payAuthUrl)
     {
@@ -340,7 +340,7 @@ class WxConfigAccount
 
     /**
      * @param string $merchantAppId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMerchantAppId(string $merchantAppId)
     {

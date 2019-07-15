@@ -8,7 +8,7 @@
 namespace SyMessagePush\JPush\Report;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\ReportBase;
 use SyMessagePush\PushUtilJPush;
 use Tool\Tool;
@@ -45,7 +45,7 @@ class MessageStatus extends ReportBase
 
     /**
      * @param string $msgId
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setMsgId(string $msgId)
     {
@@ -58,7 +58,7 @@ class MessageStatus extends ReportBase
 
     /**
      * @param array $registrationIds
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setRegistrationIds(array $registrationIds)
     {
@@ -77,7 +77,7 @@ class MessageStatus extends ReportBase
 
     /**
      * @param int $dayTime
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setDate(int $dayTime)
     {

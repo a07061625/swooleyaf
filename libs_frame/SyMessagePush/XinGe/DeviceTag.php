@@ -7,7 +7,7 @@
 namespace SyMessagePush\XinGe;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\XinGePushException;
+use SyException\MessagePush\XinGePushException;
 use SyMessagePush\PushBaseXinGe;
 
 /**
@@ -70,7 +70,7 @@ class DeviceTag extends PushBaseXinGe
 
     /**
      * @param int $operatorType
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setOperatorType(int $operatorType)
     {
@@ -83,7 +83,7 @@ class DeviceTag extends PushBaseXinGe
 
     /**
      * @param string $platform
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setPlatform(string $platform)
     {
@@ -96,7 +96,7 @@ class DeviceTag extends PushBaseXinGe
 
     /**
      * @param array $tokenList
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setTokenList(array $tokenList)
     {
@@ -109,7 +109,7 @@ class DeviceTag extends PushBaseXinGe
 
     /**
      * @param array $tagList
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setTagList(array $tagList)
     {
@@ -122,7 +122,7 @@ class DeviceTag extends PushBaseXinGe
 
     /**
      * @param array $tagTokenList
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setTagTokenList(array $tagTokenList)
     {
@@ -135,7 +135,7 @@ class DeviceTag extends PushBaseXinGe
 
     /**
      * @param int $seq
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setSeq(int $seq)
     {
@@ -148,7 +148,7 @@ class DeviceTag extends PushBaseXinGe
 
     /**
      * @param string $opType
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setOpType(string $opType)
     {
@@ -161,7 +161,7 @@ class DeviceTag extends PushBaseXinGe
 
     /**
      * @param string $opId
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setOpId(string $opId)
     {

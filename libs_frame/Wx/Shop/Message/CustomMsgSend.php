@@ -8,7 +8,7 @@
 namespace Wx\Shop\Message;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -52,7 +52,7 @@ class CustomMsgSend extends WxBaseShop
 
     /**
      * @param string $accessToken
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAccessToken(string $accessToken)
     {
@@ -65,7 +65,7 @@ class CustomMsgSend extends WxBaseShop
 
     /**
      * @param array $msgData
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMsgData(array $msgData)
     {
@@ -78,7 +78,7 @@ class CustomMsgSend extends WxBaseShop
 
     /**
      * @param string $platType
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPlatType(string $platType)
     {

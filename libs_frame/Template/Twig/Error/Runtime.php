@@ -11,7 +11,7 @@
  */
 
 /**
- * Exception thrown when an error occurs at runtime.
+ * SyException thrown when an error occurs at runtime.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */

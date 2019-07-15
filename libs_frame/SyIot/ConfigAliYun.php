@@ -8,7 +8,7 @@
 namespace SyIot;
 
 use Constant\ErrorCode;
-use Exception\Iot\AliYunIotException;
+use SyException\Iot\AliYunIotException;
 
 class ConfigAliYun
 {
@@ -46,7 +46,7 @@ class ConfigAliYun
 
     /**
      * @param string $regionId
-     * @throws \Exception\Iot\AliYunIotException
+     * @throws \SyException\Iot\AliYunIotException
      */
     public function setRegionId(string $regionId)
     {
@@ -67,7 +67,7 @@ class ConfigAliYun
 
     /**
      * @param string $accessKey
-     * @throws \Exception\Iot\AliYunIotException
+     * @throws \SyException\Iot\AliYunIotException
      */
     public function setAccessKey(string $accessKey)
     {
@@ -88,7 +88,7 @@ class ConfigAliYun
 
     /**
      * @param string $accessSecret
-     * @throws \Exception\Iot\AliYunIotException
+     * @throws \SyException\Iot\AliYunIotException
      */
     public function setAccessSecret(string $accessSecret)
     {

@@ -8,7 +8,7 @@
 namespace Wx\Corp\Media;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -47,7 +47,7 @@ class MediaUpload extends WxBaseCorp
 
     /**
      * @param string $type
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setType(string $type)
     {
@@ -60,7 +60,7 @@ class MediaUpload extends WxBaseCorp
 
     /**
      * @param string $filePath
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setFilePath(string $filePath)
     {

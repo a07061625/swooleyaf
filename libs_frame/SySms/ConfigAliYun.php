@@ -8,7 +8,7 @@
 namespace SySms;
 
 use Constant\ErrorCode;
-use Exception\Sms\AliYunException;
+use SyException\Sms\AliYunException;
 use Tool\Tool;
 
 class ConfigAliYun
@@ -52,7 +52,7 @@ class ConfigAliYun
 
     /**
      * @param string $regionId
-     * @throws \Exception\Sms\AliYunException
+     * @throws \SyException\Sms\AliYunException
      */
     public function setRegionId(string $regionId)
     {
@@ -73,7 +73,7 @@ class ConfigAliYun
 
     /**
      * @param string $appKey
-     * @throws \Exception\Sms\AliYunException
+     * @throws \SyException\Sms\AliYunException
      */
     public function setAppKey(string $appKey)
     {
@@ -94,7 +94,7 @@ class ConfigAliYun
 
     /**
      * @param string $appSecret
-     * @throws \Exception\Sms\AliYunException
+     * @throws \SyException\Sms\AliYunException
      */
     public function setAppSecret(string $appSecret)
     {

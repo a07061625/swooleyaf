@@ -7,7 +7,7 @@
 namespace QCloud\Cos;
 
 use Constant\ErrorCode;
-use Exception\QCloud\CosException;
+use SyException\QCloud\CosException;
 use QCloud\CloudBaseCos;
 
 /**
@@ -50,7 +50,7 @@ class ObjectAclPut extends CloudBaseCos
 
     /**
      * @param string $aclConfig
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setAclConfig(string $aclConfig)
     {

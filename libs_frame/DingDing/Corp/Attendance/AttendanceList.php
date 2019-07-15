@@ -10,7 +10,7 @@ namespace DingDing\Corp\Attendance;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -63,7 +63,7 @@ class AttendanceList extends TalkBaseCorp
 
     /**
      * @param array $userList
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserList(array $userList)
     {
@@ -86,7 +86,7 @@ class AttendanceList extends TalkBaseCorp
     /**
      * @param int $startTime
      * @param int $endTime
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setStartTimeAndEndTime(int $startTime, int $endTime)
     {
@@ -104,7 +104,7 @@ class AttendanceList extends TalkBaseCorp
 
     /**
      * @param int $offset
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOffset(int $offset)
     {
@@ -117,7 +117,7 @@ class AttendanceList extends TalkBaseCorp
 
     /**
      * @param int $limit
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setLimit(int $limit)
     {

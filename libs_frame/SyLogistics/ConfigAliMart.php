@@ -8,7 +8,7 @@
 namespace SyLogistics;
 
 use Constant\ErrorCode;
-use Exception\Logistics\AliMartException;
+use SyException\Logistics\AliMartException;
 
 class ConfigAliMart
 {
@@ -61,7 +61,7 @@ class ConfigAliMart
 
     /**
      * @param string $appKey
-     * @throws \Exception\Logistics\AliMartException
+     * @throws \SyException\Logistics\AliMartException
      */
     public function setAppKey(string $appKey)
     {
@@ -82,7 +82,7 @@ class ConfigAliMart
 
     /**
      * @param string $appSecret
-     * @throws \Exception\Logistics\AliMartException
+     * @throws \SyException\Logistics\AliMartException
      */
     public function setAppSecret(string $appSecret)
     {
@@ -103,7 +103,7 @@ class ConfigAliMart
 
     /**
      * @param string $appCode
-     * @throws \Exception\Logistics\AliMartException
+     * @throws \SyException\Logistics\AliMartException
      */
     public function setAppCode(string $appCode)
     {
@@ -141,7 +141,7 @@ class ConfigAliMart
     /**
      * @param string $protocol
      * @param string $domain
-     * @throws \Exception\Logistics\AliMartException
+     * @throws \SyException\Logistics\AliMartException
      */
     public function setServiceAddress(string $protocol, string $domain)
     {

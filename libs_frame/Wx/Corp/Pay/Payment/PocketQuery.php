@@ -9,7 +9,7 @@ namespace Wx\Corp\Pay\Payment;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxUtilBase;
@@ -58,7 +58,7 @@ class PocketQuery extends WxBaseCorp
 
     /**
      * @param string $partnerTradeNo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPartnerTradeNo(string $partnerTradeNo)
     {

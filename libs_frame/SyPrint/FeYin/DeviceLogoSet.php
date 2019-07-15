@@ -8,7 +8,7 @@
 namespace SyPrint\FeYin;
 
 use Constant\ErrorCode;
-use Exception\SyPrint\FeYinException;
+use SyException\SyPrint\FeYinException;
 use SyPrint\PrintBaseFeYin;
 use SyPrint\PrintUtilBase;
 use SyPrint\PrintUtilFeYin;
@@ -50,7 +50,7 @@ class DeviceLogoSet extends PrintBaseFeYin
 
     /**
      * @param string $deviceNo
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setDeviceNo(string $deviceNo)
     {
@@ -63,7 +63,7 @@ class DeviceLogoSet extends PrintBaseFeYin
 
     /**
      * @param string $path
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setPath(string $path)
     {
@@ -76,7 +76,7 @@ class DeviceLogoSet extends PrintBaseFeYin
 
     /**
      * @param int $threshold
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setThreshold(int $threshold)
     {

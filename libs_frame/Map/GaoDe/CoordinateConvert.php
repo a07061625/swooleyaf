@@ -8,7 +8,7 @@
 namespace Map\GaoDe;
 
 use Constant\ErrorCode;
-use Exception\Map\GaoDeMapException;
+use SyException\Map\GaoDeMapException;
 use Map\MapBaseGaoDe;
 
 /**
@@ -37,7 +37,7 @@ class CoordinateConvert extends MapBaseGaoDe
 
     /**
      * @param array $locationList
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setLocations(array $locationList)
     {
@@ -52,7 +52,7 @@ class CoordinateConvert extends MapBaseGaoDe
 
     /**
      * @param string $coordSys
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setCoordSys(string $coordSys)
     {

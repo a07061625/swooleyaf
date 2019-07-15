@@ -135,7 +135,7 @@ class Swift_Mime_Headers_PathHeader extends Swift_Mime_Headers_AbstractHeader
     }
 
     /**
-     * Throws an Exception if the address passed does not comply with RFC 2822.
+     * Throws an SyException if the address passed does not comply with RFC 2822.
      *
      * @param string $address
      *

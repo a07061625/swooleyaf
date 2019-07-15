@@ -13,7 +13,7 @@ class ServerException extends ClientException
     private $requestId;
 
     /**
-     * AliOpen\Core\Exception\ServerException constructor.
+     * AliOpen\Core\SyException\ServerException constructor.
      * @param $errorMessage
      * @param $errorCode
      * @param $httpStatus

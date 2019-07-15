@@ -7,7 +7,7 @@
 namespace QCloud\Cos;
 
 use Constant\ErrorCode;
-use Exception\QCloud\CosException;
+use SyException\QCloud\CosException;
 use QCloud\CloudBaseCos;
 
 /**
@@ -59,7 +59,7 @@ class BucketGet extends CloudBaseCos
 
     /**
      * @param string $prefix
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setPrefix(string $prefix)
     {
@@ -72,7 +72,7 @@ class BucketGet extends CloudBaseCos
 
     /**
      * @param string $delimiter
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setDelimiter(string $delimiter)
     {
@@ -85,7 +85,7 @@ class BucketGet extends CloudBaseCos
 
     /**
      * @param int $offset
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setOffset(int $offset)
     {
@@ -98,7 +98,7 @@ class BucketGet extends CloudBaseCos
 
     /**
      * @param int $limit
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setLimit(int $limit)
     {

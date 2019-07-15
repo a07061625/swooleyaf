@@ -30,6 +30,6 @@ try {
     echo "Message sent!";
 } catch (phpmailerException $e) {
     echo $e->errorMessage(); //Pretty error messages from PHPMailer
-} catch (Exception $e) {
+} catch (SyException $e) {
     echo $e->getMessage(); //Boring error messages from anything else!
 }

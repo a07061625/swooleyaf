@@ -45,7 +45,7 @@ class SessionCreate extends WxBaseShop
 
     /**
      * @param string $kfAccount
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setKfAccount(string $kfAccount)
     {
@@ -59,7 +59,7 @@ class SessionCreate extends WxBaseShop
 
     /**
      * @param string $openid
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
     {

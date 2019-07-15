@@ -8,7 +8,7 @@
 namespace SyMessageQueue;
 
 use Constant\ErrorCode;
-use Exception\MessageQueue\MessageQueueException;
+use SyException\MessageQueue\MessageQueueException;
 
 class ConfigRedis
 {
@@ -41,7 +41,7 @@ class ConfigRedis
 
     /**
      * @param int $consumerBatchMsgNum
-     * @throws \Exception\MessageQueue\MessageQueueException
+     * @throws \SyException\MessageQueue\MessageQueueException
      */
     public function setConsumerBatchMsgNum(int $consumerBatchMsgNum)
     {
@@ -62,7 +62,7 @@ class ConfigRedis
 
     /**
      * @param int $consumerBatchResetTimes
-     * @throws \Exception\MessageQueue\MessageQueueException
+     * @throws \SyException\MessageQueue\MessageQueueException
      */
     public function setConsumerBatchResetTimes(int $consumerBatchResetTimes)
     {

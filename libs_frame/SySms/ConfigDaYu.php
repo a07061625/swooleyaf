@@ -8,7 +8,7 @@
 namespace SySms;
 
 use Constant\ErrorCode;
-use Exception\Sms\DaYuException;
+use SyException\Sms\DaYuException;
 use Tool\Tool;
 
 class ConfigDaYu
@@ -47,7 +47,7 @@ class ConfigDaYu
 
     /**
      * @param string $appKey
-     * @throws \Exception\Sms\DaYuException
+     * @throws \SyException\Sms\DaYuException
      */
     public function setAppKey(string $appKey)
     {
@@ -68,7 +68,7 @@ class ConfigDaYu
 
     /**
      * @param string $appSecret
-     * @throws \Exception\Sms\DaYuException
+     * @throws \SyException\Sms\DaYuException
      */
     public function setAppSecret(string $appSecret)
     {

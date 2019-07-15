@@ -9,7 +9,7 @@ namespace AliPay\Pay;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayPayException;
+use SyException\AliPay\AliPayPayException;
 
 class RefundQuery extends AliPayBase
 {
@@ -41,7 +41,7 @@ class RefundQuery extends AliPayBase
 
     /**
      * @param string $outTradeNo
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setOutTradeNo(string $outTradeNo)
     {
@@ -54,7 +54,7 @@ class RefundQuery extends AliPayBase
 
     /**
      * @param string $tradeNo
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setTradeNo(string $tradeNo)
     {
@@ -67,7 +67,7 @@ class RefundQuery extends AliPayBase
 
     /**
      * @param string $refundNo
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setRefundNo(string $refundNo)
     {

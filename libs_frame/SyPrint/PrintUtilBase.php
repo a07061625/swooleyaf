@@ -8,7 +8,7 @@
 namespace SyPrint;
 
 use Constant\ErrorCode;
-use Exception\SyPrint\FeYinException;
+use SyException\SyPrint\FeYinException;
 use Tool\Tool;
 use Traits\SimpleTrait;
 
@@ -20,7 +20,7 @@ abstract class PrintUtilBase
      * 发送post请求
      * @param array $curlConfig
      * @return mixed
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public static function sendPostReq(array $curlConfig)
     {
@@ -44,7 +44,7 @@ abstract class PrintUtilBase
      * 发送get请求
      * @param array $curlConfig
      * @return mixed
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public static function sendGetReq(array $curlConfig)
     {

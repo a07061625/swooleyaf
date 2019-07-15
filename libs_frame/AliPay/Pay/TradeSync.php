@@ -9,7 +9,7 @@ namespace AliPay\Pay;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayPayException;
+use SyException\AliPay\AliPayPayException;
 use Tool\Tool;
 
 class TradeSync extends AliPayBase
@@ -47,7 +47,7 @@ class TradeSync extends AliPayBase
 
     /**
      * @param string $tradeNo
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setTradeNo(string $tradeNo)
     {
@@ -60,7 +60,7 @@ class TradeSync extends AliPayBase
 
     /**
      * @param string $outRequestNo
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setOutRequestNo(string $outRequestNo)
     {
@@ -73,7 +73,7 @@ class TradeSync extends AliPayBase
 
     /**
      * @param string $bizType
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setBizType(string $bizType)
     {
@@ -86,7 +86,7 @@ class TradeSync extends AliPayBase
 
     /**
      * @param array $orderBizInfo
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setOrderBizInfo(array $orderBizInfo)
     {

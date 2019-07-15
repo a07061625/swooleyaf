@@ -8,7 +8,7 @@
 namespace SyMessagePush\JPush\Device;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\DeviceBase;
 use SyMessagePush\PushUtilJPush;
 
@@ -32,7 +32,7 @@ class AliasDelete extends DeviceBase
 
     /**
      * @param string $aliasValue
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setAliasValue(string $aliasValue)
     {

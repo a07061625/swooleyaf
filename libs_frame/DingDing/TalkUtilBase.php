@@ -9,7 +9,7 @@ namespace DingDing;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 abstract class TalkUtilBase
@@ -21,7 +21,7 @@ abstract class TalkUtilBase
      * 发送post请求
      * @param array $curlConfig
      * @return mixed
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public static function sendPostReq(array $curlConfig)
     {
@@ -50,7 +50,7 @@ abstract class TalkUtilBase
      * 发送get请求
      * @param array $curlConfig
      * @return mixed
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public static function sendGetReq(array $curlConfig)
     {
@@ -109,7 +109,7 @@ abstract class TalkUtilBase
      * @param string $corpId 企业ID
      * @param string $agentTag 应用标志
      * @return string
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public static function decryptMsg(string $encryptMsg, string $optionType, string $corpId = '', string $agentTag = '') : string
     {

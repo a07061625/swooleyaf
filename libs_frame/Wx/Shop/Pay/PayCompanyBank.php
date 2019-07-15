@@ -9,7 +9,7 @@ namespace Wx\Shop\Pay;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -117,7 +117,7 @@ class PayCompanyBank extends WxBaseShop
 
     /**
      * @param string $partnerTradeNo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPartnerTradeNo(string $partnerTradeNo)
     {
@@ -132,7 +132,7 @@ class PayCompanyBank extends WxBaseShop
      * @param string $bankCode
      * @param string $accountNo
      * @param string $accountName
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setBankInfo(string $bankCode, string $accountNo, string $accountName)
     {
@@ -161,7 +161,7 @@ class PayCompanyBank extends WxBaseShop
 
     /**
      * @param int $amount
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAmount(int $amount)
     {

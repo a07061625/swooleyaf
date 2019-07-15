@@ -18,5 +18,5 @@ if ($condition) {
 }
 
 try {
-} catch (Exception $e) {
+} catch (SyException $e) {
 }

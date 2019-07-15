@@ -8,7 +8,7 @@
 namespace Wx\Shop\Pay;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilShop;
@@ -50,7 +50,7 @@ class JsPayConfig extends WxBaseShop
 
     /**
      * @param string $timeStamp
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTimeStamp(string $timeStamp)
     {
@@ -63,7 +63,7 @@ class JsPayConfig extends WxBaseShop
 
     /**
      * @param string $package
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPackage(string $package)
     {

@@ -2,7 +2,7 @@
 namespace Wx\Corp\Invoice;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -46,7 +46,7 @@ class InvoiceStatusUpdate extends WxBaseCorp
 
     /**
      * @param string $cardId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setCardId(string $cardId)
     {
@@ -59,7 +59,7 @@ class InvoiceStatusUpdate extends WxBaseCorp
 
     /**
      * @param string $encryptCode
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setEncryptCode(string $encryptCode)
     {
@@ -72,7 +72,7 @@ class InvoiceStatusUpdate extends WxBaseCorp
 
     /**
      * @param string $reimburseStatus
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setReimburseStatus(string $reimburseStatus)
     {

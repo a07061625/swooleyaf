@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 /**
  * 上传文件块
@@ -52,7 +52,7 @@ class UploadChunk extends TalkBaseCorp
 
     /**
      * @param string $filePath
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setFilePath(string $filePath)
     {
@@ -65,7 +65,7 @@ class UploadChunk extends TalkBaseCorp
 
     /**
      * @param string $uploadId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUploadId(string $uploadId)
     {
@@ -78,7 +78,7 @@ class UploadChunk extends TalkBaseCorp
 
     /**
      * @param int $chunkSequence
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setChunkSequence(int $chunkSequence)
     {

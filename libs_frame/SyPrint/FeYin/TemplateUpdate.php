@@ -8,7 +8,7 @@
 namespace SyPrint\FeYin;
 
 use Constant\ErrorCode;
-use Exception\SyPrint\FeYinException;
+use SyException\SyPrint\FeYinException;
 use SyPrint\PrintBaseFeYin;
 use SyPrint\PrintUtilBase;
 use SyPrint\PrintUtilFeYin;
@@ -59,7 +59,7 @@ class TemplateUpdate extends PrintBaseFeYin
 
     /**
      * @param string $templateId
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setTemplateId(string $templateId)
     {
@@ -72,7 +72,7 @@ class TemplateUpdate extends PrintBaseFeYin
 
     /**
      * @param string $name
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setName(string $name)
     {
@@ -86,7 +86,7 @@ class TemplateUpdate extends PrintBaseFeYin
 
     /**
      * @param string $content
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setContent(string $content)
     {
@@ -99,7 +99,7 @@ class TemplateUpdate extends PrintBaseFeYin
 
     /**
      * @param string $catalog
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setCatalog(string $catalog)
     {

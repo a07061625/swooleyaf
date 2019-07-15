@@ -8,7 +8,7 @@
 namespace Wx\Shop\Merchant\PostageTemplate;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -56,7 +56,7 @@ class TemplateAdd extends WxBaseShop
 
     /**
      * @param string $name
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setName(string $name)
     {
@@ -69,7 +69,7 @@ class TemplateAdd extends WxBaseShop
 
     /**
      * @param int $assumer
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAssumer(int $assumer)
     {
@@ -94,7 +94,7 @@ class TemplateAdd extends WxBaseShop
 
     /**
      * @param array $feeInfo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function addFee(array $feeInfo)
     {

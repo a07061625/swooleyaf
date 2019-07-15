@@ -418,7 +418,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
         }
     }
 
-    /** Throws an Exception if a response code is incorrect */
+    /** Throws an SyException if a response code is incorrect */
     protected function assertResponseCode($response, $wanted)
     {
         list($code) = sscanf($response, '%3d');

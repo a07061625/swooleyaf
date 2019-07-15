@@ -10,7 +10,7 @@ namespace DingDing\CorpProvider\User;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorpProvider;
 use DingDing\TalkUtilProvider;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 class AccessCan extends TalkBaseCorpProvider
 {
@@ -42,7 +42,7 @@ class AccessCan extends TalkBaseCorpProvider
 
     /**
      * @param string $appId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setAppId(string $appId)
     {
@@ -55,7 +55,7 @@ class AccessCan extends TalkBaseCorpProvider
 
     /**
      * @param string $userId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserId(string $userId)
     {

@@ -9,7 +9,7 @@
  */
 
 /**
- * I/O Exception class.
+ * I/O SyException class.
  *
  * @author Chris Corbyn
  */

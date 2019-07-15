@@ -7,7 +7,7 @@
 namespace QCloud\Cos;
 
 use Constant\ErrorCode;
-use Exception\QCloud\CosException;
+use SyException\QCloud\CosException;
 use QCloud\CloudBaseCos;
 
 /**
@@ -64,7 +64,7 @@ class MultipartUploadList extends CloudBaseCos
 
     /**
      * @param string $prefix
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setPrefix(string $prefix)
     {
@@ -77,7 +77,7 @@ class MultipartUploadList extends CloudBaseCos
 
     /**
      * @param string $delimiter
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setDelimiter(string $delimiter)
     {
@@ -90,7 +90,7 @@ class MultipartUploadList extends CloudBaseCos
 
     /**
      * @param string $markerKey
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setMarkerKey(string $markerKey)
     {
@@ -103,7 +103,7 @@ class MultipartUploadList extends CloudBaseCos
 
     /**
      * @param string $markerUploadId
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setMarkerUploadId(string $markerUploadId)
     {
@@ -116,7 +116,7 @@ class MultipartUploadList extends CloudBaseCos
 
     /**
      * @param int $limit
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setLimit(int $limit)
     {

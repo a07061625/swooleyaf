@@ -8,7 +8,7 @@
 namespace SyMessagePush\JPush\Report;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\ReportBase;
 use SyMessagePush\PushUtilJPush;
 
@@ -49,7 +49,7 @@ class UserStat extends ReportBase
      * @param string $timeUnit
      * @param int $timeStamp
      * @param int $duration
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setStatTime(string $timeUnit, int $timeStamp, int $duration)
     {

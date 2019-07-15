@@ -104,7 +104,7 @@ class Twig_Node_Macro extends Twig_Node
             ->indent()
             ->subcompile($this->getNode('body'))
             ->outdent()
-            ->write("} catch (Exception \$e) {\n")
+            ->write("} catch (SyException \$e) {\n")
             ->indent()
             ->write("ob_end_clean();\n\n")
             ->write("throw \$e;\n")

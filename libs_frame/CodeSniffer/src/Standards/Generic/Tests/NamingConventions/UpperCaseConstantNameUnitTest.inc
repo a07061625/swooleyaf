@@ -1,5 +1,5 @@
 <?php
-use Exception as My_Exception, foo\bar, baz;
+use SyException as My_Exception, foo\bar, baz;
 namespace foo;
 namespace foo\bar;
 namespace bar\foo\baz;

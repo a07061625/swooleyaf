@@ -8,7 +8,7 @@
 namespace SyLogistics\TaoBao;
 
 use Constant\ErrorCode;
-use Exception\Logistics\TaoBaoException;
+use SyException\Logistics\TaoBaoException;
 use SyLogistics\LogisticsBaseTaoBao;
 
 class OrderTracePush extends LogisticsBaseTaoBao
@@ -71,7 +71,7 @@ class OrderTracePush extends LogisticsBaseTaoBao
 
     /**
      * @param string $mailNo
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setMailNo(string $mailNo)
     {
@@ -84,7 +84,7 @@ class OrderTracePush extends LogisticsBaseTaoBao
 
     /**
      * @param int $occureTime
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setOccureTime(int $occureTime)
     {
@@ -97,7 +97,7 @@ class OrderTracePush extends LogisticsBaseTaoBao
 
     /**
      * @param string $operateDetail
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setOperateDetail(string $operateDetail)
     {
@@ -113,7 +113,7 @@ class OrderTracePush extends LogisticsBaseTaoBao
 
     /**
      * @param string $companyName
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setCompanyName(string $companyName)
     {
@@ -129,7 +129,7 @@ class OrderTracePush extends LogisticsBaseTaoBao
 
     /**
      * @param string $operatorName
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setOperatorName(string $operatorName)
     {
@@ -145,7 +145,7 @@ class OrderTracePush extends LogisticsBaseTaoBao
 
     /**
      * @param string $operatorContact
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setOperatorContact(string $operatorContact)
     {
@@ -161,7 +161,7 @@ class OrderTracePush extends LogisticsBaseTaoBao
 
     /**
      * @param string $currentCity
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setCurrentCity(string $currentCity)
     {
@@ -177,7 +177,7 @@ class OrderTracePush extends LogisticsBaseTaoBao
 
     /**
      * @param string $facilityName
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setFacilityName(string $facilityName)
     {
@@ -193,7 +193,7 @@ class OrderTracePush extends LogisticsBaseTaoBao
 
     /**
      * @param string $nodeDescription
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setNodeDescription(string $nodeDescription)
     {

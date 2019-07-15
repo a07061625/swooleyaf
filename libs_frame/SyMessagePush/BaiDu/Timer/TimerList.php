@@ -8,7 +8,7 @@
 namespace SyMessagePush\BaiDu\Timer;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\BaiDuPushException;
+use SyException\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
 
 class TimerList extends PushBaseBaiDu
@@ -43,7 +43,7 @@ class TimerList extends PushBaseBaiDu
 
     /**
      * @param string $timerId
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setTimerId(string $timerId)
     {
@@ -56,7 +56,7 @@ class TimerList extends PushBaseBaiDu
 
     /**
      * @param int $start
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setStart(int $start)
     {
@@ -69,7 +69,7 @@ class TimerList extends PushBaseBaiDu
 
     /**
      * @param int $limit
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setLimit(int $limit)
     {

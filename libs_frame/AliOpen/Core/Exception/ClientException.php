@@ -17,7 +17,7 @@ class ClientException extends \Exception
     private $errorType;
 
     /**
-     * AliOpen\Core\Exception\ClientException constructor.
+     * AliOpen\Core\SyException\ClientException constructor.
      * @param $errorMessage
      * @param $errorCode
      */

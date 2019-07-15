@@ -9,7 +9,7 @@ namespace AliPay\Life;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayLifeException;
+use SyException\AliPay\AliPayLifeException;
 
 class MessageSendBatch extends AliPayBase
 {
@@ -41,7 +41,7 @@ class MessageSendBatch extends AliPayBase
 
     /**
      * @param string $msgType
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setMsgType(string $msgType)
     {
@@ -54,7 +54,7 @@ class MessageSendBatch extends AliPayBase
 
     /**
      * @param array $articles
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setArticles(array $articles)
     {
@@ -68,7 +68,7 @@ class MessageSendBatch extends AliPayBase
 
     /**
      * @param array $text
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setText(array $text)
     {

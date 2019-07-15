@@ -10,7 +10,7 @@ namespace DB\Models;
 use Constant\ErrorCode;
 use Constant\Project;
 use DesignPatterns\Singletons\MongoSingleton;
-use Exception\Mongo\MongoException;
+use SyException\Mongo\MongoException;
 use Log\Log;
 use MongoDB\BSON\ObjectID;
 use MongoDB\Driver\BulkWrite;
@@ -185,7 +185,7 @@ class MongoModel extends BaseModel
     /**
      * 添加数据
      * @param array $data
-     * @throws \Exception\Mongo\MongoException
+     * @throws \SyException\Mongo\MongoException
      * @return bool|string
      */
     public function insert(array $data)
@@ -263,9 +263,8 @@ class MongoModel extends BaseModel
      *     'aaa' => 123, //key为字段名,value为步进值
      * ]
      * </pre>
-     *
      * @param array $data 数据数组
-     * @throws \Exception\Mongo\MongoException
+     * @throws \SyException\Mongo\MongoException
      * @return bool|int
      */
     public function inc(array $data)
@@ -300,7 +299,7 @@ class MongoModel extends BaseModel
     /**
      * 删除数据
      * @param bool $multi 是否删除多个,true:删除所有符合条件的数据 false:删除第一个符合条件的数据
-     * @throws \Exception\Mongo\MongoException
+     * @throws \SyException\Mongo\MongoException
      * @return bool|int
      */
     public function delete(bool $multi = true)
@@ -333,7 +332,7 @@ class MongoModel extends BaseModel
      * 查询数据
      * @param int $page 页数
      * @param int $limit 每页限制
-     * @throws \Exception\Mongo\MongoException
+     * @throws \SyException\Mongo\MongoException
      * @return array
      */
     public function select(int $page, int $limit) : array
@@ -408,7 +407,7 @@ class MongoModel extends BaseModel
      * @param int $page 分页数
      * @param int $limit 分页限制
      * @return array
-     * @throws \Exception\Mongo\MongoException
+     * @throws \SyException\Mongo\MongoException
      */
     public function aggregate(int $page, int $limit) : array
     {
@@ -498,7 +497,7 @@ class MongoModel extends BaseModel
     /**
      * 获取满足条件的数据总数
      * @return int
-     * @throws \Exception\Mongo\MongoException
+     * @throws \SyException\Mongo\MongoException
      */
     private function getCount() : int
     {

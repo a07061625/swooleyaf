@@ -9,7 +9,7 @@ namespace Wx\OpenMini;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use Tool\Tool;
 use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
@@ -35,7 +35,7 @@ class TemplateCodeDelete extends WxBaseOpenMini
 
     /**
      * @param string $templateId
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setTemplateId(string $templateId)
     {

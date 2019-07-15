@@ -23,7 +23,7 @@ use Doctrine\Common\Persistence\Proxy;
 use InvalidArgumentException as BaseInvalidArgumentException;
 
 /**
- * Proxy Invalid Argument Exception.
+ * Proxy Invalid Argument SyException.
  *
  * @link   www.doctrine-project.org
  * @since  2.4

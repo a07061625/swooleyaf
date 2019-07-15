@@ -9,7 +9,7 @@ namespace AliPay\Shop;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayShopException;
+use SyException\AliPay\AliPayShopException;
 
 class ImageUpload extends AliPayBase
 {
@@ -46,7 +46,7 @@ class ImageUpload extends AliPayBase
 
     /**
      * @param string $imageType
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setImageType(string $imageType)
     {
@@ -60,7 +60,7 @@ class ImageUpload extends AliPayBase
 
     /**
      * @param string $imageName
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setImageName(string $imageName)
     {
@@ -74,7 +74,7 @@ class ImageUpload extends AliPayBase
 
     /**
      * @param string $imageContent
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setImageContent(string $imageContent)
     {
@@ -87,7 +87,7 @@ class ImageUpload extends AliPayBase
 
     /**
      * @param string $imagePid
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setImagePid(string $imagePid)
     {

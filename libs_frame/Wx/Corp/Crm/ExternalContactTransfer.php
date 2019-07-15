@@ -8,7 +8,7 @@
 namespace Wx\Corp\Crm;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -52,7 +52,7 @@ class ExternalContactTransfer extends WxBaseCorp
 
     /**
      * @param string $externalUserId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setExternalUserId(string $externalUserId)
     {
@@ -65,7 +65,7 @@ class ExternalContactTransfer extends WxBaseCorp
 
     /**
      * @param string $handoverUserId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setHandoverUserId(string $handoverUserId)
     {
@@ -78,7 +78,7 @@ class ExternalContactTransfer extends WxBaseCorp
 
     /**
      * @param string $takeoverUserId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTakeoverUserId(string $takeoverUserId)
     {

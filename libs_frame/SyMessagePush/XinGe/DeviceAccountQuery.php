@@ -7,7 +7,7 @@
 namespace SyMessagePush\XinGe;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\XinGePushException;
+use SyException\MessagePush\XinGePushException;
 use SyMessagePush\PushBaseXinGe;
 
 /**
@@ -60,7 +60,7 @@ class DeviceAccountQuery extends PushBaseXinGe
 
     /**
      * @param int $operatorType
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setOperatorType(int $operatorType)
     {
@@ -86,7 +86,7 @@ class DeviceAccountQuery extends PushBaseXinGe
 
     /**
      * @param array $accountList
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setAccountList(array $accountList)
     {
@@ -112,7 +112,7 @@ class DeviceAccountQuery extends PushBaseXinGe
 
     /**
      * @param string $opType
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setOpType(string $opType)
     {
@@ -125,7 +125,7 @@ class DeviceAccountQuery extends PushBaseXinGe
 
     /**
      * @param string $opId
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setOpId(string $opId)
     {

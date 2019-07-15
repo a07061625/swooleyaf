@@ -7,7 +7,7 @@
 namespace QCloud\Cos;
 
 use Constant\ErrorCode;
-use Exception\QCloud\CosException;
+use SyException\QCloud\CosException;
 use QCloud\CloudBaseCos;
 
 /**
@@ -65,7 +65,7 @@ class ObjectGet extends CloudBaseCos
 
     /**
      * @param string $objectKey
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setObjectKey(string $objectKey)
     {
@@ -79,7 +79,7 @@ class ObjectGet extends CloudBaseCos
 
     /**
      * @param string $contentType
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setResponseContentType(string $contentType)
     {
@@ -93,7 +93,7 @@ class ObjectGet extends CloudBaseCos
 
     /**
      * @param string $contentLanguage
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setResponseContentLanguage(string $contentLanguage)
     {
@@ -107,7 +107,7 @@ class ObjectGet extends CloudBaseCos
 
     /**
      * @param string $expires
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setResponseExpires(string $expires)
     {
@@ -121,7 +121,7 @@ class ObjectGet extends CloudBaseCos
 
     /**
      * @param string $cacheControl
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setResponseCacheControl(string $cacheControl)
     {
@@ -135,7 +135,7 @@ class ObjectGet extends CloudBaseCos
 
     /**
      * @param string $contentDisposition
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setResponseContentDisposition(string $contentDisposition)
     {
@@ -149,7 +149,7 @@ class ObjectGet extends CloudBaseCos
 
     /**
      * @param string $contentEncoding
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setResponseContentEncoding(string $contentEncoding)
     {

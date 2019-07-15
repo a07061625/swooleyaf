@@ -9,7 +9,7 @@ namespace Wx\OpenCommon;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use Tool\Tool;
 use Wx\WxBaseOpenCommon;
 use Wx\WxUtilBase;
@@ -52,7 +52,7 @@ class AuthorizerOptionSet extends WxBaseOpenCommon
 
     /**
      * @param string $optionName
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setOptionName(string $optionName)
     {
@@ -65,7 +65,7 @@ class AuthorizerOptionSet extends WxBaseOpenCommon
 
     /**
      * @param string $optionValue
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setOptionValue(string $optionValue)
     {

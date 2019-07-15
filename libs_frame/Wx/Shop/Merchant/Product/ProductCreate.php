@@ -8,7 +8,7 @@
 namespace Wx\Shop\Merchant\Product;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -91,7 +91,7 @@ class ProductCreate extends WxBaseShop
 
     /**
      * @param string $name
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setName(string $name)
     {
@@ -116,7 +116,7 @@ class ProductCreate extends WxBaseShop
 
     /**
      * @param int $categoryId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function addCategoryId(int $categoryId)
     {
@@ -129,7 +129,7 @@ class ProductCreate extends WxBaseShop
 
     /**
      * @param string $mainImg
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMainImg(string $mainImg)
     {
@@ -154,7 +154,7 @@ class ProductCreate extends WxBaseShop
 
     /**
      * @param string $img
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function addImg(string $img)
     {
@@ -179,7 +179,7 @@ class ProductCreate extends WxBaseShop
 
     /**
      * @param array $detailInfo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function addDetail(array $detailInfo)
     {
@@ -203,7 +203,7 @@ class ProductCreate extends WxBaseShop
 
     /**
      * @param array $propertyInfo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function addProperty(array $propertyInfo)
     {
@@ -227,7 +227,7 @@ class ProductCreate extends WxBaseShop
 
     /**
      * @param array $skuInfo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function addSkuInfo(array $skuInfo)
     {
@@ -239,7 +239,7 @@ class ProductCreate extends WxBaseShop
 
     /**
      * @param int $buyLimit
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setBuyLimit(int $buyLimit)
     {
@@ -264,7 +264,7 @@ class ProductCreate extends WxBaseShop
 
     /**
      * @param array $sku
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function addSkuList(array $sku)
     {
@@ -276,7 +276,7 @@ class ProductCreate extends WxBaseShop
 
     /**
      * @param array $attrext
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAttrext(array $attrext)
     {

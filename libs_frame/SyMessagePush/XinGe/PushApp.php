@@ -7,7 +7,7 @@
 namespace SyMessagePush\XinGe;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\XinGePushException;
+use SyException\MessagePush\XinGePushException;
 use SyMessagePush\PushBaseXinGe;
 use Tool\Tool;
 
@@ -130,7 +130,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param string $audienceType
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setAudienceType(string $audienceType)
     {
@@ -143,7 +143,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param string $platform
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setPlatform(string $platform)
     {
@@ -156,7 +156,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param array $message
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setMessage(array $message)
     {
@@ -169,7 +169,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param string $messageType
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setMessageType(string $messageType)
     {
@@ -182,7 +182,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param int $expireTime
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setExpireTime(int $expireTime)
     {
@@ -195,7 +195,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param int $sendTime
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setSendTime(int $sendTime)
     {
@@ -217,7 +217,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param int $loopTimes
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setLoopTimes(int $loopTimes)
     {
@@ -230,7 +230,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param int $loopInterval
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setLoopInterval(int $loopInterval)
     {
@@ -243,7 +243,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param string $environment
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setEnvironment(string $environment)
     {
@@ -256,7 +256,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param int $badgeType
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setBadgeType(int $badgeType)
     {
@@ -269,7 +269,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param string $statTag
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setStatTag(string $statTag)
     {
@@ -282,7 +282,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param int $seq
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setSeq(int $seq)
     {
@@ -295,7 +295,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param array $tagList
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setTagList(array $tagList)
     {
@@ -308,7 +308,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param array $accountList
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setAccountList(array $accountList)
     {
@@ -325,7 +325,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param int $accountPushType
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setAccountPushType(int $accountPushType)
     {
@@ -338,7 +338,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param int $accountType
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setAccountType(int $accountType)
     {
@@ -351,7 +351,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param array $tokenList
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setTokenList(array $tokenList)
     {
@@ -368,7 +368,7 @@ class PushApp extends PushBaseXinGe
 
     /**
      * @param int $pushId
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setPushId(int $pushId)
     {

@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\TalkBaseCorpProvider;
 use DingDing\TalkUtilProvider;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -64,7 +64,7 @@ class ProcessCopy extends TalkBaseCorpProvider
 
     /**
      * @param string $processCode
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setProcessCode(string $processCode)
     {
@@ -77,7 +77,7 @@ class ProcessCopy extends TalkBaseCorpProvider
 
     /**
      * @param string $bizCategoryId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setBizCategoryId(string $bizCategoryId)
     {
@@ -103,7 +103,7 @@ class ProcessCopy extends TalkBaseCorpProvider
 
     /**
      * @param string $description
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setDescription(string $description)
     {

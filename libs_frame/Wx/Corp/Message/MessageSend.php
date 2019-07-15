@@ -9,7 +9,7 @@ namespace Wx\Corp\Message;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -71,7 +71,7 @@ class MessageSend extends WxBaseCorp
 
     /**
      * @param string|array $userList
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setUserList($userList)
     {
@@ -101,7 +101,7 @@ class MessageSend extends WxBaseCorp
 
     /**
      * @param array $partyList
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPartyList(array $partyList)
     {
@@ -120,7 +120,7 @@ class MessageSend extends WxBaseCorp
 
     /**
      * @param array $tagList
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTagList(array $tagList)
     {
@@ -140,7 +140,7 @@ class MessageSend extends WxBaseCorp
     /**
      * @param string $type
      * @param array $data
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMsgData(string $type, array $data)
     {
@@ -156,7 +156,7 @@ class MessageSend extends WxBaseCorp
 
     /**
      * @param int $safe
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setSafe(int $safe)
     {

@@ -9,7 +9,7 @@ namespace Wx\Corp\Pay\WorkRedPack;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxUtilBase;
@@ -123,7 +123,7 @@ class RedPackSend extends WxBaseCorp
 
     /**
      * @param string $mchBillNo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMchBillNo(string $mchBillNo)
     {
@@ -136,7 +136,7 @@ class RedPackSend extends WxBaseCorp
 
     /**
      * @param string $senderName
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setSenderName(string $senderName)
     {
@@ -150,7 +150,7 @@ class RedPackSend extends WxBaseCorp
 
     /**
      * @param string $senderHeaderMediaId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setSenderHeaderMediaId(string $senderHeaderMediaId)
     {
@@ -168,7 +168,7 @@ class RedPackSend extends WxBaseCorp
 
     /**
      * @param string $openid
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setReOpenid(string $openid)
     {
@@ -181,7 +181,7 @@ class RedPackSend extends WxBaseCorp
 
     /**
      * @param int $totalAmount
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTotalAmount(int $totalAmount)
     {
@@ -194,7 +194,7 @@ class RedPackSend extends WxBaseCorp
 
     /**
      * @param string $wishing
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setWishing(string $wishing)
     {
@@ -207,7 +207,7 @@ class RedPackSend extends WxBaseCorp
 
     /**
      * @param string $actName
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setActName(string $actName)
     {
@@ -220,7 +220,7 @@ class RedPackSend extends WxBaseCorp
 
     /**
      * @param string $remark
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setRemark(string $remark)
     {
@@ -233,7 +233,7 @@ class RedPackSend extends WxBaseCorp
 
     /**
      * @param string $sceneId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setSceneId(string $sceneId)
     {

@@ -8,7 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use Constant\ErrorCode;
-use Exception\MemCache\MemCacheException;
+use SyException\MemCache\MemCacheException;
 use Log\Log;
 use Tool\Tool;
 use Traits\SingletonTrait;

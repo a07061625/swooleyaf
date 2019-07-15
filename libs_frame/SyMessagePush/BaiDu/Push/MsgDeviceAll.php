@@ -8,7 +8,7 @@
 namespace SyMessagePush\BaiDu\Push;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\BaiDuPushException;
+use SyException\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
 use Tool\Tool;
 
@@ -55,7 +55,7 @@ class MsgDeviceAll extends PushBaseBaiDu
 
     /**
      * @param int $msgType
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setMsgType(int $msgType)
     {
@@ -68,7 +68,7 @@ class MsgDeviceAll extends PushBaseBaiDu
 
     /**
      * @param array $msg
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setMsg(array $msg)
     {
@@ -80,7 +80,7 @@ class MsgDeviceAll extends PushBaseBaiDu
 
     /**
      * @param int $msgExpires
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setMsgExpires(int $msgExpires)
     {
@@ -93,7 +93,7 @@ class MsgDeviceAll extends PushBaseBaiDu
 
     /**
      * @param int $deployStatus
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setDeployStatus(int $deployStatus)
     {
@@ -106,7 +106,7 @@ class MsgDeviceAll extends PushBaseBaiDu
 
     /**
      * @param int $sendTime
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setSendTime(int $sendTime)
     {

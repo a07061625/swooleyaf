@@ -8,7 +8,7 @@
 namespace SyMessagePush\BaiDu\Tag;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\BaiDuPushException;
+use SyException\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
 use Tool\Tool;
 
@@ -37,7 +37,7 @@ class DevicesAdd extends PushBaseBaiDu
 
     /**
      * @param string $tag
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setTag(string $tag)
     {
@@ -50,7 +50,7 @@ class DevicesAdd extends PushBaseBaiDu
 
     /**
      * @param array $channelIds
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setChannelIds(array $channelIds)
     {

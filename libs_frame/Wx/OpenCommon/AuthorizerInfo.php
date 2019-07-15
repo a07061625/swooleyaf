@@ -8,7 +8,7 @@
 namespace Wx\OpenCommon;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use Tool\Tool;
 use Wx\WxBaseOpenCommon;
 use Wx\WxUtilBase;
@@ -35,7 +35,7 @@ class AuthorizerInfo extends WxBaseOpenCommon
 
     /**
      * @param string $authCode
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setAuthCode(string $authCode)
     {

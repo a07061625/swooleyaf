@@ -8,7 +8,7 @@
 namespace Map\Tencent;
 
 use Constant\ErrorCode;
-use Exception\Map\TencentMapException;
+use SyException\Map\TencentMapException;
 use Map\MapBaseTencent;
 
 class GeoCoderReverse extends MapBaseTencent
@@ -52,7 +52,7 @@ class GeoCoderReverse extends MapBaseTencent
 
     /**
      * @param int $poiStatus
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setPoiStatus(int $poiStatus)
     {

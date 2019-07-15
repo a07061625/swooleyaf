@@ -9,7 +9,7 @@ namespace Wx\Shop\Pay;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -94,7 +94,7 @@ class RefundQuery extends WxBaseShop
 
     /**
      * @param string $transactionId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTransactionId(string $transactionId)
     {
@@ -107,7 +107,7 @@ class RefundQuery extends WxBaseShop
 
     /**
      * @param string $outTradeNo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOutTradeNo(string $outTradeNo)
     {
@@ -120,7 +120,7 @@ class RefundQuery extends WxBaseShop
 
     /**
      * @param string $refundId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setRefundId(string $refundId)
     {
@@ -133,7 +133,7 @@ class RefundQuery extends WxBaseShop
 
     /**
      * @param string $outRefundNo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOutRefundNo(string $outRefundNo)
     {

@@ -9,7 +9,7 @@ namespace AliPay\Life;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayLifeException;
+use SyException\AliPay\AliPayLifeException;
 
 class MenuModify extends AliPayBase
 {
@@ -36,7 +36,7 @@ class MenuModify extends AliPayBase
 
     /**
      * @param string $type
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setType(string $type)
     {
@@ -49,7 +49,7 @@ class MenuModify extends AliPayBase
 
     /**
      * @param array $button
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function addButton(array $button)
     {

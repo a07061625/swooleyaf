@@ -8,7 +8,7 @@
 namespace SyIM\Tencent;
 
 use Constant\ErrorCode;
-use Exception\IM\TencentException;
+use SyException\IM\TencentException;
 use Tool\Tool;
 
 class SingleChatMsg
@@ -76,7 +76,7 @@ class SingleChatMsg
 
     /**
      * @param int $syncTag
-     * @throws \Exception\IM\TencentException
+     * @throws \SyException\IM\TencentException
      */
     public function setSyncTag(int $syncTag)
     {
@@ -113,7 +113,7 @@ class SingleChatMsg
 
     /**
      * @param string $toAccount
-     * @throws \Exception\IM\TencentException
+     * @throws \SyException\IM\TencentException
      */
     public function setToAccount(string $toAccount)
     {
@@ -134,7 +134,7 @@ class SingleChatMsg
 
     /**
      * @param int $lifeTime
-     * @throws \Exception\IM\TencentException
+     * @throws \SyException\IM\TencentException
      */
     public function setLifeTime(int $lifeTime)
     {
@@ -179,7 +179,7 @@ class SingleChatMsg
 
     /**
      * @param array $body
-     * @throws \Exception\IM\TencentException
+     * @throws \SyException\IM\TencentException
      */
     public function addBody(array $body)
     {

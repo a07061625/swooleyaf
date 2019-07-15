@@ -9,7 +9,7 @@ namespace Wx\OpenShop;
 
 use Constant\ErrorCode;
 use Constant\Project;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use Tool\ProjectTool;
 use Tool\Tool;
 use Wx\WxBaseOpenShop;
@@ -46,7 +46,7 @@ class MiniFastRegister extends WxBaseOpenShop
 
     /**
      * @param string $ticket
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setTicket(string $ticket)
     {

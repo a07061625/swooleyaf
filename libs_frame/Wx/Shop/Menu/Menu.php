@@ -8,7 +8,7 @@
 namespace Wx\Shop\Menu;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Wx\WxBaseShop;
 
 class Menu extends WxBaseShop
@@ -73,7 +73,7 @@ class Menu extends WxBaseShop
 
     /**
      * @param string $name
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setName(string $name)
     {
@@ -86,7 +86,7 @@ class Menu extends WxBaseShop
 
     /**
      * @param array $sub
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function addSub(array $sub)
     {
@@ -103,7 +103,7 @@ class Menu extends WxBaseShop
 
     /**
      * @param string $type
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setType(string $type)
     {
@@ -126,7 +126,7 @@ class Menu extends WxBaseShop
 
     /**
      * @param string $url
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setUrl(string $url)
     {
@@ -139,7 +139,7 @@ class Menu extends WxBaseShop
 
     /**
      * @param string $mediaId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMediaId(string $mediaId)
     {

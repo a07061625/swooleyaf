@@ -8,7 +8,7 @@
 namespace Wx\Shop\Material;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -49,7 +49,7 @@ class MaterialPermanentUpload extends WxBaseShop
 
     /**
      * @param array $fileInfo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setFileInfo(array $fileInfo)
     {
@@ -62,7 +62,7 @@ class MaterialPermanentUpload extends WxBaseShop
 
     /**
      * @param string $filePath
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setFilePath(string $filePath)
     {

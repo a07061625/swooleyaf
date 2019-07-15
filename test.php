@@ -35,7 +35,7 @@ require_once __DIR__ . '/helper_load.php';
 //    ]);
 //    echo $r1;
 //    echo "\n";
-//} catch (Exception $e) {
+//} catch (SyException $e) {
 //    \Log\Log::error($e->getMessage(), 0, $e->getTraceAsString());
 //}
 

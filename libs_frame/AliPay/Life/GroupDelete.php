@@ -9,7 +9,7 @@ namespace AliPay\Life;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayLifeException;
+use SyException\AliPay\AliPayLifeException;
 
 class GroupDelete extends AliPayBase
 {
@@ -31,7 +31,7 @@ class GroupDelete extends AliPayBase
 
     /**
      * @param string $groupId
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setGroupId(string $groupId)
     {

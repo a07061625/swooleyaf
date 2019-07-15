@@ -10,7 +10,7 @@ namespace DingDing\Corp\Chat;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -90,7 +90,7 @@ class ChatUpdate extends TalkBaseCorp
 
     /**
      * @param string $chatId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setChatId(string $chatId)
     {
@@ -103,7 +103,7 @@ class ChatUpdate extends TalkBaseCorp
 
     /**
      * @param string $name
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setName(string $name)
     {
@@ -116,7 +116,7 @@ class ChatUpdate extends TalkBaseCorp
 
     /**
      * @param string $owner
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOwner(string $owner)
     {
@@ -129,7 +129,7 @@ class ChatUpdate extends TalkBaseCorp
 
     /**
      * @param array $userList
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setAddUserList(array $userList)
     {
@@ -151,7 +151,7 @@ class ChatUpdate extends TalkBaseCorp
 
     /**
      * @param array $userList
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setDelUserList(array $userList)
     {
@@ -173,7 +173,7 @@ class ChatUpdate extends TalkBaseCorp
 
     /**
      * @param string $icon
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setIcon(string $icon)
     {
@@ -194,7 +194,7 @@ class ChatUpdate extends TalkBaseCorp
 
     /**
      * @param int $searchable
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSearchable(int $searchable)
     {
@@ -207,7 +207,7 @@ class ChatUpdate extends TalkBaseCorp
 
     /**
      * @param int $validationType
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setValidationType(int $validationType)
     {
@@ -220,7 +220,7 @@ class ChatUpdate extends TalkBaseCorp
 
     /**
      * @param int $mentionAllAuthority
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setMentionAllAuthority(int $mentionAllAuthority)
     {
@@ -233,7 +233,7 @@ class ChatUpdate extends TalkBaseCorp
 
     /**
      * @param int $managementType
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setManagementType(int $managementType)
     {

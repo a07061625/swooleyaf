@@ -9,7 +9,7 @@ namespace AliPay\Fund;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayFundException;
+use SyException\AliPay\AliPayFundException;
 use Tool\Tool;
 
 class AuthOrderVoucherCreate extends AliPayBase
@@ -110,7 +110,7 @@ class AuthOrderVoucherCreate extends AliPayBase
 
     /**
      * @param string $outOrderNo
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOutOrderNo(string $outOrderNo)
     {
@@ -123,7 +123,7 @@ class AuthOrderVoucherCreate extends AliPayBase
 
     /**
      * @param string $outRequestNo
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOutRequestNo(string $outRequestNo)
     {
@@ -136,7 +136,7 @@ class AuthOrderVoucherCreate extends AliPayBase
 
     /**
      * @param string $orderTitle
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOrderTitle(string $orderTitle)
     {
@@ -149,7 +149,7 @@ class AuthOrderVoucherCreate extends AliPayBase
 
     /**
      * @param int $amount
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setAmount(int $amount)
     {
@@ -163,7 +163,7 @@ class AuthOrderVoucherCreate extends AliPayBase
 
     /**
      * @param string $payeeLogonId
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setPayeeLogonId(string $payeeLogonId)
     {
@@ -176,7 +176,7 @@ class AuthOrderVoucherCreate extends AliPayBase
 
     /**
      * @param string $payeeUserId
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setPayeeUserId(string $payeeUserId)
     {
@@ -189,7 +189,7 @@ class AuthOrderVoucherCreate extends AliPayBase
 
     /**
      * @param string $payTimeout
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setPayTimeout(string $payTimeout)
     {
@@ -202,7 +202,7 @@ class AuthOrderVoucherCreate extends AliPayBase
 
     /**
      * @param array $extraParam
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setExtraParam(array $extraParam)
     {
@@ -214,7 +214,7 @@ class AuthOrderVoucherCreate extends AliPayBase
 
     /**
      * @param string $transCurrency
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setTransCurrency(string $transCurrency)
     {
@@ -227,7 +227,7 @@ class AuthOrderVoucherCreate extends AliPayBase
 
     /**
      * @param string $settleCurrency
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setSettleCurrency(string $settleCurrency)
     {
@@ -240,7 +240,7 @@ class AuthOrderVoucherCreate extends AliPayBase
 
     /**
      * @param string $payChannel
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function addPayChannel(string $payChannel)
     {

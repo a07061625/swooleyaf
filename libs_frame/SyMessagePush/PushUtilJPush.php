@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\MessagePushConfigSingleton;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\Push\CidList;
 use Tool\Tool;
 use Traits\SimpleTrait;
@@ -76,7 +76,7 @@ final class PushUtilJPush extends PushUtilBase
      * @param string $key
      * @param string $type 类型 push:推送 schedule:定时任务
      * @return string
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public static function getAppCid(string $key, string $type)
     {

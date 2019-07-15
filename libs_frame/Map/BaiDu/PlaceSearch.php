@@ -8,7 +8,7 @@
 namespace Map\BaiDu;
 
 use Constant\ErrorCode;
-use Exception\Map\BaiduMapException;
+use SyException\Map\BaiduMapException;
 use Map\MapBaseBaiDu;
 use Tool\Tool;
 
@@ -131,7 +131,7 @@ class PlaceSearch extends MapBaseBaiDu
     /**
      * 添加检索关键字
      * @param string $keyword 检索关键字
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function addKeyword(string $keyword)
     {
@@ -159,7 +159,7 @@ class PlaceSearch extends MapBaseBaiDu
     /**
      * 添加标签
      * @param string $tag 标签
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function addTag(string $tag)
     {
@@ -180,7 +180,7 @@ class PlaceSearch extends MapBaseBaiDu
 
     /**
      * @param int $scope
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setScope(int $scope)
     {
@@ -193,7 +193,7 @@ class PlaceSearch extends MapBaseBaiDu
 
     /**
      * @param string $filter
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setFilter(string $filter)
     {
@@ -207,7 +207,7 @@ class PlaceSearch extends MapBaseBaiDu
 
     /**
      * @param int $coordinateType
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setCoordinateType(int $coordinateType)
     {
@@ -220,7 +220,7 @@ class PlaceSearch extends MapBaseBaiDu
 
     /**
      * @param int $pageSize
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setPageSize(int $pageSize)
     {
@@ -233,7 +233,7 @@ class PlaceSearch extends MapBaseBaiDu
 
     /**
      * @param int $pageIndex
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setPageIndex(int $pageIndex)
     {
@@ -246,7 +246,7 @@ class PlaceSearch extends MapBaseBaiDu
 
     /**
      * @param string $areaRegionName
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setAreaRegionName(string $areaRegionName)
     {
@@ -267,7 +267,7 @@ class PlaceSearch extends MapBaseBaiDu
 
     /**
      * @param string $areaRegionCityLimit
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setAreaRegionCityLimit(string $areaRegionCityLimit)
     {
@@ -281,7 +281,7 @@ class PlaceSearch extends MapBaseBaiDu
     /**
      * @param string $lng 经度
      * @param string $lat 纬度
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function getAreaNearbyLngAndLat(string $lng, string $lat)
     {
@@ -298,7 +298,7 @@ class PlaceSearch extends MapBaseBaiDu
 
     /**
      * @param int $areaNearbyRadius
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setAreaNearbyRadius(int $areaNearbyRadius)
     {
@@ -314,7 +314,7 @@ class PlaceSearch extends MapBaseBaiDu
      * @param string $lat1 西南角纬度
      * @param string $lng2 东北角经度
      * @param string $lat2 东北角纬度
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setAreaRectangLngAndLat(string $lng1, string $lat1, string $lng2, string $lat2)
     {
@@ -342,7 +342,7 @@ class PlaceSearch extends MapBaseBaiDu
 
     /**
      * @param string $searchType 搜索类型 region:地区搜索 nearby:圆形区域搜索 rectangle:矩形区域搜索
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setSearchType(string $searchType)
     {

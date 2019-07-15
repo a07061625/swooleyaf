@@ -8,7 +8,7 @@
 namespace SyMessagePush\JPush\Push;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\PushBase;
 use SyMessagePush\PushUtilJPush;
 
@@ -40,7 +40,7 @@ class CidList extends PushBase
 
     /**
      * @param int $count
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setCount(int $count)
     {
@@ -53,7 +53,7 @@ class CidList extends PushBase
 
     /**
      * @param string $type
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setType(string $type)
     {

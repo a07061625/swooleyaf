@@ -9,7 +9,7 @@ namespace SySms\Yun253;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\SmsConfigSingleton;
-use Exception\Sms\Yun253Exception;
+use SyException\Sms\Yun253Exception;
 use SySms\SmsBaseYun253;
 
 class SmsSend extends SmsBaseYun253
@@ -54,7 +54,7 @@ class SmsSend extends SmsBaseYun253
 
     /**
      * @param array $phoneList
-     * @throws \Exception\Sms\Yun253Exception
+     * @throws \SyException\Sms\Yun253Exception
      */
     public function setPhoneList(array $phoneList)
     {
@@ -75,7 +75,7 @@ class SmsSend extends SmsBaseYun253
 
     /**
      * @param string $phoneNum
-     * @throws \Exception\Sms\Yun253Exception
+     * @throws \SyException\Sms\Yun253Exception
      */
     public function addPhoneNum(string $phoneNum)
     {
@@ -92,7 +92,7 @@ class SmsSend extends SmsBaseYun253
     /**
      * @param string $signName
      * @param string $msg
-     * @throws \Exception\Sms\Yun253Exception
+     * @throws \SyException\Sms\Yun253Exception
      */
     public function setSignNameAndMsg(string $signName, string $msg)
     {

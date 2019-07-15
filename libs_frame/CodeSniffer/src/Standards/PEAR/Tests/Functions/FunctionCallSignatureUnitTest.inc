@@ -36,7 +36,7 @@ make_foo( /*the string*/$string, /*test*/true);
 // No errors should be throw here because
 // this is multi-line.
 throw new Exception(
-    'Exception text'
+    'SyException text'
 );
 
 // Objects are the same as a normal call.

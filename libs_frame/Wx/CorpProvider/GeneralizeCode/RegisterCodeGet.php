@@ -8,7 +8,7 @@
 namespace Wx\CorpProvider\GeneralizeCode;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxCorpProviderException;
+use SyException\Wx\WxCorpProviderException;
 use Tool\Tool;
 use Wx\WxBaseCorpProvider;
 use Wx\WxUtilBase;
@@ -64,7 +64,7 @@ class RegisterCodeGet extends WxBaseCorpProvider
 
     /**
      * @param string $templateId
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setTemplateId(string $templateId)
     {
@@ -102,7 +102,7 @@ class RegisterCodeGet extends WxBaseCorpProvider
 
     /**
      * @param string $adminMobile
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setAdminMobile(string $adminMobile)
     {
@@ -115,7 +115,7 @@ class RegisterCodeGet extends WxBaseCorpProvider
 
     /**
      * @param string $state
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setState(string $state)
     {

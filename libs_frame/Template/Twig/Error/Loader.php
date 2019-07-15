@@ -10,7 +10,7 @@
  */
 
 /**
- * Exception thrown when an error occurs during template loading.
+ * SyException thrown when an error occurs during template loading.
  *
  * Automatic template information guessing is always turned off as
  * if a template cannot be loaded, there is nothing to guess.

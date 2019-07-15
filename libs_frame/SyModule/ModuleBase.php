@@ -8,7 +8,7 @@
 namespace SyModule;
 
 use Constant\ErrorCode;
-use Exception\Swoole\ServerException;
+use SyException\Swoole\ServerException;
 use SyServer\BaseServer;
 use Traits\SimpleTrait;
 
@@ -93,7 +93,7 @@ abstract class ModuleBase
      * 获取节点服务信息
      * @param string $nodeType 节点类型
      * @return array
-     * @throws \Exception\Swoole\ServerException
+     * @throws \SyException\Swoole\ServerException
      */
     private function getNodeServerInfo(string $nodeType)
     {

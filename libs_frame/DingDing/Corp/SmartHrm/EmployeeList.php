@@ -10,7 +10,7 @@ namespace DingDing\Corp\SmartHrm;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -45,7 +45,7 @@ class EmployeeList extends TalkBaseCorp
 
     /**
      * @param array $userList
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserList(array $userList)
     {
@@ -67,7 +67,7 @@ class EmployeeList extends TalkBaseCorp
 
     /**
      * @param array $fieldFilterList
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setFieldFilterList(array $fieldFilterList)
     {

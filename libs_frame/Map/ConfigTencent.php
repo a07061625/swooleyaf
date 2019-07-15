@@ -8,7 +8,7 @@
 namespace Map;
 
 use Constant\ErrorCode;
-use Exception\Map\TencentMapException;
+use SyException\Map\TencentMapException;
 
 class ConfigTencent
 {
@@ -46,7 +46,7 @@ class ConfigTencent
 
     /**
      * @param string $key
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setKey(string $key)
     {
@@ -67,7 +67,7 @@ class ConfigTencent
 
     /**
      * @param string $serverIp
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setServerIp(string $serverIp)
     {
@@ -88,7 +88,7 @@ class ConfigTencent
 
     /**
      * @param string $domain
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setDomain(string $domain)
     {

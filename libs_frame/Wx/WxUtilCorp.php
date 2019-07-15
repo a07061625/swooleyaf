@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Traits\SimpleTrait;
 use Wx\Corp\Common\AccessToken;
@@ -118,7 +118,7 @@ final class WxUtilCorp extends WxUtilBase
      * @param array $acceptKeys 允许参与签名的字段名列表
      * @param string $agentSecret 应用密钥
      * @return string
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public static function createCorpSign(array $data, array $acceptKeys, string $agentSecret)
     {

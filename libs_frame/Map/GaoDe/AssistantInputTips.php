@@ -8,7 +8,7 @@
 namespace Map\GaoDe;
 
 use Constant\ErrorCode;
-use Exception\Map\GaoDeMapException;
+use SyException\Map\GaoDeMapException;
 use Map\MapBaseGaoDe;
 
 /**
@@ -58,7 +58,7 @@ class AssistantInputTips extends MapBaseGaoDe
 
     /**
      * @param string $keyword
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setKeywords(string $keyword)
     {
@@ -71,7 +71,7 @@ class AssistantInputTips extends MapBaseGaoDe
 
     /**
      * @param array $typeList
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setType(array $typeList)
     {
@@ -99,7 +99,7 @@ class AssistantInputTips extends MapBaseGaoDe
 
     /**
      * @param string $city
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setCity(string $city)
     {
@@ -112,7 +112,7 @@ class AssistantInputTips extends MapBaseGaoDe
 
     /**
      * @param string $cityLimit
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setCityLimit(string $cityLimit)
     {
@@ -125,7 +125,7 @@ class AssistantInputTips extends MapBaseGaoDe
 
     /**
      * @param array $dataTypeList
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setDataType(array $dataTypeList)
     {

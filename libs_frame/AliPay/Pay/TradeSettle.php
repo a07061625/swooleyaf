@@ -9,7 +9,7 @@ namespace AliPay\Pay;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayPayException;
+use SyException\AliPay\AliPayPayException;
 
 class TradeSettle extends AliPayBase
 {
@@ -46,7 +46,7 @@ class TradeSettle extends AliPayBase
 
     /**
      * @param string $outRequestNo
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setOutRequestNo(string $outRequestNo)
     {
@@ -59,7 +59,7 @@ class TradeSettle extends AliPayBase
 
     /**
      * @param string $tradeNo
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setTradeNo(string $tradeNo)
     {
@@ -72,7 +72,7 @@ class TradeSettle extends AliPayBase
 
     /**
      * @param array $royaltyParameters
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setRoyaltyParameters(array $royaltyParameters)
     {

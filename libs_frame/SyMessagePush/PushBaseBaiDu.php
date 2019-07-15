@@ -9,7 +9,7 @@ namespace SyMessagePush;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\MessagePushConfigSingleton;
-use Exception\MessagePush\BaiDuPushException;
+use SyException\MessagePush\BaiDuPushException;
 use Tool\Tool;
 
 abstract class PushBaseBaiDu extends PushBase
@@ -55,7 +55,7 @@ abstract class PushBaseBaiDu extends PushBase
 
     /**
      * @param int $deviceType
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setDeviceType(int $deviceType)
     {

@@ -8,7 +8,7 @@
 namespace Wx\Shop\Merchant\Shelf;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -55,7 +55,7 @@ class ShelfModify extends WxBaseShop
 
     /**
      * @param int $shelfId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setShelfId(int $shelfId)
     {
@@ -68,7 +68,7 @@ class ShelfModify extends WxBaseShop
 
     /**
      * @param string $shelfName
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setShelfName(string $shelfName)
     {
@@ -81,7 +81,7 @@ class ShelfModify extends WxBaseShop
 
     /**
      * @param string $shelfBanner
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setShelfBanner(string $shelfBanner)
     {
@@ -107,7 +107,7 @@ class ShelfModify extends WxBaseShop
 
     /**
      * @param array $shelfInfo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function addShelfInfo(array $shelfInfo)
     {

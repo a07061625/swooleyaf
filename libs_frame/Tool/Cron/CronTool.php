@@ -8,7 +8,7 @@
 namespace Tool\Cron;
 
 use Constant\ErrorCode;
-use Exception\Cron\CronException;
+use SyException\Cron\CronException;
 use Traits\SimpleTrait;
 
 class CronTool
@@ -230,7 +230,7 @@ class CronTool
     /**
      * @param string $cron
      * @return \Tool\Cron\CronData
-     * @throws \Exception\Cron\CronException
+     * @throws \SyException\Cron\CronException
      */
     public static function analyseCron(string $cron)
     {
@@ -307,7 +307,7 @@ class CronTool
     /**
      * @param array $secondData
      * @return array
-     * @throws \Exception\Cron\CronException
+     * @throws \SyException\Cron\CronException
      */
     private static function analyseCronSecond(array $secondData)
     {
@@ -372,7 +372,7 @@ class CronTool
     /**
      * @param array $minuteData
      * @return array
-     * @throws \Exception\Cron\CronException
+     * @throws \SyException\Cron\CronException
      */
     private static function analyseCronMinute(array $minuteData)
     {
@@ -437,7 +437,7 @@ class CronTool
     /**
      * @param array $hourData
      * @return array
-     * @throws \Exception\Cron\CronException
+     * @throws \SyException\Cron\CronException
      */
     private static function analyseCronHour(array $hourData)
     {
@@ -502,7 +502,7 @@ class CronTool
     /**
      * @param array $dayData
      * @return array
-     * @throws \Exception\Cron\CronException
+     * @throws \SyException\Cron\CronException
      */
     private static function analyseCronDay(array $dayData)
     {
@@ -567,7 +567,7 @@ class CronTool
     /**
      * @param array $monthData
      * @return array
-     * @throws \Exception\Cron\CronException
+     * @throws \SyException\Cron\CronException
      */
     private static function analyseCronMonth(array $monthData)
     {
@@ -632,7 +632,7 @@ class CronTool
     /**
      * @param array $weekData
      * @return array
-     * @throws \Exception\Cron\CronException
+     * @throws \SyException\Cron\CronException
      */
     private static function analyseCronWeek(array $weekData)
     {

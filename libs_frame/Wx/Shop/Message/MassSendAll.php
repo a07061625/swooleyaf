@@ -8,7 +8,7 @@
 namespace Wx\Shop\Message;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -51,7 +51,7 @@ class MassSendAll extends WxBaseShop
     /**
      * @param string $type
      * @param array $data
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMsgData(string $type, array $data)
     {
@@ -80,7 +80,7 @@ class MassSendAll extends WxBaseShop
 
     /**
      * @param array $filter
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setFilter(array $filter)
     {
@@ -104,7 +104,7 @@ class MassSendAll extends WxBaseShop
 
     /**
      * @param string $clientMsgId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setClientMsgId(string $clientMsgId)
     {

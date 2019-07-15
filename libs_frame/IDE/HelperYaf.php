@@ -2229,7 +2229,7 @@ namespace Yaf {
     }
 
     /**
-     * Class Exception
+     * Class SyException
      *
      * Yaf异常基类
      *
@@ -3209,7 +3209,7 @@ namespace Yaf\Exception {
      *
      * Yaf App实例启动异常
      *
-     * @package Yaf\Exception
+     * @package Yaf\SyException
      */
     class StartupError extends \Yaf\Exception implements \Throwable
     {
@@ -3220,7 +3220,7 @@ namespace Yaf\Exception {
      *
      * 路由异常
      *
-     * @package Yaf\Exception
+     * @package Yaf\SyException
      */
     class RouterFailed extends \Yaf\Exception implements \Throwable
     {
@@ -3231,7 +3231,7 @@ namespace Yaf\Exception {
      *
      * 分发异常
      *
-     * @package Yaf\Exception
+     * @package Yaf\SyException
      */
     class DispatchFailed extends \Yaf\Exception implements \Throwable
     {
@@ -3242,7 +3242,7 @@ namespace Yaf\Exception {
      *
      * 装载异常
      *
-     * @package Yaf\Exception
+     * @package Yaf\SyException
      */
     class LoadFailed extends \Yaf\Exception implements \Throwable
     {
@@ -3253,7 +3253,7 @@ namespace Yaf\Exception {
      *
      * 关键类型异常
      *
-     * @package Yaf\Exception
+     * @package Yaf\SyException
      */
     class TypeError extends \Yaf\Exception implements \Throwable
     {
@@ -3266,7 +3266,7 @@ namespace Yaf\Exception\LoadFailed {
      *
      * 模块加载异常
      *
-     * @package Yaf\Exception\LoadFailed
+     * @package Yaf\SyException\LoadFailed
      */
     class Module extends \Yaf\Exception\LoadFailed implements \Throwable
     {
@@ -3277,7 +3277,7 @@ namespace Yaf\Exception\LoadFailed {
      *
      * 控制器加载异常
      *
-     * @package Yaf\Exception\LoadFailed
+     * @package Yaf\SyException\LoadFailed
      */
     class Controller extends \Yaf\Exception\LoadFailed implements \Throwable
     {
@@ -3288,7 +3288,7 @@ namespace Yaf\Exception\LoadFailed {
      *
      * 动作类加载异常
      *
-     * @package Yaf\Exception\LoadFailed
+     * @package Yaf\SyException\LoadFailed
      */
     class Action extends \Yaf\Exception\LoadFailed implements \Throwable
     {
@@ -3299,7 +3299,7 @@ namespace Yaf\Exception\LoadFailed {
      *
      * 视图加载异常
      *
-     * @package Yaf\Exception\LoadFailed
+     * @package Yaf\SyException\LoadFailed
      */
     class View extends \Yaf\Exception\LoadFailed implements \Throwable
     {

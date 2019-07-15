@@ -8,7 +8,7 @@
 namespace Wx\CorpProvider\GeneralizeCode;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxCorpProviderException;
+use SyException\Wx\WxCorpProviderException;
 use Tool\Tool;
 use Wx\WxBaseCorpProvider;
 use Wx\WxUtilBase;
@@ -57,7 +57,7 @@ class ScopeSet extends WxBaseCorpProvider
 
     /**
      * @param string $accessToken
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setAccessToken(string $accessToken)
     {
@@ -70,7 +70,7 @@ class ScopeSet extends WxBaseCorpProvider
 
     /**
      * @param int $agentId
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setAgentId(int $agentId)
     {

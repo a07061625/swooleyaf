@@ -10,7 +10,7 @@ namespace DingDing\Corp\Department;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -100,7 +100,7 @@ class DepartmentCreate extends TalkBaseCorp
 
     /**
      * @param string $name
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setName(string $name)
     {
@@ -113,7 +113,7 @@ class DepartmentCreate extends TalkBaseCorp
 
     /**
      * @param int $parentId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setParentId(int $parentId)
     {
@@ -126,7 +126,7 @@ class DepartmentCreate extends TalkBaseCorp
 
     /**
      * @param int $order
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOrder(int $order)
     {
@@ -155,7 +155,7 @@ class DepartmentCreate extends TalkBaseCorp
 
     /**
      * @param array $deptPermits
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setDeptPermits(array $deptPermits)
     {
@@ -174,7 +174,7 @@ class DepartmentCreate extends TalkBaseCorp
 
     /**
      * @param array $userPermits
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserPermits(array $userPermits)
     {
@@ -201,7 +201,7 @@ class DepartmentCreate extends TalkBaseCorp
 
     /**
      * @param array $outerPermitDepts
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOuterPermitDepts(array $outerPermitDepts)
     {
@@ -220,7 +220,7 @@ class DepartmentCreate extends TalkBaseCorp
 
     /**
      * @param array $outerPermitUsers
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOuterPermitUsers(array $outerPermitUsers)
     {
@@ -247,7 +247,7 @@ class DepartmentCreate extends TalkBaseCorp
 
     /**
      * @param string $sourceIdentifier
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSourceIdentifier(string $sourceIdentifier)
     {

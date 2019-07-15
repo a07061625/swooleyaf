@@ -9,7 +9,7 @@ namespace Wx\Shop\Tools;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Log\Log;
 use Tool\Tool;
 use Wx\WxBaseShop;
@@ -56,7 +56,7 @@ class ShortUrl extends WxBaseShop
 
     /**
      * @param string $longUrl
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setLongUrl(string $longUrl)
     {

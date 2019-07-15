@@ -2,7 +2,7 @@
 namespace Wx\CorpProvider\Common;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxCorpProviderException;
+use SyException\Wx\WxCorpProviderException;
 use Tool\Tool;
 use Wx\WxBaseCorpProvider;
 use Wx\WxUtilBase;
@@ -40,7 +40,7 @@ class SessionInfoSet extends WxBaseCorpProvider
 
     /**
      * @param string $preAuthCode
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setPreAuthCode(string $preAuthCode)
     {
@@ -53,7 +53,7 @@ class SessionInfoSet extends WxBaseCorpProvider
 
     /**
      * @param int $authType
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setAuthType(int $authType)
     {

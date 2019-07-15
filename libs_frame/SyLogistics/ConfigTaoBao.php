@@ -8,7 +8,7 @@
 namespace SyLogistics;
 
 use Constant\ErrorCode;
-use Exception\Logistics\TaoBaoException;
+use SyException\Logistics\TaoBaoException;
 use Tool\Tool;
 
 class ConfigTaoBao
@@ -47,7 +47,7 @@ class ConfigTaoBao
 
     /**
      * @param string $appKey
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setAppKey(string $appKey)
     {
@@ -68,7 +68,7 @@ class ConfigTaoBao
 
     /**
      * @param string $appSecret
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setAppSecret(string $appSecret)
     {

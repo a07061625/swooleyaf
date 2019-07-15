@@ -10,7 +10,7 @@ namespace Request;
 use Constant\ErrorCode;
 use Constant\Project;
 use Constant\Server;
-use Exception\Swoole\ServerException;
+use SyException\Swoole\ServerException;
 use Log\Log;
 use Yaf\Registry;
 
@@ -61,7 +61,7 @@ abstract class SyRequest
 
     /**
      * @param string $host
-     * @throws \Exception\Swoole\ServerException
+     * @throws \SyException\Swoole\ServerException
      */
     public function setHost(string $host)
     {
@@ -82,7 +82,7 @@ abstract class SyRequest
 
     /**
      * @param int $port
-     * @throws \Exception\Swoole\ServerException
+     * @throws \SyException\Swoole\ServerException
      */
     public function setPort(int $port)
     {
@@ -119,7 +119,7 @@ abstract class SyRequest
 
     /**
      * @param int $timeout 超时时间,单位为毫秒
-     * @throws \Exception\Swoole\ServerException
+     * @throws \SyException\Swoole\ServerException
      */
     public function setTimeout(int $timeout)
     {
@@ -186,7 +186,7 @@ abstract class SyRequest
      * 发送同步请求
      * @param string $reqData 请求数据
      * @return bool|string
-     * @throws \Exception\Swoole\ServerException
+     * @throws \SyException\Swoole\ServerException
      */
     protected function sendBaseSyncReq(string $reqData)
     {

@@ -134,7 +134,7 @@ logger may output messages directly in realtime, or it may capture messages in
 an array.
 
 One other notable feature is the way in which the Logger plugin changes
-Exception messages. If Exceptions are being thrown but the error message does
+SyException messages. If Exceptions are being thrown but the error message does
 not provide conclusive information as to the source of the problem (such as an
 ambiguous SMTP error) the Logger plugin includes the entire SMTP transcript in
 the error message so that debugging becomes a simpler task.

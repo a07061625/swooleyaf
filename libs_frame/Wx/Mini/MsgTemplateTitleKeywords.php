@@ -8,7 +8,7 @@
 namespace Wx\Mini;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseMini;
 use Wx\WxUtilBase;
@@ -46,7 +46,7 @@ class MsgTemplateTitleKeywords extends WxBaseMini
 
     /**
      * @param string $titleId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTitleId(string $titleId)
     {
@@ -59,7 +59,7 @@ class MsgTemplateTitleKeywords extends WxBaseMini
 
     /**
      * @param string $platType
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPlatType(string $platType)
     {

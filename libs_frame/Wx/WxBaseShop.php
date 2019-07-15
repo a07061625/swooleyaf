@@ -9,7 +9,7 @@ namespace Wx;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 
 abstract class WxBaseShop extends WxBase
 {
@@ -61,7 +61,7 @@ abstract class WxBaseShop extends WxBase
 
     /**
      * @param \Wx\WxConfigAccount $configAccount
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     protected function setAppIdAndMchId(WxConfigAccount $configAccount)
     {

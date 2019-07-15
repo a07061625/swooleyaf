@@ -9,7 +9,7 @@ namespace AliPay\Auth;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayAuthException;
+use SyException\AliPay\AliPayAuthException;
 
 class AuthToken extends AliPayBase
 {
@@ -41,7 +41,7 @@ class AuthToken extends AliPayBase
 
     /**
      * @param string $grantType
-     * @throws \Exception\AliPay\AliPayAuthException
+     * @throws \SyException\AliPay\AliPayAuthException
      */
     public function setGrantType(string $grantType)
     {
@@ -54,7 +54,7 @@ class AuthToken extends AliPayBase
 
     /**
      * @param string $code
-     * @throws \Exception\AliPay\AliPayAuthException
+     * @throws \SyException\AliPay\AliPayAuthException
      */
     public function setCode(string $code)
     {
@@ -68,7 +68,7 @@ class AuthToken extends AliPayBase
 
     /**
      * @param string $refreshToken
-     * @throws \Exception\AliPay\AliPayAuthException
+     * @throws \SyException\AliPay\AliPayAuthException
      */
     public function setRefreshToken(string $refreshToken)
     {

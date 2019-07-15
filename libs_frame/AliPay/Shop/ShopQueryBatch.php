@@ -9,7 +9,7 @@ namespace AliPay\Shop;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayShopException;
+use SyException\AliPay\AliPayShopException;
 
 class ShopQueryBatch extends AliPayBase
 {
@@ -63,7 +63,7 @@ class ShopQueryBatch extends AliPayBase
 
     /**
      * @param string $opRole
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setOpRole(string $opRole)
     {
@@ -76,7 +76,7 @@ class ShopQueryBatch extends AliPayBase
 
     /**
      * @param string $queryType
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setQueryType(string $queryType)
     {
@@ -89,7 +89,7 @@ class ShopQueryBatch extends AliPayBase
 
     /**
      * @param string $relatedPartnerId
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setRelatedPartnerId(string $relatedPartnerId)
     {
@@ -102,7 +102,7 @@ class ShopQueryBatch extends AliPayBase
 
     /**
      * @param string $shopId
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setShopId(string $shopId)
     {
@@ -115,7 +115,7 @@ class ShopQueryBatch extends AliPayBase
 
     /**
      * @param string $shopStatus
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function addShopStatus(string $shopStatus)
     {
@@ -128,7 +128,7 @@ class ShopQueryBatch extends AliPayBase
 
     /**
      * @param int $pageNo
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setPageNo(int $pageNo)
     {
@@ -141,7 +141,7 @@ class ShopQueryBatch extends AliPayBase
 
     /**
      * @param int $pageSize
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setPageSize(int $pageSize)
     {

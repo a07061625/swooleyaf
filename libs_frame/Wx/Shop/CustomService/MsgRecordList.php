@@ -8,7 +8,7 @@
 namespace Wx\Shop\CustomService;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -58,7 +58,7 @@ class MsgRecordList extends WxBaseShop
     /**
      * @param int $startTime
      * @param int $endTime
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTime(int $startTime, int $endTime)
     {
@@ -78,7 +78,7 @@ class MsgRecordList extends WxBaseShop
 
     /**
      * @param int $msgId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMsgid(int $msgId)
     {
@@ -91,7 +91,7 @@ class MsgRecordList extends WxBaseShop
 
     /**
      * @param int $number
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setNumber(int $number)
     {

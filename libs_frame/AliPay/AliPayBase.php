@@ -8,7 +8,7 @@
 namespace AliPay;
 
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayPayException;
+use SyException\AliPay\AliPayPayException;
 use Tool\Tool;
 
 abstract class AliPayBase
@@ -107,7 +107,7 @@ abstract class AliPayBase
 
     /**
      * @param string $returnUrl
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setReturnUrl(string $returnUrl)
     {

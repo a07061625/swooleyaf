@@ -10,7 +10,7 @@ namespace SyMessageQueue\Redis;
 use Constant\ErrorCode;
 use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
-use Exception\MessageQueue\MessageQueueException;
+use SyException\MessageQueue\MessageQueueException;
 use SyMessageQueue\ConsumerBase;
 use Tool\Tool;
 
@@ -51,7 +51,7 @@ class Producer
      * 添加消费者
      * @param \SyMessageQueue\ConsumerBase $consumer 消费者对象
      * @return bool
-     * @throws \Exception\MessageQueue\MessageQueueException
+     * @throws \SyException\MessageQueue\MessageQueueException
      */
     public function addConsumer(ConsumerBase $consumer)
     {
@@ -75,7 +75,7 @@ class Producer
      * 删除消费者
      * @param \SyMessageQueue\ConsumerBase $consumer
      * @return int
-     * @throws \Exception\MessageQueue\MessageQueueException
+     * @throws \SyException\MessageQueue\MessageQueueException
      */
     public function deleteConsumer(ConsumerBase $consumer)
     {

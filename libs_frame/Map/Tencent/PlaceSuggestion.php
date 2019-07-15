@@ -8,7 +8,7 @@
 namespace Map\Tencent;
 
 use Constant\ErrorCode;
-use Exception\Map\TencentMapException;
+use SyException\Map\TencentMapException;
 use Map\MapBaseTencent;
 
 class PlaceSuggestion extends MapBaseTencent
@@ -76,7 +76,7 @@ class PlaceSuggestion extends MapBaseTencent
 
     /**
      * @param string $keyword
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setKeyword(string $keyword)
     {
@@ -89,7 +89,7 @@ class PlaceSuggestion extends MapBaseTencent
 
     /**
      * @param string $region
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setRegion(string $region)
     {
@@ -102,7 +102,7 @@ class PlaceSuggestion extends MapBaseTencent
 
     /**
      * @param int $regionLimit
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setRegionLimit(int $regionLimit)
     {
@@ -124,7 +124,7 @@ class PlaceSuggestion extends MapBaseTencent
 
     /**
      * @param int $subLimit
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setSubLimit(int $subLimit)
     {
@@ -171,7 +171,7 @@ class PlaceSuggestion extends MapBaseTencent
 
     /**
      * @param int $limit
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setLimit(int $limit)
     {

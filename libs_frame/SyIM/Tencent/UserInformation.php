@@ -8,7 +8,7 @@
 namespace SyIM\Tencent;
 
 use Constant\ErrorCode;
-use Exception\IM\TencentException;
+use SyException\IM\TencentException;
 
 class UserInformation
 {
@@ -41,7 +41,7 @@ class UserInformation
 
     /**
      * @param string $userId
-     * @throws \Exception\IM\TencentException
+     * @throws \SyException\IM\TencentException
      */
     public function setUserId(string $userId)
     {

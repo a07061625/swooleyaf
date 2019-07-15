@@ -9,7 +9,7 @@ namespace AliPay\Life;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayLifeException;
+use SyException\AliPay\AliPayLifeException;
 
 class MessageSendSingle extends AliPayBase
 {
@@ -57,7 +57,7 @@ class MessageSendSingle extends AliPayBase
 
     /**
      * @param string $userId
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setToUserId(string $userId)
     {
@@ -70,7 +70,7 @@ class MessageSendSingle extends AliPayBase
 
     /**
      * @param string $msgType
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setMsgType(string $msgType)
     {
@@ -83,7 +83,7 @@ class MessageSendSingle extends AliPayBase
 
     /**
      * @param array $articles
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setArticles(array $articles)
     {
@@ -97,7 +97,7 @@ class MessageSendSingle extends AliPayBase
 
     /**
      * @param array $text
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setText(array $text)
     {
@@ -111,7 +111,7 @@ class MessageSendSingle extends AliPayBase
 
     /**
      * @param string $chat
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setChat(string $chat)
     {
@@ -124,7 +124,7 @@ class MessageSendSingle extends AliPayBase
 
     /**
      * @param string $eventType
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setEventType(string $eventType)
     {

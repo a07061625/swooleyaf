@@ -8,7 +8,7 @@
 namespace Map\Tencent;
 
 use Constant\ErrorCode;
-use Exception\Map\TencentMapException;
+use SyException\Map\TencentMapException;
 use Map\MapBaseTencent;
 
 class CoordinateTranslate extends MapBaseTencent
@@ -56,7 +56,7 @@ class CoordinateTranslate extends MapBaseTencent
      * 添加坐标
      * @param string $lng
      * @param string $lat
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function addCoordinate(string $lng, string $lat)
     {
@@ -73,7 +73,7 @@ class CoordinateTranslate extends MapBaseTencent
 
     /**
      * @param int $fromType
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setFromType(int $fromType)
     {

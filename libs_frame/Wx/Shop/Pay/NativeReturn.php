@@ -9,7 +9,7 @@ namespace Wx\Shop\Pay;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Wx\WxBaseShop;
 use Wx\WxUtilShop;
 
@@ -79,7 +79,7 @@ class NativeReturn extends WxBaseShop
 
     /**
      * @param string $nonceStr
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setNonceStr(string $nonceStr)
     {
@@ -92,7 +92,7 @@ class NativeReturn extends WxBaseShop
 
     /**
      * @param string $prepayId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPrepayId(string $prepayId)
     {
@@ -106,7 +106,7 @@ class NativeReturn extends WxBaseShop
     /**
      * @param string $errDes 返回给用户的错误描述
      * @param string $returnMsg 返回微信的信息
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setErrorMsg(string $errDes, string $returnMsg)
     {

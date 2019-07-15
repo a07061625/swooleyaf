@@ -9,7 +9,7 @@ namespace AliPay\Life;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayLifeException;
+use SyException\AliPay\AliPayLifeException;
 
 class GroupModify extends AliPayBase
 {
@@ -42,7 +42,7 @@ class GroupModify extends AliPayBase
 
     /**
      * @param string $groupId
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setGroupId(string $groupId)
     {
@@ -55,7 +55,7 @@ class GroupModify extends AliPayBase
 
     /**
      * @param string $name
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setName(string $name)
     {
@@ -69,7 +69,7 @@ class GroupModify extends AliPayBase
 
     /**
      * @param array $labelRule
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function addLabelRule(array $labelRule)
     {

@@ -2,7 +2,7 @@
 namespace Wx\CorpProvider\Common;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxCorpProviderException;
+use SyException\Wx\WxCorpProviderException;
 use Tool\Tool;
 use Wx\WxBaseCorpProvider;
 use Wx\WxUtilBase;
@@ -32,7 +32,7 @@ class PermanentCode extends WxBaseCorpProvider
 
     /**
      * @param string $authCode
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setAuthCode(string $authCode)
     {

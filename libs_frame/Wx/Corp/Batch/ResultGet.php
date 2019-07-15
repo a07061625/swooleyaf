@@ -8,7 +8,7 @@
 namespace Wx\Corp\Batch;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -42,7 +42,7 @@ class ResultGet extends WxBaseCorp
 
     /**
      * @param string $jobId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setJobId(string $jobId)
     {

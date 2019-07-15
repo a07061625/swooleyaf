@@ -8,7 +8,7 @@
 namespace Wx\Shop\Authorize;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Wx\WxBaseShop;
 
 class AuthorizeUrl extends WxBaseShop
@@ -47,7 +47,7 @@ class AuthorizeUrl extends WxBaseShop
 
     /**
      * @param string $redirectUrl
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setRedirectUrl(string $redirectUrl)
     {
@@ -60,7 +60,7 @@ class AuthorizeUrl extends WxBaseShop
 
     /**
      * @param string $authType
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAuthType(string $authType)
     {
@@ -75,7 +75,7 @@ class AuthorizeUrl extends WxBaseShop
 
     /**
      * @param string $state
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setState(string $state)
     {

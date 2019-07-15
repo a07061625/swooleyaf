@@ -8,7 +8,7 @@
 namespace Wx\Shop\Menu;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -45,7 +45,7 @@ class MenuConditionalAdd extends WxBaseShop
 
     /**
      * @param array $button
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function addButton(array $button)
     {
@@ -58,7 +58,7 @@ class MenuConditionalAdd extends WxBaseShop
 
     /**
      * @param array $matchRule
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMatchRule(array $matchRule)
     {

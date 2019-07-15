@@ -8,7 +8,7 @@
 namespace Map\GaoDe;
 
 use Constant\ErrorCode;
-use Exception\Map\GaoDeMapException;
+use SyException\Map\GaoDeMapException;
 use Map\MapBaseGaoDe;
 
 /**
@@ -66,7 +66,7 @@ class GeoCoderReverse extends MapBaseGaoDe
 
     /**
      * @param array $locationList
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setLocation(array $locationList)
     {
@@ -81,7 +81,7 @@ class GeoCoderReverse extends MapBaseGaoDe
 
     /**
      * @param array $poiTypeList
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setPoiType(array $poiTypeList)
     {
@@ -93,7 +93,7 @@ class GeoCoderReverse extends MapBaseGaoDe
 
     /**
      * @param int $radius
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setRadius(int $radius)
     {
@@ -106,7 +106,7 @@ class GeoCoderReverse extends MapBaseGaoDe
 
     /**
      * @param string $extensions
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setExtensions(string $extensions)
     {
@@ -119,7 +119,7 @@ class GeoCoderReverse extends MapBaseGaoDe
 
     /**
      * @param string $batch
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setBatch(string $batch)
     {
@@ -132,7 +132,7 @@ class GeoCoderReverse extends MapBaseGaoDe
 
     /**
      * @param int $roadLevel
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setRoadLevel(int $roadLevel)
     {
@@ -145,7 +145,7 @@ class GeoCoderReverse extends MapBaseGaoDe
 
     /**
      * @param int $homeOrCorp
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setHomeOrCorp(int $homeOrCorp)
     {

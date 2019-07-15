@@ -8,7 +8,7 @@
 namespace DesignPatterns\Adapters;
 
 use Constant\ErrorCode;
-use Exception\Twig\TwigException;
+use SyException\Twig\TwigException;
 use Tool\Tool;
 use Yaf\View_Interface;
 

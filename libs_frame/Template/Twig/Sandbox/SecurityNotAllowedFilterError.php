@@ -10,7 +10,7 @@
  */
 
 /**
- * Exception thrown when a not allowed filter is used in a template.
+ * SyException thrown when a not allowed filter is used in a template.
  *
  * @author Martin Hasoň <martin.hason@gmail.com>
  */

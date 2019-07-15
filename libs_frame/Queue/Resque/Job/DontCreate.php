@@ -1,6 +1,6 @@
 <?php
 /**
- * Exception to be thrown if while enqueuing a job it should not be created.
+ * SyException to be thrown if while enqueuing a job it should not be created.
  *
  * @package        Resque/Job
  * @author        Chris Boulton <chris@bigcommerce.com>

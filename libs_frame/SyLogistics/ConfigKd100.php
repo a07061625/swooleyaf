@@ -8,7 +8,7 @@
 namespace SyLogistics;
 
 use Constant\ErrorCode;
-use Exception\Logistics\Kd100Exception;
+use SyException\Logistics\Kd100Exception;
 
 class ConfigKd100
 {
@@ -41,7 +41,7 @@ class ConfigKd100
 
     /**
      * @param string $appId
-     * @throws \Exception\Logistics\Kd100Exception
+     * @throws \SyException\Logistics\Kd100Exception
      */
     public function setAppId(string $appId)
     {
@@ -62,7 +62,7 @@ class ConfigKd100
 
     /**
      * @param string $appKey
-     * @throws \Exception\Logistics\Kd100Exception
+     * @throws \SyException\Logistics\Kd100Exception
      */
     public function setAppKey(string $appKey)
     {

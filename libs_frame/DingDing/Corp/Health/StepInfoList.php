@@ -10,7 +10,7 @@ namespace DingDing\Corp\Health;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -51,7 +51,7 @@ class StepInfoList extends TalkBaseCorp
     /**
      * @param int $type
      * @param string $objectId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setTypeAndObjectId(int $type, string $objectId)
     {
@@ -69,7 +69,7 @@ class StepInfoList extends TalkBaseCorp
 
     /**
      * @param array $statDates
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setStatDates(array $statDates)
     {

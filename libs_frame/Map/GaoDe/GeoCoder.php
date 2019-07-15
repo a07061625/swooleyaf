@@ -8,7 +8,7 @@
 namespace Map\GaoDe;
 
 use Constant\ErrorCode;
-use Exception\Map\GaoDeMapException;
+use SyException\Map\GaoDeMapException;
 use Map\MapBaseGaoDe;
 
 /**
@@ -42,7 +42,7 @@ class GeoCoder extends MapBaseGaoDe
 
     /**
      * @param array $addressList
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setAddress(array $addressList)
     {
@@ -57,7 +57,7 @@ class GeoCoder extends MapBaseGaoDe
 
     /**
      * @param string $city
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setCity(string $city)
     {
@@ -70,7 +70,7 @@ class GeoCoder extends MapBaseGaoDe
 
     /**
      * @param string $batch
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setBatch(string $batch)
     {

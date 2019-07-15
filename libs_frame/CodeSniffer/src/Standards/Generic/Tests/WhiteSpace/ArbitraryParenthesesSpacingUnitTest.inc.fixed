@@ -14,7 +14,7 @@ $d = new MyClass(  );
 $e = new class(  ) {};
 
 try {
-} catch( Exception $e ) {
+} catch( SyException $e ) {
 }
 
 include( PATH . 'file.php' );

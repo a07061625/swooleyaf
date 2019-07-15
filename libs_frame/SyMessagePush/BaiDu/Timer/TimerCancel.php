@@ -8,7 +8,7 @@
 namespace SyMessagePush\BaiDu\Timer;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\BaiDuPushException;
+use SyException\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
 
 class TimerCancel extends PushBaseBaiDu
@@ -31,7 +31,7 @@ class TimerCancel extends PushBaseBaiDu
 
     /**
      * @param string $timerId
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setTimerId(string $timerId)
     {

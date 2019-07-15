@@ -8,7 +8,7 @@
 namespace SyMessagePush;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 
 class ConfigJPushGroup
 {
@@ -74,7 +74,7 @@ class ConfigJPushGroup
     /**
      * @param string $key
      * @param string $secret
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setKeyAndSecret(string $key, string $secret)
     {

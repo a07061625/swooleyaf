@@ -7,7 +7,7 @@
 namespace QCloud\Cos;
 
 use Constant\ErrorCode;
-use Exception\QCloud\CosException;
+use SyException\QCloud\CosException;
 use QCloud\CloudBaseCos;
 use Tool\Tool;
 
@@ -36,7 +36,7 @@ class ObjectRestorePost extends CloudBaseCos
 
     /**
      * @param string $objectKey
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setObjectKey(string $objectKey)
     {
@@ -51,7 +51,7 @@ class ObjectRestorePost extends CloudBaseCos
 
     /**
      * @param array $restoreConfig
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setRestoreConfig(array $restoreConfig)
     {

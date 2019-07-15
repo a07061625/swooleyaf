@@ -10,7 +10,7 @@ namespace DingDing\Corp\Chat;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -81,7 +81,7 @@ class ChatCreate extends TalkBaseCorp
 
     /**
      * @param string $name
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setName(string $name)
     {
@@ -94,7 +94,7 @@ class ChatCreate extends TalkBaseCorp
 
     /**
      * @param string $owner
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOwner(string $owner)
     {
@@ -107,7 +107,7 @@ class ChatCreate extends TalkBaseCorp
 
     /**
      * @param array $userList
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserList(array $userList)
     {
@@ -129,7 +129,7 @@ class ChatCreate extends TalkBaseCorp
 
     /**
      * @param int $showHistoryType
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setShowHistoryType(int $showHistoryType)
     {
@@ -142,7 +142,7 @@ class ChatCreate extends TalkBaseCorp
 
     /**
      * @param int $searchable
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSearchable(int $searchable)
     {
@@ -155,7 +155,7 @@ class ChatCreate extends TalkBaseCorp
 
     /**
      * @param int $validationType
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setValidationType(int $validationType)
     {
@@ -168,7 +168,7 @@ class ChatCreate extends TalkBaseCorp
 
     /**
      * @param int $mentionAllAuthority
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setMentionAllAuthority(int $mentionAllAuthority)
     {
@@ -181,7 +181,7 @@ class ChatCreate extends TalkBaseCorp
 
     /**
      * @param int $managementType
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setManagementType(int $managementType)
     {

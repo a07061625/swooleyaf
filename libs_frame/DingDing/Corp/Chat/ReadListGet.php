@@ -10,7 +10,7 @@ namespace DingDing\Corp\Chat;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 /**
  * 查询群消息已读人员列表
@@ -51,7 +51,7 @@ class ReadListGet extends TalkBaseCorp
 
     /**
      * @param string $messageId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setMessageId(string $messageId)
     {
@@ -64,7 +64,7 @@ class ReadListGet extends TalkBaseCorp
 
     /**
      * @param int $cursor
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setCursor(int $cursor)
     {
@@ -77,7 +77,7 @@ class ReadListGet extends TalkBaseCorp
 
     /**
      * @param int $size
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSize(int $size)
     {

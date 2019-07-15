@@ -8,7 +8,7 @@
 namespace Wx\Corp\Common;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxUtilBase;
@@ -33,7 +33,7 @@ class JsTicket extends WxBaseCorp
 
     /**
      * @param string $accessToken
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAccessToken(string $accessToken)
     {

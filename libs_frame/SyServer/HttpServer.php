@@ -10,7 +10,7 @@ namespace SyServer;
 use Constant\ErrorCode;
 use Constant\Project;
 use Constant\Server;
-use Exception\Swoole\HttpServerException;
+use SyException\Swoole\HttpServerException;
 use Log\Log;
 use Request\RequestSign;
 use Response\Result;
@@ -151,7 +151,7 @@ class HttpServer extends BaseServer
      * @param string $socketKey 客户端密钥
      * @param string $socketAccept 服务端签名
      * @return bool
-     * @throws \Exception\Swoole\HttpServerException
+     * @throws \SyException\Swoole\HttpServerException
      */
     public static function checkSocketAccept(string $socketKey, string $socketAccept) : bool
     {

@@ -53,7 +53,7 @@ while ($i < 10) {
 
 switch (true) {
     case is_resource($value):
-        throw new Exception('foo');
+        throw new SyException('foo');
     case is_object($value):
         return 'object';
 }

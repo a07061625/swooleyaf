@@ -33,7 +33,7 @@ class BucketWebsitePut extends CloudBaseCos
 
     /**
      * @param array $data
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setWebsiteConfig(array $data)
     {

@@ -2,7 +2,7 @@
 namespace Wx\CorpProvider\Common;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxCorpProviderException;
+use SyException\Wx\WxCorpProviderException;
 use Tool\Tool;
 use Wx\WxBaseCorpProvider;
 use Wx\WxUtilBase;
@@ -38,7 +38,7 @@ class AdminListGet extends WxBaseCorpProvider
 
     /**
      * @param string $agentId
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setAgentId(string $agentId)
     {

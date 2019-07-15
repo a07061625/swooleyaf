@@ -8,7 +8,7 @@
 namespace Wx\Shop\Message;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -45,7 +45,7 @@ class TemplateIndustrySet extends WxBaseShop
 
     /**
      * @param int $industryId1
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setIndustryId1(int $industryId1)
     {
@@ -58,7 +58,7 @@ class TemplateIndustrySet extends WxBaseShop
 
     /**
      * @param int $industryId2
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setIndustryId2(int $industryId2)
     {

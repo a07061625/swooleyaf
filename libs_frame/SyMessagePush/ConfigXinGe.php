@@ -8,7 +8,7 @@
 namespace SyMessagePush;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\XinGePushException;
+use SyException\MessagePush\XinGePushException;
 
 class ConfigXinGe
 {
@@ -49,7 +49,7 @@ class ConfigXinGe
 
     /**
      * @param string $appId
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setAppId(string $appId)
     {
@@ -70,7 +70,7 @@ class ConfigXinGe
 
     /**
      * @param string $appSecret
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setAppSecret(string $appSecret)
     {
@@ -91,7 +91,7 @@ class ConfigXinGe
 
     /**
      * @param string $platform
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setPlatform(string $platform)
     {

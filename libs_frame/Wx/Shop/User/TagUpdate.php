@@ -8,7 +8,7 @@
 namespace Wx\Shop\User;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -45,7 +45,7 @@ class TagUpdate extends WxBaseShop
 
     /**
      * @param int $id
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setId(int $id)
     {
@@ -58,7 +58,7 @@ class TagUpdate extends WxBaseShop
 
     /**
      * @param string $name
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setName(string $name)
     {
