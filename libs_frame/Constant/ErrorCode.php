@@ -225,6 +225,12 @@ class ErrorCode
     const LOGISTICS_REQ_KDNIAO_ERROR = 106112;
     const LOGISTICS_REQ_TAOBAO_ERROR = 106113;
 
+    //物联网错误,取值范围:106200-106399
+    const IOT_PARAM_ERROR = 106200;
+    const IOT_POST_ERROR = 106201;
+    const IOT_GET_ERROR = 106202;
+    const IOT_REQ_ALIYUN_ERROR = 106210;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -369,6 +375,10 @@ class ErrorCode
         self::LOGISTICS_REQ_KD100_ERROR => '物流快递100发送请求出错',
         self::LOGISTICS_REQ_KDNIAO_ERROR => '物流快递鸟发送请求出错',
         self::LOGISTICS_REQ_TAOBAO_ERROR => '物流淘宝发送请求出错',
+        self::IOT_PARAM_ERROR => '物联网参数错误',
+        self::IOT_POST_ERROR => '物联网发送POST请求出错',
+        self::IOT_GET_ERROR => '物联网发送GET请求出错',
+        self::IOT_REQ_ALIYUN_ERROR => '物联网阿里云发送请求出错',
     ];
 
     /**
