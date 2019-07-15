@@ -9,7 +9,7 @@ namespace SyIM;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\IMConfigSingleton;
-use Exception\IM\TencentException;
+use SyException\IM\TencentException;
 use ProjectCache\IMAccount;
 use SyIM\Tencent\SingleChatMsg;
 use SyIM\Tencent\UserImport;
@@ -28,7 +28,7 @@ class TencentIMTool
      * 生成签名
      * @param string $userTag 用户标识
      * @return string
-     * @throws \Exception\IM\TencentException
+     * @throws \SyException\IM\TencentException
      */
     public static function createSign(string $userTag)
     {
@@ -131,7 +131,7 @@ class TencentIMTool
      * 获取请求地址
      * @param string $tag
      * @return string
-     * @throws \Exception\IM\TencentException
+     * @throws \SyException\IM\TencentException
      */
     private static function getReqUrl(string $tag)
     {
@@ -171,7 +171,7 @@ class TencentIMTool
      * @param string|array $data 数据
      * @param array $curlConfig curl配置数组
      * @return mixed
-     * @throws \Exception\IM\TencentException
+     * @throws \SyException\IM\TencentException
      */
     private static function sendPostReq(string $url, string $dataType, $data, array $curlConfig = [])
     {
@@ -221,7 +221,7 @@ class TencentIMTool
      * @param string $url 请求地址
      * @param array $curlConfig curl配置数组
      * @return mixed
-     * @throws \Exception\IM\TencentException
+     * @throws \SyException\IM\TencentException
      */
     private static function sendGetReq(string $url, array $curlConfig = [])
     {

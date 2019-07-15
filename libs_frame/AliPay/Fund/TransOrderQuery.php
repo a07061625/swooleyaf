@@ -9,7 +9,7 @@ namespace AliPay\Fund;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayFundException;
+use SyException\AliPay\AliPayFundException;
 
 class TransOrderQuery extends AliPayBase
 {
@@ -36,7 +36,7 @@ class TransOrderQuery extends AliPayBase
 
     /**
      * @param string $outBizNo
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOutBizNo(string $outBizNo)
     {
@@ -49,7 +49,7 @@ class TransOrderQuery extends AliPayBase
 
     /**
      * @param string $orderId
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOrderId(string $orderId)
     {

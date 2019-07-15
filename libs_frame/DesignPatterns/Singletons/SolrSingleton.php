@@ -8,7 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use Constant\ErrorCode;
-use Exception\Solr\SolrException;
+use SyException\Solr\SolrException;
 use Log\Log;
 use Tool\Tool;
 use Traits\SingletonTrait;
@@ -231,7 +231,7 @@ class SolrSingleton
      * @param string $method 操作类型
      * @param array $data 数据数组
      * @return array
-     * @throws \Exception\Solr\SolrException
+     * @throws \SyException\Solr\SolrException
      */
     private function httpPost(string $method, array $data)
     {
@@ -274,7 +274,7 @@ class SolrSingleton
      * @param string $method 操作类型
      * @param array $data 数据数组
      * @return array
-     * @throws \Exception\Solr\SolrException
+     * @throws \SyException\Solr\SolrException
      */
     private function httpGet(string $method, array $data)
     {

@@ -8,7 +8,7 @@
 namespace Wx\Corp\Message;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -53,7 +53,7 @@ class AppChatSend extends WxBaseCorp
 
     /**
      * @param string $chatId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setChatId(string $chatId)
     {
@@ -67,7 +67,7 @@ class AppChatSend extends WxBaseCorp
     /**
      * @param string $type
      * @param array $data
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMsgData(string $type, array $data)
     {
@@ -85,7 +85,7 @@ class AppChatSend extends WxBaseCorp
 
     /**
      * @param int $safe
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setSafe(int $safe)
     {

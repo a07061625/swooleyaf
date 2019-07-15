@@ -8,7 +8,7 @@
 namespace Wx\Corp\Tag;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -67,7 +67,7 @@ class TagUsersAdd extends WxBaseCorp
 
     /**
      * @param array $userList
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setUserList(array $userList)
     {
@@ -91,7 +91,7 @@ class TagUsersAdd extends WxBaseCorp
 
     /**
      * @param array $partyList
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPartyList(array $partyList)
     {

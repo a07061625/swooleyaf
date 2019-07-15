@@ -9,7 +9,7 @@ namespace QCloud;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\QCloudConfigSingleton;
-use Exception\QCloud\CosException;
+use SyException\QCloud\CosException;
 
 abstract class CloudBaseCos extends CloudBase
 {
@@ -118,7 +118,7 @@ abstract class CloudBaseCos extends CloudBase
 
     /**
      * @param string $reqMethod
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     protected function setReqMethod(string $reqMethod)
     {
@@ -132,7 +132,7 @@ abstract class CloudBaseCos extends CloudBase
 
     /**
      * @param int $signExpireTime
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     protected function setSignExpireTime(int $signExpireTime)
     {

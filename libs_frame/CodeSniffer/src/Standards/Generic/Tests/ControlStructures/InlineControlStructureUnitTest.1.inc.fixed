@@ -226,7 +226,7 @@ endfor;
 if (true) {
     try {
     }
-    catch(Exception $e) {
+    catch(SyException $e) {
     }
 }
 

@@ -8,7 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use Constant\ErrorCode;
-use Exception\Common\CheckException;
+use SyException\Common\CheckException;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
@@ -40,7 +40,7 @@ class FFMpegSingleton
      * 执行命令
      * @param array $params 参数数组
      * @return array
-     * @throws \Exception\Common\CheckException
+     * @throws \SyException\Common\CheckException
      */
     public function execCommand(array $params)
     {

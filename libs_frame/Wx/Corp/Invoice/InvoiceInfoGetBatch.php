@@ -2,7 +2,7 @@
 namespace Wx\Corp\Invoice;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -37,7 +37,7 @@ class InvoiceInfoGet extends WxBaseCorp
 
     /**
      * @param array $itemList
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setItemList(array $itemList)
     {

@@ -9,7 +9,7 @@ namespace AliPay\Fund;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayFundException;
+use SyException\AliPay\AliPayFundException;
 
 class AuthOperationCancel extends AliPayBase
 {
@@ -51,7 +51,7 @@ class AuthOperationCancel extends AliPayBase
 
     /**
      * @param string $authNo
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setAuthNo(string $authNo)
     {
@@ -64,7 +64,7 @@ class AuthOperationCancel extends AliPayBase
 
     /**
      * @param string $outOrderNo
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOutOrderNo(string $outOrderNo)
     {
@@ -77,7 +77,7 @@ class AuthOperationCancel extends AliPayBase
 
     /**
      * @param string $operationId
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOperationId(string $operationId)
     {
@@ -90,7 +90,7 @@ class AuthOperationCancel extends AliPayBase
 
     /**
      * @param string $outRequestNo
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOutRequestNo(string $outRequestNo)
     {
@@ -103,7 +103,7 @@ class AuthOperationCancel extends AliPayBase
 
     /**
      * @param string $remark
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setRemark(string $remark)
     {

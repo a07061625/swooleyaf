@@ -10,7 +10,7 @@ namespace DingDing\Corp\User;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 /**
  * 根据unionid获取userid
@@ -39,7 +39,7 @@ class UnionIdToUserId extends TalkBaseCorp
 
     /**
      * @param string $unionId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUnionId(string $unionId)
     {

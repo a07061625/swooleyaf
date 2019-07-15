@@ -8,7 +8,7 @@
 namespace SyPrint\FeYin;
 
 use Constant\ErrorCode;
-use Exception\SyPrint\FeYinException;
+use SyException\SyPrint\FeYinException;
 use SyPrint\PrintBaseFeYin;
 use SyPrint\PrintUtilBase;
 use SyPrint\PrintUtilFeYin;
@@ -77,7 +77,7 @@ class MsgSend extends PrintBaseFeYin
 
     /**
      * @param string $msgNo
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setMsgNo(string $msgNo)
     {
@@ -90,7 +90,7 @@ class MsgSend extends PrintBaseFeYin
 
     /**
      * @param string $msgContent
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setMsgContent(string $msgContent)
     {
@@ -103,7 +103,7 @@ class MsgSend extends PrintBaseFeYin
 
     /**
      * @param string $templateId
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setTemplateId(string $templateId)
     {
@@ -116,7 +116,7 @@ class MsgSend extends PrintBaseFeYin
 
     /**
      * @param array $templateData
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setTemplateData(array $templateData)
     {

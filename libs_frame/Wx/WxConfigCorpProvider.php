@@ -8,7 +8,7 @@
 namespace Wx;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 
 class WxConfigCorpProvider
 {
@@ -71,7 +71,7 @@ class WxConfigCorpProvider
 
     /**
      * @param string $corpId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setCorpId(string $corpId)
     {
@@ -92,7 +92,7 @@ class WxConfigCorpProvider
 
     /**
      * @param string $corpSecret
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setCorpSecret(string $corpSecret)
     {
@@ -113,7 +113,7 @@ class WxConfigCorpProvider
 
     /**
      * @param string $token
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setToken(string $token)
     {
@@ -134,7 +134,7 @@ class WxConfigCorpProvider
 
     /**
      * @param string $aesKey
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAesKey(string $aesKey)
     {
@@ -155,7 +155,7 @@ class WxConfigCorpProvider
 
     /**
      * @param string $suiteId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setSuiteId(string $suiteId)
     {
@@ -176,7 +176,7 @@ class WxConfigCorpProvider
 
     /**
      * @param string $suiteSecret
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setSuiteSecret(string $suiteSecret)
     {
@@ -197,7 +197,7 @@ class WxConfigCorpProvider
 
     /**
      * @param string $urlAuthSuite
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setUrlAuthSuite(string $urlAuthSuite)
     {
@@ -218,7 +218,7 @@ class WxConfigCorpProvider
 
     /**
      * @param string $urlAuthLogin
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setUrlAuthLogin(string $urlAuthLogin)
     {

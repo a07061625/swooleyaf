@@ -8,7 +8,7 @@
 namespace Wx\Corp\Batch;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -55,7 +55,7 @@ class InviteUser extends WxBaseCorp
 
     /**
      * @param array $userList
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setUserList(array $userList)
     {
@@ -79,7 +79,7 @@ class InviteUser extends WxBaseCorp
 
     /**
      * @param array $partyList
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPartyList(array $partyList)
     {
@@ -99,7 +99,7 @@ class InviteUser extends WxBaseCorp
 
     /**
      * @param array $tagList
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTagList(array $tagList)
     {

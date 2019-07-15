@@ -9,8 +9,8 @@ namespace DesignPatterns\Singletons;
 
 use Constant\ErrorCode;
 use Constant\Project;
-use Exception\Wx\WxCorpProviderException;
-use Exception\Wx\WxException;
+use SyException\Wx\WxCorpProviderException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Traits\SingletonTrait;
 use Traits\WxConfigTrait;

@@ -8,7 +8,7 @@
 namespace Tool\Cron;
 
 use Constant\ErrorCode;
-use Exception\Cron\CronException;
+use SyException\Cron\CronException;
 use Tool\Tool;
 
 class CronData
@@ -72,7 +72,7 @@ class CronData
 
     /**
      * @param array $seconds
-     * @throws \Exception\Cron\CronException
+     * @throws \SyException\Cron\CronException
      */
     public function setSeconds(array $seconds)
     {
@@ -94,7 +94,7 @@ class CronData
 
     /**
      * @param array $minutes
-     * @throws \Exception\Cron\CronException
+     * @throws \SyException\Cron\CronException
      */
     public function setMinutes(array $minutes)
     {
@@ -116,7 +116,7 @@ class CronData
 
     /**
      * @param array $hours
-     * @throws \Exception\Cron\CronException
+     * @throws \SyException\Cron\CronException
      */
     public function setHours(array $hours)
     {
@@ -138,7 +138,7 @@ class CronData
 
     /**
      * @param array $days
-     * @throws \Exception\Cron\CronException
+     * @throws \SyException\Cron\CronException
      */
     public function setDays(array $days)
     {
@@ -160,7 +160,7 @@ class CronData
 
     /**
      * @param array $months
-     * @throws \Exception\Cron\CronException
+     * @throws \SyException\Cron\CronException
      */
     public function setMonths(array $months)
     {
@@ -182,7 +182,7 @@ class CronData
 
     /**
      * @param array $weeks
-     * @throws \Exception\Cron\CronException
+     * @throws \SyException\Cron\CronException
      */
     public function setWeeks(array $weeks)
     {
@@ -204,7 +204,7 @@ class CronData
 
     /**
      * @param string $cron
-     * @throws \Exception\Cron\CronException
+     * @throws \SyException\Cron\CronException
      */
     public function setCron(string $cron)
     {

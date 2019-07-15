@@ -10,7 +10,7 @@ namespace DingDing\Corp\Role;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -45,7 +45,7 @@ class UserRoleDeleteBatch extends TalkBaseCorp
 
     /**
      * @param array $roleList
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setRoleList(array $roleList)
     {
@@ -67,7 +67,7 @@ class UserRoleDeleteBatch extends TalkBaseCorp
 
     /**
      * @param array $userList
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserList(array $userList)
     {

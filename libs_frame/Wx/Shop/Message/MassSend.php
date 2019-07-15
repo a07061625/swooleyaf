@@ -8,7 +8,7 @@
 namespace Wx\Shop\Message;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -46,7 +46,7 @@ class MassSend extends WxBaseShop
     /**
      * @param string $type
      * @param array $data
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMsgData(string $type, array $data)
     {
@@ -87,7 +87,7 @@ class MassSend extends WxBaseShop
 
     /**
      * @param string $openid
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function addOpenid(string $openid)
     {

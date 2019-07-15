@@ -8,7 +8,7 @@
 namespace SyLogistics\TaoBao;
 
 use Constant\ErrorCode;
-use Exception\Logistics\TaoBaoException;
+use SyException\Logistics\TaoBaoException;
 use SyLogistics\LogisticsBaseTaoBao;
 
 class AddressReachableGet extends LogisticsBaseTaoBao
@@ -51,7 +51,7 @@ class AddressReachableGet extends LogisticsBaseTaoBao
 
     /**
      * @param string $areaCode
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setAreaCode(string $areaCode)
     {
@@ -64,7 +64,7 @@ class AddressReachableGet extends LogisticsBaseTaoBao
 
     /**
      * @param string $address
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setAddress(string $address)
     {
@@ -90,7 +90,7 @@ class AddressReachableGet extends LogisticsBaseTaoBao
 
     /**
      * @param int $serviceType
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setServiceType(int $serviceType)
     {
@@ -103,7 +103,7 @@ class AddressReachableGet extends LogisticsBaseTaoBao
 
     /**
      * @param string $sourceAreaCode
-     * @throws \Exception\Logistics\TaoBaoException
+     * @throws \SyException\Logistics\TaoBaoException
      */
     public function setSourceAreaCode(string $sourceAreaCode)
     {

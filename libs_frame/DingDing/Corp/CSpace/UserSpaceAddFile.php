@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 /**
  * 新增文件到用户钉盘
@@ -73,7 +73,7 @@ class UserSpaceAddFile extends TalkBaseCorp
 
     /**
      * @param string $code
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setCode(string $code)
     {
@@ -86,7 +86,7 @@ class UserSpaceAddFile extends TalkBaseCorp
 
     /**
      * @param string $mediaId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setMediaId(string $mediaId)
     {
@@ -99,7 +99,7 @@ class UserSpaceAddFile extends TalkBaseCorp
 
     /**
      * @param string $spaceId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSpaceId(string $spaceId)
     {
@@ -112,7 +112,7 @@ class UserSpaceAddFile extends TalkBaseCorp
 
     /**
      * @param string $folderId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setFolderId(string $folderId)
     {
@@ -125,7 +125,7 @@ class UserSpaceAddFile extends TalkBaseCorp
 
     /**
      * @param string $name
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setName(string $name)
     {

@@ -10,7 +10,7 @@ namespace DingDing\Corp\WorkRecord;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -61,7 +61,7 @@ class WorkRecordAdd extends TalkBaseCorp
 
     /**
      * @param string $userId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserId(string $userId)
     {
@@ -74,7 +74,7 @@ class WorkRecordAdd extends TalkBaseCorp
 
     /**
      * @param int $createTime
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setCreateTime(int $createTime)
     {
@@ -87,7 +87,7 @@ class WorkRecordAdd extends TalkBaseCorp
 
     /**
      * @param string $title
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setTitle(string $title)
     {
@@ -100,7 +100,7 @@ class WorkRecordAdd extends TalkBaseCorp
 
     /**
      * @param string $url
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUrl(string $url)
     {
@@ -113,7 +113,7 @@ class WorkRecordAdd extends TalkBaseCorp
 
     /**
      * @param array $formItem
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function addFormItem(array $formItem)
     {

@@ -8,7 +8,7 @@
 namespace Wx\Corp\User;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -48,7 +48,7 @@ class UserSimpleList extends WxBaseCorp
 
     /**
      * @param int $departmentId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setDepartmentId(int $departmentId)
     {
@@ -61,7 +61,7 @@ class UserSimpleList extends WxBaseCorp
 
     /**
      * @param int $fetchChild
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setFetchChild(int $fetchChild)
     {

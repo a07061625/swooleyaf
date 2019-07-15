@@ -9,7 +9,7 @@ namespace SySms\DaYu;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\SmsConfigSingleton;
-use Exception\Sms\DaYuException;
+use SyException\Sms\DaYuException;
 use TaoBao\ServiceBase;
 
 class SmsQuery extends ServiceBase
@@ -68,7 +68,7 @@ class SmsQuery extends ServiceBase
 
     /**
      * @param string $recNum
-     * @throws \Exception\Sms\DaYuException
+     * @throws \SyException\Sms\DaYuException
      */
     public function setRecNum(string $recNum)
     {
@@ -81,7 +81,7 @@ class SmsQuery extends ServiceBase
 
     /**
      * @param string $queryDate
-     * @throws \Exception\Sms\DaYuException
+     * @throws \SyException\Sms\DaYuException
      */
     public function setQueryDate(string $queryDate)
     {
@@ -94,7 +94,7 @@ class SmsQuery extends ServiceBase
 
     /**
      * @param int $page
-     * @throws \Exception\Sms\DaYuException
+     * @throws \SyException\Sms\DaYuException
      */
     public function setPage(int $page)
     {
@@ -107,7 +107,7 @@ class SmsQuery extends ServiceBase
 
     /**
      * @param int $limit
-     * @throws \Exception\Sms\DaYuException
+     * @throws \SyException\Sms\DaYuException
      */
     public function setLimit(int $limit)
     {

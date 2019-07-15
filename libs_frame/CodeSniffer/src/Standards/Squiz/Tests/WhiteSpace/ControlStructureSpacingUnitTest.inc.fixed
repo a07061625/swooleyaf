@@ -142,13 +142,13 @@ while (true);
 
 try {
     // Something
-} catch (Exception $e) {
+} catch (SyException $e) {
     // Something
 }
 
 try {
     // Something
-} catch (Exception $e) {
+} catch (SyException $e) {
     // Something
 }
 
@@ -188,7 +188,7 @@ switch ($moo)
 try {
     // Something
 }
-catch (Exception $e) {
+catch (SyException $e) {
     // Something
 }
 finally {

@@ -10,7 +10,7 @@ namespace DingDing\Corp\CheckIn;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 /**
  * 获取部门用户签到记录
@@ -67,7 +67,7 @@ class Record extends TalkBaseCorp
 
     /**
      * @param int $departmentId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setDepartmentId(int $departmentId)
     {
@@ -81,7 +81,7 @@ class Record extends TalkBaseCorp
     /**
      * @param int $startTime
      * @param int $endTime
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setStartTimeAndEndTime(int $startTime, int $endTime)
     {
@@ -99,7 +99,7 @@ class Record extends TalkBaseCorp
 
     /**
      * @param int $offset
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOffset(int $offset)
     {
@@ -112,7 +112,7 @@ class Record extends TalkBaseCorp
 
     /**
      * @param int $size
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSize(int $size)
     {
@@ -125,7 +125,7 @@ class Record extends TalkBaseCorp
 
     /**
      * @param string $order
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOrder(string $order)
     {

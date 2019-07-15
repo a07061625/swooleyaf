@@ -167,13 +167,13 @@ with ``setUsername()`` and ``setPassword()`` methods::
 Your username and password will be used to authenticate upon first connect when
 ``send()`` are first used on the Mailer.
 
-If authentication fails, an Exception of type ``Swift_TransportException`` will
+If authentication fails, an SyException of type ``Swift_TransportException`` will
 be thrown.
 
 .. note::
 
     If you need to know early whether or not authentication has failed and an
-    Exception is going to be thrown, call the ``start()`` method on the
+    SyException is going to be thrown, call the ``start()`` method on the
     created Transport.
 
 The Sendmail Transport
@@ -242,7 +242,7 @@ flags). Swift Mailer supports operational modes of "``-bs``" (default) and
     or not sending has succeeded. Use "``-bs``" unless you have a reason not to.
 
 A sendmail process will be started upon the first call to ``send()``. If the
-process cannot be started successfully an Exception of type
+process cannot be started successfully an SyException of type
 ``Swift_TransportException`` will be thrown::
 
     // Create the Transport

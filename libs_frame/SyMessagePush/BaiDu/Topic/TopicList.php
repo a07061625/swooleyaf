@@ -8,7 +8,7 @@
 namespace SyMessagePush\BaiDu\Topic;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\BaiDuPushException;
+use SyException\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
 
 class TopicList extends PushBaseBaiDu
@@ -38,7 +38,7 @@ class TopicList extends PushBaseBaiDu
 
     /**
      * @param int $start
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setStart(int $start)
     {
@@ -51,7 +51,7 @@ class TopicList extends PushBaseBaiDu
 
     /**
      * @param int $limit
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setLimit(int $limit)
     {

@@ -23,7 +23,7 @@ abstract class WxUtilBaseAlone extends WxUtilBase
      * 获取access token
      * @param string $appId
      * @return string
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public static function getAccessToken(string $appId) : string
     {
@@ -79,7 +79,7 @@ abstract class WxUtilBaseAlone extends WxUtilBase
      * 获取js ticket
      * @param string $appId
      * @return string
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public static function getJsTicket(string $appId) : string
     {

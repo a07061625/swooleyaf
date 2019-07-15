@@ -845,7 +845,7 @@ array(
 
 try {
     echo 'foo';
-} catch (\Exception $e) {
+} catch (\SyException $e) {
     echo 'catch';
 } finally {
     if (false) {
@@ -996,7 +996,7 @@ class Foo
 
 try {
     foo();
-} catch (\Exception $e) {
+} catch (\SyException $e) {
     $foo = function() {
         return 'foo';
     };

@@ -8,7 +8,7 @@
 namespace Wx;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use Tool\Tool;
 
 class WxConfigOpenCommon
@@ -108,7 +108,7 @@ class WxConfigOpenCommon
 
     /**
      * @param int $expireComponentAccessToken
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setExpireComponentAccessToken(int $expireComponentAccessToken)
     {
@@ -129,7 +129,7 @@ class WxConfigOpenCommon
 
     /**
      * @param int $expireAuthorizerAccessToken
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setExpireAuthorizerAccessToken(int $expireAuthorizerAccessToken)
     {
@@ -150,7 +150,7 @@ class WxConfigOpenCommon
 
     /**
      * @param int $expireAuthorizerJsTicket
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setExpireAuthorizerJsTicket(int $expireAuthorizerJsTicket)
     {
@@ -171,7 +171,7 @@ class WxConfigOpenCommon
 
     /**
      * @param string $appId
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setAppId(string $appId)
     {
@@ -192,7 +192,7 @@ class WxConfigOpenCommon
 
     /**
      * @param string $secret
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setSecret(string $secret)
     {
@@ -213,7 +213,7 @@ class WxConfigOpenCommon
 
     /**
      * @param string $token
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setToken(string $token)
     {
@@ -234,7 +234,7 @@ class WxConfigOpenCommon
 
     /**
      * @param string $aesKeyBefore
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setAesKeyBefore(string $aesKeyBefore)
     {
@@ -255,7 +255,7 @@ class WxConfigOpenCommon
 
     /**
      * @param string $aesKeyNow
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setAesKeyNow(string $aesKeyNow)
     {
@@ -276,7 +276,7 @@ class WxConfigOpenCommon
 
     /**
      * @param string $urlAuth
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setUrlAuth(string $urlAuth)
     {
@@ -297,7 +297,7 @@ class WxConfigOpenCommon
 
     /**
      * @param string $urlAuthCallback
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setUrlAuthCallback(string $urlAuthCallback)
     {
@@ -318,7 +318,7 @@ class WxConfigOpenCommon
 
     /**
      * @param string $urlMiniRebindAdmin
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setUrlMiniRebindAdmin(string $urlMiniRebindAdmin)
     {
@@ -339,7 +339,7 @@ class WxConfigOpenCommon
 
     /**
      * @param string $urlMiniFastRegister
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setUrlMiniFastRegister(string $urlMiniFastRegister)
     {

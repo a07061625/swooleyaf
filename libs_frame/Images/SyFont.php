@@ -8,7 +8,7 @@
 namespace Images;
 
 use Constant\ErrorCode;
-use Exception\Image\ImageException;
+use SyException\Image\ImageException;
 
 class SyFont
 {
@@ -63,7 +63,7 @@ class SyFont
 
     /**
      * @param int $colorRed
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function setColorRed(int $colorRed)
     {
@@ -84,7 +84,7 @@ class SyFont
 
     /**
      * @param int $colorGreen
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function setColorGreen(int $colorGreen)
     {
@@ -105,7 +105,7 @@ class SyFont
 
     /**
      * @param int $colorBlue
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function setColorBlue(int $colorBlue)
     {
@@ -142,7 +142,7 @@ class SyFont
 
     /**
      * @param int $colorAlpha
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function setColorAlpha(int $colorAlpha)
     {
@@ -163,7 +163,7 @@ class SyFont
 
     /**
      * @param int $size
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function setSize(int $size)
     {
@@ -184,7 +184,7 @@ class SyFont
 
     /**
      * @param string $file
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function setFile(string $file)
     {

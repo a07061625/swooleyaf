@@ -8,7 +8,7 @@
 namespace SyMessagePush\JPush\Admin;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\AdminBase;
 use SyMessagePush\PushUtilJPush;
 
@@ -53,7 +53,7 @@ class AppCertificateUpload extends AdminBase
 
     /**
      * @param string $appKey
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setAppKey(string $appKey)
     {
@@ -68,7 +68,7 @@ class AppCertificateUpload extends AdminBase
     /**
      * @param string $file
      * @param string $password
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setDevCert(string $file, string $password)
     {
@@ -87,7 +87,7 @@ class AppCertificateUpload extends AdminBase
     /**
      * @param string $file
      * @param string $password
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setProCert(string $file, string $password)
     {

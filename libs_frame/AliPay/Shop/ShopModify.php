@@ -10,7 +10,7 @@ namespace AliPay\Shop;
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\AliPayConfigSingleton;
-use Exception\AliPay\AliPayShopException;
+use SyException\AliPay\AliPayShopException;
 
 class ShopModify extends AliPayBase
 {
@@ -220,7 +220,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $shopId
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setShopId(string $shopId)
     {
@@ -233,7 +233,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $storeId
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setStoreId(string $storeId)
     {
@@ -246,7 +246,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $brandName
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBrandName(string $brandName)
     {
@@ -261,7 +261,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $brandLogo
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBrandLogo(string $brandLogo)
     {
@@ -274,7 +274,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $mainShopName
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setMainShopName(string $mainShopName)
     {
@@ -289,7 +289,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $branchShopName
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBranchShopName(string $branchShopName)
     {
@@ -304,7 +304,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $provinceCode
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setProvinceCode(string $provinceCode)
     {
@@ -317,7 +317,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $cityCode
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setCityCode(string $cityCode)
     {
@@ -330,7 +330,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $districtCode
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setDistrictCode(string $districtCode)
     {
@@ -343,7 +343,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $address
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setAddress(string $address)
     {
@@ -358,7 +358,7 @@ class ShopModify extends AliPayBase
     /**
      * @param float $lng
      * @param float $lat
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setLngAndLat($lng, $lat)
     {
@@ -386,7 +386,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $contactNumber
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function addContactNumber(string $contactNumber)
     {
@@ -399,7 +399,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $notifyMobile
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setNotifyMobile(string $notifyMobile)
     {
@@ -412,7 +412,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $mainImage
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setMainImage(string $mainImage)
     {
@@ -425,7 +425,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $auditImage
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function addAuditImage(string $auditImage)
     {
@@ -438,7 +438,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $businessTime
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBusinessTime(string $businessTime)
     {
@@ -452,7 +452,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $wifi
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setWifi(string $wifi)
     {
@@ -465,7 +465,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $parking
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setParking(string $parking)
     {
@@ -478,7 +478,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $valueAdded
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setValueAdded(string $valueAdded)
     {
@@ -492,7 +492,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param int $avgPrice
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setAvgPrice(int $avgPrice)
     {
@@ -505,7 +505,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $licence
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setLicence(string $licence)
     {
@@ -518,7 +518,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $licenceCode
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setLicenceCode(string $licenceCode)
     {
@@ -531,7 +531,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $licenceName
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setLicenceName(string $licenceName)
     {
@@ -544,7 +544,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $licenceExpires
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setLicenceExpires(string $licenceExpires)
     {
@@ -557,7 +557,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $businessCertificate
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBusinessCertificate(string $businessCertificate)
     {
@@ -570,7 +570,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $businessCertificateExpires
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBusinessCertificateExpires(string $businessCertificateExpires)
     {
@@ -583,7 +583,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $authLetter
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setAuthLetter(string $authLetter)
     {
@@ -596,7 +596,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $isOperatingOnline
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setIsOperatingOnline(string $isOperatingOnline)
     {
@@ -609,7 +609,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $onlineUrl
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function addOnlineUrl(string $onlineUrl)
     {
@@ -622,7 +622,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $operateNotifyUrl
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setOperateNotifyUrl(string $operateNotifyUrl)
     {
@@ -635,7 +635,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $implementId
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function addImplementId(string $implementId)
     {
@@ -648,7 +648,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $noSmoking
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setNoSmoking(string $noSmoking)
     {
@@ -661,7 +661,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $box
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBox(string $box)
     {
@@ -674,7 +674,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $requestId
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setRequestId(string $requestId)
     {
@@ -687,7 +687,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $otherAuthorization
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setOtherAuthorization(string $otherAuthorization)
     {
@@ -700,7 +700,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $opRole
-     * @throws \Exception\AliPay\AliPayShopException
+     * @throws \SyException\AliPay\AliPayShopException
      */
     public function setOpRole(string $opRole)
     {

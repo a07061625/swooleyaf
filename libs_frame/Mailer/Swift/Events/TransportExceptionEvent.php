@@ -16,7 +16,7 @@
 class Swift_Events_TransportExceptionEvent extends Swift_Events_EventObject
 {
     /**
-     * The Exception thrown.
+     * The SyException thrown.
      *
      * @var Swift_TransportException
      */

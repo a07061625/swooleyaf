@@ -8,7 +8,7 @@
 namespace SyMessagePush\JPush\Admin;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\AdminBase;
 use SyMessagePush\PushUtilJPush;
 use Tool\Tool;
@@ -45,7 +45,7 @@ class AppCreate extends AdminBase
 
     /**
      * @param string $appName
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setAppName(string $appName)
     {
@@ -59,7 +59,7 @@ class AppCreate extends AdminBase
 
     /**
      * @param string $androidPackage
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setAndroidPackage(string $androidPackage)
     {

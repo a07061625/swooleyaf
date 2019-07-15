@@ -9,7 +9,7 @@ namespace SyMessageQueue;
 
 use Constant\ErrorCode;
 use Constant\Project;
-use Exception\MessageQueue\MessageQueueException;
+use SyException\MessageQueue\MessageQueueException;
 
 abstract class ConsumerBase
 {
@@ -54,7 +54,7 @@ abstract class ConsumerBase
     /**
      * @param string $mqType
      * @param string $topic
-     * @throws \Exception\MessageQueue\MessageQueueException
+     * @throws \SyException\MessageQueue\MessageQueueException
      */
     protected function setMqTypeAndTopic(string $mqType, string $topic)
     {

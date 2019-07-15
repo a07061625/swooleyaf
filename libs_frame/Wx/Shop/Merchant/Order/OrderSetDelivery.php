@@ -8,7 +8,7 @@
 namespace Wx\Shop\Merchant\Order;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -78,7 +78,7 @@ class OrderSetDelivery extends WxBaseShop
 
     /**
      * @param string $deliveryCompany
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setDeliveryCompany(string $deliveryCompany)
     {
@@ -91,7 +91,7 @@ class OrderSetDelivery extends WxBaseShop
 
     /**
      * @param string $deliveryTrackNo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setDeliveryTrackNo(string $deliveryTrackNo)
     {
@@ -117,7 +117,7 @@ class OrderSetDelivery extends WxBaseShop
 
     /**
      * @param int $isOthers
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setIsOthers(int $isOthers)
     {

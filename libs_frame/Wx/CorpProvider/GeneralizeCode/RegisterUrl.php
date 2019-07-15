@@ -8,7 +8,7 @@
 namespace Wx\CorpProvider\GeneralizeCode;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxCorpProviderException;
+use SyException\Wx\WxCorpProviderException;
 use Wx\WxBaseCorpProvider;
 
 /**
@@ -34,7 +34,7 @@ class RegisterUrl extends WxBaseCorpProvider
 
     /**
      * @param string $registerCode
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setRegisterCode(string $registerCode)
     {

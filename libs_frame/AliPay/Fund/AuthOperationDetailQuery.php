@@ -9,7 +9,7 @@ namespace AliPay\Fund;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayFundException;
+use SyException\AliPay\AliPayFundException;
 
 class AuthOperationDetailQuery extends AliPayBase
 {
@@ -46,7 +46,7 @@ class AuthOperationDetailQuery extends AliPayBase
 
     /**
      * @param string $authNo
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setAuthNo(string $authNo)
     {
@@ -59,7 +59,7 @@ class AuthOperationDetailQuery extends AliPayBase
 
     /**
      * @param string $outOrderNo
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOutOrderNo(string $outOrderNo)
     {
@@ -72,7 +72,7 @@ class AuthOperationDetailQuery extends AliPayBase
 
     /**
      * @param string $operationId
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOperationId(string $operationId)
     {
@@ -85,7 +85,7 @@ class AuthOperationDetailQuery extends AliPayBase
 
     /**
      * @param string $outRequestNo
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOutRequestNo(string $outRequestNo)
     {

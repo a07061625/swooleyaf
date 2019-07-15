@@ -2,7 +2,7 @@
 namespace Wx\Corp\Authorize;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -36,7 +36,7 @@ class UserInfoGet extends WxBaseCorp
 
     /**
      * @param string $code
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setCode(string $code)
     {

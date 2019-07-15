@@ -8,7 +8,7 @@
 namespace SyLogistics\KdNiao;
 
 use Constant\ErrorCode;
-use Exception\Logistics\KdNiaoException;
+use SyException\Logistics\KdNiaoException;
 use SyLogistics\LogisticsBaseKdNiao;
 
 class ExpressInfo extends LogisticsBaseKdNiao
@@ -42,7 +42,7 @@ class ExpressInfo extends LogisticsBaseKdNiao
 
     /**
      * @param string $orderCode
-     * @throws \Exception\Logistics\KdNiaoException
+     * @throws \SyException\Logistics\KdNiaoException
      */
     public function setOrderCode(string $orderCode)
     {
@@ -55,7 +55,7 @@ class ExpressInfo extends LogisticsBaseKdNiao
 
     /**
      * @param string $shipperCode
-     * @throws \Exception\Logistics\KdNiaoException
+     * @throws \SyException\Logistics\KdNiaoException
      */
     public function setShipperCode(string $shipperCode)
     {
@@ -68,7 +68,7 @@ class ExpressInfo extends LogisticsBaseKdNiao
 
     /**
      * @param string $logisticCode
-     * @throws \Exception\Logistics\KdNiaoException
+     * @throws \SyException\Logistics\KdNiaoException
      */
     public function setLogisticCode(string $logisticCode)
     {

@@ -8,7 +8,7 @@
 namespace Wx\Shop\Media;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -42,7 +42,7 @@ class UploadNews extends WxBaseShop
 
     /**
      * @param array $articles
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setArticles(array $articles)
     {
@@ -65,7 +65,7 @@ class UploadNews extends WxBaseShop
 
     /**
      * @param array $article
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function addArticle(array $article)
     {

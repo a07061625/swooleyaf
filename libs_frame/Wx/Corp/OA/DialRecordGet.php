@@ -2,7 +2,7 @@
 namespace Wx\Corp\OA;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -54,7 +54,7 @@ class DialRecordGet extends WxBaseCorp
     /**
      * @param int $startTime
      * @param int $endTime
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setStartTimeAndEndTime(int $startTime, int $endTime)
     {
@@ -74,7 +74,7 @@ class DialRecordGet extends WxBaseCorp
 
     /**
      * @param int $offset
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOffset(int $offset)
     {
@@ -87,7 +87,7 @@ class DialRecordGet extends WxBaseCorp
 
     /**
      * @param int $limit
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setLimit(int $limit)
     {

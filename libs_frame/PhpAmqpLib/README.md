@@ -208,7 +208,7 @@ using exception handling mechanism.
 Exceptions which might be thrown in case of connection errors:
 
 ```
-PhpAmqpLib\Exception\AMQPIOException
+PhpAmqpLib\SyException\AMQPIOException
 \RuntimeException
 \ErrorException
 ```

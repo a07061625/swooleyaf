@@ -8,7 +8,7 @@
 namespace Wx\Shop\Media;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -49,7 +49,7 @@ class MediaGet extends WxBaseShop
 
     /**
      * @param string $outputDir
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOutputDir(string $outputDir)
     {
@@ -62,7 +62,7 @@ class MediaGet extends WxBaseShop
 
     /**
      * @param string $mediaId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMediaId(string $mediaId)
     {

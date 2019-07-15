@@ -8,7 +8,7 @@
 namespace AliOss;
 
 use Constant\ErrorCode;
-use Exception\AliOss\OssException;
+use SyException\AliOss\OssException;
 
 class ConfigOss
 {
@@ -83,7 +83,7 @@ class ConfigOss
     /**
      * @param string $endpointProtocol
      * @param string $endpointDomain
-     * @throws \Exception\AliOss\OssException
+     * @throws \SyException\AliOss\OssException
      */
     public function setEndpointProtocolAndDomain(string $endpointProtocol, string $endpointDomain)
     {
@@ -109,7 +109,7 @@ class ConfigOss
 
     /**
      * @param string $accessKeyId
-     * @throws \Exception\AliOss\OssException
+     * @throws \SyException\AliOss\OssException
      */
     public function setAccessKeyId(string $accessKeyId)
     {
@@ -130,7 +130,7 @@ class ConfigOss
 
     /**
      * @param string $accessKeySecret
-     * @throws \Exception\AliOss\OssException
+     * @throws \SyException\AliOss\OssException
      */
     public function setAccessKeySecret(string $accessKeySecret)
     {
@@ -151,7 +151,7 @@ class ConfigOss
 
     /**
      * @param string $bucketName
-     * @throws \Exception\AliOss\OssException
+     * @throws \SyException\AliOss\OssException
      */
     public function setBucketName(string $bucketName)
     {
@@ -172,7 +172,7 @@ class ConfigOss
 
     /**
      * @param string $bucketDomain
-     * @throws \Exception\AliOss\OssException
+     * @throws \SyException\AliOss\OssException
      */
     public function setBucketDomain(string $bucketDomain)
     {

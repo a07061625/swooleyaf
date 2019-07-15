@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkUtilCorp;
 use DingDing\TalkUtilProvider;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 /**
  * 获取授权用户的个人信息
@@ -42,7 +42,7 @@ class UserInfoGet extends TalkBaseCorp
 
     /**
      * @param string $openid
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOpenid(string $openid)
     {
@@ -55,7 +55,7 @@ class UserInfoGet extends TalkBaseCorp
 
     /**
      * @param string $persistentCode
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setPersistentCode(string $persistentCode)
     {

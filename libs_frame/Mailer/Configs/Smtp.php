@@ -2,7 +2,7 @@
 namespace Mailer\Configs;
 
 use Constant\ErrorCode;
-use Exception\Mail\MailException;
+use SyException\Mail\MailException;
 
 class Smtp
 {
@@ -44,7 +44,7 @@ class Smtp
 
     /**
      * @param string $host
-     * @throws \Exception\Mail\MailException
+     * @throws \SyException\Mail\MailException
      */
     public function setHost(string $host)
     {
@@ -66,7 +66,7 @@ class Smtp
 
     /**
      * @param int $port
-     * @throws \Exception\Mail\MailException
+     * @throws \SyException\Mail\MailException
      */
     public function setPort(int $port)
     {
@@ -87,7 +87,7 @@ class Smtp
 
     /**
      * @param string $user
-     * @throws \Exception\Mail\MailException
+     * @throws \SyException\Mail\MailException
      */
     public function setUser(string $user)
     {
@@ -108,7 +108,7 @@ class Smtp
 
     /**
      * @param string $pwd
-     * @throws \Exception\Mail\MailException
+     * @throws \SyException\Mail\MailException
      */
     public function setPwd(string $pwd)
     {

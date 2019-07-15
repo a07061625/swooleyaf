@@ -9,7 +9,7 @@ namespace Wx\Shop\Pay;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -70,7 +70,7 @@ class ProfitSharingApplyMulti extends WxBaseShop
 
     /**
      * @param string $transactionId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTransactionId(string $transactionId)
     {
@@ -83,7 +83,7 @@ class ProfitSharingApplyMulti extends WxBaseShop
 
     /**
      * @param string $outOrderNo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOutOrderNo(string $outOrderNo)
     {
@@ -96,7 +96,7 @@ class ProfitSharingApplyMulti extends WxBaseShop
 
     /**
      * @param array $receiver
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function addReceiver(array $receiver)
     {

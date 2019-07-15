@@ -7,7 +7,7 @@
 namespace QCloud\Cos;
 
 use Constant\ErrorCode;
-use Exception\QCloud\CosException;
+use SyException\QCloud\CosException;
 use QCloud\CloudBaseCos;
 
 /**
@@ -53,7 +53,7 @@ class PartList extends CloudBaseCos
 
     /**
      * @param string $objectKey
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setObjectKey(string $objectKey)
     {
@@ -67,7 +67,7 @@ class PartList extends CloudBaseCos
 
     /**
      * @param string $uploadId
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setUploadId(string $uploadId)
     {
@@ -81,7 +81,7 @@ class PartList extends CloudBaseCos
 
     /**
      * @param int $startIndex
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setStartIndex(int $startIndex)
     {
@@ -95,7 +95,7 @@ class PartList extends CloudBaseCos
 
     /**
      * @param int $limit
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setLimit(int $limit)
     {

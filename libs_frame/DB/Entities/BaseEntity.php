@@ -8,7 +8,7 @@
 namespace DB\Entities;
 
 use Constant\ErrorCode;
-use Exception\Validator\ValidatorException;
+use SyException\Validator\ValidatorException;
 use Tool\Tool;
 
 abstract class BaseEntity
@@ -111,7 +111,7 @@ abstract class BaseEntity
     /**
      * 校验实体类属性值是否合法
      * @return bool true:合法
-     * @throws \Exception\Validator\ValidatorException
+     * @throws \SyException\Validator\ValidatorException
      */
     public function verifyEntityProperties()
     {

@@ -8,7 +8,7 @@
 namespace Map\GaoDe;
 
 use Constant\ErrorCode;
-use Exception\Map\GaoDeMapException;
+use SyException\Map\GaoDeMapException;
 use Map\MapBaseGaoDe;
 
 /**
@@ -37,7 +37,7 @@ class WeatherInfo extends MapBaseGaoDe
 
     /**
      * @param string $city
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setCity(string $city)
     {
@@ -50,7 +50,7 @@ class WeatherInfo extends MapBaseGaoDe
 
     /**
      * @param string $extensions
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setExtensions(string $extensions)
     {

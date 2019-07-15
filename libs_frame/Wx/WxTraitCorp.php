@@ -2,7 +2,7 @@
 namespace Wx;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 
 trait WxTraitCorp
 {
@@ -12,7 +12,7 @@ trait WxTraitCorp
      * @param string $corpId 企业ID
      * @param string $agentTag 应用标识
      * @return string
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     private function getAccessToken(int $type, string $corpId, string $agentTag = '') : string
     {

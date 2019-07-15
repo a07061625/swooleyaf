@@ -10,7 +10,7 @@ namespace DesignPatterns\Singletons;
 use AliOss\ConfigOss;
 use AliOss\OssClient;
 use Constant\ErrorCode;
-use Exception\AliOss\OssException;
+use SyException\AliOss\OssException;
 use Log\Log;
 use Tool\Tool;
 use Traits\SingletonTrait;
@@ -70,7 +70,7 @@ class AliOssSingleton
 
     /**
      * @return \AliOss\OssClient
-     * @throws \Exception\AliOss\OssException
+     * @throws \SyException\AliOss\OssException
      */
     public function getOssClient()
     {

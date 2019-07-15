@@ -2,7 +2,7 @@
 namespace Wx\Corp\OA;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -52,7 +52,7 @@ class CheckInDataGet extends WxBaseCorp
 
     /**
      * @param int $checkInType
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setCheckInIype(int $checkInType)
     {
@@ -66,7 +66,7 @@ class CheckInDataGet extends WxBaseCorp
     /**
      * @param int $startTime
      * @param int $endTime
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setStartTimeAndEndTime(int $startTime, int $endTime)
     {
@@ -86,7 +86,7 @@ class CheckInDataGet extends WxBaseCorp
 
     /**
      * @param array $userIdList
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setUserIdList(array $userIdList)
     {

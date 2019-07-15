@@ -10,7 +10,7 @@ namespace DingDing\Corp\User;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 /**
  * 获取部门用户详情
@@ -68,7 +68,7 @@ class ListByPage extends TalkBaseCorp
 
     /**
      * @param string $lang
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setLang(string $lang)
     {
@@ -81,7 +81,7 @@ class ListByPage extends TalkBaseCorp
 
     /**
      * @param int $departmentId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setDepartmentId(int $departmentId)
     {
@@ -94,7 +94,7 @@ class ListByPage extends TalkBaseCorp
 
     /**
      * @param int $offset
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOffset(int $offset)
     {
@@ -107,7 +107,7 @@ class ListByPage extends TalkBaseCorp
 
     /**
      * @param int $size
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSize(int $size)
     {
@@ -120,7 +120,7 @@ class ListByPage extends TalkBaseCorp
 
     /**
      * @param string $order
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOrder(string $order)
     {

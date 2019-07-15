@@ -13,7 +13,7 @@ use DingDing\TalkTraitCorp;
 use DingDing\TalkUtilBase;
 use DingDing\TalkUtilCorp;
 use DingDing\TalkUtilProvider;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -47,7 +47,7 @@ class SnsTokenGet extends TalkBaseCorp
 
     /**
      * @param string $openid
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOpenid(string $openid)
     {
@@ -60,7 +60,7 @@ class SnsTokenGet extends TalkBaseCorp
 
     /**
      * @param string $persistentCode
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setPersistentCode(string $persistentCode)
     {

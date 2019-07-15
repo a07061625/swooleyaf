@@ -8,7 +8,7 @@
 namespace SyLogistics\Kd100;
 
 use Constant\ErrorCode;
-use Exception\Logistics\Kd100Exception;
+use SyException\Logistics\Kd100Exception;
 use SyLogistics\LogisticsBaseKd100;
 use SyLogistics\LogisticsUtilKd100;
 
@@ -57,7 +57,7 @@ class ExpressQuery extends LogisticsBaseKd100
 
     /**
      * @param string $com
-     * @throws \Exception\Logistics\Kd100Exception
+     * @throws \SyException\Logistics\Kd100Exception
      */
     public function setCom(string $com)
     {
@@ -70,7 +70,7 @@ class ExpressQuery extends LogisticsBaseKd100
 
     /**
      * @param string $num
-     * @throws \Exception\Logistics\Kd100Exception
+     * @throws \SyException\Logistics\Kd100Exception
      */
     public function setNum(string $num)
     {
@@ -84,7 +84,7 @@ class ExpressQuery extends LogisticsBaseKd100
 
     /**
      * @param string $phone
-     * @throws \Exception\Logistics\Kd100Exception
+     * @throws \SyException\Logistics\Kd100Exception
      */
     public function setPhone(string $phone)
     {
@@ -113,7 +113,7 @@ class ExpressQuery extends LogisticsBaseKd100
 
     /**
      * @param int $resultV2
-     * @throws \Exception\Logistics\Kd100Exception
+     * @throws \SyException\Logistics\Kd100Exception
      */
     public function setResultV2(int $resultV2)
     {

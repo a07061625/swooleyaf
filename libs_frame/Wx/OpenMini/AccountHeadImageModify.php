@@ -8,7 +8,7 @@
 namespace Wx\OpenMini;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use Tool\Tool;
 use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
@@ -60,7 +60,7 @@ class AccountHeadImageModify extends WxBaseOpenMini
 
     /**
      * @param string $headImage
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setHeadImgMediaId(string $headImage)
     {
@@ -73,7 +73,7 @@ class AccountHeadImageModify extends WxBaseOpenMini
 
     /**
      * @param float $x1
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setX1(float $x1)
     {
@@ -86,7 +86,7 @@ class AccountHeadImageModify extends WxBaseOpenMini
 
     /**
      * @param float $y1
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setY1(float $y1)
     {
@@ -99,7 +99,7 @@ class AccountHeadImageModify extends WxBaseOpenMini
 
     /**
      * @param float $x2
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setX2(float $x2)
     {
@@ -112,7 +112,7 @@ class AccountHeadImageModify extends WxBaseOpenMini
 
     /**
      * @param float $y2
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setY2(float $y2)
     {

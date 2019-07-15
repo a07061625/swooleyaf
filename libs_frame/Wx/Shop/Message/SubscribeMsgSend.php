@@ -8,7 +8,7 @@
 namespace Wx\Shop\Message;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -70,7 +70,7 @@ class SubscribeMsgSend extends WxBaseShop
 
     /**
      * @param string $openid
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
     {
@@ -83,7 +83,7 @@ class SubscribeMsgSend extends WxBaseShop
 
     /**
      * @param string $templateId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTemplateId(string $templateId)
     {
@@ -96,7 +96,7 @@ class SubscribeMsgSend extends WxBaseShop
 
     /**
      * @param string $url
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setUrl(string $url)
     {
@@ -109,7 +109,7 @@ class SubscribeMsgSend extends WxBaseShop
 
     /**
      * @param array $miniProgram
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMiniProgram(array $miniProgram)
     {
@@ -121,7 +121,7 @@ class SubscribeMsgSend extends WxBaseShop
 
     /**
      * @param int $scene
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setScene(int $scene)
     {
@@ -134,7 +134,7 @@ class SubscribeMsgSend extends WxBaseShop
 
     /**
      * @param string $title
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTitle(string $title)
     {
@@ -148,7 +148,7 @@ class SubscribeMsgSend extends WxBaseShop
 
     /**
      * @param array $data
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setData(array $data)
     {

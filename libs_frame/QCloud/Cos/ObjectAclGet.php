@@ -7,7 +7,7 @@
 namespace QCloud\Cos;
 
 use Constant\ErrorCode;
-use Exception\QCloud\CosException;
+use SyException\QCloud\CosException;
 use QCloud\CloudBaseCos;
 
 /**
@@ -35,7 +35,7 @@ class ObjectAclGet extends CloudBaseCos
 
     /**
      * @param string $objectKey
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setObjectKey(string $objectKey)
     {

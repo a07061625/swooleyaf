@@ -9,7 +9,7 @@ namespace Map;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\MapSingleton;
-use Exception\Map\TencentMapException;
+use SyException\Map\TencentMapException;
 
 abstract class MapBaseTencent extends MapBase
 {
@@ -66,7 +66,7 @@ abstract class MapBaseTencent extends MapBase
 
     /**
      * @param string $appIdentifier
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setAppIdentifier(string $appIdentifier)
     {
@@ -80,7 +80,7 @@ abstract class MapBaseTencent extends MapBase
 
     /**
      * @param string $getType
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setGetType(string $getType)
     {

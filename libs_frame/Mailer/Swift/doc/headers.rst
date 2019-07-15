@@ -395,7 +395,7 @@ the left of the @ sign is usually unique, based on the current time and some
 random factor. The part on the right is usually a domain name.
 
 Any ID passed to the header's ``setId()`` method absolutely MUST conform to
-this structure, otherwise you'll get an Exception thrown at you by Swift Mailer
+this structure, otherwise you'll get an SyException thrown at you by Swift Mailer
 (a ``Swift_RfcComplianceException``). This is to ensure that the generated
 email complies with relevant RFC documents and therefore is less likely to be
 blocked as spam.

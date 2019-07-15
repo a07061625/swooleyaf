@@ -8,7 +8,7 @@
 namespace Wx\Shop\Merchant\Stock;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -50,7 +50,7 @@ class StockAdd extends WxBaseShop
 
     /**
      * @param string $productId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setProductId(string $productId)
     {
@@ -63,7 +63,7 @@ class StockAdd extends WxBaseShop
 
     /**
      * @param string $skuInfo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setSkuInfo(string $skuInfo)
     {
@@ -76,7 +76,7 @@ class StockAdd extends WxBaseShop
 
     /**
      * @param int $quantity
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setQuantity(int $quantity)
     {

@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use SyServer\BaseServer;
 use Tool\ProjectTool;
 use Tool\Tool;
@@ -28,7 +28,7 @@ abstract class WxUtilOpenBase extends WxUtilBase
      * 获取平台access token
      * @param string $appId 开放平台app id
      * @return string
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public static function getComponentAccessToken(string $appId) : string
     {
@@ -45,7 +45,7 @@ abstract class WxUtilOpenBase extends WxUtilBase
      * 获取授权者access token
      * @param string $appId 授权公众号app id
      * @return string
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public static function getAuthorizerAccessToken(string $appId) : string
     {
@@ -130,8 +130,8 @@ abstract class WxUtilOpenBase extends WxUtilBase
      * 获取授权者js ticket
      * @param string $appId 授权者微信号
      * @return string
-     * @throws \Exception\Wx\WxException
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxException
+     * @throws \SyException\Wx\WxOpenException
      */
     public static function getAuthorizerJsTicket(string $appId) : string
     {
@@ -194,7 +194,7 @@ abstract class WxUtilOpenBase extends WxUtilBase
      * @param string $nonceStr 随机串，对应URL参数的nonce
      * @param string $timestamp 时间戳 对应URL参数的timestamp
      * @return array
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public static function decryptMsg(string $encryptXml, string $appId, string $appToken, string $msgSignature, string $nonceStr, string $timestamp = '') : array
     {
@@ -227,7 +227,7 @@ abstract class WxUtilOpenBase extends WxUtilBase
      * @param string $appToken 开放平台消息校验token
      * @param string $aesKey 第三方平台的aes key
      * @return string 加密后的可以直接回复用户的密文，包括msg_signature, timestamp, nonce, encrypt的xml格式的字符串
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public static function encryptMsg(string $replyMsg, string $appId, string $appToken, string $aesKey) : string
     {
@@ -245,7 +245,7 @@ abstract class WxUtilOpenBase extends WxUtilBase
      * @param string $appId 开放平台app id
      * @param string $tag 标识 new：用新的aeskey解密 old：用旧的aeskey解密
      * @return array
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     private static function decrypt(string $encryptMsg, string $appId, string $tag = 'new') : array
     {

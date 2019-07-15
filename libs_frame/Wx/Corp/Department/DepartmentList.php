@@ -8,7 +8,7 @@
 namespace Wx\Corp\Department;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -42,7 +42,7 @@ class DepartmentList extends WxBaseCorp
 
     /**
      * @param int $id
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setId(int $id)
     {

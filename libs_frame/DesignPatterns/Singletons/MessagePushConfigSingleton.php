@@ -9,7 +9,7 @@ namespace DesignPatterns\Singletons;
 
 use Constant\ErrorCode;
 use Constant\Project;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\ConfigAli;
 use SyMessagePush\ConfigBaiDu;
 use SyMessagePush\ConfigJPushDev;
@@ -188,7 +188,7 @@ class MessagePushConfigSingleton
     /**
      * @param string $key
      * @return \SyMessagePush\ConfigJPushApp
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function getJPushAppConfig(string $key)
     {
@@ -250,7 +250,7 @@ class MessagePushConfigSingleton
     /**
      * @param string $key
      * @return \SyMessagePush\ConfigJPushGroup
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function getJPushGroupConfig(string $key)
     {

@@ -9,7 +9,7 @@ namespace AliPay\Pay;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayPayException;
+use SyException\AliPay\AliPayPayException;
 
 class BillDownload extends AliPayBase
 {
@@ -41,7 +41,7 @@ class BillDownload extends AliPayBase
 
     /**
      * @param string $billType
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setBillType(string $billType)
     {
@@ -54,7 +54,7 @@ class BillDownload extends AliPayBase
 
     /**
      * @param string $billDate
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setBillDate(string $billDate)
     {

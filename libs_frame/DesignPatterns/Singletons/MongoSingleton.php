@@ -8,7 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use Constant\ErrorCode;
-use Exception\Mongo\MongoException;
+use SyException\Mongo\MongoException;
 use Log\Log;
 use MongoDB\Driver\Command;
 use MongoDB\Driver\Manager;
@@ -83,7 +83,7 @@ class MongoSingleton
     /**
      * 切换数据库
      * @param string $dbName 数据库名称
-     * @throws \Exception\Mongo\MongoException
+     * @throws \SyException\Mongo\MongoException
      */
     public function changeDb(string $dbName)
     {

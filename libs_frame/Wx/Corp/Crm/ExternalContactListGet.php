@@ -8,7 +8,7 @@
 namespace Wx\Corp\Crm;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -42,7 +42,7 @@ class ExternalContactListGet extends WxBaseCorp
 
     /**
      * @param string $userId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setUserId(string $userId)
     {

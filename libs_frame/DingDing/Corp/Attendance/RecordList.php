@@ -10,7 +10,7 @@ namespace DingDing\Corp\Attendance;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -57,7 +57,7 @@ class RecordList extends TalkBaseCorp
 
     /**
      * @param array $userList
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserList(array $userList)
     {
@@ -80,7 +80,7 @@ class RecordList extends TalkBaseCorp
     /**
      * @param int $startTime
      * @param int $endTime
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setStartTimeAndEndTime(int $startTime, int $endTime)
     {
@@ -98,7 +98,7 @@ class RecordList extends TalkBaseCorp
 
     /**
      * @param string $isI18n
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setIsI18n(string $isI18n)
     {

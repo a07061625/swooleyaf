@@ -9,7 +9,7 @@ namespace Map;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\MapSingleton;
-use Exception\Map\BaiduMapException;
+use SyException\Map\BaiduMapException;
 
 abstract class MapBaseBaiDu extends MapBase
 {
@@ -82,7 +82,7 @@ abstract class MapBaseBaiDu extends MapBase
 
     /**
      * @param string $checkType
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setCheckType(string $checkType)
     {
@@ -95,7 +95,7 @@ abstract class MapBaseBaiDu extends MapBase
 
     /**
      * @param string $reqMethod
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setReqMethod(string $reqMethod)
     {
@@ -108,7 +108,7 @@ abstract class MapBaseBaiDu extends MapBase
 
     /**
      * @param string $sk
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setSk(string $sk)
     {
@@ -121,7 +121,7 @@ abstract class MapBaseBaiDu extends MapBase
 
     /**
      * @param string $reqReferer
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setReqReferer(string $reqReferer)
     {

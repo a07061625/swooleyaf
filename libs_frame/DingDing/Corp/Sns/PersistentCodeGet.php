@@ -12,7 +12,7 @@ use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
 use DingDing\TalkUtilCorp;
 use DingDing\TalkUtilProvider;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -41,7 +41,7 @@ class PersistentCodeGet extends TalkBaseCorp
 
     /**
      * @param string $tmpAuthCode
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setTmpAuthCode(string $tmpAuthCode)
     {

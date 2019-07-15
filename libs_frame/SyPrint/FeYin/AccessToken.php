@@ -9,7 +9,7 @@ namespace SyPrint\FeYin;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\PrintConfigSingleton;
-use Exception\SyPrint\FeYinException;
+use SyException\SyPrint\FeYinException;
 use SyPrint\PrintBaseFeYin;
 use SyPrint\PrintUtilBase;
 use Tool\Tool;

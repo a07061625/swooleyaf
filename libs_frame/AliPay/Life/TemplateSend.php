@@ -9,7 +9,7 @@ namespace AliPay\Life;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayLifeException;
+use SyException\AliPay\AliPayLifeException;
 
 class TemplateSend extends AliPayBase
 {
@@ -36,7 +36,7 @@ class TemplateSend extends AliPayBase
 
     /**
      * @param string $userId
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setToUserId(string $userId)
     {
@@ -49,7 +49,7 @@ class TemplateSend extends AliPayBase
 
     /**
      * @param array $template
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setTemplate(array $template)
     {

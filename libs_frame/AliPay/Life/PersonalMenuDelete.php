@@ -9,7 +9,7 @@ namespace AliPay\Life;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayLifeException;
+use SyException\AliPay\AliPayLifeException;
 
 class PersonalMenuDelete extends AliPayBase
 {
@@ -31,7 +31,7 @@ class PersonalMenuDelete extends AliPayBase
 
     /**
      * @param string $menuKey
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function setMenuKey(string $menuKey)
     {

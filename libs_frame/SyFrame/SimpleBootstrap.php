@@ -9,7 +9,7 @@ namespace SyFrame;
 
 use Constant\ErrorCode;
 use Constant\Server;
-use Exception\Swoole\ServerException;
+use SyException\Swoole\ServerException;
 use SyFrame\Plugins\AspectAfterPlugin;
 use SyFrame\Plugins\AspectBeforePlugin;
 use SyFrame\Plugins\CheckConnectPlugin;
@@ -67,7 +67,7 @@ abstract class SimpleBootstrap extends Bootstrap_Abstract
     /**
      * 通用初始化
      * @param \Yaf\Dispatcher $dispatcher
-     * @throws \Exception\Swoole\ServerException
+     * @throws \SyException\Swoole\ServerException
      */
     protected function universalInit(Dispatcher $dispatcher)
     {

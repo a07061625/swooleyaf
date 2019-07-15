@@ -7,7 +7,7 @@
 namespace QCloud\Cos;
 
 use Constant\ErrorCode;
-use Exception\QCloud\CosException;
+use SyException\QCloud\CosException;
 use QCloud\CloudBaseCos;
 use QCloud\CloudUtilCos;
 
@@ -53,7 +53,7 @@ class ObjectPost extends CloudBaseCos
 
     /**
      * @param string $acl
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setAcl(string $acl)
     {
@@ -66,7 +66,7 @@ class ObjectPost extends CloudBaseCos
 
     /**
      * @param string $filePath
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setFilePath(string $filePath)
     {
@@ -79,7 +79,7 @@ class ObjectPost extends CloudBaseCos
 
     /**
      * @param string $fileName
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setFileName(string $fileName)
     {
@@ -102,7 +102,7 @@ class ObjectPost extends CloudBaseCos
     /**
      * @param string $key
      * @param string $val
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function addExtendRedData(string $key, string $val)
     {

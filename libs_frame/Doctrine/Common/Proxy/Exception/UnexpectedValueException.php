@@ -22,7 +22,7 @@ namespace Doctrine\Common\Proxy\Exception;
 use UnexpectedValueException as BaseUnexpectedValueException;
 
 /**
- * Proxy Unexpected Value Exception.
+ * Proxy Unexpected Value SyException.
  *
  * @link   www.doctrine-project.org
  * @since  2.4

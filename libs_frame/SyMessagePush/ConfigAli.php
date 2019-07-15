@@ -8,7 +8,7 @@
 namespace SyMessagePush;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\AliPushException;
+use SyException\MessagePush\AliPushException;
 
 class ConfigAli
 {
@@ -46,7 +46,7 @@ class ConfigAli
 
     /**
      * @param string $accessKey
-     * @throws \Exception\MessagePush\AliPushException
+     * @throws \SyException\MessagePush\AliPushException
      */
     public function setAccessKey(string $accessKey)
     {
@@ -67,7 +67,7 @@ class ConfigAli
 
     /**
      * @param string $accessSecret
-     * @throws \Exception\MessagePush\AliPushException
+     * @throws \SyException\MessagePush\AliPushException
      */
     public function setAccessSecret(string $accessSecret)
     {
@@ -88,7 +88,7 @@ class ConfigAli
 
     /**
      * @param string $regionId
-     * @throws \Exception\MessagePush\AliPushException
+     * @throws \SyException\MessagePush\AliPushException
      */
     public function setRegionId(string $regionId)
     {

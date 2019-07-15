@@ -8,7 +8,7 @@
 namespace Tool;
 
 use Constant\ProjectCode;
-use Exception\User\LoginException;
+use SyException\User\LoginException;
 use Traits\SimpleTrait;
 
 /**
@@ -21,7 +21,7 @@ class SyUser extends SyUserJwt
 
     /**
      * 检查是否已登录
-     * @throws \Exception\User\LoginException
+     * @throws \SyException\User\LoginException
      */
     public static function checkLogin()
     {

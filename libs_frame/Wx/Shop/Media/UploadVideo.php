@@ -8,7 +8,7 @@
 namespace Wx\Shop\Media;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -51,7 +51,7 @@ class UploadVideo extends WxBaseShop
 
     /**
      * @param string $mediaId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMediaId(string $mediaId)
     {
@@ -64,7 +64,7 @@ class UploadVideo extends WxBaseShop
 
     /**
      * @param string $title
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTitle(string $title)
     {

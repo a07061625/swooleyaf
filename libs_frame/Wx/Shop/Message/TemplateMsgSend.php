@@ -8,7 +8,7 @@
 namespace Wx\Shop\Message;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -62,7 +62,7 @@ class TemplateMsgSend extends WxBaseShop
 
     /**
      * @param string $openid
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
     {
@@ -75,7 +75,7 @@ class TemplateMsgSend extends WxBaseShop
 
     /**
      * @param string $templateId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTemplateId(string $templateId)
     {
@@ -88,7 +88,7 @@ class TemplateMsgSend extends WxBaseShop
 
     /**
      * @param string $redirectUrl
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setRedirectUrl(string $redirectUrl)
     {
@@ -101,7 +101,7 @@ class TemplateMsgSend extends WxBaseShop
 
     /**
      * @param array $miniProgram
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMiniProgram(array $miniProgram)
     {

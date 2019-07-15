@@ -9,7 +9,7 @@ namespace Wx\Shop\Pay;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -77,7 +77,7 @@ class CouponQueryStock extends WxBaseShop
 
     /**
      * @param string $couponStockId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setCouponStockId(string $couponStockId)
     {
@@ -90,7 +90,7 @@ class CouponQueryStock extends WxBaseShop
 
     /**
      * @param string $opUserId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOpUserId(string $opUserId)
     {

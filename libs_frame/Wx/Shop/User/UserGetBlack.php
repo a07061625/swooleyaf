@@ -8,7 +8,7 @@
 namespace Wx\Shop\User;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -41,7 +41,7 @@ class UserGetBlack extends WxBaseShop
 
     /**
      * @param string $beginOpenid
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setBeginOpenid(string $beginOpenid)
     {

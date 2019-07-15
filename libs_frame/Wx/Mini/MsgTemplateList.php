@@ -8,7 +8,7 @@
 namespace Wx\Mini;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseMini;
 use Wx\WxUtilBase;

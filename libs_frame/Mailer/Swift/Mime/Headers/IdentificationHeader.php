@@ -169,7 +169,7 @@ class Swift_Mime_Headers_IdentificationHeader extends Swift_Mime_Headers_Abstrac
     }
 
     /**
-     * Throws an Exception if the id passed does not comply with RFC 2822.
+     * Throws an SyException if the id passed does not comply with RFC 2822.
      *
      * @param string $id
      *

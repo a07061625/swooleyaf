@@ -9,7 +9,7 @@ namespace Wx\Shop\Pay;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -129,7 +129,7 @@ class RedPackGroup extends WxBaseShop
 
     /**
      * @param string $mchBillNo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMchBillNo(string $mchBillNo)
     {
@@ -142,7 +142,7 @@ class RedPackGroup extends WxBaseShop
 
     /**
      * @param string $sendName
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setSendName(string $sendName)
     {
@@ -155,7 +155,7 @@ class RedPackGroup extends WxBaseShop
 
     /**
      * @param string $openid
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setReOpenid(string $openid)
     {
@@ -168,7 +168,7 @@ class RedPackGroup extends WxBaseShop
 
     /**
      * @param int $totalAmount
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTotalAmount(int $totalAmount)
     {
@@ -181,7 +181,7 @@ class RedPackGroup extends WxBaseShop
 
     /**
      * @param int $totalNum
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTotalNum(int $totalNum)
     {
@@ -194,7 +194,7 @@ class RedPackGroup extends WxBaseShop
 
     /**
      * @param string $wishing
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setWishing(string $wishing)
     {
@@ -207,7 +207,7 @@ class RedPackGroup extends WxBaseShop
 
     /**
      * @param string $actName
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setActName(string $actName)
     {
@@ -220,7 +220,7 @@ class RedPackGroup extends WxBaseShop
 
     /**
      * @param string $remark
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setRemark(string $remark)
     {
@@ -233,7 +233,7 @@ class RedPackGroup extends WxBaseShop
 
     /**
      * @param string $sceneId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setSceneId(string $sceneId)
     {
@@ -263,7 +263,7 @@ class RedPackGroup extends WxBaseShop
 
     /**
      * @param string $consumeMchId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setConsumeMchId(string $consumeMchId)
     {

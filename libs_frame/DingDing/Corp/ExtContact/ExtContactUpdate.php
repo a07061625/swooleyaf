@@ -10,7 +10,7 @@ namespace DingDing\Corp\ExtContact;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -86,7 +86,7 @@ class ExtContactUpdate extends TalkBaseCorp
 
     /**
      * @param string $userId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserId(string $userId)
     {
@@ -107,7 +107,7 @@ class ExtContactUpdate extends TalkBaseCorp
 
     /**
      * @param array $labelIds
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setLabelIds(array $labelIds)
     {
@@ -156,7 +156,7 @@ class ExtContactUpdate extends TalkBaseCorp
 
     /**
      * @param string $followerUserId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setFollowerUserId(string $followerUserId)
     {

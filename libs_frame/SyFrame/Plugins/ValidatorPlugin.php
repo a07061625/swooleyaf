@@ -9,7 +9,7 @@ namespace SyFrame\Plugins;
 
 use Constant\ErrorCode;
 use Constant\Server;
-use Exception\Validator\ValidatorException;
+use SyException\Validator\ValidatorException;
 use Reflection\BaseReflect;
 use Request\SyRequest;
 use Validator\Validator;
@@ -35,7 +35,7 @@ class ValidatorPlugin extends Plugin_Abstract
      * @param \Yaf\Request_Abstract $request
      * @param \Yaf\Response_Abstract $response
      * @return void
-     * @throws \Exception\Validator\ValidatorException
+     * @throws \SyException\Validator\ValidatorException
      */
     public function preDispatch(Request_Abstract $request, Response_Abstract $response)
     {

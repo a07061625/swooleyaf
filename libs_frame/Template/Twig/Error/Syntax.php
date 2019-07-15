@@ -11,7 +11,7 @@
  */
 
 /**
- * Exception thrown when a syntax error occurs during lexing or parsing of a template.
+ * SyException thrown when a syntax error occurs during lexing or parsing of a template.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */

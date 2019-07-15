@@ -8,7 +8,7 @@
 namespace Map;
 
 use Constant\ErrorCode;
-use Exception\Map\BaiduMapException;
+use SyException\Map\BaiduMapException;
 
 class ConfigBaiDu
 {
@@ -41,7 +41,7 @@ class ConfigBaiDu
 
     /**
      * @param string $ak
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setAk(string $ak)
     {
@@ -62,7 +62,7 @@ class ConfigBaiDu
 
     /**
      * @param string $serverIp
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setServerIp(string $serverIp)
     {

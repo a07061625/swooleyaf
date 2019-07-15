@@ -45,7 +45,7 @@ class InfoRemarkUpdate extends WxBaseShop
 
     /**
      * @param string $openid
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
     {
@@ -58,7 +58,7 @@ class InfoRemarkUpdate extends WxBaseShop
 
     /**
      * @param string $remark
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setRemark(string $remark)
     {

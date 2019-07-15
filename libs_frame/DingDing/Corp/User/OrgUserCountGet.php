@@ -10,7 +10,7 @@ namespace DingDing\Corp\User;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 /**
  * 获取企业员工人数
@@ -39,7 +39,7 @@ class OrgUserCountGet extends TalkBaseCorp
 
     /**
      * @param int $onlyActive
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOnlyActive(int $onlyActive)
     {

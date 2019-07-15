@@ -8,7 +8,7 @@
 namespace Wx\Corp\User;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -129,7 +129,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param string $userId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setUserId(string $userId)
     {
@@ -142,7 +142,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param string $name
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setName(string $name)
     {
@@ -155,7 +155,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param string $alias
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAlias(string $alias)
     {
@@ -168,7 +168,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param string $mobile
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMobile(string $mobile)
     {
@@ -181,7 +181,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param array $departmentInfo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function addDepartmentInfo(array $departmentInfo)
     {
@@ -225,7 +225,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param int $gender
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setGender(int $gender)
     {
@@ -238,7 +238,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param string $email
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setEmail(string $email)
     {
@@ -251,7 +251,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param string $telephone
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTelephone(string $telephone)
     {
@@ -265,7 +265,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param string $avatarMediaId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAvatarMediaId(string $avatarMediaId)
     {
@@ -278,7 +278,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param int $enable
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setEnable(int $enable)
     {
@@ -291,7 +291,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param array $extAttr
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setExtAttr(array $extAttr)
     {
@@ -312,7 +312,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param array $externalProfile
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setExternalProfile(array $externalProfile)
     {
@@ -325,7 +325,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param string $externalPosition
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setExternalPosition(string $externalPosition)
     {

@@ -8,7 +8,7 @@
 namespace AliPay;
 
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayPayException;
+use SyException\AliPay\AliPayPayException;
 use Tool\Tool;
 
 class PayConfig
@@ -102,7 +102,7 @@ class PayConfig
 
     /**
      * @param string $appId
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setAppId(string $appId)
     {
@@ -123,7 +123,7 @@ class PayConfig
 
     /**
      * @param string $sellerId
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setSellerId(string $sellerId)
     {
@@ -144,7 +144,7 @@ class PayConfig
 
     /**
      * @param string $urlNotify
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setUrlNotify(string $urlNotify)
     {
@@ -165,7 +165,7 @@ class PayConfig
 
     /**
      * @param string $urlReturn
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setUrlReturn(string $urlReturn)
     {
@@ -186,7 +186,7 @@ class PayConfig
 
     /**
      * @param string $priRsaKey
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setPriRsaKey(string $priRsaKey)
     {
@@ -216,7 +216,7 @@ class PayConfig
 
     /**
      * @param string $pubRsaKey
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setPubRsaKey(string $pubRsaKey)
     {
@@ -237,7 +237,7 @@ class PayConfig
 
     /**
      * @param string $pubAliKey
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setPubAliKey(string $pubAliKey)
     {

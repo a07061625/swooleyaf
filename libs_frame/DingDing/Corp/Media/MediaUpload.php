@@ -10,7 +10,7 @@ namespace DingDing\Corp\Media;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 /**
  * 上传媒体文件
@@ -45,7 +45,7 @@ class MediaUpload extends TalkBaseCorp
 
     /**
      * @param string $type
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setType(string $type)
     {
@@ -58,7 +58,7 @@ class MediaUpload extends TalkBaseCorp
 
     /**
      * @param string $filePath
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setFilePath(string $filePath)
     {

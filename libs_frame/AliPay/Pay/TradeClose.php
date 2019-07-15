@@ -51,7 +51,7 @@ class TradeClose extends AliPayBase
 
     /**
      * @param string $tradeNo
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setTradeNo(string $tradeNo)
     {

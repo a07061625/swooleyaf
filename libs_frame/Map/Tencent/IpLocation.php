@@ -8,7 +8,7 @@
 namespace Map\Tencent;
 
 use Constant\ErrorCode;
-use Exception\Map\TencentMapException;
+use SyException\Map\TencentMapException;
 use Map\MapBaseTencent;
 
 class IpLocation extends MapBaseTencent
@@ -32,7 +32,7 @@ class IpLocation extends MapBaseTencent
 
     /**
      * @param string $ip
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setIp(string $ip)
     {

@@ -8,7 +8,7 @@
 namespace Map\Tencent;
 
 use Constant\ErrorCode;
-use Exception\Map\TencentMapException;
+use SyException\Map\TencentMapException;
 use Map\MapBaseTencent;
 
 class PlaceSearch extends MapBaseTencent
@@ -120,7 +120,7 @@ class PlaceSearch extends MapBaseTencent
 
     /**
      * @param string $keyword
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setKeyword(string $keyword)
     {
@@ -134,7 +134,7 @@ class PlaceSearch extends MapBaseTencent
 
     /**
      * @param int $pageSize
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setPageSize(int $pageSize)
     {
@@ -147,7 +147,7 @@ class PlaceSearch extends MapBaseTencent
 
     /**
      * @param int $pageIndex
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setPageIndex(int $pageIndex)
     {
@@ -160,7 +160,7 @@ class PlaceSearch extends MapBaseTencent
 
     /**
      * @param string $filter
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setFilter(string $filter)
     {
@@ -176,7 +176,7 @@ class PlaceSearch extends MapBaseTencent
      * 设置排序
      * @param string $field 排序字段
      * @param bool $isAsc 是否为升序,true:升序 false:降序
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setOrderBy(string $field, bool $isAsc = true)
     {
@@ -190,7 +190,7 @@ class PlaceSearch extends MapBaseTencent
 
     /**
      * @param string $areaRegionCityName
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setAreaRegionCityName(string $areaRegionCityName)
     {
@@ -204,7 +204,7 @@ class PlaceSearch extends MapBaseTencent
 
     /**
      * @param int $areaRegionAutoExtend
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setAreaRegionAutoExtend(int $areaRegionAutoExtend)
     {
@@ -218,7 +218,7 @@ class PlaceSearch extends MapBaseTencent
     /**
      * @param string $lng 经度
      * @param string $lat 纬度
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setAreaRegionLngAndLat(string $lng, string $lat)
     {
@@ -236,7 +236,7 @@ class PlaceSearch extends MapBaseTencent
     /**
      * @param string $lng 经度
      * @param string $lat 纬度
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function getAreaNearbyLngAndLat(string $lng, string $lat)
     {
@@ -253,7 +253,7 @@ class PlaceSearch extends MapBaseTencent
 
     /**
      * @param int $areaNearbyRadius
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setAreaNearbyRadius(int $areaNearbyRadius)
     {
@@ -269,7 +269,7 @@ class PlaceSearch extends MapBaseTencent
      * @param string $lat1 西南角纬度
      * @param string $lng2 东北角经度
      * @param string $lat2 东北角纬度
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setAreaRectangLngAndLat(string $lng1, string $lat1, string $lng2, string $lat2)
     {
@@ -297,7 +297,7 @@ class PlaceSearch extends MapBaseTencent
 
     /**
      * @param string $searchType
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setSearchType(string $searchType)
     {

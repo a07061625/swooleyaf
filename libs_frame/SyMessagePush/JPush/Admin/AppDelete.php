@@ -8,7 +8,7 @@
 namespace SyMessagePush\JPush\Admin;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\AdminBase;
 use SyMessagePush\PushUtilJPush;
 
@@ -32,7 +32,7 @@ class AppDelete extends AdminBase
 
     /**
      * @param string $appKey
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setAppKey(string $appKey)
     {

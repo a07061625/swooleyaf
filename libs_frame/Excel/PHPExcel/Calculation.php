@@ -3800,7 +3800,7 @@ class PHPExcel_Calculation
                                 $matrixResult = $matrix->concat($operand2);
                                 $result = $matrixResult->getArray();
                             } catch (PHPExcel_Exception $ex) {
-                                $this->_debugLog->writeDebugLog('JAMA Matrix Exception: ', $ex->getMessage());
+                                $this->_debugLog->writeDebugLog('JAMA Matrix SyException: ', $ex->getMessage());
                                 $result = '#VALUE!';
                             }
                         } else {
@@ -3848,7 +3848,7 @@ class PHPExcel_Calculation
                         $matrixResult = $matrix1->arrayTimesEquals($multiplier);
                         $result = $matrixResult->getArray();
                     } catch (PHPExcel_Exception $ex) {
-                        $this->_debugLog->writeDebugLog('JAMA Matrix Exception: ', $ex->getMessage());
+                        $this->_debugLog->writeDebugLog('JAMA Matrix SyException: ', $ex->getMessage());
                         $result = '#VALUE!';
                     }
                     $this->_debugLog->writeDebugLog('Evaluation Result is ', $this->showTypeDetails($result));
@@ -4270,7 +4270,7 @@ class PHPExcel_Calculation
                 $matrixResult = $matrix->$matrixFunction($operand2);
                 $result = $matrixResult->getArray();
             } catch (PHPExcel_Exception $ex) {
-                $this->_debugLog->writeDebugLog('JAMA Matrix Exception: ', $ex->getMessage());
+                $this->_debugLog->writeDebugLog('JAMA Matrix SyException: ', $ex->getMessage());
                 $result = '#VALUE!';
             }
         } else {

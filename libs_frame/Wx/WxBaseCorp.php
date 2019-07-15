@@ -8,7 +8,7 @@
 namespace Wx;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 
 abstract class WxBaseCorp extends WxBase
 {
@@ -74,7 +74,7 @@ abstract class WxBaseCorp extends WxBase
 
     /**
      * @param int $accessTokenType
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAccessTokenType(int $accessTokenType)
     {

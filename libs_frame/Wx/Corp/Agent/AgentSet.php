@@ -9,7 +9,7 @@ namespace Wx\Corp\Agent;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -82,7 +82,7 @@ class AgentSet extends WxBaseCorp
 
     /**
      * @param int $reportLocationFlag
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setReportLocationFlag(int $reportLocationFlag)
     {
@@ -107,7 +107,7 @@ class AgentSet extends WxBaseCorp
 
     /**
      * @param string $name
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setName(string $name)
     {
@@ -120,7 +120,7 @@ class AgentSet extends WxBaseCorp
 
     /**
      * @param string $description
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setDescription(string $description)
     {
@@ -136,7 +136,7 @@ class AgentSet extends WxBaseCorp
 
     /**
      * @param string $redirectDomain
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setRedirectDomain(string $redirectDomain)
     {
@@ -162,7 +162,7 @@ class AgentSet extends WxBaseCorp
 
     /**
      * @param string $homeUrl
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setHomeUrl(string $homeUrl)
     {

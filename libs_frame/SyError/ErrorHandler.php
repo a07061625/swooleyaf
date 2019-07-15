@@ -9,7 +9,7 @@ namespace SyError;
 
 use Constant\ErrorCode;
 use Constant\Server;
-use Exception\Common\ErrorException;
+use SyException\Common\ErrorException;
 use Log\Log;
 use Yaf\Registry;
 
@@ -25,7 +25,7 @@ class ErrorHandler
      * @param string $errStr
      * @param string $errFile
      * @param int $errLine
-     * @throws \Exception\Common\ErrorException
+     * @throws \SyException\Common\ErrorException
      */
     public static function handleError($errNo, $errStr, $errFile, $errLine)
     {

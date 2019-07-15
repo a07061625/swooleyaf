@@ -8,7 +8,7 @@
 namespace SyMessagePush\JPush\Device;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\DeviceBase;
 use SyMessagePush\PushUtilJPush;
 use Tool\Tool;
@@ -48,7 +48,7 @@ class DeviceSet extends DeviceBase
 
     /**
      * @param string $registrationId
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setRegistrationId(string $registrationId)
     {
@@ -70,7 +70,7 @@ class DeviceSet extends DeviceBase
 
     /**
      * @param string $alias
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setAlias(string $alias)
     {
@@ -85,7 +85,7 @@ class DeviceSet extends DeviceBase
 
     /**
      * @param string $mobile
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setMobile(string $mobile)
     {

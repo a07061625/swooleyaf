@@ -9,7 +9,7 @@ namespace Validator\Impl\String;
 
 use Constant\ErrorCode;
 use Constant\Project;
-use Exception\Validator\ValidatorException;
+use SyException\Validator\ValidatorException;
 use SyServer\BaseServer;
 use Validator\BaseValidator;
 use Validator\ValidatorService;

@@ -16,14 +16,14 @@
 interface Swift_Plugins_Pop_Pop3Connection
 {
     /**
-     * Connect to the POP3 host and throw an Exception if it fails.
+     * Connect to the POP3 host and throw an SyException if it fails.
      *
      * @throws Swift_Plugins_Pop_Pop3Exception
      */
     public function connect();
 
     /**
-     * Disconnect from the POP3 host and throw an Exception if it fails.
+     * Disconnect from the POP3 host and throw an SyException if it fails.
      *
      * @throws Swift_Plugins_Pop_Pop3Exception
      */

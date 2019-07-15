@@ -12,7 +12,7 @@ use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
 use DingDing\TalkUtilBase;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -42,7 +42,7 @@ class UserInfoGetByCode extends TalkBaseCorp
 
     /**
      * @param string $tmpAuthCode
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setTmpAuthCode(string $tmpAuthCode)
     {

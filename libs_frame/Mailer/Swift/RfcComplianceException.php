@@ -9,7 +9,7 @@
  */
 
 /**
- * RFC Compliance Exception class.
+ * RFC Compliance SyException class.
  *
  * @author Chris Corbyn
  */

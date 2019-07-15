@@ -2,7 +2,7 @@
 
 namespace Egulias\EmailValidator\Validation\Exception;
 
-use Exception;
+use SyException;
 
 class EmptyValidationList extends \InvalidArgumentException
 {

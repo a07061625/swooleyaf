@@ -8,7 +8,7 @@
 namespace DingDing;
 
 use Constant\ErrorCode;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 class TalkConfigProvider
 {
@@ -81,7 +81,7 @@ class TalkConfigProvider
 
     /**
      * @param string $corpId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setCorpId(string $corpId)
     {
@@ -102,7 +102,7 @@ class TalkConfigProvider
 
     /**
      * @param string $ssoSecret
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSsoSecret(string $ssoSecret)
     {
@@ -123,7 +123,7 @@ class TalkConfigProvider
 
     /**
      * @param string $token
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setToken(string $token)
     {
@@ -144,7 +144,7 @@ class TalkConfigProvider
 
     /**
      * @param string $aesKey
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setAesKey(string $aesKey)
     {
@@ -165,7 +165,7 @@ class TalkConfigProvider
 
     /**
      * @param int $suiteId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSuiteId(int $suiteId)
     {
@@ -186,7 +186,7 @@ class TalkConfigProvider
 
     /**
      * @param string $suiteKey
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSuiteKey(string $suiteKey)
     {
@@ -207,7 +207,7 @@ class TalkConfigProvider
 
     /**
      * @param string $suiteSecret
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSuiteSecret(string $suiteSecret)
     {
@@ -228,7 +228,7 @@ class TalkConfigProvider
 
     /**
      * @param string $loginAppId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setLoginAppId(string $loginAppId)
     {
@@ -249,7 +249,7 @@ class TalkConfigProvider
 
     /**
      * @param string $loginAppSecret
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setLoginAppSecret(string $loginAppSecret)
     {
@@ -270,7 +270,7 @@ class TalkConfigProvider
 
     /**
      * @param string $loginUrlCallback
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setLoginUrlCallback(string $loginUrlCallback)
     {

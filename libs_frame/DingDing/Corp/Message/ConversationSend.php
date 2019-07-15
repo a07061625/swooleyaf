@@ -10,7 +10,7 @@ namespace DingDing\Corp\Message;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 use Tool\Tool;
 
 /**
@@ -50,7 +50,7 @@ class ConversationSend extends TalkBaseCorp
 
     /**
      * @param string $sender
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSender(string $sender)
     {
@@ -63,7 +63,7 @@ class ConversationSend extends TalkBaseCorp
 
     /**
      * @param string $cid
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setCid(string $cid)
     {
@@ -77,7 +77,7 @@ class ConversationSend extends TalkBaseCorp
     /**
      * @param string $type
      * @param array $data
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setMsgData(string $type, array $data)
     {

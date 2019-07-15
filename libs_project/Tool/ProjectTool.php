@@ -11,8 +11,8 @@ use Constant\ErrorCode;
 use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxCorpProviderException;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxCorpProviderException;
+use SyException\Wx\WxOpenException;
 use Factories\SyTaskMysqlFactory;
 use Traits\SimpleTrait;
 use Wx\CorpProvider\Common\AuthInfoGet;
@@ -26,7 +26,7 @@ final class ProjectTool
      * 处理微信开放平台公众号授权
      * @param int $optionType 操作类型
      * @param array $data
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public static function handleAppAuthForWxOpen(int $optionType, array $data)
     {
@@ -118,7 +118,7 @@ final class ProjectTool
      * 获取微信开放平台授权公众号信息
      * @param string $appId 授权公众号app id
      * @return array
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public static function getWxOpenAuthorizerInfo(string $appId)
     {
@@ -159,7 +159,7 @@ final class ProjectTool
      * 处理服务商企业微信授权
      * @param int $optionType 操作类型
      * @param array $data
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public static function handleAuthForWxCorpProvider(int $optionType, array $data)
     {
@@ -267,7 +267,7 @@ final class ProjectTool
      * 获取服务商企业微信授权信息
      * @param string $corpId 授权企业ID
      * @return array
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public static function getWxCorpProviderAuthorizerInfo(string $corpId)
     {

@@ -22,7 +22,7 @@ namespace Doctrine\Common\Proxy\Exception;
 use OutOfBoundsException as BaseOutOfBoundsException;
 
 /**
- * Proxy Invalid Argument Exception.
+ * Proxy Invalid Argument SyException.
  *
  * @link   www.doctrine-project.org
  * @author Fredrik Wendel <fredrik_w@users.sourceforge.net>

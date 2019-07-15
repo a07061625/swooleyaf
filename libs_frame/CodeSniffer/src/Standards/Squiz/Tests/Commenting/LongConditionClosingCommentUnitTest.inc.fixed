@@ -546,7 +546,7 @@ try {
     // some code here.
     // some code here.
     // some code here.
-} catch (Exception $e) {
+} catch (SyException $e) {
     // some code here.
     // some code here.
     // some code here.
@@ -568,7 +568,7 @@ try {
     // some code here.
     // some code here.
     // some code here.
-} catch (Exception $e) {
+} catch (SyException $e) {
     // some code here.
     // some code here.
     // some code here.
@@ -585,7 +585,7 @@ try {
     // some code here.
     // some code here.
     // some code here.
-} catch (Exception $e) {
+} catch (SyException $e) {
     // some code here.
     // some code here.
     // some code here.
@@ -624,7 +624,7 @@ try {
     // some code here.
 } catch (ChannelException $e) {
     // some code here.
-} catch (Exception $e) {
+} catch (SyException $e) {
     // some code here.
 }//end try
 

@@ -105,12 +105,12 @@ if ($i == 0) { /* this is ok */
 
 try {
     $code = 'this';
-} catch (Exception $e) {
+} catch (SyException $e) {
     // Caught!
 }
 
 try {
-$code = 'this'; } catch (Exception $e) {
+$code = 'this'; } catch (SyException $e) {
     // Caught!
 }
 
@@ -282,7 +282,7 @@ catch (CustomException $exception) {
     $x = 2;
 }
 // phpcs:ignore Standard.Category.Sniff
-catch (Exception $exception) {
+catch (SyException $exception) {
     $x = 2;
 } finally {
     $x = 3;

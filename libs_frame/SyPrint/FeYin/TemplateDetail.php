@@ -8,7 +8,7 @@
 namespace SyPrint\FeYin;
 
 use Constant\ErrorCode;
-use Exception\SyPrint\FeYinException;
+use SyException\SyPrint\FeYinException;
 use SyPrint\PrintBaseFeYin;
 use SyPrint\PrintUtilBase;
 use SyPrint\PrintUtilFeYin;
@@ -39,7 +39,7 @@ class TemplateDetail extends PrintBaseFeYin
 
     /**
      * @param string $templateId
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setTemplateId(string $templateId)
     {

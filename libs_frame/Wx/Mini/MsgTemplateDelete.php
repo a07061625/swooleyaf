@@ -8,7 +8,7 @@
 namespace Wx\Mini;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseMini;
 use Wx\WxUtilBase;
@@ -47,7 +47,7 @@ class MsgTemplateDelete extends WxBaseMini
 
     /**
      * @param string $templateId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTemplateId(string $templateId)
     {
@@ -60,7 +60,7 @@ class MsgTemplateDelete extends WxBaseMini
 
     /**
      * @param string $platType
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPlatType(string $platType)
     {

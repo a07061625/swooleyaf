@@ -9,7 +9,7 @@ namespace AliPay\Fund;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayFundException;
+use SyException\AliPay\AliPayFundException;
 
 class TransToAccountTransfer extends AliPayBase
 {
@@ -66,7 +66,7 @@ class TransToAccountTransfer extends AliPayBase
 
     /**
      * @param string $outBizNo
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOutBizNo(string $outBizNo)
     {
@@ -80,7 +80,7 @@ class TransToAccountTransfer extends AliPayBase
     /**
      * @param string $payeeType
      * @param string $payeeAccount
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setPayeeTypeAndAccount(string $payeeType, string $payeeAccount)
     {
@@ -96,7 +96,7 @@ class TransToAccountTransfer extends AliPayBase
 
     /**
      * @param int $amount
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setAmount(int $amount)
     {

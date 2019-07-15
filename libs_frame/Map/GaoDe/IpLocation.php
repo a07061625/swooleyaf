@@ -8,7 +8,7 @@
 namespace Map\GaoDe;
 
 use Constant\ErrorCode;
-use Exception\Map\GaoDeMapException;
+use SyException\Map\GaoDeMapException;
 use Map\MapBaseGaoDe;
 
 /**
@@ -31,7 +31,7 @@ class IpLocation extends MapBaseGaoDe
 
     /**
      * @param string $ip
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setIp(string $ip)
     {

@@ -8,7 +8,7 @@
 namespace Wx\Shop\Merchant\Product;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -45,7 +45,7 @@ class ProductStatusModify extends WxBaseShop
 
     /**
      * @param string $productId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setProductId(string $productId)
     {
@@ -58,7 +58,7 @@ class ProductStatusModify extends WxBaseShop
 
     /**
      * @param int $status
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setStatus(int $status)
     {

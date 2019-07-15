@@ -8,7 +8,7 @@
 namespace Wx\Shop\Merchant\Common;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
@@ -45,7 +45,7 @@ class UploadImage extends WxBaseShop
 
     /**
      * @param string $imageName
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setImageName(string $imageName)
     {
@@ -58,7 +58,7 @@ class UploadImage extends WxBaseShop
 
     /**
      * @param string $imageContent
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setImageContent(string $imageContent)
     {

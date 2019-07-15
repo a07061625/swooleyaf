@@ -9,7 +9,7 @@ namespace Wx\Alone;
 
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseAlone;
 use Wx\WxUtilBase;

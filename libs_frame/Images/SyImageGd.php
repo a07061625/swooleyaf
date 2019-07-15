@@ -9,7 +9,7 @@ namespace Images;
 
 use Constant\ErrorCode;
 use Constant\Server;
-use Exception\Image\ImageException;
+use SyException\Image\ImageException;
 use Tool\Tool;
 
 class SyImageGd extends SyImageBase

@@ -8,7 +8,7 @@
 namespace Wx\Corp\Tag;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -47,7 +47,7 @@ class TagUpdate extends WxBaseCorp
 
     /**
      * @param int $tagId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTagId(int $tagId)
     {
@@ -60,7 +60,7 @@ class TagUpdate extends WxBaseCorp
 
     /**
      * @param string $tagName
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTagName(string $tagName)
     {

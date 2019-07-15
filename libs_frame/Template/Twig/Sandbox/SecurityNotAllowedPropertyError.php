@@ -10,7 +10,7 @@
  */
 
 /**
- * Exception thrown when a not allowed class property is used in a template.
+ * SyException thrown when a not allowed class property is used in a template.
  *
  * @author Kit Burton-Senior <mail@kitbs.com>
  */

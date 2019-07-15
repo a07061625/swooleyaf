@@ -10,7 +10,7 @@ namespace DingDing\Corp\Chat;
 use Constant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 /**
  * 获取会话
@@ -39,7 +39,7 @@ class ChatGet extends TalkBaseCorp
 
     /**
      * @param string $chatId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setChatId(string $chatId)
     {

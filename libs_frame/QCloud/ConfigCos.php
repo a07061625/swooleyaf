@@ -8,7 +8,7 @@
 namespace QCloud;
 
 use Constant\ErrorCode;
-use Exception\QCloud\CosException;
+use SyException\QCloud\CosException;
 
 class ConfigCos
 {
@@ -61,7 +61,7 @@ class ConfigCos
 
     /**
      * @param string $appId
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setAppId(string $appId)
     {
@@ -82,7 +82,7 @@ class ConfigCos
 
     /**
      * @param string $secretId
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setSecretId(string $secretId)
     {
@@ -103,7 +103,7 @@ class ConfigCos
 
     /**
      * @param string $secretKey
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setSecretKey(string $secretKey)
     {
@@ -124,7 +124,7 @@ class ConfigCos
 
     /**
      * @param string $bucketName
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setBucketName(string $bucketName)
     {
@@ -145,7 +145,7 @@ class ConfigCos
 
     /**
      * @param string $regionTag
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setRegionTag(string $regionTag)
     {

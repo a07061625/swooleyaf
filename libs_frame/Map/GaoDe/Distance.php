@@ -8,7 +8,7 @@
 namespace Map\GaoDe;
 
 use Constant\ErrorCode;
-use Exception\Map\GaoDeMapException;
+use SyException\Map\GaoDeMapException;
 use Map\MapBaseGaoDe;
 
 /**
@@ -42,7 +42,7 @@ class Distance extends MapBaseGaoDe
 
     /**
      * @param array $originList
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setOrigins(array $originList)
     {
@@ -66,7 +66,7 @@ class Distance extends MapBaseGaoDe
 
     /**
      * @param int $type
-     * @throws \Exception\Map\GaoDeMapException
+     * @throws \SyException\Map\GaoDeMapException
      */
     public function setType(int $type)
     {

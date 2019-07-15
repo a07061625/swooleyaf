@@ -8,7 +8,7 @@
 namespace Map\BaiDu;
 
 use Constant\ErrorCode;
-use Exception\Map\BaiduMapException;
+use SyException\Map\BaiduMapException;
 use Map\MapBaseBaiDu;
 use Tool\Tool;
 
@@ -61,7 +61,7 @@ class PlaceSuggestion extends MapBaseBaiDu
 
     /**
      * @param string $keyword
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setKeyword(string $keyword)
     {
@@ -74,7 +74,7 @@ class PlaceSuggestion extends MapBaseBaiDu
 
     /**
      * @param string $region
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setRegion(string $region)
     {
@@ -87,7 +87,7 @@ class PlaceSuggestion extends MapBaseBaiDu
 
     /**
      * @param string $cityLimit
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setCityLimit(string $cityLimit)
     {
@@ -109,7 +109,7 @@ class PlaceSuggestion extends MapBaseBaiDu
 
     /**
      * @param int $coordType
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setCoordType(int $coordType)
     {
@@ -122,7 +122,7 @@ class PlaceSuggestion extends MapBaseBaiDu
 
     /**
      * @param string $coordTypeReturn
-     * @throws \Exception\Map\BaiduMapException
+     * @throws \SyException\Map\BaiduMapException
      */
     public function setCoordTypeReturn(string $coordTypeReturn)
     {

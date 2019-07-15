@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use Constant\Project;
 use Constant\Server;
 use DesignPatterns\Factories\CacheSimpleFactory;
-use Exception\Validator\ValidatorException;
+use SyException\Validator\ValidatorException;
 use Validator\BaseValidator;
 use Validator\ValidatorService;
 use Yaf\Registry;

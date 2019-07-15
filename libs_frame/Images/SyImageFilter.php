@@ -9,7 +9,7 @@ namespace Images;
 
 use Constant\ErrorCode;
 use Constant\Server;
-use Exception\Image\ImageException;
+use SyException\Image\ImageException;
 use Grafika\Grafika;
 
 /**
@@ -40,7 +40,7 @@ class SyImageFilter
 
     /**
      * @param string $srcFile 来源全路径文件名
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function __construct(string $srcFile)
     {
@@ -89,7 +89,7 @@ class SyImageFilter
 
     /**
      * @param string $dstFile
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function setDstFile(string $dstFile)
     {
@@ -113,7 +113,7 @@ class SyImageFilter
      * 图片模糊
      * @param int $blur 模糊度,0到100,数值越大越模糊
      * @return $this
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function handleBlur(int $blur)
     {
@@ -131,7 +131,7 @@ class SyImageFilter
      * 图片亮度调整
      * @param int $brightness 亮度,-100到100,<0变暗 >0变亮
      * @return $this
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function handleBrightness(int $brightness)
     {
@@ -151,7 +151,7 @@ class SyImageFilter
      * @param int $green 绿色色值,-100到100,<0色值减少 >0色值增加
      * @param int $blue 蓝色色值,-100到100,<0色值减少 >0色值增加
      * @return $this
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function handleColorize(int $red, int $green, int $blue)
     {
@@ -175,7 +175,7 @@ class SyImageFilter
      * 改变图片对比度
      * @param int $contrast 对比度,-100到100,<0对比度减少 >0对比度增加
      * @return $this
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function handleContrast(int $contrast)
     {
@@ -193,7 +193,7 @@ class SyImageFilter
      * 图像噪点
      * @param string $ditherType 噪点类型,diffusion:扩散 ordered:规整
      * @return $this
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function handleDither(string $ditherType)
     {
@@ -211,7 +211,7 @@ class SyImageFilter
      * 图像色阶调整,使图像看起来颜色更加正确
      * @param float $gamma 色阶
      * @return $this
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function handleGamma($gamma)
     {
@@ -253,7 +253,7 @@ class SyImageFilter
      * 图片像素化、栅格化
      * @param int $pixel 像素
      * @return $this
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function handlePixelate(int $pixel)
     {
@@ -271,7 +271,7 @@ class SyImageFilter
      * 图片锐化,补偿图像的轮廓,增强图像的边缘及灰度跳变的部分,使图像变得清晰
      * @param int $sharpen 锐化值,1到100
      * @return $this
-     * @throws \Exception\Image\ImageException
+     * @throws \SyException\Image\ImageException
      */
     public function handleSharpen(int $sharpen)
     {

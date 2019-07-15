@@ -18,7 +18,7 @@ $result = myFunction($arg1,
                      $arg4, 
                      $arg5);
 
-throw new Exception("This is some massive string for a message", 
+throw new SyException("This is some massive string for a message",
                          $cause);
 
 // Function definitions are ignored

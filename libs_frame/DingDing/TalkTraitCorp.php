@@ -8,7 +8,7 @@
 namespace DingDing;
 
 use Constant\ErrorCode;
-use Exception\DingDing\TalkException;
+use SyException\DingDing\TalkException;
 
 trait TalkTraitCorp
 {
@@ -18,7 +18,7 @@ trait TalkTraitCorp
      * @param string $corpId 企业ID
      * @param string $agentTag 应用标识
      * @return string
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     private function getAccessToken(int $type, string $corpId, string $agentTag = '') : string
     {

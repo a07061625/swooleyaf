@@ -9,7 +9,7 @@ namespace AliPay\Life;
 
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
-use Exception\AliPay\AliPayLifeException;
+use SyException\AliPay\AliPayLifeException;
 
 class MessageQuery extends AliPayBase
 {
@@ -31,7 +31,7 @@ class MessageQuery extends AliPayBase
 
     /**
      * @param string $messageId
-     * @throws \Exception\AliPay\AliPayLifeException
+     * @throws \SyException\AliPay\AliPayLifeException
      */
     public function addMessageId(string $messageId)
     {

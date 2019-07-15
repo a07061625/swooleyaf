@@ -13,7 +13,7 @@ use DB\Models\NotORM\NotORM;
 use DB\Models\NotORM\NotORM_Result;
 use DB\Models\NotORM\NotORM_Structure_Convention;
 use DesignPatterns\Singletons\MysqlSingleton;
-use Exception\Mysql\MysqlException;
+use SyException\Mysql\MysqlException;
 use Log\Log;
 
 class MysqlModel extends BaseModel
@@ -146,7 +146,7 @@ class MysqlModel extends BaseModel
      * @param int $page 页数
      * @param int $limit 分页限制
      * @return array
-     * @throws \Exception\Mysql\MysqlException
+     * @throws \SyException\Mysql\MysqlException
      */
     public function select(NotORM_Result $result, int $page = 1, int $limit = 1000) : array
     {
@@ -171,7 +171,7 @@ class MysqlModel extends BaseModel
      * @param \DB\Models\NotORM\NotORM_Result $result
      * @param int $page 页数
      * @param int $limit 分页限制
-     * @throws \Exception\Mysql\MysqlException
+     * @throws \SyException\Mysql\MysqlException
      * @return array
      */
     public function findPage(NotORM_Result $result, int $page, int $limit) : array
@@ -206,7 +206,7 @@ class MysqlModel extends BaseModel
     /**
      * 查询单条数据
      * @param \DB\Models\NotORM\NotORM_Result $result
-     * @throws \Exception\Mysql\MysqlException
+     * @throws \SyException\Mysql\MysqlException
      * @return array
      */
     public function findOne(NotORM_Result $result) : array
@@ -269,7 +269,7 @@ class MysqlModel extends BaseModel
      * 修改数据
      * @param \DB\Models\NotORM\NotORM_Result $result
      * @param array $data
-     * @throws \Exception\Mysql\MysqlException
+     * @throws \SyException\Mysql\MysqlException
      * @return mixed
      */
     public function update(NotORM_Result $result, array $data)
@@ -288,7 +288,7 @@ class MysqlModel extends BaseModel
     /**
      * 插入数据
      * @param array $data
-     * @throws \Exception\Mysql\MysqlException
+     * @throws \SyException\Mysql\MysqlException
      * @return int|string
      */
     public function insert(array $data)
@@ -314,7 +314,7 @@ class MysqlModel extends BaseModel
      * @param array $unique
      * @param array $insert
      * @param array $update
-     * @throws \Exception\Mysql\MysqlException
+     * @throws \SyException\Mysql\MysqlException
      * @return mixed
      */
     public function insertOrUpdate(NotORM_Result $result, array $unique, array $insert, array $update = [])
@@ -333,7 +333,7 @@ class MysqlModel extends BaseModel
     /**
      * 删除数据
      * @param \DB\Models\NotORM\NotORM_Result $result
-     * @throws \Exception\Mysql\MysqlException
+     * @throws \SyException\Mysql\MysqlException
      * @return mixed
      */
     public function delete(NotORM_Result $result)

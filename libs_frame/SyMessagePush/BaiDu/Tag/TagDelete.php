@@ -8,7 +8,7 @@
 namespace SyMessagePush\BaiDu\Tag;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\BaiDuPushException;
+use SyException\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
 
 class TagDelete extends PushBaseBaiDu
@@ -31,7 +31,7 @@ class TagDelete extends PushBaseBaiDu
 
     /**
      * @param string $tag
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setTag(string $tag)
     {

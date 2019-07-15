@@ -9,7 +9,7 @@ namespace DesignPatterns\Singletons;
 
 use Constant\ErrorCode;
 use Constant\Project;
-use Exception\AliPay\AliPayPayException;
+use SyException\AliPay\AliPayPayException;
 use Tool\Tool;
 use Traits\AliPayConfigTrait;
 use Traits\SingletonTrait;
@@ -59,7 +59,7 @@ class AliPayConfigSingleton
      * 获取支付配置
      * @param string $appId
      * @return \AliPay\PayConfig
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function getPayConfig(string $appId)
     {

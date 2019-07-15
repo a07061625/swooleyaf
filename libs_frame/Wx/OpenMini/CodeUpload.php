@@ -8,7 +8,7 @@
 namespace Wx\OpenMini;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use Tool\Tool;
 use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
@@ -56,7 +56,7 @@ class CodeUpload extends WxBaseOpenMini
 
     /**
      * @param string $templateId
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setTemplateId(string $templateId)
     {
@@ -69,7 +69,7 @@ class CodeUpload extends WxBaseOpenMini
 
     /**
      * @param string $userVersion
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setUserVersion(string $userVersion)
     {
@@ -82,7 +82,7 @@ class CodeUpload extends WxBaseOpenMini
 
     /**
      * @param string $userDesc
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setUserDesc(string $userDesc)
     {
@@ -95,7 +95,7 @@ class CodeUpload extends WxBaseOpenMini
 
     /**
      * @param array $extData
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setExtData(array $extData)
     {

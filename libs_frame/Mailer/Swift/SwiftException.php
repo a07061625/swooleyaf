@@ -9,7 +9,7 @@
  */
 
 /**
- * Base Exception class.
+ * Base SyException class.
  *
  * @author Chris Corbyn
  */

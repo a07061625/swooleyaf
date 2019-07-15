@@ -8,7 +8,7 @@
 namespace Wx\OpenMini;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxOpenException;
+use SyException\Wx\WxOpenException;
 use Tool\Tool;
 use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
@@ -55,7 +55,7 @@ class NicknameSet extends WxBaseOpenMini
 
     /**
      * @param string $nickName
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setNickName(string $nickName)
     {
@@ -68,7 +68,7 @@ class NicknameSet extends WxBaseOpenMini
 
     /**
      * @param string $idCard
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setIdCard(string $idCard)
     {
@@ -81,7 +81,7 @@ class NicknameSet extends WxBaseOpenMini
 
     /**
      * @param string $license
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setLicense(string $license)
     {

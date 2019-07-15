@@ -8,7 +8,7 @@
 namespace Wx\Corp\Batch;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
@@ -53,7 +53,7 @@ class UserSync extends WxBaseCorp
 
     /**
      * @param string $mediaId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMediaId(string $mediaId)
     {
@@ -74,7 +74,7 @@ class UserSync extends WxBaseCorp
 
     /**
      * @param array $callback
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setCallback(array $callback)
     {

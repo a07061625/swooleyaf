@@ -8,7 +8,7 @@
 namespace Wx;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 
 class WxConfigCorp
 {
@@ -96,7 +96,7 @@ class WxConfigCorp
 
     /**
      * @param string $corpId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setCorpId(string $corpId)
     {
@@ -145,7 +145,7 @@ class WxConfigCorp
 
     /**
      * @param string $clientIp
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\WX\WxException
      */
     public function setClientIp(string $clientIp)
     {
@@ -166,7 +166,7 @@ class WxConfigCorp
 
     /**
      * @param string $payMchId
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\WX\WxException
      */
     public function setPayMchId(string $payMchId)
     {
@@ -187,7 +187,7 @@ class WxConfigCorp
 
     /**
      * @param string $payKey
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\WX\WxException
      */
     public function setPayKey(string $payKey)
     {
@@ -208,7 +208,7 @@ class WxConfigCorp
 
     /**
      * @param string $payNotifyUrl
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\WX\WxException
      */
     public function setPayNotifyUrl(string $payNotifyUrl)
     {
@@ -229,7 +229,7 @@ class WxConfigCorp
 
     /**
      * @param string $payAuthUrl
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\WX\WxException
      */
     public function setPayAuthUrl(string $payAuthUrl)
     {
@@ -250,7 +250,7 @@ class WxConfigCorp
 
     /**
      * @param string $sslCert
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\WX\WxException
      */
     public function setSslCert(string $sslCert)
     {
@@ -271,7 +271,7 @@ class WxConfigCorp
 
     /**
      * @param string $sslKey
-     * @throws \Exception\WX\WxException
+     * @throws \SyException\WX\WxException
      */
     public function setSslKey(string $sslKey)
     {
@@ -292,7 +292,7 @@ class WxConfigCorp
 
     /**
      * @param string $urlAuthLogin
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setUrlAuthLogin(string $urlAuthLogin)
     {
