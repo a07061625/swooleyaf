@@ -7,7 +7,7 @@
 - Constant: 常量
 - DB: 数据库类库
 - DesignPatterns: 设计模式
-- DingDing: 订单开放平台接口
+- DingDing: 钉钉开放平台接口
 - Doctrine: 未知用途(被动依赖)
 - Egulias: 未知用途(被动依赖)
 - Excel: excel类库
