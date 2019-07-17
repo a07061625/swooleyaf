@@ -146,13 +146,13 @@ abstract class CloudBaseCos extends CloudBase
     protected function getContent() : array
     {
         if (!isset($this->reqMethod{0})) {
-            throw new \SyException\QCloud\CosException('请求方式不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
+            throw new CosException('请求方式不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
         if (!isset($this->reqUri{0})) {
             throw new CosException('请求uri不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
         if (empty($this->signHeaders)) {
-            throw new \SyException\QCloud\CosException('签名请求头不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
+            throw new CosException('签名请求头不能为空', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
         if ($this->signTag) {
             CloudUtilCos::createSign([
