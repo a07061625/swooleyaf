@@ -50,3 +50,5 @@
 - Traits: 框架性状相关
 - Validator: 数据校验器相关
 - Wx: 微信相关
+- helper_autoload.php: 框架自定义类加载器
+- helper_defines.php: 框架自定义全局常量
