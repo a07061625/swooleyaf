@@ -8,6 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use SyIot\ConfigAliYun;
+use SyIot\ConfigBaiDu;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
@@ -18,6 +19,10 @@ class IotConfigSingleton
      * @var \SyIot\ConfigAliYun
      */
     private $aliYunConfig = null;
+    /**
+     * @var \SyIot\ConfigBaiDu
+     */
+    private $baiDuConfig = null;
 
     private function __construct()
     {
@@ -50,5 +55,21 @@ class IotConfigSingleton
         }
 
         return $this->aliYunConfig;
+    }
+
+    /**
+     * @return \SyIot\ConfigBaiDu
+     */
+    public function getBaiDuConfig()
+    {
+        if (is_null($this->baiDuConfig)) {
+            $configs = Tool::getConfig('iot.' . SY_ENV . SY_PROJECT);
+            $baiDuConfig = new ConfigBaiDu();
+            $baiDuConfig->setAccessKey((string)Tool::getArrayVal($configs, 'baidu.access.key', '', true));
+            $baiDuConfig->setAccessSecret((string)Tool::getArrayVal($configs, 'baidu.access.secret', '', true));
+            $this->baiDuConfig = $baiDuConfig;
+        }
+
+        return $this->baiDuConfig;
     }
 }
