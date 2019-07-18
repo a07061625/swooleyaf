@@ -34,11 +34,6 @@ abstract class IotBaseBaiDu extends IotBase
      */
     protected $serviceUri = '';
     /**
-     * 请求方式
-     * @var string
-     */
-    protected $reqMethod = '';
-    /**
      * 请求头
      * @var array
      */
