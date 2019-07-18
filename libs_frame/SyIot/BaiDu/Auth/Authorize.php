@@ -10,6 +10,7 @@ namespace SyIot\BaiDu\Auth;
 use Constant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
 use SyIot\IotBaseBaiDu;
+use SyIot\IotUtilBaiDu;
 use Tool\Tool;
 
 class Authorize extends IotBaseBaiDu
@@ -33,7 +34,6 @@ class Authorize extends IotBaseBaiDu
     public function __construct()
     {
         parent::__construct();
-        $this->reqMethod = self::REQ_METHOD_POST;
         $this->serviceUri = '/v1/auth/authorize';
     }
 
@@ -92,6 +92,15 @@ class Authorize extends IotBaseBaiDu
             throw new BaiDuIotException('主题名不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
 
+        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+            'req_method' => self::REQ_METHOD_POST,
+            'req_uri' => $this->serviceUri,
+            'req_params' => [],
+            'req_headers' => [
+                'host',
+            ],
+        ]);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         return $this->getContent();
