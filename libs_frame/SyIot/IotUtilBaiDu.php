@@ -62,8 +62,9 @@ abstract class IotUtilBaiDu extends IotUtilBase
         } elseif (is_array($rspData)) {
             $resArr['data'] = $rspData;
         } else {
-            $resArr['code'] = ErrorCode::IOT_REQ_BAIDU_ERROR;
-            $resArr['msg'] = '解析响应数据出错';
+            $resArr['data'] = [
+                'result' => strlen($sendRes['res_content']) > 0 ? $sendRes['res_content'] : 'success',
+            ];
         }
         return $resArr;
     }

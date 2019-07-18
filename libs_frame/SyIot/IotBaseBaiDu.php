@@ -88,31 +88,6 @@ abstract class IotBaseBaiDu extends IotBase
 
     protected function getContent() : array
     {
-        if (!isset($this->reqMethod{0})) {
-            throw new BaiDuIotException('请求方式不能为空', ErrorCode::IOT_PARAM_ERROR);
-        }
-        if (!isset($this->serviceUri{0})) {
-            throw new BaiDuIotException('服务uri不能为空', ErrorCode::IOT_PARAM_ERROR);
-        } elseif ($this->serviceUri{0} != '/') {
-            throw new BaiDuIotException('服务uri不合法', ErrorCode::IOT_PARAM_ERROR);
-        }
-
-        $signData = [
-            'req_method' => $this->reqMethod,
-            'req_uri' => $this->serviceUri,
-            'req_params' => [],
-            'req_headers' => [
-                'host',
-            ],
-        ];
-        $url = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
-        if (in_array($this->reqMethod, [self::REQ_METHOD_GET, self::REQ_METHOD_DELETE]) && !empty($this->reqData)) {
-            $url .= '?' . http_build_query($this->reqData);
-            $signData['req_params'] = $this->reqData;
-        }
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign($signData);
-
-        $this->curlConfigs[CURLOPT_URL] = $url;
         $this->curlConfigs[CURLOPT_RETURNTRANSFER] = true;
         $this->curlConfigs[CURLOPT_SSL_VERIFYPEER] = false;
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;

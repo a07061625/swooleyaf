@@ -1,11 +1,11 @@
 <?php
 /**
- * 认证
+ * 创建thing
  * User: 姜伟
  * Date: 2019/7/17 0017
  * Time: 17:14
  */
-namespace SyIot\BaiDu\Auth;
+namespace SyIot\BaiDu\Thing;
 
 use Constant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
@@ -13,23 +13,22 @@ use SyIot\IotBaseBaiDu;
 use SyIot\IotUtilBaiDu;
 use Tool\Tool;
 
-class AuthenticatePassword extends IotBaseBaiDu
+class ThingCreate extends IotBaseBaiDu
 {
     /**
-     * thing的用户名
+     * endpoint名称
      * @var string
      */
-    private $username = '';
+    private $endpointName = '';
     /**
-     * 身份密钥
+     * thing名称
      * @var string
      */
-    private $password = '';
+    private $thingName = '';
 
     public function __construct()
     {
         parent::__construct();
-        $this->serviceUri = '/v1/auth/authenticate/password';
     }
 
     private function __clone()
@@ -37,38 +36,39 @@ class AuthenticatePassword extends IotBaseBaiDu
     }
 
     /**
-     * @param string $userName
+     * @param string $endpointName
      * @throws \SyException\Iot\BaiDuIotException
      */
-    public function setUserName(string $userName)
+    public function setEndpointName(string $endpointName)
     {
-        if (strlen($userName) > 0) {
-            $this->reqData['username'] = $userName;
+        if (ctype_alnum($endpointName)) {
+            $this->endpointName = $endpointName;
+            $this->serviceUri = '/v1/endpoint/' . $endpointName . '/thing';
         } else {
-            throw new BaiDuIotException('用户名不合法', ErrorCode::IOT_PARAM_ERROR);
+            throw new BaiDuIotException('endpoint名称不合法', ErrorCode::IOT_PARAM_ERROR);
         }
     }
 
     /**
-     * @param string $password
+     * @param string $thingName
      * @throws \SyException\Iot\BaiDuIotException
      */
-    public function setPassword(string $password)
+    public function setThingName(string $thingName)
     {
-        if (strlen($password) > 0) {
-            $this->reqData['password'] = $password;
+        if (ctype_alnum($thingName)) {
+            $this->reqData['thingName'] = $thingName;
         } else {
-            throw new BaiDuIotException('身份密钥不合法', ErrorCode::IOT_PARAM_ERROR);
+            throw new BaiDuIotException('thing名称不合法', ErrorCode::IOT_PARAM_ERROR);
         }
     }
 
     public function getDetail() : array
     {
-        if (!isset($this->reqData['username'])) {
-            throw new BaiDuIotException('用户名不能为空', ErrorCode::IOT_PARAM_ERROR);
+        if (strlen($this->endpointName) == 0) {
+            throw new BaiDuIotException('endpoint名称不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
-        if (!isset($this->reqData['password'])) {
-            throw new BaiDuIotException('身份密钥不能为空', ErrorCode::IOT_PARAM_ERROR);
+        if (!isset($this->reqData['thingName'])) {
+            throw new BaiDuIotException('thing名称不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
 
         $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
