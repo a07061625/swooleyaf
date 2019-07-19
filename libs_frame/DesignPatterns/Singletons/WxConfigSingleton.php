@@ -9,7 +9,7 @@ namespace DesignPatterns\Singletons;
 
 use Constant\ErrorCode;
 use Constant\Project;
-use Exception\Wx\WxCorpProviderException;
+use SyException\Wx\WxCorpProviderException;
 use SyException\Wx\WxException;
 use Tool\Tool;
 use Traits\SingletonTrait;
@@ -229,7 +229,7 @@ class WxConfigSingleton
      * 获取企业配置
      * @param string $corpId
      * @return \Wx\WxConfigCorp
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function getCorpConfig(string $corpId)
     {
