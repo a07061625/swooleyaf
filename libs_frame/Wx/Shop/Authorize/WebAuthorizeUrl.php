@@ -57,7 +57,7 @@ class WebAuthorizeUrl extends WxBaseShop
 
     /**
      * @param string $state
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setState(string $state)
     {

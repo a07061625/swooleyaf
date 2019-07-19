@@ -35,7 +35,7 @@ class ObjectAclPut extends CloudBaseCos
 
     /**
      * @param string $objectKey
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setObjectKey(string $objectKey)
     {

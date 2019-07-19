@@ -8,7 +8,7 @@
 namespace Wx;
 
 use Constant\ErrorCode;
-use Exception\Wx\WxException;
+use SyException\Wx\WxException;
 use Tool\Tool;
 
 class WxConfigAccount

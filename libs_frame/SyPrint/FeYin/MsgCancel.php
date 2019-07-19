@@ -39,7 +39,7 @@ class MsgCancel extends PrintBaseFeYin
 
     /**
      * @param string $msgNo
-     * @throws \Exception\SyPrint\FeYinException
+     * @throws \SyException\SyPrint\FeYinException
      */
     public function setMsgNo(string $msgNo)
     {

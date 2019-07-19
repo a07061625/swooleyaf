@@ -41,7 +41,7 @@ class WebViewDomain extends WxBaseOpenMini
     /**
      * @param string $action
      * @param array $domains
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function setData(string $action, array $domains = [])
     {

@@ -218,7 +218,7 @@ class MongoModel extends BaseModel
      * @param array $data 数据数组
      * @param bool $multi 是否更新多个,true:更新所有符合条件的数据 false:更新第一个符合条件的数据
      * @param bool $upsert 符合条件的数据不存在时是否新增,true:新增 false:不新增
-     * @throws \Exception\Mongo\MongoException
+     * @throws \SyException\Mongo\MongoException
      * @return bool|int
      */
     public function update(array $data, bool $multi = false, bool $upsert = false)

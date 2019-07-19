@@ -52,7 +52,7 @@ class ListByUserId extends TalkBaseCorp
 
     /**
      * @param string $userId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserId(string $userId)
     {
@@ -78,7 +78,7 @@ class ListByUserId extends TalkBaseCorp
 
     /**
      * @param int $size
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSize(int $size)
     {

@@ -44,7 +44,7 @@ class MediaUpload extends WxBaseShop
 
     /**
      * @param string $filePath
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setFilePath(string $filePath)
     {

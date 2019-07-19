@@ -62,7 +62,7 @@ class MediaGet extends WxBaseShop
 
     /**
      * @param string $mediaId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMediaId(string $mediaId)
     {

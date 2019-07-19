@@ -155,7 +155,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param string $alias
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAlias(string $alias)
     {
@@ -265,7 +265,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param string $avatarMediaId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAvatarMediaId(string $avatarMediaId)
     {
@@ -325,7 +325,7 @@ class UserCreate extends WxBaseCorp
 
     /**
      * @param string $externalPosition
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setExternalPosition(string $externalPosition)
     {

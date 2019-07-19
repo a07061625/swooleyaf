@@ -90,7 +90,7 @@ class ProcessCopy extends TalkBaseCorpProvider
 
     /**
      * @param string $processName
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setProcessName(string $processName)
     {

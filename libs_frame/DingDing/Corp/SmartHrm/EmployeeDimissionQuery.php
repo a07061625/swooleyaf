@@ -47,7 +47,7 @@ class EmployeeDimissionQuery extends TalkBaseCorp
 
     /**
      * @param int $offset
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setOffset(int $offset)
     {

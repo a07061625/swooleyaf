@@ -73,7 +73,7 @@ class DeviceAccountQuery extends PushBaseXinGe
 
     /**
      * @param string $platform
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setPlatform(string $platform)
     {
@@ -99,7 +99,7 @@ class DeviceAccountQuery extends PushBaseXinGe
 
     /**
      * @param array $tokenList
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setTokenList(array $tokenList)
     {

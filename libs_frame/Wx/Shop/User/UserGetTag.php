@@ -46,7 +46,7 @@ class UserGetTag extends WxBaseShop
 
     /**
      * @param int $tagId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setTagId(int $tagId)
     {

@@ -160,7 +160,7 @@ class PlaceSearch extends MapBaseTencent
 
     /**
      * @param string $filter
-     * @throws \Exception\Map\TencentMapException
+     * @throws \SyException\Map\TencentMapException
      */
     public function setFilter(string $filter)
     {

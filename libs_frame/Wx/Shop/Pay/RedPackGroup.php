@@ -129,7 +129,7 @@ class RedPackGroup extends WxBaseShop
 
     /**
      * @param string $mchBillNo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setMchBillNo(string $mchBillNo)
     {

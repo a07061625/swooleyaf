@@ -165,7 +165,7 @@ class TalkConfigProvider
 
     /**
      * @param int $suiteId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSuiteId(int $suiteId)
     {
@@ -186,7 +186,7 @@ class TalkConfigProvider
 
     /**
      * @param string $suiteKey
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSuiteKey(string $suiteKey)
     {
@@ -207,7 +207,7 @@ class TalkConfigProvider
 
     /**
      * @param string $suiteSecret
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setSuiteSecret(string $suiteSecret)
     {

@@ -288,7 +288,7 @@ class ProductCreate extends WxBaseShop
 
     /**
      * @param array $deliveryInfo
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setDeliveryInfo(array $deliveryInfo)
     {

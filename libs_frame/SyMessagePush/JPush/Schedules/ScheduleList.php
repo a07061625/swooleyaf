@@ -34,7 +34,7 @@ class ScheduleList extends SchedulesBase
 
     /**
      * @param int $page
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setPage(int $page)
     {
