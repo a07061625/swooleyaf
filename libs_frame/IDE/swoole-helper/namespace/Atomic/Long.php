@@ -2,7 +2,7 @@
 namespace Swoole\Atomic;
 
 /**
- * @since 4.4.0
+ * @since 4.4.1
  */
 class Long
 {

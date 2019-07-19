@@ -2,7 +2,7 @@
 namespace Swoole\WebSocket;
 
 /**
- * @since 4.4.0
+ * @since 4.4.1
  */
 class Server extends \Swoole\Http\Server
 {
