@@ -104,7 +104,7 @@ class DeviceAccountBatchOperate extends PushBaseXinGe
 
     /**
      * @param array $tokenList
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setTokenList(array $tokenList)
     {

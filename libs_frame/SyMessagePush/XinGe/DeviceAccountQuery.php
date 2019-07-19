@@ -125,7 +125,7 @@ class DeviceAccountQuery extends PushBaseXinGe
 
     /**
      * @param string $opId
-     * @throws \Exception\MessagePush\XinGePushException
+     * @throws \SyException\MessagePush\XinGePushException
      */
     public function setOpId(string $opId)
     {

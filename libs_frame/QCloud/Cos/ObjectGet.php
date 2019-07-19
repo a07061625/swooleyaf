@@ -121,7 +121,7 @@ class ObjectGet extends CloudBaseCos
 
     /**
      * @param string $cacheControl
-     * @throws \Exception\QCloud\CosException
+     * @throws \SyException\QCloud\CosException
      */
     public function setResponseCacheControl(string $cacheControl)
     {

@@ -65,7 +65,7 @@ class OrderSetDelivery extends WxBaseShop
 
     /**
      * @param string $orderId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setOrderId(string $orderId)
     {
@@ -104,7 +104,7 @@ class OrderSetDelivery extends WxBaseShop
 
     /**
      * @param int $needDelivery
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setNeedDelivery(int $needDelivery)
     {

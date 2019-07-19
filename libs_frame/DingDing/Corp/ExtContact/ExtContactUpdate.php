@@ -169,7 +169,7 @@ class ExtContactUpdate extends TalkBaseCorp
 
     /**
      * @param string $name
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setName(string $name)
     {

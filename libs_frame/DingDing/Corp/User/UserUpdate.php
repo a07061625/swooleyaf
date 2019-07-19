@@ -128,7 +128,7 @@ class UserUpdate extends TalkBaseCorp
 
     /**
      * @param string $userId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setUserId(string $userId)
     {
@@ -141,7 +141,7 @@ class UserUpdate extends TalkBaseCorp
 
     /**
      * @param string $name
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setName(string $name)
     {

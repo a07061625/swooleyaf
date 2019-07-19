@@ -118,7 +118,7 @@ class TencentConfig
 
     /**
      * @param string $privateKey 私钥文件
-     * @throws \Exception\IM\TencentException
+     * @throws \SyException\IM\TencentException
      */
     public function setPrivateKey(string $privateKey)
     {
@@ -143,7 +143,7 @@ class TencentConfig
 
     /**
      * @param string $commandSign 签名命令文件
-     * @throws \Exception\IM\TencentException
+     * @throws \SyException\IM\TencentException
      */
     public function setCommandSign(string $commandSign)
     {

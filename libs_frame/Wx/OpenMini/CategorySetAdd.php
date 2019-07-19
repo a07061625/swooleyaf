@@ -45,7 +45,7 @@ class CategorySetAdd extends WxBaseOpenMini
 
     /**
      * @param array $categoryInfo
-     * @throws \Exception\Wx\WxOpenException
+     * @throws \SyException\Wx\WxOpenException
      */
     public function addCategory(array $categoryInfo)
     {

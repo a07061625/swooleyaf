@@ -65,7 +65,7 @@ class AuthOrderUnfreeze extends AliPayBase
 
     /**
      * @param string $outRequestNo
-     * @throws \Exception\AliPay\AliPayFundException
+     * @throws \SyException\AliPay\AliPayFundException
      */
     public function setOutRequestNo(string $outRequestNo)
     {

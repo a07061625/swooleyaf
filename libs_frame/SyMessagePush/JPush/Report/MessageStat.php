@@ -33,7 +33,7 @@ class MessageStat extends ReportBase
 
     /**
      * @param array $msgIds
-     * @throws \Exception\MessagePush\JPushException
+     * @throws \SyException\MessagePush\JPushException
      */
     public function setMsgIds(array $msgIds)
     {

@@ -66,7 +66,7 @@ class MsgTemplateList extends WxBaseMini
 
     /**
      * @param string $platType
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPlatType(string $platType)
     {

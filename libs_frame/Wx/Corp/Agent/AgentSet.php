@@ -149,7 +149,7 @@ class AgentSet extends WxBaseCorp
 
     /**
      * @param int $reportEnterFlag
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setReportEnterFlag(int $reportEnterFlag)
     {

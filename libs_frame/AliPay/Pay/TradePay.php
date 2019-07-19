@@ -222,7 +222,7 @@ class TradePay extends AliPayBase
 
     /**
      * @param string $transCurrency
-     * @throws \Exception\AliPay\AliPayPayException
+     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setTransCurrency(string $transCurrency)
     {

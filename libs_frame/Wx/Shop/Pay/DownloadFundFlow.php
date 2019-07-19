@@ -89,7 +89,7 @@ class DownloadFundFlow extends WxBaseShop
 
     /**
      * @param string $billDate
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setBillDate(string $billDate)
     {
@@ -102,7 +102,7 @@ class DownloadFundFlow extends WxBaseShop
 
     /**
      * @param string $accountType
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAccountType(string $accountType)
     {

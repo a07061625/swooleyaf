@@ -50,7 +50,7 @@ abstract class TalkUtilBase
      * 发送get请求
      * @param array $curlConfig
      * @return mixed
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public static function sendGetReq(array $curlConfig)
     {

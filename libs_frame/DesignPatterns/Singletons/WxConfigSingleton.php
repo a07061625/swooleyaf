@@ -163,7 +163,7 @@ class WxConfigSingleton
      * 获取账号配置
      * @param string $appId
      * @return \Wx\WxConfigAccount
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function getShopConfig(string $appId)
     {
@@ -229,7 +229,7 @@ class WxConfigSingleton
      * 获取企业配置
      * @param string $corpId
      * @return \Wx\WxConfigCorp
-     * @throws \Exception\Wx\WxCorpProviderException
+     * @throws \SyException\Wx\WxCorpProviderException
      */
     public function getCorpConfig(string $corpId)
     {

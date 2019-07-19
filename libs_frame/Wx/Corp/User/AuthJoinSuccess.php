@@ -42,7 +42,7 @@ class AuthJoinSuccess extends WxBaseCorp
 
     /**
      * @param string $userId
-     * @throws \Exception\Wx\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setUserId(string $userId)
     {

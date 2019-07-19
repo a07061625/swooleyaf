@@ -70,7 +70,7 @@ class UserAddFile extends TalkBaseCorp
 
     /**
      * @param string $mediaId
-     * @throws \Exception\DingDing\TalkException
+     * @throws \SyException\DingDing\TalkException
      */
     public function setMediaId(string $mediaId)
     {

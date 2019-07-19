@@ -81,7 +81,7 @@ class MsgDeviceSingle extends PushBaseBaiDu
 
     /**
      * @param array $msg
-     * @throws \Exception\MessagePush\BaiDuPushException
+     * @throws \SyException\MessagePush\BaiDuPushException
      */
     public function setMsg(array $msg)
     {
