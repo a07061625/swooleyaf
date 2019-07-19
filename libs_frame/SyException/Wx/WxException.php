@@ -5,7 +5,7 @@
  * Date: 17-3-31
  * Time: 上午11:14
  */
-namespace Exception\Wx;
+namespace SyException\Wx;
 
 use SyException\BaseException;
 

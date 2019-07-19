@@ -8,7 +8,7 @@
 namespace SyMessagePush\JPush\Report;
 
 use Constant\ErrorCode;
-use Exception\MessagePush\JPushException;
+use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\ReportBase;
 use SyMessagePush\PushUtilJPush;
 

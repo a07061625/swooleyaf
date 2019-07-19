@@ -7,7 +7,7 @@
  */
 namespace SyException\Sms;
 
-use Exception\BaseException;
+use SyException\BaseException;
 
 class Yun253Exception extends BaseException
 {

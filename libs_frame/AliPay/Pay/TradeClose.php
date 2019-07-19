@@ -10,7 +10,7 @@ namespace AliPay\Pay;
 use AliPay\AliPayBase;
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\AliPayConfigSingleton;
-use Exception\AliPay\AliPayPayException;
+use SyException\AliPay\AliPayPayException;
 
 class TradeClose extends AliPayBase
 {
