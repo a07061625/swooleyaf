@@ -38,8 +38,8 @@ class ImageController extends CommonController
 
     public function createQrImageAction()
     {
-        $res = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/Image/createQrImage', $_GET);
-        $this->sendRsp($res);
+        $createRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/Image/createQrImage', $_GET);
+        $this->sendRsp($createRes);
     }
 
     /**
@@ -47,8 +47,8 @@ class ImageController extends CommonController
      */
     public function createQrImageWxMiniAction()
     {
-        $res = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/Image/createQrImageWxMini', $_GET);
-        $this->sendRsp($res);
+        $createRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/Image/createQrImageWxMini', $_GET);
+        $this->sendRsp($createRes);
     }
 
     /**
