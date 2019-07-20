@@ -101,7 +101,7 @@ class ImageController extends CommonController
 
         //随机字符串放入redis
         $redisKey = \Constant\Project::REDIS_PREFIX_CODE_IMAGE . \Request\SyRequest::getParams('session_id');
-        \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->set($redisKey, $code, 190);
+        \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->set($redisKey, strtoupper($code), 190);
 
         $this->SyResult->setData([
             'image' => 'data:image/png;base64,' . base64_encode($imageContent),
