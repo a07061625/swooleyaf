@@ -9,6 +9,7 @@ namespace DesignPatterns\Singletons;
 
 use SyIot\ConfigAliYun;
 use SyIot\ConfigBaiDu;
+use SyIot\ConfigTencent;
 use Tool\Tool;
 use Traits\SingletonTrait;
 
@@ -23,6 +24,10 @@ class IotConfigSingleton
      * @var \SyIot\ConfigBaiDu
      */
     private $baiDuConfig = null;
+    /**
+     * @var \SyIot\ConfigTencent
+     */
+    private $tencentConfig = null;
 
     private function __construct()
     {
@@ -71,5 +76,22 @@ class IotConfigSingleton
         }
 
         return $this->baiDuConfig;
+    }
+
+    /**
+     * @return \SyIot\ConfigTencent
+     */
+    public function getTencentConfig()
+    {
+        if (is_null($this->tencentConfig)) {
+            $configs = Tool::getConfig('iot.' . SY_ENV . SY_PROJECT);
+            $tencentConfig = new ConfigTencent();
+            $tencentConfig->setRegionId((string)Tool::getArrayVal($configs, 'tencent.region.id', '', true));
+            $tencentConfig->setSecretId((string)Tool::getArrayVal($configs, 'tencent.secret.id', '', true));
+            $tencentConfig->setSecretKey((string)Tool::getArrayVal($configs, 'tencent.secret.key', '', true));
+            $this->tencentConfig = $tencentConfig;
+        }
+
+        return $this->tencentConfig;
     }
 }
