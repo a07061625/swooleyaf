@@ -231,6 +231,7 @@ class ErrorCode
     const IOT_GET_ERROR = 106202;
     const IOT_REQ_ALIYUN_ERROR = 106210;
     const IOT_REQ_BAIDU_ERROR = 106211;
+    const IOT_REQ_TENCENT_ERROR = 106212;
 
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
@@ -381,6 +382,7 @@ class ErrorCode
         self::IOT_GET_ERROR => '物联网发送GET请求出错',
         self::IOT_REQ_ALIYUN_ERROR => '物联网阿里云发送请求出错',
         self::IOT_REQ_BAIDU_ERROR => '物联网百度发送请求出错',
+        self::IOT_REQ_TENCENT_ERROR => '物联网腾讯发送请求出错',
     ];
 
     /**
