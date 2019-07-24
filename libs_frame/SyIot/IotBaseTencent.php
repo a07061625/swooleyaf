@@ -7,6 +7,10 @@
  */
 namespace SyIot;
 
+use Constant\ErrorCode;
+use DesignPatterns\Singletons\IotConfigSingleton;
+use SyException\Iot\TencentIotException;
+
 abstract class IotBaseTencent extends IotBase
 {
     /**
@@ -23,9 +27,13 @@ abstract class IotBaseTencent extends IotBase
     public function __construct()
     {
         parent::__construct();
+        $this->serviceDomain = 'iotexplorer.tencentcloudapi.com';
+        $config = IotConfigSingleton::getInstance()->getTencentConfig();
         $this->reqHeader = [
             'Content-Type' => 'application/json',
+            'Host' => $this->serviceDomain,
             'Expect' => '',
+            'X-TC-Region' => $config->getRegionId(),
         ];
     }
 
@@ -35,12 +43,15 @@ abstract class IotBaseTencent extends IotBase
 
     /**
      * @param string $serviceDomain
+     * @throws \SyException\Iot\TencentIotException
      */
     public function setServiceDomain(string $serviceDomain)
     {
-        $domain = trim($serviceDomain);
-        if (strlen($domain) > 0) {
-            $this->serviceDomain = $domain;
+        if (strlen($serviceDomain) > 0) {
+            $this->serviceDomain = $serviceDomain;
+            $this->reqHeader['Host'] = $serviceDomain;
+        } else {
+            throw new TencentIotException('重定向链接不合法', ErrorCode::IOT_PARAM_ERROR);
         }
     }
 
