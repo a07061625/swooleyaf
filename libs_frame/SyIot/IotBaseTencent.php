@@ -19,6 +19,11 @@ abstract class IotBaseTencent extends IotBase
      */
     protected $reqHeader = [];
     /**
+     * 服务名称
+     * @var string
+     */
+    protected $serviceName = '';
+    /**
      * 服务域名
      * @var string
      */
@@ -27,6 +32,7 @@ abstract class IotBaseTencent extends IotBase
     public function __construct()
     {
         parent::__construct();
+        $this->serviceName = 'iot';
         $this->serviceDomain = 'iotexplorer.tencentcloudapi.com';
         $config = IotConfigSingleton::getInstance()->getTencentConfig();
         $this->reqHeader = [
@@ -55,13 +61,29 @@ abstract class IotBaseTencent extends IotBase
         }
     }
 
+    /**
+     * 添加请求签名
+     */
+    protected function addReqSign()
+    {
+        $postData = http_build_query($this->reqData);
+        $signRes = IotUtilTencent::createTC3Sign([
+            'req_headers' => $this->reqHeader,
+            'req_data' => $postData,
+            'service_name' => $this->serviceName,
+        ]);
+        $this->reqHeader['X-TC-Timestamp'] = $signRes['timestamp'];
+        $this->reqHeader['Authorization'] = $signRes['authorization'];
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = $postData;
+    }
+
     protected function getContent() : array
     {
+        $this->curlConfigs[CURLOPT_URL] = 'https://' . $this->serviceDomain;
         $this->curlConfigs[CURLOPT_NOSIGNAL] = true;
         $this->curlConfigs[CURLOPT_SSL_VERIFYPEER] = false;
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $this->curlConfigs[CURLOPT_POST] = true;
-        $this->curlConfigs[CURLOPT_POSTFIELDS] = http_build_query($this->reqData);
         $this->curlConfigs[CURLOPT_RETURNTRANSFER] = true;
         $this->curlConfigs[CURLOPT_HEADER] = false;
         $reqHeaderArr = [];
