@@ -137,6 +137,10 @@ class SyPack
      */
     public function unpackData(string $dataStr) : bool
     {
+        if (strlen($dataStr) < 16) {
+            return false;
+        }
+
         $unpackRes = unpack('Lk1/Lk2/A4k3/A4k4/a*k5', $dataStr);
         if (!isset($unpackRes['k5'])) {
             return false;
