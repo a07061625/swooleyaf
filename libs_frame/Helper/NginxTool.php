@@ -24,8 +24,8 @@ class NginxTool
         if (!is_dir($configPath)) {
             exit('配置文件存放目录不合法' . PHP_EOL);
         }
-        $logPath = Tool::getClientOption('-logpath', false, '/home/logs/nginx');
-        if (!is_dir($logPath)) {
+        $logPath = Tool::getClientOption('-logpath', false, '');
+        if ((strlen($logPath) > 0) && (!is_dir($logPath))) {
             exit('日志文件存放目录不合法' . PHP_EOL);
         }
         $tagLength = strlen(SY_PROJECT);
@@ -47,9 +47,11 @@ class NginxTool
                             . ':' . $moduleConfigs[$moduleTag]['port']
                             . ' so_keepalive=60s::;' . PHP_EOL;
             $fileContent .= '    tcp_nodelay on;' . PHP_EOL;
-            $fileContent .= '    access_log ' . $logPath
-                            . '/rpc' . $eProject['module_name']
-                            . '.log rpc;' . PHP_EOL;
+            if (strlen($logPath) > 0) {
+                $fileContent .= '    access_log ' . $logPath
+                                . '/rpc' . $eProject['module_name']
+                                . '.log rpc;' . PHP_EOL;
+            }
             $fileContent .= '    proxy_connect_timeout 1s;' . PHP_EOL;
             $fileContent .= '    proxy_timeout 30s;' . PHP_EOL;
             $fileContent .= '    proxy_buffer_size 32k;' . PHP_EOL;
