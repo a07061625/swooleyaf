@@ -71,7 +71,7 @@ class StudioProductCreate extends IotBaseTencent
      */
     public function setProductName(string $productName)
     {
-        if (ctype_alnum($productName)) {
+        if (strlen($productName) > 0) {
             $this->reqData['ProductName'] = $productName;
         } else {
             throw new TencentIotException('产品名称不合法', ErrorCode::IOT_PARAM_ERROR);
@@ -174,25 +174,25 @@ class StudioProductCreate extends IotBaseTencent
         if (!isset($this->reqData['ProjectName'])) {
             throw new TencentIotException('产品名称不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
-        if (!isset($this->reqData['ProjectDesc'])) {
+        if (!isset($this->reqData['CategoryId'])) {
             throw new TencentIotException('分组模板ID不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
-        if (!isset($this->reqData['ProjectName'])) {
+        if (!isset($this->reqData['ProductType'])) {
             throw new TencentIotException('产品类型不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
-        if (!isset($this->reqData['ProjectDesc'])) {
+        if (!isset($this->reqData['EncryptionType'])) {
             throw new TencentIotException('加密类型不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
-        if (!isset($this->reqData['ProjectName'])) {
+        if (!isset($this->reqData['NetType'])) {
             throw new TencentIotException('连接类型不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
-        if (!isset($this->reqData['ProjectDesc'])) {
+        if (!isset($this->reqData['DataProtocol'])) {
             throw new TencentIotException('数据协议不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
-        if (!isset($this->reqData['ProjectName'])) {
+        if (!isset($this->reqData['ProjectDesc'])) {
             throw new TencentIotException('产品描述不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
-        if (!isset($this->reqData['ProjectDesc'])) {
+        if (!isset($this->reqData['ProjectId'])) {
             throw new TencentIotException('项目ID不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
         $this->addReqSign();
