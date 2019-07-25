@@ -5,7 +5,7 @@
  * Date: 2019/7/24 0024
  * Time: 14:07
  */
-namespace SyIot\Tencent\Product;
+namespace SyIot\Tencent\Project;
 
 use Constant\ErrorCode;
 use SyException\Iot\TencentIotException;
