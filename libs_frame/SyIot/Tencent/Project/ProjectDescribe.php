@@ -1,17 +1,17 @@
 <?php
 /**
- * 删除项目
+ * 查询项目详情
  * User: 姜伟
  * Date: 2019/7/24 0024
  * Time: 14:07
  */
-namespace SyIot\Tencent\Product;
+namespace SyIot\Tencent\Project;
 
 use Constant\ErrorCode;
 use SyException\Iot\TencentIotException;
 use SyIot\IotBaseTencent;
 
-class ProjectDelete extends IotBaseTencent
+class ProjectDescribe extends IotBaseTencent
 {
     /**
      * 项目ID
@@ -22,7 +22,7 @@ class ProjectDelete extends IotBaseTencent
     public function __construct()
     {
         parent::__construct();
-        $this->reqHeader['X-TC-Action'] = 'DeleteProject';
+        $this->reqHeader['X-TC-Action'] = 'DescribeProject';
         $this->reqHeader['X-TC-Version'] = '2019-04-23';
     }
 
