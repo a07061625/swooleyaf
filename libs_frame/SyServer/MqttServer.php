@@ -7,5 +7,6 @@
  */
 namespace SyServer;
 
-class MqttServer {
+class MqttServer extends BaseServer
+{
 }

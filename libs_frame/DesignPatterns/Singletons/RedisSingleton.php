@@ -131,14 +131,12 @@ class RedisSingleton
         } else {
             try {
                 $res = $this->conn->ping();
-                if ($res !== '+PONG') {
+                if (($res !== true) && ($res !== '+PONG')) {
                     Log::error('redis check fail,check result is ' . $res);
-
                     $this->init();
                 }
             } catch (\Exception $e) {
                 Log::error('redis connect fail-' . $e->getMessage(), $e->getCode(), $e->getTraceAsString());
-
                 $this->init();
             }
         }

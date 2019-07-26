@@ -71,7 +71,7 @@ abstract class WxBaseShop extends WxBase
         } else {
             $merchantAppId = $configAccount->getMerchantAppId();
             if (strlen($merchantAppId) == 0) {
-                throw new \SyException\Wx\WxException('服务商微信号不能为空', ErrorCode::WX_PARAM_ERROR);
+                throw new WxException('服务商微信号不能为空', ErrorCode::WX_PARAM_ERROR);
             }
             $merchantConfig = WxConfigSingleton::getInstance()->getShopConfig($merchantAppId);
             $this->reqData['appid'] = $merchantConfig->getAppId();
