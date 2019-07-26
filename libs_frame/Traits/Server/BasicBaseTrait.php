@@ -300,6 +300,8 @@ trait BasicBaseTrait
         self::$_syWx->column('at_expire', \swoole_table::TYPE_INT, 4);
         self::$_syWx->column('jt_content', \swoole_table::TYPE_STRING, 200);
         self::$_syWx->column('jt_expire', \swoole_table::TYPE_INT, 4);
+        self::$_syWx->column('ct_content', \swoole_table::TYPE_STRING, 200);
+        self::$_syWx->column('ct_expire', \swoole_table::TYPE_INT, 4);
         self::$_syWx->column('clear_time', \swoole_table::TYPE_INT, 4);
         self::$_syWx->create();
 
