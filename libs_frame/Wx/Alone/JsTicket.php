@@ -45,6 +45,19 @@ class JsTicket extends WxBaseAlone
         }
     }
 
+    /**
+     * @param string $type
+     * @throws \SyException\Wx\WxException
+     */
+    public function setType(string $type)
+    {
+        if (in_array($type, ['jsapi', 'wx_card'])) {
+            $this->reqData['type'] = $type;
+        } else {
+            throw new WxException('类型不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+    }
+
     public function getDetail() : array
     {
         if (!isset($this->reqData['access_token'])) {
@@ -55,7 +68,7 @@ class JsTicket extends WxBaseAlone
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
         if (!is_array($sendData)) {
-            throw new WxException('获取js ticket出错', ErrorCode::WX_PARAM_ERROR);
+            throw new WxException('获取ticket出错', ErrorCode::WX_PARAM_ERROR);
         } elseif ($sendData['errcode'] > 0) {
             throw new WxException($sendData['errmsg'], ErrorCode::WX_PARAM_ERROR);
         }
