@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.4.1
+ * @since 4.4.2
  */
 class Event
 {
@@ -68,6 +68,11 @@ class Event
      * @return mixed
      */
     public static function wait(){}
+
+    /**
+     * @return mixed
+     */
+    public static function rshutdown(){}
 
     /**
      * @return mixed
