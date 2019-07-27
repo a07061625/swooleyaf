@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine\MySQL;
 
 /**
- * @since 4.4.1
+ * @since 4.4.2
  */
 class Statement
 {
