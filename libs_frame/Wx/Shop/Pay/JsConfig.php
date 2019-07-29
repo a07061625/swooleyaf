@@ -86,7 +86,7 @@ class JsConfig extends WxBaseShop
     }
 
     /**
-     * @param string $platType
+     * @param string $platType 平台类型 shop：公众号 openshop：第三方平台代理公众号
      * @throws \SyException\Wx\WxException
      */
     public function setPlatType(string $platType)
@@ -99,7 +99,6 @@ class JsConfig extends WxBaseShop
     }
 
     /**
-     * @param string $platType 平台类型 shop：公众号 openshop：第三方平台代理公众号
      * @return array
      */
     public function getDetail() : array
