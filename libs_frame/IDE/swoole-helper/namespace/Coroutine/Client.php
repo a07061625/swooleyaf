@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.4.2
+ * @since 4.3.6
  */
 class Client
 {
@@ -118,7 +118,7 @@ class Client
     /**
      * @return mixed
      */
-    public function exportSocket(){}
+    public function getSocket(){}
 
 
 }
