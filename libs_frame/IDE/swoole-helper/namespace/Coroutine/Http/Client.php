@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine\Http;
 
 /**
- * @since 4.4.2
+ * @since 4.3.6
  */
 class Client
 {
@@ -51,13 +51,6 @@ class Client
     public function setHeaders($headers){}
 
     /**
-     * @param $username[required]
-     * @param $password[required]
-     * @return mixed
-     */
-    public function setBasicAuth($username, $password){}
-
-    /**
      * @param $cookies[required]
      * @return mixed
      */
@@ -68,26 +61,6 @@ class Client
      * @return mixed
      */
     public function setData($data){}
-
-    /**
-     * @param $path[required]
-     * @param $name[required]
-     * @param $type[optional]
-     * @param $filename[optional]
-     * @param $offset[optional]
-     * @param $length[optional]
-     * @return mixed
-     */
-    public function addFile($path, $name, $type=null, $filename=null, $offset=null, $length=null){}
-
-    /**
-     * @param $path[required]
-     * @param $name[required]
-     * @param $type[optional]
-     * @param $filename[optional]
-     * @return mixed
-     */
-    public function addData($path, $name, $type=null, $filename=null){}
 
     /**
      * @param $path[required]
@@ -117,30 +90,36 @@ class Client
     public function download($path, $file, $offset=null){}
 
     /**
-     * @return mixed
-     */
-    public function getBody(){}
-
-    /**
-     * @return mixed
-     */
-    public function getHeaders(){}
-
-    /**
-     * @return mixed
-     */
-    public function getCookies(){}
-
-    /**
-     * @return mixed
-     */
-    public function getStatusCode(){}
-
-    /**
      * @param $path[required]
      * @return mixed
      */
     public function upgrade($path){}
+
+    /**
+     * @param $path[required]
+     * @param $name[required]
+     * @param $type[optional]
+     * @param $filename[optional]
+     * @param $offset[optional]
+     * @param $length[optional]
+     * @return mixed
+     */
+    public function addFile($path, $name, $type=null, $filename=null, $offset=null, $length=null){}
+
+    /**
+     * @param $path[required]
+     * @param $name[required]
+     * @param $type[optional]
+     * @param $filename[optional]
+     * @return mixed
+     */
+    public function addData($path, $name, $type=null, $filename=null){}
+
+    /**
+     * @param $timeout[optional]
+     * @return mixed
+     */
+    public function recv($timeout=null){}
 
     /**
      * @param $data[required]
@@ -149,12 +128,6 @@ class Client
      * @return mixed
      */
     public function push($data, $opcode=null, $finish=null){}
-
-    /**
-     * @param $timeout[optional]
-     * @return mixed
-     */
-    public function recv($timeout=null){}
 
     /**
      * @return mixed
