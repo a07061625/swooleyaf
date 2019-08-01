@@ -156,7 +156,7 @@ class CardConfig extends WxBaseAlone
             'location_id' => $this->reqData['shopId'],
             'timestamp' => (string)$this->reqData['timestamp'],
             'nonce_str' => $this->reqData['nonceStr'],
-            'card_id' => $this->reqData['card_id'],
+            'card_id' => $this->reqData['cardId'],
             'card_type' => $this->reqData['cardType'],
         ];
         sort($signData);
