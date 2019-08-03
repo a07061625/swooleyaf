@@ -2,7 +2,7 @@
 namespace Swoole\Http;
 
 /**
- * @since 4.3.6
+ * @since 4.4.3
  */
 class Request
 {

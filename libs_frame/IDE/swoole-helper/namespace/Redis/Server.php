@@ -2,7 +2,7 @@
 namespace Swoole\Redis;
 
 /**
- * @since 4.3.6
+ * @since 4.4.3
  */
 class Server extends \Swoole\Server
 {
@@ -234,20 +234,6 @@ class Server extends \Swoole\Server
      * @param $reactor_id[optional]
      * @return mixed
      */
-    public function connection_info($fd, $reactor_id=null){}
-
-    /**
-     * @param $start_fd[required]
-     * @param $find_count[optional]
-     * @return mixed
-     */
-    public function connection_list($start_fd, $find_count=null){}
-
-    /**
-     * @param $fd[required]
-     * @param $reactor_id[optional]
-     * @return mixed
-     */
     public function getClientInfo($fd, $reactor_id=null){}
 
     /**
@@ -258,31 +244,18 @@ class Server extends \Swoole\Server
     public function getClientList($start_fd, $find_count=null){}
 
     /**
-     * @param $ms[required]
-     * @param $callback[required]
-     * @param $param[optional]
+     * @param $fd[required]
+     * @param $reactor_id[optional]
      * @return mixed
      */
-    public function after($ms, $callback, $param=null){}
+    public function connection_info($fd, $reactor_id=null){}
 
     /**
-     * @param $ms[required]
-     * @param $callback[required]
+     * @param $start_fd[required]
+     * @param $find_count[optional]
      * @return mixed
      */
-    public function tick($ms, $callback){}
-
-    /**
-     * @param $timer_id[required]
-     * @return mixed
-     */
-    public function clearTimer($timer_id){}
-
-    /**
-     * @param $callback[required]
-     * @return mixed
-     */
-    public function defer($callback){}
+    public function connection_list($start_fd, $find_count=null){}
 
     /**
      * @param $message[required]
@@ -314,6 +287,32 @@ class Server extends \Swoole\Server
      * @return mixed
      */
     public function bind($fd, $uid){}
+
+    /**
+     * @param $ms[required]
+     * @param $callback[required]
+     * @return mixed
+     */
+    public function after($ms, $callback){}
+
+    /**
+     * @param $ms[required]
+     * @param $callback[required]
+     * @return mixed
+     */
+    public function tick($ms, $callback){}
+
+    /**
+     * @param $timer_id[required]
+     * @return mixed
+     */
+    public function clearTimer($timer_id){}
+
+    /**
+     * @param $callback[required]
+     * @return mixed
+     */
+    public function defer($callback){}
 
 
 }

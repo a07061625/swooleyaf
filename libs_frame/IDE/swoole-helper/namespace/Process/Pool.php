@@ -2,7 +2,7 @@
 namespace Swoole\Process;
 
 /**
- * @since 4.3.6
+ * @since 4.4.3
  */
 class Pool
 {
@@ -12,9 +12,10 @@ class Pool
      * @param $worker_num[required]
      * @param $ipc_type[optional]
      * @param $msgqueue_key[optional]
+     * @param $enable_coroutine[optional]
      * @return mixed
      */
-    public function __construct($worker_num, $ipc_type=null, $msgqueue_key=null){}
+    public function __construct($worker_num, $ipc_type=null, $msgqueue_key=null, $enable_coroutine=null){}
 
     /**
      * @return mixed
@@ -29,9 +30,10 @@ class Pool
     public function on($event_name, $callback){}
 
     /**
+     * @param $worker_id[optional]
      * @return mixed
      */
-    public function getProcess(){}
+    public function getProcess($worker_id=null){}
 
     /**
      * @param $host[required]

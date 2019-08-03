@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.3.6
+ * @since 4.4.3
  */
 class Coroutine
 {
@@ -14,21 +14,6 @@ class Coroutine
      * @return mixed
      */
     public static function create($func, $params=null){}
-
-    /**
-     * @param $command[required]
-     * @param $get_error_stream[optional]
-     * @return mixed
-     */
-    public static function exec($command, $get_error_stream=null){}
-
-    /**
-     * @param $domain_name[required]
-     * @param $family[optional]
-     * @param $timeout[optional]
-     * @return mixed
-     */
-    public static function gethostbyname($domain_name, $family=null, $timeout=null){}
 
     /**
      * @param $callback[required]
@@ -80,15 +65,59 @@ class Coroutine
     public static function getuid(){}
 
     /**
+     * @param $cid[optional]
      * @return mixed
      */
-    public static function getPcid(){}
+    public static function getPcid($cid=null){}
 
     /**
      * @param $cid[optional]
      * @return mixed
      */
     public static function getContext($cid=null){}
+
+    /**
+     * @param $cid[optional]
+     * @param $options[optional]
+     * @param $limit[optional]
+     * @return mixed
+     */
+    public static function getBackTrace($cid=null, $options=null, $limit=null){}
+
+    /**
+     * @return mixed
+     */
+    public static function list(){}
+
+    /**
+     * @return mixed
+     */
+    public static function listCoroutines(){}
+
+    /**
+     * @return mixed
+     */
+    public static function enableScheduler(){}
+
+    /**
+     * @return mixed
+     */
+    public static function disableScheduler(){}
+
+    /**
+     * @param $command[required]
+     * @param $get_error_stream[optional]
+     * @return mixed
+     */
+    public static function exec($command, $get_error_stream=null){}
+
+    /**
+     * @param $domain_name[required]
+     * @param $family[optional]
+     * @param $timeout[optional]
+     * @return mixed
+     */
+    public static function gethostbyname($domain_name, $family=null, $timeout=null){}
 
     /**
      * @param $seconds[required]
@@ -137,33 +166,16 @@ class Coroutine
      * @param $socktype[optional]
      * @param $protocol[optional]
      * @param $service[optional]
+     * @param $timeout[optional]
      * @return mixed
      */
-    public static function getaddrinfo($hostname, $family=null, $socktype=null, $protocol=null, $service=null){}
+    public static function getaddrinfo($hostname, $family=null, $socktype=null, $protocol=null, $service=null, $timeout=null){}
 
     /**
      * @param $path[required]
      * @return mixed
      */
     public static function statvfs($path){}
-
-    /**
-     * @param $cid[optional]
-     * @param $options[optional]
-     * @param $limit[optional]
-     * @return mixed
-     */
-    public static function getBackTrace($cid=null, $options=null, $limit=null){}
-
-    /**
-     * @return mixed
-     */
-    public static function list(){}
-
-    /**
-     * @return mixed
-     */
-    public static function listCoroutines(){}
 
 
 }
