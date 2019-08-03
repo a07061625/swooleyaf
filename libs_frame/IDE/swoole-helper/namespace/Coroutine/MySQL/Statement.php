@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine\MySQL;
 
 /**
- * @since 4.3.6
+ * @since 4.4.3
  */
 class Statement
 {
@@ -16,24 +16,33 @@ class Statement
     public function execute($params=null, $timeout=null){}
 
     /**
+     * @param $timeout[optional]
      * @return mixed
      */
-    public function fetch(){}
+    public function fetch($timeout=null){}
+
+    /**
+     * @param $timeout[optional]
+     * @return mixed
+     */
+    public function fetchAll($timeout=null){}
+
+    /**
+     * @param $timeout[optional]
+     * @return mixed
+     */
+    public function nextResult($timeout=null){}
+
+    /**
+     * @param $timeout[optional]
+     * @return mixed
+     */
+    public function recv($timeout=null){}
 
     /**
      * @return mixed
      */
-    public function fetchAll(){}
-
-    /**
-     * @return mixed
-     */
-    public function nextResult(){}
-
-    /**
-     * @return mixed
-     */
-    public function __destruct(){}
+    public function close(){}
 
 
 }

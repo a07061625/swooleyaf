@@ -1,5 +1,5 @@
 <?php
-namespace Swoole\Coroutine;
+namespace Swoole\Timer;
 
 /**
  * @since 4.4.3
