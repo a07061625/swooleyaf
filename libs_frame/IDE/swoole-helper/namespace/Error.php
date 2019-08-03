@@ -1,10 +1,10 @@
 <?php
-namespace Swoole\Coroutine\Http\Client;
+namespace Swoole;
 
 /**
  * @since 4.4.3
  */
-class Exception extends \Swoole\Exception
+class Error extends \Error
 {
 
 

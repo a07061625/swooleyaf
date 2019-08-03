@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.3.6
+ * @since 4.4.3
  */
 class Redis
 {
@@ -631,6 +631,36 @@ class Redis
      * @return mixed
      */
     public function zAdd($key, $score, $value){}
+
+    /**
+     * @param $key[required]
+     * @param $count[required]
+     * @return mixed
+     */
+    public function zPopMin($key, $count){}
+
+    /**
+     * @param $key[required]
+     * @param $count[required]
+     * @return mixed
+     */
+    public function zPopMax($key, $count){}
+
+    /**
+     * @param $key[required]
+     * @param $timeout_or_key[required]
+     * @param $extra_args[optional]
+     * @return mixed
+     */
+    public function bzPopMin($key, $timeout_or_key, $extra_args=null){}
+
+    /**
+     * @param $key[required]
+     * @param $timeout_or_key[required]
+     * @param $extra_args[optional]
+     * @return mixed
+     */
+    public function bzPopMax($key, $timeout_or_key, $extra_args=null){}
 
     /**
      * @param $key[required]
