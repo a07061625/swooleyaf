@@ -150,7 +150,7 @@ class TemplateMsgSend extends WxBaseShop
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
         if ($sendData['errcode'] == 0) {
-            $resData['data'] = $sendData;
+            $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['errmsg'];
