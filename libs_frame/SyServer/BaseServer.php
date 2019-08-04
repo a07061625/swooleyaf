@@ -360,9 +360,9 @@ abstract class BaseServer
     }
 
     /**
-     * worker进程退出
+     * 工作进程退出
      * @param \swoole_server $server
-     * @param int $workerId worker进程ID
+     * @param int $workerId 工作进程ID
      */
     public function onWorkerExit(\swoole_server $server, int $workerId)
     {
