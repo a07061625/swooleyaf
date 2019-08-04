@@ -118,6 +118,7 @@ class HttpServer extends BaseServer
             'workerStart' => 'onWorkerStart',
             'workerStop' => 'onWorkerStop',
             'workerError' => 'onWorkerError',
+            'workerExit' => 'onWorkerExit',
             'shutdown' => 'onShutdown',
             'request' => 'onRequest',
             'task' => 'onTask',
