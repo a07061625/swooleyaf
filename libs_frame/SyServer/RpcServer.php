@@ -70,6 +70,7 @@ class RpcServer extends BaseServer
             'workerStart' => 'onWorkerStart',
             'workerStop' => 'onWorkerStop',
             'workerError' => 'onWorkerError',
+            'workerExit' => 'onWorkerExit',
             'shutdown' => 'onShutdown',
             'receive' => 'onReceive',
             'task' => 'onTask',

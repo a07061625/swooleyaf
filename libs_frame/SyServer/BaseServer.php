@@ -360,6 +360,25 @@ abstract class BaseServer
     }
 
     /**
+     * 工作进程退出
+     * @param \swoole_server $server
+     * @param int $workerId 工作进程ID
+     */
+    public function onWorkerExit(\swoole_server $server, int $workerId)
+    {
+        $fdList = $server->connections;
+        foreach ($fdList as $eFd) {
+            if ($server->exist($eFd)) {
+                $server->close($eFd);
+            }
+        }
+
+        if (version_compare(SWOOLE_VERSION, '4.4.0', '>=')) {
+            \swoole_timer::clearAll();
+        }
+    }
+
+    /**
      * 启动主进程服务
      * @param \swoole_server $server
      * @throws \SyException\Swoole\ServerException
