@@ -39,9 +39,9 @@ final class WxUtilMini extends WxUtilBase
             return $resArr;
         }
 
-        $aesIV = base64_decode($iv, true);
-        $aesKey = base64_decode($sessionKey, true);
-        $aesCipher = base64_decode($encryptedData, true);
+        $aesIV = base64_decode($iv);
+        $aesKey = base64_decode($sessionKey);
+        $aesCipher = base64_decode($encryptedData);
         $decryptData = Tool::jsonDecode(openssl_decrypt($aesCipher, 'AES-128-CBC', $aesKey, 1, $aesIV));
         if (is_array($decryptData) && isset($decryptData['watermark']['appid']) && ($decryptData['watermark']['appid'] == $appId)) {
             $resArr['data'] = $decryptData;
