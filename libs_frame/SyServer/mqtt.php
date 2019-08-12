@@ -23,32 +23,8 @@ class Server
         $this->serv->start();
     }
 
-    public function onStart($serv)
-    {
-        $this->debug("Swoole Server Start");
-    }
-
-    public function onWorkerStart($serv, $worker_id)
-    {
-        //        if ($worker_id == 1)
-        //        {
-        //            $serv->tick(1000, function () {
-        //                echo 'test';
-        //            });
-        //        }
-    }
-
-    public function onConnect($serv, $fd, $from_id)
-    {
-        //$serv->send( $fd, "Hello {$fd}!" );
-        //        swoole_timer_tick(1000, function(){
-        //            echo "timeout\n";
-        //        });
-    }
-
     public function onReceive(swoole_server $serv, $fd, $from_id, $data)
     {
-        //        echo "Get Message From Client {$fd}:{$data}\n";
         $this->decode_mqtt($data, $serv, $fd);
     }
 
