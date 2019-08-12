@@ -3,27 +3,33 @@ class Server
 {
     private $serv;
     private $mysql;
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->serv = new swoole_server("0.0.0.0", 9501);
-        $this->serv->set(array(
+        $this->serv->set([
             'worker_num' => 8,
             'daemonize' => false,
             'max_request' => 10000,
             'open_mqtt_protocol' => true,
             'dispatch_mode' => 2,
-            'debug_mode'=> 1
-        ));
-        $this->serv->on('Start', array($this, 'onStart'));
-        $this->serv->on('Connect', array($this, 'onConnect'));
-        $this->serv->on('Receive', array($this, 'onReceive'));
-        $this->serv->on('Close', array($this, 'onClose'));
-        $this->serv->on('WorkerStart', array($this, 'onWorkerStart'));
+            'debug_mode' => 1,
+        ]);
+        $this->serv->on('Start', [$this, 'onStart']);
+        $this->serv->on('Connect', [$this, 'onConnect']);
+        $this->serv->on('Receive', [$this, 'onReceive']);
+        $this->serv->on('Close', [$this, 'onClose']);
+        $this->serv->on('WorkerStart', [$this, 'onWorkerStart']);
         $this->serv->start();
     }
-    public function onStart( $serv ) {
+
+    public function onStart($serv)
+    {
         $this->debug("Swoole Server Start");
     }
-    public function onWorkerStart($serv,$worker_id){
+
+    public function onWorkerStart($serv, $worker_id)
+    {
         //        if ($worker_id == 1)
         //        {
         //            $serv->tick(1000, function () {
@@ -31,33 +37,39 @@ class Server
         //            });
         //        }
     }
-    public function onConnect( $serv, $fd, $from_id ) {
+
+    public function onConnect($serv, $fd, $from_id)
+    {
         //$serv->send( $fd, "Hello {$fd}!" );
         //        swoole_timer_tick(1000, function(){
         //            echo "timeout\n";
         //        });
     }
-    public function onReceive( swoole_server $serv, $fd, $from_id, $data ) {
+
+    public function onReceive(swoole_server $serv, $fd, $from_id, $data)
+    {
         //        echo "Get Message From Client {$fd}:{$data}\n";
-        $this->decode_mqtt($data,$serv,$fd);
+        $this->decode_mqtt($data, $serv, $fd);
     }
-    public function onClose( $serv, $fd, $from_id ) {
+
+    public function onClose($serv, $fd, $from_id)
+    {
         $this->debug("Client {$fd} close connection");
-        $client_id = $this->redis_get("client_".$fd);
-        $this->redis_delete("client_".$fd);
-        $this->redis_delete("fd_".$client_id);
+        $client_id = $this->redis_get("client_" . $fd);
+        $this->redis_delete("client_" . $fd);
+        $this->redis_delete("fd_" . $client_id);
         $this->debug("delete client redis data");
     }
-    public function decode_mqtt($data,$serv,$fd)
+
+    public function decode_mqtt($data, $serv, $fd)
     {
         $this->printstr($data);
         $data_len_byte = 1;
-        $fix_header['data_len'] = $this->getmsglength($data,$data_len_byte);
-        $this->debug($fix_header['data_len'],"get msg length");
+        $fix_header['data_len'] = $this->getmsglength($data, $data_len_byte);
+        $this->debug($fix_header['data_len'], "get msg length");
         $byte = ord($data[0]);
         $fix_header['type'] = ($byte & 0xF0) >> 4;
-        switch ($fix_header['type'])
-        {
+        switch ($fix_header['type']) {
             case 1:
                 $this->debug("CONNECT");
                 $resp = chr(32) . chr(2) . chr(0) . chr(0);//转换为二进制返回应该使用chr
@@ -76,7 +88,7 @@ class Server
                 $offset += strlen($topic) + 2;
                 $msg = substr($data, $offset);
                 echo "client msg: $topic\n---------------------------------\n$msg\n---------------------------------\n";
-                $client_id = $this->redis_get("client_".$fd);
+                $client_id = $this->redis_get("client_" . $fd);
                 break;
             case 8:
                 $this->debug("SUBSCRIBE");
@@ -84,20 +96,19 @@ class Server
                 //                $msg_id = ord($data[2]);
                 $msg_id = ord($data[3]);
                 $fix_header['sign'] = ($byte & 0x02) >> 1;
-                $qos = ord($data[$fix_header['data_len']+1]);
-                if($fix_header['sign']==1)
-                {
+                $qos = ord($data[$fix_header['data_len'] + 1]);
+                if ($fix_header['sign'] == 1) {
                     echo "this is subscribe message!!!!\n";
-                    $this->debug($msg_id,"msg id");
-                    $this->debug($qos,"QOS");
+                    $this->debug($msg_id, "msg id");
+                    $this->debug($qos, "QOS");
                     //这里没有从协议中读取topic的长度,按照固定的写做6
-                    $topic = substr($data,6,$fix_header['data_len']-1);
-                    $this->debug($topic,"topic");
+                    $topic = substr($data, 6, $fix_header['data_len'] - 1);
+                    $this->debug($topic, "topic");
                 }
                 //订阅后返回
-                $resp = chr(0x90).chr(3).chr(0).chr($msg_id).chr(0);
+                $resp = chr(0x90) . chr(3) . chr(0) . chr($msg_id) . chr(0);
                 $this->printstr($resp);
-                $serv->send($fd,$resp);
+                $serv->send($fd, $resp);
                 $this->debug("send SUBACK");
                 break;
             case 10:
@@ -115,15 +126,19 @@ class Server
                 break;
         }
     }
+
     public function decodeValue($data)
     {
         return 256 * ord($data[0]) + ord($data[1]);
     }
+
     public function decodeString($data)
     {
         $length = $this->decodeValue($data);
+
         return substr($data, 2, $length);
     }
+
     public function get_connect_info($data)
     {
         $connect_info['protocol_name'] = $this->decodeString($data);
@@ -139,50 +154,66 @@ class Server
         $connect_info['keepalive'] = $this->decodeValue(substr($data, $offset, 2));
         $offset += 2;
         $connect_info['clientId'] = $this->decodeString(substr($data, $offset));
+
         return $connect_info;
     }
-    public function debug($str,$title = "Debug")
+
+    public function debug($str, $title = "Debug")
     {
         echo "-------------------------------\n";
-        echo '[' . time() . "] ".$title .':['. $str . "]\n";
+        echo '[' . time() . "] " . $title . ':[' . $str . "]\n";
         echo "-------------------------------\n";
     }
-    public function printstr($string){
+
+    public function printstr($string)
+    {
         $strlen = strlen($string);
-        for($j=0;$j<$strlen;$j++){
+        for ($j = 0; $j < $strlen; $j ++) {
             $num = ord($string{$j});
-            if($num > 31)
-                $chr = $string{$j}; else $chr = " ";
-            printf("%4d: %08b : 0x%02x : %s \n",$j,$num,$num,$chr);
+            if ($num > 31) {
+                $chr = $string{$j};
+            } else {
+                $chr = " ";
+            }
+            printf("%4d: %08b : 0x%02x : %s \n", $j, $num, $num, $chr);
         }
     }
+
     /* getmsglength: */
-    public function getmsglength(&$msg, &$i){
+    public function getmsglength(&$msg, &$i)
+    {
         $multiplier = 1;
-        $value = 0 ;
-        do{
+        $value = 0;
+        do {
             $digit = ord($msg{$i});
             $value += ($digit & 127) * $multiplier;
             $multiplier *= 128;
-            $i++;
-        }while (($digit & 128) != 0);
+            $i ++;
+        } while (($digit & 128) != 0);
+
         return $value;
     }
+
     /* setmsglength: */
-    public function setmsglength($len){
+    public function setmsglength($len)
+    {
         $string = "";
-        do{
+        do {
             $digit = $len % 128;
             $len = $len >> 7;
             // if there are more digits to encode, set the top bit of this digit
-            if ( $len > 0 )
+            if ($len > 0) {
                 $digit = ($digit | 0x80);
+            }
             $string .= chr($digit);
-        }while ( $len > 0 );
+        } while ($len > 0);
+
         return $string;
     }
+
     /* strwritestring: writes a string to a buffer */
-    public function strwritestring($str, &$i){
+    public function strwritestring($str, &$i)
+    {
         $ret = " ";
         $len = strlen($str);
         $msb = $len >> 8;
@@ -190,9 +221,11 @@ class Server
         $ret = chr($msb);
         $ret .= chr($lsb);
         $ret .= $str;
-        $i += ($len+2);
+        $i += ($len + 2);
+
         return $ret;
     }
+
     /* publish: publishes $content on a $topic */
     function send_publish($topic, $content, $qos = 0, $retain = 0)
     {
@@ -202,11 +235,13 @@ class Server
         $head = " ";
         $cmd = 0x30;
         $head{0} = chr($cmd);
-        $head .= $this->setmsglength(strlen($topic)+strlen($content)+2);
+        $head .= $this->setmsglength(strlen($topic) + strlen($content) + 2);
         echo "+++++++++++++++++++++++++++\n";
-        $this->printstr($head.chr(0).chr(0x06).$buffer);
+        $this->printstr($head . chr(0) . chr(0x06) . $buffer);
         echo "+++++++++++++++++++++++++++\n";
-        return $head.chr(0).chr(0x06).$buffer;
+
+        return $head . chr(0) . chr(0x06) . $buffer;
     }
 }
+
 $server = new Server();
