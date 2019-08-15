@@ -129,9 +129,15 @@ class RedisSingleton
         if (is_null($this->conn)) {
             $this->init();
         } else {
+            $redisVersion = phpversion('redis');
+
             try {
-                $res = $this->conn->ping();
-                if (($res !== true) && ($res !== '+PONG')) {
+                if (version_compare($redisVersion, '5.0.0', '>=')) {
+                    $res = $this->conn->ping('+PONG');
+                } else {
+                    $res = $this->conn->ping();
+                }
+                if ($res !== '+PONG') {
                     Log::error('redis check fail,check result is ' . $res);
                     $this->init();
                 }
