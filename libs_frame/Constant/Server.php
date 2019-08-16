@@ -39,7 +39,7 @@ final class Server
     const VERSION_MIN_SEASLOG = '1.9.0'; //最低版本-seaslog
     const VERSION_MIN_YAC = '2.0.2'; //最低版本-yac
     const VERSION_MIN_YAF = '3.0.7'; //最低版本-yaf
-    const VERSION_MIN_RUNKIT = '2.0.3'; //最低版本-runkit
+    const VERSION_MIN_RUNKIT = '3.0.0'; //最低版本-runkit
 
     //熔断器常量
     const FUSE_STATE_OPEN = 'open'; //状态-开启
