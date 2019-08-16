@@ -60,6 +60,12 @@ class WxconfigMiniEntity extends MysqlEntity
     public $option_status = 1;
 
     /**
+     * 最新发布代码版本
+     * @var string
+     */
+    public $stable_code = '';
+
+    /**
      * 状态
      * @var int
      */
