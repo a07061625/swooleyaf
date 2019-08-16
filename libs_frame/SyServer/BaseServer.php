@@ -706,7 +706,7 @@ abstract class BaseServer
             'swoole',
             'SeasLog',
             'msgpack',
-            'runkit',
+            'runkit7',
         ];
         foreach ($extensionList as $extName) {
             if (!extension_loaded($extName)) {
@@ -726,8 +726,9 @@ abstract class BaseServer
         if (version_compare(\YAF\VERSION, Server::VERSION_MIN_YAF, '<')) {
             exit('yaf版本必须大于等于' . Server::VERSION_MIN_YAF . PHP_EOL);
         }
-        if (version_compare(RUNKIT_VERSION, Server::VERSION_MIN_RUNKIT, '<')) {
-            exit('runkit版本必须大于等于' . Server::VERSION_MIN_RUNKIT . PHP_EOL);
+        $runkitVersion = phpversion('runkit7');
+        if (version_compare($runkitVersion, Server::VERSION_MIN_RUNKIT, '<')) {
+            exit('runkit7版本必须大于等于' . Server::VERSION_MIN_RUNKIT . PHP_EOL);
         }
     }
 
