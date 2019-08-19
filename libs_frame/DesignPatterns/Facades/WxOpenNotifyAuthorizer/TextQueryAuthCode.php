@@ -26,19 +26,14 @@ class TextQueryAuthCode extends WxOpenNotifyAuthorizerFacade
         $authorizerInfo = new AuthorizerInfo($openCommonConfig->getAppId());
         $authorizerInfo->setAuthCode($authCode);
         $authInfo = $authorizerInfo->getDetail();
-        unset($authorizerInfo);
         //调用发送客服消息api回复文本消息
-        $customMsg = new CustomMsgSend('');
+        $customMsg = new CustomMsgSend($authInfo['data']['authorization_info']['authorizer_appid']);
         $customMsg->setAccessToken($authInfo['data']['authorization_info']['authorizer_access_token']);
-        $customMsg->setMsgData([
-            'touser' => $data['FromUserName'],
-            'msgtype' => 'text',
-            'text' => [
-                'content' => $authCode . '_from_api',
-            ],
+        $customMsg->setOpenid($data['FromUserName']);
+        $customMsg->setMsgInfo('text', [
+            'content' => $authCode . '_from_api',
         ]);
         $customMsg->getDetail();
-        unset($customMsg);
 
         return [
             'ToUserName' => $data['FromUserName'],

@@ -17,6 +17,26 @@ use Wx\WxUtilOpenBase;
 
 class CustomMsgSend extends WxBaseShop
 {
+    const CUSTOM_MSG_TYPE_TEXT = 'text';
+    const CUSTOM_MSG_TYPE_IMAGE = 'image';
+    const CUSTOM_MSG_TYPE_VOICE = 'voice';
+    const CUSTOM_MSG_TYPE_VIDEO = 'video';
+    const CUSTOM_MSG_TYPE_MUSIC = 'music';
+    const CUSTOM_MSG_TYPE_NEWS = 'news';
+    const CUSTOM_MSG_TYPE_MPNEWS = 'mpnews';
+    const CUSTOM_MSG_TYPE_MENU = 'msgmenu';
+
+    private static $totalCustomMsgType = [
+        self::CUSTOM_MSG_TYPE_TEXT => '文本',
+        self::CUSTOM_MSG_TYPE_IMAGE => '图片',
+        self::CUSTOM_MSG_TYPE_VOICE => '语音',
+        self::CUSTOM_MSG_TYPE_VIDEO => '视频',
+        self::CUSTOM_MSG_TYPE_MUSIC => '音乐',
+        self::CUSTOM_MSG_TYPE_NEWS => '图文(跳转到外链)',
+        self::CUSTOM_MSG_TYPE_MPNEWS => '图文(跳转到图文消息页面)',
+        self::CUSTOM_MSG_TYPE_MENU => '菜单',
+    ];
+
     /**
      * 应用ID
      * @var string
@@ -27,6 +47,16 @@ class CustomMsgSend extends WxBaseShop
      * @var string
      */
     private $accessToken = '';
+    /**
+     * 用户openid
+     * @var string
+     */
+    private $touser = '';
+    /**
+     * 消息类型
+     * @var string
+     */
+    private $msgType = '';
     /**
      * 消息数据
      * @var array
@@ -64,16 +94,33 @@ class CustomMsgSend extends WxBaseShop
     }
 
     /**
+     * @param string $openid
+     * @throws \SyException\Wx\WxException
+     */
+    public function setOpenid(string $openid)
+    {
+        if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
+            $this->reqData['touser'] = $openid;
+        } else {
+            throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @param string $msgType
      * @param array $msgData
      * @throws \SyException\Wx\WxException
      */
-    public function setMsgData(array $msgData)
+    public function setMsgInfo(string $msgType, array $msgData)
     {
-        if (empty($msgData)) {
-            throw new WxException('消息数据不合法', ErrorCode::WX_PARAM_ERROR);
+        if (!isset(self::$totalCustomMsgType[$msgType])) {
+            throw new WxException('消息类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
-
-        $this->msgData = $msgData;
+        if (empty($msgData)) {
+            throw new WxException('消息数据不能为空', ErrorCode::WX_PARAM_ERROR);
+        }
+        $this->reqData['msgtype'] = $msgType;
+        $this->reqData[$msgType] = $msgData;
     }
 
     /**
@@ -91,8 +138,11 @@ class CustomMsgSend extends WxBaseShop
 
     public function getDetail() : array
     {
-        if (empty($this->msgData)) {
-            throw new WxException('消息数据不能为空', ErrorCode::WX_PARAM_ERROR);
+        if (!isset($this->reqData['touser'])) {
+            throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
+        }
+        if (!isset($this->reqData['msgtype'])) {
+            throw new WxException('消息类型不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
@@ -106,7 +156,7 @@ class CustomMsgSend extends WxBaseShop
         } else {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getAuthorizerAccessToken($this->appId);
         }
-        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->msgData, JSON_UNESCAPED_UNICODE);
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $this->curlConfigs[CURLOPT_HTTPHEADER] = [
             'Expect:',
         ];
