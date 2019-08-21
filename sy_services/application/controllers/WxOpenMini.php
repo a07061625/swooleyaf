@@ -254,9 +254,11 @@ class WxOpenMiniController extends CommonController
         if (empty($extData)) {
             $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '自定义配置不能为空');
         } else {
+            $templateId = (string)\Request\SyRequest::getParams('template_id');
+            $extData['tmpcode'] = $templateId;
             $needParams = [
                 'wxmini_appid' => trim(\Request\SyRequest::getParams('wxmini_appid')),
-                'template_id' => (string)\Request\SyRequest::getParams('template_id'),
+                'template_id' => $templateId,
                 'ext_json' => $extData,
                 'user_version' => trim(\Request\SyRequest::getParams('user_version', '')),
                 'user_desc' => trim(\Request\SyRequest::getParams('user_desc', '')),
@@ -386,6 +388,7 @@ class WxOpenMiniController extends CommonController
                     'directCommit' => true,
                     'ext' => [
                         'appid' => $preRes['app_id'],
+                        'tmpcode' => $templateId,
                     ],
                 ],
                 'user_version' => trim(\Request\SyRequest::getParams('user_version')),
