@@ -63,7 +63,7 @@ abstract class UtilBase
             $resArr['data'] = $rspData[$responseTag];
         } elseif (isset($rspData['error_response'])) {
             $resArr['code'] = $errorCode;
-            $resArr['msg'] = $rspData['error_response']['sub_msg'];
+            $resArr['msg'] = $rspData['error_response']['sub_msg'] ?? $rspData['error_response']['msg'];
         } else {
             $resArr['code'] = $errorCode;
             $resArr['msg'] = '解析服务数据出错';
