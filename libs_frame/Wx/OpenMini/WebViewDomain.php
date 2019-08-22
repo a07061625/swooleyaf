@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 设置小程序业务域名
  * User: 姜伟
  * Date: 18-9-13
  * Time: 上午12:29

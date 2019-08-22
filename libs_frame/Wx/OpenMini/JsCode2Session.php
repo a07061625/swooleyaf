@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 获取第三方平台 session_key 和 openid
  * User: 姜伟
  * Date: 2018/9/13 0013
  * Time: 7:47
