@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 小程序插件管理接口
  * User: 姜伟
  * Date: 2018/9/13 0013
  * Time: 8:58
@@ -21,11 +21,6 @@ class Plugin extends WxBaseOpenMini
      * @var string
      */
     private $appId = '';
-    /**
-     * 数据
-     * @var array
-     */
-    private $data = [];
 
     public function __construct(string $appId)
     {
@@ -39,33 +34,49 @@ class Plugin extends WxBaseOpenMini
     }
 
     /**
-     * @param string $action 操作类型
-     * @param string $pluginAppId 插件appid
+     * @param string $action
+     * @param array $data
      * @throws \SyException\Wx\WxOpenException
      */
-    public function setData(string $action, string $pluginAppId = '')
+    public function setData(string $action, array $data)
     {
-        if (!in_array($action, ['apply', 'list', 'unbind'], true)) {
-            throw new WxOpenException('操作类型不支持', ErrorCode::WXOPEN_PARAM_ERROR);
-        } elseif ($action != 'list') {
-            if (strlen($pluginAppId) == 0) {
-                throw new WxOpenException('插件appid不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
+        if ($action == 'apply') {
+            if (!ctype_alnum($data['plugin_appid'])) {
+                throw new WxOpenException('插件appid不合法', ErrorCode::WXOPEN_PARAM_ERROR);
             }
-
-            $this->data = [
-                'action' => $action,
-                'plugin_appid' => $pluginAppId,
+            $this->reqData = [
+                'plugin_appid' => $data['plugin_appid'],
+            ];
+        } elseif ($action == 'list') {
+            $this->reqData = [];
+        } elseif ($action == 'unbind') {
+            if (!ctype_alnum($data['plugin_appid'])) {
+                throw new WxOpenException('插件appid不合法', ErrorCode::WXOPEN_PARAM_ERROR);
+            }
+            $this->reqData = [
+                'plugin_appid' => $data['plugin_appid'],
+            ];
+        } elseif ($action == 'update') {
+            if (!ctype_alnum($data['plugin_appid'])) {
+                throw new WxOpenException('插件appid不合法', ErrorCode::WXOPEN_PARAM_ERROR);
+            }
+            if (!isset($data['user_version'])) {
+                throw new WxOpenException('版本号不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
+            }
+            $this->reqData = [
+                'user_version' => $data['user_version'],
+                'plugin_appid' => $data['plugin_appid'],
             ];
         } else {
-            $this->data = [
-                'action' => $action,
-            ];
+            throw new WxOpenException('操作类型不支持', ErrorCode::WXOPEN_PARAM_ERROR);
         }
+
+        $this->reqData['action'] = $action;
     }
 
     public function getDetail() : array
     {
-        if (empty($this->data)) {
+        if (empty($this->reqData)) {
             throw new WxOpenException('数据不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 
@@ -74,7 +85,7 @@ class Plugin extends WxBaseOpenMini
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getAuthorizerAccessToken($this->appId);
-        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->data, JSON_UNESCAPED_UNICODE);
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $this->curlConfigs[CURLOPT_SSL_VERIFYPEER] = false;
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);

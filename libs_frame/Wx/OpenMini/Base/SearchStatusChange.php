@@ -1,11 +1,11 @@
 <?php
 /**
- * 设置小程序服务器域名
+ * 设置小程序隐私设置（是否可被搜索）
  * User: 姜伟
- * Date: 18-9-13
- * Time: 上午12:17
+ * Date: 2018/9/13 0013
+ * Time: 8:43
  */
-namespace Wx\OpenMini;
+namespace Wx\OpenMini\Base;
 
 use Constant\ErrorCode;
 use SyException\Wx\WxOpenException;
@@ -14,7 +14,7 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class ServerDomain extends WxBaseOpenMini
+class SearchStatusChange extends WxBaseOpenMini
 {
     /**
      * 应用ID
@@ -22,15 +22,15 @@ class ServerDomain extends WxBaseOpenMini
      */
     private $appId = '';
     /**
-     * 修改数据
-     * @var array
+     * 搜索状态
+     * @var int
      */
-    private $modifyData = [];
+    private $searchStatus = 0;
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/wxa/modify_domain?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/wxa/changewxasearchstatus?access_token=';
         $this->appId = $appId;
     }
 
@@ -39,32 +39,22 @@ class ServerDomain extends WxBaseOpenMini
     }
 
     /**
-     * @param string $action
-     * @param array $domains
+     * @param int $searchStatus
      * @throws \SyException\Wx\WxOpenException
      */
-    public function setModifyData(string $action, array $domains = [])
+    public function setSearchStatus(int $searchStatus)
     {
-        if (!in_array($action, ['add', 'delete', 'set', 'get'], true)) {
-            throw new WxOpenException('操作类型不支持', ErrorCode::WXOPEN_PARAM_ERROR);
-        } elseif ($action != 'get') {
-            if (empty($domains)) {
-                throw new WxOpenException('域名不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
-            }
-
-            $this->modifyData = $domains;
-            $this->modifyData['action'] = $action;
+        if (in_array($searchStatus, [0, 1], true)) {
+            $this->reqData['status'] = $searchStatus;
         } else {
-            $this->modifyData = [
-                'action' => $action,
-            ];
+            throw new WxOpenException('搜索状态不合法', ErrorCode::WXOPEN_PARAM_ERROR);
         }
     }
 
     public function getDetail() : array
     {
-        if (empty($this->modifyData)) {
-            throw new WxOpenException('修改数据不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
+        if (!isset($this->reqData['status'])) {
+            throw new WxOpenException('搜索状态不能为空', ErrorCode::WXOPEN_PARAM_ERROR);
         }
 
         $resArr = [
@@ -72,7 +62,7 @@ class ServerDomain extends WxBaseOpenMini
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getAuthorizerAccessToken($this->appId);
-        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->modifyData, JSON_UNESCAPED_UNICODE);
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $this->curlConfigs[CURLOPT_SSL_VERIFYPEER] = false;
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);

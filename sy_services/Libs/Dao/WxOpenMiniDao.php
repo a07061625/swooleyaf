@@ -13,17 +13,17 @@ use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use Tool\Tool;
 use Traits\SimpleDaoTrait;
-use Wx\OpenMini\CategoryGet;
-use Wx\OpenMini\CodeAudit;
-use Wx\OpenMini\CodeAuditStatus;
-use Wx\OpenMini\CodeRelease;
-use Wx\OpenMini\CodeUpload;
-use Wx\OpenMini\DraftCodeList;
-use Wx\OpenMini\PageGet;
+use Wx\OpenMini\Category\CategoryGet;
+use Wx\OpenMini\Code\CodeAudit;
+use Wx\OpenMini\Code\CodeAuditStatus;
+use Wx\OpenMini\Code\CodeRelease;
+use Wx\OpenMini\Code\CodeUpload;
+use Wx\OpenMini\CodeTemplate\DraftCodeList;
+use Wx\OpenMini\Code\PageGet;
 use Wx\OpenMini\ServerDomain;
-use Wx\OpenMini\TemplateCodeAdd;
-use Wx\OpenMini\TemplateCodeDelete;
-use Wx\OpenMini\TemplateCodeList;
+use Wx\OpenMini\CodeTemplate\TemplateCodeAdd;
+use Wx\OpenMini\CodeTemplate\TemplateCodeDelete;
+use Wx\OpenMini\CodeTemplate\TemplateCodeList;
 use Wx\OpenMini\WebViewDomain;
 
 class WxOpenMiniDao
