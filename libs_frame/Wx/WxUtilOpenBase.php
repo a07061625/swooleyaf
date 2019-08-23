@@ -19,6 +19,7 @@ use Traits\SimpleTrait;
 use Wx\Alone\JsTicket;
 use Wx\OpenCommon\AuthorizerAccessToken;
 use Wx\OpenCommon\AuthorizerInfo;
+use Wx\OpenMini\Cloud\CodeSecretGet;
 
 abstract class WxUtilOpenBase extends WxUtilBase
 {
@@ -356,5 +357,33 @@ abstract class WxUtilOpenBase extends WxUtilBase
         $content1 = $nonce . pack('N', strlen($replyMsg)) . $replyMsg . $appId;
         $content2 = Tool::pkcs7Encode($content1);
         return openssl_encrypt($content2, 'AES-256-CBC', substr($key, 0, 32), OPENSSL_ZERO_PADDING, $iv);
+    }
+
+    /**
+     * 获取授权者代码保护密钥
+     * @param string $appId
+     * @return string
+     * @throws \SyException\Wx\WxOpenException
+     */
+    public static function getAuthorizerCodeSecret(string $appId) : string
+    {
+        $redisKey = Project::REDIS_PREFIX_WX_COMPONENT_AUTHORIZER_CODE_SECRET . $appId;
+        $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
+        if (isset($redisData['unique_key']) && ($redisData['unique_key'] == $redisKey)) {
+            return $redisData['code_secret'];
+        }
+
+        $codeSecretGet = new CodeSecretGet($appId);
+        $getRes = $codeSecretGet->getDetail();
+        if ($getRes['code'] > 0) {
+            throw new WxOpenException($getRes['message'], $getRes['code']);
+        }
+
+        CacheSimpleFactory::getRedisInstance()->hMset($redisKey, [
+            'unique_key' => $redisKey,
+            'code_secret' => $getRes['data']['codesecret'],
+        ]);
+        CacheSimpleFactory::getRedisInstance()->expire($redisKey, 86400);
+        return $getRes['data']['codesecret'];
     }
 }

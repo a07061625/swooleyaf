@@ -34,6 +34,7 @@ class ProjectBase
     const REDIS_PREFIX_WX_PROVIDER_CORP_ACCOUNT_SUITE = 'sy' . SY_PROJECT . '10104_'; //前缀-企业微信服务商套件
     const REDIS_PREFIX_WX_PROVIDER_CORP_AUTHORIZER = 'sy' . SY_PROJECT . '10105_'; //前缀-服务商授权企业微信
     const REDIS_PREFIX_WX_CORP = 'sy' . SY_PROJECT . '10106_'; //前缀-企业微信
+    const REDIS_PREFIX_WX_COMPONENT_AUTHORIZER_CODE_SECRET = 'sy' . SY_PROJECT . '10107_'; //前缀-微信开放平台授权小程序代码保护密钥
     const REDIS_PREFIX_PRINT_FEYIN_ACCOUNT = 'sy' . SY_PROJECT . '10200_'; //前缀-飞印打印账号
     const REDIS_PREFIX_DINGTALK_PROVIDER_ACCOUNT = 'sy' . SY_PROJECT . '10300_'; //前缀-企业钉钉服务商账号
     const REDIS_PREFIX_DINGTALK_PROVIDER_ACCOUNT_SUITE = 'sy' . SY_PROJECT . '10301_'; //前缀-企业钉钉服务商套件
