@@ -377,8 +377,10 @@ class HttpServer extends BaseServer
     public function onRequest(\swoole_http_request $request, \swoole_http_response $response)
     {
         self::$_response = $response;
-        $this->initReceive($request);
-        if (is_null(self::$_reqTask)) {
+        $initRes = $this->initReceive($request);
+        if (strlen($initRes) > 0) {
+            self::$_rspMsg = $initRes;
+        } elseif (is_null(self::$_reqTask)) {
             $rspHeaders = [];
             $handleHeaderRes = $this->handleReqHeader($rspHeaders);
             if ($handleHeaderRes == self::RESPONSE_RESULT_TYPE_ACCEPT) {
@@ -393,12 +395,11 @@ class HttpServer extends BaseServer
         } else {
             self::$_syServer->incr(self::$_serverToken, 'request_times', 1);
             $this->_server->task(self::$_reqTask, random_int(1, $this->_taskMaxId));
-            $result = new Result();
-            $result->setData([
+            $res = new Result();
+            $res->setData([
                 'msg' => 'task received',
             ]);
-            self::$_rspMsg = $result->getJson();
-            unset($result);
+            self::$_rspMsg = $res->getJson();
         }
 
         if (self::$_reqTag) {
@@ -460,16 +461,26 @@ class HttpServer extends BaseServer
     /**
      * 初始化公共数据
      * @param \swoole_http_request $request
+     * @return string
      */
     private function initReceive(\swoole_http_request $request)
     {
-        Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
         $_POST = $request->post ?? [];
         $_SESSION = [];
+        Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
         self::$_reqHeaders = $request->header ?? [];
         self::$_reqServers = $request->server ?? [];
         self::$_reqTag = isset(self::$_reqHeaders[Server::SERVER_HTTP_TAG_REQUEST_HEADER]) ? false : true;
         self::$_rspMsg = '';
+
+        if (isset($request->header['content-type']) && ($request->header['content-type'] == 'application/json')) {
+            $_POST = Tool::jsonDecode($request->rawContent());
+            if (!is_array($_POST)) {
+                $res = new Result();
+                $res->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, 'JSON格式不正确');
+                return $res->getJson();
+            }
+        }
 
         $taskData = $_POST[Server::SERVER_DATA_KEY_TASK] ?? '';
         self::$_reqTask = is_string($taskData) && (strlen($taskData) > 0) ? $taskData : null;
@@ -491,6 +502,7 @@ class HttpServer extends BaseServer
         $nowTime = time();
         $_SERVER[Server::SERVER_DATA_KEY_TIMESTAMP] = $nowTime;
         $_SERVER['SYREQ_ID'] = hash('md4', $nowTime . Tool::createNonceStr(8));
+        return '';
     }
 
     private function initRequest(\swoole_http_request $request, array $rspHeaders)
