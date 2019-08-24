@@ -469,7 +469,7 @@ class HttpServer extends BaseServer
         Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
         self::$_reqHeaders = $request->header ?? [];
         self::$_reqServers = $request->server ?? [];
-        self::$_reqTag = isset(self::$_reqHeaders[Server::SERVER_HTTP_TAG_REQUEST_HEADER]) ? false : true;
+        self::$_reqTag = !isset(self::$_reqHeaders[Server::SERVER_HTTP_TAG_REQUEST_HEADER]);
         self::$_rspMsg = '';
 
         if (isset($request->header['content-type']) && ($request->header['content-type'] == 'application/json')) {
