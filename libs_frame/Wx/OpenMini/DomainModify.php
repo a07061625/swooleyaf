@@ -14,7 +14,7 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class ServerDomain extends WxBaseOpenMini
+class DomainModify extends WxBaseOpenMini
 {
     /**
      * 应用ID

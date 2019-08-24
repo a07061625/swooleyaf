@@ -20,11 +20,11 @@ use Wx\OpenMini\Code\CodeRelease;
 use Wx\OpenMini\Code\CodeUpload;
 use Wx\OpenMini\CodeTemplate\DraftCodeList;
 use Wx\OpenMini\Code\PageGet;
-use Wx\OpenMini\ServerDomain;
+use Wx\OpenMini\DomainModify;
 use Wx\OpenMini\CodeTemplate\TemplateCodeAdd;
 use Wx\OpenMini\CodeTemplate\TemplateCodeDelete;
 use Wx\OpenMini\CodeTemplate\TemplateCodeList;
-use Wx\OpenMini\WebViewDomain;
+use Wx\OpenMini\DomainWebViewSet;
 
 class WxOpenMiniDao
 {
@@ -82,7 +82,7 @@ class WxOpenMiniDao
 
     public static function modifyServerDomain(array $data)
     {
-        $serverDomain = new ServerDomain($data['wxmini_appid']);
+        $serverDomain = new DomainModify($data['wxmini_appid']);
         $serverDomain->setModifyData($data['action_type'], $data['domains']);
         $modifyRes = $serverDomain->getDetail();
         if ($modifyRes['code'] > 0) {
@@ -94,7 +94,7 @@ class WxOpenMiniDao
 
     public static function setWebViewDomain(array $data)
     {
-        $webViewDomain = new WebViewDomain($data['wxmini_appid']);
+        $webViewDomain = new DomainWebViewSet($data['wxmini_appid']);
         $webViewDomain->setData($data['action_type'], $data['domains']);
         $setRes = $webViewDomain->getDetail();
         if ($setRes['code'] > 0) {

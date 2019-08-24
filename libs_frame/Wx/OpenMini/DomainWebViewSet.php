@@ -14,7 +14,7 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class WebViewDomain extends WxBaseOpenMini
+class DomainWebViewSet extends WxBaseOpenMini
 {
     /**
      * 应用ID
