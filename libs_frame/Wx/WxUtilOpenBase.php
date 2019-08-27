@@ -13,12 +13,11 @@ use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxOpenException;
 use SyServer\BaseServer;
-use Tool\ProjectTool;
+use Tool\ProjectWxTool;
 use Tool\Tool;
 use Traits\SimpleTrait;
 use Wx\Alone\JsTicket;
 use Wx\OpenCommon\AuthorizerAccessToken;
-use Wx\OpenCommon\AuthorizerInfo;
 use Wx\OpenMini\Cloud\CodeSecretGet;
 
 abstract class WxUtilOpenBase extends WxUtilBase
@@ -50,6 +49,13 @@ abstract class WxUtilOpenBase extends WxUtilBase
      */
     public static function getAuthorizerAccessToken(string $appId) : string
     {
+        $cacheInfo = ProjectWxTool::getOpenAuthorizerCache($appId);
+        if ($cacheInfo['authorize_status'] == Project::WX_CONFIG_AUTHORIZE_STATUS_EMPTY) {
+            throw new WxOpenException('授权公众号不存在', ErrorCode::WXOPEN_PARAM_ERROR);
+        } elseif ($cacheInfo['authorize_status'] == Project::WX_CONFIG_AUTHORIZE_STATUS_NO) {
+            throw new WxOpenException('公众号已取消授权', ErrorCode::WXOPEN_PARAM_ERROR);
+        }
+
         $nowTime = Tool::getNowTime();
         $localCacheTag = Project::LOCAL_CACHE_TAG_WXOPEN_AUTHORIZER . $appId;
         if (SY_LC_WXOPEN_AUTHORIZER) {
@@ -59,60 +65,29 @@ abstract class WxUtilOpenBase extends WxUtilBase
             }
         }
 
-        $redisKey = Project::REDIS_PREFIX_WX_COMPONENT_AUTHORIZER . $appId;
-        $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
-        if (!isset($redisData['at_key'])) {
-            $authorizerInfo = ProjectTool::getWxOpenAuthorizerInfo($appId);
-            $cacheData['at_key'] = $redisKey;
-            $cacheData['auth_code'] = $authorizerInfo['authorizer_authcode'];
-            if (strlen($authorizerInfo['authorizer_refreshtoken']) > 0) {
-                $cacheData['refresh_token'] = $authorizerInfo['authorizer_refreshtoken'];
-            } else {
-                $openAppId = WxConfigSingleton::getInstance()->getOpenCommonConfig()->getAppId();
-                $authorizerInfoObj = new AuthorizerInfo($openAppId);
-                $authorizerInfoObj->setAuthCode($authorizerInfo['authorizer_authcode']);
-                $authInfo = $authorizerInfoObj->getDetail();
-                unset($authorizerInfoObj);
-                if ($authInfo['code'] > 0) {
-                    throw new WxOpenException($authInfo['message'], ErrorCode::WXOPEN_PARAM_ERROR);
-                }
-                $cacheData['refresh_token'] = $authInfo['data']['authorization_info']['authorizer_refresh_token'];
-
-                ProjectTool::updateWxOpenAuthorizerInfo($appId, [
-                    'authorizer_refreshtoken' => $authInfo['data']['authorization_info']['authorizer_refresh_token'],
-                    'authorizer_allowpower' => $authInfo['data']['authorization_info']['func_info'],
-                    'authorizer_info' => $authInfo['data'],
+        if (isset($cacheInfo['at_key']) && ($cacheInfo['at_key'] == $cacheInfo['unique_key']) && ($cacheInfo['at_expire'] >= $nowTime)) {
+            if (SY_LC_WXOPEN_AUTHORIZER) {
+                $clearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_WXCACHE_CLEAR;
+                BaseServer::setWxCache($localCacheTag, [
+                    'at_content' => $cacheInfo['at_content'],
+                    'at_expire' => (int)$cacheInfo['at_expire'],
+                    'clear_time' => $clearTime,
                 ]);
             }
-            $refreshToken = $cacheData['refresh_token'];
-        } elseif ($redisData['at_key'] == $redisKey) {
-            if ($redisData['at_expire'] >= $nowTime) {
-                if (SY_LC_WXOPEN_AUTHORIZER) {
-                    $clearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_WXCACHE_CLEAR;
-                    BaseServer::setWxCache($localCacheTag, [
-                        'at_content' => $redisData['at_content'],
-                        'at_expire' => (int)$redisData['at_expire'],
-                        'clear_time' => $clearTime,
-                    ]);
-                }
-
-                return $redisData['at_content'];
-            }
-
-            $refreshToken = $redisData['refresh_token'];
-        } else {
-            throw new WxOpenException('获取缓存失败', ErrorCode::WXOPEN_PARAM_ERROR);
+            return $cacheInfo['at_content'];
         }
 
         $authorizerAccessToken = new AuthorizerAccessToken($appId);
-        $authorizerAccessToken->setRefreshToken($refreshToken);
+        $authorizerAccessToken->setRefreshToken($cacheInfo['refresh_token']);
         $accessTokenData = $authorizerAccessToken->getDetail();
 
         $expireTime = (int)($nowTime + $accessTokenData['expires_in'] - 10);
-        $cacheData['at_content'] = $accessTokenData['authorizer_access_token'];
-        $cacheData['at_expire'] = $expireTime;
-        CacheSimpleFactory::getRedisInstance()->hMset($redisKey, $cacheData);
-        CacheSimpleFactory::getRedisInstance()->expire($redisKey, 86400);
+        CacheSimpleFactory::getRedisInstance()->hMset($cacheInfo['unique_key'], [
+            'at_content' => $accessTokenData['authorizer_access_token'],
+            'at_expire' => $expireTime,
+            'at_key' => $cacheInfo['unique_key'],
+        ]);
+        CacheSimpleFactory::getRedisInstance()->expire($cacheInfo['unique_key'], 86400);
 
         if (SY_LC_WXOPEN_AUTHORIZER) {
             $clearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_WXCACHE_CLEAR;
@@ -122,7 +97,6 @@ abstract class WxUtilOpenBase extends WxUtilBase
                 'clear_time' => $clearTime,
             ]);
         }
-
         return $accessTokenData['authorizer_access_token'];
     }
 
@@ -153,7 +127,6 @@ abstract class WxUtilOpenBase extends WxUtilBase
                     'clear_time' => $clearTime,
                 ]);
             }
-
             return $redisData['jt_content'];
         }
 
@@ -178,7 +151,6 @@ abstract class WxUtilOpenBase extends WxUtilBase
                 'clear_time' => $clearTime,
             ]);
         }
-
         return $jsTicketData['ticket'];
     }
 
@@ -209,7 +181,6 @@ abstract class WxUtilOpenBase extends WxUtilBase
                     'clear_time' => $clearTime,
                 ]);
             }
-
             return $redisData['ct_content'];
         }
 
@@ -235,7 +206,6 @@ abstract class WxUtilOpenBase extends WxUtilBase
                 'clear_time' => $clearTime,
             ]);
         }
-
         return $jsTicketData['ticket'];
     }
 

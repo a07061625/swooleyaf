@@ -12,7 +12,7 @@ use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxCorpProviderException;
-use Tool\ProjectTool;
+use Tool\ProjectWxTool;
 use Tool\Tool;
 use Traits\SimpleTrait;
 use Wx\Corp\Common\JsTicket;
@@ -86,7 +86,6 @@ final class WxUtilCorpProvider extends WxUtilBase
      * 明文加密
      * @param string $replyMsg 服务商待回复用户的消息,xml格式的字符串
      * @return string 加密后的可以直接回复用户的密文,包括msg_signature, timestamp, nonce, encrypt的xml格式的字符串
-     * @throws \SyException\Wx\WxOpenException
      */
     public static function encryptMsg(string $replyMsg) : string
     {
@@ -159,7 +158,7 @@ final class WxUtilCorpProvider extends WxUtilBase
             return $redisData['permanent_code'];
         }
 
-        $authorizerInfo = ProjectTool::getWxCorpProviderAuthorizerInfo($corpId);
+        $authorizerInfo = ProjectWxTool::getCorpProviderAuthorizerInfo($corpId);
         CacheSimpleFactory::getRedisInstance()->hMset($redisKey, [
             'unique_key' => $redisKey,
             'permanent_code' => $authorizerInfo['authorizer_permanentcode'],
