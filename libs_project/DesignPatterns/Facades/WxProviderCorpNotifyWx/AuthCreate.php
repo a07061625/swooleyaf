@@ -9,7 +9,7 @@ namespace DesignPatterns\Facades\WxProviderCorpNotifyWx;
 
 use Constant\Project;
 use DesignPatterns\Facades\WxProviderCorpNotifyWxFacade;
-use Tool\ProjectTool;
+use Tool\ProjectWxTool;
 use Traits\SimpleFacadeTrait;
 
 class AuthCreate extends WxProviderCorpNotifyWxFacade
@@ -18,6 +18,6 @@ class AuthCreate extends WxProviderCorpNotifyWxFacade
 
     protected static function handleNotify(array $data)
     {
-        ProjectTool::handleAuthForWxCorpProvider(Project::WX_PROVIDER_CORP_AUTHORIZER_OPTION_TYPE_AUTH_CREATE, $data);
+        ProjectWxTool::handleAuthForCorpProvider(Project::WX_PROVIDER_CORP_AUTHORIZER_OPTION_TYPE_AUTH_CREATE, $data);
     }
 }

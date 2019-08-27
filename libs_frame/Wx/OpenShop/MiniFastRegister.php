@@ -10,7 +10,7 @@ namespace Wx\OpenShop;
 use Constant\ErrorCode;
 use Constant\Project;
 use SyException\Wx\WxOpenException;
-use Tool\ProjectTool;
+use Tool\ProjectWxTool;
 use Tool\Tool;
 use Wx\WxBaseOpenShop;
 use Wx\WxUtilBase;
@@ -74,7 +74,7 @@ class MiniFastRegister extends WxBaseOpenShop
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
         if ($sendData['errcode'] == 0) {
-            ProjectTool::handleAppAuthForWxOpen(Project::WX_COMPONENT_AUTHORIZER_OPTION_TYPE_AUTHORIZED, [
+            ProjectWxTool::handleAppAuthForOpen(Project::WX_COMPONENT_AUTHORIZER_OPTION_TYPE_AUTHORIZED, [
                 'AuthorizerAppid' => $sendData['appid'],
                 'AuthorizationCode' => $sendData['authorization_code'],
             ]);

@@ -9,7 +9,7 @@ namespace DesignPatterns\Facades\WxOpenNotifyWx;
 
 use Constant\Project;
 use DesignPatterns\Facades\WxOpenNotifyWxFacade;
-use Tool\ProjectTool;
+use Tool\ProjectWxTool;
 use Traits\SimpleFacadeTrait;
 
 class Unauthorized extends WxOpenNotifyWxFacade
@@ -18,6 +18,6 @@ class Unauthorized extends WxOpenNotifyWxFacade
 
     protected static function handleNotify(array $data)
     {
-        ProjectTool::handleAppAuthForWxOpen(Project::WX_COMPONENT_AUTHORIZER_OPTION_TYPE_UNAUTHORIZED, $data);
+        ProjectWxTool::handleAppAuthForOpen(Project::WX_COMPONENT_AUTHORIZER_OPTION_TYPE_UNAUTHORIZED, $data);
     }
 }

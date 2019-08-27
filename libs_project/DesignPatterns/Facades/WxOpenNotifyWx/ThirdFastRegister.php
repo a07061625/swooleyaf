@@ -9,7 +9,7 @@ namespace DesignPatterns\Facades\WxOpenNotifyWx;
 
 use Constant\Project;
 use DesignPatterns\Facades\WxOpenNotifyWxFacade;
-use Tool\ProjectTool;
+use Tool\ProjectWxTool;
 use Traits\SimpleFacadeTrait;
 use Wx\WxUtilOpenBase;
 
@@ -20,7 +20,7 @@ class ThirdFastRegister extends WxOpenNotifyWxFacade
     protected static function handleNotify(array $data)
     {
         if ($data['status'] == 0) {
-            ProjectTool::handleAppAuthForWxOpen(Project::WX_COMPONENT_AUTHORIZER_OPTION_TYPE_AUTHORIZED, [
+            ProjectWxTool::handleAppAuthForOpen(Project::WX_COMPONENT_AUTHORIZER_OPTION_TYPE_AUTHORIZED, [
                 'AuthorizerAppid' => $data['appid'],
                 'AuthorizationCode' => $data['auth_code'],
             ]);

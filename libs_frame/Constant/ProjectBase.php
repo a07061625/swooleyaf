@@ -30,22 +30,22 @@ class ProjectBase
     const REDIS_PREFIX_WX_ACCOUNT = 'sy' . SY_PROJECT . '10100_'; //前缀-微信公众号
     const REDIS_PREFIX_WX_COMPONENT_ACCOUNT = 'sy' . SY_PROJECT . '10101_'; //前缀-微信开放平台账号
     const REDIS_PREFIX_WX_COMPONENT_AUTHORIZER = 'sy' . SY_PROJECT . '10102_'; //前缀-微信开放平台授权公众号
-    const REDIS_PREFIX_WX_PROVIDER_CORP_ACCOUNT = 'sy' . SY_PROJECT . '10103_'; //前缀-企业微信服务商账号
-    const REDIS_PREFIX_WX_PROVIDER_CORP_ACCOUNT_SUITE = 'sy' . SY_PROJECT . '10104_'; //前缀-企业微信服务商套件
-    const REDIS_PREFIX_WX_PROVIDER_CORP_AUTHORIZER = 'sy' . SY_PROJECT . '10105_'; //前缀-服务商授权企业微信
-    const REDIS_PREFIX_WX_CORP = 'sy' . SY_PROJECT . '10106_'; //前缀-企业微信
-    const REDIS_PREFIX_WX_COMPONENT_AUTHORIZER_CODE_SECRET = 'sy' . SY_PROJECT . '10107_'; //前缀-微信开放平台授权小程序代码保护密钥
-    const REDIS_PREFIX_PRINT_FEYIN_ACCOUNT = 'sy' . SY_PROJECT . '10200_'; //前缀-飞印打印账号
-    const REDIS_PREFIX_DINGTALK_PROVIDER_ACCOUNT = 'sy' . SY_PROJECT . '10300_'; //前缀-企业钉钉服务商账号
-    const REDIS_PREFIX_DINGTALK_PROVIDER_ACCOUNT_SUITE = 'sy' . SY_PROJECT . '10301_'; //前缀-企业钉钉服务商套件
-    const REDIS_PREFIX_DINGTALK_PROVIDER_AUTHORIZER = 'sy' . SY_PROJECT . '10302_'; //前缀-服务商授权企业钉钉
-    const REDIS_PREFIX_DINGTALK_CORP = 'sy' . SY_PROJECT . '10303_'; //前缀-企业钉钉
-    const REDIS_PREFIX_JPUSH_APP_CID_PUSH = 'sy' . SY_PROJECT . '10400_'; //前缀-极光推送推送唯一标识符
-    const REDIS_PREFIX_JPUSH_APP_CID_SCHEDULE = 'sy' . SY_PROJECT . '10401_'; //前缀-极光推送定时任务唯一标识符
-    const REDIS_PREFIX_CODE_WEBHOOK_QUEUE = 'sy' . SY_PROJECT . '10500_'; //前缀-代码WebHook队列
-    const REDIS_PREFIX_CODE_WEBHOOK_STATUS = 'sy' . SY_PROJECT . '10501_'; //前缀-代码WebHook状态
-    const REDIS_PREFIX_CODE_WEBHOOK_COMMAND = 'sy' . SY_PROJECT . '10502_'; //前缀-代码WebHook命令
-    const REDIS_PREFIX_CODE_WEBHOOK_INFO = 'sy' . SY_PROJECT . '10503_'; //前缀-代码WebHook信息
+    const REDIS_PREFIX_WX_COMPONENT_AUTHORIZER_CODE_SECRET = 'sy' . SY_PROJECT . '10103_'; //前缀-微信开放平台授权小程序代码保护密钥
+    const REDIS_PREFIX_WX_CORP = 'sy' . SY_PROJECT . '10200_'; //前缀-企业微信
+    const REDIS_PREFIX_WX_PROVIDER_CORP_ACCOUNT = 'sy' . SY_PROJECT . '10201_'; //前缀-企业微信服务商账号
+    const REDIS_PREFIX_WX_PROVIDER_CORP_ACCOUNT_SUITE = 'sy' . SY_PROJECT . '10202_'; //前缀-企业微信服务商套件
+    const REDIS_PREFIX_WX_PROVIDER_CORP_AUTHORIZER = 'sy' . SY_PROJECT . '10203_'; //前缀-服务商授权企业微信
+    const REDIS_PREFIX_PRINT_FEYIN_ACCOUNT = 'sy' . SY_PROJECT . '10500_'; //前缀-飞印打印账号
+    const REDIS_PREFIX_DINGTALK_CORP = 'sy' . SY_PROJECT . '10600_'; //前缀-企业钉钉
+    const REDIS_PREFIX_DINGTALK_PROVIDER_ACCOUNT = 'sy' . SY_PROJECT . '10601_'; //前缀-企业钉钉服务商账号
+    const REDIS_PREFIX_DINGTALK_PROVIDER_ACCOUNT_SUITE = 'sy' . SY_PROJECT . '10602_'; //前缀-企业钉钉服务商套件
+    const REDIS_PREFIX_DINGTALK_PROVIDER_AUTHORIZER = 'sy' . SY_PROJECT . '10603_'; //前缀-服务商授权企业钉钉
+    const REDIS_PREFIX_JPUSH_APP_CID_PUSH = 'sy' . SY_PROJECT . '10700_'; //前缀-极光推送推送唯一标识符
+    const REDIS_PREFIX_JPUSH_APP_CID_SCHEDULE = 'sy' . SY_PROJECT . '10701_'; //前缀-极光推送定时任务唯一标识符
+    const REDIS_PREFIX_CODE_WEBHOOK_QUEUE = 'sy' . SY_PROJECT . '10800_'; //前缀-代码WebHook队列
+    const REDIS_PREFIX_CODE_WEBHOOK_STATUS = 'sy' . SY_PROJECT . '10801_'; //前缀-代码WebHook状态
+    const REDIS_PREFIX_CODE_WEBHOOK_COMMAND = 'sy' . SY_PROJECT . '10802_'; //前缀-代码WebHook命令
+    const REDIS_PREFIX_CODE_WEBHOOK_INFO = 'sy' . SY_PROJECT . '10803_'; //前缀-代码WebHook信息
 
     //YAC常量,以0000开头的前缀为框架内部前缀,并键名总长度不超过48个字符串
     const YAC_PREFIX_FUSE = '0000'; //前缀-熔断器
@@ -105,6 +105,9 @@ class ProjectBase
     //微信配置常量
     const WX_CONFIG_STATUS_DISABLE = 0; //状态-无效
     const WX_CONFIG_STATUS_ENABLE = 1; //状态-有效
+    const WX_CONFIG_AUTHORIZE_STATUS_EMPTY = -1; //第三方授权状态-不存在
+    const WX_CONFIG_AUTHORIZE_STATUS_NO = 0; //第三方授权状态-未授权
+    const WX_CONFIG_AUTHORIZE_STATUS_YES = 1; //第三方授权状态-已授权
     const WX_CONFIG_CORP_STATUS_DISABLE = 0; //企业微信状态-无效
     const WX_CONFIG_CORP_STATUS_ENABLE = 1; //企业微信状态-有效
     const WX_CONFIG_DEFAULT_CLIENT_IP = '127.0.0.1'; //默认客户端IP
