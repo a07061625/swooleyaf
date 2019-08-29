@@ -11,7 +11,6 @@ use Constant\Project;
 use DesignPatterns\Facades\WxOpenNotifyWxFacade;
 use Tool\ProjectWxTool;
 use Traits\SimpleFacadeTrait;
-use Wx\WxUtilOpenBase;
 
 class Authorized extends WxOpenNotifyWxFacade
 {
@@ -20,6 +19,5 @@ class Authorized extends WxOpenNotifyWxFacade
     protected static function handleNotify(array $data)
     {
         ProjectWxTool::handleAppAuthForOpen(Project::WX_COMPONENT_AUTHORIZER_OPTION_TYPE_AUTHORIZED, $data);
-        WxUtilOpenBase::getAuthorizerAccessToken($data['AuthorizerAppid']);
     }
 }
