@@ -45,12 +45,11 @@ trait BasicHttpTrait
     private function getTokenExpireTime() : int
     {
         $expireTime = 0;
-        $refreshUrl = (string)Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.token.url.refresh');
         if (ctype_digit(substr(SY_TOKEN, 0, 1))) {
             $expireTime = time() + 86400;
-        } elseif (strlen($refreshUrl) > 0) {
+        } elseif (strlen(SY_URL_TOKEN_REFRESH) > 0) {
             $sendRes = Tool::sendCurlReq([
-                CURLOPT_URL => $refreshUrl . SY_TOKEN,
+                CURLOPT_URL => SY_URL_TOKEN_REFRESH . SY_TOKEN,
                 CURLOPT_TIMEOUT_MS => 2000,
                 CURLOPT_HEADER => false,
                 CURLOPT_RETURNTRANSFER => true,
