@@ -74,3 +74,6 @@ if (($proxyPort > 1000) && ($proxyPort <= 65535)) {
     throw new \SyException\Common\CheckException('代理端口不合法', \Constant\ErrorCode::COMMON_SERVER_ERROR);
 }
 unset($aliOpenConfigs);
+
+//令牌刷新链接
+define('SY_URL_TOKEN_REFRESH', 'http://www.baidu.com?tag=');
