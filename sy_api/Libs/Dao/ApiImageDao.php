@@ -56,9 +56,10 @@ class ApiImageDao
 
         $cacheTag = Tool::getNowTime() . Tool::createNonceStr(6);
         if (CacheSimpleFactory::getRedisInstance()->set(Project::REDIS_PREFIX_IMAGE_DATA . $cacheTag, $handleRes['_syfile_content'], 1800)) {
+            //防止redis保存图片信息后立刻获取失败,保存后休眠0.5秒
+            usleep(500);
             unset($handleRes['_syfile_content']);
             $handleRes['_syfile_tag'] = $cacheTag;
-
             return $handleRes;
         } else {
             throw new CheckException('添加图片内容缓存失败', ErrorCode::COMMON_PARAM_ERROR);
