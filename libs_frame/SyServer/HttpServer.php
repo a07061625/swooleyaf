@@ -480,6 +480,12 @@ class HttpServer extends BaseServer
                 return $res->getJson();
             }
         }
+        $tokenExpireTime = (int)self::$_syServer->get(self::$_serverToken, 'token_etime');
+        if ($tokenExpireTime <= time()) {
+            $res = new Result();
+            $res->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '令牌已过期');
+            return $res->getJson();
+        }
 
         $taskData = $_POST[Server::SERVER_DATA_KEY_TASK] ?? '';
         self::$_reqTask = is_string($taskData) && (strlen($taskData) > 0) ? $taskData : null;
