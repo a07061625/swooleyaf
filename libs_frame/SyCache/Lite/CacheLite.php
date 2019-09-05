@@ -5,7 +5,7 @@
  * Date: 2017/10/9 0009
  * Time: 12:27
  */
-namespace Cache\Lite;
+namespace SyCache\Lite;
 
 /**
  * Fast, light and safe Cache Class

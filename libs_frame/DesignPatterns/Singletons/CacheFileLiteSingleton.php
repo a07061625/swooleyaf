@@ -7,7 +7,7 @@
  */
 namespace DesignPatterns\Singletons;
 
-use Cache\Lite\CacheLite;
+use SyCache\Lite\CacheLite;
 use Tool\Dir;
 use Tool\Tool;
 use SyTrait\SingletonTrait;
@@ -17,7 +17,7 @@ class CacheFileLiteSingleton
     use SingletonTrait;
 
     /**
-     * @var \Cache\Lite\CacheLite
+     * @var \SyCache\Lite\CacheLite
      */
     private $cache = null;
 
@@ -33,7 +33,7 @@ class CacheFileLiteSingleton
     }
 
     /**
-     * @return \Cache\Lite\CacheLite
+     * @return \SyCache\Lite\CacheLite
      */
     public static function getInstance()
     {
