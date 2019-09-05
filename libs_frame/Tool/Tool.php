@@ -15,7 +15,7 @@ use SyException\Common\CheckException;
 use PHPZxing\PHPZxingDecoder;
 use PHPZxing\ZxingImage;
 use SyServer\BaseServer;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 use Yaf\Registry;
 
 class Tool

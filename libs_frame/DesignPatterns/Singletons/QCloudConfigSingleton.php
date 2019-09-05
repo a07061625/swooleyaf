@@ -9,7 +9,7 @@ namespace DesignPatterns\Singletons;
 
 use QCloud\ConfigCos;
 use Tool\Tool;
-use Traits\SingletonTrait;
+use SyTrait\SingletonTrait;
 
 class QCloudConfigSingleton
 {

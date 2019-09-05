@@ -15,7 +15,7 @@ use SyIM\Tencent\SingleChatMsg;
 use SyIM\Tencent\UserImport;
 use SyIM\Tencent\UserInformation;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class TencentIMTool
 {

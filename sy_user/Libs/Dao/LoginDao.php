@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use Constant\Project;
 use SyException\Common\CheckException;
 use Tool\Tool;
-use Traits\SimpleDaoTrait;
+use SyTrait\SimpleDaoTrait;
 
 class LoginDao
 {

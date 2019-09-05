@@ -10,7 +10,7 @@ namespace SyLogistics;
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\LogisticsConfigSingleton;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 abstract class LogisticsUtilKdNiao extends LogisticsUtilBase
 {

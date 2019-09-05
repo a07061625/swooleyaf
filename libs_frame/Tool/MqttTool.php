@@ -7,7 +7,7 @@
  */
 namespace Tool;
 
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 final class MqttTool
 {

@@ -7,7 +7,7 @@
  */
 namespace Dao;
 
-use Traits\SimpleDaoTrait;
+use SyTrait\SimpleDaoTrait;
 
 class ImageDao
 {

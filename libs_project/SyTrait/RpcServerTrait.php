@@ -5,7 +5,7 @@
  * Date: 18-5-27
  * Time: 上午10:10
  */
-namespace Traits;
+namespace SyTrait;
 
 use Response\Result;
 

@@ -17,7 +17,7 @@ use DingDing\Corp\Sso\SsoToken;
 use DingDing\CorpProvider\Common\CorpToken;
 use SyException\DingDing\TalkException;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 final class TalkUtilProvider extends TalkUtilBase
 {

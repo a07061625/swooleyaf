@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use DesignPatterns\Facades\PayApplyFacade;
 use SyException\Common\CheckException;
 use Tool\Tool;
-use Traits\SimpleFacadeTrait;
+use SyTrait\SimpleFacadeTrait;
 use Wx\Shop\Pay\UnifiedOrder;
 
 class WxShopNativeDynamic extends PayApplyFacade

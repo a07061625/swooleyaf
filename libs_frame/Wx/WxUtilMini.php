@@ -9,7 +9,7 @@ namespace Wx;
 
 use Constant\ErrorCode;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 final class WxUtilMini extends WxUtilBase
 {

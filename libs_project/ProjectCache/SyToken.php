@@ -12,7 +12,7 @@ use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class SyToken
 {

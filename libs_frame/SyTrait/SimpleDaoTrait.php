@@ -2,12 +2,12 @@
 /**
  * Created by PhpStorm.
  * User: 姜伟
- * Date: 18-9-5
- * Time: 上午12:09
+ * Date: 2017/11/1 0001
+ * Time: 10:45
  */
-namespace Traits;
+namespace SyTrait;
 
-trait SimpleFacadeTrait
+trait SimpleDaoTrait
 {
     private function __construct()
     {

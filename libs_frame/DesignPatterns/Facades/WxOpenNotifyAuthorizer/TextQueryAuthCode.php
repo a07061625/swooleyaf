@@ -9,7 +9,7 @@ namespace DesignPatterns\Facades\WxOpenNotifyAuthorizer;
 
 use DesignPatterns\Facades\WxOpenNotifyAuthorizerFacade;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Traits\SimpleFacadeTrait;
+use SyTrait\SimpleFacadeTrait;
 use Wx\OpenCommon\AuthorizerInfo;
 use Wx\Shop\Message\CustomMsgSend;
 

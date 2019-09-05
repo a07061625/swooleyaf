@@ -5,7 +5,7 @@
  * Date: 2019/2/22 0022
  * Time: 16:52
  */
-namespace Traits\Server;
+namespace SyTrait\Server;
 
 use DesignPatterns\Singletons\RedisSingleton;
 use Tool\Tool;

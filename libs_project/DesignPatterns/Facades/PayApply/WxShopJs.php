@@ -13,7 +13,7 @@ use DesignPatterns\Facades\PayApplyFacade;
 use SyException\Common\CheckException;
 use Tool\SyUser;
 use Tool\Tool;
-use Traits\SimpleFacadeTrait;
+use SyTrait\SimpleFacadeTrait;
 use Wx\Shop\Pay\UnifiedOrder;
 use Wx\WxUtilBase;
 

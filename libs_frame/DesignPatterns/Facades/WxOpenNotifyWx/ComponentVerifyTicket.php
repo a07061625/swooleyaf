@@ -8,7 +8,7 @@
 namespace DesignPatterns\Facades\WxOpenNotifyWx;
 
 use DesignPatterns\Facades\WxOpenNotifyWxFacade;
-use Traits\SimpleFacadeTrait;
+use SyTrait\SimpleFacadeTrait;
 use Wx\OpenCommon\ComponentAccessToken;
 
 class ComponentVerifyTicket extends WxOpenNotifyWxFacade

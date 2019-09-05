@@ -12,7 +12,7 @@ use Constant\ErrorCode;
 use DesignPatterns\Singletons\AliOssSingleton;
 use SyException\Common\CheckException;
 use Tool\Tool;
-use Traits\SimpleDaoTrait;
+use SyTrait\SimpleDaoTrait;
 
 class AliConfigDao
 {

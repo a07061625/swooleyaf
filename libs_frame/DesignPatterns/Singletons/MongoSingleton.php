@@ -13,7 +13,7 @@ use Log\Log;
 use MongoDB\Driver\Command;
 use MongoDB\Driver\Manager;
 use Tool\Tool;
-use Traits\SingletonTrait;
+use SyTrait\SingletonTrait;
 
 class MongoSingleton
 {

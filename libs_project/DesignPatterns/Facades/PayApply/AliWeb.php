@@ -14,7 +14,7 @@ use DesignPatterns\Facades\PayApplyFacade;
 use SyException\Common\CheckException;
 use Request\SyRequest;
 use Tool\Tool;
-use Traits\SimpleFacadeTrait;
+use SyTrait\SimpleFacadeTrait;
 
 class AliWeb extends PayApplyFacade
 {

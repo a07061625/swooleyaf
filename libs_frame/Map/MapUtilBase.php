@@ -10,7 +10,7 @@ namespace Map;
 use Constant\ErrorCode;
 use Log\Log;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 abstract class MapUtilBase
 {

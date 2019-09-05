@@ -12,7 +12,7 @@ use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use ProjectCache\SyToken;
 use Tool\Tool;
-use Traits\SimpleDaoTrait;
+use SyTrait\SimpleDaoTrait;
 
 class SyTokenDao
 {

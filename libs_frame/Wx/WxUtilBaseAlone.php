@@ -11,7 +11,7 @@ use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyServer\BaseServer;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 use Wx\Alone\AccessToken;
 use Wx\Alone\JsTicket;
 

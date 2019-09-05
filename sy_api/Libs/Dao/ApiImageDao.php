@@ -15,7 +15,7 @@ use Log\Log;
 use Request\SyRequest;
 use SyModule\SyModuleService;
 use Tool\Tool;
-use Traits\SimpleDaoTrait;
+use SyTrait\SimpleDaoTrait;
 
 class ApiImageDao
 {

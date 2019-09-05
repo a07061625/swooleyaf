@@ -10,7 +10,7 @@ namespace DesignPatterns\Singletons;
 use Cache\Lite\CacheLite;
 use Tool\Dir;
 use Tool\Tool;
-use Traits\SingletonTrait;
+use SyTrait\SingletonTrait;
 
 class CacheFileLiteSingleton
 {

@@ -10,7 +10,7 @@ namespace DesignPatterns\Facades\WxProviderCorpNotifyWx;
 use Constant\Project;
 use DesignPatterns\Facades\WxProviderCorpNotifyWxFacade;
 use Tool\ProjectWxTool;
-use Traits\SimpleFacadeTrait;
+use SyTrait\SimpleFacadeTrait;
 
 class AuthCancel extends WxProviderCorpNotifyWxFacade
 {

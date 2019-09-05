@@ -14,7 +14,7 @@ use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxCorpProviderException;
 use Tool\ProjectWxTool;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 use Wx\Corp\Common\JsTicket;
 use Wx\CorpProvider\Common\CorpToken;
 use Wx\CorpProvider\Common\ProviderToken;

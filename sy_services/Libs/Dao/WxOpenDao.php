@@ -9,7 +9,7 @@ namespace Dao;
 
 use DesignPatterns\Singletons\WxConfigSingleton;
 use Tool\Tool;
-use Traits\SimpleDaoTrait;
+use SyTrait\SimpleDaoTrait;
 use Wx\WxUtilOpenBase;
 
 class WxOpenDao

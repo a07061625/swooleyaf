@@ -5,13 +5,13 @@
  * Date: 19-2-20
  * Time: 下午7:20
  */
-namespace Traits;
+namespace SyTrait;
 
 use Constant\Project;
 
 /**
  * 项目HTTP服务预处理性状类
- * @package Traits
+ * @package SyTrait
  */
 trait PreProcessHttpProjectTrait
 {

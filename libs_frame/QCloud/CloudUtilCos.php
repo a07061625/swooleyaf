@@ -10,7 +10,7 @@ namespace QCloud;
 use DesignPatterns\Singletons\QCloudConfigSingleton;
 use Log\Log;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 final class CloudUtilCos extends CloudUtilBase
 {

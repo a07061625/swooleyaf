@@ -10,7 +10,7 @@ namespace SyModule;
 use Constant\ErrorCode;
 use SyException\Swoole\ServerException;
 use SyServer\BaseServer;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 abstract class ModuleBase
 {

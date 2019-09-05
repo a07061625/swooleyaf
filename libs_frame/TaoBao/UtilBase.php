@@ -8,7 +8,7 @@
 namespace TaoBao;
 
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 abstract class UtilBase
 {

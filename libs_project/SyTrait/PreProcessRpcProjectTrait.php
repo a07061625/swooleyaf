@@ -5,7 +5,7 @@
  * Date: 19-2-20
  * Time: 下午7:20
  */
-namespace Traits;
+namespace SyTrait;
 
 use Constant\Project;
 

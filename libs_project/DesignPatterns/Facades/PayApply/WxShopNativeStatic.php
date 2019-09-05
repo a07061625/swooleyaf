@@ -11,7 +11,7 @@ use Constant\Project;
 use DesignPatterns\Facades\PayApplyFacade;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Tool\Tool;
-use Traits\SimpleFacadeTrait;
+use SyTrait\SimpleFacadeTrait;
 use Wx\Shop\Pay\PayNativePre;
 
 class WxShopNativeStatic extends PayApplyFacade

@@ -10,7 +10,7 @@ namespace DesignPatterns\Facades\WxOpenNotifyWx;
 use Constant\Project;
 use DesignPatterns\Facades\WxOpenNotifyWxFacade;
 use Tool\ProjectWxTool;
-use Traits\SimpleFacadeTrait;
+use SyTrait\SimpleFacadeTrait;
 use Wx\WxUtilOpenBase;
 
 class ThirdFastRegister extends WxOpenNotifyWxFacade

@@ -12,7 +12,7 @@ use Constant\Project;
 use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use Tool\Tool;
-use Traits\SimpleDaoTrait;
+use SyTrait\SimpleDaoTrait;
 use Wx\OpenMini\Category\CategoryGet;
 use Wx\OpenMini\Code\CodeAudit;
 use Wx\OpenMini\Code\CodeAuditStatus;

@@ -9,7 +9,7 @@ namespace SyMessagePush;
 
 use Constant\ErrorCode;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 final class PushUtilXinGe extends PushUtilBase
 {

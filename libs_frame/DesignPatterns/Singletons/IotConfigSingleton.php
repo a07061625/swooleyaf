@@ -11,7 +11,7 @@ use SyIot\ConfigAliYun;
 use SyIot\ConfigBaiDu;
 use SyIot\ConfigTencent;
 use Tool\Tool;
-use Traits\SingletonTrait;
+use SyTrait\SingletonTrait;
 
 class IotConfigSingleton
 {

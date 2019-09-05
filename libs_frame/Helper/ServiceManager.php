@@ -8,7 +8,7 @@
 namespace Helper;
 
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class ServiceManager
 {

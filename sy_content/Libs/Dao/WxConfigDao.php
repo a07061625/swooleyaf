@@ -6,7 +6,7 @@ use Constant\Project;
 use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use Tool\Tool;
-use Traits\SimpleDaoTrait;
+use SyTrait\SimpleDaoTrait;
 use Wx\Shop\Pay\PayCompanyBankPublicKey;
 
 class WxConfigDao

@@ -13,7 +13,7 @@ use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 use Wx\Corp\Common\AccessToken;
 use Wx\Corp\Common\JsTicket;
 

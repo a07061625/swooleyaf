@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use DesignPatterns\Facades\UserLoginFacade;
 use SyException\Common\CheckException;
 use Request\SyRequest;
-use Traits\SimpleFacadeTrait;
+use SyTrait\SimpleFacadeTrait;
 
 class Email extends UserLoginFacade
 {

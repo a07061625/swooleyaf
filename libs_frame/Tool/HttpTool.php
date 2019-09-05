@@ -8,7 +8,7 @@
 namespace Tool;
 
 use Log\Log;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 final class HttpTool
 {

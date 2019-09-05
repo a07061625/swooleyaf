@@ -13,7 +13,7 @@ use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use ProjectCache\Region;
 use Tool\Tool;
-use Traits\SimpleDaoTrait;
+use SyTrait\SimpleDaoTrait;
 
 class RegionDao
 {

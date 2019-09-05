@@ -14,7 +14,7 @@ use DesignPatterns\Singletons\MessagePushConfigSingleton;
 use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\Push\CidList;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 final class PushUtilJPush extends PushUtilBase
 {

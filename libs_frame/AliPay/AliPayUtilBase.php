@@ -12,7 +12,7 @@ use DesignPatterns\Singletons\AliPayConfigSingleton;
 use SyException\AliPay\AliPayPayException;
 use Log\Log;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 abstract class AliPayUtilBase
 {

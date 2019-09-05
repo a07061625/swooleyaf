@@ -12,8 +12,8 @@ use Constant\Project;
 use SyException\Wx\WxCorpProviderException;
 use SyException\Wx\WxException;
 use Tool\Tool;
-use Traits\SingletonTrait;
-use Traits\WxConfigTrait;
+use SyTrait\SingletonTrait;
+use SyTrait\WxConfigTrait;
 use Wx\WxConfigCorpProvider;
 use Wx\WxConfigOpenCommon;
 

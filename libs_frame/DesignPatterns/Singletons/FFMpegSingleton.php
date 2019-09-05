@@ -10,7 +10,7 @@ namespace DesignPatterns\Singletons;
 use Constant\ErrorCode;
 use SyException\Common\CheckException;
 use Tool\Tool;
-use Traits\SingletonTrait;
+use SyTrait\SingletonTrait;
 
 class FFMpegSingleton
 {

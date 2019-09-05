@@ -7,7 +7,7 @@
  */
 namespace SyIot;
 
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 abstract class IotUtilBase
 {

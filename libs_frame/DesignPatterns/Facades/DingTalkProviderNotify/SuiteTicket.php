@@ -10,7 +10,7 @@ namespace DesignPatterns\Facades\DingTalkProviderNotify;
 use Constant\Project;
 use DesignPatterns\Facades\DingTalkProviderNotifyFacade;
 use DesignPatterns\Factories\CacheSimpleFactory;
-use Traits\SimpleFacadeTrait;
+use SyTrait\SimpleFacadeTrait;
 
 class SuiteTicket extends DingTalkProviderNotifyFacade
 {

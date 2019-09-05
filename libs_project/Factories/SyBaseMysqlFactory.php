@@ -35,7 +35,7 @@ use Entities\SyBase\WxconfigMiniEntity;
 use Entities\SyBase\WxconfigShopEntity;
 use Entities\SyBase\WxopenAuthorizerEntity;
 use Entities\SyBase\WxproviderCorpAuthorizerEntity;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class SyBaseMysqlFactory
 {
