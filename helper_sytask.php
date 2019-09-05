@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/helper_load.php';
 
-$projects = include __DIR__ . '/helper_projects.php';
+$projects = include __DIR__ . '/config_projects.php';
 $timeArr = explode('-', date('H-i'));
 $minute = (int)$timeArr[1];
 $hour = (int)$timeArr[0];
