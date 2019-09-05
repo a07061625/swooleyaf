@@ -7,7 +7,7 @@
  */
 namespace MessageQueue\Consumer\Rabbit;
 
-use Constant\Project;
+use SyConstant\Project;
 use Log\Log;
 use SyMessageQueue\ConsumerBase;
 

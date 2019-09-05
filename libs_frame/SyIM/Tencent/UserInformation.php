@@ -7,7 +7,7 @@
  */
 namespace SyIM\Tencent;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\IM\TencentException;
 
 class UserInformation

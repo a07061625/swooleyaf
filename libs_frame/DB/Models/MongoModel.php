@@ -7,8 +7,8 @@
  */
 namespace DB\Models;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use DesignPatterns\Singletons\MongoSingleton;
 use SyException\Mongo\MongoException;
 use Log\Log;

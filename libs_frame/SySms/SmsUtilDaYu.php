@@ -7,7 +7,7 @@
  */
 namespace SySms;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use TaoBao\ServiceBase;
 use TaoBao\UtilBase;
 use SyTrait\SimpleTrait;

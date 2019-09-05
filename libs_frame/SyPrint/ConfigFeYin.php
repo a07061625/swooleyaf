@@ -7,7 +7,7 @@
  */
 namespace SyPrint;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\SyPrint\FeYinException;
 
 class ConfigFeYin

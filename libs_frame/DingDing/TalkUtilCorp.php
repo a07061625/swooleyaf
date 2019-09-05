@@ -7,7 +7,7 @@
  */
 namespace DingDing;
 
-use Constant\Project;
+use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\Corp\Common\AccessToken;

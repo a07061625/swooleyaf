@@ -7,8 +7,8 @@
  */
 namespace Validator\Impl\String;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use SyException\Validator\ValidatorException;
 use SyServer\BaseServer;
 use Validator\BaseValidator;

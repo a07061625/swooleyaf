@@ -7,7 +7,7 @@
  */
 namespace Map;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Map\TencentMapException;
 
 class ConfigTencent

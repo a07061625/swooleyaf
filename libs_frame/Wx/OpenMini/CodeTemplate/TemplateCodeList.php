@@ -7,7 +7,7 @@
  */
 namespace Wx\OpenMini\CodeTemplate;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use Tool\Tool;
 use Wx\WxBaseOpenMini;

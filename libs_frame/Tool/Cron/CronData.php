@@ -7,7 +7,7 @@
  */
 namespace Tool\Cron;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Cron\CronException;
 use Tool\Tool;
 

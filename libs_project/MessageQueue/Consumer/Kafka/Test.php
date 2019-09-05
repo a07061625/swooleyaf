@@ -7,7 +7,7 @@
  */
 namespace MessageQueue\Consumer\Kafka;
 
-use Constant\Project;
+use SyConstant\Project;
 use Log\Log;
 use SyMessageQueue\ConsumerBase;
 

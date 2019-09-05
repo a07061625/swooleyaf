@@ -7,7 +7,7 @@
  */
 namespace SyLogistics\KdNiao;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Logistics\KdNiaoException;
 use SyLogistics\LogisticsBaseKdNiao;
 

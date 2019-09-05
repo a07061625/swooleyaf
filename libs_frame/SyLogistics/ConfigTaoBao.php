@@ -7,7 +7,7 @@
  */
 namespace SyLogistics;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Logistics\TaoBaoException;
 use Tool\Tool;
 

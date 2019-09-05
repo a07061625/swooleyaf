@@ -7,7 +7,7 @@
  */
 namespace SyLogistics\AliMart;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Logistics\AliMartException;
 use SyLogistics\LogisticsBaseAliMart;
 

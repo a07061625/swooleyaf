@@ -7,7 +7,7 @@
  */
 namespace DingDing;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use SyException\DingDing\TalkException;
 use Tool\Tool;

@@ -7,7 +7,7 @@
  */
 namespace DesignPatterns\Facades\DingTalkProviderNotify;
 
-use Constant\Project;
+use SyConstant\Project;
 use DesignPatterns\Facades\DingTalkProviderNotifyFacade;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyTrait\SimpleFacadeTrait;

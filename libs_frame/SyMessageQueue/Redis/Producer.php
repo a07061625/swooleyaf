@@ -7,8 +7,8 @@
  */
 namespace SyMessageQueue\Redis;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\MessageQueue\MessageQueueException;
 use SyMessageQueue\ConsumerBase;

@@ -7,7 +7,7 @@
  */
 namespace Wx\Shop\User;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;

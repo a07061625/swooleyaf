@@ -7,7 +7,7 @@
  */
 namespace SySms;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Sms\Yun253Exception;
 use Tool\Tool;
 

@@ -7,7 +7,7 @@
  */
 namespace SyMessagePush;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\MessagePushConfigSingleton;
 use SyException\MessagePush\BaiDuPushException;
 use Tool\Tool;

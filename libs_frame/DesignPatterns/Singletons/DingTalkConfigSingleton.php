@@ -7,8 +7,8 @@
  */
 namespace DesignPatterns\Singletons;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use DingDing\TalkConfigProvider;
 use SyException\DingDing\TalkException;
 use Tool\Tool;

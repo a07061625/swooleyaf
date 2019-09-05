@@ -37,13 +37,13 @@ class TaskController extends CommonController
         $paramStr = trim(\Request\SyRequest::getParams('task_params', ''));
         $paramData = strlen($paramStr) > 0 ? \Tool\Tool::jsonDecode($paramStr) : [];
         if ($titleLength == 0) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '任务标题不能为空');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '任务标题不能为空');
         } elseif ($titleLength > 100) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '任务标题不能大于100个字');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '任务标题不能大于100个字');
         } elseif (!in_array($method, ['GET', 'POST'], true)) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '任务方式不合法');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '任务方式不合法');
         } elseif (!is_array($paramData)) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '任务参数不合法');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '任务参数不合法');
         } else {
             $needParams = [
                 'task_title' => $title,
@@ -115,7 +115,7 @@ class TaskController extends CommonController
     {
         $needParams = [
             'page' => (int)\Request\SyRequest::getParams('page', 1),
-            'limit' => (int)\Request\SyRequest::getParams('limit', \Constant\Project::COMMON_LIMIT_DEFAULT),
+            'limit' => (int)\Request\SyRequest::getParams('limit', \SyConstant\Project::COMMON_LIMIT_DEFAULT),
             'persist_type' => (int)\Request\SyRequest::getParams('persist_type', 0),
             'task_status' => (int)\Request\SyRequest::getParams('task_status', -2),
         ];
@@ -140,7 +140,7 @@ class TaskController extends CommonController
     {
         $needParams = [
             'page' => (int)\Request\SyRequest::getParams('page', 1),
-            'limit' => (int)\Request\SyRequest::getParams('limit', \Constant\Project::COMMON_LIMIT_DEFAULT),
+            'limit' => (int)\Request\SyRequest::getParams('limit', \SyConstant\Project::COMMON_LIMIT_DEFAULT),
             'task_tag' => trim(\Request\SyRequest::getParams('task_tag')),
         ];
         $getRes = \Dao\TaskDao::getTaskLogList($needParams);

@@ -7,7 +7,7 @@
  */
 namespace Validator\Impl\Int;
 
-use Constant\Project;
+use SyConstant\Project;
 use Validator\BaseValidator;
 use Validator\ValidatorService;
 

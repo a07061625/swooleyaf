@@ -7,8 +7,8 @@
  */
 namespace Tool;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use SyException\Common\CheckException;
 
 class SyPack

@@ -1,7 +1,7 @@
 <?php
 namespace Wx\CorpProvider\Common;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxCorpProviderException;
 use Tool\Tool;

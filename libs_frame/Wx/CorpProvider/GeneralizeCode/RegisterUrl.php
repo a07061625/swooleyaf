@@ -7,7 +7,7 @@
  */
 namespace Wx\CorpProvider\GeneralizeCode;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxCorpProviderException;
 use Wx\WxBaseCorpProvider;
 

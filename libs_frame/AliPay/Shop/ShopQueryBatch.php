@@ -8,7 +8,7 @@
 namespace AliPay\Shop;
 
 use AliPay\AliPayBase;
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\AliPay\AliPayShopException;
 
 class ShopQueryBatch extends AliPayBase

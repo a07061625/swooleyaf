@@ -7,7 +7,7 @@
  */
 namespace SyIot;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
 
 class ConfigBaiDu

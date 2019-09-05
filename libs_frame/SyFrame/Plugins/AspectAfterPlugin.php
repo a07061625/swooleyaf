@@ -7,7 +7,7 @@
  */
 namespace SyFrame\Plugins;
 
-use Constant\Server;
+use SyConstant\Server;
 use Log\Log;
 use Yaf\Plugin_Abstract;
 use Yaf\Registry;

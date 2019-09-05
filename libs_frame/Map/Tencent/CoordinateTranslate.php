@@ -7,7 +7,7 @@
  */
 namespace Map\Tencent;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Map\TencentMapException;
 use Map\MapBaseTencent;
 

@@ -7,7 +7,7 @@
  */
 namespace SySms\DaYu;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\SmsConfigSingleton;
 use SyException\Sms\DaYuException;
 use TaoBao\ServiceBase;

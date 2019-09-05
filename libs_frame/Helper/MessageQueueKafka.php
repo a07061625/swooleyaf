@@ -7,7 +7,7 @@
  */
 namespace Helper;
 
-use Constant\Project;
+use SyConstant\Project;
 use DesignPatterns\Singletons\MessageQueueSingleton;
 use DesignPatterns\Singletons\MysqlSingleton;
 use DesignPatterns\Singletons\RedisSingleton;

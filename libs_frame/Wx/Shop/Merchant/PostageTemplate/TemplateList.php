@@ -7,7 +7,7 @@
  */
 namespace Wx\Shop\Merchant\PostageTemplate;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use Tool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;

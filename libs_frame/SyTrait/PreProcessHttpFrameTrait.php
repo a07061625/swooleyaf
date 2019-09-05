@@ -7,8 +7,8 @@
  */
 namespace SyTrait;
 
-use Constant\ErrorCode;
-use Constant\ProjectBase;
+use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use Response\Result;
 use Tool\Tool;
 

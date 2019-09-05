@@ -7,7 +7,7 @@
  */
 namespace SyTrait;
 
-use Constant\Project;
+use SyConstant\Project;
 use SyMessagePush\ConfigJPushApp;
 use SyMessagePush\ConfigJPushGroup;
 use Tool\Tool;

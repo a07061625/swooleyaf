@@ -7,7 +7,7 @@
  */
 namespace SySms\Yun253;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\SmsConfigSingleton;
 use SyException\Sms\Yun253Exception;
 use SySms\SmsBaseYun253;

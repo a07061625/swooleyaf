@@ -7,7 +7,7 @@
  */
 namespace SyIot\Tencent\Project;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Iot\TencentIotException;
 use SyIot\IotBaseTencent;
 

@@ -7,7 +7,7 @@
  */
 namespace PoolService\ProcessService;
 
-use Constant\Project;
+use SyConstant\Project;
 
 class ProcessServiceManager extends BaseManager
 {

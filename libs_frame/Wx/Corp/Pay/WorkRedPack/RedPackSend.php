@@ -7,7 +7,7 @@
  */
 namespace Wx\Corp\Pay\WorkRedPack;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use Tool\Tool;
