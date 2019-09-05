@@ -7,8 +7,8 @@
  */
 namespace Wx\OpenShop;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use SyException\Wx\WxOpenException;
 use Tool\ProjectWxTool;
 use Tool\Tool;

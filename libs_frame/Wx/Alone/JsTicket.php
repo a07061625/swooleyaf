@@ -7,7 +7,7 @@
  */
 namespace Wx\Alone;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseAlone;

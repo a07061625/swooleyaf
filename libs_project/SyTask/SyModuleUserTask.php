@@ -7,7 +7,7 @@
  */
 namespace SyTask;
 
-use Constant\Project;
+use SyConstant\Project;
 
 class SyModuleUserTask extends SyModuleTaskBase implements SyModuleTaskInterface
 {

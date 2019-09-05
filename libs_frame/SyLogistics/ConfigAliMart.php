@@ -7,7 +7,7 @@
  */
 namespace SyLogistics;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Logistics\AliMartException;
 
 class ConfigAliMart

@@ -7,7 +7,7 @@
  */
 namespace DingDing\Corp\Sso;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkUtilCorp;
 use DingDing\TalkUtilProvider;

@@ -7,7 +7,7 @@
  */
 namespace SyMessagePush\BaiDu\Tag;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
 

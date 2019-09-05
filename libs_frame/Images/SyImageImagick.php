@@ -7,8 +7,8 @@
  */
 namespace Images;
 
-use Constant\ErrorCode;
-use Constant\Server;
+use SyConstant\ErrorCode;
+use SyConstant\Server;
 use SyException\Image\ImageException;
 use Log\Log;
 use Tool\Tool;

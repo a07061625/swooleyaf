@@ -7,7 +7,7 @@
  */
 namespace Mailer;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Mail\MailException;
 use Log\Log;
 use Mailer\PHP\PHPMailer;

@@ -7,7 +7,7 @@
  */
 namespace SySms;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Sms\DaYuException;
 use Tool\Tool;
 

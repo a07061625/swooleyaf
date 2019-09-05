@@ -7,7 +7,7 @@
  */
 namespace SyTask;
 
-use Constant\Project;
+use SyConstant\Project;
 use MessageQueue\Consumer\Redis\AddJsLogService;
 use MessageQueue\Consumer\Redis\AddMysqlLogService;
 

@@ -32,7 +32,7 @@ class RoleBaseController extends CommonController
 
         $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
         if (strlen($title) == 0) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
             $needParams = [
                 'tag' => (string)\Request\SyRequest::getParams('tag'),
@@ -65,7 +65,7 @@ class RoleBaseController extends CommonController
 
         $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
         if (strlen($title) == 0) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
             $needParams = [
                 'tag' => (string)\Request\SyRequest::getParams('tag'),
@@ -124,7 +124,7 @@ class RoleBaseController extends CommonController
 
         $needParams = [
             'page' => (int)\Request\SyRequest::getParams('page', 1),
-            'limit' => (int)\Request\SyRequest::getParams('limit', \Constant\Project::COMMON_LIMIT_DEFAULT),
+            'limit' => (int)\Request\SyRequest::getParams('limit', \SyConstant\Project::COMMON_LIMIT_DEFAULT),
             'role_status' => (int)\Request\SyRequest::getParams('role_status', -2),
         ];
         $getRes = \Dao\RoleBaseDao::getRoleListByStation($needParams);
@@ -148,7 +148,7 @@ class RoleBaseController extends CommonController
     {
         $needParams = [
             'page' => (int)\Request\SyRequest::getParams('page', 1),
-            'limit' => (int)\Request\SyRequest::getParams('limit', \Constant\Project::COMMON_LIMIT_DEFAULT),
+            'limit' => (int)\Request\SyRequest::getParams('limit', \SyConstant\Project::COMMON_LIMIT_DEFAULT),
         ];
         $getRes = \Dao\RoleBaseDao::getRoleListByFront($needParams);
         $this->SyResult->setData($getRes);

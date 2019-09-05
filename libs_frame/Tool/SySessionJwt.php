@@ -7,8 +7,8 @@
  */
 namespace Tool;
 
-use Constant\Project;
-use Constant\Server;
+use SyConstant\Project;
+use SyConstant\Server;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Log\Log;
 use SyTrait\SimpleTrait;

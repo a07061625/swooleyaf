@@ -7,7 +7,7 @@
  */
 namespace DesignPatterns\Facades\PayApply;
 
-use Constant\Project;
+use SyConstant\Project;
 use DesignPatterns\Facades\PayApplyFacade;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Tool\Tool;

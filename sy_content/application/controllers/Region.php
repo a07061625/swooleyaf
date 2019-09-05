@@ -37,11 +37,11 @@ class RegionController extends CommonController
         $regionName = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('region_name'));
         $nameLength = mb_strlen($regionName);
         if ($nameLength == 0) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能为空');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能为空');
         } elseif ($nameLength < 2) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能小于两个字');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能小于两个字');
         } elseif ($nameLength > 100) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能大于100个字');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能大于100个字');
         } else {
             $needParams = [
                 'region_name' => $regionName,
@@ -80,9 +80,9 @@ class RegionController extends CommonController
         $regionName = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('region_name', ''));
         $nameLength = mb_strlen($regionName);
         if ($nameLength > 100) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能大于100个字');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能大于100个字');
         } elseif ($nameLength == 1) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能小于两个字');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能小于两个字');
         } else {
             $needParams = [
                 'region_name' => $regionName,
@@ -139,7 +139,7 @@ class RegionController extends CommonController
         $regionTag = (string)\Request\SyRequest::getParams('region_tag');
         $tagLength = strlen($regionTag);
         if (!in_array($tagLength, [3, 6, 9], true)) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '地区标识不合法');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '地区标识不合法');
         } else {
             $needParams = [
                 'region_tag' => $regionTag,
@@ -175,19 +175,19 @@ class RegionController extends CommonController
         $ptag = trim(\Request\SyRequest::getParams('region_ptag', ''));
         $tagLength = strlen($ptag);
         if (!in_array($tagLength, [0, 3, 6], true)) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '父地区标识不合法');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '父地区标识不合法');
         } else {
             $needParams = [
                 'page' => (int)\Request\SyRequest::getParams('page', 1),
-                'limit' => (int)\Request\SyRequest::getParams('limit', \Constant\Project::COMMON_LIMIT_DEFAULT),
+                'limit' => (int)\Request\SyRequest::getParams('limit', \SyConstant\Project::COMMON_LIMIT_DEFAULT),
                 'region_ptag' => $ptag,
             ];
             if ($tagLength == 0) {
-                $needParams['region_level'] = \Constant\Project::REGION_LEVEL_TYPE_PROVINCE;
+                $needParams['region_level'] = \SyConstant\Project::REGION_LEVEL_TYPE_PROVINCE;
             } elseif ($tagLength == 3) {
-                $needParams['region_level'] = \Constant\Project::REGION_LEVEL_TYPE_CITY;
+                $needParams['region_level'] = \SyConstant\Project::REGION_LEVEL_TYPE_CITY;
             } else {
-                $needParams['region_level'] = \Constant\Project::REGION_LEVEL_TYPE_COUNTY;
+                $needParams['region_level'] = \SyConstant\Project::REGION_LEVEL_TYPE_COUNTY;
             }
             $getRes = \Dao\RegionDao::getRegionListByStation($needParams);
             $this->SyResult->setData($getRes);
@@ -217,7 +217,7 @@ class RegionController extends CommonController
             $getRes = \Dao\RegionDao::getRegionInfoByFront($needParams);
             $this->SyResult->setData($getRes);
         } else {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '地区标识不合法');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '地区标识不合法');
         }
 
         $this->sendRsp();

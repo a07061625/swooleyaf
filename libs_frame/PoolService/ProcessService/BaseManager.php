@@ -7,7 +7,7 @@
  */
 namespace PoolService\ProcessService;
 
-use Constant\ProjectBase;
+use SyConstant\ProjectBase;
 
 abstract class BaseManager
 {

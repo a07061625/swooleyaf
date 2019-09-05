@@ -7,8 +7,8 @@
  */
 namespace DB\Models;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use DB\Models\NotORM\NotORM;
 use DB\Models\NotORM\NotORM_Result;
 use DB\Models\NotORM\NotORM_Structure_Convention;

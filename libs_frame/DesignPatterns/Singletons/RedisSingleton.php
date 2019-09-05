@@ -7,7 +7,7 @@
  */
 namespace DesignPatterns\Singletons;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Redis\RedisException;
 use Log\Log;
 use Tool\Tool;

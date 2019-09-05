@@ -1,8 +1,8 @@
 <?php
 namespace Dao;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use Tool\Tool;

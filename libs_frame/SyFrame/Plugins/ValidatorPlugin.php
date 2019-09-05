@@ -7,8 +7,8 @@
  */
 namespace SyFrame\Plugins;
 
-use Constant\ErrorCode;
-use Constant\Server;
+use SyConstant\ErrorCode;
+use SyConstant\Server;
 use SyException\Validator\ValidatorException;
 use Reflection\BaseReflect;
 use Request\SyRequest;

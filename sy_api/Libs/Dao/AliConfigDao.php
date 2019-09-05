@@ -8,7 +8,7 @@
 namespace Dao;
 
 use AliOss\OssTool;
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\AliOssSingleton;
 use SyException\Common\CheckException;
 use Tool\Tool;

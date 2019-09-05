@@ -56,7 +56,7 @@ class PayController extends CommonController
         $wxReturnCode = (string)\Tool\Tool::getArrayVal($allParams, 'return_code', '');
         if (($wxResultCode == 'SUCCESS') && ($wxReturnCode == 'SUCCESS')) { //支付成功
             \Dao\PayDao::completePay([
-                'pay_type' => \Constant\Project::PAY_WAY_WX,
+                'pay_type' => \SyConstant\Project::PAY_WAY_WX,
                 'pay_tradesn' => $allParams['transaction_id'],
                 'pay_sellersn' => $allParams['out_trade_no'],
                 'pay_appid' => $allParams['sub_appid'] ?? $allParams['appid'],
@@ -70,9 +70,9 @@ class PayController extends CommonController
                 'msg' => '支付成功',
             ]);
         } elseif ($wxResultCode == 'SUCCESS') { //业务出错
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_SERVER_ERROR, $allParams['err_code_des']);
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_SERVER_ERROR, $allParams['err_code_des']);
         } else { //通信出错
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_SERVER_ERROR, $allParams['return_msg']);
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_SERVER_ERROR, $allParams['return_msg']);
         }
 
         $this->sendRsp();
@@ -86,7 +86,7 @@ class PayController extends CommonController
         $appId = (string)\Request\SyRequest::getParams('appid');
         $productId = (string)\Request\SyRequest::getParams('product_id', '');
         $returnObj = new \Wx\Shop\Pay\NativeReturn($appId);
-        $redisKey = \Constant\Project::REDIS_PREFIX_WX_NATIVE_PRE . $productId;
+        $redisKey = \SyConstant\Project::REDIS_PREFIX_WX_NATIVE_PRE . $productId;
         $cacheData = \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
         if (is_array($cacheData) && isset($cacheData['cache_key']) && ($cacheData['cache_key'] == $redisKey)) {
             $nonceStr = (string)\Request\SyRequest::getParams('nonce_str');
@@ -174,7 +174,7 @@ class PayController extends CommonController
             }
 
             \Dao\PayDao::completePay([
-                'pay_type' => \Constant\Project::PAY_WAY_ALI,
+                'pay_type' => \SyConstant\Project::PAY_WAY_ALI,
                 'pay_tradesn' => $allParams['trade_no'],
                 'pay_sellersn' => $allParams['out_trade_no'],
                 'pay_appid' => $allParams['app_id'],

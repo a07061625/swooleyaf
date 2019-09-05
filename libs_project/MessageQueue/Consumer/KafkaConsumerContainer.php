@@ -8,7 +8,7 @@
 
 namespace MessageQueue\Consumer;
 
-use Constant\Project;
+use SyConstant\Project;
 use MessageQueue\Consumer\Kafka\Test;
 use Tool\BaseContainer;
 

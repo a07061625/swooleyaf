@@ -7,7 +7,7 @@
  */
 namespace SyMessageQueue\Rabbit;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Amqp\AmqpException;
 use Tool\Tool;
 

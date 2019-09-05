@@ -7,8 +7,8 @@
  */
 namespace Request;
 
-use Constant\Project;
-use Constant\Server;
+use SyConstant\Project;
+use SyConstant\Server;
 use Log\Log;
 use Tool\HttpTool;
 

@@ -7,7 +7,7 @@
  */
 namespace SyMessagePush\JPush\Schedules;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\SchedulesBase;
 use SyMessagePush\PushUtilJPush;

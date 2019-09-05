@@ -7,7 +7,7 @@
  */
 namespace Wx\Shop\Authorize;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use Wx\WxBaseShop;
 

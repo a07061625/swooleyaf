@@ -7,7 +7,7 @@
  */
 namespace Validator\Impl\Double;
 
-use Constant\Project;
+use SyConstant\Project;
 use Validator\BaseValidator;
 use Validator\ValidatorService;
 

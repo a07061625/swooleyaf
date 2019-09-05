@@ -7,7 +7,7 @@
  */
 namespace SyFrame\Routes;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Validator\ValidatorException;
 use SyFrame\SimpleBootstrap;
 use Yaf\Request_Abstract;

@@ -7,7 +7,7 @@
  */
 namespace Tool;
 
-use Constant\ProjectCode;
+use SyConstant\ProjectCode;
 use SyException\User\LoginException;
 use SyTrait\SimpleTrait;
 

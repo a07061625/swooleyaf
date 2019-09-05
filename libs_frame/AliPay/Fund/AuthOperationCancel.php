@@ -8,7 +8,7 @@
 namespace AliPay\Fund;
 
 use AliPay\AliPayBase;
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\AliPay\AliPayFundException;
 
 class AuthOperationCancel extends AliPayBase

@@ -70,11 +70,11 @@ class ImageController extends CommonController
         $pageUrl = trim(\Request\SyRequest::getParams('page_url'));
         $pageScene = trim(\Request\SyRequest::getParams('page_scene'));
         if (strlen($wxAppId) == 0) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '小程序appid不能为空');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '小程序appid不能为空');
         } elseif (strlen($pageUrl) == 0) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '页面地址不能为空');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '页面地址不能为空');
         } elseif (strlen($pageScene) == 0) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '页面场景不能为空');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '页面场景不能为空');
         } else {
             $imageSize = (int)\Request\SyRequest::getParams('image_size', 430);
             $hyaline = (int)\Request\SyRequest::getParams('hyaline', 1);
@@ -119,10 +119,10 @@ class ImageController extends CommonController
      */
     public function uploadImageAction()
     {
-        $cacheKey = \Constant\Project::REDIS_PREFIX_IMAGE_DATA . \Request\SyRequest::getParams('_syfile_tag', '');
+        $cacheKey = \SyConstant\Project::REDIS_PREFIX_IMAGE_DATA . \Request\SyRequest::getParams('_syfile_tag', '');
         $cacheData = \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->get($cacheKey);
         if ($cacheData === false) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_SERVER_ERROR, '图片缓存内容不存在');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_SERVER_ERROR, '图片缓存内容不存在');
         } else {
             \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->del($cacheKey);
             $imageWidth = (int)\Request\SyRequest::getParams('image_width');

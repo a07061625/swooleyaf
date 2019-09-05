@@ -7,7 +7,7 @@
  */
 namespace SyPrint;
 
-use Constant\Project;
+use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyPrint\FeYin\AccessToken;
 use Tool\Tool;

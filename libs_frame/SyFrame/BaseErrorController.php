@@ -7,7 +7,7 @@
  */
 namespace SyFrame;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use Log\Log;
 
 abstract class BaseErrorController extends BaseController

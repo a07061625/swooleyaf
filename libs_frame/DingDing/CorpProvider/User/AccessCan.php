@@ -7,7 +7,7 @@
  */
 namespace DingDing\CorpProvider\User;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DingDing\TalkBaseCorpProvider;
 use DingDing\TalkUtilProvider;
 use SyException\DingDing\TalkException;

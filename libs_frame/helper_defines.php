@@ -65,13 +65,13 @@ $proxyIp = (string)\Tool\Tool::getArrayVal($aliOpenConfigs, 'aliopen.proxy.ip', 
 if (preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $proxyIp) > 0) {
     define('ALIOPEN_HTTP_PROXY_IP', $proxyIp);
 } else {
-    throw new \SyException\Common\CheckException('代理IP不合法', \Constant\ErrorCode::COMMON_SERVER_ERROR);
+    throw new \SyException\Common\CheckException('代理IP不合法', \SyConstant\ErrorCode::COMMON_SERVER_ERROR);
 }
 $proxyPort = (int)\Tool\Tool::getArrayVal($aliOpenConfigs, 'aliopen.proxy.port', 8888, true);
 if (($proxyPort > 1000) && ($proxyPort <= 65535)) {
     define('ALIOPEN_HTTP_PROXY_PORT', $proxyPort);
 } else {
-    throw new \SyException\Common\CheckException('代理端口不合法', \Constant\ErrorCode::COMMON_SERVER_ERROR);
+    throw new \SyException\Common\CheckException('代理端口不合法', \SyConstant\ErrorCode::COMMON_SERVER_ERROR);
 }
 unset($aliOpenConfigs);
 

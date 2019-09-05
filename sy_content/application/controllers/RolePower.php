@@ -40,7 +40,7 @@ class RolePowerController extends CommonController
 
         $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
         if (strlen($title) == 0) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
             $parentTag = (string)\Request\SyRequest::getParams('ptag', '');
             $parentTagLength = strlen($parentTag);
@@ -86,7 +86,7 @@ class RolePowerController extends CommonController
 
         $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
         if (strlen($title) == 0) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
             $needParams = [
                 'power_tag' => (string)\Request\SyRequest::getParams('power_tag'),
@@ -122,7 +122,7 @@ class RolePowerController extends CommonController
 
         $rolePowers = trim(\Request\SyRequest::getParams('role_powers', ''));
         if ((strlen($rolePowers) > 0) && (preg_match('/^(\,[0-9a-z]{3}|\,[0-9a-z]{6}|\,[0-9a-z]{9})+$/', ',' . $rolePowers) == 0)) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '权限标识不合法');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '权限标识不合法');
         } else {
             $powerList = [];
             $rolePowerList = strlen($rolePowers) > 0 ? explode(',', $rolePowers) : [];
@@ -229,7 +229,7 @@ class RolePowerController extends CommonController
         $parentTagLength = strlen($parentTag);
         $needParams = [
             'page' => (int)\Request\SyRequest::getParams('page', 1),
-            'limit' => (int)\Request\SyRequest::getParams('limit', \Constant\Project::COMMON_LIMIT_DEFAULT),
+            'limit' => (int)\Request\SyRequest::getParams('limit', \SyConstant\Project::COMMON_LIMIT_DEFAULT),
             'ptag' => $parentTag,
             'level' => (int)($parentTagLength / 3 + 1),
         ];

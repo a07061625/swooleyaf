@@ -7,8 +7,8 @@
  */
 namespace DingDing;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\Corp\Sns\SnsTokenGet;

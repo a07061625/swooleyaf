@@ -7,7 +7,7 @@
  */
 namespace SyIot\BaiDu\Policy;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
 use SyIot\IotBaseBaiDu;
 use SyIot\IotUtilBaiDu;

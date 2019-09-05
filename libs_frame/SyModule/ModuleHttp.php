@@ -7,7 +7,7 @@
  */
 namespace SyModule;
 
-use Constant\Project;
+use SyConstant\Project;
 use Log\Log;
 use Request\SyRequestHttp;
 use Tool\SyPack;

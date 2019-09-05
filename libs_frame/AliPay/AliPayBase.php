@@ -7,7 +7,7 @@
  */
 namespace AliPay;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\AliPay\AliPayPayException;
 use Tool\Tool;
 

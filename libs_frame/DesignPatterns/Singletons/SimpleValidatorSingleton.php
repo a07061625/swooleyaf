@@ -7,7 +7,7 @@
  */
 namespace DesignPatterns\Singletons;
 
-use Constant\ProjectBase;
+use SyConstant\ProjectBase;
 use Tool\BaseContainer;
 use SyTrait\SingletonTrait;
 use Validator\Impl\Double\DoubleBetween;

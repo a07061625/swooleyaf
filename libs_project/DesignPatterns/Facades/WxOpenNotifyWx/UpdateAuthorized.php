@@ -7,7 +7,7 @@
  */
 namespace DesignPatterns\Facades\WxOpenNotifyWx;
 
-use Constant\Project;
+use SyConstant\Project;
 use DesignPatterns\Facades\WxOpenNotifyWxFacade;
 use Tool\ProjectWxTool;
 use SyTrait\SimpleFacadeTrait;

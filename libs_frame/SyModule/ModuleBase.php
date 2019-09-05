@@ -7,7 +7,7 @@
  */
 namespace SyModule;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Swoole\ServerException;
 use SyServer\BaseServer;
 use SyTrait\SimpleTrait;

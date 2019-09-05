@@ -7,8 +7,8 @@
  */
 namespace SyError;
 
-use Constant\ErrorCode;
-use Constant\Server;
+use SyConstant\ErrorCode;
+use SyConstant\Server;
 use SyException\Common\ErrorException;
 use Log\Log;
 use Yaf\Registry;

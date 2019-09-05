@@ -7,7 +7,7 @@
  */
 namespace SyPrint\FeYin;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\PrintConfigSingleton;
 use SyException\SyPrint\FeYinException;
 use SyPrint\PrintBaseFeYin;

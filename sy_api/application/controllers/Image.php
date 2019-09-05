@@ -100,7 +100,7 @@ class ImageController extends CommonController
         imagedestroy($image);
 
         //随机字符串放入redis
-        $redisKey = \Constant\Project::REDIS_PREFIX_CODE_IMAGE . \Request\SyRequest::getParams('session_id');
+        $redisKey = \SyConstant\Project::REDIS_PREFIX_CODE_IMAGE . \Request\SyRequest::getParams('session_id');
         \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->set($redisKey, strtoupper($code), 190);
 
         $this->SyResult->setData([

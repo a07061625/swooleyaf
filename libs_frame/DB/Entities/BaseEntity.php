@@ -7,7 +7,7 @@
  */
 namespace DB\Entities;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Validator\ValidatorException;
 use Tool\Tool;
 

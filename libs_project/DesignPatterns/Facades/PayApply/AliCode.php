@@ -9,7 +9,7 @@ namespace DesignPatterns\Facades\PayApply;
 
 use AliPay\AliPayUtilPay;
 use AliPay\Pay\PayQrCode;
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Facades\PayApplyFacade;
 use SyException\Common\CheckException;
 use Request\SyRequest;

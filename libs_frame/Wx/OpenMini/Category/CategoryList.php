@@ -7,7 +7,7 @@
  */
 namespace Wx\OpenMini\Category;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use Tool\Tool;
 use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;

@@ -7,8 +7,8 @@
  */
 namespace SyServer;
 
-use Constant\ErrorCode;
-use Constant\Server;
+use SyConstant\ErrorCode;
+use SyConstant\Server;
 use DesignPatterns\Singletons\MysqlSingleton;
 use DesignPatterns\Singletons\RedisSingleton;
 use Log\Log;

@@ -7,7 +7,7 @@
  */
 namespace Map;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Map\BaiduMapException;
 
 class ConfigBaiDu

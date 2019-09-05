@@ -7,7 +7,7 @@
  */
 namespace SyModule;
 
-use Constant\Project;
+use SyConstant\Project;
 
 class SyModuleOrder extends ModuleRpc
 {

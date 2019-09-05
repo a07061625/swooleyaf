@@ -7,8 +7,8 @@
  */
 namespace Reflection;
 
-use Constant\ErrorCode;
-use Constant\Server;
+use SyConstant\ErrorCode;
+use SyConstant\Server;
 use SyException\Reflection\ReflectException;
 use Log\Log;
 use SyFrame\BaseController;

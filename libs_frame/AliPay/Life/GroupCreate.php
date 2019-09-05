@@ -8,7 +8,7 @@
 namespace AliPay\Life;
 
 use AliPay\AliPayBase;
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\AliPay\AliPayLifeException;
 
 class GroupCreate extends AliPayBase

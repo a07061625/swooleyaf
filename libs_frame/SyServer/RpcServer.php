@@ -7,9 +7,9 @@
  */
 namespace SyServer;
 
-use Constant\ErrorCode;
-use Constant\Project;
-use Constant\Server;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
+use SyConstant\Server;
 use Log\Log;
 use Request\RequestSign;
 use Response\Result;

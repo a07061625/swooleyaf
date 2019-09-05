@@ -7,7 +7,7 @@
  */
 namespace SyTrait;
 
-use Constant\ProjectBase;
+use SyConstant\ProjectBase;
 use Tool\Tool;
 
 /**

@@ -7,7 +7,7 @@
  */
 namespace DesignPatterns\Facades\UserLogin;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Facades\UserLoginFacade;
 use SyException\Common\CheckException;
 use Request\SyRequest;

@@ -7,7 +7,7 @@
  */
 namespace DesignPatterns\Singletons;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Common\CheckException;
 use Tool\Tool;
 use SyTrait\SingletonTrait;

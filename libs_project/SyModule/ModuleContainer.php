@@ -7,7 +7,7 @@
  */
 namespace SyModule;
 
-use Constant\Project;
+use SyConstant\Project;
 use Tool\BaseContainer;
 
 class ModuleContainer extends BaseContainer

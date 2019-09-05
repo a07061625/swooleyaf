@@ -6,7 +6,7 @@
  */
 namespace SyMessagePush\XinGe;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\MessagePush\XinGePushException;
 use SyMessagePush\PushBaseXinGe;
 use Tool\Tool;

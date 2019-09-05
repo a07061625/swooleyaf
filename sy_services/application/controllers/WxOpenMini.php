@@ -122,9 +122,9 @@ class WxOpenMiniController extends CommonController
         $domainArr = strlen($domainStr) > 0 ? \Tool\Tool::jsonDecode($domainStr) : [];
         $actionType = (string)\Request\SyRequest::getParams('action_type');
         if (!in_array($actionType, ['add','delete','set','get'], true)) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '操作类型不支持');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '操作类型不支持');
         } elseif (($actionType != 'get') && empty($domainArr)) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '域名不能为空');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '域名不能为空');
         } else {
             $needParams = [
                 'wxmini_appid' => trim(\Request\SyRequest::getParams('wxmini_appid')),
@@ -162,9 +162,9 @@ class WxOpenMiniController extends CommonController
         $domainArr = strlen($domainStr) > 0 ? \Tool\Tool::jsonDecode($domainStr) : [];
         $actionType = (string)\Request\SyRequest::getParams('action_type');
         if (!in_array($actionType, ['add','delete','set','get'], true)) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '操作类型不支持');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '操作类型不支持');
         } elseif (($actionType != 'get') && empty($domainArr)) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '域名不能为空');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '域名不能为空');
         } else {
             $needParams = [
                 'wxmini_appid' => trim(\Request\SyRequest::getParams('wxmini_appid')),
@@ -252,7 +252,7 @@ class WxOpenMiniController extends CommonController
 
         $extData = \Tool\Tool::jsonDecode(\Request\SyRequest::getParams('ext_json'));
         if (empty($extData)) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '自定义配置不能为空');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '自定义配置不能为空');
         } else {
             $templateId = (string)\Request\SyRequest::getParams('template_id');
             $extData['tmpcode'] = $templateId;
@@ -290,7 +290,7 @@ class WxOpenMiniController extends CommonController
 
         $auditItems = \Tool\Tool::jsonDecode(\Request\SyRequest::getParams('audit_items'));
         if (empty($auditItems)) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '审核列表不能为空');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '审核列表不能为空');
         } else {
             $needParams = [
                 'wxmini_appid' => trim(\Request\SyRequest::getParams('wxmini_appid')),

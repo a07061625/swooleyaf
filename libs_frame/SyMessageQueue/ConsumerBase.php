@@ -7,8 +7,8 @@
  */
 namespace SyMessageQueue;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use SyException\MessageQueue\MessageQueueException;
 
 abstract class ConsumerBase

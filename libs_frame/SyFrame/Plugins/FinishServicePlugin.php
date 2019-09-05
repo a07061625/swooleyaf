@@ -7,7 +7,7 @@
  */
 namespace SyFrame\Plugins;
 
-use Constant\Server;
+use SyConstant\Server;
 use Response\Result;
 use Response\SyResponseHttp;
 use Yaf\Plugin_Abstract;

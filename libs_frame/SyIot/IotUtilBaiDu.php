@@ -7,7 +7,7 @@
  */
 namespace SyIot;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\IotConfigSingleton;
 use Tool\Tool;
 use SyTrait\SimpleTrait;

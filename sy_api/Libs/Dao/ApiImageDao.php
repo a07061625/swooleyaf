@@ -7,8 +7,8 @@
  */
 namespace Dao;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Common\CheckException;
 use Log\Log;

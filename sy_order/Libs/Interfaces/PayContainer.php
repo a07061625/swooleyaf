@@ -7,7 +7,7 @@
  */
 namespace Interfaces;
 
-use Constant\Project;
+use SyConstant\Project;
 use Interfaces\Impl\Pay\OrderGoods;
 use Tool\BaseContainer;
 

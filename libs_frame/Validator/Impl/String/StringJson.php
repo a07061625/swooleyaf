@@ -7,7 +7,7 @@
  */
 namespace Validator\Impl\String;
 
-use Constant\Project;
+use SyConstant\Project;
 use Tool\Tool;
 use Validator\BaseValidator;
 use Validator\ValidatorService;

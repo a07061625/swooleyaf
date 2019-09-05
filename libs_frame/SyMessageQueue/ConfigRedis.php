@@ -7,7 +7,7 @@
  */
 namespace SyMessageQueue;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\MessageQueue\MessageQueueException;
 
 class ConfigRedis

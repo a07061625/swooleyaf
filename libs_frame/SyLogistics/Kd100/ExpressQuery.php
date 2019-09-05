@@ -7,7 +7,7 @@
  */
 namespace SyLogistics\Kd100;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Logistics\Kd100Exception;
 use SyLogistics\LogisticsBaseKd100;
 use SyLogistics\LogisticsUtilKd100;

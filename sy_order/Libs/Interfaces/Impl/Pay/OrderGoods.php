@@ -7,8 +7,8 @@
  */
 namespace Interfaces\Impl\Pay;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use SyException\Common\CheckException;
 use Interfaces\PayBase;
 use Interfaces\PayService;

@@ -7,7 +7,7 @@
  */
 namespace MessageQueue\Consumer\Redis;
 
-use Constant\Project;
+use SyConstant\Project;
 use Log\Log;
 use SyMessageQueue\ConsumerBase;
 use Tool\Tool;

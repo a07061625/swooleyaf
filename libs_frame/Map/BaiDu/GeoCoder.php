@@ -7,7 +7,7 @@
  */
 namespace Map\BaiDu;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Map\BaiduMapException;
 use Map\MapBaseBaiDu;
 

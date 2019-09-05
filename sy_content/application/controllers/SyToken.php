@@ -36,7 +36,7 @@ class SyTokenController extends CommonController
 
         $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
         if (strlen($title) == 0) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
             $needParams = [
                 'tag' => (string)\Request\SyRequest::getParams('tag'),
@@ -75,7 +75,7 @@ class SyTokenController extends CommonController
 
         $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
         if (strlen($title) == 0) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
             $needParams = [
                 'tag' => (string)\Request\SyRequest::getParams('tag'),
@@ -134,7 +134,7 @@ class SyTokenController extends CommonController
 
         $needParams = [
             'page' => (int)\Request\SyRequest::getParams('page', 1),
-            'limit' => (int)\Request\SyRequest::getParams('limit', \Constant\Project::COMMON_LIMIT_DEFAULT),
+            'limit' => (int)\Request\SyRequest::getParams('limit', \SyConstant\Project::COMMON_LIMIT_DEFAULT),
         ];
         $getRes = \Dao\SyTokenDao::getTokenListByStation($needParams);
         $this->SyResult->setData($getRes);

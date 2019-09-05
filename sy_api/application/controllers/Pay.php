@@ -38,7 +38,7 @@ class PayController extends CommonController
         if (\Wx\WxUtilShop::checkSign($xmlData, $xmlData['appid'])) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleWxPayNotify', $xmlData);
             $handleData = \Tool\Tool::jsonDecode($handleRes);
-            if (is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \Constant\ErrorCode::COMMON_SUCCESS)) {
+            if (is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \SyConstant\ErrorCode::COMMON_SUCCESS)) {
                 $error = '';
             } else {
                 $error = '处理失败';
@@ -72,7 +72,7 @@ class PayController extends CommonController
         if (\Wx\WxUtilShop::checkSign($xmlData, $xmlData['appid'])) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleWxPrePayNotify', $xmlData);
             $resData = \Tool\Tool::jsonDecode($handleRes);
-            if (is_array($resData) && isset($resData['code']) && ($resData['code'] == \Constant\ErrorCode::COMMON_SUCCESS)) {
+            if (is_array($resData) && isset($resData['code']) && ($resData['code'] == \SyConstant\ErrorCode::COMMON_SUCCESS)) {
                 $this->sendRsp($resData['data']['result']);
             } else {
                 $this->sendRsp('');
@@ -103,7 +103,7 @@ class PayController extends CommonController
         if (AliPay\AliPayUtilBase::verifyData($allParams, '2', 'RSA2')) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleAliPayNotify', $allParams);
             $handleData = \Tool\Tool::jsonDecode($handleRes);
-            if (is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \Constant\ErrorCode::COMMON_SUCCESS)) {
+            if (is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \SyConstant\ErrorCode::COMMON_SUCCESS)) {
                 $resultMsg = 'success';
             }
         }
@@ -134,7 +134,7 @@ class PayController extends CommonController
         $expireTime = \Tool\Tool::getNowTime() + 604800;
         $sessionId = \Tool\SySession::getSessionId();
         $redirectUrl = \Request\SyRequest::getParams('url');
-        \Response\SyResponseHttp::cookie(\Constant\Project::DATA_KEY_SESSION_TOKEN, $sessionId, $expireTime, '/', \SyServer\HttpServer::getServerConfig('cookiedomain_base', ''));
+        \Response\SyResponseHttp::cookie(\SyConstant\Project::DATA_KEY_SESSION_TOKEN, $sessionId, $expireTime, '/', \SyServer\HttpServer::getServerConfig('cookiedomain_base', ''));
         \Response\SyResponseHttp::redirect($redirectUrl);
         $this->sendRsp();
     }
@@ -160,7 +160,7 @@ class PayController extends CommonController
         if (AliPay\AliPayUtilBase::verifyData($allParams, '2', 'RSA2')) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleAliRefundNotify', $allParams);
             $handleData = \Tool\Tool::jsonDecode($handleRes);
-            if (is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \Constant\ErrorCode::COMMON_SUCCESS)) {
+            if (is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \SyConstant\ErrorCode::COMMON_SUCCESS)) {
                 $resultMsg = 'success';
             }
         }

@@ -7,7 +7,7 @@
  */
 namespace DingDing\Corp\ExtContact;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
 use SyException\DingDing\TalkException;

@@ -7,7 +7,7 @@
  */
 namespace SyTask;
 
-use Constant\Project;
+use SyConstant\Project;
 use Tool\BaseContainer;
 
 class SyModuleTaskContainer extends BaseContainer

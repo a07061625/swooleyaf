@@ -7,8 +7,8 @@
  */
 namespace DesignPatterns\Facades\PayApply;
 
-use Constant\ErrorCode;
-use Constant\ProjectCode;
+use SyConstant\ErrorCode;
+use SyConstant\ProjectCode;
 use DesignPatterns\Facades\PayApplyFacade;
 use SyException\Common\CheckException;
 use Tool\SyUser;
