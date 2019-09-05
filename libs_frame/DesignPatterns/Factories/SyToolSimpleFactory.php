@@ -9,7 +9,7 @@ namespace DesignPatterns\Factories;
 
 use DesignPatterns\Singletons\AliOssSingleton;
 use DesignPatterns\Singletons\SolrSingleton;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class SyToolSimpleFactory
 {

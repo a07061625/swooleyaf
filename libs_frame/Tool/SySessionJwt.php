@@ -11,7 +11,7 @@ use Constant\Project;
 use Constant\Server;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Log\Log;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 use Yaf\Registry;
 
 class SySessionJwt

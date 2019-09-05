@@ -13,7 +13,7 @@ use Constant\Server;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Session\JwtException;
 use Request\SyRequest;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 use Yaf\Registry;
 
 final class SessionTool

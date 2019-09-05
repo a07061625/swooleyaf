@@ -3,13 +3,15 @@
  * Created by PhpStorm.
  * User: 姜伟
  * Date: 2017/11/1 0001
- * Time: 10:55
+ * Time: 10:52
  */
-namespace Traits;
+namespace SyTrait;
 
-trait SingletonTrait
+trait SimpleTrait
 {
-    private static $instance = null;
+    private function __construct()
+    {
+    }
 
     private function __clone()
     {

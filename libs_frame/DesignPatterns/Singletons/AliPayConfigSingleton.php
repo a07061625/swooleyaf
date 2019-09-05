@@ -11,8 +11,8 @@ use Constant\ErrorCode;
 use Constant\Project;
 use SyException\AliPay\AliPayPayException;
 use Tool\Tool;
-use Traits\AliPayConfigTrait;
-use Traits\SingletonTrait;
+use SyTrait\AliPayConfigTrait;
+use SyTrait\SingletonTrait;
 
 class AliPayConfigSingleton
 {

@@ -13,7 +13,7 @@ use Constant\ErrorCode;
 use SyException\AliOss\OssException;
 use Log\Log;
 use Tool\Tool;
-use Traits\SingletonTrait;
+use SyTrait\SingletonTrait;
 
 class AliOssSingleton
 {

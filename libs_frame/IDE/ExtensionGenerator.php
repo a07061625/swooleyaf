@@ -8,7 +8,7 @@
 namespace IDE;
 
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class ExtensionGenerator
 {

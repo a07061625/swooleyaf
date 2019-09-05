@@ -5,7 +5,7 @@
  * Date: 2019/6/25 0025
  * Time: 17:24
  */
-namespace Traits;
+namespace SyTrait;
 
 use Constant\Project;
 use SyMessagePush\ConfigJPushApp;

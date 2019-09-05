@@ -8,7 +8,7 @@
 namespace PoolService\ProcessService;
 
 use Response\Result;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class EnvInfo extends BaseService {
     use SimpleTrait;

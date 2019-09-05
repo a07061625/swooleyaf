@@ -7,7 +7,7 @@
  */
 namespace DesignPatterns\Facades;
 
-use Traits\SimpleFacadeTrait;
+use SyTrait\SimpleFacadeTrait;
 
 abstract class WxProviderCorpNotifyWxFacade
 {

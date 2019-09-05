@@ -11,7 +11,7 @@ use SyServer\HttpServer;
 use SyServer\ProcessPoolServer;
 use SyServer\RpcServer;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class ServiceRunner
 {

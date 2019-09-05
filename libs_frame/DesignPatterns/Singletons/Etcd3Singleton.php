@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use SyException\Etcd\EtcdException;
 use Log\Log;
 use Tool\Tool;
-use Traits\SingletonTrait;
+use SyTrait\SingletonTrait;
 
 class Etcd3Singleton
 {

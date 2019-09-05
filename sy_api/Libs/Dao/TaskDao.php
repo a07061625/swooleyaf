@@ -14,7 +14,7 @@ use SyException\Common\CheckException;
 use Factories\SyTaskMysqlFactory;
 use Request\SyRequest;
 use Tool\Tool;
-use Traits\SimpleDaoTrait;
+use SyTrait\SimpleDaoTrait;
 
 class TaskDao
 {

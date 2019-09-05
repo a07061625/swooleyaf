@@ -11,7 +11,7 @@ use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyPrint\FeYin\AccessToken;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 final class PrintUtilFeYin extends PrintUtilBase
 {

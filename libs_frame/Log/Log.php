@@ -9,7 +9,7 @@ namespace Log;
 
 use SyServer\BaseServer;
 use Tool\Dir;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 final class Log
 {

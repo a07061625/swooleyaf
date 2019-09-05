@@ -9,7 +9,7 @@ namespace DesignPatterns\Singletons;
 
 use Constant\ProjectBase;
 use Tool\BaseContainer;
-use Traits\SingletonTrait;
+use SyTrait\SingletonTrait;
 use Validator\Impl\Double\DoubleBetween;
 use Validator\Impl\Double\DoubleMax;
 use Validator\Impl\Double\DoubleMin;

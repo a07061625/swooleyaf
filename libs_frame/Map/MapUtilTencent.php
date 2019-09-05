@@ -9,7 +9,7 @@ namespace Map;
 
 use Constant\ErrorCode;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 final class MapUtilTencent extends MapUtilBase
 {

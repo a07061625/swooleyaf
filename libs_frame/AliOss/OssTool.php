@@ -8,7 +8,7 @@
 namespace AliOss;
 
 use DesignPatterns\Singletons\AliOssSingleton;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class OssTool
 {

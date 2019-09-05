@@ -11,7 +11,7 @@ use SySms\ConfigAliYun;
 use SySms\ConfigDaYu;
 use SySms\ConfigYun253;
 use Tool\Tool;
-use Traits\SingletonTrait;
+use SyTrait\SingletonTrait;
 
 class SmsConfigSingleton
 {

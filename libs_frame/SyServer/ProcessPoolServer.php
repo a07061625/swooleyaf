@@ -16,8 +16,8 @@ use PoolService\ProcessService\ProcessServiceManager;
 use Response\Result;
 use Tool\Dir;
 use Tool\Tool;
-use Traits\ProcessPoolFrameTrait;
-use Traits\ProcessPoolProjectTrait;
+use SyTrait\ProcessPoolFrameTrait;
+use SyTrait\ProcessPoolProjectTrait;
 
 class ProcessPoolServer
 {

@@ -7,7 +7,7 @@
  */
 namespace Tool;
 
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 include_once __DIR__ . '/xhprof/xhprof_lib.php';
 include_once __DIR__ . '/xhprof/xhprof_runs.php';

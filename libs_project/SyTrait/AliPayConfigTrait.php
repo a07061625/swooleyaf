@@ -5,7 +5,7 @@
  * Date: 2019/1/21 0021
  * Time: 8:49
  */
-namespace Traits;
+namespace SyTrait;
 
 use AliPay\PayConfig;
 use Constant\Project;

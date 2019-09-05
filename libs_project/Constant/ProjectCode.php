@@ -7,7 +7,7 @@
  */
 namespace Constant;
 
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class ProjectCode extends ErrorCode
 {

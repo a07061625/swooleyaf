@@ -8,7 +8,7 @@
 namespace AliPay;
 
 use AliPay\Pay\PayWap;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 final class AliPayUtilPay extends AliPayUtilBase
 {

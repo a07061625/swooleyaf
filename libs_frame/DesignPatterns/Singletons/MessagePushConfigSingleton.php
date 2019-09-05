@@ -15,8 +15,8 @@ use SyMessagePush\ConfigBaiDu;
 use SyMessagePush\ConfigJPushDev;
 use SyMessagePush\ConfigXinGe;
 use Tool\Tool;
-use Traits\JPushConfigTrait;
-use Traits\SingletonTrait;
+use SyTrait\JPushConfigTrait;
+use SyTrait\SingletonTrait;
 
 class MessagePushConfigSingleton
 {

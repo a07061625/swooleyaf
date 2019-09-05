@@ -16,10 +16,10 @@ use Response\Result;
 use Tool\SessionTool;
 use Tool\SyPack;
 use Tool\Tool;
-use Traits\PreProcessRpcFrameTrait;
-use Traits\PreProcessRpcProjectTrait;
-use Traits\RpcServerTrait;
-use Traits\Server\BasicRpcTrait;
+use SyTrait\PreProcessRpcFrameTrait;
+use SyTrait\PreProcessRpcProjectTrait;
+use SyTrait\RpcServerTrait;
+use SyTrait\Server\BasicRpcTrait;
 use Yaf\Registry;
 use Yaf\Request\Http;
 

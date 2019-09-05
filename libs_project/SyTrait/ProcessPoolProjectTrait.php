@@ -5,7 +5,7 @@
  * Date: 19-3-22
  * Time: 下午11:06
  */
-namespace Traits;
+namespace SyTrait;
 
 trait ProcessPoolProjectTrait
 {

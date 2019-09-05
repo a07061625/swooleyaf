@@ -7,7 +7,7 @@
  */
 namespace DesignPatterns\Singletons;
 
-use Traits\SingletonTrait;
+use SyTrait\SingletonTrait;
 
 class YacSingleton
 {

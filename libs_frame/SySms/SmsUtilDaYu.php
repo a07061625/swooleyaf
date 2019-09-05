@@ -10,7 +10,7 @@ namespace SySms;
 use Constant\ErrorCode;
 use TaoBao\ServiceBase;
 use TaoBao\UtilBase;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class SmsUtilDaYu extends UtilBase
 {

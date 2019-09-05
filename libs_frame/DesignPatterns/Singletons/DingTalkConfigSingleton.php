@@ -12,8 +12,8 @@ use Constant\Project;
 use DingDing\TalkConfigProvider;
 use SyException\DingDing\TalkException;
 use Tool\Tool;
-use Traits\DingTalkConfigTrait;
-use Traits\SingletonTrait;
+use SyTrait\DingTalkConfigTrait;
+use SyTrait\SingletonTrait;
 
 class DingTalkConfigSingleton
 {

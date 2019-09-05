@@ -14,7 +14,7 @@ use DesignPatterns\Singletons\WxConfigSingleton;
 use Factories\SyTaskMysqlFactory;
 use SyException\Wx\WxCorpProviderException;
 use SyException\Wx\WxOpenException;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 use Wx\CorpProvider\Common\AuthInfoGet;
 use Wx\CorpProvider\Common\PermanentCode;
 use Wx\OpenCommon\AuthorizerInfo;
