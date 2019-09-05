@@ -7,7 +7,7 @@
  */
 namespace DingDing\Corp\Process;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;

@@ -7,7 +7,7 @@
  */
 namespace SyFrame;
 
-use Constant\Server;
+use SyConstant\Server;
 use Reflection\BaseReflect;
 use Response\Result;
 use Tool\SyUser;

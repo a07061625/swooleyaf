@@ -7,7 +7,7 @@
  */
 namespace Wx\CorpProvider\Authorize;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxCorpProviderException;
 use Tool\Tool;

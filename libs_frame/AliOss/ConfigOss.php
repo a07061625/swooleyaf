@@ -7,7 +7,7 @@
  */
 namespace AliOss;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\AliOss\OssException;
 
 class ConfigOss

@@ -7,7 +7,7 @@
  */
 namespace DingDing;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\DingDing\TalkException;
 
 class TalkConfigProvider

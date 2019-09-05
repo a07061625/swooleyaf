@@ -7,8 +7,8 @@
  */
 namespace SyMessagePush;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\MessagePushConfigSingleton;
 use SyException\MessagePush\JPushException;

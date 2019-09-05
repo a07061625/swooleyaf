@@ -7,7 +7,7 @@
  */
 namespace SyIM;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\IMConfigSingleton;
 use SyException\IM\TencentException;
 use ProjectCache\IMAccount;

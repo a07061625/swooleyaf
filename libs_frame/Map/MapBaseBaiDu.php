@@ -7,7 +7,7 @@
  */
 namespace Map;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\MapSingleton;
 use SyException\Map\BaiduMapException;
 

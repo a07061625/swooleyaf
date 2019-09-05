@@ -7,7 +7,7 @@
  */
 namespace DesignPatterns\Singletons;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\SyPrint\FeYinException;
 use SyPrint\ConfigFeYin;
 use Tool\Tool;

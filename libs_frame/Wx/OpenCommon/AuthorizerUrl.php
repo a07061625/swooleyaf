@@ -7,7 +7,7 @@
  */
 namespace Wx\OpenCommon;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use Log\Log;
 use Tool\Tool;

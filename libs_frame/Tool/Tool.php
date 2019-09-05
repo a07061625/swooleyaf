@@ -7,9 +7,9 @@
  */
 namespace Tool;
 
-use Constant\ErrorCode;
-use Constant\Project;
-use Constant\Server;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
+use SyConstant\Server;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Common\CheckException;
 use PHPZxing\PHPZxingDecoder;

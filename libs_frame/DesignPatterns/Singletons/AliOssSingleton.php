@@ -9,7 +9,7 @@ namespace DesignPatterns\Singletons;
 
 use AliOss\ConfigOss;
 use AliOss\OssClient;
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\AliOss\OssException;
 use Log\Log;
 use Tool\Tool;

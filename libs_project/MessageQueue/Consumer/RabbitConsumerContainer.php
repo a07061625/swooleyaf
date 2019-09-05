@@ -7,7 +7,7 @@
  */
 namespace MessageQueue\Consumer;
 
-use Constant\Project;
+use SyConstant\Project;
 use MessageQueue\Consumer\Rabbit\Test;
 use Tool\BaseContainer;
 

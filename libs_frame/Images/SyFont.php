@@ -7,7 +7,7 @@
  */
 namespace Images;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Image\ImageException;
 
 class SyFont

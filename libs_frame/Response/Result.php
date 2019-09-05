@@ -7,7 +7,7 @@
  */
 namespace Response;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyServer\BaseServer;
 use Tool\Tool;
 

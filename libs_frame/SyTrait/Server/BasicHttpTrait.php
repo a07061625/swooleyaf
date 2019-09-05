@@ -7,7 +7,7 @@
  */
 namespace SyTrait\Server;
 
-use Constant\Project;
+use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Tool\Tool;
 

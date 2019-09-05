@@ -7,7 +7,7 @@
  */
 namespace SyMessagePush;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\MessagePush\JPushException;
 
 class ConfigJPushGroup

@@ -8,7 +8,7 @@
 namespace AliPay\Pay;
 
 use AliPay\AliPayBase;
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\AliPay\AliPayPayException;
 
 class BillDownload extends AliPayBase

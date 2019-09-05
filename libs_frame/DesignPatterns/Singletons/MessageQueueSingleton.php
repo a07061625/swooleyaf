@@ -7,7 +7,7 @@
  */
 namespace DesignPatterns\Singletons;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\MessageQueue\MessageQueueException;
 use RdKafka\Conf;
 use RdKafka\KafkaConsumer;

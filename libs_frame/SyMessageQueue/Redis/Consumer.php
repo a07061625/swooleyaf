@@ -7,7 +7,7 @@
  */
 namespace SyMessageQueue\Redis;
 
-use Constant\Project;
+use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\MessageQueueSingleton;
 use Log\Log;

@@ -7,8 +7,8 @@
  */
 namespace DesignPatterns\Singletons;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use SyException\AliPay\AliPayPayException;
 use Tool\Tool;
 use SyTrait\AliPayConfigTrait;

@@ -7,7 +7,7 @@
  */
 namespace SyMessagePush\JPush\Admin;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\AdminBase;
 use SyMessagePush\PushUtilJPush;

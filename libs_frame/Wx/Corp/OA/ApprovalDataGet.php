@@ -1,7 +1,7 @@
 <?php
 namespace Wx\Corp\OA;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use Tool\Tool;
 use Wx\WxBaseCorp;

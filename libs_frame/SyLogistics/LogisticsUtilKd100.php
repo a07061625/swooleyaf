@@ -7,7 +7,7 @@
  */
 namespace SyLogistics;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\LogisticsConfigSingleton;
 use Tool\Tool;
 use SyTrait\SimpleTrait;

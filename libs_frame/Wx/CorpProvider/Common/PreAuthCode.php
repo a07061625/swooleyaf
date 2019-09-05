@@ -1,7 +1,7 @@
 <?php
 namespace Wx\CorpProvider\Common;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use Tool\Tool;
 use Wx\WxBaseCorpProvider;
 use Wx\WxUtilBase;

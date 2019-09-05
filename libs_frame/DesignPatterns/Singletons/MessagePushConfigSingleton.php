@@ -7,8 +7,8 @@
  */
 namespace DesignPatterns\Singletons;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use SyException\MessagePush\JPushException;
 use SyMessagePush\ConfigAli;
 use SyMessagePush\ConfigBaiDu;

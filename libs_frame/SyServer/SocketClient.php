@@ -7,8 +7,8 @@
  */
 namespace SyServer;
 
-use Constant\ErrorCode;
-use Constant\Project;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use SyException\Swoole\HttpServerException;
 use Log\Log;
 use Tool\SyPack;

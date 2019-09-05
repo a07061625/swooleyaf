@@ -7,7 +7,7 @@
  */
 namespace SyTrait;
 
-use Constant\Project;
+use SyConstant\Project;
 use Factories\SyTaskMysqlFactory;
 use Tool\Tool;
 use Wx\WxConfigAccount;

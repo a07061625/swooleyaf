@@ -7,7 +7,7 @@
  */
 namespace Request;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Validator\SignException;
 use Tool\Tool;
 use SyTrait\SimpleTrait;

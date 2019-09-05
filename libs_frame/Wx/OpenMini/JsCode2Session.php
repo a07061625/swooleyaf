@@ -7,7 +7,7 @@
  */
 namespace Wx\OpenMini;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxOpenException;
 use Tool\Tool;

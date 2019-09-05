@@ -7,7 +7,7 @@
  */
 namespace DesignPatterns\Singletons;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\MemCache\MemCacheException;
 use Log\Log;
 use Tool\Tool;

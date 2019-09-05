@@ -7,7 +7,7 @@
  */
 namespace QCloud;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\QCloud\CosException;
 
 class ConfigCos

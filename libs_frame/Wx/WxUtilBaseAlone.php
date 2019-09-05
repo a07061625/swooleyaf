@@ -7,7 +7,7 @@
  */
 namespace Wx;
 
-use Constant\Project;
+use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyServer\BaseServer;
 use Tool\Tool;

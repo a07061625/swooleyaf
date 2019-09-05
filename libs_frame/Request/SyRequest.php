@@ -7,9 +7,9 @@
  */
 namespace Request;
 
-use Constant\ErrorCode;
-use Constant\Project;
-use Constant\Server;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
+use SyConstant\Server;
 use SyException\Swoole\ServerException;
 use Log\Log;
 use Yaf\Registry;

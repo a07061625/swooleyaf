@@ -7,7 +7,7 @@
  */
 namespace Wx;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use Tool\Tool;
 use SyTrait\SimpleTrait;
 

@@ -1,7 +1,7 @@
 <?php
 namespace Mailer\Configs;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Mail\MailException;
 
 class Smtp

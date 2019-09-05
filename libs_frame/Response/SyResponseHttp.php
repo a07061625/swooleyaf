@@ -7,7 +7,7 @@
  */
 namespace Response;
 
-use Constant\Server;
+use SyConstant\Server;
 use Tool\Tool;
 use SyTrait\SimpleTrait;
 use Yaf\Registry;

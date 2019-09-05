@@ -34,7 +34,7 @@ class WebHookController extends CommonController
         $nowSign = \Tool\WebHook::createCodingSign($tag, $postData);
         $reqSign = $_SERVER['X-CODING-SIGNATURE'] ?? '';
         if ($nowSign !== $reqSign) {
-            $this->SyResult->setCodeMsg(\Constant\ErrorCode::COMMON_PARAM_ERROR, '数据不合法');
+            $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '数据不合法');
         } else {
             $redisKey = \ProjectCache\WebHook::getCacheQueueKey();
             \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->lPush($redisKey, \Tool\Tool::jsonEncode([

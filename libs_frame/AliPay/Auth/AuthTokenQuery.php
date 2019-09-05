@@ -8,7 +8,7 @@
 namespace AliPay\Auth;
 
 use AliPay\AliPayBase;
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\AliPay\AliPayAuthException;
 
 class AuthTokenQuery extends AliPayBase

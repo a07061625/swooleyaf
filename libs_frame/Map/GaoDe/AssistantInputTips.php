@@ -7,7 +7,7 @@
  */
 namespace Map\GaoDe;
 
-use Constant\ErrorCode;
+use SyConstant\ErrorCode;
 use SyException\Map\GaoDeMapException;
 use Map\MapBaseGaoDe;
 

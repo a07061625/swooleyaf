@@ -5,7 +5,7 @@
  * Date: 2018/5/22 0022
  * Time: 9:43
  */
-namespace Constant;
+namespace SyConstant;
 
 use SyTrait\SimpleTrait;
 

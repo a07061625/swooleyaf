@@ -7,7 +7,7 @@
  */
 namespace Project;
 
-use Constant\Project;
+use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Factories\SyTaskMysqlFactory;
 use Tool\Tool;
