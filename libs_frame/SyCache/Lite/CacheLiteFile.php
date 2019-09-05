@@ -5,7 +5,7 @@
  * Date: 2017/10/9 0009
  * Time: 12:30
  */
-namespace Cache\Lite;
+namespace SyCache\Lite;
 
 /**
  * This class extends Cache_Lite and offers a cache system driven by a master file
