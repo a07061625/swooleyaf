@@ -7,7 +7,7 @@ if ($type == 'server') {
     $commandPrefix = 'sudo /usr/local/php7/bin/php ' . __DIR__ . '/helper_service.php';
     \Helper\ServiceManager::handleAllService($commandPrefix, $projects);
 } elseif ($type == 'processpool') {
-    $pools = include __DIR__ . '/helper_pools.php';
+    $pools = include __DIR__ . '/config_pools.php';
     $commandPrefix = 'sudo /usr/local/php7/bin/php ' . __DIR__ . '/helper_service.php';
     \Helper\ServiceManager::handleAllProcessPool($commandPrefix, $pools);
 } else {
