@@ -15,7 +15,7 @@ use SyException\Wx\WxOpenException;
 use SyServer\BaseServer;
 use Tool\ProjectWxTool;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 use Wx\Alone\JsTicket;
 use Wx\OpenCommon\AuthorizerAccessToken;
 use Wx\OpenMini\Cloud\CodeSecretGet;

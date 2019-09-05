@@ -10,7 +10,7 @@ namespace DesignPatterns\Facades\WxProviderCorpNotifyWx;
 use Constant\Project;
 use DesignPatterns\Facades\WxProviderCorpNotifyWxFacade;
 use DesignPatterns\Factories\CacheSimpleFactory;
-use Traits\SimpleFacadeTrait;
+use SyTrait\SimpleFacadeTrait;
 
 class SuiteTicket extends WxProviderCorpNotifyWxFacade
 {

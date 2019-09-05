@@ -17,7 +17,7 @@ use SyMessageQueue\ConfigRedis;
 use SyMessageQueue\Rabbit\Consumer as RabbitConsumer;
 use SyMessageQueue\Rabbit\Producer as RabbitProducer;
 use Tool\Tool;
-use Traits\SingletonTrait;
+use SyTrait\SingletonTrait;
 
 class MessageQueueSingleton
 {

@@ -10,7 +10,7 @@ namespace SyPrint;
 use Constant\ErrorCode;
 use SyException\SyPrint\FeYinException;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 abstract class PrintUtilBase
 {

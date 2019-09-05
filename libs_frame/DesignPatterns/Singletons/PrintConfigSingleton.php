@@ -11,7 +11,7 @@ use Constant\ErrorCode;
 use SyException\SyPrint\FeYinException;
 use SyPrint\ConfigFeYin;
 use Tool\Tool;
-use Traits\SingletonTrait;
+use SyTrait\SingletonTrait;
 
 class PrintConfigSingleton
 {

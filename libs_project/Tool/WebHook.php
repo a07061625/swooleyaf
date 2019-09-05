@@ -9,7 +9,7 @@ namespace Tool;
 
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Log\Log;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 final class WebHook
 {

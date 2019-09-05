@@ -17,7 +17,7 @@ use Entities\SyTask\WxconfigCorpEntity;
 use Entities\SyTask\WxconfigShopEntity;
 use Entities\SyTask\WxopenAuthorizerEntity;
 use Entities\SyTask\WxproviderCorpAuthorizerEntity;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class SyTaskMysqlFactory
 {

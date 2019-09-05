@@ -10,7 +10,7 @@ namespace Map;
 use Constant\ErrorCode;
 use DesignPatterns\Singletons\MapSingleton;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 final class MapUtilGaoDe extends MapUtilBase
 {

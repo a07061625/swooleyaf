@@ -21,8 +21,8 @@ use Response\Result;
 use Tool\Dir;
 use Tool\SyPack;
 use Tool\Tool;
-use Traits\BaseServerTrait;
-use Traits\Server\BasicBaseTrait;
+use SyTrait\BaseServerTrait;
+use SyTrait\Server\BasicBaseTrait;
 use Yaf\Application;
 
 abstract class BaseServer

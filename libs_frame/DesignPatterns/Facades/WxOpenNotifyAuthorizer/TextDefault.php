@@ -8,7 +8,7 @@
 namespace DesignPatterns\Facades\WxOpenNotifyAuthorizer;
 
 use DesignPatterns\Facades\WxOpenNotifyAuthorizerFacade;
-use Traits\SimpleFacadeTrait;
+use SyTrait\SimpleFacadeTrait;
 
 class TextDefault extends WxOpenNotifyAuthorizerFacade
 {

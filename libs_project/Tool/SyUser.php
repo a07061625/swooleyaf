@@ -9,7 +9,7 @@ namespace Tool;
 
 use Constant\ProjectCode;
 use SyException\User\LoginException;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 /**
  * Class SyUser

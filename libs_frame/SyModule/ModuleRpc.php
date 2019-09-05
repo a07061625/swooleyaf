@@ -15,7 +15,7 @@ use SyException\Swoole\ServerException;
 use Log\Log;
 use Request\SyRequestRpc;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 abstract class ModuleRpc extends ModuleBase
 {

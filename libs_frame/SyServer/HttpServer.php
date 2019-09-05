@@ -19,10 +19,10 @@ use SyModule\ModuleContainer;
 use Tool\SessionTool;
 use Tool\SyPack;
 use Tool\Tool;
-use Traits\HttpServerTrait;
-use Traits\PreProcessHttpFrameTrait;
-use Traits\PreProcessHttpProjectTrait;
-use Traits\Server\BasicHttpTrait;
+use SyTrait\HttpServerTrait;
+use SyTrait\PreProcessHttpFrameTrait;
+use SyTrait\PreProcessHttpProjectTrait;
+use SyTrait\Server\BasicHttpTrait;
 use Yaf\Registry;
 use Yaf\Request\Http;
 

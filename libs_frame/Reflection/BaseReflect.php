@@ -13,7 +13,7 @@ use SyException\Reflection\ReflectException;
 use Log\Log;
 use SyFrame\BaseController;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 use Validator\ValidatorResult;
 
 class BaseReflect

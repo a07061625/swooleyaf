@@ -12,7 +12,7 @@ use Log\Log;
 use Request\SyRequestHttp;
 use Tool\SyPack;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 abstract class ModuleHttp extends ModuleBase
 {

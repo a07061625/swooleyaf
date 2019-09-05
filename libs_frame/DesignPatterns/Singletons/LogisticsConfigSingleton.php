@@ -12,7 +12,7 @@ use SyLogistics\ConfigKd100;
 use SyLogistics\ConfigKdNiao;
 use SyLogistics\ConfigTaoBao;
 use Tool\Tool;
-use Traits\SingletonTrait;
+use SyTrait\SingletonTrait;
 
 class LogisticsConfigSingleton
 {

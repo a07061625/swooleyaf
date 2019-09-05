@@ -10,7 +10,7 @@ namespace Request;
 use Constant\ErrorCode;
 use SyException\Validator\SignException;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 final class RequestSign
 {

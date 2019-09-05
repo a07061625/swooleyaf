@@ -9,7 +9,7 @@ namespace Tool\Cron;
 
 use Constant\ErrorCode;
 use SyException\Cron\CronException;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class CronTool
 {

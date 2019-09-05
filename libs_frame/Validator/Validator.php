@@ -7,7 +7,7 @@
  */
 namespace Validator;
 
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 use Validator\Containers\ValidatorContainer;
 
 final class Validator

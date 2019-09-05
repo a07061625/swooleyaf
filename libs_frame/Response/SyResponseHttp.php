@@ -9,7 +9,7 @@ namespace Response;
 
 use Constant\Server;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 use Yaf\Registry;
 
 class SyResponseHttp extends SyResponse

@@ -10,7 +10,7 @@ namespace DesignPatterns\Factories;
 use DesignPatterns\Singletons\MemCacheSingleton;
 use DesignPatterns\Singletons\RedisSingleton;
 use DesignPatterns\Singletons\YacSingleton;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class CacheSimpleFactory
 {

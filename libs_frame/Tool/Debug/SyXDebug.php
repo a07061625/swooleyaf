@@ -7,7 +7,7 @@
  */
 namespace Tool\Debug;
 
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 final class SyXDebug
 {

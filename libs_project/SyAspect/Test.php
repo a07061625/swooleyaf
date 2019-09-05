@@ -8,7 +8,7 @@
 namespace SyAspect;
 
 use Log\Log;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class Test extends BaseAspect
 {

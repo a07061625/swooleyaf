@@ -7,7 +7,7 @@
  */
 namespace SyLogistics;
 
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 abstract class LogisticsUtilBase
 {

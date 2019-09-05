@@ -13,7 +13,7 @@ use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Common\CheckException;
 use Factories\SyTaskMysqlFactory;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class WebHook
 {

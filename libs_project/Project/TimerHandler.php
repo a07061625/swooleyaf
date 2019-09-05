@@ -11,7 +11,7 @@ use Constant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Factories\SyTaskMysqlFactory;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class TimerHandler
 {

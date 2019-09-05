@@ -11,7 +11,7 @@ use Map\ConfigBaiDu;
 use Map\ConfigGaoDe;
 use Map\ConfigTencent;
 use Tool\Tool;
-use Traits\SingletonTrait;
+use SyTrait\SingletonTrait;
 
 class MapSingleton
 {

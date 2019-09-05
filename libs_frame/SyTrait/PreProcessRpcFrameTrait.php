@@ -5,14 +5,14 @@
  * Date: 19-2-20
  * Time: 下午6:55
  */
-namespace Traits;
+namespace SyTrait;
 
 use Constant\ProjectBase;
 use Tool\Tool;
 
 /**
  * 框架内部RPC服务预处理性状类
- * @package Traits
+ * @package SyTrait
  */
 trait PreProcessRpcFrameTrait
 {

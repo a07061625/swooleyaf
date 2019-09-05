@@ -9,7 +9,7 @@ namespace Helper;
 
 use DesignPatterns\Singletons\MysqlSingleton;
 use Tool\Tool;
-use Traits\SimpleTrait;
+use SyTrait\SimpleTrait;
 
 class MysqlTool
 {
