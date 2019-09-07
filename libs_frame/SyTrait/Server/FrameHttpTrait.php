@@ -11,7 +11,7 @@ use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Tool\Tool;
 
-trait BasicHttpTrait
+trait FrameHttpTrait
 {
     /**
      * 添加签名缓存

@@ -5,7 +5,7 @@
  * Date: 19-2-20
  * Time: 下午6:55
  */
-namespace SyTrait;
+namespace SyTrait\Server;
 
 use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
@@ -14,9 +14,9 @@ use Tool\Tool;
 
 /**
  * 框架内部HTTP服务预处理性状类
- * @package SyTrait
+ * @package SyTrait\Server
  */
-trait PreProcessHttpFrameTrait
+trait FramePreProcessHttpTrait
 {
     private $preProcessMapFrame = [
         ProjectBase::PRE_PROCESS_TAG_HTTP_FRAME_SERVER_INFO => 'preProcessFrameServerInfo',

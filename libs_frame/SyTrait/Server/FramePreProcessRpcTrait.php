@@ -5,16 +5,16 @@
  * Date: 19-2-20
  * Time: 下午6:55
  */
-namespace SyTrait;
+namespace SyTrait\Server;
 
 use SyConstant\ProjectBase;
 use Tool\Tool;
 
 /**
  * 框架内部RPC服务预处理性状类
- * @package SyTrait
+ * @package SyTrait\Server
  */
-trait PreProcessRpcFrameTrait
+trait FramePreProcessRpcTrait
 {
     private $preProcessMapFrame = [
         ProjectBase::PRE_PROCESS_TAG_RPC_FRAME_SERVER_INFO => 'preProcessFrameServerInfo',

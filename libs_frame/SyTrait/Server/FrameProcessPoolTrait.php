@@ -5,9 +5,9 @@
  * Date: 19-3-22
  * Time: 下午11:05
  */
-namespace SyTrait;
+namespace SyTrait\Server;
 
-trait ProcessPoolFrameTrait
+trait FrameProcessPoolTrait
 {
     private function checkPoolFrame()
     {
