@@ -5,15 +5,15 @@
  * Date: 19-2-20
  * Time: 下午7:20
  */
-namespace SyTrait;
+namespace SyTrait\Server;
 
 use SyConstant\Project;
 
 /**
  * 项目HTTP服务预处理性状类
- * @package SyTrait
+ * @package SyTrait\Server
  */
-trait PreProcessHttpProjectTrait
+trait ProjectPreProcessHttpTrait
 {
     private $preProcessMapProject = [
         Project::PRE_PROCESS_TAG_HTTP_PROJECT_TEST => 'preProcessProjectTest',

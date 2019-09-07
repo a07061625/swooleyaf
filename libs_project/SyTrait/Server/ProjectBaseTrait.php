@@ -5,9 +5,9 @@
  * Date: 18-5-27
  * Time: 上午10:09
  */
-namespace SyTrait;
+namespace SyTrait\Server;
 
-trait BaseServerTrait
+trait ProjectBaseTrait
 {
     private function checkServerBaseTrait()
     {

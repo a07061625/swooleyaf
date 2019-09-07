@@ -5,15 +5,15 @@
  * Date: 19-2-20
  * Time: 下午7:20
  */
-namespace SyTrait;
+namespace SyTrait\Server;
 
 use SyConstant\Project;
 
 /**
  * 项目RPC服务预处理性状类
- * @package Traits
+ * @package SyTrait\Server
  */
-trait PreProcessRpcProjectTrait
+trait ProjectPreProcessRpcTrait
 {
     private $preProcessMapProject = [
         Project::PRE_PROCESS_TAG_RPC_PROJECT_TEST => 'preProcessProjectTest',

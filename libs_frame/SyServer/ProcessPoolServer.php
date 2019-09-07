@@ -14,15 +14,16 @@ use DesignPatterns\Singletons\RedisSingleton;
 use Log\Log;
 use PoolService\ProcessService\ProcessServiceManager;
 use Response\Result;
+use SyTrait\Server\FrameProcessPoolTrait;
+use SyTrait\Server\ProjectProcessPoolTrait;
 use Tool\Dir;
 use Tool\Tool;
-use SyTrait\ProcessPoolFrameTrait;
-use SyTrait\ProcessPoolProjectTrait;
 
 class ProcessPoolServer
 {
-    use ProcessPoolFrameTrait;
-    use ProcessPoolProjectTrait;
+    use FrameProcessPoolTrait;
+    use ProjectProcessPoolTrait;
+
     /**
      * 提示文件
      * @var string

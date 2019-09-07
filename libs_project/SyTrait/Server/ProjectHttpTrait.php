@@ -5,13 +5,13 @@
  * Date: 18-5-27
  * Time: 上午10:10
  */
-namespace SyTrait;
+namespace SyTrait\Server;
 
 use SyConstant\Project;
 use Response\Result;
 use Tool\Tool;
 
-trait HttpServerTrait
+trait ProjectHttpTrait
 {
     private function checkServerHttpTrait()
     {

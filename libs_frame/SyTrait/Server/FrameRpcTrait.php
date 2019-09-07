@@ -7,7 +7,7 @@
  */
 namespace SyTrait\Server;
 
-trait BasicRpcTrait
+trait FrameRpcTrait
 {
     private function checkServerRpc()
     {

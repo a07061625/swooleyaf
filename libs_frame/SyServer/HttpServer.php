@@ -16,22 +16,22 @@ use Request\RequestSign;
 use Response\Result;
 use Response\SyResponseHttp;
 use SyModule\ModuleContainer;
+use SyTrait\Server\FrameHttpTrait;
+use SyTrait\Server\FramePreProcessHttpTrait;
+use SyTrait\Server\ProjectHttpTrait;
+use SyTrait\Server\ProjectPreProcessHttpTrait;
 use Tool\SessionTool;
 use Tool\SyPack;
 use Tool\Tool;
-use SyTrait\HttpServerTrait;
-use SyTrait\PreProcessHttpFrameTrait;
-use SyTrait\PreProcessHttpProjectTrait;
-use SyTrait\Server\BasicHttpTrait;
 use Yaf\Registry;
 use Yaf\Request\Http;
 
 class HttpServer extends BaseServer
 {
-    use BasicHttpTrait;
-    use HttpServerTrait;
-    use PreProcessHttpFrameTrait;
-    use PreProcessHttpProjectTrait;
+    use FrameHttpTrait;
+    use ProjectHttpTrait;
+    use FramePreProcessHttpTrait;
+    use ProjectPreProcessHttpTrait;
 
     const RESPONSE_RESULT_TYPE_FORBIDDEN = 0; //响应结果类型-拒绝请求
     const RESPONSE_RESULT_TYPE_ACCEPT = 1; //响应结果类型-允许请求执行业务
