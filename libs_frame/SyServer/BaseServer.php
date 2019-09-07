@@ -18,17 +18,17 @@ use SyException\Swoole\ServerException;
 use SyException\Validator\ValidatorException;
 use Log\Log;
 use Response\Result;
+use SyTrait\Server\FrameBaseTrait;
+use SyTrait\Server\ProjectBaseTrait;
 use Tool\Dir;
 use Tool\SyPack;
 use Tool\Tool;
-use SyTrait\BaseServerTrait;
-use SyTrait\Server\BasicBaseTrait;
 use Yaf\Application;
 
 abstract class BaseServer
 {
-    use BasicBaseTrait;
-    use BaseServerTrait;
+    use FrameBaseTrait;
+    use ProjectBaseTrait;
 
     /**
      * 请求服务对象

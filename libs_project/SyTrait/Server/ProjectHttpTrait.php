@@ -5,7 +5,7 @@
  * Date: 18-5-27
  * Time: 上午10:10
  */
-namespace SyTrait;
+namespace SyTrait\Server;
 
 use SyConstant\Project;
 use Project\TimerHandler;
@@ -14,7 +14,7 @@ use Tool\SyPack;
 use Tool\Tool;
 use Tool\WebHook;
 
-trait HttpServerTrait
+trait ProjectHttpTrait
 {
     private function checkServerHttpTrait()
     {

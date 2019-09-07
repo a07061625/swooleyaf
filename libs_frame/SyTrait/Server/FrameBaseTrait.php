@@ -10,7 +10,7 @@ namespace SyTrait\Server;
 use DesignPatterns\Singletons\RedisSingleton;
 use Tool\Tool;
 
-trait BasicBaseTrait
+trait FrameBaseTrait
 {
     /**
      * 服务配置信息表

@@ -13,22 +13,22 @@ use SyConstant\Server;
 use Log\Log;
 use Request\RequestSign;
 use Response\Result;
+use SyTrait\Server\FramePreProcessRpcTrait;
+use SyTrait\Server\FrameRpcTrait;
+use SyTrait\Server\ProjectPreProcessRpcTrait;
+use SyTrait\Server\ProjectRpcTrait;
 use Tool\SessionTool;
 use Tool\SyPack;
 use Tool\Tool;
-use SyTrait\PreProcessRpcFrameTrait;
-use SyTrait\PreProcessRpcProjectTrait;
-use SyTrait\RpcServerTrait;
-use SyTrait\Server\BasicRpcTrait;
 use Yaf\Registry;
 use Yaf\Request\Http;
 
 class RpcServer extends BaseServer
 {
-    use BasicRpcTrait;
-    use RpcServerTrait;
-    use PreProcessRpcFrameTrait;
-    use PreProcessRpcProjectTrait;
+    use FrameRpcTrait;
+    use ProjectRpcTrait;
+    use FramePreProcessRpcTrait;
+    use ProjectPreProcessRpcTrait;
 
     /**
      * @var \Tool\SyPack
