@@ -194,6 +194,7 @@ class HttpServer extends BaseServer
 
             $json = new Result();
             $json->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, ErrorCode::getMsg(ErrorCode::COMMON_SERVER_ERROR));
+            self::$_response->status(SY_HTTP_RSP_CODE_ERROR);
             if (self::$_reqTag) {
                 self::$_response->end($json->getJson());
             } else {
@@ -377,13 +378,8 @@ class HttpServer extends BaseServer
             $handleHeaderRes = $this->handleReqHeader($rspHeaders);
             if ($handleHeaderRes == self::RESPONSE_RESULT_TYPE_ACCEPT) {
                 self::$_rspMsg = $this->handleReqService($request, $rspHeaders);
-                $rspData = Tool::jsonDecode(self::$_rspMsg);
-                $nowRspHeaders = Registry::get(Server::REGISTRY_NAME_RESPONSE_HEADER);
-                if (isset($rspData['code']) && ($rspData['code'] > 0)) {
-                    $nowRspHeaders['Syresp-Status'] = SY_HTTP_RSP_CODE_ERROR;
-                }
                 $this->setRspCookies($response, Registry::get(Server::REGISTRY_NAME_RESPONSE_COOKIE));
-                $this->setRspHeaders($response, $nowRspHeaders);
+                $this->setRspHeaders($response, Registry::get(Server::REGISTRY_NAME_RESPONSE_HEADER));
             } else {
                 $rspHeaders['Content-Type'] = 'text/plain; charset=utf-8';
                 $rspHeaders['Syresp-Status'] = 403;
