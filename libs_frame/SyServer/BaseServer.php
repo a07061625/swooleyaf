@@ -752,4 +752,24 @@ abstract class BaseServer
             exit('生成唯一码失败' . PHP_EOL);
         }
     }
+
+    /**
+     * 设置服务端类型
+     * @param array $allowTypes
+     */
+    protected function setServerType(array $allowTypes)
+    {
+        $projectLength = strlen(SY_PROJECT);
+        $serverType = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.modules.' . substr(SY_MODULE, $projectLength) . '.type');
+        if (!in_array($serverType, $allowTypes, true)) {
+            exit('服务端类型不支持' . PHP_EOL);
+        }
+        define('SY_SERVER_TYPE', $serverType);
+
+        if ($serverType == Server::SERVER_TYPE_FRONT_GATE) {
+            $this->_configs['server']['cachenum']['wx'] = 1;
+        } else {
+            $this->_configs['server']['cachenum']['wx'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.wx', 0, true);
+        }
+    }
 }
