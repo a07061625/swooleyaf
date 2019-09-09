@@ -553,16 +553,17 @@ abstract class BaseServer
     {
         $funcName = '';
         if (strlen($uri) == 5) {
-            if (isset($frameMap[$uri])) {
-                $funcName = $frameMap[$uri];
-                if (strpos($funcName, 'preProcessFrame') !== 0) {
-                    $funcName = false;
-                }
-            } elseif (isset($projectMap[$uri])) {
-                $funcName = $projectMap[$uri];
-                if (strpos($funcName, 'preProcessProject') !== 0) {
-                    $funcName = false;
-                }
+            $needTag = substr($uri, 1);
+            $funcPrefix = '';
+            if (ctype_digit($needTag)) {
+                $funcName = $frameMap[$uri] ?? '';
+                $funcPrefix = 'preProcessFrame';
+            } elseif (ctype_alnum($needTag)) {
+                $funcName = $projectMap[$uri] ?? '';
+                $funcPrefix = 'preProcessProject';
+            }
+            if ((strlen($funcName) > 0) && (strpos($funcName, $funcPrefix) !== 0)) {
+                $funcName = false;
             }
         }
 
