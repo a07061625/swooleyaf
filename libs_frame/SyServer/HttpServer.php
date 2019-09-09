@@ -83,20 +83,13 @@ class HttpServer extends BaseServer
     public function __construct(int $port)
     {
         parent::__construct($port);
-        $projectLength = strlen(SY_PROJECT);
-        $serverType = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.modules.' . substr(SY_MODULE, $projectLength) . '.type');
-        if (!in_array($serverType, [Server::SERVER_TYPE_API_GATE, Server::SERVER_TYPE_FRONT_GATE], true)) {
-            exit('服务端类型不支持' . PHP_EOL);
-        }
-        define('SY_SERVER_TYPE', $serverType);
+        $this->setServerType([
+            Server::SERVER_TYPE_API_GATE,
+            Server::SERVER_TYPE_FRONT_GATE,
+        ]);
         $this->_configs['server']['cachenum']['hc'] = 1;
         $this->_configs['server']['cachenum']['modules'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
         $this->_configs['server']['cachenum']['local'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.local', 0, true);
-        if ($serverType == Server::SERVER_TYPE_API_GATE) {
-            $this->_configs['server']['cachenum']['wx'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.wx', 0, true);
-        } else {
-            $this->_configs['server']['cachenum']['wx'] = 1;
-        }
         $this->checkServerHttp();
         $this->_messagePack = new SyPack();
         $this->_moduleContainer = new ModuleContainer();
