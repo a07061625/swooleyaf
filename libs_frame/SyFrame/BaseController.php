@@ -7,10 +7,12 @@
  */
 namespace SyFrame;
 
+use Response\SyResponseHttp;
 use SyConstant\Server;
 use Reflection\BaseReflect;
 use Response\Result;
 use Tool\SyUser;
+use Tool\Tool;
 use Yaf\Controller_Abstract;
 use Yaf\Registry;
 
@@ -79,6 +81,16 @@ abstract class BaseController extends Controller_Abstract
      */
     public function sendRsp(?string $data = null)
     {
+        if (SY_SERVER_TYPE != Server::SERVER_TYPE_API_MODULE) {
+            if (is_string($data)) {
+                $dataArr = Tool::jsonDecode($data);
+                if (isset($dataArr['code']) && ($dataArr['code'] > 0)) {
+                    SyResponseHttp::header('Syresp-Status', SY_HTTP_RSP_CODE_ERROR);
+                }
+            } elseif ($this->SyResult->getCode() > 0) {
+                SyResponseHttp::header('Syresp-Status', SY_HTTP_RSP_CODE_ERROR);
+            }
+        }
         if (is_null($data)) {
             $this->getResponse()->setBody($this->SyResult->getJson());
         } else {
