@@ -382,7 +382,7 @@ class HttpServer extends BaseServer
                 $this->setRspHeaders($response, Registry::get(Server::REGISTRY_NAME_RESPONSE_HEADER));
             } else {
                 $rspHeaders['Content-Type'] = 'text/plain; charset=utf-8';
-                $rspHeaders['Syresp-Status'] = 403;
+                $rspHeaders[Server::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR] = 403;
                 $this->setRspHeaders($response, $rspHeaders);
             }
         } else {
@@ -422,8 +422,8 @@ class HttpServer extends BaseServer
 
             if (isset($headers['Location'])) {
                 $response->status(302);
-            } elseif (isset($headers['Syresp-Status'])) {
-                $response->status($headers['Syresp-Status']);
+            } elseif (isset($headers[Server::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR])) {
+                $response->status($headers[Server::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR]);
             }
         } else {
             $response->header('Access-Control-Allow-Origin', '*');
