@@ -85,10 +85,10 @@ abstract class BaseController extends Controller_Abstract
             if (is_string($data)) {
                 $dataArr = Tool::jsonDecode($data);
                 if (isset($dataArr['code']) && ($dataArr['code'] > 0)) {
-                    SyResponseHttp::header('Syresp-Status', SY_HTTP_RSP_CODE_ERROR);
+                    SyResponseHttp::header(Server::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR, SY_HTTP_RSP_CODE_ERROR);
                 }
             } elseif ($this->SyResult->getCode() > 0) {
-                SyResponseHttp::header('Syresp-Status', SY_HTTP_RSP_CODE_ERROR);
+                SyResponseHttp::header(Server::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR, SY_HTTP_RSP_CODE_ERROR);
             }
         }
         if (is_null($data)) {
