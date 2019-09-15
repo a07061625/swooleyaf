@@ -6,6 +6,7 @@ define('SY_DATABASE', true);
 define('SY_LC_WX_ACCOUNT', true);
 define('SY_LC_WXOPEN_AUTHORIZER', true);
 define('SY_PROJECT_LIBS_ROOT', SY_ROOT . '/libs_project/');
+//前两位为数字的内部自用,放出去的都是前两位非数字的
 define('SY_TOKEN', '245dcbf2');
 
 $frameLibsDir = \Yaconf::get('project.' . SY_ENV . SY_PROJECT . '.dir.libs.frame');
