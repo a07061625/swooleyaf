@@ -9,7 +9,6 @@ namespace SyTrait\Server;
 
 use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
-use Tool\Tool;
 
 trait FrameHttpTrait
 {
@@ -40,31 +39,5 @@ trait FrameHttpTrait
     {
         $this->initTableBase();
         $this->initTableHttpTrait();
-    }
-
-    private function getTokenExpireTime() : int
-    {
-        $expireTime = 0;
-        if (ctype_digit(substr(SY_TOKEN, 0, 1))) {
-            $expireTime = time() + 86400;
-        } elseif (strlen(SY_URL_TOKEN_REFRESH) > 0) {
-            $sendRes = Tool::sendCurlReq([
-                CURLOPT_URL => SY_URL_TOKEN_REFRESH . SY_TOKEN,
-                CURLOPT_TIMEOUT_MS => 2000,
-                CURLOPT_HEADER => false,
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_SSL_VERIFYPEER => false,
-                CURLOPT_SSL_VERIFYHOST => false,
-            ]);
-            if ($sendRes['res_no'] > 0) {
-                return $expireTime;
-            }
-            $resData = Tool::jsonDecode($sendRes['res_content']);
-            if (isset($resData['data']['expire_time']) && is_numeric($resData['data']['expire_time'])) {
-                $expireTime = (int)$resData['data']['expire_time'];
-            }
-        }
-
-        return $expireTime;
     }
 }

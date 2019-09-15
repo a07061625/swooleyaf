@@ -75,9 +75,6 @@ if (($proxyPort > 1000) && ($proxyPort <= 65535)) {
 }
 unset($aliOpenConfigs);
 
-//令牌刷新链接
-define('SY_URL_TOKEN_REFRESH', 'http://www.baidu.com?tag=');
-
 //Http响应的错误状态码
 if (!defined('SY_HTTP_RSP_CODE_ERROR')) {
     define('SY_HTTP_RSP_CODE_ERROR', 200);

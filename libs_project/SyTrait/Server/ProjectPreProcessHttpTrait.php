@@ -16,11 +16,14 @@ use SyConstant\Project;
 trait ProjectPreProcessHttpTrait
 {
     private $preProcessMapProject = [
-        Project::PRE_PROCESS_TAG_HTTP_PROJECT_TEST => 'preProcessProjectTest',
+        Project::PRE_PROCESS_TAG_HTTP_PROJECT_REFRESH_TOKEN_EXPIRE => 'preProcessProjectRefreshTokenExpire',
     ];
 
-    private function preProcessProjectTest(\swoole_http_request $request) : string
+    private function preProcessProjectRefreshTokenExpire(\swoole_http_request $request) : string
     {
-        return 'http project test';
+        self::$_syServer->set(self::$_serverToken, [
+            'token_etime' => $this->getTokenExpireTime(),
+        ]);
+        return 'refresh token expire time success';
     }
 }
