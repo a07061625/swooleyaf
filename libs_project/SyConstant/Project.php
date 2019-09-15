@@ -31,7 +31,7 @@ final class Project extends ProjectBase
     const MESSAGE_QUEUE_TOPIC_TEST = SY_ENV . SY_PROJECT . '0000'; //主题-测试
 
     //服务预处理常量,标识长度为5位,第一位固定为/,后四位代表不同预处理操作,其中后四位全为数字的为框架内部预留标识
-    const PRE_PROCESS_TAG_HTTP_PROJECT_TEST = '/a000'; //HTTP服务项目标识-测试
+    const PRE_PROCESS_TAG_HTTP_PROJECT_REFRESH_TOKEN_EXPIRE = '/a000'; //HTTP服务项目标识-更新令牌过期时间
     const PRE_PROCESS_TAG_RPC_PROJECT_TEST = '/a000'; //RPC服务项目标识-测试
 
     //进程池服务标识常量,4位字符串,数字和字母组成,纯数字的为框架内部服务,其他为自定义服务
