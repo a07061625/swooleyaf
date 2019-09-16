@@ -8,6 +8,7 @@ define('SY_LC_WXOPEN_AUTHORIZER', false);
 define('SY_PROJECT_LIBS_ROOT', __DIR__ . '/libs_project/');
 //前两位为数字的内部自用,放出去的都是前两位非数字的
 define('SY_TOKEN', '245dcbf2');
+define('SY_TOKEN_SECRET', 'eyJpdiI6ImY2OGE2MDBmNmMxYjExNmMiLCJ2YWx1ZSI6IkdESm5vcFBHSlltU0FCc3R3bm1zZDBCb0poVWtkQ0R2bU1lOFVUdGdBekE9In0=');
 
 $frameLibsDir = \Yaconf::get('project.' . SY_ENV . SY_PROJECT . '.dir.libs.frame');
 if (substr($frameLibsDir, -1) == '/') {
