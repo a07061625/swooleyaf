@@ -41,24 +41,14 @@ trait ProjectHttpTrait
 
     private function getTokenExpireTime() : int
     {
-        $expireTime = 0;
-        $sendRes = Tool::sendCurlReq([
-            CURLOPT_URL => 'http://www.baidu.com?token=' . SY_TOKEN,
-            CURLOPT_TIMEOUT_MS => 2000,
-            CURLOPT_HEADER => false,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_SSL_VERIFYHOST => false,
-        ]);
-        if ($sendRes['res_no'] > 0) {
-            return $expireTime;
-        }
-        $resData = Tool::jsonDecode($sendRes['res_content']);
-        if (isset($resData['data']['expire_time']) && is_numeric($resData['data']['expire_time'])) {
-            $expireTime = (int)$resData['data']['expire_time'];
+        $decryptStr = Tool::decrypt(SY_TOKEN_SECRET, 'f68a600f6c1b1163');
+        if (is_bool($decryptStr)) {
+            return 0;
+        } elseif (substr($decryptStr, 0, 8) != SY_TOKEN) {
+            return 0;
         }
 
-        return $expireTime;
+        return (int)substr($decryptStr, 8);
     }
 
     /**

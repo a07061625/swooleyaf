@@ -75,6 +75,11 @@ if (($proxyPort > 1000) && ($proxyPort <= 65535)) {
 }
 unset($aliOpenConfigs);
 
+//令牌密钥
+if (!defined('SY_TOKEN_SECRET')) {
+    define('SY_TOKEN_SECRET', '');
+}
+
 //Http响应的错误状态码
 if (!defined('SY_HTTP_RSP_CODE_ERROR')) {
     define('SY_HTTP_RSP_CODE_ERROR', 200);
