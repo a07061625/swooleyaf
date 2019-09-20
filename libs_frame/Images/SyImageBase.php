@@ -8,7 +8,7 @@
 namespace Images;
 
 use SyConstant\ErrorCode;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use SyException\Image\ImageException;
 
 abstract class SyImageBase
@@ -67,13 +67,13 @@ abstract class SyImageBase
         $this->width = (int)$imageInfo[0];
         $this->height = (int)$imageInfo[1];
         if ($imageInfo[2] == 1) {
-            $this->mimeType = Server::IMAGE_MIME_TYPE_GIF;
+            $this->mimeType = SyInner::IMAGE_MIME_TYPE_GIF;
             $this->ext = 'gif';
         } elseif ($imageInfo[2] == 2) {
-            $this->mimeType = Server::IMAGE_MIME_TYPE_JPEG;
+            $this->mimeType = SyInner::IMAGE_MIME_TYPE_JPEG;
             $this->ext = 'jpg';
         } else {
-            $this->mimeType = Server::IMAGE_MIME_TYPE_PNG;
+            $this->mimeType = SyInner::IMAGE_MIME_TYPE_PNG;
             $this->ext = 'png';
         }
     }
@@ -245,7 +245,7 @@ abstract class SyImageBase
      */
     protected function checkCropData(int $startX, int $startY, int $width, int $height)
     {
-        if ($this->mimeType == Server::IMAGE_MIME_TYPE_GIF) {
+        if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_GIF) {
             throw new ImageException('gif图片不允许截图', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
         if ($startX < 0) {

@@ -9,7 +9,7 @@ namespace Validator\Impl\String;
 
 use SyConstant\ErrorCode;
 use SyConstant\Project;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Validator\ValidatorException;
 use Validator\BaseValidator;
@@ -30,7 +30,7 @@ class StringJwt extends BaseValidator implements ValidatorService
 
     public function validator($data, $compareData) : string
     {
-        $jwtData = Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
+        $jwtData = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA);
         if (($compareData == 1) && (strlen($jwtData['uid']) > 0)) {
             $redisKey = Project::REDIS_PREFIX_SESSION_JWT_REFRESH . $jwtData['uid'];
             $redisData = CacheSimpleFactory::getRedisInstance()->get($redisKey);

@@ -7,6 +7,7 @@
  */
 namespace SyTrait\Server;
 
+use Swoole\Http\Request;
 use SyConstant\Project;
 
 /**
@@ -19,7 +20,7 @@ trait ProjectPreProcessHttpTrait
         Project::PRE_PROCESS_TAG_HTTP_PROJECT_REFRESH_TOKEN_EXPIRE => 'preProcessProjectRefreshTokenExpire',
     ];
 
-    private function preProcessProjectRefreshTokenExpire(\swoole_http_request $request) : string
+    private function preProcessProjectRefreshTokenExpire(Request $request) : string
     {
         self::$_syServer->set(self::$_serverToken, [
             'token_etime' => $this->getTokenExpireTime(),

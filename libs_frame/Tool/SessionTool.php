@@ -9,7 +9,7 @@ namespace Tool;
 
 use SyConstant\ErrorCode;
 use SyConstant\Project;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Session\JwtException;
 use Request\SyRequest;
@@ -109,7 +109,7 @@ final class SessionTool
         if (empty($cacheData)) {
             $cacheData = self::createDefaultJwt();
         }
-        Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_DATA, $cacheData);
-        Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION, $sessionId);
+        Registry::set(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA, $cacheData);
+        Registry::set(SyInner::REGISTRY_NAME_RESPONSE_JWT_SESSION, $sessionId);
     }
 }

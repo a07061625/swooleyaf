@@ -8,7 +8,7 @@
 namespace Images;
 
 use SyConstant\ErrorCode;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use SyException\Image\ImageException;
 use Log\Log;
 use Tool\Tool;
@@ -21,9 +21,9 @@ class SyImageImagick extends SyImageBase
     private $image = null;
 
     private $resizeMap = [
-        Server::IMAGE_MIME_TYPE_GIF => 'resizeImageGif',
-        Server::IMAGE_MIME_TYPE_PNG => 'resizeImagePng',
-        Server::IMAGE_MIME_TYPE_JPEG => 'resizeImageJpeg',
+        SyInner::IMAGE_MIME_TYPE_GIF => 'resizeImageGif',
+        SyInner::IMAGE_MIME_TYPE_PNG => 'resizeImagePng',
+        SyInner::IMAGE_MIME_TYPE_JPEG => 'resizeImageJpeg',
     ];
 
     /**
@@ -101,7 +101,7 @@ class SyImageImagick extends SyImageBase
         $draw->setTextKerning(1);
         $draw->setTextEncoding('UTF-8');
         $draw->setGravity(\Imagick::GRAVITY_CENTER);
-        if ($this->mimeType == Server::IMAGE_MIME_TYPE_GIF) {
+        if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_GIF) {
             foreach ($this->image as $frame) {
                 $frame->annotateImage($draw, $startX, $startY, 0, $fontTxt);
             }
@@ -126,7 +126,7 @@ class SyImageImagick extends SyImageBase
         $draw->composite($water->getImageCompose(), $startX, $startY, $imageInfo[0], $imageInfo[1], $water);
         $water->destroy();
         
-        if ($this->mimeType == Server::IMAGE_MIME_TYPE_GIF) {
+        if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_GIF) {
             $canvas = new \Imagick();
             $images = $this->image->coalesceImages();
             foreach ($images as $frame) {
@@ -162,17 +162,17 @@ class SyImageImagick extends SyImageBase
             throw new ImageException('目录不存在', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
 
-        if ($this->mimeType == Server::IMAGE_MIME_TYPE_JPEG) {
+        if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_JPEG) {
             $this->image->setImageFormat('jpeg');
             $this->image->setImageCompression(\Imagick::COMPRESSION_JPEG);
-        } elseif ($this->mimeType == Server::IMAGE_MIME_TYPE_PNG) {
+        } elseif ($this->mimeType == SyInner::IMAGE_MIME_TYPE_PNG) {
             $this->image->setImageFormat('png');
             $this->image->setImageCompression(\Imagick::COMPRESSION_LZW);
         }
 
         $fileName = Tool::createNonceStr(6) . Tool::getNowTime() . '_' . $this->width . '_' . $this->height . '.' . $this->ext;
         $fullFileName = substr($path, -1) == '/' ? $path . $fileName : $path . '/' . $fileName;
-        if ($this->mimeType == Server::IMAGE_MIME_TYPE_GIF) {
+        if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_GIF) {
             $writeRes = $this->image->writeImages($fullFileName, true);
         } else {
             $writeRes = $this->image->writeImage($fullFileName);

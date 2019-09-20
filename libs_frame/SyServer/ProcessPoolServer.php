@@ -7,8 +7,9 @@
  */
 namespace SyServer;
 
+use Swoole\Process;
 use SyConstant\ErrorCode;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use DesignPatterns\Singletons\MysqlSingleton;
 use DesignPatterns\Singletons\RedisSingleton;
 use Log\Log;
@@ -32,7 +33,7 @@ class ProcessPoolServer
 
     /**
      * 连接池对象
-     * @var \swoole_process_pool
+     * @var \Swoole\Process\Pool
      */
     private $pool = null;
     /**
@@ -63,7 +64,7 @@ class ProcessPoolServer
 
     public function __construct(int $port)
     {
-        if (($port <= Server::ENV_PORT_MIN) || ($port > Server::ENV_PORT_MAX)) {
+        if (($port <= SyInner::ENV_PORT_MIN) || ($port > SyInner::ENV_PORT_MAX)) {
             exit('端口不合法' . PHP_EOL);
         }
 
@@ -122,8 +123,8 @@ class ProcessPoolServer
         $this->initTableFrame();
         $this->initTableProject();
 
-        @cli_set_process_title(Server::PROCESS_TYPE_MAIN . SY_MODULE . $this->_port);
-        \swoole_process::daemon(true, false);
+        @cli_set_process_title(SyInner::PROCESS_TYPE_MAIN . SY_MODULE . $this->_port);
+        Process::daemon(true, false);
         file_put_contents($this->_pidFile, getmypid());
         file_put_contents($this->_tipFile, '\e[1;36m start ' . SY_MODULE . ': \e[0m \e[1;31m \t[fail] \e[0m');
 
@@ -138,7 +139,7 @@ class ProcessPoolServer
         $bcConfigs = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.bcmath');
         bcscale($bcConfigs['scale']);
 
-        $this->pool = new \swoole_process_pool($this->_configs['process']['num']['worker'], SWOOLE_IPC_SOCKET);
+        $this->pool = new Process\Pool($this->_configs['process']['num']['worker'], SWOOLE_IPC_SOCKET);
         $this->pool->on('workerStart', [$this, 'onWorkerStart']);
         $this->pool->on('workerStop', [$this, 'onWorkerStop']);
         $this->pool->on('message', [$this, 'onMessage']);
@@ -156,7 +157,7 @@ class ProcessPoolServer
 
         $msg = ' \e[1;31m \t[fail]';
         if ($pid > 0) {
-            if (\swoole_process::kill($pid)) {
+            if (Process::kill($pid)) {
                 $msg = ' \e[1;32m \t[success]';
             }
             file_put_contents($this->_pidFile, '');
@@ -182,9 +183,9 @@ class ProcessPoolServer
         exit();
     }
     
-    public function onWorkerStart(\swoole_process_pool $pool, int $workerId)
+    public function onWorkerStart(Process\Pool $pool, int $workerId)
     {
-        @cli_set_process_title(Server::PROCESS_TYPE_WORKER . SY_MODULE . $this->_port);
+        @cli_set_process_title(SyInner::PROCESS_TYPE_WORKER . SY_MODULE . $this->_port);
 
         //设置错误和异常处理
         set_exception_handler('\SyError\ErrorHandler::handleException');
@@ -204,12 +205,12 @@ class ProcessPoolServer
         $this->handleProjectWorkerStart($pool, $workerId);
     }
 
-    public function onWorkerStop(\swoole_process_pool $pool, int $workerId)
+    public function onWorkerStop(Process\Pool $pool, int $workerId)
     {
         $this->handleProjectWorkerStop($pool, $workerId);
     }
 
-    public function onMessage(\swoole_process_pool $pool, string $data)
+    public function onMessage(Process\Pool $pool, string $data)
     {
         $result = new Result();
         $dataArr = Tool::jsonDecode($data);
@@ -236,18 +237,18 @@ class ProcessPoolServer
         if (PHP_INT_SIZE < 8) {
             exit('操作系统必须是64位' . PHP_EOL);
         }
-        if (version_compare(PHP_VERSION, Server::VERSION_MIN_PHP, '<')) {
-            exit('PHP版本必须大于等于' . Server::VERSION_MIN_PHP . PHP_EOL);
+        if (version_compare(PHP_VERSION, SyInner::VERSION_MIN_PHP, '<')) {
+            exit('PHP版本必须大于等于' . SyInner::VERSION_MIN_PHP . PHP_EOL);
         }
         if (!defined('SY_MODULE')) {
             exit('模块名称未定义' . PHP_EOL);
         }
-        if (!in_array(SY_ENV, Server::$totalEnvProject, true)) {
+        if (!in_array(SY_ENV, SyInner::$totalEnvProject, true)) {
             exit('环境类型不合法' . PHP_EOL);
         }
 
         $os = php_uname('s');
-        if (!in_array($os, Server::$totalEnvSystem, true)) {
+        if (!in_array($os, SyInner::$totalEnvSystem, true)) {
             exit('操作系统不支持' . PHP_EOL);
         }
 
@@ -270,17 +271,17 @@ class ProcessPoolServer
             }
         }
 
-        if (version_compare(SWOOLE_VERSION, Server::VERSION_MIN_SWOOLE, '<')) {
-            exit('swoole版本必须大于等于' . Server::VERSION_MIN_SWOOLE . PHP_EOL);
+        if (version_compare(SWOOLE_VERSION, SyInner::VERSION_MIN_SWOOLE, '<')) {
+            exit('swoole版本必须大于等于' . SyInner::VERSION_MIN_SWOOLE . PHP_EOL);
         }
-        if (version_compare(SEASLOG_VERSION, Server::VERSION_MIN_SEASLOG, '<')) {
-            exit('seaslog版本必须大于等于' . Server::VERSION_MIN_SEASLOG . PHP_EOL);
+        if (version_compare(SEASLOG_VERSION, SyInner::VERSION_MIN_SEASLOG, '<')) {
+            exit('seaslog版本必须大于等于' . SyInner::VERSION_MIN_SEASLOG . PHP_EOL);
         }
-        if (version_compare(YAC_VERSION, Server::VERSION_MIN_YAC, '<')) {
-            exit('yac版本必须大于等于' . Server::VERSION_MIN_YAC . PHP_EOL);
+        if (version_compare(YAC_VERSION, SyInner::VERSION_MIN_YAC, '<')) {
+            exit('yac版本必须大于等于' . SyInner::VERSION_MIN_YAC . PHP_EOL);
         }
-        if (version_compare(\YAF\VERSION, Server::VERSION_MIN_YAF, '<')) {
-            exit('yaf版本必须大于等于' . Server::VERSION_MIN_YAF . PHP_EOL);
+        if (version_compare(\YAF\VERSION, SyInner::VERSION_MIN_YAF, '<')) {
+            exit('yaf版本必须大于等于' . SyInner::VERSION_MIN_YAF . PHP_EOL);
         }
     }
 

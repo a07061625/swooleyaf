@@ -7,6 +7,7 @@
  */
 namespace SyTrait\Server;
 
+use Swoole\Server;
 use SyConstant\Project;
 use Project\TimerHandler;
 use Response\Result;
@@ -24,7 +25,7 @@ trait ProjectHttpTrait
     {
     }
 
-    private function addTaskHttpTrait(\swoole_server $server)
+    private function addTaskHttpTrait(Server $server)
     {
         $this->_messagePack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
             'task_module' => SY_MODULE,
@@ -52,13 +53,13 @@ trait ProjectHttpTrait
     }
 
     /**
-     * @param \swoole_server $server
+     * @param \Swoole\Server $server
      * @param int $taskId
      * @param int $fromId
      * @param array $data
      * @return string 空字符串:执行成功 非空:执行失败
      */
-    private function handleTaskHttpTrait(\swoole_server $server, int $taskId, int $fromId, array &$data) : string
+    private function handleTaskHttpTrait(Server $server, int $taskId, int $fromId, array &$data) : string
     {
         $taskCommand = Tool::getArrayVal($data['params'], 'task_command', '');
         switch ($taskCommand) {

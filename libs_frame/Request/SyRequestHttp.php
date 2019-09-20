@@ -7,8 +7,9 @@
  */
 namespace Request;
 
+use Swoole\Client;
 use SyConstant\Project;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use Log\Log;
 use Tool\HttpTool;
 
@@ -24,11 +25,11 @@ class SyRequestHttp extends SyRequest
     {
         parent::__construct();
         $this->_port = 80;
-        $this->headerName = ucwords(Server::SERVER_HTTP_TAG_REQUEST_HEADER, '-');
+        $this->headerName = ucwords(SyInner::SERVER_HTTP_TAG_REQUEST_HEADER, '-');
         $this->_clientConfigs = [
             'open_tcp_nodelay' => true,
             'open_eof_check' => true,
-            'package_eof' => Server::SERVER_HTTP_TAG_RESPONSE_EOF,
+            'package_eof' => SyInner::SERVER_HTTP_TAG_RESPONSE_EOF,
             'package_max_length' => Project::SIZE_SERVER_PACKAGE_MAX,
             'socket_buffer_size' => Project::SIZE_CLIENT_SOCKET_BUFFER,
         ];
@@ -91,7 +92,7 @@ class SyRequestHttp extends SyRequest
     public function sendTaskReq(string $url, string $packData, callable $callback = null)
     {
         $body = http_build_query([
-            Server::SERVER_DATA_KEY_TASK => $packData
+            SyInner::SERVER_DATA_KEY_TASK => $packData
         ]);
         $reqHeaderStr = HttpTool::getReqHeaderStr('POST', $url, [
             $this->headerName => SY_VERSION,
@@ -116,7 +117,7 @@ class SyRequestHttp extends SyRequest
         }
 
         $rspData = HttpTool::parseResponse($rspMsg);
-        return $rspData === false ? false : str_replace(Server::SERVER_HTTP_TAG_RESPONSE_EOF, '', $rspData['body']);
+        return $rspData === false ? false : str_replace(SyInner::SERVER_HTTP_TAG_RESPONSE_EOF, '', $rspData['body']);
     }
 
     /**
@@ -128,10 +129,10 @@ class SyRequestHttp extends SyRequest
     protected function sendAsyncReq(string $reqData, callable $callback = null) : bool
     {
         $this->sendBaseAsyncReq($reqData, $callback);
-        $this->_asyncClient->on('receive', function (\swoole_client $cli, string $data) use ($callback) {
+        $this->_asyncClient->on('receive', function (Client $cli, string $data) use ($callback) {
             $rspData = HttpTool::parseResponse($data);
             if (($rspData !== false) && (!is_null($callback)) && is_callable($callback)) {
-                $callback('success', str_replace(Server::SERVER_HTTP_TAG_RESPONSE_EOF, '', $rspData['body']));
+                $callback('success', str_replace(SyInner::SERVER_HTTP_TAG_RESPONSE_EOF, '', $rspData['body']));
             }
             $cli->close();
         });

@@ -8,7 +8,7 @@
 namespace Images;
 
 use SyConstant\ErrorCode;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use SyException\Image\ImageException;
 use Grafika\Grafika;
 
@@ -197,7 +197,7 @@ class SyImageFilter
      */
     public function handleDither(string $ditherType)
     {
-        if (in_array($ditherType, Server::$totalImageFilterDither, true)) {
+        if (in_array($ditherType, SyInner::$totalImageFilterDither, true)) {
             $filter = Grafika::createFilter('Dither', $ditherType);
             $this->editor->apply($this->image, $filter);
         } else {

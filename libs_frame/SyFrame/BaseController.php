@@ -8,7 +8,7 @@
 namespace SyFrame;
 
 use Response\SyResponseHttp;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use Reflection\BaseReflect;
 use Response\Result;
 use Tool\SyUser;
@@ -49,8 +49,8 @@ abstract class BaseController extends Controller_Abstract
         $action = $actionName  . 'Action';
         $aspectList = BaseReflect::getControllerAspectAnnotations($controller, $action);
         $needStr = hash('crc32b', $aspectKey);
-        $aspectBeforeTag = Server::REGISTRY_NAME_PREFIX_ASPECT_BEFORE . $needStr;
-        $aspectAfterTag = Server::REGISTRY_NAME_PREFIX_ASPECT_AFTER . $needStr;
+        $aspectBeforeTag = SyInner::REGISTRY_NAME_PREFIX_ASPECT_BEFORE . $needStr;
+        $aspectAfterTag = SyInner::REGISTRY_NAME_PREFIX_ASPECT_AFTER . $needStr;
         $this->aspectMap[$aspectKey] = $aspectBeforeTag;
         Registry::set($aspectBeforeTag, $aspectList['before']);
         Registry::set($aspectAfterTag, $aspectList['after']);
@@ -81,14 +81,14 @@ abstract class BaseController extends Controller_Abstract
      */
     public function sendRsp(?string $data = null)
     {
-        if (SY_SERVER_TYPE != Server::SERVER_TYPE_API_MODULE) {
+        if (SY_SERVER_TYPE != SyInner::SERVER_TYPE_API_MODULE) {
             if (is_string($data)) {
                 $dataArr = Tool::jsonDecode($data);
                 if (isset($dataArr['code']) && ($dataArr['code'] > 0)) {
-                    SyResponseHttp::header(Server::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR, SY_HTTP_RSP_CODE_ERROR);
+                    SyResponseHttp::header(SyInner::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR, SY_HTTP_RSP_CODE_ERROR);
                 }
             } elseif ($this->SyResult->getCode() > 0) {
-                SyResponseHttp::header(Server::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR, SY_HTTP_RSP_CODE_ERROR);
+                SyResponseHttp::header(SyInner::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR, SY_HTTP_RSP_CODE_ERROR);
             }
         }
         if (is_null($data)) {
