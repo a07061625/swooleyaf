@@ -7,9 +7,12 @@
  */
 namespace SyServer;
 
+use Swoole\Process;
+use Swoole\Server;
+use Swoole\Timer;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\MemCacheSingleton;
 use DesignPatterns\Singletons\MysqlSingleton;
@@ -32,7 +35,7 @@ abstract class BaseServer
 
     /**
      * 请求服务对象
-     * @var \swoole_websocket_server|\swoole_server
+     * @var \Swoole\WebSocket\Server|\Swoole\Server
      */
     protected $_server = null;
     /**
@@ -100,7 +103,7 @@ abstract class BaseServer
      */
     public function __construct(int $port)
     {
-        if (($port <= Server::ENV_PORT_MIN) || ($port > Server::ENV_PORT_MAX)) {
+        if (($port <= SyInner::ENV_PORT_MIN) || ($port > SyInner::ENV_PORT_MAX)) {
             exit('端口不合法' . PHP_EOL);
         }
         $this->checkSystemEnv();
@@ -222,7 +225,7 @@ abstract class BaseServer
 
         $msg = ' \e[1;31m \t[fail]';
         if ($pid > 0) {
-            if (\swoole_process::kill($pid)) {
+            if (Process::kill($pid)) {
                 $msg = ' \e[1;32m \t[success]';
             }
             file_put_contents($this->_pidFile, '');
@@ -244,14 +247,14 @@ abstract class BaseServer
         }
 
         //清除worker中断进程
-        $commandWorkers = 'ps -A -o pid,ppid,stat,cmd|grep ' . Server::PROCESS_TYPE_WORKER . SY_MODULE . '|awk \'{if($2 == "1") print $1}\'';
+        $commandWorkers = 'ps -A -o pid,ppid,stat,cmd|grep ' . SyInner::PROCESS_TYPE_WORKER . SY_MODULE . '|awk \'{if($2 == "1") print $1}\'';
         $execRes = Tool::execSystemCommand($commandWorkers);
         if (($execRes['code'] == 0) && !empty($execRes['data'])) {
             system('kill -9 ' . implode(' ', $execRes['data']));
         }
 
         //清除task中断进程
-        $commandTasks = 'ps -A -o pid,ppid,stat,cmd|grep ' . Server::PROCESS_TYPE_TASK . SY_MODULE . '|awk \'{if($2 == "1") print $1}\'';
+        $commandTasks = 'ps -A -o pid,ppid,stat,cmd|grep ' . SyInner::PROCESS_TYPE_TASK . SY_MODULE . '|awk \'{if($2 == "1") print $1}\'';
         $execRes = Tool::execSystemCommand($commandTasks);
         if (($execRes['code'] == 0) && !empty($execRes['data'])) {
             system('kill -9 ' . implode(' ', $execRes['data']));
@@ -280,10 +283,10 @@ abstract class BaseServer
 
     /**
      * 启动工作进程
-     * @param \swoole_server $server
+     * @param \Swoole\Server $server
      * @param int $workerId 进程编号
      */
-    public function onWorkerStart(\swoole_server $server, $workerId)
+    public function onWorkerStart(Server $server, $workerId)
     {
         //设置错误和异常处理
         set_exception_handler('\SyError\ErrorHandler::handleException');
@@ -301,9 +304,9 @@ abstract class BaseServer
         $this->_app->bootstrap()->getDispatcher()->autoRender(false);
 
         if ($workerId >= $server->setting['worker_num']) {
-            @cli_set_process_title(Server::PROCESS_TYPE_TASK . SY_MODULE . $this->_port);
+            @cli_set_process_title(SyInner::PROCESS_TYPE_TASK . SY_MODULE . $this->_port);
         } else {
-            @cli_set_process_title(Server::PROCESS_TYPE_WORKER . SY_MODULE . $this->_port);
+            @cli_set_process_title(SyInner::PROCESS_TYPE_WORKER . SY_MODULE . $this->_port);
         }
 
         if ($workerId == 0) { //保证每一个服务只执行一次定时任务
@@ -324,47 +327,47 @@ abstract class BaseServer
 
     /**
      * 启动管理进程
-     * @param \swoole_server $server
+     * @param \Swoole\Server $server
      */
-    public function onManagerStart(\swoole_server $server)
+    public function onManagerStart(Server $server)
     {
-        @cli_set_process_title(Server::PROCESS_TYPE_MANAGER . SY_MODULE . $this->_port);
+        @cli_set_process_title(SyInner::PROCESS_TYPE_MANAGER . SY_MODULE . $this->_port);
     }
 
     /**
      * 关闭服务
-     * @param \swoole_server $server
+     * @param \Swoole\Server $server
      */
-    public function onShutdown(\swoole_server $server)
+    public function onShutdown(Server $server)
     {
     }
 
     /**
      * 任务完成
-     * @param \swoole_server $server
+     * @param \Swoole\Server $server
      * @param int $taskId
      * @param string $data
      */
-    public function onFinish(\swoole_server $server, $taskId, string $data)
+    public function onFinish(Server $server, $taskId, string $data)
     {
     }
 
     /**
      * 关闭连接
-     * @param \swoole_server $server
+     * @param \Swoole\Server $server
      * @param int $fd 连接的文件描述符
      * @param int $reactorId reactor线程ID,$reactorId<0:服务器端关闭 $reactorId>0:客户端关闭
      */
-    public function onClose(\swoole_server $server, int $fd, int $reactorId)
+    public function onClose(Server $server, int $fd, int $reactorId)
     {
     }
 
     /**
      * 工作进程退出
-     * @param \swoole_server $server
+     * @param \Swoole\Server $server
      * @param int $workerId 工作进程ID
      */
-    public function onWorkerExit(\swoole_server $server, int $workerId)
+    public function onWorkerExit(Server $server, int $workerId)
     {
         $fdList = $server->connections;
         foreach ($fdList as $eFd) {
@@ -374,44 +377,44 @@ abstract class BaseServer
         }
 
         if (version_compare(SWOOLE_VERSION, '4.4.0', '>=')) {
-            \swoole_timer::clearAll();
+            Timer::clearAll();
         }
     }
 
     /**
      * 启动主进程服务
-     * @param \swoole_server $server
+     * @param \Swoole\Server $server
      * @throws \SyException\Swoole\ServerException
      */
-    abstract public function onStart(\swoole_server $server);
+    abstract public function onStart(Server $server);
     /**
      * 退出工作进程
-     * @param \swoole_server $server
+     * @param \Swoole\Server $server
      * @param int $workerId
      * @return mixed
      */
-    abstract public function onWorkerStop(\swoole_server $server, int $workerId);
+    abstract public function onWorkerStop(Server $server, int $workerId);
     /**
      * 工作进程错误处理
-     * @param \swoole_server $server
+     * @param \Swoole\Server $server
      * @param int $workId 进程编号
      * @param int $workPid 进程ID
      * @param int $exitCode 退出状态码
      */
-    abstract public function onWorkerError(\swoole_server $server, $workId, $workPid, $exitCode);
+    abstract public function onWorkerError(Server $server, $workId, $workPid, $exitCode);
     /**
      * 处理任务
-     * @param \swoole_server $server
+     * @param \Swoole\Server $server
      * @param int $taskId
      * @param int $fromId
      * @param string $data
      * @return string
      */
-    abstract public function onTask(\swoole_server $server, int $taskId, int $fromId, string $data);
+    abstract public function onTask(Server $server, int $taskId, int $fromId, string $data);
 
-    protected function addTaskBase(\swoole_server $server)
+    protected function addTaskBase(Server $server)
     {
-        if (SY_SERVER_TYPE == Server::SERVER_TYPE_API_MODULE) {
+        if (SY_SERVER_TYPE == SyInner::SERVER_TYPE_API_MODULE) {
             $this->_syPack->setCommandAndData(SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ, [
                 'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_WX_CACHE,
                 'task_params' => [],
@@ -435,13 +438,13 @@ abstract class BaseServer
     }
 
     /**
-     * @param \swoole_server $server
+     * @param \Swoole\Server $server
      * @param int $taskId
      * @param int $fromId
      * @param string $data
      * @return array|string
      */
-    protected function handleTaskBase(\swoole_server $server, int $taskId, int $fromId, string $data)
+    protected function handleTaskBase(Server $server, int $taskId, int $fromId, string $data)
     {
         if (!$this->_syPack->unpackData($data)) {
             return '数据格式不合法';
@@ -587,9 +590,9 @@ abstract class BaseServer
         $this->_server->start();
     }
 
-    protected function basicStart(\swoole_server $server)
+    protected function basicStart(Server $server)
     {
-        @cli_set_process_title(Server::PROCESS_TYPE_MAIN . SY_MODULE . $this->_port);
+        @cli_set_process_title(SyInner::PROCESS_TYPE_MAIN . SY_MODULE . $this->_port);
 
         Dir::create(SY_ROOT . '/pidfile/');
         if (file_put_contents($this->_pidFile, $server->master_pid) === false) {
@@ -634,7 +637,7 @@ abstract class BaseServer
         }
     }
 
-    protected function basicWorkStop(\swoole_server $server, int $workId)
+    protected function basicWorkStop(Server $server, int $workId)
     {
         $errCode = $server->getLastError();
         if ($errCode > 0) {
@@ -642,7 +645,7 @@ abstract class BaseServer
         }
     }
 
-    protected function basicWorkError(\swoole_server $server, $workId, $workPid, $exitCode)
+    protected function basicWorkError(Server $server, $workId, $workPid, $exitCode)
     {
         if ($exitCode > 0) {
             $msg = 'swoole work error. work_id=' . $workId . '|work_pid=' . $workPid . '|exit_code=' . $exitCode . '|err_msg=' . $server->getLastError();
@@ -671,8 +674,8 @@ abstract class BaseServer
         if (PHP_INT_SIZE < 8) {
             exit('操作系统必须是64位' . PHP_EOL);
         }
-        if (version_compare(PHP_VERSION, Server::VERSION_MIN_PHP, '<')) {
-            exit('PHP版本必须大于等于' . Server::VERSION_MIN_PHP . PHP_EOL);
+        if (version_compare(PHP_VERSION, SyInner::VERSION_MIN_PHP, '<')) {
+            exit('PHP版本必须大于等于' . SyInner::VERSION_MIN_PHP . PHP_EOL);
         }
         if (!defined('SY_MODULE')) {
             exit('模块名称未定义' . PHP_EOL);
@@ -686,12 +689,12 @@ abstract class BaseServer
         if (strlen(SY_TOKEN) != 8) {
             exit('令牌不合法' . PHP_EOL);
         }
-        if (!in_array(SY_ENV, Server::$totalEnvProject, true)) {
+        if (!in_array(SY_ENV, SyInner::$totalEnvProject, true)) {
             exit('环境类型不合法' . PHP_EOL);
         }
 
         $os = php_uname('s');
-        if (!in_array($os, Server::$totalEnvSystem, true)) {
+        if (!in_array($os, SyInner::$totalEnvSystem, true)) {
             exit('操作系统不支持' . PHP_EOL);
         }
 
@@ -715,21 +718,21 @@ abstract class BaseServer
             }
         }
 
-        if (version_compare(SWOOLE_VERSION, Server::VERSION_MIN_SWOOLE, '<')) {
-            exit('swoole版本必须大于等于' . Server::VERSION_MIN_SWOOLE . PHP_EOL);
+        if (version_compare(SWOOLE_VERSION, SyInner::VERSION_MIN_SWOOLE, '<')) {
+            exit('swoole版本必须大于等于' . SyInner::VERSION_MIN_SWOOLE . PHP_EOL);
         }
-        if (version_compare(SEASLOG_VERSION, Server::VERSION_MIN_SEASLOG, '<')) {
-            exit('seaslog版本必须大于等于' . Server::VERSION_MIN_SEASLOG . PHP_EOL);
+        if (version_compare(SEASLOG_VERSION, SyInner::VERSION_MIN_SEASLOG, '<')) {
+            exit('seaslog版本必须大于等于' . SyInner::VERSION_MIN_SEASLOG . PHP_EOL);
         }
-        if (version_compare(YAC_VERSION, Server::VERSION_MIN_YAC, '<')) {
-            exit('yac版本必须大于等于' . Server::VERSION_MIN_YAC . PHP_EOL);
+        if (version_compare(YAC_VERSION, SyInner::VERSION_MIN_YAC, '<')) {
+            exit('yac版本必须大于等于' . SyInner::VERSION_MIN_YAC . PHP_EOL);
         }
-        if (version_compare(\YAF\VERSION, Server::VERSION_MIN_YAF, '<')) {
-            exit('yaf版本必须大于等于' . Server::VERSION_MIN_YAF . PHP_EOL);
+        if (version_compare(\YAF\VERSION, SyInner::VERSION_MIN_YAF, '<')) {
+            exit('yaf版本必须大于等于' . SyInner::VERSION_MIN_YAF . PHP_EOL);
         }
         $runkitVersion = phpversion('runkit7');
-        if (version_compare($runkitVersion, Server::VERSION_MIN_RUNKIT, '<')) {
-            exit('runkit7版本必须大于等于' . Server::VERSION_MIN_RUNKIT . PHP_EOL);
+        if (version_compare($runkitVersion, SyInner::VERSION_MIN_RUNKIT, '<')) {
+            exit('runkit7版本必须大于等于' . SyInner::VERSION_MIN_RUNKIT . PHP_EOL);
         }
     }
 
@@ -766,7 +769,7 @@ abstract class BaseServer
         }
         define('SY_SERVER_TYPE', $serverType);
 
-        if ($serverType == Server::SERVER_TYPE_FRONT_GATE) {
+        if ($serverType == SyInner::SERVER_TYPE_FRONT_GATE) {
             $this->_configs['server']['cachenum']['wx'] = 1;
         } else {
             $this->_configs['server']['cachenum']['wx'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.wx', 0, true);

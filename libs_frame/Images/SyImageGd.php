@@ -8,7 +8,7 @@
 namespace Images;
 
 use SyConstant\ErrorCode;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use SyException\Image\ImageException;
 use Tool\Tool;
 
@@ -26,7 +26,7 @@ class SyImageGd extends SyImageBase
     {
         parent::__construct($byteStr);
         $this->image = imagecreatefromstring($byteStr);
-        if ($this->mimeType == Server::IMAGE_MIME_TYPE_PNG) {
+        if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_PNG) {
             $this->quality = 6;
         } else {
             $this->quality = 80;
@@ -87,7 +87,7 @@ class SyImageGd extends SyImageBase
             throw new ImageException('图片质量取值范围为1-100', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
 
-        if ($this->mimeType == Server::IMAGE_MIME_TYPE_PNG) {
+        if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_PNG) {
             if ($quality < 10) {
                 $this->quality = 1;
             } elseif ($quality < 100) {
@@ -147,9 +147,9 @@ class SyImageGd extends SyImageBase
 
         $fileName = Tool::createNonceStr(6) . Tool::getNowTime() . '_' . $this->width . '_' . $this->height . '.' . $this->ext;
         $fullFileName = substr($path, -1) == '/' ? $path . $fileName : $path . '/' . $fileName;
-        if ($this->mimeType == Server::IMAGE_MIME_TYPE_GIF) {
+        if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_GIF) {
             $writeRes = imagegif($this->image, $fullFileName);
-        } elseif ($this->mimeType == Server::IMAGE_MIME_TYPE_PNG) {
+        } elseif ($this->mimeType == SyInner::IMAGE_MIME_TYPE_PNG) {
             $writeRes = imagepng($this->image, $fullFileName, $this->quality);
         } else {
             $writeRes = imagejpeg($this->image, $fullFileName, $this->quality);

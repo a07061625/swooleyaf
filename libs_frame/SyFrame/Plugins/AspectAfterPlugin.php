@@ -7,7 +7,7 @@
  */
 namespace SyFrame\Plugins;
 
-use SyConstant\Server;
+use SyConstant\SyInner;
 use Log\Log;
 use Yaf\Plugin_Abstract;
 use Yaf\Registry;
@@ -41,7 +41,7 @@ class AspectAfterPlugin extends Plugin_Abstract
         }
         return [
             'tag' => $aspectTag,
-            'list' => Registry::get(Server::REGISTRY_NAME_PREFIX_ASPECT_AFTER . $aspectTag),
+            'list' => Registry::get(SyInner::REGISTRY_NAME_PREFIX_ASPECT_AFTER . $aspectTag),
         ];
     }
 

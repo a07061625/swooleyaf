@@ -9,7 +9,7 @@ namespace SyModule;
 
 use SyConstant\ErrorCode;
 use SyConstant\Project;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Swoole\ServerException;
 use Log\Log;
@@ -107,7 +107,7 @@ abstract class ModuleRpc extends ModuleBase
     {
         parent::init();
         $this->syRequest = new SyRequestRpc();
-        $this->fuseState = Server::FUSE_STATE_CLOSED;
+        $this->fuseState = SyInner::FUSE_STATE_CLOSED;
         $this->fuseKey = Project::YAC_PREFIX_FUSE . hash('crc32b', $this->moduleBase);
         $this->numFuseHalfSuccess = 0;
         $this->numFuseReqError = 0;
@@ -120,14 +120,14 @@ abstract class ModuleRpc extends ModuleBase
     private function checkFuseState()
     {
         $checkRes = '';
-        if ($this->fuseState == Server::FUSE_STATE_OPEN) {
+        if ($this->fuseState == SyInner::FUSE_STATE_OPEN) {
             $cacheData = CacheSimpleFactory::getYacInstance()->get($this->fuseKey);
             if ($cacheData === false) {
-                $this->fuseState = Server::FUSE_STATE_HALF_OPEN;
+                $this->fuseState = SyInner::FUSE_STATE_HALF_OPEN;
                 $this->numFuseReqError = 0;
                 $this->numFuseHalfSuccess = 0;
             } else {
-                $checkRes = Server::FUSE_MSG_REQUEST_ERROR;
+                $checkRes = SyInner::FUSE_MSG_REQUEST_ERROR;
             }
         }
 
@@ -141,31 +141,31 @@ abstract class ModuleRpc extends ModuleBase
     private function refreshFuseState($rspContent)
     {
         if ($rspContent !== false) {
-            if ($this->fuseState == Server::FUSE_STATE_HALF_OPEN) {
+            if ($this->fuseState == SyInner::FUSE_STATE_HALF_OPEN) {
                 $this->numFuseHalfSuccess++;
-                if ($this->numFuseHalfSuccess >= Server::FUSE_NUM_HALF_REQUEST_SUCCESS) {
-                    $this->fuseState = Server::FUSE_STATE_CLOSED;
+                if ($this->numFuseHalfSuccess >= SyInner::FUSE_NUM_HALF_REQUEST_SUCCESS) {
+                    $this->fuseState = SyInner::FUSE_STATE_CLOSED;
                     $this->numFuseReqError = 0;
                     $this->numFuseHalfSuccess = 0;
                 }
             }
-        } elseif ($this->fuseState == Server::FUSE_STATE_CLOSED) {
+        } elseif ($this->fuseState == SyInner::FUSE_STATE_CLOSED) {
             $cacheData = CacheSimpleFactory::getYacInstance()->get($this->fuseKey);
             if ($cacheData === false) {
-                CacheSimpleFactory::getYacInstance()->set($this->fuseKey, 1, Server::FUSE_TIME_ERROR_STAT);
+                CacheSimpleFactory::getYacInstance()->set($this->fuseKey, 1, SyInner::FUSE_TIME_ERROR_STAT);
                 $this->numFuseReqError = 0;
                 $this->numFuseHalfSuccess = 0;
             }
 
             $this->numFuseReqError++;
-            if ($this->numFuseReqError >= Server::FUSE_NUM_REQUEST_ERROR) {
-                $this->fuseState = Server::FUSE_STATE_OPEN;
+            if ($this->numFuseReqError >= SyInner::FUSE_NUM_REQUEST_ERROR) {
+                $this->fuseState = SyInner::FUSE_STATE_OPEN;
                 $this->numFuseReqError = 0;
                 $this->numFuseHalfSuccess = 0;
             }
-        } elseif ($this->fuseState == Server::FUSE_STATE_HALF_OPEN) {
-            CacheSimpleFactory::getYacInstance()->set($this->fuseKey, 1, Server::FUSE_TIME_OPEN_KEEP);
-            $this->fuseState = Server::FUSE_STATE_OPEN;
+        } elseif ($this->fuseState == SyInner::FUSE_STATE_HALF_OPEN) {
+            CacheSimpleFactory::getYacInstance()->set($this->fuseKey, 1, SyInner::FUSE_TIME_OPEN_KEEP);
+            $this->fuseState = SyInner::FUSE_STATE_OPEN;
             $this->numFuseReqError = 0;
             $this->numFuseHalfSuccess = 0;
         }

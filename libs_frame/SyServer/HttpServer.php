@@ -7,9 +7,13 @@
  */
 namespace SyServer;
 
+use Swoole\Http\Request;
+use Swoole\Http\Response;
+use Swoole\WebSocket\Frame;
+use Swoole\WebSocket\Server;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use SyException\Swoole\HttpServerException;
 use Log\Log;
 use Request\RequestSign;
@@ -51,7 +55,7 @@ class HttpServer extends BaseServer
     private $_moduleContainer = null;
     /**
      * HTTP响应
-     * @var \swoole_http_response
+     * @var \Swoole\Http\Response
      */
     private static $_response = null;
     /**
@@ -84,8 +88,8 @@ class HttpServer extends BaseServer
     {
         parent::__construct($port);
         $this->setServerType([
-            Server::SERVER_TYPE_API_GATE,
-            Server::SERVER_TYPE_FRONT_GATE,
+            SyInner::SERVER_TYPE_API_GATE,
+            SyInner::SERVER_TYPE_FRONT_GATE,
         ]);
         $this->_configs['server']['cachenum']['hc'] = 1;
         $this->_configs['server']['cachenum']['modules'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
@@ -104,7 +108,7 @@ class HttpServer extends BaseServer
     {
         $this->initTableHttp();
         //初始化swoole服务
-        $this->_server = new \swoole_websocket_server($this->_host, $this->_port);
+        $this->_server = new Server($this->_host, $this->_port);
         $this->baseStart([
             'start' => 'onStart',
             'managerStart' => 'onManagerStart',
@@ -161,7 +165,7 @@ class HttpServer extends BaseServer
         }
     }
 
-    public function onStart(\swoole_server $server)
+    public function onStart(\Swoole\Server $server)
     {
         $this->basicStart($server);
         $this->addTaskBase($server);
@@ -179,18 +183,18 @@ class HttpServer extends BaseServer
         $this->addTaskHttpTrait($server);
     }
 
-    public function onWorkerStop(\swoole_server $server, int $workerId)
+    public function onWorkerStop(\Swoole\Server $server, int $workerId)
     {
         $this->basicWorkStop($server, $workerId);
     }
 
-    public function onWorkerError(\swoole_server $server, $workId, $workPid, $exitCode)
+    public function onWorkerError(\Swoole\Server $server, $workId, $workPid, $exitCode)
     {
         $this->basicWorkError($server, $workId, $workPid, $exitCode);
 
         if (self::$_response) {
-            $this->setRspCookies(self::$_response, Registry::get(Server::REGISTRY_NAME_RESPONSE_COOKIE));
-            $this->setRspHeaders(self::$_response, Registry::get(Server::REGISTRY_NAME_RESPONSE_HEADER));
+            $this->setRspCookies(self::$_response, Registry::get(SyInner::REGISTRY_NAME_RESPONSE_COOKIE));
+            $this->setRspHeaders(self::$_response, Registry::get(SyInner::REGISTRY_NAME_RESPONSE_HEADER));
 
             $json = new Result();
             $json->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, ErrorCode::getMsg(ErrorCode::COMMON_SERVER_ERROR));
@@ -198,18 +202,18 @@ class HttpServer extends BaseServer
             if (self::$_reqTag) {
                 self::$_response->end($json->getJson());
             } else {
-                self::$_response->end($json->getJson() . Server::SERVER_HTTP_TAG_RESPONSE_EOF);
+                self::$_response->end($json->getJson() . SyInner::SERVER_HTTP_TAG_RESPONSE_EOF);
             }
         }
     }
 
     /**
      * web socket握手
-     * @param \swoole_http_request  $request
-     * @param \swoole_http_response $response
+     * @param \Swoole\Http\Request  $request
+     * @param \Swoole\Http\Response $response
      * @return bool
      */
-    public function onHandshake(\swoole_http_request $request, \swoole_http_response $response)
+    public function onHandshake(Request $request, Response $response)
     {
         $socketAccept = self::createSocketAccept(Tool::getArrayVal($request->header, 'sec-websocket-key', null));
         if ($socketAccept === false) {
@@ -245,10 +249,10 @@ class HttpServer extends BaseServer
      *     d:保留字段，值固定为0000
      *     e:消息内容，json格式
      * </pre>
-     * @param \swoole_websocket_server $server
-     * @param \swoole_websocket_frame $frame
+     * @param \Swoole\WebSocket\Server $server
+     * @param \Swoole\WebSocket\Frame $frame
      */
-    public function onMessage(\swoole_websocket_server $server, \swoole_websocket_frame $frame)
+    public function onMessage(Server $server, Frame $frame)
     {
         $result = new Result();
         if ($frame->opcode != WEBSOCKET_OPCODE_BINARY) {
@@ -350,7 +354,7 @@ class HttpServer extends BaseServer
         }
     }
 
-    public function onTask(\swoole_server $server, int $taskId, int $fromId, string $data)
+    public function onTask(\Swoole\Server $server, int $taskId, int $fromId, string $data)
     {
         $baseRes = $this->handleTaskBase($server, $taskId, $fromId, $data);
         if (is_array($baseRes)) {
@@ -364,10 +368,10 @@ class HttpServer extends BaseServer
 
     /**
      * 处理请求
-     * @param \swoole_http_request $request
-     * @param \swoole_http_response $response
+     * @param \Swoole\Http\Request $request
+     * @param \Swoole\Http\Response $response
      */
-    public function onRequest(\swoole_http_request $request, \swoole_http_response $response)
+    public function onRequest(Request $request, Response $response)
     {
         self::$_response = $response;
         $initRes = $this->initReceive($request);
@@ -378,11 +382,11 @@ class HttpServer extends BaseServer
             $handleHeaderRes = $this->handleReqHeader($rspHeaders);
             if ($handleHeaderRes == self::RESPONSE_RESULT_TYPE_ACCEPT) {
                 self::$_rspMsg = $this->handleReqService($request, $rspHeaders);
-                $this->setRspCookies($response, Registry::get(Server::REGISTRY_NAME_RESPONSE_COOKIE));
-                $this->setRspHeaders($response, Registry::get(Server::REGISTRY_NAME_RESPONSE_HEADER));
+                $this->setRspCookies($response, Registry::get(SyInner::REGISTRY_NAME_RESPONSE_COOKIE));
+                $this->setRspHeaders($response, Registry::get(SyInner::REGISTRY_NAME_RESPONSE_HEADER));
             } else {
                 $rspHeaders['Content-Type'] = 'text/plain; charset=utf-8';
-                $rspHeaders[Server::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR] = 403;
+                $rspHeaders[SyInner::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR] = 403;
                 $this->setRspHeaders($response, $rspHeaders);
             }
         } else {
@@ -398,7 +402,7 @@ class HttpServer extends BaseServer
         if (self::$_reqTag) {
             $response->end(self::$_rspMsg);
         } else {
-            $response->end(self::$_rspMsg . Server::SERVER_HTTP_TAG_RESPONSE_EOF);
+            $response->end(self::$_rspMsg . SyInner::SERVER_HTTP_TAG_RESPONSE_EOF);
         }
 
         $this->clearRequest();
@@ -406,10 +410,10 @@ class HttpServer extends BaseServer
 
     /**
      * 设置响应头信息
-     * @param \swoole_http_response $response
+     * @param \Swoole\Http\Response $response
      * @param array|bool $headers
      */
-    private function setRspHeaders(\swoole_http_response $response, $headers)
+    private function setRspHeaders(Response $response, $headers)
     {
         if (is_array($headers)) {
             if (!isset($headers['Content-Type'])) {
@@ -422,8 +426,8 @@ class HttpServer extends BaseServer
 
             if (isset($headers['Location'])) {
                 $response->status(302);
-            } elseif (isset($headers[Server::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR])) {
-                $response->status($headers[Server::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR]);
+            } elseif (isset($headers[SyInner::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR])) {
+                $response->status($headers[SyInner::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR]);
             }
         } else {
             $response->header('Access-Control-Allow-Origin', '*');
@@ -433,10 +437,10 @@ class HttpServer extends BaseServer
 
     /**
      * 设置响应cookie信息
-     * @param \swoole_http_response $response
+     * @param \Swoole\Http\Response $response
      * @param array|bool $cookies
      */
-    private function setRspCookies(\swoole_http_response $response, $cookies)
+    private function setRspCookies(Response $response, $cookies)
     {
         if (is_array($cookies)) {
             foreach ($cookies as $cookie) {
@@ -453,17 +457,17 @@ class HttpServer extends BaseServer
 
     /**
      * 初始化公共数据
-     * @param \swoole_http_request $request
+     * @param \Swoole\Http\Request $request
      * @return string
      */
-    private function initReceive(\swoole_http_request $request)
+    private function initReceive(Request $request)
     {
         $_POST = $request->post ?? [];
         $_SESSION = [];
-        Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
+        Registry::del(SyInner::REGISTRY_NAME_SERVICE_ERROR);
         self::$_reqHeaders = $request->header ?? [];
         self::$_reqServers = $request->server ?? [];
-        self::$_reqTag = !isset(self::$_reqHeaders[Server::SERVER_HTTP_TAG_REQUEST_HEADER]);
+        self::$_reqTag = !isset(self::$_reqHeaders[SyInner::SERVER_HTTP_TAG_REQUEST_HEADER]);
         self::$_rspMsg = '';
 
         if (isset($request->header['content-type']) && ($request->header['content-type'] == 'application/json')) {
@@ -481,7 +485,7 @@ class HttpServer extends BaseServer
             return $res->getJson();
         }
 
-        $taskData = $_POST[Server::SERVER_DATA_KEY_TASK] ?? '';
+        $taskData = $_POST[SyInner::SERVER_DATA_KEY_TASK] ?? '';
         self::$_reqTask = is_string($taskData) && (strlen($taskData) > 0) ? $taskData : null;
 
         $_SERVER = [];
@@ -499,12 +503,12 @@ class HttpServer extends BaseServer
         }
 
         $nowTime = time();
-        $_SERVER[Server::SERVER_DATA_KEY_TIMESTAMP] = $nowTime;
+        $_SERVER[SyInner::SERVER_DATA_KEY_TIMESTAMP] = $nowTime;
         $_SERVER['SYREQ_ID'] = hash('md4', $nowTime . Tool::createNonceStr(8));
         return '';
     }
 
-    private function initRequest(\swoole_http_request $request, array $rspHeaders)
+    private function initRequest(Request $request, array $rspHeaders)
     {
         self::$_reqStartTime = microtime(true);
         self::$_syServer->incr(self::$_serverToken, 'request_times', 1);
@@ -515,10 +519,10 @@ class HttpServer extends BaseServer
         $_POST[RequestSign::KEY_SIGN] = $_GET[RequestSign::KEY_SIGN] ?? '';
         unset($_GET[RequestSign::KEY_SIGN]);
         //注册全局信息
-        Registry::set(Server::REGISTRY_NAME_REQUEST_HEADER, self::$_reqHeaders);
-        Registry::set(Server::REGISTRY_NAME_REQUEST_SERVER, self::$_reqServers);
-        Registry::set(Server::REGISTRY_NAME_RESPONSE_HEADER, $rspHeaders);
-        Registry::set(Server::REGISTRY_NAME_RESPONSE_COOKIE, []);
+        Registry::set(SyInner::REGISTRY_NAME_REQUEST_HEADER, self::$_reqHeaders);
+        Registry::set(SyInner::REGISTRY_NAME_REQUEST_SERVER, self::$_reqServers);
+        Registry::set(SyInner::REGISTRY_NAME_RESPONSE_HEADER, $rspHeaders);
+        Registry::set(SyInner::REGISTRY_NAME_RESPONSE_COOKIE, []);
         SessionTool::initSessionJwt();
     }
 
@@ -542,12 +546,12 @@ class HttpServer extends BaseServer
         self::$_rspMsg = '';
 
         //清除yaf注册常量
-        Registry::del(Server::REGISTRY_NAME_REQUEST_HEADER);
-        Registry::del(Server::REGISTRY_NAME_REQUEST_SERVER);
-        Registry::del(Server::REGISTRY_NAME_RESPONSE_HEADER);
-        Registry::del(Server::REGISTRY_NAME_RESPONSE_COOKIE);
-        Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION);
-        Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
+        Registry::del(SyInner::REGISTRY_NAME_REQUEST_HEADER);
+        Registry::del(SyInner::REGISTRY_NAME_REQUEST_SERVER);
+        Registry::del(SyInner::REGISTRY_NAME_RESPONSE_HEADER);
+        Registry::del(SyInner::REGISTRY_NAME_RESPONSE_COOKIE);
+        Registry::del(SyInner::REGISTRY_NAME_RESPONSE_JWT_SESSION);
+        Registry::del(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA);
 
         self::$_syServer->set(self::$_serverToken, [
             'memory_usage' => memory_get_usage(),
@@ -572,11 +576,11 @@ class HttpServer extends BaseServer
 
     /**
      * 处理请求业务
-     * @param \swoole_http_request $request
+     * @param \Swoole\Http\Request $request
      * @param array $initRspHeaders 初始化响应头
      * @return string
      */
-    private function handleReqService(\swoole_http_request $request, array $initRspHeaders) : string
+    private function handleReqService(Request $request, array $initRspHeaders) : string
     {
         $uri = Tool::getArrayVal(self::$_reqServers, 'request_uri', '/');
         $uriCheckRes = $this->checkRequestUri($uri);

@@ -8,33 +8,34 @@
 namespace SyTrait\Server;
 
 use DesignPatterns\Singletons\RedisSingleton;
+use Swoole\Table;
 use Tool\Tool;
 
 trait FrameBaseTrait
 {
     /**
      * 服务配置信息表
-     * @var \swoole_table
+     * @var \Swoole\Table
      */
     protected static $_syServer = null;
     /**
      * 注册的服务信息表
-     * @var \swoole_table
+     * @var \Swoole\Table
      */
     protected static $_syServices = null;
     /**
      * 健康检查列表
-     * @var \swoole_table
+     * @var \Swoole\Table
      */
     protected static $_syHealths = null;
     /**
      * 项目缓存列表
-     * @var \swoole_table
+     * @var \Swoole\Table
      */
     protected static $_syProject = null;
     /**
      * 项目微信缓存列表
-     * @var \swoole_table
+     * @var \Swoole\Table
      */
     protected static $_syWx = null;
     /**
@@ -261,48 +262,48 @@ trait FrameBaseTrait
     {
         register_shutdown_function('\SyError\ErrorHandler::handleFatalError');
 
-        self::$_syServer = new \swoole_table(1);
-        self::$_syServer->column('memory_usage', \swoole_table::TYPE_INT, 4);
-        self::$_syServer->column('timer_time', \swoole_table::TYPE_INT, 4);
-        self::$_syServer->column('request_times', \swoole_table::TYPE_INT, 4);
-        self::$_syServer->column('request_handling', \swoole_table::TYPE_INT, 4);
-        self::$_syServer->column('host_local', \swoole_table::TYPE_STRING, 20);
-        self::$_syServer->column('storepath_image', \swoole_table::TYPE_STRING, 150);
-        self::$_syServer->column('storepath_music', \swoole_table::TYPE_STRING, 150);
-        self::$_syServer->column('storepath_resources', \swoole_table::TYPE_STRING, 150);
-        self::$_syServer->column('storepath_cache', \swoole_table::TYPE_STRING, 150);
-        self::$_syServer->column('token_etime', \swoole_table::TYPE_INT, 8);
-        self::$_syServer->column('unique_num', \swoole_table::TYPE_INT, 8);
+        self::$_syServer = new Table(1);
+        self::$_syServer->column('memory_usage', Table::TYPE_INT, 4);
+        self::$_syServer->column('timer_time', Table::TYPE_INT, 4);
+        self::$_syServer->column('request_times', Table::TYPE_INT, 4);
+        self::$_syServer->column('request_handling', Table::TYPE_INT, 4);
+        self::$_syServer->column('host_local', Table::TYPE_STRING, 20);
+        self::$_syServer->column('storepath_image', Table::TYPE_STRING, 150);
+        self::$_syServer->column('storepath_music', Table::TYPE_STRING, 150);
+        self::$_syServer->column('storepath_resources', Table::TYPE_STRING, 150);
+        self::$_syServer->column('storepath_cache', Table::TYPE_STRING, 150);
+        self::$_syServer->column('token_etime', Table::TYPE_INT, 8);
+        self::$_syServer->column('unique_num', Table::TYPE_INT, 8);
         self::$_syServer->create();
 
-        self::$_syHealths = new \swoole_table($this->_configs['server']['cachenum']['hc']);
-        self::$_syHealths->column('tag', \swoole_table::TYPE_STRING, 60);
-        self::$_syHealths->column('module', \swoole_table::TYPE_STRING, 30);
-        self::$_syHealths->column('uri', \swoole_table::TYPE_STRING, 200);
+        self::$_syHealths = new Table($this->_configs['server']['cachenum']['hc']);
+        self::$_syHealths->column('tag', Table::TYPE_STRING, 60);
+        self::$_syHealths->column('module', Table::TYPE_STRING, 30);
+        self::$_syHealths->column('uri', Table::TYPE_STRING, 200);
         self::$_syHealths->create();
 
-        self::$_syServices = new \swoole_table($this->_configs['server']['cachenum']['modules']);
-        self::$_syServices->column('module', \swoole_table::TYPE_STRING, 30);
-        self::$_syServices->column('host', \swoole_table::TYPE_STRING, 128);
-        self::$_syServices->column('port', \swoole_table::TYPE_STRING, 5);
-        self::$_syServices->column('type', \swoole_table::TYPE_STRING, 16);
+        self::$_syServices = new Table($this->_configs['server']['cachenum']['modules']);
+        self::$_syServices->column('module', Table::TYPE_STRING, 30);
+        self::$_syServices->column('host', Table::TYPE_STRING, 128);
+        self::$_syServices->column('port', Table::TYPE_STRING, 5);
+        self::$_syServices->column('type', Table::TYPE_STRING, 16);
         self::$_syServices->create();
 
-        self::$_syProject = new \swoole_table($this->_configs['server']['cachenum']['local']);
-        self::$_syProject->column('tag', \swoole_table::TYPE_STRING, 64);
-        self::$_syProject->column('value', \swoole_table::TYPE_STRING, 200);
-        self::$_syProject->column('expire_time', \swoole_table::TYPE_INT, 4);
+        self::$_syProject = new Table($this->_configs['server']['cachenum']['local']);
+        self::$_syProject->column('tag', Table::TYPE_STRING, 64);
+        self::$_syProject->column('value', Table::TYPE_STRING, 200);
+        self::$_syProject->column('expire_time', Table::TYPE_INT, 4);
         self::$_syProject->create();
 
-        self::$_syWx = new \swoole_table($this->_configs['server']['cachenum']['wx']);
-        self::$_syWx->column('app_tag', \swoole_table::TYPE_STRING, 24);
-        self::$_syWx->column('at_content', \swoole_table::TYPE_STRING, 200);
-        self::$_syWx->column('at_expire', \swoole_table::TYPE_INT, 4);
-        self::$_syWx->column('jt_content', \swoole_table::TYPE_STRING, 200);
-        self::$_syWx->column('jt_expire', \swoole_table::TYPE_INT, 4);
-        self::$_syWx->column('ct_content', \swoole_table::TYPE_STRING, 200);
-        self::$_syWx->column('ct_expire', \swoole_table::TYPE_INT, 4);
-        self::$_syWx->column('clear_time', \swoole_table::TYPE_INT, 4);
+        self::$_syWx = new Table($this->_configs['server']['cachenum']['wx']);
+        self::$_syWx->column('app_tag', Table::TYPE_STRING, 24);
+        self::$_syWx->column('at_content', Table::TYPE_STRING, 200);
+        self::$_syWx->column('at_expire', Table::TYPE_INT, 4);
+        self::$_syWx->column('jt_content', Table::TYPE_STRING, 200);
+        self::$_syWx->column('jt_expire', Table::TYPE_INT, 4);
+        self::$_syWx->column('ct_content', Table::TYPE_STRING, 200);
+        self::$_syWx->column('ct_expire', Table::TYPE_INT, 4);
+        self::$_syWx->column('clear_time', Table::TYPE_INT, 4);
         self::$_syWx->create();
 
         $this->initTableBaseTrait();

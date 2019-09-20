@@ -8,7 +8,7 @@
 namespace SyFrame\Plugins;
 
 use SyConstant\ErrorCode;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use SyException\Validator\ValidatorException;
 use Reflection\BaseReflect;
 use Request\SyRequest;
@@ -60,7 +60,7 @@ class ValidatorPlugin extends Plugin_Abstract
         }
 
         $validatorList = BaseReflect::getValidatorAnnotations($controllerName, $actionName);
-        $validatorTag = Server::REGISTRY_NAME_PREFIX_VALIDATOR . hash('crc32b', $key);
+        $validatorTag = SyInner::REGISTRY_NAME_PREFIX_VALIDATOR . hash('crc32b', $key);
         $this->validatorMap[$key] = $validatorTag;
         Registry::set($validatorTag, $validatorList);
 

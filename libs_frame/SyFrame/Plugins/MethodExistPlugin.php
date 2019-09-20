@@ -8,7 +8,7 @@
 namespace SyFrame\Plugins;
 
 use SyConstant\ErrorCode;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use SyException\Validator\ValidatorException;
 use Yaf\Plugin_Abstract;
 use Yaf\Registry;
@@ -54,7 +54,7 @@ class MethodExistPlugin extends Plugin_Abstract
             throw new ValidatorException('控制器不存在', ErrorCode::COMMON_ROUTE_CONTROLLER_NOT_EXIST);
         }
 
-        $controllerTag = Server::REGISTRY_NAME_PREFIX_CONTROLLER . hash('crc32b', $controllerKey);
+        $controllerTag = SyInner::REGISTRY_NAME_PREFIX_CONTROLLER . hash('crc32b', $controllerKey);
         $this->controllerMap[$controllerKey] = $controllerTag;
         Registry::set($controllerTag, []);
         return [
