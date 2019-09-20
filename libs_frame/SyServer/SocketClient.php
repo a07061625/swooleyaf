@@ -7,6 +7,8 @@
  */
 namespace SyServer;
 
+use Swoole\Client;
+use Swoole\WebSocket\Server;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Swoole\HttpServerException;
@@ -45,7 +47,7 @@ class SocketClient
      */
     private $origin = '';
     /**
-     * @var \swoole_client
+     * @var \Swoole\Client
      */
     private $socket = null;
     /**
@@ -91,7 +93,7 @@ class SocketClient
         $this->uri = $uri;
         $this->origin = $origin;
         $this->key = base64_encode(Tool::createNonceStr(self::TOKEN_LENGTH));
-        $this->socket = new \swoole_client(SWOOLE_SOCK_TCP);
+        $this->socket = new Client(SWOOLE_SOCK_TCP);
         $this->socket->set([
             'open_tcp_nodelay' => true,
             'socket_buffer_size' => Project::SIZE_CLIENT_SOCKET_BUFFER,
@@ -129,7 +131,7 @@ class SocketClient
         if ($packData === false) {
             return false;
         } else {
-            $message = \swoole_websocket_server::pack($packData, WEBSOCKET_OPCODE_BINARY, true, $masked);
+            $message = Server::pack($packData, WEBSOCKET_OPCODE_BINARY, true, $masked);
             return $this->send($message);
         }
     }
@@ -253,7 +255,7 @@ class SocketClient
             return true;
         }
 
-        $frame = \swoole_websocket_server::unpack($response);
+        $frame = Server::unpack($response);
         if ($frame) {
             return $frame->data;
         } else {

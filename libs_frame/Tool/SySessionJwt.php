@@ -8,7 +8,7 @@
 namespace Tool;
 
 use SyConstant\Project;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Log\Log;
 use SyTrait\SimpleTrait;
@@ -24,7 +24,7 @@ class SySessionJwt
      */
     public static function getSessionId() : string
     {
-        return Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION);
+        return Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_SESSION);
     }
 
     /**
@@ -33,7 +33,7 @@ class SySessionJwt
      */
     public static function refreshLocalCache()
     {
-        $jwtData = Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
+        $jwtData = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA);
         if (strlen($jwtData['uid']) > 0) {
             return $jwtData;
         } else {
@@ -52,9 +52,9 @@ class SySessionJwt
             return false;
         }
 
-        $token = Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION);
+        $token = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_SESSION);
         $sessionId = '1' . substr($token, 1);
-        $jwtData = Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
+        $jwtData = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA);
         $mergeRes = array_merge($jwtData, $data);
         $mergeRes['sid'] = $sessionId;
         SessionTool::createSessionJwt($mergeRes);
@@ -62,8 +62,8 @@ class SySessionJwt
         $setRes = CacheSimpleFactory::getRedisInstance()->hMset($redisKey, $mergeRes);
         if ($setRes) {
             CacheSimpleFactory::getRedisInstance()->expire($redisKey, Project::TIME_EXPIRE_SESSION);
-            Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_DATA, $mergeRes);
-            Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION, $sessionId);
+            Registry::set(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA, $mergeRes);
+            Registry::set(SyInner::REGISTRY_NAME_RESPONSE_JWT_SESSION, $sessionId);
         } else {
             Log::error('set session data error,key=' . $redisKey . ' data=' . print_r($mergeRes, true));
         }
@@ -78,7 +78,7 @@ class SySessionJwt
      */
     public static function get(string $key = null, $default = null)
     {
-        $jwtData = Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
+        $jwtData = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA);
         if (is_null($key)) {
             return $jwtData;
         } else {
@@ -97,17 +97,17 @@ class SySessionJwt
             return false;
         }
 
-        $token = Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION);
+        $token = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_SESSION);
         $redisKey = Project::REDIS_PREFIX_SESSION . $token;
         if ($key === '') {
             $delRes = CacheSimpleFactory::getRedisInstance()->del($redisKey);
             $jwtData = SessionTool::createDefaultJwt();
         } else {
             $delRes = CacheSimpleFactory::getRedisInstance()->hDel($redisKey, $key);
-            $jwtData = Registry::get(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
+            $jwtData = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA);
             unset($jwtData[$key]);
         }
-        Registry::set(Server::REGISTRY_NAME_RESPONSE_JWT_DATA, $jwtData);
+        Registry::set(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA, $jwtData);
 
         return $delRes;
     }

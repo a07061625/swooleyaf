@@ -7,6 +7,7 @@
  */
 namespace Request;
 
+use Swoole\Client;
 use SyConstant\Project;
 use Log\Log;
 use SyServer\BaseServer;
@@ -148,7 +149,7 @@ class SyRequestRpc extends SyRequest
     protected function sendAsyncReq(string $reqData, callable $callback = null) : bool
     {
         $this->sendBaseAsyncReq($reqData, $callback);
-        $this->_asyncClient->on('receive', function (\swoole_client $cli, string $data) use ($callback) {
+        $this->_asyncClient->on('receive', function (Client $cli, string $data) use ($callback) {
             if ($this->syPack->unpackData($data)) {
                 $command = $this->syPack->getCommand();
                 $rspData = $this->syPack->getData();

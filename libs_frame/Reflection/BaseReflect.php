@@ -8,7 +8,7 @@
 namespace Reflection;
 
 use SyConstant\ErrorCode;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use SyException\Reflection\ReflectException;
 use Log\Log;
 use SyFrame\BaseController;
@@ -43,14 +43,14 @@ class BaseReflect
                 $docs = preg_filter('/\s+/', '', explode(PHP_EOL, $doc));
                 foreach ($docs as $eDoc) {
                     preg_match('/\@([a-zA-Z0-9]+)\-(\{\S+\})/', $eDoc, $saveDoc);
-                    if (isset($saveDoc[1]) && ($saveDoc[1] == Server::ANNOTATION_NAME_FILTER)) {
+                    if (isset($saveDoc[1]) && ($saveDoc[1] == SyInner::ANNOTATION_NAME_FILTER)) {
                         $annotations[] = $saveDoc[2];
                     }
                 }
 
-                if (SY_SERVER_TYPE == Server::SERVER_TYPE_API_GATE) {
+                if (SY_SERVER_TYPE == SyInner::SERVER_TYPE_API_GATE) {
                     $controllerType = $instance->signStatus ? 'a1' : 'a2';
-                } elseif (SY_SERVER_TYPE == Server::SERVER_TYPE_API_MODULE) {
+                } elseif (SY_SERVER_TYPE == SyInner::SERVER_TYPE_API_MODULE) {
                     $controllerType = 'b1';
                 } else {
                     $controllerType = 'c1';
@@ -94,12 +94,12 @@ class BaseReflect
                 foreach ($docs as $eDoc) {
                     preg_match('/\@([a-zA-Z0-9]+)\-(\S+)/', $eDoc, $saveDoc);
                     if (isset($saveDoc[1])) {
-                        if ($saveDoc[1] == Server::ANNOTATION_NAME_ASPECT) {
+                        if ($saveDoc[1] == SyInner::ANNOTATION_NAME_ASPECT) {
                             $annotations['before'][] = $saveDoc[2];
                             $annotations['after'][] = $saveDoc[2];
-                        } elseif ($saveDoc[1] == Server::ANNOTATION_NAME_ASPECT_BEFORE) {
+                        } elseif ($saveDoc[1] == SyInner::ANNOTATION_NAME_ASPECT_BEFORE) {
                             $annotations['before'][] = $saveDoc[2];
-                        } elseif ($saveDoc[1] == Server::ANNOTATION_NAME_ASPECT_AFTER) {
+                        } elseif ($saveDoc[1] == SyInner::ANNOTATION_NAME_ASPECT_AFTER) {
                             $annotations['after'][] = $saveDoc[2];
                         }
                     }
@@ -145,23 +145,23 @@ class BaseReflect
                 throw new ReflectException('校验规则必须为数组', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
             }
 
-            if (!isset(Server::$annotationSignTags[$data['field']])) {
+            if (!isset(SyInner::$annotationSignTags[$data['field']])) {
                 $result = new ValidatorResult();
                 $result->setExplain($data['explain']);
                 $result->setField($data['field']);
                 $result->setType($data['type']);
                 $result->setRules($data['rules']);
                 $resArr[$data['field']] = $result;
-            } elseif (($data['field'] == Server::ANNOTATION_TAG_IGNORE_SIGN) && ($controllerType == 'a1')) {
+            } elseif (($data['field'] == SyInner::ANNOTATION_TAG_IGNORE_SIGN) && ($controllerType == 'a1')) {
                 $controllerType = 'a2';
-            } elseif ($data['field'] == Server::ANNOTATION_TAG_IGNORE_JWT) {
+            } elseif ($data['field'] == SyInner::ANNOTATION_TAG_IGNORE_JWT) {
                 $ignoreJwt = true;
             }
         }
 
-        if (SY_SERVER_TYPE == Server::SERVER_TYPE_FRONT_GATE) {
+        if (SY_SERVER_TYPE == SyInner::SERVER_TYPE_FRONT_GATE) {
             $jwtStatus = 0;
-        } elseif (SY_SERVER_TYPE == Server::SERVER_TYPE_API_GATE) {
+        } elseif (SY_SERVER_TYPE == SyInner::SERVER_TYPE_API_GATE) {
             $jwtStatus = $ignoreJwt ? 2 : 1;
         } else {
             $jwtStatus = 2;
@@ -169,35 +169,35 @@ class BaseReflect
         if ($jwtStatus == 1) {
             $jwtResult = new ValidatorResult();
             $jwtResult->setExplain('JWT会话');
-            $jwtResult->setField(Server::ANNOTATION_TAG_SESSION_JWT);
+            $jwtResult->setField(SyInner::ANNOTATION_TAG_SESSION_JWT);
             $jwtResult->setType('string');
             $jwtResult->setRules([
                 'jwt' => $jwtStatus,
             ]);
-            $resArr[Server::ANNOTATION_TAG_SESSION_JWT] = $jwtResult;
+            $resArr[SyInner::ANNOTATION_TAG_SESSION_JWT] = $jwtResult;
         }
         if ($controllerType == 'b1') {
-            unset($resArr[Server::ANNOTATION_TAG_SY_TOKEN]);
+            unset($resArr[SyInner::ANNOTATION_TAG_SY_TOKEN]);
         } else {
             $tokenResult = new ValidatorResult();
             $tokenResult->setExplain('令牌');
-            $tokenResult->setField(Server::ANNOTATION_TAG_SY_TOKEN);
+            $tokenResult->setField(SyInner::ANNOTATION_TAG_SY_TOKEN);
             $tokenResult->setType('string');
             $tokenResult->setRules([
                 'sytoken' => 1,
             ]);
-            $resArr[Server::ANNOTATION_TAG_SY_TOKEN] = $tokenResult;
+            $resArr[SyInner::ANNOTATION_TAG_SY_TOKEN] = $tokenResult;
 
             if ($controllerType == 'a1') {
                 $signResult = new ValidatorResult();
                 $signResult->setExplain('签名值');
-                $signResult->setField(Server::ANNOTATION_TAG_SIGN);
+                $signResult->setField(SyInner::ANNOTATION_TAG_SIGN);
                 $signResult->setType('string');
                 $signResult->setRules([
                     'sign' => 3600,
                     'required' => 1,
                 ]);
-                $resArr[Server::ANNOTATION_TAG_SIGN] = $signResult;
+                $resArr[SyInner::ANNOTATION_TAG_SIGN] = $signResult;
             }
         }
 

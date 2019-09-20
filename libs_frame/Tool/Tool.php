@@ -7,9 +7,10 @@
  */
 namespace Tool;
 
+use Swoole\Client;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Common\CheckException;
 use PHPZxing\PHPZxingDecoder;
@@ -480,8 +481,8 @@ class Tool
                 return self::getArrayVal($_SERVER, 'REMOTE_ADDR', '');
             }
         } else {
-            $headers = Registry::get(Server::REGISTRY_NAME_REQUEST_HEADER);
-            $servers = Registry::get(Server::REGISTRY_NAME_REQUEST_SERVER);
+            $headers = Registry::get(SyInner::REGISTRY_NAME_REQUEST_HEADER);
+            $servers = Registry::get(SyInner::REGISTRY_NAME_REQUEST_SERVER);
             if (($headers === false) || ($servers === false)) {
                 return false;
             }
@@ -554,7 +555,7 @@ class Tool
         $sendRes = self::sendCurlReq([
             CURLOPT_URL => $url,
             CURLOPT_POST => true,
-            CURLOPT_POSTFIELDS => Server::SERVER_DATA_KEY_TASK . '=' . urlencode($content),
+            CURLOPT_POSTFIELDS => SyInner::SERVER_DATA_KEY_TASK . '=' . urlencode($content),
             CURLOPT_TIMEOUT_MS => 2000,
             CURLOPT_HEADER => false,
             CURLOPT_SSL_VERIFYPEER => false,
@@ -574,7 +575,7 @@ class Tool
      */
     public static function sendSyRpcReq(string $host, int $port, string $content)
     {
-        $client = new \swoole_client(SWOOLE_SOCK_TCP);
+        $client = new Client(SWOOLE_SOCK_TCP);
         $client->set([
             'open_tcp_nodelay' => true,
             'open_length_check' => true,
@@ -671,7 +672,7 @@ class Tool
      */
     public static function getNowTime()
     {
-        return $_SERVER[Server::SERVER_DATA_KEY_TIMESTAMP] ?? time();
+        return $_SERVER[SyInner::SERVER_DATA_KEY_TIMESTAMP] ?? time();
     }
 
     /**

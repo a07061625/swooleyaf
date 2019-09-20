@@ -7,7 +7,7 @@
  */
 namespace Response;
 
-use SyConstant\Server;
+use SyConstant\SyInner;
 use Tool\Tool;
 use SyTrait\SimpleTrait;
 use Yaf\Registry;
@@ -30,7 +30,7 @@ class SyResponseHttp extends SyResponse
 
     public static function headers(array $headers)
     {
-        $existHeaders = Registry::get(Server::REGISTRY_NAME_RESPONSE_HEADER);
+        $existHeaders = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_HEADER);
         if ($existHeaders !== false) {
             foreach ($headers as $eKey => $eValue) {
                 $headerName = ucwords(preg_replace('/\s+/', '', $eKey), " -\t\r\n\f\v");
@@ -39,7 +39,7 @@ class SyResponseHttp extends SyResponse
                 }
             }
 
-            Registry::set(Server::REGISTRY_NAME_RESPONSE_HEADER, $existHeaders);
+            Registry::set(SyInner::REGISTRY_NAME_RESPONSE_HEADER, $existHeaders);
         }
     }
 
@@ -71,7 +71,7 @@ class SyResponseHttp extends SyResponse
 
     public static function cookies(array $cookies)
     {
-        $existCookies = Registry::get(Server::REGISTRY_NAME_RESPONSE_COOKIE);
+        $existCookies = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_COOKIE);
         if ($existCookies !== false) {
             foreach ($cookies as $eCookie) {
                 $cookieKey = trim(Tool::getArrayVal($eCookie, 'key', ''));
@@ -80,7 +80,7 @@ class SyResponseHttp extends SyResponse
                 }
             }
 
-            Registry::set(Server::REGISTRY_NAME_RESPONSE_COOKIE, $existCookies);
+            Registry::set(SyInner::REGISTRY_NAME_RESPONSE_COOKIE, $existCookies);
         }
     }
 

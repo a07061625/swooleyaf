@@ -7,6 +7,7 @@
  */
 namespace SyTrait\Server;
 
+use Swoole\Http\Request;
 use SyConstant\ProjectBase;
 use Tool\Tool;
 
@@ -22,13 +23,13 @@ trait FramePreProcessHttpTrait
         ProjectBase::PRE_PROCESS_TAG_HTTP_FRAME_HEALTH_CHECK => 'preProcessFrameHealthCheck',
     ];
 
-    private function preProcessFrameServerInfo(\swoole_http_request $request) : string
+    private function preProcessFrameServerInfo(Request $request) : string
     {
         self::$_syServer->incr(self::$_serverToken, 'request_times', 1);
         return Tool::jsonEncode($this->_server->stats());
     }
 
-    private function preProcessFramePhpInfo(\swoole_http_request $request) : string
+    private function preProcessFramePhpInfo(Request $request) : string
     {
         ob_start();
         phpinfo();
@@ -37,7 +38,7 @@ trait FramePreProcessHttpTrait
         return $phpInfo;
     }
 
-    private function preProcessFrameHealthCheck(\swoole_http_request $request) : string
+    private function preProcessFrameHealthCheck(Request $request) : string
     {
         return 'http server is alive';
     }

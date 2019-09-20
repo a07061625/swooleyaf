@@ -7,9 +7,10 @@
  */
 namespace Request;
 
+use Swoole\Client;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use SyException\Swoole\ServerException;
 use Log\Log;
 use Yaf\Registry;
@@ -38,7 +39,7 @@ abstract class SyRequest
     protected $_timeout = 0;
     /**
      * 异步客户端
-     * @var \swoole_client
+     * @var \Swoole\Client
      */
     protected $_asyncClient = null;
     /**
@@ -86,7 +87,7 @@ abstract class SyRequest
      */
     public function setPort(int $port)
     {
-        if (($port > Server::ENV_PORT_MIN) && ($port < Server::ENV_PORT_MAX)) {
+        if (($port > SyInner::ENV_PORT_MIN) && ($port < SyInner::ENV_PORT_MAX)) {
             $this->_port = $port;
         } else {
             throw new ServerException('端口不合法', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
@@ -198,7 +199,7 @@ abstract class SyRequest
         $loopNum = 3;
         while ($loopNum > 0) {
             try {
-                $client = new \swoole_client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_SYNC);
+                $client = new Client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_SYNC);
                 $client->set($this->_clientConfigs);
                 $client->connect($this->_host, $this->_port, Project::TIME_EXPIRE_SWOOLE_CLIENT_SYNC_REQUEST);
                 if ($client->errCode == 0) {
@@ -231,7 +232,7 @@ abstract class SyRequest
                 }
             } catch (\Exception $e) {
                 Log::error($e->getMessage(), ErrorCode::SWOOLE_SERVER_REQUEST_FAIL, $e->getTraceAsString());
-                Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
+                Registry::del(SyInner::REGISTRY_NAME_SERVICE_ERROR);
                 $rspMsg = false;
             } finally {
                 if ($connectTag) {
@@ -251,9 +252,9 @@ abstract class SyRequest
 
     protected function sendBaseAsyncReq(string $reqData, callable $callback = null)
     {
-        $this->_asyncClient = new \swoole_client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_ASYNC);
+        $this->_asyncClient = new Client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_ASYNC);
         $this->_asyncClient->set($this->_clientConfigs);
-        $this->_asyncClient->on('connect', function (\swoole_client $cli) use ($reqData) {
+        $this->_asyncClient->on('connect', function (Client $cli) use ($reqData) {
             if (!$cli->send($reqData)) {
                 $socketData = $cli->getsockname();
                 $log = 'send async data ';
@@ -264,14 +265,14 @@ abstract class SyRequest
                 Log::error($log);
             }
         });
-        $this->_asyncClient->on('error', function (\swoole_client $cli) use ($callback) {
+        $this->_asyncClient->on('error', function (Client $cli) use ($callback) {
             Log::info('async callback error,errCode:' . $cli->errCode . ' errMsg:' . socket_strerror($cli->errCode));
             if ((!is_null($callback) && is_callable($callback))) {
                 $callback('error', $cli);
             }
             $cli->close();
         });
-        $this->_asyncClient->on('close', function (\swoole_client $cli) {
+        $this->_asyncClient->on('close', function (Client $cli) {
         });
     }
 }

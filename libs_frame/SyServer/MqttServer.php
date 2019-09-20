@@ -7,18 +7,19 @@
  */
 namespace SyServer;
 
+use Swoole\Server;
 use Tool\MqttTool;
 
 class MqttServer
 {
     /**
-     * @var \swoole_server
+     * @var \Swoole\Server
      */
     protected $_server = null;
 
     public function __construct()
     {
-        $this->_server = new \swoole_server('0.0.0.0', 9501);
+        $this->_server = new Server('0.0.0.0', 9501);
         $this->_server->set([
             'worker_num' => 8,
             'daemonize' => false,
@@ -43,19 +44,19 @@ class MqttServer
         $this->_server->start();
     }
 
-    public function onStart(\swoole_server $server)
+    public function onStart(Server $server)
     {
     }
 
-    public function onWorkerStart(\swoole_server $server, $workerId)
+    public function onWorkerStart(Server $server, $workerId)
     {
     }
 
-    public function onConnect(\swoole_server $server, int $fd, int $reactorId)
+    public function onConnect(Server $server, int $fd, int $reactorId)
     {
     }
 
-    public function onReceive(\swoole_server $server, int $fd, int $reactor_id, string $data)
+    public function onReceive(Server $server, int $fd, int $reactor_id, string $data)
     {
         $byte = ord($data[0]);
         $_POST = [];
@@ -97,7 +98,7 @@ class MqttServer
         }
     }
 
-    public function onClose(\swoole_server $server, int $fd, int $reactorId)
+    public function onClose(Server $server, int $fd, int $reactorId)
     {
     }
 }

@@ -7,9 +7,10 @@
  */
 namespace SyServer;
 
+use Swoole\Server;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use Log\Log;
 use Request\RequestSign;
 use Response\Result;
@@ -39,7 +40,7 @@ class RpcServer extends BaseServer
     {
         parent::__construct($port);
         $this->setServerType([
-            Server::SERVER_TYPE_API_MODULE,
+            SyInner::SERVER_TYPE_API_MODULE,
         ]);
         $this->_configs['server']['cachenum']['hc'] = 1;
         $this->_configs['server']['cachenum']['modules'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
@@ -59,7 +60,7 @@ class RpcServer extends BaseServer
     {
         $this->initTableRpc();
         //初始化swoole服务
-        $this->_server = new \swoole_server($this->_host, $this->_port);
+        $this->_server = new Server($this->_host, $this->_port);
         $this->baseStart([
             'start' => 'onStart',
             'managerStart' => 'onManagerStart',
@@ -75,24 +76,24 @@ class RpcServer extends BaseServer
         ]);
     }
 
-    public function onStart(\swoole_server $server)
+    public function onStart(Server $server)
     {
         $this->basicStart($server);
         $this->addTaskBase($server);
         $this->addTaskRpcTrait($server);
     }
 
-    public function onWorkerStop(\swoole_server $server, int $workerId)
+    public function onWorkerStop(Server $server, int $workerId)
     {
         $this->basicWorkStop($server, $workerId);
     }
 
-    public function onWorkerError(\swoole_server $server, $workId, $workPid, $exitCode)
+    public function onWorkerError(Server $server, $workId, $workPid, $exitCode)
     {
         $this->basicWorkError($server, $workId, $workPid, $exitCode);
     }
 
-    public function onTask(\swoole_server $server, int $taskId, int $fromId, string $data)
+    public function onTask(Server $server, int $taskId, int $fromId, string $data)
     {
         $baseRes = $this->handleTaskBase($server, $taskId, $fromId, $data);
         if (is_array($baseRes)) {
@@ -106,12 +107,12 @@ class RpcServer extends BaseServer
 
     /**
      * 处理请求
-     * @param \swoole_server $server
+     * @param \Swoole\Server $server
      * @param int $fd TCP客户端连接的唯一标识符
      * @param int $reactor_id Reactor线程ID
      * @param string $data 收到的数据内容
      */
-    public function onReceive(\swoole_server $server, int $fd, int $reactor_id, string $data)
+    public function onReceive(Server $server, int $fd, int $reactor_id, string $data)
     {
         $this->initReceive($server);
         $result = $this->handleReceive($server, $data);
@@ -142,7 +143,7 @@ class RpcServer extends BaseServer
         unset($_POST[RequestSign::KEY_SIGN]);
         unset($_POST['__req_id']);
 
-        Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
+        Registry::del(SyInner::REGISTRY_NAME_SERVICE_ERROR);
         SessionTool::initSessionJwt();
     }
 
@@ -158,15 +159,15 @@ class RpcServer extends BaseServer
         $_SESSION = [];
         unset($_SERVER['SYREQ_ID']);
 
-        Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
-        Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_SESSION);
-        Registry::del(Server::REGISTRY_NAME_RESPONSE_JWT_DATA);
+        Registry::del(SyInner::REGISTRY_NAME_SERVICE_ERROR);
+        Registry::del(SyInner::REGISTRY_NAME_RESPONSE_JWT_SESSION);
+        Registry::del(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA);
     }
 
-    private function initReceive(\swoole_server $server)
+    private function initReceive(Server $server)
     {
         self::$_syServer->incr(self::$_serverToken, 'request_times', 1);
-        $_SERVER[Server::SERVER_DATA_KEY_TIMESTAMP] = time();
+        $_SERVER[SyInner::SERVER_DATA_KEY_TIMESTAMP] = time();
     }
 
     private function handleApiReceive(array $data)
@@ -221,7 +222,7 @@ class RpcServer extends BaseServer
         return $result;
     }
 
-    private function handleTaskReceive(\swoole_server $server, string $data)
+    private function handleTaskReceive(Server $server, string $data)
     {
         $server->task($data, random_int(1, $this->_taskMaxId));
         $result = new Result();
@@ -232,7 +233,7 @@ class RpcServer extends BaseServer
         return $result->getJson();
     }
 
-    private function handleReceive(\swoole_server $server, string $data)
+    private function handleReceive(Server $server, string $data)
     {
         if (!$this->_receivePack->unpackData($data)) {
             $error = new Result();
@@ -257,7 +258,7 @@ class RpcServer extends BaseServer
                 $result = $error->getJson();
                 unset($error);
         }
-        Registry::del(Server::REGISTRY_NAME_SERVICE_ERROR);
+        Registry::del(SyInner::REGISTRY_NAME_SERVICE_ERROR);
 
         return $result;
     }

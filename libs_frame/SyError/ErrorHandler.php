@@ -8,7 +8,7 @@
 namespace SyError;
 
 use SyConstant\ErrorCode;
-use SyConstant\Server;
+use SyConstant\SyInner;
 use SyException\Common\ErrorException;
 use Log\Log;
 use Yaf\Registry;
@@ -34,7 +34,7 @@ class ErrorHandler
             case E_WARNING:
             case E_COMPILE_WARNING:
             case E_USER_NOTICE:
-                Registry::set(Server::REGISTRY_NAME_SERVICE_ERROR, ErrorCode::COMMON_SERVER_ERROR);
+                Registry::set(SyInner::REGISTRY_NAME_SERVICE_ERROR, ErrorCode::COMMON_SERVER_ERROR);
                 $errMsg = $errStr . ' at ' . str_replace(SY_ROOT, '.', $errFile) . '(' . $errLine . ')';
                 throw new ErrorException($errMsg, ErrorCode::COMMON_SERVER_ERROR);
                 break;
@@ -49,7 +49,7 @@ class ErrorHandler
         $msg = 'sy exception - ' . $exception->getMessage();
         Log::error($msg, $exception->getCode(), $exception->getTraceAsString());
 
-        Registry::set(Server::REGISTRY_NAME_SERVICE_ERROR, ErrorCode::COMMON_SERVER_EXCEPTION);
+        Registry::set(SyInner::REGISTRY_NAME_SERVICE_ERROR, ErrorCode::COMMON_SERVER_EXCEPTION);
     }
 
     /**
@@ -69,7 +69,7 @@ class ErrorHandler
                     $msg = 'sy fatal error - ' . $error['message'] . ' at ' . $error['file'] . '(' . $error['line'] . ')';
                     Log::error($msg);
                     unset($msg);
-                    Registry::set(Server::REGISTRY_NAME_SERVICE_ERROR, ErrorCode::COMMON_SERVER_FATAL);
+                    Registry::set(SyInner::REGISTRY_NAME_SERVICE_ERROR, ErrorCode::COMMON_SERVER_FATAL);
                     break;
             }
         }

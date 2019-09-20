@@ -9,7 +9,7 @@ namespace SyConstant;
 
 use SyTrait\SimpleTrait;
 
-final class Server
+final class SyInner
 {
     use SimpleTrait;
     const SERVER_TYPE_API_GATE = 'api'; //服务端类型-api入口
