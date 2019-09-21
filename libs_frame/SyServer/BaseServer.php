@@ -7,7 +7,9 @@
  */
 namespace SyServer;
 
+use Swoole\Coroutine;
 use Swoole\Process;
+use Swoole\Runtime;
 use Swoole\Server;
 use Swoole\Timer;
 use SyConstant\ErrorCode;
@@ -634,6 +636,12 @@ abstract class BaseServer
         } elseif ($num > 500000000) {
             $reduceNum = $num - 100000000 - ($num % 100000000);
             CacheSimpleFactory::getRedisInstance()->decrBy(Project::DATA_KEY_CACHE_UNIQUE_ID, $reduceNum);
+        }
+
+        Runtime::enableCoroutine(true);
+        $coroutineConfigs = Tool::getArrayVal($this->_configs, 'server.coroutine', [], true);
+        if (!empty($coroutineConfigs)) {
+            Coroutine::set($coroutineConfigs);
         }
     }
 

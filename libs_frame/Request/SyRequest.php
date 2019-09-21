@@ -38,11 +38,6 @@ abstract class SyRequest
      */
     protected $_timeout = 0;
     /**
-     * 异步客户端
-     * @var \Swoole\Client
-     */
-    protected $_asyncClient = null;
-    /**
      * 客户端配置数组
      * @var array
      */
@@ -136,7 +131,6 @@ abstract class SyRequest
         $this->_host = '';
         $this->_async = false;
         $this->_timeout = 3000;
-        $this->_asyncClient = null;
         if ($protocol == 'http') {
             $this->_port = 80;
         } else {
@@ -248,31 +242,5 @@ abstract class SyRequest
         }
 
         return $rspMsg;
-    }
-
-    protected function sendBaseAsyncReq(string $reqData, callable $callback = null)
-    {
-        $this->_asyncClient = new Client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_ASYNC);
-        $this->_asyncClient->set($this->_clientConfigs);
-        $this->_asyncClient->on('connect', function (Client $cli) use ($reqData) {
-            if (!$cli->send($reqData)) {
-                $socketData = $cli->getsockname();
-                $log = 'send async data ';
-                if (is_array($socketData) && isset($socketData['host']) && isset($socketData['port'])) {
-                    $log .= $socketData['host'] . ':' . $socketData['port'];
-                }
-                $log .= 'fail,error_code:' . $cli->errCode . ',error_msg:' . socket_strerror($cli->errCode);
-                Log::error($log);
-            }
-        });
-        $this->_asyncClient->on('error', function (Client $cli) use ($callback) {
-            Log::info('async callback error,errCode:' . $cli->errCode . ' errMsg:' . socket_strerror($cli->errCode));
-            if ((!is_null($callback) && is_callable($callback))) {
-                $callback('error', $cli);
-            }
-            $cli->close();
-        });
-        $this->_asyncClient->on('close', function (Client $cli) {
-        });
     }
 }

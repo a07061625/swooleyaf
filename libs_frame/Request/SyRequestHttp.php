@@ -7,7 +7,7 @@
  */
 namespace Request;
 
-use Swoole\Client;
+use Swoole\Coroutine;
 use SyConstant\Project;
 use SyConstant\SyInner;
 use Log\Log;
@@ -128,20 +128,28 @@ class SyRequestHttp extends SyRequest
      */
     protected function sendAsyncReq(string $reqData, callable $callback = null) : bool
     {
-        $this->sendBaseAsyncReq($reqData, $callback);
-        $this->_asyncClient->on('receive', function (Client $cli, string $data) use ($callback) {
-            $rspData = HttpTool::parseResponse($data);
-            if (($rspData !== false) && (!is_null($callback)) && is_callable($callback)) {
-                $callback('success', str_replace(SyInner::SERVER_HTTP_TAG_RESPONSE_EOF, '', $rspData['body']));
+        $reqConfigs = [
+            'host' => $this->_host,
+            'port' => $this->_port,
+            'timeout' => $this->_timeout,
+        ];
+        $clientConfigs = $this->_clientConfigs;
+        Coroutine::create(function (array $reqConfigs, array $clientConfigs, string $reqData, ?callable $callback = null){
+            $client = new Coroutine\Client(SWOOLE_SOCK_TCP);
+            $client->set($clientConfigs);
+            if (!$client->connect($reqConfigs['host'], $reqConfigs['port'], $reqConfigs['timeout'] / 1000)) {
+                Log::error('rpc async connect address ' . $reqConfigs['host'] . ':' . $reqConfigs['port'] . ' fail' . ',error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode));
+                return 1;
             }
-            $cli->close();
-        });
-
-        if (!@$this->_asyncClient->connect($this->_host, $this->_port, $this->_timeout / 1000)) {
-            Log::error('http async connect address ' . $this->_host . ':' . $this->_port . ' fail' . ',error_code:' . $this->_asyncClient->errCode . ',error_msg:' . socket_strerror($this->_asyncClient->errCode));
-            return false;
-        }
-
+            $client->send($reqData);
+            $data = $client->recv();
+            $client->close();
+            $rspData = HttpTool::parseResponse($data);
+            if (is_callable($callback)) {
+                $callback(str_replace(SyInner::SERVER_HTTP_TAG_RESPONSE_EOF, '', $rspData['body']));
+            }
+            return 0;
+        }, $reqConfigs, $clientConfigs, $reqData, $callback);
         return true;
     }
 }
