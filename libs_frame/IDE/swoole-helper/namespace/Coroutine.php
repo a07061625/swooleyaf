@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.4.3
+ * @since 4.4.6
  */
 class Coroutine
 {
@@ -105,19 +105,26 @@ class Coroutine
     public static function disableScheduler(){}
 
     /**
-     * @param $command[required]
-     * @param $get_error_stream[optional]
-     * @return mixed
-     */
-    public static function exec($command, $get_error_stream=null){}
-
-    /**
      * @param $domain_name[required]
      * @param $family[optional]
      * @param $timeout[optional]
      * @return mixed
      */
     public static function gethostbyname($domain_name, $family=null, $timeout=null){}
+
+    /**
+     * @param $domain_name[required]
+     * @param $timeout[optional]
+     * @return mixed
+     */
+    public static function dnsLookup($domain_name, $timeout=null){}
+
+    /**
+     * @param $command[required]
+     * @param $get_error_stream[optional]
+     * @return mixed
+     */
+    public static function exec($command, $get_error_stream=null){}
 
     /**
      * @param $seconds[required]

@@ -2,7 +2,7 @@
 namespace Swoole\Process;
 
 /**
- * @since 4.4.3
+ * @since 4.4.6
  */
 class Pool
 {
@@ -21,6 +21,12 @@ class Pool
      * @return mixed
      */
     public function __destruct(){}
+
+    /**
+     * @param $settings[required]
+     * @return mixed
+     */
+    public function set($settings){}
 
     /**
      * @param $event_name[required]
