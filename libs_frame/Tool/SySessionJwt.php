@@ -7,6 +7,7 @@
  */
 namespace Tool;
 
+use Request\SyRequest;
 use SyConstant\Project;
 use SyConstant\SyInner;
 use DesignPatterns\Factories\CacheSimpleFactory;
@@ -17,6 +18,29 @@ use Yaf\Registry;
 class SySessionJwt
 {
     use SimpleTrait;
+
+    public static function initSessionId()
+    {
+        if (isset($_COOKIE[Project::DATA_KEY_SESSION_TOKEN])) {
+            $token = (string)$_COOKIE[Project::DATA_KEY_SESSION_TOKEN];
+        } elseif (isset($_SERVER['SY-AUTH'])) {
+            $token = (string)$_SERVER['SY-AUTH'];
+        } else {
+            $token = (string)SyRequest::getParams('session_id', '');
+        }
+
+        $sessionId = '0' . Tool::createNonceStr(5, 'numlower') . Tool::getNowTime();
+        if (strlen($token) != 16) {
+            return $sessionId;
+        }
+        if (!ctype_alnum($token)) {
+            return $sessionId;
+        }
+        if (in_array($token{0}, ['0', '1'], true)) {
+            $sessionId = $token;
+        }
+        return $sessionId;
+    }
 
     /**
      * 获取session id
