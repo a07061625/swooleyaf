@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.4.3
+ * @since 4.4.6
  */
 class Process
 {
@@ -66,6 +66,12 @@ class Process
      * @return mixed
      */
     public static function setaffinity($cpu_settings){}
+
+    /**
+     * @param $settings[required]
+     * @return mixed
+     */
+    public function set($settings){}
 
     /**
      * @param $seconds[required]

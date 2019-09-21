@@ -2,7 +2,7 @@
 namespace Swoole\Timer;
 
 /**
- * @since 4.4.3
+ * @since 4.4.6
  */
 class Iterator extends \ArrayIterator
 {

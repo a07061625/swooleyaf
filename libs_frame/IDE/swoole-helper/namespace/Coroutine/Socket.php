@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.4.3
+ * @since 4.4.6
  */
 class Socket
 {
@@ -122,10 +122,10 @@ class Socket
     public function setOption($level, $opt_name, $opt_value){}
 
     /**
-     * @param $how[required]
+     * @param $how[optional]
      * @return mixed
      */
-    public function shutdown($how){}
+    public function shutdown($how=null){}
 
     /**
      * @param $event[optional]
