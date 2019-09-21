@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine\Http;
 
 /**
- * @since 4.4.3
+ * @since 4.4.6
  */
 class Client
 {
@@ -135,6 +135,11 @@ class Client
      * @return mixed
      */
     public function getStatusCode(){}
+
+    /**
+     * @return mixed
+     */
+    public function getHeaderOut(){}
 
     /**
      * @param $path[required]

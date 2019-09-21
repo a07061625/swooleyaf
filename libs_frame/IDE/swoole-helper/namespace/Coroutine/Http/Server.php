@@ -2,16 +2,20 @@
 namespace Swoole\Coroutine\Http;
 
 /**
- * @since 4.4.3
+ * @since 4.4.6
  */
 class Server
 {
 
 
     /**
+     * @param $host[required]
+     * @param $port[optional]
+     * @param $ssl[optional]
+     * @param $reuse_port[optional]
      * @return mixed
      */
-    public function __construct(){}
+    public function __construct($host, $port=null, $ssl=null, $reuse_port=null){}
 
     /**
      * @return mixed
