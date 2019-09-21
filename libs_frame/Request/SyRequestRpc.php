@@ -7,7 +7,7 @@
  */
 namespace Request;
 
-use Swoole\Client;
+use Swoole\Coroutine;
 use SyConstant\Project;
 use Log\Log;
 use SyServer\BaseServer;
@@ -148,31 +148,39 @@ class SyRequestRpc extends SyRequest
      */
     protected function sendAsyncReq(string $reqData, callable $callback = null) : bool
     {
-        $this->sendBaseAsyncReq($reqData, $callback);
-        $this->_asyncClient->on('receive', function (Client $cli, string $data) use ($callback) {
-            if ($this->syPack->unpackData($data)) {
-                $command = $this->syPack->getCommand();
-                $rspData = $this->syPack->getData();
-                if ($command == SyPack::COMMAND_TYPE_RPC_SERVER_SEND_RSP) {
-                    if (($rspData !== false) && (!is_null($callback)) && is_callable($callback)) {
-                        $callback('success', $rspData['rsp_data']);
-                    }
-                } else {
-                    Log::error('pack data error,command=' . $command . ' data=' . Tool::jsonEncode($rspData, JSON_UNESCAPED_UNICODE));
-                }
-            } else {
+        $reqConfigs = [
+            'host' => $this->_host,
+            'port' => $this->_port,
+            'timeout' => $this->_timeout,
+        ];
+        $clientConfigs = $this->_clientConfigs;
+        Coroutine::create(function (array $reqConfigs, array $clientConfigs, string $reqData, ?callable $callback = null){
+            $client = new Coroutine\Client(SWOOLE_SOCK_TCP);
+            $client->set($clientConfigs);
+            if (!$client->connect($reqConfigs['host'], $reqConfigs['port'], $reqConfigs['timeout'] / 1000)) {
+                Log::error('rpc async connect address ' . $reqConfigs['host'] . ':' . $reqConfigs['port'] . ' fail' . ',error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode));
+                return 1;
+            }
+            $client->send($reqData);
+            $data = $client->recv();
+            $client->close();
+            $coroutinePack = new SyPack();
+            if (!$coroutinePack->unpackData($data)) {
                 Log::error('unpack response data fail.');
+                return 1;
             }
 
-            $this->syPack->init();
-            $cli->close();
-        });
-
-        if (!@$this->_asyncClient->connect($this->_host, $this->_port, $this->_timeout / 1000)) {
-            Log::error('rpc async connect address ' . $this->_host . ':' . $this->_port . ' fail' . ',error_code:' . $this->_asyncClient->errCode . ',error_msg:' . socket_strerror($this->_asyncClient->errCode));
-            return false;
-        }
-
+            $command = $coroutinePack->getCommand();
+            $rspData = $coroutinePack->getData();
+            if ($command != SyPack::COMMAND_TYPE_RPC_SERVER_SEND_RSP) {
+                Log::error('pack data error,command=' . $command . ' data=' . Tool::jsonEncode($rspData, JSON_UNESCAPED_UNICODE));
+                return 1;
+            }
+            if (is_callable($callback)) {
+                $callback($rspData);
+            }
+            return 0;
+        }, $reqConfigs, $clientConfigs, $reqData, $callback);
         return true;
     }
 }
