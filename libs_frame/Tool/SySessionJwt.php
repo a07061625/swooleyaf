@@ -19,10 +19,16 @@ class SySessionJwt
 {
     use SimpleTrait;
 
+    public static function getCookieKey()
+    {
+        return Project::DATA_KEY_SESSION_TOKEN;
+    }
+
     public static function initSessionId()
     {
-        if (isset($_COOKIE[Project::DATA_KEY_SESSION_TOKEN])) {
-            $token = (string)$_COOKIE[Project::DATA_KEY_SESSION_TOKEN];
+        $cookieKey = SySession::getCookieKey();
+        if (isset($_COOKIE[$cookieKey])) {
+            $token = (string)$_COOKIE[$cookieKey];
         } elseif (isset($_SERVER['SY-AUTH'])) {
             $token = (string)$_SERVER['SY-AUTH'];
         } else {

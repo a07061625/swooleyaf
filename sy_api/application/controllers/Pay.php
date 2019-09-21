@@ -133,8 +133,9 @@ class PayController extends CommonController
     {
         $expireTime = \Tool\Tool::getNowTime() + 604800;
         $sessionId = \Tool\SySession::getSessionId();
+        $cookieKey = \Tool\SySession::getCookieKey();
         $redirectUrl = \Request\SyRequest::getParams('url');
-        \Response\SyResponseHttp::cookie(\SyConstant\Project::DATA_KEY_SESSION_TOKEN, $sessionId, $expireTime, '/', \SyServer\HttpServer::getServerConfig('cookiedomain_base', ''));
+        \Response\SyResponseHttp::cookie($cookieKey, $sessionId, $expireTime, '/', '');
         \Response\SyResponseHttp::redirect($redirectUrl);
         $this->sendRsp();
     }

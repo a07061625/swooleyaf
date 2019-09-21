@@ -15,8 +15,9 @@ class CommonController extends \SyFrame\BaseController
         $this->signStatus = true;
 
         $token = \Tool\SySession::getSessionId();
-        $_COOKIE[\SyConstant\Project::DATA_KEY_SESSION_TOKEN] = $token;
+        $cookieKey = \Tool\SySession::getCookieKey();
+        $_COOKIE[$cookieKey] = $token;
         $expireTime = \Tool\Tool::getNowTime() + 604800;
-        \Response\SyResponseHttp::cookie(\SyConstant\Project::DATA_KEY_SESSION_TOKEN, $token, $expireTime, '/', $_SERVER['SY-DOMAIN']);
+        \Response\SyResponseHttp::cookie($cookieKey, $token, $expireTime, '/', $_SERVER['SY-DOMAIN']);
     }
 }
