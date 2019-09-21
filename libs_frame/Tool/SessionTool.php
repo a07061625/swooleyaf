@@ -12,7 +12,6 @@ use SyConstant\Project;
 use SyConstant\SyInner;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Session\JwtException;
-use Request\SyRequest;
 use SyTrait\SimpleTrait;
 use Yaf\Registry;
 
@@ -81,30 +80,14 @@ final class SessionTool
      */
     public static function initSessionJwt()
     {
-        if (isset($_COOKIE[Project::DATA_KEY_SESSION_TOKEN])) {
-            $token = (string)$_COOKIE[Project::DATA_KEY_SESSION_TOKEN];
-        } elseif (isset($_SERVER['SY-AUTH'])) {
-            $token = (string)$_SERVER['SY-AUTH'];
-        } else {
-            $token = (string)SyRequest::getParams('session_id', '');
-        }
-
+        $sessionId = SySession::initSessionId();
         $cacheData = [];
-        $sessionId = '';
-        if ((strlen($token) == 16) && ctype_alnum($token)) {
-            if ($token{0} == '1') {
-                $sessionId = $token;
-                $redisKey = Project::REDIS_PREFIX_SESSION . $sessionId;
-                $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
-                if (isset($redisData['sid']) && ($redisData['sid'] == $sessionId)) {
-                    $cacheData = $redisData;
-                }
-            } elseif ($token{0} == '0') {
-                $sessionId = $token;
+        if ($sessionId{0} == '1') {
+            $redisKey = Project::REDIS_PREFIX_SESSION . $sessionId;
+            $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
+            if (isset($redisData['sid']) && ($redisData['sid'] == $sessionId)) {
+                $cacheData = $redisData;
             }
-        }
-        if (!isset($sessionId{0})) {
-            $sessionId = '0' . Tool::createNonceStr(5, 'numlower') . Tool::getNowTime();
         }
         if (empty($cacheData)) {
             $cacheData = self::createDefaultJwt();
