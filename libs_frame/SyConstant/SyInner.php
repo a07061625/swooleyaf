@@ -15,7 +15,6 @@ final class SyInner
     const SERVER_TYPE_API_GATE = 'api'; //服务端类型-api入口
     const SERVER_TYPE_API_MODULE = 'rpc'; //服务端类型-api模块
     const SERVER_TYPE_FRONT_GATE = 'frontgate'; //服务端类型-前端入口
-    const SERVER_HTTP_TAG_RESPONSE_EOF = "\r\r\rswoole@yaf\r\r\r"; //服务端http标识-响应结束符
     const SERVER_HTTP_TAG_REQUEST_HEADER = 'swoole-yaf'; //服务端http标识-请求头名称
     const SERVER_DATA_KEY_TASK = '_sytask'; //服务端内部数据键名-task
     const SERVER_DATA_KEY_TIMESTAMP = 'SYREQ_TIME'; //服务端内部数据键名-请求时间戳

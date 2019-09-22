@@ -243,4 +243,20 @@ abstract class SyRequest
 
         return $rspMsg;
     }
+
+    /**
+     * 获取异步请求配置
+     * @return array
+     */
+    protected function getAsyncReqConfig() : array
+    {
+        return [
+            'request' => [
+                'host' => $this->_host,
+                'port' => $this->_port,
+                'timeout' => $this->_timeout,
+            ],
+            'client' => $this->_clientConfigs,
+        ];
+    }
 }

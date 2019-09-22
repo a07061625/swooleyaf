@@ -29,7 +29,7 @@ class SyRequestHttp extends SyRequest
         $this->_clientConfigs = [
             'open_tcp_nodelay' => true,
             'open_eof_check' => true,
-            'package_eof' => SyInner::SERVER_HTTP_TAG_RESPONSE_EOF,
+            'package_eof' => "\r\n\r\n",
             'package_max_length' => Project::SIZE_SERVER_PACKAGE_MAX,
             'socket_buffer_size' => Project::SIZE_CLIENT_SOCKET_BUFFER,
         ];
@@ -109,7 +109,7 @@ class SyRequestHttp extends SyRequest
      * @param string $reqData 请求数据
      * @return bool|string
      */
-    protected function sendSyncReq(string $reqData)
+    private function sendSyncReq(string $reqData)
     {
         $rspMsg = $this->sendBaseSyncReq($reqData);
         if ($rspMsg === false) {
@@ -117,7 +117,7 @@ class SyRequestHttp extends SyRequest
         }
 
         $rspData = HttpTool::parseResponse($rspMsg);
-        return $rspData === false ? false : str_replace(SyInner::SERVER_HTTP_TAG_RESPONSE_EOF, '', $rspData['body']);
+        return $rspData === false ? false : $rspData['body'];
     }
 
     /**
@@ -126,19 +126,22 @@ class SyRequestHttp extends SyRequest
      * @param callable|null $callback 回调函数
      * @return bool
      */
-    protected function sendAsyncReq(string $reqData, callable $callback = null) : bool
+    private function sendAsyncReq(string $reqData, callable $callback = null) : bool
     {
-        $reqConfigs = [
-            'host' => $this->_host,
-            'port' => $this->_port,
-            'timeout' => $this->_timeout,
-        ];
-        $clientConfigs = $this->_clientConfigs;
-        Coroutine::create(function (array $reqConfigs, array $clientConfigs, string $reqData, ?callable $callback = null){
+        $asyncConfig = $this->getAsyncReqConfig();
+        Coroutine::create(function (array $asyncConfig, string $reqData, ?callable $callback = null) {
             $client = new Coroutine\Client(SWOOLE_SOCK_TCP);
-            $client->set($clientConfigs);
-            if (!$client->connect($reqConfigs['host'], $reqConfigs['port'], $reqConfigs['timeout'] / 1000)) {
-                Log::error('rpc async connect address ' . $reqConfigs['host'] . ':' . $reqConfigs['port'] . ' fail' . ',error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode));
+            $client->set($asyncConfig['client']);
+            if (!$client->connect($asyncConfig['request']['host'], $asyncConfig['request']['port'], $asyncConfig['request']['timeout'] / 1000)) {
+                $logStr = 'rpc async connect address '
+                          . $asyncConfig['request']['host']
+                          . ':'
+                          . $asyncConfig['request']['port']
+                          . ' fail,error_code:'
+                          . $client->errCode
+                          . ',error_msg:'
+                          . socket_strerror($client->errCode);
+                Log::error($logStr);
                 return 1;
             }
             $client->send($reqData);
@@ -146,10 +149,10 @@ class SyRequestHttp extends SyRequest
             $client->close();
             $rspData = HttpTool::parseResponse($data);
             if (is_callable($callback)) {
-                $callback(str_replace(SyInner::SERVER_HTTP_TAG_RESPONSE_EOF, '', $rspData['body']));
+                $callback($rspData['body']);
             }
             return 0;
-        }, $reqConfigs, $clientConfigs, $reqData, $callback);
+        }, $asyncConfig, $reqData, $callback);
         return true;
     }
 }
