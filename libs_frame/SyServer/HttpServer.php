@@ -59,11 +59,6 @@ class HttpServer extends BaseServer
      */
     private static $_response = null;
     /**
-     * 请求标识
-     * @var bool true:外部请求 false:内部请求
-     */
-    private static $_reqTag = true;
-    /**
      * 响应消息
      * @var string
      */
@@ -199,11 +194,7 @@ class HttpServer extends BaseServer
             $json = new Result();
             $json->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, ErrorCode::getMsg(ErrorCode::COMMON_SERVER_ERROR));
             self::$_response->status(SY_HTTP_RSP_CODE_ERROR);
-            if (self::$_reqTag) {
-                self::$_response->end($json->getJson());
-            } else {
-                self::$_response->end($json->getJson() . SyInner::SERVER_HTTP_TAG_RESPONSE_EOF);
-            }
+            self::$_response->end($json->getJson());
         }
     }
 
@@ -399,12 +390,7 @@ class HttpServer extends BaseServer
             self::$_rspMsg = $res->getJson();
         }
 
-        if (self::$_reqTag) {
-            $response->end(self::$_rspMsg);
-        } else {
-            $response->end(self::$_rspMsg . SyInner::SERVER_HTTP_TAG_RESPONSE_EOF);
-        }
-
+        $response->end(self::$_rspMsg);
         $this->clearRequest();
     }
 
@@ -467,7 +453,6 @@ class HttpServer extends BaseServer
         Registry::del(SyInner::REGISTRY_NAME_SERVICE_ERROR);
         self::$_reqHeaders = $request->header ?? [];
         self::$_reqServers = $request->server ?? [];
-        self::$_reqTag = !isset(self::$_reqHeaders[SyInner::SERVER_HTTP_TAG_REQUEST_HEADER]);
         self::$_rspMsg = '';
 
         if (isset($request->header['content-type']) && ($request->header['content-type'] == 'application/json')) {
@@ -538,7 +523,6 @@ class HttpServer extends BaseServer
         $_SERVER = [];
         $_SESSION = [];
         $GLOBALS['HTTP_RAW_POST_DATA'] = '';
-        self::$_reqTag = true;
         self::$_reqTask = null;
         self::$_reqHeaders = [];
         self::$_reqServers = [];
