@@ -117,7 +117,7 @@ class SyRequestRpc extends SyRequest
      * @param string $reqData 请求数据
      * @return bool|string
      */
-    protected function sendSyncReq(string $reqData)
+    private function sendSyncReq(string $reqData)
     {
         $rspMsg = $this->sendBaseSyncReq($reqData);
         if ($rspMsg === false) {
@@ -146,19 +146,22 @@ class SyRequestRpc extends SyRequest
      * @param callable|null $callback 回调函数
      * @return bool
      */
-    protected function sendAsyncReq(string $reqData, callable $callback = null) : bool
+    private function sendAsyncReq(string $reqData, callable $callback = null) : bool
     {
-        $reqConfigs = [
-            'host' => $this->_host,
-            'port' => $this->_port,
-            'timeout' => $this->_timeout,
-        ];
-        $clientConfigs = $this->_clientConfigs;
-        Coroutine::create(function (array $reqConfigs, array $clientConfigs, string $reqData, ?callable $callback = null){
+        $asyncConfig = $this->getAsyncReqConfig();
+        Coroutine::create(function (array $asyncConfig, string $reqData, ?callable $callback = null) {
             $client = new Coroutine\Client(SWOOLE_SOCK_TCP);
-            $client->set($clientConfigs);
-            if (!$client->connect($reqConfigs['host'], $reqConfigs['port'], $reqConfigs['timeout'] / 1000)) {
-                Log::error('rpc async connect address ' . $reqConfigs['host'] . ':' . $reqConfigs['port'] . ' fail' . ',error_code:' . $client->errCode . ',error_msg:' . socket_strerror($client->errCode));
+            $client->set($asyncConfig['client']);
+            if (!$client->connect($asyncConfig['request']['host'], $asyncConfig['request']['port'], $asyncConfig['request']['timeout'] / 1000)) {
+                $logStr = 'rpc async connect address '
+                          . $asyncConfig['request']['host']
+                          . ':'
+                          . $asyncConfig['request']['port']
+                          . ' fail,error_code:'
+                          . $client->errCode
+                          . ',error_msg:'
+                          . socket_strerror($client->errCode);
+                Log::error($logStr);
                 return 1;
             }
             $client->send($reqData);
@@ -180,7 +183,7 @@ class SyRequestRpc extends SyRequest
                 $callback($rspData);
             }
             return 0;
-        }, $reqConfigs, $clientConfigs, $reqData, $callback);
+        }, $asyncConfig, $reqData, $callback);
         return true;
     }
 }
