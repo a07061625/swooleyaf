@@ -34,7 +34,7 @@ class SySessionJwt
         } else {
             $token = (string)SyRequest::getParams('session_id', '');
         }
-        if (ctype_alnum($token) && (strlen($token) == 16) && in_array($token{0}, ['0', '1'])) {
+        if ((strlen($token) == 16) && in_array($token{0}, ['0', '1']) && ctype_alnum($token)) {
             $sessionId = $token;
         } else {
             $sessionId = '0' . Tool::createNonceStr(5, 'numlower') . Tool::getNowTime();
