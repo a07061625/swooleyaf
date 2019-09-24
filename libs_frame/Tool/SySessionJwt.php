@@ -34,16 +34,10 @@ class SySessionJwt
         } else {
             $token = (string)SyRequest::getParams('session_id', '');
         }
-
-        $sessionId = '0' . Tool::createNonceStr(5, 'numlower') . Tool::getNowTime();
-        if (strlen($token) != 16) {
-            return $sessionId;
-        }
-        if (!ctype_alnum($token)) {
-            return $sessionId;
-        }
-        if (in_array($token{0}, ['0', '1'], true)) {
+        if (ctype_alnum($token) && (strlen($token) == 16) && in_array($token{0}, ['0', '1'])) {
             $sessionId = $token;
+        } else {
+            $sessionId = '0' . Tool::createNonceStr(5, 'numlower') . Tool::getNowTime();
         }
         return $sessionId;
     }
