@@ -2,9 +2,7 @@
 - AliOpen: 阿里开放平台接口
 - AliOss: 阿里OSS接口
 - AliPay: 支付宝接口
-- Cache: 缓存类库
 - CodeSniffer: 代码规范检查
-- Constant: 常量
 - DB: 数据库类库
 - DesignPatterns: 设计模式
 - DingDing: 钉钉开放平台接口
@@ -30,6 +28,8 @@
 - Request: 框架请求处理
 - Response: 框架响应处理
 - SyAspect: 切面相关
+- SyCache: 缓存类库
+- SyConstant: 常量
 - SyError: 框架错误处理
 - SyException: 框架自定义异常
 - SyFrame: 框架架构相关
