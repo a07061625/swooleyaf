@@ -7,9 +7,9 @@
  */
 namespace DesignPatterns\Singletons;
 
-use Map\ConfigBaiDu;
-use Map\ConfigGaoDe;
-use Map\ConfigTencent;
+use SyMap\ConfigBaiDu;
+use SyMap\ConfigGaoDe;
+use SyMap\ConfigTencent;
 use Tool\Tool;
 use SyTrait\SingletonTrait;
 
@@ -17,15 +17,15 @@ class MapSingleton
 {
     use SingletonTrait;
     /**
-     * @var \Map\ConfigBaiDu
+     * @var \SyMap\ConfigBaiDu
      */
     private $baiduConfig = null;
     /**
-     * @var \Map\ConfigTencent
+     * @var \SyMap\ConfigTencent
      */
     private $tencentConfig = null;
     /**
-     * @var \Map\ConfigGaoDe
+     * @var \SyMap\ConfigGaoDe
      */
     private $gaoDeConfig = null;
 
@@ -46,7 +46,7 @@ class MapSingleton
     }
 
     /**
-     * @return \Map\ConfigBaiDu
+     * @return \SyMap\ConfigBaiDu
      */
     public function getBaiduConfig()
     {
@@ -62,7 +62,7 @@ class MapSingleton
     }
 
     /**
-     * @return \Map\ConfigTencent
+     * @return \SyMap\ConfigTencent
      */
     public function getTencentConfig()
     {
@@ -79,7 +79,7 @@ class MapSingleton
     }
 
     /**
-     * @return \Map\ConfigGaoDe
+     * @return \SyMap\ConfigGaoDe
      */
     public function getGaoDeConfig()
     {
