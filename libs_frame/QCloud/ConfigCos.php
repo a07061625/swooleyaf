@@ -33,6 +33,11 @@ class ConfigCos
      */
     private $bucketName = '';
     /**
+     * 容器域名
+     * @var string
+     */
+    private $bucketDomain = '';
+    /**
      * 地域标识
      * @var string
      */
@@ -110,7 +115,7 @@ class ConfigCos
         if (ctype_alnum($secretKey)) {
             $this->secretKey = $secretKey;
         } else {
-            throw new \SyException\QCloud\CosException('帐户密钥不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
+            throw new CosException('帐户密钥不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
     }
 
@@ -138,6 +143,27 @@ class ConfigCos
     /**
      * @return string
      */
+    public function getBucketDomain() : string
+    {
+        return $this->bucketDomain;
+    }
+
+    /**
+     * @param string $bucketDomain
+     * @throws \SyException\QCloud\CosException
+     */
+    public function setBucketDomain(string $bucketDomain)
+    {
+        if (preg_match('/^(http|https)\:\/\/\S+$/', $bucketDomain) > 0) {
+            $this->bucketDomain = $bucketDomain;
+        } else {
+            throw new CosException('桶域名不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @return string
+     */
     public function getRegionTag() : string
     {
         return $this->regionTag;
@@ -152,7 +178,7 @@ class ConfigCos
         if (strlen($regionTag) > 0) {
             $this->regionTag = $regionTag;
         } else {
-            throw new \SyException\QCloud\CosException('地域标识不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
+            throw new CosException('地域标识不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
     }
 

@@ -49,6 +49,7 @@ class QCloudConfigSingleton
             $cosConfig->setSecretId((string)Tool::getArrayVal($configs, 'cos.secret.id', '', true));
             $cosConfig->setSecretKey((string)Tool::getArrayVal($configs, 'cos.secret.key', '', true));
             $cosConfig->setBucketName((string)Tool::getArrayVal($configs, 'cos.bucket.name', '', true));
+            $cosConfig->setBucketDomain((string)Tool::getArrayVal($configs, 'cos.bucket.domain', '', true));
             $cosConfig->setRegionTag((string)Tool::getArrayVal($configs, 'cos.region.tag', '', true));
             $cosConfig->createReqHost();
             $this->cosConfig = $cosConfig;

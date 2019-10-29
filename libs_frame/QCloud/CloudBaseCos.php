@@ -126,7 +126,7 @@ abstract class CloudBaseCos extends CloudBase
             $this->reqMethod = strtolower($reqMethod);
             $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = $reqMethod;
         } else {
-            throw new \SyException\QCloud\CosException('请求方式不支持', ErrorCode::QCLOUD_COS_PARAM_ERROR);
+            throw new CosException('请求方式不支持', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
     }
 
@@ -139,7 +139,7 @@ abstract class CloudBaseCos extends CloudBase
         if ($signExpireTime > 0) {
             $this->signExpireTime = $signExpireTime;
         } else {
-            throw new \SyException\QCloud\CosException('签名有效时间不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
+            throw new CosException('签名有效时间不合法', ErrorCode::QCLOUD_COS_PARAM_ERROR);
         }
     }
 
