@@ -92,7 +92,7 @@ class ConfigOss
         }
         $trueDomain = trim($endpointDomain);
         if (strlen($trueDomain) == 0) {
-            throw new \SyException\AliOss\OssException('终端节点域名不合法', ErrorCode::ALIOSS_PARAM_ERROR);
+            throw new OssException('终端节点域名不合法', ErrorCode::ALIOSS_PARAM_ERROR);
         }
         $this->endpointProtocol = $endpointProtocol;
         $this->endpointDomain = $trueDomain;
@@ -158,7 +158,7 @@ class ConfigOss
         if (strlen($bucketName) > 0) {
             $this->bucketName = $bucketName;
         } else {
-            throw new \SyException\AliOss\OssException('桶名称不合法', ErrorCode::ALIOSS_PARAM_ERROR);
+            throw new OssException('桶名称不合法', ErrorCode::ALIOSS_PARAM_ERROR);
         }
     }
 

@@ -23,7 +23,7 @@ trait WxTraitCorp
         switch ($type) {
             case WxBaseCorp::ACCESS_TOKEN_TYPE_CORP:
                 if (!ctype_alnum($agentTag)) {
-                    throw new \SyException\Wx\WxException('应用标识不合法', ErrorCode::WX_PARAM_ERROR);
+                    throw new WxException('应用标识不合法', ErrorCode::WX_PARAM_ERROR);
                 }
                 $accessToken = WxUtilCorp::getAccessToken($corpId, $agentTag);
                 break;

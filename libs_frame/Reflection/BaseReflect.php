@@ -109,7 +109,7 @@ class BaseReflect
             throw $e;
         } catch (\Exception $e) {
             Log::error($e->getMessage());
-            throw new \SyException\Reflection\ReflectException(ErrorCode::getMsg(ErrorCode::REFLECT_RESOURCE_NOT_EXIST), ErrorCode::REFLECT_RESOURCE_NOT_EXIST);
+            throw new ReflectException(ErrorCode::getMsg(ErrorCode::REFLECT_RESOURCE_NOT_EXIST), ErrorCode::REFLECT_RESOURCE_NOT_EXIST);
         }
 
         return $annotations;

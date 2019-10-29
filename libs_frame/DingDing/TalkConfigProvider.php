@@ -88,7 +88,7 @@ class TalkConfigProvider
         if (ctype_alnum($corpId)) {
             $this->corpId = $corpId;
         } else {
-            throw new \SyException\DingDing\TalkException('企业ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('企业ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
@@ -109,7 +109,7 @@ class TalkConfigProvider
         if (ctype_alnum($ssoSecret)) {
             $this->ssoSecret = $ssoSecret;
         } else {
-            throw new \SyException\DingDing\TalkException('免登密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('免登密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
@@ -130,7 +130,7 @@ class TalkConfigProvider
         if (ctype_alnum($token) && (strlen($token) <= 32)) {
             $this->token = $token;
         } else {
-            throw new \SyException\DingDing\TalkException('消息校验token不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('消息校验token不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
@@ -172,7 +172,7 @@ class TalkConfigProvider
         if ($suiteId > 0) {
             $this->suiteId = $suiteId;
         } else {
-            throw new \SyException\DingDing\TalkException('套件ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('套件ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
@@ -193,7 +193,7 @@ class TalkConfigProvider
         if (ctype_alnum($suiteKey)) {
             $this->suiteKey = $suiteKey;
         } else {
-            throw new \SyException\DingDing\TalkException('套件标识不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('套件标识不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
@@ -214,7 +214,7 @@ class TalkConfigProvider
         if (strlen($suiteSecret) > 0) {
             $this->suiteSecret = $suiteSecret;
         } else {
-            throw new \SyException\DingDing\TalkException('套件密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('套件密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
@@ -235,7 +235,7 @@ class TalkConfigProvider
         if (ctype_alnum($loginAppId)) {
             $this->loginAppId = $loginAppId;
         } else {
-            throw new \SyException\DingDing\TalkException('登陆应用ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('登陆应用ID不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
@@ -256,7 +256,7 @@ class TalkConfigProvider
         if (strlen($loginAppSecret) > 0) {
             $this->loginAppSecret = $loginAppSecret;
         } else {
-            throw new \SyException\DingDing\TalkException('登陆应用密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('登陆应用密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 

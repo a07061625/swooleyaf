@@ -36,7 +36,7 @@ abstract class PrintUtilBase
         if ($sendRes['res_no'] == 0) {
             return $sendRes['res_content'];
         } else {
-            throw new \SyException\SyPrint\FeYinException('curl出错，错误码=' . $sendRes['res_no'], ErrorCode::PRINT_POST_ERROR);
+            throw new FeYinException('curl出错，错误码=' . $sendRes['res_no'], ErrorCode::PRINT_POST_ERROR);
         }
     }
 
@@ -59,7 +59,7 @@ abstract class PrintUtilBase
         if ($sendRes['res_no'] == 0) {
             return $sendRes['res_content'];
         } else {
-            throw new \SyException\SyPrint\FeYinException('curl出错，错误码=' . $sendRes['res_no'], ErrorCode::PRINT_GET_ERROR);
+            throw new FeYinException('curl出错，错误码=' . $sendRes['res_no'], ErrorCode::PRINT_GET_ERROR);
         }
     }
 }

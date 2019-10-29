@@ -301,7 +301,7 @@ abstract class WxUtilOpenBase extends WxUtilBase
         }
 
         if (strlen($error) > 0) {
-            throw new \SyException\Wx\WxOpenException($error, ErrorCode::WXOPEN_PARAM_ERROR);
+            throw new WxOpenException($error, ErrorCode::WXOPEN_PARAM_ERROR);
         }
 
         return [

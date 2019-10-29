@@ -29,7 +29,7 @@ trait TalkTraitCorp
         switch ($type) {
             case TalkBaseCorp::ACCESS_TOKEN_TYPE_CORP:
                 if (!ctype_alnum($agentTag)) {
-                    throw new \SyException\DingDing\TalkException('应用标识不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+                    throw new TalkException('应用标识不合法', ErrorCode::DING_TALK_PARAM_ERROR);
                 }
                 $accessToken = TalkUtilCorp::getAccessToken($corpId, $agentTag);
                 break;

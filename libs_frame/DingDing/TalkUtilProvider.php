@@ -35,7 +35,7 @@ final class TalkUtilProvider extends TalkUtilBase
         if (isset($redisData['unique_key']) && ($redisData['unique_key'] == $redisKey)) {
             return $redisData['ticket'];
         } else {
-            throw new \SyException\DingDing\TalkException('获取服务商套件缓存失败', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('获取服务商套件缓存失败', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 

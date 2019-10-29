@@ -253,7 +253,7 @@ class WxConfigAccount
         if (preg_match('/^(http|https)\:\/\/\S+$/', $payAuthUrl) > 0) {
             $this->payAuthUrl = $payAuthUrl;
         } else {
-            throw new \SyException\Wx\WxException('支付授权URL不合法', ErrorCode::WX_PARAM_ERROR);
+            throw new WxException('支付授权URL不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
@@ -347,7 +347,7 @@ class WxConfigAccount
         $length = strlen($merchantAppId);
         if ($length > 0) {
             if ($length != 18) {
-                throw new \SyException\Wx\WxException('服务商微信号不合法', ErrorCode::WX_PARAM_ERROR);
+                throw new WxException('服务商微信号不合法', ErrorCode::WX_PARAM_ERROR);
             }
             if (!ctype_alnum($merchantAppId)) {
                 throw new WxException('服务商微信号不合法', ErrorCode::WX_PARAM_ERROR);

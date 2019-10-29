@@ -95,7 +95,7 @@ class ConfigFeYin
         if (ctype_alnum($memberCode)) {
             $this->memberCode = $memberCode;
         } else {
-            throw new \SyException\SyPrint\FeYinException('商户编码不合法', ErrorCode::PRINT_PARAM_ERROR);
+            throw new FeYinException('商户编码不合法', ErrorCode::PRINT_PARAM_ERROR);
         }
     }
 }

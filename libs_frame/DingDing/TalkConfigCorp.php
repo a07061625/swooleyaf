@@ -99,7 +99,7 @@ class TalkConfigCorp
         if (ctype_alnum($ssoSecret)) {
             $this->ssoSecret = $ssoSecret;
         } else {
-            throw new \SyException\DingDing\TalkException('免登密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
+            throw new TalkException('免登密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
