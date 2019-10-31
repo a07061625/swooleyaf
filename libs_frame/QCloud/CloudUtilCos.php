@@ -77,7 +77,7 @@ final class CloudUtilCos extends CloudUtilBase
         ];
 
         $data = $cosBase->getDetail();
-        $reqMethod = $cosBase->getReqMethod();
+        $reqMethod = strtoupper($cosBase->getReqMethod());
         $errNo = CloudBaseCos::$totalReqMethods[$reqMethod];
         $timeout = (int)Tool::getArrayVal($data, CURLOPT_TIMEOUT_MS, 2000);
         $data[CURLOPT_TIMEOUT_MS] = $timeout;
