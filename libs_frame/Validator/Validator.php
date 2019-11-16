@@ -17,6 +17,12 @@ final class Validator
     private static $container = null;
     private static $services = [];
 
+    public static function init()
+    {
+        self::$container = new ValidatorContainer();
+        self::$services = [];
+    }
+
     /**
      * 数据校验
      * @param mixed $data 待校验数据
@@ -50,10 +56,6 @@ final class Validator
      */
     private static function getService(string $serviceType)
     {
-        if (is_null(self::$container)) {
-            self::$container = new ValidatorContainer();
-        }
-
         if (isset(self::$services[$serviceType])) {
             $service = self::$services[$serviceType];
         } else {
