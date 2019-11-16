@@ -18,6 +18,7 @@ use SyFrame\Plugins\MethodExistPlugin;
 use SyFrame\Plugins\ValidatorPlugin;
 use SyFrame\Routes\SimpleRoute;
 use Tool\Tool;
+use Validator\Validator;
 use Yaf\Application;
 use Yaf\Bootstrap_Abstract;
 use Yaf\Dispatcher;
@@ -135,5 +136,7 @@ abstract class SimpleBootstrap extends Bootstrap_Abstract
                    ->registerPlugin(new AspectAfterPlugin())
                    ->registerPlugin(new FinishServicePlugin());
         $dispatcher->getRouter()->addRoute(SyInner::ROUTE_TYPE_SIMPLE, new SimpleRoute());
+
+        Validator::init();
     }
 }
