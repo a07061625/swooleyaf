@@ -13,6 +13,7 @@ use Validator\Containers\ValidatorContainer;
 final class Validator
 {
     use SimpleTrait;
+    
     /**
      * @var \Validator\Containers\ValidatorContainer
      */
