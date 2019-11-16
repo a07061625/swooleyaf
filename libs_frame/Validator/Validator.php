@@ -14,6 +14,9 @@ final class Validator
 {
     use SimpleTrait;
 
+    /**
+     * @var \Validator\Containers\ValidatorContainer
+     */
     private static $container = null;
     private static $services = [];
 
