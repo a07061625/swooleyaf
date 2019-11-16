@@ -14,8 +14,17 @@ final class Validator
 {
     use SimpleTrait;
 
+    /**
+     * @var \Validator\Containers\ValidatorContainer
+     */
     private static $container = null;
     private static $services = [];
+
+    public static function init()
+    {
+        self::$container = new ValidatorContainer();
+        self::$services = [];
+    }
 
     /**
      * 数据校验
@@ -50,10 +59,6 @@ final class Validator
      */
     private static function getService(string $serviceType)
     {
-        if (is_null(self::$container)) {
-            self::$container = new ValidatorContainer();
-        }
-
         if (isset(self::$services[$serviceType])) {
             $service = self::$services[$serviceType];
         } else {
