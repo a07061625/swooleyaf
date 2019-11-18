@@ -8,11 +8,13 @@
 namespace Log;
 
 use SyServer\BaseServer;
+use SyTrait\LogTrait;
 use Tool\Dir;
 use SyTrait\SimpleTrait;
 
 final class Log
 {
+    use LogTrait;
     use SimpleTrait;
 
     public static function log($msg, $level = SEASLOG_INFO)
@@ -41,6 +43,7 @@ final class Log
                 \SeasLog::info($log);
                 break;
         }
+        self::handleLog($log, $level);
     }
 
     public static function debug($msg)
