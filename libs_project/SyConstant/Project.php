@@ -12,6 +12,8 @@ use SyTrait\SimpleTrait;
 final class Project extends ProjectBase
 {
     use SimpleTrait;
+
+    //模块常量
     const MODULE_BASE_API = 'api';
     const MODULE_BASE_ORDER = 'order';
     const MODULE_BASE_CONTENT = 'content';
@@ -22,6 +24,20 @@ final class Project extends ProjectBase
     const MODULE_NAME_CONTENT = SY_PROJECT . self::MODULE_BASE_CONTENT;
     const MODULE_NAME_USER = SY_PROJECT . self::MODULE_BASE_USER;
     const MODULE_NAME_SERVICE = SY_PROJECT . self::MODULE_BASE_SERVICE;
+    public static $totalModuleName = [
+        self::MODULE_NAME_API,
+        self::MODULE_NAME_ORDER,
+        self::MODULE_NAME_CONTENT,
+        self::MODULE_NAME_USER,
+        self::MODULE_NAME_SERVICE,
+    ];
+    public static $totalModuleBase = [
+        self::MODULE_BASE_API,
+        self::MODULE_BASE_ORDER,
+        self::MODULE_BASE_CONTENT,
+        self::MODULE_BASE_USER,
+        self::MODULE_BASE_SERVICE,
+    ];
 
     //REDIS常量 后五位字母+数字的前缀为项目前缀
     const REDIS_PREFIX_CODE_IMAGE = 'sy' . SY_PROJECT . 'a0000_'; //前缀-验证码图片
@@ -52,15 +68,36 @@ final class Project extends ProjectBase
     //订单常量
     const ORDER_PAY_TYPE_GOODS = '1000'; //支付类型-商品
     const ORDER_REFUND_TYPE_GOODS = '5000'; //退款类型-商品
+
+    //地区常量
     const REGION_LEVEL_TYPE_PROVINCE = 1; //地区类型-省
     const REGION_LEVEL_TYPE_CITY = 2; //地区类型-市
     const REGION_LEVEL_TYPE_COUNTY = 3; //地区类型-县
+    public static $totalRegionLevelType = [
+        self::REGION_LEVEL_TYPE_PROVINCE => '省',
+        self::REGION_LEVEL_TYPE_CITY => '市',
+        self::REGION_LEVEL_TYPE_COUNTY => '县',
+    ];
+
+    //角色常量
     const ROLE_STATUS_DELETE = -1; //状态-已删除
     const ROLE_STATUS_INVALID = 0; //状态-无效
     const ROLE_STATUS_VALID = 1; //状态-有效
+    public static $totalRoleStatus = [
+        self::ROLE_STATUS_DELETE => '已删除',
+        self::ROLE_STATUS_INVALID => '无效',
+        self::ROLE_STATUS_VALID => '有效',
+    ];
+
+    //角色权限常量
     const ROLE_POWER_LEVEL_ONE = 1; //层级-第一级
     const ROLE_POWER_LEVEL_TWO = 2; //层级-第二级
     const ROLE_POWER_LEVEL_THREE = 3; //层级-第三级
+    public static $totalRolePowerLevel = [
+        self::ROLE_POWER_LEVEL_ONE => '第一级',
+        self::ROLE_POWER_LEVEL_TWO => '第二级',
+        self::ROLE_POWER_LEVEL_THREE => '第三级',
+    ];
 
     //登录常量
     const LOGIN_TYPE_PHONE = 'a000'; //类型-手机号码
@@ -70,6 +107,8 @@ final class Project extends ProjectBase
     const LOGIN_TYPE_WX_AUTH_USER = 'a101'; //类型-微信手动授权
     const LOGIN_TYPE_WX_SCAN = 'a102'; //类型-微信扫码
     const LOGIN_TYPE_QQ = 'a200'; //类型-QQ
+
+    //微信小程序常量
     const WXMINI_TYPE_PLAT_MINI = 1; //小程序类型-平台小程序
     const WXMINI_TYPE_SHOP_MINI = 2; //小程序类型-商户小程序
     const WXMINI_AUDIT_STATUS_UNDO = -1; //小程序审核状态-未提交审核
@@ -84,52 +123,6 @@ final class Project extends ProjectBase
     const WXMINI_OPTION_STATUS_RELEASED = 6; //小程序操作状态-已发布
     const WXMINI_EXPIRE_TOKEN = 7000; //小程序token超时时间,单位为秒
     const WXMINI_DEFAULT_CLIENT_IP = '127.0.0.1'; //默认客户端IP
-
-    //服务预处理常量,标识长度为5位,第一位固定为/,后四位代表不同预处理操作,其中后四位全为数字的为框架内部预留标识
-    const PRE_PROCESS_TAG_HTTP_PROJECT_REFRESH_TOKEN_EXPIRE = '/a000'; //HTTP服务项目标识-更新令牌过期时间
-    const PRE_PROCESS_TAG_RPC_PROJECT_TEST = '/a000'; //RPC服务项目标识-测试
-
-    //进程池服务标识常量,4位字符串,数字和字母组成,纯数字的为框架内部服务,其他为自定义服务
-    const POOL_PROCESS_SERVICE_TAG_TEST = 'a000'; //服务标识-测试
-
-    //模块常量
-    public static $totalModuleName = [
-        self::MODULE_NAME_API,
-        self::MODULE_NAME_ORDER,
-        self::MODULE_NAME_CONTENT,
-        self::MODULE_NAME_USER,
-        self::MODULE_NAME_SERVICE,
-    ];
-    public static $totalModuleBase = [
-        self::MODULE_BASE_API,
-        self::MODULE_BASE_ORDER,
-        self::MODULE_BASE_CONTENT,
-        self::MODULE_BASE_USER,
-        self::MODULE_BASE_SERVICE,
-    ];
-
-    //地区常量
-    public static $totalRegionLevelType = [
-        self::REGION_LEVEL_TYPE_PROVINCE => '省',
-        self::REGION_LEVEL_TYPE_CITY => '市',
-        self::REGION_LEVEL_TYPE_COUNTY => '县',
-    ];
-
-    //角色常量
-    public static $totalRoleStatus = [
-        self::ROLE_STATUS_DELETE => '已删除',
-        self::ROLE_STATUS_INVALID => '无效',
-        self::ROLE_STATUS_VALID => '有效',
-    ];
-
-    //角色权限常量
-    public static $totalRolePowerLevel = [
-        self::ROLE_POWER_LEVEL_ONE => '第一级',
-        self::ROLE_POWER_LEVEL_TWO => '第二级',
-        self::ROLE_POWER_LEVEL_THREE => '第三级',
-    ];
-
-    //微信小程序常量
     public static $totalWxMiniType = [
         self::WXMINI_TYPE_PLAT_MINI => '平台小程序',
         self::WXMINI_TYPE_SHOP_MINI => '商户小程序',
@@ -148,4 +141,11 @@ final class Project extends ProjectBase
         self::WXMINI_OPTION_STATUS_AUDIT_FAIL => '审核失败',
         self::WXMINI_OPTION_STATUS_RELEASED => '已发布',
     ];
+
+    //服务预处理常量,标识长度为5位,第一位固定为/,后四位代表不同预处理操作,其中后四位全为数字的为框架内部预留标识
+    const PRE_PROCESS_TAG_HTTP_PROJECT_REFRESH_TOKEN_EXPIRE = '/a000'; //HTTP服务项目标识-更新令牌过期时间
+    const PRE_PROCESS_TAG_RPC_PROJECT_TEST = '/a000'; //RPC服务项目标识-测试
+
+    //进程池服务标识常量,4位字符串,数字和字母组成,纯数字的为框架内部服务,其他为自定义服务
+    const POOL_PROCESS_SERVICE_TAG_TEST = 'a000'; //服务标识-测试
 }

@@ -74,4 +74,12 @@ final class ProjectTool
 
         return '';
     }
+
+    /**
+     * 获取语言类型
+     * @return string
+     */
+    public static function getLanguageType() : string
+    {
+    }
 }
