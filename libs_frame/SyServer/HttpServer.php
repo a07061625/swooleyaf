@@ -448,8 +448,8 @@ class HttpServer extends BaseServer
      */
     private function initReceive(Request $request)
     {
-        $_POST = $request->post ?? [];
         $_GET = $request->get ?? [];
+        $_POST = $request->post ?? [];
         $_FILES = $request->files ?? [];
         $_COOKIE = $request->cookie ?? [];
         $GLOBALS['HTTP_RAW_POST_DATA'] = $request->rawContent();
