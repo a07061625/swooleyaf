@@ -233,6 +233,11 @@ class ErrorCode
     const IOT_REQ_BAIDU_ERROR = 106211;
     const IOT_REQ_TENCENT_ERROR = 106212;
 
+    //七牛错误,取值范围:106400-106999
+    const QINIU_KODO_PARAM_ERROR = 106400;
+    const QINIU_KODO_POST_ERROR = 106401;
+    const QINIU_KODO_GET_ERROR = 106402;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -383,6 +388,9 @@ class ErrorCode
         self::IOT_REQ_ALIYUN_ERROR => '物联网阿里云发送请求出错',
         self::IOT_REQ_BAIDU_ERROR => '物联网百度发送请求出错',
         self::IOT_REQ_TENCENT_ERROR => '物联网腾讯发送请求出错',
+        self::QINIU_KODO_PARAM_ERROR => '七牛对象存储参数错误',
+        self::QINIU_KODO_POST_ERROR => '七牛对象存储发送POST请求出错',
+        self::QINIU_KODO_GET_ERROR => '七牛对象存储发送GET请求出错',
     ];
 
     /**
