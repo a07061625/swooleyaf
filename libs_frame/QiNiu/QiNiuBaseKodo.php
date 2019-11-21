@@ -7,6 +7,21 @@
  */
 namespace QiNiu;
 
-abstract class QiNiuBaseKodo
+abstract class QiNiuBaseKodo extends QiNiuBase
 {
+    /**
+     * 服务uri
+     * @var string
+     */
+    protected $serviceUri = '';
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    protected function getContent() : array
+    {
+        return $this->curlConfigs;
+    }
 }

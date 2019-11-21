@@ -9,4 +9,26 @@ namespace QiNiu;
 
 abstract class QiNiuBase
 {
+    /**
+     * curl配置
+     * @var array
+     */
+    protected $curlConfigs = [];
+    /**
+     * 请求数据
+     * @var array
+     */
+    protected $reqData = [];
+    /**
+     * 请求头
+     * @var array
+     */
+    protected $reqHeader = [];
+
+    public function __construct()
+    {
+    }
+
+    abstract public function getDetail() : array;
+    abstract protected function getContent() : array;
 }
