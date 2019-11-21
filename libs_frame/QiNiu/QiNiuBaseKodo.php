@@ -22,6 +22,11 @@ abstract class QiNiuBaseKodo extends QiNiuBase
 
     protected function getContent() : array
     {
+        $reqHeaderArr = [];
+        foreach ($this->reqHeader as $headerKey => $headerVal) {
+            $reqHeaderArr[] = $headerKey . ': ' . $headerVal;
+        }
+        $this->curlConfigs[CURLOPT_HTTPHEADER] = $reqHeaderArr;
         return $this->curlConfigs;
     }
 }
