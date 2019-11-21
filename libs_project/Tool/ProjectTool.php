@@ -7,6 +7,7 @@
  */
 namespace Tool;
 
+use SyConstant\Project;
 use SyTrait\SimpleTrait;
 
 final class ProjectTool
@@ -81,5 +82,6 @@ final class ProjectTool
      */
     public static function getLanguageType() : string
     {
+        return $_POST[Project::DATA_KEY_LANGUAGE_TAG] ?? Project::LANG_TYPE_DEFAULT;
     }
 }

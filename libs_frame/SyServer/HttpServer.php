@@ -450,6 +450,10 @@ class HttpServer extends BaseServer
     private function initReceive(Request $request)
     {
         $_POST = $request->post ?? [];
+        $_GET = $request->get ?? [];
+        $_FILES = $request->files ?? [];
+        $_COOKIE = $request->cookie ?? [];
+        $GLOBALS['HTTP_RAW_POST_DATA'] = $request->rawContent();
         $_SESSION = [];
         Registry::del(SyInner::REGISTRY_NAME_SERVICE_ERROR);
         self::$_reqHeaders = $request->header ?? [];
@@ -491,6 +495,20 @@ class HttpServer extends BaseServer
         $nowTime = time();
         $_SERVER[SyInner::SERVER_DATA_KEY_TIMESTAMP] = $nowTime;
         $_SERVER['SYREQ_ID'] = hash('md4', $nowTime . Tool::createNonceStr(8));
+
+        //初始化语言类型
+        if (isset($_COOKIE[Project::DATA_KEY_LANGUAGE_TAG])) {
+            $langType = $_COOKIE[Project::DATA_KEY_LANGUAGE_TAG];
+        } elseif ($_GET[Project::DATA_KEY_LANGUAGE_TAG]) {
+            $langType = $_GET[Project::DATA_KEY_LANGUAGE_TAG];
+        } else {
+            $langType = $_POST[Project::DATA_KEY_LANGUAGE_TAG] ?? '';
+        }
+        if (isset(Project::$totalLangType[$langType])) {
+            $_POST[Project::DATA_KEY_LANGUAGE_TAG] = $langType;
+        } else {
+            $_POST[Project::DATA_KEY_LANGUAGE_TAG] = Project::LANG_TYPE_DEFAULT;
+        }
         return '';
     }
 
@@ -498,10 +516,6 @@ class HttpServer extends BaseServer
     {
         self::$_reqStartTime = microtime(true);
         self::$_syServer->incr(self::$_serverToken, 'request_times', 1);
-        $_GET = $request->get ?? [];
-        $_FILES = $request->files ?? [];
-        $_COOKIE = $request->cookie ?? [];
-        $GLOBALS['HTTP_RAW_POST_DATA'] = $request->rawContent();
         $_POST[RequestSign::KEY_SIGN] = $_GET[RequestSign::KEY_SIGN] ?? '';
         unset($_GET[RequestSign::KEY_SIGN]);
         //注册全局信息
