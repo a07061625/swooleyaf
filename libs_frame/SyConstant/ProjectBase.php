@@ -16,6 +16,7 @@ class ProjectBase
     //数据常量
     const DATA_KEY_SESSION_TOKEN = 'sytoken'; //键名-session标识
     const DATA_KEY_CACHE_UNIQUE_ID = self::REDIS_PREFIX_UNIQUE_ID . 'uniqueid'; //键名-缓存唯一ID
+    const DATA_KEY_LANGUAGE_TAG = '_sylang'; //键名-语言标识
 
     //公共常量
     const COMMON_PAGE_DEFAULT = 1; //默认页数
