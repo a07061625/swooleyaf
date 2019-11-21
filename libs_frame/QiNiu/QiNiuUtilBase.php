@@ -44,6 +44,7 @@ abstract class QiNiuUtilBase
 
     public static function sendCurl(array $configs)
     {
+        $configs[CURLOPT_HEADER] = false;
         $configs[CURLOPT_RETURNTRANSFER] = true;
         if (!isset($configs[CURLOPT_TIMEOUT_MS])) {
             $configs[CURLOPT_TIMEOUT_MS] = 2000;
