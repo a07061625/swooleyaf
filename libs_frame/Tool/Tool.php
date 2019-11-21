@@ -839,4 +839,21 @@ class Tool
         $num3 = $num1 + cos($radLat1) * cos($radLat2) * $num2;
         return (int)(12756274 * asin(sqrt($num3)));
     }
+
+    /**
+     * 获取国际化文本
+     * @param string $tag 国际化标识
+     * @return string
+     */
+    public static function getI18nText(string $tag)
+    {
+        if (substr($tag, 0, 5) != 'i18n.') {
+            return $tag;
+        }
+
+        $langType = ProjectTool::getLanguageType();
+        $i18nKey = substr($tag, 5);
+        $configKey = 'lang_' . $langType . '.' . SY_ENV . SY_PROJECT . '.' . $i18nKey;
+        return self::getConfig($configKey, '', $i18nKey);
+    }
 }
