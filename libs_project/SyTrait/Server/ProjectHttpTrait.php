@@ -89,4 +89,23 @@ trait ProjectHttpTrait
     private function handleReqExceptionByProject(\Exception $e) : Result
     {
     }
+
+    /**
+     * 初始化语言类型
+     */
+    private function initLanguageType()
+    {
+        if (isset($_COOKIE[Project::DATA_KEY_LANGUAGE_TAG])) {
+            $langType = $_COOKIE[Project::DATA_KEY_LANGUAGE_TAG];
+        } elseif ($_GET[Project::DATA_KEY_LANGUAGE_TAG]) {
+            $langType = $_GET[Project::DATA_KEY_LANGUAGE_TAG];
+        } else {
+            $langType = $_POST[Project::DATA_KEY_LANGUAGE_TAG] ?? '';
+        }
+        if (isset(Project::$totalLangType[$langType])) {
+            $_POST[Project::DATA_KEY_LANGUAGE_TAG] = $langType;
+        } else {
+            $_POST[Project::DATA_KEY_LANGUAGE_TAG] = Project::LANG_TYPE_DEFAULT;
+        }
+    }
 }
