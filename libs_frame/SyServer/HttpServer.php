@@ -494,20 +494,7 @@ class HttpServer extends BaseServer
         $nowTime = time();
         $_SERVER[SyInner::SERVER_DATA_KEY_TIMESTAMP] = $nowTime;
         $_SERVER['SYREQ_ID'] = hash('md4', $nowTime . Tool::createNonceStr(8));
-
-        //初始化语言类型
-        if (isset($_COOKIE[Project::DATA_KEY_LANGUAGE_TAG])) {
-            $langType = $_COOKIE[Project::DATA_KEY_LANGUAGE_TAG];
-        } elseif ($_GET[Project::DATA_KEY_LANGUAGE_TAG]) {
-            $langType = $_GET[Project::DATA_KEY_LANGUAGE_TAG];
-        } else {
-            $langType = $_POST[Project::DATA_KEY_LANGUAGE_TAG] ?? '';
-        }
-        if (isset(Project::$totalLangType[$langType])) {
-            $_POST[Project::DATA_KEY_LANGUAGE_TAG] = $langType;
-        } else {
-            $_POST[Project::DATA_KEY_LANGUAGE_TAG] = Project::LANG_TYPE_DEFAULT;
-        }
+        $this->initLanguageType();
         return '';
     }
 
