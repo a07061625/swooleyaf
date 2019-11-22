@@ -59,6 +59,7 @@ abstract class QiNiuBaseKodo extends QiNiuBase
 
     protected function getContent() : array
     {
+        $this->curlConfigs[CURLOPT_URL] = 'http://' . $this->serviceHost . $this->serviceUri;
         $this->curlConfigs[CURLOPT_SSL_VERIFYPEER] = false;
         $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $reqHeaderArr = [];

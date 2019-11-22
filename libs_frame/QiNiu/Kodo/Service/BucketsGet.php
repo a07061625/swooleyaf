@@ -48,7 +48,6 @@ class BucketsGet extends QiNiuBaseKodo
     {
         $this->serviceUri = '/buckets?' . http_build_query($this->reqData);
         $this->reqHeader['Authorization'] = 'QBox ' . QiNiuUtilBase::createAccessToken($this->serviceUri);
-        $this->curlConfigs[CURLOPT_URL] = 'http://' . $this->serviceHost . $this->serviceUri;
         return $this->getContent();
     }
 }
