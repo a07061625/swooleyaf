@@ -129,7 +129,7 @@ class FileMove extends QiNiuBaseKodo
         $encodeSrcUri = QiNiuUtilBase::encodeUri($this->srcBucketName, $this->srcFileName);
         $encodeDestUri = QiNiuUtilBase::encodeUri($this->destBucketName, $this->destFileName);
         $this->serviceUri = '/move/' . $encodeSrcUri . '/' . $encodeDestUri . '/force/';
-        if($this->force){
+        if ($this->force) {
             $this->serviceUri .= 'true';
         } else {
             $this->serviceUri .= 'false';
