@@ -117,7 +117,6 @@ class StandardStorageSpace extends QiNiuBaseKodo
 
         $this->serviceUri = '/v6/space?' . http_build_query($this->reqData);
         $this->reqHeader['Authorization'] = 'QBox ' . QiNiuUtilBase::createAccessToken($this->serviceUri);
-        $this->curlConfigs[CURLOPT_URL] = 'http://' . $this->serviceHost . $this->serviceUri;
         return $this->getContent();
     }
 }
