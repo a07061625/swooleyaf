@@ -7,6 +7,7 @@
  */
 namespace QiNiu;
 
+use DesignPatterns\Singletons\QiNiuConfigSingleton;
 use SyConstant\ErrorCode;
 use SyTrait\SimpleTrait;
 use Tool\Tool;
@@ -33,16 +34,70 @@ final class QiNiuUtilKodo extends QiNiuUtilBase
         }
 
         $sendData = Tool::jsonDecode($sendRes);
-        if (isset($sendData['code']) && ($sendData['code'] > 200)) {
+        if (isset($sendData['error'])) {
             $resArr['code'] = ErrorCode::QINIU_KODO_PARAM_ERROR;
             $resArr['message'] = $sendData['error'];
         } elseif (is_array($sendData)) {
             $resArr['data'] = $sendData;
+        } elseif (strlen($sendRes) == 0) {
+            $resArr['data'] = [
+                'result' => 'success',
+            ];
         } else {
             $resArr['code'] = ErrorCode::QINIU_KODO_PARAM_ERROR;
             $resArr['message'] = '解析响应数据出错';
         }
 
         return $resArr;
+    }
+
+    /**
+     * 链接添加下载凭证
+     * @param string $url 链接地址
+     * @param int $expireTime 超时时间,单位为秒
+     * @return bool
+     */
+    public static function addDownloadToken(string &$url, int $expireTime)
+    {
+        if ($expireTime <= 0) {
+            return false;
+        }
+
+        $urlArr = explode('?', $url);
+        if (isset($urlArr[1]) && (strlen($urlArr[1]) > 0)) {
+            $queryArr = parse_str($urlArr[1]);
+        } else {
+            $queryArr = [];
+        }
+        $queryArr['e'] = time() + $expireTime;
+        unset($queryArr['token']);
+        $downloadUrl = $urlArr[0] . '?' . http_build_query($queryArr);
+        $config = QiNiuConfigSingleton::getInstance()->getKodoConfig();
+        $sign = hash_hmac('sha1', $downloadUrl, $config->getSecretKey());
+        $url = $downloadUrl . '&token=' . $config->getAccessKey() . ':' . self::safeBase64($sign);
+        return true;
+    }
+
+    /**
+     * 生成上传凭证
+     * @param array $data
+     * 字段如下:
+     *   bucket_name: string 空间名称
+     *   file_key: string 文件key
+     *   expire_time: int 到期时间戳
+     *   return_data: string 响应返回数据,json格式
+     * @return string
+     */
+    public static function createUploadToken(array $data)
+    {
+        $config = QiNiuConfigSingleton::getInstance()->getKodoConfig();
+        $policyStr = Tool::jsonEncode([
+            'scope' => $data['bucket_name'] . ':' . $data['file_key'],
+            'deadline' => $data['expire_time'],
+            'returnBody' => $data['return_data'],
+        ], JSON_UNESCAPED_UNICODE);
+        $encodePolicy = self::safeBase64($policyStr);
+        $sign = hash_hmac('sha1', $encodePolicy, $config->getSecretKey());
+        return $config->getAccessKey() . ':' . self::safeBase64($sign) . ':' . $encodePolicy;
     }
 }

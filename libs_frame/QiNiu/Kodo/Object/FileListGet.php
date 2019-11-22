@@ -12,7 +12,7 @@ use QiNiu\QiNiuUtilBase;
 use SyConstant\ErrorCode;
 use SyException\QiNiu\KodoException;
 
-class ResourceListGet extends QiNiuBaseKodo
+class FileListGet extends QiNiuBaseKodo
 {
     /**
      * 空间名称
@@ -119,7 +119,6 @@ class ResourceListGet extends QiNiuBaseKodo
 
         $this->serviceUri = '/list?' . http_build_query($this->reqData);
         $this->reqHeader['Authorization'] = 'QBox ' . QiNiuUtilBase::createAccessToken($this->serviceUri);
-        $this->curlConfigs[CURLOPT_URL] = 'http://' . $this->serviceHost . $this->serviceUri;
         return $this->getContent();
     }
 }

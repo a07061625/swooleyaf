@@ -42,6 +42,17 @@ abstract class QiNiuUtilBase
         return $config->getAccessKey() . ':' . self::safeBase64($signStr);
     }
 
+    /**
+     * 编码URI
+     * @param string $bucketName 空间名称
+     * @param string $fileKey 文件key
+     * @return string
+     */
+    public static function encodeUri(string $bucketName, string $fileKey)
+    {
+        return self::safeBase64($bucketName . ':' . $fileKey);
+    }
+
     public static function sendCurl(array $configs)
     {
         $configs[CURLOPT_HEADER] = false;
