@@ -49,7 +49,7 @@ abstract class QiNiuBaseKodo extends QiNiuBase
      */
     protected function setServiceHost(string $host)
     {
-        if(strlen($host) > 0){
+        if (strlen($host) > 0) {
             $this->serviceHost = $host;
             $this->reqHeader['Host'] = $host;
         } else {
