@@ -103,7 +103,6 @@ class LowFileCount extends QiNiuBaseKodo
         } else {
             throw new KodoException('存储区域不合法', ErrorCode::QINIU_KODO_PARAM_ERROR);
         }
-
     }
 
     public function getDetail() : array

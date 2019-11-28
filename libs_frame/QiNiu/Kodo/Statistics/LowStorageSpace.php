@@ -108,7 +108,6 @@ class LowStorageSpace extends QiNiuBaseKodo
         } else {
             throw new KodoException('存储区域不合法', ErrorCode::QINIU_KODO_PARAM_ERROR);
         }
-
     }
 
     /**
@@ -117,7 +116,7 @@ class LowStorageSpace extends QiNiuBaseKodo
      */
     public function setPreDel(int $preDel)
     {
-        if($preDel == -1){
+        if ($preDel == -1) {
             unset($this->reqData['no_predel']);
             unset($this->reqData['only_predel']);
         } elseif ($preDel == 0) {
