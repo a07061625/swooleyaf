@@ -7,6 +7,7 @@
  */
 namespace Mailer;
 
+use DesignPatterns\Singletons\MailConfigSingleton;
 use SyConstant\ErrorCode;
 use SyException\Mail\MailException;
 use Log\Log;
@@ -25,11 +26,7 @@ class SyPhpMailer
 
     public function __construct(string $node)
     {
-        $config = MailConfig::getInstance()->getSmtpConfig($node);
-        if (is_null($config)) {
-            throw new MailException('配置不存在', ErrorCode::MAIL_PARAM_ERROR);
-        }
-
+        $config = MailConfigSingleton::getInstance()->getSmtpConfig($node);
         $this->mailer = new PHPMailer();
         $this->mailer->isSMTP();
         $this->mailer->Host = $config->getHost();
