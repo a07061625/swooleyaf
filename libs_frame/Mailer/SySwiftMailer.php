@@ -7,6 +7,7 @@
  */
 namespace Mailer;
 
+use DesignPatterns\Singletons\MailConfigSingleton;
 use SyConstant\ErrorCode;
 use SyException\Mail\MailException;
 use Log\Log;
@@ -24,11 +25,7 @@ class SySwiftMailer
 
     public function __construct(string $node)
     {
-        $config = MailConfig::getInstance()->getSmtpConfig($node);
-        if (is_null($config)) {
-            throw new MailException('配置不存在', ErrorCode::MAIL_PARAM_ERROR);
-        }
-
+        $config = MailConfigSingleton::getInstance()->getSmtpConfig($node);
         $transport = new \Swift_SmtpTransport();
         $transport->setHost($config->getHost());
         $transport->setPort($config->getPort());
