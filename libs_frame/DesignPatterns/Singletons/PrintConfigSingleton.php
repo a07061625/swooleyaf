@@ -25,13 +25,6 @@ class PrintConfigSingleton
 
     private function __construct()
     {
-        $configs = Tool::getConfig('print.' . SY_ENV . SY_PROJECT);
-
-        $feYinConfig = new ConfigFeYin();
-        $feYinConfig->setAppId((string)Tool::getArrayVal($configs, 'feyin.app.id', '', true));
-        $feYinConfig->setAppKey((string)Tool::getArrayVal($configs, 'feyin.app.key', '', true));
-        $feYinConfig->setMemberCode((string)Tool::getArrayVal($configs, 'feyin.member.code', '', true));
-        $this->feYinConfigs[$feYinConfig->getAppId()] = $feYinConfig;
     }
 
     /**
@@ -61,6 +54,18 @@ class PrintConfigSingleton
      */
     public function getFeYinConfig(string $appId)
     {
+        if (is_null($this->feYinConfigs)) {
+            $this->feYinConfigs = [];
+            $configs = Tool::getConfig('print.' . SY_ENV . SY_PROJECT);
+            foreach ($configs['feyin'] as $eConfig) {
+                $feYinConfig = new ConfigFeYin();
+                $feYinConfig->setAppId((string)Tool::getArrayVal($eConfig, 'app.id', '', true));
+                $feYinConfig->setAppKey((string)Tool::getArrayVal($eConfig, 'app.key', '', true));
+                $feYinConfig->setMemberCode((string)Tool::getArrayVal($eConfig, 'member.code', '', true));
+                $this->feYinConfigs[$feYinConfig->getAppId()] = $feYinConfig;
+            }
+        }
+
         if (isset($this->feYinConfigs[$appId])) {
             return $this->feYinConfigs[$appId];
         } else {
