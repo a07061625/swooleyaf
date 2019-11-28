@@ -22,6 +22,10 @@ class MailConfigSingleton
      */
     private $smtpConfigMap = null;
 
+    private function __construct()
+    {
+    }
+
     /**
      * @return \DesignPatterns\Singletons\MailConfigSingleton
      */
@@ -54,11 +58,10 @@ class MailConfigSingleton
             }
         }
 
-        $config = $this->smtpConfigMap[$node] ?? null;
-        if (is_null($config)) {
+        if (isset($this->smtpConfigMap[$node])) {
+            return $this->smtpConfigMap[$node];
+        } else {
             throw new MailException('SMTP配置不存在', ErrorCode::MAIL_PARAM_ERROR);
         }
-
-        return $config;
     }
 }
