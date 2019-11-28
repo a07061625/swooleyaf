@@ -1,10 +1,16 @@
 <?php
-namespace Mailer\Configs;
+/**
+ * Created by PhpStorm.
+ * User: 姜伟
+ * Date: 2019/11/28 0028
+ * Time: 10:39
+ */
+namespace Mailer;
 
 use SyConstant\ErrorCode;
 use SyException\Mail\MailException;
 
-class Smtp
+class ConfigSmtp
 {
     /**
      * 域名
@@ -26,6 +32,7 @@ class Smtp
      * @var string
      */
     private $pwd = '';
+
     public function __construct()
     {
     }
@@ -50,7 +57,7 @@ class Smtp
     {
         $trueHost = preg_replace('/\s+/', '', $host);
         if (strlen($trueHost) > 0) {
-            $this->host = $host;
+            $this->host = $trueHost;
         } else {
             throw new MailException('域名不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
