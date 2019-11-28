@@ -1,6 +1,6 @@
 <?php
 /**
- * 获取标准存储的存储量统计
+ * 获取PUT请求次数
  * User: 姜伟
  * Date: 2019/11/22 0022
  * Time: 10:29
@@ -12,7 +12,7 @@ use QiNiu\QiNiuUtilBase;
 use SyConstant\ErrorCode;
 use SyException\QiNiu\KodoException;
 
-class StandardStorageSpace extends QiNiuBaseKodo
+class PutNumber extends QiNiuBaseKodo
 {
     /**
      * 空间名称
@@ -35,17 +35,27 @@ class StandardStorageSpace extends QiNiuBaseKodo
      */
     private $g = '';
     /**
+     * 选择类型
+     * @var string
+     */
+    private $select = '';
+    /**
      * 存储区域
      * @var string
      */
     private $region = '';
+    /**
+     * 存储类型 0:标准存储 1:低频存储
+     * @var int
+     */
+    private $ftype = 0;
 
     public function __construct()
     {
         parent::__construct();
         $this->setServiceHost('api.qiniu.com');
         $this->reqData = [
-            'g' => 'day',
+            'select' => 'hits',
         ];
     }
 
@@ -93,6 +103,19 @@ class StandardStorageSpace extends QiNiuBaseKodo
     }
 
     /**
+     * @param string $timeSize
+     * @throws \SyException\QiNiu\KodoException
+     */
+    public function setTimeSize(string $timeSize)
+    {
+        if (in_array($timeSize, ['5min', 'hour', 'day', 'month'])) {
+            $this->reqData['g'] = $timeSize;
+        } else {
+            throw new KodoException('时间粒度不合法', ErrorCode::QINIU_KODO_PARAM_ERROR);
+        }
+    }
+
+    /**
      * @param string $region
      * @throws \SyException\QiNiu\KodoException
      */
@@ -105,6 +128,19 @@ class StandardStorageSpace extends QiNiuBaseKodo
         }
     }
 
+    /**
+     * @param int $fileType
+     * @throws \SyException\QiNiu\KodoException
+     */
+    public function setFileType(int $fileType)
+    {
+        if (in_array($fileType, [0, 1])) {
+            $this->reqData['ftype'] = $fileType;
+        } else {
+            throw new KodoException('存储类型不合法', ErrorCode::QINIU_KODO_PARAM_ERROR);
+        }
+    }
+
     public function getDetail() : array
     {
         if (!isset($this->reqData['begin'])) {
@@ -113,8 +149,11 @@ class StandardStorageSpace extends QiNiuBaseKodo
         if (!isset($this->reqData['end'])) {
             throw new KodoException('结束时间不能为空', ErrorCode::QINIU_KODO_PARAM_ERROR);
         }
+        if (!isset($this->reqData['g'])) {
+            throw new KodoException('时间粒度不能为空', ErrorCode::QINIU_KODO_PARAM_ERROR);
+        }
 
-        $this->serviceUri = '/v6/space?' . http_build_query($this->reqData);
+        $this->serviceUri = '/v6/rs_put?' . http_build_query($this->reqData);
         $this->reqHeader['Authorization'] = 'QBox ' . QiNiuUtilBase::createAccessToken($this->serviceUri);
         return $this->getContent();
     }
