@@ -185,15 +185,21 @@ class SyPhpMailer
 
     /**
      * 发送邮件
-     * @return bool
+     * @return array
      */
     public function sendEmail()
     {
+        $sendRes = [
+            'code' => 0,
+        ];
+
         $res = $this->mailer->send();
         if (!$res) {
             Log::error('PHP Mailer发送邮件失败,错误信息:' . $this->mailer->ErrorInfo);
+            $sendRes['code'] = ErrorCode::MAIL_SEND_FAIL;
+            $sendRes['msg'] = $this->mailer->ErrorInfo;
         }
 
-        return $res;
+        return $sendRes;
     }
 }
