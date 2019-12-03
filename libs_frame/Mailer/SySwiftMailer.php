@@ -173,15 +173,24 @@ class SySwiftMailer
 
     /**
      * 发送邮件
-     * @return int
+     * @return array
      */
     public function sendEmail()
     {
+        $sendRes = [
+            'code' => 0,
+        ];
+
+        $failedRecipients = [];
         $res = $this->mailer->send($this->message, $failedRecipients);
-        if (!$res) {
+        if ($res > 0) {
+            $sendRes['send_num'] = $res;
+        } else {
             Log::error('Swift Mailer发送邮件失败,错误信息:' . print_r($failedRecipients, true));
+            $sendRes['code'] = ErrorCode::MAIL_SEND_FAIL;
+            $sendRes['msg'] = $failedRecipients;
         }
 
-        return $res;
+        return $sendRes;
     }
 }
