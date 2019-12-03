@@ -61,7 +61,7 @@ class ErrorCode
 
     //邮件错误,取值范围:101200-101399
     const MAIL_SERVER_NOT_EXIST = 101200;
-    const MAIL_SMTP_SEND_FAIL = 101201;
+    const MAIL_SEND_FAIL = 101201;
     const MAIL_PARAM_ERROR = 101202;
 
     //微信错误,取值范围:101400-101599
@@ -271,7 +271,7 @@ class ErrorCode
         self::REFLECT_RESOURCE_NOT_EXIST => '反射资源不存在',
         self::REFLECT_ANNOTATION_DATA_ERROR => '注解数据不正确',
         self::MAIL_SERVER_NOT_EXIST => '邮件服务器不存在',
-        self::MAIL_SMTP_SEND_FAIL => '发送SMTP邮件失败',
+        self::MAIL_SEND_FAIL => '发送邮件失败',
         self::MAIL_PARAM_ERROR => '邮件参数错误',
         self::WX_PARAM_ERROR => '微信参数错误',
         self::WX_POST_ERROR => '微信发送POST请求出错',
