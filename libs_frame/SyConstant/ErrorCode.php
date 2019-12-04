@@ -220,7 +220,7 @@ class ErrorCode
     const LOGISTICS_PARAM_ERROR = 106100;
     const LOGISTICS_POST_ERROR = 106101;
     const LOGISTICS_GET_ERROR = 106102;
-    const LOGISTICS_REQ_ALIMART_ERROR = 106110;
+    const LOGISTICS_REQ_ALIMARKET_ALI_ERROR = 106110;
     const LOGISTICS_REQ_KD100_ERROR = 106111;
     const LOGISTICS_REQ_KDNIAO_ERROR = 106112;
     const LOGISTICS_REQ_TAOBAO_ERROR = 106113;
@@ -237,6 +237,12 @@ class ErrorCode
     const QINIU_KODO_PARAM_ERROR = 106400;
     const QINIU_KODO_POST_ERROR = 106401;
     const QINIU_KODO_GET_ERROR = 106402;
+
+    //货币错误,取值范围:107000-107099
+    const CURRENCY_PARAM_ERROR = 107000;
+    const CURRENCY_POST_ERROR = 107001;
+    const CURRENCY_GET_ERROR = 107002;
+    const CURRENCY_REQ_ALIMARKET_YIYUAN_ERROR = 107010;
 
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
@@ -378,7 +384,7 @@ class ErrorCode
         self::LOGISTICS_PARAM_ERROR => '物流参数错误',
         self::LOGISTICS_POST_ERROR => '物流发送POST请求出错',
         self::LOGISTICS_GET_ERROR => '物流发送GET请求出错',
-        self::LOGISTICS_REQ_ALIMART_ERROR => '物流阿里云市场发送请求出错',
+        self::LOGISTICS_REQ_ALIMARKET_ALI_ERROR => '阿里云市场阿里物流发送请求出错',
         self::LOGISTICS_REQ_KD100_ERROR => '物流快递100发送请求出错',
         self::LOGISTICS_REQ_KDNIAO_ERROR => '物流快递鸟发送请求出错',
         self::LOGISTICS_REQ_TAOBAO_ERROR => '物流淘宝发送请求出错',
@@ -391,6 +397,10 @@ class ErrorCode
         self::QINIU_KODO_PARAM_ERROR => '七牛对象存储参数错误',
         self::QINIU_KODO_POST_ERROR => '七牛对象存储发送POST请求出错',
         self::QINIU_KODO_GET_ERROR => '七牛对象存储发送GET请求出错',
+        self::CURRENCY_PARAM_ERROR => '货币参数错误',
+        self::CURRENCY_POST_ERROR => '货币POST请求出错',
+        self::CURRENCY_GET_ERROR => '货币GET请求出错',
+        self::CURRENCY_REQ_ALIMARKET_YIYUAN_ERROR => '阿里云市场易源货币发送请求出错',
     ];
 
     /**

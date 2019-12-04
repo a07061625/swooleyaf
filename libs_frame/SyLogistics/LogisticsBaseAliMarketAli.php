@@ -9,7 +9,7 @@ namespace SyLogistics;
 
 use DesignPatterns\Singletons\LogisticsConfigSingleton;
 
-abstract class LogisticsBaseAliMart extends LogisticsBase
+abstract class LogisticsBaseAliMarketAli extends LogisticsBase
 {
     /**
      * 请求头
@@ -25,7 +25,7 @@ abstract class LogisticsBaseAliMart extends LogisticsBase
     public function __construct()
     {
         parent::__construct();
-        $authCode = 'APPCODE ' . LogisticsConfigSingleton::getInstance()->getAliMartConfig()->getAppCode();
+        $authCode = 'APPCODE ' . LogisticsConfigSingleton::getInstance()->getAliMarketAliConfig()->getAppCode();
         $this->reqHeader['Authorization'] = $authCode;
     }
 
@@ -35,7 +35,7 @@ abstract class LogisticsBaseAliMart extends LogisticsBase
 
     protected function getContent() : array
     {
-        $config = LogisticsConfigSingleton::getInstance()->getAliMartConfig();
+        $config = LogisticsConfigSingleton::getInstance()->getAliMarketAliConfig();
         $url = $config->getServiceAddress() . $this->serviceUri;
         if (!empty($this->reqData)) {
             $url .= '?' . http_build_query($this->reqData);
