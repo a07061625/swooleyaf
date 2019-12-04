@@ -2,15 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: 姜伟
- * Date: 2019/6/18 0018
- * Time: 16:26
+ * Date: 2019/12/4 0004
+ * Time: 16:39
  */
-namespace SyLogistics;
+namespace SyCurrency;
 
 use SyConstant\ErrorCode;
-use SyException\Logistics\AliMartException;
+use SyException\Currency\AliMarketYiYuanException;
 
-class ConfigAliMart
+class ConfigAliMarketYiYuan
 {
     /**
      * APP KEY
@@ -61,14 +61,14 @@ class ConfigAliMart
 
     /**
      * @param string $appKey
-     * @throws \SyException\Logistics\AliMartException
+     * @throws \SyException\Currency\AliMarketYiYuanException
      */
     public function setAppKey(string $appKey)
     {
         if (ctype_alnum($appKey)) {
             $this->appKey = $appKey;
         } else {
-            throw new AliMartException('app key不合法', ErrorCode::LOGISTICS_PARAM_ERROR);
+            throw new AliMarketYiYuanException('app key不合法', ErrorCode::CURRENCY_PARAM_ERROR);
         }
     }
 
@@ -82,14 +82,14 @@ class ConfigAliMart
 
     /**
      * @param string $appSecret
-     * @throws \SyException\Logistics\AliMartException
+     * @throws \SyException\Currency\AliMarketYiYuanException
      */
     public function setAppSecret(string $appSecret)
     {
         if (ctype_alnum($appSecret)) {
             $this->appSecret = $appSecret;
         } else {
-            throw new AliMartException('app 密钥不合法', ErrorCode::LOGISTICS_PARAM_ERROR);
+            throw new AliMarketYiYuanException('app 密钥不合法', ErrorCode::CURRENCY_PARAM_ERROR);
         }
     }
 
@@ -103,14 +103,14 @@ class ConfigAliMart
 
     /**
      * @param string $appCode
-     * @throws \SyException\Logistics\AliMartException
+     * @throws \SyException\Currency\AliMarketYiYuanException
      */
     public function setAppCode(string $appCode)
     {
         if (ctype_alnum($appCode)) {
             $this->appCode = $appCode;
         } else {
-            throw new AliMartException('app 编码不合法', ErrorCode::LOGISTICS_PARAM_ERROR);
+            throw new AliMarketYiYuanException('app 编码不合法', ErrorCode::CURRENCY_PARAM_ERROR);
         }
     }
 
@@ -141,16 +141,16 @@ class ConfigAliMart
     /**
      * @param string $protocol
      * @param string $domain
-     * @throws \SyException\Logistics\AliMartException
+     * @throws \SyException\Currency\AliMarketYiYuanException
      */
     public function setServiceAddress(string $protocol, string $domain)
     {
         if (!in_array($protocol, ['http', 'https'])) {
-            throw new AliMartException('服务协议不合法', ErrorCode::LOGISTICS_PARAM_ERROR);
+            throw new AliMarketYiYuanException('服务协议不合法', ErrorCode::CURRENCY_PARAM_ERROR);
         }
         $trueDomain = trim($domain);
         if (strlen($trueDomain) == 0) {
-            throw new AliMartException('服务域名不合法', ErrorCode::LOGISTICS_PARAM_ERROR);
+            throw new AliMarketYiYuanException('服务域名不合法', ErrorCode::CURRENCY_PARAM_ERROR);
         }
         $this->serviceProtocol = $protocol;
         $this->serviceDomain = $trueDomain;

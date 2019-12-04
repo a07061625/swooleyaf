@@ -30,6 +30,7 @@
 - SyAspect: 切面相关
 - SyCache: 缓存类库
 - SyConstant: 常量
+- SyCurrency: 货币处理
 - SyError: 框架错误处理
 - SyException: 框架自定义异常
 - SyFrame: 框架架构相关
