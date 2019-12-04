@@ -30,15 +30,20 @@ class WxOpenController extends CommonController
      */
     public function handleAuthorizerNotifyAction()
     {
-        $data = \Request\SyRequest::getParams();
-        $data['wx_xml'] = \Tool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
-        $handleRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpen/handleAuthorizerNotify', $data);
-        $resData = \Tool\Tool::jsonDecode($handleRes);
-        if (is_array($resData) && isset($resData['code']) && ($resData['code'] == \SyConstant\ErrorCode::COMMON_SUCCESS)) {
-            $this->sendRsp($resData['data']['result']);
-        } else {
-            $this->sendRsp('fail');
+        $result = 'fail';
+        $uriArr = explode('/', $this->getRequest()->getRequestUri());
+        if (isset($uriArr[4]) && ctype_alnum($uriArr[4])) {
+            $data = \Request\SyRequest::getParams();
+            $data['appid'] = $uriArr[4];
+            $data['wx_xml'] = \Tool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
+            $handleRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpen/handleAuthorizerNotify', $data);
+            $resData = \Tool\Tool::jsonDecode($handleRes);
+            if (is_array($resData) && isset($resData['code']) && ($resData['code'] == \SyConstant\ErrorCode::COMMON_SUCCESS)) {
+                $result = $resData['data']['result'];
+            }
         }
+
+        $this->sendRsp($result);
     }
 
     /**
