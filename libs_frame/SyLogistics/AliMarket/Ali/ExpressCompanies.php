@@ -5,13 +5,13 @@
  * Date: 2019/6/18 0018
  * Time: 16:50
  */
-namespace SyLogistics\AliMart;
+namespace SyLogistics\AliMarket\Ali;
 
 use SyConstant\ErrorCode;
-use SyException\Logistics\AliMartException;
-use SyLogistics\LogisticsBaseAliMart;
+use SyException\Logistics\AliMarketAliException;
+use SyLogistics\LogisticsBaseAliMarketAli;
 
-class ExpressCompanies extends LogisticsBaseAliMart
+class ExpressCompanies extends LogisticsBaseAliMarketAli
 {
     /**
      * 公司名称
@@ -51,27 +51,27 @@ class ExpressCompanies extends LogisticsBaseAliMart
 
     /**
      * @param int $maxSize
-     * @throws \SyException\Logistics\AliMartException
+     * @throws \SyException\Logistics\AliMarketAliException
      */
     public function setMaxSize(int $maxSize)
     {
         if ($maxSize > 0) {
             $this->reqData['maxSize'] = $maxSize;
         } else {
-            throw new AliMartException('每页记录数必须大于0', ErrorCode::LOGISTICS_PARAM_ERROR);
+            throw new AliMarketAliException('每页记录数必须大于0', ErrorCode::LOGISTICS_PARAM_ERROR);
         }
     }
 
     /**
      * @param int $page
-     * @throws \SyException\Logistics\AliMartException
+     * @throws \SyException\Logistics\AliMarketAliException
      */
     public function setPage(int $page)
     {
         if ($page > 0) {
             $this->reqData['page'] = $page;
         } else {
-            throw new AliMartException('页数必须大于0', ErrorCode::LOGISTICS_PARAM_ERROR);
+            throw new AliMarketAliException('页数必须大于0', ErrorCode::LOGISTICS_PARAM_ERROR);
         }
     }
 

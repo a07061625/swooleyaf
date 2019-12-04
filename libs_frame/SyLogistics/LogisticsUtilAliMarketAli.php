@@ -11,16 +11,16 @@ use SyConstant\ErrorCode;
 use Tool\Tool;
 use SyTrait\SimpleTrait;
 
-abstract class LogisticsUtilAliMart extends LogisticsUtilBase
+abstract class LogisticsUtilAliMarketAli extends LogisticsUtilBase
 {
     use SimpleTrait;
 
     /**
      * 发送服务请求
-     * @param \SyLogistics\LogisticsBaseAliMart $logisticsBase
+     * @param \SyLogistics\LogisticsBaseAliMarketAli $logisticsBase
      * @return array
      */
-    public static function sendServiceRequest(LogisticsBaseAliMart $logisticsBase)
+    public static function sendServiceRequest(LogisticsBaseAliMarketAli $logisticsBase)
     {
         $resArr = [
             'code' => 0
@@ -29,7 +29,7 @@ abstract class LogisticsUtilAliMart extends LogisticsUtilBase
         $curlConfigs = $logisticsBase->getDetail();
         $sendRes = Tool::sendCurlReq($curlConfigs);
         if ($sendRes['res_no'] > 0) {
-            $resArr['code'] = ErrorCode::LOGISTICS_REQ_ALIMART_ERROR;
+            $resArr['code'] = ErrorCode::LOGISTICS_REQ_ALIMARKET_ALI_ERROR;
             $resArr['msg'] = $sendRes['res_msg'];
             return $resArr;
         }
@@ -38,14 +38,14 @@ abstract class LogisticsUtilAliMart extends LogisticsUtilBase
             if ($rspData['showapi_res_body']['ret_code'] == 0) {
                 $resArr['data'] = $rspData['showapi_res_body'];
             } else {
-                $resArr['code'] = ErrorCode::LOGISTICS_REQ_ALIMART_ERROR;
+                $resArr['code'] = ErrorCode::LOGISTICS_REQ_ALIMARKET_ALI_ERROR;
                 $resArr['msg'] = $rspData['showapi_res_body']['msg'];
             }
         } elseif (isset($rspData['showapi_res_error'])) {
-            $resArr['code'] = ErrorCode::LOGISTICS_REQ_ALIMART_ERROR;
+            $resArr['code'] = ErrorCode::LOGISTICS_REQ_ALIMARKET_ALI_ERROR;
             $resArr['msg'] = $rspData['showapi_res_error'];
         } else {
-            $resArr['code'] = ErrorCode::LOGISTICS_REQ_ALIMART_ERROR;
+            $resArr['code'] = ErrorCode::LOGISTICS_REQ_ALIMARKET_ALI_ERROR;
             $resArr['msg'] = '解析响应数据出错';
         }
         return $resArr;
