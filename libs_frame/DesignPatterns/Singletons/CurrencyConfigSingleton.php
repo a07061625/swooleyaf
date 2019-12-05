@@ -7,6 +7,7 @@
  */
 namespace DesignPatterns\Singletons;
 
+use SyCurrency\ConfigAliMarketJiSu;
 use SyCurrency\ConfigAliMarketYiYuan;
 use SyTrait\SingletonTrait;
 use Tool\Tool;
@@ -19,6 +20,10 @@ class CurrencyConfigSingleton
      * @var \SyCurrency\ConfigAliMarketYiYuan
      */
     private $aliMarketYiYuanConfig = null;
+    /**
+     * @var \SyCurrency\ConfigAliMarketJiSu
+     */
+    private $aliMarketJiSuConfig = null;
 
     private function __construct()
     {
@@ -54,5 +59,25 @@ class CurrencyConfigSingleton
         }
 
         return $this->aliMarketYiYuanConfig;
+    }
+
+    /**
+     * @return \SyCurrency\ConfigAliMarketJiSu
+     */
+    public function getAliMarketJiSuConfig()
+    {
+        if (is_null($this->aliMarketJiSuConfig)) {
+            $configs = Tool::getConfig('currency.' . SY_ENV . SY_PROJECT . '.alimarket.jisu');
+            $protocol = (string)Tool::getArrayVal($configs, 'service.protocol', 'https', true);
+            $domain = (string)Tool::getArrayVal($configs, 'service.domain', '', true);
+            $aliMarketConfig = new ConfigAliMarketJiSu();
+            $aliMarketConfig->setAppKey((string)Tool::getArrayVal($configs, 'app.key', '', true));
+            $aliMarketConfig->setAppSecret((string)Tool::getArrayVal($configs, 'app.secret', '', true));
+            $aliMarketConfig->setAppCode((string)Tool::getArrayVal($configs, 'app.code', '', true));
+            $aliMarketConfig->setServiceAddress($protocol, $domain);
+            $this->aliMarketJiSuConfig = $aliMarketConfig;
+        }
+
+        return $this->aliMarketJiSuConfig;
     }
 }

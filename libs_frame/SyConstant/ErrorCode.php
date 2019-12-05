@@ -243,6 +243,7 @@ class ErrorCode
     const CURRENCY_POST_ERROR = 107001;
     const CURRENCY_GET_ERROR = 107002;
     const CURRENCY_REQ_ALIMARKET_YIYUAN_ERROR = 107010;
+    const CURRENCY_REQ_ALIMARKET_JISU_ERROR = 107011;
 
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
@@ -401,6 +402,7 @@ class ErrorCode
         self::CURRENCY_POST_ERROR => '货币POST请求出错',
         self::CURRENCY_GET_ERROR => '货币GET请求出错',
         self::CURRENCY_REQ_ALIMARKET_YIYUAN_ERROR => '阿里云市场易源货币发送请求出错',
+        self::CURRENCY_REQ_ALIMARKET_JISU_ERROR => '阿里云市场极速货币发送请求出错',
     ];
 
     /**
