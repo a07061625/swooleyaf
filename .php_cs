@@ -19,10 +19,10 @@ $fixers = [
     'array_syntax' => ['syntax' => 'short'], //用[]关键字来定义数组
     'single_quote' => true, //简单字符串应该使用单引号代替双引号
     'self_accessor' => true, //在当前类中使用 self 代替类名
-    'binary_operator_spaces' => ['default' => 'align_single_space_minimal'], //二进制运算符应按配置包含的空格 align:居中 align_single_space:默认,单空格居中 align_single_space_minimal:单空格居中且空格大于1个的时候缩减到1个 no_space:没有空格 single_space:单空格,不居中 null:不做任何改变
+    'binary_operator_spaces' => ['default' => 'single_space'], //二进制运算符应按配置包含的空格 align:居中 align_single_space:默认,单空格居中 align_single_space_minimal:单空格居中且空格大于1个的时候缩减到1个 no_space:没有空格 single_space:单空格,不居中 null:不做任何改变
     'include' => true, //Include/Require的时候不应该用括号扩起来,应该用空格分割
     'standardize_not_equals' => true, //使用 <> 代替 !=
-    'no_closing_tag' => true, //?> 关闭标签必须在 PHP 文件中去掉
+    'no_closing_tag' => true, //关闭标签必须在 PHP 文件中去掉
     'no_unused_imports' => true, //删除没用到的use
     'no_singleline_whitespace_before_semicolons' => true, //禁止在关闭分号前使用单行空格
     'no_empty_statement' => true, //不应该存在空的结构体
@@ -43,19 +43,15 @@ $fixers = [
     'simplified_null_return' => true,
     'pre_increment' => false,
     'align_multiline_comment' => ['comment_type' => 'phpdocs_only'], //每行多行DocComments必须有一个星号（PSR-5）,并且必须与第一行对齐
-    'backtick_to_shell_exec' => false, //将反引号运算符转换为 shell_exec 调用
     'blank_line_after_namespace' => true, //命名空间之后空一行
     'blank_line_after_opening_tag' => false, //<?php 后面加一个空行
-    'blank_line_before_statement' => ['statements' => ['break', 'continue', 'declare', 'return', 'throw', 'try'], //空行换行必须在任何已配置的语句之前,可选配置项:break,case,continue,declare,default,die,do,exit,for,foreach,goto,if,include,include_once,require,require_once,return,switch,throw,try,while,yield
+    'blank_line_before_statement' => ['statements' => ['break', 'continue', 'declare', 'return', 'throw', 'try'],], //空行换行必须在任何已配置的语句之前,可选配置项:break,case,continue,declare,default,die,do,exit,for,foreach,goto,if,include,include_once,require,require_once,return,switch,throw,try,while,yield
     'cast_spaces' => ['space' => 'none',], //类型转换的时候,是否需要在中间加空格 none:不加 single:加一个空格
-    'class_attributes_separation' => ['elements' => ['method', 'property'],], //Class,trait和interface的属性是否需要一个空行隔开,可选配置项 const,method,property
     'class_keyword_remove' => false, //::class关键字移除,转成字符串
     'combine_consecutive_issets' => true, //当多个isset通过&&连接的时候,合并处理
     'combine_consecutive_unsets' => true, //当多个unset使用的时候,合并处理
     'declare_equal_normalize' => ['space' => 'single'], //declare语句中的等于号是否需要空格 none:不需要 single:一个空格
     'elseif' => true, //用elseif来代替else if
-    'escape_implicit_backslashes' => ['double_quoted' => true,'heredoc_syntax' => true,'single_quoted' => false], //是否需要自动帮忙添加转义字符 double_quoted:双引号 heredoc_syntax:heredoc的语法 single_quoted:单引号
-    'explicit_string_variable' => true, //把双引号或者heredoc字符串内部的隐形变量转成显性
     'full_opening_tag' => true, //php代码必须用 <?php 或者 <?= 不能是其他
     'function_declaration' => ['closure_function_spacing' => 'one'], //必包函数关键字function后面是否需要空格 one:一个空格 none:不需要
     'function_typehint_space' => true, //在闭包函数的参数类型约束的时候,是否需要空格
@@ -65,14 +61,11 @@ $fixers = [
     'lowercase_cast' => true, //数据类型转换必须小写
     'lowercase_constants' => true, //true, false, null 这几个php常量必须为小写
     'lowercase_keywords' => true, //PHP关键字必须小写
-    'lowercase_static_reference' => true, //静态调用必须小写,例如：self, static, parent
-    'multiline_whitespace_before_semicolons' => ['strategy' => 'no_multi_line'], //在结束分号之前禁止多行空格或将分号移动到链接调用的新行
     'new_with_braces' => true, //使用 new 关键字创建的所有实例必须后跟括号
     'no_blank_lines_after_phpdoc' => true, //phpdoc 后面不应该有空行
     'no_blank_lines_before_namespace' => true, //命名空间之前不应该有空行
     'no_empty_comment' => true, //不应该存在空注释
     'no_empty_phpdoc' => true, //不应该存在空的 phpdoc
-    'no_extra_blank_lines' => ['tokens' => ['break','case','continue','return','switch'],], //移除额外的空行 可选配置项:break,case,continue,curly_brace_block,default,extra(默认),parenthesis_brace_block,return,square_brace_block,switch,throw,use,useTrait,use_trait
     'no_leading_import_slash' => true, //use 语句中取消前置斜杠
     'no_mixed_echo_print' => ['use' => 'echo'], //不允许混合使用echo和print语句
     'no_multiline_whitespace_around_double_arrow' => true, //运算符 => 不应被多行空格包围
@@ -80,18 +73,16 @@ $fixers = [
     'no_short_echo_tag' => true, //用 <?php echo 来代替 <?=
     'no_spaces_after_function_name' => true, //在函数或者方法定义的时候,不允许函数和左括号之间有空格
     'no_spaces_inside_parenthesis' => true, //在左括号后面不能有空格,在右括号之前不能有空格
-    'no_superfluous_phpdoc_tags' => ['allow_mixed' => false], //删除没有提供有效信息的@param 和@return 注解
     'no_trailing_comma_in_singleline_array' => true, //PHP 单行数组最后不应该有逗号
     'no_trailing_whitespace' => true, //删除非空行末尾的尾随空格
     'no_trailing_whitespace_in_comment' => true, //注释或 PHPDoc 中必须没有尾随空格
     'no_unneeded_control_parentheses' => ['statements' => ['break', 'clone', 'continue', 'echo_print', 'return', 'switch_case', 'yield']], //删除控制语句周围不需要的括号 可选配置项: break,clone,continue,echo_print,return,switch_case,yield
     'no_unneeded_curly_braces' => true, //删除不需要的花括号
     'no_unneeded_final_method' => true, //终态类一定不能有终态方法
-    'no_unset_cast' => true, //必须设置变量 null 而不是使用(unset)强制转换
     'no_whitespace_before_comma_in_array' => true, //在数组声明中每个逗号前不得有空格
-    'not_operator_with_space' => true, //逻辑 NOT 运算符（!）应该具有前导和尾随空格
+    'not_operator_with_space' => false, //逻辑 NOT 运算符（!）应该具有前导和尾随空格
     'not_operator_with_successor_space' => false, //逻辑 NOT 运算符（!）应该有一个尾随空格
-    'phpdoc_align' => ['align' => 'vertical', 'tags' => ['param', 'return', 'throws', 'type', 'var']], //给定 phpdoc 标签的所有项目必须左对齐或垂直对齐 align配置项 left:左对齐 vertical:垂直对齐 tags配置项: param,property,return,throws,type,var,method
+    'phpdoc_align' => ['tags' => ['param', 'return', 'throws', 'type', 'var']], //给定 phpdoc 标签的所有项目必须左对齐或垂直对齐 tags配置项: param,property,return,throws,type,var,method
     'phpdoc_annotation_without_dot' => true, //PHPDoc 注释描述不应该是一个句子,即不能以句号结尾
     'phpdoc_indent' => true, //Docblock 应与文档主题具有相同的缩进
     'phpdoc_no_empty_return' => true, //@return void 和@return null 注释应该 PHPDoc 的被省略
@@ -100,20 +91,16 @@ $fixers = [
     'phpdoc_separation' => true, //PHPDoc 中的注释应该组合在一起,以便相同类型的注释紧跟在一起,并且不同类型的注释由单个空行分隔
     'phpdoc_single_line_var_spacing' => true, //单行@var PHPDoc 应该有适当的间距
     'phpdoc_summary' => false, //PHPDoc 摘要应以句号,感叹号或问号结尾
-    'phpdoc_trim_consecutive_blank_line_separation' => true, //在摘要之后和 PHPDoc 中的描述之后删除额外的空白行
-    'phpdoc_var_annotation_correct_order' => true, //@var 和@type 注释必须具有正确顺序的类型和名称
     'phpdoc_var_without_name' => true, //@var 和@type 注释不应包含变量名称
     'single_blank_line_at_eof' => true, //没有结束标记的 PHP 文件必须始终以单个空行换头结束
     'single_line_after_imports' => true, //每个命名空间使用必须在它自己的行上,并且在 use 语句块之后必须有一个空行
     'space_after_semicolon' => ['remove_in_empty_for_expressions' => true,], //分号后修复空格 remove_in_empty_for_expressions:是否应删除空 for 表达式的空格
-    'standardize_increment' => true, //如果可能,应使用递增和递减运算符
     'switch_case_semicolon_to_colon' => true, //case 之后应该是冒号而不是分号
     'switch_case_space' => true, //删除 case 冒号和值之间的额外空格
     'ternary_operator_spaces' => true, //三元操作符周围有标准空格
     'trim_array_spaces' => true, //数组应该像函数/方法参数一样格式化,不带前导或尾随单行空格
     'unary_operator_spaces' => true, //一元运算符应放在其操作数旁边
     'whitespace_after_comma_in_array' => true, //在数组声明中,每个逗号后必须有一个空格
-    'array_indentation' => true, //数组的每个元素必须缩进一次
 ];
 
 return PhpCsFixer\Config::create()
