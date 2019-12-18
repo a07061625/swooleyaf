@@ -203,7 +203,7 @@ class Server
     }
 
     /* publish: publishes $content on a $topic */
-    function send_publish($topic, $content, $qos = 0, $retain = 0)
+    public function send_publish($topic, $content, $qos = 0, $retain = 0)
     {
         $buffer = "";
         $buffer .= $topic;
