@@ -114,6 +114,15 @@ abstract class BaseServer
         define('SY_SERVER_IP', $this->_configs['server']['host']);
         define('SY_REQUEST_MAX_HANDLING', (int)$this->_configs['server']['request']['maxnum']['handling']);
 
+        //获取当前操作系统的用户
+        if (is_string($this->_configs['swoole']['user']) && (strlen($this->_configs['swoole']['user']) > 0)) {
+            $systemUser = $this->_configs['swoole']['user'];
+        } else {
+            $execUser = Tool::execSystemCommand('whoami');
+            $systemUser = $execUser['data'][0];
+        }
+        define('SY_SYSTEM_USER', $systemUser);
+
         $this->_configs['server']['port'] = $port;
         //关闭协程
         $this->_configs['swoole']['enable_coroutine'] = false;
@@ -647,6 +656,11 @@ abstract class BaseServer
 
     protected function basicWorkStop(Server $server, int $workId)
     {
+        if (SY_SYSTEM_USER == SyInner::SYSTEM_USER_ROOT) {
+            //热加载,要求必须为root
+            $server->reload();
+        }
+
         $errCode = $server->getLastError();
         if ($errCode > 0) {
             Log::error('swoole work stop,workId=' . $workId . ',errorCode=' . $errCode . ',errorMsg=' . print_r(error_get_last(), true));
