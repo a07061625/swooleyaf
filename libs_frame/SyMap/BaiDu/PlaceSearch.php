@@ -283,7 +283,7 @@ class PlaceSearch extends MapBaseBaiDu
      * @param string $lat 纬度
      * @throws \SyException\Map\BaiduMapException
      */
-    public function getAreaNearbyLngAndLat(string $lng, string $lat)
+    public function setAreaNearbyLngAndLat(string $lng, string $lat)
     {
         if (preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng) == 0) {
             throw new BaiduMapException('圆形范围搜索中心点经度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -386,7 +386,7 @@ class PlaceSearch extends MapBaseBaiDu
                 $this->reqData['bounds'] = $this->areaRectangleLat1 . ',' . $this->areaRectangleLng1 . ',' . $this->areaRectangleLat2 . ',' . $this->areaRectangleLng2;
                 break;
         }
-        $this->reqData['query'] = implode('', $this->keywords);
+        $this->reqData['query'] = implode(' ', $this->keywords);
 
         if (!empty($this->tags)) {
             $this->reqData['tag'] = implode(',', array_keys($this->tags));
