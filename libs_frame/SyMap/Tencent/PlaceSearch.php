@@ -238,7 +238,7 @@ class PlaceSearch extends MapBaseTencent
      * @param string $lat 纬度
      * @throws \SyException\Map\TencentMapException
      */
-    public function getAreaNearbyLngAndLat(string $lng, string $lat)
+    public function setAreaNearbyLngAndLat(string $lng, string $lat)
     {
         if (preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng) == 0) {
             throw new TencentMapException('圆形范围搜索中心点经度不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
