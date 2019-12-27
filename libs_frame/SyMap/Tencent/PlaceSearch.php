@@ -340,7 +340,7 @@ class PlaceSearch extends MapBaseTencent
                 if (strlen($this->areaRectangleLng1) == 0) {
                     throw new TencentMapException('矩形范围搜索经度和纬度都不能为空', ErrorCode::MAP_TENCENT_PARAM_ERROR);
                 }
-                $this->reqData['boundary'] = 'rectangle(' . $this->areaRectangleLat1 . ',' . $this->areaRectangleLng1 . ',' . $this->areaRectangleLat2 . ',' . $this->areaRectangleLng2;
+                $this->reqData['boundary'] = 'rectangle(' . $this->areaRectangleLat1 . ',' . $this->areaRectangleLng1 . ',' . $this->areaRectangleLat2 . ',' . $this->areaRectangleLng2 . ')';
                 break;
         }
 
