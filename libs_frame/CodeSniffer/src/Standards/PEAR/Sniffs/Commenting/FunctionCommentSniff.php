@@ -25,7 +25,6 @@ class FunctionCommentSniff implements Sniff
     public function register()
     {
         return [T_FUNCTION];
-
     }//end register()
 
 
@@ -97,7 +96,6 @@ class FunctionCommentSniff implements Sniff
         $this->processReturn($phpcsFile, $stackPtr, $commentStart);
         $this->processThrows($phpcsFile, $stackPtr, $commentStart);
         $this->processParams($phpcsFile, $stackPtr, $commentStart);
-
     }//end process()
 
 
@@ -146,7 +144,6 @@ class FunctionCommentSniff implements Sniff
             $error = 'Missing @return tag in function comment';
             $phpcsFile->addError($error, $tokens[$commentStart]['comment_closer'], 'MissingReturn');
         }//end if
-
     }//end processReturn()
 
 
@@ -181,7 +178,6 @@ class FunctionCommentSniff implements Sniff
                 $phpcsFile->addError($error, $tag, 'InvalidThrows');
             }
         }//end foreach
-
     }//end processThrows()
 
 
@@ -357,7 +353,7 @@ class FunctionCommentSniff implements Sniff
 
                     $phpcsFile->addError($error, $param['tag'], $code, $data);
                 }
-            } else if (substr($param['var'], -4) !== ',...') {
+            } elseif (substr($param['var'], -4) !== ',...') {
                 // We must have an extra parameter comment.
                 $error = 'Superfluous parameter comment';
                 $phpcsFile->addError($error, $param['tag'], 'ExtraParamComment');
@@ -463,8 +459,5 @@ class FunctionCommentSniff implements Sniff
             $data  = [$neededParam];
             $phpcsFile->addError($error, $commentStart, 'MissingParamTag', $data);
         }
-
     }//end processParams()
-
-
 }//end class

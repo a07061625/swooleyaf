@@ -9,23 +9,27 @@ namespace PoolService\ProcessService;
 
 use SyConstant\ProjectBase;
 
-abstract class BaseManager {
+abstract class BaseManager
+{
     private $frameServices = [];
     protected $projectServices = [];
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->frameServices = [
             ProjectBase::POOL_PROCESS_SERVICE_TAG_ENV_INFO => '\PoolService\ProcessService\EnvInfo',
         ];
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
-    public function getServiceName(string $serviceTag){
+    public function getServiceName(string $serviceTag)
+    {
         if (isset($this->frameServices[$serviceTag])) {
             return $this->frameServices[$serviceTag];
-        } else if(isset($this->projectServices[$serviceTag])){
+        } elseif (isset($this->projectServices[$serviceTag])) {
             return $this->projectServices[$serviceTag];
         } else {
             return '';

@@ -248,7 +248,6 @@ class File
         $this->configCache['recordErrors']    = $this->config->recordErrors;
         $this->configCache['ignorePatterns']  = $this->ruleset->ignorePatterns;
         $this->configCache['includePatterns'] = $this->ruleset->includePatterns;
-
     }//end __construct()
 
 
@@ -272,7 +271,6 @@ class File
             $this->addWarningOnLine($e->getMessage(), 1, 'Internal.DetectLineEndings');
             return;
         }
-
     }//end setContent()
 
 
@@ -286,7 +284,6 @@ class File
      */
     public function reloadContent()
     {
-
     }//end reloadContent()
 
 
@@ -298,7 +295,6 @@ class File
     public function disableCaching()
     {
         $this->configCache['cache'] = false;
-
     }//end disableCaching()
 
 
@@ -360,7 +356,7 @@ class File
                         $this->warningCount = 0;
                         $this->fixableCount = 0;
                         return;
-                    } else if (strpos($commentText, '@codingStandardsChangeSetting') !== false) {
+                    } elseif (strpos($commentText, '@codingStandardsChangeSetting') !== false) {
                         $start   = strpos($commentText, '@codingStandardsChangeSetting');
                         $comment = substr($commentText, ($start + 30));
                         $parts   = explode(' ', $comment);
@@ -379,7 +375,7 @@ class File
                             }
                         }
                     }//end if
-                } else if (substr($commentTextLower, 0, 16) === 'phpcs:ignorefile'
+                } elseif (substr($commentTextLower, 0, 16) === 'phpcs:ignorefile'
                     || substr($commentTextLower, 0, 17) === '@phpcs:ignorefile'
                 ) {
                     // Ignoring the whole file, just a little late.
@@ -389,7 +385,7 @@ class File
                     $this->warningCount = 0;
                     $this->fixableCount = 0;
                     return;
-                } else if (substr($commentTextLower, 0, 9) === 'phpcs:set'
+                } elseif (substr($commentTextLower, 0, 9) === 'phpcs:set'
                     || substr($commentTextLower, 0, 10) === '@phpcs:set'
                 ) {
                     if (isset($token['sniffCode']) === true) {
@@ -535,7 +531,6 @@ class File
         }
 
         $this->fixedCount += $this->fixer->getFixCount();
-
     }//end process()
 
 
@@ -596,7 +591,6 @@ class File
                 echo PHP_EOL;
             }
         }
-
     }//end parse()
 
 
@@ -608,7 +602,6 @@ class File
     public function getTokens()
     {
         return $this->tokens;
-
     }//end getTokens()
 
 
@@ -627,7 +620,6 @@ class File
         $this->fixer         = null;
         $this->config        = null;
         $this->ruleset       = null;
-
     }//end cleanUp()
 
 
@@ -661,7 +653,6 @@ class File
         }
 
         return $this->addMessage(true, $error, $line, $column, $code, $data, $severity, $fixable);
-
     }//end addError()
 
 
@@ -695,7 +686,6 @@ class File
         }
 
         return $this->addMessage(false, $warning, $line, $column, $code, $data, $severity, $fixable);
-
     }//end addWarning()
 
 
@@ -719,7 +709,6 @@ class File
         $severity=0
     ) {
         return $this->addMessage(true, $error, $line, 1, $code, $data, $severity, false);
-
     }//end addErrorOnLine()
 
 
@@ -743,7 +732,6 @@ class File
         $severity=0
     ) {
         return $this->addMessage(false, $warning, $line, 1, $code, $data, $severity, false);
-
     }//end addWarningOnLine()
 
 
@@ -774,7 +762,6 @@ class File
         }
 
         return false;
-
     }//end addFixableError()
 
 
@@ -805,7 +792,6 @@ class File
         }
 
         return false;
-
     }//end addFixableWarning()
 
 
@@ -964,7 +950,7 @@ class File
             if (isset($this->configCache['includePatterns'][$checkCode]) === true) {
                 $patterns  = $this->configCache['includePatterns'][$checkCode];
                 $excluding = false;
-            } else if (isset($this->configCache['ignorePatterns'][$checkCode]) === true) {
+            } elseif (isset($this->configCache['ignorePatterns'][$checkCode]) === true) {
                 $patterns  = $this->configCache['ignorePatterns'][$checkCode];
                 $excluding = true;
             }
@@ -1064,7 +1050,6 @@ class File
         }
 
         return true;
-
     }//end addMessage()
 
 
@@ -1082,7 +1067,7 @@ class File
         if (isset($this->metrics[$metric]) === false) {
             $this->metrics[$metric] = ['values' => [$value => 1]];
             $this->metricTokens[$metric][$stackPtr] = true;
-        } else if (isset($this->metricTokens[$metric][$stackPtr]) === false) {
+        } elseif (isset($this->metricTokens[$metric][$stackPtr]) === false) {
             $this->metricTokens[$metric][$stackPtr] = true;
             if (isset($this->metrics[$metric]['values'][$value]) === false) {
                 $this->metrics[$metric]['values'][$value] = 1;
@@ -1092,7 +1077,6 @@ class File
         }
 
         return true;
-
     }//end recordMetric()
 
 
@@ -1104,7 +1088,6 @@ class File
     public function getErrorCount()
     {
         return $this->errorCount;
-
     }//end getErrorCount()
 
 
@@ -1116,7 +1099,6 @@ class File
     public function getWarningCount()
     {
         return $this->warningCount;
-
     }//end getWarningCount()
 
 
@@ -1128,7 +1110,6 @@ class File
     public function getFixableCount()
     {
         return $this->fixableCount;
-
     }//end getFixableCount()
 
 
@@ -1140,7 +1121,6 @@ class File
     public function getFixedCount()
     {
         return $this->fixedCount;
-
     }//end getFixedCount()
 
 
@@ -1152,7 +1132,6 @@ class File
     public function getIgnoredLines()
     {
         return $this->tokenizer->ignoredLines;
-
     }//end getIgnoredLines()
 
 
@@ -1164,7 +1143,6 @@ class File
     public function getErrors()
     {
         return $this->errors;
-
     }//end getErrors()
 
 
@@ -1176,7 +1154,6 @@ class File
     public function getWarnings()
     {
         return $this->warnings;
-
     }//end getWarnings()
 
 
@@ -1188,7 +1165,6 @@ class File
     public function getMetrics()
     {
         return $this->metrics;
-
     }//end getMetrics()
 
 
@@ -1200,7 +1176,6 @@ class File
     public function getFilename()
     {
         return $this->path;
-
     }//end getFilename()
 
 
@@ -1249,7 +1224,6 @@ class File
         }
 
         return $content;
-
     }//end getDeclarationName()
 
 
@@ -1444,7 +1418,6 @@ class File
         }//end for
 
         return $vars;
-
     }//end getMethodParameters()
 
 
@@ -1598,7 +1571,6 @@ class File
             'is_static'            => $isStatic,
             'has_body'             => $hasBody,
         ];
-
     }//end getMethodProperties()
 
 
@@ -1720,7 +1692,6 @@ class File
             'scope_specified' => $scopeSpecified,
             'is_static'       => $isStatic,
         ];
-
     }//end getMemberProperties()
 
 
@@ -1779,7 +1750,6 @@ class File
             'is_abstract' => $isAbstract,
             'is_final'    => $isFinal,
         ];
-
     }//end getClassProperties()
 
 
@@ -1912,7 +1882,6 @@ class File
         }//end if
 
         return false;
-
     }//end isReference()
 
 
@@ -1954,7 +1923,6 @@ class File
         }
 
         return $str;
-
     }//end getTokensAsString()
 
 
@@ -2010,7 +1978,7 @@ class File
             if ($found === true) {
                 if ($value === null) {
                     return $i;
-                } else if ($this->tokens[$i]['content'] === $value) {
+                } elseif ($this->tokens[$i]['content'] === $value) {
                     return $i;
                 }
             }
@@ -2020,22 +1988,21 @@ class File
                     && $i === $this->tokens[$i]['scope_closer']
                 ) {
                     $i = $this->tokens[$i]['scope_opener'];
-                } else if (isset($this->tokens[$i]['bracket_opener']) === true
+                } elseif (isset($this->tokens[$i]['bracket_opener']) === true
                     && $i === $this->tokens[$i]['bracket_closer']
                 ) {
                     $i = $this->tokens[$i]['bracket_opener'];
-                } else if (isset($this->tokens[$i]['parenthesis_opener']) === true
+                } elseif (isset($this->tokens[$i]['parenthesis_opener']) === true
                     && $i === $this->tokens[$i]['parenthesis_closer']
                 ) {
                     $i = $this->tokens[$i]['parenthesis_opener'];
-                } else if ($this->tokens[$i]['code'] === T_SEMICOLON) {
+                } elseif ($this->tokens[$i]['code'] === T_SEMICOLON) {
                     break;
                 }
             }
         }//end for
 
         return false;
-
     }//end findPrevious()
 
 
@@ -2091,7 +2058,7 @@ class File
             if ($found === true) {
                 if ($value === null) {
                     return $i;
-                } else if ($this->tokens[$i]['content'] === $value) {
+                } elseif ($this->tokens[$i]['content'] === $value) {
                     return $i;
                 }
             }
@@ -2102,7 +2069,6 @@ class File
         }//end for
 
         return false;
-
     }//end findNext()
 
 
@@ -2153,7 +2119,7 @@ class File
                 && $i === $this->tokens[$i]['bracket_closer']
             ) {
                 $i = $this->tokens[$i]['bracket_opener'];
-            } else if (isset($this->tokens[$i]['parenthesis_opener']) === true
+            } elseif (isset($this->tokens[$i]['parenthesis_opener']) === true
                 && $i === $this->tokens[$i]['parenthesis_closer']
             ) {
                 $i = $this->tokens[$i]['parenthesis_opener'];
@@ -2165,7 +2131,6 @@ class File
         }//end for
 
         return 0;
-
     }//end findStartOfStatement()
 
 
@@ -2227,11 +2192,11 @@ class File
                 }
 
                 $i = $this->tokens[$i]['scope_closer'];
-            } else if (isset($this->tokens[$i]['bracket_closer']) === true
+            } elseif (isset($this->tokens[$i]['bracket_closer']) === true
                 && $i === $this->tokens[$i]['bracket_opener']
             ) {
                 $i = $this->tokens[$i]['bracket_closer'];
-            } else if (isset($this->tokens[$i]['parenthesis_closer']) === true
+            } elseif (isset($this->tokens[$i]['parenthesis_closer']) === true
                 && $i === $this->tokens[$i]['parenthesis_opener']
             ) {
                 $i = $this->tokens[$i]['parenthesis_closer'];
@@ -2243,7 +2208,6 @@ class File
         }//end for
 
         return ($this->numTokens - 1);
-
     }//end findEndOfStatement()
 
 
@@ -2295,14 +2259,13 @@ class File
             if ($found === true) {
                 if ($value === null) {
                     $foundToken = $i;
-                } else if ($this->tokens[$i]['content'] === $value) {
+                } elseif ($this->tokens[$i]['content'] === $value) {
                     $foundToken = $i;
                 }
             }
         }//end for
 
         return $foundToken;
-
     }//end findFirstOnLine()
 
 
@@ -2337,7 +2300,6 @@ class File
         }
 
         return false;
-
     }//end hasCondition()
 
 
@@ -2371,7 +2333,6 @@ class File
         }
 
         return false;
-
     }//end getCondition()
 
 
@@ -2424,7 +2385,6 @@ class File
         }
 
         return $name;
-
     }//end findExtendedClassName()
 
 
@@ -2478,8 +2438,5 @@ class File
             $names = array_map('trim', $names);
             return $names;
         }
-
     }//end findImplementedInterfaceNames()
-
-
 }//end class
