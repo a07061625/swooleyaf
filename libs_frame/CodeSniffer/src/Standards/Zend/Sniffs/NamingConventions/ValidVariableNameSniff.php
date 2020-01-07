@@ -60,7 +60,7 @@ class ValidVariableNameSniff extends AbstractVariableSniff
                         $error = 'Variable "%s" is not in valid camel caps format';
                         $data  = [$originalVarName];
                         $phpcsFile->addError($error, $var, 'NotCamelCaps', $data);
-                    } else if (preg_match('|\d|', $objVarName) === 1) {
+                    } elseif (preg_match('|\d|', $objVarName) === 1) {
                         $warning = 'Variable "%s" contains numbers but this is discouraged';
                         $data    = [$originalVarName];
                         $phpcsFile->addWarning($warning, $stackPtr, 'ContainsNumbers', $data);
@@ -92,12 +92,11 @@ class ValidVariableNameSniff extends AbstractVariableSniff
             $error = 'Variable "%s" is not in valid camel caps format';
             $data  = [$originalVarName];
             $phpcsFile->addError($error, $stackPtr, 'NotCamelCaps', $data);
-        } else if (preg_match('|\d|', $varName) === 1) {
+        } elseif (preg_match('|\d|', $varName) === 1) {
             $warning = 'Variable "%s" contains numbers but this is discouraged';
             $data    = [$originalVarName];
             $phpcsFile->addWarning($warning, $stackPtr, 'ContainsNumbers', $data);
         }
-
     }//end processVariable()
 
 
@@ -147,12 +146,11 @@ class ValidVariableNameSniff extends AbstractVariableSniff
             $error = 'Member variable "%s" is not in valid camel caps format';
             $data  = [$varName];
             $phpcsFile->addError($error, $stackPtr, 'MemberVarNotCamelCaps', $data);
-        } else if (preg_match('|\d|', $varName) === 1) {
+        } elseif (preg_match('|\d|', $varName) === 1) {
             $warning = 'Member variable "%s" contains numbers but this is discouraged';
             $data    = [$varName];
             $phpcsFile->addWarning($warning, $stackPtr, 'MemberVarContainsNumbers', $data);
         }
-
     }//end processMemberVar()
 
 
@@ -180,15 +178,12 @@ class ValidVariableNameSniff extends AbstractVariableSniff
                     $error = 'Variable "%s" is not in valid camel caps format';
                     $data  = [$varName];
                     $phpcsFile->addError($error, $stackPtr, 'StringVarNotCamelCaps', $data);
-                } else if (preg_match('|\d|', $varName) === 1) {
+                } elseif (preg_match('|\d|', $varName) === 1) {
                     $warning = 'Variable "%s" contains numbers but this is discouraged';
                     $data    = [$varName];
                     $phpcsFile->addWarning($warning, $stackPtr, 'StringVarContainsNumbers', $data);
                 }
             }//end foreach
         }//end if
-
     }//end processVariableInString()
-
-
 }//end class

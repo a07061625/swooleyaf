@@ -135,14 +135,13 @@ class Runner
         if ($numErrors === 0) {
             // No errors found.
             return 0;
-        } else if ($this->reporter->totalFixable === 0) {
+        } elseif ($this->reporter->totalFixable === 0) {
             // Errors found, but none of them can be fixed by PHPCBF.
             return 1;
         } else {
             // Errors found, and some can be fixed by PHPCBF.
             return 2;
         }
-
     }//end runPHPCS()
 
 
@@ -225,7 +224,6 @@ class Runner
 
         // PHPCBF fixed some fixable errors, but others failed to fix.
         return 2;
-
     }//end runPHPCBF()
 
 
@@ -273,7 +271,6 @@ class Runner
             $error = sprintf($error, $required, $missing);
             throw new DeepExitException($error, 3);
         }
-
     }//end checkRequirements()
 
 
@@ -335,7 +332,6 @@ class Runner
             $error .= $this->config->printShortUsage(true);
             throw new DeepExitException($error, 3);
         }
-
     }//end init()
 
 
@@ -432,7 +428,7 @@ class Runner
                     }
 
                     $this->processFile($file);
-                } else if (PHP_CODESNIFFER_VERBOSITY > 0) {
+                } elseif (PHP_CODESNIFFER_VERBOSITY > 0) {
                     echo 'Skipping '.basename($file->path).PHP_EOL;
                 }
 
@@ -459,7 +455,7 @@ class Runner
                 $pid = pcntl_fork();
                 if ($pid === -1) {
                     throw new RuntimeException('Failed to create child process');
-                } else if ($pid !== 0) {
+                } elseif ($pid !== 0) {
                     $childProcs[] = [
                         'pid' => $pid,
                         'out' => $childOutFilename,
@@ -577,7 +573,6 @@ class Runner
         }
 
         return $return;
-
     }//end run()
 
 
@@ -604,7 +599,6 @@ class Runner
         }
 
         throw new RuntimeException("$message in $file on line $line");
-
     }//end handleErrors()
 
 
@@ -696,7 +690,6 @@ class Runner
 
         // Clean up the file to save (a lot of) memory.
         $file->cleanUp();
-
     }//end processFile()
 
 
@@ -769,7 +762,6 @@ class Runner
         }//end while
 
         return $success;
-
     }//end processChildProcs()
 
 
@@ -814,7 +806,7 @@ class Runner
                     if ($this->config->colors === true) {
                         echo "\033[0m";
                     }
-                } else if ($fixed > 0) {
+                } elseif ($fixed > 0) {
                     if ($this->config->colors === true) {
                         echo "\033[32m";
                     }
@@ -847,7 +839,7 @@ class Runner
                     if ($this->config->colors === true) {
                         echo "\033[0m";
                     }
-                } else if ($warnings > 0) {
+                } elseif ($warnings > 0) {
                     if ($this->config->colors === true) {
                         if ($fixable > 0) {
                             echo "\033[32m";
@@ -879,8 +871,5 @@ class Runner
         }
 
         echo str_repeat(' ', $padding)." $numProcessed / $numFiles ($percent%)".PHP_EOL;
-
     }//end printProgress()
-
-
 }//end class

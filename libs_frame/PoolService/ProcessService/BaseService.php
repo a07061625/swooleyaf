@@ -10,10 +10,12 @@ namespace PoolService\ProcessService;
 use Response\Result;
 use SyTrait\SimpleTrait;
 
-abstract class BaseService {
+abstract class BaseService
+{
     use SimpleTrait;
 
-    public static function execMessage(array $data) : Result {
+    public static function execMessage(array $data) : Result
+    {
         return static::handleMessage($data);
     }
 
