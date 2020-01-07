@@ -12,7 +12,7 @@ use Wx\WxUtilBase;
  * 批量查询电子发票
  * @package Wx\Corp\Invoice
  */
-class InvoiceInfoGet extends WxBaseCorp
+class InvoiceInfoGetBatch extends WxBaseCorp
 {
     use WxTraitCorp;
 
