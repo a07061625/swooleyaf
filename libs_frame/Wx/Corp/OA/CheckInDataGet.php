@@ -54,7 +54,7 @@ class CheckInDataGet extends WxBaseCorp
      * @param int $checkInType
      * @throws \SyException\Wx\WxException
      */
-    public function setCheckInIype(int $checkInType)
+    public function setCheckInType(int $checkInType)
     {
         if (in_array($checkInType, [1, 2, 3], true)) {
             $this->reqData['opencheckindatatype'] = $checkInType;
