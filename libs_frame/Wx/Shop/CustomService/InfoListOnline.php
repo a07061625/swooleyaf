@@ -13,7 +13,7 @@ use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class InfoList extends WxBaseShop
+class InfoListOnline extends WxBaseShop
 {
     /**
      * 公众号ID
