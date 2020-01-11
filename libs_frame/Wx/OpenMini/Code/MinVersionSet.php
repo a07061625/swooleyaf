@@ -14,7 +14,7 @@ use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
-class MiniVersionSet extends WxBaseOpenMini
+class MinVersionSet extends WxBaseOpenMini
 {
     /**
      * 应用ID
