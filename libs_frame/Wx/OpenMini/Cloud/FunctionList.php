@@ -71,7 +71,7 @@ class FunctionList extends WxBaseOpenMini
      */
     public function setOffset(int $offset)
     {
-        if ($offset > 0) {
+        if ($offset >= 0) {
             $this->reqData['offset'] = $offset;
         } else {
             throw new WxOpenException('偏移量不合法', ErrorCode::COMMON_PARAM_ERROR);
