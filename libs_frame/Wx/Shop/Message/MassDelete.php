@@ -63,7 +63,7 @@ class MassDelete extends WxBaseShop
      */
     public function setArticleIdx(int $articleIdx)
     {
-        if ($articleIdx < 0) {
+        if ($articleIdx >= 0) {
             $this->reqData['article_idx'] = $articleIdx;
         } else {
             throw new WxException('消息索引不合法', ErrorCode::WX_PARAM_ERROR);
