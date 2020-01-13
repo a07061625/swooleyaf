@@ -31,11 +31,6 @@ class GroupPropertyModify extends WxBaseShop
      * @var string
      */
     private $group_name = '';
-    /**
-     * 商品ID列表
-     * @var array
-     */
-    private $product_list = [];
 
     public function __construct(string $appId)
     {
