@@ -105,7 +105,7 @@ class PayCommentQueryBatch extends WxBaseShop
      */
     public function setOffset(int $offset)
     {
-        if ($offset < 0) {
+        if ($offset >= 0) {
             $this->reqData['offset'] = $offset;
         } else {
             throw new WxException('位移不合法', ErrorCode::WX_PARAM_ERROR);
