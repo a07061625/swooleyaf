@@ -16,7 +16,7 @@ use SyException\DingDing\TalkException;
  * 获取员工可见的应用列表
  * @package DingDing\Corp\MicroApp
  */
-class AppList extends TalkBaseCorp
+class AppListByUserId extends TalkBaseCorp
 {
     use TalkTraitCorp;
 
