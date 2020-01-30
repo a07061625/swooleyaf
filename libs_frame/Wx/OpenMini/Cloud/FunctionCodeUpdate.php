@@ -148,7 +148,7 @@ class FunctionCodeUpdate extends WxBaseOpenMini
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getAuthorizerAccessToken($this->appId);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $postData;
         $this->curlConfigs[CURLOPT_HTTPHEADER] = explode('\r\n', $signRes['data']['headers']);
         $this->curlConfigs[CURLOPT_SSL_VERIFYPEER] = false;

@@ -70,7 +70,7 @@ class CorpToken extends WxBaseCorpProvider
             throw new WxCorpProviderException('永久授权码不能为空', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . WxUtilCorpProvider::getSuiteToken();
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilCorpProvider::getSuiteToken();
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
