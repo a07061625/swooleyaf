@@ -84,7 +84,7 @@ class UserRoleDeleteBatch extends TalkBaseCorp
         } elseif ($userNum > 100) {
             throw new TalkException('用户不能超过100个', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-        $this->reqData['userIds'] = implode(',', array_keys($roles));
+        $this->reqData['userIds'] = implode(',', array_keys($users));
     }
 
     public function getDetail() : array
