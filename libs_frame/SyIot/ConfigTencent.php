@@ -50,7 +50,6 @@ class ConfigTencent
      */
     public function setRegionId(string $regionId)
     {
-        $this->regionId = $regionId;
         if (strlen($regionId) > 0) {
             $this->regionId = $regionId;
         } else {
