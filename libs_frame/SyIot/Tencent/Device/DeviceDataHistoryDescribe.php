@@ -53,7 +53,6 @@ class DeviceDataHistoryDescribe extends IotBaseTencent
     {
         parent::__construct();
         $this->reqHeader['X-TC-Action'] = 'DescribeDeviceDataHistory';
-        $this->reqHeader['X-TC-Version'] = '2019-04-23';
         $this->reqData['Limit'] = 10;
     }
 
