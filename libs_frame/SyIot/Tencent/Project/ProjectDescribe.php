@@ -23,7 +23,6 @@ class ProjectDescribe extends IotBaseTencent
     {
         parent::__construct();
         $this->reqHeader['X-TC-Action'] = 'DescribeProject';
-        $this->reqHeader['X-TC-Version'] = '2019-04-23';
     }
 
     private function __clone()

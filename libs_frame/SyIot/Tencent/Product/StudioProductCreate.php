@@ -58,7 +58,6 @@ class StudioProductCreate extends IotBaseTencent
     {
         parent::__construct();
         $this->reqHeader['X-TC-Action'] = 'CreateStudioProduct';
-        $this->reqHeader['X-TC-Version'] = '2019-04-23';
     }
 
     private function __clone()
@@ -171,7 +170,7 @@ class StudioProductCreate extends IotBaseTencent
 
     public function getDetail() : array
     {
-        if (!isset($this->reqData['ProjectName'])) {
+        if (!isset($this->reqData['ProductName'])) {
             throw new TencentIotException('产品名称不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
         if (!isset($this->reqData['CategoryId'])) {
@@ -189,7 +188,7 @@ class StudioProductCreate extends IotBaseTencent
         if (!isset($this->reqData['DataProtocol'])) {
             throw new TencentIotException('数据协议不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
-        if (!isset($this->reqData['ProjectDesc'])) {
+        if (!isset($this->reqData['ProductDesc'])) {
             throw new TencentIotException('产品描述不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
         if (!isset($this->reqData['ProjectId'])) {

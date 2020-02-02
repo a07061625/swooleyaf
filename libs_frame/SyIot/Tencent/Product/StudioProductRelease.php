@@ -28,7 +28,6 @@ class StudioProductRelease extends IotBaseTencent
     {
         parent::__construct();
         $this->reqHeader['X-TC-Action'] = 'ReleaseStudioProduct';
-        $this->reqHeader['X-TC-Version'] = '2019-04-23';
         $this->reqData['DevStatus'] = 'released';
     }
 

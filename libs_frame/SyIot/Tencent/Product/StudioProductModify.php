@@ -38,7 +38,6 @@ class StudioProductModify extends IotBaseTencent
     {
         parent::__construct();
         $this->reqHeader['X-TC-Action'] = 'ModifyStudioProduct';
-        $this->reqHeader['X-TC-Version'] = '2019-04-23';
     }
 
     private function __clone()
