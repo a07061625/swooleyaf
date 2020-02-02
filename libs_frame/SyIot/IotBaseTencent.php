@@ -40,6 +40,7 @@ abstract class IotBaseTencent extends IotBase
             'Host' => $this->serviceDomain,
             'Expect' => '',
             'X-TC-Region' => $config->getRegionId(),
+            'X-TC-Version' => '2019-04-23',
         ];
     }
 

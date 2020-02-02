@@ -38,7 +38,6 @@ class StudioProductListGet extends IotBaseTencent
     {
         parent::__construct();
         $this->reqHeader['X-TC-Action'] = 'GetStudioProductList';
-        $this->reqHeader['X-TC-Version'] = '2019-04-23';
         $this->reqData['Offset'] = 0;
         $this->reqData['Limit'] = 10;
     }
