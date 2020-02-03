@@ -23,7 +23,7 @@ final class PushUtilBaiDu extends PushUtilBase
      */
     public static function createSign(array $data)
     {
-        $signStr = $data['http_method'] . $data['url'] . '$secret_key';
+        $signStr = $data['http_method'] . $data['url'];
         $reqParams = $data['params'];
         unset($reqParams['sign']);
         ksort($reqParams);
