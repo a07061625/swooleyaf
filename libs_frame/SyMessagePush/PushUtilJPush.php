@@ -105,6 +105,7 @@ final class PushUtilJPush extends PushUtilBase
             $pipe->rPush($redisKey, $eCid);
         }
         $pipe->exec();
+        $pipe->close();
         CacheSimpleFactory::getRedisInstance()->expire($redisKey, 86400);
 
         return $cid;

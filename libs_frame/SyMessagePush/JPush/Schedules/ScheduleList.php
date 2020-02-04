@@ -41,7 +41,7 @@ class ScheduleList extends SchedulesBase
         if ($page > 0) {
             $this->reqData['page'] = $page;
         } else {
-            throw new JPushException('任务ID不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
+            throw new JPushException('页数不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
         }
     }
 
