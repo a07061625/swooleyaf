@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: 姜伟
@@ -45,8 +46,8 @@ class RegionController extends CommonController
         } else {
             $needParams = [
                 'region_name' => $regionName,
-                'region_sort' => (int)\Request\SyRequest::getParams('region_sort'),
-                'region_level' => (int)\Request\SyRequest::getParams('region_level'),
+                'region_sort' => (int) \Request\SyRequest::getParams('region_sort'),
+                'region_level' => (int) \Request\SyRequest::getParams('region_level'),
             ];
             $addRes = \Dao\RegionDao::addRegionByStation($needParams);
             $this->SyResult->setData($addRes);
@@ -86,8 +87,8 @@ class RegionController extends CommonController
         } else {
             $needParams = [
                 'region_name' => $regionName,
-                'region_sort' => (int)\Request\SyRequest::getParams('region_sort', 0),
-                'region_level' => (int)\Request\SyRequest::getParams('region_level'),
+                'region_sort' => (int) \Request\SyRequest::getParams('region_sort', 0),
+                'region_level' => (int) \Request\SyRequest::getParams('region_level'),
             ];
             $addRes = \Dao\RegionDao::editRegionByStation($needParams);
             $this->SyResult->setData($addRes);
@@ -113,7 +114,7 @@ class RegionController extends CommonController
         \Tool\SyUser::checkStationLogin();
 
         $needParams = [
-            'region_tag' => (string)\Request\SyRequest::getParams('region_tag'),
+            'region_tag' => (string) \Request\SyRequest::getParams('region_tag'),
         ];
         $delRes = \Dao\RegionDao::deleteRegionByStation($needParams);
         $this->SyResult->setData($delRes);
@@ -136,14 +137,14 @@ class RegionController extends CommonController
     {
         \Tool\SyUser::checkStationLogin();
 
-        $regionTag = (string)\Request\SyRequest::getParams('region_tag');
+        $regionTag = (string) \Request\SyRequest::getParams('region_tag');
         $tagLength = strlen($regionTag);
         if (!in_array($tagLength, [3, 6, 9], true)) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '地区标识不合法');
         } else {
             $needParams = [
                 'region_tag' => $regionTag,
-                'region_level' => (int)($tagLength / 3),
+                'region_level' => (int) ($tagLength / 3),
             ];
             $getRes = \Dao\RegionDao::getRegionInfoByStation($needParams);
             $this->SyResult->setData($getRes);
@@ -178,8 +179,8 @@ class RegionController extends CommonController
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '父地区标识不合法');
         } else {
             $needParams = [
-                'page' => (int)\Request\SyRequest::getParams('page', 1),
-                'limit' => (int)\Request\SyRequest::getParams('limit', \SyConstant\Project::COMMON_LIMIT_DEFAULT),
+                'page' => (int) \Request\SyRequest::getParams('page', 1),
+                'limit' => (int) \Request\SyRequest::getParams('limit', \SyConstant\Project::COMMON_LIMIT_DEFAULT),
                 'region_ptag' => $ptag,
             ];
             if ($tagLength == 0) {
@@ -208,7 +209,7 @@ class RegionController extends CommonController
      */
     public function getRegionInfoByFrontAction()
     {
-        $regionTag = (string)\Request\SyRequest::getParams('region_tag');
+        $regionTag = (string) \Request\SyRequest::getParams('region_tag');
         $tagLength = strlen($regionTag);
         if (in_array($tagLength, [3, 6, 9], true)) {
             $needParams = [
