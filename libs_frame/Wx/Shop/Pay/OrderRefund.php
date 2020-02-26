@@ -1,10 +1,12 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: 姜伟
  * Date: 18-9-11
  * Time: 下午10:59
  */
+
 namespace Wx\Shop\Pay;
 
 use SyConstant\ErrorCode;
@@ -117,7 +119,7 @@ class OrderRefund extends WxBaseShop
      */
     public function setTransactionId(string $transactionId)
     {
-        if (ctype_digit($transactionId) && (strlen($transactionId) == 27)) {
+        if (ctype_digit($transactionId) && (strlen($transactionId) == 28)) {
             $this->transaction_id = $transactionId;
         } else {
             throw new WxException('微信订单号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -176,7 +178,7 @@ class OrderRefund extends WxBaseShop
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (strlen($this->transaction_id) > 0) {
             $this->reqData['transaction_id'] = $this->transaction_id;
