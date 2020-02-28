@@ -1,10 +1,12 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Administrator
  * Date: 2017-3-5
  * Time: 16:42
  */
+
 namespace SyServer;
 
 use Swoole\Http\Request;
@@ -87,8 +89,8 @@ class HttpServer extends BaseServer
             SyInner::SERVER_TYPE_FRONT_GATE,
         ]);
         $this->_configs['server']['cachenum']['hc'] = 1;
-        $this->_configs['server']['cachenum']['modules'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
-        $this->_configs['server']['cachenum']['local'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.local', 0, true);
+        $this->_configs['server']['cachenum']['modules'] = (int) Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
+        $this->_configs['server']['cachenum']['local'] = (int) Tool::getArrayVal($this->_configs, 'server.cachenum.local', 0, true);
         $this->checkServerHttp();
         $this->_messagePack = new SyPack();
         $this->_moduleContainer = new ModuleContainer();
@@ -146,7 +148,7 @@ class HttpServer extends BaseServer
      * @return bool
      * @throws \SyException\Swoole\HttpServerException
      */
-    public static function checkSocketAccept(string $socketKey, string $socketAccept) : bool
+    public static function checkSocketAccept(string $socketKey, string $socketAccept): bool
     {
         if (is_null($socketAccept)) {
             throw new HttpServerException('服务端签名不能为空', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
@@ -467,7 +469,7 @@ class HttpServer extends BaseServer
                 return $res->getJson();
             }
         }
-        $tokenExpireTime = (int)self::$_syServer->get(self::$_serverToken, 'token_etime');
+        $tokenExpireTime = (int) self::$_syServer->get(self::$_serverToken, 'token_etime');
         if ($tokenExpireTime <= time()) {
             $res = new Result();
             $res->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '令牌已过期');
@@ -548,7 +550,7 @@ class HttpServer extends BaseServer
      * @param array $headers 响应头配置
      * @return int
      */
-    private function handleReqHeader(array &$headers) : int
+    private function handleReqHeader(array &$headers): int
     {
         $domainTag = $_SERVER['SY-DOMAIN'] ?? 'base';
         $cookieDomain = $this->_reqCookieDomains[$domainTag] ?? null;
@@ -565,7 +567,7 @@ class HttpServer extends BaseServer
      * @param array $initRspHeaders 初始化响应头
      * @return string
      */
-    private function handleReqService(Request $request, array $initRspHeaders) : string
+    private function handleReqService(Request $request, array $initRspHeaders): string
     {
         $uri = Tool::getArrayVal(self::$_reqServers, 'request_uri', '/');
         $uriCheckRes = $this->checkRequestUri($uri);
@@ -598,7 +600,7 @@ class HttpServer extends BaseServer
                 $error = new Result();
                 $error->setCodeMsg(ErrorCode::SWOOLE_SERVER_NO_RESPONSE_ERROR, '未设置响应数据');
             }
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             SyResponseHttp::header('Content-Type', 'application/json; charset=utf-8');
             if (SY_REQ_EXCEPTION_HANDLE_TYPE) {
                 $error = $this->handleReqExceptionByFrame($e);
