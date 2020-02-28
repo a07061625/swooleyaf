@@ -1,10 +1,12 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: 姜伟
  * Date: 2017/8/19 0019
  * Time: 8:33
  */
+
 namespace SyServer;
 
 use Swoole\Server;
@@ -43,8 +45,8 @@ class RpcServer extends BaseServer
             SyInner::SERVER_TYPE_API_MODULE,
         ]);
         $this->_configs['server']['cachenum']['hc'] = 1;
-        $this->_configs['server']['cachenum']['modules'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
-        $this->_configs['server']['cachenum']['local'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.local', 0, true);
+        $this->_configs['server']['cachenum']['modules'] = (int) Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
+        $this->_configs['server']['cachenum']['local'] = (int) Tool::getArrayVal($this->_configs, 'server.cachenum.local', 0, true);
         $this->checkServerRpc();
         $this->_configs['swoole']['package_length_type'] = 'L';
         $this->_configs['swoole']['package_length_offset'] = 4;
@@ -202,7 +204,7 @@ class RpcServer extends BaseServer
                 $error = new Result();
                 $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '预处理函数命名不合法');
             }
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             if (SY_REQ_EXCEPTION_HANDLE_TYPE) {
                 $error = $this->handleReqExceptionByFrame($e);
             } else {
