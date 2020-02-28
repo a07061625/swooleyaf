@@ -1,10 +1,12 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: 姜伟
  * Date: 2017/8/19 0019
  * Time: 8:32
  */
+
 namespace SyServer;
 
 use Swoole\Coroutine;
@@ -112,7 +114,7 @@ abstract class BaseServer
         $this->_configs = Tool::getConfig('syserver.' . SY_ENV . SY_MODULE);
 
         define('SY_SERVER_IP', $this->_configs['server']['host']);
-        define('SY_REQUEST_MAX_HANDLING', (int)$this->_configs['server']['request']['maxnum']['handling']);
+        define('SY_REQUEST_MAX_HANDLING', (int) $this->_configs['server']['request']['maxnum']['handling']);
 
         //获取当前操作系统的用户
         if (is_string($this->_configs['swoole']['user']) && (strlen($this->_configs['swoole']['user']) > 0)) {
@@ -144,9 +146,9 @@ abstract class BaseServer
         $this->_configs['swoole']['buffer_output_size'] = Project::SIZE_CLIENT_BUFFER_OUTPUT;
         //设置线程数量
         $execRes = Tool::execSystemCommand('cat /proc/cpuinfo | grep "processor" | wc -l');
-        $this->_configs['swoole']['reactor_num'] = (int)(2 * $execRes['data'][0]);
+        $this->_configs['swoole']['reactor_num'] = (int) (2 * $execRes['data'][0]);
 
-        $taskNum = isset($this->_configs['swoole']['task_worker_num']) ? (int)$this->_configs['swoole']['task_worker_num'] : 0;
+        $taskNum = isset($this->_configs['swoole']['task_worker_num']) ? (int) $this->_configs['swoole']['task_worker_num'] : 0;
         if ($taskNum < 2) {
             exit('Task进程的数量必须大于等于2' . PHP_EOL);
         }
@@ -184,7 +186,7 @@ abstract class BaseServer
     /**
      * @return string
      */
-    public static function getReqId() : string
+    public static function getReqId(): string
     {
         if (isset($_SERVER['SYREQ_ID'])) {
             return $_SERVER['SYREQ_ID'];
@@ -198,7 +200,7 @@ abstract class BaseServer
      * 获取唯一数值
      * @return array
      */
-    public static function getUniqueNum() : array
+    public static function getUniqueNum(): array
     {
         return [
             'token' => self::$_uniqueToken,
@@ -229,7 +231,7 @@ abstract class BaseServer
     public function stop()
     {
         if (is_file($this->_pidFile) && is_readable($this->_pidFile)) {
-            $pid = (int)file_get_contents($this->_pidFile);
+            $pid = (int) file_get_contents($this->_pidFile);
         } else {
             $pid = 0;
         }
@@ -328,7 +330,7 @@ abstract class BaseServer
                     self::$_syServices->set($eModuleName, [
                         'module' => $eModuleName,
                         'host' => $moduleData['host'],
-                        'port' => (string)$moduleData['port'],
+                        'port' => (string) $moduleData['port'],
                         'type' => $moduleData['type'],
                     ]);
                 }
@@ -516,7 +518,7 @@ abstract class BaseServer
      */
     protected function reportLongTimeReq(string $uri, $data, int $limitTime)
     {
-        $handleTime = (int)((microtime(true) - self::$_reqStartTime) * 1000);
+        $handleTime = (int) ((microtime(true) - self::$_reqStartTime) * 1000);
         self::$_reqStartTime = 0;
         if ($handleTime > $limitTime) { //执行时间超过限制的请求记录到日志便于分析具体情况
             $content = 'handle req use time ' . $handleTime . ' ms,uri:' . $uri . ',data:';
@@ -535,7 +537,7 @@ abstract class BaseServer
      * @param string $uri
      * @return array
      */
-    protected function checkRequestUri(string $uri) : array
+    protected function checkRequestUri(string $uri): array
     {
         $nowUri = $uri;
         $checkRes = [
@@ -619,7 +621,7 @@ abstract class BaseServer
         Dir::create($config['dir']['store']['cache']);
 
         //为了防止定时任务出现重启服务的时候,导致重启期间(1-3s内)的定时任务无法处理,将定时器时间初始化为当前时间戳之前6秒
-        $timerAdvanceTime = (int)Tool::getArrayVal($config, 'timer.time.advance', 6, true);
+        $timerAdvanceTime = (int) Tool::getArrayVal($config, 'timer.time.advance', 6, true);
         $initTimerTime = time() - $timerAdvanceTime;
         self::$_syServer->set(self::$_serverToken, [
             'memory_usage' => memory_get_usage(),
@@ -636,7 +638,7 @@ abstract class BaseServer
         ]);
 
         //设置唯一ID自增基数
-        $num = (int)CacheSimpleFactory::getRedisInstance()->incr(Project::DATA_KEY_CACHE_UNIQUE_ID);
+        $num = (int) CacheSimpleFactory::getRedisInstance()->incr(Project::DATA_KEY_CACHE_UNIQUE_ID);
         if ($num < 100000000) {
             $randomNum = random_int(100000000, 150000000);
             if (!CacheSimpleFactory::getRedisInstance()->set(Project::DATA_KEY_CACHE_UNIQUE_ID, $randomNum)) {
@@ -675,7 +677,7 @@ abstract class BaseServer
         }
     }
 
-    protected function handleReqExceptionByFrame(\Exception $e)
+    protected function handleReqExceptionByFrame(\Throwable $e)
     {
         if (!($e instanceof ValidatorException)) {
             Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
@@ -683,7 +685,7 @@ abstract class BaseServer
 
         $error = new Result();
         if (is_numeric($e->getCode())) {
-            $error->setCodeMsg((int)$e->getCode(), $e->getMessage());
+            $error->setCodeMsg((int) $e->getCode(), $e->getMessage());
         } else {
             $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务出错');
         }
@@ -794,7 +796,7 @@ abstract class BaseServer
         if ($serverType == SyInner::SERVER_TYPE_FRONT_GATE) {
             $this->_configs['server']['cachenum']['wx'] = 1;
         } else {
-            $this->_configs['server']['cachenum']['wx'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.wx', 0, true);
+            $this->_configs['server']['cachenum']['wx'] = (int) Tool::getArrayVal($this->_configs, 'server.cachenum.wx', 0, true);
         }
     }
 }

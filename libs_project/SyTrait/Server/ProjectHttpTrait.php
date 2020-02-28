@@ -1,10 +1,12 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: 姜伟
  * Date: 18-5-27
  * Time: 上午10:10
  */
+
 namespace SyTrait\Server;
 
 use Swoole\Server;
@@ -26,7 +28,7 @@ trait ProjectHttpTrait
     {
     }
 
-    private function getTokenExpireTime() : int
+    private function getTokenExpireTime(): int
     {
         $decryptStr = Tool::decrypt(SY_TOKEN_SECRET, 'f68a600f6c1b1163');
         if (is_bool($decryptStr)) {
@@ -35,7 +37,7 @@ trait ProjectHttpTrait
             return 0;
         }
 
-        return (int)substr($decryptStr, 8);
+        return (int) substr($decryptStr, 8);
     }
 
     /**
@@ -45,7 +47,7 @@ trait ProjectHttpTrait
      * @param array $data
      * @return string 空字符串:执行成功 非空:执行失败
      */
-    private function handleTaskHttpTrait(Server $server, int $taskId, int $fromId, array &$data) : string
+    private function handleTaskHttpTrait(Server $server, int $taskId, int $fromId, array &$data): string
     {
         $taskCommand = Tool::getArrayVal($data['params'], 'task_command', '');
         switch ($taskCommand) {
@@ -65,7 +67,7 @@ trait ProjectHttpTrait
         return '';
     }
 
-    private function handleReqExceptionByProject(\Exception $e) : Result
+    private function handleReqExceptionByProject(\Throwable $e): Result
     {
     }
 
