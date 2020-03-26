@@ -10,7 +10,7 @@ namespace SyError;
 use SyConstant\ErrorCode;
 use SyConstant\SyInner;
 use SyException\Common\ErrorException;
-use Log\Log;
+use SyLog\Log;
 use Yaf\Registry;
 
 class ErrorHandler

@@ -7,7 +7,7 @@
  */
 namespace SyTool;
 
-use Log\Log;
+use SyLog\Log;
 use SyTrait\SimpleTrait;
 
 final class HttpTool

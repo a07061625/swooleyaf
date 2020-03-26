@@ -14,7 +14,7 @@ use DB\Models\NotORM\NotORM_Result;
 use DB\Models\NotORM\NotORM_Structure_Convention;
 use DesignPatterns\Singletons\MysqlSingleton;
 use SyException\Mysql\MysqlException;
-use Log\Log;
+use SyLog\Log;
 
 class MysqlModel extends BaseModel
 {

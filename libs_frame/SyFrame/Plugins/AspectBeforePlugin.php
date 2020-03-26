@@ -7,7 +7,7 @@
  */
 namespace SyFrame\Plugins;
 
-use Log\Log;
+use SyLog\Log;
 use Yaf\Plugin_Abstract;
 use Yaf\Request_Abstract;
 use Yaf\Response_Abstract;

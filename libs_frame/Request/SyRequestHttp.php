@@ -10,7 +10,7 @@ namespace Request;
 use Swoole\Coroutine;
 use SyConstant\Project;
 use SyConstant\SyInner;
-use Log\Log;
+use SyLog\Log;
 use SyTool\HttpTool;
 
 class SyRequestHttp extends SyRequest

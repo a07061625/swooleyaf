@@ -8,7 +8,7 @@
 namespace QiNiu;
 
 use DesignPatterns\Singletons\QiNiuConfigSingleton;
-use Log\Log;
+use SyLog\Log;
 use SyConstant\ErrorCode;
 use SyTrait\SimpleTrait;
 use SyTool\Tool;

@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use SyConstant\Project;
 use DesignPatterns\Singletons\MongoSingleton;
 use SyException\Mongo\MongoException;
-use Log\Log;
+use SyLog\Log;
 use MongoDB\BSON\ObjectID;
 use MongoDB\Driver\BulkWrite;
 use MongoDB\Driver\Command;

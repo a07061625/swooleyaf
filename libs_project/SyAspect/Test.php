@@ -7,7 +7,7 @@
  */
 namespace SyAspect;
 
-use Log\Log;
+use SyLog\Log;
 use SyTrait\SimpleTrait;
 
 class Test extends BaseAspect

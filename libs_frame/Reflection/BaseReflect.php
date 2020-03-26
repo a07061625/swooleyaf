@@ -10,7 +10,7 @@ namespace Reflection;
 use SyConstant\ErrorCode;
 use SyConstant\SyInner;
 use SyException\Reflection\ReflectException;
-use Log\Log;
+use SyLog\Log;
 use SyFrame\BaseController;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
