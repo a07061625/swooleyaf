@@ -9,7 +9,7 @@ namespace SyMessageQueue\Rabbit;
 
 use SyConstant\ErrorCode;
 use SyException\Amqp\AmqpException;
-use Tool\Tool;
+use SyTool\Tool;
 
 class Producer
 {

@@ -11,7 +11,7 @@ use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\MessageQueueSingleton;
 use Log\Log;
-use Tool\Tool;
+use SyTool\Tool;
 
 class Consumer
 {

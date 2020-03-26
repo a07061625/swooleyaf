@@ -13,7 +13,7 @@ use DingDing\TalkBaseCorpProvider;
 use DingDing\TalkUtilBase;
 use DingDing\TalkUtilProvider;
 use SyException\DingDing\TalkException;
-use Tool\Tool;
+use SyTool\Tool;
 
 /**
  * 获取授权企业基本信息

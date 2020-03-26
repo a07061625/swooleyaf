@@ -8,7 +8,7 @@
 namespace SyTrait\Server;
 
 use SyConstant\ProjectBase;
-use Tool\Tool;
+use SyTool\Tool;
 
 /**
  * 框架内部RPC服务预处理性状类

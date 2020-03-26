@@ -5,7 +5,7 @@
  * Date: 2017/7/31 0031
  * Time: 14:51
  */
-namespace Tool\Debug;
+namespace SyTool\Debug;
 
 use SyTrait\SimpleTrait;
 

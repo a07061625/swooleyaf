@@ -10,8 +10,8 @@ namespace SyModule;
 use SyConstant\Project;
 use Log\Log;
 use Request\SyRequestHttp;
-use Tool\SyPack;
-use Tool\Tool;
+use SyTool\SyPack;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 abstract class ModuleHttp extends ModuleBase
@@ -19,7 +19,7 @@ abstract class ModuleHttp extends ModuleBase
     use SimpleTrait;
 
     /**
-     * @var \Tool\SyPack
+     * @var \SyTool\SyPack
      */
     private $syPack = null;
     /**

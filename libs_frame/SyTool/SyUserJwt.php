@@ -5,7 +5,7 @@
  * Date: 18-9-2
  * Time: 下午12:15
  */
-namespace Tool;
+namespace SyTool;
 
 use SyTrait\SimpleTrait;
 

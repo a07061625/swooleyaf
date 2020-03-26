@@ -10,7 +10,7 @@ namespace SyPrint;
 use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyPrint\FeYin\AccessToken;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 final class PrintUtilFeYin extends PrintUtilBase

@@ -9,7 +9,7 @@ namespace Response;
 
 use SyConstant\ErrorCode;
 use SyServer\BaseServer;
-use Tool\Tool;
+use SyTool\Tool;
 
 class Result
 {

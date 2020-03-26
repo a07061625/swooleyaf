@@ -10,7 +10,7 @@ namespace DingDing;
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use SyException\DingDing\TalkException;
-use Tool\Tool;
+use SyTool\Tool;
 
 abstract class TalkUtilBase
 {

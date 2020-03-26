@@ -9,7 +9,7 @@ namespace MessageQueue\Consumer;
 
 use SyConstant\Project;
 use MessageQueue\Consumer\Kafka\Test;
-use Tool\BaseContainer;
+use SyTool\BaseContainer;
 
 class KafkaConsumerContainer extends BaseContainer
 {

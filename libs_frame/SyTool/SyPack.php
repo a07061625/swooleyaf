@@ -5,7 +5,7 @@
  * Date: 17-8-20
  * Time: 下午8:35
  */
-namespace Tool;
+namespace SyTool;
 
 use SyConstant\ErrorCode;
 use SyConstant\Project;

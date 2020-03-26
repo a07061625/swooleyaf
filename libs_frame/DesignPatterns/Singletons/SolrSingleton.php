@@ -10,7 +10,7 @@ namespace DesignPatterns\Singletons;
 use SyConstant\ErrorCode;
 use SyException\Solr\SolrException;
 use Log\Log;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SingletonTrait;
 
 class SolrSingleton

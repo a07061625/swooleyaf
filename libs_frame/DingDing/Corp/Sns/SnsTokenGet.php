@@ -14,7 +14,7 @@ use DingDing\TalkUtilBase;
 use DingDing\TalkUtilCorp;
 use DingDing\TalkUtilProvider;
 use SyException\DingDing\TalkException;
-use Tool\Tool;
+use SyTool\Tool;
 
 /**
  * 获取用户授权的令牌

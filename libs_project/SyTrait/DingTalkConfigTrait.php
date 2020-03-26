@@ -10,7 +10,7 @@ namespace SyTrait;
 use SyConstant\Project;
 use DingDing\TalkConfigCorp;
 use Factories\SyTaskMysqlFactory;
-use Tool\Tool;
+use SyTool\Tool;
 
 trait DingTalkConfigTrait
 {

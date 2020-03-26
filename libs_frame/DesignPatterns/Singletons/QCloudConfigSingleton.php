@@ -8,7 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use QCloud\ConfigCos;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SingletonTrait;
 
 class QCloudConfigSingleton

@@ -9,7 +9,7 @@ namespace DB\Entities;
 
 use SyConstant\ErrorCode;
 use SyException\Validator\ValidatorException;
-use Tool\Tool;
+use SyTool\Tool;
 
 abstract class BaseEntity
 {

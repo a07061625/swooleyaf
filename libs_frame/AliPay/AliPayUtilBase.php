@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\AliPayConfigSingleton;
 use SyException\AliPay\AliPayPayException;
 use Log\Log;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 abstract class AliPayUtilBase

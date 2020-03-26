@@ -5,7 +5,7 @@
  * Date: 18-9-2
  * Time: 上午11:07
  */
-namespace Tool;
+namespace SyTool;
 
 use Request\SyRequest;
 use SyConstant\Project;

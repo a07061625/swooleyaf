@@ -21,9 +21,9 @@ class WebHookController extends CommonController
      */
     public function codingHandleAction()
     {
-        $postData = \Tool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
+        $postData = SyTool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
         if (strlen($postData) > 0) {
-            $postArr = \Tool\Tool::jsonDecode($postData);
+            $postArr = SyTool\Tool::jsonDecode($postData);
             if (!is_array($postArr)) {
                 $postArr = [];
             }
@@ -31,13 +31,13 @@ class WebHookController extends CommonController
             $postArr = [];
         }
         $tag = hash('crc32b', $postArr['repository']['url'] . $postArr['ref']);
-        $nowSign = \Tool\WebHook::createCodingSign($tag, $postData);
+        $nowSign = SyTool\WebHook::createCodingSign($tag, $postData);
         $reqSign = $_SERVER['X-CODING-SIGNATURE'] ?? '';
         if ($nowSign !== $reqSign) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '数据不合法');
         } else {
             $redisKey = \ProjectCache\WebHook::getCacheQueueKey();
-            \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->lPush($redisKey, \Tool\Tool::jsonEncode([
+            \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->lPush($redisKey, SyTool\Tool::jsonEncode([
                 'tag' => $tag,
                 'event' => $_SERVER['X-CODING-EVENT'],
                 'msg_prefix' => mb_substr($postArr['head_commit']['message'], 0, 4),

@@ -10,7 +10,7 @@ namespace DesignPatterns\Singletons;
 use SyConstant\ErrorCode;
 use SyException\SyPrint\FeYinException;
 use SyPrint\ConfigFeYin;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SingletonTrait;
 
 class PrintConfigSingleton

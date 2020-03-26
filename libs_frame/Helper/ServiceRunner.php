@@ -10,7 +10,7 @@ namespace Helper;
 use SyServer\HttpServer;
 use SyServer\ProcessPoolServer;
 use SyServer\RpcServer;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 class ServiceRunner

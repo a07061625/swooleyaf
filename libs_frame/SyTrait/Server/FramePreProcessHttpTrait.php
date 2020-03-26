@@ -9,7 +9,7 @@ namespace SyTrait\Server;
 
 use Swoole\Http\Request;
 use SyConstant\ProjectBase;
-use Tool\Tool;
+use SyTool\Tool;
 
 /**
  * 框架内部HTTP服务预处理性状类

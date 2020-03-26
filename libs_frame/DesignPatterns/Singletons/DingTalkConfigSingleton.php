@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use SyConstant\Project;
 use DingDing\TalkConfigProvider;
 use SyException\DingDing\TalkException;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\DingTalkConfigTrait;
 use SyTrait\SingletonTrait;
 

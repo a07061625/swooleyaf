@@ -9,7 +9,7 @@ namespace SyMessagePush;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\MessagePushConfigSingleton;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 final class PushUtilBaiDu extends PushUtilBase

@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\ReportBase;
 use SyMessagePush\PushUtilJPush;
-use Tool\Tool;
+use SyTool\Tool;
 
 class MessageStatus extends ReportBase
 {

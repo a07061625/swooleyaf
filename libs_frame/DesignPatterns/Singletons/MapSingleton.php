@@ -10,7 +10,7 @@ namespace DesignPatterns\Singletons;
 use SyMap\ConfigBaiDu;
 use SyMap\ConfigGaoDe;
 use SyMap\ConfigTencent;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SingletonTrait;
 
 class MapSingleton

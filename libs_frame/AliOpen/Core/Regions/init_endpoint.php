@@ -6,7 +6,7 @@
  * Time: 14:19
  */
 $endpointData = file_get_contents(__DIR__ . '/endpoints.json');
-$totalPoints = \Tool\Tool::jsonDecode($endpointData);
+$totalPoints = SyTool\Tool::jsonDecode($endpointData);
 $endpoints = [];
 foreach ($totalPoints as $eEndpoint) {
     $productDomains = [];

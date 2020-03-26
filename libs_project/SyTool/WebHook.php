@@ -5,7 +5,7 @@
  * Date: 2019/7/2 0002
  * Time: 10:42
  */
-namespace Tool;
+namespace SyTool;
 
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Log\Log;

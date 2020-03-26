@@ -13,7 +13,7 @@ use DingDing\TalkTraitCorp;
 use DingDing\TalkUtilCorp;
 use DingDing\TalkUtilProvider;
 use SyException\DingDing\TalkException;
-use Tool\Tool;
+use SyTool\Tool;
 
 /**
  * 获取用户的持久授权码

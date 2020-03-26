@@ -9,7 +9,7 @@ namespace Wx\Corp\Agent;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
 use Wx\WxUtilBase;

@@ -13,9 +13,9 @@ use Swoole\Server;
 use SyConstant\Project;
 use Project\TimerHandler;
 use Response\Result;
-use Tool\SyPack;
-use Tool\Tool;
-use Tool\WebHook;
+use SyTool\SyPack;
+use SyTool\Tool;
+use SyTool\WebHook;
 
 trait ProjectHttpTrait
 {

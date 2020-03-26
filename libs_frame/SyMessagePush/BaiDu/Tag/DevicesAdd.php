@@ -10,7 +10,7 @@ namespace SyMessagePush\BaiDu\Tag;
 use SyConstant\ErrorCode;
 use SyException\MessagePush\BaiDuPushException;
 use SyMessagePush\PushBaseBaiDu;
-use Tool\Tool;
+use SyTool\Tool;
 
 class DevicesAdd extends PushBaseBaiDu
 {

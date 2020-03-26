@@ -11,13 +11,13 @@ use Swoole\Coroutine;
 use SyConstant\Project;
 use Log\Log;
 use SyServer\BaseServer;
-use Tool\SyPack;
-use Tool\Tool;
+use SyTool\SyPack;
+use SyTool\Tool;
 
 class SyRequestRpc extends SyRequest
 {
     /**
-     * @var \Tool\SyPack
+     * @var \SyTool\SyPack
      */
     private $syPack = null;
 

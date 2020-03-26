@@ -8,7 +8,7 @@
 namespace Response;
 
 use SyConstant\SyInner;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 use Yaf\Registry;
 

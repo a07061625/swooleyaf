@@ -10,7 +10,7 @@ namespace DesignPatterns\Singletons;
 use SySms\ConfigAliYun;
 use SySms\ConfigDaYu;
 use SySms\ConfigYun253;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SingletonTrait;
 
 class SmsConfigSingleton

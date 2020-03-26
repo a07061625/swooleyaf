@@ -7,7 +7,7 @@
  */
 namespace TemplateExtension\Twig;
 
-use Tool\Tool;
+use SyTool\Tool;
 
 class ProjectFunction
 {

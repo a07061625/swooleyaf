@@ -9,7 +9,7 @@ namespace SyMap;
 
 use SyConstant\ErrorCode;
 use Log\Log;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 abstract class MapUtilBase

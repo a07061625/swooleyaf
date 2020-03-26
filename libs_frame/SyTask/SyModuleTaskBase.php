@@ -7,13 +7,13 @@
  */
 namespace SyTask;
 
-use Tool\SyPack;
-use Tool\Tool;
+use SyTool\SyPack;
+use SyTool\Tool;
 
 abstract class SyModuleTaskBase
 {
     /**
-     * @var \Tool\SyPack
+     * @var \SyTool\SyPack
      */
     protected $syPack = null;
     /**

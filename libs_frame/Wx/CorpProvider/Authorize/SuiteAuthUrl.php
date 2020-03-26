@@ -10,7 +10,7 @@ namespace Wx\CorpProvider\Authorize;
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxCorpProviderException;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxBaseCorpProvider;
 
 /**

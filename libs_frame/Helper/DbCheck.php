@@ -7,8 +7,8 @@
  */
 namespace Helper;
 
-use Tool\SyPack;
-use Tool\Tool;
+use SyTool\SyPack;
+use SyTool\Tool;
 
 class DbCheck
 {

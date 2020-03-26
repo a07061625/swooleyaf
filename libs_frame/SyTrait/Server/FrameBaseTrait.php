@@ -9,7 +9,7 @@ namespace SyTrait\Server;
 
 use DesignPatterns\Singletons\RedisSingleton;
 use Swoole\Table;
-use Tool\Tool;
+use SyTool\Tool;
 
 trait FrameBaseTrait
 {

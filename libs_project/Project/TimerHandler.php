@@ -10,7 +10,7 @@ namespace Project;
 use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Factories\SyTaskMysqlFactory;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 class TimerHandler

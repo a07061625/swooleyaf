@@ -9,7 +9,7 @@ namespace Request;
 
 use SyConstant\ErrorCode;
 use SyException\Validator\SignException;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 final class RequestSign

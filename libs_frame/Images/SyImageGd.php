@@ -10,7 +10,7 @@ namespace Images;
 use SyConstant\ErrorCode;
 use SyConstant\SyInner;
 use SyException\Image\ImageException;
-use Tool\Tool;
+use SyTool\Tool;
 
 class SyImageGd extends SyImageBase
 {

@@ -12,7 +12,7 @@ use AliOss\OssClient;
 use SyConstant\ErrorCode;
 use SyException\AliOss\OssException;
 use Log\Log;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SingletonTrait;
 
 class AliOssSingleton

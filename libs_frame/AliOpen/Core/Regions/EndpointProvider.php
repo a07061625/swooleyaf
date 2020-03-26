@@ -1,7 +1,7 @@
 <?php
 namespace AliOpen\Core\Regions;
 
-use Tool\Tool;
+use SyTool\Tool;
 
 class EndpointProvider
 {

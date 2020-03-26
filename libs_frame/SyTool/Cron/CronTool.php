@@ -5,7 +5,7 @@
  * Date: 2017/7/29 0029
  * Time: 15:43
  */
-namespace Tool\Cron;
+namespace SyTool\Cron;
 
 use SyConstant\ErrorCode;
 use SyException\Cron\CronException;
@@ -229,7 +229,7 @@ class CronTool
 
     /**
      * @param string $cron
-     * @return \Tool\Cron\CronData
+     * @return \SyTool\Cron\CronData
      * @throws \SyException\Cron\CronException
      */
     public static function analyseCron(string $cron)

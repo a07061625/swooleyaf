@@ -20,9 +20,9 @@ use SyTrait\Server\FramePreProcessRpcTrait;
 use SyTrait\Server\FrameRpcTrait;
 use SyTrait\Server\ProjectPreProcessRpcTrait;
 use SyTrait\Server\ProjectRpcTrait;
-use Tool\SessionTool;
-use Tool\SyPack;
-use Tool\Tool;
+use SyTool\SessionTool;
+use SyTool\SyPack;
+use SyTool\Tool;
 use Yaf\Registry;
 use Yaf\Request\Http;
 
@@ -34,7 +34,7 @@ class RpcServer extends BaseServer
     use ProjectPreProcessRpcTrait;
 
     /**
-     * @var \Tool\SyPack
+     * @var \SyTool\SyPack
      */
     private $_receivePack = null;
 

@@ -9,7 +9,7 @@ namespace AliPay;
 
 use SyConstant\ErrorCode;
 use SyException\AliPay\AliPayPayException;
-use Tool\Tool;
+use SyTool\Tool;
 
 abstract class AliPayBase
 {

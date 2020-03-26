@@ -9,7 +9,7 @@ namespace DesignPatterns\Singletons;
 
 use QiNiu\ConfigKodo;
 use SyTrait\SingletonTrait;
-use Tool\Tool;
+use SyTool\Tool;
 
 class QiNiuConfigSingleton
 {

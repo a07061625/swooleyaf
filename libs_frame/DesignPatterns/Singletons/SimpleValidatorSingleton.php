@@ -8,7 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use SyConstant\ProjectBase;
-use Tool\BaseContainer;
+use SyTool\BaseContainer;
 use SyTrait\SingletonTrait;
 use Validator\Impl\Double\DoubleBetween;
 use Validator\Impl\Double\DoubleMax;
