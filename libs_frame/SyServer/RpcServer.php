@@ -13,7 +13,7 @@ use Swoole\Server;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyConstant\SyInner;
-use Log\Log;
+use SyLog\Log;
 use Request\RequestSign;
 use Response\Result;
 use SyTrait\Server\FramePreProcessRpcTrait;

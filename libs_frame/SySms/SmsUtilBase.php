@@ -8,7 +8,7 @@
 namespace SySms;
 
 use SyConstant\ErrorCode;
-use Log\Log;
+use SyLog\Log;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
 

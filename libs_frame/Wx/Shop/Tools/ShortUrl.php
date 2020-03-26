@@ -10,7 +10,7 @@ namespace Wx\Shop\Tools;
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
-use Log\Log;
+use SyLog\Log;
 use SyTool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;

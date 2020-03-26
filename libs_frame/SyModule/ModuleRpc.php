@@ -12,7 +12,7 @@ use SyConstant\Project;
 use SyConstant\SyInner;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Swoole\ServerException;
-use Log\Log;
+use SyLog\Log;
 use Request\SyRequestRpc;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;

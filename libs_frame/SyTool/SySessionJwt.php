@@ -11,7 +11,7 @@ use Request\SyRequest;
 use SyConstant\Project;
 use SyConstant\SyInner;
 use DesignPatterns\Factories\CacheSimpleFactory;
-use Log\Log;
+use SyLog\Log;
 use SyTrait\SimpleTrait;
 use Yaf\Registry;
 

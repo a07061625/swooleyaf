@@ -5,7 +5,7 @@ define('SY_MODULE', SY_PROJECT . 'task');
 define('SY_SERVER_IP', (string)SyTool\Tool::getConfig('syserver.base.server.host'));
 set_exception_handler('\SyError\ErrorHandler::handleException');
 set_error_handler('\SyError\ErrorHandler::handleError');
-\Log\Log::setPath(SY_LOG_PATH);
+SyLog\Log::setPath(SY_LOG_PATH);
 
 /**
  * 消息队列消费

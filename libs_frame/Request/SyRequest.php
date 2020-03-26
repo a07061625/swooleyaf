@@ -12,7 +12,7 @@ use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyConstant\SyInner;
 use SyException\Swoole\ServerException;
-use Log\Log;
+use SyLog\Log;
 use Yaf\Registry;
 
 abstract class SyRequest

@@ -12,7 +12,7 @@ use SyConstant\ErrorCode;
 use SyConstant\SyInner;
 use DesignPatterns\Singletons\MysqlSingleton;
 use DesignPatterns\Singletons\RedisSingleton;
-use Log\Log;
+use SyLog\Log;
 use PoolService\ProcessService\ProcessServiceManager;
 use Response\Result;
 use SyTrait\Server\FrameProcessPoolTrait;

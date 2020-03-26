@@ -9,7 +9,7 @@ namespace Request;
 
 use Swoole\Coroutine;
 use SyConstant\Project;
-use Log\Log;
+use SyLog\Log;
 use SyServer\BaseServer;
 use SyTool\SyPack;
 use SyTool\Tool;

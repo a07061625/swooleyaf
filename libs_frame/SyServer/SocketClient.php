@@ -12,7 +12,7 @@ use Swoole\WebSocket\Server;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Swoole\HttpServerException;
-use Log\Log;
+use SyLog\Log;
 use SyTool\SyPack;
 use SyTool\Tool;
 

@@ -8,7 +8,7 @@
 namespace QCloud;
 
 use DesignPatterns\Singletons\QCloudConfigSingleton;
-use Log\Log;
+use SyLog\Log;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
 

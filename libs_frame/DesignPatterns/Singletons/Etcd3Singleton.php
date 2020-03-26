@@ -9,7 +9,7 @@ namespace DesignPatterns\Singletons;
 
 use SyConstant\ErrorCode;
 use SyException\Etcd\EtcdException;
-use Log\Log;
+use SyLog\Log;
 use SyTool\Tool;
 use SyTrait\SingletonTrait;
 

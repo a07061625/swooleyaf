@@ -8,7 +8,7 @@
 namespace SyFrame\Plugins;
 
 use SyConstant\SyInner;
-use Log\Log;
+use SyLog\Log;
 use Yaf\Plugin_Abstract;
 use Yaf\Registry;
 use Yaf\Request_Abstract;

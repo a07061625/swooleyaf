@@ -17,7 +17,7 @@ use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyConstant\SyInner;
 use SyException\Swoole\HttpServerException;
-use Log\Log;
+use SyLog\Log;
 use Request\RequestSign;
 use Response\Result;
 use Response\SyResponseHttp;

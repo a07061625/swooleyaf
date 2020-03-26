@@ -10,7 +10,7 @@ namespace AliPay;
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\AliPayConfigSingleton;
 use SyException\AliPay\AliPayPayException;
-use Log\Log;
+use SyLog\Log;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
