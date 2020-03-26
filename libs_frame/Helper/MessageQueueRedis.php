@@ -9,7 +9,7 @@ namespace Helper;
 
 use SyMessageQueue\ConsumerBase;
 use SyMessageQueue\Redis\Producer;
-use Tool\Tool;
+use SyTool\Tool;
 
 class MessageQueueRedis
 {

@@ -14,7 +14,7 @@ use SyMessagePush\ConfigAli;
 use SyMessagePush\ConfigBaiDu;
 use SyMessagePush\ConfigJPushDev;
 use SyMessagePush\ConfigXinGe;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\JPushConfigTrait;
 use SyTrait\SingletonTrait;
 

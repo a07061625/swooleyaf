@@ -9,7 +9,7 @@ namespace QCloud\Cos;
 use SyConstant\ErrorCode;
 use SyException\QCloud\CosException;
 use QCloud\CloudBaseCos;
-use Tool\Tool;
+use SyTool\Tool;
 
 /**
  * 设置存储桶的生命周期配置

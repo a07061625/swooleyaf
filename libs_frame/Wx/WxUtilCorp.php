@@ -12,7 +12,7 @@ use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 use Wx\Corp\Common\AccessToken;
 use Wx\Corp\Common\JsTicket;

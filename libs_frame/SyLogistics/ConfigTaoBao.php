@@ -9,7 +9,7 @@ namespace SyLogistics;
 
 use SyConstant\ErrorCode;
 use SyException\Logistics\TaoBaoException;
-use Tool\Tool;
+use SyTool\Tool;
 
 class ConfigTaoBao
 {

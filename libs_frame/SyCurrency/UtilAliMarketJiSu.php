@@ -8,7 +8,7 @@
 namespace SyCurrency;
 
 use SyConstant\ErrorCode;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 abstract class UtilAliMarketJiSu extends UtilCommon

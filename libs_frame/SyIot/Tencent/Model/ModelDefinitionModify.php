@@ -10,7 +10,7 @@ namespace SyIot\Tencent\Model;
 use SyConstant\ErrorCode;
 use SyException\Iot\TencentIotException;
 use SyIot\IotBaseTencent;
-use Tool\Tool;
+use SyTool\Tool;
 
 class ModelDefinitionModify extends IotBaseTencent
 {

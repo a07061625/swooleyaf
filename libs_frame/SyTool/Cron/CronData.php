@@ -5,11 +5,11 @@
  * Date: 2017/7/29 0029
  * Time: 16:02
  */
-namespace Tool\Cron;
+namespace SyTool\Cron;
 
 use SyConstant\ErrorCode;
 use SyException\Cron\CronException;
-use Tool\Tool;
+use SyTool\Tool;
 
 class CronData
 {

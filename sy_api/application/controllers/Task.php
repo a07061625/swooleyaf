@@ -31,11 +31,11 @@ class TaskController extends CommonController
      */
     public function addTaskAction()
     {
-        $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('task_title'));
+        $title = SyTool\ProjectTool::filterStr(\Request\SyRequest::getParams('task_title'));
         $titleLength = mb_strlen($title);
         $method = strtoupper(trim(\Request\SyRequest::getParams('task_method', 'GET')));
         $paramStr = trim(\Request\SyRequest::getParams('task_params', ''));
-        $paramData = strlen($paramStr) > 0 ? \Tool\Tool::jsonDecode($paramStr) : [];
+        $paramData = strlen($paramStr) > 0 ? SyTool\Tool::jsonDecode($paramStr) : [];
         if ($titleLength == 0) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '任务标题不能为空');
         } elseif ($titleLength > 100) {
@@ -52,7 +52,7 @@ class TaskController extends CommonController
                 'persist_type' => (int)\Request\SyRequest::getParams('persist_type'),
                 'task_url' => (string)\Request\SyRequest::getParams('task_url'),
                 'task_params' => $paramData,
-                'task_desc' => \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('task_desc', ''), 2),
+                'task_desc' => SyTool\ProjectTool::filterStr(\Request\SyRequest::getParams('task_desc', ''), 2),
             ];
             $addRes = \Dao\TaskDao::addTask($needParams);
             $this->SyResult->setData($addRes);

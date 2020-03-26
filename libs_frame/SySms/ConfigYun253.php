@@ -9,7 +9,7 @@ namespace SySms;
 
 use SyConstant\ErrorCode;
 use SyException\Sms\Yun253Exception;
-use Tool\Tool;
+use SyTool\Tool;
 
 class ConfigYun253
 {

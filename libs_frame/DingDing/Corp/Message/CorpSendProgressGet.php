@@ -12,7 +12,7 @@ use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
 use SyException\DingDing\TalkException;
-use Tool\Tool;
+use SyTool\Tool;
 
 /**
  * 查询工作通知消息的发送进度

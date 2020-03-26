@@ -20,29 +20,29 @@ function syhelp_code()
     echo '    -key:必填 密钥' . PHP_EOL;
 }
 
-$option = \Tool\Tool::getClientOption(1, true);
+$option = SyTool\Tool::getClientOption(1, true);
 switch ($option) {
     case 'encrypt':
-        $file = trim(\Tool\Tool::getClientOption('-file', false, ''));
+        $file = trim(SyTool\Tool::getClientOption('-file', false, ''));
         if (strlen($file) == 0) {
             exit('加密文件或者文件目录为空' . PHP_EOL);
         } elseif ($file{0} != '/') {
             exit('加密文件或者文件目录必须以根目录/开始' . PHP_EOL);
         }
-        $key = trim(\Tool\Tool::getClientOption('-key', false, ''));
+        $key = trim(SyTool\Tool::getClientOption('-key', false, ''));
         if (strlen($key) == 0) {
             exit('密钥为空' . PHP_EOL);
         }
         \Helper\CodeTool::generator($file, $key, 'encrypt');
         break;
     case 'decrypt':
-        $file = trim(\Tool\Tool::getClientOption('-file', false, ''));
+        $file = trim(SyTool\Tool::getClientOption('-file', false, ''));
         if (strlen($file) == 0) {
             exit('解密文件或者文件目录为空' . PHP_EOL);
         } elseif ($file{0} != '/') {
             exit('解密文件或者文件目录必须以根目录/开始' . PHP_EOL);
         }
-        $key = trim(\Tool\Tool::getClientOption('-key', false, ''));
+        $key = trim(SyTool\Tool::getClientOption('-key', false, ''));
         if (strlen($key) == 0) {
             exit('密钥为空' . PHP_EOL);
         }

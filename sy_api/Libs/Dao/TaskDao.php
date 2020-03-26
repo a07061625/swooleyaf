@@ -13,7 +13,7 @@ use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Common\CheckException;
 use Factories\SyTaskMysqlFactory;
 use Request\SyRequest;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
 
 class TaskDao

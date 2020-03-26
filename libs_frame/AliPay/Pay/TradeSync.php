@@ -10,7 +10,7 @@ namespace AliPay\Pay;
 use AliPay\AliPayBase;
 use SyConstant\ErrorCode;
 use SyException\AliPay\AliPayPayException;
-use Tool\Tool;
+use SyTool\Tool;
 
 class TradeSync extends AliPayBase
 {

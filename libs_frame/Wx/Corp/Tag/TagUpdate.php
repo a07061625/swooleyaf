@@ -9,7 +9,7 @@ namespace Wx\Corp\Tag;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxTraitCorp;
 use Wx\WxUtilBase;

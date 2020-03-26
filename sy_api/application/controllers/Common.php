@@ -14,10 +14,10 @@ class CommonController extends \SyFrame\BaseController
         parent::init();
         $this->signStatus = false;
 
-        $token = \Tool\SySession::getSessionId();
-        $cookieKey = \Tool\SySession::getCookieKey();
+        $token = SyTool\SySession::getSessionId();
+        $cookieKey = SyTool\SySession::getCookieKey();
         $_COOKIE[$cookieKey] = $token;
-        $expireTime = \Tool\Tool::getNowTime() + 604800;
+        $expireTime = SyTool\Tool::getNowTime() + 604800;
         \Response\SyResponseHttp::cookie($cookieKey, $token, $expireTime, '/', $_SERVER['SY-DOMAIN']);
     }
 }

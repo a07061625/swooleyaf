@@ -9,7 +9,7 @@ namespace SyIM\Tencent;
 
 use SyConstant\ErrorCode;
 use SyException\IM\TencentException;
-use Tool\Tool;
+use SyTool\Tool;
 
 class SingleChatMsg
 {

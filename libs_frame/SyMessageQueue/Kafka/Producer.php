@@ -8,7 +8,7 @@
 namespace SyMessageQueue\Kafka;
 
 use DesignPatterns\Singletons\MessageQueueSingleton;
-use Tool\Tool;
+use SyTool\Tool;
 
 class Producer
 {

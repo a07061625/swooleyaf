@@ -12,7 +12,7 @@ use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxOpenException;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxBaseOpenCommon;
 use Wx\WxUtilBase;
 

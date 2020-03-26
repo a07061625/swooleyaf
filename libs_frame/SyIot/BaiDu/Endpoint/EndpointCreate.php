@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
 use SyIot\IotBaseBaiDu;
 use SyIot\IotUtilBaiDu;
-use Tool\Tool;
+use SyTool\Tool;
 
 class EndpointCreate extends IotBaseBaiDu
 {

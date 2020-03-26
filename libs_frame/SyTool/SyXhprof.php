@@ -5,7 +5,7 @@
  * Date: 2017/8/1 0001
  * Time: 11:30
  */
-namespace Tool;
+namespace SyTool;
 
 use SyTrait\SimpleTrait;
 

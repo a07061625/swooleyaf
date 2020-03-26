@@ -13,8 +13,8 @@ use Swoole\Server;
 use SyConstant\Project;
 use Project\TimerHandler;
 use Response\Result;
-use Tool\SyPack;
-use Tool\Tool;
+use SyTool\SyPack;
+use SyTool\Tool;
 
 trait ProjectHttpTrait
 {

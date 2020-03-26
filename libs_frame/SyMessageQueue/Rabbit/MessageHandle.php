@@ -10,7 +10,7 @@ namespace SyMessageQueue\Rabbit;
 use DesignPatterns\Singletons\MessageQueueSingleton;
 use Log\Log;
 use MessageQueue\Consumer\RabbitConsumerContainer;
-use Tool\Tool;
+use SyTool\Tool;
 
 class MessageHandle
 {

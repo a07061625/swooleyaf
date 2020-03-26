@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
 use SyException\DingDing\TalkException;
-use Tool\Tool;
+use SyTool\Tool;
 
 /**
  * 批量增加员工角色

@@ -12,7 +12,7 @@ use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkUtilBase;
 use SyException\DingDing\TalkException;
-use Tool\Tool;
+use SyTool\Tool;
 
 /**
  * 获取企业凭证

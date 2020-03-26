@@ -10,7 +10,7 @@ namespace Wx;
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 final class WxUtilShop extends WxUtilBaseAlone

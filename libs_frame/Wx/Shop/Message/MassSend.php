@@ -9,7 +9,7 @@ namespace Wx\Shop\Message;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;

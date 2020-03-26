@@ -8,7 +8,7 @@
 namespace Wx\Open;
 
 use SyConstant\ErrorCode;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxBaseOpen;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;

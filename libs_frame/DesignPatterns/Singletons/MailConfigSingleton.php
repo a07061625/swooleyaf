@@ -11,7 +11,7 @@ use Mailer\ConfigSmtp;
 use SyConstant\ErrorCode;
 use SyException\Mail\MailException;
 use SyTrait\SingletonTrait;
-use Tool\Tool;
+use SyTool\Tool;
 
 class MailConfigSingleton
 {

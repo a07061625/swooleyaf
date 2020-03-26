@@ -9,7 +9,7 @@ namespace DingDing\Corp\MicroApp;
 
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
-use Tool\Tool;
+use SyTool\Tool;
 
 /**
  * 获取应用列表

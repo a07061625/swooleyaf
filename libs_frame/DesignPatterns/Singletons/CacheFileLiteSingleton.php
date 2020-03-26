@@ -8,8 +8,8 @@
 namespace DesignPatterns\Singletons;
 
 use SyCache\Lite\CacheLite;
-use Tool\Dir;
-use Tool\Tool;
+use SyTool\Dir;
+use SyTool\Tool;
 use SyTrait\SingletonTrait;
 
 class CacheFileLiteSingleton

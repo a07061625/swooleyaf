@@ -14,7 +14,7 @@ use DesignPatterns\Singletons\RedisSingleton;
 use Log\Log;
 use MessageQueue\Consumer\KafkaConsumerContainer;
 use RdKafka\Message;
-use Tool\Tool;
+use SyTool\Tool;
 
 class MessageQueueKafka
 {

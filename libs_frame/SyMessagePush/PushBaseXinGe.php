@@ -10,7 +10,7 @@ namespace SyMessagePush;
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\MessagePushConfigSingleton;
 use SyException\MessagePush\XinGePushException;
-use Tool\Tool;
+use SyTool\Tool;
 
 abstract class PushBaseXinGe extends PushBase
 {

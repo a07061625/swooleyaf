@@ -12,7 +12,7 @@ use SyException\SyPrint\FeYinException;
 use SyPrint\PrintBaseFeYin;
 use SyPrint\PrintUtilBase;
 use SyPrint\PrintUtilFeYin;
-use Tool\Tool;
+use SyTool\Tool;
 
 class DeviceBind extends PrintBaseFeYin
 {

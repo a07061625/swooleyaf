@@ -8,7 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use SyIM\TencentConfig;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SingletonTrait;
 
 class IMConfigSingleton

@@ -8,7 +8,7 @@
 namespace SyMessagePush;
 
 use SyConstant\ErrorCode;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 final class PushUtilXinGe extends PushUtilBase

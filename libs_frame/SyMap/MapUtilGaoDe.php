@@ -9,7 +9,7 @@ namespace SyMap;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\MapSingleton;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 final class MapUtilGaoDe extends MapUtilBase

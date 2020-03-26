@@ -12,7 +12,7 @@ use SyConstant\SyInner;
 use SyException\Reflection\ReflectException;
 use Log\Log;
 use SyFrame\BaseController;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 use Validator\ValidatorResult;
 

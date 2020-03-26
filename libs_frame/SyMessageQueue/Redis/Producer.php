@@ -12,7 +12,7 @@ use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\MessageQueue\MessageQueueException;
 use SyMessageQueue\ConsumerBase;
-use Tool\Tool;
+use SyTool\Tool;
 
 class Producer
 {

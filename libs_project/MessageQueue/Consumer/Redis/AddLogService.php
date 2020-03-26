@@ -10,7 +10,7 @@ namespace MessageQueue\Consumer\Redis;
 use SyConstant\Project;
 use Log\Log;
 use SyMessageQueue\ConsumerBase;
-use Tool\Tool;
+use SyTool\Tool;
 
 class AddLogService extends ConsumerBase
 {

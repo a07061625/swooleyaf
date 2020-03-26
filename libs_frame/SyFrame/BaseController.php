@@ -11,8 +11,8 @@ use Response\SyResponseHttp;
 use SyConstant\SyInner;
 use Reflection\BaseReflect;
 use Response\Result;
-use Tool\SyUser;
-use Tool\Tool;
+use SyTool\SyUser;
+use SyTool\Tool;
 use Yaf\Controller_Abstract;
 use Yaf\Registry;
 

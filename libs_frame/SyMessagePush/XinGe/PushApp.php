@@ -9,7 +9,7 @@ namespace SyMessagePush\XinGe;
 use SyConstant\ErrorCode;
 use SyException\MessagePush\XinGePushException;
 use SyMessagePush\PushBaseXinGe;
-use Tool\Tool;
+use SyTool\Tool;
 
 /**
  * 消息推送

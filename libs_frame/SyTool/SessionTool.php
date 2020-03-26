@@ -5,7 +5,7 @@
  * Date: 2019/4/11 0011
  * Time: 18:37
  */
-namespace Tool;
+namespace SyTool;
 
 use SyConstant\ErrorCode;
 use SyConstant\Project;

@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
 use SyException\DingDing\TalkException;
-use Tool\Tool;
+use SyTool\Tool;
 
 /**
  * 批量获取钉钉运动数据

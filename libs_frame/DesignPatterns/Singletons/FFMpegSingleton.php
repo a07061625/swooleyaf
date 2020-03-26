@@ -9,7 +9,7 @@ namespace DesignPatterns\Singletons;
 
 use SyConstant\ErrorCode;
 use SyException\Common\CheckException;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SingletonTrait;
 
 class FFMpegSingleton

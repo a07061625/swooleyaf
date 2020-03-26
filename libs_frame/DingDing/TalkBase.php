@@ -8,7 +8,7 @@
 namespace DingDing;
 
 use SyConstant\ErrorCode;
-use Tool\Tool;
+use SyTool\Tool;
 
 abstract class TalkBase
 {

@@ -8,7 +8,7 @@
 namespace Wx\Shop\Merchant\PostageTemplate;
 
 use SyConstant\ErrorCode;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;

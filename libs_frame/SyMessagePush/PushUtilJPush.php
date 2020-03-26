@@ -13,7 +13,7 @@ use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\MessagePushConfigSingleton;
 use SyException\MessagePush\JPushException;
 use SyMessagePush\JPush\Push\CidList;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 final class PushUtilJPush extends PushUtilBase

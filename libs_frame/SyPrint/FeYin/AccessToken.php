@@ -12,7 +12,7 @@ use DesignPatterns\Singletons\PrintConfigSingleton;
 use SyException\SyPrint\FeYinException;
 use SyPrint\PrintBaseFeYin;
 use SyPrint\PrintUtilBase;
-use Tool\Tool;
+use SyTool\Tool;
 
 class AccessToken extends PrintBaseFeYin
 {

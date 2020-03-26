@@ -8,7 +8,7 @@
 namespace SySms;
 
 use SyConstant\ErrorCode;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 abstract class SmsUtilYun253 extends SmsUtilBase

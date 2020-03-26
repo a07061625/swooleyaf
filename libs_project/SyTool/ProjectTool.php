@@ -5,7 +5,7 @@
  * Date: 2018/5/22 0022
  * Time: 10:12
  */
-namespace Tool;
+namespace SyTool;
 
 use SyConstant\Project;
 use SyTrait\SimpleTrait;
