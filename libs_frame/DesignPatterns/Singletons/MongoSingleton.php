@@ -9,7 +9,7 @@ namespace DesignPatterns\Singletons;
 
 use SyConstant\ErrorCode;
 use SyException\Mongo\MongoException;
-use Log\Log;
+use SyLog\Log;
 use MongoDB\Driver\Command;
 use MongoDB\Driver\Manager;
 use SyTool\Tool;

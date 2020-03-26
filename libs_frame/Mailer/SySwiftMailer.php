@@ -10,7 +10,7 @@ namespace Mailer;
 use DesignPatterns\Singletons\MailConfigSingleton;
 use SyConstant\ErrorCode;
 use SyException\Mail\MailException;
-use Log\Log;
+use SyLog\Log;
 
 class SySwiftMailer
 {

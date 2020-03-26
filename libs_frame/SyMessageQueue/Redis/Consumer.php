@@ -10,7 +10,7 @@ namespace SyMessageQueue\Redis;
 use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\MessageQueueSingleton;
-use Log\Log;
+use SyLog\Log;
 use SyTool\Tool;
 
 class Consumer

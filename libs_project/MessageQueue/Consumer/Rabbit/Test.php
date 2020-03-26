@@ -8,7 +8,7 @@
 namespace MessageQueue\Consumer\Rabbit;
 
 use SyConstant\Project;
-use Log\Log;
+use SyLog\Log;
 use SyMessageQueue\ConsumerBase;
 
 class Test extends ConsumerBase

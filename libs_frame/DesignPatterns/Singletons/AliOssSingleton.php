@@ -11,7 +11,7 @@ use AliOss\ConfigOss;
 use AliOss\OssClient;
 use SyConstant\ErrorCode;
 use SyException\AliOss\OssException;
-use Log\Log;
+use SyLog\Log;
 use SyTool\Tool;
 use SyTrait\SingletonTrait;
 

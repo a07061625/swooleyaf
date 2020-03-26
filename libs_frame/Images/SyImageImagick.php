@@ -10,7 +10,7 @@ namespace Images;
 use SyConstant\ErrorCode;
 use SyConstant\SyInner;
 use SyException\Image\ImageException;
-use Log\Log;
+use SyLog\Log;
 use SyTool\Tool;
 
 class SyImageImagick extends SyImageBase

@@ -23,7 +23,7 @@ use DesignPatterns\Singletons\MysqlSingleton;
 use DesignPatterns\Singletons\RedisSingleton;
 use SyException\Swoole\ServerException;
 use SyException\Validator\ValidatorException;
-use Log\Log;
+use SyLog\Log;
 use Response\Result;
 use SyTrait\Server\FrameBaseTrait;
 use SyTrait\Server\ProjectBaseTrait;

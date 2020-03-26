@@ -13,7 +13,7 @@ use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use Interfaces\PayContainer;
-use Log\Log;
+use SyLog\Log;
 use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
 

@@ -33,7 +33,7 @@ class PayController extends CommonController
     public function handleWxPayNotifyAction()
     {
         $wxMsg = SyTool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
-        \Log\Log::log('wx pay data:' . $wxMsg);
+        SyLog\Log::log('wx pay data:' . $wxMsg);
         $xmlData = SyTool\Tool::xmlToArray($wxMsg);
         if (\Wx\WxUtilShop::checkSign($xmlData, $xmlData['appid'])) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleWxPayNotify', $xmlData);
@@ -67,7 +67,7 @@ class PayController extends CommonController
     public function handleWxPrePayNotifyAction()
     {
         $wxMsg = SyTool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
-        \Log\Log::log('wx pre pay data:' . $wxMsg);
+        SyLog\Log::log('wx pre pay data:' . $wxMsg);
         $xmlData = SyTool\Tool::xmlToArray($wxMsg);
         if (\Wx\WxUtilShop::checkSign($xmlData, $xmlData['appid'])) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleWxPrePayNotify', $xmlData);
@@ -99,7 +99,7 @@ class PayController extends CommonController
     {
         $resultMsg = 'fail';
         $allParams = \Request\SyRequest::getParams();
-        \Log\Log::log('ali pay data:' . SyTool\Tool::jsonEncode($allParams, JSON_UNESCAPED_UNICODE));
+        SyLog\Log::log('ali pay data:' . SyTool\Tool::jsonEncode($allParams, JSON_UNESCAPED_UNICODE));
         if (AliPay\AliPayUtilBase::verifyData($allParams, '2', 'RSA2')) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleAliPayNotify', $allParams);
             $handleData = SyTool\Tool::jsonDecode($handleRes);
@@ -157,7 +157,7 @@ class PayController extends CommonController
     {
         $resultMsg = 'fail';
         $allParams = \Request\SyRequest::getParams();
-        \Log\Log::log('ali refund data:' . SyTool\Tool::jsonEncode($allParams, JSON_UNESCAPED_UNICODE));
+        SyLog\Log::log('ali refund data:' . SyTool\Tool::jsonEncode($allParams, JSON_UNESCAPED_UNICODE));
         if (AliPay\AliPayUtilBase::verifyData($allParams, '2', 'RSA2')) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleAliRefundNotify', $allParams);
             $handleData = SyTool\Tool::jsonDecode($handleRes);

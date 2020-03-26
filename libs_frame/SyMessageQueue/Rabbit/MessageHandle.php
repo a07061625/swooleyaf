@@ -8,7 +8,7 @@
 namespace SyMessageQueue\Rabbit;
 
 use DesignPatterns\Singletons\MessageQueueSingleton;
-use Log\Log;
+use SyLog\Log;
 use MessageQueue\Consumer\RabbitConsumerContainer;
 use SyTool\Tool;
 

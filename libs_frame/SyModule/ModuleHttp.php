@@ -8,7 +8,7 @@
 namespace SyModule;
 
 use SyConstant\Project;
-use Log\Log;
+use SyLog\Log;
 use Request\SyRequestHttp;
 use SyTool\SyPack;
 use SyTool\Tool;

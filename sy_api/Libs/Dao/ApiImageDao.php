@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Common\CheckException;
-use Log\Log;
+use SyLog\Log;
 use Request\SyRequest;
 use SyModule\SyModuleService;
 use SyTool\Tool;
