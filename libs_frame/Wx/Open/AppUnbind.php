@@ -9,7 +9,7 @@ namespace Wx\Open;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxBaseOpen;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;

@@ -32,7 +32,7 @@ class ImageController extends CommonController
         if (is_string($handleRes)) {
             $this->sendRsp($handleRes);
         } else {
-            $this->sendRsp(\Tool\Tool::jsonEncode($handleRes));
+            $this->sendRsp(SyTool\Tool::jsonEncode($handleRes));
         }
     }
 

@@ -18,7 +18,7 @@ class SyTokenController extends CommonController
     public function addTokenByStationAction()
     {
         $data = $_POST;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $addRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/SyToken/addTokenByStation', $data);
         $this->sendRsp($addRes);
     }
@@ -29,7 +29,7 @@ class SyTokenController extends CommonController
     public function editTokenByStationAction()
     {
         $data = $_POST;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $editRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/SyToken/editTokenByStation', $data);
         $this->sendRsp($editRes);
     }
@@ -40,7 +40,7 @@ class SyTokenController extends CommonController
     public function getTokenInfoByStationAction()
     {
         $data = $_GET;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/SyToken/getTokenInfoByStation', $data);
         $this->sendRsp($getRes);
     }
@@ -51,7 +51,7 @@ class SyTokenController extends CommonController
     public function getTokenListByStationAction()
     {
         $data = $_GET;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/SyToken/getTokenListByStation', $data);
         $this->sendRsp($getRes);
     }

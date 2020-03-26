@@ -9,7 +9,7 @@ namespace QCloud\Cos;
 use SyConstant\ErrorCode;
 use SyException\QCloud\CosException;
 use QCloud\CloudBaseCos;
-use Tool\Tool;
+use SyTool\Tool;
 
 /**
  * 恢复archive类型的对象

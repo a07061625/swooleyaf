@@ -10,7 +10,7 @@ namespace SyMap\BaiDu;
 use SyConstant\ErrorCode;
 use SyException\Map\BaiduMapException;
 use SyMap\MapBaseBaiDu;
-use Tool\Tool;
+use SyTool\Tool;
 
 class PlaceSuggestion extends MapBaseBaiDu
 {

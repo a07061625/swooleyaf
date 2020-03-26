@@ -10,7 +10,7 @@ namespace SyTrait;
 use SyConstant\Project;
 use SyMessagePush\ConfigJPushApp;
 use SyMessagePush\ConfigJPushGroup;
-use Tool\Tool;
+use SyTool\Tool;
 
 trait JPushConfigTrait
 {

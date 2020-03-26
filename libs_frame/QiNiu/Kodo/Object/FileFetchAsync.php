@@ -11,7 +11,7 @@ use QiNiu\QiNiuBaseKodo;
 use QiNiu\QiNiuUtilBase;
 use SyConstant\ErrorCode;
 use SyException\QiNiu\KodoException;
-use Tool\Tool;
+use SyTool\Tool;
 
 class FileFetchAsync extends QiNiuBaseKodo
 {

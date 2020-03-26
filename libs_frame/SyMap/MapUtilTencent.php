@@ -8,7 +8,7 @@
 namespace SyMap;
 
 use SyConstant\ErrorCode;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 final class MapUtilTencent extends MapUtilBase

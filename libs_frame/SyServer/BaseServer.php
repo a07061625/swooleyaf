@@ -27,9 +27,9 @@ use Log\Log;
 use Response\Result;
 use SyTrait\Server\FrameBaseTrait;
 use SyTrait\Server\ProjectBaseTrait;
-use Tool\Dir;
-use Tool\SyPack;
-use Tool\Tool;
+use SyTool\Dir;
+use SyTool\SyPack;
+use SyTool\Tool;
 use Yaf\Application;
 
 abstract class BaseServer
@@ -77,7 +77,7 @@ abstract class BaseServer
      */
     protected $_configs = [];
     /**
-     * @var \Tool\SyPack
+     * @var \SyTool\SyPack
      */
     protected $_syPack = null;
     /**

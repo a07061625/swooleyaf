@@ -8,7 +8,7 @@
 namespace Validator\Containers;
 
 use DesignPatterns\Singletons\SimpleValidatorSingleton;
-use Tool\BaseContainer;
+use SyTool\BaseContainer;
 
 abstract class BaseValidatorContainer extends BaseContainer
 {

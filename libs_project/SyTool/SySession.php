@@ -5,13 +5,13 @@
  * Date: 17-3-30
  * Time: 上午7:46
  */
-namespace Tool;
+namespace SyTool;
 
 use SyTrait\SimpleTrait;
 
 /**
  * Class SySession
- * @package Tool
+ * @package SyTool
  */
 class SySession extends SySessionJwt
 {

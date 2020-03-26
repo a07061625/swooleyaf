@@ -12,7 +12,7 @@ use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 class Region

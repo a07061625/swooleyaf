@@ -11,7 +11,7 @@ use Swoole\Coroutine;
 use SyConstant\Project;
 use SyConstant\SyInner;
 use Log\Log;
-use Tool\HttpTool;
+use SyTool\HttpTool;
 
 class SyRequestHttp extends SyRequest
 {

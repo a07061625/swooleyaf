@@ -10,7 +10,7 @@ namespace SyTrait;
 use AliPay\PayConfig;
 use SyConstant\Project;
 use Factories\SyBaseMysqlFactory;
-use Tool\Tool;
+use SyTool\Tool;
 
 trait AliPayConfigTrait
 {

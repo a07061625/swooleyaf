@@ -9,7 +9,7 @@ namespace Wx;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxOpenException;
-use Tool\Tool;
+use SyTool\Tool;
 
 class WxConfigOpenCommon
 {

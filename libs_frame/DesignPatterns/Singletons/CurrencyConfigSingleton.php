@@ -10,7 +10,7 @@ namespace DesignPatterns\Singletons;
 use SyCurrency\ConfigAliMarketJiSu;
 use SyCurrency\ConfigAliMarketYiYuan;
 use SyTrait\SingletonTrait;
-use Tool\Tool;
+use SyTool\Tool;
 
 class CurrencyConfigSingleton
 {

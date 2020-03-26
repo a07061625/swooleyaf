@@ -5,7 +5,7 @@ use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
 use Wx\Shop\Pay\PayCompanyBankPublicKey;
 

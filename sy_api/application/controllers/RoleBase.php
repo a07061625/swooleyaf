@@ -18,7 +18,7 @@ class RoleBaseController extends CommonController
     public function addRoleByStationAction()
     {
         $data = $_POST;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $addRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/addRoleByStation', $data);
         $this->sendRsp($addRes);
     }
@@ -29,7 +29,7 @@ class RoleBaseController extends CommonController
     public function editRoleByStationAction()
     {
         $data = $_POST;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $editRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/editRoleByStation', $data);
         $this->sendRsp($editRes);
     }
@@ -40,7 +40,7 @@ class RoleBaseController extends CommonController
     public function getRoleInfoByStationAction()
     {
         $data = $_GET;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/getRoleInfoByStation', $data);
         $this->sendRsp($getRes);
     }
@@ -51,7 +51,7 @@ class RoleBaseController extends CommonController
     public function getRoleListByStationAction()
     {
         $data = $_GET;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/getRoleListByStation', $data);
         $this->sendRsp($getRes);
     }

@@ -33,9 +33,9 @@ class RegionController extends CommonController
      */
     public function addRegionByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
-        $regionName = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('region_name'));
+        $regionName = SyTool\ProjectTool::filterStr(\Request\SyRequest::getParams('region_name'));
         $nameLength = mb_strlen($regionName);
         if ($nameLength == 0) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能为空');
@@ -76,9 +76,9 @@ class RegionController extends CommonController
      */
     public function editRegionByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
-        $regionName = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('region_name', ''));
+        $regionName = SyTool\ProjectTool::filterStr(\Request\SyRequest::getParams('region_name', ''));
         $nameLength = mb_strlen($regionName);
         if ($nameLength > 100) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '地区名称不能大于100个字');
@@ -111,7 +111,7 @@ class RegionController extends CommonController
      */
     public function deleteRegionByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $needParams = [
             'region_tag' => (string) \Request\SyRequest::getParams('region_tag'),
@@ -135,7 +135,7 @@ class RegionController extends CommonController
      */
     public function getRegionInfoByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $regionTag = (string) \Request\SyRequest::getParams('region_tag');
         $tagLength = strlen($regionTag);
@@ -171,7 +171,7 @@ class RegionController extends CommonController
      */
     public function getRegionListByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $ptag = trim(\Request\SyRequest::getParams('region_ptag', ''));
         $tagLength = strlen($ptag);

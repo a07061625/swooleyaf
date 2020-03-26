@@ -17,7 +17,7 @@ use MongoDB\Driver\BulkWrite;
 use MongoDB\Driver\Command;
 use MongoDB\Driver\Query;
 use MongoDB\Driver\WriteConcern;
-use Tool\Tool;
+use SyTool\Tool;
 
 class MongoModel extends BaseModel
 {

@@ -10,7 +10,7 @@ namespace AliPay\Fund;
 use AliPay\AliPayBase;
 use SyConstant\ErrorCode;
 use SyException\AliPay\AliPayFundException;
-use Tool\Tool;
+use SyTool\Tool;
 
 class AuthOrderAppFreeze extends AliPayBase
 {

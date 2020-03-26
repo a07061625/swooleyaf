@@ -5,7 +5,7 @@
  * Date: 2017/3/2 0002
  * Time: 11:18
  */
-namespace Tool;
+namespace SyTool;
 
 use Swoole\Client;
 use SyConstant\ErrorCode;

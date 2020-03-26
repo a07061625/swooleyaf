@@ -11,7 +11,7 @@ use DesignPatterns\Singletons\QiNiuConfigSingleton;
 use Log\Log;
 use SyConstant\ErrorCode;
 use SyTrait\SimpleTrait;
-use Tool\Tool;
+use SyTool\Tool;
 
 abstract class QiNiuUtilBase
 {

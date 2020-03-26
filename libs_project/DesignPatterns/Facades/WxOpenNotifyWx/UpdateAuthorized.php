@@ -9,7 +9,7 @@ namespace DesignPatterns\Facades\WxOpenNotifyWx;
 
 use SyConstant\Project;
 use DesignPatterns\Facades\WxOpenNotifyWxFacade;
-use Tool\ProjectWxTool;
+use SyTool\ProjectWxTool;
 use SyTrait\SimpleFacadeTrait;
 
 class UpdateAuthorized extends WxOpenNotifyWxFacade

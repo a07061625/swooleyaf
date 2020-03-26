@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Wx\WxCorpProviderException;
 use SyException\Wx\WxException;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SingletonTrait;
 use SyTrait\WxConfigTrait;
 use Wx\WxConfigCorpProvider;

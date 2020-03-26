@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use ProjectCache\SyToken;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
 
 class SyTokenDao

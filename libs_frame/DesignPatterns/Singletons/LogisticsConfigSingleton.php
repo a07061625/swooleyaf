@@ -11,7 +11,7 @@ use SyLogistics\ConfigAliMarketAli;
 use SyLogistics\ConfigKd100;
 use SyLogistics\ConfigKdNiao;
 use SyLogistics\ConfigTaoBao;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SingletonTrait;
 
 class LogisticsConfigSingleton

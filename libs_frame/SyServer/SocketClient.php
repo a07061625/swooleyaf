@@ -13,8 +13,8 @@ use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Swoole\HttpServerException;
 use Log\Log;
-use Tool\SyPack;
-use Tool\Tool;
+use SyTool\SyPack;
+use SyTool\Tool;
 
 class SocketClient
 {
@@ -60,7 +60,7 @@ class SocketClient
      */
     private $connected = false;
     /**
-     * @var \Tool\SyPack
+     * @var \SyTool\SyPack
      */
     private $_syPack = null;
 

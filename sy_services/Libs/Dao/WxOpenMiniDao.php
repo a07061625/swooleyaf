@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
 use Wx\OpenMini\Category\CategoryGet;
 use Wx\OpenMini\Code\CodeAudit;

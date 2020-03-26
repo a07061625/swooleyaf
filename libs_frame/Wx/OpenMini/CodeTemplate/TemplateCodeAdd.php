@@ -10,7 +10,7 @@ namespace Wx\OpenMini\CodeTemplate;
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxOpenException;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;

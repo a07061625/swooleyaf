@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\SmsConfigSingleton;
 use SyException\Sms\DaYuException;
 use TaoBao\ServiceBase;
-use Tool\Tool;
+use SyTool\Tool;
 
 class SmsSend extends ServiceBase
 {

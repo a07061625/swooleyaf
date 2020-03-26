@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use Log\Log;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxBaseCorp;
 use Wx\WxUtilBase;
 use Wx\WxUtilCorp;

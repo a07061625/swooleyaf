@@ -9,7 +9,7 @@ namespace SyIot;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\IotConfigSingleton;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 abstract class IotUtilTencent extends IotUtilBase

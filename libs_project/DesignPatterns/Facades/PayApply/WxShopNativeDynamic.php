@@ -10,7 +10,7 @@ namespace DesignPatterns\Facades\PayApply;
 use SyConstant\ErrorCode;
 use DesignPatterns\Facades\PayApplyFacade;
 use SyException\Common\CheckException;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleFacadeTrait;
 use Wx\Shop\Pay\UnifiedOrder;
 

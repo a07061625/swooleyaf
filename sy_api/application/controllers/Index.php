@@ -41,7 +41,7 @@ class IndexController extends CommonController
     public function debugAction()
     {
         xdebug_start_trace();
-        $ip = \Tool\Tool::getClientIP(2);
+        $ip = SyTool\Tool::getClientIP(2);
 
         xdebug_stop_trace();
         $this->SyResult->setData([

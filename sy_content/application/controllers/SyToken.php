@@ -32,9 +32,9 @@ class SyTokenController extends CommonController
      */
     public function addTokenByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
-        $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
+        $title = SyTool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
         if (strlen($title) == 0) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
@@ -71,9 +71,9 @@ class SyTokenController extends CommonController
      */
     public function editTokenByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
-        $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
+        $title = SyTool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
         if (strlen($title) == 0) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
@@ -104,7 +104,7 @@ class SyTokenController extends CommonController
      */
     public function getTokenInfoByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $needParams = [
             'tag' => (string)\Request\SyRequest::getParams('tag'),
@@ -130,7 +130,7 @@ class SyTokenController extends CommonController
      */
     public function getTokenListByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $needParams = [
             'page' => (int)\Request\SyRequest::getParams('page', 1),

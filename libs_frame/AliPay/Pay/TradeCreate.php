@@ -11,7 +11,7 @@ use AliPay\AliPayBase;
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\AliPayConfigSingleton;
 use SyException\AliPay\AliPayPayException;
-use Tool\Tool;
+use SyTool\Tool;
 
 class TradeCreate extends AliPayBase
 {

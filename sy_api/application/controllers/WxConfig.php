@@ -12,7 +12,7 @@ class WxConfigController extends CommonController
     public function setConfigAction()
     {
         $data = $_POST;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $setRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/WxConfig/setConfig', $data);
         $this->sendRsp($setRes);
     }
@@ -23,7 +23,7 @@ class WxConfigController extends CommonController
     public function refreshSslCompanyBankAction()
     {
         $data = $_GET;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $refreshRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/WxConfig/refreshSslCompanyBank', $data);
         $this->sendRsp($refreshRes);
     }

@@ -10,7 +10,7 @@ namespace QiNiu;
 use DesignPatterns\Singletons\QiNiuConfigSingleton;
 use SyConstant\ErrorCode;
 use SyTrait\SimpleTrait;
-use Tool\Tool;
+use SyTool\Tool;
 
 final class QiNiuUtilKodo extends QiNiuUtilBase
 {

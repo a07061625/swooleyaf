@@ -10,7 +10,7 @@ namespace DesignPatterns\Singletons;
 use SyIot\ConfigAliYun;
 use SyIot\ConfigBaiDu;
 use SyIot\ConfigTencent;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SingletonTrait;
 
 class IotConfigSingleton

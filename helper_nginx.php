@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/helper_load.php';
 
-$type = \Tool\Tool::getClientOption('-ct', false, '');
+$type = SyTool\Tool::getClientOption('-ct', false, '');
 switch ($type) {
     case 'streams':
         $projects = include __DIR__ . '/config_projects.php';

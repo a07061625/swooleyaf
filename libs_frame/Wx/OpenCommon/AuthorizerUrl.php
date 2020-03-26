@@ -10,7 +10,7 @@ namespace Wx\OpenCommon;
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use Log\Log;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxBaseOpenCommon;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;

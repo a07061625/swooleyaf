@@ -24,7 +24,7 @@ class WxOpenMiniController extends CommonController
      */
     public function getDraftCodeListAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $getRes = \Dao\WxOpenMiniDao::getDraftCodeList([]);
         $this->SyResult->setData($getRes);
@@ -43,7 +43,7 @@ class WxOpenMiniController extends CommonController
      */
     public function getTemplateCodeListAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $getRes = \Dao\WxOpenMiniDao::getTemplateCodeList([]);
         $this->SyResult->setData($getRes);
@@ -64,7 +64,7 @@ class WxOpenMiniController extends CommonController
      */
     public function addTemplateCodeAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $needParams = [
             'draft_id' => (string)\Request\SyRequest::getParams('draft_id'),
@@ -88,7 +88,7 @@ class WxOpenMiniController extends CommonController
      */
     public function delTemplateCodeAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $needParams = [
             'template_id' => (string)\Request\SyRequest::getParams('template_id'),
@@ -116,10 +116,10 @@ class WxOpenMiniController extends CommonController
      */
     public function modifyServerDomainAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $domainStr = trim(\Request\SyRequest::getParams('domains', ''));
-        $domainArr = strlen($domainStr) > 0 ? \Tool\Tool::jsonDecode($domainStr) : [];
+        $domainArr = strlen($domainStr) > 0 ? SyTool\Tool::jsonDecode($domainStr) : [];
         $actionType = (string)\Request\SyRequest::getParams('action_type');
         if (!in_array($actionType, ['add','delete','set','get'], true)) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '操作类型不支持');
@@ -156,10 +156,10 @@ class WxOpenMiniController extends CommonController
      */
     public function setWebViewDomainAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $domainStr = trim(\Request\SyRequest::getParams('domains', ''));
-        $domainArr = strlen($domainStr) > 0 ? \Tool\Tool::jsonDecode($domainStr) : [];
+        $domainArr = strlen($domainStr) > 0 ? SyTool\Tool::jsonDecode($domainStr) : [];
         $actionType = (string)\Request\SyRequest::getParams('action_type');
         if (!in_array($actionType, ['add','delete','set','get'], true)) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '操作类型不支持');
@@ -192,7 +192,7 @@ class WxOpenMiniController extends CommonController
      */
     public function getMiniCategoryListAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $needParams = [
             'wxmini_appid' => trim(\Request\SyRequest::getParams('wxmini_appid')),
@@ -216,7 +216,7 @@ class WxOpenMiniController extends CommonController
      */
     public function getMiniPageConfigAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $needParams = [
             'wxmini_appid' => trim(\Request\SyRequest::getParams('wxmini_appid')),
@@ -248,9 +248,9 @@ class WxOpenMiniController extends CommonController
      */
     public function uploadMiniCodeAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
-        $extData = \Tool\Tool::jsonDecode(\Request\SyRequest::getParams('ext_json'));
+        $extData = SyTool\Tool::jsonDecode(\Request\SyRequest::getParams('ext_json'));
         if (empty($extData)) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '自定义配置不能为空');
         } else {
@@ -286,9 +286,9 @@ class WxOpenMiniController extends CommonController
      */
     public function auditMiniCodeAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
-        $auditItems = \Tool\Tool::jsonDecode(\Request\SyRequest::getParams('audit_items'));
+        $auditItems = SyTool\Tool::jsonDecode(\Request\SyRequest::getParams('audit_items'));
         if (empty($auditItems)) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '审核列表不能为空');
         } else {
@@ -319,7 +319,7 @@ class WxOpenMiniController extends CommonController
      */
     public function refreshMiniCodeAuditResultAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $needParams = [
             'wxmini_appid' => trim(\Request\SyRequest::getParams('wxmini_appid')),
@@ -344,7 +344,7 @@ class WxOpenMiniController extends CommonController
      */
     public function releaseMiniCodeAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $needParams = [
             'wxmini_appid' => (string)\Request\SyRequest::getParams('wxmini_appid'),

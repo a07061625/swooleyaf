@@ -9,7 +9,7 @@ namespace SySms;
 
 use SyConstant\ErrorCode;
 use SyException\Sms\AliYunException;
-use Tool\Tool;
+use SyTool\Tool;
 
 class ConfigAliYun
 {

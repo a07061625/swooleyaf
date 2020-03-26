@@ -9,7 +9,7 @@ namespace SySms;
 
 use SyConstant\ErrorCode;
 use SyException\Sms\DaYuException;
-use Tool\Tool;
+use SyTool\Tool;
 
 class ConfigDaYu
 {

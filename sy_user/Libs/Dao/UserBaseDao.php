@@ -7,7 +7,7 @@
  */
 namespace Dao;
 
-use Tool\SySession;
+use SyTool\SySession;
 use SyTrait\SimpleDaoTrait;
 
 class UserBaseDao

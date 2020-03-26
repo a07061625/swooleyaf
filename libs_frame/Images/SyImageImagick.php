@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use SyConstant\SyInner;
 use SyException\Image\ImageException;
 use Log\Log;
-use Tool\Tool;
+use SyTool\Tool;
 
 class SyImageImagick extends SyImageBase
 {

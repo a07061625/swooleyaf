@@ -12,7 +12,7 @@ use SyConstant\Project;
 use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use ProjectCache\Role;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
 
 class RoleBaseDao

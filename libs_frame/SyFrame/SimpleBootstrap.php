@@ -17,7 +17,7 @@ use SyFrame\Plugins\FinishServicePlugin;
 use SyFrame\Plugins\MethodExistPlugin;
 use SyFrame\Plugins\ValidatorPlugin;
 use SyFrame\Routes\SimpleRoute;
-use Tool\Tool;
+use SyTool\Tool;
 use Validator\Validator;
 use Yaf\Application;
 use Yaf\Bootstrap_Abstract;

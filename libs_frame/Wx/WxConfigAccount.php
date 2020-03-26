@@ -9,7 +9,7 @@ namespace Wx;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
-use Tool\Tool;
+use SyTool\Tool;
 
 class WxConfigAccount
 {

@@ -54,20 +54,20 @@ if (!defined('SY_TAOBAO_ENV')) {
     define('SY_TAOBAO_ENV', 'https://eco.taobao.com/router/rest');
 }
 
-$aliOpenConfigs = \Tool\Tool::getConfig('project.' . SY_ENV . SY_PROJECT);
-$proxyStatus = (int)\Tool\Tool::getArrayVal($aliOpenConfigs, 'aliopen.proxy.status', 0, true);
+$aliOpenConfigs = SyTool\Tool::getConfig('project.' . SY_ENV . SY_PROJECT);
+$proxyStatus = (int)SyTool\Tool::getArrayVal($aliOpenConfigs, 'aliopen.proxy.status', 0, true);
 if ($proxyStatus > 0) {
     define('ALIOPEN_ENABLE_HTTP_PROXY', true);
 } else {
     define('ALIOPEN_ENABLE_HTTP_PROXY', false);
 }
-$proxyIp = (string)\Tool\Tool::getArrayVal($aliOpenConfigs, 'aliopen.proxy.ip', '127.0.0.1', true);
+$proxyIp = (string)SyTool\Tool::getArrayVal($aliOpenConfigs, 'aliopen.proxy.ip', '127.0.0.1', true);
 if (preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $proxyIp) > 0) {
     define('ALIOPEN_HTTP_PROXY_IP', $proxyIp);
 } else {
     throw new \SyException\Common\CheckException('代理IP不合法', \SyConstant\ErrorCode::COMMON_SERVER_ERROR);
 }
-$proxyPort = (int)\Tool\Tool::getArrayVal($aliOpenConfigs, 'aliopen.proxy.port', 8888, true);
+$proxyPort = (int)SyTool\Tool::getArrayVal($aliOpenConfigs, 'aliopen.proxy.port', 8888, true);
 if (($proxyPort > 1000) && ($proxyPort <= 65535)) {
     define('ALIOPEN_HTTP_PROXY_PORT', $proxyPort);
 } else {

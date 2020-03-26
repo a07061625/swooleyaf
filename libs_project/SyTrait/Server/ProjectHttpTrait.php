@@ -12,7 +12,7 @@ namespace SyTrait\Server;
 use Swoole\Server;
 use SyConstant\Project;
 use Response\Result;
-use Tool\Tool;
+use SyTool\Tool;
 
 trait ProjectHttpTrait
 {

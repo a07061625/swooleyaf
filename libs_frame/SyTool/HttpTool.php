@@ -5,7 +5,7 @@
  * Date: 17-7-2
  * Time: 上午11:50
  */
-namespace Tool;
+namespace SyTool;
 
 use Log\Log;
 use SyTrait\SimpleTrait;

@@ -9,7 +9,7 @@ namespace Wx\OpenMini\Cloud;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxOpenException;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxBaseOpenMini;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;

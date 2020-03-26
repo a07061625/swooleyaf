@@ -12,7 +12,7 @@ use SyConstant\Project;
 use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use ProjectCache\Region;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
 
 class RegionDao

@@ -8,7 +8,7 @@
 namespace SyServer;
 
 use Swoole\Server;
-use Tool\MqttTool;
+use SyTool\MqttTool;
 
 class MqttServer
 {

@@ -18,7 +18,7 @@ class WxOpenMiniController extends CommonController
     public function getDraftCodeListAction()
     {
         $data = $_GET;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpenMini/getDraftCodeList', $data);
         $this->sendRsp($getRes);
     }
@@ -29,7 +29,7 @@ class WxOpenMiniController extends CommonController
     public function getTemplateCodeListAction()
     {
         $data = $_GET;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpenMini/getTemplateCodeList', $data);
         $this->sendRsp($getRes);
     }
@@ -40,7 +40,7 @@ class WxOpenMiniController extends CommonController
     public function addTemplateCodeAction()
     {
         $data = $_POST;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $addRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpenMini/addTemplateCode', $data);
         $this->sendRsp($addRes);
     }
@@ -51,7 +51,7 @@ class WxOpenMiniController extends CommonController
     public function delTemplateCodeAction()
     {
         $data = $_GET;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $delRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpenMini/delTemplateCode', $data);
         $this->sendRsp($delRes);
     }
@@ -62,7 +62,7 @@ class WxOpenMiniController extends CommonController
     public function modifyServerDomainAction()
     {
         $data = $_POST;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $modifyRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpenMini/modifyServerDomain', $data);
         $this->sendRsp($modifyRes);
     }
@@ -73,7 +73,7 @@ class WxOpenMiniController extends CommonController
     public function setWebViewDomainAction()
     {
         $data = $_POST;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $setRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpenMini/setWebViewDomain', $data);
         $this->sendRsp($setRes);
     }
@@ -84,7 +84,7 @@ class WxOpenMiniController extends CommonController
     public function getMiniCategoryListAction()
     {
         $data = $_GET;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpenMini/getMiniCategoryList', $data);
         $this->sendRsp($getRes);
     }
@@ -95,7 +95,7 @@ class WxOpenMiniController extends CommonController
     public function getMiniPageConfigAction()
     {
         $data = $_GET;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpenMini/getMiniPageConfig', $data);
         $this->sendRsp($getRes);
     }
@@ -106,7 +106,7 @@ class WxOpenMiniController extends CommonController
     public function uploadMiniCodeAction()
     {
         $data = $_POST;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $uploadRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpenMini/uploadMiniCode', $data);
         $this->sendRsp($uploadRes);
     }
@@ -117,7 +117,7 @@ class WxOpenMiniController extends CommonController
     public function auditMiniCodeAction()
     {
         $data = $_POST;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $auditRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpenMini/auditMiniCode', $data);
         $this->sendRsp($auditRes);
     }
@@ -128,7 +128,7 @@ class WxOpenMiniController extends CommonController
     public function refreshMiniCodeAuditResultAction()
     {
         $data = $_GET;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $refreshRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpenMini/refreshMiniCodeAuditResult', $data);
         $this->sendRsp($refreshRes);
     }
@@ -139,7 +139,7 @@ class WxOpenMiniController extends CommonController
     public function releaseMiniCodeAction()
     {
         $data = $_POST;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $releaseRes = \SyModule\SyModuleService::getInstance()->sendApiReq('/Index/WxOpenMini/releaseMiniCode', $data);
         $this->sendRsp($releaseRes);
     }

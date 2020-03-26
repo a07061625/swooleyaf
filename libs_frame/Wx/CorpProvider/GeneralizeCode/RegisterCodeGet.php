@@ -9,7 +9,7 @@ namespace Wx\CorpProvider\GeneralizeCode;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxCorpProviderException;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxBaseCorpProvider;
 use Wx\WxUtilBase;
 use Wx\WxUtilCorpProvider;

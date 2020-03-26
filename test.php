@@ -40,7 +40,7 @@ require_once __DIR__ . '/helper_load.php';
 //}
 
 //$nowTime = time();
-//$salt = \Tool\Tool::createNonceStr(32);
+//$salt = \SyTool\Tool::createNonceStr(32);
 //$user = new \Entities\Test\Users();
 //$model2 = $user->getContainer()->getModel();
 //$dbTable3 = $model2->getOrmDbTable();
@@ -48,7 +48,7 @@ require_once __DIR__ . '/helper_load.php';
 //    'name' => 'jw112233',
 //    'sex' => 1,
 //    'phone' => '13222332355',
-//    'pwd' => \Tool\Tool::encryptPassword('123456', $salt),
+//    'pwd' => \SyTool\Tool::encryptPassword('123456', $salt),
 //    'pwd_salt' => $salt,
 //    'created' => $nowTime,
 //    'updated' => $nowTime,

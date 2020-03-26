@@ -19,7 +19,7 @@ class LoginController extends CommonController
     public function loginAction()
     {
         $data = \Request\SyRequest::getParams();
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $applyRes = \SyModule\SyModuleUser::getInstance()->sendApiReq('/Index/Login/login', $data);
         $this->sendRsp($applyRes);
     }
@@ -34,9 +34,9 @@ class LoginController extends CommonController
      */
     public function logoutAction()
     {
-        $userInfo = \Tool\SyUser::getUserInfo();
+        $userInfo = SyTool\SyUser::getUserInfo();
         if (!empty($userInfo)) {
-            \Tool\SySession::del('');
+            SyTool\SySession::del('');
         }
 
         $this->SyResult->setData([

@@ -5,7 +5,7 @@
  * Date: 2017/1/18 0018
  * Time: 19:10
  */
-namespace Tool;
+namespace SyTool;
 
 abstract class BaseContainer
 {

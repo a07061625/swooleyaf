@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use SyPrint\PrintBaseFeYin;
 use SyPrint\PrintUtilBase;
 use SyPrint\PrintUtilFeYin;
-use Tool\Tool;
+use SyTool\Tool;
 
 class DeviceListStatus extends PrintBaseFeYin
 {

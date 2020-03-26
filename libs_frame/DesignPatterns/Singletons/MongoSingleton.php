@@ -12,7 +12,7 @@ use SyException\Mongo\MongoException;
 use Log\Log;
 use MongoDB\Driver\Command;
 use MongoDB\Driver\Manager;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SingletonTrait;
 
 class MongoSingleton

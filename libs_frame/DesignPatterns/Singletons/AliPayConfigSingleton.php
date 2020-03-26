@@ -10,7 +10,7 @@ namespace DesignPatterns\Singletons;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\AliPay\AliPayPayException;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\AliPayConfigTrait;
 use SyTrait\SingletonTrait;
 

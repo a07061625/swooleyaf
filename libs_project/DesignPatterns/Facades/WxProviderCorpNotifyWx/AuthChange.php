@@ -9,7 +9,7 @@ namespace DesignPatterns\Facades\WxProviderCorpNotifyWx;
 
 use SyConstant\Project;
 use DesignPatterns\Facades\WxProviderCorpNotifyWxFacade;
-use Tool\ProjectWxTool;
+use SyTool\ProjectWxTool;
 use SyTrait\SimpleFacadeTrait;
 
 class AuthChange extends WxProviderCorpNotifyWxFacade

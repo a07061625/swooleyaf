@@ -36,9 +36,9 @@ class RolePowerController extends CommonController
      */
     public function addPowerByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
-        $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
+        $title = SyTool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
         if (strlen($title) == 0) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
@@ -82,9 +82,9 @@ class RolePowerController extends CommonController
      */
     public function editPowerByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
-        $title = \Tool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
+        $title = SyTool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
         if (strlen($title) == 0) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '标题不能为空');
         } else {
@@ -118,7 +118,7 @@ class RolePowerController extends CommonController
      */
     public function editRolePowersByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $rolePowers = trim(\Request\SyRequest::getParams('role_powers', ''));
         if ((strlen($rolePowers) > 0) && (preg_match('/^(\,[0-9a-z]{3}|\,[0-9a-z]{6}|\,[0-9a-z]{9})+$/', ',' . $rolePowers) == 0)) {
@@ -171,7 +171,7 @@ class RolePowerController extends CommonController
      */
     public function delPowerByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $needParams = [
             'power_tag' => (string)\Request\SyRequest::getParams('power_tag'),
@@ -195,7 +195,7 @@ class RolePowerController extends CommonController
      */
     public function getPowerInfoByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $needParams = [
             'power_tag' => (string)\Request\SyRequest::getParams('power_tag'),
@@ -223,7 +223,7 @@ class RolePowerController extends CommonController
      */
     public function getPowerListByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $parentTag = (string)\Request\SyRequest::getParams('ptag', '');
         $parentTagLength = strlen($parentTag);
@@ -252,7 +252,7 @@ class RolePowerController extends CommonController
      */
     public function getRolePowersByStationAction()
     {
-        \Tool\SyUser::checkStationLogin();
+        SyTool\SyUser::checkStationLogin();
 
         $needParams = [
             'role_tag' => (string)\Request\SyRequest::getParams('role_tag'),

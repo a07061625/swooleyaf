@@ -11,7 +11,7 @@ use AliOss\OssTool;
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\AliOssSingleton;
 use SyException\Common\CheckException;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
 
 class AliConfigDao

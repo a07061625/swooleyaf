@@ -9,7 +9,7 @@ namespace SyTrait;
 
 use SyConstant\Project;
 use Factories\SyBaseMysqlFactory;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxConfigAccount;
 use Wx\WxConfigCorp;
 

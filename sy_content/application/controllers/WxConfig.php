@@ -36,7 +36,7 @@ class WxConfigController extends CommonController
      */
     public function setConfigAction()
     {
-        \Tool\SyUser::checkLogin();
+        SyTool\SyUser::checkLogin();
 
         $templateStr = trim(\Request\SyRequest::getParams('app_templates', ''));
         $templates = explode(',', $templateStr);
@@ -53,7 +53,7 @@ class WxConfigController extends CommonController
         $needParams = [
             'app_id' => (string)\Request\SyRequest::getParams('app_id'),
             'app_secret' => (string)\Request\SyRequest::getParams('app_secret', ''),
-            'app_templates' => \Tool\Tool::jsonEncode($templateList, JSON_UNESCAPED_UNICODE),
+            'app_templates' => SyTool\Tool::jsonEncode($templateList, JSON_UNESCAPED_UNICODE),
             'origin_id' => (string)\Request\SyRequest::getParams('origin_id', ''),
             'pay_mchid' => (string)\Request\SyRequest::getParams('pay_mchid', ''),
             'pay_key' => (string)\Request\SyRequest::getParams('pay_key', ''),
@@ -96,7 +96,7 @@ class WxConfigController extends CommonController
      */
     public function refreshSslCompanyBankAction()
     {
-        \Tool\SyUser::checkLogin();
+        SyTool\SyUser::checkLogin();
 
         $needParams = [
             'app_id' => (string)\Request\SyRequest::getParams('app_id'),

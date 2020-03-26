@@ -26,9 +26,9 @@ use SyTrait\Server\FrameHttpTrait;
 use SyTrait\Server\FramePreProcessHttpTrait;
 use SyTrait\Server\ProjectHttpTrait;
 use SyTrait\Server\ProjectPreProcessHttpTrait;
-use Tool\SessionTool;
-use Tool\SyPack;
-use Tool\Tool;
+use SyTool\SessionTool;
+use SyTool\SyPack;
+use SyTool\Tool;
 use Yaf\Registry;
 use Yaf\Request\Http;
 
@@ -48,7 +48,7 @@ class HttpServer extends BaseServer
      */
     private $_reqCookieDomains = [];
     /**
-     * @var \Tool\SyPack
+     * @var \SyTool\SyPack
      */
     private $_messagePack = null;
     /**

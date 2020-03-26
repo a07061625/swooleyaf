@@ -18,7 +18,7 @@ class RegionController extends CommonController
     public function addRegionByStationAction()
     {
         $data = $_POST;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $addRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/Region/addRegionByStation', $data);
         $this->sendRsp($addRes);
     }
@@ -29,7 +29,7 @@ class RegionController extends CommonController
     public function editRegionByStationAction()
     {
         $data = $_POST;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $editRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/Region/editRegionByStation', $data);
         $this->sendRsp($editRes);
     }
@@ -40,7 +40,7 @@ class RegionController extends CommonController
     public function deleteRegionByStationAction()
     {
         $data = $_GET;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $delRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/Region/deleteRegionByStation', $data);
         $this->sendRsp($delRes);
     }
@@ -51,7 +51,7 @@ class RegionController extends CommonController
     public function getRegionInfoByStationAction()
     {
         $data = $_GET;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/Region/getRegionInfoByStation', $data);
         $this->sendRsp($getRes);
     }
@@ -62,7 +62,7 @@ class RegionController extends CommonController
     public function getRegionListByStationAction()
     {
         $data = $_GET;
-        $data['session_id'] = \Tool\SySession::getSessionId();
+        $data['session_id'] = SyTool\SySession::getSessionId();
         $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/Region/getRegionListByStation', $data);
         $this->sendRsp($getRes);
     }

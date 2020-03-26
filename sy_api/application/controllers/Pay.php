@@ -18,7 +18,7 @@ class PayController extends CommonController
     public function applyPayAction()
     {
         $allParams = \Request\SyRequest::getParams();
-        $allParams['session_id'] = \Tool\SySession::getSessionId();
+        $allParams['session_id'] = SyTool\SySession::getSessionId();
         $applyRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/applyPay', $allParams);
         $this->sendRsp($applyRes);
     }
@@ -32,12 +32,12 @@ class PayController extends CommonController
      */
     public function handleWxPayNotifyAction()
     {
-        $wxMsg = \Tool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
+        $wxMsg = SyTool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
         \Log\Log::log('wx pay data:' . $wxMsg);
-        $xmlData = \Tool\Tool::xmlToArray($wxMsg);
+        $xmlData = SyTool\Tool::xmlToArray($wxMsg);
         if (\Wx\WxUtilShop::checkSign($xmlData, $xmlData['appid'])) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleWxPayNotify', $xmlData);
-            $handleData = \Tool\Tool::jsonDecode($handleRes);
+            $handleData = SyTool\Tool::jsonDecode($handleRes);
             if (is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \SyConstant\ErrorCode::COMMON_SUCCESS)) {
                 $error = '';
             } else {
@@ -66,12 +66,12 @@ class PayController extends CommonController
      */
     public function handleWxPrePayNotifyAction()
     {
-        $wxMsg = \Tool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
+        $wxMsg = SyTool\Tool::getArrayVal($GLOBALS, 'HTTP_RAW_POST_DATA', '');
         \Log\Log::log('wx pre pay data:' . $wxMsg);
-        $xmlData = \Tool\Tool::xmlToArray($wxMsg);
+        $xmlData = SyTool\Tool::xmlToArray($wxMsg);
         if (\Wx\WxUtilShop::checkSign($xmlData, $xmlData['appid'])) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleWxPrePayNotify', $xmlData);
-            $resData = \Tool\Tool::jsonDecode($handleRes);
+            $resData = SyTool\Tool::jsonDecode($handleRes);
             if (is_array($resData) && isset($resData['code']) && ($resData['code'] == \SyConstant\ErrorCode::COMMON_SUCCESS)) {
                 $this->sendRsp($resData['data']['result']);
             } else {
@@ -99,10 +99,10 @@ class PayController extends CommonController
     {
         $resultMsg = 'fail';
         $allParams = \Request\SyRequest::getParams();
-        \Log\Log::log('ali pay data:' . \Tool\Tool::jsonEncode($allParams, JSON_UNESCAPED_UNICODE));
+        \Log\Log::log('ali pay data:' . SyTool\Tool::jsonEncode($allParams, JSON_UNESCAPED_UNICODE));
         if (AliPay\AliPayUtilBase::verifyData($allParams, '2', 'RSA2')) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleAliPayNotify', $allParams);
-            $handleData = \Tool\Tool::jsonDecode($handleRes);
+            $handleData = SyTool\Tool::jsonDecode($handleRes);
             if (is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \SyConstant\ErrorCode::COMMON_SUCCESS)) {
                 $resultMsg = 'success';
             }
@@ -131,9 +131,9 @@ class PayController extends CommonController
      */
     public function handleAliWebRedirectAction()
     {
-        $expireTime = \Tool\Tool::getNowTime() + 604800;
-        $sessionId = \Tool\SySession::getSessionId();
-        $cookieKey = \Tool\SySession::getCookieKey();
+        $expireTime = SyTool\Tool::getNowTime() + 604800;
+        $sessionId = SyTool\SySession::getSessionId();
+        $cookieKey = SyTool\SySession::getCookieKey();
         $redirectUrl = \Request\SyRequest::getParams('url');
         \Response\SyResponseHttp::cookie($cookieKey, $sessionId, $expireTime, '/', '');
         \Response\SyResponseHttp::redirect($redirectUrl);
@@ -157,10 +157,10 @@ class PayController extends CommonController
     {
         $resultMsg = 'fail';
         $allParams = \Request\SyRequest::getParams();
-        \Log\Log::log('ali refund data:' . \Tool\Tool::jsonEncode($allParams, JSON_UNESCAPED_UNICODE));
+        \Log\Log::log('ali refund data:' . SyTool\Tool::jsonEncode($allParams, JSON_UNESCAPED_UNICODE));
         if (AliPay\AliPayUtilBase::verifyData($allParams, '2', 'RSA2')) {
             $handleRes = \SyModule\SyModuleOrder::getInstance()->sendApiReq('/Index/Pay/handleAliRefundNotify', $allParams);
-            $handleData = \Tool\Tool::jsonDecode($handleRes);
+            $handleData = SyTool\Tool::jsonDecode($handleRes);
             if (is_array($handleData) && isset($handleData['code']) && ($handleData['code'] == \SyConstant\ErrorCode::COMMON_SUCCESS)) {
                 $resultMsg = 'success';
             }

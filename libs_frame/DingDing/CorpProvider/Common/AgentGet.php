@@ -11,7 +11,7 @@ use DesignPatterns\Singletons\DingTalkConfigSingleton;
 use DingDing\TalkBaseCorpProvider;
 use DingDing\TalkUtilBase;
 use DingDing\TalkUtilProvider;
-use Tool\Tool;
+use SyTool\Tool;
 
 /**
  * 获取授权企业的应用信息

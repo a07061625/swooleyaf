@@ -13,7 +13,7 @@ use SyConstant\ErrorCode;
 use DesignPatterns\Facades\PayApplyFacade;
 use SyException\Common\CheckException;
 use Request\SyRequest;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleFacadeTrait;
 
 class AliWeb extends PayApplyFacade

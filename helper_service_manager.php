@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/helper_load.php';
 
-$type = \Tool\Tool::getClientOption('-st', false, 'server');
+$type = SyTool\Tool::getClientOption('-st', false, 'server');
 if ($type == 'server') {
     $projects = include __DIR__ . '/config_projects.php';
     $commandPrefix = 'sudo /usr/local/php7/bin/php ' . __DIR__ . '/helper_service.php';

@@ -10,7 +10,7 @@ namespace Dao;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Common\CheckException;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
 
 class LoginDao

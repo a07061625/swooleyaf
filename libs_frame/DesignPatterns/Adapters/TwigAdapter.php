@@ -9,7 +9,7 @@ namespace DesignPatterns\Adapters;
 
 use SyConstant\ErrorCode;
 use SyException\Twig\TwigException;
-use Tool\Tool;
+use SyTool\Tool;
 use Yaf\View_Interface;
 
 class TwigAdapter implements View_Interface

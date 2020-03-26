@@ -9,7 +9,7 @@ namespace Wx\Shop\Pay;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
 use Wx\WxUtilShop;

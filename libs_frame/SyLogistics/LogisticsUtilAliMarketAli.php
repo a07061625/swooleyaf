@@ -8,7 +8,7 @@
 namespace SyLogistics;
 
 use SyConstant\ErrorCode;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 abstract class LogisticsUtilAliMarketAli extends LogisticsUtilBase

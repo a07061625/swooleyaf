@@ -5,7 +5,7 @@
  * Date: 2017/5/23 0023
  * Time: 12:16
  */
-namespace Tool;
+namespace SyTool;
 
 use SyConstant\ProjectCode;
 use SyException\User\LoginException;
@@ -13,7 +13,7 @@ use SyTrait\SimpleTrait;
 
 /**
  * Class SyUser
- * @package Tool
+ * @package SyTool
  */
 class SyUser extends SyUserJwt
 {

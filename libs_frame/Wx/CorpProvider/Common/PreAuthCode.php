@@ -2,7 +2,7 @@
 namespace Wx\CorpProvider\Common;
 
 use SyConstant\ErrorCode;
-use Tool\Tool;
+use SyTool\Tool;
 use Wx\WxBaseCorpProvider;
 use Wx\WxUtilBase;
 use Wx\WxUtilCorpProvider;

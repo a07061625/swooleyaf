@@ -5,7 +5,7 @@
  * Date: 2017/8/1 0001
  * Time: 12:18
  */
-namespace Tool;
+namespace SyTool;
 
 class SyKeywordTrie
 {

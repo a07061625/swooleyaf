@@ -14,7 +14,7 @@ use DingDing\Corp\Common\AccessToken;
 use DingDing\Corp\Sns\SnsTokenGet;
 use DingDing\Corp\Sns\TokenGet;
 use DingDing\Corp\Sso\SsoToken;
-use Tool\Tool;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 final class TalkUtilCorp extends TalkUtilBase

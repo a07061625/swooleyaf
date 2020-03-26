@@ -10,7 +10,7 @@ namespace SyLogistics\TaoBao;
 use SyConstant\ErrorCode;
 use SyException\Logistics\TaoBaoException;
 use SyLogistics\LogisticsBaseTaoBao;
-use Tool\Tool;
+use SyTool\Tool;
 
 class AddressReachableBatchGet extends LogisticsBaseTaoBao
 {
