@@ -52,8 +52,8 @@ class PayController extends CommonController
     public function handleWxPayNotifyAction()
     {
         $allParams = \Request\SyRequest::getParams();
-        $wxResultCode = (string)\Tool\Tool::getArrayVal($allParams, 'result_code', '');
-        $wxReturnCode = (string)\Tool\Tool::getArrayVal($allParams, 'return_code', '');
+        $wxResultCode = (string)\SyTool\Tool::getArrayVal($allParams, 'result_code', '');
+        $wxReturnCode = (string)\SyTool\Tool::getArrayVal($allParams, 'return_code', '');
         if (($wxResultCode == 'SUCCESS') && ($wxReturnCode == 'SUCCESS')) { //支付成功
             \Dao\PayDao::completePay([
                 'pay_type' => \SyConstant\Project::PAY_WAY_WX,
@@ -62,7 +62,7 @@ class PayController extends CommonController
                 'pay_appid' => $allParams['sub_appid'] ?? $allParams['appid'],
                 'pay_buyerid' => $allParams['sub_openid'] ?? $allParams['openid'],
                 'pay_money' => (int)$allParams['total_fee'],
-                'pay_attach' => \Tool\Tool::getArrayVal($allParams, 'attach', ''),
+                'pay_attach' => \SyTool\Tool::getArrayVal($allParams, 'attach', ''),
                 'pay_status' => $wxReturnCode,
                 'pay_data' => $allParams,
             ]);
@@ -91,7 +91,7 @@ class PayController extends CommonController
         if (is_array($cacheData) && isset($cacheData['cache_key']) && ($cacheData['cache_key'] == $redisKey)) {
             $nonceStr = (string)\Request\SyRequest::getParams('nonce_str');
             //生成一条新的单号记录
-            $orderSn = substr($productId, 0, 4) . \Tool\Tool::createUniqueId();
+            $orderSn = substr($productId, 0, 4) . \SyTool\Tool::createUniqueId();
             //统一下单
             $order = new \Wx\Shop\Pay\UnifiedOrder($appId, \Wx\Shop\Pay\UnifiedOrder::TRADE_TYPE_NATIVE);
             $order->setBody($cacheData['pay_name']);
@@ -114,7 +114,7 @@ class PayController extends CommonController
         $resData = $returnObj->getDetail();
         unset($returnObj);
         $this->SyResult->setData([
-            'result' => \Tool\Tool::arrayToXml($resData),
+            'result' => \SyTool\Tool::arrayToXml($resData),
         ]);
         $this->sendRsp();
     }
