@@ -28,10 +28,7 @@ class Consumer
 
         try {
             $this->conn = new \AMQPConnection($configs['conn']);
-            $this->conn->pconnect();
-            if (!$this->conn->isPersistent()) {
-                throw new AmqpException('amqp连接出错', ErrorCode::AMQP_CONNECT_ERROR);
-            }
+            $this->conn->connect();
 
             $channel = new \AMQPChannel($this->conn);
             if (!$channel->isConnected()) {
