@@ -83,9 +83,7 @@ class Producer
             $this->exchange = null;
         }
         if (!is_null($this->conn)) {
-            if ($this->conn->isPersistent()) {
-                $this->conn->pdisconnect();
-            }
+            $this->conn->disconnect();
             $this->conn = null;
         }
     }
