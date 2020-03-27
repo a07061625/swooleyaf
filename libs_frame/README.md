@@ -15,6 +15,7 @@
 - IDE: IDE辅助类库
 - Images: 图片处理类库
 - Log: 日志类库
+- LiveEducation: 教育直播
 - Mailer: 邮件类库
 - Map: 地图类库
 - PhpAmqpLib: amqp协议类库(用于消息队列Rabbit)
