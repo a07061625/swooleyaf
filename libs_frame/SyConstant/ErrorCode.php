@@ -245,6 +245,12 @@ class ErrorCode
     const CURRENCY_REQ_ALIMARKET_YIYUAN_ERROR = 107010;
     const CURRENCY_REQ_ALIMARKET_JISU_ERROR = 107011;
 
+    //教育直播错误,取值范围:107100-107199
+    const LIVE_EDUCATION_PARAM_ERROR = 107100;
+    const LIVE_EDUCATION_POST_ERROR = 107101;
+    const LIVE_EDUCATION_GET_ERROR = 107102;
+    const LIVE_EDUCATION_REQ_BJY_ERROR = 107110;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -403,6 +409,10 @@ class ErrorCode
         self::CURRENCY_GET_ERROR => '货币GET请求出错',
         self::CURRENCY_REQ_ALIMARKET_YIYUAN_ERROR => '阿里云市场易源货币发送请求出错',
         self::CURRENCY_REQ_ALIMARKET_JISU_ERROR => '阿里云市场极速货币发送请求出错',
+        self::LIVE_EDUCATION_PARAM_ERROR => '教育直播参数错误',
+        self::LIVE_EDUCATION_POST_ERROR => '教育直播POST请求出错',
+        self::LIVE_EDUCATION_GET_ERROR => '教育直播GET请求出错',
+        self::LIVE_EDUCATION_REQ_BJY_ERROR => '百家云教育直播发送请求出错',
     ];
 
     /**
