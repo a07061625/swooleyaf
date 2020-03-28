@@ -7,10 +7,13 @@
  */
 namespace LiveEducation;
 
+use SyTrait\SimpleTrait;
+
 /**
  * Class UtilCommon
  * @package LiveEducation
  */
 class UtilCommon
 {
+    use SimpleTrait;
 }
