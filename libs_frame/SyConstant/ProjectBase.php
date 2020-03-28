@@ -47,6 +47,7 @@ class ProjectBase
     const REDIS_PREFIX_CODE_WEBHOOK_STATUS = 'sy' . SY_PROJECT . '20401_'; //前缀-代码WebHook状态
     const REDIS_PREFIX_CODE_WEBHOOK_COMMAND = 'sy' . SY_PROJECT . '20402_'; //前缀-代码WebHook命令
     const REDIS_PREFIX_CODE_WEBHOOK_INFO = 'sy' . SY_PROJECT . '20403_'; //前缀-代码WebHook信息
+    const REDIS_PREFIX_LIVE_EDUCATION_BJY = 'sy' . SY_PROJECT . '20500_'; //前缀-百家云教育直播
 
     //YAC常量,以0000开头的前缀为框架内部前缀,并键名总长度不超过48个字符串
     const YAC_PREFIX_FUSE = '0000'; //前缀-熔断器
@@ -134,6 +135,8 @@ class ProjectBase
     const TIME_EXPIRE_LOCAL_ALIPAY_CLEAR = 3600; //超时时间-本地支付宝支付清理,单位为秒
     const TIME_EXPIRE_LOCAL_DINGTALK_CORP_REFRESH = 600; //超时时间-本地企业钉钉更新,单位为秒
     const TIME_EXPIRE_LOCAL_DINGTALK_CORP_CLEAR = 3600; //超时时间-本地企业钉钉清理,单位为秒
+    const TIME_EXPIRE_LOCAL_LIVE_EDUCATION_BJY_REFRESH = 600; //超时时间-本地教育直播百家云配置更新,单位为秒
+    const TIME_EXPIRE_LOCAL_LIVE_EDUCATION_BJY_CLEAR = 3600; //超时时间-本地教育直播百家云配置清理,单位为秒
     const TIME_EXPIRE_SESSION = 259200; //超时时间-session,单位为秒
     const TIME_EXPIRE_SWOOLE_CLIENT_HTTP = 3000; //超时时间-http服务客户端,单位为毫秒
     const TIME_EXPIRE_SWOOLE_CLIENT_RPC = 3000; //超时时间-rpc服务客户端,单位为毫秒
