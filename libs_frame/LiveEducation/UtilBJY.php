@@ -60,7 +60,7 @@ class UtilBJY extends UtilCommon
      * @param string $partnerId
      * @param array $data
      */
-    public static function createSign(string $partnerId,array &$data)
+    public static function createSign(string $partnerId, array &$data)
     {
         unset($data['sign']);
         ksort($data);
