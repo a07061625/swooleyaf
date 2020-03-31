@@ -16,7 +16,7 @@ use SyTool\Tool;
  */
 abstract class BaseBJY extends BaseCommon
 {
-    private $serviceDomain = '';
+    protected $serviceDomain = '';
     protected $serviceUri = '';
     protected $partnerId = '';
 
