@@ -42,6 +42,7 @@
 - SyMessageQueue: 消息队列相关
 - SyModule: 框架模块相关
 - SyPrint: 打印相关
+- SySCRM: 社会化客户管理相关
 - SyServer: 框架服务相关
 - SySms: 短信相关
 - SyTask: 框架定时任务相关
