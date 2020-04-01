@@ -7,7 +7,7 @@
 - SmallClass: 小班直播
 
 ## Partner(合作方)
-## PlayBack(回放)
+## Playback(回放)
 ## Setting(后台设置)
 ## SubAccount(子账号)
 ## VOD(点播)
