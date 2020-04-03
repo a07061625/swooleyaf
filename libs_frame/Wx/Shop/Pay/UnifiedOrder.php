@@ -21,9 +21,6 @@ class UnifiedOrder extends WxBaseShop
     const TRADE_TYPE_NATIVE = 'NATIVE'; //支付方式-扫码
     const TRADE_TYPE_APP = 'APP'; //支付方式-app
     const TRADE_TYPE_MWEB = 'MWEB'; //支付方式-h5
-    const SCENE_TYPE_IOS = 'IOS'; //场景类型-ios
-    const SCENE_TYPE_ANDROID = 'Android'; //场景类型-android
-    const SCENE_TYPE_WAP = 'Wap'; //场景类型-wap
 
     private static $totalTradeType = [
         self::TRADE_TYPE_JSAPI => 1,
@@ -282,64 +279,16 @@ class UnifiedOrder extends WxBaseShop
     }
 
     /**
-     * @param string $type
-     * @param string $name
-     * @param string $desc
+     * @param array $sceneInfo
      * @throws \SyException\Wx\WxException
      */
-    public function setSceneInfo(string $type, string $name, string $desc)
+    public function setSceneInfo(array $sceneInfo)
     {
-        $trueName = preg_replace('/\s+/', '', $name);
-        $trueDesc = trim($desc);
-        switch ($type) {
-            case self::SCENE_TYPE_IOS:
-                if (strlen($trueName) == 0) {
-                    throw new WxException('应用名不合法', ErrorCode::WX_PARAM_ERROR);
-                }
-                if (strlen($trueDesc) == 0) {
-                    throw new WxException('bundle id不能为空', ErrorCode::WX_PARAM_ERROR);
-                }
-                $this->reqData['scene_info'] = Tool::jsonEncode([
-                    'h5_info' => [
-                        'type' => self::SCENE_TYPE_IOS,
-                        'app_name' => $trueName,
-                        'bundle_id' => $trueDesc,
-                    ],
-                ], JSON_UNESCAPED_UNICODE);
-                break;
-            case self::SCENE_TYPE_ANDROID:
-                if (strlen($trueName) == 0) {
-                    throw new WxException('应用名不合法', ErrorCode::WX_PARAM_ERROR);
-                }
-                if (strlen($trueDesc) == 0) {
-                    throw new WxException('包名不能为空', ErrorCode::WX_PARAM_ERROR);
-                }
-                $this->reqData['scene_info'] = Tool::jsonEncode([
-                    'h5_info' => [
-                        'type' => self::SCENE_TYPE_ANDROID,
-                        'app_name' => $trueName,
-                        'package_name' => $trueDesc,
-                    ],
-                ], JSON_UNESCAPED_UNICODE);
-                break;
-            case self::SCENE_TYPE_WAP:
-                if (preg_match('/^(http|https)\:\/\/\S+$/', $trueName) == 0) {
-                    throw new WxException('网站地址不合法', ErrorCode::WX_PARAM_ERROR);
-                }
-                if (strlen($trueDesc) == 0) {
-                    throw new WxException('网站名不能为空', ErrorCode::WX_PARAM_ERROR);
-                }
-                $this->reqData['scene_info'] = Tool::jsonEncode([
-                    'h5_info' => [
-                        'type' => self::SCENE_TYPE_WAP,
-                        'wap_url' => $trueName,
-                        'wap_name' => $trueDesc,
-                    ],
-                ], JSON_UNESCAPED_UNICODE);
-                break;
-            default:
-                throw new WxException('场景类型不支持', ErrorCode::WX_PARAM_ERROR);
+        if (empty($sceneInfo)) {
+            throw new WxException('场景信息不能为空', ErrorCode::WX_PARAM_ERROR);
         }
+
+        $this->reqData['scene_info'] = Tool::jsonEncode($sceneInfo, JSON_UNESCAPED_UNICODE);
     }
 
     /**
