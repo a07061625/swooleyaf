@@ -195,7 +195,7 @@ abstract class SyRequest
             try {
                 $client = new Client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_SYNC);
                 $client->set($this->_clientConfigs);
-                $client->connect($this->_host, $this->_port, Project::TIME_EXPIRE_SWOOLE_CLIENT_SYNC_REQUEST);
+                $client->connect($this->_host, $this->_port, $this->_timeout / 1000);
                 if ($client->errCode == 0) {
                     $connectTag = true;
                 } else {
