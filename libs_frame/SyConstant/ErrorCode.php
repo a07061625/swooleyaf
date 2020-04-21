@@ -251,6 +251,12 @@ class ErrorCode
     const LIVE_EDUCATION_GET_ERROR = 107102;
     const LIVE_EDUCATION_REQ_BJY_ERROR = 107110;
 
+    //积分错误,取值范围:107200-107299
+    const CREDIT_PARAM_ERROR = 107200;
+    const CREDIT_POST_ERROR = 107201;
+    const CREDIT_GET_ERROR = 107202;
+    const CREDIT_REQ_MAILE_ERROR = 107210;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -413,6 +419,10 @@ class ErrorCode
         self::LIVE_EDUCATION_POST_ERROR => '教育直播POST请求出错',
         self::LIVE_EDUCATION_GET_ERROR => '教育直播GET请求出错',
         self::LIVE_EDUCATION_REQ_BJY_ERROR => '百家云教育直播发送请求出错',
+        self::CREDIT_PARAM_ERROR => '积分参数错误',
+        self::CREDIT_POST_ERROR => '积分POST请求出错',
+        self::CREDIT_GET_ERROR => '积分GET请求出错',
+        self::CREDIT_REQ_MAILE_ERROR => '麦乐积分发送请求出错',
     ];
 
     /**
