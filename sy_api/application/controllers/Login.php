@@ -29,8 +29,8 @@ class LoginController extends CommonController
      * @api {get} /Index/Login/logout 退出登录
      * @apiDescription 退出登录
      * @apiGroup Login
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function logoutAction()
     {

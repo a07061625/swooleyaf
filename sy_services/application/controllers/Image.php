@@ -22,7 +22,7 @@ class ImageController extends CommonController
      * @apiParam {number{1-10}} [image_size=5] 图片大小
      * @apiParam {number{0-200}} [margin_size=2] 外边框间隙，单位为px
      * @apiSuccess {string} Body 图片字节流
-     * @apiUse CommonFail
+     * @apiUse ResponseFail
      * @SyFilter-{"field": "url","explain": "链接地址","type": "string","rules": {"required": 1,"url": 1}}
      * @SyFilter-{"field": "error_level","explain": "容错级别","type": "string","rules": {"regex": "/^[HLMQ]{1}$/"}}
      * @SyFilter-{"field": "image_size","explain": "图片大小","type": "int","rules": {"min": 1,"max": 10}}
@@ -61,8 +61,8 @@ class ImageController extends CommonController
      * @SyFilter-{"field": "page_scene","explain": "页面场景","type": "string","rules": {"required": 1,"min": 1,"max": 32}}
      * @SyFilter-{"field": "image_size","explain": "图片大小","type": "int","rules": {"min": 50,"max": 5000}}
      * @SyFilter-{"field": "hyaline","explain": "透明背景标识","type": "int","rules": {"min": 0,"max": 1}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function createQrImageWxMiniAction()
     {
@@ -114,8 +114,8 @@ class ImageController extends CommonController
      * @SyFilter-{"field": "upload_type","explain": "上传类型","type": "int","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "image_width","explain": "图片限制宽度","type": "int","rules": {"required": 1,"min": 1,"max": 5000}}
      * @SyFilter-{"field": "image_height","explain": "图片限制高度","type": "int","rules": {"required": 1,"min": 1,"max": 5000}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function uploadImageAction()
     {

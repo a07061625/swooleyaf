@@ -35,8 +35,8 @@ class LoginController extends CommonController
      * @SyFilter-{"field": "wx_code","explain": "微信授权码","type": "string","rules": {"min": 1}}
      * @SyFilter-{"field": "redirect_url","explain": "回跳URL地址","type": "string","rules": {"url": 1}}
      * @SyFilter-{"field": "user_qq","explain": "QQ号码","type": "string","rules": {"regex": "/^[0-9]\d{5,11}$/"}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function loginAction()
     {

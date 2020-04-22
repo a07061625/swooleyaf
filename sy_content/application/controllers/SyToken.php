@@ -27,8 +27,8 @@ class SyTokenController extends CommonController
      * @SyFilter-{"field": "title","explain": "标题","type": "string","rules": {"required": 1,"min": 1,"max": 80}}
      * @SyFilter-{"field": "remark","explain": "备注","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "expire_time","explain": "到期时间","type": "int","rules": {"required": 1,"min": 0}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function addTokenByStationAction()
     {
@@ -66,8 +66,8 @@ class SyTokenController extends CommonController
      * @SyFilter-{"field": "title","explain": "标题","type": "string","rules": {"required": 1,"min": 1,"max": 80}}
      * @SyFilter-{"field": "remark","explain": "备注","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "expire_time","explain": "到期时间","type": "int","rules": {"required": 1,"min": 0}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function editTokenByStationAction()
     {
@@ -99,8 +99,8 @@ class SyTokenController extends CommonController
      * @apiParam {string} tag 令牌标识
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "tag","explain": "令牌标识","type": "string","rules": {"required": 1,"digitlower": 1,"min": 8,"max": 8}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getTokenInfoByStationAction()
     {
@@ -125,8 +125,8 @@ class SyTokenController extends CommonController
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "page","explain": "页数","type": "int","rules": {"min": 0}}
      * @SyFilter-{"field": "limit","explain": "分页限制","type": "int","rules": {"min": 1,"max": 100}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getTokenListByStationAction()
     {

@@ -31,8 +31,8 @@ class RolePowerController extends CommonController
      * @SyFilter-{"field": "icon","explain": "图标","type": "string","rules": {"min": 0,"max": 200}}
      * @SyFilter-{"field": "path","explain": "路由","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "sort_num","explain": "排序值","type": "int","rules": {"min": 0,"max": 1000}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function addPowerByStationAction()
     {
@@ -77,8 +77,8 @@ class RolePowerController extends CommonController
      * @SyFilter-{"field": "icon","explain": "图标","type": "string","rules": {"min": 0,"max": 200}}
      * @SyFilter-{"field": "path","explain": "路由","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "sort_num","explain": "排序值","type": "int","rules": {"min": 0,"max": 1000}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function editPowerByStationAction()
     {
@@ -113,8 +113,8 @@ class RolePowerController extends CommonController
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "role_tag","explain": "角色标识","type": "string","rules": {"required": 1,"regex": "/^[0-9a-z]{4}$/"}}
      * @SyFilter-{"field": "role_powers","explain": "权限列表","type": "string","rules": {"required": 1,"min": 0}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function editRolePowersByStationAction()
     {
@@ -166,8 +166,8 @@ class RolePowerController extends CommonController
      * @apiParam {string} power_tag 权限标识
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "power_tag","explain": "权限标识","type": "string","rules": {"required": 1,"regex": "/^([0-9a-z]{3}){1,3}$/"}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function delPowerByStationAction()
     {
@@ -190,8 +190,8 @@ class RolePowerController extends CommonController
      * @apiParam {string} power_tag 权限标识
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "power_tag","explain": "权限标识","type": "string","rules": {"required": 1,"regex": "/^([0-9a-z]{3}){1,3}$/"}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getPowerInfoByStationAction()
     {
@@ -218,8 +218,8 @@ class RolePowerController extends CommonController
      * @SyFilter-{"field": "page","explain": "页数","type": "int","rules": {"min": 0}}
      * @SyFilter-{"field": "limit","explain": "分页限制","type": "int","rules": {"min": 1,"max": 100}}
      * @SyFilter-{"field": "ptag","explain": "父标识","type": "string","rules": {"regex": "/^([0-9a-z]{3}){0,3}$/"}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getPowerListByStationAction()
     {
@@ -247,8 +247,8 @@ class RolePowerController extends CommonController
      * @apiParam {string} role_tag 角色标识
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "role_tag","explain": "角色标识","type": "string","rules": {"required": 1,"regex": "/^[0-9a-z]{4}$/"}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getRolePowersByStationAction()
     {

@@ -31,8 +31,8 @@ class PayController extends CommonController
      * @SyFilter-{"field": "a01_timeout","explain": "订单过期时间","type": "string","rules": {"min": 0,"max": 20}}
      * @SyFilter-{"field": "a01_returnurl","explain": "同步通知链接","type": "string","rules": {"url": 1}}
      * @SyFilter-{"field": "goods_ordersn","explain": "订单单号","type": "string","rules": {"min": 10,"max": 32}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function applyPayAction()
     {

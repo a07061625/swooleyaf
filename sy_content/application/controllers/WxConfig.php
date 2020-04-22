@@ -31,8 +31,8 @@ class WxConfigController extends CommonController
      * @SyFilter-{"field": "payssl_cert","explain": "商户证书内容","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "payssl_key","explain": "商户密钥内容","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "merchant_appid","explain": "服务商微信号","type": "string","rules": {"alnum": 0}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function setConfigAction()
     {
@@ -91,8 +91,8 @@ class WxConfigController extends CommonController
      * @apiParam {string} app_id 公众号ID
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "app_id","explain": "公众号ID","type": "string","rules": {"required": 1,"alnum": 1,"min": 18,"max": 18}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function refreshSslCompanyBankAction()
     {

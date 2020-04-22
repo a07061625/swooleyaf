@@ -63,8 +63,8 @@ class SyTokenController extends CommonController
      * @apiGroup SyToken
      * @apiParam {string} tag 令牌标识
      * @SyFilter-{"field": "tag","explain": "令牌标识","type": "string","rules": {"required": 1,"digitlower": 1,"min": 8,"max": 8}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getTokenInfoByFrontAction()
     {

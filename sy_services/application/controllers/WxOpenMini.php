@@ -19,8 +19,8 @@ class WxOpenMiniController extends CommonController
      * @apiGroup WxOpenMini
      * @apiParam {string} session_id 会话ID
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getDraftCodeListAction()
     {
@@ -38,8 +38,8 @@ class WxOpenMiniController extends CommonController
      * @apiGroup WxOpenMini
      * @apiParam {string} session_id 会话ID
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getTemplateCodeListAction()
     {
@@ -59,8 +59,8 @@ class WxOpenMiniController extends CommonController
      * @apiParam {string} draft_id 草稿ID
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "draft_id","explain": "草稿ID","type": "string","rules": {"required": 1,"min": 1}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function addTemplateCodeAction()
     {
@@ -83,8 +83,8 @@ class WxOpenMiniController extends CommonController
      * @apiParam {string} template_id 模版ID
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "template_id","explain": "模版ID","type": "string","rules": {"required": 1,"min": 1}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function delTemplateCodeAction()
     {
@@ -111,8 +111,8 @@ class WxOpenMiniController extends CommonController
      * @SyFilter-{"field": "wxmini_appid","explain": "小程序appid","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "action_type","explain": "操作类型","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "domains","explain": "域名","type": "string","rules": {"min": 0}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function modifyServerDomainAction()
     {
@@ -151,8 +151,8 @@ class WxOpenMiniController extends CommonController
      * @SyFilter-{"field": "wxmini_appid","explain": "小程序appid","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "action_type","explain": "操作类型","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "domains","explain": "域名","type": "string","rules": {"min": 0}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function setWebViewDomainAction()
     {
@@ -187,8 +187,8 @@ class WxOpenMiniController extends CommonController
      * @apiParam {string} wxmini_appid 小程序appid
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "wxmini_appid","explain": "小程序appid","type": "string","rules": {"required": 1,"min": 1}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getMiniCategoryListAction()
     {
@@ -211,8 +211,8 @@ class WxOpenMiniController extends CommonController
      * @apiParam {string} wxmini_appid 小程序appid
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "wxmini_appid","explain": "小程序appid","type": "string","rules": {"required": 1,"min": 1}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getMiniPageConfigAction()
     {
@@ -243,8 +243,8 @@ class WxOpenMiniController extends CommonController
      * @SyFilter-{"field": "ext_json","explain": "自定义配置","type": "string","rules": {"required": 1,"json": 1}}
      * @SyFilter-{"field": "user_version","explain": "代码版本号","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "user_desc","explain": "代码描述","type": "string","rules": {"min": 0}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function uploadMiniCodeAction()
     {
@@ -281,8 +281,8 @@ class WxOpenMiniController extends CommonController
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "wxmini_appid","explain": "小程序appid","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "audit_items","explain": "审核列表","type": "string","rules": {"required": 1,"json": 1}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function auditMiniCodeAction()
     {
@@ -314,8 +314,8 @@ class WxOpenMiniController extends CommonController
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "wxmini_appid","explain": "小程序appid","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "audit_id","explain": "审核ID","type": "string","rules": {"required": 1,"min": 1}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function refreshMiniCodeAuditResultAction()
     {
@@ -339,8 +339,8 @@ class WxOpenMiniController extends CommonController
      * @apiParam {string} wxmini_appid 小程序appid
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "wxmini_appid","explain": "小程序appid","type": "string","rules": {"required": 1,"min": 1}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function releaseMiniCodeAction()
     {
@@ -365,8 +365,8 @@ class WxOpenMiniController extends CommonController
      * @SyFilter-{"field": "template_id","explain": "模版ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "user_version","explain": "代码版本号","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "user_desc","explain": "代码描述","type": "string","rules": {"required": 1,"min": 1}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function autoUploadMiniCodeAction()
     {
@@ -406,8 +406,8 @@ class WxOpenMiniController extends CommonController
      * @api {get} /Index/WxOpenMini/autoAuditMiniCode 自动审核小程序代码
      * @apiDescription 自动审核小程序代码
      * @apiGroup WxOpenMini
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function autoAuditMiniCodeAction()
     {
@@ -433,8 +433,8 @@ class WxOpenMiniController extends CommonController
      * @api {get} /Index/WxOpenMini/autoRefreshMiniCodeAuditResult 自动更新小程序的代码审核结果
      * @apiDescription 自动更新小程序的代码审核结果
      * @apiGroup WxOpenMini
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function autoRefreshMiniCodeAuditResultAction()
     {
@@ -460,8 +460,8 @@ class WxOpenMiniController extends CommonController
      * @api {get} /Index/WxOpenMini/autoReleaseMiniCode 自动发布小程序代码
      * @apiDescription 自动发布小程序代码
      * @apiGroup WxOpenMini
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function autoReleaseMiniCodeAction()
     {

@@ -28,8 +28,8 @@ class RegionController extends CommonController
      * @SyFilter-{"field": "region_sort","explain": "地区排序","type": "int","rules": {"required": 1,"min": 1,"max": 1000}}
      * @SyFilter-{"field": "region_level","explain": "地区级别","type": "int","rules": {"required": 1,"min": 1,"max": 3}}
      * @SyFilter-{"field": "region_ptag","explain": "父地区标识","type": "string","rules": {"min": 0,"max": 6}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function addRegionByStationAction()
     {
@@ -71,8 +71,8 @@ class RegionController extends CommonController
      * @SyFilter-{"field": "region_sort","explain": "地区排序","type": "int","rules": {"min": 0,"max": 1000}}
      * @SyFilter-{"field": "region_level","explain": "地区级别","type": "int","rules": {"required": 1,"min": 1,"max": 3}}
      * @SyFilter-{"field": "region_tag","explain": "地区标识","type": "string","rules": {"required": 1,"min": 3,"max": 9}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function editRegionByStationAction()
     {
@@ -106,8 +106,8 @@ class RegionController extends CommonController
      * @apiParam {string} region_tag 地区标识
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "region_tag","explain": "地区标识","type": "string","rules": {"required": 1,"min": 3,"max": 9}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function deleteRegionByStationAction()
     {
@@ -130,8 +130,8 @@ class RegionController extends CommonController
      * @apiParam {string} region_tag 地区标识
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "region_tag","explain": "地区标识","type": "string","rules": {"required": 1,"min": 3,"max": 9}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getRegionInfoByStationAction()
     {
@@ -166,8 +166,8 @@ class RegionController extends CommonController
      * @SyFilter-{"field": "page","explain": "页数","type": "int","rules": {"min": 0}}
      * @SyFilter-{"field": "limit","explain": "分页限制","type": "int","rules": {"min": 1,"max": 100}}
      * @SyFilter-{"field": "region_ptag","explain": "父地区标识","type": "string","rules": {"min": 0,"max": 6}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getRegionListByStationAction()
     {
@@ -204,8 +204,8 @@ class RegionController extends CommonController
      * @apiGroup Region
      * @apiParam {string} region_tag 地区标识
      * @SyFilter-{"field": "region_tag","explain": "地区标识","type": "string","rules": {"required": 1,"min": 3,"max": 9}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getRegionInfoByFrontAction()
     {

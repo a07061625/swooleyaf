@@ -51,8 +51,8 @@ class WxOpenController extends CommonController
      * @api {get} /Index/WxOpen/getComponentAuthUrl 获取开放平台授权地址
      * @apiDescription 获取开放平台授权地址
      * @apiGroup ServiceWxOpen
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getComponentAuthUrlAction()
     {

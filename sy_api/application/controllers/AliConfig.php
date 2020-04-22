@@ -19,8 +19,8 @@ class AliConfigController extends CommonController
      * @apiGroup AliConfig
      * @apiParam {string} upload_type 上传类型 video:视频 image:图片
      * @SyFilter-{"field": "upload_type","explain": "上传类型","type": "string","rules": {"required": 1,"min": 1}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getOssFrontAction()
     {

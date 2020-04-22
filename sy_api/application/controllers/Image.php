@@ -63,7 +63,7 @@ class ImageController extends CommonController
      * @SyFilter-{"field": "image_width","explain": "图片宽度","type": "int","rules": {"required": 1,"min": 50,"max": 150}}
      * @SyFilter-{"field": "image_height","explain": "图片高度","type": "int","rules": {"required": 1,"min": 20,"max": 80}}
      * @apiSuccess {string} Body 图片字节流
-     * @apiUse CommonFail
+     * @apiUse ResponseFail
      */
     public function createCodeImageAction()
     {

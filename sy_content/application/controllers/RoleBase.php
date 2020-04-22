@@ -23,8 +23,8 @@ class RoleBaseController extends CommonController
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "tag","explain": "标识","type": "string","rules": {"required": 1,"regex": "/^[0-9a-z]{4}$/"}}
      * @SyFilter-{"field": "title","explain": "标题","type": "string","rules": {"required": 1,"min": 1,"max": 50}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function addRoleByStationAction()
     {
@@ -56,8 +56,8 @@ class RoleBaseController extends CommonController
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "tag","explain": "标识","type": "string","rules": {"required": 1,"regex": "/^[0-9a-z]{4}$/"}}
      * @SyFilter-{"field": "title","explain": "标题","type": "string","rules": {"required": 1,"min": 1,"max": 50}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function editRoleByStationAction()
     {
@@ -87,8 +87,8 @@ class RoleBaseController extends CommonController
      * @apiParam {string} role_tag 角色标识
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "role_tag","explain": "角色标识","type": "string","rules": {"required": 1,"regex": "/^[0-9a-z]{4}$/"}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getRoleInfoByStationAction()
     {
@@ -115,8 +115,8 @@ class RoleBaseController extends CommonController
      * @SyFilter-{"field": "page","explain": "页数","type": "int","rules": {"min": 0}}
      * @SyFilter-{"field": "limit","explain": "分页限制","type": "int","rules": {"min": 1,"max": 100}}
      * @SyFilter-{"field": "role_status","explain": "角色状态","type": "int","rules": {"min": -2,"max": 1}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getRoleListByStationAction()
     {
@@ -141,8 +141,8 @@ class RoleBaseController extends CommonController
      * @apiParam {number} [limit=10] 分页限制
      * @SyFilter-{"field": "page","explain": "页数","type": "int","rules": {"min": 0}}
      * @SyFilter-{"field": "limit","explain": "分页限制","type": "int","rules": {"min": 1,"max": 100}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getRoleListByFrontAction()
     {

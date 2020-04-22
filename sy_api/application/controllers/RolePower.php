@@ -96,8 +96,8 @@ class RolePowerController extends CommonController
      * @apiGroup RolePower
      * @apiParam {string} role_tag 角色标识
      * @SyFilter-{"field": "role_tag","explain": "角色标识","type": "string","rules": {"required": 1,"regex": "/^[0-9a-z]{4}$/"}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getRolePowersByFrontAction()
     {

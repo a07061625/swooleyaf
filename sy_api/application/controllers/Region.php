@@ -83,8 +83,8 @@ class RegionController extends CommonController
      * @apiGroup Region
      * @apiParam {string} [region_tag] 地区标识,只支持省标识
      * @SyFilter-{"field": "region_tag","explain": "地区标识","type": "string","rules": {"min": 0,"max": 3}}
-     * @apiUse CommonSuccess
-     * @apiUse CommonFail
+     * @apiUse ResponseSuccess
+     * @apiUse ResponseFail
      */
     public function getRegionListByFrontAction()
     {
