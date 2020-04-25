@@ -38,6 +38,7 @@ trait WxConfigTrait
             $templates = strlen($configInfo['app_templates']) > 0 ? Tool::jsonDecode($configInfo['app_templates']) : [];
             $accountConfig->setValid(true);
             $accountConfig->setClientIp((string)$configInfo['app_clientip']);
+            $accountConfig->setOriginId((string)$configInfo['origin_id']);
             $accountConfig->setSecret((string)$configInfo['app_secret']);
             $accountConfig->setPayMchId((string)$configInfo['pay_mchid']);
             $accountConfig->setPayKey((string)$configInfo['pay_key']);

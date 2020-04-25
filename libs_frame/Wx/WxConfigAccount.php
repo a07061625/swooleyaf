@@ -20,6 +20,12 @@ class WxConfigAccount
     private $clientIp = '';
 
     /**
+     * 原始ID
+     * @var string
+     */
+    private $originId = '';
+
+    /**
      * 微信号
      * @var string
      */
@@ -128,6 +134,27 @@ class WxConfigAccount
             $this->clientIp = $clientIp;
         } else {
             throw new WxException('客户端IP不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getOriginId() : string
+    {
+        return $this->originId;
+    }
+
+    /**
+     * @param string $originId
+     * @throws \SyException\Wx\WxException
+     */
+    public function setOriginId(string $originId)
+    {
+        if (preg_match('/^[0-9a-z_]{15}$/', $originId) > 0) {
+            $this->originId = $originId;
+        } else {
+            throw new WxException('原始ID不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
