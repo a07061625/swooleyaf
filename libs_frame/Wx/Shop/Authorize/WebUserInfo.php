@@ -20,8 +20,6 @@ use Wx\WxUtilBase;
  */
 class WebUserInfo extends WxBaseShop
 {
-    private $urlAccessToken = '';
-    private $urlUserInfo = '';
     /**
      * 授权码
      * @var string
@@ -31,8 +29,7 @@ class WebUserInfo extends WxBaseShop
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->urlAccessToken = 'https://api.weixin.qq.com/sns/oauth2/access_token';
-        $this->urlUserInfo = 'https://api.weixin.qq.com/sns/userinfo?lang=zh_CN&access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/sns/oauth2/access_token';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->reqData['appid'] = $shopConfig->getAppId();
         $this->reqData['secret'] = $shopConfig->getSecret();
@@ -66,19 +63,10 @@ class WebUserInfo extends WxBaseShop
             'code' => 0
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->urlAccessToken . '?' . http_build_query($this->reqData);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if (!isset($sendData['access_token'])) {
-            $resArr['code'] = ErrorCode::WX_GET_ERROR;
-            $resArr['message'] = $sendData['errmsg'];
-            return $resArr;
-        }
-
-        $this->curlConfigs[CURLOPT_URL] = $this->urlUserInfo . $sendData['access_token'] . '&openid=' . $sendData['openid'];
-        $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
-        $sendData = Tool::jsonDecode($sendRes);
-        if (isset($sendData['openid'])) {
+        if (isset($sendData['access_token'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;
