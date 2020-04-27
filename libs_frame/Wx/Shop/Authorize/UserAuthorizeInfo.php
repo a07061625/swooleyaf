@@ -11,15 +11,13 @@ use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
+use Wx\Shop\User\InfoBase;
+use Wx\Shop\User\InfoSingle;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
-use Wx\WxUtilBaseAlone;
 
 class UserAuthorizeInfo extends WxBaseShop
 {
-    private $urlAccessToken = '';
-    private $urlAuthorizeInfo = '';
-    private $urlUserInfo = '';
     /**
      * 授权码
      * @var string
@@ -29,9 +27,7 @@ class UserAuthorizeInfo extends WxBaseShop
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->urlAccessToken = 'https://api.weixin.qq.com/sns/oauth2/access_token';
-        $this->urlAuthorizeInfo = 'https://api.weixin.qq.com/sns/userinfo?lang=zh_CN&access_token=';
-        $this->urlUserInfo = 'https://api.weixin.qq.com/cgi-bin/user/info?lang=zh_CN&access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/sns/oauth2/access_token';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->reqData['appid'] = $shopConfig->getAppId();
         $this->reqData['secret'] = $shopConfig->getSecret();
@@ -65,7 +61,7 @@ class UserAuthorizeInfo extends WxBaseShop
             'code' => 0
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->urlAccessToken . '?' . http_build_query($this->reqData);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
         if (!isset($sendData['access_token'])) {
@@ -75,20 +71,25 @@ class UserAuthorizeInfo extends WxBaseShop
         }
 
         $openid = $sendData['openid'];
-        $this->curlConfigs[CURLOPT_URL] = $this->urlAuthorizeInfo . $sendData['access_token'] . '&openid=' . $openid;
-        $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
-        $sendData = Tool::jsonDecode($sendRes);
-        if (isset($sendData['errcode']) && ($sendData['errcode'] == 40001)) {
-            $this->curlConfigs[CURLOPT_URL] = $this->urlUserInfo . WxUtilBaseAlone::getAccessToken($this->reqData['appid']) . '&openid=' . $openid;
-            $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
-            $sendData = Tool::jsonDecode($sendRes);
-        }
-
-        if (isset($sendData['openid'])) {
-            $resArr['data'] = $sendData;
+        $infoBase = new InfoBase($this->reqData['appid']);
+        $infoBase->setAccessToken($sendData['access_token']);
+        $infoBase->setOpenid($openid);
+        $infoBaseRes = $infoBase->getDetail();
+        if ($infoBase['code'] == 0) {
+            $resArr['data'] = $infoBaseRes['data'];
+        } else if ($infoBaseRes['errcode'] == 40001) {
+            $infoSingle = new InfoSingle($this->reqData['appid']);
+            $infoSingle->setOpenid($openid);
+            $infoSingleRes = $infoSingle->getDetail();
+            if ($infoSingleRes['code'] > 0) {
+                $resArr['data'] = $infoSingleRes['data'];
+            } else {
+                $resArr['code'] = ErrorCode::WX_GET_ERROR;
+                $resArr['message'] = $infoSingleRes['message'];
+            }
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;
-            $resArr['message'] = $sendData['errmsg'];
+            $resArr['message'] = $infoBaseRes['message'];
         }
 
         return $resArr;
