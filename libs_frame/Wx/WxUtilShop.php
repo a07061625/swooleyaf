@@ -147,7 +147,7 @@ final class WxUtilShop extends WxUtilBaseAlone
      * @param array $data
      * @return string
      */
-    public static function getH5PayDeepLink(array $data)
+    public static function getH5PayDeepLink(array $data) : string
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $data['mweb_url']);
