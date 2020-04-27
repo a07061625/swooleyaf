@@ -141,4 +141,29 @@ final class WxUtilShop extends WxUtilBaseAlone
 
         return $encryptData;
     }
+
+    /**
+     * 获取H5支付深度链接
+     * @param array $data
+     * @return string
+     */
+    public static function getH5PayDeepLink(array $data)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $data['mweb_url']);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'X-FORWARDED-FOR: ' . $data['client_ip'],
+            'CLIENT-IP: ' . $data['client_ip'],
+        ]);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_REFERER, $data['refer_url']);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; Android 6.0.1; OPPO R11s Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/55.0.2883.91 Mobile Safari/537.36');
+        $execRes = curl_exec($ch);
+        curl_close($ch);
+
+        $matches = [];
+        preg_match('/var\surl="(.*)"/', $execRes, $matches);
+
+        return empty($matches) ? '' : $matches[1];
+    }
 }
