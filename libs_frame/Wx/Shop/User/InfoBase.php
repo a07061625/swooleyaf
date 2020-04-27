@@ -36,7 +36,9 @@ class InfoBase extends WxBaseShop
     {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/sns/userinfo';
-        $this->reqData['lang'] = 'zh_CN';
+        $this->reqData = [
+            'lang' => 'zh_CN',
+        ];
         $this->appid = $appId;
     }
 
