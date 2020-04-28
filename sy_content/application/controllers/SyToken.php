@@ -17,7 +17,6 @@ class SyTokenController extends CommonController
      * @api {post} /Index/SyToken/addTokenByStation 总站添加令牌
      * @apiDescription 总站添加令牌
      * @apiGroup SyToken
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} tag 令牌标识
      * @apiParam {string} title 标题
      * @apiParam {string} [remark] 备注
@@ -27,6 +26,7 @@ class SyTokenController extends CommonController
      * @SyFilter-{"field": "title","explain": "标题","type": "string","rules": {"required": 1,"min": 1,"max": 80}}
      * @SyFilter-{"field": "remark","explain": "备注","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "expire_time","explain": "到期时间","type": "int","rules": {"required": 1,"min": 0}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -56,7 +56,6 @@ class SyTokenController extends CommonController
      * @api {post} /Index/SyToken/editTokenByStation 总站修改令牌
      * @apiDescription 总站修改令牌
      * @apiGroup SyToken
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} tag 令牌标识
      * @apiParam {string} title 标题
      * @apiParam {string} [remark] 备注
@@ -66,6 +65,7 @@ class SyTokenController extends CommonController
      * @SyFilter-{"field": "title","explain": "标题","type": "string","rules": {"required": 1,"min": 1,"max": 80}}
      * @SyFilter-{"field": "remark","explain": "备注","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "expire_time","explain": "到期时间","type": "int","rules": {"required": 1,"min": 0}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -95,10 +95,10 @@ class SyTokenController extends CommonController
      * @api {get} /Index/SyToken/getTokenInfoByStation 总站获取令牌信息
      * @apiDescription 总站获取令牌信息
      * @apiGroup SyToken
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} tag 令牌标识
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "tag","explain": "令牌标识","type": "string","rules": {"required": 1,"digitlower": 1,"min": 8,"max": 8}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -119,12 +119,12 @@ class SyTokenController extends CommonController
      * @api {get} /Index/SyToken/getTokenListByStation 总站获取令牌列表
      * @apiDescription 总站获取令牌列表
      * @apiGroup SyToken
-     * @apiParam {string} session_id 会话ID
      * @apiParam {number} [page=1] 页数
      * @apiParam {number} [limit=10] 分页限制
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "page","explain": "页数","type": "int","rules": {"min": 0}}
      * @SyFilter-{"field": "limit","explain": "分页限制","type": "int","rules": {"min": 1,"max": 100}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */

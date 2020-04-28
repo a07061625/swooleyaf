@@ -17,7 +17,6 @@ class RolePowerController extends CommonController
      * @api {post} /Index/RolePower/addPowerByStation 总站添加权限信息
      * @apiDescription 总站添加权限信息
      * @apiGroup RolePower
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} tag 标识,由小写字母和数字组成的3位字符串
      * @apiParam {string} [ptag] 父标识
      * @apiParam {string} title 标题
@@ -31,6 +30,7 @@ class RolePowerController extends CommonController
      * @SyFilter-{"field": "icon","explain": "图标","type": "string","rules": {"min": 0,"max": 200}}
      * @SyFilter-{"field": "path","explain": "路由","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "sort_num","explain": "排序值","type": "int","rules": {"min": 0,"max": 1000}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -65,7 +65,6 @@ class RolePowerController extends CommonController
      * @api {post} /Index/RolePower/editPowerByStation 总站修改权限信息
      * @apiDescription 总站修改权限信息
      * @apiGroup RolePower
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} power_tag 权限标识
      * @apiParam {string} title 标题
      * @apiParam {string} [icon] 图标
@@ -77,6 +76,7 @@ class RolePowerController extends CommonController
      * @SyFilter-{"field": "icon","explain": "图标","type": "string","rules": {"min": 0,"max": 200}}
      * @SyFilter-{"field": "path","explain": "路由","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "sort_num","explain": "排序值","type": "int","rules": {"min": 0,"max": 1000}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -107,12 +107,12 @@ class RolePowerController extends CommonController
      * @api {post} /Index/RolePower/editRolePowersByStation 总站修改角色权限
      * @apiDescription 总站修改角色权限
      * @apiGroup RolePower
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} role_tag 角色标识
      * @apiParam {string} role_powers 权限列表,多个权限标识之间用英文逗号拼接
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "role_tag","explain": "角色标识","type": "string","rules": {"required": 1,"regex": "/^[0-9a-z]{4}$/"}}
      * @SyFilter-{"field": "role_powers","explain": "权限列表","type": "string","rules": {"required": 1,"min": 0}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -162,10 +162,10 @@ class RolePowerController extends CommonController
      * @api {get} /Index/RolePower/delPowerByStation 总站删除权限信息
      * @apiDescription 总站删除权限信息
      * @apiGroup RolePower
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} power_tag 权限标识
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "power_tag","explain": "权限标识","type": "string","rules": {"required": 1,"regex": "/^([0-9a-z]{3}){1,3}$/"}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -186,10 +186,10 @@ class RolePowerController extends CommonController
      * @api {get} /Index/RolePower/getPowerInfoByStation 总站获取权限信息
      * @apiDescription 总站获取权限信息
      * @apiGroup RolePower
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} power_tag 权限标识
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "power_tag","explain": "权限标识","type": "string","rules": {"required": 1,"regex": "/^([0-9a-z]{3}){1,3}$/"}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -210,7 +210,6 @@ class RolePowerController extends CommonController
      * @api {get} /Index/RolePower/getPowerListByStation 总站获取权限列表
      * @apiDescription 总站获取权限列表
      * @apiGroup RolePower
-     * @apiParam {string} session_id 会话ID
      * @apiParam {number} [page=1] 页数
      * @apiParam {number} [limit=10] 分页限制
      * @apiParam {string} [ptag] 父标识
@@ -218,6 +217,7 @@ class RolePowerController extends CommonController
      * @SyFilter-{"field": "page","explain": "页数","type": "int","rules": {"min": 0}}
      * @SyFilter-{"field": "limit","explain": "分页限制","type": "int","rules": {"min": 1,"max": 100}}
      * @SyFilter-{"field": "ptag","explain": "父标识","type": "string","rules": {"regex": "/^([0-9a-z]{3}){0,3}$/"}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -243,10 +243,10 @@ class RolePowerController extends CommonController
      * @api {get} /Index/RolePower/getRolePowersByStation 总站获取角色权限列表
      * @apiDescription 总站获取角色权限列表
      * @apiGroup RolePower
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} role_tag 角色标识
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "role_tag","explain": "角色标识","type": "string","rules": {"required": 1,"regex": "/^[0-9a-z]{4}$/"}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */

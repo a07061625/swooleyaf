@@ -11,7 +11,6 @@ class WxConfigController extends CommonController
      * @api {post} /Index/WxConfig/setConfig 设置配置
      * @apiDescription 设置配置
      * @apiGroup WxConfig
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} app_id 公众号ID
      * @apiParam {string} app_secret 公众号密钥
      * @apiParam {string} app_templates 消息模板列表
@@ -31,6 +30,7 @@ class WxConfigController extends CommonController
      * @SyFilter-{"field": "payssl_cert","explain": "商户证书内容","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "payssl_key","explain": "商户密钥内容","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "merchant_appid","explain": "服务商微信号","type": "string","rules": {"alnum": 0}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -87,10 +87,10 @@ class WxConfigController extends CommonController
      * @api {get} /Index/WxConfig/refreshSslCompanyBank 刷新企业付款银行卡公钥
      * @apiDescription 刷新企业付款银行卡公钥
      * @apiGroup WxConfig
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} app_id 公众号ID
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "app_id","explain": "公众号ID","type": "string","rules": {"required": 1,"alnum": 1,"min": 18,"max": 18}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */

@@ -17,8 +17,8 @@ class WxOpenMiniController extends CommonController
      * @api {get} /Index/WxOpenMini/getDraftCodeList 获取草稿代码列表
      * @apiDescription 获取草稿代码列表
      * @apiGroup WxOpenMini
-     * @apiParam {string} session_id 会话ID
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -36,8 +36,8 @@ class WxOpenMiniController extends CommonController
      * @api {get} /Index/WxOpenMini/getTemplateCodeList 获取模板代码列表
      * @apiDescription 获取模板代码列表
      * @apiGroup WxOpenMini
-     * @apiParam {string} session_id 会话ID
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -55,10 +55,10 @@ class WxOpenMiniController extends CommonController
      * @api {post} /Index/WxOpenMini/addTemplateCode 添加模板代码
      * @apiDescription 添加模板代码
      * @apiGroup WxOpenMini
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} draft_id 草稿ID
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "draft_id","explain": "草稿ID","type": "string","rules": {"required": 1,"min": 1}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -79,10 +79,10 @@ class WxOpenMiniController extends CommonController
      * @api {get} /Index/WxOpenMini/delTemplateCode 删除模板代码
      * @apiDescription 删除模板代码
      * @apiGroup WxOpenMini
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} template_id 模版ID
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "template_id","explain": "模版ID","type": "string","rules": {"required": 1,"min": 1}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -103,7 +103,6 @@ class WxOpenMiniController extends CommonController
      * @api {post} /Index/WxOpenMini/modifyServerDomain 修改小程序服务器域名
      * @apiDescription 修改小程序服务器域名
      * @apiGroup WxOpenMini
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} wxmini_appid 小程序appid
      * @apiParam {string} action_type 操作类型 add:添加 delete:删除 set:覆盖 get:获取
      * @apiParam {string} [domains] 域名,json格式
@@ -111,6 +110,7 @@ class WxOpenMiniController extends CommonController
      * @SyFilter-{"field": "wxmini_appid","explain": "小程序appid","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "action_type","explain": "操作类型","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "domains","explain": "域名","type": "string","rules": {"min": 0}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -143,7 +143,6 @@ class WxOpenMiniController extends CommonController
      * @api {post} /Index/WxOpenMini/setWebViewDomain 设置小程序业务域名
      * @apiDescription 设置小程序业务域名
      * @apiGroup WxOpenMini
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} wxmini_appid 小程序appid
      * @apiParam {string} action_type 操作类型 add:添加 delete:删除 set:覆盖 get:获取
      * @apiParam {string} [domains] 域名,json格式
@@ -151,6 +150,7 @@ class WxOpenMiniController extends CommonController
      * @SyFilter-{"field": "wxmini_appid","explain": "小程序appid","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "action_type","explain": "操作类型","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "domains","explain": "域名","type": "string","rules": {"min": 0}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -183,10 +183,10 @@ class WxOpenMiniController extends CommonController
      * @api {get} /Index/WxOpenMini/getMiniCategoryList 获取小程序的类目列表
      * @apiDescription 获取小程序的类目列表
      * @apiGroup WxOpenMini
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} wxmini_appid 小程序appid
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "wxmini_appid","explain": "小程序appid","type": "string","rules": {"required": 1,"min": 1}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -207,10 +207,10 @@ class WxOpenMiniController extends CommonController
      * @api {get} /Index/WxOpenMini/getMiniPageConfig 获取小程序的页面配置
      * @apiDescription 获取小程序的页面配置
      * @apiGroup WxOpenMini
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} wxmini_appid 小程序appid
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "wxmini_appid","explain": "小程序appid","type": "string","rules": {"required": 1,"min": 1}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -231,7 +231,6 @@ class WxOpenMiniController extends CommonController
      * @api {post} /Index/WxOpenMini/uploadMiniCode 上传小程序代码
      * @apiDescription 上传小程序代码
      * @apiGroup WxOpenMini
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} wxmini_appid 小程序appid
      * @apiParam {string} template_id 模版ID
      * @apiParam {string} ext_json 自定义配置,json格式
@@ -243,6 +242,7 @@ class WxOpenMiniController extends CommonController
      * @SyFilter-{"field": "ext_json","explain": "自定义配置","type": "string","rules": {"required": 1,"json": 1}}
      * @SyFilter-{"field": "user_version","explain": "代码版本号","type": "string","rules": {"min": 0}}
      * @SyFilter-{"field": "user_desc","explain": "代码描述","type": "string","rules": {"min": 0}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -275,12 +275,12 @@ class WxOpenMiniController extends CommonController
      * @api {post} /Index/WxOpenMini/auditMiniCode 审核小程序代码
      * @apiDescription 审核小程序代码
      * @apiGroup WxOpenMini
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} wxmini_appid 小程序appid
      * @apiParam {string} audit_items 审核列表,json格式
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "wxmini_appid","explain": "小程序appid","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "audit_items","explain": "审核列表","type": "string","rules": {"required": 1,"json": 1}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -308,12 +308,12 @@ class WxOpenMiniController extends CommonController
      * @api {get} /Index/WxOpenMini/refreshMiniCodeAuditResult 更新小程序的代码审核结果
      * @apiDescription 更新小程序的代码审核结果
      * @apiGroup WxOpenMini
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} wxmini_appid 小程序appid
      * @apiParam {string} audit_id 审核ID
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "wxmini_appid","explain": "小程序appid","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "audit_id","explain": "审核ID","type": "string","rules": {"required": 1,"min": 1}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
@@ -335,10 +335,10 @@ class WxOpenMiniController extends CommonController
      * @api {post} /Index/WxOpenMini/releaseMiniCode 发布小程序代码
      * @apiDescription 发布小程序代码
      * @apiGroup WxOpenMini
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} wxmini_appid 小程序appid
      * @SyFilter-{"field": "session_id","explain": "会话ID","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "wxmini_appid","explain": "小程序appid","type": "string","rules": {"required": 1,"min": 1}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */

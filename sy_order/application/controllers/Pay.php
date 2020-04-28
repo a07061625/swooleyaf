@@ -17,7 +17,6 @@ class PayController extends CommonController
      * @api {post} /Index/Pay/applyPay 申请支付
      * @apiDescription 申请支付
      * @apiGroup Pay
-     * @apiParam {string} session_id 会话ID
      * @apiParam {string} pay_type 支付类型 a000:微信公众号JS a001:微信公众号动态二维码 a002:微信公众号静态二维码 a003:微信小程序JS a100:支付宝二维码 a101:支付宝网页
      * @apiParam {string} pay_content 支付内容 1000:商品订单
      * @apiParam {string} pay_hash 支付hash,用于防止因客户端网络不好,连续多次申请
@@ -31,6 +30,7 @@ class PayController extends CommonController
      * @SyFilter-{"field": "a01_timeout","explain": "订单过期时间","type": "string","rules": {"min": 0,"max": 20}}
      * @SyFilter-{"field": "a01_returnurl","explain": "同步通知链接","type": "string","rules": {"url": 1}}
      * @SyFilter-{"field": "goods_ordersn","explain": "订单单号","type": "string","rules": {"min": 10,"max": 32}}
+     * @apiUse RequestSession
      * @apiUse ResponseSuccess
      * @apiUse ResponseFail
      */
