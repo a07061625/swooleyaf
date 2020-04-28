@@ -2,7 +2,7 @@
 namespace Swoole\Http;
 
 /**
- * @since 4.4.7
+ * @since 4.5.0
  */
 class Response
 {
@@ -127,10 +127,11 @@ class Response
     public function detach(){}
 
     /**
-     * @param $fd[required]
+     * @param $server[required]
+     * @param $fd[optional]
      * @return mixed
      */
-    public static function create($fd){}
+    public static function create($server, $fd=null){}
 
     /**
      * @return mixed
@@ -138,14 +139,22 @@ class Response
     public function upgrade(){}
 
     /**
+     * @param $data[required]
+     * @param $opcode[optional]
+     * @param $flags[optional]
      * @return mixed
      */
-    public function push(){}
+    public function push($data, $opcode=null, $flags=null){}
 
     /**
      * @return mixed
      */
     public function recv(){}
+
+    /**
+     * @return mixed
+     */
+    public function close(){}
 
     /**
      * @return mixed

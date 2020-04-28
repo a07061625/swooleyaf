@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.4.7
+ * @since 4.5.0
  */
 class Socket
 {
@@ -42,6 +42,17 @@ class Socket
      * @return mixed
      */
     public function connect($host, $port=null, $timeout=null){}
+
+    /**
+     * @return mixed
+     */
+    public function checkLiveness(){}
+
+    /**
+     * @param $length[optional]
+     * @return mixed
+     */
+    public function peek($length=null){}
 
     /**
      * @param $length[optional]
@@ -120,6 +131,11 @@ class Socket
      * @return mixed
      */
     public function setOption($level, $opt_name, $opt_value){}
+
+    /**
+     * @return mixed
+     */
+    public function sslHandshake(){}
 
     /**
      * @param $how[optional]

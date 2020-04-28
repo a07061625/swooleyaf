@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine\Http2;
 
 /**
- * @since 4.4.7
+ * @since 4.5.0
  */
 class Client
 {
@@ -63,6 +63,12 @@ class Client
      * @return mixed
      */
     public function recv($timeout=null){}
+
+    /**
+     * @param $timeout[optional]
+     * @return mixed
+     */
+    public function read($timeout=null){}
 
     /**
      * @param $error_code[optional]

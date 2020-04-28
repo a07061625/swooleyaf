@@ -1,6 +1,6 @@
 <?php
 namespace {
-    define('SEASLOG_VERSION', '1.9.0');
+    define('SEASLOG_VERSION', '2.1.0');
     define('SEASLOG_AUTHOR', 'Chitao.Gao  [ neeke@php.net ]');
     define('SEASLOG_ALL', 'ALL');
     define('SEASLOG_DEBUG', 'DEBUG');
@@ -25,124 +25,67 @@ namespace {
 }
 
 namespace  {
-    class SeasLog
-    {
-        public function __construct()
-        {
-        }
+    final class SeasLog {
+        public function __construct(){}
 
-        public function __destruct()
-        {
-        }
+        public function __destruct(){}
 
-        public static function setBasePath($base_path)
-        {
-        }
+        public static function setBasePath($base_path){}
 
-        public static function getBasePath()
-        {
-        }
+        public static function getBasePath(){}
 
-        public static function setLogger($logger)
-        {
-        }
+        public static function setLogger($logger){}
 
-        public static function closeLoggerStream($model, $logger = null)
-        {
-        }
+        public static function closeLoggerStream($model, $logger = null){}
 
-        public static function getLastLogger()
-        {
-        }
+        public static function getLastLogger(){}
 
-        public static function setRequestID($request_id)
-        {
-        }
+        public static function setRequestID($request_id){}
 
-        public static function getRequestID()
-        {
-        }
+        public static function getRequestID(){}
 
-        public static function setDatetimeFormat($format)
-        {
-        }
+        public static function setDatetimeFormat($format){}
 
-        public static function getDatetimeFormat()
-        {
-        }
+        public static function getDatetimeFormat(){}
 
-        public static function setRequestVariable($key, $value = null)
-        {
-        }
+        public static function setRequestVariable($key, $value = null){}
 
-        public static function getRequestVariable($key)
-        {
-        }
+        public static function getRequestVariable($key){}
 
-        public static function analyzerCount($level, $log_path = null, $key_word = null)
-        {
-        }
+        public static function analyzerCount($level, $log_path = null, $key_word = null){}
 
-        public static function analyzerDetail($level, $log_path = null, $key_word = null, $start = null, $limit = null, $order = null)
-        {
-        }
+        public static function analyzerDetail($level, $log_path = null, $key_word = null, $start = null, $limit = null, $order = null){}
 
-        public static function getBuffer()
-        {
-        }
+        public static function getBuffer(){}
 
-        public static function getBufferEnabled()
-        {
-        }
+        public static function getBufferCount(){}
 
-        public static function flushBuffer()
-        {
-        }
+        public static function getBufferEnabled(){}
 
-        public static function log($level, $message = null, $content = null, $logger = null)
-        {
-        }
+        public static function flushBuffer($type = null){}
 
-        public static function debug($message, $content = null, $logger = null)
-        {
-        }
+        public static function log($level, $message = null, $context = null, $logger = null){}
 
-        public static function info($message, $content = null, $logger = null)
-        {
-        }
+        public static function debug($message, $context = null, $logger = null){}
 
-        public static function notice($message, $content = null, $logger = null)
-        {
-        }
+        public static function info($message, $context = null, $logger = null){}
 
-        public static function warning($message, $content = null, $logger = null)
-        {
-        }
+        public static function notice($message, $context = null, $logger = null){}
 
-        public static function error($message, $content = null, $logger = null)
-        {
-        }
+        public static function warning($message, $context = null, $logger = null){}
 
-        public static function critical($message, $content = null, $logger = null)
-        {
-        }
+        public static function error($message, $context = null, $logger = null){}
 
-        public static function alert($message, $content = null, $logger = null)
-        {
-        }
+        public static function critical($message, $context = null, $logger = null){}
 
-        public static function emergency($message, $content = null, $logger = null)
-        {
-        }
+        public static function alert($message, $context = null, $logger = null){}
+
+        public static function emergency($message, $context = null, $logger = null){}
     }
 }
 
 namespace {
-    function seaslog_get_version()
-    {
-    }
+    function seaslog_get_version(){}
 
-    function seaslog_get_author()
-    {
-    }
+    function seaslog_get_author(){}
 }
