@@ -2,7 +2,7 @@
 namespace Swoole\WebSocket;
 
 /**
- * @since 4.4.7
+ * @since 4.5.0
  */
 class Frame
 {
@@ -16,11 +16,10 @@ class Frame
     /**
      * @param $data[required]
      * @param $opcode[optional]
-     * @param $finish[optional]
-     * @param $mask[optional]
+     * @param $flags[optional]
      * @return mixed
      */
-    public static function pack($data, $opcode=null, $finish=null, $mask=null){}
+    public static function pack($data, $opcode=null, $flags=null){}
 
     /**
      * @param $data[required]

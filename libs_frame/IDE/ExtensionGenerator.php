@@ -228,7 +228,7 @@ class ExtensionGenerator
                     $classContent .= $indent . implode(' ', $modifierNames);
                     $classContent .= ' function ' . $method->getName() . '(';
                     if ($method->isAbstract()) {
-                        $classContent .= ');' . PHP_EOL . PHP_EOL;
+                        $classContent .= ');' . PHP_EOL;
                         continue;
                     }
 

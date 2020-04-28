@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.4.7
+ * @since 4.5.0
  */
 class Client
 {
@@ -18,9 +18,10 @@ class Client
     /**
      * @param $type[required]
      * @param $async[optional]
+     * @param $id[optional]
      * @return mixed
      */
-    public function __construct($type, $async=null){}
+    public function __construct($type, $async=null, $id=null){}
 
     /**
      * @return mixed
@@ -57,12 +58,6 @@ class Client
     public function send($data, $flag=null){}
 
     /**
-     * @param $dst_socket[required]
-     * @return mixed
-     */
-    public function pipe($dst_socket){}
-
-    /**
      * @param $filename[required]
      * @param $offset[optional]
      * @param $length[optional]
@@ -79,36 +74,15 @@ class Client
     public function sendto($ip, $port, $data){}
 
     /**
-     * @return mixed
-     */
-    public function sleep(){}
-
-    /**
-     * @return mixed
-     */
-    public function wakeup(){}
-
-    /**
-     * @return mixed
-     */
-    public function pause(){}
-
-    /**
-     * @return mixed
-     */
-    public function resume(){}
-
-    /**
      * @param $how[required]
      * @return mixed
      */
     public function shutdown($how){}
 
     /**
-     * @param $callback[optional]
      * @return mixed
      */
-    public function enableSSL($callback=null){}
+    public function enableSSL(){}
 
     /**
      * @return mixed
@@ -140,13 +114,6 @@ class Client
      * @return mixed
      */
     public function close($force=null){}
-
-    /**
-     * @param $event_name[required]
-     * @param $callback[required]
-     * @return mixed
-     */
-    public function on($event_name, $callback){}
 
     /**
      * @return mixed

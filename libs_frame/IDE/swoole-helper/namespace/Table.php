@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.4.7
+ * @since 4.5.0
  */
 class Table
 {

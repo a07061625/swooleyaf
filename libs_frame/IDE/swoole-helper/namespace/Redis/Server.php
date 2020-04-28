@@ -2,7 +2,7 @@
 namespace Swoole\Redis;
 
 /**
- * @since 4.4.7
+ * @since 4.5.0
  */
 class Server extends \Swoole\Server
 {
@@ -242,6 +242,32 @@ class Server extends \Swoole\Server
      * @return mixed
      */
     public function getClientList($start_fd, $find_count=null){}
+
+    /**
+     * @return mixed
+     */
+    public function getWorkerId(){}
+
+    /**
+     * @return mixed
+     */
+    public function getWorkerPid(){}
+
+    /**
+     * @param $worker_id[optional]
+     * @return mixed
+     */
+    public function getWorkerStatus($worker_id=null){}
+
+    /**
+     * @return mixed
+     */
+    public function getManagerPid(){}
+
+    /**
+     * @return mixed
+     */
+    public function getMasterPid(){}
 
     /**
      * @param $fd[required]
