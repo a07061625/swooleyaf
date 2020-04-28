@@ -43,8 +43,8 @@ abstract class UtilMaiLe extends UtilCommon
     {
         $existSign = $data['sign'] ?? '';
         if(is_string($existSign) && (strlen($existSign) > 0)){
-            $nowSign = self::createSign($data);
-            return $existSign == $nowSign;
+            self::createSign($data);
+            return $existSign == $data['sign'];
         }
 
         return false;
