@@ -25,11 +25,6 @@ class swoole_atomic_long extends Swoole\Atomic\Long
 
 }
 
-class swoole_buffer extends Swoole\Buffer
-{
-
-}
-
 class swoole_lock extends Swoole\Lock
 {
 

@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.4.7
+ * @since 4.5.0
  */
 class Iterator extends \ArrayIterator
 {
@@ -11,12 +11,11 @@ class Iterator extends \ArrayIterator
 
 
     /**
-     * @param $input[optional]
-     * @param $flags[optional]
-     * @param $iterator_class[optional]
+     * @param $array[optional]
+     * @param $ar_flags[optional]
      * @return mixed
      */
-    public function __construct($input=null, $flags=null, $iterator_class=null){}
+    public function __construct($array=null, $ar_flags=null){}
 
     /**
      * @param $index[required]

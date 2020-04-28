@@ -1,21 +1,11 @@
 <?php
 namespace  {
-    class Yaconf
-    {
-        /**
-         * @param string $name
-         * @return mixed
-         */
-        public static function get($name)
-        {
-        }
+    class Yaconf {
+        public static function get($name, $default = null){}
 
-        /**
-         * @param string $name
-         * @return bool
-         */
-        public static function has($name)
-        {
-        }
+        public static function has($name){}
+
+        public static function __debug_info($name){}
     }
 }
+

@@ -2,7 +2,7 @@
 namespace Swoole\WebSocket;
 
 /**
- * @since 4.4.7
+ * @since 4.5.0
  */
 class Server extends \Swoole\Http\Server
 {
@@ -12,10 +12,10 @@ class Server extends \Swoole\Http\Server
      * @param $fd[required]
      * @param $data[required]
      * @param $opcode[optional]
-     * @param $finish[optional]
+     * @param $flags[optional]
      * @return mixed
      */
-    public function push($fd, $data, $opcode=null, $finish=null){}
+    public function push($fd, $data, $opcode=null, $flags=null){}
 
     /**
      * @param $fd[required]
@@ -34,11 +34,10 @@ class Server extends \Swoole\Http\Server
     /**
      * @param $data[required]
      * @param $opcode[optional]
-     * @param $finish[optional]
-     * @param $mask[optional]
+     * @param $flags[optional]
      * @return mixed
      */
-    public static function pack($data, $opcode=null, $finish=null, $mask=null){}
+    public static function pack($data, $opcode=null, $flags=null){}
 
     /**
      * @param $data[required]
@@ -253,6 +252,32 @@ class Server extends \Swoole\Http\Server
      * @return mixed
      */
     public function getClientList($start_fd, $find_count=null){}
+
+    /**
+     * @return mixed
+     */
+    public function getWorkerId(){}
+
+    /**
+     * @return mixed
+     */
+    public function getWorkerPid(){}
+
+    /**
+     * @param $worker_id[optional]
+     * @return mixed
+     */
+    public function getWorkerStatus($worker_id=null){}
+
+    /**
+     * @return mixed
+     */
+    public function getManagerPid(){}
+
+    /**
+     * @return mixed
+     */
+    public function getMasterPid(){}
 
     /**
      * @param $fd[required]

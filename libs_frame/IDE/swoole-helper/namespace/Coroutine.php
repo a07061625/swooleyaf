@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.4.7
+ * @since 4.5.0
  */
 class Coroutine
 {
@@ -83,6 +83,12 @@ class Coroutine
      * @return mixed
      */
     public static function getBackTrace($cid=null, $options=null, $limit=null){}
+
+    /**
+     * @param $cid[optional]
+     * @return mixed
+     */
+    public static function getElapsed($cid=null){}
 
     /**
      * @return mixed
@@ -183,6 +189,34 @@ class Coroutine
      * @return mixed
      */
     public static function statvfs($path){}
+
+    /**
+     * @param $timeout[optional]
+     * @return mixed
+     */
+    public static function wait($timeout=null){}
+
+    /**
+     * @param $pid[required]
+     * @param $timeout[optional]
+     * @return mixed
+     */
+    public static function waitPid($pid, $timeout=null){}
+
+    /**
+     * @param $signo[required]
+     * @param $timeout[optional]
+     * @return mixed
+     */
+    public static function waitSignal($signo, $timeout=null){}
+
+    /**
+     * @param $fd[required]
+     * @param $events[optional]
+     * @param $timeout[optional]
+     * @return mixed
+     */
+    public static function waitEvent($fd, $events=null, $timeout=null){}
 
 
 }

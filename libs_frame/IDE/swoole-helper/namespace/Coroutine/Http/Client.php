@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine\Http;
 
 /**
- * @since 4.4.7
+ * @since 4.5.0
  */
 class Client
 {
@@ -96,6 +96,16 @@ class Client
     public function execute($path){}
 
     /**
+     * @return mixed
+     */
+    public function getpeername(){}
+
+    /**
+     * @return mixed
+     */
+    public function getsockname(){}
+
+    /**
      * @param $path[required]
      * @return mixed
      */
@@ -142,6 +152,11 @@ class Client
     public function getHeaderOut(){}
 
     /**
+     * @return mixed
+     */
+    public function getPeerCert(){}
+
+    /**
      * @param $path[required]
      * @return mixed
      */
@@ -150,10 +165,10 @@ class Client
     /**
      * @param $data[required]
      * @param $opcode[optional]
-     * @param $finish[optional]
+     * @param $flags[optional]
      * @return mixed
      */
-    public function push($data, $opcode=null, $finish=null){}
+    public function push($data, $opcode=null, $flags=null){}
 
     /**
      * @param $timeout[optional]
