@@ -5,12 +5,12 @@
  * Date: 17-11-8
  * Time: 下午11:19
  */
-namespace Images;
+namespace SyImage;
 
 use SyConstant\ErrorCode;
 use SyException\Image\ImageException;
 
-class SyFont
+class Font
 {
     /**
      * 字体三原色-黄色值
