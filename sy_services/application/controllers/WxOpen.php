@@ -16,17 +16,17 @@ class WxOpenController extends CommonController
      * @apiParam {string} msg_signature 消息签名
      * @apiParam {string} encrypt_type 加密方式
      * @apiParam {string} timestamp 时间戳
+     * @SyFilter-{"field": "wx_xml","explain": "微信xml消息","type": "string","rules": {"required": 1,"min": 1}}
+     * @SyFilter-{"field": "nonce","explain": "随机字符串","type": "string","rules": {"required": 1,"min": 1}}
+     * @SyFilter-{"field": "msg_signature","explain": "消息签名","type": "string","rules": {"required": 1,"min": 1}}
+     * @SyFilter-{"field": "encrypt_type","explain": "加密方式","type": "string","rules": {"required": 1,"min": 1}}
+     * @SyFilter-{"field": "timestamp","explain": "时间戳","type": "string","rules": {"required": 1,"min": 1}}
      * @apiSuccess WxOpenSuccess 请求失败
      * @apiSuccessExample success:
      *     success
      * @apiSuccess WxOpenFail 请求失败
      * @apiSuccessExample fail:
      *     fail
-     * @SyFilter-{"field": "wx_xml","explain": "微信xml消息","type": "string","rules": {"required": 1,"min": 1}}
-     * @SyFilter-{"field": "nonce","explain": "随机字符串","type": "string","rules": {"required": 1,"min": 1}}
-     * @SyFilter-{"field": "msg_signature","explain": "消息签名","type": "string","rules": {"required": 1,"min": 1}}
-     * @SyFilter-{"field": "encrypt_type","explain": "加密方式","type": "string","rules": {"required": 1,"min": 1}}
-     * @SyFilter-{"field": "timestamp","explain": "时间戳","type": "string","rules": {"required": 1,"min": 1}}
      */
     public function handleWxNotifyAction()
     {
@@ -50,12 +50,6 @@ class WxOpenController extends CommonController
      * @apiParam {string} msg_signature 消息签名
      * @apiParam {string} encrypt_type 加密方式
      * @apiParam {string} timestamp 时间戳
-     * @apiSuccess WxOpenSuccess 请求失败
-     * @apiSuccessExample success:
-     *     <xml><ToUserName>fafasdf</ToUserName><Encrypt>dfdsfaf</Encrypt></xml>
-     * @apiSuccess WxOpenFail 请求失败
-     * @apiSuccessExample fail:
-     *     fail
      * @SyFilter-{"field": "wx_xml","explain": "微信xml消息","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "appid","explain": "授权者公众号id","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "openid","explain": "用户openid","type": "string","rules": {"required": 1,"min": 1}}
@@ -63,6 +57,12 @@ class WxOpenController extends CommonController
      * @SyFilter-{"field": "msg_signature","explain": "消息签名","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "encrypt_type","explain": "加密方式","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "timestamp","explain": "时间戳","type": "string","rules": {"required": 1,"min": 1}}
+     * @apiSuccess WxOpenSuccess 请求失败
+     * @apiSuccessExample success:
+     *     <xml><ToUserName>fafasdf</ToUserName><Encrypt>dfdsfaf</Encrypt></xml>
+     * @apiSuccess WxOpenFail 请求失败
+     * @apiSuccessExample fail:
+     *     fail
      */
     public function handleAuthorizerNotifyAction()
     {

@@ -21,12 +21,12 @@ class ImageController extends CommonController
      * @apiParam {string} [error_level=L] 容错级别，取值为H L M Q，越在前级别越低
      * @apiParam {number{1-10}} [image_size=5] 图片大小
      * @apiParam {number{0-200}} [margin_size=2] 外边框间隙，单位为px
-     * @apiSuccess {string} Body 图片字节流
-     * @apiUse ResponseFail
      * @SyFilter-{"field": "url","explain": "链接地址","type": "string","rules": {"required": 1,"url": 1}}
      * @SyFilter-{"field": "error_level","explain": "容错级别","type": "string","rules": {"regex": "/^[HLMQ]{1}$/"}}
      * @SyFilter-{"field": "image_size","explain": "图片大小","type": "int","rules": {"min": 1,"max": 10}}
      * @SyFilter-{"field": "margin_size","explain": "外边框间隙","type": "int","rules": {"min": 0,"max": 200}}
+     * @apiSuccess {string} Body 图片字节流
+     * @apiUse ResponseFail
      */
     public function createQrImageAction()
     {

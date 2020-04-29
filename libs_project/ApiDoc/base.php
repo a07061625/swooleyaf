@@ -25,13 +25,13 @@
  * @apiError (200) {Number} now_time 请求时间戳
  * @apiError (200) {String} req_id 请求ID
  * @apiError (200) {String} msg 出错信息描述
- * @apiErrorExample {json} fail:
- *     {
- *       "code": 10001,
- *       "req_id": "7461ab3e352eae5b4317009a5e2fcfe2",
- *       "now_time": 1587455747,
- *       "msg": "id必须为整数"
- *     }
+ * @apiErrorExample {json} Response-Fail:
+ *   {
+ *     "code": 10001,
+ *     "req_id": "7461ab3e352eae5b4317009a5e2fcfe2",
+ *     "now_time": 1587455747,
+ *     "msg": "id必须为整数"
+ *   }
  */
 
 /**
