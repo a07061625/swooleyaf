@@ -27,17 +27,19 @@ class ImageImagick extends ImageBase
     ];
 
     /**
-     * @param string $byteStr 图片二进制流字符串
+     * @param string $data 图片数据
+     * @param string $dataType 数据类型 binary:二进制 base64:base64编码
      * @throws \SyException\Image\ImageException
      */
-    public function __construct(string $byteStr)
+    public function __construct(string $data, string $dataType)
     {
-        parent::__construct($byteStr);
+        $byteData = $this->getByteData($data, $dataType);
+        parent::__construct($byteData);
         $this->image = new \Imagick();
         $this->quality = 100;
 
         try {
-            $this->image->readImageBlob($byteStr);
+            $this->image->readImageBlob($byteData);
             $this->image->stripImage();
         } catch (\Exception $e) {
             Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
