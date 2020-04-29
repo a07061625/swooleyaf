@@ -86,7 +86,7 @@ abstract class ImageBase
      */
     protected function getByteData(string $data, string $dataType)
     {
-        if ($dataType == 'binary') {
+        if ($dataType == SyInner::IMAGE_DATA_TYPE_BINARY) {
             return $data;
         }
 
