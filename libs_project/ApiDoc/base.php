@@ -25,7 +25,7 @@
  * @apiError (200) {Number} now_time 请求时间戳
  * @apiError (200) {String} req_id 请求ID
  * @apiError (200) {String} msg 出错信息描述
- * @apiErrorExample {json} Response-Fail:
+ * @apiErrorExample {json} Response-Fail
  *   {
  *     "code": 10001,
  *     "req_id": "7461ab3e352eae5b4317009a5e2fcfe2",
@@ -38,11 +38,11 @@
  * @apiDefine RequestSession
  * @apiHeader {String} [Sy-Auth] 会话标识,数字和小写字母组成的16位长度字符串,会话标识和会话ID至少要选择一个
  * @apiParam {string} [session_id] 会话ID,数字和小写字母组成的16位长度字符串,会话标识和会话ID至少要选择一个
- * @apiHeaderExample {json} Session-Request-Header:
+ * @apiHeaderExample {json} Session-Request-Header
  *   {
  *     "Sy-Auth": "0eihbc1587865998"
  *   }
- * @apiParamExample {json} Session-Request-Param:
+ * @apiParamExample {json} Session-Request-Param
  *   {
  *     "session_id": "0eihbc1587865998"
  *   }
