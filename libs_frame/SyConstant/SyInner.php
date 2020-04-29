@@ -73,6 +73,8 @@ final class SyInner
     const IMAGE_MIME_TYPE_GIF = 'image/gif'; //MIME类型-GIF
     const IMAGE_FILTER_DITHER_DIFFUSION = 'diffusion'; //噪点滤镜类型-扩散
     const IMAGE_FILTER_DITHER_ORDERED = 'ordered'; //噪点滤镜类型-规整
+    const IMAGE_DATA_TYPE_BINARY = 'binary'; //数据类型-binary
+    const IMAGE_DATA_TYPE_BASE64 = 'base64'; //数据类型-base64
 
     //注解常量
     public static $annotationSignTags = [
