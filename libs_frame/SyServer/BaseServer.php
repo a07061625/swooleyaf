@@ -758,6 +758,10 @@ abstract class BaseServer
         if (version_compare($runkitVersion, SyInner::VERSION_MIN_RUNKIT, '<')) {
             exit('runkit7版本必须大于等于' . SyInner::VERSION_MIN_RUNKIT . PHP_EOL);
         }
+        $redisVersion = phpversion('redis');
+        if (version_compare($redisVersion, SyInner::VERSION_MIN_REDIS, '<')) {
+            exit('redis版本必须大于等于' . SyInner::VERSION_MIN_REDIS . PHP_EOL);
+        }
     }
 
     private function createUniqueToken()
