@@ -20,12 +20,15 @@ class ImageGd extends ImageBase
     private $image = null;
 
     /**
-     * @param string $byteStr 图片二进制流字符串
+     * @param string $data 图片数据
+     * @param string $dataType 数据类型 binary:二进制 base64:base64编码
      */
-    public function __construct(string $byteStr)
+    public function __construct(string $data, string $dataType)
     {
-        parent::__construct($byteStr);
-        $this->image = imagecreatefromstring($byteStr);
+        $byteData = $this->getByteData($data, $dataType);
+        parent::__construct($byteData);
+
+        $this->image = imagecreatefromstring($byteData);
         if ($this->mimeType == SyInner::IMAGE_MIME_TYPE_PNG) {
             $this->quality = 6;
         } else {
