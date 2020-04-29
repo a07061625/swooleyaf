@@ -38,11 +38,11 @@
  * @apiDefine RequestSession
  * @apiHeader {String} [Sy-Auth] 会话标识,数字和小写字母组成的16位长度字符串,会话标识和会话ID至少要选择一个
  * @apiParam {string} [session_id] 会话ID,数字和小写字母组成的16位长度字符串,会话标识和会话ID至少要选择一个
- * @apiHeaderExample {json} Header-Session:
+ * @apiHeaderExample {json} Session-Request-Header:
  *   {
  *     "Sy-Auth": "0eihbc1587865998"
  *   }
- * @apiParamExample {json} Param-Session:
+ * @apiParamExample {json} Session-Request-Param:
  *   {
  *     "session_id": "0eihbc1587865998"
  *   }
