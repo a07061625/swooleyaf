@@ -35,12 +35,13 @@ final class SyInner
     const SYSTEM_USER_ROOT = 'root'; //系统用户-root
 
     //版本常量
-    const VERSION_MIN_PHP = '7.1.0'; //最低版本-php
-    const VERSION_MIN_SWOOLE = '4.3.2'; //最低版本-swoole
-    const VERSION_MIN_SEASLOG = '1.9.0'; //最低版本-seaslog
-    const VERSION_MIN_YAC = '2.0.2'; //最低版本-yac
-    const VERSION_MIN_YAF = '3.0.7'; //最低版本-yaf
+    const VERSION_MIN_PHP = '7.2.0'; //最低版本-php
+    const VERSION_MIN_SWOOLE = '4.5.0'; //最低版本-swoole
+    const VERSION_MIN_SEASLOG = '2.1.0'; //最低版本-seaslog
+    const VERSION_MIN_YAC = '2.2.0'; //最低版本-yac
+    const VERSION_MIN_YAF = '3.2.1'; //最低版本-yaf
     const VERSION_MIN_RUNKIT = '3.0.0'; //最低版本-runkit
+    const VERSION_MIN_REDIS = '5.0.0'; //最低版本-redis
 
     //熔断器常量
     const FUSE_STATE_OPEN = 'open'; //状态-开启
