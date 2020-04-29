@@ -79,6 +79,22 @@ abstract class ImageBase
     }
 
     /**
+     * 获取图片二进制数据
+     * @param string $data
+     * @param string $dataType
+     * @return string
+     */
+    protected function getByteData(string $data, string $dataType)
+    {
+        if ($dataType == 'binary') {
+            return $data;
+        }
+
+        $byteData = base64_decode($data);
+        return is_string($byteData) ? $byteData : '';
+    }
+
+    /**
      * 获取图片sha1值
      * @return string
      */
