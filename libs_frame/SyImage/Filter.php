@@ -5,7 +5,7 @@
  * Date: 2018/5/8 0008
  * Time: 10:10
  */
-namespace Images;
+namespace SyImage;
 
 use SyConstant\ErrorCode;
 use SyConstant\SyInner;
@@ -14,10 +14,10 @@ use Grafika\Grafika;
 
 /**
  * 图片滤镜处理类
- * Class SyImageFilter
- * @package Images
+ * Class Filter
+ * @package SyImage
  */
-class SyImageFilter
+class Filter
 {
     /**
      * 来源文件全路径

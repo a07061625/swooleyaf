@@ -127,7 +127,7 @@ class ImageController extends CommonController
             \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->del($cacheKey);
             $imageWidth = (int)\Request\SyRequest::getParams('image_width');
             $imageHeight = (int)\Request\SyRequest::getParams('image_height');
-            $syImage = new Images\SyImageImagick($cacheData);
+            $syImage = new \SyImage\ImageImagick($cacheData);
             $fileName = $syImage->resizeImage($imageWidth, $imageHeight)
                 ->setQuality(100)
                 ->writeImage(\SyServer\BaseServer::getServerConfig('storepath_cache'));

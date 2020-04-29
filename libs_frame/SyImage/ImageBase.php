@@ -5,13 +5,13 @@
  * Date: 17-11-4
  * Time: 下午10:32
  */
-namespace Images;
+namespace SyImage;
 
 use SyConstant\ErrorCode;
 use SyConstant\SyInner;
 use SyException\Image\ImageException;
 
-abstract class SyImageBase
+abstract class ImageBase
 {
     /**
      * 图片sha1值
@@ -160,11 +160,11 @@ abstract class SyImageBase
      * @param string $txt 文本内容
      * @param int $startX 文本起始横坐标
      * @param int $startY 文本起始纵坐标
-     * @param \Images\SyFont $font 字体信息对象
+     * @param \SyImage\Font $font 字体信息对象
      * @return $this
      * @throws \SyException\Image\ImageException
      */
-    abstract public function addWaterTxt(string $txt, int $startX, int $startY, SyFont $font);
+    abstract public function addWaterTxt(string $txt, int $startX, int $startY, Font $font);
 
     /**
      * 添加图片水印

@@ -13,7 +13,6 @@
 - Grafika: 图片特效类库
 - Helper: 项目帮助类库
 - IDE: IDE辅助类库
-- Images: 图片处理类库
 - Log: 日志类库
 - LiveEducation: 教育直播
 - Mailer: 邮件类库
@@ -37,6 +36,7 @@
 - SyException: 框架自定义异常
 - SyFrame: 框架架构相关
 - SyIM: 实时通讯相关
+- SyImage: 图片处理相关
 - SyIot: 物联网相关
 - SyLogistics: 物流相关
 - SyMessagePush: 消息推送相关

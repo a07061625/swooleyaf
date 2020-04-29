@@ -5,14 +5,14 @@
  * Date: 17-8-30
  * Time: 下午10:36
  */
-namespace Images;
+namespace SyImage;
 
 use SyConstant\ErrorCode;
 use SyConstant\SyInner;
 use SyException\Image\ImageException;
 use SyTool\Tool;
 
-class SyImageGd extends SyImageBase
+class ImageGd extends ImageBase
 {
     /**
      * @var resource
@@ -102,7 +102,7 @@ class SyImageGd extends SyImageBase
         return $this;
     }
 
-    public function addWaterTxt(string $txt, int $startX, int $startY, SyFont $font)
+    public function addWaterTxt(string $txt, int $startX, int $startY, Font $font)
     {
         $fontTxt = trim($txt);
         if (strlen($fontTxt) == 0) {
