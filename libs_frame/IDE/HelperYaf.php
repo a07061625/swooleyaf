@@ -329,11 +329,11 @@ namespace Yaf {
     }
 
     interface View_Interface {
-        abstract public function assign();
-        abstract public function display();
-        abstract public function render();
-        abstract public function setScriptPath();
-        abstract public function getScriptPath();
+        public function assign();
+        public function display();
+        public function render();
+        public function setScriptPath();
+        public function getScriptPath();
     }
 
     final class Router {
@@ -353,8 +353,8 @@ namespace Yaf {
     }
 
     interface Route_Interface {
-        abstract public function route();
-        abstract public function assemble();
+        public function route();
+        public function assemble();
     }
 
     final class Route_Static implements \Yaf\Route_Interface {

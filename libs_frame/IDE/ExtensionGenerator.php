@@ -219,13 +219,17 @@ class ExtensionGenerator
                         $classContent .= $indent . $methodComments . PHP_EOL;
                     }
                     $modifierNames = \Reflection::getModifierNames($method->getModifiers());
-                    if ((!in_array('public', $modifierNames, true))
-                        && (!in_array('private', $modifierNames, true))
-                        && (!in_array('protected', $modifierNames, true))) {
+                    $intersectArr = array_intersect(['public', 'private', 'protected',], $modifierNames);
+                    if (empty($intersectArr)) {
                         $modifierNames[] = 'public';
                     }
                     sort($modifierNames);
-                    $classContent .= $indent . implode(' ', $modifierNames);
+                    $modifierNameStr = implode(' ', $modifierNames);
+                    if ($eClass->isInterface()) {
+                        $classContent .= $indent . str_replace('abstract ', '', $modifierNameStr);
+                    } else {
+                        $classContent .= $indent . $modifierNameStr;
+                    }
                     $classContent .= ' function ' . $method->getName() . '(';
                     if ($method->isAbstract()) {
                         $classContent .= ');' . PHP_EOL;
