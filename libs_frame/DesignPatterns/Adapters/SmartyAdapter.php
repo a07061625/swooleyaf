@@ -22,7 +22,6 @@ class SmartyAdapter implements View_Interface
      * @param string $templatePath
      * @param array $extraParams
      * @throws \Exception
-     * @return void
      */
     public function __construct($templatePath = null, array $extraParams = [])
     {

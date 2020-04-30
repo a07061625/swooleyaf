@@ -329,10 +329,10 @@ namespace Yaf {
     }
 
     interface View_Interface {
-        public function assign();
-        public function display();
-        public function render();
-        public function setScriptPath();
+        public function assign($spec, $value = null);
+        public function display($name, $vars = []);
+        public function render($name, $vars = []);
+        public function setScriptPath($path);
         public function getScriptPath();
     }
 
