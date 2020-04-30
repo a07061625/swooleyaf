@@ -5,7 +5,7 @@
  * Date: 2019/7/11 0011
  * Time: 13:13
  */
-namespace TaoBao;
+namespace SyTaoBao;
 
 abstract class ServiceBase
 {

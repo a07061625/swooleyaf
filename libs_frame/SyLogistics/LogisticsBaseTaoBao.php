@@ -8,7 +8,7 @@
 namespace SyLogistics;
 
 use DesignPatterns\Singletons\LogisticsConfigSingleton;
-use TaoBao\ServiceBase;
+use SyTaoBao\ServiceBase;
 
 abstract class LogisticsBaseTaoBao extends ServiceBase
 {

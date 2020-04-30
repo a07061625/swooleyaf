@@ -8,8 +8,8 @@
 namespace SySms;
 
 use SyConstant\ErrorCode;
-use TaoBao\ServiceBase;
-use TaoBao\UtilBase;
+use SyTaoBao\ServiceBase;
+use SyTaoBao\UtilBase;
 use SyTrait\SimpleTrait;
 
 class SmsUtilDaYu extends UtilBase
@@ -18,7 +18,7 @@ class SmsUtilDaYu extends UtilBase
 
     /**
      * 发送服务请求
-     * @param \TaoBao\ServiceBase $service
+     * @param \SyTaoBao\ServiceBase $service
      * @return array
      */
     public static function sendServiceRequest(ServiceBase $service)
