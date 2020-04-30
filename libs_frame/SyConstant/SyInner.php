@@ -12,6 +12,13 @@ use SyTrait\SimpleTrait;
 final class SyInner
 {
     use SimpleTrait;
+
+    //服务常量
+    public static $totalServerType = [
+        self::SERVER_TYPE_API_GATE => 'api入口',
+        self::SERVER_TYPE_API_MODULE => 'api模块',
+        self::SERVER_TYPE_FRONT_GATE => '前端入口',
+    ];
     const SERVER_TYPE_API_GATE = 'api'; //服务端类型-api入口
     const SERVER_TYPE_API_MODULE = 'rpc'; //服务端类型-api模块
     const SERVER_TYPE_FRONT_GATE = 'frontgate'; //服务端类型-前端入口
@@ -25,6 +32,17 @@ final class SyInner
     const PROCESS_TYPE_WORKER = 'Worker'; //类型-worker
     const PROCESS_TYPE_MANAGER = 'Manager'; //类型-manager
     const PROCESS_TYPE_MAIN = 'Main'; //类型-main
+
+    //环境常量
+    public static $totalEnvProject = [
+        self::ENV_PROJECT_DEV,
+        self::ENV_PROJECT_PRODUCT,
+    ];
+    public static $totalEnvSystem = [
+        self::ENV_SYSTEM_BSD,
+        self::ENV_SYSTEM_MAC,
+        self::ENV_SYSTEM_LINUX,
+    ];
     const ENV_PROJECT_DEV = 'dev'; //项目环境-测试
     const ENV_PROJECT_PRODUCT = 'product'; //项目环境-生产
     const ENV_SYSTEM_BSD = 'FreeBSD'; //系统环境-bsd
@@ -68,6 +86,12 @@ final class SyInner
     const REGISTRY_NAME_PREFIX_CONTROLLER = 'CONTROLLER_'; //名称前缀-控制器
     const REGISTRY_NAME_PREFIX_ASPECT_BEFORE = 'ASPECTBEFORE_'; //名称前缀-前置切面
     const REGISTRY_NAME_PREFIX_ASPECT_AFTER = 'ASPECTAFTER_'; //名称前缀-后置切面
+
+    //图片常量
+    public static $totalImageFilterDither = [
+        self::IMAGE_FILTER_DITHER_ORDERED,
+        self::IMAGE_FILTER_DITHER_DIFFUSION,
+    ];
     const IMAGE_MIME_TYPE_PNG = 'image/png'; //MIME类型-PNG
     const IMAGE_MIME_TYPE_JPEG = 'image/jpeg'; //MIME类型-JPEG
     const IMAGE_MIME_TYPE_GIF = 'image/gif'; //MIME类型-GIF
@@ -91,28 +115,4 @@ final class SyInner
     const ANNOTATION_TAG_IGNORE_JWT = '_ignorejwt'; //标识-取消jwt校验
     const ANNOTATION_TAG_SY_TOKEN = '__sytoken'; //标识-框架令牌
     const ANNOTATION_TAG_SESSION_JWT = '__sessionjwt'; //标识-JWT会话
-
-    //服务常量
-    public static $totalServerType = [
-        self::SERVER_TYPE_API_GATE => 'api入口',
-        self::SERVER_TYPE_API_MODULE => 'api模块',
-        self::SERVER_TYPE_FRONT_GATE => '前端入口',
-    ];
-
-    //环境常量
-    public static $totalEnvProject = [
-        self::ENV_PROJECT_DEV,
-        self::ENV_PROJECT_PRODUCT,
-    ];
-    public static $totalEnvSystem = [
-        self::ENV_SYSTEM_BSD,
-        self::ENV_SYSTEM_MAC,
-        self::ENV_SYSTEM_LINUX,
-    ];
-
-    //图片常量
-    public static $totalImageFilterDither = [
-        self::IMAGE_FILTER_DITHER_ORDERED,
-        self::IMAGE_FILTER_DITHER_DIFFUSION,
-    ];
 }
