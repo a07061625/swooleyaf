@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika\Gd\Filter;
 
 use Grafika\FilterInterface;
@@ -7,6 +6,7 @@ use Grafika\Gd\Image;
 
 /**
  * Sobel filter is an edge detection filter.
+ *
  * @link https://en.wikipedia.org/wiki/Sobel_operator
  */
 class Sobel implements FilterInterface
@@ -18,7 +18,6 @@ class Sobel implements FilterInterface
      */
     public function apply($image)
     {
-
         // Localize vars
         $width = $image->getWidth();
         $height = $image->getHeight();
@@ -90,23 +89,14 @@ class Sobel implements FilterInterface
         }
         imagedestroy($old); // Free resource
         // Create and return new image with updated core
-        return new Image(
-            $new,
-            $image->getImageFile(),
-            $width,
-            $height,
-            $image->getType()
-        );
+        return new Image($new, $image->getImageFile(), $width, $height, $image->getType());
     }
 
     private function convolve($matrix)
     {
-        $gx = $matrix[0][0] + ($matrix[2][0] * -1) +
-              ($matrix[0][1] * 2) + ($matrix[2][1] * -2) +
-              $matrix[0][2] + ($matrix[2][2] * -1);
+        $gx = $matrix[0][0] + ($matrix[2][0] * -1) + ($matrix[0][1] * 2) + ($matrix[2][1] * -2) + $matrix[0][2] + ($matrix[2][2] * -1);
 
-        $gy = $matrix[0][0] + ($matrix[1][0] * 2) + $matrix[2][0] +
-              ($matrix[0][2] * -1) + ($matrix[1][2] * -2) + ($matrix[2][2] * -1);
+        $gy = $matrix[0][0] + ($matrix[1][0] * 2) + $matrix[2][0] + ($matrix[0][2] * -1) + ($matrix[1][2] * -2) + ($matrix[2][2] * -1);
 
         return sqrt(($gx * $gx) + ($gy * $gy));
     }

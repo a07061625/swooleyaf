@@ -7,6 +7,7 @@ use Grafika\Imagick\Image;
 
 /**
  * Class Line
+ *
  * @package Grafika
  */
 class Line extends Base implements DrawingObjectInterface

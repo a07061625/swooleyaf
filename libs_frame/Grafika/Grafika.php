@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika;
 
 use Grafika\Gd\DrawingObject\CubicBezier as GdCubicBezier;
@@ -43,6 +42,7 @@ use Grafika\Imagick\Image as ImagickImage;
 
 /**
  * Contains factory methods for detecting editors, creating editors and images.
+ *
  * @package Grafika
  */
 class Grafika
@@ -51,9 +51,8 @@ class Grafika
      * Grafika root directory
      */
     const DIR = __DIR__;
-
     /**
-     * @var array $editorList List of editors to evaluate.
+     * @var array list of editors to evaluate
      */
     private static $editorList = ['Imagick', 'Gd'];
 
@@ -64,7 +63,9 @@ class Grafika
      */
     public static function fontsDir()
     {
-        return self::DIR . DIRECTORY_SEPARATOR . 'fonts';
+        $ds = DIRECTORY_SEPARATOR;
+
+        return realpath(self::DIR . $ds . '..' . $ds . '..') . $ds . 'fonts';
     }
 
     /**
@@ -87,8 +88,9 @@ class Grafika
      *
      * @param array $editorList Array of editor list names. Use this to change the order of evaluation for editors for this function call only. Default order of evaluation is Imagick then GD.
      *
-     * @return string Name of available editor.
-     * @throws \Exception Throws exception if there are no supported editors.
+     * @return string name of available editor
+     *
+     * @throws \Exception throws exception if there are no supported editors
      */
     public static function detectAvailableEditor($editorList = null)
     {
@@ -118,6 +120,7 @@ class Grafika
      * @param array $editorList Array of editor list names. Use this to change the order of evaluation for editors. Default order of evaluation is Imagick then GD.
      *
      * @return EditorInterface
+     *
      * @throws \Exception
      */
     public static function createEditor($editorList = ['Imagick', 'Gd'])
@@ -125,16 +128,18 @@ class Grafika
         $editorName = self::detectAvailableEditor($editorList);
         if ('Imagick' === $editorName) {
             return new ImagickEditor();
-        } else {
-            return new GdEditor();
         }
+
+        return new GdEditor();
     }
 
     /**
      * Create an image.
-     * @param string $imageFile Path to image file.
+     *
+     * @param string $imageFile path to image file
      *
      * @return ImageInterface
+     *
      * @throws \Exception
      */
     public static function createImage($imageFile)
@@ -142,18 +147,19 @@ class Grafika
         $editorName = self::detectAvailableEditor();
         if ('Imagick' === $editorName) {
             return ImagickImage::createFromFile($imageFile);
-        } else {
-            return GdImage::createFromFile($imageFile);
         }
+
+        return GdImage::createFromFile($imageFile);
     }
 
     /**
      * Create a blank image.
      *
-     * @param int $width Width of image in pixels.
-     * @param int $height Height of image in pixels.
+     * @param int $width  width of image in pixels
+     * @param int $height height of image in pixels
      *
      * @return ImageInterface
+     *
      * @throws \Exception
      */
     public static function createBlankImage($width = 1, $height = 1)
@@ -161,17 +167,18 @@ class Grafika
         $editorName = self::detectAvailableEditor();
         if ('Imagick' === $editorName) {
             return ImagickImage::createBlank($width, $height);
-        } else {
-            return GdImage::createBlank($width, $height);
         }
+
+        return GdImage::createBlank($width, $height);
     }
 
     /**
      * Create a filter. Detects available editor to use.
      *
-     * @param string $filterName The name of the filter.
+     * @param string $filterName the name of the filter
      *
      * @return FilterInterface
+     *
      * @throws \Exception
      */
     public static function createFilter($filterName)
@@ -181,103 +188,68 @@ class Grafika
         if ('Imagick' === $editorName) {
             switch ($filterName) {
                 case 'Blur':
-                    return new ImagickBlur(
-                        (array_key_exists(1, $p) ? $p[1] : 1)
-                    );
+                    return new ImagickBlur((array_key_exists(1, $p) ? $p[1] : 1));
                 case 'Brightness':
-                    return new ImagickBrightness(
-                        $p[1]
-                    );
+                    return new ImagickBrightness($p[1]);
                 case 'Colorize':
-                    return new ImagickColorize(
-                        $p[1],
-                        $p[2],
-                        $p[3]
-                    );
+                    return new ImagickColorize($p[1], $p[2], $p[3]);
                 case 'Contrast':
-                    return new ImagickContrast(
-                        $p[1]
-                    );
+                    return new ImagickContrast($p[1]);
                 case 'Dither':
-                    return new ImagickDither(
-                        $p[1]
-                    );
+                    return new ImagickDither($p[1]);
                 case 'Gamma':
-                    return new ImagickGamma(
-                        $p[1]
-                    );
+                    return new ImagickGamma($p[1]);
                 case 'Grayscale':
                     return new ImagickGrayscale();
                 case 'Invert':
                     return new ImagickInvert();
                 case 'Pixelate':
-                    return new ImagickPixelate(
-                        $p[1]
-                    );
+                    return new ImagickPixelate($p[1]);
                 case 'Sharpen':
-                    return new ImagickSharpen(
-                        $p[1]
-                    );
+                    return new ImagickSharpen($p[1]);
                 case 'Sobel':
                     return new ImagickSobel();
             }
+
             throw new \Exception('Invalid filter name.');
-        } else {
-            switch ($filterName) {
+        }
+        switch ($filterName) {
                 case 'Blur':
-                    return new GdBlur(
-                        (array_key_exists(1, $p) ? $p[1] : 1)
-                    );
+                    return new GdBlur((array_key_exists(1, $p) ? $p[1] : 1));
                 case 'Brightness':
-                    return new GdBrightness(
-                        $p[1]
-                    );
+                    return new GdBrightness($p[1]);
                 case 'Colorize':
-                    return new GdColorize(
-                        $p[1],
-                        $p[2],
-                        $p[3]
-                    );
+                    return new GdColorize($p[1], $p[2], $p[3]);
                 case 'Contrast':
-                    return new GdContrast(
-                        $p[1]
-                    );
+                    return new GdContrast($p[1]);
                 case 'Dither':
-                    return new GdDither(
-                        $p[1]
-                    );
+                    return new GdDither($p[1]);
                 case 'Gamma':
-                    return new GdGamma(
-                        $p[1]
-                    );
+                    return new GdGamma($p[1]);
                 case 'Grayscale':
                     return new GdGrayscale();
                 case 'Invert':
                     return new GdInvert();
                 case 'Pixelate':
-                    return new GdPixelate(
-                        $p[1]
-                    );
+                    return new GdPixelate($p[1]);
                 case 'Sharpen':
-                    return new GdSharpen(
-                        $p[1]
-                    );
+                    return new GdSharpen($p[1]);
                 case 'Sobel':
                     return new GdSobel();
             }
-            throw new \Exception('Invalid filter name.');
-        }
+
+        throw new \Exception('Invalid filter name.');
     }
 
     /**
      * Draws an object. Detects available editor to use.
      *
-     * @param string $drawingObjectName The name of the DrawingObject.
+     * @param string $drawingObjectName the name of the DrawingObject
      *
      * @return DrawingObjectInterface
-     * @throws \Exception
      *
-     * We use array_key_exist() instead of isset() to be able to detect a parameter with a NULL value.
+     * @throws \Exception
+     *                    We use array_key_exist() instead of isset() to be able to detect a parameter with a NULL value
      */
     public static function createDrawingObject($drawingObjectName)
     {
@@ -286,18 +258,12 @@ class Grafika
         if ('Imagick' === $editorName) {
             switch ($drawingObjectName) {
                 case 'CubicBezier':
-                    return new ImagickCubicBezier(
-                        $p[1],
-                        $p[2],
-                        $p[3],
-                        $p[4],
-                        (array_key_exists(5, $p) ? $p[5] : '#000000')
-                    );
+                    return new ImagickCubicBezier($p[1], $p[2], $p[3], $p[4], (array_key_exists(5, $p) ? $p[5] : '#000000'));
                 case 'Ellipse':
                     return new ImagickEllipse(
                         $p[1],
                         $p[2],
-                        (array_key_exists(3, $p) ? $p[3] : [0,0]),
+                        (array_key_exists(3, $p) ? $p[3] : [0, 0]),
                         (array_key_exists(4, $p) ? $p[4] : 1),
                         (array_key_exists(5, $p) ? $p[5] : '#000000'),
                         (array_key_exists(6, $p) ? $p[6] : '#FFFFFF')
@@ -320,47 +286,31 @@ class Grafika
                     return new ImagickRectangle(
                         $p[1],
                         $p[2],
-                        (array_key_exists(3, $p) ? $p[3] : [0,0]),
+                        (array_key_exists(3, $p) ? $p[3] : [0, 0]),
                         (array_key_exists(4, $p) ? $p[4] : 1),
                         (array_key_exists(5, $p) ? $p[5] : '#000000'),
                         (array_key_exists(6, $p) ? $p[6] : '#FFFFFF')
                     );
                 case 'QuadraticBezier':
-                    return new ImagickQuadraticBezier(
-                        $p[1],
-                        $p[2],
-                        $p[3],
-                        (array_key_exists(4, $p) ? $p[4] : '#000000')
-                    );
-
+                    return new ImagickQuadraticBezier($p[1], $p[2], $p[3], (array_key_exists(4, $p) ? $p[4] : '#000000'));
             }
+
             throw new \Exception('Invalid drawing object name.');
-        } else {
-            switch ($drawingObjectName) {
+        }
+        switch ($drawingObjectName) {
                 case 'CubicBezier':
-                    return new GdCubicBezier(
-                        $p[1],
-                        $p[2],
-                        $p[3],
-                        $p[4],
-                        (array_key_exists(5, $p) ? $p[5] : '#000000')
-                    );
+                    return new GdCubicBezier($p[1], $p[2], $p[3], $p[4], (array_key_exists(5, $p) ? $p[5] : '#000000'));
                 case 'Ellipse':
                     return new GdEllipse(
                         $p[1],
                         $p[2],
-                        (array_key_exists(3, $p) ? $p[3] : [0,0]),
+                        (array_key_exists(3, $p) ? $p[3] : [0, 0]),
                         (array_key_exists(4, $p) ? $p[4] : 1),
                         (array_key_exists(5, $p) ? $p[5] : '#000000'),
                         (array_key_exists(6, $p) ? $p[6] : '#FFFFFF')
                     );
                 case 'Line':
-                    return new GdLine(
-                        $p[1],
-                        $p[2],
-                        (array_key_exists(3, $p) ? $p[3] : 1),
-                        (array_key_exists(4, $p) ? $p[4] : '#000000')
-                    );
+                    return new GdLine($p[1], $p[2], (array_key_exists(3, $p) ? $p[3] : 1), (array_key_exists(4, $p) ? $p[4] : '#000000'));
                 case 'Polygon':
                     return new GdPolygon(
                         $p[1],
@@ -372,20 +322,15 @@ class Grafika
                     return new GdRectangle(
                         $p[1],
                         $p[2],
-                        (array_key_exists(3, $p) ? $p[3] : [0,0]),
+                        (array_key_exists(3, $p) ? $p[3] : [0, 0]),
                         (array_key_exists(4, $p) ? $p[4] : 1),
                         (array_key_exists(5, $p) ? $p[5] : '#000000'),
                         (array_key_exists(6, $p) ? $p[6] : '#FFFFFF')
                     );
                 case 'QuadraticBezier':
-                    return new GdQuadraticBezier(
-                        $p[1],
-                        $p[2],
-                        $p[3],
-                        (array_key_exists(4, $p) ? $p[4] : '#000000')
-                    );
+                    return new GdQuadraticBezier($p[1], $p[2], $p[3], (array_key_exists(4, $p) ? $p[4] : '#000000'));
             }
-            throw new \Exception('Invalid drawing object name.');
-        }
+
+        throw new \Exception('Invalid drawing object name.');
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika\Gd\Filter;
 
 use Grafika\FilterInterface;
@@ -17,11 +16,12 @@ class Blur implements FilterInterface
 
     /**
      * Blur constructor.
+     *
      * @param int $amount The amount of blur to apply. Possible values 1-100.
      */
     public function __construct($amount = 1)
     {
-        $this->amount = (int) $amount;
+        $this->amount = (int)$amount;
     }
 
     /**
@@ -34,6 +34,7 @@ class Blur implements FilterInterface
         for ($i = 0; $i < $this->amount; $i++) {
             imagefilter($image->getCore(), IMG_FILTER_GAUSSIAN_BLUR);
         }
+
         return $image;
     }
 }

@@ -3,6 +3,7 @@ namespace Grafika;
 
 /**
  * Interface FilterInterface
+ *
  * @package Grafika
  */
 interface FilterInterface

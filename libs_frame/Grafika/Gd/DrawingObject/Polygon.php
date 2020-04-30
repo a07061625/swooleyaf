@@ -7,6 +7,7 @@ use Grafika\Gd\Editor;
 
 /**
  * Class Rectangle
+ *
  * @package Grafika
  */
 class Polygon extends Base implements DrawingObjectInterface
@@ -23,38 +24,17 @@ class Polygon extends Base implements DrawingObjectInterface
         // Create filled polygon
         if (null !== $this->fillColor) {
             list($r, $g, $b, $alpha) = $this->getFillColor()->getRgba();
-            $fillColorResource = imagecolorallocatealpha(
-                $image->getCore(),
-                $r,
-                $g,
-                $b,
-                Editor::gdAlpha($alpha)
-            );
-            imagefilledpolygon(
-                $image->getCore(),
-                $points,
-                $count,
-                $fillColorResource
-            );
+            $fillColorResource = imagecolorallocatealpha($image->getCore(), $r, $g, $b, Editor::gdAlpha($alpha));
+            imagefilledpolygon($image->getCore(), $points, $count, $fillColorResource);
         }
 
         // Create polygon borders. It will be placed on top of the filled polygon (if present)
         if (0 < $this->getBorderSize() and null !== $this->borderColor) { // With border > 0 AND borderColor !== null
             list($r, $g, $b, $alpha) = $this->getBorderColor()->getRgba();
-            $borderColorResource = imagecolorallocatealpha(
-                $image->getCore(),
-                $r,
-                $g,
-                $b,
-                Editor::gdAlpha($alpha)
-            );
-            imagepolygon(
-                $image->getCore(),
-                $points,
-                $count,
-                $borderColorResource
-            );
+            $borderColorResource = imagecolorallocatealpha($image->getCore(), $r, $g, $b, Editor::gdAlpha($alpha));
+            imagepolygon($image->getCore(), $points, $count, $borderColorResource);
         }
+
         return $image;
     }
 
@@ -68,6 +48,7 @@ class Polygon extends Base implements DrawingObjectInterface
         if (count($points) < 6) {
             throw new \Exception('Polygon needs at least 3 points.');
         }
+
         return $points;
     }
 }

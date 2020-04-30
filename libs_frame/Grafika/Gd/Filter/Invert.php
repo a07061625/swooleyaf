@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika\Gd\Filter;
 
 use Grafika\FilterInterface;
@@ -18,6 +17,7 @@ class Invert implements FilterInterface
     public function apply($image)
     {
         imagefilter($image->getCore(), IMG_FILTER_NEGATE);
+
         return $image;
     }
 }

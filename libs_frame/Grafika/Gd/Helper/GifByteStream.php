@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika\Gd\Helper;
 
 /**
@@ -33,7 +32,7 @@ final class GifByteStream
     /**
      * Take a bite from the byte stream.
      *
-     * @param int $size Byte size in integer.
+     * @param int $size byte size in integer
      *
      * @return string
      */

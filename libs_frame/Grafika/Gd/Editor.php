@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika\Gd;
 
 use Grafika\Color;
@@ -15,6 +14,7 @@ use Grafika\Position;
 
 /**
  * GD Editor class. Uses the PHP GD library.
+ *
  * @package Grafika\Gd
  */
 final class Editor implements EditorInterface
@@ -22,7 +22,7 @@ final class Editor implements EditorInterface
     /**
      * Apply a filter to the image. See Filters section for a list of available filters.
      *
-     * @param Image $image
+     * @param Image           $image
      * @param FilterInterface $filter
      *
      * @return Editor
@@ -41,20 +41,20 @@ final class Editor implements EditorInterface
     /**
      * Blend two images together with the first image as the base and the second image on top. Supports several blend modes.
      *
-     * @param Image $image1 The base image.
-     * @param Image $image2 The image placed on top of the base image.
-     * @param string $type The blend mode. Can be: normal, multiply, overlay or screen.
-     * @param float $opacity The opacity of $image2. Possible values 0.0 to 1.0 where 0.0 is fully transparent and 1.0 is fully opaque. Defaults to 1.0.
+     * @param Image  $image1   the base image
+     * @param Image  $image2   the image placed on top of the base image
+     * @param string $type     The blend mode. Can be: normal, multiply, overlay or screen.
+     * @param float  $opacity  The opacity of $image2. Possible values 0.0 to 1.0 where 0.0 is fully transparent and 1.0 is fully opaque. Defaults to 1.0.
      * @param string $position The position of $image2 on $image1. Possible values top-left, top-center, top-right, center-left, center, center-right, bottom-left, bottom-center, bottom-right and smart. Defaults to top-left.
-     * @param int $offsetX Number of pixels to add to the X position of $image2.
-     * @param int $offsetY Number of pixels to add to the Y position of $image2.
+     * @param int    $offsetX  number of pixels to add to the X position of $image2
+     * @param int    $offsetY  number of pixels to add to the Y position of $image2
      *
      * @return Editor
+     *
      * @throws \Exception When added image is outside of canvas or invalid blend type
      */
     public function blend(&$image1, $image2, $type = 'normal', $opacity = 1.0, $position = 'top-left', $offsetX = 0, $offsetY = 0)
     {
-
         // Turn into position object
         $position = new Position($position, $offsetX, $offsetY);
 
@@ -62,10 +62,9 @@ final class Editor implements EditorInterface
         list($offsetX, $offsetY) = $position->getXY($image1->getWidth(), $image1->getHeight(), $image2->getWidth(), $image2->getHeight());
 
         // Check if it overlaps
-        if (($offsetX >= $image1->getWidth()) or
-            ($offsetX + $image2->getWidth() <= 0) or
-            ($offsetY >= $image1->getHeight()) or
-            ($offsetY + $image2->getHeight() <= 0)) {
+        if (($offsetX >= $image1->getWidth()) or ($offsetX + $image2->getWidth() <= 0) or ($offsetY >= $image1->getHeight()) or ($offsetY
+                                                                                                                                 + $image2->getHeight()
+                                                                                                                                 <= 0)) {
             throw new \Exception('Invalid blending. Image 2 is outside the canvas.');
         }
 
@@ -127,13 +126,7 @@ final class Editor implements EditorInterface
 
         imagedestroy($gd1); // Free resource
 
-        $image1 = new Image(
-            $canvas,
-            $image1->getImageFile(),
-            $w,
-            $h,
-            $image1->getType()
-        );
+        $image1 = new Image($canvas, $image1->getImageFile(), $w, $h, $image1->getType());
 
         return $this;
     }
@@ -145,6 +138,7 @@ final class Editor implements EditorInterface
      * @param ImageInterface|string $image2
      *
      * @return int Hamming distance. Note: This breaks the chain if you are doing fluent api calls as it does not return an Editor.
+     *
      * @throws \Exception
      */
     public function compare($image1, $image2)
@@ -178,14 +172,15 @@ final class Editor implements EditorInterface
     /**
      * Crop the image to the given dimension and position.
      *
-     * @param Image $image
-     * @param int $cropWidth Crop width in pixels.
-     * @param int $cropHeight Crop Height in pixels.
-     * @param string $position The crop position. Possible values top-left, top-center, top-right, center-left, center, center-right, bottom-left, bottom-center, bottom-right and smart. Defaults to center.
-     * @param int $offsetX Number of pixels to add to the X position of the crop.
-     * @param int $offsetY Number of pixels to add to the Y position of the crop.
+     * @param Image  $image
+     * @param int    $cropWidth  crop width in pixels
+     * @param int    $cropHeight crop Height in pixels
+     * @param string $position   The crop position. Possible values top-left, top-center, top-right, center-left, center, center-right, bottom-left, bottom-center, bottom-right and smart. Defaults to center.
+     * @param int    $offsetX    number of pixels to add to the X position of the crop
+     * @param int    $offsetY    number of pixels to add to the Y position of the crop
      *
      * @return Editor
+     *
      * @throws \Exception
      */
     public function crop(&$image, $cropWidth, $cropHeight, $position = 'center', $offsetX = 0, $offsetY = 0)
@@ -225,13 +220,7 @@ final class Editor implements EditorInterface
         imagedestroy($image->getCore());
 
         // Cropped image instance
-        $image = new Image(
-            $newImageResource,
-            $image->getImageFile(),
-            $cropWidth,
-            $cropHeight,
-            $image->getType()
-        );
+        $image = new Image($newImageResource, $image->getImageFile(), $cropWidth, $cropHeight, $image->getType());
 
         return $this;
     }
@@ -239,7 +228,7 @@ final class Editor implements EditorInterface
     /**
      * Draw a DrawingObject on the image. See Drawing Objects section.
      *
-     * @param Image $image
+     * @param Image                  $image
      * @param DrawingObjectInterface $drawingObject
      *
      * @return $this
@@ -258,10 +247,11 @@ final class Editor implements EditorInterface
     /**
      * Compare if two images are equal. It will compare if the two images are of the same width and height. If the dimensions differ, it will return false. If the dimensions are equal, it will loop through each pixels. If one of the pixel don't match, it will return false. The pixels are compared using their RGB (Red, Green, Blue) values.
      *
-     * @param string|ImageInterface $image1 Can be an instance of Image or string containing the file system path to image.
-     * @param string|ImageInterface $image2 Can be an instance of Image or string containing the file system path to image.
+     * @param string|ImageInterface $image1 can be an instance of Image or string containing the file system path to image
+     * @param string|ImageInterface $image2 can be an instance of Image or string containing the file system path to image
      *
      * @return bool True if equals false if not. Note: This breaks the chain if you are doing fluent api calls as it does not return an Editor.
+     *
      * @throws \Exception
      */
     public function equal($image1, $image2)
@@ -279,35 +269,31 @@ final class Editor implements EditorInterface
         // Check if image dimensions are equal
         if ($image1->getWidth() !== $image2->getWidth() or $image1->getHeight() !== $image2->getHeight()) {
             return false;
-        } else {
+        }
 
-            // Loop using image1
-            for ($y = 0; $y < $image1->getHeight(); $y++) {
-                for ($x = 0; $x < $image1->getWidth(); $x++) {
+        // Loop using image1
+        for ($y = 0; $y < $image1->getHeight(); $y++) {
+            for ($x = 0; $x < $image1->getWidth(); $x++) {
 
                     // Get image1 pixel
-                    $rgb1 = imagecolorat($image1->getCore(), $x, $y);
-                    $r1 = ($rgb1 >> 16) & 0xFF;
-                    $g1 = ($rgb1 >> 8) & 0xFF;
-                    $b1 = $rgb1 & 0xFF;
+                $rgb1 = imagecolorat($image1->getCore(), $x, $y);
+                $r1 = ($rgb1 >> 16) & 0xFF;
+                $g1 = ($rgb1 >> 8) & 0xFF;
+                $b1 = $rgb1 & 0xFF;
 
-                    // Get image2 pixel
-                    $rgb2 = imagecolorat($image2->getCore(), $x, $y);
-                    $r2 = ($rgb2 >> 16) & 0xFF;
-                    $g2 = ($rgb2 >> 8) & 0xFF;
-                    $b2 = $rgb2 & 0xFF;
+                // Get image2 pixel
+                $rgb2 = imagecolorat($image2->getCore(), $x, $y);
+                $r2 = ($rgb2 >> 16) & 0xFF;
+                $g2 = ($rgb2 >> 8) & 0xFF;
+                $b2 = $rgb2 & 0xFF;
 
-                    // Compare pixel value
-                    if (
-                        $r1 !== $r2 or
-                        $g1 !== $g2 or
-                        $b1 !== $b2
-                    ) {
-                        return false;
-                    }
+                // Compare pixel value
+                if ($r1 !== $r2 or $g1 !== $g2 or $b1 !== $b2) {
+                    return false;
                 }
             }
         }
+        
 
         return true;
     }
@@ -317,8 +303,8 @@ final class Editor implements EditorInterface
      *
      * @param Image $image
      * @param Color $color Color object
-     * @param int $x X-coordinate of start point
-     * @param int $y Y-coordinate of start point
+     * @param int   $x     X-coordinate of start point
+     * @param int   $y     Y-coordinate of start point
      *
      * @return Editor
      */
@@ -330,13 +316,7 @@ final class Editor implements EditorInterface
 
         list($r, $g, $b, $alpha) = $color->getRgba();
 
-        $colorResource = imagecolorallocatealpha(
-            $image->getCore(),
-            $r,
-            $g,
-            $b,
-            $this->gdAlpha($alpha)
-        );
+        $colorResource = imagecolorallocatealpha($image->getCore(), $r, $g, $b, $this->gdAlpha($alpha));
         imagefill($image->getCore(), $x, $y, $colorResource);
 
         return $this;
@@ -368,21 +348,24 @@ final class Editor implements EditorInterface
                 false // animated
             );
         }
+
         return $this;
     }
 
     /**
      * Flip or mirrors the image.
      *
-     * @param Image $image
-     * @param string $mode The type of flip: 'h' for horizontal flip or 'v' for vertical.
+     * @param Image  $image
+     * @param string $mode  the type of flip: 'h' for horizontal flip or 'v' for vertical
      *
      * @return Editor
+     *
      * @throws \Exception
      */
     public function flip(&$image, $mode)
     {
         $image = $this->_flip($image, $mode);
+
         return $this;
     }
 
@@ -396,6 +379,7 @@ final class Editor implements EditorInterface
     public function free(&$image)
     {
         imagedestroy($image->getCore());
+
         return $this;
     }
 
@@ -416,7 +400,7 @@ final class Editor implements EditorInterface
     /**
      * Checks if the editor is available on the current PHP install.
      *
-     * @return bool True if available false if not.
+     * @return bool true if available false if not
      */
     public function isAvailable()
     {
@@ -425,7 +409,7 @@ final class Editor implements EditorInterface
         }
 
         // On some setups GD library does not provide imagerotate()
-        if (! function_exists('imagerotate')) {
+        if (!function_exists('imagerotate')) {
             return false;
         }
 
@@ -440,6 +424,7 @@ final class Editor implements EditorInterface
      * @param float $opacity
      *
      * @return Editor
+     *
      * @throws \Exception
      */
     public function opacity(&$image, $opacity)
@@ -467,12 +452,7 @@ final class Editor implements EditorInterface
                 $reverse = round($reverse * $opacity);
 
                 if ($alpha < 127) { // Process non transparent pixels only
-                    imagesetpixel(
-                        $image->getCore(),
-                        $x,
-                        $y,
-                        imagecolorallocatealpha($image->getCore(), $r, $g, $b, 127 - $reverse)
-                    );
+                    imagesetpixel($image->getCore(), $x, $y, imagecolorallocatealpha($image->getCore(), $r, $g, $b, 127 - $reverse));
                 }
             }
         }
@@ -483,7 +463,7 @@ final class Editor implements EditorInterface
     /**
      * Open an image file and assign Image to first parameter.
      *
-     * @param Image $image
+     * @param Image  $image
      * @param string $imageFile
      *
      * @return Editor
@@ -491,18 +471,20 @@ final class Editor implements EditorInterface
     public function open(&$image, $imageFile)
     {
         $image = Image::createFromFile($imageFile);
+
         return $this;
     }
 
     /**
      * Wrapper function for the resizeXXX family of functions. Resize image given width, height and mode.
      *
-     * @param Image $image
-     * @param int $newWidth Width in pixels.
-     * @param int $newHeight Height in pixels.
-     * @param string $mode Resize mode. Possible values: "exact", "exactHeight", "exactWidth", "fill", "fit".
+     * @param Image  $image
+     * @param int    $newWidth  width in pixels
+     * @param int    $newHeight height in pixels
+     * @param string $mode      Resize mode. Possible values: "exact", "exactHeight", "exactWidth", "fill", "fit".
      *
      * @return Editor
+     *
      * @throws \Exception
      */
     public function resize(&$image, $newWidth, $newHeight, $mode = 'fit')
@@ -516,18 +498,23 @@ final class Editor implements EditorInterface
         switch ($mode) {
             case 'exact':
                 $this->resizeExact($image, $newWidth, $newHeight);
+
                 break;
             case 'fill':
                 $this->resizeFill($image, $newWidth, $newHeight);
+
                 break;
             case 'exactWidth':
                 $this->resizeExactWidth($image, $newWidth);
+
                 break;
             case 'exactHeight':
                 $this->resizeExactHeight($image, $newHeight);
+
                 break;
             case 'fit':
                 $this->resizeFit($image, $newWidth, $newHeight);
+
                 break;
             default:
                 throw new \Exception(sprintf('Invalid resize mode "%s".', $mode));
@@ -540,8 +527,8 @@ final class Editor implements EditorInterface
      * Resize image to exact dimensions ignoring aspect ratio. Useful if you want to force exact width and height.
      *
      * @param Image $image
-     * @param int $newWidth Width in pixels.
-     * @param int $newHeight Height in pixels.
+     * @param int   $newWidth  width in pixels
+     * @param int   $newHeight height in pixels
      *
      * @return Editor
      */
@@ -556,7 +543,7 @@ final class Editor implements EditorInterface
      * Resize image to exact height. Width is auto calculated. Useful for creating row of images with the same height.
      *
      * @param Image $image
-     * @param int $newHeight Height in pixels.
+     * @param int   $newHeight height in pixels
      *
      * @return Editor
      */
@@ -578,7 +565,7 @@ final class Editor implements EditorInterface
      * Resize image to exact width. Height is auto calculated. Useful for creating column of images with the same width.
      *
      * @param Image $image
-     * @param int $newWidth Width in pixels.
+     * @param int   $newWidth width in pixels
      *
      * @return Editor
      */
@@ -600,8 +587,8 @@ final class Editor implements EditorInterface
      * Resize image to fill all the space in the given dimension. Excess parts are cropped.
      *
      * @param Image $image
-     * @param int $newWidth Width in pixels.
-     * @param int $newHeight Height in pixels.
+     * @param int   $newWidth  width in pixels
+     * @param int   $newHeight height in pixels
      *
      * @return Editor
      */
@@ -631,8 +618,8 @@ final class Editor implements EditorInterface
      * Resize image to fit inside the given dimension. No part of the image is lost.
      *
      * @param Image $image
-     * @param int $newWidth Width in pixels.
-     * @param int $newHeight Height in pixels.
+     * @param int   $newWidth  width in pixels
+     * @param int   $newHeight height in pixels
      *
      * @return Editor
      */
@@ -660,11 +647,12 @@ final class Editor implements EditorInterface
     /**
      * Rotate an image counter-clockwise.
      *
-     * @param Image $image
-     * @param int $angle The angle in degrees.
-     * @param Color|null $color The Color object containing the background color.
+     * @param Image      $image
+     * @param int        $angle the angle in degrees
+     * @param Color|null $color the Color object containing the background color
      *
-     * @return EditorInterface An instance of image editor.
+     * @return EditorInterface an instance of image editor
+     *
      * @throws \Exception
      */
     public function rotate(&$image, $angle, $color = null)
@@ -692,14 +680,15 @@ final class Editor implements EditorInterface
     /**
      * Save the image to an image format.
      *
-     * @param Image $image
-     * @param string $file File path where to save the image.
-     * @param null|string $type Type of image. Can be null, "GIF", "PNG", or "JPEG".
-     * @param null|string $quality Quality of image. Applies to JPEG only. Accepts number 0 - 100 where 0 is lowest and 100 is the highest quality. Or null for default.
-     * @param bool|false $interlace Set to true for progressive JPEG. Applies to JPEG only.
-     * @param int $permission Default permission when creating non-existing target directory.
+     * @param Image       $image
+     * @param string      $file       file path where to save the image
+     * @param null|string $type       Type of image. Can be null, "GIF", "PNG", or "JPEG".
+     * @param null|string $quality    Quality of image. Applies to JPEG only. Accepts number 0 - 100 where 0 is lowest and 100 is the highest quality. Or null for default.
+     * @param bool|false  $interlace  Set to true for progressive JPEG. Applies to JPEG only.
+     * @param int         $permission default permission when creating non-existing target directory
      *
      * @return Editor
+     *
      * @throws \Exception
      */
     public function save($image, $file, $type = null, $quality = null, $interlace = false, $permission = 0755)
@@ -714,7 +703,7 @@ final class Editor implements EditorInterface
         $targetDir = dirname($file); // $file's directory
         if (false === is_dir($targetDir)) { // Check if $file's directory exist
             // Create and set default perms to 0755
-            if (! mkdir($targetDir, $permission, true)) {
+            if (!mkdir($targetDir, $permission, true)) {
                 throw new \Exception(sprintf('Cannot create %s', $targetDir));
             }
         }
@@ -735,6 +724,7 @@ final class Editor implements EditorInterface
             case ImageType::PNG:
                 // PNG is lossless and does not need compression. Although GD allow values 0-9 (0 = no compression), we leave it alone.
                 imagepng($image->getCore(), $file);
+
                 break;
 
             default: // Defaults to jpeg
@@ -751,16 +741,17 @@ final class Editor implements EditorInterface
     /**
      * Write text to image.
      *
-     * @param Image $image
-     * @param string $text The text to be written.
-     * @param int $size The font size. Defaults to 12.
-     * @param int $x The distance from the left edge of the image to the left of the text. Defaults to 0.
-     * @param int $y The distance from the top edge of the image to the top of the text. Defaults to 12 (equal to font size) so that the text is placed within the image.
-     * @param Color $color The Color object. Default text color is black.
-     * @param string $font Full path to font file. If blank, will default to Liberation Sans font.
-     * @param int $angle Angle of text from 0 - 359. Defaults to 0.
+     * @param Image  $image
+     * @param string $text  the text to be written
+     * @param int    $size  The font size. Defaults to 12.
+     * @param int    $x     The distance from the left edge of the image to the left of the text. Defaults to 0.
+     * @param int    $y     The distance from the top edge of the image to the top of the text. Defaults to 12 (equal to font size) so that the text is placed within the image.
+     * @param Color  $color The Color object. Default text color is black.
+     * @param string $font  Full path to font file. If blank, will default to Liberation Sans font.
+     * @param int    $angle Angle of text from 0 - 359. Defaults to 0.
      *
      * @return EditorInterface
+     *
      * @throws \Exception
      */
     public function text(&$image, $text, $size = 12, $x = 0, $y = 0, $color = null, $font = '', $angle = 0)
@@ -776,24 +767,9 @@ final class Editor implements EditorInterface
 
         list($r, $g, $b, $alpha) = $color->getRgba();
 
-        $colorResource = imagecolorallocatealpha(
-            $image->getCore(),
-            $r,
-            $g,
-            $b,
-            $this->gdAlpha($alpha)
-        );
+        $colorResource = imagecolorallocatealpha($image->getCore(), $r, $g, $b, $this->gdAlpha($alpha));
 
-        imagettftext(
-            $image->getCore(),
-            $size,
-            $angle,
-            $x,
-            $y,
-            $colorResource,
-            $font,
-            $text
-        );
+        imagettftext($image->getCore(), $size, $angle, $x, $y, $colorResource, $font, $text);
 
         return $this;
     }
@@ -808,7 +784,6 @@ final class Editor implements EditorInterface
      * @param $loopEndX
      * @param $offsetX
      * @param $offsetY
-     *
      * @param $opacity
      *
      * @return $this
@@ -841,6 +816,7 @@ final class Editor implements EditorInterface
                 imagesetpixel($canvas, $canvasX, $canvasY, $argb3);
             }
         }
+
         return $canvas;
     }
 
@@ -854,7 +830,6 @@ final class Editor implements EditorInterface
      * @param $loopEndX
      * @param $offsetX
      * @param $offsetY
-     *
      * @param $opacity
      *
      * @return $this
@@ -907,6 +882,7 @@ final class Editor implements EditorInterface
                 imagesetpixel($canvas, $canvasX, $canvasY, $argb3);
             }
         }
+
         return $canvas;
     }
 
@@ -933,6 +909,7 @@ final class Editor implements EditorInterface
             $p = $p / $hist_size;
             $entropy += $p * log($p, 2);
         }
+
         return $entropy * -1;
     }
 
@@ -946,7 +923,6 @@ final class Editor implements EditorInterface
      * @param $loopEndX
      * @param $offsetX
      * @param $offsetY
-     *
      * @param $opacity
      *
      * @return $this
@@ -979,15 +955,18 @@ final class Editor implements EditorInterface
                 imagesetpixel($canvas, $canvasX, $canvasY, $argb3);
             }
         }
+
         return $canvas;
     }
 
     /**
      * Flips image.
+     *
      * @param Image $image
      * @param $mode
      *
      * @return Image
+     *
      * @throws \Exception
      */
     private function _flip($image, $mode)
@@ -1001,41 +980,27 @@ final class Editor implements EditorInterface
                 imagecopy($new, $old, $w - $x - 1, 0, $x, 0, 1, $h);
             }
             imagedestroy($old); // Free resource
-            return new Image(
-                $new,
-                $image->getImageFile(),
-                $w,
-                $h,
-                $image->getType(),
-                $image->getBlocks(),
-                $image->isAnimated()
-            );
+
+            return new Image($new, $image->getImageFile(), $w, $h, $image->getType(), $image->getBlocks(), $image->isAnimated());
         } elseif ($mode === 'v') {
             $new = imagecreatetruecolor($w, $h);
             for ($y = 0; $y < $h; $y++) {
                 imagecopy($new, $old, 0, $h - $y - 1, 0, $y, $w, 1);
             }
             imagedestroy($old); // Free resource
-            return new Image(
-                $new,
-                $image->getImageFile(),
-                $w,
-                $h,
-                $image->getType(),
-                $image->getBlocks(),
-                $image->isAnimated()
-            );
-        } else {
-            throw new \Exception(sprintf('Unsupported mode "%s"', $mode));
+
+            return new Image($new, $image->getImageFile(), $w, $h, $image->getType(), $image->getBlocks(), $image->isAnimated());
         }
+
+        throw new \Exception(sprintf('Unsupported mode "%s"', $mode));
     }
 
     /**
      * Get image type base on file extension.
      *
-     * @param int $imageFile File path to image.
+     * @param int $imageFile file path to image
      *
-     * @return ImageType string Type of image.
+     * @return ImageType string Type of image
      */
     private function _getImageTypeFromFileName($imageFile)
     {
@@ -1058,32 +1023,23 @@ final class Editor implements EditorInterface
      * Resize helper function.
      *
      * @param Image $image
-     * @param int $newWidth
-     * @param int $newHeight
-     * @param int $targetX
-     * @param int $targetY
-     * @param int $srcX
-     * @param int $srcY
-     *
+     * @param int   $newWidth
+     * @param int   $newHeight
+     * @param int   $targetX
+     * @param int   $targetY
+     * @param int   $srcX
+     * @param int   $srcY
      */
     private function _resize(&$image, $newWidth, $newHeight, $targetX = 0, $targetY = 0, $srcX = 0, $srcY = 0)
     {
 
-//        $this->_imageCheck();
+        //        $this->_imageCheck();
 
         if ($image->isAnimated()) { // Animated GIF
             $gift = new GifHelper();
             $blocks = $gift->resize($image->getBlocks(), $newWidth, $newHeight);
             // Resize image instance
-            $image = new Image(
-                $image->getCore(),
-                $image->getImageFile(),
-                $newWidth,
-                $newHeight,
-                $image->getType(),
-                $blocks,
-                true
-            );
+            $image = new Image($image->getCore(), $image->getImageFile(), $newWidth, $newHeight, $image->getType(), $blocks, true);
         } else {
 
             // Create blank image
@@ -1111,13 +1067,7 @@ final class Editor implements EditorInterface
             imagedestroy($image->getCore());
 
             // Resize image instance
-            $image = new Image(
-                $newImage->getCore(),
-                $image->getImageFile(),
-                $newWidth,
-                $newHeight,
-                $image->getType()
-            );
+            $image = new Image($newImage->getCore(), $image->getImageFile(), $newWidth, $newHeight, $image->getType());
         }
     }
 
@@ -1165,6 +1115,6 @@ final class Editor implements EditorInterface
         $x = round($x * ($origW / $resizeW));
         $y = round($y * ($origH / $resizeH));
 
-        return [$x,$y];
+        return [$x, $y];
     }
 }

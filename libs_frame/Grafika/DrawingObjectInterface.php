@@ -3,6 +3,7 @@ namespace Grafika;
 
 /**
  * Interface DrawingObjectInterface
+ *
  * @package Grafika
  */
 interface DrawingObjectInterface

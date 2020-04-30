@@ -7,6 +7,7 @@ use Grafika\Gd\Editor;
 
 /**
  * Class Rectangle
+ *
  * @package Grafika
  */
 class Rectangle extends Base implements DrawingObjectInterface

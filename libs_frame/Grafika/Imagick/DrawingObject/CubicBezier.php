@@ -8,12 +8,14 @@ use Grafika\Imagick\Image;
 
 /**
  * Class CubicBezier
+ *
  * @package Grafika
  */
 class CubicBezier extends Base implements DrawingObjectInterface
 {
     /**
      * @param ImageInterface $image
+     *
      * @return Image
      */
     public function draw($image)
@@ -45,6 +47,7 @@ class CubicBezier extends Base implements DrawingObjectInterface
 
         $type = $image->getType();
         $file = $image->getImageFile();
+
         return new Image($imagick, $file, $width, $height, $type); // Create new image with updated core
     }
 }

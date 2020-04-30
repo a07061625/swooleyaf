@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika\Imagick\Filter;
 
 use Grafika\FilterInterface;
@@ -7,6 +6,7 @@ use Grafika\Imagick\Image;
 
 /**
  * Sobel filter is an edge detection filter.
+ *
  * @link https://en.wikipedia.org/wiki/Sobel_operator
  */
 class Sobel implements FilterInterface
@@ -87,7 +87,7 @@ class Sobel implements FilterInterface
                 }
 
                 /**
-                 * @var \ImagickPixel $px Current pixel.
+                 * @var \ImagickPixel current pixel
                  */
                 $finalPx[] = $edge; // R
                 $finalPx[] = $edge; // G
@@ -122,9 +122,9 @@ class Sobel implements FilterInterface
 
     /**
      * @param \ImagickPixel $px
-     * @param array $pixels
-     * @param int $x
-     * @param int $y
+     * @param array         $pixels
+     * @param int           $x
+     * @param int           $y
      *
      * @return float
      */
@@ -134,6 +134,7 @@ class Sobel implements FilterInterface
             return $pixels[$x][$y];
         }
         $rgba = $px->getColor();
+
         return $pixels[$x][$y] = round($rgba['r'] * 0.3 + $rgba['g'] * 0.59 + $rgba['b'] * 0.11); // gray
     }
 }
