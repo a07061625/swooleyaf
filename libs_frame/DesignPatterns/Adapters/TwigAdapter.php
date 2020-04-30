@@ -10,6 +10,12 @@ namespace DesignPatterns\Adapters;
 use SyConstant\ErrorCode;
 use SyException\Twig\TwigException;
 use SyTool\Tool;
+use Twig\Environment;
+use Twig\Extension\DebugExtension;
+use Twig\Extension\ExtensionInterface;
+use Twig\Loader\FilesystemLoader;
+use Twig\Loader\LoaderInterface;
+use Twig\TwigFunction;
 use Yaf\View_Interface;
 
 class TwigAdapter implements View_Interface
@@ -22,12 +28,12 @@ class TwigAdapter implements View_Interface
 
     /**
      * twig environment
-     * @var \Twig_Environment
+     * @var \Twig\Environment
      */
     protected $_twig;
 
     /**
-     * @var \Twig_Loader_Filesystem
+     * @var \Twig\Loader\FilesystemLoader
      */
     protected $_loader;
 
@@ -43,12 +49,12 @@ class TwigAdapter implements View_Interface
             throw new TwigException('模板根目录不合法', ErrorCode::TWIG_PARAM_ERROR);
         }
 
-        $this->_loader = new \Twig_Loader_Filesystem($templatePath);
-        $this->_twig = new \Twig_Environment($this->_loader, $envOptions);
+        $this->_loader = new FilesystemLoader([], $templatePath);
+        $this->_twig = new Environment($this->_loader, $envOptions);
 
         $debug = Tool::getArrayVal($envOptions, 'debug');
         if ($debug) { //开启debug
-            $this->_twig->addExtension(new \Twig_Extension_Debug());
+            $this->_twig->addExtension(new DebugExtension());
         }
     }
 
@@ -90,12 +96,12 @@ class TwigAdapter implements View_Interface
         unset($this->_assigned[$key]);
     }
 
-    public function addFunction($name, \Twig_SimpleFunction $function)
+    public function addFunction(TwigFunction $function)
     {
-        $this->_twig->addFunction($name, $function);
+        $this->_twig->addFunction($function);
     }
 
-    public function addExtension(\Twig_ExtensionInterface $extension)
+    public function addExtension(ExtensionInterface $extension)
     {
         $this->_twig->addExtension($extension);
     }
@@ -108,10 +114,10 @@ class TwigAdapter implements View_Interface
     /**
      * Set the template loader
      *
-     * @param \Twig_LoaderInterface $loader
+     * @param \Twig\Loader\LoaderInterface $loader
      * @return void
      */
-    public function setLoader(\Twig_LoaderInterface $loader)
+    public function setLoader(LoaderInterface $loader)
     {
         $this->_twig->setLoader($loader);
     }
@@ -119,7 +125,7 @@ class TwigAdapter implements View_Interface
     /**
      * Get the template loader
      *
-     * @return \Twig_LoaderInterface
+     * @return \Twig\Loader\LoaderInterface
      */
     public function getLoader()
     {
@@ -129,7 +135,7 @@ class TwigAdapter implements View_Interface
     /**
      * Get the twig environment
      *
-     * @return \Twig_Environment
+     * @return \Twig\Environment
      */
     public function getEngine()
     {
