@@ -46,11 +46,11 @@
 - SySCRM: 社会化客户管理相关
 - SyServer: 框架服务相关
 - SySms: 短信相关
+- SyTaoBao: 淘宝开放接口
 - SyTask: 框架定时任务相关
 - SyTemplate: 模板相关
 - SyTool: 工具相关
 - SyTrait: 框架性状相关
-- TaoBao: 淘宝开放接口
 - Validator: 数据校验器相关
 - Wx: 微信相关
 - helper_autoload.php: 框架自定义类加载器
