@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika\Imagick\Filter;
 
 use Grafika\FilterInterface;
@@ -17,11 +16,12 @@ class Blur implements FilterInterface
 
     /**
      * Blur constructor.
+     *
      * @param int $amount The amount of blur to apply. Possible values 1-100.
      */
     public function __construct($amount = 1)
     {
-        $this->amount = (int) $amount;
+        $this->amount = (int)$amount;
     }
 
     /**
@@ -32,6 +32,7 @@ class Blur implements FilterInterface
     public function apply($image)
     {
         $image->getCore()->blurImage(1 * $this->amount, 0.5 * $this->amount);
+
         return $image;
     }
 }

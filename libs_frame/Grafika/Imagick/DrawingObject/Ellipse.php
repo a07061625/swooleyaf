@@ -7,12 +7,14 @@ use Grafika\ImageInterface;
 
 /**
  * Class Ellipse
+ *
  * @package Grafika
  */
 class Ellipse extends Base implements DrawingObjectInterface
 {
     /**
      * @param ImageInterface $image
+     *
      * @return ImageInterface
      */
     public function draw($image)

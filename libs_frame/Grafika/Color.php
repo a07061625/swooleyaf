@@ -3,6 +3,7 @@ namespace Grafika;
 
 /**
  * Holds the color information.
+ *
  * @package Grafika
  */
 class Color
@@ -21,7 +22,7 @@ class Color
      * Color constructor.
      *
      * @param string $hexString Hex string
-     * @param float $alpha Transparency value 0-1
+     * @param float  $alpha     Transparency value 0-1
      */
     public function __construct($hexString = '', $alpha = 1.0)
     {
@@ -48,12 +49,15 @@ class Color
     {
         $rgba = $this->hexToRgb($this->hexString);
         $rgba[] = $this->alpha;
+
         return $rgba;
     }
 
     /**
      * Convert hex string to RGB
+     *
      * @param string $hex Hex string. Possible values: #ffffff, #fff, fff
+     *
      * @return array Contains (RGB) values red, green and blue
      */
     public function hexToRgb($hex)
@@ -69,6 +73,7 @@ class Color
             $g = hexdec(substr($hex, 2, 2));
             $b = hexdec(substr($hex, 4, 2));
         }
+
         return [$r, $g, $b]; // Returns an array with the rgb values
     }
 
@@ -94,6 +99,7 @@ class Color
 
     /**
      * Alpha value.
+     *
      * @return float
      */
     public function getAlpha()

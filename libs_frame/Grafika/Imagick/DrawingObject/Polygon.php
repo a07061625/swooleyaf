@@ -6,6 +6,7 @@ use Grafika\DrawingObjectInterface;
 
 /**
  * Class Polygon
+ *
  * @package Grafika
  */
 class Polygon extends Base implements DrawingObjectInterface
@@ -48,6 +49,7 @@ class Polygon extends Base implements DrawingObjectInterface
         if (count($points) < 3) {
             throw new \Exception('Polygon needs at least 3 points.');
         }
+
         return $points;
     }
 }

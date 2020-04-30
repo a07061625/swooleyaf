@@ -1,6 +1,4 @@
 <?php
-
-
 namespace Grafika\Gd\ImageHash;
 
 use Grafika\Gd\Editor;
@@ -8,14 +6,12 @@ use Grafika\Gd\Image;
 
 /**
  * AverageHash
- *
  * Algorithm:
  * Reduce size. Remove high frequencies and detail by shrinking to 8x8 so that there are 64 total pixels.
  * Reduce color. The tiny 8x8 picture is converted to a grayscale.
  * Average the colors. Compute the mean value of the 64 colors.
  * Compute the bits. Each bit is simply set based on whether the color value is above or below the mean.
  * Construct the hash. Set the 64 bits into a 64-bit integer. The order does not matter, just as long as you are consistent.
- *
  * http://www.hackerfactor.com/blog/index.php?/archives/432-Looks-Like-It.html
  *
  * @package Grafika\Gd\ImageHash
@@ -25,8 +21,7 @@ class AverageHash
     /**
      * Generate and get the average hash of the image.
      *
-     * @param Image $image
-     *
+     * @param Image  $image
      * @param Editor $editor
      *
      * @return string
@@ -65,6 +60,7 @@ class AverageHash
                 $hash .= '0';
             }
         }
+
         return $hash;
     }
 }

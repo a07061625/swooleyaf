@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika\Imagick\Filter;
 
 use Grafika\FilterInterface;
@@ -18,6 +17,7 @@ class Grayscale implements FilterInterface
     public function apply($image)
     {
         $image->getCore()->modulateImage(100, 0, 100);
+
         return $image;
     }
 }

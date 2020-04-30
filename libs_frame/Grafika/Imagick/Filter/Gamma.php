@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika\Imagick\Filter;
 
 use Grafika\FilterInterface;
@@ -17,11 +16,12 @@ class Gamma implements FilterInterface
 
     /**
      * Gamma constructor.
+     *
      * @param float $amount The amount of gamma correction to apply. >= 1.0
      */
     public function __construct($amount)
     {
-        $this->amount = (float) $amount;
+        $this->amount = (float)$amount;
     }
 
     /**
@@ -32,6 +32,7 @@ class Gamma implements FilterInterface
     public function apply($image)
     {
         $image->getCore()->gammaImage($this->amount);
+
         return $image;
     }
 }

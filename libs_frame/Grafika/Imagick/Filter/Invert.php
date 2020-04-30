@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika\Imagick\Filter;
 
 use Grafika\FilterInterface;
@@ -18,6 +17,7 @@ class Invert implements FilterInterface
     public function apply($image)
     {
         $image->getCore()->negateImage(false);
+
         return $image;
     }
 }

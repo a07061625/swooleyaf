@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika\Gd\Filter;
 
 use Grafika\FilterInterface;
@@ -11,7 +10,7 @@ use Grafika\Gd\Image;
 class Dither implements FilterInterface
 {
     /**
-     * @var string Dithering algorithm to use.
+     * @var string dithering algorithm to use
      */
     private $type;
 
@@ -31,6 +30,7 @@ class Dither implements FilterInterface
      * @param Image $image
      *
      * @return Image
+     *
      * @throws \Exception
      */
     public function apply($image)
@@ -40,6 +40,7 @@ class Dither implements FilterInterface
         } elseif ($this->type === 'diffusion') {
             return $this->diffusion($image);
         }
+
         throw new \Exception(sprintf('Invalid dither type "%s".', $this->type));
     }
 
@@ -84,17 +85,7 @@ class Dither implements FilterInterface
                 $newPixel = $blackOrWhite;
 
                 // Current pixel
-                imagesetpixel(
-                    $new,
-                    $x,
-                    $y,
-                    imagecolorallocate(
-                        $new,
-                        $newPixel,
-                        $newPixel,
-                        $newPixel
-                    )
-                );
+                imagesetpixel($new, $x, $y, imagecolorallocate($new, $newPixel, $newPixel, $newPixel));
 
                 $qError = $oldPixel - $newPixel; // Quantization error
 
@@ -119,13 +110,7 @@ class Dither implements FilterInterface
 
         imagedestroy($old); // Free resource
         // Create new image with updated core
-        return new Image(
-            $new,
-            $image->getImageFile(),
-            $width,
-            $height,
-            $image->getType()
-        );
+        return new Image($new, $image->getImageFile(), $width, $height, $image->getType());
     }
 
     /**
@@ -145,10 +130,10 @@ class Dither implements FilterInterface
         $new = imagecreatetruecolor($width, $height);
 
         $thresholdMap = [
-            [ 15, 135, 45, 165 ],
-            [ 195, 75, 225, 105 ],
-            [ 60, 180, 30, 150 ],
-            [ 240, 120, 210, 90 ]
+            [15, 135, 45, 165],
+            [195, 75, 225, 105],
+            [60, 180, 30, 150],
+            [240, 120, 210, 90],
         ];
 
         for ($y = 0; $y < $height; $y += 1) {
@@ -160,7 +145,7 @@ class Dither implements FilterInterface
 
                 $gray = round($r * 0.3 + $g * 0.59 + $b * 0.11);
 
-                $threshold = $thresholdMap[ $x % 4 ][ $y % 4 ];
+                $threshold = $thresholdMap[$x % 4][$y % 4];
                 $oldPixel = ($gray + $threshold) / 2;
                 if ($oldPixel <= 127) { // Determine if black or white. Also has the benefit of clipping excess value
                     $newPixel = 0;
@@ -169,28 +154,12 @@ class Dither implements FilterInterface
                 }
 
                 // Current pixel
-                imagesetpixel(
-                    $new,
-                    $x,
-                    $y,
-                    imagecolorallocate(
-                        $new,
-                        $newPixel,
-                        $newPixel,
-                        $newPixel
-                    )
-                );
+                imagesetpixel($new, $x, $y, imagecolorallocate($new, $newPixel, $newPixel, $newPixel));
             }
         }
 
         imagedestroy($old); // Free resource
         // Create new image with updated core
-        return new Image(
-            $new,
-            $image->getImageFile(),
-            $width,
-            $height,
-            $image->getType()
-        );
+        return new Image($new, $image->getImageFile(), $width, $height, $image->getType());
     }
 }
