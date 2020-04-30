@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika\Imagick\Filter;
 
 use Grafika\FilterInterface;
@@ -17,11 +16,12 @@ class Contrast implements FilterInterface
 
     /**
      * Contrast constructor.
+     *
      * @param int $amount The amount of contrast to apply. >= -100 and <= -1 to reduce. 0 for no change. >= 1 and <= 100 to increase.
      */
     public function __construct($amount)
     {
-        $this->amount = (int) $amount;
+        $this->amount = (int)$amount;
     }
 
     /**
@@ -32,6 +32,7 @@ class Contrast implements FilterInterface
     public function apply($image)
     {
         $image->getCore()->sigmoidalContrastImage($this->amount > 0, $this->amount / 4, 0);
+
         return $image;
     }
 }

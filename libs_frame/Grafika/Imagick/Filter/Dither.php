@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika\Imagick\Filter;
 
 use Grafika\FilterInterface;
@@ -11,7 +10,7 @@ use Grafika\Imagick\Image;
 class Dither implements FilterInterface
 {
     /**
-     * @var string Dithering algorithm to use.
+     * @var string dithering algorithm to use
      */
     private $type;
 
@@ -31,6 +30,7 @@ class Dither implements FilterInterface
      * @param Image $image
      *
      * @return Image
+     *
      * @throws \Exception
      */
     public function apply($image)
@@ -40,6 +40,7 @@ class Dither implements FilterInterface
         } elseif ($this->type === 'diffusion') {
             return $this->diffusion($image);
         }
+
         throw new \Exception(sprintf('Invalid dither type "%s".', $this->type));
     }
 
@@ -63,7 +64,7 @@ class Dither implements FilterInterface
         foreach ($pixelIterator as $y => $rows) { /* Loop through pixel rows */
             foreach ($rows as $x => $px) { /* Loop through the pixels in the row (columns) */
                 /**
-                 * @var $px \ImagickPixel */
+                 * @var \ImagickPixel */
                 $rgba = $px->getColor();
 
                 $gray = round($rgba['r'] * 0.3 + $rgba['g'] * 0.59 + $rgba['b'] * 0.11);
@@ -128,10 +129,10 @@ class Dither implements FilterInterface
         $height = $image->getHeight();
 
         $thresholdMap = [
-            [ 15, 135, 45, 165 ],
-            [ 195, 75, 225, 105 ],
-            [ 60, 180, 30, 150 ],
-            [ 240, 120, 210, 90 ]
+            [15, 135, 45, 165],
+            [195, 75, 225, 105],
+            [60, 180, 30, 150],
+            [240, 120, 210, 90]
         ];
 
         // Loop using image1
@@ -139,7 +140,7 @@ class Dither implements FilterInterface
         foreach ($pixelIterator as $y => $rows) { /* Loop through pixel rows */
             foreach ($rows as $x => $px) { /* Loop through the pixels in the row (columns) */
                 /**
-                 * @var $px \ImagickPixel */
+                 * @var \ImagickPixel */
                 $rgba = $px->getColor();
 
                 $gray = round($rgba['r'] * 0.3 + $rgba['g'] * 0.59 + $rgba['b'] * 0.11);

@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika;
 
 /**
@@ -47,7 +46,7 @@ class Position
     const BOTTOM_RIGHT = 'bottom-right';
 
     /**
-     * @var string Holds position in human-readable text.
+     * @var string holds position in human-readable text
      */
     private $position;
     /**
@@ -55,16 +54,16 @@ class Position
      */
     private $offsetX;
     /**
-     * @var int Number of pixels to the bottom of the origin.
+     * @var int number of pixels to the bottom of the origin
      */
     private $offsetY;
 
     /**
      * Position constructor.
      *
-     * @param string $position Defaults to center.
-     * @param int $offsetX Defaults to 0.
-     * @param int $offsetY Defaults to 0.
+     * @param string $position defaults to center
+     * @param int    $offsetX  defaults to 0
+     * @param int    $offsetY  defaults to 0
      */
     public function __construct($position = 'center', $offsetX = 0, $offsetY = 0)
     {
@@ -76,13 +75,14 @@ class Position
     /**
      * Translate the textual position + offsets into x,y values.
      *
-     * @param int $canvasWidth Width of canvas.
-     * @param int $canvasHeight Height of canvas.
-     * @param int $imageWidth Width of image/object added.
-     * @param int $imageHeight Height of image/object added.
+     * @param int $canvasWidth  width of canvas
+     * @param int $canvasHeight height of canvas
+     * @param int $imageWidth   width of image/object added
+     * @param int $imageHeight  height of image/object added
      *
-     * @return array Array of X and Y coordinates: array($x, $y).
-     * @throws \Exception When invalid position.
+     * @return array array of X and Y coordinates: array($x, $y)
+     *
+     * @throws \Exception when invalid position
      */
     public function getXY($canvasWidth, $canvasHeight, $imageWidth, $imageHeight)
     {

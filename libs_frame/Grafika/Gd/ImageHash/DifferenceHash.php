@@ -1,6 +1,4 @@
 <?php
-
-
 namespace Grafika\Gd\ImageHash;
 
 use Grafika\Gd\Editor;
@@ -8,13 +6,11 @@ use Grafika\Gd\Image;
 
 /**
  * DifferenceHash
- *
  * Algorithm:
  * Reduce size. The fastest way to remove high frequencies and detail is to shrink the image. In this case, shrink it to 9x8 so that there are 72 total pixels.
  * Reduce color. Convert the image to a grayscale picture. This changes the hash from 72 pixels to a total of 72 colors.
  * Compute the difference. The algorithm works on the difference between adjacent pixels. This identifies the relative gradient direction. In this case, the 9 pixels per row yields 8 differences between adjacent pixels. Eight rows of eight differences becomes 64 bits.
  * Assign bits. Each bit is simply set based on whether the left pixel is brighter than the right pixel.
- *
  * http://www.hackerfactor.com/blog/index.php?/archives/529-Kind-of-Like-That.html
  *
  * @package Grafika\Gd\ImageHash
@@ -24,8 +20,7 @@ class DifferenceHash
     /**
      * Generate and get the difference hash of image.
      *
-     * @param Image $image
-     *
+     * @param Image  $image
      * @param Editor $editor
      *
      * @return string
@@ -67,6 +62,7 @@ class DifferenceHash
             }
         }
         $editor->free($image);
+
         return $hash;
     }
 }

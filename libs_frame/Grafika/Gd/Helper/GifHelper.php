@@ -7,6 +7,7 @@ final class GifHelper
      * @param $imageFile
      *
      * @return GifByteStream
+     *
      * @throws \Exception
      */
     public function open($imageFile)
@@ -55,13 +56,14 @@ final class GifHelper
                 return true;
             }
         }
+
         return false;
     }
 
     /**
      * Encode data into GIF hex string.
      *
-     * @param array $data The array returned by decode.
+     * @param array $data the array returned by decode
      *
      * @return string Hex string of GIF
      */
@@ -137,17 +139,18 @@ final class GifHelper
             $hex .= $frame['imageData'];
         }
         $hex .= $data['trailer'];
+
         return $hex;
     }
 
     /**
      * Decode GIF into array of data for easy use in PHP userland.
      *
-     * @param GifByteStream $bytes Decode byte stream into array of GIF blocks.
+     * @param GifByteStream $bytes decode byte stream into array of GIF blocks
      *
      * @return array Array containing GIF data
-     * @throws \Exception
      *
+     * @throws \Exception
      */
     public function decode($bytes)
     {
@@ -163,6 +166,7 @@ final class GifHelper
      * @param GifByteStream $bytes
      *
      * @return array
+     *
      * @throws \Exception
      */
     public function decodeToBlocks($bytes)
@@ -222,6 +226,7 @@ final class GifHelper
                         } else {
                             $hex .= $nextSize;
                             $blocks['applicationExtension-' . $appCount] = $hex;
+
                             break;
                         }
                     }
@@ -254,6 +259,7 @@ final class GifHelper
                         } else {
                             $hex .= $nextSize;
                             $blocks['plainTextExtension-' . $plainTextC] = $hex;
+
                             break;
                         }
                     }
@@ -271,6 +277,7 @@ final class GifHelper
                         } else {
                             $hex .= $nextSize;
                             $blocks['commentExtension-' . $commentC] = $hex;
+
                             break;
                         }
                     }
@@ -313,6 +320,7 @@ final class GifHelper
                         $hex .= $subBlock;
                     } else {
                         $blocks['imageData-' . $dc] = $hex;
+
                         break;
                     }
                 }
@@ -320,6 +328,7 @@ final class GifHelper
                 $dc++;
             } else {
                 $blocks['trailer'] = $part;
+
                 break;
             }
         }
@@ -418,10 +427,7 @@ final class GifHelper
                 $part = $bytes->bite(2);
                 $decoded['frames'][$index]['imageHeight'] = hexdec($this->_switchEndian($part));
                 $part = $bytes->bite(1); // packed field
-                $bin = $this->_fixSize(
-                    $this->_hexToBin($part),
-                    8
-                );
+                $bin = $this->_fixSize($this->_hexToBin($part), 8);
                 $decoded['frames'][$index]['localColorTableFlag'] = bindec(substr($bin, 0, 1));
                 $decoded['frames'][$index]['interlaceFlag'] = bindec(substr($bin, 1, 1));
                 $decoded['frames'][$index]['sortFlag'] = bindec(substr($bin, 2, 1));
@@ -445,9 +451,9 @@ final class GifHelper
     }
 
     /**
-     * @param array $blocks The array returned by decode.
+     * @param array $blocks the array returned by decode
      *
-     * @return array Array of images each containing 1 of each frames of the original image.
+     * @return array array of images each containing 1 of each frames of the original image
      */
     public function splitFrames($blocks)
     {
@@ -464,6 +470,7 @@ final class GifHelper
                 }
             }
         }
+
         return $images;
     }
 
@@ -498,18 +505,9 @@ final class GifHelper
             $cY = $newH / $blocks['canvasHeight'];
             $dY = $image['frames'][0]['imageTop'];
 
-            imagecopyresampled(
-                $new,
-                $old,
-                $dX * $cX,// dx
+            imagecopyresampled($new, $old, $dX * $cX,// dx
                 $dY * $cY, // dy
-                0,
-                0,
-                $image['frames'][0]['imageWidth'] * $cX,
-                $image['frames'][0]['imageHeight'] * $cY,
-                $width,
-                $height
-            );
+                0, 0, $image['frames'][0]['imageWidth'] * $cX, $image['frames'][0]['imageHeight'] * $cY, $width, $height);
             ob_start();
             imagegif($new);
             $binaryRaw = ob_get_contents();
@@ -542,6 +540,7 @@ final class GifHelper
         // Disable flickering bug. Also we are using localColorTable anyways.
         $blocks['globalColorTableFlag'] = 0;
         $blocks['globalColorTable'] = '';
+
         return $blocks;
     }
 
@@ -557,6 +556,7 @@ final class GifHelper
         foreach ($chars as $char) {
             $string .= dechex(ord($char));
         }
+
         return $string;
     }
 
@@ -572,6 +572,7 @@ final class GifHelper
         foreach ($bytes as $byte) {
             $string .= chr(hexdec($byte)); // convert hex to dec to ascii character. See http://www.ascii.cl/
         }
+
         return $string;
     }
 

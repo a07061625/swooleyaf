@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika\Gd\Filter;
 
 use Grafika\FilterInterface;
@@ -11,17 +10,18 @@ use Grafika\Gd\Image;
 class Pixelate implements FilterInterface
 {
     /**
-     * @var int $amount Pixelate size from >= 1
+     * @var int Pixelate size from >= 1
      */
     protected $amount;
 
     /**
      * Pixelate constructor.
+     *
      * @param int $amount The size of pixelation. >= 1
      */
     public function __construct($amount)
     {
-        $this->amount = (int) $amount;
+        $this->amount = (int)$amount;
     }
 
     /**
@@ -32,6 +32,7 @@ class Pixelate implements FilterInterface
     public function apply($image)
     {
         imagefilter($image->getCore(), IMG_FILTER_PIXELATE, $this->amount, true);
+
         return $image;
     }
 }

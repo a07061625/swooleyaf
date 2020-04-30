@@ -7,55 +7,50 @@ use Grafika\ImageType;
 
 /**
  * Image class for GD.
+ *
  * @package Grafika\Gd
  */
 final class Image implements ImageInterface
 {
     /**
-     * @var resource GD resource ID.
+     * @var resource GD resource ID
      */
     private $gd;
-
     /**
-     * @var string File path to image.
+     * @var string file path to image
      */
     private $imageFile;
-
     /**
-     * @var int Image width in pixels.
+     * @var int image width in pixels
      */
     private $width;
-
     /**
-     * @var int Image height in pixels.
+     * @var int image height in pixels
      */
     private $height;
-
     /**
      * @var string Image type. See \Grafika\ImageType
      */
     private $type;
-
     /**
-     * @var string Contains array of animated GIF data.
+     * @var string contains array of animated GIF data
      */
     private $blocks;
-
     /**
-     * @var bool True if animated GIF.
+     * @var bool true if animated GIF
      */
     private $animated;
 
     /**
      * Image constructor.
      *
-     * @param resource $gd Must use GD's imagecreate* family of functions to create a GD resource.
-     * @param string $imageFile
-     * @param int $width
-     * @param int $height
-     * @param string $type
-     * @param string $blocks
-     * @param bool $animated
+     * @param resource $gd        must use GD's imagecreate* family of functions to create a GD resource
+     * @param string   $imageFile
+     * @param int      $width
+     * @param int      $height
+     * @param string   $type
+     * @param string   $blocks
+     * @param bool     $animated
      */
     public function __construct($gd, $imageFile, $width, $height, $type, $blocks = '', $animated = false)
     {
@@ -84,9 +79,9 @@ final class Image implements ImageInterface
     /**
      * Output a binary raw dump of an image in a specified format.
      *
-     * @param string|ImageType $type Image format of the dump.
+     * @param string|ImageType $type image format of the dump
      *
-     * @throws \Exception When unsupported type.
+     * @throws \Exception when unsupported type
      */
     public function blob($type = 'PNG')
     {
@@ -107,14 +102,15 @@ final class Image implements ImageInterface
     /**
      * Create Image from image file.
      *
-     * @param string $imageFile Path to image.
+     * @param string $imageFile path to image
      *
      * @return Image
+     *
      * @throws \Exception
      */
     public static function createFromFile($imageFile)
     {
-        if (! file_exists($imageFile)) {
+        if (!file_exists($imageFile)) {
             throw new \Exception(sprintf('Could not open "%s". File does not exist.', $imageFile));
         }
 
@@ -135,7 +131,7 @@ final class Image implements ImageInterface
     /**
      * Create an Image from a GD resource. The file type defaults to unknown.
      *
-     * @param resource $gd GD resource.
+     * @param resource $gd GD resource
      *
      * @return Image
      */
@@ -147,8 +143,8 @@ final class Image implements ImageInterface
     /**
      * Create a blank image.
      *
-     * @param int $width Width in pixels.
-     * @param int $height Height in pixels.
+     * @param int $width  width in pixels
+     * @param int $height height in pixels
      *
      * @return Image
      */
@@ -160,7 +156,8 @@ final class Image implements ImageInterface
     /**
      * Set the blending mode for an image. Allows transparent overlays on top of an image.
      *
-     * @param bool $flag True to enable blending mode.
+     * @param bool $flag true to enable blending mode
+     *
      * @return self
      */
     public function alphaBlendingMode($flag)
@@ -173,7 +170,8 @@ final class Image implements ImageInterface
     /**
      * Enable/Disable transparency
      *
-     * @param bool $flag True to enable alpha mode.
+     * @param bool $flag true to enable alpha mode
+     *
      * @return self
      */
     public function fullAlphaMode($flag)
@@ -189,7 +187,7 @@ final class Image implements ImageInterface
     /**
      * Returns animated flag.
      *
-     * @return bool True if animated GIF.
+     * @return bool true if animated GIF
      */
     public function isAnimated()
     {
@@ -209,7 +207,7 @@ final class Image implements ImageInterface
     /**
      * Get image file path.
      *
-     * @return string File path to image.
+     * @return string file path to image
      */
     public function getImageFile()
     {
@@ -249,7 +247,7 @@ final class Image implements ImageInterface
     /**
      * Get blocks.
      *
-     * @return string.
+     * @return string
      */
     public function getBlocks()
     {
@@ -291,36 +289,37 @@ final class Image implements ImageInterface
                 $g = ($rgb >> 8) & 0xFF;
                 $b = $rgb & 0xFF;
 
-                if (! isset($rBin[$r])) {
+                if (!isset($rBin[$r])) {
                     $rBin[$r] = 1;
                 } else {
                     $rBin[$r]++;
                 }
 
-                if (! isset($gBin[$g])) {
+                if (!isset($gBin[$g])) {
                     $gBin[$g] = 1;
                 } else {
                     $gBin[$g]++;
                 }
 
-                if (! isset($bBin[$b])) {
+                if (!isset($bBin[$b])) {
                     $bBin[$b] = 1;
                 } else {
                     $bBin[$b]++;
                 }
 
-                if (! isset($aBin[$a])) {
+                if (!isset($aBin[$a])) {
                     $aBin[$a] = 1;
                 } else {
                     $aBin[$a]++;
                 }
             }
         }
+
         return [
             'r' => $rBin,
             'g' => $gBin,
             'b' => $bBin,
-            'a' => $aBin
+            'a' => $aBin,
         ];
     }
 
@@ -330,6 +329,7 @@ final class Image implements ImageInterface
      * @param string $imageFile
      *
      * @return Image
+     *
      * @throws \Exception
      */
     private static function _createGif($imageFile)
@@ -347,23 +347,16 @@ final class Image implements ImageInterface
             throw new \Exception(sprintf('Could not open "%s". Not a valid %s file.', $imageFile, ImageType::GIF));
         }
 
-        return new self(
-            $gd,
-            $imageFile,
-            imagesx($gd),
-            imagesy($gd),
-            ImageType::GIF,
-            $blocks,
-            $animated
-        );
+        return new self($gd, $imageFile, imagesx($gd), imagesy($gd), ImageType::GIF, $blocks, $animated);
     }
 
     /**
      * Load a JPEG image.
      *
-     * @param string $imageFile File path to image.
+     * @param string $imageFile file path to image
      *
      * @return Image
+     *
      * @throws \Exception
      */
     private static function _createJpeg($imageFile)
@@ -380,9 +373,10 @@ final class Image implements ImageInterface
     /**
      * Load a PNG image.
      *
-     * @param string $imageFile File path to image.
+     * @param string $imageFile file path to image
      *
      * @return Image
+     *
      * @throws \Exception
      */
     private static function _createPng($imageFile)
@@ -395,6 +389,7 @@ final class Image implements ImageInterface
 
         $image = new self($gd, $imageFile, imagesx($gd), imagesy($gd), ImageType::PNG);
         $image->fullAlphaMode(true);
+
         return $image;
     }
 
@@ -404,6 +399,7 @@ final class Image implements ImageInterface
      * @param string $imageFile
      *
      * @return Image
+     *
      * @throws \Exception
      */
     private static function _createWbmp($imageFile)

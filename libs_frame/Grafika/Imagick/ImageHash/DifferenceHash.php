@@ -1,6 +1,4 @@
 <?php
-
-
 namespace Grafika\Imagick\ImageHash;
 
 use Grafika\Imagick\Editor;
@@ -24,8 +22,7 @@ class DifferenceHash
     /**
      * Generate and get the difference hash of image.
      *
-     * @param Image $image
-     *
+     * @param Image  $image
      * @param Editor $editor
      *
      * @return string
@@ -61,6 +58,7 @@ class DifferenceHash
             }
         }
         $editor->free($image);
+
         return $hash;
     }
 }

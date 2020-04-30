@@ -8,13 +8,16 @@ use Grafika\ImageInterface;
 
 /**
  * Class Ellipse
+ *
  * @package Grafika
  */
 class Ellipse extends Base implements DrawingObjectInterface
 {
     /**
      * TODO: Anti-aliased curves
+     *
      * @param ImageInterface $image
+     *
      * @return ImageInterface
      */
     public function draw($image)

@@ -5,38 +5,37 @@ use Grafika\Color;
 
 /**
  * Base class
+ *
  * @package Grafika
  */
 abstract class Ellipse
 {
     /**
      * Image width in pixels
+     *
      * @var int
      */
     protected $width;
-
     /**
      * Image height in pixels
+     *
      * @var int
      */
     protected $height;
-
     /**
      * X,Y pos.
+     *
      * @var array
      */
     protected $pos;
-
     /**
      * @var int
      */
     protected $borderSize;
-
     /**
      * @var Color
      */
     protected $fillColor;
-
     /**
      * @var Color
      */
@@ -45,12 +44,12 @@ abstract class Ellipse
     /**
      * Creates an ellipse.
      *
-     * @param int $width Width of ellipse in pixels.
-     * @param int $height Height of ellipse in pixels.
-     * @param array $pos Array containing int X and int Y position of the ellipse from top left of the canvass.
-     * @param int $borderSize Size of the border in pixels. Defaults to 1 pixel. Set to 0 for no border.
+     * @param int               $width       width of ellipse in pixels
+     * @param int               $height      height of ellipse in pixels
+     * @param array             $pos         array containing int X and int Y position of the ellipse from top left of the canvass
+     * @param int               $borderSize  Size of the border in pixels. Defaults to 1 pixel. Set to 0 for no border.
      * @param Color|string|null $borderColor Border color. Defaults to black. Set to null for no color.
-     * @param Color|string|null $fillColor Fill color. Defaults to white. Set to null for no color.
+     * @param Color|string|null $fillColor   Fill color. Defaults to white. Set to null for no color.
      */
     public function __construct(
         $width,

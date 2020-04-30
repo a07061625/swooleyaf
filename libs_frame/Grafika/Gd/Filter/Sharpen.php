@@ -1,5 +1,4 @@
 <?php
-
 namespace Grafika\Gd\Filter;
 
 use Grafika\FilterInterface;
@@ -11,17 +10,18 @@ use Grafika\Gd\Image;
 class Sharpen implements FilterInterface
 {
     /**
-     * @var int $amount
+     * @var int
      */
     protected $amount;
 
     /**
      * Sharpen constructor.
+     *
      * @param int $amount Amount of sharpening from >= 1 to <= 100
      */
     public function __construct($amount)
     {
-        $this->amount = (int) $amount;
+        $this->amount = (int)$amount;
     }
 
     /**
@@ -40,10 +40,11 @@ class Sharpen implements FilterInterface
         $matrix = [
             [$min, $max, $min],
             [$max, $abs, $max],
-            [$min, $max, $min]
+            [$min, $max, $min],
         ];
         // apply the matrix
         imageconvolution($image->getCore(), $matrix, $div, 0);
+
         return $image;
     }
 }

@@ -8,13 +8,16 @@ use Grafika\ImageInterface;
 
 /**
  * Class QuadraticBezier
+ *
  * @package Grafika
  */
 class QuadraticBezier extends Base implements DrawingObjectInterface
 {
     /**
      * @link http://members.chello.at/easyfilter/bresenham.pdf
+     *
      * @param ImageInterface $image
+     *
      * @return Image
      */
     public function draw($image)
@@ -32,6 +35,7 @@ class QuadraticBezier extends Base implements DrawingObjectInterface
 
         $type = $image->getType();
         $file = $image->getImageFile();
+
         return new Image($gd, $file, $width, $height, $type); // Create new image with updated core
     }
 
@@ -82,6 +86,7 @@ class QuadraticBezier extends Base implements DrawingObjectInterface
 
     /**
      * Draw an limited anti-aliased quadratic Bezier segment.
+     *
      * @param $gd
      * @param $x0
      * @param $y0
@@ -166,7 +171,7 @@ class QuadraticBezier extends Base implements DrawingObjectInterface
         $err = $dx + $dy;
 
         $ed = $dx - $dy == 0 ? 1 : sqrt((float)$dx * $dx + (float)$dy * $dy);
-        for (; ;) { /* pixel loop */
+        for (;;) { /* pixel loop */
             $this->setPixel($gd, $x0, $y0, abs($err - $dx - $dy) / $ed);
             $e2 = $err;
             $x2 = $x0;
@@ -195,9 +200,9 @@ class QuadraticBezier extends Base implements DrawingObjectInterface
 
     /**
      * @param resource $gd
-     * @param int $x
-     * @param int $y
-     * @param float $ar Alpha ratio
+     * @param int      $x
+     * @param int      $y
+     * @param float    $ar Alpha ratio
      */
     protected function setPixel($gd, $x, $y, $ar)
     {

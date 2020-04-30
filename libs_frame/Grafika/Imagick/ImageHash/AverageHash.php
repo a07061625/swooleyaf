@@ -1,6 +1,4 @@
 <?php
-
-
 namespace Grafika\Imagick\ImageHash;
 
 use Grafika\Imagick\Image;

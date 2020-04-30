@@ -5,27 +5,27 @@ use Grafika\Color;
 
 /**
  * Base class
+ *
  * @package Grafika
  */
 abstract class Line
 {
     /**
      * X,Y pos 1.
+     *
      * @var array
      */
     protected $point1;
-
     /**
      * X,Y pos 2.
+     *
      * @var array
      */
     protected $point2;
-
     /**
-     * @var int Thickness of line.
+     * @var int thickness of line
      */
     protected $thickness;
-
     /**
      * @var Color
      */
@@ -34,10 +34,10 @@ abstract class Line
     /**
      * Creates a line.
      *
-     * @param array $point1 Array containing int X and int Y position of the starting point.
-     * @param array $point2 Array containing int X and int Y position of the starting point.
-     * @param int $thickness Thickness in pixel. Note: This is currently ignored in GD editor and falls back to 1.
-     * @param Color|string $color Color of the line. Defaults to black.
+     * @param array        $point1    array containing int X and int Y position of the starting point
+     * @param array        $point2    array containing int X and int Y position of the starting point
+     * @param int          $thickness Thickness in pixel. Note: This is currently ignored in GD editor and falls back to 1.
+     * @param Color|string $color     Color of the line. Defaults to black.
      */
     public function __construct(array $point1, array $point2, $thickness = 1, $color = '#000000')
     {
