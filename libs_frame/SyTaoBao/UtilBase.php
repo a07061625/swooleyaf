@@ -5,7 +5,7 @@
  * Date: 2019/7/11 0011
  * Time: 13:02
  */
-namespace TaoBao;
+namespace SyTaoBao;
 
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
@@ -39,7 +39,7 @@ abstract class UtilBase
 
     /**
      * 发送服务请求
-     * @param \TaoBao\ServiceBase $serviceBase
+     * @param \SyTaoBao\ServiceBase $serviceBase
      * @param int $errorCode
      * @return array
      */

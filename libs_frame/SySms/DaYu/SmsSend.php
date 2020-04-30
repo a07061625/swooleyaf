@@ -10,7 +10,7 @@ namespace SySms\DaYu;
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\SmsConfigSingleton;
 use SyException\Sms\DaYuException;
-use TaoBao\ServiceBase;
+use SyTaoBao\ServiceBase;
 use SyTool\Tool;
 
 class SmsSend extends ServiceBase
