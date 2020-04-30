@@ -8,7 +8,6 @@
 - DingDing: 钉钉开放平台接口
 - Doctrine: 未知用途(被动依赖)
 - Egulias: 未知用途(被动依赖)
-- Excel: excel类库
 - FPdf: pdf类库
 - Grafika: 图片特效类库
 - Helper: 项目帮助类库
@@ -18,6 +17,7 @@
 - Mailer: 邮件类库
 - Map: 地图类库
 - PhpAmqpLib: amqp协议类库(用于消息队列Rabbit)
+- PhpOffice: office文档操作相关
 - PHPZxing: 二维码解析类库
 - PoolService: 进程池服务
 - Psr: Psr标准

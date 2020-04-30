@@ -153,12 +153,12 @@ final class SyFrameLoader
     private function preHandlePhpExcel(string $className) : string
     {
         if ($this->excelStatus) {
-            define('PHPEXCEL_ROOT', SY_FRAME_LIBS_ROOT . 'Excel/');
+            define('PHPEXCEL_ROOT', SY_FRAME_LIBS_ROOT . 'PhpOffice/');
 
             $this->excelStatus = false;
         }
 
-        return SY_FRAME_LIBS_ROOT . 'Excel/' . str_replace('_', '/', $className) . '.php';
+        return SY_FRAME_LIBS_ROOT . 'PhpOffice/' . str_replace('_', '/', $className) . '.php';
     }
 
     private function preHandleAliOpen(string $className) : string
