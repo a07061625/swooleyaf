@@ -2,17 +2,22 @@
 /**
  * Created by PhpStorm.
  * User: 姜伟
- * Date: 2018/5/28 0028
- * Time: 18:14
+ * Date: 2020/4/30 0030
+ * Time: 19:06
  */
-namespace TemplateExtension\Twig;
+namespace SyTemplate\Extension;
 
 use SyTool\Tool;
+use Twig\TwigFunction;
 
-class ProjectFunction
+/**
+ * Class TwigFunctionProject
+ * @package SyTemplate\Extension
+ */
+class TwigFunctionProject
 {
     /**
-     * @var \TemplateExtension\Twig\ProjectFunction
+     * @var \SyTemplate\Extension\TwigFunctionProject
      */
     private static $instance = null;
 
@@ -20,7 +25,7 @@ class ProjectFunction
 
     private function __construct()
     {
-        $this->funcMap['syFunca01'] = new BaseFunction('syDate', function ($time) {
+        $this->funcMap['syFunca01'] = new TwigFunction('syDate', function($time){
             echo date('Y-m-d H:i:s', $time);
         });
     }
@@ -29,6 +34,9 @@ class ProjectFunction
     {
     }
 
+    /**
+     * @return \SyTemplate\Extension\TwigFunctionProject
+     */
     public static function getInstance()
     {
         if (is_null(self::$instance)) {
@@ -40,7 +48,7 @@ class ProjectFunction
 
     /**
      * @param string $tag
-     * @return array|\Twig_SimpleFunction|null
+     * @return array|\Twig\TwigFunction|null
      */
     public function getFunction(string $tag = '')
     {
