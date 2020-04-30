@@ -22,9 +22,9 @@ class Bootstrap extends \SyFrame\SimpleBootstrap
             }
 
             $twigView = new \DesignPatterns\Adapters\TwigAdapter(APP_PATH . '/application/views/', $twigConfig);
-            $funcList = \TemplateExtension\Twig\ProjectFunction::getInstance()->getFunction();
+            $funcList = \SyTemplate\Extension\TwigFunctionProject::getInstance()->getFunction();
             foreach ($funcList as $eTag => $eFunc) {
-                $twigView->addFunction($eTag, $eFunc);
+                $twigView->addFunction($eFunc);
             }
             $dispatcher->setView($twigView);
 
