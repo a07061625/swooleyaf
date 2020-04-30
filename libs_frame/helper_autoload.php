@@ -109,7 +109,7 @@ final class SyFrameLoader
 
     private function preHandleTwig(string $className) : string
     {
-        return SY_FRAME_LIBS_ROOT . 'Template/' . str_replace('_', '/', $className) . '.php';
+        return SY_FRAME_LIBS_ROOT . 'SyTemplate/' . $className . '.php';
     }
 
     private function preHandleSwift(string $className) : string
@@ -134,7 +134,7 @@ final class SyFrameLoader
     private function preHandleSmarty(string $className) : string
     {
         if ($this->smartyStatus) {
-            $smartyLibDir = SY_FRAME_LIBS_ROOT . 'Template/Smarty/libs/';
+            $smartyLibDir = SY_FRAME_LIBS_ROOT . 'SyTemplate/Smarty/libs/';
             define('SMARTY_DIR', $smartyLibDir);
             define('SMARTY_SYSPLUGINS_DIR', $smartyLibDir . '/sysplugins/');
             define('SMARTY_RESOURCE_CHAR_SET', 'UTF-8');
