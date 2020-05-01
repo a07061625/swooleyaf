@@ -18,11 +18,11 @@ class ImageController extends CommonController
      * @apiDescription 生成二维码图片
      * @apiGroup Image
      * @apiParam {string{1..255}} url 链接地址
-     * @apiParam {string} [error_level=L] 容错级别，取值为H L M Q，越在前级别越低
+     * @apiParam {number} [error_level=0] 容错级别,取值为0-3,越在前级别越低
      * @apiParam {number{1-10}} [image_size=5] 图片大小
-     * @apiParam {number{0-200}} [margin_size=2] 外边框间隙，单位为px
+     * @apiParam {number{0-200}} [margin_size=2] 外边框间隙,单位为px
      * @SyFilter-{"field": "url","explain": "链接地址","type": "string","rules": {"required": 1,"url": 1}}
-     * @SyFilter-{"field": "error_level","explain": "容错级别","type": "string","rules": {"regex": "/^[HLMQ]{1}$/"}}
+     * @SyFilter-{"field": "error_level","explain": "容错级别","type": "int","rules": {"min": 0,"max": 3}}
      * @SyFilter-{"field": "image_size","explain": "图片大小","type": "int","rules": {"min": 1,"max": 10}}
      * @SyFilter-{"field": "margin_size","explain": "外边框间隙","type": "int","rules": {"min": 0,"max": 200}}
      * @apiSuccess {string} Body 图片字节流
@@ -32,7 +32,7 @@ class ImageController extends CommonController
     {
         $url = (string)\Request\SyRequest::getParams('url');
         $qrBase = new \SyQr\QrBase($url, \SyServer\BaseServer::getServerConfig('storepath_cache'), [
-            'error_level' => \Request\SyRequest::getParams('error_level', \SyQr\QrBase::QR_ERROR_LEVEL_ONE),
+            'error_level' => (int)\Request\SyRequest::getParams('error_level', 0),
             'image_size' => (int)\Request\SyRequest::getParams('image_size', 5),
             'margin_size' => (int)\Request\SyRequest::getParams('margin_size', 2),
         ]);
