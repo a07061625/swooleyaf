@@ -1,5 +1,4 @@
 <?php
-
 // Create new Spreadsheet object
 use PhpOffice\PhpSpreadsheet\RichText\RichText;
 use PhpOffice\PhpSpreadsheet\Shared\Date;

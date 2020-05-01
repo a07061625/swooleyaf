@@ -1,5 +1,4 @@
 <?php
-
 ?>
 <html>
 <head>
@@ -13,7 +12,6 @@
 <h1>PHPExcel Reader Example #14</h1>
 <h2>Reading a Large CSV file in "Chunks" to split across multiple Worksheets</h2>
 <?php
-
 /** Include path **/
 set_include_path(get_include_path() . PATH_SEPARATOR . '../../../Classes/');
 

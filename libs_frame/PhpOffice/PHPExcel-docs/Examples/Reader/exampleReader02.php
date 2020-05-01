@@ -1,5 +1,4 @@
 <?php
-
 error_reporting(E_ALL);
 set_time_limit(0);
 
@@ -24,7 +23,6 @@ include 'PHPExcel/IOFactory.php';
 <h1>PHPExcel Reader Example #02</h1>
 <h2>Simple File Reader using a Specified Reader</h2>
 <?php
-
 $inputFileName = './sampleData/example1.xls';
 
 echo 'Loading file ',pathinfo($inputFileName, PATHINFO_BASENAME),' using PHPExcel_Reader_Excel5<br />';

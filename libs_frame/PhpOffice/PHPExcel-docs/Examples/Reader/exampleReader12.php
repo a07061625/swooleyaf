@@ -1,5 +1,4 @@
 <?php
-
 error_reporting(E_ALL);
 set_time_limit(0);
 
@@ -18,7 +17,6 @@ date_default_timezone_set('Europe/London');
 <h1>PHPExcel Reader Example #12</h1>
 <h2>Reading a Workbook in "Chunks" Using a Configurable Read Filter (Version 2)</h2>
 <?php
-
 /**  Set Include path to point at the PHPExcel Classes folder  **/
 set_include_path(get_include_path() . PATH_SEPARATOR . '../../../Classes/');
 

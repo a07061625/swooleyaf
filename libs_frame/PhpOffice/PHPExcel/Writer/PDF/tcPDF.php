@@ -1,5 +1,4 @@
 <?php
-
 /**  Require tcPDF library */
 $pdfRendererClassFile = PHPExcel_Settings::getPdfRendererPath() . '/tcpdf.php';
 if (file_exists($pdfRendererClassFile)) {

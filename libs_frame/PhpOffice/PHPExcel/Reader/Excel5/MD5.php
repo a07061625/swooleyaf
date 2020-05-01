@@ -1,5 +1,4 @@
 <?php
-
 /**
  * PHPExcel_Reader_Excel5_MD5
  *

@@ -1,5 +1,4 @@
 <?php
-
 if (!defined('PHPEXCEL_ROOT')) {
     /**
      * @ignore

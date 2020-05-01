@@ -1,5 +1,4 @@
 <?php
-
 /*
 PARTLY BASED ON:
     Copyright (c) 2007 E. W. Bachtal, Inc.

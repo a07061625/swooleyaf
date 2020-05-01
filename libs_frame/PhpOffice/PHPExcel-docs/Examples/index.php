@@ -1,5 +1,4 @@
 <?php
-
 error_reporting(E_ALL);
 set_time_limit(0);
 
@@ -16,7 +15,6 @@ date_default_timezone_set('Europe/London');
 <body>
 
 <?php
-
 $exampleTypeList = glob('./*', GLOB_ONLYDIR);
 
 foreach ($exampleTypeList as $exampleType) {
