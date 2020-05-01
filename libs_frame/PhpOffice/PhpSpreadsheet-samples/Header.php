@@ -42,16 +42,16 @@ if ($helper->isCli()) {
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav"><?php
-                    foreach ($helper->getSamples() as $category => $files) {
+                   foreach ($helper->getSamples() as $category => $files) {
                         ?><li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category ?><strong class="caret"></strong></a>
                             <ul class="dropdown-menu"><?php
-                            foreach ($files as $name => $file) {
+                           foreach ($files as $name => $file) {
                                 echo '<li><a href="/' . $file . '">' . $name . '</a></li>';
                             } ?></ul>
                         </li>
                     <?php
-                    } ?>
+                   } ?>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="https://github.com/PHPOffice/PHPSpreadsheet"><i class="fa fa-github fa-lg" title="GitHub"></i>&nbsp;</a></li>
@@ -61,4 +61,4 @@ if ($helper->isCli()) {
             </div>
         </div>
         <?php
-        echo $helper->getPageHeading();
+       echo $helper->getPageHeading();

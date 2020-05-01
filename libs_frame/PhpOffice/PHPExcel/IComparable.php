@@ -1,5 +1,4 @@
 <?php
-
 /**
  * PHPExcel_IComparable
  *

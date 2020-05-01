@@ -1,5 +1,4 @@
 <?php
-
 class PHPExcel_Reader_Excel5_Style_Border
 {
     protected static $map = [

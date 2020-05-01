@@ -48,7 +48,6 @@ This would be the simplest way to write a spreadsheet:
 
 ```php
 <?php
-
 require 'vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;

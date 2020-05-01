@@ -1,5 +1,4 @@
 <?php
-
 /**    PHPExcel root directory */
 if (!defined('PHPEXCEL_ROOT')) {
     /**

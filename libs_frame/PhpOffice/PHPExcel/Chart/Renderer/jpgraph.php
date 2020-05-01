@@ -1,5 +1,4 @@
 <?php
-
 require_once PHPExcel_Settings::getChartRendererPath() . '/jpgraph.php';
 
 /**

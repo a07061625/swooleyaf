@@ -1,5 +1,4 @@
 <?php
-
 error_reporting(E_ALL);
 set_time_limit(0);
 
@@ -18,7 +17,6 @@ date_default_timezone_set('Europe/London');
 <h1>DATEVALUE</h1>
 <h2>Converts a date in the form of text to a serial number.</h2>
 <?php
-
 /** Include path **/
 set_include_path(get_include_path() . PATH_SEPARATOR . '../../../../Classes/');
 
@@ -60,7 +58,7 @@ echo '<hr />';
 		<th>Formatted DateStamp</th>
 	</tr>
 	<?php
-    for ($row = 1; $row <= $testDateCount; ++$row) {
+   for ($row = 1; $row <= $testDateCount; ++$row) {
         echo '<tr>';
         echo '<td>' , $worksheet->getCell('A' . $row)->getFormattedValue() , '</td>';
         echo '<td>' , $worksheet->getCell('B' . $row)->getValue() , '</td>';

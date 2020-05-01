@@ -1,5 +1,4 @@
 <?php
-
 /**  Require mPDF library */
 $pdfRendererClassFile = PHPExcel_Settings::getPdfRendererPath() . '/mpdf.php';
 if (file_exists($pdfRendererClassFile)) {

@@ -1,5 +1,4 @@
 <?php
-
 class PHPExcel_Reader_Excel5_Color_BIFF8
 {
     protected static $map = [
