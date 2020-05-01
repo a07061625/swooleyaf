@@ -1,6 +1,6 @@
 <?php
 /*
-Descrition : PHPZxingBase Base class that has all base stuff stored
+Descrition : ZxingImage - returns the decoded images in ZxingImage Object
 
 license: MIT-style
 
@@ -32,45 +32,49 @@ authors:
 * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 * OTHER DEALINGS IN THE SOFTWARE.
 */
-namespace PHPZxing;
+namespace SyQr\PHPZxing;
 
-class PHPZxingBase
+class ZxingImage implements PHPZxingInterface
 {
-    // name of the javase.jar file located in /src/bin directory
-    private $_JAVASE_PATH = 'javase-3.3.3.jar';
-    // name of the core.jar file located in /src/bin directory
-    private $_CORE_PATH = 'core-3.3.3.jar';
-    // name of the jcommander.jar file located in /src/bin directory
-    private $_JCOMMANDER_PATH = 'jcommander-1.72.jar';
-    // location of java in your machine
-    private $_JAVA_PATH = '/usr/bin/java';
+    // Decoded Value from source
+    private $imageValue = null;
+    // Format of decoded data - CODE_39 etc..
+    private $format = null;
+    // Type of decoded data - TEXT, URI etc..
+    private $type = null;
+    // Path of the image decoded
+    private $imagePath = null;
 
-    public function getJavaPath()
+    public function __construct($imagePath, $imageValue, $format, $type)
     {
-        return $this->_JAVA_PATH;
+        $this->imageValue = $imageValue;
+        $this->format = $format;
+        $this->type = $type;
+        $this->imagePath = $imagePath;
     }
 
-    public function getJARPath()
+    public function isFound()
     {
-        return SY_FRAME_LIBS_ROOT . 'PHPZxing/bin/' . $this->_JAVASE_PATH;
+        return true;
     }
 
-    public function getCorePAth()
+    public function getImageValue()
     {
-        return SY_FRAME_LIBS_ROOT . 'PHPZxing/bin/' . $this->_CORE_PATH;
+        return $this->imageValue;
     }
 
-    public function getJcommanderPath()
+    public function getFormat()
     {
-        return SY_FRAME_LIBS_ROOT . 'PHPZxing/bin/' . $this->_JCOMMANDER_PATH;
+        return $this->format;
     }
 
-    /**
-     * Set the default java path which we will use for decoding
-     * @param mixed $javaPath
-     */
-    public function setJavaPath($javaPath = '/usr/bin/java')
+    public function getType()
     {
-        $this->_JAVA_PATH = $javaPath;
+        return $this->type;
+    }
+
+    public function getImagePath()
+    {
+        return $this->imagePath;
     }
 }
