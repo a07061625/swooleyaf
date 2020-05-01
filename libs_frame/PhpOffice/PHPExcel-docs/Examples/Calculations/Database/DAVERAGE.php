@@ -1,5 +1,4 @@
 <?php
-
 error_reporting(E_ALL);
 set_time_limit(0);
 
@@ -18,7 +17,6 @@ date_default_timezone_set('Europe/London');
 <h1>DAVERAGE</h1>
 <h2>Returns the average of selected database entries.</h2>
 <?php
-
 /** Include path **/
 set_include_path(get_include_path() . PATH_SEPARATOR . '../../../../Classes/');
 

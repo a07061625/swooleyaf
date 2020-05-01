@@ -1,5 +1,4 @@
 <?php
-
 error_reporting(E_ALL);
 set_time_limit(0);
 
@@ -18,7 +17,6 @@ date_default_timezone_set('Europe/London');
 <h1>DPRODUCT</h1>
 <h2>Multiplies the values in a column of a list or database that match conditions that you specify.</h2>
 <?php
-
 /** Include path **/
 set_include_path(get_include_path() . PATH_SEPARATOR . '../../../../Classes/');
 

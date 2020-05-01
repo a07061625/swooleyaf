@@ -1,5 +1,4 @@
 <?php
-
 ?>
 <html>
 <head>
@@ -13,7 +12,6 @@
 <h1>PHPExcel Reader Example #15</h1>
 <h2>Simple File Reader for Tab-Separated Value File using the Advanced Value Binder</h2>
 <?php
-
 /** Include path **/
 set_include_path(get_include_path() . PATH_SEPARATOR . '../../../Classes/');
 

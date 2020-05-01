@@ -1,5 +1,4 @@
 <?php
-
 /**
  * PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer
  *

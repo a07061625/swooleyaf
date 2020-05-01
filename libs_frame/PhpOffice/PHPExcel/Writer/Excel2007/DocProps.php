@@ -1,5 +1,4 @@
 <?php
-
 /**
  * PHPExcel_Writer_Excel2007_DocProps
  *
