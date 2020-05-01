@@ -31,18 +31,17 @@ class ImageController extends CommonController
     public function createQrImageAction()
     {
         $url = (string)\Request\SyRequest::getParams('url');
-        ob_start();
-        \Qrcode\SyQrCode::createImage($url, [
-            'error_level' => \Request\SyRequest::getParams('error_level', \Qrcode\SyQrCode::QR_ERROR_LEVEL_ONE),
+        $qrBase = new \SyQr\QrBase($url, \SyServer\BaseServer::getServerConfig('storepath_cache'), [
+            'error_level' => \Request\SyRequest::getParams('error_level', \SyQr\QrBase::QR_ERROR_LEVEL_ONE),
             'image_size' => (int)\Request\SyRequest::getParams('image_size', 5),
             'margin_size' => (int)\Request\SyRequest::getParams('margin_size', 2),
         ]);
-        $image = ob_get_contents();
-        ob_end_clean();
 
         $this->SyResult->setData([
-            'image' => 'data:image/png;base64,' . base64_encode($image),
+            'image' => $qrBase->getContent(),
         ]);
+        unset($qrBase);
+
         $this->sendRsp();
     }
 

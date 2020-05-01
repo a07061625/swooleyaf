@@ -18,11 +18,9 @@
 - Map: 地图类库
 - PhpAmqpLib: amqp协议类库(用于消息队列Rabbit)
 - PhpOffice: office文档操作相关
-- PHPZxing: 二维码解析类库
 - PoolService: 进程池服务
 - Psr: Psr标准
 - QCloud: 腾讯云开放平台接口
-- Qrcode: 二维码生成
 - Queue: 消息队列(无用)
 - Reflection: 反射
 - Request: 框架请求处理
@@ -43,6 +41,7 @@
 - SyMessageQueue: 消息队列相关
 - SyModule: 框架模块相关
 - SyPrint: 打印相关
+- SyQr: 二维码相关
 - SySCRM: 社会化客户管理相关
 - SyServer: 框架服务相关
 - SySms: 短信相关

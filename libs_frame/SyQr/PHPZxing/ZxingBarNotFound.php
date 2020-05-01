@@ -1,6 +1,7 @@
 <?php
 /*
-Descrition : ZxingImage - returns the decoded images in ZxingImage Object
+Descrition : ZxingBarNotFound - returns the obejct of ZxingBarNotFound if any bar / Qr Code is
+not found
 
 license: MIT-style
 
@@ -32,49 +33,41 @@ authors:
 * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 * OTHER DEALINGS IN THE SOFTWARE.
 */
-namespace PHPZxing;
+namespace SyQr\PHPZxing;
 
-class ZxingImage implements PHPZxingInterface
+class ZxingBarNotFound implements PHPZxingInterface
 {
-    // Decoded Value from source
-    private $imageValue = null;
-    // Format of decoded data - CODE_39 etc..
-    private $format = null;
-    // Type of decoded data - TEXT, URI etc..
-    private $type = null;
     // Path of the image decoded
     private $imagePath = null;
+    // Error Code of the image
+    private $imageErrorCode = null;
+    // Message of error
+    private $message = null;
 
-    public function __construct($imagePath, $imageValue, $format, $type)
+    public function __construct($imagePath, $imageErrorCode, $message)
     {
-        $this->imageValue = $imageValue;
-        $this->format = $format;
-        $this->type = $type;
         $this->imagePath = $imagePath;
-    }
-
-    public function isFound()
-    {
-        return true;
-    }
-
-    public function getImageValue()
-    {
-        return $this->imageValue;
-    }
-
-    public function getFormat()
-    {
-        return $this->format;
-    }
-
-    public function getType()
-    {
-        return $this->type;
+        $this->imageErrorCode = $imageErrorCode;
+        $this->message = $message;
     }
 
     public function getImagePath()
     {
         return $this->imagePath;
+    }
+
+    public function getImageErrorCode()
+    {
+        return $this->imageErrorCode;
+    }
+
+    public function getErrorMessage()
+    {
+        return $this->message;
+    }
+
+    public function isFound()
+    {
+        return false;
     }
 }
