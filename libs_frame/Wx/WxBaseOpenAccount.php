@@ -7,7 +7,7 @@
  */
 namespace Wx;
 
-abstract class WxBaseOpenShop extends WxBase
+abstract class WxBaseOpenAccount extends WxBase
 {
     public function __construct()
     {
