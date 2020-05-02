@@ -3,18 +3,18 @@
  * Created by PhpStorm.
  * User: 姜伟
  * Date: 2018/9/12 0012
- * Time: 15:59
+ * Time: 15:43
  */
-namespace Wx\Shop\Menu;
+namespace Wx\Account\Menu;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class MenuCreate extends WxBaseShop
+class MenuConditionalMatch extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -22,15 +22,15 @@ class MenuCreate extends WxBaseShop
      */
     private $appid = '';
     /**
-     * 菜单列表
-     * @var array
+     * 用户openid或粉丝的微信号
+     * @var string
      */
-    private $menuList = [];
+    private $user_id = '';
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/menu/trymatch?access_token=';
         $this->appid = $appId;
     }
 
@@ -39,38 +39,33 @@ class MenuCreate extends WxBaseShop
     }
 
     /**
-     * @param \Wx\Shop\Menu\Menu $menu
+     * @param string $userId
      * @throws \SyException\Wx\WxException
      */
-    public function addMenu(Menu $menu)
+    public function setUserId(string $userId)
     {
-        if (count($this->menuList) >= 3) {
-            throw new WxException('菜单数量不能超过3个', ErrorCode::WX_PARAM_ERROR);
+        if (strlen($userId) > 0) {
+            $this->reqData['user_id'] = $userId;
+        } else {
+            throw new WxException('用户ID不合法', ErrorCode::WX_PARAM_ERROR);
         }
-
-        $this->menuList[] = $menu;
     }
 
     public function getDetail() : array
     {
-        if (empty($this->menuList)) {
-            throw new WxException('菜单列表不能为空', ErrorCode::WX_PARAM_ERROR);
+        if (!isset($this->reqData['user_id'])) {
+            throw new WxException('用户ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
             'code' => 0
         ];
 
-        $this->reqData['button'] = [];
-        foreach ($this->menuList as $eMenu) {
-            $this->reqData['button'][] = $eMenu->getDetail();
-        }
-
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilBaseAlone::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (isset($sendData['button'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

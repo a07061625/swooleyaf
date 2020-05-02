@@ -5,13 +5,13 @@
  * Date: 2018/9/12 0012
  * Time: 15:52
  */
-namespace Wx\Shop\Menu;
+namespace Wx\Account\Menu;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
 
-class Menu extends WxBaseShop
+class Menu extends WxBaseAccount
 {
     private static $typeList = [
         'pic_weixin',

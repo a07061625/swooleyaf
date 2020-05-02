@@ -5,16 +5,16 @@
  * Date: 2018/12/14 0014
  * Time: 8:53
  */
-namespace Wx\Shop\Statistics;
+namespace Wx\Account\Statistics;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class Statistics extends WxBaseShop
+class Statistics extends WxBaseAccount
 {
     const TYPE_USER_DAY_CHANGE = '0100';
     const TYPE_USER_DAY_TOTAL = '0101';
@@ -176,7 +176,7 @@ class Statistics extends WxBaseShop
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);

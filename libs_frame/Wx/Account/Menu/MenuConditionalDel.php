@@ -5,16 +5,16 @@
  * Date: 2018/9/12 0012
  * Time: 15:43
  */
-namespace Wx\Shop\Menu;
+namespace Wx\Account\Menu;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class MenuConditionalDel extends WxBaseShop
+class MenuConditionalDel extends WxBaseAccount
 {
     /**
      * 公众号ID

@@ -5,15 +5,15 @@
  * Date: 2018/9/12 0012
  * Time: 15:49
  */
-namespace Wx\Shop\Menu;
+namespace Wx\Account\Menu;
 
 use SyConstant\ErrorCode;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class MenuGet extends WxBaseShop
+class MenuGet extends WxBaseAccount
 {
     /**
      * 公众号ID
