@@ -14,7 +14,7 @@ use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class MenuConditionalMatch extends WxBaseAccount
+class ConditionalDel extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -22,15 +22,15 @@ class MenuConditionalMatch extends WxBaseAccount
      */
     private $appid = '';
     /**
-     * 用户openid或粉丝的微信号
+     * 菜单ID
      * @var string
      */
-    private $user_id = '';
+    private $menuid = '';
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/menu/trymatch?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/menu/delconditional?access_token=';
         $this->appid = $appId;
     }
 
@@ -39,22 +39,22 @@ class MenuConditionalMatch extends WxBaseAccount
     }
 
     /**
-     * @param string $userId
+     * @param string $menuId
      * @throws \SyException\Wx\WxException
      */
-    public function setUserId(string $userId)
+    public function setMenuId(string $menuId)
     {
-        if (strlen($userId) > 0) {
-            $this->reqData['user_id'] = $userId;
+        if (strlen($menuId) > 0) {
+            $this->reqData['menuid'] = $menuId;
         } else {
-            throw new WxException('用户ID不合法', ErrorCode::WX_PARAM_ERROR);
+            throw new WxException('菜单ID不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
     public function getDetail() : array
     {
-        if (!isset($this->reqData['user_id'])) {
-            throw new WxException('用户ID不能为空', ErrorCode::WX_PARAM_ERROR);
+        if (!isset($this->reqData['menuid'])) {
+            throw new WxException('菜单ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
@@ -65,7 +65,7 @@ class MenuConditionalMatch extends WxBaseAccount
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if (isset($sendData['button'])) {
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

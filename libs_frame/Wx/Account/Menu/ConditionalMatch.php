@@ -14,7 +14,7 @@ use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class MenuConditionalAdd extends WxBaseAccount
+class ConditionalMatch extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -22,20 +22,15 @@ class MenuConditionalAdd extends WxBaseAccount
      */
     private $appid = '';
     /**
-     * 一级菜单列表
-     * @var array
+     * 用户openid或粉丝的微信号
+     * @var string
      */
-    private $button = [];
-    /**
-     * 菜单匹配规则
-     * @var array
-     */
-    private $matchrule = [];
+    private $user_id = '';
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/menu/addconditional?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/menu/trymatch?access_token=';
         $this->appid = $appId;
     }
 
@@ -44,40 +39,23 @@ class MenuConditionalAdd extends WxBaseAccount
     }
 
     /**
-     * @param array $button
+     * @param string $userId
      * @throws \SyException\Wx\WxException
      */
-    public function addButton(array $button)
+    public function setUserId(string $userId)
     {
-        if (count($this->button) >= 3) {
-            throw new WxException('菜单数量不能超过3个', ErrorCode::WX_PARAM_ERROR);
+        if (strlen($userId) > 0) {
+            $this->reqData['user_id'] = $userId;
+        } else {
+            throw new WxException('用户ID不合法', ErrorCode::WX_PARAM_ERROR);
         }
-
-        $this->button[] = $button;
-    }
-
-    /**
-     * @param array $matchRule
-     * @throws \SyException\Wx\WxException
-     */
-    public function setMatchRule(array $matchRule)
-    {
-        if (empty($matchRule)) {
-            throw new WxException('菜单匹配规则不合法', ErrorCode::WX_PARAM_ERROR);
-        }
-
-        $this->reqData['matchrule'] = $matchRule;
     }
 
     public function getDetail() : array
     {
-        if (!isset($this->reqData['matchrule'])) {
-            throw new WxException('菜单匹配规则不能为空', ErrorCode::WX_PARAM_ERROR);
+        if (!isset($this->reqData['user_id'])) {
+            throw new WxException('用户ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if (empty($this->button)) {
-            throw new WxException('菜单不能为空', ErrorCode::WX_PARAM_ERROR);
-        }
-        $this->reqData['button'] = $this->button;
 
         $resArr = [
             'code' => 0
@@ -87,7 +65,7 @@ class MenuConditionalAdd extends WxBaseAccount
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if (isset($sendData['menuid'])) {
+        if (isset($sendData['button'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

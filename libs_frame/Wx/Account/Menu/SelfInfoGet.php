@@ -13,7 +13,7 @@ use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class MenuSelfInfo extends WxBaseAccount
+class SelfInfoGet extends WxBaseAccount
 {
     /**
      * 公众号ID
