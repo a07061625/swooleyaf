@@ -5,12 +5,12 @@
  * Date: 18-9-13
  * Time: 上午12:45
  */
-namespace Wx\OpenShop;
+namespace Wx\OpenAccount;
 
 use DesignPatterns\Singletons\WxConfigSingleton;
-use Wx\WxBaseOpenShop;
+use Wx\WxBaseOpenAccount;
 
-class MiniFastRegisterAuth extends WxBaseOpenShop
+class MiniFastRegisterAuth extends WxBaseOpenAccount
 {
     public function __construct(string $appId)
     {
