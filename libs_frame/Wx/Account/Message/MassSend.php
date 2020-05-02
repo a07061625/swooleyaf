@@ -5,16 +5,16 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
-namespace Wx\Shop\Message;
+namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class MassSendAll extends WxBaseShop
+class MassSend extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -27,20 +27,15 @@ class MassSendAll extends WxBaseShop
      */
     private $msgtype = '';
     /**
-     * 接收者数据
+     * 用户openid列表
      * @var array
      */
-    private $filter = [];
-    /**
-     * 群发消息ID
-     * @var string
-     */
-    private $clientmsgid = '';
+    private $touser = [];
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token=';
         $this->appid = $appId;
     }
 
@@ -79,39 +74,27 @@ class MassSendAll extends WxBaseShop
     }
 
     /**
-     * @param array $filter
-     * @throws \SyException\Wx\WxException
+     * @param array $openidList
      */
-    public function setFilter(array $filter)
+    public function setOpenidList(array $openidList)
     {
-        if (!isset($filter['is_to_all'])) {
-            throw new WxException('接收者数据不合法', ErrorCode::WX_PARAM_ERROR);
-        } elseif (!is_bool($filter['is_to_all'])) {
-            throw new WxException('接收者数据不合法', ErrorCode::WX_PARAM_ERROR);
-        } elseif (!isset($filter['tag_id'])) {
-            throw new WxException('接收者数据不合法', ErrorCode::WX_PARAM_ERROR);
-        } elseif (!is_int($filter['tag_id'])) {
-            throw new WxException('接收者数据不合法', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($filter['tag_id'] < 0) {
-            throw new WxException('接收者数据不合法', ErrorCode::WX_PARAM_ERROR);
+        foreach ($openidList as $eOpenid) {
+            if (is_string($eOpenid) && (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $eOpenid) > 0)) {
+                $this->touser[$eOpenid] = 1;
+            }
         }
-
-        $this->reqData['filter'] = [
-            'is_to_all' => $filter['is_to_all'],
-            'tag_id' => $filter['tag_id'],
-        ];
     }
 
     /**
-     * @param string $clientMsgId
+     * @param string $openid
      * @throws \SyException\Wx\WxException
      */
-    public function setClientMsgId(string $clientMsgId)
+    public function addOpenid(string $openid)
     {
-        if (ctype_alnum($clientMsgId) && (strlen($clientMsgId) <= 64)) {
-            $this->reqData['clientmsgid'] = $clientMsgId;
+        if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
+            $this->touser[$openid] = 1;
         } else {
-            throw new WxException('群发消息ID不合法', ErrorCode::WX_PARAM_ERROR);
+            throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
@@ -120,18 +103,19 @@ class MassSendAll extends WxBaseShop
         if (!isset($this->reqData['msgtype'])) {
             throw new WxException('消息类型不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if (!isset($this->reqData['filter'])) {
-            throw new WxException('接收者数据不能为空', ErrorCode::WX_PARAM_ERROR);
+        $openidNum = count($this->touser);
+        if ($openidNum < 2) {
+            throw new WxException('用户openid列表不能少于2个', ErrorCode::WX_PARAM_ERROR);
+        } elseif ($openidNum > 10000) {
+            throw new WxException('用户openid列表不能超过10000个', ErrorCode::WX_PARAM_ERROR);
         }
-        if (!isset($this->reqData['clientmsgid'])) {
-            throw new WxException('群发消息ID不能为空', ErrorCode::WX_PARAM_ERROR);
-        }
+        $this->reqData['touser'] = array_keys($this->touser);
 
         $resArr = [
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);

@@ -5,16 +5,16 @@
  * Date: 18-9-12
  * Time: 上午12:07
  */
-namespace Wx\Shop\Message;
+namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class TemplateMsgSend extends WxBaseShop
+class TemplateMsgSend extends WxBaseAccount
 {
     /**
      * 公众号ID

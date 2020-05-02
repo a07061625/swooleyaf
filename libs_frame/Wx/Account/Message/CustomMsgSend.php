@@ -5,17 +5,17 @@
  * Date: 18-9-12
  * Time: 下午11:14
  */
-namespace Wx\Shop\Message;
+namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 use Wx\WxUtilOpenBase;
 
-class CustomMsgSend extends WxBaseShop
+class CustomMsgSend extends WxBaseAccount
 {
     const CUSTOM_MSG_TYPE_TEXT = 'text';
     const CUSTOM_MSG_TYPE_IMAGE = 'image';
