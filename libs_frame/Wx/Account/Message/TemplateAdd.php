@@ -5,16 +5,16 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
-namespace Wx\Shop\Message;
+namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class MassSpeedSet extends WxBaseShop
+class TemplateAdd extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -22,15 +22,15 @@ class MassSpeedSet extends WxBaseShop
      */
     private $appid = '';
     /**
-     * 群发速度级别
-     * @var int
+     * 模板编号
+     * @var string
      */
-    private $speed = 0;
+    private $template_id_short = '';
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/message/mass/speed/set?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/template/api_add_template?access_token=';
         $this->appid = $appId;
     }
 
@@ -39,33 +39,33 @@ class MassSpeedSet extends WxBaseShop
     }
 
     /**
-     * @param int $speed
+     * @param string $templateIdShort
      * @throws \SyException\Wx\WxException
      */
-    public function setSpeed(int $speed)
+    public function setTemplateIdShort(string $templateIdShort)
     {
-        if (($speed >= 0) && ($speed <= 4)) {
-            $this->reqData['speed'] = $speed;
+        if (strlen($templateIdShort) > 0) {
+            $this->reqData['template_id_short'] = $templateIdShort;
         } else {
-            throw new WxException('群发速度级别不合法', ErrorCode::WX_PARAM_ERROR);
+            throw new WxException('模板编号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
     public function getDetail() : array
     {
-        if (!isset($this->reqData['speed'])) {
-            throw new WxException('群发速度级别不能为空', ErrorCode::WX_PARAM_ERROR);
+        if (!isset($this->reqData['template_id_short'])) {
+            throw new WxException('模板编号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if (isset($sendData['speed'])) {
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

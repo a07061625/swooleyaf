@@ -5,15 +5,15 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
-namespace Wx\Shop\Message;
+namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class TemplateIndustryGet extends WxBaseShop
+class TemplateList extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -24,7 +24,7 @@ class TemplateIndustryGet extends WxBaseShop
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/template/get_industry?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/template/get_all_private_template?access_token=';
         $this->appid = $appId;
     }
 
@@ -38,14 +38,14 @@ class TemplateIndustryGet extends WxBaseShop
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if (isset($sendData['errcode'])) {
+        if (isset($sendData['template_list'])) {
+            $resArr['data'] = $sendData;
+        } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;
             $resArr['message'] = $sendData['errmsg'];
-        } else {
-            $resArr['data'] = $sendData;
         }
 
         return $resArr;
