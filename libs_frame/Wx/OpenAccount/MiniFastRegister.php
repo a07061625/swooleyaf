@@ -5,22 +5,22 @@
  * Date: 18-9-13
  * Time: 上午12:38
  */
-namespace Wx\OpenShop;
+namespace Wx\OpenAccount;
 
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Wx\WxOpenException;
 use SyTool\ProjectWxTool;
 use SyTool\Tool;
-use Wx\WxBaseOpenShop;
+use Wx\WxBaseOpenAccount;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
 /**
  * 第三方平台复用公众号主体快速注册小程序
- * @package Wx\OpenShop
+ * @package Wx\OpenAccount
  */
-class MiniFastRegister extends WxBaseOpenShop
+class MiniFastRegister extends WxBaseOpenAccount
 {
     /**
      * 公众号APPID
