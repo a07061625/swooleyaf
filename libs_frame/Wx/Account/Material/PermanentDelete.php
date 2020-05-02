@@ -2,19 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: 姜伟
- * Date: 2018/9/12 0012
- * Time: 15:43
+ * Date: 2018/12/13 0013
+ * Time: 9:37
  */
-namespace Wx\Shop\Menu;
+namespace Wx\Account\Material;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilBaseAlone;
 
-class MenuConditionalDel extends WxBaseShop
+class PermanentDelete extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -22,47 +22,48 @@ class MenuConditionalDel extends WxBaseShop
      */
     private $appid = '';
     /**
-     * 菜单ID
+     * 媒体文件ID
      * @var string
      */
-    private $menuid = '';
+    private $media_id = '';
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/menu/delconditional?access_token=';
+
+        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/material/del_material?access_token=';
         $this->appid = $appId;
     }
 
-    public function __clone()
+    private function __clone()
     {
     }
 
     /**
-     * @param string $menuId
+     * @param string $mediaId
      * @throws \SyException\Wx\WxException
      */
-    public function setMenuId(string $menuId)
+    public function setMediaId(string $mediaId)
     {
-        if (strlen($menuId) > 0) {
-            $this->reqData['menuid'] = $menuId;
+        if (strlen($mediaId) > 0) {
+            $this->reqData['media_id'] = $mediaId;
         } else {
-            throw new WxException('菜单ID不合法', ErrorCode::WX_PARAM_ERROR);
+            throw new WxException('媒体文件ID不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
     public function getDetail() : array
     {
-        if (!isset($this->reqData['menuid'])) {
-            throw new WxException('菜单ID不能为空', ErrorCode::WX_PARAM_ERROR);
+        if (!isset($this->reqData['media_id'])) {
+            throw new WxException('媒体文件ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilBaseAlone::getAccessToken($this->appid);
-        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
         if ($sendData['errcode'] == 0) {

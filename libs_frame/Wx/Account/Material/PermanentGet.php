@@ -5,16 +5,16 @@
  * Date: 2018/12/13 0013
  * Time: 9:37
  */
-namespace Wx\Shop\Material;
+namespace Wx\Account\Material;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class MaterialPermanentGet extends WxBaseShop
+class PermanentGet extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -83,7 +83,7 @@ class MaterialPermanentGet extends WxBaseShop
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_TIMEOUT_MS] = 3000;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
