@@ -5,15 +5,15 @@
  * Date: 2018/9/12 0012
  * Time: 15:49
  */
-namespace Wx\Shop\Menu;
+namespace Wx\Account\Menu;
 
 use SyConstant\ErrorCode;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 use Wx\WxUtilBaseAlone;
 
-class MenuGet extends WxBaseShop
+class SelfInfoGet extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -24,7 +24,7 @@ class MenuGet extends WxBaseShop
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/menu/get?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info?access_token=';
         $this->appid = $appId;
     }
 
@@ -41,7 +41,7 @@ class MenuGet extends WxBaseShop
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilBaseAlone::getAccessToken($this->appid);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if (isset($sendData['menu'])) {
+        if (isset($sendData['selfmenu_info'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;
