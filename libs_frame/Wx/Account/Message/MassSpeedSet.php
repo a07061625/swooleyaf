@@ -5,16 +5,16 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
-namespace Wx\Shop\Message;
+namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class MassGet extends WxBaseShop
+class MassSpeedSet extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -22,15 +22,15 @@ class MassGet extends WxBaseShop
      */
     private $appid = '';
     /**
-     * 消息ID
-     * @var string
+     * 群发速度级别
+     * @var int
      */
-    private $msg_id = '';
+    private $speed = 0;
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/message/mass/get?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/message/mass/speed/set?access_token=';
         $this->appid = $appId;
     }
 
@@ -39,33 +39,33 @@ class MassGet extends WxBaseShop
     }
 
     /**
-     * @param string $msgId
+     * @param int $speed
      * @throws \SyException\Wx\WxException
      */
-    public function setMsgId(string $msgId)
+    public function setSpeed(int $speed)
     {
-        if (ctype_digit($msgId)) {
-            $this->reqData['msg_id'] = $msgId;
+        if (($speed >= 0) && ($speed <= 4)) {
+            $this->reqData['speed'] = $speed;
         } else {
-            throw new WxException('消息ID不合法', ErrorCode::WX_PARAM_ERROR);
+            throw new WxException('群发速度级别不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
     public function getDetail() : array
     {
-        if (!isset($this->reqData['msg_id'])) {
-            throw new WxException('消息ID不能为空', ErrorCode::WX_PARAM_ERROR);
+        if (!isset($this->reqData['speed'])) {
+            throw new WxException('群发速度级别不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if (isset($sendData['msg_id'])) {
+        if (isset($sendData['speed'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

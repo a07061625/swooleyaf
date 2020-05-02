@@ -5,14 +5,14 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
-namespace Wx\Shop\Message;
+namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
 
-class SubscribeMsgAuthorize extends WxBaseShop
+class SubscribeMsgAuthorize extends WxBaseAccount
 {
     /**
      * 公众号ID
