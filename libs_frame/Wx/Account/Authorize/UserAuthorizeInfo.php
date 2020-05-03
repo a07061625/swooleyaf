@@ -11,8 +11,8 @@ use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\Shop\User\InfoBase;
-use Wx\Shop\User\InfoSingle;
+use Wx\Account\User\InfoBase;
+use Wx\Account\User\InfoSingle;
 use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 
