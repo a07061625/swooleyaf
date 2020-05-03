@@ -5,16 +5,16 @@
  * Date: 18-9-12
  * Time: 上午12:22
  */
-namespace Wx\Shop\User;
+namespace Wx\Account\User;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 use Wx\WxUtilAlone;
 
-class InfoBase extends WxBaseShop
+class InfoSingle extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -26,19 +26,11 @@ class InfoBase extends WxBaseShop
      * @var string
      */
     private $openid = '';
-    /**
-     * 微信令牌
-     * @var string
-     */
-    private $access_token = '';
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/sns/userinfo';
-        $this->reqData = [
-            'lang' => 'zh_CN',
-        ];
+        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/user/info?lang=zh_CN&access_token=';
         $this->appid = $appId;
     }
 
@@ -59,40 +51,23 @@ class InfoBase extends WxBaseShop
         }
     }
 
-    /**
-     * @param string $accessToken
-     * @throws \SyException\Wx\WxException
-     */
-    public function setAccessToken(string $accessToken)
-    {
-        if (strlen($accessToken) > 0) {
-            $this->reqData['access_token'] = $accessToken;
-        } else {
-            throw new WxException('微信令牌不合法', ErrorCode::WX_PARAM_ERROR);
-        }
-    }
-
     public function getDetail() : array
     {
         if (!isset($this->reqData['openid'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
-        }
-        if (!isset($this->reqData['access_token'])) {
-            $this->reqData['access_token'] = WxUtilAlone::getAccessToken($this->appid);
         }
 
         $resArr = [
             'code' => 0
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appid) . '&openid=' . $this->reqData['openid'];
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
         if (isset($sendData['openid'])) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;
-            $resArr['errcode'] = $sendData['errcode'];
             $resArr['message'] = $sendData['errmsg'];
         }
 
