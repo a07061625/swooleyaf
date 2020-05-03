@@ -5,15 +5,15 @@
  * Date: 2018/12/20 0020
  * Time: 10:42
  */
-namespace Wx\Shop\CustomService;
+namespace Wx\Account\CustomService;
 
 use SyConstant\ErrorCode;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 use Wx\WxUtilAlone;
 
-class InfoListOnline extends WxBaseShop
+class InfoListOnline extends WxBaseAccount
 {
     /**
      * 公众号ID

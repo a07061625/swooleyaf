@@ -5,16 +5,16 @@
  * Date: 2018/12/20 0020
  * Time: 10:52
  */
-namespace Wx\Shop\CustomService;
+namespace Wx\Account\CustomService;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class SessionListAccount extends WxBaseShop
+class AccountDel extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -30,7 +30,7 @@ class SessionListAccount extends WxBaseShop
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/customservice/kfsession/getsessionlist?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/customservice/kfaccount/del?access_token=';
         $this->appid = $appId;
     }
 
@@ -62,10 +62,10 @@ class SessionListAccount extends WxBaseShop
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid) . '&kf_account=' . urlencode($this->reqData['kf_account']);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid) . '&kf_account=' . urlencode($this->reqData['kf_account']);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if (isset($sendData['sessionlist'])) {
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;
