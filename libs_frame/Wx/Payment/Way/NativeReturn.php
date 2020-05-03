@@ -5,15 +5,15 @@
  * Date: 2018/9/12 0012
  * Time: 16:31
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\Way;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
-use Wx\WxBaseShop;
-use Wx\WxUtilShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 
-class NativeReturn extends WxBaseShop
+class NativeReturn extends WxBasePayment
 {
     /**
      * 返回状态码
@@ -131,7 +131,7 @@ class NativeReturn extends WxBaseShop
                 throw new WxException('预支付ID不能为空', ErrorCode::WX_PARAM_ERROR);
             }
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
         return $this->reqData;
     }
 }

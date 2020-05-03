@@ -5,16 +5,17 @@
  * Date: 2018/12/12 0012
  * Time: 17:08
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\Company;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class PayCompanyBankPublicKey extends WxBaseShop
+class BankQuery extends WxBasePayment
 {
     /**
      * 公众号ID
@@ -27,34 +28,49 @@ class PayCompanyBankPublicKey extends WxBaseShop
      */
     private $mch_id = '';
     /**
+     * 付款单号
+     * @var string
+     */
+    private $partner_trade_no = '';
+    /**
      * 随机字符串
      * @var string
      */
     private $nonce_str = '';
-    /**
-     * 签名类型
-     * @var string
-     */
-    private $sign_type = '';
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://fraud.mch.weixin.qq.com/risk/getpublickey';
+        $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaysptrans/query_bank';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->appid = $shopConfig->getAppId();
         $this->reqData['mch_id'] = $shopConfig->getPayMchId();
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
-        $this->reqData['sign_type'] = 'MD5';
     }
 
     private function __clone()
     {
     }
 
+    /**
+     * @param string $partnerTradeNo
+     * @throws \SyException\Wx\WxException
+     */
+    public function setPartnerTradeNo(string $partnerTradeNo)
+    {
+        if (ctype_digit($partnerTradeNo) && (strlen($partnerTradeNo) <= 32)) {
+            $this->reqData['partner_trade_no'] = $partnerTradeNo;
+        } else {
+            throw new WxException('付款单号不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+    }
+
     public function getDetail() : array
     {
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->appid);
+        if (!isset($this->reqData['partner_trade_no'])) {
+            throw new WxException('付款单号不能为空', ErrorCode::WX_PARAM_ERROR);
+        }
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->appid);
 
         $resArr = [
             'code' => 0,

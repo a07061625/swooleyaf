@@ -5,18 +5,18 @@
  * Date: 2018/9/12 0012
  * Time: 8:55
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\Way;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\Alone\JsConfig;
-use Wx\WxBaseShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class UnifiedOrder extends WxBaseShop
+class UnifiedOrder extends WxBasePayment
 {
     const TRADE_TYPE_JSAPI = 'JSAPI'; //支付方式-jsapi
     const TRADE_TYPE_NATIVE = 'NATIVE'; //支付方式-扫码
@@ -400,7 +400,7 @@ class UnifiedOrder extends WxBaseShop
             }
             $appId = $this->reqData['sub_appid'];
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
             'code' => 0,

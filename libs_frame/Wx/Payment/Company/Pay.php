@@ -5,18 +5,18 @@
  * Date: 2018/9/11 0011
  * Time: 17:46
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\Company;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyLog\Log;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class PayCompany extends WxBaseShop
+class Pay extends WxBasePayment
 {
     const CHECK_NAME_TYPE_NO = 'NO_CHECK'; //校验姓名类型-不校验
     const CHECK_NAME_TYPE_FORCE = 'FORCE_CHECK'; //校验姓名类型-强制校验
@@ -179,7 +179,7 @@ class PayCompany extends WxBaseShop
         if ($this->reqData['amount'] <= 0) {
             throw new WxException('付款金额必须大于0', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['mch_appid']);
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['mch_appid']);
 
         $resArr = [
             'code' => 0,

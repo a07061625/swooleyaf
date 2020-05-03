@@ -5,17 +5,17 @@
  * Date: 2018/12/12 0012
  * Time: 9:43
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\Way;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class PayReport extends WxBaseShop
+class PayReport extends WxBasePayment
 {
     /**
      * 公众号ID
@@ -101,7 +101,7 @@ class PayReport extends WxBaseShop
         if (!isset($this->reqData['trades'])) {
             throw new WxException('上报数据包不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
             'code' => 0
