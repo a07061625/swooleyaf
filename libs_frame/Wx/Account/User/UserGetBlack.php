@@ -5,16 +5,16 @@
  * Date: 2018/12/13 0013
  * Time: 15:12
  */
-namespace Wx\Shop\User;
+namespace Wx\Account\User;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class TagListByUser extends WxBaseShop
+class UserGetBlack extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -22,16 +22,17 @@ class TagListByUser extends WxBaseShop
      */
     private $appid = '';
     /**
-     * 用户openid
+     * 第一个用户openid
      * @var string
      */
-    private $openid = '';
+    private $begin_openid = '';
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/tags/getidlist?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/tags/members/getblacklist?access_token=';
         $this->appid = $appId;
+        $this->reqData['begin_openid'] = '';
     }
 
     private function __clone()
@@ -39,13 +40,13 @@ class TagListByUser extends WxBaseShop
     }
 
     /**
-     * @param string $openid
+     * @param string $beginOpenid
      * @throws \SyException\Wx\WxException
      */
-    public function setOpenid(string $openid)
+    public function setBeginOpenid(string $beginOpenid)
     {
-        if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
-            $this->reqData['openid'] = $openid;
+        if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $beginOpenid) > 0) {
+            $this->reqData['begin_openid'] = $beginOpenid;
         } else {
             throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);
         }
@@ -53,15 +54,11 @@ class TagListByUser extends WxBaseShop
 
     public function getDetail() : array
     {
-        if (!isset($this->reqData['openid'])) {
-            throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
-        }
-
         $resArr = [
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
