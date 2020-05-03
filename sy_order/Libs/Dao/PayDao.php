@@ -22,9 +22,9 @@ class PayDao
     use SimpleDaoTrait;
 
     private static $payApplyMap = [
-        Project::PAY_TYPE_WX_SHOP_JS => '\DesignPatterns\Facades\PayApply\WxShopJs',
-        Project::PAY_TYPE_WX_SHOP_NATIVE_DYNAMIC => '\DesignPatterns\Facades\PayApply\WxShopNativeDynamic',
-        Project::PAY_TYPE_WX_SHOP_NATIVE_STATIC => '\DesignPatterns\Facades\PayApply\WxShopNativeStatic',
+        Project::PAY_TYPE_WX_ACCOUNT_JS => '\DesignPatterns\Facades\PayApply\WxAccountJs',
+        Project::PAY_TYPE_WX_ACCOUNT_NATIVE_DYNAMIC => '\DesignPatterns\Facades\PayApply\WxAccountNativeDynamic',
+        Project::PAY_TYPE_WX_ACCOUNT_NATIVE_STATIC => '\DesignPatterns\Facades\PayApply\WxAccountNativeStatic',
         Project::PAY_TYPE_WX_MINI_JS => '\DesignPatterns\Facades\PayApply\WxMiniJs',
         Project::PAY_TYPE_ALI_CODE => '\DesignPatterns\Facades\PayApply\AliCode',
         Project::PAY_TYPE_ALI_WEB => '\DesignPatterns\Facades\PayApply\AliWeb',

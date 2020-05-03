@@ -17,7 +17,7 @@ use SyTrait\SimpleFacadeTrait;
 use Wx\Payment\Way\UnifiedOrder;
 use Wx\WxUtilBase;
 
-class WxShopJs extends PayApplyFacade
+class WxAccountJs extends PayApplyFacade
 {
     use SimpleFacadeTrait;
 

@@ -14,7 +14,7 @@ use SyTool\Tool;
 use SyTrait\SimpleFacadeTrait;
 use Wx\Payment\Way\PayNativePre;
 
-class WxShopNativeStatic extends PayApplyFacade
+class WxAccountNativeStatic extends PayApplyFacade
 {
     use SimpleFacadeTrait;
 

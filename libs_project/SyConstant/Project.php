@@ -58,9 +58,9 @@ final class Project extends ProjectBase
     //支付常量
     const PAY_WAY_WX = 1; //方式-微信
     const PAY_WAY_ALI = 2; //方式-支付宝
-    const PAY_TYPE_WX_SHOP_JS = 'a000'; //类型-微信公众号js支付
-    const PAY_TYPE_WX_SHOP_NATIVE_DYNAMIC = 'a001'; //类型-微信公众号动态扫码支付
-    const PAY_TYPE_WX_SHOP_NATIVE_STATIC = 'a002'; //类型-微信公众号静态扫码支付
+    const PAY_TYPE_WX_ACCOUNT_JS = 'a000'; //类型-微信公众号js支付
+    const PAY_TYPE_WX_ACCOUNT_NATIVE_DYNAMIC = 'a001'; //类型-微信公众号动态扫码支付
+    const PAY_TYPE_WX_ACCOUNT_NATIVE_STATIC = 'a002'; //类型-微信公众号静态扫码支付
     const PAY_TYPE_WX_MINI_JS = 'a003'; //类型-微信小程序js支付
     const PAY_TYPE_ALI_CODE = 'a100'; //类型-支付宝扫码支付
     const PAY_TYPE_ALI_WEB = 'a101'; //类型-支付宝网页支付

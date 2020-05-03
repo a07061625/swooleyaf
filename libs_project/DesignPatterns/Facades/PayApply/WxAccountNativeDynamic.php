@@ -14,7 +14,7 @@ use SyTool\Tool;
 use SyTrait\SimpleFacadeTrait;
 use Wx\Payment\Way\UnifiedOrder;
 
-class WxShopNativeDynamic extends PayApplyFacade
+class WxAccountNativeDynamic extends PayApplyFacade
 {
     use SimpleFacadeTrait;
 
