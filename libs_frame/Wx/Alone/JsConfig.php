@@ -5,18 +5,18 @@
  * Date: 2018/9/11 0011
  * Time: 11:21
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Alone;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAlone;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
-use Wx\WxUtilShop;
 
-class JsConfig extends WxBaseShop
+class JsConfig extends WxBaseAlone
 {
     /**
      * @var int
@@ -104,7 +104,7 @@ class JsConfig extends WxBaseShop
     public function getDetail() : array
     {
         if ($this->platType == WxUtilBase::PLAT_TYPE_SHOP) { //公众号获取jsapi_ticket
-            $ticket = WxUtilShop::getJsTicket($this->reqData['appId']);
+            $ticket = WxUtilAccount::getJsTicket($this->reqData['appId']);
         } else { //第三方平台获取jsapi_ticket
             $ticket = WxUtilOpenBase::getAuthorizerJsTicket($this->reqData['appId']);
         }
