@@ -15,7 +15,7 @@ use SyTrait\SimpleTrait;
 use Wx\Alone\AccessToken;
 use Wx\Alone\JsTicket;
 
-abstract class WxUtilBaseAlone extends WxUtilBase
+abstract class WxUtilAlone extends WxUtilBase
 {
     use SimpleTrait;
 

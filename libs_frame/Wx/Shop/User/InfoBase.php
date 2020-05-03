@@ -12,7 +12,7 @@ use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
-use Wx\WxUtilBaseAlone;
+use Wx\WxUtilAlone;
 
 class InfoBase extends WxBaseShop
 {
@@ -78,7 +78,7 @@ class InfoBase extends WxBaseShop
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         if (!isset($this->reqData['access_token'])) {
-            $this->reqData['access_token'] = WxUtilBaseAlone::getAccessToken($this->appid);
+            $this->reqData['access_token'] = WxUtilAlone::getAccessToken($this->appid);
         }
 
         $resArr = [
