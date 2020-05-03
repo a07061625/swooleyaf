@@ -10,4 +10,3 @@
 - OpenAccount:第三方开放平台代理公众号相关
 - OpenMini:第三方开放平台代理小程序相关
 - Payment:支付相关
-- Shop:公众号相关(待废弃)

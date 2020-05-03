@@ -1,21 +1,21 @@
 <?php
 /**
- * 请求单次分账
+ * 请求多次分账
  * User: 姜伟
  * Date: 2019/5/17 0017
  * Time: 15:55
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\ProfitSharing;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class ProfitSharingApply extends WxBaseShop
+class ApplyMulti extends WxBasePayment
 {
     /**
      * 商户号
@@ -56,7 +56,7 @@ class ProfitSharingApply extends WxBaseShop
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.mch.weixin.qq.com/secapi/pay/profitsharing';
+        $this->serviceUrl = 'https://api.mch.weixin.qq.com/secapi/pay/multiprofitsharing';
         $this->merchantType = self::MERCHANT_TYPE_SUB;
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->setAppIdAndMchId($shopConfig);
@@ -118,7 +118,7 @@ class ProfitSharingApply extends WxBaseShop
             throw new WxException('分账接收方不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['receivers'] = Tool::jsonEncode($this->receivers, JSON_UNESCAPED_UNICODE);
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid'], 'sha256');
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid'], 'sha256');
 
         $resArr = [
             'code' => 0
