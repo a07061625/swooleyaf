@@ -41,9 +41,9 @@ class BankPublicKey extends WxBasePayment
     {
         parent::__construct();
         $this->serviceUrl = 'https://fraud.mch.weixin.qq.com/risk/getpublickey';
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
-        $this->appid = $shopConfig->getAppId();
-        $this->reqData['mch_id'] = $shopConfig->getPayMchId();
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
+        $this->appid = $accountConfig->getAppId();
+        $this->reqData['mch_id'] = $accountConfig->getPayMchId();
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['sign_type'] = 'MD5';
     }
@@ -60,12 +60,12 @@ class BankPublicKey extends WxBasePayment
             'code' => 0,
         ];
 
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->appid);
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->appid);
         $tmpKey = tmpfile();
-        fwrite($tmpKey, $shopConfig->getSslKey());
+        fwrite($tmpKey, $accountConfig->getSslKey());
         $tmpKeyData = stream_get_meta_data($tmpKey);
         $tmpCert = tmpfile();
-        fwrite($tmpCert, $shopConfig->getSslCert());
+        fwrite($tmpCert, $accountConfig->getSslCert());
         $tmpCertData = stream_get_meta_data($tmpCert);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData);

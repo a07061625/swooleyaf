@@ -174,10 +174,10 @@ class UnifiedOrder extends WxBasePayment
         }
 
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->merchantType = $merchantType;
-        $this->setAppIdAndMchId($shopConfig);
-        $this->reqData['notify_url'] = $shopConfig->getPayNotifyUrl();
+        $this->setAppIdAndMchId($accountConfig);
+        $this->reqData['notify_url'] = $accountConfig->getPayNotifyUrl();
         $this->reqData['fee_type'] = 'CNY';
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['device_info'] = 'WEB';
@@ -185,7 +185,7 @@ class UnifiedOrder extends WxBasePayment
         $this->reqData['total_fee'] = 0;
         $this->reqData['trade_type'] = $tradeType;
         if ($tradeType != self::TRADE_TYPE_MWEB) {
-            $this->reqData['spbill_create_ip'] = $shopConfig->getClientIp();
+            $this->reqData['spbill_create_ip'] = $accountConfig->getClientIp();
         }
         $this->plat_type = WxUtilBase::PLAT_TYPE_SHOP;
     }

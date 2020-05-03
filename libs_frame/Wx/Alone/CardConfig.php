@@ -67,8 +67,8 @@ class CardConfig extends WxBaseAlone
     public function __construct(string $appId)
     {
         parent::__construct();
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
-        $this->appid = $shopConfig->getAppId();
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
+        $this->appid = $accountConfig->getAppId();
         $this->reqData['timestamp'] = Tool::getNowTime();
         $this->reqData['nonceStr'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['signType'] = 'SHA1';

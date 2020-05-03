@@ -109,12 +109,12 @@ class RedPackNormal extends WxBasePayment
             'PRODUCT_8' => 1,
         ];
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/sendredpack';
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
-        $this->reqData['mch_id'] = $shopConfig->getPayMchId();
-        $this->reqData['wxappid'] = $shopConfig->getAppId();
+        $this->reqData['mch_id'] = $accountConfig->getPayMchId();
+        $this->reqData['wxappid'] = $accountConfig->getAppId();
         $this->reqData['total_num'] = 1;
-        $this->reqData['client_ip'] = $shopConfig->getClientIp();
+        $this->reqData['client_ip'] = $accountConfig->getClientIp();
     }
 
     public function __clone()
@@ -300,12 +300,12 @@ class RedPackNormal extends WxBasePayment
             'code' => 0
         ];
 
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['wxappid']);
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['wxappid']);
         $tmpKey = tmpfile();
-        fwrite($tmpKey, $shopConfig->getSslKey());
+        fwrite($tmpKey, $accountConfig->getSslKey());
         $tmpKeyData = stream_get_meta_data($tmpKey);
         $tmpCert = tmpfile();
-        fwrite($tmpCert, $shopConfig->getSslCert());
+        fwrite($tmpCert, $accountConfig->getSslCert());
         $tmpCertData = stream_get_meta_data($tmpCert);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData);

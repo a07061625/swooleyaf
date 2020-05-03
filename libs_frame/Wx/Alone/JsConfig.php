@@ -39,11 +39,11 @@ class JsConfig extends WxBaseAlone
     public function __construct(string $appId)
     {
         parent::__construct();
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
-        $this->reqData['appId'] = $shopConfig->getAppId();
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
+        $this->reqData['appId'] = $accountConfig->getAppId();
         $this->reqData['timestamp'] = Tool::getNowTime();
         $this->reqData['nonceStr'] = Tool::createNonceStr(32, 'numlower');
-        $this->url = $shopConfig->getPayAuthUrl();
+        $this->url = $accountConfig->getPayAuthUrl();
         $this->platType = WxUtilBase::PLAT_TYPE_SHOP;
     }
 

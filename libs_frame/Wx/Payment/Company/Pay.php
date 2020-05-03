@@ -71,10 +71,10 @@ class Pay extends WxBasePayment
     {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers';
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
-        $this->reqData['mch_appid'] = $shopConfig->getAppId();
-        $this->reqData['mchid'] = $shopConfig->getPayMchId();
-        $this->reqData['spbill_create_ip'] = $shopConfig->getClientIp();
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
+        $this->reqData['mch_appid'] = $accountConfig->getAppId();
+        $this->reqData['mchid'] = $accountConfig->getPayMchId();
+        $this->reqData['spbill_create_ip'] = $accountConfig->getClientIp();
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['check_name'] = 'NO_CHECK';
         $this->reqData['amount'] = 0;
@@ -185,12 +185,12 @@ class Pay extends WxBasePayment
             'code' => 0,
         ];
 
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['mch_appid']);
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['mch_appid']);
         $tmpKey = tmpfile();
-        fwrite($tmpKey, $shopConfig->getSslKey());
+        fwrite($tmpKey, $accountConfig->getSslKey());
         $tmpKeyData = stream_get_meta_data($tmpKey);
         $tmpCert = tmpfile();
-        fwrite($tmpCert, $shopConfig->getSslCert());
+        fwrite($tmpCert, $accountConfig->getSslCert());
         $tmpCertData = stream_get_meta_data($tmpCert);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData);

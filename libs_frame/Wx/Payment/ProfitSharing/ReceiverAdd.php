@@ -48,8 +48,8 @@ class ReceiverAdd extends WxBasePayment
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/profitsharingaddreceiver';
         $this->merchantType = self::MERCHANT_TYPE_SUB;
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
-        $this->setAppIdAndMchId($shopConfig);
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
+        $this->setAppIdAndMchId($accountConfig);
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['sign_type'] = 'HMAC-SHA256';
     }
