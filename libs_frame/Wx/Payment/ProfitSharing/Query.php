@@ -48,7 +48,7 @@ class Query extends WxBasePayment
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/profitsharingquery';
         $this->merchantType = self::MERCHANT_TYPE_SUB;
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->setAppIdAndMchId($shopConfig);
         $this->appid = $this->reqData['appid'];
         unset($this->reqData['sub_appid']);

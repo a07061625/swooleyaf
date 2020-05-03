@@ -43,7 +43,7 @@ final class WxUtilAccount extends WxUtilAlone
             $needStr1 .= $key . '=' . $value . '&';
         }
 
-        $payKey = WxConfigSingleton::getInstance()->getShopConfig($appId)->getPayKey();
+        $payKey = WxConfigSingleton::getInstance()->getAccountConfig($appId)->getPayKey();
         $needStr1 .= 'key=' . $payKey;
         //签名步骤三：加密
         if ($signType == 'md5') {
@@ -95,7 +95,7 @@ final class WxUtilAccount extends WxUtilAlone
             return $resArr;
         }
 
-        $password = md5(WxConfigSingleton::getInstance()->getShopConfig($data['appid'])->getPayKey());
+        $password = md5(WxConfigSingleton::getInstance()->getAccountConfig($data['appid'])->getPayKey());
         $decryptMsg = openssl_decrypt($decryptData, 'aes-256-ecb', $password, OPENSSL_RAW_DATA);
         $refundData = Tool::xmlToArray($decryptMsg);
         if (isset($refundData['refund_id'])) {
@@ -123,7 +123,7 @@ final class WxUtilAccount extends WxUtilAlone
             throw new WxException('加密数据不能为空', ErrorCode::WX_POST_ERROR);
         }
 
-        $keyContent = WxConfigSingleton::getInstance()->getShopConfig($appId)->getSslCompanyBank();
+        $keyContent = WxConfigSingleton::getInstance()->getAccountConfig($appId)->getSslCompanyBank();
         if (strlen($keyContent) == 0) {
             throw new WxException('银行卡公钥不能为空', ErrorCode::WX_POST_ERROR);
         }

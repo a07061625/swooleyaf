@@ -39,7 +39,7 @@ class JsConfig extends WxBaseAlone
     public function __construct(string $appId)
     {
         parent::__construct();
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->reqData['appId'] = $shopConfig->getAppId();
         $this->reqData['timestamp'] = Tool::getNowTime();
         $this->reqData['nonceStr'] = Tool::createNonceStr(32, 'numlower');

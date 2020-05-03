@@ -114,7 +114,7 @@ class RedPackGroup extends WxBasePayment
             'PRODUCT_8' => 1,
         ];
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/sendgroupredpack';
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['mch_id'] = $shopConfig->getPayMchId();
         $this->reqData['wxappid'] = $shopConfig->getAppId();
@@ -306,7 +306,7 @@ class RedPackGroup extends WxBasePayment
             'code' => 0
         ];
         
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($this->reqData['wxappid']);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['wxappid']);
         $tmpKey = tmpfile();
         fwrite($tmpKey, $shopConfig->getSslKey());
         $tmpKeyData = stream_get_meta_data($tmpKey);

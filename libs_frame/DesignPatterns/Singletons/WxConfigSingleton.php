@@ -165,7 +165,7 @@ class WxConfigSingleton
      * @return \Wx\WxConfigAccount
      * @throws \SyException\Wx\WxException
      */
-    public function getShopConfig(string $appId)
+    public function getAccountConfig(string $appId)
     {
         $nowTime = Tool::getNowTime();
         $accountConfig = $this->getLocalAccountConfig($appId);
