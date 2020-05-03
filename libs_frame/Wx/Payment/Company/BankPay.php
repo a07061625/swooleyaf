@@ -5,17 +5,17 @@
  * Date: 2018/12/12 0012
  * Time: 17:08
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\Company;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class PayCompanyBank extends WxBaseShop
+class BankPay extends WxBasePayment
 {
     const BANK_CODE_CMB = '1001';
     const BANK_CODE_ICBC = '1002';
@@ -150,7 +150,7 @@ class PayCompanyBank extends WxBaseShop
             throw new WxException('收款方用户名不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
-        $encryptData = WxUtilShop::encryptRsaCompanyBank($this->appid, [
+        $encryptData = WxUtilAccount::encryptRsaCompanyBank($this->appid, [
             'account_no' => $accountNo,
             'account_name' => $accountName,
         ]);
@@ -193,7 +193,7 @@ class PayCompanyBank extends WxBaseShop
         if (!isset($this->reqData['amount'])) {
             throw new WxException('付款金额不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->appid);
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->appid);
 
         $resArr = [
             'code' => 0,
