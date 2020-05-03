@@ -5,17 +5,17 @@
  * Date: 18-9-12
  * Time: 上午1:44
  */
-namespace Wx\Shop\Tools;
+namespace Wx\Account\Tools;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 use Wx\WxUtilAlone;
 use Wx\WxUtilOpenBase;
 
-class QuotaClear extends WxBaseShop
+class QuotaClear extends WxBaseAccount
 {
     /**
      * 公众号APPID

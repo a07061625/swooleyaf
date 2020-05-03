@@ -5,16 +5,16 @@
  * Date: 2018/12/13 0013
  * Time: 15:12
  */
-namespace Wx\Shop\User;
+namespace Wx\Account\User;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class TaggingUsers extends WxBaseShop
+class UserGetTag extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -27,16 +27,17 @@ class TaggingUsers extends WxBaseShop
      */
     private $tagid = 0;
     /**
-     * 用户openid列表
-     * @var array
+     * 第一个用户openid
+     * @var string
      */
-    private $openid_list = [];
+    private $next_openid = '';
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/tags/members/batchtagging?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/user/tag/get?access_token=';
         $this->appid = $appId;
+        $this->reqData['next_openid'] = '';
     }
 
     private function __clone()
@@ -57,25 +58,13 @@ class TaggingUsers extends WxBaseShop
     }
 
     /**
-     * @param array $openidList
-     */
-    public function setOpenidList(array $openidList)
-    {
-        foreach ($openidList as $eOpenid) {
-            if (is_string($eOpenid) && (strlen($eOpenid) == 28)) {
-                $this->openid_list[$eOpenid] = 1;
-            }
-        }
-    }
-
-    /**
-     * @param string $openid
+     * @param string $nextOpenid
      * @throws \SyException\Wx\WxException
      */
-    public function addOpenid(string $openid)
+    public function setNextOpenid(string $nextOpenid)
     {
-        if (strlen($openid) == 28) {
-            $this->openid_list[$openid] = 1;
+        if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $nextOpenid) > 0) {
+            $this->reqData['next_openid'] = $nextOpenid;
         } else {
             throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);
         }
@@ -83,30 +72,23 @@ class TaggingUsers extends WxBaseShop
 
     public function getDetail() : array
     {
-        $num = count($this->openid_list);
-        if ($num == 0) {
-            throw new WxException('用户openid列表不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($num > 100) {
-            throw new WxException('用户openid列表超过100个', ErrorCode::WX_PARAM_ERROR);
-        }
         if (!isset($this->reqData['tagid'])) {
             throw new WxException('标签ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['openid_list'] = array_keys($this->openid_list);
 
         $resArr = [
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
-            $resArr['data'] = $sendData;
-        } else {
+        if (isset($sendData['errcode'])) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['errmsg'];
+        } else {
+            $resArr['data'] = $sendData;
         }
 
         return $resArr;

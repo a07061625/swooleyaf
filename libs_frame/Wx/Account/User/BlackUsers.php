@@ -5,16 +5,16 @@
  * Date: 2018/12/13 0013
  * Time: 15:12
  */
-namespace Wx\Shop\User;
+namespace Wx\Account\User;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class BlackUsers extends WxBaseShop
+class BlackUsers extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -77,7 +77,7 @@ class BlackUsers extends WxBaseShop
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);

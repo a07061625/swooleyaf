@@ -5,15 +5,15 @@
  * Date: 18-9-12
  * Time: 上午1:44
  */
-namespace Wx\Shop\Tools;
+namespace Wx\Account\Tools;
 
 use SyConstant\ErrorCode;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 use Wx\WxUtilAlone;
 
-class IpList extends WxBaseShop
+class IpList extends WxBaseAccount
 {
     public function __construct(string $appId)
     {

@@ -5,22 +5,27 @@
  * Date: 2018/12/13 0013
  * Time: 15:12
  */
-namespace Wx\Shop\User;
+namespace Wx\Account\User;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class TagCreate extends WxBaseShop
+class TagUpdate extends WxBaseAccount
 {
     /**
      * 公众号ID
      * @var string
      */
     private $appid = '';
+    /**
+     * 标签ID
+     * @var int
+     */
+    private $id = 0;
     /**
      * 标签名
      * @var string
@@ -30,12 +35,25 @@ class TagCreate extends WxBaseShop
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/tags/create?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/tags/update?access_token=';
         $this->appid = $appId;
     }
 
     private function __clone()
     {
+    }
+
+    /**
+     * @param int $id
+     * @throws \SyException\Wx\WxException
+     */
+    public function setId(int $id)
+    {
+        if ($id > 0) {
+            $this->reqData['id'] = $id;
+        } else {
+            throw new WxException('标签ID不合法', ErrorCode::WX_PARAM_ERROR);
+        }
     }
 
     /**
@@ -54,6 +72,9 @@ class TagCreate extends WxBaseShop
 
     public function getDetail() : array
     {
+        if (!isset($this->reqData['id'])) {
+            throw new WxException('标签ID不能为空', ErrorCode::WX_PARAM_ERROR);
+        }
         if (!isset($this->reqData['name'])) {
             throw new WxException('标签名不能为空', ErrorCode::WX_PARAM_ERROR);
         }
@@ -62,13 +83,13 @@ class TagCreate extends WxBaseShop
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode([
             'tag' => $this->reqData,
         ], JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if (isset($sendData['tag'])) {
+        if ($sendData['errcode'] == 0) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
