@@ -5,17 +5,17 @@
  * Date: 18-9-11
  * Time: 下午11:22
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\Order;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class DownloadBill extends WxBaseShop
+class DownloadBill extends WxBasePayment
 {
     /**
      * 公众号ID
@@ -138,7 +138,7 @@ class DownloadBill extends WxBaseShop
         if (strlen($this->output_file) == 0) {
             throw new WxException('输出文件不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
             'code' => 0
