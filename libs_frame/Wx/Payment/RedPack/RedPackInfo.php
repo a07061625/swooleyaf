@@ -5,17 +5,17 @@
  * Date: 2018/12/11 0011
  * Time: 20:08
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\RedPack;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class RedPackInfo extends WxBaseShop
+class RedPackInfo extends WxBasePayment
 {
     /**
      * 随机字符串
@@ -75,7 +75,7 @@ class RedPackInfo extends WxBaseShop
         if (!isset($this->reqData['mch_billno'])) {
             throw new WxException('商户订单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
             'code' => 0
