@@ -86,10 +86,10 @@ class OrderRefund extends WxBasePayment
             throw new WxException('商户类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/secapi/pay/refund';
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->merchantType = $merchantType;
-        $this->setAppIdAndMchId($shopConfig);
-        $this->reqData['op_user_id'] = $shopConfig->getPayMchId();
+        $this->setAppIdAndMchId($accountConfig);
+        $this->reqData['op_user_id'] = $accountConfig->getPayMchId();
         $this->reqData['sign_type'] = 'MD5';
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['refund_fee_type'] = 'CNY';
@@ -201,12 +201,12 @@ class OrderRefund extends WxBasePayment
             'code' => 0
         ];
 
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['appid']);
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['appid']);
         $tmpKey = tmpfile();
-        fwrite($tmpKey, $shopConfig->getSslKey());
+        fwrite($tmpKey, $accountConfig->getSslKey());
         $tmpKeyData = stream_get_meta_data($tmpKey);
         $tmpCert = tmpfile();
-        fwrite($tmpCert, $shopConfig->getSslCert());
+        fwrite($tmpCert, $accountConfig->getSslCert());
         $tmpCertData = stream_get_meta_data($tmpCert);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData);

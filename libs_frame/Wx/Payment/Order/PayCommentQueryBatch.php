@@ -67,9 +67,9 @@ class PayCommentQueryBatch extends WxBasePayment
     {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/billcommentsp/batchquerycomment';
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
-        $this->reqData['appid'] = $shopConfig->getAppId();
-        $this->reqData['mch_id'] = $shopConfig->getPayMchId();
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
+        $this->reqData['appid'] = $accountConfig->getAppId();
+        $this->reqData['mch_id'] = $accountConfig->getPayMchId();
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['sign_type'] = 'HMAC-SHA256';
         $this->reqData['offset'] = 0;
@@ -152,12 +152,12 @@ class PayCommentQueryBatch extends WxBasePayment
             'code' => 0
         ];
 
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['appid']);
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['appid']);
         $tmpKey = tmpfile();
-        fwrite($tmpKey, $shopConfig->getSslKey());
+        fwrite($tmpKey, $accountConfig->getSslKey());
         $tmpKeyData = stream_get_meta_data($tmpKey);
         $tmpCert = tmpfile();
-        fwrite($tmpCert, $shopConfig->getSslCert());
+        fwrite($tmpCert, $accountConfig->getSslCert());
         $tmpCertData = stream_get_meta_data($tmpCert);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData);

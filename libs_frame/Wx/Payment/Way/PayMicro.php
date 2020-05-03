@@ -117,10 +117,10 @@ class PayMicro extends WxBasePayment
     {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/micropay';
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
-        $this->reqData['appid'] = $shopConfig->getAppId();
-        $this->reqData['mch_id'] = $shopConfig->getPayMchId();
-        $this->reqData['spbill_create_ip'] = $shopConfig->getClientIp();
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
+        $this->reqData['appid'] = $accountConfig->getAppId();
+        $this->reqData['mch_id'] = $accountConfig->getPayMchId();
+        $this->reqData['spbill_create_ip'] = $accountConfig->getClientIp();
         $this->reqData['sign_type'] = 'MD5';
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['fee_type'] = 'CNY';
