@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use SyTool\Tool;
 use Wx\WxBaseShop;
 use Wx\WxUtilBase;
-use Wx\WxUtilBaseAlone;
+use Wx\WxUtilAlone;
 
 class InfoListOnline extends WxBaseShop
 {
@@ -38,7 +38,7 @@ class InfoListOnline extends WxBaseShop
             'code' => 0
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilBaseAlone::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appid);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
         if (isset($sendData['kf_online_list'])) {

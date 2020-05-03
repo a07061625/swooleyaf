@@ -11,7 +11,7 @@ use SyConstant\ErrorCode;
 use SyTool\Tool;
 use Wx\WxBaseOpen;
 use Wx\WxUtilBase;
-use Wx\WxUtilBaseAlone;
+use Wx\WxUtilAlone;
 
 /**
  * 创建开放平台
@@ -42,7 +42,7 @@ class OpenCreate extends WxBaseOpen
             'code' => 0
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilBaseAlone::getAccessToken($this->reqData['appid']);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->reqData['appid']);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);

@@ -12,7 +12,7 @@ use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilBaseAlone;
+use Wx\WxUtilAlone;
 
 class ConditionalDel extends WxBaseAccount
 {
@@ -61,7 +61,7 @@ class ConditionalDel extends WxBaseAccount
             'code' => 0
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilBaseAlone::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);

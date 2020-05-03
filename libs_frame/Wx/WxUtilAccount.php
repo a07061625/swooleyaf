@@ -13,7 +13,7 @@ use SyException\Wx\WxException;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
-final class WxUtilAccount extends WxUtilBaseAlone
+final class WxUtilAccount extends WxUtilAlone
 {
     use SimpleTrait;
 

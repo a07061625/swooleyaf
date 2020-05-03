@@ -12,7 +12,7 @@ use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseMini;
 use Wx\WxUtilBase;
-use Wx\WxUtilBaseAlone;
+use Wx\WxUtilAlone;
 
 class Qrcode extends WxBaseMini
 {
@@ -166,7 +166,7 @@ class Qrcode extends WxBaseMini
             'code' => 0
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilBaseAlone::getAccessToken($this->app_id);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->app_id);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);

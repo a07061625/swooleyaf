@@ -12,7 +12,7 @@ use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilBaseAlone;
+use Wx\WxUtilAlone;
 use Wx\WxUtilOpenBase;
 
 class CustomMsgSend extends WxBaseAccount
@@ -152,7 +152,7 @@ class CustomMsgSend extends WxBaseAccount
         if (strlen($this->accessToken) > 0) {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . $this->accessToken;
         } elseif ($this->platType == WxUtilBase::PLAT_TYPE_SHOP) {
-            $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilBaseAlone::getAccessToken($this->appId);
+            $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appId);
         } else {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getAuthorizerAccessToken($this->appId);
         }

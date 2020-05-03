@@ -12,7 +12,7 @@ use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseMini;
 use Wx\WxUtilBase;
-use Wx\WxUtilBaseAlone;
+use Wx\WxUtilAlone;
 use Wx\WxUtilOpenBase;
 
 class MsgTemplateTitleList extends WxBaseMini
@@ -84,7 +84,7 @@ class MsgTemplateTitleList extends WxBaseMini
         ];
 
         if ($this->platType == WxUtilBase::PLAT_TYPE_MINI) {
-            $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilBaseAlone::getAccessToken($this->appId);
+            $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appId);
         } else {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getAuthorizerAccessToken($this->appId);
         }

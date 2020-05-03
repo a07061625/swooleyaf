@@ -9,7 +9,7 @@ namespace Wx;
 
 use SyTrait\SimpleTrait;
 
-final class WxUtilMerchant extends WxUtilBaseAlone
+final class WxUtilMerchant extends WxUtilAlone
 {
     use SimpleTrait;
 }
