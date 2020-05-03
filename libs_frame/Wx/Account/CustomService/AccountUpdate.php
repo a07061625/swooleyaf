@@ -5,16 +5,16 @@
  * Date: 2018/12/20 0020
  * Time: 10:52
  */
-namespace Wx\Shop\CustomService;
+namespace Wx\Account\CustomService;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class AccountUpdateHeadImage extends WxBaseShop
+class AccountUpdate extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -27,15 +27,15 @@ class AccountUpdateHeadImage extends WxBaseShop
      */
     private $kf_account = '';
     /**
-     * 文件全路径,包括文件名
+     * 客服昵称
      * @var string
      */
-    private $file_path = '';
+    private $nickname = '';
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/customservice/kfaccount/uploadheadimg?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/customservice/kfaccount/update?access_token=';
         $this->appid = $appId;
     }
 
@@ -51,40 +51,41 @@ class AccountUpdateHeadImage extends WxBaseShop
     {
         $accountLength = strlen($kfAccount);
         if (($accountLength > 0) && ($accountLength <= 30)) {
-            $this->kf_account = $kfAccount;
+            $this->reqData['kf_account'] = $kfAccount;
         } else {
             throw new WxException('客服帐号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
     /**
-     * @param string $filePath
+     * @param string $nickname
      * @throws \SyException\Wx\WxException
      */
-    public function setFilePath(string $filePath)
+    public function setNickname(string $nickname)
     {
-        if (file_exists($filePath) && is_readable($filePath)) {
-            $this->reqData['media'] = new \CURLFile($filePath);
+        $nameLength = mb_strlen($nickname);
+        if (($nameLength > 0) && ($nameLength <= 16)) {
+            $this->reqData['nickname'] = $nickname;
         } else {
-            throw new WxException('文件不合法', ErrorCode::WX_PARAM_ERROR);
+            throw new WxException('客服昵称不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
     public function getDetail() : array
     {
-        if (strlen($this->kf_account) == 0) {
+        if (!isset($this->reqData['kf_account'])) {
             throw new WxException('客服帐号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if (!isset($this->reqData['media'])) {
-            throw new WxException('文件不能为空', ErrorCode::WX_PARAM_ERROR);
+        if (!isset($this->reqData['nickname'])) {
+            throw new WxException('客服昵称不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid) . '&kf_account=' . urlencode($this->kf_account);
-        $this->curlConfigs[CURLOPT_POSTFIELDS] = $this->reqData;
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
         if ($sendData['errcode'] == 0) {

@@ -5,17 +5,17 @@
  * Date: 2018/9/12 0012
  * Time: 15:09
  */
-namespace Wx\Shop\Authorize;
+namespace Wx\Account\Authorize;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
 
 /**
  * 网站应用授权地址
- * @package Wx\Shop\Authorize
+ * @package Wx\Account\Authorize
  */
-class WebAuthorizeUrl extends WxBaseShop
+class WebAuthorizeUrl extends WxBaseAccount
 {
     /**
      * 重定向链接
