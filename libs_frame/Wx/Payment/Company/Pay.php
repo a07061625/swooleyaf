@@ -71,7 +71,7 @@ class Pay extends WxBasePayment
     {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers';
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->reqData['mch_appid'] = $shopConfig->getAppId();
         $this->reqData['mchid'] = $shopConfig->getPayMchId();
         $this->reqData['spbill_create_ip'] = $shopConfig->getClientIp();
@@ -185,7 +185,7 @@ class Pay extends WxBasePayment
             'code' => 0,
         ];
 
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($this->reqData['mch_appid']);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['mch_appid']);
         $tmpKey = tmpfile();
         fwrite($tmpKey, $shopConfig->getSslKey());
         $tmpKeyData = stream_get_meta_data($tmpKey);

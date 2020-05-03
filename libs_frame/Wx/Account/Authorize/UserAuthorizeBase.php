@@ -26,7 +26,7 @@ class UserAuthorizeBase extends WxBaseAccount
     {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/sns/oauth2/access_token';
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->reqData['appid'] = $shopConfig->getAppId();
         $this->reqData['secret'] = $shopConfig->getSecret();
         $this->reqData['grant_type'] = 'authorization_code';

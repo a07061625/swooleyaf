@@ -47,7 +47,7 @@ class RedPackInfo extends WxBasePayment
     {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/gethbinfo';
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['mch_id'] = $shopConfig->getPayMchId();
         $this->reqData['appid'] = $shopConfig->getAppId();
@@ -81,7 +81,7 @@ class RedPackInfo extends WxBasePayment
             'code' => 0
         ];
 
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($this->reqData['appid']);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['appid']);
         $tmpKey = tmpfile();
         fwrite($tmpKey, $shopConfig->getSslKey());
         $tmpKeyData = stream_get_meta_data($tmpKey);

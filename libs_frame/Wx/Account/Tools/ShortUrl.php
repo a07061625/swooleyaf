@@ -43,7 +43,7 @@ class ShortUrl extends WxBaseAccount
     {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/tools/shorturl';
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->reqData['appid'] = $shopConfig->getAppId();
         $this->reqData['mch_id'] = $shopConfig->getPayMchId();
         $this->reqData['nonce_str'] = Tool::createNonceStr(32);

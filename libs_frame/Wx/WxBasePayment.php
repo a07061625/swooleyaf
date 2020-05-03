@@ -47,7 +47,7 @@ abstract class WxBasePayment extends WxBase
             if (strlen($merchantAppId) == 0) {
                 throw new WxException('服务商微信号不能为空', ErrorCode::WX_PARAM_ERROR);
             }
-            $merchantConfig = WxConfigSingleton::getInstance()->getShopConfig($merchantAppId);
+            $merchantConfig = WxConfigSingleton::getInstance()->getAccountConfig($merchantAppId);
             $this->reqData['appid'] = $merchantConfig->getAppId();
             $this->reqData['mch_id'] = $merchantConfig->getPayMchId();
             $this->reqData['sub_appid'] = $configAccount->getAppId();
