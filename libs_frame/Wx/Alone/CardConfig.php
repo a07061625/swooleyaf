@@ -11,7 +11,6 @@ use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\Shop\Pay\JsConfig;
 use Wx\WxBaseAlone;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;

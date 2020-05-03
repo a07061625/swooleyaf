@@ -5,17 +5,17 @@
  * Date: 2018/12/12 0012
  * Time: 15:44
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\Coupon;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class CouponSend extends WxBaseShop
+class CouponSend extends WxBasePayment
 {
     /**
      * 代金券批次id
@@ -174,7 +174,7 @@ class CouponSend extends WxBaseShop
         if (!isset($this->reqData['openid'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
             'code' => 0

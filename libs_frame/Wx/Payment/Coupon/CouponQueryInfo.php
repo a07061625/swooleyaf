@@ -5,23 +5,28 @@
  * Date: 2018/12/12 0012
  * Time: 15:44
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\Coupon;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class CouponQueryStock extends WxBaseShop
+class CouponQueryInfo extends WxBasePayment
 {
     /**
-     * 代金券批次id
+     * 代金券id
      * @var string
      */
-    private $coupon_stock_id = '';
+    private $coupon_id = '';
+    /**
+     * 用户openid
+     * @var string
+     */
+    private $openid = '';
     /**
      * 公众号ID
      * @var string
@@ -32,6 +37,11 @@ class CouponQueryStock extends WxBaseShop
      * @var string
      */
     private $mch_id = '';
+    /**
+     * 批次号
+     * @var string
+     */
+    private $stock_id = '';
     /**
      * 操作员
      * @var string
@@ -61,7 +71,7 @@ class CouponQueryStock extends WxBaseShop
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/query_coupon_stock';
+        $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/querycouponsinfo';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->reqData['appid'] = $shopConfig->getAppId();
         $this->reqData['mch_id'] = $shopConfig->getPayMchId();
@@ -76,15 +86,41 @@ class CouponQueryStock extends WxBaseShop
     }
 
     /**
-     * @param string $couponStockId
+     * @param string $couponId
      * @throws \SyException\Wx\WxException
      */
-    public function setCouponStockId(string $couponStockId)
+    public function setCouponId(string $couponId)
     {
-        if (ctype_digit($couponStockId) && (strlen($couponStockId) <= 64)) {
-            $this->reqData['coupon_stock_id'] = $couponStockId;
+        if (ctype_digit($couponId)) {
+            $this->reqData['coupon_id'] = $couponId;
         } else {
-            throw new WxException('代金券批次id不合法', ErrorCode::WX_PARAM_ERROR);
+            throw new WxException('代金券id不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @param string $openid
+     * @throws \SyException\Wx\WxException
+     */
+    public function setOpenid(string $openid)
+    {
+        if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
+            $this->reqData['openid'] = $openid;
+        } else {
+            throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @param string $stockId
+     * @throws \SyException\Wx\WxException
+     */
+    public function setStockId(string $stockId)
+    {
+        if (ctype_digit($stockId) && (strlen($stockId) <= 64)) {
+            $this->reqData['stock_id'] = $stockId;
+        } else {
+            throw new WxException('批次号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
@@ -113,10 +149,16 @@ class CouponQueryStock extends WxBaseShop
 
     public function getDetail() : array
     {
-        if (!isset($this->reqData['coupon_stock_id'])) {
-            throw new WxException('代金券批次id不能为空', ErrorCode::WX_PARAM_ERROR);
+        if (!isset($this->reqData['coupon_id'])) {
+            throw new WxException('代金券id不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
+        if (!isset($this->reqData['openid'])) {
+            throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
+        }
+        if (!isset($this->reqData['stock_id'])) {
+            throw new WxException('批次号不能为空', ErrorCode::WX_PARAM_ERROR);
+        }
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
             'code' => 0,
