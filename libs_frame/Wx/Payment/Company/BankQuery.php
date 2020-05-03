@@ -42,7 +42,7 @@ class BankQuery extends WxBasePayment
     {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaysptrans/query_bank';
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->appid = $shopConfig->getAppId();
         $this->reqData['mch_id'] = $shopConfig->getPayMchId();
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
@@ -76,7 +76,7 @@ class BankQuery extends WxBasePayment
             'code' => 0,
         ];
 
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($this->appid);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->appid);
         $tmpKey = tmpfile();
         fwrite($tmpKey, $shopConfig->getSslKey());
         $tmpKeyData = stream_get_meta_data($tmpKey);

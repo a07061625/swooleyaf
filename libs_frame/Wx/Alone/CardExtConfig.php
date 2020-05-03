@@ -52,7 +52,7 @@ class CardExtConfig extends WxBaseAlone
     public function __construct(string $appId)
     {
         parent::__construct();
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->appid = $shopConfig->getAppId();
         $this->timestamp = Tool::getNowTime();
         $this->nonce_str = Tool::createNonceStr(32, 'numlower');

@@ -71,7 +71,7 @@ class RefundQuery extends WxBasePayment
             throw new WxException('商户类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/refundquery';
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->merchantType = $merchantType;
         $this->setAppIdAndMchId($shopConfig);
         $this->reqData['sign_type'] = 'MD5';

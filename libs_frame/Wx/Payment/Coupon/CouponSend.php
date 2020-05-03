@@ -77,7 +77,7 @@ class CouponSend extends WxBasePayment
     {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/send_coupon';
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->reqData['appid'] = $shopConfig->getAppId();
         $this->reqData['mch_id'] = $shopConfig->getPayMchId();
         $this->reqData['op_user_id'] = $shopConfig->getPayMchId();
@@ -180,7 +180,7 @@ class CouponSend extends WxBasePayment
             'code' => 0
         ];
 
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($this->reqData['appid']);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['appid']);
         $tmpKey = tmpfile();
         fwrite($tmpKey, $shopConfig->getSslKey());
         $tmpKeyData = stream_get_meta_data($tmpKey);

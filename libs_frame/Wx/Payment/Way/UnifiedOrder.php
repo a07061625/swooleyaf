@@ -174,7 +174,7 @@ class UnifiedOrder extends WxBasePayment
         }
 
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
-        $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
+        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->merchantType = $merchantType;
         $this->setAppIdAndMchId($shopConfig);
         $this->reqData['notify_url'] = $shopConfig->getPayNotifyUrl();
