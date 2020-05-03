@@ -72,10 +72,10 @@ class CouponQueryInfo extends WxBasePayment
     {
         parent::__construct();
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/querycouponsinfo';
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
-        $this->reqData['appid'] = $shopConfig->getAppId();
-        $this->reqData['mch_id'] = $shopConfig->getPayMchId();
-        $this->reqData['op_user_id'] = $shopConfig->getPayMchId();
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
+        $this->reqData['appid'] = $accountConfig->getAppId();
+        $this->reqData['mch_id'] = $accountConfig->getPayMchId();
+        $this->reqData['op_user_id'] = $accountConfig->getPayMchId();
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['version'] = '1.0';
         $this->reqData['type'] = 'XML';

@@ -20,9 +20,9 @@ class AccessToken extends WxBaseAlone
     {
         parent::__construct();
         $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/token';
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
-        $this->reqData['appid'] = $shopConfig->getAppId();
-        $this->reqData['secret'] = $shopConfig->getSecret();
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
+        $this->reqData['appid'] = $accountConfig->getAppId();
+        $this->reqData['secret'] = $accountConfig->getSecret();
         $this->reqData['grant_type'] = 'client_credential';
     }
 

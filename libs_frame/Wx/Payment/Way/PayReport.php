@@ -61,12 +61,12 @@ class PayReport extends WxBasePayment
             throw new WxException('商户类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
         $this->serviceUrl = 'https://api.mch.weixin.qq.com/payitil/report';
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
         $this->merchantType = $merchantType;
-        $this->setAppIdAndMchId($shopConfig);
+        $this->setAppIdAndMchId($accountConfig);
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['interface_url'] = 'https://api.mch.weixin.qq.com/pay/batchreport/micropay/total';
-        $this->reqData['user_ip'] = $shopConfig->getClientIp();
+        $this->reqData['user_ip'] = $accountConfig->getClientIp();
     }
 
     private function __clone()

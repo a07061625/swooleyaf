@@ -41,9 +41,9 @@ class PayNativePre extends WxBasePayment
     public function __construct(string $appId)
     {
         parent::__construct();
-        $shopConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
-        $this->reqData['appid'] = $shopConfig->getAppId();
-        $this->reqData['mch_id'] = $shopConfig->getPayMchId();
+        $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($appId);
+        $this->reqData['appid'] = $accountConfig->getAppId();
+        $this->reqData['mch_id'] = $accountConfig->getPayMchId();
         $this->reqData['time_stamp'] = Tool::getNowTime();
         $this->reqData['nonce_str'] = Tool::createNonceStr(32);
     }
