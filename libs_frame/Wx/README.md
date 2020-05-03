@@ -3,7 +3,7 @@
 - Alone:独立内容,主要是不局限于开放平台和公众号的内容
 - Corp:企业号相关
 - CorpProvider:企业号服务商相关
-- Merchant:商户号相关
+- Merchant:商户相关
 - Mini:小程序相关
 - Open:第三方开放平台相关
 - OpenCommon:第三方开放平台公共内容
