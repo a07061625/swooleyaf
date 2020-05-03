@@ -2,19 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: 姜伟
- * Date: 2018/12/13 0013
- * Time: 15:12
+ * Date: 18-9-12
+ * Time: 上午12:36
  */
-namespace Wx\Shop\User;
+namespace Wx\Account\User;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
+use Wx\WxUtilAlone;
 
-class UntaggingUsers extends WxBaseShop
+class InfoBatch extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -22,38 +22,20 @@ class UntaggingUsers extends WxBaseShop
      */
     private $appid = '';
     /**
-     * 标签ID
-     * @var int
-     */
-    private $tagid = 0;
-    /**
      * 用户openid列表
      * @var array
      */
-    private $openid_list = [];
+    private $openidList = [];
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/tags/members/batchuntagging?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token=';
         $this->appid = $appId;
     }
 
-    private function __clone()
+    public function __clone()
     {
-    }
-
-    /**
-     * @param int $tagId
-     * @throws \SyException\Wx\WxException
-     */
-    public function setTagId(int $tagId)
-    {
-        if ($tagId > 0) {
-            $this->reqData['tagid'] = $tagId;
-        } else {
-            throw new WxException('标签ID不合法', ErrorCode::WX_PARAM_ERROR);
-        }
     }
 
     /**
@@ -63,7 +45,7 @@ class UntaggingUsers extends WxBaseShop
     {
         foreach ($openidList as $eOpenid) {
             if (is_string($eOpenid) && (strlen($eOpenid) == 28)) {
-                $this->openid_list[$eOpenid] = 1;
+                $this->openidList[$eOpenid] = 1;
             }
         }
     }
@@ -75,7 +57,7 @@ class UntaggingUsers extends WxBaseShop
     public function addOpenid(string $openid)
     {
         if (strlen($openid) == 28) {
-            $this->openid_list[$openid] = 1;
+            $this->openidList[$openid] = 1;
         } else {
             throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);
         }
@@ -83,27 +65,31 @@ class UntaggingUsers extends WxBaseShop
 
     public function getDetail() : array
     {
-        $num = count($this->openid_list);
+        $num = count($this->openidList);
         if ($num == 0) {
             throw new WxException('用户openid列表不能为空', ErrorCode::WX_PARAM_ERROR);
         } elseif ($num > 100) {
             throw new WxException('用户openid列表超过100个', ErrorCode::WX_PARAM_ERROR);
         }
-        if (!isset($this->reqData['tagid'])) {
-            throw new WxException('标签ID不能为空', ErrorCode::WX_PARAM_ERROR);
+
+        $this->reqData['user_list'] = [];
+        foreach ($this->openidList as $eOpenid => $val) {
+            $this->reqData['user_list'][] = [
+                'openid' => $eOpenid,
+                'lang' => 'zh-CN',
+            ];
         }
-        $this->reqData['openid_list'] = array_keys($this->openid_list);
 
         $resArr = [
-            'code' => 0,
+            'code' => 0
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
-            $resArr['data'] = $sendData;
+        if (isset($sendData['user_info_list'])) {
+            $resArr['data'] = $sendData['user_info_list'];
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['errmsg'];

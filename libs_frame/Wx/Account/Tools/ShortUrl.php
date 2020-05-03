@@ -5,18 +5,18 @@
  * Date: 2018/9/11 0011
  * Time: 11:44
  */
-namespace Wx\Shop\Tools;
+namespace Wx\Account\Tools;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyLog\Log;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class ShortUrl extends WxBaseShop
+class ShortUrl extends WxBaseAccount
 {
     /**
      * 商户号
@@ -73,7 +73,7 @@ class ShortUrl extends WxBaseShop
             throw  new WxException('长链接不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);

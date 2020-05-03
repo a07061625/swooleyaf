@@ -5,17 +5,17 @@
  * Date: 2018/12/12 0012
  * Time: 9:43
  */
-namespace Wx\Shop\Tools;
+namespace Wx\Account\Tools;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class AuthCodeToOpenid extends WxBaseShop
+class AuthCodeToOpenid extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -70,7 +70,7 @@ class AuthCodeToOpenid extends WxBaseShop
         if (!isset($this->reqData['auth_code'])) {
             throw new WxException('授权码不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
             'code' => 0
