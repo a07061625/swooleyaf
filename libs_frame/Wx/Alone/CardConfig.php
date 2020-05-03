@@ -12,9 +12,9 @@ use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAlone;
+use Wx\WxUtilAlone;
 use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
-use Wx\WxUtilShop;
 
 class CardConfig extends WxBaseAlone
 {
@@ -145,7 +145,7 @@ class CardConfig extends WxBaseAlone
     public function getDetail() : array
     {
         if ($this->platType == WxUtilBase::PLAT_TYPE_SHOP) { //公众号获取card_ticket
-            $ticket = WxUtilShop::getCardTicket($this->appid);
+            $ticket = WxUtilAlone::getCardTicket($this->appid);
         } else { //第三方平台获取card_ticket
             $ticket = WxUtilOpenBase::getAuthorizerCardTicket($this->appid);
         }
