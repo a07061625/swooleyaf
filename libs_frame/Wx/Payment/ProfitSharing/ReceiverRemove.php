@@ -5,17 +5,17 @@
  * Date: 2019/5/17 0017
  * Time: 15:55
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\ProfitSharing;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class ProfitSharingReceiverRemove extends WxBaseShop
+class ReceiverRemove extends WxBasePayment
 {
     /**
      * 商户号
@@ -76,7 +76,7 @@ class ProfitSharingReceiverRemove extends WxBaseShop
             throw new WxException('分账接收方不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['receiver'] = Tool::jsonEncode($this->receiver, JSON_UNESCAPED_UNICODE);
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid'], 'sha256');
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid'], 'sha256');
 
         $resArr = [
             'code' => 0

@@ -1,21 +1,21 @@
 <?php
 /**
- * 添加分账接收方
+ * 查询分账结果
  * User: 姜伟
  * Date: 2019/5/17 0017
  * Time: 15:55
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\ProfitSharing;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class ProfitSharingReceiverAdd extends WxBaseShop
+class Query extends WxBasePayment
 {
     /**
      * 商户号
@@ -23,33 +23,36 @@ class ProfitSharingReceiverAdd extends WxBaseShop
      */
     private $mch_id = '';
     /**
-     * 子商户号
-     * @var string
-     */
-    private $sub_mch_id = '';
-    /**
      * 公众账号ID
      * @var string
      */
     private $appid = '';
     /**
-     * 子商户公众账号ID
+     * 子商户号
      * @var string
      */
-    private $sub_appid = '';
+    private $sub_mch_id = '';
     /**
-     * 分账接收方
-     * @var array
+     * 微信单号
+     * @var string
      */
-    private $receiver = [];
+    private $transaction_id = '';
+    /**
+     * 商户分账单号
+     * @var string
+     */
+    private $out_order_no = '';
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/profitsharingaddreceiver';
+        $this->serviceUrl = 'https://api.mch.weixin.qq.com/pay/profitsharingquery';
         $this->merchantType = self::MERCHANT_TYPE_SUB;
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->setAppIdAndMchId($shopConfig);
+        $this->appid = $this->reqData['appid'];
+        unset($this->reqData['sub_appid']);
+        unset($this->reqData['appid']);
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['sign_type'] = 'HMAC-SHA256';
     }
@@ -59,24 +62,40 @@ class ProfitSharingReceiverAdd extends WxBaseShop
     }
 
     /**
-     * @param array $receiver
+     * @param string $transactionId
      * @throws \SyException\Wx\WxException
      */
-    public function setReceiver(array $receiver)
+    public function setTransactionId(string $transactionId)
     {
-        if (empty($receiver)) {
-            throw new WxException('分账接收方不合法', ErrorCode::WX_PARAM_ERROR);
+        if (ctype_digit($transactionId)) {
+            $this->reqData['transaction_id'] = $transactionId;
+        } else {
+            throw new WxException('微信单号不合法', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->receiver = $receiver;
+    }
+
+    /**
+     * @param string $outOrderNo
+     * @throws \SyException\Wx\WxException
+     */
+    public function setOutOrderNo(string $outOrderNo)
+    {
+        if (ctype_digit($outOrderNo) && (strlen($outOrderNo) <= 32)) {
+            $this->reqData['out_order_no'] = $outOrderNo;
+        } else {
+            throw new WxException('商户分账单号不合法', ErrorCode::WX_PARAM_ERROR);
+        }
     }
 
     public function getDetail() : array
     {
-        if (empty($this->receiver)) {
-            throw new WxException('分账接收方不能为空', ErrorCode::WX_PARAM_ERROR);
+        if (!isset($this->reqData['transaction_id'])) {
+            throw new WxException('微信单号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['receiver'] = Tool::jsonEncode($this->receiver, JSON_UNESCAPED_UNICODE);
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid'], 'sha256');
+        if (!isset($this->reqData['out_order_no'])) {
+            throw new WxException('商户分账单号不能为空', ErrorCode::WX_PARAM_ERROR);
+        }
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->appid, 'sha256');
 
         $resArr = [
             'code' => 0

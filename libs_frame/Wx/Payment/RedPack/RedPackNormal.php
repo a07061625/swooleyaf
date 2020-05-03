@@ -5,17 +5,17 @@
  * Date: 2018/9/11 0011
  * Time: 17:32
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\RedPack;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class RedPackGroup extends WxBaseShop
+class RedPackNormal extends WxBasePayment
 {
     /**
      * 随机字符串
@@ -57,11 +57,6 @@ class RedPackGroup extends WxBaseShop
      * @var int
      */
     private $total_num = 0;
-    /**
-     * 红包金额设置方式
-     * @var string
-     */
-    private $amt_type = '';
     /**
      * 红包祝福语
      * @var string
@@ -113,13 +108,12 @@ class RedPackGroup extends WxBaseShop
             'PRODUCT_7' => 1,
             'PRODUCT_8' => 1,
         ];
-        $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/sendgroupredpack';
+        $this->serviceUrl = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/sendredpack';
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($appId);
         $this->reqData['nonce_str'] = Tool::createNonceStr(32, 'numlower');
         $this->reqData['mch_id'] = $shopConfig->getPayMchId();
         $this->reqData['wxappid'] = $shopConfig->getAppId();
         $this->reqData['total_num'] = 1;
-        $this->reqData['amt_type'] = 'ALL_RAND';
         $this->reqData['client_ip'] = $shopConfig->getClientIp();
     }
 
@@ -300,12 +294,12 @@ class RedPackGroup extends WxBaseShop
         if ((($this->reqData['total_amount'] < 100) || ($this->reqData['total_amount'] > 20000)) && (!isset($this->reqData['scene_id']))) {
             throw new WxException('场景id不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['wxappid']);
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['wxappid']);
 
         $resArr = [
             'code' => 0
         ];
-        
+
         $shopConfig = WxConfigSingleton::getInstance()->getShopConfig($this->reqData['wxappid']);
         $tmpKey = tmpfile();
         fwrite($tmpKey, $shopConfig->getSslKey());
