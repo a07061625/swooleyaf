@@ -5,16 +5,16 @@
  * Date: 18-9-12
  * Time: 上午1:19
  */
-namespace Wx\Shop\Authorize;
+namespace Wx\Account\Authorize;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 
-class UserAuthorizeBase extends WxBaseShop
+class UserAuthorizeBase extends WxBaseAccount
 {
     /**
      * 授权码

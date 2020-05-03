@@ -5,16 +5,16 @@
  * Date: 2018/12/20 0020
  * Time: 10:52
  */
-namespace Wx\Shop\CustomService;
+namespace Wx\Account\CustomService;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class AccountUpdate extends WxBaseShop
+class AccountAdd extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -35,7 +35,7 @@ class AccountUpdate extends WxBaseShop
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/customservice/kfaccount/update?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/customservice/kfaccount/add?access_token=';
         $this->appid = $appId;
     }
 
@@ -84,7 +84,7 @@ class AccountUpdate extends WxBaseShop
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);

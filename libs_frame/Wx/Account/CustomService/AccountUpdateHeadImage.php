@@ -5,16 +5,16 @@
  * Date: 2018/12/20 0020
  * Time: 10:52
  */
-namespace Wx\Shop\CustomService;
+namespace Wx\Account\CustomService;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class SessionClose extends WxBaseShop
+class AccountUpdateHeadImage extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -27,15 +27,15 @@ class SessionClose extends WxBaseShop
      */
     private $kf_account = '';
     /**
-     * 用户openid
+     * 文件全路径,包括文件名
      * @var string
      */
-    private $openid = '';
+    private $file_path = '';
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/customservice/kfsession/close?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/customservice/kfaccount/uploadheadimg?access_token=';
         $this->appid = $appId;
     }
 
@@ -51,40 +51,40 @@ class SessionClose extends WxBaseShop
     {
         $accountLength = strlen($kfAccount);
         if (($accountLength > 0) && ($accountLength <= 30)) {
-            $this->reqData['kf_account'] = $kfAccount;
+            $this->kf_account = $kfAccount;
         } else {
             throw new WxException('客服帐号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
     /**
-     * @param string $openid
+     * @param string $filePath
      * @throws \SyException\Wx\WxException
      */
-    public function setOpenid(string $openid)
+    public function setFilePath(string $filePath)
     {
-        if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
-            $this->reqData['openid'] = $openid;
+        if (file_exists($filePath) && is_readable($filePath)) {
+            $this->reqData['media'] = new \CURLFile($filePath);
         } else {
-            throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);
+            throw new WxException('文件不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
     public function getDetail() : array
     {
-        if (!isset($this->reqData['kf_account'])) {
+        if (strlen($this->kf_account) == 0) {
             throw new WxException('客服帐号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if (!isset($this->reqData['openid'])) {
-            throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
+        if (!isset($this->reqData['media'])) {
+            throw new WxException('文件不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid);
-        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid) . '&kf_account=' . urlencode($this->kf_account);
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = $this->reqData;
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
         if ($sendData['errcode'] == 0) {

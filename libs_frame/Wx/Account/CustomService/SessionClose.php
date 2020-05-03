@@ -5,16 +5,16 @@
  * Date: 2018/12/20 0020
  * Time: 10:52
  */
-namespace Wx\Shop\CustomService;
+namespace Wx\Account\CustomService;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBaseAccount;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class AccountAdd extends WxBaseShop
+class SessionClose extends WxBaseAccount
 {
     /**
      * 公众号ID
@@ -27,15 +27,15 @@ class AccountAdd extends WxBaseShop
      */
     private $kf_account = '';
     /**
-     * 客服昵称
+     * 用户openid
      * @var string
      */
-    private $nickname = '';
+    private $openid = '';
 
     public function __construct(string $appId)
     {
         parent::__construct();
-        $this->serviceUrl = 'https://api.weixin.qq.com/customservice/kfaccount/add?access_token=';
+        $this->serviceUrl = 'https://api.weixin.qq.com/customservice/kfsession/close?access_token=';
         $this->appid = $appId;
     }
 
@@ -58,16 +58,15 @@ class AccountAdd extends WxBaseShop
     }
 
     /**
-     * @param string $nickname
+     * @param string $openid
      * @throws \SyException\Wx\WxException
      */
-    public function setNickname(string $nickname)
+    public function setOpenid(string $openid)
     {
-        $nameLength = mb_strlen($nickname);
-        if (($nameLength > 0) && ($nameLength <= 16)) {
-            $this->reqData['nickname'] = $nickname;
+        if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
+            $this->reqData['openid'] = $openid;
         } else {
-            throw new WxException('客服昵称不合法', ErrorCode::WX_PARAM_ERROR);
+            throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
@@ -76,15 +75,15 @@ class AccountAdd extends WxBaseShop
         if (!isset($this->reqData['kf_account'])) {
             throw new WxException('客服帐号不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if (!isset($this->reqData['nickname'])) {
-            throw new WxException('客服昵称不能为空', ErrorCode::WX_PARAM_ERROR);
+        if (!isset($this->reqData['openid'])) {
+            throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
             'code' => 0,
         ];
 
-        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilShop::getAccessToken($this->appid);
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAccount::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);

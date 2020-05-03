@@ -5,20 +5,18 @@
  * Date: 18-9-12
  * Time: 上午1:32
  */
-namespace Wx\Shop\Authorize;
+namespace Wx\Account\Authorize;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\Shop\User\InfoBase;
+use Wx\Shop\User\InfoSingle;
+use Wx\WxBaseAccount;
 use Wx\WxUtilBase;
 
-/**
- * 网站应用获取用户信息
- * @package Wx\Shop\Authorize
- */
-class WebUserInfo extends WxBaseShop
+class UserAuthorizeInfo extends WxBaseAccount
 {
     /**
      * 授权码
@@ -66,11 +64,32 @@ class WebUserInfo extends WxBaseShop
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query($this->reqData);
         $sendRes = WxUtilBase::sendGetReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if (isset($sendData['access_token'])) {
-            $resArr['data'] = $sendData;
-        } else {
+        if (!isset($sendData['access_token'])) {
             $resArr['code'] = ErrorCode::WX_GET_ERROR;
             $resArr['message'] = $sendData['errmsg'];
+            return $resArr;
+        }
+
+        $openid = $sendData['openid'];
+        $infoBase = new InfoBase($this->reqData['appid']);
+        $infoBase->setAccessToken($sendData['access_token']);
+        $infoBase->setOpenid($openid);
+        $infoBaseRes = $infoBase->getDetail();
+        if ($infoBase['code'] == 0) {
+            $resArr['data'] = $infoBaseRes['data'];
+        } else if ($infoBaseRes['errcode'] == 40001) {
+            $infoSingle = new InfoSingle($this->reqData['appid']);
+            $infoSingle->setOpenid($openid);
+            $infoSingleRes = $infoSingle->getDetail();
+            if ($infoSingleRes['code'] > 0) {
+                $resArr['data'] = $infoSingleRes['data'];
+            } else {
+                $resArr['code'] = ErrorCode::WX_GET_ERROR;
+                $resArr['message'] = $infoSingleRes['message'];
+            }
+        } else {
+            $resArr['code'] = ErrorCode::WX_GET_ERROR;
+            $resArr['message'] = $infoBaseRes['message'];
         }
 
         return $resArr;
