@@ -7,7 +7,7 @@ use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
-use Wx\Shop\Pay\PayCompanyBankPublicKey;
+use Wx\Payment\Company\BankPublicKey;
 
 class WxConfigDao
 {
@@ -69,7 +69,7 @@ class WxConfigDao
             throw new CheckException('支付密钥不能为空', ErrorCode::COMMON_PARAM_ERROR);
         }
 
-        $bankPublicKey = new PayCompanyBankPublicKey($data['app_id']);
+        $bankPublicKey = new BankPublicKey($data['app_id']);
         $detail = $bankPublicKey->getDetail();
         unset($bankPublicKey);
         if ($detail['code'] > 0) {

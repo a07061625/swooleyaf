@@ -14,7 +14,7 @@ use SyException\Common\CheckException;
 use SyTool\SyUser;
 use SyTool\Tool;
 use SyTrait\SimpleFacadeTrait;
-use Wx\Shop\Pay\UnifiedOrder;
+use Wx\Payment\Way\UnifiedOrder;
 use Wx\WxUtilBase;
 
 class WxMiniJs extends PayApplyFacade

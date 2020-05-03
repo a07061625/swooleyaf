@@ -85,7 +85,7 @@ class PayController extends CommonController
     {
         $appId = (string)\Request\SyRequest::getParams('appid');
         $productId = (string)\Request\SyRequest::getParams('product_id', '');
-        $returnObj = new \Wx\Shop\Pay\NativeReturn($appId);
+        $returnObj = new \Wx\Payment\Way\NativeReturn($appId);
         $redisKey = \SyConstant\Project::REDIS_PREFIX_WX_NATIVE_PRE . $productId;
         $cacheData = \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
         if (is_array($cacheData) && isset($cacheData['cache_key']) && ($cacheData['cache_key'] == $redisKey)) {
@@ -93,7 +93,7 @@ class PayController extends CommonController
             //生成一条新的单号记录
             $orderSn = substr($productId, 0, 4) . \SyTool\Tool::createUniqueId();
             //统一下单
-            $order = new \Wx\Shop\Pay\UnifiedOrder($appId, \Wx\Shop\Pay\UnifiedOrder::TRADE_TYPE_NATIVE);
+            $order = new \Wx\Payment\Way\UnifiedOrder($appId, \Wx\Payment\Way\UnifiedOrder::TRADE_TYPE_NATIVE);
             $order->setBody($cacheData['pay_name']);
             $order->setOutTradeNo($orderSn);
             $order->setTotalFee($cacheData['pay_money']);

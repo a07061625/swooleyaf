@@ -5,17 +5,17 @@
  * Date: 18-9-11
  * Time: 下午11:49
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\Way;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
-use Wx\WxUtilShop;
 
-class PayMicro extends WxBaseShop
+class PayMicro extends WxBasePayment
 {
     /**
      * 公众号ID
@@ -312,7 +312,7 @@ class PayMicro extends WxBaseShop
         if (!isset($this->reqData['auth_code'])) {
             throw new WxException('授权码不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
             'code' => 0

@@ -5,17 +5,17 @@
  * Date: 2018/9/11 0011
  * Time: 11:37
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\Way;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\Account\Tools\ShortUrl;
-use Wx\WxBaseShop;
-use Wx\WxUtilShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 
-class PayNativePre extends WxBaseShop
+class PayNativePre extends WxBasePayment
 {
     /**
      * 商户号
@@ -76,7 +76,7 @@ class PayNativePre extends WxBaseShop
             throw  new WxException('商品ID不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
-        $this->reqData['sign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appid']);
+        $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
         //生成支付链接
         $codeUrl = 'weixin://wxpay/bizpayurl?sign=' . $this->reqData['sign']
                    . '&appid=' . $this->reqData['appid']

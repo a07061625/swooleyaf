@@ -5,15 +5,15 @@
  * Date: 2018/9/11 0011
  * Time: 11:14
  */
-namespace Wx\Shop\Pay;
+namespace Wx\Payment\Way;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
-use Wx\WxBaseShop;
-use Wx\WxUtilShop;
+use Wx\WxBasePayment;
+use Wx\WxUtilAccount;
 
-class JsPayConfig extends WxBaseShop
+class JsPayConfig extends WxBasePayment
 {
     /**
      * 时间戳
@@ -82,7 +82,7 @@ class JsPayConfig extends WxBaseShop
         if (!isset($this->reqData['package'])) {
             throw new WxException('交易会话标识不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $this->reqData['paySign'] = WxUtilShop::createSign($this->reqData, $this->reqData['appId']);
+        $this->reqData['paySign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appId']);
         return $this->reqData;
     }
 }
