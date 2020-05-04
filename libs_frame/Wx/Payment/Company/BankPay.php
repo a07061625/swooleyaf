@@ -14,6 +14,7 @@ use SyTool\Tool;
 use Wx\WxBasePayment;
 use Wx\WxUtilAccount;
 use Wx\WxUtilBase;
+use Wx\WxUtilPayment;
 
 class BankPay extends WxBasePayment
 {
@@ -150,7 +151,7 @@ class BankPay extends WxBasePayment
             throw new WxException('收款方用户名不合法', ErrorCode::WX_PARAM_ERROR);
         }
 
-        $encryptData = WxUtilAccount::encryptRsaCompanyBank($this->appid, [
+        $encryptData = WxUtilPayment::encryptRsaCompanyBank($this->appid, [
             'account_no' => $accountNo,
             'account_name' => $accountName,
         ]);
