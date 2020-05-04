@@ -8,12 +8,12 @@
 namespace PhpOffice\FilterExcel;
 
 /**
- * Class ReadDataRange
+ * Class DataReadRange
  * 限制读取数据的范围,在Reader调用load加载文件之前先调用setReadFilter
  * 参考链接: https://blog.csdn.net/YQXLLWY/article/details/89578114
  * @package PhpOffice\FilterExcel
  */
-class ReadDataRange implements \PHPExcel_Reader_IReadFilter
+class DataReadRange implements \PHPExcel_Reader_IReadFilter
 {
     protected $workerSheetName;
     protected $endColumn;
