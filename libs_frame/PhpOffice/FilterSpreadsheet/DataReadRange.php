@@ -10,12 +10,12 @@ namespace PhpOffice\FilterSpreadsheet;
 use PhpOffice\PhpSpreadsheet\Reader\IReadFilter;
 
 /**
- * Class ReadDataRange
+ * Class DataReadRange
  * 限制读取数据的范围,在Reader调用load加载文件之前先调用setReadFilter
  * 参考链接: https://blog.csdn.net/YQXLLWY/article/details/89578114
  * @package PhpOffice\FilterSpreadsheet
  */
-class ReadDataRange implements IReadFilter
+class DataReadRange implements IReadFilter
 {
     protected $workerSheetName;
     protected $endColumn;
