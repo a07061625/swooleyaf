@@ -14,7 +14,7 @@ use Entities\SyTask\TaskLogEntity;
 use Entities\SyTask\WebhookEntity;
 use Entities\SyTask\WxconfigBaseEntity;
 use Entities\SyTask\WxconfigCorpEntity;
-use Entities\SyTask\WxconfigShopEntity;
+use Entities\SyTask\WxconfigAccountEntity;
 use Entities\SyTask\WxopenAuthorizerEntity;
 use Entities\SyTask\WxproviderCorpAuthorizerEntity;
 use SyTrait\SimpleTrait;
@@ -65,11 +65,11 @@ class SyTaskMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
-     * @return \Entities\SyTask\WxconfigShopEntity
+     * @return \Entities\SyTask\WxconfigAccountEntity
      */
     public static function WxconfigShopEntity(string $dbName = '')
     {
-        return new WxconfigShopEntity($dbName);
+        return new WxconfigAccountEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
