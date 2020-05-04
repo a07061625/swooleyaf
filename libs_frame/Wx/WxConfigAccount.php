@@ -74,6 +74,13 @@ class WxConfigAccount
     private $sslKey = '';
 
     /**
+     * CERT PEM证书序列号
+     * 获取方式: openssl x509 -in 1900009191_20180326_cert.pem -noout -serial
+     * @var string
+     */
+    private $sslSerialNo = '';
+
+    /**
      * 企业付款银行卡公钥内容
      * @var string
      */
@@ -314,6 +321,27 @@ class WxConfigAccount
     public function setSslKey(string $sslKey)
     {
         $this->sslKey = $sslKey;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSslSerialNo() : string
+    {
+        return $this->sslSerialNo;
+    }
+
+    /**
+     * @param string $sslSerialNo
+     * @throws \SyException\Wx\WxException
+     */
+    public function setSslSerialNo(string $sslSerialNo)
+    {
+        if (ctype_alnum($sslSerialNo)) {
+            $this->sslSerialNo = $sslSerialNo;
+        } else {
+            throw new WxException('证书序列号不合法', ErrorCode::WX_PARAM_ERROR);
+        }
     }
 
     /**

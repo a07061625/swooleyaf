@@ -66,6 +66,12 @@ class WxconfigBaseEntity extends MysqlEntity
     public $payssl_key = '';
 
     /**
+     * 公众号商户证书序列号
+     * @var string
+     */
+    public $payssl_serialno = '';
+
+    /**
      * 企业付款银行卡密钥内容,去除密钥文件的第一行和最后一行以及所有换行
      * @var string
      */

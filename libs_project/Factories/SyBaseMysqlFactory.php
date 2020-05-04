@@ -32,7 +32,7 @@ use Entities\SyBase\WithdrawHistoryEntity;
 use Entities\SyBase\WxconfigBaseEntity;
 use Entities\SyBase\WxconfigCorpEntity;
 use Entities\SyBase\WxconfigMiniEntity;
-use Entities\SyBase\WxconfigShopEntity;
+use Entities\SyBase\WxconfigAccountEntity;
 use Entities\SyBase\WxopenAuthorizerEntity;
 use Entities\SyBase\WxproviderCorpAuthorizerEntity;
 use SyTrait\SimpleTrait;
@@ -219,11 +219,11 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
-     * @return \Entities\SyBase\WxconfigShopEntity
+     * @return \Entities\SyBase\WxconfigAccountEntity
      */
     public static function WxconfigShopEntity(string $dbName = '')
     {
-        return new WxconfigShopEntity($dbName);
+        return new WxconfigAccountEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名
