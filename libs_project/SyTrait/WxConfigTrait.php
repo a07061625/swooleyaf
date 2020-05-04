@@ -46,6 +46,7 @@ trait WxConfigTrait
             $accountConfig->setPayAuthUrl($wxDefaultConfig['url']['auth']['default']);
             $accountConfig->setSslCert((string)$configInfo['payssl_cert']);
             $accountConfig->setSslKey((string)$configInfo['payssl_key']);
+            $accountConfig->setSslSerialNo((string)$configInfo['payssl_serialno']);
             $accountConfig->setSslCompanyBank((string)$configInfo['payssl_companybank']);
             $accountConfig->setMerchantAppId((string)$configInfo['merchant_appid']);
             if (is_array($templates)) {
