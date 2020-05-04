@@ -116,4 +116,21 @@ abstract class WxUtilPayment extends WxUtilBase
 
         return empty($matches) ? '' : $matches[1];
     }
+
+    /**
+     * 生成V3请求头认证令牌
+     * @param array $data
+     * @return string
+     */
+    public static function createV3Token(array $data) : string
+    {
+        $message = $data['request_method'] . "\n" . $data['request_url'] . "\n" . $data['timestamp'] . "\n" . $data['nonce'] . "\n" . $data['body'] . "\n";
+        openssl_sign($message, $rawSign, $data['mch_private_key'], 'sha256WithRSAEncryption');
+        $sign = base64_encode($rawSign);
+        return 'mchid="' . $data['merchant_id']
+               . '",nonce_str="' . $data['nonce']
+               . '",timestamp="' . $data['timestamp']
+               . '",serial_no="' . $data['serial_no']
+               . '",signature="' . $sign . '"';
+    }
 }

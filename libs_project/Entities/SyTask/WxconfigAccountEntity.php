@@ -3,7 +3,7 @@ namespace Entities\SyTask;
 
 use DB\Entities\MysqlEntity;
 
-class WxconfigShopEntity extends MysqlEntity
+class WxconfigAccountEntity extends MysqlEntity
 {
     /**
      *
@@ -43,6 +43,6 @@ class WxconfigShopEntity extends MysqlEntity
     public function __construct(string $dbName = '')
     {
         $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_task';
-        parent::__construct($this->_dbName, 'wxconfig_shop', 'id');
+        parent::__construct($this->_dbName, 'wxconfig_account', 'id');
     }
 }
