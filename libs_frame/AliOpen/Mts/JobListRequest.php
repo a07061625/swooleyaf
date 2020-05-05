@@ -3,132 +3,151 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of ListJob
+ * @method string getResourceOwnerId()
+ * @method string getResourceOwnerAccount()
+ * @method string getNextPageToken()
+ * @method string getStartOfJobCreatedTimeRange()
+ * @method string getOwnerAccount()
+ * @method string getMaximumPageSize()
+ * @method string getState()
+ * @method string getOwnerId()
+ * @method string getEndOfJobCreatedTimeRange()
+ * @method string getPipelineId()
+ */
 class JobListRequest extends RpcAcsRequest
 {
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $nextPageToken;
-    private $startOfJobCreatedTimeRange;
-    private $ownerAccount;
-    private $maximumPageSize;
-    private $state;
-    private $ownerId;
-    private $endOfJobCreatedTimeRange;
-    private $pipelineId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Mts', '2014-06-18', 'ListJob', 'mts', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('Mts', '2014-06-18', 'ListJob', 'mts');
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
         $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function getNextPageToken()
-    {
-        return $this->nextPageToken;
-    }
-
+    /**
+     * @param string $nextPageToken
+     * @return $this
+     */
     public function setNextPageToken($nextPageToken)
     {
-        $this->nextPageToken = $nextPageToken;
+        $this->requestParameters['NextPageToken'] = $nextPageToken;
         $this->queryParameters['NextPageToken'] = $nextPageToken;
+
+        return $this;
     }
 
-    public function getStartOfJobCreatedTimeRange()
-    {
-        return $this->startOfJobCreatedTimeRange;
-    }
-
+    /**
+     * @param string $startOfJobCreatedTimeRange
+     * @return $this
+     */
     public function setStartOfJobCreatedTimeRange($startOfJobCreatedTimeRange)
     {
-        $this->startOfJobCreatedTimeRange = $startOfJobCreatedTimeRange;
+        $this->requestParameters['StartOfJobCreatedTimeRange'] = $startOfJobCreatedTimeRange;
         $this->queryParameters['StartOfJobCreatedTimeRange'] = $startOfJobCreatedTimeRange;
+
+        return $this;
     }
 
-    public function getOwnerAccount()
-    {
-        return $this->ownerAccount;
-    }
-
+    /**
+     * @param string $ownerAccount
+     * @return $this
+     */
     public function setOwnerAccount($ownerAccount)
     {
-        $this->ownerAccount = $ownerAccount;
+        $this->requestParameters['OwnerAccount'] = $ownerAccount;
         $this->queryParameters['OwnerAccount'] = $ownerAccount;
+
+        return $this;
     }
 
-    public function getMaximumPageSize()
-    {
-        return $this->maximumPageSize;
-    }
-
+    /**
+     * @param string $maximumPageSize
+     * @return $this
+     */
     public function setMaximumPageSize($maximumPageSize)
     {
-        $this->maximumPageSize = $maximumPageSize;
+        $this->requestParameters['MaximumPageSize'] = $maximumPageSize;
         $this->queryParameters['MaximumPageSize'] = $maximumPageSize;
+
+        return $this;
     }
 
-    public function getState()
-    {
-        return $this->state;
-    }
-
+    /**
+     * @param string $state
+     * @return $this
+     */
     public function setState($state)
     {
-        $this->state = $state;
+        $this->requestParameters['State'] = $state;
         $this->queryParameters['State'] = $state;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getEndOfJobCreatedTimeRange()
-    {
-        return $this->endOfJobCreatedTimeRange;
-    }
-
+    /**
+     * @param string $endOfJobCreatedTimeRange
+     * @return $this
+     */
     public function setEndOfJobCreatedTimeRange($endOfJobCreatedTimeRange)
     {
-        $this->endOfJobCreatedTimeRange = $endOfJobCreatedTimeRange;
+        $this->requestParameters['EndOfJobCreatedTimeRange'] = $endOfJobCreatedTimeRange;
         $this->queryParameters['EndOfJobCreatedTimeRange'] = $endOfJobCreatedTimeRange;
+
+        return $this;
     }
 
-    public function getPipelineId()
-    {
-        return $this->pipelineId;
-    }
-
+    /**
+     * @param string $pipelineId
+     * @return $this
+     */
     public function setPipelineId($pipelineId)
     {
-        $this->pipelineId = $pipelineId;
+        $this->requestParameters['PipelineId'] = $pipelineId;
         $this->queryParameters['PipelineId'] = $pipelineId;
+
+        return $this;
     }
 }

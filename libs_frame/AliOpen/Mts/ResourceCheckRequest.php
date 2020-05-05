@@ -3,180 +3,203 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of CheckResource
+ * @method string getCountry()
+ * @method string getHid()
+ * @method string getLevel()
+ * @method string getInvoker()
+ * @method string getMessage()
+ * @method string getUrl()
+ * @method string getSuccess()
+ * @method string getInterrupt()
+ * @method string getGmtWakeup()
+ * @method string getPk()
+ * @method string getBid()
+ * @method string getPrompt()
+ * @method string getTaskExtraData()
+ * @method string getTaskIdentifier()
+ */
 class ResourceCheckRequest extends RpcAcsRequest
 {
-    private $country;
-    private $hid;
-    private $level;
-    private $invoker;
-    private $message;
-    private $url;
-    private $success;
-    private $interrupt;
-    private $gmtWakeup;
-    private $pk;
-    private $bid;
-    private $prompt;
-    private $taskExtraData;
-    private $taskIdentifier;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Mts', '2014-06-18', 'CheckResource', 'mts', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('Mts', '2014-06-18', 'CheckResource', 'mts');
     }
 
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
+    /**
+     * @param string $country
+     * @return $this
+     */
     public function setCountry($country)
     {
-        $this->country = $country;
+        $this->requestParameters['Country'] = $country;
         $this->queryParameters['Country'] = $country;
+
+        return $this;
     }
 
-    public function getHid()
-    {
-        return $this->hid;
-    }
-
+    /**
+     * @param string $hid
+     * @return $this
+     */
     public function setHid($hid)
     {
-        $this->hid = $hid;
+        $this->requestParameters['Hid'] = $hid;
         $this->queryParameters['Hid'] = $hid;
+
+        return $this;
     }
 
-    public function getLevel()
-    {
-        return $this->level;
-    }
-
+    /**
+     * @param string $level
+     * @return $this
+     */
     public function setLevel($level)
     {
-        $this->level = $level;
+        $this->requestParameters['Level'] = $level;
         $this->queryParameters['Level'] = $level;
+
+        return $this;
     }
 
-    public function getInvoker()
-    {
-        return $this->invoker;
-    }
-
+    /**
+     * @param string $invoker
+     * @return $this
+     */
     public function setInvoker($invoker)
     {
-        $this->invoker = $invoker;
+        $this->requestParameters['Invoker'] = $invoker;
         $this->queryParameters['Invoker'] = $invoker;
+
+        return $this;
     }
 
-    public function getMessage()
-    {
-        return $this->message;
-    }
-
+    /**
+     * @param string $message
+     * @return $this
+     */
     public function setMessage($message)
     {
-        $this->message = $message;
+        $this->requestParameters['Message'] = $message;
         $this->queryParameters['Message'] = $message;
+
+        return $this;
     }
 
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
+    /**
+     * @param string $url
+     * @return $this
+     */
     public function setUrl($url)
     {
-        $this->url = $url;
+        $this->requestParameters['Url'] = $url;
         $this->queryParameters['Url'] = $url;
+
+        return $this;
     }
 
-    public function getSuccess()
-    {
-        return $this->success;
-    }
-
+    /**
+     * @param string $success
+     * @return $this
+     */
     public function setSuccess($success)
     {
-        $this->success = $success;
+        $this->requestParameters['Success'] = $success;
         $this->queryParameters['Success'] = $success;
+
+        return $this;
     }
 
-    public function getInterrupt()
-    {
-        return $this->interrupt;
-    }
-
+    /**
+     * @param string $interrupt
+     * @return $this
+     */
     public function setInterrupt($interrupt)
     {
-        $this->interrupt = $interrupt;
+        $this->requestParameters['Interrupt'] = $interrupt;
         $this->queryParameters['Interrupt'] = $interrupt;
+
+        return $this;
     }
 
-    public function getGmtWakeup()
-    {
-        return $this->gmtWakeup;
-    }
-
+    /**
+     * @param string $gmtWakeup
+     * @return $this
+     */
     public function setGmtWakeup($gmtWakeup)
     {
-        $this->gmtWakeup = $gmtWakeup;
+        $this->requestParameters['GmtWakeup'] = $gmtWakeup;
         $this->queryParameters['GmtWakeup'] = $gmtWakeup;
+
+        return $this;
     }
 
-    public function getPk()
-    {
-        return $this->pk;
-    }
-
+    /**
+     * @param string $pk
+     * @return $this
+     */
     public function setPk($pk)
     {
-        $this->pk = $pk;
+        $this->requestParameters['Pk'] = $pk;
         $this->queryParameters['Pk'] = $pk;
+
+        return $this;
     }
 
-    public function getBid()
-    {
-        return $this->bid;
-    }
-
+    /**
+     * @param string $bid
+     * @return $this
+     */
     public function setBid($bid)
     {
-        $this->bid = $bid;
+        $this->requestParameters['Bid'] = $bid;
         $this->queryParameters['Bid'] = $bid;
+
+        return $this;
     }
 
-    public function getPrompt()
-    {
-        return $this->prompt;
-    }
-
+    /**
+     * @param string $prompt
+     * @return $this
+     */
     public function setPrompt($prompt)
     {
-        $this->prompt = $prompt;
+        $this->requestParameters['Prompt'] = $prompt;
         $this->queryParameters['Prompt'] = $prompt;
+
+        return $this;
     }
 
-    public function getTaskExtraData()
-    {
-        return $this->taskExtraData;
-    }
-
+    /**
+     * @param string $taskExtraData
+     * @return $this
+     */
     public function setTaskExtraData($taskExtraData)
     {
-        $this->taskExtraData = $taskExtraData;
+        $this->requestParameters['TaskExtraData'] = $taskExtraData;
         $this->queryParameters['TaskExtraData'] = $taskExtraData;
+
+        return $this;
     }
 
-    public function getTaskIdentifier()
-    {
-        return $this->taskIdentifier;
-    }
-
+    /**
+     * @param string $taskIdentifier
+     * @return $this
+     */
     public function setTaskIdentifier($taskIdentifier)
     {
-        $this->taskIdentifier = $taskIdentifier;
+        $this->requestParameters['TaskIdentifier'] = $taskIdentifier;
         $this->queryParameters['TaskIdentifier'] = $taskIdentifier;
+
+        return $this;
     }
 }

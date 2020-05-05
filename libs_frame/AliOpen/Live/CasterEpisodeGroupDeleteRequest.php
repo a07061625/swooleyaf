@@ -3,36 +3,47 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DeleteCasterEpisodeGroup
+ * @method string getOwnerId()
+ * @method string getProgramId()
+ */
 class CasterEpisodeGroupDeleteRequest extends RpcAcsRequest
 {
-    private $ownerId;
-    private $programId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'DeleteCasterEpisodeGroup', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'DeleteCasterEpisodeGroup', 'live');
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getProgramId()
-    {
-        return $this->programId;
-    }
-
+    /**
+     * @param string $programId
+     * @return $this
+     */
     public function setProgramId($programId)
     {
-        $this->programId = $programId;
+        $this->requestParameters['ProgramId'] = $programId;
         $this->queryParameters['ProgramId'] = $programId;
+
+        return $this;
     }
 }

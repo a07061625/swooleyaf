@@ -3,48 +3,60 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of AllowPushStream
+ * @method string getOwnerId()
+ * @method string getRoomId()
+ * @method string getAppId()
+ */
 class PushStreamAllowRequest extends RpcAcsRequest
 {
-    private $ownerId;
-    private $roomId;
-    private $appId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'AllowPushStream', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'AllowPushStream', 'live');
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getRoomId()
-    {
-        return $this->roomId;
-    }
-
+    /**
+     * @param string $roomId
+     * @return $this
+     */
     public function setRoomId($roomId)
     {
-        $this->roomId = $roomId;
+        $this->requestParameters['RoomId'] = $roomId;
         $this->queryParameters['RoomId'] = $roomId;
+
+        return $this;
     }
 
-    public function getAppId()
-    {
-        return $this->appId;
-    }
-
+    /**
+     * @param string $appId
+     * @return $this
+     */
     public function setAppId($appId)
     {
-        $this->appId = $appId;
+        $this->requestParameters['AppId'] = $appId;
         $this->queryParameters['AppId'] = $appId;
+
+        return $this;
     }
 }

@@ -3,108 +3,125 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of AddCoverPipeline
+ * @method string getResourceOwnerId()
+ * @method string getRole()
+ * @method string getResourceOwnerAccount()
+ * @method string getOwnerAccount()
+ * @method string getName()
+ * @method string getNotifyConfig()
+ * @method string getOwnerId()
+ * @method string getPriority()
+ */
 class CoverPipelineAddRequest extends RpcAcsRequest
 {
-    private $resourceOwnerId;
-    private $role;
-    private $resourceOwnerAccount;
-    private $ownerAccount;
-    private $name;
-    private $notifyConfig;
-    private $ownerId;
-    private $priority;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Mts', '2014-06-18', 'AddCoverPipeline', 'mts', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('Mts', '2014-06-18', 'AddCoverPipeline', 'mts');
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getRole()
-    {
-        return $this->role;
-    }
-
+    /**
+     * @param string $role
+     * @return $this
+     */
     public function setRole($role)
     {
-        $this->role = $role;
+        $this->requestParameters['Role'] = $role;
         $this->queryParameters['Role'] = $role;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
         $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function getOwnerAccount()
-    {
-        return $this->ownerAccount;
-    }
-
+    /**
+     * @param string $ownerAccount
+     * @return $this
+     */
     public function setOwnerAccount($ownerAccount)
     {
-        $this->ownerAccount = $ownerAccount;
+        $this->requestParameters['OwnerAccount'] = $ownerAccount;
         $this->queryParameters['OwnerAccount'] = $ownerAccount;
+
+        return $this;
     }
 
-    public function getName()
-    {
-        return $this->name;
-    }
-
+    /**
+     * @param string $name
+     * @return $this
+     */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->requestParameters['Name'] = $name;
         $this->queryParameters['Name'] = $name;
+
+        return $this;
     }
 
-    public function getNotifyConfig()
-    {
-        return $this->notifyConfig;
-    }
-
+    /**
+     * @param string $notifyConfig
+     * @return $this
+     */
     public function setNotifyConfig($notifyConfig)
     {
-        $this->notifyConfig = $notifyConfig;
+        $this->requestParameters['NotifyConfig'] = $notifyConfig;
         $this->queryParameters['NotifyConfig'] = $notifyConfig;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getPriority()
-    {
-        return $this->priority;
-    }
-
+    /**
+     * @param string $priority
+     * @return $this
+     */
     public function setPriority($priority)
     {
-        $this->priority = $priority;
+        $this->requestParameters['Priority'] = $priority;
         $this->queryParameters['Priority'] = $priority;
+
+        return $this;
     }
 }

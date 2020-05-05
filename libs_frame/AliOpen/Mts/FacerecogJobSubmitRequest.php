@@ -3,108 +3,125 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of SubmitFacerecogJob
+ * @method string getInput()
+ * @method string getUserData()
+ * @method string getResourceOwnerId()
+ * @method string getResourceOwnerAccount()
+ * @method string getOwnerAccount()
+ * @method string getOwnerId()
+ * @method string getFacerecogConfig()
+ * @method string getPipelineId()
+ */
 class FacerecogJobSubmitRequest extends RpcAcsRequest
 {
-    private $input;
-    private $userData;
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $ownerAccount;
-    private $ownerId;
-    private $facerecogConfig;
-    private $pipelineId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Mts', '2014-06-18', 'SubmitFacerecogJob', 'mts', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('Mts', '2014-06-18', 'SubmitFacerecogJob', 'mts');
     }
 
-    public function getInput()
-    {
-        return $this->input;
-    }
-
+    /**
+     * @param string $input
+     * @return $this
+     */
     public function setInput($input)
     {
-        $this->input = $input;
+        $this->requestParameters['Input'] = $input;
         $this->queryParameters['Input'] = $input;
+
+        return $this;
     }
 
-    public function getUserData()
-    {
-        return $this->userData;
-    }
-
+    /**
+     * @param string $userData
+     * @return $this
+     */
     public function setUserData($userData)
     {
-        $this->userData = $userData;
+        $this->requestParameters['UserData'] = $userData;
         $this->queryParameters['UserData'] = $userData;
+
+        return $this;
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
         $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function getOwnerAccount()
-    {
-        return $this->ownerAccount;
-    }
-
+    /**
+     * @param string $ownerAccount
+     * @return $this
+     */
     public function setOwnerAccount($ownerAccount)
     {
-        $this->ownerAccount = $ownerAccount;
+        $this->requestParameters['OwnerAccount'] = $ownerAccount;
         $this->queryParameters['OwnerAccount'] = $ownerAccount;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getFacerecogConfig()
-    {
-        return $this->facerecogConfig;
-    }
-
+    /**
+     * @param string $facerecogConfig
+     * @return $this
+     */
     public function setFacerecogConfig($facerecogConfig)
     {
-        $this->facerecogConfig = $facerecogConfig;
+        $this->requestParameters['FacerecogConfig'] = $facerecogConfig;
         $this->queryParameters['FacerecogConfig'] = $facerecogConfig;
+
+        return $this;
     }
 
-    public function getPipelineId()
-    {
-        return $this->pipelineId;
-    }
-
+    /**
+     * @param string $pipelineId
+     * @return $this
+     */
     public function setPipelineId($pipelineId)
     {
-        $this->pipelineId = $pipelineId;
+        $this->requestParameters['PipelineId'] = $pipelineId;
         $this->queryParameters['PipelineId'] = $pipelineId;
+
+        return $this;
     }
 }

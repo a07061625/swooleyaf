@@ -3,48 +3,60 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of UpdateBoard
+ * @method string getOwnerId()
+ * @method string getAppId()
+ * @method string getBoardData()
+ */
 class BoardUpdateRequest extends RpcAcsRequest
 {
-    private $ownerId;
-    private $appId;
-    private $boardData;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'UpdateBoard', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'UpdateBoard', 'live');
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getAppId()
-    {
-        return $this->appId;
-    }
-
+    /**
+     * @param string $appId
+     * @return $this
+     */
     public function setAppId($appId)
     {
-        $this->appId = $appId;
+        $this->requestParameters['AppId'] = $appId;
         $this->queryParameters['AppId'] = $appId;
+
+        return $this;
     }
 
-    public function getBoardData()
-    {
-        return $this->boardData;
-    }
-
+    /**
+     * @param string $boardData
+     * @return $this
+     */
     public function setBoardData($boardData)
     {
-        $this->boardData = $boardData;
+        $this->requestParameters['BoardData'] = $boardData;
         $this->queryParameters['BoardData'] = $boardData;
+
+        return $this;
     }
 }

@@ -3,60 +3,73 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of ApplyBoardToken
+ * @method string getBoardId()
+ * @method string getAppUid()
+ * @method string getOwnerId()
+ * @method string getAppId()
+ */
 class BoardTokenApplyRequest extends RpcAcsRequest
 {
-    private $boardId;
-    private $appUid;
-    private $ownerId;
-    private $appId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'ApplyBoardToken', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'ApplyBoardToken', 'live');
     }
 
-    public function getBoardId()
-    {
-        return $this->boardId;
-    }
-
+    /**
+     * @param string $boardId
+     * @return $this
+     */
     public function setBoardId($boardId)
     {
-        $this->boardId = $boardId;
+        $this->requestParameters['BoardId'] = $boardId;
         $this->queryParameters['BoardId'] = $boardId;
+
+        return $this;
     }
 
-    public function getAppUid()
-    {
-        return $this->appUid;
-    }
-
+    /**
+     * @param string $appUid
+     * @return $this
+     */
     public function setAppUid($appUid)
     {
-        $this->appUid = $appUid;
+        $this->requestParameters['AppUid'] = $appUid;
         $this->queryParameters['AppUid'] = $appUid;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getAppId()
-    {
-        return $this->appId;
-    }
-
+    /**
+     * @param string $appId
+     * @return $this
+     */
     public function setAppId($appId)
     {
-        $this->appId = $appId;
+        $this->requestParameters['AppId'] = $appId;
         $this->queryParameters['AppId'] = $appId;
+
+        return $this;
     }
 }

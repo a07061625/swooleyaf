@@ -3,108 +3,125 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DescribeCasters
+ * @method string getCasterName()
+ * @method string getCasterId()
+ * @method string getPageSize()
+ * @method string getEndTime()
+ * @method string getStartTime()
+ * @method string getOwnerId()
+ * @method string getPageNum()
+ * @method string getStatus()
+ */
 class CastersDescribeRequest extends RpcAcsRequest
 {
-    private $casterName;
-    private $casterId;
-    private $pageSize;
-    private $endTime;
-    private $startTime;
-    private $ownerId;
-    private $pageNum;
-    private $status;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'DescribeCasters', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'DescribeCasters', 'live');
     }
 
-    public function getCasterName()
-    {
-        return $this->casterName;
-    }
-
+    /**
+     * @param string $casterName
+     * @return $this
+     */
     public function setCasterName($casterName)
     {
-        $this->casterName = $casterName;
+        $this->requestParameters['CasterName'] = $casterName;
         $this->queryParameters['CasterName'] = $casterName;
+
+        return $this;
     }
 
-    public function getCasterId()
-    {
-        return $this->casterId;
-    }
-
+    /**
+     * @param string $casterId
+     * @return $this
+     */
     public function setCasterId($casterId)
     {
-        $this->casterId = $casterId;
+        $this->requestParameters['CasterId'] = $casterId;
         $this->queryParameters['CasterId'] = $casterId;
+
+        return $this;
     }
 
-    public function getPageSize()
-    {
-        return $this->pageSize;
-    }
-
+    /**
+     * @param string $pageSize
+     * @return $this
+     */
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
+        $this->requestParameters['PageSize'] = $pageSize;
         $this->queryParameters['PageSize'] = $pageSize;
+
+        return $this;
     }
 
-    public function getEndTime()
-    {
-        return $this->endTime;
-    }
-
+    /**
+     * @param string $endTime
+     * @return $this
+     */
     public function setEndTime($endTime)
     {
-        $this->endTime = $endTime;
+        $this->requestParameters['EndTime'] = $endTime;
         $this->queryParameters['EndTime'] = $endTime;
+
+        return $this;
     }
 
-    public function getStartTime()
-    {
-        return $this->startTime;
-    }
-
+    /**
+     * @param string $startTime
+     * @return $this
+     */
     public function setStartTime($startTime)
     {
-        $this->startTime = $startTime;
+        $this->requestParameters['StartTime'] = $startTime;
         $this->queryParameters['StartTime'] = $startTime;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getPageNum()
-    {
-        return $this->pageNum;
-    }
-
+    /**
+     * @param string $pageNum
+     * @return $this
+     */
     public function setPageNum($pageNum)
     {
-        $this->pageNum = $pageNum;
+        $this->requestParameters['PageNum'] = $pageNum;
         $this->queryParameters['PageNum'] = $pageNum;
+
+        return $this;
     }
 
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
+    /**
+     * @param string $status
+     * @return $this
+     */
     public function setStatus($status)
     {
-        $this->status = $status;
+        $this->requestParameters['Status'] = $status;
         $this->queryParameters['Status'] = $status;
+
+        return $this;
     }
 }

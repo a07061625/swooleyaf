@@ -3,108 +3,125 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of CreateCaster
+ * @method string getCasterTemplate()
+ * @method string getExpireTime()
+ * @method string getNormType()
+ * @method string getCasterName()
+ * @method string getClientToken()
+ * @method string getChargeType()
+ * @method string getOwnerId()
+ * @method string getPurchaseTime()
+ */
 class CasterCreateRequest extends RpcAcsRequest
 {
-    private $casterTemplate;
-    private $expireTime;
-    private $normType;
-    private $casterName;
-    private $clientToken;
-    private $chargeType;
-    private $ownerId;
-    private $purchaseTime;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'CreateCaster', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'CreateCaster', 'live');
     }
 
-    public function getCasterTemplate()
-    {
-        return $this->casterTemplate;
-    }
-
+    /**
+     * @param string $casterTemplate
+     * @return $this
+     */
     public function setCasterTemplate($casterTemplate)
     {
-        $this->casterTemplate = $casterTemplate;
+        $this->requestParameters['CasterTemplate'] = $casterTemplate;
         $this->queryParameters['CasterTemplate'] = $casterTemplate;
+
+        return $this;
     }
 
-    public function getExpireTime()
-    {
-        return $this->expireTime;
-    }
-
+    /**
+     * @param string $expireTime
+     * @return $this
+     */
     public function setExpireTime($expireTime)
     {
-        $this->expireTime = $expireTime;
+        $this->requestParameters['ExpireTime'] = $expireTime;
         $this->queryParameters['ExpireTime'] = $expireTime;
+
+        return $this;
     }
 
-    public function getNormType()
-    {
-        return $this->normType;
-    }
-
+    /**
+     * @param string $normType
+     * @return $this
+     */
     public function setNormType($normType)
     {
-        $this->normType = $normType;
+        $this->requestParameters['NormType'] = $normType;
         $this->queryParameters['NormType'] = $normType;
+
+        return $this;
     }
 
-    public function getCasterName()
-    {
-        return $this->casterName;
-    }
-
+    /**
+     * @param string $casterName
+     * @return $this
+     */
     public function setCasterName($casterName)
     {
-        $this->casterName = $casterName;
+        $this->requestParameters['CasterName'] = $casterName;
         $this->queryParameters['CasterName'] = $casterName;
+
+        return $this;
     }
 
-    public function getClientToken()
-    {
-        return $this->clientToken;
-    }
-
+    /**
+     * @param string $clientToken
+     * @return $this
+     */
     public function setClientToken($clientToken)
     {
-        $this->clientToken = $clientToken;
+        $this->requestParameters['ClientToken'] = $clientToken;
         $this->queryParameters['ClientToken'] = $clientToken;
+
+        return $this;
     }
 
-    public function getChargeType()
-    {
-        return $this->chargeType;
-    }
-
+    /**
+     * @param string $chargeType
+     * @return $this
+     */
     public function setChargeType($chargeType)
     {
-        $this->chargeType = $chargeType;
+        $this->requestParameters['ChargeType'] = $chargeType;
         $this->queryParameters['ChargeType'] = $chargeType;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getPurchaseTime()
-    {
-        return $this->purchaseTime;
-    }
-
+    /**
+     * @param string $purchaseTime
+     * @return $this
+     */
     public function setPurchaseTime($purchaseTime)
     {
-        $this->purchaseTime = $purchaseTime;
+        $this->requestParameters['PurchaseTime'] = $purchaseTime;
         $this->queryParameters['PurchaseTime'] = $purchaseTime;
+
+        return $this;
     }
 }

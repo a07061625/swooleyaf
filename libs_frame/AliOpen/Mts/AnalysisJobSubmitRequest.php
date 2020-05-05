@@ -3,120 +3,138 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of SubmitAnalysisJob
+ * @method string getInput()
+ * @method string getUserData()
+ * @method string getResourceOwnerId()
+ * @method string getAnalysisConfig()
+ * @method string getResourceOwnerAccount()
+ * @method string getOwnerAccount()
+ * @method string getOwnerId()
+ * @method string getPriority()
+ * @method string getPipelineId()
+ */
 class AnalysisJobSubmitRequest extends RpcAcsRequest
 {
-    private $input;
-    private $userData;
-    private $resourceOwnerId;
-    private $analysisConfig;
-    private $resourceOwnerAccount;
-    private $ownerAccount;
-    private $ownerId;
-    private $priority;
-    private $pipelineId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Mts', '2014-06-18', 'SubmitAnalysisJob', 'mts', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('Mts', '2014-06-18', 'SubmitAnalysisJob', 'mts');
     }
 
-    public function getInput()
-    {
-        return $this->input;
-    }
-
+    /**
+     * @param string $input
+     * @return $this
+     */
     public function setInput($input)
     {
-        $this->input = $input;
+        $this->requestParameters['Input'] = $input;
         $this->queryParameters['Input'] = $input;
+
+        return $this;
     }
 
-    public function getUserData()
-    {
-        return $this->userData;
-    }
-
+    /**
+     * @param string $userData
+     * @return $this
+     */
     public function setUserData($userData)
     {
-        $this->userData = $userData;
+        $this->requestParameters['UserData'] = $userData;
         $this->queryParameters['UserData'] = $userData;
+
+        return $this;
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getAnalysisConfig()
-    {
-        return $this->analysisConfig;
-    }
-
+    /**
+     * @param string $analysisConfig
+     * @return $this
+     */
     public function setAnalysisConfig($analysisConfig)
     {
-        $this->analysisConfig = $analysisConfig;
+        $this->requestParameters['AnalysisConfig'] = $analysisConfig;
         $this->queryParameters['AnalysisConfig'] = $analysisConfig;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
         $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function getOwnerAccount()
-    {
-        return $this->ownerAccount;
-    }
-
+    /**
+     * @param string $ownerAccount
+     * @return $this
+     */
     public function setOwnerAccount($ownerAccount)
     {
-        $this->ownerAccount = $ownerAccount;
+        $this->requestParameters['OwnerAccount'] = $ownerAccount;
         $this->queryParameters['OwnerAccount'] = $ownerAccount;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getPriority()
-    {
-        return $this->priority;
-    }
-
+    /**
+     * @param string $priority
+     * @return $this
+     */
     public function setPriority($priority)
     {
-        $this->priority = $priority;
+        $this->requestParameters['Priority'] = $priority;
         $this->queryParameters['Priority'] = $priority;
+
+        return $this;
     }
 
-    public function getPipelineId()
-    {
-        return $this->pipelineId;
-    }
-
+    /**
+     * @param string $pipelineId
+     * @return $this
+     */
     public function setPipelineId($pipelineId)
     {
-        $this->pipelineId = $pipelineId;
+        $this->requestParameters['PipelineId'] = $pipelineId;
         $this->queryParameters['PipelineId'] = $pipelineId;
+
+        return $this;
     }
 }

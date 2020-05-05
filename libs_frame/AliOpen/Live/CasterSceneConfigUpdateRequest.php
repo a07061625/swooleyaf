@@ -3,74 +3,88 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of UpdateCasterSceneConfig
+ * @method array getComponentIds()
+ * @method string getCasterId()
+ * @method string getSceneId()
+ * @method string getOwnerId()
+ * @method string getLayoutId()
+ */
 class CasterSceneConfigUpdateRequest extends RpcAcsRequest
 {
-    private $ComponentIds;
-    private $casterId;
-    private $sceneId;
-    private $ownerId;
-    private $layoutId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'UpdateCasterSceneConfig', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'UpdateCasterSceneConfig', 'live');
     }
 
-    public function getComponentIds()
+    /**
+     * @param array $componentId
+     * @return $this
+     */
+    public function setComponentIds(array $componentId)
     {
-        return $this->ComponentIds;
-    }
-
-    public function setComponentIds($ComponentIds)
-    {
-        $this->ComponentIds = $ComponentIds;
-        for ($i = 0; $i < count($ComponentIds); $i ++) {
-            $this->queryParameters['ComponentId.' . ($i + 1)] = $ComponentIds[$i];
+        $this->requestParameters['ComponentIds'] = $componentId;
+        foreach ($componentId as $i => $iValue) {
+            $this->queryParameters['ComponentId.' . ($i + 1)] = $iValue;
         }
+
+        return $this;
     }
 
-    public function getCasterId()
-    {
-        return $this->casterId;
-    }
-
+    /**
+     * @param string $casterId
+     * @return $this
+     */
     public function setCasterId($casterId)
     {
-        $this->casterId = $casterId;
+        $this->requestParameters['CasterId'] = $casterId;
         $this->queryParameters['CasterId'] = $casterId;
+
+        return $this;
     }
 
-    public function getSceneId()
-    {
-        return $this->sceneId;
-    }
-
+    /**
+     * @param string $sceneId
+     * @return $this
+     */
     public function setSceneId($sceneId)
     {
-        $this->sceneId = $sceneId;
+        $this->requestParameters['SceneId'] = $sceneId;
         $this->queryParameters['SceneId'] = $sceneId;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getLayoutId()
-    {
-        return $this->layoutId;
-    }
-
+    /**
+     * @param string $layoutId
+     * @return $this
+     */
     public function setLayoutId($layoutId)
     {
-        $this->layoutId = $layoutId;
+        $this->requestParameters['LayoutId'] = $layoutId;
         $this->queryParameters['LayoutId'] = $layoutId;
+
+        return $this;
     }
 }

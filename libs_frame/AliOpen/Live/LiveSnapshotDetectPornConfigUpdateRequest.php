@@ -3,122 +3,140 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of UpdateLiveSnapshotDetectPornConfig
+ * @method string getOssBucket()
+ * @method string getAppName()
+ * @method string getSecurityToken()
+ * @method string getDomainName()
+ * @method string getOssEndpoint()
+ * @method string getInterval()
+ * @method string getOwnerId()
+ * @method string getOssObject()
+ * @method array getScenes()
+ */
 class LiveSnapshotDetectPornConfigUpdateRequest extends RpcAcsRequest
 {
-    private $ossBucket;
-    private $appName;
-    private $securityToken;
-    private $domainName;
-    private $ossEndpoint;
-    private $interval;
-    private $ownerId;
-    private $ossObject;
-    private $Scenes;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'UpdateLiveSnapshotDetectPornConfig', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'UpdateLiveSnapshotDetectPornConfig', 'live');
     }
 
-    public function getOssBucket()
-    {
-        return $this->ossBucket;
-    }
-
+    /**
+     * @param string $ossBucket
+     * @return $this
+     */
     public function setOssBucket($ossBucket)
     {
-        $this->ossBucket = $ossBucket;
+        $this->requestParameters['OssBucket'] = $ossBucket;
         $this->queryParameters['OssBucket'] = $ossBucket;
+
+        return $this;
     }
 
-    public function getAppName()
-    {
-        return $this->appName;
-    }
-
+    /**
+     * @param string $appName
+     * @return $this
+     */
     public function setAppName($appName)
     {
-        $this->appName = $appName;
+        $this->requestParameters['AppName'] = $appName;
         $this->queryParameters['AppName'] = $appName;
+
+        return $this;
     }
 
-    public function getSecurityToken()
-    {
-        return $this->securityToken;
-    }
-
+    /**
+     * @param string $securityToken
+     * @return $this
+     */
     public function setSecurityToken($securityToken)
     {
-        $this->securityToken = $securityToken;
+        $this->requestParameters['SecurityToken'] = $securityToken;
         $this->queryParameters['SecurityToken'] = $securityToken;
+
+        return $this;
     }
 
-    public function getDomainName()
-    {
-        return $this->domainName;
-    }
-
+    /**
+     * @param string $domainName
+     * @return $this
+     */
     public function setDomainName($domainName)
     {
-        $this->domainName = $domainName;
+        $this->requestParameters['DomainName'] = $domainName;
         $this->queryParameters['DomainName'] = $domainName;
+
+        return $this;
     }
 
-    public function getOssEndpoint()
-    {
-        return $this->ossEndpoint;
-    }
-
+    /**
+     * @param string $ossEndpoint
+     * @return $this
+     */
     public function setOssEndpoint($ossEndpoint)
     {
-        $this->ossEndpoint = $ossEndpoint;
+        $this->requestParameters['OssEndpoint'] = $ossEndpoint;
         $this->queryParameters['OssEndpoint'] = $ossEndpoint;
+
+        return $this;
     }
 
-    public function getInterval()
-    {
-        return $this->interval;
-    }
-
+    /**
+     * @param string $interval
+     * @return $this
+     */
     public function setInterval($interval)
     {
-        $this->interval = $interval;
+        $this->requestParameters['Interval'] = $interval;
         $this->queryParameters['Interval'] = $interval;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getOssObject()
-    {
-        return $this->ossObject;
-    }
-
+    /**
+     * @param string $ossObject
+     * @return $this
+     */
     public function setOssObject($ossObject)
     {
-        $this->ossObject = $ossObject;
+        $this->requestParameters['OssObject'] = $ossObject;
         $this->queryParameters['OssObject'] = $ossObject;
+
+        return $this;
     }
 
-    public function getScenes()
+    /**
+     * @param array $scene
+     * @return $this
+     */
+    public function setScenes(array $scene)
     {
-        return $this->Scenes;
-    }
-
-    public function setScenes($Scenes)
-    {
-        $this->Scenes = $Scenes;
-        for ($i = 0; $i < count($Scenes); $i ++) {
-            $this->queryParameters['Scene.' . ($i + 1)] = $Scenes[$i];
+        $this->requestParameters['Scenes'] = $scene;
+        foreach ($scene as $i => $iValue) {
+            $this->queryParameters['Scene.' . ($i + 1)] = $iValue;
         }
+
+        return $this;
     }
 }

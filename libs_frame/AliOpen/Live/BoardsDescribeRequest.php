@@ -3,60 +3,73 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DescribeBoards
+ * @method string getPageNum()
+ * @method string getPageSize()
+ * @method string getOwnerId()
+ * @method string getAppId()
+ */
 class BoardsDescribeRequest extends RpcAcsRequest
 {
-    private $pageNum;
-    private $pageSize;
-    private $ownerId;
-    private $appId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'DescribeBoards', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'DescribeBoards', 'live');
     }
 
-    public function getPageNum()
-    {
-        return $this->pageNum;
-    }
-
+    /**
+     * @param string $pageNum
+     * @return $this
+     */
     public function setPageNum($pageNum)
     {
-        $this->pageNum = $pageNum;
+        $this->requestParameters['PageNum'] = $pageNum;
         $this->queryParameters['PageNum'] = $pageNum;
+
+        return $this;
     }
 
-    public function getPageSize()
-    {
-        return $this->pageSize;
-    }
-
+    /**
+     * @param string $pageSize
+     * @return $this
+     */
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
+        $this->requestParameters['PageSize'] = $pageSize;
         $this->queryParameters['PageSize'] = $pageSize;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getAppId()
-    {
-        return $this->appId;
-    }
-
+    /**
+     * @param string $appId
+     * @return $this
+     */
     public function setAppId($appId)
     {
-        $this->appId = $appId;
+        $this->requestParameters['AppId'] = $appId;
         $this->queryParameters['AppId'] = $appId;
+
+        return $this;
     }
 }

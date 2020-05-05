@@ -3,132 +3,151 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of UpdateMedia
+ * @method string getCoverURL()
+ * @method string getResourceOwnerId()
+ * @method string getResourceOwnerAccount()
+ * @method string getCateId()
+ * @method string getOwnerAccount()
+ * @method string getDescription()
+ * @method string getOwnerId()
+ * @method string getMediaId()
+ * @method string getTitle()
+ * @method string getTags()
+ */
 class MediaUpdateRequest extends RpcAcsRequest
 {
-    private $coverURL;
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $cateId;
-    private $ownerAccount;
-    private $description;
-    private $ownerId;
-    private $mediaId;
-    private $title;
-    private $tags;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Mts', '2014-06-18', 'UpdateMedia', 'mts', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('Mts', '2014-06-18', 'UpdateMedia', 'mts');
     }
 
-    public function getCoverURL()
-    {
-        return $this->coverURL;
-    }
-
+    /**
+     * @param string $coverURL
+     * @return $this
+     */
     public function setCoverURL($coverURL)
     {
-        $this->coverURL = $coverURL;
+        $this->requestParameters['CoverURL'] = $coverURL;
         $this->queryParameters['CoverURL'] = $coverURL;
+
+        return $this;
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
         $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function getCateId()
-    {
-        return $this->cateId;
-    }
-
+    /**
+     * @param string $cateId
+     * @return $this
+     */
     public function setCateId($cateId)
     {
-        $this->cateId = $cateId;
+        $this->requestParameters['CateId'] = $cateId;
         $this->queryParameters['CateId'] = $cateId;
+
+        return $this;
     }
 
-    public function getOwnerAccount()
-    {
-        return $this->ownerAccount;
-    }
-
+    /**
+     * @param string $ownerAccount
+     * @return $this
+     */
     public function setOwnerAccount($ownerAccount)
     {
-        $this->ownerAccount = $ownerAccount;
+        $this->requestParameters['OwnerAccount'] = $ownerAccount;
         $this->queryParameters['OwnerAccount'] = $ownerAccount;
+
+        return $this;
     }
 
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
+    /**
+     * @param string $description
+     * @return $this
+     */
     public function setDescription($description)
     {
-        $this->description = $description;
+        $this->requestParameters['Description'] = $description;
         $this->queryParameters['Description'] = $description;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getMediaId()
-    {
-        return $this->mediaId;
-    }
-
+    /**
+     * @param string $mediaId
+     * @return $this
+     */
     public function setMediaId($mediaId)
     {
-        $this->mediaId = $mediaId;
+        $this->requestParameters['MediaId'] = $mediaId;
         $this->queryParameters['MediaId'] = $mediaId;
+
+        return $this;
     }
 
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
+    /**
+     * @param string $title
+     * @return $this
+     */
     public function setTitle($title)
     {
-        $this->title = $title;
+        $this->requestParameters['Title'] = $title;
         $this->queryParameters['Title'] = $title;
+
+        return $this;
     }
 
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
+    /**
+     * @param string $tags
+     * @return $this
+     */
     public function setTags($tags)
     {
-        $this->tags = $tags;
+        $this->requestParameters['Tags'] = $tags;
         $this->queryParameters['Tags'] = $tags;
+
+        return $this;
     }
 }

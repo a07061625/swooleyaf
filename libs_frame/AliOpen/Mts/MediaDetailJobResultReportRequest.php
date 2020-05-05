@@ -3,96 +3,112 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of ReportMediaDetailJobResult
+ * @method string getJobId()
+ * @method string getResourceOwnerId()
+ * @method string getResourceOwnerAccount()
+ * @method string getOwnerAccount()
+ * @method string getTag()
+ * @method string getOwnerId()
+ * @method string getResults()
+ */
 class MediaDetailJobResultReportRequest extends RpcAcsRequest
 {
-    private $jobId;
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $ownerAccount;
-    private $tag;
-    private $ownerId;
-    private $results;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Mts', '2014-06-18', 'ReportMediaDetailJobResult', 'mts', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('Mts', '2014-06-18', 'ReportMediaDetailJobResult', 'mts');
     }
 
-    public function getJobId()
-    {
-        return $this->jobId;
-    }
-
+    /**
+     * @param string $jobId
+     * @return $this
+     */
     public function setJobId($jobId)
     {
-        $this->jobId = $jobId;
+        $this->requestParameters['JobId'] = $jobId;
         $this->queryParameters['JobId'] = $jobId;
+
+        return $this;
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
         $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function getOwnerAccount()
-    {
-        return $this->ownerAccount;
-    }
-
+    /**
+     * @param string $ownerAccount
+     * @return $this
+     */
     public function setOwnerAccount($ownerAccount)
     {
-        $this->ownerAccount = $ownerAccount;
+        $this->requestParameters['OwnerAccount'] = $ownerAccount;
         $this->queryParameters['OwnerAccount'] = $ownerAccount;
+
+        return $this;
     }
 
-    public function getTag()
-    {
-        return $this->tag;
-    }
-
+    /**
+     * @param string $tag
+     * @return $this
+     */
     public function setTag($tag)
     {
-        $this->tag = $tag;
+        $this->requestParameters['Tag'] = $tag;
         $this->queryParameters['Tag'] = $tag;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getResults()
-    {
-        return $this->results;
-    }
-
+    /**
+     * @param string $results
+     * @return $this
+     */
     public function setResults($results)
     {
-        $this->results = $results;
+        $this->requestParameters['Results'] = $results;
         $this->queryParameters['Results'] = $results;
+
+        return $this;
     }
 }

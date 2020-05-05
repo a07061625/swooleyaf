@@ -3,90 +3,105 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of UpdateCasterSceneAudio
+ * @method array getAudioLayers()
+ * @method string getCasterId()
+ * @method string getSceneId()
+ * @method array getMixLists()
+ * @method string getOwnerId()
+ * @method string getFollowEnable()
+ */
 class CasterSceneAudioUpdateRequest extends RpcAcsRequest
 {
-    private $AudioLayers;
-    private $casterId;
-    private $sceneId;
-    private $MixLists;
-    private $ownerId;
-    private $followEnable;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'UpdateCasterSceneAudio', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'UpdateCasterSceneAudio', 'live');
     }
 
-    public function getAudioLayers()
+    /**
+     * @param array $audioLayer
+     * @return $this
+     */
+    public function setAudioLayers(array $audioLayer)
     {
-        return $this->AudioLayers;
-    }
-
-    public function setAudioLayers($AudioLayers)
-    {
-        $this->AudioLayers = $AudioLayers;
-        for ($i = 0; $i < count($AudioLayers); $i ++) {
-            $this->queryParameters['AudioLayer.' . ($i + 1) . '.FixedDelayDuration'] = $AudioLayers[$i]['FixedDelayDuration'];
-            $this->queryParameters['AudioLayer.' . ($i + 1) . '.VolumeRate'] = $AudioLayers[$i]['VolumeRate'];
-            $this->queryParameters['AudioLayer.' . ($i + 1) . '.ValidChannel'] = $AudioLayers[$i]['ValidChannel'];
+        $this->requestParameters['AudioLayers'] = $audioLayer;
+        foreach ($audioLayer as $depth1 => $depth1Value) {
+            $this->queryParameters['AudioLayer.' . ($depth1 + 1) . '.FixedDelayDuration'] = $depth1Value['FixedDelayDuration'];
+            $this->queryParameters['AudioLayer.' . ($depth1 + 1) . '.VolumeRate'] = $depth1Value['VolumeRate'];
+            $this->queryParameters['AudioLayer.' . ($depth1 + 1) . '.ValidChannel'] = $depth1Value['ValidChannel'];
         }
+
+        return $this;
     }
 
-    public function getCasterId()
-    {
-        return $this->casterId;
-    }
-
+    /**
+     * @param string $casterId
+     * @return $this
+     */
     public function setCasterId($casterId)
     {
-        $this->casterId = $casterId;
+        $this->requestParameters['CasterId'] = $casterId;
         $this->queryParameters['CasterId'] = $casterId;
+
+        return $this;
     }
 
-    public function getSceneId()
-    {
-        return $this->sceneId;
-    }
-
+    /**
+     * @param string $sceneId
+     * @return $this
+     */
     public function setSceneId($sceneId)
     {
-        $this->sceneId = $sceneId;
+        $this->requestParameters['SceneId'] = $sceneId;
         $this->queryParameters['SceneId'] = $sceneId;
+
+        return $this;
     }
 
-    public function getMixLists()
+    /**
+     * @param array $mixList
+     * @return $this
+     */
+    public function setMixLists(array $mixList)
     {
-        return $this->MixLists;
-    }
-
-    public function setMixLists($MixLists)
-    {
-        $this->MixLists = $MixLists;
-        for ($i = 0; $i < count($MixLists); $i ++) {
-            $this->queryParameters['MixList.' . ($i + 1)] = $MixLists[$i];
+        $this->requestParameters['MixLists'] = $mixList;
+        foreach ($mixList as $i => $iValue) {
+            $this->queryParameters['MixList.' . ($i + 1)] = $iValue;
         }
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getFollowEnable()
-    {
-        return $this->followEnable;
-    }
-
+    /**
+     * @param string $followEnable
+     * @return $this
+     */
     public function setFollowEnable($followEnable)
     {
-        $this->followEnable = $followEnable;
+        $this->requestParameters['FollowEnable'] = $followEnable;
         $this->queryParameters['FollowEnable'] = $followEnable;
+
+        return $this;
     }
 }

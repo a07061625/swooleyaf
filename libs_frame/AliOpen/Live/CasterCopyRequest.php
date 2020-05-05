@@ -3,60 +3,73 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of CopyCaster
+ * @method string getSrcCasterId()
+ * @method string getCasterName()
+ * @method string getClientToken()
+ * @method string getOwnerId()
+ */
 class CasterCopyRequest extends RpcAcsRequest
 {
-    private $srcCasterId;
-    private $casterName;
-    private $clientToken;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'CopyCaster', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'CopyCaster', 'live');
     }
 
-    public function getSrcCasterId()
-    {
-        return $this->srcCasterId;
-    }
-
+    /**
+     * @param string $srcCasterId
+     * @return $this
+     */
     public function setSrcCasterId($srcCasterId)
     {
-        $this->srcCasterId = $srcCasterId;
+        $this->requestParameters['SrcCasterId'] = $srcCasterId;
         $this->queryParameters['SrcCasterId'] = $srcCasterId;
+
+        return $this;
     }
 
-    public function getCasterName()
-    {
-        return $this->casterName;
-    }
-
+    /**
+     * @param string $casterName
+     * @return $this
+     */
     public function setCasterName($casterName)
     {
-        $this->casterName = $casterName;
+        $this->requestParameters['CasterName'] = $casterName;
         $this->queryParameters['CasterName'] = $casterName;
+
+        return $this;
     }
 
-    public function getClientToken()
-    {
-        return $this->clientToken;
-    }
-
+    /**
+     * @param string $clientToken
+     * @return $this
+     */
     public function setClientToken($clientToken)
     {
-        $this->clientToken = $clientToken;
+        $this->requestParameters['ClientToken'] = $clientToken;
         $this->queryParameters['ClientToken'] = $clientToken;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 }

@@ -3,48 +3,60 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DeleteCasterVideoResource
+ * @method string getResourceId()
+ * @method string getCasterId()
+ * @method string getOwnerId()
+ */
 class CasterVideoResourceDeleteRequest extends RpcAcsRequest
 {
-    private $resourceId;
-    private $casterId;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'DeleteCasterVideoResource', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'DeleteCasterVideoResource', 'live');
     }
 
-    public function getResourceId()
-    {
-        return $this->resourceId;
-    }
-
+    /**
+     * @param string $resourceId
+     * @return $this
+     */
     public function setResourceId($resourceId)
     {
-        $this->resourceId = $resourceId;
+        $this->requestParameters['ResourceId'] = $resourceId;
         $this->queryParameters['ResourceId'] = $resourceId;
+
+        return $this;
     }
 
-    public function getCasterId()
-    {
-        return $this->casterId;
-    }
-
+    /**
+     * @param string $casterId
+     * @return $this
+     */
     public function setCasterId($casterId)
     {
-        $this->casterId = $casterId;
+        $this->requestParameters['CasterId'] = $casterId;
         $this->queryParameters['CasterId'] = $casterId;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 }

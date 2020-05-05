@@ -3,111 +3,128 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of AddCasterEpisodeGroup
+ * @method string getSideOutputUrl()
+ * @method array getItems()
+ * @method string getClientToken()
+ * @method string getDomainName()
+ * @method string getStartTime()
+ * @method string getRepeatNum()
+ * @method string getCallbackUrl()
+ * @method string getOwnerId()
+ */
 class CasterEpisodeGroupAddRequest extends RpcAcsRequest
 {
-    private $sideOutputUrl;
-    private $Items;
-    private $clientToken;
-    private $domainName;
-    private $startTime;
-    private $repeatNum;
-    private $callbackUrl;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'AddCasterEpisodeGroup', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'AddCasterEpisodeGroup', 'live');
     }
 
-    public function getSideOutputUrl()
-    {
-        return $this->sideOutputUrl;
-    }
-
+    /**
+     * @param string $sideOutputUrl
+     * @return $this
+     */
     public function setSideOutputUrl($sideOutputUrl)
     {
-        $this->sideOutputUrl = $sideOutputUrl;
+        $this->requestParameters['SideOutputUrl'] = $sideOutputUrl;
         $this->queryParameters['SideOutputUrl'] = $sideOutputUrl;
+
+        return $this;
     }
 
-    public function getItems()
+    /**
+     * @param array $item
+     * @return $this
+     */
+    public function setItems(array $item)
     {
-        return $this->Items;
-    }
-
-    public function setItems($Items)
-    {
-        $this->Items = $Items;
-        for ($i = 0; $i < count($Items); $i ++) {
-            $this->queryParameters['Item.' . ($i + 1) . '.VodUrl'] = $Items[$i]['VodUrl'];
-            $this->queryParameters['Item.' . ($i + 1) . '.ItemName'] = $Items[$i]['ItemName'];
+        $this->requestParameters['Items'] = $item;
+        foreach ($item as $depth1 => $depth1Value) {
+            $this->queryParameters['Item.' . ($depth1 + 1) . '.VodUrl'] = $depth1Value['VodUrl'];
+            $this->queryParameters['Item.' . ($depth1 + 1) . '.ItemName'] = $depth1Value['ItemName'];
         }
+
+        return $this;
     }
 
-    public function getClientToken()
-    {
-        return $this->clientToken;
-    }
-
+    /**
+     * @param string $clientToken
+     * @return $this
+     */
     public function setClientToken($clientToken)
     {
-        $this->clientToken = $clientToken;
+        $this->requestParameters['ClientToken'] = $clientToken;
         $this->queryParameters['ClientToken'] = $clientToken;
+
+        return $this;
     }
 
-    public function getDomainName()
-    {
-        return $this->domainName;
-    }
-
+    /**
+     * @param string $domainName
+     * @return $this
+     */
     public function setDomainName($domainName)
     {
-        $this->domainName = $domainName;
+        $this->requestParameters['DomainName'] = $domainName;
         $this->queryParameters['DomainName'] = $domainName;
+
+        return $this;
     }
 
-    public function getStartTime()
-    {
-        return $this->startTime;
-    }
-
+    /**
+     * @param string $startTime
+     * @return $this
+     */
     public function setStartTime($startTime)
     {
-        $this->startTime = $startTime;
+        $this->requestParameters['StartTime'] = $startTime;
         $this->queryParameters['StartTime'] = $startTime;
+
+        return $this;
     }
 
-    public function getRepeatNum()
-    {
-        return $this->repeatNum;
-    }
-
+    /**
+     * @param string $repeatNum
+     * @return $this
+     */
     public function setRepeatNum($repeatNum)
     {
-        $this->repeatNum = $repeatNum;
+        $this->requestParameters['RepeatNum'] = $repeatNum;
         $this->queryParameters['RepeatNum'] = $repeatNum;
+
+        return $this;
     }
 
-    public function getCallbackUrl()
-    {
-        return $this->callbackUrl;
-    }
-
+    /**
+     * @param string $callbackUrl
+     * @return $this
+     */
     public function setCallbackUrl($callbackUrl)
     {
-        $this->callbackUrl = $callbackUrl;
+        $this->requestParameters['CallbackUrl'] = $callbackUrl;
         $this->queryParameters['CallbackUrl'] = $callbackUrl;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 }
