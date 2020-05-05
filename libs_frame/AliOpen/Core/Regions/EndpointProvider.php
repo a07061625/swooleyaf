@@ -19,49 +19,34 @@
  */
 namespace AliOpen\Core\Regions;
 
+use SyTool\Tool;
+
 class EndpointProvider
 {
     /**
      * @var array
      */
-    private static $endpoints;
+    private static $endpoints = [];
 
     /**
-     * @param $regionId
-     * @param $product
+     * @param string $regionId
+     * @param string $product
      * @return null
      */
-    public static function findProductDomain($regionId, $product)
+    public static function findProductDomain(string $regionId, string $product)
     {
-        if (null == $regionId || null == $product || null == self::$endpoints) {
-            return null;
-        }
-        foreach (self::$endpoints as $key => $endpoint) {
-            if (in_array($regionId, $endpoint->getRegionIds())) {
-                return self::findProductDomainByProduct($endpoint->getProductDomains(), $product);
-            }
+        $endpoint = Tool::getArrayVal(self::$endpoints, $regionId, null);
+        if (is_null($endpoint)) {
+            return;
         }
 
-        return null;
-    }
-
-    /**
-     * @param $productDomains
-     * @param $product
-     * @return null
-     */
-    private static function findProductDomainByProduct($productDomains, $product)
-    {
-        if (null == $productDomains) {
-            return null;
-        }
-        foreach ($productDomains as $key => $productDomain) {
-            if ($product == $productDomain->getProductName()) {
-                return $productDomain->getDomainName();
-            }
+        $productDomains = $endpoint->getProductDomains();
+        $productDomain = Tool::getArrayVal($productDomains, $product, null);
+        if (is_null($productDomain)) {
+            return;
         }
 
-        return null;
+        return $productDomain->getDomainName();
     }
 
     /**
@@ -73,9 +58,9 @@ class EndpointProvider
     }
 
     /**
-     * @param $endpoints
+     * @param array $endpoints
      */
-    public static function setEndpoints($endpoints)
+    public static function setEndpoints(array $endpoints)
     {
         self::$endpoints = $endpoints;
     }
