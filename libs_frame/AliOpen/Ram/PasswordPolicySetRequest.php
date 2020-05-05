@@ -3,121 +3,142 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of SetPasswordPolicy
+ * @method string getRequireNumbers()
+ * @method string getPasswordReusePrevention()
+ * @method string getRequireUppercaseCharacters()
+ * @method string getMaxPasswordAge()
+ * @method string getMaxLoginAttemps()
+ * @method string getHardExpiry()
+ * @method string getMinimumPasswordLength()
+ * @method string getRequireLowercaseCharacters()
+ * @method string getRequireSymbols()
+ */
 class PasswordPolicySetRequest extends RpcAcsRequest
 {
-    private $requireNumbers;
-    private $passwordReusePrevention;
-    private $requireUppercaseCharacters;
-    private $maxPasswordAge;
-    private $maxLoginAttemps;
-    private $hardExpiry;
-    private $minimumPasswordLength;
-    private $requireLowercaseCharacters;
-    private $requireSymbols;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'SetPasswordPolicy');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'SetPasswordPolicy', 'ram');
     }
 
-    public function getRequireNumbers()
-    {
-        return $this->requireNumbers;
-    }
-
+    /**
+     * @param string $requireNumbers
+     * @return $this
+     */
     public function setRequireNumbers($requireNumbers)
     {
-        $this->requireNumbers = $requireNumbers;
+        $this->requestParameters['RequireNumbers'] = $requireNumbers;
         $this->queryParameters['RequireNumbers'] = $requireNumbers;
+
+        return $this;
     }
 
-    public function getPasswordReusePrevention()
-    {
-        return $this->passwordReusePrevention;
-    }
-
+    /**
+     * @param string $passwordReusePrevention
+     * @return $this
+     */
     public function setPasswordReusePrevention($passwordReusePrevention)
     {
-        $this->passwordReusePrevention = $passwordReusePrevention;
+        $this->requestParameters['PasswordReusePrevention'] = $passwordReusePrevention;
         $this->queryParameters['PasswordReusePrevention'] = $passwordReusePrevention;
+
+        return $this;
     }
 
-    public function getRequireUppercaseCharacters()
-    {
-        return $this->requireUppercaseCharacters;
-    }
-
+    /**
+     * @param string $requireUppercaseCharacters
+     * @return $this
+     */
     public function setRequireUppercaseCharacters($requireUppercaseCharacters)
     {
-        $this->requireUppercaseCharacters = $requireUppercaseCharacters;
+        $this->requestParameters['RequireUppercaseCharacters'] = $requireUppercaseCharacters;
         $this->queryParameters['RequireUppercaseCharacters'] = $requireUppercaseCharacters;
+
+        return $this;
     }
 
-    public function getMaxPasswordAge()
-    {
-        return $this->maxPasswordAge;
-    }
-
+    /**
+     * @param string $maxPasswordAge
+     * @return $this
+     */
     public function setMaxPasswordAge($maxPasswordAge)
     {
-        $this->maxPasswordAge = $maxPasswordAge;
+        $this->requestParameters['MaxPasswordAge'] = $maxPasswordAge;
         $this->queryParameters['MaxPasswordAge'] = $maxPasswordAge;
+
+        return $this;
     }
 
-    public function getMaxLoginAttemps()
-    {
-        return $this->maxLoginAttemps;
-    }
-
+    /**
+     * @param string $maxLoginAttemps
+     * @return $this
+     */
     public function setMaxLoginAttemps($maxLoginAttemps)
     {
-        $this->maxLoginAttemps = $maxLoginAttemps;
+        $this->requestParameters['MaxLoginAttemps'] = $maxLoginAttemps;
         $this->queryParameters['MaxLoginAttemps'] = $maxLoginAttemps;
+
+        return $this;
     }
 
-    public function getHardExpiry()
-    {
-        return $this->hardExpiry;
-    }
-
+    /**
+     * @param string $hardExpiry
+     * @return $this
+     */
     public function setHardExpiry($hardExpiry)
     {
-        $this->hardExpiry = $hardExpiry;
+        $this->requestParameters['HardExpiry'] = $hardExpiry;
         $this->queryParameters['HardExpiry'] = $hardExpiry;
+
+        return $this;
     }
 
-    public function getMinimumPasswordLength()
-    {
-        return $this->minimumPasswordLength;
-    }
-
+    /**
+     * @param string $minimumPasswordLength
+     * @return $this
+     */
     public function setMinimumPasswordLength($minimumPasswordLength)
     {
-        $this->minimumPasswordLength = $minimumPasswordLength;
+        $this->requestParameters['MinimumPasswordLength'] = $minimumPasswordLength;
         $this->queryParameters['MinimumPasswordLength'] = $minimumPasswordLength;
+
+        return $this;
     }
 
-    public function getRequireLowercaseCharacters()
-    {
-        return $this->requireLowercaseCharacters;
-    }
-
+    /**
+     * @param string $requireLowercaseCharacters
+     * @return $this
+     */
     public function setRequireLowercaseCharacters($requireLowercaseCharacters)
     {
-        $this->requireLowercaseCharacters = $requireLowercaseCharacters;
+        $this->requestParameters['RequireLowercaseCharacters'] = $requireLowercaseCharacters;
         $this->queryParameters['RequireLowercaseCharacters'] = $requireLowercaseCharacters;
+
+        return $this;
     }
 
-    public function getRequireSymbols()
-    {
-        return $this->requireSymbols;
-    }
-
+    /**
+     * @param string $requireSymbols
+     * @return $this
+     */
     public function setRequireSymbols($requireSymbols)
     {
-        $this->requireSymbols = $requireSymbols;
+        $this->requestParameters['RequireSymbols'] = $requireSymbols;
         $this->queryParameters['RequireSymbols'] = $requireSymbols;
+
+        return $this;
     }
 }

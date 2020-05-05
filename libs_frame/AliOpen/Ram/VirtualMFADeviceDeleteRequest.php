@@ -3,25 +3,38 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DeleteVirtualMFADevice
+ * @method string getSerialNumber()
+ */
 class VirtualMFADeviceDeleteRequest extends RpcAcsRequest
 {
-    private $serialNumber;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'DeleteVirtualMFADevice');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'DeleteVirtualMFADevice', 'ram');
     }
 
-    public function getSerialNumber()
-    {
-        return $this->serialNumber;
-    }
-
+    /**
+     * @param string $serialNumber
+     * @return $this
+     */
     public function setSerialNumber($serialNumber)
     {
-        $this->serialNumber = $serialNumber;
+        $this->requestParameters['SerialNumber'] = $serialNumber;
         $this->queryParameters['SerialNumber'] = $serialNumber;
+
+        return $this;
     }
 }

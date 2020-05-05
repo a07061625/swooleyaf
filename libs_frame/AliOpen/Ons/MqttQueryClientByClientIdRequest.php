@@ -3,60 +3,47 @@ namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of OnsMqttQueryClientByClientId
+ * @method string getClientId()
+ * @method string getInstanceId()
+ */
 class MqttQueryClientByClientIdRequest extends RpcAcsRequest
 {
-    private $preventCache;
-    private $onsRegionId;
-    private $clientId;
-    private $onsPlatform;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ons', '2017-09-18', 'OnsMqttQueryClientByClientId');
-        $this->setMethod('POST');
+        parent::__construct('Ons', '2019-02-14', 'OnsMqttQueryClientByClientId', 'ons');
     }
 
-    public function getPreventCache()
-    {
-        return $this->preventCache;
-    }
-
-    public function setPreventCache($preventCache)
-    {
-        $this->preventCache = $preventCache;
-        $this->queryParameters['PreventCache'] = $preventCache;
-    }
-
-    public function getOnsRegionId()
-    {
-        return $this->onsRegionId;
-    }
-
-    public function setOnsRegionId($onsRegionId)
-    {
-        $this->onsRegionId = $onsRegionId;
-        $this->queryParameters['OnsRegionId'] = $onsRegionId;
-    }
-
-    public function getClientId()
-    {
-        return $this->clientId;
-    }
-
+    /**
+     * @param string $clientId
+     * @return $this
+     */
     public function setClientId($clientId)
     {
-        $this->clientId = $clientId;
+        $this->requestParameters['ClientId'] = $clientId;
         $this->queryParameters['ClientId'] = $clientId;
+
+        return $this;
     }
 
-    public function getOnsPlatform()
+    /**
+     * @param string $instanceId
+     * @return $this
+     */
+    public function setInstanceId($instanceId)
     {
-        return $this->onsPlatform;
-    }
+        $this->requestParameters['InstanceId'] = $instanceId;
+        $this->queryParameters['InstanceId'] = $instanceId;
 
-    public function setOnsPlatform($onsPlatform)
-    {
-        $this->onsPlatform = $onsPlatform;
-        $this->queryParameters['OnsPlatform'] = $onsPlatform;
+        return $this;
     }
 }

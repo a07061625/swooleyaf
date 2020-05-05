@@ -3,49 +3,64 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of UpdateAccessKey
+ * @method string getUserAccessKeyId()
+ * @method string getUserName()
+ * @method string getStatus()
+ */
 class AccessKeyUpdateRequest extends RpcAcsRequest
 {
-    private $userAccessKeyId;
-    private $userName;
-    private $status;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'UpdateAccessKey');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'UpdateAccessKey', 'ram');
     }
 
-    public function getUserAccessKeyId()
-    {
-        return $this->userAccessKeyId;
-    }
-
+    /**
+     * @param string $userAccessKeyId
+     * @return $this
+     */
     public function setUserAccessKeyId($userAccessKeyId)
     {
-        $this->userAccessKeyId = $userAccessKeyId;
+        $this->requestParameters['UserAccessKeyId'] = $userAccessKeyId;
         $this->queryParameters['UserAccessKeyId'] = $userAccessKeyId;
+
+        return $this;
     }
 
-    public function getUserName()
-    {
-        return $this->userName;
-    }
-
+    /**
+     * @param string $userName
+     * @return $this
+     */
     public function setUserName($userName)
     {
-        $this->userName = $userName;
+        $this->requestParameters['UserName'] = $userName;
         $this->queryParameters['UserName'] = $userName;
+
+        return $this;
     }
 
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
+    /**
+     * @param string $status
+     * @return $this
+     */
     public function setStatus($status)
     {
-        $this->status = $status;
+        $this->requestParameters['Status'] = $status;
         $this->queryParameters['Status'] = $status;
+
+        return $this;
     }
 }

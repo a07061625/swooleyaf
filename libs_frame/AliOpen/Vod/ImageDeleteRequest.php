@@ -3,108 +3,125 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DeleteImage
+ * @method string getResourceOwnerId()
+ * @method string getImageURLs()
+ * @method string getImageType()
+ * @method string getResourceOwnerAccount()
+ * @method string getVideoId()
+ * @method string getOwnerId()
+ * @method string getDeleteImageType()
+ * @method string getImageIds()
+ */
 class ImageDeleteRequest extends RpcAcsRequest
 {
-    private $resourceOwnerId;
-    private $imageType;
-    private $resourceOwnerAccount;
-    private $imageURLs;
-    private $videoId;
-    private $ownerId;
-    private $deleteImageType;
-    private $imageIds;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('vod', '2017-03-21', 'DeleteImage', 'vod', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('vod', '2017-03-21', 'DeleteImage', 'vod');
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getImageType()
-    {
-        return $this->imageType;
-    }
-
-    public function setImageType($imageType)
-    {
-        $this->imageType = $imageType;
-        $this->queryParameters['ImageType'] = $imageType;
-    }
-
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
-    public function setResourceOwnerAccount($resourceOwnerAccount)
-    {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
-    }
-
-    public function getImageURLs()
-    {
-        return $this->imageURLs;
-    }
-
+    /**
+     * @param string $imageURLs
+     * @return $this
+     */
     public function setImageURLs($imageURLs)
     {
-        $this->imageURLs = $imageURLs;
+        $this->requestParameters['ImageURLs'] = $imageURLs;
         $this->queryParameters['ImageURLs'] = $imageURLs;
+
+        return $this;
     }
 
-    public function getVideoId()
+    /**
+     * @param string $imageType
+     * @return $this
+     */
+    public function setImageType($imageType)
     {
-        return $this->videoId;
+        $this->requestParameters['ImageType'] = $imageType;
+        $this->queryParameters['ImageType'] = $imageType;
+
+        return $this;
     }
 
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
+    }
+
+    /**
+     * @param string $videoId
+     * @return $this
+     */
     public function setVideoId($videoId)
     {
-        $this->videoId = $videoId;
+        $this->requestParameters['VideoId'] = $videoId;
         $this->queryParameters['VideoId'] = $videoId;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getDeleteImageType()
-    {
-        return $this->deleteImageType;
-    }
-
+    /**
+     * @param string $deleteImageType
+     * @return $this
+     */
     public function setDeleteImageType($deleteImageType)
     {
-        $this->deleteImageType = $deleteImageType;
+        $this->requestParameters['DeleteImageType'] = $deleteImageType;
         $this->queryParameters['DeleteImageType'] = $deleteImageType;
+
+        return $this;
     }
 
-    public function getImageIds()
-    {
-        return $this->imageIds;
-    }
-
+    /**
+     * @param string $imageIds
+     * @return $this
+     */
     public function setImageIds($imageIds)
     {
-        $this->imageIds = $imageIds;
+        $this->requestParameters['ImageIds'] = $imageIds;
         $this->queryParameters['ImageIds'] = $imageIds;
+
+        return $this;
     }
 }

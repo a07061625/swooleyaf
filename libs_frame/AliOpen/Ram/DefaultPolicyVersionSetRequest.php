@@ -3,37 +3,51 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of SetDefaultPolicyVersion
+ * @method string getVersionId()
+ * @method string getPolicyName()
+ */
 class DefaultPolicyVersionSetRequest extends RpcAcsRequest
 {
-    private $versionId;
-    private $policyName;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'SetDefaultPolicyVersion');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'SetDefaultPolicyVersion', 'ram');
     }
 
-    public function getVersionId()
-    {
-        return $this->versionId;
-    }
-
+    /**
+     * @param string $versionId
+     * @return $this
+     */
     public function setVersionId($versionId)
     {
-        $this->versionId = $versionId;
+        $this->requestParameters['VersionId'] = $versionId;
         $this->queryParameters['VersionId'] = $versionId;
+
+        return $this;
     }
 
-    public function getPolicyName()
-    {
-        return $this->policyName;
-    }
-
+    /**
+     * @param string $policyName
+     * @return $this
+     */
     public function setPolicyName($policyName)
     {
-        $this->policyName = $policyName;
+        $this->requestParameters['PolicyName'] = $policyName;
         $this->queryParameters['PolicyName'] = $policyName;
+
+        return $this;
     }
 }

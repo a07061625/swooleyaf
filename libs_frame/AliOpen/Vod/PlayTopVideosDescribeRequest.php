@@ -3,60 +3,73 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DescribePlayTopVideos
+ * @method string getPageSize()
+ * @method string getOwnerId()
+ * @method string getBizDate()
+ * @method string getPageNo()
+ */
 class PlayTopVideosDescribeRequest extends RpcAcsRequest
 {
-    private $bizDate;
-    private $pageNo;
-    private $pageSize;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('vod', '2017-03-21', 'DescribePlayTopVideos', 'vod', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('vod', '2017-03-21', 'DescribePlayTopVideos', 'vod');
     }
 
-    public function getBizDate()
-    {
-        return $this->bizDate;
-    }
-
-    public function setBizDate($bizDate)
-    {
-        $this->bizDate = $bizDate;
-        $this->queryParameters['BizDate'] = $bizDate;
-    }
-
-    public function getPageNo()
-    {
-        return $this->pageNo;
-    }
-
-    public function setPageNo($pageNo)
-    {
-        $this->pageNo = $pageNo;
-        $this->queryParameters['PageNo'] = $pageNo;
-    }
-
-    public function getPageSize()
-    {
-        return $this->pageSize;
-    }
-
+    /**
+     * @param string $pageSize
+     * @return $this
+     */
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
+        $this->requestParameters['PageSize'] = $pageSize;
         $this->queryParameters['PageSize'] = $pageSize;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $bizDate
+     * @return $this
+     */
+    public function setBizDate($bizDate)
+    {
+        $this->requestParameters['BizDate'] = $bizDate;
+        $this->queryParameters['BizDate'] = $bizDate;
+
+        return $this;
+    }
+
+    /**
+     * @param string $pageNo
+     * @return $this
+     */
+    public function setPageNo($pageNo)
+    {
+        $this->requestParameters['PageNo'] = $pageNo;
+        $this->queryParameters['PageNo'] = $pageNo;
+
+        return $this;
     }
 }

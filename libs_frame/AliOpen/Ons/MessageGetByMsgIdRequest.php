@@ -3,72 +3,60 @@ namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of OnsMessageGetByMsgId
+ * @method string getMsgId()
+ * @method string getInstanceId()
+ * @method string getTopic()
+ */
 class MessageGetByMsgIdRequest extends RpcAcsRequest
 {
-    private $preventCache;
-    private $onsRegionId;
-    private $onsPlatform;
-    private $msgId;
-    private $topic;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ons', '2017-09-18', 'OnsMessageGetByMsgId');
-        $this->setMethod('POST');
+        parent::__construct('Ons', '2019-02-14', 'OnsMessageGetByMsgId', 'ons');
     }
 
-    public function getPreventCache()
-    {
-        return $this->preventCache;
-    }
-
-    public function setPreventCache($preventCache)
-    {
-        $this->preventCache = $preventCache;
-        $this->queryParameters['PreventCache'] = $preventCache;
-    }
-
-    public function getOnsRegionId()
-    {
-        return $this->onsRegionId;
-    }
-
-    public function setOnsRegionId($onsRegionId)
-    {
-        $this->onsRegionId = $onsRegionId;
-        $this->queryParameters['OnsRegionId'] = $onsRegionId;
-    }
-
-    public function getOnsPlatform()
-    {
-        return $this->onsPlatform;
-    }
-
-    public function setOnsPlatform($onsPlatform)
-    {
-        $this->onsPlatform = $onsPlatform;
-        $this->queryParameters['OnsPlatform'] = $onsPlatform;
-    }
-
-    public function getMsgId()
-    {
-        return $this->msgId;
-    }
-
+    /**
+     * @param string $msgId
+     * @return $this
+     */
     public function setMsgId($msgId)
     {
-        $this->msgId = $msgId;
+        $this->requestParameters['MsgId'] = $msgId;
         $this->queryParameters['MsgId'] = $msgId;
+
+        return $this;
     }
 
-    public function getTopic()
+    /**
+     * @param string $instanceId
+     * @return $this
+     */
+    public function setInstanceId($instanceId)
     {
-        return $this->topic;
+        $this->requestParameters['InstanceId'] = $instanceId;
+        $this->queryParameters['InstanceId'] = $instanceId;
+
+        return $this;
     }
 
+    /**
+     * @param string $topic
+     * @return $this
+     */
     public function setTopic($topic)
     {
-        $this->topic = $topic;
+        $this->requestParameters['Topic'] = $topic;
         $this->queryParameters['Topic'] = $topic;
+
+        return $this;
     }
 }

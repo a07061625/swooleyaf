@@ -3,49 +3,64 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of AttachPolicyToUser
+ * @method string getPolicyType()
+ * @method string getPolicyName()
+ * @method string getUserName()
+ */
 class UserPolicyAttachRequest extends RpcAcsRequest
 {
-    private $policyType;
-    private $policyName;
-    private $userName;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'AttachPolicyToUser');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'AttachPolicyToUser', 'ram');
     }
 
-    public function getPolicyType()
-    {
-        return $this->policyType;
-    }
-
+    /**
+     * @param string $policyType
+     * @return $this
+     */
     public function setPolicyType($policyType)
     {
-        $this->policyType = $policyType;
+        $this->requestParameters['PolicyType'] = $policyType;
         $this->queryParameters['PolicyType'] = $policyType;
+
+        return $this;
     }
 
-    public function getPolicyName()
-    {
-        return $this->policyName;
-    }
-
+    /**
+     * @param string $policyName
+     * @return $this
+     */
     public function setPolicyName($policyName)
     {
-        $this->policyName = $policyName;
+        $this->requestParameters['PolicyName'] = $policyName;
         $this->queryParameters['PolicyName'] = $policyName;
+
+        return $this;
     }
 
-    public function getUserName()
-    {
-        return $this->userName;
-    }
-
+    /**
+     * @param string $userName
+     * @return $this
+     */
     public function setUserName($userName)
     {
-        $this->userName = $userName;
+        $this->requestParameters['UserName'] = $userName;
         $this->queryParameters['UserName'] = $userName;
+
+        return $this;
     }
 }

@@ -3,156 +3,73 @@ namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of OnsTopicCreate
+ * @method string getMessageType()
+ * @method string getRemark()
+ * @method string getInstanceId()
+ * @method string getTopic()
+ */
 class TopicCreateRequest extends RpcAcsRequest
 {
-    private $preventCache;
-    private $cluster;
-    private $queueNum;
-    private $onsRegionId;
-    private $onsPlatform;
-    private $appName;
-    private $qps;
-    private $topic;
-    private $remark;
-    private $appkey;
-    private $order;
-    private $status;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ons', '2017-09-18', 'OnsTopicCreate');
-        $this->setMethod('POST');
+        parent::__construct('Ons', '2019-02-14', 'OnsTopicCreate', 'ons');
     }
 
-    public function getPreventCache()
+    /**
+     * @param string $messageType
+     * @return $this
+     */
+    public function setMessageType($messageType)
     {
-        return $this->preventCache;
+        $this->requestParameters['MessageType'] = $messageType;
+        $this->queryParameters['MessageType'] = $messageType;
+
+        return $this;
     }
 
-    public function setPreventCache($preventCache)
-    {
-        $this->preventCache = $preventCache;
-        $this->queryParameters['PreventCache'] = $preventCache;
-    }
-
-    public function getCluster()
-    {
-        return $this->cluster;
-    }
-
-    public function setCluster($cluster)
-    {
-        $this->cluster = $cluster;
-        $this->queryParameters['Cluster'] = $cluster;
-    }
-
-    public function getQueueNum()
-    {
-        return $this->queueNum;
-    }
-
-    public function setQueueNum($queueNum)
-    {
-        $this->queueNum = $queueNum;
-        $this->queryParameters['QueueNum'] = $queueNum;
-    }
-
-    public function getOnsRegionId()
-    {
-        return $this->onsRegionId;
-    }
-
-    public function setOnsRegionId($onsRegionId)
-    {
-        $this->onsRegionId = $onsRegionId;
-        $this->queryParameters['OnsRegionId'] = $onsRegionId;
-    }
-
-    public function getOnsPlatform()
-    {
-        return $this->onsPlatform;
-    }
-
-    public function setOnsPlatform($onsPlatform)
-    {
-        $this->onsPlatform = $onsPlatform;
-        $this->queryParameters['OnsPlatform'] = $onsPlatform;
-    }
-
-    public function getAppName()
-    {
-        return $this->appName;
-    }
-
-    public function setAppName($appName)
-    {
-        $this->appName = $appName;
-        $this->queryParameters['AppName'] = $appName;
-    }
-
-    public function getQps()
-    {
-        return $this->qps;
-    }
-
-    public function setQps($qps)
-    {
-        $this->qps = $qps;
-        $this->queryParameters['Qps'] = $qps;
-    }
-
-    public function getTopic()
-    {
-        return $this->topic;
-    }
-
-    public function setTopic($topic)
-    {
-        $this->topic = $topic;
-        $this->queryParameters['Topic'] = $topic;
-    }
-
-    public function getRemark()
-    {
-        return $this->remark;
-    }
-
+    /**
+     * @param string $remark
+     * @return $this
+     */
     public function setRemark($remark)
     {
-        $this->remark = $remark;
+        $this->requestParameters['Remark'] = $remark;
         $this->queryParameters['Remark'] = $remark;
+
+        return $this;
     }
 
-    public function getAppkey()
+    /**
+     * @param string $instanceId
+     * @return $this
+     */
+    public function setInstanceId($instanceId)
     {
-        return $this->appkey;
+        $this->requestParameters['InstanceId'] = $instanceId;
+        $this->queryParameters['InstanceId'] = $instanceId;
+
+        return $this;
     }
 
-    public function setAppkey($appkey)
+    /**
+     * @param string $topic
+     * @return $this
+     */
+    public function setTopic($topic)
     {
-        $this->appkey = $appkey;
-        $this->queryParameters['Appkey'] = $appkey;
-    }
+        $this->requestParameters['Topic'] = $topic;
+        $this->queryParameters['Topic'] = $topic;
 
-    public function getOrder()
-    {
-        return $this->order;
-    }
-
-    public function setOrder($order)
-    {
-        $this->order = $order;
-        $this->queryParameters['Order'] = $order;
-    }
-
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    public function setStatus($status)
-    {
-        $this->status = $status;
-        $this->queryParameters['Status'] = $status;
+        return $this;
     }
 }

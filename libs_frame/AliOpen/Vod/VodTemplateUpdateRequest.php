@@ -3,84 +3,99 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of UpdateVodTemplate
+ * @method string getResourceOwnerId()
+ * @method string getTemplateConfig()
+ * @method string getVodTemplateId()
+ * @method string getResourceOwnerAccount()
+ * @method string getOwnerId()
+ * @method string getName()
+ */
 class VodTemplateUpdateRequest extends RpcAcsRequest
 {
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $templateConfig;
-    private $name;
-    private $vodTemplateId;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('vod', '2017-03-21', 'UpdateVodTemplate', 'vod', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('vod', '2017-03-21', 'UpdateVodTemplate', 'vod');
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
-    public function setResourceOwnerAccount($resourceOwnerAccount)
-    {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
-    }
-
-    public function getTemplateConfig()
-    {
-        return $this->templateConfig;
-    }
-
+    /**
+     * @param string $templateConfig
+     * @return $this
+     */
     public function setTemplateConfig($templateConfig)
     {
-        $this->templateConfig = $templateConfig;
+        $this->requestParameters['TemplateConfig'] = $templateConfig;
         $this->queryParameters['TemplateConfig'] = $templateConfig;
+
+        return $this;
     }
 
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public function setName($name)
-    {
-        $this->name = $name;
-        $this->queryParameters['Name'] = $name;
-    }
-
-    public function getVodTemplateId()
-    {
-        return $this->vodTemplateId;
-    }
-
+    /**
+     * @param string $vodTemplateId
+     * @return $this
+     */
     public function setVodTemplateId($vodTemplateId)
     {
-        $this->vodTemplateId = $vodTemplateId;
+        $this->requestParameters['VodTemplateId'] = $vodTemplateId;
         $this->queryParameters['VodTemplateId'] = $vodTemplateId;
+
+        return $this;
     }
 
-    public function getOwnerId()
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
+    public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        return $this->ownerId;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->requestParameters['Name'] = $name;
+        $this->queryParameters['Name'] = $name;
+
+        return $this;
     }
 }

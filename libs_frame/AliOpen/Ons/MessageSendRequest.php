@@ -3,108 +3,86 @@ namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of OnsMessageSend
+ * @method string getMessage()
+ * @method string getInstanceId()
+ * @method string getTopic()
+ * @method string getTag()
+ * @method string getKey()
+ */
 class MessageSendRequest extends RpcAcsRequest
 {
-    private $preventCache;
-    private $onsRegionId;
-    private $onsPlatform;
-    private $topic;
-    private $producerId;
-    private $tag;
-    private $message;
-    private $key;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ons', '2017-09-18', 'OnsMessageSend');
-        $this->setMethod('POST');
+        parent::__construct('Ons', '2019-02-14', 'OnsMessageSend', 'ons');
     }
 
-    public function getPreventCache()
-    {
-        return $this->preventCache;
-    }
-
-    public function setPreventCache($preventCache)
-    {
-        $this->preventCache = $preventCache;
-        $this->queryParameters['PreventCache'] = $preventCache;
-    }
-
-    public function getOnsRegionId()
-    {
-        return $this->onsRegionId;
-    }
-
-    public function setOnsRegionId($onsRegionId)
-    {
-        $this->onsRegionId = $onsRegionId;
-        $this->queryParameters['OnsRegionId'] = $onsRegionId;
-    }
-
-    public function getOnsPlatform()
-    {
-        return $this->onsPlatform;
-    }
-
-    public function setOnsPlatform($onsPlatform)
-    {
-        $this->onsPlatform = $onsPlatform;
-        $this->queryParameters['OnsPlatform'] = $onsPlatform;
-    }
-
-    public function getTopic()
-    {
-        return $this->topic;
-    }
-
-    public function setTopic($topic)
-    {
-        $this->topic = $topic;
-        $this->queryParameters['Topic'] = $topic;
-    }
-
-    public function getProducerId()
-    {
-        return $this->producerId;
-    }
-
-    public function setProducerId($producerId)
-    {
-        $this->producerId = $producerId;
-        $this->queryParameters['ProducerId'] = $producerId;
-    }
-
-    public function getTag()
-    {
-        return $this->tag;
-    }
-
-    public function setTag($tag)
-    {
-        $this->tag = $tag;
-        $this->queryParameters['Tag'] = $tag;
-    }
-
-    public function getMessage()
-    {
-        return $this->message;
-    }
-
+    /**
+     * @param string $message
+     * @return $this
+     */
     public function setMessage($message)
     {
-        $this->message = $message;
+        $this->requestParameters['Message'] = $message;
         $this->queryParameters['Message'] = $message;
+
+        return $this;
     }
 
-    public function getKey()
+    /**
+     * @param string $instanceId
+     * @return $this
+     */
+    public function setInstanceId($instanceId)
     {
-        return $this->key;
+        $this->requestParameters['InstanceId'] = $instanceId;
+        $this->queryParameters['InstanceId'] = $instanceId;
+
+        return $this;
     }
 
+    /**
+     * @param string $topic
+     * @return $this
+     */
+    public function setTopic($topic)
+    {
+        $this->requestParameters['Topic'] = $topic;
+        $this->queryParameters['Topic'] = $topic;
+
+        return $this;
+    }
+
+    /**
+     * @param string $tag
+     * @return $this
+     */
+    public function setTag($tag)
+    {
+        $this->requestParameters['Tag'] = $tag;
+        $this->queryParameters['Tag'] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * @param string $key
+     * @return $this
+     */
     public function setKey($key)
     {
-        $this->key = $key;
+        $this->requestParameters['Key'] = $key;
         $this->queryParameters['Key'] = $key;
+
+        return $this;
     }
 }

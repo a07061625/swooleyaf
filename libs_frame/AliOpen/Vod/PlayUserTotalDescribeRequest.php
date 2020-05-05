@@ -3,48 +3,60 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DescribePlayUserTotal
+ * @method string getStartTime()
+ * @method string getEndTime()
+ * @method string getOwnerId()
+ */
 class PlayUserTotalDescribeRequest extends RpcAcsRequest
 {
-    private $endTime;
-    private $startTime;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('vod', '2017-03-21', 'DescribePlayUserTotal', 'vod', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('vod', '2017-03-21', 'DescribePlayUserTotal', 'vod');
     }
 
-    public function getEndTime()
-    {
-        return $this->endTime;
-    }
-
-    public function setEndTime($endTime)
-    {
-        $this->endTime = $endTime;
-        $this->queryParameters['EndTime'] = $endTime;
-    }
-
-    public function getStartTime()
-    {
-        return $this->startTime;
-    }
-
+    /**
+     * @param string $startTime
+     * @return $this
+     */
     public function setStartTime($startTime)
     {
-        $this->startTime = $startTime;
+        $this->requestParameters['StartTime'] = $startTime;
         $this->queryParameters['StartTime'] = $startTime;
+
+        return $this;
     }
 
-    public function getOwnerId()
+    /**
+     * @param string $endTime
+     * @return $this
+     */
+    public function setEndTime($endTime)
     {
-        return $this->ownerId;
+        $this->requestParameters['EndTime'] = $endTime;
+        $this->queryParameters['EndTime'] = $endTime;
+
+        return $this;
     }
 
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 }

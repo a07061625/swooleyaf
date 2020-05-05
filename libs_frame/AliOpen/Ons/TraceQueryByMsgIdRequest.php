@@ -3,96 +3,86 @@ namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of OnsTraceQueryByMsgId
+ * @method string getMsgId()
+ * @method string getEndTime()
+ * @method string getBeginTime()
+ * @method string getInstanceId()
+ * @method string getTopic()
+ */
 class TraceQueryByMsgIdRequest extends RpcAcsRequest
 {
-    private $preventCache;
-    private $onsRegionId;
-    private $onsPlatform;
-    private $topic;
-    private $msgId;
-    private $endTime;
-    private $beginTime;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ons', '2017-09-18', 'OnsTraceQueryByMsgId');
-        $this->setMethod('POST');
+        parent::__construct('Ons', '2019-02-14', 'OnsTraceQueryByMsgId', 'ons');
     }
 
-    public function getPreventCache()
-    {
-        return $this->preventCache;
-    }
-
-    public function setPreventCache($preventCache)
-    {
-        $this->preventCache = $preventCache;
-        $this->queryParameters['PreventCache'] = $preventCache;
-    }
-
-    public function getOnsRegionId()
-    {
-        return $this->onsRegionId;
-    }
-
-    public function setOnsRegionId($onsRegionId)
-    {
-        $this->onsRegionId = $onsRegionId;
-        $this->queryParameters['OnsRegionId'] = $onsRegionId;
-    }
-
-    public function getOnsPlatform()
-    {
-        return $this->onsPlatform;
-    }
-
-    public function setOnsPlatform($onsPlatform)
-    {
-        $this->onsPlatform = $onsPlatform;
-        $this->queryParameters['OnsPlatform'] = $onsPlatform;
-    }
-
-    public function getTopic()
-    {
-        return $this->topic;
-    }
-
-    public function setTopic($topic)
-    {
-        $this->topic = $topic;
-        $this->queryParameters['Topic'] = $topic;
-    }
-
-    public function getMsgId()
-    {
-        return $this->msgId;
-    }
-
+    /**
+     * @param string $msgId
+     * @return $this
+     */
     public function setMsgId($msgId)
     {
-        $this->msgId = $msgId;
+        $this->requestParameters['MsgId'] = $msgId;
         $this->queryParameters['MsgId'] = $msgId;
+
+        return $this;
     }
 
-    public function getEndTime()
-    {
-        return $this->endTime;
-    }
-
+    /**
+     * @param string $endTime
+     * @return $this
+     */
     public function setEndTime($endTime)
     {
-        $this->endTime = $endTime;
+        $this->requestParameters['EndTime'] = $endTime;
         $this->queryParameters['EndTime'] = $endTime;
+
+        return $this;
     }
 
-    public function getBeginTime()
-    {
-        return $this->beginTime;
-    }
-
+    /**
+     * @param string $beginTime
+     * @return $this
+     */
     public function setBeginTime($beginTime)
     {
-        $this->beginTime = $beginTime;
+        $this->requestParameters['BeginTime'] = $beginTime;
         $this->queryParameters['BeginTime'] = $beginTime;
+
+        return $this;
+    }
+
+    /**
+     * @param string $instanceId
+     * @return $this
+     */
+    public function setInstanceId($instanceId)
+    {
+        $this->requestParameters['InstanceId'] = $instanceId;
+        $this->queryParameters['InstanceId'] = $instanceId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $topic
+     * @return $this
+     */
+    public function setTopic($topic)
+    {
+        $this->requestParameters['Topic'] = $topic;
+        $this->queryParameters['Topic'] = $topic;
+
+        return $this;
     }
 }

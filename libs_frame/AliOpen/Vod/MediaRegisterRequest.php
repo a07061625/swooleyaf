@@ -3,96 +3,112 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of RegisterMedia
+ * @method string getResourceOwnerId()
+ * @method string getUserData()
+ * @method string getRegisterMetadatas()
+ * @method string getWorkflowId()
+ * @method string getResourceOwnerAccount()
+ * @method string getOwnerId()
+ * @method string getTemplateGroupId()
+ */
 class MediaRegisterRequest extends RpcAcsRequest
 {
-    private $userData;
-    private $resourceOwnerId;
-    private $templateGroupId;
-    private $resourceOwnerAccount;
-    private $ownerId;
-    private $registerMetadatas;
-    private $workFlowId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('vod', '2017-03-21', 'RegisterMedia', 'vod', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('vod', '2017-03-21', 'RegisterMedia', 'vod');
     }
 
-    public function getUserData()
-    {
-        return $this->userData;
-    }
-
-    public function setUserData($userData)
-    {
-        $this->userData = $userData;
-        $this->queryParameters['UserData'] = $userData;
-    }
-
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getTemplateGroupId()
+    /**
+     * @param string $userData
+     * @return $this
+     */
+    public function setUserData($userData)
     {
-        return $this->templateGroupId;
+        $this->requestParameters['UserData'] = $userData;
+        $this->queryParameters['UserData'] = $userData;
+
+        return $this;
     }
 
-    public function setTemplateGroupId($templateGroupId)
-    {
-        $this->templateGroupId = $templateGroupId;
-        $this->queryParameters['TemplateGroupId'] = $templateGroupId;
-    }
-
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
-    public function setResourceOwnerAccount($resourceOwnerAccount)
-    {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
-    }
-
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
-    public function setOwnerId($ownerId)
-    {
-        $this->ownerId = $ownerId;
-        $this->queryParameters['OwnerId'] = $ownerId;
-    }
-
-    public function getRegisterMetadatas()
-    {
-        return $this->registerMetadatas;
-    }
-
+    /**
+     * @param string $registerMetadatas
+     * @return $this
+     */
     public function setRegisterMetadatas($registerMetadatas)
     {
-        $this->registerMetadatas = $registerMetadatas;
+        $this->requestParameters['RegisterMetadatas'] = $registerMetadatas;
         $this->queryParameters['RegisterMetadatas'] = $registerMetadatas;
+
+        return $this;
     }
 
-    public function getWorkFlowId()
+    /**
+     * @param string $workflowId
+     * @return $this
+     */
+    public function setWorkflowId($workflowId)
     {
-        return $this->workFlowId;
+        $this->requestParameters['WorkflowId'] = $workflowId;
+        $this->queryParameters['WorkflowId'] = $workflowId;
+
+        return $this;
     }
 
-    public function setWorkFlowId($workFlowId)
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
+    public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->workFlowId = $workFlowId;
-        $this->queryParameters['WorkFlowId'] = $workFlowId;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
+    }
+
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
+    public function setOwnerId($ownerId)
+    {
+        $this->requestParameters['OwnerId'] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $templateGroupId
+     * @return $this
+     */
+    public function setTemplateGroupId($templateGroupId)
+    {
+        $this->requestParameters['TemplateGroupId'] = $templateGroupId;
+        $this->queryParameters['TemplateGroupId'] = $templateGroupId;
+
+        return $this;
     }
 }
