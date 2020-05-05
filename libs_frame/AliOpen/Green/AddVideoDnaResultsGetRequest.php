@@ -3,25 +3,38 @@ namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
+/**
+ * Request of GetAddVideoDnaResults
+ * @method string getClientInfo()
+ */
 class AddVideoDnaResultsGetRequest extends RoaAcsRequest
 {
-    private $clientInfo;
+    /**
+     * @var string
+     */
+    protected $uriPattern = '/green/video/dna/add/results';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Green', '2018-05-09', 'GetAddVideoDnaResults', 'green', 'openAPI');
-        $this->setUriPattern('/green/video/dna/add/results');
-        $this->setMethod('POST');
+        parent::__construct('Green', '2018-05-09', 'GetAddVideoDnaResults', 'green');
     }
 
-    public function getClientInfo()
-    {
-        return $this->clientInfo;
-    }
-
+    /**
+     * @param string $clientInfo
+     * @return $this
+     */
     public function setClientInfo($clientInfo)
     {
-        $this->clientInfo = $clientInfo;
+        $this->requestParameters['ClientInfo'] = $clientInfo;
         $this->queryParameters['ClientInfo'] = $clientInfo;
+
+        return $this;
     }
 }

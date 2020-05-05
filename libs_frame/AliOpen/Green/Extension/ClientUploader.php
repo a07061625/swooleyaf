@@ -11,13 +11,8 @@ class ClientUploader
     private $uploadCredentials;
     private $headers;
     private $fileType;
-    private $dir = '/tmp/green/upload/';
+    private $dir = "/tmp/green/upload/";
 
-    /**
-     * Uploader constructor.
-     * @param mixed $client
-     * @param mixed $fileType
-     */
     private function __construct($client, $fileType)
     {
         $this->client = $client;
@@ -28,27 +23,27 @@ class ClientUploader
 
     public static function getImageClientUploader($client)
     {
-        return new self($client, 'images');
+        return new ClientUploader($client, 'images');
     }
 
     public static function getVideoClientUploader($client)
     {
-        return new self($client, 'videos');
+        return new ClientUploader($client, 'videos');
     }
 
     public static function getVoiceClientUploader($client)
     {
-        return new self($client, 'voices');
+        return new ClientUploader($client, 'voices');
     }
 
     public static function getFileClientUploader($client)
     {
-        return new self($client, 'files');
+        return new ClientUploader($client, 'files');
     }
 
     /**
      * 上传并获取上传后的图片链接
-     * @param $bytes
+     * @param string $bytes
      * @return string
      * @throws \Exception
      */
@@ -58,7 +53,7 @@ class ClientUploader
             mkdir($this->dir, 0777, true);
         }
         $tmpFileName = $this->dir . uniqid();
-        $file = fopen($tmpFileName, 'w');//打开文件准备写入
+        $file = fopen($tmpFileName, "w");//打开文件准备写入
         fwrite($file, $bytes);//写入
         fclose($file);//关闭
 
@@ -78,33 +73,26 @@ class ClientUploader
      * @param $filePath
      * @return string
      * @throws \AliOss\Core\OssException
+     * @throws \RuntimeException
      */
     public function uploadFile($filePath)
     {
         $uploadCredentials = $this->getCredentials();
         if ($uploadCredentials == null) {
-            throw new \RuntimeException('can not get upload credentials');
+            throw new \RuntimeException("can not get upload credentials");
         }
         try {
-            $ossClient = new OssClient(
-                $uploadCredentials->getAccessKeyId(),
-                $uploadCredentials->getAccessKeySecret(),
-                $uploadCredentials->getOssEndpoint(),
-                false,
-                $uploadCredentials->getSecurityToken()
-            );
+            $ossClient = new OssClient($uploadCredentials->getAccessKeyId(), $uploadCredentials->getAccessKeySecret(),
+                $uploadCredentials->getOssEndpoint(), false, $uploadCredentials->getSecurityToken());
+            print_r($uploadCredentials->getUploadFolder() . $this->fileType);
             $object = $uploadCredentials->getUploadFolder() . '/' . $this->fileType . '/' . uniqid();
+            print_r($object);
             $ossClient->uploadFile($uploadCredentials->getUploadBucket(), $object, $filePath);
 
-            return 'oss://' . $uploadCredentials->getUploadBucket() . '/' . $object;
+            return "oss://" . $uploadCredentials->getUploadBucket() . "/" . $object;
         } catch (OssException $e) {
             throw $e;
         }
-    }
-
-    public function addHeader($key, $value)
-    {
-        $this->headers[$key] = $value;
     }
 
     private function getCredentials()
@@ -126,8 +114,8 @@ class ClientUploader
     private function getCredentialsFromServer()
     {
         $uploadCredentialsRequest = new CredentialsUploadRequest();
-        $uploadCredentialsRequest->setMethod('POST');
-        $uploadCredentialsRequest->setAcceptFormat('JSON');
+        $uploadCredentialsRequest->setMethod("POST");
+        $uploadCredentialsRequest->setAcceptFormat("JSON");
 
         $uploadCredentialsRequest->setContent(json_encode([]));
         foreach ($this->headers as $k => $v) {
@@ -142,20 +130,18 @@ class ClientUploader
             if (200 == $response->code) {
                 $data = $response->data;
 
-                return new UploadCredentials(
-                    $data->accessKeyId,
-                    $data->accessKeySecret,
-                    $data->securityToken,
-                    $data->expiredTime,
-                    $data->ossEndpoint,
-                    $data->uploadBucket,
-                    $data->uploadFolder
-                );
+                return new UploadCredentials($data->accessKeyId, $data->accessKeySecret, $data->securityToken, $data->expiredTime,
+                    $data->ossEndpoint, $data->uploadBucket, $data->uploadFolder);
             }
-            throw new \RuntimeException('get upload credential from server fail. requestId:' . $response->requestId . ', code:'
+            throw new \RuntimeException("get upload credential from server fail. requestId:" . $response->requestId . ", code:"
                                         . $response->code);
         } catch (\Exception $e) {
             throw $e;
         }
+    }
+
+    public function addHeader($key, $value)
+    {
+        $this->headers[$key] = $value;
     }
 }
