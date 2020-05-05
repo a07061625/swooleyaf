@@ -3,156 +3,229 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of CreateUploadAttachedMedia
+ * @method string getResourceOwnerId()
+ * @method string getIcon()
+ * @method string getDescription()
+ * @method string getFileSize()
+ * @method string getTitle()
+ * @method string getBusinessType()
+ * @method string getStorageLocation()
+ * @method string getUserData()
+ * @method string getCateId()
+ * @method string getResourceOwnerAccount()
+ * @method string getCateIds()
+ * @method string getOwnerId()
+ * @method string getTags()
+ * @method string getMediaExt()
+ * @method string getFileName()
+ * @method string getAppId()
+ */
 class UploadAttachedMediaCreateRequest extends RpcAcsRequest
 {
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $description;
-    private $fileSize;
-    private $ownerId;
-    private $title;
-    private $businessType;
-    private $tags;
-    private $storageLocation;
-    private $mediaExt;
-    private $fileName;
-    private $cateId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('vod', '2017-03-21', 'CreateUploadAttachedMedia', 'vod', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('vod', '2017-03-21', 'CreateUploadAttachedMedia', 'vod');
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
+    /**
+     * @param string $icon
+     * @return $this
+     */
+    public function setIcon($icon)
     {
-        return $this->resourceOwnerAccount;
+        $this->requestParameters['Icon'] = $icon;
+        $this->queryParameters['Icon'] = $icon;
+
+        return $this;
     }
 
-    public function setResourceOwnerAccount($resourceOwnerAccount)
-    {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
-    }
-
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
+    /**
+     * @param string $description
+     * @return $this
+     */
     public function setDescription($description)
     {
-        $this->description = $description;
+        $this->requestParameters['Description'] = $description;
         $this->queryParameters['Description'] = $description;
+
+        return $this;
     }
 
-    public function getFileSize()
-    {
-        return $this->fileSize;
-    }
-
+    /**
+     * @param string $fileSize
+     * @return $this
+     */
     public function setFileSize($fileSize)
     {
-        $this->fileSize = $fileSize;
+        $this->requestParameters['FileSize'] = $fileSize;
         $this->queryParameters['FileSize'] = $fileSize;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
-    public function setOwnerId($ownerId)
-    {
-        $this->ownerId = $ownerId;
-        $this->queryParameters['OwnerId'] = $ownerId;
-    }
-
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
+    /**
+     * @param string $title
+     * @return $this
+     */
     public function setTitle($title)
     {
-        $this->title = $title;
+        $this->requestParameters['Title'] = $title;
         $this->queryParameters['Title'] = $title;
+
+        return $this;
     }
 
-    public function getBusinessType()
-    {
-        return $this->businessType;
-    }
-
+    /**
+     * @param string $businessType
+     * @return $this
+     */
     public function setBusinessType($businessType)
     {
-        $this->businessType = $businessType;
+        $this->requestParameters['BusinessType'] = $businessType;
         $this->queryParameters['BusinessType'] = $businessType;
+
+        return $this;
     }
 
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
-    public function setTags($tags)
-    {
-        $this->tags = $tags;
-        $this->queryParameters['Tags'] = $tags;
-    }
-
-    public function getStorageLocation()
-    {
-        return $this->storageLocation;
-    }
-
+    /**
+     * @param string $storageLocation
+     * @return $this
+     */
     public function setStorageLocation($storageLocation)
     {
-        $this->storageLocation = $storageLocation;
+        $this->requestParameters['StorageLocation'] = $storageLocation;
         $this->queryParameters['StorageLocation'] = $storageLocation;
+
+        return $this;
     }
 
-    public function getMediaExt()
+    /**
+     * @param string $userData
+     * @return $this
+     */
+    public function setUserData($userData)
     {
-        return $this->mediaExt;
+        $this->requestParameters['UserData'] = $userData;
+        $this->queryParameters['UserData'] = $userData;
+
+        return $this;
     }
 
-    public function setMediaExt($mediaExt)
-    {
-        $this->mediaExt = $mediaExt;
-        $this->queryParameters['MediaExt'] = $mediaExt;
-    }
-
-    public function getFileName()
-    {
-        return $this->fileName;
-    }
-
-    public function setFileName($fileName)
-    {
-        $this->fileName = $fileName;
-        $this->queryParameters['FileName'] = $fileName;
-    }
-
-    public function getCateId()
-    {
-        return $this->cateId;
-    }
-
+    /**
+     * @param string $cateId
+     * @return $this
+     */
     public function setCateId($cateId)
     {
-        $this->cateId = $cateId;
+        $this->requestParameters['CateId'] = $cateId;
         $this->queryParameters['CateId'] = $cateId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
+    }
+
+    /**
+     * @param string $cateIds
+     * @return $this
+     */
+    public function setCateIds($cateIds)
+    {
+        $this->requestParameters['CateIds'] = $cateIds;
+        $this->queryParameters['CateIds'] = $cateIds;
+
+        return $this;
+    }
+
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
+    public function setOwnerId($ownerId)
+    {
+        $this->requestParameters['OwnerId'] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $tags
+     * @return $this
+     */
+    public function setTags($tags)
+    {
+        $this->requestParameters['Tags'] = $tags;
+        $this->queryParameters['Tags'] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * @param string $mediaExt
+     * @return $this
+     */
+    public function setMediaExt($mediaExt)
+    {
+        $this->requestParameters['MediaExt'] = $mediaExt;
+        $this->queryParameters['MediaExt'] = $mediaExt;
+
+        return $this;
+    }
+
+    /**
+     * @param string $fileName
+     * @return $this
+     */
+    public function setFileName($fileName)
+    {
+        $this->requestParameters['FileName'] = $fileName;
+        $this->queryParameters['FileName'] = $fileName;
+
+        return $this;
+    }
+
+    /**
+     * @param string $appId
+     * @return $this
+     */
+    public function setAppId($appId)
+    {
+        $this->requestParameters['AppId'] = $appId;
+        $this->queryParameters['AppId'] = $appId;
+
+        return $this;
     }
 }

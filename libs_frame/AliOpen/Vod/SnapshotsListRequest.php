@@ -3,108 +3,125 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of ListSnapshots
+ * @method string getResourceOwnerId()
+ * @method string getPageSize()
+ * @method string getAuthTimeout()
+ * @method string getResourceOwnerAccount()
+ * @method string getVideoId()
+ * @method string getOwnerId()
+ * @method string getSnapshotType()
+ * @method string getPageNo()
+ */
 class SnapshotsListRequest extends RpcAcsRequest
 {
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $snapshotType;
-    private $pageNo;
-    private $pageSize;
-    private $videoId;
-    private $ownerId;
-    private $authTimeout;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('vod', '2017-03-21', 'ListSnapshots', 'vod', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('vod', '2017-03-21', 'ListSnapshots', 'vod');
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
-    public function setResourceOwnerAccount($resourceOwnerAccount)
-    {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
-    }
-
-    public function getSnapshotType()
-    {
-        return $this->snapshotType;
-    }
-
-    public function setSnapshotType($snapshotType)
-    {
-        $this->snapshotType = $snapshotType;
-        $this->queryParameters['SnapshotType'] = $snapshotType;
-    }
-
-    public function getPageNo()
-    {
-        return $this->pageNo;
-    }
-
-    public function setPageNo($pageNo)
-    {
-        $this->pageNo = $pageNo;
-        $this->queryParameters['PageNo'] = $pageNo;
-    }
-
-    public function getPageSize()
-    {
-        return $this->pageSize;
-    }
-
+    /**
+     * @param string $pageSize
+     * @return $this
+     */
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
+        $this->requestParameters['PageSize'] = $pageSize;
         $this->queryParameters['PageSize'] = $pageSize;
+
+        return $this;
     }
 
-    public function getVideoId()
-    {
-        return $this->videoId;
-    }
-
-    public function setVideoId($videoId)
-    {
-        $this->videoId = $videoId;
-        $this->queryParameters['VideoId'] = $videoId;
-    }
-
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
-    public function setOwnerId($ownerId)
-    {
-        $this->ownerId = $ownerId;
-        $this->queryParameters['OwnerId'] = $ownerId;
-    }
-
-    public function getAuthTimeout()
-    {
-        return $this->authTimeout;
-    }
-
+    /**
+     * @param string $authTimeout
+     * @return $this
+     */
     public function setAuthTimeout($authTimeout)
     {
-        $this->authTimeout = $authTimeout;
+        $this->requestParameters['AuthTimeout'] = $authTimeout;
         $this->queryParameters['AuthTimeout'] = $authTimeout;
+
+        return $this;
+    }
+
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
+    }
+
+    /**
+     * @param string $videoId
+     * @return $this
+     */
+    public function setVideoId($videoId)
+    {
+        $this->requestParameters['VideoId'] = $videoId;
+        $this->queryParameters['VideoId'] = $videoId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
+    public function setOwnerId($ownerId)
+    {
+        $this->requestParameters['OwnerId'] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $snapshotType
+     * @return $this
+     */
+    public function setSnapshotType($snapshotType)
+    {
+        $this->requestParameters['SnapshotType'] = $snapshotType;
+        $this->queryParameters['SnapshotType'] = $snapshotType;
+
+        return $this;
+    }
+
+    /**
+     * @param string $pageNo
+     * @return $this
+     */
+    public function setPageNo($pageNo)
+    {
+        $this->requestParameters['PageNo'] = $pageNo;
+        $this->queryParameters['PageNo'] = $pageNo;
+
+        return $this;
     }
 }

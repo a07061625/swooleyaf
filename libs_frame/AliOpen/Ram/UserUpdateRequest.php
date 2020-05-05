@@ -3,85 +3,103 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of UpdateUser
+ * @method string getNewUserName()
+ * @method string getNewDisplayName()
+ * @method string getNewMobilePhone()
+ * @method string getNewComments()
+ * @method string getNewEmail()
+ * @method string getUserName()
+ */
 class UserUpdateRequest extends RpcAcsRequest
 {
-    private $newUserName;
-    private $newDisplayName;
-    private $newMobilePhone;
-    private $newComments;
-    private $newEmail;
-    private $userName;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'UpdateUser');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'UpdateUser', 'ram');
     }
 
-    public function getNewUserName()
-    {
-        return $this->newUserName;
-    }
-
+    /**
+     * @param string $newUserName
+     * @return $this
+     */
     public function setNewUserName($newUserName)
     {
-        $this->newUserName = $newUserName;
+        $this->requestParameters['NewUserName'] = $newUserName;
         $this->queryParameters['NewUserName'] = $newUserName;
+
+        return $this;
     }
 
-    public function getNewDisplayName()
-    {
-        return $this->newDisplayName;
-    }
-
+    /**
+     * @param string $newDisplayName
+     * @return $this
+     */
     public function setNewDisplayName($newDisplayName)
     {
-        $this->newDisplayName = $newDisplayName;
+        $this->requestParameters['NewDisplayName'] = $newDisplayName;
         $this->queryParameters['NewDisplayName'] = $newDisplayName;
+
+        return $this;
     }
 
-    public function getNewMobilePhone()
-    {
-        return $this->newMobilePhone;
-    }
-
+    /**
+     * @param string $newMobilePhone
+     * @return $this
+     */
     public function setNewMobilePhone($newMobilePhone)
     {
-        $this->newMobilePhone = $newMobilePhone;
+        $this->requestParameters['NewMobilePhone'] = $newMobilePhone;
         $this->queryParameters['NewMobilePhone'] = $newMobilePhone;
+
+        return $this;
     }
 
-    public function getNewComments()
-    {
-        return $this->newComments;
-    }
-
+    /**
+     * @param string $newComments
+     * @return $this
+     */
     public function setNewComments($newComments)
     {
-        $this->newComments = $newComments;
+        $this->requestParameters['NewComments'] = $newComments;
         $this->queryParameters['NewComments'] = $newComments;
+
+        return $this;
     }
 
-    public function getNewEmail()
-    {
-        return $this->newEmail;
-    }
-
+    /**
+     * @param string $newEmail
+     * @return $this
+     */
     public function setNewEmail($newEmail)
     {
-        $this->newEmail = $newEmail;
+        $this->requestParameters['NewEmail'] = $newEmail;
         $this->queryParameters['NewEmail'] = $newEmail;
+
+        return $this;
     }
 
-    public function getUserName()
-    {
-        return $this->userName;
-    }
-
+    /**
+     * @param string $userName
+     * @return $this
+     */
     public function setUserName($userName)
     {
-        $this->userName = $userName;
+        $this->requestParameters['UserName'] = $userName;
         $this->queryParameters['UserName'] = $userName;
+
+        return $this;
     }
 }

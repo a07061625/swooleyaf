@@ -3,25 +3,64 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of ListUsersForGroup
+ * @method string getMarker()
+ * @method string getMaxItems()
+ * @method string getGroupName()
+ */
 class GroupUsersListRequest extends RpcAcsRequest
 {
-    private $groupName;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'ListUsersForGroup');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'ListUsersForGroup', 'ram');
     }
 
-    public function getGroupName()
+    /**
+     * @param string $marker
+     * @return $this
+     */
+    public function setMarker($marker)
     {
-        return $this->groupName;
+        $this->requestParameters['Marker'] = $marker;
+        $this->queryParameters['Marker'] = $marker;
+
+        return $this;
     }
 
+    /**
+     * @param string $maxItems
+     * @return $this
+     */
+    public function setMaxItems($maxItems)
+    {
+        $this->requestParameters['MaxItems'] = $maxItems;
+        $this->queryParameters['MaxItems'] = $maxItems;
+
+        return $this;
+    }
+
+    /**
+     * @param string $groupName
+     * @return $this
+     */
     public function setGroupName($groupName)
     {
-        $this->groupName = $groupName;
+        $this->requestParameters['GroupName'] = $groupName;
         $this->queryParameters['GroupName'] = $groupName;
+
+        return $this;
     }
 }

@@ -3,24 +3,34 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of ListAuditSecurityIp
+ * @method string getSecurityGroupName()
+ */
 class AuditSecurityIpListRequest extends RpcAcsRequest
 {
-    private $securityGroupName;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('vod', '2017-03-21', 'ListAuditSecurityIp', 'vod', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('vod', '2017-03-21', 'ListAuditSecurityIp', 'vod');
     }
 
-    public function getSecurityGroupName()
-    {
-        return $this->securityGroupName;
-    }
-
+    /**
+     * @param string $securityGroupName
+     * @return $this
+     */
     public function setSecurityGroupName($securityGroupName)
     {
-        $this->securityGroupName = $securityGroupName;
+        $this->requestParameters['SecurityGroupName'] = $securityGroupName;
         $this->queryParameters['SecurityGroupName'] = $securityGroupName;
+
+        return $this;
     }
 }

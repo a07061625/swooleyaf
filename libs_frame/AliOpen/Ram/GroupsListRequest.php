@@ -3,37 +3,51 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of ListGroups
+ * @method string getMarker()
+ * @method string getMaxItems()
+ */
 class GroupsListRequest extends RpcAcsRequest
 {
-    private $marker;
-    private $maxItems;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'ListGroups');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'ListGroups', 'ram');
     }
 
-    public function getMarker()
-    {
-        return $this->marker;
-    }
-
+    /**
+     * @param string $marker
+     * @return $this
+     */
     public function setMarker($marker)
     {
-        $this->marker = $marker;
+        $this->requestParameters['Marker'] = $marker;
         $this->queryParameters['Marker'] = $marker;
+
+        return $this;
     }
 
-    public function getMaxItems()
-    {
-        return $this->maxItems;
-    }
-
+    /**
+     * @param string $maxItems
+     * @return $this
+     */
     public function setMaxItems($maxItems)
     {
-        $this->maxItems = $maxItems;
+        $this->requestParameters['MaxItems'] = $maxItems;
         $this->queryParameters['MaxItems'] = $maxItems;
+
+        return $this;
     }
 }

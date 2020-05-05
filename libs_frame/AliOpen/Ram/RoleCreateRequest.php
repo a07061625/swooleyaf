@@ -3,49 +3,64 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of CreateRole
+ * @method string getRoleName()
+ * @method string getDescription()
+ * @method string getAssumeRolePolicyDocument()
+ */
 class RoleCreateRequest extends RpcAcsRequest
 {
-    private $roleName;
-    private $description;
-    private $assumeRolePolicyDocument;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'CreateRole');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'CreateRole', 'ram');
     }
 
-    public function getRoleName()
-    {
-        return $this->roleName;
-    }
-
+    /**
+     * @param string $roleName
+     * @return $this
+     */
     public function setRoleName($roleName)
     {
-        $this->roleName = $roleName;
+        $this->requestParameters['RoleName'] = $roleName;
         $this->queryParameters['RoleName'] = $roleName;
+
+        return $this;
     }
 
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
+    /**
+     * @param string $description
+     * @return $this
+     */
     public function setDescription($description)
     {
-        $this->description = $description;
+        $this->requestParameters['Description'] = $description;
         $this->queryParameters['Description'] = $description;
+
+        return $this;
     }
 
-    public function getAssumeRolePolicyDocument()
-    {
-        return $this->assumeRolePolicyDocument;
-    }
-
+    /**
+     * @param string $assumeRolePolicyDocument
+     * @return $this
+     */
     public function setAssumeRolePolicyDocument($assumeRolePolicyDocument)
     {
-        $this->assumeRolePolicyDocument = $assumeRolePolicyDocument;
+        $this->requestParameters['AssumeRolePolicyDocument'] = $assumeRolePolicyDocument;
         $this->queryParameters['AssumeRolePolicyDocument'] = $assumeRolePolicyDocument;
+
+        return $this;
     }
 }

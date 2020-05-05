@@ -3,37 +3,51 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of CreateGroup
+ * @method string getComments()
+ * @method string getGroupName()
+ */
 class GroupCreateRequest extends RpcAcsRequest
 {
-    private $comments;
-    private $groupName;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'CreateGroup');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'CreateGroup', 'ram');
     }
 
-    public function getComments()
-    {
-        return $this->comments;
-    }
-
+    /**
+     * @param string $comments
+     * @return $this
+     */
     public function setComments($comments)
     {
-        $this->comments = $comments;
+        $this->requestParameters['Comments'] = $comments;
         $this->queryParameters['Comments'] = $comments;
+
+        return $this;
     }
 
-    public function getGroupName()
-    {
-        return $this->groupName;
-    }
-
+    /**
+     * @param string $groupName
+     * @return $this
+     */
     public function setGroupName($groupName)
     {
-        $this->groupName = $groupName;
+        $this->requestParameters['GroupName'] = $groupName;
         $this->queryParameters['GroupName'] = $groupName;
+
+        return $this;
     }
 }

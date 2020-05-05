@@ -3,49 +3,64 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of UpdateGroup
+ * @method string getNewGroupName()
+ * @method string getNewComments()
+ * @method string getGroupName()
+ */
 class GroupUpdateRequest extends RpcAcsRequest
 {
-    private $newGroupName;
-    private $newComments;
-    private $groupName;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'UpdateGroup');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'UpdateGroup', 'ram');
     }
 
-    public function getNewGroupName()
-    {
-        return $this->newGroupName;
-    }
-
+    /**
+     * @param string $newGroupName
+     * @return $this
+     */
     public function setNewGroupName($newGroupName)
     {
-        $this->newGroupName = $newGroupName;
+        $this->requestParameters['NewGroupName'] = $newGroupName;
         $this->queryParameters['NewGroupName'] = $newGroupName;
+
+        return $this;
     }
 
-    public function getNewComments()
-    {
-        return $this->newComments;
-    }
-
+    /**
+     * @param string $newComments
+     * @return $this
+     */
     public function setNewComments($newComments)
     {
-        $this->newComments = $newComments;
+        $this->requestParameters['NewComments'] = $newComments;
         $this->queryParameters['NewComments'] = $newComments;
+
+        return $this;
     }
 
-    public function getGroupName()
-    {
-        return $this->groupName;
-    }
-
+    /**
+     * @param string $groupName
+     * @return $this
+     */
     public function setGroupName($groupName)
     {
-        $this->groupName = $groupName;
+        $this->requestParameters['GroupName'] = $groupName;
         $this->queryParameters['GroupName'] = $groupName;
+
+        return $this;
     }
 }

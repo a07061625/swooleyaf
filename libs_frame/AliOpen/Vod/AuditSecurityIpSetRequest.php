@@ -3,48 +3,60 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of SetAuditSecurityIp
+ * @method string getSecurityGroupName()
+ * @method string getOperateMode()
+ * @method string getIps()
+ */
 class AuditSecurityIpSetRequest extends RpcAcsRequest
 {
-    private $operateMode;
-    private $securityGroupName;
-    private $ips;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('vod', '2017-03-21', 'SetAuditSecurityIp', 'vod', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('vod', '2017-03-21', 'SetAuditSecurityIp', 'vod');
     }
 
-    public function getOperateMode()
-    {
-        return $this->operateMode;
-    }
-
-    public function setOperateMode($operateMode)
-    {
-        $this->operateMode = $operateMode;
-        $this->queryParameters['OperateMode'] = $operateMode;
-    }
-
-    public function getSecurityGroupName()
-    {
-        return $this->securityGroupName;
-    }
-
+    /**
+     * @param string $securityGroupName
+     * @return $this
+     */
     public function setSecurityGroupName($securityGroupName)
     {
-        $this->securityGroupName = $securityGroupName;
+        $this->requestParameters['SecurityGroupName'] = $securityGroupName;
         $this->queryParameters['SecurityGroupName'] = $securityGroupName;
+
+        return $this;
     }
 
-    public function getIps()
+    /**
+     * @param string $operateMode
+     * @return $this
+     */
+    public function setOperateMode($operateMode)
     {
-        return $this->ips;
+        $this->requestParameters['OperateMode'] = $operateMode;
+        $this->queryParameters['OperateMode'] = $operateMode;
+
+        return $this;
     }
 
+    /**
+     * @param string $ips
+     * @return $this
+     */
     public function setIps($ips)
     {
-        $this->ips = $ips;
+        $this->requestParameters['Ips'] = $ips;
         $this->queryParameters['Ips'] = $ips;
+
+        return $this;
     }
 }

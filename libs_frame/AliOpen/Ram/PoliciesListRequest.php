@@ -3,49 +3,64 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of ListPolicies
+ * @method string getPolicyType()
+ * @method string getMarker()
+ * @method string getMaxItems()
+ */
 class PoliciesListRequest extends RpcAcsRequest
 {
-    private $policyType;
-    private $marker;
-    private $maxItems;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'ListPolicies');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'ListPolicies', 'ram');
     }
 
-    public function getPolicyType()
-    {
-        return $this->policyType;
-    }
-
+    /**
+     * @param string $policyType
+     * @return $this
+     */
     public function setPolicyType($policyType)
     {
-        $this->policyType = $policyType;
+        $this->requestParameters['PolicyType'] = $policyType;
         $this->queryParameters['PolicyType'] = $policyType;
+
+        return $this;
     }
 
-    public function getMarker()
-    {
-        return $this->marker;
-    }
-
+    /**
+     * @param string $marker
+     * @return $this
+     */
     public function setMarker($marker)
     {
-        $this->marker = $marker;
+        $this->requestParameters['Marker'] = $marker;
         $this->queryParameters['Marker'] = $marker;
+
+        return $this;
     }
 
-    public function getMaxItems()
-    {
-        return $this->maxItems;
-    }
-
+    /**
+     * @param string $maxItems
+     * @return $this
+     */
     public function setMaxItems($maxItems)
     {
-        $this->maxItems = $maxItems;
+        $this->requestParameters['MaxItems'] = $maxItems;
         $this->queryParameters['MaxItems'] = $maxItems;
+
+        return $this;
     }
 }
