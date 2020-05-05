@@ -1,6 +1,9 @@
 <?php
 namespace AliOss\Http;
 
+/**
+ * Container for all response-related methods.
+ */
 class ResponseCore
 {
     /**
@@ -19,7 +22,7 @@ class ResponseCore
     /**
      * Construct a new instance of this class.
      * @param array $header (Required) Associative array of HTTP headers (typically returned by <RequestCore::get_response_header()>).
-     * @param string $body (Required) XML-formatted response from AWS.
+     * @param string $body (Required) XML-formatted response from OSS.
      * @param integer $status (Optional) HTTP response status code from the request.
      * @return Mixed Contains an <php:array> `header` property (HTTP headers as an associative array), a <php:SimpleXMLElement> or <php:string> `body` property, and an <php:integer> `status` code.
      */
@@ -40,7 +43,7 @@ class ResponseCore
     public function isOK($codes = [200, 201, 204, 206])
     {
         if (is_array($codes)) {
-            return in_array($this->status, $codes, true);
+            return in_array($this->status, $codes);
         }
 
         return $this->status === $codes;

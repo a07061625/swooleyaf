@@ -6,7 +6,7 @@ use AliOss\Model\GetLiveChannelInfo;
 class GetLiveChannelInfoResult extends Result
 {
     /**
-     * @return \AliOss\Model\GetLiveChannelInfo
+     * @return array
      */
     protected function parseDataFromResponse()
     {

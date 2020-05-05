@@ -4,10 +4,14 @@ namespace AliOss\Result;
 use AliOss\Model\BucketInfo;
 use AliOss\Model\BucketListInfo;
 
+/**
+ * Class ListBucketsResult
+ * @package AliOss\Result
+ */
 class ListBucketsResult extends Result
 {
     /**
-     * @return BucketListInfo
+     * @return \AliOss\Model\BucketListInfo
      */
     protected function parseDataFromResponse()
     {

@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/Common.php';
 
-use AliOss\Core\OssException;
 use AliOss\OssClient;
+use AliOss\Core\OssException;
 
 $ossClient = Common::getOssClient();
 if (is_null($ossClient)) {
@@ -18,7 +18,7 @@ Common::println("bucket $bucket created");
 
 // Check whether a bucket exists
 $doesExist = $ossClient->doesBucketExist($bucket);
-Common::println("bucket $bucket exist? " . ($doesExist ? 'yes' : 'no'));
+Common::println("bucket $bucket exist? " . ($doesExist ? "yes" : "no"));
 
 // Get the bucket list
 $bucketListInfo = $ossClient->listBuckets();
@@ -55,14 +55,14 @@ function createBucket($ossClient, $bucket)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ': OK' . "\n");
+    print(__FUNCTION__ . ": OK" . "\n");
 }
 
 /**
  * Check whether a bucket exists.
- *
  * @param OssClient $ossClient OssClient instance
  * @param string $bucket bucket name
  */
@@ -73,12 +73,13 @@ function doesBucketExist($ossClient, $bucket)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
     if ($res === true) {
-        print(__FUNCTION__ . ': OK' . "\n");
+        print(__FUNCTION__ . ": OK" . "\n");
     } else {
-        print(__FUNCTION__ . ': FAILED' . "\n");
+        print(__FUNCTION__ . ": FAILED" . "\n");
     }
 }
 
@@ -96,14 +97,15 @@ function deleteBucket($ossClient, $bucket)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ': OK' . "\n");
+    print(__FUNCTION__ . ": OK" . "\n");
 }
 
 /**
  * Set bucket ACL
- * @param \AliOss\OssClient $ossClient OssClient instance
+ * @param OssClient $ossClient OssClient instance
  * @param string $bucket bucket name
  * @return null
  */
@@ -115,9 +117,10 @@ function putBucketAcl($ossClient, $bucket)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ': OK' . "\n");
+    print(__FUNCTION__ . ": OK" . "\n");
 }
 
 /**
@@ -133,15 +136,16 @@ function getBucketAcl($ossClient, $bucket)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ': OK' . "\n");
+    print(__FUNCTION__ . ": OK" . "\n");
     print('acl: ' . $res);
 }
 
 /**
  * List all buckets
- * @param \AliOss\OssClient $ossClient OssClient instance
+ * @param OssClient $ossClient OssClient instance
  * @return null
  */
 function listBuckets($ossClient)
@@ -152,9 +156,10 @@ function listBuckets($ossClient)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ': OK' . "\n");
+    print(__FUNCTION__ . ": OK" . "\n");
     $bucketList = $bucketListInfo->getBucketList();
     foreach ($bucketList as $bucket) {
         print($bucket->getLocation() . "\t" . $bucket->getName() . "\t" . $bucket->getCreatedate() . "\n");

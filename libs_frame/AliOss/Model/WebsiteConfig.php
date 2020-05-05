@@ -3,17 +3,22 @@ namespace AliOss\Model;
 
 use AliOss\Core\OssException;
 
+/**
+ * Class WebsiteConfig
+ * @package AliOss\Model
+ * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/PutBucketWebsite.html
+ */
 class WebsiteConfig implements XmlConfig
 {
-    private $indexDocument = '';
-    private $errorDocument = '';
+    private $indexDocument = "";
+    private $errorDocument = "";
 
     /**
      * WebsiteConfig constructor.
      * @param  string $indexDocument
      * @param  string $errorDocument
      */
-    public function __construct($indexDocument = '', $errorDocument = '')
+    public function __construct($indexDocument = "", $errorDocument = "")
     {
         $this->indexDocument = $indexDocument;
         $this->errorDocument = $errorDocument;

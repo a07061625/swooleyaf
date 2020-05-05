@@ -1,6 +1,11 @@
 <?php
 namespace AliOss\Model;
 
+/**
+ * Class LifecycleRule
+ * @package AliOss\Model
+ * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/PutBucketLifecycle.html
+ */
 class LifecycleRule
 {
     const LIFECYCLE_STATUS_ENABLED = 'Enabled';

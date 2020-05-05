@@ -1,6 +1,11 @@
 <?php
 namespace AliOss\Core;
 
+/**
+ * Class OssUtil
+ * Oss Util class for OssClient. The caller could use it for formating the result from OssClient.
+ * @package AliOss\Core
+ */
 class OssUtil
 {
     const OSS_CONTENT = 'content';
@@ -187,7 +192,7 @@ class OssUtil
     {
         //$options
         if ($options != null && !is_array($options)) {
-            throw new OssException($options . ':' . 'option must be array');
+            throw new OssException ($options . ':' . 'option must be array');
         }
     }
 
@@ -199,7 +204,7 @@ class OssUtil
     public static function validateContent($content)
     {
         if (empty($content)) {
-            throw new OssException('http body content is invalid');
+            throw new OssException("http body content is invalid");
         }
     }
 
@@ -225,12 +230,12 @@ class OssUtil
     public static function generateFile($filename, $size)
     {
         if (file_exists($filename) && $size == filesize($filename)) {
-            echo $filename . ' already exists, no need to create again. ';
+            echo $filename . " already exists, no need to create again. ";
 
             return;
         }
         $part_size = 1 * 1024 * 1024;
-        $fp = fopen($filename, 'w');
+        $fp = fopen($filename, "w");
         $characters = <<<BBB
 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 BBB;
@@ -248,12 +253,12 @@ BBB;
                 $content = str_repeat($a, $write_size);
                 $flag = fwrite($fp, $content);
                 if (!$flag) {
-                    echo 'write to ' . $filename . ' failed. <br>';
+                    echo "write to " . $filename . " failed. <br>";
                     break;
                 }
             }
         } else {
-            echo 'open ' . $filename . ' failed. <br>';
+            echo "open " . $filename . " failed. <br>";
         }
         fclose($fp);
     }
@@ -267,7 +272,7 @@ BBB;
      */
     public static function getMd5SumForFile($filename, $from_pos, $to_pos)
     {
-        $content_md5 = '';
+        $content_md5 = "";
         if (($to_pos - $from_pos) > self::OSS_MAX_PART_SIZE) {
             return $content_md5;
         }
@@ -314,7 +319,7 @@ BBB;
      */
     public static function isWin()
     {
-        return strtoupper(substr(PHP_OS, 0, 3)) == 'WIN';
+        return strtoupper(substr(PHP_OS, 0, 3)) == "WIN";
     }
 
     /**
@@ -340,7 +345,7 @@ BBB;
      */
     public static function isIPFormat($endpoint)
     {
-        $ip_array = explode(':', $endpoint);
+        $ip_array = explode(":", $endpoint);
         $hostname = $ip_array[0];
         $ret = filter_var($hostname, FILTER_VALIDATE_IP);
         if (!$ret) {
@@ -348,6 +353,42 @@ BBB;
         } else {
             return true;
         }
+    }
+
+    /**
+     * Get the host:port from endpoint.
+     * @param string $endpoint the endpoint.
+     * @return boolean
+     */
+    public static function getHostPortFromEndpoint($endpoint)
+    {
+        $str = $endpoint;
+        $pos = strpos($str, "://");
+        if ($pos !== false) {
+            $str = substr($str, $pos + 3);
+        }
+
+        $pos = strpos($str, '#');
+        if ($pos !== false) {
+            $str = substr($str, 0, $pos);
+        }
+
+        $pos = strpos($str, '?');
+        if ($pos !== false) {
+            $str = substr($str, 0, $pos);
+        }
+
+        $pos = strpos($str, '/');
+        if ($pos !== false) {
+            $str = substr($str, 0, $pos);
+        }
+
+        $pos = strpos($str, '@');
+        if ($pos !== false) {
+            $str = substr($str, $pos + 1);
+        }
+
+        return $str;
     }
 
     /**
@@ -362,7 +403,7 @@ BBB;
         $xml->addChild('Quiet', $quiet);
         foreach ($objects as $object) {
             $sub_object = $xml->addChild('Object');
-            $object = self::sReplace($object);
+            $object = OssUtil::sReplace($object);
             $sub_object->addChild('Key', $object);
         }
 
@@ -393,11 +434,11 @@ BBB;
      * @param bool $recursive
      * @return string[]
      */
-    public static function readDir($dir, $exclude = '.|..|.svn|.git', $recursive = false)
+    public static function readDir($dir, $exclude = ".|..|.svn|.git", $recursive = false)
     {
         $file_list_array = [];
         $base_path = $dir;
-        $exclude_array = explode('|', $exclude);
+        $exclude_array = explode("|", $exclude);
         $exclude_array = array_unique(array_merge($exclude_array, ['.', '..']));
 
         if ($recursive) {
@@ -406,7 +447,7 @@ BBB;
                     continue;
                 }
                 $object = str_replace($base_path, '', $new_file);
-                if (!in_array(strtolower($object), $exclude_array, true)) {
+                if (!in_array(strtolower($object), $exclude_array)) {
                     $object = ltrim($object, '/');
                     if (is_file($new_file)) {
                         $key = md5($new_file . $object, false);
@@ -414,9 +455,9 @@ BBB;
                     }
                 }
             }
-        } elseif ($handle = opendir($dir)) {
+        } else if ($handle = opendir($dir)) {
             while (false !== ($file = readdir($handle))) {
-                if (!in_array(strtolower($file), $exclude_array, true)) {
+                if (!in_array(strtolower($file), $exclude_array)) {
                     $new_file = $dir . '/' . $file;
                     $object = $file;
                     $object = ltrim($object, '/');
@@ -437,17 +478,18 @@ BBB;
      * @param string $key
      * @param string $encoding
      * @return string
+     * @throws \AliOss\Core\OssException
      */
     public static function decodeKey($key, $encoding)
     {
-        if ($encoding == '') {
+        if ($encoding == "") {
             return $key;
         }
 
-        if ($encoding == 'url') {
+        if ($encoding == "url") {
             return rawurldecode($key);
         } else {
-            throw new OssException('Unrecognized encoding type: ' . $encoding);
+            throw new OssException("Unrecognized encoding type: " . $encoding);
         }
     }
 }

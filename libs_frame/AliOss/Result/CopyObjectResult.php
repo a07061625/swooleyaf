@@ -1,6 +1,10 @@
 <?php
 namespace AliOss\Result;
 
+/**
+ * Class CopyObjectResult
+ * @package AliOss\Result
+ */
 class CopyObjectResult extends Result
 {
     /**

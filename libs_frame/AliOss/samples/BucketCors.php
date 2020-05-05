@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/Common.php';
 
+use AliOss\OssClient;
 use AliOss\Core\OssException;
 use AliOss\Model\CorsConfig;
 use AliOss\Model\CorsRule;
@@ -16,9 +17,9 @@ $bucket = Common::getBucketName();
 // Set cors configuration
 $corsConfig = new CorsConfig();
 $rule = new CorsRule();
-$rule->addAllowedHeader('x-oss-header');
-$rule->addAllowedOrigin('http://www.b.com');
-$rule->addAllowedMethod('POST');
+$rule->addAllowedHeader("x-oss-header");
+$rule->addAllowedOrigin("http://www.b.com");
+$rule->addAllowedMethod("POST");
 $rule->setMaxAgeSeconds(10);
 $corsConfig->addRule($rule);
 $ossClient->putBucketCors($bucket, $corsConfig);
@@ -41,7 +42,7 @@ getBucketCors($ossClient, $bucket);
 
 /**
  * Set bucket cores
- * @param \AliOss\OssClient $ossClient OssClient instance
+ * @param OssClient $ossClient OssClient instance
  * @param string $bucket bucket name
  * @return null
  */
@@ -49,9 +50,9 @@ function putBucketCors($ossClient, $bucket)
 {
     $corsConfig = new CorsConfig();
     $rule = new CorsRule();
-    $rule->addAllowedHeader('x-oss-header');
-    $rule->addAllowedOrigin('http://www.b.com');
-    $rule->addAllowedMethod('POST');
+    $rule->addAllowedHeader("x-oss-header");
+    $rule->addAllowedOrigin("http://www.b.com");
+    $rule->addAllowedMethod("POST");
     $rule->setMaxAgeSeconds(10);
     $corsConfig->addRule($rule);
 
@@ -60,14 +61,15 @@ function putBucketCors($ossClient, $bucket)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ': OK' . "\n");
+    print(__FUNCTION__ . ": OK" . "\n");
 }
 
 /**
  * Get and print the cors configuration of a bucket
- * @param \AliOss\OssClient $ossClient OssClient instance
+ * @param OssClient $ossClient OssClient instance
  * @param string $bucket bucket name
  * @return null
  */
@@ -79,9 +81,10 @@ function getBucketCors($ossClient, $bucket)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ': OK' . "\n");
+    print(__FUNCTION__ . ": OK" . "\n");
     print($corsConfig->serializeToXml() . "\n");
 }
 
@@ -98,7 +101,9 @@ function deleteBucketCors($ossClient, $bucket)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ': OK' . "\n");
+    print(__FUNCTION__ . ": OK" . "\n");
 }
+

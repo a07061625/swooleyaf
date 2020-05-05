@@ -4,11 +4,14 @@ namespace AliOss\Result;
 use AliOss\Core\OssException;
 use AliOss\OssClient;
 
+/**
+ * @package AliOss\Result
+ */
 class SymlinkResult extends Result
 {
     /**
      * @return string
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      */
     protected function parseDataFromResponse()
     {

@@ -3,11 +3,15 @@ namespace AliOss\Result;
 
 use AliOss\Model\WebsiteConfig;
 
+/**
+ * Class GetWebsiteResult
+ * @package AliOss\Result
+ */
 class GetWebsiteResult extends Result
 {
     /**
      * Parse WebsiteConfig data
-     * @return WebsiteConfig
+     * @return \AliOss\Model\WebsiteConfig
      */
     protected function parseDataFromResponse()
     {

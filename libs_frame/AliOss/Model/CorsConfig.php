@@ -3,6 +3,11 @@ namespace AliOss\Model;
 
 use AliOss\Core\OssException;
 
+/**
+ * Class CorsConfig
+ * @package AliOss\Model
+ * @link http://help.aliyun.com/document_detail/oss/api-reference/cors/PutBucketcors.html
+ */
 class CorsConfig implements XmlConfig
 {
     const OSS_CORS_ALLOWED_ORIGIN = 'AllowedOrigin';
@@ -42,12 +47,12 @@ class CorsConfig implements XmlConfig
     /**
      * Add a new CorsRule
      * @param CorsRule $rule
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      */
     public function addRule($rule)
     {
         if (count($this->rules) >= self::OSS_MAX_RULES) {
-            throw new OssException('num of rules in the config exceeds self::OSS_MAX_RULES: ' . strval(self::OSS_MAX_RULES));
+            throw new OssException("num of rules in the config exceeds self::OSS_MAX_RULES: " . strval(self::OSS_MAX_RULES));
         }
         $this->rules[] = $rule;
     }
@@ -55,7 +60,7 @@ class CorsConfig implements XmlConfig
     /**
      * Parse CorsConfig from the xml.
      * @param string $strXml
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      * @return null
      */
     public function parseFromXml($strXml)
@@ -81,6 +86,8 @@ class CorsConfig implements XmlConfig
             }
             $this->addRule($corsRule);
         }
+
+        return;
     }
 
     /**

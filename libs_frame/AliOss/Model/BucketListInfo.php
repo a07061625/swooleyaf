@@ -1,6 +1,11 @@
 <?php
 namespace AliOss\Model;
 
+/**
+ * Class BucketListInfo
+ * It's the type of return value of ListBuckets.
+ * @package AliOss\Model
+ */
 class BucketListInfo
 {
     /**

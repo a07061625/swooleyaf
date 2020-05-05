@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/Common.php';
 
+use AliOss\OssClient;
 use AliOss\Core\OssException;
 use AliOss\Model\RefererConfig;
 
@@ -15,8 +16,8 @@ if (is_null($ossClient)) {
 // Set referer whitelist
 $refererConfig = new RefererConfig();
 $refererConfig->setAllowEmptyReferer(true);
-$refererConfig->addReferer('www.aliiyun.com');
-$refererConfig->addReferer('www.aliiyuncs.com');
+$refererConfig->addReferer("www.aliiyun.com");
+$refererConfig->addReferer("www.aliiyuncs.com");
 $ossClient->putBucketReferer($bucket, $refererConfig);
 Common::println("bucket $bucket refererConfig created:" . $refererConfig->serializeToXml());
 // Get referer whitelist
@@ -45,16 +46,17 @@ function putBucketReferer($ossClient, $bucket)
 {
     $refererConfig = new RefererConfig();
     $refererConfig->setAllowEmptyReferer(true);
-    $refererConfig->addReferer('www.aliiyun.com');
-    $refererConfig->addReferer('www.aliiyuncs.com');
+    $refererConfig->addReferer("www.aliiyun.com");
+    $refererConfig->addReferer("www.aliiyuncs.com");
     try {
         $ossClient->putBucketReferer($bucket, $refererConfig);
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ': OK' . "\n");
+    print(__FUNCTION__ . ": OK" . "\n");
 }
 
 /**
@@ -71,9 +73,10 @@ function getBucketReferer($ossClient, $bucket)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ': OK' . "\n");
+    print(__FUNCTION__ . ": OK" . "\n");
     print($refererConfig->serializeToXml() . "\n");
 }
 
@@ -92,7 +95,8 @@ function deleteBucketReferer($ossClient, $bucket)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ': OK' . "\n");
+    print(__FUNCTION__ . ": OK" . "\n");
 }

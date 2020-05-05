@@ -1,6 +1,10 @@
 <?php
 namespace AliOss\Result;
 
+/**
+ * Class BodyResult
+ * @package AliOss\Result
+ */
 class BodyResult extends Result
 {
     /**
@@ -8,6 +12,6 @@ class BodyResult extends Result
      */
     protected function parseDataFromResponse()
     {
-        return empty($this->rawResponse->body) ? '' : $this->rawResponse->body;
+        return empty($this->rawResponse->body) ? "" : $this->rawResponse->body;
     }
 }

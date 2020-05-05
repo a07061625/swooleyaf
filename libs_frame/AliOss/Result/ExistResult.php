@@ -1,6 +1,10 @@
 <?php
 namespace AliOss\Result;
 
+/**
+ * Class ExistResult checks if bucket or object exists, according to the http status in response headers.
+ * @package AliOss\Result
+ */
 class ExistResult extends Result
 {
     /**

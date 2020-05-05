@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/Common.php';
 
-use AliOss\Core\OssException;
-use AliOss\Core\OssUtil;
 use AliOss\OssClient;
+use AliOss\Core\OssUtil;
+use AliOss\Core\OssException;
 
 $bucket = Common::getBucketName();
 $ossClient = Common::getOssClient();
@@ -18,12 +18,12 @@ if (is_null($ossClient)) {
  */
 
 // Upload a file using the multipart upload interface, which determines to use simple upload or multipart upload based on the file size.
-$ossClient->multiuploadFile($bucket, 'file.php', __FILE__, []);
-Common::println('local file ' . __FILE__ . " is uploaded to the bucket $bucket, file.php");
+$ossClient->multiuploadFile($bucket, "file.php", __FILE__, []);
+Common::println("local file " . __FILE__ . " is uploaded to the bucket $bucket, file.php");
 
 // Upload local directory's data into target dir
-$ossClient->uploadDir($bucket, 'targetdir', __DIR__);
-Common::println('local dir ' . __DIR__ . " is uploaded to the bucket $bucket, targetdir/");
+$ossClient->uploadDir($bucket, "targetdir", __DIR__);
+Common::println("local dir " . __DIR__ . " is uploaded to the bucket $bucket, targetdir/");
 
 // List the incomplete multipart uploads
 $listMultipartUploadInfo = $ossClient->listMultipartUploads($bucket, []);
@@ -37,14 +37,13 @@ listMultipartUploads($ossClient, $bucket);
 
 /**
  * Upload files using multipart upload
- *
  * @param OssClient $ossClient OssClient instance
  * @param string $bucket bucket name
  * @return null
  */
 function multiuploadFile($ossClient, $bucket)
 {
-    $object = 'test/multipart-test.txt';
+    $object = "test/multipart-test.txt";
     $file = __FILE__;
     $options = [];
 
@@ -53,21 +52,21 @@ function multiuploadFile($ossClient, $bucket)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ':  OK' . "\n");
+    print(__FUNCTION__ . ":  OK" . "\n");
 }
 
 /**
  * Use basic multipart upload for file upload.
- *
  * @param OssClient $ossClient OssClient instance
  * @param string $bucket bucket name
- * @throws OssException
+ * @throws \AliOss\Core\OssException
  */
 function putObjectByRawApis($ossClient, $bucket)
 {
-    $object = 'test/multipart-test.txt';
+    $object = "test/multipart-test.txt";
     /**
      *  step 1. Initialize a block upload event, that is, a multipart upload process to get an upload id
      */
@@ -76,9 +75,10 @@ function putObjectByRawApis($ossClient, $bucket)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": initiateMultipartUpload FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ': initiateMultipartUpload OK' . "\n");
+    print(__FUNCTION__ . ": initiateMultipartUpload OK" . "\n");
     /*
      * step 2. Upload parts
      */
@@ -109,6 +109,7 @@ function putObjectByRawApis($ossClient, $bucket)
         } catch (OssException $e) {
             printf(__FUNCTION__ . ": initiateMultipartUpload, uploadPart - part#{$i} FAILED\n");
             printf($e->getMessage() . "\n");
+
             return;
         }
         printf(__FUNCTION__ . ": initiateMultipartUpload, uploadPart - part#{$i} OK\n");
@@ -128,6 +129,7 @@ function putObjectByRawApis($ossClient, $bucket)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": completeMultipartUpload FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
     printf(__FUNCTION__ . ": completeMultipartUpload OK\n");
@@ -135,20 +137,19 @@ function putObjectByRawApis($ossClient, $bucket)
 
 /**
  * Upload by directories
- *
  * @param OssClient $ossClient OssClient
  * @param string $bucket bucket name
- *
  */
 function uploadDir($ossClient, $bucket)
 {
-    $localDirectory = '.';
-    $prefix = 'samples/codes';
+    $localDirectory = ".";
+    $prefix = "samples/codes";
     try {
         $ossClient->uploadDir($bucket, $prefix, $localDirectory);
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
     printf(__FUNCTION__ . ": completeMultipartUpload OK\n");
@@ -156,7 +157,6 @@ function uploadDir($ossClient, $bucket)
 
 /**
  * Get ongoing multipart uploads
- *
  * @param $ossClient OssClient
  * @param $bucket   string
  */
@@ -166,13 +166,14 @@ function listMultipartUploads($ossClient, $bucket)
         'max-uploads' => 100,
         'key-marker' => '',
         'prefix' => '',
-        'upload-id-marker' => ''
+        'upload-id-marker' => '',
     ];
     try {
         $listMultipartUploadInfo = $ossClient->listMultipartUploads($bucket, $options);
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": listMultipartUploads FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
     printf(__FUNCTION__ . ": listMultipartUploads OK\n");
