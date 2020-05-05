@@ -1,6 +1,11 @@
 <?php
 namespace AliOss\Model;
 
+/**
+ * Class RefererConfig
+ * @package AliOss\Model
+ * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/PutBucketReferer.html
+ */
 class RefererConfig implements XmlConfig
 {
     private $allowEmptyReferer = true;
@@ -9,7 +14,7 @@ class RefererConfig implements XmlConfig
     /**
      * @return string
      */
-    public function __toString()
+    function __toString()
     {
         return $this->serializeToXml();
     }

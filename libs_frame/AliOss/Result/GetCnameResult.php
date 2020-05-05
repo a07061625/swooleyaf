@@ -13,7 +13,6 @@ class GetCnameResult extends Result
         $content = $this->rawResponse->body;
         $config = new CnameConfig();
         $config->parseFromXml($content);
-
         return $config;
     }
 }

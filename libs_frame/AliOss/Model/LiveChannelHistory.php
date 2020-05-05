@@ -1,6 +1,13 @@
 <?php
 namespace AliOss\Model;
 
+use AliOss\Core\OssException;
+
+/**
+ * Class LiveChannelHistory
+ * @package AliOss\Model
+ *
+ */
 class LiveChannelHistory implements XmlConfig
 {
     private $startTime;
@@ -49,6 +56,6 @@ class LiveChannelHistory implements XmlConfig
 
     public function serializeToXml()
     {
-        throw new OssException('Not implemented.');
+        throw new OssException("Not implemented.");
     }
 }

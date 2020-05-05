@@ -1,14 +1,19 @@
 <?php
 namespace AliOss\Model;
 
+/**
+ * Class ListPartsInfo
+ * @package AliOss\Model
+ * @link http://help.aliyun.com/document_detail/oss/api-reference/multipart-upload/ListParts.html
+ */
 class ListPartsInfo
 {
-    private $bucket = '';
-    private $key = '';
-    private $uploadId = '';
+    private $bucket = "";
+    private $key = "";
+    private $uploadId = "";
     private $nextPartNumberMarker = 0;
     private $maxParts = 0;
-    private $isTruncated = '';
+    private $isTruncated = "";
     private $listPart = [];
 
     /**

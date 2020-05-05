@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/Common.php';
 
-use AliOss\Core\OssException;
 use AliOss\OssClient;
+use AliOss\Core\OssException;
 
 $bucket = Common::getBucketName();
 $ossClient = Common::getOssClient();
@@ -13,7 +13,7 @@ if (is_null($ossClient)) {
 //*******************************Simple Usage ***************************************************************
 
 // Set bucket access logging rules. Access logs are stored under the same bucket with a 'access.log' prefix.
-$ossClient->putBucketLogging($bucket, $bucket, 'access.log', []);
+$ossClient->putBucketLogging($bucket, $bucket, "access.log", []);
 Common::println("bucket $bucket lifecycleConfig created");
 
 // Get bucket access logging rules
@@ -33,7 +33,6 @@ getBucketLogging($ossClient, $bucket);
 
 /**
  * Set bucket logging configuration
- *
  * @param OssClient $ossClient OssClient instance
  * @param string $bucket bucket name
  * @return null
@@ -43,21 +42,21 @@ function putBucketLogging($ossClient, $bucket)
     $option = [];
     // Access logs are stored in the same bucket.
     $targetBucket = $bucket;
-    $targetPrefix = 'access.log';
+    $targetPrefix = "access.log";
 
     try {
         $ossClient->putBucketLogging($bucket, $targetBucket, $targetPrefix, $option);
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ': OK' . "\n");
+    print(__FUNCTION__ . ": OK" . "\n");
 }
 
 /**
  * Get bucket logging configuration
- *
  * @param OssClient $ossClient OssClient instance
  * @param string $bucket bucket name
  * @return null
@@ -71,16 +70,16 @@ function getBucketLogging($ossClient, $bucket)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ': OK' . "\n");
+    print(__FUNCTION__ . ": OK" . "\n");
     print($loggingConfig->serializeToXml() . "\n");
 }
 
 /**
  * Delete bucket logging configuration
- *
- * @param OssClient $ossClient OssClient instance
+ * @param \AliOss\OssClient $ossClient OssClient instance
  * @param string $bucket bucket name
  * @return null
  */
@@ -91,7 +90,8 @@ function deleteBucketLogging($ossClient, $bucket)
     } catch (OssException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
+
         return;
     }
-    print(__FUNCTION__ . ': OK' . "\n");
+    print(__FUNCTION__ . ": OK" . "\n");
 }

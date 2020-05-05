@@ -4,6 +4,11 @@ namespace AliOss\Result;
 use AliOss\Core\OssException;
 use AliOss\Http\ResponseCore;
 
+/**
+ * Class Result, The result class of The operation of the base class, different requests in dealing with the return of data have different logic,
+ * The specific parsing logic postponed to subclass implementation
+ * @package AliOss\Model
+ */
 abstract class Result
 {
     /**
@@ -19,15 +24,16 @@ abstract class Result
      * @var ResponseCore
      */
     protected $rawResponse;
+
     /**
      * Result constructor.
-     * @param $response ResponseCore
+     * @param $response \AliOss\Http\ResponseCore
      * @throws OssException
      */
     public function __construct($response)
     {
         if ($response === null) {
-            throw new OssException('raw response is null');
+            throw new OssException("raw response is null");
         }
         $this->rawResponse = $response;
         $this->parseResponse();
@@ -56,6 +62,12 @@ abstract class Result
     {
         return $this->parsedData;
     }
+
+    /**
+     * Subclass implementation, different requests return data has different analytical logic, implemented by subclasses
+     * @return mixed
+     */
+    abstract protected function parseDataFromResponse();
 
     /**
      * Whether the operation is successful
@@ -93,35 +105,6 @@ abstract class Result
     }
 
     /**
-     * Return the original return data
-     * @return ResponseCore
-     */
-    public function getRawResponse()
-    {
-        return $this->rawResponse;
-    }
-
-    /**
-     * Subclass implementation, different requests return data has different analytical logic, implemented by subclasses
-     * @return mixed
-     */
-    abstract protected function parseDataFromResponse();
-
-    /**
-     * Judging from the return http status code, [200-299] that is OK
-     * @return bool
-     */
-    protected function isResponseOk()
-    {
-        $status = $this->rawResponse->status;
-        if ((int)(intval($status) / 100) == 2) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
      * Try to get the error message from body
      * @param $body
      * @return string
@@ -155,5 +138,28 @@ abstract class Result
         }
 
         return '';
+    }
+
+    /**
+     * Judging from the return http status code, [200-299] that is OK
+     * @return bool
+     */
+    protected function isResponseOk()
+    {
+        $status = $this->rawResponse->status;
+        if ((int)(intval($status) / 100) == 2) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Return the original return data
+     * @return \AliOss\Http\ResponseCore
+     */
+    public function getRawResponse()
+    {
+        return $this->rawResponse;
     }
 }

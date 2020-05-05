@@ -1,6 +1,10 @@
 <?php
 namespace AliOss\Model;
 
+/**
+ * Interface XmlConfig
+ * @package AliOss\Model
+ */
 interface XmlConfig
 {
     /**

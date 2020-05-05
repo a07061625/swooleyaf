@@ -1,10 +1,15 @@
 <?php
 namespace AliOss\Model;
 
+/**
+ * Class LoggingConfig
+ * @package AliOss\Model
+ * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/PutBucketLogging.html
+ */
 class LoggingConfig implements XmlConfig
 {
-    private $targetBucket = '';
-    private $targetPrefix = '';
+    private $targetBucket = "";
+    private $targetPrefix = "";
 
     /**
      * LoggingConfig constructor.
