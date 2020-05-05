@@ -1,17 +1,22 @@
 <?php
 namespace AliOss\Model;
 
+/**
+ * Class ListMultipartUploadInfo
+ * @package AliOss\Model
+ * @link http://help.aliyun.com/document_detail/oss/api-reference/multipart-upload/ListMultipartUploads.html
+ */
 class ListMultipartUploadInfo
 {
-    private $bucket = '';
-    private $keyMarker = '';
-    private $uploadIdMarker = '';
-    private $nextKeyMarker = '';
-    private $nextUploadIdMarker = '';
-    private $delimiter = '';
-    private $prefix = '';
+    private $bucket = "";
+    private $keyMarker = "";
+    private $uploadIdMarker = "";
+    private $nextKeyMarker = "";
+    private $nextUploadIdMarker = "";
+    private $delimiter = "";
+    private $prefix = "";
     private $maxUploads = 0;
-    private $isTruncated = 'false';
+    private $isTruncated = "false";
     private $uploads = [];
 
     /**
@@ -27,8 +32,7 @@ class ListMultipartUploadInfo
      * @param string $isTruncated
      * @param array $uploads
      */
-    public function __construct(
-        $bucket,
+    public function __construct($bucket,
         $keyMarker,
         $uploadIdMarker,
         $nextKeyMarker,
@@ -37,8 +41,8 @@ class ListMultipartUploadInfo
         $prefix,
         $maxUploads,
         $isTruncated,
-        array $uploads
-    ) {
+        array $uploads)
+    {
         $this->bucket = $bucket;
         $this->keyMarker = $keyMarker;
         $this->uploadIdMarker = $uploadIdMarker;

@@ -3,6 +3,10 @@ namespace AliOss\Result;
 
 use AliOss\Model\RefererConfig;
 
+/**
+ * Class GetRefererResult
+ * @package AliOss\Result
+ */
 class GetRefererResult extends Result
 {
     /**

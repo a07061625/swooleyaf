@@ -3,10 +3,14 @@ namespace AliOss\Result;
 
 use AliOss\Model\LifecycleConfig;
 
+/**
+ * Class GetLifecycleResult
+ * @package AliOss\Result
+ */
 class GetLifecycleResult extends Result
 {
     /**
-     *  Parse the LifecycleConfig object from the response
+     * Parse the LifecycleConfig object from the response
      * @return LifecycleConfig
      */
     protected function parseDataFromResponse()

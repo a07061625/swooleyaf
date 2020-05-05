@@ -1,6 +1,11 @@
 <?php
 namespace AliOss\Model;
 
+/**
+ * Bucket information class. This is the type of element in BucketListInfo's
+ * Class BucketInfo
+ * @package AliOss\Model
+ */
 class BucketInfo
 {
     /**

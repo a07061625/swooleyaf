@@ -1,11 +1,15 @@
 <?php
 namespace AliOss\Model;
 
+/**
+ * Class PartInfo
+ * @package AliOss\Model
+ */
 class PartInfo
 {
     private $partNumber = 0;
-    private $lastModified = '';
-    private $eTag = '';
+    private $lastModified = "";
+    private $eTag = "";
     private $size = 0;
 
     /**

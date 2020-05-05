@@ -1,14 +1,20 @@
 <?php
 namespace AliOss\Model;
 
+/**
+ * Class ObjectListInfo
+ * The class of return value of ListObjects
+ * @package AliOss\Model
+ * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/GetBucket.html
+ */
 class ObjectListInfo
 {
-    private $bucketName = '';
-    private $prefix = '';
-    private $marker = '';
-    private $nextMarker = '';
+    private $bucketName = "";
+    private $prefix = "";
+    private $marker = "";
+    private $nextMarker = "";
     private $maxKeys = 0;
-    private $delimiter = '';
+    private $delimiter = "";
     private $isTruncated = null;
     private $objectList = [];
     private $prefixList = [];
@@ -25,8 +31,7 @@ class ObjectListInfo
      * @param array $objectList
      * @param array $prefixList
      */
-    public function __construct(
-        $bucketName,
+    public function __construct($bucketName,
         $prefix,
         $marker,
         $nextMarker,
@@ -34,8 +39,8 @@ class ObjectListInfo
         $delimiter,
         $isTruncated,
         array $objectList,
-        array $prefixList
-    ) {
+        array $prefixList)
+    {
         $this->bucketName = $bucketName;
         $this->prefix = $prefix;
         $this->marker = $marker;

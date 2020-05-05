@@ -6,7 +6,7 @@ use AliOss\Model\GetLiveChannelHistory;
 class GetLiveChannelHistoryResult extends Result
 {
     /**
-     * @return \AliOss\Model\GetLiveChannelHistory
+     * @return array
      */
     protected function parseDataFromResponse()
     {

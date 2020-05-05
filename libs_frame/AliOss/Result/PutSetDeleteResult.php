@@ -1,6 +1,10 @@
 <?php
 namespace AliOss\Result;
 
+/**
+ * Class PutSetDeleteResult
+ * @package AliOss\Result
+ */
 class PutSetDeleteResult extends Result
 {
     /**

@@ -6,7 +6,7 @@ use AliOss\Model\GetLiveChannelStatus;
 class GetLiveChannelStatusResult extends Result
 {
     /**
-     * @return \AliOss\Model\GetLiveChannelStatus
+     * @return array
      */
     protected function parseDataFromResponse()
     {

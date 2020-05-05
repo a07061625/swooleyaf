@@ -1,14 +1,22 @@
 <?php
 namespace AliOss\Model;
 
+/**
+ * Class ObjectInfo
+ * The element type of ObjectListInfo, which is the return value type of listObjects
+ * The return value of listObjects includes two arrays
+ * One is the returned ObjectListInfo, which is similar to a file list in a file system.
+ * The other is the returned prefix list, which is similar to a folder list in a file system.
+ * @package AliOss\Model
+ */
 class ObjectInfo
 {
-    private $key = '';
-    private $lastModified = '';
-    private $eTag = '';
-    private $type = '';
+    private $key = "";
+    private $lastModified = "";
+    private $eTag = "";
+    private $type = "";
     private $size = 0;
-    private $storageClass = '';
+    private $storageClass = "";
 
     /**
      * ObjectInfo constructor.

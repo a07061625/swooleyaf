@@ -3,11 +3,15 @@ namespace AliOss\Result;
 
 use AliOss\Model\LoggingConfig;
 
+/**
+ * Class GetLoggingResult
+ * @package AliOss\Result
+ */
 class GetLoggingResult extends Result
 {
     /**
      * Parse LoggingConfig data
-     * @return LoggingConfig
+     * @return \AliOss\Model\LoggingConfig
      */
     protected function parseDataFromResponse()
     {

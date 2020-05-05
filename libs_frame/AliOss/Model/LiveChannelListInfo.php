@@ -1,6 +1,14 @@
 <?php
 namespace AliOss\Model;
 
+use AliOss\Core\OssException;
+
+/**
+ * Class LiveChannelListInfo
+ * The data returned by ListBucketLiveChannels
+ * @package AliOss\Model
+ * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/GetBucket.html
+ */
 class LiveChannelListInfo implements XmlConfig
 {
     private $bucket = '';
@@ -93,6 +101,6 @@ class LiveChannelListInfo implements XmlConfig
 
     public function serializeToXml()
     {
-        throw new OssException('Not implemented.');
+        throw new OssException("Not implemented.");
     }
 }

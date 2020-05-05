@@ -6,7 +6,7 @@ use AliOss\Model\CorsConfig;
 class GetCorsResult extends Result
 {
     /**
-     * @return CorsConfig
+     * @return \AliOss\Model\CorsConfig
      */
     protected function parseDataFromResponse()
     {

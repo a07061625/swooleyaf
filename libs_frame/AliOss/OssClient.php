@@ -51,12 +51,18 @@ use AliOss\Result\PutSetDeleteResult;
 use AliOss\Result\SymlinkResult;
 use AliOss\Result\UploadPartResult;
 
+/**
+ * Class OssClient
+ * Object Storage Service(OSS)'s client class, which wraps all OSS APIs user could call to talk to OSS.
+ * Users could do operations on bucket, object, including MultipartUpload or setting ACL via an OSSClient instance.
+ * For more details, please check out the OSS API document:https://www.alibabacloud.com/help/doc-detail/31947.htm
+ */
 class OssClient
 {
     // Constants for Life cycle
-    const OSS_LIFECYCLE_EXPIRATION = 'Expiration';
-    const OSS_LIFECYCLE_TIMING_DAYS = 'Days';
-    const OSS_LIFECYCLE_TIMING_DATE = 'Date';
+    const OSS_LIFECYCLE_EXPIRATION = "Expiration";
+    const OSS_LIFECYCLE_TIMING_DAYS = "Days";
+    const OSS_LIFECYCLE_TIMING_DATE = "Date";
     //OSS Internal constants
     const OSS_BUCKET = 'bucket';
     const OSS_OBJECT = 'object';
@@ -143,36 +149,36 @@ class OssClient
     const OSS_MULTI_PART = 'uploads';
     const OSS_MULTI_DELETE = 'delete';
     const OSS_OBJECT_COPY_SOURCE = 'x-oss-copy-source';
-    const OSS_OBJECT_COPY_SOURCE_RANGE = 'x-oss-copy-source-range';
-    const OSS_PROCESS = 'x-oss-process';
-    const OSS_CALLBACK = 'x-oss-callback';
-    const OSS_CALLBACK_VAR = 'x-oss-callback-var';
+    const OSS_OBJECT_COPY_SOURCE_RANGE = "x-oss-copy-source-range";
+    const OSS_PROCESS = "x-oss-process";
+    const OSS_CALLBACK = "x-oss-callback";
+    const OSS_CALLBACK_VAR = "x-oss-callback-var";
     //Constants for STS SecurityToken
-    const OSS_SECURITY_TOKEN = 'x-oss-security-token';
+    const OSS_SECURITY_TOKEN = "x-oss-security-token";
     const OSS_ACL_TYPE_PRIVATE = 'private';
     const OSS_ACL_TYPE_PUBLIC_READ = 'public-read';
     const OSS_ACL_TYPE_PUBLIC_READ_WRITE = 'public-read-write';
-    const OSS_ENCODING_TYPE = 'encoding-type';
-    const OSS_ENCODING_TYPE_URL = 'url';
+    const OSS_ENCODING_TYPE = "encoding-type";
+    const OSS_ENCODING_TYPE_URL = "url";
     // Domain Types
-    const OSS_HOST_TYPE_NORMAL = 'normal';//http://bucket.oss-cn-hangzhou.aliyuncs.com/object
-    const OSS_HOST_TYPE_IP = 'ip';  //http://1.1.1.1/bucket/object
+    const OSS_HOST_TYPE_NORMAL = "normal";//http://bucket.oss-cn-hangzhou.aliyuncs.com/object
+    const OSS_HOST_TYPE_IP = "ip";  //http://1.1.1.1/bucket/object
     const OSS_HOST_TYPE_SPECIAL = 'special'; //http://bucket.guizhou.gov/object
-    const OSS_HOST_TYPE_CNAME = 'cname';  //http://mydomain.com/object
-    // OssClient version information
-    const OSS_NAME = 'aliyun-sdk-php';
-    const OSS_VERSION = '2.3.0';
-    const OSS_BUILD = '20180105';
-    const OSS_AUTHOR = '';
-    const OSS_OPTIONS_ORIGIN = 'Origin';
-    const OSS_OPTIONS_REQUEST_METHOD = 'Access-Control-Request-Method';
-    const OSS_OPTIONS_REQUEST_HEADERS = 'Access-Control-Request-Headers';
+    const OSS_HOST_TYPE_CNAME = "cname";  //http://mydomain.com/object
     //OSS ACL array
-    public static $OSS_ACL_TYPES = [
+    static $OSS_ACL_TYPES = [
         self::OSS_ACL_TYPE_PRIVATE,
         self::OSS_ACL_TYPE_PUBLIC_READ,
         self::OSS_ACL_TYPE_PUBLIC_READ_WRITE,
     ];
+    // OssClient version information
+    const OSS_NAME = "aliyun-sdk-php";
+    const OSS_VERSION = "2.3.1";
+    const OSS_BUILD = "20191115";
+    const OSS_AUTHOR = "";
+    const OSS_OPTIONS_ORIGIN = 'Origin';
+    const OSS_OPTIONS_REQUEST_METHOD = 'Access-Control-Request-Method';
+    const OSS_OPTIONS_REQUEST_HEADERS = 'Access-Control-Request-Headers';
     //use ssl flag
     private $useSSL = false;
     private $maxRetries = 3;
@@ -188,6 +194,7 @@ class OssClient
     private $enableStsInUrl = false;
     private $timeout = 0;
     private $connectTimeout = 0;
+
     /**
      * Constructor
      * There're a few different ways to create an OssClient object:
@@ -209,16 +216,16 @@ class OssClient
     {
         $accessKeyId = trim($accessKeyId);
         $accessKeySecret = trim($accessKeySecret);
-        $endpoint = trim(trim($endpoint), '/');
+        $endpoint = trim(trim($endpoint), "/");
 
         if (empty($accessKeyId)) {
-            throw new OssException('access key id is empty');
+            throw new OssException("access key id is empty");
         }
         if (empty($accessKeySecret)) {
-            throw new OssException('access key secret is empty');
+            throw new OssException("access key secret is empty");
         }
         if (empty($endpoint)) {
-            throw new OssException('endpoint is empty');
+            throw new OssException("endpoint is empty");
         }
         $this->hostname = $this->checkEndpoint($endpoint, $isCName);
         $this->accessKeyId = $accessKeyId;
@@ -231,13 +238,13 @@ class OssClient
     /**
      * Lists the Bucket [GetService]. Not applicable if the endpoint is CName (because CName must be binded to a specific bucket).
      * @param array $options
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      * @return BucketListInfo
      */
     public function listBuckets($options = null)
     {
         if ($this->hostType === self::OSS_HOST_TYPE_CNAME) {
-            throw new OssException('operation is not permitted with CName host');
+            throw new OssException("operation is not permitted with CName host");
         }
         $this->precheckOptions($options);
         $options[self::OSS_BUCKET] = '';
@@ -595,7 +602,7 @@ class OssClient
      * @param string $bucket bucket name
      * @param array $options
      * @throws OssException
-     * @return CorsConfig
+     * @return \AliOss\Model\CorsConfig
      */
     public function getBucketCors($bucket, $options = null)
     {
@@ -635,7 +642,7 @@ class OssClient
      * @param string $bucket bucket name
      * @param string $cname
      * @param array $options
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      * @return null
      */
     public function addBucketCname($bucket, $cname, $options = null)
@@ -661,7 +668,7 @@ class OssClient
      * Gets the binded CName list of the bucket
      * @param string $bucket bucket name
      * @param array $options
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      * @return CnameConfig
      */
     public function getBucketCname($bucket, $options = null)
@@ -682,8 +689,7 @@ class OssClient
      * @param string $bucket bucket name
      * @param CnameConfig $cnameConfig
      * @param array $options
-     * @param mixed $cname
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      * @return null
      */
     public function deleteBucketCname($bucket, $cname, $options = null)
@@ -830,7 +836,7 @@ class OssClient
      * @param string $bucket bucket name
      * @param array $options
      * @throws OssException
-     * @return LiveChannelListInfo
+     * @return \AliOss\Model\LiveChannelListInfo
      */
     public function listBucketLiveChannels($bucket, $options = null)
     {
@@ -905,7 +911,6 @@ class OssClient
      * @param string channelName $channelName
      * @param int timeout timeout value in seconds
      * @param array $options
-     * @param mixed $timeout
      * @throws OssException
      * @return The signed pushing streaming url
      */
@@ -969,7 +974,7 @@ class OssClient
     /**
      * Sets the bucket's lifecycle config
      * @param string $bucket bucket name
-     * @param LifecycleConfig $lifecycleConfig LifecycleConfig instance
+     * @param \AliOss\Model\LifecycleConfig $lifecycleConfig LifecycleConfig instance
      * @param array $options
      * @throws OssException
      * @return null
@@ -994,7 +999,7 @@ class OssClient
      * @param string $bucket bucket name
      * @param array $options
      * @throws OssException
-     * @return LifecycleConfig
+     * @return \AliOss\Model\LifecycleConfig
      */
     public function getBucketLifecycle($bucket, $options = null)
     {
@@ -1275,10 +1280,10 @@ class OssClient
     public function uploadFile($bucket, $object, $file, $options = null)
     {
         $this->precheckCommon($bucket, $object, $options);
-        OssUtil::throwOssExceptionWithMessageIfEmpty($file, 'file path is invalid');
+        OssUtil::throwOssExceptionWithMessageIfEmpty($file, "file path is invalid");
         $file = OssUtil::encodePath($file);
         if (!file_exists($file)) {
-            throw new OssException($file . ' file does not exist');
+            throw new OssException($file . " file does not exist");
         }
         $options[self::OSS_FILE_UPLOAD] = $file;
         $file_size = filesize($options[self::OSS_FILE_UPLOAD]);
@@ -1307,7 +1312,6 @@ class OssClient
      * @param string $object objcet name
      * @param string $content content to append
      * @param array $options
-     * @param mixed $position
      * @return int next append position
      * @throws OssException
      */
@@ -1349,7 +1353,6 @@ class OssClient
      * @param string $object object name
      * @param string $file The local file path to append with
      * @param array $options
-     * @param mixed $position
      * @return int next append position
      * @throws OssException
      */
@@ -1357,10 +1360,10 @@ class OssClient
     {
         $this->precheckCommon($bucket, $object, $options);
 
-        OssUtil::throwOssExceptionWithMessageIfEmpty($file, 'file path is invalid');
+        OssUtil::throwOssExceptionWithMessageIfEmpty($file, "file path is invalid");
         $file = OssUtil::encodePath($file);
         if (!file_exists($file)) {
-            throw new OssException($file . ' file does not exist');
+            throw new OssException($file . " file does not exist");
         }
         $options[self::OSS_FILE_UPLOAD] = $file;
         $file_size = filesize($options[self::OSS_FILE_UPLOAD]);
@@ -1457,7 +1460,7 @@ class OssClient
      * @param string $bucket bucket name
      * @param array $objects object list
      * @param array $options
-     * @return ResponseCore
+     * @return \AliOss\Http\ResponseCore
      * @throws null
      */
     public function deleteObjects($bucket, $objects, $options = null)
@@ -1544,7 +1547,6 @@ class OssClient
      * Use Restore to enable the server to perform the thawing task
      * @param string $bucket bucket name
      * @param string $object object name
-     * @param null|mixed $options
      * @return null
      * @throws OssException
      */
@@ -1559,6 +1561,25 @@ class OssClient
         $result = new PutSetDeleteResult($response);
 
         return $result->getData();
+    }
+
+    /**
+     * Gets the part size according to the preferred part size.
+     * If the specified part size is too small or too big, it will return a min part or max part size instead.
+     * Otherwise returns the specified part size.
+     * @param int $partSize
+     * @return int
+     */
+    private function computePartSize($partSize)
+    {
+        $partSize = (integer)$partSize;
+        if ($partSize <= self::OSS_MIN_PART_SIZE) {
+            $partSize = self::OSS_MIN_PART_SIZE;
+        } elseif ($partSize > self::OSS_MAX_PART_SIZE) {
+            $partSize = self::OSS_MAX_PART_SIZE;
+        }
+
+        return $partSize;
     }
 
     /**
@@ -1714,7 +1735,7 @@ class OssClient
         $options[self::OSS_UPLOAD_ID] = $uploadId;
         $options[self::OSS_CONTENT_TYPE] = 'application/xml';
         if (!is_array($listParts)) {
-            throw new OssException('listParts must be array type');
+            throw new OssException("listParts must be array type");
         }
         $options[self::OSS_CONTENT] = OssUtil::createCompleteMultipartUploadXmlBody($listParts);
         $response = $this->auth($options);
@@ -1731,7 +1752,7 @@ class OssClient
      * Lists all ongoing multipart upload events, which means all initialized but not completed or aborted multipart uploads.
      * @param string $bucket bucket
      * @param array $options key-value array--expected keys are 'delimiter', 'key-marker', 'max-uploads', 'prefix', 'upload-id-marker'
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      * @return ListMultipartUploadInfo
      */
     public function listMultipartUploads($bucket, $options = null)
@@ -1775,11 +1796,11 @@ class OssClient
         $this->precheckCommon($toBucket, $toObject, $options);
 
         //If $options['isFullCopy'] is not set, copy from the beginning
-        $start_range = '0';
+        $start_range = "0";
         if (isset($options['start'])) {
             $start_range = $options['start'];
         }
-        $end_range = '';
+        $end_range = "";
         if (isset($options['end'])) {
             $end_range = $options['end'];
         }
@@ -1794,7 +1815,7 @@ class OssClient
         }
 
         $options[self::OSS_HEADERS][self::OSS_OBJECT_COPY_SOURCE] = '/' . $fromBucket . '/' . $fromObject;
-        $options[self::OSS_HEADERS][self::OSS_OBJECT_COPY_SOURCE_RANGE] = 'bytes=' . $start_range . '-' . $end_range;
+        $options[self::OSS_HEADERS][self::OSS_OBJECT_COPY_SOURCE_RANGE] = "bytes=" . $start_range . "-" . $end_range;
         $response = $this->auth($options);
         $result = new UploadPartResult($response);
 
@@ -1818,7 +1839,7 @@ class OssClient
             unset($options[self::OSS_LENGTH]);
         }
         if (empty($file)) {
-            throw new OssException('parameter invalid, file is empty');
+            throw new OssException("parameter invalid, file is empty");
         }
         $uploadFile = OssUtil::encodePath($file);
         if (!isset($options[self::OSS_CONTENT_TYPE])) {
@@ -1904,15 +1925,15 @@ class OssClient
      */
     public function uploadDir($bucket, $prefix, $localDirectory, $exclude = '.|..|.svn|.git', $recursive = false, $checkMd5 = true)
     {
-        $retArray = ['succeededList' => [], 'failedList' => []];
+        $retArray = ["succeededList" => [], "failedList" => []];
         if (empty($bucket)) {
-            throw new OssException('parameter error, bucket is empty');
+            throw new OssException("parameter error, bucket is empty");
         }
         if (!is_string($prefix)) {
-            throw new OssException('parameter error, prefix is not string');
+            throw new OssException("parameter error, prefix is not string");
         }
         if (empty($localDirectory)) {
-            throw new OssException('parameter error, localDirectory is empty');
+            throw new OssException("parameter error, localDirectory is empty");
         }
         $directory = $localDirectory;
         $directory = OssUtil::encodePath($directory);
@@ -1937,9 +1958,9 @@ class OssClient
 
             try {
                 $this->multiuploadFile($bucket, $realObject, $item['path'], $options);
-                $retArray['succeededList'][] = $realObject;
+                $retArray["succeededList"][] = $realObject;
             } catch (OssException $e) {
-                $retArray['failedList'][$realObject] = $e->getMessage();
+                $retArray["failedList"][$realObject] = $e->getMessage();
             }
         }
 
@@ -1962,7 +1983,7 @@ class OssClient
         $this->precheckCommon($bucket, $object, $options);
         //method
         if (self::OSS_HTTP_GET !== $method && self::OSS_HTTP_PUT !== $method) {
-            throw new OssException('method is invalid');
+            throw new OssException("method is invalid");
         }
         $options[self::OSS_BUCKET] = $bucket;
         $options[self::OSS_OBJECT] = $object;
@@ -1976,112 +1997,6 @@ class OssClient
         $this->setSignStsInUrl(true);
 
         return $this->auth($options);
-    }
-
-    /**
-     * Sets the max retry count
-     * @param int $maxRetries
-     * @return void
-     */
-    public function setMaxTries($maxRetries = 3)
-    {
-        $this->maxRetries = $maxRetries;
-    }
-
-    /**
-     * Gets the max retry count
-     * @return int
-     */
-    public function getMaxRetries()
-    {
-        return $this->maxRetries;
-    }
-
-    /**
-     * Enaable/disable STS in the URL. This is to determine the $sts value passed from constructor take effect or not.
-     * @param boolean $enable
-     */
-    public function setSignStsInUrl($enable)
-    {
-        $this->enableStsInUrl = $enable;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function isUseSSL()
-    {
-        return $this->useSSL;
-    }
-
-    /**
-     * @param boolean $useSSL
-     */
-    public function setUseSSL($useSSL)
-    {
-        $this->useSSL = $useSSL;
-    }
-
-    /**
-     * Check if all dependent extensions are installed correctly.
-     * For now only "curl" is needed.
-     * @throws OssException
-     */
-    public static function checkEnv()
-    {
-        if (function_exists('get_loaded_extensions')) {
-            //Test curl extension
-            $enabled_extension = ['curl'];
-            $extensions = get_loaded_extensions();
-            if ($extensions) {
-                foreach ($enabled_extension as $item) {
-                    if (!in_array($item, $extensions, true)) {
-                        throw new OssException('Extension {' . $item . '} is not installed or not enabled, please check your php env.');
-                    }
-                }
-            } else {
-                throw new OssException('function get_loaded_extensions not found.');
-            }
-        } else {
-            throw new OssException('Function get_loaded_extensions has been disabled, please check php config.');
-        }
-    }
-
-    /**
-     * Sets the http's timeout (in seconds)
-     * @param int $timeout
-     */
-    public function setTimeout($timeout)
-    {
-        $this->timeout = $timeout;
-    }
-
-    /**
-     * Sets the http's connection timeout (in seconds)
-     * @param int $connectTimeout
-     */
-    public function setConnectTimeout($connectTimeout)
-    {
-        $this->connectTimeout = $connectTimeout;
-    }
-
-    /**
-     * Gets the part size according to the preferred part size.
-     * If the specified part size is too small or too big, it will return a min part or max part size instead.
-     * Otherwise returns the specified part size.
-     * @param int $partSize
-     * @return int
-     */
-    private function computePartSize($partSize)
-    {
-        $partSize = (integer)$partSize;
-        if ($partSize <= self::OSS_MIN_PART_SIZE) {
-            $partSize = self::OSS_MIN_PART_SIZE;
-        } elseif ($partSize > self::OSS_MAX_PART_SIZE) {
-            $partSize = self::OSS_MAX_PART_SIZE;
-        }
-
-        return $partSize;
     }
 
     /**
@@ -2115,13 +2030,12 @@ class OssClient
      */
     private function precheckObject($object)
     {
-        OssUtil::throwOssExceptionWithMessageIfEmpty($object, 'object name is empty');
+        OssUtil::throwOssExceptionWithMessageIfEmpty($object, "object name is empty");
     }
 
     /**
      * 校验option restore
      * @param string $restore
-     * @param mixed $storage
      * @throws OssException
      */
     private function precheckStorage($storage)
@@ -2215,7 +2129,6 @@ class OssClient
     /**
      * Gets mimetype
      * @param string $object
-     * @param null|mixed $file
      * @return string
      */
     private function getMimeType($object, $file = null)
@@ -2238,9 +2151,9 @@ class OssClient
     /**
      * Validates and executes the request according to OSS API protocol.
      * @param array $options
-     * @return ResponseCore
+     * @return \AliOss\Http\ResponseCore
      * @throws OssException
-     * @throws RequestCore_Exception
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     private function auth($options)
     {
@@ -2416,6 +2329,50 @@ class OssClient
     }
 
     /**
+     * Sets the max retry count
+     * @param int $maxRetries
+     * @return void
+     */
+    public function setMaxTries($maxRetries = 3)
+    {
+        $this->maxRetries = $maxRetries;
+    }
+
+    /**
+     * Gets the max retry count
+     * @return int
+     */
+    public function getMaxRetries()
+    {
+        return $this->maxRetries;
+    }
+
+    /**
+     * Enaable/disable STS in the URL. This is to determine the $sts value passed from constructor take effect or not.
+     * @param boolean $enable
+     */
+    public function setSignStsInUrl($enable)
+    {
+        $this->enableStsInUrl = $enable;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isUseSSL()
+    {
+        return $this->useSSL;
+    }
+
+    /**
+     * @param boolean $useSSL
+     */
+    public function setUseSSL($useSSL)
+    {
+        $this->useSSL = $useSSL;
+    }
+
+    /**
      * Validates bucket name--throw OssException if it's invalid
      * @param $options
      * @throws OssException
@@ -2453,13 +2410,13 @@ class OssClient
         $tmp_object = $options[self::OSS_OBJECT];
         try {
             if (OssUtil::isGb2312($options[self::OSS_OBJECT])) {
-                $options[self::OSS_OBJECT] = iconv('GB2312', 'UTF-8//IGNORE', $options[self::OSS_OBJECT]);
+                $options[self::OSS_OBJECT] = iconv('GB2312', "UTF-8//IGNORE", $options[self::OSS_OBJECT]);
             } elseif (OssUtil::checkChar($options[self::OSS_OBJECT], true)) {
-                $options[self::OSS_OBJECT] = iconv('GBK', 'UTF-8//IGNORE', $options[self::OSS_OBJECT]);
+                $options[self::OSS_OBJECT] = iconv('GBK', "UTF-8//IGNORE", $options[self::OSS_OBJECT]);
             }
         } catch (\Exception $e) {
             try {
-                $tmp_object = iconv(mb_detect_encoding($tmp_object, mb_detect_order(), true), 'UTF-8', $tmp_object);
+                $tmp_object = iconv(mb_detect_encoding($tmp_object), "UTF-8", $tmp_object);
             } catch (\Exception $e) {
             }
         }
@@ -2474,7 +2431,7 @@ class OssClient
     private function authPrecheckAcl($options)
     {
         if (isset($options[self::OSS_HEADERS][self::OSS_ACL]) && !empty($options[self::OSS_HEADERS][self::OSS_ACL])) {
-            if (!in_array(strtolower($options[self::OSS_HEADERS][self::OSS_ACL]), self::$OSS_ACL_TYPES, true)) {
+            if (!in_array(strtolower($options[self::OSS_HEADERS][self::OSS_ACL]), self::$OSS_ACL_TYPES)) {
                 throw new OssException($options[self::OSS_HEADERS][self::OSS_ACL] . ':'
                                        . 'acl is invalid(private,public-read,public-read-write)');
             }
@@ -2508,7 +2465,7 @@ class OssClient
      */
     private function generateResourceUri($options)
     {
-        $resource_uri = '';
+        $resource_uri = "";
 
         // resource_uri + bucket
         if (isset($options[self::OSS_BUCKET]) && '' !== $options[self::OSS_BUCKET]) {
@@ -2565,7 +2522,7 @@ class OssClient
         }
 
         if ($this->enableStsInUrl && (!is_null($this->securityToken))) {
-            $signableQueryStringParams['security-token'] = $this->securityToken;
+            $signableQueryStringParams["security-token"] = $this->securityToken;
         }
 
         return $signableQueryStringParams;
@@ -2578,14 +2535,14 @@ class OssClient
      */
     private function generateSignableResource($options)
     {
-        $signableResource = '';
+        $signableResource = "";
         $signableResource .= '/';
         if (isset($options[self::OSS_BUCKET]) && '' !== $options[self::OSS_BUCKET]) {
             $signableResource .= $options[self::OSS_BUCKET];
             // if there's no object in options, adding a '/' if the host type is not IP.\
             if ($options[self::OSS_OBJECT] == '/') {
                 if ($this->hostType !== self::OSS_HOST_TYPE_IP) {
-                    $signableResource .= '/';
+                    $signableResource .= "/";
                 }
             }
         }
@@ -2674,8 +2631,8 @@ class OssClient
      */
     private function generateUserAgent()
     {
-        return self::OSS_NAME . '/' . self::OSS_VERSION . ' (' . php_uname('s') . '/' . php_uname('r') . '/' . php_uname('m') . ';'
-               . PHP_VERSION . ')';
+        return self::OSS_NAME . "/" . self::OSS_VERSION . " (" . php_uname('s') . "/" . php_uname('r') . "/" . php_uname('m') . ";"
+               . PHP_VERSION . ")";
     }
 
     /**
@@ -2697,6 +2654,8 @@ class OssClient
             $ret_endpoint = $endpoint;
         }
 
+        $ret_endpoint = OssUtil::getHostPortFromEndpoint($ret_endpoint);
+
         if ($isCName) {
             $this->hostType = self::OSS_HOST_TYPE_CNAME;
         } elseif (OssUtil::isIPFormat($ret_endpoint)) {
@@ -2706,5 +2665,48 @@ class OssClient
         }
 
         return $ret_endpoint;
+    }
+
+    /**
+     * Check if all dependent extensions are installed correctly.
+     * For now only "curl" is needed.
+     * @throws OssException
+     */
+    public static function checkEnv()
+    {
+        if (function_exists('get_loaded_extensions')) {
+            //Test curl extension
+            $enabled_extension = ["curl"];
+            $extensions = get_loaded_extensions();
+            if ($extensions) {
+                foreach ($enabled_extension as $item) {
+                    if (!in_array($item, $extensions)) {
+                        throw new OssException("Extension {" . $item . "} is not installed or not enabled, please check your php env.");
+                    }
+                }
+            } else {
+                throw new OssException("function get_loaded_extensions not found.");
+            }
+        } else {
+            throw new OssException('Function get_loaded_extensions has been disabled, please check php config.');
+        }
+    }
+
+    /**
+     * Sets the http's timeout (in seconds)
+     * @param int $timeout
+     */
+    public function setTimeout($timeout)
+    {
+        $this->timeout = $timeout;
+    }
+
+    /**
+     * Sets the http's connection timeout (in seconds)
+     * @param int $connectTimeout
+     */
+    public function setConnectTimeout($connectTimeout)
+    {
+        $this->connectTimeout = $connectTimeout;
     }
 }

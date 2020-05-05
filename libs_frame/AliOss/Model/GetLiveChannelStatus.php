@@ -1,6 +1,12 @@
 <?php
 namespace AliOss\Model;
 
+use AliOss\Core\OssException;
+
+/**
+ * Class GetLiveChannelStatus
+ * @package AliOss\Model
+ */
 class GetLiveChannelStatus implements XmlConfig
 {
     private $status;
@@ -98,6 +104,6 @@ class GetLiveChannelStatus implements XmlConfig
 
     public function serializeToXml()
     {
-        throw new OssException('Not implemented.');
+        throw new OssException("Not implemented.");
     }
 }

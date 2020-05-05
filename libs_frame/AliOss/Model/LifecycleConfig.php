@@ -3,6 +3,11 @@ namespace AliOss\Model;
 
 use AliOss\Core\OssException;
 
+/**
+ * Class BucketLifecycleConfig
+ * @package AliOss\Model
+ * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/PutBucketLifecycle.html
+ */
 class LifecycleConfig implements XmlConfig
 {
     /**
@@ -22,7 +27,7 @@ class LifecycleConfig implements XmlConfig
     /**
      * Parse the xml into this object.
      * @param string $strXml
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      * @return null
      */
     public function parseFromXml($strXml)
@@ -53,6 +58,8 @@ class LifecycleConfig implements XmlConfig
             }
             $this->rules[] = new LifecycleRule($id, $prefix, $status, $actions);
         }
+
+        return;
     }
 
     /**
@@ -61,6 +68,7 @@ class LifecycleConfig implements XmlConfig
      */
     public function serializeToXml()
     {
+
         $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><LifecycleConfiguration></LifecycleConfiguration>');
         foreach ($this->rules as $rule) {
             $xmlRule = $xml->addChild('Rule');
@@ -73,12 +81,12 @@ class LifecycleConfig implements XmlConfig
     /**
      * Add a LifecycleRule
      * @param LifecycleRule $lifecycleRule
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      */
     public function addRule($lifecycleRule)
     {
         if (!isset($lifecycleRule)) {
-            throw new OssException('lifecycleRule is null');
+            throw new OssException("lifecycleRule is null");
         }
         $this->rules[] = $lifecycleRule;
     }

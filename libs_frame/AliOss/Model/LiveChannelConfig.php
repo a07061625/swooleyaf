@@ -1,14 +1,18 @@
 <?php
 namespace AliOss\Model;
 
+/**
+ * Class LiveChannelConfig
+ * @package AliOss\Model
+ */
 class LiveChannelConfig implements XmlConfig
 {
     private $description;
-    private $status = 'enabled';
+    private $status = "enabled";
     private $type;
     private $fragDuration = 5;
     private $fragCount = 3;
-    private $playListName = 'playlist.m3u8';
+    private $playListName = "playlist.m3u8";
 
     public function __construct($option = [])
     {

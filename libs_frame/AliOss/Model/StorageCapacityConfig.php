@@ -1,6 +1,13 @@
 <?php
 namespace AliOss\Model;
 
+use AliOss\Core\OssException;
+
+/**
+ * Class StorageCapacityConfig
+ * @package AliOss\Model
+ * @link http://docs.alibaba-inc.com/pages/viewpage.action?pageId=271614763
+ */
 class StorageCapacityConfig implements XmlConfig
 {
     private $storageCapacity = 0;
@@ -18,18 +25,17 @@ class StorageCapacityConfig implements XmlConfig
      * To string
      * @return string
      */
-    public function __toString()
+    function __toString()
     {
         return $this->serializeToXml();
     }
 
     /**
      * Not implemented
-     * @param mixed $strXml
      */
     public function parseFromXml($strXml)
     {
-        throw new OssException('Not implemented.');
+        throw new OssException("Not implemented.");
     }
 
     /**

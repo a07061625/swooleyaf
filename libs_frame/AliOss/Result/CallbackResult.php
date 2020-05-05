@@ -1,6 +1,10 @@
 <?php
 namespace AliOss\Result;
 
+/**
+ * Class CallbackResult
+ * @package AliOss\Result
+ */
 class CallbackResult extends PutSetDeleteResult
 {
     protected function isResponseOk()

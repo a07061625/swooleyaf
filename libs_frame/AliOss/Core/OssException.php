@@ -1,11 +1,17 @@
 <?php
 namespace AliOss\Core;
 
+/**
+ * Class OssException
+ * This is the class that OSSClient is expected to thrown, which the caller needs to handle properly.
+ * It has the OSS specific errors which is useful for troubleshooting.
+ * @package AliOss\Core
+ */
 class OssException extends \Exception
 {
     private $details = [];
 
-    public function __construct($details)
+    function __construct($details)
     {
         if (is_array($details)) {
             $message = $details['code'] . ': ' . $details['message'] . ' RequestId: ' . $details['request-id'];

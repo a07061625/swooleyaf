@@ -3,6 +3,11 @@ namespace AliOss\Model;
 
 use AliOss\Core\OssException;
 
+/**
+ * Class CorsRule
+ * @package AliOss\Model
+ * @link http://help.aliyun.com/document_detail/oss/api-reference/cors/PutBucketcors.html
+ */
 class CorsRule
 {
     private $allowedHeaders = [];
@@ -110,12 +115,12 @@ class CorsRule
     /**
      * Serialize all the rules into the xml represented by parameter $xmlRule
      * @param \SimpleXMLElement $xmlRule
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      */
     public function appendToXml(&$xmlRule)
     {
         if (!isset($this->maxAgeSeconds)) {
-            throw new OssException('maxAgeSeconds is not set in the Rule');
+            throw new OssException("maxAgeSeconds is not set in the Rule");
         }
         foreach ($this->allowedOrigins as $allowedOrigin) {
             $xmlRule->addChild(CorsConfig::OSS_CORS_ALLOWED_ORIGIN, $allowedOrigin);

@@ -1,10 +1,14 @@
 <?php
 namespace AliOss\Result;
 
+/**
+ * Class DeleteObjectsResult
+ * @package AliOss\Result
+ */
 class DeleteObjectsResult extends Result
 {
     /**
-     * @return array()
+     * @return array
      */
     protected function parseDataFromResponse()
     {

@@ -1,11 +1,16 @@
 <?php
 namespace AliOss\Model;
 
+/**
+ * Class UploadInfo
+ * The return value of ListMultipartUpload
+ * @package AliOss\Model
+ */
 class UploadInfo
 {
-    private $key = '';
-    private $uploadId = '';
-    private $initiated = '';
+    private $key = "";
+    private $uploadId = "";
+    private $initiated = "";
 
     /**
      * UploadInfo constructor.
