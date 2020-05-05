@@ -3,144 +3,164 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of ModifyCasterVideoResource
+ * @method string getResourceId()
+ * @method string getVodUrl()
+ * @method string getCasterId()
+ * @method string getEndOffset()
+ * @method string getOwnerId()
+ * @method string getMaterialId()
+ * @method string getBeginOffset()
+ * @method string getLiveStreamUrl()
+ * @method string getPtsCallbackInterval()
+ * @method string getResourceName()
+ * @method string getRepeatNum()
+ */
 class CasterVideoResourceModifyRequest extends RpcAcsRequest
 {
-    private $resourceId;
-    private $vodUrl;
-    private $casterId;
-    private $endOffset;
-    private $ownerId;
-    private $materialId;
-    private $beginOffset;
-    private $liveStreamUrl;
-    private $ptsCallbackInterval;
-    private $resourceName;
-    private $repeatNum;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'ModifyCasterVideoResource', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'ModifyCasterVideoResource', 'live');
     }
 
-    public function getResourceId()
-    {
-        return $this->resourceId;
-    }
-
+    /**
+     * @param string $resourceId
+     * @return $this
+     */
     public function setResourceId($resourceId)
     {
-        $this->resourceId = $resourceId;
+        $this->requestParameters['ResourceId'] = $resourceId;
         $this->queryParameters['ResourceId'] = $resourceId;
+
+        return $this;
     }
 
-    public function getVodUrl()
-    {
-        return $this->vodUrl;
-    }
-
+    /**
+     * @param string $vodUrl
+     * @return $this
+     */
     public function setVodUrl($vodUrl)
     {
-        $this->vodUrl = $vodUrl;
+        $this->requestParameters['VodUrl'] = $vodUrl;
         $this->queryParameters['VodUrl'] = $vodUrl;
+
+        return $this;
     }
 
-    public function getCasterId()
-    {
-        return $this->casterId;
-    }
-
+    /**
+     * @param string $casterId
+     * @return $this
+     */
     public function setCasterId($casterId)
     {
-        $this->casterId = $casterId;
+        $this->requestParameters['CasterId'] = $casterId;
         $this->queryParameters['CasterId'] = $casterId;
+
+        return $this;
     }
 
-    public function getEndOffset()
-    {
-        return $this->endOffset;
-    }
-
+    /**
+     * @param string $endOffset
+     * @return $this
+     */
     public function setEndOffset($endOffset)
     {
-        $this->endOffset = $endOffset;
+        $this->requestParameters['EndOffset'] = $endOffset;
         $this->queryParameters['EndOffset'] = $endOffset;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getMaterialId()
-    {
-        return $this->materialId;
-    }
-
+    /**
+     * @param string $materialId
+     * @return $this
+     */
     public function setMaterialId($materialId)
     {
-        $this->materialId = $materialId;
+        $this->requestParameters['MaterialId'] = $materialId;
         $this->queryParameters['MaterialId'] = $materialId;
+
+        return $this;
     }
 
-    public function getBeginOffset()
-    {
-        return $this->beginOffset;
-    }
-
+    /**
+     * @param string $beginOffset
+     * @return $this
+     */
     public function setBeginOffset($beginOffset)
     {
-        $this->beginOffset = $beginOffset;
+        $this->requestParameters['BeginOffset'] = $beginOffset;
         $this->queryParameters['BeginOffset'] = $beginOffset;
+
+        return $this;
     }
 
-    public function getLiveStreamUrl()
-    {
-        return $this->liveStreamUrl;
-    }
-
+    /**
+     * @param string $liveStreamUrl
+     * @return $this
+     */
     public function setLiveStreamUrl($liveStreamUrl)
     {
-        $this->liveStreamUrl = $liveStreamUrl;
+        $this->requestParameters['LiveStreamUrl'] = $liveStreamUrl;
         $this->queryParameters['LiveStreamUrl'] = $liveStreamUrl;
+
+        return $this;
     }
 
-    public function getPtsCallbackInterval()
-    {
-        return $this->ptsCallbackInterval;
-    }
-
+    /**
+     * @param string $ptsCallbackInterval
+     * @return $this
+     */
     public function setPtsCallbackInterval($ptsCallbackInterval)
     {
-        $this->ptsCallbackInterval = $ptsCallbackInterval;
+        $this->requestParameters['PtsCallbackInterval'] = $ptsCallbackInterval;
         $this->queryParameters['PtsCallbackInterval'] = $ptsCallbackInterval;
+
+        return $this;
     }
 
-    public function getResourceName()
-    {
-        return $this->resourceName;
-    }
-
+    /**
+     * @param string $resourceName
+     * @return $this
+     */
     public function setResourceName($resourceName)
     {
-        $this->resourceName = $resourceName;
+        $this->requestParameters['ResourceName'] = $resourceName;
         $this->queryParameters['ResourceName'] = $resourceName;
+
+        return $this;
     }
 
-    public function getRepeatNum()
-    {
-        return $this->repeatNum;
-    }
-
+    /**
+     * @param string $repeatNum
+     * @return $this
+     */
     public function setRepeatNum($repeatNum)
     {
-        $this->repeatNum = $repeatNum;
+        $this->requestParameters['RepeatNum'] = $repeatNum;
         $this->queryParameters['RepeatNum'] = $repeatNum;
+
+        return $this;
     }
 }

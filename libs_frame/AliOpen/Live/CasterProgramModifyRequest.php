@@ -3,59 +3,71 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of ModifyCasterProgram
+ * @method string getCasterId()
+ * @method array getEpisodes()
+ * @method string getOwnerId()
+ */
 class CasterProgramModifyRequest extends RpcAcsRequest
 {
-    private $casterId;
-    private $Episodes;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'ModifyCasterProgram', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'ModifyCasterProgram', 'live');
     }
 
-    public function getCasterId()
-    {
-        return $this->casterId;
-    }
-
+    /**
+     * @param string $casterId
+     * @return $this
+     */
     public function setCasterId($casterId)
     {
-        $this->casterId = $casterId;
+        $this->requestParameters['CasterId'] = $casterId;
         $this->queryParameters['CasterId'] = $casterId;
+
+        return $this;
     }
 
-    public function getEpisodes()
+    /**
+     * @param array $episode
+     * @return $this
+     */
+    public function setEpisodes(array $episode)
     {
-        return $this->Episodes;
-    }
-
-    public function setEpisodes($Episodes)
-    {
-        $this->Episodes = $Episodes;
-        for ($i = 0; $i < count($Episodes); $i ++) {
-            $this->queryParameters['Episode.' . ($i + 1) . '.ResourceId'] = $Episodes[$i]['ResourceId'];
-            for ($j = 0; $j < count($Episodes[$i]['ComponentIds']); $j ++) {
-                $this->queryParameters['Episode.' . ($i + 1) . '.ComponentId.' . ($j + 1)] = $Episodes[$i]['ComponentIds'][$j];
+        $this->requestParameters['Episodes'] = $episode;
+        foreach ($episode as $depth1 => $depth1Value) {
+            $this->queryParameters['Episode.' . ($depth1 + 1) . '.ResourceId'] = $depth1Value['ResourceId'];
+            foreach ($depth1Value['ComponentId'] as $i => $iValue) {
+                $this->queryParameters['Episode.' . ($depth1 + 1) . '.ComponentId.' . ($i + 1)] = $iValue;
             }
-            $this->queryParameters['Episode.' . ($i + 1) . '.SwitchType'] = $Episodes[$i]['SwitchType'];
-            $this->queryParameters['Episode.' . ($i + 1) . '.EpisodeType'] = $Episodes[$i]['EpisodeType'];
-            $this->queryParameters['Episode.' . ($i + 1) . '.EpisodeName'] = $Episodes[$i]['EpisodeName'];
-            $this->queryParameters['Episode.' . ($i + 1) . '.EndTime'] = $Episodes[$i]['EndTime'];
-            $this->queryParameters['Episode.' . ($i + 1) . '.StartTime'] = $Episodes[$i]['StartTime'];
-            $this->queryParameters['Episode.' . ($i + 1) . '.EpisodeId'] = $Episodes[$i]['EpisodeId'];
+            $this->queryParameters['Episode.' . ($depth1 + 1) . '.SwitchType'] = $depth1Value['SwitchType'];
+            $this->queryParameters['Episode.' . ($depth1 + 1) . '.EpisodeType'] = $depth1Value['EpisodeType'];
+            $this->queryParameters['Episode.' . ($depth1 + 1) . '.EpisodeName'] = $depth1Value['EpisodeName'];
+            $this->queryParameters['Episode.' . ($depth1 + 1) . '.EndTime'] = $depth1Value['EndTime'];
+            $this->queryParameters['Episode.' . ($depth1 + 1) . '.StartTime'] = $depth1Value['StartTime'];
+            $this->queryParameters['Episode.' . ($depth1 + 1) . '.EpisodeId'] = $depth1Value['EpisodeId'];
         }
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 }

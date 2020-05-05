@@ -3,48 +3,60 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DescribeLiveCertificateDetail
+ * @method string getSecurityToken()
+ * @method string getCertName()
+ * @method string getOwnerId()
+ */
 class LiveCertificateDetailDescribeRequest extends RpcAcsRequest
 {
-    private $securityToken;
-    private $certName;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'DescribeLiveCertificateDetail', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'DescribeLiveCertificateDetail', 'live');
     }
 
-    public function getSecurityToken()
-    {
-        return $this->securityToken;
-    }
-
+    /**
+     * @param string $securityToken
+     * @return $this
+     */
     public function setSecurityToken($securityToken)
     {
-        $this->securityToken = $securityToken;
+        $this->requestParameters['SecurityToken'] = $securityToken;
         $this->queryParameters['SecurityToken'] = $securityToken;
+
+        return $this;
     }
 
-    public function getCertName()
-    {
-        return $this->certName;
-    }
-
+    /**
+     * @param string $certName
+     * @return $this
+     */
     public function setCertName($certName)
     {
-        $this->certName = $certName;
+        $this->requestParameters['CertName'] = $certName;
         $this->queryParameters['CertName'] = $certName;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 }

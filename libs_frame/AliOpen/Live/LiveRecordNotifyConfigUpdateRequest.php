@@ -3,84 +3,99 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of UpdateLiveRecordNotifyConfig
+ * @method string getOnDemandUrl()
+ * @method string getSecurityToken()
+ * @method string getDomainName()
+ * @method string getNotifyUrl()
+ * @method string getOwnerId()
+ * @method string getNeedStatusNotify()
+ */
 class LiveRecordNotifyConfigUpdateRequest extends RpcAcsRequest
 {
-    private $onDemandUrl;
-    private $securityToken;
-    private $domainName;
-    private $notifyUrl;
-    private $ownerId;
-    private $needStatusNotify;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'UpdateLiveRecordNotifyConfig', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'UpdateLiveRecordNotifyConfig', 'live');
     }
 
-    public function getOnDemandUrl()
-    {
-        return $this->onDemandUrl;
-    }
-
+    /**
+     * @param string $onDemandUrl
+     * @return $this
+     */
     public function setOnDemandUrl($onDemandUrl)
     {
-        $this->onDemandUrl = $onDemandUrl;
+        $this->requestParameters['OnDemandUrl'] = $onDemandUrl;
         $this->queryParameters['OnDemandUrl'] = $onDemandUrl;
+
+        return $this;
     }
 
-    public function getSecurityToken()
-    {
-        return $this->securityToken;
-    }
-
+    /**
+     * @param string $securityToken
+     * @return $this
+     */
     public function setSecurityToken($securityToken)
     {
-        $this->securityToken = $securityToken;
+        $this->requestParameters['SecurityToken'] = $securityToken;
         $this->queryParameters['SecurityToken'] = $securityToken;
+
+        return $this;
     }
 
-    public function getDomainName()
-    {
-        return $this->domainName;
-    }
-
+    /**
+     * @param string $domainName
+     * @return $this
+     */
     public function setDomainName($domainName)
     {
-        $this->domainName = $domainName;
+        $this->requestParameters['DomainName'] = $domainName;
         $this->queryParameters['DomainName'] = $domainName;
+
+        return $this;
     }
 
-    public function getNotifyUrl()
-    {
-        return $this->notifyUrl;
-    }
-
+    /**
+     * @param string $notifyUrl
+     * @return $this
+     */
     public function setNotifyUrl($notifyUrl)
     {
-        $this->notifyUrl = $notifyUrl;
+        $this->requestParameters['NotifyUrl'] = $notifyUrl;
         $this->queryParameters['NotifyUrl'] = $notifyUrl;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getNeedStatusNotify()
-    {
-        return $this->needStatusNotify;
-    }
-
+    /**
+     * @param string $needStatusNotify
+     * @return $this
+     */
     public function setNeedStatusNotify($needStatusNotify)
     {
-        $this->needStatusNotify = $needStatusNotify;
+        $this->requestParameters['NeedStatusNotify'] = $needStatusNotify;
         $this->queryParameters['NeedStatusNotify'] = $needStatusNotify;
+
+        return $this;
     }
 }

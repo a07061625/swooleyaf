@@ -3,144 +3,164 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of UpdateTemplate
+ * @method string getContainer()
+ * @method string getResourceOwnerId()
+ * @method string getResourceOwnerAccount()
+ * @method string getOwnerAccount()
+ * @method string getMuxConfig()
+ * @method string getVideo()
+ * @method string getOwnerId()
+ * @method string getTemplateId()
+ * @method string getName()
+ * @method string getTransConfig()
+ * @method string getAudio()
+ */
 class TemplateUpdateRequest extends RpcAcsRequest
 {
-    private $container;
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $ownerAccount;
-    private $muxConfig;
-    private $video;
-    private $ownerId;
-    private $templateId;
-    private $name;
-    private $transConfig;
-    private $audio;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Mts', '2014-06-18', 'UpdateTemplate', 'mts', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('Mts', '2014-06-18', 'UpdateTemplate', 'mts');
     }
 
-    public function getContainer()
-    {
-        return $this->container;
-    }
-
+    /**
+     * @param string $container
+     * @return $this
+     */
     public function setContainer($container)
     {
-        $this->container = $container;
+        $this->requestParameters['Container'] = $container;
         $this->queryParameters['Container'] = $container;
+
+        return $this;
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
         $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function getOwnerAccount()
-    {
-        return $this->ownerAccount;
-    }
-
+    /**
+     * @param string $ownerAccount
+     * @return $this
+     */
     public function setOwnerAccount($ownerAccount)
     {
-        $this->ownerAccount = $ownerAccount;
+        $this->requestParameters['OwnerAccount'] = $ownerAccount;
         $this->queryParameters['OwnerAccount'] = $ownerAccount;
+
+        return $this;
     }
 
-    public function getMuxConfig()
-    {
-        return $this->muxConfig;
-    }
-
+    /**
+     * @param string $muxConfig
+     * @return $this
+     */
     public function setMuxConfig($muxConfig)
     {
-        $this->muxConfig = $muxConfig;
+        $this->requestParameters['MuxConfig'] = $muxConfig;
         $this->queryParameters['MuxConfig'] = $muxConfig;
+
+        return $this;
     }
 
-    public function getVideo()
-    {
-        return $this->video;
-    }
-
+    /**
+     * @param string $video
+     * @return $this
+     */
     public function setVideo($video)
     {
-        $this->video = $video;
+        $this->requestParameters['Video'] = $video;
         $this->queryParameters['Video'] = $video;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getTemplateId()
-    {
-        return $this->templateId;
-    }
-
+    /**
+     * @param string $templateId
+     * @return $this
+     */
     public function setTemplateId($templateId)
     {
-        $this->templateId = $templateId;
+        $this->requestParameters['TemplateId'] = $templateId;
         $this->queryParameters['TemplateId'] = $templateId;
+
+        return $this;
     }
 
-    public function getName()
-    {
-        return $this->name;
-    }
-
+    /**
+     * @param string $name
+     * @return $this
+     */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->requestParameters['Name'] = $name;
         $this->queryParameters['Name'] = $name;
+
+        return $this;
     }
 
-    public function getTransConfig()
-    {
-        return $this->transConfig;
-    }
-
+    /**
+     * @param string $transConfig
+     * @return $this
+     */
     public function setTransConfig($transConfig)
     {
-        $this->transConfig = $transConfig;
+        $this->requestParameters['TransConfig'] = $transConfig;
         $this->queryParameters['TransConfig'] = $transConfig;
+
+        return $this;
     }
 
-    public function getAudio()
-    {
-        return $this->audio;
-    }
-
+    /**
+     * @param string $audio
+     * @return $this
+     */
     public function setAudio($audio)
     {
-        $this->audio = $audio;
+        $this->requestParameters['Audio'] = $audio;
         $this->queryParameters['Audio'] = $audio;
+
+        return $this;
     }
 }

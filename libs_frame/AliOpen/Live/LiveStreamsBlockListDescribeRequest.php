@@ -3,72 +3,86 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DescribeLiveStreamsBlockList
+ * @method string getSecurityToken()
+ * @method string getDomainName()
+ * @method string getPageSize()
+ * @method string getOwnerId()
+ * @method string getPageNum()
+ */
 class LiveStreamsBlockListDescribeRequest extends RpcAcsRequest
 {
-    private $securityToken;
-    private $domainName;
-    private $pageSize;
-    private $ownerId;
-    private $pageNum;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'DescribeLiveStreamsBlockList', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'DescribeLiveStreamsBlockList', 'live');
     }
 
-    public function getSecurityToken()
-    {
-        return $this->securityToken;
-    }
-
+    /**
+     * @param string $securityToken
+     * @return $this
+     */
     public function setSecurityToken($securityToken)
     {
-        $this->securityToken = $securityToken;
+        $this->requestParameters['SecurityToken'] = $securityToken;
         $this->queryParameters['SecurityToken'] = $securityToken;
+
+        return $this;
     }
 
-    public function getDomainName()
-    {
-        return $this->domainName;
-    }
-
+    /**
+     * @param string $domainName
+     * @return $this
+     */
     public function setDomainName($domainName)
     {
-        $this->domainName = $domainName;
+        $this->requestParameters['DomainName'] = $domainName;
         $this->queryParameters['DomainName'] = $domainName;
+
+        return $this;
     }
 
-    public function getPageSize()
-    {
-        return $this->pageSize;
-    }
-
+    /**
+     * @param string $pageSize
+     * @return $this
+     */
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
+        $this->requestParameters['PageSize'] = $pageSize;
         $this->queryParameters['PageSize'] = $pageSize;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getPageNum()
-    {
-        return $this->pageNum;
-    }
-
+    /**
+     * @param string $pageNum
+     * @return $this
+     */
     public function setPageNum($pageNum)
     {
-        $this->pageNum = $pageNum;
+        $this->requestParameters['PageNum'] = $pageNum;
         $this->queryParameters['PageNum'] = $pageNum;
+
+        return $this;
     }
 }

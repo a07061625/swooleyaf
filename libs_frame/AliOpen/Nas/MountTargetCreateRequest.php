@@ -1,92 +1,88 @@
 <?php
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of CreateMountTarget
+ * @method string getVSwitchId()
+ * @method string getVpcId()
+ * @method string getNetworkType()
+ * @method string getAccessGroupName()
+ * @method string getFileSystemId()
+ */
 class MountTargetCreateRequest extends RpcAcsRequest
 {
-    private $vSwitchId;
-    private $vpcId;
-    private $networkType;
-    private $accessGroupName;
-    private $fileSystemId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct("NAS", "2017-06-26", "CreateMountTarget", "nas", "openAPI");
-        $this->setMethod("POST");
+        parent::__construct('NAS', '2017-06-26', 'CreateMountTarget', 'nas');
     }
 
-    public function getVSwitchId()
-    {
-        return $this->vSwitchId;
-    }
-
+    /**
+     * @param string $vSwitchId
+     * @return $this
+     */
     public function setVSwitchId($vSwitchId)
     {
-        $this->vSwitchId = $vSwitchId;
-        $this->queryParameters["VSwitchId"] = $vSwitchId;
+        $this->requestParameters['VSwitchId'] = $vSwitchId;
+        $this->queryParameters['VSwitchId'] = $vSwitchId;
+
+        return $this;
     }
 
-    public function getVpcId()
-    {
-        return $this->vpcId;
-    }
-
+    /**
+     * @param string $vpcId
+     * @return $this
+     */
     public function setVpcId($vpcId)
     {
-        $this->vpcId = $vpcId;
-        $this->queryParameters["VpcId"] = $vpcId;
+        $this->requestParameters['VpcId'] = $vpcId;
+        $this->queryParameters['VpcId'] = $vpcId;
+
+        return $this;
     }
 
-    public function getNetworkType()
-    {
-        return $this->networkType;
-    }
-
+    /**
+     * @param string $networkType
+     * @return $this
+     */
     public function setNetworkType($networkType)
     {
-        $this->networkType = $networkType;
-        $this->queryParameters["NetworkType"] = $networkType;
+        $this->requestParameters['NetworkType'] = $networkType;
+        $this->queryParameters['NetworkType'] = $networkType;
+
+        return $this;
     }
 
-    public function getAccessGroupName()
-    {
-        return $this->accessGroupName;
-    }
-
+    /**
+     * @param string $accessGroupName
+     * @return $this
+     */
     public function setAccessGroupName($accessGroupName)
     {
-        $this->accessGroupName = $accessGroupName;
-        $this->queryParameters["AccessGroupName"] = $accessGroupName;
+        $this->requestParameters['AccessGroupName'] = $accessGroupName;
+        $this->queryParameters['AccessGroupName'] = $accessGroupName;
+
+        return $this;
     }
 
-    public function getFileSystemId()
-    {
-        return $this->fileSystemId;
-    }
-
+    /**
+     * @param string $fileSystemId
+     * @return $this
+     */
     public function setFileSystemId($fileSystemId)
     {
-        $this->fileSystemId = $fileSystemId;
-        $this->queryParameters["FileSystemId"] = $fileSystemId;
+        $this->requestParameters['FileSystemId'] = $fileSystemId;
+        $this->queryParameters['FileSystemId'] = $fileSystemId;
+
+        return $this;
     }
 }

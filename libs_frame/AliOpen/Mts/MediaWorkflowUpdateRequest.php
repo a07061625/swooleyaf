@@ -3,84 +3,99 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of UpdateMediaWorkflow
+ * @method string getResourceOwnerId()
+ * @method string getResourceOwnerAccount()
+ * @method string getTopology()
+ * @method string getOwnerAccount()
+ * @method string getMediaWorkflowId()
+ * @method string getOwnerId()
+ */
 class MediaWorkflowUpdateRequest extends RpcAcsRequest
 {
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $topology;
-    private $ownerAccount;
-    private $mediaWorkflowId;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Mts', '2014-06-18', 'UpdateMediaWorkflow', 'mts', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('Mts', '2014-06-18', 'UpdateMediaWorkflow', 'mts');
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
         $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function getTopology()
-    {
-        return $this->topology;
-    }
-
+    /**
+     * @param string $topology
+     * @return $this
+     */
     public function setTopology($topology)
     {
-        $this->topology = $topology;
+        $this->requestParameters['Topology'] = $topology;
         $this->queryParameters['Topology'] = $topology;
+
+        return $this;
     }
 
-    public function getOwnerAccount()
-    {
-        return $this->ownerAccount;
-    }
-
+    /**
+     * @param string $ownerAccount
+     * @return $this
+     */
     public function setOwnerAccount($ownerAccount)
     {
-        $this->ownerAccount = $ownerAccount;
+        $this->requestParameters['OwnerAccount'] = $ownerAccount;
         $this->queryParameters['OwnerAccount'] = $ownerAccount;
+
+        return $this;
     }
 
-    public function getMediaWorkflowId()
-    {
-        return $this->mediaWorkflowId;
-    }
-
+    /**
+     * @param string $mediaWorkflowId
+     * @return $this
+     */
     public function setMediaWorkflowId($mediaWorkflowId)
     {
-        $this->mediaWorkflowId = $mediaWorkflowId;
+        $this->requestParameters['MediaWorkflowId'] = $mediaWorkflowId;
         $this->queryParameters['MediaWorkflowId'] = $mediaWorkflowId;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 }

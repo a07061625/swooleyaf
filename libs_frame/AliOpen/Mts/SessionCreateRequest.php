@@ -3,96 +3,112 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of CreateSession
+ * @method string getResourceOwnerId()
+ * @method string getSessionTime()
+ * @method string getResourceOwnerAccount()
+ * @method string getOwnerAccount()
+ * @method string getEndUserId()
+ * @method string getOwnerId()
+ * @method string getMediaId()
+ */
 class SessionCreateRequest extends RpcAcsRequest
 {
-    private $resourceOwnerId;
-    private $sessionTime;
-    private $resourceOwnerAccount;
-    private $ownerAccount;
-    private $endUserId;
-    private $ownerId;
-    private $mediaId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Mts', '2014-06-18', 'CreateSession', 'mts', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('Mts', '2014-06-18', 'CreateSession', 'mts');
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getSessionTime()
-    {
-        return $this->sessionTime;
-    }
-
+    /**
+     * @param string $sessionTime
+     * @return $this
+     */
     public function setSessionTime($sessionTime)
     {
-        $this->sessionTime = $sessionTime;
+        $this->requestParameters['SessionTime'] = $sessionTime;
         $this->queryParameters['SessionTime'] = $sessionTime;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
         $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function getOwnerAccount()
-    {
-        return $this->ownerAccount;
-    }
-
+    /**
+     * @param string $ownerAccount
+     * @return $this
+     */
     public function setOwnerAccount($ownerAccount)
     {
-        $this->ownerAccount = $ownerAccount;
+        $this->requestParameters['OwnerAccount'] = $ownerAccount;
         $this->queryParameters['OwnerAccount'] = $ownerAccount;
+
+        return $this;
     }
 
-    public function getEndUserId()
-    {
-        return $this->endUserId;
-    }
-
+    /**
+     * @param string $endUserId
+     * @return $this
+     */
     public function setEndUserId($endUserId)
     {
-        $this->endUserId = $endUserId;
+        $this->requestParameters['EndUserId'] = $endUserId;
         $this->queryParameters['EndUserId'] = $endUserId;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getMediaId()
-    {
-        return $this->mediaId;
-    }
-
+    /**
+     * @param string $mediaId
+     * @return $this
+     */
     public function setMediaId($mediaId)
     {
-        $this->mediaId = $mediaId;
+        $this->requestParameters['MediaId'] = $mediaId;
         $this->queryParameters['MediaId'] = $mediaId;
+
+        return $this;
     }
 }

@@ -3,48 +3,60 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DescribeCasterComponents
+ * @method string getComponentId()
+ * @method string getCasterId()
+ * @method string getOwnerId()
+ */
 class CasterComponentsDescribeRequest extends RpcAcsRequest
 {
-    private $componentId;
-    private $casterId;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'DescribeCasterComponents', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'DescribeCasterComponents', 'live');
     }
 
-    public function getComponentId()
-    {
-        return $this->componentId;
-    }
-
+    /**
+     * @param string $componentId
+     * @return $this
+     */
     public function setComponentId($componentId)
     {
-        $this->componentId = $componentId;
+        $this->requestParameters['ComponentId'] = $componentId;
         $this->queryParameters['ComponentId'] = $componentId;
+
+        return $this;
     }
 
-    public function getCasterId()
-    {
-        return $this->casterId;
-    }
-
+    /**
+     * @param string $casterId
+     * @return $this
+     */
     public function setCasterId($casterId)
     {
-        $this->casterId = $casterId;
+        $this->requestParameters['CasterId'] = $casterId;
         $this->queryParameters['CasterId'] = $casterId;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 }

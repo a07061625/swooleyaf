@@ -3,108 +3,125 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DescribeLiveRecordConfig
+ * @method string getAppName()
+ * @method string getSecurityToken()
+ * @method string getDomainName()
+ * @method string getPageSize()
+ * @method string getOwnerId()
+ * @method string getPageNum()
+ * @method string getStreamName()
+ * @method string getOrder()
+ */
 class LiveRecordConfigDescribeRequest extends RpcAcsRequest
 {
-    private $appName;
-    private $securityToken;
-    private $domainName;
-    private $pageSize;
-    private $ownerId;
-    private $pageNum;
-    private $streamName;
-    private $order;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'DescribeLiveRecordConfig', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'DescribeLiveRecordConfig', 'live');
     }
 
-    public function getAppName()
-    {
-        return $this->appName;
-    }
-
+    /**
+     * @param string $appName
+     * @return $this
+     */
     public function setAppName($appName)
     {
-        $this->appName = $appName;
+        $this->requestParameters['AppName'] = $appName;
         $this->queryParameters['AppName'] = $appName;
+
+        return $this;
     }
 
-    public function getSecurityToken()
-    {
-        return $this->securityToken;
-    }
-
+    /**
+     * @param string $securityToken
+     * @return $this
+     */
     public function setSecurityToken($securityToken)
     {
-        $this->securityToken = $securityToken;
+        $this->requestParameters['SecurityToken'] = $securityToken;
         $this->queryParameters['SecurityToken'] = $securityToken;
+
+        return $this;
     }
 
-    public function getDomainName()
-    {
-        return $this->domainName;
-    }
-
+    /**
+     * @param string $domainName
+     * @return $this
+     */
     public function setDomainName($domainName)
     {
-        $this->domainName = $domainName;
+        $this->requestParameters['DomainName'] = $domainName;
         $this->queryParameters['DomainName'] = $domainName;
+
+        return $this;
     }
 
-    public function getPageSize()
-    {
-        return $this->pageSize;
-    }
-
+    /**
+     * @param string $pageSize
+     * @return $this
+     */
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
+        $this->requestParameters['PageSize'] = $pageSize;
         $this->queryParameters['PageSize'] = $pageSize;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getPageNum()
-    {
-        return $this->pageNum;
-    }
-
+    /**
+     * @param string $pageNum
+     * @return $this
+     */
     public function setPageNum($pageNum)
     {
-        $this->pageNum = $pageNum;
+        $this->requestParameters['PageNum'] = $pageNum;
         $this->queryParameters['PageNum'] = $pageNum;
+
+        return $this;
     }
 
-    public function getStreamName()
-    {
-        return $this->streamName;
-    }
-
+    /**
+     * @param string $streamName
+     * @return $this
+     */
     public function setStreamName($streamName)
     {
-        $this->streamName = $streamName;
+        $this->requestParameters['StreamName'] = $streamName;
         $this->queryParameters['StreamName'] = $streamName;
+
+        return $this;
     }
 
-    public function getOrder()
-    {
-        return $this->order;
-    }
-
+    /**
+     * @param string $order
+     * @return $this
+     */
     public function setOrder($order)
     {
-        $this->order = $order;
+        $this->requestParameters['Order'] = $order;
         $this->queryParameters['Order'] = $order;
+
+        return $this;
     }
 }
