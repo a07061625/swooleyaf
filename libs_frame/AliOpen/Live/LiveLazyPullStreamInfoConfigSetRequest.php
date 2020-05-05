@@ -3,108 +3,138 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of SetLiveLazyPullStreamInfoConfig
+ * @method string getPullArgs()
+ * @method string getAppName()
+ * @method string getPullAuthKey()
+ * @method string getPullAuthType()
+ * @method string getDomainName()
+ * @method string getPullDomainName()
+ * @method string getOwnerId()
+ * @method string getPullAppName()
+ * @method string getPullProtocol()
+ */
 class LiveLazyPullStreamInfoConfigSetRequest extends RpcAcsRequest
 {
-    private $appName;
-    private $pullAuthKey;
-    private $pullAuthType;
-    private $domainName;
-    private $pullDomainName;
-    private $ownerId;
-    private $pullAppName;
-    private $pullProtocol;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'SetLiveLazyPullStreamInfoConfig', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'SetLiveLazyPullStreamInfoConfig', 'live');
     }
 
-    public function getAppName()
+    /**
+     * @param string $pullArgs
+     * @return $this
+     */
+    public function setPullArgs($pullArgs)
     {
-        return $this->appName;
+        $this->requestParameters['PullArgs'] = $pullArgs;
+        $this->queryParameters['PullArgs'] = $pullArgs;
+
+        return $this;
     }
 
+    /**
+     * @param string $appName
+     * @return $this
+     */
     public function setAppName($appName)
     {
-        $this->appName = $appName;
+        $this->requestParameters['AppName'] = $appName;
         $this->queryParameters['AppName'] = $appName;
+
+        return $this;
     }
 
-    public function getPullAuthKey()
-    {
-        return $this->pullAuthKey;
-    }
-
+    /**
+     * @param string $pullAuthKey
+     * @return $this
+     */
     public function setPullAuthKey($pullAuthKey)
     {
-        $this->pullAuthKey = $pullAuthKey;
+        $this->requestParameters['PullAuthKey'] = $pullAuthKey;
         $this->queryParameters['PullAuthKey'] = $pullAuthKey;
+
+        return $this;
     }
 
-    public function getPullAuthType()
-    {
-        return $this->pullAuthType;
-    }
-
+    /**
+     * @param string $pullAuthType
+     * @return $this
+     */
     public function setPullAuthType($pullAuthType)
     {
-        $this->pullAuthType = $pullAuthType;
+        $this->requestParameters['PullAuthType'] = $pullAuthType;
         $this->queryParameters['PullAuthType'] = $pullAuthType;
+
+        return $this;
     }
 
-    public function getDomainName()
-    {
-        return $this->domainName;
-    }
-
+    /**
+     * @param string $domainName
+     * @return $this
+     */
     public function setDomainName($domainName)
     {
-        $this->domainName = $domainName;
+        $this->requestParameters['DomainName'] = $domainName;
         $this->queryParameters['DomainName'] = $domainName;
+
+        return $this;
     }
 
-    public function getPullDomainName()
-    {
-        return $this->pullDomainName;
-    }
-
+    /**
+     * @param string $pullDomainName
+     * @return $this
+     */
     public function setPullDomainName($pullDomainName)
     {
-        $this->pullDomainName = $pullDomainName;
+        $this->requestParameters['PullDomainName'] = $pullDomainName;
         $this->queryParameters['PullDomainName'] = $pullDomainName;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getPullAppName()
-    {
-        return $this->pullAppName;
-    }
-
+    /**
+     * @param string $pullAppName
+     * @return $this
+     */
     public function setPullAppName($pullAppName)
     {
-        $this->pullAppName = $pullAppName;
+        $this->requestParameters['PullAppName'] = $pullAppName;
         $this->queryParameters['PullAppName'] = $pullAppName;
+
+        return $this;
     }
 
-    public function getPullProtocol()
-    {
-        return $this->pullProtocol;
-    }
-
+    /**
+     * @param string $pullProtocol
+     * @return $this
+     */
     public function setPullProtocol($pullProtocol)
     {
-        $this->pullProtocol = $pullProtocol;
+        $this->requestParameters['PullProtocol'] = $pullProtocol;
         $this->queryParameters['PullProtocol'] = $pullProtocol;
+
+        return $this;
     }
 }

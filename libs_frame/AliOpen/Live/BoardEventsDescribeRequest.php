@@ -3,72 +3,86 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DescribeBoardEvents
+ * @method string getStartTime()
+ * @method string getBoardId()
+ * @method string getEndTime()
+ * @method string getOwnerId()
+ * @method string getAppId()
+ */
 class BoardEventsDescribeRequest extends RpcAcsRequest
 {
-    private $startTime;
-    private $boardId;
-    private $endTime;
-    private $ownerId;
-    private $appId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'DescribeBoardEvents', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'DescribeBoardEvents', 'live');
     }
 
-    public function getStartTime()
-    {
-        return $this->startTime;
-    }
-
+    /**
+     * @param string $startTime
+     * @return $this
+     */
     public function setStartTime($startTime)
     {
-        $this->startTime = $startTime;
+        $this->requestParameters['StartTime'] = $startTime;
         $this->queryParameters['StartTime'] = $startTime;
+
+        return $this;
     }
 
-    public function getBoardId()
-    {
-        return $this->boardId;
-    }
-
+    /**
+     * @param string $boardId
+     * @return $this
+     */
     public function setBoardId($boardId)
     {
-        $this->boardId = $boardId;
+        $this->requestParameters['BoardId'] = $boardId;
         $this->queryParameters['BoardId'] = $boardId;
+
+        return $this;
     }
 
-    public function getEndTime()
-    {
-        return $this->endTime;
-    }
-
+    /**
+     * @param string $endTime
+     * @return $this
+     */
     public function setEndTime($endTime)
     {
-        $this->endTime = $endTime;
+        $this->requestParameters['EndTime'] = $endTime;
         $this->queryParameters['EndTime'] = $endTime;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getAppId()
-    {
-        return $this->appId;
-    }
-
+    /**
+     * @param string $appId
+     * @return $this
+     */
     public function setAppId($appId)
     {
-        $this->appId = $appId;
+        $this->requestParameters['AppId'] = $appId;
         $this->queryParameters['AppId'] = $appId;
+
+        return $this;
     }
 }

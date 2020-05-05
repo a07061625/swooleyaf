@@ -3,144 +3,164 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of SubmitComplexJob
+ * @method string getResourceOwnerId()
+ * @method string getTranscodeOutput()
+ * @method string getResourceOwnerAccount()
+ * @method string getInputs()
+ * @method string getOwnerAccount()
+ * @method string getOutputLocation()
+ * @method string getOwnerId()
+ * @method string getPipelineId()
+ * @method string getOutputBucket()
+ * @method string getUserData()
+ * @method string getComplexConfigs()
+ */
 class ComplexJobSubmitRequest extends RpcAcsRequest
 {
-    private $resourceOwnerId;
-    private $transcodeOutput;
-    private $resourceOwnerAccount;
-    private $inputs;
-    private $ownerAccount;
-    private $outputLocation;
-    private $ownerId;
-    private $pipelineId;
-    private $outputBucket;
-    private $userData;
-    private $complexConfigs;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Mts', '2014-06-18', 'SubmitComplexJob', 'mts', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('Mts', '2014-06-18', 'SubmitComplexJob', 'mts');
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getTranscodeOutput()
-    {
-        return $this->transcodeOutput;
-    }
-
+    /**
+     * @param string $transcodeOutput
+     * @return $this
+     */
     public function setTranscodeOutput($transcodeOutput)
     {
-        $this->transcodeOutput = $transcodeOutput;
+        $this->requestParameters['TranscodeOutput'] = $transcodeOutput;
         $this->queryParameters['TranscodeOutput'] = $transcodeOutput;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
         $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function getInputs()
-    {
-        return $this->inputs;
-    }
-
+    /**
+     * @param string $inputs
+     * @return $this
+     */
     public function setInputs($inputs)
     {
-        $this->inputs = $inputs;
+        $this->requestParameters['Inputs'] = $inputs;
         $this->queryParameters['Inputs'] = $inputs;
+
+        return $this;
     }
 
-    public function getOwnerAccount()
-    {
-        return $this->ownerAccount;
-    }
-
+    /**
+     * @param string $ownerAccount
+     * @return $this
+     */
     public function setOwnerAccount($ownerAccount)
     {
-        $this->ownerAccount = $ownerAccount;
+        $this->requestParameters['OwnerAccount'] = $ownerAccount;
         $this->queryParameters['OwnerAccount'] = $ownerAccount;
+
+        return $this;
     }
 
-    public function getOutputLocation()
-    {
-        return $this->outputLocation;
-    }
-
+    /**
+     * @param string $outputLocation
+     * @return $this
+     */
     public function setOutputLocation($outputLocation)
     {
-        $this->outputLocation = $outputLocation;
+        $this->requestParameters['OutputLocation'] = $outputLocation;
         $this->queryParameters['OutputLocation'] = $outputLocation;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getPipelineId()
-    {
-        return $this->pipelineId;
-    }
-
+    /**
+     * @param string $pipelineId
+     * @return $this
+     */
     public function setPipelineId($pipelineId)
     {
-        $this->pipelineId = $pipelineId;
+        $this->requestParameters['PipelineId'] = $pipelineId;
         $this->queryParameters['PipelineId'] = $pipelineId;
+
+        return $this;
     }
 
-    public function getOutputBucket()
-    {
-        return $this->outputBucket;
-    }
-
+    /**
+     * @param string $outputBucket
+     * @return $this
+     */
     public function setOutputBucket($outputBucket)
     {
-        $this->outputBucket = $outputBucket;
+        $this->requestParameters['OutputBucket'] = $outputBucket;
         $this->queryParameters['OutputBucket'] = $outputBucket;
+
+        return $this;
     }
 
-    public function getUserData()
-    {
-        return $this->userData;
-    }
-
+    /**
+     * @param string $userData
+     * @return $this
+     */
     public function setUserData($userData)
     {
-        $this->userData = $userData;
+        $this->requestParameters['UserData'] = $userData;
         $this->queryParameters['UserData'] = $userData;
+
+        return $this;
     }
 
-    public function getComplexConfigs()
-    {
-        return $this->complexConfigs;
-    }
-
+    /**
+     * @param string $complexConfigs
+     * @return $this
+     */
     public function setComplexConfigs($complexConfigs)
     {
-        $this->complexConfigs = $complexConfigs;
+        $this->requestParameters['ComplexConfigs'] = $complexConfigs;
         $this->queryParameters['ComplexConfigs'] = $complexConfigs;
+
+        return $this;
     }
 }

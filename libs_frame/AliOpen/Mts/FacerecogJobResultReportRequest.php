@@ -3,96 +3,112 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of ReportFacerecogJobResult
+ * @method string getJobId()
+ * @method string getResourceOwnerId()
+ * @method string getResourceOwnerAccount()
+ * @method string getFacerecog()
+ * @method string getOwnerAccount()
+ * @method string getDetails()
+ * @method string getOwnerId()
+ */
 class FacerecogJobResultReportRequest extends RpcAcsRequest
 {
-    private $jobId;
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $facerecog;
-    private $ownerAccount;
-    private $details;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Mts', '2014-06-18', 'ReportFacerecogJobResult', 'mts', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('Mts', '2014-06-18', 'ReportFacerecogJobResult', 'mts');
     }
 
-    public function getJobId()
-    {
-        return $this->jobId;
-    }
-
+    /**
+     * @param string $jobId
+     * @return $this
+     */
     public function setJobId($jobId)
     {
-        $this->jobId = $jobId;
+        $this->requestParameters['JobId'] = $jobId;
         $this->queryParameters['JobId'] = $jobId;
+
+        return $this;
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
         $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function getFacerecog()
-    {
-        return $this->facerecog;
-    }
-
+    /**
+     * @param string $facerecog
+     * @return $this
+     */
     public function setFacerecog($facerecog)
     {
-        $this->facerecog = $facerecog;
+        $this->requestParameters['Facerecog'] = $facerecog;
         $this->queryParameters['Facerecog'] = $facerecog;
+
+        return $this;
     }
 
-    public function getOwnerAccount()
-    {
-        return $this->ownerAccount;
-    }
-
+    /**
+     * @param string $ownerAccount
+     * @return $this
+     */
     public function setOwnerAccount($ownerAccount)
     {
-        $this->ownerAccount = $ownerAccount;
+        $this->requestParameters['OwnerAccount'] = $ownerAccount;
         $this->queryParameters['OwnerAccount'] = $ownerAccount;
+
+        return $this;
     }
 
-    public function getDetails()
-    {
-        return $this->details;
-    }
-
+    /**
+     * @param string $details
+     * @return $this
+     */
     public function setDetails($details)
     {
-        $this->details = $details;
+        $this->requestParameters['Details'] = $details;
         $this->queryParameters['Details'] = $details;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 }

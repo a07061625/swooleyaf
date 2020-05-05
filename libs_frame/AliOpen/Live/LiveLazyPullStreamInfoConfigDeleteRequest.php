@@ -3,48 +3,60 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DeleteLiveLazyPullStreamInfoConfig
+ * @method string getDomainName()
+ * @method string getOwnerId()
+ * @method string getAppName()
+ */
 class LiveLazyPullStreamInfoConfigDeleteRequest extends RpcAcsRequest
 {
-    private $domainName;
-    private $ownerId;
-    private $appName;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'DeleteLiveLazyPullStreamInfoConfig', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'DeleteLiveLazyPullStreamInfoConfig', 'live');
     }
 
-    public function getDomainName()
-    {
-        return $this->domainName;
-    }
-
+    /**
+     * @param string $domainName
+     * @return $this
+     */
     public function setDomainName($domainName)
     {
-        $this->domainName = $domainName;
+        $this->requestParameters['DomainName'] = $domainName;
         $this->queryParameters['DomainName'] = $domainName;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getAppName()
-    {
-        return $this->appName;
-    }
-
+    /**
+     * @param string $appName
+     * @return $this
+     */
     public function setAppName($appName)
     {
-        $this->appName = $appName;
+        $this->requestParameters['AppName'] = $appName;
         $this->queryParameters['AppName'] = $appName;
+
+        return $this;
     }
 }

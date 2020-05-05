@@ -3,72 +3,86 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DeleteLiveStreamTranscode
+ * @method string getApp()
+ * @method string getTemplate()
+ * @method string getSecurityToken()
+ * @method string getDomain()
+ * @method string getOwnerId()
+ */
 class LiveStreamTranscodeDeleteRequest extends RpcAcsRequest
 {
-    private $app;
-    private $template;
-    private $securityToken;
-    private $domain;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'DeleteLiveStreamTranscode', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'DeleteLiveStreamTranscode', 'live');
     }
 
-    public function getApp()
-    {
-        return $this->app;
-    }
-
+    /**
+     * @param string $app
+     * @return $this
+     */
     public function setApp($app)
     {
-        $this->app = $app;
+        $this->requestParameters['App'] = $app;
         $this->queryParameters['App'] = $app;
+
+        return $this;
     }
 
-    public function getTemplate()
-    {
-        return $this->template;
-    }
-
+    /**
+     * @param string $template
+     * @return $this
+     */
     public function setTemplate($template)
     {
-        $this->template = $template;
+        $this->requestParameters['Template'] = $template;
         $this->queryParameters['Template'] = $template;
+
+        return $this;
     }
 
-    public function getSecurityToken()
-    {
-        return $this->securityToken;
-    }
-
+    /**
+     * @param string $securityToken
+     * @return $this
+     */
     public function setSecurityToken($securityToken)
     {
-        $this->securityToken = $securityToken;
+        $this->requestParameters['SecurityToken'] = $securityToken;
         $this->queryParameters['SecurityToken'] = $securityToken;
+
+        return $this;
     }
 
-    public function getDomain()
-    {
-        return $this->domain;
-    }
-
+    /**
+     * @param string $domain
+     * @return $this
+     */
     public function setDomain($domain)
     {
-        $this->domain = $domain;
+        $this->requestParameters['Domain'] = $domain;
         $this->queryParameters['Domain'] = $domain;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 }

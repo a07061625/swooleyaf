@@ -3,132 +3,151 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of ModifyCasterComponent
+ * @method string getComponentId()
+ * @method string getComponentType()
+ * @method string getImageLayerContent()
+ * @method string getCasterId()
+ * @method string getEffect()
+ * @method string getComponentLayer()
+ * @method string getCaptionLayerContent()
+ * @method string getComponentName()
+ * @method string getOwnerId()
+ * @method string getTextLayerContent()
+ */
 class CasterComponentModifyRequest extends RpcAcsRequest
 {
-    private $componentId;
-    private $componentType;
-    private $imageLayerContent;
-    private $casterId;
-    private $effect;
-    private $componentLayer;
-    private $captionLayerContent;
-    private $componentName;
-    private $ownerId;
-    private $textLayerContent;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'ModifyCasterComponent', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'ModifyCasterComponent', 'live');
     }
 
-    public function getComponentId()
-    {
-        return $this->componentId;
-    }
-
+    /**
+     * @param string $componentId
+     * @return $this
+     */
     public function setComponentId($componentId)
     {
-        $this->componentId = $componentId;
+        $this->requestParameters['ComponentId'] = $componentId;
         $this->queryParameters['ComponentId'] = $componentId;
+
+        return $this;
     }
 
-    public function getComponentType()
-    {
-        return $this->componentType;
-    }
-
+    /**
+     * @param string $componentType
+     * @return $this
+     */
     public function setComponentType($componentType)
     {
-        $this->componentType = $componentType;
+        $this->requestParameters['ComponentType'] = $componentType;
         $this->queryParameters['ComponentType'] = $componentType;
+
+        return $this;
     }
 
-    public function getImageLayerContent()
-    {
-        return $this->imageLayerContent;
-    }
-
+    /**
+     * @param string $imageLayerContent
+     * @return $this
+     */
     public function setImageLayerContent($imageLayerContent)
     {
-        $this->imageLayerContent = $imageLayerContent;
+        $this->requestParameters['ImageLayerContent'] = $imageLayerContent;
         $this->queryParameters['ImageLayerContent'] = $imageLayerContent;
+
+        return $this;
     }
 
-    public function getCasterId()
-    {
-        return $this->casterId;
-    }
-
+    /**
+     * @param string $casterId
+     * @return $this
+     */
     public function setCasterId($casterId)
     {
-        $this->casterId = $casterId;
+        $this->requestParameters['CasterId'] = $casterId;
         $this->queryParameters['CasterId'] = $casterId;
+
+        return $this;
     }
 
-    public function getEffect()
-    {
-        return $this->effect;
-    }
-
+    /**
+     * @param string $effect
+     * @return $this
+     */
     public function setEffect($effect)
     {
-        $this->effect = $effect;
+        $this->requestParameters['Effect'] = $effect;
         $this->queryParameters['Effect'] = $effect;
+
+        return $this;
     }
 
-    public function getComponentLayer()
-    {
-        return $this->componentLayer;
-    }
-
+    /**
+     * @param string $componentLayer
+     * @return $this
+     */
     public function setComponentLayer($componentLayer)
     {
-        $this->componentLayer = $componentLayer;
+        $this->requestParameters['ComponentLayer'] = $componentLayer;
         $this->queryParameters['ComponentLayer'] = $componentLayer;
+
+        return $this;
     }
 
-    public function getCaptionLayerContent()
-    {
-        return $this->captionLayerContent;
-    }
-
+    /**
+     * @param string $captionLayerContent
+     * @return $this
+     */
     public function setCaptionLayerContent($captionLayerContent)
     {
-        $this->captionLayerContent = $captionLayerContent;
+        $this->requestParameters['CaptionLayerContent'] = $captionLayerContent;
         $this->queryParameters['CaptionLayerContent'] = $captionLayerContent;
+
+        return $this;
     }
 
-    public function getComponentName()
-    {
-        return $this->componentName;
-    }
-
+    /**
+     * @param string $componentName
+     * @return $this
+     */
     public function setComponentName($componentName)
     {
-        $this->componentName = $componentName;
+        $this->requestParameters['ComponentName'] = $componentName;
         $this->queryParameters['ComponentName'] = $componentName;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getTextLayerContent()
-    {
-        return $this->textLayerContent;
-    }
-
+    /**
+     * @param string $textLayerContent
+     * @return $this
+     */
     public function setTextLayerContent($textLayerContent)
     {
-        $this->textLayerContent = $textLayerContent;
+        $this->requestParameters['TextLayerContent'] = $textLayerContent;
         $this->queryParameters['TextLayerContent'] = $textLayerContent;
+
+        return $this;
     }
 }

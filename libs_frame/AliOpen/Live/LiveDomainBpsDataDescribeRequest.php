@@ -3,96 +3,112 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DescribeLiveDomainBpsData
+ * @method string getDomainName()
+ * @method string getEndTime()
+ * @method string getInterval()
+ * @method string getLocationNameEn()
+ * @method string getStartTime()
+ * @method string getIspNameEn()
+ * @method string getOwnerId()
+ */
 class LiveDomainBpsDataDescribeRequest extends RpcAcsRequest
 {
-    private $domainName;
-    private $endTime;
-    private $interval;
-    private $locationNameEn;
-    private $startTime;
-    private $ispNameEn;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'DescribeLiveDomainBpsData', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'DescribeLiveDomainBpsData', 'live');
     }
 
-    public function getDomainName()
-    {
-        return $this->domainName;
-    }
-
+    /**
+     * @param string $domainName
+     * @return $this
+     */
     public function setDomainName($domainName)
     {
-        $this->domainName = $domainName;
+        $this->requestParameters['DomainName'] = $domainName;
         $this->queryParameters['DomainName'] = $domainName;
+
+        return $this;
     }
 
-    public function getEndTime()
-    {
-        return $this->endTime;
-    }
-
+    /**
+     * @param string $endTime
+     * @return $this
+     */
     public function setEndTime($endTime)
     {
-        $this->endTime = $endTime;
+        $this->requestParameters['EndTime'] = $endTime;
         $this->queryParameters['EndTime'] = $endTime;
+
+        return $this;
     }
 
-    public function getInterval()
-    {
-        return $this->interval;
-    }
-
+    /**
+     * @param string $interval
+     * @return $this
+     */
     public function setInterval($interval)
     {
-        $this->interval = $interval;
+        $this->requestParameters['Interval'] = $interval;
         $this->queryParameters['Interval'] = $interval;
+
+        return $this;
     }
 
-    public function getLocationNameEn()
-    {
-        return $this->locationNameEn;
-    }
-
+    /**
+     * @param string $locationNameEn
+     * @return $this
+     */
     public function setLocationNameEn($locationNameEn)
     {
-        $this->locationNameEn = $locationNameEn;
+        $this->requestParameters['LocationNameEn'] = $locationNameEn;
         $this->queryParameters['LocationNameEn'] = $locationNameEn;
+
+        return $this;
     }
 
-    public function getStartTime()
-    {
-        return $this->startTime;
-    }
-
+    /**
+     * @param string $startTime
+     * @return $this
+     */
     public function setStartTime($startTime)
     {
-        $this->startTime = $startTime;
+        $this->requestParameters['StartTime'] = $startTime;
         $this->queryParameters['StartTime'] = $startTime;
+
+        return $this;
     }
 
-    public function getIspNameEn()
-    {
-        return $this->ispNameEn;
-    }
-
+    /**
+     * @param string $ispNameEn
+     * @return $this
+     */
     public function setIspNameEn($ispNameEn)
     {
-        $this->ispNameEn = $ispNameEn;
+        $this->requestParameters['IspNameEn'] = $ispNameEn;
         $this->queryParameters['IspNameEn'] = $ispNameEn;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 }

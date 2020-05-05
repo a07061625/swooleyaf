@@ -3,60 +3,73 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DeleteLiveDomainMapping
+ * @method string getPullDomain()
+ * @method string getSecurityToken()
+ * @method string getPushDomain()
+ * @method string getOwnerId()
+ */
 class LiveDomainMappingDeleteRequest extends RpcAcsRequest
 {
-    private $pullDomain;
-    private $securityToken;
-    private $pushDomain;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'DeleteLiveDomainMapping', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'DeleteLiveDomainMapping', 'live');
     }
 
-    public function getPullDomain()
-    {
-        return $this->pullDomain;
-    }
-
+    /**
+     * @param string $pullDomain
+     * @return $this
+     */
     public function setPullDomain($pullDomain)
     {
-        $this->pullDomain = $pullDomain;
+        $this->requestParameters['PullDomain'] = $pullDomain;
         $this->queryParameters['PullDomain'] = $pullDomain;
+
+        return $this;
     }
 
-    public function getSecurityToken()
-    {
-        return $this->securityToken;
-    }
-
+    /**
+     * @param string $securityToken
+     * @return $this
+     */
     public function setSecurityToken($securityToken)
     {
-        $this->securityToken = $securityToken;
+        $this->requestParameters['SecurityToken'] = $securityToken;
         $this->queryParameters['SecurityToken'] = $securityToken;
+
+        return $this;
     }
 
-    public function getPushDomain()
-    {
-        return $this->pushDomain;
-    }
-
+    /**
+     * @param string $pushDomain
+     * @return $this
+     */
     public function setPushDomain($pushDomain)
     {
-        $this->pushDomain = $pushDomain;
+        $this->requestParameters['PushDomain'] = $pushDomain;
         $this->queryParameters['PushDomain'] = $pushDomain;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 }

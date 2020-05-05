@@ -3,48 +3,60 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of AddCasterEpisodeGroupContent
+ * @method string getClientToken()
+ * @method string getOwnerId()
+ * @method string getContent()
+ */
 class CasterEpisodeGroupContentAddRequest extends RpcAcsRequest
 {
-    private $clientToken;
-    private $ownerId;
-    private $content;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'AddCasterEpisodeGroupContent', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'AddCasterEpisodeGroupContent', 'live');
     }
 
-    public function getClientToken()
-    {
-        return $this->clientToken;
-    }
-
+    /**
+     * @param string $clientToken
+     * @return $this
+     */
     public function setClientToken($clientToken)
     {
-        $this->clientToken = $clientToken;
+        $this->requestParameters['ClientToken'] = $clientToken;
         $this->queryParameters['ClientToken'] = $clientToken;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getContent()
-    {
-        return $this->content;
-    }
-
+    /**
+     * @param string $content
+     * @return $this
+     */
     public function setContent($content)
     {
-        $this->content = $content;
+        $this->requestParameters['Content'] = $content;
         $this->queryParameters['Content'] = $content;
+
+        return $this;
     }
 }

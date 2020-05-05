@@ -3,60 +3,99 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of CreateRoom
+ * @method string getTemplateIds()
+ * @method string getAnchorId()
+ * @method string getUseAppTranscode()
+ * @method string getOwnerId()
+ * @method string getRoomId()
+ * @method string getAppId()
+ */
 class RoomCreateRequest extends RpcAcsRequest
 {
-    private $anchorId;
-    private $ownerId;
-    private $roomId;
-    private $appId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'CreateRoom', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'CreateRoom', 'live');
     }
 
-    public function getAnchorId()
+    /**
+     * @param string $templateIds
+     * @return $this
+     */
+    public function setTemplateIds($templateIds)
     {
-        return $this->anchorId;
+        $this->requestParameters['TemplateIds'] = $templateIds;
+        $this->queryParameters['TemplateIds'] = $templateIds;
+
+        return $this;
     }
 
+    /**
+     * @param string $anchorId
+     * @return $this
+     */
     public function setAnchorId($anchorId)
     {
-        $this->anchorId = $anchorId;
+        $this->requestParameters['AnchorId'] = $anchorId;
         $this->queryParameters['AnchorId'] = $anchorId;
+
+        return $this;
     }
 
-    public function getOwnerId()
+    /**
+     * @param string $useAppTranscode
+     * @return $this
+     */
+    public function setUseAppTranscode($useAppTranscode)
     {
-        return $this->ownerId;
+        $this->requestParameters['UseAppTranscode'] = $useAppTranscode;
+        $this->queryParameters['UseAppTranscode'] = $useAppTranscode;
+
+        return $this;
     }
 
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getRoomId()
-    {
-        return $this->roomId;
-    }
-
+    /**
+     * @param string $roomId
+     * @return $this
+     */
     public function setRoomId($roomId)
     {
-        $this->roomId = $roomId;
+        $this->requestParameters['RoomId'] = $roomId;
         $this->queryParameters['RoomId'] = $roomId;
+
+        return $this;
     }
 
-    public function getAppId()
-    {
-        return $this->appId;
-    }
-
+    /**
+     * @param string $appId
+     * @return $this
+     */
     public function setAppId($appId)
     {
-        $this->appId = $appId;
+        $this->requestParameters['AppId'] = $appId;
         $this->queryParameters['AppId'] = $appId;
+
+        return $this;
     }
 }

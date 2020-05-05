@@ -3,47 +3,55 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DescribeHlsLiveStreamRealTimeBpsData
+ * @method string getDomainName()
+ * @method string getTime()
+ * @method string getOwnerId()
+ */
 class HlsLiveStreamRealTimeBpsDataDescribeRequest extends RpcAcsRequest
 {
-    private $domainName;
-    private $time;
-    private $ownerId;
-
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'DescribeHlsLiveStreamRealTimeBpsData', 'live', 'openAPI');
+        parent::__construct('live', '2016-11-01', 'DescribeHlsLiveStreamRealTimeBpsData', 'live');
     }
 
-    public function getDomainName()
-    {
-        return $this->domainName;
-    }
-
+    /**
+     * @param string $domainName
+     * @return $this
+     */
     public function setDomainName($domainName)
     {
-        $this->domainName = $domainName;
+        $this->requestParameters['DomainName'] = $domainName;
         $this->queryParameters['DomainName'] = $domainName;
+
+        return $this;
     }
 
-    public function getTime()
-    {
-        return $this->time;
-    }
-
+    /**
+     * @param string $time
+     * @return $this
+     */
     public function setTime($time)
     {
-        $this->time = $time;
+        $this->requestParameters['Time'] = $time;
         $this->queryParameters['Time'] = $time;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 }

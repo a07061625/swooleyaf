@@ -3,108 +3,125 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of AddTrancodeSEI
+ * @method string getDelay()
+ * @method string getAppName()
+ * @method string getRepeat()
+ * @method string getDomainName()
+ * @method string getPattern()
+ * @method string getText()
+ * @method string getOwnerId()
+ * @method string getStreamName()
+ */
 class TrancodeSEIAddRequest extends RpcAcsRequest
 {
-    private $delay;
-    private $appName;
-    private $repeat;
-    private $domainName;
-    private $pattern;
-    private $text;
-    private $ownerId;
-    private $streamName;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'AddTrancodeSEI', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'AddTrancodeSEI', 'live');
     }
 
-    public function getDelay()
-    {
-        return $this->delay;
-    }
-
+    /**
+     * @param string $delay
+     * @return $this
+     */
     public function setDelay($delay)
     {
-        $this->delay = $delay;
+        $this->requestParameters['Delay'] = $delay;
         $this->queryParameters['Delay'] = $delay;
+
+        return $this;
     }
 
-    public function getAppName()
-    {
-        return $this->appName;
-    }
-
+    /**
+     * @param string $appName
+     * @return $this
+     */
     public function setAppName($appName)
     {
-        $this->appName = $appName;
+        $this->requestParameters['AppName'] = $appName;
         $this->queryParameters['AppName'] = $appName;
+
+        return $this;
     }
 
-    public function getRepeat()
-    {
-        return $this->repeat;
-    }
-
+    /**
+     * @param string $repeat
+     * @return $this
+     */
     public function setRepeat($repeat)
     {
-        $this->repeat = $repeat;
+        $this->requestParameters['Repeat'] = $repeat;
         $this->queryParameters['Repeat'] = $repeat;
+
+        return $this;
     }
 
-    public function getDomainName()
-    {
-        return $this->domainName;
-    }
-
+    /**
+     * @param string $domainName
+     * @return $this
+     */
     public function setDomainName($domainName)
     {
-        $this->domainName = $domainName;
+        $this->requestParameters['DomainName'] = $domainName;
         $this->queryParameters['DomainName'] = $domainName;
+
+        return $this;
     }
 
-    public function getPattern()
-    {
-        return $this->pattern;
-    }
-
+    /**
+     * @param string $pattern
+     * @return $this
+     */
     public function setPattern($pattern)
     {
-        $this->pattern = $pattern;
+        $this->requestParameters['Pattern'] = $pattern;
         $this->queryParameters['Pattern'] = $pattern;
+
+        return $this;
     }
 
-    public function getText()
-    {
-        return $this->text;
-    }
-
+    /**
+     * @param string $text
+     * @return $this
+     */
     public function setText($text)
     {
-        $this->text = $text;
+        $this->requestParameters['Text'] = $text;
         $this->queryParameters['Text'] = $text;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getStreamName()
-    {
-        return $this->streamName;
-    }
-
+    /**
+     * @param string $streamName
+     * @return $this
+     */
     public function setStreamName($streamName)
     {
-        $this->streamName = $streamName;
+        $this->requestParameters['StreamName'] = $streamName;
         $this->queryParameters['StreamName'] = $streamName;
+
+        return $this;
     }
 }

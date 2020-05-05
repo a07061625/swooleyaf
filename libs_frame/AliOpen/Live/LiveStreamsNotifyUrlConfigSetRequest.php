@@ -3,72 +3,86 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of SetLiveStreamsNotifyUrlConfig
+ * @method string getAuthKey()
+ * @method string getDomainName()
+ * @method string getNotifyUrl()
+ * @method string getOwnerId()
+ * @method string getAuthType()
+ */
 class LiveStreamsNotifyUrlConfigSetRequest extends RpcAcsRequest
 {
-    private $authKey;
-    private $domainName;
-    private $notifyUrl;
-    private $ownerId;
-    private $authType;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'SetLiveStreamsNotifyUrlConfig', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'SetLiveStreamsNotifyUrlConfig', 'live');
     }
 
-    public function getAuthKey()
-    {
-        return $this->authKey;
-    }
-
+    /**
+     * @param string $authKey
+     * @return $this
+     */
     public function setAuthKey($authKey)
     {
-        $this->authKey = $authKey;
+        $this->requestParameters['AuthKey'] = $authKey;
         $this->queryParameters['AuthKey'] = $authKey;
+
+        return $this;
     }
 
-    public function getDomainName()
-    {
-        return $this->domainName;
-    }
-
+    /**
+     * @param string $domainName
+     * @return $this
+     */
     public function setDomainName($domainName)
     {
-        $this->domainName = $domainName;
+        $this->requestParameters['DomainName'] = $domainName;
         $this->queryParameters['DomainName'] = $domainName;
+
+        return $this;
     }
 
-    public function getNotifyUrl()
-    {
-        return $this->notifyUrl;
-    }
-
+    /**
+     * @param string $notifyUrl
+     * @return $this
+     */
     public function setNotifyUrl($notifyUrl)
     {
-        $this->notifyUrl = $notifyUrl;
+        $this->requestParameters['NotifyUrl'] = $notifyUrl;
         $this->queryParameters['NotifyUrl'] = $notifyUrl;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getAuthType()
-    {
-        return $this->authType;
-    }
-
+    /**
+     * @param string $authType
+     * @return $this
+     */
     public function setAuthType($authType)
     {
-        $this->authType = $authType;
+        $this->requestParameters['AuthType'] = $authType;
         $this->queryParameters['AuthType'] = $authType;
+
+        return $this;
     }
 }

@@ -3,120 +3,138 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of AddLiveDomain
+ * @method string getTopLevelDomain()
+ * @method string getSecurityToken()
+ * @method string getOwnerAccount()
+ * @method string getScope()
+ * @method string getDomainName()
+ * @method string getOwnerId()
+ * @method string getRegion()
+ * @method string getCheckUrl()
+ * @method string getLiveDomainType()
+ */
 class LiveDomainAddRequest extends RpcAcsRequest
 {
-    private $topLevelDomain;
-    private $securityToken;
-    private $ownerAccount;
-    private $scope;
-    private $domainName;
-    private $ownerId;
-    private $region;
-    private $checkUrl;
-    private $liveDomainType;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'AddLiveDomain', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'AddLiveDomain', 'live');
     }
 
-    public function getTopLevelDomain()
-    {
-        return $this->topLevelDomain;
-    }
-
+    /**
+     * @param string $topLevelDomain
+     * @return $this
+     */
     public function setTopLevelDomain($topLevelDomain)
     {
-        $this->topLevelDomain = $topLevelDomain;
+        $this->requestParameters['TopLevelDomain'] = $topLevelDomain;
         $this->queryParameters['TopLevelDomain'] = $topLevelDomain;
+
+        return $this;
     }
 
-    public function getSecurityToken()
-    {
-        return $this->securityToken;
-    }
-
+    /**
+     * @param string $securityToken
+     * @return $this
+     */
     public function setSecurityToken($securityToken)
     {
-        $this->securityToken = $securityToken;
+        $this->requestParameters['SecurityToken'] = $securityToken;
         $this->queryParameters['SecurityToken'] = $securityToken;
+
+        return $this;
     }
 
-    public function getOwnerAccount()
-    {
-        return $this->ownerAccount;
-    }
-
+    /**
+     * @param string $ownerAccount
+     * @return $this
+     */
     public function setOwnerAccount($ownerAccount)
     {
-        $this->ownerAccount = $ownerAccount;
+        $this->requestParameters['OwnerAccount'] = $ownerAccount;
         $this->queryParameters['OwnerAccount'] = $ownerAccount;
+
+        return $this;
     }
 
-    public function getScope()
-    {
-        return $this->scope;
-    }
-
+    /**
+     * @param string $scope
+     * @return $this
+     */
     public function setScope($scope)
     {
-        $this->scope = $scope;
+        $this->requestParameters['Scope'] = $scope;
         $this->queryParameters['Scope'] = $scope;
+
+        return $this;
     }
 
-    public function getDomainName()
-    {
-        return $this->domainName;
-    }
-
+    /**
+     * @param string $domainName
+     * @return $this
+     */
     public function setDomainName($domainName)
     {
-        $this->domainName = $domainName;
+        $this->requestParameters['DomainName'] = $domainName;
         $this->queryParameters['DomainName'] = $domainName;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getRegion()
-    {
-        return $this->region;
-    }
-
+    /**
+     * @param string $region
+     * @return $this
+     */
     public function setRegion($region)
     {
-        $this->region = $region;
+        $this->requestParameters['Region'] = $region;
         $this->queryParameters['Region'] = $region;
+
+        return $this;
     }
 
-    public function getCheckUrl()
-    {
-        return $this->checkUrl;
-    }
-
+    /**
+     * @param string $checkUrl
+     * @return $this
+     */
     public function setCheckUrl($checkUrl)
     {
-        $this->checkUrl = $checkUrl;
+        $this->requestParameters['CheckUrl'] = $checkUrl;
         $this->queryParameters['CheckUrl'] = $checkUrl;
+
+        return $this;
     }
 
-    public function getLiveDomainType()
-    {
-        return $this->liveDomainType;
-    }
-
+    /**
+     * @param string $liveDomainType
+     * @return $this
+     */
     public function setLiveDomainType($liveDomainType)
     {
-        $this->liveDomainType = $liveDomainType;
+        $this->requestParameters['LiveDomainType'] = $liveDomainType;
         $this->queryParameters['LiveDomainType'] = $liveDomainType;
+
+        return $this;
     }
 }

@@ -3,122 +3,140 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of ModifyCasterEpisode
+ * @method string getResourceId()
+ * @method array getComponentIds()
+ * @method string getSwitchType()
+ * @method string getCasterId()
+ * @method string getEpisodeName()
+ * @method string getEndTime()
+ * @method string getStartTime()
+ * @method string getOwnerId()
+ * @method string getEpisodeId()
+ */
 class CasterEpisodeModifyRequest extends RpcAcsRequest
 {
-    private $resourceId;
-    private $ComponentIds;
-    private $switchType;
-    private $casterId;
-    private $episodeName;
-    private $endTime;
-    private $startTime;
-    private $ownerId;
-    private $episodeId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'ModifyCasterEpisode', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'ModifyCasterEpisode', 'live');
     }
 
-    public function getResourceId()
-    {
-        return $this->resourceId;
-    }
-
+    /**
+     * @param string $resourceId
+     * @return $this
+     */
     public function setResourceId($resourceId)
     {
-        $this->resourceId = $resourceId;
+        $this->requestParameters['ResourceId'] = $resourceId;
         $this->queryParameters['ResourceId'] = $resourceId;
+
+        return $this;
     }
 
-    public function getComponentIds()
+    /**
+     * @param array $componentId
+     * @return $this
+     */
+    public function setComponentIds(array $componentId)
     {
-        return $this->ComponentIds;
-    }
-
-    public function setComponentIds($ComponentIds)
-    {
-        $this->ComponentIds = $ComponentIds;
-        for ($i = 0; $i < count($ComponentIds); $i ++) {
-            $this->queryParameters['ComponentId.' . ($i + 1)] = $ComponentIds[$i];
+        $this->requestParameters['ComponentIds'] = $componentId;
+        foreach ($componentId as $i => $iValue) {
+            $this->queryParameters['ComponentId.' . ($i + 1)] = $iValue;
         }
+
+        return $this;
     }
 
-    public function getSwitchType()
-    {
-        return $this->switchType;
-    }
-
+    /**
+     * @param string $switchType
+     * @return $this
+     */
     public function setSwitchType($switchType)
     {
-        $this->switchType = $switchType;
+        $this->requestParameters['SwitchType'] = $switchType;
         $this->queryParameters['SwitchType'] = $switchType;
+
+        return $this;
     }
 
-    public function getCasterId()
-    {
-        return $this->casterId;
-    }
-
+    /**
+     * @param string $casterId
+     * @return $this
+     */
     public function setCasterId($casterId)
     {
-        $this->casterId = $casterId;
+        $this->requestParameters['CasterId'] = $casterId;
         $this->queryParameters['CasterId'] = $casterId;
+
+        return $this;
     }
 
-    public function getEpisodeName()
-    {
-        return $this->episodeName;
-    }
-
+    /**
+     * @param string $episodeName
+     * @return $this
+     */
     public function setEpisodeName($episodeName)
     {
-        $this->episodeName = $episodeName;
+        $this->requestParameters['EpisodeName'] = $episodeName;
         $this->queryParameters['EpisodeName'] = $episodeName;
+
+        return $this;
     }
 
-    public function getEndTime()
-    {
-        return $this->endTime;
-    }
-
+    /**
+     * @param string $endTime
+     * @return $this
+     */
     public function setEndTime($endTime)
     {
-        $this->endTime = $endTime;
+        $this->requestParameters['EndTime'] = $endTime;
         $this->queryParameters['EndTime'] = $endTime;
+
+        return $this;
     }
 
-    public function getStartTime()
-    {
-        return $this->startTime;
-    }
-
+    /**
+     * @param string $startTime
+     * @return $this
+     */
     public function setStartTime($startTime)
     {
-        $this->startTime = $startTime;
+        $this->requestParameters['StartTime'] = $startTime;
         $this->queryParameters['StartTime'] = $startTime;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getEpisodeId()
-    {
-        return $this->episodeId;
-    }
-
+    /**
+     * @param string $episodeId
+     * @return $this
+     */
     public function setEpisodeId($episodeId)
     {
-        $this->episodeId = $episodeId;
+        $this->requestParameters['EpisodeId'] = $episodeId;
         $this->queryParameters['EpisodeId'] = $episodeId;
+
+        return $this;
     }
 }

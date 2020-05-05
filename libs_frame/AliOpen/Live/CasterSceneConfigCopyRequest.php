@@ -3,60 +3,73 @@ namespace AliOpen\Live;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of CopyCasterSceneConfig
+ * @method string getFromSceneId()
+ * @method string getCasterId()
+ * @method string getOwnerId()
+ * @method string getToSceneId()
+ */
 class CasterSceneConfigCopyRequest extends RpcAcsRequest
 {
-    private $fromSceneId;
-    private $casterId;
-    private $ownerId;
-    private $toSceneId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('live', '2016-11-01', 'CopyCasterSceneConfig', 'live', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('live', '2016-11-01', 'CopyCasterSceneConfig', 'live');
     }
 
-    public function getFromSceneId()
-    {
-        return $this->fromSceneId;
-    }
-
+    /**
+     * @param string $fromSceneId
+     * @return $this
+     */
     public function setFromSceneId($fromSceneId)
     {
-        $this->fromSceneId = $fromSceneId;
+        $this->requestParameters['FromSceneId'] = $fromSceneId;
         $this->queryParameters['FromSceneId'] = $fromSceneId;
+
+        return $this;
     }
 
-    public function getCasterId()
-    {
-        return $this->casterId;
-    }
-
+    /**
+     * @param string $casterId
+     * @return $this
+     */
     public function setCasterId($casterId)
     {
-        $this->casterId = $casterId;
+        $this->requestParameters['CasterId'] = $casterId;
         $this->queryParameters['CasterId'] = $casterId;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getToSceneId()
-    {
-        return $this->toSceneId;
-    }
-
+    /**
+     * @param string $toSceneId
+     * @return $this
+     */
     public function setToSceneId($toSceneId)
     {
-        $this->toSceneId = $toSceneId;
+        $this->requestParameters['ToSceneId'] = $toSceneId;
         $this->queryParameters['ToSceneId'] = $toSceneId;
+
+        return $this;
     }
 }

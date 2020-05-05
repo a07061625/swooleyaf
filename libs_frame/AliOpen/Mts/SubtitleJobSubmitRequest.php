@@ -3,108 +3,125 @@ namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of SubmitSubtitleJob
+ * @method string getUserData()
+ * @method string getResourceOwnerId()
+ * @method string getOutputConfig()
+ * @method string getInputConfig()
+ * @method string getResourceOwnerAccount()
+ * @method string getOwnerAccount()
+ * @method string getOwnerId()
+ * @method string getPipelineId()
+ */
 class SubtitleJobSubmitRequest extends RpcAcsRequest
 {
-    private $userData;
-    private $resourceOwnerId;
-    private $outputConfig;
-    private $inputConfig;
-    private $resourceOwnerAccount;
-    private $ownerAccount;
-    private $ownerId;
-    private $pipelineId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Mts', '2014-06-18', 'SubmitSubtitleJob', 'mts', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('Mts', '2014-06-18', 'SubmitSubtitleJob', 'mts');
     }
 
-    public function getUserData()
-    {
-        return $this->userData;
-    }
-
+    /**
+     * @param string $userData
+     * @return $this
+     */
     public function setUserData($userData)
     {
-        $this->userData = $userData;
+        $this->requestParameters['UserData'] = $userData;
         $this->queryParameters['UserData'] = $userData;
+
+        return $this;
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getOutputConfig()
-    {
-        return $this->outputConfig;
-    }
-
+    /**
+     * @param string $outputConfig
+     * @return $this
+     */
     public function setOutputConfig($outputConfig)
     {
-        $this->outputConfig = $outputConfig;
+        $this->requestParameters['OutputConfig'] = $outputConfig;
         $this->queryParameters['OutputConfig'] = $outputConfig;
+
+        return $this;
     }
 
-    public function getInputConfig()
-    {
-        return $this->inputConfig;
-    }
-
+    /**
+     * @param string $inputConfig
+     * @return $this
+     */
     public function setInputConfig($inputConfig)
     {
-        $this->inputConfig = $inputConfig;
+        $this->requestParameters['InputConfig'] = $inputConfig;
         $this->queryParameters['InputConfig'] = $inputConfig;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
         $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function getOwnerAccount()
-    {
-        return $this->ownerAccount;
-    }
-
+    /**
+     * @param string $ownerAccount
+     * @return $this
+     */
     public function setOwnerAccount($ownerAccount)
     {
-        $this->ownerAccount = $ownerAccount;
+        $this->requestParameters['OwnerAccount'] = $ownerAccount;
         $this->queryParameters['OwnerAccount'] = $ownerAccount;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
     }
 
-    public function getPipelineId()
-    {
-        return $this->pipelineId;
-    }
-
+    /**
+     * @param string $pipelineId
+     * @return $this
+     */
     public function setPipelineId($pipelineId)
     {
-        $this->pipelineId = $pipelineId;
+        $this->requestParameters['PipelineId'] = $pipelineId;
         $this->queryParameters['PipelineId'] = $pipelineId;
+
+        return $this;
     }
 }
