@@ -3,8 +3,16 @@ namespace AliOpen\Core\Regions;
 
 use AliOpen\Core\Http\HttpHelper;
 
+/**
+ * Class LocationService
+ * @package AliOpen\Core\Regions
+ */
 class LocationService
 {
+    /**
+     * @var \AliOpen\Core\Profile\IClientProfile
+     */
+    private $clientProfile;
     /**
      * @var array
      */
@@ -17,13 +25,9 @@ class LocationService
      * @var string
      */
     public static $serviceDomain = ALIOPEN_LOCATION_SERVICE_DOMAIN;
-    /**
-     * @var \AliOpen\Core\Profile\IClientProfile
-     */
-    private $clientProfile;
 
     /**
-     * AliOpen\Core\Regions\LocationService constructor.
+     * LocationService constructor.
      * @param $clientProfile
      */
     public function __construct($clientProfile)
@@ -116,7 +120,7 @@ class LocationService
         $httpResponse = HttpHelper::curl($requestUrl, $request->getMethod(), null, $request->getHeaders());
 
         if (!$httpResponse->isSuccess()) {
-            return;
+            return null;
         }
 
         $respObj = json_decode($httpResponse->getBody());

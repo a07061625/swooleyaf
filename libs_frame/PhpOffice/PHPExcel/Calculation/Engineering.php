@@ -1,16 +1,4 @@
 <?php
-/** PHPExcel root directory */
-if (!defined('PHPEXCEL_ROOT')) {
-    /**
-     * @ignore
-     */
-    define('PHPEXCEL_ROOT', dirname(__FILE__) . '/../../');
-    require PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
-}
-
-/** EULER */
-define('EULER', 2.71828182845904523536);
-
 /**
  * PHPExcel_Calculation_Engineering
  *
