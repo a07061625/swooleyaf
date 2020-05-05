@@ -18,14 +18,19 @@ use PhpOffice\PhpSpreadsheet\Reader\IReadFilter;
 class DataReadRange implements IReadFilter
 {
     protected $workerSheetName;
-    protected $endColumn;
+    protected $columns;
     protected $endRow;
 
-    public function __construct($workerSheetName, $endColumn, $endRow = 0)
+    public function __construct($workerSheetName,array $columns,int $endRow = 0)
     {
         $this->workerSheetName = $workerSheetName;
-        $this->endColumn = $endColumn;
         $this->endRow = $endRow;
+        $this->columns = [];
+        foreach ($columns as $column) {
+            if(ctype_alpha($column)){
+                $this->columns[strtoupper($column)] = 1;
+            }
+        }
     }
 
     /**
@@ -48,7 +53,7 @@ class DataReadRange implements IReadFilter
             return false;
         }
         // 如果当前行的长度超过指定截止行,则也设置成错误
-        if (strlen($column) > strlen($this->endColumn)) {
+        if (!isset($this->columns[$column])) {
             return false;
         }
 
