@@ -154,6 +154,17 @@ final class SyFrameLoader
     {
         if ($this->excelStatus) {
             define('PHPEXCEL_ROOT', SY_FRAME_LIBS_ROOT . 'PhpOffice/');
+            define('EULER', 2.71828182845904523536);
+            define('FINANCIAL_MAX_ITERATIONS', 128);
+            define('FINANCIAL_PRECISION', 1.0e-08);
+            define('MAX_VALUE', 1.2e308);
+            define('M_2DIVPI', 0.63661977236758134307553505349006);
+            define('MAX_ITERATIONS', 256);
+            define('PRECISION', 8.88E-016);
+            define('LOG_GAMMA_X_MAX_VALUE', 2.55e305);
+            define('XMININ', 2.23e-308);
+            define('EPS', 2.22e-16);
+            define('SQRT2PI', 2.5066282746310005024157652848110452530069867406099);
             if (defined('PREG_BAD_UTF8_ERROR')) {
                 // Cell reference (cell or range of cells, with or without a sheet reference)
                 define('CALCULATION_REGEXP_CELLREF', '((([^\s,!&%^\/\*\+<>=-]*)|(\'[^\']*\')|(\"[^\"]*\"))!)?\$?([a-z]{1,3})\$?(\d{1,7})');

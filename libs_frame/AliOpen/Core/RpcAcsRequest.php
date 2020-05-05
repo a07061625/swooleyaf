@@ -1,4 +1,22 @@
 <?php
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 namespace AliOpen\Core;
 
 use AliOpen\Core\Auth\BearerTokenCredential;
@@ -8,19 +26,36 @@ abstract class RpcAcsRequest extends AcsRequest
     /**
      * @var string
      */
-    protected $method = 'GET';
-    /**
-     * @var string
-     */
-    protected $acceptFormat = 'JSON';
-    /**
-     * @var string
-     */
     private $dateTimeFormat = 'Y-m-d\TH:i:s\Z';
     /**
      * @var array
      */
     private $domainParameters = [];
+    /**
+     * @var string
+     */
+    protected $method = 'GET';
+    /**
+     * @var string
+     */
+    protected $acceptFormat = 'JSON';
+
+    /**
+     * @param string|bool $value
+     * @return string
+     */
+    private function prepareValue($value)
+    {
+        if (is_bool($value)) {
+            if ($value) {
+                return 'true';
+            }
+
+            return 'false';
+        }
+
+        return $value;
+    }
 
     /**
      * @param $iSigner
@@ -72,20 +107,21 @@ abstract class RpcAcsRequest extends AcsRequest
     }
 
     /**
-     * @return array
+     * @param $parameters
+     * @param $accessKeySecret
+     * @param $iSigner
+     * @return mixed
      */
-    public function getDomainParameter()
+    private function computeSignature($parameters, $accessKeySecret, $iSigner)
     {
-        return $this->domainParameters;
-    }
+        ksort($parameters);
+        $canonicalizedQueryString = '';
+        foreach ($parameters as $key => $value) {
+            $canonicalizedQueryString .= '&' . $this->percentEncode($key) . '=' . $this->percentEncode($value);
+        }
+        $this->stringToBeSigned = parent::getMethod() . '&%2F&' . $this->percentEncode(substr($canonicalizedQueryString, 1));
 
-    /**
-     * @param $name
-     * @param $value
-     */
-    public function putDomainParameters($name, $value)
-    {
-        $this->domainParameters[$name] = $value;
+        return $iSigner->signString($this->stringToBeSigned, $accessKeySecret . '&');
     }
 
     /**
@@ -102,37 +138,19 @@ abstract class RpcAcsRequest extends AcsRequest
     }
 
     /**
-     * @param string|bool $value
-     * @return string
+     * @return array
      */
-    private function prepareValue($value)
+    public function getDomainParameter()
     {
-        if (is_bool($value)) {
-            if ($value) {
-                return 'true';
-            }
-
-            return 'false';
-        }
-
-        return $value;
+        return $this->domainParameters;
     }
 
     /**
-     * @param $parameters
-     * @param $accessKeySecret
-     * @param $iSigner
-     * @return mixed
+     * @param $name
+     * @param $value
      */
-    private function computeSignature($parameters, $accessKeySecret, $iSigner)
+    public function putDomainParameters($name, $value)
     {
-        ksort($parameters);
-        $canonicalizedQueryString = '';
-        foreach ($parameters as $key => $value) {
-            $canonicalizedQueryString .= '&' . $this->percentEncode($key) . '=' . $this->percentEncode($value);
-        }
-        $stringToSign = parent::getMethod() . '&%2F&' . $this->percentEncode(substr($canonicalizedQueryString, 1));
-
-        return $iSigner->signString($stringToSign, $accessKeySecret . '&');
+        $this->domainParameters[$name] = $value;
     }
 }
