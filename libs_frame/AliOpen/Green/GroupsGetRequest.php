@@ -3,25 +3,38 @@ namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
+/**
+ * Request of GetGroups
+ * @method string getClientInfo()
+ */
 class GroupsGetRequest extends RoaAcsRequest
 {
-    private $clientInfo;
+    /**
+     * @var string
+     */
+    protected $uriPattern = '/green/sface/groups';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Green', '2018-05-09', 'GetGroups', 'green', 'openAPI');
-        $this->setUriPattern('/green/sface/groups');
-        $this->setMethod('POST');
+        parent::__construct('Green', '2018-05-09', 'GetGroups', 'green');
     }
 
-    public function getClientInfo()
-    {
-        return $this->clientInfo;
-    }
-
+    /**
+     * @param string $clientInfo
+     * @return $this
+     */
     public function setClientInfo($clientInfo)
     {
-        $this->clientInfo = $clientInfo;
+        $this->requestParameters['ClientInfo'] = $clientInfo;
         $this->queryParameters['ClientInfo'] = $clientInfo;
+
+        return $this;
     }
 }
