@@ -3,48 +3,34 @@ namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of OnsMqttGroupIdList
+ * @method string getInstanceId()
+ */
 class MqttGroupIdListRequest extends RpcAcsRequest
 {
-    private $preventCache;
-    private $onsRegionId;
-    private $onsPlatform;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ons', '2017-09-18', 'OnsMqttGroupIdList');
-        $this->setMethod('POST');
+        parent::__construct('Ons', '2019-02-14', 'OnsMqttGroupIdList', 'ons');
     }
 
-    public function getPreventCache()
+    /**
+     * @param string $instanceId
+     * @return $this
+     */
+    public function setInstanceId($instanceId)
     {
-        return $this->preventCache;
-    }
+        $this->requestParameters['InstanceId'] = $instanceId;
+        $this->queryParameters['InstanceId'] = $instanceId;
 
-    public function setPreventCache($preventCache)
-    {
-        $this->preventCache = $preventCache;
-        $this->queryParameters['PreventCache'] = $preventCache;
-    }
-
-    public function getOnsRegionId()
-    {
-        return $this->onsRegionId;
-    }
-
-    public function setOnsRegionId($onsRegionId)
-    {
-        $this->onsRegionId = $onsRegionId;
-        $this->queryParameters['OnsRegionId'] = $onsRegionId;
-    }
-
-    public function getOnsPlatform()
-    {
-        return $this->onsPlatform;
-    }
-
-    public function setOnsPlatform($onsPlatform)
-    {
-        $this->onsPlatform = $onsPlatform;
-        $this->queryParameters['OnsPlatform'] = $onsPlatform;
+        return $this;
     }
 }

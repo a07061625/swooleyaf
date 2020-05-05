@@ -3,108 +3,125 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of GetMezzanineInfo
+ * @method string getResourceOwnerId()
+ * @method string getOutputType()
+ * @method string getAuthTimeout()
+ * @method string getResourceOwnerAccount()
+ * @method string getVideoId()
+ * @method string getOwnerId()
+ * @method string getPreviewSegment()
+ * @method string getAdditionType()
+ */
 class MezzanineInfoGetRequest extends RpcAcsRequest
 {
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $videoId;
-    private $previewSegment;
-    private $outputType;
-    private $additionType;
-    private $ownerId;
-    private $authTimeout;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('vod', '2017-03-21', 'GetMezzanineInfo', 'vod', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('vod', '2017-03-21', 'GetMezzanineInfo', 'vod');
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
-    public function setResourceOwnerAccount($resourceOwnerAccount)
-    {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
-    }
-
-    public function getVideoId()
-    {
-        return $this->videoId;
-    }
-
-    public function setVideoId($videoId)
-    {
-        $this->videoId = $videoId;
-        $this->queryParameters['VideoId'] = $videoId;
-    }
-
-    public function getPreviewSegment()
-    {
-        return $this->previewSegment;
-    }
-
-    public function setPreviewSegment($previewSegment)
-    {
-        $this->previewSegment = $previewSegment;
-        $this->queryParameters['PreviewSegment'] = $previewSegment;
-    }
-
-    public function getOutputType()
-    {
-        return $this->outputType;
-    }
-
+    /**
+     * @param string $outputType
+     * @return $this
+     */
     public function setOutputType($outputType)
     {
-        $this->outputType = $outputType;
+        $this->requestParameters['OutputType'] = $outputType;
         $this->queryParameters['OutputType'] = $outputType;
+
+        return $this;
     }
 
-    public function getAdditionType()
-    {
-        return $this->additionType;
-    }
-
-    public function setAdditionType($additionType)
-    {
-        $this->additionType = $additionType;
-        $this->queryParameters['AdditionType'] = $additionType;
-    }
-
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
-    public function setOwnerId($ownerId)
-    {
-        $this->ownerId = $ownerId;
-        $this->queryParameters['OwnerId'] = $ownerId;
-    }
-
-    public function getAuthTimeout()
-    {
-        return $this->authTimeout;
-    }
-
+    /**
+     * @param string $authTimeout
+     * @return $this
+     */
     public function setAuthTimeout($authTimeout)
     {
-        $this->authTimeout = $authTimeout;
+        $this->requestParameters['AuthTimeout'] = $authTimeout;
         $this->queryParameters['AuthTimeout'] = $authTimeout;
+
+        return $this;
+    }
+
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
+    }
+
+    /**
+     * @param string $videoId
+     * @return $this
+     */
+    public function setVideoId($videoId)
+    {
+        $this->requestParameters['VideoId'] = $videoId;
+        $this->queryParameters['VideoId'] = $videoId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
+    public function setOwnerId($ownerId)
+    {
+        $this->requestParameters['OwnerId'] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $previewSegment
+     * @return $this
+     */
+    public function setPreviewSegment($previewSegment)
+    {
+        $this->requestParameters['PreviewSegment'] = $previewSegment;
+        $this->queryParameters['PreviewSegment'] = $previewSegment;
+
+        return $this;
+    }
+
+    /**
+     * @param string $additionType
+     * @return $this
+     */
+    public function setAdditionType($additionType)
+    {
+        $this->requestParameters['AdditionType'] = $additionType;
+        $this->queryParameters['AdditionType'] = $additionType;
+
+        return $this;
     }
 }

@@ -3,96 +3,112 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of GetVideoPlayAuth
+ * @method string getResourceOwnerId()
+ * @method string getReAuthInfo()
+ * @method string getPlayConfig()
+ * @method string getResourceOwnerAccount()
+ * @method string getVideoId()
+ * @method string getOwnerId()
+ * @method string getAuthInfoTimeout()
+ */
 class VideoPlayAuthGetRequest extends RpcAcsRequest
 {
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $reAuthInfo;
-    private $playConfig;
-    private $authInfoTimeout;
-    private $videoId;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('vod', '2017-03-21', 'GetVideoPlayAuth', 'vod', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('vod', '2017-03-21', 'GetVideoPlayAuth', 'vod');
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
-    public function setResourceOwnerAccount($resourceOwnerAccount)
-    {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
-    }
-
-    public function getReAuthInfo()
-    {
-        return $this->reAuthInfo;
-    }
-
+    /**
+     * @param string $reAuthInfo
+     * @return $this
+     */
     public function setReAuthInfo($reAuthInfo)
     {
-        $this->reAuthInfo = $reAuthInfo;
+        $this->requestParameters['ReAuthInfo'] = $reAuthInfo;
         $this->queryParameters['ReAuthInfo'] = $reAuthInfo;
+
+        return $this;
     }
 
-    public function getPlayConfig()
-    {
-        return $this->playConfig;
-    }
-
+    /**
+     * @param string $playConfig
+     * @return $this
+     */
     public function setPlayConfig($playConfig)
     {
-        $this->playConfig = $playConfig;
+        $this->requestParameters['PlayConfig'] = $playConfig;
         $this->queryParameters['PlayConfig'] = $playConfig;
+
+        return $this;
     }
 
-    public function getAuthInfoTimeout()
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
+    public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        return $this->authInfoTimeout;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function setAuthInfoTimeout($authInfoTimeout)
-    {
-        $this->authInfoTimeout = $authInfoTimeout;
-        $this->queryParameters['AuthInfoTimeout'] = $authInfoTimeout;
-    }
-
-    public function getVideoId()
-    {
-        return $this->videoId;
-    }
-
+    /**
+     * @param string $videoId
+     * @return $this
+     */
     public function setVideoId($videoId)
     {
-        $this->videoId = $videoId;
+        $this->requestParameters['VideoId'] = $videoId;
         $this->queryParameters['VideoId'] = $videoId;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $authInfoTimeout
+     * @return $this
+     */
+    public function setAuthInfoTimeout($authInfoTimeout)
+    {
+        $this->requestParameters['AuthInfoTimeout'] = $authInfoTimeout;
+        $this->queryParameters['AuthInfoTimeout'] = $authInfoTimeout;
+
+        return $this;
     }
 }

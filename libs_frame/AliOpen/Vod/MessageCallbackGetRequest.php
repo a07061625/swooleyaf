@@ -3,60 +3,99 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of GetMessageCallback
+ * @method string getResourceOwnerId()
+ * @method string getResourceRealOwnerId()
+ * @method string getResourceOwnerAccount()
+ * @method string getOwnerAccount()
+ * @method string getOwnerId()
+ * @method string getAppId()
+ */
 class MessageCallbackGetRequest extends RpcAcsRequest
 {
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $ownerAccount;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('vod', '2017-03-21', 'GetMessageCallback', 'vod', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('vod', '2017-03-21', 'GetMessageCallback', 'vod');
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
+    /**
+     * @param string $resourceRealOwnerId
+     * @return $this
+     */
+    public function setResourceRealOwnerId($resourceRealOwnerId)
     {
-        return $this->resourceOwnerAccount;
+        $this->requestParameters['ResourceRealOwnerId'] = $resourceRealOwnerId;
+        $this->queryParameters['ResourceRealOwnerId'] = $resourceRealOwnerId;
+
+        return $this;
     }
 
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
         $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function getOwnerAccount()
-    {
-        return $this->ownerAccount;
-    }
-
+    /**
+     * @param string $ownerAccount
+     * @return $this
+     */
     public function setOwnerAccount($ownerAccount)
     {
-        $this->ownerAccount = $ownerAccount;
+        $this->requestParameters['OwnerAccount'] = $ownerAccount;
         $this->queryParameters['OwnerAccount'] = $ownerAccount;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $appId
+     * @return $this
+     */
+    public function setAppId($appId)
+    {
+        $this->requestParameters['AppId'] = $appId;
+        $this->queryParameters['AppId'] = $appId;
+
+        return $this;
     }
 }

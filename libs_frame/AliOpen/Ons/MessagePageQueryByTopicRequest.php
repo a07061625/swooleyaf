@@ -3,120 +3,112 @@ namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of OnsMessagePageQueryByTopic
+ * @method string getEndTime()
+ * @method string getBeginTime()
+ * @method string getCurrentPage()
+ * @method string getInstanceId()
+ * @method string getPageSize()
+ * @method string getTopic()
+ * @method string getTaskId()
+ */
 class MessagePageQueryByTopicRequest extends RpcAcsRequest
 {
-    private $preventCache;
-    private $onsRegionId;
-    private $onsPlatform;
-    private $pageSize;
-    private $topic;
-    private $endTime;
-    private $beginTime;
-    private $currentPage;
-    private $taskId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ons', '2017-09-18', 'OnsMessagePageQueryByTopic');
-        $this->setMethod('POST');
+        parent::__construct('Ons', '2019-02-14', 'OnsMessagePageQueryByTopic', 'ons');
     }
 
-    public function getPreventCache()
-    {
-        return $this->preventCache;
-    }
-
-    public function setPreventCache($preventCache)
-    {
-        $this->preventCache = $preventCache;
-        $this->queryParameters['PreventCache'] = $preventCache;
-    }
-
-    public function getOnsRegionId()
-    {
-        return $this->onsRegionId;
-    }
-
-    public function setOnsRegionId($onsRegionId)
-    {
-        $this->onsRegionId = $onsRegionId;
-        $this->queryParameters['OnsRegionId'] = $onsRegionId;
-    }
-
-    public function getOnsPlatform()
-    {
-        return $this->onsPlatform;
-    }
-
-    public function setOnsPlatform($onsPlatform)
-    {
-        $this->onsPlatform = $onsPlatform;
-        $this->queryParameters['OnsPlatform'] = $onsPlatform;
-    }
-
-    public function getPageSize()
-    {
-        return $this->pageSize;
-    }
-
-    public function setPageSize($pageSize)
-    {
-        $this->pageSize = $pageSize;
-        $this->queryParameters['PageSize'] = $pageSize;
-    }
-
-    public function getTopic()
-    {
-        return $this->topic;
-    }
-
-    public function setTopic($topic)
-    {
-        $this->topic = $topic;
-        $this->queryParameters['Topic'] = $topic;
-    }
-
-    public function getEndTime()
-    {
-        return $this->endTime;
-    }
-
+    /**
+     * @param string $endTime
+     * @return $this
+     */
     public function setEndTime($endTime)
     {
-        $this->endTime = $endTime;
+        $this->requestParameters['EndTime'] = $endTime;
         $this->queryParameters['EndTime'] = $endTime;
+
+        return $this;
     }
 
-    public function getBeginTime()
-    {
-        return $this->beginTime;
-    }
-
+    /**
+     * @param string $beginTime
+     * @return $this
+     */
     public function setBeginTime($beginTime)
     {
-        $this->beginTime = $beginTime;
+        $this->requestParameters['BeginTime'] = $beginTime;
         $this->queryParameters['BeginTime'] = $beginTime;
+
+        return $this;
     }
 
-    public function getCurrentPage()
-    {
-        return $this->currentPage;
-    }
-
+    /**
+     * @param string $currentPage
+     * @return $this
+     */
     public function setCurrentPage($currentPage)
     {
-        $this->currentPage = $currentPage;
+        $this->requestParameters['CurrentPage'] = $currentPage;
         $this->queryParameters['CurrentPage'] = $currentPage;
+
+        return $this;
     }
 
-    public function getTaskId()
+    /**
+     * @param string $instanceId
+     * @return $this
+     */
+    public function setInstanceId($instanceId)
     {
-        return $this->taskId;
+        $this->requestParameters['InstanceId'] = $instanceId;
+        $this->queryParameters['InstanceId'] = $instanceId;
+
+        return $this;
     }
 
+    /**
+     * @param string $pageSize
+     * @return $this
+     */
+    public function setPageSize($pageSize)
+    {
+        $this->requestParameters['PageSize'] = $pageSize;
+        $this->queryParameters['PageSize'] = $pageSize;
+
+        return $this;
+    }
+
+    /**
+     * @param string $topic
+     * @return $this
+     */
+    public function setTopic($topic)
+    {
+        $this->requestParameters['Topic'] = $topic;
+        $this->queryParameters['Topic'] = $topic;
+
+        return $this;
+    }
+
+    /**
+     * @param string $taskId
+     * @return $this
+     */
     public function setTaskId($taskId)
     {
-        $this->taskId = $taskId;
+        $this->requestParameters['TaskId'] = $taskId;
         $this->queryParameters['TaskId'] = $taskId;
+
+        return $this;
     }
 }

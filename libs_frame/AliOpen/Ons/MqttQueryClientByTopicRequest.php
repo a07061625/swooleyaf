@@ -3,72 +3,60 @@ namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of OnsMqttQueryClientByTopic
+ * @method string getParentTopic()
+ * @method string getInstanceId()
+ * @method string getSubTopic()
+ */
 class MqttQueryClientByTopicRequest extends RpcAcsRequest
 {
-    private $preventCache;
-    private $onsRegionId;
-    private $onsPlatform;
-    private $parentTopic;
-    private $subTopic;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ons', '2017-09-18', 'OnsMqttQueryClientByTopic');
-        $this->setMethod('POST');
+        parent::__construct('Ons', '2019-02-14', 'OnsMqttQueryClientByTopic', 'ons');
     }
 
-    public function getPreventCache()
-    {
-        return $this->preventCache;
-    }
-
-    public function setPreventCache($preventCache)
-    {
-        $this->preventCache = $preventCache;
-        $this->queryParameters['PreventCache'] = $preventCache;
-    }
-
-    public function getOnsRegionId()
-    {
-        return $this->onsRegionId;
-    }
-
-    public function setOnsRegionId($onsRegionId)
-    {
-        $this->onsRegionId = $onsRegionId;
-        $this->queryParameters['OnsRegionId'] = $onsRegionId;
-    }
-
-    public function getOnsPlatform()
-    {
-        return $this->onsPlatform;
-    }
-
-    public function setOnsPlatform($onsPlatform)
-    {
-        $this->onsPlatform = $onsPlatform;
-        $this->queryParameters['OnsPlatform'] = $onsPlatform;
-    }
-
-    public function getParentTopic()
-    {
-        return $this->parentTopic;
-    }
-
+    /**
+     * @param string $parentTopic
+     * @return $this
+     */
     public function setParentTopic($parentTopic)
     {
-        $this->parentTopic = $parentTopic;
+        $this->requestParameters['ParentTopic'] = $parentTopic;
         $this->queryParameters['ParentTopic'] = $parentTopic;
+
+        return $this;
     }
 
-    public function getSubTopic()
+    /**
+     * @param string $instanceId
+     * @return $this
+     */
+    public function setInstanceId($instanceId)
     {
-        return $this->subTopic;
+        $this->requestParameters['InstanceId'] = $instanceId;
+        $this->queryParameters['InstanceId'] = $instanceId;
+
+        return $this;
     }
 
+    /**
+     * @param string $subTopic
+     * @return $this
+     */
     public function setSubTopic($subTopic)
     {
-        $this->subTopic = $subTopic;
+        $this->requestParameters['SubTopic'] = $subTopic;
         $this->queryParameters['SubTopic'] = $subTopic;
+
+        return $this;
     }
 }

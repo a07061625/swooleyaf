@@ -3,37 +3,51 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of ChangePassword
+ * @method string getOldPassword()
+ * @method string getNewPassword()
+ */
 class PasswordChangeRequest extends RpcAcsRequest
 {
-    private $oldPassword;
-    private $newPassword;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'ChangePassword');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'ChangePassword', 'ram');
     }
 
-    public function getOldPassword()
-    {
-        return $this->oldPassword;
-    }
-
+    /**
+     * @param string $oldPassword
+     * @return $this
+     */
     public function setOldPassword($oldPassword)
     {
-        $this->oldPassword = $oldPassword;
+        $this->requestParameters['OldPassword'] = $oldPassword;
         $this->queryParameters['OldPassword'] = $oldPassword;
+
+        return $this;
     }
 
-    public function getNewPassword()
-    {
-        return $this->newPassword;
-    }
-
+    /**
+     * @param string $newPassword
+     * @return $this
+     */
     public function setNewPassword($newPassword)
     {
-        $this->newPassword = $newPassword;
+        $this->requestParameters['NewPassword'] = $newPassword;
         $this->queryParameters['NewPassword'] = $newPassword;
+
+        return $this;
     }
 }

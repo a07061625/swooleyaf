@@ -3,60 +3,73 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of GetWatermark
+ * @method string getResourceOwnerId()
+ * @method string getResourceOwnerAccount()
+ * @method string getOwnerId()
+ * @method string getWatermarkId()
+ */
 class WatermarkGetRequest extends RpcAcsRequest
 {
-    private $watermarkId;
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('vod', '2017-03-21', 'GetWatermark', 'vod', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('vod', '2017-03-21', 'GetWatermark', 'vod');
     }
 
-    public function getWatermarkId()
-    {
-        return $this->watermarkId;
-    }
-
-    public function setWatermarkId($watermarkId)
-    {
-        $this->watermarkId = $watermarkId;
-        $this->queryParameters['WatermarkId'] = $watermarkId;
-    }
-
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
         $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $watermarkId
+     * @return $this
+     */
+    public function setWatermarkId($watermarkId)
+    {
+        $this->requestParameters['WatermarkId'] = $watermarkId;
+        $this->queryParameters['WatermarkId'] = $watermarkId;
+
+        return $this;
     }
 }

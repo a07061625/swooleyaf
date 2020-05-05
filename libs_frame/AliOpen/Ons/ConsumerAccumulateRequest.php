@@ -3,72 +3,60 @@ namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of OnsConsumerAccumulate
+ * @method string getGroupId()
+ * @method string getInstanceId()
+ * @method string getDetail()
+ */
 class ConsumerAccumulateRequest extends RpcAcsRequest
 {
-    private $preventCache;
-    private $onsRegionId;
-    private $onsPlatform;
-    private $consumerId;
-    private $detail;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ons', '2017-09-18', 'OnsConsumerAccumulate');
-        $this->setMethod('POST');
+        parent::__construct('Ons', '2019-02-14', 'OnsConsumerAccumulate', 'ons');
     }
 
-    public function getPreventCache()
+    /**
+     * @param string $groupId
+     * @return $this
+     */
+    public function setGroupId($groupId)
     {
-        return $this->preventCache;
+        $this->requestParameters['GroupId'] = $groupId;
+        $this->queryParameters['GroupId'] = $groupId;
+
+        return $this;
     }
 
-    public function setPreventCache($preventCache)
+    /**
+     * @param string $instanceId
+     * @return $this
+     */
+    public function setInstanceId($instanceId)
     {
-        $this->preventCache = $preventCache;
-        $this->queryParameters['PreventCache'] = $preventCache;
+        $this->requestParameters['InstanceId'] = $instanceId;
+        $this->queryParameters['InstanceId'] = $instanceId;
+
+        return $this;
     }
 
-    public function getOnsRegionId()
-    {
-        return $this->onsRegionId;
-    }
-
-    public function setOnsRegionId($onsRegionId)
-    {
-        $this->onsRegionId = $onsRegionId;
-        $this->queryParameters['OnsRegionId'] = $onsRegionId;
-    }
-
-    public function getOnsPlatform()
-    {
-        return $this->onsPlatform;
-    }
-
-    public function setOnsPlatform($onsPlatform)
-    {
-        $this->onsPlatform = $onsPlatform;
-        $this->queryParameters['OnsPlatform'] = $onsPlatform;
-    }
-
-    public function getConsumerId()
-    {
-        return $this->consumerId;
-    }
-
-    public function setConsumerId($consumerId)
-    {
-        $this->consumerId = $consumerId;
-        $this->queryParameters['ConsumerId'] = $consumerId;
-    }
-
-    public function getDetail()
-    {
-        return $this->detail;
-    }
-
+    /**
+     * @param string $detail
+     * @return $this
+     */
     public function setDetail($detail)
     {
-        $this->detail = $detail;
+        $this->requestParameters['Detail'] = $detail;
         $this->queryParameters['Detail'] = $detail;
+
+        return $this;
     }
 }

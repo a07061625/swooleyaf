@@ -3,49 +3,64 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DetachPolicyFromRole
+ * @method string getPolicyType()
+ * @method string getRoleName()
+ * @method string getPolicyName()
+ */
 class RolePolicyDetachRequest extends RpcAcsRequest
 {
-    private $policyType;
-    private $roleName;
-    private $policyName;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'DetachPolicyFromRole');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'DetachPolicyFromRole', 'ram');
     }
 
-    public function getPolicyType()
-    {
-        return $this->policyType;
-    }
-
+    /**
+     * @param string $policyType
+     * @return $this
+     */
     public function setPolicyType($policyType)
     {
-        $this->policyType = $policyType;
+        $this->requestParameters['PolicyType'] = $policyType;
         $this->queryParameters['PolicyType'] = $policyType;
+
+        return $this;
     }
 
-    public function getRoleName()
-    {
-        return $this->roleName;
-    }
-
+    /**
+     * @param string $roleName
+     * @return $this
+     */
     public function setRoleName($roleName)
     {
-        $this->roleName = $roleName;
+        $this->requestParameters['RoleName'] = $roleName;
         $this->queryParameters['RoleName'] = $roleName;
+
+        return $this;
     }
 
-    public function getPolicyName()
-    {
-        return $this->policyName;
-    }
-
+    /**
+     * @param string $policyName
+     * @return $this
+     */
     public function setPolicyName($policyName)
     {
-        $this->policyName = $policyName;
+        $this->requestParameters['PolicyName'] = $policyName;
         $this->queryParameters['PolicyName'] = $policyName;
+
+        return $this;
     }
 }

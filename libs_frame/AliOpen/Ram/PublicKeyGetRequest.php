@@ -3,37 +3,51 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of GetPublicKey
+ * @method string getUserPublicKeyId()
+ * @method string getUserName()
+ */
 class PublicKeyGetRequest extends RpcAcsRequest
 {
-    private $userPublicKeyId;
-    private $userName;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'GetPublicKey');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'GetPublicKey', 'ram');
     }
 
-    public function getUserPublicKeyId()
-    {
-        return $this->userPublicKeyId;
-    }
-
+    /**
+     * @param string $userPublicKeyId
+     * @return $this
+     */
     public function setUserPublicKeyId($userPublicKeyId)
     {
-        $this->userPublicKeyId = $userPublicKeyId;
+        $this->requestParameters['UserPublicKeyId'] = $userPublicKeyId;
         $this->queryParameters['UserPublicKeyId'] = $userPublicKeyId;
+
+        return $this;
     }
 
-    public function getUserName()
-    {
-        return $this->userName;
-    }
-
+    /**
+     * @param string $userName
+     * @return $this
+     */
     public function setUserName($userName)
     {
-        $this->userName = $userName;
+        $this->requestParameters['UserName'] = $userName;
         $this->queryParameters['UserName'] = $userName;
+
+        return $this;
     }
 }

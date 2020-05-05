@@ -3,60 +3,73 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DeleteCategory
+ * @method string getResourceOwnerId()
+ * @method string getResourceOwnerAccount()
+ * @method string getOwnerId()
+ * @method string getCateId()
+ */
 class CategoryDeleteRequest extends RpcAcsRequest
 {
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $cateId;
-    private $ownerId;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('vod', '2017-03-21', 'DeleteCategory', 'vod', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('vod', '2017-03-21', 'DeleteCategory', 'vod');
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
         $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
     }
 
-    public function getCateId()
-    {
-        return $this->cateId;
-    }
-
-    public function setCateId($cateId)
-    {
-        $this->cateId = $cateId;
-        $this->queryParameters['CateId'] = $cateId;
-    }
-
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
     public function setOwnerId($ownerId)
     {
-        $this->ownerId = $ownerId;
+        $this->requestParameters['OwnerId'] = $ownerId;
         $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $cateId
+     * @return $this
+     */
+    public function setCateId($cateId)
+    {
+        $this->requestParameters['CateId'] = $cateId;
+        $this->queryParameters['CateId'] = $cateId;
+
+        return $this;
     }
 }

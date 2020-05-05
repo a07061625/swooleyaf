@@ -3,120 +3,177 @@ namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of UpdateVideoInfo
+ * @method string getResourceOwnerId()
+ * @method string getDescription()
+ * @method string getTitle()
+ * @method string getCoverURL()
+ * @method string getDownloadSwitch()
+ * @method string getCateId()
+ * @method string getCustomMediaInfo()
+ * @method string getResourceOwnerAccount()
+ * @method string getVideoId()
+ * @method string getOwnerId()
+ * @method string getTags()
+ * @method string getStatus()
+ */
 class VideoInfoUpdateRequest extends RpcAcsRequest
 {
-    private $coverURL;
-    private $resourceOwnerId;
-    private $resourceOwnerAccount;
-    private $cateId;
-    private $description;
-    private $videoId;
-    private $ownerId;
-    private $title;
-    private $tags;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('vod', '2017-03-21', 'UpdateVideoInfo', 'vod', 'openAPI');
-        $this->setMethod('POST');
+        parent::__construct('vod', '2017-03-21', 'UpdateVideoInfo', 'vod');
     }
 
-    public function getCoverURL()
-    {
-        return $this->coverURL;
-    }
-
-    public function setCoverURL($coverURL)
-    {
-        $this->coverURL = $coverURL;
-        $this->queryParameters['CoverURL'] = $coverURL;
-    }
-
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
+    /**
+     * @param string $resourceOwnerId
+     * @return $this
+     */
     public function setResourceOwnerId($resourceOwnerId)
     {
-        $this->resourceOwnerId = $resourceOwnerId;
+        $this->requestParameters['ResourceOwnerId'] = $resourceOwnerId;
         $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
+
+        return $this;
     }
 
-    public function getResourceOwnerAccount()
-    {
-        return $this->resourceOwnerAccount;
-    }
-
-    public function setResourceOwnerAccount($resourceOwnerAccount)
-    {
-        $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
-    }
-
-    public function getCateId()
-    {
-        return $this->cateId;
-    }
-
-    public function setCateId($cateId)
-    {
-        $this->cateId = $cateId;
-        $this->queryParameters['CateId'] = $cateId;
-    }
-
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
+    /**
+     * @param string $description
+     * @return $this
+     */
     public function setDescription($description)
     {
-        $this->description = $description;
+        $this->requestParameters['Description'] = $description;
         $this->queryParameters['Description'] = $description;
+
+        return $this;
     }
 
-    public function getVideoId()
-    {
-        return $this->videoId;
-    }
-
-    public function setVideoId($videoId)
-    {
-        $this->videoId = $videoId;
-        $this->queryParameters['VideoId'] = $videoId;
-    }
-
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
-    public function setOwnerId($ownerId)
-    {
-        $this->ownerId = $ownerId;
-        $this->queryParameters['OwnerId'] = $ownerId;
-    }
-
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
+    /**
+     * @param string $title
+     * @return $this
+     */
     public function setTitle($title)
     {
-        $this->title = $title;
+        $this->requestParameters['Title'] = $title;
         $this->queryParameters['Title'] = $title;
+
+        return $this;
     }
 
-    public function getTags()
+    /**
+     * @param string $coverURL
+     * @return $this
+     */
+    public function setCoverURL($coverURL)
     {
-        return $this->tags;
+        $this->requestParameters['CoverURL'] = $coverURL;
+        $this->queryParameters['CoverURL'] = $coverURL;
+
+        return $this;
     }
 
+    /**
+     * @param string $downloadSwitch
+     * @return $this
+     */
+    public function setDownloadSwitch($downloadSwitch)
+    {
+        $this->requestParameters['DownloadSwitch'] = $downloadSwitch;
+        $this->queryParameters['DownloadSwitch'] = $downloadSwitch;
+
+        return $this;
+    }
+
+    /**
+     * @param string $cateId
+     * @return $this
+     */
+    public function setCateId($cateId)
+    {
+        $this->requestParameters['CateId'] = $cateId;
+        $this->queryParameters['CateId'] = $cateId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $customMediaInfo
+     * @return $this
+     */
+    public function setCustomMediaInfo($customMediaInfo)
+    {
+        $this->requestParameters['CustomMediaInfo'] = $customMediaInfo;
+        $this->queryParameters['CustomMediaInfo'] = $customMediaInfo;
+
+        return $this;
+    }
+
+    /**
+     * @param string $resourceOwnerAccount
+     * @return $this
+     */
+    public function setResourceOwnerAccount($resourceOwnerAccount)
+    {
+        $this->requestParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
+
+        return $this;
+    }
+
+    /**
+     * @param string $videoId
+     * @return $this
+     */
+    public function setVideoId($videoId)
+    {
+        $this->requestParameters['VideoId'] = $videoId;
+        $this->queryParameters['VideoId'] = $videoId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $ownerId
+     * @return $this
+     */
+    public function setOwnerId($ownerId)
+    {
+        $this->requestParameters['OwnerId'] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $tags
+     * @return $this
+     */
     public function setTags($tags)
     {
-        $this->tags = $tags;
+        $this->requestParameters['Tags'] = $tags;
         $this->queryParameters['Tags'] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * @param string $status
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->requestParameters['Status'] = $status;
+        $this->queryParameters['Status'] = $status;
+
+        return $this;
     }
 }

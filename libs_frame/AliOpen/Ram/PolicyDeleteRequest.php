@@ -3,25 +3,38 @@ namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of DeletePolicy
+ * @method string getPolicyName()
+ */
 class PolicyDeleteRequest extends RpcAcsRequest
 {
-    private $policyName;
+    /**
+     * @var string
+     */
+    protected $requestScheme = 'https';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Ram', '2015-05-01', 'DeletePolicy');
-        $this->setProtocol('https');
-        $this->setMethod('POST');
+        parent::__construct('Ram', '2015-05-01', 'DeletePolicy', 'ram');
     }
 
-    public function getPolicyName()
-    {
-        return $this->policyName;
-    }
-
+    /**
+     * @param string $policyName
+     * @return $this
+     */
     public function setPolicyName($policyName)
     {
-        $this->policyName = $policyName;
+        $this->requestParameters['PolicyName'] = $policyName;
         $this->queryParameters['PolicyName'] = $policyName;
+
+        return $this;
     }
 }
