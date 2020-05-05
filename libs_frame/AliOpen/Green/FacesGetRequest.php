@@ -3,25 +3,38 @@ namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
+/**
+ * Request of GetFaces
+ * @method string getClientInfo()
+ */
 class FacesGetRequest extends RoaAcsRequest
 {
-    private $clientInfo;
+    /**
+     * @var string
+     */
+    protected $uriPattern = '/green/sface/faces';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Green', '2018-05-09', 'GetFaces', 'green', 'openAPI');
-        $this->setUriPattern('/green/sface/faces');
-        $this->setMethod('POST');
+        parent::__construct('Green', '2018-05-09', 'GetFaces', 'green');
     }
 
-    public function getClientInfo()
-    {
-        return $this->clientInfo;
-    }
-
+    /**
+     * @param string $clientInfo
+     * @return $this
+     */
     public function setClientInfo($clientInfo)
     {
-        $this->clientInfo = $clientInfo;
+        $this->requestParameters['ClientInfo'] = $clientInfo;
         $this->queryParameters['ClientInfo'] = $clientInfo;
+
+        return $this;
     }
 }

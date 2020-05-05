@@ -3,25 +3,38 @@ namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
+/**
+ * Request of SetPerson
+ * @method string getClientInfo()
+ */
 class PersonSetRequest extends RoaAcsRequest
 {
-    private $clientInfo;
+    /**
+     * @var string
+     */
+    protected $uriPattern = '/green/sface/person/update';
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('Green', '2018-05-09', 'SetPerson', 'green', 'openAPI');
-        $this->setUriPattern('/green/sface/person/update');
-        $this->setMethod('POST');
+        parent::__construct('Green', '2018-05-09', 'SetPerson', 'green');
     }
 
-    public function getClientInfo()
-    {
-        return $this->clientInfo;
-    }
-
+    /**
+     * @param string $clientInfo
+     * @return $this
+     */
     public function setClientInfo($clientInfo)
     {
-        $this->clientInfo = $clientInfo;
+        $this->requestParameters['ClientInfo'] = $clientInfo;
         $this->queryParameters['ClientInfo'] = $clientInfo;
+
+        return $this;
     }
 }

@@ -3,96 +3,99 @@ namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of CreateConfiguration
+ * @method string getSourceIp()
+ * @method string getConfigurationName()
+ * @method string getMaxPV()
+ * @method string getConfigurationMethod()
+ * @method string getApplyType()
+ * @method string getScene()
+ */
 class ConfigurationCreateRequest extends RpcAcsRequest
 {
-    private $resourceOwnerId;
-    private $sourceIp;
-    private $configurationName;
-    private $maxPV;
-    private $configurationMethod;
-    private $applyType;
-    private $scene;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('afs', '2018-01-12', 'CreateConfiguration');
-        $this->setMethod('POST');
+        parent::__construct('afs', '2018-01-12', 'CreateConfiguration', 'afs');
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
-    public function setResourceOwnerId($resourceOwnerId)
-    {
-        $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
-    }
-
-    public function getSourceIp()
-    {
-        return $this->sourceIp;
-    }
-
+    /**
+     * @param string $sourceIp
+     * @return $this
+     */
     public function setSourceIp($sourceIp)
     {
-        $this->sourceIp = $sourceIp;
+        $this->requestParameters['SourceIp'] = $sourceIp;
         $this->queryParameters['SourceIp'] = $sourceIp;
+
+        return $this;
     }
 
-    public function getConfigurationName()
-    {
-        return $this->configurationName;
-    }
-
+    /**
+     * @param string $configurationName
+     * @return $this
+     */
     public function setConfigurationName($configurationName)
     {
-        $this->configurationName = $configurationName;
+        $this->requestParameters['ConfigurationName'] = $configurationName;
         $this->queryParameters['ConfigurationName'] = $configurationName;
+
+        return $this;
     }
 
-    public function getMaxPV()
-    {
-        return $this->maxPV;
-    }
-
+    /**
+     * @param string $maxPV
+     * @return $this
+     */
     public function setMaxPV($maxPV)
     {
-        $this->maxPV = $maxPV;
+        $this->requestParameters['MaxPV'] = $maxPV;
         $this->queryParameters['MaxPV'] = $maxPV;
+
+        return $this;
     }
 
-    public function getConfigurationMethod()
-    {
-        return $this->configurationMethod;
-    }
-
+    /**
+     * @param string $configurationMethod
+     * @return $this
+     */
     public function setConfigurationMethod($configurationMethod)
     {
-        $this->configurationMethod = $configurationMethod;
+        $this->requestParameters['ConfigurationMethod'] = $configurationMethod;
         $this->queryParameters['ConfigurationMethod'] = $configurationMethod;
+
+        return $this;
     }
 
-    public function getApplyType()
-    {
-        return $this->applyType;
-    }
-
+    /**
+     * @param string $applyType
+     * @return $this
+     */
     public function setApplyType($applyType)
     {
-        $this->applyType = $applyType;
+        $this->requestParameters['ApplyType'] = $applyType;
         $this->queryParameters['ApplyType'] = $applyType;
+
+        return $this;
     }
 
-    public function getScene()
-    {
-        return $this->scene;
-    }
-
+    /**
+     * @param string $scene
+     * @return $this
+     */
     public function setScene($scene)
     {
-        $this->scene = $scene;
+        $this->requestParameters['Scene'] = $scene;
         $this->queryParameters['Scene'] = $scene;
+
+        return $this;
     }
 }

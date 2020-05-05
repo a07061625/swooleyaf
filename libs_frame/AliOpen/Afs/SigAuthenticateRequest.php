@@ -3,108 +3,112 @@ namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
+/**
+ * Request of AuthenticateSig
+ * @method string getSig()
+ * @method string getRemoteIp()
+ * @method string getSourceIp()
+ * @method string getAppKey()
+ * @method string getSessionId()
+ * @method string getToken()
+ * @method string getScene()
+ */
 class SigAuthenticateRequest extends RpcAcsRequest
 {
-    private $sig;
-    private $resourceOwnerId;
-    private $remoteIp;
-    private $sourceIp;
-    private $appKey;
-    private $sessionId;
-    private $token;
-    private $scene;
+    /**
+     * @var string
+     */
+    protected $method = 'POST';
 
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
-        parent::__construct('afs', '2018-01-12', 'AuthenticateSig');
-        $this->setMethod('POST');
+        parent::__construct('afs', '2018-01-12', 'AuthenticateSig', 'afs');
     }
 
-    public function getSig()
-    {
-        return $this->sig;
-    }
-
+    /**
+     * @param string $sig
+     * @return $this
+     */
     public function setSig($sig)
     {
-        $this->sig = $sig;
+        $this->requestParameters['Sig'] = $sig;
         $this->queryParameters['Sig'] = $sig;
+
+        return $this;
     }
 
-    public function getResourceOwnerId()
-    {
-        return $this->resourceOwnerId;
-    }
-
-    public function setResourceOwnerId($resourceOwnerId)
-    {
-        $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
-    }
-
-    public function getRemoteIp()
-    {
-        return $this->remoteIp;
-    }
-
+    /**
+     * @param string $remoteIp
+     * @return $this
+     */
     public function setRemoteIp($remoteIp)
     {
-        $this->remoteIp = $remoteIp;
+        $this->requestParameters['RemoteIp'] = $remoteIp;
         $this->queryParameters['RemoteIp'] = $remoteIp;
+
+        return $this;
     }
 
-    public function getSourceIp()
-    {
-        return $this->sourceIp;
-    }
-
+    /**
+     * @param string $sourceIp
+     * @return $this
+     */
     public function setSourceIp($sourceIp)
     {
-        $this->sourceIp = $sourceIp;
+        $this->requestParameters['SourceIp'] = $sourceIp;
         $this->queryParameters['SourceIp'] = $sourceIp;
+
+        return $this;
     }
 
-    public function getAppKey()
-    {
-        return $this->appKey;
-    }
-
+    /**
+     * @param string $appKey
+     * @return $this
+     */
     public function setAppKey($appKey)
     {
-        $this->appKey = $appKey;
+        $this->requestParameters['AppKey'] = $appKey;
         $this->queryParameters['AppKey'] = $appKey;
+
+        return $this;
     }
 
-    public function getSessionId()
-    {
-        return $this->sessionId;
-    }
-
+    /**
+     * @param string $sessionId
+     * @return $this
+     */
     public function setSessionId($sessionId)
     {
-        $this->sessionId = $sessionId;
+        $this->requestParameters['SessionId'] = $sessionId;
         $this->queryParameters['SessionId'] = $sessionId;
+
+        return $this;
     }
 
-    public function getToken()
-    {
-        return $this->token;
-    }
-
+    /**
+     * @param string $token
+     * @return $this
+     */
     public function setToken($token)
     {
-        $this->token = $token;
+        $this->requestParameters['Token'] = $token;
         $this->queryParameters['Token'] = $token;
+
+        return $this;
     }
 
-    public function getScene()
-    {
-        return $this->scene;
-    }
-
+    /**
+     * @param string $scene
+     * @return $this
+     */
     public function setScene($scene)
     {
-        $this->scene = $scene;
+        $this->requestParameters['Scene'] = $scene;
         $this->queryParameters['Scene'] = $scene;
+
+        return $this;
     }
 }
