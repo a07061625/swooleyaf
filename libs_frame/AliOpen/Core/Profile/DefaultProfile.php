@@ -1,11 +1,28 @@
 <?php
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 namespace AliOpen\Core\Profile;
 
+use AliOpen\Core\Auth\AbstractCredential;
 use AliOpen\Core\Auth\BearerTokenCredential;
-use AliOpen\Core\Auth\BearTokenSigner;
 use AliOpen\Core\Auth\Credential;
 use AliOpen\Core\Auth\EcsRamRoleCredential;
-use AliOpen\Core\Auth\ISigner;
 use AliOpen\Core\Auth\RamRoleArnCredential;
 use AliOpen\Core\Auth\ShaHmac1Signer;
 use AliOpen\Core\Regions\Endpoint;
@@ -13,10 +30,13 @@ use AliOpen\Core\Regions\EndpointProvider;
 use AliOpen\Core\Regions\LocationService;
 use AliOpen\Core\Regions\ProductDomain;
 
+/**
+ * Class AliOpen\Core\Profile\DefaultProfile
+ */
 class DefaultProfile implements IClientProfile
 {
     /**
-     * @var \AliOpen\Core\Profile\IClientProfile
+     * @var IClientProfile
      */
     private static $profile;
     /**
@@ -24,7 +44,7 @@ class DefaultProfile implements IClientProfile
      */
     private static $endpoints;
     /**
-     * @var \AliOpen\Core\Auth\AbstractCredential
+     * @var AbstractCredential
      */
     private static $credential;
     /**
@@ -40,11 +60,11 @@ class DefaultProfile implements IClientProfile
      */
     private static $authType;
     /**
-     * @var ISigner
+     * @var \AliOpen\Core\Auth\ISigner
      */
     private static $isigner;
     /**
-     * @var \AliOpen\Core\Auth\AbstractCredential
+     * @var AbstractCredential
      */
     private static $iCredential;
 
@@ -68,12 +88,12 @@ class DefaultProfile implements IClientProfile
      * @param      $accessKeyId
      * @param      $accessSecret
      * @param null $securityToken
-     * @return \AliOpen\Core\Profile\DefaultProfile|IClientProfile
+     * @return DefaultProfile|IClientProfile
      */
     public static function getProfile($regionId, $accessKeyId, $accessSecret, $securityToken = null)
     {
         $credential = new Credential($accessKeyId, $accessSecret, $securityToken);
-        self::$profile = new self($regionId, $credential);
+        self::$profile = new DefaultProfile($regionId, $credential);
 
         return self::$profile;
     }
@@ -84,12 +104,12 @@ class DefaultProfile implements IClientProfile
      * @param $accessSecret
      * @param $roleArn
      * @param $roleSessionName
-     * @return \AliOpen\Core\Profile\DefaultProfile|IClientProfile
+     * @return DefaultProfile|IClientProfile
      */
     public static function getRamRoleArnProfile($regionId, $accessKeyId, $accessSecret, $roleArn, $roleSessionName)
     {
         $credential = new RamRoleArnCredential($accessKeyId, $accessSecret, $roleArn, $roleSessionName);
-        self::$profile = new self($regionId, $credential, ALIOPEN_AUTH_TYPE_RAM_ROLE_ARN);
+        self::$profile = new DefaultProfile($regionId, $credential, ALIOPEN_AUTH_TYPE_RAM_ROLE_ARN);
 
         return self::$profile;
     }
@@ -97,12 +117,12 @@ class DefaultProfile implements IClientProfile
     /**
      * @param $regionId
      * @param $roleName
-     * @return \AliOpen\Core\Profile\DefaultProfile|IClientProfile
+     * @return \AliOpen\Core\Profile\DefaultProfile|\AliOpen\Core\Profile\IClientProfile
      */
     public static function getEcsRamRoleProfile($regionId, $roleName)
     {
         $credential = new EcsRamRoleCredential($roleName);
-        self::$profile = new self($regionId, $credential, ALIOPEN_AUTH_TYPE_ECS_RAM_ROLE);
+        self::$profile = new DefaultProfile($regionId, $credential, ALIOPEN_AUTH_TYPE_ECS_RAM_ROLE);
 
         return self::$profile;
     }
@@ -110,12 +130,12 @@ class DefaultProfile implements IClientProfile
     /**
      * @param $regionId
      * @param $bearerToken
-     * @return \AliOpen\Core\Profile\DefaultProfile|IClientProfile
+     * @return DefaultProfile|IClientProfile
      */
     public static function getBearerTokenProfile($regionId, $bearerToken)
     {
         $credential = new BearerTokenCredential($bearerToken);
-        self::$profile = new self($regionId, $credential, ALIOPEN_AUTH_TYPE_BEARER_TOKEN, new BearTokenSigner());
+        self::$profile = new DefaultProfile($regionId, $credential, ALIOPEN_AUTH_TYPE_BEARER_TOKEN, new BearTokenSigner());
 
         return self::$profile;
     }
@@ -149,7 +169,7 @@ class DefaultProfile implements IClientProfile
     }
 
     /**
-     * @return \AliOpen\Core\Auth\AbstractCredential
+     * @return AbstractCredential
      */
     public function getCredential()
     {
@@ -215,11 +235,17 @@ class DefaultProfile implements IClientProfile
      */
     public static function findEndpointByName($endpointName)
     {
+        if (self::$endpoints === null) {
+            return null;
+        }
+
         foreach (self::$endpoints as $key => $endpoint) {
             if ($endpoint->getName() == $endpointName) {
                 return $endpoint;
             }
         }
+
+        return null;
     }
 
     /**
@@ -240,12 +266,12 @@ class DefaultProfile implements IClientProfile
      * @param string $regionId
      * @param string $product
      * @param string $domain
-     * @param \AliOpen\Core\Regions\Endpoint $endpoint
+     * @param Endpoint $endpoint
      */
     private static function updateEndpoint($regionId, $product, $domain, $endpoint)
     {
         $regionIds = $endpoint->getRegionIds();
-        if (!in_array($regionId, $regionIds, true)) {
+        if (!in_array($regionId, $regionIds)) {
             $regionIds[] = $regionId;
             $endpoint->setRegionIds($regionIds);
         }
@@ -273,5 +299,7 @@ class DefaultProfile implements IClientProfile
                 return $productDomain;
             }
         }
+
+        return null;
     }
 }

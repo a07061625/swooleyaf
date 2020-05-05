@@ -1,15 +1,21 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: 姜伟
+ * Date: 2020/5/5 0005
+ * Time: 11:16
+ */
 namespace AliOpen\Core\Auth;
 
-use AliOpen\Core\Exception\ClientException;
 use AliOpen\Core\Http\HttpHelper;
+use AliOpen\Sts\RoleAssumeRequest;
 
+/**
+ * Class RamRoleArnService
+ * @package AliOpen\Core\Auth
+ */
 class RamRoleArnService
 {
-    /**
-     * @var string
-     */
-    public static $serviceDomain = ALIOPEN_STS_DOMAIN;
     /**
      * @var \AliOpen\Core\Profile\IClientProfile
      */
@@ -22,9 +28,13 @@ class RamRoleArnService
      * @var null|string
      */
     private $sessionCredential = null;
+    /**
+     * @var string
+     */
+    public static $serviceDomain = ALIOPEN_STS_DOMAIN;
 
     /**
-     * AliOpen\Core\Auth\RamRoleArnService constructor.
+     * RamRoleArnService constructor.
      * @param $clientProfile
      */
     public function __construct($clientProfile)
@@ -33,8 +43,8 @@ class RamRoleArnService
     }
 
     /**
-     * @return \AliOpen\Core\Auth\Credential|string|null
-     * @throws ClientException
+     * @return Credential|string|null
+     * @throws \AliOpen\Core\Exception\ClientException
      */
     public function getSessionCredential()
     {
@@ -49,7 +59,7 @@ class RamRoleArnService
         $credential = $this->assumeRole();
 
         if ($credential == null) {
-            return;
+            return null;
         }
 
         $this->sessionCredential = $credential;
@@ -59,27 +69,28 @@ class RamRoleArnService
     }
 
     /**
-     * @return \AliOpen\Core\Auth\Credential|null
-     * @throws ClientException
+     * @return Credential|null
+     * @throws \AliOpen\Core\Exception\ClientException
      */
     private function assumeRole()
     {
         $signer = $this->clientProfile->getSigner();
         $ramRoleArnCredential = $this->clientProfile->getCredential();
 
-        $request =
-            new \AliOpen\Core\Auth\AssumeRoleRequest($ramRoleArnCredential->getRoleArn(), $ramRoleArnCredential->getRoleSessionName());
-
+        $request = new RoleAssumeRequest();
+        $request->setRoleArn($ramRoleArnCredential->getRoleArn());
+        $request->setRoleSessionName($ramRoleArnCredential->getRoleSessionName());
+        $request->setDurationSeconds(ALIOPEN_ROLE_ARN_EXPIRE_TIME);
+        $request->setRegionId(ALIOPEN_STS_REGION);
+        $request->setProtocol('https');
+        $request->setAcceptFormat('JSON');
         $requestUrl = $request->composeUrl($signer, $ramRoleArnCredential, self::$serviceDomain);
-
         $httpResponse = HttpHelper::curl($requestUrl, $request->getMethod(), null, $request->getHeaders());
-
         if (!$httpResponse->isSuccess()) {
-            return;
+            return null;
         }
 
         $respObj = json_decode($httpResponse->getBody());
-
         $sessionAccessKeyId = $respObj->Credentials->AccessKeyId;
         $sessionAccessKeySecret = $respObj->Credentials->AccessKeySecret;
         $securityToken = $respObj->Credentials->SecurityToken;
