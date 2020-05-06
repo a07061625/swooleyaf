@@ -257,6 +257,12 @@ class ErrorCode
     const CREDIT_GET_ERROR = 107202;
     const CREDIT_REQ_MAILE_ERROR = 107210;
 
+    //语音服务错误,取值范围:107300-107399
+    const VMS_PARAM_ERROR = 107300;
+    const VMS_POST_ERROR = 107301;
+    const VMS_GET_ERROR = 107302;
+    const VMS_REQ_ALIYUN_ERROR = 107310;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -423,6 +429,10 @@ class ErrorCode
         self::CREDIT_POST_ERROR => '积分POST请求出错',
         self::CREDIT_GET_ERROR => '积分GET请求出错',
         self::CREDIT_REQ_MAILE_ERROR => '麦乐积分发送请求出错',
+        self::VMS_PARAM_ERROR => '语音服务参数错误',
+        self::VMS_POST_ERROR => '语音服务发送POST请求出错',
+        self::VMS_GET_ERROR => '语音服务发送GET请求出错',
+        self::VMS_REQ_ALIYUN_ERROR => '语音服务阿里云发送请求出错',
     ];
 
     /**
