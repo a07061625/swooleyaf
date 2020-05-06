@@ -262,6 +262,7 @@ class ErrorCode
     const VMS_POST_ERROR = 107301;
     const VMS_GET_ERROR = 107302;
     const VMS_REQ_ALIYUN_ERROR = 107310;
+    const VMS_REQ_QCLOUD_ERROR = 107311;
 
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
@@ -433,6 +434,7 @@ class ErrorCode
         self::VMS_POST_ERROR => '语音服务发送POST请求出错',
         self::VMS_GET_ERROR => '语音服务发送GET请求出错',
         self::VMS_REQ_ALIYUN_ERROR => '语音服务阿里云发送请求出错',
+        self::VMS_REQ_QCLOUD_ERROR => '语音服务腾讯云发送请求出错',
     ];
 
     /**
