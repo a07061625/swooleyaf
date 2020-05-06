@@ -10,6 +10,7 @@ namespace DesignPatterns\Singletons;
 use SyTool\Tool;
 use SyTrait\SingletonTrait;
 use SyVms\ConfigAliYun;
+use SyVms\ConfigQCloud;
 
 class VmsConfigSingleton
 {
@@ -20,6 +21,11 @@ class VmsConfigSingleton
      * @var \SyVms\ConfigAliYun
      */
     private $aliYunConfig = null;
+    /**
+     * 腾讯云配置
+     * @var \SyVms\ConfigQCloud
+     */
+    private $qCloudConfig = null;
 
     private function __construct()
     {
@@ -52,5 +58,21 @@ class VmsConfigSingleton
         }
 
         return $this->aliYunConfig;
+    }
+
+    /**
+     * @return \SyVms\ConfigQCloud
+     */
+    public function getQCloudConfig()
+    {
+        if (is_null($this->qCloudConfig)) {
+            $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);
+            $qCloudConfig = new ConfigQCloud();
+            $qCloudConfig->setAppId((string)Tool::getArrayVal($configs, 'qcloud.app.id', '', true));
+            $qCloudConfig->setAppKey((string)Tool::getArrayVal($configs, 'qcloud.app.key', '', true));
+            $this->qCloudConfig = $qCloudConfig;
+        }
+
+        return $this->qCloudConfig;
     }
 }

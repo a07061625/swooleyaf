@@ -14,6 +14,11 @@ abstract class VmsBase
      * @var array
      */
     protected $reqData = [];
+    /**
+     * curl配置数组
+     * @var array
+     */
+    protected $curlConfigs = [];
 
     public function __construct()
     {
