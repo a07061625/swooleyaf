@@ -7,6 +7,8 @@
  */
 namespace SyVms;
 
+use SyTool\Tool;
+
 /**
  * Class VmsBaseQCloud
  * @package SyVms
@@ -22,6 +24,19 @@ abstract class VmsBaseQCloud extends VmsBase
     public function __construct()
     {
         parent::__construct();
+    }
+
+    protected function refreshSign(array $data)
+    {
+        $createRes = VmsUtilQCloud::createSign($data);
+        $this->reqData['sig'] = $createRes['sign'];
+        $this->reqData['time'] = $createRes['time'];
+
+        $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . '?' . http_build_query([
+            'sdkappid' => $createRes['app_id'],
+            'random' => $createRes['random'],
+        ]);
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
     }
 
     protected function getContent() : array
