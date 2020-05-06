@@ -7,6 +7,7 @@
  */
 namespace SyIot;
 
+use QCloud\CloudUtilBase;
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\IotConfigSingleton;
 use SyException\Iot\TencentIotException;
@@ -68,7 +69,8 @@ abstract class IotBaseTencent extends IotBase
     protected function addReqSign()
     {
         $postData = http_build_query($this->reqData);
-        $signRes = IotUtilTencent::createTC3Sign([
+        $config = IotConfigSingleton::getInstance()->getTencentConfig();
+        $signRes = CloudUtilBase::createTC3Sign($config->getSecretId(), $config->getSecretKey(), [
             'req_headers' => $this->reqHeader,
             'req_data' => $postData,
             'service_name' => $this->serviceName,
