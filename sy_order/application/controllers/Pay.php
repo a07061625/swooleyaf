@@ -156,18 +156,14 @@ class PayController extends CommonController
     public function handleAliPayNotifyAction()
     {
         $allParams = \Request\SyRequest::getParams();
-        if (($allParams['notify_type'] == 'trade_status_sync')
-            && in_array($allParams['trade_status'], [
-                'TRADE_SUCCESS',
-                'TRADE_FINISHED',
-            ], true)) {
+        if (($allParams['notify_type'] == 'trade_status_sync') && in_array($allParams['trade_status'], ['TRADE_SUCCESS', 'TRADE_FINISHED',], true)) {
             if (isset($allParams['payment_type'])) { //网页支付
-                $payMoney = isset($allParams['total_fee']) && is_numeric($allParams['total_fee']) ? (int)($allParams['total_fee'] * 1000 / 10) : 0;
+                $payMoney = isset($allParams['total_fee']) && is_numeric($allParams['total_fee']) ? (int)bcadd($allParams['total_fee'] * 100, 0, 0) : 0;
             } else { //二维码支付
                 if (isset($allParams['buyer_pay_amount']) && is_numeric($allParams['buyer_pay_amount'])) {
-                    $payMoney = (int)($allParams['buyer_pay_amount'] * 1000 / 10);
+                    $payMoney = (int)bcadd($allParams['buyer_pay_amount'] * 100, 0, 0);
                 } elseif (isset($allParams['total_amount']) && is_numeric($allParams['total_amount'])) {
-                    $payMoney = (int)($allParams['total_amount'] * 1000 / 10);
+                    $payMoney = (int)bcadd($allParams['total_amount'] * 100, 0, 0);
                 } else {
                     $payMoney = 0;
                 }
