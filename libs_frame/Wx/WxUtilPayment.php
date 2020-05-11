@@ -114,7 +114,16 @@ abstract class WxUtilPayment extends WxUtilBase
         $matches = [];
         preg_match('/var\surl="(.*)"/', $execRes, $matches);
 
-        return empty($matches) ? '' : urldecode($matches[1]);
+        if (empty($matches)) {
+            return '';
+        } else {
+            $deepLinkUrl = urldecode($matches[1]);
+            if (isset($data['redirect_url'])) {
+                $deepLinkUrl .= '&redirect_url=' . urlencode($data['redirect_url']);
+            }
+
+            return $deepLinkUrl;
+        }
     }
 
     /**
