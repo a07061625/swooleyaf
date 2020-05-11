@@ -114,7 +114,7 @@ abstract class WxUtilPayment extends WxUtilBase
         $matches = [];
         preg_match('/var\surl="(.*)"/', $execRes, $matches);
 
-        return empty($matches) ? '' : $matches[1];
+        return empty($matches) ? '' : urldecode($matches[1]);
     }
 
     /**
