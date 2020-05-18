@@ -1,3 +1,5 @@
 .idea/
 .vscode/
 .php_cs.cache
+config_pools.php
+config_projects.php
