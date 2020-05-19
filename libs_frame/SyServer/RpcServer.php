@@ -1,12 +1,10 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: 姜伟
  * Date: 2017/8/19 0019
  * Time: 8:33
  */
-
 namespace SyServer;
 
 use Swoole\Server;
