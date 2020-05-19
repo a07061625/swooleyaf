@@ -1,12 +1,10 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: Administrator
  * Date: 2017-3-5
  * Time: 16:42
  */
-
 namespace SyServer;
 
 use Swoole\Http\Request;
