@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.5.0
+ * @since 4.5.1
  */
 class Coroutine
 {
@@ -139,41 +139,6 @@ class Coroutine
     public static function sleep($seconds){}
 
     /**
-     * @param $handle[required]
-     * @param $length[optional]
-     * @return mixed
-     */
-    public static function fread($handle, $length=null){}
-
-    /**
-     * @param $handle[required]
-     * @return mixed
-     */
-    public static function fgets($handle){}
-
-    /**
-     * @param $handle[required]
-     * @param $string[required]
-     * @param $length[optional]
-     * @return mixed
-     */
-    public static function fwrite($handle, $string, $length=null){}
-
-    /**
-     * @param $filename[required]
-     * @return mixed
-     */
-    public static function readFile($filename){}
-
-    /**
-     * @param $filename[required]
-     * @param $data[required]
-     * @param $flags[optional]
-     * @return mixed
-     */
-    public static function writeFile($filename, $data, $flags=null){}
-
-    /**
      * @param $hostname[required]
      * @param $family[optional]
      * @param $socktype[optional]
@@ -189,6 +154,20 @@ class Coroutine
      * @return mixed
      */
     public static function statvfs($path){}
+
+    /**
+     * @param $filename[required]
+     * @return mixed
+     */
+    public static function readFile($filename){}
+
+    /**
+     * @param $filename[required]
+     * @param $data[required]
+     * @param $flags[optional]
+     * @return mixed
+     */
+    public static function writeFile($filename, $data, $flags=null){}
 
     /**
      * @param $timeout[optional]
@@ -217,6 +196,27 @@ class Coroutine
      * @return mixed
      */
     public static function waitEvent($fd, $events=null, $timeout=null){}
+
+    /**
+     * @param $handle[required]
+     * @param $length[optional]
+     * @return mixed
+     */
+    public static function fread($handle, $length=null){}
+
+    /**
+     * @param $handle[required]
+     * @return mixed
+     */
+    public static function fgets($handle){}
+
+    /**
+     * @param $handle[required]
+     * @param $string[required]
+     * @param $length[optional]
+     * @return mixed
+     */
+    public static function fwrite($handle, $string, $length=null){}
 
 
 }

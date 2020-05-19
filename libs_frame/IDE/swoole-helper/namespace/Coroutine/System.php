@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.5.0
+ * @since 4.5.1
  */
 class System
 {
@@ -37,27 +37,6 @@ class System
     public static function sleep($seconds){}
 
     /**
-     * @param $handle[required]
-     * @param $length[optional]
-     * @return mixed
-     */
-    public static function fread($handle, $length=null){}
-
-    /**
-     * @param $handle[required]
-     * @param $string[required]
-     * @param $length[optional]
-     * @return mixed
-     */
-    public static function fwrite($handle, $string, $length=null){}
-
-    /**
-     * @param $handle[required]
-     * @return mixed
-     */
-    public static function fgets($handle){}
-
-    /**
      * @param $hostname[required]
      * @param $family[optional]
      * @param $socktype[optional]
@@ -67,6 +46,12 @@ class System
      * @return mixed
      */
     public static function getaddrinfo($hostname, $family=null, $socktype=null, $protocol=null, $service=null, $timeout=null){}
+
+    /**
+     * @param $path[required]
+     * @return mixed
+     */
+    public static function statvfs($path){}
 
     /**
      * @param $filename[required]
@@ -81,12 +66,6 @@ class System
      * @return mixed
      */
     public static function writeFile($filename, $data, $flags=null){}
-
-    /**
-     * @param $path[required]
-     * @return mixed
-     */
-    public static function statvfs($path){}
 
     /**
      * @param $timeout[optional]
@@ -115,6 +94,27 @@ class System
      * @return mixed
      */
     public static function waitEvent($fd, $events=null, $timeout=null){}
+
+    /**
+     * @param $handle[required]
+     * @param $length[optional]
+     * @return mixed
+     */
+    public static function fread($handle, $length=null){}
+
+    /**
+     * @param $handle[required]
+     * @param $string[required]
+     * @param $length[optional]
+     * @return mixed
+     */
+    public static function fwrite($handle, $string, $length=null){}
+
+    /**
+     * @param $handle[required]
+     * @return mixed
+     */
+    public static function fgets($handle){}
 
 
 }
