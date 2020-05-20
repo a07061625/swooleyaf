@@ -18,7 +18,7 @@ class ProjectBase
     const DATA_KEY_CACHE_UNIQUE_ID = self::REDIS_PREFIX_UNIQUE_ID . 'uniqueid'; //键名-缓存唯一ID
     const DATA_KEY_LANGUAGE_TAG = '_sylang'; //键名-语言标识
     const DATA_KEY_SIGN_PARAMS = '_sign'; //键名-请求参数签名字段
-    const DATA_KEY_SIGN_HEADER = 'SY-SIGN'; //键名-请求头签名字段
+    const DATA_KEY_SIGN_HEADER = 'sy-sign'; //键名-请求头签名字段
 
     //公共常量
     const COMMON_PAGE_DEFAULT = 1; //默认页数
