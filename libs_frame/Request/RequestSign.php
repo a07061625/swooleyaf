@@ -8,6 +8,7 @@
 namespace Request;
 
 use SyConstant\ErrorCode;
+use SyConstant\Project;
 use SyException\Validator\SignException;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
@@ -16,8 +17,6 @@ final class RequestSign
 {
     use SimpleTrait;
 
-    const KEY_SIGN = '_sign';
-
     /**
      * 校验签名是否合法
      * @return string
@@ -25,7 +24,7 @@ final class RequestSign
      */
     public static function checkSign() : string
     {
-        $sign = Tool::getArrayVal($_POST, self::KEY_SIGN);
+        $sign = Tool::getArrayVal($_POST, Project::DATA_KEY_SIGN_PARAMS);
         if (!is_string($sign)) {
             throw new SignException('签名值出错', ErrorCode::SIGN_ERROR);
         } elseif (strlen($sign) <= 16) {
@@ -55,7 +54,7 @@ final class RequestSign
         if (isset($arr[1])) {
             parse_str($arr[1], $params);
         }
-        $params[self::KEY_SIGN] = self::createSign();
+        $params[Project::DATA_KEY_SIGN_PARAMS] = self::createSign();
 
         $url = $arr[0] . '?' . http_build_query($params);
     }
