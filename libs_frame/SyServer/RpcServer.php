@@ -12,7 +12,6 @@ use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyConstant\SyInner;
 use SyLog\Log;
-use Request\RequestSign;
 use Response\Result;
 use SyTrait\Server\FramePreProcessRpcTrait;
 use SyTrait\Server\FrameRpcTrait;
@@ -140,7 +139,7 @@ class RpcServer extends BaseServer
         $_FILES = [];
         $_SESSION = [];
         $_SERVER['SYREQ_ID'] = $data['__req_id'] ?? hash('md4', Tool::getNowTime() . Tool::createNonceStr(8));
-        unset($_POST[RequestSign::KEY_SIGN]);
+        unset($_POST[Project::DATA_KEY_SIGN_PARAMS]);
         unset($_POST['__req_id']);
 
         Registry::del(SyInner::REGISTRY_NAME_SERVICE_ERROR);
