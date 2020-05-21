@@ -459,7 +459,8 @@ class HttpServer extends BaseServer
         self::$_reqServers = $request->server ?? [];
         self::$_rspMsg = '';
 
-        if (isset($request->header['content-type']) && ($request->header['content-type'] == 'application/json')) {
+        $dataFormat = $request->header[Project::DATA_KEY_FORMAT_HEADER] ?? '';
+        if ($dataFormat == 'json') {
             $_POST = Tool::jsonDecode($request->rawContent());
             if (!is_array($_POST)) {
                 $res = new Result();
