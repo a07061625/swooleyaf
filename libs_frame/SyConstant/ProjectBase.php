@@ -19,6 +19,7 @@ class ProjectBase
     const DATA_KEY_LANGUAGE_TAG = '_sylang'; //键名-语言标识
     const DATA_KEY_SIGN_PARAMS = '_sign'; //键名-请求参数签名字段
     const DATA_KEY_SIGN_HEADER = 'sy-sign'; //键名-请求头签名字段
+    const DATA_KEY_FORMAT_HEADER = 'sy-format'; //键名-请求头数据格式字段
 
     //公共常量
     const COMMON_PAGE_DEFAULT = 1; //默认页数
