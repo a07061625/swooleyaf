@@ -236,7 +236,7 @@ abstract class BaseServer
 
         $msg = ' \e[1;31m \t[fail]';
         if ($pid > 0) {
-            if (Process::kill($pid)) {
+            if (Process::kill($pid, SIGKILL)) {
                 $msg = ' \e[1;32m \t[success]';
             }
             file_put_contents($this->_pidFile, '');
