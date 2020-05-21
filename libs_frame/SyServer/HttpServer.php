@@ -554,12 +554,12 @@ class HttpServer extends BaseServer
      */
     private function handleReqHeader(array &$headers): int
     {
-        $domainTag = $_SERVER['SY-DOMAIN'] ?? 'base';
+        $domainTag = self::$_reqHeaders[Project::DATA_KEY_DOMAIN_COOKIE_HEADER] ?? 'base';
         $cookieDomain = $this->_reqCookieDomains[$domainTag] ?? null;
         if (is_null($cookieDomain)) {
             return self::RESPONSE_RESULT_TYPE_FORBIDDEN;
         }
-        $_SERVER['SY-DOMAIN'] = $cookieDomain;
+        $_SERVER[Project::DATA_KEY_DOMAIN_COOKIE_SERVER] = $cookieDomain;
         return self::RESPONSE_RESULT_TYPE_ACCEPT;
     }
 
