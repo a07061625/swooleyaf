@@ -323,7 +323,7 @@ class Parser
                 $t = substr($node->getAttribute('data'), 3);
                 if ('' === $t || ctype_space($t)) {
                     // bypass empty nodes starting with a BOM
-                    return;
+                    return null;
                 }
             }
 
@@ -344,7 +344,7 @@ class Parser
         }
 
         if ($node instanceof NodeOutputInterface) {
-            return;
+            return null;
         }
 
         // here, $nested means "being at the root level of a child template"
