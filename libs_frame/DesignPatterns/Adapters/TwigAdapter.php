@@ -166,10 +166,10 @@ class TwigAdapter implements View_Interface
 
     /**
      * Retrieve the current template directory
-     *
+     * @param \Yaf\Request_Abstract $request
      * @return array
      */
-    public function getScriptPath()
+    public function getScriptPath($request = null)
     {
         return $this->_loader->getPaths();
     }
