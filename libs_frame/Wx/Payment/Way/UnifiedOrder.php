@@ -394,11 +394,13 @@ class UnifiedOrder extends WxBasePayment
                 throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
             }
             $appId = $this->reqData['appid'];
+            $mchId = $this->reqData['mch_id'];
         } else {
             if (($this->reqData['trade_type'] == self::TRADE_TYPE_JSAPI) && !isset($this->reqData['sub_openid'])) {
                 throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
             }
             $appId = $this->reqData['sub_appid'];
+            $mchId = $this->reqData['sub_mch_id'];
         }
         $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
 
@@ -441,6 +443,16 @@ class UnifiedOrder extends WxBasePayment
                 'code_url' => $sendData['code_url'],
                 'prepay_id' => $sendData['prepay_id'],
             ];
+        } elseif ($this->reqData['trade_type'] == self::TRADE_TYPE_APP) {
+            $resArr['data'] = [
+                'appid' => $appId,
+                'partnerid' => $mchId,
+                'prepayid' => $sendData['prepay_id'],
+                'timestamp' => (string)Tool::getNowTime(),
+                'noncestr' => $sendData['nonce_str'],
+                'package' => 'Sign=WXPay',
+            ];
+            $resArr['data']['sign'] = WxUtilAccount::createSign($resArr['data'], $appId);
         } else {
             $resArr['data'] = $sendData;
         }
