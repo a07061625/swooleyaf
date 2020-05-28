@@ -27,10 +27,10 @@ class MysqlSingleton
      */
     private $conn = null;
     /**
-     * 重连错误码
+     * 重连错误信息
      * @var array
      */
-    private $reconnectCodes = [];
+    private $reconnectMessages = [];
     /**
      * @var int
      */
@@ -39,9 +39,17 @@ class MysqlSingleton
     private function __construct()
     {
         $this->init();
-        $this->reconnectCodes = [
-            2006,
-            2013,
+        $this->reconnectMessages = [
+            'server has gone away',
+            'no connection to the server',
+            'Lost connection',
+            'is dead or not enabled',
+            'Error while sending',
+            'server closed the connection',
+            'SSL connection has been closed',
+            'Error writing data to the connection',
+            'Resource deadlock avoided',
+            'failed with errno=32 Broken pipe',
         ];
     }
 
@@ -169,26 +177,35 @@ class MysqlSingleton
         $nowTime = time();
         if (is_null($this->conn)) {
             $this->init();
-        } elseif ($nowTime - $this->connTime >= 30) {
-            $checkRes = false;
-            try {
-                $this->conn->query('SELECT 1');
-                $checkRes = true;
-            } catch (\Exception $e) {
-                $errCode = 0;
-                if ($e instanceof \PDOException) {
-                    $errCode = (int)$e->errorInfo[1];
+            return;
+        }
+        if (($nowTime - $this->connTime) < 30) {
+            return;
+        }
+
+        $checkRes = false;
+        try {
+            $this->conn->query('SELECT 1');
+            $checkRes = true;
+        } catch (\Exception $e) {
+            $errMsg = $e->getMessage();
+            $reconnectTag = false;
+            foreach ($this->reconnectMessages as $eMessage) {
+                if (stripos($errMsg, $eMessage) !== false) {
+                    $reconnectTag = true;
+                    break;
                 }
-                if (in_array($errCode, $this->reconnectCodes, true)) {
-                    $this->init();
-                } else {
-                    Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
-                    throw new MysqlException('MySQL连接出错', ErrorCode::MYSQL_CONNECTION_ERROR);
-                }
-            } finally {
-                if ($checkRes) {
-                    $this->connTime = $nowTime;
-                }
+            }
+
+            if ($reconnectTag) {
+                $this->init();
+            } else {
+                Log::error($errMsg, $e->getCode(), $e->getTraceAsString());
+                throw new MysqlException('MySQL连接出错', ErrorCode::MYSQL_CONNECTION_ERROR);
+            }
+        } finally {
+            if ($checkRes) {
+                $this->connTime = $nowTime;
             }
         }
     }
