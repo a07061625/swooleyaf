@@ -22,16 +22,6 @@ abstract class HandlerBase
      * @var int
      */
     protected $handlerType = 0;
-    /**
-     * 队列标识,数字和字母组成
-     * @var string
-     */
-    protected $queueTag = '';
-    /**
-     * 消息数据
-     * @var array
-     */
-    protected $msgData = [];
 
     /**
      * @param int $handlerType 处理类型
@@ -39,16 +29,10 @@ abstract class HandlerBase
      */
     public function __construct(int $handlerType)
     {
-        $queueTag = Project::$messageHandlerQueues[$handlerType] ?? '';
-        if (strlen($queueTag) == 0) {
+        if (!isset(Project::$messageHandlerQueues[$handlerType])) {
             throw new MessageHandlerException('消息处理类型不支持', ErrorCode::MESSAGE_HANDLER_PARAM_ERROR);
         }
         $this->handlerType = $handlerType;
-        $this->queueTag = $queueTag;
-        $this->msgData = [
-            'handler_type' => $handlerType,
-            'data' => []
-        ];
     }
 
     /**
@@ -57,21 +41,5 @@ abstract class HandlerBase
     public function getHandlerType() : int
     {
         return $this->handlerType;
-    }
-
-    /**
-     * @return string
-     */
-    public function getQueueTag() : string
-    {
-        return $this->queueTag;
-    }
-
-    /**
-     * @return array
-     */
-    public function getMsgData() : array
-    {
-        return $this->msgData;
     }
 }
