@@ -9,16 +9,25 @@ namespace SyMessageHandler\Consumers\Voice;
 
 use SyConstant\Project;
 use SyMessageHandler\ConsumerBase;
-use SyMessageHandler\ConsumerInterface;
+use SyMessageHandler\IConsumer;
 
 /**
  * Class QCloudCode
  * @package SyMessageHandler\Consumers\Voice
  */
-class QCloudCode extends ConsumerBase implements ConsumerInterface
+class QCloudCode extends ConsumerBase implements IConsumer
 {
     public function __construct()
     {
         parent::__construct(Project::MESSAGE_HANDLER_TYPE_VOICE_QCLOUD_CODE);
+    }
+
+    private function __clone()
+    {
+    }
+
+    public function handleMsgData(array $msgData) : array
+    {
+        return [];
     }
 }

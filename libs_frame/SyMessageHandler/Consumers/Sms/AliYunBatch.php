@@ -9,16 +9,25 @@ namespace SyMessageHandler\Consumers\Sms;
 
 use SyConstant\Project;
 use SyMessageHandler\ConsumerBase;
-use SyMessageHandler\ConsumerInterface;
+use SyMessageHandler\IConsumer;
 
 /**
  * Class AliYunBatch
  * @package SyMessageHandler\Consumers\Sms
  */
-class AliYunBatch extends ConsumerBase implements ConsumerInterface
+class AliYunBatch extends ConsumerBase implements IConsumer
 {
     public function __construct()
     {
         parent::__construct(Project::MESSAGE_HANDLER_TYPE_SMS_ALIYUN_BATCH);
+    }
+
+    private function __clone()
+    {
+    }
+
+    public function handleMsgData(array $msgData) : array
+    {
+        return [];
     }
 }

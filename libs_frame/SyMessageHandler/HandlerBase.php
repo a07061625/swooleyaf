@@ -27,6 +27,11 @@ abstract class HandlerBase
      * @var string
      */
     protected $queueTag = '';
+    /**
+     * 消息数据
+     * @var array
+     */
+    protected $msgData = [];
 
     /**
      * @param int $handlerType 处理类型
@@ -40,6 +45,10 @@ abstract class HandlerBase
         }
         $this->handlerType = $handlerType;
         $this->queueTag = $queueTag;
+        $this->msgData = [
+            'handler_type' => $handlerType,
+            'data' => []
+        ];
     }
 
     /**
