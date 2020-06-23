@@ -192,4 +192,28 @@ class ProjectBase
         self::LANG_TYPE_ZH => '中文',
         self::LANG_TYPE_EN => '英文',
     ];
+
+    //消息处理常量
+    const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS = 10000; //类型-微信公众号-openid群发消息
+    const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_PREVIEW = 10001; //类型-微信公众号-群发预览消息
+    const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_ALL = 10002; //类型-微信公众号-分组群发消息
+    const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_TEMPLATE = 10003; //类型-微信公众号-模板消息
+    const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_TEMPLATE_SUBSCRIBE = 10004; //类型-微信公众号-订阅模板消息
+    const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MESSAGE_CUSTOM = 10005; //类型-微信公众号-客服消息
+    const MESSAGE_HANDLER_TYPE_WX_CORP_CHAT = 11000; //类型-微信企业号-群聊会话消息
+    const MESSAGE_HANDLER_TYPE_WX_CORP_MESSAGE = 11001; //类型-微信企业号-企业消息
+    const MESSAGE_HANDLER_TYPE_WX_CORP_MESSAGE_LINKED = 11002; //类型-微信企业号-互联企业消息
+    const MESSAGE_HANDLER_TYPE_WX_MINI_MESSAGE_CUSTOM = 12000; //类型-微信小程序-客服消息
+    const MESSAGE_HANDLER_TYPE_WX_MINI_TEMPLATE = 12001; //类型-微信小程序-模板消息
+    const MESSAGE_HANDLER_TYPE_DINGDING_CHAT = 20000; //类型-钉钉-群消息
+    const MESSAGE_HANDLER_TYPE_DINGDING_CONVERSATION = 20001; //类型-钉钉-普通消息
+    const MESSAGE_HANDLER_TYPE_DINGDING_CONVERSATION_ASYNC = 20002; //类型-钉钉-工作通知消息
+    const MESSAGE_HANDLER_TYPE_VOICE_ALIYUN_TTS = 21000; //类型-阿里云语音-验证码消息
+    const MESSAGE_HANDLER_TYPE_VOICE_ALIYUN_FILE = 21001; //类型-阿里云语音-语音文件消息
+    const MESSAGE_HANDLER_TYPE_VOICE_QCLOUD_CODE = 22000; //类型-腾讯云语音-验证码消息
+    const MESSAGE_HANDLER_TYPE_VOICE_QCLOUD_TEMPLATE = 22001; //类型-腾讯云语音-模板消息
+    const MESSAGE_HANDLER_TYPE_SMS_ALIYUN_SINGLE = 23000; //类型-阿里云短信-单发消息
+    const MESSAGE_HANDLER_TYPE_SMS_ALIYUN_BATCH = 23001; //类型-阿里云短信-群发消息
+    const MESSAGE_HANDLER_TYPE_SMS_DAYU = 23005; //类型-大鱼短信消息
+    const MESSAGE_HANDLER_TYPE_SMS_YUN253 = 23010; //类型-253云短信消息
 }
