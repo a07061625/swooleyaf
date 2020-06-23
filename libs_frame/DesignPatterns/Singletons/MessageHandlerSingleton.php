@@ -9,6 +9,7 @@ namespace DesignPatterns\Singletons;
 
 use SyConstant\ErrorCode;
 use SyException\MessageHandler\MessageHandlerException;
+use SyLog\Log;
 use SyMessageHandler\ConsumerContainer;
 use SyMessageHandler\ProducerContainer;
 use SyMessageQueue\Redis\Producer;
@@ -53,20 +54,28 @@ class MessageHandlerSingleton
      * 添加消息数据
      * @param int $handlerType 处理类型
      * @param array $msgData 消息数据
-     * @throws \SyException\MessageHandler\MessageHandlerException
+     * @return array 添加结果
      */
-    public function addMessageData(int $handlerType, array $msgData)
+    public function addMsgData(int $handlerType, array $msgData) : array
     {
         $obj = $this->producerContainer->getObj($handlerType);
         if (is_null($obj)) {
-            throw new MessageHandlerException('处理类型不支持', ErrorCode::MESSAGE_HANDLER_PARAM_ERROR);
+            Log::info('handler_type: ' . $handlerType . ' error: 处理类型不支持');
+            return [];
         }
 
-        $obj->checkMsgData($msgData);
+        $checkRes = $obj->checkMsgData($msgData);
+        if (strlen($checkRes) > 0) {
+            Log::info('handler_type: ' . $handlerType . ' error: ' . $checkRes);
+            return [];
+        }
+
         $trueData = $obj->getMsgData();
-        Producer::getInstance()->addTopicData($obj->getQueueTag(), [
+        Producer::getInstance()->addTopicData($obj->getMsgTopic(), [
             0 => $trueData,
         ]);
+
+        return $trueData;
     }
 
     /**
