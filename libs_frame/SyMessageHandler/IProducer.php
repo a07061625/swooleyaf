@@ -16,6 +16,7 @@ interface IProducer
     /**
      * 检测消息数据
      * @param array $msgData 消息数据
+     * @return string 检测结果,空字符串表示数据合法,否则为数据错误提示信息
      */
-    public function checkMsgData(array $msgData);
+    public function checkMsgData(array $msgData) : string;
 }

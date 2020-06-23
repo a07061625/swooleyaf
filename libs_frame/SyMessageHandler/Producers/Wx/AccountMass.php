@@ -26,8 +26,9 @@ class AccountMass extends ProducerBase implements IProducer
     {
     }
 
-    public function checkMsgData(array $msgData)
+    public function checkMsgData(array $msgData) : string
     {
-        // TODO: Implement checkMsgData() method.
+        $checkRes = '';
+        return $checkRes;
     }
 }
