@@ -150,7 +150,7 @@ final class Project extends ProjectBase
     const POOL_PROCESS_SERVICE_TAG_TEST = 'a000'; //服务标识-测试
 
     //消息处理常量
-    public static $messageHANDLERQueues = [
+    public static $messageHandlerQueues = [
         self::MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS => 'a000',
         self::MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_PREVIEW => 'a001',
         self::MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_ALL => 'a002',
