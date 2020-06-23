@@ -3,14 +3,17 @@
  * Created by PhpStorm.
  * User: 姜伟
  * Date: 2020/6/23 0023
- * Time: 15:02
+ * Time: 21:22
  */
 namespace SyMessageHandler;
 
+use SyTrait\SimpleTrait;
+
 /**
- * Class ProducerInterface
+ * Class ProducerUtil
  * @package SyMessageHandler
  */
-interface ProducerInterface
+class ProducerUtil
 {
+    use SimpleTrait;
 }

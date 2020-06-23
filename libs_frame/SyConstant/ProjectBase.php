@@ -190,7 +190,7 @@ class ProjectBase
         self::LANG_TYPE_EN => '英文',
     ];
 
-    //消息处理常量
+    //消息处理常量,小于1000000的为框架内部用
     const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS = 10000; //类型-微信公众号-openid群发消息
     const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_PREVIEW = 10001; //类型-微信公众号-群发预览消息
     const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_ALL = 10002; //类型-微信公众号-分组群发消息
