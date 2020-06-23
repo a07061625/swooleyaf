@@ -30,9 +30,4 @@ class CorpMessageLinked extends ProducerBase implements IProducer
     {
         // TODO: Implement checkMsgData() method.
     }
-
-    public function getMsgData() : array
-    {
-        return $this->msgData;
-    }
 }
