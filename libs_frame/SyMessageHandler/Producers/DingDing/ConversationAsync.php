@@ -9,16 +9,30 @@ namespace SyMessageHandler\Producers\DingDing;
 
 use SyConstant\Project;
 use SyMessageHandler\ProducerBase;
-use SyMessageHandler\ProducerInterface;
+use SyMessageHandler\IProducer;
 
 /**
  * Class ConversationAsync
  * @package SyMessageHandler\Producers\DingDing
  */
-class ConversationAsync extends ProducerBase implements ProducerInterface
+class ConversationAsync extends ProducerBase implements IProducer
 {
     public function __construct()
     {
         parent::__construct(Project::MESSAGE_HANDLER_TYPE_DINGDING_CONVERSATION_ASYNC);
+    }
+
+    private function __clone()
+    {
+    }
+
+    public function checkMsgData(array $msgData)
+    {
+        // TODO: Implement checkMsgData() method.
+    }
+
+    public function getMsgData() : array
+    {
+        return $this->msgData;
     }
 }

@@ -220,7 +220,7 @@ class MessagePushConfigSingleton
      */
     public function getJPushGroupConfigs()
     {
-        return $this-$this->jPushGroupConfigs;
+        return $this->jPushGroupConfigs;
     }
 
     /**

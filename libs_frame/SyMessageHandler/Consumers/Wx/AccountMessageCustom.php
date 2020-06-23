@@ -9,16 +9,25 @@ namespace SyMessageHandler\Consumers\Wx;
 
 use SyConstant\Project;
 use SyMessageHandler\ConsumerBase;
-use SyMessageHandler\ConsumerInterface;
+use SyMessageHandler\IConsumer;
 
 /**
  * Class AccountMessageCustom
  * @package SyMessageHandler\Consumers\Wx
  */
-class AccountMessageCustom extends ConsumerBase implements ConsumerInterface
+class AccountMessageCustom extends ConsumerBase implements IConsumer
 {
     public function __construct()
     {
         parent::__construct(Project::MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MESSAGE_CUSTOM);
+    }
+
+    private function __clone()
+    {
+    }
+
+    public function handleMsgData(array $msgData) : array
+    {
+        return [];
     }
 }
