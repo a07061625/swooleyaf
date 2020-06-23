@@ -93,9 +93,9 @@ class Producer
      */
     public function addTopicData(string $topic, array $data)
     {
-        $topicName = SY_ENV . SY_PROJECT . $topic;
+        $redisKey = Project::REDIS_PREFIX_MESSAGE_QUEUE . $topic;
         foreach ($data as $eData) {
-            CacheSimpleFactory::getRedisInstance()->rPush(Project::REDIS_PREFIX_MESSAGE_QUEUE . $topicName, Tool::jsonEncode($eData, JSON_UNESCAPED_UNICODE));
+            CacheSimpleFactory::getRedisInstance()->rPush($redisKey, Tool::jsonEncode($eData, JSON_UNESCAPED_UNICODE));
         }
     }
 }
