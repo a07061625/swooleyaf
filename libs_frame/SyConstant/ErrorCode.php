@@ -264,6 +264,10 @@ class ErrorCode
     const VMS_REQ_ALIYUN_ERROR = 107310;
     const VMS_REQ_QCLOUD_ERROR = 107311;
 
+    //消息处理错误,取值范围:107400-107499
+    const MESSAGE_HANDLER_PARAM_ERROR = 107400;
+    const MESSAGE_HANDLER_INVOKE_ERROR = 107401;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -435,6 +439,8 @@ class ErrorCode
         self::VMS_GET_ERROR => '语音服务发送GET请求出错',
         self::VMS_REQ_ALIYUN_ERROR => '语音服务阿里云发送请求出错',
         self::VMS_REQ_QCLOUD_ERROR => '语音服务腾讯云发送请求出错',
+        self::MESSAGE_HANDLER_PARAM_ERROR => '消息处理参数错误',
+        self::MESSAGE_HANDLER_INVOKE_ERROR => '消息处理调用错误',
     ];
 
     /**

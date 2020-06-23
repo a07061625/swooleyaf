@@ -38,6 +38,7 @@
 - SyImage: 图片处理相关
 - SyIot: 物联网相关
 - SyLogistics: 物流相关
+- SyMessageHandler: 消息处理相关
 - SyMessagePush: 消息推送相关
 - SyMessageQueue: 消息队列相关
 - SyModule: 框架模块相关
