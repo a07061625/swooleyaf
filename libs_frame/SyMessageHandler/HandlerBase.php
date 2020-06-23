@@ -66,4 +66,12 @@ abstract class HandlerBase
     {
         return $this->queueTag;
     }
+
+    /**
+     * @return array
+     */
+    public function getMsgData() : array
+    {
+        return $this->msgData;
+    }
 }
