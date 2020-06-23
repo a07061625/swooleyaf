@@ -18,10 +18,4 @@ interface IProducer
      * @param array $msgData 消息数据
      */
     public function checkMsgData(array $msgData);
-
-    /**
-     * 获取消息数据
-     * @return array
-     */
-    public function getMsgData() : array;
 }
