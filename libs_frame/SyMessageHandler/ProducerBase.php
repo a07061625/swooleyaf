@@ -25,7 +25,7 @@ abstract class ProducerBase extends HandlerBase
      * 消息数据
      * @var array
      */
-    private $msgData = [];
+    protected $msgData = [];
 
     public function __construct(int $handlerType)
     {
@@ -34,7 +34,13 @@ abstract class ProducerBase extends HandlerBase
         $this->msgData = [
             'msg_id' => Tool::createNonceStr(8, 'numlower') . Tool::getNowTime(),
             'handler_type' => $handlerType,
-            'data' => []
+            'app_id' => '', //应用ID
+            'senders' => [], //发送人
+            'receivers' => [], //接收人
+            'template_id' => '', //模板ID
+            'template_sign' => [], //模板签名
+            'template_params' => [], //模板参数
+            'ext_data' => [], //扩展数据
         ];
     }
 
