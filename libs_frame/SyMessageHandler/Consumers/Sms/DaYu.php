@@ -10,6 +10,8 @@ namespace SyMessageHandler\Consumers\Sms;
 use SyConstant\Project;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
+use SySms\DaYu\SmsSend;
+use SySms\SmsUtilDaYu;
 
 /**
  * Class DaYu
@@ -28,6 +30,13 @@ class DaYu extends ConsumerBase implements IConsumer
 
     public function handleMsgData(array $msgData) : array
     {
-        return [];
+        $smsSend = new SmsSend();
+        $smsSend->setRecNumList($msgData['receivers']);
+        $smsSend->setSignName($msgData['template_sign']);
+        $smsSend->setTemplateId($msgData['template_id']);
+        $smsSend->setSmsParams($msgData['template_params']);
+        $handleRes = SmsUtilDaYu::sendServiceRequest($smsSend);
+
+        return $handleRes;
     }
 }

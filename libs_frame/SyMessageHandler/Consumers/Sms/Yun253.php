@@ -10,6 +10,8 @@ namespace SyMessageHandler\Consumers\Sms;
 use SyConstant\Project;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
+use SySms\SmsUtilYun253;
+use SySms\Yun253\SmsSend;
 
 /**
  * Class Yun253
@@ -28,6 +30,11 @@ class Yun253 extends ConsumerBase implements IConsumer
 
     public function handleMsgData(array $msgData) : array
     {
-        return [];
+        $smsSend = new SmsSend();
+        $smsSend->setPhoneList($msgData['receivers']);
+        $smsSend->setSignNameAndMsg($msgData['template_sign'], $msgData['template_params']['msg']);
+        $handleRes = SmsUtilYun253::sendServiceRequest($smsSend);
+
+        return $handleRes;
     }
 }

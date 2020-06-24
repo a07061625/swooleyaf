@@ -28,6 +28,17 @@ class CorpChat extends ConsumerBase implements IConsumer
 
     public function handleMsgData(array $msgData) : array
     {
-        return [];
+        $handleRes = [
+            'code' => 0,
+        ];
+
+        $handleRes['code'] = $sendRes['code'];
+        if ($sendRes['code'] > 0) {
+            $handleRes['msg'] = $sendRes['data'];
+        } else {
+            $handleRes['data'] = $sendRes['message'];
+        }
+
+        return $handleRes;
     }
 }
