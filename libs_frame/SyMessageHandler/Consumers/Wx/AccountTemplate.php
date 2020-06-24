@@ -10,6 +10,7 @@ namespace SyMessageHandler\Consumers\Wx;
 use SyConstant\Project;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
+use Wx\Account\Message\TemplateMsgSend;
 
 /**
  * Class AccountTemplate
@@ -32,11 +33,22 @@ class AccountTemplate extends ConsumerBase implements IConsumer
             'code' => 0,
         ];
 
-        $handleRes['code'] = $sendRes['code'];
+        $templateMsg = new TemplateMsgSend($msgData['app_id']);
+        $templateMsg->setOpenid($msgData['receivers'][0]);
+        $templateMsg->setTemplateId($msgData['template_id']);
+        $templateMsg->setTemplateData($msgData['template_params']);
+        if (strlen($msgData['ext_data']['redirect_url']) > 0) {
+            $templateMsg->setRedirectUrl($msgData['ext_data']['redirect_url']);
+        }
+        if (!empty($msgData['ext_data']['mini_params'])) {
+            $templateMsg->setMiniProgram($msgData['ext_data']['mini_params']);
+        }
+        $sendRes = $templateMsg->getDetail();
         if ($sendRes['code'] > 0) {
-            $handleRes['msg'] = $sendRes['data'];
+            $handleRes['code'] = $sendRes['code'];
+            $handleRes['msg'] = $sendRes['message'];
         } else {
-            $handleRes['data'] = $sendRes['message'];
+            $handleRes['data'] = $sendRes['data'];
         }
 
         return $handleRes;

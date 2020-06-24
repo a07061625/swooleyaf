@@ -10,6 +10,7 @@ namespace SyMessageHandler\Consumers\Wx;
 use SyConstant\Project;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
+use Wx\Account\Message\CustomMsgSend;
 
 /**
  * Class AccountMessageCustom
@@ -32,11 +33,18 @@ class AccountMessageCustom extends ConsumerBase implements IConsumer
             'code' => 0,
         ];
 
-        $handleRes['code'] = $sendRes['code'];
+        $messageCustom = new CustomMsgSend($msgData['app_id']);
+        $messageCustom->setOpenid($msgData['receivers'][0]);
+        $messageCustom->setMsgInfo($msgData['template_params']['type'], $msgData['template_params']['data']);
+        if (strlen($msgData['ext_data']['access_token']) > 0) {
+            $messageCustom->setAccessToken($msgData['ext_data']['access_token']);
+        }
+        $sendRes = $messageCustom->getDetail();
         if ($sendRes['code'] > 0) {
-            $handleRes['msg'] = $sendRes['data'];
+            $handleRes['code'] = $sendRes['code'];
+            $handleRes['msg'] = $sendRes['message'];
         } else {
-            $handleRes['data'] = $sendRes['message'];
+            $handleRes['data'] = $sendRes['data'];
         }
 
         return $handleRes;

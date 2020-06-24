@@ -39,11 +39,11 @@ class ConversationAsync extends ConsumerBase implements IConsumer
         $corpAsyncSend->setToAllUser($msgData['receivers']['all_user']);
         $corpAsyncSend->setMsgData($msgData['template_params']['type'], $msgData['template_params']['data']);
         $sendRes = $corpAsyncSend->getDetail();
-        $handleRes['code'] = $sendRes['code'];
         if ($sendRes['code'] > 0) {
-            $handleRes['msg'] = $sendRes['data'];
+            $handleRes['code'] = $sendRes['code'];
+            $handleRes['msg'] = $sendRes['message'];
         } else {
-            $handleRes['data'] = $sendRes['message'];
+            $handleRes['data'] = $sendRes['data'];
         }
 
         return $handleRes;
