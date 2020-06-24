@@ -10,6 +10,7 @@ namespace SyMessageHandler\Consumers\Wx;
 use SyConstant\Project;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
+use Wx\Account\Message\MassPreview;
 
 /**
  * Class AccountMassPreview
@@ -32,11 +33,20 @@ class AccountMassPreview extends ConsumerBase implements IConsumer
             'code' => 0,
         ];
 
-        $handleRes['code'] = $sendRes['code'];
+        $massPreview = new MassPreview($msgData['app_id']);
+        $massPreview->setMsgData($msgData['template_params']['type'], $msgData['template_params']['data']);
+        if (strlen($msgData['receivers']['openid']) > 0) {
+            $massPreview->setOpenid($msgData['receivers']['openid']);
+        }
+        if (strlen($msgData['receivers']['wx_name']) > 0) {
+            $massPreview->setWxName($msgData['receivers']['wx_name']);
+        }
+        $sendRes = $massPreview->getDetail();
         if ($sendRes['code'] > 0) {
-            $handleRes['msg'] = $sendRes['data'];
+            $handleRes['code'] = $sendRes['code'];
+            $handleRes['msg'] = $sendRes['message'];
         } else {
-            $handleRes['data'] = $sendRes['message'];
+            $handleRes['data'] = $sendRes['data'];
         }
 
         return $handleRes;

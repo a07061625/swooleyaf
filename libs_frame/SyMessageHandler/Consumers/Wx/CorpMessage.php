@@ -10,6 +10,7 @@ namespace SyMessageHandler\Consumers\Wx;
 use SyConstant\Project;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
+use Wx\Corp\Message\MessageSend;
 
 /**
  * Class CorpMessage
@@ -32,11 +33,18 @@ class CorpMessage extends ConsumerBase implements IConsumer
             'code' => 0,
         ];
 
-        $handleRes['code'] = $sendRes['code'];
+        $messageSend = new MessageSend($msgData['app_id'], $msgData['ext_data']['agent_tag']);
+        $messageSend->setUserList($msgData['receivers']['user_list']);
+        $messageSend->setPartyList($msgData['receivers']['party_list']);
+        $messageSend->setTagList($msgData['receivers']['tag_list']);
+        $messageSend->setMsgData($msgData['template_params']['type'], $msgData['template_params']['data']);
+        $messageSend->setSafe($msgData['ext_data']['safe']);
+        $sendRes = $messageSend->getDetail();
         if ($sendRes['code'] > 0) {
-            $handleRes['msg'] = $sendRes['data'];
+            $handleRes['code'] = $sendRes['code'];
+            $handleRes['msg'] = $sendRes['message'];
         } else {
-            $handleRes['data'] = $sendRes['message'];
+            $handleRes['data'] = $sendRes['data'];
         }
 
         return $handleRes;

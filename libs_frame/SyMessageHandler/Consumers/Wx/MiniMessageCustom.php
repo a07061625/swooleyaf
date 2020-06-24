@@ -32,11 +32,11 @@ class MiniMessageCustom extends ConsumerBase implements IConsumer
             'code' => 0,
         ];
 
-        $handleRes['code'] = $sendRes['code'];
         if ($sendRes['code'] > 0) {
-            $handleRes['msg'] = $sendRes['data'];
+            $handleRes['code'] = $sendRes['code'];
+            $handleRes['msg'] = $sendRes['message'];
         } else {
-            $handleRes['data'] = $sendRes['message'];
+            $handleRes['data'] = $sendRes['data'];
         }
 
         return $handleRes;
