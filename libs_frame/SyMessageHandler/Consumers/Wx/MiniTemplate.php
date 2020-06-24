@@ -10,6 +10,7 @@ namespace SyMessageHandler\Consumers\Wx;
 use SyConstant\Project;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
+use Wx\Mini\MsgTemplateSend;
 
 /**
  * Class MiniTemplate
@@ -32,6 +33,18 @@ class MiniTemplate extends ConsumerBase implements IConsumer
             'code' => 0,
         ];
 
+        $messageTemplate = new MsgTemplateSend($msgData['app_id']);
+        $messageTemplate->setOpenid($msgData['receivers'][0]);
+        $messageTemplate->setFormId($msgData['ext_data']['form_id']);
+        $messageTemplate->setTemplateId($msgData['template_id']);
+        $messageTemplate->setData($msgData['template_params']);
+        if (strlen($msgData['ext_data']['redirect_url']) > 0) {
+            $messageTemplate->setRedirectUrl($msgData['ext_data']['redirect_url']);
+        }
+        if (strlen($msgData['ext_data']['emphasis_keyword']) > 0) {
+            $messageTemplate->setEmphasisKeyword($msgData['ext_data']['emphasis_keyword']);
+        }
+        $sendRes = $messageTemplate->getDetail();
         if ($sendRes['code'] > 0) {
             $handleRes['code'] = $sendRes['code'];
             $handleRes['msg'] = $sendRes['message'];
