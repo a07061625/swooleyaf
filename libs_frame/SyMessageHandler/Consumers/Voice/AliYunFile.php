@@ -7,9 +7,14 @@
  */
 namespace SyMessageHandler\Consumers\Voice;
 
+use AliOpen\Core\DefaultAcsClient;
+use AliOpen\Core\Profile\DefaultProfile;
+use DesignPatterns\Singletons\VmsConfigSingleton;
+use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
+use SyVms\AliYun\CallByVoiceSingleRequest;
 
 /**
  * Class AliYunFile
@@ -28,6 +33,29 @@ class AliYunFile extends ConsumerBase implements IConsumer
 
     public function handleMsgData(array $msgData) : array
     {
-        return [];
+        $handleRes = [
+            'code' => 0,
+        ];
+
+        $config = VmsConfigSingleton::getInstance()->getAliYunConfig();
+        $iClientProfile = DefaultProfile::getProfile($config->getRegionId(), $config->getAppKey(), $config->getAppSecret());
+        $client = new DefaultAcsClient($iClientProfile);
+        $callVoice = new CallByVoiceSingleRequest();
+        $callVoice->setCalledNumber($msgData['receivers'][0]);
+        $callVoice->setCalledShowNumber($msgData['ext_data']['show_number']);
+        $callVoice->setVoiceCode($msgData['ext_data']['voice_id']);
+        $callVoice->setPlayTimes($msgData['ext_data']['play_times']);
+        $callVoice->setVolume($msgData['ext_data']['volume']);
+        $callVoice->setSpeed($msgData['ext_data']['speed']);
+        $callVoice->setOutId($msgData['ext_data']['out_id']);
+        $sendRes = $client->getAcsResponse($callVoice);
+        if ($sendRes['Code'] == 'OK') {
+            $handleRes['data'] = $sendRes;
+        } else {
+            $handleRes['code'] = ErrorCode::VMS_REQ_ALIYUN_ERROR;
+            $handleRes['msg'] = $sendRes['Message'];
+        }
+
+        return $handleRes;
     }
 }

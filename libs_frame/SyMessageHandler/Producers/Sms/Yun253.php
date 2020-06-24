@@ -7,6 +7,7 @@
  */
 namespace SyMessageHandler\Producers\Sms;
 
+use DesignPatterns\Singletons\SmsConfigSingleton;
 use SyConstant\Project;
 use SyMessageHandler\ProducerBase;
 use SyMessageHandler\IProducer;
@@ -28,7 +29,29 @@ class Yun253 extends ProducerBase implements IProducer
 
     public function checkMsgData(array $msgData) : string
     {
-        $checkRes = '';
-        return $checkRes;
+        $receivers = $msgData['receivers'] ?? [];
+        if (!is_array($receivers)) {
+            return '接收人不合法';
+        } elseif (empty($receivers)) {
+            return '接收人不能为空';
+        }
+        $templateSign = $msgData['template_sign'] ?? '';
+        if (!is_string($templateSign)) {
+            return '模板签名不合法';
+        } elseif (strlen($templateSign) == 0) {
+            return '模板签名不能为空';
+        }
+        $templateMsg = $msgData['template_msg'] ?? '';
+        if (!is_string($templateMsg)) {
+            return '模板消息不合法';
+        } elseif (strlen($templateMsg) == 0) {
+            return '模板消息不能为空';
+        }
+
+        $this->msgData['app_id'] = SmsConfigSingleton::getInstance()->getYun253Config()->getAppKey();
+        $this->msgData['receivers'] = $receivers;
+        $this->msgData['template_sign'] = $templateSign;
+        $this->msgData['template_params']['msg'] = $templateMsg;
+        return '';
     }
 }
