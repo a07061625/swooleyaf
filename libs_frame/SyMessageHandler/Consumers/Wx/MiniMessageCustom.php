@@ -10,6 +10,7 @@ namespace SyMessageHandler\Consumers\Wx;
 use SyConstant\Project;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
+use Wx\Mini\CustomMsgSend;
 
 /**
  * Class MiniMessageCustom
@@ -32,6 +33,10 @@ class MiniMessageCustom extends ConsumerBase implements IConsumer
             'code' => 0,
         ];
 
+        $messageCustom = new CustomMsgSend($msgData['app_id']);
+        $messageCustom->setOpenid($msgData['receivers'][0]);
+        $messageCustom->setMsgInfo($msgData['template_params']['type'], $msgData['template_params']['data']);
+        $sendRes = $messageCustom->getDetail();
         if ($sendRes['code'] > 0) {
             $handleRes['code'] = $sendRes['code'];
             $handleRes['msg'] = $sendRes['message'];
