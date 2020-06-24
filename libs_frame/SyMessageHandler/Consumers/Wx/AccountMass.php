@@ -10,6 +10,7 @@ namespace SyMessageHandler\Consumers\Wx;
 use SyConstant\Project;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
+use Wx\Account\Message\MassSend;
 
 /**
  * Class AccountMass
@@ -32,11 +33,15 @@ class AccountMass extends ConsumerBase implements IConsumer
             'code' => 0,
         ];
 
-        $handleRes['code'] = $sendRes['code'];
+        $massSend = new MassSend($msgData['app_id']);
+        $massSend->setOpenidList($msgData['receivers']['openid_list']);
+        $massSend->setMsgData($msgData['template_params']['type'], $msgData['template_params']['data']);
+        $sendRes = $massSend->getDetail();
         if ($sendRes['code'] > 0) {
-            $handleRes['msg'] = $sendRes['data'];
+            $handleRes['code'] = $sendRes['code'];
+            $handleRes['msg'] = $sendRes['message'];
         } else {
-            $handleRes['data'] = $sendRes['message'];
+            $handleRes['data'] = $sendRes['data'];
         }
 
         return $handleRes;

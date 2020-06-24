@@ -38,11 +38,11 @@ class Conversation extends ConsumerBase implements IConsumer
         $conversationSend->setCid($msgData['receivers'][0]);
         $conversationSend->setMsgData($msgData['template_params']['type'], $msgData['template_params']['data']);
         $sendRes = $conversationSend->getDetail();
-        $handleRes['code'] = $sendRes['code'];
         if ($sendRes['code'] > 0) {
-            $handleRes['msg'] = $sendRes['data'];
+            $handleRes['code'] = $sendRes['code'];
+            $handleRes['msg'] = $sendRes['message'];
         } else {
-            $handleRes['data'] = $sendRes['message'];
+            $handleRes['data'] = $sendRes['data'];
         }
 
         return $handleRes;

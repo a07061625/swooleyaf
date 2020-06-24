@@ -10,6 +10,7 @@ namespace SyMessageHandler\Consumers\Wx;
 use SyConstant\Project;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
+use Wx\Corp\Message\AppChatSend;
 
 /**
  * Class CorpChat
@@ -32,11 +33,16 @@ class CorpChat extends ConsumerBase implements IConsumer
             'code' => 0,
         ];
 
-        $handleRes['code'] = $sendRes['code'];
+        $chatSend = new AppChatSend($msgData['app_id'], $msgData['ext_data']['agent_tag']);
+        $chatSend->setChatId($msgData['receivers'][0]);
+        $chatSend->setMsgData($msgData['template_params']['type'], $msgData['template_params']['data']);
+        $chatSend->setSafe($msgData['ext_data']['safe']);
+        $sendRes = $chatSend->getDetail();
         if ($sendRes['code'] > 0) {
-            $handleRes['msg'] = $sendRes['data'];
+            $handleRes['code'] = $sendRes['code'];
+            $handleRes['msg'] = $sendRes['message'];
         } else {
-            $handleRes['data'] = $sendRes['message'];
+            $handleRes['data'] = $sendRes['data'];
         }
 
         return $handleRes;

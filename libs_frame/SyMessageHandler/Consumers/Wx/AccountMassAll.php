@@ -10,6 +10,7 @@ namespace SyMessageHandler\Consumers\Wx;
 use SyConstant\Project;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
+use Wx\Account\Message\MassSendAll;
 
 /**
  * Class AccountMassAll
@@ -32,11 +33,16 @@ class AccountMassAll extends ConsumerBase implements IConsumer
             'code' => 0,
         ];
 
-        $handleRes['code'] = $sendRes['code'];
+        $massSendAll = new MassSendAll($msgData['app_id']);
+        $massSendAll->setFilter($msgData['receivers']['filter']);
+        $massSendAll->setMsgData($msgData['template_params']['type'], $msgData['template_params']['data']);
+        $massSendAll->setClientMsgId($msgData['ext_data']['msg_id']);
+        $sendRes = $massSendAll->getDetail();
         if ($sendRes['code'] > 0) {
-            $handleRes['msg'] = $sendRes['data'];
+            $handleRes['code'] = $sendRes['code'];
+            $handleRes['msg'] = $sendRes['message'];
         } else {
-            $handleRes['data'] = $sendRes['message'];
+            $handleRes['data'] = $sendRes['data'];
         }
 
         return $handleRes;
