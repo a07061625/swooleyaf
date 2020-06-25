@@ -7,12 +7,14 @@
  */
 namespace DesignPatterns\Singletons;
 
+use DesignPatterns\Factories\CacheSimpleFactory;
 use SyConstant\ErrorCode;
+use SyConstant\Project;
 use SyException\MessageHandler\MessageHandlerException;
 use SyLog\Log;
 use SyMessageHandler\ConsumerContainer;
 use SyMessageHandler\ProducerContainer;
-use SyMessageQueue\Redis\Producer;
+use SyTool\Tool;
 use SyTrait\SingletonTrait;
 
 /**
@@ -71,9 +73,8 @@ class MessageHandlerSingleton
         }
 
         $trueData = $obj->getMsgData();
-        Producer::getInstance()->addTopicData($obj->getMsgTopic(), [
-            0 => $trueData,
-        ]);
+        $redisKey = Project::REDIS_PREFIX_MESSAGE_HANDLER_TOPIC . Project::MESSAGE_HANDLER_TOPIC;
+        CacheSimpleFactory::getRedisInstance()->rPush($redisKey, Tool::jsonEncode($trueData, JSON_UNESCAPED_UNICODE));
 
         return $trueData;
     }

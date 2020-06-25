@@ -7,50 +7,13 @@
  */
 namespace SyMessageQueue\Rabbit;
 
-use SyConstant\ErrorCode;
-use SyException\Amqp\AmqpException;
 use SyTool\Tool;
 
-class Producer
+class Producer extends Basic
 {
-    /**
-     * @var \AMQPConnection|null
-     */
-    private $conn = null;
-    /**
-     * @var \AMQPExchange|null
-     */
-    private $exchange = null;
-
-    public function __construct()
+    public function __construct(string $topicPrefix)
     {
-        $configs = Tool::getConfig('messagequeue.' . SY_ENV . SY_PROJECT . '.rabbit');
-
-        try {
-            $this->conn = new \AMQPConnection($configs['conn']);
-            $this->conn->connect();
-
-            $channel = new \AMQPChannel($this->conn);
-            if (!$channel->isConnected()) {
-                throw new AmqpException('amqp channel连接出错', ErrorCode::AMQP_CONNECT_ERROR);
-            }
-
-            $exchangeName = 'exchange' . SY_ENV . SY_PROJECT;
-            $this->exchange = new \AMQPExchange($channel);
-            $this->exchange->setFlags(AMQP_DURABLE); //持久化
-            $this->exchange->setName($exchangeName);
-            $this->exchange->setType(AMQP_EX_TYPE_TOPIC);
-            $this->exchange->declareExchange();
-
-            $queue = new \AMQPQueue($channel);
-            $queue->setName('queue' . SY_ENV . SY_PROJECT);
-            $queue->setFlags(AMQP_DURABLE);
-            $queue->declareQueue();
-            $queue->bind($exchangeName, SY_ENV . SY_PROJECT . '.*');
-        } catch (\Exception $e) {
-            $this->destroy();
-            throw $e;
-        }
+        parent::__construct($topicPrefix, '1');
     }
 
     public function __destruct()
@@ -66,25 +29,17 @@ class Producer
      * 发送主题数据
      * @param string $topic
      * @param array $data
+     * @throws \AMQPChannelException
+     * @throws \AMQPConnectionException
+     * @throws \AMQPExchangeException
      */
     public function sendTopicData(string $topic, array $data)
     {
-        $trueTopic = SY_ENV . SY_PROJECT . '.' . $topic;
+        $trueTopic = $this->topicPrefix . '.' . $topic;
         foreach ($data as $eData) {
             $this->exchange->publish(Tool::jsonEncode($eData, JSON_UNESCAPED_UNICODE), $trueTopic, AMQP_MANDATORY, [
                 'delivery_mode' => 2,
             ]);
-        }
-    }
-
-    private function destroy()
-    {
-        if (!is_null($this->exchange)) {
-            $this->exchange = null;
-        }
-        if (!is_null($this->conn)) {
-            $this->conn->disconnect();
-            $this->conn = null;
         }
     }
 }

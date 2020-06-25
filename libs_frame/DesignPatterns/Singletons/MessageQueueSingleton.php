@@ -8,6 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use SyConstant\ErrorCode;
+use SyConstant\Project;
 use SyException\MessageQueue\MessageQueueException;
 use RdKafka\Conf;
 use RdKafka\KafkaConsumer;
@@ -37,11 +38,19 @@ class MessageQueueSingleton
     /**
      * @var \SyMessageQueue\Rabbit\Producer
      */
-    private $rabbitProducer = null;
+    private $rabbitProducerCommon = null;
     /**
      * @var \SyMessageQueue\Rabbit\Consumer
      */
-    private $rabbitConsumer = null;
+    private $rabbitConsumerCommon = null;
+    /**
+     * @var \SyMessageQueue\Rabbit\Producer
+     */
+    private $rabbitProducerMessageHandler = null;
+    /**
+     * @var \SyMessageQueue\Rabbit\Consumer
+     */
+    private $rabbitConsumerMessageHandler = null;
 
     private function __construct()
     {
@@ -149,24 +158,48 @@ class MessageQueueSingleton
     /**
      * @return \SyMessageQueue\Rabbit\Producer
      */
-    public function getRabbitProducer()
+    public function producerRabbitCommon()
     {
-        if (is_null($this->rabbitProducer)) {
-            $this->rabbitProducer = new RabbitProducer();
+        if (is_null($this->rabbitProducerCommon)) {
+            $this->rabbitProducerCommon = new RabbitProducer(Project::MESSAGE_QUEUE_TOPIC_PREFIX_RABBIT_COMMON);
         }
 
-        return $this->rabbitProducer;
+        return $this->rabbitProducerCommon;
     }
 
     /**
      * @return \SyMessageQueue\Rabbit\Consumer
      */
-    public function getRabbitConsumer()
+    public function consumerRabbitCommon()
     {
-        if (is_null($this->rabbitConsumer)) {
-            $this->rabbitConsumer = new RabbitConsumer();
+        if (is_null($this->rabbitConsumerCommon)) {
+            $this->rabbitConsumerCommon = new RabbitConsumer(Project::MESSAGE_QUEUE_TOPIC_PREFIX_RABBIT_COMMON);
         }
 
-        return $this->rabbitConsumer;
+        return $this->rabbitConsumerCommon;
+    }
+
+    /**
+     * @return \SyMessageQueue\Rabbit\Producer
+     */
+    public function producerRabbitMessageHandler()
+    {
+        if (is_null($this->rabbitProducerMessageHandler)) {
+            $this->rabbitProducerMessageHandler = new RabbitProducer(Project::MESSAGE_QUEUE_TOPIC_PREFIX_RABBIT_MESSAGE_HANDLER);
+        }
+
+        return $this->rabbitProducerMessageHandler;
+    }
+
+    /**
+     * @return \SyMessageQueue\Rabbit\Consumer
+     */
+    public function consumerRabbitMessageHandler()
+    {
+        if (is_null($this->rabbitConsumerMessageHandler)) {
+            $this->rabbitConsumerMessageHandler = new RabbitConsumer(Project::MESSAGE_QUEUE_TOPIC_PREFIX_RABBIT_MESSAGE_HANDLER);
+        }
+
+        return $this->rabbitConsumerMessageHandler;
     }
 }

@@ -53,6 +53,7 @@ class ProjectBase
     const REDIS_PREFIX_CODE_WEBHOOK_COMMAND = 'sy' . SY_PROJECT . '20402_'; //前缀-代码WebHook命令
     const REDIS_PREFIX_CODE_WEBHOOK_INFO = 'sy' . SY_PROJECT . '20403_'; //前缀-代码WebHook信息
     const REDIS_PREFIX_LIVE_EDUCATION_BJY = 'sy' . SY_PROJECT . '20500_'; //前缀-百家云教育直播
+    const REDIS_PREFIX_MESSAGE_HANDLER_TOPIC = 'sy' . SY_PROJECT . '20600_'; //前缀-消息处理主题
 
     //YAC常量,以0000开头的前缀为框架内部前缀,并键名总长度不超过48个字符串
     const YAC_PREFIX_FUSE = '0000'; //前缀-熔断器
@@ -166,6 +167,9 @@ class ProjectBase
     const MESSAGE_QUEUE_TYPE_REDIS = 'redis'; //类型-redis
     const MESSAGE_QUEUE_TYPE_KAFKA = 'kafka'; //类型-kafka
     const MESSAGE_QUEUE_TYPE_RABBIT = 'rabbit'; //类型-rabbit
+    //主题前缀 后三位纯数字的为框架内部自用,其他的为业务使用
+    const MESSAGE_QUEUE_TOPIC_PREFIX_RABBIT_COMMON = SY_ENV . SY_PROJECT . '000'; //rabbit-通用
+    const MESSAGE_QUEUE_TOPIC_PREFIX_RABBIT_MESSAGE_HANDLER = SY_ENV . SY_PROJECT . '001'; //rabbit-消息处理
 
     //服务预处理常量,标识长度为5位,第一位固定为/,后四位代表不同预处理操作,其中后四位全为数字的为框架内部预留标识
     const PRE_PROCESS_TAG_HTTP_FRAME_SERVER_INFO = '/0000'; //HTTP服务框架内部标识-服务信息
@@ -191,6 +195,7 @@ class ProjectBase
     ];
 
     //消息处理常量,小于1000000的为框架内部用
+    const MESSAGE_HANDLER_TOPIC = 'msghandler'; //主题
     const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS = 10000; //类型-微信公众号-openid群发消息
     const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_PREVIEW = 10001; //类型-微信公众号-群发预览消息
     const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_ALL = 10002; //类型-微信公众号-分组群发消息
