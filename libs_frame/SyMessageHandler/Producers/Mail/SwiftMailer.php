@@ -8,7 +8,7 @@
 namespace SyMessageHandler\Producers\Mail;
 
 use DesignPatterns\Singletons\SmsConfigSingleton;
-use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyMessageHandler\IProducer;
 use SyMessageHandler\ProducerBase;
 
@@ -20,7 +20,7 @@ class SwiftMailer  extends ProducerBase implements IProducer
 {
     public function __construct()
     {
-        parent::__construct(Project::MESSAGE_HANDLER_TYPE_MAIL_SWIFT);
+        parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_MAIL_SWIFT);
     }
 
     private function __clone()

@@ -8,7 +8,7 @@
 namespace SyMessageHandler\Producers\Voice;
 
 use DesignPatterns\Singletons\VmsConfigSingleton;
-use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyMessageHandler\ProducerBase;
 use SyMessageHandler\IProducer;
 
@@ -20,7 +20,7 @@ class QCloudCode extends ProducerBase implements IProducer
 {
     public function __construct()
     {
-        parent::__construct(Project::MESSAGE_HANDLER_TYPE_VOICE_QCLOUD_CODE);
+        parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_VOICE_QCLOUD_CODE);
     }
 
     private function __clone()

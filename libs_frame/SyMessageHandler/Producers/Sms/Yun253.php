@@ -8,7 +8,7 @@
 namespace SyMessageHandler\Producers\Sms;
 
 use DesignPatterns\Singletons\SmsConfigSingleton;
-use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyMessageHandler\ProducerBase;
 use SyMessageHandler\IProducer;
 
@@ -20,7 +20,7 @@ class Yun253 extends ProducerBase implements IProducer
 {
     public function __construct()
     {
-        parent::__construct(Project::MESSAGE_HANDLER_TYPE_SMS_YUN253);
+        parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_SMS_YUN253);
     }
 
     private function __clone()

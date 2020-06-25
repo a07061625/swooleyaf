@@ -8,7 +8,7 @@
 namespace SyMessageHandler\Consumers\Mail;
 
 use Mailer\SySwiftMailer;
-use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
 
@@ -20,7 +20,7 @@ class SwiftMailer extends ConsumerBase implements IConsumer
 {
     public function __construct()
     {
-        parent::__construct(Project::MESSAGE_HANDLER_TYPE_MAIL_SWIFT);
+        parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_MAIL_SWIFT);
     }
 
     private function __clone()

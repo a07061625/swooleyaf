@@ -11,7 +11,7 @@ use AliOpen\Core\DefaultAcsClient;
 use AliOpen\Core\Profile\DefaultProfile;
 use DesignPatterns\Singletons\SmsConfigSingleton;
 use SyConstant\ErrorCode;
-use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
 use SySms\AliYun\SmsSendRequest;
@@ -25,7 +25,7 @@ class AliYunSingle extends ConsumerBase implements IConsumer
 {
     public function __construct()
     {
-        parent::__construct(Project::MESSAGE_HANDLER_TYPE_SMS_ALIYUN_SINGLE);
+        parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_SMS_ALIYUN_SINGLE);
     }
 
     private function __clone()

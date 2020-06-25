@@ -7,7 +7,7 @@
  */
 namespace SyMessageHandler\Producers\Wx;
 
-use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyMessageHandler\ProducerBase;
 use SyMessageHandler\IProducer;
 
@@ -19,7 +19,7 @@ class AccountMassPreview extends ProducerBase implements IProducer
 {
     public function __construct()
     {
-        parent::__construct(Project::MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_PREVIEW);
+        parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_PREVIEW);
     }
 
     private function __clone()
