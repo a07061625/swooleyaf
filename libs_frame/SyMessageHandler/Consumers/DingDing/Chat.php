@@ -8,7 +8,7 @@
 namespace SyMessageHandler\Consumers\DingDing;
 
 use DingDing\Corp\Chat\ChatSend;
-use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
 
@@ -20,7 +20,7 @@ class Chat extends ConsumerBase implements IConsumer
 {
     public function __construct()
     {
-        parent::__construct(Project::MESSAGE_HANDLER_TYPE_DINGDING_CHAT);
+        parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_DINGDING_CHAT);
     }
 
     private function __clone()

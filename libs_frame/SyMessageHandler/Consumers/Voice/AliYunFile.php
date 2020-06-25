@@ -11,7 +11,7 @@ use AliOpen\Core\DefaultAcsClient;
 use AliOpen\Core\Profile\DefaultProfile;
 use DesignPatterns\Singletons\VmsConfigSingleton;
 use SyConstant\ErrorCode;
-use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
 use SyVms\AliYun\CallByVoiceSingleRequest;
@@ -24,7 +24,7 @@ class AliYunFile extends ConsumerBase implements IConsumer
 {
     public function __construct()
     {
-        parent::__construct(Project::MESSAGE_HANDLER_TYPE_VOICE_ALIYUN_FILE);
+        parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_VOICE_ALIYUN_FILE);
     }
 
     private function __clone()

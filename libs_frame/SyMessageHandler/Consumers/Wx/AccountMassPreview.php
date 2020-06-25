@@ -7,7 +7,7 @@
  */
 namespace SyMessageHandler\Consumers\Wx;
 
-use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
 use Wx\Account\Message\MassPreview;
@@ -20,7 +20,7 @@ class AccountMassPreview extends ConsumerBase implements IConsumer
 {
     public function __construct()
     {
-        parent::__construct(Project::MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_PREVIEW);
+        parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_PREVIEW);
     }
 
     private function __clone()

@@ -7,7 +7,7 @@
  */
 namespace SyMessageHandler\Consumers\Sms;
 
-use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
 use SySms\SmsUtilYun253;
@@ -21,7 +21,7 @@ class Yun253 extends ConsumerBase implements IConsumer
 {
     public function __construct()
     {
-        parent::__construct(Project::MESSAGE_HANDLER_TYPE_SMS_YUN253);
+        parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_SMS_YUN253);
     }
 
     private function __clone()

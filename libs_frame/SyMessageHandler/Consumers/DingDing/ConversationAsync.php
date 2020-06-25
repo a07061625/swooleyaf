@@ -8,7 +8,7 @@
 namespace SyMessageHandler\Consumers\DingDing;
 
 use DingDing\Corp\Message\CorpAsyncSend;
-use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
 
@@ -20,7 +20,7 @@ class ConversationAsync extends ConsumerBase implements IConsumer
 {
     public function __construct()
     {
-        parent::__construct(Project::MESSAGE_HANDLER_TYPE_DINGDING_CONVERSATION_ASYNC);
+        parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_DINGDING_CONVERSATION_ASYNC);
     }
 
     private function __clone()

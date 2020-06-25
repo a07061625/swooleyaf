@@ -11,7 +11,7 @@ use AliOpen\Core\DefaultAcsClient;
 use AliOpen\Core\Profile\DefaultProfile;
 use DesignPatterns\Singletons\VmsConfigSingleton;
 use SyConstant\ErrorCode;
-use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
 use SyTool\Tool;
@@ -25,7 +25,7 @@ class AliYunTts extends ConsumerBase implements IConsumer
 {
     public function __construct()
     {
-        parent::__construct(Project::MESSAGE_HANDLER_TYPE_VOICE_ALIYUN_TTS);
+        parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_VOICE_ALIYUN_TTS);
     }
 
     private function __clone()
