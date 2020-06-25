@@ -11,6 +11,8 @@ use SyConstant\Project;
 use SyMessageHandler\Consumers\DingDing\Chat;
 use SyMessageHandler\Consumers\DingDing\Conversation;
 use SyMessageHandler\Consumers\DingDing\ConversationAsync;
+use SyMessageHandler\Consumers\Mail\PhpMailer;
+use SyMessageHandler\Consumers\Mail\SwiftMailer;
 use SyMessageHandler\Consumers\Sms\AliYunBatch;
 use SyMessageHandler\Consumers\Sms\AliYunSingle;
 use SyMessageHandler\Consumers\Sms\DaYu;
@@ -63,6 +65,8 @@ class ConsumerContainer extends BaseContainer
             Project::MESSAGE_HANDLER_TYPE_SMS_ALIYUN_BATCH => 1,
             Project::MESSAGE_HANDLER_TYPE_SMS_DAYU => 1,
             Project::MESSAGE_HANDLER_TYPE_SMS_YUN253 => 1,
+            Project::MESSAGE_HANDLER_TYPE_MAIL_PHP => 1,
+            Project::MESSAGE_HANDLER_TYPE_MAIL_SWIFT => 1,
         ];
 
         $this->bind((string)Project::MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS, function(){
@@ -151,6 +155,14 @@ class ConsumerContainer extends BaseContainer
 
         $this->bind((string)Project::MESSAGE_HANDLER_TYPE_SMS_YUN253, function(){
             return new Yun253();
+        });
+
+        $this->bind((string)Project::MESSAGE_HANDLER_TYPE_MAIL_PHP, function(){
+            return new PhpMailer();
+        });
+
+        $this->bind((string)Project::MESSAGE_HANDLER_TYPE_MAIL_SWIFT, function(){
+            return new SwiftMailer();
         });
     }
 }

@@ -46,7 +46,7 @@ class SySwiftMailer
      * @param string $name
      * @throws \SyException\Mail\MailException
      */
-    public function setSenderNameAndEmail(string $email, string $name)
+    public function setSenderEmailAndName(string $email, string $name)
     {
         $trueName = trim($name);
         if (strlen($trueName) == 0) {
