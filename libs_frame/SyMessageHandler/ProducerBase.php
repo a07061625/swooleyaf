@@ -7,7 +7,6 @@
  */
 namespace SyMessageHandler;
 
-use SyConstant\Project;
 use SyTool\Tool;
 
 /**
@@ -17,11 +16,6 @@ use SyTool\Tool;
 abstract class ProducerBase extends HandlerBase
 {
     /**
-     * 消息主题,数字和字母组成
-     * @var string
-     */
-    private $msgTopic = '';
-    /**
      * 消息数据
      * @var array
      */
@@ -30,7 +24,6 @@ abstract class ProducerBase extends HandlerBase
     public function __construct(int $handlerType)
     {
         parent::__construct($handlerType);
-        $this->msgTopic = Project::$messageHandlerQueues[$handlerType];
         $this->msgData = [
             'msg_id' => Tool::createNonceStr(8, 'numlower') . Tool::getNowTime(),
             'handler_type' => $handlerType,
@@ -42,14 +35,6 @@ abstract class ProducerBase extends HandlerBase
             'template_params' => [], //模板参数
             'ext_data' => [], //扩展数据
         ];
-    }
-
-    /**
-     * @return string
-     */
-    public function getMsgTopic() : string
-    {
-        return $this->msgTopic;
     }
 
     /**

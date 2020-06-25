@@ -7,10 +7,6 @@
  */
 namespace SyMessageHandler;
 
-use SyConstant\ErrorCode;
-use SyConstant\Project;
-use SyException\MessageHandler\MessageHandlerException;
-
 /**
  * Class HandlerBase
  * @package SyMessageHandler
@@ -25,13 +21,9 @@ abstract class HandlerBase
 
     /**
      * @param int $handlerType 处理类型
-     * @throws \SyException\MessageHandler\MessageHandlerException
      */
     public function __construct(int $handlerType)
     {
-        if (!isset(Project::$messageHandlerQueues[$handlerType])) {
-            throw new MessageHandlerException('消息处理类型不支持', ErrorCode::MESSAGE_HANDLER_PARAM_ERROR);
-        }
         $this->handlerType = $handlerType;
     }
 

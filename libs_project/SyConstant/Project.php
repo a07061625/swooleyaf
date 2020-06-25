@@ -55,30 +55,4 @@ final class Project extends ProjectBase
 
     //进程池服务标识常量,4位字符串,数字和字母组成,纯数字的为框架内部服务,其他为自定义服务
     const POOL_PROCESS_SERVICE_TAG_TEST = 'a000'; //服务标识-测试
-
-    //消息处理常量
-    public static $messageHandlerQueues = [
-        self::MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS => 'msga000',
-        self::MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_PREVIEW => 'msga001',
-        self::MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_ALL => 'msga002',
-        self::MESSAGE_HANDLER_TYPE_WX_ACCOUNT_TEMPLATE => 'msga003',
-        self::MESSAGE_HANDLER_TYPE_WX_ACCOUNT_TEMPLATE_SUBSCRIBE => 'msga004',
-        self::MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MESSAGE_CUSTOM => 'msga005',
-        self::MESSAGE_HANDLER_TYPE_WX_CORP_CHAT => 'msga006',
-        self::MESSAGE_HANDLER_TYPE_WX_CORP_MESSAGE => 'msga007',
-        self::MESSAGE_HANDLER_TYPE_WX_CORP_MESSAGE_LINKED => 'msga008',
-        self::MESSAGE_HANDLER_TYPE_WX_MINI_MESSAGE_CUSTOM => 'msga009',
-        self::MESSAGE_HANDLER_TYPE_WX_MINI_TEMPLATE => 'msga010',
-        self::MESSAGE_HANDLER_TYPE_DINGDING_CHAT => 'msga011',
-        self::MESSAGE_HANDLER_TYPE_DINGDING_CONVERSATION => 'msga012',
-        self::MESSAGE_HANDLER_TYPE_DINGDING_CONVERSATION_ASYNC => 'msga013',
-        self::MESSAGE_HANDLER_TYPE_VOICE_ALIYUN_TTS => 'msga014',
-        self::MESSAGE_HANDLER_TYPE_VOICE_ALIYUN_FILE => 'msga015',
-        self::MESSAGE_HANDLER_TYPE_VOICE_QCLOUD_CODE => 'msga016',
-        self::MESSAGE_HANDLER_TYPE_VOICE_QCLOUD_TEMPLATE => 'msga017',
-        self::MESSAGE_HANDLER_TYPE_SMS_ALIYUN_SINGLE => 'msga018',
-        self::MESSAGE_HANDLER_TYPE_SMS_ALIYUN_BATCH => 'msga019',
-        self::MESSAGE_HANDLER_TYPE_SMS_DAYU => 'msga020',
-        self::MESSAGE_HANDLER_TYPE_SMS_YUN253 => 'msga021',
-    ];
 }

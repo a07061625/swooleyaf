@@ -37,7 +37,7 @@ class MessageHandle
 
     private function __construct()
     {
-        $this->queue = MessageQueueSingleton::getInstance()->getRabbitConsumer()->getQueue();
+        $this->queue = MessageQueueSingleton::getInstance()->consumerRabbitCommon()->getQueue();
         $this->container = new RabbitConsumerContainer();
         $this->services = [];
         $this->messageHandleMaxNum = (int)Tool::getConfig('messagequeue.' . SY_ENV . SY_PROJECT . '.rabbit.consumer.msg.handle.max');
