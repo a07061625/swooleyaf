@@ -7,7 +7,7 @@
  */
 namespace SyMessageHandler\Consumers\Wx;
 
-use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyMessageHandler\ConsumerBase;
 use SyMessageHandler\IConsumer;
 use Wx\Corp\Message\LinkedCorpMessageSend;
@@ -20,7 +20,7 @@ class CorpMessageLinked extends ConsumerBase implements IConsumer
 {
     public function __construct()
     {
-        parent::__construct(Project::MESSAGE_HANDLER_TYPE_WX_CORP_MESSAGE_LINKED);
+        parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_WX_CORP_MESSAGE_LINKED);
     }
 
     private function __clone()

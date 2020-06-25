@@ -7,7 +7,7 @@
  */
 namespace SyMessageHandler\Producers\Wx;
 
-use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyMessageHandler\ProducerBase;
 use SyMessageHandler\IProducer;
 
@@ -19,7 +19,7 @@ class MiniTemplate extends ProducerBase implements IProducer
 {
     public function __construct()
     {
-        parent::__construct(Project::MESSAGE_HANDLER_TYPE_WX_MINI_TEMPLATE);
+        parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_WX_MINI_TEMPLATE);
     }
 
     private function __clone()

@@ -2,14 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: 姜伟
- * Date: 2019/2/23 0023
- * Time: 13:59
+ * Date: 2020/6/25 0025
+ * Time: 15:37
  */
-namespace DesignPatterns\Singletons;
+namespace Validator\Containers;
 
 use SyConstant\ProjectBase;
 use SyTool\BaseContainer;
-use SyTrait\SingletonTrait;
 use Validator\Impl\Double\DoubleBetween;
 use Validator\Impl\Double\DoubleMax;
 use Validator\Impl\Double\DoubleMin;
@@ -46,11 +45,13 @@ use Validator\Impl\String\StringUpper;
 use Validator\Impl\String\StringUrl;
 use Validator\Impl\String\StringZh;
 
-class SimpleValidatorSingleton extends BaseContainer
+/**
+ * Class FrameContainer
+ * @package Validator\Containers
+ */
+class FrameContainer extends BaseContainer
 {
-    use SingletonTrait;
-
-    private function __construct()
+    public function __construct()
     {
         $this->registryMap = [
             ProjectBase::VALIDATOR_INT_TYPE_REQUIRED => 1,
@@ -195,17 +196,5 @@ class SimpleValidatorSingleton extends BaseContainer
         $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_JWT, function () {
             return new StringJwt();
         });
-    }
-
-    /**
-     * @return \DesignPatterns\Singletons\SimpleValidatorSingleton
-     */
-    public static function getInstance()
-    {
-        if (is_null(self::$instance)) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
     }
 }
