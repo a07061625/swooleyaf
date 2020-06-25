@@ -218,4 +218,6 @@ class ProjectBase
     const MESSAGE_HANDLER_TYPE_SMS_ALIYUN_BATCH = 23001; //类型-阿里云短信-群发消息
     const MESSAGE_HANDLER_TYPE_SMS_DAYU = 23005; //类型-大鱼短信消息
     const MESSAGE_HANDLER_TYPE_SMS_YUN253 = 23010; //类型-253云短信消息
+    const MESSAGE_HANDLER_TYPE_MAIL_PHP = 24000; //类型-php邮件消息
+    const MESSAGE_HANDLER_TYPE_MAIL_SWIFT = 24001; //类型-swift邮件消息
 }
