@@ -195,3 +195,36 @@ nginx配置: <br/>
      * @SyAspectAfter-\SyAspect\Demo
      */
     public function loginAction()
+
+## 消息处理
+### 添加消息数据
+    $handlerType = \SyConstant\Project::MESSAGE_HANDLER_TYPE_SMS_DAYU;
+    $queueType = \SyConstant\Project::MESSAGE_QUEUE_TYPE_REDIS;
+    //具体的数据格式请参考对应消息生产者的checkMsgData方法,对应的命名空间为\SyMessageHandler\Producers
+    $data = [
+        'receivers' => [
+            '12233334444'
+        ],
+        'template_id' => 'test11233',
+        'template_sign' => '签名测试',
+        'template_params' => [
+            'code' => '123456'
+        ],
+    ];
+    $addRes = \DesignPatterns\Singletons\MessageHandlerSingleton::getInstance()->addMsgData($handlerType, $data, $queueType);
+    //将addRes的数据添加到数据库中,其中msg_id为消息ID,可作为消息处理记录的主键,方便后续查看消息处理的记录以及修改消息处理结果
+### 处理消息数据(消息队列类型必须与添加的时候一致)
+    $queueType = \SyConstant\Project::MESSAGE_QUEUE_TYPE_REDIS;
+    $msgData = \DesignPatterns\Singletons\MessageHandlerSingleton::getInstance()->getMsgData($queueType);
+    if (!empty($msgData)) {
+        try{
+            $handlerRes = \DesignPatterns\Singletons\MessageHandlerSingleton::getInstance()->invokeMsg($msgData);
+        } catch (Exception $e) {
+            \SyLog\Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
+            $handlerRes = [
+                'code' => 9999,
+                'msg' => $e->getMessage(),
+            ];
+        }
+        //通过msgData的msg_id和handlerRes,修改消息处理记录的处理结果
+    }

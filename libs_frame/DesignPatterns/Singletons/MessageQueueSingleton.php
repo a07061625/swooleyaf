@@ -8,7 +8,6 @@
 namespace DesignPatterns\Singletons;
 
 use SyConstant\ErrorCode;
-use SyConstant\Project;
 use SyException\MessageQueue\MessageQueueException;
 use RdKafka\Conf;
 use RdKafka\KafkaConsumer;
@@ -36,21 +35,13 @@ class MessageQueueSingleton
      */
     private $kafkaConsumer = null;
     /**
-     * @var \SyMessageQueue\Rabbit\Producer
+     * @var array
      */
-    private $rabbitProducerCommon = null;
+    private $rabbitConsumers = [];
     /**
-     * @var \SyMessageQueue\Rabbit\Consumer
+     * @var array
      */
-    private $rabbitConsumerCommon = null;
-    /**
-     * @var \SyMessageQueue\Rabbit\Producer
-     */
-    private $rabbitProducerMessageHandler = null;
-    /**
-     * @var \SyMessageQueue\Rabbit\Consumer
-     */
-    private $rabbitConsumerMessageHandler = null;
+    private $rabbitProducers = [];
 
     private function __construct()
     {
@@ -70,6 +61,7 @@ class MessageQueueSingleton
 
     /**
      * @return \SyMessageQueue\ConfigRedis
+     * @throws \SyException\MessageQueue\MessageQueueException
      */
     public function getRedisConfig()
     {
@@ -156,50 +148,54 @@ class MessageQueueSingleton
     }
 
     /**
+     * @param string $tag
      * @return \SyMessageQueue\Rabbit\Producer
      */
-    public function producerRabbitCommon()
+    public function getRabbitProducer(string $tag) : RabbitProducer
     {
-        if (is_null($this->rabbitProducerCommon)) {
-            $this->rabbitProducerCommon = new RabbitProducer(Project::MESSAGE_QUEUE_TOPIC_PREFIX_RABBIT_COMMON);
+        if(!isset($this->rabbitProducers[$tag])){
+            $this->rabbitProducers[$tag] = new RabbitProducer($tag);
         }
 
-        return $this->rabbitProducerCommon;
+        return $this->rabbitProducers[$tag];
+    }
+
+    public function removeRabbitProducer(string $tag)
+    {
+        unset($this->rabbitProducers[$tag]);
     }
 
     /**
+     * @return array
+     */
+    public function getRabbitProducers()
+    {
+        return $this->rabbitProducers;
+    }
+
+    /**
+     * @param string $tag
      * @return \SyMessageQueue\Rabbit\Consumer
      */
-    public function consumerRabbitCommon()
+    public function getRabbitConsumer(string $tag) : RabbitConsumer
     {
-        if (is_null($this->rabbitConsumerCommon)) {
-            $this->rabbitConsumerCommon = new RabbitConsumer(Project::MESSAGE_QUEUE_TOPIC_PREFIX_RABBIT_COMMON);
+        if(!isset($this->rabbitConsumers[$tag])){
+            $this->rabbitConsumers[$tag] = new RabbitConsumer($tag);
         }
 
-        return $this->rabbitConsumerCommon;
+        return $this->rabbitConsumers[$tag];
+    }
+
+    public function removeRabbitConsumer(string $tag)
+    {
+        unset($this->rabbitConsumers[$tag]);
     }
 
     /**
-     * @return \SyMessageQueue\Rabbit\Producer
+     * @return array
      */
-    public function producerRabbitMessageHandler()
+    public function getRabbitConsumers()
     {
-        if (is_null($this->rabbitProducerMessageHandler)) {
-            $this->rabbitProducerMessageHandler = new RabbitProducer(Project::MESSAGE_QUEUE_TOPIC_PREFIX_RABBIT_MESSAGE_HANDLER);
-        }
-
-        return $this->rabbitProducerMessageHandler;
-    }
-
-    /**
-     * @return \SyMessageQueue\Rabbit\Consumer
-     */
-    public function consumerRabbitMessageHandler()
-    {
-        if (is_null($this->rabbitConsumerMessageHandler)) {
-            $this->rabbitConsumerMessageHandler = new RabbitConsumer(Project::MESSAGE_QUEUE_TOPIC_PREFIX_RABBIT_MESSAGE_HANDLER);
-        }
-
-        return $this->rabbitConsumerMessageHandler;
+        return $this->rabbitConsumers;
     }
 }
