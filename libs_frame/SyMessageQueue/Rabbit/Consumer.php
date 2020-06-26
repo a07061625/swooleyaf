@@ -9,9 +9,9 @@ namespace SyMessageQueue\Rabbit;
 
 class Consumer extends Basic
 {
-    public function __construct(string $topicPrefix)
+    public function __construct(string $tag)
     {
-        parent::__construct($topicPrefix, '2');
+        parent::__construct($tag, '2');
     }
 
     public function __destruct()

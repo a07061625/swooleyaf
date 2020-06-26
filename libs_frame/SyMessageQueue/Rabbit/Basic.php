@@ -30,17 +30,17 @@ class Basic
      */
     protected $queue = null;
     /**
-     * 主题前缀
+     * 标识
      * @var string
      */
-    protected $topicPrefix = '';
+    protected $tag = '';
 
-    public function __construct(string $topicPrefix, string $type)
+    public function __construct(string $tag, string $type)
     {
         $configs = Tool::getConfig('messagequeue.' . SY_ENV . SY_PROJECT . '.rabbit');
 
         try {
-            $this->topicPrefix = $topicPrefix;
+            $this->tag = $tag;
 
             $this->conn = new \AMQPConnection($configs['conn']);
             $this->conn->connect();
@@ -50,7 +50,7 @@ class Basic
                 throw new AmqpException('amqp channel连接出错', ErrorCode::AMQP_CONNECT_ERROR);
             }
 
-            $exchangeName = 'exchange' . $type . $topicPrefix;
+            $exchangeName = 'exchange' . $type . $tag;
             $this->exchange = new \AMQPExchange($channel);
             $this->exchange->setFlags(AMQP_DURABLE); //持久化
             $this->exchange->setName($exchangeName);
@@ -58,10 +58,10 @@ class Basic
             $this->exchange->declareExchange();
 
             $this->queue = new \AMQPQueue($channel);
-            $this->queue->setName('queue' . $type . $topicPrefix);
+            $this->queue->setName('queue' . $type . $tag);
             $this->queue->setFlags(AMQP_DURABLE);
             $this->queue->declareQueue();
-            $this->queue->bind($exchangeName, $topicPrefix . '.*');
+            $this->queue->bind($exchangeName, $tag . '.*');
         } catch (\Exception $e) {
             $this->destroy();
             throw $e;
@@ -70,7 +70,7 @@ class Basic
 
     protected function destroy()
     {
-        $this->topicPrefix = '';
+        $this->tag = '';
         if (!is_null($this->queue)) {
             $this->queue = null;
         }
