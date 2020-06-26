@@ -11,9 +11,9 @@ use SyTool\Tool;
 
 class Producer extends Basic
 {
-    public function __construct(string $topicPrefix)
+    public function __construct(string $tag)
     {
-        parent::__construct($topicPrefix, '1');
+        parent::__construct($tag, '1');
     }
 
     public function __destruct()
@@ -35,7 +35,7 @@ class Producer extends Basic
      */
     public function sendTopicData(string $topic, array $data)
     {
-        $trueTopic = $this->topicPrefix . '.' . $topic;
+        $trueTopic = $this->tag . '.' . $topic;
         foreach ($data as $eData) {
             $this->exchange->publish(Tool::jsonEncode($eData, JSON_UNESCAPED_UNICODE), $trueTopic, AMQP_MANDATORY, [
                 'delivery_mode' => 2,
