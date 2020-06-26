@@ -170,9 +170,10 @@ class ProjectBase
     const MESSAGE_QUEUE_TYPE_REDIS = 'redis'; //类型-redis
     const MESSAGE_QUEUE_TYPE_KAFKA = 'kafka'; //类型-kafka
     const MESSAGE_QUEUE_TYPE_RABBIT = 'rabbit'; //类型-rabbit
-    //主题前缀 后三位纯数字的为框架内部自用,其他的为业务使用
-    const MESSAGE_QUEUE_TOPIC_PREFIX_RABBIT_COMMON = SY_ENV . SY_PROJECT . '000'; //rabbit-通用
-    const MESSAGE_QUEUE_TOPIC_PREFIX_RABBIT_MESSAGE_HANDLER = SY_ENV . SY_PROJECT . '001'; //rabbit-消息处理
+    const MESSAGE_QUEUE_TOPIC_MSG_HANDLER = 'msghandler'; //主题-消息处理
+    //标识 后三位纯数字的为框架内部自用,其他的为业务使用
+    const MESSAGE_QUEUE_TAG_RABBIT_COMMON = SY_ENV . SY_PROJECT . '000'; //rabbit-通用
+    const MESSAGE_QUEUE_TAG_RABBIT_MESSAGE_HANDLER = SY_ENV . SY_PROJECT . '001'; //rabbit-消息处理
 
     //服务预处理常量,标识长度为5位,第一位固定为/,后四位代表不同预处理操作,其中后四位全为数字的为框架内部预留标识
     const PRE_PROCESS_TAG_HTTP_FRAME_SERVER_INFO = '/0000'; //HTTP服务框架内部标识-服务信息
@@ -198,7 +199,6 @@ class ProjectBase
     ];
 
     //消息处理常量,小于1000000的为框架内部用
-    const MESSAGE_HANDLER_TOPIC = 'msghandler'; //主题
     const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS = 10000; //类型-微信公众号-openid群发消息
     const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_PREVIEW = 10001; //类型-微信公众号-群发预览消息
     const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS_ALL = 10002; //类型-微信公众号-分组群发消息

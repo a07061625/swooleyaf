@@ -56,9 +56,13 @@ class MessageHandlerSingleton
      * 添加消息数据
      * @param int $handlerType 处理类型
      * @param array $msgData 消息数据
+     * @param string $queueType 消息队列类型
      * @return array 添加结果
+     * @throws \AMQPChannelException
+     * @throws \AMQPConnectionException
+     * @throws \AMQPExchangeException
      */
-    public function addMsgData(int $handlerType, array $msgData) : array
+    public function addMsgData(int $handlerType, array $msgData, string $queueType) : array
     {
         $obj = $this->producerContainer->getObj($handlerType);
         if (is_null($obj)) {
@@ -73,10 +77,44 @@ class MessageHandlerSingleton
         }
 
         $trueData = $obj->getMsgData();
-        $redisKey = Project::REDIS_PREFIX_MESSAGE_HANDLER_TOPIC . Project::MESSAGE_HANDLER_TOPIC;
-        CacheSimpleFactory::getRedisInstance()->rPush($redisKey, Tool::jsonEncode($trueData, JSON_UNESCAPED_UNICODE));
+        if ($queueType == Project::MESSAGE_QUEUE_TYPE_REDIS) {
+            $redisKey = Project::REDIS_PREFIX_MESSAGE_HANDLER_TOPIC . Project::MESSAGE_QUEUE_TOPIC_MSG_HANDLER;
+            CacheSimpleFactory::getRedisInstance()->rPush($redisKey, Tool::jsonEncode($trueData, JSON_UNESCAPED_UNICODE));
+        } elseif ($queueType == Project::MESSAGE_QUEUE_TYPE_RABBIT) {
+            $rabbitProducer = MessageQueueSingleton::getInstance()->getRabbitProducer(Project::MESSAGE_QUEUE_TAG_RABBIT_MESSAGE_HANDLER);
+            $rabbitProducer->sendTopicData(Project::MESSAGE_QUEUE_TOPIC_MSG_HANDLER, [
+                0 => $trueData,
+            ]);
+        }
 
         return $trueData;
+    }
+
+    /**
+     * 获取消息数据
+     * @param string $queueType 消息队列类型
+     * @return array 空数组表示没有消息数据
+     * @throws \AMQPChannelException
+     * @throws \AMQPConnectionException
+     */
+    public function getMsgData(string $queueType) : array
+    {
+        if ($queueType == Project::MESSAGE_QUEUE_TYPE_REDIS) {
+            $redisKey = Project::REDIS_PREFIX_MESSAGE_HANDLER_TOPIC . Project::MESSAGE_QUEUE_TOPIC_MSG_HANDLER;
+            $redisData = CacheSimpleFactory::getRedisInstance()->lPop($redisKey);
+            $msgData = is_string($redisData) ? Tool::jsonDecode($redisData) : [];
+        } elseif ($queueType == Project::MESSAGE_QUEUE_TYPE_RABBIT) {
+            $rabbitConsumer = MessageQueueSingleton::getInstance()->getRabbitConsumer(Project::MESSAGE_QUEUE_TAG_RABBIT_MESSAGE_HANDLER);
+            $message = $rabbitConsumer->getQueue()->get();
+            if (empty($message)) {
+                $msgData = [];
+            } else {
+                $msgData = Tool::jsonDecode($message->getBody());
+                $rabbitConsumer->getQueue()->ack($message->getDeliveryTag());
+            }
+        }
+
+        return $msgData;
     }
 
     /**
