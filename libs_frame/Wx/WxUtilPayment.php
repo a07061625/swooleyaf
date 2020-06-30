@@ -142,4 +142,6 @@ abstract class WxUtilPayment extends WxUtilBase
                . '",serial_no="' . $data['serial_no']
                . '",signature="' . $sign . '"';
     }
+
+    //todo: 支付深度链接,参考连接: https://www.cnblogs.com/txw1958/p/wxpayv3_h5.html
 }
