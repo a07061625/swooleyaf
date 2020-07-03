@@ -7,12 +7,14 @@
  */
 namespace SyServer;
 
+use Request\SyRequest;
 use Swoole\Server;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyConstant\SyInner;
 use SyLog\Log;
 use Response\Result;
+use SyTool\SyXhprof;
 use SyTrait\Server\FramePreProcessRpcTrait;
 use SyTrait\Server\FrameRpcTrait;
 use SyTrait\Server\ProjectPreProcessRpcTrait;
@@ -180,10 +182,19 @@ class RpcServer extends BaseServer
         self::$_reqStartTime = microtime(true);
         $this->initRequest($data['api_params']);
 
+        $xhProf = SyRequest::getParams(Project::DATA_KEY_XHPROF_PARAMS, 0);
+        if (($xhProf == 1) && defined(XHPROF_FLAGS_CPU)) {
+            $xhDebug = true;
+        } else {
+            $xhDebug = false;
+        }
         $error = null;
         $result = '';
         $httpObj = null;
         try {
+            if ($xhDebug) {
+                SyXhprof::start();;
+            }
             self::checkRequestCurrentLimit();
             $funcName = $this->getPreProcessFunction($data['api_uri'], $this->preProcessMapFrame, $this->preProcessMapProject);
             if (is_string($funcName)) {
@@ -215,6 +226,11 @@ class RpcServer extends BaseServer
             if (is_object($error)) {
                 $result = $error->getJson();
                 unset($error);
+            }
+            if ($xhDebug) {
+                $debugRes = SyXhprof::run(SY_ENV . SY_PROJECT);
+                Log::info('xhprof debug result: ' . print_r($debugRes, true));
+                xhprof_disable();
             }
         }
 
