@@ -7,6 +7,7 @@
  */
 namespace SyServer;
 
+use Request\SyRequest;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
 use Swoole\WebSocket\Frame;
@@ -19,6 +20,7 @@ use SyLog\Log;
 use Response\Result;
 use Response\SyResponseHttp;
 use SyModule\ModuleContainer;
+use SyTool\SyXhprof;
 use SyTrait\Server\FrameHttpTrait;
 use SyTrait\Server\FramePreProcessHttpTrait;
 use SyTrait\Server\ProjectHttpTrait;
@@ -592,10 +594,19 @@ class HttpServer extends BaseServer
 
         $this->initRequest($request, $initRspHeaders);
 
+        $xhProf = SyRequest::getParams(Project::DATA_KEY_XHPROF_PARAMS, 0);
+        if (($xhProf == 1) && defined(XHPROF_FLAGS_CPU)) {
+            $xhDebug = true;
+        } else {
+            $xhDebug = false;
+        }
         $error = null;
         $result = '';
         $httpObj = new Http($uri);
         try {
+            if ($xhDebug) {
+                SyXhprof::start();;
+            }
             self::checkRequestCurrentLimit();
             $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
             if (strlen($result) == 0) {
@@ -616,6 +627,11 @@ class HttpServer extends BaseServer
             if (is_object($error)) {
                 $result = $error->getJson();
                 unset($error);
+            }
+            if ($xhDebug) {
+                $debugRes = SyXhprof::run(SY_ENV . SY_PROJECT);
+                Log::info('xhprof debug result: ' . print_r($debugRes, true));
+                xhprof_disable();
             }
         }
 

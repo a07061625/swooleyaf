@@ -22,6 +22,7 @@ class ProjectBase
     const DATA_KEY_FORMAT_HEADER = 'sy-format'; //键名-请求头数据格式字段
     const DATA_KEY_DOMAIN_COOKIE_HEADER = 'sydomain-cookie'; //键名-请求头cookie域名字段
     const DATA_KEY_DOMAIN_COOKIE_SERVER = 'SyDomain-Cookie'; //键名-$_SERVEER中cookie域名字段
+    const DATA_KEY_XHPROF_PARAMS = '_syxhprof'; //键名-请求参数签名字段
 
     //公共常量
     const COMMON_PAGE_DEFAULT = 1; //默认页数
