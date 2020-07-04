@@ -7,12 +7,10 @@
  */
 namespace SyFrame;
 
-use Response\SyResponseHttp;
 use SyConstant\SyInner;
 use Reflection\BaseReflect;
 use Response\Result;
 use SyTool\SyUser;
-use SyTool\Tool;
 use Yaf\Controller_Abstract;
 use Yaf\Registry;
 
@@ -81,20 +79,9 @@ abstract class BaseController extends Controller_Abstract
      */
     public function sendRsp(?string $data = null)
     {
-        if (SY_SERVER_TYPE != SyInner::SERVER_TYPE_API_MODULE) {
-            if (is_string($data)) {
-                $dataArr = Tool::jsonDecode($data);
-                if (isset($dataArr['code']) && ($dataArr['code'] > 0)) {
-                    SyResponseHttp::header(SyInner::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR, SY_HTTP_RSP_CODE_ERROR);
-                }
-            } elseif ($this->SyResult->getCode() > 0) {
-                SyResponseHttp::header(SyInner::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR, SY_HTTP_RSP_CODE_ERROR);
-            }
+        if (is_string($data)) {
+            $this->SyResult->set(Project::DATA_KEY_RESPONSE_CONTENT_STRING, $data);
         }
-        if (is_null($data)) {
-            $this->getResponse()->setBody($this->SyResult->getJson());
-        } else {
-            $this->getResponse()->setBody((string)$data);
-        }
+        $this->getResponse()->setBody($this->SyResult->getJson());
     }
 }

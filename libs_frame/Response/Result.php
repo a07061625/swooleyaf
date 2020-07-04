@@ -54,6 +54,11 @@ class Result
         $this->result = $data;
     }
 
+    public function getResult() : array
+    {
+        return $this->result;
+    }
+
     public function setData($data)
     {
         $this->result['data'] = $data;
