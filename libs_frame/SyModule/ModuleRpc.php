@@ -7,6 +7,7 @@
  */
 namespace SyModule;
 
+use Response\SyResponse;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyConstant\SyInner;
@@ -46,6 +47,29 @@ abstract class ModuleRpc extends ModuleBase
      */
     private $numFuseReqError = 0;
 
+    private function handlerRespContent(string $respContent) : string
+    {
+        $contentArr = Tool::jsonDecode($respContent);
+        if (!is_array($contentArr)) {
+            return $respContent;
+        }
+
+        if (isset($contentArr[Project::DATA_KEY_RESPONSE_CONTENT_HEADERS])) {
+            SyResponse::headers($contentArr[Project::DATA_KEY_RESPONSE_CONTENT_HEADERS]);
+        }
+        if (isset($contentArr[Project::DATA_KEY_RESPONSE_CONTENT_COOKIES])) {
+            SyResponse::cookies($contentArr[Project::DATA_KEY_RESPONSE_CONTENT_COOKIES]);
+        }
+
+        if (isset($contentArr[Project::DATA_KEY_RESPONSE_CONTENT_STRING])) {
+            return $contentArr[Project::DATA_KEY_RESPONSE_CONTENT_STRING];
+        } else {
+            unset($contentArr[Project::DATA_KEY_RESPONSE_CONTENT_HEADERS]);
+            unset($contentArr[Project::DATA_KEY_RESPONSE_CONTENT_COOKIES]);
+            return Tool::jsonEncode($contentArr, JSON_UNESCAPED_UNICODE);
+        }
+    }
+
     /**
      * 发送api请求
      * @param string $uri 请求uri
@@ -75,7 +99,7 @@ abstract class ModuleRpc extends ModuleBase
             throw new ServerException('发送请求失败', ErrorCode::SWOOLE_SERVER_REQUEST_FAIL);
         }
 
-        return $apiRsp;
+        return $this->handlerRespContent($apiRsp);
     }
 
     /**
@@ -100,7 +124,7 @@ abstract class ModuleRpc extends ModuleBase
             throw new ServerException('发送请求失败', ErrorCode::SWOOLE_SERVER_REQUEST_FAIL);
         }
 
-        return $content;
+        return $this->handlerRespContent($content);
     }
 
     protected function init()
