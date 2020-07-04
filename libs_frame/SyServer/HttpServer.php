@@ -375,12 +375,10 @@ class HttpServer extends BaseServer
             $handleHeaderRes = $this->handleReqHeader($rspHeaders);
             if ($handleHeaderRes == self::RESPONSE_RESULT_TYPE_ACCEPT) {
                 self::$_rspMsg = $this->handleReqService($request, $rspHeaders);
-                $this->setRspCookies($response, Registry::get(SyInner::REGISTRY_NAME_RESPONSE_COOKIE));
-                $this->setRspHeaders($response, Registry::get(SyInner::REGISTRY_NAME_RESPONSE_HEADER));
             } else {
                 $rspHeaders['Content-Type'] = 'text/plain; charset=utf-8';
                 $rspHeaders[SyInner::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR] = 403;
-                $this->setRspHeaders($response, $rspHeaders);
+                SyResponseHttp::headers($rspHeaders);
             }
         } else {
             self::$_syServer->incr(self::$_serverToken, 'request_times', 1);
@@ -392,7 +390,18 @@ class HttpServer extends BaseServer
             self::$_rspMsg = $res->getJson();
         }
 
-        $response->end(self::$_rspMsg);
+        $resultArr = Tool::jsonDecode(self::$_rspMsg);
+        if (isset($resultArr['code']) && ($resultArr['code'] > 0)) {
+            SyResponseHttp::header(SyInner::SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR, SY_HTTP_RSP_CODE_ERROR);
+        }
+        $this->setRspHeaders($response, Registry::get(SyInner::REGISTRY_NAME_RESPONSE_HEADER));
+        $this->setRspCookies($response, Registry::get(SyInner::REGISTRY_NAME_RESPONSE_COOKIE));
+
+        if (isset($resultArr[Project::DATA_KEY_RESPONSE_CONTENT_STRING])) {
+            $response->end($resultArr[Project::DATA_KEY_RESPONSE_CONTENT_STRING]);
+        } else {
+            $response->end(self::$_rspMsg);
+        }
         $this->clearRequest();
     }
 
@@ -498,6 +507,14 @@ class HttpServer extends BaseServer
         $_SERVER[SyInner::SERVER_DATA_KEY_TIMESTAMP] = $nowTime;
         $_SERVER['SYREQ_ID'] = hash('md4', $nowTime . Tool::createNonceStr(8));
         $this->initLanguageType();
+
+        $xhProf = SyRequest::getParams(Project::DATA_KEY_XHPROF_PARAMS, 0);
+        if (($xhProf == 1) && defined(XHPROF_FLAGS_CPU)) {
+            $_SERVER[Project::DATA_KEY_XHPROF_SERVER] = true;
+        } else {
+            $_SERVER[Project::DATA_KEY_XHPROF_SERVER] = false;
+        }
+
         return '';
     }
 
@@ -595,17 +612,11 @@ class HttpServer extends BaseServer
 
         $this->initRequest($request, $initRspHeaders);
 
-        $xhProf = SyRequest::getParams(Project::DATA_KEY_XHPROF_PARAMS, 0);
-        if (($xhProf == 1) && defined(XHPROF_FLAGS_CPU)) {
-            $xhDebug = true;
-        } else {
-            $xhDebug = false;
-        }
         $error = null;
         $result = '';
         $httpObj = new Http($uri);
         try {
-            if ($xhDebug) {
+            if ($_SERVER[Project::DATA_KEY_XHPROF_SERVER]) {
                 SyXhprof::start();;
             }
             self::checkRequestCurrentLimit();
@@ -629,10 +640,10 @@ class HttpServer extends BaseServer
                 $result = $error->getJson();
                 unset($error);
             }
-            if ($xhDebug) {
+            if ($_SERVER[Project::DATA_KEY_XHPROF_SERVER]) {
                 $debugRes = SyXhprof::run(SY_ENV . SY_PROJECT);
-                Log::info('xhprof debug result: ' . print_r($debugRes, true));
                 xhprof_disable();
+                Log::info('xhprof_result: ' . print_r($debugRes, true));
             }
         }
 

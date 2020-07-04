@@ -145,6 +145,12 @@ class RpcServer extends BaseServer
         unset($_POST['__req_id']);
 
         Registry::del(SyInner::REGISTRY_NAME_SERVICE_ERROR);
+
+        $xhProf = SyRequest::getParams(Project::DATA_KEY_XHPROF_PARAMS, 0);
+        if (($xhProf == 1) && defined(XHPROF_FLAGS_CPU)) {
+            $_SERVER[Project::DATA_KEY_XHPROF_SERVER] = true;
+        }
+
         SessionTool::initSessionJwt();
     }
 
@@ -169,6 +175,9 @@ class RpcServer extends BaseServer
     {
         self::$_syServer->incr(self::$_serverToken, 'request_times', 1);
         $_SERVER[SyInner::SERVER_DATA_KEY_TIMESTAMP] = time();
+        $_SERVER[Project::DATA_KEY_XHPROF_SERVER] = false;
+        Registry::set(SyInner::REGISTRY_NAME_RESPONSE_HEADER, []);
+        Registry::set(SyInner::REGISTRY_NAME_RESPONSE_COOKIE, []);
     }
 
     private function handleApiReceive(array $data)
@@ -182,17 +191,11 @@ class RpcServer extends BaseServer
         self::$_reqStartTime = microtime(true);
         $this->initRequest($data['api_params']);
 
-        $xhProf = SyRequest::getParams(Project::DATA_KEY_XHPROF_PARAMS, 0);
-        if (($xhProf == 1) && defined(XHPROF_FLAGS_CPU)) {
-            $xhDebug = true;
-        } else {
-            $xhDebug = false;
-        }
         $error = null;
         $result = '';
         $httpObj = null;
         try {
-            if ($xhDebug) {
+            if ($_SERVER[Project::DATA_KEY_XHPROF_SERVER]) {
                 SyXhprof::start();;
             }
             self::checkRequestCurrentLimit();
@@ -227,10 +230,10 @@ class RpcServer extends BaseServer
                 $result = $error->getJson();
                 unset($error);
             }
-            if ($xhDebug) {
+            if ($_SERVER[Project::DATA_KEY_XHPROF_SERVER]) {
                 $debugRes = SyXhprof::run(SY_ENV . SY_PROJECT);
-                Log::info('xhprof debug result: ' . print_r($debugRes, true));
                 xhprof_disable();
+                Log::info('xhprof_result: ' . print_r($debugRes, true));
             }
         }
 
@@ -273,8 +276,17 @@ class RpcServer extends BaseServer
                 $result = $error->getJson();
                 unset($error);
         }
-        Registry::del(SyInner::REGISTRY_NAME_SERVICE_ERROR);
 
-        return $result;
+        $resultArr = Tool::jsonDecode($result);
+        $rspHeaders = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_HEADER);
+        $resultArr[Project::DATA_KEY_RESPONSE_CONTENT_HEADERS] = $rspHeaders !== false ? $rspHeaders : [];
+        $rspCookies = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_COOKIE);
+        $resultArr[Project::DATA_KEY_RESPONSE_CONTENT_COOKIES] = $rspCookies !== false ? $rspCookies : [];
+
+        Registry::del(SyInner::REGISTRY_NAME_SERVICE_ERROR);
+        Registry::del(SyInner::REGISTRY_NAME_RESPONSE_HEADER);
+        Registry::del(SyInner::REGISTRY_NAME_RESPONSE_COOKIE);
+
+        return Tool::jsonEncode($resultArr, JSON_UNESCAPED_UNICODE);
     }
 }
