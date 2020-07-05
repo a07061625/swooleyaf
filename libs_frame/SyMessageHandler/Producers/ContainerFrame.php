@@ -3,42 +3,42 @@
  * Created by PhpStorm.
  * User: 姜伟
  * Date: 2020/6/25 0025
- * Time: 15:18
+ * Time: 15:20
  */
-namespace SyMessageHandler;
+namespace SyMessageHandler\Producers;
 
 use SyConstant\ProjectBase;
-use SyMessageHandler\Consumers\DingDing\Chat;
-use SyMessageHandler\Consumers\DingDing\Conversation;
-use SyMessageHandler\Consumers\DingDing\ConversationAsync;
-use SyMessageHandler\Consumers\Mail\PhpMailer;
-use SyMessageHandler\Consumers\Mail\SwiftMailer;
-use SyMessageHandler\Consumers\Sms\AliYunBatch;
-use SyMessageHandler\Consumers\Sms\AliYunSingle;
-use SyMessageHandler\Consumers\Sms\DaYu;
-use SyMessageHandler\Consumers\Sms\Yun253;
-use SyMessageHandler\Consumers\Voice\AliYunFile;
-use SyMessageHandler\Consumers\Voice\AliYunTts;
-use SyMessageHandler\Consumers\Voice\QCloudCode;
-use SyMessageHandler\Consumers\Voice\QCloudTemplate;
-use SyMessageHandler\Consumers\Wx\AccountMass;
-use SyMessageHandler\Consumers\Wx\AccountMassAll;
-use SyMessageHandler\Consumers\Wx\AccountMassPreview;
-use SyMessageHandler\Consumers\Wx\AccountMessageCustom;
-use SyMessageHandler\Consumers\Wx\AccountTemplate;
-use SyMessageHandler\Consumers\Wx\AccountTemplateSubscribe;
-use SyMessageHandler\Consumers\Wx\CorpChat;
-use SyMessageHandler\Consumers\Wx\CorpMessage;
-use SyMessageHandler\Consumers\Wx\CorpMessageLinked;
-use SyMessageHandler\Consumers\Wx\MiniMessageCustom;
-use SyMessageHandler\Consumers\Wx\MiniTemplate;
+use SyMessageHandler\Producers\DingDing\Chat;
+use SyMessageHandler\Producers\DingDing\Conversation;
+use SyMessageHandler\Producers\DingDing\ConversationAsync;
+use SyMessageHandler\Producers\Mail\PhpMailer;
+use SyMessageHandler\Producers\Mail\SwiftMailer;
+use SyMessageHandler\Producers\Sms\AliYunBatch;
+use SyMessageHandler\Producers\Sms\AliYunSingle;
+use SyMessageHandler\Producers\Sms\DaYu;
+use SyMessageHandler\Producers\Sms\Yun253;
+use SyMessageHandler\Producers\Voice\AliYunFile;
+use SyMessageHandler\Producers\Voice\AliYunTts;
+use SyMessageHandler\Producers\Voice\QCloudCode;
+use SyMessageHandler\Producers\Voice\QCloudTemplate;
+use SyMessageHandler\Producers\Wx\AccountMass;
+use SyMessageHandler\Producers\Wx\AccountMassAll;
+use SyMessageHandler\Producers\Wx\AccountMassPreview;
+use SyMessageHandler\Producers\Wx\AccountMessageCustom;
+use SyMessageHandler\Producers\Wx\AccountTemplate;
+use SyMessageHandler\Producers\Wx\AccountTemplateSubscribe;
+use SyMessageHandler\Producers\Wx\CorpChat;
+use SyMessageHandler\Producers\Wx\CorpMessage;
+use SyMessageHandler\Producers\Wx\CorpMessageLinked;
+use SyMessageHandler\Producers\Wx\MiniMessageCustom;
+use SyMessageHandler\Producers\Wx\MiniTemplate;
 use SyTool\BaseContainer;
 
 /**
- * Class ConsumerContainerFrame
- * @package SyMessageHandler
+ * Class ContainerFrame
+ * @package SyMessageHandler\Producers
  */
-class ConsumerContainerFrame extends BaseContainer
+class ContainerFrame extends BaseContainer
 {
     public function __construct()
     {
