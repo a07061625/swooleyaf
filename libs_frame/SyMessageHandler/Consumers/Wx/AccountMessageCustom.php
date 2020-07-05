@@ -8,7 +8,7 @@
 namespace SyMessageHandler\Consumers\Wx;
 
 use SyConstant\ProjectBase;
-use SyMessageHandler\ConsumerBase;
+use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 use Wx\Account\Message\CustomMsgSend;
 
@@ -16,7 +16,7 @@ use Wx\Account\Message\CustomMsgSend;
  * Class AccountMessageCustom
  * @package SyMessageHandler\Consumers\Wx
  */
-class AccountMessageCustom extends ConsumerBase implements IConsumer
+class AccountMessageCustom extends Base implements IConsumer
 {
     public function __construct()
     {

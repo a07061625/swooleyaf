@@ -9,14 +9,14 @@ namespace SyMessageHandler\Consumers\DingDing;
 
 use DingDing\Corp\Chat\ChatSend;
 use SyConstant\ProjectBase;
-use SyMessageHandler\ConsumerBase;
+use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 
 /**
  * Class Chat
  * @package SyMessageHandler\Consumers\DingDing
  */
-class Chat extends ConsumerBase implements IConsumer
+class Chat extends Base implements IConsumer
 {
     public function __construct()
     {

@@ -8,7 +8,7 @@
 namespace SyMessageHandler\Consumers\Voice;
 
 use SyConstant\ProjectBase;
-use SyMessageHandler\ConsumerBase;
+use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 use SyVms\QCloud\CodeVoiceSend;
 use SyVms\VmsUtilQCloud;
@@ -17,7 +17,7 @@ use SyVms\VmsUtilQCloud;
  * Class QCloudCode
  * @package SyMessageHandler\Consumers\Voice
  */
-class QCloudCode extends ConsumerBase implements IConsumer
+class QCloudCode extends Base implements IConsumer
 {
     public function __construct()
     {

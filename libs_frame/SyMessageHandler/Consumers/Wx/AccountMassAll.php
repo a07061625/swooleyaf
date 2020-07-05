@@ -8,7 +8,7 @@
 namespace SyMessageHandler\Consumers\Wx;
 
 use SyConstant\ProjectBase;
-use SyMessageHandler\ConsumerBase;
+use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 use Wx\Account\Message\MassSendAll;
 
@@ -16,7 +16,7 @@ use Wx\Account\Message\MassSendAll;
  * Class AccountMassAll
  * @package SyMessageHandler\Consumers\Wx
  */
-class AccountMassAll extends ConsumerBase implements IConsumer
+class AccountMassAll extends Base implements IConsumer
 {
     public function __construct()
     {

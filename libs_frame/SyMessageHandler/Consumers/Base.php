@@ -5,13 +5,15 @@
  * Date: 2020/6/23 0023
  * Time: 12:38
  */
-namespace SyMessageHandler;
+namespace SyMessageHandler\Consumers;
+
+use SyMessageHandler\HandlerBase;
 
 /**
- * Class ConsumerBase
- * @package SyMessageHandler
+ * Class Base
+ * @package SyMessageHandler\Consumers
  */
-abstract class ConsumerBase extends HandlerBase
+abstract class Base extends HandlerBase
 {
     public function __construct(int $handlerType)
     {

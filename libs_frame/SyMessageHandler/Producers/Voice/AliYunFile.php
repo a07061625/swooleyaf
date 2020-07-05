@@ -9,82 +9,45 @@ namespace SyMessageHandler\Producers\Voice;
 
 use DesignPatterns\Singletons\VmsConfigSingleton;
 use SyConstant\ProjectBase;
-use SyMessageHandler\ProducerBase;
 use SyMessageHandler\IProducer;
-use SyTool\Tool;
+use SyMessageHandler\Producers\BaseVoiceAliYun;
 
 /**
  * Class AliYunFile
  * @package SyMessageHandler\Producers\Voice
  */
-class AliYunFile extends ProducerBase implements IProducer
+class AliYunFile extends BaseVoiceAliYun implements IProducer
 {
     public function __construct()
     {
         parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_VOICE_ALIYUN_FILE);
+        $this->msgData['app_id'] = VmsConfigSingleton::getInstance()->getAliYunConfig()->getAppKey();
+        $this->checkMap = [
+            1 => 'checkSendTime',
+            2 => 'checkCalledNumber',
+            3 => 'checkShowNumber',
+            4 => 'checkVoiceId',
+            5 => 'checkPlayTimes',
+            6 => 'checkVolume',
+            7 => 'checkSpeed',
+            8 => 'checkOutId',
+        ];
     }
 
     private function __clone()
     {
     }
 
-    public function checkMsgData(array $msgData) : string
+    private function checkVoiceId(array $data) : string
     {
-        $calledNumber = $msgData['called_number'] ?? '';
-        if (!is_string($calledNumber)) {
-            return '被叫号码不合法';
-        } elseif (!ctype_digit($calledNumber)) {
-            return '被叫号码不合法';
-        }
-        $showNumber = $msgData['show_number'] ?? '';
-        if (!is_string($showNumber)) {
-            return '被叫显号不合法';
-        } elseif (strlen($showNumber) == 0) {
-            return '被叫显号不能为空';
-        }
-        $voiceId = $msgData['voice_id'] ?? '';
+        $voiceId = $data['voice_id'] ?? '';
         if (!is_string($voiceId)) {
             return '语音ID不合法';
         } elseif (strlen($voiceId) == 0) {
             return '语音ID不能为空';
         }
-        $playTimes = $msgData['play_times'] ?? 1;
-        if (!is_int($playTimes)) {
-            return '播放次数不合法';
-        } elseif (($playTimes < 1) || ($playTimes > 3)) {
-            return '播放次数不合法';
-        }
-        $volume = $msgData['volume'] ?? 100;
-        if (!is_int($volume)) {
-            return '音量不合法';
-        } elseif (($volume < 0) || ($volume > 100)) {
-            return '音量不合法';
-        }
-        $speed = $msgData['speed'] ?? 0;
-        if (!is_int($speed)) {
-            return '语速不合法';
-        } elseif (($speed < -500) || ($speed > 500)) {
-            return '语速不合法';
-        }
-        $outId = $msgData['out_id'] ?? Tool::createNonceStr(4, 'numlower') . Tool::getNowTime();
-        if (!is_string($outId)) {
-            return '回执ID不合法';
-        } elseif (!ctype_alnum($outId)) {
-            return '回执ID不合法';
-        } elseif (strlen($outId) > 15) {
-            return '回执ID不合法';
-        }
 
-        $this->msgData['app_id'] = VmsConfigSingleton::getInstance()->getAliYunConfig()->getAppKey();
-        $this->msgData['receivers'] = [
-            0 => $calledNumber,
-        ];
-        $this->msgData['ext_data']['show_number'] = $showNumber;
         $this->msgData['ext_data']['voice_id'] = $voiceId;
-        $this->msgData['ext_data']['play_times'] = $playTimes;
-        $this->msgData['ext_data']['volume'] = $volume;
-        $this->msgData['ext_data']['speed'] = $speed;
-        $this->msgData['ext_data']['out_id'] = $outId;
         return '';
     }
 }

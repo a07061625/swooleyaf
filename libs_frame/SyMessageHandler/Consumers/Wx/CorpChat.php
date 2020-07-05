@@ -8,7 +8,7 @@
 namespace SyMessageHandler\Consumers\Wx;
 
 use SyConstant\ProjectBase;
-use SyMessageHandler\ConsumerBase;
+use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 use Wx\Corp\Message\AppChatSend;
 
@@ -16,7 +16,7 @@ use Wx\Corp\Message\AppChatSend;
  * Class CorpChat
  * @package SyMessageHandler\Consumers\Wx
  */
-class CorpChat extends ConsumerBase implements IConsumer
+class CorpChat extends Base implements IConsumer
 {
     public function __construct()
     {
