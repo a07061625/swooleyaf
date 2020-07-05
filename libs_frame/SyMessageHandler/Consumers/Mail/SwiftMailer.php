@@ -9,14 +9,14 @@ namespace SyMessageHandler\Consumers\Mail;
 
 use Mailer\SySwiftMailer;
 use SyConstant\ProjectBase;
-use SyMessageHandler\ConsumerBase;
+use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 
 /**
  * Class SwiftMailer
  * @package SyMessageHandler\Consumers\Mail
  */
-class SwiftMailer extends ConsumerBase implements IConsumer
+class SwiftMailer extends Base implements IConsumer
 {
     public function __construct()
     {

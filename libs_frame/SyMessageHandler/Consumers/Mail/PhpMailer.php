@@ -9,14 +9,14 @@ namespace SyMessageHandler\Consumers\Mail;
 
 use Mailer\SyPhpMailer;
 use SyConstant\ProjectBase;
-use SyMessageHandler\ConsumerBase;
+use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 
 /**
  * Class PhpMailer
  * @package SyMessageHandler\Consumers\Mail
  */
-class PhpMailer extends ConsumerBase implements IConsumer
+class PhpMailer extends Base implements IConsumer
 {
     public function __construct()
     {

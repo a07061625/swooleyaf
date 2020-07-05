@@ -8,7 +8,7 @@
 namespace SyMessageHandler\Consumers\Sms;
 
 use SyConstant\ProjectBase;
-use SyMessageHandler\ConsumerBase;
+use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 use SySms\DaYu\SmsSend;
 use SySms\SmsUtilDaYu;
@@ -17,7 +17,7 @@ use SySms\SmsUtilDaYu;
  * Class DaYu
  * @package SyMessageHandler\Consumers\Sms
  */
-class DaYu extends ConsumerBase implements IConsumer
+class DaYu extends Base implements IConsumer
 {
     public function __construct()
     {

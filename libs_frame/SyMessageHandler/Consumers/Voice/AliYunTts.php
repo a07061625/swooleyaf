@@ -12,7 +12,7 @@ use AliOpen\Core\Profile\DefaultProfile;
 use DesignPatterns\Singletons\VmsConfigSingleton;
 use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
-use SyMessageHandler\ConsumerBase;
+use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 use SyTool\Tool;
 use SyVms\AliYun\CallByTtsSingleRequest;
@@ -21,7 +21,7 @@ use SyVms\AliYun\CallByTtsSingleRequest;
  * Class AliYunTts
  * @package SyMessageHandler\Consumers\Voice
  */
-class AliYunTts extends ConsumerBase implements IConsumer
+class AliYunTts extends Base implements IConsumer
 {
     public function __construct()
     {
