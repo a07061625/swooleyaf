@@ -12,7 +12,7 @@ use AliOpen\Core\Profile\DefaultProfile;
 use DesignPatterns\Singletons\SmsConfigSingleton;
 use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
-use SyMessageHandler\ConsumerBase;
+use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 use SySms\AliYun\SmsSendRequest;
 use SyTool\Tool;
@@ -21,7 +21,7 @@ use SyTool\Tool;
  * Class AliYunSingle
  * @package SyMessageHandler\Consumers\Sms
  */
-class AliYunSingle extends ConsumerBase implements IConsumer
+class AliYunSingle extends Base implements IConsumer
 {
     public function __construct()
     {

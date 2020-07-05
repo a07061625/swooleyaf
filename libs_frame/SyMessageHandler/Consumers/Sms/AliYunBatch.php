@@ -12,7 +12,7 @@ use AliOpen\Core\Profile\DefaultProfile;
 use DesignPatterns\Singletons\SmsConfigSingleton;
 use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
-use SyMessageHandler\ConsumerBase;
+use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 use SySms\AliYun\SmsSendBatchRequest;
 use SyTool\Tool;
@@ -21,7 +21,7 @@ use SyTool\Tool;
  * Class AliYunBatch
  * @package SyMessageHandler\Consumers\Sms
  */
-class AliYunBatch extends ConsumerBase implements IConsumer
+class AliYunBatch extends Base implements IConsumer
 {
     public function __construct()
     {

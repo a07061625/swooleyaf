@@ -8,7 +8,7 @@
 namespace SyMessageHandler\Consumers\Sms;
 
 use SyConstant\ProjectBase;
-use SyMessageHandler\ConsumerBase;
+use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 use SySms\SmsUtilYun253;
 use SySms\Yun253\SmsSend;
@@ -17,7 +17,7 @@ use SySms\Yun253\SmsSend;
  * Class Yun253
  * @package SyMessageHandler\Consumers\Sms
  */
-class Yun253 extends ConsumerBase implements IConsumer
+class Yun253 extends Base implements IConsumer
 {
     public function __construct()
     {

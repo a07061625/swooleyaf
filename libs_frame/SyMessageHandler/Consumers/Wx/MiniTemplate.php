@@ -8,7 +8,7 @@
 namespace SyMessageHandler\Consumers\Wx;
 
 use SyConstant\ProjectBase;
-use SyMessageHandler\ConsumerBase;
+use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 use Wx\Mini\MsgTemplateSend;
 
@@ -16,7 +16,7 @@ use Wx\Mini\MsgTemplateSend;
  * Class MiniTemplate
  * @package SyMessageHandler\Consumers\Wx
  */
-class MiniTemplate extends ConsumerBase implements IConsumer
+class MiniTemplate extends Base implements IConsumer
 {
     public function __construct()
     {

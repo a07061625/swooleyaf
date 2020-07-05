@@ -8,7 +8,7 @@
 namespace SyMessageHandler\Consumers\Wx;
 
 use SyConstant\ProjectBase;
-use SyMessageHandler\ConsumerBase;
+use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 use Wx\Account\Message\MassPreview;
 
@@ -16,7 +16,7 @@ use Wx\Account\Message\MassPreview;
  * Class AccountMassPreview
  * @package SyMessageHandler\Consumers\Wx
  */
-class AccountMassPreview extends ConsumerBase implements IConsumer
+class AccountMassPreview extends Base implements IConsumer
 {
     public function __construct()
     {
