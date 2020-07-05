@@ -7,6 +7,7 @@
  */
 namespace SyMessageHandler;
 
+use SyMessageHandler\Producers\ContainerFrame;
 use SyTool\BaseContainer;
 
 /**
@@ -16,13 +17,13 @@ use SyTool\BaseContainer;
 class ProducerContainer extends BaseContainer
 {
     /**
-     * @var \SyMessageHandler\ProducerContainerFrame
+     * @var \SyMessageHandler\Producers\ContainerFrame
      */
     private $frameContainer = null;
 
     public function __construct()
     {
-        $this->frameContainer = new ProducerContainerFrame();
+        $this->frameContainer = new ContainerFrame();
         $this->registryMap = [];
     }
 

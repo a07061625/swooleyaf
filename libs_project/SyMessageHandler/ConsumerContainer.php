@@ -7,6 +7,7 @@
  */
 namespace SyMessageHandler;
 
+use SyMessageHandler\Consumers\ContainerFrame;
 use SyTool\BaseContainer;
 
 /**
@@ -16,13 +17,13 @@ use SyTool\BaseContainer;
 class ConsumerContainer extends BaseContainer
 {
     /**
-     * @var \SyMessageHandler\ConsumerContainerFrame
+     * @var \SyMessageHandler\Consumers\ContainerFrame
      */
     private $frameContainer = null;
 
     public function __construct()
     {
-        $this->frameContainer = new ConsumerContainerFrame();
+        $this->frameContainer = new ContainerFrame();
         $this->registryMap = [];
     }
 
