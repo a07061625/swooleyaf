@@ -7,7 +7,6 @@
  */
 namespace SyServer;
 
-use Request\SyRequest;
 use Swoole\Server;
 use SyConstant\ErrorCode;
 use SyConstant\Project;

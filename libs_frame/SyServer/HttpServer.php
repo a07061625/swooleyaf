@@ -7,7 +7,6 @@
  */
 namespace SyServer;
 
-use Request\SyRequest;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
 use Swoole\WebSocket\Frame;
