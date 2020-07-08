@@ -22,8 +22,6 @@ class ProjectBase
     const DATA_KEY_FORMAT_HEADER = 'sy-format'; //键名-请求头数据格式字段
     const DATA_KEY_DOMAIN_COOKIE_HEADER = 'sydomain-cookie'; //键名-请求头cookie域名字段
     const DATA_KEY_DOMAIN_COOKIE_SERVER = 'SyDomain-Cookie'; //键名-$_SERVER中cookie域名字段
-    const DATA_KEY_XHPROF_PARAMS = '_syxhprof'; //键名-请求参数函数调用链图生成字段
-    const DATA_KEY_XHPROF_SERVER = 'SyXhProf'; //键名-SERVER中函数调用链图生成字段
     const DATA_KEY_RESPONSE_CONTENT_HEADERS = '_syresp_headers'; //键名-响应内容响应头字段
     const DATA_KEY_RESPONSE_CONTENT_COOKIES = '_syresp_cookies'; //键名-响应内容响应cookie字段
     const DATA_KEY_RESPONSE_CONTENT_STRING = '_syresp_string'; //键名-响应内容字符串字段,用于支付宝支付回调等需要返回字符串的需求
