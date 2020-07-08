@@ -20,7 +20,6 @@ use SyLog\Log;
 use Response\Result;
 use Response\SyResponseHttp;
 use SyModule\ModuleContainer;
-use SyTool\SyXhprof;
 use SyTrait\Server\FrameHttpTrait;
 use SyTrait\Server\FramePreProcessHttpTrait;
 use SyTrait\Server\ProjectHttpTrait;
@@ -507,13 +506,6 @@ class HttpServer extends BaseServer
         $_SERVER['SYREQ_ID'] = hash('md4', $nowTime . Tool::createNonceStr(8));
         $this->initLanguageType();
 
-        $xhProf = SyRequest::getParams(Project::DATA_KEY_XHPROF_PARAMS, 0);
-        if (($xhProf == 1) && defined(XHPROF_FLAGS_CPU)) {
-            $_SERVER[Project::DATA_KEY_XHPROF_SERVER] = true;
-        } else {
-            $_SERVER[Project::DATA_KEY_XHPROF_SERVER] = false;
-        }
-
         return '';
     }
 
@@ -615,9 +607,6 @@ class HttpServer extends BaseServer
         $result = '';
         $httpObj = new Http($uri);
         try {
-            if ($_SERVER[Project::DATA_KEY_XHPROF_SERVER]) {
-                SyXhprof::start();;
-            }
             self::checkRequestCurrentLimit();
             $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
             if (strlen($result) == 0) {
@@ -638,11 +627,6 @@ class HttpServer extends BaseServer
             if (is_object($error)) {
                 $result = $error->getJson();
                 unset($error);
-            }
-            if ($_SERVER[Project::DATA_KEY_XHPROF_SERVER]) {
-                $debugRes = SyXhprof::run(SY_ENV . SY_PROJECT);
-                xhprof_disable();
-                Log::info('xhprof_result: ' . print_r($debugRes, true));
             }
         }
 

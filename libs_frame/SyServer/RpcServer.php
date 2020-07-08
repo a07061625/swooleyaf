@@ -14,7 +14,6 @@ use SyConstant\Project;
 use SyConstant\SyInner;
 use SyLog\Log;
 use Response\Result;
-use SyTool\SyXhprof;
 use SyTrait\Server\FramePreProcessRpcTrait;
 use SyTrait\Server\FrameRpcTrait;
 use SyTrait\Server\ProjectPreProcessRpcTrait;
@@ -146,11 +145,6 @@ class RpcServer extends BaseServer
 
         Registry::del(SyInner::REGISTRY_NAME_SERVICE_ERROR);
 
-        $xhProf = SyRequest::getParams(Project::DATA_KEY_XHPROF_PARAMS, 0);
-        if (($xhProf == 1) && defined(XHPROF_FLAGS_CPU)) {
-            $_SERVER[Project::DATA_KEY_XHPROF_SERVER] = true;
-        }
-
         SessionTool::initSessionJwt();
     }
 
@@ -175,7 +169,6 @@ class RpcServer extends BaseServer
     {
         self::$_syServer->incr(self::$_serverToken, 'request_times', 1);
         $_SERVER[SyInner::SERVER_DATA_KEY_TIMESTAMP] = time();
-        $_SERVER[Project::DATA_KEY_XHPROF_SERVER] = false;
         Registry::set(SyInner::REGISTRY_NAME_RESPONSE_HEADER, []);
         Registry::set(SyInner::REGISTRY_NAME_RESPONSE_COOKIE, []);
     }
@@ -195,9 +188,6 @@ class RpcServer extends BaseServer
         $result = '';
         $httpObj = null;
         try {
-            if ($_SERVER[Project::DATA_KEY_XHPROF_SERVER]) {
-                SyXhprof::start();;
-            }
             self::checkRequestCurrentLimit();
             $funcName = $this->getPreProcessFunction($data['api_uri'], $this->preProcessMapFrame, $this->preProcessMapProject);
             if (is_string($funcName)) {
@@ -229,11 +219,6 @@ class RpcServer extends BaseServer
             if (is_object($error)) {
                 $result = $error->getJson();
                 unset($error);
-            }
-            if ($_SERVER[Project::DATA_KEY_XHPROF_SERVER]) {
-                $debugRes = SyXhprof::run(SY_ENV . SY_PROJECT);
-                xhprof_disable();
-                Log::info('xhprof_result: ' . print_r($debugRes, true));
             }
         }
 
