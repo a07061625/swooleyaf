@@ -418,7 +418,7 @@ class Ruleset
                         echo str_repeat("\t", $depth);
                         echo "\t\t=> severity set to 5".PHP_EOL;
                     }
-                } else if (empty($newSniffs) === false) {
+                } elseif (empty($newSniffs) === false) {
                     $newSniff = $newSniffs[0];
                     if (in_array($newSniff, $ownSniffs, true) === false) {
                         // Including a sniff that hasn't been included higher up, but
@@ -737,7 +737,7 @@ class Ruleset
                     echo str_repeat("\t", $depth);
                     echo "\t\t=> ".Util\Common::stripBasepath($ref, $this->config->basepath).PHP_EOL;
                 }
-            } else if (is_dir($ref) === false) {
+            } elseif (is_dir($ref) === false) {
                 // Work out the sniff path.
                 $sepPos = strpos($ref, DIRECTORY_SEPARATOR);
                 if ($sepPos !== false) {
@@ -749,7 +749,7 @@ class Ruleset
                     if (count($parts) === 1) {
                         // A whole standard?
                         $path = '';
-                    } else if (count($parts) === 2) {
+                    } elseif (count($parts) === 2) {
                         // A directory of sniffs?
                         $path = DIRECTORY_SEPARATOR.'Sniffs'.DIRECTORY_SEPARATOR.$parts[1];
                     } else {
@@ -951,7 +951,7 @@ class Ruleset
                         $this->ruleset[$code] = [
                             'properties' => [],
                         ];
-                    } else if (isset($this->ruleset[$code]['properties']) === false) {
+                    } elseif (isset($this->ruleset[$code]['properties']) === false) {
                         $this->ruleset[$code]['properties'] = [];
                     }
 
@@ -1291,9 +1291,9 @@ class Ruleset
         // Special case for booleans.
         if ($value === 'true') {
             $value = true;
-        } else if ($value === 'false') {
+        } elseif ($value === 'false') {
             $value = false;
-        } else if (substr($name, -2) === '[]') {
+        } elseif (substr($name, -2) === '[]') {
             $name   = substr($name, 0, -2);
             $values = [];
             if ($value !== null) {

@@ -197,7 +197,7 @@ class HTML extends Generator
         foreach ($doc->childNodes as $node) {
             if ($node->nodeName === 'standard') {
                 $this->printTextBlock($node);
-            } else if ($node->nodeName === 'code_comparison') {
+            } elseif ($node->nodeName === 'code_comparison') {
                 $this->printCodeComparisonBlock($node);
             }
         }

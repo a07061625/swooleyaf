@@ -351,7 +351,7 @@ class CSS extends PHP
                         $finalTokens[($stackPtr + 1)]['content'] = $newContent;
                         unset($finalTokens[$stackPtr]);
                     }
-                } else if ($finalTokens[($stackPtr + 1)]['code'] === T_LNUMBER) {
+                } elseif ($finalTokens[($stackPtr + 1)]['code'] === T_LNUMBER) {
                     // They can also be used to provide negative numbers.
                     if (PHP_CODESNIFFER_VERBOSITY > 1) {
                         echo "\t\t* token is part of a negative number; adding content to next token and ignoring *".PHP_EOL;
@@ -450,7 +450,7 @@ class CSS extends PHP
                             echo "\t\t=> token content changed to: $content".PHP_EOL;
                         }
                     }
-                } else if ($finalTokens[$stackPtr]['content'][0] === '-'
+                } elseif ($finalTokens[$stackPtr]['content'][0] === '-'
                     && $finalTokens[($stackPtr + 1)]['code'] === T_STRING
                 ) {
                     if (isset($finalTokens[($stackPtr - 1)]) === true

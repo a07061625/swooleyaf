@@ -1,7 +1,7 @@
 <?php
 
 if ($something) {
-} else if ($somethingElse) {
+} elseif ($somethingElse) {
 }
 
 if ($something) {
@@ -9,6 +9,6 @@ if ($something) {
 }
 
 if ($something) {
-} else if ($somethingElse) {
+} elseif ($somethingElse) {
 } elseif ($another) {
 }

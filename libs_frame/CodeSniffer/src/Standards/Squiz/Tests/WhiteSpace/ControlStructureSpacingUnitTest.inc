@@ -18,12 +18,12 @@ while (true) {
 
 if ($one) {
 } else ($two) {
-} else if ($three) {
+} elseif ($three) {
 } elseif ($four) {
 }
 if ($one) {
 } else ($two) {
-} else if ($three) {
+} elseif ($three) {
 } elseif ($four) {
 }
 ?>
@@ -161,7 +161,7 @@ if ($one) {
 }
 elseif ($two) {
 }
-// else if something
+// elseif something
 else if ($three) {
 } // else do something
 else {

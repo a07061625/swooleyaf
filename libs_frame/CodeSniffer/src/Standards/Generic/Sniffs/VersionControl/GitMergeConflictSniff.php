@@ -127,7 +127,7 @@ class GitMergeConflictSniff implements Sniff
                     if (substr($tokens[$i]['content'], 0, 12) === '<<<<<<< HEAD') {
                         $phpcsFile->addError($error, $i, 'OpenerFound', ['opener']);
                         break;
-                    } else if (substr($tokens[$i]['content'], 0, 8) === '>>>>>>> ') {
+                    } elseif (substr($tokens[$i]['content'], 0, 8) === '>>>>>>> ') {
                         $phpcsFile->addError($error, $i, 'CloserFound', ['closer']);
                         break;
                     }
@@ -194,7 +194,7 @@ class GitMergeConflictSniff implements Sniff
                     if (substr($tokens[$i]['content'], 0, 12) === '<<<<<<< HEAD') {
                         $phpcsFile->addError($error, $i, 'OpenerFound');
                         break;
-                    } else if (substr($tokens[$i]['content'], 0, 8) === '>>>>>>> ') {
+                    } elseif (substr($tokens[$i]['content'], 0, 8) === '>>>>>>> ') {
                         $phpcsFile->addError($error, $i, 'CloserFound', ['closer']);
                         break;
                     }

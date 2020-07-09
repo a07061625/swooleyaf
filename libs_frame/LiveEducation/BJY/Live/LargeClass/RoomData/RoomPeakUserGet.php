@@ -61,9 +61,9 @@ class RoomPeakUserGet extends BaseBJY
     {
         if ($startTime >= $endTime) {
             throw new BJYException('开始时间必须小于结束时间', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if ($startTime <= 1262275200) {
+        } elseif ($startTime <= 1262275200) {
             throw new BJYException('开始时间不合法', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if (($endTime - $startTime) > 86400) {
+        } elseif (($endTime - $startTime) > 86400) {
             throw new BJYException('结束时间不能超过开始时间24小时', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
         }
 

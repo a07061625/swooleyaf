@@ -8,7 +8,7 @@ if (something) {
 
 if (something) {
     print 'hello';
-} else if (something) print 'hi';
+} elseif (something) print 'hi';
 
 for (i; i > 0; i--) print 'hello';
 

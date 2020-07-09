@@ -35,7 +35,7 @@ class ControlSignatureSniff extends AbstractPatternSniff
             'for (...) {EOL',
             'if (...) {EOL',
             'foreach (...) {EOL',
-            '} else if (...) {EOL',
+            '} elseif (...) {EOL',
             '} elseif (...) {EOL',
             '} else {EOL',
             'do {EOL',

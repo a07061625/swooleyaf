@@ -2,7 +2,7 @@
 
 if (true) {
 
-} else if (false) {
+} elseif (false) {
     
 } elseif (true) {
     

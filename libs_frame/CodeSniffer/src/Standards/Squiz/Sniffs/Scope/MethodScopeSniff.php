@@ -58,7 +58,7 @@ class MethodScopeSniff extends AbstractScopeSniff
         for ($i = ($stackPtr - 1); $i > 0; $i--) {
             if ($tokens[$i]['line'] < $tokens[$stackPtr]['line']) {
                 break;
-            } else if (isset(Tokens::$scopeModifiers[$tokens[$i]['code']]) === true) {
+            } elseif (isset(Tokens::$scopeModifiers[$tokens[$i]['code']]) === true) {
                 $modifier = $i;
                 break;
             }

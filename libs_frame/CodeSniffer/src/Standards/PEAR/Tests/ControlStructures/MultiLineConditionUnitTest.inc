@@ -74,7 +74,7 @@ if ($condition1
     || $condition2
     || $condition3
 ) {
-} else if ($condition1
+} elseif ($condition1
     || $condition2
     || $condition3
 ) {

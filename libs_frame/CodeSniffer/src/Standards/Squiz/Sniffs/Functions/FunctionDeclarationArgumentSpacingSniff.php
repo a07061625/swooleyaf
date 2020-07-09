@@ -267,7 +267,7 @@ class FunctionDeclarationArgumentSpacingSniff implements Sniff
                         if ($fix === true) {
                             $phpcsFile->fixer->addContent($whitespace, ' ');
                         }
-                    } else if ($gap !== 1) {
+                    } elseif ($gap !== 1) {
                         // Just make sure this is not actually an indent.
                         if ($tokens[$whitespace]['line'] === $tokens[($whitespace - 1)]['line']) {
                             $error = 'Expected 1 space between comma and argument "%s"; %s found';

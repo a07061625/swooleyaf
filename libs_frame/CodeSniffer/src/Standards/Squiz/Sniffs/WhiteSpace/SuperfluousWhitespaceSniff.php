@@ -121,7 +121,7 @@ class SuperfluousWhitespaceSniff implements Sniff
 
                 $phpcsFile->fixer->endChangeset();
             }
-        } else if ($tokens[$stackPtr]['code'] === T_CLOSE_TAG) {
+        } elseif ($tokens[$stackPtr]['code'] === T_CLOSE_TAG) {
             /*
                 Check for end of file whitespace.
             */
@@ -211,7 +211,7 @@ class SuperfluousWhitespaceSniff implements Sniff
                         $phpcsFile->fixer->replaceToken($stackPtr, rtrim($tokenContent).$phpcsFile->eolChar);
                     }
                 }
-            } else if ($tokens[($stackPtr - 1)]['content'] !== rtrim($tokens[($stackPtr - 1)]['content'])
+            } elseif ($tokens[($stackPtr - 1)]['content'] !== rtrim($tokens[($stackPtr - 1)]['content'])
                 && $tokens[($stackPtr - 1)]['line'] === $tokens[$stackPtr]['line']
             ) {
                 $fix = $phpcsFile->addFixableError('Whitespace found at end of line', ($stackPtr - 1), 'EndLine');

@@ -141,18 +141,18 @@ class RoomCreate extends WxBaseMini
         $startDiffTime = $startTime - Tool::getNowTime();
         if ($startDiffTime <= 0) {
             throw new WxException('直播开始时间必须大于当前时间', ErrorCode::WX_PARAM_ERROR);
-        } else if ($startDiffTime <= 600) {
+        } elseif ($startDiffTime <= 600) {
             throw new WxException('直播开始时间必须超过当前时间十分钟', ErrorCode::WX_PARAM_ERROR);
-        } else if ($startDiffTime >= 15552000) {
+        } elseif ($startDiffTime >= 15552000) {
             throw new WxException('直播开始时间不能超过当前时间六个月', ErrorCode::WX_PARAM_ERROR);
         }
 
         $endDiffTime = $endTime - $startTime;
         if($endDiffTime <= 0){
             throw new WxException('直播结束时间必须大于直播开始时间', ErrorCode::WX_PARAM_ERROR);
-        } else if($endDiffTime < 1800){
+        } elseif($endDiffTime < 1800){
             throw new WxException('直播结束时间必须大于等于直播开始时间30分钟', ErrorCode::WX_PARAM_ERROR);
-        } else if($endDiffTime > 43200){
+        } elseif($endDiffTime > 43200){
             throw new WxException('直播结束时间不能超过直播开始时间12小时', ErrorCode::WX_PARAM_ERROR);
         }
 

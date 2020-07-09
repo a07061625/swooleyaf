@@ -96,7 +96,7 @@ class CreateWidgetTypeCallbackSniff implements Sniff
                     $nestedFunction = null;
                     continue;
                 }
-            } else if (($tokens[$i]['code'] === T_FUNCTION
+            } elseif (($tokens[$i]['code'] === T_FUNCTION
                 || $tokens[$i]['code'] === T_CLOSURE)
                 && isset($tokens[$i]['scope_closer']) === true
             ) {
@@ -112,7 +112,7 @@ class CreateWidgetTypeCallbackSniff implements Sniff
                 }
 
                 continue;
-            } else if ($tokens[$i]['code'] !== T_STRING
+            } elseif ($tokens[$i]['code'] !== T_STRING
                 || $tokens[$i]['content'] !== 'callback'
             ) {
                 continue;

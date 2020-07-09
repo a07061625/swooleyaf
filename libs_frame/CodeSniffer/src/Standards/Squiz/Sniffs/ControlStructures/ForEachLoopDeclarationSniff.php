@@ -79,7 +79,7 @@ class ForEachLoopDeclarationSniff implements Sniff
             if ($fix === true) {
                 $phpcsFile->fixer->replaceToken(($openingBracket + 1), '');
             }
-        } else if ($this->requiredSpacesAfterOpen > 0) {
+        } elseif ($this->requiredSpacesAfterOpen > 0) {
             $spaceAfterOpen = 0;
             if ($tokens[($openingBracket + 1)]['code'] === T_WHITESPACE) {
                 $spaceAfterOpen = $tokens[($openingBracket + 1)]['length'];
@@ -109,7 +109,7 @@ class ForEachLoopDeclarationSniff implements Sniff
             if ($fix === true) {
                 $phpcsFile->fixer->replaceToken(($closingBracket - 1), '');
             }
-        } else if ($this->requiredSpacesBeforeClose > 0) {
+        } elseif ($this->requiredSpacesBeforeClose > 0) {
             $spaceBeforeClose = 0;
             if ($tokens[($closingBracket - 1)]['code'] === T_WHITESPACE) {
                 $spaceBeforeClose = $tokens[($closingBracket - 1)]['length'];

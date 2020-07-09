@@ -80,7 +80,7 @@ class MissingColonSniff implements Sniff
 
             if ($tokens[$i]['code'] === T_STRING) {
                 $foundString = $i;
-            } else if ($tokens[$i]['code'] === T_COLON) {
+            } elseif ($tokens[$i]['code'] === T_COLON) {
                 $foundColon = $i;
             }
         }//end for

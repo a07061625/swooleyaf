@@ -81,7 +81,7 @@ class ClassDefinitionClosingBraceSpaceSniff implements Sniff
                     if ($found < 0) {
                         // Next statement on same line as the closing brace.
                         $phpcsFile->fixer->addContentBefore($next, $phpcsFile->eolChar.$phpcsFile->eolChar);
-                    } else if ($found === 0) {
+                    } elseif ($found === 0) {
                         // Next statement on next line, no blank line.
                         $phpcsFile->fixer->addContentBefore($firstOnLine, $phpcsFile->eolChar);
                     } else {

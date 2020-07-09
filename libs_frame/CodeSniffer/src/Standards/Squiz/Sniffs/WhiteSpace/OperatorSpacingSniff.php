@@ -144,7 +144,7 @@ class OperatorSpacingSniff implements Sniff
             }
 
             $phpcsFile->recordMetric($stackPtr, 'Space before operator', 0);
-        } else if (isset(Tokens::$assignmentTokens[$tokens[$stackPtr]['code']]) === false) {
+        } elseif (isset(Tokens::$assignmentTokens[$tokens[$stackPtr]['code']]) === false) {
             // Don't throw an error for assignments, because other standards allow
             // multiple spaces there to align multiple assignments.
             if ($tokens[($stackPtr - 2)]['line'] !== $tokens[$stackPtr]['line']) {

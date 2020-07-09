@@ -12,7 +12,7 @@ do {
 switch ($condition) {}
 
 if ($condition) {
-} else if ($condition) {
+} elseif ($condition) {
 } elseif ($condition) {
 } else {
 }

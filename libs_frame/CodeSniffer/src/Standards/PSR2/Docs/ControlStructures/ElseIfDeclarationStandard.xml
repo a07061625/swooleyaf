@@ -1,7 +1,7 @@
 <documentation title="Elseif Declarations">
     <standard>
     <![CDATA[
-    PHP's elseif keyword should be used instead of else if.
+    PHP's elseif keyword should be used instead of elseif.
     ]]>
     </standard>
     <code_comparison>

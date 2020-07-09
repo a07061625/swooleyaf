@@ -182,7 +182,7 @@ class MultipleStatementAlignmentSniff implements Sniff
                             } else {
                                 $lastSemi = $assign;
                             }
-                        } else if ($tokens[$assign]['level'] < $tokens[$stackPtr]['level']) {
+                        } elseif ($tokens[$assign]['level'] < $tokens[$stackPtr]['level']) {
                             // Statement is in a different context, so the block is over.
                             break;
                         }
@@ -190,7 +190,7 @@ class MultipleStatementAlignmentSniff implements Sniff
                 }//end if
 
                 continue;
-            } else if ($assign !== $stackPtr && $tokens[$assign]['line'] === $lastLine) {
+            } elseif ($assign !== $stackPtr && $tokens[$assign]['line'] === $lastLine) {
                 // Skip multiple assignments on the same line. We only need to
                 // try and align the first assignment.
                 continue;
@@ -203,10 +203,10 @@ class MultipleStatementAlignmentSniff implements Sniff
                     $assign   = $this->checkAlignment($phpcsFile, $assign);
                     $lastCode = $assign;
                     continue;
-                } else if ($tokens[$assign]['level'] < $tokens[$stackPtr]['level']) {
+                } elseif ($tokens[$assign]['level'] < $tokens[$stackPtr]['level']) {
                     // We've gone one level up, so the block we are processing is done.
                     break;
-                } else if ($arrayEnd !== null) {
+                } elseif ($arrayEnd !== null) {
                     // Assignments inside arrays are not part of
                     // the original block, so process this new block.
                     $assign   = ($this->checkAlignment($phpcsFile, $assign, $arrayEnd) - 1);
@@ -280,7 +280,7 @@ class MultipleStatementAlignmentSniff implements Sniff
                         $padding      = 1;
                         $assignColumn = ($varEnd + 1);
                     }
-                } else if ($padding > $assignments[$maxPadding]['expected']) {
+                } elseif ($padding > $assignments[$maxPadding]['expected']) {
                     $maxPadding = $assign;
                 }//end if
             } else {

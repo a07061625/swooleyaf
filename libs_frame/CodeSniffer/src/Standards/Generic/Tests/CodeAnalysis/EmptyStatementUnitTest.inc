@@ -22,7 +22,7 @@ if ($foo) {
 
 if ($foo) {
     $foo = 'bar';
-} else if ($bar) {
+} elseif ($bar) {
     $bar = 'foo';
 }
 

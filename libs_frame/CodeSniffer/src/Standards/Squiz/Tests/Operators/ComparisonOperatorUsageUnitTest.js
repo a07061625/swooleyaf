@@ -1,25 +1,25 @@
 if (value === TRUE) {
-} else if (value === FALSE) {
+} elseif (value === FALSE) {
 }
 
 if (value == TRUE) {
-} else if (value == FALSE) {
+} elseif (value == FALSE) {
 }
 
 if (value) {
-} else if (!value) {
+} elseif (!value) {
 }
 
 if (value.isSomething === TRUE) {
-} else if (myFunction(value) === FALSE) {
+} elseif (myFunction(value) === FALSE) {
 }
 
 if (value.isSomething == TRUE) {
-} else if (myFunction(value) == FALSE) {
+} elseif (myFunction(value) == FALSE) {
 }
 
 if (value.isSomething) {
-} else if (!myFunction(value)) {
+} elseif (!myFunction(value)) {
 }
 
 if (value === TRUE || other === FALSE) {

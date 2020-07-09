@@ -110,7 +110,7 @@ class DisallowShortOpenTagSniff implements Sniff
                 if ($closerFound !== false) {
                     if ($i !== $stackPtr) {
                         break;
-                    } else if ($closerFound > $openerFound) {
+                    } elseif ($closerFound > $openerFound) {
                         break;
                     } else {
                         $closerFound = false;

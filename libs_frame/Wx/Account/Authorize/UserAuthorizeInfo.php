@@ -77,7 +77,7 @@ class UserAuthorizeInfo extends WxBaseAccount
         $infoBaseRes = $infoBase->getDetail();
         if ($infoBase['code'] == 0) {
             $resArr['data'] = $infoBaseRes['data'];
-        } else if ($infoBaseRes['errcode'] == 40001) {
+        } elseif ($infoBaseRes['errcode'] == 40001) {
             $infoSingle = new InfoSingle($this->reqData['appid']);
             $infoSingle->setOpenid($openid);
             $infoSingleRes = $infoSingle->getDetail();
