@@ -116,7 +116,6 @@ class HttpServer extends BaseServer
             'finish' => 'onFinish',
             'handshake' => 'onHandshake',
             'message' => 'onMessage',
-            'close' => 'onClose',
         ]);
     }
 
