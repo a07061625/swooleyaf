@@ -364,16 +364,6 @@ abstract class BaseServer
     }
 
     /**
-     * 关闭连接
-     * @param \Swoole\Server $server
-     * @param int $fd 连接的文件描述符
-     * @param int $reactorId reactor线程ID,$reactorId<0:服务器端关闭 $reactorId>0:客户端关闭
-     */
-    public function onClose(Server $server, int $fd, int $reactorId)
-    {
-    }
-
-    /**
      * 工作进程退出
      * @param \Swoole\Server $server
      * @param int $workerId 工作进程ID
