@@ -71,7 +71,6 @@ class RpcServer extends BaseServer
             'receive' => 'onReceive',
             'task' => 'onTask',
             'finish' => 'onFinish',
-            'close' => 'onClose',
         ]);
     }
 
