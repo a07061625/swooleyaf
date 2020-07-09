@@ -21,7 +21,7 @@ jQuery(document).ready(function($){
                     $div.width(divW-diff);
                     $content.css('margin-left', $div.width());
                 }
-            } else if(cursorX > handleX){
+            } elseif(cursorX > handleX){
                 diff = cursorX - handleX;
                 if( diff > 5){
                     $div.width(divW+diff);

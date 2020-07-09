@@ -141,7 +141,7 @@ class ShorthandSizeSniff implements Sniff
                 // Both values are different, so it is already shorthand.
                 return;
             }
-        } else if ($values[0][0] !== $values[2][0] || $values[1][0] !== $values[3][0]) {
+        } elseif ($values[0][0] !== $values[2][0] || $values[1][0] !== $values[3][0]) {
             // Can't shorthand this.
             return;
         }

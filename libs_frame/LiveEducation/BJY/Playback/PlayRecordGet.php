@@ -96,11 +96,11 @@ class PlayRecordGet extends BaseBJY
     {
         if ($startTime <= 0) {
             throw new BJYException('起始时间不合法', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if ($endTime <= 0) {
+        } elseif ($endTime <= 0) {
             throw new BJYException('结束时间不合法', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if ($startTime > $endTime) {
+        } elseif ($startTime > $endTime) {
             throw new BJYException('起始时间不能大于结束时间', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if (($endTime - $startTime) > 86400) {
+        } elseif (($endTime - $startTime) > 86400) {
             throw new BJYException('结束时间不能大于起始时间24小时', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
         }
 

@@ -40,7 +40,7 @@ public function test2()
 foreach ($elements as $element) {
     if ($something) {
         // Do IF.
-    } else if ($somethingElse) {
+    } elseif ($somethingElse) {
         // Do ELSE.
     }
 }

@@ -513,7 +513,7 @@ class HttpServer extends BaseServer
         self::$_syServer->incr(self::$_serverToken, 'request_times', 1);
         if (isset(self::$_reqHeaders[Project::DATA_KEY_SIGN_HEADER])) {
             $_POST[Project::DATA_KEY_SIGN_PARAMS] = self::$_reqHeaders[Project::DATA_KEY_SIGN_HEADER];
-        } else if (isset($_GET[Project::DATA_KEY_SIGN_PARAMS])) {
+        } elseif (isset($_GET[Project::DATA_KEY_SIGN_PARAMS])) {
             $_POST[Project::DATA_KEY_SIGN_PARAMS] = $_GET[Project::DATA_KEY_SIGN_PARAMS];
         }
         unset($_GET[Project::DATA_KEY_SIGN_PARAMS]);

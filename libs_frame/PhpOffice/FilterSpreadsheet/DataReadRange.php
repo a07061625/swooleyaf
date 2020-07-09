@@ -45,7 +45,7 @@ class DataReadRange implements IReadFilter
             if (!in_array($worksheetName, $this->workerSheetName)) {
                 return false;
             }
-        } else if ($worksheetName != $this->workerSheetName) {// 只设置了一个表空间
+        } elseif ($worksheetName != $this->workerSheetName) {// 只设置了一个表空间
             return false;
         }
         // 设置了截止行,且当前行超过了指定行

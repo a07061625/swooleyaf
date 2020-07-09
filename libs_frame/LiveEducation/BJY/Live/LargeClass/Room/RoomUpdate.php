@@ -137,13 +137,13 @@ class RoomUpdate extends BaseBJY
         $nowTime = Tool::getNowTime();
         if ($startTime >= $endTime) {
             throw new BJYException('开始时间必须小于结束时间', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if ($endTime <= $nowTime) {
+        } elseif ($endTime <= $nowTime) {
             throw new BJYException('结束时间不能小于当前时间', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
         }
         if ($this->reqData['is_long_term'] == 0) {
             if (($endTime - $startTime) <= 900) {
                 throw new BJYException('结束时间必须超过开始时间15分钟', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-            } else if (($endTime - $startTime) >= 86400) {
+            } elseif (($endTime - $startTime) >= 86400) {
                 throw new BJYException('结束时间不能超过开始时间24小时', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
             }
         }

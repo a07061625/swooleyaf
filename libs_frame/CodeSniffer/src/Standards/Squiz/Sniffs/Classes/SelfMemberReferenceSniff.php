@@ -75,7 +75,7 @@ class SelfMemberReferenceSniff extends AbstractScopeSniff
 
                 return;
             }
-        } else if ($tokens[$calledClassName]['code'] === T_STRING) {
+        } elseif ($tokens[$calledClassName]['code'] === T_STRING) {
             // If the class is called with a namespace prefix, build fully qualified
             // namespace calls for both current scope class and requested class.
             $prevNonEmpty = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($calledClassName - 1), null, true);

@@ -182,7 +182,7 @@ class SideEffectsSniff implements Sniff
 
                 $i = $tokens[$i]['scope_closer'];
                 continue;
-            } else if ($tokens[$i]['code'] === T_STRING
+            } elseif ($tokens[$i]['code'] === T_STRING
                 && strtolower($tokens[$i]['content']) === 'define'
             ) {
                 $prev = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($i - 1), null, true);

@@ -250,7 +250,7 @@ class FunctionSpacingSniff implements Sniff
                         // Found a previous function.
                         return;
                     }
-                } else if ($tokens[$i]['code'] === T_FUNCTION) {
+                } elseif ($tokens[$i]['code'] === T_FUNCTION) {
                     // Found another interface or abstract function.
                     return;
                 }

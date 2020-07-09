@@ -61,7 +61,7 @@ class NonExecutableCodeSniff implements Sniff
             if ($tokens[$i]['code'] === T_CLOSE_PARENTHESIS) {
                 $i = $tokens[$i]['parenthesis_opener'];
                 continue;
-            } else if (isset(Tokens::$emptyTokens[$tokens[$i]['code']]) === true) {
+            } elseif (isset(Tokens::$emptyTokens[$tokens[$i]['code']]) === true) {
                 continue;
             }
 

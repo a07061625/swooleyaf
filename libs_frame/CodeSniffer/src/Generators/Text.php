@@ -31,7 +31,7 @@ class Text extends Generator
         foreach ($doc->childNodes as $node) {
             if ($node->nodeName === 'standard') {
                 $this->printTextBlock($node);
-            } else if ($node->nodeName === 'code_comparison') {
+            } elseif ($node->nodeName === 'code_comparison') {
                 $this->printCodeComparisonBlock($node);
             }
         }
@@ -86,7 +86,7 @@ class Text extends Generator
                     // so we are done.
                     $lines[]  = $tempLine.$word;
                     $tempLine = '';
-                } else if (strlen($tempLine.$word) === 100) {
+                } elseif (strlen($tempLine.$word) === 100) {
                     // We are already at the edge, so we are done.
                     $lines[]  = $tempLine.$word;
                     $tempLine = '';
@@ -132,7 +132,7 @@ class Text extends Generator
                     // so we are done.
                     $firstTitleLines[] = $tempTitle.$word;
                     $tempTitle         = '';
-                } else if (strlen($tempTitle.$word) === 46) {
+                } elseif (strlen($tempTitle.$word) === 46) {
                     // We are already at the edge, so we are done.
                     $firstTitleLines[] = $tempTitle.$word;
                     $tempTitle         = '';
@@ -167,7 +167,7 @@ class Text extends Generator
                     // so we are done.
                     $secondTitleLines[] = $tempTitle.$word;
                     $tempTitle          = '';
-                } else if (strlen($tempTitle.$word) === 46) {
+                } elseif (strlen($tempTitle.$word) === 46) {
                     // We are already at the edge, so we are done.
                     $secondTitleLines[] = $tempTitle.$word;
                     $tempTitle          = '';

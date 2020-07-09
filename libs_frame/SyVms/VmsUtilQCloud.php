@@ -61,7 +61,7 @@ abstract class VmsUtilQCloud extends VmsUtilBase
         $rspData = Tool::jsonDecode($sendRes['res_content']);
         if (isset($rspData['result']) && ($rspData['result'] == 0)) {
             $resArr['data'] = $rspData;
-        } else if (isset($rspData['result'])) {
+        } elseif (isset($rspData['result'])) {
             $resArr['code'] = ErrorCode::VMS_REQ_QCLOUD_ERROR;
             $resArr['msg'] = $rspData['errmsg'];
         } else {

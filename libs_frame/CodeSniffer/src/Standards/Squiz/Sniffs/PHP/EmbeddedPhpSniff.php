@@ -191,7 +191,7 @@ class EmbeddedPhpSniff implements Sniff
             for ($first = ($stackPtr - 1); $first > 0; $first--) {
                 if ($tokens[$first]['line'] === $tokens[$stackPtr]['line']) {
                     continue;
-                } else if (trim($tokens[$first]['content']) !== '') {
+                } elseif (trim($tokens[$first]['content']) !== '') {
                     $first = $phpcsFile->findFirstOnLine([], $first, true);
                     break;
                 }
@@ -202,7 +202,7 @@ class EmbeddedPhpSniff implements Sniff
                 && trim($tokens[$first]['content']) !== ''
             ) {
                 $expected = (strlen($tokens[$first]['content']) - strlen(ltrim($tokens[$first]['content'])));
-            } else if ($tokens[$first]['code'] === T_WHITESPACE) {
+            } elseif ($tokens[$first]['code'] === T_WHITESPACE) {
                 $expected = ($tokens[($first + 1)]['column'] - 1);
             }
 
@@ -238,7 +238,7 @@ class EmbeddedPhpSniff implements Sniff
                 $phpcsFile->fixer->addNewlineBefore($closingTag);
                 $phpcsFile->fixer->endChangeset();
             }
-        } else if ($tokens[$nextContent]['line'] === $tokens[$closingTag]['line']) {
+        } elseif ($tokens[$nextContent]['line'] === $tokens[$closingTag]['line']) {
             $error = 'Closing PHP tag must be on a line by itself';
             $fix   = $phpcsFile->addFixableError($error, $closingTag, 'ContentAfterEnd');
             if ($fix === true) {
@@ -353,7 +353,7 @@ class EmbeddedPhpSniff implements Sniff
                 if ($fix === true) {
                     $phpcsFile->fixer->addContent($prev, ';');
                 }
-            } else if ($tokens[$prev]['code'] === T_SEMICOLON) {
+            } elseif ($tokens[$prev]['code'] === T_SEMICOLON) {
                 $statementCount = 1;
                 for ($i = ($stackPtr + 1); $i < $prev; $i++) {
                     if ($tokens[$i]['code'] === T_SEMICOLON) {
@@ -372,7 +372,7 @@ class EmbeddedPhpSniff implements Sniff
         $trailingSpace = 0;
         if ($tokens[($closeTag - 1)]['code'] === T_WHITESPACE) {
             $trailingSpace = $tokens[($closeTag - 1)]['length'];
-        } else if (($tokens[($closeTag - 1)]['code'] === T_COMMENT
+        } elseif (($tokens[($closeTag - 1)]['code'] === T_COMMENT
             || isset(Tokens::$phpcsCommentTokens[$tokens[($closeTag - 1)]['code']]) === true)
             && substr($tokens[($closeTag - 1)]['content'], -1) === ' '
         ) {
@@ -386,7 +386,7 @@ class EmbeddedPhpSniff implements Sniff
             if ($fix === true) {
                 if ($trailingSpace === 0) {
                     $phpcsFile->fixer->addContentBefore($closeTag, ' ');
-                } else if ($tokens[($closeTag - 1)]['code'] === T_COMMENT
+                } elseif ($tokens[($closeTag - 1)]['code'] === T_COMMENT
                     || isset(Tokens::$phpcsCommentTokens[$tokens[($closeTag - 1)]['code']]) === true
                 ) {
                     $phpcsFile->fixer->replaceToken(($closeTag - 1), rtrim($tokens[($closeTag - 1)]['content']).' ');

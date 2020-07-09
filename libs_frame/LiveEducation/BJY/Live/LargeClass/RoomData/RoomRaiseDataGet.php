@@ -61,7 +61,7 @@ class RoomRaiseDataGet extends BaseBJY
     {
         if ($startTime >= $endTime) {
             throw new BJYException('开始时间必须小于结束时间', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if ($startTime <= 1262275200) {
+        } elseif ($startTime <= 1262275200) {
             throw new BJYException('开始时间不合法', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
         }
 

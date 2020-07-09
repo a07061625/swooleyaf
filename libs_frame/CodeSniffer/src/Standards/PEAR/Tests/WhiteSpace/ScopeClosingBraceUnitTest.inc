@@ -40,7 +40,7 @@ function test2()
 foreach ($elements as $element) {
     if ($something) {
         // Do IF.
-    } else if ($somethingElse) {
+    } elseif ($somethingElse) {
         // Do ELSE.
     }
 }
@@ -51,7 +51,7 @@ case 1:
     default:
         if ($something) {
             echo $string{1};
-        } else if ($else) {
+        } elseif ($else) {
             switch ($else) {
             case 1:
                 // Do something.

@@ -106,9 +106,9 @@ class InteractDetailGet extends BaseBJY
     {
         if ($beginTime < 0) {
             throw new BJYException('开始时间不合法', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if ($endTime < 0) {
+        } elseif ($endTime < 0) {
             throw new BJYException('结束时间不合法', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if ($beginTime > $endTime) {
+        } elseif ($beginTime > $endTime) {
             throw new BJYException('开始时间不能大于结束时间', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
         }
 

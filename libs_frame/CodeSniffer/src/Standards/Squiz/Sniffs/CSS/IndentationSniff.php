@@ -125,7 +125,7 @@ class IndentationSniff implements Sniff
                         $phpcsFile->fixer->replaceToken($i, '');
                     }
                 }
-            } else if ($foundIndent !== $expectedIndent) {
+            } elseif ($foundIndent !== $expectedIndent) {
                 $error = 'Line indented incorrectly; expected %s spaces, found %s';
                 $data  = [
                     $expectedIndent,

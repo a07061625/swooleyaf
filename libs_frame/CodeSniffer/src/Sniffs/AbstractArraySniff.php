@@ -101,7 +101,7 @@ abstract class AbstractArraySniff implements Sniff
 
                 if ($tokens[$checkToken]['code'] === T_ARRAY) {
                     $checkToken = $tokens[$tokens[$checkToken]['parenthesis_opener']]['parenthesis_closer'];
-                } else if ($tokens[$checkToken]['code'] === T_OPEN_SHORT_ARRAY) {
+                } elseif ($tokens[$checkToken]['code'] === T_OPEN_SHORT_ARRAY) {
                     $checkToken = $tokens[$checkToken]['bracket_closer'];
                 } else {
                     // T_CLOSURE.

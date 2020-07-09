@@ -35,7 +35,7 @@ use Grafika\Imagick\DrawingObject\CubicBezier as ImagickCubicBezier;
 $editorName = Grafika::detectAvailableEditor();
 if('Imagick'===$editorName){
     $drawingObject = new ImagickCubicBezier(array(42, 230), array(230, 237), array(42, 45), array(230, 43), '#000000');
-} else if ('Gd'===$editorName) {
+} elseif ('Gd'===$editorName) {
     $drawingObject = new GdCubicBezier(array(42, 230), array(230, 237), array(42, 45), array(230, 43), '#000000');
 }
 $editor->draw( $image, $drawingObject );

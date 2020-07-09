@@ -95,7 +95,7 @@ class ControlSignatureSniff implements Sniff
         $found = 1;
         if ($tokens[($stackPtr + 1)]['code'] !== T_WHITESPACE) {
             $found = 0;
-        } else if ($tokens[($stackPtr + 1)]['content'] !== ' ') {
+        } elseif ($tokens[($stackPtr + 1)]['content'] !== ' ') {
             if (strpos($tokens[($stackPtr + 1)]['content'], $phpcsFile->eolChar) !== false) {
                 $found = 'newline';
             } else {
@@ -229,7 +229,7 @@ class ControlSignatureSniff implements Sniff
                     $phpcsFile->fixer->endChangeset();
                 }
             }//end if
-        } else if ($tokens[$stackPtr]['code'] === T_WHILE) {
+        } elseif ($tokens[$stackPtr]['code'] === T_WHILE) {
             // Zero spaces after parenthesis closer.
             $closer = $tokens[$stackPtr]['parenthesis_closer'];
             $found  = 0;
@@ -264,7 +264,7 @@ class ControlSignatureSniff implements Sniff
             ) {
                 return;
             }
-        } else if ($tokens[$stackPtr]['code'] === T_ELSE
+        } elseif ($tokens[$stackPtr]['code'] === T_ELSE
             || $tokens[$stackPtr]['code'] === T_ELSEIF
             || $tokens[$stackPtr]['code'] === T_CATCH
             || $tokens[$stackPtr]['code'] === T_FINALLY
@@ -289,9 +289,9 @@ class ControlSignatureSniff implements Sniff
         $found = 1;
         if ($tokens[($closer + 1)]['code'] !== T_WHITESPACE) {
             $found = 0;
-        } else if ($tokens[$closer]['line'] !== $tokens[$stackPtr]['line']) {
+        } elseif ($tokens[$closer]['line'] !== $tokens[$stackPtr]['line']) {
             $found = 'newline';
-        } else if ($tokens[($closer + 1)]['content'] !== ' ') {
+        } elseif ($tokens[($closer + 1)]['content'] !== ' ') {
             $found = $tokens[($closer + 1)]['length'];
         }
 

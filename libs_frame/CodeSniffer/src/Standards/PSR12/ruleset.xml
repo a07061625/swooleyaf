@@ -252,7 +252,7 @@
 
     <!-- else and elseif are on the same line as the closing brace from the earlier body. -->
 
-    <!-- The keyword elseif SHOULD be used instead of else if so that all control keywords look like single words. -->
+    <!-- The keyword elseif SHOULD be used instead of elseif so that all control keywords look like single words. -->
     <rule ref="PSR2.ControlStructures.ElseIfDeclaration"/>
 
     <!-- Expressions in parentheses MAY be split across multiple lines, where each subsequent line is indented at least once. When doing so, the first condition MUST be on the next line. The closing parenthesis and opening brace MUST be placed together on their own line with one space between them. Boolean operators between conditions MUST always be at the beginning or at the end of the line, not a mix of both. -->

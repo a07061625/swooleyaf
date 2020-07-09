@@ -87,7 +87,7 @@ class ClassDeclarationSniff extends PEARClassDeclarationSniff
                         $phpcsFile->fixer->replaceToken(($stackPtr - 1), ' ');
                     }
                 }
-            } else if ($tokens[($stackPtr - 2)]['code'] === T_ABSTRACT
+            } elseif ($tokens[($stackPtr - 2)]['code'] === T_ABSTRACT
                 || $tokens[($stackPtr - 2)]['code'] === T_FINAL
             ) {
                 $prevContent = strtolower($tokens[($stackPtr - 2)]['content']);
@@ -293,7 +293,7 @@ class ClassDeclarationSniff extends PEARClassDeclarationSniff
                         $phpcsFile->fixer->addNewline($prev);
                         $phpcsFile->fixer->endChangeset();
                     }
-                } else if ($tokens[$prev]['line'] !== ($tokens[$className]['line'] - 1)) {
+                } elseif ($tokens[$prev]['line'] !== ($tokens[$className]['line'] - 1)) {
                     if ($keywordTokenType === T_EXTENDS) {
                         $error = 'Only one interface may be specified per line in a multi-line extends declaration';
                         $fix   = $phpcsFile->addFixableError($error, $className, 'ExtendsInterfaceSameLine');
@@ -341,7 +341,7 @@ class ClassDeclarationSniff extends PEARClassDeclarationSniff
                         }
                     }
                 }//end if
-            } else if ($tokens[($className - 1)]['code'] !== T_NS_SEPARATOR
+            } elseif ($tokens[($className - 1)]['code'] !== T_NS_SEPARATOR
                 || $tokens[($className - 2)]['code'] !== T_STRING
             ) {
                 // Not part of a longer fully qualified class name.

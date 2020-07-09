@@ -76,7 +76,7 @@ class Test2
         // All ok.
         if (TRUE) {
             if (TRUE) {
-            } else if (FALSE) {
+            } elseif (FALSE) {
                 foreach ($tokens as $token) {
                     switch ($token) {
                     case '1':
@@ -228,7 +228,7 @@ function test()
 foreach ($elements as $element) {
     if ($something) {
         // Do IF.
-    } else if ($somethingElse) {
+    } elseif ($somethingElse) {
         // Do ELSE.
     }
 }
@@ -279,7 +279,7 @@ case 1:
         default:
         if ($something) {
             echo $string{1};
-        } else if ($else) {
+        } elseif ($else) {
             switch ($else) {
                 default:
             }

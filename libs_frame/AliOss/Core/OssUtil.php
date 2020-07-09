@@ -455,7 +455,7 @@ BBB;
                     }
                 }
             }
-        } else if ($handle = opendir($dir)) {
+        } elseif ($handle = opendir($dir)) {
             while (false !== ($file = readdir($handle))) {
                 if (!in_array(strtolower($file), $exclude_array)) {
                     $new_file = $dir . '/' . $file;

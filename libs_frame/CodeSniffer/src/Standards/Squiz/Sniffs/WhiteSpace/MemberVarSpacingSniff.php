@@ -102,7 +102,7 @@ class MemberVarSpacingSniff extends AbstractVariableSniff
             if ($first === false) {
                 $first = $start;
             }
-        } else if ($tokens[$start]['code'] === T_DOC_COMMENT_CLOSE_TAG) {
+        } elseif ($tokens[$start]['code'] === T_DOC_COMMENT_CLOSE_TAG) {
             $first = $tokens[$start]['comment_opener'];
         } else {
             $first = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($start - 1), null, true);

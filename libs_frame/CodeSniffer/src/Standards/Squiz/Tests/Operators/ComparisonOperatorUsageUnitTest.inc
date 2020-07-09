@@ -1,26 +1,26 @@
 <?php
 if ($value === TRUE) {
-} else if ($value === FALSE) {
+} elseif ($value === FALSE) {
 }
 
 if ($value == TRUE) {
-} else if ($value == FALSE) {
+} elseif ($value == FALSE) {
 }
 
 if ($value) {
-} else if (!$value) {
+} elseif (!$value) {
 }
 
 if (is_array($array) === TRUE) {
-} else if (myFunction($value) === FALSE) {
+} elseif (myFunction($value) === FALSE) {
 }
 
 if (is_array($array) == TRUE) {
-} else if (myFunction($value) == FALSE) {
+} elseif (myFunction($value) == FALSE) {
 }
 
 if (is_array($array)) {
-} else if (!myFunction($value)) {
+} elseif (!myFunction($value)) {
 }
 
 if ($value === TRUE || $other === FALSE) {

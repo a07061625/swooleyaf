@@ -64,7 +64,7 @@ if (XRegExp) {
                     chr = pattern.charAt(pos);
                     if (chr === "[")
                         currScope = XRegExp.INSIDE_CLASS;
-                    else if (chr === "]")
+                    elseif (chr === "]")
                         currScope = XRegExp.OUTSIDE_CLASS;
                     // Advance position one character
                     output.push(chr);

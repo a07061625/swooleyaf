@@ -68,7 +68,7 @@ class Cache
                 if (PHP_CODESNIFFER_VERBOSITY > 1) {
                     echo "\t\t=> external file: $file".PHP_EOL;
                 }
-            } else if (PHP_CODESNIFFER_VERBOSITY > 1) {
+            } elseif (PHP_CODESNIFFER_VERBOSITY > 1) {
                 echo "\t\t=> internal sniff: $file".PHP_EOL;
             }
 
@@ -84,7 +84,7 @@ class Cache
                 if (PHP_CODESNIFFER_VERBOSITY > 1) {
                     echo "\t\t=> external ruleset: $file".PHP_EOL;
                 }
-            } else if (PHP_CODESNIFFER_VERBOSITY > 1) {
+            } elseif (PHP_CODESNIFFER_VERBOSITY > 1) {
                 echo "\t\t=> internal ruleset: $file".PHP_EOL;
             }
 
@@ -267,7 +267,7 @@ class Cache
                     echo "\t* cache was invalid and has been cleared *".PHP_EOL;
                 }
             }
-        } else if (PHP_CODESNIFFER_VERBOSITY > 1) {
+        } elseif (PHP_CODESNIFFER_VERBOSITY > 1) {
             echo "\t* cache file does not exist *".PHP_EOL;
         }
 
