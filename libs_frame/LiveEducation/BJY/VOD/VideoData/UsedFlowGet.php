@@ -66,7 +66,7 @@ class UsedFlowGet extends BaseBJY
     {
         if ($startTime <= 0) {
             throw new BJYException('开始时间不合法', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if ($startTime > $endTime) {
+        } elseif ($startTime > $endTime) {
             throw new BJYException('开始时间不能大于结束时间', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
         }
         $this->reqData['start_date'] = date('Y-m-d', $startTime);

@@ -1,14 +1,14 @@
 <?php
 
 if ($something) {
-} else if ($somethingElse) {
+} elseif ($somethingElse) {
 }
 
 if ($something) {
-} else if ($somethingElse) {
+} elseif ($somethingElse) {
 }
 
 if ($something) {
-} else if ($somethingElse) {
-} else if ($another) {
+} elseif ($somethingElse) {
+} elseif ($another) {
 }

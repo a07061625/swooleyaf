@@ -46,7 +46,7 @@ if (!class_exists('MyClass')) {
     {
         function SomeFunction() {}
     }
-} else if (!interface_exists('MyInterface')) {
+} elseif (!interface_exists('MyInterface')) {
     interface MyInterface {}
 } elseif (!interface_exists('MyInterface')) {
     interface MyInterface {}

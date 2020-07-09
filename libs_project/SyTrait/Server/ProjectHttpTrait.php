@@ -93,7 +93,7 @@ trait ProjectHttpTrait
     {
         if (isset($_COOKIE[Project::DATA_KEY_LANGUAGE_TAG])) {
             $langType = $_COOKIE[Project::DATA_KEY_LANGUAGE_TAG];
-        } else if (isset($_GET[Project::DATA_KEY_LANGUAGE_TAG])) {
+        } elseif (isset($_GET[Project::DATA_KEY_LANGUAGE_TAG])) {
             $langType = $_GET[Project::DATA_KEY_LANGUAGE_TAG];
         } else {
             $langType = $_POST[Project::DATA_KEY_LANGUAGE_TAG] ?? '';

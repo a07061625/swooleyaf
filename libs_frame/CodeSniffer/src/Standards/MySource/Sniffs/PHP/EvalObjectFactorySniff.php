@@ -56,7 +56,7 @@ class EvalObjectFactorySniff implements Sniff
         for ($i = ($openBracket + 1); $i < $closeBracket; $i++) {
             if (isset(Tokens::$stringTokens[$tokens[$i]['code']]) === true) {
                 $strings[$i] = $tokens[$i]['content'];
-            } else if ($tokens[$i]['code'] === T_VARIABLE) {
+            } elseif ($tokens[$i]['code'] === T_VARIABLE) {
                 $vars[$i] = $tokens[$i]['content'];
             }
         }

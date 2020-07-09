@@ -224,9 +224,9 @@ class SubAccountCreate extends BaseBJY
         $nowTime = Tool::getNowTime();
         if ($effectTime <= 0) {
             throw new BJYException('账号生效时间不合法', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if ($effectTime >= $expireTime) {
+        } elseif ($effectTime >= $expireTime) {
             throw new BJYException('账号生效时间不能大于账号失效时间', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if ($expireTime <= $nowTime) {
+        } elseif ($expireTime <= $nowTime) {
             throw new BJYException('账号失效时间不能小于当前时间', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
         }
 
@@ -243,7 +243,7 @@ class SubAccountCreate extends BaseBJY
     {
         if ($userLimit <= 0) {
             throw new BJYException('直播并发值不合法', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if ($userLimit > $maxUserLimit) {
+        } elseif ($userLimit > $maxUserLimit) {
             throw new BJYException('直播并发值不能大于直播超额并发值', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
         }
 
@@ -260,7 +260,7 @@ class SubAccountCreate extends BaseBJY
     {
         if ($userCount <= 0) {
             throw new BJYException('直播人次/时长点数值不合法', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if ($userCount > $maxUserCount) {
+        } elseif ($userCount > $maxUserCount) {
             throw new BJYException('直播人次/时长点数值不能大于直播超额人次/时长点数值', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
         }
 
@@ -290,7 +290,7 @@ class SubAccountCreate extends BaseBJY
     {
         if ($storageLimit <= 0) {
             throw new BJYException('点播存储空间容量不合法', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if ($storageLimit > $maxStorageLimit) {
+        } elseif ($storageLimit > $maxStorageLimit) {
             throw new BJYException('点播存储空间容量不能大于点播超额存储空间容量', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
         }
 
@@ -307,7 +307,7 @@ class SubAccountCreate extends BaseBJY
     {
         if ($flowLimit <= 0) {
             throw new BJYException('点播月流量不合法', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if ($flowLimit > $maxFlowLimit) {
+        } elseif ($flowLimit > $maxFlowLimit) {
             throw new BJYException('点播月流量不能大于点播超额月流量', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
         }
 

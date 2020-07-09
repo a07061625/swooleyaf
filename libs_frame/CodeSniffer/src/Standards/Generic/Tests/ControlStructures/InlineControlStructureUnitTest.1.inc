@@ -8,7 +8,7 @@ if ($something) {
 
 if ($something) {
     echo 'hello';
-} else if ($else) echo 'hi';
+} elseif ($else) echo 'hi';
 
 foreach ($something as $thing) echo 'hello';
 

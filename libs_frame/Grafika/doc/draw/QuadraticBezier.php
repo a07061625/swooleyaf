@@ -35,7 +35,7 @@ use Grafika\Imagick\DrawingObject\QuadraticBezier as ImagickQuadraticBezier;
 $editorName = Grafika::detectAvailableEditor();
 if('Imagick'===$editorName){
     $drawingObject = new ImagickQuadraticBezier(array(70, 250), array(20, 110), array(220, 60), '#FF0000');
-} else if ('Gd'===$editorName) {
+} elseif ('Gd'===$editorName) {
     $drawingObject = new GdQuadraticBezier(array(70, 250), array(20, 110), array(220, 60), '#FF0000');
 }
 $editor->draw( $image, $drawingObject );

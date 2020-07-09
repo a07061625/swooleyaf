@@ -82,7 +82,7 @@ public static function addIssue(
 
         $status = $statuses[0]['status'];
         Channels::modifyBasket('status', $status);
-    } else if (SquizRoadmapStatus::isValidStatus($projectid, $status) === FALSE) {
+    } elseif (SquizRoadmapStatus::isValidStatus($projectid, $status) === FALSE) {
         throw new ChannelException(sprintf(_('Invalid status: %s'), $status));
     }
 

@@ -233,7 +233,7 @@ class ValidatePEARPackageXML
                     if (strpos($name, 'Test.') !== false && $role !== 'test') {
                         echo "- Test files should have the role 'test'. Found: '$role' for file '{$name}'.".PHP_EOL;
                         $valid = false;
-                    } else if ((strpos($name, 'Standard.xml') !== false || strpos($name, 'Sniff.php') !== false)
+                    } elseif ((strpos($name, 'Standard.xml') !== false || strpos($name, 'Sniff.php') !== false)
                         && $role !== 'php'
                     ) {
                         echo "- Sniff files, including sniff documentation files should have the role 'php'. Found: '$role' for file '{$name}'.".PHP_EOL;

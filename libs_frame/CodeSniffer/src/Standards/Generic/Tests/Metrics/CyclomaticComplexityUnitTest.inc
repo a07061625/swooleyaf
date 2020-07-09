@@ -27,7 +27,7 @@ function complexityTen()
     switch ($condition) {
         case '1':
             if ($condition) {
-            } else if ($cond) {
+            } elseif ($cond) {
             }
         break;
         case '2':
@@ -46,14 +46,14 @@ function complexityEleven()
 {
     while ($condition === true) {
         if ($condition) {
-        } else if ($cond) {
+        } elseif ($cond) {
         }
     }
 
     switch ($condition) {
         case '1':
             if ($condition) {
-            } else if ($cond) {
+            } elseif ($cond) {
             }
         break;
         case '2':
@@ -73,14 +73,14 @@ function complexityTwenty()
 {
     while ($condition === true) {
         if ($condition) {
-        } else if ($cond) {
+        } elseif ($cond) {
         }
     }
 
     switch ($condition) {
         case '1':
             if ($condition) {
-            } else if ($cond) {
+            } elseif ($cond) {
             }
         break;
         case '2':
@@ -100,7 +100,7 @@ function complexityTwenty()
             do {
                 if ($condition) {
                     if ($cond) {
-                    } else if ($con) {
+                    } elseif ($con) {
                     }
                 }
             } while ($cond);
@@ -117,14 +117,14 @@ function complexityTwentyOne()
 {
     while ($condition === true) {
         if ($condition) {
-        } else if ($cond) {
+        } elseif ($cond) {
         }
     }
 
     switch ($condition) {
         case '1':
             if ($condition) {
-            } else if ($cond) {
+            } elseif ($cond) {
             }
         break;
         case '2':
@@ -144,14 +144,14 @@ function complexityTwentyOne()
             do {
                 if ($condition) {
                     if ($cond) {
-                    } else if ($con) {
+                    } elseif ($con) {
                     }
                 }
             } while ($cond);
         break;
         default:
             if ($condition) {
-            } else if ($cond) {
+            } elseif ($cond) {
             }
         break;
     }

@@ -84,7 +84,7 @@ class DisallowAlternativePHPTagsSniff implements Sniff
                 $error     = 'ASP style opening tag used; expected "<?php" but found "%s"';
                 $closer    = $this->findClosingTag($phpcsFile, $tokens, $stackPtr, '%>');
                 $errorCode = 'ASPOpenTagFound';
-            } else if (strpos($content, '<script ') !== false) {
+            } elseif (strpos($content, '<script ') !== false) {
                 $error     = 'Script style opening tag used; expected "<?php" but found "%s"';
                 $closer    = $this->findClosingTag($phpcsFile, $tokens, $stackPtr, '</script>');
                 $errorCode = 'ScriptOpenTagFound';
@@ -149,7 +149,7 @@ class DisallowAlternativePHPTagsSniff implements Sniff
                 $data    = ['<%='.$snippet];
 
                 $phpcsFile->addWarning($error, $stackPtr, 'MaybeASPShortOpenTagFound', $data);
-            } else if (strpos($content, '<%') !== false) {
+            } elseif (strpos($content, '<%') !== false) {
                 $error   = 'Possible use of ASP style opening tags detected; found: %s';
                 $snippet = $this->getSnippet($content, '<%');
                 $data    = ['<%'.$snippet];

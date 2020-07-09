@@ -113,7 +113,7 @@ class IncludeSystemSniff extends AbstractScopeSniff
             if ($name !== false) {
                 $includedClasses[$name] = true;
                 // Special case for Widgets cause they are, well, special.
-            } else if (strtolower($tokens[$i]['content']) === 'includewidget') {
+            } elseif (strtolower($tokens[$i]['content']) === 'includewidget') {
                 $typeName = $phpcsFile->findNext(T_CONSTANT_ENCAPSED_STRING, ($i + 1));
                 $typeName = trim($tokens[$typeName]['content'], " '");
                 $includedClasses[strtolower($typeName).'widgettype'] = true;
@@ -256,7 +256,7 @@ class IncludeSystemSniff extends AbstractScopeSniff
             if ($name !== false) {
                 $includedClasses[$name] = true;
                 // Special case for Widgets cause they are, well, special.
-            } else if (strtolower($tokens[$i]['content']) === 'includewidget') {
+            } elseif (strtolower($tokens[$i]['content']) === 'includewidget') {
                 $typeName = $phpcsFile->findNext(T_CONSTANT_ENCAPSED_STRING, ($i + 1));
                 $typeName = trim($tokens[$typeName]['content'], " '");
                 $includedClasses[strtolower($typeName).'widgettype'] = true;
@@ -294,11 +294,11 @@ class IncludeSystemSniff extends AbstractScopeSniff
             $systemName = $phpcsFile->findNext(T_CONSTANT_ENCAPSED_STRING, ($stackPtr + 1));
             $systemName = trim($tokens[$systemName]['content'], " '");
             return strtolower($systemName);
-        } else if (strtolower($tokens[$stackPtr]['content']) === 'includeasset') {
+        } elseif (strtolower($tokens[$stackPtr]['content']) === 'includeasset') {
             $typeName = $phpcsFile->findNext(T_CONSTANT_ENCAPSED_STRING, ($stackPtr + 1));
             $typeName = trim($tokens[$typeName]['content'], " '");
             return strtolower($typeName).'assettype';
-        } else if (isset(Tokens::$includeTokens[$tokens[$stackPtr]['code']]) === true) {
+        } elseif (isset(Tokens::$includeTokens[$tokens[$stackPtr]['code']]) === true) {
             $filePath = $phpcsFile->findNext(T_CONSTANT_ENCAPSED_STRING, ($stackPtr + 1));
             $filePath = $tokens[$filePath]['content'];
             $filePath = trim($filePath, " '");

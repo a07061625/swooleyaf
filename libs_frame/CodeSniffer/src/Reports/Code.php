@@ -46,7 +46,7 @@ class Code implements Report
             if (PHP_CODESNIFFER_VERBOSITY === 1) {
                 $startTime = microtime(true);
                 echo 'CODE report is parsing '.basename($file).' ';
-            } else if (PHP_CODESNIFFER_VERBOSITY > 1) {
+            } elseif (PHP_CODESNIFFER_VERBOSITY > 1) {
                 echo "CODE report is forcing parse of $file".PHP_EOL;
             }
 

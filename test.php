@@ -131,9 +131,9 @@ require_once __DIR__ . '/helper_load.php';
 //$aaa = $yac->get('myname');
 //if (is_null($aaa)) {
 //    echo  'null';
-//} else if (is_string($aaa)) {
+//} elseif (is_string($aaa)) {
 //    echo  's>tring';
-//} else if (is_bool($aaa)) {
+//} elseif (is_bool($aaa)) {
 //    echo $aaa ? 'true' : 'false';
 //}
 //echo PHP_EOL;

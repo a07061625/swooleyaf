@@ -75,7 +75,7 @@ class ChatMessage
         $userId = isset($from['id']) && is_numeric($from['id']) ? (int)$from['id'] : 0;
         if (empty($from)) {
             throw new BJYException('接收人不合法', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
-        } else if ($userId <= 0) {
+        } elseif ($userId <= 0) {
             throw new BJYException('接收人用户ID不合法', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
         }
         $this->from = $from;

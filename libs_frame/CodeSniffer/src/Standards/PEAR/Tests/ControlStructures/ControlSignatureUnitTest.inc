@@ -104,10 +104,10 @@ if ($i == 0) {
 if ($i == 0) { $i = 1; } else { $i = 0; }
 
 
-// else if
+// elseif
 if ($i == 0) {
     $i = 1;
-} else if ($i == 2) {
+} elseif ($i == 2) {
     $i = 0;
 }
 
@@ -129,7 +129,7 @@ if ($i == 0) {
     $i = 0;
 }
 
-if ($i == 0) { $i = 1; } else if ($i == 2) { $i = 0; }
+if ($i == 0) { $i = 1; } elseif ($i == 2) { $i = 0; }
 if ($i == 0) { $i = 1; } elseif ($i == 2) { $i = 0; }
 
 if ($i == 0) { // this is ok because comments are allowed

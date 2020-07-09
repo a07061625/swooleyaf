@@ -67,7 +67,7 @@ class ClosingDeclarationCommentSniff implements Sniff
 
             $decName = $phpcsFile->getDeclarationName($stackPtr);
             $comment = '//end '.$decName.'()';
-        } else if ($tokens[$stackPtr]['code'] === T_CLASS) {
+        } elseif ($tokens[$stackPtr]['code'] === T_CLASS) {
             $comment = '//end class';
         } else {
             $comment = '//end interface';

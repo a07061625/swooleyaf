@@ -189,7 +189,7 @@ class Fixer
             if ($this->numFixes === 0 && $this->inConflict === false) {
                 // Nothing left to do.
                 break;
-            } else if (PHP_CODESNIFFER_VERBOSITY > 1) {
+            } elseif (PHP_CODESNIFFER_VERBOSITY > 1) {
                 echo "\t* fixed $this->numFixes violations, starting loop ".($this->loops + 1).' *'.PHP_EOL;
             }
         }//end while
@@ -401,7 +401,7 @@ class Fixer
                 echo "\t=> Changeset failed to apply".PHP_EOL;
                 ob_start();
             }
-        } else if (PHP_CODESNIFFER_VERBOSITY > 1) {
+        } elseif (PHP_CODESNIFFER_VERBOSITY > 1) {
             $fixes = count($this->changeset);
             @ob_end_clean();
             echo "\t=> Changeset ended: $fixes changes applied".PHP_EOL;

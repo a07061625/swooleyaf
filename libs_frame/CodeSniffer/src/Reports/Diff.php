@@ -42,7 +42,7 @@ class Diff implements Report
             if (PHP_CODESNIFFER_VERBOSITY === 1) {
                 $startTime = microtime(true);
                 echo 'DIFF report is parsing '.basename($report['filename']).' ';
-            } else if (PHP_CODESNIFFER_VERBOSITY > 1) {
+            } elseif (PHP_CODESNIFFER_VERBOSITY > 1) {
                 echo 'DIFF report is forcing parse of '.$report['filename'].PHP_EOL;
             }
 
