@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.5.1
+ * @since 4.5.2
  */
 class Client
 {
