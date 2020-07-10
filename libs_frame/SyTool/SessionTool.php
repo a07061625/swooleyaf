@@ -28,7 +28,7 @@ final class SessionTool
     {
         $redisKey = Project::REDIS_PREFIX_SESSION_JWT_REFRESH . $tag;
         $rid = Tool::createNonceStr(6, 'numlower') . time();
-        if (CacheSimpleFactory::getRedisInstance()->set($redisKey, $rid, SY_SESSION_JW_RID_EXPIRE)) {
+        if (CacheSimpleFactory::getRedisInstance()->set($redisKey, $rid, SY_EXPIRE_SESSION_JWT_RID)) {
             return $rid;
         } else {
             return false;
