@@ -38,16 +38,16 @@ if (!defined('SY_REQ_EXCEPTION_HANDLE_TYPE')) {
     define('SY_REQ_EXCEPTION_HANDLE_TYPE', true);
 }
 //jwt会话有效时间,单位为秒
-if (!defined('SY_SESSION_JW_EXPIRE')) {
-    define('SY_SESSION_JW_EXPIRE', 86400);
+if (!defined('SY_EXPIRE_SESSION_JWT')) {
+    define('SY_EXPIRE_SESSION_JWT', 86400);
 }
-if (!is_int(SY_SESSION_JW_EXPIRE)) {
+if (!is_int(SY_EXPIRE_SESSION_JWT)) {
     exit('jwt会话有效时间必须为整数' . PHP_EOL);
-} elseif (SY_SESSION_JW_EXPIRE < 3600) {
+} elseif (SY_EXPIRE_SESSION_JWT < 3600) {
     exit('jwt会话有效时间必须不小于3600秒' . PHP_EOL);
 }
 //jwt会话刷新标识有效时间,单位为秒
-define('SY_SESSION_JW_RID_EXPIRE', (SY_SESSION_JW_EXPIRE + 180));
+define('SY_EXPIRE_SESSION_JWT_RID', (SY_EXPIRE_SESSION_JWT + 180));
 
 //淘宝环境链接
 if (!defined('SY_TAOBAO_ENV')) {
