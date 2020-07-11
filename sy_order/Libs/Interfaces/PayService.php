@@ -18,8 +18,7 @@ interface PayService
     /**
      * 获取支付信息
      * @param array $data
-     * @return array
-     * 格式如下:
+     * @return array 格式如下:<pre>
      * [
      *      'pay_name' => 'aaa' --支付名称,不能超过60个汉字
      *      'pay_money' => 100 --支付金额,单位为分,必须大于0
@@ -27,6 +26,7 @@ interface PayService
      *      'pay_sn' => '00002017061322131212345678' --支付单号
      *      'pay_ps' => 0 --分账状态 0:不支持分账 1:不分账 2:分账
      * ]
+     * </pre>
      */
     public function getPayInfo(array $data) : array;
 

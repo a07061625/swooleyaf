@@ -435,10 +435,10 @@ class Tool
     /**
      * 生成随机字符串
      * @param int $length 需要获取的随机字符串长度
-     * @param string $dataType 数据类型<br/>
-     *   total: 数字,大小写字母<br/>
-     *   lower: 小写字母<br/>
-     *   numlower: 数字,小写字母<br/>
+     * @param string $dataType 数据类型<pre>
+     *   total: 数字,大小写字母
+     *   lower: 小写字母
+     *   numlower: 数字,小写字母</pre>
      * @return string
      */
     public static function createNonceStr(int $length, string $dataType = 'total') : string
