@@ -41,11 +41,11 @@ final class ProjectTool
     /**
      * 格式化字符串
      * @param string $inStr 输入的字符串
-     * @param int $formatType 格式化的类型<br/>
-     *     必然会做的处理:去除js代码,表情符号和首尾空格<br/>
-     *     1：去除字符串中的特殊符号，并将多个空格缩减成一个英文空格<br/>
-     *     2：将字符串中的连续多个空格缩减成一个英文空格<br/>
-     *     3：去除前后空格<br/>
+     * @param int $formatType 格式化的类型<pre>
+     *     必然会做的处理:去除js代码,表情符号和首尾空格
+     *     1：去除字符串中的特殊符号，并将多个空格缩减成一个英文空格
+     *     2：将字符串中的连续多个空格缩减成一个英文空格
+     *     3：去除前后空格</pre>
      * @return string
      */
     public static function filterStr(string $inStr, int $formatType = 1) : string
