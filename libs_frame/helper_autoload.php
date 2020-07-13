@@ -219,7 +219,7 @@ final class SyFrameLoader
 
     private function preHandlePinYin(string $className) : string
     {
-        if ($this->pinYinStatus) { 
+        if ($this->pinYinStatus) {
             define('PINYIN_DEFAULT', 4096);
             define('PINYIN_TONE', 2);
             define('PINYIN_NO_TONE', 4);
