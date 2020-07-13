@@ -52,6 +52,7 @@
 - SyTemplate: 模板相关
 - SyTool: 工具相关
 - SyTrait: 框架性状相关
+- SyTranslation: 翻译相关
 - SyVms: 语音服务相关
 - Validator: 数据校验器相关
 - Wx: 微信相关

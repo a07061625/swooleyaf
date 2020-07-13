@@ -38,6 +38,11 @@ final class SyFrameLoader
      * @var bool
      */
     private $aliOpenCoreStatus = true;
+    /**
+     * pinyin未初始化标识 true：未初始化 false：已初始化
+     * @var bool
+     */
+    private $pinYinStatus = true;
 
     private function __construct()
     {
@@ -50,6 +55,7 @@ final class SyFrameLoader
             'SmartyBC' => 'preHandleSmarty',
             'PHPExcel' => 'preHandlePhpExcel',
             'AliOpen' => 'preHandleAliOpen',
+            'PinYin' => 'preHandlePinYin',
         ];
 
         $this->smartyRootClasses = [
@@ -209,6 +215,24 @@ final class SyFrameLoader
         }
 
         return SY_FRAME_LIBS_ROOT . $className . '.php';
+    }
+
+    private function preHandlePinYin(string $className) : string
+    {
+        if ($this->pinYinStatus) {
+            define('PINYIN_DEFAULT', 4096);
+            define('PINYIN_TONE', 2);
+            define('PINYIN_NO_TONE', 4);
+            define('PINYIN_ASCII_TONE', 8);
+            define('PINYIN_NAME', 16);
+            define('PINYIN_KEEP_NUMBER', 32);
+            define('PINYIN_KEEP_ENGLISH', 64);
+            define('PINYIN_UMLAUT_V', 128);
+            define('PINYIN_KEEP_PUNCTUATION', 256);
+            $this->pinYinStatus = false;
+        }
+
+        return SY_FRAME_LIBS_ROOT . 'SyTranslation/' . $className . '.php';
     }
 }
 
