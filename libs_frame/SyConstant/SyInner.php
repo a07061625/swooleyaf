@@ -27,6 +27,12 @@ final class SyInner
     const SERVER_DATA_KEY_TIMESTAMP = 'SYREQ_TIME'; //服务端内部数据键名-请求时间戳
     const SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR = 'Syresp-Status'; //服务端内部数据键名-http响应错误状态码
 
+    //服务注册常量
+    public static $totalServerRegisterType = [
+        self::SERVER_REGISTER_TYPE_NGINX => 1,
+    ];
+    const SERVER_REGISTER_TYPE_NGINX = 'nginx'; //类型-nginx
+
     //进程常量
     const PROCESS_TYPE_TASK = 'Task'; //类型-task
     const PROCESS_TYPE_WORKER = 'Worker'; //类型-worker

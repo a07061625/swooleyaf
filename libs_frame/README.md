@@ -46,6 +46,7 @@
 - SyQr: 二维码相关
 - SySCRM: 社会化客户管理相关
 - SyServer: 框架服务相关
+- SyServerRegister: 服务注册相关
 - SySms: 短信相关
 - SyTaoBao: 淘宝开放接口
 - SyTask: 框架定时任务相关

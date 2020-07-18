@@ -7,15 +7,40 @@
  */
 namespace Helper;
 
+use SyConstant\SyInner;
 use SyServer\HttpServer;
 use SyServer\ProcessPoolServer;
 use SyServer\RpcServer;
+use SyServerRegister\Nginx\Http;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 class ServiceRunner
 {
     use SimpleTrait;
+
+    private static function registerService(string $action, string $serverType, array $params)
+    {
+        if ($serverType != 'http') {
+            return;
+        }
+
+        $registerRes = [];
+        $registerType = trim(Tool::getClientOption('-rt', false, ''));
+        if ($registerType == SyInner::SERVER_REGISTER_TYPE_NGINX) {
+            $register = new Http();
+            $register->setHost($params['host']);
+            $register->setPort($params['port']);
+            $register->setWeight((int)Tool::getClientOption('-weight', false, 1));
+            $register->setMaxFails((int)Tool::getClientOption('-maxfails', false, 3));
+            $register->setFailTimeout((int)Tool::getClientOption('-failtimeout', false, 30));
+            $register->setBackup((int)Tool::getClientOption('-backup', false, 0));
+            $registerRes = $register->operatorServer($action);
+        }
+        if (!empty($registerRes)) {
+            echo 'register result: ' . Tool::jsonEncode($registerRes, JSON_UNESCAPED_UNICODE) . PHP_EOL;
+        }
+    }
 
     /**
      * @param string $apiName api模块名称
@@ -58,14 +83,38 @@ class ServiceRunner
         switch ($action) {
             case 'start':
                 $server->start();
+                if ($moduleName == $apiName) {
+                    self::registerService('add', 'http', [
+                        'host' => $server->getHost(),
+                        'port' => $server->getPort(),
+                    ]);
+                }
                 break;
             case 'stop':
                 $server->stop();
+                if ($moduleName == $apiName) {
+                    self::registerService('remove', 'http', [
+                        'host' => $server->getHost(),
+                        'port' => $server->getPort(),
+                    ]);
+                }
                 break;
             case 'restart':
                 $server->stop();
+                if ($moduleName == $apiName) {
+                    self::registerService('remove', 'http', [
+                        'host' => $server->getHost(),
+                        'port' => $server->getPort(),
+                    ]);
+                }
                 sleep(3);
                 $server->start();
+                if ($moduleName == $apiName) {
+                    self::registerService('add', 'http', [
+                        'host' => $server->getHost(),
+                        'port' => $server->getPort(),
+                    ]);
+                }
                 break;
             case 'kz':
                 $server->killZombies();
