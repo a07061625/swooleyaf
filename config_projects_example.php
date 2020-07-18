@@ -11,6 +11,11 @@ return [
             0 => [
                 'host' => $serverHost,
                 'port' => 7100,
+                'register_type' => 'nginx',
+                'ng_weight' => 1,
+                'ng_max_fails' => 3,
+                'ng_fail_timeout' => 30,
+                'ng_backup' => 0,
             ],
         ],
     ],
