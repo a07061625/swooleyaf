@@ -184,6 +184,22 @@ abstract class BaseServer
     /**
      * @return string
      */
+    public function getHost() : string
+    {
+        return $this->_host;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPort() : int
+    {
+        return $this->_port;
+    }
+
+    /**
+     * @return string
+     */
     public static function getReqId(): string
     {
         if (isset($_SERVER['SYREQ_ID'])) {
