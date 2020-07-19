@@ -12,6 +12,7 @@ return [
                 'host' => $serverHost,
                 'port' => 7100,
                 'register_type' => 'nginx',
+                'register_tag' => 'a01',
                 'ng_weight' => 1,
                 'ng_max_fails' => 3,
                 'ng_fail_timeout' => 30,
