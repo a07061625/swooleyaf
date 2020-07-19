@@ -21,17 +21,22 @@ abstract class Base extends RegisterBase
      * 最大失败次数
      * @var int
      */
-    private $maxFails = 0;
+    protected $maxFails = 0;
     /**
      * 失败超时时间,单位为秒
      * @var int
      */
-    private $failTimeout = 0;
+    protected $failTimeout = 0;
     /**
      * 是否为备份服务 0:否 1:是
      * @var int
      */
-    private $backup = 0;
+    protected $backup = 0;
+    /**
+     * 服务标识
+     * @var string
+     */
+    private $tag = '';
 
     public function __construct()
     {
@@ -40,9 +45,9 @@ abstract class Base extends RegisterBase
         $this->url = $configs['url'];
         $this->reqData['name'] = $configs['name'];
         $this->reqData['secret'] = $configs['secret'];
-        $this->reqData['max_fails'] = 3;
-        $this->reqData['fail_timeout'] = 30;
-        $this->reqData['backup'] = 0;
+        $this->maxFails = 3;
+        $this->failTimeout = 30;
+        $this->backup = 0;
     }
 
     abstract protected function checkData();
@@ -53,7 +58,7 @@ abstract class Base extends RegisterBase
     public function setMaxFails(int $maxFails)
     {
         if ($maxFails > 0) {
-            $this->reqData['max_fails'] = $maxFails;
+            $this->maxFails = $maxFails;
         }
     }
 
@@ -63,7 +68,7 @@ abstract class Base extends RegisterBase
     public function setFailTimeout(int $failTimeout)
     {
         if ($failTimeout > 0) {
-            $this->reqData['fail_timeout'] = $failTimeout;
+            $this->failTimeout = $failTimeout;
         }
     }
 
@@ -73,7 +78,17 @@ abstract class Base extends RegisterBase
     public function setBackup(int $backup)
     {
         if (in_array($backup, [0, 1], true)) {
-            $this->reqData['backup'] = $backup;
+            $this->backup = $backup;
+        }
+    }
+
+    /**
+     * @param string $tag
+     */
+    public function setTag(string $tag) : void
+    {
+        if (ctype_alnum($tag)) {
+            $this->reqData['tag'] = $tag;
         }
     }
 }

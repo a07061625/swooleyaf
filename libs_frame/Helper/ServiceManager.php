@@ -38,6 +38,7 @@ class ServiceManager
 
     private static function getServiceParamsRegister(array $listenInfo, array &$commandParams)
     {
+        $commandParams['-rtag'] = $listenInfo['register_tag'] ?? '';
         $commandParams['-rt'] = $listenInfo['register_type'] ?? '';
         if ($commandParams['-rt'] == SyInner::SERVER_REGISTER_TYPE_NGINX) {
             $commandParams['-weight'] = $listenInfo['ng_weight'] ?? 1;
