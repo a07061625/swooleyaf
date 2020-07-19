@@ -31,16 +31,24 @@ class Http extends Base implements IRegister
         if (!isset($this->reqData['action'])) {
             die('server action is empty' . PHP_EOL);
         }
+        if (!isset($this->reqData['tag'])) {
+            die('server tag is empty' . PHP_EOL);
+        }
     }
 
     private function sendReq() : array
     {
         $sendRes = Tool::sendCurlReq([
-            CURLOPT_URL => $this->url . '?' . http_build_query($this->reqData),
+            CURLOPT_URL => $this->url,
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_SSL_VERIFYHOST => false,
             CURLOPT_HEADER => false,
+            CURLOPT_HTTPHEADER => [
+                'Content-Type: application/x-www-form-urlencoded;charset=utf-8',
+            ],
+            CURLOPT_POST => true,
             CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POSTFIELDS => http_build_query($this->reqData),
             CURLOPT_TIMEOUT_MS => 3000,
         ]);
         if ($sendRes['res_no'] > 0) {
@@ -65,6 +73,15 @@ class Http extends Base implements IRegister
     {
         $this->reqData['action'] = $action;
         $this->checkData();
+
+        if ($action == 'add') {
+            $this->reqData['params'] = 'weight=' . $this->weight
+                                       . ' max_fails=' . $this->maxFails
+                                       . ' fail_timeout=' . $this->failTimeout;
+            if ($this->backup == 1) {
+                $this->reqData['params'] .= ' backup';
+            }
+        }
 
         return $this->sendReq();
     }

@@ -44,7 +44,7 @@ class RegisterBase
      * 权重
      * @var int
      */
-    private $weight = 0;
+    protected $weight = 0;
 
     public function __construct(string $registerType)
     {
@@ -53,9 +53,8 @@ class RegisterBase
         }
 
         $this->registerType = $registerType;
-        $this->reqData = [
-            'weight' => 1,
-        ];
+        $this->reqData = [];
+        $this->weight = 1;
     }
 
     /**
@@ -85,7 +84,7 @@ class RegisterBase
     public function setWeight(int $weight)
     {
         if ($weight > 0) {
-            $this->reqData['weight'] = $weight;
+            $this->weight = $weight;
         }
     }
 

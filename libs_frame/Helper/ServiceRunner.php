@@ -26,11 +26,13 @@ class ServiceRunner
         }
 
         $registerRes = [];
+        $registerTag = trim(Tool::getClientOption('-rtag', false, ''));
         $registerType = trim(Tool::getClientOption('-rt', false, ''));
         if ($registerType == SyInner::SERVER_REGISTER_TYPE_NGINX) {
             $register = new Http();
             $register->setHost($params['host']);
             $register->setPort($params['port']);
+            $register->setTag($registerTag);
             $register->setWeight((int)Tool::getClientOption('-weight', false, 1));
             $register->setMaxFails((int)Tool::getClientOption('-maxfails', false, 3));
             $register->setFailTimeout((int)Tool::getClientOption('-failtimeout', false, 30));
