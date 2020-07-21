@@ -23,6 +23,7 @@ use SyException\Swoole\ServerException;
 use SyException\Validator\ValidatorException;
 use SyLog\Log;
 use Response\Result;
+use SyServerRegister\Nginx\Http;
 use SyTrait\Server\FrameBaseTrait;
 use SyTrait\Server\ProjectBaseTrait;
 use SyTool\Dir;
@@ -251,13 +252,35 @@ abstract class BaseServer
         }
 
         $msg = ' \e[1;31m \t[fail]';
+        $stopStatus = false;
         if ($pid > 0) {
             if (Process::kill($pid, SIGKILL)) {
                 $msg = ' \e[1;32m \t[success]';
+                $stopStatus = true;
             }
             file_put_contents($this->_pidFile, '');
         }
         system('echo -e "\e[1;36m stop ' . SY_MODULE . ': \e[0m' . $msg . ' \e[0m"');
+
+        if ($stopStatus && (SY_MODULE == Project::MODULE_NAME_API)) {
+            $registerRes = [];
+            $registerType = trim(Tool::getClientOption('-rt', false, ''));
+            if ($registerType == SyInner::SERVER_REGISTER_TYPE_NGINX) {
+                $register = new Http();
+                $register->setHost($this->_host);
+                $register->setPort($this->_port);
+                $registerRes = $register->operatorServer('remove');
+            }
+
+            if (!empty($registerRes)) {
+                if ($registerRes['code'] == 0) {
+                    $tipStr = 'echo -e "\e[1;32m ' . $registerRes['data'] . ' \e[0m"';
+                } else {
+                    $tipStr = 'echo -e "\e[1;31m ' . $registerRes['msg'] . ' \e[0m"';
+                }
+                system($tipStr);
+            }
+        }
         exit();
     }
 
@@ -297,14 +320,36 @@ abstract class BaseServer
     public function getStartStatus()
     {
         $fileContent = file_get_contents($this->_tipFile);
+        $startIndex = false;
         $command = 'echo -e "\e[1;31m ' . SY_MODULE . ' start status fail \e[0m"';
         if (is_string($fileContent)) {
             if (strlen($fileContent) > 0) {
+                $startIndex = strpos($fileContent, 'success');
                 $command = 'echo -e "' . $fileContent . '"';
             }
             file_put_contents($this->_tipFile, '');
         }
         system($command);
+
+        if ((is_int($startIndex)) && (SY_MODULE == Project::MODULE_NAME_API)) {
+            $registerRes = [];
+            $registerType = trim(Tool::getClientOption('-rt', false, ''));
+            if ($registerType == SyInner::SERVER_REGISTER_TYPE_NGINX) {
+                $register = new Http();
+                $register->setHost($this->_host);
+                $register->setPort($this->_port);
+                $registerRes = $register->operatorServer('add');
+            }
+
+            if (!empty($registerRes)) {
+                if ($registerRes['code'] == 0) {
+                    $tipStr = 'echo -e "\e[1;32m ' . $registerRes['data'] . ' \e[0m"';
+                } else {
+                    $tipStr = 'echo -e "\e[1;31m ' . $registerRes['msg'] . ' \e[0m"';
+                }
+                system($tipStr);
+            }
+        }
         exit();
     }
 

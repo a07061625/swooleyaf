@@ -58,13 +58,13 @@ class ServiceManager
                             '-s' => 'start',
                         ];
                         self::getServiceParamsCommon($eProject, $eListen, $params1);
-                        self::getServiceParamsRegister($eListen, $params1);
                         $command1 = self::createCommandStr($commandPrefix, $params1);
 
                         $params2 = [
                             '-s' => 'startstatus',
                         ];
                         self::getServiceParamsCommon($eProject, $eListen, $params2);
+                        self::getServiceParamsRegister($eListen, $params2);
                         $command2 = self::createCommandStr($commandPrefix, $params2);
                         system($command1 . ' && ' . $command2);
                     }
@@ -97,6 +97,7 @@ class ServiceManager
                             '-s' => 'startstatus',
                         ];
                         self::getServiceParamsCommon($eProject, $eListen, $params2);
+                        self::getServiceParamsRegister($eListen, $params2);
                         $command2 = self::createCommandStr($commandPrefix, $params2);
                         system($command1 . ' && ' . $command2);
                     }
