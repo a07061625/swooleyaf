@@ -7,7 +7,6 @@
  */
 namespace Helper;
 
-use SyConstant\SyInner;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
@@ -38,14 +37,7 @@ class ServiceManager
 
     private static function getServiceParamsRegister(array $listenInfo, array &$commandParams)
     {
-        $commandParams['-rtag'] = $listenInfo['register_tag'] ?? '';
         $commandParams['-rt'] = $listenInfo['register_type'] ?? '';
-        if ($commandParams['-rt'] == SyInner::SERVER_REGISTER_TYPE_NGINX) {
-            $commandParams['-weight'] = $listenInfo['ng_weight'] ?? 1;
-            $commandParams['-maxfails'] = $listenInfo['ng_max_fails'] ?? 3;
-            $commandParams['-failtimeout'] = $listenInfo['ng_fail_timeout'] ?? 30;
-            $commandParams['-backup'] = $listenInfo['ng_backup'] ?? 0;
-        }
     }
 
     private static function getProcessPoolParamsCommon(array $poolInfo, array $listenInfo, array &$commandParams)

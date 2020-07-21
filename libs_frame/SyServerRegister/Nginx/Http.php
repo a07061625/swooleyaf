@@ -28,12 +28,6 @@ class Http extends Base implements IRegister
     protected function checkData()
     {
         $this->checkCommonData();
-        if (!isset($this->reqData['action'])) {
-            die('server action is empty' . PHP_EOL);
-        }
-        if (!isset($this->reqData['tag'])) {
-            die('server tag is empty' . PHP_EOL);
-        }
     }
 
     private function sendReq() : array
@@ -71,17 +65,10 @@ class Http extends Base implements IRegister
 
     public function operatorServer(string $action) : array
     {
-        $this->reqData['action'] = $action;
-        $this->checkData();
-
-        if ($action == 'add') {
-            $this->reqData['params'] = 'weight=' . $this->weight
-                                       . ' max_fails=' . $this->maxFails
-                                       . ' fail_timeout=' . $this->failTimeout;
-            if ($this->backup == 1) {
-                $this->reqData['params'] .= ' backup';
-            }
+        if ($action == 'remove') {
+            $this->setIsDown(1);
         }
+        $this->checkData();
 
         return $this->sendReq();
     }
