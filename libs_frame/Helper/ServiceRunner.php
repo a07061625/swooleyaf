@@ -26,21 +26,21 @@ class ServiceRunner
         }
 
         $registerRes = [];
-        $registerTag = trim(Tool::getClientOption('-rtag', false, ''));
         $registerType = trim(Tool::getClientOption('-rt', false, ''));
         if ($registerType == SyInner::SERVER_REGISTER_TYPE_NGINX) {
             $register = new Http();
             $register->setHost($params['host']);
             $register->setPort($params['port']);
-            $register->setTag($registerTag);
-            $register->setWeight((int)Tool::getClientOption('-weight', false, 1));
-            $register->setMaxFails((int)Tool::getClientOption('-maxfails', false, 3));
-            $register->setFailTimeout((int)Tool::getClientOption('-failtimeout', false, 30));
-            $register->setBackup((int)Tool::getClientOption('-backup', false, 0));
             $registerRes = $register->operatorServer($action);
         }
+
         if (!empty($registerRes)) {
-            echo 'register result: ' . Tool::jsonEncode($registerRes, JSON_UNESCAPED_UNICODE) . PHP_EOL;
+            if ($registerRes['code'] == 0) {
+                $tipStr = 'echo -e "\e[1;32m ' . $registerRes['data'] . ' \e[0m"';
+            } else {
+                $tipStr = 'echo -e "\e[1;31m ' . $registerRes['msg'] . ' \e[0m"';
+            }
+            system($tipStr);
         }
     }
 

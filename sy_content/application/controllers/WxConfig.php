@@ -57,24 +57,8 @@ class WxConfigController extends CommonController
             'origin_id' => (string)\Request\SyRequest::getParams('origin_id', ''),
             'pay_mchid' => (string)\Request\SyRequest::getParams('pay_mchid', ''),
             'pay_key' => (string)\Request\SyRequest::getParams('pay_key', ''),
-            'payssl_cert' => preg_replace([
-                '/\s+/',
-                '/\-+BEGINCERTIFICATE\-+/',
-                '/\-+ENDCERTIFICATE\-+/',
-            ], [
-                '',
-                '',
-                '',
-            ], (string)\Request\SyRequest::getParams('payssl_cert', '')),
-            'payssl_key' => preg_replace([
-                '/\s+/',
-                '/\-+BEGINPRIVATEKEY\-+/',
-                '/\-+ENDPRIVATEKEY\-+/',
-            ], [
-                '',
-                '',
-                '',
-            ], (string)\Request\SyRequest::getParams('payssl_key', '')),
+            'payssl_cert' => trim(\Request\SyRequest::getParams('payssl_cert', '')),
+            'payssl_key' => trim(\Request\SyRequest::getParams('payssl_key', '')),
             'merchant_appid' => (string)\Request\SyRequest::getParams('merchant_appid', ''),
         ];
         $setRes = \Dao\WxConfigDao::setConfig($needParams);

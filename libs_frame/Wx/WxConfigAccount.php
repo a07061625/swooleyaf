@@ -62,13 +62,13 @@ class WxConfigAccount
     private $payAuthUrl = '';
 
     /**
-     * CERT PEM证书内容
+     * CERT PEM证书内容,保持和原文件相同
      * @var string
      */
     private $sslCert = '';
 
     /**
-     * KEY PEM证书内容
+     * KEY PEM证书内容,保持和原文件相同
      * @var string
      */
     private $sslKey = '';

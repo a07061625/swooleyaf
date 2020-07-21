@@ -52,13 +52,13 @@ class WxConfigCorp
     private $payAuthUrl = '';
 
     /**
-     * CERT PEM证书路径
+     * CERT PEM证书路径,保持和原文件相同
      * @var string
      */
     private $sslCert = '';
 
     /**
-     * KEY PEM证书路径
+     * KEY PEM证书路径,保持和原文件相同
      * @var string
      */
     private $sslKey = '';
