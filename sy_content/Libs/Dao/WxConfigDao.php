@@ -86,17 +86,8 @@ class WxConfigDao
             throw new CheckException('生成银行公钥文件失败', ErrorCode::COMMON_PARAM_ERROR);
         }
 
-        $content = preg_replace([
-            '/\s+/',
-            '/\-+BEGINPUBLICKEY\-+/',
-            '/\-+ENDPUBLICKEY\-+/',
-        ], [
-            '',
-            '',
-            '',
-        ], file_get_contents($fileName));
         $wxConfigBase->getContainer()->getModel()->update($ormResult1, [
-            'payssl_companybank' => $content,
+            'payssl_companybank' => file_get_contents($fileName),
             'updated' => Tool::getNowTime(),
         ]);
         unset($ormResult1, $wxConfigBase);
