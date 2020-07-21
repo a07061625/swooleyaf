@@ -40,21 +40,16 @@ class RegisterBase
      * @var int
      */
     private $port = 0;
-    /**
-     * 权重
-     * @var int
-     */
-    protected $weight = 0;
 
     public function __construct(string $registerType)
     {
         if (!SyInner::$totalServerRegisterType[$registerType]) {
-            die('server register type not supported' . PHP_EOL);
+            system('echo -e "\e[1;31m server register type not supported \e[0m"');
+            exit();
         }
 
         $this->registerType = $registerType;
         $this->reqData = [];
-        $this->weight = 1;
     }
 
     /**
@@ -78,23 +73,15 @@ class RegisterBase
         }
     }
 
-    /**
-     * @param int $weight
-     */
-    public function setWeight(int $weight)
-    {
-        if ($weight > 0) {
-            $this->weight = $weight;
-        }
-    }
-
     protected function checkCommonData()
     {
         if (!isset($this->reqData['host'])) {
-            die('server host is empty' . PHP_EOL);
+            system('echo -e "\e[1;31m server host is empty \e[0m"');
+            exit();
         }
         if (!isset($this->reqData['port'])) {
-            die('server port is empty' . PHP_EOL);
+            system('echo -e "\e[1;31m server port is empty \e[0m"');
+            exit();
         }
     }
 }

@@ -18,77 +18,39 @@ use SyTool\Tool;
 abstract class Base extends RegisterBase
 {
     /**
-     * 最大失败次数
+     * 是否下线 0:上线 1:下线
      * @var int
      */
-    protected $maxFails = 0;
-    /**
-     * 失败超时时间,单位为秒
-     * @var int
-     */
-    protected $failTimeout = 0;
-    /**
-     * 是否为备份服务 0:否 1:是
-     * @var int
-     */
-    protected $backup = 0;
-    /**
-     * 服务标识
-     * @var string
-     */
-    private $tag = '';
+    protected $isDown = 0;
 
     public function __construct()
     {
         parent::__construct(SyInner::SERVER_REGISTER_TYPE_NGINX);
+        $domain = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.domain.main', '', '');
+        if (strlen($domain) == 0) {
+            system('echo -e "\e[1;31m domain is empty \e[0m"');
+            exit();
+        }
+
         $configs = Tool::getConfig('syregister.' . SY_ENV . SY_PROJECT . '.server.nginx');
-        $this->url = $configs['url'];
+        $this->url = $domain . $configs['uri'];
         $this->reqData['name'] = $configs['name'];
         $this->reqData['secret'] = $configs['secret'];
-        $this->maxFails = 3;
-        $this->failTimeout = 30;
-        $this->backup = 0;
+        $this->reqData['is_down'] = 0;
     }
 
     abstract protected function checkData();
 
     /**
-     * @param int $maxFails
+     * @param int $isDown
      */
-    public function setMaxFails(int $maxFails)
+    public function setIsDown(int $isDown)
     {
-        if ($maxFails > 0) {
-            $this->maxFails = $maxFails;
-        }
-    }
-
-    /**
-     * @param int $failTimeout
-     */
-    public function setFailTimeout(int $failTimeout)
-    {
-        if ($failTimeout > 0) {
-            $this->failTimeout = $failTimeout;
-        }
-    }
-
-    /**
-     * @param int $backup
-     */
-    public function setBackup(int $backup)
-    {
-        if (in_array($backup, [0, 1], true)) {
-            $this->backup = $backup;
-        }
-    }
-
-    /**
-     * @param string $tag
-     */
-    public function setTag(string $tag) : void
-    {
-        if (ctype_alnum($tag)) {
-            $this->reqData['tag'] = $tag;
+        if (in_array($isDown, [0, 1], true)) {
+            $this->reqData['is_down'] = $isDown;
+        } else {
+            system('echo -e "\e[1;31m is_down must be 0 or 1 \e[0m"');
+            exit();
         }
     }
 }

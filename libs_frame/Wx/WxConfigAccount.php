@@ -62,13 +62,13 @@ class WxConfigAccount
     private $payAuthUrl = '';
 
     /**
-     * CERT PEM证书内容
+     * CERT PEM证书内容,保持和原文件相同
      * @var string
      */
     private $sslCert = '';
 
     /**
-     * KEY PEM证书内容
+     * KEY PEM证书内容,保持和原文件相同
      * @var string
      */
     private $sslKey = '';
@@ -133,7 +133,7 @@ class WxConfigAccount
 
     /**
      * @param string $clientIp
-     * @throws \SyException\WX\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setClientIp(string $clientIp)
     {
@@ -175,7 +175,7 @@ class WxConfigAccount
 
     /**
      * @param string $appId
-     * @throws \SyException\WX\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setAppId(string $appId)
     {
@@ -196,7 +196,7 @@ class WxConfigAccount
 
     /**
      * @param string $secret
-     * @throws \SyException\WX\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setSecret(string $secret)
     {
@@ -217,7 +217,7 @@ class WxConfigAccount
 
     /**
      * @param string $payMchId
-     * @throws \SyException\WX\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPayMchId(string $payMchId)
     {
@@ -238,7 +238,7 @@ class WxConfigAccount
 
     /**
      * @param string $payKey
-     * @throws \SyException\WX\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPayKey(string $payKey)
     {
@@ -259,7 +259,7 @@ class WxConfigAccount
 
     /**
      * @param string $payNotifyUrl
-     * @throws \SyException\WX\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPayNotifyUrl(string $payNotifyUrl)
     {
@@ -280,7 +280,7 @@ class WxConfigAccount
 
     /**
      * @param string $payAuthUrl
-     * @throws \SyException\WX\WxException
+     * @throws \SyException\Wx\WxException
      */
     public function setPayAuthUrl(string $payAuthUrl)
     {
