@@ -36,7 +36,10 @@ trait ProjectBaseTrait
     protected function handleAppRequest(array $params) : string
     {
         $httpObj = new Http($params['req_uri']);
-        return $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
+        $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
+        unset($httpObj);
+
+        return $result;
     }
 
     private function checkServerBaseTrait()
