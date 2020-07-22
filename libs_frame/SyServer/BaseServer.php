@@ -382,7 +382,7 @@ abstract class BaseServer
                     self::$_syServices->set($eModuleName, [
                         'module' => $eModuleName,
                         'host' => $moduleData['host'],
-                        'port' => (string) $moduleData['port'],
+                        'port' => (string)$moduleData['port'],
                         'type' => $moduleData['type'],
                     ]);
                 }
