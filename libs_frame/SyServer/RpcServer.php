@@ -21,7 +21,6 @@ use SyTool\SessionTool;
 use SyTool\SyPack;
 use SyTool\Tool;
 use Yaf\Registry;
-use Yaf\Request\Http;
 
 class RpcServer extends BaseServer
 {
@@ -184,17 +183,13 @@ class RpcServer extends BaseServer
 
         $error = null;
         $result = '';
-        $httpObj = null;
         try {
             self::checkRequestCurrentLimit();
             $funcName = $this->getPreProcessFunction($data['api_uri'], $this->preProcessMapFrame, $this->preProcessMapProject);
             if (is_string($funcName)) {
-                if (strlen($funcName) == 0) {
-                    $httpObj = new Http($data['api_uri']);
-                    $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
-                } else {
-                    $result = $this->$funcName($data);
-                }
+                $result = strlen($funcName) == 0 ? $this->handleAppRequest([
+                    'req_uri' => $data['api_uri'],
+                ]) : $this->$funcName($data);
                 if (strlen($result) == 0) {
                     $error = new Result();
                     $error->setCodeMsg(ErrorCode::SWOOLE_SERVER_NO_RESPONSE_ERROR, '未设置响应数据');
@@ -213,7 +208,6 @@ class RpcServer extends BaseServer
             self::$_syServer->decr(self::$_serverToken, 'request_handling', 1);
             $this->clearRequest();
             $this->reportLongTimeReq($data['api_uri'], $data['api_params'], Project::TIME_EXPIRE_SWOOLE_CLIENT_RPC);
-            unset($httpObj);
             if (is_object($error)) {
                 $result = $error->getJson();
                 unset($error);

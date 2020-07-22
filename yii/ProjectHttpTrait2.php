@@ -25,7 +25,7 @@ use SyResponse\Result;
 use SyTool\SyPack;
 use SyTool\Tool;
 
-trait ProjectHttpTrait
+trait ProjectHttpTrait2
 {
     private function checkServerHttpTrait()
     {

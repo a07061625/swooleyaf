@@ -23,13 +23,13 @@ use SyTool\SyPack;
 use SyTool\Tool;
 use SyTrait\Server\FrameHttpTrait;
 use SyTrait\Server\FramePreProcessHttpTrait;
-use SyTrait\Server\ProjectHttpTrait;
+use SyTrait\Server\ProjectHttpTrait2;
 use SyTrait\Server\ProjectPreProcessHttpTrait;
 
-class HttpServer extends BaseServer
+class HttpServer2 extends BaseServer2
 {
     use FrameHttpTrait;
-    use ProjectHttpTrait;
+    use ProjectHttpTrait2;
     use FramePreProcessHttpTrait;
     use ProjectPreProcessHttpTrait;
 

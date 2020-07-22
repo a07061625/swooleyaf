@@ -8,15 +8,15 @@
 namespace SyTrait\Server;
 
 use Swoole\Server;
-use SyRequest\SyReq;
-use SyResponse\SyResp;
+use SyRequest\SyReq2;
+use SyResponse\SyResp2;
 use SyValidator\Validator;
 use yii\helpers\ArrayHelper;
 use yii\web\Application;
 use yii\web\Request;
 use yii\web\Response;
 
-trait ProjectBaseTrait
+trait ProjectBaseTrait2
 {
     private function checkServerBaseTrait()
     {
@@ -68,17 +68,17 @@ trait ProjectBaseTrait
             'class' => 'SyFrame\Plugins\SimplePlugin',
         ];
         if (isset($yiiConfig['components']['request'])) {
-            $yiiConfig['components']['request']['class'] = SyReq::class;
+            $yiiConfig['components']['request']['class'] = SyReq2::class;
         } else {
             $yiiConfig['components']['request'] = [
-                'class' => SyReq::class,
+                'class' => SyReq2::class,
             ];
         }
         if (isset($yiiConfig['components']['response'])) {
-            $yiiConfig['components']['response']['class'] = SyResp::class;
+            $yiiConfig['components']['response']['class'] = SyResp2::class;
         } else {
             $yiiConfig['components']['response'] = [
-                'class' => SyResp::class,
+                'class' => SyResp2::class,
             ];
         }
         $yiiConfig['bootstrap'][] = 'plugin_simple';

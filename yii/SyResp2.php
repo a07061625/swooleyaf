@@ -9,7 +9,7 @@ namespace SyResponse;
 
 use yii\web\Response;
 
-class SyResp extends Response
+class SyResp2 extends Response
 {
     /**
      * @var \Swoole\Http\Response

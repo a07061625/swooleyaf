@@ -27,7 +27,6 @@ use SyTool\SessionTool;
 use SyTool\SyPack;
 use SyTool\Tool;
 use Yaf\Registry;
-use Yaf\Request\Http;
 
 class HttpServer extends BaseServer
 {
@@ -604,10 +603,11 @@ class HttpServer extends BaseServer
 
         $error = null;
         $result = '';
-        $httpObj = new Http($uri);
         try {
             self::checkRequestCurrentLimit();
-            $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
+            $result = $this->handleAppRequest([
+                'req_uri' => $uri,
+            ]);
             if (strlen($result) == 0) {
                 $error = new Result();
                 $error->setCodeMsg(ErrorCode::SWOOLE_SERVER_NO_RESPONSE_ERROR, '未设置响应数据');
@@ -622,7 +622,6 @@ class HttpServer extends BaseServer
         } finally {
             self::$_syServer->decr(self::$_serverToken, 'request_handling', 1);
             $this->reportLongTimeReq($uri, array_merge($_GET, $_POST), Project::TIME_EXPIRE_SWOOLE_CLIENT_HTTP);
-            unset($httpObj);
             if (is_object($error)) {
                 $result = $error->getJson();
                 unset($error);

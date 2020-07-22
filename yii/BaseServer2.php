@@ -26,12 +26,12 @@ use SyTool\Dir;
 use SyTool\SyPack;
 use SyTool\Tool;
 use SyTrait\Server\FrameBaseTrait;
-use SyTrait\Server\ProjectBaseTrait;
+use SyTrait\Server\ProjectBaseTrait2;
 
-abstract class BaseServer
+abstract class BaseServer2
 {
     use FrameBaseTrait;
-    use ProjectBaseTrait;
+    use ProjectBaseTrait2;
 
     /**
      * 请求服务对象

@@ -9,7 +9,7 @@ namespace SyRequest;
 
 use yii\web\Request;
 
-class SyReq extends Request
+class SyReq2 extends Request
 {
     /**
      * @var \Swoole\Http\Request
