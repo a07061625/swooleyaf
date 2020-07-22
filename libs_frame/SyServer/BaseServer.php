@@ -29,7 +29,6 @@ use SyTrait\Server\ProjectBaseTrait;
 use SyTool\Dir;
 use SyTool\SyPack;
 use SyTool\Tool;
-use Yaf\Application;
 
 abstract class BaseServer
 {
@@ -51,10 +50,6 @@ abstract class BaseServer
      * @var int
      */
     protected $_port = 0;
-    /**
-     * @var \Yaf\Application
-     */
-    protected $_app = null;
     /**
      * task进程数量
      * @var int
@@ -371,9 +366,7 @@ abstract class BaseServer
         $bcConfigs = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.bcmath');
         bcscale($bcConfigs['scale']);
 
-        $this->_app = new Application(APP_PATH . '/conf/application.ini', SY_ENV);
-        $this->_app->bootstrap()->getDispatcher()->returnResponse(true);
-        $this->_app->bootstrap()->getDispatcher()->autoRender(false);
+        $this->initApp();
 
         if ($workerId >= $server->setting['worker_num']) {
             @cli_set_process_title(SyInner::PROCESS_TYPE_TASK . SY_MODULE . $this->_port);
