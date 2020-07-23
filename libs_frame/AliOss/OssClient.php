@@ -210,7 +210,7 @@ class OssClient
      * @param boolean $isCName If this is the CName and binded in the bucket.
      * @param string $securityToken from STS.
      * @param string $requestProxy
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      */
     public function __construct($accessKeyId, $accessKeySecret, $endpoint, $isCName = false, $securityToken = null, $requestProxy = null)
     {
@@ -238,8 +238,9 @@ class OssClient
     /**
      * Lists the Bucket [GetService]. Not applicable if the endpoint is CName (because CName must be binded to a specific bucket).
      * @param array $options
+     * @return \AliOss\Model\BucketListInfo
      * @throws \AliOss\Core\OssException
-     * @return BucketListInfo
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function listBuckets($options = null)
     {
@@ -261,8 +262,9 @@ class OssClient
      * @param string $bucket
      * @param string $acl
      * @param array $options
-     * @param string $storageType
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function createBucket($bucket, $acl = self::OSS_ACL_TYPE_PRIVATE, $options = null)
     {
@@ -289,6 +291,8 @@ class OssClient
      * @param string $bucket
      * @param array $options
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function deleteBucket($bucket, $options = null)
     {
@@ -306,7 +310,8 @@ class OssClient
      * Checks if a bucket exists
      * @param string $bucket
      * @return bool
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function doesBucketExist($bucket)
     {
@@ -325,8 +330,9 @@ class OssClient
      * Get the data center location information for the bucket
      * @param string $bucket
      * @param array $options
-     * @throws OssException
      * @return string
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getBucketLocation($bucket, $options = null)
     {
@@ -346,6 +352,8 @@ class OssClient
      * @param string $bucket
      * @param array $options Refer to the SDK documentation
      * @return array
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getBucketMeta($bucket, $options = null)
     {
@@ -363,8 +371,9 @@ class OssClient
      * Gets the bucket ACL
      * @param string $bucket
      * @param array $options
-     * @throws OssException
      * @return string
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getBucketAcl($bucket, $options = null)
     {
@@ -384,8 +393,9 @@ class OssClient
      * @param string $bucket bucket name
      * @param string $acl access permissions, valid values are ['private', 'public-read', 'public-read-write']
      * @param array $options by default is empty
-     * @throws OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function putBucketAcl($bucket, $acl, $options = null)
     {
@@ -405,8 +415,9 @@ class OssClient
      * Gets object ACL
      * @param string $bucket
      * @param string $object
-     * @throws OssException
      * @return string
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getObjectAcl($bucket, $object)
     {
@@ -427,8 +438,9 @@ class OssClient
      * @param string $bucket bucket name
      * @param string $object object name
      * @param string $acl access permissions, valid values are ['default', 'private', 'public-read', 'public-read-write']
-     * @throws OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function putObjectAcl($bucket, $object, $acl)
     {
@@ -448,8 +460,9 @@ class OssClient
      * Gets the bucket logging config
      * @param string $bucket bucket name
      * @param array $options by default is empty
-     * @throws OssException
-     * @return LoggingConfig
+     * @return \AliOss\Model\LoggingConfig
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getBucketLogging($bucket, $options = null)
     {
@@ -470,8 +483,9 @@ class OssClient
      * @param string $targetBucket The logging file's bucket
      * @param string $targetPrefix The logging file's prefix
      * @param array $options By default is empty.
-     * @throws OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function putBucketLogging($bucket, $targetBucket, $targetPrefix, $options = null)
     {
@@ -495,8 +509,9 @@ class OssClient
      * Deletes the bucket logging config
      * @param string $bucket bucket name
      * @param array $options
-     * @throws OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function deleteBucketLogging($bucket, $options = null)
     {
@@ -514,10 +529,11 @@ class OssClient
     /**
      * Sets the website config in bucket---that is could make the bucket as a static website once the CName is binded.
      * @param string $bucket bucket name
-     * @param WebsiteConfig $websiteConfig
+     * @param \AliOss\Model\WebsiteConfig $websiteConfig
      * @param array $options
-     * @throws OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function putBucketWebsite($bucket, $websiteConfig, $options = null)
     {
@@ -538,8 +554,9 @@ class OssClient
      * Gets the website config in the bucket
      * @param string $bucket bucket name
      * @param array $options
-     * @throws OssException
-     * @return WebsiteConfig
+     * @return \AliOss\Model\WebsiteConfig
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getBucketWebsite($bucket, $options = null)
     {
@@ -558,8 +575,9 @@ class OssClient
      * Deletes the website config in the bucket
      * @param string $bucket bucket name
      * @param array $options
-     * @throws OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function deleteBucketWebsite($bucket, $options = null)
     {
@@ -577,10 +595,11 @@ class OssClient
     /**
      * Sets the cross-origin-resource-sharing (CORS) rule. It would overwrite the originl one.
      * @param string $bucket bucket name
-     * @param CorsConfig $corsConfig CORS config. Check out the details from OSS API document
+     * @param \AliOss\Model\CorsConfig $corsConfig CORS config. Check out the details from OSS API document
      * @param array $options array
-     * @throws OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function putBucketCors($bucket, $corsConfig, $options = null)
     {
@@ -601,8 +620,9 @@ class OssClient
      * Gets the bucket CORS config
      * @param string $bucket bucket name
      * @param array $options
-     * @throws OssException
      * @return \AliOss\Model\CorsConfig
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getBucketCors($bucket, $options = null)
     {
@@ -621,8 +641,9 @@ class OssClient
      * Deletes the bucket's CORS config and disable the CORS on the bucket.
      * @param string $bucket bucket name
      * @param array $options
-     * @throws OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function deleteBucketCors($bucket, $options = null)
     {
@@ -642,8 +663,9 @@ class OssClient
      * @param string $bucket bucket name
      * @param string $cname
      * @param array $options
-     * @throws \AliOss\Core\OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function addBucketCname($bucket, $cname, $options = null)
     {
@@ -668,8 +690,9 @@ class OssClient
      * Gets the binded CName list of the bucket
      * @param string $bucket bucket name
      * @param array $options
+     * @return \AliOss\Model\CnameConfig
      * @throws \AliOss\Core\OssException
-     * @return CnameConfig
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getBucketCname($bucket, $options = null)
     {
@@ -687,10 +710,11 @@ class OssClient
     /**
      * Remove a CName binding from the bucket
      * @param string $bucket bucket name
-     * @param CnameConfig $cnameConfig
+     * @param \AliOss\Model\CnameConfig $cname
      * @param array $options
-     * @throws \AliOss\Core\OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function deleteBucketCname($bucket, $cname, $options = null)
     {
@@ -715,10 +739,11 @@ class OssClient
      * Creates a Live Channel under a bucket
      * @param string $bucket bucket name
      * @param string channelName  $channelName
-     * @param LiveChannelConfig $channelConfig
+     * @param \AliOss\Model\LiveChannelConfig $channelConfig
      * @param array $options
-     * @throws OssException
      * @return LiveChannelInfo
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function putBucketLiveChannel($bucket, $channelName, $channelConfig, $options = null)
     {
@@ -745,8 +770,9 @@ class OssClient
      * @param string channelName $channelName
      * @param string channelStatus $channelStatus enabled or disabled
      * @param array $options
-     * @throws OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function putLiveChannelStatus($bucket, $channelName, $channelStatus, $options = null)
     {
@@ -768,8 +794,9 @@ class OssClient
      * @param string $bucket bucket name
      * @param string channelName $channelName
      * @param array $options
-     * @throws OssException
      * @return GetLiveChannelInfo
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getLiveChannelInfo($bucket, $channelName, $options = null)
     {
@@ -790,8 +817,9 @@ class OssClient
      * @param string $bucket bucket name
      * @param string channelName $channelName
      * @param array $options
-     * @throws OssException
      * @return GetLiveChannelStatus
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getLiveChannelStatus($bucket, $channelName, $options = null)
     {
@@ -813,8 +841,9 @@ class OssClient
      * @param string $bucket bucket name
      * @param string channelName $channelName
      * @param array $options
-     * @throws OssException
      * @return GetLiveChannelHistory
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getLiveChannelHistory($bucket, $channelName, $options = null)
     {
@@ -835,8 +864,9 @@ class OssClient
      *Gets the live channel list under a bucket.
      * @param string $bucket bucket name
      * @param array $options
-     * @throws OssException
      * @return \AliOss\Model\LiveChannelListInfo
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function listBucketLiveChannels($bucket, $options = null)
     {
@@ -864,8 +894,9 @@ class OssClient
      * @param string channelName $channelName
      * @param string $playlistName The playlist name, must end with ".m3u8".
      * @param array $setTime startTime and EndTime in unix time. No more than 1 day.
-     * @throws OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function postVodPlaylist($bucket, $channelName, $playlistName, $setTime)
     {
@@ -888,8 +919,9 @@ class OssClient
      * @param string $bucket bucket name
      * @param string channelName $channelName
      * @param array $options
-     * @throws OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function deleteBucketLiveChannel($bucket, $channelName, $options = null)
     {
@@ -911,8 +943,7 @@ class OssClient
      * @param string channelName $channelName
      * @param int timeout timeout value in seconds
      * @param array $options
-     * @throws OssException
-     * @return The signed pushing streaming url
+     * @return string The signed pushing streaming url
      */
     public function signRtmpUrl($bucket, $channelName, $timeout = 60, $options = null)
     {
@@ -951,7 +982,8 @@ class OssClient
      * @param string $request_headers The actual HTTP headers which will be used in CORS request
      * @param array $options
      * @return array
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      * @link http://help.aliyun.com/document_detail/oss/api-reference/cors/OptionObject.html
      */
     public function optionsObject($bucket, $object, $origin, $request_method, $request_headers, $options = null)
@@ -976,8 +1008,9 @@ class OssClient
      * @param string $bucket bucket name
      * @param \AliOss\Model\LifecycleConfig $lifecycleConfig LifecycleConfig instance
      * @param array $options
-     * @throws OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function putBucketLifecycle($bucket, $lifecycleConfig, $options = null)
     {
@@ -998,8 +1031,9 @@ class OssClient
      * Gets bucket's lifecycle config
      * @param string $bucket bucket name
      * @param array $options
-     * @throws OssException
      * @return \AliOss\Model\LifecycleConfig
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getBucketLifecycle($bucket, $options = null)
     {
@@ -1018,8 +1052,9 @@ class OssClient
      * Deletes the bucket's lifecycle config
      * @param string $bucket bucket name
      * @param array $options
-     * @throws OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function deleteBucketLifecycle($bucket, $options = null)
     {
@@ -1038,10 +1073,11 @@ class OssClient
      * Sets a bucket's referer, which has a whitelist of referrer and specifies if empty referer is allowed.
      * Checks out API document for more details about "Bucket Referer"
      * @param string $bucket bucket name
-     * @param RefererConfig $refererConfig
+     * @param \AliOss\Model\RefererConfig $refererConfig
      * @param array $options
      * @return ResponseCore
-     * @throws null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function putBucketReferer($bucket, $refererConfig, $options = null)
     {
@@ -1063,8 +1099,9 @@ class OssClient
      * Checks out API document for more details about "Bucket Referer"
      * @param string $bucket bucket name
      * @param array $options
-     * @throws OssException
-     * @return RefererConfig
+     * @return \AliOss\Model\RefererConfig
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getBucketReferer($bucket, $options = null)
     {
@@ -1085,8 +1122,9 @@ class OssClient
      * @param string $bucket bucket name
      * @param int $storageCapacity
      * @param array $options
-     * @return ResponseCore
-     * @throws null
+     * @return \AliOss\Http\ResponseCore
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function putBucketStorageCapacity($bucket, $storageCapacity, $options = null)
     {
@@ -1108,8 +1146,9 @@ class OssClient
      * Get the capacity of the bucket, the unit is GB
      * @param string $bucket bucket name
      * @param array $options
-     * @throws OssException
      * @return int
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getBucketStorageCapacity($bucket, $options = null)
     {
@@ -1135,8 +1174,9 @@ class OssClient
      *      'marker'    => The key of returned object must be greater than the 'marker'.
      *)
      * Prefix and marker are for filtering and paging. Their length must be less than 256 bytes
-     * @throws OssException
-     * @return ObjectListInfo
+     * @return \AliOss\Model\ObjectListInfo
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function listObjects($bucket, $options = null)
     {
@@ -1166,6 +1206,8 @@ class OssClient
      * @param string $object object name
      * @param array $options
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function createObjectDir($bucket, $object, $options = null)
     {
@@ -1187,6 +1229,8 @@ class OssClient
      * @param string $content The content object
      * @param array $options
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function putObject($bucket, $object, $content, $options = null)
     {
@@ -1230,6 +1274,8 @@ class OssClient
      * @param string $targetObject targetObject name
      * @param array $options
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function putSymlink($bucket, $symlink, $targetObject, $options = null)
     {
@@ -1252,6 +1298,8 @@ class OssClient
      * @param string $bucket bucket name
      * @param string $symlink symlink name
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getSymlink($bucket, $symlink)
     {
@@ -1275,7 +1323,8 @@ class OssClient
      * @param string $file local file path
      * @param array $options
      * @return null
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function uploadFile($bucket, $object, $file, $options = null)
     {
@@ -1313,7 +1362,8 @@ class OssClient
      * @param string $content content to append
      * @param array $options
      * @return int next append position
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function appendObject($bucket, $object, $content, $position, $options = null)
     {
@@ -1354,7 +1404,8 @@ class OssClient
      * @param string $file The local file path to append with
      * @param array $options
      * @return int next append position
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function appendFile($bucket, $object, $file, $position, $options = null)
     {
@@ -1397,7 +1448,8 @@ class OssClient
      * @param string $toObject Target object name
      * @param array $options
      * @return null
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function copyObject($fromBucket, $fromObject, $toBucket, $toObject, $options = null)
     {
@@ -1423,6 +1475,8 @@ class OssClient
      * @param string $object object name
      * @param string $options Checks out the SDK document for the detail
      * @return array
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getObjectMeta($bucket, $object, $options = null)
     {
@@ -1442,6 +1496,8 @@ class OssClient
      * @param string $object object name
      * @param array $options
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function deleteObject($bucket, $object, $options = null)
     {
@@ -1461,7 +1517,8 @@ class OssClient
      * @param array $objects object list
      * @param array $options
      * @return \AliOss\Http\ResponseCore
-     * @throws null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function deleteObjects($bucket, $objects, $options = null)
     {
@@ -1496,6 +1553,8 @@ class OssClient
      * @param string $object object name
      * @param array $options It must contain ALIOSS::OSS_FILE_DOWNLOAD. And ALIOSS::OSS_RANGE is optional and empty means to download the whole file.
      * @return string
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function getObject($bucket, $object, $options = null)
     {
@@ -1529,6 +1588,8 @@ class OssClient
      * @param string $object object name
      * @param array $options
      * @return bool True:object exists; False:object does not exist
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function doesObjectExist($bucket, $object, $options = null)
     {
@@ -1548,7 +1609,8 @@ class OssClient
      * @param string $bucket bucket name
      * @param string $object object name
      * @return null
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function restoreObject($bucket, $object, $options = null)
     {
@@ -1612,8 +1674,9 @@ class OssClient
      * @param string $bucket bucket name
      * @param string $object object name
      * @param array $options Key-Value array
-     * @throws OssException
      * @return string returns uploadid
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function initiateMultipartUpload($bucket, $object, $options = null)
     {
@@ -1643,7 +1706,8 @@ class OssClient
      * @param string $uploadId
      * @param array $options Key-Value array
      * @return string eTag
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function uploadPart($bucket, $object, $uploadId, $options = null)
     {
@@ -1671,8 +1735,9 @@ class OssClient
      * @param string $object object name
      * @param string $uploadId uploadId
      * @param array $options Key-Value array
-     * @return ListPartsInfo
-     * @throws OssException
+     * @return \AliOss\Model\ListPartsInfo
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function listParts($bucket, $object, $uploadId, $options = null)
     {
@@ -1701,7 +1766,8 @@ class OssClient
      * @param string $uploadId uploadId
      * @param array $options Key-Value name
      * @return null
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function abortMultipartUpload($bucket, $object, $uploadId, $options = null)
     {
@@ -1723,8 +1789,9 @@ class OssClient
      * @param string $uploadId uploadId
      * @param array $listParts array( array("PartNumber"=> int, "ETag"=>string))
      * @param array $options Key-Value array
-     * @throws OssException
      * @return null
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function completeMultipartUpload($bucket, $object, $uploadId, $listParts, $options = null)
     {
@@ -1752,8 +1819,9 @@ class OssClient
      * Lists all ongoing multipart upload events, which means all initialized but not completed or aborted multipart uploads.
      * @param string $bucket bucket
      * @param array $options key-value array--expected keys are 'delimiter', 'key-marker', 'max-uploads', 'prefix', 'upload-id-marker'
+     * @return \AliOss\Model\ListMultipartUploadInfo
      * @throws \AliOss\Core\OssException
-     * @return ListMultipartUploadInfo
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function listMultipartUploads($bucket, $options = null)
     {
@@ -1788,7 +1856,8 @@ class OssClient
      * @param string $uploadId Upload Id
      * @param array $options Key-Value array---it should have 'start' or 'end' key to specify the range of the source object to copy. If it's not specifed, the whole object is copied.
      * @return null
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function uploadPartCopy($fromBucket, $fromObject, $toBucket, $toObject, $partNumber, $uploadId, $options = null)
     {
@@ -1829,7 +1898,8 @@ class OssClient
      * @param string $file The local file to upload
      * @param array $options Key-Value array
      * @return null
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function multiuploadFile($bucket, $object, $file, $options = null)
     {
@@ -1921,7 +1991,8 @@ class OssClient
      * @param bool $recursive Recursive flag. True: Recursively upload all datas under the local directory; False: only upload first layer's files.
      * @param bool $checkMd5
      * @return array Returns two list: array("succeededList" => array("object"), "failedList" => array("object"=>"errorMessage"))
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function uploadDir($bucket, $prefix, $localDirectory, $exclude = '.|..|.svn|.git', $recursive = false, $checkMd5 = true)
     {
@@ -1976,7 +2047,8 @@ class OssClient
      * @param string $method
      * @param array $options Key-Value array
      * @return string
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
+     * @throws \AliOss\Http\RequestCore_Exception
      */
     public function signUrl($bucket, $object, $timeout = 60, $method = self::OSS_HTTP_GET, $options = null)
     {
@@ -2002,7 +2074,7 @@ class OssClient
     /**
      * validates options. Create a empty array if it's NULL.
      * @param array $options
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      */
     private function precheckOptions(&$options)
     {
@@ -2016,7 +2088,7 @@ class OssClient
      * Validates bucket parameter
      * @param string $bucket
      * @param string $errMsg
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      */
     private function precheckBucket($bucket, $errMsg = 'bucket is not allowed empty')
     {
@@ -2026,7 +2098,7 @@ class OssClient
     /**
      * validates object parameter
      * @param string $object
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      */
     private function precheckObject($object)
     {
@@ -2035,17 +2107,15 @@ class OssClient
 
     /**
      * 校验option restore
-     * @param string $restore
-     * @throws OssException
+     * @param string $storage
+     * @throws \AliOss\Core\OssException
      */
     private function precheckStorage($storage)
     {
         if (is_string($storage)) {
             switch ($storage) {
                 case self::OSS_STORAGE_ARCHIVE:
-                    return;
                 case self::OSS_STORAGE_IA:
-                    return;
                 case self::OSS_STORAGE_STANDARD:
                     return;
                 default:
@@ -2061,6 +2131,7 @@ class OssClient
      * @param string $object
      * @param array $options
      * @param bool $isCheckObject
+     * @throws \AliOss\Core\OssException
      */
     private function precheckCommon($bucket, $object, &$options, $isCheckObject = true)
     {
@@ -2076,7 +2147,7 @@ class OssClient
      * @param array $options
      * @param string $param
      * @param string $funcName
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      */
     private function precheckParam($options, $param, $funcName)
     {
@@ -2152,7 +2223,7 @@ class OssClient
      * Validates and executes the request according to OSS API protocol.
      * @param array $options
      * @return \AliOss\Http\ResponseCore
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      * @throws \AliOss\Http\RequestCore_Exception
      */
     private function auth($options)
@@ -2388,7 +2459,7 @@ class OssClient
     /**
      * Validates the object name--throw OssException if it's invalid.
      * @param $options
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      */
     private function authPrecheckObject($options)
     {
@@ -2426,7 +2497,7 @@ class OssClient
     /**
      * Checks if the ACL is one of the 3 predefined one. Throw OSSException if not.
      * @param $options
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      */
     private function authPrecheckAcl($options)
     {
@@ -2604,8 +2675,7 @@ class OssClient
     {
         $headers = [
             self::OSS_CONTENT_MD5 => '',
-            self::OSS_CONTENT_TYPE => isset($options[self::OSS_CONTENT_TYPE]) ? $options[self::OSS_CONTENT_TYPE] :
-                self::DEFAULT_CONTENT_TYPE,
+            self::OSS_CONTENT_TYPE => isset($options[self::OSS_CONTENT_TYPE]) ? $options[self::OSS_CONTENT_TYPE] : self::DEFAULT_CONTENT_TYPE,
             self::OSS_DATE => isset($options[self::OSS_DATE]) ? $options[self::OSS_DATE] : gmdate('D, d M Y H:i:s \G\M\T'),
             self::OSS_HOST => $hostname,
         ];
@@ -2631,7 +2701,11 @@ class OssClient
      */
     private function generateUserAgent()
     {
-        return self::OSS_NAME . "/" . self::OSS_VERSION . " (" . php_uname('s') . "/" . php_uname('r') . "/" . php_uname('m') . ";"
+        return self::OSS_NAME . "/"
+               . self::OSS_VERSION . " ("
+               . php_uname('s') . "/"
+               . php_uname('r') . "/"
+               . php_uname('m') . ";"
                . PHP_VERSION . ")";
     }
 
@@ -2670,7 +2744,7 @@ class OssClient
     /**
      * Check if all dependent extensions are installed correctly.
      * For now only "curl" is needed.
-     * @throws OssException
+     * @throws \AliOss\Core\OssException
      */
     public static function checkEnv()
     {

@@ -1,4 +1,6 @@
 .idea/
+tipfile/*.txt
+pidfile/*.pid
 .php_cs.cache
 config_pools.php
 config_projects.php
