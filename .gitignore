@@ -4,3 +4,5 @@ pidfile/*.pid
 .php_cs.cache
 config_pools.php
 config_projects.php
+helper_load.php
+helper_php.php
