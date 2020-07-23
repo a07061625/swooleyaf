@@ -50,6 +50,28 @@ SwooleYaf是PHP语言的高性能分布式微服务框架,专注于restful api�
 ## 其他
 - gcc4.8+ //php7编译用gcc4.8+会开启Global Register for opline and execute_data支持, 这个会带来5%左右的性能提升
 
+# **使用相关(重要,必须首先进行)**
+## 设置项目核心配置
+复制helper_load_example.php为helper_load.php并修改相关配置
+其中: 
+- SY_ENV: 环境类型,支持dev:开发 product:生产
+- SY_PROJECT: 项目标识,3位长度,由数字和小写字母组成
+
+## 设置php环境配置
+复制helper_php_example.php为helper_php.php并修改相关配置
+
+## 设置swoole启动项目配置
+复制config_projects_example.php为config_projects.php并修改相关配置
+其中:
+
+- module_path: 模块目录,以sy_开头的目录名
+- module_name: 模块名称,和SyConstant\Project::MODULE_NAME_*开头的常量保持相同
+- listens.host: swoole服务运行的IP,可保持不变
+- listens.port: swoole服务运行的端口
+- listens.register_type: swoole服务注册类型, 空字符串:不注册 nginx:通过nginx注册,该注册方式通过lua实现
+
+**注1: 如果想要运行多个swoole服务,listens数组添加多个并保证端口不冲突即可**
+
 # 框架介绍
 ## 使用介绍
 - 操作系统只支持linux,不支持windows,因为pcntl扩展,nohup,inotify只有linux才可用
