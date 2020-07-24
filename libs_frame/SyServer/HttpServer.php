@@ -605,9 +605,9 @@ class HttpServer extends BaseServer
         $result = '';
         try {
             self::checkRequestCurrentLimit();
-            $result = $this->handleAppRequest([
-                'req_uri' => $uri,
-            ]);
+            $result = $this->handleAppReqHttp([
+                'api_uri' => $uri,
+            ], $request);
             if (strlen($result) == 0) {
                 $error = new Result();
                 $error->setCodeMsg(ErrorCode::SWOOLE_SERVER_NO_RESPONSE_ERROR, '未设置响应数据');

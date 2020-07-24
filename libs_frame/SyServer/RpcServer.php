@@ -187,9 +187,7 @@ class RpcServer extends BaseServer
             self::checkRequestCurrentLimit();
             $funcName = $this->getPreProcessFunction($data['api_uri'], $this->preProcessMapFrame, $this->preProcessMapProject);
             if (is_string($funcName)) {
-                $result = strlen($funcName) == 0 ? $this->handleAppRequest([
-                    'req_uri' => $data['api_uri'],
-                ]) : $this->$funcName($data);
+                $result = strlen($funcName) == 0 ? $this->handleAppReqRpc($data) : $this->$funcName($data);
                 if (strlen($result) == 0) {
                     $error = new Result();
                     $error->setCodeMsg(ErrorCode::SWOOLE_SERVER_NO_RESPONSE_ERROR, '未设置响应数据');
