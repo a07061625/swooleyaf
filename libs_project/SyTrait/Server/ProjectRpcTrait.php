@@ -9,6 +9,7 @@ namespace SyTrait\Server;
 
 use Response\Result;
 use Swoole\Server;
+use Yaf\Request\Http;
 
 trait ProjectRpcTrait
 {
@@ -18,6 +19,20 @@ trait ProjectRpcTrait
 
     private function initTableRpcTrait()
     {
+    }
+
+    /**
+     * 处理应用Rpc请求
+     * @param array $params
+     * @return string
+     */
+    protected function handleAppReqRpc(array $params) : string
+    {
+        $httpObj = new Http($params['api_uri']);
+        $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
+        unset($httpObj);
+
+        return $result;
     }
 
     private function addTaskRpcTrait(Server $server)

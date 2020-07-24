@@ -7,6 +7,7 @@
  */
 namespace SyTrait\Server;
 
+use Swoole\Http\Request;
 use Swoole\Server;
 use SyConstant\Project;
 use Project\TimerHandler;
@@ -14,6 +15,7 @@ use Response\Result;
 use SyTool\SyPack;
 use SyTool\Tool;
 use SyTool\WebHook;
+use Yaf\Request\Http;
 
 trait ProjectHttpTrait
 {
@@ -23,6 +25,21 @@ trait ProjectHttpTrait
 
     private function initTableHttpTrait()
     {
+    }
+
+    /**
+     * 处理应用Http请求
+     * @param array $params
+     * @param \Swoole\Http\Request $request
+     * @return string
+     */
+    protected function handleAppReqHttp(array $params, Request $request) : string
+    {
+        $httpObj = new Http($params['api_uri']);
+        $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
+        unset($httpObj);
+
+        return $result;
     }
 
     private function addTaskHttpTrait(Server $server)
