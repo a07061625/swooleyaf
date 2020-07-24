@@ -9,7 +9,6 @@ namespace SyTrait\Server;
 
 use Swoole\Server;
 use Yaf\Application;
-use Yaf\Request\Http;
 
 trait ProjectBaseTrait
 {
@@ -26,20 +25,6 @@ trait ProjectBaseTrait
         $this->_app = new Application(APP_PATH . '/conf/application.ini', SY_ENV);
         $this->_app->bootstrap()->getDispatcher()->returnResponse(true);
         $this->_app->bootstrap()->getDispatcher()->autoRender(false);
-    }
-
-    /**
-     * 处理应用请求
-     * @param array $params
-     * @return string
-     */
-    protected function handleAppRequest(array $params) : string
-    {
-        $httpObj = new Http($params['req_uri']);
-        $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
-        unset($httpObj);
-
-        return $result;
     }
 
     private function checkServerBaseTrait()
