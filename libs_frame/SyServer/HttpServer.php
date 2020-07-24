@@ -489,10 +489,13 @@ class HttpServer extends BaseServer
             $_SERVER[strtoupper($key)] = $val;
         }
         foreach (self::$_reqHeaders as $key => $val) {
-            $_SERVER[strtoupper($key)] = $val;
+            $trueKey = trim($key);
+            if ((strlen($trueKey) > 0) && ($key != 'set-cookie')) {
+                $_SERVER['HTTP_' . $trueKey] = trim($val);
+            }
         }
-        if (!isset($_SERVER['HTTP_HOST'])) {
-            $_SERVER['HTTP_HOST'] = $this->_host . ':' . $this->_port;
+        if (!isset($_SERVER['HTTP_host'])) {
+            $_SERVER['HTTP_host'] = $this->_host . ':' . $this->_port;
         }
         if (!isset($_SERVER['REQUEST_URI'])) {
             $_SERVER['REQUEST_URI'] = '/';
