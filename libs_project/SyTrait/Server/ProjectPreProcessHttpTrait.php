@@ -22,9 +22,8 @@ trait ProjectPreProcessHttpTrait
 
     private function preProcessProjectRefreshTokenExpire(Request $request) : string
     {
-        self::$_syServer->set(self::$_serverToken, [
-            'token_etime' => $this->getTokenExpireTime(),
-        ]);
+        self::refreshServerTokenExpireTime();
+
         return 'refresh token expire time success';
     }
 }

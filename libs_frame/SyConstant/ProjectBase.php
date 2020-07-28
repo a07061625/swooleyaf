@@ -154,10 +154,6 @@ class ProjectBase
     const TIME_EXPIRE_LOCAL_JPUSH_APP_CLEAR = 3600; //超时时间-本地极光推送应用清理,单位为秒
     const TIME_EXPIRE_LOCAL_JPUSH_GROUP_REFRESH = 600; //超时时间-本地极光推送分组更新,单位为秒
     const TIME_EXPIRE_LOCAL_JPUSH_GROUP_CLEAR = 3600; //超时时间-本地极光推送分组清理,单位为秒
-    const TIME_TASK_CLEAR_LOCAL_USER = 300000; //任务时间-清理本地用户信息,单位为毫秒
-    const TIME_TASK_CLEAR_LOCAL_WX = 300000; //任务时间-清理本地微信,单位为毫秒
-    const TIME_TASK_REFRESH_TOKEN_EXPIRE = 540000; //任务时间-刷新令牌到期时间,单位为毫秒
-    const TIME_TASK_CODE_WEBHOOK = 3000; //任务时间-代码WebHook,单位为毫秒
 
     //任务常量,4位字符串,数字和字母组成,纯数字的为框架内部任务,其他为自定义任务
     const TASK_TYPE_CLEAR_API_SIGN_CACHE = '0001'; //任务类型-清理api签名缓存
@@ -194,10 +190,6 @@ class ProjectBase
     const LANG_TYPE_DEFAULT = 'zh'; //类型-默认类型
     const LANG_TYPE_ZH = 'zh'; //类型-中文
     const LANG_TYPE_EN = 'en'; //类型-英文
-    public static $totalLangType = [
-        self::LANG_TYPE_ZH => '中文',
-        self::LANG_TYPE_EN => '英文',
-    ];
 
     //消息处理常量,小于1000000的为框架内部用
     const MESSAGE_HANDLER_TYPE_WX_ACCOUNT_MASS = 10000; //类型-微信公众号-openid群发消息
@@ -224,4 +216,9 @@ class ProjectBase
     const MESSAGE_HANDLER_TYPE_SMS_YUN253 = 23010; //类型-253云短信消息
     const MESSAGE_HANDLER_TYPE_MAIL_PHP = 24000; //类型-php邮件消息
     const MESSAGE_HANDLER_TYPE_MAIL_SWIFT = 24001; //类型-swift邮件消息
+
+    public static $totalLangType = [
+        self::LANG_TYPE_ZH => '中文',
+        self::LANG_TYPE_EN => '英文',
+    ];
 }

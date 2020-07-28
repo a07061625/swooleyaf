@@ -14,11 +14,6 @@ final class SyInner
     use SimpleTrait;
 
     //服务常量
-    public static $totalServerType = [
-        self::SERVER_TYPE_API_GATE => 'api入口',
-        self::SERVER_TYPE_API_MODULE => 'api模块',
-        self::SERVER_TYPE_FRONT_GATE => '前端入口',
-    ];
     const SERVER_TYPE_API_GATE = 'api'; //服务端类型-api入口
     const SERVER_TYPE_API_MODULE = 'rpc'; //服务端类型-api模块
     const SERVER_TYPE_FRONT_GATE = 'frontgate'; //服务端类型-前端入口
@@ -28,9 +23,6 @@ final class SyInner
     const SERVER_DATA_KEY_HTTP_RSP_CODE_ERROR = 'Syresp-Status'; //服务端内部数据键名-http响应错误状态码
 
     //服务注册常量
-    public static $totalServerRegisterType = [
-        self::SERVER_REGISTER_TYPE_NGINX => 1,
-    ];
     const SERVER_REGISTER_TYPE_NGINX = 'nginx'; //类型-nginx
 
     //进程常量
@@ -40,15 +32,6 @@ final class SyInner
     const PROCESS_TYPE_MAIN = 'Main'; //类型-main
 
     //环境常量
-    public static $totalEnvProject = [
-        self::ENV_PROJECT_DEV,
-        self::ENV_PROJECT_PRODUCT,
-    ];
-    public static $totalEnvSystem = [
-        self::ENV_SYSTEM_BSD,
-        self::ENV_SYSTEM_MAC,
-        self::ENV_SYSTEM_LINUX,
-    ];
     const ENV_PROJECT_DEV = 'dev'; //项目环境-测试
     const ENV_PROJECT_PRODUCT = 'product'; //项目环境-生产
     const ENV_SYSTEM_BSD = 'FreeBSD'; //系统环境-bsd
@@ -94,10 +77,6 @@ final class SyInner
     const REGISTRY_NAME_PREFIX_ASPECT_AFTER = 'ASPECTAFTER_'; //名称前缀-后置切面
 
     //图片常量
-    public static $totalImageFilterDither = [
-        self::IMAGE_FILTER_DITHER_ORDERED,
-        self::IMAGE_FILTER_DITHER_DIFFUSION,
-    ];
     const IMAGE_MIME_TYPE_PNG = 'image/png'; //MIME类型-PNG
     const IMAGE_MIME_TYPE_JPEG = 'image/jpeg'; //MIME类型-JPEG
     const IMAGE_MIME_TYPE_GIF = 'image/gif'; //MIME类型-GIF
@@ -107,11 +86,6 @@ final class SyInner
     const IMAGE_DATA_TYPE_BASE64 = 'base64'; //数据类型-base64
 
     //注解常量
-    public static $annotationSignTags = [
-        self::ANNOTATION_TAG_SIGN => 1,
-        self::ANNOTATION_TAG_IGNORE_SIGN => 1,
-        self::ANNOTATION_TAG_IGNORE_JWT => 1,
-    ];
     const ANNOTATION_NAME_FILTER = 'SyFilter'; //名称-数据校验器
     const ANNOTATION_NAME_ASPECT = 'SyAspect'; //名称-环绕切面
     const ANNOTATION_NAME_ASPECT_BEFORE = 'SyAspectBefore'; //名称-前置切面
@@ -121,4 +95,31 @@ final class SyInner
     const ANNOTATION_TAG_IGNORE_JWT = '_ignorejwt'; //标识-取消jwt校验
     const ANNOTATION_TAG_SY_TOKEN = '__sytoken'; //标识-框架令牌
     const ANNOTATION_TAG_SESSION_JWT = '__sessionjwt'; //标识-JWT会话
+
+    public static $totalServerType = [
+        self::SERVER_TYPE_API_GATE => 'api入口',
+        self::SERVER_TYPE_API_MODULE => 'api模块',
+        self::SERVER_TYPE_FRONT_GATE => '前端入口',
+    ];
+    public static $totalServerRegisterType = [
+        self::SERVER_REGISTER_TYPE_NGINX => 1,
+    ];
+    public static $totalEnvProject = [
+        self::ENV_PROJECT_DEV,
+        self::ENV_PROJECT_PRODUCT,
+    ];
+    public static $totalEnvSystem = [
+        self::ENV_SYSTEM_BSD,
+        self::ENV_SYSTEM_MAC,
+        self::ENV_SYSTEM_LINUX,
+    ];
+    public static $totalImageFilterDither = [
+        self::IMAGE_FILTER_DITHER_ORDERED,
+        self::IMAGE_FILTER_DITHER_DIFFUSION,
+    ];
+    public static $annotationSignTags = [
+        self::ANNOTATION_TAG_SIGN => 1,
+        self::ANNOTATION_TAG_IGNORE_SIGN => 1,
+        self::ANNOTATION_TAG_IGNORE_JWT => 1,
+    ];
 }

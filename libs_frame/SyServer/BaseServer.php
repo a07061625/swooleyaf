@@ -19,6 +19,7 @@ use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\MemCacheSingleton;
 use DesignPatterns\Singletons\MysqlSingleton;
 use DesignPatterns\Singletons\RedisSingleton;
+use SyEventTask\TaskContainer;
 use SyException\Swoole\ServerException;
 use SyException\Validator\ValidatorException;
 use SyLog\Log;
@@ -79,6 +80,10 @@ abstract class BaseServer
      * @var string
      */
     protected $_tipFile = '';
+    /**
+     * @var \SyEventTask\TaskContainer
+     */
+    protected $_taskEventContainer = null;
     /**
      * 请求开始毫秒级时间戳
      * @var float
@@ -164,6 +169,7 @@ abstract class BaseServer
             fclose($tipFileObj);
         }
         $this->_syPack = new SyPack();
+        $this->_taskEventContainer = new TaskContainer();
 
         //生成服务唯一标识
         self::$_serverToken = hash('crc32b', $this->_configs['server']['host'] . ':' . $this->_configs['server']['port']);
@@ -349,6 +355,60 @@ abstract class BaseServer
     }
 
     /**
+     * 启动主进程服务
+     * @param \Swoole\Server $server
+     * @throws \SyException\Common\CheckException
+     * @throws \SyException\Swoole\ServerException
+     */
+    public function onStart(Server $server)
+    {
+        $this->basicStart($server);
+
+        //添加定时任务事件
+        $registryMap = $this->_taskEventContainer->getRegistryMap();
+        foreach ($registryMap as $tag => $val) {
+            $task = $this->_taskEventContainer->getObj($tag);
+            if (is_null($task)) {
+                continue;
+            }
+
+            $intervalTime = $task->getIntervalTime();
+            if (($intervalTime < 1000) || ($intervalTime > 86400000)) {
+                continue;
+            }
+
+            $supportModules = $task->getSupportModules();
+            if ((count($supportModules) > 0) && (!isset($supportModules[SY_MODULE]))) {
+                continue;
+            }
+
+            $supportServerTypes = $task->getSupportServerTypes();
+            if ((count($supportServerTypes) > 0) && (!isset($supportServerTypes[SY_SERVER_TYPE]))) {
+                continue;
+            }
+
+            $packData = [
+                'task_command' => $tag,
+                'task_params' => $task->getData(),
+            ];
+            if (SY_SERVER_TYPE == SyInner::SERVER_TYPE_API_MODULE) {
+                $command = SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ;
+            } else {
+                $command = SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ;
+                $packData['task_module'] = SY_MODULE;
+            }
+
+            $this->_syPack->setCommandAndData($command, $packData);
+            $tickData = $this->_syPack->packData();
+            $this->_syPack->init();
+
+            $server->tick($intervalTime, function () use ($server, $tickData) {
+                $server->task($tickData);
+            });
+        }
+    }
+
+    /**
      * 启动工作进程
      * @param \Swoole\Server $server
      * @param int $workerId 进程编号
@@ -437,11 +497,44 @@ abstract class BaseServer
     }
 
     /**
-     * 启动主进程服务
+     * 处理任务
      * @param \Swoole\Server $server
-     * @throws \SyException\Swoole\ServerException
+     * @param int $taskId
+     * @param int $fromId
+     * @param string $data
+     * @return void
+     * @throws \SyException\Mysql\MysqlException
      */
-    abstract public function onStart(Server $server);
+    public function onTask(Server $server, int $taskId, int $fromId, string $data)
+    {
+        if (!$this->_syPack->unpackData($data)) {
+            Log::warn('定时任务数据格式不合法,源数据为: ' . $data);
+            return;
+        }
+
+        RedisSingleton::getInstance()->reConnect();
+        if (SY_MEMCACHE) {
+            MemCacheSingleton::getInstance()->reConnect();
+        }
+        if (SY_DATABASE) {
+            MysqlSingleton::getInstance()->reConnect();
+        }
+
+        $command = $this->_syPack->getCommand();
+        $commandData = $this->_syPack->getData();
+        $this->_syPack->init();
+
+        if (in_array($command, [
+            SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ,
+            SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ
+        ], true)) {
+            $taskCommand = Tool::getArrayVal($commandData, 'task_command', '');
+            $taskParams = Tool::getArrayVal($commandData, 'task_params', []);
+            $task = $this->_taskEventContainer->getObj($taskCommand);
+            $task->handle($taskParams);
+        }
+    }
+
     /**
      * 退出工作进程
      * @param \Swoole\Server $server
@@ -457,88 +550,6 @@ abstract class BaseServer
      * @param int $exitCode 退出状态码
      */
     abstract public function onWorkerError(Server $server, $workId, $workPid, $exitCode);
-    /**
-     * 处理任务
-     * @param \Swoole\Server $server
-     * @param int $taskId
-     * @param int $fromId
-     * @param string $data
-     * @return string
-     */
-    abstract public function onTask(Server $server, int $taskId, int $fromId, string $data);
-
-    protected function addTaskBase(Server $server)
-    {
-        if (SY_SERVER_TYPE == SyInner::SERVER_TYPE_API_MODULE) {
-            $this->_syPack->setCommandAndData(SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ, [
-                'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_WX_CACHE,
-                'task_params' => [],
-            ]);
-            $taskDataWx = $this->_syPack->packData();
-            $this->_syPack->init();
-        } else {
-            $this->_syPack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
-                'task_module' => SY_MODULE,
-                'task_command' => Project::TASK_TYPE_CLEAR_LOCAL_WX_CACHE,
-                'task_params' => [],
-            ]);
-            $taskDataWx = $this->_syPack->packData();
-            $this->_syPack->init();
-        }
-
-        $server->tick(Project::TIME_TASK_CLEAR_LOCAL_WX, function () use ($server, $taskDataWx) {
-            $server->task($taskDataWx);
-        });
-        $this->addTaskBaseTrait($server);
-    }
-
-    /**
-     * @param \Swoole\Server $server
-     * @param int $taskId
-     * @param int $fromId
-     * @param string $data
-     * @return array|string
-     */
-    protected function handleTaskBase(Server $server, int $taskId, int $fromId, string $data)
-    {
-        if (!$this->_syPack->unpackData($data)) {
-            return '数据格式不合法';
-        }
-
-        RedisSingleton::getInstance()->reConnect();
-        if (SY_MEMCACHE) {
-            MemCacheSingleton::getInstance()->reConnect();
-        }
-        if (SY_DATABASE) {
-            MysqlSingleton::getInstance()->reConnect();
-        }
-
-        $command = $this->_syPack->getCommand();
-        $commandData = $this->_syPack->getData();
-        $this->_syPack->init();
-
-        if (in_array($command, [SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ], true)) {
-            $taskCommand = Tool::getArrayVal($commandData, 'task_command', '');
-            switch ($taskCommand) {
-                case Project::TASK_TYPE_CLEAR_LOCAL_WX_CACHE:
-                    $this->clearWxCache();
-                    break;
-                default:
-                    $taskData = [
-                        'command' => $command,
-                        'params' => $commandData,
-                    ];
-                    $traitRes = $this->handleTaskBaseTrait($server, $taskId, $fromId, $taskData);
-                    if (strlen($traitRes) == 0) {
-                        return $taskData;
-                    } else {
-                        return $traitRes;
-                    }
-            }
-        }
-
-        return '';
-    }
 
     /**
      * 检查请求限流

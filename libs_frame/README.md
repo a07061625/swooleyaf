@@ -32,6 +32,7 @@
 - SyCredit: 积分相关
 - SyCurrency: 货币处理
 - SyError: 框架错误处理
+- SyEventTask: 框架定时任务事件
 - SyException: 框架自定义异常
 - SyFrame: 框架架构相关
 - SyIM: 实时通讯相关
