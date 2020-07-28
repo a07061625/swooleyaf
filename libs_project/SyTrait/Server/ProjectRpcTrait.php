@@ -12,17 +12,11 @@ use Yaf\Request\Http;
 
 trait ProjectRpcTrait
 {
-    private function checkServerRpcTrait()
-    {
-    }
-
-    private function initTableRpcTrait()
-    {
-    }
-
     /**
      * 处理应用Rpc请求
+     *
      * @param array $params
+     *
      * @return string
      */
     protected function handleAppReqRpc(array $params) : string
@@ -32,6 +26,13 @@ trait ProjectRpcTrait
         unset($httpObj);
 
         return $result;
+    }
+    private function checkServerRpcTrait()
+    {
+    }
+
+    private function initTableRpcTrait()
+    {
     }
 
     private function handleReqExceptionByProject(\Throwable $e): Result

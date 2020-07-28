@@ -7,6 +7,11 @@
  */
 namespace SyServer;
 
+use DesignPatterns\Factories\CacheSimpleFactory;
+use DesignPatterns\Singletons\MemCacheSingleton;
+use DesignPatterns\Singletons\MysqlSingleton;
+use DesignPatterns\Singletons\RedisSingleton;
+use Response\Result;
 use Swoole\Coroutine;
 use Swoole\Process;
 use Swoole\Runtime;
@@ -15,21 +20,16 @@ use Swoole\Timer;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyConstant\SyInner;
-use DesignPatterns\Factories\CacheSimpleFactory;
-use DesignPatterns\Singletons\MemCacheSingleton;
-use DesignPatterns\Singletons\MysqlSingleton;
-use DesignPatterns\Singletons\RedisSingleton;
 use SyEventTask\TaskContainer;
 use SyException\Swoole\ServerException;
 use SyException\Validator\ValidatorException;
 use SyLog\Log;
-use Response\Result;
 use SyServerRegister\Nginx\Http;
-use SyTrait\Server\FrameBaseTrait;
-use SyTrait\Server\ProjectBaseTrait;
 use SyTool\Dir;
 use SyTool\SyPack;
 use SyTool\Tool;
+use SyTrait\Server\FrameBaseTrait;
+use SyTrait\Server\ProjectBaseTrait;
 
 abstract class BaseServer
 {
@@ -38,70 +38,82 @@ abstract class BaseServer
 
     /**
      * 请求服务对象
+     *
      * @var \Swoole\WebSocket\Server|\Swoole\Server
      */
-    protected $_server = null;
+    protected $_server;
     /**
      * 请求域名
+     *
      * @var string
      */
     protected $_host = '';
     /**
      * 请求端口
+     *
      * @var int
      */
     protected $_port = 0;
     /**
      * task进程数量
+     *
      * @var int
      */
     protected $_taskNum = 0;
     /**
      * 最大task进程ID号
+     *
      * @var int
      */
     protected $_taskMaxId = -1;
     /**
      * pid文件
+     *
      * @var string
      */
     protected $_pidFile = '';
     /**
      * 配置数组
+     *
      * @var array
      */
     protected $_configs = [];
     /**
      * @var \SyTool\SyPack
      */
-    protected $_syPack = null;
+    protected $_syPack;
     /**
      * 提示文件
+     *
      * @var string
      */
     protected $_tipFile = '';
     /**
      * @var \SyEventTask\TaskContainer
      */
-    protected $_taskEventContainer = null;
+    protected $_taskEventContainer;
     /**
      * 请求开始毫秒级时间戳
+     *
      * @var float
      */
     protected static $_reqStartTime = 0.0;
     /**
      * 服务token码,用于标识不同的服务,每个服务的token不一样
+     *
      * @var string
      */
     protected static $_serverToken = '';
     /**
      * 唯一码,作为服务端的唯一标识
+     *
      * @var string
      */
     protected static $_uniqueToken = '';
 
     /**
      * BaseServer constructor.
+     *
      * @param int $port 端口
      */
     public function __construct(int $port)
@@ -113,7 +125,7 @@ abstract class BaseServer
         $this->_configs = Tool::getConfig('syserver.' . SY_ENV . SY_MODULE);
 
         define('SY_SERVER_IP', $this->_configs['server']['host']);
-        define('SY_REQUEST_MAX_HANDLING', (int) $this->_configs['server']['request']['maxnum']['handling']);
+        define('SY_REQUEST_MAX_HANDLING', (int)$this->_configs['server']['request']['maxnum']['handling']);
 
         //获取当前操作系统的用户
         if (is_string($this->_configs['swoole']['user']) && (strlen($this->_configs['swoole']['user']) > 0)) {
@@ -145,9 +157,9 @@ abstract class BaseServer
         $this->_configs['swoole']['buffer_output_size'] = Project::SIZE_CLIENT_BUFFER_OUTPUT;
         //设置线程数量
         $execRes = Tool::execSystemCommand('cat /proc/cpuinfo | grep "processor" | wc -l');
-        $this->_configs['swoole']['reactor_num'] = (int) (2 * $execRes['data'][0]);
+        $this->_configs['swoole']['reactor_num'] = (int)(2 * $execRes['data'][0]);
 
-        $taskNum = isset($this->_configs['swoole']['task_worker_num']) ? (int) $this->_configs['swoole']['task_worker_num'] : 0;
+        $taskNum = isset($this->_configs['swoole']['task_worker_num']) ? (int)$this->_configs['swoole']['task_worker_num'] : 0;
         if ($taskNum < 2) {
             exit('Task进程的数量必须大于等于2' . PHP_EOL);
         }
@@ -209,11 +221,13 @@ abstract class BaseServer
         }
         $reqId = hash('md4', Tool::getNowTime() . Tool::createNonceStr(8));
         $_SERVER['SYREQ_ID'] = $reqId;
+
         return $reqId;
     }
 
     /**
      * 获取唯一数值
+     *
      * @return array
      */
     public static function getUniqueNum(): array
@@ -247,7 +261,7 @@ abstract class BaseServer
     public function stop()
     {
         if (is_file($this->_pidFile) && is_readable($this->_pidFile)) {
-            $pid = (int) file_get_contents($this->_pidFile);
+            $pid = (int)file_get_contents($this->_pidFile);
         } else {
             $pid = 0;
         }
@@ -356,7 +370,9 @@ abstract class BaseServer
 
     /**
      * 启动主进程服务
+     *
      * @param \Swoole\Server $server
+     *
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Swoole\ServerException
      */
@@ -410,8 +426,9 @@ abstract class BaseServer
 
     /**
      * 启动工作进程
+     *
      * @param \Swoole\Server $server
-     * @param int $workerId 进程编号
+     * @param int            $workerId 进程编号
      */
     public function onWorkerStart(Server $server, $workerId)
     {
@@ -452,6 +469,7 @@ abstract class BaseServer
 
     /**
      * 启动管理进程
+     *
      * @param \Swoole\Server $server
      */
     public function onManagerStart(Server $server)
@@ -461,6 +479,7 @@ abstract class BaseServer
 
     /**
      * 关闭服务
+     *
      * @param \Swoole\Server $server
      */
     public function onShutdown(Server $server)
@@ -469,9 +488,10 @@ abstract class BaseServer
 
     /**
      * 任务完成
+     *
      * @param \Swoole\Server $server
-     * @param int $taskId
-     * @param string $data
+     * @param int            $taskId
+     * @param string         $data
      */
     public function onFinish(Server $server, $taskId, string $data)
     {
@@ -479,8 +499,9 @@ abstract class BaseServer
 
     /**
      * 工作进程退出
+     *
      * @param \Swoole\Server $server
-     * @param int $workerId 工作进程ID
+     * @param int            $workerId 工作进程ID
      */
     public function onWorkerExit(Server $server, int $workerId)
     {
@@ -498,17 +519,19 @@ abstract class BaseServer
 
     /**
      * 处理任务
+     *
      * @param \Swoole\Server $server
-     * @param int $taskId
-     * @param int $fromId
-     * @param string $data
-     * @return void
+     * @param int            $taskId
+     * @param int            $fromId
+     * @param string         $data
+     *
      * @throws \SyException\Mysql\MysqlException
      */
     public function onTask(Server $server, int $taskId, int $fromId, string $data)
     {
         if (!$this->_syPack->unpackData($data)) {
             Log::warn('定时任务数据格式不合法,源数据为: ' . $data);
+
             return;
         }
 
@@ -537,22 +560,26 @@ abstract class BaseServer
 
     /**
      * 退出工作进程
+     *
      * @param \Swoole\Server $server
-     * @param int $workerId
+     * @param int            $workerId
+     *
      * @return mixed
      */
     abstract public function onWorkerStop(Server $server, int $workerId);
     /**
      * 工作进程错误处理
+     *
      * @param \Swoole\Server $server
-     * @param int $workId 进程编号
-     * @param int $workPid 进程ID
-     * @param int $exitCode 退出状态码
+     * @param int            $workId   进程编号
+     * @param int            $workPid  进程ID
+     * @param int            $exitCode 退出状态码
      */
     abstract public function onWorkerError(Server $server, $workId, $workPid, $exitCode);
 
     /**
      * 检查请求限流
+     *
      * @throws \SyException\Swoole\ServerException
      */
     protected static function checkRequestCurrentLimit()
@@ -565,13 +592,14 @@ abstract class BaseServer
 
     /**
      * 记录耗时长的请求
-     * @param string $uri 请求uri
-     * @param string|array $data 请求数据
-     * @param int $limitTime 限制时间,单位为毫秒
+     *
+     * @param string       $uri       请求uri
+     * @param string|array $data      请求数据
+     * @param int          $limitTime 限制时间,单位为毫秒
      */
     protected function reportLongTimeReq(string $uri, $data, int $limitTime)
     {
-        $handleTime = (int) ((microtime(true) - self::$_reqStartTime) * 1000);
+        $handleTime = (int)((microtime(true) - self::$_reqStartTime) * 1000);
         self::$_reqStartTime = 0;
         if ($handleTime > $limitTime) { //执行时间超过限制的请求记录到日志便于分析具体情况
             $content = 'handle req use time ' . $handleTime . ' ms,uri:' . $uri . ',data:';
@@ -587,7 +615,9 @@ abstract class BaseServer
 
     /**
      * 检测请求URI
+     *
      * @param string $uri
+     *
      * @return array
      */
     protected function checkRequestUri(string $uri): array
@@ -613,9 +643,11 @@ abstract class BaseServer
 
     /**
      * 获取预处理函数
+     *
      * @param string $uri
-     * @param array $frameMap
-     * @param array $projectMap
+     * @param array  $frameMap
+     * @param array  $projectMap
+     *
      * @return bool|string
      */
     protected function getPreProcessFunction(string $uri, array $frameMap, array $projectMap)
@@ -641,6 +673,7 @@ abstract class BaseServer
 
     /**
      * 基础启动服务
+     *
      * @param array $registerMap
      */
     protected function baseStart(array $registerMap)
@@ -674,7 +707,7 @@ abstract class BaseServer
         Dir::create($config['dir']['store']['cache']);
 
         //为了防止定时任务出现重启服务的时候,导致重启期间(1-3s内)的定时任务无法处理,将定时器时间初始化为当前时间戳之前6秒
-        $timerAdvanceTime = (int) Tool::getArrayVal($config, 'timer.time.advance', 6, true);
+        $timerAdvanceTime = (int)Tool::getArrayVal($config, 'timer.time.advance', 6, true);
         $initTimerTime = time() - $timerAdvanceTime;
         self::$_syServer->set(self::$_serverToken, [
             'memory_usage' => memory_get_usage(),
@@ -691,7 +724,7 @@ abstract class BaseServer
         ]);
 
         //设置唯一ID自增基数
-        $num = (int) CacheSimpleFactory::getRedisInstance()->incr(Project::DATA_KEY_CACHE_UNIQUE_ID);
+        $num = (int)CacheSimpleFactory::getRedisInstance()->incr(Project::DATA_KEY_CACHE_UNIQUE_ID);
         if ($num < 100000000) {
             $randomNum = random_int(100000000, 150000000);
             if (!CacheSimpleFactory::getRedisInstance()->set(Project::DATA_KEY_CACHE_UNIQUE_ID, $randomNum)) {
@@ -738,12 +771,33 @@ abstract class BaseServer
 
         $error = new Result();
         if (is_numeric($e->getCode())) {
-            $error->setCodeMsg((int) $e->getCode(), $e->getMessage());
+            $error->setCodeMsg((int)$e->getCode(), $e->getMessage());
         } else {
             $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务出错');
         }
 
         return $error;
+    }
+
+    /**
+     * 设置服务端类型
+     *
+     * @param array $allowTypes
+     */
+    protected function setServerType(array $allowTypes)
+    {
+        $projectLength = strlen(SY_PROJECT);
+        $serverType = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.modules.' . substr(SY_MODULE, $projectLength) . '.type');
+        if (!in_array($serverType, $allowTypes, true)) {
+            exit('服务端类型不支持' . PHP_EOL);
+        }
+        define('SY_SERVER_TYPE', $serverType);
+
+        if ($serverType == SyInner::SERVER_TYPE_FRONT_GATE) {
+            $this->_configs['server']['cachenum']['wx'] = 1;
+        } else {
+            $this->_configs['server']['cachenum']['wx'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.wx', 0, true);
+        }
     }
 
     private function checkSystemEnv()
@@ -828,32 +882,13 @@ abstract class BaseServer
             $macAddress = trim($eMac);
             if (strlen($macAddress) == 17) {
                 self::$_uniqueToken = hash('crc32b', $macAddress . ':' . $this->_port);
+
                 break;
             }
         }
 
         if (strlen(self::$_uniqueToken) == 0) {
             exit('生成唯一码失败' . PHP_EOL);
-        }
-    }
-
-    /**
-     * 设置服务端类型
-     * @param array $allowTypes
-     */
-    protected function setServerType(array $allowTypes)
-    {
-        $projectLength = strlen(SY_PROJECT);
-        $serverType = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.modules.' . substr(SY_MODULE, $projectLength) . '.type');
-        if (!in_array($serverType, $allowTypes, true)) {
-            exit('服务端类型不支持' . PHP_EOL);
-        }
-        define('SY_SERVER_TYPE', $serverType);
-
-        if ($serverType == SyInner::SERVER_TYPE_FRONT_GATE) {
-            $this->_configs['server']['cachenum']['wx'] = 1;
-        } else {
-            $this->_configs['server']['cachenum']['wx'] = (int) Tool::getArrayVal($this->_configs, 'server.cachenum.wx', 0, true);
         }
     }
 }

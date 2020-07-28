@@ -7,19 +7,19 @@
  */
 namespace SyServer;
 
+use Response\Result;
 use Swoole\Server;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyConstant\SyInner;
 use SyLog\Log;
-use Response\Result;
+use SyTool\SessionTool;
+use SyTool\SyPack;
+use SyTool\Tool;
 use SyTrait\Server\FramePreProcessRpcTrait;
 use SyTrait\Server\FrameRpcTrait;
 use SyTrait\Server\ProjectPreProcessRpcTrait;
 use SyTrait\Server\ProjectRpcTrait;
-use SyTool\SessionTool;
-use SyTool\SyPack;
-use SyTool\Tool;
 use Yaf\Registry;
 
 class RpcServer extends BaseServer
@@ -32,7 +32,7 @@ class RpcServer extends BaseServer
     /**
      * @var \SyTool\SyPack
      */
-    private $_receivePack = null;
+    private $_receivePack;
 
     public function __construct(int $port)
     {
@@ -41,8 +41,8 @@ class RpcServer extends BaseServer
             SyInner::SERVER_TYPE_API_MODULE,
         ]);
         $this->_configs['server']['cachenum']['hc'] = 1;
-        $this->_configs['server']['cachenum']['modules'] = (int) Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
-        $this->_configs['server']['cachenum']['local'] = (int) Tool::getArrayVal($this->_configs, 'server.cachenum.local', 0, true);
+        $this->_configs['server']['cachenum']['modules'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
+        $this->_configs['server']['cachenum']['local'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.local', 0, true);
         $this->checkServerRpc();
         $this->_configs['swoole']['package_length_type'] = 'L';
         $this->_configs['swoole']['package_length_offset'] = 4;
@@ -85,10 +85,11 @@ class RpcServer extends BaseServer
 
     /**
      * 处理请求
+     *
      * @param \Swoole\Server $server
-     * @param int $fd TCP客户端连接的唯一标识符
-     * @param int $reactor_id Reactor线程ID
-     * @param string $data 收到的数据内容
+     * @param int            $fd         TCP客户端连接的唯一标识符
+     * @param int            $reactor_id Reactor线程ID
+     * @param string         $data       收到的数据内容
      */
     public function onReceive(Server $server, int $fd, int $reactor_id, string $data)
     {
@@ -108,6 +109,7 @@ class RpcServer extends BaseServer
 
     /**
      * 初始化请求数据
+     *
      * @param array $data
      */
     private function initRequest(array $data)
@@ -118,8 +120,8 @@ class RpcServer extends BaseServer
         $_FILES = [];
         $_SESSION = [];
         $_SERVER['SYREQ_ID'] = $data['__req_id'] ?? hash('md4', Tool::getNowTime() . Tool::createNonceStr(8));
-        unset($_POST[Project::DATA_KEY_SIGN_PARAMS]);
-        unset($_POST['__req_id']);
+        unset($_POST[Project::DATA_KEY_SIGN_PARAMS], $_POST['__req_id']);
+        
 
         Registry::del(SyInner::REGISTRY_NAME_SERVICE_ERROR);
 
@@ -164,6 +166,7 @@ class RpcServer extends BaseServer
 
         $error = null;
         $result = '';
+
         try {
             self::checkRequestCurrentLimit();
             $funcName = $this->getPreProcessFunction($data['api_uri'], $this->preProcessMapFrame, $this->preProcessMapProject);
@@ -214,6 +217,7 @@ class RpcServer extends BaseServer
             $error->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '请求数据格式错误');
             $result = $error->getJson();
             unset($error);
+
             return $result;
         }
 
@@ -222,9 +226,11 @@ class RpcServer extends BaseServer
         switch ($command) {
             case SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_API_REQ:
                 $result = $this->handleApiReceive($commandData);
+
                 break;
             case SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ:
                 $result = $this->handleTaskReceive($server, $data);
+
                 break;
             default:
                 $error = new Result();

@@ -12,6 +12,7 @@ use SyConstant\Project;
 
 /**
  * 项目HTTP服务预处理性状类
+ *
  * @package SyTrait\Server
  */
 trait ProjectPreProcessHttpTrait
