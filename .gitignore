@@ -2,6 +2,7 @@
 tipfile/*.txt
 pidfile/*.pid
 .php_cs.cache
+php_cs_fixer.txt
 config_pools.php
 config_projects.php
 helper_load.php
