@@ -13,6 +13,7 @@ use SyEventTask\TaskBase;
 
 /**
  * Class Demo
+ *
  * @package SyEventTask\Project
  */
 class Demo extends TaskBase
@@ -34,6 +35,7 @@ class Demo extends TaskBase
 
     /**
      * 设置定时任务参数
+     *
      * @return array
      */
     public function getData() : array
@@ -43,6 +45,7 @@ class Demo extends TaskBase
 
     /**
      * 执行定时任务,参数数据和上面的方法保持相同
+     *
      * @param array $data
      */
     public function handle(array $data)

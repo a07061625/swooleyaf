@@ -14,7 +14,7 @@ trait ProjectBaseTrait
     /**
      * @var \Yaf\Application
      */
-    protected $_app = null;
+    protected $_app;
 
     /**
      * 初始化应用实例
