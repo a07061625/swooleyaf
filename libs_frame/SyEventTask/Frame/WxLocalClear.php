@@ -12,6 +12,7 @@ use SyServer\BaseServer;
 
 /**
  * Class WxLocalClear
+ *
  * @package SyEventTask\Frame
  */
 class WxLocalClear extends TaskBase

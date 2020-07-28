@@ -7,37 +7,14 @@
  */
 namespace SyTrait\Server;
 
+use Response\Result;
 use Swoole\Http\Request;
 use SyConstant\Project;
-use Response\Result;
 use SyTool\Tool;
 use Yaf\Request\Http;
 
 trait ProjectHttpTrait
 {
-    private function checkServerHttpTrait()
-    {
-    }
-
-    private function initTableHttpTrait()
-    {
-    }
-
-    /**
-     * 处理应用Http请求
-     * @param array $params
-     * @param \Swoole\Http\Request $request
-     * @return string
-     */
-    protected function handleAppReqHttp(array $params, Request $request) : string
-    {
-        $httpObj = new Http($params['api_uri']);
-        $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
-        unset($httpObj);
-
-        return $result;
-    }
-
     /**
      * 刷新服务令牌到期时间
      */
@@ -53,6 +30,30 @@ trait ProjectHttpTrait
         self::$_syServer->set(self::$_serverToken, [
             'token_etime' => $expireTime,
         ]);
+    }
+
+    /**
+     * 处理应用Http请求
+     *
+     * @param array                $params
+     * @param \Swoole\Http\Request $request
+     *
+     * @return string
+     */
+    protected function handleAppReqHttp(array $params, Request $request) : string
+    {
+        $httpObj = new Http($params['api_uri']);
+        $result = $this->_app->bootstrap()->getDispatcher()->dispatch($httpObj)->getBody();
+        unset($httpObj);
+
+        return $result;
+    }
+    private function checkServerHttpTrait()
+    {
+    }
+
+    private function initTableHttpTrait()
+    {
     }
 
     private function handleReqExceptionByProject(\Throwable $e): Result

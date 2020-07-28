@@ -15,82 +15,99 @@ trait FrameBaseTrait
 {
     /**
      * 服务配置信息表
+     *
      * @var \Swoole\Table
      */
     protected static $_syServer = null;
     /**
      * 注册的服务信息表
+     *
      * @var \Swoole\Table
      */
     protected static $_syServices = null;
     /**
      * 健康检查列表
+     *
      * @var \Swoole\Table
      */
     protected static $_syHealths = null;
     /**
      * 项目缓存列表
+     *
      * @var \Swoole\Table
      */
     protected static $_syProject = null;
     /**
      * 项目微信缓存列表
+     *
      * @var \Swoole\Table
      */
     protected static $_syWx = null;
     /**
      * 最大项目缓存数量
+     *
      * @var int
      */
     private static $_syProjectMaxNum = 0;
     /**
      * 当前项目缓存数量
+     *
      * @var int
      */
     private static $_syProjectNowNum = 0;
     /**
      * 最大微信缓存数量
+     *
      * @var int
      */
     private static $_syWxMaxNum = 0;
     /**
      * 当前微信缓存数量
+     *
      * @var int
      */
     private static $_syWxNowNum = 0;
 
     /**
      * 获取服务配置信息
-     * @param string $field 配置字段名称
-     * @param null $default
+     *
+     * @param string $field   配置字段名称
+     * @param null   $default
+     *
      * @return mixed
      */
     public static function getServerConfig(string $field = null, $default = null)
     {
         if (is_null($field)) {
             $data = self::$_syServer->get(self::$_serverToken);
+
             return $data === false ? [] : $data;
-        } else {
-            $data = self::$_syServer->get(self::$_serverToken, $field);
-            return $data === false ? $default : $data;
         }
+        $data = self::$_syServer->get(self::$_serverToken, $field);
+
+        return $data === false ? $default : $data;
     }
 
     /**
      * 通过模块名称获取注册的服务信息
+     *
      * @param string $moduleName
+     *
      * @return array
      */
     public static function getServiceInfo(string $moduleName)
     {
         $serviceInfo = self::$_syServices->get($moduleName);
+
         return $serviceInfo === false ? [] : $serviceInfo;
     }
 
     /**
      * 设置项目缓存
-     * @param string $key 键名
-     * @param array $data 键值
+     *
+     * @param string $key  键名
+     * @param array  $data 键值
+     *
      * @return bool
      */
     public static function setProjectCache(string $key, array $data) : bool
@@ -102,22 +119,26 @@ trait FrameBaseTrait
         } elseif (self::$_syProject->exist($key)) {
             $data['tag'] = $key;
             self::$_syProject->set($key, $data);
+
             return true;
         } elseif (self::$_syProjectNowNum < self::$_syProjectMaxNum) {
             $data['tag'] = $key;
             self::$_syProject->set($key, $data);
             self::$_syProjectNowNum++;
+
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**
      * 获取项目缓存
-     * @param string $key 键名
-     * @param string $field 字段名
-     * @param mixed $default 默认值
+     *
+     * @param string $key     键名
+     * @param string $field   字段名
+     * @param mixed  $default 默认值
+     *
      * @return mixed
      */
     public static function getProjectCache(string $key, string $field = '', $default = null)
@@ -127,14 +148,16 @@ trait FrameBaseTrait
             return $default;
         } elseif ($field === '') {
             return $data;
-        } else {
-            return $data[$field] ?? $default;
         }
+
+        return $data[$field] ?? $default;
     }
 
     /**
      * 删除项目缓存
+     *
      * @param string $key
+     *
      * @return mixed
      */
     public static function delProjectCache(string $key)
@@ -143,13 +166,16 @@ trait FrameBaseTrait
         if ($delRes) {
             self::$_syProjectNowNum--;
         }
+
         return $delRes;
     }
 
     /**
      * 设置项目微信缓存
+     *
      * @param string $appTag 微信账号标识
-     * @param array $data 键值
+     * @param array  $data   键值
+     *
      * @return bool
      */
     public static function setWxCache(string $appTag, array $data) : bool
@@ -159,22 +185,26 @@ trait FrameBaseTrait
         } elseif (self::$_syWx->exist($appTag)) {
             $data['app_tag'] = $appTag;
             self::$_syWx->set($appTag, $data);
+
             return true;
         } elseif (self::$_syWxNowNum < self::$_syWxMaxNum) {
             $data['app_tag'] = $appTag;
             self::$_syWx->set($appTag, $data);
             self::$_syWxNowNum++;
-            return true;
-        } else {
+
             return true;
         }
+
+        return true;
     }
 
     /**
      * 获取项目微信缓存
-     * @param string $appTag 微信账号标识
-     * @param string $field 字段名
-     * @param mixed $default 默认值
+     *
+     * @param string $appTag  微信账号标识
+     * @param string $field   字段名
+     * @param mixed  $default 默认值
+     *
      * @return mixed
      */
     public static function getWxCache(string $appTag, string $field = '', $default = null)
@@ -184,14 +214,16 @@ trait FrameBaseTrait
             return $default;
         } elseif ($field === '') {
             return $data;
-        } else {
-            return $data[$field] ?? $default;
         }
+
+        return $data[$field] ?? $default;
     }
 
     /**
      * 删除项目微信缓存
+     *
      * @param string $appTag
+     *
      * @return mixed
      */
     public static function delWxCache(string $appTag)
@@ -200,7 +232,26 @@ trait FrameBaseTrait
         if ($delRes) {
             self::$_syWxNowNum--;
         }
+
         return $delRes;
+    }
+
+    /**
+     * 清理项目微信缓存
+     */
+    public static function clearWxCache()
+    {
+        $nowTime = Tool::getNowTime();
+        $delKeys = [];
+        foreach (self::$_syWx as $eToken) {
+            if ($eToken['clear_time'] < $nowTime) {
+                $delKeys[] = $eToken['app_tag'];
+            }
+        }
+        foreach ($delKeys as $eKey) {
+            self::$_syWx->del($eKey);
+        }
+        self::$_syWxNowNum = self::$_syWx->count();
     }
 
     protected function checkServerBase()
@@ -238,24 +289,6 @@ trait FrameBaseTrait
         RedisSingleton::getInstance()->checkConn();
 
         $this->checkServerBaseTrait();
-    }
-
-    /**
-     * 清理项目微信缓存
-     */
-    public static function clearWxCache()
-    {
-        $nowTime = Tool::getNowTime();
-        $delKeys = [];
-        foreach (self::$_syWx as $eToken) {
-            if ($eToken['clear_time'] < $nowTime) {
-                $delKeys[] = $eToken['app_tag'];
-            }
-        }
-        foreach ($delKeys as $eKey) {
-            self::$_syWx->del($eKey);
-        }
-        self::$_syWxNowNum = self::$_syWx->count();
     }
 
     protected function initTableBase()

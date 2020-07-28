@@ -7,6 +7,8 @@
  */
 namespace SyServer;
 
+use Response\Result;
+use Response\SyResponseHttp;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
 use Swoole\WebSocket\Frame;
@@ -16,16 +18,14 @@ use SyConstant\Project;
 use SyConstant\SyInner;
 use SyException\Swoole\HttpServerException;
 use SyLog\Log;
-use Response\Result;
-use Response\SyResponseHttp;
 use SyModule\ModuleContainer;
+use SyTool\SessionTool;
+use SyTool\SyPack;
+use SyTool\Tool;
 use SyTrait\Server\FrameHttpTrait;
 use SyTrait\Server\FramePreProcessHttpTrait;
 use SyTrait\Server\ProjectHttpTrait;
 use SyTrait\Server\ProjectPreProcessHttpTrait;
-use SyTool\SessionTool;
-use SyTool\SyPack;
-use SyTool\Tool;
 use Yaf\Registry;
 
 class HttpServer extends BaseServer
@@ -40,39 +40,45 @@ class HttpServer extends BaseServer
 
     /**
      * swoole请求cookie域名数组
+     *
      * @var array
      */
     private $_reqCookieDomains = [];
     /**
      * @var \SyTool\SyPack
      */
-    private $_messagePack = null;
+    private $_messagePack;
     /**
      * @var \SyModule\ModuleContainer
      */
-    private $_moduleContainer = null;
+    private $_moduleContainer;
     /**
      * HTTP响应
+     *
      * @var \Swoole\Http\Response
      */
     private static $_response = null;
     /**
      * 响应消息
+     *
      * @var string
      */
     private static $_rspMsg = '';
     /**
      * swoole请求头信息数组
+     *
      * @var array
      */
     private static $_reqHeaders = [];
     /**
      * swoole服务器信息数组
+     *
      * @var array
      */
     private static $_reqServers = [];
     /**
      * swoole task请求数据
+     *
      * @var string
      */
     private static $_reqTask = null;
@@ -85,8 +91,8 @@ class HttpServer extends BaseServer
             SyInner::SERVER_TYPE_FRONT_GATE,
         ]);
         $this->_configs['server']['cachenum']['hc'] = 1;
-        $this->_configs['server']['cachenum']['modules'] = (int) Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
-        $this->_configs['server']['cachenum']['local'] = (int) Tool::getArrayVal($this->_configs, 'server.cachenum.local', 0, true);
+        $this->_configs['server']['cachenum']['modules'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.modules', 0, true);
+        $this->_configs['server']['cachenum']['local'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.local', 0, true);
         $this->checkServerHttp();
         $this->_messagePack = new SyPack();
         $this->_moduleContainer = new ModuleContainer();
@@ -120,7 +126,9 @@ class HttpServer extends BaseServer
 
     /**
      * 生成web socket服务端签名
+     *
      * @param string $socketKey 客户端密钥
+     *
      * @return bool|string
      */
     public static function createSocketAccept(string $socketKey)
@@ -138,9 +146,12 @@ class HttpServer extends BaseServer
 
     /**
      * 校验服务端签名是否正确
-     * @param string $socketKey 客户端密钥
+     *
+     * @param string $socketKey    客户端密钥
      * @param string $socketAccept 服务端签名
+     *
      * @return bool
+     *
      * @throws \SyException\Swoole\HttpServerException
      */
     public static function checkSocketAccept(string $socketKey, string $socketAccept): bool
@@ -152,9 +163,9 @@ class HttpServer extends BaseServer
         $nowAccept = self::createSocketAccept($socketKey);
         if ($nowAccept === false) {
             return false;
-        } else {
-            return $nowAccept === $socketAccept;
         }
+
+        return $nowAccept === $socketAccept;
     }
 
     public function onWorkerStop(\Swoole\Server $server, int $workerId)
@@ -179,8 +190,10 @@ class HttpServer extends BaseServer
 
     /**
      * web socket握手
+     *
      * @param \Swoole\Http\Request  $request
      * @param \Swoole\Http\Response $response
+     *
      * @return bool
      */
     public function onHandshake(Request $request, Response $response)
@@ -188,6 +201,7 @@ class HttpServer extends BaseServer
         $socketAccept = self::createSocketAccept(Tool::getArrayVal($request->header, 'sec-websocket-key', null));
         if ($socketAccept === false) {
             $response->end();
+
             return false;
         }
 
@@ -219,8 +233,9 @@ class HttpServer extends BaseServer
      *     d:保留字段，值固定为0000
      *     e:消息内容，json格式
      * </pre>
+     *
      * @param \Swoole\WebSocket\Server $server
-     * @param \Swoole\WebSocket\Frame $frame
+     * @param \Swoole\WebSocket\Frame  $frame
      */
     public function onMessage(Server $server, Frame $frame)
     {
@@ -228,6 +243,7 @@ class HttpServer extends BaseServer
         if ($frame->opcode != WEBSOCKET_OPCODE_BINARY) {
             $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '只接受二进制数据');
             $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
+
             return;
         } elseif (!$frame->finish) { //数据未发送完
             return;
@@ -240,12 +256,14 @@ class HttpServer extends BaseServer
         if ($message === false) {
             $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '消息格式不正确');
             $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
+
             return;
         }
 
         switch ($command) {
             case SyPack::COMMAND_TYPE_SOCKET_CLIENT_CLOSE:
                 $server->close($frame->fd);
+
                 break;
             case SyPack::COMMAND_TYPE_SOCKET_CLIENT_CHECK_STATUS:
                 $result->setData([
@@ -253,6 +271,7 @@ class HttpServer extends BaseServer
                     'detail' => $server->exist($frame->fd) ? $server->connection_info($frame->fd, null, true) : [],
                 ]);
                 $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
+
                 break;
             case SyPack::COMMAND_TYPE_SOCKET_CLIENT_GET_SERVER:
                 $result->setData([
@@ -262,6 +281,7 @@ class HttpServer extends BaseServer
                     'yaf_version' => \YAF\VERSION,
                 ]);
                 $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
+
                 break;
             case SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_API_REQ:
                 $module = $this->_moduleContainer->getObj($commandData['api_module']);
@@ -292,6 +312,7 @@ class HttpServer extends BaseServer
                         $server->push($frame->fd, $result, WEBSOCKET_OPCODE_TEXT, true);
                     }
                 }
+
                 break;
             case SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ:
                 $module = $this->_moduleContainer->getObj($commandData['task_module']);
@@ -316,17 +337,20 @@ class HttpServer extends BaseServer
                 } finally {
                     $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
                 }
+
                 break;
             default:
                 $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '命令不存在');
                 $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
+
                 break;
         }
     }
 
     /**
      * 处理请求
-     * @param \Swoole\Http\Request $request
+     *
+     * @param \Swoole\Http\Request  $request
      * @param \Swoole\Http\Response $response
      */
     public function onRequest(Request $request, Response $response)
@@ -372,8 +396,9 @@ class HttpServer extends BaseServer
 
     /**
      * 设置响应头信息
+     *
      * @param \Swoole\Http\Response $response
-     * @param array|bool $headers
+     * @param array|bool            $headers
      */
     private function setRspHeaders(Response $response, $headers)
     {
@@ -399,8 +424,9 @@ class HttpServer extends BaseServer
 
     /**
      * 设置响应cookie信息
+     *
      * @param \Swoole\Http\Response $response
-     * @param array|bool $cookies
+     * @param array|bool            $cookies
      */
     private function setRspCookies(Response $response, $cookies)
     {
@@ -419,7 +445,9 @@ class HttpServer extends BaseServer
 
     /**
      * 初始化公共数据
+     *
      * @param \Swoole\Http\Request $request
+     *
      * @return string
      */
     private function initReceive(Request $request)
@@ -441,13 +469,15 @@ class HttpServer extends BaseServer
             if (!is_array($_POST)) {
                 $res = new Result();
                 $res->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, 'JSON格式不正确');
+
                 return $res->getJson();
             }
         }
-        $tokenExpireTime = (int) self::$_syServer->get(self::$_serverToken, 'token_etime');
+        $tokenExpireTime = (int)self::$_syServer->get(self::$_serverToken, 'token_etime');
         if ($tokenExpireTime <= time()) {
             $res = new Result();
             $res->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '令牌已过期');
+
             return $res->getJson();
         }
 
@@ -530,7 +560,9 @@ class HttpServer extends BaseServer
 
     /**
      * 处理请求头
+     *
      * @param array $headers 响应头配置
+     *
      * @return int
      */
     private function handleReqHeader(array &$headers): int
@@ -541,13 +573,16 @@ class HttpServer extends BaseServer
             return self::RESPONSE_RESULT_TYPE_FORBIDDEN;
         }
         $_SERVER[Project::DATA_KEY_DOMAIN_COOKIE_SERVER] = $cookieDomain;
+
         return self::RESPONSE_RESULT_TYPE_ACCEPT;
     }
 
     /**
      * 处理请求业务
+     *
      * @param \Swoole\Http\Request $request
-     * @param array $initRspHeaders 初始化响应头
+     * @param array                $initRspHeaders 初始化响应头
+     *
      * @return string
      */
     private function handleReqService(Request $request, array $initRspHeaders): string
@@ -566,6 +601,7 @@ class HttpServer extends BaseServer
             $error->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '预处理函数命名不合法');
             $result = $error->getJson();
             unset($error);
+
             return $result;
         } elseif (strlen($funcName) > 0) {
             return $this->$funcName($request);
@@ -575,6 +611,7 @@ class HttpServer extends BaseServer
 
         $error = null;
         $result = '';
+
         try {
             self::checkRequestCurrentLimit();
             $result = $this->handleAppReqHttp([

@@ -13,6 +13,7 @@ use SyServer\HttpServer;
 
 /**
  * Class TokenRefresh
+ *
  * @package SyEventTask\Frame
  */
 class TokenRefresh extends TaskBase
