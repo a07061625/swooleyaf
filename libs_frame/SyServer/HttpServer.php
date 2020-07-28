@@ -157,25 +157,6 @@ class HttpServer extends BaseServer
         }
     }
 
-    public function onStart(\Swoole\Server $server)
-    {
-        $this->basicStart($server);
-        $this->addTaskBase($server);
-
-        $this->_messagePack->setCommandAndData(SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ, [
-            'task_module' => SY_MODULE,
-            'task_command' => Project::TASK_TYPE_REFRESH_TOKEN_EXPIRE,
-            'task_params' => [],
-        ]);
-        $taskDataToken = $this->_messagePack->packData();
-        $this->_messagePack->init();
-
-        $server->tick(Project::TIME_TASK_REFRESH_TOKEN_EXPIRE, function () use ($server, $taskDataToken) {
-            $server->task($taskDataToken);
-        });
-        $this->addTaskHttpTrait($server);
-    }
-
     public function onWorkerStop(\Swoole\Server $server, int $workerId)
     {
         $this->basicWorkStop($server, $workerId);
@@ -340,18 +321,6 @@ class HttpServer extends BaseServer
                 $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '命令不存在');
                 $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
                 break;
-        }
-    }
-
-    public function onTask(\Swoole\Server $server, int $taskId, int $fromId, string $data)
-    {
-        $baseRes = $this->handleTaskBase($server, $taskId, $fromId, $data);
-        if (is_array($baseRes)) {
-            $taskCommand = Tool::getArrayVal($baseRes['params'], 'task_command', '');
-            switch ($taskCommand) {
-                default:
-                    $this->handleTaskHttpTrait($server, $taskId, $fromId, $baseRes);
-            }
         }
     }
 

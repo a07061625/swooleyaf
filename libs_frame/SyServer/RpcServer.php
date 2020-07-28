@@ -73,13 +73,6 @@ class RpcServer extends BaseServer
         ]);
     }
 
-    public function onStart(Server $server)
-    {
-        $this->basicStart($server);
-        $this->addTaskBase($server);
-        $this->addTaskRpcTrait($server);
-    }
-
     public function onWorkerStop(Server $server, int $workerId)
     {
         $this->basicWorkStop($server, $workerId);
@@ -88,18 +81,6 @@ class RpcServer extends BaseServer
     public function onWorkerError(Server $server, $workId, $workPid, $exitCode)
     {
         $this->basicWorkError($server, $workId, $workPid, $exitCode);
-    }
-
-    public function onTask(Server $server, int $taskId, int $fromId, string $data)
-    {
-        $baseRes = $this->handleTaskBase($server, $taskId, $fromId, $data);
-        if (is_array($baseRes)) {
-            $taskCommand = Tool::getArrayVal($baseRes['params'], 'task_command', '');
-            switch ($taskCommand) {
-                default:
-                    $this->handleTaskRpcTrait($server, $taskId, $fromId, $baseRes);
-            }
-        }
     }
 
     /**

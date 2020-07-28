@@ -243,7 +243,7 @@ trait FrameBaseTrait
     /**
      * 清理项目微信缓存
      */
-    protected function clearWxCache()
+    public static function clearWxCache()
     {
         $nowTime = Tool::getNowTime();
         $delKeys = [];
