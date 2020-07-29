@@ -14,6 +14,7 @@ use SyLog\Log;
 
 /**
  * Class MessageSend
+ *
  * @package SyEventTask\Project
  */
 class MessageSend extends TaskBase
@@ -38,6 +39,7 @@ class MessageSend extends TaskBase
         $msgNum = 1;
         while ($msgNum <= 200) {
             $msgNum++;
+
             try {
                 $msgData = MessageHandlerSingleton::getInstance()->getMsgData(Project::MESSAGE_QUEUE_TYPE_RABBIT);
                 if (empty($msgData)) {
