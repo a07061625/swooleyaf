@@ -22,7 +22,6 @@ class MessageSend extends TaskBase
     public function __construct()
     {
         parent::__construct();
-        
         $this->intervalTime = 3000;
     }
 
