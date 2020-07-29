@@ -9,6 +9,7 @@ namespace SyEventTask\Project;
 
 use DesignPatterns\Singletons\MessageHandlerSingleton;
 use SyConstant\Project;
+use SyConstant\SyInner;
 use SyEventTask\TaskBase;
 use SyLog\Log;
 
@@ -22,6 +23,7 @@ class MessageSend extends TaskBase
     public function __construct()
     {
         parent::__construct();
+        $this->supportServerTypes[SyInner::SERVER_TYPE_API_GATE] = 1;
         $this->intervalTime = 3000;
     }
 
