@@ -7,11 +7,11 @@
  */
 namespace ProjectCache;
 
+use DesignPatterns\Factories\CacheSimpleFactory;
+use Factories\SyTaskMysqlFactory;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
-use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Common\CheckException;
-use Factories\SyTaskMysqlFactory;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
@@ -27,11 +27,6 @@ class WebHook
     public static function getCacheStatusKey(string $tag)
     {
         return Project::REDIS_PREFIX_CODE_WEBHOOK_STATUS . $tag;
-    }
-
-    private static function getCacheCommandKey(string $tag)
-    {
-        return Project::REDIS_PREFIX_CODE_WEBHOOK_COMMAND . $tag;
     }
 
     public static function getCacheInfoKey(string $tag)
@@ -61,18 +56,20 @@ class WebHook
             if (isset($cacheData[$event])) {
                 $commandData = Tool::jsonDecode($cacheData[$event]);
                 $commandTag = isset($commandData['list'][$msgPrefix]) ? $msgPrefix : $commandData['default'];
+
                 return $commandData['list'][$commandTag] ?? [];
-            } else {
-                return [];
             }
-        } else {
-            throw new CheckException('获取命令列表缓存出错', ErrorCode::COMMON_SERVER_ERROR);
+
+            return [];
         }
+
+        throw new CheckException('获取命令列表缓存出错', ErrorCode::COMMON_SERVER_ERROR);
     }
 
     public static function clearCommandList(string $tag)
     {
         $cacheKey = self::getCacheCommandKey($tag);
+
         return CacheSimpleFactory::getRedisInstance()->del($cacheKey);
     }
 
@@ -97,15 +94,22 @@ class WebHook
 
         if (isset($cacheData['unique_key']) && ($cacheData['unique_key'] == $cacheKey)) {
             unset($cacheData['unique_key']);
+
             return $cacheData;
-        } else {
-            throw new CheckException('获取信息缓存出错', ErrorCode::COMMON_SERVER_ERROR);
         }
+
+        throw new CheckException('获取信息缓存出错', ErrorCode::COMMON_SERVER_ERROR);
     }
 
     public static function clearHookInfo(string $tag)
     {
         $cacheKey = self::getCacheInfoKey($tag);
+
         return CacheSimpleFactory::getRedisInstance()->del($cacheKey);
+    }
+
+    private static function getCacheCommandKey(string $tag)
+    {
+        return Project::REDIS_PREFIX_CODE_WEBHOOK_COMMAND . $tag;
     }
 }

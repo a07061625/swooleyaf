@@ -8,15 +8,17 @@
 namespace SyTrait;
 
 use AliPay\PayConfig;
-use SyConstant\Project;
 use Factories\SyTaskMysqlFactory;
+use SyConstant\Project;
 use SyTool\Tool;
 
 trait AliPayConfigTrait
 {
     /**
      * 更新支付配置
+     *
      * @param string $appId
+     *
      * @return \AliPay\PayConfig
      */
     public function refreshPayConfig(string $appId)

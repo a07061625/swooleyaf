@@ -7,9 +7,9 @@
  */
 namespace Project;
 
-use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use Factories\SyTaskMysqlFactory;
+use SyConstant\Project;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
@@ -89,8 +89,8 @@ class TimerHandler
         $sendRes = Tool::sendCurlReq($curlConfig);
         if ($sendRes['res_no'] == 0) {
             return $sendRes['res_content'];
-        } else {
-            return '{"code":' . $sendRes['res_no'] . ',"msg":"处理url请求失败"}';
         }
+
+        return '{"code":' . $sendRes['res_no'] . ',"msg":"处理url请求失败"}';
     }
 }

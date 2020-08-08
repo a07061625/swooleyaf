@@ -7,11 +7,11 @@
  */
 namespace SyTool;
 
-use SyConstant\ErrorCode;
-use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\WxConfigSingleton;
 use Factories\SyTaskMysqlFactory;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
 use SyException\Wx\WxCorpProviderException;
 use SyException\Wx\WxOpenException;
 use SyTrait\SimpleTrait;
@@ -24,28 +24,12 @@ final class ProjectWxTool
     use SimpleTrait;
 
     /**
-     * 更新微信开放平台授权公众号信息
-     * @param string $appId 授权公众号app id
-     * @param array $data
-     */
-    private static function updateOpenAuthorizerInfo(string $appId, array $data)
-    {
-        $commonConfig = WxConfigSingleton::getInstance()->getOpenCommonConfig();
-        $openAuthorizer = SyTaskMysqlFactory::getWxopenAuthorizerEntity();
-        $ormResult1 = $openAuthorizer->getContainer()->getModel()->getOrmDbTable();
-        $ormResult1->where('`component_appid`=? AND `authorizer_appid`=?', [$commonConfig->getAppId(), $appId,]);
-        $openAuthorizer->getContainer()->getModel()->update($ormResult1, [
-            'authorizer_refreshtoken' => $data['authorizer_refreshtoken'],
-            'authorizer_allowpower' => Tool::jsonEncode($data['authorizer_allowpower'], JSON_UNESCAPED_UNICODE),
-            'authorizer_info' => Tool::jsonEncode($data['authorizer_info'], JSON_UNESCAPED_UNICODE),
-            'updated' => Tool::getNowTime(),
-        ]);
-    }
-
-    /**
      * 获取开放平台授权者缓存
+     *
      * @param string $appId
+     *
      * @return array
+     *
      * @throws \SyException\Wx\WxOpenException
      */
     public static function getOpenAuthorizerCache(string $appId)
@@ -62,7 +46,7 @@ final class ProjectWxTool
             $commonConfig = WxConfigSingleton::getInstance()->getOpenCommonConfig();
             $openAuthorizer = SyTaskMysqlFactory::getWxopenAuthorizerEntity();
             $ormResult1 = $openAuthorizer->getContainer()->getModel()->getOrmDbTable();
-            $ormResult1->where('`component_appid`=? AND `authorizer_appid`=?', [$commonConfig->getAppId(), $appId,]);
+            $ormResult1->where('`component_appid`=? AND `authorizer_appid`=?', [$commonConfig->getAppId(), $appId]);
             $authorizerInfo = $openAuthorizer->getContainer()->getModel()->findOne($ormResult1);
             if (empty($authorizerInfo)) {
                 $redisData['authorize_status'] = Project::WX_CONFIG_AUTHORIZE_STATUS_EMPTY;
@@ -95,15 +79,17 @@ final class ProjectWxTool
 
         if (isset($redisData['unique_key']) && ($redisData['unique_key'] == $redisKey)) {
             return $redisData;
-        } else {
-            throw new WxOpenException('获取第三方授权者缓存失败', ErrorCode::WXOPEN_PARAM_ERROR);
         }
+
+        throw new WxOpenException('获取第三方授权者缓存失败', ErrorCode::WXOPEN_PARAM_ERROR);
     }
 
     /**
      * 处理微信开放平台公众号授权
-     * @param int $optionType 操作类型
+     *
+     * @param int   $optionType 操作类型
      * @param array $data
+     *
      * @throws \SyException\Wx\WxOpenException
      */
     public static function handleAppAuthForOpen(int $optionType, array $data)
@@ -136,6 +122,7 @@ final class ProjectWxTool
                     'authorizer_status' => Project::WX_COMPONENT_AUTHORIZER_STATUS_ALLOW,
                     'updated' => $nowTime,
                 ]);
+
                 break;
             case Project::WX_COMPONENT_AUTHORIZER_OPTION_TYPE_UNAUTHORIZED:
                 $openAuthorizer->getContainer()->getModel()->insertOrUpdate($ormResult1, [
@@ -159,6 +146,7 @@ final class ProjectWxTool
                     'authorizer_status' => Project::WX_COMPONENT_AUTHORIZER_STATUS_CANCEL,
                     'updated' => $nowTime,
                 ]);
+
                 break;
             case Project::WX_COMPONENT_AUTHORIZER_OPTION_TYPE_AUTHORIZED_UPDATE:
                 $openAuthorizer->getContainer()->getModel()->insertOrUpdate($ormResult1, [
@@ -182,6 +170,7 @@ final class ProjectWxTool
                     'authorizer_status' => Project::WX_COMPONENT_AUTHORIZER_STATUS_ALLOW,
                     'updated' => $nowTime,
                 ]);
+
                 break;
             default:
                 throw new WxOpenException('授权操作类型不支持', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -193,8 +182,11 @@ final class ProjectWxTool
 
     /**
      * 获取服务商企业微信授权信息
+     *
      * @param string $corpId 授权企业ID
+     *
      * @return array
+     *
      * @throws \SyException\Wx\WxOpenException
      */
     public static function getCorpProviderAuthorizerInfo(string $corpId)
@@ -202,20 +194,23 @@ final class ProjectWxTool
         $providerConfig = WxConfigSingleton::getInstance()->getCorpProviderConfig();
         $corpAuthorizer = SyTaskMysqlFactory::getWxproviderCorpAuthorizerEntity();
         $ormResult1 = $corpAuthorizer->getContainer()->getModel()->getOrmDbTable();
-        $ormResult1->where('`suite_id`=? AND `authorizer_corpid`=?', [$providerConfig->getSuiteId(), $corpId,]);
+        $ormResult1->where('`suite_id`=? AND `authorizer_corpid`=?', [$providerConfig->getSuiteId(), $corpId]);
         $authorizerInfo = $corpAuthorizer->getContainer()->getModel()->findOne($ormResult1);
         if (empty($authorizerInfo)) {
             throw new WxOpenException('授权企业微信不存在', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         } elseif ($authorizerInfo['authorizer_status'] != Project::WX_PROVIDER_CORP_AUTHORIZER_STATUS_ALLOW) {
             throw new WxOpenException('企业微信已取消授权', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
         }
+
         return $authorizerInfo;
     }
 
     /**
      * 处理服务商企业微信授权
-     * @param int $optionType 操作类型
+     *
+     * @param int   $optionType 操作类型
      * @param array $data
+     *
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public static function handleAuthForCorpProvider(int $optionType, array $data)
@@ -257,6 +252,7 @@ final class ProjectWxTool
                     'authorizer_status' => Project::WX_PROVIDER_CORP_AUTHORIZER_STATUS_ALLOW,
                     'updated' => $nowTime,
                 ]);
+
                 break;
             case Project::WX_PROVIDER_CORP_AUTHORIZER_OPTION_TYPE_AUTH_CANCEL:
                 $corpId = $data['AuthCorpId'];
@@ -281,6 +277,7 @@ final class ProjectWxTool
                     'authorizer_status' => Project::WX_PROVIDER_CORP_AUTHORIZER_STATUS_CANCEL,
                     'updated' => $nowTime,
                 ]);
+
                 break;
             case Project::WX_PROVIDER_CORP_AUTHORIZER_OPTION_TYPE_AUTH_CHANGE:
                 $ormResult1->where('`suite_id`=? AND `authorizer_corpid`=?', [$data['SuiteId'], $data['AuthCorpId']]);
@@ -307,6 +304,7 @@ final class ProjectWxTool
                     'authorizer_info' => Tool::jsonEncode($authInfoGetDetail['data'], JSON_UNESCAPED_UNICODE),
                     'updated' => $nowTime,
                 ]);
+
                 break;
             default:
                 throw new WxCorpProviderException('授权操作类型不支持', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);
@@ -314,5 +312,25 @@ final class ProjectWxTool
 
         $redisKey = Project::REDIS_PREFIX_WX_PROVIDER_CORP_AUTHORIZER . $corpId;
         CacheSimpleFactory::getRedisInstance()->del($redisKey);
+    }
+
+    /**
+     * 更新微信开放平台授权公众号信息
+     *
+     * @param string $appId 授权公众号app id
+     * @param array  $data
+     */
+    private static function updateOpenAuthorizerInfo(string $appId, array $data)
+    {
+        $commonConfig = WxConfigSingleton::getInstance()->getOpenCommonConfig();
+        $openAuthorizer = SyTaskMysqlFactory::getWxopenAuthorizerEntity();
+        $ormResult1 = $openAuthorizer->getContainer()->getModel()->getOrmDbTable();
+        $ormResult1->where('`component_appid`=? AND `authorizer_appid`=?', [$commonConfig->getAppId(), $appId]);
+        $openAuthorizer->getContainer()->getModel()->update($ormResult1, [
+            'authorizer_refreshtoken' => $data['authorizer_refreshtoken'],
+            'authorizer_allowpower' => Tool::jsonEncode($data['authorizer_allowpower'], JSON_UNESCAPED_UNICODE),
+            'authorizer_info' => Tool::jsonEncode($data['authorizer_info'], JSON_UNESCAPED_UNICODE),
+            'updated' => Tool::getNowTime(),
+        ]);
     }
 }
