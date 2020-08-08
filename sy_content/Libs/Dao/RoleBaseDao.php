@@ -21,7 +21,7 @@ class RoleBaseDao
 
     public static function addRoleByStation(array $data)
     {
-        $roleBase = SyBaseMysqlFactory::RoleBaseEntity();
+        $roleBase = SyBaseMysqlFactory::getRoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['tag']]);
         $roleBaseInfo = $roleBase->getContainer()->getModel()->findOne($ormResult1);
@@ -48,7 +48,7 @@ class RoleBaseDao
 
     public static function editRoleByStation(array $data)
     {
-        $roleBase = SyBaseMysqlFactory::RoleBaseEntity();
+        $roleBase = SyBaseMysqlFactory::getRoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['tag']]);
         $roleBaseInfo = $roleBase->getContainer()->getModel()->findOne($ormResult1);
@@ -71,7 +71,7 @@ class RoleBaseDao
 
     public static function getRoleInfoByStation(array $data)
     {
-        $roleBase = SyBaseMysqlFactory::RoleBaseEntity();
+        $roleBase = SyBaseMysqlFactory::getRoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['role_tag']]);
         $roleBaseInfo = $roleBase->getContainer()->getModel()->findOne($ormResult1);
@@ -86,7 +86,7 @@ class RoleBaseDao
 
     public static function getRoleListByStation(array $data)
     {
-        $roleBase = SyBaseMysqlFactory::RoleBaseEntity();
+        $roleBase = SyBaseMysqlFactory::getRoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
         if ($data['role_status'] > -2) {
             $ormResult1->where('`status`=?', [$data['role_status']]);
@@ -103,7 +103,7 @@ class RoleBaseDao
 
     public static function getRoleListByFront(array $data)
     {
-        $roleBase = SyBaseMysqlFactory::RoleBaseEntity();
+        $roleBase = SyBaseMysqlFactory::getRoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`status`=?', [Project::ROLE_STATUS_VALID])
                    ->order('`tag` ASC');

@@ -26,7 +26,7 @@ trait AliPayConfigTrait
         $payConfig->setAppId($appId);
         $payConfig->setExpireTime($expireTime);
 
-        $aliConfigEntity = SyBaseMysqlFactory::AliconfigPayEntity();
+        $aliConfigEntity = SyBaseMysqlFactory::getAliconfigPayEntity();
         $ormResult1 = $aliConfigEntity->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`app_id`=? AND `status`=?', [$appId, Project::ALI_PAY_STATUS_ENABLE]);
         $configInfo = $aliConfigEntity->getContainer()->getModel()->findOne($ormResult1);

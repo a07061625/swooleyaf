@@ -51,7 +51,7 @@ class Region
             $page = 1;
             $cityArr = [];
             $provinceArr = [];
-            $regionBase = SyBaseMysqlFactory::RegionBaseEntity();
+            $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
             $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
             $ormResult1->order('`tag` ASC');
             $regions = $regionBase->getContainer()->getModel()->setFields([

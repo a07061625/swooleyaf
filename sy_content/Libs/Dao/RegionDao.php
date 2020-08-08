@@ -58,7 +58,7 @@ class RegionDao
 
     public static function deleteRegionByStation(array $data)
     {
-        $regionBase = SyBaseMysqlFactory::RegionBaseEntity();
+        $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
         $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag` LIKE ?', [$data['region_tag'] . '%'])
                    ->order('`tag` ASC');
@@ -88,7 +88,7 @@ class RegionDao
 
     public static function getRegionInfoByStation(array $data)
     {
-        $regionBase = SyBaseMysqlFactory::RegionBaseEntity();
+        $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
         $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=? AND `level`=?', [$data['region_tag'], $data['region_level'],]);
         $regionInfo = $regionBase->getContainer()->getModel()->findOne($ormResult1);
@@ -103,7 +103,7 @@ class RegionDao
 
     public static function getRegionListByStation(array $data)
     {
-        $regionBase = SyBaseMysqlFactory::RegionBaseEntity();
+        $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
         $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`level`=?', [$data['region_level']]);
         if (strlen($data['region_ptag']) > 0) {
@@ -119,7 +119,7 @@ class RegionDao
 
     public static function getRegionInfoByFront(array $data)
     {
-        $regionBase = SyBaseMysqlFactory::RegionBaseEntity();
+        $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
         $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['region_tag']]);
         $regionInfo = $regionBase->getContainer()->getModel()->findOne($ormResult1);
@@ -135,7 +135,7 @@ class RegionDao
     {
         $needNum = 1001;
         $needTag = '';
-        $regionBase = SyBaseMysqlFactory::RegionBaseEntity();
+        $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
         $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`level`=?', [Project::REGION_LEVEL_TYPE_PROVINCE])
                    ->order('`tag` ASC');
@@ -178,7 +178,7 @@ class RegionDao
         $data['region_ptag'] = $parentTag;
 
         $needNum = 1001;
-        $regionBase = SyBaseMysqlFactory::RegionBaseEntity();
+        $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
         $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag` LIKE ?', [$data['region_ptag'] . '%'])
                    ->where('level', [Project::REGION_LEVEL_TYPE_PROVINCE, Project::REGION_LEVEL_TYPE_CITY,])
@@ -233,7 +233,7 @@ class RegionDao
         $data['region_ptag'] = $parentTag;
 
         $needNum = 1001;
-        $regionBase = SyBaseMysqlFactory::RegionBaseEntity();
+        $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
         $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`code` LIKE ?', [$data['region_ptag'] . '%'])
                    ->where('level', [Project::REGION_LEVEL_TYPE_CITY, Project::REGION_LEVEL_TYPE_COUNTY,])
@@ -287,7 +287,7 @@ class RegionDao
         }
         $data['region_tag'] = $regionTag;
         
-        $regionBase = SyBaseMysqlFactory::RegionBaseEntity();
+        $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
         $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`level`=?', [Project::REGION_LEVEL_TYPE_PROVINCE])
                    ->order('`tag` ASC');
@@ -345,7 +345,7 @@ class RegionDao
         }
         $data['region_tag'] = $regionTag;
 
-        $regionBase = SyBaseMysqlFactory::RegionBaseEntity();
+        $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
         $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag` LIKE ? AND `level`=?', [substr($data['region_tag'], 0, 3) . '%', Project::REGION_LEVEL_TYPE_CITY,])
                    ->order('`tag` ASC');
@@ -403,7 +403,7 @@ class RegionDao
         }
         $data['region_tag'] = $regionTag;
 
-        $regionBase = SyBaseMysqlFactory::RegionBaseEntity();
+        $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
         $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag` LIKE ? AND `level`=?', [substr($data['region_tag'], 0, 6) . '%', Project::REGION_LEVEL_TYPE_COUNTY,])
                    ->order('`tag` ASC');

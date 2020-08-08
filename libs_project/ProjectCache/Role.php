@@ -28,7 +28,7 @@ class Role
         if (empty($cacheData)) {
             $page = 1;
             $powerMap = [];
-            $rolePower = SyBaseMysqlFactory::RolePowerEntity();
+            $rolePower = SyBaseMysqlFactory::getRolePowerEntity();
             $ormResult1 = $rolePower->getContainer()->getModel()->getOrmDbTable();
             $ormResult1->order('`level` ASC,`sort_num` DESC,`tag` ASC');
             $powerList = $rolePower->getContainer()->getModel()->select($ormResult1, $page, 100);
@@ -44,7 +44,7 @@ class Role
             unset($powerList, $ormResult1, $rolePower);
 
             $page = 1;
-            $roleRelation = SyBaseMysqlFactory::RoleRelationEntity();
+            $roleRelation = SyBaseMysqlFactory::getRoleRelationEntity();
             $ormResult2 = $roleRelation->getContainer()->getModel()->getOrmDbTable();
             $ormResult2->where('`role_tag`=?', [$roleTag])
                        ->order('`power_tag` ASC');

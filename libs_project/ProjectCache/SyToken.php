@@ -31,7 +31,7 @@ class SyToken
             }
         }
 
-        $tokenBase = SyBaseMysqlFactory::SyTokenBaseEntity();
+        $tokenBase = SyBaseMysqlFactory::getSyTokenBaseEntity();
         $ormResult1 = $tokenBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$tag]);
         $tokenInfo = $tokenBase->getContainer()->getModel()->findOne($ormResult1);

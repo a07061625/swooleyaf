@@ -21,7 +21,7 @@ class RolePowerDao
 
     public static function addPowerByStation(array $data)
     {
-        $rolePower = SyBaseMysqlFactory::RolePowerEntity();
+        $rolePower = SyBaseMysqlFactory::getRolePowerEntity();
         $ormResult1 = $rolePower->getContainer()->getModel()->getOrmDbTable();
         if ($data['level'] > Project::ROLE_POWER_LEVEL_ONE) {
             $ormResult1->where('tag', [$data['ptag'], $data['tag'],])
@@ -64,7 +64,7 @@ class RolePowerDao
 
     public static function getPowerInfoByStation(array $data)
     {
-        $rolePower = SyBaseMysqlFactory::RolePowerEntity();
+        $rolePower = SyBaseMysqlFactory::getRolePowerEntity();
         $ormResult1 = $rolePower->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['power_tag']]);
         $powerInfo = $rolePower->getContainer()->getModel()->findOne($ormResult1);
@@ -79,7 +79,7 @@ class RolePowerDao
 
     public static function editPowerByStation(array $data)
     {
-        $rolePower = SyBaseMysqlFactory::RolePowerEntity();
+        $rolePower = SyBaseMysqlFactory::getRolePowerEntity();
         $ormResult1 = $rolePower->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['power_tag']]);
         $powerInfo = $rolePower->getContainer()->getModel()->findOne($ormResult1);
@@ -105,7 +105,7 @@ class RolePowerDao
 
     public static function delPowerByStation(array $data)
     {
-        $rolePower = SyBaseMysqlFactory::RolePowerEntity();
+        $rolePower = SyBaseMysqlFactory::getRolePowerEntity();
         $ormResult1 = $rolePower->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['power_tag']]);
         $powerInfo = $rolePower->getContainer()->getModel()->findOne($ormResult1);
@@ -117,7 +117,7 @@ class RolePowerDao
         $ormResult2->where('`tag` LIKE ?', [$data['power_tag'] . '%']);
         $rolePower->getContainer()->getModel()->delete($ormResult2);
 
-        $roleRelation = SyBaseMysqlFactory::RoleRelationEntity();
+        $roleRelation = SyBaseMysqlFactory::getRoleRelationEntity();
         $ormResult3 = $roleRelation->getContainer()->getModel()->getOrmDbTable();
         $ormResult3->where('`power_tag` LIKE ?', [$data['power_tag'] . '%']);
         $roleRelation->getContainer()->getModel()->delete($ormResult3);
@@ -132,7 +132,7 @@ class RolePowerDao
 
     public static function editRolePowersByStation(array $data)
     {
-        $roleBase = SyBaseMysqlFactory::RoleBaseEntity();
+        $roleBase = SyBaseMysqlFactory::getRoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['role_tag']]);
         $roleInfo = $roleBase->getContainer()->getModel()->findOne($ormResult1);
@@ -140,7 +140,7 @@ class RolePowerDao
             throw new CheckException('角色信息不存在', ErrorCode::COMMON_PARAM_ERROR);
         }
 
-        $roleRelation = SyBaseMysqlFactory::RoleRelationEntity();
+        $roleRelation = SyBaseMysqlFactory::getRoleRelationEntity();
         $ormResult2 = $roleRelation->getContainer()->getModel()->getOrmDbTable();
         $ormResult2->where('`role_tag`=?', [$data['role_tag']]);
         $roleRelation->getContainer()->getModel()->delete($ormResult2);
@@ -166,7 +166,7 @@ class RolePowerDao
 
     public static function getPowerListByStation(array $data)
     {
-        $rolePower = SyBaseMysqlFactory::RolePowerEntity();
+        $rolePower = SyBaseMysqlFactory::getRolePowerEntity();
         $ormResult1 = $rolePower->getContainer()->getModel()->getOrmDbTable();
         if ($data['level'] == Project::ROLE_POWER_LEVEL_ONE) {
             $ormResult1->where('`level`=?', [Project::ROLE_POWER_LEVEL_ONE]);
@@ -185,7 +185,7 @@ class RolePowerDao
     {
         $page = 1;
         $powerMap = [];
-        $rolePower = SyBaseMysqlFactory::RolePowerEntity();
+        $rolePower = SyBaseMysqlFactory::getRolePowerEntity();
         $ormResult1 = $rolePower->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->order('`tag` ASC');
         $powerList = $rolePower->getContainer()->getModel()->select($ormResult1, $page, 100);
@@ -201,7 +201,7 @@ class RolePowerDao
         unset($powerList, $ormResult1, $rolePower);
 
         $page = 1;
-        $roleRelation = SyBaseMysqlFactory::RoleRelationEntity();
+        $roleRelation = SyBaseMysqlFactory::getRoleRelationEntity();
         $ormResult2 = $roleRelation->getContainer()->getModel()->getOrmDbTable();
         $ormResult2->where('`role_tag`=?', [$data['role_tag']])
                    ->order('`power_tag` ASC');

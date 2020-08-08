@@ -138,7 +138,7 @@ class WxOpenMiniDao
             throw new CheckException($uploadRes['message'], $uploadRes['code']);
         }
 
-        $wxMiniConfig = SyBaseMysqlFactory::WxconfigMiniEntity();
+        $wxMiniConfig = SyBaseMysqlFactory::getWxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`app_id`=?', [$data['wxmini_appid']]);
         $wxMiniConfig->getContainer()->getModel()->update($ormResult1, [
@@ -157,7 +157,7 @@ class WxOpenMiniDao
 
     public static function auditMiniCode(array $data)
     {
-        $wxMiniConfig = SyBaseMysqlFactory::WxconfigMiniEntity();
+        $wxMiniConfig = SyBaseMysqlFactory::getWxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`app_id`=?', [$data['wxmini_appid']]);
         $wxInfo = $wxMiniConfig->getContainer()->getModel()->findOne($ormResult1);
@@ -191,7 +191,7 @@ class WxOpenMiniDao
 
     public static function refreshMiniCodeAuditResult(array $data)
     {
-        $wxMiniConfig = SyBaseMysqlFactory::WxconfigMiniEntity();
+        $wxMiniConfig = SyBaseMysqlFactory::getWxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`app_id`=?', [$data['wxmini_appid']]);
         $wxInfo = $wxMiniConfig->getContainer()->getModel()->findOne($ormResult1);
@@ -251,7 +251,7 @@ class WxOpenMiniDao
 
     public static function releaseMiniCode(array $data)
     {
-        $wxMiniConfig = SyBaseMysqlFactory::WxconfigMiniEntity();
+        $wxMiniConfig = SyBaseMysqlFactory::getWxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`app_id`=?', [$data['wxmini_appid']]);
         $wxInfo = $wxMiniConfig->getContainer()->getModel()->findOne($ormResult1);
@@ -287,7 +287,7 @@ class WxOpenMiniDao
             'app_id' => '',
         ];
 
-        $wxMiniConfig = SyBaseMysqlFactory::WxconfigMiniEntity();
+        $wxMiniConfig = SyBaseMysqlFactory::getWxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`status`=? AND `wtype`=? AND `latest_code`<>?', [Project::WX_CONFIG_STATUS_ENABLE, Project::WXMINI_TYPE_SHOP_MINI, $data['template_id'],])
                    ->order('`id` ASC');
@@ -305,7 +305,7 @@ class WxOpenMiniDao
             'app_id' => '',
         ];
 
-        $wxMiniConfig = SyBaseMysqlFactory::WxconfigMiniEntity();
+        $wxMiniConfig = SyBaseMysqlFactory::getWxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`wtype`=? AND `status`=? AND `option_status`=?', [Project::WXMINI_TYPE_SHOP_MINI, Project::WX_CONFIG_STATUS_ENABLE, Project::WXMINI_OPTION_STATUS_UPLOADED,])
                    ->order('`id` ASC');
@@ -339,7 +339,7 @@ class WxOpenMiniDao
             'app_id' => '',
         ];
 
-        $wxMiniConfig = SyBaseMysqlFactory::WxconfigMiniEntity();
+        $wxMiniConfig = SyBaseMysqlFactory::getWxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`wtype`=? AND `status`=? AND `audit_status`=?', [Project::WXMINI_TYPE_SHOP_MINI, Project::WX_CONFIG_STATUS_ENABLE, Project::WXMINI_AUDIT_STATUS_HANDING,])
                    ->order('`id` ASC');
@@ -358,7 +358,7 @@ class WxOpenMiniDao
             'app_id' => '',
         ];
 
-        $wxMiniConfig = SyBaseMysqlFactory::WxconfigMiniEntity();
+        $wxMiniConfig = SyBaseMysqlFactory::getWxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`wtype`=? AND `status`=? AND `option_status`=?', [Project::WXMINI_TYPE_SHOP_MINI, Project::WX_CONFIG_STATUS_ENABLE, Project::WXMINI_OPTION_STATUS_AUDIT_SUCCESS,])
                    ->order('`id` ASC');

@@ -23,7 +23,7 @@ class IMAccount
         $redisKey = self::getSignKey($account);
         $accountSign = CacheSimpleFactory::getRedisInstance()->get($redisKey);
         if ($accountSign === false) {
-            $imBase = SyBaseMysqlFactory::ImBaseEntity();
+            $imBase = SyBaseMysqlFactory::getImBaseEntity();
             $ormResult1 = $imBase->getContainer()->getModel()->getOrmDbTable();
             $ormResult1->where('`user_id`=?', [$account]);
             $imBaseInfo = $imBase->getContainer()->getModel()->findOne($ormResult1);

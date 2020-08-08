@@ -65,7 +65,7 @@ class PayDao
     public static function completePay(array $data)
     {
         //添加支付原始记录
-        $payHistory = SyBaseMysqlFactory::PayHistoryEntity();
+        $payHistory = SyBaseMysqlFactory::getPayHistoryEntity();
         $payHistory->trade_type = $data['pay_type'];
         $payHistory->trade_sn = $data['pay_tradesn'];
         $payHistory->seller_sn = $data['pay_sellersn'];

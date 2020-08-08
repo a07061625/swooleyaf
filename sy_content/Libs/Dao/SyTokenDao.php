@@ -20,7 +20,7 @@ class SyTokenDao
 
     public static function addTokenByStation(array $data)
     {
-        $tokenBase = SyBaseMysqlFactory::SyTokenBaseEntity();
+        $tokenBase = SyBaseMysqlFactory::getSyTokenBaseEntity();
         $ormResult1 = $tokenBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['tag']]);
         $tokenInfo = $tokenBase->getContainer()->getModel()->findOne($ormResult1);
@@ -45,7 +45,7 @@ class SyTokenDao
 
     public static function editTokenByStation(array $data)
     {
-        $tokenBase = SyBaseMysqlFactory::SyTokenBaseEntity();
+        $tokenBase = SyBaseMysqlFactory::getSyTokenBaseEntity();
         $ormResult1 = $tokenBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['tag']]);
         $tokenInfo = $tokenBase->getContainer()->getModel()->findOne($ormResult1);
@@ -69,7 +69,7 @@ class SyTokenDao
 
     public static function getTokenInfoByStation(array $data)
     {
-        $tokenBase = SyBaseMysqlFactory::SyTokenBaseEntity();
+        $tokenBase = SyBaseMysqlFactory::getSyTokenBaseEntity();
         $ormResult1 = $tokenBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['tag']]);
         $tokenInfo = $tokenBase->getContainer()->getModel()->findOne($ormResult1);
@@ -83,7 +83,7 @@ class SyTokenDao
 
     public static function getTokenListByStation(array $data)
     {
-        $tokenBase = SyBaseMysqlFactory::SyTokenBaseEntity();
+        $tokenBase = SyBaseMysqlFactory::getSyTokenBaseEntity();
         $ormResult1 = $tokenBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->order('`id` DESC');
         $tokenList = $tokenBase->getContainer()->getModel()->findPage($ormResult1, $data['page'], $data['limit']);

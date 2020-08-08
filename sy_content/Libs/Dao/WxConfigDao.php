@@ -17,7 +17,7 @@ class WxConfigDao
     {
         $nowTime = Tool::getNowTime();
 
-        $wxConfigBase = SyBaseMysqlFactory::WxconfigBaseEntity();
+        $wxConfigBase = SyBaseMysqlFactory::getWxconfigBaseEntity();
         $ormResult1 = $wxConfigBase->getContainer()->getModel()->getOrmDbTable();
         $wxConfigBase->getContainer()->getModel()->insertOrUpdate($ormResult1, [
             'app_id' => $data['app_id'],
@@ -57,7 +57,7 @@ class WxConfigDao
 
     public static function refreshSslCompanyBank(array $data)
     {
-        $wxConfigBase = SyBaseMysqlFactory::WxconfigBaseEntity();
+        $wxConfigBase = SyBaseMysqlFactory::getWxconfigBaseEntity();
         $ormResult1 = $wxConfigBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`app_id`=?', [$data['app_id']]);
         $configInfo = $wxConfigBase->getContainer()->getModel()->findOne($ormResult1);
