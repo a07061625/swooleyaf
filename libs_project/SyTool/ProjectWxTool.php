@@ -31,7 +31,7 @@ final class ProjectWxTool
     private static function updateOpenAuthorizerInfo(string $appId, array $data)
     {
         $commonConfig = WxConfigSingleton::getInstance()->getOpenCommonConfig();
-        $openAuthorizer = SyTaskMysqlFactory::WxopenAuthorizerEntity();
+        $openAuthorizer = SyTaskMysqlFactory::getWxopenAuthorizerEntity();
         $ormResult1 = $openAuthorizer->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`component_appid`=? AND `authorizer_appid`=?', [$commonConfig->getAppId(), $appId,]);
         $openAuthorizer->getContainer()->getModel()->update($ormResult1, [
@@ -60,7 +60,7 @@ final class ProjectWxTool
             ];
 
             $commonConfig = WxConfigSingleton::getInstance()->getOpenCommonConfig();
-            $openAuthorizer = SyTaskMysqlFactory::WxopenAuthorizerEntity();
+            $openAuthorizer = SyTaskMysqlFactory::getWxopenAuthorizerEntity();
             $ormResult1 = $openAuthorizer->getContainer()->getModel()->getOrmDbTable();
             $ormResult1->where('`component_appid`=? AND `authorizer_appid`=?', [$commonConfig->getAppId(), $appId,]);
             $authorizerInfo = $openAuthorizer->getContainer()->getModel()->findOne($ormResult1);
@@ -110,7 +110,7 @@ final class ProjectWxTool
     {
         $nowTime = Tool::getNowTime();
         $openCommonConfig = WxConfigSingleton::getInstance()->getOpenCommonConfig();
-        $openAuthorizer = SyTaskMysqlFactory::WxopenAuthorizerEntity();
+        $openAuthorizer = SyTaskMysqlFactory::getWxopenAuthorizerEntity();
         $ormResult1 = $openAuthorizer->getContainer()->getModel()->getOrmDbTable();
 
         switch ($optionType) {
@@ -200,7 +200,7 @@ final class ProjectWxTool
     public static function getCorpProviderAuthorizerInfo(string $corpId)
     {
         $providerConfig = WxConfigSingleton::getInstance()->getCorpProviderConfig();
-        $corpAuthorizer = SyTaskMysqlFactory::WxproviderCorpAuthorizerEntity();
+        $corpAuthorizer = SyTaskMysqlFactory::getWxproviderCorpAuthorizerEntity();
         $ormResult1 = $corpAuthorizer->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`suite_id`=? AND `authorizer_corpid`=?', [$providerConfig->getSuiteId(), $corpId,]);
         $authorizerInfo = $corpAuthorizer->getContainer()->getModel()->findOne($ormResult1);
@@ -221,7 +221,7 @@ final class ProjectWxTool
     public static function handleAuthForCorpProvider(int $optionType, array $data)
     {
         $nowTime = Tool::getNowTime();
-        $entity = SyTaskMysqlFactory::WxproviderCorpAuthorizerEntity();
+        $entity = SyTaskMysqlFactory::getWxproviderCorpAuthorizerEntity();
         $ormResult1 = $entity->getContainer()->getModel()->getOrmDbTable();
 
         switch ($optionType) {

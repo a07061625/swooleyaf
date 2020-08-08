@@ -35,7 +35,7 @@ class TaskDao
 
         $nowTime = Tool::getNowTime();
         $taskTag = Tool::createNonceStr(6, 'numlower') . $nowTime;
-        $taskBase = SyTaskMysqlFactory::TaskBaseEntity();
+        $taskBase = SyTaskMysqlFactory::getTaskBaseEntity();
         $taskBase->tag = $taskTag;
         $taskBase->task_title = $data['task_title'];
         $taskBase->task_desc = $data['task_desc'];
@@ -72,7 +72,7 @@ class TaskDao
 
     public static function delTask(array $data)
     {
-        $taskBase = SyTaskMysqlFactory::TaskBaseEntity();
+        $taskBase = SyTaskMysqlFactory::getTaskBaseEntity();
         $ormResult1 = $taskBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['task_tag']]);
         $effectNum = $taskBase->getContainer()->getModel()->update($ormResult1, [
@@ -91,7 +91,7 @@ class TaskDao
 
     public static function refreshTask(array $data)
     {
-        $taskBase = SyTaskMysqlFactory::TaskBaseEntity();
+        $taskBase = SyTaskMysqlFactory::getTaskBaseEntity();
         $ormResult1 = $taskBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['task_tag']]);
         $taskBaseInfo = $taskBase->getContainer()->getModel()->findOne($ormResult1);
@@ -119,7 +119,7 @@ class TaskDao
 
     public static function getTaskList(array $data)
     {
-        $taskBase = SyTaskMysqlFactory::TaskBaseEntity();
+        $taskBase = SyTaskMysqlFactory::getTaskBaseEntity();
         $ormResult1 = $taskBase->getContainer()->getModel()->getOrmDbTable();
         if ($data['persist_type'] > 0) {
             $ormResult1->where('`persist_type`=?', [$data['persist_type']]);
@@ -139,7 +139,7 @@ class TaskDao
 
     public static function getTaskLogList(array $data)
     {
-        $taskLog = SyTaskMysqlFactory::TaskLogEntity();
+        $taskLog = SyTaskMysqlFactory::getTaskLogEntity();
         $ormResult1 = $taskLog->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag`=?', [$data['task_tag']])->order('`created` DESC,`id` DESC');
         $logList = $taskLog->getContainer()->getModel()->findPage($ormResult1, $data['page'], $data['limit']);

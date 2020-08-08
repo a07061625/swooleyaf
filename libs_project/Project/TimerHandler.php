@@ -21,8 +21,8 @@ class TimerHandler
     {
         //获取当前时间队列的任务列表
         $redisKeyQueue1 = Project::REDIS_PREFIX_TIMER_QUEUE . $nowTime;
-        $taskBase = SyTaskMysqlFactory::TaskBaseEntity();
-        $taskLog = SyTaskMysqlFactory::TaskLogEntity();
+        $taskBase = SyTaskMysqlFactory::getTaskBaseEntity();
+        $taskLog = SyTaskMysqlFactory::getTaskLogEntity();
         $startIndex = 0;
         $endIndex = 99;
         $tagList = CacheSimpleFactory::getRedisInstance()->lRange($redisKeyQueue1, $startIndex, $endIndex);

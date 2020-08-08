@@ -26,7 +26,7 @@ class SyTaskMysqlFactory
      * @param string $dbName 数据库名
      * @return \Entities\SyTask\TaskBaseEntity
      */
-    public static function TaskBaseEntity(string $dbName = '')
+    public static function getTaskBaseEntity(string $dbName = '')
     {
         return new TaskBaseEntity($dbName);
     }
@@ -34,7 +34,7 @@ class SyTaskMysqlFactory
      * @param string $dbName 数据库名
      * @return \Entities\SyTask\TaskLogEntity
      */
-    public static function TaskLogEntity(string $dbName = '')
+    public static function getTaskLogEntity(string $dbName = '')
     {
         return new TaskLogEntity($dbName);
     }
@@ -42,7 +42,7 @@ class SyTaskMysqlFactory
      * @param string $dbName 数据库名
      * @return \Entities\SyTask\WxopenAuthorizerEntity
      */
-    public static function WxopenAuthorizerEntity(string $dbName = '')
+    public static function getWxopenAuthorizerEntity(string $dbName = '')
     {
         return new WxopenAuthorizerEntity($dbName);
     }
@@ -50,7 +50,7 @@ class SyTaskMysqlFactory
      * @param string $dbName 数据库名
      * @return \Entities\SyTask\WxproviderCorpAuthorizerEntity
      */
-    public static function WxproviderCorpAuthorizerEntity(string $dbName = '')
+    public static function getWxproviderCorpAuthorizerEntity(string $dbName = '')
     {
         return new WxproviderCorpAuthorizerEntity($dbName);
     }
@@ -58,7 +58,7 @@ class SyTaskMysqlFactory
      * @param string $dbName 数据库名
      * @return \Entities\SyTask\WxconfigBaseEntity
      */
-    public static function WxconfigBaseEntity(string $dbName = '')
+    public static function getWxconfigBaseEntity(string $dbName = '')
     {
         return new WxconfigBaseEntity($dbName);
     }
@@ -66,7 +66,7 @@ class SyTaskMysqlFactory
      * @param string $dbName 数据库名
      * @return \Entities\SyTask\WxconfigAccountEntity
      */
-    public static function WxconfigShopEntity(string $dbName = '')
+    public static function getWxconfigShopEntity(string $dbName = '')
     {
         return new WxconfigAccountEntity($dbName);
     }
@@ -74,7 +74,7 @@ class SyTaskMysqlFactory
      * @param string $dbName 数据库名
      * @return \Entities\SyTask\WxconfigCorpEntity
      */
-    public static function WxconfigCorpEntity(string $dbName = '')
+    public static function getWxconfigCorpEntity(string $dbName = '')
     {
         return new WxconfigCorpEntity($dbName);
     }
@@ -82,7 +82,7 @@ class SyTaskMysqlFactory
      * @param string $dbName 数据库名
      * @return \Entities\SyTask\AliconfigPayEntity
      */
-    public static function AliconfigPayEntity(string $dbName = '')
+    public static function getAliconfigPayEntity(string $dbName = '')
     {
         return new AliconfigPayEntity($dbName);
     }
@@ -90,7 +90,7 @@ class SyTaskMysqlFactory
      * @param string $dbName 数据库名
      * @return \Entities\SyTask\DingtalkConfigCorpEntity
      */
-    public static function DingtalkConfigCorpEntity(string $dbName = '')
+    public static function getDingtalkConfigCorpEntity(string $dbName = '')
     {
         return new DingtalkConfigCorpEntity($dbName);
     }

@@ -26,7 +26,7 @@ trait DingTalkConfigTrait
         $corpConfig->setCorpId($corpId);
         $corpConfig->setExpireTime($expireTime);
 
-        $dingTalkConfig = SyTaskMysqlFactory::DingtalkConfigCorpEntity();
+        $dingTalkConfig = SyTaskMysqlFactory::getDingtalkConfigCorpEntity();
         $ormResult1 = $dingTalkConfig->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`corp_id`=? AND `status`=?', [$corpId, Project::DINGTALK_CONFIG_CORP_STATUS_ENABLE]);
         $configInfo = $dingTalkConfig->getContainer()->getModel()->findOne($ormResult1);

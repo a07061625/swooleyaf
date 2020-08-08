@@ -27,7 +27,7 @@ trait WxConfigTrait
         $accountConfig->setAppId($appId);
         $accountConfig->setExpireTime($expireTime);
 
-        $wxConfigEntity = SyTaskMysqlFactory::WxconfigBaseEntity();
+        $wxConfigEntity = SyTaskMysqlFactory::getWxconfigBaseEntity();
         $ormResult1 = $wxConfigEntity->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`app_id`=? AND `status`=?', [$appId, Project::WX_CONFIG_STATUS_ENABLE]);
         $configInfo = $wxConfigEntity->getContainer()->getModel()->findOne($ormResult1);
@@ -70,7 +70,7 @@ trait WxConfigTrait
         $corpConfig->setCorpId($corpId);
         $corpConfig->setExpireTime($expireTime);
 
-        $wxConfigEntity = SyTaskMysqlFactory::WxconfigCorpEntity();
+        $wxConfigEntity = SyTaskMysqlFactory::getWxconfigCorpEntity();
         $ormResult1 = $wxConfigEntity->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`corp_id`=? AND `status`=?', [$corpId, Project::WX_CONFIG_CORP_STATUS_ENABLE]);
         $configInfo = $wxConfigEntity->getContainer()->getModel()->findOne($ormResult1);
