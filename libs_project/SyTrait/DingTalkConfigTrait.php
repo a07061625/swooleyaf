@@ -7,16 +7,18 @@
  */
 namespace SyTrait;
 
-use SyConstant\Project;
 use DingDing\TalkConfigCorp;
 use Factories\SyBaseMysqlFactory;
+use SyConstant\Project;
 use SyTool\Tool;
 
 trait DingTalkConfigTrait
 {
     /**
      * 更新企业钉钉配置
+     *
      * @param string $corpId
+     *
      * @return \DingDing\TalkConfigCorp
      */
     private function refreshCorpConfig(string $corpId)

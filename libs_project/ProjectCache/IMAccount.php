@@ -7,11 +7,11 @@
  */
 namespace ProjectCache;
 
+use DesignPatterns\Factories\CacheSimpleFactory;
+use Factories\SyBaseMysqlFactory;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
-use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Common\CheckException;
-use Factories\SyBaseMysqlFactory;
 use SyTrait\SimpleTrait;
 
 class IMAccount

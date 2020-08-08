@@ -9,22 +9,25 @@ class UserRoleEntity extends MysqlEntity
      *
      * @var int
      */
-    public $id = null;
+    public $id;
 
     /**
      * 用户ID
+     *
      * @var string
      */
     public $user_id = '';
 
     /**
      * 角色标识
+     *
      * @var string
      */
     public $role_tag = '';
 
     /**
      * 修改时间戳
+     *
      * @var int
      */
     public $created = 0;

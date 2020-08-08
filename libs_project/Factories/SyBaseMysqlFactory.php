@@ -32,10 +32,10 @@ use Entities\SyBase\UserMoneyHistoryEntity;
 use Entities\SyBase\UserRoleEntity;
 use Entities\SyBase\WithdrawBaseEntity;
 use Entities\SyBase\WithdrawHistoryEntity;
+use Entities\SyBase\WxconfigAccountEntity;
 use Entities\SyBase\WxconfigBaseEntity;
 use Entities\SyBase\WxconfigCorpEntity;
 use Entities\SyBase\WxconfigMiniEntity;
-use Entities\SyBase\WxconfigAccountEntity;
 use Entities\SyBase\WxopenAuthorizerEntity;
 use Entities\SyBase\WxproviderCorpAuthorizerEntity;
 use SyTrait\SimpleTrait;
@@ -46,6 +46,7 @@ class SyBaseMysqlFactory
 
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\AttachmentBaseEntity
      */
     public static function getAttachmentBaseEntity(string $dbName = '')
@@ -54,6 +55,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\AttachmentReferEntity
      */
     public static function getAttachmentReferEntity(string $dbName = '')
@@ -62,6 +64,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\ImBaseEntity
      */
     public static function getImBaseEntity(string $dbName = '')
@@ -70,6 +73,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\LogModuleEntity
      */
     public static function getLogModuleEntity(string $dbName = '')
@@ -78,6 +82,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\PayHistoryEntity
      */
     public static function getPayHistoryEntity(string $dbName = '')
@@ -86,6 +91,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\PermissionBaseEntity
      */
     public static function getPermissionBaseEntity(string $dbName = '')
@@ -94,6 +100,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\RefundBaseEntity
      */
     public static function getRefundBaseEntity(string $dbName = '')
@@ -102,6 +109,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\RefundHistoryEntity
      */
     public static function getRefundHistoryEntity(string $dbName = '')
@@ -110,6 +118,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\SmsRecordEntity
      */
     public static function getSmsRecordEntity(string $dbName = '')
@@ -118,6 +127,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\TimedTaskEntity
      */
     public static function getTimedTaskEntity(string $dbName = '')
@@ -126,6 +136,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\UserBaseEntity
      */
     public static function getUserBaseEntity(string $dbName = '')
@@ -134,6 +145,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\UserLoginHistoryEntity
      */
     public static function getUserLoginHistoryEntity(string $dbName = '')
@@ -142,6 +154,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\UserMoneyEntity
      */
     public static function getUserMoneyEntity(string $dbName = '')
@@ -150,6 +163,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\UserMoneyHistoryEntity
      */
     public static function getUserMoneyHistoryEntity(string $dbName = '')
@@ -158,6 +172,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\UserRoleEntity
      */
     public static function getUserRoleEntity(string $dbName = '')
@@ -166,6 +181,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\WithdrawBaseEntity
      */
     public static function getWithdrawBaseEntity(string $dbName = '')
@@ -174,6 +190,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\WithdrawHistoryEntity
      */
     public static function getWithdrawHistoryEntity(string $dbName = '')
@@ -182,6 +199,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\WxopenAuthorizerEntity
      */
     public static function getWxopenAuthorizerEntity(string $dbName = '')
@@ -190,6 +208,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\WxproviderCorpAuthorizerEntity
      */
     public static function getWxproviderCorpAuthorizerEntity(string $dbName = '')
@@ -198,6 +217,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\RegionBaseEntity
      */
     public static function getRegionBaseEntity(string $dbName = '')
@@ -206,6 +226,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\RoleBaseEntity
      */
     public static function getRoleBaseEntity(string $dbName = '')
@@ -214,6 +235,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\RolePermissionEntity
      */
     public static function getRolePermissionEntity(string $dbName = '')
@@ -222,6 +244,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\RolePowerEntity
      */
     public static function getRolePowerEntity(string $dbName = '')
@@ -230,6 +253,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\RoleRelationEntity
      */
     public static function getRoleRelationEntity(string $dbName = '')
@@ -238,6 +262,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\WxconfigBaseEntity
      */
     public static function getWxconfigBaseEntity(string $dbName = '')
@@ -246,6 +271,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\WxconfigAccountEntity
      */
     public static function getWxconfigShopEntity(string $dbName = '')
@@ -254,6 +280,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\WxconfigMiniEntity
      */
     public static function getWxconfigMiniEntity(string $dbName = '')
@@ -262,6 +289,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\WxconfigCorpEntity
      */
     public static function getWxconfigCorpEntity(string $dbName = '')
@@ -270,6 +298,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\AliconfigPayEntity
      */
     public static function getAliconfigPayEntity(string $dbName = '')
@@ -278,6 +307,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\DingtalkConfigCorpEntity
      */
     public static function getDingtalkConfigCorpEntity(string $dbName = '')
@@ -286,6 +316,7 @@ class SyBaseMysqlFactory
     }
     /**
      * @param string $dbName 数据库名
+     *
      * @return \Entities\SyBase\SyTokenBaseEntity
      */
     public static function getSyTokenBaseEntity(string $dbName = '')

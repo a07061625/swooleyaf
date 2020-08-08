@@ -7,11 +7,11 @@
  */
 namespace Dao;
 
+use Factories\SyBaseMysqlFactory;
+use ProjectCache\Region;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Common\CheckException;
-use Factories\SyBaseMysqlFactory;
-use ProjectCache\Region;
 use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
 
@@ -90,7 +90,7 @@ class RegionDao
     {
         $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
         $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
-        $ormResult1->where('`tag`=? AND `level`=?', [$data['region_tag'], $data['region_level'],]);
+        $ormResult1->where('`tag`=? AND `level`=?', [$data['region_tag'], $data['region_level']]);
         $regionInfo = $regionBase->getContainer()->getModel()->findOne($ormResult1);
         if (empty($regionInfo)) {
             throw new CheckException('地区信息不存在', ErrorCode::COMMON_PARAM_ERROR);
@@ -181,7 +181,7 @@ class RegionDao
         $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
         $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`tag` LIKE ?', [$data['region_ptag'] . '%'])
-                   ->where('level', [Project::REGION_LEVEL_TYPE_PROVINCE, Project::REGION_LEVEL_TYPE_CITY,])
+                   ->where('level', [Project::REGION_LEVEL_TYPE_PROVINCE, Project::REGION_LEVEL_TYPE_CITY])
                    ->order('`tag` ASC');
         $regionList = $regionBase->getContainer()->getModel()->select($ormResult1, 1, 1000);
         if (empty($regionList)) {
@@ -236,7 +236,7 @@ class RegionDao
         $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
         $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
         $ormResult1->where('`code` LIKE ?', [$data['region_ptag'] . '%'])
-                   ->where('level', [Project::REGION_LEVEL_TYPE_CITY, Project::REGION_LEVEL_TYPE_COUNTY,])
+                   ->where('level', [Project::REGION_LEVEL_TYPE_CITY, Project::REGION_LEVEL_TYPE_COUNTY])
                    ->order('`tag` ASC');
         $regionList = $regionBase->getContainer()->getModel()->select($ormResult1, 1, 1000);
         if (empty($regionList)) {
@@ -317,6 +317,7 @@ class RegionDao
             foreach ($regionList as $eRegion) {
                 if ($eRegion['tag'] == $data['region_tag']) {
                     $existRegion = true;
+
                     break;
                 }
             }
@@ -347,7 +348,7 @@ class RegionDao
 
         $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
         $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
-        $ormResult1->where('`tag` LIKE ? AND `level`=?', [substr($data['region_tag'], 0, 3) . '%', Project::REGION_LEVEL_TYPE_CITY,])
+        $ormResult1->where('`tag` LIKE ? AND `level`=?', [substr($data['region_tag'], 0, 3) . '%', Project::REGION_LEVEL_TYPE_CITY])
                    ->order('`tag` ASC');
         $regionList = $regionBase->getContainer()->getModel()->select($ormResult1, 1, 1000);
         if (empty($regionList)) {
@@ -375,6 +376,7 @@ class RegionDao
             foreach ($regionList as $eRegion) {
                 if ($eRegion['tag'] == $data['region_tag']) {
                     $existRegion = true;
+
                     break;
                 }
             }
@@ -405,7 +407,7 @@ class RegionDao
 
         $regionBase = SyBaseMysqlFactory::getRegionBaseEntity();
         $ormResult1 = $regionBase->getContainer()->getModel()->getOrmDbTable();
-        $ormResult1->where('`tag` LIKE ? AND `level`=?', [substr($data['region_tag'], 0, 6) . '%', Project::REGION_LEVEL_TYPE_COUNTY,])
+        $ormResult1->where('`tag` LIKE ? AND `level`=?', [substr($data['region_tag'], 0, 6) . '%', Project::REGION_LEVEL_TYPE_COUNTY])
                    ->order('`tag` ASC');
         $regionList = $regionBase->getContainer()->getModel()->select($ormResult1, 1, 1000);
         if (empty($regionList)) {
@@ -433,6 +435,7 @@ class RegionDao
             foreach ($regionList as $eRegion) {
                 if ($eRegion['tag'] == $data['region_tag']) {
                     $existRegion = true;
+
                     break;
                 }
             }

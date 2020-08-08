@@ -7,10 +7,10 @@
  */
 namespace Dao;
 
+use Factories\SyBaseMysqlFactory;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Common\CheckException;
-use Factories\SyBaseMysqlFactory;
 use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
 use Wx\OpenMini\Category\CategoryGet;
@@ -18,12 +18,12 @@ use Wx\OpenMini\Code\CodeAudit;
 use Wx\OpenMini\Code\CodeAuditStatus;
 use Wx\OpenMini\Code\CodeRelease;
 use Wx\OpenMini\Code\CodeUpload;
-use Wx\OpenMini\CodeTemplate\DraftCodeList;
 use Wx\OpenMini\Code\PageGet;
-use Wx\OpenMini\DomainModify;
+use Wx\OpenMini\CodeTemplate\DraftCodeList;
 use Wx\OpenMini\CodeTemplate\TemplateCodeAdd;
 use Wx\OpenMini\CodeTemplate\TemplateCodeDelete;
 use Wx\OpenMini\CodeTemplate\TemplateCodeList;
+use Wx\OpenMini\DomainModify;
 use Wx\OpenMini\DomainWebViewSet;
 
 class WxOpenMiniDao
@@ -175,7 +175,7 @@ class WxOpenMiniDao
         }
 
         $ormResult2 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
-        $ormResult2->where('`app_id`=? AND `option_status`=?', [$data['wxmini_appid'], Project::WXMINI_OPTION_STATUS_UPLOADED,]);
+        $ormResult2->where('`app_id`=? AND `option_status`=?', [$data['wxmini_appid'], Project::WXMINI_OPTION_STATUS_UPLOADED]);
         $wxMiniConfig->getContainer()->getModel()->update($ormResult2, [
             'audit_id' => $auditRes['data']['auditid'],
             'audit_status' => Project::WXMINI_AUDIT_STATUS_HANDING,
@@ -199,9 +199,9 @@ class WxOpenMiniDao
             throw new CheckException('微信信息不存在', ErrorCode::COMMON_PARAM_ERROR);
         } elseif ($wxInfo['audit_id'] != $data['audit_id']) {
             throw new CheckException('微信appid和审核ID不匹配', ErrorCode::COMMON_PARAM_ERROR);
-        } elseif (!in_array($wxInfo['audit_status'], [Project::WXMINI_AUDIT_STATUS_UNDO, Project::WXMINI_AUDIT_STATUS_HANDING,], true)) {
+        } elseif (!in_array($wxInfo['audit_status'], [Project::WXMINI_AUDIT_STATUS_UNDO, Project::WXMINI_AUDIT_STATUS_HANDING], true)) {
             throw new CheckException('审核状态不支持', ErrorCode::COMMON_PARAM_ERROR);
-        } elseif (in_array($wxInfo['audit_status'], [Project::WXMINI_AUDIT_STATUS_SUCCESS, Project::WXMINI_AUDIT_STATUS_FAIL,], true)) {
+        } elseif (in_array($wxInfo['audit_status'], [Project::WXMINI_AUDIT_STATUS_SUCCESS, Project::WXMINI_AUDIT_STATUS_FAIL], true)) {
             return [
                 'audit_status' => $wxInfo['audit_status'],
                 'audit_desc' => $wxInfo['audit_desc'],
@@ -217,7 +217,7 @@ class WxOpenMiniDao
         }
 
         $ormResult2 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
-        $ormResult2->where('`app_id`=? AND `audit_status`=?', [$data['wxmini_appid'], $wxInfo['audit_status'],]);
+        $ormResult2->where('`app_id`=? AND `audit_status`=?', [$data['wxmini_appid'], $wxInfo['audit_status']]);
         if ($getRes['data']['status'] == Project::WXMINI_AUDIT_STATUS_FAIL) {
             $wxMiniConfig->getContainer()->getModel()->update($ormResult2, [
                 'audit_status' => Project::WXMINI_AUDIT_STATUS_FAIL,
@@ -268,7 +268,7 @@ class WxOpenMiniDao
         }
 
         $ormResult2 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
-        $ormResult2->where('`app_id`=? AND `option_status`=?', [$data['wxmini_appid'], Project::WXMINI_OPTION_STATUS_AUDIT_SUCCESS,]);
+        $ormResult2->where('`app_id`=? AND `option_status`=?', [$data['wxmini_appid'], Project::WXMINI_OPTION_STATUS_AUDIT_SUCCESS]);
         $wxMiniConfig->getContainer()->getModel()->update($ormResult2, [
             'stable_code' => $wxInfo['latest_code'],
             'option_status' => Project::WXMINI_OPTION_STATUS_RELEASED,
@@ -289,7 +289,7 @@ class WxOpenMiniDao
 
         $wxMiniConfig = SyBaseMysqlFactory::getWxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
-        $ormResult1->where('`status`=? AND `wtype`=? AND `latest_code`<>?', [Project::WX_CONFIG_STATUS_ENABLE, Project::WXMINI_TYPE_SHOP_MINI, $data['template_id'],])
+        $ormResult1->where('`status`=? AND `wtype`=? AND `latest_code`<>?', [Project::WX_CONFIG_STATUS_ENABLE, Project::WXMINI_TYPE_SHOP_MINI, $data['template_id']])
                    ->order('`id` ASC');
         $wxInfo = $wxMiniConfig->getContainer()->getModel()->findOne($ormResult1);
         if (!empty($wxInfo)) {
@@ -307,11 +307,12 @@ class WxOpenMiniDao
 
         $wxMiniConfig = SyBaseMysqlFactory::getWxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
-        $ormResult1->where('`wtype`=? AND `status`=? AND `option_status`=?', [Project::WXMINI_TYPE_SHOP_MINI, Project::WX_CONFIG_STATUS_ENABLE, Project::WXMINI_OPTION_STATUS_UPLOADED,])
+        $ormResult1->where('`wtype`=? AND `status`=? AND `option_status`=?', [Project::WXMINI_TYPE_SHOP_MINI, Project::WX_CONFIG_STATUS_ENABLE, Project::WXMINI_OPTION_STATUS_UPLOADED])
                    ->order('`id` ASC');
         $wxInfo = $wxMiniConfig->getContainer()->getModel()->findOne($ormResult1);
         if (empty($wxInfo)) {
             unset($ormResult1, $wxMiniConfig);
+
             return $resArr;
         }
         $resArr['app_id'] = $wxInfo['app_id'];
@@ -330,6 +331,7 @@ class WxOpenMiniDao
         $resArr['items'][0]['address'] = 'pages/index/index';
         $resArr['items'][0]['tag'] = '小名片';
         $resArr['items'][0]['title'] = '小名片商城';
+
         return $resArr;
     }
 
@@ -341,7 +343,7 @@ class WxOpenMiniDao
 
         $wxMiniConfig = SyBaseMysqlFactory::getWxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
-        $ormResult1->where('`wtype`=? AND `status`=? AND `audit_status`=?', [Project::WXMINI_TYPE_SHOP_MINI, Project::WX_CONFIG_STATUS_ENABLE, Project::WXMINI_AUDIT_STATUS_HANDING,])
+        $ormResult1->where('`wtype`=? AND `status`=? AND `audit_status`=?', [Project::WXMINI_TYPE_SHOP_MINI, Project::WX_CONFIG_STATUS_ENABLE, Project::WXMINI_AUDIT_STATUS_HANDING])
                    ->order('`id` ASC');
         $wxInfo = $wxMiniConfig->getContainer()->getModel()->findOne($ormResult1);
         if (!empty($wxInfo)) {
@@ -360,7 +362,7 @@ class WxOpenMiniDao
 
         $wxMiniConfig = SyBaseMysqlFactory::getWxconfigMiniEntity();
         $ormResult1 = $wxMiniConfig->getContainer()->getModel()->getOrmDbTable();
-        $ormResult1->where('`wtype`=? AND `status`=? AND `option_status`=?', [Project::WXMINI_TYPE_SHOP_MINI, Project::WX_CONFIG_STATUS_ENABLE, Project::WXMINI_OPTION_STATUS_AUDIT_SUCCESS,])
+        $ormResult1->where('`wtype`=? AND `status`=? AND `option_status`=?', [Project::WXMINI_TYPE_SHOP_MINI, Project::WX_CONFIG_STATUS_ENABLE, Project::WXMINI_OPTION_STATUS_AUDIT_SUCCESS])
                    ->order('`id` ASC');
         $wxInfo = $wxMiniConfig->getContainer()->getModel()->findOne($ormResult1);
         if (!empty($wxInfo)) {

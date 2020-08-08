@@ -7,11 +7,11 @@
  */
 namespace ProjectCache;
 
+use DesignPatterns\Factories\CacheSimpleFactory;
+use Factories\SyBaseMysqlFactory;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
-use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Common\CheckException;
-use Factories\SyBaseMysqlFactory;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
@@ -134,10 +134,11 @@ class Role
             return $rolePowers;
         } elseif (isset($cacheData['unique_key']) && ($cacheData['unique_key'] == $redisKey)) {
             $rolePowers = Tool::jsonDecode($cacheData['power_list']);
+
             return is_array($rolePowers) ? $rolePowers : [];
-        } else {
-            throw new CheckException('获取角色权限信息缓存出错', ErrorCode::COMMON_SERVER_ERROR);
         }
+
+        throw new CheckException('获取角色权限信息缓存出错', ErrorCode::COMMON_SERVER_ERROR);
     }
 
     public static function clearRolePowerList(string $roleTag = '')

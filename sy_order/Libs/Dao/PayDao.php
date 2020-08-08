@@ -7,12 +7,12 @@
  */
 namespace Dao;
 
-use SyConstant\ErrorCode;
-use SyConstant\Project;
 use DesignPatterns\Factories\CacheSimpleFactory;
-use SyException\Common\CheckException;
 use Factories\SyBaseMysqlFactory;
 use Interfaces\PayContainer;
+use SyConstant\ErrorCode;
+use SyConstant\Project;
+use SyException\Common\CheckException;
 use SyLog\Log;
 use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
@@ -90,6 +90,7 @@ class PayDao
         }
 
         $successRes = [];
+
         try {
             $payHistory->getContainer()->getModel()->openTransaction();
             $successRes = $payService->handlePaySuccess($data);
@@ -109,6 +110,7 @@ class PayDao
 
     /**
      * @param string $payContent
+     *
      * @return \Interfaces\PayService|null
      */
     private static function getPayService(string $payContent)

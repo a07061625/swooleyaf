@@ -7,11 +7,11 @@
  */
 namespace Dao;
 
+use Factories\SyBaseMysqlFactory;
+use ProjectCache\Role;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Common\CheckException;
-use Factories\SyBaseMysqlFactory;
-use ProjectCache\Role;
 use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
 
@@ -24,7 +24,7 @@ class RolePowerDao
         $rolePower = SyBaseMysqlFactory::getRolePowerEntity();
         $ormResult1 = $rolePower->getContainer()->getModel()->getOrmDbTable();
         if ($data['level'] > Project::ROLE_POWER_LEVEL_ONE) {
-            $ormResult1->where('tag', [$data['ptag'], $data['tag'],])
+            $ormResult1->where('tag', [$data['ptag'], $data['tag']])
                        ->order('`tag` ASC');
             $powerList = $rolePower->getContainer()->getModel()->select($ormResult1, 1, 10);
             if (empty($powerList)) {
@@ -171,7 +171,7 @@ class RolePowerDao
         if ($data['level'] == Project::ROLE_POWER_LEVEL_ONE) {
             $ormResult1->where('`level`=?', [Project::ROLE_POWER_LEVEL_ONE]);
         } else {
-            $ormResult1->where('`tag` LIKE ? AND `level`=?', [$data['ptag'] . '%', $data['level'],]);
+            $ormResult1->where('`tag` LIKE ? AND `level`=?', [$data['ptag'] . '%', $data['level']]);
         }
         $ormResult1->order('`created` DESC,`tag` ASC');
         $powerList = $rolePower->getContainer()->getModel()->findPage($ormResult1, $data['page'], $data['limit']);

@@ -9,22 +9,25 @@ class RolePermissionEntity extends MysqlEntity
      *
      * @var int
      */
-    public $id = null;
+    public $id;
 
     /**
      * 角色标识
+     *
      * @var string
      */
     public $role_tag = '';
 
     /**
      * 权限标识
+     *
      * @var string
      */
     public $permission_tag = '';
 
     /**
      * 修改时间戳
+     *
      * @var int
      */
     public $created = 0;

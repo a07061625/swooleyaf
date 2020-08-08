@@ -7,11 +7,11 @@
  */
 namespace ProjectCache;
 
+use DesignPatterns\Factories\CacheSimpleFactory;
+use Factories\SyBaseMysqlFactory;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
-use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Common\CheckException;
-use Factories\SyBaseMysqlFactory;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
@@ -32,9 +32,9 @@ class Region
 
         if (strlen($provinceCode) > 0) {
             return self::$regionList[$provinceCode] ?? [];
-        } else {
-            return array_values(self::$regionList);
         }
+
+        return array_values(self::$regionList);
     }
 
     public static function clearRegionList()

@@ -7,11 +7,11 @@
  */
 namespace ProjectCache;
 
+use DesignPatterns\Factories\CacheSimpleFactory;
+use Factories\SyBaseMysqlFactory;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
-use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Common\CheckException;
-use Factories\SyBaseMysqlFactory;
 use SyTrait\SimpleTrait;
 
 class SyToken
@@ -25,10 +25,11 @@ class SyToken
         if (isset($cacheData['unique_key'])) {
             if ($cacheData['unique_key'] == $cacheKey) {
                 unset($cacheData['unique_key']);
+
                 return $cacheData;
-            } else {
-                throw new CheckException('获取令牌缓存出错', ErrorCode::COMMON_SERVER_ERROR);
             }
+
+            throw new CheckException('获取令牌缓存出错', ErrorCode::COMMON_SERVER_ERROR);
         }
 
         $tokenBase = SyBaseMysqlFactory::getSyTokenBaseEntity();
@@ -50,6 +51,7 @@ class SyToken
         CacheSimpleFactory::getRedisInstance()->expire($cacheKey, 86400);
 
         unset($cacheData['unique_key']);
+
         return $cacheData;
     }
 

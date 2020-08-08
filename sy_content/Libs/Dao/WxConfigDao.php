@@ -1,10 +1,10 @@
 <?php
 namespace Dao;
 
+use Factories\SyBaseMysqlFactory;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Common\CheckException;
-use Factories\SyBaseMysqlFactory;
 use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
 use Wx\Payment\Company\BankPublicKey;

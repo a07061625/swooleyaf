@@ -7,11 +7,11 @@
  */
 namespace Dao;
 
+use Factories\SyBaseMysqlFactory;
+use ProjectCache\Role;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Common\CheckException;
-use Factories\SyBaseMysqlFactory;
-use ProjectCache\Role;
 use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
 
