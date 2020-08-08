@@ -7,8 +7,8 @@
  */
 namespace SyTrait;
 
-use SyConstant\Project;
 use Factories\SyTaskMysqlFactory;
+use SyConstant\Project;
 use SyTool\Tool;
 use Wx\WxConfigAccount;
 use Wx\WxConfigCorp;
@@ -17,7 +17,9 @@ trait WxConfigTrait
 {
     /**
      * 更新账号配置
+     *
      * @param string $appId
+     *
      * @return \Wx\WxConfigAccount
      */
     private function refreshAccountConfig(string $appId)
@@ -60,7 +62,9 @@ trait WxConfigTrait
 
     /**
      * 更新企业微信配置
+     *
      * @param string $corpId
+     *
      * @return \Wx\WxConfigCorp
      */
     private function refreshCorpConfig(string $corpId)
