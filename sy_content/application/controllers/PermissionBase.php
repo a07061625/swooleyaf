@@ -14,6 +14,7 @@ class PermissionBaseController extends CommonController
 
     /**
      * 总站添加权限信息
+     *
      * @api {post} /Index/PermissionBase/addInfoByStation 总站添加权限信息
      * @apiDescription 总站添加权限信息
      * @apiGroup PermissionBase
@@ -69,6 +70,7 @@ class PermissionBaseController extends CommonController
 
     /**
      * 总站修改权限信息
+     *
      * @api {post} /Index/PermissionBase/editInfoByStation 总站修改权限信息
      * @apiDescription 总站修改权限信息
      * @apiGroup PermissionBase
@@ -111,6 +113,7 @@ class PermissionBaseController extends CommonController
 
     /**
      * 总站删除权限信息
+     *
      * @api {get} /Index/PermissionBase/delInfoByStation 总站删除权限信息
      * @apiDescription 总站删除权限信息
      * @apiGroup PermissionBase
@@ -135,6 +138,7 @@ class PermissionBaseController extends CommonController
 
     /**
      * 总站获取权限信息
+     *
      * @api {get} /Index/PermissionBase/getInfoByStation 总站获取权限信息
      * @apiDescription 总站获取权限信息
      * @apiGroup PermissionBase
@@ -159,6 +163,7 @@ class PermissionBaseController extends CommonController
 
     /**
      * 总站获取权限列表
+     *
      * @api {get} /Index/PermissionBase/getListByStation 总站获取权限列表
      * @apiDescription 总站获取权限列表
      * @apiGroup PermissionBase

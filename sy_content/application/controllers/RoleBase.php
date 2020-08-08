@@ -14,6 +14,7 @@ class RoleBaseController extends CommonController
 
     /**
      * 总站添加角色
+     *
      * @api {post} /Index/RoleBase/addInfoByStation 总站添加角色
      * @apiDescription 总站添加角色
      * @apiGroup RoleBase
@@ -47,6 +48,7 @@ class RoleBaseController extends CommonController
 
     /**
      * 总站修改角色
+     *
      * @api {post} /Index/RoleBase/editInfoByStation 总站修改角色
      * @apiDescription 总站修改角色
      * @apiGroup RoleBase
@@ -80,6 +82,7 @@ class RoleBaseController extends CommonController
 
     /**
      * 总站获取角色信息
+     *
      * @api {get} /Index/RoleBase/getInfoByStation 总站获取角色信息
      * @apiDescription 总站获取角色信息
      * @apiGroup RoleBase
@@ -104,6 +107,7 @@ class RoleBaseController extends CommonController
 
     /**
      * 总站获取角色列表
+     *
      * @api {get} /Index/RoleBase/getListByStation 总站获取角色列表
      * @apiDescription 总站获取角色列表
      * @apiGroup RoleBase
@@ -134,6 +138,7 @@ class RoleBaseController extends CommonController
 
     /**
      * 总站修改角色权限
+     *
      * @api {post} /Index/RoleBase/editRolePermissionsByStation 总站修改角色权限
      * @apiDescription 总站修改角色权限
      * @apiGroup RoleBase
@@ -186,6 +191,7 @@ class RoleBaseController extends CommonController
 
     /**
      * 总站获取角色权限列表
+     *
      * @api {get} /Index/RoleBase/getRolePermissionsByStation 总站获取角色权限列表
      * @apiDescription 总站获取角色权限列表
      * @apiGroup RoleBase
@@ -210,6 +216,7 @@ class RoleBaseController extends CommonController
 
     /**
      * 前端获取角色列表
+     *
      * @api {get} /Index/RoleBase/getListByFront 前端获取角色列表
      * @apiDescription 前端获取角色列表
      * @apiGroup RoleBase

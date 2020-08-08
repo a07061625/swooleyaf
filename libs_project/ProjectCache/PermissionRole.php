@@ -17,6 +17,7 @@ use SyTrait\SimpleTrait;
 
 /**
  * Class PermissionRole
+ *
  * @package ProjectCache
  */
 class PermissionRole
@@ -24,8 +25,68 @@ class PermissionRole
     use SimpleTrait;
 
     /**
-     * 获取缓存键名
+     * 获取缓存数据
+     *
      * @param string $roleTag
+     *
+     * @return array
+     *
+     * @throws \SyException\Common\CheckException
+     */
+    public static function getCacheData(string $roleTag)
+    {
+        $redisKey = self::getCacheKey($roleTag);
+        $cacheData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
+        if (!isset($cacheData['list'])) {
+            $cacheData = [
+                'unique_key' => $redisKey,
+            ];
+
+            $permissionList = self::getPermissionList($roleTag);
+            $cacheData['list'] = Tool::jsonEncode($permissionList, JSON_UNESCAPED_UNICODE);
+            unset($permissionList);
+
+            CacheSimpleFactory::getRedisInstance()->hMSet($redisKey, $cacheData);
+            CacheSimpleFactory::getRedisInstance()->expire($redisKey, 86400);
+        }
+
+        if ($cacheData['unique_key'] == $redisKey) {
+            $permissionList = Tool::jsonDecode($cacheData['list']);
+
+            return is_array($permissionList) ? $permissionList : [];
+        }
+
+        throw new CheckException('获取角色权限列表缓存出错,请稍后重试', ErrorCode::COMMON_SERVER_ERROR);
+    }
+
+    /**
+     * 清理缓存数据
+     *
+     * @param string $roleTag
+     *
+     * @return int
+     */
+    public static function clearCacheData(string $roleTag)
+    {
+        if (strlen($roleTag) > 0) {
+            $redisKey = self::getCacheKey($roleTag);
+
+            return CacheSimpleFactory::getRedisInstance()->del($redisKey);
+        }
+        $redisKey = Project::REDIS_PREFIX_PERMISSION_ROLE . '*';
+        $keyList = CacheSimpleFactory::getRedisInstance()->keys($redisKey);
+        foreach ($keyList as $eKey) {
+            CacheSimpleFactory::getRedisInstance()->del($eKey);
+        }
+
+        return count($keyList);
+    }
+
+    /**
+     * 获取缓存键名
+     *
+     * @param string $roleTag
+     *
      * @return string
      */
     private static function getCacheKey(string $roleTag)
@@ -59,6 +120,7 @@ class PermissionRole
                 $needTag = substr($tag, 0, $j);
                 if (isset($rolePermissions[$needTag])) {
                     $selectedPermissions[$tag] = $info;
+
                     break;
                 }
             }
@@ -107,57 +169,5 @@ class PermissionRole
         unset($permissions);
 
         return $truePermissions;
-    }
-
-    /**
-     * 获取缓存数据
-     * @param string $roleTag
-     * @return array
-     * @throws \SyException\Common\CheckException
-     */
-    public static function getCacheData(string $roleTag)
-    {
-        $redisKey = self::getCacheKey($roleTag);
-        $cacheData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
-        if (!isset($cacheData['list'])) {
-            $cacheData = [
-                'unique_key' => $redisKey,
-            ];
-
-            $permissionList = self::getPermissionList($roleTag);
-            $cacheData['list'] = Tool::jsonEncode($permissionList, JSON_UNESCAPED_UNICODE);
-            unset($permissionList);
-
-            CacheSimpleFactory::getRedisInstance()->hMSet($redisKey, $cacheData);
-            CacheSimpleFactory::getRedisInstance()->expire($redisKey, 86400);
-        }
-
-        if ($cacheData['unique_key'] == $redisKey) {
-            $permissionList = Tool::jsonDecode($cacheData['list']);
-            return is_array($permissionList) ? $permissionList : [];
-        } else {
-            throw new CheckException('获取角色权限列表缓存出错,请稍后重试', ErrorCode::COMMON_SERVER_ERROR);
-        }
-    }
-
-    /**
-     * 清理缓存数据
-     * @param string $roleTag
-     * @return int
-     */
-    public static function clearCacheData(string $roleTag)
-    {
-        if (strlen($roleTag) > 0) {
-            $redisKey = self::getCacheKey($roleTag);
-            return CacheSimpleFactory::getRedisInstance()->del($redisKey);
-        } else {
-            $redisKey = Project::REDIS_PREFIX_PERMISSION_ROLE . '*';
-            $keyList = CacheSimpleFactory::getRedisInstance()->keys($redisKey);
-            foreach ($keyList as $eKey) {
-                CacheSimpleFactory::getRedisInstance()->del($eKey);
-            }
-
-            return count($keyList);
-        }
     }
 }
