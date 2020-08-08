@@ -31,8 +31,8 @@ final class Project extends ProjectBase
     const REDIS_PREFIX_PAY_HASH = 'sy' . SY_PROJECT . 'a00002_'; //前缀-支付哈希
     const REDIS_PREFIX_WX_NATIVE_PRE = 'sy' . SY_PROJECT . 'a0003_'; //前缀-微信扫码预支付
     const REDIS_PREFIX_IM_ADMIN = 'sy' . SY_PROJECT . 'a0004_'; //前缀-im管理账号缓存
-    const REDIS_PREFIX_ROLE_POWERS = 'sy' . SY_PROJECT . 'a0005_'; //前缀-角色权限列表
-    const REDIS_PREFIX_ROLE_LIST = 'sy' . SY_PROJECT . 'a0006_'; //前缀-角色列表
+    const REDIS_PREFIX_PERMISSION_ROLE = 'sy' . SY_PROJECT . 'a0005_'; //前缀-角色权限
+    const REDIS_PREFIX_PERMISSION_USER = 'sy' . SY_PROJECT . 'a0006_'; //前缀-用户权限
     const REDIS_PREFIX_REGION_LIST = 'sy' . SY_PROJECT . 'a0007_'; //前缀-地区缓存
     const REDIS_PREFIX_SY_TOKEN = 'sy' . SY_PROJECT . 'a0008_'; //前缀-框架令牌缓存
 
@@ -65,10 +65,12 @@ final class Project extends ProjectBase
     const ROLE_STATUS_INVALID = 0; //状态-无效
     const ROLE_STATUS_VALID = 1; //状态-有效
 
-    //角色权限常量
-    const ROLE_POWER_LEVEL_ONE = 1; //层级-第一级
-    const ROLE_POWER_LEVEL_TWO = 2; //层级-第二级
-    const ROLE_POWER_LEVEL_THREE = 3; //层级-第三级
+    //权限常量
+    const PERMISSION_LEVEL_ONE = 1; //层级-第一级
+    const PERMISSION_LEVEL_TWO = 2; //层级-第二级
+    const PERMISSION_LEVEL_THREE = 3; //层级-第三级
+    const PERMISSION_NODE_TYPE_FORK = 1; //节点类型-树杈
+    const PERMISSION_NODE_TYPE_LEAF = 2; //节点类型-叶子
 
     //登录常量
     const LOGIN_TYPE_PHONE = 'a000'; //类型-手机号码
@@ -126,10 +128,10 @@ final class Project extends ProjectBase
         self::ROLE_STATUS_INVALID => '无效',
         self::ROLE_STATUS_VALID => '有效',
     ];
-    public static $totalRolePowerLevel = [
-        self::ROLE_POWER_LEVEL_ONE => '第一级',
-        self::ROLE_POWER_LEVEL_TWO => '第二级',
-        self::ROLE_POWER_LEVEL_THREE => '第三级',
+    public static $totalPermissionLevel = [
+        self::PERMISSION_LEVEL_ONE => '第一级',
+        self::PERMISSION_LEVEL_TWO => '第二级',
+        self::PERMISSION_LEVEL_THREE => '第三级',
     ];
     public static $totalWxMiniType = [
         self::WXMINI_TYPE_PLAT_MINI => '平台小程序',

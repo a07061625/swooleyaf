@@ -15,53 +15,75 @@ class RoleBaseController extends CommonController
     /**
      * 总站添加角色
      */
-    public function addRoleByStationAction()
+    public function addInfoByStationAction()
     {
         $data = $_POST;
         $data['session_id'] = SyTool\SySession::getSessionId();
-        $addRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/addRoleByStation', $data);
+        $addRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/addInfoByStation', $data);
         $this->sendRsp($addRes);
     }
 
     /**
      * 总站修改角色
      */
-    public function editRoleByStationAction()
+    public function editInfoByStationAction()
     {
         $data = $_POST;
         $data['session_id'] = SyTool\SySession::getSessionId();
-        $editRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/editRoleByStation', $data);
+        $editRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/editInfoByStation', $data);
         $this->sendRsp($editRes);
     }
 
     /**
      * 总站获取角色信息
      */
-    public function getRoleInfoByStationAction()
+    public function getInfoByStationAction()
     {
         $data = $_GET;
         $data['session_id'] = SyTool\SySession::getSessionId();
-        $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/getRoleInfoByStation', $data);
+        $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/getInfoByStation', $data);
         $this->sendRsp($getRes);
     }
 
     /**
      * 总站获取角色列表
      */
-    public function getRoleListByStationAction()
+    public function getListByStationAction()
     {
         $data = $_GET;
         $data['session_id'] = SyTool\SySession::getSessionId();
-        $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/getRoleListByStation', $data);
+        $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/getListByStation', $data);
+        $this->sendRsp($getRes);
+    }
+
+    /**
+     * 总站修改角色权限
+     */
+    public function editRolePermissionsByStationAction()
+    {
+        $data = $_POST;
+        $data['session_id'] = SyTool\SySession::getSessionId();
+        $editRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/editRolePermissionsByStation', $data);
+        $this->sendRsp($editRes);
+    }
+
+    /**
+     * 总站获取角色权限列表
+     */
+    public function getRolePermissionsByStationAction()
+    {
+        $data = $_GET;
+        $data['session_id'] = SyTool\SySession::getSessionId();
+        $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/getRolePermissionsByStation', $data);
         $this->sendRsp($getRes);
     }
 
     /**
      * 前端获取角色列表
      */
-    public function getRoleListByFrontAction()
+    public function getListByFrontAction()
     {
-        $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/getRoleListByFront', $_GET);
+        $getRes = \SyModule\SyModuleContent::getInstance()->sendApiReq('/Index/RoleBase/getListByFront', $_GET);
         $this->sendRsp($getRes);
     }
 }

@@ -20,8 +20,6 @@ use Entities\SyBase\RefundHistoryEntity;
 use Entities\SyBase\RegionBaseEntity;
 use Entities\SyBase\RoleBaseEntity;
 use Entities\SyBase\RolePermissionEntity;
-use Entities\SyBase\RolePowerEntity;
-use Entities\SyBase\RoleRelationEntity;
 use Entities\SyBase\SmsRecordEntity;
 use Entities\SyBase\SyTokenBaseEntity;
 use Entities\SyBase\TimedTaskEntity;
@@ -241,24 +239,6 @@ class SyBaseMysqlFactory
     public static function getRolePermissionEntity(string $dbName = '')
     {
         return new RolePermissionEntity($dbName);
-    }
-    /**
-     * @param string $dbName 数据库名
-     *
-     * @return \Entities\SyBase\RolePowerEntity
-     */
-    public static function getRolePowerEntity(string $dbName = '')
-    {
-        return new RolePowerEntity($dbName);
-    }
-    /**
-     * @param string $dbName 数据库名
-     *
-     * @return \Entities\SyBase\RoleRelationEntity
-     */
-    public static function getRoleRelationEntity(string $dbName = '')
-    {
-        return new RoleRelationEntity($dbName);
     }
     /**
      * @param string $dbName 数据库名

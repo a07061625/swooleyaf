@@ -8,7 +8,8 @@
 namespace Dao;
 
 use Factories\SyBaseMysqlFactory;
-use ProjectCache\Role;
+use ProjectCache\PermissionRole;
+use ProjectCache\PermissionUser;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Common\CheckException;
@@ -19,7 +20,7 @@ class RoleBaseDao
 {
     use SimpleDaoTrait;
 
-    public static function addRoleByStation(array $data)
+    public static function addInfoByStation(array $data)
     {
         $roleBase = SyBaseMysqlFactory::getRoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
@@ -46,7 +47,7 @@ class RoleBaseDao
         ];
     }
 
-    public static function editRoleByStation(array $data)
+    public static function editInfoByStation(array $data)
     {
         $roleBase = SyBaseMysqlFactory::getRoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
@@ -62,14 +63,12 @@ class RoleBaseDao
         ]);
         unset($ormResult1, $roleBase);
 
-        Role::clearRolePowerList($data['tag']);
-
         return [
             'msg' => '修改角色信息成功',
         ];
     }
 
-    public static function getRoleInfoByStation(array $data)
+    public static function getInfoByStation(array $data)
     {
         $roleBase = SyBaseMysqlFactory::getRoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
@@ -84,7 +83,7 @@ class RoleBaseDao
         return $roleBaseInfo;
     }
 
-    public static function getRoleListByStation(array $data)
+    public static function getListByStation(array $data)
     {
         $roleBase = SyBaseMysqlFactory::getRoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
@@ -101,7 +100,113 @@ class RoleBaseDao
         return $roleList;
     }
 
-    public static function getRoleListByFront(array $data)
+    public static function editRolePermissionsByStation(array $data)
+    {
+        $permissionArr = [];
+        if (count($data['permission_list']) > 0) {
+            $permissionBase = SyBaseMysqlFactory::getPermissionBaseEntity();
+            $ormResult1 = $permissionBase->getContainer()->getModel()->getOrmDbTable();
+            $ormResult1->where('tag', $data['permission_list']);
+            $permissionList = $permissionBase->getContainer()->getModel()->select($ormResult1);
+            foreach ($permissionList as $ePermission) {
+                $permissionArr[] = $ePermission['tag'];
+            }
+            unset($permissionList, $ormResult1, $permissionBase);
+        }
+
+        //删除旧权限
+        $rolePermission = SyBaseMysqlFactory::getRolePermissionEntity();
+        $ormResult2 = $rolePermission->getContainer()->getModel()->getOrmDbTable();
+        $ormResult2->where('`role_tag`=?', [$data['role_tag']]);
+        $rolePermission->getContainer()->getModel()->delete($ormResult2);
+
+        if (count($permissionArr) > 0) {
+            $insertData = [];
+            $nowTime = Tool::getNowTime();
+            foreach ($permissionArr as $eTag) {
+                $insertData[] = [
+                    'role_tag' => $data['role_tag'],
+                    'permission_tag' => $eTag,
+                    'created_at' => $nowTime,
+                ];
+            }
+
+            $ormResult3 = $rolePermission->getContainer()->getModel()->getOrmDbTable();
+            $ormResult3->insert_multi($insertData);
+        }
+        PermissionRole::clearCacheData($data['role_tag']);
+        PermissionUser::clearCacheData('');
+
+        return [
+            'msg' => '修改角色权限列表成功',
+        ];
+    }
+
+    public static function getRolePermissionsByStation(array $data)
+    {
+        $permissionTags = [];
+        $rolePermission = SyBaseMysqlFactory::getRolePermissionEntity();
+        $ormResult1 = $rolePermission->getContainer()->getModel()->getOrmDbTable();
+        $ormResult1->where('`role_tag`=?', [$data['role_tag']])
+                   ->order('`permission_tag` ASC');
+        $permissionList = $rolePermission->getContainer()->getModel()->select($ormResult1, 1, 1000);
+        foreach ($permissionList as $ePermission) {
+            for ($i = 9; $i > 0; $i -= 3) {
+                $subTag = substr($ePermission['permission_tag'], 0, $i);
+                $permissionTags[$subTag] = $subTag === $ePermission['permission_tag'] ? 1 : 2;
+            }
+        }
+        unset($permissionList, $ormResult1, $rolePermission);
+
+        //返回zTree需要的数据格式
+        $totalPermissions = [];
+        $page = 1;
+        $permissionBase = SyBaseMysqlFactory::getPermissionBaseEntity();
+        $ormResult2 = $permissionBase->getContainer()->getModel()->getOrmDbTable();
+        $ormResult2->order('`level_num` ASC,`sort_num` DESC,`tag` ASC');
+        $permissionList = $permissionBase->getContainer()->getModel()->select($ormResult2, $page, 200);
+        while (count($permissionList) > 0) {
+            foreach ($permissionList as $ePermission) {
+                $totalPermissions[$ePermission['tag']] = [
+                    'id' => $ePermission['id'],
+                    'tag' => $ePermission['tag'],
+                    'title' => $ePermission['title'],
+                ];
+                if (isset($permissionTags[$ePermission['tag']])) {
+                    $totalPermissions[$ePermission['tag']]['checked'] = true;
+                    if ($permissionTags[$ePermission['tag']] == 2) {
+                        $totalPermissions[$ePermission['tag']]['halfCheck'] = true;
+                    }
+                }
+                if ($ePermission['level_num'] == Project::PERMISSION_LEVEL_ONE) {
+                    $totalPermissions[$ePermission['tag']]['pid'] = 0;
+                } else {
+                    $needLength = strlen($ePermission['tag']) - 3;
+                    $prefixTag = substr($ePermission['tag'], 0, $needLength);
+                    if (!isset($totalPermissions[$prefixTag])) {
+                        continue;
+                    }
+                    if ((!isset($totalPermissions[$ePermission['tag']]['checked']))
+                        && isset($totalPermissions[$prefixTag]['checked'])
+                        && (!isset($totalPermissions[$prefixTag]['halfCheck']))) {
+                        $totalPermissions[$ePermission['tag']]['checked'] = true;
+                    }
+                    $totalPermissions[$ePermission['tag']]['pid'] = $totalPermissions[$prefixTag]['id'];
+                }
+                if ($ePermission['node_type'] == Project::PERMISSION_NODE_TYPE_FORK) {
+                    $totalPermissions[$ePermission['tag']]['isParent'] = true;
+                }
+            }
+
+            $page++;
+            $permissionList = $permissionBase->getContainer()->getModel()->select($ormResult2, $page, 200);
+        }
+        unset($permissionList, $ormResult2, $permissionBase);
+
+        return array_values($totalPermissions);
+    }
+
+    public static function getListByFront(array $data)
     {
         $roleBase = SyBaseMysqlFactory::getRoleBaseEntity();
         $ormResult1 = $roleBase->getContainer()->getModel()->getOrmDbTable();
