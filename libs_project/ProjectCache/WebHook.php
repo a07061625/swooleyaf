@@ -44,7 +44,7 @@ class WebHook
         $cacheKey = self::getCacheCommandKey($tag);
         $cacheData = CacheSimpleFactory::getRedisInstance()->hGetAll($cacheKey);
         if (empty($cacheData)) {
-            $webHook = SyTaskMysqlFactory::WebhookEntity();
+            $webHook = SyTaskMysqlFactory::getWebhookEntity();
             $ormResult1 = $webHook->getContainer()->getModel()->getOrmDbTable();
             $ormResult1->where('`tag`=?', [$tag]);
             $webHookInfo = $webHook->getContainer()->getModel()->findOne($ormResult1);
@@ -82,7 +82,7 @@ class WebHook
         $cacheData = CacheSimpleFactory::getRedisInstance()->hGetAll($cacheKey);
         if (empty($cacheData)) {
             $cacheData['unique_key'] = $cacheKey;
-            $webHook = SyTaskMysqlFactory::WebhookEntity();
+            $webHook = SyTaskMysqlFactory::getWebhookEntity();
             $ormResult1 = $webHook->getContainer()->getModel()->getOrmDbTable();
             $ormResult1->where('`tag`=?', [$tag]);
             $webHookInfo = $webHook->getContainer()->getModel()->findOne($ormResult1);
