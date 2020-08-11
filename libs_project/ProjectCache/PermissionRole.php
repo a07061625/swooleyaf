@@ -104,9 +104,15 @@ class PermissionRole
         $permissionList = $rolePermission->getContainer()->getModel()->select($ormResult1, $page, 100);
         while (count($permissionList) > 0) {
             foreach ($permissionList as $ePermission) {
-                for ($i = 9; $i > 0; $i -= 3) {
-                    $subTag = substr($ePermission['permission_tag'], 0, $i);
-                    $rolePermissions[$subTag] = 1;
+                for ($i = 3; $i <= 9; $i += 3) {
+                    $nowTag = substr($ePermission['permission_tag'], 0, $i);
+                    if ($nowTag === $ePermission['permission_tag']) {
+                        $rolePermissions[$nowTag] = 1;
+                        break;
+                    } else {
+                        $parentTag = substr($ePermission['permission_tag'], 0, ($i - 3));
+                        $rolePermissions[$nowTag] = $rolePermissions[$parentTag] ?? 2;
+                    }
                 }
             }
             $page++;
@@ -116,13 +122,18 @@ class PermissionRole
 
         $selectedPermissions = [];
         foreach ($totalPermissions as $tag => $info) {
-            for ($j = 9; $j > 0; $j -= 3) {
+            $existTag = 0;
+            for ($j = 3; $j <= 9; $j += 3) {
                 $needTag = substr($tag, 0, $j);
-                if (isset($rolePermissions[$needTag])) {
-                    $selectedPermissions[$tag] = $info;
-
+                $existTag = $rolePermissions[$needTag] ?? 0;
+                if ($existTag != 2) {
                     break;
                 }
+            }
+            if ($existTag == 1) {
+                $selectedPermissions[$tag] = $info;
+            } elseif (($existTag == 2) && ($info['node'] == Project::PERMISSION_NODE_TYPE_FORK)) {
+                $selectedPermissions[$tag] = $info;
             }
         }
 
