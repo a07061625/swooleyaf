@@ -108,11 +108,11 @@ class PermissionRole
                     $nowTag = substr($ePermission['permission_tag'], 0, $i);
                     if ($nowTag === $ePermission['permission_tag']) {
                         $rolePermissions[$nowTag] = 1;
+
                         break;
-                    } else {
-                        $parentTag = substr($ePermission['permission_tag'], 0, ($i - 3));
-                        $rolePermissions[$nowTag] = $rolePermissions[$parentTag] ?? 2;
                     }
+                    $parentTag = substr($ePermission['permission_tag'], 0, ($i - 3));
+                    $rolePermissions[$nowTag] = $rolePermissions[$parentTag] ?? 2;
                 }
             }
             $page++;
