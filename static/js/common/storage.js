@@ -31,7 +31,7 @@ function SyStorageBase(props) {
     }
     
     //设置存储前缀
-    if (props.hasOwnProperty('prefix')) {
+    if (typeof props.prefix === 'string') {
         this._syprefix = props.prefix;
     } else {
         this._syprefix = 'sys';
