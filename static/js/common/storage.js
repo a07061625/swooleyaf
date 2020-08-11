@@ -122,40 +122,41 @@ SyStorageBase.prototype.remove = function() {
  * 存储管理类
  * @type {{}}
  */
-SyStorage = {};
-SyStorage.prototype.list = {}
-SyStorage.prototype.setObj = function(name, obj) {
-    if (obj instanceof SyStorageBase) {
-        this.list[name] = obj;
+SyStorage = {
+    list: {},
+    getObj: function(name) {
+        if (this.list.hasOwnProperty(name)) {
+            return this.list[name];
+        } else {
+            return null;
+        }
+    },
+    setObj: function(name, obj) {
+        if (obj instanceof SyStorageBase) {
+            this.list[name] = obj;
+        }
+    },
+    get: function(name) {
+        var obj = this.getObj(name);
+        if (obj !== null) {
+            return obj.get();
+        } else {
+            return null;
+        }
+    },
+    set: function(name, val) {
+        var obj = this.getObj(name);
+        if (obj !== null) {
+            obj.set(val);
+        }
+    },
+    remove: function(name) {
+        var obj = this.getObj(name);
+        if (obj !== null) {
+            obj.remove();
+        }
     }
-}
-SyStorage.prototype.getObj = function(name) {
-    if (this.list.hasOwnProperty(name)) {
-        return this.list[name];
-    } else {
-        return null;
-    }
-}
-SyStorage.prototype.get = function(name) {
-    var obj = this.getObj(name);
-    if (obj !== null) {
-        return obj.get();
-    } else {
-        return null;
-    }
-}
-SyStorage.prototype.set = function(name, val) {
-    var obj = this.getObj(name);
-    if (obj !== null) {
-        obj.set(val);
-    }
-}
-SyStorage.prototype.remove = function(name) {
-    var obj = this.getObj(name);
-    if (obj !== null) {
-        obj.remove();
-    }
-}
+};
 
 //--------------------------------------------------后续为各个存储子类的实现-----------------------------------------------
 //角色功能列表存储子类实现
