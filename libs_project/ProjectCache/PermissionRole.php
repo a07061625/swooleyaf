@@ -126,13 +126,11 @@ class PermissionRole
             for ($j = 3; $j <= 9; $j += 3) {
                 $needTag = substr($tag, 0, $j);
                 $existTag = $rolePermissions[$needTag] ?? 0;
-                if ($existTag != 2) {
+                if (($existTag != 2) || ($needTag === $tag)) {
                     break;
                 }
             }
-            if ($existTag == 1) {
-                $selectedPermissions[$tag] = $info;
-            } elseif (($existTag == 2) && ($info['node'] == Project::PERMISSION_NODE_TYPE_FORK)) {
+            if ($existTag != 0) {
                 $selectedPermissions[$tag] = $info;
             }
         }

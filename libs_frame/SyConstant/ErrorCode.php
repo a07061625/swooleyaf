@@ -120,7 +120,7 @@ class ErrorCode
     const SOLR_UPDATE_ERROR = 103306;
     const SOLR_SELECT_ERROR = 103307;
 
-    //Solr错误,取值范围:103400-103599
+    //地图错误,取值范围:103400-103599
     const MAP_TENCENT_PARAM_ERROR = 103400;
     const MAP_TENCENT_GET_ERROR = 103401;
     const MAP_TENCENT_POST_ERROR = 103402;
@@ -267,6 +267,14 @@ class ErrorCode
     //消息处理错误,取值范围:107400-107499
     const MESSAGE_HANDLER_PARAM_ERROR = 107400;
     const MESSAGE_HANDLER_INVOKE_ERROR = 107401;
+
+    //支付错误,取值范围:107500-107999
+    const PAY_PARAM_ERROR = 107500;
+    const PAY_REQ_ERROR = 107501;
+    const PAY_PAYPAL_PARAM_ERROR = 107510;
+    const PAY_PAYPAL_REQ_ERROR = 107511;
+    const PAY_UNION_PARAM_ERROR = 107520;
+    const PAY_UNION_REQ_ERROR = 107521;
 
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
@@ -441,6 +449,12 @@ class ErrorCode
         self::VMS_REQ_QCLOUD_ERROR => '语音服务腾讯云发送请求出错',
         self::MESSAGE_HANDLER_PARAM_ERROR => '消息处理参数错误',
         self::MESSAGE_HANDLER_INVOKE_ERROR => '消息处理调用错误',
+        self::PAY_PARAM_ERROR => '支付参数错误',
+        self::PAY_REQ_ERROR => '支付请求出错',
+        self::PAY_PAYPAL_PARAM_ERROR => '贝宝支付参数错误',
+        self::PAY_PAYPAL_REQ_ERROR => '贝宝支付请求出错',
+        self::PAY_UNION_PARAM_ERROR => '银联支付参数错误',
+        self::PAY_UNION_REQ_ERROR => '银联支付请求出错',
     ];
 
     /**
