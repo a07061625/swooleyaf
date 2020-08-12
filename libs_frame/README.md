@@ -43,6 +43,7 @@
 - SyMessagePush: 消息推送相关
 - SyMessageQueue: 消息队列相关
 - SyModule: 框架模块相关
+- SyPay: 支付相关
 - SyPrint: 打印相关
 - SyQr: 二维码相关
 - SySCRM: 社会化客户管理相关
