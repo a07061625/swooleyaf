@@ -13,48 +13,57 @@ use SyException\Pay\UnionException;
 /**
  * Class ConfigUnion
  * 证书上传导出请参考 https://open.unionpay.com/tjweb/doc/mchnt/list?cateLog=agreement
+ *
  * @package SyPay
  */
 class ConfigUnion
 {
     /**
      * 商户号
+     *
      * @var string
      */
     private $merId = '';
     /**
      * 手机网页支付异步通知地址
+     *
      * @var string
      */
     private $urlWapNotify = '';
     /**
      * 证书公钥ID
+     *
      * @var string
      */
     private $certPublicId = '';
     /**
      * 证书公钥
+     *
      * @var string
      */
     private $certPublicKey = '';
     /**
      * 证书私钥ID
+     *
      * @var string
      */
     private $certPrivateId = '';
     /**
      * 证书私钥
+     *
      * @var string
      */
     private $certPrivateKey = '';
     /**
      * 配置有效状态
+     *
      * @var bool
      */
     private $valid = false;
 
     /**
      * 配置过期时间戳
+     *
      * @var int
      */
     private $expireTime = 0;
@@ -78,6 +87,7 @@ class ConfigUnion
 
     /**
      * @param string $merId
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setMerId(string $merId)
@@ -99,6 +109,7 @@ class ConfigUnion
 
     /**
      * @param string $urlWapNotify
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setUrlWapNotify(string $urlWapNotify)
@@ -129,6 +140,7 @@ class ConfigUnion
 
     /**
      * @param string $certContent 公钥证书内容,不是证书文件,证书文件后缀为.cer
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setCertPublic(string $certContent)
@@ -160,7 +172,8 @@ class ConfigUnion
 
     /**
      * @param string $certContent 私钥证书内容,不是证书文件,证书文件后缀为.pfx
-     * @param string $certPwd 私钥证书密码
+     * @param string $certPwd     私钥证书密码
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setCertPrivate(string $certContent, string $certPwd)
