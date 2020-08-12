@@ -17,6 +17,7 @@ use SyTrait\SingletonTrait;
 
 /**
  * Class PayConfigSingleton
+ *
  * @package DesignPatterns\Singletons
  */
 class PayConfigSingleton
@@ -26,21 +27,25 @@ class PayConfigSingleton
 
     /**
      * 贝宝支付配置列表
+     *
      * @var array
      */
     private $payPalConfigs = [];
     /**
      * 贝宝支付配置清理时间戳
+     *
      * @var int
      */
     private $payPalClearTime = 0;
     /**
      * 银联支付配置列表
+     *
      * @var array
      */
     private $unionConfigs = [];
     /**
      * 银联支付配置清理时间戳
+     *
      * @var int
      */
     private $unionClearTime = 0;
@@ -59,6 +64,7 @@ class PayConfigSingleton
 
     /**
      * 获取所有的银联支付配置
+     *
      * @return array
      */
     public function getUnionConfigs()
@@ -67,8 +73,92 @@ class PayConfigSingleton
     }
 
     /**
-     * 获取本地银联支付配置
+     * 获取银联支付配置
+     *
      * @param string $merId
+     *
+     * @return \SyPay\ConfigUnion
+     *
+     * @throws \SyException\Pay\UnionException
+     */
+    public function getUnionConfig(string $merId)
+    {
+        $nowTime = Tool::getNowTime();
+        $unionConfig = $this->getLocalUnionConfig($merId);
+        if (is_null($unionConfig)) {
+            $unionConfig = $this->refreshUnionConfig($merId);
+        } elseif ($unionConfig->getExpireTime() < $nowTime) {
+            $unionConfig = $this->refreshUnionConfig($merId);
+        }
+
+        if ($unionConfig->isValid()) {
+            return $unionConfig;
+        }
+
+        throw new UnionException('银联支付配置不存在', ErrorCode::PAY_UNION_PARAM_ERROR);
+    }
+
+    /**
+     * 移除银联支付配置
+     *
+     * @param string $merId
+     */
+    public function removeUnionConfig(string $merId)
+    {
+        unset($this->unionConfigs[$merId]);
+    }
+
+    /**
+     * 获取所有的贝宝支付配置
+     *
+     * @return array
+     */
+    public function getPayPalConfigs()
+    {
+        return $this->payPalConfigs;
+    }
+
+    /**
+     * 获取贝宝支付配置
+     *
+     * @param string $clientId
+     *
+     * @return \SyPay\ConfigPayPal
+     *
+     * @throws \SyException\Pay\PayPalException
+     */
+    public function getPayPalConfig(string $clientId)
+    {
+        $nowTime = Tool::getNowTime();
+        $payPalConfig = $this->getLocalPayPalConfig($clientId);
+        if (is_null($payPalConfig)) {
+            $payPalConfig = $this->refreshPayPalConfig($clientId);
+        } elseif ($payPalConfig->getExpireTime() < $nowTime) {
+            $payPalConfig = $this->refreshPayPalConfig($clientId);
+        }
+
+        if ($payPalConfig->isValid()) {
+            return $payPalConfig;
+        }
+
+        throw new PayPalException('贝宝支付配置不存在', ErrorCode::PAY_PAYPAL_PARAM_ERROR);
+    }
+
+    /**
+     * 移除贝宝支付配置
+     *
+     * @param string $clientId
+     */
+    public function removePayPalConfig(string $clientId)
+    {
+        unset($this->payPalConfigs[$clientId]);
+    }
+
+    /**
+     * 获取本地银联支付配置
+     *
+     * @param string $merId
+     *
      * @return \SyPay\ConfigUnion|null
      */
     private function getLocalUnionConfig(string $merId)
@@ -92,49 +182,10 @@ class PayConfigSingleton
     }
 
     /**
-     * 获取银联支付配置
-     * @param string $merId
-     * @return \SyPay\ConfigUnion
-     * @throws \SyException\Pay\UnionException
-     */
-    public function getUnionConfig(string $merId)
-    {
-        $nowTime = Tool::getNowTime();
-        $unionConfig = $this->getLocalUnionConfig($merId);
-        if (is_null($unionConfig)) {
-            $unionConfig = $this->refreshUnionConfig($merId);
-        } elseif ($unionConfig->getExpireTime() < $nowTime) {
-            $unionConfig = $this->refreshUnionConfig($merId);
-        }
-
-        if ($unionConfig->isValid()) {
-            return $unionConfig;
-        } else {
-            throw new UnionException('银联支付配置不存在', ErrorCode::PAY_UNION_PARAM_ERROR);
-        }
-    }
-
-    /**
-     * 移除银联支付配置
-     * @param string $merId
-     */
-    public function removeUnionConfig(string $merId)
-    {
-        unset($this->unionConfigs[$merId]);
-    }
-
-    /**
-     * 获取所有的贝宝支付配置
-     * @return array
-     */
-    public function getPayPalConfigs()
-    {
-        return $this->payPalConfigs;
-    }
-
-    /**
      * 获取本地贝宝支付配置
+     *
      * @param string $clientId
+     *
      * @return \SyPay\ConfigPayPal|null
      */
     private function getLocalPayPalConfig(string $clientId)
@@ -155,37 +206,5 @@ class PayConfigSingleton
         }
 
         return Tool::getArrayVal($this->payPalConfigs, $clientId, null);
-    }
-
-    /**
-     * 获取贝宝支付配置
-     * @param string $clientId
-     * @return \SyPay\ConfigPayPal
-     * @throws \SyException\Pay\PayPalException
-     */
-    public function getPayPalConfig(string $clientId)
-    {
-        $nowTime = Tool::getNowTime();
-        $payPalConfig = $this->getLocalPayPalConfig($clientId);
-        if (is_null($payPalConfig)) {
-            $payPalConfig = $this->refreshPayPalConfig($clientId);
-        } elseif ($payPalConfig->getExpireTime() < $nowTime) {
-            $payPalConfig = $this->refreshPayPalConfig($clientId);
-        }
-
-        if ($payPalConfig->isValid()) {
-            return $payPalConfig;
-        } else {
-            throw new PayPalException('贝宝支付配置不存在', ErrorCode::PAY_PAYPAL_PARAM_ERROR);
-        }
-    }
-
-    /**
-     * 移除贝宝支付配置
-     * @param string $clientId
-     */
-    public function removePayPalConfig(string $clientId)
-    {
-        unset($this->payPalConfigs[$clientId]);
     }
 }

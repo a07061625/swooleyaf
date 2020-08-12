@@ -12,6 +12,7 @@ use SyException\Pay\PayException;
 
 /**
  * Class Base
+ *
  * @package SyPay
  */
 abstract class Base
@@ -21,21 +22,25 @@ abstract class Base
 
     /**
      * curl配置
+     *
      * @var array
      */
     protected $curlConfigs = [];
     /**
      * 请求数据
+     *
      * @var array
      */
     protected $reqData = [];
     /**
      * 请求头
+     *
      * @var array
      */
     protected $reqHeaders = [];
     /**
      * 环境类型
+     *
      * @var string
      */
     protected $envType = '';
@@ -47,6 +52,7 @@ abstract class Base
 
     /**
      * @param string $envType
+     *
      * @throws \SyException\Pay\PayException
      */
     public function setEnvType(string $envType)

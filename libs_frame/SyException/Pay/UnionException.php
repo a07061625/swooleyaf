@@ -11,6 +11,7 @@ use SyException\BaseException;
 
 /**
  * Class UnionException
+ *
  * @package SyException\Pay
  */
 class UnionException extends BaseException

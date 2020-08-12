@@ -9,6 +9,7 @@ namespace SyPay;
 
 /**
  * Class BasePayPal
+ *
  * @package SyPay
  */
 abstract class BasePayPal extends Base
@@ -20,14 +21,15 @@ abstract class BasePayPal extends Base
 
     /**
      * 获取接口域名
+     *
      * @return string
      */
     protected function getApiDomain() : string
     {
         if ($this->envType == self::ENV_TYPE_PRODUCT) {
             return 'https://api.paypal.com';
-        } else {
-            return 'https://api.sandbox.paypal.com';
         }
+
+        return 'https://api.sandbox.paypal.com';
     }
 }

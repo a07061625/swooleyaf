@@ -14,6 +14,7 @@ use SyTrait\SimpleTrait;
 
 /**
  * Class UtilUnion
+ *
  * @package SyPay
  */
 final class UtilUnion extends Util
@@ -21,29 +22,13 @@ final class UtilUnion extends Util
     use SimpleTrait;
 
     /**
-     * 获取待签名字符串
-     * @param array $data
-     * @return string
-     */
-    private static function getSignStr(array $data) : string
-    {
-        ksort($data);
-        $signStr = '';
-        foreach ($data as $key => $val) {
-            if ($key == 'signature') {
-                continue;
-            }
-            $signStr .= '&' . $key . '=' . $val;
-        }
-
-        return substr($signStr, 1);
-    }
-
-    /**
      * 生成签名
+     *
      * @param string $merId 商户号
-     * @param array $data 待签名数据
+     * @param array  $data  待签名数据
+     *
      * @return string
+     *
      * @throws \SyException\Pay\UnionException
      */
     public static function createSign(string $merId, array $data) : string
@@ -61,9 +46,12 @@ final class UtilUnion extends Util
 
     /**
      * 校验签名
+     *
      * @param string $merId 商户号
-     * @param array $data 待校验数据
+     * @param array  $data  待校验数据
+     *
      * @return bool
+     *
      * @throws \SyException\Pay\UnionException
      */
     public static function verifySign(string $merId, array $data) : bool
@@ -77,6 +65,28 @@ final class UtilUnion extends Util
         $signStr = self::getSignStr($data);
         $sha1Str = sha1($signStr, false);
         $verifyRes = openssl_verify($sha1Str, base64_decode($nowSign), $config->getCertPublicKey(), OPENSSL_ALGO_SHA1);
+
         return $verifyRes == 1;
+    }
+
+    /**
+     * 获取待签名字符串
+     *
+     * @param array $data
+     *
+     * @return string
+     */
+    private static function getSignStr(array $data) : string
+    {
+        ksort($data);
+        $signStr = '';
+        foreach ($data as $key => $val) {
+            if ($key == 'signature') {
+                continue;
+            }
+            $signStr .= '&' . $key . '=' . $val;
+        }
+
+        return substr($signStr, 1);
     }
 }

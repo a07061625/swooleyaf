@@ -11,6 +11,7 @@ use SyTrait\SimpleTrait;
 
 /**
  * Class UtilPayPal
+ *
  * @package SyPay
  */
 final class UtilPayPal extends Util

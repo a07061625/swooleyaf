@@ -9,6 +9,7 @@ namespace SyPay;
 
 /**
  * Class BaseUnion
+ *
  * @package SyPay
  */
 abstract class BaseUnion extends Base
@@ -20,14 +21,15 @@ abstract class BaseUnion extends Base
 
     /**
      * 获取接口域名
+     *
      * @return string
      */
     protected function getApiDomain() : string
     {
         if ($this->envType == self::ENV_TYPE_PRODUCT) {
             return 'https://gateway.95516.com';
-        } else {
-            return 'https://gateway.test.95516.com';
         }
+
+        return 'https://gateway.test.95516.com';
     }
 }
