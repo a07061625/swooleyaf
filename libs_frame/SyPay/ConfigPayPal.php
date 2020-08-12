@@ -12,43 +12,51 @@ use SyException\Pay\PayPalException;
 
 /**
  * Class ConfigPayPal
+ *
  * @package SyPay
  */
 class ConfigPayPal
 {
     /**
      * 客户端ID
+     *
      * @var string
      */
     private $clientId = '';
     /**
      * 客户端密钥
+     *
      * @var string
      */
     private $clientSecret = '';
     /**
      * 支付成功回调地址
+     *
      * @var string
      */
     private $returnUrl = '';
     /**
      * 支付取消回调地址
+     *
      * @var string
      */
     private $cancelUrl = '';
     /**
      * 支付异步通知网页ID,用于异步通知验签
+     *
      * @var string
      */
     private $notifyWebHookId = '';
     /**
      * 配置有效状态
+     *
      * @var bool
      */
     private $valid = false;
 
     /**
      * 配置过期时间戳
+     *
      * @var int
      */
     private $expireTime = 0;
@@ -71,6 +79,7 @@ class ConfigPayPal
 
     /**
      * @param string $clientId
+     *
      * @throws \SyException\Pay\PayPalException
      */
     public function setClientId(string $clientId)
@@ -93,6 +102,7 @@ class ConfigPayPal
 
     /**
      * @param string $clientSecret
+     *
      * @throws \SyException\Pay\PayPalException
      */
     public function setClientSecret(string $clientSecret)
@@ -115,6 +125,7 @@ class ConfigPayPal
 
     /**
      * @param string $returnUrl
+     *
      * @throws \SyException\Pay\PayPalException
      */
     public function setReturnUrl(string $returnUrl)
@@ -136,6 +147,7 @@ class ConfigPayPal
 
     /**
      * @param string $cancelUrl
+     *
      * @throws \SyException\Pay\PayPalException
      */
     public function setCancelUrl(string $cancelUrl)
@@ -157,6 +169,7 @@ class ConfigPayPal
 
     /**
      * @param string $notifyWebHookId
+     *
      * @throws \SyException\Pay\PayPalException
      */
     public function setNotifyWebHookId(string $notifyWebHookId)

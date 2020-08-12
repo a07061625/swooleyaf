@@ -14,14 +14,18 @@ use SyTool\Tool;
 
 /**
  * Trait PayConfigTrait
+ *
  * @package SyTrait
  */
 trait PayConfigTrait
 {
     /**
      * 刷新银联支付配置信息
+     *
      * @param string $merId
+     *
      * @return \SyPay\ConfigUnion
+     *
      * @throws \SyException\Pay\UnionException
      */
     private function refreshUnionConfig(string $merId)
@@ -39,8 +43,11 @@ trait PayConfigTrait
 
     /**
      * 刷新贝宝支付配置信息
+     *
      * @param string $clientId
+     *
      * @return \SyPay\ConfigPayPal
+     *
      * @throws \SyException\Pay\PayPalException
      */
     private function refreshPayPalConfig(string $clientId)

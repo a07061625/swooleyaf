@@ -11,6 +11,7 @@ use SyException\BaseException;
 
 /**
  * Class PayPalException
+ *
  * @package SyException\Pay
  */
 class PayPalException extends BaseException

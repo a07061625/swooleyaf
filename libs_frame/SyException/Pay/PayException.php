@@ -11,6 +11,7 @@ use SyException\BaseException;
 
 /**
  * Class PayException
+ *
  * @package SyException\Pay
  */
 class PayException extends BaseException

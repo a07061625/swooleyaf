@@ -11,6 +11,7 @@ use SyTrait\SimpleTrait;
 
 /**
  * Class Util
+ *
  * @package SyPay
  */
 abstract class Util
