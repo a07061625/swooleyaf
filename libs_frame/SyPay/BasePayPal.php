@@ -14,22 +14,12 @@ namespace SyPay;
  */
 abstract class BasePayPal extends Base
 {
-    public function __construct()
+    public function __construct(string $clientId, string $envType)
     {
-        parent::__construct();
-    }
-
-    /**
-     * 获取接口域名
-     *
-     * @return string
-     */
-    protected function getApiDomain() : string
-    {
-        if ($this->envType == self::ENV_TYPE_PRODUCT) {
-            return 'https://api.paypal.com';
-        }
-
-        return 'https://api.sandbox.paypal.com';
+        $this->reqDomains = [
+            self::ENV_TYPE_PRODUCT => 'https://api.paypal.com',
+            self::ENV_TYPE_DEV => 'https://api.sandbox.paypal.com',
+        ];
+        parent::__construct($envType);
     }
 }

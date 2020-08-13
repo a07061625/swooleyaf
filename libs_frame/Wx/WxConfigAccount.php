@@ -10,9 +10,12 @@ namespace Wx;
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
+use SyTrait\SimpleConfigTrait;
 
 class WxConfigAccount
 {
+    use SimpleConfigTrait;
+
     /**
      * 客户端IP
      * @var string
@@ -97,18 +100,6 @@ class WxConfigAccount
      * @var string
      */
     private $merchantAppId = '';
-
-    /**
-     * 配置有效状态
-     * @var bool
-     */
-    private $valid = false;
-
-    /**
-     * 配置过期时间戳
-     * @var int
-     */
-    private $expireTime = 0;
 
     public function __construct()
     {
@@ -409,38 +400,6 @@ class WxConfigAccount
             }
         }
         $this->merchantAppId = $merchantAppId;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid() : bool
-    {
-        return $this->valid;
-    }
-
-    /**
-     * @param bool $valid
-     */
-    public function setValid(bool $valid)
-    {
-        $this->valid = $valid;
-    }
-
-    /**
-     * @return int
-     */
-    public function getExpireTime() : int
-    {
-        return $this->expireTime;
-    }
-
-    /**
-     * @param int $expireTime
-     */
-    public function setExpireTime(int $expireTime)
-    {
-        $this->expireTime = $expireTime;
     }
 
     /**

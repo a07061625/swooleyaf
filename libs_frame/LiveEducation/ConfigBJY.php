@@ -9,6 +9,7 @@ namespace LiveEducation;
 
 use SyConstant\ErrorCode;
 use SyException\LiveEducation\BJYException;
+use SyTrait\SimpleConfigTrait;
 
 /**
  * Class ConfigBJY
@@ -16,6 +17,8 @@ use SyException\LiveEducation\BJYException;
  */
 class ConfigBJY
 {
+    use SimpleConfigTrait;
+
     /**
      * 账号ID
      * @var string
@@ -36,16 +39,6 @@ class ConfigBJY
      * @var string
      */
     private $apiDomain = '';
-    /**
-     * 配置有效状态
-     * @var bool
-     */
-    private $valid = false;
-    /**
-     * 配置过期时间戳
-     * @var int
-     */
-    private $expireTime = 0;
 
     public function __construct()
     {
@@ -126,37 +119,5 @@ class ConfigBJY
         } else {
             throw new BJYException('个性域名不合法', ErrorCode::LIVE_EDUCATION_PARAM_ERROR);
         }
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid() : bool
-    {
-        return $this->valid;
-    }
-
-    /**
-     * @param bool $valid
-     */
-    public function setValid(bool $valid)
-    {
-        $this->valid = $valid;
-    }
-
-    /**
-     * @return int
-     */
-    public function getExpireTime() : int
-    {
-        return $this->expireTime;
-    }
-
-    /**
-     * @param int $expireTime
-     */
-    public function setExpireTime(int $expireTime)
-    {
-        $this->expireTime = $expireTime;
     }
 }

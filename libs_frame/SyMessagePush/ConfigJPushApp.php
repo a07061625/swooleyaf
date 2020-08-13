@@ -9,9 +9,12 @@ namespace SyMessagePush;
 
 use SyConstant\ErrorCode;
 use SyException\MessagePush\JPushException;
+use SyTrait\SimpleConfigTrait;
 
 class ConfigJPushApp
 {
+    use SimpleConfigTrait;
+
     /**
      * 标识
      * @var string
@@ -27,17 +30,6 @@ class ConfigJPushApp
      * @var string
      */
     private $auth = '';
-    /**
-     * 配置有效状态
-     * @var bool
-     */
-    private $valid = false;
-
-    /**
-     * 配置过期时间戳
-     * @var int
-     */
-    private $expireTime = 0;
 
     public function __construct()
     {
@@ -87,37 +79,5 @@ class ConfigJPushApp
         $this->key = $key;
         $this->secret = $secret;
         $this->auth = 'Basic ' . base64_encode($key . ':' . $secret);
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid() : bool
-    {
-        return $this->valid;
-    }
-
-    /**
-     * @param bool $valid
-     */
-    public function setValid(bool $valid)
-    {
-        $this->valid = $valid;
-    }
-
-    /**
-     * @return int
-     */
-    public function getExpireTime() : int
-    {
-        return $this->expireTime;
-    }
-
-    /**
-     * @param int $expireTime
-     */
-    public function setExpireTime(int $expireTime)
-    {
-        $this->expireTime = $expireTime;
     }
 }

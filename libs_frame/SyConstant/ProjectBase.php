@@ -158,8 +158,10 @@ class ProjectBase
     const TIME_EXPIRE_LOCAL_JPUSH_GROUP_CLEAR = 3600; //超时时间-本地极光推送分组清理,单位为秒
     const TIME_EXPIRE_LOCAL_PAY_PAYPAL_REFRESH = 600; //超时时间-本地贝宝支付配置更新,单位为秒
     const TIME_EXPIRE_LOCAL_PAY_PAYPAL_CLEAR = 3600; //超时时间-本地贝宝支付配置清理,单位为秒
-    const TIME_EXPIRE_LOCAL_PAY_UNION_REFRESH = 600; //超时时间-本地银联支付配置更新,单位为秒
-    const TIME_EXPIRE_LOCAL_PAY_UNION_CLEAR = 3600; //超时时间-本地银联支付配置清理,单位为秒
+    const TIME_EXPIRE_LOCAL_PAY_UNION_CHANNELS_REFRESH = 600; //超时时间-本地银联支付全渠道配置更新,单位为秒
+    const TIME_EXPIRE_LOCAL_PAY_UNION_CHANNELS_CLEAR = 3600; //超时时间-本地银联支付全渠道配置清理,单位为秒
+    const TIME_EXPIRE_LOCAL_PAY_UNION_QUICK_PASS_REFRESH = 600; //超时时间-本地银联支付云闪付配置更新,单位为秒
+    const TIME_EXPIRE_LOCAL_PAY_UNION_QUICK_PASS_CLEAR = 3600; //超时时间-本地银联支付云闪付配置清理,单位为秒
 
     //任务常量,4位字符串,数字和字母组成,纯数字的为框架内部任务,其他为自定义任务
     const TASK_TYPE_CLEAR_API_SIGN_CACHE = '0001'; //任务类型-清理api签名缓存

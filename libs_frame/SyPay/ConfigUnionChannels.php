@@ -9,15 +9,18 @@ namespace SyPay;
 
 use SyConstant\ErrorCode;
 use SyException\Pay\UnionException;
+use SyTrait\SimpleConfigTrait;
 
 /**
- * Class ConfigUnion
+ * Class ConfigUnionChannels
  * 证书上传导出请参考 https://open.unionpay.com/tjweb/doc/mchnt/list?cateLog=agreement
  *
  * @package SyPay
  */
-class ConfigUnion
+class ConfigUnionChannels
 {
+    use SimpleConfigTrait;
+
     /**
      * 商户号
      *
@@ -54,19 +57,6 @@ class ConfigUnion
      * @var string
      */
     private $certPrivateKey = '';
-    /**
-     * 配置有效状态
-     *
-     * @var bool
-     */
-    private $valid = false;
-
-    /**
-     * 配置过期时间戳
-     *
-     * @var int
-     */
-    private $expireTime = 0;
 
     public function __construct()
     {
@@ -191,37 +181,5 @@ class ConfigUnion
         }
         $this->certPrivateId = $certData['serialNumber'];
         $this->certPrivateKey = $certData['pkey'];
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid() : bool
-    {
-        return $this->valid;
-    }
-
-    /**
-     * @param bool $valid
-     */
-    public function setValid(bool $valid)
-    {
-        $this->valid = $valid;
-    }
-
-    /**
-     * @return int
-     */
-    public function getExpireTime() : int
-    {
-        return $this->expireTime;
-    }
-
-    /**
-     * @param int $expireTime
-     */
-    public function setExpireTime(int $expireTime)
-    {
-        $this->expireTime = $expireTime;
     }
 }

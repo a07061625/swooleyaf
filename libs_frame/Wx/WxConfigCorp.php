@@ -9,9 +9,12 @@ namespace Wx;
 
 use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
+use SyTrait\SimpleConfigTrait;
 
 class WxConfigCorp
 {
+    use SimpleConfigTrait;
+
     /**
      * 企业ID
      * @var string
@@ -67,16 +70,6 @@ class WxConfigCorp
      * @var string
      */
     private $urlAuthLogin = '';
-    /**
-     * 配置有效状态
-     * @var bool
-     */
-    private $valid = false;
-    /**
-     * 配置过期时间戳
-     * @var int
-     */
-    private $expireTime = 0;
 
     public function __construct()
     {
@@ -301,37 +294,5 @@ class WxConfigCorp
         } else {
             throw new WxException('登录授权地址不合法', ErrorCode::WX_PARAM_ERROR);
         }
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid() : bool
-    {
-        return $this->valid;
-    }
-
-    /**
-     * @param bool $valid
-     */
-    public function setValid(bool $valid)
-    {
-        $this->valid = $valid;
-    }
-
-    /**
-     * @return int
-     */
-    public function getExpireTime() : int
-    {
-        return $this->expireTime;
-    }
-
-    /**
-     * @param int $expireTime
-     */
-    public function setExpireTime(int $expireTime)
-    {
-        $this->expireTime = $expireTime;
     }
 }

@@ -9,6 +9,7 @@ namespace SyPay;
 
 use SyConstant\ErrorCode;
 use SyException\Pay\PayPalException;
+use SyTrait\SimpleConfigTrait;
 
 /**
  * Class ConfigPayPal
@@ -17,6 +18,8 @@ use SyException\Pay\PayPalException;
  */
 class ConfigPayPal
 {
+    use SimpleConfigTrait;
+
     /**
      * 客户端ID
      *
@@ -47,19 +50,6 @@ class ConfigPayPal
      * @var string
      */
     private $notifyWebHookId = '';
-    /**
-     * 配置有效状态
-     *
-     * @var bool
-     */
-    private $valid = false;
-
-    /**
-     * 配置过期时间戳
-     *
-     * @var int
-     */
-    private $expireTime = 0;
 
     public function __construct()
     {
@@ -180,37 +170,5 @@ class ConfigPayPal
         } else {
             throw new PayPalException('支付异步通知网页ID不合法', ErrorCode::PAY_PAYPAL_PARAM_ERROR);
         }
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid() : bool
-    {
-        return $this->valid;
-    }
-
-    /**
-     * @param bool $valid
-     */
-    public function setValid(bool $valid)
-    {
-        $this->valid = $valid;
-    }
-
-    /**
-     * @return int
-     */
-    public function getExpireTime() : int
-    {
-        return $this->expireTime;
-    }
-
-    /**
-     * @param int $expireTime
-     */
-    public function setExpireTime(int $expireTime)
-    {
-        $this->expireTime = $expireTime;
     }
 }
