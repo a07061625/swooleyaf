@@ -39,26 +39,25 @@ abstract class Base
      */
     protected $reqHeaders = [];
     /**
-     * 环境类型
-     *
+     * 请求域名列表
+     * @var array
+     */
+    protected $reqDomains = [];
+    /**
+     * 请求域名
      * @var string
      */
-    protected $envType = '';
-
-    public function __construct()
-    {
-        $this->envType = self::ENV_TYPE_PRODUCT;
-    }
+    protected $reqDomain = '';
 
     /**
+     * Base constructor.
      * @param string $envType
-     *
      * @throws \SyException\Pay\PayException
      */
-    public function setEnvType(string $envType)
+    public function __construct(string $envType)
     {
-        if (in_array($envType, [self::ENV_TYPE_DEV, self::ENV_TYPE_PRODUCT])) {
-            $this->envType = $envType;
+        if (isset($this->reqDomains[$envType])) {
+            $this->reqDomain = $this->reqDomains[$envType];
         } else {
             throw new PayException('环境类型不支持', ErrorCode::PAY_PARAM_ERROR);
         }

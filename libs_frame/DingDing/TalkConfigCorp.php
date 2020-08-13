@@ -9,9 +9,12 @@ namespace DingDing;
 
 use SyConstant\ErrorCode;
 use SyException\DingDing\TalkException;
+use SyTrait\SimpleConfigTrait;
 
 class TalkConfigCorp
 {
+    use SimpleConfigTrait;
+
     /**
      * 企业ID
      * @var string
@@ -42,16 +45,6 @@ class TalkConfigCorp
      * @var string
      */
     private $loginUrlCallback = '';
-    /**
-     * 配置有效状态
-     * @var bool
-     */
-    private $valid = false;
-    /**
-     * 配置过期时间戳
-     * @var int
-     */
-    private $expireTime = 0;
 
     public function __construct()
     {
@@ -197,37 +190,5 @@ class TalkConfigCorp
         } else {
             throw new TalkException('登陆应用回调地址不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
-    }
-
-    /**
-     * @return bool
-     */
-    public function isValid() : bool
-    {
-        return $this->valid;
-    }
-
-    /**
-     * @param bool $valid
-     */
-    public function setValid(bool $valid)
-    {
-        $this->valid = $valid;
-    }
-
-    /**
-     * @return int
-     */
-    public function getExpireTime() : int
-    {
-        return $this->expireTime;
-    }
-
-    /**
-     * @param int $expireTime
-     */
-    public function setExpireTime(int $expireTime)
-    {
-        $this->expireTime = $expireTime;
     }
 }

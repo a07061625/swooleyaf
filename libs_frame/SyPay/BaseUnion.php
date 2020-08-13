@@ -14,22 +14,30 @@ namespace SyPay;
  */
 abstract class BaseUnion extends Base
 {
-    public function __construct()
+    /**
+     * BaseUnion constructor.
+     * @param string $envType
+     * @throws \SyException\Pay\PayException
+     */
+    public function __construct(string $envType)
     {
-        parent::__construct();
+        parent::__construct($envType);
+        $this->reqHeaders = [
+            'Content-Type' => 'application/json',
+        ];
     }
 
-    /**
-     * 获取接口域名
-     *
-     * @return string
-     */
-    protected function getApiDomain() : string
+    public function getContent() : array
     {
-        if ($this->envType == self::ENV_TYPE_PRODUCT) {
-            return 'https://gateway.95516.com';
+        $this->curlConfigs[CURLOPT_POST] = true;
+        $this->curlConfigs[CURLOPT_RETURNTRANSFER] = true;
+        $this->curlConfigs[CURLOPT_HEADER] = false;
+        $this->curlConfigs[CURLOPT_SSL_VERIFYPEER] = false;
+        $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
+        if (!isset($this->curlConfigs[CURLOPT_TIMEOUT_MS])) {
+            $this->curlConfigs[CURLOPT_TIMEOUT_MS] = 3000;
         }
 
-        return 'https://gateway.test.95516.com';
+        return $this->curlConfigs;
     }
 }

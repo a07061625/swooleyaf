@@ -38,17 +38,29 @@ class PayConfigSingleton
      */
     private $payPalClearTime = 0;
     /**
-     * 银联支付配置列表
+     * 银联支付全渠道配置列表
      *
      * @var array
      */
-    private $unionConfigs = [];
+    private $unionChannelsConfigs = [];
     /**
-     * 银联支付配置清理时间戳
+     * 银联支付全渠道配置清理时间戳
      *
      * @var int
      */
-    private $unionClearTime = 0;
+    private $unionChannelsClearTime = 0;
+    /**
+     * 银联支付云闪付配置列表
+     *
+     * @var array
+     */
+    private $unionQuickPassConfigs = [];
+    /**
+     * 银联支付云闪付配置清理时间戳
+     *
+     * @var int
+     */
+    private $unionQuickPassClearTime = 0;
 
     /**
      * @return \DesignPatterns\Singletons\PayConfigSingleton
@@ -63,49 +75,143 @@ class PayConfigSingleton
     }
 
     /**
-     * 获取所有的银联支付配置
+     * 获取所有的银联支付全渠道配置
      *
      * @return array
      */
-    public function getUnionConfigs()
+    public function getUnionChannelsConfigs()
     {
-        return $this->unionConfigs;
+        return $this->unionChannelsConfigs;
     }
 
     /**
-     * 获取银联支付配置
+     * 获取本地银联支付全渠道配置
      *
      * @param string $merId
      *
-     * @return \SyPay\ConfigUnion
-     *
-     * @throws \SyException\Pay\UnionException
+     * @return \SyPay\ConfigUnionChannels|null
      */
-    public function getUnionConfig(string $merId)
+    private function getLocalUnionChannelsConfig(string $merId)
     {
         $nowTime = Tool::getNowTime();
-        $unionConfig = $this->getLocalUnionConfig($merId);
-        if (is_null($unionConfig)) {
-            $unionConfig = $this->refreshUnionConfig($merId);
-        } elseif ($unionConfig->getExpireTime() < $nowTime) {
-            $unionConfig = $this->refreshUnionConfig($merId);
+        if ($this->unionChannelsClearTime < $nowTime) {
+            $delIds = [];
+            foreach ($this->unionChannelsConfigs as $eMerId => $unionChannelsConfig) {
+                if ($unionChannelsConfig->getExpireTime() < $nowTime) {
+                    $delIds[] = $eMerId;
+                }
+            }
+            foreach ($delIds as $eMerId) {
+                unset($this->unionChannelsConfigs[$eMerId]);
+            }
+
+            $this->unionChannelsClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_PAY_UNION_CHANNELS_CLEAR;
         }
 
-        if ($unionConfig->isValid()) {
-            return $unionConfig;
-        }
-
-        throw new UnionException('银联支付配置不存在', ErrorCode::PAY_UNION_PARAM_ERROR);
+        return Tool::getArrayVal($this->unionChannelsConfigs, $merId, null);
     }
 
     /**
-     * 移除银联支付配置
+     * 获取银联支付全渠道配置
+     * @param string $merId
+     * @return \SyPay\ConfigUnionChannels
+     * @throws \SyException\Pay\UnionException
+     */
+    public function getUnionChannelsConfig(string $merId)
+    {
+        $nowTime = Tool::getNowTime();
+        $unionChannelsConfig = $this->getLocalUnionChannelsConfig($merId);
+        if (is_null($unionChannelsConfig)) {
+            $unionChannelsConfig = $this->refreshUnionChannelsConfig($merId);
+        } elseif ($unionChannelsConfig->getExpireTime() < $nowTime) {
+            $unionChannelsConfig = $this->refreshUnionChannelsConfig($merId);
+        }
+
+        if ($unionChannelsConfig->isValid()) {
+            return $unionChannelsConfig;
+        }
+
+        throw new UnionException('银联支付全渠道配置不存在', ErrorCode::PAY_UNION_PARAM_ERROR);
+    }
+
+    /**
+     * 移除银联支付全渠道配置
      *
      * @param string $merId
      */
-    public function removeUnionConfig(string $merId)
+    public function removeUnionChannelsConfig(string $merId)
     {
-        unset($this->unionConfigs[$merId]);
+        unset($this->unionChannelsConfigs[$merId]);
+    }
+
+    /**
+     * 获取所有的银联支付云闪付配置
+     *
+     * @return array
+     */
+    public function getUnionQuickPassConfigs()
+    {
+        return $this->unionQuickPassConfigs;
+    }
+
+    /**
+     * 获取本地银联支付云闪付配置
+     *
+     * @param string $appId
+     *
+     * @return \SyPay\ConfigUnionQuickPass|null
+     */
+    private function getLocalUnionQuickPassConfig(string $appId)
+    {
+        $nowTime = Tool::getNowTime();
+        if ($this->unionQuickPassClearTime < $nowTime) {
+            $delIds = [];
+            foreach ($this->unionQuickPassConfigs as $eAppId => $unionQuickPassConfig) {
+                if ($unionQuickPassConfig->getExpireTime() < $nowTime) {
+                    $delIds[] = $eAppId;
+                }
+            }
+            foreach ($delIds as $eAppId) {
+                unset($this->unionQuickPassConfigs[$eAppId]);
+            }
+
+            $this->unionQuickPassClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_PAY_UNION_QUICK_PASS_CLEAR;
+        }
+
+        return Tool::getArrayVal($this->unionQuickPassConfigs, $appId, null);
+    }
+
+    /**
+     * 获取银联支付云闪付配置
+     * @param string $appId
+     * @return \SyPay\ConfigUnionQuickPass
+     * @throws \SyException\Pay\UnionException
+     */
+    public function getUnionQuickPassConfig(string $appId)
+    {
+        $nowTime = Tool::getNowTime();
+        $unionQuickPassConfig = $this->getLocalUnionQuickPassConfig($appId);
+        if (is_null($unionQuickPassConfig)) {
+            $unionQuickPassConfig = $this->refreshUnionQuickPassConfig($appId);
+        } elseif ($unionQuickPassConfig->getExpireTime() < $nowTime) {
+            $unionQuickPassConfig = $this->refreshUnionQuickPassConfig($appId);
+        }
+
+        if ($unionQuickPassConfig->isValid()) {
+            return $unionQuickPassConfig;
+        }
+
+        throw new UnionException('银联支付云闪付配置不存在', ErrorCode::PAY_UNION_PARAM_ERROR);
+    }
+
+    /**
+     * 移除银联支付云闪付配置
+     *
+     * @param string $appId
+     */
+    public function removeUnionQuickPassConfig(string $appId)
+    {
+        unset($this->unionQuickPassConfigs[$appId]);
     }
 
     /**
@@ -152,33 +258,6 @@ class PayConfigSingleton
     public function removePayPalConfig(string $clientId)
     {
         unset($this->payPalConfigs[$clientId]);
-    }
-
-    /**
-     * 获取本地银联支付配置
-     *
-     * @param string $merId
-     *
-     * @return \SyPay\ConfigUnion|null
-     */
-    private function getLocalUnionConfig(string $merId)
-    {
-        $nowTime = Tool::getNowTime();
-        if ($this->unionClearTime < $nowTime) {
-            $delIds = [];
-            foreach ($this->unionConfigs as $eMerId => $unionConfig) {
-                if ($unionConfig->getExpireTime() < $nowTime) {
-                    $delIds[] = $eMerId;
-                }
-            }
-            foreach ($delIds as $eMerId) {
-                unset($this->unionConfigs[$eMerId]);
-            }
-
-            $this->unionClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_PAY_UNION_CLEAR;
-        }
-
-        return Tool::getArrayVal($this->unionConfigs, $merId, null);
     }
 
     /**
