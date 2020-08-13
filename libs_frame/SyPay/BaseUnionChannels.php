@@ -9,6 +9,7 @@ namespace SyPay;
 
 /**
  * Class BaseUnionChannels
+ *
  * @package SyPay
  */
 abstract class BaseUnionChannels extends BaseUnion

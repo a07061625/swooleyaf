@@ -11,6 +11,7 @@ use SyPay\BaseUnionChannels;
 
 /**
  * Class BaseWap
+ *
  * @package SyPay\Union\Channels
  */
 abstract class BaseWap extends BaseUnionChannels

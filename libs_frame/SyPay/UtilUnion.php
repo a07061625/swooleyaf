@@ -11,6 +11,7 @@ use SyTrait\SimpleTrait;
 
 /**
  * Class UtilUnion
+ *
  * @package SyPay
  */
 class UtilUnion extends Util

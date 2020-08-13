@@ -17,31 +17,37 @@ class TalkConfigCorp
 
     /**
      * 企业ID
+     *
      * @var string
      */
     private $corpId = '';
     /**
      * 免登密钥
+     *
      * @var string
      */
     private $ssoSecret = '';
     /**
      * 应用列表
+     *
      * @var array
      */
     private $agents = [];
     /**
      * 登陆应用ID
+     *
      * @var string
      */
     private $loginAppId = '';
     /**
      * 登陆应用密钥
+     *
      * @var string
      */
     private $loginAppSecret = '';
     /**
      * 登陆应用回调地址
+     *
      * @var string
      */
     private $loginUrlCallback = '';
@@ -64,6 +70,7 @@ class TalkConfigCorp
 
     /**
      * @param string $corpId
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setCorpId(string $corpId)
@@ -85,6 +92,7 @@ class TalkConfigCorp
 
     /**
      * @param string $ssoSecret
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setSsoSecret(string $ssoSecret)
@@ -106,15 +114,16 @@ class TalkConfigCorp
 
     /**
      * @param string $agentTag
+     *
      * @return array
-     * 返回数据结构:
-     *   id: 应用ID
-     *   key: 应用标识
-     *   secret: 应用密钥
-     *   token: 消息校验token
-     *   aes_key: 加密密钥
-     *   callback_tags: 监听事件类型列表
-     *   callback_url: 回调地址
+     *               返回数据结构:
+     *               id: 应用ID
+     *               key: 应用标识
+     *               secret: 应用密钥
+     *               token: 消息校验token
+     *               aes_key: 加密密钥
+     *               callback_tags: 监听事件类型列表
+     *               callback_url: 回调地址
      */
     public function getAgentInfo(string $agentTag) : array
     {
@@ -139,6 +148,7 @@ class TalkConfigCorp
 
     /**
      * @param string $loginAppId
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setLoginAppId(string $loginAppId)
@@ -160,6 +170,7 @@ class TalkConfigCorp
 
     /**
      * @param string $loginAppSecret
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setLoginAppSecret(string $loginAppSecret)
@@ -181,6 +192,7 @@ class TalkConfigCorp
 
     /**
      * @param string $loginUrlCallback
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setLoginUrlCallback(string $loginUrlCallback)

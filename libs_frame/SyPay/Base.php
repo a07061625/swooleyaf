@@ -40,18 +40,22 @@ abstract class Base
     protected $reqHeaders = [];
     /**
      * 请求域名列表
+     *
      * @var array
      */
     protected $reqDomains = [];
     /**
      * 请求域名
+     *
      * @var string
      */
     protected $reqDomain = '';
 
     /**
      * Base constructor.
+     *
      * @param string $envType
+     *
      * @throws \SyException\Pay\PayException
      */
     public function __construct(string $envType)

@@ -12,6 +12,7 @@ use SyPay\Union\Channels\BaseApple;
 
 /**
  * Class Test
+ *
  * @package SyPay\Union\Channels\Apple
  */
 class Test extends BaseApple

@@ -12,6 +12,7 @@ use SyPay\Union\Channels\BaseOrder;
 
 /**
  * Class Test
+ *
  * @package SyPay\Union\Channels\Order
  */
 class Test extends BaseOrder
