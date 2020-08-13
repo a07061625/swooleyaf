@@ -11,6 +11,7 @@ use SyPay\BaseUnionChannels;
 
 /**
  * Class BaseCollection
+ *
  * @package SyPay\Union\Channels
  */
 abstract class BaseCollection extends BaseUnionChannels

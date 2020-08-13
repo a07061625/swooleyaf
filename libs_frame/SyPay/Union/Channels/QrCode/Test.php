@@ -12,6 +12,7 @@ use SyPay\Union\Channels\BaseQrCode;
 
 /**
  * Class Test
+ *
  * @package SyPay\Union\Channels\QrCode
  */
 class Test extends BaseQrCode

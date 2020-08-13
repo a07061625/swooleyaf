@@ -12,6 +12,7 @@ use SyPay\Union\Channels\BaseConvenience;
 
 /**
  * Class Test
+ *
  * @package SyPay\Union\Channels\Convenience
  */
 class Test extends BaseConvenience

@@ -22,8 +22,11 @@ trait PayConfigTrait
 {
     /**
      * 刷新银联支付全渠道配置信息
+     *
      * @param string $merId
+     *
      * @return \SyPay\ConfigUnionChannels
+     *
      * @throws \SyException\Pay\UnionException
      */
     private function refreshUnionChannelsConfig(string $merId)
@@ -41,8 +44,11 @@ trait PayConfigTrait
 
     /**
      * 刷新银联支付云闪付配置信息
+     *
      * @param string $appId
+     *
      * @return \SyPay\ConfigUnionQuickPass
+     *
      * @throws \SyException\Pay\UnionException
      */
     private function refreshUnionQuickPassConfig(string $appId)

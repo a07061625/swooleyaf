@@ -18,60 +18,70 @@ class WxConfigAccount
 
     /**
      * 客户端IP
+     *
      * @var string
      */
     private $clientIp = '';
 
     /**
      * 原始ID
+     *
      * @var string
      */
     private $originId = '';
 
     /**
      * 微信号
+     *
      * @var string
      */
     private $appId = '';
 
     /**
      * 微信随机密钥
+     *
      * @var string
      */
     private $secret = '';
 
     /**
      * 商户号
+     *
      * @var string
      */
     private $payMchId = '';
 
     /**
      * 商户支付密钥
+     *
      * @var string
      */
     private $payKey = '';
 
     /**
      * 支付异步通知URL
+     *
      * @var string
      */
     private $payNotifyUrl = '';
 
     /**
      * 支付授权URL
+     *
      * @var string
      */
     private $payAuthUrl = '';
 
     /**
      * CERT PEM证书内容,保持和原文件相同
+     *
      * @var string
      */
     private $sslCert = '';
 
     /**
      * KEY PEM证书内容,保持和原文件相同
+     *
      * @var string
      */
     private $sslKey = '';
@@ -79,24 +89,28 @@ class WxConfigAccount
     /**
      * CERT PEM证书序列号
      * 获取方式: openssl x509 -in 1900009191_20180326_cert.pem -noout -serial
+     *
      * @var string
      */
     private $sslSerialNo = '';
 
     /**
      * 企业付款银行卡公钥内容
+     *
      * @var string
      */
     private $sslCompanyBank = '';
 
     /**
      * 模板列表
+     *
      * @var array
      */
     private $templates = [];
 
     /**
      * 服务商微信号
+     *
      * @var string
      */
     private $merchantAppId = '';
@@ -124,6 +138,7 @@ class WxConfigAccount
 
     /**
      * @param string $clientIp
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setClientIp(string $clientIp)
@@ -145,6 +160,7 @@ class WxConfigAccount
 
     /**
      * @param string $originId
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setOriginId(string $originId)
@@ -166,6 +182,7 @@ class WxConfigAccount
 
     /**
      * @param string $appId
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setAppId(string $appId)
@@ -187,6 +204,7 @@ class WxConfigAccount
 
     /**
      * @param string $secret
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setSecret(string $secret)
@@ -208,6 +226,7 @@ class WxConfigAccount
 
     /**
      * @param string $payMchId
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setPayMchId(string $payMchId)
@@ -229,6 +248,7 @@ class WxConfigAccount
 
     /**
      * @param string $payKey
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setPayKey(string $payKey)
@@ -250,6 +270,7 @@ class WxConfigAccount
 
     /**
      * @param string $payNotifyUrl
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setPayNotifyUrl(string $payNotifyUrl)
@@ -271,6 +292,7 @@ class WxConfigAccount
 
     /**
      * @param string $payAuthUrl
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setPayAuthUrl(string $payAuthUrl)
@@ -324,6 +346,7 @@ class WxConfigAccount
 
     /**
      * @param string $sslSerialNo
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setSslSerialNo(string $sslSerialNo)
@@ -361,6 +384,7 @@ class WxConfigAccount
 
     /**
      * @param string $templateTag 模板标识
+     *
      * @return string
      */
     public function getTemplateId(string $templateTag) : string
@@ -386,6 +410,7 @@ class WxConfigAccount
 
     /**
      * @param string $merchantAppId
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setMerchantAppId(string $merchantAppId)
@@ -404,6 +429,7 @@ class WxConfigAccount
 
     /**
      * 获取配置数组
+     *
      * @return array
      */
     public function getConfigs() : array

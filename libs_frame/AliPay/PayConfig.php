@@ -18,54 +18,63 @@ class PayConfig
 
     /**
      * AppId
+     *
      * @var string
      */
     private $appId = '';
 
     /**
      * 卖家ID
+     *
      * @var string
      */
     private $sellerId = '';
 
     /**
      * 异步消息通知URL
+     *
      * @var string
      */
     private $urlNotify = '';
 
     /**
      * 同步消息通知URL
+     *
      * @var string
      */
     private $urlReturn = '';
 
     /**
      * rsa私钥
+     *
      * @var string
      */
     private $priRsaKey = '';
 
     /**
      * 完整rsa私钥
+     *
      * @var string
      */
     private $priRsaKeyFull = '';
 
     /**
      * rsa公钥
+     *
      * @var string
      */
     private $pubRsaKey = '';
 
     /**
      * 支付宝公钥
+     *
      * @var string
      */
     private $pubAliKey = '';
 
     /**
      * 完整支付宝公钥
+     *
      * @var string
      */
     private $pubAliKeyFull = '';
@@ -93,6 +102,7 @@ class PayConfig
 
     /**
      * @param string $appId
+     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setAppId(string $appId)
@@ -114,6 +124,7 @@ class PayConfig
 
     /**
      * @param string $sellerId
+     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setSellerId(string $sellerId)
@@ -135,6 +146,7 @@ class PayConfig
 
     /**
      * @param string $urlNotify
+     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setUrlNotify(string $urlNotify)
@@ -156,6 +168,7 @@ class PayConfig
 
     /**
      * @param string $urlReturn
+     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setUrlReturn(string $urlReturn)
@@ -177,6 +190,7 @@ class PayConfig
 
     /**
      * @param string $priRsaKey
+     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setPriRsaKey(string $priRsaKey)
@@ -207,6 +221,7 @@ class PayConfig
 
     /**
      * @param string $pubRsaKey
+     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setPubRsaKey(string $pubRsaKey)
@@ -228,6 +243,7 @@ class PayConfig
 
     /**
      * @param string $pubAliKey
+     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setPubAliKey(string $pubAliKey)
@@ -250,6 +266,7 @@ class PayConfig
 
     /**
      * 获取配置数组
+     *
      * @return array
      */
     public function getConfigs() : array

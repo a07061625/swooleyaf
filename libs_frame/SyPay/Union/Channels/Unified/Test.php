@@ -12,6 +12,7 @@ use SyPay\Union\Channels\BaseUnified;
 
 /**
  * Class Test
+ *
  * @package SyPay\Union\Channels\Unified
  */
 class Test extends BaseUnified

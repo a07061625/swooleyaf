@@ -12,6 +12,7 @@ use SyPay\BaseUnionQuickPass;
 
 /**
  * Class Test
+ *
  * @package SyPay\Union\QuickPass
  */
 class Test extends BaseUnionQuickPass

@@ -11,6 +11,7 @@ use SyPay\BaseUnionChannels;
 
 /**
  * Class BaseCustomsDeclaration
+ *
  * @package SyPay\Union\Channels
  */
 abstract class BaseCustomsDeclaration extends BaseUnionChannels

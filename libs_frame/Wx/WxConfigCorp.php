@@ -17,56 +17,66 @@ class WxConfigCorp
 
     /**
      * 企业ID
+     *
      * @var string
      */
     private $corpId = '';
     /**
      * 应用列表
+     *
      * @var array
      */
     private $agents = [];
     /**
      * 客户端IP
+     *
      * @var string
      */
     private $clientIp = '';
     /**
      * 商户号
+     *
      * @var string
      */
     private $payMchId = '';
 
     /**
      * 商户支付密钥
+     *
      * @var string
      */
     private $payKey = '';
 
     /**
      * 支付异步通知URL
+     *
      * @var string
      */
     private $payNotifyUrl = '';
 
     /**
      * 支付授权URL
+     *
      * @var string
      */
     private $payAuthUrl = '';
 
     /**
      * CERT PEM证书路径,保持和原文件相同
+     *
      * @var string
      */
     private $sslCert = '';
 
     /**
      * KEY PEM证书路径,保持和原文件相同
+     *
      * @var string
      */
     private $sslKey = '';
     /**
      * 登录授权地址
+     *
      * @var string
      */
     private $urlAuthLogin = '';
@@ -89,6 +99,7 @@ class WxConfigCorp
 
     /**
      * @param string $corpId
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setCorpId(string $corpId)
@@ -110,10 +121,11 @@ class WxConfigCorp
 
     /**
      * @param string $agentTag
+     *
      * @return array
-     * 返回数据结构:
-     *   id: 应用ID
-     *   secret: 应用密钥
+     *               返回数据结构:
+     *               id: 应用ID
+     *               secret: 应用密钥
      */
     public function getAgentInfo(string $agentTag) : array
     {
@@ -138,6 +150,7 @@ class WxConfigCorp
 
     /**
      * @param string $clientIp
+     *
      * @throws \SyException\WX\WxException
      */
     public function setClientIp(string $clientIp)
@@ -159,6 +172,7 @@ class WxConfigCorp
 
     /**
      * @param string $payMchId
+     *
      * @throws \SyException\WX\WxException
      */
     public function setPayMchId(string $payMchId)
@@ -180,6 +194,7 @@ class WxConfigCorp
 
     /**
      * @param string $payKey
+     *
      * @throws \SyException\WX\WxException
      */
     public function setPayKey(string $payKey)
@@ -201,6 +216,7 @@ class WxConfigCorp
 
     /**
      * @param string $payNotifyUrl
+     *
      * @throws \SyException\WX\WxException
      */
     public function setPayNotifyUrl(string $payNotifyUrl)
@@ -222,6 +238,7 @@ class WxConfigCorp
 
     /**
      * @param string $payAuthUrl
+     *
      * @throws \SyException\WX\WxException
      */
     public function setPayAuthUrl(string $payAuthUrl)
@@ -243,6 +260,7 @@ class WxConfigCorp
 
     /**
      * @param string $sslCert
+     *
      * @throws \SyException\WX\WxException
      */
     public function setSslCert(string $sslCert)
@@ -264,6 +282,7 @@ class WxConfigCorp
 
     /**
      * @param string $sslKey
+     *
      * @throws \SyException\WX\WxException
      */
     public function setSslKey(string $sslKey)
@@ -285,6 +304,7 @@ class WxConfigCorp
 
     /**
      * @param string $urlAuthLogin
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setUrlAuthLogin(string $urlAuthLogin)

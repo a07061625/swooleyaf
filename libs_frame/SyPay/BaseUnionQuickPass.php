@@ -9,6 +9,7 @@ namespace SyPay;
 
 /**
  * Class BaseUnionQuickPass
+ *
  * @package SyPay
  */
 abstract class BaseUnionQuickPass extends BaseUnion

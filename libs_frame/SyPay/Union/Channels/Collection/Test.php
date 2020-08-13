@@ -12,6 +12,7 @@ use SyPay\Union\Channels\BaseCollection;
 
 /**
  * Class Test
+ *
  * @package SyPay\Union\Channels\Collection
  */
 class Test extends BaseCollection
