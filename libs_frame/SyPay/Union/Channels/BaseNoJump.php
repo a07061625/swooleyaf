@@ -11,6 +11,7 @@ use SyPay\BaseUnionChannels;
 
 /**
  * Class BaseNoJump
+ *
  * @package SyPay\Union\Channels
  */
 abstract class BaseNoJump extends BaseUnionChannels

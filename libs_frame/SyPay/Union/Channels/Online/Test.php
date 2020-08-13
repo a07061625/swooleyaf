@@ -12,6 +12,7 @@ use SyPay\Union\Channels\BaseOnline;
 
 /**
  * Class Test
+ *
  * @package SyPay\Union\Channels\Online
  */
 class Test extends BaseOnline

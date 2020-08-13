@@ -12,6 +12,7 @@ use SyPay\Union\Channels\BaseCustomsDeclaration;
 
 /**
  * Class Test
+ *
  * @package SyPay\Union\Channels\CustomsDeclaration
  */
 class Test extends BaseCustomsDeclaration

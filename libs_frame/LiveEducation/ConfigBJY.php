@@ -13,6 +13,7 @@ use SyTrait\SimpleConfigTrait;
 
 /**
  * Class ConfigBJY
+ *
  * @package LiveEducation
  */
 class ConfigBJY
@@ -21,21 +22,25 @@ class ConfigBJY
 
     /**
      * 账号ID
+     *
      * @var string
      */
     private $partnerId = '';
     /**
      * 账号密钥
+     *
      * @var string
      */
     private $secretKey = '';
     /**
      * 个性域名
+     *
      * @var string
      */
     private $privateDomain = '';
     /**
      * api域名
+     *
      * @var string
      */
     private $apiDomain = '';
@@ -58,6 +63,7 @@ class ConfigBJY
 
     /**
      * @param string $partnerId
+     *
      * @throws \SyException\LiveEducation\BJYException
      */
     public function setPartnerId(string $partnerId)
@@ -79,6 +85,7 @@ class ConfigBJY
 
     /**
      * @param string $secretKey
+     *
      * @throws \SyException\LiveEducation\BJYException
      */
     public function setSecretKey(string $secretKey)
@@ -108,6 +115,7 @@ class ConfigBJY
 
     /**
      * @param string $privateDomain
+     *
      * @throws \SyException\LiveEducation\BJYException
      */
     public function setPrivateDomain(string $privateDomain)

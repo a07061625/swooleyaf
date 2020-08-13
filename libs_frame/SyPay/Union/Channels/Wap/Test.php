@@ -12,6 +12,7 @@ use SyPay\Union\Channels\BaseWap;
 
 /**
  * Class Test
+ *
  * @package SyPay\Union\Channels\Wap
  */
 class Test extends BaseWap

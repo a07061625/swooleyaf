@@ -13,6 +13,7 @@ use SyTrait\SimpleConfigTrait;
 
 /**
  * Class ConfigUnionQuickPass
+ *
  * @package SyPay
  */
 class ConfigUnionQuickPass
@@ -21,11 +22,13 @@ class ConfigUnionQuickPass
 
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 应用密钥
+     *
      * @var string
      */
     private $appSecret = '';
@@ -48,6 +51,7 @@ class ConfigUnionQuickPass
 
     /**
      * @param string $appId
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setAppId(string $appId)
@@ -69,6 +73,7 @@ class ConfigUnionQuickPass
 
     /**
      * @param string $appSecret
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setAppSecret(string $appSecret)

@@ -9,6 +9,7 @@ namespace SyTrait;
 
 /**
  * Class SimpleConfigTrait
+ *
  * @package SyTrait
  */
 trait SimpleConfigTrait

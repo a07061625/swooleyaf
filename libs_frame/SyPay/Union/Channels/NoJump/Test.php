@@ -12,6 +12,7 @@ use SyPay\Union\Channels\BaseNoJump;
 
 /**
  * Class Test
+ *
  * @package SyPay\Union\Channels\NoJump
  */
 class Test extends BaseNoJump

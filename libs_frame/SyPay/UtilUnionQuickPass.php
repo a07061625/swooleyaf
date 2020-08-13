@@ -13,6 +13,7 @@ use SyTrait\SimpleTrait;
 
 /**
  * Class UtilUnionQuickPass
+ *
  * @package SyPay
  */
 final class UtilUnionQuickPass extends UtilUnion
@@ -21,8 +22,11 @@ final class UtilUnionQuickPass extends UtilUnion
 
     /**
      * 生成签名
+     *
      * @param string $appId 应用ID
+     *
      * @return string
+     *
      * @throws \SyException\Pay\UnionException
      */
     public static function createSign(string $appId) : string

@@ -12,6 +12,7 @@ use SyPay\Union\Channels\BaseEnterprise;
 
 /**
  * Class Test
+ *
  * @package SyPay\Union\Channels\Enterprise
  */
 class Test extends BaseEnterprise

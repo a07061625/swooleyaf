@@ -12,6 +12,7 @@ use SyPay\Union\Channels\BaseMobile;
 
 /**
  * Class Test
+ *
  * @package SyPay\Union\Channels\Mobile
  */
 class Test extends BaseMobile

@@ -16,7 +16,9 @@ abstract class BaseUnion extends Base
 {
     /**
      * BaseUnion constructor.
+     *
      * @param string $envType
+     *
      * @throws \SyException\Pay\PayException
      */
     public function __construct(string $envType)

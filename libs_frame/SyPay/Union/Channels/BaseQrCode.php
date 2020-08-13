@@ -11,6 +11,7 @@ use SyPay\BaseUnionChannels;
 
 /**
  * Class BaseQrCode
+ *
  * @package SyPay\Union\Channels
  */
 abstract class BaseQrCode extends BaseUnionChannels

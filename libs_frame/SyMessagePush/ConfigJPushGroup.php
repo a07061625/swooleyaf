@@ -17,16 +17,19 @@ class ConfigJPushGroup
 
     /**
      * 标识
+     *
      * @var string
      */
     private $key = '';
     /**
      * 密钥
+     *
      * @var string
      */
     private $secret = '';
     /**
      * 密文
+     *
      * @var string
      */
     private $auth = '';
@@ -66,6 +69,7 @@ class ConfigJPushGroup
     /**
      * @param string $key
      * @param string $secret
+     *
      * @throws \SyException\MessagePush\JPushException
      */
     public function setKeyAndSecret(string $key, string $secret)
