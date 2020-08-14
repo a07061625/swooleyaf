@@ -10,6 +10,7 @@ namespace SyPay;
 use DesignPatterns\Singletons\PayConfigSingleton;
 use SyConstant\ErrorCode;
 use SyException\Pay\UnionException;
+use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 /**
@@ -79,6 +80,7 @@ final class UtilUnionChannels extends UtilUnion
         ];
 
         $curlConfigs = $channelsObj->getDetail();
+        $res = Tool::sendCurlReq($curlConfigs);
 
         return $resArr;
     }
