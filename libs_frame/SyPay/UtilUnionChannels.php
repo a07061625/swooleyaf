@@ -78,6 +78,8 @@ final class UtilUnionChannels extends UtilUnion
             'code' => ErrorCode::COMMON_SUCCESS,
         ];
 
+        $curlConfigs = $channelsObj->getDetail();
+
         return $resArr;
     }
 }
