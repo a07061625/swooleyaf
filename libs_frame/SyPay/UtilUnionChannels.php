@@ -67,7 +67,16 @@ final class UtilUnionChannels extends UtilUnion
         return $verifyRes == 1;
     }
 
+    /**
+     * @param \SyPay\BaseUnionChannels $channelsObj
+     * @return array
+     */
     public static function sendServerRequest(BaseUnionChannels $channelsObj)
     {
+        $resArr = [
+            'code' => ErrorCode::COMMON_SUCCESS,
+        ];
+
+        return $resArr;
     }
 }
