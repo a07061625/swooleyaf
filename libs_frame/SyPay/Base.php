@@ -66,7 +66,7 @@ abstract class Base
             throw new PayException('环境类型不支持', ErrorCode::PAY_PARAM_ERROR);
         }
     }
+    abstract public function getDetail() : array;
 
     abstract protected function getContent();
-    abstract public function getDetail() : array;
 }

@@ -20,8 +20,10 @@ class UtilUnion extends Util
 
     /**
      * 获取待签名字符串
+     *
      * @param array $data
-     * @param bool $isEncode
+     * @param bool  $isEncode
+     *
      * @return string
      */
     public static function getSignStr(array $data, bool $isEncode = false) : string

@@ -16,6 +16,7 @@ use SyTool\Tool;
 
 /**
  * 消费接口
+ *
  * @package SyPay\Union\Channels\Online
  */
 class Consume extends BaseOnline
@@ -37,6 +38,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $backUrl
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setBackUrl(string $backUrl)
@@ -51,6 +53,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $currencyCode
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setCurrencyCode(string $currencyCode)
@@ -64,6 +67,7 @@ class Consume extends BaseOnline
 
     /**
      * @param int $txnAmt 交易金额,单位为分
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setTxnAmt(int $txnAmt)
@@ -77,6 +81,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $txnSubType
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setTxnSubType(string $txnSubType)
@@ -90,6 +95,7 @@ class Consume extends BaseOnline
 
     /**
      * @param int $accessType
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setAccessType(int $accessType)
@@ -103,6 +109,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $channelType
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setChannelType(string $channelType)
@@ -116,6 +123,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $orderId
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setOrderId(string $orderId)
@@ -180,6 +188,7 @@ class Consume extends BaseOnline
 
     /**
      * @param array $instalTransInfo
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setInstalTransInfo(array $instalTransInfo)
@@ -193,6 +202,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $encryptCertId
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setEncryptCertId(string $encryptCertId)
@@ -206,6 +216,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $frontUrl
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setFrontUrl(string $frontUrl)
@@ -219,6 +230,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $bizScene
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setBizScene(string $bizScene)
@@ -232,6 +244,7 @@ class Consume extends BaseOnline
 
     /**
      * @param array $customerInfo
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setCustomerInfo(array $customerInfo)
@@ -245,6 +258,7 @@ class Consume extends BaseOnline
 
     /**
      * @param array $cardTransData
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setCardTransData(array $cardTransData)
@@ -258,6 +272,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $accountPayChannel
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setAccountPayChannel(string $accountPayChannel)
@@ -271,6 +286,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $accNo
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setAccNo(string $accNo)
@@ -284,6 +300,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $accType
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setAccType(string $accType)
@@ -297,6 +314,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $certId
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setCertId(string $certId)
@@ -310,6 +328,7 @@ class Consume extends BaseOnline
 
     /**
      * @param array $reserved
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setReserved(array $reserved)
@@ -323,6 +342,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $customerIp
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setCustomerIp(string $customerIp)
@@ -336,6 +356,7 @@ class Consume extends BaseOnline
 
     /**
      * @param int $orderTimeout
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setOrderTimeout(int $orderTimeout)
@@ -349,6 +370,7 @@ class Consume extends BaseOnline
 
     /**
      * @param array $accSplitData
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setAccSplitData(array $accSplitData)
@@ -362,6 +384,7 @@ class Consume extends BaseOnline
 
     /**
      * @param array $riskRateInfo
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setRiskRateInfo(array $riskRateInfo)
@@ -375,6 +398,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $ctrlRule
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setCtrlRule(string $ctrlRule)
@@ -388,6 +412,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $defaultPayType
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setDefaultPayType(string $defaultPayType)
@@ -401,6 +426,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $reqReserved
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setReqReserved(string $reqReserved)
@@ -414,6 +440,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $frontFailUrl
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setFrontFailUrl(string $frontFailUrl)
@@ -427,6 +454,7 @@ class Consume extends BaseOnline
 
     /**
      * @param array $supPayTypes
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setSupPayType(array $supPayTypes)
@@ -440,6 +468,7 @@ class Consume extends BaseOnline
 
     /**
      * @param int $payTimeout
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setPayTimeout(int $payTimeout)
@@ -453,6 +482,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $termId
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setTermId(string $termId)
@@ -466,6 +496,7 @@ class Consume extends BaseOnline
 
     /**
      * @param string $userMac
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setUserMac(string $userMac)
@@ -479,6 +510,7 @@ class Consume extends BaseOnline
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array
