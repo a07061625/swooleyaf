@@ -72,6 +72,8 @@ final class UtilUnionChannels extends UtilUnion
      * @param \SyPay\BaseUnionChannels $channelsObj
      *
      * @return array
+     *
+     * @throws \SyException\Common\CheckException
      */
     public static function sendServerRequest(BaseUnionChannels $channelsObj)
     {
