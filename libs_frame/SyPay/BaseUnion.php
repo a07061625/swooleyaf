@@ -25,13 +25,12 @@ abstract class BaseUnion extends Base
     {
         parent::__construct($envType);
         $this->reqHeaders = [
-            'Content-Type' => 'application/json',
+            'Content-Type' => 'application/x-www-form-urlencoded;charset=UTF-8',
         ];
     }
 
-    public function getContent() : array
+    protected function getContent()
     {
-        $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_RETURNTRANSFER] = true;
         $this->curlConfigs[CURLOPT_HEADER] = false;
         $this->curlConfigs[CURLOPT_SSL_VERIFYPEER] = false;
@@ -39,7 +38,5 @@ abstract class BaseUnion extends Base
         if (!isset($this->curlConfigs[CURLOPT_TIMEOUT_MS])) {
             $this->curlConfigs[CURLOPT_TIMEOUT_MS] = 3000;
         }
-
-        return $this->curlConfigs;
     }
 }

@@ -27,11 +27,9 @@ final class UtilUnionChannels extends UtilUnion
      * @param string $merId 商户号
      * @param array  $data  待签名数据
      *
-     * @return string
-     *
      * @throws \SyException\Pay\UnionException
      */
-    public static function createSign(string $merId, array $data) : string
+    public static function createSign(string $merId, array &$data)
     {
         $signStr = self::getSignStr($data);
         $sha1Str = sha1(substr($signStr, 1), false);
@@ -41,7 +39,7 @@ final class UtilUnionChannels extends UtilUnion
             throw new UnionException('银联支付生成签名出错', ErrorCode::PAY_UNION_PARAM_ERROR);
         }
 
-        return base64_encode($sign);
+        $data['signature'] = base64_encode($sign);
     }
 
     /**

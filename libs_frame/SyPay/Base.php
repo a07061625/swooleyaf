@@ -67,6 +67,6 @@ abstract class Base
         }
     }
 
-    abstract public function getContent() : array;
+    abstract protected function getContent();
     abstract public function getDetail() : array;
 }
