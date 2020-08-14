@@ -66,4 +66,8 @@ final class UtilUnionChannels extends UtilUnion
 
         return $verifyRes == 1;
     }
+
+    public static function sendServerRequest(BaseUnionChannels $channelsObj)
+    {
+    }
 }
