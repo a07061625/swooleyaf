@@ -22,18 +22,28 @@ class UtilUnion extends Util
      * 获取待签名字符串
      *
      * @param array $data
+     * @param bool  $isEncode
      *
      * @return string
      */
-    protected static function getSignStr(array $data) : string
+    public static function getSignStr(array $data, bool $isEncode = false) : string
     {
         ksort($data);
         $signStr = '';
-        foreach ($data as $key => $val) {
-            if ($key == 'signature') {
-                continue;
+        if ($isEncode) {
+            foreach ($data as $key => $val) {
+                if ($key == 'signature') {
+                    continue;
+                }
+                $signStr .= '&' . $key . '=' . urlencode($val);
             }
-            $signStr .= '&' . $key . '=' . $val;
+        } else {
+            foreach ($data as $key => $val) {
+                if ($key == 'signature') {
+                    continue;
+                }
+                $signStr .= '&' . $key . '=' . $val;
+            }
         }
 
         return substr($signStr, 1);

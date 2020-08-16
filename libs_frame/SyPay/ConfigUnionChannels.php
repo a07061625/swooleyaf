@@ -28,12 +28,6 @@ class ConfigUnionChannels
      */
     private $merId = '';
     /**
-     * 手机网页支付异步通知地址
-     *
-     * @var string
-     */
-    private $urlWapNotify = '';
-    /**
      * 证书公钥ID
      *
      * @var string
@@ -60,7 +54,6 @@ class ConfigUnionChannels
 
     public function __construct()
     {
-        $this->urlWapNotify = 'http://www.specialUrl.com';
     }
 
     private function __clone()
@@ -86,29 +79,6 @@ class ConfigUnionChannels
             $this->merId = $merId;
         } else {
             throw new UnionException('商户号不合法', ErrorCode::PAY_UNION_PARAM_ERROR);
-        }
-    }
-
-    /**
-     * @return string
-     */
-    public function getUrlWapNotify() : string
-    {
-        return $this->urlWapNotify;
-    }
-
-    /**
-     * @param string $urlWapNotify
-     *
-     * @throws \SyException\Pay\UnionException
-     */
-    public function setUrlWapNotify(string $urlWapNotify)
-    {
-        $trueUrl = trim($urlWapNotify);
-        if (strlen($trueUrl) > 0) {
-            $this->urlWapNotify = $urlWapNotify;
-        } else {
-            throw new UnionException('手机网页支付异步通知地址不合法', ErrorCode::PAY_UNION_PARAM_ERROR);
         }
     }
 
