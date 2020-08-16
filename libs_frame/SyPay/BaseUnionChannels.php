@@ -29,4 +29,20 @@ abstract class BaseUnionChannels extends BaseUnion
         $this->reqData['merId'] = $merId;
         $this->reqData['signMethod'] = '01';
     }
+
+    protected function getChannelsContent() : array
+    {
+        $this->getContent();
+        $this->curlConfigs[CURLOPT_URL] = $this->reqDomain;
+        $this->curlConfigs[CURLOPT_POST] = true;
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = http_build_query($this->reqData);
+
+        $reqHeaderArr = [];
+        foreach ($this->reqHeaders as $headerKey => $headerVal) {
+            $reqHeaderArr[] = $headerKey . ': ' . $headerVal;
+        }
+        $this->curlConfigs[CURLOPT_HTTPHEADER] = $reqHeaderArr;
+
+        return $this->curlConfigs;
+    }
 }
