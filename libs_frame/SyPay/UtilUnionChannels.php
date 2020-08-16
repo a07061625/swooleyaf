@@ -93,8 +93,10 @@ HTML;
 
     /**
      * 生成请求页面
+     *
      * @param string $frontUrl 请求前端地址
-     * @param array $data 数据
+     * @param array  $data     数据
+     *
      * @return string
      */
     public static function createHtml(string $frontUrl, array $data) : string
@@ -125,6 +127,7 @@ HTML;
         if ($sendRes['res_no'] > 0) {
             $resArr['code'] = ErrorCode::PAY_UNION_REQ_ERROR;
             $resArr['msg'] = $sendRes['res_msg'];
+
             return $resArr;
         }
 
