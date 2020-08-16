@@ -36,6 +36,7 @@ class Consume extends BaseNoJump
 
     /**
      * @param string $bizType
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setBizType(string $bizType)
@@ -241,6 +242,7 @@ class Consume extends BaseNoJump
 
     /**
      * @param string $merCatCode 商户类别
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setMerCatCode(string $merCatCode)
@@ -264,6 +266,7 @@ class Consume extends BaseNoJump
 
     /**
      * @param string $acqInsCode 收单机构代码
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setAcqInsCode(string $acqInsCode)
@@ -389,6 +392,7 @@ class Consume extends BaseNoJump
 
     /**
      * @param string $issInsCode 发卡机构代码
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setIssInsCode(string $issInsCode)
@@ -500,6 +504,7 @@ class Consume extends BaseNoJump
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array
