@@ -5,7 +5,7 @@
  * Date: 2020/8/13 0013
  * Time: 10:26
  */
-namespace SyPay\Union\QuickPass;
+namespace SyPay\Union\QuickPass\Unconscious;
 
 use SyConstant\ErrorCode;
 use SyPay\BaseUnionQuickPass;

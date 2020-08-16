@@ -22,6 +22,29 @@ final class UtilUnionChannels extends UtilUnion
 {
     use SimpleTrait;
 
+    private static $htmlTemplate = <<<'HTML'
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>支付</title>
+</head>
+<body>
+    <div style="text-align:center">跳转中...</div>
+    <form id="pay_form" name="pay_form" action="%s" method="post">
+        %s
+    </form>
+    <script type="text/javascript">
+        document.onreadystatechange = function(){
+            if(document.readyState == "complete") {
+                document.pay_form.submit();
+            }
+        };
+    </script>
+</body>
+</html>
+HTML;
+
     /**
      * 生成签名
      *
@@ -69,6 +92,22 @@ final class UtilUnionChannels extends UtilUnion
     }
 
     /**
+     * 生成请求页面
+     * @param string $frontUrl 请求前端地址
+     * @param array $data 数据
+     * @return string
+     */
+    public static function createHtml(string $frontUrl, array $data) : string
+    {
+        $formHtml = '';
+        foreach ($data as $key => $item) {
+            $formHtml .= '<input type="hidden" name="' . $key . '" value="' . $item . '">';
+        }
+
+        return sprintf(self::$htmlTemplate, $frontUrl, $formHtml);
+    }
+
+    /**
      * @param \SyPay\BaseUnionChannels $channelsObj
      *
      * @return array
@@ -82,7 +121,20 @@ final class UtilUnionChannels extends UtilUnion
         ];
 
         $curlConfigs = $channelsObj->getDetail();
-        $res = Tool::sendCurlReq($curlConfigs);
+        $sendRes = Tool::sendCurlReq($curlConfigs);
+        if ($sendRes['res_no'] > 0) {
+            $resArr['code'] = ErrorCode::PAY_UNION_REQ_ERROR;
+            $resArr['msg'] = $sendRes['res_msg'];
+            return $resArr;
+        }
+
+        $rspData = Tool::jsonDecode($sendRes['res_content']);
+        if (isset($rspData['respCode'])) {
+            $resArr['data'] = $rspData;
+        } else {
+            $resArr['code'] = ErrorCode::PAY_UNION_REQ_ERROR;
+            $resArr['msg'] = $sendRes['res_content'];
+        }
 
         return $resArr;
     }
