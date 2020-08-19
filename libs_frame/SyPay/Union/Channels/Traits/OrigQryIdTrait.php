@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Class OrigQryIdTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait OrigQryIdTrait

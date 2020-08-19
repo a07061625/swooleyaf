@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Class SupPayTypeTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait SupPayTypeTrait

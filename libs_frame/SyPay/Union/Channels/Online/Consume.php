@@ -10,6 +10,7 @@ namespace SyPay\Union\Channels\Online;
 use SyConstant\ErrorCode;
 use SyException\Pay\UnionException;
 use SyPay\Union\Channels\BaseOnline;
+use SyPay\Union\Channels\Traits\AccessTypeTrait;
 use SyPay\Union\Channels\Traits\AccInfoTrait;
 use SyPay\Union\Channels\Traits\AccountPayChannelTrait;
 use SyPay\Union\Channels\Traits\AccSplitDataTrait;
@@ -39,7 +40,6 @@ use SyPay\Union\Channels\Traits\SupPayTypeTrait;
 use SyPay\Union\Channels\Traits\TermIdTrait;
 use SyPay\Union\Channels\Traits\TxnAmtTrait;
 use SyPay\Union\Channels\Traits\UserMacTrait;
-use SyPay\Union\Channels\Traits\AccessTypeTrait;
 use SyPay\UtilUnionChannels;
 
 /**

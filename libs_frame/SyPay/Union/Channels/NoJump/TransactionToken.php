@@ -24,6 +24,7 @@ use SyPay\UtilUnionChannels;
 /**
  * 交易令牌接口
  * Token版的开通并支付完成后需要调用此接口获取相关的token号
+ *
  * @package SyPay\Union\Channels\NoJump
  */
 class TransactionToken extends BaseNoJump

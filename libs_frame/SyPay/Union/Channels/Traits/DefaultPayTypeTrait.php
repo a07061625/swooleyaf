@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Class DefaultPayTypeTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait DefaultPayTypeTrait

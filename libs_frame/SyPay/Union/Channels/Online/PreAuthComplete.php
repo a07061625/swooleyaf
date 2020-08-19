@@ -28,6 +28,7 @@ use SyPay\UtilUnionChannels;
 /**
  * 预授权完成接口
  * 对已批准的预授权交易,用预授权完成做支付结算
+ *
  * @package SyPay\Union\Channels\Online
  */
 class PreAuthComplete extends BaseOnline
@@ -63,6 +64,7 @@ class PreAuthComplete extends BaseOnline
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

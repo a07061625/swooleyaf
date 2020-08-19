@@ -27,6 +27,7 @@ use SyPay\UtilUnionChannels;
  * 预授权撤销接口
  * 对已成功的POS预授权交易,在结算前使用预授权撤销交易,通知发卡方取消付款承诺
  * 预授权撤销交易必须是对原始预授权交易或追加预授权交易最终承兑金额的全额撤销
+ *
  * @package SyPay\Union\Channels\Online
  */
 class PreAuthCancel extends BaseOnline
@@ -60,6 +61,7 @@ class PreAuthCancel extends BaseOnline
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

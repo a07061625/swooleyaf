@@ -29,6 +29,7 @@ use SyPay\UtilUnionChannels;
 
 /**
  * 发送短信验证码接口
+ *
  * @package SyPay\Union\Channels\NoJump
  */
 class SmsSend extends BaseNoJump
@@ -64,6 +65,7 @@ class SmsSend extends BaseNoJump
 
     /**
      * @param string $txnSubType
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setTxnSubType(string $txnSubType)
@@ -77,6 +79,7 @@ class SmsSend extends BaseNoJump
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

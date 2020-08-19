@@ -9,6 +9,7 @@ namespace SyPay\Union\Channels\Traits;
 
 /**
  * Trait IssInsCodeTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait IssInsCodeTrait

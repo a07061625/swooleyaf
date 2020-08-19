@@ -13,6 +13,7 @@ use SyTool\Tool;
 
 /**
  * Trait OrderTimeoutTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait OrderTimeoutTrait

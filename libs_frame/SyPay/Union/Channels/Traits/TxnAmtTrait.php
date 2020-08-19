@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Class TxnAmtTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait TxnAmtTrait

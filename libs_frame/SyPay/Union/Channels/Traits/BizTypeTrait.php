@@ -12,12 +12,14 @@ use SyException\Pay\UnionException;
 
 /**
  * Class BizTypeTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait BizTypeTrait
 {
     /**
      * @param string $bizType
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setBizType(string $bizType)

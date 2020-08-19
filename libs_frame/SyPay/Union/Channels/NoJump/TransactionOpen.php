@@ -34,6 +34,7 @@ use SyPay\UtilUnionChannels;
 /**
  * 银联全渠道支付交易开通接口
  * 用于开通银行卡的银联全渠道支付功能
+ *
  * @package SyPay\Union\Channels\NoJump
  */
 class TransactionOpen extends BaseNoJump
@@ -73,6 +74,7 @@ class TransactionOpen extends BaseNoJump
 
     /**
      * @param array $billQueryInfo
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setBillQueryInfo(array $billQueryInfo)
@@ -86,6 +88,7 @@ class TransactionOpen extends BaseNoJump
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

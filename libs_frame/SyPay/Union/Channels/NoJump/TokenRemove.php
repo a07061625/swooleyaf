@@ -24,6 +24,7 @@ use SyPay\UtilUnionChannels;
 /**
  * 解除标记接口
  * 解除之前在银联全渠道支付平台申请的Token标记
+ *
  * @package SyPay\Union\Channels\NoJump
  */
 class TokenRemove extends BaseNoJump
@@ -55,6 +56,7 @@ class TokenRemove extends BaseNoJump
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

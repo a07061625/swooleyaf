@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Class TermIdTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait TermIdTrait

@@ -13,6 +13,7 @@ use SyPay\UtilUnion;
 
 /**
  * Class TokenPayDataTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait TokenPayDataTrait
