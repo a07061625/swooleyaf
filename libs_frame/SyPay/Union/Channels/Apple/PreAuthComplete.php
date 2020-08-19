@@ -2,20 +2,20 @@
 /**
  * Created by PhpStorm.
  * User: 姜伟
- * Date: 2020/8/13 0013
- * Time: 9:40
+ * Date: 2020/8/19 0019
+ * Time: 10:13
  */
 namespace SyPay\Union\Channels\Apple;
 
-use SyConstant\ErrorCode;
 use SyPay\Union\Channels\BaseApple;
 
 /**
- * Class Test
+ * 预授权完成接口
+ * 对已批准的预授权交易,用预授权完成做支付结算
  *
  * @package SyPay\Union\Channels\Apple
  */
-class Test extends BaseApple
+class PreAuthComplete extends BaseApple
 {
     public function __construct(string $merId, string $envType)
     {
@@ -28,10 +28,6 @@ class Test extends BaseApple
 
     public function getDetail() : array
     {
-        $resArr = [
-            'code' => ErrorCode::COMMON_SUCCESS,
-        ];
-
-        return $resArr;
+        // TODO: Implement getDetail() method.
     }
 }

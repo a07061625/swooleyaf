@@ -24,7 +24,7 @@ use SyPay\UtilUnionChannels;
  *
  * @package SyPay\Union\Channels\Online
  */
-class StatusQuery extends BaseOnline
+class TransactionStatusQuery extends BaseOnline
 {
     use AccessTypeTrait;
     use OrderIdTrait;
