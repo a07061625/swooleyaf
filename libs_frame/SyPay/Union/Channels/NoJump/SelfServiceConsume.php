@@ -12,6 +12,7 @@ use SyPay\Union\Channels\BaseNoJump;
 /**
  * 自助消费接口
  * 消费交易和开通交易两者合一,发往前台交易地址
+ *
  * @package SyPay\Union\Channels\NoJump
  */
 class SelfServiceConsume extends BaseNoJump

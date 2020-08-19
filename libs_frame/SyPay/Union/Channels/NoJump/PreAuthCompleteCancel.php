@@ -12,6 +12,7 @@ use SyPay\Union\Channels\BaseNoJump;
 /**
  * 预授权完成撤销接口
  * 对原始预授权完成交易的全额撤销,预授权完成撤销后的预授权仍然有效
+ *
  * @package SyPay\Union\Channels\NoJump
  */
 class PreAuthCompleteCancel extends BaseNoJump

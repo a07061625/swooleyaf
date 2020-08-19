@@ -12,6 +12,7 @@ use SyPay\Union\Channels\BaseNoJump;
 /**
  * 预授权完成接口
  * 对已批准的预授权交易,用预授权完成做支付结算
+ *
  * @package SyPay\Union\Channels\NoJump
  */
 class PreAuthComplete extends BaseNoJump
