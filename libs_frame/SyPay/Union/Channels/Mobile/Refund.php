@@ -2,20 +2,21 @@
 /**
  * Created by PhpStorm.
  * User: 姜伟
- * Date: 2020/8/13 0013
- * Time: 10:20
+ * Date: 2020/8/19 0019
+ * Time: 8:59
  */
 namespace SyPay\Union\Channels\Mobile;
 
-use SyConstant\ErrorCode;
 use SyPay\Union\Channels\BaseMobile;
 
 /**
- * Class Test
+ * 退货接口
+ * 对于跨清算日或者当清算日的消费交易,商户可以通过调用SDK向银联全渠道支付平台发起退货交易,从而实现客户的退款需求,支持部分退货、多次退货
+ * 该交易参加资金清算,为后台交易
  *
  * @package SyPay\Union\Channels\Mobile
  */
-class Test extends BaseMobile
+class Refund extends BaseMobile
 {
     public function __construct(string $merId, string $envType)
     {
@@ -28,10 +29,6 @@ class Test extends BaseMobile
 
     public function getDetail() : array
     {
-        $resArr = [
-            'code' => ErrorCode::COMMON_SUCCESS,
-        ];
-
-        return $resArr;
+        // TODO: Implement getDetail() method.
     }
 }
