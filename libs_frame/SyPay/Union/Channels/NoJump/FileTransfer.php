@@ -11,6 +11,7 @@ use SyPay\Union\Channels\BaseNoJump;
 
 /**
  * 文件传输接口
+ *
  * @package SyPay\Union\Channels\NoJump
  */
 class FileTransfer extends BaseNoJump
