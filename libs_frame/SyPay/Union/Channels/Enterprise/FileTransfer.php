@@ -2,23 +2,27 @@
 /**
  * Created by PhpStorm.
  * User: 姜伟
- * Date: 2020/8/13 0013
- * Time: 10:20
+ * Date: 2020/8/19 0019
+ * Time: 10:30
  */
 namespace SyPay\Union\Channels\Enterprise;
 
-use SyConstant\ErrorCode;
 use SyPay\Union\Channels\BaseEnterprise;
 
 /**
- * Class Test
+ * 文件传输接口
+ * 对账文件下载
  *
  * @package SyPay\Union\Channels\Enterprise
  */
-class Test extends BaseEnterprise
+class FileTransfer extends BaseEnterprise
 {
     public function __construct(string $merId, string $envType)
     {
+        $this->reqDomains = [
+            self::ENV_TYPE_PRODUCT => 'https://filedownload.95516.com',
+            self::ENV_TYPE_DEV => 'https://filedownload.test.95516.com',
+        ];
         parent::__construct($merId, $envType);
     }
 
@@ -28,10 +32,6 @@ class Test extends BaseEnterprise
 
     public function getDetail() : array
     {
-        $resArr = [
-            'code' => ErrorCode::COMMON_SUCCESS,
-        ];
-
-        return $resArr;
+        // TODO: Implement getDetail() method.
     }
 }

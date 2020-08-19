@@ -2,20 +2,20 @@
 /**
  * Created by PhpStorm.
  * User: 姜伟
- * Date: 2020/8/13 0013
- * Time: 10:23
+ * Date: 2020/8/19 0019
+ * Time: 10:13
  */
 namespace SyPay\Union\Channels\Wap;
 
-use SyConstant\ErrorCode;
 use SyPay\Union\Channels\BaseWap;
 
 /**
- * Class Test
+ * 预授权完成撤销接口
+ * 必须是对原始预授权完成交易的全额撤销,预授权完成撤销后的预授权仍然有效
  *
  * @package SyPay\Union\Channels\Wap
  */
-class Test extends BaseWap
+class PreAuthCompleteCancel extends BaseWap
 {
     public function __construct(string $merId, string $envType)
     {
@@ -28,10 +28,6 @@ class Test extends BaseWap
 
     public function getDetail() : array
     {
-        $resArr = [
-            'code' => ErrorCode::COMMON_SUCCESS,
-        ];
-
-        return $resArr;
+        // TODO: Implement getDetail() method.
     }
 }
