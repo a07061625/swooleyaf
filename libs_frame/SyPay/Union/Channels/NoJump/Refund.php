@@ -13,6 +13,7 @@ use SyPay\Union\Channels\BaseNoJump;
  * 退货接口
  * 对于跨清算日或者当清算日的消费交易,商户可以通过调用SDK向银联全渠道支付平台发起退货交易,从而实现客户的退款需求,支持部分退货、多次退货
  * 该交易参加资金清算,为后台交易
+ *
  * @package SyPay\Union\Channels\NoJump
  */
 class Refund extends BaseNoJump
