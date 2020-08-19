@@ -22,6 +22,7 @@ use SyPay\UtilUnionChannels;
  * 冲正
  * 必须与原始消费在同一天(准确讲是昨日23:00至本日23:00之间)
  * 仅用于超时无应答等异常场景,只有发生支付系统超时或者支付结果未知时可调用冲正,其他正常支付的订单如果需要实现相通功能,请调用消费撤销或者退货
+ *
  * @package SyPay\Union\Channels\NoJump
  */
 class Reverse extends BaseNoJump
@@ -49,6 +50,7 @@ class Reverse extends BaseNoJump
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

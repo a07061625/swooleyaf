@@ -28,6 +28,7 @@ use SyPay\UtilUnionChannels;
  * 因人为原因而撤销已完成的消费,商户可以通过SDK向银联全渠道支付平台发起消费撤销交易,消费撤销必须是撤销CUPS当日当批的消费
  * 发卡行批准的消费撤销金额将即时地反映到该持卡人的账户上
  * 完成交易的过程不需要同持卡人交互,属于后台交易
+ *
  * @package SyPay\Union\Channels\Online
  */
 class ConsumeCancel extends BaseOnline
@@ -61,6 +62,7 @@ class ConsumeCancel extends BaseOnline
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

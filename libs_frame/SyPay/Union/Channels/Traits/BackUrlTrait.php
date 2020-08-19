@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Trait BackUrlTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait BackUrlTrait

@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Class MerInfoTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait MerInfoTrait

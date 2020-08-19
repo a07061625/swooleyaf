@@ -25,6 +25,7 @@ use SyPay\UtilUnionChannels;
 /**
  * 银联全渠道支付交易开通查询接口
  * 用于查询银行卡是否已开通银联全渠道支付
+ *
  * @package SyPay\Union\Channels\NoJump
  */
 class TransactionOpenQuery extends BaseNoJump
@@ -55,6 +56,7 @@ class TransactionOpenQuery extends BaseNoJump
 
     /**
      * @param string $txnSubType
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setTxnSubType(string $txnSubType)
@@ -68,6 +70,7 @@ class TransactionOpenQuery extends BaseNoJump
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

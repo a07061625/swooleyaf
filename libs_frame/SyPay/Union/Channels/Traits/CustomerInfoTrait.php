@@ -13,6 +13,7 @@ use SyPay\UtilUnion;
 
 /**
  * Class CustomerInfoTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait CustomerInfoTrait

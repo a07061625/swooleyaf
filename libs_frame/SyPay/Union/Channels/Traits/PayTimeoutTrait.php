@@ -13,6 +13,7 @@ use SyTool\Tool;
 
 /**
  * Class PayTimeoutTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait PayTimeoutTrait

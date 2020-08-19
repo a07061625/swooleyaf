@@ -18,6 +18,7 @@ use SyPay\UtilUnionChannels;
 /**
  * 文件传输接口
  * 对账文件下载
+ *
  * @package SyPay\Union\Channels\Online
  */
 class FileTransfer extends BaseOnline
@@ -46,6 +47,7 @@ class FileTransfer extends BaseOnline
 
     /**
      * @param string $settleDate
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setSettleDate(string $settleDate)
@@ -59,6 +61,7 @@ class FileTransfer extends BaseOnline
 
     /**
      * @param string $fileType
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setFileType(string $fileType)
@@ -72,6 +75,7 @@ class FileTransfer extends BaseOnline
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

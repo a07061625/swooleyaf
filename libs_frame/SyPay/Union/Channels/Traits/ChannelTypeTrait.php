@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Trait ChannelTypeTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait ChannelTypeTrait

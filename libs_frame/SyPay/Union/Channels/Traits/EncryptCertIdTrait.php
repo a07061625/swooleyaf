@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Class EncryptCertIdTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait EncryptCertIdTrait

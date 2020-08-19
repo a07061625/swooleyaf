@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Class CustomerIpTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait CustomerIpTrait

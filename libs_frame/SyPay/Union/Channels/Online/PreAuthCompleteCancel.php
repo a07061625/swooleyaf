@@ -26,6 +26,7 @@ use SyPay\UtilUnionChannels;
 /**
  * 预授权完成撤销接口
  * 必须是对原始预授权完成交易的全额撤销,预授权完成撤销后的预授权仍然有效
+ *
  * @package SyPay\Union\Channels\Online
  */
 class PreAuthCompleteCancel extends BaseOnline
@@ -60,6 +61,7 @@ class PreAuthCompleteCancel extends BaseOnline
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

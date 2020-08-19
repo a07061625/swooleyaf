@@ -13,6 +13,7 @@ use SyPay\UtilUnion;
 
 /**
  * Trait ReservedTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait ReservedTrait

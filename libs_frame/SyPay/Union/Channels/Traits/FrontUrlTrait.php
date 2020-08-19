@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Class FrontUrlTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait FrontUrlTrait

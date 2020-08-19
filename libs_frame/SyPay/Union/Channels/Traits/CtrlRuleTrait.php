@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Trait CtrlRuleTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait CtrlRuleTrait
