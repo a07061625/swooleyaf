@@ -13,6 +13,7 @@ use SyPay\UtilUnion;
 
 /**
  * Trait RiskRateInfoTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait RiskRateInfoTrait

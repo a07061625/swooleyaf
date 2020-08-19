@@ -21,6 +21,7 @@ use SyPay\UtilUnionChannels;
  * 对于未收到交易结果的联机交易,商户应向银联全渠道支付平台发起交易状态查询交易,查询交易结果
  * 完成交易的过程不需要同持卡人交互,属于后台交易
  * 交易查询类交易可由商户通过SDK向银联全渠道支付交易平台发起交易
+ *
  * @package SyPay\Union\Channels\Online
  */
 class StatusQuery extends BaseOnline
@@ -46,6 +47,7 @@ class StatusQuery extends BaseOnline
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

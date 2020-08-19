@@ -9,6 +9,7 @@ namespace SyPay\Union\Channels\Traits;
 
 /**
  * Trait SubMerInfo
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait SubMerInfoTrait

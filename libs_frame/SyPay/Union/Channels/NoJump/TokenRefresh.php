@@ -27,6 +27,7 @@ use SyPay\UtilUnionChannels;
 /**
  * 更新标记接口
  * 更新之前在银联全渠道支付平台申请的Token标记
+ *
  * @package SyPay\Union\Channels\NoJump
  */
 class TokenRefresh extends BaseNoJump
@@ -61,6 +62,7 @@ class TokenRefresh extends BaseNoJump
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Trait CurrencyCodeTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait CurrencyCodeTrait

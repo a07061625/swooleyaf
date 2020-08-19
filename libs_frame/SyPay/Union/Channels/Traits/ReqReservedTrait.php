@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Trait ReqReservedTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait ReqReservedTrait

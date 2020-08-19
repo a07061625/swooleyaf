@@ -13,6 +13,7 @@ use SyPay\UtilUnion;
 
 /**
  * Trait InstalTransInfoTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait InstalTransInfoTrait

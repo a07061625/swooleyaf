@@ -9,6 +9,7 @@ namespace SyPay\Union\Channels\Traits;
 
 /**
  * Class OrderDescTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait OrderDescTrait

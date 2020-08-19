@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Class UserMacTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait UserMacTrait

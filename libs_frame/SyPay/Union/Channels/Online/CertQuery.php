@@ -10,6 +10,7 @@ namespace SyPay\Union\Channels\Online;
 use SyConstant\ErrorCode;
 use SyException\Pay\UnionException;
 use SyPay\Union\Channels\BaseOnline;
+use SyPay\Union\Channels\Traits\AccessTypeTrait;
 use SyPay\Union\Channels\Traits\AcqInsCodeTrait;
 use SyPay\Union\Channels\Traits\CertIdTrait;
 use SyPay\Union\Channels\Traits\ChannelTypeTrait;
@@ -18,7 +19,6 @@ use SyPay\Union\Channels\Traits\OrderIdTrait;
 use SyPay\Union\Channels\Traits\ReqReservedTrait;
 use SyPay\Union\Channels\Traits\ReservedTrait;
 use SyPay\Union\Channels\Traits\SubMerInfoTrait;
-use SyPay\Union\Channels\Traits\AccessTypeTrait;
 use SyPay\UtilUnionChannels;
 
 /**
@@ -26,6 +26,7 @@ use SyPay\UtilUnionChannels;
  * 商户定期(1天1次)向银联全渠道系统发起获取加密公钥信息交易
  * 在加密公钥证书更新期间,全渠道系统支持新老证书的共同使用,新老证书并行期为1个月
  * 全渠道系统向商户返回最新的加密公钥证书,由商户服务器替换本地证书
+ *
  * @package SyPay\Union\Channels\Online
  */
 class CertQuery extends BaseOnline
@@ -57,6 +58,7 @@ class CertQuery extends BaseOnline
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

@@ -13,6 +13,7 @@ use SyPay\UtilUnion;
 
 /**
  * Trait AccSplitDataTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait AccSplitDataTrait

@@ -13,6 +13,7 @@ use SyPay\UtilUnion;
 
 /**
  * Class CardTransDataTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait CardTransDataTrait
