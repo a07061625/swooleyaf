@@ -62,6 +62,7 @@ class PreAuthComplete extends BaseApple
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

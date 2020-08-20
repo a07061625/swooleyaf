@@ -99,6 +99,7 @@ class Consume extends BaseEnterprise
 
     /**
      * @param string $bizScene
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setBizScene(string $bizScene)

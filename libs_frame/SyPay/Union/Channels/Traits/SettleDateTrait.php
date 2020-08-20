@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Class SettleDateTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait SettleDateTrait

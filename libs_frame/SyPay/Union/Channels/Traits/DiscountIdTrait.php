@@ -19,6 +19,7 @@ trait DiscountIdTrait
 {
     /**
      * @param string $discountId
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setDiscountId(string $discountId)

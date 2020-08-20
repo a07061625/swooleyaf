@@ -12,12 +12,14 @@ use SyException\Pay\UnionException;
 
 /**
  * Class SignPubKeyCertTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait SignPubKeyCertTrait
 {
     /**
      * @param string $signPubKeyCert
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setSignPubKeyCert(string $signPubKeyCert)

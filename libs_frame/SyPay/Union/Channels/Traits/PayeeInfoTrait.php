@@ -12,12 +12,14 @@ use SyException\Pay\UnionException;
 
 /**
  * Trait PayeeInfoTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait PayeeInfoTrait
 {
     /**
      * @param string $payeeAcctNo 收款方账号
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setPayeeAcctNo(string $payeeAcctNo)
@@ -31,6 +33,7 @@ trait PayeeInfoTrait
 
     /**
      * @param string $payeeAcctNm 收款方账户名称
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setPayeeAcctNm(string $payeeAcctNm)
@@ -44,6 +47,7 @@ trait PayeeInfoTrait
 
     /**
      * @param string $payeeBankName 收款银行名称
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setPayeeBankName(string $payeeBankName)
