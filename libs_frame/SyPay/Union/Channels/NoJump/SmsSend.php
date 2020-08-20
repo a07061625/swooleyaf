@@ -54,6 +54,7 @@ class SmsSend extends BaseNoJump
     {
         parent::__construct($merId, $envType);
         $this->reqDomain .= '/gateway/api/backTransReq.do';
+        $this->reqData['bizType'] = '000301';
         $this->reqData['txnType'] = '77';
         $this->reqData['accessType'] = 0;
         $this->reqData['currencyCode'] = '156';
@@ -84,9 +85,6 @@ class SmsSend extends BaseNoJump
      */
     public function getDetail() : array
     {
-        if (!isset($this->reqData['bizType'])) {
-            throw new UnionException('产品类型不能为空', ErrorCode::PAY_UNION_PARAM_ERROR);
-        }
         if (!isset($this->reqData['txnSubType'])) {
             throw new UnionException('交易子类不能为空', ErrorCode::PAY_UNION_PARAM_ERROR);
         }

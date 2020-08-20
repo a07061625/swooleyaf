@@ -12,7 +12,9 @@ use SyException\Pay\UnionException;
 use SyPay\Union\Channels\BaseOnline;
 use SyPay\Union\Channels\Traits\AccessTypeTrait;
 use SyPay\Union\Channels\Traits\CertIdTrait;
+use SyPay\Union\Channels\Traits\FileTypeTrait;
 use SyPay\Union\Channels\Traits\ReqReservedTrait;
+use SyPay\Union\Channels\Traits\SettleDateTrait;
 use SyPay\UtilUnionChannels;
 
 /**
@@ -24,6 +26,8 @@ use SyPay\UtilUnionChannels;
 class FileTransfer extends BaseOnline
 {
     use AccessTypeTrait;
+    use SettleDateTrait;
+    use FileTypeTrait;
     use CertIdTrait;
     use ReqReservedTrait;
 
@@ -43,34 +47,6 @@ class FileTransfer extends BaseOnline
 
     public function __clone()
     {
-    }
-
-    /**
-     * @param string $settleDate
-     *
-     * @throws \SyException\Pay\UnionException
-     */
-    public function setSettleDate(string $settleDate)
-    {
-        if (ctype_digit($settleDate) && (strlen($settleDate) == 4)) {
-            $this->reqData['settleDate'] = $settleDate;
-        } else {
-            throw new UnionException('清算日期不合法', ErrorCode::PAY_UNION_PARAM_ERROR);
-        }
-    }
-
-    /**
-     * @param string $fileType
-     *
-     * @throws \SyException\Pay\UnionException
-     */
-    public function setFileType(string $fileType)
-    {
-        if (ctype_digit($fileType) && (strlen($fileType) == 2)) {
-            $this->reqData['fileType'] = $fileType;
-        } else {
-            throw new UnionException('文件类型不合法', ErrorCode::PAY_UNION_PARAM_ERROR);
-        }
     }
 
     /**

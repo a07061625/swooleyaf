@@ -7,7 +7,16 @@
  */
 namespace SyPay\Union\Channels\NoJump;
 
+use SyConstant\ErrorCode;
+use SyException\Pay\UnionException;
 use SyPay\Union\Channels\BaseNoJump;
+use SyPay\Union\Channels\Traits\AccessTypeTrait;
+use SyPay\Union\Channels\Traits\AcqInsCodeTrait;
+use SyPay\Union\Channels\Traits\BizTypeTrait;
+use SyPay\Union\Channels\Traits\CertIdTrait;
+use SyPay\Union\Channels\Traits\OrderIdTrait;
+use SyPay\Union\Channels\Traits\ReservedTrait;
+use SyPay\UtilUnionChannels;
 
 /**
  * 交易状态查询接口
@@ -18,17 +27,38 @@ use SyPay\Union\Channels\BaseNoJump;
  */
 class TransactionStatusQuery extends BaseNoJump
 {
+    use BizTypeTrait;
+    use AccessTypeTrait;
+    use OrderIdTrait;
+    use AcqInsCodeTrait;
+    use CertIdTrait;
+    use ReservedTrait;
+
     public function __construct(string $merId, string $envType)
     {
         parent::__construct($merId, $envType);
+        $this->reqDomain .= '/gateway/api/queryTrans.do';
+        $this->reqData['bizType'] = '000301';
+        $this->reqData['txnType'] = '00';
+        $this->reqData['txnSubType'] = '00';
+        $this->reqData['accessType'] = 0;
     }
 
     public function __clone()
     {
     }
 
+    /**
+     * @return array
+     * @throws \SyException\Pay\UnionException
+     */
     public function getDetail() : array
     {
-        // TODO: Implement getDetail() method.
+        if (!isset($this->reqData['orderId'])) {
+            throw new UnionException('商户订单号不能为空', ErrorCode::PAY_UNION_PARAM_ERROR);
+        }
+        UtilUnionChannels::createSign($this->reqData['merId'], $this->reqData);
+
+        return $this->getChannelsContent();
     }
 }

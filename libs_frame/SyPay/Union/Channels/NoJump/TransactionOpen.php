@@ -62,6 +62,7 @@ class TransactionOpen extends BaseNoJump
     {
         parent::__construct($merId, $envType);
         $this->reqDomain .= '/gateway/api/frontTransReq.do';
+        $this->reqData['bizType'] = '000301';
         $this->reqData['backUrl'] = 'http://www.specialUrl.com';
         $this->reqData['txnType'] = '79';
         $this->reqData['txnSubType'] = '00';
@@ -95,9 +96,6 @@ class TransactionOpen extends BaseNoJump
     {
         if (!isset($this->reqData['tokenPayData'])) {
             throw new UnionException('标记化支付信息域不能为空', ErrorCode::PAY_UNION_PARAM_ERROR);
-        }
-        if (!isset($this->reqData['bizType'])) {
-            throw new UnionException('产品类型不能为空', ErrorCode::PAY_UNION_PARAM_ERROR);
         }
         if (!isset($this->reqData['channelType'])) {
             throw new UnionException('渠道类型不能为空', ErrorCode::PAY_UNION_PARAM_ERROR);
