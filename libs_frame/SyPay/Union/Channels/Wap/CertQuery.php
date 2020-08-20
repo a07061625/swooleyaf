@@ -7,7 +7,19 @@
  */
 namespace SyPay\Union\Channels\Wap;
 
+use SyConstant\ErrorCode;
+use SyException\Pay\UnionException;
 use SyPay\Union\Channels\BaseWap;
+use SyPay\Union\Channels\Traits\AccessTypeTrait;
+use SyPay\Union\Channels\Traits\AcqInsCodeTrait;
+use SyPay\Union\Channels\Traits\CertIdTrait;
+use SyPay\Union\Channels\Traits\ChannelTypeTrait;
+use SyPay\Union\Channels\Traits\MerInfoTrait;
+use SyPay\Union\Channels\Traits\OrderIdTrait;
+use SyPay\Union\Channels\Traits\ReqReservedTrait;
+use SyPay\Union\Channels\Traits\ReservedTrait;
+use SyPay\Union\Channels\Traits\SubMerInfoTrait;
+use SyPay\UtilUnionChannels;
 
 /**
  * 银联加密公钥更新查询接口
@@ -19,17 +31,49 @@ use SyPay\Union\Channels\BaseWap;
  */
 class CertQuery extends BaseWap
 {
+    use AccessTypeTrait;
+    use ChannelTypeTrait;
+    use OrderIdTrait;
+    use SubMerInfoTrait;
+    use MerInfoTrait;
+    use AcqInsCodeTrait;
+    use ReservedTrait;
+    use ReqReservedTrait;
+    use CertIdTrait;
+
     public function __construct(string $merId, string $envType)
     {
+        $this->reqDomains = [
+            self::ENV_TYPE_PRODUCT => 'https://gateway.95516.com',
+            self::ENV_TYPE_DEV => 'https://101.231.204.80:5000',
+        ];
         parent::__construct($merId, $envType);
+        $this->reqDomain .= '/gateway/api/backTransReq.do';
+        $this->reqData['bizType'] = '000000';
+        $this->reqData['txnType'] = '95';
+        $this->reqData['txnSubType'] = '00';
+        $this->reqData['accessType'] = 0;
+        $this->reqData['certType'] = '01';
     }
 
     public function __clone()
     {
     }
 
+    /**
+     * @return array
+     * @throws \SyException\Pay\UnionException
+     */
     public function getDetail() : array
     {
-        // TODO: Implement getDetail() method.
+        if (!isset($this->reqData['channelType'])) {
+            throw new UnionException('渠道类型不能为空', ErrorCode::PAY_UNION_PARAM_ERROR);
+        }
+        if (!isset($this->reqData['orderId'])) {
+            throw new UnionException('商户订单号不能为空', ErrorCode::PAY_UNION_PARAM_ERROR);
+        }
+        UtilUnionChannels::createSign($this->reqData['merId'], $this->reqData);
+
+        return $this->getChannelsContent();
     }
 }

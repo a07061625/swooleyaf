@@ -7,7 +7,16 @@
  */
 namespace SyPay\Union\Channels\Apple;
 
+use SyConstant\ErrorCode;
+use SyException\Pay\UnionException;
 use SyPay\Union\Channels\BaseApple;
+use SyPay\Union\Channels\Traits\AccessTypeTrait;
+use SyPay\Union\Channels\Traits\AcqInsCodeTrait;
+use SyPay\Union\Channels\Traits\CertIdTrait;
+use SyPay\Union\Channels\Traits\DiscountIdTrait;
+use SyPay\Union\Channels\Traits\MerInfoTrait;
+use SyPay\Union\Channels\Traits\OrderIdTrait;
+use SyPay\UtilUnionChannels;
 
 /**
  * 营销活动余额查询接口
@@ -19,17 +28,41 @@ use SyPay\Union\Channels\BaseApple;
  */
 class RemainingQuotaQuery extends BaseApple
 {
+    use AccessTypeTrait;
+    use OrderIdTrait;
+    use DiscountIdTrait;
+    use MerInfoTrait;
+    use AcqInsCodeTrait;
+    use CertIdTrait;
+
     public function __construct(string $merId, string $envType)
     {
         parent::__construct($merId, $envType);
+        $this->reqDomain .= '/gateway/api/backTransReq.do';
+        $this->reqData['bizType'] = '000000';
+        $this->reqData['txnType'] = '70';
+        $this->reqData['txnSubType'] = '02';
+        $this->reqData['accessType'] = 0;
     }
 
     public function __clone()
     {
     }
 
+    /**
+     * @return array
+     * @throws \SyException\Pay\UnionException
+     */
     public function getDetail() : array
     {
-        // TODO: Implement getDetail() method.
+        if (!isset($this->reqData['orderId'])) {
+            throw new UnionException('商户订单号不能为空', ErrorCode::PAY_UNION_PARAM_ERROR);
+        }
+        if (!isset($this->reqData['discountId'])) {
+            throw new UnionException('营销活动编号不能为空', ErrorCode::PAY_UNION_PARAM_ERROR);
+        }
+        UtilUnionChannels::createSign($this->reqData['merId'], $this->reqData);
+
+        return $this->getChannelsContent();
     }
 }

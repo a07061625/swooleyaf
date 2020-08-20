@@ -51,6 +51,7 @@ class PreAuthComplete extends BaseOnline
     {
         parent::__construct($merId, $envType);
         $this->reqDomain .= '/gateway/api/backTransReq.do';
+        $this->reqData['bizType'] = '000301';
         $this->reqData['backUrl'] = 'http://www.specialUrl.com';
         $this->reqData['txnType'] = '03';
         $this->reqData['txnSubType'] = '00';
@@ -69,9 +70,6 @@ class PreAuthComplete extends BaseOnline
      */
     public function getDetail() : array
     {
-        if (!isset($this->reqData['bizType'])) {
-            throw new UnionException('产品类型不能为空', ErrorCode::PAY_UNION_PARAM_ERROR);
-        }
         if (!isset($this->reqData['txnAmt'])) {
             throw new UnionException('交易金额不能为空', ErrorCode::PAY_UNION_PARAM_ERROR);
         }
