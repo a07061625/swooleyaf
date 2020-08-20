@@ -68,6 +68,7 @@ class PreAuthCompleteCancel extends BaseWap
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

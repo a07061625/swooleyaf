@@ -51,6 +51,7 @@ class FileTransfer extends BaseEnterprise
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

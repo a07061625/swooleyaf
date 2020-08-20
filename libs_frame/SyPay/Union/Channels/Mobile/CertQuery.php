@@ -58,6 +58,7 @@ class CertQuery extends BaseMobile
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array
