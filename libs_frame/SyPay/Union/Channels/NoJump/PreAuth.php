@@ -90,6 +90,7 @@ class PreAuth extends BaseNoJump
 
     /**
      * @return array
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function getDetail() : array

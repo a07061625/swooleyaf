@@ -12,6 +12,7 @@ use SyException\Pay\UnionException;
 
 /**
  * Class FileTypeTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait FileTypeTrait

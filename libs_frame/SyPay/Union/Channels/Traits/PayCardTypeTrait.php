@@ -12,12 +12,14 @@ use SyException\Pay\UnionException;
 
 /**
  * Class PayCardTypeTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait PayCardTypeTrait
 {
     /**
      * @param string $payCardType
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setPayCardType(string $payCardType)
