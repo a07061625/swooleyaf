@@ -5,31 +5,33 @@
  * Date: 2020/8/19 0019
  * Time: 8:47
  */
-namespace SyPay\Union\Channels\Mobile;
+namespace SyPay\Union\Channels\Order;
 
 use SyConstant\ErrorCode;
 use SyException\Pay\UnionException;
-use SyPay\Union\Channels\BaseMobile;
+use SyPay\Union\Channels\BaseOrder;
 use SyPay\Union\Channels\Traits\AccessTypeTrait;
 use SyPay\Union\Channels\Traits\AccInfoTrait;
-use SyPay\Union\Channels\Traits\AccSplitDataTrait;
+use SyPay\Union\Channels\Traits\AcqInsCodeTrait;
 use SyPay\Union\Channels\Traits\BackUrlTrait;
+use SyPay\Union\Channels\Traits\CardTransDataTrait;
 use SyPay\Union\Channels\Traits\CertIdTrait;
 use SyPay\Union\Channels\Traits\ChannelTypeTrait;
 use SyPay\Union\Channels\Traits\CurrencyCodeTrait;
 use SyPay\Union\Channels\Traits\CustomerInfoTrait;
-use SyPay\Union\Channels\Traits\DefaultPayTypeTrait;
-use SyPay\Union\Channels\Traits\FrontUrlTrait;
+use SyPay\Union\Channels\Traits\CustomerIpTrait;
+use SyPay\Union\Channels\Traits\EncryptCertIdTrait;
 use SyPay\Union\Channels\Traits\IssInsCodeTrait;
+use SyPay\Union\Channels\Traits\MerInfoTrait;
 use SyPay\Union\Channels\Traits\OrderDescTrait;
 use SyPay\Union\Channels\Traits\OrderIdTrait;
-use SyPay\Union\Channels\Traits\PayCardTypeTrait;
-use SyPay\Union\Channels\Traits\PayTimeoutTrait;
 use SyPay\Union\Channels\Traits\ReqReservedTrait;
 use SyPay\Union\Channels\Traits\ReservedTrait;
 use SyPay\Union\Channels\Traits\RiskRateInfoTrait;
 use SyPay\Union\Channels\Traits\SubMerInfoTrait;
+use SyPay\Union\Channels\Traits\TermIdTrait;
 use SyPay\Union\Channels\Traits\TxnAmtTrait;
+use SyPay\Union\Channels\Traits\UserMacTrait;
 use SyPay\UtilUnionChannels;
 
 /**
@@ -37,9 +39,9 @@ use SyPay\UtilUnionChannels;
  * 用于受理方向持卡人的发卡方确认交易许可
  * 受理方将预估的消费金额作为预授权金额,发送给持卡人的发卡方
  *
- * @package SyPay\Union\Channels\Mobile
+ * @package SyPay\Union\Channels\Order
  */
-class PreAuth extends BaseMobile
+class PreAuth extends BaseOrder
 {
     use BackUrlTrait;
     use CurrencyCodeTrait;
@@ -49,28 +51,30 @@ class PreAuth extends BaseMobile
     use OrderIdTrait;
     use OrderDescTrait;
     use SubMerInfoTrait;
-    use FrontUrlTrait;
+    use EncryptCertIdTrait;
+    use MerInfoTrait;
+    use AcqInsCodeTrait;
+    use CustomerInfoTrait;
+    use CardTransDataTrait;
     use AccInfoTrait;
     use CertIdTrait;
-    use PayCardTypeTrait;
     use ReservedTrait;
+    use CustomerIpTrait;
     use IssInsCodeTrait;
-    use AccSplitDataTrait;
     use RiskRateInfoTrait;
-    use DefaultPayTypeTrait;
     use ReqReservedTrait;
-    use CustomerInfoTrait;
-    use PayTimeoutTrait;
+    use TermIdTrait;
+    use UserMacTrait;
 
     public function __construct(string $merId, string $envType)
     {
         parent::__construct($merId, $envType);
-        $this->reqDomain .= '/gateway/api/appTransReq.do';
-        $this->reqData['bizType'] = '000301';
+        $this->reqDomain .= '/gateway/api/backTransReq.do';
+        $this->reqData['bizType'] = '001001';
         $this->reqData['backUrl'] = 'http://www.specialUrl.com';
         $this->reqData['currencyCode'] = '156';
         $this->reqData['txnType'] = '02';
-        $this->reqData['txnSubType'] = '01';
+        $this->reqData['txnSubType'] = '02';
         $this->reqData['accessType'] = 0;
     }
 

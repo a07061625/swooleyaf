@@ -2,74 +2,68 @@
 /**
  * Created by PhpStorm.
  * User: 姜伟
- * Date: 2020/8/19 0019
- * Time: 8:47
+ * Date: 2020/8/13 0013
+ * Time: 10:22
  */
-namespace SyPay\Union\Channels\Mobile;
+namespace SyPay\Union\Channels\Order;
 
 use SyConstant\ErrorCode;
 use SyException\Pay\UnionException;
-use SyPay\Union\Channels\BaseMobile;
+use SyPay\Union\Channels\BaseOrder;
 use SyPay\Union\Channels\Traits\AccessTypeTrait;
 use SyPay\Union\Channels\Traits\AccInfoTrait;
-use SyPay\Union\Channels\Traits\AccSplitDataTrait;
+use SyPay\Union\Channels\Traits\AcqInsCodeTrait;
 use SyPay\Union\Channels\Traits\BackUrlTrait;
 use SyPay\Union\Channels\Traits\CertIdTrait;
 use SyPay\Union\Channels\Traits\ChannelTypeTrait;
-use SyPay\Union\Channels\Traits\CurrencyCodeTrait;
 use SyPay\Union\Channels\Traits\CustomerInfoTrait;
-use SyPay\Union\Channels\Traits\DefaultPayTypeTrait;
+use SyPay\Union\Channels\Traits\EncryptCertIdTrait;
 use SyPay\Union\Channels\Traits\FrontUrlTrait;
 use SyPay\Union\Channels\Traits\IssInsCodeTrait;
-use SyPay\Union\Channels\Traits\OrderDescTrait;
+use SyPay\Union\Channels\Traits\MerInfoTrait;
 use SyPay\Union\Channels\Traits\OrderIdTrait;
 use SyPay\Union\Channels\Traits\PayCardTypeTrait;
-use SyPay\Union\Channels\Traits\PayTimeoutTrait;
 use SyPay\Union\Channels\Traits\ReqReservedTrait;
 use SyPay\Union\Channels\Traits\ReservedTrait;
 use SyPay\Union\Channels\Traits\RiskRateInfoTrait;
 use SyPay\Union\Channels\Traits\SubMerInfoTrait;
-use SyPay\Union\Channels\Traits\TxnAmtTrait;
+use SyPay\Union\Channels\Traits\UserMacTrait;
 use SyPay\UtilUnionChannels;
 
 /**
- * 预授权接口
- * 用于受理方向持卡人的发卡方确认交易许可
- * 受理方将预估的消费金额作为预授权金额,发送给持卡人的发卡方
+ * 后台实名认证接口
+ * 为了验证银行卡验证信息及身份信息如证件类型、证件号码、姓名、密码、CVN2、有效期、手机号等与银行卡号的一致性,并支持实名认证通过后在银联留存绑定关系,方便后续扣款
  *
- * @package SyPay\Union\Channels\Mobile
+ * @package SyPay\Union\Channels\Order
  */
-class PreAuth extends BaseMobile
+class CertificationBackend extends BaseOrder
 {
-    use BackUrlTrait;
-    use CurrencyCodeTrait;
-    use TxnAmtTrait;
     use AccessTypeTrait;
     use ChannelTypeTrait;
     use OrderIdTrait;
-    use OrderDescTrait;
     use SubMerInfoTrait;
-    use FrontUrlTrait;
+    use BackUrlTrait;
+    use EncryptCertIdTrait;
+    use MerInfoTrait;
+    use AcqInsCodeTrait;
+    use CustomerInfoTrait;
     use AccInfoTrait;
     use CertIdTrait;
-    use PayCardTypeTrait;
     use ReservedTrait;
     use IssInsCodeTrait;
-    use AccSplitDataTrait;
     use RiskRateInfoTrait;
-    use DefaultPayTypeTrait;
+    use FrontUrlTrait;
     use ReqReservedTrait;
-    use CustomerInfoTrait;
-    use PayTimeoutTrait;
+    use PayCardTypeTrait;
+    use UserMacTrait;
 
     public function __construct(string $merId, string $envType)
     {
         parent::__construct($merId, $envType);
-        $this->reqDomain .= '/gateway/api/appTransReq.do';
-        $this->reqData['bizType'] = '000301';
+        $this->reqDomain .= '/gateway/api/frontTransReq.do';
+        $this->reqData['bizType'] = '001001';
         $this->reqData['backUrl'] = 'http://www.specialUrl.com';
-        $this->reqData['currencyCode'] = '156';
-        $this->reqData['txnType'] = '02';
+        $this->reqData['txnType'] = '72';
         $this->reqData['txnSubType'] = '01';
         $this->reqData['accessType'] = 0;
     }
@@ -85,9 +79,6 @@ class PreAuth extends BaseMobile
      */
     public function getDetail() : array
     {
-        if (!isset($this->reqData['txnAmt'])) {
-            throw new UnionException('交易金额不能为空', ErrorCode::PAY_UNION_PARAM_ERROR);
-        }
         if (!isset($this->reqData['channelType'])) {
             throw new UnionException('渠道类型不能为空', ErrorCode::PAY_UNION_PARAM_ERROR);
         }
