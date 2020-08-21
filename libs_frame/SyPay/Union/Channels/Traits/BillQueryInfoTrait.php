@@ -20,6 +20,7 @@ trait BillQueryInfoTrait
 {
     /**
      * @param array $billQueryInfo
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setBillQueryInfo(array $billQueryInfo)
