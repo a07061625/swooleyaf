@@ -19,6 +19,7 @@ trait BussCodeTrait
 {
     /**
      * @param string $bussCode
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setBussCode(string $bussCode)
