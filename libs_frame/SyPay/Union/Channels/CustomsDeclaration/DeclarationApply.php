@@ -71,6 +71,7 @@ class DeclarationApply extends BaseCustomsDeclaration
 
     /**
      * @param string $txnSubType
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setTxnSubType(string $txnSubType)
@@ -84,6 +85,7 @@ class DeclarationApply extends BaseCustomsDeclaration
 
     /**
      * @param array $customsData
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setCustomsData(array $customsData)
@@ -96,6 +98,7 @@ class DeclarationApply extends BaseCustomsDeclaration
 
     /**
      * @param string $origTraceNo
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setOrigTraceNo(string $origTraceNo)
@@ -109,6 +112,7 @@ class DeclarationApply extends BaseCustomsDeclaration
 
     /**
      * @param string $origAcqInsCode
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setOrigAcqInsCode(string $origAcqInsCode)
@@ -122,6 +126,7 @@ class DeclarationApply extends BaseCustomsDeclaration
 
     /**
      * @param string $origFwdInsCode
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setOrigFwdInsCode(string $origFwdInsCode)
@@ -135,6 +140,7 @@ class DeclarationApply extends BaseCustomsDeclaration
 
     /**
      * @param int $origTraceTime
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setOrigTraceTime(int $origTraceTime)
@@ -148,6 +154,7 @@ class DeclarationApply extends BaseCustomsDeclaration
 
     /**
      * @param int $origTransChannel
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setOrigTransChannel(int $origTransChannel)

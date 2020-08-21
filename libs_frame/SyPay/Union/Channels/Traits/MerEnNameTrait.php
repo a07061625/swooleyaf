@@ -9,6 +9,7 @@ namespace SyPay\Union\Channels\Traits;
 
 /**
  * Class MerEnNameTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait MerEnNameTrait

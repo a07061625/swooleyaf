@@ -71,6 +71,7 @@ class Certification extends BaseCustomsDeclaration
 
     /**
      * @param string $txnSubType
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setTxnSubType(string $txnSubType)
@@ -84,6 +85,7 @@ class Certification extends BaseCustomsDeclaration
 
     /**
      * @param string $payTransNo
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setPayTransNo(string $payTransNo)
