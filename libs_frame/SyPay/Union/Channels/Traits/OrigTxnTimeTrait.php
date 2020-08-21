@@ -12,12 +12,14 @@ use SyException\Pay\UnionException;
 
 /**
  * Class OrigTxnTimeTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait OrigTxnTimeTrait
 {
     /**
      * @param int $origTxnTime
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setOrigTxnTime(int $origTxnTime)
