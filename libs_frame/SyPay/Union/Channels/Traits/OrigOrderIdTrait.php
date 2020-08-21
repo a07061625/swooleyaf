@@ -12,12 +12,14 @@ use SyException\Pay\UnionException;
 
 /**
  * Class OrigOrderIdTrait
+ *
  * @package SyPay\Union\Channels\Traits
  */
 trait OrigOrderIdTrait
 {
     /**
      * @param string $origOrderId
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setOrigOrderId(string $origOrderId)
