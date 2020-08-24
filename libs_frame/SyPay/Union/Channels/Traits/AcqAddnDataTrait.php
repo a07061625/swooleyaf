@@ -20,6 +20,7 @@ trait AcqAddnDataTrait
 {
     /**
      * @param array $acqAddnData
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setAcqAddnData(array $acqAddnData)
