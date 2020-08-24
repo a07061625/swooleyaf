@@ -20,6 +20,7 @@ trait TermInfoTrait
 {
     /**
      * @param array $termInfo
+     *
      * @throws \SyException\Pay\UnionException
      */
     public function setTermInfo(array $termInfo)
