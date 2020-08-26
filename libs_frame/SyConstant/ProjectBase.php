@@ -154,8 +154,10 @@ class ProjectBase
     const TIME_EXPIRE_LOCAL_JPUSH_APP_CLEAR = 3600; //超时时间-本地极光推送应用清理,单位为秒
     const TIME_EXPIRE_LOCAL_JPUSH_GROUP_REFRESH = 600; //超时时间-本地极光推送分组更新,单位为秒
     const TIME_EXPIRE_LOCAL_JPUSH_GROUP_CLEAR = 3600; //超时时间-本地极光推送分组清理,单位为秒
-    const TIME_EXPIRE_LOCAL_PAY_PAYPAL_REFRESH = 600; //超时时间-本地贝宝支付配置更新,单位为秒
-    const TIME_EXPIRE_LOCAL_PAY_PAYPAL_CLEAR = 3600; //超时时间-本地贝宝支付配置清理,单位为秒
+    const TIME_EXPIRE_LOCAL_PAY_PAYPAL_CONFIG_REFRESH = 600; //超时时间-本地贝宝支付配置更新,单位为秒
+    const TIME_EXPIRE_LOCAL_PAY_PAYPAL_CONFIG_CLEAR = 3600; //超时时间-本地贝宝支付配置清理,单位为秒
+    const TIME_EXPIRE_LOCAL_PAY_PAYPAL_CLIENT_REFRESH = 600; //超时时间-本地贝宝支付客户端更新,单位为秒
+    const TIME_EXPIRE_LOCAL_PAY_PAYPAL_CLIENT_CLEAR = 3600; //超时时间-本地贝宝支付客户端清理,单位为秒
     const TIME_EXPIRE_LOCAL_PAY_UNION_CHANNELS_REFRESH = 600; //超时时间-本地银联支付全渠道配置更新,单位为秒
     const TIME_EXPIRE_LOCAL_PAY_UNION_CHANNELS_CLEAR = 3600; //超时时间-本地银联支付全渠道配置清理,单位为秒
     const TIME_EXPIRE_LOCAL_PAY_UNION_QUICK_PASS_REFRESH = 600; //超时时间-本地银联支付云闪付配置更新,单位为秒

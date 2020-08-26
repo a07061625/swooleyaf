@@ -84,3 +84,8 @@ if (!defined('SY_TOKEN_SECRET')) {
 if (!defined('SY_HTTP_RSP_CODE_ERROR')) {
     define('SY_HTTP_RSP_CODE_ERROR', 200);
 }
+
+//贝宝支付环境类型 product:正式环境 sandbox:沙箱环境
+if (!defined('SY_PAY_PAYPAL_ENV')) {
+    define('SY_PAY_PAYPAL_ENV', 'product');
+}

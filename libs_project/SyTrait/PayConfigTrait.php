@@ -75,7 +75,7 @@ trait PayConfigTrait
      */
     private function refreshPayPalConfig(string $clientId)
     {
-        $expireTime = Tool::getNowTime() + Project::TIME_EXPIRE_LOCAL_PAY_PAYPAL_REFRESH;
+        $expireTime = Tool::getNowTime() + Project::TIME_EXPIRE_LOCAL_PAY_PAYPAL_CONFIG_REFRESH;
         $payPalConfig = new ConfigPayPal();
         $payPalConfig->setClientId($clientId);
         $payPalConfig->setExpireTime($expireTime);
