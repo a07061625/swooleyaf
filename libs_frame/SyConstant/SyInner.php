@@ -96,6 +96,10 @@ final class SyInner
     const ANNOTATION_TAG_SY_TOKEN = '__sytoken'; //标识-框架令牌
     const ANNOTATION_TAG_SESSION_JWT = '__sessionjwt'; //标识-JWT会话
 
+    //支付常量
+    const PAY_PAYPAL_ENV_PRODUCT = 'product'; //贝宝支付环境-正式
+    const PAY_PAYPAL_ENV_SANDBOX = 'sandbox'; //贝宝支付环境-沙箱
+
     public static $totalServerType = [
         self::SERVER_TYPE_API_GATE => 'api入口',
         self::SERVER_TYPE_API_MODULE => 'api模块',
