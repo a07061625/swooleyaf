@@ -13,9 +13,9 @@ class PayoutsItemCancelRequest extends HttpRequest
 {
     public function __construct($payoutItemId)
     {
-        parent::__construct("/v1/payments/payouts-item/{payout_item_id}/cancel?", "POST");
+        parent::__construct('/v1/payments/payouts-item/{payout_item_id}/cancel?', 'POST');
 
-        $this->path = str_replace("{payout_item_id}", urlencode($payoutItemId), $this->path);
-        $this->headers["Content-Type"] = "application/json";
+        $this->path = str_replace('{payout_item_id}', urlencode($payoutItemId), $this->path);
+        $this->headers['Content-Type'] = 'application/json';
     }
 }

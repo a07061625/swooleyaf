@@ -10,6 +10,6 @@ class ProductionEnvironment extends PayPalEnvironment
 
     public function baseUrl()
     {
-        return "https://api.paypal.com";
+        return 'https://api.paypal.com';
     }
 }

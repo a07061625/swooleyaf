@@ -3,34 +3,34 @@ namespace Sample;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Sample\PayPalClient;
-use SyPay\PayPal\Orders\OrdersGetRequest;
 use Sample\CaptureIntentExamples\CreateOrder;
+use SyPay\PayPal\Orders\OrdersGetRequest;
 
 class GetOrder
 {
     /**
      * This function can be used to retrieve an order by passing order Id as argument.
+     *
+     * @param mixed $orderId
      */
     public static function getOrder($orderId)
     {
-
         $client = PayPalClient::client();
         $response = $client->execute(new OrdersGetRequest($orderId));
         /**
          * Enable below line to print complete response as JSON.
          */
         //print json_encode($response->result);
-        print "Status Code: {$response->statusCode}\n";
-        print "Status: {$response->result->status}\n";
-        print "Order ID: {$response->result->id}\n";
-        print "Intent: {$response->result->intent}\n";
-        print "Links:\n";
+        echo "Status Code: {$response->statusCode}\n";
+        echo "Status: {$response->result->status}\n";
+        echo "Order ID: {$response->result->id}\n";
+        echo "Intent: {$response->result->intent}\n";
+        echo "Links:\n";
         foreach ($response->result->links as $link) {
-            print "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
+            echo "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
         }
 
-        print "Gross Amount: {$response->result->purchase_units[0]->amount->currency_code} {$response->result->purchase_units[0]->amount->value}\n";
+        echo "Gross Amount: {$response->result->purchase_units[0]->amount->currency_code} {$response->result->purchase_units[0]->amount->value}\n";
 
         // To toggle printing the whole response body comment/uncomment below line
         echo json_encode($response->result, JSON_PRETTY_PRINT), "\n";

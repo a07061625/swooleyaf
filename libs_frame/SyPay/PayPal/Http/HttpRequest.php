@@ -3,8 +3,10 @@ namespace SyPay\PayPal\Http;
 
 /**
  * Class HttpRequest
+ *
  * @package SyPay\PayPal\Http
  * Request object that holds all the necessary information required by HTTPClient
+ *
  * @see \SyPay\PayPal\Http\HttpClient
  */
 class HttpRequest

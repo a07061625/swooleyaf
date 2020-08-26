@@ -13,14 +13,14 @@ class OrdersValidateRequest extends HttpRequest
 {
     public function __construct($orderId)
     {
-        parent::__construct("/v2/checkout/orders/{order_id}/validate-payment-method?", "POST");
+        parent::__construct('/v2/checkout/orders/{order_id}/validate-payment-method?', 'POST');
 
-        $this->path = str_replace("{order_id}", urlencode($orderId), $this->path);
-        $this->headers["Content-Type"] = "application/json";
+        $this->path = str_replace('{order_id}', urlencode($orderId), $this->path);
+        $this->headers['Content-Type'] = 'application/json';
     }
 
     public function payPalClientMetadataId($payPalClientMetadataId)
     {
-        $this->headers["PayPal-Client-Metadata-Id"] = $payPalClientMetadataId;
+        $this->headers['PayPal-Client-Metadata-Id'] = $payPalClientMetadataId;
     }
 }

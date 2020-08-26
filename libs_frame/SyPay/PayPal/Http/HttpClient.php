@@ -3,6 +3,7 @@ namespace SyPay\PayPal\Http;
 
 /**
  * Class HttpClient
+ *
  * @package SyPay\PayPal\Http
  * Client used to make HTTP requests.
  */
@@ -27,6 +28,7 @@ class HttpClient
      * HttpClient constructor. Pass the environment you wish to make calls to.
      *
      * @param $environment Environment
+     *
      * @see Environment
      */
     public function __construct(Environment $environment)
@@ -49,9 +51,12 @@ class HttpClient
 
     /**
      * The method that takes an HTTP request, serializes the request, makes a call to given environment, and deserialize response
+     *
      * @param $httpRequest HttpRequest
      * @param \SyPay\PayPal\Http\HttpRequest $httpRequest
+     *
      * @return \SyPay\PayPal\Http\HttpResponse
+     *
      * @throws \SyPay\PayPal\Http\HttpException
      * @throws \SyPay\PayPal\Http\IOException
      */
@@ -66,11 +71,11 @@ class HttpClient
 
         $url = $this->environment->baseUrl() . $requestCpy->path;
         $formattedHeaders = $this->prepareHeaders($requestCpy->headers);
-        if (!array_key_exists("user-agent", $formattedHeaders)) {
-            $requestCpy->headers["user-agent"] = $this->userAgent();
+        if (!array_key_exists('user-agent', $formattedHeaders)) {
+            $requestCpy->headers['user-agent'] = $this->userAgent();
         }
 
-        $body = "";
+        $body = '';
         if (!is_null($requestCpy->body)) {
             $rawHeaders = $requestCpy->headers;
             $requestCpy->headers = $formattedHeaders;
@@ -88,7 +93,7 @@ class HttpClient
             $curl->setOpt(CURLOPT_POSTFIELDS, $body);
         }
 
-        if (strpos($this->environment->baseUrl(), "https://") === 0) {
+        if (strpos($this->environment->baseUrl(), 'https://') === 0) {
             $curl->setOpt(CURLOPT_SSL_VERIFYPEER, true);
             $curl->setOpt(CURLOPT_SSL_VERIFYHOST, 2);
         }
@@ -106,7 +111,9 @@ class HttpClient
     /**
      * Returns an array representing headers with their keys
      * to be lower case
+     *
      * @param $headers
+     *
      * @return array
      */
     public function prepareHeaders($headers)
@@ -117,8 +124,10 @@ class HttpClient
     /**
      * Returns an array representing headers with their key in
      * original cases and updated values
+     *
      * @param $rawHeaders
      * @param $formattedHeaders
+     *
      * @return array
      */
     public function mapHeaders($rawHeaders, $formattedHeaders)
@@ -140,16 +149,16 @@ class HttpClient
      */
     public function userAgent()
     {
-        return "PayPalHttp-PHP HTTP/1.1";
+        return 'PayPalHttp-PHP HTTP/1.1';
     }
 
     /**
      * Return the filepath to your custom CA Cert if needed.
+     *
      * @return string
      */
     protected function getCACertFilePath()
     {
-        return null;
     }
 
     protected function setCurl(Curl $curl)
@@ -167,7 +176,7 @@ class HttpClient
         $headerArray = [];
         if ($headers) {
             foreach ($headers as $key => $val) {
-                $headerArray[] = $key . ": " . $val;
+                $headerArray[] = $key . ': ' . $val;
             }
         }
 
@@ -180,8 +189,8 @@ class HttpClient
         $curl->setOpt(CURLOPT_HEADERFUNCTION, function ($curl, $header) use (&$headers) {
             $len = strlen($header);
 
-            $k = "";
-            $v = "";
+            $k = '';
+            $v = '';
 
             $this->deserializeHeader($header, $k, $v);
             $headers[$k] = $v;
@@ -208,19 +217,19 @@ class HttpClient
             }
 
             return new HttpResponse($errorCode === 0 ? $statusCode : $errorCode, $responseBody, $headers);
-        } else {
-            throw new HttpException($body, $statusCode, $headers);
         }
+
+        throw new HttpException($body, $statusCode, $headers);
     }
 
     private function deserializeHeader($header, &$key, &$value)
     {
         if (strlen($header) > 0) {
             if (empty($header) || strpos($header, ':') === false) {
-                return null;
+                return;
             }
 
-            [$k, $v] = explode(":", $header);
+            [$k, $v] = explode(':', $header);
             $key = trim($k);
             $value = trim($v);
         }
