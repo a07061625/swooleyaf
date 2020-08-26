@@ -13,33 +13,33 @@ class PayoutsGetRequest extends HttpRequest
 {
     public function __construct($payoutBatchId)
     {
-        parent::__construct("/v1/payments/payouts/{payout_batch_id}?", "GET");
+        parent::__construct('/v1/payments/payouts/{payout_batch_id}?', 'GET');
 
-        $this->path = str_replace("{payout_batch_id}", urlencode($payoutBatchId), $this->path);
-        $this->headers["Content-Type"] = "application/json";
+        $this->path = str_replace('{payout_batch_id}', urlencode($payoutBatchId), $this->path);
+        $this->headers['Content-Type'] = 'application/json';
     }
 
     public function fields($fields)
     {
         $param = $fields;
-        $this->path .= "fields=" . urlencode($param) . "&";
+        $this->path .= 'fields=' . urlencode($param) . '&';
     }
 
     public function page($page)
     {
         $param = $page;
-        $this->path .= "page=" . urlencode($param) . "&";
+        $this->path .= 'page=' . urlencode($param) . '&';
     }
 
     public function pageSize($pageSize)
     {
         $param = $pageSize;
-        $this->path .= "page_size=" . urlencode($param) . "&";
+        $this->path .= 'page_size=' . urlencode($param) . '&';
     }
 
     public function totalRequired($totalRequired)
     {
         $param = $totalRequired;
-        $this->path .= "total_required=" . urlencode($param) . "&";
+        $this->path .= 'total_required=' . urlencode($param) . '&';
     }
 }

@@ -3,8 +3,8 @@ namespace Sample\AuthorizeIntentExamples;
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-use SyPay\PayPal\Payments\AuthorizationsCaptureRequest;
 use Sample\PayPalClient;
+use SyPay\PayPal\Payments\AuthorizationsCaptureRequest;
 
 class CaptureOrder
 {
@@ -15,12 +15,15 @@ class CaptureOrder
      */
     public static function buildRequestBody()
     {
-        return "{}";
+        return '{}';
     }
 
     /**
      * Below function can be used to capture order.
      * Valid Authorization id should be passed as an argument.
+     *
+     * @param mixed $authorizationId
+     * @param mixed $debug
      */
     public static function captureOrder($authorizationId, $debug = false)
     {
@@ -30,12 +33,12 @@ class CaptureOrder
         $response = $client->execute($request);
 
         if ($debug) {
-            print "Status Code: {$response->statusCode}\n";
-            print "Status: {$response->result->status}\n";
-            print "Capture ID: {$response->result->id}\n";
-            print "Links:\n";
+            echo "Status Code: {$response->statusCode}\n";
+            echo "Status: {$response->result->status}\n";
+            echo "Capture ID: {$response->result->id}\n";
+            echo "Links:\n";
             foreach ($response->result->links as $link) {
-                print "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
+                echo "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
             }
             // To toggle printing the whole response body comment/uncomment below line
             echo json_encode($response->result, JSON_PRETTY_PRINT), "\n";

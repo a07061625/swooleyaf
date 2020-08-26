@@ -12,9 +12,10 @@ class HttpException extends IOException
 
     /**
      * HttpException constructor.
+     *
      * @param string $message
-     * @param int $statusCode
-     * @param array $headers
+     * @param int    $statusCode
+     * @param array  $headers
      */
     public function __construct($message, $statusCode, $headers)
     {

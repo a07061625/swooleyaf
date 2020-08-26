@@ -13,9 +13,9 @@ class AuthorizationsGetRequest extends HttpRequest
 {
     public function __construct($authorizationId)
     {
-        parent::__construct("/v2/payments/authorizations/{authorization_id}?", "GET");
+        parent::__construct('/v2/payments/authorizations/{authorization_id}?', 'GET');
 
-        $this->path = str_replace("{authorization_id}", urlencode($authorizationId), $this->path);
-        $this->headers["Content-Type"] = "application/json";
+        $this->path = str_replace('{authorization_id}', urlencode($authorizationId), $this->path);
+        $this->headers['Content-Type'] = 'application/json';
     }
 }

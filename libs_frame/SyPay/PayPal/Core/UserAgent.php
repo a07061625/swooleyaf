@@ -4,6 +4,7 @@ namespace SyPay\PayPal\Core;
 /**
  * Class PayPalUserAgent
  * PayPalUserAgent generates User Agent for curl requests
+ *
  * @package SyPay\PayPal\Core
  */
 class UserAgent
@@ -30,7 +31,8 @@ class UserAgent
             $curlVersion = curl_version();
             $featureList[] = 'curl=' . $curlVersion['version'];
         }
-        return sprintf("PayPalSDK/%s %s (%s)", "SyPay-PHP-SDK", Version::VERSION, implode('; ', $featureList));
+
+        return sprintf('PayPalSDK/%s %s (%s)', 'SyPay-PHP-SDK', Version::VERSION, implode('; ', $featureList));
     }
     /**
      * Gets PHP Bit version

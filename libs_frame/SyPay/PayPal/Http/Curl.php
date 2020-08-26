@@ -3,8 +3,10 @@ namespace SyPay\PayPal\Http;
 
 /**
  * Class Curl
+ *
  * @package SyPay\PayPal\Http
  * Curl wrapper used by HttpClient to make curl requests.
+ *
  * @see \SyPay\PayPal\Http\HttpClient
  */
 class Curl
@@ -22,12 +24,14 @@ class Curl
     public function setOpt($option, $value)
     {
         curl_setopt($this->curl, $option, $value);
+
         return $this;
     }
 
     public function close()
     {
         curl_close($this->curl);
+
         return $this;
     }
 

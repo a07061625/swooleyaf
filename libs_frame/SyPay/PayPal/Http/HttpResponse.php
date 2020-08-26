@@ -3,6 +3,7 @@ namespace SyPay\PayPal\Http;
 
 /**
  * Class HttpResponse
+ *
  * @package SyPay\PayPal\Http
  *
  * Object that holds your response details

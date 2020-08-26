@@ -6,16 +6,16 @@ use SyPay\PayPal\Http\Serializer;
 
 /**
  * Class Json
+ *
  * @package SyPay\PayPal\Http\Serializer
  *
  * Serializer for JSON content types.
  */
 class Json implements Serializer
 {
-
     public function contentType()
     {
-        return "/^application\\/json/";
+        return '/^application\\/json/';
     }
 
     public function encode(HttpRequest $request)
@@ -27,7 +27,8 @@ class Json implements Serializer
         if (is_array($body)) {
             return json_encode($body);
         }
-        throw new \Exception("Cannot serialize data. Unknown type");
+
+        throw new \Exception('Cannot serialize data. Unknown type');
     }
 
     public function decode($data)

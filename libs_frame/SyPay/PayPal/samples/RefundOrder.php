@@ -3,7 +3,6 @@ namespace Sample;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Sample\PayPalClient;
 use SyPay\PayPal\Payments\CapturesRefundRequest;
 
 class RefundOrder
@@ -23,6 +22,9 @@ class RefundOrder
 
     /**
      * This function can be used to preform refund on the capture.
+     *
+     * @param mixed $captureId
+     * @param mixed $debug
      */
     public static function refundOrder($captureId, $debug = false)
     {
@@ -32,12 +34,12 @@ class RefundOrder
         $response = $client->execute($request);
 
         if ($debug) {
-            print "Status Code: {$response->statusCode}\n";
-            print "Status: {$response->result->status}\n";
-            print "Order ID: {$response->result->id}\n";
-            print "Links:\n";
+            echo "Status Code: {$response->statusCode}\n";
+            echo "Status: {$response->result->status}\n";
+            echo "Order ID: {$response->result->id}\n";
+            echo "Links:\n";
             foreach ($response->result->links as $link) {
-                print "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
+                echo "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
             }
             // To toggle printing the whole response body comment/uncomment below line
             echo json_encode($response->result, JSON_PRETTY_PRINT), "\n";
