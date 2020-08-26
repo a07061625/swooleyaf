@@ -13,17 +13,17 @@ class OrdersCreateRequest extends HttpRequest
 {
     public function __construct()
     {
-        parent::__construct("/v2/checkout/orders?", "POST");
-        $this->headers["Content-Type"] = "application/json";
+        parent::__construct('/v2/checkout/orders?', 'POST');
+        $this->headers['Content-Type'] = 'application/json';
     }
 
     public function payPalPartnerAttributionId($payPalPartnerAttributionId)
     {
-        $this->headers["PayPal-Partner-Attribution-Id"] = $payPalPartnerAttributionId;
+        $this->headers['PayPal-Partner-Attribution-Id'] = $payPalPartnerAttributionId;
     }
 
     public function prefer($prefer)
     {
-        $this->headers["Prefer"] = $prefer;
+        $this->headers['Prefer'] = $prefer;
     }
 }

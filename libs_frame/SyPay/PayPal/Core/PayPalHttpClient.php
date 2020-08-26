@@ -7,9 +7,9 @@ use SyTrait\SimpleConfigTrait;
 class PayPalHttpClient extends HttpClient
 {
     use SimpleConfigTrait;
+    public $authInjector;
 
     private $refreshToken;
-    public $authInjector;
 
     public function __construct(PayPalEnvironment $environment, $refreshToken = null)
     {

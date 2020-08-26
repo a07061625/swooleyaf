@@ -13,17 +13,17 @@ class PayoutsPostRequest extends HttpRequest
 {
     public function __construct()
     {
-        parent::__construct("/v1/payments/payouts?", "POST");
-        $this->headers["Content-Type"] = "application/json";
+        parent::__construct('/v1/payments/payouts?', 'POST');
+        $this->headers['Content-Type'] = 'application/json';
     }
 
     public function payPalPartnerAttributionId($payPalPartnerAttributionId)
     {
-        $this->headers["PayPal-Partner-Attribution-Id"] = $payPalPartnerAttributionId;
+        $this->headers['PayPal-Partner-Attribution-Id'] = $payPalPartnerAttributionId;
     }
 
     public function payPalRequestId($payPalRequestId)
     {
-        $this->headers["PayPal-Request-Id"] = $payPalRequestId;
+        $this->headers['PayPal-Request-Id'] = $payPalRequestId;
     }
 }

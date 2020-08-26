@@ -2,22 +2,22 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use SyPay\PayPal\Orders\OrdersCreateRequest;
 use Sample\PayPalClient;
 use SyPay\PayPal\Http\HttpException;
+use SyPay\PayPal\Orders\OrdersCreateRequest;
 
 class ErrorSample
 {
-    public static function prettyPrint($jsonData, $pre = "")
+    public static function prettyPrint($jsonData, $pre = '')
     {
-        $pretty = "";
+        $pretty = '';
         foreach ($jsonData as $key => $val) {
-            $pretty .= $pre . ucfirst($key) . ": ";
-            if (strcmp(gettype($val), "array") == 0) {
+            $pretty .= $pre . ucfirst($key) . ': ';
+            if (strcmp(gettype($val), 'array') == 0) {
                 $pretty .= "\n";
                 $sno = 1;
                 foreach ($val as $value) {
-                    $pretty .= $pre . "\t" . $sno ++ . ":\n";
+                    $pretty .= $pre . "\t" . $sno++ . ":\n";
                     $pretty .= self::prettyPrint($value, $pre . "\t\t");
                 }
             } else {
@@ -34,17 +34,18 @@ class ErrorSample
     public static function createError1()
     {
         $request = new OrdersCreateRequest();
-        $request->body = "{}";
-        print "Request Body: {}\n\n";
+        $request->body = '{}';
+        echo "Request Body: {}\n\n";
 
-        print "Response:\n";
+        echo "Response:\n";
+
         try {
             $client = PayPalClient::client();
             $response = $client->execute($request);
         } catch (HttpException $exception) {
             $message = json_decode($exception->getMessage(), true);
-            print "Status Code: {$exception->statusCode}\n";
-            print(self::prettyPrint($message));
+            echo "Status Code: {$exception->statusCode}\n";
+            echo self::prettyPrint($message);
         }
     }
 
@@ -65,22 +66,22 @@ class ErrorSample
                 ],
             ],
         ];
-        print "Request Body:\n" . json_encode($request->body, JSON_PRETTY_PRINT) . "\n\n";
+        echo "Request Body:\n" . json_encode($request->body, JSON_PRETTY_PRINT) . "\n\n";
 
         try {
             $client = PayPalClient::client();
             $response = $client->execute($request);
         } catch (HttpException $exception) {
-            print "Response:\n";
+            echo "Response:\n";
             $message = json_decode($exception->getMessage(), true);
-            print "Status Code: {$exception->statusCode}\n";
-            print(self::prettyPrint($message));
+            echo "Status Code: {$exception->statusCode}\n";
+            echo self::prettyPrint($message);
         }
     }
 }
 
-print "Calling createError1 (Body has no required parameters (intent, purchase_units))\n";
+echo "Calling createError1 (Body has no required parameters (intent, purchase_units))\n";
 ErrorSample::createError1();
 
-print "\n\nCalling createError2 (Body has invalid parameter value for intent)\n";
+echo "\n\nCalling createError2 (Body has invalid parameter value for intent)\n";
 ErrorSample::createError2();

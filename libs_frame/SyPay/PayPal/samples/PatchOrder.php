@@ -3,12 +3,36 @@ namespace Sample;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use SyPay\PayPal\Orders\OrdersPatchRequest;
-use SyPay\PayPal\Orders\OrdersGetRequest;
 use Sample\AuthorizeIntentExamples\CreateOrder;
+use SyPay\PayPal\Orders\OrdersGetRequest;
+use SyPay\PayPal\Orders\OrdersPatchRequest;
 
 class PatchOrder
 {
+    public static function patchOrder($orderId)
+    {
+        $client = PayPalClient::client();
+
+        $request = new OrdersPatchRequest($orderId);
+        $request->body = self::buildRequestBody();
+        $client->execute($request);
+
+        $response = $client->execute(new OrdersGetRequest($orderId));
+
+        echo "Status Code: {$response->statusCode}\n";
+        echo "Status: {$response->result->status}\n";
+        echo "Order ID: {$response->result->id}\n";
+        echo "Intent: {$response->result->intent}\n";
+        echo "Links:\n";
+        foreach ($response->result->links as $link) {
+            echo "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
+        }
+
+        echo "Gross Amount: {$response->result->purchase_units[0]->amount->currency_code} {$response->result->purchase_units[0]->amount->value}\n";
+
+        // To toggle printing the whole response body comment/uncomment below line
+        echo json_encode($response->result, JSON_PRETTY_PRINT), "\n";
+    }
     private static function buildRequestBody()
     {
         return [
@@ -37,37 +61,11 @@ class PatchOrder
             ],
         ];
     }
-
-    public static function patchOrder($orderId)
-    {
-
-        $client = PayPalClient::client();
-
-        $request = new OrdersPatchRequest($orderId);
-        $request->body = PatchOrder::buildRequestBody();
-        $client->execute($request);
-
-        $response = $client->execute(new OrdersGetRequest($orderId));
-
-        print "Status Code: {$response->statusCode}\n";
-        print "Status: {$response->result->status}\n";
-        print "Order ID: {$response->result->id}\n";
-        print "Intent: {$response->result->intent}\n";
-        print "Links:\n";
-        foreach ($response->result->links as $link) {
-            print "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
-        }
-
-        print "Gross Amount: {$response->result->purchase_units[0]->amount->currency_code} {$response->result->purchase_units[0]->amount->value}\n";
-
-        // To toggle printing the whole response body comment/uncomment below line
-        echo json_encode($response->result, JSON_PRETTY_PRINT), "\n";
-    }
 }
 
 if (!count(debug_backtrace())) {
-    print "Before PATCH:\n";
+    echo "Before PATCH:\n";
     $createdOrder = CreateOrder::createOrder(true)->result;
-    print "\nAfter PATCH (Changed Intent and Amount):\n";
+    echo "\nAfter PATCH (Changed Intent and Amount):\n";
     PatchOrder::patchOrder($createdOrder->id);
 }

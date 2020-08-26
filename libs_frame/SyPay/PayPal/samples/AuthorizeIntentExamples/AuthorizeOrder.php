@@ -3,8 +3,8 @@ namespace Sample\AuthorizeIntentExamples;
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-use SyPay\PayPal\Orders\OrdersAuthorizeRequest;
 use Sample\PayPalClient;
+use SyPay\PayPal\Orders\OrdersAuthorizeRequest;
 
 class AuthorizeOrder
 {
@@ -13,12 +13,15 @@ class AuthorizeOrder
      */
     public static function buildRequestBody()
     {
-        return "{}";
+        return '{}';
     }
 
     /**
      * This function can be used to perform authorization on the approved order.
      * Valid Approved order id should be passed as an argument.
+     *
+     * @param mixed $orderId
+     * @param mixed $debug
      */
     public static function authorizeOrder($orderId, $debug = false)
     {
@@ -28,17 +31,17 @@ class AuthorizeOrder
         $client = PayPalClient::client();
         $response = $client->execute($request);
         if ($debug) {
-            print "Status Code: {$response->statusCode}\n";
-            print "Status: {$response->result->status}\n";
-            print "Order ID: {$response->result->id}\n";
-            print "Authorization ID: {$response->result->purchase_units[0]->payments->authorizations[0]->id}\n";
-            print "Links:\n";
+            echo "Status Code: {$response->statusCode}\n";
+            echo "Status: {$response->result->status}\n";
+            echo "Order ID: {$response->result->id}\n";
+            echo "Authorization ID: {$response->result->purchase_units[0]->payments->authorizations[0]->id}\n";
+            echo "Links:\n";
             foreach ($response->result->links as $link) {
-                print "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
+                echo "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
             }
-            print "Authorization Links:\n";
+            echo "Authorization Links:\n";
             foreach ($response->result->purchase_units[0]->payments->authorizations[0]->links as $link) {
-                print "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
+                echo "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
             }
             // To toggle printing the whole response body comment/uncomment below line
             echo json_encode($response->result, JSON_PRETTY_PRINT), "\n";

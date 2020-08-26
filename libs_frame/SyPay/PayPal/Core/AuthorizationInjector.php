@@ -1,16 +1,16 @@
 <?php
 namespace SyPay\PayPal\Core;
 
+use SyPay\PayPal\Http\HttpClient;
 use SyPay\PayPal\Http\HttpRequest;
 use SyPay\PayPal\Http\Injector;
-use SyPay\PayPal\Http\HttpClient;
 
 class AuthorizationInjector implements Injector
 {
+    public $accessToken;
     private $client;
     private $environment;
     private $refreshToken;
-    public $accessToken;
 
     public function __construct(HttpClient $client, PayPalEnvironment $environment, $refreshToken)
     {
@@ -33,6 +33,7 @@ class AuthorizationInjector implements Injector
     {
         $accessTokenResponse = $this->client->execute(new AccessTokenRequest($this->environment, $this->refreshToken));
         $accessToken = $accessTokenResponse->result;
+
         return new AccessToken($accessToken->access_token, $accessToken->token_type, $accessToken->expires_in);
     }
 
@@ -43,6 +44,6 @@ class AuthorizationInjector implements Injector
 
     private function hasAuthHeader(HttpRequest $request)
     {
-        return array_key_exists("Authorization", $request->headers);
+        return array_key_exists('Authorization', $request->headers);
     }
 }

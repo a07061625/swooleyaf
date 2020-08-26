@@ -11,8 +11,10 @@ class CaptureOrder
     /**
      * This function can be used to capture an order payment by passing the approved
      * order id as argument.
+     *
      * @param $orderId
      * @param bool $debug
+     *
      * @return mixed
      */
     public static function captureOrder($orderId, $debug = false)
@@ -22,17 +24,17 @@ class CaptureOrder
         $client = PayPalClient::client();
         $response = $client->execute($request);
         if ($debug) {
-            print "Status Code: {$response->statusCode}\n";
-            print "Status: {$response->result->status}\n";
-            print "Order ID: {$response->result->id}\n";
-            print "Links:\n";
+            echo "Status Code: {$response->statusCode}\n";
+            echo "Status: {$response->result->status}\n";
+            echo "Order ID: {$response->result->id}\n";
+            echo "Links:\n";
             foreach ($response->result->links as $link) {
-                print "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
+                echo "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
             }
-            print "Capture Ids:\n";
+            echo "Capture Ids:\n";
             foreach ($response->result->purchase_units as $purchase_unit) {
                 foreach ($purchase_unit->payments->captures as $capture) {
-                    print "\t{$capture->id}";
+                    echo "\t{$capture->id}";
                 }
             }
             // To toggle printing the whole response body comment/uncomment below line

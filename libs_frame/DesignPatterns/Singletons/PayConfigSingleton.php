@@ -101,33 +101,6 @@ class PayConfigSingleton
     }
 
     /**
-     * 获取本地银联支付全渠道配置
-     *
-     * @param string $merId
-     *
-     * @return \SyPay\ConfigUnionChannels|null
-     */
-    private function getLocalUnionChannelsConfig(string $merId)
-    {
-        $nowTime = Tool::getNowTime();
-        if ($this->unionChannelsClearTime < $nowTime) {
-            $delIds = [];
-            foreach ($this->unionChannelsConfigs as $eMerId => $unionChannelsConfig) {
-                if ($unionChannelsConfig->getExpireTime() < $nowTime) {
-                    $delIds[] = $eMerId;
-                }
-            }
-            foreach ($delIds as $eMerId) {
-                unset($this->unionChannelsConfigs[$eMerId]);
-            }
-
-            $this->unionChannelsClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_PAY_UNION_CHANNELS_CLEAR;
-        }
-
-        return Tool::getArrayVal($this->unionChannelsConfigs, $merId, null);
-    }
-
-    /**
      * 获取银联支付全渠道配置
      *
      * @param string $merId
@@ -171,33 +144,6 @@ class PayConfigSingleton
     public function getUnionQuickPassConfigs()
     {
         return $this->unionQuickPassConfigs;
-    }
-
-    /**
-     * 获取本地银联支付云闪付配置
-     *
-     * @param string $appId
-     *
-     * @return \SyPay\ConfigUnionQuickPass|null
-     */
-    private function getLocalUnionQuickPassConfig(string $appId)
-    {
-        $nowTime = Tool::getNowTime();
-        if ($this->unionQuickPassClearTime < $nowTime) {
-            $delIds = [];
-            foreach ($this->unionQuickPassConfigs as $eAppId => $unionQuickPassConfig) {
-                if ($unionQuickPassConfig->getExpireTime() < $nowTime) {
-                    $delIds[] = $eAppId;
-                }
-            }
-            foreach ($delIds as $eAppId) {
-                unset($this->unionQuickPassConfigs[$eAppId]);
-            }
-
-            $this->unionQuickPassClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_PAY_UNION_QUICK_PASS_CLEAR;
-        }
-
-        return Tool::getArrayVal($this->unionQuickPassConfigs, $appId, null);
     }
 
     /**
@@ -247,33 +193,6 @@ class PayConfigSingleton
     }
 
     /**
-     * 获取本地贝宝支付配置
-     *
-     * @param string $clientId
-     *
-     * @return \SyPay\ConfigPayPal|null
-     */
-    private function getLocalPayPalConfig(string $clientId)
-    {
-        $nowTime = Tool::getNowTime();
-        if ($this->payPalConfigClearTime < $nowTime) {
-            $delIds = [];
-            foreach ($this->payPalConfigs as $eClientId => $payPalConfig) {
-                if ($payPalConfig->getExpireTime() < $nowTime) {
-                    $delIds[] = $eClientId;
-                }
-            }
-            foreach ($delIds as $eClientId) {
-                unset($this->payPalConfigs[$eClientId]);
-            }
-
-            $this->payPalConfigClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_PAY_PAYPAL_CONFIG_CLEAR;
-        }
-
-        return Tool::getArrayVal($this->payPalConfigs, $clientId, null);
-    }
-
-    /**
      * 获取贝宝支付配置
      *
      * @param string $clientId
@@ -320,59 +239,6 @@ class PayConfigSingleton
     }
 
     /**
-     * 获取本地贝宝支付客户端
-     *
-     * @param string $clientId
-     *
-     * @return \SyPay\PayPal\Core\PayPalHttpClient|null
-     */
-    private function getLocalPayPalClient(string $clientId)
-    {
-        $nowTime = Tool::getNowTime();
-        if ($this->payPalClientClearTime < $nowTime) {
-            $delIds = [];
-            foreach ($this->payPalClients as $eClientId => $payPalClient) {
-                if ($payPalClient->getExpireTime() < $nowTime) {
-                    $delIds[] = $eClientId;
-                }
-            }
-            foreach ($delIds as $eClientId) {
-                unset($this->payPalClients[$eClientId]);
-            }
-
-            $this->payPalClientClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_PAY_PAYPAL_CLIENT_CLEAR;
-        }
-
-        return Tool::getArrayVal($this->payPalClients, $clientId, null);
-    }
-
-    /**
-     * 刷新贝宝支付客户端信息
-     * @param string $clientId
-     * @return \SyPay\PayPal\Core\PayPalHttpClient
-     * @throws \SyException\Pay\PayPalException
-     */
-    private function refreshPayPalClient(string $clientId)
-    {
-        $payPalConfig = $this->getPayPalConfig($clientId);
-        if (SY_PAY_PAYPAL_ENV == SyInner::PAY_PAYPAL_ENV_PRODUCT) {
-            $env = new ProductionEnvironment($payPalConfig->getClientId(), $payPalConfig->getClientSecret());
-        } elseif (SY_PAY_PAYPAL_ENV == SyInner::PAY_PAYPAL_ENV_SANDBOX) {
-            $env = new SandboxEnvironment($payPalConfig->getClientId(), $payPalConfig->getClientSecret());
-        } else {
-            throw new PayPalException('环境类型不支持', ErrorCode::PAY_PAYPAL_PARAM_ERROR);
-        }
-
-        $expireTime = Tool::getNowTime() + Project::TIME_EXPIRE_LOCAL_PAY_PAYPAL_CLIENT_REFRESH;
-        $payPalClient = new PayPalHttpClient($env);
-        $payPalClient->setValid(true);
-        $payPalClient->setExpireTime($expireTime);
-        $this->payPalClients[$clientId] = $payPalClient;
-
-        return $payPalClient;
-    }
-
-    /**
      * 获取贝宝支付客户端
      *
      * @param string $clientId
@@ -406,5 +272,142 @@ class PayConfigSingleton
     public function removePayPalClient(string $clientId)
     {
         unset($this->payPalClients[$clientId]);
+    }
+
+    /**
+     * 获取本地银联支付全渠道配置
+     *
+     * @param string $merId
+     *
+     * @return \SyPay\ConfigUnionChannels|null
+     */
+    private function getLocalUnionChannelsConfig(string $merId)
+    {
+        $nowTime = Tool::getNowTime();
+        if ($this->unionChannelsClearTime < $nowTime) {
+            $delIds = [];
+            foreach ($this->unionChannelsConfigs as $eMerId => $unionChannelsConfig) {
+                if ($unionChannelsConfig->getExpireTime() < $nowTime) {
+                    $delIds[] = $eMerId;
+                }
+            }
+            foreach ($delIds as $eMerId) {
+                unset($this->unionChannelsConfigs[$eMerId]);
+            }
+
+            $this->unionChannelsClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_PAY_UNION_CHANNELS_CLEAR;
+        }
+
+        return Tool::getArrayVal($this->unionChannelsConfigs, $merId, null);
+    }
+
+    /**
+     * 获取本地银联支付云闪付配置
+     *
+     * @param string $appId
+     *
+     * @return \SyPay\ConfigUnionQuickPass|null
+     */
+    private function getLocalUnionQuickPassConfig(string $appId)
+    {
+        $nowTime = Tool::getNowTime();
+        if ($this->unionQuickPassClearTime < $nowTime) {
+            $delIds = [];
+            foreach ($this->unionQuickPassConfigs as $eAppId => $unionQuickPassConfig) {
+                if ($unionQuickPassConfig->getExpireTime() < $nowTime) {
+                    $delIds[] = $eAppId;
+                }
+            }
+            foreach ($delIds as $eAppId) {
+                unset($this->unionQuickPassConfigs[$eAppId]);
+            }
+
+            $this->unionQuickPassClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_PAY_UNION_QUICK_PASS_CLEAR;
+        }
+
+        return Tool::getArrayVal($this->unionQuickPassConfigs, $appId, null);
+    }
+
+    /**
+     * 获取本地贝宝支付配置
+     *
+     * @param string $clientId
+     *
+     * @return \SyPay\ConfigPayPal|null
+     */
+    private function getLocalPayPalConfig(string $clientId)
+    {
+        $nowTime = Tool::getNowTime();
+        if ($this->payPalConfigClearTime < $nowTime) {
+            $delIds = [];
+            foreach ($this->payPalConfigs as $eClientId => $payPalConfig) {
+                if ($payPalConfig->getExpireTime() < $nowTime) {
+                    $delIds[] = $eClientId;
+                }
+            }
+            foreach ($delIds as $eClientId) {
+                unset($this->payPalConfigs[$eClientId]);
+            }
+
+            $this->payPalConfigClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_PAY_PAYPAL_CONFIG_CLEAR;
+        }
+
+        return Tool::getArrayVal($this->payPalConfigs, $clientId, null);
+    }
+
+    /**
+     * 获取本地贝宝支付客户端
+     *
+     * @param string $clientId
+     *
+     * @return \SyPay\PayPal\Core\PayPalHttpClient|null
+     */
+    private function getLocalPayPalClient(string $clientId)
+    {
+        $nowTime = Tool::getNowTime();
+        if ($this->payPalClientClearTime < $nowTime) {
+            $delIds = [];
+            foreach ($this->payPalClients as $eClientId => $payPalClient) {
+                if ($payPalClient->getExpireTime() < $nowTime) {
+                    $delIds[] = $eClientId;
+                }
+            }
+            foreach ($delIds as $eClientId) {
+                unset($this->payPalClients[$eClientId]);
+            }
+
+            $this->payPalClientClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_PAY_PAYPAL_CLIENT_CLEAR;
+        }
+
+        return Tool::getArrayVal($this->payPalClients, $clientId, null);
+    }
+
+    /**
+     * 刷新贝宝支付客户端信息
+     *
+     * @param string $clientId
+     *
+     * @return \SyPay\PayPal\Core\PayPalHttpClient
+     *
+     * @throws \SyException\Pay\PayPalException
+     */
+    private function refreshPayPalClient(string $clientId)
+    {
+        $payPalConfig = $this->getPayPalConfig($clientId);
+        if (SY_PAY_PAYPAL_ENV == SyInner::PAY_PAYPAL_ENV_PRODUCT) {
+            $env = new ProductionEnvironment($payPalConfig->getClientId(), $payPalConfig->getClientSecret());
+        } elseif (SY_PAY_PAYPAL_ENV == SyInner::PAY_PAYPAL_ENV_SANDBOX) {
+            $env = new SandboxEnvironment($payPalConfig->getClientId(), $payPalConfig->getClientSecret());
+        } else {
+            throw new PayPalException('环境类型不支持', ErrorCode::PAY_PAYPAL_PARAM_ERROR);
+        }
+
+        $expireTime = Tool::getNowTime() + Project::TIME_EXPIRE_LOCAL_PAY_PAYPAL_CLIENT_REFRESH;
+        $payPalClient = new PayPalHttpClient($env);
+        $payPalClient->setValid(true);
+        $payPalClient->setExpireTime($expireTime);
+        $this->payPalClients[$clientId] = $payPalClient;
+
+        return $payPalClient;
     }
 }

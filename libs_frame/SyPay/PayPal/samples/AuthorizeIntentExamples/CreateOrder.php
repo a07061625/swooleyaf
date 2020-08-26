@@ -3,11 +3,77 @@ namespace Sample\AuthorizeIntentExamples;
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-use SyPay\PayPal\Orders\OrdersCreateRequest;
 use Sample\PayPalClient;
+use SyPay\PayPal\Orders\OrdersCreateRequest;
 
 class CreateOrder
 {
+    /**
+     * This is the sample function which can be used to create an order. It uses the
+     * JSON body returned by buildRequestBody() to create an new Order.
+     *
+     * @param mixed $debug
+     */
+    public static function createOrder($debug = false)
+    {
+        $request = new OrdersCreateRequest();
+        $request->headers['prefer'] = 'return=representation';
+        $request->body = self::buildRequestBody();
+
+        $client = PayPalClient::client();
+        $response = $client->execute($request);
+        if ($debug) {
+            echo "Status Code: {$response->statusCode}\n";
+            echo "Status: {$response->result->status}\n";
+            echo "Order ID: {$response->result->id}\n";
+            echo "Intent: {$response->result->intent}\n";
+            echo "Links:\n";
+            foreach ($response->result->links as $link) {
+                echo "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
+            }
+
+            echo "Gross Amount: {$response->result->purchase_units[0]->amount->currency_code} {$response->result->purchase_units[0]->amount->value}\n";
+
+            // To toggle printing the whole response body comment/uncomment below line
+            echo json_encode($response->result, JSON_PRETTY_PRINT), "\n";
+        }
+
+        return $response;
+    }
+
+    /**
+     * This is the sample function which can be used to create an order. It uses the
+     * JSON body returned by buildMinimumRequestBody() to create an new Order.
+     *
+     * @param mixed $debug
+     */
+    public static function createOrderWithMinimumBody($debug = false)
+    {
+        $request = new OrdersCreateRequest();
+        $request->headers['prefer'] = 'return=representation';
+        $request->body = self::buildMinimumRequestBody();
+
+        $client = PayPalClient::client();
+        $response = $client->execute($request);
+        if ($debug) {
+            echo "Order With Minimum Body\n";
+            echo "Status Code: {$response->statusCode}\n";
+            echo "Status: {$response->result->status}\n";
+            echo "Order ID: {$response->result->id}\n";
+            echo "Intent: {$response->result->intent}\n";
+            echo "Links:\n";
+            foreach ($response->result->links as $link) {
+                echo "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
+            }
+
+            echo "Gross Amount: {$response->result->purchase_units[0]->amount->currency_code} {$response->result->purchase_units[0]->amount->value}\n";
+
+            // To toggle printing the whole response body comment/uncomment below line
+            echo json_encode($response->result, JSON_PRETTY_PRINT), "\n";
+        }
+
+        return $response;
+    }
     /**
      * Setting up the JSON request body for creating the Order with complete request body. The Intent in the
      * request body should be set as "AUTHORIZE" for authorize intent flow.
@@ -129,69 +195,6 @@ class CreateOrder
                 ],
             ],
         ];
-    }
-
-    /**
-     * This is the sample function which can be used to create an order. It uses the
-     * JSON body returned by buildRequestBody() to create an new Order.
-     */
-    public static function createOrder($debug = false)
-    {
-        $request = new OrdersCreateRequest();
-        $request->headers["prefer"] = "return=representation";
-        $request->body = CreateOrder::buildRequestBody();
-
-        $client = PayPalClient::client();
-        $response = $client->execute($request);
-        if ($debug) {
-            print "Status Code: {$response->statusCode}\n";
-            print "Status: {$response->result->status}\n";
-            print "Order ID: {$response->result->id}\n";
-            print "Intent: {$response->result->intent}\n";
-            print "Links:\n";
-            foreach ($response->result->links as $link) {
-                print "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
-            }
-
-            print "Gross Amount: {$response->result->purchase_units[0]->amount->currency_code} {$response->result->purchase_units[0]->amount->value}\n";
-
-            // To toggle printing the whole response body comment/uncomment below line
-            echo json_encode($response->result, JSON_PRETTY_PRINT), "\n";
-        }
-
-        return $response;
-    }
-
-    /**
-     * This is the sample function which can be used to create an order. It uses the
-     * JSON body returned by buildMinimumRequestBody() to create an new Order.
-     */
-    public static function createOrderWithMinimumBody($debug = false)
-    {
-        $request = new OrdersCreateRequest();
-        $request->headers["prefer"] = "return=representation";
-        $request->body = CreateOrder::buildMinimumRequestBody();
-
-        $client = PayPalClient::client();
-        $response = $client->execute($request);
-        if ($debug) {
-            print "Order With Minimum Body\n";
-            print "Status Code: {$response->statusCode}\n";
-            print "Status: {$response->result->status}\n";
-            print "Order ID: {$response->result->id}\n";
-            print "Intent: {$response->result->intent}\n";
-            print "Links:\n";
-            foreach ($response->result->links as $link) {
-                print "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
-            }
-
-            print "Gross Amount: {$response->result->purchase_units[0]->amount->currency_code} {$response->result->purchase_units[0]->amount->value}\n";
-
-            // To toggle printing the whole response body comment/uncomment below line
-            echo json_encode($response->result, JSON_PRETTY_PRINT), "\n";
-        }
-
-        return $response;
     }
 }
 
