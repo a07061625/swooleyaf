@@ -17,21 +17,25 @@ class PermissionModify extends BaseBaiDu
 {
     /**
      * endpoint名称
+     *
      * @var string
      */
     private $endpointName = '';
     /**
      * permissionID
+     *
      * @var string
      */
     private $permissionUuid = '';
     /**
      * 操作列表
+     *
      * @var array
      */
     private $operations = [];
     /**
      * 主题名称
+     *
      * @var string
      */
     private $topic = '';
@@ -47,6 +51,7 @@ class PermissionModify extends BaseBaiDu
 
     /**
      * @param string $endpointName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setEndpointName(string $endpointName)
@@ -60,6 +65,7 @@ class PermissionModify extends BaseBaiDu
 
     /**
      * @param string $permissionUuid
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPermissionUuid(string $permissionUuid)
@@ -73,6 +79,7 @@ class PermissionModify extends BaseBaiDu
 
     /**
      * @param array $operations
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setOperations(array $operations)
@@ -90,6 +97,7 @@ class PermissionModify extends BaseBaiDu
 
     /**
      * @param string $topic
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setTopic(string $topic)
@@ -129,6 +137,7 @@ class PermissionModify extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = self::REQ_METHOD_PUT;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

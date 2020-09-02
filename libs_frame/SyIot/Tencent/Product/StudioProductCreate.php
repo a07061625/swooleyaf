@@ -16,41 +16,49 @@ class StudioProductCreate extends BaseTencent
 {
     /**
      * 产品名称
+     *
      * @var string
      */
     private $ProductName = '';
     /**
      * 分组模板ID
+     *
      * @var int
      */
     private $CategoryId = 0;
     /**
      * 产品类型
+     *
      * @var int
      */
     private $ProductType = 0;
     /**
      * 加密类型
+     *
      * @var string
      */
     private $EncryptionType = '';
     /**
      * 连接类型
+     *
      * @var string
      */
     private $NetType = '';
     /**
      * 数据协议
+     *
      * @var int
      */
     private $DataProtocol = 0;
     /**
      * 产品描述
+     *
      * @var string
      */
     private $ProductDesc = '';
     /**
      * 项目ID
+     *
      * @var int
      */
     private $ProjectId = 0;
@@ -67,6 +75,7 @@ class StudioProductCreate extends BaseTencent
 
     /**
      * @param string $productName
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProductName(string $productName)
@@ -80,6 +89,7 @@ class StudioProductCreate extends BaseTencent
 
     /**
      * @param int $categoryId
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setCategoryId(int $categoryId)
@@ -93,6 +103,7 @@ class StudioProductCreate extends BaseTencent
 
     /**
      * @param int $productType
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProductType(int $productType)
@@ -106,6 +117,7 @@ class StudioProductCreate extends BaseTencent
 
     /**
      * @param string $encryptionType
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setEncryptionType(string $encryptionType)
@@ -119,6 +131,7 @@ class StudioProductCreate extends BaseTencent
 
     /**
      * @param string $netType
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setNetType(string $netType)
@@ -132,6 +145,7 @@ class StudioProductCreate extends BaseTencent
 
     /**
      * @param int $dataProtocol
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setDataProtocol(int $dataProtocol)
@@ -145,6 +159,7 @@ class StudioProductCreate extends BaseTencent
 
     /**
      * @param string $productDesc
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProductDesc(string $productDesc)
@@ -158,6 +173,7 @@ class StudioProductCreate extends BaseTencent
 
     /**
      * @param int $projectId
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProjectId(int $projectId)

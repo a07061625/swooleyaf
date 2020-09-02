@@ -17,21 +17,25 @@ class PermissionCreate extends BaseBaiDu
 {
     /**
      * endpoint名称
+     *
      * @var string
      */
     private $endpointName = '';
     /**
      * policy名称
+     *
      * @var string
      */
     private $policyName = '';
     /**
      * 操作列表
+     *
      * @var array
      */
     private $operations = [];
     /**
      * 主题名称
+     *
      * @var string
      */
     private $topic = '';
@@ -47,6 +51,7 @@ class PermissionCreate extends BaseBaiDu
 
     /**
      * @param string $endpointName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setEndpointName(string $endpointName)
@@ -61,6 +66,7 @@ class PermissionCreate extends BaseBaiDu
 
     /**
      * @param string $policyName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPolicyName(string $policyName)
@@ -74,6 +80,7 @@ class PermissionCreate extends BaseBaiDu
 
     /**
      * @param array $operations
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setOperations(array $operations)
@@ -91,6 +98,7 @@ class PermissionCreate extends BaseBaiDu
 
     /**
      * @param string $topic
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setTopic(string $topic)
@@ -129,6 +137,7 @@ class PermissionCreate extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

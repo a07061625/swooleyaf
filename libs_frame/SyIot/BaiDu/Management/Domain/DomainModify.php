@@ -17,11 +17,13 @@ class DomainModify extends BaseBaiDu
 {
     /**
      * 权限组名称
+     *
      * @var string
      */
     private $domainName = '';
     /**
      * 描述
+     *
      * @var string
      */
     private $description = '';
@@ -37,6 +39,7 @@ class DomainModify extends BaseBaiDu
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDomainName(string $domainName)
@@ -51,6 +54,7 @@ class DomainModify extends BaseBaiDu
 
     /**
      * @param string $description
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDescription(string $description)
@@ -82,6 +86,7 @@ class DomainModify extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = self::REQ_METHOD_PUT;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

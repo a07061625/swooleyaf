@@ -17,16 +17,19 @@ class ThingPrincipalAttach extends BaseBaiDu
 {
     /**
      * endpoint名称
+     *
      * @var string
      */
     private $endpointName = '';
     /**
      * thing名称
+     *
      * @var string
      */
     private $thingName = '';
     /**
      * principal名称
+     *
      * @var string
      */
     private $principalName = '';
@@ -43,6 +46,7 @@ class ThingPrincipalAttach extends BaseBaiDu
 
     /**
      * @param string $endpointName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setEndpointName(string $endpointName)
@@ -56,6 +60,7 @@ class ThingPrincipalAttach extends BaseBaiDu
 
     /**
      * @param string $thingName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setThingName(string $thingName)
@@ -69,6 +74,7 @@ class ThingPrincipalAttach extends BaseBaiDu
 
     /**
      * @param string $principalName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPrincipalName(string $principalName)
@@ -103,6 +109,7 @@ class ThingPrincipalAttach extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

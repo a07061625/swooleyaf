@@ -16,26 +16,31 @@ class FirmwareList extends BaseBaiDu
 {
     /**
      * 页码
+     *
      * @var int
      */
     private $pageNo = 1;
     /**
      * 每页个数
+     *
      * @var int
      */
     private $pageSize = 0;
     /**
      * 排序方式
+     *
      * @var string
      */
     private $orderBy = '';
     /**
      * 排序字段
+     *
      * @var string
      */
     private $order = '';
     /**
      * 固件包ID
+     *
      * @var string
      */
     private $firmwareId = '';
@@ -56,6 +61,7 @@ class FirmwareList extends BaseBaiDu
 
     /**
      * @param int $pageNo
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPageNo(int $pageNo)
@@ -69,6 +75,7 @@ class FirmwareList extends BaseBaiDu
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPageSize(int $pageSize)
@@ -82,11 +89,12 @@ class FirmwareList extends BaseBaiDu
 
     /**
      * @param string $orderBy
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setOrderBy(string $orderBy)
     {
-        if (in_array($orderBy, ['asc','desc'])) {
+        if (in_array($orderBy, ['asc', 'desc'])) {
             $this->reqData['orderBy'] = $orderBy;
         } else {
             throw new BaiDuIotException('排序方式不合法', ErrorCode::IOT_PARAM_ERROR);
@@ -95,6 +103,7 @@ class FirmwareList extends BaseBaiDu
 
     /**
      * @param string $firmwareId
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setFirmwareId(string $firmwareId)
@@ -117,6 +126,7 @@ class FirmwareList extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri . '?' . http_build_query($this->reqData);
+
         return $this->getContent();
     }
 }

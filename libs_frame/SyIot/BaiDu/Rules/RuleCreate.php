@@ -17,21 +17,25 @@ class RuleCreate extends BaseBaiDu
 {
     /**
      * 设备名称
+     *
      * @var string
      */
     private $deviceName = '';
     /**
      * 规则名称
+     *
      * @var string
      */
     private $name = '';
     /**
      * 存储数据配置列表
+     *
      * @var array
      */
     private $sources = [];
     /**
      * 写入数据配置列表
+     *
      * @var array
      */
     private $destinations = [];
@@ -49,6 +53,7 @@ class RuleCreate extends BaseBaiDu
 
     /**
      * @param string $deviceName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDeviceName(string $deviceName)
@@ -63,6 +68,7 @@ class RuleCreate extends BaseBaiDu
 
     /**
      * @param string $name
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setName(string $name)
@@ -76,6 +82,7 @@ class RuleCreate extends BaseBaiDu
 
     /**
      * @param array $source
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function addSource(array $source)
@@ -88,6 +95,7 @@ class RuleCreate extends BaseBaiDu
 
     /**
      * @param array $destination
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function addDestination(array $destination)
@@ -125,6 +133,7 @@ class RuleCreate extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

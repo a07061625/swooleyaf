@@ -11,6 +11,7 @@ use SyException\BaseException;
 
 /**
  * Class AliException
+ *
  * @package SyException\Cloud
  */
 class AliException extends BaseException

@@ -17,16 +17,19 @@ class DeviceDataControl extends BaseTencent
 {
     /**
      * 产品ID
+     *
      * @var string
      */
     private $ProductId = '';
     /**
      * 设备名称
+     *
      * @var string
      */
     private $DeviceName = '';
     /**
      * 属性数据
+     *
      * @var array
      */
     private $Data = [];
@@ -43,6 +46,7 @@ class DeviceDataControl extends BaseTencent
 
     /**
      * @param string $productId
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProductId(string $productId)
@@ -56,6 +60,7 @@ class DeviceDataControl extends BaseTencent
 
     /**
      * @param string $deviceName
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setDeviceName(string $deviceName)
@@ -69,6 +74,7 @@ class DeviceDataControl extends BaseTencent
 
     /**
      * @param array $data
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setData(array $data)

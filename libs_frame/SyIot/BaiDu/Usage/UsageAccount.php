@@ -33,6 +33,7 @@ class UsageAccount extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
+
         return $this->getContent();
     }
 }

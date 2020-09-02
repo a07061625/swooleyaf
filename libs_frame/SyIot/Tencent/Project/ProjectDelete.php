@@ -16,6 +16,7 @@ class ProjectDelete extends BaseTencent
 {
     /**
      * 项目ID
+     *
      * @var int
      */
     private $ProjectId = 0;
@@ -32,6 +33,7 @@ class ProjectDelete extends BaseTencent
 
     /**
      * @param int $projectId
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProjectId(int $projectId)

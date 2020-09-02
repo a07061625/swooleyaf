@@ -16,6 +16,7 @@ class UsageEndpoint extends BaseBaiDu
 {
     /**
      * endpoint名称
+     *
      * @var string
      */
     private $endpointName = '';
@@ -31,6 +32,7 @@ class UsageEndpoint extends BaseBaiDu
 
     /**
      * @param string $endpointName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setEndpointName(string $endpointName)
@@ -58,6 +60,7 @@ class UsageEndpoint extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
+
         return $this->getContent();
     }
 }

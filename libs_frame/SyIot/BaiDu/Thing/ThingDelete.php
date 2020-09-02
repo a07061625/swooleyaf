@@ -16,11 +16,13 @@ class ThingDelete extends BaseBaiDu
 {
     /**
      * endpoint名称
+     *
      * @var string
      */
     private $endpointName = '';
     /**
      * thing名称
+     *
      * @var string
      */
     private $thingName = '';
@@ -36,6 +38,7 @@ class ThingDelete extends BaseBaiDu
 
     /**
      * @param string $endpointName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setEndpointName(string $endpointName)
@@ -49,6 +52,7 @@ class ThingDelete extends BaseBaiDu
 
     /**
      * @param string $thingName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setThingName(string $thingName)
@@ -80,6 +84,7 @@ class ThingDelete extends BaseBaiDu
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = self::REQ_METHOD_DELETE;
+
         return $this->getContent();
     }
 }

@@ -12,17 +12,20 @@ use SyException\Cloud\AliException;
 
 /**
  * Trait ConfigTrait
+ *
  * @package SyCloud\Ali
  */
 trait ConfigTrait
 {
     /**
      * 访问ID
+     *
      * @var string
      */
     private $accessKey = '';
     /**
      * 访问密钥
+     *
      * @var string
      */
     private $accessSecret = '';
@@ -37,6 +40,7 @@ trait ConfigTrait
 
     /**
      * @param string $accessKey
+     *
      * @throws \SyException\Cloud\AliException
      */
     public function setAccessKey(string $accessKey)
@@ -58,6 +62,7 @@ trait ConfigTrait
 
     /**
      * @param string $accessSecret
+     *
      * @throws \SyException\Cloud\AliException
      */
     public function setAccessSecret(string $accessSecret)

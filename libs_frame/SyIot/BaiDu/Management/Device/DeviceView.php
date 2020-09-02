@@ -16,6 +16,7 @@ class DeviceView extends BaseBaiDu
 {
     /**
      * 设备名称
+     *
      * @var string
      */
     private $deviceName = '';
@@ -31,6 +32,7 @@ class DeviceView extends BaseBaiDu
 
     /**
      * @param string $deviceName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDeviceName(string $deviceName)
@@ -58,6 +60,7 @@ class DeviceView extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
+
         return $this->getContent();
     }
 }

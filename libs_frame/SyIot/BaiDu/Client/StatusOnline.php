@@ -16,11 +16,13 @@ class StatusOnline extends BaseBaiDu
 {
     /**
      * endpoint名称
+     *
      * @var string
      */
     private $endpointName = '';
     /**
      * 客户端ID
+     *
      * @var string
      */
     private $clientId = '';
@@ -36,6 +38,7 @@ class StatusOnline extends BaseBaiDu
 
     /**
      * @param string $endpointName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setEndpointName(string $endpointName)
@@ -49,6 +52,7 @@ class StatusOnline extends BaseBaiDu
 
     /**
      * @param string $clientId
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setClientId(string $clientId)
@@ -79,6 +83,7 @@ class StatusOnline extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
+
         return $this->getContent();
     }
 }

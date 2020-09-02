@@ -16,6 +16,7 @@ class RuleDelete extends BaseBaiDu
 {
     /**
      * 设备名称
+     *
      * @var string
      */
     private $deviceName = '';
@@ -31,6 +32,7 @@ class RuleDelete extends BaseBaiDu
 
     /**
      * @param string $deviceName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDeviceName(string $deviceName)
@@ -59,6 +61,7 @@ class RuleDelete extends BaseBaiDu
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = self::REQ_METHOD_DELETE;
+
         return $this->getContent();
     }
 }

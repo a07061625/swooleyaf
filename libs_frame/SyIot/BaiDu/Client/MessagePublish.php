@@ -16,21 +16,25 @@ class MessagePublish extends BaseBaiDu
 {
     /**
      * 消息QoS值
+     *
      * @var int
      */
     private $qos = 0;
     /**
      * 主题名称
+     *
      * @var string
      */
     private $topic = '';
     /**
      * 保留消息标记
+     *
      * @var string
      */
     private $retain = '';
     /**
      * 消息内容
+     *
      * @var string
      */
     private $msgContent = '';
@@ -50,6 +54,7 @@ class MessagePublish extends BaseBaiDu
 
     /**
      * @param int $qos
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setQos(int $qos)
@@ -63,6 +68,7 @@ class MessagePublish extends BaseBaiDu
 
     /**
      * @param string $topic
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setTopic(string $topic)
@@ -76,6 +82,7 @@ class MessagePublish extends BaseBaiDu
 
     /**
      * @param string $retain
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setRetain(string $retain)
@@ -89,6 +96,7 @@ class MessagePublish extends BaseBaiDu
 
     /**
      * @param string $msgContent
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setMsgContent(string $msgContent)
@@ -102,6 +110,7 @@ class MessagePublish extends BaseBaiDu
 
     /**
      * @param string $userName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setUserName(string $userName)
@@ -115,6 +124,7 @@ class MessagePublish extends BaseBaiDu
 
     /**
      * @param string $password
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPassword(string $password)
@@ -159,6 +169,7 @@ class MessagePublish extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri . '?' . http_build_query($queryData);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $this->msgContent;
+
         return $this->getContent();
     }
 }

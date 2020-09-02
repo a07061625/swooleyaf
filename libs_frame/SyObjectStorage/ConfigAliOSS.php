@@ -9,6 +9,7 @@ namespace SyObjectStorage;
 
 /**
  * Class ConfigAliOSS
+ *
  * @package SyObjectStorage
  */
 class ConfigAliOSS

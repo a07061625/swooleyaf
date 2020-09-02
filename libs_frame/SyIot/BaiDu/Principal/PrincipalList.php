@@ -16,36 +16,43 @@ class PrincipalList extends BaseBaiDu
 {
     /**
      * endpoint名称
+     *
      * @var string
      */
     private $endpointName = '';
     /**
      * thing名称
+     *
      * @var string
      */
     private $thingName = '';
     /**
      * 排序方式
+     *
      * @var string
      */
     private $order = '';
     /**
      * 排序字段
+     *
      * @var string
      */
     private $orderBy = '';
     /**
      * 页码
+     *
      * @var int
      */
     private $pageNo = 1;
     /**
      * 每页个数
+     *
      * @var int
      */
     private $pageSize = 0;
     /**
      * 模糊查询内容
+     *
      * @var string
      */
     private $q = '';
@@ -65,6 +72,7 @@ class PrincipalList extends BaseBaiDu
 
     /**
      * @param string $endpointName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setEndpointName(string $endpointName)
@@ -79,6 +87,7 @@ class PrincipalList extends BaseBaiDu
 
     /**
      * @param string $thingName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setThingName(string $thingName)
@@ -92,11 +101,12 @@ class PrincipalList extends BaseBaiDu
 
     /**
      * @param string $order
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setOrder(string $order)
     {
-        if (in_array($order, ['asc','desc'])) {
+        if (in_array($order, ['asc', 'desc'])) {
             $this->reqData['order'] = $order;
         } else {
             throw new BaiDuIotException('排序方式不合法', ErrorCode::IOT_PARAM_ERROR);
@@ -105,11 +115,12 @@ class PrincipalList extends BaseBaiDu
 
     /**
      * @param string $orderBy
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setOrderBy(string $orderBy)
     {
-        if (in_array($orderBy, ['createTime','name'])) {
+        if (in_array($orderBy, ['createTime', 'name'])) {
             $this->reqData['orderBy'] = $orderBy;
         } else {
             throw new BaiDuIotException('排序字段不合法', ErrorCode::IOT_PARAM_ERROR);
@@ -118,6 +129,7 @@ class PrincipalList extends BaseBaiDu
 
     /**
      * @param int $pageNo
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPageNo(int $pageNo)
@@ -131,6 +143,7 @@ class PrincipalList extends BaseBaiDu
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPageSize(int $pageSize)
@@ -144,6 +157,7 @@ class PrincipalList extends BaseBaiDu
 
     /**
      * @param string $query
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setQuery(string $query)
@@ -170,6 +184,7 @@ class PrincipalList extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri . '?' . http_build_query($this->reqData);
+
         return $this->getContent();
     }
 }

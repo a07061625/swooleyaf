@@ -16,11 +16,13 @@ class PermissionInfo extends BaseBaiDu
 {
     /**
      * endpoint名称
+     *
      * @var string
      */
     private $endpointName = '';
     /**
      * permissionID
+     *
      * @var string
      */
     private $permissionUuid = '';
@@ -36,6 +38,7 @@ class PermissionInfo extends BaseBaiDu
 
     /**
      * @param string $endpointName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setEndpointName(string $endpointName)
@@ -49,6 +52,7 @@ class PermissionInfo extends BaseBaiDu
 
     /**
      * @param string $permissionUuid
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPermissionUuid(string $permissionUuid)
@@ -79,6 +83,7 @@ class PermissionInfo extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
+
         return $this->getContent();
     }
 }

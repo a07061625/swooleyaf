@@ -17,11 +17,13 @@ class ModelDefinitionModify extends BaseTencent
 {
     /**
      * 产品ID
+     *
      * @var string
      */
     private $ProductId = '';
     /**
      * 数据模板定义
+     *
      * @var array
      */
     private $ModelSchema = [];
@@ -38,6 +40,7 @@ class ModelDefinitionModify extends BaseTencent
 
     /**
      * @param string $productId
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProductId(string $productId)
@@ -51,6 +54,7 @@ class ModelDefinitionModify extends BaseTencent
 
     /**
      * @param array $modelSchema
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setModelSchema(array $modelSchema)
