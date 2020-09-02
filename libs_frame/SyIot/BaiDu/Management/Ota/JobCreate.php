@@ -9,11 +9,11 @@ namespace SyIot\BaiDu\Management\Ota;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 use SyTool\Tool;
 
-class JobCreate extends IotBaseBaiDu
+class JobCreate extends BaseBaiDu
 {
     /**
      * 任务名称
@@ -128,7 +128,7 @@ class JobCreate extends IotBaseBaiDu
         }
         $this->reqData['versionFilter'] = array_keys($this->versionFilter);
 
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_POST,
             'req_uri' => $this->serviceUri,
             'req_params' => [],

@@ -9,11 +9,11 @@ namespace SyIot\BaiDu\Management\Domain;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 use SyTool\Tool;
 
-class DomainCreate extends IotBaseBaiDu
+class DomainCreate extends BaseBaiDu
 {
     /**
      * 名称
@@ -92,7 +92,7 @@ class DomainCreate extends IotBaseBaiDu
             throw new BaiDuIotException('类型不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
 
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_POST,
             'req_uri' => $this->serviceUri,
             'req_params' => [],

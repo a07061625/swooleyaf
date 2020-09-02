@@ -9,11 +9,11 @@ namespace SyIot\BaiDu\Principal;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 use SyTool\Tool;
 
-class KeyRefresh extends IotBaseBaiDu
+class KeyRefresh extends BaseBaiDu
 {
     /**
      * endpoint名称
@@ -90,7 +90,7 @@ class KeyRefresh extends IotBaseBaiDu
         }
         $this->serviceUri = '/v1/endpoint/' . $this->endpointName . '/principal/' . $this->principalName;
 
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_POST,
             'req_uri' => $this->serviceUri,
             'req_params' => [],

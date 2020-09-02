@@ -9,10 +9,10 @@ namespace SyIot\BaiDu\Policy;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 
-class PolicyDelete extends IotBaseBaiDu
+class PolicyDelete extends BaseBaiDu
 {
     /**
      * endpoint名称
@@ -70,7 +70,7 @@ class PolicyDelete extends IotBaseBaiDu
         }
         $this->serviceUri = '/v1/endpoint/' . $this->endpointName . '/policy/' . $this->policyName;
 
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_DELETE,
             'req_uri' => $this->serviceUri,
             'req_params' => [],

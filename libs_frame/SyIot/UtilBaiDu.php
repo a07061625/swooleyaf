@@ -12,7 +12,7 @@ use DesignPatterns\Singletons\IotConfigSingleton;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
-abstract class IotUtilBaiDu extends IotUtilBase
+abstract class UtilBaiDu extends Util
 {
     use SimpleTrait;
 
@@ -39,10 +39,11 @@ abstract class IotUtilBaiDu extends IotUtilBase
 
     /**
      * 发送服务请求
-     * @param \SyIot\IotBaseBaiDu $iotBase
+     * @param \SyIot\BaseBaiDu $iotBase
      * @return array
+     * @throws \SyException\Common\CheckException
      */
-    public static function sendServiceRequest(IotBaseBaiDu $iotBase)
+    public static function sendServiceRequest(BaseBaiDu $iotBase)
     {
         $resArr = [
             'code' => 0
@@ -66,6 +67,7 @@ abstract class IotUtilBaiDu extends IotUtilBase
                 'result' => strlen($sendRes['res_content']) > 0 ? $sendRes['res_content'] : 'success',
             ];
         }
+
         return $resArr;
     }
 }

@@ -9,7 +9,7 @@ namespace SyIot;
 
 use SyTrait\SimpleTrait;
 
-abstract class IotUtilBase
+abstract class Util
 {
     use SimpleTrait;
 }

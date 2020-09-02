@@ -9,11 +9,11 @@ namespace SyIot\BaiDu\Management\Ota;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 use SyTool\Tool;
 
-class DeviceFirmwareVersion extends IotBaseBaiDu
+class DeviceFirmwareVersion extends BaseBaiDu
 {
     /**
      * 物模型ID
@@ -50,7 +50,7 @@ class DeviceFirmwareVersion extends IotBaseBaiDu
             throw new BaiDuIotException('物模型ID不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
 
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_POST,
             'req_uri' => $this->serviceUri,
             'req_params' => [],

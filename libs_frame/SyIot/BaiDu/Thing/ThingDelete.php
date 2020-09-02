@@ -9,10 +9,10 @@ namespace SyIot\BaiDu\Thing;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 
-class ThingDelete extends IotBaseBaiDu
+class ThingDelete extends BaseBaiDu
 {
     /**
      * endpoint名称
@@ -70,7 +70,7 @@ class ThingDelete extends IotBaseBaiDu
         }
         $this->serviceUri = '/v1/endpoint/' . $this->endpointName . '/thing/' . $this->thingName;
 
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_DELETE,
             'req_uri' => $this->serviceUri,
             'req_params' => [],
