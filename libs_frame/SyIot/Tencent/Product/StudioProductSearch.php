@@ -7,11 +7,12 @@
  */
 namespace SyIot\Tencent\Product;
 
+use DesignPatterns\Singletons\IotConfigSingleton;
 use SyConstant\ErrorCode;
 use SyException\Iot\TencentIotException;
-use SyIot\IotBaseTencent;
+use SyIot\BaseTencent;
 
-class StudioProductSearch extends IotBaseTencent
+class StudioProductSearch extends BaseTencent
 {
     /**
      * 项目ID
@@ -106,7 +107,10 @@ class StudioProductSearch extends IotBaseTencent
         if (!isset($this->reqData['ProjectName'])) {
             throw new TencentIotException('产品名称不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
-        $this->addReqSign();
+
+        $config = IotConfigSingleton::getInstance()->getTencentConfig();
+        $this->addReqSign($config->getSecretId(), $config->getSecretKey());
+
         return $this->getContent();
     }
 }

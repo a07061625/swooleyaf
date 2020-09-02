@@ -9,11 +9,11 @@ namespace SyIot\BaiDu\Management\Device;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 use SyTool\Tool;
 
-class DeviceReset extends IotBaseBaiDu
+class DeviceReset extends BaseBaiDu
 {
     /**
      * 设备名称列表
@@ -49,7 +49,7 @@ class DeviceReset extends IotBaseBaiDu
             throw new BaiDuIotException('设备名称列表不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
 
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_PUT,
             'req_uri' => $this->serviceUri,
             'req_params' => [

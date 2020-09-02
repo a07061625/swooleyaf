@@ -7,7 +7,7 @@
  */
 namespace SyIot;
 
-abstract class IotBase
+abstract class Base
 {
     /**
      * 请求数据

@@ -9,10 +9,10 @@ namespace SyIot\BaiDu\Management\Ota;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 
-class FirmwareFileUpload extends IotBaseBaiDu
+class FirmwareFileUpload extends BaseBaiDu
 {
     /**
      * 文件全路径,包括文件名
@@ -50,7 +50,7 @@ class FirmwareFileUpload extends IotBaseBaiDu
             throw new BaiDuIotException('文件不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
 
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_POST,
             'req_uri' => $this->serviceUri,
             'req_params' => [],

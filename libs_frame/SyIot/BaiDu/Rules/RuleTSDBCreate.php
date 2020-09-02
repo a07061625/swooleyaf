@@ -9,11 +9,11 @@ namespace SyIot\BaiDu\Rules;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 use SyTool\Tool;
 
-class RuleTSDBCreate extends IotBaseBaiDu
+class RuleTSDBCreate extends BaseBaiDu
 {
     /**
      * 设备名称
@@ -131,7 +131,7 @@ class RuleTSDBCreate extends IotBaseBaiDu
             throw new BaiDuIotException('TSDB数据格式不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
 
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_POST,
             'req_uri' => $this->serviceUri,
             'req_params' => [],

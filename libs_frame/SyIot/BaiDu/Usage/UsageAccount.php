@@ -7,10 +7,10 @@
  */
 namespace SyIot\BaiDu\Usage;
 
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 
-class UsageAccount extends IotBaseBaiDu
+class UsageAccount extends BaseBaiDu
 {
     public function __construct()
     {
@@ -24,7 +24,7 @@ class UsageAccount extends IotBaseBaiDu
 
     public function getDetail() : array
     {
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_GET,
             'req_uri' => $this->serviceUri,
             'req_params' => [],

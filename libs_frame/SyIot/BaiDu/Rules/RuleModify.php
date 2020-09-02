@@ -9,11 +9,11 @@ namespace SyIot\BaiDu\Rules;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 use SyTool\Tool;
 
-class RuleModify extends IotBaseBaiDu
+class RuleModify extends BaseBaiDu
 {
     /**
      * 设备名称
@@ -112,7 +112,7 @@ class RuleModify extends IotBaseBaiDu
             $this->reqData['destinations'] = $this->destinations;
         }
 
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_PUT,
             'req_uri' => $this->serviceUri,
             'req_params' => [],

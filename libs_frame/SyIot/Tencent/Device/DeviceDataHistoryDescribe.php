@@ -7,11 +7,12 @@
  */
 namespace SyIot\Tencent\Device;
 
+use DesignPatterns\Singletons\IotConfigSingleton;
 use SyConstant\ErrorCode;
 use SyException\Iot\TencentIotException;
-use SyIot\IotBaseTencent;
+use SyIot\BaseTencent;
 
-class DeviceDataHistoryDescribe extends IotBaseTencent
+class DeviceDataHistoryDescribe extends BaseTencent
 {
     /**
      * 开始时间
@@ -150,7 +151,10 @@ class DeviceDataHistoryDescribe extends IotBaseTencent
         if (!isset($this->reqData['FieldName'])) {
             throw new TencentIotException('属性字段名称不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
-        $this->addReqSign();
+
+        $config = IotConfigSingleton::getInstance()->getTencentConfig();
+        $this->addReqSign($config->getSecretId(), $config->getSecretKey());
+
         return $this->getContent();
     }
 }

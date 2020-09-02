@@ -9,11 +9,11 @@ namespace SyIot\BaiDu\Auth;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 use SyTool\Tool;
 
-class AuthenticatePassword extends IotBaseBaiDu
+class AuthenticatePassword extends BaseBaiDu
 {
     /**
      * thing的用户名
@@ -71,7 +71,7 @@ class AuthenticatePassword extends IotBaseBaiDu
             throw new BaiDuIotException('身份密钥不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
 
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_POST,
             'req_uri' => $this->serviceUri,
             'req_params' => [],

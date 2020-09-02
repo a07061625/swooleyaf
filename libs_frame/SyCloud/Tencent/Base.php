@@ -2,17 +2,20 @@
 /**
  * Created by PhpStorm.
  * User: 姜伟
- * Date: 2019/7/23 0023
- * Time: 8:53
+ * Date: 2020/9/2 0002
+ * Time: 10:39
  */
-namespace SyIot;
+namespace SyCloud\Tencent;
 
-use QCloud\CloudUtilBase;
 use SyConstant\ErrorCode;
-use DesignPatterns\Singletons\IotConfigSingleton;
-use SyException\Iot\TencentIotException;
+use SyException\Cloud\TencentException;
+use SyTool\Tool;
 
-abstract class IotBaseTencent extends IotBase
+/**
+ * Class Base
+ * @package SyCloud\Tencent
+ */
+abstract class Base extends \SyCloud\Base
 {
     /**
      * 请求头
@@ -28,30 +31,20 @@ abstract class IotBaseTencent extends IotBase
      * 服务域名
      * @var string
      */
-    private $serviceDomain = '';
+    protected $serviceDomain = '';
 
     public function __construct()
     {
         parent::__construct();
-        $this->serviceName = 'iot';
-        $this->serviceDomain = 'iotexplorer.tencentcloudapi.com';
-        $config = IotConfigSingleton::getInstance()->getTencentConfig();
         $this->reqHeader = [
             'Content-Type' => 'application/json',
-            'Host' => $this->serviceDomain,
             'Expect' => '',
-            'X-TC-Region' => $config->getRegionId(),
-            'X-TC-Version' => '2019-04-23',
         ];
-    }
-
-    private function __clone()
-    {
     }
 
     /**
      * @param string $serviceDomain
-     * @throws \SyException\Iot\TencentIotException
+     * @throws \SyException\Cloud\TencentException
      */
     public function setServiceDomain(string $serviceDomain)
     {
@@ -59,18 +52,24 @@ abstract class IotBaseTencent extends IotBase
             $this->serviceDomain = $serviceDomain;
             $this->reqHeader['Host'] = $serviceDomain;
         } else {
-            throw new TencentIotException('重定向链接不合法', ErrorCode::IOT_PARAM_ERROR);
+            throw new TencentException('重定向链接不合法', ErrorCode::CLOUD_TENCENT_ERROR);
         }
     }
 
     /**
      * 添加请求签名
+     * @param string $secretId
+     * @param string $secretKey
+     * @param string $dataType
      */
-    protected function addReqSign()
+    protected function addReqSign(string $secretId, string $secretKey, string $dataType = 'json')
     {
-        $postData = http_build_query($this->reqData);
-        $config = IotConfigSingleton::getInstance()->getTencentConfig();
-        $signRes = CloudUtilBase::createTC3Sign($config->getSecretId(), $config->getSecretKey(), [
+        if ($dataType == 'json') {
+            $postData = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+        } else {
+            $postData = http_build_query($this->reqData);
+        }
+        $signRes = Util::createTC3Sign($secretId, $secretKey, [
             'req_headers' => $this->reqHeader,
             'req_data' => $postData,
             'service_name' => $this->serviceName,
@@ -82,13 +81,9 @@ abstract class IotBaseTencent extends IotBase
 
     protected function getContent() : array
     {
+        $this->setBaseCurlConfigs();
         $this->curlConfigs[CURLOPT_URL] = 'https://' . $this->serviceDomain;
-        $this->curlConfigs[CURLOPT_NOSIGNAL] = true;
-        $this->curlConfigs[CURLOPT_SSL_VERIFYPEER] = false;
-        $this->curlConfigs[CURLOPT_SSL_VERIFYHOST] = false;
         $this->curlConfigs[CURLOPT_POST] = true;
-        $this->curlConfigs[CURLOPT_RETURNTRANSFER] = true;
-        $this->curlConfigs[CURLOPT_HEADER] = false;
         $reqHeaderArr = [];
         foreach ($this->reqHeader as $headerKey => $headerVal) {
             $reqHeaderArr[] = $headerKey . ': ' . $headerVal;
@@ -97,6 +92,7 @@ abstract class IotBaseTencent extends IotBase
         if (!isset($this->curlConfigs[CURLOPT_TIMEOUT_MS])) {
             $this->curlConfigs[CURLOPT_TIMEOUT_MS] = 2000;
         }
+
         return $this->curlConfigs;
     }
 }

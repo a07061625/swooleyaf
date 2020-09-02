@@ -12,7 +12,6 @@
 - Grafika: 图片特效类库
 - Helper: 项目帮助类库
 - IDE: IDE辅助类库
-- Log: 日志类库
 - LiveEducation: 教育直播
 - Mailer: 邮件类库
 - Map: 地图类库
@@ -28,6 +27,7 @@
 - Response: 框架响应处理
 - SyAspect: 切面相关
 - SyCache: 缓存类库
+- SyCloud: 云服务接口相关
 - SyConstant: 常量
 - SyCredit: 积分相关
 - SyCurrency: 货币处理
@@ -38,11 +38,14 @@
 - SyIM: 实时通讯相关
 - SyImage: 图片处理相关
 - SyIot: 物联网相关
+- SyLive: 直播相关
+- SyLog: 日志相关
 - SyLogistics: 物流相关
 - SyMessageHandler: 消息处理相关
 - SyMessagePush: 消息推送相关
 - SyMessageQueue: 消息队列相关
 - SyModule: 框架模块相关
+- SyObjectStorage: 对象存储相关
 - SyPay: 支付相关
 - SyPrint: 打印相关
 - SyQr: 二维码相关
