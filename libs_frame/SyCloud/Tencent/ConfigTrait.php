@@ -12,22 +12,26 @@ use SyException\Cloud\TencentException;
 
 /**
  * Trait ConfigTrait
+ *
  * @package SyCloud\Tencent
  */
 trait ConfigTrait
 {
     /**
      * 区域ID
+     *
      * @var string
      */
     private $regionId = '';
     /**
      * 应用ID
+     *
      * @var string
      */
     private $secretId = '';
     /**
      * 应用密钥
+     *
      * @var string
      */
     private $secretKey = '';
@@ -42,6 +46,7 @@ trait ConfigTrait
 
     /**
      * @param string $regionId
+     *
      * @throws \SyException\Cloud\TencentException
      */
     public function setRegionId(string $regionId)
@@ -63,6 +68,7 @@ trait ConfigTrait
 
     /**
      * @param string $secretId
+     *
      * @throws \SyException\Cloud\TencentException
      */
     public function setSecretId(string $secretId)
@@ -84,6 +90,7 @@ trait ConfigTrait
 
     /**
      * @param string $secretKey
+     *
      * @throws \SyException\Cloud\TencentException
      */
     public function setSecretKey(string $secretKey)

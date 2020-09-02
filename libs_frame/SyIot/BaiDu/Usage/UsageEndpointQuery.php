@@ -16,16 +16,19 @@ class UsageEndpointQuery extends BaseBaiDu
 {
     /**
      * endpoint名称
+     *
      * @var string
      */
     private $endpointName = '';
     /**
      * 开始日期(包含)
+     *
      * @var string
      */
     private $start = '';
     /**
      * 结束日期(不包含)
+     *
      * @var string
      */
     private $end = '';
@@ -41,6 +44,7 @@ class UsageEndpointQuery extends BaseBaiDu
 
     /**
      * @param string $endpointName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setEndpointName(string $endpointName)
@@ -56,6 +60,7 @@ class UsageEndpointQuery extends BaseBaiDu
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setQueryTime(int $startTime, int $endTime)
@@ -98,6 +103,7 @@ class UsageEndpointQuery extends BaseBaiDu
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri . '?' . http_build_query($queryData);
         $this->curlConfigs[CURLOPT_POST] = true;
+
         return $this->getContent();
     }
 }

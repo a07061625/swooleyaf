@@ -17,6 +17,7 @@ class DeviceFirmwareVersion extends BaseBaiDu
 {
     /**
      * 物模型ID
+     *
      * @var string
      */
     private $schemaId = '';
@@ -33,6 +34,7 @@ class DeviceFirmwareVersion extends BaseBaiDu
 
     /**
      * @param string $schemaId
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setSchemaId(string $schemaId)
@@ -61,6 +63,7 @@ class DeviceFirmwareVersion extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

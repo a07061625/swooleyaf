@@ -16,11 +16,13 @@ class ThingInfo extends BaseBaiDu
 {
     /**
      * endpoint名称
+     *
      * @var string
      */
     private $endpointName = '';
     /**
      * thing名称
+     *
      * @var string
      */
     private $thingName = '';
@@ -36,6 +38,7 @@ class ThingInfo extends BaseBaiDu
 
     /**
      * @param string $endpointName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setEndpointName(string $endpointName)
@@ -49,6 +52,7 @@ class ThingInfo extends BaseBaiDu
 
     /**
      * @param string $thingName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setThingName(string $thingName)
@@ -79,6 +83,7 @@ class ThingInfo extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
+
         return $this->getContent();
     }
 }

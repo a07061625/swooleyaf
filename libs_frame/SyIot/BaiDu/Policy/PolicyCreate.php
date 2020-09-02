@@ -17,11 +17,13 @@ class PolicyCreate extends BaseBaiDu
 {
     /**
      * endpoint名称
+     *
      * @var string
      */
     private $endpointName = '';
     /**
      * policy名称
+     *
      * @var string
      */
     private $policyName = '';
@@ -37,6 +39,7 @@ class PolicyCreate extends BaseBaiDu
 
     /**
      * @param string $endpointName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setEndpointName(string $endpointName)
@@ -51,6 +54,7 @@ class PolicyCreate extends BaseBaiDu
 
     /**
      * @param string $policyName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPolicyName(string $policyName)
@@ -82,6 +86,7 @@ class PolicyCreate extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

@@ -16,6 +16,7 @@ class SecretKeyUpdate extends BaseBaiDu
 {
     /**
      * 权限组名称
+     *
      * @var string
      */
     private $domainName = '';
@@ -31,6 +32,7 @@ class SecretKeyUpdate extends BaseBaiDu
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDomainName(string $domainName)
@@ -61,6 +63,7 @@ class SecretKeyUpdate extends BaseBaiDu
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri . '?updateSecretKey';
         $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = self::REQ_METHOD_PUT;
+
         return $this->getContent();
     }
 }

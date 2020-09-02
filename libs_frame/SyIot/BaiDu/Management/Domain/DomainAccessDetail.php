@@ -16,6 +16,7 @@ class DomainAccessDetail extends BaseBaiDu
 {
     /**
      * 权限组名称
+     *
      * @var string
      */
     private $domainName = '';
@@ -31,6 +32,7 @@ class DomainAccessDetail extends BaseBaiDu
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDomainName(string $domainName)
@@ -58,6 +60,7 @@ class DomainAccessDetail extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
+
         return $this->getContent();
     }
 }

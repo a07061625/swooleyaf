@@ -16,21 +16,25 @@ class StudioProductModify extends BaseTencent
 {
     /**
      * 产品ID
+     *
      * @var string
      */
     private $ProductId = '';
     /**
      * 产品名称
+     *
      * @var string
      */
     private $ProductName = '';
     /**
      * 产品描述
+     *
      * @var string
      */
     private $ProductDesc = '';
     /**
      * 模型ID
+     *
      * @var int
      */
     private $ModuleId = 0;
@@ -47,6 +51,7 @@ class StudioProductModify extends BaseTencent
 
     /**
      * @param string $productId
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProductId(string $productId)
@@ -60,6 +65,7 @@ class StudioProductModify extends BaseTencent
 
     /**
      * @param string $productName
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProductName(string $productName)
@@ -73,6 +79,7 @@ class StudioProductModify extends BaseTencent
 
     /**
      * @param string $productDesc
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProductDesc(string $productDesc)
@@ -86,6 +93,7 @@ class StudioProductModify extends BaseTencent
 
     /**
      * @param int $moduleId
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setModuleId(int $moduleId)

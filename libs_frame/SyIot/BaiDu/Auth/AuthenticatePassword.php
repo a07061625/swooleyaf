@@ -17,11 +17,13 @@ class AuthenticatePassword extends BaseBaiDu
 {
     /**
      * thing的用户名
+     *
      * @var string
      */
     private $username = '';
     /**
      * 身份密钥
+     *
      * @var string
      */
     private $password = '';
@@ -38,6 +40,7 @@ class AuthenticatePassword extends BaseBaiDu
 
     /**
      * @param string $userName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setUserName(string $userName)
@@ -51,6 +54,7 @@ class AuthenticatePassword extends BaseBaiDu
 
     /**
      * @param string $password
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPassword(string $password)
@@ -82,6 +86,7 @@ class AuthenticatePassword extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

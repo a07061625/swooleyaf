@@ -16,6 +16,7 @@ class DomainDelete extends BaseBaiDu
 {
     /**
      * 权限组名称
+     *
      * @var string
      */
     private $domainName = '';
@@ -31,6 +32,7 @@ class DomainDelete extends BaseBaiDu
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDomainName(string $domainName)
@@ -59,6 +61,7 @@ class DomainDelete extends BaseBaiDu
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = self::REQ_METHOD_DELETE;
+
         return $this->getContent();
     }
 }

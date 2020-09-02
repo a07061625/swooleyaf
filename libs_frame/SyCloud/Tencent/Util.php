@@ -12,6 +12,7 @@ use SyTrait\SimpleTrait;
 
 /**
  * Class Util
+ *
  * @package SyCloud\Tencent
  */
 abstract class Util
@@ -20,9 +21,11 @@ abstract class Util
 
     /**
      * 生成TC3签名
+     *
      * @param string $secretId
      * @param string $secretKey
-     * @param array $data
+     * @param array  $data
+     *
      * @return array
      */
     public static function createTC3Sign(string $secretId, string $secretKey, array $data) : array
@@ -50,6 +53,7 @@ abstract class Util
                          . '/' . $credentialScope
                          . ', SignedHeaders=' . $signedHeaders
                          . ', Signature=' . $signature;
+
         return [
             'timestamp' => $nowTime,
             'authorization' => $authorization,
@@ -58,9 +62,12 @@ abstract class Util
 
     /**
      * 发送服务请求
+     *
      * @param \SyCloud\Tencent\Base $tcBase
-     * @param int $errCode
+     * @param int                   $errCode
+     *
      * @return array
+     *
      * @throws \SyException\Common\CheckException
      */
     public static function sendServiceRequest(Base $tcBase, int $errCode)
@@ -74,6 +81,7 @@ abstract class Util
         if ($sendRes['res_no'] > 0) {
             $resArr['code'] = $errCode;
             $resArr['msg'] = $sendRes['res_msg'];
+
             return $resArr;
         }
 

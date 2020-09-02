@@ -16,36 +16,43 @@ class DeviceDataHistoryDescribe extends BaseTencent
 {
     /**
      * 开始时间
+     *
      * @var int
      */
     private $MinTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $MaxTime = 0;
     /**
      * 产品ID
+     *
      * @var string
      */
     private $ProductId = '';
     /**
      * 设备名称
+     *
      * @var string
      */
     private $DeviceName = '';
     /**
      * 属性字段名称
+     *
      * @var string
      */
     private $FieldName = '';
     /**
      * 返回记录数
+     *
      * @var int
      */
     private $Limit = 0;
     /**
      * 检索上下文
+     *
      * @var string
      */
     private $Context = '';
@@ -64,6 +71,7 @@ class DeviceDataHistoryDescribe extends BaseTencent
     /**
      * @param int $minTime
      * @param int $maxTime
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setMinAndMaxTime(int $minTime, int $maxTime)
@@ -79,6 +87,7 @@ class DeviceDataHistoryDescribe extends BaseTencent
 
     /**
      * @param string $productId
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProductId(string $productId)
@@ -92,6 +101,7 @@ class DeviceDataHistoryDescribe extends BaseTencent
 
     /**
      * @param string $deviceName
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setDeviceName(string $deviceName)
@@ -105,6 +115,7 @@ class DeviceDataHistoryDescribe extends BaseTencent
 
     /**
      * @param string $fieldName
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setFieldName(string $fieldName)
@@ -118,6 +129,7 @@ class DeviceDataHistoryDescribe extends BaseTencent
 
     /**
      * @param int $limit
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setLimit(int $limit)

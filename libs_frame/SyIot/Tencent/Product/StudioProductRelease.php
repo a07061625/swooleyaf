@@ -16,11 +16,13 @@ class StudioProductRelease extends BaseTencent
 {
     /**
      * 产品ID
+     *
      * @var string
      */
     private $ProductId = '';
     /**
      * 开发状态
+     *
      * @var string
      */
     private $DevStatus = '';
@@ -38,6 +40,7 @@ class StudioProductRelease extends BaseTencent
 
     /**
      * @param string $productId
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProductId(string $productId)

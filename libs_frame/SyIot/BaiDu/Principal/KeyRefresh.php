@@ -17,16 +17,19 @@ class KeyRefresh extends BaseBaiDu
 {
     /**
      * endpoint名称
+     *
      * @var string
      */
     private $endpointName = '';
     /**
      * principal名称
+     *
      * @var string
      */
     private $principalName = '';
     /**
      * 生成类型
+     *
      * @var string
      */
     private $target = '';
@@ -43,6 +46,7 @@ class KeyRefresh extends BaseBaiDu
 
     /**
      * @param string $endpointName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setEndpointName(string $endpointName)
@@ -56,6 +60,7 @@ class KeyRefresh extends BaseBaiDu
 
     /**
      * @param string $principalName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPrincipalName(string $principalName)
@@ -69,11 +74,12 @@ class KeyRefresh extends BaseBaiDu
 
     /**
      * @param string $target
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setTarget(string $target)
     {
-        if (in_array($target, ['all','password','cert'])) {
+        if (in_array($target, ['all', 'password', 'cert'])) {
             $this->reqData['target'] = $target;
         } else {
             throw new BaiDuIotException('生成类型不合法', ErrorCode::IOT_PARAM_ERROR);
@@ -101,6 +107,7 @@ class KeyRefresh extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

@@ -9,6 +9,7 @@ namespace SyLive;
 
 /**
  * Class ConfigAli
+ *
  * @package SyLive
  */
 class ConfigAli

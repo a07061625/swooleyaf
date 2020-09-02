@@ -16,21 +16,25 @@ class StudioProductListGet extends BaseTencent
 {
     /**
      * 项目ID
+     *
      * @var int
      */
     private $ProjectId = 0;
     /**
      * 开发状态
+     *
      * @var string
      */
     private $DevStatus = '';
     /**
      * 偏移量
+     *
      * @var int
      */
     private $Offset = 0;
     /**
      * 每页个数
+     *
      * @var int
      */
     private $Limit = 0;
@@ -49,6 +53,7 @@ class StudioProductListGet extends BaseTencent
 
     /**
      * @param int $projectId
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProjectId(int $projectId)
@@ -62,6 +67,7 @@ class StudioProductListGet extends BaseTencent
 
     /**
      * @param string $devStatus
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setDevStatus(string $devStatus)
@@ -75,6 +81,7 @@ class StudioProductListGet extends BaseTencent
 
     /**
      * @param int $offset
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setOffset(int $offset)
@@ -88,6 +95,7 @@ class StudioProductListGet extends BaseTencent
 
     /**
      * @param int $limit
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setLimit(int $limit)

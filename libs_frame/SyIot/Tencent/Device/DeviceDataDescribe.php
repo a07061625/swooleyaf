@@ -16,11 +16,13 @@ class DeviceDataDescribe extends BaseTencent
 {
     /**
      * 产品ID
+     *
      * @var string
      */
     private $ProductId = '';
     /**
      * 设备名称
+     *
      * @var string
      */
     private $DeviceName = '';
@@ -37,6 +39,7 @@ class DeviceDataDescribe extends BaseTencent
 
     /**
      * @param string $productId
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProductId(string $productId)
@@ -50,6 +53,7 @@ class DeviceDataDescribe extends BaseTencent
 
     /**
      * @param string $deviceName
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setDeviceName(string $deviceName)

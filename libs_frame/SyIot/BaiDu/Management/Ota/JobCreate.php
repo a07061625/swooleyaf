@@ -17,26 +17,31 @@ class JobCreate extends BaseBaiDu
 {
     /**
      * 任务名称
+     *
      * @var string
      */
     private $jobName = '';
     /**
      * 固件包ID
+     *
      * @var string
      */
     private $firmwareId = '';
     /**
      * 描述
+     *
      * @var string
      */
     private $description = '';
     /**
      * 设备名称列表
+     *
      * @var array
      */
     private $devices = [];
     /**
      * 版本列表
+     *
      * @var array
      */
     private $versionFilter = [];
@@ -54,6 +59,7 @@ class JobCreate extends BaseBaiDu
 
     /**
      * @param string $jobName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setJobName(string $jobName)
@@ -67,6 +73,7 @@ class JobCreate extends BaseBaiDu
 
     /**
      * @param string $firmwareId
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setFirmwareId(string $firmwareId)
@@ -80,6 +87,7 @@ class JobCreate extends BaseBaiDu
 
     /**
      * @param string $description
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDescription(string $description)
@@ -139,6 +147,7 @@ class JobCreate extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

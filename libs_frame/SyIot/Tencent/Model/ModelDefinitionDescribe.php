@@ -16,6 +16,7 @@ class ModelDefinitionDescribe extends BaseTencent
 {
     /**
      * 产品ID
+     *
      * @var string
      */
     private $ProductId = '';
@@ -32,6 +33,7 @@ class ModelDefinitionDescribe extends BaseTencent
 
     /**
      * @param string $productId
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProductId(string $productId)

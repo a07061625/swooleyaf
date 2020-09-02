@@ -17,16 +17,19 @@ class Authorize extends BaseBaiDu
 {
     /**
      * 用户uuid
+     *
      * @var string
      */
     private $principalUuid = '';
     /**
      * 操作
+     *
      * @var string
      */
     private $action = '';
     /**
      * 主题名
+     *
      * @var string
      */
     private $topic = '';
@@ -43,6 +46,7 @@ class Authorize extends BaseBaiDu
 
     /**
      * @param string $principalUuid
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPrincipalUuid(string $principalUuid)
@@ -56,11 +60,12 @@ class Authorize extends BaseBaiDu
 
     /**
      * @param string $action
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setAction(string $action)
     {
-        if (in_array($action, ['CONNECT','CREATE','SEND','RECEIVE','CONSUME'])) {
+        if (in_array($action, ['CONNECT', 'CREATE', 'SEND', 'RECEIVE', 'CONSUME'])) {
             $this->reqData['action'] = $action;
         } else {
             throw new BaiDuIotException('操作不合法', ErrorCode::IOT_PARAM_ERROR);
@@ -69,6 +74,7 @@ class Authorize extends BaseBaiDu
 
     /**
      * @param string $topic
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setTopic(string $topic)
@@ -103,6 +109,7 @@ class Authorize extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

@@ -16,6 +16,7 @@ class FirmwareFileUpload extends BaseBaiDu
 {
     /**
      * 文件全路径,包括文件名
+     *
      * @var string
      */
     private $file_path = '';
@@ -33,6 +34,7 @@ class FirmwareFileUpload extends BaseBaiDu
 
     /**
      * @param string $filePath
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setFilePath(string $filePath)
@@ -60,6 +62,7 @@ class FirmwareFileUpload extends BaseBaiDu
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $this->reqData;
+
         return $this->getContent();
     }
 }

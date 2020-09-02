@@ -16,21 +16,25 @@ class StudioProductSearch extends BaseTencent
 {
     /**
      * 项目ID
+     *
      * @var int
      */
     private $ProjectId = 0;
     /**
      * 产品名称
+     *
      * @var string
      */
     private $ProductName = '';
     /**
      * 偏移量
+     *
      * @var int
      */
     private $Offset = 0;
     /**
      * 每页个数
+     *
      * @var int
      */
     private $Limit = 0;
@@ -49,6 +53,7 @@ class StudioProductSearch extends BaseTencent
 
     /**
      * @param int $projectId
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProjectId(int $projectId)
@@ -62,6 +67,7 @@ class StudioProductSearch extends BaseTencent
 
     /**
      * @param string $productName
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProductName(string $productName)
@@ -75,6 +81,7 @@ class StudioProductSearch extends BaseTencent
 
     /**
      * @param int $offset
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setOffset(int $offset)
@@ -88,6 +95,7 @@ class StudioProductSearch extends BaseTencent
 
     /**
      * @param int $limit
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setLimit(int $limit)
