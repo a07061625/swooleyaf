@@ -17,16 +17,19 @@ class DomainCreate extends BaseBaiDu
 {
     /**
      * 名称
+     *
      * @var string
      */
     private $name = '';
     /**
      * 描述
+     *
      * @var string
      */
     private $description = '';
     /**
      * 类型
+     *
      * @var string
      */
     private $type = '';
@@ -43,6 +46,7 @@ class DomainCreate extends BaseBaiDu
 
     /**
      * @param string $name
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setName(string $name)
@@ -56,6 +60,7 @@ class DomainCreate extends BaseBaiDu
 
     /**
      * @param string $description
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDescription(string $description)
@@ -69,6 +74,7 @@ class DomainCreate extends BaseBaiDu
 
     /**
      * @param string $type
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setType(string $type)
@@ -103,6 +109,7 @@ class DomainCreate extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

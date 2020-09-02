@@ -11,6 +11,7 @@ use SyException\BaseException;
 
 /**
  * Class TencentException
+ *
  * @package SyException\Cloud
  */
 class TencentException extends BaseException

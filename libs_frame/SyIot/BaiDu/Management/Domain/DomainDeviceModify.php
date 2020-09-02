@@ -17,16 +17,19 @@ class DomainDeviceModify extends BaseBaiDu
 {
     /**
      * 权限组名称
+     *
      * @var string
      */
     private $domainName = '';
     /**
      * 添加设备名称列表
+     *
      * @var array
      */
     private $addedDevices = [];
     /**
      * 移除设备名称列表
+     *
      * @var array
      */
     private $removedDevices = [];
@@ -42,6 +45,7 @@ class DomainDeviceModify extends BaseBaiDu
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDomainName(string $domainName)
@@ -106,6 +110,7 @@ class DomainDeviceModify extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri . '?modify';
         $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = self::REQ_METHOD_PUT;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

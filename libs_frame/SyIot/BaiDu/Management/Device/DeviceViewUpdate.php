@@ -17,21 +17,25 @@ class DeviceViewUpdate extends BaseBaiDu
 {
     /**
      * 设备名称
+     *
      * @var string
      */
     private $deviceName = '';
     /**
      * reported信息
+     *
      * @var array
      */
     private $reported = [];
     /**
      * desired信息
+     *
      * @var array
      */
     private $desired = [];
     /**
      * 版本号
+     *
      * @var int
      */
     private $profileVersion = 0;
@@ -47,6 +51,7 @@ class DeviceViewUpdate extends BaseBaiDu
 
     /**
      * @param string $deviceName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDeviceName(string $deviceName)
@@ -77,6 +82,7 @@ class DeviceViewUpdate extends BaseBaiDu
 
     /**
      * @param int $profileVersion
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setProfileVersion(int $profileVersion)
@@ -119,6 +125,7 @@ class DeviceViewUpdate extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri . '?updateView';
         $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = self::REQ_METHOD_PUT;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

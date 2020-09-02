@@ -16,11 +16,13 @@ class PolicyInfo extends BaseBaiDu
 {
     /**
      * endpoint名称
+     *
      * @var string
      */
     private $endpointName = '';
     /**
      * policy名称
+     *
      * @var string
      */
     private $policyName = '';
@@ -36,6 +38,7 @@ class PolicyInfo extends BaseBaiDu
 
     /**
      * @param string $endpointName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setEndpointName(string $endpointName)
@@ -49,6 +52,7 @@ class PolicyInfo extends BaseBaiDu
 
     /**
      * @param string $policyName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPolicyName(string $policyName)
@@ -79,6 +83,7 @@ class PolicyInfo extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
+
         return $this->getContent();
     }
 }

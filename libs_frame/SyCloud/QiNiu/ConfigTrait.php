@@ -12,17 +12,20 @@ use SyException\Cloud\QiNiuException;
 
 /**
  * Trait ConfigTrait
+ *
  * @package SyCloud\QiNiu
  */
 trait ConfigTrait
 {
     /**
      * 访问账号
+     *
      * @var string
      */
     private $accessKey = '';
     /**
      * 密钥
+     *
      * @var string
      */
     private $secretKey = '';
@@ -37,6 +40,7 @@ trait ConfigTrait
 
     /**
      * @param string $accessKey
+     *
      * @throws \SyException\Cloud\QiNiuException
      */
     public function setAccessKey(string $accessKey)
@@ -58,6 +62,7 @@ trait ConfigTrait
 
     /**
      * @param string $secretKey
+     *
      * @throws \SyException\Cloud\QiNiuException
      */
     public function setSecretKey(string $secretKey)

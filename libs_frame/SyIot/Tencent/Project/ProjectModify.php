@@ -16,16 +16,19 @@ class ProjectModify extends BaseTencent
 {
     /**
      * 项目ID
+     *
      * @var int
      */
     private $ProjectId = 0;
     /**
      * 项目名称
+     *
      * @var string
      */
     private $ProjectName = '';
     /**
      * 项目描述
+     *
      * @var string
      */
     private $ProjectDesc = '';
@@ -42,6 +45,7 @@ class ProjectModify extends BaseTencent
 
     /**
      * @param int $projectId
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProjectId(int $projectId)
@@ -55,6 +59,7 @@ class ProjectModify extends BaseTencent
 
     /**
      * @param string $projectName
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProjectName(string $projectName)
@@ -68,6 +73,7 @@ class ProjectModify extends BaseTencent
 
     /**
      * @param string $projectDesc
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProjectDesc(string $projectDesc)

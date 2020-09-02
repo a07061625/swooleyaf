@@ -16,31 +16,37 @@ class PermissionList extends BaseBaiDu
 {
     /**
      * endpoint名称
+     *
      * @var string
      */
     private $endpointName = '';
     /**
      * policy名称
+     *
      * @var string
      */
     private $policyName = '';
     /**
      * 排序方式
+     *
      * @var string
      */
     private $order = '';
     /**
      * 排序字段
+     *
      * @var string
      */
     private $orderBy = '';
     /**
      * 页码
+     *
      * @var int
      */
     private $pageNo = 1;
     /**
      * 每页个数
+     *
      * @var int
      */
     private $pageSize = 0;
@@ -60,6 +66,7 @@ class PermissionList extends BaseBaiDu
 
     /**
      * @param string $endpointName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setEndpointName(string $endpointName)
@@ -74,6 +81,7 @@ class PermissionList extends BaseBaiDu
 
     /**
      * @param string $policyName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPolicyName(string $policyName)
@@ -87,11 +95,12 @@ class PermissionList extends BaseBaiDu
 
     /**
      * @param string $order
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setOrder(string $order)
     {
-        if (in_array($order, ['asc','desc'])) {
+        if (in_array($order, ['asc', 'desc'])) {
             $this->reqData['order'] = $order;
         } else {
             throw new BaiDuIotException('排序方式不合法', ErrorCode::IOT_PARAM_ERROR);
@@ -100,6 +109,7 @@ class PermissionList extends BaseBaiDu
 
     /**
      * @param int $pageNo
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPageNo(int $pageNo)
@@ -113,6 +123,7 @@ class PermissionList extends BaseBaiDu
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPageSize(int $pageSize)
@@ -142,6 +153,7 @@ class PermissionList extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri . '?' . http_build_query($this->reqData);
+
         return $this->getContent();
     }
 }

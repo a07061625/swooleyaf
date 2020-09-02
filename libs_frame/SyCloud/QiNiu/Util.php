@@ -11,6 +11,7 @@ use SyTrait\SimpleTrait;
 
 /**
  * Class Util
+ *
  * @package SyCloud\QiNiu
  */
 abstract class Util

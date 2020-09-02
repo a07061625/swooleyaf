@@ -11,6 +11,7 @@ use SyException\BaseException;
 
 /**
  * Class QiNiuException
+ *
  * @package SyException\Cloud
  */
 class QiNiuException extends BaseException

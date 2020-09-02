@@ -9,6 +9,7 @@ namespace SyCloud\QiNiu;
 
 /**
  * Class Base
+ *
  * @package SyCloud\QiNiu
  */
 abstract class Base extends \SyCloud\Base

@@ -17,6 +17,7 @@ class DeviceDelete extends BaseBaiDu
 {
     /**
      * 设备名称列表
+     *
      * @var array
      */
     private $devices = [];
@@ -62,6 +63,7 @@ class DeviceDelete extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri . '?remove';
         $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = self::REQ_METHOD_PUT;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

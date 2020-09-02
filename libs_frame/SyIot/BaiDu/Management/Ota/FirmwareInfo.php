@@ -16,6 +16,7 @@ class FirmwareInfo extends BaseBaiDu
 {
     /**
      * 固件包ID
+     *
      * @var string
      */
     private $firmwareId = '';
@@ -31,6 +32,7 @@ class FirmwareInfo extends BaseBaiDu
 
     /**
      * @param string $firmwareId
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setFirmwareId(string $firmwareId)
@@ -58,6 +60,7 @@ class FirmwareInfo extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
+
         return $this->getContent();
     }
 }

@@ -17,16 +17,19 @@ class DeviceCreate extends BaseBaiDu
 {
     /**
      * 设备名称
+     *
      * @var string
      */
     private $deviceName = '';
     /**
      * 描述
+     *
      * @var string
      */
     private $description = '';
     /**
      * 物模型ID
+     *
      * @var string
      */
     private $schemaId = '';
@@ -43,6 +46,7 @@ class DeviceCreate extends BaseBaiDu
 
     /**
      * @param string $deviceName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDeviceName(string $deviceName)
@@ -56,6 +60,7 @@ class DeviceCreate extends BaseBaiDu
 
     /**
      * @param string $description
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDescription(string $description)
@@ -69,6 +74,7 @@ class DeviceCreate extends BaseBaiDu
 
     /**
      * @param string $schemaId
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setSchemaId(string $schemaId)
@@ -103,6 +109,7 @@ class DeviceCreate extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

@@ -17,16 +17,19 @@ class DeviceUpdate extends BaseBaiDu
 {
     /**
      * 设备名称
+     *
      * @var string
      */
     private $deviceName = '';
     /**
      * 属性列表
+     *
      * @var array
      */
     private $attributes = [];
     /**
      * 设备属性
+     *
      * @var array
      */
     private $device = [];
@@ -42,6 +45,7 @@ class DeviceUpdate extends BaseBaiDu
 
     /**
      * @param string $deviceName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDeviceName(string $deviceName)
@@ -98,6 +102,7 @@ class DeviceUpdate extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri . '?updateProfile';
         $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = self::REQ_METHOD_PUT;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

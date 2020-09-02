@@ -16,36 +16,43 @@ class DomainList extends BaseBaiDu
 {
     /**
      * 页码
+     *
      * @var int
      */
     private $pageNo = 1;
     /**
      * 每页个数
+     *
      * @var int
      */
     private $pageSize = 0;
     /**
      * 排序字段
+     *
      * @var string
      */
     private $orderBy = '';
     /**
      * 排序方式
+     *
      * @var string
      */
     private $order = '';
     /**
      * 查询关键字
+     *
      * @var string
      */
     private $key = '';
     /**
      * 权限组类型
+     *
      * @var string
      */
     private $type = '';
     /**
      * 设备名称
+     *
      * @var string
      */
     private $deviceName = '';
@@ -67,6 +74,7 @@ class DomainList extends BaseBaiDu
 
     /**
      * @param int $pageNo
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPageNo(int $pageNo)
@@ -80,6 +88,7 @@ class DomainList extends BaseBaiDu
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPageSize(int $pageSize)
@@ -93,6 +102,7 @@ class DomainList extends BaseBaiDu
 
     /**
      * @param string $orderBy
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setOrderBy(string $orderBy)
@@ -106,11 +116,12 @@ class DomainList extends BaseBaiDu
 
     /**
      * @param string $order
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setOrder(string $order)
     {
-        if (in_array($order, ['asc','desc'])) {
+        if (in_array($order, ['asc', 'desc'])) {
             $this->reqData['order'] = $order;
         } else {
             throw new BaiDuIotException('排序方式不合法', ErrorCode::IOT_PARAM_ERROR);
@@ -119,6 +130,7 @@ class DomainList extends BaseBaiDu
 
     /**
      * @param string $key
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setKey(string $key)
@@ -132,6 +144,7 @@ class DomainList extends BaseBaiDu
 
     /**
      * @param string $type
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setType(string $type)
@@ -145,6 +158,7 @@ class DomainList extends BaseBaiDu
 
     /**
      * @param string $deviceName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDeviceName(string $deviceName)
@@ -167,6 +181,7 @@ class DomainList extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri . '?' . http_build_query($this->reqData);
+
         return $this->getContent();
     }
 }

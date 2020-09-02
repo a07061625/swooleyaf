@@ -17,26 +17,31 @@ class RuleTSDBModify extends BaseBaiDu
 {
     /**
      * 设备名称
+     *
      * @var string
      */
     private $deviceName = '';
     /**
      * 规则名称
+     *
      * @var string
      */
     private $name = '';
     /**
      * 存储数据配置列表
+     *
      * @var array
      */
     private $sources = [];
     /**
      * 写入数据配置列表
+     *
      * @var array
      */
     private $destinations = [];
     /**
      * TSDB数据格式
+     *
      * @var array
      */
     private $format = [];
@@ -52,6 +57,7 @@ class RuleTSDBModify extends BaseBaiDu
 
     /**
      * @param string $deviceName
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDeviceName(string $deviceName)
@@ -66,6 +72,7 @@ class RuleTSDBModify extends BaseBaiDu
 
     /**
      * @param string $name
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setName(string $name)
@@ -79,6 +86,7 @@ class RuleTSDBModify extends BaseBaiDu
 
     /**
      * @param array $source
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function addSource(array $source)
@@ -91,6 +99,7 @@ class RuleTSDBModify extends BaseBaiDu
 
     /**
      * @param array $destination
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function addDestination(array $destination)
@@ -109,7 +118,6 @@ class RuleTSDBModify extends BaseBaiDu
     {
         $this->format = $format;
     }
-
 
     public function getDetail() : array
     {
@@ -140,6 +148,7 @@ class RuleTSDBModify extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = self::REQ_METHOD_PUT;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

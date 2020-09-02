@@ -16,11 +16,13 @@ class ProjectCreate extends BaseTencent
 {
     /**
      * 项目名称
+     *
      * @var string
      */
     private $ProjectName = '';
     /**
      * 项目描述
+     *
      * @var string
      */
     private $ProjectDesc = '';
@@ -37,6 +39,7 @@ class ProjectCreate extends BaseTencent
 
     /**
      * @param string $projectName
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProjectName(string $projectName)
@@ -50,6 +53,7 @@ class ProjectCreate extends BaseTencent
 
     /**
      * @param string $projectDesc
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setProjectDesc(string $projectDesc)

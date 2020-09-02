@@ -16,21 +16,25 @@ class JobList extends BaseBaiDu
 {
     /**
      * 页码
+     *
      * @var int
      */
     private $pageNo = 1;
     /**
      * 每页个数
+     *
      * @var int
      */
     private $pageSize = 0;
     /**
      * 排序方式
+     *
      * @var string
      */
     private $orderBy = '';
     /**
      * 排序字段
+     *
      * @var string
      */
     private $order = '';
@@ -51,6 +55,7 @@ class JobList extends BaseBaiDu
 
     /**
      * @param int $pageNo
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPageNo(int $pageNo)
@@ -64,6 +69,7 @@ class JobList extends BaseBaiDu
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPageSize(int $pageSize)
@@ -77,11 +83,12 @@ class JobList extends BaseBaiDu
 
     /**
      * @param string $orderBy
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setOrderBy(string $orderBy)
     {
-        if (in_array($orderBy, ['asc','desc'])) {
+        if (in_array($orderBy, ['asc', 'desc'])) {
             $this->reqData['orderBy'] = $orderBy;
         } else {
             throw new BaiDuIotException('排序方式不合法', ErrorCode::IOT_PARAM_ERROR);
@@ -99,6 +106,7 @@ class JobList extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri . '?' . http_build_query($this->reqData);
+
         return $this->getContent();
     }
 }

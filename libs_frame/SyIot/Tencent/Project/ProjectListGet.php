@@ -16,11 +16,13 @@ class ProjectListGet extends BaseTencent
 {
     /**
      * 偏移量
+     *
      * @var int
      */
     private $Offset = 0;
     /**
      * 每页个数
+     *
      * @var int
      */
     private $Limit = 0;
@@ -39,6 +41,7 @@ class ProjectListGet extends BaseTencent
 
     /**
      * @param int $offset
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setOffset(int $offset)
@@ -52,6 +55,7 @@ class ProjectListGet extends BaseTencent
 
     /**
      * @param int $limit
+     *
      * @throws \SyException\Iot\TencentIotException
      */
     public function setLimit(int $limit)

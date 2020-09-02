@@ -16,16 +16,19 @@ class JobDeviceResult extends BaseBaiDu
 {
     /**
      * 任务ID
+     *
      * @var string
      */
     private $jobId = '';
     /**
      * 页码
+     *
      * @var int
      */
     private $pageNo = 1;
     /**
      * 每页个数
+     *
      * @var int
      */
     private $pageSize = 0;
@@ -43,6 +46,7 @@ class JobDeviceResult extends BaseBaiDu
 
     /**
      * @param string $jobId
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setJobId(string $jobId)
@@ -57,6 +61,7 @@ class JobDeviceResult extends BaseBaiDu
 
     /**
      * @param int $pageNo
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPageNo(int $pageNo)
@@ -70,6 +75,7 @@ class JobDeviceResult extends BaseBaiDu
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setPageSize(int $pageSize)
@@ -96,6 +102,7 @@ class JobDeviceResult extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri . '?' . http_build_query($this->reqData);
+
         return $this->getContent();
     }
 }

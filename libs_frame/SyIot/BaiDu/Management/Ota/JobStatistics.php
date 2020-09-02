@@ -16,6 +16,7 @@ class JobStatistics extends BaseBaiDu
 {
     /**
      * 任务ID
+     *
      * @var string
      */
     private $jobId = '';
@@ -31,6 +32,7 @@ class JobStatistics extends BaseBaiDu
 
     /**
      * @param string $jobId
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setJobId(string $jobId)
@@ -58,6 +60,7 @@ class JobStatistics extends BaseBaiDu
             ],
         ]);
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
+
         return $this->getContent();
     }
 }

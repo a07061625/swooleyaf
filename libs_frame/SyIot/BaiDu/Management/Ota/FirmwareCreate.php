@@ -17,21 +17,25 @@ class FirmwareCreate extends BaseBaiDu
 {
     /**
      * 物模型ID
+     *
      * @var string
      */
     private $schemaId = '';
     /**
      * 描述
+     *
      * @var string
      */
     private $description = '';
     /**
      * 版本号
+     *
      * @var string
      */
     private $version = '';
     /**
      * 固件包文件ID
+     *
      * @var string
      */
     private $fileId = '';
@@ -48,6 +52,7 @@ class FirmwareCreate extends BaseBaiDu
 
     /**
      * @param string $schemaId
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setSchemaId(string $schemaId)
@@ -61,6 +66,7 @@ class FirmwareCreate extends BaseBaiDu
 
     /**
      * @param string $description
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setDescription(string $description)
@@ -74,6 +80,7 @@ class FirmwareCreate extends BaseBaiDu
 
     /**
      * @param string $version
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setVersion(string $version)
@@ -87,6 +94,7 @@ class FirmwareCreate extends BaseBaiDu
 
     /**
      * @param string $fileId
+     *
      * @throws \SyException\Iot\BaiDuIotException
      */
     public function setFileId(string $fileId)
@@ -124,6 +132,7 @@ class FirmwareCreate extends BaseBaiDu
         $this->curlConfigs[CURLOPT_URL] = $this->serviceProtocol . '://' . $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }
