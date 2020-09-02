@@ -9,10 +9,10 @@ namespace SyIot\BaiDu\Usage;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 
-class UsageEndpointQuery extends IotBaseBaiDu
+class UsageEndpointQuery extends BaseBaiDu
 {
     /**
      * endpoint名称
@@ -88,7 +88,7 @@ class UsageEndpointQuery extends IotBaseBaiDu
             'start' => $this->start,
             'end' => $this->end,
         ];
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_POST,
             'req_uri' => $this->serviceUri,
             'req_params' => $queryData,

@@ -9,10 +9,10 @@ namespace SyIot\BaiDu\Client;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 
-class MessagePublish extends IotBaseBaiDu
+class MessagePublish extends BaseBaiDu
 {
     /**
      * 消息QoS值
@@ -148,7 +148,7 @@ class MessagePublish extends IotBaseBaiDu
             'topic' => $this->topic,
             'retain' => $this->retain,
         ];
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_POST,
             'req_uri' => $this->serviceUri,
             'req_params' => $queryData,

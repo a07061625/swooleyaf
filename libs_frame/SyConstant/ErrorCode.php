@@ -276,6 +276,11 @@ class ErrorCode
     const PAY_UNION_PARAM_ERROR = 107520;
     const PAY_UNION_REQ_ERROR = 107521;
 
+    //云服务错误,取值范围:108000-108199
+    const CLOUD_TENCENT_ERROR = 108000;
+    const CLOUD_ALI_ERROR = 108001;
+    const CLOUD_QINIU_ERROR = 108002;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -455,6 +460,9 @@ class ErrorCode
         self::PAY_PAYPAL_REQ_ERROR => '贝宝支付请求出错',
         self::PAY_UNION_PARAM_ERROR => '银联支付参数错误',
         self::PAY_UNION_REQ_ERROR => '银联支付请求出错',
+        self::CLOUD_TENCENT_ERROR => '腾讯云服务出错',
+        self::CLOUD_ALI_ERROR => '阿里云服务出错',
+        self::CLOUD_QINIU_ERROR => '七牛云服务出错',
     ];
 
     /**

@@ -9,11 +9,11 @@ namespace SyIot\BaiDu\Permission;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 use SyTool\Tool;
 
-class PermissionModify extends IotBaseBaiDu
+class PermissionModify extends BaseBaiDu
 {
     /**
      * endpoint名称
@@ -118,7 +118,7 @@ class PermissionModify extends IotBaseBaiDu
         $this->reqData['operations'] = array_keys($this->operations);
         $this->serviceUri = '/v1/endpoint/' . $this->endpointName . '/permission/' . $this->permissionUuid;
 
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_PUT,
             'req_uri' => $this->serviceUri,
             'req_params' => [],

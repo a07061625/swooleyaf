@@ -9,10 +9,10 @@ namespace SyIot\BaiDu\Endpoint;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 
-class EndpointList extends IotBaseBaiDu
+class EndpointList extends BaseBaiDu
 {
     /**
      * 排序方式
@@ -121,7 +121,7 @@ class EndpointList extends IotBaseBaiDu
 
     public function getDetail() : array
     {
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_GET,
             'req_uri' => $this->serviceUri,
             'req_params' => $this->reqData,

@@ -10,7 +10,7 @@ namespace SyIot;
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
 
-abstract class IotBaseBaiDu extends IotBase
+abstract class BaseBaiDu extends Base
 {
     const REQ_METHOD_GET = 'GET'; //请求方式-
     const REQ_METHOD_POST = 'POST'; //请求方式-POST

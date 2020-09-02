@@ -7,12 +7,13 @@
  */
 namespace SyIot\Tencent\Device;
 
+use DesignPatterns\Singletons\IotConfigSingleton;
 use SyConstant\ErrorCode;
 use SyException\Iot\TencentIotException;
-use SyIot\IotBaseTencent;
+use SyIot\BaseTencent;
 use SyTool\Tool;
 
-class DeviceDataControl extends IotBaseTencent
+class DeviceDataControl extends BaseTencent
 {
     /**
      * 产品ID
@@ -89,7 +90,10 @@ class DeviceDataControl extends IotBaseTencent
         if (!isset($this->reqData['Data'])) {
             throw new TencentIotException('属性数据不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
-        $this->addReqSign();
+
+        $config = IotConfigSingleton::getInstance()->getTencentConfig();
+        $this->addReqSign($config->getSecretId(), $config->getSecretKey());
+
         return $this->getContent();
     }
 }

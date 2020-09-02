@@ -9,10 +9,10 @@ namespace SyIot\BaiDu\Thing;
 
 use SyConstant\ErrorCode;
 use SyException\Iot\BaiDuIotException;
-use SyIot\IotBaseBaiDu;
-use SyIot\IotUtilBaiDu;
+use SyIot\BaseBaiDu;
+use SyIot\UtilBaiDu;
 
-class ThingList extends IotBaseBaiDu
+class ThingList extends BaseBaiDu
 {
     /**
      * endpoint名称
@@ -143,7 +143,7 @@ class ThingList extends IotBaseBaiDu
             throw new BaiDuIotException('endpoint名称不能为空', ErrorCode::IOT_PARAM_ERROR);
         }
 
-        $this->reqHeader['Authorization'] = IotUtilBaiDu::createSign([
+        $this->reqHeader['Authorization'] = UtilBaiDu::createSign([
             'req_method' => self::REQ_METHOD_GET,
             'req_uri' => $this->serviceUri,
             'req_params' => $this->reqData,
