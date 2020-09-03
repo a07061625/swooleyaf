@@ -245,12 +245,6 @@ class ErrorCode
     const CURRENCY_REQ_ALIMARKET_YIYUAN_ERROR = 107010;
     const CURRENCY_REQ_ALIMARKET_JISU_ERROR = 107011;
 
-    //教育直播错误,取值范围:107100-107199
-    const LIVE_EDUCATION_PARAM_ERROR = 107100;
-    const LIVE_EDUCATION_POST_ERROR = 107101;
-    const LIVE_EDUCATION_GET_ERROR = 107102;
-    const LIVE_EDUCATION_REQ_BJY_ERROR = 107110;
-
     //积分错误,取值范围:107200-107299
     const CREDIT_PARAM_ERROR = 107200;
     const CREDIT_POST_ERROR = 107201;
@@ -280,6 +274,14 @@ class ErrorCode
     const CLOUD_TENCENT_ERROR = 108000;
     const CLOUD_ALI_ERROR = 108001;
     const CLOUD_QINIU_ERROR = 108002;
+
+    //直播错误,取值范围:108200-108399
+    const LIVE_PARAM_ERROR = 108200;
+    const LIVE_REQ_ERROR = 108201;
+    const LIVE_BAIJIA_REQ_ERROR = 108210;
+    const LIVE_BAIJIA_PARAM_ERROR = 108211;
+    const LIVE_TENCENT_REQ_ERROR = 108220;
+    const LIVE_TENCENT_PARAM_ERROR = 108221;
 
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
@@ -439,10 +441,6 @@ class ErrorCode
         self::CURRENCY_GET_ERROR => '货币GET请求出错',
         self::CURRENCY_REQ_ALIMARKET_YIYUAN_ERROR => '阿里云市场易源货币发送请求出错',
         self::CURRENCY_REQ_ALIMARKET_JISU_ERROR => '阿里云市场极速货币发送请求出错',
-        self::LIVE_EDUCATION_PARAM_ERROR => '教育直播参数错误',
-        self::LIVE_EDUCATION_POST_ERROR => '教育直播POST请求出错',
-        self::LIVE_EDUCATION_GET_ERROR => '教育直播GET请求出错',
-        self::LIVE_EDUCATION_REQ_BJY_ERROR => '百家云教育直播发送请求出错',
         self::CREDIT_PARAM_ERROR => '积分参数错误',
         self::CREDIT_POST_ERROR => '积分POST请求出错',
         self::CREDIT_GET_ERROR => '积分GET请求出错',
@@ -463,6 +461,12 @@ class ErrorCode
         self::CLOUD_TENCENT_ERROR => '腾讯云服务出错',
         self::CLOUD_ALI_ERROR => '阿里云服务出错',
         self::CLOUD_QINIU_ERROR => '七牛云服务出错',
+        self::LIVE_PARAM_ERROR => '直播参数出错',
+        self::LIVE_REQ_ERROR => '直播请求出错',
+        self::LIVE_BAIJIA_REQ_ERROR => '百家云直播请求出错',
+        self::LIVE_BAIJIA_PARAM_ERROR => '百家云直播参数出错',
+        self::LIVE_TENCENT_REQ_ERROR => '腾讯云直播请求出错',
+        self::LIVE_TENCENT_PARAM_ERROR => '腾讯云直播参数出错',
     ];
 
     /**

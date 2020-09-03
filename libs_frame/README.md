@@ -12,7 +12,6 @@
 - Grafika: 图片特效类库
 - Helper: 项目帮助类库
 - IDE: IDE辅助类库
-- LiveEducation: 教育直播
 - Mailer: 邮件类库
 - Map: 地图类库
 - PhpAmqpLib: amqp协议类库(用于消息队列Rabbit)

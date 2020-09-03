@@ -147,8 +147,8 @@ class ProjectBase
     const TIME_EXPIRE_LOCAL_ALIPAY_CLEAR = 3600; //超时时间-本地支付宝支付清理,单位为秒
     const TIME_EXPIRE_LOCAL_DINGTALK_CORP_REFRESH = 600; //超时时间-本地企业钉钉更新,单位为秒
     const TIME_EXPIRE_LOCAL_DINGTALK_CORP_CLEAR = 3600; //超时时间-本地企业钉钉清理,单位为秒
-    const TIME_EXPIRE_LOCAL_LIVE_EDUCATION_BJY_REFRESH = 600; //超时时间-本地教育直播百家云配置更新,单位为秒
-    const TIME_EXPIRE_LOCAL_LIVE_EDUCATION_BJY_CLEAR = 3600; //超时时间-本地教育直播百家云配置清理,单位为秒
+    const TIME_EXPIRE_LOCAL_LIVE_BAIJIA_REFRESH = 600; //超时时间-本地百家云直播配置更新,单位为秒
+    const TIME_EXPIRE_LOCAL_LIVE_BAIJIA_CLEAR = 3600; //超时时间-本地百家云直播配置清理,单位为秒
     const TIME_EXPIRE_SESSION = 259200; //超时时间-session,单位为秒
     const TIME_EXPIRE_SWOOLE_CLIENT_HTTP = 3000; //超时时间-http服务客户端,单位为毫秒
     const TIME_EXPIRE_SWOOLE_CLIENT_RPC = 3000; //超时时间-rpc服务客户端,单位为毫秒
