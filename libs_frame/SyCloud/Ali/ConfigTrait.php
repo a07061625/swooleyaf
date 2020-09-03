@@ -18,6 +18,11 @@ use SyException\Cloud\AliException;
 trait ConfigTrait
 {
     /**
+     * 区域ID
+     * @var string
+     */
+    private $regionId = '';
+    /**
      * 访问ID
      *
      * @var string
@@ -29,6 +34,27 @@ trait ConfigTrait
      * @var string
      */
     private $accessSecret = '';
+
+    /**
+     * @return string
+     */
+    public function getRegionId() : string
+    {
+        return $this->regionId;
+    }
+
+    /**
+     * @param string $regionId
+     * @throws \SyException\Cloud\AliException
+     */
+    public function setRegionId(string $regionId)
+    {
+        if (strlen($regionId) > 0) {
+            $this->regionId = $regionId;
+        } else {
+            throw new AliException('区域ID不合法', ErrorCode::CLOUD_ALI_ERROR);
+        }
+    }
 
     /**
      * @return string
