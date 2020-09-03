@@ -11,6 +11,7 @@ use SyCloud\Ali\ConfigTrait;
 
 /**
  * Class ConfigAliYun
+ *
  * @package SyLive
  */
 class ConfigAliYun

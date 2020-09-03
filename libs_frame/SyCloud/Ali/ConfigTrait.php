@@ -19,6 +19,7 @@ trait ConfigTrait
 {
     /**
      * 区域ID
+     *
      * @var string
      */
     private $regionId = '';
@@ -45,6 +46,7 @@ trait ConfigTrait
 
     /**
      * @param string $regionId
+     *
      * @throws \SyException\Cloud\AliException
      */
     public function setRegionId(string $regionId)

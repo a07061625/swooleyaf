@@ -17,6 +17,7 @@ use SyTrait\SingletonTrait;
 
 /**
  * Class LiveConfigSingleton
+ *
  * @package DesignPatterns\Singletons
  */
 class LiveConfigSingleton
@@ -26,16 +27,19 @@ class LiveConfigSingleton
 
     /**
      * 阿里云配置
+     *
      * @var \SyLive\ConfigAliYun
      */
-    private $aliYunConfig = null;
+    private $aliYunConfig;
     /**
      * 百家云配置列表
+     *
      * @var array
      */
     private $baiJiaConfigs = [];
     /**
      * 百家云配置清理时间戳
+     *
      * @var int
      */
     private $baiJiaClearTime = 0;
@@ -58,7 +62,9 @@ class LiveConfigSingleton
 
     /**
      * 获取阿里云配置
+     *
      * @return \SyLive\ConfigAliYun
+     *
      * @throws \SyException\Cloud\AliException
      */
     public function getAliYunConfig()
@@ -77,6 +83,7 @@ class LiveConfigSingleton
 
     /**
      * 获取所有的百家云配置
+     *
      * @return array
      */
     public function getBaiJiaConfigs()
@@ -85,8 +92,46 @@ class LiveConfigSingleton
     }
 
     /**
-     * 获取本地百家云配置
+     * 获取百家云配置
+     *
      * @param string $partnerId
+     *
+     * @return \SyLive\ConfigBaiJia|null
+     *
+     * @throws \SyException\Live\BaiJiaException
+     */
+    public function getBaiJiaConfig(string $partnerId)
+    {
+        $nowTime = Tool::getNowTime();
+        $baiJiaConfig = $this->getLocalBaiJiaConfig($partnerId);
+        if (is_null($baiJiaConfig)) {
+            $baiJiaConfig = $this->refreshBaiJiaConfig($partnerId);
+        } elseif ($baiJiaConfig->getExpireTime() < $nowTime) {
+            $baiJiaConfig = $this->refreshBaiJiaConfig($partnerId);
+        }
+
+        if ($baiJiaConfig->isValid()) {
+            return $baiJiaConfig;
+        }
+
+        throw new BaiJiaException('百家云配置不存在', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
+    }
+
+    /**
+     * 移除百家云配置
+     *
+     * @param string $partnerId
+     */
+    public function removeBaiJiaConfig(string $partnerId)
+    {
+        unset($this->baiJiaConfigs[$partnerId]);
+    }
+
+    /**
+     * 获取本地百家云配置
+     *
+     * @param string $partnerId
+     *
      * @return \SyLive\ConfigBaiJia|null
      */
     private function getLocalBaiJiaConfig(string $partnerId)
@@ -107,37 +152,5 @@ class LiveConfigSingleton
         }
 
         return Tool::getArrayVal($this->baiJiaConfigs, $partnerId, null);
-    }
-
-    /**
-     * 获取百家云配置
-     * @param string $partnerId
-     * @return \SyLive\ConfigBaiJia|null
-     * @throws \SyException\Live\BaiJiaException
-     */
-    public function getBaiJiaConfig(string $partnerId)
-    {
-        $nowTime = Tool::getNowTime();
-        $baiJiaConfig = $this->getLocalBaiJiaConfig($partnerId);
-        if (is_null($baiJiaConfig)) {
-            $baiJiaConfig = $this->refreshBaiJiaConfig($partnerId);
-        } elseif ($baiJiaConfig->getExpireTime() < $nowTime) {
-            $baiJiaConfig = $this->refreshBaiJiaConfig($partnerId);
-        }
-
-        if ($baiJiaConfig->isValid()) {
-            return $baiJiaConfig;
-        } else {
-            throw new BaiJiaException('百家云配置不存在', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
-        }
-    }
-
-    /**
-     * 移除百家云配置
-     * @param string $partnerId
-     */
-    public function removeBaiJiaConfig(string $partnerId)
-    {
-        unset($this->baiJiaConfigs[$partnerId]);
     }
 }

@@ -7,16 +7,19 @@
  */
 namespace SyTrait;
 
-use SyLive\ConfigBaiJia;
 use SyConstant\Project;
+use SyLive\ConfigBaiJia;
 use SyTool\Tool;
 
 trait LiveConfigTrait
 {
     /**
      * 更新百家云配置
+     *
      * @param string $partnerId
+     *
      * @return \SyLive\ConfigBaiJia
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     private function refreshBaiJiaConfig(string $partnerId)
