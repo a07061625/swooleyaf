@@ -9,6 +9,7 @@ namespace SyLive\Tencent;
 
 /**
  * Class Demo
+ *
  * @package SyLive\Tencent
  */
 class Demo
