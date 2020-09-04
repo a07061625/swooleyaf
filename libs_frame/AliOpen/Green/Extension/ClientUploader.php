@@ -11,7 +11,7 @@ class ClientUploader
     private $uploadCredentials;
     private $headers;
     private $fileType;
-    private $dir = "/tmp/green/upload/";
+    private $dir = '/tmp/green/upload/';
 
     private function __construct($client, $fileType)
     {
@@ -23,28 +23,31 @@ class ClientUploader
 
     public static function getImageClientUploader($client)
     {
-        return new ClientUploader($client, 'images');
+        return new self($client, 'images');
     }
 
     public static function getVideoClientUploader($client)
     {
-        return new ClientUploader($client, 'videos');
+        return new self($client, 'videos');
     }
 
     public static function getVoiceClientUploader($client)
     {
-        return new ClientUploader($client, 'voices');
+        return new self($client, 'voices');
     }
 
     public static function getFileClientUploader($client)
     {
-        return new ClientUploader($client, 'files');
+        return new self($client, 'files');
     }
 
     /**
      * 上传并获取上传后的图片链接
+     *
      * @param string $bytes
+     *
      * @return string
+     *
      * @throws \Exception
      */
     public function uploadBytes($bytes)
@@ -53,9 +56,9 @@ class ClientUploader
             mkdir($this->dir, 0777, true);
         }
         $tmpFileName = $this->dir . uniqid();
-        $file = fopen($tmpFileName, "w");//打开文件准备写入
-        fwrite($file, $bytes);//写入
-        fclose($file);//关闭
+        $file = fopen($tmpFileName, 'w'); //打开文件准备写入
+        fwrite($file, $bytes); //写入
+        fclose($file); //关闭
 
         try {
             $result = $this->uploadFile($tmpFileName);
@@ -64,14 +67,18 @@ class ClientUploader
             return $result;
         } catch (\Exception $e) {
             unlink($tmpFileName);
+
             throw $e;
         }
     }
 
     /**
      * 上传并获取上传后的图片链接
+     *
      * @param $filePath
+     *
      * @return string
+     *
      * @throws \SyObjectStorage\Oss\Core\OssException
      * @throws \SyObjectStorage\Oss\Http\RequestCore_Exception
      */
@@ -79,8 +86,9 @@ class ClientUploader
     {
         $uploadCredentials = $this->getCredentials();
         if ($uploadCredentials == null) {
-            throw new \RuntimeException("can not get upload credentials");
+            throw new \RuntimeException('can not get upload credentials');
         }
+
         try {
             $ossClient = new OssClient($uploadCredentials->getAccessKeyId(), $uploadCredentials->getAccessKeySecret(), $uploadCredentials->getOssEndpoint(), false, $uploadCredentials->getSecurityToken());
             print_r($uploadCredentials->getUploadFolder() . $this->fileType);
@@ -88,10 +96,15 @@ class ClientUploader
             print_r($object);
             $ossClient->uploadFile($uploadCredentials->getUploadBucket(), $object, $filePath);
 
-            return "oss://" . $uploadCredentials->getUploadBucket() . "/" . $object;
+            return 'oss://' . $uploadCredentials->getUploadBucket() . '/' . $object;
         } catch (OssException $e) {
             throw $e;
         }
+    }
+
+    public function addHeader($key, $value)
+    {
+        $this->headers[$key] = $value;
     }
 
     private function getCredentials()
@@ -113,8 +126,8 @@ class ClientUploader
     private function getCredentialsFromServer()
     {
         $uploadCredentialsRequest = new CredentialsUploadRequest();
-        $uploadCredentialsRequest->setMethod("POST");
-        $uploadCredentialsRequest->setAcceptFormat("JSON");
+        $uploadCredentialsRequest->setMethod('POST');
+        $uploadCredentialsRequest->setAcceptFormat('JSON');
 
         $uploadCredentialsRequest->setContent(json_encode([]));
         foreach ($this->headers as $k => $v) {
@@ -131,15 +144,11 @@ class ClientUploader
 
                 return new UploadCredentials($data->accessKeyId, $data->accessKeySecret, $data->securityToken, $data->expiredTime, $data->ossEndpoint, $data->uploadBucket, $data->uploadFolder);
             }
-            throw new \RuntimeException("get upload credential from server fail. requestId:" . $response->requestId . ", code:"
+
+            throw new \RuntimeException('get upload credential from server fail. requestId:' . $response->requestId . ', code:'
                                         . $response->code);
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    public function addHeader($key, $value)
-    {
-        $this->headers[$key] = $value;
     }
 }

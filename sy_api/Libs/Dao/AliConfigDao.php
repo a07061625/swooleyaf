@@ -7,10 +7,10 @@
  */
 namespace Dao;
 
-use SyObjectStorage\Oss\OssTool;
 use DesignPatterns\Singletons\ObjectStorageConfigSingleton;
 use SyConstant\ErrorCode;
 use SyException\Common\CheckException;
+use SyObjectStorage\Oss\OssTool;
 use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
 
@@ -22,22 +22,6 @@ class AliConfigDao
         'video' => 'getOssFrontVideo',
         'image' => 'getOssFrontImage',
     ];
-
-    private static function getOssFrontVideo(array $data)
-    {
-        return [
-            'max_size' => 62914560,
-            'upload_path' => 'video/' . date('Ym') . '/',
-        ];
-    }
-
-    private static function getOssFrontImage(array $data)
-    {
-        return [
-            'max_size' => 5242880,
-            'upload_path' => 'image/' . date('Ym') . '/',
-        ];
-    }
 
     public static function getOssFront(array $data)
     {
@@ -70,6 +54,22 @@ class AliConfigDao
             'max_size' => $defineConfig['max_size'],
             'success_status' => $successStatus,
             'expire_time' => $expireTime,
+        ];
+    }
+
+    private static function getOssFrontVideo(array $data)
+    {
+        return [
+            'max_size' => 62914560,
+            'upload_path' => 'video/' . date('Ym') . '/',
+        ];
+    }
+
+    private static function getOssFrontImage(array $data)
+    {
+        return [
+            'max_size' => 5242880,
+            'upload_path' => 'image/' . date('Ym') . '/',
         ];
     }
 }

@@ -99,6 +99,7 @@ class ObjectStorageConfigSingleton
 
     /**
      * @return \SyObjectStorage\ConfigOss
+     *
      * @throws \SyException\Cloud\AliException
      * @throws \SyException\ObjectStorage\OssException
      */
@@ -123,6 +124,7 @@ class ObjectStorageConfigSingleton
 
     /**
      * @return \SyObjectStorage\Oss\OssClient
+     *
      * @throws \SyException\Cloud\AliException
      * @throws \SyException\ObjectStorage\OssException
      */
