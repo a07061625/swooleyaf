@@ -21,7 +21,7 @@ class AliYunFile extends BaseVoiceAliYun implements IProducer
     public function __construct()
     {
         parent::__construct(ProjectBase::MESSAGE_HANDLER_TYPE_VOICE_ALIYUN_FILE);
-        $this->msgData['app_id'] = VmsConfigSingleton::getInstance()->getAliYunConfig()->getAppKey();
+        $this->msgData['app_id'] = VmsConfigSingleton::getInstance()->getAliYunConfig()->getAccessKey();
         $this->checkMap = [
             1 => 'checkSendTime',
             2 => 'checkCalledNumber',

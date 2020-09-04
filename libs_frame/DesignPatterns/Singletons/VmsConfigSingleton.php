@@ -45,6 +45,7 @@ class VmsConfigSingleton
 
     /**
      * @return \SyVms\ConfigAliYun
+     * @throws \SyException\Cloud\AliException
      */
     public function getAliYunConfig()
     {
@@ -52,8 +53,8 @@ class VmsConfigSingleton
             $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);
             $aliYunConfig = new ConfigAliYun();
             $aliYunConfig->setRegionId((string)Tool::getArrayVal($configs, 'aliyun.region.id', '', true));
-            $aliYunConfig->setAppKey((string)Tool::getArrayVal($configs, 'aliyun.app.key', '', true));
-            $aliYunConfig->setAppSecret((string)Tool::getArrayVal($configs, 'aliyun.app.secret', '', true));
+            $aliYunConfig->setAccessKey((string)Tool::getArrayVal($configs, 'aliyun.access.key', '', true));
+            $aliYunConfig->setAccessSecret((string)Tool::getArrayVal($configs, 'aliyun.access.secret', '', true));
             $this->aliYunConfig = $aliYunConfig;
         }
 
@@ -62,6 +63,7 @@ class VmsConfigSingleton
 
     /**
      * @return \SyVms\ConfigQCloud
+     * @throws \SyException\Vms\QCloudException
      */
     public function getQCloudConfig()
     {

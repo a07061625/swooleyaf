@@ -39,7 +39,7 @@ class AliYunTts extends Base implements IConsumer
         ];
 
         $config = VmsConfigSingleton::getInstance()->getAliYunConfig();
-        $iClientProfile = DefaultProfile::getProfile($config->getRegionId(), $config->getAppKey(), $config->getAppSecret());
+        $iClientProfile = DefaultProfile::getProfile($config->getRegionId(), $config->getAccessKey(), $config->getAccessSecret());
         $client = new DefaultAcsClient($iClientProfile);
         $callTts = new CallByTtsSingleRequest();
         $callTts->setCalledNumber($msgData['receivers'][0]);
