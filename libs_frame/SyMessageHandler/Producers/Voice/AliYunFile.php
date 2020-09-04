@@ -14,6 +14,7 @@ use SyMessageHandler\Producers\BaseVoiceAliYun;
 
 /**
  * Class AliYunFile
+ *
  * @package SyMessageHandler\Producers\Voice
  */
 class AliYunFile extends BaseVoiceAliYun implements IProducer
@@ -48,6 +49,7 @@ class AliYunFile extends BaseVoiceAliYun implements IProducer
         }
 
         $this->msgData['ext_data']['voice_id'] = $voiceId;
+
         return '';
     }
 }

@@ -14,6 +14,7 @@ use SyMessageHandler\Producers\BaseVoiceAliYun;
 
 /**
  * Class AliYunTts
+ *
  * @package SyMessageHandler\Producers\Voice
  */
 class AliYunTts extends BaseVoiceAliYun implements IProducer
