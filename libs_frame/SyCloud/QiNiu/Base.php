@@ -16,6 +16,7 @@ abstract class Base extends \SyCloud\Base
 {
     /**
      * 请求头
+     *
      * @var array
      */
     protected $reqHeader = [];
