@@ -1,0 +1,14 @@
+# 介绍
+- Auth: 鉴权管理
+- Callback: 直播回调
+- Cert: 证书管理
+- Delay: 延播管理
+- Domain: 域名管理
+- MixStream: 直播混流
+- RealtimeLog: 实时日志
+- Record: 录制管理
+- Snapshot: 截图鉴黄
+- Statics: 统计查询
+- Stream: 直播流管理
+- Transcode: 直播转码
+- Watermark: 水印管理
