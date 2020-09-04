@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 删除水印
+ *
  * @package SyLive\Tencent\Watermark
  */
 class WatermarkDelete extends BaseTencent
 {
     /**
      * 水印ID
+     *
      * @var int
      */
     private $WatermarkId = 0;
@@ -36,6 +38,7 @@ class WatermarkDelete extends BaseTencent
 
     /**
      * @param int $watermarkId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setWatermarkId(int $watermarkId)

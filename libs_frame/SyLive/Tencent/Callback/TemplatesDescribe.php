@@ -12,6 +12,7 @@ use SyLive\BaseTencent;
 
 /**
  * 获取回调模板列表
+ *
  * @package SyLive\Tencent\Callback
  */
 class TemplatesDescribe extends BaseTencent

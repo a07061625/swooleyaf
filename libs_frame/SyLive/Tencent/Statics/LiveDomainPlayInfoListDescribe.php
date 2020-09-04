@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 查询实时的域名维度下行播放数据
+ *
  * @package SyLive\Tencent\Statics
  */
 class LiveDomainPlayInfoListDescribe extends BaseTencent
 {
     /**
      * 播放域名列表
+     *
      * @var array
      */
     private $PlayDomains = [];
@@ -36,6 +38,7 @@ class LiveDomainPlayInfoListDescribe extends BaseTencent
 
     /**
      * @param array $playDomains
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPlayDomains(array $playDomains)

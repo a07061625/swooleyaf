@@ -14,17 +14,20 @@ use SyLive\BaseTencent;
 
 /**
  * 删除域名
+ *
  * @package SyLive\Tencent\Domain
  */
 class DomainDelete extends BaseTencent
 {
     /**
      * 域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 域名类型
+     *
      * @var int
      */
     private $DomainType = 0;
@@ -41,6 +44,7 @@ class DomainDelete extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -54,6 +58,7 @@ class DomainDelete extends BaseTencent
 
     /**
      * @param int $domainType
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainType(int $domainType)

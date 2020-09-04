@@ -14,62 +14,74 @@ use SyLive\BaseTencent;
 
 /**
  * 创建截图模板
+ *
  * @package SyLive\Tencent\Snapshot
  */
 class TemplateCreate extends BaseTencent
 {
     /**
      * 模板名称
+     *
      * @var string
      */
     private $TemplateName = '';
     /**
      * Cos应用ID
+     *
      * @var int
      */
     private $CosAppId = 0;
     /**
      * Cos Bucket名称
+     *
      * @var string
      */
     private $CosBucket = '';
     /**
      * Cos地域
+     *
      * @var string
      */
     private $CosRegion = '';
     /**
      * 描述信息
+     *
      * @var string
      */
     private $Description = '';
     /**
      * 截图间隔,单位s
+     *
      * @var int
      */
     private $SnapshotInterval = 0;
     /**
      * 截图宽度
+     *
      * @var int
      */
     private $Width = 0;
     /**
      * 截图高度
+     *
      * @var int
      */
     private $Height = 0;
     /**
      * 鉴黄标识
+     *
      * @var int
      */
     private $PornFlag = 0;
     /**
      * Cos Bucket文件夹前缀
+     *
      * @var string
      */
     private $CosPrefix = '';
     /**
      * Cos文件名称
+     *
      * @var string
      */
     private $CosFileName = '';
@@ -90,6 +102,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $templateName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTemplateName(string $templateName)
@@ -104,6 +117,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $cosAppId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setCosAppId(int $cosAppId)
@@ -117,6 +131,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $cosBucket
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setCosBucket(string $cosBucket)
@@ -130,6 +145,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $cosRegion
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setCosRegion(string $cosRegion)
@@ -143,6 +159,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $description
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDescription(string $description)
@@ -156,6 +173,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $snapshotInterval
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setSnapshotInterval(int $snapshotInterval)
@@ -169,6 +187,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $width
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setWidth(int $width)
@@ -182,6 +201,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $height
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setHeight(int $height)
@@ -195,6 +215,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $pornFlag
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPornFlag(int $pornFlag)
@@ -208,6 +229,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $cosPrefix
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setCosPrefix(string $cosPrefix)
@@ -221,6 +243,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $cosFileName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setCosFileName(string $cosFileName)

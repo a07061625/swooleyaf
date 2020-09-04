@@ -14,17 +14,20 @@ use SyLive\BaseTencent;
 
 /**
  * 查询直播转推计费带宽
+ *
  * @package SyLive\Tencent\Statics
  */
 class DeliverBandwidthListDescribe extends BaseTencent
 {
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
@@ -42,6 +45,7 @@ class DeliverBandwidthListDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)

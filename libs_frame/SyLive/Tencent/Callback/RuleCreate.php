@@ -14,22 +14,26 @@ use SyLive\BaseTencent;
 
 /**
  * 创建回调规则
+ *
  * @package SyLive\Tencent\Callback
  */
 class RuleCreate extends BaseTencent
 {
     /**
      * 推流域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 模板ID
+     *
      * @var int
      */
     private $TemplateId = 0;
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
@@ -47,6 +51,7 @@ class RuleCreate extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -60,6 +65,7 @@ class RuleCreate extends BaseTencent
 
     /**
      * @param int $templateId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTemplateId(int $templateId)
@@ -73,6 +79,7 @@ class RuleCreate extends BaseTencent
 
     /**
      * @param string $appName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAppName(string $appName)

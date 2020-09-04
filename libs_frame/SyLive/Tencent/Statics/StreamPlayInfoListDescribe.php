@@ -14,32 +14,38 @@ use SyLive\BaseTencent;
 
 /**
  * 查询流的播放信息列表
+ *
  * @package SyLive\Tencent\Statics
  */
 class StreamPlayInfoListDescribe extends BaseTencent
 {
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 播放域名
+     *
      * @var string
      */
     private $PlayDomain = '';
     /**
      * 流名称
+     *
      * @var string
      */
     private $StreamName = '';
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
@@ -57,6 +63,7 @@ class StreamPlayInfoListDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)

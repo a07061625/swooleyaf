@@ -8,12 +8,11 @@
 namespace SyLive\Tencent\Cert;
 
 use DesignPatterns\Singletons\LiveConfigSingleton;
-use SyConstant\ErrorCode;
-use SyException\Live\TencentException;
 use SyLive\BaseTencent;
 
 /**
  * 获取证书信息列表
+ *
  * @package SyLive\Tencent\Cert
  */
 class CertsDescribe extends BaseTencent

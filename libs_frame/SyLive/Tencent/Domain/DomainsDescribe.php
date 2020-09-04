@@ -14,37 +14,44 @@ use SyLive\BaseTencent;
 
 /**
  * 查询域名列表
+ *
  * @package SyLive\Tencent\Domain
  */
 class DomainsDescribe extends BaseTencent
 {
     /**
      * 域名状态
+     *
      * @var int
      */
     private $DomainStatus = 0;
     /**
      * 域名类型
+     *
      * @var int
      */
     private $DomainType = 0;
     /**
      * 页数,默认1
+     *
      * @var int
      */
     private $PageNum = 0;
     /**
      * 每页个数,默认20
+     *
      * @var int
      */
     private $PageSize = 0;
     /**
      * 慢直播标识
+     *
      * @var int
      */
     private $IsDelayLive = 0;
     /**
      * 域名前缀
+     *
      * @var string
      */
     private $DomainPrefix = '';
@@ -64,6 +71,7 @@ class DomainsDescribe extends BaseTencent
 
     /**
      * @param int $domainStatus
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainStatus(int $domainStatus)
@@ -77,6 +85,7 @@ class DomainsDescribe extends BaseTencent
 
     /**
      * @param int $domainType
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainType(int $domainType)
@@ -90,6 +99,7 @@ class DomainsDescribe extends BaseTencent
 
     /**
      * @param int $pageNum
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageNum(int $pageNum)
@@ -103,6 +113,7 @@ class DomainsDescribe extends BaseTencent
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageSize(int $pageSize)
@@ -116,6 +127,7 @@ class DomainsDescribe extends BaseTencent
 
     /**
      * @param int $isDelayLive
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setIsDelayLive(int $isDelayLive)

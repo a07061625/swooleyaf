@@ -14,22 +14,26 @@ use SyLive\BaseTencent;
 
 /**
  * 查询播放http状态码明细数据
+ *
  * @package SyLive\Tencent\Statics
  */
 class HttpStatusInfoListDescribe extends BaseTencent
 {
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 播放域名列表
+     *
      * @var array
      */
     private $PlayDomains = [];
@@ -47,6 +51,7 @@ class HttpStatusInfoListDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)
@@ -62,6 +67,7 @@ class HttpStatusInfoListDescribe extends BaseTencent
 
     /**
      * @param array $playDomains
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPlayDomains(array $playDomains)

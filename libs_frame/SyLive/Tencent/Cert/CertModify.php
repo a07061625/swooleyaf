@@ -14,37 +14,44 @@ use SyLive\BaseTencent;
 
 /**
  * 修改证书
+ *
  * @package SyLive\Tencent\Cert
  */
 class CertModify extends BaseTencent
 {
     /**
      * 证书ID
+     *
      * @var int
      */
     private $CertId = 0;
     /**
      * 证书类型
+     *
      * @var int
      */
     private $CertType = 0;
     /**
      * 证书名称
+     *
      * @var string
      */
     private $CertName = '';
     /**
      * 公钥内容
+     *
      * @var string
      */
     private $HttpsCrt = '';
     /**
      * 私钥内容
+     *
      * @var string
      */
     private $HttpsKey = '';
     /**
      * 描述信息
+     *
      * @var string
      */
     private $Description = '';
@@ -61,6 +68,7 @@ class CertModify extends BaseTencent
 
     /**
      * @param int $certId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setCertId(int $certId)
@@ -74,6 +82,7 @@ class CertModify extends BaseTencent
 
     /**
      * @param int $certType
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setCertType(int $certType)
@@ -87,6 +96,7 @@ class CertModify extends BaseTencent
 
     /**
      * @param string $certName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setCertName(string $certName)
@@ -100,6 +110,7 @@ class CertModify extends BaseTencent
 
     /**
      * @param string $httpsCrt
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setHttpsCrt(string $httpsCrt)
@@ -113,6 +124,7 @@ class CertModify extends BaseTencent
 
     /**
      * @param string $httpsKey
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setHttpsKey(string $httpsKey)

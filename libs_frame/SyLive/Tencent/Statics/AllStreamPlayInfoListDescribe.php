@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 查询某个时间点所有流的下行播放数据
+ *
  * @package SyLive\Tencent\Statics
  */
 class AllStreamPlayInfoListDescribe extends BaseTencent
 {
     /**
      * 查询时间
+     *
      * @var int
      */
     private $QueryTime = 0;
@@ -36,6 +38,7 @@ class AllStreamPlayInfoListDescribe extends BaseTencent
 
     /**
      * @param int $queryTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setQueryTime(int $queryTime)

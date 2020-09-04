@@ -14,57 +14,68 @@ use SyLive\BaseTencent;
 
 /**
  * 查询推断流事件
+ *
  * @package SyLive\Tencent\Stream
  */
 class EventListDescribe extends BaseTencent
 {
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
     /**
      * 推流域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 流名称
+     *
      * @var string
      */
     private $StreamName = '';
     /**
      * 页数,默认1
+     *
      * @var int
      */
     private $PageNum = 0;
     /**
      * 每页个数,默认20
+     *
      * @var int
      */
     private $PageSize = 0;
     /**
      * 过滤标识
+     *
      * @var int
      */
     private $IsFilter = 0;
     /**
      * 精确查询标识
+     *
      * @var int
      */
     private $IsStrict = 0;
     /**
      * 结束时间排序标识
+     *
      * @var int
      */
     private $IsAsc = 0;
@@ -88,6 +99,7 @@ class EventListDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)
@@ -105,6 +117,7 @@ class EventListDescribe extends BaseTencent
 
     /**
      * @param string $appName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAppName(string $appName)
@@ -118,6 +131,7 @@ class EventListDescribe extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -131,6 +145,7 @@ class EventListDescribe extends BaseTencent
 
     /**
      * @param string $streamName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamName(string $streamName)
@@ -144,6 +159,7 @@ class EventListDescribe extends BaseTencent
 
     /**
      * @param int $pageNum
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageNum(int $pageNum)
@@ -157,6 +173,7 @@ class EventListDescribe extends BaseTencent
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageSize(int $pageSize)
@@ -170,6 +187,7 @@ class EventListDescribe extends BaseTencent
 
     /**
      * @param int $isFilter
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setIsFilter(int $isFilter)
@@ -183,6 +201,7 @@ class EventListDescribe extends BaseTencent
 
     /**
      * @param int $isStrict
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setIsStrict(int $isStrict)
@@ -196,6 +215,7 @@ class EventListDescribe extends BaseTencent
 
     /**
      * @param int $isAsc
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setIsAsc(int $isAsc)

@@ -14,32 +14,38 @@ use SyLive\BaseTencent;
 
 /**
  * 禁推直播流
+ *
  * @package SyLive\Tencent\Stream
  */
 class StreamForbid extends BaseTencent
 {
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
     /**
      * 推流域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 流名称
+     *
      * @var string
      */
     private $StreamName = '';
     /**
      * 恢复时间
+     *
      * @var int
      */
     private $ResumeTime = 0;
     /**
      * 禁推原因
+     *
      * @var string
      */
     private $Reason = '';
@@ -58,6 +64,7 @@ class StreamForbid extends BaseTencent
 
     /**
      * @param string $appName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAppName(string $appName)
@@ -71,6 +78,7 @@ class StreamForbid extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -84,6 +92,7 @@ class StreamForbid extends BaseTencent
 
     /**
      * @param string $streamName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamName(string $streamName)
@@ -97,6 +106,7 @@ class StreamForbid extends BaseTencent
 
     /**
      * @param int $resumeTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setResumeTime(int $resumeTime)

@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 获取单个水印
+ *
  * @package SyLive\Tencent\Watermark
  */
 class WatermarkDescribe extends BaseTencent
 {
     /**
      * 水印ID
+     *
      * @var int
      */
     private $WatermarkId = 0;
@@ -36,6 +38,7 @@ class WatermarkDescribe extends BaseTencent
 
     /**
      * @param int $watermarkId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setWatermarkId(int $watermarkId)

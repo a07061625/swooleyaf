@@ -14,17 +14,20 @@ use SyLive\BaseTencent;
 
 /**
  * 删除回调规则
+ *
  * @package SyLive\Tencent\Callback
  */
 class RuleDelete extends BaseTencent
 {
     /**
      * 推流域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
@@ -42,6 +45,7 @@ class RuleDelete extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -55,6 +59,7 @@ class RuleDelete extends BaseTencent
 
     /**
      * @param string $appName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAppName(string $appName)

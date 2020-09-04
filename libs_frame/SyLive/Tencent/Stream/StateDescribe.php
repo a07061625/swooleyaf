@@ -14,22 +14,26 @@ use SyLive\BaseTencent;
 
 /**
  * 查询流状态
+ *
  * @package SyLive\Tencent\Stream
  */
 class StateDescribe extends BaseTencent
 {
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
     /**
      * 推流域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 流名称
+     *
      * @var string
      */
     private $StreamName = '';
@@ -47,6 +51,7 @@ class StateDescribe extends BaseTencent
 
     /**
      * @param string $appName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAppName(string $appName)
@@ -60,6 +65,7 @@ class StateDescribe extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -73,6 +79,7 @@ class StateDescribe extends BaseTencent
 
     /**
      * @param string $streamName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamName(string $streamName)

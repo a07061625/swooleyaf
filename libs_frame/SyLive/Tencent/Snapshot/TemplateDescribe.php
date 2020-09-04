@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 获取单个截图模板
+ *
  * @package SyLive\Tencent\Snapshot
  */
 class TemplateDescribe extends BaseTencent
 {
     /**
      * 模板ID
+     *
      * @var int
      */
     private $TemplateId = 0;
@@ -36,6 +38,7 @@ class TemplateDescribe extends BaseTencent
 
     /**
      * @param int $templateId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTemplateId(int $templateId)

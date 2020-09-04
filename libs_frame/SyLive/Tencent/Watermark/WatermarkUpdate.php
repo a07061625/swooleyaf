@@ -14,42 +14,50 @@ use SyLive\BaseTencent;
 
 /**
  * 更新水印
+ *
  * @package SyLive\Tencent\Watermark
  */
 class WatermarkUpdate extends BaseTencent
 {
     /**
      * 水印ID
+     *
      * @var int
      */
     private $WatermarkId = 0;
     /**
      * 水印图片URL
+     *
      * @var string
      */
     private $PictureUrl = '';
     /**
      * X轴偏移
+     *
      * @var int
      */
     private $XPosition = 0;
     /**
      * Y轴偏移
+     *
      * @var int
      */
     private $YPosition = 0;
     /**
      * 水印名称
+     *
      * @var string
      */
     private $WatermarkName = '';
     /**
      * 水印宽度
+     *
      * @var int
      */
     private $Width = 0;
     /**
      * 水印高度
+     *
      * @var int
      */
     private $Height = 0;
@@ -68,6 +76,7 @@ class WatermarkUpdate extends BaseTencent
 
     /**
      * @param int $watermarkId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setWatermarkId(int $watermarkId)
@@ -81,6 +90,7 @@ class WatermarkUpdate extends BaseTencent
 
     /**
      * @param string $pictureUrl
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPictureUrl(string $pictureUrl)
@@ -94,6 +104,7 @@ class WatermarkUpdate extends BaseTencent
 
     /**
      * @param int $xPosition
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setXPosition(int $xPosition)
@@ -107,6 +118,7 @@ class WatermarkUpdate extends BaseTencent
 
     /**
      * @param int $yPosition
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setYPosition(int $yPosition)
@@ -120,6 +132,7 @@ class WatermarkUpdate extends BaseTencent
 
     /**
      * @param string $watermarkName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setWatermarkName(string $watermarkName)
@@ -134,6 +147,7 @@ class WatermarkUpdate extends BaseTencent
 
     /**
      * @param int $width
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setWidth(int $width)
@@ -147,6 +161,7 @@ class WatermarkUpdate extends BaseTencent
 
     /**
      * @param int $height
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setHeight(int $height)

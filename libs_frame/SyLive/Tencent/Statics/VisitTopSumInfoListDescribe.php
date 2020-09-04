@@ -14,42 +14,50 @@ use SyLive\BaseTencent;
 
 /**
  * 查询某时间段top n的域名或流id信息
+ *
  * @package SyLive\Tencent\Statics
  */
 class VisitTopSumInfoListDescribe extends BaseTencent
 {
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 峰值指标
+     *
      * @var string
      */
     private $TopIndex = '';
     /**
      * 播放域名列表
+     *
      * @var array
      */
     private $PlayDomains = [];
     /**
      * 页数,默认1
+     *
      * @var int
      */
     private $PageNum = 0;
     /**
      * 每页个数,默认20
+     *
      * @var int
      */
     private $PageSize = 0;
     /**
      * 排序指标
+     *
      * @var string
      */
     private $OrderParam = '';
@@ -70,6 +78,7 @@ class VisitTopSumInfoListDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)
@@ -85,6 +94,7 @@ class VisitTopSumInfoListDescribe extends BaseTencent
 
     /**
      * @param string $topIndex
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTopIndex(string $topIndex)
@@ -98,6 +108,7 @@ class VisitTopSumInfoListDescribe extends BaseTencent
 
     /**
      * @param array $playDomains
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPlayDomains(array $playDomains)
@@ -116,6 +127,7 @@ class VisitTopSumInfoListDescribe extends BaseTencent
 
     /**
      * @param int $pageNum
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageNum(int $pageNum)
@@ -129,6 +141,7 @@ class VisitTopSumInfoListDescribe extends BaseTencent
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageSize(int $pageSize)
@@ -142,6 +155,7 @@ class VisitTopSumInfoListDescribe extends BaseTencent
 
     /**
      * @param string $orderParam
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setOrderParam(string $orderParam)

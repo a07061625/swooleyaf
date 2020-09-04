@@ -14,17 +14,20 @@ use SyLive\BaseTencent;
 
 /**
  * 修改播放域名信息
+ *
  * @package SyLive\Tencent\Domain
  */
 class PlayDomainModify extends BaseTencent
 {
     /**
      * 播放域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 拉流域名类型
+     *
      * @var int
      */
     private $PlayType = 0;
@@ -41,6 +44,7 @@ class PlayDomainModify extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -54,6 +58,7 @@ class PlayDomainModify extends BaseTencent
 
     /**
      * @param int $playType
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPlayType(int $playType)

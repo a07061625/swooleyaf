@@ -12,6 +12,7 @@ use SyLive\BaseTencent;
 
 /**
  * 获取截图模板列表
+ *
  * @package SyLive\Tencent\Snapshot
  */
 class TemplatesDescribe extends BaseTencent

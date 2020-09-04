@@ -12,6 +12,7 @@ use SyLive\BaseTencent;
 
 /**
  * 获取截图规则列表
+ *
  * @package SyLive\Tencent\Snapshot
  */
 class RulesDescribe extends BaseTencent

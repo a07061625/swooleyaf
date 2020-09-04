@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 查询直播套餐包信息
+ *
  * @package SyLive\Tencent\Statics
  */
 class LivePackageInfoDescribe extends BaseTencent
 {
     /**
      * 包类型
+     *
      * @var int
      */
     private $PackageType = 0;
@@ -36,6 +38,7 @@ class LivePackageInfoDescribe extends BaseTencent
 
     /**
      * @param int $packageType
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPackageType(int $packageType)

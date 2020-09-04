@@ -14,27 +14,32 @@ use SyLive\BaseTencent;
 
 /**
  * 获取在线流的推流数据
+ *
  * @package SyLive\Tencent\Statics
  */
 class LiveStreamPushInfoListDescribe extends BaseTencent
 {
     /**
      * 推流域名
+     *
      * @var string
      */
     private $PushDomain = '';
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
     /**
      * 页数,默认1
+     *
      * @var int
      */
     private $PageNum = 0;
     /**
      * 每页个数,默认20
+     *
      * @var int
      */
     private $PageSize = 0;
@@ -74,6 +79,7 @@ class LiveStreamPushInfoListDescribe extends BaseTencent
 
     /**
      * @param int $pageNum
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageNum(int $pageNum)
@@ -87,6 +93,7 @@ class LiveStreamPushInfoListDescribe extends BaseTencent
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageSize(int $pageSize)

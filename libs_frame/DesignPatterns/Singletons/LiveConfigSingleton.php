@@ -46,9 +46,10 @@ class LiveConfigSingleton
     private $baiJiaClearTime = 0;
     /**
      * 腾讯云配置
+     *
      * @var \SyLive\ConfigTencent
      */
-    private $tencentConfig = null;
+    private $tencentConfig;
 
     private function __construct()
     {
@@ -134,6 +135,27 @@ class LiveConfigSingleton
     }
 
     /**
+     * 获取腾讯云配置
+     *
+     * @return \SyLive\ConfigTencent
+     *
+     * @throws \SyException\Cloud\TencentException
+     */
+    public function getTencentConfig()
+    {
+        if (is_null($this->tencentConfig)) {
+            $configs = Tool::getConfig('live.' . SY_ENV . SY_PROJECT . '.tencent');
+            $tencentConfig = new ConfigTencent();
+            $tencentConfig->setRegionId((string)Tool::getArrayVal($configs, 'region.id', '', true));
+            $tencentConfig->setSecretId((string)Tool::getArrayVal($configs, 'secret.id', '', true));
+            $tencentConfig->setSecretKey((string)Tool::getArrayVal($configs, 'secret.key', '', true));
+            $this->tencentConfig = $tencentConfig;
+        }
+
+        return $this->tencentConfig;
+    }
+
+    /**
      * 获取本地百家云配置
      *
      * @param string $partnerId
@@ -158,24 +180,5 @@ class LiveConfigSingleton
         }
 
         return Tool::getArrayVal($this->baiJiaConfigs, $partnerId, null);
-    }
-
-    /**
-     * 获取腾讯云配置
-     * @return \SyLive\ConfigTencent
-     * @throws \SyException\Cloud\TencentException
-     */
-    public function getTencentConfig()
-    {
-        if (is_null($this->tencentConfig)) {
-            $configs = Tool::getConfig('live.' . SY_ENV . SY_PROJECT . '.tencent');
-            $tencentConfig = new ConfigTencent();
-            $tencentConfig->setRegionId((string)Tool::getArrayVal($configs, 'region.id', '', true));
-            $tencentConfig->setSecretId((string)Tool::getArrayVal($configs, 'secret.id', '', true));
-            $tencentConfig->setSecretKey((string)Tool::getArrayVal($configs, 'secret.key', '', true));
-            $this->tencentConfig = $tencentConfig;
-        }
-
-        return $this->tencentConfig;
     }
 }

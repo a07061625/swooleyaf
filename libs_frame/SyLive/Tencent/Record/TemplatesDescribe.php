@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 获取录制模板列表
+ *
  * @package SyLive\Tencent\Record
  */
 class TemplatesDescribe extends BaseTencent
 {
     /**
      * 直播类型
+     *
      * @var int
      */
     private $IsDelayLive = 0;
@@ -37,6 +39,7 @@ class TemplatesDescribe extends BaseTencent
 
     /**
      * @param int $isDelayLive
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setIsDelayLive(int $isDelayLive)

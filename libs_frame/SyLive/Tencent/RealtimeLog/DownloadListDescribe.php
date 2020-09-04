@@ -14,22 +14,26 @@ use SyLive\BaseTencent;
 
 /**
  * 批量获取日志URL
+ *
  * @package SyLive\Tencent\RealtimeLog
  */
 class DownloadListDescribe extends BaseTencent
 {
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 域名列表
+     *
      * @var array
      */
     private $PlayDomains = [];
@@ -47,6 +51,7 @@ class DownloadListDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)
@@ -64,6 +69,7 @@ class DownloadListDescribe extends BaseTencent
 
     /**
      * @param array $playDomains
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPlayDomains(array $playDomains)

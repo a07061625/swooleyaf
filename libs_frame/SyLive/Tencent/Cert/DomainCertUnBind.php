@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 解绑域名证书
+ *
  * @package SyLive\Tencent\Cert
  */
 class DomainCertUnBind extends BaseTencent
 {
     /**
      * 播放域名
+     *
      * @var string
      */
     private $DomainName = '';
@@ -36,6 +38,7 @@ class DomainCertUnBind extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)

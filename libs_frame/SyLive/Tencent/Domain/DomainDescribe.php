@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 查询域名信息
+ *
  * @package SyLive\Tencent\Domain
  */
 class DomainDescribe extends BaseTencent
 {
     /**
      * 域名
+     *
      * @var string
      */
     private $DomainName = '';
@@ -36,6 +38,7 @@ class DomainDescribe extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)

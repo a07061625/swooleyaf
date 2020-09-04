@@ -14,37 +14,44 @@ use SyLive\BaseTencent;
 
 /**
  * 查询播放http错误码实时数据
+ *
  * @package SyLive\Tencent\Statics
  */
 class PlayErrorCodeDetailInfoListDescribe extends BaseTencent
 {
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 查询粒度
+     *
      * @var int
      */
     private $Granularity = 0;
     /**
      * 统计指标类型
+     *
      * @var string
      */
     private $StatType = '';
     /**
      * 播放域名列表
+     *
      * @var array
      */
     private $PlayDomains = [];
     /**
      * 地域
+     *
      * @var string
      */
     private $MainlandOrOversea = '';
@@ -64,6 +71,7 @@ class PlayErrorCodeDetailInfoListDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)
@@ -79,6 +87,7 @@ class PlayErrorCodeDetailInfoListDescribe extends BaseTencent
 
     /**
      * @param string $statType
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStatType(string $statType)
@@ -92,6 +101,7 @@ class PlayErrorCodeDetailInfoListDescribe extends BaseTencent
 
     /**
      * @param array $playDomains
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPlayDomains(array $playDomains)
@@ -110,6 +120,7 @@ class PlayErrorCodeDetailInfoListDescribe extends BaseTencent
 
     /**
      * @param string $mainlandOrOversea
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setMainlandOrOversea(string $mainlandOrOversea)

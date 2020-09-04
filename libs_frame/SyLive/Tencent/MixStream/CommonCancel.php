@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 取消通用混流
+ *
  * @package SyLive\Tencent\MixStream
  */
 class CommonCancel extends BaseTencent
 {
     /**
      * 会话ID
+     *
      * @var string
      */
     private $MixStreamSessionId = '';
@@ -36,6 +38,7 @@ class CommonCancel extends BaseTencent
 
     /**
      * @param string $mixStreamSessionId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setMixStreamSessionId(string $mixStreamSessionId)
