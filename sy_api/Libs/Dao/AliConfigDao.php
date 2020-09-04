@@ -7,9 +7,9 @@
  */
 namespace Dao;
 
-use AliOss\OssTool;
+use SyObjectStorage\Oss\OssTool;
+use DesignPatterns\Singletons\ObjectStorageConfigSingleton;
 use SyConstant\ErrorCode;
-use DesignPatterns\Singletons\AliOssSingleton;
 use SyException\Common\CheckException;
 use SyTool\Tool;
 use SyTrait\SimpleDaoTrait;
@@ -58,10 +58,10 @@ class AliConfigDao
                 ['success_action_status' => $successStatus],
             ],
         ]);
-        $ossConfig = AliOssSingleton::getInstance()->getOssConfig();
+        $ossConfig = ObjectStorageConfigSingleton::getInstance()->getOssConfig();
 
         return [
-            'key_id' => $ossConfig->getAccessKeyId(),
+            'key_id' => $ossConfig->getAccessKey(),
             'policy' => $signRes['policy_sign'],
             'signature' => $signRes['signature'],
             'upload_path' => $defineConfig['upload_path'],
