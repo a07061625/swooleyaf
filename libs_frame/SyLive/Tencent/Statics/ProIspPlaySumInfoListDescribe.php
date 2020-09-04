@@ -14,47 +14,56 @@ use SyLive\BaseTencent;
 
 /**
  * 查询分省份分运营商播放汇总数据
+ *
  * @package SyLive\Tencent\Statics
  */
 class ProIspPlaySumInfoListDescribe extends BaseTencent
 {
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 统计指标类型
+     *
      * @var string
      */
     private $StatType = '';
     /**
      * 播放域名列表
+     *
      * @var array
      */
     private $PlayDomains = [];
     /**
      * 页数,默认1
+     *
      * @var int
      */
     private $PageNum = 0;
     /**
      * 每页个数,默认20
+     *
      * @var int
      */
     private $PageSize = 0;
     /**
      * 地域
+     *
      * @var string
      */
     private $MainlandOrOversea = '';
     /**
      * 输出语言
+     *
      * @var string
      */
     private $OutLanguage = '';
@@ -76,6 +85,7 @@ class ProIspPlaySumInfoListDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)
@@ -91,6 +101,7 @@ class ProIspPlaySumInfoListDescribe extends BaseTencent
 
     /**
      * @param string $statType
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStatType(string $statType)
@@ -104,6 +115,7 @@ class ProIspPlaySumInfoListDescribe extends BaseTencent
 
     /**
      * @param array $playDomains
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPlayDomains(array $playDomains)
@@ -122,6 +134,7 @@ class ProIspPlaySumInfoListDescribe extends BaseTencent
 
     /**
      * @param int $pageNum
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageNum(int $pageNum)
@@ -135,6 +148,7 @@ class ProIspPlaySumInfoListDescribe extends BaseTencent
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageSize(int $pageSize)
@@ -148,6 +162,7 @@ class ProIspPlaySumInfoListDescribe extends BaseTencent
 
     /**
      * @param string $mainlandOrOversea
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setMainlandOrOversea(string $mainlandOrOversea)
@@ -161,6 +176,7 @@ class ProIspPlaySumInfoListDescribe extends BaseTencent
 
     /**
      * @param string $outLanguage
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setOutLanguage(string $outLanguage)

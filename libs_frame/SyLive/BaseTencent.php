@@ -11,6 +11,7 @@ use DesignPatterns\Singletons\LiveConfigSingleton;
 
 /**
  * Class BaseTencent
+ *
  * @package SyLive
  */
 abstract class BaseTencent extends \SyCloud\Tencent\Base

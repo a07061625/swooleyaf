@@ -14,37 +14,44 @@ use SyLive\BaseTencent;
 
 /**
  * 直播计费带宽和流量数据查询
+ *
  * @package SyLive\Tencent\Statics
  */
 class BillBandwidthAndFluxListDescribe extends BaseTencent
 {
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 播放域名列表
+     *
      * @var array
      */
     private $PlayDomains = [];
     /**
      * 地域
+     *
      * @var string
      */
     private $MainlandOrOversea = '';
     /**
      * 数据粒度
+     *
      * @var int
      */
     private $Granularity = 0;
     /**
      * 服务名称
+     *
      * @var string
      */
     private $ServiceName = '';
@@ -64,6 +71,7 @@ class BillBandwidthAndFluxListDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)
@@ -79,6 +87,7 @@ class BillBandwidthAndFluxListDescribe extends BaseTencent
 
     /**
      * @param array $playDomains
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPlayDomains(array $playDomains)
@@ -97,6 +106,7 @@ class BillBandwidthAndFluxListDescribe extends BaseTencent
 
     /**
      * @param string $mainlandOrOversea
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setMainlandOrOversea(string $mainlandOrOversea)
@@ -110,6 +120,7 @@ class BillBandwidthAndFluxListDescribe extends BaseTencent
 
     /**
      * @param int $granularity
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setGranularity(int $granularity)
@@ -123,6 +134,7 @@ class BillBandwidthAndFluxListDescribe extends BaseTencent
 
     /**
      * @param string $serviceName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setServiceName(string $serviceName)

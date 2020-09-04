@@ -14,32 +14,38 @@ use SyLive\BaseTencent;
 
 /**
  * 延迟播放
+ *
  * @package SyLive\Tencent\Delay
  */
 class DelayAdd extends BaseTencent
 {
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
     /**
      * 推流域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 流名称
+     *
      * @var string
      */
     private $StreamName = '';
     /**
      * 延播时间,单位为秒
+     *
      * @var int
      */
     private $DelayTime = 0;
     /**
      * 过期时间
+     *
      * @var int
      */
     private $ExpireTime = 0;
@@ -57,6 +63,7 @@ class DelayAdd extends BaseTencent
 
     /**
      * @param string $appName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAppName(string $appName)
@@ -70,6 +77,7 @@ class DelayAdd extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -83,6 +91,7 @@ class DelayAdd extends BaseTencent
 
     /**
      * @param string $streamName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamName(string $streamName)
@@ -96,6 +105,7 @@ class DelayAdd extends BaseTencent
 
     /**
      * @param int $delayTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDelayTime(int $delayTime)
@@ -109,6 +119,7 @@ class DelayAdd extends BaseTencent
 
     /**
      * @param int $expireTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setExpireTime(int $expireTime)

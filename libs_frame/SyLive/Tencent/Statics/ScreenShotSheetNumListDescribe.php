@@ -14,32 +14,38 @@ use SyLive\BaseTencent;
 
 /**
  * 查询截图张数
+ *
  * @package SyLive\Tencent\Statics
  */
 class ScreenShotSheetNumListDescribe extends BaseTencent
 {
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 地域信息
+     *
      * @var string
      */
     private $Zone = '';
     /**
      * 推流域名列表
+     *
      * @var array
      */
     private $PushDomains = [];
     /**
      * 数据粒度
+     *
      * @var string
      */
     private $Granularity = '';
@@ -58,6 +64,7 @@ class ScreenShotSheetNumListDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)
@@ -73,6 +80,7 @@ class ScreenShotSheetNumListDescribe extends BaseTencent
 
     /**
      * @param string $zone
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setZone(string $zone)
@@ -86,6 +94,7 @@ class ScreenShotSheetNumListDescribe extends BaseTencent
 
     /**
      * @param array $pushDomains
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPushDomains(array $pushDomains)
@@ -104,6 +113,7 @@ class ScreenShotSheetNumListDescribe extends BaseTencent
 
     /**
      * @param string $granularity
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setGranularity(string $granularity)

@@ -14,37 +14,44 @@ use SyLive\BaseTencent;
 
 /**
  * 添加水印
+ *
  * @package SyLive\Tencent\Watermark
  */
 class WatermarkAdd extends BaseTencent
 {
     /**
      * 水印图片URL
+     *
      * @var string
      */
     private $PictureUrl = '';
     /**
      * 水印名称
+     *
      * @var string
      */
     private $WatermarkName = '';
     /**
      * X轴偏移
+     *
      * @var int
      */
     private $XPosition = 0;
     /**
      * Y轴偏移
+     *
      * @var int
      */
     private $YPosition = 0;
     /**
      * 水印宽度
+     *
      * @var int
      */
     private $Width = 0;
     /**
      * 水印高度
+     *
      * @var int
      */
     private $Height = 0;
@@ -63,6 +70,7 @@ class WatermarkAdd extends BaseTencent
 
     /**
      * @param string $pictureUrl
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPictureUrl(string $pictureUrl)
@@ -76,6 +84,7 @@ class WatermarkAdd extends BaseTencent
 
     /**
      * @param string $watermarkName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setWatermarkName(string $watermarkName)
@@ -90,6 +99,7 @@ class WatermarkAdd extends BaseTencent
 
     /**
      * @param int $xPosition
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setXPosition(int $xPosition)
@@ -103,6 +113,7 @@ class WatermarkAdd extends BaseTencent
 
     /**
      * @param int $yPosition
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setYPosition(int $yPosition)
@@ -116,6 +127,7 @@ class WatermarkAdd extends BaseTencent
 
     /**
      * @param int $width
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setWidth(int $width)
@@ -129,6 +141,7 @@ class WatermarkAdd extends BaseTencent
 
     /**
      * @param int $height
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setHeight(int $height)

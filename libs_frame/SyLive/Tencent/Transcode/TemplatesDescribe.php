@@ -12,6 +12,7 @@ use SyLive\BaseTencent;
 
 /**
  * 获取转码模板列表
+ *
  * @package SyLive\Tencent\Transcode
  */
 class TemplatesDescribe extends BaseTencent

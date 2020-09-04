@@ -11,6 +11,7 @@ use SyCloud\Tencent\ConfigTrait;
 
 /**
  * Class ConfigTencent
+ *
  * @package SyLive
  */
 class ConfigTencent

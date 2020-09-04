@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 获取证书信息
+ *
  * @package SyLive\Tencent\Cert
  */
 class CertDescribe extends BaseTencent
 {
     /**
      * 证书ID
+     *
      * @var int
      */
     private $CertId = 0;
@@ -36,6 +38,7 @@ class CertDescribe extends BaseTencent
 
     /**
      * @param int $certId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setCertId(int $certId)

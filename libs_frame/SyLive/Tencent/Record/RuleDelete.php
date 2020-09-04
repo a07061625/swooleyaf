@@ -14,22 +14,26 @@ use SyLive\BaseTencent;
 
 /**
  * 删除录制规则
+ *
  * @package SyLive\Tencent\Record
  */
 class RuleDelete extends BaseTencent
 {
     /**
      * 推流域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
     /**
      * 流名称
+     *
      * @var string
      */
     private $StreamName = '';
@@ -47,6 +51,7 @@ class RuleDelete extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)

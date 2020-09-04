@@ -14,32 +14,38 @@ use SyLive\BaseTencent;
 
 /**
  * 创建通用混流
+ *
  * @package SyLive\Tencent\MixStream
  */
 class CommonCreate extends BaseTencent
 {
     /**
      * 会话ID
+     *
      * @var string
      */
     private $MixStreamSessionId = '';
     /**
      * 输入流列表
+     *
      * @var array
      */
     private $InputStreamList = [];
     /**
      * 输出流参数
+     *
      * @var array
      */
     private $OutputParams = [];
     /**
      * 输入模板ID
+     *
      * @var int
      */
     private $MixStreamTemplateId = 0;
     /**
      * 特殊控制参数
+     *
      * @var array
      */
     private $ControlParams = [];
@@ -57,6 +63,7 @@ class CommonCreate extends BaseTencent
 
     /**
      * @param string $mixStreamSessionId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setMixStreamSessionId(string $mixStreamSessionId)
@@ -70,6 +77,7 @@ class CommonCreate extends BaseTencent
 
     /**
      * @param array $inputStreamList
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setInputStreamList(array $inputStreamList)
@@ -88,6 +96,7 @@ class CommonCreate extends BaseTencent
 
     /**
      * @param array $outputParams
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setOutputParams(array $outputParams)
@@ -100,6 +109,7 @@ class CommonCreate extends BaseTencent
 
     /**
      * @param int $mixStreamTemplateId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setMixStreamTemplateId(int $mixStreamTemplateId)
@@ -113,6 +123,7 @@ class CommonCreate extends BaseTencent
 
     /**
      * @param array $controlParams
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setControlParams(array $controlParams)

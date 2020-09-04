@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 查询推流鉴权key
+ *
  * @package SyLive\Tencent\Auth
  */
 class PushKeyDescribe extends BaseTencent
 {
     /**
      * 推流域名
+     *
      * @var string
      */
     private $DomainName = '';
@@ -36,6 +38,7 @@ class PushKeyDescribe extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)

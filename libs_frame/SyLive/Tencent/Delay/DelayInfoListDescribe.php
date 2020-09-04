@@ -12,6 +12,7 @@ use SyLive\BaseTencent;
 
 /**
  * 获取直播延播列表
+ *
  * @package SyLive\Tencent\Delay
  */
 class DelayInfoListDescribe extends BaseTencent

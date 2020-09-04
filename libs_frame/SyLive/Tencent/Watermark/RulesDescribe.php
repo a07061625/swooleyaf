@@ -12,6 +12,7 @@ use SyLive\BaseTencent;
 
 /**
  * 获取水印规则列表
+ *
  * @package SyLive\Tencent\Watermark
  */
 class RulesDescribe extends BaseTencent

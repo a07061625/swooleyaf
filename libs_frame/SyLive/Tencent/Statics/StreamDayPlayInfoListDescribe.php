@@ -14,27 +14,32 @@ use SyLive\BaseTencent;
 
 /**
  * 查询所有流的流量数据
+ *
  * @package SyLive\Tencent\Statics
  */
 class StreamDayPlayInfoListDescribe extends BaseTencent
 {
     /**
      * 查询时间
+     *
      * @var int
      */
     private $DayTime = 0;
     /**
      * 播放域名
+     *
      * @var string
      */
     private $PlayDomain = '';
     /**
      * 页数,默认1
+     *
      * @var int
      */
     private $PageNum = 0;
     /**
      * 每页个数,默认20
+     *
      * @var int
      */
     private $PageSize = 0;
@@ -53,6 +58,7 @@ class StreamDayPlayInfoListDescribe extends BaseTencent
 
     /**
      * @param int $dayTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDayTime(int $dayTime)
@@ -76,6 +82,7 @@ class StreamDayPlayInfoListDescribe extends BaseTencent
 
     /**
      * @param int $pageNum
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageNum(int $pageNum)
@@ -89,6 +96,7 @@ class StreamDayPlayInfoListDescribe extends BaseTencent
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageSize(int $pageSize)

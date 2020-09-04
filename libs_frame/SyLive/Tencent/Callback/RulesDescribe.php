@@ -12,6 +12,7 @@ use SyLive\BaseTencent;
 
 /**
  * 获取回调规则列表
+ *
  * @package SyLive\Tencent\Callback
  */
 class RulesDescribe extends BaseTencent

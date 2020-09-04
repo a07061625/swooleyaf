@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 删除证书
+ *
  * @package SyLive\Tencent\Cert
  */
 class CertDelete extends BaseTencent
 {
     /**
      * 证书ID
+     *
      * @var int
      */
     private $CertId = 0;
@@ -36,6 +38,7 @@ class CertDelete extends BaseTencent
 
     /**
      * @param int $certId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setCertId(int $certId)

@@ -14,17 +14,20 @@ use SyLive\BaseTencent;
 
 /**
  * 获取禁推流列表
+ *
  * @package SyLive\Tencent\Stream
  */
 class ForbidListDescribe extends BaseTencent
 {
     /**
      * 页数,默认1
+     *
      * @var int
      */
     private $PageNum = 0;
     /**
      * 每页个数,默认20
+     *
      * @var int
      */
     private $PageSize = 0;
@@ -43,6 +46,7 @@ class ForbidListDescribe extends BaseTencent
 
     /**
      * @param int $pageNum
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageNum(int $pageNum)
@@ -56,6 +60,7 @@ class ForbidListDescribe extends BaseTencent
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageSize(int $pageSize)

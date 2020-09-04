@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 删除录制任务
+ *
  * @package SyLive\Tencent\Record
  */
 class TaskDelete extends BaseTencent
 {
     /**
      * 任务ID
+     *
      * @var string
      */
     private $TaskId = '';
@@ -36,6 +38,7 @@ class TaskDelete extends BaseTencent
 
     /**
      * @param string $taskId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTaskId(string $taskId)

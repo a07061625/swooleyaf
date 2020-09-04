@@ -14,47 +14,56 @@ use SyLive\BaseTencent;
 
 /**
  * 创建录制任务
+ *
  * @package SyLive\Tencent\Record
  */
 class TaskCreate extends BaseTencent
 {
     /**
      * 流名称
+     *
      * @var string
      */
     private $StreamName = '';
     /**
      * 推流域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 推流类型
+     *
      * @var int
      */
     private $StreamType = 0;
     /**
      * 录制模板ID
+     *
      * @var int
      */
     private $TemplateId = 0;
     /**
      * 扩展字段
+     *
      * @var string
      */
     private $Extension = '';
@@ -73,6 +82,7 @@ class TaskCreate extends BaseTencent
 
     /**
      * @param string $streamName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamName(string $streamName)
@@ -86,6 +96,7 @@ class TaskCreate extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -99,6 +110,7 @@ class TaskCreate extends BaseTencent
 
     /**
      * @param string $appName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAppName(string $appName)
@@ -113,6 +125,7 @@ class TaskCreate extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)
@@ -133,6 +146,7 @@ class TaskCreate extends BaseTencent
 
     /**
      * @param int $streamType
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamType(int $streamType)
@@ -146,6 +160,7 @@ class TaskCreate extends BaseTencent
 
     /**
      * @param int $templateId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTemplateId(int $templateId)
