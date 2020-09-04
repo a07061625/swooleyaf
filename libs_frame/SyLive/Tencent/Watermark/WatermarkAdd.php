@@ -1,0 +1,157 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: 姜伟
+ * Date: 2020/9/4 0004
+ * Time: 8:34
+ */
+namespace SyLive\Tencent\Watermark;
+
+use DesignPatterns\Singletons\LiveConfigSingleton;
+use SyConstant\ErrorCode;
+use SyException\Live\TencentException;
+use SyLive\BaseTencent;
+
+/**
+ * 添加水印
+ * @package SyLive\Tencent\Watermark
+ */
+class WatermarkAdd extends BaseTencent
+{
+    /**
+     * 水印图片URL
+     * @var string
+     */
+    private $PictureUrl = '';
+    /**
+     * 水印名称
+     * @var string
+     */
+    private $WatermarkName = '';
+    /**
+     * X轴偏移
+     * @var int
+     */
+    private $XPosition = 0;
+    /**
+     * Y轴偏移
+     * @var int
+     */
+    private $YPosition = 0;
+    /**
+     * 水印宽度
+     * @var int
+     */
+    private $Width = 0;
+    /**
+     * 水印高度
+     * @var int
+     */
+    private $Height = 0;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->reqHeader['X-TC-Action'] = 'AddLiveWatermark';
+        $this->reqData['XPosition'] = 0;
+        $this->reqData['YPosition'] = 0;
+    }
+
+    private function __clone()
+    {
+    }
+
+    /**
+     * @param string $pictureUrl
+     * @throws \SyException\Live\TencentException
+     */
+    public function setPictureUrl(string $pictureUrl)
+    {
+        if (preg_match('/^(http|https)\:\/\/\S+$/', $pictureUrl) > 0) {
+            $this->reqData['PictureUrl'] = $pictureUrl;
+        } else {
+            throw new TencentException('水印图片URL不合法', ErrorCode::LIVE_TENCENT_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @param string $watermarkName
+     * @throws \SyException\Live\TencentException
+     */
+    public function setWatermarkName(string $watermarkName)
+    {
+        $length = strlen($watermarkName);
+        if (($length > 0) && ($length <= 16)) {
+            $this->reqData['WatermarkName'] = $watermarkName;
+        } else {
+            throw new TencentException('水印名称不合法', ErrorCode::LIVE_TENCENT_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @param int $xPosition
+     * @throws \SyException\Live\TencentException
+     */
+    public function setXPosition(int $xPosition)
+    {
+        if (($xPosition >= 0) && ($xPosition <= 100)) {
+            $this->reqData['XPosition'] = $xPosition;
+        } else {
+            throw new TencentException('X轴偏移不合法', ErrorCode::LIVE_TENCENT_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @param int $yPosition
+     * @throws \SyException\Live\TencentException
+     */
+    public function setYPosition(int $yPosition)
+    {
+        if (($yPosition >= 0) && ($yPosition <= 100)) {
+            $this->reqData['YPosition'] = $yPosition;
+        } else {
+            throw new TencentException('y轴偏移不合法', ErrorCode::LIVE_TENCENT_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @param int $width
+     * @throws \SyException\Live\TencentException
+     */
+    public function setWidth(int $width)
+    {
+        if (($width >= 0) && ($width <= 100)) {
+            $this->reqData['Width'] = $width;
+        } else {
+            throw new TencentException('水印宽度不合法', ErrorCode::LIVE_TENCENT_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @param int $height
+     * @throws \SyException\Live\TencentException
+     */
+    public function setHeight(int $height)
+    {
+        if (($height >= 0) && ($height <= 100)) {
+            $this->reqData['Height'] = $height;
+        } else {
+            throw new TencentException('水印高度不合法', ErrorCode::LIVE_TENCENT_PARAM_ERROR);
+        }
+    }
+
+    public function getDetail() : array
+    {
+        if (!isset($this->reqData['PictureUrl'])) {
+            throw new TencentException('水印图片URL不能为空', ErrorCode::LIVE_TENCENT_PARAM_ERROR);
+        }
+        if (!isset($this->reqData['WatermarkName'])) {
+            throw new TencentException('水印名称不能为空', ErrorCode::LIVE_TENCENT_PARAM_ERROR);
+        }
+
+        $config = LiveConfigSingleton::getInstance()->getTencentConfig();
+        $this->addReqSign($config->getSecretId(), $config->getSecretKey());
+
+        return $this->getContent();
+    }
+}
