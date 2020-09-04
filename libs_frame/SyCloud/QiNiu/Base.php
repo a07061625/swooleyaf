@@ -14,6 +14,12 @@ namespace SyCloud\QiNiu;
  */
 abstract class Base extends \SyCloud\Base
 {
+    /**
+     * 请求头
+     * @var array
+     */
+    protected $reqHeader = [];
+
     public function __construct()
     {
         parent::__construct();
