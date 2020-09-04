@@ -1,6 +1,5 @@
 # 介绍
 - AliOpen: 阿里开放平台接口
-- AliOss: 阿里OSS接口
 - AliPay: 支付宝接口
 - CodeSniffer: 代码规范检查
 - DB: 数据库类库

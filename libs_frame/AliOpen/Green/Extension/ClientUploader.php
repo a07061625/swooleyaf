@@ -2,8 +2,8 @@
 namespace AliOpen\Green\Extension;
 
 use AliOpen\Green\CredentialsUploadRequest;
-use AliOss\Core\OssException;
-use AliOss\OssClient;
+use SyObjectStorage\Oss\Core\OssException;
+use SyObjectStorage\Oss\OssClient;
 
 class ClientUploader
 {
@@ -72,8 +72,8 @@ class ClientUploader
      * 上传并获取上传后的图片链接
      * @param $filePath
      * @return string
-     * @throws \AliOss\Core\OssException
-     * @throws \RuntimeException
+     * @throws \SyObjectStorage\Oss\Core\OssException
+     * @throws \SyObjectStorage\Oss\Http\RequestCore_Exception
      */
     public function uploadFile($filePath)
     {
@@ -82,8 +82,7 @@ class ClientUploader
             throw new \RuntimeException("can not get upload credentials");
         }
         try {
-            $ossClient = new OssClient($uploadCredentials->getAccessKeyId(), $uploadCredentials->getAccessKeySecret(),
-                $uploadCredentials->getOssEndpoint(), false, $uploadCredentials->getSecurityToken());
+            $ossClient = new OssClient($uploadCredentials->getAccessKeyId(), $uploadCredentials->getAccessKeySecret(), $uploadCredentials->getOssEndpoint(), false, $uploadCredentials->getSecurityToken());
             print_r($uploadCredentials->getUploadFolder() . $this->fileType);
             $object = $uploadCredentials->getUploadFolder() . '/' . $this->fileType . '/' . uniqid();
             print_r($object);
@@ -106,7 +105,7 @@ class ClientUploader
 
     private function getMillisecond()
     {
-        list($microsecond, $time) = explode(' ', microtime()); //' '中间是一个空格
+        [$microsecond, $time] = explode(' ', microtime()); //' '中间是一个空格
 
         return (float)sprintf('%.0f', (floatval($microsecond) + floatval($time)) * 1000);
     }
@@ -130,8 +129,7 @@ class ClientUploader
             if (200 == $response->code) {
                 $data = $response->data;
 
-                return new UploadCredentials($data->accessKeyId, $data->accessKeySecret, $data->securityToken, $data->expiredTime,
-                    $data->ossEndpoint, $data->uploadBucket, $data->uploadFolder);
+                return new UploadCredentials($data->accessKeyId, $data->accessKeySecret, $data->securityToken, $data->expiredTime, $data->ossEndpoint, $data->uploadBucket, $data->uploadFolder);
             }
             throw new \RuntimeException("get upload credential from server fail. requestId:" . $response->requestId . ", code:"
                                         . $response->code);
