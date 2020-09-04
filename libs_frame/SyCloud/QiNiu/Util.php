@@ -8,10 +8,10 @@
 namespace SyCloud\QiNiu;
 
 use DesignPatterns\Singletons\ObjectStorageConfigSingleton;
-use SyLog\Log;
 use SyConstant\ErrorCode;
-use SyTrait\SimpleTrait;
+use SyLog\Log;
 use SyTool\Tool;
+use SyTrait\SimpleTrait;
 
 abstract class Util
 {
@@ -19,20 +19,26 @@ abstract class Util
 
     /**
      * 安全的Base64编码
+     *
      * @param string $data 待编码数据
+     *
      * @return string
      */
     public static function safeBase64(string $data) : string
     {
         $base64Str = base64_encode($data);
+
         return str_replace(['+', '/'], ['-', '_'], $base64Str);
     }
 
     /**
      * 生成管理凭证
-     * @param string $uri 请求URI
+     *
+     * @param string $uri  请求URI
      * @param string $body 请求体
+     *
      * @return string
+     *
      * @throws \SyException\Cloud\QiNiuException
      */
     public static function createAccessToken(string $uri, string $body = '') : string
@@ -40,13 +46,16 @@ abstract class Util
         $config = ObjectStorageConfigSingleton::getInstance()->getKodoConfig();
         $data = $uri . "\n" . $body;
         $signStr = hash_hmac('sha1', $data, $config->getSecretKey());
+
         return $config->getAccessKey() . ':' . self::safeBase64($signStr);
     }
 
     /**
      * 编码URI
+     *
      * @param string $bucketName 空间名称
-     * @param string $fileKey 文件key
+     * @param string $fileKey    文件key
+     *
      * @return string
      */
     public static function encodeUri(string $bucketName, string $fileKey)
@@ -56,7 +65,9 @@ abstract class Util
 
     /**
      * @param array $configs
+     *
      * @return bool|mixed
+     *
      * @throws \SyException\Common\CheckException
      */
     public static function sendCurl(array $configs)
@@ -69,10 +80,10 @@ abstract class Util
         $sendRes = Tool::sendCurlReq($configs);
         if ($sendRes['res_no'] == 0) {
             return $sendRes['res_content'];
-        } else {
-            $logStr = 'curl发送七牛云请求出错,错误码:' . $sendRes['res_no'] . ', 错误信息:' . $sendRes['res_msg'];
-            Log::error($logStr, ErrorCode::COMMON_SERVER_ERROR);
-            return false;
         }
+        $logStr = 'curl发送七牛云请求出错,错误码:' . $sendRes['res_no'] . ', 错误信息:' . $sendRes['res_msg'];
+        Log::error($logStr, ErrorCode::COMMON_SERVER_ERROR);
+
+        return false;
     }
 }
