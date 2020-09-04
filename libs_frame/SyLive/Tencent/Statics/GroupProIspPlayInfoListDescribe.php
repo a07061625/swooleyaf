@@ -14,37 +14,44 @@ use SyLive\BaseTencent;
 
 /**
  * 查询按省份和运营商分组的播放数据
+ *
  * @package SyLive\Tencent\Statics
  */
 class GroupProIspPlayInfoListDescribe extends BaseTencent
 {
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 播放域名列表
+     *
      * @var array
      */
     private $PlayDomains = [];
     /**
      * 省份列表
+     *
      * @var array
      */
     private $ProvinceNames = [];
     /**
      * 运营商列表
+     *
      * @var array
      */
     private $IspNames = [];
     /**
      * 地域
+     *
      * @var string
      */
     private $MainlandOrOversea = '';
@@ -62,6 +69,7 @@ class GroupProIspPlayInfoListDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)
@@ -77,6 +85,7 @@ class GroupProIspPlayInfoListDescribe extends BaseTencent
 
     /**
      * @param array $playDomains
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPlayDomains(array $playDomains)
@@ -95,6 +104,7 @@ class GroupProIspPlayInfoListDescribe extends BaseTencent
 
     /**
      * @param array $provinceNames
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setProvinceNames(array $provinceNames)
@@ -113,6 +123,7 @@ class GroupProIspPlayInfoListDescribe extends BaseTencent
 
     /**
      * @param array $ispNames
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setIspNames(array $ispNames)
@@ -131,6 +142,7 @@ class GroupProIspPlayInfoListDescribe extends BaseTencent
 
     /**
      * @param string $mainlandOrOversea
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setMainlandOrOversea(string $mainlandOrOversea)

@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 查询播放鉴权key
+ *
  * @package SyLive\Tencent\Auth
  */
 class PlayKeyDescribe extends BaseTencent
 {
     /**
      * 播放域名
+     *
      * @var string
      */
     private $DomainName = '';
@@ -36,6 +38,7 @@ class PlayKeyDescribe extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)

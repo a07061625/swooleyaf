@@ -14,52 +14,62 @@ use SyLive\BaseTencent;
 
 /**
  * 修改录制模板配置
+ *
  * @package SyLive\Tencent\Record
  */
 class TemplateModify extends BaseTencent
 {
     /**
      * 模板ID
+     *
      * @var int
      */
     private $TemplateId = 0;
     /**
      * 模板名称
+     *
      * @var string
      */
     private $TemplateName = '';
     /**
      * 描述信息
+     *
      * @var string
      */
     private $Description = '';
     /**
      * FLV录制参数
+     *
      * @var array
      */
     private $FlvParam = [];
     /**
      * HLS录制参数
+     *
      * @var array
      */
     private $HlsParam = [];
     /**
      * MP4录制参数
+     *
      * @var array
      */
     private $Mp4Param = [];
     /**
      * AAC录制参数
+     *
      * @var array
      */
     private $AacParam = [];
     /**
      * HLS录制定制参数
+     *
      * @var array
      */
     private $HlsSpecialParam = [];
     /**
      * MP3录制参数
+     *
      * @var array
      */
     private $Mp3Param = [];
@@ -76,6 +86,7 @@ class TemplateModify extends BaseTencent
 
     /**
      * @param int $templateId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTemplateId(int $templateId)
@@ -89,6 +100,7 @@ class TemplateModify extends BaseTencent
 
     /**
      * @param string $templateName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTemplateName(string $templateName)
@@ -110,6 +122,7 @@ class TemplateModify extends BaseTencent
 
     /**
      * @param array $flvParam
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setFlvParam(array $flvParam)
@@ -122,6 +135,7 @@ class TemplateModify extends BaseTencent
 
     /**
      * @param array $hlsParam
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setHlsParam(array $hlsParam)
@@ -134,6 +148,7 @@ class TemplateModify extends BaseTencent
 
     /**
      * @param array $mp4Param
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setMp4Param(array $mp4Param)
@@ -146,6 +161,7 @@ class TemplateModify extends BaseTencent
 
     /**
      * @param array $aacParam
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAacParam(array $aacParam)
@@ -158,6 +174,7 @@ class TemplateModify extends BaseTencent
 
     /**
      * @param array $hlsSpecialParam
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setHlsSpecialParam(array $hlsSpecialParam)
@@ -170,6 +187,7 @@ class TemplateModify extends BaseTencent
 
     /**
      * @param array $mp3Param
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setMp3Param(array $mp3Param)

@@ -14,22 +14,26 @@ use SyLive\BaseTencent;
 
 /**
  * 修改域名和证书绑定信息
+ *
  * @package SyLive\Tencent\Cert
  */
 class DomainCertModify extends BaseTencent
 {
     /**
      * 播放域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 证书ID
+     *
      * @var int
      */
     private $CertId = 0;
     /**
      * 状态
+     *
      * @var int
      */
     private $Status = 0;
@@ -46,6 +50,7 @@ class DomainCertModify extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -59,6 +64,7 @@ class DomainCertModify extends BaseTencent
 
     /**
      * @param int $certId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setCertId(int $certId)
@@ -72,6 +78,7 @@ class DomainCertModify extends BaseTencent
 
     /**
      * @param int $status
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStatus(int $status)

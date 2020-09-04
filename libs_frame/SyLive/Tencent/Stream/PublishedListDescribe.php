@@ -14,37 +14,44 @@ use SyLive\BaseTencent;
 
 /**
  * 查询历史流列表
+ *
  * @package SyLive\Tencent\Stream
  */
 class PublishedListDescribe extends BaseTencent
 {
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
     /**
      * 页数,默认1
+     *
      * @var int
      */
     private $PageNum = 0;
     /**
      * 每页个数,默认20
+     *
      * @var int
      */
     private $PageSize = 0;
     /**
      * 流名称
+     *
      * @var string
      */
     private $StreamName = '';
@@ -65,6 +72,7 @@ class PublishedListDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)
@@ -82,6 +90,7 @@ class PublishedListDescribe extends BaseTencent
 
     /**
      * @param string $appName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAppName(string $appName)
@@ -95,6 +104,7 @@ class PublishedListDescribe extends BaseTencent
 
     /**
      * @param int $pageNum
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageNum(int $pageNum)
@@ -108,6 +118,7 @@ class PublishedListDescribe extends BaseTencent
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageSize(int $pageSize)
@@ -121,6 +132,7 @@ class PublishedListDescribe extends BaseTencent
 
     /**
      * @param string $streamName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamName(string $streamName)

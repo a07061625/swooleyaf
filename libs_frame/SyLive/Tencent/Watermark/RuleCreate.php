@@ -14,27 +14,32 @@ use SyLive\BaseTencent;
 
 /**
  * 创建水印规则
+ *
  * @package SyLive\Tencent\Watermark
  */
 class RuleCreate extends BaseTencent
 {
     /**
      * 推流域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
     /**
      * 流名称
+     *
      * @var string
      */
     private $StreamName = '';
     /**
      * 水印ID
+     *
      * @var int
      */
     private $TemplateId = 0;
@@ -52,6 +57,7 @@ class RuleCreate extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -65,6 +71,7 @@ class RuleCreate extends BaseTencent
 
     /**
      * @param string $appName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAppName(string $appName)
@@ -78,6 +85,7 @@ class RuleCreate extends BaseTencent
 
     /**
      * @param string $streamName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamName(string $streamName)
@@ -91,6 +99,7 @@ class RuleCreate extends BaseTencent
 
     /**
      * @param int $templateId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTemplateId(int $templateId)

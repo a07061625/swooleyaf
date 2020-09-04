@@ -12,6 +12,7 @@ use SyLive\BaseTencent;
 
 /**
  * 查询水印列表
+ *
  * @package SyLive\Tencent\Watermark
  */
 class WatermarksDescribe extends BaseTencent

@@ -14,32 +14,38 @@ use SyLive\BaseTencent;
 
 /**
  * 修改推流鉴权key
+ *
  * @package SyLive\Tencent\Auth
  */
 class PushKeyModify extends BaseTencent
 {
     /**
      * 推流域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 启用标识
+     *
      * @var int
      */
     private $Enable = 0;
     /**
      * 主鉴权key
+     *
      * @var string
      */
     private $MasterAuthKey = '';
     /**
      * 备鉴权key
+     *
      * @var string
      */
     private $BackupAuthKey = '';
     /**
      * 有效时间,单位为秒
+     *
      * @var int
      */
     private $AuthDelta = 0;
@@ -56,6 +62,7 @@ class PushKeyModify extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -69,6 +76,7 @@ class PushKeyModify extends BaseTencent
 
     /**
      * @param int $enable
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setEnable(int $enable)
@@ -82,6 +90,7 @@ class PushKeyModify extends BaseTencent
 
     /**
      * @param string $masterAuthKey
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setMasterAuthKey(string $masterAuthKey)
@@ -95,6 +104,7 @@ class PushKeyModify extends BaseTencent
 
     /**
      * @param string $backupAuthKey
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setBackupAuthKey(string $backupAuthKey)
@@ -108,6 +118,7 @@ class PushKeyModify extends BaseTencent
 
     /**
      * @param int $authDelta
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAuthDelta(int $authDelta)

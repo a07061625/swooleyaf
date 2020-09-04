@@ -14,47 +14,56 @@ use SyLive\BaseTencent;
 
 /**
  * 查询某段时间top n客户端ip汇总信息
+ *
  * @package SyLive\Tencent\Statics
  */
 class TopClientIpSumInfoListDescribe extends BaseTencent
 {
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 播放域名列表
+     *
      * @var array
      */
     private $PlayDomains = [];
     /**
      * 页数,默认1
+     *
      * @var int
      */
     private $PageNum = 0;
     /**
      * 每页个数,默认20
+     *
      * @var int
      */
     private $PageSize = 0;
     /**
      * 排序指标
+     *
      * @var string
      */
     private $OrderParam = '';
     /**
      * 地域
+     *
      * @var string
      */
     private $MainlandOrOversea = '';
     /**
      * 输出语言
+     *
      * @var string
      */
     private $OutLanguage = '';
@@ -77,6 +86,7 @@ class TopClientIpSumInfoListDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)
@@ -92,6 +102,7 @@ class TopClientIpSumInfoListDescribe extends BaseTencent
 
     /**
      * @param array $playDomains
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPlayDomains(array $playDomains)
@@ -110,6 +121,7 @@ class TopClientIpSumInfoListDescribe extends BaseTencent
 
     /**
      * @param int $pageNum
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageNum(int $pageNum)
@@ -123,6 +135,7 @@ class TopClientIpSumInfoListDescribe extends BaseTencent
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageSize(int $pageSize)
@@ -136,6 +149,7 @@ class TopClientIpSumInfoListDescribe extends BaseTencent
 
     /**
      * @param string $orderParam
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setOrderParam(string $orderParam)
@@ -149,6 +163,7 @@ class TopClientIpSumInfoListDescribe extends BaseTencent
 
     /**
      * @param string $mainlandOrOversea
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setMainlandOrOversea(string $mainlandOrOversea)
@@ -162,6 +177,7 @@ class TopClientIpSumInfoListDescribe extends BaseTencent
 
     /**
      * @param string $outLanguage
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setOutLanguage(string $outLanguage)

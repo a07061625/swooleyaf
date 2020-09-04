@@ -14,12 +14,14 @@ use SyLive\BaseTencent;
 
 /**
  * 删除录制模板
+ *
  * @package SyLive\Tencent\Record
  */
 class TemplateDelete extends BaseTencent
 {
     /**
      * 模板ID
+     *
      * @var int
      */
     private $TemplateId = 0;
@@ -36,6 +38,7 @@ class TemplateDelete extends BaseTencent
 
     /**
      * @param int $templateId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTemplateId(int $templateId)

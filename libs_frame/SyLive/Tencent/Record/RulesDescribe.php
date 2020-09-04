@@ -12,6 +12,7 @@ use SyLive\BaseTencent;
 
 /**
  * 获取录制规则列表
+ *
  * @package SyLive\Tencent\Record
  */
 class RulesDescribe extends BaseTencent

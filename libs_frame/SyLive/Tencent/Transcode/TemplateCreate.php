@@ -14,107 +14,128 @@ use SyLive\BaseTencent;
 
 /**
  * 创建转码模板
+ *
  * @package SyLive\Tencent\Transcode
  */
 class TemplateCreate extends BaseTencent
 {
     /**
      * 模板名称
+     *
      * @var string
      */
     private $TemplateName = '';
     /**
      * 视频码率
+     *
      * @var int
      */
     private $VideoBitrate = 0;
     /**
      * 音频编码
+     *
      * @var string
      */
     private $Acodec = '';
     /**
      * 音频码率
+     *
      * @var int
      */
     private $AudioBitrate = 0;
     /**
      * 视频编码
+     *
      * @var string
      */
     private $Vcodec = '';
     /**
      * 模板描述
+     *
      * @var string
      */
     private $Description = '';
     /**
      * 宽度
+     *
      * @var int
      */
     private $Width = 0;
     /**
      * 高度
+     *
      * @var int
      */
     private $Height = 0;
     /**
      * 保留视频标识
+     *
      * @var int
      */
     private $NeedVideo = 0;
     /**
      * 保留音频标识
+     *
      * @var int
      */
     private $NeedAudio = 0;
     /**
      * 帧率
+     *
      * @var int
      */
     private $Fps = 0;
     /**
      * 关键帧间隔,单位为秒
+     *
      * @var int
      */
     private $Gop = 0;
     /**
      * 旋转角度
+     *
      * @var int
      */
     private $Rotate = 0;
     /**
      * 编码质量
+     *
      * @var string
      */
     private $Profile = '';
     /**
      * 不超过原始码率标识
+     *
      * @var int
      */
     private $BitrateToOrig = 0;
     /**
      * 不超过原始高度标识
+     *
      * @var int
      */
     private $HeightToOrig = 0;
     /**
      * 不超过原始帧率标识
+     *
      * @var int
      */
     private $FpsToOrig = 0;
     /**
      * 极速高清模板标识
+     *
      * @var int
      */
     private $AiTransCode = 0;
     /**
      * 极速高清视频码率压缩比
+     *
      * @var float
      */
     private $AdaptBitratePercent = 0.0;
     /**
      * 短边作为高度标识
+     *
      * @var int
      */
     private $ShortEdgeAsHeight = 0;
@@ -145,6 +166,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $templateName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTemplateName(string $templateName)
@@ -158,6 +180,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $videoBitrate
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setVideoBitrate(int $videoBitrate)
@@ -171,6 +194,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $audioBitrate
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAudioBitrate(int $audioBitrate)
@@ -184,6 +208,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $vcodec
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setVcodec(string $vcodec)
@@ -205,6 +230,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $width
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setWidth(int $width)
@@ -218,6 +244,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $height
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setHeight(int $height)
@@ -231,6 +258,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $needVideo
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setNeedVideo(int $needVideo)
@@ -244,6 +272,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $needAudio
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setNeedAudio(int $needAudio)
@@ -257,6 +286,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $fps
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setFps(int $fps)
@@ -270,6 +300,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $gop
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setGop(int $gop)
@@ -283,6 +314,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $rotate
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setRotate(int $rotate)
@@ -296,6 +328,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $profile
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setProfile(string $profile)
@@ -309,6 +342,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $bitrateToOrig
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setBitrateToOrig(int $bitrateToOrig)
@@ -322,6 +356,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $heightToOrig
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setHeightToOrig(int $heightToOrig)
@@ -335,6 +370,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $fpsToOrig
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setFpsToOrig(int $fpsToOrig)
@@ -348,6 +384,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $aiTransCode
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAiTransCode(int $aiTransCode)
@@ -361,6 +398,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param float $adaptBitratePercent
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAdaptBitratePercent(float $adaptBitratePercent)
@@ -374,6 +412,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param int $shortEdgeAsHeight
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setShortEdgeAsHeight(int $shortEdgeAsHeight)

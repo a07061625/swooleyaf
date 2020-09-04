@@ -14,42 +14,50 @@ use SyLive\BaseTencent;
 
 /**
  * 查询直播转码统计信息
+ *
  * @package SyLive\Tencent\Statics
  */
 class LiveTranscodeDetailInfoDescribe extends BaseTencent
 {
     /**
      * 推流域名
+     *
      * @var string
      */
     private $PushDomain = '';
     /**
      * 流名称
+     *
      * @var string
      */
     private $StreamName = '';
     /**
      * 查询时间
+     *
      * @var int
      */
     private $DayTime = 0;
     /**
      * 页数,默认1
+     *
      * @var int
      */
     private $PageNum = 0;
     /**
      * 每页个数,默认20
+     *
      * @var int
      */
     private $PageSize = 0;
     /**
      * 起始时间
+     *
      * @var int
      */
     private $StartDayTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndDayTime = 0;
@@ -88,6 +96,7 @@ class LiveTranscodeDetailInfoDescribe extends BaseTencent
 
     /**
      * @param int $dayTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDayTime(int $dayTime)
@@ -101,6 +110,7 @@ class LiveTranscodeDetailInfoDescribe extends BaseTencent
 
     /**
      * @param int $pageNum
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageNum(int $pageNum)
@@ -114,6 +124,7 @@ class LiveTranscodeDetailInfoDescribe extends BaseTencent
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageSize(int $pageSize)
@@ -128,6 +139,7 @@ class LiveTranscodeDetailInfoDescribe extends BaseTencent
     /**
      * @param int $startDayTime
      * @param int $endDayTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setRangeDayTime(int $startDayTime, int $endDayTime)

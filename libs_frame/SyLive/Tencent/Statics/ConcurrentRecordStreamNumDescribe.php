@@ -14,32 +14,38 @@ use SyLive\BaseTencent;
 
 /**
  * 查询并发录制路数
+ *
  * @package SyLive\Tencent\Statics
  */
 class ConcurrentRecordStreamNumDescribe extends BaseTencent
 {
     /**
      * 直播类型
+     *
      * @var string
      */
     private $LiveType = '';
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 地域
+     *
      * @var string
      */
     private $MainlandOrOversea = '';
     /**
      * 推流域名列表
+     *
      * @var array
      */
     private $PushDomains = [];
@@ -56,6 +62,7 @@ class ConcurrentRecordStreamNumDescribe extends BaseTencent
 
     /**
      * @param string $liveType
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setLiveType(string $liveType)
@@ -70,6 +77,7 @@ class ConcurrentRecordStreamNumDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)
@@ -85,6 +93,7 @@ class ConcurrentRecordStreamNumDescribe extends BaseTencent
 
     /**
      * @param string $mainlandOrOversea
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setMainlandOrOversea(string $mainlandOrOversea)
@@ -98,6 +107,7 @@ class ConcurrentRecordStreamNumDescribe extends BaseTencent
 
     /**
      * @param array $pushDomains
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPushDomains(array $pushDomains)

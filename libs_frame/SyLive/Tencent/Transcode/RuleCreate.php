@@ -14,27 +14,32 @@ use SyLive\BaseTencent;
 
 /**
  * 创建转码规则
+ *
  * @package SyLive\Tencent\Transcode
  */
 class RuleCreate extends BaseTencent
 {
     /**
      * 播放域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
     /**
      * 流名称
+     *
      * @var string
      */
     private $StreamName = '';
     /**
      * 模板ID
+     *
      * @var int
      */
     private $TemplateId = 0;
@@ -53,6 +58,7 @@ class RuleCreate extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -82,6 +88,7 @@ class RuleCreate extends BaseTencent
 
     /**
      * @param int $templateId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTemplateId(int $templateId)

@@ -14,32 +14,38 @@ use SyLive\BaseTencent;
 
 /**
  * 添加域名
+ *
  * @package SyLive\Tencent\Domain
  */
 class DomainAdd extends BaseTencent
 {
     /**
      * 域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 域名类型
+     *
      * @var int
      */
     private $DomainType = 0;
     /**
      * 拉流域名类型
+     *
      * @var int
      */
     private $PlayType = 0;
     /**
      * 慢直播标识
+     *
      * @var int
      */
     private $IsDelayLive = 0;
     /**
      * 小程序直播标识
+     *
      * @var int
      */
     private $IsMiniProgramLive = 0;
@@ -59,6 +65,7 @@ class DomainAdd extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -72,6 +79,7 @@ class DomainAdd extends BaseTencent
 
     /**
      * @param int $domainType
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainType(int $domainType)
@@ -85,6 +93,7 @@ class DomainAdd extends BaseTencent
 
     /**
      * @param int $playType
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPlayType(int $playType)
@@ -98,6 +107,7 @@ class DomainAdd extends BaseTencent
 
     /**
      * @param int $isDelayLive
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setIsDelayLive(int $isDelayLive)
@@ -111,6 +121,7 @@ class DomainAdd extends BaseTencent
 
     /**
      * @param int $isMiniProgramLive
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setIsMiniProgramLive(int $isMiniProgramLive)

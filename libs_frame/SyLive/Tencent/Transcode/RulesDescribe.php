@@ -12,6 +12,7 @@ use SyLive\BaseTencent;
 
 /**
  * 获取转码规则列表
+ *
  * @package SyLive\Tencent\Transcode
  */
 class RulesDescribe extends BaseTencent

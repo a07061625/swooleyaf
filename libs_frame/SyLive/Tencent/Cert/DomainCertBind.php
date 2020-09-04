@@ -14,22 +14,26 @@ use SyLive\BaseTencent;
 
 /**
  * 域名绑定证书
+ *
  * @package SyLive\Tencent\Cert
  */
 class DomainCertBind extends BaseTencent
 {
     /**
      * 证书ID
+     *
      * @var int
      */
     private $CertId = 0;
     /**
      * 播放域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * HTTPS开启状态
+     *
      * @var int
      */
     private $Status = 0;
@@ -47,6 +51,7 @@ class DomainCertBind extends BaseTencent
 
     /**
      * @param int $certId
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setCertId(int $certId)
@@ -60,6 +65,7 @@ class DomainCertBind extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -73,6 +79,7 @@ class DomainCertBind extends BaseTencent
 
     /**
      * @param int $status
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStatus(int $status)

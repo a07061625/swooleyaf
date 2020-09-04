@@ -14,32 +14,38 @@ use SyLive\BaseTencent;
 
 /**
  * 修改播放鉴权key
+ *
  * @package SyLive\Tencent\Auth
  */
 class PlayKeyModify extends BaseTencent
 {
     /**
      * 播放域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 启用标识
+     *
      * @var int
      */
     private $Enable = 0;
     /**
      * 鉴权key
+     *
      * @var string
      */
     private $AuthKey = '';
     /**
      * 鉴权备用key
+     *
      * @var string
      */
     private $AuthBackKey = '';
     /**
      * 有效时间,单位为秒
+     *
      * @var int
      */
     private $AuthDelta = 0;
@@ -56,6 +62,7 @@ class PlayKeyModify extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -69,6 +76,7 @@ class PlayKeyModify extends BaseTencent
 
     /**
      * @param int $enable
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setEnable(int $enable)
@@ -82,6 +90,7 @@ class PlayKeyModify extends BaseTencent
 
     /**
      * @param string $authKey
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAuthKey(string $authKey)
@@ -95,6 +104,7 @@ class PlayKeyModify extends BaseTencent
 
     /**
      * @param string $authBackKey
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAuthBackKey(string $authBackKey)
@@ -108,6 +118,7 @@ class PlayKeyModify extends BaseTencent
 
     /**
      * @param int $authDelta
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAuthDelta(int $authDelta)

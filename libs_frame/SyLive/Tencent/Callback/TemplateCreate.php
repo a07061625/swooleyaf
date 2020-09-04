@@ -14,52 +14,62 @@ use SyLive\BaseTencent;
 
 /**
  * 创建回调模板
+ *
  * @package SyLive\Tencent\Callback
  */
 class TemplateCreate extends BaseTencent
 {
     /**
      * 模板名称
+     *
      * @var string
      */
     private $TemplateName = '';
     /**
      * 描述信息
+     *
      * @var string
      */
     private $Description = '';
     /**
      * 开播回调URL
+     *
      * @var string
      */
     private $StreamBeginNotifyUrl = '';
     /**
      * 断流回调URL
+     *
      * @var string
      */
     private $StreamEndNotifyUrl = '';
     /**
      * 录制回调URL
+     *
      * @var string
      */
     private $RecordNotifyUrl = '';
     /**
      * 截图回调URL
+     *
      * @var string
      */
     private $SnapshotNotifyUrl = '';
     /**
      * 鉴黄回调URL
+     *
      * @var string
      */
     private $PornCensorshipNotifyUrl = '';
     /**
      * 回调Key
+     *
      * @var string
      */
     private $CallbackKey = '';
     /**
      * 混流回调URL
+     *
      * @var string
      */
     private $StreamMixNotifyUrl = '';
@@ -76,6 +86,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $templateName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTemplateName(string $templateName)
@@ -98,6 +109,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $streamBeginNotifyUrl
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamBeginNotifyUrl(string $streamBeginNotifyUrl)
@@ -111,6 +123,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $streamEndNotifyUrl
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamEndNotifyUrl(string $streamEndNotifyUrl)
@@ -124,6 +137,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $recordNotifyUrl
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setRecordNotifyUrl(string $recordNotifyUrl)
@@ -137,6 +151,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $snapshotNotifyUrl
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setSnapshotNotifyUrl(string $snapshotNotifyUrl)
@@ -150,6 +165,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $pornCensorshipNotifyUrl
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPornCensorshipNotifyUrl(string $pornCensorshipNotifyUrl)
@@ -163,6 +179,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $callbackKey
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setCallbackKey(string $callbackKey)
@@ -176,6 +193,7 @@ class TemplateCreate extends BaseTencent
 
     /**
      * @param string $streamMixNotifyUrl
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamMixNotifyUrl(string $streamMixNotifyUrl)

@@ -14,22 +14,26 @@ use SyLive\BaseTencent;
 
 /**
  * 删除水印规则
+ *
  * @package SyLive\Tencent\Watermark
  */
 class RuleDelete extends BaseTencent
 {
     /**
      * 推流域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
     /**
      * 流名称
+     *
      * @var string
      */
     private $StreamName = '';
@@ -47,6 +51,7 @@ class RuleDelete extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -60,6 +65,7 @@ class RuleDelete extends BaseTencent
 
     /**
      * @param string $appName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAppName(string $appName)
@@ -73,6 +79,7 @@ class RuleDelete extends BaseTencent
 
     /**
      * @param string $streamName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamName(string $streamName)

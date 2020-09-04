@@ -14,32 +14,38 @@ use SyLive\BaseTencent;
 
 /**
  * 查询某条流上行推流质量数据
+ *
  * @package SyLive\Tencent\Statics
  */
 class StreamPushInfoListDescribe extends BaseTencent
 {
     /**
      * 流名称
+     *
      * @var string
      */
     private $StreamName = '';
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 推流域名
+     *
      * @var string
      */
     private $PushDomain = '';
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
@@ -57,6 +63,7 @@ class StreamPushInfoListDescribe extends BaseTencent
 
     /**
      * @param string $streamName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamName(string $streamName)
@@ -71,6 +78,7 @@ class StreamPushInfoListDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)

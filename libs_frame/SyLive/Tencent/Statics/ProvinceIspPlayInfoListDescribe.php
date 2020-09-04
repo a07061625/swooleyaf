@@ -14,47 +14,56 @@ use SyLive\BaseTencent;
 
 /**
  * 按省份运营商查询播放信息
+ *
  * @package SyLive\Tencent\Statics
  */
 class ProvinceIspPlayInfoListDescribe extends BaseTencent
 {
     /**
      * 开始时间
+     *
      * @var int
      */
     private $StartTime = 0;
     /**
      * 结束时间
+     *
      * @var int
      */
     private $EndTime = 0;
     /**
      * 查询粒度
+     *
      * @var int
      */
     private $Granularity = 0;
     /**
      * 统计指标类型
+     *
      * @var string
      */
     private $StatType = '';
     /**
      * 播放域名列表
+     *
      * @var array
      */
     private $PlayDomains = [];
     /**
      * 省份列表
+     *
      * @var array
      */
     private $ProvinceNames = [];
     /**
      * 运营商列表
+     *
      * @var array
      */
     private $IspNames = [];
     /**
      * 地域
+     *
      * @var string
      */
     private $MainlandOrOversea = '';
@@ -74,6 +83,7 @@ class ProvinceIspPlayInfoListDescribe extends BaseTencent
     /**
      * @param int $startTime
      * @param int $endTime
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setTime(int $startTime, int $endTime)
@@ -89,6 +99,7 @@ class ProvinceIspPlayInfoListDescribe extends BaseTencent
 
     /**
      * @param string $statType
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStatType(string $statType)
@@ -102,6 +113,7 @@ class ProvinceIspPlayInfoListDescribe extends BaseTencent
 
     /**
      * @param array $playDomains
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPlayDomains(array $playDomains)
@@ -120,6 +132,7 @@ class ProvinceIspPlayInfoListDescribe extends BaseTencent
 
     /**
      * @param array $provinceNames
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setProvinceNames(array $provinceNames)
@@ -138,6 +151,7 @@ class ProvinceIspPlayInfoListDescribe extends BaseTencent
 
     /**
      * @param array $ispNames
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setIspNames(array $ispNames)
@@ -156,6 +170,7 @@ class ProvinceIspPlayInfoListDescribe extends BaseTencent
 
     /**
      * @param string $mainlandOrOversea
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setMainlandOrOversea(string $mainlandOrOversea)

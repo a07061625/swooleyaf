@@ -14,32 +14,38 @@ use SyLive\BaseTencent;
 
 /**
  * 查询直播中的流
+ *
  * @package SyLive\Tencent\Stream
  */
 class OnlineListDescribe extends BaseTencent
 {
     /**
      * 推流域名
+     *
      * @var string
      */
     private $DomainName = '';
     /**
      * 推流路径
+     *
      * @var string
      */
     private $AppName = '';
     /**
      * 页数,默认1
+     *
      * @var int
      */
     private $PageNum = 0;
     /**
      * 每页个数,默认20
+     *
      * @var int
      */
     private $PageSize = 0;
     /**
      * 流名称
+     *
      * @var string
      */
     private $StreamName = '';
@@ -59,6 +65,7 @@ class OnlineListDescribe extends BaseTencent
 
     /**
      * @param string $domainName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setDomainName(string $domainName)
@@ -72,6 +79,7 @@ class OnlineListDescribe extends BaseTencent
 
     /**
      * @param string $appName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setAppName(string $appName)
@@ -85,6 +93,7 @@ class OnlineListDescribe extends BaseTencent
 
     /**
      * @param int $pageNum
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageNum(int $pageNum)
@@ -98,6 +107,7 @@ class OnlineListDescribe extends BaseTencent
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setPageSize(int $pageSize)
@@ -111,6 +121,7 @@ class OnlineListDescribe extends BaseTencent
 
     /**
      * @param string $streamName
+     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamName(string $streamName)
