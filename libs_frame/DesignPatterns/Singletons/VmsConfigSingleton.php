@@ -18,14 +18,16 @@ class VmsConfigSingleton
 
     /**
      * 阿里云配置
+     *
      * @var \SyVms\ConfigAliYun
      */
-    private $aliYunConfig = null;
+    private $aliYunConfig;
     /**
      * 腾讯云配置
+     *
      * @var \SyVms\ConfigQCloud
      */
-    private $qCloudConfig = null;
+    private $qCloudConfig;
 
     private function __construct()
     {
@@ -45,6 +47,7 @@ class VmsConfigSingleton
 
     /**
      * @return \SyVms\ConfigAliYun
+     *
      * @throws \SyException\Cloud\AliException
      */
     public function getAliYunConfig()
@@ -63,6 +66,7 @@ class VmsConfigSingleton
 
     /**
      * @return \SyVms\ConfigQCloud
+     *
      * @throws \SyException\Vms\QCloudException
      */
     public function getQCloudConfig()
