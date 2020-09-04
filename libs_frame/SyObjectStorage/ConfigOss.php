@@ -13,6 +13,7 @@ use SyException\ObjectStorage\OssException;
 
 /**
  * Class ConfigOss
+ *
  * @package SyObjectStorage
  */
 class ConfigOss
