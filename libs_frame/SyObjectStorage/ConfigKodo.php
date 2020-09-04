@@ -11,6 +11,7 @@ use SyCloud\QiNiu\ConfigTrait;
 
 /**
  * Class ConfigKodo
+ *
  * @package SyObjectStorage
  */
 class ConfigKodo

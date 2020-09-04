@@ -13,6 +13,7 @@ use SyException\ObjectStorage\CosException;
 
 /**
  * Class ConfigCos
+ *
  * @package SyObjectStorage
  */
 class ConfigCos
@@ -21,21 +22,25 @@ class ConfigCos
 
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 容器名称
+     *
      * @var string
      */
     private $bucketName = '';
     /**
      * 容器域名
+     *
      * @var string
      */
     private $bucketDomain = '';
     /**
      * 请求域名
+     *
      * @var string
      */
     private $reqHost = '';
@@ -58,6 +63,7 @@ class ConfigCos
 
     /**
      * @param string $appId
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setAppId(string $appId)
@@ -79,6 +85,7 @@ class ConfigCos
 
     /**
      * @param string $bucketName
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setBucketName(string $bucketName)
@@ -100,6 +107,7 @@ class ConfigCos
 
     /**
      * @param string $bucketDomain
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setBucketDomain(string $bucketDomain)
