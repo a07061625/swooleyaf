@@ -8,7 +8,7 @@
 namespace AliOss;
 
 use SyConstant\ErrorCode;
-use SyException\AliOss\OssException;
+use SyException\ObjectStorage\OssException;
 
 class ConfigOss
 {
@@ -83,16 +83,16 @@ class ConfigOss
     /**
      * @param string $endpointProtocol
      * @param string $endpointDomain
-     * @throws \SyException\AliOss\OssException
+     * @throws \SyException\ObjectStorage\OssException
      */
     public function setEndpointProtocolAndDomain(string $endpointProtocol, string $endpointDomain)
     {
         if (!in_array($endpointProtocol, ['http', 'https'])) {
-            throw new OssException('终端节点协议不合法', ErrorCode::ALIOSS_PARAM_ERROR);
+            throw new OssException('终端节点协议不合法', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
         }
         $trueDomain = trim($endpointDomain);
         if (strlen($trueDomain) == 0) {
-            throw new OssException('终端节点域名不合法', ErrorCode::ALIOSS_PARAM_ERROR);
+            throw new OssException('终端节点域名不合法', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
         }
         $this->endpointProtocol = $endpointProtocol;
         $this->endpointDomain = $trueDomain;
@@ -109,14 +109,14 @@ class ConfigOss
 
     /**
      * @param string $accessKeyId
-     * @throws \SyException\AliOss\OssException
+     * @throws \SyException\ObjectStorage\OssException
      */
     public function setAccessKeyId(string $accessKeyId)
     {
         if (ctype_alnum($accessKeyId)) {
             $this->accessKeyId = $accessKeyId;
         } else {
-            throw new OssException('帐号ID不合法', ErrorCode::ALIOSS_PARAM_ERROR);
+            throw new OssException('帐号ID不合法', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
         }
     }
 
@@ -130,14 +130,14 @@ class ConfigOss
 
     /**
      * @param string $accessKeySecret
-     * @throws \SyException\AliOss\OssException
+     * @throws \SyException\ObjectStorage\OssException
      */
     public function setAccessKeySecret(string $accessKeySecret)
     {
         if (ctype_alnum($accessKeySecret)) {
             $this->accessKeySecret = $accessKeySecret;
         } else {
-            throw new OssException('帐号密钥不合法', ErrorCode::ALIOSS_PARAM_ERROR);
+            throw new OssException('帐号密钥不合法', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
         }
     }
 
@@ -151,14 +151,14 @@ class ConfigOss
 
     /**
      * @param string $bucketName
-     * @throws \SyException\AliOss\OssException
+     * @throws \SyException\ObjectStorage\OssException
      */
     public function setBucketName(string $bucketName)
     {
         if (strlen($bucketName) > 0) {
             $this->bucketName = $bucketName;
         } else {
-            throw new OssException('桶名称不合法', ErrorCode::ALIOSS_PARAM_ERROR);
+            throw new OssException('桶名称不合法', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
         }
     }
 
@@ -172,14 +172,14 @@ class ConfigOss
 
     /**
      * @param string $bucketDomain
-     * @throws \SyException\AliOss\OssException
+     * @throws \SyException\ObjectStorage\OssException
      */
     public function setBucketDomain(string $bucketDomain)
     {
         if (preg_match('/^(http|https)\:\/\/\S+$/', $bucketDomain) > 0) {
             $this->bucketDomain = $bucketDomain;
         } else {
-            throw new OssException('桶域名不合法', ErrorCode::ALIOSS_PARAM_ERROR);
+            throw new OssException('桶域名不合法', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
         }
     }
 

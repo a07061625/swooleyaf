@@ -33,10 +33,6 @@ class ErrorCode
     const VALIDATOR_RULE_EMPTY = 100001;
     const VALIDATOR_RULE_ERROR = 100002;
 
-    //阿里Oss错误,取值范围:100200-100299
-    const ALIOSS_PARAM_ERROR = 100200;
-    const ALIOSS_CONNECT_ERROR = 100201;
-
     //MYSQL错误,取值范围:100400-100599
     const MYSQL_CONNECTION_ERROR = 100400;
     const MYSQL_INSERT_ERROR = 100401;
@@ -202,15 +198,6 @@ class ErrorCode
     //MEMCACHE错误,取值范围:105000-105099
     const MEMCACHE_CONNECTION_ERROR = 105000;
 
-    //腾讯云错误,取值范围:105100-105999
-    const QCLOUD_COS_PARAM_ERROR = 105100;
-    const QCLOUD_COS_POST_ERROR = 105101;
-    const QCLOUD_COS_GET_ERROR = 105102;
-    const QCLOUD_COS_PUT_ERROR = 105103;
-    const QCLOUD_COS_DELETE_ERROR = 105104;
-    const QCLOUD_COS_HEAD_ERROR = 105105;
-    const QCLOUD_COS_OPTIONS_ERROR = 105106;
-
     //会话错误,取值范围:106000-106099
     const SESSION_JWT_REFRESH_ERROR = 106000;
     const SESSION_JWT_DATA_ERROR = 106001;
@@ -232,11 +219,6 @@ class ErrorCode
     const IOT_REQ_ALIYUN_ERROR = 106210;
     const IOT_REQ_BAIDU_ERROR = 106211;
     const IOT_REQ_TENCENT_ERROR = 106212;
-
-    //七牛错误,取值范围:106400-106999
-    const QINIU_KODO_PARAM_ERROR = 106400;
-    const QINIU_KODO_POST_ERROR = 106401;
-    const QINIU_KODO_GET_ERROR = 106402;
 
     //货币错误,取值范围:107000-107099
     const CURRENCY_PARAM_ERROR = 107000;
@@ -283,6 +265,25 @@ class ErrorCode
     const LIVE_TENCENT_REQ_ERROR = 108220;
     const LIVE_TENCENT_PARAM_ERROR = 108221;
 
+    //对象存储错误,取值范围:108400-108599
+    const OBJECT_STORAGE_PARAM_ERROR = 108400;
+    const OBJECT_STORAGE_REQ_ERROR = 108401;
+    const OBJECT_STORAGE_OSS_REQ_ERROR = 108410;
+    const OBJECT_STORAGE_OSS_PARAM_ERROR = 108411;
+    const OBJECT_STORAGE_OSS_CONNECT_ERROR = 108412;
+    const OBJECT_STORAGE_COS_REQ_ERROR = 108420;
+    const OBJECT_STORAGE_COS_PARAM_ERROR = 108421;
+    const OBJECT_STORAGE_COS_POST_ERROR = 108422;
+    const OBJECT_STORAGE_COS_GET_ERROR = 108423;
+    const OBJECT_STORAGE_COS_PUT_ERROR = 108424;
+    const OBJECT_STORAGE_COS_DELETE_ERROR = 108425;
+    const OBJECT_STORAGE_COS_HEAD_ERROR = 108426;
+    const OBJECT_STORAGE_COS_OPTIONS_ERROR = 108427;
+    const OBJECT_STORAGE_KODO_REQ_ERROR = 108430;
+    const OBJECT_STORAGE_KODO_PARAM_ERROR = 108431;
+    const OBJECT_STORAGE_KODO_POST_ERROR = 108432;
+    const OBJECT_STORAGE_KODO_GET_ERROR = 108433;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -299,8 +300,6 @@ class ErrorCode
         self::VALIDATOR_TYPE_ERROR => '校验器不支持',
         self::VALIDATOR_RULE_EMPTY => '校验规则为空',
         self::VALIDATOR_RULE_ERROR => '校验规则格式不合法',
-        self::ALIOSS_CONNECT_ERROR => '阿里Oss连接失败',
-        self::ALIOSS_PARAM_ERROR => '阿里Oss参数出错',
         self::MYSQL_CONNECTION_ERROR => 'MYSQL连接出错',
         self::MYSQL_INSERT_ERROR => 'MYSQL添加数据出错',
         self::MYSQL_UPDATE_ERROR => 'MYSQL修改数据出错',
@@ -410,13 +409,6 @@ class ErrorCode
         self::DING_TALK_POST_ERROR => '钉钉发送POST请求出错',
         self::DING_TALK_GET_ERROR => '钉钉发送GET请求出错',
         self::MEMCACHE_CONNECTION_ERROR => 'MEMCACHE连接出错',
-        self::QCLOUD_COS_PARAM_ERROR => '腾讯云对象存储参数错误',
-        self::QCLOUD_COS_POST_ERROR => '腾讯云对象存储发送POST请求出错',
-        self::QCLOUD_COS_GET_ERROR => '腾讯云对象存储发送GET请求出错',
-        self::QCLOUD_COS_PUT_ERROR => '腾讯云对象存储发送PUT请求出错',
-        self::QCLOUD_COS_DELETE_ERROR => '腾讯云对象存储发送DELETE请求出错',
-        self::QCLOUD_COS_HEAD_ERROR => '腾讯云对象存储发送HEAD请求出错',
-        self::QCLOUD_COS_OPTIONS_ERROR => '腾讯云对象存储发送OPTIONS请求出错',
         self::SESSION_JWT_DATA_ERROR => '会话JWT数据错误',
         self::SESSION_JWT_SIGN_ERROR => '会话JWT签名错误',
         self::SESSION_JWT_REFRESH_ERROR => '会话JWT刷新错误',
@@ -433,9 +425,6 @@ class ErrorCode
         self::IOT_REQ_ALIYUN_ERROR => '物联网阿里云发送请求出错',
         self::IOT_REQ_BAIDU_ERROR => '物联网百度发送请求出错',
         self::IOT_REQ_TENCENT_ERROR => '物联网腾讯发送请求出错',
-        self::QINIU_KODO_PARAM_ERROR => '七牛对象存储参数错误',
-        self::QINIU_KODO_POST_ERROR => '七牛对象存储发送POST请求出错',
-        self::QINIU_KODO_GET_ERROR => '七牛对象存储发送GET请求出错',
         self::CURRENCY_PARAM_ERROR => '货币参数错误',
         self::CURRENCY_POST_ERROR => '货币POST请求出错',
         self::CURRENCY_GET_ERROR => '货币GET请求出错',
@@ -467,6 +456,23 @@ class ErrorCode
         self::LIVE_BAIJIA_PARAM_ERROR => '百家云直播参数出错',
         self::LIVE_TENCENT_REQ_ERROR => '腾讯云直播请求出错',
         self::LIVE_TENCENT_PARAM_ERROR => '腾讯云直播参数出错',
+        self::OBJECT_STORAGE_PARAM_ERROR => '对象存储参数出错',
+        self::OBJECT_STORAGE_REQ_ERROR => '对象存储请求出错',
+        self::OBJECT_STORAGE_OSS_REQ_ERROR => '阿里云对象存储请求出错',
+        self::OBJECT_STORAGE_OSS_PARAM_ERROR => '阿里云对象存储参数出错',
+        self::OBJECT_STORAGE_OSS_CONNECT_ERROR => '阿里云对象存储连接出错',
+        self::OBJECT_STORAGE_COS_REQ_ERROR => '腾讯云对象存储请求出错',
+        self::OBJECT_STORAGE_COS_PARAM_ERROR => '腾讯云对象存储参数出错',
+        self::OBJECT_STORAGE_COS_POST_ERROR => '腾讯云对象存储发送POST请求出错',
+        self::OBJECT_STORAGE_COS_GET_ERROR => '腾讯云对象存储发送GET请求出错',
+        self::OBJECT_STORAGE_COS_PUT_ERROR => '腾讯云对象存储发送PUT请求出错',
+        self::OBJECT_STORAGE_COS_DELETE_ERROR => '腾讯云对象存储发送DELETE请求出错',
+        self::OBJECT_STORAGE_COS_HEAD_ERROR => '腾讯云对象存储发送HEAD请求出错',
+        self::OBJECT_STORAGE_COS_OPTIONS_ERROR => '腾讯云对象存储发送OPTIONS请求出错',
+        self::OBJECT_STORAGE_KODO_REQ_ERROR => '七牛云对象存储请求出错',
+        self::OBJECT_STORAGE_KODO_PARAM_ERROR => '七牛云对象存储参数出错',
+        self::OBJECT_STORAGE_KODO_POST_ERROR => '七牛云对象存储POST请求出错',
+        self::OBJECT_STORAGE_KODO_GET_ERROR => '七牛云对象存储GET请求出错',
     ];
 
     /**
