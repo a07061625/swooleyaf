@@ -14,6 +14,7 @@ use SyTrait\SingletonTrait;
 
 /**
  * Class ObjectStorageConfigSingleton
+ *
  * @package DesignPatterns\Singletons
  */
 class ObjectStorageConfigSingleton
@@ -23,11 +24,11 @@ class ObjectStorageConfigSingleton
     /**
      * @var \SyObjectStorage\ConfigKodo
      */
-    private $kodoConfig = null;
+    private $kodoConfig;
     /**
      * @var \SyObjectStorage\ConfigCos
      */
-    private $cosConfig = null;
+    private $cosConfig;
 
     /**
      * @return \DesignPatterns\Singletons\ObjectStorageConfigSingleton
@@ -43,6 +44,7 @@ class ObjectStorageConfigSingleton
 
     /**
      * @return \SyObjectStorage\ConfigKodo
+     *
      * @throws \SyException\Cloud\QiNiuException
      */
     public function getKodoConfig()
@@ -60,6 +62,7 @@ class ObjectStorageConfigSingleton
 
     /**
      * @return \SyObjectStorage\ConfigCos
+     *
      * @throws \SyException\Cloud\TencentException
      * @throws \SyException\ObjectStorage\CosException
      */

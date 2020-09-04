@@ -14,36 +14,43 @@ class ConfigOss
 {
     /**
      * 终端节点
+     *
      * @var string
      */
     private $endpoint = '';
     /**
      * 终端节点域名
+     *
      * @var string
      */
     private $endpointDomain = '';
     /**
      * 终端节点协议
+     *
      * @var string
      */
     private $endpointProtocol = '';
     /**
      * 帐号ID
+     *
      * @var string
      */
     private $accessKeyId = '';
     /**
      * 帐号密钥
+     *
      * @var string
      */
     private $accessKeySecret = '';
     /**
      * 桶名称
+     *
      * @var string
      */
     private $bucketName = '';
     /**
      * 桶域名
+     *
      * @var string
      */
     private $bucketDomain = '';
@@ -83,6 +90,7 @@ class ConfigOss
     /**
      * @param string $endpointProtocol
      * @param string $endpointDomain
+     *
      * @throws \SyException\ObjectStorage\OssException
      */
     public function setEndpointProtocolAndDomain(string $endpointProtocol, string $endpointDomain)
@@ -109,6 +117,7 @@ class ConfigOss
 
     /**
      * @param string $accessKeyId
+     *
      * @throws \SyException\ObjectStorage\OssException
      */
     public function setAccessKeyId(string $accessKeyId)
@@ -130,6 +139,7 @@ class ConfigOss
 
     /**
      * @param string $accessKeySecret
+     *
      * @throws \SyException\ObjectStorage\OssException
      */
     public function setAccessKeySecret(string $accessKeySecret)
@@ -151,6 +161,7 @@ class ConfigOss
 
     /**
      * @param string $bucketName
+     *
      * @throws \SyException\ObjectStorage\OssException
      */
     public function setBucketName(string $bucketName)
@@ -172,6 +183,7 @@ class ConfigOss
 
     /**
      * @param string $bucketDomain
+     *
      * @throws \SyException\ObjectStorage\OssException
      */
     public function setBucketDomain(string $bucketDomain)
