@@ -7,21 +7,12 @@
  */
 namespace DesignPatterns\Factories;
 
-use DesignPatterns\Singletons\AliOssSingleton;
 use DesignPatterns\Singletons\SolrSingleton;
 use SyTrait\SimpleTrait;
 
 class SyToolSimpleFactory
 {
     use SimpleTrait;
-
-    /**
-     * @return \DesignPatterns\Singletons\AliOssSingleton
-     */
-    public static function getAliOss()
-    {
-        return AliOssSingleton::getInstance();
-    }
 
     /**
      * @return \DesignPatterns\Singletons\SolrSingleton
