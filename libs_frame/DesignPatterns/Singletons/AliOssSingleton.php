@@ -10,7 +10,7 @@ namespace DesignPatterns\Singletons;
 use AliOss\ConfigOss;
 use AliOss\OssClient;
 use SyConstant\ErrorCode;
-use SyException\AliOss\OssException;
+use SyException\ObjectStorage\OssException;
 use SyLog\Log;
 use SyTool\Tool;
 use SyTrait\SingletonTrait;
@@ -70,7 +70,7 @@ class AliOssSingleton
 
     /**
      * @return \AliOss\OssClient
-     * @throws \SyException\AliOss\OssException
+     * @throws \SyException\ObjectStorage\OssException
      */
     public function getOssClient()
     {
@@ -93,18 +93,18 @@ class AliOssSingleton
                         break;
                     case 3:
                         if (strlen($securityToken) == 0) {
-                            throw new OssException('加密令牌不能为空', ErrorCode::ALIOSS_PARAM_ERROR);
+                            throw new OssException('加密令牌不能为空', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
                         }
                         $ossClient = new OssClient($ossConfig->getAccessKeyId(), $ossConfig->getAccessKeySecret(), $ossConfig->getEndpoint(), false, $securityToken);
                         break;
                     case 4:
                         if (strlen($requestProxy) == 0) {
-                            throw new OssException('代理地址不能为空', ErrorCode::ALIOSS_PARAM_ERROR);
+                            throw new OssException('代理地址不能为空', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
                         }
                         $ossClient = new OssClient($ossConfig->getAccessKeyId(), $ossConfig->getAccessKeySecret(), $ossConfig->getEndpoint(), false, null, $requestProxy);
                         break;
                     default:
-                        throw new OssException('初始化类型不支持', ErrorCode::ALIOSS_PARAM_ERROR);
+                        throw new OssException('初始化类型不支持', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
                 }
 
                 $ossClient->setTimeout($networkTimeoutTransmission);
@@ -113,7 +113,7 @@ class AliOssSingleton
             } catch (\Exception $e) {
                 $this->ossClient = null;
                 Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
-                throw new OssException($e->getMessage(), ErrorCode::ALIOSS_CONNECT_ERROR);
+                throw new OssException($e->getMessage(), ErrorCode::OBJECT_STORAGE_OSS_CONNECT_ERROR);
             }
         }
 

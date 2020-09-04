@@ -18,8 +18,6 @@
 - PhpOffice: office文档操作相关
 - PoolService: 进程池服务
 - Psr: Psr标准
-- QCloud: 腾讯云开放平台接口
-- QiNiu: 七牛接口
 - Queue: 消息队列(无用)
 - Reflection: 反射
 - Request: 框架请求处理
