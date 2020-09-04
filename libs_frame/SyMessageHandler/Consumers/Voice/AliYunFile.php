@@ -18,6 +18,7 @@ use SyVms\AliYun\CallByVoiceSingleRequest;
 
 /**
  * Class AliYunFile
+ *
  * @package SyMessageHandler\Consumers\Voice
  */
 class AliYunFile extends Base implements IConsumer

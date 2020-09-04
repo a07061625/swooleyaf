@@ -19,6 +19,7 @@ use SyVms\AliYun\CallByTtsSingleRequest;
 
 /**
  * Class AliYunTts
+ *
  * @package SyMessageHandler\Consumers\Voice
  */
 class AliYunTts extends Base implements IConsumer
