@@ -38,7 +38,7 @@ class AliYunFile extends Base implements IConsumer
         ];
 
         $config = VmsConfigSingleton::getInstance()->getAliYunConfig();
-        $iClientProfile = DefaultProfile::getProfile($config->getRegionId(), $config->getAppKey(), $config->getAppSecret());
+        $iClientProfile = DefaultProfile::getProfile($config->getRegionId(), $config->getAccessKey(), $config->getAccessSecret());
         $client = new DefaultAcsClient($iClientProfile);
         $callVoice = new CallByVoiceSingleRequest();
         $callVoice->setCalledNumber($msgData['receivers'][0]);
