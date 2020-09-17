@@ -239,6 +239,7 @@ class ErrorCode
     const VMS_GET_ERROR = 107302;
     const VMS_REQ_ALIYUN_ERROR = 107310;
     const VMS_REQ_QCLOUD_ERROR = 107311;
+    const VMS_REQ_XUNFEI_ERROR = 107312;
 
     //消息处理错误,取值范围:107400-107499
     const MESSAGE_HANDLER_PARAM_ERROR = 107400;
@@ -439,6 +440,7 @@ class ErrorCode
         self::VMS_GET_ERROR => '语音服务发送GET请求出错',
         self::VMS_REQ_ALIYUN_ERROR => '语音服务阿里云发送请求出错',
         self::VMS_REQ_QCLOUD_ERROR => '语音服务腾讯云发送请求出错',
+        self::VMS_REQ_XUNFEI_ERROR => '语音服务科大讯飞发送请求出错',
         self::MESSAGE_HANDLER_PARAM_ERROR => '消息处理参数错误',
         self::MESSAGE_HANDLER_INVOKE_ERROR => '消息处理调用错误',
         self::PAY_PARAM_ERROR => '支付参数错误',

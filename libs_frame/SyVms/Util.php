@@ -9,7 +9,7 @@ namespace SyVms;
 
 use SyTrait\SimpleTrait;
 
-abstract class VmsUtilBase
+abstract class Util
 {
     use SimpleTrait;
 }

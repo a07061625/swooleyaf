@@ -7,7 +7,7 @@
  */
 namespace SyVms;
 
-abstract class VmsBase
+abstract class Base
 {
     /**
      * 请求数据
