@@ -11,6 +11,7 @@ use SyTool\Tool;
 use SyTrait\SingletonTrait;
 use SyVms\ConfigAliYun;
 use SyVms\ConfigQCloud;
+use SyVms\ConfigXunFei;
 
 class VmsConfigSingleton
 {
@@ -28,6 +29,11 @@ class VmsConfigSingleton
      * @var \SyVms\ConfigQCloud
      */
     private $qCloudConfig;
+    /**
+     * 科大讯飞配置
+     * @var \SyVms\ConfigXunFei
+     */
+    private $xunFeiConfig;
 
     private function __construct()
     {
@@ -80,5 +86,23 @@ class VmsConfigSingleton
         }
 
         return $this->qCloudConfig;
+    }
+
+    /**
+     * @return \SyVms\ConfigXunFei
+     * @throws \SyException\Vms\XunFeiException
+     */
+    public function getXunFeiConfig()
+    {
+        if (is_null($this->xunFeiConfig)) {
+            $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);
+            $xunFeiConfig = new ConfigXunFei();
+            $xunFeiConfig->setAppId((string)Tool::getArrayVal($configs, 'xunfei.app.id', '', true));
+            $xunFeiConfig->setApiKey((string)Tool::getArrayVal($configs, 'xunfei.api.key', '', true));
+            $xunFeiConfig->setApiSecret((string)Tool::getArrayVal($configs, 'xunfei.api.secret', '', true));
+            $this->xunFeiConfig = $xunFeiConfig;
+        }
+
+        return $this->xunFeiConfig;
     }
 }

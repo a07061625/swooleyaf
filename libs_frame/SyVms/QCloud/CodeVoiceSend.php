@@ -9,13 +9,13 @@ namespace SyVms\QCloud;
 
 use SyConstant\ErrorCode;
 use SyException\Vms\QCloudException;
-use SyVms\VmsBaseQCloud;
+use SyVms\BaseQCloud;
 
 /**
  * Class CodeVoiceSend
  * @package SyVms\QCloud
  */
-class CodeVoiceSend extends VmsBaseQCloud
+class CodeVoiceSend extends BaseQCloud
 {
     /**
      * 用户session内容

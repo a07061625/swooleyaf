@@ -11,7 +11,7 @@ use SyConstant\ProjectBase;
 use SyMessageHandler\Consumers\Base;
 use SyMessageHandler\IConsumer;
 use SyVms\QCloud\CodeVoiceSend;
-use SyVms\VmsUtilQCloud;
+use SyVms\UtilQCloud;
 
 /**
  * Class QCloudCode
@@ -38,7 +38,7 @@ class QCloudCode extends Base implements IConsumer
         if (strlen($msgData['ext_data']['nation_code']) > 0) {
             $codeSend->setTelNationCode($msgData['ext_data']['nation_code']);
         }
-        $handleRes = VmsUtilQCloud::sendServiceRequest($codeSend);
+        $handleRes = UtilQCloud::sendServiceRequest($codeSend);
 
         return $handleRes;
     }

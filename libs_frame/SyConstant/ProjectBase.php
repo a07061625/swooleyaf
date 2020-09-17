@@ -58,6 +58,7 @@ class ProjectBase
     const REDIS_PREFIX_CODE_WEBHOOK_INFO = 'sy' . SY_PROJECT . '20403_'; //前缀-代码WebHook信息
     const REDIS_PREFIX_LIVE_EDUCATION_BJY = 'sy' . SY_PROJECT . '20500_'; //前缀-百家云教育直播
     const REDIS_PREFIX_MESSAGE_HANDLER_TOPIC = 'sy' . SY_PROJECT . '20600_'; //前缀-消息处理主题
+    const REDIS_PREFIX_VMS_XUNFEI = 'sy' . SY_PROJECT . '20700_'; //前缀-科大讯飞语音缓存
 
     //YAC常量,以0000开头的前缀为框架内部前缀,并键名总长度不超过48个字符串
     const YAC_PREFIX_FUSE = '0000'; //前缀-熔断器

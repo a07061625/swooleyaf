@@ -9,13 +9,13 @@ namespace SyVms\QCloud;
 
 use SyConstant\ErrorCode;
 use SyException\Vms\QCloudException;
-use SyVms\VmsBaseQCloud;
+use SyVms\BaseQCloud;
 
 /**
  * Class TemplateVoiceSend
  * @package SyVms\QCloud
  */
-class TemplateVoiceSend extends VmsBaseQCloud
+class TemplateVoiceSend extends BaseQCloud
 {
     /**
      * 模板ID
