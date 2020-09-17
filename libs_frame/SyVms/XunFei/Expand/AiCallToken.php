@@ -16,6 +16,7 @@ use SyVms\UtilXunFei;
 
 /**
  * 获取token
+ *
  * @package SyVms\XunFei\Expand
  */
 class AiCallToken extends BaseXunFei
@@ -48,6 +49,7 @@ class AiCallToken extends BaseXunFei
         $errCode = $sendData['code'] ?? -1;
         if ($errCode != 0) {
             $errMsg = $sendData['message'] ?? '解析数据出错';
+
             throw new XunFeiException($errMsg, ErrorCode::VMS_REQ_XUNFEI_ERROR);
         }
 

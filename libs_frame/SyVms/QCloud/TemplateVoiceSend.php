@@ -13,37 +13,44 @@ use SyVms\BaseQCloud;
 
 /**
  * Class TemplateVoiceSend
+ *
  * @package SyVms\QCloud
  */
 class TemplateVoiceSend extends BaseQCloud
 {
     /**
      * 模板ID
+     *
      * @var int
      */
     private $tplId = 0;
     /**
      * 模板参数
+     *
      * @var array
      */
     private $tplParams = [];
     /**
      * 播放次数
+     *
      * @var int
      */
     private $playTimes = 0;
     /**
      * 电话号码
+     *
      * @var string
      */
     private $telMobile = '';
     /**
      * 国家码
+     *
      * @var string
      */
     private $telNationCode = '';
     /**
      * 用户session内容
+     *
      * @var string
      */
     private $ext = '';
@@ -68,6 +75,7 @@ class TemplateVoiceSend extends BaseQCloud
 
     /**
      * @param int $tplId
+     *
      * @throws \SyException\Vms\QCloudException
      */
     public function setTplId(int $tplId)
@@ -89,6 +97,7 @@ class TemplateVoiceSend extends BaseQCloud
 
     /**
      * @param int $playTimes
+     *
      * @throws \SyException\Vms\QCloudException
      */
     public function setPlayTimes(int $playTimes)
@@ -102,6 +111,7 @@ class TemplateVoiceSend extends BaseQCloud
 
     /**
      * @param string $telMobile
+     *
      * @throws \SyException\Vms\QCloudException
      */
     public function setTelMobile(string $telMobile)
@@ -115,6 +125,7 @@ class TemplateVoiceSend extends BaseQCloud
 
     /**
      * @param string $telNationCode
+     *
      * @throws \SyException\Vms\QCloudException
      */
     public function setTelNationCode(string $telNationCode)

@@ -18,6 +18,7 @@ use SyVms\XunFei\Expand\AiCallToken;
 
 /**
  * Class UtilXunFei
+ *
  * @package SyVms
  */
 abstract class UtilXunFei
@@ -26,11 +27,14 @@ abstract class UtilXunFei
 
     /**
      * 生成授权签名
+     *
      * @param array $data 授权参数<pre>
-     *   req_host: string required,请求域名
-     *   req_uri: string required,请求URI
-     *   req_method: string required,请求方式</pre>
+     *                    req_host: string required,请求域名
+     *                    req_uri: string required,请求URI
+     *                    req_method: string required,请求方式</pre>
+     *
      * @return array
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public static function createAuthorizationSign(array $data) : array
@@ -54,8 +58,11 @@ abstract class UtilXunFei
 
     /**
      * 生成授权令牌
+     *
      * @param array $params
+     *
      * @return array
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public static function createAuthorizationToken(array $params) : array
@@ -74,7 +81,9 @@ abstract class UtilXunFei
 
     /**
      * 生成接口签名
+     *
      * @return array
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public static function createApiSign() : array
@@ -91,8 +100,11 @@ abstract class UtilXunFei
 
     /**
      * 发送请求
+     *
      * @param array $curlConfigs
+     *
      * @return string
+     *
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Vms\XunFeiException
      */
@@ -101,14 +113,16 @@ abstract class UtilXunFei
         $sendRes = Tool::sendCurlReq($curlConfigs);
         if ($sendRes['res_no'] == 0) {
             return $sendRes['res_content'];
-        } else {
-            throw new XunFeiException('curl出错,错误码=' . $sendRes['res_no'], ErrorCode::VMS_REQ_XUNFEI_ERROR);
         }
+
+        throw new XunFeiException('curl出错,错误码=' . $sendRes['res_no'], ErrorCode::VMS_REQ_XUNFEI_ERROR);
     }
 
     /**
      * 获取AI客服令牌
+     *
      * @return string
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public static function getAiCallToken() : string
