@@ -15,6 +15,7 @@ use SyVms\UtilQCloud;
 
 /**
  * Class QCloudCode
+ *
  * @package SyMessageHandler\Consumers\Voice
  */
 class QCloudCode extends Base implements IConsumer

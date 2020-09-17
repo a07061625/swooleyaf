@@ -11,6 +11,7 @@ use SyException\BaseException;
 
 /**
  * Class XunFeiException
+ *
  * @package SyException\Vms
  */
 class XunFeiException extends BaseException
