@@ -31,6 +31,7 @@ class VmsConfigSingleton
     private $qCloudConfig;
     /**
      * 科大讯飞配置
+     *
      * @var \SyVms\ConfigXunFei
      */
     private $xunFeiConfig;
@@ -90,6 +91,7 @@ class VmsConfigSingleton
 
     /**
      * @return \SyVms\ConfigXunFei
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function getXunFeiConfig()

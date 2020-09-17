@@ -12,6 +12,7 @@ use SyException\Vms\XunFeiException;
 
 /**
  * Class ConfigXunFei
+ *
  * @package SyVms
  */
 class ConfigXunFei
@@ -53,6 +54,7 @@ class ConfigXunFei
 
     /**
      * @param string $appId
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setAppId(string $appId)
@@ -74,6 +76,7 @@ class ConfigXunFei
 
     /**
      * @param string $apiKey
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setApiKey(string $apiKey)
@@ -95,6 +98,7 @@ class ConfigXunFei
 
     /**
      * @param string $apiSecret
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setApiSecret(string $apiSecret)

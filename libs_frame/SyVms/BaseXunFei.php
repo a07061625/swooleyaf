@@ -9,22 +9,26 @@ namespace SyVms;
 
 /**
  * Class BaseXunFei
+ *
  * @package SyVms
  */
 abstract class BaseXunFei extends Base
 {
     /**
      * 服务地址
+     *
      * @var string
      */
     protected $serviceUrl = '';
     /**
      * 请求方式
+     *
      * @var string
      */
     protected $reqMethod = '';
     /**
      * 请求头参数
+     *
      * @var array
      */
     protected $reqHeaders = [];
@@ -51,6 +55,7 @@ abstract class BaseXunFei extends Base
         if (!isset($this->curlConfigs[CURLOPT_TIMEOUT_MS])) {
             $this->curlConfigs[CURLOPT_TIMEOUT_MS] = 3000;
         }
+
         return $this->curlConfigs;
     }
 }

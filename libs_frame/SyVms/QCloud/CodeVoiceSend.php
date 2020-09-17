@@ -13,32 +13,38 @@ use SyVms\BaseQCloud;
 
 /**
  * Class CodeVoiceSend
+ *
  * @package SyVms\QCloud
  */
 class CodeVoiceSend extends BaseQCloud
 {
     /**
      * 用户session内容
+     *
      * @var string
      */
     private $ext = '';
     /**
      * 验证码
+     *
      * @var string
      */
     private $msg = '';
     /**
      * 播放次数
+     *
      * @var int
      */
     private $playTimes = 0;
     /**
      * 电话号码
+     *
      * @var string
      */
     private $telMobile = '';
     /**
      * 国家码
+     *
      * @var string
      */
     private $telNationCode = '';
@@ -70,6 +76,7 @@ class CodeVoiceSend extends BaseQCloud
 
     /**
      * @param string $msg
+     *
      * @throws \SyException\Vms\QCloudException
      */
     public function setMsg(string $msg)
@@ -83,6 +90,7 @@ class CodeVoiceSend extends BaseQCloud
 
     /**
      * @param int $playTimes
+     *
      * @throws \SyException\Vms\QCloudException
      */
     public function setPlayTimes(int $playTimes)
@@ -96,6 +104,7 @@ class CodeVoiceSend extends BaseQCloud
 
     /**
      * @param string $telMobile
+     *
      * @throws \SyException\Vms\QCloudException
      */
     public function setTelMobile(string $telMobile)
@@ -109,6 +118,7 @@ class CodeVoiceSend extends BaseQCloud
 
     /**
      * @param string $telNationCode
+     *
      * @throws \SyException\Vms\QCloudException
      */
     public function setTelNationCode(string $telNationCode)
