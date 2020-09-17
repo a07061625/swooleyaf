@@ -10,10 +10,10 @@ namespace SyVms;
 use SyTool\Tool;
 
 /**
- * Class VmsBaseQCloud
+ * Class BaseQCloud
  * @package SyVms
  */
-abstract class VmsBaseQCloud extends VmsBase
+abstract class BaseQCloud extends Base
 {
     /**
      * 服务地址
@@ -28,7 +28,7 @@ abstract class VmsBaseQCloud extends VmsBase
 
     protected function refreshSign(array $data)
     {
-        $createRes = VmsUtilQCloud::createSign($data);
+        $createRes = UtilQCloud::createSign($data);
         $this->reqData['sig'] = $createRes['sign'];
         $this->reqData['time'] = $createRes['time'];
 

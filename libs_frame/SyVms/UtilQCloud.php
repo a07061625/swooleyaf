@@ -13,10 +13,10 @@ use SyTool\Tool;
 use SyTrait\SimpleTrait;
 
 /**
- * Class VmsUtilQCloud
+ * Class UtilQCloud
  * @package SyVms
  */
-abstract class VmsUtilQCloud extends VmsUtilBase
+abstract class UtilQCloud extends Util
 {
     use SimpleTrait;
 
@@ -24,6 +24,7 @@ abstract class VmsUtilQCloud extends VmsUtilBase
      * 生成签名
      * @param array $data
      * @return array
+     * @throws \SyException\Vms\QCloudException
      */
     public static function createSign(array $data) : array
     {
@@ -42,10 +43,11 @@ abstract class VmsUtilQCloud extends VmsUtilBase
 
     /**
      * 发送服务请求
-     * @param \SyVms\VmsBaseQCloud $service
+     * @param \SyVms\BaseQCloud $service
      * @return array
+     * @throws \SyException\Common\CheckException
      */
-    public static function sendServiceRequest(VmsBaseQCloud $service) : array
+    public static function sendServiceRequest(BaseQCloud $service) : array
     {
         $resArr = [
             'code' => 0
