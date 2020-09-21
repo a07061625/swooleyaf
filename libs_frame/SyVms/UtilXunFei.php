@@ -100,8 +100,11 @@ abstract class UtilXunFei
 
     /**
      * 发送AI客服请求
+     *
      * @param \SyVms\BaseXunFeiAiCall $req
+     *
      * @return array
+     *
      * @throws \SyException\Common\CheckException
      */
     public static function sendRequestAiCall(BaseXunFeiAiCall $req) : array
@@ -130,7 +133,9 @@ abstract class UtilXunFei
 
     /**
      * 获取AI客服令牌
+     *
      * @return string
+     *
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Vms\XunFeiException
      */

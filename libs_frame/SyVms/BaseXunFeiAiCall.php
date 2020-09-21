@@ -11,6 +11,7 @@ use SyTool\Tool;
 
 /**
  * Class BaseXunFeiAiCall
+ *
  * @package SyVms
  */
 abstract class BaseXunFeiAiCall extends BaseXunFei

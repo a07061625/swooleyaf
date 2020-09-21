@@ -14,32 +14,38 @@ use SyVms\UtilXunFei;
 
 /**
  * 直接外呼
+ *
  * @package SyVms\XunFei\AiCall
  */
 class OutboundTaskCallout extends BaseXunFeiAiCall
 {
     /**
      * 话术编号
+     *
      * @var string
      */
     private $robot_id = '';
     /**
      * 线路号码
+     *
      * @var string
      */
     private $line_num = '';
     /**
      * 外呼数据列
+     *
      * @var array
      */
     private $call_column = [];
     /**
      * 外呼数据行
+     *
      * @var array
      */
     private $call_list = [];
     /**
      * 发音人编码
+     *
      * @var string
      */
     private $voice_code = '';
@@ -57,6 +63,7 @@ class OutboundTaskCallout extends BaseXunFeiAiCall
 
     /**
      * @param string $robotId
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setRobotId(string $robotId)
@@ -70,6 +77,7 @@ class OutboundTaskCallout extends BaseXunFeiAiCall
 
     /**
      * @param string $lineNum
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setLineNum(string $lineNum)
@@ -83,6 +91,7 @@ class OutboundTaskCallout extends BaseXunFeiAiCall
 
     /**
      * @param array $callColumn
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setCallColumn(array $callColumn)
@@ -101,6 +110,7 @@ class OutboundTaskCallout extends BaseXunFeiAiCall
 
     /**
      * @param array $callList
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setCallList(array $callList)
@@ -116,6 +126,7 @@ class OutboundTaskCallout extends BaseXunFeiAiCall
 
     /**
      * @param string $voiceCode
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setVoiceCode(string $voiceCode)

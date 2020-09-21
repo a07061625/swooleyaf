@@ -14,12 +14,14 @@ use SyVms\UtilXunFei;
 
 /**
  * 查询企业下的各项资源及配置信息
+ *
  * @package SyVms\XunFei\AiCall
  */
 class ConfigQuery extends BaseXunFeiAiCall
 {
     /**
      * 配置项分类 0:全部 1:话术 2:线路 3:接口 4:发音人
+     *
      * @var int
      */
     private $type = 0;
@@ -39,6 +41,7 @@ class ConfigQuery extends BaseXunFeiAiCall
 
     /**
      * @param int $type
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setType(int $type)

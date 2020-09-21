@@ -14,47 +14,56 @@ use SyVms\UtilXunFei;
 
 /**
  * 查询任务
+ *
  * @package SyVms\XunFei\AiCall
  */
 class OutboundTaskQuery extends BaseXunFeiAiCall
 {
     /**
      * 任务id
+     *
      * @var string
      */
     private $task_id = '';
     /**
      * 任务开始时间
+     *
      * @var int
      */
     private $time_begin = 0;
     /**
      * 任务结束时间
+     *
      * @var int
      */
     private $time_end = 0;
     /**
      * 任务名称
+     *
      * @var string
      */
     private $task_name = '';
     /**
      * 每页记录数
+     *
      * @var int
      */
     private $page_size = 0;
     /**
      * 页码
+     *
      * @var int
      */
     private $page_index = 0;
     /**
      * 排序字段
+     *
      * @var string
      */
     private $sort_name = '';
     /**
      * 排序方式
+     *
      * @var string
      */
     private $sort_order = '';
@@ -75,6 +84,7 @@ class OutboundTaskQuery extends BaseXunFeiAiCall
 
     /**
      * @param string $taskId
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setTaskId(string $taskId)
@@ -88,6 +98,7 @@ class OutboundTaskQuery extends BaseXunFeiAiCall
 
     /**
      * @param int $timeBegin 毫秒级开始时间
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setTimeBegin(int $timeBegin)
@@ -101,6 +112,7 @@ class OutboundTaskQuery extends BaseXunFeiAiCall
 
     /**
      * @param int $timeEnd 毫秒级结束时间
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setTimeEnd(int $timeEnd)
@@ -114,6 +126,7 @@ class OutboundTaskQuery extends BaseXunFeiAiCall
 
     /**
      * @param string $taskName
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setTaskName(string $taskName)
@@ -127,6 +140,7 @@ class OutboundTaskQuery extends BaseXunFeiAiCall
 
     /**
      * @param int $pageSize
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setPageSize(int $pageSize)
@@ -140,6 +154,7 @@ class OutboundTaskQuery extends BaseXunFeiAiCall
 
     /**
      * @param int $pageIndex
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setPageIndex(int $pageIndex)
@@ -153,6 +168,7 @@ class OutboundTaskQuery extends BaseXunFeiAiCall
 
     /**
      * @param string $sortName
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setSortName(string $sortName)
@@ -166,6 +182,7 @@ class OutboundTaskQuery extends BaseXunFeiAiCall
 
     /**
      * @param string $sortOrder
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setSortOrder(string $sortOrder)
@@ -181,6 +198,7 @@ class OutboundTaskQuery extends BaseXunFeiAiCall
     {
         $this->getContent();
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . UtilXunFei::getAiCallToken();
+
         return $this->curlConfigs;
     }
 }
