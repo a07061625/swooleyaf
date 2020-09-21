@@ -14,22 +14,26 @@ use SyVms\UtilXunFei;
 
 /**
  * 提交任务数据
+ *
  * @package SyVms\XunFei\AiCall
  */
 class OutboundTaskInsert extends BaseXunFeiAiCall
 {
     /**
      * 任务id
+     *
      * @var string
      */
     private $task_id = '';
     /**
      * 数据列
+     *
      * @var array
      */
     private $call_column = [];
     /**
      * 数据行
+     *
      * @var array
      */
     private $call_list = [];
@@ -47,6 +51,7 @@ class OutboundTaskInsert extends BaseXunFeiAiCall
 
     /**
      * @param string $taskId
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setTaskId(string $taskId)
@@ -60,6 +65,7 @@ class OutboundTaskInsert extends BaseXunFeiAiCall
 
     /**
      * @param array $callColumn
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setCallColumn(array $callColumn)
@@ -78,6 +84,7 @@ class OutboundTaskInsert extends BaseXunFeiAiCall
 
     /**
      * @param array $callList
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setCallList(array $callList)
@@ -105,6 +112,7 @@ class OutboundTaskInsert extends BaseXunFeiAiCall
 
         $this->getContent();
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . UtilXunFei::getAiCallToken();
+
         return $this->curlConfigs;
     }
 }

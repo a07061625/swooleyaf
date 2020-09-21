@@ -14,12 +14,14 @@ use SyVms\UtilXunFei;
 
 /**
  * 启动外呼任务
+ *
  * @package SyVms\XunFei\AiCall
  */
 class OutboundTaskStart extends BaseXunFeiAiCall
 {
     /**
      * 任务id
+     *
      * @var string
      */
     private $task_id = '';
@@ -37,6 +39,7 @@ class OutboundTaskStart extends BaseXunFeiAiCall
 
     /**
      * @param string $taskId
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setTaskId(string $taskId)
@@ -56,6 +59,7 @@ class OutboundTaskStart extends BaseXunFeiAiCall
 
         $this->getContent();
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . UtilXunFei::getAiCallToken();
+
         return $this->curlConfigs;
     }
 }
