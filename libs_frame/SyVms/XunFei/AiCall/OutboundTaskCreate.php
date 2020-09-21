@@ -14,52 +14,62 @@ use SyVms\UtilXunFei;
 
 /**
  * 创建外呼任务
+ *
  * @package SyVms\XunFei\AiCall
  */
 class OutboundTaskCreate extends BaseXunFeiAiCall
 {
     /**
      * 任务名称
+     *
      * @var string
      */
     private $task_name = '';
     /**
      * 线路号码
+     *
      * @var array
      */
     private $line_num = [];
     /**
      * 话术id
+     *
      * @var string
      */
     private $robot_id = '';
     /**
      * 重试外呼次数
+     *
      * @var int
      */
     private $recall_count = 0;
     /**
      * 重试等待时间,单位秒
+     *
      * @var int
      */
     private $time_recall_wait = 0;
     /**
      * 外呼时间段
+     *
      * @var array
      */
     private $time_range = [];
     /**
      * 任务开始时间
+     *
      * @var int
      */
     private $time_begin = 0;
     /**
      * 任务结束时间
+     *
      * @var int
      */
     private $time_end = 0;
     /**
      * 发音人编码
+     *
      * @var string
      */
     private $voice_code = '';
@@ -80,6 +90,7 @@ class OutboundTaskCreate extends BaseXunFeiAiCall
 
     /**
      * @param string $taskName
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setTaskName(string $taskName)
@@ -93,6 +104,7 @@ class OutboundTaskCreate extends BaseXunFeiAiCall
 
     /**
      * @param array $lineNum
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setLineNum(array $lineNum)
@@ -111,6 +123,7 @@ class OutboundTaskCreate extends BaseXunFeiAiCall
 
     /**
      * @param string $robotId
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setRobotId(string $robotId)
@@ -124,6 +137,7 @@ class OutboundTaskCreate extends BaseXunFeiAiCall
 
     /**
      * @param int $recallCount
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setRecallCount(int $recallCount)
@@ -137,6 +151,7 @@ class OutboundTaskCreate extends BaseXunFeiAiCall
 
     /**
      * @param int $timeRecallWait
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setTimeRecallWait(int $timeRecallWait)
@@ -163,7 +178,8 @@ class OutboundTaskCreate extends BaseXunFeiAiCall
 
     /**
      * @param int $timeBegin 毫秒级开始时间
-     * @param int $timeEnd 毫秒级结束时间
+     * @param int $timeEnd   毫秒级结束时间
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setTime(int $timeBegin, int $timeEnd)
@@ -179,6 +195,7 @@ class OutboundTaskCreate extends BaseXunFeiAiCall
 
     /**
      * @param string $voiceCode
+     *
      * @throws \SyException\Vms\XunFeiException
      */
     public function setVoiceCode(string $voiceCode)
@@ -207,6 +224,7 @@ class OutboundTaskCreate extends BaseXunFeiAiCall
 
         $this->getContent();
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . UtilXunFei::getAiCallToken();
+
         return $this->curlConfigs;
     }
 }
