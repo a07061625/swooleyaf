@@ -14,7 +14,7 @@ use SyConstant\Project;
 use SyException\Vms\XunFeiException;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
-use SyVms\XunFei\Expand\AiCallToken;
+use SyVms\XunFei\AiCall\OauthToken;
 
 /**
  * Class UtilXunFei
@@ -99,30 +99,39 @@ abstract class UtilXunFei
     }
 
     /**
-     * 发送请求
-     *
-     * @param array $curlConfigs
-     *
-     * @return string
-     *
+     * 发送AI客服请求
+     * @param \SyVms\BaseXunFeiAiCall $req
+     * @return array
      * @throws \SyException\Common\CheckException
-     * @throws \SyException\Vms\XunFeiException
      */
-    public static function sendRequest(array $curlConfigs) : string
+    public static function sendRequestAiCall(BaseXunFeiAiCall $req) : array
     {
+        $resArr = [
+            'code' => 0,
+        ];
+
+        $curlConfigs = $req->getDetail();
         $sendRes = Tool::sendCurlReq($curlConfigs);
         if ($sendRes['res_no'] == 0) {
-            return $sendRes['res_content'];
+            $sendData = Tool::jsonDecode($sendRes['res_content']);
+            if (isset($sendData['code']) && ($sendData['code'] == 0)) {
+                $resArr['data'] = $sendData;
+            } else {
+                $resArr['code'] = ErrorCode::VMS_REQ_XUNFEI_ERROR;
+                $resArr['msg'] = $sendData['message'] ?? '解析数据出错';
+            }
+        } else {
+            $resArr['code'] = ErrorCode::VMS_REQ_XUNFEI_ERROR;
+            $resArr['msg'] = $sendRes['res_msg'];
         }
 
-        throw new XunFeiException('curl出错,错误码=' . $sendRes['res_no'], ErrorCode::VMS_REQ_XUNFEI_ERROR);
+        return $resArr;
     }
 
     /**
      * 获取AI客服令牌
-     *
      * @return string
-     *
+     * @throws \SyException\Common\CheckException
      * @throws \SyException\Vms\XunFeiException
      */
     public static function getAiCallToken() : string
@@ -134,15 +143,19 @@ abstract class UtilXunFei
             return $redisData['act_content'];
         }
 
-        $tokenObj = new AiCallToken();
-        $tokenDetail = $tokenObj->getDetail();
-        $expireTime = (int)($nowTime + $tokenDetail['result']['time_expire'] - 10);
+        $tokenObj = new OauthToken();
+        $tokenDetail = self::sendRequestAiCall($tokenObj);
+        if ($tokenDetail['code'] > 0) {
+            throw new XunFeiException($tokenDetail['msg'], $tokenDetail['code']);
+        }
+
+        $expireTime = (int)($nowTime + $tokenDetail['data']['result']['time_expire'] - 10);
         CacheSimpleFactory::getRedisInstance()->hMset($redisKey, [
-            'act_content' => $tokenDetail['result']['token'],
+            'act_content' => $tokenDetail['data']['result']['token'],
             'act_expire' => $expireTime,
             'act_key' => $redisKey,
         ]);
 
-        return $tokenDetail['result']['token'];
+        return $tokenDetail['data']['result']['token'];
     }
 }
