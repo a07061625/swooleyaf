@@ -11,6 +11,7 @@ use SyException\BaseException;
 
 /**
  * Class ChiVoxException
+ *
  * @package SyException\Vms
  */
 class ChiVoxException extends BaseException

@@ -12,6 +12,7 @@ use SyException\Vms\ChiVoxException;
 
 /**
  * Class ConfigChiVox
+ *
  * @package SyVms
  */
 class ConfigChiVox
@@ -47,6 +48,7 @@ class ConfigChiVox
 
     /**
      * @param string $appKey
+     *
      * @throws \SyException\Vms\ChiVoxException
      */
     public function setAppKey(string $appKey)
@@ -68,6 +70,7 @@ class ConfigChiVox
 
     /**
      * @param string $appSecret
+     *
      * @throws \SyException\Vms\ChiVoxException
      */
     public function setAppSecret(string $appSecret)
