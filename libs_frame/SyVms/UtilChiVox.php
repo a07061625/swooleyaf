@@ -12,6 +12,7 @@ use SyTrait\SimpleTrait;
 
 /**
  * Class UtilChiVox
+ *
  * @package SyVms
  */
 abstract class UtilChiVox extends Util
@@ -26,8 +27,11 @@ abstract class UtilChiVox extends Util
 
     /**
      * 生成签名
+     *
      * @param string $alg 签名算法
+     *
      * @return array
+     *
      * @throws \SyException\Vms\ChiVoxException
      */
     public static function createSign(string $alg) : array
