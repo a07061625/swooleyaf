@@ -21,7 +21,7 @@ use SyVms\XunFei\AiCall\OauthToken;
  *
  * @package SyVms
  */
-abstract class UtilXunFei
+abstract class UtilXunFei extends Util
 {
     use SimpleTrait;
 
