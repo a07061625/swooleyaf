@@ -117,6 +117,7 @@ class VmsConfigSingleton
 
     /**
      * @return \SyVms\ConfigChiVox
+     *
      * @throws \SyException\Vms\ChiVoxException
      */
     public function getChiVoxConfig()
