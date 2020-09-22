@@ -10,6 +10,7 @@ namespace DesignPatterns\Singletons;
 use SyTool\Tool;
 use SyTrait\SingletonTrait;
 use SyVms\ConfigAliYun;
+use SyVms\ConfigChiVox;
 use SyVms\ConfigQCloud;
 use SyVms\ConfigXunFei;
 
@@ -35,6 +36,12 @@ class VmsConfigSingleton
      * @var \SyVms\ConfigXunFei
      */
     private $xunFeiConfig;
+    /**
+     * 驰声配置
+     *
+     * @var \SyVms\ConfigChiVox
+     */
+    private $chiVoxConfig;
 
     private function __construct()
     {
@@ -106,5 +113,22 @@ class VmsConfigSingleton
         }
 
         return $this->xunFeiConfig;
+    }
+
+    /**
+     * @return \SyVms\ConfigChiVox
+     * @throws \SyException\Vms\ChiVoxException
+     */
+    public function getChiVoxConfig()
+    {
+        if (is_null($this->xunFeiConfig)) {
+            $configs = Tool::getConfig('vms.' . SY_ENV . SY_PROJECT);
+            $chiVoxConfig = new ConfigChiVox();
+            $chiVoxConfig->setAppKey((string)Tool::getArrayVal($configs, 'chivox.app.key', '', true));
+            $chiVoxConfig->setAppSecret((string)Tool::getArrayVal($configs, 'chivox.app.secret', '', true));
+            $this->chiVoxConfig = $chiVoxConfig;
+        }
+
+        return $this->chiVoxConfig;
     }
 }
