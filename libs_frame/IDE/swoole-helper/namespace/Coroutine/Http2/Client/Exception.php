@@ -2,7 +2,7 @@
 namespace Swoole\Coroutine\Http2\Client;
 
 /**
- * @since 4.5.2
+ * @since 4.5.4
  */
 class Exception extends \Swoole\Exception
 {
