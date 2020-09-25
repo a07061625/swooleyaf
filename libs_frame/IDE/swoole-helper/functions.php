@@ -113,6 +113,8 @@ function swoole_get_mime_type($filename){}
  */
 function swoole_mime_type_exists($filename){}
 
+function swoole_mime_type_list(){}
+
 function swoole_clear_dns_cache(){}
 
 function swoole_internal_call_user_shutdown_begin(){}
