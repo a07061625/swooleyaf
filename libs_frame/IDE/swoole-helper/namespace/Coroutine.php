@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 4.5.2
+ * @since 4.5.4
  */
 class Coroutine
 {
