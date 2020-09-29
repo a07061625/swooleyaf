@@ -86,6 +86,11 @@ class HttpServer extends BaseServer
     public function __construct(int $port)
     {
         parent::__construct($port);
+        $this->_configs['swoole']['websocket_subprotocol'] = 'chat';
+        $this->_configs['swoole']['open_websocket_close_frame'] = true;
+        $this->_configs['swoole']['open_websocket_ping_frame'] = true;
+        $this->_configs['swoole']['open_websocket_pong_frame'] = true;
+        $this->_configs['swoole']['websocket_compression'] = true;
         $this->setServerType([
             SyInner::SERVER_TYPE_API_GATE,
             SyInner::SERVER_TYPE_FRONT_GATE,
@@ -223,55 +228,40 @@ class HttpServer extends BaseServer
     }
 
     /**
-     * 接受socket消息
-     * 消息格式：abcde
-     * <pre>
-     * 格式说明：
-     *     a:消息头长度，值固定为16
-     *     b:消息内容长度，无符号整数
-     *     c:消息执行命令标识，4位字符串
-     *     d:保留字段，值固定为0000
-     *     e:消息内容，json格式
-     * </pre>
-     *
-     * @param \Swoole\WebSocket\Server $server
-     * @param \Swoole\WebSocket\Frame  $frame
+     * 处理帧数据
+     * @param int $dataType 数据类型
+     * @param string $data 数据
+     * @return array
      */
-    public function onMessage(Server $server, Frame $frame)
+    private function handleFrameData($dataType, string $data) : array
     {
         $result = new Result();
-        if ($frame->opcode != WEBSOCKET_OPCODE_BINARY) {
+        $handleRes = [
+            'type' => 0,
+        ];
+        if ($dataType != WEBSOCKET_OPCODE_BINARY) {
             $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '只接受二进制数据');
-            $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
-
-            return;
-        } elseif (!$frame->finish) { //数据未发送完
-            return;
+            $handleRes['data'] = $result->getJson();
+            return $handleRes;
         }
 
-        $message = $this->_messagePack->unpackData($frame->data);
+        $message = $this->_messagePack->unpackData($data);
         $command = $this->_messagePack->getCommand();
         $commandData = $this->_messagePack->getData();
         $this->_messagePack->init();
+
         if ($message === false) {
             $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '消息格式不正确');
-            $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
-
-            return;
+            $handleRes['data'] = $result->getJson();
+            return $handleRes;
         }
 
         switch ($command) {
             case SyPack::COMMAND_TYPE_SOCKET_CLIENT_CLOSE:
-                $server->close($frame->fd);
-
+                $handleRes['type'] = 1;
                 break;
             case SyPack::COMMAND_TYPE_SOCKET_CLIENT_CHECK_STATUS:
-                $result->setData([
-                    'status' => $server->exist($frame->fd) ? 1 : 0,
-                    'detail' => $server->exist($frame->fd) ? $server->connection_info($frame->fd, null, true) : [],
-                ]);
-                $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
-
+                $handleRes['type'] = 2;
                 break;
             case SyPack::COMMAND_TYPE_SOCKET_CLIENT_GET_SERVER:
                 $result->setData([
@@ -280,8 +270,7 @@ class HttpServer extends BaseServer
                     'swoole_version' => SWOOLE_VERSION,
                     'yaf_version' => \YAF\VERSION,
                 ]);
-                $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
-
+                $handleRes['data'] = $result->getJson();
                 break;
             case SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_API_REQ:
                 $module = $this->_moduleContainer->getObj($commandData['api_module']);
@@ -303,14 +292,9 @@ class HttpServer extends BaseServer
                     }
                 } catch (\Exception $e) {
                     Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
-
                     $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务出错');
                 } finally {
-                    if ($result instanceof Result) {
-                        $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
-                    } else {
-                        $server->push($frame->fd, $result, WEBSOCKET_OPCODE_TEXT, true);
-                    }
+                    $handleRes['data'] = $result instanceof Result ? $result->getJson() : $result;
                 }
 
                 break;
@@ -332,26 +316,91 @@ class HttpServer extends BaseServer
                     }
                 } catch (\Exception $e) {
                     Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
-
                     $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务出错');
                 } finally {
-                    $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
+                    $handleRes['data'] = $result->getJson();
                 }
 
                 break;
             default:
                 $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '命令不存在');
-                $server->push($frame->fd, $result->getJson(), WEBSOCKET_OPCODE_TEXT, true);
+                $handleRes['data'] = $result->getJson();
 
                 break;
+        }
+
+        return $handleRes;
+    }
+
+    /**
+     * 接受socket消息
+     * 消息格式：abcde
+     * <pre>
+     * 格式说明：
+     *     a:消息头长度，值固定为16
+     *     b:消息内容长度，无符号整数
+     *     c:消息执行命令标识，4位字符串
+     *     d:保留字段，值固定为0000
+     *     e:消息内容，json格式
+     * </pre>
+     *
+     * @param \Swoole\WebSocket\Server $server
+     * @param \Swoole\WebSocket\Frame  $frame
+     */
+    public function onMessage(Server $server, Frame $frame)
+    {
+        if (!$frame->finish) { //数据未发送完
+            return;
+        }
+
+        if ($frame->opcode == SWOOLE_WEBSOCKET_OPCODE_CLOSE) {
+            Log::info('Close frame received,Code: ' . $frame->code . ';Reason: ' . $frame->reason);
+        } elseif ($frame->opcode == SWOOLE_WEBSOCKET_OPCODE_PING) {
+            $pongFrame = new Frame();
+            $pongFrame->opcode = SWOOLE_WEBSOCKET_OPCODE_PONG;
+            $server->push($frame->fd, $pongFrame);
+        } elseif ($frame->opcode == SWOOLE_WEBSOCKET_OPCODE_PONG) {
+            Log::info('Pong frame received');
+        } else {
+            $frameData = $frame->data ?? '';
+            $handleRes = $this->handleFrameData($frame->opcode, $frameData);
+            if ($handleRes['type'] == 0) {
+                $server->push(
+                    $frame->fd,
+                    $handleRes['data'],
+                    SWOOLE_WEBSOCKET_OPCODE_TEXT,
+                    SWOOLE_WEBSOCKET_FLAG_FIN | SWOOLE_WEBSOCKET_FLAG_COMPRESS
+                );
+            } elseif ($handleRes['type'] == 1) {
+                $server->close($frame->fd);
+            } else {
+                $result = new Result();
+                if ($server->exist($frame->fd)) {
+                    $result->setData([
+                        'status' => 1,
+                        'detail' => $server->getClientInfo($frame->fd),
+                    ]);
+                } else {
+                    $result->setData([
+                        'status' => 0,
+                        'detail' => [],
+                    ]);
+                }
+                $server->push(
+                    $frame->fd,
+                    $result->getJson(),
+                    SWOOLE_WEBSOCKET_OPCODE_TEXT,
+                    SWOOLE_WEBSOCKET_FLAG_FIN | SWOOLE_WEBSOCKET_FLAG_COMPRESS
+                );
+            }
         }
     }
 
     /**
      * 处理请求
-     *
-     * @param \Swoole\Http\Request  $request
+     * @param \Swoole\Http\Request $request
      * @param \Swoole\Http\Response $response
+     * @throws \Exception
      */
     public function onRequest(Request $request, Response $response)
     {
