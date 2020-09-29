@@ -228,111 +228,6 @@ class HttpServer extends BaseServer
     }
 
     /**
-     * 处理帧数据
-     * @param int $dataType 数据类型
-     * @param string $data 数据
-     * @return array
-     */
-    private function handleFrameData($dataType, string $data) : array
-    {
-        $result = new Result();
-        $handleRes = [
-            'type' => 0,
-        ];
-        if ($dataType != WEBSOCKET_OPCODE_BINARY) {
-            $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '只接受二进制数据');
-            $handleRes['data'] = $result->getJson();
-            return $handleRes;
-        }
-
-        $message = $this->_messagePack->unpackData($data);
-        $command = $this->_messagePack->getCommand();
-        $commandData = $this->_messagePack->getData();
-        $this->_messagePack->init();
-
-        if ($message === false) {
-            $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '消息格式不正确');
-            $handleRes['data'] = $result->getJson();
-            return $handleRes;
-        }
-
-        switch ($command) {
-            case SyPack::COMMAND_TYPE_SOCKET_CLIENT_CLOSE:
-                $handleRes['type'] = 1;
-                break;
-            case SyPack::COMMAND_TYPE_SOCKET_CLIENT_CHECK_STATUS:
-                $handleRes['type'] = 2;
-                break;
-            case SyPack::COMMAND_TYPE_SOCKET_CLIENT_GET_SERVER:
-                $result->setData([
-                    'sy_version' => SY_VERSION,
-                    'server_type' => 'swoole-http-server',
-                    'swoole_version' => SWOOLE_VERSION,
-                    'yaf_version' => \YAF\VERSION,
-                ]);
-                $handleRes['data'] = $result->getJson();
-                break;
-            case SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_API_REQ:
-                $module = $this->_moduleContainer->getObj($commandData['api_module']);
-
-                try {
-                    if (is_null($module)) {
-                        $handleRes = false;
-                    } elseif (($commandData['api_module'] == Project::MODULE_NAME_API) && ($commandData['api_method'] == 'GET')) {
-                        $handleRes = $module->sendGetReq($commandData['api_uri'], $commandData['api_params']);
-                    } elseif ($commandData['api_module'] == Project::MODULE_NAME_API) {
-                        $handleRes = $module->sendPostReq($commandData['api_uri'], $commandData['api_params']);
-                    } else {
-                        $handleRes = $module->sendApiReq($commandData['api_uri'], $commandData['api_params']);
-                    }
-                    if ($handleRes === false) {
-                        $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务处理失败');
-                    } else {
-                        $result = $handleRes;
-                    }
-                } catch (\Exception $e) {
-                    Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
-                    $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务出错');
-                } finally {
-                    $handleRes['data'] = $result instanceof Result ? $result->getJson() : $result;
-                }
-
-                break;
-            case SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ:
-                $module = $this->_moduleContainer->getObj($commandData['task_module']);
-
-                try {
-                    if (is_null($module)) {
-                        $handleRes = false;
-                    } else {
-                        $handleRes = $module->sendTaskReq($commandData['task_command'], $commandData['task_params']);
-                    }
-                    if ($handleRes === false) {
-                        $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务处理失败');
-                    } else {
-                        $result->setData([
-                            'result' => 'send task success',
-                        ]);
-                    }
-                } catch (\Exception $e) {
-                    Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
-                    $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务出错');
-                } finally {
-                    $handleRes['data'] = $result->getJson();
-                }
-
-                break;
-            default:
-                $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '命令不存在');
-                $handleRes['data'] = $result->getJson();
-
-                break;
-        }
-
-        return $handleRes;
-    }
-
-    /**
      * 接受socket消息
      * 消息格式：abcde
      * <pre>
@@ -398,8 +293,10 @@ class HttpServer extends BaseServer
 
     /**
      * 处理请求
-     * @param \Swoole\Http\Request $request
+     *
+     * @param \Swoole\Http\Request  $request
      * @param \Swoole\Http\Response $response
+     *
      * @throws \Exception
      */
     public function onRequest(Request $request, Response $response)
@@ -441,6 +338,118 @@ class HttpServer extends BaseServer
             $response->end(self::$_rspMsg);
         }
         $this->clearRequest();
+    }
+
+    /**
+     * 处理帧数据
+     *
+     * @param int    $dataType 数据类型
+     * @param string $data     数据
+     *
+     * @return array
+     */
+    private function handleFrameData($dataType, string $data) : array
+    {
+        $result = new Result();
+        $handleRes = [
+            'type' => 0,
+        ];
+        if ($dataType != WEBSOCKET_OPCODE_BINARY) {
+            $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '只接受二进制数据');
+            $handleRes['data'] = $result->getJson();
+
+            return $handleRes;
+        }
+
+        $message = $this->_messagePack->unpackData($data);
+        $command = $this->_messagePack->getCommand();
+        $commandData = $this->_messagePack->getData();
+        $this->_messagePack->init();
+
+        if ($message === false) {
+            $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '消息格式不正确');
+            $handleRes['data'] = $result->getJson();
+
+            return $handleRes;
+        }
+
+        switch ($command) {
+            case SyPack::COMMAND_TYPE_SOCKET_CLIENT_CLOSE:
+                $handleRes['type'] = 1;
+
+                break;
+            case SyPack::COMMAND_TYPE_SOCKET_CLIENT_CHECK_STATUS:
+                $handleRes['type'] = 2;
+
+                break;
+            case SyPack::COMMAND_TYPE_SOCKET_CLIENT_GET_SERVER:
+                $result->setData([
+                    'sy_version' => SY_VERSION,
+                    'server_type' => 'swoole-http-server',
+                    'swoole_version' => SWOOLE_VERSION,
+                    'yaf_version' => \YAF\VERSION,
+                ]);
+                $handleRes['data'] = $result->getJson();
+
+                break;
+            case SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_API_REQ:
+                $module = $this->_moduleContainer->getObj($commandData['api_module']);
+
+                try {
+                    if (is_null($module)) {
+                        $handleRes = false;
+                    } elseif (($commandData['api_module'] == Project::MODULE_NAME_API) && ($commandData['api_method'] == 'GET')) {
+                        $handleRes = $module->sendGetReq($commandData['api_uri'], $commandData['api_params']);
+                    } elseif ($commandData['api_module'] == Project::MODULE_NAME_API) {
+                        $handleRes = $module->sendPostReq($commandData['api_uri'], $commandData['api_params']);
+                    } else {
+                        $handleRes = $module->sendApiReq($commandData['api_uri'], $commandData['api_params']);
+                    }
+                    if ($handleRes === false) {
+                        $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务处理失败');
+                    } else {
+                        $result = $handleRes;
+                    }
+                } catch (\Exception $e) {
+                    Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
+                    $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务出错');
+                } finally {
+                    $handleRes['data'] = $result instanceof Result ? $result->getJson() : $result;
+                }
+
+                break;
+            case SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ:
+                $module = $this->_moduleContainer->getObj($commandData['task_module']);
+
+                try {
+                    if (is_null($module)) {
+                        $handleRes = false;
+                    } else {
+                        $handleRes = $module->sendTaskReq($commandData['task_command'], $commandData['task_params']);
+                    }
+                    if ($handleRes === false) {
+                        $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务处理失败');
+                    } else {
+                        $result->setData([
+                            'result' => 'send task success',
+                        ]);
+                    }
+                } catch (\Exception $e) {
+                    Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
+                    $result->setCodeMsg(ErrorCode::COMMON_SERVER_ERROR, '服务出错');
+                } finally {
+                    $handleRes['data'] = $result->getJson();
+                }
+
+                break;
+            default:
+                $result->setCodeMsg(ErrorCode::COMMON_PARAM_ERROR, '命令不存在');
+                $handleRes['data'] = $result->getJson();
+
+                break;
+        }
+
+        return $handleRes;
     }
 
     /**
