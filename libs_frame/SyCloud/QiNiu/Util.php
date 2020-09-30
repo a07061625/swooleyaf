@@ -35,9 +35,11 @@ abstract class Util
      * 生成管理凭证
      *
      * @param string $accessKey
-     * @param string $uri  请求URI
-     * @param string $body 请求体
+     * @param string $uri       请求URI
+     * @param string $body      请求体
+     *
      * @return string
+     *
      * @throws \SyException\Cloud\QiNiuException
      * @throws \SyException\ObjectStorage\KodoException
      */

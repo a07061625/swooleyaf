@@ -19,14 +19,18 @@ use SyTool\Tool;
 
 /**
  * Trait ObjectStorageConfigTrait
+ *
  * @package SyTrait
  */
 trait ObjectStorageConfigTrait
 {
     /**
      * 刷新七牛云配置
+     *
      * @param string $accessKey
+     *
      * @return \SyObjectStorage\ConfigKodo
+     *
      * @throws \SyException\Cloud\QiNiuException
      */
     private function refreshKodoConfig(string $accessKey)
@@ -43,13 +47,17 @@ trait ObjectStorageConfigTrait
             $kodoConfig->setValid(false);
         }
         $this->kodoConfigs[$accessKey] = $kodoConfig;
+
         return $kodoConfig;
     }
 
     /**
      * 刷新腾讯云配置
+     *
      * @param string $appId
+     *
      * @return \SyObjectStorage\ConfigCos
+     *
      * @throws \SyException\Cloud\TencentException
      * @throws \SyException\ObjectStorage\CosException
      */
@@ -72,14 +80,18 @@ trait ObjectStorageConfigTrait
             $cosConfig->setValid(false);
         }
         $this->cosConfigs[$appId] = $cosConfig;
+
         return $cosConfig;
     }
 
     /**
      * 刷新阿里云信息
+     *
      * @param string $accessKey
-     * @param int $getType 获取类型 1:获取阿里云配置 2:获取阿里云客户端
+     * @param int    $getType   获取类型 1:获取阿里云配置 2:获取阿里云客户端
+     *
      * @return bool|\SyObjectStorage\ConfigOss|\SyObjectStorage\Oss\OssClient
+     *
      * @throws \SyException\Cloud\AliException
      * @throws \SyException\ObjectStorage\OssException
      */
@@ -141,8 +153,8 @@ trait ObjectStorageConfigTrait
 
         if ($getType == 1) {
             return $ossConfig;
-        } else {
-            return $ossClient;
         }
+
+        return $ossClient;
     }
 }

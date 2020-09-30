@@ -7,20 +7,22 @@
  */
 namespace SyObjectStorage\Kodo\Bucket;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 
 class PermissionSet extends BaseKodo
 {
     /**
      * 空间名称
+     *
      * @var string
      */
     private $bucket = '';
     /**
      * 权限类型 0:公开 1:私有
+     *
      * @var int
      */
     private $private = 0;
@@ -39,6 +41,7 @@ class PermissionSet extends BaseKodo
 
     /**
      * @param string $bucket
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBucket(string $bucket)
@@ -52,6 +55,7 @@ class PermissionSet extends BaseKodo
 
     /**
      * @param int $private
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setPrivate(int $private)
@@ -76,6 +80,7 @@ class PermissionSet extends BaseKodo
         $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri, $body);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $body;
+
         return $this->getContent();
     }
 }

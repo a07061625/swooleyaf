@@ -13,6 +13,7 @@ use SyTool\Tool;
 
 /**
  * 设置存储桶的跨域访问配置信息
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class CorsPut extends BaseCos
@@ -33,6 +34,7 @@ class CorsPut extends BaseCos
 
     /**
      * @param array $data
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setCorConfig(array $data)

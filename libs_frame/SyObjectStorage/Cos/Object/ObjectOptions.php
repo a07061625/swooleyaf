@@ -12,12 +12,14 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 对象跨域访问预请求
+ *
  * @package SyObjectStorage\Cos\Object
  */
 class ObjectOptions extends BaseCos
 {
     /**
      * 对象名称
+     *
      * @var string
      */
     private $objectKey = '';
@@ -35,6 +37,7 @@ class ObjectOptions extends BaseCos
 
     /**
      * @param string $objectKey
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setObjectKey(string $objectKey)

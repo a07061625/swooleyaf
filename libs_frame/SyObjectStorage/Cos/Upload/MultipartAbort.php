@@ -12,17 +12,20 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 舍弃并删除一个上传分块
+ *
  * @package SyObjectStorage\Cos\Upload
  */
 class MultipartAbort extends BaseCos
 {
     /**
      * 对象名称
+     *
      * @var string
      */
     private $objectKey = '';
     /**
      * 上传ID
+     *
      * @var string
      */
     private $uploadId = '';
@@ -40,6 +43,7 @@ class MultipartAbort extends BaseCos
 
     /**
      * @param string $objectKey
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setObjectKey(string $objectKey)
@@ -54,6 +58,7 @@ class MultipartAbort extends BaseCos
 
     /**
      * @param string $uploadId
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setUploadId(string $uploadId)
@@ -75,6 +80,7 @@ class MultipartAbort extends BaseCos
             throw new CosException('上传ID不能为空', ErrorCode::OBJECT_STORAGE_COS_PARAM_ERROR);
         }
         $this->setReqQuery($this->reqData);
+
         return $this->getContent();
     }
 }

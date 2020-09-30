@@ -12,27 +12,32 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 获取特定上传事件中已上传的块
+ *
  * @package SyObjectStorage\Cos\Upload
  */
 class PartList extends BaseCos
 {
     /**
      * 对象名称
+     *
      * @var string
      */
     private $objectKey = '';
     /**
      * 上传ID
+     *
      * @var string
      */
     private $uploadId = '';
     /**
      * 起始索引
+     *
      * @var int
      */
     private $startIndex = 0;
     /**
      * 条目数
+     *
      * @var int
      */
     private $limit = 0;
@@ -53,6 +58,7 @@ class PartList extends BaseCos
 
     /**
      * @param string $objectKey
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setObjectKey(string $objectKey)
@@ -67,6 +73,7 @@ class PartList extends BaseCos
 
     /**
      * @param string $uploadId
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setUploadId(string $uploadId)
@@ -81,6 +88,7 @@ class PartList extends BaseCos
 
     /**
      * @param int $startIndex
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setStartIndex(int $startIndex)
@@ -94,6 +102,7 @@ class PartList extends BaseCos
 
     /**
      * @param int $limit
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setLimit(int $limit)

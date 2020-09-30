@@ -13,6 +13,7 @@ use SyTool\Tool;
 
 /**
  * 设置存储桶的静态网站配置
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class WebsitePut extends BaseCos
@@ -33,6 +34,7 @@ class WebsitePut extends BaseCos
 
     /**
      * @param array $data
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setWebsiteConfig(array $data)

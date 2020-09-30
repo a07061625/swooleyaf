@@ -10,6 +10,7 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 获取存储桶的地域信息
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class LocationGet extends BaseCos

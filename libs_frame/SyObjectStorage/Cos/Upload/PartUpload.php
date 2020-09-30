@@ -12,22 +12,26 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 分块上传
+ *
  * @package SyObjectStorage\Cos\Upload
  */
 class PartUpload extends BaseCos
 {
     /**
      * 对象名称
+     *
      * @var string
      */
     private $objectKey = '';
     /**
      * 上传ID
+     *
      * @var string
      */
     private $uploadId = '';
     /**
      * 上传编号
+     *
      * @var int
      */
     private $partNumber = 0;
@@ -45,6 +49,7 @@ class PartUpload extends BaseCos
 
     /**
      * @param string $objectKey
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setObjectKey(string $objectKey)
@@ -59,6 +64,7 @@ class PartUpload extends BaseCos
 
     /**
      * @param string $uploadId
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setUploadId(string $uploadId)
@@ -73,6 +79,7 @@ class PartUpload extends BaseCos
 
     /**
      * @param int $partNumber
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setPartNumber(int $partNumber)
@@ -86,6 +93,7 @@ class PartUpload extends BaseCos
 
     /**
      * @param string $content
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setUploadContent(string $content)

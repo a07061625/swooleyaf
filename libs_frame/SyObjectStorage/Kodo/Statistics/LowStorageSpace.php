@@ -7,40 +7,46 @@
  */
 namespace SyObjectStorage\Kodo\Statistics;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 
 class LowStorageSpace extends BaseKodo
 {
     /**
      * 空间名称
+     *
      * @var string
      */
     private $bucket = '';
     /**
      * 起始时间戳
+     *
      * @var int
      */
     private $begin = 0;
     /**
      * 结束时间戳
+     *
      * @var int
      */
     private $end = 0;
     /**
      * 时间粒度
+     *
      * @var string
      */
     private $g = '';
     /**
      * 存储区域
+     *
      * @var string
      */
     private $region = '';
     /**
      * 提前删除标识 -1:显示所有 0:不显示提前删除的文件 1:只显示提前删除的文件
+     *
      * @var int
      */
     private $preDel = -1;
@@ -60,6 +66,7 @@ class LowStorageSpace extends BaseKodo
 
     /**
      * @param string $bucket
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBucket(string $bucket)
@@ -73,6 +80,7 @@ class LowStorageSpace extends BaseKodo
 
     /**
      * @param int $begin
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBeginTime(int $begin)
@@ -86,6 +94,7 @@ class LowStorageSpace extends BaseKodo
 
     /**
      * @param int $end
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setEndTime(int $end)
@@ -99,6 +108,7 @@ class LowStorageSpace extends BaseKodo
 
     /**
      * @param string $region
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setRegion(string $region)
@@ -112,13 +122,13 @@ class LowStorageSpace extends BaseKodo
 
     /**
      * @param int $preDel
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setPreDel(int $preDel)
     {
         if ($preDel == -1) {
-            unset($this->reqData['no_predel']);
-            unset($this->reqData['only_predel']);
+            unset($this->reqData['no_predel'], $this->reqData['only_predel']);
         } elseif ($preDel == 0) {
             $this->reqData['no_predel'] = 1;
             unset($this->reqData['only_predel']);
@@ -141,6 +151,7 @@ class LowStorageSpace extends BaseKodo
 
         $this->serviceUri = '/v6/space_line?' . http_build_query($this->reqData);
         $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
+
         return $this->getContent();
     }
 }

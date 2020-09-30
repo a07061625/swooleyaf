@@ -10,6 +10,7 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 删除存储桶的生命周期配置
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class LifecycleDelete extends BaseCos

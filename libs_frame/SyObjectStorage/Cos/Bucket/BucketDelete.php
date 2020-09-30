@@ -10,6 +10,7 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 删除存储桶
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class BucketDelete extends BaseCos

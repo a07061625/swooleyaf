@@ -12,12 +12,14 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 设置对象的访问权限
+ *
  * @package SyObjectStorage\Cos\Object
  */
 class AclPut extends BaseCos
 {
     /**
      * 对象名称
+     *
      * @var string
      */
     private $objectKey = '';
@@ -35,6 +37,7 @@ class AclPut extends BaseCos
 
     /**
      * @param string $objectKey
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setObjectKey(string $objectKey)
@@ -50,6 +53,7 @@ class AclPut extends BaseCos
 
     /**
      * @param string $aclConfig
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setAclConfig(string $aclConfig)

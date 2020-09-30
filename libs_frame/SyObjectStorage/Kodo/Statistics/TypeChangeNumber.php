@@ -7,40 +7,46 @@
  */
 namespace SyObjectStorage\Kodo\Statistics;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 
 class TypeChangeNumber extends BaseKodo
 {
     /**
      * 空间名称
+     *
      * @var string
      */
     private $bucket = '';
     /**
      * 起始时间戳
+     *
      * @var int
      */
     private $begin = 0;
     /**
      * 结束时间戳
+     *
      * @var int
      */
     private $end = 0;
     /**
      * 时间粒度
+     *
      * @var string
      */
     private $g = '';
     /**
      * 选择类型
+     *
      * @var string
      */
     private $select = '';
     /**
      * 存储区域
+     *
      * @var string
      */
     private $region = '';
@@ -60,6 +66,7 @@ class TypeChangeNumber extends BaseKodo
 
     /**
      * @param string $bucket
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBucket(string $bucket)
@@ -73,6 +80,7 @@ class TypeChangeNumber extends BaseKodo
 
     /**
      * @param int $begin
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBeginTime(int $begin)
@@ -86,6 +94,7 @@ class TypeChangeNumber extends BaseKodo
 
     /**
      * @param int $end
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setEndTime(int $end)
@@ -99,6 +108,7 @@ class TypeChangeNumber extends BaseKodo
 
     /**
      * @param string $timeSize
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setTimeSize(string $timeSize)
@@ -112,6 +122,7 @@ class TypeChangeNumber extends BaseKodo
 
     /**
      * @param string $region
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setRegion(string $region)
@@ -137,6 +148,7 @@ class TypeChangeNumber extends BaseKodo
 
         $this->serviceUri = '/v6/rs_chtype?' . http_build_query($this->reqData);
         $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
+
         return $this->getContent();
     }
 }

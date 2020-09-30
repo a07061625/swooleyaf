@@ -12,32 +12,38 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 获取存储桶的对象列表
+ *
  * @package SyObjectStorage\Cos\Object
  */
 class BucketGet extends BaseCos
 {
     /**
      * 前缀
+     *
      * @var string
      */
     private $prefix = '';
     /**
      * 定界符
+     *
      * @var string
      */
     private $delimiter = '';
     /**
      * 编码方式
+     *
      * @var string
      */
     private $encoding_type = '';
     /**
      * 偏移量
+     *
      * @var int
      */
     private $offset = 0;
     /**
      * 条目数
+     *
      * @var int
      */
     private $limit = 0;
@@ -59,6 +65,7 @@ class BucketGet extends BaseCos
 
     /**
      * @param string $prefix
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setPrefix(string $prefix)
@@ -72,6 +79,7 @@ class BucketGet extends BaseCos
 
     /**
      * @param string $delimiter
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setDelimiter(string $delimiter)
@@ -85,6 +93,7 @@ class BucketGet extends BaseCos
 
     /**
      * @param int $offset
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setOffset(int $offset)
@@ -98,6 +107,7 @@ class BucketGet extends BaseCos
 
     /**
      * @param int $limit
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setLimit(int $limit)
@@ -112,6 +122,7 @@ class BucketGet extends BaseCos
     public function getDetail() : array
     {
         $this->setReqQuery($this->reqData);
+
         return $this->getContent();
     }
 }

@@ -16,9 +16,12 @@ class OssTool
 
     /**
      * 签名前端配置
+     *
      * @param string $accessKey
-     * @param array $policy
+     * @param array  $policy
+     *
      * @return array
+     *
      * @throws \SyException\Cloud\AliException
      * @throws \SyException\ObjectStorage\OssException
      */

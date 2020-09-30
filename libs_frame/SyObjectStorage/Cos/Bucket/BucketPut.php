@@ -10,6 +10,7 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 创建存储桶
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class BucketPut extends BaseCos

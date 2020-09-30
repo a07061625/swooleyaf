@@ -7,13 +7,14 @@
  */
 namespace SyObjectStorage\Kodo\Service;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
+use SyObjectStorage\BaseKodo;
 
 class BucketsGet extends BaseKodo
 {
     /**
      * 过滤标签数组
+     *
      * @var array
      */
     private $tags = [];
@@ -48,6 +49,7 @@ class BucketsGet extends BaseKodo
     {
         $this->serviceUri = '/buckets?' . http_build_query($this->reqData);
         $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
+
         return $this->getContent();
     }
 }

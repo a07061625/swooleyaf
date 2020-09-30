@@ -10,6 +10,7 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 获取存储桶的生命周期配置
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class LifecycleGet extends BaseCos

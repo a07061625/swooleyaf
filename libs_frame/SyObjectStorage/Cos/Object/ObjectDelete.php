@@ -12,12 +12,14 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 删除单个对象
+ *
  * @package SyObjectStorage\Cos\Object
  */
 class ObjectDelete extends BaseCos
 {
     /**
      * 对象名称
+     *
      * @var string
      */
     private $objectKey = '';
@@ -35,6 +37,7 @@ class ObjectDelete extends BaseCos
 
     /**
      * @param string $objectKey
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setObjectKey(string $objectKey)

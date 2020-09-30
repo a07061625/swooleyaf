@@ -10,6 +10,7 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 获取所有存储空间列表
+ *
  * @package SyObjectStorage\Cos\Services
  */
 class StorageListGet extends BaseCos

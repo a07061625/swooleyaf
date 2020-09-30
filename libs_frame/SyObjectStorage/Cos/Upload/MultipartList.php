@@ -12,37 +12,44 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 获取进行中的分块上传列表
+ *
  * @package SyObjectStorage\Cos\Upload
  */
 class MultipartList extends BaseCos
 {
     /**
      * 前缀
+     *
      * @var string
      */
     private $prefix = '';
     /**
      * 定界符
+     *
      * @var string
      */
     private $delimiter = '';
     /**
      * 编码方式
+     *
      * @var string
      */
     private $encoding_type = '';
     /**
      * 起始索引
+     *
      * @var string
      */
     private $marker_key = '';
     /**
      * 起始ID
+     *
      * @var string
      */
     private $marker_upload_id = '';
     /**
      * 条目数
+     *
      * @var int
      */
     private $limit = 0;
@@ -64,6 +71,7 @@ class MultipartList extends BaseCos
 
     /**
      * @param string $prefix
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setPrefix(string $prefix)
@@ -77,6 +85,7 @@ class MultipartList extends BaseCos
 
     /**
      * @param string $delimiter
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setDelimiter(string $delimiter)
@@ -90,6 +99,7 @@ class MultipartList extends BaseCos
 
     /**
      * @param string $markerKey
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setMarkerKey(string $markerKey)
@@ -103,6 +113,7 @@ class MultipartList extends BaseCos
 
     /**
      * @param string $markerUploadId
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setMarkerUploadId(string $markerUploadId)
@@ -116,6 +127,7 @@ class MultipartList extends BaseCos
 
     /**
      * @param int $limit
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setLimit(int $limit)
@@ -130,6 +142,7 @@ class MultipartList extends BaseCos
     public function getDetail() : array
     {
         $this->setReqQuery($this->reqData);
+
         return $this->getContent();
     }
 }

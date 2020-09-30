@@ -7,15 +7,16 @@
  */
 namespace SyObjectStorage\Kodo\Object;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 
 class FileBatch extends BaseKodo
 {
     /**
      * 操作列表
+     *
      * @var array
      */
     private $opList = [];
@@ -34,6 +35,7 @@ class FileBatch extends BaseKodo
 
     /**
      * @param array $optionList
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setOptionList(array $optionList)
@@ -65,6 +67,7 @@ class FileBatch extends BaseKodo
         $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri, $body);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $body;
+
         return $this->getContent();
     }
 }

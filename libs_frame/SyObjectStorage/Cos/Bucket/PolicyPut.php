@@ -13,6 +13,7 @@ use SyTool\Tool;
 
 /**
  * 设置存储桶的权限策略
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class PolicyPut extends BaseCos
@@ -33,6 +34,7 @@ class PolicyPut extends BaseCos
 
     /**
      * @param array $data
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setPolicyConfig(array $data)

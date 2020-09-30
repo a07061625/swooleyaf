@@ -13,6 +13,7 @@ use SyTool\Tool;
 
 /**
  * 设置存储桶Referer的白名单或者黑名单
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class RefererPut extends BaseCos
@@ -32,6 +33,7 @@ class RefererPut extends BaseCos
 
     /**
      * @param array $data
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setRefererConfig(array $data)

@@ -12,12 +12,14 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 复制文件
+ *
  * @package SyObjectStorage\Cos\Object
  */
 class CopyPut extends BaseCos
 {
     /**
      * 对象名称
+     *
      * @var string
      */
     private $objectKey = '';
@@ -35,6 +37,7 @@ class CopyPut extends BaseCos
 
     /**
      * @param string $objectKey
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setObjectKey(string $objectKey)

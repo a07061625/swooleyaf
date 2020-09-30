@@ -10,6 +10,7 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 确认存储桶是否存在,是否有权限访问
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class BucketHead extends BaseCos

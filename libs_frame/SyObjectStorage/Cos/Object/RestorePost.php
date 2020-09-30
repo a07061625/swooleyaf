@@ -13,12 +13,14 @@ use SyTool\Tool;
 
 /**
  * 恢复archive类型的对象
+ *
  * @package SyObjectStorage\Cos\Object
  */
 class RestorePost extends BaseCos
 {
     /**
      * 对象名称
+     *
      * @var string
      */
     private $objectKey = '';
@@ -36,6 +38,7 @@ class RestorePost extends BaseCos
 
     /**
      * @param string $objectKey
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setObjectKey(string $objectKey)
@@ -51,6 +54,7 @@ class RestorePost extends BaseCos
 
     /**
      * @param array $restoreConfig
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setRestoreConfig(array $restoreConfig)

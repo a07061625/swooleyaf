@@ -10,6 +10,7 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 获取存储桶的静态网站配置
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class WebsiteGet extends BaseCos
