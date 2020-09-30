@@ -12,12 +12,14 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 初始化分片上传
+ *
  * @package SyObjectStorage\Cos\Upload
  */
 class MultipartInitiate extends BaseCos
 {
     /**
      * 对象名称
+     *
      * @var string
      */
     private $objectKey = '';
@@ -35,6 +37,7 @@ class MultipartInitiate extends BaseCos
 
     /**
      * @param string $objectKey
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setObjectKey(string $objectKey)

@@ -13,6 +13,7 @@ use SyTool\Tool;
 
 /**
  * 设置存储桶的生命周期配置
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class LifecyclePut extends BaseCos
@@ -32,6 +33,7 @@ class LifecyclePut extends BaseCos
 
     /**
      * @param array $data
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setLifecycleConfig(array $data)

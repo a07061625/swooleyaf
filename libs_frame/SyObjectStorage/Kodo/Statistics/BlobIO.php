@@ -7,55 +7,64 @@
  */
 namespace SyObjectStorage\Kodo\Statistics;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 
 class BlobIO extends BaseKodo
 {
     /**
      * 空间名称
+     *
      * @var string
      */
     private $bucket = '';
     /**
      * 起始时间戳
+     *
      * @var int
      */
     private $begin = 0;
     /**
      * 结束时间戳
+     *
      * @var int
      */
     private $end = 0;
     /**
      * 时间粒度
+     *
      * @var string
      */
     private $g = '';
     /**
      * 选择类型
+     *
      * @var string
      */
     private $select = '';
     /**
      * 存储区域
+     *
      * @var string
      */
     private $region = '';
     /**
      * 存储类型 0:标准存储 1:低频存储
+     *
      * @var int
      */
     private $ftype = 0;
     /**
      * 访问域名
+     *
      * @var string
      */
     private $domain = '';
     /**
      * 请求来源
+     *
      * @var string
      */
     private $src = '';
@@ -72,6 +81,7 @@ class BlobIO extends BaseKodo
 
     /**
      * @param string $bucket
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBucket(string $bucket)
@@ -85,6 +95,7 @@ class BlobIO extends BaseKodo
 
     /**
      * @param int $begin
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBeginTime(int $begin)
@@ -98,6 +109,7 @@ class BlobIO extends BaseKodo
 
     /**
      * @param int $end
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setEndTime(int $end)
@@ -111,6 +123,7 @@ class BlobIO extends BaseKodo
 
     /**
      * @param string $timeSize
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setTimeSize(string $timeSize)
@@ -124,6 +137,7 @@ class BlobIO extends BaseKodo
 
     /**
      * @param string $selectType
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setSelectType(string $selectType)
@@ -137,6 +151,7 @@ class BlobIO extends BaseKodo
 
     /**
      * @param string $region
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setRegion(string $region)
@@ -150,6 +165,7 @@ class BlobIO extends BaseKodo
 
     /**
      * @param int $fileType
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setFileType(int $fileType)
@@ -163,6 +179,7 @@ class BlobIO extends BaseKodo
 
     /**
      * @param string $domain
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setDomain(string $domain)
@@ -176,6 +193,7 @@ class BlobIO extends BaseKodo
 
     /**
      * @param string $src
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setSrc(string $src)
@@ -204,6 +222,7 @@ class BlobIO extends BaseKodo
 
         $this->serviceUri = '/v6/blob_io?' . http_build_query($this->reqData);
         $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
+
         return $this->getContent();
     }
 }

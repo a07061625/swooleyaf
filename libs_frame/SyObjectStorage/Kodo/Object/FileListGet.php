@@ -7,35 +7,40 @@
  */
 namespace SyObjectStorage\Kodo\Object;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 
 class FileListGet extends BaseKodo
 {
     /**
      * 空间名称
+     *
      * @var string
      */
     private $bucket = '';
     /**
      * 位置标记
+     *
      * @var string
      */
     private $marker = '';
     /**
      * 条目数
+     *
      * @var int
      */
     private $limit = 0;
     /**
      * 前缀
+     *
      * @var string
      */
     private $prefix = '';
     /**
      * 目录分隔符
+     *
      * @var string
      */
     private $delimiter = '';
@@ -58,6 +63,7 @@ class FileListGet extends BaseKodo
 
     /**
      * @param string $bucket
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBucket(string $bucket)
@@ -71,6 +77,7 @@ class FileListGet extends BaseKodo
 
     /**
      * @param string $marker
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setMarker(string $marker)
@@ -84,6 +91,7 @@ class FileListGet extends BaseKodo
 
     /**
      * @param int $limit
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setLimit(int $limit)
@@ -119,6 +127,7 @@ class FileListGet extends BaseKodo
 
         $this->serviceUri = '/list?' . http_build_query($this->reqData);
         $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
+
         return $this->getContent();
     }
 }

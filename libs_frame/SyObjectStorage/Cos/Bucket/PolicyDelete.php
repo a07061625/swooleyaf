@@ -10,6 +10,7 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 删除存储桶的权限策略
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class PolicyDelete extends BaseCos

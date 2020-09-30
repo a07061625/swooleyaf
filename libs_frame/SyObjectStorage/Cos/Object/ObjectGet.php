@@ -12,42 +12,50 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 下载单个对象
+ *
  * @package SyObjectStorage\Cos\Object
  */
 class ObjectGet extends BaseCos
 {
     /**
      * 对象名称
+     *
      * @var string
      */
     private $objectKey = '';
     /**
      * 响应头content-type
+     *
      * @var string
      */
     private $response_content_type = '';
     /**
      * 响应头content-language
+     *
      * @var string
      */
     private $response_content_language = '';
     /**
      * 响应头expires
+     *
      * @var string
      */
     private $response_expires = '';
     /**
      * 响应头cache-control
+     *
      * @var string
      */
     private $response_cache_control = '';
     /**
      * 响应头content-disposition
+     *
      * @var string
      */
     private $response_content_disposition = '';
     /**
      * 响应头content-encoding
+     *
      * @var string
      */
     private $response_content_encoding = '';
@@ -65,6 +73,7 @@ class ObjectGet extends BaseCos
 
     /**
      * @param string $objectKey
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setObjectKey(string $objectKey)
@@ -79,6 +88,7 @@ class ObjectGet extends BaseCos
 
     /**
      * @param string $contentType
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setResponseContentType(string $contentType)
@@ -93,6 +103,7 @@ class ObjectGet extends BaseCos
 
     /**
      * @param string $contentLanguage
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setResponseContentLanguage(string $contentLanguage)
@@ -107,6 +118,7 @@ class ObjectGet extends BaseCos
 
     /**
      * @param string $expires
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setResponseExpires(string $expires)
@@ -121,6 +133,7 @@ class ObjectGet extends BaseCos
 
     /**
      * @param string $cacheControl
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setResponseCacheControl(string $cacheControl)
@@ -135,6 +148,7 @@ class ObjectGet extends BaseCos
 
     /**
      * @param string $contentDisposition
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setResponseContentDisposition(string $contentDisposition)
@@ -149,6 +163,7 @@ class ObjectGet extends BaseCos
 
     /**
      * @param string $contentEncoding
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setResponseContentEncoding(string $contentEncoding)

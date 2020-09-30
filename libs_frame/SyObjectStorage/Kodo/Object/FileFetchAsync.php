@@ -7,10 +7,10 @@
  */
 namespace SyObjectStorage\Kodo\Object;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 use SyTool\Tool;
 
 class FileFetchAsync extends BaseKodo
@@ -20,66 +20,79 @@ class FileFetchAsync extends BaseKodo
 
     /**
      * 存储区域
+     *
      * @var string
      */
     private $region = '';
     /**
      * 链接列表
+     *
      * @var array
      */
     private $url = [];
     /**
      * 空间名称
+     *
      * @var string
      */
     private $bucket = '';
     /**
      * 链接域名
+     *
      * @var string
      */
     private $host = '';
     /**
      * 文件存储key
+     *
      * @var string
      */
     private $key = '';
     /**
      * 文件md5
+     *
      * @var string
      */
     private $md5 = '';
     /**
      * 文件etag
+     *
      * @var string
      */
     private $etag = '';
     /**
      * 回调URL
+     *
      * @var string
      */
     private $callbackurl = '';
     /**
      * 回调Body
+     *
      * @var array
      */
     private $callbackbody = [];
     /**
      * 回调Body内容类型
+     *
      * @var string
      */
     private $callbackbodytype = '';
     /**
      * 回调域名
+     *
      * @var string
      */
     private $callbackhost = '';
     /**
      * 存储文件类型 0:正常存储(默认) 1:低频存储
+     *
      * @var int
      */
     private $file_type = 0;
     /**
      * 忽略标识 false:已存在同名文件则放弃抓取 true:已存在同名文件则继续抓取
+     *
      * @var bool
      */
     private $ignore_same_key = false;
@@ -102,6 +115,7 @@ class FileFetchAsync extends BaseKodo
 
     /**
      * @param string $region
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setRegion(string $region)
@@ -116,6 +130,7 @@ class FileFetchAsync extends BaseKodo
 
     /**
      * @param array $urlList
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setUrl(array $urlList)
@@ -135,6 +150,7 @@ class FileFetchAsync extends BaseKodo
 
     /**
      * @param string $bucket
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBucket(string $bucket)
@@ -148,6 +164,7 @@ class FileFetchAsync extends BaseKodo
 
     /**
      * @param string $host
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setHost(string $host)
@@ -161,6 +178,7 @@ class FileFetchAsync extends BaseKodo
 
     /**
      * @param string $key
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setKey(string $key)
@@ -174,6 +192,7 @@ class FileFetchAsync extends BaseKodo
 
     /**
      * @param string $md5
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setMd5(string $md5)
@@ -187,6 +206,7 @@ class FileFetchAsync extends BaseKodo
 
     /**
      * @param string $etag
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setEtag(string $etag)
@@ -200,6 +220,7 @@ class FileFetchAsync extends BaseKodo
 
     /**
      * @param string $callbackUrl
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setCallbackUrl(string $callbackUrl)
@@ -213,6 +234,7 @@ class FileFetchAsync extends BaseKodo
 
     /**
      * @param array $callbackBody
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setCallbackBody(array $callbackBody)
@@ -226,6 +248,7 @@ class FileFetchAsync extends BaseKodo
 
     /**
      * @param string $callbackBodyType
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setCallbackBodyType(string $callbackBodyType)
@@ -239,6 +262,7 @@ class FileFetchAsync extends BaseKodo
 
     /**
      * @param string $callbackHost
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setCallbackHost(string $callbackHost)
@@ -252,6 +276,7 @@ class FileFetchAsync extends BaseKodo
 
     /**
      * @param int $fileType
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setFileType(int $fileType)
@@ -298,6 +323,7 @@ class FileFetchAsync extends BaseKodo
         $this->reqHeader['Authorization'] = 'Qiniu ' . Util::createAccessToken($this->accessKey, $this->serviceUri, $body);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $body;
+
         return $this->getContent();
     }
 }

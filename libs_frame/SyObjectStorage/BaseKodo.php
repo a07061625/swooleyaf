@@ -29,16 +29,19 @@ abstract class BaseKodo extends Base
 
     /**
      * 访问账号
+     *
      * @var string
      */
     protected $accessKey = '';
     /**
      * 服务uri
+     *
      * @var string
      */
     protected $serviceUri = '';
     /**
      * 服务域名
+     *
      * @var string
      */
     protected $serviceHost = '';
@@ -51,7 +54,9 @@ abstract class BaseKodo extends Base
 
     /**
      * 设置服务域名
+     *
      * @param string $host 服务域名
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     protected function setServiceHost(string $host)
@@ -74,6 +79,7 @@ abstract class BaseKodo extends Base
             $reqHeaderArr[] = $headerKey . ': ' . $headerVal;
         }
         $this->curlConfigs[CURLOPT_HTTPHEADER] = $reqHeaderArr;
+
         return $this->curlConfigs;
     }
 }

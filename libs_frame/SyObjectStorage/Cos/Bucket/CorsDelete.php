@@ -10,6 +10,7 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 删除存储桶的跨域访问配置信息
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class CorsDelete extends BaseCos

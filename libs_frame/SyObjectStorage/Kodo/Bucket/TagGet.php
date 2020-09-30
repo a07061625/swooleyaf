@@ -7,15 +7,16 @@
  */
 namespace SyObjectStorage\Kodo\Bucket;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 
 class TagGet extends BaseKodo
 {
     /**
      * 空间名称
+     *
      * @var string
      */
     private $bucketName = '';
@@ -33,6 +34,7 @@ class TagGet extends BaseKodo
 
     /**
      * @param string $bucketName
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBucketName(string $bucketName)
@@ -52,6 +54,7 @@ class TagGet extends BaseKodo
 
         $this->serviceUri = '/bucketTagging?' . http_build_query($this->reqData);
         $this->reqHeader['Authorization'] = 'Qiniu ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
+
         return $this->getContent();
     }
 }

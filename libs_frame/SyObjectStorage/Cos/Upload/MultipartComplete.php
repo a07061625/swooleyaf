@@ -12,22 +12,26 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 完成分块上传
+ *
  * @package SyObjectStorage\Cos\Upload
  */
 class MultipartComplete extends BaseCos
 {
     /**
      * 对象名称
+     *
      * @var string
      */
     private $objectKey = '';
     /**
      * 上传ID
+     *
      * @var string
      */
     private $uploadId = '';
     /**
      * 节点信息列表
+     *
      * @var array
      */
     private $nodeList = [];
@@ -45,6 +49,7 @@ class MultipartComplete extends BaseCos
 
     /**
      * @param string $objectKey
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setObjectKey(string $objectKey)
@@ -59,6 +64,7 @@ class MultipartComplete extends BaseCos
 
     /**
      * @param string $uploadId
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setUploadId(string $uploadId)
@@ -73,6 +79,7 @@ class MultipartComplete extends BaseCos
 
     /**
      * @param array $nodeList
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setNodeList(array $nodeList)

@@ -10,6 +10,7 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 设置存储桶的访问权限控制
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class ActPut extends BaseCos

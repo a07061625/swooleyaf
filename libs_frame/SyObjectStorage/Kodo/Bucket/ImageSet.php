@@ -7,25 +7,28 @@
  */
 namespace SyObjectStorage\Kodo\Bucket;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 
 class ImageSet extends BaseKodo
 {
     /**
      * 空间名称
+     *
      * @var string
      */
     private $bucketName = '';
     /**
      * 访问域名
+     *
      * @var string
      */
     private $srcSiteUrl = '';
     /**
      * 回源域名
+     *
      * @var string
      */
     private $host = '';
@@ -42,6 +45,7 @@ class ImageSet extends BaseKodo
 
     /**
      * @param string $bucketName
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBucketName(string $bucketName)
@@ -55,6 +59,7 @@ class ImageSet extends BaseKodo
 
     /**
      * @param string $srcSiteUrl
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setSrcSiteUrl(string $srcSiteUrl)
@@ -68,6 +73,7 @@ class ImageSet extends BaseKodo
 
     /**
      * @param string $host
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setHost(string $host)
@@ -92,6 +98,7 @@ class ImageSet extends BaseKodo
         $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = '';
+
         return $this->getContent();
     }
 }
