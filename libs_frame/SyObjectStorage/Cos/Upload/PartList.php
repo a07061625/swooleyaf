@@ -37,9 +37,9 @@ class PartList extends BaseCos
      */
     private $limit = 0;
 
-    public function __construct()
+    public function __construct(string $appId)
     {
-        parent::__construct();
+        parent::__construct($appId);
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_GET);
         $this->reqData['encoding-type'] = 'url';
@@ -85,7 +85,6 @@ class PartList extends BaseCos
      */
     public function setStartIndex(int $startIndex)
     {
-        $this->startIndex = $startIndex;
         if ($startIndex > 0) {
             $this->reqData['part-number-marker'] = $startIndex;
         } else {

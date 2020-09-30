@@ -30,6 +30,11 @@ abstract class BaseCos extends Base
     ];
 
     /**
+     * 应用ID
+     * @var string
+     */
+    protected $appId = '';
+    /**
      * 请求头
      * @var array
      */
@@ -69,16 +74,16 @@ abstract class BaseCos extends Base
      * @var int
      */
     protected $signExpireTime = 0;
-
     /**
      * 请求参数字符串
      * @var string
      */
     private $reqQuery = '';
 
-    public function __construct()
+    public function __construct(string $appId)
     {
         parent::__construct();
+        $this->appId = $appId;
         $this->reqUri = '/';
         $this->signTag = true;
         $this->signExpireTime = 30;
@@ -119,11 +124,13 @@ abstract class BaseCos extends Base
 
     /**
      * @param string $reqHost
+     * @throws \SyException\Cloud\TencentException
+     * @throws \SyException\ObjectStorage\CosException
      */
     protected function setReqHost(string $reqHost = '')
     {
         if (strlen($reqHost) == 0) {
-            $this->reqHost = ObjectStorageConfigSingleton::getInstance()->getCosConfig()->getReqHost();
+            $this->reqHost = ObjectStorageConfigSingleton::getInstance()->getCosConfig($this->appId)->getReqHost();
         } else {
             $this->reqHost = $reqHost;
         }
@@ -173,7 +180,7 @@ abstract class BaseCos extends Base
             throw new CosException('签名请求头不能为空', ErrorCode::OBJECT_STORAGE_COS_PARAM_ERROR);
         }
         if ($this->signTag) {
-            UtilCos::createSign([
+            UtilCos::createSign($this->appId, [
                 'expire_time' => $this->signExpireTime,
                 'header_list' => $this->signHeaders,
                 'param_list' => $this->signParams,

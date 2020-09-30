@@ -84,9 +84,9 @@ class FileFetchAsync extends BaseKodo
      */
     private $ignore_same_key = false;
 
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->serviceUri = '/sisyphus/fetch';
         $this->reqHeader['Content-Type'] = 'application/json';
         $this->reqData = [
@@ -295,7 +295,7 @@ class FileFetchAsync extends BaseKodo
         $this->reqData['url'] = implode(';', $this->url);
 
         $body = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
-        $this->reqHeader['Authorization'] = 'Qiniu ' . Util::createAccessToken($this->serviceUri, $body);
+        $this->reqHeader['Authorization'] = 'Qiniu ' . Util::createAccessToken($this->accessKey, $this->serviceUri, $body);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $body;
         return $this->getContent();

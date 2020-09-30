@@ -30,9 +30,9 @@ class FileLifeUpdate extends BaseKodo
      */
     private $deleteDays = -1;
 
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('rs.qiniu.com');
         $this->reqHeader['Content-Type'] = 'application/x-www-form-urlencoded';
     }
@@ -94,7 +94,7 @@ class FileLifeUpdate extends BaseKodo
 
         $encodeUri = Util::encodeUri($this->bucketName, $this->fileName);
         $this->serviceUri = '/deleteAfterDays/' . $encodeUri . '/' . $this->deleteDays;
-        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->serviceUri);
+        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = '';
         return $this->getContent();

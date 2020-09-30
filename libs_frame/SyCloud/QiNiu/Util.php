@@ -34,16 +34,16 @@ abstract class Util
     /**
      * 生成管理凭证
      *
+     * @param string $accessKey
      * @param string $uri  请求URI
      * @param string $body 请求体
-     *
      * @return string
-     *
      * @throws \SyException\Cloud\QiNiuException
+     * @throws \SyException\ObjectStorage\KodoException
      */
-    public static function createAccessToken(string $uri, string $body = '') : string
+    public static function createAccessToken(string $accessKey, string $uri, string $body = '') : string
     {
-        $config = ObjectStorageConfigSingleton::getInstance()->getKodoConfig();
+        $config = ObjectStorageConfigSingleton::getInstance()->getKodoConfig($accessKey);
         $data = $uri . "\n" . $body;
         $signStr = hash_hmac('sha1', $data, $config->getSecretKey());
 

@@ -8,6 +8,7 @@
 namespace SyObjectStorage;
 
 use SyCloud\QiNiu\ConfigTrait;
+use SyTrait\SimpleConfigTrait;
 
 /**
  * Class ConfigKodo
@@ -17,6 +18,7 @@ use SyCloud\QiNiu\ConfigTrait;
 class ConfigKodo
 {
     use ConfigTrait;
+    use SimpleConfigTrait;
 
     public function __construct()
     {

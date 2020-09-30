@@ -45,9 +45,9 @@ class LowStorageSpace extends BaseKodo
      */
     private $preDel = -1;
 
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('api.qiniu.com');
         $this->reqData = [
             'g' => 'day',
@@ -140,7 +140,7 @@ class LowStorageSpace extends BaseKodo
         }
 
         $this->serviceUri = '/v6/space_line?' . http_build_query($this->reqData);
-        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->serviceUri);
+        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         return $this->getContent();
     }
 }

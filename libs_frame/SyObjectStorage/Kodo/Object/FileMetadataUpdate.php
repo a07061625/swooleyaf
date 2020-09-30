@@ -40,9 +40,9 @@ class FileMetadataUpdate extends BaseKodo
      */
     private $condMap = [];
 
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('rs.qiniu.com');
         $this->reqHeader['Content-Type'] = 'application/x-www-form-urlencoded';
     }
@@ -154,7 +154,7 @@ class FileMetadataUpdate extends BaseKodo
             $condStr .= '&' . $condKey . '=' . $condVal;
         }
         $this->serviceUri .= Util::safeBase64(substr($condStr, 1));
-        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->serviceUri);
+        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = '';
         return $this->getContent();

@@ -34,7 +34,7 @@ class AliConfigDao
         $nowTime = Tool::getNowTime();
         $expireTime = $nowTime + 1800;
         $successStatus = '200';
-        $signRes = OssTool::signFrontPolicy([
+        $signRes = OssTool::signFrontPolicy($data['access_key'], [
             'expiration' => gmdate("Y-m-d\TH:i:s.000\Z", $expireTime),
             'conditions' => [
                 ['content-length-range', 1, $defineConfig['max_size']],
@@ -42,7 +42,7 @@ class AliConfigDao
                 ['success_action_status' => $successStatus],
             ],
         ]);
-        $ossConfig = ObjectStorageConfigSingleton::getInstance()->getOssConfig();
+        $ossConfig = ObjectStorageConfigSingleton::getInstance()->getOssConfig($data['access_key']);
 
         return [
             'key_id' => $ossConfig->getAccessKey(),

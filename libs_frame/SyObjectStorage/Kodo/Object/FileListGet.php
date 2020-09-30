@@ -40,9 +40,9 @@ class FileListGet extends BaseKodo
      */
     private $delimiter = '';
 
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('rsf.qbox.me');
         $this->reqData = [
             'marker' => '',
@@ -118,7 +118,7 @@ class FileListGet extends BaseKodo
         }
 
         $this->serviceUri = '/list?' . http_build_query($this->reqData);
-        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->serviceUri);
+        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         return $this->getContent();
     }
 }

@@ -10,6 +10,7 @@ namespace SyObjectStorage;
 use SyCloud\Ali\ConfigTrait;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\OssException;
+use SyTrait\SimpleConfigTrait;
 
 /**
  * Class ConfigOss
@@ -19,6 +20,7 @@ use SyException\ObjectStorage\OssException;
 class ConfigOss
 {
     use ConfigTrait;
+    use SimpleConfigTrait;
 
     /**
      * 终端节点

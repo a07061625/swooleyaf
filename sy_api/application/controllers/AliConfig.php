@@ -25,6 +25,7 @@ class AliConfigController extends CommonController
     public function getOssFrontAction()
     {
         $needParams = [
+            'access_key' => '1111',
             'upload_type' => (string)\Request\SyRequest::getParams('upload_type'),
         ];
         $getRes = \Dao\AliConfigDao::getOssFront($needParams);
