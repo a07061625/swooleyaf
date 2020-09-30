@@ -7,35 +7,40 @@
  */
 namespace SyObjectStorage\Kodo\Object;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 
 class FileMove extends BaseKodo
 {
     /**
      * 源空间名称
+     *
      * @var string
      */
     private $srcBucketName = '';
     /**
      * 源文件名称
+     *
      * @var string
      */
     private $srcFileName = '';
     /**
      * 目标空间名称
+     *
      * @var string
      */
     private $destBucketName = '';
     /**
      * 目标文件名称
+     *
      * @var string
      */
     private $destFileName = '';
     /**
      * 强制覆盖标识
+     *
      * @var bool
      */
     private $force = false;
@@ -53,6 +58,7 @@ class FileMove extends BaseKodo
 
     /**
      * @param string $srcBucketName
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setSrcBucketName(string $srcBucketName)
@@ -66,6 +72,7 @@ class FileMove extends BaseKodo
 
     /**
      * @param string $srcFileName
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setSrcFileName(string $srcFileName)
@@ -79,6 +86,7 @@ class FileMove extends BaseKodo
 
     /**
      * @param string $destBucketName
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setDestBucketName(string $destBucketName)
@@ -92,6 +100,7 @@ class FileMove extends BaseKodo
 
     /**
      * @param string $destFileName
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setDestFileName(string $destFileName)
@@ -137,6 +146,7 @@ class FileMove extends BaseKodo
         $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = '';
+
         return $this->getContent();
     }
 }

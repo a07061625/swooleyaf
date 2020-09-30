@@ -7,21 +7,23 @@
  */
 namespace SyObjectStorage\Kodo\Bucket;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 use SyTool\Tool;
 
 class TagSet extends BaseKodo
 {
     /**
      * 空间名称
+     *
      * @var string
      */
     private $bucketName = '';
     /**
      * 标签列表
+     *
      * @var array
      */
     private $tags = [];
@@ -39,6 +41,7 @@ class TagSet extends BaseKodo
 
     /**
      * @param string $bucketName
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBucketName(string $bucketName)
@@ -52,6 +55,7 @@ class TagSet extends BaseKodo
 
     /**
      * @param array $tags
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setTags(array $tags)
@@ -74,6 +78,7 @@ class TagSet extends BaseKodo
         $this->reqHeader['Authorization'] = 'Qiniu ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = 'PUT';
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

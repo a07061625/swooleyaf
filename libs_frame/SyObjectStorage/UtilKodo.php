@@ -10,8 +10,8 @@ namespace SyObjectStorage;
 use DesignPatterns\Singletons\ObjectStorageConfigSingleton;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
-use SyTrait\SimpleTrait;
 use SyTool\Tool;
+use SyTrait\SimpleTrait;
 
 final class UtilKodo extends Util
 {
@@ -19,8 +19,11 @@ final class UtilKodo extends Util
 
     /**
      * 发送服务请求
+     *
      * @param \SyObjectStorage\BaseKodo $baseService
+     *
      * @return array
+     *
      * @throws \SyException\Common\CheckException
      */
     public static function sendServiceRequest(BaseKodo $baseService)
@@ -55,10 +58,13 @@ final class UtilKodo extends Util
 
     /**
      * 链接添加下载凭证
+     *
      * @param string $accessKey
-     * @param string $url 链接地址
-     * @param int $expireTime 超时时间,单位为秒
+     * @param string $url        链接地址
+     * @param int    $expireTime 超时时间,单位为秒
+     *
      * @return bool
+     *
      * @throws \SyException\Cloud\QiNiuException
      * @throws \SyException\ObjectStorage\KodoException
      */
@@ -80,19 +86,23 @@ final class UtilKodo extends Util
         $config = ObjectStorageConfigSingleton::getInstance()->getKodoConfig($accessKey);
         $sign = hash_hmac('sha1', $downloadUrl, $config->getSecretKey());
         $url = $downloadUrl . '&token=' . $config->getAccessKey() . ':' . self::safeBase64($sign);
+
         return true;
     }
 
     /**
      * 生成上传凭证
+     *
      * @param string $accessKey
-     * @param array $data
-     * 字段如下:
-     *   bucket_name: string 空间名称
-     *   file_key: string 文件key
-     *   expire_time: int 到期时间戳
-     *   return_data: string 响应返回数据,json格式
+     * @param array  $data
+     *                          字段如下:
+     *                          bucket_name: string 空间名称
+     *                          file_key: string 文件key
+     *                          expire_time: int 到期时间戳
+     *                          return_data: string 响应返回数据,json格式
+     *
      * @return string
+     *
      * @throws \SyException\Cloud\QiNiuException
      * @throws \SyException\ObjectStorage\KodoException
      */
@@ -106,6 +116,7 @@ final class UtilKodo extends Util
         ], JSON_UNESCAPED_UNICODE);
         $encodePolicy = self::safeBase64($policyStr);
         $sign = hash_hmac('sha1', $encodePolicy, $config->getSecretKey());
+
         return $config->getAccessKey() . ':' . self::safeBase64($sign) . ':' . $encodePolicy;
     }
 }

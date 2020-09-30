@@ -10,6 +10,7 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 获取存储桶的访问权限控制列表
+ *
  * @package SyObjectStorage\Cos\Bucket
  */
 class AclGet extends BaseCos

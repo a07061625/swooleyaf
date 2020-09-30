@@ -12,22 +12,26 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 复制对象的分块内容
+ *
  * @package SyObjectStorage\Cos\Upload
  */
 class PartCopy extends BaseCos
 {
     /**
      * 对象名称
+     *
      * @var string
      */
     private $objectKey = '';
     /**
      * 上传ID
+     *
      * @var string
      */
     private $uploadId = '';
     /**
      * 上传编号
+     *
      * @var int
      */
     private $partNumber = 0;
@@ -45,6 +49,7 @@ class PartCopy extends BaseCos
 
     /**
      * @param string $objectKey
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setObjectKey(string $objectKey)
@@ -59,6 +64,7 @@ class PartCopy extends BaseCos
 
     /**
      * @param string $uploadId
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setUploadId(string $uploadId)
@@ -73,6 +79,7 @@ class PartCopy extends BaseCos
 
     /**
      * @param int $partNumber
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setPartNumber(int $partNumber)

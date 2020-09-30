@@ -31,51 +31,61 @@ abstract class BaseCos extends Base
 
     /**
      * 应用ID
+     *
      * @var string
      */
     protected $appId = '';
     /**
      * 请求头
+     *
      * @var array
      */
     protected $reqHeader = [];
     /**
      * 签名标识 true:生成签名 false:不生成签名
+     *
      * @var bool
      */
     protected $signTag = true;
     /**
      * 请求方式(大写)
+     *
      * @var string
      */
     protected $reqMethod = '';
     /**
      * 请求域名
+     *
      * @var string
      */
     protected $reqHost = '';
     /**
      * 请求uri
+     *
      * @var string
      */
     protected $reqUri = '';
     /**
      * 参与签名的请求参数列表
+     *
      * @var array
      */
     protected $signParams = [];
     /**
      * 参与签名的请求头列表
+     *
      * @var array
      */
     protected $signHeaders = [];
     /**
      * 签名有效时间,单位为秒
+     *
      * @var int
      */
     protected $signExpireTime = 0;
     /**
      * 请求参数字符串
+     *
      * @var string
      */
     private $reqQuery = '';
@@ -124,6 +134,7 @@ abstract class BaseCos extends Base
 
     /**
      * @param string $reqHost
+     *
      * @throws \SyException\Cloud\TencentException
      * @throws \SyException\ObjectStorage\CosException
      */
@@ -143,6 +154,7 @@ abstract class BaseCos extends Base
 
     /**
      * @param string $reqMethod
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     protected function setReqMethod(string $reqMethod)
@@ -157,6 +169,7 @@ abstract class BaseCos extends Base
 
     /**
      * @param int $signExpireTime
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     protected function setSignExpireTime(int $signExpireTime)
@@ -205,6 +218,7 @@ abstract class BaseCos extends Base
             $reqHeaderArr[] = $headerKey . ': ' . $headerVal;
         }
         $this->curlConfigs[CURLOPT_HTTPHEADER] = $reqHeaderArr;
+
         return $this->curlConfigs;
     }
 }

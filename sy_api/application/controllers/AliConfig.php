@@ -14,6 +14,7 @@ class AliConfigController extends CommonController
 
     /**
      * 获取前端OSS配置,用于前端直接post文件到oss
+     *
      * @api {post} /Index/AliConfig/getOssFront 获取前端OSS配置,用于前端直接post文件到oss
      * @apiDescription 获取前端OSS配置,用于前端直接post文件到oss
      * @apiGroup AliConfig

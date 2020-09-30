@@ -13,6 +13,7 @@ use SyTool\Tool;
 
 /**
  * 批量删除Object
+ *
  * @package SyObjectStorage\Cos\Object
  */
 class MultipleDelete extends BaseCos
@@ -33,6 +34,7 @@ class MultipleDelete extends BaseCos
 
     /**
      * @param array $deleteInfo
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setDeleteInfo(array $deleteInfo)

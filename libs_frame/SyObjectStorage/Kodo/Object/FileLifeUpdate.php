@@ -7,25 +7,28 @@
  */
 namespace SyObjectStorage\Kodo\Object;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 
 class FileLifeUpdate extends BaseKodo
 {
     /**
      * 空间名称
+     *
      * @var string
      */
     private $bucketName = '';
     /**
      * 文件名称
+     *
      * @var string
      */
     private $fileName = '';
     /**
      * 删除天数
+     *
      * @var int
      */
     private $deleteDays = -1;
@@ -43,6 +46,7 @@ class FileLifeUpdate extends BaseKodo
 
     /**
      * @param string $bucketName
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBucketName(string $bucketName)
@@ -56,6 +60,7 @@ class FileLifeUpdate extends BaseKodo
 
     /**
      * @param string $fileName
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setFileName(string $fileName)
@@ -69,6 +74,7 @@ class FileLifeUpdate extends BaseKodo
 
     /**
      * @param int $deleteDays
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setDeleteDays(int $deleteDays)
@@ -97,6 +103,7 @@ class FileLifeUpdate extends BaseKodo
         $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = '';
+
         return $this->getContent();
     }
 }

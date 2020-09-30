@@ -18,10 +18,13 @@ final class UtilCos extends Util
 
     /**
      * 生成签名
+     *
      * @param string $appId
-     * @param array $data
-     * @param array $headers
+     * @param array  $data
+     * @param array  $headers
+     *
      * @return bool
+     *
      * @throws \SyException\Cloud\TencentException
      * @throws \SyException\ObjectStorage\CosException
      */
@@ -49,14 +52,17 @@ final class UtilCos extends Util
                                     . '&q-header-list=' . implode(';', array_keys($headerList))
                                     . '&q-url-param-list=' . implode(';', array_keys($paramList))
                                     . '&q-signature=' . hash_hmac('sha1', $signStr, $signKey);
+
         return true;
     }
 
     /**
      * 生成权限策略签名
+     *
      * @param string $appId
-     * @param array $policyConfig
-     * @param array $reqData
+     * @param array  $policyConfig
+     * @param array  $reqData
+     *
      * @throws \SyException\Cloud\TencentException
      * @throws \SyException\ObjectStorage\CosException
      */
@@ -95,6 +101,7 @@ final class UtilCos extends Util
             Log::error('对象存储请求失败,curl错误码为' . $sendRes['res_no'], $errNo);
             $resArr['code'] = $errNo;
             $resArr['msg'] = $sendRes['res_msg'];
+
             return $resArr;
         }
 
@@ -105,6 +112,7 @@ final class UtilCos extends Util
                 'header' => $sendRes['res_header'],
                 'content' => (string)$sendRes['res_content'],
             ];
+
             return $resArr;
         }
 
@@ -119,12 +127,15 @@ final class UtilCos extends Util
                 'content' => $rspData,
             ];
         }
+
         return $resArr;
     }
 
     /**
      * 生成参数字符串
+     *
      * @param array $data
+     *
      * @return string
      */
     private static function createParamStr(array $data) : string

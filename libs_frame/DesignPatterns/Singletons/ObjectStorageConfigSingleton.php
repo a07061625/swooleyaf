@@ -28,36 +28,43 @@ class ObjectStorageConfigSingleton
 
     /**
      * 七牛云配置列表
+     *
      * @var array
      */
     private $kodoConfigs = [];
     /**
      * 七牛云配置清理时间戳
+     *
      * @var int
      */
     private $kodoClearTime = 0;
     /**
      * 腾讯云配置列表
+     *
      * @var array
      */
     private $cosConfigs = [];
     /**
      * 腾讯云配置清理时间戳
+     *
      * @var int
      */
     private $cosClearTime = 0;
     /**
      * 阿里云配置列表
+     *
      * @var array
      */
     private $ossConfigs = [];
     /**
      * 阿里云客户端列表
+     *
      * @var array
      */
     private $ossClients = [];
     /**
      * 阿里云配置清理时间戳
+     *
      * @var int
      */
     private $ossClearTime = 0;
@@ -83,34 +90,12 @@ class ObjectStorageConfigSingleton
     }
 
     /**
-     * 获取本地七牛云配置
-     * @param string $accessKey
-     * @return \SyObjectStorage\ConfigKodo|null
-     */
-    private function getLocalKodoConfig(string $accessKey)
-    {
-        $nowTime = Tool::getNowTime();
-        if ($this->kodoClearTime < $nowTime) {
-            $delIds = [];
-            foreach ($this->kodoConfigs as $eAccessKey => $kodoConfig) {
-                if ($kodoConfig->getExpireTime() < $nowTime) {
-                    $delIds[] = $eAccessKey;
-                }
-            }
-            foreach ($delIds as $eAccessKey) {
-                unset($this->kodoConfigs[$eAccessKey]);
-            }
-
-            $this->kodoClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_OBJECT_STORAGE_KODO_CLEAR;
-        }
-
-        return Tool::getArrayVal($this->kodoConfigs, $accessKey, null);
-    }
-
-    /**
      * 获取七牛云配置
+     *
      * @param string $accessKey
+     *
      * @return \SyObjectStorage\ConfigKodo
+     *
      * @throws \SyException\Cloud\QiNiuException
      * @throws \SyException\ObjectStorage\KodoException
      */
@@ -126,13 +111,14 @@ class ObjectStorageConfigSingleton
 
         if ($kodoConfig->isValid()) {
             return $kodoConfig;
-        } else {
-            throw new KodoException('七牛云配置不存在', ErrorCode::OBJECT_STORAGE_KODO_PARAM_ERROR);
         }
+
+        throw new KodoException('七牛云配置不存在', ErrorCode::OBJECT_STORAGE_KODO_PARAM_ERROR);
     }
 
     /**
      * 移除七牛云配置
+     *
      * @param string $accessKey
      */
     public function removeKodoConfig(string $accessKey)
@@ -149,34 +135,12 @@ class ObjectStorageConfigSingleton
     }
 
     /**
-     * 获取本地腾讯云配置
-     * @param string $appId
-     * @return \SyObjectStorage\ConfigCos|null
-     */
-    private function getLocalCosConfig(string $appId)
-    {
-        $nowTime = Tool::getNowTime();
-        if ($this->cosClearTime < $nowTime) {
-            $delIds = [];
-            foreach ($this->cosConfigs as $eAppId => $cosConfig) {
-                if ($cosConfig->getExpireTime() < $nowTime) {
-                    $delIds[] = $eAppId;
-                }
-            }
-            foreach ($delIds as $eAppId) {
-                unset($this->cosConfigs[$eAppId]);
-            }
-
-            $this->cosClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_OBJECT_STORAGE_COS_CLEAR;
-        }
-
-        return Tool::getArrayVal($this->cosConfigs, $appId, null);
-    }
-
-    /**
      * 获取腾讯云配置
+     *
      * @param string $appId
+     *
      * @return \SyObjectStorage\ConfigCos
+     *
      * @throws \SyException\Cloud\TencentException
      * @throws \SyException\ObjectStorage\CosException
      */
@@ -192,13 +156,14 @@ class ObjectStorageConfigSingleton
 
         if ($cosConfig->isValid()) {
             return $cosConfig;
-        } else {
-            throw new CosException('腾讯云配置不存在', ErrorCode::OBJECT_STORAGE_COS_PARAM_ERROR);
         }
+
+        throw new CosException('腾讯云配置不存在', ErrorCode::OBJECT_STORAGE_COS_PARAM_ERROR);
     }
 
     /**
      * 移除腾讯云配置
+     *
      * @param string $appId
      */
     public function removeCosConfig(string $appId)
@@ -223,9 +188,129 @@ class ObjectStorageConfigSingleton
     }
 
     /**
-     * 获取本地阿里云信息
+     * 获取阿里云配置
+     *
      * @param string $accessKey
-     * @param int $getType 获取类型 1:获取阿里云配置 2:获取阿里云客户端
+     *
+     * @return \SyObjectStorage\ConfigOss
+     *
+     * @throws \SyException\Cloud\AliException
+     * @throws \SyException\ObjectStorage\OssException
+     */
+    public function getOssConfig(string $accessKey)
+    {
+        $nowTime = Tool::getNowTime();
+        $ossConfig = $this->getLocalOssInfo($accessKey, 1);
+        if (is_null($ossConfig)) {
+            $ossConfig = $this->refreshOssInfo($accessKey, 1);
+        } elseif ($ossConfig->getExpireTime() < $nowTime) {
+            $ossConfig = $this->refreshOssInfo($accessKey, 1);
+        }
+
+        if ($ossConfig->isValid()) {
+            return $ossConfig;
+        }
+
+        throw new OssException('阿里云配置不存在', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
+    }
+
+    /**
+     * 获取阿里云客户端
+     *
+     * @param string $accessKey
+     *
+     * @return \SyObjectStorage\Oss\OssClient
+     *
+     * @throws \SyException\Cloud\AliException
+     * @throws \SyException\ObjectStorage\OssException
+     */
+    public function getOssClient(string $accessKey)
+    {
+        $nowTime = Tool::getNowTime();
+        $ossClient = $this->getLocalOssInfo($accessKey, 2);
+        if (is_bool($ossClient)) {
+            $ossClient = $this->refreshOssInfo($accessKey, 2);
+        } elseif ($ossClient->getExpireTime() < $nowTime) {
+            $ossClient = $this->refreshOssInfo($accessKey, 2);
+        }
+
+        if (is_bool($ossClient)) {
+            throw new OssException('阿里云客户端不存在', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
+        }
+
+        return $ossClient;
+    }
+
+    /**
+     * 移除阿里云信息
+     *
+     * @param string $accessKey
+     */
+    public function removeOssInfo(string $accessKey)
+    {
+        unset($this->ossConfigs[$accessKey], $this->ossClients[$accessKey]);
+    }
+
+    /**
+     * 获取本地七牛云配置
+     *
+     * @param string $accessKey
+     *
+     * @return \SyObjectStorage\ConfigKodo|null
+     */
+    private function getLocalKodoConfig(string $accessKey)
+    {
+        $nowTime = Tool::getNowTime();
+        if ($this->kodoClearTime < $nowTime) {
+            $delIds = [];
+            foreach ($this->kodoConfigs as $eAccessKey => $kodoConfig) {
+                if ($kodoConfig->getExpireTime() < $nowTime) {
+                    $delIds[] = $eAccessKey;
+                }
+            }
+            foreach ($delIds as $eAccessKey) {
+                unset($this->kodoConfigs[$eAccessKey]);
+            }
+
+            $this->kodoClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_OBJECT_STORAGE_KODO_CLEAR;
+        }
+
+        return Tool::getArrayVal($this->kodoConfigs, $accessKey, null);
+    }
+
+    /**
+     * 获取本地腾讯云配置
+     *
+     * @param string $appId
+     *
+     * @return \SyObjectStorage\ConfigCos|null
+     */
+    private function getLocalCosConfig(string $appId)
+    {
+        $nowTime = Tool::getNowTime();
+        if ($this->cosClearTime < $nowTime) {
+            $delIds = [];
+            foreach ($this->cosConfigs as $eAppId => $cosConfig) {
+                if ($cosConfig->getExpireTime() < $nowTime) {
+                    $delIds[] = $eAppId;
+                }
+            }
+            foreach ($delIds as $eAppId) {
+                unset($this->cosConfigs[$eAppId]);
+            }
+
+            $this->cosClearTime = $nowTime + Project::TIME_EXPIRE_LOCAL_OBJECT_STORAGE_COS_CLEAR;
+        }
+
+        return Tool::getArrayVal($this->cosConfigs, $appId, null);
+    }
+
+    /**
+     * 获取本地阿里云信息
+     *
+     * @param string $accessKey
+     * @param int    $getType   获取类型 1:获取阿里云配置 2:获取阿里云客户端
+     *
      * @return bool|null|\SyObjectStorage\ConfigOss|\SyObjectStorage\Oss\OssClient
      */
     private function getLocalOssInfo(string $accessKey, int $getType)
@@ -247,64 +332,8 @@ class ObjectStorageConfigSingleton
 
         if ($getType == 1) {
             return Tool::getArrayVal($this->ossConfigs, $accessKey, null);
-        } else {
-            return Tool::getArrayVal($this->ossClients, $accessKey, false);
-        }
-    }
-
-    /**
-     * 获取阿里云配置
-     * @param string $accessKey
-     * @return \SyObjectStorage\ConfigOss
-     * @throws \SyException\Cloud\AliException
-     * @throws \SyException\ObjectStorage\OssException
-     */
-    public function getOssConfig(string $accessKey)
-    {
-        $nowTime = Tool::getNowTime();
-        $ossConfig = $this->getLocalOssInfo($accessKey, 1);
-        if (is_null($ossConfig)) {
-            $ossConfig = $this->refreshOssInfo($accessKey, 1);
-        } elseif ($ossConfig->getExpireTime() < $nowTime) {
-            $ossConfig = $this->refreshOssInfo($accessKey, 1);
         }
 
-        if ($ossConfig->isValid()) {
-            return $ossConfig;
-        } else {
-            throw new OssException('阿里云配置不存在', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
-        }
-    }
-
-    /**
-     * 获取阿里云客户端
-     * @param string $accessKey
-     * @return \SyObjectStorage\Oss\OssClient
-     * @throws \SyException\Cloud\AliException
-     * @throws \SyException\ObjectStorage\OssException
-     */
-    public function getOssClient(string $accessKey)
-    {
-        $nowTime = Tool::getNowTime();
-        $ossClient = $this->getLocalOssInfo($accessKey, 2);
-        if (is_bool($ossClient)) {
-            $ossClient = $this->refreshOssInfo($accessKey, 2);
-        } elseif ($ossClient->getExpireTime() < $nowTime) {
-            $ossClient = $this->refreshOssInfo($accessKey, 2);
-        }
-
-        if (is_bool($ossClient)) {
-            throw new OssException('阿里云客户端不存在', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
-        }
-        return $ossClient;
-    }
-
-    /**
-     * 移除阿里云信息
-     * @param string $accessKey
-     */
-    public function removeOssInfo(string $accessKey)
-    {
-        unset($this->ossConfigs[$accessKey], $this->ossClients[$accessKey]);
+        return Tool::getArrayVal($this->ossClients, $accessKey, false);
     }
 }

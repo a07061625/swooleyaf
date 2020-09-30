@@ -12,12 +12,14 @@ use SyObjectStorage\BaseCos;
 
 /**
  * 上传本地对象至指定存储桶
+ *
  * @package SyObjectStorage\Cos\Object
  */
 class ObjectPut extends BaseCos
 {
     /**
      * 对象名称
+     *
      * @var string
      */
     private $objectKey = '';
@@ -35,6 +37,7 @@ class ObjectPut extends BaseCos
 
     /**
      * @param string $objectKey
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setObjectKey(string $objectKey)
@@ -49,6 +52,7 @@ class ObjectPut extends BaseCos
 
     /**
      * @param string $filePath
+     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setFilePath(string $filePath)

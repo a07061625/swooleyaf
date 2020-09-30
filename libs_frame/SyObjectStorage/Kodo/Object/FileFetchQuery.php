@@ -7,20 +7,22 @@
  */
 namespace SyObjectStorage\Kodo\Object;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 
 class FileFetchQuery extends BaseKodo
 {
     /**
      * 存储区域
+     *
      * @var string
      */
     private $region = '';
     /**
      * 任务ID
+     *
      * @var string
      */
     private $id = '';
@@ -36,6 +38,7 @@ class FileFetchQuery extends BaseKodo
 
     /**
      * @param string $region
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setRegion(string $region)
@@ -50,6 +53,7 @@ class FileFetchQuery extends BaseKodo
 
     /**
      * @param string $id
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setId(string $id)
@@ -72,6 +76,7 @@ class FileFetchQuery extends BaseKodo
 
         $this->serviceUri = '/sisyphus/fetch?' . http_build_query($this->reqData);
         $this->reqHeader['Authorization'] = 'Qiniu ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
+
         return $this->getContent();
     }
 }

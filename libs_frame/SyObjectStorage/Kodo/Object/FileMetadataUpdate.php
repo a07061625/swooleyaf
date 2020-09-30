@@ -7,35 +7,40 @@
  */
 namespace SyObjectStorage\Kodo\Object;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 
 class FileMetadataUpdate extends BaseKodo
 {
     /**
      * 空间名称
+     *
      * @var string
      */
     private $bucketName = '';
     /**
      * 文件名称
+     *
      * @var string
      */
     private $fileName = '';
     /**
      * 文件Mime类型
+     *
      * @var string
      */
     private $mimeType = '';
     /**
      * 元数据数组
+     *
      * @var array
      */
     private $metaMap = [];
     /**
      * 更新条件数组
+     *
      * @var array
      */
     private $condMap = [];
@@ -53,6 +58,7 @@ class FileMetadataUpdate extends BaseKodo
 
     /**
      * @param string $bucketName
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBucketName(string $bucketName)
@@ -66,6 +72,7 @@ class FileMetadataUpdate extends BaseKodo
 
     /**
      * @param string $fileName
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setFileName(string $fileName)
@@ -79,6 +86,7 @@ class FileMetadataUpdate extends BaseKodo
 
     /**
      * @param string $mimeType
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setMimeType(string $mimeType)
@@ -114,6 +122,7 @@ class FileMetadataUpdate extends BaseKodo
 
     /**
      * @param array $condMap
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setCondMap(array $condMap)
@@ -144,7 +153,7 @@ class FileMetadataUpdate extends BaseKodo
         }
 
         $encodeUri = Util::encodeUri($this->bucketName, $this->fileName);
-        $this->serviceUri = '/chgm/'.$encodeUri.'/mime/'.$this->mimeType;
+        $this->serviceUri = '/chgm/' . $encodeUri . '/mime/' . $this->mimeType;
         foreach ($this->metaMap as $metaKey => $metaVal) {
             $this->serviceUri .= '/x-qn-meta-' . $metaKey . '/' . $metaVal;
         }
@@ -157,6 +166,7 @@ class FileMetadataUpdate extends BaseKodo
         $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = '';
+
         return $this->getContent();
     }
 }

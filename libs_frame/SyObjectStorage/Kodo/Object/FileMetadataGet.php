@@ -7,20 +7,22 @@
  */
 namespace SyObjectStorage\Kodo\Object;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 
 class FileMetadataGet extends BaseKodo
 {
     /**
      * 空间名称
+     *
      * @var string
      */
     private $bucketName = '';
     /**
      * 文件名称
+     *
      * @var string
      */
     private $fileName = '';
@@ -37,6 +39,7 @@ class FileMetadataGet extends BaseKodo
 
     /**
      * @param string $bucketName
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBucketName(string $bucketName)
@@ -50,6 +53,7 @@ class FileMetadataGet extends BaseKodo
 
     /**
      * @param string $fileName
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setFileName(string $fileName)
@@ -72,6 +76,7 @@ class FileMetadataGet extends BaseKodo
 
         $this->serviceUri = '/stat/' . Util::encodeUri($this->bucketName, $this->fileName);
         $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
+
         return $this->getContent();
     }
 }

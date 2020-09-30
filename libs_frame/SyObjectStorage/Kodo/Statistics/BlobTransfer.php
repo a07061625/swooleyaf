@@ -7,40 +7,46 @@
  */
 namespace SyObjectStorage\Kodo\Statistics;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 
 class BlobTransfer extends BaseKodo
 {
     /**
      * 起始时间戳
+     *
      * @var int
      */
     private $begin = 0;
     /**
      * 结束时间戳
+     *
      * @var int
      */
     private $end = 0;
     /**
      * 时间粒度
+     *
      * @var string
      */
     private $g = '';
     /**
      * 选择类型
+     *
      * @var string
      */
     private $select = '';
     /**
      * 海外同步标识 0:国内 1:海外
+     *
      * @var int
      */
     private $is_oversea = 0;
     /**
      * 任务ID
+     *
      * @var string
      */
     private $taskid = '';
@@ -60,6 +66,7 @@ class BlobTransfer extends BaseKodo
 
     /**
      * @param int $begin
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBeginTime(int $begin)
@@ -73,6 +80,7 @@ class BlobTransfer extends BaseKodo
 
     /**
      * @param int $end
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setEndTime(int $end)
@@ -86,6 +94,7 @@ class BlobTransfer extends BaseKodo
 
     /**
      * @param string $timeSize
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setTimeSize(string $timeSize)
@@ -99,6 +108,7 @@ class BlobTransfer extends BaseKodo
 
     /**
      * @param int $isOversea
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setIsOversea(int $isOversea)
@@ -112,6 +122,7 @@ class BlobTransfer extends BaseKodo
 
     /**
      * @param string $taskId
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setTaskId(string $taskId)
@@ -137,6 +148,7 @@ class BlobTransfer extends BaseKodo
 
         $this->serviceUri = '/v6/blob_transfer?' . http_build_query($this->reqData);
         $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
+
         return $this->getContent();
     }
 }

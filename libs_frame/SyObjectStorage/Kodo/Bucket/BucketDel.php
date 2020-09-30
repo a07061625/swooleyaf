@@ -7,15 +7,16 @@
  */
 namespace SyObjectStorage\Kodo\Bucket;
 
-use SyObjectStorage\BaseKodo;
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\KodoException;
+use SyObjectStorage\BaseKodo;
 
 class BucketDel extends BaseKodo
 {
     /**
      * 空间名称
+     *
      * @var string
      */
     private $bucketName = '';
@@ -32,6 +33,7 @@ class BucketDel extends BaseKodo
 
     /**
      * @param string $bucketName
+     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBucketName(string $bucketName)
@@ -53,6 +55,7 @@ class BucketDel extends BaseKodo
         $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = '';
+
         return $this->getContent();
     }
 }
