@@ -28,6 +28,11 @@ abstract class BaseKodo extends Base
     ];
 
     /**
+     * 访问账号
+     * @var string
+     */
+    protected $accessKey = '';
+    /**
      * 服务uri
      * @var string
      */
@@ -38,9 +43,10 @@ abstract class BaseKodo extends Base
      */
     protected $serviceHost = '';
 
-    public function __construct()
+    public function __construct(string $accessKey)
     {
         parent::__construct();
+        $this->accessKey = $accessKey;
     }
 
     /**

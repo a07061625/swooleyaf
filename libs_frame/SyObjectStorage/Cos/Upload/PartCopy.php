@@ -32,9 +32,9 @@ class PartCopy extends BaseCos
      */
     private $partNumber = 0;
 
-    public function __construct()
+    public function __construct(string $appId)
     {
-        parent::__construct();
+        parent::__construct($appId);
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_PUT);
     }

@@ -18,9 +18,9 @@ class BucketsGet extends BaseKodo
      */
     private $tags = [];
 
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('rs.qbox.me');
         $this->reqData['tagCondition'] = '';
     }
@@ -47,7 +47,7 @@ class BucketsGet extends BaseKodo
     public function getDetail() : array
     {
         $this->serviceUri = '/buckets?' . http_build_query($this->reqData);
-        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->serviceUri);
+        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         return $this->getContent();
     }
 }

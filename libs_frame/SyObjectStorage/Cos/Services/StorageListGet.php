@@ -14,9 +14,9 @@ use SyObjectStorage\BaseCos;
  */
 class StorageListGet extends BaseCos
 {
-    public function __construct()
+    public function __construct(string $appId)
     {
-        parent::__construct();
+        parent::__construct($appId);
         $this->setReqHost('service.cos.myqcloud.com');
         $this->setReqMethod(self::REQ_METHOD_GET);
     }

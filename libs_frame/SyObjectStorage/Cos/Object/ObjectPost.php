@@ -38,9 +38,9 @@ class ObjectPost extends BaseCos
      */
     private $policy = '';
 
-    public function __construct()
+    public function __construct(string $appId)
     {
-        parent::__construct();
+        parent::__construct($appId);
         $this->setReqHost();
         $this->setReqMethod(self::REQ_METHOD_POST);
         $this->signTag = false;
@@ -93,10 +93,12 @@ class ObjectPost extends BaseCos
 
     /**
      * @param array $policyConfig
+     * @throws \SyException\Cloud\TencentException
+     * @throws \SyException\ObjectStorage\CosException
      */
     public function setPolicy(array $policyConfig)
     {
-        UtilCos::createPolicySign($policyConfig, $this->reqData);
+        UtilCos::createPolicySign($this->appId, $policyConfig, $this->reqData);
     }
 
     /**

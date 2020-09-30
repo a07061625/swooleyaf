@@ -55,12 +55,14 @@ final class UtilKodo extends Util
 
     /**
      * 链接添加下载凭证
+     * @param string $accessKey
      * @param string $url 链接地址
      * @param int $expireTime 超时时间,单位为秒
      * @return bool
      * @throws \SyException\Cloud\QiNiuException
+     * @throws \SyException\ObjectStorage\KodoException
      */
-    public static function addDownloadToken(string &$url, int $expireTime)
+    public static function addDownloadToken(string $accessKey, string &$url, int $expireTime)
     {
         if ($expireTime <= 0) {
             return false;
@@ -75,7 +77,7 @@ final class UtilKodo extends Util
         $queryArr['e'] = time() + $expireTime;
         unset($queryArr['token']);
         $downloadUrl = $urlArr[0] . '?' . http_build_query($queryArr);
-        $config = ObjectStorageConfigSingleton::getInstance()->getKodoConfig();
+        $config = ObjectStorageConfigSingleton::getInstance()->getKodoConfig($accessKey);
         $sign = hash_hmac('sha1', $downloadUrl, $config->getSecretKey());
         $url = $downloadUrl . '&token=' . $config->getAccessKey() . ':' . self::safeBase64($sign);
         return true;
@@ -83,6 +85,7 @@ final class UtilKodo extends Util
 
     /**
      * 生成上传凭证
+     * @param string $accessKey
      * @param array $data
      * 字段如下:
      *   bucket_name: string 空间名称
@@ -91,10 +94,11 @@ final class UtilKodo extends Util
      *   return_data: string 响应返回数据,json格式
      * @return string
      * @throws \SyException\Cloud\QiNiuException
+     * @throws \SyException\ObjectStorage\KodoException
      */
-    public static function createUploadToken(array $data)
+    public static function createUploadToken(string $accessKey, array $data)
     {
-        $config = ObjectStorageConfigSingleton::getInstance()->getKodoConfig();
+        $config = ObjectStorageConfigSingleton::getInstance()->getKodoConfig($accessKey);
         $policyStr = Tool::jsonEncode([
             'scope' => $data['bucket_name'] . ':' . $data['file_key'],
             'deadline' => $data['expire_time'],

@@ -25,9 +25,9 @@ class FileImageUpdate extends BaseKodo
      */
     private $fileName = '';
 
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('iovip.qbox.me');
         $this->reqHeader['Content-Type'] = 'application/x-www-form-urlencoded';
     }
@@ -72,7 +72,7 @@ class FileImageUpdate extends BaseKodo
         }
 
         $this->serviceUri = '/prefetch/' . Util::encodeUri($this->bucketName, $this->fileName);
-        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->serviceUri);
+        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = '';
         return $this->getContent();

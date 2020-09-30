@@ -20,9 +20,9 @@ class BucketDel extends BaseKodo
      */
     private $bucketName = '';
     
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('rs.qiniu.com');
     }
 
@@ -50,7 +50,7 @@ class BucketDel extends BaseKodo
         }
 
         $this->serviceUri = '/drop/' . $this->bucketName;
-        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->serviceUri);
+        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = '';
         return $this->getContent();
