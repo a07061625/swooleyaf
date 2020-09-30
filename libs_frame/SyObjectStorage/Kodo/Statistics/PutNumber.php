@@ -50,9 +50,9 @@ class PutNumber extends BaseKodo
      */
     private $ftype = 0;
 
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('api.qiniu.com');
         $this->reqData = [
             'select' => 'hits',
@@ -154,7 +154,7 @@ class PutNumber extends BaseKodo
         }
 
         $this->serviceUri = '/v6/rs_put?' . http_build_query($this->reqData);
-        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->serviceUri);
+        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         return $this->getContent();
     }
 }

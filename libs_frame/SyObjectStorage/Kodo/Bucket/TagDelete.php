@@ -20,9 +20,9 @@ class TagDelete extends BaseKodo
      */
     private $bucketName = '';
     
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('uc.qbox.me');
         $this->reqHeader['Content-Type'] = 'application/json';
     }
@@ -51,7 +51,7 @@ class TagDelete extends BaseKodo
         }
 
         $this->serviceUri = '/bucketTagging?' . http_build_query($this->reqData);
-        $this->reqHeader['Authorization'] = 'Qiniu ' . Util::createAccessToken($this->serviceUri);
+        $this->reqHeader['Authorization'] = 'Qiniu ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = 'DELETE';
         $this->curlConfigs[CURLOPT_POSTFIELDS] = '';
         return $this->getContent();

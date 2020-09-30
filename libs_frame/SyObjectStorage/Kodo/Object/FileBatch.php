@@ -20,9 +20,9 @@ class FileBatch extends BaseKodo
      */
     private $opList = [];
 
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('rs.qiniu.com');
         $this->serviceUri = '/batch';
         $this->reqHeader['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -62,7 +62,7 @@ class FileBatch extends BaseKodo
             $bodyStr .= '&op=' . urlencode($eOption);
         }
         $body = substr($bodyStr, 1);
-        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->serviceUri, $body);
+        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri, $body);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $body;
         return $this->getContent();

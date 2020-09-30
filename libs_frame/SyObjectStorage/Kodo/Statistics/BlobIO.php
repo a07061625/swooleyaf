@@ -60,9 +60,9 @@ class BlobIO extends BaseKodo
      */
     private $src = '';
 
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('api.qiniu.com');
     }
 
@@ -203,7 +203,7 @@ class BlobIO extends BaseKodo
         }
 
         $this->serviceUri = '/v6/blob_io?' . http_build_query($this->reqData);
-        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->serviceUri);
+        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         return $this->getContent();
     }
 }

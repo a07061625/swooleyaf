@@ -18,13 +18,14 @@ final class UtilCos extends Util
 
     /**
      * 生成签名
+     * @param string $appId
      * @param array $data
      * @param array $headers
      * @return bool
      * @throws \SyException\Cloud\TencentException
      * @throws \SyException\ObjectStorage\CosException
      */
-    public static function createSign(array $data, array &$headers) : bool
+    public static function createSign(string $appId, array $data, array &$headers) : bool
     {
         $headerList = (array)Tool::getArrayVal($data, 'header_list', []);
         ksort($headerList);
@@ -35,7 +36,7 @@ final class UtilCos extends Util
         $endTime = $nowTime + $data['expire_time'];
         $signTime = $nowTime . ';' . $endTime;
         $keyTime = $signTime;
-        $config = ObjectStorageConfigSingleton::getInstance()->getCosConfig();
+        $config = ObjectStorageConfigSingleton::getInstance()->getCosConfig($appId);
         $signKey = hash_hmac('sha1', $keyTime, $config->getSecretKey());
         $httpStr = $data['http_method'] . PHP_EOL
                    . $data['http_uri'] . PHP_EOL
@@ -53,16 +54,17 @@ final class UtilCos extends Util
 
     /**
      * 生成权限策略签名
+     * @param string $appId
      * @param array $policyConfig
      * @param array $reqData
      * @throws \SyException\Cloud\TencentException
      * @throws \SyException\ObjectStorage\CosException
      */
-    public static function createPolicySign(array $policyConfig, array &$reqData)
+    public static function createPolicySign(string $appId, array $policyConfig, array &$reqData)
     {
         $nowTime = Tool::getNowTime();
         $endTime = $nowTime + 259200;
-        $config = ObjectStorageConfigSingleton::getInstance()->getCosConfig();
+        $config = ObjectStorageConfigSingleton::getInstance()->getCosConfig($appId);
         $reqData['q-sign-algorithm'] = 'sha1';
         $reqData['q-ak'] = $config->getSecretId();
         $reqData['q-key-time'] = $nowTime . ';' . $endTime;

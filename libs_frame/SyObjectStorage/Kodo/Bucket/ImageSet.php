@@ -30,9 +30,9 @@ class ImageSet extends BaseKodo
      */
     private $host = '';
 
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('pu.qbox.me');
     }
 
@@ -89,7 +89,7 @@ class ImageSet extends BaseKodo
         }
 
         $this->serviceUri = '/image/' . $this->bucketName . '/from/' . $this->srcSiteUrl . '/host/' . $this->host;
-        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->serviceUri);
+        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = '';
         return $this->getContent();

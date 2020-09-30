@@ -30,9 +30,9 @@ class FileStatusUpdate extends BaseKodo
      */
     private $fileStatus = -1;
 
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('rs.qiniu.com');
     }
 
@@ -93,7 +93,7 @@ class FileStatusUpdate extends BaseKodo
 
         $encodeUri = Util::encodeUri($this->bucketName, $this->fileName);
         $this->serviceUri = '/chstatus/' . $encodeUri . '/status/' . $this->fileStatus;
-        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->serviceUri);
+        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = '';
         return $this->getContent();

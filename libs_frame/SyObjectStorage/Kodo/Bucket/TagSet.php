@@ -26,9 +26,9 @@ class TagSet extends BaseKodo
      */
     private $tags = [];
     
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('uc.qbox.me');
         $this->reqHeader['Content-Type'] = 'application/json';
     }
@@ -71,7 +71,7 @@ class TagSet extends BaseKodo
 
         $this->reqData['Tags'] = $this->tags;
         $this->serviceUri = '/bucketTagging?bucket=' . $this->bucketName;
-        $this->reqHeader['Authorization'] = 'Qiniu ' . Util::createAccessToken($this->serviceUri);
+        $this->reqHeader['Authorization'] = 'Qiniu ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         $this->curlConfigs[CURLOPT_CUSTOMREQUEST] = 'PUT';
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         return $this->getContent();

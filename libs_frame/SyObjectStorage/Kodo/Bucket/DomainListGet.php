@@ -20,9 +20,9 @@ class DomainListGet extends BaseKodo
      */
     private $bucketName = '';
     
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('api.qiniu.com');
     }
 
@@ -50,7 +50,7 @@ class DomainListGet extends BaseKodo
         }
 
         $this->serviceUri = '/v6/domain/list?' . http_build_query($this->reqData);
-        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->serviceUri);
+        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         return $this->getContent();
     }
 }

@@ -25,9 +25,9 @@ class FileMetadataGet extends BaseKodo
      */
     private $fileName = '';
 
-    public function __construct()
+    public function __construct(string $accessKey)
     {
-        parent::__construct();
+        parent::__construct($accessKey);
         $this->setServiceHost('rs.qiniu.com');
     }
 
@@ -71,7 +71,7 @@ class FileMetadataGet extends BaseKodo
         }
 
         $this->serviceUri = '/stat/' . Util::encodeUri($this->bucketName, $this->fileName);
-        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->serviceUri);
+        $this->reqHeader['Authorization'] = 'QBox ' . Util::createAccessToken($this->accessKey, $this->serviceUri);
         return $this->getContent();
     }
 }

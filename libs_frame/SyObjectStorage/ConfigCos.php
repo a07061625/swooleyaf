@@ -10,6 +10,7 @@ namespace SyObjectStorage;
 use SyCloud\Tencent\ConfigTrait;
 use SyConstant\ErrorCode;
 use SyException\ObjectStorage\CosException;
+use SyTrait\SimpleConfigTrait;
 
 /**
  * Class ConfigCos
@@ -19,6 +20,7 @@ use SyException\ObjectStorage\CosException;
 class ConfigCos
 {
     use ConfigTrait;
+    use SimpleConfigTrait;
 
     /**
      * 应用ID
