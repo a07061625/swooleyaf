@@ -43,7 +43,7 @@ class StringRequestRate extends BaseValidator implements ValidatorService
         }
         if (strlen($clientId) > 0) {
             $nowTime = Tool::getNowTime();
-            $tag = ($nowTime - $nowTime % 3) . $_SERVER['SYKEY-MC'] . $_SERVER['SYKEY-CA'];
+            $tag = ($nowTime - $nowTime % 3) . $clientId . $_SERVER['SYKEY-MC'] . $_SERVER['SYKEY-CA'];
             $cacheKey = Project::REDIS_PREFIX_DUPLICATE_REQUEST . md5($tag);
             $cacheData = CacheSimpleFactory::getRedisInstance()->incr($cacheKey);
             CacheSimpleFactory::getRedisInstance()->expire($cacheKey, 6);
