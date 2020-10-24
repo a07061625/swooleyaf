@@ -15,7 +15,6 @@ use SyFrame\Plugins\AspectBeforePlugin;
 use SyFrame\Plugins\CheckConnectPlugin;
 use SyFrame\Plugins\FinishServicePlugin;
 use SyFrame\Plugins\MethodExistPlugin;
-use SyFrame\Plugins\RejectDuplicatePlugin;
 use SyFrame\Plugins\ValidatorPlugin;
 use SyFrame\Routes\SimpleRoute;
 use SyTool\Tool;
@@ -131,7 +130,6 @@ abstract class SimpleBootstrap extends Bootstrap_Abstract
                    ->setDefaultController(SY_DEFAULT_CONTROLLER)
                    ->setDefaultAction(SY_DEFAULT_ACTION)
                    ->registerPlugin(new MethodExistPlugin())
-                   ->registerPlugin(new RejectDuplicatePlugin())
                    ->registerPlugin(new CheckConnectPlugin())
                    ->registerPlugin(new AspectBeforePlugin())
                    ->registerPlugin(new ValidatorPlugin())
