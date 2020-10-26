@@ -37,8 +37,8 @@ class StringJson extends BaseValidator implements ValidatorService
             return '';
         } elseif (is_array(Tool::jsonDecode($trueData))) {
             return '';
-        } else {
-            return '必须是json格式';
         }
+        
+        return '必须是json格式';
     }
 }
