@@ -31,9 +31,10 @@ class StringRequestRate extends BaseValidator implements ValidatorService
 
     public function validator($data, $compareData) : string
     {
-        $trueNum = is_numeric($compareData) ? (int)$compareData : 0;
-        if ($trueNum <= 0) {
-            return '请求次数限制必须是数字且大于等于1';
+        if (!is_int($compareData)) {
+            return '规则值必须为整数';
+        } elseif ($compareData < 0) {
+            return '规则值不能为负数';
         }
 
         if (isset($_SERVER['HTTP_sy-client'])) {
@@ -44,10 +45,10 @@ class StringRequestRate extends BaseValidator implements ValidatorService
         if (strlen($clientId) > 0) {
             $nowTime = Tool::getNowTime();
             $tag = ($nowTime - $nowTime % 3) . $clientId . $_SERVER['SYKEY-MC'] . $_SERVER['SYKEY-CA'];
-            $cacheKey = Project::REDIS_PREFIX_DUPLICATE_REQUEST . md5($tag);
+            $cacheKey = Project::REDIS_PREFIX_REQUEST_RATE . md5($tag);
             $cacheData = CacheSimpleFactory::getRedisInstance()->incr($cacheKey);
             CacheSimpleFactory::getRedisInstance()->expire($cacheKey, 6);
-            if ($cacheData > $trueNum) {
+            if ($cacheData > $compareData) {
                 return '请求频率超过接口限制';
             }
         }

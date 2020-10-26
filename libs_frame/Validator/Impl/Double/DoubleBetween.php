@@ -32,25 +32,18 @@ class DoubleBetween extends BaseValidator implements ValidatorService
         $trueData = $this->verifyDoubleData($data);
         if ($trueData === null) {
             return '必须是数值';
-        } elseif (!is_string($compareData)) {
-            return '取值规则不合法';
-        }
-
-        $acceptArr = explode(',', $compareData);
-        if (count($acceptArr) != 2) {
-            return '取值规则不合法';
-        } elseif (!is_numeric($acceptArr[0])) {
-            return '取值规则不合法';
-        } elseif (!is_numeric($acceptArr[1])) {
-            return '取值规则不合法';
-        }
-
-        if (bccomp($acceptArr[0], $acceptArr[1]) > 0) {
-            return '取值范围最大值不能小于最小值';
-        } elseif (bccomp($acceptArr[0], (string)$trueData) > 0) {
-            return '不能小于' . $acceptArr[0];
-        } elseif (bccomp($acceptArr[1], (string)$trueData) < 0) {
-            return '不能大于' . $acceptArr[1];
+        } elseif (!is_array($compareData)) {
+            return '规则值必须是数组';
+        } elseif (count($compareData) != 2) {
+            return '规则值不合法';
+        } elseif (!is_numeric($compareData[0])) {
+            return '规则值最小值必须是数值';
+        } elseif (!is_numeric($compareData[1])) {
+            return '规则值最大值必须是数值';
+        } elseif (bccomp($compareData[0], (string)$trueData) > 0) {
+            return '不能小于' . $compareData[0];
+        } elseif (bccomp($compareData[1], (string)$trueData) < 0) {
+            return '不能大于' . $compareData[1];
         } else {
             return '';
         }

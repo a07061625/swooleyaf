@@ -15,7 +15,6 @@ class LoginController extends CommonController
     /**
      * 登录
      * @SyFilter-{"field": "_ignorejwt","explain": "JWT会话","type": "string","rules": {"min": 0}}
-     * @SyFilter-{"field": "_requestrate","explain": "请求频率","type": "string","rules": {"requestrate": 10}}
      */
     public function loginAction()
     {

@@ -32,8 +32,10 @@ class StringRegex extends BaseValidator implements ValidatorService
         $trueData = $this->verifyStringData($data);
         if ($trueData === null) {
             return '必须是字符串';
+        } elseif (!is_string($compareData)) {
+            return '规则值必须为字符串';
         } elseif (strlen($compareData) == 0) {
-            return '规则不能为空';
+            return '规则值不能为空';
         } elseif (preg_match($compareData, $trueData) > 0) {
             return '';
         } else {
