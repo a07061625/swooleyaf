@@ -36,8 +36,8 @@ class StringDigitLower extends BaseValidator implements ValidatorService
             return '';
         } elseif (ctype_alnum($trueData) && (strtolower($trueData) == $trueData)) {
             return '';
-        } else {
-            return '格式必须都是数字和小写字母';
         }
+
+        return '格式必须都是数字和小写字母';
     }
 }

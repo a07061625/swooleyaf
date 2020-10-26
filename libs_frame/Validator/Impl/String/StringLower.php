@@ -36,8 +36,8 @@ class StringLower extends BaseValidator implements ValidatorService
             return '';
         } elseif (ctype_lower($trueData)) {
             return '';
-        } else {
-            return '格式必须都是小写字母';
         }
+
+        return '格式必须都是小写字母';
     }
 }

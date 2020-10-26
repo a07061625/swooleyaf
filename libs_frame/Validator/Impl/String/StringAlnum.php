@@ -36,8 +36,8 @@ class StringAlnum extends BaseValidator implements ValidatorService
             return '';
         } elseif (ctype_alnum($trueData)) {
             return '';
-        } else {
-            return '格式必须都是数字和字母';
         }
+
+        return '格式必须都是数字和字母';
     }
 }

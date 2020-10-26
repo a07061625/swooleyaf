@@ -36,8 +36,8 @@ class StringDigit extends BaseValidator implements ValidatorService
             return '';
         } elseif (ctype_digit($trueData)) {
             return '';
-        } else {
-            return '格式必须都是数字';
         }
+
+        return '格式必须都是数字';
     }
 }

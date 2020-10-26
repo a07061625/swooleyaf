@@ -36,8 +36,8 @@ class StringTel extends BaseValidator implements ValidatorService
             return '';
         } elseif (preg_match('/^((\d{3,4}\-?)?\d{7,8}|1\d{10}|\d{5})$/', $trueData) > 0) {
             return '';
-        } else {
-            return '格式必须是联系方式';
         }
+
+        return '格式必须是联系方式';
     }
 }

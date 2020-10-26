@@ -36,8 +36,8 @@ class StringUrl extends BaseValidator implements ValidatorService
             return '';
         } elseif (preg_match('/^(http|https|ftp)\:\/\/\S+$/', $trueData) > 0) {
             return '';
-        } else {
-            return '格式必须是URL地址';
         }
+
+        return '格式必须是URL地址';
     }
 }
