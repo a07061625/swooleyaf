@@ -44,8 +44,8 @@ class DoubleBetween extends BaseValidator implements ValidatorService
             return '不能小于' . $compareData[0];
         } elseif (bccomp($compareData[1], (string)$trueData) < 0) {
             return '不能大于' . $compareData[1];
-        } else {
-            return '';
         }
+
+        return '';
     }
 }

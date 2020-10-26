@@ -36,8 +36,8 @@ class StringMax extends BaseValidator implements ValidatorService
             return '规则值必须是整数';
         } elseif (mb_strlen($trueData) > $compareData) {
             return '长度不能大于' . $compareData . '个字';
-        } else {
-            return '';
         }
+
+        return '';
     }
 }

@@ -15,6 +15,7 @@ use Validator\ValidatorService;
 
 /**
  * Class StringRequestRate
+ *
  * @package Validator\Impl\String
  */
 class StringRequestRate extends BaseValidator implements ValidatorService

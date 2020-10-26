@@ -38,8 +38,8 @@ class StringRegex extends BaseValidator implements ValidatorService
             return '规则值不能为空';
         } elseif (preg_match($compareData, $trueData) > 0) {
             return '';
-        } else {
-            return '格式不合法';
         }
+
+        return '格式不合法';
     }
 }

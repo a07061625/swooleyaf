@@ -14,6 +14,7 @@ class LoginController extends CommonController
 
     /**
      * 登录
+     *
      * @SyFilter-{"field": "_ignorejwt","explain": "JWT会话","type": "string","rules": {"min": 0}}
      */
     public function loginAction()
@@ -26,6 +27,7 @@ class LoginController extends CommonController
 
     /**
      * 退出登录
+     *
      * @api {get} /Index/Login/logout 退出登录
      * @apiDescription 退出登录
      * @apiGroup Login

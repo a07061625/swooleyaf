@@ -46,8 +46,8 @@ class IntBetween extends BaseValidator implements ValidatorService
             return '不能小于' . $compareData[0];
         } elseif ($trueData > $compareData[1]) {
             return '不能大于' . $compareData[1];
-        } else {
-            return '';
         }
+
+        return '';
     }
 }

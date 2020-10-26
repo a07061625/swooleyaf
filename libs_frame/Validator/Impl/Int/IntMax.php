@@ -36,8 +36,8 @@ class IntMax extends BaseValidator implements ValidatorService
             return '规则值必须是整数';
         } elseif ($trueData > $compareData) {
             return '不能大于' . $compareData;
-        } else {
-            return '';
         }
+
+        return '';
     }
 }

@@ -36,8 +36,8 @@ class DoubleMin extends BaseValidator implements ValidatorService
             return '规则值必须是数值';
         } elseif (bccomp((string)$compareData, (string)$trueData) > 0) {
             return '不能小于' . $compareData;
-        } else {
-            return '';
         }
+
+        return '';
     }
 }
