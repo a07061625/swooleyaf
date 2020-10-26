@@ -32,28 +32,22 @@ class IntBetween extends BaseValidator implements ValidatorService
         $trueData = $this->verifyIntData($data);
         if ($trueData === null) {
             return '必须是整数';
-        } elseif (!is_string($compareData)) {
-            return '取值规则不合法';
+        } elseif (!is_array($compareData)) {
+            return '规则值必须是数组';
+        } elseif (count($compareData) != 2) {
+            return '规则值不合法';
+        } elseif (!is_int($compareData[0])) {
+            return '规则值最小值必须是整数';
+        } elseif (!is_int($compareData[1])) {
+            return '规则值最大值必须是整数';
+        } elseif ($compareData[0] > $compareData[1]) {
+            return '规则值最大值不能小于最小值';
+        } elseif ($trueData < $compareData[0]) {
+            return '不能小于' . $compareData[0];
+        } elseif ($trueData > $compareData[1]) {
+            return '不能大于' . $compareData[1];
         }
 
-        $acceptArr = explode(',', $compareData);
-        if (count($acceptArr) != 2) {
-            return '取值规则不合法';
-        }
-        if ((!is_numeric($acceptArr[0])) || (!is_numeric($acceptArr[1]))) {
-            return '取值规则不合法';
-        }
-
-        $minNum = (int)$acceptArr[0];
-        $maxNum = (int)$acceptArr[1];
-        if ($minNum > $maxNum) {
-            return '取值范围最大值不能小于最小值';
-        } elseif ($trueData < $minNum) {
-            return '不能小于' . $minNum;
-        } elseif ($trueData > $maxNum) {
-            return '不能大于' . $maxNum;
-        } else {
-            return '';
-        }
+        return '';
     }
 }

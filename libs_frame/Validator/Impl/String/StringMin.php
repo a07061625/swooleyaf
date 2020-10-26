@@ -32,15 +32,12 @@ class StringMin extends BaseValidator implements ValidatorService
         $trueData = $this->verifyStringData($data);
         if ($trueData === null) {
             return '必须是字符串';
-        } elseif (preg_match('/^(0|[1-9]\d*)$/', $compareData) > 0) {
-            $minLength = (int)$compareData;
-            if (mb_strlen($trueData) < $minLength) {
-                return '长度不能小于' . $minLength . '个字';
-            } else {
-                return '';
-            }
-        } else {
-            return '规则不合法';
+        } elseif (!is_int($compareData)) {
+            return '规则值必须是整数';
+        } elseif (mb_strlen($trueData) < $compareData) {
+            return '长度不能小于' . $compareData . '个字';
         }
+
+        return '';
     }
 }

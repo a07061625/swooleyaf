@@ -131,18 +131,22 @@ class BaseReflect
 
         $resArr = [];
         $ignoreJwt = false;
+        $errMsg = '';
         foreach ($annotations as $eAnnotation) {
             $data = Tool::jsonDecode($eAnnotation);
-            if (!is_array($data)) {
-                throw new ReflectException('数据校验格式不正确', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
+            if (is_bool($data)) {
+                $errMsg = '数据校验格式不正确';
             } elseif (!is_string($data['field'])) {
-                throw new ReflectException('字段名称必须为字符串', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
+                $errMsg = '字段名称必须为字符串';
             } elseif (!is_string($data['explain'])) {
-                throw new ReflectException('字段解释必须为字符串', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
+                $errMsg = '字段解释必须为字符串';
             } elseif (!is_string($data['type'])) {
-                throw new ReflectException('校验器类型必须为字符串', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
+                $errMsg = '校验器类型必须为字符串';
             } elseif (!is_array($data['rules'])) {
-                throw new ReflectException('校验规则必须为数组', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
+                $errMsg = '校验规则必须为数组';
+            }
+            if (strlen($errMsg) > 0) {
+                throw new ReflectException($errMsg, ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
             }
 
             if (!isset(SyInner::$annotationSignTags[$data['field']])) {
