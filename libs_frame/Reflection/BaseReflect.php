@@ -10,8 +10,8 @@ namespace Reflection;
 use SyConstant\ErrorCode;
 use SyConstant\SyInner;
 use SyException\Reflection\ReflectException;
-use SyLog\Log;
 use SyFrame\BaseController;
+use SyLog\Log;
 use SyTool\Tool;
 use SyTrait\SimpleTrait;
 use Validator\ValidatorResult;
@@ -25,10 +25,13 @@ class BaseReflect
      * 过滤器注解格式如下：
      *   name   -    xxx
      *   注解名 分隔符 注解值
-     * @param string $className 类全名
-     * @param string $methodName 方法名称
+     *
+     * @param string $className      类全名
+     * @param string $methodName     方法名称
      * @param string $controllerType
+     *
      * @return array
+     *
      * @throws \SyException\Reflection\ReflectException
      */
     public static function getControllerFilterAnnotations(string $className, string $methodName, string &$controllerType) : array
@@ -62,6 +65,7 @@ class BaseReflect
             throw $e;
         } catch (\Exception $e) {
             Log::error($e->getMessage());
+
             throw new ReflectException(ErrorCode::getMsg(ErrorCode::REFLECT_RESOURCE_NOT_EXIST), ErrorCode::REFLECT_RESOURCE_NOT_EXIST);
         }
 
@@ -73,9 +77,12 @@ class BaseReflect
      * 切面注解格式如下：
      *   name   -    xxx
      *   注解名 分隔符 切面类全名,以\开头
-     * @param string $className 类全名
+     *
+     * @param string $className  类全名
      * @param string $methodName 方法名称
+     *
      * @return array
+     *
      * @throws \SyException\Reflection\ReflectException
      */
     public static function getControllerAspectAnnotations(string $className, string $methodName) : array
@@ -109,6 +116,7 @@ class BaseReflect
             throw $e;
         } catch (\Exception $e) {
             Log::error($e->getMessage());
+
             throw new ReflectException(ErrorCode::getMsg(ErrorCode::REFLECT_RESOURCE_NOT_EXIST), ErrorCode::REFLECT_RESOURCE_NOT_EXIST);
         }
 
@@ -116,9 +124,11 @@ class BaseReflect
     }
 
     /**
-     * @param string $className 类全名
+     * @param string $className  类全名
      * @param string $methodName 方法名称
+     *
      * @return array
+     *
      * @throws \SyException\Reflection\ReflectException
      */
     public static function getValidatorAnnotations(string $className, string $methodName) : array
