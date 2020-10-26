@@ -36,8 +36,8 @@ class StringPhone extends BaseValidator implements ValidatorService
             return '';
         } elseif (ctype_digit($trueData) && (strlen($trueData) == 11) && ($trueData{0} == '1')) {
             return '';
-        } else {
-            return '格式必须是手机号码';
         }
+
+        return '格式必须是手机号码';
     }
 }

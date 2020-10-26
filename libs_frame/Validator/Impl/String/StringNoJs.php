@@ -36,8 +36,8 @@ class StringNoJs extends BaseValidator implements ValidatorService
             return '';
         } elseif (preg_match("'<script[^>]*?>.*?</script>'si", $trueData) == 0) {
             return '';
-        } else {
-            return '不允许包含js脚本';
         }
+
+        return '不允许包含js脚本';
     }
 }

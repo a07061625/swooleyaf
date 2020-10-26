@@ -38,8 +38,8 @@ class StringLat extends BaseValidator implements ValidatorService
             return '必须是数值';
         } elseif (($trueData < -90) || ($trueData > 90)) {
             return '格式不合法';
-        } else {
-            return '';
         }
+
+        return '';
     }
 }

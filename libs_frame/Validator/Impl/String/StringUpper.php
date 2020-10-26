@@ -36,8 +36,8 @@ class StringUpper extends BaseValidator implements ValidatorService
             return '';
         } elseif (ctype_upper($trueData)) {
             return '';
-        } else {
-            return '格式必须都是大写字母';
         }
+
+        return '格式必须都是大写字母';
     }
 }

@@ -36,8 +36,8 @@ class StringBaseImage extends BaseValidator implements ValidatorService
             return '';
         } elseif (preg_match('/^(data\:image\/([A-Za-z]{3,4})\;base64\,)/', $trueData) > 0) {
             return '';
-        } else {
-            return '必须是base64编码图片';
         }
+
+        return '必须是base64编码图片';
     }
 }

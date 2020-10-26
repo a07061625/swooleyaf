@@ -36,8 +36,8 @@ class StringDigitUpper extends BaseValidator implements ValidatorService
             return '';
         } elseif (ctype_alnum($trueData) && (strtoupper($trueData) == $trueData)) {
             return '';
-        } else {
-            return '格式必须都是数字和大写字母';
         }
+
+        return '格式必须都是数字和大写字母';
     }
 }
