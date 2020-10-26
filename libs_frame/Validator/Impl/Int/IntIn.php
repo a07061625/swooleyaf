@@ -32,24 +32,29 @@ class IntIn extends BaseValidator implements ValidatorService
         $trueData = $this->verifyIntData($data);
         if ($trueData === null) {
             return '必须是整数';
-        } elseif ((!is_string($compareData)) && (!is_numeric($compareData))) {
-            return '取值规则不合法';
-        } elseif (preg_match('/^(\,[\-]?\d+)+$/', ',' . $compareData) > 0) {
-            $acceptTag = false;
-            $acceptArr = explode(',', $compareData);
-            array_unique($acceptArr);
-
-            foreach ($acceptArr as $eAccept) {
-                $eNum = (int)$eAccept;
-                if ($eNum === $trueData) {
-                    $acceptTag = true;
-                    break;
-                }
-            }
-
-            return $acceptTag ? '' : '不在取值范围';
-        } else {
-            return '取值规则不合法';
+        } elseif (!is_array($compareData)) {
+            return '规则值必须是数组';
+        } elseif (count($compareData) == 0) {
+            return '规则值不能为空';
         }
+        $needNum = 0;
+        foreach ($compareData as $eData) {
+            if (!is_int($eData)) {
+                $needNum = 2;
+
+                break;
+            } elseif ($eData == $trueData) {
+                $needNum = 1;
+
+                break;
+            }
+        }
+        if ($needNum == 1) {
+            return '';
+        } elseif ($needNum == 0) {
+            return '不在取值范围';
+        }
+
+        return '规则值元素必须都是整数';
     }
 }

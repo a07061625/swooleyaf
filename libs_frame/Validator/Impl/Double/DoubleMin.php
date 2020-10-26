@@ -32,14 +32,12 @@ class DoubleMin extends BaseValidator implements ValidatorService
         $trueData = $this->verifyDoubleData($data);
         if ($trueData === null) {
             return '必须是数值';
-        } elseif (is_numeric($compareData)) {
-            if (bccomp((string)$compareData, (string)$trueData) > 0) {
-                return '不能小于' . $compareData;
-            }
-
-            return '';
-        } else {
-            return '规则不合法';
+        } elseif (!is_numeric($compareData)) {
+            return '规则值必须是数值';
+        } elseif (bccomp((string)$compareData, (string)$trueData) > 0) {
+            return '不能小于' . $compareData;
         }
+
+        return '';
     }
 }

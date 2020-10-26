@@ -35,13 +35,10 @@ class StringJson extends BaseValidator implements ValidatorService
             return '必须是字符串';
         } elseif ((strlen($trueData) == 0) && !$compareData) {
             return '';
-        } else {
-            $arr = Tool::jsonDecode($trueData);
-            if (is_array($arr)) {
-                return '';
-            }
-
-            return '必须是json格式';
+        } elseif (is_array(Tool::jsonDecode($trueData))) {
+            return '';
         }
+
+        return '必须是json格式';
     }
 }

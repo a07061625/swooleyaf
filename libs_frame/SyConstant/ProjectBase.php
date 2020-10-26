@@ -59,6 +59,7 @@ class ProjectBase
     const REDIS_PREFIX_LIVE_EDUCATION_BJY = 'sy' . SY_PROJECT . '20500_'; //前缀-百家云教育直播
     const REDIS_PREFIX_MESSAGE_HANDLER_TOPIC = 'sy' . SY_PROJECT . '20600_'; //前缀-消息处理主题
     const REDIS_PREFIX_VMS_XUNFEI = 'sy' . SY_PROJECT . '20700_'; //前缀-科大讯飞语音缓存
+    const REDIS_PREFIX_REQUEST_RATE = 'sy' . SY_PROJECT . '20800_'; //前缀-请求频率缓存
 
     //YAC常量,以0000开头的前缀为框架内部前缀,并键名总长度不超过48个字符串
     const YAC_PREFIX_FUSE = '0000'; //前缀-熔断器
@@ -91,6 +92,7 @@ class ProjectBase
     const VALIDATOR_STRING_TYPE_DIGIT_UPPER = 'string_digitupper'; //字符串类型-数字,大写字母
     const VALIDATOR_STRING_TYPE_SY_TOKEN = 'string_sytoken'; //字符串类型-框架令牌
     const VALIDATOR_STRING_TYPE_JWT = 'string_jwt'; //字符串类型-会话JWT
+    const VALIDATOR_STRING_TYPE_REQUEST_RATE = 'string_requestrate'; //字符串类型-请求频率
     const VALIDATOR_INT_TYPE_REQUIRED = 'int_required'; //整数类型-必填
     const VALIDATOR_INT_TYPE_MIN = 'int_min'; //整数类型-最小值
     const VALIDATOR_INT_TYPE_MAX = 'int_max'; //整数类型-最大值

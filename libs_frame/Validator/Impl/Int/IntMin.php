@@ -31,16 +31,13 @@ class IntMin extends BaseValidator implements ValidatorService
 
         $trueData = $this->verifyIntData($data);
         if ($trueData === null) {
-            return '必须是整数';
-        } elseif (is_numeric($compareData)) {
-            $minNum = (int)$compareData;
-            if ($trueData < $minNum) {
-                return '不能小于' . $minNum;
-            }
-
-            return '';
-        } else {
-            return '规则不合法';
+            return '必须是数值';
+        } elseif (!is_int($compareData)) {
+            return '规则值必须是整数';
+        } elseif ($trueData < $compareData) {
+            return '不能小于' . $compareData;
         }
+
+        return '';
     }
 }

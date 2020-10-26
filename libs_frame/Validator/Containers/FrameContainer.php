@@ -37,6 +37,7 @@ use Validator\Impl\String\StringNoEmoji;
 use Validator\Impl\String\StringNoJs;
 use Validator\Impl\String\StringPhone;
 use Validator\Impl\String\StringRegex;
+use Validator\Impl\String\StringRequestRate;
 use Validator\Impl\String\StringRequired;
 use Validator\Impl\String\StringSign;
 use Validator\Impl\String\StringSyToken;
@@ -89,6 +90,7 @@ class FrameContainer extends BaseContainer
             ProjectBase::VALIDATOR_STRING_TYPE_UPPER => 1,
             ProjectBase::VALIDATOR_STRING_TYPE_SY_TOKEN => 1,
             ProjectBase::VALIDATOR_STRING_TYPE_JWT => 1,
+            ProjectBase::VALIDATOR_STRING_TYPE_REQUEST_RATE => 1,
         ];
 
         $this->bind(ProjectBase::VALIDATOR_INT_TYPE_REQUIRED, function () {
@@ -195,6 +197,9 @@ class FrameContainer extends BaseContainer
         });
         $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_JWT, function () {
             return new StringJwt();
+        });
+        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_REQUEST_RATE, function () {
+            return new StringRequestRate();
         });
     }
 }
