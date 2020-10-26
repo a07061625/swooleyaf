@@ -38,8 +38,8 @@ class StringLng extends BaseValidator implements ValidatorService
             return '必须是数值';
         } elseif (($trueData < -180) || ($trueData > 180)) {
             return '格式不合法';
-        } else {
-            return '';
         }
+
+        return '';
     }
 }

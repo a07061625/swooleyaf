@@ -36,8 +36,8 @@ class StringZh extends BaseValidator implements ValidatorService
             return '';
         } elseif (preg_match('/[^0-9a-zA-Z\x{4e00}-\x{9fa5}]+/u', $trueData) == 0) {
             return '';
-        } else {
-            return '只允许中文,数字,字母';
         }
+
+        return '只允许中文,数字,字母';
     }
 }

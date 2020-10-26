@@ -36,8 +36,8 @@ class StringNoEmoji extends BaseValidator implements ValidatorService
             return '';
         } elseif (preg_match('/[\xf0-\xf7].{3}/', $trueData) == 0) {
             return '';
-        } else {
-            return '不允许包含表情符号';
         }
+
+        return '不允许包含表情符号';
     }
 }

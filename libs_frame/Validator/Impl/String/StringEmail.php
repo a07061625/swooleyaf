@@ -36,8 +36,8 @@ class StringEmail extends BaseValidator implements ValidatorService
             return '';
         } elseif (preg_match('/^\w+([-+.]\w+)*\@\w+([-.]\w+)*\.\w+([-.]\w+)*$/', $trueData) > 0) {
             return '';
-        } else {
-            return '格式必须是邮箱';
         }
+
+        return '格式必须是邮箱';
     }
 }
