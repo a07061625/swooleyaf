@@ -48,6 +48,7 @@ use Validator\Impl\String\StringZh;
 
 /**
  * Class FrameContainer
+ *
  * @package Validator\Containers
  */
 class FrameContainer extends BaseContainer
