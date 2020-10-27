@@ -43,7 +43,7 @@ final class SyInner
 
     //版本常量
     const VERSION_MIN_PHP = '7.2.0'; //最低版本-php
-    const VERSION_MIN_SWOOLE = '4.5.4'; //最低版本-swoole
+    const VERSION_MIN_SWOOLE = '4.5.2'; //最低版本-swoole,测试发现4.5.3-4.5.5在启动服务时候会发生诡异的问题,没有日志信息,但是只能启动api模块
     const VERSION_MIN_SEASLOG = '2.1.0'; //最低版本-seaslog
     const VERSION_MIN_YAC = '2.2.0'; //最低版本-yac
     const VERSION_MIN_YAF = '3.2.1'; //最低版本-yaf
