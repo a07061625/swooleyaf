@@ -6,25 +6,29 @@ namespace Swoole;
  */
 class Runtime
 {
-
-
     /**
      * @param $enable[optional]
      * @param $flags[optional]
+     *
      * @return mixed
      */
-    public static function enableCoroutine($enable=null, $flags=null){}
+    public static function enableCoroutine($enable = null, $flags = null)
+    {
+    }
 
     /**
      * @return mixed
      */
-    public static function getHookFlags(){}
+    public static function getHookFlags()
+    {
+    }
 
     /**
      * @param $flags[required]
+     *
      * @return mixed
      */
-    public static function setHookFlags($flags){}
-
-
+    public static function setHookFlags($flags)
+    {
+    }
 }
