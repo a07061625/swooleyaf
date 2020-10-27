@@ -87,9 +87,6 @@ class HttpServer extends BaseServer
     {
         parent::__construct($port);
         $this->_configs['swoole']['websocket_subprotocol'] = 'chat';
-        $this->_configs['swoole']['open_websocket_close_frame'] = true;
-        $this->_configs['swoole']['open_websocket_ping_frame'] = true;
-        $this->_configs['swoole']['open_websocket_pong_frame'] = true;
         $this->_configs['swoole']['websocket_compression'] = true;
         $this->setServerType([
             SyInner::SERVER_TYPE_API_GATE,
@@ -125,6 +122,7 @@ class HttpServer extends BaseServer
             'task' => 'onTask',
             'finish' => 'onFinish',
             'handshake' => 'onHandshake',
+            'open' => 'onOpen',
             'message' => 'onMessage',
         ]);
     }
@@ -225,6 +223,16 @@ class HttpServer extends BaseServer
         });
 
         return true;
+    }
+
+    /**
+     * 客户端与服务器建立连接并完成握手后回调
+     *
+     * @param \Swoole\WebSocket\Server $server
+     * @param \Swoole\Http\Request     $request
+     */
+    public function onOpen(Server $server, Request $request)
+    {
     }
 
     /**
