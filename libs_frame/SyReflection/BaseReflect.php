@@ -70,26 +70,28 @@ class BaseReflect
         if (SY_SERVER_TYPE == SyInner::SERVER_TYPE_API_GATE) {
             if (isset($annotations[SyInner::ANNOTATION_TAG_SY_MANAGER])) {
                 $existRules = $annotations[SyInner::ANNOTATION_TAG_SY_MANAGER]['rules'];
-                $requestRate = $existRules[ProjectBase::VALIDATOR_TAG_REQUEST_RATE] ?? 0;
-                $requestSign = $existRules[ProjectBase::VALIDATOR_TAG_SIGN] ?? 1;
-                $jwtAuth = $existRules[ProjectBase::VALIDATOR_TAG_JWT] ?? 0;
             } else {
-                $requestRate = 0;
-                $requestSign = $controllerSign;
-                $jwtAuth = 0;
+                $existRules = [];
             }
+
             //请求频率
+            $requestRate = $existRules[ProjectBase::VALIDATOR_TAG_REQUEST_RATE] ?? 0;
             if (is_int($requestRate) && ($requestRate > 0)) {
                 $managerRules[ProjectBase::VALIDATOR_TAG_REQUEST_RATE] = $requestRate;
             }
+
             //接口签名
+            $requestSign = $existRules[ProjectBase::VALIDATOR_TAG_SIGN] ?? $controllerSign;
             if ($requestSign) {
                 $managerRules[ProjectBase::VALIDATOR_TAG_SIGN] = 1;
             }
+
             //jwt验证
+            $jwtAuth = $existRules[ProjectBase::VALIDATOR_TAG_JWT] ?? 0;
             if ($jwtAuth) {
                 $managerRules[ProjectBase::VALIDATOR_TAG_JWT] = 1;
             }
+
             //令牌验证
             $managerRules[ProjectBase::VALIDATOR_TAG_FRAME_TOKEN] = 1;
         }
