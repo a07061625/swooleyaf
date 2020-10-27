@@ -16,7 +16,7 @@ class StringBaseImage extends BaseValidator implements ValidatorService
     public function __construct()
     {
         parent::__construct();
-        $this->validatorType = Project::VALIDATOR_STRING_TYPE_BASE_IMAGE;
+        $this->validatorType = Project::VALIDATOR_TYPE_STRING_BASE_IMAGE;
     }
 
     private function __clone()

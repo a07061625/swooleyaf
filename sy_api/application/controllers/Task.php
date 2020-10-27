@@ -19,7 +19,7 @@ class TaskController extends CommonController
      * @apiParam {number} interval_time 间隔时间,单位为秒
      * @apiParam {string} [task_params] 任务参数,json格式
      * @apiParam {string} [task_desc] 任务描述
-     * @SyFilter-{"field": "_ignoresign","explain": "签名标识","type": "string","rules": {"min": 0}}
+     * @SyFilter-{"field": "__symanager","explain": "接口管理","type": "string","rules": {"sign": 0}}
      * @SyFilter-{"field": "task_title","explain": "任务名称","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "persist_type","explain": "持久化类型","type": "int","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "task_url","explain": "任务url地址","type": "string","rules": {"required": 1,"url": 1}}

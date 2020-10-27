@@ -16,7 +16,7 @@ class IntIn extends BaseValidator implements ValidatorService
     public function __construct()
     {
         parent::__construct();
-        $this->validatorType = Project::VALIDATOR_INT_TYPE_IN;
+        $this->validatorType = Project::VALIDATOR_TYPE_INT_IN;
     }
 
     private function __clone()

@@ -7,11 +7,11 @@
  */
 namespace SyFrame\Plugins;
 
+use Request\SyRequest;
 use SyConstant\ErrorCode;
 use SyConstant\SyInner;
 use SyException\Validator\ValidatorException;
-use Reflection\BaseReflect;
-use Request\SyRequest;
+use SyReflection\BaseReflect;
 use Validator\Validator;
 use Yaf\Plugin_Abstract;
 use Yaf\Registry;
@@ -51,6 +51,12 @@ class ValidatorPlugin extends Plugin_Abstract
         }
     }
 
+    /**
+     * @param string $controllerName
+     * @param string $actionName
+     * @return array
+     * @throws \SyException\Validator\ValidatorException
+     */
     private function getValidatorList(string $controllerName, string $actionName) : array
     {
         $key = $_SERVER['SYKEY-CA'];
@@ -59,7 +65,7 @@ class ValidatorPlugin extends Plugin_Abstract
             return Registry::get($validatorTag);
         }
 
-        $validatorList = BaseReflect::getValidatorAnnotations($controllerName, $actionName);
+        $validatorList = BaseReflect::getControllerFilters($controllerName, $actionName);
         $validatorTag = SyInner::REGISTRY_NAME_PREFIX_VALIDATOR . hash('crc32b', $key);
         $this->validatorMap[$key] = $validatorTag;
         Registry::set($validatorTag, $validatorList);

@@ -16,7 +16,7 @@ class DoubleMin extends BaseValidator implements ValidatorService
     public function __construct()
     {
         parent::__construct();
-        $this->validatorType = Project::VALIDATOR_DOUBLE_TYPE_MIN;
+        $this->validatorType = Project::VALIDATOR_TYPE_DOUBLE_MIN;
     }
 
     private function __clone()

@@ -90,11 +90,7 @@ final class SyInner
     const ANNOTATION_NAME_ASPECT = 'SyAspect'; //名称-环绕切面
     const ANNOTATION_NAME_ASPECT_BEFORE = 'SyAspectBefore'; //名称-前置切面
     const ANNOTATION_NAME_ASPECT_AFTER = 'SyAspectAfter'; //名称-后置切面
-    const ANNOTATION_TAG_SIGN = '_sign'; //标识-接口签名
-    const ANNOTATION_TAG_IGNORE_SIGN = '_ignoresign'; //标识-取消接口签名
-    const ANNOTATION_TAG_IGNORE_JWT = '_ignorejwt'; //标识-取消jwt校验
-    const ANNOTATION_TAG_SY_TOKEN = '__sytoken'; //标识-框架令牌
-    const ANNOTATION_TAG_SESSION_JWT = '__sessionjwt'; //标识-JWT会话
+    const ANNOTATION_TAG_SY_MANAGER = '__symanager'; //标识-管理控制
 
     //支付常量
     const PAY_PAYPAL_ENV_PRODUCT = 'product'; //贝宝支付环境-正式
@@ -120,10 +116,5 @@ final class SyInner
     public static $totalImageFilterDither = [
         self::IMAGE_FILTER_DITHER_ORDERED,
         self::IMAGE_FILTER_DITHER_DIFFUSION,
-    ];
-    public static $annotationSignTags = [
-        self::ANNOTATION_TAG_SIGN => 1,
-        self::ANNOTATION_TAG_IGNORE_SIGN => 1,
-        self::ANNOTATION_TAG_IGNORE_JWT => 1,
     ];
 }

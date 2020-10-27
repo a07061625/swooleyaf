@@ -40,7 +40,7 @@ use Validator\Impl\String\StringRegex;
 use Validator\Impl\String\StringRequestRate;
 use Validator\Impl\String\StringRequired;
 use Validator\Impl\String\StringSign;
-use Validator\Impl\String\StringSyToken;
+use Validator\Impl\String\StringFrameToken;
 use Validator\Impl\String\StringTel;
 use Validator\Impl\String\StringUpper;
 use Validator\Impl\String\StringUrl;
@@ -48,7 +48,6 @@ use Validator\Impl\String\StringZh;
 
 /**
  * Class FrameContainer
- *
  * @package Validator\Containers
  */
 class FrameContainer extends BaseContainer
@@ -56,150 +55,150 @@ class FrameContainer extends BaseContainer
     public function __construct()
     {
         $this->registryMap = [
-            ProjectBase::VALIDATOR_INT_TYPE_REQUIRED => 1,
-            ProjectBase::VALIDATOR_INT_TYPE_MIN => 1,
-            ProjectBase::VALIDATOR_INT_TYPE_MAX => 1,
-            ProjectBase::VALIDATOR_INT_TYPE_IN => 1,
-            ProjectBase::VALIDATOR_INT_TYPE_BETWEEN => 1,
-            ProjectBase::VALIDATOR_DOUBLE_TYPE_REQUIRED => 1,
-            ProjectBase::VALIDATOR_DOUBLE_TYPE_BETWEEN => 1,
-            ProjectBase::VALIDATOR_DOUBLE_TYPE_MIN => 1,
-            ProjectBase::VALIDATOR_DOUBLE_TYPE_MAX => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_REQUIRED => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_MIN => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_MAX => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_REGEX => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_PHONE => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_TEL => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_EMAIL => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_URL => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_JSON => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_SIGN => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_BASE_IMAGE => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_IP => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_LNG => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_LAT => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_NO_JS => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_NO_EMOJI => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_ZH => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_ALNUM => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_ALPHA => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_DIGIT => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_DIGIT_LOWER => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_DIGIT_UPPER => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_LOWER => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_UPPER => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_SY_TOKEN => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_JWT => 1,
-            ProjectBase::VALIDATOR_STRING_TYPE_REQUEST_RATE => 1,
+            ProjectBase::VALIDATOR_TYPE_INT_REQUIRED => 1,
+            ProjectBase::VALIDATOR_TYPE_INT_MIN => 1,
+            ProjectBase::VALIDATOR_TYPE_INT_MAX => 1,
+            ProjectBase::VALIDATOR_TYPE_INT_IN => 1,
+            ProjectBase::VALIDATOR_TYPE_INT_BETWEEN => 1,
+            ProjectBase::VALIDATOR_TYPE_DOUBLE_REQUIRED => 1,
+            ProjectBase::VALIDATOR_TYPE_DOUBLE_BETWEEN => 1,
+            ProjectBase::VALIDATOR_TYPE_DOUBLE_MIN => 1,
+            ProjectBase::VALIDATOR_TYPE_DOUBLE_MAX => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_REQUIRED => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_MIN => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_MAX => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_REGEX => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_PHONE => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_TEL => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_EMAIL => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_URL => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_JSON => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_SIGN => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_BASE_IMAGE => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_IP => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_LNG => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_LAT => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_NO_JS => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_NO_EMOJI => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_ZH => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_ALNUM => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_ALPHA => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_DIGIT => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_DIGIT_LOWER => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_DIGIT_UPPER => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_LOWER => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_UPPER => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_FRAME_TOKEN => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_JWT => 1,
+            ProjectBase::VALIDATOR_TYPE_STRING_REQUEST_RATE => 1,
         ];
 
-        $this->bind(ProjectBase::VALIDATOR_INT_TYPE_REQUIRED, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_INT_REQUIRED, function () {
             return new IntRequired();
         });
-        $this->bind(ProjectBase::VALIDATOR_INT_TYPE_MIN, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_INT_MIN, function () {
             return new IntMin();
         });
-        $this->bind(ProjectBase::VALIDATOR_INT_TYPE_MAX, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_INT_MAX, function () {
             return new IntMax();
         });
-        $this->bind(ProjectBase::VALIDATOR_INT_TYPE_IN, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_INT_IN, function () {
             return new IntIn();
         });
-        $this->bind(ProjectBase::VALIDATOR_INT_TYPE_BETWEEN, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_INT_BETWEEN, function () {
             return new IntBetween();
         });
-        $this->bind(ProjectBase::VALIDATOR_DOUBLE_TYPE_REQUIRED, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_DOUBLE_REQUIRED, function () {
             return new DoubleRequired();
         });
-        $this->bind(ProjectBase::VALIDATOR_DOUBLE_TYPE_BETWEEN, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_DOUBLE_BETWEEN, function () {
             return new DoubleBetween();
         });
-        $this->bind(ProjectBase::VALIDATOR_DOUBLE_TYPE_MIN, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_DOUBLE_MIN, function () {
             return new DoubleMin();
         });
-        $this->bind(ProjectBase::VALIDATOR_DOUBLE_TYPE_MAX, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_DOUBLE_MAX, function () {
             return new DoubleMax();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_REQUIRED, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_REQUIRED, function () {
             return new StringRequired();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_MIN, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_MIN, function () {
             return new StringMin();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_MAX, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_MAX, function () {
             return new StringMax();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_REGEX, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_REGEX, function () {
             return new StringRegex();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_PHONE, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_PHONE, function () {
             return new StringPhone();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_TEL, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_TEL, function () {
             return new StringTel();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_EMAIL, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_EMAIL, function () {
             return new StringEmail();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_URL, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_URL, function () {
             return new StringUrl();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_JSON, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_JSON, function () {
             return new StringJson();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_SIGN, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_SIGN, function () {
             return new StringSign();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_BASE_IMAGE, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_BASE_IMAGE, function () {
             return new StringBaseImage();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_IP, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_IP, function () {
             return new StringIP();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_LNG, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_LNG, function () {
             return new StringLng();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_LAT, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_LAT, function () {
             return new StringLat();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_NO_JS, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_NO_JS, function () {
             return new StringNoJs();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_NO_EMOJI, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_NO_EMOJI, function () {
             return new StringNoEmoji();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_ZH, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_ZH, function () {
             return new StringZh();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_ALNUM, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_ALNUM, function () {
             return new StringAlnum();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_ALPHA, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_ALPHA, function () {
             return new StringAlpha();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_DIGIT, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_DIGIT, function () {
             return new StringDigit();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_DIGIT_LOWER, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_DIGIT_LOWER, function () {
             return new StringDigitLower();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_DIGIT_UPPER, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_DIGIT_UPPER, function () {
             return new StringDigitUpper();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_LOWER, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_LOWER, function () {
             return new StringLower();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_UPPER, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_UPPER, function () {
             return new StringUpper();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_SY_TOKEN, function () {
-            return new StringSyToken();
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_FRAME_TOKEN, function () {
+            return new StringFrameToken();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_JWT, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_JWT, function () {
             return new StringJwt();
         });
-        $this->bind(ProjectBase::VALIDATOR_STRING_TYPE_REQUEST_RATE, function () {
+        $this->bind(ProjectBase::VALIDATOR_TYPE_STRING_REQUEST_RATE, function () {
             return new StringRequestRate();
         });
     }
