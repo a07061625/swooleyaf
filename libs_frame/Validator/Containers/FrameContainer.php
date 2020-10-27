@@ -25,6 +25,7 @@ use Validator\Impl\String\StringDigit;
 use Validator\Impl\String\StringDigitLower;
 use Validator\Impl\String\StringDigitUpper;
 use Validator\Impl\String\StringEmail;
+use Validator\Impl\String\StringFrameToken;
 use Validator\Impl\String\StringIP;
 use Validator\Impl\String\StringJson;
 use Validator\Impl\String\StringJwt;
@@ -40,7 +41,6 @@ use Validator\Impl\String\StringRegex;
 use Validator\Impl\String\StringRequestRate;
 use Validator\Impl\String\StringRequired;
 use Validator\Impl\String\StringSign;
-use Validator\Impl\String\StringFrameToken;
 use Validator\Impl\String\StringTel;
 use Validator\Impl\String\StringUpper;
 use Validator\Impl\String\StringUrl;
@@ -48,6 +48,7 @@ use Validator\Impl\String\StringZh;
 
 /**
  * Class FrameContainer
+ *
  * @package Validator\Containers
  */
 class FrameContainer extends BaseContainer
