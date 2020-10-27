@@ -8,6 +8,7 @@ class TaskController extends CommonController
 
     /**
      * 添加任务
+     *
      * @api {post} /Index/Task/addTask 添加任务
      * @apiDescription 添加任务
      * @apiGroup Task
@@ -63,6 +64,7 @@ class TaskController extends CommonController
 
     /**
      * 删除任务
+     *
      * @api {get} /Index/Task/delTask 删除任务
      * @apiDescription 删除任务
      * @apiGroup Task
@@ -81,6 +83,7 @@ class TaskController extends CommonController
 
     /**
      * 刷新任务,当任务因其他原因没有执行才调用
+     *
      * @api {get} /Index/Task/refreshTask 刷新任务
      * @apiDescription 刷新任务
      * @apiGroup Task
@@ -99,6 +102,7 @@ class TaskController extends CommonController
 
     /**
      * 获取任务列表
+     *
      * @api {get} /Index/Task/getTaskList 获取任务列表
      * @apiDescription 获取任务列表
      * @apiGroup Task
@@ -126,6 +130,7 @@ class TaskController extends CommonController
 
     /**
      * 获取任务日志列表
+     *
      * @api {get} /Index/Task/getTaskLogList 获取任务日志列表
      * @apiDescription 获取任务日志列表
      * @apiGroup Task
