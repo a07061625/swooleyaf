@@ -2,35 +2,31 @@
 namespace Swoole\Http;
 
 /**
- * @since 4.5.4
+ * @since 4.5.2
  */
 class Request
 {
-    /**
-     * @return mixed
-     */
-    public function __destruct()
-    {
-    }
+
 
     /**
      * @return mixed
      */
-    public function rawContent()
-    {
-    }
+    public function rawContent(){}
 
     /**
      * @return mixed
      */
-    public function getContent()
-    {
-    }
+    public function getContent(){}
 
     /**
      * @return mixed
      */
-    public function getData()
-    {
-    }
+    public function getData(){}
+
+    /**
+     * @return mixed
+     */
+    public function __destruct(){}
+
+
 }
