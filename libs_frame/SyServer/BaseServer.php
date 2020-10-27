@@ -128,12 +128,8 @@ abstract class BaseServer
         define('SY_REQUEST_MAX_HANDLING', (int)$this->_configs['server']['request']['maxnum']['handling']);
 
         //获取当前操作系统的用户
-        if (is_string($this->_configs['swoole']['user']) && (strlen($this->_configs['swoole']['user']) > 0)) {
-            $systemUser = $this->_configs['swoole']['user'];
-        } else {
-            $execUser = Tool::execSystemCommand('whoami');
-            $systemUser = $execUser['data'][0];
-        }
+        $execUser = Tool::execSystemCommand('whoami');
+        $systemUser = $execUser['data'][0];
         define('SY_SYSTEM_USER', $systemUser);
 
         $this->_configs['server']['port'] = $port;

@@ -199,10 +199,9 @@ class BaseReflect
         }
 
         $filterDataRules = is_array($filterData['rules']) ? $filterData['rules'] : [];
-        unset($filterDataRules[ProjectBase::VALIDATOR_TAG_JWT], $filterDataRules[ProjectBase::VALIDATOR_TAG_SIGN], $filterDataRules[ProjectBase::VALIDATOR_TAG_FRAME_TOKEN], $filterDataRules[ProjectBase::VALIDATOR_TAG_REQUEST_RATE]);
-        
-        
-        
+        if ($filterDataField != SyInner::ANNOTATION_TAG_SY_MANAGER) {
+            unset($filterDataRules[ProjectBase::VALIDATOR_TAG_JWT], $filterDataRules[ProjectBase::VALIDATOR_TAG_SIGN], $filterDataRules[ProjectBase::VALIDATOR_TAG_FRAME_TOKEN], $filterDataRules[ProjectBase::VALIDATOR_TAG_REQUEST_RATE]);
+        }
         if (count($filterDataRules) == 0) {
             throw new ValidatorException('校验规则不合法', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
         }
