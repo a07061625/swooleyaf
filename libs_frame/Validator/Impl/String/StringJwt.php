@@ -7,10 +7,10 @@
  */
 namespace Validator\Impl\String;
 
+use DesignPatterns\Factories\CacheSimpleFactory;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyConstant\SyInner;
-use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Validator\ValidatorException;
 use Validator\BaseValidator;
 use Validator\ValidatorService;
@@ -30,8 +30,10 @@ class StringJwt extends BaseValidator implements ValidatorService
 
     /**
      * @param string $data
-     * @param int $compareData
+     * @param int    $compareData
+     *
      * @return string
+     *
      * @throws \SyException\Validator\ValidatorException
      */
     public function validator($data, $compareData) : string

@@ -25,6 +25,7 @@ class PayController extends CommonController
 
     /**
      * 处理微信支付通知
+     *
      * @api {post} /Index/Pay/handleWxPayNotify 处理微信支付通知
      * @apiDescription 处理微信支付通知
      * @apiGroup Pay
@@ -59,6 +60,7 @@ class PayController extends CommonController
 
     /**
      * 处理微信扫码预支付通知
+     *
      * @api {post} /Index/Pay/handleWxPrePayNotify 处理微信扫码预支付通知
      * @apiDescription 处理微信扫码预支付通知
      * @apiGroup Pay
@@ -84,6 +86,7 @@ class PayController extends CommonController
 
     /**
      * 处理支付宝付款异步通知消息
+     *
      * @api {post} /Index/Pay/handleAliPayNotify 处理支付宝付款异步通知消息
      * @apiDescription 处理支付宝付款异步通知消息
      * @apiGroup Pay
@@ -113,6 +116,7 @@ class PayController extends CommonController
 
     /**
      * 处理支付宝网页支付同步回跳地址
+     *
      * @api {get} /Index/Pay/handleAliWebRedirect 处理支付宝网页支付同步回跳地址
      * @apiDescription 处理支付宝网页支付同步回跳地址
      * @apiGroup Pay
@@ -142,6 +146,7 @@ class PayController extends CommonController
 
     /**
      * 处理支付宝退款异步通知消息
+     *
      * @api {post} /Index/Pay/handleAliRefundNotify 处理支付宝退款异步通知消息
      * @apiDescription 处理支付宝退款异步通知消息
      * @apiGroup Pay

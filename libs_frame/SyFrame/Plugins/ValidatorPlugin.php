@@ -32,9 +32,9 @@ class ValidatorPlugin extends Plugin_Abstract
     }
 
     /**
-     * @param \Yaf\Request_Abstract $request
+     * @param \Yaf\Request_Abstract  $request
      * @param \Yaf\Response_Abstract $response
-     * @return void
+     *
      * @throws \SyException\Validator\ValidatorException
      */
     public function preDispatch(Request_Abstract $request, Response_Abstract $response)
@@ -54,7 +54,9 @@ class ValidatorPlugin extends Plugin_Abstract
     /**
      * @param string $controllerName
      * @param string $actionName
+     *
      * @return array
+     *
      * @throws \SyException\Validator\ValidatorException
      */
     private function getValidatorList(string $controllerName, string $actionName) : array

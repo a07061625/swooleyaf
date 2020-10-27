@@ -146,6 +146,7 @@ class WxOpenMiniController extends CommonController
 
     /**
      * 自动上传小程序代码
+     *
      * @SyFilter-{"field": "__symanager","explain": "接口管理","type": "string","rules": {"sign": 0}}
      */
     public function autoUploadMiniCodeAction()
@@ -156,6 +157,7 @@ class WxOpenMiniController extends CommonController
 
     /**
      * 自动审核小程序代码
+     *
      * @SyFilter-{"field": "__symanager","explain": "接口管理","type": "string","rules": {"sign": 0}}
      */
     public function autoAuditMiniCodeAction()
@@ -166,6 +168,7 @@ class WxOpenMiniController extends CommonController
 
     /**
      * 自动更新小程序的代码审核结果
+     *
      * @SyFilter-{"field": "__symanager","explain": "接口管理","type": "string","rules": {"sign": 0}}
      */
     public function autoRefreshMiniCodeAuditResultAction()
@@ -176,6 +179,7 @@ class WxOpenMiniController extends CommonController
 
     /**
      * 自动发布小程序代码
+     *
      * @SyFilter-{"field": "__symanager","explain": "接口管理","type": "string","rules": {"sign": 0}}
      */
     public function autoReleaseMiniCodeAction()
