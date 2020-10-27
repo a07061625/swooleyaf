@@ -8,7 +8,9 @@
 namespace Validator\Impl\String;
 
 use DesignPatterns\Factories\CacheSimpleFactory;
+use SyConstant\ErrorCode;
 use SyConstant\Project;
+use SyException\Validator\ValidatorException;
 use SyTool\Tool;
 use Validator\BaseValidator;
 use Validator\ValidatorService;
@@ -23,21 +25,21 @@ class StringRequestRate extends BaseValidator implements ValidatorService
     public function __construct()
     {
         parent::__construct();
-        $this->validatorType = Project::VALIDATOR_STRING_TYPE_REQUEST_RATE;
+        $this->validatorType = Project::VALIDATOR_TYPE_STRING_REQUEST_RATE;
     }
 
     private function __clone()
     {
     }
 
+    /**
+     * @param string $data
+     * @param int $compareData
+     * @return string
+     * @throws \SyException\Validator\ValidatorException
+     */
     public function validator($data, $compareData) : string
     {
-        if (!is_int($compareData)) {
-            return '规则值必须为整数';
-        } elseif ($compareData < 0) {
-            return '规则值不能为负数';
-        }
-
         if (isset($_SERVER['HTTP_sy-client'])) {
             $clientId = trim($_SERVER['HTTP_sy-client']);
         } else {
@@ -50,7 +52,7 @@ class StringRequestRate extends BaseValidator implements ValidatorService
             $cacheData = CacheSimpleFactory::getRedisInstance()->incr($cacheKey);
             CacheSimpleFactory::getRedisInstance()->expire($cacheKey, 6);
             if ($cacheData > $compareData) {
-                return '请求频率超过接口限制';
+                throw new ValidatorException('请求频率超过接口限制', ErrorCode::COMMON_SERVER_ERROR);
             }
         }
 

@@ -17,7 +17,7 @@ class WebHookController extends CommonController
      * @api {post} /Index/WebHook/codingHandle 处理码市通知
      * @apiDescription 处理码市通知
      * @apiGroup WebHook
-     * @SyFilter-{"field": "_ignoresign","explain": "签名标识","type": "string","rules": {"min": 0}}
+     * @SyFilter-{"field": "__symanager","explain": "接口管理","type": "string","rules": {"sign": 0}}
      */
     public function codingHandleAction()
     {

@@ -17,7 +17,7 @@ class StringJson extends BaseValidator implements ValidatorService
     public function __construct()
     {
         parent::__construct();
-        $this->validatorType = Project::VALIDATOR_STRING_TYPE_JSON;
+        $this->validatorType = Project::VALIDATOR_TYPE_STRING_JSON;
     }
 
     private function __clone()
@@ -38,7 +38,7 @@ class StringJson extends BaseValidator implements ValidatorService
         } elseif (is_array(Tool::jsonDecode($trueData))) {
             return '';
         }
-        
+
         return '必须是json格式';
     }
 }

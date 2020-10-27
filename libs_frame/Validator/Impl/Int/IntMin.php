@@ -16,7 +16,7 @@ class IntMin extends BaseValidator implements ValidatorService
     public function __construct()
     {
         parent::__construct();
-        $this->validatorType = Project::VALIDATOR_INT_TYPE_MIN;
+        $this->validatorType = Project::VALIDATOR_TYPE_INT_MIN;
     }
 
     private function __clone()

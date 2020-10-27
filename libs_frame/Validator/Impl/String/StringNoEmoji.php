@@ -16,7 +16,7 @@ class StringNoEmoji extends BaseValidator implements ValidatorService
     public function __construct()
     {
         parent::__construct();
-        $this->validatorType = Project::VALIDATOR_STRING_TYPE_NO_EMOJI;
+        $this->validatorType = Project::VALIDATOR_TYPE_STRING_NO_EMOJI;
     }
 
     private function __clone()

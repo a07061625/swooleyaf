@@ -16,7 +16,7 @@ class StringRequired extends BaseValidator implements ValidatorService
     public function __construct()
     {
         parent::__construct();
-        $this->validatorType = Project::VALIDATOR_STRING_TYPE_REQUIRED;
+        $this->validatorType = Project::VALIDATOR_TYPE_STRING_REQUIRED;
     }
 
     private function __clone()

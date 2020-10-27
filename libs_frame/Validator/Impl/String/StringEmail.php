@@ -16,7 +16,7 @@ class StringEmail extends BaseValidator implements ValidatorService
     public function __construct()
     {
         parent::__construct();
-        $this->validatorType = Project::VALIDATOR_STRING_TYPE_EMAIL;
+        $this->validatorType = Project::VALIDATOR_TYPE_STRING_EMAIL;
     }
 
     private function __clone()

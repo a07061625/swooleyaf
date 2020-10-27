@@ -16,7 +16,7 @@ class StringDigitUpper extends BaseValidator implements ValidatorService
     public function __construct()
     {
         parent::__construct();
-        $this->validatorType = Project::VALIDATOR_STRING_TYPE_DIGIT_UPPER;
+        $this->validatorType = Project::VALIDATOR_TYPE_STRING_DIGIT_UPPER;
     }
 
     private function __clone()
