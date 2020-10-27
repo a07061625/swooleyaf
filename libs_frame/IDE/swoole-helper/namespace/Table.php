@@ -2,13 +2,13 @@
 namespace Swoole;
 
 /**
- * @since 4.5.4
+ * @since 4.5.2
  */
 class Table
 {
     const TYPE_INT = 1;
-    const TYPE_STRING = 3;
-    const TYPE_FLOAT = 2;
+    const TYPE_STRING = 7;
+    const TYPE_FLOAT = 6;
 
     /**
      * @param $table_size[required]
