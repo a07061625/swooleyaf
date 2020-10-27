@@ -16,7 +16,7 @@ class StringRegex extends BaseValidator implements ValidatorService
     public function __construct()
     {
         parent::__construct();
-        $this->validatorType = Project::VALIDATOR_STRING_TYPE_REGEX;
+        $this->validatorType = Project::VALIDATOR_TYPE_STRING_REGEX;
     }
 
     private function __clone()

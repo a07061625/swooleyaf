@@ -20,13 +20,20 @@ class StringSign extends BaseValidator implements ValidatorService
     public function __construct()
     {
         parent::__construct();
-        $this->validatorType = Project::VALIDATOR_STRING_TYPE_SIGN;
+        $this->validatorType = Project::VALIDATOR_TYPE_STRING_SIGN;
     }
 
     private function __clone()
     {
     }
 
+    /**
+     * @param string $data
+     * @param int $compareData
+     * @return string
+     * @throws \SyException\Validator\SignException
+     * @throws \SyException\Validator\ValidatorException
+     */
     public function validator($data, $compareData) : string
     {
         $sign = RequestSign::checkSign();

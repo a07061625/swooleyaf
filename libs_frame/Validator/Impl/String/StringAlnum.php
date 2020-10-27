@@ -16,7 +16,7 @@ class StringAlnum extends BaseValidator implements ValidatorService
     public function __construct()
     {
         parent::__construct();
-        $this->validatorType = Project::VALIDATOR_STRING_TYPE_ALNUM;
+        $this->validatorType = Project::VALIDATOR_TYPE_STRING_ALNUM;
     }
 
     private function __clone()

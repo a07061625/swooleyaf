@@ -16,7 +16,7 @@ class StringNoJs extends BaseValidator implements ValidatorService
     public function __construct()
     {
         parent::__construct();
-        $this->validatorType = Project::VALIDATOR_STRING_TYPE_NO_JS;
+        $this->validatorType = Project::VALIDATOR_TYPE_STRING_NO_JS;
     }
 
     private function __clone()

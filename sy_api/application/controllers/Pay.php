@@ -28,7 +28,7 @@ class PayController extends CommonController
      * @api {post} /Index/Pay/handleWxPayNotify 处理微信支付通知
      * @apiDescription 处理微信支付通知
      * @apiGroup Pay
-     * @SyFilter-{"field": "_ignoresign","explain": "签名标识","type": "string","rules": {"min": 0}}
+     * @SyFilter-{"field": "__symanager","explain": "接口管理","type": "string","rules": {"sign": 0}}
      */
     public function handleWxPayNotifyAction()
     {
@@ -62,7 +62,7 @@ class PayController extends CommonController
      * @api {post} /Index/Pay/handleWxPrePayNotify 处理微信扫码预支付通知
      * @apiDescription 处理微信扫码预支付通知
      * @apiGroup Pay
-     * @SyFilter-{"field": "_ignoresign","explain": "签名标识","type": "string","rules": {"min": 0}}
+     * @SyFilter-{"field": "__symanager","explain": "接口管理","type": "string","rules": {"sign": 0}}
      */
     public function handleWxPrePayNotifyAction()
     {
@@ -87,7 +87,7 @@ class PayController extends CommonController
      * @api {post} /Index/Pay/handleAliPayNotify 处理支付宝付款异步通知消息
      * @apiDescription 处理支付宝付款异步通知消息
      * @apiGroup Pay
-     * @SyFilter-{"field": "_ignoresign","explain": "签名标识","type": "string","rules": {"min": 0}}
+     * @SyFilter-{"field": "__symanager","explain": "接口管理","type": "string","rules": {"sign": 0}}
      * @apiSuccess HandleSuccess 处理成功
      * @apiSuccessExample success:
      *     success
@@ -117,7 +117,7 @@ class PayController extends CommonController
      * @apiDescription 处理支付宝网页支付同步回跳地址
      * @apiGroup Pay
      * @apiParam {string} url 同步回跳URL地址
-     * @SyFilter-{"field": "_ignoresign","explain": "签名标识","type": "string","rules": {"min": 0}}
+     * @SyFilter-{"field": "__symanager","explain": "接口管理","type": "string","rules": {"sign": 0}}
      * @SyFilter-{"field": "url","explain": "同步回跳URL地址","type": "string","rules": {"required": 1,"url": 1}}
      * @apiSuccess HandleSuccess 处理成功
      * @apiSuccessExample success:
@@ -145,7 +145,7 @@ class PayController extends CommonController
      * @api {post} /Index/Pay/handleAliRefundNotify 处理支付宝退款异步通知消息
      * @apiDescription 处理支付宝退款异步通知消息
      * @apiGroup Pay
-     * @SyFilter-{"field": "_ignoresign","explain": "签名标识","type": "string","rules": {"min": 0}}
+     * @SyFilter-{"field": "__symanager","explain": "接口管理","type": "string","rules": {"sign": 0}}
      * @apiSuccess HandleSuccess 处理成功
      * @apiSuccessExample success:
      *     success

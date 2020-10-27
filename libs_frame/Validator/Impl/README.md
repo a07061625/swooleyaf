@@ -9,6 +9,7 @@
 - digitlower: 数字,小写字母
 - digitupper: 数字,大写字母
 - email: 邮箱
+- frametoken: 框架令牌
 - ip: IP地址
 - json: JSON格式
 - jwt: 会话JWT
@@ -24,7 +25,6 @@
 - requestrate: 请求频率(仅api模块使用)
 - required: 必填
 - sign: 请求签名(仅api模块使用)
-- sytoken: 框架令牌
 - tel: 联系方式
 - upper: 大写字母
 - url: URL链接

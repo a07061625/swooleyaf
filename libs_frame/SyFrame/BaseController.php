@@ -9,7 +9,7 @@ namespace SyFrame;
 
 use SyConstant\Project;
 use SyConstant\SyInner;
-use Reflection\BaseReflect;
+use SyReflection\BaseReflect;
 use Response\Result;
 use SyTool\SyUser;
 use Yaf\Controller_Abstract;
@@ -36,6 +36,12 @@ abstract class BaseController extends Controller_Abstract
      */
     private $aspectMap = [];
 
+    /**
+     * @param string $controllerName
+     * @param string $actionName
+     * @return array
+     * @throws \SyException\Validator\ValidatorException
+     */
     private function getAspectList(string $controllerName, string $actionName)
     {
         $aspectKey = $_SERVER['SYKEY-CA'];
@@ -46,7 +52,7 @@ abstract class BaseController extends Controller_Abstract
 
         $controller = $controllerName . 'Controller';
         $action = $actionName  . 'Action';
-        $aspectList = BaseReflect::getControllerAspectAnnotations($controller, $action);
+        $aspectList = BaseReflect::getControllerAspects($controller, $action);
         $needStr = hash('crc32b', $aspectKey);
         $aspectBeforeTag = SyInner::REGISTRY_NAME_PREFIX_ASPECT_BEFORE . $needStr;
         $aspectAfterTag = SyInner::REGISTRY_NAME_PREFIX_ASPECT_AFTER . $needStr;

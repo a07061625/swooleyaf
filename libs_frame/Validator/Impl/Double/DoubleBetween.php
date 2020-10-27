@@ -16,7 +16,7 @@ class DoubleBetween extends BaseValidator implements ValidatorService
     public function __construct()
     {
         parent::__construct();
-        $this->validatorType = Project::VALIDATOR_DOUBLE_TYPE_BETWEEN;
+        $this->validatorType = Project::VALIDATOR_TYPE_DOUBLE_BETWEEN;
     }
 
     private function __clone()

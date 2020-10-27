@@ -18,7 +18,6 @@
 - PoolService: 进程池服务
 - Psr: Psr标准
 - Queue: 消息队列(无用)
-- Reflection: 反射
 - Request: 框架请求处理
 - Response: 框架响应处理
 - SyAspect: 切面相关
@@ -45,6 +44,7 @@
 - SyPay: 支付相关
 - SyPrint: 打印相关
 - SyQr: 二维码相关
+- SyReflection: 反射相关
 - SySCRM: 社会化客户管理相关
 - SyServer: 框架服务相关
 - SyServerRegister: 服务注册相关
