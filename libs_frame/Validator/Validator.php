@@ -37,7 +37,7 @@ final class Validator
         $errorStr = '';
         $rules = $result->getRules();
         foreach ($rules as $ruleKey => $ruleValue) {
-            $needKey = $result->getType() . '_' . $ruleKey;
+            $needKey = $result->getType() . $ruleKey;
             $service = self::getService($needKey);
             if ($service != null) {
                 $errorStr = $service->validator($data, $ruleValue);
