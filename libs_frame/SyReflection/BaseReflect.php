@@ -99,7 +99,7 @@ class BaseReflect
             $annotations[SyInner::ANNOTATION_TAG_SY_MANAGER] = [
                 'field' => SyInner::ANNOTATION_TAG_SY_MANAGER,
                 'explain' => '接口过滤器管理',
-                'type' => 'string',
+                'type' => ProjectBase::VALIDATOR_DATA_TYPE_STRING,
                 'rules' => $managerRules,
             ];
         } else {
@@ -196,7 +196,7 @@ class BaseReflect
         }
 
         $filterDataType = is_string($filterData['type']) ? $filterData['type'] : '';
-        if (!in_array($filterDataType, ['string', 'int', 'double'])) {
+        if (!isset(ProjectBase::$totalValidatorDataTypes[$filterDataType])) {
             throw new ValidatorException('校验器类型不合法', ErrorCode::REFLECT_ANNOTATION_DATA_ERROR);
         }
 
