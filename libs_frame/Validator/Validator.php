@@ -28,8 +28,10 @@ final class Validator
 
     /**
      * 数据校验
-     * @param mixed $data 待校验数据
+     *
+     * @param mixed           $data   待校验数据
      * @param ValidatorResult $result 校验规则数组
+     *
      * @return string
      */
     public static function validator($data, ValidatorResult $result) : string
@@ -55,6 +57,7 @@ final class Validator
 
     /**
      * @param string $serviceType
+     *
      * @return \Validator\ValidatorService
      */
     private static function getService(string $serviceType)
