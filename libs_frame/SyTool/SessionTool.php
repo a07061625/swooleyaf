@@ -82,7 +82,7 @@ final class SessionTool
     {
         $sessionId = SySession::initSessionId();
         $cacheData = [];
-        if ($sessionId{0} == '1') {
+        if ($sessionId[0] == '1') {
             $redisKey = Project::REDIS_PREFIX_SESSION . $sessionId;
             $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
             if (isset($redisData['sid']) && ($redisData['sid'] == $sessionId)) {

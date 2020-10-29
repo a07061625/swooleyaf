@@ -36,7 +36,7 @@ class TaskLogEntity extends MysqlEntity
     public $created = 0;
     public function __construct(string $dbName = '')
     {
-        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_task';
+        $this->_dbName = isset($dbName[0]) ? $dbName : 'sy_task';
         parent::__construct($this->_dbName, 'task_log');
     }
 }

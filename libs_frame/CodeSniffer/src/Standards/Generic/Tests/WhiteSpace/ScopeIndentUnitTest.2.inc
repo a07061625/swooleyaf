@@ -611,8 +611,8 @@ switch ($arg) {
 		echo 'default';
 }
 
-if ($tokens[$stackPtr]['content']{0} === '#') {
-} elseif ($tokens[$stackPtr]['content']{0} === '/'
+if ($tokens[$stackPtr]['content'][0] === '#') {
+} elseif ($tokens[$stackPtr]['content'][0] === '/'
 	&& $tokens[$stackPtr]['content']{1} === '/'
 ) {
 }

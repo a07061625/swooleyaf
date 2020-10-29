@@ -72,7 +72,7 @@ class WxconfigCorpEntity extends MysqlEntity
     public $updated = 0;
     public function __construct(string $dbName = '')
     {
-        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_task';
+        $this->_dbName = isset($dbName[0]) ? $dbName : 'sy_task';
         parent::__construct($this->_dbName, 'wxconfig_corp', 'id');
     }
 }

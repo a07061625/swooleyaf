@@ -408,7 +408,7 @@ class ShopCreate extends AliPayBase
      */
     public function setNotifyMobile(string $notifyMobile)
     {
-        if (ctype_digit($notifyMobile) && (strlen($notifyMobile) == 11) && ($notifyMobile{0} == '1')) {
+        if (ctype_digit($notifyMobile) && (strlen($notifyMobile) == 11) && ($notifyMobile[0] == '1')) {
             $this->biz_content['notify_mobile'] = $notifyMobile;
         } else {
             throw new AliPayShopException('店长电话号码不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);

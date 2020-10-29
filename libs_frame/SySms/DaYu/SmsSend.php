@@ -80,7 +80,7 @@ class SmsSend extends ServiceBase
         }
 
         foreach ($recNumList as $eRecNum) {
-            if (ctype_digit($eRecNum) && (strlen($eRecNum) == 11) && ($eRecNum{0} == '1')) {
+            if (ctype_digit($eRecNum) && (strlen($eRecNum) == 11) && ($eRecNum[0] == '1')) {
                 $this->recNumList[$eRecNum] = 1;
             } else {
                 throw new DaYuException('接收号码不合法', ErrorCode::SMS_PARAM_ERROR);
@@ -97,7 +97,7 @@ class SmsSend extends ServiceBase
         if (count($this->recNumList) >= 200) {
             throw new DaYuException('接收号码不能超过200个', ErrorCode::SMS_PARAM_ERROR);
         }
-        if (ctype_digit($recNum) && (strlen($recNum) == 11) && ($recNum{0} == '1')) {
+        if (ctype_digit($recNum) && (strlen($recNum) == 11) && ($recNum[0] == '1')) {
             $this->recNumList[$recNum] = 1;
         } else {
             throw new DaYuException('接收号码不合法', ErrorCode::SMS_PARAM_ERROR);

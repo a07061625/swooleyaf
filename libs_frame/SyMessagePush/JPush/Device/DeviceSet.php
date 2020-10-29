@@ -91,7 +91,7 @@ class DeviceSet extends DeviceBase
     {
         if (strlen($mobile) == 0) {
             $this->reqData['mobile'] = '';
-        } elseif (ctype_digit($mobile) && (strlen($mobile) == 11) && ($mobile{0} == '1')) {
+        } elseif (ctype_digit($mobile) && (strlen($mobile) == 11) && ($mobile[0] == '1')) {
             $this->reqData['mobile'] = $mobile;
         } else {
             throw new JPushException('关联手机号码不合法', ErrorCode::MESSAGE_PUSH_PARAM_ERROR);
