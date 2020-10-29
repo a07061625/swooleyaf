@@ -34,7 +34,7 @@ class StringPhone extends BaseValidator implements ValidatorService
             return '必须是字符串';
         } elseif ((strlen($trueData) == 0) && !$compareData) {
             return '';
-        } elseif (ctype_digit($trueData) && (strlen($trueData) == 11) && ($trueData{0} == '1')) {
+        } elseif (ctype_digit($trueData) && (strlen($trueData) == 11) && ($trueData[0] == '1')) {
             return '';
         }
 

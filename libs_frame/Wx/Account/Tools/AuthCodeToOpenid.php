@@ -58,7 +58,7 @@ class AuthCodeToOpenid extends WxBaseAccount
      */
     public function setAuthCode(string $authCode)
     {
-        if (ctype_digit($authCode) && (strlen($authCode) == 18) && ($authCode{0} == '1')) {
+        if (ctype_digit($authCode) && (strlen($authCode) == 18) && ($authCode[0] == '1')) {
             $this->reqData['auth_code'] = $authCode;
         } else {
             throw new WxException('授权码不合法', ErrorCode::WX_PARAM_ERROR);

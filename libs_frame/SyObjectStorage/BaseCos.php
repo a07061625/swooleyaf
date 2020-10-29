@@ -183,10 +183,10 @@ abstract class BaseCos extends Base
 
     protected function getContent() : array
     {
-        if (!isset($this->reqMethod{0})) {
+        if (!isset($this->reqMethod[0])) {
             throw new CosException('请求方式不能为空', ErrorCode::OBJECT_STORAGE_COS_PARAM_ERROR);
         }
-        if (!isset($this->reqUri{0})) {
+        if (!isset($this->reqUri[0])) {
             throw new CosException('请求uri不能为空', ErrorCode::OBJECT_STORAGE_COS_PARAM_ERROR);
         }
         if (empty($this->signHeaders)) {

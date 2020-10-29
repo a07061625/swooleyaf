@@ -126,7 +126,7 @@ class SubAccountCreate extends BaseBaiJia
      */
     public function setMobile(string $mobile)
     {
-        if (ctype_digit($mobile) && (strlen($mobile) == 11) && ($mobile{0} == '1')) {
+        if (ctype_digit($mobile) && (strlen($mobile) == 11) && ($mobile[0] == '1')) {
             $this->reqData['mobile'] = $mobile;
         } else {
             throw new BaiJiaException('手机号不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);

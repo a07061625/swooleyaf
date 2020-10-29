@@ -65,7 +65,7 @@ class SmsSend extends SmsBaseYun253
         }
 
         foreach ($phoneList as $ePhone) {
-            if (ctype_digit($ePhone) && (strlen($ePhone) == 11) && ($ePhone{0} == '1')) {
+            if (ctype_digit($ePhone) && (strlen($ePhone) == 11) && ($ePhone[0] == '1')) {
                 $this->phoneList[$ePhone] = 1;
             } else {
                 throw new Yun253Exception('接收号码不合法', ErrorCode::SMS_PARAM_ERROR);
@@ -82,7 +82,7 @@ class SmsSend extends SmsBaseYun253
         if (count($this->phoneList) >= 200) {
             throw new Yun253Exception('接收号码不能超过200个', ErrorCode::SMS_PARAM_ERROR);
         }
-        if (ctype_digit($phoneNum) && (strlen($phoneNum) == 11) && ($phoneNum{0} == '1')) {
+        if (ctype_digit($phoneNum) && (strlen($phoneNum) == 11) && ($phoneNum[0] == '1')) {
             $this->phoneList[$phoneNum] = 1;
         } else {
             throw new Yun253Exception('接收号码不合法', ErrorCode::SMS_PARAM_ERROR);

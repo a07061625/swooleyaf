@@ -106,7 +106,7 @@ class RegisterCodeGet extends WxBaseCorpProvider
      */
     public function setAdminMobile(string $adminMobile)
     {
-        if (ctype_digit($adminMobile) && (strlen($adminMobile) == 11) && ($adminMobile{0} == '1')) {
+        if (ctype_digit($adminMobile) && (strlen($adminMobile) == 11) && ($adminMobile[0] == '1')) {
             $this->reqData['admin_mobile'] = $adminMobile;
         } else {
             throw new WxCorpProviderException('管理员手机号不合法', ErrorCode::WXPROVIDER_CORP_PARAM_ERROR);

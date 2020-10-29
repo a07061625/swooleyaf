@@ -87,7 +87,7 @@ class LiveHorseLampSet extends BaseBaiJiaSetting
      */
     public function setColor(string $color)
     {
-        if ((strlen($color) == 7) && ($color{0} == '#')) {
+        if ((strlen($color) == 7) && ($color[0] == '#')) {
             $this->reqData['color'] = $color;
         } else {
             throw new BaiJiaException('颜色不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);

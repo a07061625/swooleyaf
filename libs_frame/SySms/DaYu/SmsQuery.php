@@ -72,7 +72,7 @@ class SmsQuery extends ServiceBase
      */
     public function setRecNum(string $recNum)
     {
-        if (ctype_digit($recNum) && (strlen($recNum) == 11) && ($recNum{0} == '1')) {
+        if (ctype_digit($recNum) && (strlen($recNum) == 11) && ($recNum[0] == '1')) {
             $this->reqData['rec_num'] = $recNum;
         } else {
             throw new DaYuException('接收号码不合法', ErrorCode::SMS_PARAM_ERROR);

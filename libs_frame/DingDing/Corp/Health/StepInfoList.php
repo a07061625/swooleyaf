@@ -75,7 +75,7 @@ class StepInfoList extends TalkBaseCorp
     {
         $dateList = [];
         foreach ($statDates as $eDate) {
-            if (ctype_digit($eDate) && (strlen($eDate) == 8) && ($eDate{0} == '2')) {
+            if (ctype_digit($eDate) && (strlen($eDate) == 8) && ($eDate[0] == '2')) {
                 $dateList[$eDate] = 1;
             }
         }
