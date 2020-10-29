@@ -6,47 +6,25 @@
  * Date: 2019/7/9 0009
  * Time: 9:08
  */
-
 require_once __DIR__ . '/helper_load.php';
 
 function syhelp_code()
 {
     echo '显示帮助: /usr/local/php7/bin/php helper_code.php -h' . PHP_EOL;
-    echo '代码加密: /usr/local/php7/bin/php helper_code.php encrypt -file xxx.php -key xxx' . PHP_EOL;
+    echo '代码加密: /usr/local/php7/bin/php helper_code.php encrypt -file xxx.php' . PHP_EOL;
     echo '    -file:必填 待加密文件或者文件目录,从根目录/开始' . PHP_EOL;
-    echo '    -key:必填 密钥' . PHP_EOL;
-    echo '代码解密: /usr/local/php7/bin/php helper_code.php decrypt -file xxx.php -key xxx' . PHP_EOL;
+    echo '代码解密: /usr/local/php7/bin/php helper_code.php decrypt -file xxx.php' . PHP_EOL;
     echo '    -file:必填 待解密文件或者文件目录,从根目录/开始' . PHP_EOL;
-    echo '    -key:必填 密钥' . PHP_EOL;
 }
 
+$phpInfo = include __DIR__ . '/helper_php.php';
 $option = SyTool\Tool::getClientOption(1, true);
 switch ($option) {
     case 'encrypt':
-        $file = trim(SyTool\Tool::getClientOption('-file', false, ''));
-        if (strlen($file) == 0) {
-            exit('加密文件或者文件目录为空' . PHP_EOL);
-        } elseif ($file{0} != '/') {
-            exit('加密文件或者文件目录必须以根目录/开始' . PHP_EOL);
-        }
-        $key = trim(SyTool\Tool::getClientOption('-key', false, ''));
-        if (strlen($key) == 0) {
-            exit('密钥为空' . PHP_EOL);
-        }
-        \Helper\CodeTool::generator($file, $key, 'encrypt');
+        \Helper\CodeTool::generator($phpInfo['dir_screw'], 'encrypt');
         break;
     case 'decrypt':
-        $file = trim(SyTool\Tool::getClientOption('-file', false, ''));
-        if (strlen($file) == 0) {
-            exit('解密文件或者文件目录为空' . PHP_EOL);
-        } elseif ($file{0} != '/') {
-            exit('解密文件或者文件目录必须以根目录/开始' . PHP_EOL);
-        }
-        $key = trim(SyTool\Tool::getClientOption('-key', false, ''));
-        if (strlen($key) == 0) {
-            exit('密钥为空' . PHP_EOL);
-        }
-        \Helper\CodeTool::generator($file, $key, 'decrypt');
+        \Helper\CodeTool::generator($phpInfo['dir_screw'], 'decrypt');
         break;
     default:
         syhelp_code();
