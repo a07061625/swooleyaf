@@ -47,6 +47,10 @@ class RpcServer extends BaseServer
         $this->_configs['swoole']['package_length_type'] = 'L';
         $this->_configs['swoole']['package_length_offset'] = 4;
         $this->_configs['swoole']['package_body_offset'] = 0;
+        $this->_configs['swoole']['open_tcp_keepalive'] = true; //开启死连接检测
+        $this->_configs['swoole']['tcp_keepidle'] = 5; //5s没有数据传输就进行检测
+        $this->_configs['swoole']['tcp_keepinterval'] = 2; //2s探测一次
+        $this->_configs['swoole']['tcp_keepcount'] = 3; //超过5次探测后还没回包close此连接
         $this->_receivePack = new SyPack();
     }
 
