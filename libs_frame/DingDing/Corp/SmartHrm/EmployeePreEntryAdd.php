@@ -7,14 +7,15 @@
  */
 namespace DingDing\Corp\SmartHrm;
 
-use SyConstant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
+use SyConstant\ErrorCode;
 use SyException\DingDing\TalkException;
 use SyTool\Tool;
 
 /**
  * 添加企业待入职员工
+ *
  * @package DingDing\Corp\SmartHrm
  */
 class EmployeePreEntryAdd extends TalkBaseCorp
@@ -23,26 +24,31 @@ class EmployeePreEntryAdd extends TalkBaseCorp
 
     /**
      * 姓名
+     *
      * @var string
      */
     private $name = '';
     /**
      * 手机号
+     *
      * @var string
      */
     private $mobile = '';
     /**
      * 预期入职时间
+     *
      * @var int
      */
     private $pre_entry_time = 0;
     /**
      * 操作人用户ID
+     *
      * @var string
      */
     private $op_userid = '';
     /**
      * 扩展信息
+     *
      * @var string
      */
     private $extend_info = '';
@@ -61,6 +67,7 @@ class EmployeePreEntryAdd extends TalkBaseCorp
 
     /**
      * @param string $name
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setName(string $name)
@@ -74,6 +81,7 @@ class EmployeePreEntryAdd extends TalkBaseCorp
 
     /**
      * @param string $mobile
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setMobile(string $mobile)
@@ -87,6 +95,7 @@ class EmployeePreEntryAdd extends TalkBaseCorp
 
     /**
      * @param int $preEntryTime
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setPreEntryTime(int $preEntryTime)
@@ -100,6 +109,7 @@ class EmployeePreEntryAdd extends TalkBaseCorp
 
     /**
      * @param string $opUserId
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setOpUserId(string $opUserId)
@@ -113,6 +123,7 @@ class EmployeePreEntryAdd extends TalkBaseCorp
 
     /**
      * @param array $extendInfo
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setExtendInfo(array $extendInfo)
@@ -136,6 +147,7 @@ class EmployeePreEntryAdd extends TalkBaseCorp
             'access_token' => $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag),
         ]);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->sendRequest('POST');
     }
 }

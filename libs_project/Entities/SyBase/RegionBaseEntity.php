@@ -7,24 +7,28 @@ class RegionBaseEntity extends MysqlEntity
 {
     /**
      * 标识
+     *
      * @var string
      */
-    public $tag = null;
+    public $tag;
 
     /**
      * 级别
+     *
      * @var int
      */
     public $level = 0;
 
     /**
      * 名称
+     *
      * @var string
      */
     public $title = '';
 
     /**
      * 排序
+     *
      * @var int
      */
     public $sort = 0;

@@ -6,7 +6,7 @@ class Server
 
     public function __construct()
     {
-        $this->serv = new swoole_server("0.0.0.0", 9501);
+        $this->serv = new swoole_server('0.0.0.0', 9501);
         $this->serv->set([
             'worker_num' => 8,
             'daemonize' => false,
@@ -31,10 +31,10 @@ class Server
     public function onClose($serv, $fd, $from_id)
     {
         $this->debug("Client {$fd} close connection");
-        $client_id = $this->redis_get("client_" . $fd);
-        $this->redis_delete("client_" . $fd);
-        $this->redis_delete("fd_" . $client_id);
-        $this->debug("delete client redis data");
+        $client_id = $this->redis_get('client_' . $fd);
+        $this->redis_delete('client_' . $fd);
+        $this->redis_delete('fd_' . $client_id);
+        $this->debug('delete client redis data');
     }
 
     public function decode_mqtt($data, $serv, $fd)
@@ -42,20 +42,21 @@ class Server
         $this->printstr($data);
         $data_len_byte = 1;
         $fix_header['data_len'] = $this->getmsglength($data, $data_len_byte);
-        $this->debug($fix_header['data_len'], "get msg length");
+        $this->debug($fix_header['data_len'], 'get msg length');
         $byte = ord($data[0]);
         $fix_header['type'] = ($byte & 0xF0) >> 4;
         switch ($fix_header['type']) {
             case 1:
-                $this->debug("CONNECT");
-                $resp = chr(32) . chr(2) . chr(0) . chr(0);//转换为二进制返回应该使用chr
+                $this->debug('CONNECT');
+                $resp = chr(32) . chr(2) . chr(0) . chr(0); //转换为二进制返回应该使用chr
                 $client_info = $this->get_connect_info(substr($data, 2));
                 $client_id = $client_info['clientId'];
                 $serv->send($fd, $resp);
-                $this->debug("Send CONNACK");
+                $this->debug('Send CONNACK');
+
                 break;
             case 3:
-                $this->debug("PUBLISH");
+                $this->debug('PUBLISH');
                 $fix_header['dup'] = ($byte & 0x08) >> 3;
                 $fix_header['qos'] = ($byte & 0x06) >> 1;
                 $fix_header['retain'] = $byte & 0x01;
@@ -64,10 +65,11 @@ class Server
                 $offset += strlen($topic) + 2;
                 $msg = substr($data, $offset);
                 echo "client msg: $topic\n---------------------------------\n$msg\n---------------------------------\n";
-                $client_id = $this->redis_get("client_" . $fd);
+                $client_id = $this->redis_get('client_' . $fd);
+
                 break;
             case 8:
-                $this->debug("SUBSCRIBE");
+                $this->debug('SUBSCRIBE');
                 //id有可能是两个字节的,这个需要更多的测试
                 //                $msg_id = ord($data[2]);
                 $msg_id = ord($data[3]);
@@ -75,30 +77,34 @@ class Server
                 $qos = ord($data[$fix_header['data_len'] + 1]);
                 if ($fix_header['sign'] == 1) {
                     echo "this is subscribe message!!!!\n";
-                    $this->debug($msg_id, "msg id");
-                    $this->debug($qos, "QOS");
+                    $this->debug($msg_id, 'msg id');
+                    $this->debug($qos, 'QOS');
                     //这里没有从协议中读取topic的长度,按照固定的写做6
                     $topic = substr($data, 6, $fix_header['data_len'] - 1);
-                    $this->debug($topic, "topic");
+                    $this->debug($topic, 'topic');
                 }
                 //订阅后返回
                 $resp = chr(0x90) . chr(3) . chr(0) . chr($msg_id) . chr(0);
                 $this->printstr($resp);
                 $serv->send($fd, $resp);
-                $this->debug("send SUBACK");
+                $this->debug('send SUBACK');
+
                 break;
             case 10:
-                $this->debug("UNSUBSCRIBE");
+                $this->debug('UNSUBSCRIBE');
+
                 break;
             case 12:
-                $this->debug("PINGREQ");
-                $resp = chr(208) . chr(0);//转换为二进制返回应该使用chr
+                $this->debug('PINGREQ');
+                $resp = chr(208) . chr(0); //转换为二进制返回应该使用chr
                 //保存最后ping的时间
                 $serv->send($fd, $resp);
-                $this->debug("Send PINGRESP");
+                $this->debug('Send PINGRESP');
+
                 break;
             case 14:
-                $this->debug("DISCONNECT");
+                $this->debug('DISCONNECT');
+
                 break;
         }
     }
@@ -134,22 +140,22 @@ class Server
         return $connect_info;
     }
 
-    public function debug($str, $title = "Debug")
+    public function debug($str, $title = 'Debug')
     {
         echo "-------------------------------\n";
-        echo '[' . time() . "] " . $title . ':[' . $str . "]\n";
+        echo '[' . time() . '] ' . $title . ':[' . $str . "]\n";
         echo "-------------------------------\n";
     }
 
     public function printstr($string)
     {
         $strlen = strlen($string);
-        for ($j = 0; $j < $strlen; $j ++) {
+        for ($j = 0; $j < $strlen; $j++) {
             $num = ord($string{$j});
             if ($num > 31) {
                 $chr = $string{$j};
             } else {
-                $chr = " ";
+                $chr = ' ';
             }
             printf("%4d: %08b : 0x%02x : %s \n", $j, $num, $num, $chr);
         }
@@ -164,7 +170,7 @@ class Server
             $digit = ord($msg{$i});
             $value += ($digit & 127) * $multiplier;
             $multiplier *= 128;
-            $i ++;
+            $i++;
         } while (($digit & 128) != 0);
 
         return $value;
@@ -173,7 +179,7 @@ class Server
     /* setmsglength: */
     public function setmsglength($len)
     {
-        $string = "";
+        $string = '';
         do {
             $digit = $len % 128;
             $len = $len >> 7;
@@ -190,7 +196,7 @@ class Server
     /* strwritestring: writes a string to a buffer */
     public function strwritestring($str, &$i)
     {
-        $ret = " ";
+        $ret = ' ';
         $len = strlen($str);
         $msb = $len >> 8;
         $lsb = $len % 256;
@@ -205,10 +211,10 @@ class Server
     /* publish: publishes $content on a $topic */
     public function send_publish($topic, $content, $qos = 0, $retain = 0)
     {
-        $buffer = "";
+        $buffer = '';
         $buffer .= $topic;
         $buffer .= $content;
-        $head = " ";
+        $head = ' ';
         $cmd = 0x30;
         $head[0] = chr($cmd);
         $head .= $this->setmsglength(strlen($topic) + strlen($content) + 2);

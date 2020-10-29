@@ -7,30 +7,35 @@ class AttachmentReferEntity extends MysqlEntity
 {
     /**
      * 引用ID
+     *
      * @var int
      */
-    public $id = null;
+    public $id;
 
     /**
      * 上传文件名
+     *
      * @var string
      */
     public $upload_name = '';
 
     /**
      * 附件ID
+     *
      * @var int
      */
     public $attach_id = 0;
 
     /**
      * 上传用户ID
+     *
      * @var string
      */
     public $uid = '';
 
     /**
      * 引用时间
+     *
      * @var int
      */
     public $created = 0;

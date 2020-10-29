@@ -9,34 +9,39 @@ class RoleBaseEntity extends MysqlEntity
      *
      * @var int
      */
-    public $id = null;
+    public $id;
 
     /**
      * 标识
+     *
      * @var string
      */
     public $tag = '';
 
     /**
      * 角色名称
+     *
      * @var string
      */
     public $title = '';
 
     /**
      * 状态
+     *
      * @var int
      */
     public $status = 1;
 
     /**
      * 创建时间戳
+     *
      * @var int
      */
     public $created = 0;
 
     /**
      * 修改时间戳
+     *
      * @var int
      */
     public $updated = 0;

@@ -9,28 +9,32 @@ class UserLoginHistoryEntity extends MysqlEntity
      *
      * @var int
      */
-    public $id = null;
+    public $id;
 
     /**
      * 用户ID
+     *
      * @var string
      */
     public $uid = '';
 
     /**
      * 登录类型
+     *
      * @var string
      */
     public $type = '';
 
     /**
      * 登录IP
+     *
      * @var string
      */
     public $ip = '';
 
     /**
      * 创建时间戳
+     *
      * @var int
      */
     public $created = 0;

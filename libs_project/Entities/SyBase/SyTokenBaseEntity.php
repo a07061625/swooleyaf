@@ -9,40 +9,46 @@ class SyTokenBaseEntity extends MysqlEntity
      *
      * @var int
      */
-    public $id = null;
+    public $id;
 
     /**
      * 令牌标识
+     *
      * @var string
      */
     public $tag = '';
 
     /**
      * 标题
+     *
      * @var string
      */
     public $title = '';
 
     /**
      * 备注
+     *
      * @var string
      */
     public $remark = '';
 
     /**
      * 到期时间
+     *
      * @var int
      */
     public $expire_time = 0;
 
     /**
      * 创建时间戳
+     *
      * @var int
      */
     public $created = 0;
 
     /**
      * 修改时间戳
+     *
      * @var int
      */
     public $updated = 0;

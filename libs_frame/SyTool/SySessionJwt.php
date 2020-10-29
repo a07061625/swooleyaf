@@ -7,10 +7,10 @@
  */
 namespace SyTool;
 
+use DesignPatterns\Factories\CacheSimpleFactory;
 use Request\SyRequest;
 use SyConstant\Project;
 use SyConstant\SyInner;
-use DesignPatterns\Factories\CacheSimpleFactory;
 use SyLog\Log;
 use SyTrait\SimpleTrait;
 use Yaf\Registry;
@@ -39,11 +39,13 @@ class SySessionJwt
         } else {
             $sessionId = '0' . Tool::createNonceStr(5, 'numlower') . Tool::getNowTime();
         }
+
         return $sessionId;
     }
 
     /**
      * 获取session id
+     *
      * @return string
      */
     public static function getSessionId() : string
@@ -53,6 +55,7 @@ class SySessionJwt
 
     /**
      * 更新本地缓存
+     *
      * @return array
      */
     public static function refreshLocalCache()
@@ -60,14 +63,16 @@ class SySessionJwt
         $jwtData = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA);
         if (strlen($jwtData['uid']) > 0) {
             return $jwtData;
-        } else {
-            return [];
         }
+
+        return [];
     }
 
     /**
      * 设置session值
+     *
      * @param array $data 数据
+     *
      * @return bool
      */
     public static function set(array $data)
@@ -91,13 +96,16 @@ class SySessionJwt
         } else {
             Log::error('set session data error,key=' . $redisKey . ' data=' . print_r($mergeRes, true));
         }
+
         return $setRes;
     }
 
     /**
      * 获取session值
-     * @param string|null $key 键名
-     * @param mixed|null $default 默认值
+     *
+     * @param string|null $key     键名
+     * @param mixed|null  $default 默认值
+     *
      * @return mixed
      */
     public static function get(string $key = null, $default = null)
@@ -105,19 +113,21 @@ class SySessionJwt
         $jwtData = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_JWT_DATA);
         if (is_null($key)) {
             return $jwtData;
-        } else {
-            return $jwtData[$key] ?? $default;
         }
+
+        return $jwtData[$key] ?? $default;
     }
 
     /**
      * 删除session值
+     *
      * @param string $key
+     *
      * @return bool|int
      */
     public static function del(string $key)
     {
-        if (in_array($key, ['uid','rid',], true)) {
+        if (in_array($key, ['uid', 'rid'], true)) {
             return false;
         }
 

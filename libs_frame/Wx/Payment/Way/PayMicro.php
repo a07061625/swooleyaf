@@ -7,8 +7,8 @@
  */
 namespace Wx\Payment\Way;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBasePayment;
@@ -19,96 +19,115 @@ class PayMicro extends WxBasePayment
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * 设备号
+     *
      * @var string
      */
     private $device_info = '';
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
     /**
      * 签名类型
+     *
      * @var string
      */
     private $sign_type = '';
     /**
      * 商品描述
+     *
      * @var string
      */
     private $body = '';
     /**
      * 商品详情
+     *
      * @var string
      */
     private $detail = '';
     /**
      * 附加数据
+     *
      * @var string
      */
     private $attach = '';
     /**
      * 商户订单号
+     *
      * @var string
      */
     private $out_trade_no = '';
     /**
      * 订单金额
+     *
      * @var int
      */
     private $total_fee = 0;
     /**
      * 货币类型
+     *
      * @var string
      */
     private $fee_type = '';
     /**
      * 终端IP
+     *
      * @var string
      */
     private $spbill_create_ip = '';
     /**
      * 商品标记
+     *
      * @var string
      */
     private $goods_tag = '';
     /**
      * 指定支付方式
+     *
      * @var string
      */
     private $limit_pay = '';
     /**
      * 交易起始时间
+     *
      * @var string
      */
     private $time_start = '';
     /**
      * 交易结束时间
+     *
      * @var string
      */
     private $time_expire = '';
     /**
      * 电子发票入口开放标识
+     *
      * @var string
      */
     private $receipt = '';
     /**
      * 授权码
+     *
      * @var string
      */
     private $auth_code = '';
     /**
      * 场景信息
+     *
      * @var string
      */
     private $scene_info = '';
@@ -133,6 +152,7 @@ class PayMicro extends WxBasePayment
 
     /**
      * @param string $body
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setBody(string $body)
@@ -146,6 +166,7 @@ class PayMicro extends WxBasePayment
 
     /**
      * @param string $attach
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setAttach(string $attach)
@@ -159,6 +180,7 @@ class PayMicro extends WxBasePayment
 
     /**
      * @param string $outTradeNo
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setOutTradeNo(string $outTradeNo)
@@ -172,6 +194,7 @@ class PayMicro extends WxBasePayment
 
     /**
      * @param int $totalFee
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setTotalFee(int $totalFee)
@@ -185,6 +208,7 @@ class PayMicro extends WxBasePayment
 
     /**
      * @param string $authCode
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setAuthCode(string $authCode)
@@ -228,6 +252,7 @@ class PayMicro extends WxBasePayment
 
     /**
      * @param string $limitPay
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setLimitPay(string $limitPay)
@@ -244,6 +269,7 @@ class PayMicro extends WxBasePayment
     /**
      * @param int $timeStart
      * @param int $timeExpire
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setTime(int $timeStart, int $timeExpire)
@@ -271,6 +297,7 @@ class PayMicro extends WxBasePayment
 
     /**
      * @param string $receipt
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setReceipt(string $receipt)

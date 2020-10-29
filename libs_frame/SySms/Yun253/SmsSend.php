@@ -7,8 +7,8 @@
  */
 namespace SySms\Yun253;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\SmsConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Sms\Yun253Exception;
 use SySms\SmsBaseYun253;
 
@@ -16,26 +16,31 @@ class SmsSend extends SmsBaseYun253
 {
     /**
      * 接收手机号码列表
+     *
      * @var array
      */
     private $phoneList = [];
     /**
      * 签名名称
+     *
      * @var string
      */
     private $signName = '';
     /**
      * 短信内容
+     *
      * @var string
      */
     private $msg = '';
     /**
      * 发送短信时间
+     *
      * @var string
      */
     private $sendTime = '';
     /**
      * 是否需要状态报告
+     *
      * @var string
      */
     private $report = '';
@@ -54,6 +59,7 @@ class SmsSend extends SmsBaseYun253
 
     /**
      * @param array $phoneList
+     *
      * @throws \SyException\Sms\Yun253Exception
      */
     public function setPhoneList(array $phoneList)
@@ -75,6 +81,7 @@ class SmsSend extends SmsBaseYun253
 
     /**
      * @param string $phoneNum
+     *
      * @throws \SyException\Sms\Yun253Exception
      */
     public function addPhoneNum(string $phoneNum)
@@ -92,6 +99,7 @@ class SmsSend extends SmsBaseYun253
     /**
      * @param string $signName
      * @param string $msg
+     *
      * @throws \SyException\Sms\Yun253Exception
      */
     public function setSignNameAndMsg(string $signName, string $msg)

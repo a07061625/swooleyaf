@@ -7,14 +7,15 @@
  */
 namespace DingDing\Corp\ExtContact;
 
-use SyConstant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
+use SyConstant\ErrorCode;
 use SyException\DingDing\TalkException;
 use SyTool\Tool;
 
 /**
  * 添加外部联系人
+ *
  * @package DingDing\Corp\ExtContact
  */
 class ExtContactCreate extends TalkBaseCorp
@@ -23,56 +24,67 @@ class ExtContactCreate extends TalkBaseCorp
 
     /**
      * 职位
+     *
      * @var string
      */
     private $title = '';
     /**
      * 标签列表
+     *
      * @var array
      */
     private $label_ids = [];
     /**
      * 共享部门列表
+     *
      * @var array
      */
     private $share_dept_ids = [];
     /**
      * 地址
+     *
      * @var string
      */
     private $address = '';
     /**
      * 备注
+     *
      * @var string
      */
     private $remark = '';
     /**
      * 负责人用户id
+     *
      * @var string
      */
     private $follower_user_id = '';
     /**
      * 名称
+     *
      * @var string
      */
     private $name = '';
     /**
      * 手机号国家码
+     *
      * @var string
      */
     private $state_code = '';
     /**
      * 企业名
+     *
      * @var string
      */
     private $company_name = '';
     /**
      * 共享员工列表
+     *
      * @var array
      */
     private $share_user_ids = [];
     /**
      * 手机号
+     *
      * @var string
      */
     private $mobile = '';
@@ -101,6 +113,7 @@ class ExtContactCreate extends TalkBaseCorp
 
     /**
      * @param array $labelIds
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setLabelIds(array $labelIds)
@@ -150,6 +163,7 @@ class ExtContactCreate extends TalkBaseCorp
 
     /**
      * @param string $followerUserId
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setFollowerUserId(string $followerUserId)
@@ -163,6 +177,7 @@ class ExtContactCreate extends TalkBaseCorp
 
     /**
      * @param string $name
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setName(string $name)
@@ -198,6 +213,7 @@ class ExtContactCreate extends TalkBaseCorp
 
     /**
      * @param string $mobile
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setMobile(string $mobile)
@@ -228,6 +244,7 @@ class ExtContactCreate extends TalkBaseCorp
             'access_token' => $this->getAccessToken(TalkBaseCorp::ACCESS_TOKEN_TYPE_CORP, $this->_corpId, $this->_agentTag),
         ]);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->sendRequest('POST');
     }
 }

@@ -7,39 +7,45 @@
  */
 namespace SyLive\BaiJia\SettingLive;
 
-use SyLive\BaseBaiJiaSetting;
-use SyLive\UtilBaiJia;
 use SyConstant\ErrorCode;
 use SyException\Live\BaiJiaException;
+use SyLive\BaseBaiJiaSetting;
+use SyLive\UtilBaiJia;
 
 /**
  * Class LiveHorseLampSet
+ *
  * @package SyLive\BaiJia\SettingLive
  */
 class LiveHorseLampSet extends BaseBaiJiaSetting
 {
     /**
      * 类型 0:关闭 1:固定值 2:昵称
+     *
      * @var int
      */
     private $type = 0;
     /**
      * 名称
+     *
      * @var string
      */
     private $value = '';
     /**
      * 颜色
+     *
      * @var string
      */
     private $color = '';
     /**
      * 字体大小
+     *
      * @var int
      */
     private $font_size = 0;
     /**
      * 不透明度
+     *
      * @var float
      */
     private $opacity = 0.0;
@@ -56,6 +62,7 @@ class LiveHorseLampSet extends BaseBaiJiaSetting
 
     /**
      * @param int $type
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setType(int $type)
@@ -69,6 +76,7 @@ class LiveHorseLampSet extends BaseBaiJiaSetting
 
     /**
      * @param string $value
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setValue(string $value)
@@ -83,6 +91,7 @@ class LiveHorseLampSet extends BaseBaiJiaSetting
 
     /**
      * @param string $color
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setColor(string $color)
@@ -96,6 +105,7 @@ class LiveHorseLampSet extends BaseBaiJiaSetting
 
     /**
      * @param int $fontSize
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setFontSize(int $fontSize)
@@ -109,6 +119,7 @@ class LiveHorseLampSet extends BaseBaiJiaSetting
 
     /**
      * @param float $opacity
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setOpacity(float $opacity)
