@@ -46,7 +46,7 @@ class FileBatch extends BaseKodo
 
         $this->opList = [];
         foreach ($optionList as $eOption) {
-            if (is_string($eOption) && ($eOption{0} == '/')) {
+            if (is_string($eOption) && ($eOption[0] == '/')) {
                 $this->opList[] = $eOption;
             }
         }

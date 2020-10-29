@@ -244,7 +244,7 @@ class MysqlTool
         $content .= $filedStr . PHP_EOL;
         $content .= '    public function __construct(string $dbName = \'\')' . PHP_EOL;
         $content .= '    {' . PHP_EOL;
-        $content .= '        $this->_dbName = isset($dbName{0}) ? $dbName : \'' . $configs['db'] . '\';' . PHP_EOL;
+        $content .= '        $this->_dbName = isset($dbName[0]) ? $dbName : \'' . $configs['db'] . '\';' . PHP_EOL;
         $content .= '        parent::__construct($this->_dbName, \'' . $configs['table'] . '\', \'' . $primaryKey . '\');' . PHP_EOL;
         $content .= '    }' . PHP_EOL;
         $content .= '}' . PHP_EOL;

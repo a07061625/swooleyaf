@@ -45,7 +45,7 @@ class PermissionBaseController extends CommonController
         $parentTag = (string)\Request\SyRequest::getParams('ptag', '');
         $levelNum = (int)(strlen($parentTag) / 3 + 1);
         $title = SyTool\ProjectTool::filterStr(\Request\SyRequest::getParams('title'), 2);
-        if (($levelNum == 1) && ctype_digit($tag{0})) {
+        if (($levelNum == 1) && ctype_digit($tag[0])) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '标识必须以字母开头');
         }
         if (strlen($title) == 0) {

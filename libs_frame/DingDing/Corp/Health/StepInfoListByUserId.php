@@ -71,7 +71,7 @@ class StepInfoListByUserId extends TalkBaseCorp
      */
     public function setStatDate(string $statDate)
     {
-        if (ctype_digit($statDate) && (strlen($statDate) == 8) && ($statDate{0} == '2')) {
+        if (ctype_digit($statDate) && (strlen($statDate) == 8) && ($statDate[0] == '2')) {
             $this->reqData['stat_date'] = $statDate;
         } else {
             throw new TalkException('时间不合法', ErrorCode::DING_TALK_PARAM_ERROR);

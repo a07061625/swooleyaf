@@ -88,7 +88,7 @@ class ExpressQuery extends LogisticsBaseKd100
      */
     public function setPhone(string $phone)
     {
-        if (ctype_digit($phone) && (strlen($phone) == 11) && ($phone{0} == '1')) {
+        if (ctype_digit($phone) && (strlen($phone) == 11) && ($phone[0] == '1')) {
             $this->reqData['phone'] = $phone;
         } else {
             throw new Kd100Exception('手机号码不合法', ErrorCode::LOGISTICS_PARAM_ERROR);

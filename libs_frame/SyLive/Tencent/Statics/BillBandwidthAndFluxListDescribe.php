@@ -94,7 +94,7 @@ class BillBandwidthAndFluxListDescribe extends BaseTencent
     {
         $domains = [];
         foreach ($playDomains as $eDomain) {
-            if (is_string($eDomain) && isset($eDomain{0})) {
+            if (is_string($eDomain) && isset($eDomain[0])) {
                 $domains[$eDomain] = 1;
             }
         }

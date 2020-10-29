@@ -82,7 +82,7 @@ abstract class SimpleBootstrap extends Bootstrap_Abstract
             $moduleArr = explode(',', self::$appConfigs['application']['modules']);
             foreach ($moduleArr as $eModule) {
                 $eModuleTag = trim($eModule);
-                if (ctype_alnum($eModuleTag) && ctype_alpha($eModuleTag{0})) {
+                if (ctype_alnum($eModuleTag) && ctype_alpha($eModuleTag[0])) {
                     self::$acceptModules[$eModuleTag] = 1;
                 }
             }
@@ -99,7 +99,7 @@ abstract class SimpleBootstrap extends Bootstrap_Abstract
             throw new ServerException('默认模块名不存在', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         } elseif (!ctype_alnum($defaultModule)) {
             throw new ServerException('默认模块名不合法', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
-        } elseif (!ctype_alpha($defaultModule{0})) {
+        } elseif (!ctype_alpha($defaultModule[0])) {
             throw new ServerException('默认模块名不合法', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
         define('SY_DEFAULT_MODULE', ucfirst($defaultModule));
@@ -110,7 +110,7 @@ abstract class SimpleBootstrap extends Bootstrap_Abstract
             throw new ServerException('默认控制器名不存在', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         } elseif (!ctype_alnum($defaultController)) {
             throw new ServerException('默认控制器名不合法', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
-        } elseif (!ctype_alpha($defaultController{0})) {
+        } elseif (!ctype_alpha($defaultController[0])) {
             throw new ServerException('默认控制器名不合法', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
         define('SY_DEFAULT_CONTROLLER', ucfirst($defaultController));
@@ -121,7 +121,7 @@ abstract class SimpleBootstrap extends Bootstrap_Abstract
             throw new ServerException('默认方法名不存在', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         } elseif (!ctype_alnum($defaultAction)) {
             throw new ServerException('默认方法名不合法', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
-        } elseif (!ctype_alpha($defaultAction{0})) {
+        } elseif (!ctype_alpha($defaultAction[0])) {
             throw new ServerException('默认方法名不合法', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
         define('SY_DEFAULT_ACTION', lcfirst($defaultAction));

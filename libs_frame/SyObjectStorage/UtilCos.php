@@ -149,6 +149,6 @@ final class UtilCos extends Util
             }
         }
 
-        return isset($paramStr{0}) ? substr($paramStr, 1) : '';
+        return isset($paramStr[0]) ? substr($paramStr, 1) : '';
     }
 }

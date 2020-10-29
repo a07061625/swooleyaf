@@ -201,7 +201,7 @@ class UserUpdate extends TalkBaseCorp
      */
     public function setMobile(string $mobile)
     {
-        if (ctype_digit($mobile) && (strlen($mobile) == 11) && ($mobile{0} == '1')) {
+        if (ctype_digit($mobile) && (strlen($mobile) == 11) && ($mobile[0] == '1')) {
             $this->reqData['mobile'] = $mobile;
         } else {
             throw new TalkException('手机号码不合法', ErrorCode::DING_TALK_PARAM_ERROR);

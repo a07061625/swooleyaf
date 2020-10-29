@@ -120,7 +120,7 @@ class ProvinceIspPlayInfoListDescribe extends BaseTencent
     {
         $domains = [];
         foreach ($playDomains as $eDomain) {
-            if (is_string($eDomain) && isset($eDomain{0})) {
+            if (is_string($eDomain) && isset($eDomain[0])) {
                 $domains[$eDomain] = 1;
             }
         }
@@ -139,7 +139,7 @@ class ProvinceIspPlayInfoListDescribe extends BaseTencent
     {
         $names = [];
         foreach ($provinceNames as $eName) {
-            if (is_string($eName) && isset($eName{0})) {
+            if (is_string($eName) && isset($eName[0])) {
                 $names[$eName] = 1;
             }
         }
@@ -158,7 +158,7 @@ class ProvinceIspPlayInfoListDescribe extends BaseTencent
     {
         $names = [];
         foreach ($ispNames as $eName) {
-            if (is_string($eName) && isset($eName{0})) {
+            if (is_string($eName) && isset($eName[0])) {
                 $names[$eName] = 1;
             }
         }

@@ -210,7 +210,7 @@ class Server
         $buffer .= $content;
         $head = " ";
         $cmd = 0x30;
-        $head{0} = chr($cmd);
+        $head[0] = chr($cmd);
         $head .= $this->setmsglength(strlen($topic) + strlen($content) + 2);
         echo "+++++++++++++++++++++++++++\n";
         $this->printstr($head . chr(0) . chr(0x06) . $buffer);

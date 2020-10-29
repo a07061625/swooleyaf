@@ -66,7 +66,7 @@ class WxproviderCorpAuthorizerEntity extends MysqlEntity
     public $updated = 0;
     public function __construct(string $dbName = '')
     {
-        $this->_dbName = isset($dbName{0}) ? $dbName : 'sy_base';
+        $this->_dbName = isset($dbName[0]) ? $dbName : 'sy_base';
         parent::__construct($this->_dbName, 'wxprovider_corp_authorizer', 'id');
     }
 }

@@ -162,7 +162,7 @@ class PHPExcel_Writer_Excel5_Parser
     {
         $this->currentCharacter = 0;
         $this->formula = $formula;
-        $this->lookAhead = isset($formula{1}) ? $formula{1} : '';
+        $this->lookAhead = isset($formula[1]) ? $formula[1] : '';
         $this->advance();
         $this->parseTree = $this->condition();
 
