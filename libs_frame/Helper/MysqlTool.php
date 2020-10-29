@@ -27,6 +27,7 @@ class MysqlTool
                     'prefix' => trim(Tool::getClientOption('-prefix', false, '')),
                     'suffix' => trim(Tool::getClientOption('-suffix', false, '')),
                 ]);
+
                 break;
             case 'entity':
                 self::createDbEntity([
@@ -37,9 +38,11 @@ class MysqlTool
                     'prefix' => trim(Tool::getClientOption('-prefix', false, '')),
                     'suffix' => trim(Tool::getClientOption('-suffix', false, '')),
                 ]);
+
                 break;
             default:
                 self::help();
+
                 break;
         }
     }
@@ -79,7 +82,9 @@ class MysqlTool
 
     /**
      * 转换表名或数据库名
+     *
      * @param string $name 表名或数据库名
+     *
      * @return string
      */
     private static function transferName(string $name) : string
@@ -117,6 +122,7 @@ class MysqlTool
 
     /**
      * 创建数据库下所有的实体类
+     *
      * @param array $configs 配置数组
      */
     private static function createDbEntities(array $configs)
@@ -143,6 +149,7 @@ class MysqlTool
 
     /**
      * 创建数据库下指定的实体类
+     *
      * @param array $configs 配置数组
      */
     private static function createDbEntity(array $configs)

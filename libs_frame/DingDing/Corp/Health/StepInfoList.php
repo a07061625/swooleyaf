@@ -7,14 +7,15 @@
  */
 namespace DingDing\Corp\Health;
 
-use SyConstant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
+use SyConstant\ErrorCode;
 use SyException\DingDing\TalkException;
 use SyTool\Tool;
 
 /**
  * 获取个人或部门的钉钉运动数据
+ *
  * @package DingDing\Corp\Health
  */
 class StepInfoList extends TalkBaseCorp
@@ -23,16 +24,19 @@ class StepInfoList extends TalkBaseCorp
 
     /**
      * 数据类型 0:取用户步数 1:取部门步数
+     *
      * @var int
      */
     private $type = 0;
     /**
      * 用户或部门ID
+     *
      * @var string
      */
     private $object_id = '';
     /**
      * 时间列表
+     *
      * @var string
      */
     private $stat_dates = '';
@@ -49,8 +53,9 @@ class StepInfoList extends TalkBaseCorp
     }
 
     /**
-     * @param int $type
+     * @param int    $type
      * @param string $objectId
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setTypeAndObjectId(int $type, string $objectId)
@@ -69,6 +74,7 @@ class StepInfoList extends TalkBaseCorp
 
     /**
      * @param array $statDates
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setStatDates(array $statDates)
@@ -102,6 +108,7 @@ class StepInfoList extends TalkBaseCorp
             'access_token' => $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag),
         ]);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->sendRequest('POST');
     }
 }

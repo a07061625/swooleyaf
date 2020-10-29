@@ -28,33 +28,38 @@ abstract class SimpleBootstrap extends Bootstrap_Abstract
 {
     /**
      * 首次请求标识,true:首次请求 false:非首次请求
+     *
      * @var bool
      */
     protected static $firstTag = true;
     /**
      * APP配置数组
+     *
      * @var array
      */
     private static $appConfigs = [];
     /**
      * 允许的模块列表
+     *
      * @var array
      */
     private static $acceptModules = [];
 
     /**
      * 获取APP配置
+     *
      * @param string|null $key
-     * @param mixed $default
+     * @param mixed       $default
+     *
      * @return mixed
      */
     public static function getAppConfigs(string $key = null, $default = null)
     {
         if ($key === null) {
             return self::$appConfigs;
-        } else {
-            return Tool::getArrayVal(self::$appConfigs, $key, $default, true);
         }
+
+        return Tool::getArrayVal(self::$appConfigs, $key, $default, true);
     }
 
     /**
@@ -67,7 +72,9 @@ abstract class SimpleBootstrap extends Bootstrap_Abstract
 
     /**
      * 通用初始化
+     *
      * @param \Yaf\Dispatcher $dispatcher
+     *
      * @throws \SyException\Swoole\ServerException
      */
     protected function universalInit(Dispatcher $dispatcher)

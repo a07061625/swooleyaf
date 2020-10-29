@@ -7,10 +7,10 @@
  */
 namespace SyTool;
 
+use DesignPatterns\Factories\CacheSimpleFactory;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyConstant\SyInner;
-use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Session\JwtException;
 use SyTrait\SimpleTrait;
 use Yaf\Registry;
@@ -21,7 +21,9 @@ final class SessionTool
 
     /**
      * 设置会话JWT的刷新标识
+     *
      * @param string $tag
+     *
      * @return bool|string
      */
     public static function setSessionJwtRid(string $tag)
@@ -30,16 +32,18 @@ final class SessionTool
         $rid = Tool::createNonceStr(6, 'numlower') . time();
         if (CacheSimpleFactory::getRedisInstance()->set($redisKey, $rid, SY_EXPIRE_SESSION_JWT_RID)) {
             return $rid;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**
      * 生成会话JWT数据
+     *
      * @param array $data
-     * 必填字段:
-     *   uid: string|int 用户标识
+     *                    必填字段:
+     *                    uid: string|int 用户标识
+     *
      * @throws \SyException\Session\JwtException
      */
     public static function createSessionJwt(array &$data)
@@ -63,6 +67,7 @@ final class SessionTool
 
     /**
      * 生成默认JWT数据
+     *
      * @return array
      */
     public static function createDefaultJwt() : array

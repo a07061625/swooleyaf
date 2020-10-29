@@ -7,14 +7,15 @@
  */
 namespace DingDing\Corp\User;
 
-use SyConstant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
+use SyConstant\ErrorCode;
 use SyException\DingDing\TalkException;
 use SyTool\Tool;
 
 /**
  * 创建用户
+ *
  * @package DingDing\Corp\User
  */
 class UserCreate extends TalkBaseCorp
@@ -23,76 +24,91 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * 用户id
+     *
      * @var string
      */
     private $userid = '';
     /**
      * 名称
+     *
      * @var string
      */
     private $name = '';
     /**
      * 部门排序
+     *
      * @var string
      */
     private $orderInDepts = '';
     /**
      * 部门列表
+     *
      * @var array
      */
     private $department = [];
     /**
      * 职位信息
+     *
      * @var string
      */
     private $position = '';
     /**
      * 手机号码
+     *
      * @var string
      */
     private $mobile = '';
     /**
      * 分机号
+     *
      * @var string
      */
     private $tel = '';
     /**
      * 办公地点
+     *
      * @var string
      */
     private $workPlace = '';
     /**
      * 备注
+     *
      * @var string
      */
     private $remark = '';
     /**
      * 邮箱
+     *
      * @var string
      */
     private $email = '';
     /**
      * 企业邮箱
+     *
      * @var string
      */
     private $orgEmail = '';
     /**
      * 工号
+     *
      * @var string
      */
     private $jobnumber = '';
     /**
      * 号码隐藏标识
+     *
      * @var bool
      */
     private $isHide = false;
     /**
      * 高管模式
+     *
      * @var bool
      */
     private $isSenior = false;
     /**
      * 扩展属性
+     *
      * @var array
      */
     private $extattr = [];
@@ -114,6 +130,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $userId
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setUserId(string $userId)
@@ -127,6 +144,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $name
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setName(string $name)
@@ -140,6 +158,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param array $departmentOrder
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setDepartmentOrder(array $departmentOrder)
@@ -152,6 +171,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param array $departmentList
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setDepartment(array $departmentList)
@@ -170,6 +190,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $position
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setPosition(string $position)
@@ -183,6 +204,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $mobile
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setMobile(string $mobile)
@@ -196,6 +218,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $tel
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setTel(string $tel)
@@ -209,6 +232,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $workPlace
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setWorkPlace(string $workPlace)
@@ -222,6 +246,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $remark
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setRemark(string $remark)
@@ -235,6 +260,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $email
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setEmail(string $email)
@@ -248,6 +274,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $orgEmail
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setOrgEmail(string $orgEmail)
@@ -261,6 +288,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param string $jobNumber
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setJobNumber(string $jobNumber)
@@ -290,6 +318,7 @@ class UserCreate extends TalkBaseCorp
 
     /**
      * @param array $extAttr
+     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setExtAttr(array $extAttr)
@@ -319,6 +348,7 @@ class UserCreate extends TalkBaseCorp
             'access_token' => $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag),
         ]);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->sendRequest('POST');
     }
 }

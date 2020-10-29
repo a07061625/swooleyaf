@@ -16,37 +16,44 @@ use Wx\WxUtilCorpProvider;
 
 /**
  * 获取注册码
+ *
  * @package Wx\CorpProvider\GeneralizeCode
  */
 class RegisterCodeGet extends WxBaseCorpProvider
 {
     /**
      * 推广包ID
+     *
      * @var string
      */
     private $template_id = '';
     /**
      * 企业名称
+     *
      * @var string
      */
     private $corp_name = '';
     /**
      * 管理员姓名
+     *
      * @var string
      */
     private $admin_name = '';
     /**
      * 管理员手机号
+     *
      * @var string
      */
     private $admin_mobile = '';
     /**
      * 自定义状态值
+     *
      * @var string
      */
     private $state = '';
     /**
      * 跟进人用户ID
+     *
      * @var string
      */
     private $follow_user = '';
@@ -64,6 +71,7 @@ class RegisterCodeGet extends WxBaseCorpProvider
 
     /**
      * @param string $templateId
+     *
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setTemplateId(string $templateId)
@@ -102,6 +110,7 @@ class RegisterCodeGet extends WxBaseCorpProvider
 
     /**
      * @param string $adminMobile
+     *
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setAdminMobile(string $adminMobile)
@@ -115,6 +124,7 @@ class RegisterCodeGet extends WxBaseCorpProvider
 
     /**
      * @param string $state
+     *
      * @throws \SyException\Wx\WxCorpProviderException
      */
     public function setState(string $state)

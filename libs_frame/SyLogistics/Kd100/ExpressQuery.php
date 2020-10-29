@@ -16,31 +16,37 @@ class ExpressQuery extends LogisticsBaseKd100
 {
     /**
      * 快递公司编码
+     *
      * @var string
      */
     private $com = '';
     /**
      * 快递单号
+     *
      * @var string
      */
     private $num = '';
     /**
      * 手机号码
+     *
      * @var string
      */
     private $phone = '';
     /**
      * 出发地
+     *
      * @var string
      */
     private $from = '';
     /**
      * 目的地
+     *
      * @var string
      */
     private $to = '';
     /**
      * 行政区域解析开通状态
+     *
      * @var int
      */
     private $resultv2 = 0;
@@ -57,6 +63,7 @@ class ExpressQuery extends LogisticsBaseKd100
 
     /**
      * @param string $com
+     *
      * @throws \SyException\Logistics\Kd100Exception
      */
     public function setCom(string $com)
@@ -70,6 +77,7 @@ class ExpressQuery extends LogisticsBaseKd100
 
     /**
      * @param string $num
+     *
      * @throws \SyException\Logistics\Kd100Exception
      */
     public function setNum(string $num)
@@ -84,6 +92,7 @@ class ExpressQuery extends LogisticsBaseKd100
 
     /**
      * @param string $phone
+     *
      * @throws \SyException\Logistics\Kd100Exception
      */
     public function setPhone(string $phone)
@@ -113,6 +122,7 @@ class ExpressQuery extends LogisticsBaseKd100
 
     /**
      * @param int $resultV2
+     *
      * @throws \SyException\Logistics\Kd100Exception
      */
     public function setResultV2(int $resultV2)
@@ -135,6 +145,7 @@ class ExpressQuery extends LogisticsBaseKd100
         $signRes = LogisticsUtilKd100::createSign($this->reqData);
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = http_build_query($signRes);
+
         return $this->getContent();
     }
 }

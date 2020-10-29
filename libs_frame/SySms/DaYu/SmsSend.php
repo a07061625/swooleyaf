@@ -7,8 +7,8 @@
  */
 namespace SySms\DaYu;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\SmsConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Sms\DaYuException;
 use SyTaoBao\ServiceBase;
 use SyTool\Tool;
@@ -17,26 +17,31 @@ class SmsSend extends ServiceBase
 {
     /**
      * 短信类型
+     *
      * @var string
      */
     private $smsType = '';
     /**
      * 接收手机号码列表
+     *
      * @var array
      */
     private $recNumList = [];
     /**
      * 签名名称
+     *
      * @var string
      */
     private $signName = '';
     /**
      * 模板ID
+     *
      * @var string
      */
     private $templateCode = '';
     /**
      * 模板参数
+     *
      * @var array
      */
     private $smsParams = [];
@@ -69,6 +74,7 @@ class SmsSend extends ServiceBase
 
     /**
      * @param array $recNumList
+     *
      * @throws \SyException\Sms\DaYuException
      */
     public function setRecNumList(array $recNumList)
@@ -90,6 +96,7 @@ class SmsSend extends ServiceBase
 
     /**
      * @param string $recNum
+     *
      * @throws \SyException\Sms\DaYuException
      */
     public function addRecNum(string $recNum)
@@ -106,6 +113,7 @@ class SmsSend extends ServiceBase
 
     /**
      * @param string $signName
+     *
      * @throws \SyException\Sms\DaYuException
      */
     public function setSignName(string $signName)
@@ -121,6 +129,7 @@ class SmsSend extends ServiceBase
 
     /**
      * @param string $templateId
+     *
      * @throws \SyException\Sms\DaYuException
      */
     public function setTemplateId(string $templateId)
