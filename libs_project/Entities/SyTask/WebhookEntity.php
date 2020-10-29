@@ -9,46 +9,53 @@ class WebhookEntity extends MysqlEntity
      *
      * @var int
      */
-    public $id = null;
+    public $id;
 
     /**
      * 标识
+     *
      * @var string
      */
     public $tag = '';
 
     /**
      * 令牌
+     *
      * @var string
      */
     public $token = '';
 
     /**
      * 代码地址
+     *
      * @var string
      */
     public $code_url = '';
 
     /**
      * 代码分支
+     *
      * @var string
      */
     public $code_ref = '';
 
     /**
      * 执行命令列表
+     *
      * @var string
      */
     public $exec_commands = '';
 
     /**
      * 创建时间戳
+     *
      * @var int
      */
     public $created = 0;
 
     /**
      * 修改时间戳
+     *
      * @var int
      */
     public $updated = 0;

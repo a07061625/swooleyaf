@@ -8,199 +8,237 @@
 namespace AliPay\Shop;
 
 use AliPay\AliPayBase;
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\AliPayConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\AliPay\AliPayShopException;
 
 class ShopModify extends AliPayBase
 {
     /**
      * 门店ID
+     *
      * @var string
      */
     private $shop_id = '';
     /**
      * 门店编号
+     *
      * @var string
      */
     private $store_id = '';
     /**
      * 品牌名
+     *
      * @var string
      */
     private $brand_name = '';
     /**
      * 品牌LOGO
+     *
      * @var string
      */
     private $brand_logo = '';
     /**
      * 主门店名
+     *
      * @var string
      */
     private $main_shop_name = '';
     /**
      * 分店名称
+     *
      * @var string
      */
     private $branch_shop_name = '';
     /**
      * 省份编码
+     *
      * @var string
      */
     private $province_code = '';
     /**
      * 城市编码
+     *
      * @var string
      */
     private $city_code = '';
     /**
      * 区县编码
+     *
      * @var string
      */
     private $district_code = '';
     /**
      * 详细地址
+     *
      * @var string
      */
     private $address = '';
     /**
      * GCJ-02坐标系经度
+     *
      * @var string
      */
     private $longitude = '';
     /**
      * GCJ-02坐标系纬度
+     *
      * @var string
      */
     private $latitude = '';
     /**
      * 门店电话号码
+     *
      * @var array
      */
     private $contact_number = [];
     /**
      * 店长电话号码
+     *
      * @var string
      */
     private $notify_mobile = '';
     /**
      * 门店首图
+     *
      * @var string
      */
     private $main_image = '';
     /**
      * 审核图片
+     *
      * @var array
      */
     private $audit_images = [];
     /**
      * 营业时间
+     *
      * @var string
      */
     private $business_time = '';
     /**
      * 支持WIFI状态 T:支持 F:不支持 空:客户端不展示
+     *
      * @var string
      */
     private $wifi = '';
     /**
      * 支持停车状态 T:支持 F:不支持 空:客户端不展示
+     *
      * @var string
      */
     private $parking = '';
     /**
      * 其他服务
+     *
      * @var string
      */
     private $value_added = '';
     /**
      * 人均消费价格,最少1元
+     *
      * @var int
      */
     private $avg_price = 0;
     /**
      * 营业执照图片
+     *
      * @var string
      */
     private $licence = '';
     /**
      * 营业执照编号
+     *
      * @var string
      */
     private $licence_code = '';
     /**
      * 营业执照名称
+     *
      * @var string
      */
     private $licence_name = '';
     /**
      * 营业执照过期时间
+     *
      * @var string
      */
     private $licence_expires = '';
     /**
      * 许可证
+     *
      * @var string
      */
     private $business_certificate = '';
     /**
      * 许可证有效期
+     *
      * @var string
      */
     private $business_certificate_expires = '';
     /**
      * 授权函
+     *
      * @var string
      */
     private $auth_letter = '';
     /**
      * 其他平台开店状态 T:有开店 F:未开店
+     *
      * @var string
      */
     private $is_operating_online = '';
     /**
      * 其他平台开店的店铺链接url
+     *
      * @var array
      */
     private $online_url = [];
     /**
      * 审核状态消息推送地址
+     *
      * @var string
      */
     private $operate_notify_url = '';
     /**
      * 机具号
+     *
      * @var array
      */
     private $implement_id = [];
     /**
      * 无烟区状态 T:有无烟区 F:没有无烟区 空:客户端不展示
+     *
      * @var string
      */
     private $no_smoking = '';
     /**
      * 包厢状态 T:有包厢 F:没有包厢 空:客户端不展示
+     *
      * @var string
      */
     private $box = '';
     /**
      * 请求ID
+     *
      * @var string
      */
     private $request_id = '';
     /**
      * 其他资质
+     *
      * @var string
      */
     private $other_authorization = '';
     /**
      * 操作人角色
+     *
      * @var string
      */
     private $op_role = '';
     /**
      * 业务版本号
+     *
      * @var string
      */
     private $biz_version = '';
@@ -220,6 +258,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $shopId
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setShopId(string $shopId)
@@ -233,6 +272,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $storeId
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setStoreId(string $storeId)
@@ -246,6 +286,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $brandName
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBrandName(string $brandName)
@@ -261,6 +302,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $brandLogo
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBrandLogo(string $brandLogo)
@@ -274,6 +316,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $mainShopName
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setMainShopName(string $mainShopName)
@@ -289,6 +332,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $branchShopName
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBranchShopName(string $branchShopName)
@@ -304,6 +348,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $provinceCode
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setProvinceCode(string $provinceCode)
@@ -317,6 +362,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $cityCode
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setCityCode(string $cityCode)
@@ -330,6 +376,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $districtCode
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setDistrictCode(string $districtCode)
@@ -343,6 +390,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $address
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setAddress(string $address)
@@ -358,6 +406,7 @@ class ShopModify extends AliPayBase
     /**
      * @param float $lng
      * @param float $lat
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setLngAndLat($lng, $lat)
@@ -386,6 +435,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $contactNumber
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function addContactNumber(string $contactNumber)
@@ -399,6 +449,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $notifyMobile
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setNotifyMobile(string $notifyMobile)
@@ -412,6 +463,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $mainImage
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setMainImage(string $mainImage)
@@ -425,6 +477,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $auditImage
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function addAuditImage(string $auditImage)
@@ -438,6 +491,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $businessTime
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBusinessTime(string $businessTime)
@@ -452,6 +506,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $wifi
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setWifi(string $wifi)
@@ -465,6 +520,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $parking
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setParking(string $parking)
@@ -478,6 +534,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $valueAdded
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setValueAdded(string $valueAdded)
@@ -492,6 +549,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param int $avgPrice
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setAvgPrice(int $avgPrice)
@@ -505,6 +563,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $licence
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setLicence(string $licence)
@@ -518,6 +577,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $licenceCode
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setLicenceCode(string $licenceCode)
@@ -531,6 +591,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $licenceName
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setLicenceName(string $licenceName)
@@ -544,6 +605,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $licenceExpires
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setLicenceExpires(string $licenceExpires)
@@ -557,6 +619,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $businessCertificate
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBusinessCertificate(string $businessCertificate)
@@ -570,6 +633,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $businessCertificateExpires
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBusinessCertificateExpires(string $businessCertificateExpires)
@@ -583,6 +647,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $authLetter
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setAuthLetter(string $authLetter)
@@ -596,6 +661,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $isOperatingOnline
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setIsOperatingOnline(string $isOperatingOnline)
@@ -609,6 +675,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $onlineUrl
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function addOnlineUrl(string $onlineUrl)
@@ -622,6 +689,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $operateNotifyUrl
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setOperateNotifyUrl(string $operateNotifyUrl)
@@ -635,6 +703,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $implementId
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function addImplementId(string $implementId)
@@ -648,6 +717,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $noSmoking
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setNoSmoking(string $noSmoking)
@@ -661,6 +731,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $box
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBox(string $box)
@@ -674,6 +745,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $requestId
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setRequestId(string $requestId)
@@ -687,6 +759,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $otherAuthorization
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setOtherAuthorization(string $otherAuthorization)
@@ -700,6 +773,7 @@ class ShopModify extends AliPayBase
 
     /**
      * @param string $opRole
+     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setOpRole(string $opRole)

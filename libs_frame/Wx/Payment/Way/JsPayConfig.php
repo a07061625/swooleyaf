@@ -17,21 +17,25 @@ class JsPayConfig extends WxBasePayment
 {
     /**
      * 时间戳
+     *
      * @var string
      */
     private $timeStamp = '';
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonceStr = '';
     /**
      * 预支付交易会话标识
+     *
      * @var string
      */
     private $package = '';
     /**
      * 签名类型
+     *
      * @var string
      */
     private $signType = '';
@@ -50,6 +54,7 @@ class JsPayConfig extends WxBasePayment
 
     /**
      * @param string $timeStamp
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setTimeStamp(string $timeStamp)
@@ -63,6 +68,7 @@ class JsPayConfig extends WxBasePayment
 
     /**
      * @param string $package
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setPackage(string $package)
@@ -83,6 +89,7 @@ class JsPayConfig extends WxBasePayment
             throw new WxException('交易会话标识不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['paySign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appId']);
+
         return $this->reqData;
     }
 }

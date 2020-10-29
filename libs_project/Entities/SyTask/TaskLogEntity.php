@@ -13,24 +13,28 @@ class TaskLogEntity extends MysqlEntity
 {
     /**
      * 主键ID
+     *
      * @var int
      */
-    public $id = null;
+    public $id;
 
     /**
      * 任务标识
+     *
      * @var string
      */
     public $tag = '';
 
     /**
      * 任务结果,json格式
+     *
      * @var string
      */
     public $exec_result = '';
 
     /**
      * 创建时间戳
+     *
      * @var int
      */
     public $created = 0;

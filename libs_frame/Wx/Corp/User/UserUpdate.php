@@ -16,6 +16,7 @@ use Wx\WxUtilBase;
 
 /**
  * 更新成员
+ *
  * @package Wx\Corp\User
  */
 class UserUpdate extends WxBaseCorp
@@ -24,86 +25,103 @@ class UserUpdate extends WxBaseCorp
 
     /**
      * 用户ID
+     *
      * @var string
      */
     private $userid = '';
     /**
      * 名称
+     *
      * @var string
      */
     private $name = '';
     /**
      * 别名
+     *
      * @var string
      */
     private $alias = '';
     /**
      * 手机号码
+     *
      * @var string
      */
     private $mobile = '';
     /**
      * 部门id列表
+     *
      * @var array
      */
     private $department = [];
     /**
      * 排序值,默认为0,数量必须和department一致,数值越大排序越前面
+     *
      * @var array
      */
     private $order = [];
     /**
      * 职务信息
+     *
      * @var string
      */
     private $position = '';
     /**
      * 性别 1:男性 2:女性
+     *
      * @var int
      */
     private $gender = 0;
     /**
      * 邮箱
+     *
      * @var string
      */
     private $email = '';
     /**
      * 座机
+     *
      * @var string
      */
     private $telephone = '';
     /**
      * 上级标识,个数必须和department一致 1:上级 0:非上级
+     *
      * @var array
      */
     private $is_leader_in_dept = [];
     /**
      * 头像
+     *
      * @var string
      */
     private $avatar_mediaid = '';
     /**
      * 成员标识 1:启用 0:禁用
+     *
      * @var int
      */
     private $enable = 0;
     /**
      * 扩展属性
+     *
      * @var array
      */
     private $extattr = [];
     /**
      * 邀请标识,默认值为true true:邀请使用企业微信 false:不邀请
+     *
      * @var bool
      */
     private $to_invite = true;
     /**
      * 对外属性
+     *
      * @var array
      */
     private $external_profile = [];
     /**
      * 对外职务
+     *
      * @var string
      */
     private $external_position = '';
@@ -122,6 +140,7 @@ class UserUpdate extends WxBaseCorp
 
     /**
      * @param string $userId
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setUserId(string $userId)
@@ -135,6 +154,7 @@ class UserUpdate extends WxBaseCorp
 
     /**
      * @param string $name
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setName(string $name)
@@ -148,6 +168,7 @@ class UserUpdate extends WxBaseCorp
 
     /**
      * @param string $alias
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setAlias(string $alias)
@@ -161,6 +182,7 @@ class UserUpdate extends WxBaseCorp
 
     /**
      * @param string $mobile
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setMobile(string $mobile)
@@ -174,6 +196,7 @@ class UserUpdate extends WxBaseCorp
 
     /**
      * @param array $departmentInfo
+     *
      * @throws \SyException\Wx\WxException
      */
     public function addDepartmentInfo(array $departmentInfo)
@@ -218,6 +241,7 @@ class UserUpdate extends WxBaseCorp
 
     /**
      * @param int $gender
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setGender(int $gender)
@@ -231,6 +255,7 @@ class UserUpdate extends WxBaseCorp
 
     /**
      * @param string $email
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setEmail(string $email)
@@ -244,6 +269,7 @@ class UserUpdate extends WxBaseCorp
 
     /**
      * @param string $telephone
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setTelephone(string $telephone)
@@ -258,6 +284,7 @@ class UserUpdate extends WxBaseCorp
 
     /**
      * @param string $avatarMediaId
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setAvatarMediaId(string $avatarMediaId)
@@ -271,6 +298,7 @@ class UserUpdate extends WxBaseCorp
 
     /**
      * @param int $enable
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setEnable(int $enable)
@@ -284,6 +312,7 @@ class UserUpdate extends WxBaseCorp
 
     /**
      * @param array $extAttr
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setExtAttr(array $extAttr)
@@ -305,6 +334,7 @@ class UserUpdate extends WxBaseCorp
 
     /**
      * @param array $externalProfile
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setExternalProfile(array $externalProfile)
@@ -318,6 +348,7 @@ class UserUpdate extends WxBaseCorp
 
     /**
      * @param string $externalPosition
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setExternalPosition(string $externalPosition)

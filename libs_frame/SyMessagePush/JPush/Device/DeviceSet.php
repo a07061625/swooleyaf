@@ -17,21 +17,25 @@ class DeviceSet extends DeviceBase
 {
     /**
      * 设备ID
+     *
      * @var string
      */
     private $registration_id = '';
     /**
      * 标签列表
+     *
      * @var array
      */
     private $tags = [];
     /**
      * 设备别名
+     *
      * @var string
      */
     private $alias = '';
     /**
      * 关联手机号码
+     *
      * @var string
      */
     private $mobile = '';
@@ -48,6 +52,7 @@ class DeviceSet extends DeviceBase
 
     /**
      * @param string $registrationId
+     *
      * @throws \SyException\MessagePush\JPushException
      */
     public function setRegistrationId(string $registrationId)
@@ -70,6 +75,7 @@ class DeviceSet extends DeviceBase
 
     /**
      * @param string $alias
+     *
      * @throws \SyException\MessagePush\JPushException
      */
     public function setAlias(string $alias)
@@ -85,6 +91,7 @@ class DeviceSet extends DeviceBase
 
     /**
      * @param string $mobile
+     *
      * @throws \SyException\MessagePush\JPushException
      */
     public function setMobile(string $mobile)
@@ -116,6 +123,7 @@ class DeviceSet extends DeviceBase
         $this->curlConfigs[CURLOPT_URL] = $this->serviceDomain . $this->serviceUri;
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->getContent();
     }
 }

@@ -7,105 +7,124 @@
  */
 namespace SyLive\BaiJia\SubAccount;
 
-use SyLive\BaseBaiJia;
-use SyLive\UtilBaiJia;
 use SyConstant\ErrorCode;
 use SyException\Live\BaiJiaException;
+use SyLive\BaseBaiJia;
+use SyLive\UtilBaiJia;
 use SyTool\Tool;
 
 /**
  * Class SubAccountCreate
+ *
  * @package SyLive\BaiJia\SubAccount
  */
 class SubAccountCreate extends BaseBaiJia
 {
     /**
      * 手机号
+     *
      * @var string
      */
     private $mobile = '';
     /**
      * 邮箱
+     *
      * @var string
      */
     private $email = '';
     /**
      * 密码
+     *
      * @var string
      */
     private $password = '';
     /**
      * 联系人
+     *
      * @var string
      */
     private $contacts = '';
     /**
      * 公司名
+     *
      * @var string
      */
     private $company = '';
     /**
      * 是否开通直播 0:不开通 1:开通
+     *
      * @var int
      */
     private $live_on = 0;
     /**
      * 是否开通点播 0:不开通 1:开通
+     *
      * @var int
      */
     private $video_on = 0;
     /**
      * 账号生效日期 格式: 2017-11-24
+     *
      * @var string
      */
     private $effect_time = '';
     /**
      * 账号失效日期 格式: 2017-11-24
+     *
      * @var string
      */
     private $expire_time = '';
     /**
      * 直播套餐并发值,如开通直播且为并发计费,则该值为必传值
+     *
      * @var int
      */
     private $user_limit = 0;
     /**
      * 直播可超额使用到的并发值,如开通直播且为并发计费,则该值为必传值,该值必须不小于user_limit
+     *
      * @var int
      */
     private $max_user_limit = 0;
     /**
      * 直播套餐人次/时长点数值,如开通直播且为人次/时长点数计费,则该值为必传值
+     *
      * @var int
      */
     private $user_count = 0;
     /**
      * 直播可超额使用到的人次/时长点数值,如开通直播且为人次/时长点数计费,则该值为必传值且不能小于user_count
+     *
      * @var int
      */
     private $max_user_count = 0;
     /**
      * 最大上麦路数
+     *
      * @var int
      */
     private $live_max_speakers = 0;
     /**
      * 点播存储空间容量,如开通点播播则该值为必传值
+     *
      * @var int
      */
     private $storage_limit = 0;
     /**
      * 点播可超额使用到的容量,如开通点播则该值为必传值且必须不小于storage_limit
+     *
      * @var int
      */
     private $max_storage_limit = 0;
     /**
      * 点播套餐月流量,如开通点播则该值为必传值
+     *
      * @var int
      */
     private $flow_limit = 0;
     /**
      * 点播可超额使用到的月流量,如开通点播则该值为必传值且必须不小于flow_limit
+     *
      * @var int
      */
     private $max_flow_limit = 0;
@@ -122,6 +141,7 @@ class SubAccountCreate extends BaseBaiJia
 
     /**
      * @param string $mobile
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setMobile(string $mobile)
@@ -135,6 +155,7 @@ class SubAccountCreate extends BaseBaiJia
 
     /**
      * @param string $email
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setEmail(string $email)
@@ -148,6 +169,7 @@ class SubAccountCreate extends BaseBaiJia
 
     /**
      * @param string $password
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setPassword(string $password)
@@ -162,6 +184,7 @@ class SubAccountCreate extends BaseBaiJia
 
     /**
      * @param string $contacts
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setContacts(string $contacts)
@@ -176,6 +199,7 @@ class SubAccountCreate extends BaseBaiJia
 
     /**
      * @param string $company
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setCompany(string $company)
@@ -190,6 +214,7 @@ class SubAccountCreate extends BaseBaiJia
 
     /**
      * @param int $liveOn
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setLiveOn(int $liveOn)
@@ -203,6 +228,7 @@ class SubAccountCreate extends BaseBaiJia
 
     /**
      * @param int $videoOn
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setVideoOn(int $videoOn)
@@ -217,6 +243,7 @@ class SubAccountCreate extends BaseBaiJia
     /**
      * @param int $effectTime
      * @param int $expireTime
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setAccountTime(int $effectTime, int $expireTime)
@@ -237,6 +264,7 @@ class SubAccountCreate extends BaseBaiJia
     /**
      * @param int $userLimit
      * @param int $maxUserLimit
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setUserLimit(int $userLimit, int $maxUserLimit)
@@ -254,6 +282,7 @@ class SubAccountCreate extends BaseBaiJia
     /**
      * @param int $userCount
      * @param int $maxUserCount
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setUserCount(int $userCount, int $maxUserCount)
@@ -270,6 +299,7 @@ class SubAccountCreate extends BaseBaiJia
 
     /**
      * @param int $liveMaxSpeakers
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setLiveMaxSpeakers(int $liveMaxSpeakers)
@@ -284,6 +314,7 @@ class SubAccountCreate extends BaseBaiJia
     /**
      * @param int $storageLimit
      * @param int $maxStorageLimit
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setStorageLimit(int $storageLimit, int $maxStorageLimit)
@@ -301,6 +332,7 @@ class SubAccountCreate extends BaseBaiJia
     /**
      * @param int $flowLimit
      * @param int $maxFlowLimit
+     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setFlowLimit(int $flowLimit, int $maxFlowLimit)

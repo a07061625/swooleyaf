@@ -7,8 +7,8 @@
  */
 namespace Wx\Account\Tools;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
@@ -19,21 +19,25 @@ class AuthCodeToOpenid extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * 授权码
+     *
      * @var string
      */
     private $auth_code = '';
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
@@ -54,6 +58,7 @@ class AuthCodeToOpenid extends WxBaseAccount
 
     /**
      * @param string $authCode
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setAuthCode(string $authCode)
