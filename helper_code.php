@@ -22,11 +22,14 @@ $option = SyTool\Tool::getClientOption(1, true);
 switch ($option) {
     case 'encrypt':
         \Helper\CodeTool::generator($phpInfo['dir_screw'], 'encrypt');
+
         break;
     case 'decrypt':
         \Helper\CodeTool::generator($phpInfo['dir_screw'], 'decrypt');
+
         break;
     default:
         syhelp_code();
+
         break;
 }
