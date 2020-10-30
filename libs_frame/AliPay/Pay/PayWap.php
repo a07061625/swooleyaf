@@ -8,8 +8,8 @@
 namespace AliPay\Pay;
 
 use AliPay\AliPayBase;
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\AliPayConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\AliPay\AliPayPayException;
 use SyTool\Tool;
 
@@ -17,46 +17,55 @@ class PayWap extends AliPayBase
 {
     /**
      * 表单ID
+     *
      * @var string
      */
     private $formId = '';
     /**
      * 交易的具体描述信息
+     *
      * @var string
      */
     private $body = '';
     /**
      * 商品的标题
+     *
      * @var string
      */
     private $subject = '';
     /**
      * 商户网站唯一订单号
+     *
      * @var string
      */
     private $out_trade_no = '';
     /**
      * 该笔订单允许的最晚付款时间，逾期将关闭交易,取值范围：1m～15d。m-分钟，h-小时，d-天，1c-当天
+     *
      * @var string
      */
     private $timeout_express = '';
     /**
      * 订单总金额,单位为分
+     *
      * @var string
      */
     private $total_amount = '';
     /**
      * 收款支付宝用户ID
+     *
      * @var string
      */
     private $seller_id = '';
     /**
      * 销售产品码
+     *
      * @var string
      */
     private $product_code = '';
     /**
      * 商品主类型 0:虚拟类商品 1:实物类商品
+     *
      * @var string
      */
     private $goods_type = '';
@@ -88,6 +97,7 @@ class PayWap extends AliPayBase
 
     /**
      * @param string $subject
+     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setSubject(string $subject)
@@ -102,6 +112,7 @@ class PayWap extends AliPayBase
 
     /**
      * @param string $outTradeNo
+     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setOutTradeNo(string $outTradeNo)
@@ -125,6 +136,7 @@ class PayWap extends AliPayBase
 
     /**
      * @param int $totalAmount
+     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setTotalAmount(int $totalAmount)

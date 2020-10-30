@@ -8,34 +8,39 @@
 namespace AliPay\Pay;
 
 use AliPay\AliPayBase;
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\AliPayConfigSingleton;
+use SyConstant\ErrorCode;
 use SyException\AliPay\AliPayPayException;
 
 class PayQrCode extends AliPayBase
 {
     /**
      * 商户订单号
+     *
      * @var string
      */
     private $out_trade_no = '';
     /**
      * 订单总金额,单位为分
+     *
      * @var string
      */
     private $total_amount = '';
     /**
      * 订单标题
+     *
      * @var string
      */
     private $subject = '';
     /**
      * 商品的描述
+     *
      * @var string
      */
     private $body = '';
     /**
      * 订单允许的最晚付款时间，逾期将关闭交易
+     *
      * @var string
      */
     private $timeout_express = '';
@@ -55,6 +60,7 @@ class PayQrCode extends AliPayBase
 
     /**
      * @param string $subject
+     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setSubject(string $subject)
@@ -69,6 +75,7 @@ class PayQrCode extends AliPayBase
 
     /**
      * @param string $outTradeNo
+     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setOutTradeNo(string $outTradeNo)
@@ -92,6 +99,7 @@ class PayQrCode extends AliPayBase
 
     /**
      * @param int $totalAmount
+     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setTotalAmount(int $totalAmount)
