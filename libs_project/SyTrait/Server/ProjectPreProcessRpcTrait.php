@@ -11,6 +11,7 @@ use SyConstant\Project;
 
 /**
  * 项目RPC服务预处理性状类
+ *
  * @package SyTrait\Server
  */
 trait ProjectPreProcessRpcTrait

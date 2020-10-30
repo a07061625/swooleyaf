@@ -17,8 +17,10 @@ final class WebHook
 
     /**
      * 生成码市签名
+     *
      * @param string $tag
      * @param string $body 请求体数据
+     *
      * @return string
      */
     public static function createCodingSign(string $tag, string $body)
@@ -46,20 +48,22 @@ final class WebHook
         if ($statusData == '2') { //执行中
             CacheSimpleFactory::getRedisInstance()->lPush($queueKey, $queueData);
             CacheSimpleFactory::getRedisInstance()->expire($queueKey, 86400);
+
             return [];
         }
 
         CacheSimpleFactory::getRedisInstance()->set($statusKey, '2', 86400);
+
         try {
             $commands = \ProjectCache\WebHook::getCommandList($queueArr['tag'], $queueArr['event'], $queueArr['msg_prefix']);
             foreach ($commands as $command) {
                 $execRes = Tool::execSystemCommand($command);
                 if ($execRes['code'] > 0) {
                     Log::log('webhook exec command: ' . $command . ',err_code:' . $execRes['code'] . ',err_msg:' . $execRes['msg']);
+
                     break;
-                } else {
-                    Log::log('webhook exec command: ' . $command);
                 }
+                Log::log('webhook exec command: ' . $command);
             }
         } catch (\Exception $e) {
             Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());

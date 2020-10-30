@@ -11,6 +11,7 @@ use SyTrait\SimpleTrait;
 
 /**
  * Class SySession
+ *
  * @package SyTool
  */
 class SySession extends SySessionJwt

@@ -7,8 +7,8 @@
  */
 namespace MessageQueue\Consumer;
 
-use SyConstant\Project;
 use MessageQueue\Consumer\Kafka\Test;
+use SyConstant\Project;
 use SyTool\BaseContainer;
 
 class KafkaConsumerContainer extends BaseContainer

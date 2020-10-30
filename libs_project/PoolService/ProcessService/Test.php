@@ -20,6 +20,7 @@ class Test extends BaseService
         $result->setData([
             'msg' => 'hello world',
         ]);
+
         return $result;
     }
 }

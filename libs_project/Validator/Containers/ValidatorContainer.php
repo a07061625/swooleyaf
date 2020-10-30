@@ -14,7 +14,7 @@ class ValidatorContainer extends BaseContainer
     /**
      * @var \Validator\Containers\FrameContainer
      */
-    private $frameContainer = null;
+    private $frameContainer;
 
     public function __construct()
     {
@@ -24,7 +24,9 @@ class ValidatorContainer extends BaseContainer
 
     /**
      * 获取绑定类
+     *
      * @param string|int $tag 对象类型标识
+     *
      * @return null|mixed
      */
     public function getObj($tag)
