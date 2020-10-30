@@ -11,8 +11,9 @@ trait LogTrait
 {
     /**
      * 处理日志
+     *
      * @param string $logContent 日志内容
-     * @param string $logLevel 日志级别
+     * @param string $logLevel   日志级别
      */
     public static function handleLog(string $logContent, string $logLevel)
     {

@@ -16,6 +16,7 @@ trait JPushConfigTrait
 {
     /**
      * @param string $key
+     *
      * @return \SyMessagePush\ConfigJPushApp
      */
     private function refreshJPushAppConfig(string $key)
@@ -35,6 +36,7 @@ trait JPushConfigTrait
 
     /**
      * @param string $key
+     *
      * @return \SyMessagePush\ConfigJPushGroup
      */
     private function refreshJPushGroupConfig(string $key)

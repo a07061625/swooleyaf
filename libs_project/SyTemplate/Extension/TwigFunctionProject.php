@@ -12,6 +12,7 @@ use Twig\TwigFunction;
 
 /**
  * Class TwigFunctionProject
+ *
  * @package SyTemplate\Extension
  */
 class TwigFunctionProject
@@ -25,7 +26,7 @@ class TwigFunctionProject
 
     private function __construct()
     {
-        $this->funcMap['syFunca01'] = new TwigFunction('syDate', function($time){
+        $this->funcMap['syFunca01'] = new TwigFunction('syDate', function ($time) {
             echo date('Y-m-d H:i:s', $time);
         });
     }
@@ -48,6 +49,7 @@ class TwigFunctionProject
 
     /**
      * @param string $tag
+     *
      * @return array|\Twig\TwigFunction|null
      */
     public function getFunction(string $tag = '')

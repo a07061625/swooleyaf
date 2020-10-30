@@ -12,6 +12,7 @@ use SyTool\BaseContainer;
 
 /**
  * Class ProducerContainer
+ *
  * @package SyMessageHandler
  */
 class ProducerContainer extends BaseContainer
@@ -19,7 +20,7 @@ class ProducerContainer extends BaseContainer
     /**
      * @var \SyMessageHandler\Producers\ContainerFrame
      */
-    private $frameContainer = null;
+    private $frameContainer;
 
     public function __construct()
     {
@@ -29,7 +30,9 @@ class ProducerContainer extends BaseContainer
 
     /**
      * 获取绑定类
+     *
      * @param string|int $tag 对象类型标识
+     *
      * @return null|mixed
      */
     public function getObj($tag)

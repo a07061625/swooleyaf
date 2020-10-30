@@ -13,6 +13,7 @@ use SyTrait\SimpleTrait;
 
 /**
  * Class SyUser
+ *
  * @package SyTool
  */
 class SyUser extends SyUserJwt
@@ -21,6 +22,7 @@ class SyUser extends SyUserJwt
 
     /**
      * 检查是否已登录
+     *
      * @throws \SyException\User\LoginException
      */
     public static function checkLogin()
@@ -32,21 +34,25 @@ class SyUser extends SyUserJwt
 
     /**
      * 获取用户ID
+     *
      * @return string
      */
     public static function getUid() : string
     {
         $userInfo = self::getUserInfo();
+
         return is_array($userInfo) ? Tool::getArrayVal($userInfo, 'uid', '') : '';
     }
 
     /**
      * 获取用户openid
+     *
      * @return string
      */
     public static function getOpenId() : string
     {
         $userInfo = self::getUserInfo();
+
         return is_array($userInfo) ? Tool::getArrayVal($userInfo, 'user_openid', '') : '';
     }
 }
