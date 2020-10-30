@@ -9,10 +9,10 @@ namespace DesignPatterns\Facades\PayApply;
 
 use AliPay\AliPayUtilPay;
 use AliPay\Pay\PayQrCode;
-use SyConstant\ErrorCode;
 use DesignPatterns\Facades\PayApplyFacade;
-use SyException\Common\CheckException;
 use Request\SyRequest;
+use SyConstant\ErrorCode;
+use SyException\Common\CheckException;
 use SyTool\Tool;
 use SyTrait\SimpleFacadeTrait;
 
@@ -33,7 +33,7 @@ class AliCode extends PayApplyFacade
         $pay = new PayQrCode($data['a01_appid']);
         $pay->setSubject($data['content_result']['pay_name']);
         $pay->setTotalAmount($data['content_result']['pay_money']);
-        $pay->setAttach($data['content_result']['pay_attach']);
+        $pay->setBody($data['content_result']['pay_attach']);
         $pay->setTimeoutExpress($data['a01_timeout']);
         $pay->setOutTradeNo($data['content_result']['pay_sn']);
         $payRes = AliPayUtilPay::sendServiceRequest($pay);

@@ -7,9 +7,9 @@
  */
 namespace DesignPatterns\Facades\PayApply;
 
-use SyConstant\Project;
 use DesignPatterns\Facades\PayApplyFacade;
 use DesignPatterns\Factories\CacheSimpleFactory;
+use SyConstant\Project;
 use SyTool\Tool;
 use SyTrait\SimpleFacadeTrait;
 use Wx\Payment\Way\PayNativePre;

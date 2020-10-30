@@ -7,10 +7,10 @@
  */
 namespace DesignPatterns\Facades\UserLogin;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Facades\UserLoginFacade;
-use SyException\Common\CheckException;
 use Request\SyRequest;
+use SyConstant\ErrorCode;
+use SyException\Common\CheckException;
 use SyTrait\SimpleFacadeTrait;
 
 class Phone extends UserLoginFacade

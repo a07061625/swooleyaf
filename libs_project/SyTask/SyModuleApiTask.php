@@ -7,9 +7,9 @@
  */
 namespace SyTask;
 
-use SyConstant\Project;
 use MessageQueue\Consumer\Redis\AddJsLogService;
 use MessageQueue\Consumer\Redis\AddMysqlLogService;
+use SyConstant\Project;
 
 class SyModuleApiTask extends SyModuleTaskBase implements SyModuleTaskInterface
 {

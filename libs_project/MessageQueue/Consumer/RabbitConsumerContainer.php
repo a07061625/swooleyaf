@@ -7,8 +7,8 @@
  */
 namespace MessageQueue\Consumer;
 
-use SyConstant\Project;
 use MessageQueue\Consumer\Rabbit\Test;
+use SyConstant\Project;
 use SyTool\BaseContainer;
 
 class RabbitConsumerContainer extends BaseContainer

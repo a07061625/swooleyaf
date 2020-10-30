@@ -138,7 +138,6 @@ class PayWap extends AliPayBase
 
     /**
      * @param string $body
-     * @throws \SyException\AliPay\AliPayPayException
      */
     public function setBody(string $body)
     {

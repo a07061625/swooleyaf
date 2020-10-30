@@ -5,11 +5,10 @@
  * Date: 2018/7/23 0023
  * Time: 17:31
  */
-
 namespace MessageQueue\Consumer;
 
-use SyConstant\Project;
 use MessageQueue\Consumer\Kafka\Test;
+use SyConstant\Project;
 use SyTool\BaseContainer;
 
 class KafkaConsumerContainer extends BaseContainer
