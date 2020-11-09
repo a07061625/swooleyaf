@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 
 class FunctionClosingBraceSpaceSniff implements Sniff
 {
@@ -100,7 +100,7 @@ class FunctionClosingBraceSpaceSniff implements Sniff
                 if ($fix === true) {
                     $phpcsFile->fixer->addNewlineBefore($closeBrace);
                 }
-            } elseif ($found > 0) {
+            } else if ($found > 0) {
                 $error = 'Expected 0 blank lines before closing brace of nested function; %s found';
                 $data  = [$found];
                 $fix   = $phpcsFile->addFixableError($error, $closeBrace, 'SpacingBeforeNestedClose', $data);

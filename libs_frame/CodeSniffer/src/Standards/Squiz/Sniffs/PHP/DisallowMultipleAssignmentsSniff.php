@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\PHP;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class DisallowMultipleAssignmentsSniff implements Sniff
@@ -61,6 +61,16 @@ class DisallowMultipleAssignmentsSniff implements Sniff
                 ) {
                     return;
                 }
+            }
+        }
+
+        // Ignore member var definitions.
+        if (empty($tokens[$stackPtr]['conditions']) === false) {
+            $conditions = $tokens[$stackPtr]['conditions'];
+            end($conditions);
+            $deepestScope = key($conditions);
+            if (isset(Tokens::$ooScopeTokens[$tokens[$deepestScope]['code']]) === true) {
+                return;
             }
         }
 
@@ -122,14 +132,6 @@ class DisallowMultipleAssignmentsSniff implements Sniff
             && $tokens[$varToken]['code'] !== T_OPEN_SQUARE_BRACKET
         ) {
             $varToken = $start;
-        }
-
-        // Ignore member var definitions.
-        if (isset(Tokens::$scopeModifiers[$tokens[$varToken]['code']]) === true
-            || $tokens[$varToken]['code'] === T_VAR
-            || $tokens[$varToken]['code'] === T_STATIC
-        ) {
-            return;
         }
 
         // Ignore the first part of FOR loops as we are allowed to

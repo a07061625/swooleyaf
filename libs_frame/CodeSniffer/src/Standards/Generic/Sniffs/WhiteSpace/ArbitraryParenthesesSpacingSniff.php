@@ -12,8 +12,8 @@
 
 namespace PHP_CodeSniffer\Standards\Generic\Sniffs\WhiteSpace;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class ArbitraryParenthesesSpacingSniff implements Sniff
@@ -57,7 +57,6 @@ class ArbitraryParenthesesSpacingSniff implements Sniff
         $this->ignoreTokens[T_CLOSE_SQUARE_BRACKET] = T_CLOSE_SQUARE_BRACKET;
         $this->ignoreTokens[T_CLOSE_SHORT_ARRAY]    = T_CLOSE_SHORT_ARRAY;
 
-        $this->ignoreTokens[T_ANON_CLASS] = T_ANON_CLASS;
         $this->ignoreTokens[T_USE]        = T_USE;
         $this->ignoreTokens[T_DECLARE]    = T_DECLARE;
         $this->ignoreTokens[T_THROW]      = T_THROW;
@@ -103,7 +102,10 @@ class ArbitraryParenthesesSpacingSniff implements Sniff
         }
 
         $preOpener = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($opener - 1), null, true);
-        if ($preOpener !== false && isset($this->ignoreTokens[$tokens[$preOpener]['code']]) === true) {
+        if ($preOpener !== false
+            && isset($this->ignoreTokens[$tokens[$preOpener]['code']]) === true
+            && isset($tokens[$preOpener]['scope_condition']) === false
+        ) {
             // Function or language construct call.
             return;
         }
@@ -158,7 +160,7 @@ class ArbitraryParenthesesSpacingSniff implements Sniff
                         if ($expected !== '') {
                             $phpcsFile->fixer->addContent($stackPtr, $expected);
                         }
-                    } elseif ($inside === 'newline') {
+                    } else if ($inside === 'newline') {
                         $phpcsFile->fixer->beginChangeset();
                         for ($i = ($stackPtr + 2); $i < $phpcsFile->numTokens; $i++) {
                             if ($tokens[$i]['code'] !== T_WHITESPACE) {
@@ -212,7 +214,7 @@ class ArbitraryParenthesesSpacingSniff implements Sniff
                         if ($expected !== '') {
                             $phpcsFile->fixer->addContentBefore($stackPtr, $expected);
                         }
-                    } elseif ($inside === 'newline') {
+                    } else if ($inside === 'newline') {
                         $phpcsFile->fixer->beginChangeset();
                         for ($i = ($stackPtr - 2); $i > 0; $i--) {
                             if ($tokens[$i]['code'] !== T_WHITESPACE) {

@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\Operators;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class ComparisonOperatorUsageSniff implements Sniff
@@ -101,22 +101,22 @@ class ComparisonOperatorUsageSniff implements Sniff
                         // Stop here as we assume it is the end
                         // of the previous statement.
                         break;
-                    } elseif ($tokens[$i]['code'] === T_OPEN_TAG) {
+                    } else if ($tokens[$i]['code'] === T_OPEN_TAG) {
                         // Stop here as this is the start of the file.
                         break;
-                    } elseif ($tokens[$i]['code'] === T_CLOSE_CURLY_BRACKET) {
+                    } else if ($tokens[$i]['code'] === T_CLOSE_CURLY_BRACKET) {
                         // Stop if this is the closing brace of
                         // a code block.
                         if (isset($tokens[$i]['scope_opener']) === true) {
                             break;
                         }
-                    } elseif ($tokens[$i]['code'] === T_OPEN_CURLY_BRACKET) {
+                    } else if ($tokens[$i]['code'] === T_OPEN_CURLY_BRACKET) {
                         // Stop if this is the opening brace of
                         // a code block.
                         if (isset($tokens[$i]['scope_closer']) === true) {
                             break;
                         }
-                    } elseif ($tokens[$i]['code'] === T_OPEN_PARENTHESIS) {
+                    } else if ($tokens[$i]['code'] === T_OPEN_PARENTHESIS) {
                         // Stop if this is the start of a pair of
                         // parentheses that surrounds the inline
                         // IF statement.
@@ -136,7 +136,7 @@ class ComparisonOperatorUsageSniff implements Sniff
 
                 $start = $tokens[$end]['parenthesis_opener'];
             }//end if
-        } elseif ($tokens[$stackPtr]['code'] === T_FOR) {
+        } else if ($tokens[$stackPtr]['code'] === T_FOR) {
             if (isset($tokens[$stackPtr]['parenthesis_opener']) === false) {
                 return;
             }
@@ -158,9 +158,9 @@ class ComparisonOperatorUsageSniff implements Sniff
             $end   = $tokens[$stackPtr]['parenthesis_closer'];
         }//end if
 
-        $requiredOps = 0;
-        $foundOps    = 0;
-        $foundBools  = 0;
+        $requiredOps   = 0;
+        $foundOps      = 0;
+        $foundBooleans = 0;
 
         $lastNonEmpty = $start;
 
@@ -174,7 +174,7 @@ class ComparisonOperatorUsageSniff implements Sniff
                 ];
                 $phpcsFile->addError($error, $i, 'NotAllowed', $data);
                 $foundOps++;
-            } elseif (isset(self::$validOps[$type]) === true) {
+            } else if (isset(self::$validOps[$type]) === true) {
                 $foundOps++;
             }
 
@@ -188,7 +188,7 @@ class ComparisonOperatorUsageSniff implements Sniff
             }
 
             if ($tokens[$i]['code'] === T_TRUE || $tokens[$i]['code'] === T_FALSE) {
-                $foundBools++;
+                $foundBooleans++;
             }
 
             if ($phpcsFile->tokenizerType !== 'JS'
@@ -223,7 +223,7 @@ class ComparisonOperatorUsageSniff implements Sniff
 
         if ($phpcsFile->tokenizerType !== 'JS'
             && $foundOps < $requiredOps
-            && ($requiredOps !== $foundBools)
+            && ($requiredOps !== $foundBooleans)
         ) {
             $error = 'Implicit true comparisons prohibited; use === TRUE instead';
             $phpcsFile->addError($error, $stackPtr, 'ImplicitTrue');

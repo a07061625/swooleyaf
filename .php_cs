@@ -14,6 +14,11 @@ $finder = PhpCsFixer\Finder::create()
     ->ignoreVCS(true);
 $fixers = [
     '@PSR2' => true,
+    '@PHP56Migration' => true,
+    '@PHPUnit60Migration:risky' => true,
+    '@PhpCsFixer' => true,
+    '@PhpCsFixer:risky' => true,
+    'list_syntax' => ['syntax' => 'long'],
     'encoding' => true, //PHP代码必须只使用没有BOM的UTF-8
     'line_ending' => true, //所有的PHP文件编码必须一致
     'array_syntax' => ['syntax' => 'short'], //用[]关键字来定义数组
@@ -63,7 +68,6 @@ $fixers = [
     'lowercase_keywords' => true, //PHP关键字必须小写
     'new_with_braces' => true, //使用 new 关键字创建的所有实例必须后跟括号
     'no_blank_lines_after_phpdoc' => true, //phpdoc 后面不应该有空行
-    'no_blank_lines_before_namespace' => true, //命名空间之前不应该有空行
     'no_empty_comment' => true, //不应该存在空注释
     'no_empty_phpdoc' => true, //不应该存在空的 phpdoc
     'no_leading_import_slash' => true, //use 语句中取消前置斜杠
@@ -101,9 +105,11 @@ $fixers = [
     'trim_array_spaces' => true, //数组应该像函数/方法参数一样格式化,不带前导或尾随单行空格
     'unary_operator_spaces' => true, //一元运算符应放在其操作数旁边
     'whitespace_after_comma_in_array' => true, //在数组声明中,每个逗号后必须有一个空格
+    'nullable_type_declaration_for_default_null_value' => true,
 ];
 
 return PhpCsFixer\Config::create()
+    ->setRiskyAllowed(true)
     ->setRules($fixers)
     ->setFinder($finder)
     ->setUsingCache(true);

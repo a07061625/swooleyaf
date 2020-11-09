@@ -14,8 +14,8 @@
 
 namespace PHP_CodeSniffer\Standards\Generic\Sniffs\Metrics;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 
 class CyclomaticComplexitySniff implements Sniff
 {
@@ -98,7 +98,7 @@ class CyclomaticComplexitySniff implements Sniff
                 $this->absoluteComplexity,
             ];
             $phpcsFile->addError($error, $stackPtr, 'MaxExceeded', $data);
-        } elseif ($complexity > $this->complexity) {
+        } else if ($complexity > $this->complexity) {
             $warning = 'Function\'s cyclomatic complexity (%s) exceeds %s; consider refactoring the function';
             $data    = [
                 $complexity,

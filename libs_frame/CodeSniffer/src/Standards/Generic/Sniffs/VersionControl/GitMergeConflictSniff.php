@@ -1,6 +1,6 @@
 <?php
 /**
- * Check for merge conflict artifacts
+ * Check for merge conflict artefacts.
  *
  * @author    Juliette Reinders Folmer <phpcs_nospam@adviesenzo.nl>
  * @copyright 2017 Juliette Reinders Folmer. All rights reserved.
@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Generic\Sniffs\VersionControl;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 
 class GitMergeConflictSniff implements Sniff
 {
@@ -127,7 +127,7 @@ class GitMergeConflictSniff implements Sniff
                     if (substr($tokens[$i]['content'], 0, 12) === '<<<<<<< HEAD') {
                         $phpcsFile->addError($error, $i, 'OpenerFound', ['opener']);
                         break;
-                    } elseif (substr($tokens[$i]['content'], 0, 8) === '>>>>>>> ') {
+                    } else if (substr($tokens[$i]['content'], 0, 8) === '>>>>>>> ') {
                         $phpcsFile->addError($error, $i, 'CloserFound', ['closer']);
                         break;
                     }
@@ -194,7 +194,7 @@ class GitMergeConflictSniff implements Sniff
                     if (substr($tokens[$i]['content'], 0, 12) === '<<<<<<< HEAD') {
                         $phpcsFile->addError($error, $i, 'OpenerFound');
                         break;
-                    } elseif (substr($tokens[$i]['content'], 0, 8) === '>>>>>>> ') {
+                    } else if (substr($tokens[$i]['content'], 0, 8) === '>>>>>>> ') {
                         $phpcsFile->addError($error, $i, 'CloserFound', ['closer']);
                         break;
                     }

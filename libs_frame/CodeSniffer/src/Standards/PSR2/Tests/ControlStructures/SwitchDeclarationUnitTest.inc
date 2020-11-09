@@ -262,3 +262,22 @@ switch ($sContext)
         do_something();
     }
 }
+
+$foo = $foo ?
+    function () {
+        switch ($a) {
+            case 'a':
+                break;
+        }
+    } :
+    null;
+
+switch ($foo) {
+case Foo::INTERFACE:
+    echo '1';
+    return self::INTERFACE;
+case Foo::TRAIT:
+case Foo::ARRAY:
+    echo '1';
+    return self::VALUE;
+}

@@ -61,7 +61,7 @@ function myFunction()
 $line  = substr($line, 0, -2);
 $words = preg_split('|(\s+)|', $line."\n", -1, $flags);
 if (!isset($this->words[$wordPos-1]) || $this->words[$wordPos-1] !== ' ') {
-} elseif ($this->tokens[$pos + 1] === "\n") {
+} else if ($this->tokens[$pos + 1] === "\n") {
 }
 
 if ($pos === count($this->tokens) - 1) {
@@ -170,3 +170,7 @@ $value = (binary) $blah + b"binary $foo";
 
 $test = (1 * static::TEST);
 $test = myfunc(1 * static::TEST);
+
+$errorPos = $params[$x]?->getLine() + $commentStart;
+
+exit -1;

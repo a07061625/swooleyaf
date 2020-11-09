@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Generic\Sniffs\Classes;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 
 class OpeningBraceSameLineSniff implements Sniff
 {
@@ -98,7 +98,7 @@ class OpeningBraceSameLineSniff implements Sniff
         // Is there precisely one space before the opening brace ?
         if ($tokens[($openingBrace - 1)]['code'] !== T_WHITESPACE) {
             $length = 0;
-        } elseif ($tokens[($openingBrace - 1)]['content'] === "\t") {
+        } else if ($tokens[($openingBrace - 1)]['content'] === "\t") {
             $length = '\t';
         } else {
             $length = $tokens[($openingBrace - 1)]['length'];

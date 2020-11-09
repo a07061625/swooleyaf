@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\CSS;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ShorthandSizeSniff implements Sniff
 {
@@ -141,7 +141,7 @@ class ShorthandSizeSniff implements Sniff
                 // Both values are different, so it is already shorthand.
                 return;
             }
-        } elseif ($values[0][0] !== $values[2][0] || $values[1][0] !== $values[3][0]) {
+        } else if ($values[0][0] !== $values[2][0] || $values[1][0] !== $values[3][0]) {
             // Can't shorthand this.
             return;
         }

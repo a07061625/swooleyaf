@@ -61,7 +61,7 @@ class UnusedSystemSniff implements Sniff
 
         if ($methodName === 'includeasset') {
             $systemName .= 'assettype';
-        } elseif ($methodName === 'includewidget') {
+        } else if ($methodName === 'includewidget') {
             $systemName .= 'widgettype';
         }
 

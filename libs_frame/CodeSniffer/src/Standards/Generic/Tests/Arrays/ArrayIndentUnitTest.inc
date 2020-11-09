@@ -49,6 +49,36 @@ return [
     ]
 ];
 
+$array = [
+    'foo' => 'foo',
+    'bar' => $baz ?
+        ['abc'] :
+        ['def'],
+    'hey' => $baz ??
+        ['one'] ??
+        ['two'],
+    'fn' =>
+        fn ($x) => yield 'k' => $x,
+  $a ?? $b,
+  $c ? $d : $e,
+];
+
+$foo =
+[
+    'bar' =>
+   [
+    ],
+];
+
+$foo = [
+    'foo'
+        . 'bar',
+    [
+            'baz',
+            'qux',
+        ],
+];
+
 // phpcs:set Generic.Arrays.ArrayIndent indent 2
 
 $var = [

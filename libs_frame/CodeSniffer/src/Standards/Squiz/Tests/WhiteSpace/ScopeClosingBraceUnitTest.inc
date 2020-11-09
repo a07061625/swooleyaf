@@ -40,7 +40,7 @@ public function test2()
 foreach ($elements as $element) {
     if ($something) {
         // Do IF.
-    } elseif ($somethingElse) {
+    } else if ($somethingElse) {
         // Do ELSE.
     }
 }
@@ -105,3 +105,5 @@ public function foo()
 'bad indent here leads to bad indent for closer', function () {
 });
 }
+
+$fn1 = fn($x) => $x + $y;

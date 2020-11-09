@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util;
 
 class LanguageConstructSpacingSniff implements Sniff
@@ -71,7 +71,7 @@ class LanguageConstructSpacingSniff implements Sniff
                     $phpcsFile->fixer->replaceToken(($stackPtr + 1), ' ');
                 }
             }
-        } elseif ($tokens[($stackPtr + 1)]['code'] !== T_OPEN_PARENTHESIS) {
+        } else if ($tokens[($stackPtr + 1)]['code'] !== T_OPEN_PARENTHESIS) {
             $error = 'Language constructs must be followed by a single space; expected "%s" but found "%s"';
             $data  = [
                 $tokens[$stackPtr]['content'].' '.$tokens[($stackPtr + 1)]['content'],

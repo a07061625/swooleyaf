@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\Scope;
 
-use PHP_CodeSniffer\Sniffs\AbstractScopeSniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\AbstractScopeSniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class MethodScopeSniff extends AbstractScopeSniff
@@ -58,7 +58,7 @@ class MethodScopeSniff extends AbstractScopeSniff
         for ($i = ($stackPtr - 1); $i > 0; $i--) {
             if ($tokens[$i]['line'] < $tokens[$stackPtr]['line']) {
                 break;
-            } elseif (isset(Tokens::$scopeModifiers[$tokens[$i]['code']]) === true) {
+            } else if (isset(Tokens::$scopeModifiers[$tokens[$i]['code']]) === true) {
                 $modifier = $i;
                 break;
             }

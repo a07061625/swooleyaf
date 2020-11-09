@@ -11,6 +11,8 @@
  * @license   https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
  */
 
+use PHP_CodeSniffer\Tests\FileList;
+
 /**
  * Validate the PHP_CodeSniffer PEAR package.xml file.
  */
@@ -233,7 +235,7 @@ class ValidatePEARPackageXML
                     if (strpos($name, 'Test.') !== false && $role !== 'test') {
                         echo "- Test files should have the role 'test'. Found: '$role' for file '{$name}'.".PHP_EOL;
                         $valid = false;
-                    } elseif ((strpos($name, 'Standard.xml') !== false || strpos($name, 'Sniff.php') !== false)
+                    } else if ((strpos($name, 'Standard.xml') !== false || strpos($name, 'Sniff.php') !== false)
                         && $role !== 'php'
                     ) {
                         echo "- Sniff files, including sniff documentation files should have the role 'php'. Found: '$role' for file '{$name}'.".PHP_EOL;

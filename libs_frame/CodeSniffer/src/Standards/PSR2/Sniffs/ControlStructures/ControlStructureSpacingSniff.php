@@ -9,13 +9,12 @@
 
 namespace PHP_CodeSniffer\Standards\PSR2\Sniffs\ControlStructures;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class ControlStructureSpacingSniff implements Sniff
 {
-
 
     /**
      * How many spaces should follow the opening bracket.
@@ -45,10 +44,8 @@ class ControlStructureSpacingSniff implements Sniff
             T_FOREACH,
             T_FOR,
             T_SWITCH,
-            T_DO,
             T_ELSE,
             T_ELSEIF,
-            T_TRY,
             T_CATCH,
         ];
 
@@ -102,7 +99,7 @@ class ControlStructureSpacingSniff implements Sniff
                     $padding = str_repeat(' ', $this->requiredSpacesAfterOpen);
                     if ($spaceAfterOpen === 0) {
                         $phpcsFile->fixer->addContent($parenOpener, $padding);
-                    } elseif ($spaceAfterOpen === 'newline') {
+                    } else if ($spaceAfterOpen === 'newline') {
                         $phpcsFile->fixer->replaceToken(($parenOpener + 1), '');
                     } else {
                         $phpcsFile->fixer->replaceToken(($parenOpener + 1), $padding);
@@ -111,7 +108,8 @@ class ControlStructureSpacingSniff implements Sniff
             }
         }//end if
 
-        if ($tokens[$parenOpener]['line'] === $tokens[$parenCloser]['line']) {
+        $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($parenCloser - 1), $parenOpener, true);
+        if ($tokens[$prev]['line'] === $tokens[$parenCloser]['line']) {
             $spaceBeforeClose = 0;
             if ($tokens[($parenCloser - 1)]['code'] === T_WHITESPACE) {
                 $spaceBeforeClose = strlen(ltrim($tokens[($parenCloser - 1)]['content'], $phpcsFile->eolChar));

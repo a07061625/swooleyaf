@@ -327,7 +327,7 @@ if (true) {
     // Line 18
     // Line 19
     // Line 20
-} elseif (condition) {
+} else if (condition) {
     // Line 1
     // Line 2
     // Line 3
@@ -374,7 +374,7 @@ if (true) {
 if (something) {
     // Line 1
     // Line 2
-} elseif (somethingElse) {
+} else if (somethingElse) {
     // Line 1
     // Line 2
 } else {

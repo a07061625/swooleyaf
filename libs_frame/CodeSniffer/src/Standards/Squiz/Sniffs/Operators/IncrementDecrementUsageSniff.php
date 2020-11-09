@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\Operators;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class IncrementDecrementUsageSniff implements Sniff
@@ -74,7 +74,8 @@ class IncrementDecrementUsageSniff implements Sniff
         // start looking for other operators.
         if ($tokens[($stackPtr - 1)]['code'] === T_VARIABLE
             || ($tokens[($stackPtr - 1)]['code'] === T_STRING
-            && $tokens[($stackPtr - 2)]['code'] === T_OBJECT_OPERATOR)
+            && ($tokens[($stackPtr - 2)]['code'] === T_OBJECT_OPERATOR
+            || $tokens[($stackPtr - 2)]['code'] === T_NULLSAFE_OBJECT_OPERATOR))
         ) {
             $start = ($stackPtr + 1);
         } else {
@@ -205,7 +206,7 @@ class IncrementDecrementUsageSniff implements Sniff
                 }
             }
 
-            $expected = $tokens[$assignedVar]['content'].$operator.$operator;
+            $expected = $operator.$operator.$tokens[$assignedVar]['content'];
             $found    = $phpcsFile->getTokensAsString($assignedVar, ($statementEnd - $assignedVar + 1));
 
             if ($operator === '+') {

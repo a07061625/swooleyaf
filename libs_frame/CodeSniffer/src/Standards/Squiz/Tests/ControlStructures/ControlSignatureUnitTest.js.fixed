@@ -70,18 +70,18 @@ i = 0; }
 
 if (i == 0) {
     i = 1;
-} elseif (i == 2) {
+} else if (i == 2) {
     i = 0;
 }
 
 if (i == 0) {
     i = 1;
-} elseif (i == 2) {
+} else if (i == 2) {
     i = 0;
 }
 
 if (i == 0) {
-i = 1; } elseif (i == 2) {
+i = 1; } else if (i == 2) {
 i = 0; }
 
 if (i == 0) { // comments are allowed

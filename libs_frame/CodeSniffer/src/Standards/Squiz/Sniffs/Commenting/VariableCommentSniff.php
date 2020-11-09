@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\Commenting;
 
-use PHP_CodeSniffer\Sniffs\AbstractVariableSniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\AbstractVariableSniff;
 use PHP_CodeSniffer\Util\Common;
 
 class VariableCommentSniff extends AbstractVariableSniff
@@ -36,6 +36,9 @@ class VariableCommentSniff extends AbstractVariableSniff
             T_VAR,
             T_STATIC,
             T_WHITESPACE,
+            T_STRING,
+            T_NS_SEPARATOR,
+            T_NULLABLE,
         ];
 
         $commentEnd = $phpcsFile->findPrevious($ignore, ($stackPtr - 1), null, true);
@@ -63,7 +66,7 @@ class VariableCommentSniff extends AbstractVariableSniff
                 } else {
                     $foundVar = $tag;
                 }
-            } elseif ($tokens[$tag]['content'] === '@see') {
+            } else if ($tokens[$tag]['content'] === '@see') {
                 // Make sure the tag isn't empty.
                 $string = $phpcsFile->findNext(T_DOC_COMMENT_STRING, $tag, $commentEnd);
                 if ($string === false || $tokens[$string]['line'] !== $tokens[$tag]['line']) {

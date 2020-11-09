@@ -71,3 +71,66 @@ someclass::one()
 (new someclass())->one()
     ->two()
         ->three();
+
+// phpcs:set PEAR.WhiteSpace.ObjectOperatorIndent multilevel true
+
+$someObject
+    ->startSomething()
+                    ->someOtherFunc(23, 42)
+->endSomething()
+->doSomething(23, 42)
+->endEverything();
+
+$rootNode
+    ->one()
+        ->two()
+            ->three()
+        ->four()
+    ->five();
+
+$rootNode
+    ->one()
+        ->two()
+            ->three()
+    ->four()
+    ->five();
+
+$rootNode
+    ->one()
+    ->two()
+        ->three()
+    ->four()
+->five();
+
+$rootNode
+    ->one()
+        ->two()
+            ->three()
+        ->four()
+        ->five();
+
+// phpcs:set PEAR.WhiteSpace.ObjectOperatorIndent multilevel false
+
+$object
+    ?->setBar($foo)
+    ?->setFoo($bar);
+
+$someObject?->someFunction("some", "parameter")
+->someOtherFunc(23, 42)?->
+    someOtherFunc2($one, $two)
+
+->someOtherFunc3(23, 42)
+    ?->andAThirdFunction();
+
+// phpcs:set PEAR.WhiteSpace.ObjectOperatorIndent multilevel true
+$object
+    ?->setBar($foo)
+        ?->setFoo($bar);
+
+$someObject?->someFunction("some", "parameter")
+->someOtherFunc(23, 42)
+        ?->someOtherFunc2($one, $two)
+
+->someOtherFunc3(23, 42)
+    ?->andAThirdFunction();
+// phpcs:set PEAR.WhiteSpace.ObjectOperatorIndent multilevel false

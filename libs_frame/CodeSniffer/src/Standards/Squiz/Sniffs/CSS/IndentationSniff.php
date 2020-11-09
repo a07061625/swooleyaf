@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\CSS;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class IndentationSniff implements Sniff
@@ -125,7 +125,7 @@ class IndentationSniff implements Sniff
                         $phpcsFile->fixer->replaceToken($i, '');
                     }
                 }
-            } elseif ($foundIndent !== $expectedIndent) {
+            } else if ($foundIndent !== $expectedIndent) {
                 $error = 'Line indented incorrectly; expected %s spaces, found %s';
                 $data  = [
                     $expectedIndent,

@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\PSR12\Sniffs\Classes;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class ClassInstantiationSniff implements Sniff
@@ -44,14 +44,15 @@ class ClassInstantiationSniff implements Sniff
 
         // Find the class name.
         $allowed = [
-            T_STRING          => T_STRING,
-            T_NS_SEPARATOR    => T_NS_SEPARATOR,
-            T_SELF            => T_SELF,
-            T_STATIC          => T_STATIC,
-            T_VARIABLE        => T_VARIABLE,
-            T_DOLLAR          => T_DOLLAR,
-            T_OBJECT_OPERATOR => T_OBJECT_OPERATOR,
-            T_DOUBLE_COLON    => T_DOUBLE_COLON,
+            T_STRING                   => T_STRING,
+            T_NS_SEPARATOR             => T_NS_SEPARATOR,
+            T_SELF                     => T_SELF,
+            T_STATIC                   => T_STATIC,
+            T_VARIABLE                 => T_VARIABLE,
+            T_DOLLAR                   => T_DOLLAR,
+            T_OBJECT_OPERATOR          => T_OBJECT_OPERATOR,
+            T_NULLSAFE_OBJECT_OPERATOR => T_NULLSAFE_OBJECT_OPERATOR,
+            T_DOUBLE_COLON             => T_DOUBLE_COLON,
         ];
 
         $allowed += Tokens::$emptyTokens;

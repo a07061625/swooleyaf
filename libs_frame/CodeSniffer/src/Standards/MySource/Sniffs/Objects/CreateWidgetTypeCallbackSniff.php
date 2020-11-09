@@ -96,7 +96,7 @@ class CreateWidgetTypeCallbackSniff implements Sniff
                     $nestedFunction = null;
                     continue;
                 }
-            } elseif (($tokens[$i]['code'] === T_FUNCTION
+            } else if (($tokens[$i]['code'] === T_FUNCTION
                 || $tokens[$i]['code'] === T_CLOSURE)
                 && isset($tokens[$i]['scope_closer']) === true
             ) {
@@ -112,7 +112,7 @@ class CreateWidgetTypeCallbackSniff implements Sniff
                 }
 
                 continue;
-            } elseif ($tokens[$i]['code'] !== T_STRING
+            } else if ($tokens[$i]['code'] !== T_STRING
                 || $tokens[$i]['content'] !== 'callback'
             ) {
                 continue;
@@ -131,7 +131,7 @@ class CreateWidgetTypeCallbackSniff implements Sniff
                     continue;
                 }
 
-                // Just make sure those brackets dont belong to anyone,
+                // Just make sure those brackets don't belong to anyone,
                 // like an IF or FOR statement.
                 foreach ($tokens[$i]['nested_parenthesis'] as $bracket) {
                     if (isset($tokens[$bracket]['parenthesis_owner']) === true) {
