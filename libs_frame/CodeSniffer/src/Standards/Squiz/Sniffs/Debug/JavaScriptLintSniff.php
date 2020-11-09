@@ -16,14 +16,12 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class JavaScriptLintSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
      * @var array
      */
     public $supportedTokenizers = ['JS'];
-
 
     /**
      * Returns the token types that this sniff is interested in.
@@ -33,9 +31,9 @@ class JavaScriptLintSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes the tokens that this sniff is interested in.
@@ -44,45 +42,43 @@ class JavaScriptLintSniff implements Sniff
      * @param int                         $stackPtr  The position in the stack where
      *                                               the token was found.
      *
-     * @return void
      * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If Javascript Lint ran into trouble.
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $jslPath = Config::getExecutablePath('jsl');
-        if ($jslPath === null) {
+        if (null === $jslPath) {
             return;
         }
 
         $fileName = $phpcsFile->getFilename();
 
-        $cmd = '"'.escapeshellcmd($jslPath).'" -nologo -nofilelisting -nocontext -nosummary -output-format __LINE__:__ERROR__ -process '.escapeshellarg($fileName);
+        $cmd = '"' . escapeshellcmd($jslPath) . '" -nologo -nofilelisting -nocontext -nosummary -output-format __LINE__:__ERROR__ -process ' . escapeshellarg($fileName);
         $msg = exec($cmd, $output, $retval);
 
         // Variable $exitCode is the last line of $output if no error occurs, on
         // error it is numeric. Try to handle various error conditions and
         // provide useful error reporting.
-        if ($retval === 2 || $retval === 4) {
-            if (is_array($output) === true) {
-                $msg = join('\n', $output);
+        if (2 === $retval || 4 === $retval) {
+            if (true === \is_array($output)) {
+                $msg = implode('\n', $output);
             }
 
-            throw new RuntimeException("Failed invoking JavaScript Lint, retval was [$retval], output was [$msg]");
+            throw new RuntimeException("Failed invoking JavaScript Lint, retval was [{$retval}], output was [{$msg}]");
         }
 
-        if (is_array($output) === true) {
+        if (true === \is_array($output)) {
             foreach ($output as $finding) {
-                $split   = strpos($finding, ':');
-                $line    = substr($finding, 0, $split);
+                $split = strpos($finding, ':');
+                $line = substr($finding, 0, $split);
                 $message = substr($finding, ($split + 1));
                 $phpcsFile->addWarningOnLine(trim($message), $line, 'ExternalTool');
             }
         }
 
         // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
+        return $phpcsFile->numTokens + 1;
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

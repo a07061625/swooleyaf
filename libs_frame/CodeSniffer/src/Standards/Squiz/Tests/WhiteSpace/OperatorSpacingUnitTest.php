@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Squiz\Tests\WhiteSpace;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class OperatorSpacingUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class OperatorSpacingUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -25,56 +27,56 @@ class OperatorSpacingUnitTest extends AbstractSniffUnitTest
      *
      * @return array<int, int>
      */
-    public function getErrorList($testFile='OperatorSpacingUnitTest.inc')
+    public function getErrorList($testFile = 'OperatorSpacingUnitTest.inc')
     {
         switch ($testFile) {
         case 'OperatorSpacingUnitTest.inc':
             return [
-                4   => 1,
-                5   => 2,
-                6   => 1,
-                7   => 1,
-                8   => 2,
-                11  => 1,
-                12  => 2,
-                13  => 1,
-                14  => 1,
-                15  => 2,
-                18  => 1,
-                19  => 2,
-                20  => 1,
-                21  => 1,
-                22  => 2,
-                25  => 1,
-                26  => 2,
-                27  => 1,
-                28  => 1,
-                29  => 2,
-                32  => 1,
-                33  => 2,
-                34  => 1,
-                35  => 1,
-                36  => 2,
-                40  => 2,
-                42  => 2,
-                44  => 2,
-                45  => 1,
-                46  => 2,
-                53  => 4,
-                54  => 3,
-                59  => 10,
-                64  => 1,
-                77  => 4,
-                78  => 1,
-                79  => 1,
-                80  => 2,
-                81  => 1,
-                84  => 6,
-                85  => 6,
-                87  => 4,
-                88  => 5,
-                90  => 4,
-                91  => 5,
+                4 => 1,
+                5 => 2,
+                6 => 1,
+                7 => 1,
+                8 => 2,
+                11 => 1,
+                12 => 2,
+                13 => 1,
+                14 => 1,
+                15 => 2,
+                18 => 1,
+                19 => 2,
+                20 => 1,
+                21 => 1,
+                22 => 2,
+                25 => 1,
+                26 => 2,
+                27 => 1,
+                28 => 1,
+                29 => 2,
+                32 => 1,
+                33 => 2,
+                34 => 1,
+                35 => 1,
+                36 => 2,
+                40 => 2,
+                42 => 2,
+                44 => 2,
+                45 => 1,
+                46 => 2,
+                53 => 4,
+                54 => 3,
+                59 => 10,
+                64 => 1,
+                77 => 4,
+                78 => 1,
+                79 => 1,
+                80 => 2,
+                81 => 1,
+                84 => 6,
+                85 => 6,
+                87 => 4,
+                88 => 5,
+                90 => 4,
+                91 => 5,
                 128 => 4,
                 132 => 1,
                 133 => 1,
@@ -100,57 +102,60 @@ class OperatorSpacingUnitTest extends AbstractSniffUnitTest
                 266 => 2,
                 271 => 2,
             ];
+
             break;
         case 'OperatorSpacingUnitTest.js':
             return [
-                4   => 1,
-                5   => 2,
-                6   => 1,
-                7   => 1,
-                8   => 2,
-                11  => 1,
-                12  => 2,
-                13  => 1,
-                14  => 1,
-                15  => 2,
-                18  => 1,
-                19  => 2,
-                20  => 1,
-                21  => 1,
-                22  => 2,
-                25  => 1,
-                26  => 2,
-                27  => 1,
-                28  => 1,
-                29  => 2,
-                32  => 1,
-                33  => 2,
-                34  => 1,
-                35  => 1,
-                36  => 2,
-                40  => 2,
-                42  => 2,
-                44  => 2,
-                45  => 1,
-                46  => 2,
-                55  => 4,
-                65  => 1,
-                66  => 1,
-                68  => 1,
-                69  => 1,
-                73  => 1,
-                74  => 1,
+                4 => 1,
+                5 => 2,
+                6 => 1,
+                7 => 1,
+                8 => 2,
+                11 => 1,
+                12 => 2,
+                13 => 1,
+                14 => 1,
+                15 => 2,
+                18 => 1,
+                19 => 2,
+                20 => 1,
+                21 => 1,
+                22 => 2,
+                25 => 1,
+                26 => 2,
+                27 => 1,
+                28 => 1,
+                29 => 2,
+                32 => 1,
+                33 => 2,
+                34 => 1,
+                35 => 1,
+                36 => 2,
+                40 => 2,
+                42 => 2,
+                44 => 2,
+                45 => 1,
+                46 => 2,
+                55 => 4,
+                65 => 1,
+                66 => 1,
+                68 => 1,
+                69 => 1,
+                73 => 1,
+                74 => 1,
                 100 => 1,
                 103 => 2,
             ];
+
             break;
         default:
             return [];
+
             break;
         }//end switch
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -163,8 +168,7 @@ class OperatorSpacingUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

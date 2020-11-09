@@ -15,14 +15,12 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class DuplicateClassDefinitionSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
      * @var array
      */
     public $supportedTokenizers = ['CSS'];
-
 
     /**
      * Returns the token types that this sniff is interested in.
@@ -32,9 +30,9 @@ class DuplicateClassDefinitionSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes the tokens that this sniff is interested in.
@@ -42,8 +40,6 @@ class DuplicateClassDefinitionSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where the token was found.
      * @param int                         $stackPtr  The position in the stack where
      *                                               the token was found.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
@@ -51,8 +47,8 @@ class DuplicateClassDefinitionSniff implements Sniff
 
         // Find the content of each class definition name.
         $classNames = [];
-        $next       = $phpcsFile->findNext(T_OPEN_CURLY_BRACKET, ($stackPtr + 1));
-        if ($next === false) {
+        $next = $phpcsFile->findNext(T_OPEN_CURLY_BRACKET, ($stackPtr + 1));
+        if (false === $next) {
             // No class definitions in the file.
             return;
         }
@@ -67,13 +63,13 @@ class DuplicateClassDefinitionSniff implements Sniff
             T_OPEN_TAG,
         ];
 
-        while ($next !== false) {
+        while (false !== $next) {
             $prev = $phpcsFile->findPrevious($find, ($next - 1));
 
             // Check if an inner block was closed.
             $beforePrev = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($prev - 1), null, true);
-            if ($beforePrev !== false
-                && $tokens[$beforePrev]['code'] === T_CLOSE_CURLY_BRACKET
+            if (false !== $beforePrev
+                && T_CLOSE_CURLY_BRACKET === $tokens[$beforePrev]['code']
             ) {
                 $scope = 'main';
             }
@@ -81,7 +77,7 @@ class DuplicateClassDefinitionSniff implements Sniff
             // Create a sorted name for the class so we can compare classes
             // even when the individual names are all over the place.
             $name = '';
-            for ($i = ($prev + 1); $i < $next; $i++) {
+            for ($i = ($prev + 1); $i < $next; ++$i) {
                 $name .= $tokens[$i]['content'];
             }
 
@@ -95,13 +91,13 @@ class DuplicateClassDefinitionSniff implements Sniff
             sort($names);
             $name = implode(',', $names);
 
-            if ($name[0] === '@') {
+            if ('@' === $name[0]) {
                 // Media block has its own "scope".
                 $scope = $name;
-            } else if (isset($classNames[$scope][$name]) === true) {
+            } elseif (true === isset($classNames[$scope][$name])) {
                 $first = $classNames[$scope][$name];
                 $error = 'Duplicate class definition found; first defined on line %s';
-                $data  = [$tokens[$first]['line']];
+                $data = [$tokens[$first]['line']];
                 $phpcsFile->addError($error, $next, 'Found', $data);
             } else {
                 $classNames[$scope][$name] = $next;
@@ -109,8 +105,7 @@ class DuplicateClassDefinitionSniff implements Sniff
 
             $next = $phpcsFile->findNext(T_OPEN_CURLY_BRACKET, ($next + 1));
         }//end while
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

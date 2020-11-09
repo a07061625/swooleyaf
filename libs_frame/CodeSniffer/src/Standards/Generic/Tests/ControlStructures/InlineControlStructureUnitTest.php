@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Generic\Tests\ControlStructures;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class InlineControlStructureUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class InlineControlStructureUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -25,24 +27,24 @@ class InlineControlStructureUnitTest extends AbstractSniffUnitTest
      *
      * @return array<int, int>
      */
-    public function getErrorList($testFile='InlineControlStructureUnitTest.1.inc')
+    public function getErrorList($testFile = 'InlineControlStructureUnitTest.1.inc')
     {
         switch ($testFile) {
         case 'InlineControlStructureUnitTest.1.inc':
             return [
-                3   => 1,
-                7   => 1,
-                11  => 1,
-                13  => 1,
-                15  => 1,
-                17  => 1,
-                23  => 1,
-                45  => 1,
-                46  => 1,
-                49  => 1,
-                62  => 1,
-                66  => 1,
-                78  => 1,
+                3 => 1,
+                7 => 1,
+                11 => 1,
+                13 => 1,
+                15 => 1,
+                17 => 1,
+                23 => 1,
+                45 => 1,
+                46 => 1,
+                49 => 1,
+                62 => 1,
+                66 => 1,
+                78 => 1,
                 120 => 1,
                 128 => 1,
                 134 => 1,
@@ -75,8 +77,8 @@ class InlineControlStructureUnitTest extends AbstractSniffUnitTest
 
         case 'InlineControlStructureUnitTest.js':
             return [
-                3  => 1,
-                7  => 1,
+                3 => 1,
+                7 => 1,
                 11 => 1,
                 13 => 1,
                 15 => 1,
@@ -88,9 +90,9 @@ class InlineControlStructureUnitTest extends AbstractSniffUnitTest
         default:
             return [];
         }//end switch
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -103,8 +105,7 @@ class InlineControlStructureUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

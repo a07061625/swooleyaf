@@ -14,7 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class EndFileNewlineSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
@@ -26,7 +25,6 @@ class EndFileNewlineSniff implements Sniff
         'CSS',
     ];
 
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -35,9 +33,9 @@ class EndFileNewlineSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
@@ -51,21 +49,21 @@ class EndFileNewlineSniff implements Sniff
     public function process(File $phpcsFile, $stackPtr)
     {
         // Skip to the end of the file.
-        $tokens   = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $stackPtr = ($phpcsFile->numTokens - 1);
 
-        if ($tokens[$stackPtr]['content'] === '') {
-            $stackPtr--;
+        if ('' === $tokens[$stackPtr]['content']) {
+            --$stackPtr;
         }
 
-        $eolCharLen = strlen($phpcsFile->eolChar);
-        $lastChars  = substr($tokens[$stackPtr]['content'], ($eolCharLen * -1));
+        $eolCharLen = \strlen($phpcsFile->eolChar);
+        $lastChars = substr($tokens[$stackPtr]['content'], ($eolCharLen * -1));
         if ($lastChars !== $phpcsFile->eolChar) {
             $phpcsFile->recordMetric($stackPtr, 'Newline at EOF', 'no');
 
             $error = 'File must end with a newline character';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NotFound');
-            if ($fix === true) {
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NotFound');
+            if (true === $fix) {
                 $phpcsFile->fixer->addNewline($stackPtr);
             }
         } else {
@@ -73,9 +71,8 @@ class EndFileNewlineSniff implements Sniff
         }
 
         // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
+        return $phpcsFile->numTokens + 1;
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

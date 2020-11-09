@@ -15,8 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class SpaceBeforeCastSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -25,9 +23,9 @@ class SpaceBeforeCastSniff implements Sniff
     public function register()
     {
         return Tokens::$castTokens;
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -35,39 +33,37 @@ class SpaceBeforeCastSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        if ($tokens[$stackPtr]['column'] === 1) {
+        if (1 === $tokens[$stackPtr]['column']) {
             return;
         }
 
-        if ($tokens[($stackPtr - 1)]['code'] !== T_WHITESPACE) {
+        if (T_WHITESPACE !== $tokens[($stackPtr - 1)]['code']) {
             $error = 'A cast statement must be preceded by a single space';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpace');
-            if ($fix === true) {
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpace');
+            if (true === $fix) {
                 $phpcsFile->fixer->addContentBefore($stackPtr, ' ');
             }
 
             $phpcsFile->recordMetric($stackPtr, 'Spacing before cast statement', 0);
+
             return;
         }
 
         $phpcsFile->recordMetric($stackPtr, 'Spacing before cast statement', $tokens[($stackPtr - 1)]['length']);
 
-        if ($tokens[($stackPtr - 1)]['column'] !== 1 && $tokens[($stackPtr - 1)]['length'] !== 1) {
+        if (1 !== $tokens[($stackPtr - 1)]['column'] && 1 !== $tokens[($stackPtr - 1)]['length']) {
             $error = 'A cast statement must be preceded by a single space';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'TooMuchSpace');
-            if ($fix === true) {
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'TooMuchSpace');
+            if (true === $fix) {
                 $phpcsFile->fixer->replaceToken(($stackPtr - 1), ' ');
             }
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

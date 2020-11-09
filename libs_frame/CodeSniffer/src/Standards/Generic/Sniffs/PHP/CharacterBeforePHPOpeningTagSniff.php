@@ -14,7 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class CharacterBeforePHPOpeningTagSniff implements Sniff
 {
-
     /**
      * List of supported BOM definitions.
      *
@@ -23,11 +22,10 @@ class CharacterBeforePHPOpeningTagSniff implements Sniff
      * @var array
      */
     protected $bomDefinitions = [
-        'UTF-8'       => 'efbbbf',
+        'UTF-8' => 'efbbbf',
         'UTF-16 (BE)' => 'feff',
         'UTF-16 (LE)' => 'fffe',
     ];
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -37,9 +35,9 @@ class CharacterBeforePHPOpeningTagSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
@@ -57,17 +55,18 @@ class CharacterBeforePHPOpeningTagSniff implements Sniff
             // Allow a byte-order mark.
             $tokens = $phpcsFile->getTokens();
             foreach ($this->bomDefinitions as $bomName => $expectedBomHex) {
-                $bomByteLength = (strlen($expectedBomHex) / 2);
-                $htmlBomHex    = bin2hex(substr($tokens[0]['content'], 0, $bomByteLength));
+                $bomByteLength = (\strlen($expectedBomHex) / 2);
+                $htmlBomHex = bin2hex(substr($tokens[0]['content'], 0, $bomByteLength));
                 if ($htmlBomHex === $expectedBomHex) {
-                    $expected++;
+                    ++$expected;
+
                     break;
                 }
             }
 
             // Allow a shebang line.
-            if (substr($tokens[0]['content'], 0, 2) === '#!') {
-                $expected++;
+            if ('#!' === substr($tokens[0]['content'], 0, 2)) {
+                ++$expected;
             }
         }
 
@@ -79,8 +78,7 @@ class CharacterBeforePHPOpeningTagSniff implements Sniff
         // Skip the rest of the file so we don't pick up additional
         // open tags, typically embedded in HTML.
         return $phpcsFile->numTokens;
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

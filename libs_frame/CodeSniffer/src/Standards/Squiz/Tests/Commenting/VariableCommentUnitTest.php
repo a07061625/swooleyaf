@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Squiz\Tests\Commenting;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class VariableCommentUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class VariableCommentUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -26,12 +28,12 @@ class VariableCommentUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
-            21  => 1,
-            24  => 1,
-            56  => 1,
-            64  => 1,
-            73  => 1,
-            84  => 1,
+            21 => 1,
+            24 => 1,
+            56 => 1,
+            64 => 1,
+            73 => 1,
+            84 => 1,
             130 => 1,
             136 => 1,
             144 => 1,
@@ -59,9 +61,9 @@ class VariableCommentUnitTest extends AbstractSniffUnitTest
             361 => 1,
             364 => 1,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -74,8 +76,7 @@ class VariableCommentUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [93 => 1];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

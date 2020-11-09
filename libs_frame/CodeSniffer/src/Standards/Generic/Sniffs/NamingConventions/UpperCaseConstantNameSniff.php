@@ -15,8 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class UpperCaseConstantNameSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -28,9 +26,9 @@ class UpperCaseConstantNameSniff implements Sniff
             T_STRING,
             T_CONST,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -38,17 +36,15 @@ class UpperCaseConstantNameSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        if ($tokens[$stackPtr]['code'] === T_CONST) {
+        if (T_CONST === $tokens[$stackPtr]['code']) {
             // This is a class constant.
             $constant = $phpcsFile->findNext(Tokens::$emptyTokens, ($stackPtr + 1), null, true);
-            if ($constant === false) {
+            if (false === $constant) {
                 return;
             }
 
@@ -62,7 +58,7 @@ class UpperCaseConstantNameSniff implements Sniff
                 }
 
                 $error = 'Class constants must be uppercase; expected %s but found %s';
-                $data  = [
+                $data = [
                     strtoupper($constName),
                     $constName,
                 ];
@@ -75,15 +71,15 @@ class UpperCaseConstantNameSniff implements Sniff
         }//end if
 
         // Only interested in define statements now.
-        if (strtolower($tokens[$stackPtr]['content']) !== 'define') {
+        if ('define' !== strtolower($tokens[$stackPtr]['content'])) {
             return;
         }
 
         // Make sure this is not a method call.
         $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
-        if ($tokens[$prev]['code'] === T_OBJECT_OPERATOR
-            || $tokens[$prev]['code'] === T_DOUBLE_COLON
-            || $tokens[$prev]['code'] === T_NULLSAFE_OBJECT_OPERATOR
+        if (T_OBJECT_OPERATOR === $tokens[$prev]['code']
+            || T_DOUBLE_COLON === $tokens[$prev]['code']
+            || T_NULLSAFE_OBJECT_OPERATOR === $tokens[$prev]['code']
         ) {
             return;
         }
@@ -91,30 +87,30 @@ class UpperCaseConstantNameSniff implements Sniff
         // If the next non-whitespace token after this token
         // is not an opening parenthesis then it is not a function call.
         $openBracket = $phpcsFile->findNext(Tokens::$emptyTokens, ($stackPtr + 1), null, true);
-        if ($openBracket === false) {
+        if (false === $openBracket) {
             return;
         }
 
         // The next non-whitespace token must be the constant name.
         $constPtr = $phpcsFile->findNext(T_WHITESPACE, ($openBracket + 1), null, true);
-        if ($tokens[$constPtr]['code'] !== T_CONSTANT_ENCAPSED_STRING) {
+        if (T_CONSTANT_ENCAPSED_STRING !== $tokens[$constPtr]['code']) {
             return;
         }
 
         $constName = $tokens[$constPtr]['content'];
 
         // Check for constants like self::CONSTANT.
-        $prefix   = '';
+        $prefix = '';
         $splitPos = strpos($constName, '::');
-        if ($splitPos !== false) {
-            $prefix    = substr($constName, 0, ($splitPos + 2));
+        if (false !== $splitPos) {
+            $prefix = substr($constName, 0, ($splitPos + 2));
             $constName = substr($constName, ($splitPos + 2));
         }
 
         // Strip namespace from constant like /foo/bar/CONSTANT.
         $splitPos = strrpos($constName, '\\');
-        if ($splitPos !== false) {
-            $prefix    = substr($constName, 0, ($splitPos + 1));
+        if (false !== $splitPos) {
+            $prefix = substr($constName, 0, ($splitPos + 1));
             $constName = substr($constName, ($splitPos + 1));
         }
 
@@ -126,16 +122,15 @@ class UpperCaseConstantNameSniff implements Sniff
             }
 
             $error = 'Constants must be uppercase; expected %s but found %s';
-            $data  = [
-                $prefix.strtoupper($constName),
-                $prefix.$constName,
+            $data = [
+                $prefix . strtoupper($constName),
+                $prefix . $constName,
             ];
             $phpcsFile->addError($error, $stackPtr, 'ConstantNotUpperCase', $data);
         } else {
             $phpcsFile->recordMetric($stackPtr, 'Constant name case', 'upper');
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

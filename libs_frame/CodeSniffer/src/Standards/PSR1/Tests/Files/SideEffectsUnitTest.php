@@ -11,26 +11,26 @@ namespace PHP_CodeSniffer\Standards\PSR1\Tests\Files;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class SideEffectsUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class SideEffectsUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Set CLI values before the file is tested.
      *
      * @param string                  $testFile The name of the file being tested.
      * @param \PHP_CodeSniffer\Config $config   The config data for the test run.
-     *
-     * @return void
      */
     public function setCliValues($testFile, $config)
     {
-        if ($testFile === 'SideEffectsUnitTest.12.inc') {
+        if ('SideEffectsUnitTest.12.inc' === $testFile) {
             $config->annotations = false;
         }
+    }
 
-    }//end setCliValues()
-
+    //end setCliValues()
 
     /**
      * Returns the lines where errors should occur.
@@ -42,12 +42,12 @@ class SideEffectsUnitTest extends AbstractSniffUnitTest
      *
      * @return array<int, int>
      */
-    public function getErrorList($testFile='')
+    public function getErrorList($testFile = '')
     {
         return [];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -59,7 +59,7 @@ class SideEffectsUnitTest extends AbstractSniffUnitTest
      *
      * @return array<int, int>
      */
-    public function getWarningList($testFile='')
+    public function getWarningList($testFile = '')
     {
         switch ($testFile) {
         case 'SideEffectsUnitTest.3.inc':
@@ -73,8 +73,7 @@ class SideEffectsUnitTest extends AbstractSniffUnitTest
         default:
             return [];
         }//end switch
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

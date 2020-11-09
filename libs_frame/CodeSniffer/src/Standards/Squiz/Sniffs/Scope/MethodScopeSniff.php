@@ -15,17 +15,15 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class MethodScopeSniff extends AbstractScopeSniff
 {
-
-
     /**
      * Constructs a Squiz_Sniffs_Scope_MethodScopeSniff.
      */
     public function __construct()
     {
         parent::__construct(Tokens::$ooScopeTokens, [T_FUNCTION]);
+    }
 
-    }//end __construct()
-
+    //end __construct()
 
     /**
      * Processes the function tokens within the class.
@@ -33,8 +31,6 @@ class MethodScopeSniff extends AbstractScopeSniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where this token was found.
      * @param int                         $stackPtr  The position where the token was found.
      * @param int                         $currScope The current scope opener token.
-     *
-     * @return void
      */
     protected function processTokenWithinScope(File $phpcsFile, $stackPtr, $currScope)
     {
@@ -49,29 +45,31 @@ class MethodScopeSniff extends AbstractScopeSniff
         }
 
         $methodName = $phpcsFile->getDeclarationName($stackPtr);
-        if ($methodName === null) {
+        if (null === $methodName) {
             // Ignore closures.
             return;
         }
 
         $modifier = null;
-        for ($i = ($stackPtr - 1); $i > 0; $i--) {
+        for ($i = ($stackPtr - 1); $i > 0; --$i) {
             if ($tokens[$i]['line'] < $tokens[$stackPtr]['line']) {
                 break;
-            } else if (isset(Tokens::$scopeModifiers[$tokens[$i]['code']]) === true) {
+            }
+            if (true === isset(Tokens::$scopeModifiers[$tokens[$i]['code']])) {
                 $modifier = $i;
+
                 break;
             }
         }
 
-        if ($modifier === null) {
+        if (null === $modifier) {
             $error = 'Visibility must be declared on method "%s"';
-            $data  = [$methodName];
+            $data = [$methodName];
             $phpcsFile->addError($error, $stackPtr, 'Missing', $data);
         }
+    }
 
-    }//end processTokenWithinScope()
-
+    //end processTokenWithinScope()
 
     /**
      * Processes a token that is found within the scope that this test is
@@ -80,13 +78,10 @@ class MethodScopeSniff extends AbstractScopeSniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where this token was found.
      * @param int                         $stackPtr  The position in the stack where this
      *                                               token was found.
-     *
-     * @return void
      */
     protected function processTokenOutsideScope(File $phpcsFile, $stackPtr)
     {
+    }
 
-    }//end processTokenOutsideScope()
-
-
+    //end processTokenOutsideScope()
 }//end class

@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ClosingBraceSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -29,9 +27,9 @@ class ClosingBraceSniff implements Sniff
             T_TRAIT,
             T_FUNCTION,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -39,19 +37,17 @@ class ClosingBraceSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        if (isset($tokens[$stackPtr]['scope_closer']) === false) {
+        if (false === isset($tokens[$stackPtr]['scope_closer'])) {
             return;
         }
 
         $closer = $tokens[$stackPtr]['scope_closer'];
-        $next   = $phpcsFile->findNext(T_WHITESPACE, ($closer + 1), null, true);
-        if ($next === false
+        $next = $phpcsFile->findNext(T_WHITESPACE, ($closer + 1), null, true);
+        if (false === $next
             || $tokens[$next]['line'] !== $tokens[$closer]['line']
         ) {
             return;
@@ -59,8 +55,7 @@ class ClosingBraceSniff implements Sniff
 
         $error = 'Closing brace must not be followed by any comment or statement on the same line';
         $phpcsFile->addError($error, $closer, 'StatementAfter');
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

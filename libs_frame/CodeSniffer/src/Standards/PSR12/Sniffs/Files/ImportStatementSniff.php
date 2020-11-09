@@ -15,8 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class ImportStatementSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -25,9 +23,9 @@ class ImportStatementSniff implements Sniff
     public function register()
     {
         return [T_USE];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -35,8 +33,6 @@ class ImportStatementSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
@@ -44,34 +40,33 @@ class ImportStatementSniff implements Sniff
 
         // Make sure this is not a closure USE group.
         $next = $phpcsFile->findNext(Tokens::$emptyTokens, ($stackPtr + 1), null, true);
-        if ($tokens[$next]['code'] === T_OPEN_PARENTHESIS) {
+        if (T_OPEN_PARENTHESIS === $tokens[$next]['code']) {
             return;
         }
 
-        if ($phpcsFile->hasCondition($stackPtr, Tokens::$ooScopeTokens) === true) {
+        if (true === $phpcsFile->hasCondition($stackPtr, Tokens::$ooScopeTokens)) {
             // This rule only applies to import statements.
             return;
         }
 
-        if ($tokens[$next]['code'] === T_STRING
-            && (strtolower($tokens[$next]['content']) === 'function'
-            || strtolower($tokens[$next]['content']) === 'const')
+        if (T_STRING === $tokens[$next]['code']
+            && ('function' === strtolower($tokens[$next]['content'])
+            || 'const' === strtolower($tokens[$next]['content']))
         ) {
             $next = $phpcsFile->findNext(Tokens::$emptyTokens, ($next + 1), null, true);
         }
 
-        if ($tokens[$next]['code'] !== T_NS_SEPARATOR) {
+        if (T_NS_SEPARATOR !== $tokens[$next]['code']) {
             return;
         }
 
         $error = 'Import statements must not begin with a leading backslash';
-        $fix   = $phpcsFile->addFixableError($error, $next, 'LeadingSlash');
+        $fix = $phpcsFile->addFixableError($error, $next, 'LeadingSlash');
 
-        if ($fix === true) {
+        if (true === $fix) {
             $phpcsFile->fixer->replaceToken($next, '');
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

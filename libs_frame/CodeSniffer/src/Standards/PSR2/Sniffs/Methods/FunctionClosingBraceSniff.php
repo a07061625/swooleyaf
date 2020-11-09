@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class FunctionClosingBraceSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -27,9 +25,9 @@ class FunctionClosingBraceSniff implements Sniff
             T_FUNCTION,
             T_CLOSURE,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
@@ -37,39 +35,37 @@ class FunctionClosingBraceSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        if (isset($tokens[$stackPtr]['scope_closer']) === false) {
+        if (false === isset($tokens[$stackPtr]['scope_closer'])) {
             // Probably an interface method.
             return;
         }
 
-        $closeBrace  = $tokens[$stackPtr]['scope_closer'];
+        $closeBrace = $tokens[$stackPtr]['scope_closer'];
         $prevContent = $phpcsFile->findPrevious(T_WHITESPACE, ($closeBrace - 1), null, true);
-        $found       = ($tokens[$closeBrace]['line'] - $tokens[$prevContent]['line'] - 1);
+        $found = ($tokens[$closeBrace]['line'] - $tokens[$prevContent]['line'] - 1);
 
         if ($found < 0) {
             // Brace isn't on a new line, so not handled by us.
             return;
         }
 
-        if ($found === 0) {
+        if (0 === $found) {
             // All is good.
             return;
         }
 
         $error = 'Function closing brace must go on the next line following the body; found %s blank lines before brace';
-        $data  = [$found];
-        $fix   = $phpcsFile->addFixableError($error, $closeBrace, 'SpacingBeforeClose', $data);
+        $data = [$found];
+        $fix = $phpcsFile->addFixableError($error, $closeBrace, 'SpacingBeforeClose', $data);
 
-        if ($fix === true) {
+        if (true === $fix) {
             $phpcsFile->fixer->beginChangeset();
-            for ($i = ($prevContent + 1); $i < $closeBrace; $i++) {
+            for ($i = ($prevContent + 1); $i < $closeBrace; ++$i) {
                 if ($tokens[$i]['line'] === $tokens[$prevContent]['line']) {
                     continue;
                 }
@@ -84,8 +80,7 @@ class FunctionClosingBraceSniff implements Sniff
 
             $phpcsFile->fixer->endChangeset();
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

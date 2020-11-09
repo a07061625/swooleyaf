@@ -15,7 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class TodoSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
@@ -26,7 +25,6 @@ class TodoSniff implements Sniff
         'JS',
     ];
 
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -35,9 +33,9 @@ class TodoSniff implements Sniff
     public function register()
     {
         return array_diff(Tokens::$commentTokens, Tokens::$phpcsCommentTokens);
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
@@ -45,8 +43,6 @@ class TodoSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
@@ -55,23 +51,22 @@ class TodoSniff implements Sniff
         $content = $tokens[$stackPtr]['content'];
         $matches = [];
         preg_match('/(?:\A|[^\p{L}]+)todo([^\p{L}]+(.*)|\Z)/ui', $content, $matches);
-        if (empty($matches) === false) {
+        if (false === empty($matches)) {
             // Clear whitespace and some common characters not required at
             // the end of a to-do message to make the warning more informative.
-            $type        = 'CommentFound';
+            $type = 'CommentFound';
             $todoMessage = trim($matches[1]);
             $todoMessage = trim($todoMessage, '-:[](). ');
-            $error       = 'Comment refers to a TODO task';
-            $data        = [$todoMessage];
-            if ($todoMessage !== '') {
-                $type   = 'TaskFound';
+            $error = 'Comment refers to a TODO task';
+            $data = [$todoMessage];
+            if ('' !== $todoMessage) {
+                $type = 'TaskFound';
                 $error .= ' "%s"';
             }
 
             $phpcsFile->addWarning($error, $stackPtr, $type, $data);
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

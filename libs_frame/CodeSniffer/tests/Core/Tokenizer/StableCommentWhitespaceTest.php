@@ -18,10 +18,12 @@ namespace PHP_CodeSniffer\Tests\Core\Tokenizer;
 use PHP_CodeSniffer\Tests\Core\AbstractMethodUnitTest;
 use PHP_CodeSniffer\Util\Tokens;
 
-class StableCommentWhitespaceTest extends AbstractMethodUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class StableCommentWhitespaceTest extends AbstractMethodUnitTest
 {
-
-
     /**
      * Test that comment tokenization with new lines at the end of the comment is stable.
      *
@@ -29,25 +31,23 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
      * @param array  $expectedTokens The tokenization expected.
      *
      * @dataProvider dataCommentTokenization
-     * @covers       PHP_CodeSniffer\Tokenizers\PHP::tokenize
-     *
-     * @return void
+     * @covers       \PHP_CodeSniffer\Tokenizers\PHP::tokenize
      */
     public function testCommentTokenization($testMarker, $expectedTokens)
     {
-        $tokens  = self::$phpcsFile->getTokens();
+        $tokens = self::$phpcsFile->getTokens();
         $comment = $this->getTargetToken($testMarker, Tokens::$commentTokens);
 
         foreach ($expectedTokens as $key => $tokenInfo) {
-            $this->assertSame(constant($tokenInfo['type']), $tokens[$comment]['code']);
-            $this->assertSame($tokenInfo['type'], $tokens[$comment]['type']);
-            $this->assertSame($tokenInfo['content'], $tokens[$comment]['content']);
+            static::assertSame(\constant($tokenInfo['type']), $tokens[$comment]['code']);
+            static::assertSame($tokenInfo['type'], $tokens[$comment]['type']);
+            static::assertSame($tokenInfo['content'], $tokens[$comment]['content']);
 
             ++$comment;
         }
+    }
 
-    }//end testCommentTokenization()
-
+    //end testCommentTokenization()
 
     /**
      * Data provider.
@@ -63,12 +63,12 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testSingleLineSlashComment */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '// Comment
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -78,12 +78,12 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testSingleLineSlashCommentTrailing */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '// Comment
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -93,12 +93,12 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testSingleLineSlashAnnotation */',
                 [
                     [
-                        'type'    => 'T_PHPCS_DISABLE',
+                        'type' => 'T_PHPCS_DISABLE',
                         'content' => '// phpcs:disable Stnd.Cat
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -108,22 +108,22 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineSlashComment */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '// Comment1
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '// Comment2
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '// Comment3
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -133,30 +133,30 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineSlashCommentWithIndent */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '// Comment1
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '    ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '// Comment2
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '    ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '// Comment3
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -166,22 +166,22 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineSlashCommentWithAnnotationStart */',
                 [
                     [
-                        'type'    => 'T_PHPCS_IGNORE',
+                        'type' => 'T_PHPCS_IGNORE',
                         'content' => '// phpcs:ignore Stnd.Cat
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '// Comment2
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '// Comment3
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -191,22 +191,22 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineSlashCommentWithAnnotationMiddle */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '// Comment1
 ',
                     ],
                     [
-                        'type'    => 'T_PHPCS_IGNORE',
+                        'type' => 'T_PHPCS_IGNORE',
                         'content' => '// @phpcs:ignore Stnd.Cat
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '// Comment3
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -216,22 +216,22 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineSlashCommentWithAnnotationEnd */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '// Comment1
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '// Comment2
 ',
                     ],
                     [
-                        'type'    => 'T_PHPCS_IGNORE',
+                        'type' => 'T_PHPCS_IGNORE',
                         'content' => '// phpcs:ignore Stnd.Cat
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -241,11 +241,11 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testSingleLineStarComment */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '/* Single line star comment */',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -255,11 +255,11 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testSingleLineStarCommentTrailing */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '/* Comment */',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -269,11 +269,11 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testSingleLineStarAnnotation */',
                 [
                     [
-                        'type'    => 'T_PHPCS_IGNORE',
+                        'type' => 'T_PHPCS_IGNORE',
                         'content' => '/* phpcs:ignore Stnd.Cat */',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -283,21 +283,21 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineStarComment */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '/* Comment1
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => ' * Comment2
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => ' * Comment3 */',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -307,21 +307,21 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineStarCommentWithIndent */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '/* Comment1
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '         * Comment2
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '         * Comment3 */',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -331,21 +331,21 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineStarCommentWithAnnotationStart */',
                 [
                     [
-                        'type'    => 'T_PHPCS_IGNORE',
+                        'type' => 'T_PHPCS_IGNORE',
                         'content' => '/* @phpcs:ignore Stnd.Cat
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => ' * Comment2
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => ' * Comment3 */',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -355,21 +355,21 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineStarCommentWithAnnotationMiddle */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '/* Comment1
 ',
                     ],
                     [
-                        'type'    => 'T_PHPCS_IGNORE',
+                        'type' => 'T_PHPCS_IGNORE',
                         'content' => ' * phpcs:ignore Stnd.Cat
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => ' * Comment3 */',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -379,21 +379,21 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineStarCommentWithAnnotationEnd */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '/* Comment1
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => ' * Comment2
 ',
                     ],
                     [
-                        'type'    => 'T_PHPCS_IGNORE',
+                        'type' => 'T_PHPCS_IGNORE',
                         'content' => ' * phpcs:ignore Stnd.Cat */',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -404,23 +404,23 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testSingleLineDocblockComment */',
                 [
                     [
-                        'type'    => 'T_DOC_COMMENT_OPEN_TAG',
+                        'type' => 'T_DOC_COMMENT_OPEN_TAG',
                         'content' => '/**',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STRING',
+                        'type' => 'T_DOC_COMMENT_STRING',
                         'content' => 'Comment ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_CLOSE_TAG',
+                        'type' => 'T_DOC_COMMENT_CLOSE_TAG',
                         'content' => '*/',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -430,23 +430,23 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testSingleLineDocblockCommentTrailing */',
                 [
                     [
-                        'type'    => 'T_DOC_COMMENT_OPEN_TAG',
+                        'type' => 'T_DOC_COMMENT_OPEN_TAG',
                         'content' => '/**',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STRING',
+                        'type' => 'T_DOC_COMMENT_STRING',
                         'content' => 'Comment ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_CLOSE_TAG',
+                        'type' => 'T_DOC_COMMENT_CLOSE_TAG',
                         'content' => '*/',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -456,23 +456,23 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testSingleLineDocblockAnnotation */',
                 [
                     [
-                        'type'    => 'T_DOC_COMMENT_OPEN_TAG',
+                        'type' => 'T_DOC_COMMENT_OPEN_TAG',
                         'content' => '/**',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_PHPCS_IGNORE',
+                        'type' => 'T_PHPCS_IGNORE',
                         'content' => 'phpcs:ignore Stnd.Cat.Sniff ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_CLOSE_TAG',
+                        'type' => 'T_DOC_COMMENT_CLOSE_TAG',
                         'content' => '*/',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -483,108 +483,108 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineDocblockComment */',
                 [
                     [
-                        'type'    => 'T_DOC_COMMENT_OPEN_TAG',
+                        'type' => 'T_DOC_COMMENT_OPEN_TAG',
                         'content' => '/**',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STRING',
+                        'type' => 'T_DOC_COMMENT_STRING',
                         'content' => 'Comment1',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STRING',
+                        'type' => 'T_DOC_COMMENT_STRING',
                         'content' => 'Comment2',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_TAG',
+                        'type' => 'T_DOC_COMMENT_TAG',
                         'content' => '@tag',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STRING',
+                        'type' => 'T_DOC_COMMENT_STRING',
                         'content' => 'Comment',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_CLOSE_TAG',
+                        'type' => 'T_DOC_COMMENT_CLOSE_TAG',
                         'content' => '*/',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -594,108 +594,108 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineDocblockCommentWithIndent */',
                 [
                     [
-                        'type'    => 'T_DOC_COMMENT_OPEN_TAG',
+                        'type' => 'T_DOC_COMMENT_OPEN_TAG',
                         'content' => '/**',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '     ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STRING',
+                        'type' => 'T_DOC_COMMENT_STRING',
                         'content' => 'Comment1',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '     ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STRING',
+                        'type' => 'T_DOC_COMMENT_STRING',
                         'content' => 'Comment2',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '     ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '     ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_TAG',
+                        'type' => 'T_DOC_COMMENT_TAG',
                         'content' => '@tag',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STRING',
+                        'type' => 'T_DOC_COMMENT_STRING',
                         'content' => 'Comment',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '     ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_CLOSE_TAG',
+                        'type' => 'T_DOC_COMMENT_CLOSE_TAG',
                         'content' => '*/',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -705,108 +705,108 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineDocblockCommentWithAnnotation */',
                 [
                     [
-                        'type'    => 'T_DOC_COMMENT_OPEN_TAG',
+                        'type' => 'T_DOC_COMMENT_OPEN_TAG',
                         'content' => '/**',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STRING',
+                        'type' => 'T_DOC_COMMENT_STRING',
                         'content' => 'Comment',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_PHPCS_IGNORE',
+                        'type' => 'T_PHPCS_IGNORE',
                         'content' => 'phpcs:ignore Stnd.Cat',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_TAG',
+                        'type' => 'T_DOC_COMMENT_TAG',
                         'content' => '@tag',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STRING',
+                        'type' => 'T_DOC_COMMENT_STRING',
                         'content' => 'Comment',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_CLOSE_TAG',
+                        'type' => 'T_DOC_COMMENT_CLOSE_TAG',
                         'content' => '*/',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -816,108 +816,108 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineDocblockCommentWithTagAnnotation */',
                 [
                     [
-                        'type'    => 'T_DOC_COMMENT_OPEN_TAG',
+                        'type' => 'T_DOC_COMMENT_OPEN_TAG',
                         'content' => '/**',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STRING',
+                        'type' => 'T_DOC_COMMENT_STRING',
                         'content' => 'Comment',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_PHPCS_IGNORE',
+                        'type' => 'T_PHPCS_IGNORE',
                         'content' => '@phpcs:ignore Stnd.Cat',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STAR',
+                        'type' => 'T_DOC_COMMENT_STAR',
                         'content' => '*',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_TAG',
+                        'type' => 'T_DOC_COMMENT_TAG',
                         'content' => '@tag',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_STRING',
+                        'type' => 'T_DOC_COMMENT_STRING',
                         'content' => 'Comment',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_WHITESPACE',
+                        'type' => 'T_DOC_COMMENT_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_DOC_COMMENT_CLOSE_TAG',
+                        'type' => 'T_DOC_COMMENT_CLOSE_TAG',
                         'content' => '*/',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -927,12 +927,12 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testSingleLineHashComment */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '# Comment
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -942,12 +942,12 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testSingleLineHashCommentTrailing */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '# Comment
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -957,22 +957,22 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineHashComment */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '# Comment1
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '# Comment2
 ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '# Comment3
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -982,30 +982,30 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testMultiLineHashCommentWithIndent */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '# Comment1
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '    ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '# Comment2
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '    ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '# Comment3
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -1015,11 +1015,11 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testSingleLineSlashCommentNoNewLineAtEnd */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '// Slash ',
                     ],
                     [
-                        'type'    => 'T_CLOSE_TAG',
+                        'type' => 'T_CLOSE_TAG',
                         'content' => '?>
 ',
                     ],
@@ -1029,11 +1029,11 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testSingleLineHashCommentNoNewLineAtEnd */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '# Hash ',
                     ],
                     [
-                        'type'    => 'T_CLOSE_TAG',
+                        'type' => 'T_CLOSE_TAG',
                         'content' => '?>
 ',
                     ],
@@ -1043,14 +1043,13 @@ class StableCommentWhitespaceTest extends AbstractMethodUnitTest
                 '/* testCommentAtEndOfFile */',
                 [
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '/* Comment',
                     ],
                 ],
             ],
         ];
+    }
 
-    }//end dataCommentTokenization()
-
-
+    //end dataCommentTokenization()
 }//end class

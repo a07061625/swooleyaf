@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Files\File;
 
 class Xml implements Report
 {
-
-
     /**
      * Generate a partial report for a single processed file.
      *
@@ -30,15 +28,15 @@ class Xml implements Report
      *
      * @return bool
      */
-    public function generateFileReport($report, File $phpcsFile, $showSources=false, $width=80)
+    public function generateFileReport($report, File $phpcsFile, $showSources = false, $width = 80)
     {
-        $out = new \XMLWriter;
+        $out = new \XMLWriter();
         $out->openMemory();
         $out->setIndent(true);
         $out->setIndentString('    ');
         $out->startDocument('1.0', 'UTF-8');
 
-        if ($report['errors'] === 0 && $report['warnings'] === 0) {
+        if (0 === $report['errors'] && 0 === $report['warnings']) {
             // Nothing to print.
             return false;
         }
@@ -53,7 +51,7 @@ class Xml implements Report
             foreach ($lineErrors as $column => $colErrors) {
                 foreach ($colErrors as $error) {
                     $error['type'] = strtolower($error['type']);
-                    if ($phpcsFile->config->encoding !== 'utf-8') {
+                    if ('utf-8' !== $phpcsFile->config->encoding) {
                         $error['message'] = iconv($phpcsFile->config->encoding, 'utf-8', $error['message']);
                     }
 
@@ -62,7 +60,7 @@ class Xml implements Report
                     $out->writeAttribute('column', $column);
                     $out->writeAttribute('source', $error['source']);
                     $out->writeAttribute('severity', $error['severity']);
-                    $out->writeAttribute('fixable', (int) $error['fixable']);
+                    $out->writeAttribute('fixable', (int)$error['fixable']);
                     $out->text($error['message']);
                     $out->endElement();
                 }
@@ -75,18 +73,18 @@ class Xml implements Report
         // add that manually later. We only have it in here to
         // properly set the encoding.
         $content = $out->flush();
-        if (strpos($content, PHP_EOL) !== false) {
-            $content = substr($content, (strpos($content, PHP_EOL) + strlen(PHP_EOL)));
-        } else if (strpos($content, "\n") !== false) {
+        if (false !== strpos($content, PHP_EOL)) {
+            $content = substr($content, (strpos($content, PHP_EOL) + \strlen(PHP_EOL)));
+        } elseif (false !== strpos($content, "\n")) {
             $content = substr($content, (strpos($content, "\n") + 1));
         }
 
         echo $content;
 
         return true;
+    }
 
-    }//end generateFileReport()
-
+    //end generateFileReport()
 
     /**
      * Prints all violations for processed files, in a proprietary XML format.
@@ -101,8 +99,6 @@ class Xml implements Report
      * @param int    $width         Maximum allowed line width.
      * @param bool   $interactive   Are we running in interactive mode?
      * @param bool   $toScreen      Is the report being printed to screen?
-     *
-     * @return void
      */
     public function generate(
         $cachedData,
@@ -110,17 +106,16 @@ class Xml implements Report
         $totalErrors,
         $totalWarnings,
         $totalFixable,
-        $showSources=false,
-        $width=80,
-        $interactive=false,
-        $toScreen=true
+        $showSources = false,
+        $width = 80,
+        $interactive = false,
+        $toScreen = true
     ) {
-        echo '<?xml version="1.0" encoding="UTF-8"?>'.PHP_EOL;
-        echo '<phpcs version="'.Config::VERSION.'">'.PHP_EOL;
+        echo '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
+        echo '<phpcs version="' . Config::VERSION . '">' . PHP_EOL;
         echo $cachedData;
-        echo '</phpcs>'.PHP_EOL;
+        echo '</phpcs>' . PHP_EOL;
+    }
 
-    }//end generate()
-
-
+    //end generate()
 }//end class

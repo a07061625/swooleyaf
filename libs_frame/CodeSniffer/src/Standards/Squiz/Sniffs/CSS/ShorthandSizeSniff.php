@@ -14,7 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ShorthandSizeSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
@@ -30,13 +29,12 @@ class ShorthandSizeSniff implements Sniff
      * @var array
      */
     protected $excludeStyles = [
-        'background-position'      => 'background-position',
-        'box-shadow'               => 'box-shadow',
-        'transform-origin'         => 'transform-origin',
+        'background-position' => 'background-position',
+        'box-shadow' => 'box-shadow',
+        'transform-origin' => 'transform-origin',
         '-webkit-transform-origin' => '-webkit-transform-origin',
-        '-ms-transform-origin'     => '-ms-transform-origin',
+        '-ms-transform-origin' => '-ms-transform-origin',
     ];
-
 
     /**
      * Returns the token types that this sniff is interested in.
@@ -46,9 +44,9 @@ class ShorthandSizeSniff implements Sniff
     public function register()
     {
         return [T_STYLE];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes the tokens that this sniff is interested in.
@@ -56,8 +54,6 @@ class ShorthandSizeSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where the token was found.
      * @param int                         $stackPtr  The position in the stack where
      *                                               the token was found.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
@@ -65,12 +61,12 @@ class ShorthandSizeSniff implements Sniff
 
         // Some styles look like shorthand but are not actually a set of 4 sizes.
         $style = strtolower($tokens[$stackPtr]['content']);
-        if (isset($this->excludeStyles[$style]) === true) {
+        if (true === isset($this->excludeStyles[$style])) {
             return;
         }
 
         $end = $phpcsFile->findNext(T_SEMICOLON, ($stackPtr + 1));
-        if ($end === false) {
+        if (false === $end) {
             // Live coding or parse error.
             return;
         }
@@ -82,17 +78,17 @@ class ShorthandSizeSniff implements Sniff
 
         // Account for a !important annotation.
         $content = $origContent;
-        if (substr($content, -10) === '!important') {
+        if ('!important' === substr($content, -10)) {
             $content = substr($content, 0, -10);
             $content = trim($content);
         }
 
         // Check if this style value is a set of numbers with optional prefixes.
         $content = preg_replace('/\s+/', ' ', $content);
-        $values  = [];
-        $num     = preg_match_all(
+        $values = [];
+        $num = preg_match_all(
             '/(?:[0-9]+)(?:[a-zA-Z]{2}\s+|%\s+|\s+)/',
-            $content.' ',
+            $content . ' ',
             $values,
             PREG_SET_ORDER
         );
@@ -112,21 +108,21 @@ class ShorthandSizeSniff implements Sniff
             return;
         }
 
-        if ($num === 3) {
-            $expected = trim($content.' '.$values[1][0]);
-            $error    = 'Shorthand syntax not allowed here; use %s instead';
-            $data     = [$expected];
-            $fix      = $phpcsFile->addFixableError($error, $stackPtr, 'NotAllowed', $data);
+        if (3 === $num) {
+            $expected = trim($content . ' ' . $values[1][0]);
+            $error = 'Shorthand syntax not allowed here; use %s instead';
+            $data = [$expected];
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NotAllowed', $data);
 
-            if ($fix === true) {
+            if (true === $fix) {
                 $phpcsFile->fixer->beginChangeset();
-                if (substr($origContent, -10) === '!important') {
+                if ('!important' === substr($origContent, -10)) {
                     $expected .= ' !important';
                 }
 
                 $next = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 2), null, true);
                 $phpcsFile->fixer->replaceToken($next, $expected);
-                for ($next++; $next < $end; $next++) {
+                for ($next++; $next < $end; ++$next) {
                     $phpcsFile->fixer->replaceToken($next, '');
                 }
 
@@ -136,12 +132,12 @@ class ShorthandSizeSniff implements Sniff
             return;
         }//end if
 
-        if ($num === 2) {
+        if (2 === $num) {
             if ($values[0][0] !== $values[1][0]) {
                 // Both values are different, so it is already shorthand.
                 return;
             }
-        } else if ($values[0][0] !== $values[2][0] || $values[1][0] !== $values[3][0]) {
+        } elseif ($values[0][0] !== $values[2][0] || $values[1][0] !== $values[3][0]) {
             // Can't shorthand this.
             return;
         }
@@ -150,32 +146,31 @@ class ShorthandSizeSniff implements Sniff
             // All values are the same.
             $expected = trim($values[0][0]);
         } else {
-            $expected = trim($values[0][0]).' '.trim($values[1][0]);
+            $expected = trim($values[0][0]) . ' ' . trim($values[1][0]);
         }
 
         $error = 'Size definitions must use shorthand if available; expected "%s" but found "%s"';
-        $data  = [
+        $data = [
             $expected,
             $content,
         ];
 
         $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NotUsed', $data);
-        if ($fix === true) {
+        if (true === $fix) {
             $phpcsFile->fixer->beginChangeset();
-            if (substr($origContent, -10) === '!important') {
+            if ('!important' === substr($origContent, -10)) {
                 $expected .= ' !important';
             }
 
             $next = $phpcsFile->findNext(T_COLON, ($stackPtr + 1));
-            $phpcsFile->fixer->addContent($next, ' '.$expected);
-            for ($next++; $next < $end; $next++) {
+            $phpcsFile->fixer->addContent($next, ' ' . $expected);
+            for ($next++; $next < $end; ++$next) {
                 $phpcsFile->fixer->replaceToken($next, '');
             }
 
             $phpcsFile->fixer->endChangeset();
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

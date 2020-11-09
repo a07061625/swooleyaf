@@ -15,8 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class IncrementDecrementUsageSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -31,9 +29,9 @@ class IncrementDecrementUsageSniff implements Sniff
             T_INC,
             T_DEC,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -41,21 +39,19 @@ class IncrementDecrementUsageSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        if ($tokens[$stackPtr]['code'] === T_INC || $tokens[$stackPtr]['code'] === T_DEC) {
+        if (T_INC === $tokens[$stackPtr]['code'] || T_DEC === $tokens[$stackPtr]['code']) {
             $this->processIncDec($phpcsFile, $stackPtr);
         } else {
             $this->processAssignment($phpcsFile, $stackPtr);
         }
+    }
 
-    }//end process()
-
+    //end process()
 
     /**
      * Checks to ensure increment and decrement operators are not confusing.
@@ -63,8 +59,6 @@ class IncrementDecrementUsageSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     protected function processIncDec($phpcsFile, $stackPtr)
     {
@@ -72,10 +66,10 @@ class IncrementDecrementUsageSniff implements Sniff
 
         // Work out where the variable is so we know where to
         // start looking for other operators.
-        if ($tokens[($stackPtr - 1)]['code'] === T_VARIABLE
-            || ($tokens[($stackPtr - 1)]['code'] === T_STRING
-            && ($tokens[($stackPtr - 2)]['code'] === T_OBJECT_OPERATOR
-            || $tokens[($stackPtr - 2)]['code'] === T_NULLSAFE_OBJECT_OPERATOR))
+        if (T_VARIABLE === $tokens[($stackPtr - 1)]['code']
+            || (T_STRING === $tokens[($stackPtr - 1)]['code']
+            && (T_OBJECT_OPERATOR === $tokens[($stackPtr - 2)]['code']
+            || T_NULLSAFE_OBJECT_OPERATOR === $tokens[($stackPtr - 2)]['code']))
         ) {
             $start = ($stackPtr + 1);
         } else {
@@ -83,29 +77,30 @@ class IncrementDecrementUsageSniff implements Sniff
         }
 
         $next = $phpcsFile->findNext(Tokens::$emptyTokens, $start, null, true);
-        if ($next === false) {
+        if (false === $next) {
             return;
         }
 
-        if (isset(Tokens::$arithmeticTokens[$tokens[$next]['code']]) === true) {
+        if (true === isset(Tokens::$arithmeticTokens[$tokens[$next]['code']])) {
             $error = 'Increment and decrement operators cannot be used in an arithmetic operation';
             $phpcsFile->addError($error, $stackPtr, 'NotAllowed');
+
             return;
         }
 
         $prev = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($start - 3), null, true);
-        if ($prev === false) {
+        if (false === $prev) {
             return;
         }
 
         // Check if this is in a string concat.
-        if ($tokens[$next]['code'] === T_STRING_CONCAT || $tokens[$prev]['code'] === T_STRING_CONCAT) {
+        if (T_STRING_CONCAT === $tokens[$next]['code'] || T_STRING_CONCAT === $tokens[$prev]['code']) {
             $error = 'Increment and decrement operators must be bracketed when used in string concatenation';
             $phpcsFile->addError($error, $stackPtr, 'NoBrackets');
         }
+    }
 
-    }//end processIncDec()
-
+    //end processIncDec()
 
     /**
      * Checks to ensure increment and decrement operators are used.
@@ -113,8 +108,6 @@ class IncrementDecrementUsageSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     protected function processAssignment($phpcsFile, $stackPtr)
     {
@@ -122,7 +115,7 @@ class IncrementDecrementUsageSniff implements Sniff
 
         $assignedVar = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
         // Not an assignment, return.
-        if ($tokens[$assignedVar]['code'] !== T_VARIABLE) {
+        if (T_VARIABLE !== $tokens[$assignedVar]['code']) {
             return;
         }
 
@@ -131,29 +124,29 @@ class IncrementDecrementUsageSniff implements Sniff
         // If there is anything other than variables, numbers, spaces or operators we need to return.
         $noiseTokens = $phpcsFile->findNext([T_LNUMBER, T_VARIABLE, T_WHITESPACE, T_PLUS, T_MINUS, T_OPEN_PARENTHESIS], ($stackPtr + 1), $statementEnd, true);
 
-        if ($noiseTokens !== false) {
+        if (false !== $noiseTokens) {
             return;
         }
 
         // If we are already using += or -=, we need to ignore
         // the statement if a variable is being used.
-        if ($tokens[$stackPtr]['code'] !== T_EQUAL) {
+        if (T_EQUAL !== $tokens[$stackPtr]['code']) {
             $nextVar = $phpcsFile->findNext(T_VARIABLE, ($stackPtr + 1), $statementEnd);
-            if ($nextVar !== false) {
+            if (false !== $nextVar) {
                 return;
             }
         }
 
-        if ($tokens[$stackPtr]['code'] === T_EQUAL) {
-            $nextVar          = ($stackPtr + 1);
+        if (T_EQUAL === $tokens[$stackPtr]['code']) {
+            $nextVar = ($stackPtr + 1);
             $previousVariable = ($stackPtr + 1);
-            $variableCount    = 0;
+            $variableCount = 0;
             while (($nextVar = $phpcsFile->findNext(T_VARIABLE, ($nextVar + 1), $statementEnd)) !== false) {
                 $previousVariable = $nextVar;
-                $variableCount++;
+                ++$variableCount;
             }
 
-            if ($variableCount !== 1) {
+            if (1 !== $variableCount) {
                 return;
             }
 
@@ -165,23 +158,23 @@ class IncrementDecrementUsageSniff implements Sniff
 
         // We have only one variable, and it's the same as what is being assigned,
         // so we need to check what is being added or subtracted.
-        $nextNumber     = ($stackPtr + 1);
+        $nextNumber = ($stackPtr + 1);
         $previousNumber = ($stackPtr + 1);
-        $numberCount    = 0;
+        $numberCount = 0;
         while (($nextNumber = $phpcsFile->findNext([T_LNUMBER], ($nextNumber + 1), $statementEnd, false)) !== false) {
             $previousNumber = $nextNumber;
-            $numberCount++;
+            ++$numberCount;
         }
 
-        if ($numberCount !== 1) {
+        if (1 !== $numberCount) {
             return;
         }
 
         $nextNumber = $previousNumber;
-        if ($tokens[$nextNumber]['content'] === '1') {
-            if ($tokens[$stackPtr]['code'] === T_EQUAL) {
+        if ('1' === $tokens[$nextNumber]['content']) {
+            if (T_EQUAL === $tokens[$stackPtr]['code']) {
                 $opToken = $phpcsFile->findNext([T_PLUS, T_MINUS], ($nextVar + 1), $statementEnd);
-                if ($opToken === false) {
+                if (false === $opToken) {
                     // Operator was before the variable, like:
                     // $var = 1 + $var;
                     // So we ignore it.
@@ -195,10 +188,10 @@ class IncrementDecrementUsageSniff implements Sniff
 
             // If we are adding or subtracting negative value, the operator
             // needs to be reversed.
-            if ($tokens[$stackPtr]['code'] !== T_EQUAL) {
+            if (T_EQUAL !== $tokens[$stackPtr]['code']) {
                 $negative = $phpcsFile->findPrevious(T_MINUS, ($nextNumber - 1), $stackPtr);
-                if ($negative !== false) {
-                    if ($operator === '+') {
+                if (false !== $negative) {
+                    if ('+' === $operator) {
                         $operator = '-';
                     } else {
                         $operator = '+';
@@ -206,20 +199,19 @@ class IncrementDecrementUsageSniff implements Sniff
                 }
             }
 
-            $expected = $operator.$operator.$tokens[$assignedVar]['content'];
-            $found    = $phpcsFile->getTokensAsString($assignedVar, ($statementEnd - $assignedVar + 1));
+            $expected = $operator . $operator . $tokens[$assignedVar]['content'];
+            $found = $phpcsFile->getTokensAsString($assignedVar, ($statementEnd - $assignedVar + 1));
 
-            if ($operator === '+') {
+            if ('+' === $operator) {
                 $error = 'Increment';
             } else {
                 $error = 'Decrement';
             }
 
-            $error .= " operators should be used where possible; found \"$found\" but expected \"$expected\"";
+            $error .= " operators should be used where possible; found \"{$found}\" but expected \"{$expected}\"";
             $phpcsFile->addError($error, $stackPtr, 'Found');
         }//end if
+    }
 
-    }//end processAssignment()
-
-
+    //end processAssignment()
 }//end class

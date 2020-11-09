@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Squiz\Tests\PHP;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class DisallowComparisonAssignmentUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class DisallowComparisonAssignmentUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -26,20 +28,20 @@ class DisallowComparisonAssignmentUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
-            3  => 1,
-            5  => 1,
-            6  => 1,
-            7  => 1,
-            8  => 1,
+            3 => 1,
+            5 => 1,
+            6 => 1,
+            7 => 1,
+            8 => 1,
             10 => 1,
             52 => 1,
             53 => 1,
             58 => 1,
             62 => 1,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -52,8 +54,7 @@ class DisallowComparisonAssignmentUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

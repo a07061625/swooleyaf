@@ -12,17 +12,15 @@ namespace PHP_CodeSniffer\Standards\Generic\Sniffs\PHP;
 
 class DeprecatedFunctionsSniff extends ForbiddenFunctionsSniff
 {
-
     /**
      * A list of forbidden functions with their alternatives.
      *
      * The value is NULL if no alternative exists. IE, the
      * function should just not be used.
      *
-     * @var array<string, string|null>
+     * @var array<string, null|string>
      */
     public $forbiddenFunctions = [];
-
 
     /**
      * Constructor.
@@ -36,13 +34,13 @@ class DeprecatedFunctionsSniff extends ForbiddenFunctionsSniff
         foreach ($functions['internal'] as $functionName) {
             $function = new \ReflectionFunction($functionName);
 
-            if ($function->isDeprecated() === true) {
+            if (true === $function->isDeprecated()) {
                 $this->forbiddenFunctions[$functionName] = null;
             }
         }
+    }
 
-    }//end __construct()
-
+    //end __construct()
 
     /**
      * Generates the error or warning for this sniff.
@@ -52,22 +50,19 @@ class DeprecatedFunctionsSniff extends ForbiddenFunctionsSniff
      *                                               in the token array.
      * @param string                      $function  The name of the forbidden function.
      * @param string                      $pattern   The pattern used for the match.
-     *
-     * @return void
      */
-    protected function addError($phpcsFile, $stackPtr, $function, $pattern=null)
+    protected function addError($phpcsFile, $stackPtr, $function, $pattern = null)
     {
-        $data  = [$function];
+        $data = [$function];
         $error = 'Function %s() has been deprecated';
-        $type  = 'Deprecated';
+        $type = 'Deprecated';
 
-        if ($this->error === true) {
+        if (true === $this->error) {
             $phpcsFile->addError($error, $stackPtr, $type, $data);
         } else {
             $phpcsFile->addWarning($error, $stackPtr, $type, $data);
         }
+    }
 
-    }//end addError()
-
-
+    //end addError()
 }//end class

@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\PSR2\Tests\Classes;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class ClassDeclarationUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class ClassDeclarationUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -26,23 +28,23 @@ class ClassDeclarationUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
-            2   => 1,
-            7   => 3,
-            12  => 1,
-            13  => 1,
-            17  => 1,
-            19  => 2,
-            20  => 1,
-            21  => 1,
-            22  => 1,
-            25  => 1,
-            27  => 2,
-            34  => 1,
-            35  => 2,
-            44  => 1,
-            45  => 1,
-            63  => 1,
-            95  => 1,
+            2 => 1,
+            7 => 3,
+            12 => 1,
+            13 => 1,
+            17 => 1,
+            19 => 2,
+            20 => 1,
+            21 => 1,
+            22 => 1,
+            25 => 1,
+            27 => 2,
+            34 => 1,
+            35 => 2,
+            44 => 1,
+            45 => 1,
+            63 => 1,
+            95 => 1,
             116 => 1,
             118 => 1,
             119 => 1,
@@ -64,9 +66,9 @@ class ClassDeclarationUnitTest extends AbstractSniffUnitTest
             231 => 2,
             235 => 1,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -79,8 +81,7 @@ class ClassDeclarationUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

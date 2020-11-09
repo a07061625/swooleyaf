@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class SAPIUsageSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -24,9 +22,9 @@ class SAPIUsageSniff implements Sniff
     public function register()
     {
         return [T_STRING];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -34,34 +32,31 @@ class SAPIUsageSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
         $ignore = [
-            T_DOUBLE_COLON             => true,
-            T_OBJECT_OPERATOR          => true,
+            T_DOUBLE_COLON => true,
+            T_OBJECT_OPERATOR => true,
             T_NULLSAFE_OBJECT_OPERATOR => true,
-            T_FUNCTION                 => true,
-            T_CONST                    => true,
+            T_FUNCTION => true,
+            T_CONST => true,
         ];
 
         $prevToken = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
-        if (isset($ignore[$tokens[$prevToken]['code']]) === true) {
+        if (true === isset($ignore[$tokens[$prevToken]['code']])) {
             // Not a call to a PHP function.
             return;
         }
 
         $function = strtolower($tokens[$stackPtr]['content']);
-        if ($function === 'php_sapi_name') {
+        if ('php_sapi_name' === $function) {
             $error = 'Use the PHP_SAPI constant instead of calling php_sapi_name()';
             $phpcsFile->addError($error, $stackPtr, 'FunctionFound');
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

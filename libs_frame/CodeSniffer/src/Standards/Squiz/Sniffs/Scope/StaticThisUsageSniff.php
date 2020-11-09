@@ -15,17 +15,15 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class StaticThisUsageSniff extends AbstractScopeSniff
 {
-
-
     /**
      * Constructs the test with the tokens it wishes to listen for.
      */
     public function __construct()
     {
         parent::__construct([T_CLASS, T_TRAIT, T_ANON_CLASS], [T_FUNCTION]);
+    }
 
-    }//end __construct()
-
+    //end __construct()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -34,8 +32,6 @@ class StaticThisUsageSniff extends AbstractScopeSniff
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
      * @param int                         $currScope A pointer to the start of the scope.
-     *
-     * @return void
      */
     public function processTokenWithinScope(File $phpcsFile, $stackPtr, $currScope)
     {
@@ -50,64 +46,28 @@ class StaticThisUsageSniff extends AbstractScopeSniff
         }
 
         // Ignore abstract functions.
-        if (isset($tokens[$stackPtr]['scope_closer']) === false) {
+        if (false === isset($tokens[$stackPtr]['scope_closer'])) {
             return;
         }
 
         $next = $phpcsFile->findNext(Tokens::$emptyTokens, ($stackPtr + 1), null, true);
-        if ($next === false || $tokens[$next]['code'] !== T_STRING) {
+        if (false === $next || T_STRING !== $tokens[$next]['code']) {
             // Not a function declaration, or incomplete.
             return;
         }
 
         $methodProps = $phpcsFile->getMethodProperties($stackPtr);
-        if ($methodProps['is_static'] === false) {
+        if (false === $methodProps['is_static']) {
             return;
         }
 
         $next = $stackPtr;
-        $end  = $tokens[$stackPtr]['scope_closer'];
+        $end = $tokens[$stackPtr]['scope_closer'];
 
         $this->checkThisUsage($phpcsFile, $next, $end);
+    }
 
-    }//end processTokenWithinScope()
-
-
-    /**
-     * Check for $this variable usage between $next and $end tokens.
-     *
-     * @param File $phpcsFile The current file being scanned.
-     * @param int  $next      The position of the next token to check.
-     * @param int  $end       The position of the last token to check.
-     *
-     * @return void
-     */
-    private function checkThisUsage(File $phpcsFile, $next, $end)
-    {
-        $tokens = $phpcsFile->getTokens();
-
-        do {
-            $next = $phpcsFile->findNext([T_VARIABLE, T_ANON_CLASS], ($next + 1), $end);
-            if ($next === false) {
-                continue;
-            }
-
-            if ($tokens[$next]['code'] === T_ANON_CLASS) {
-                $this->checkThisUsage($phpcsFile, $next, $tokens[$next]['scope_opener']);
-                $next = $tokens[$next]['scope_closer'];
-                continue;
-            }
-
-            if ($tokens[$next]['content'] !== '$this') {
-                continue;
-            }
-
-            $error = 'Usage of "$this" in static methods will cause runtime errors';
-            $phpcsFile->addError($error, $next, 'Found');
-        } while ($next !== false);
-
-    }//end checkThisUsage()
-
+    //end processTokenWithinScope()
 
     /**
      * Processes a token that is found within the scope that this test is
@@ -116,13 +76,45 @@ class StaticThisUsageSniff extends AbstractScopeSniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where this token was found.
      * @param int                         $stackPtr  The position in the stack where this
      *                                               token was found.
-     *
-     * @return void
      */
     protected function processTokenOutsideScope(File $phpcsFile, $stackPtr)
     {
+    }
 
-    }//end processTokenOutsideScope()
+    //end processTokenOutsideScope()
 
+    /**
+     * Check for $this variable usage between $next and $end tokens.
+     *
+     * @param File $phpcsFile The current file being scanned.
+     * @param int  $next      The position of the next token to check.
+     * @param int  $end       The position of the last token to check.
+     */
+    private function checkThisUsage(File $phpcsFile, $next, $end)
+    {
+        $tokens = $phpcsFile->getTokens();
 
+        do {
+            $next = $phpcsFile->findNext([T_VARIABLE, T_ANON_CLASS], ($next + 1), $end);
+            if (false === $next) {
+                continue;
+            }
+
+            if (T_ANON_CLASS === $tokens[$next]['code']) {
+                $this->checkThisUsage($phpcsFile, $next, $tokens[$next]['scope_opener']);
+                $next = $tokens[$next]['scope_closer'];
+
+                continue;
+            }
+
+            if ('$this' !== $tokens[$next]['content']) {
+                continue;
+            }
+
+            $error = 'Usage of "$this" in static methods will cause runtime errors';
+            $phpcsFile->addError($error, $next, 'Found');
+        } while (false !== $next);
+    }
+
+    //end checkThisUsage()
 }//end class

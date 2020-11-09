@@ -14,7 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class DisallowInlineIfSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
@@ -25,7 +24,6 @@ class DisallowInlineIfSniff implements Sniff
         'JS',
     ];
 
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -34,9 +32,9 @@ class DisallowInlineIfSniff implements Sniff
     public function register()
     {
         return [T_INLINE_THEN];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -44,14 +42,11 @@ class DisallowInlineIfSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $phpcsFile->addError('Inline IF statements are not allowed', $stackPtr, 'Found');
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

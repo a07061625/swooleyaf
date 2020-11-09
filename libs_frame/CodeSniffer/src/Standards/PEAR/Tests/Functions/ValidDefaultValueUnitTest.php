@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\PEAR\Tests\Functions;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class ValidDefaultValueUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class ValidDefaultValueUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -26,19 +28,19 @@ class ValidDefaultValueUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
-            29  => 1,
-            34  => 1,
-            39  => 1,
-            71  => 1,
-            76  => 1,
-            81  => 1,
-            91  => 1,
-            99  => 1,
+            29 => 1,
+            34 => 1,
+            39 => 1,
+            71 => 1,
+            76 => 1,
+            81 => 1,
+            91 => 1,
+            99 => 1,
             101 => 1,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -51,8 +53,7 @@ class ValidDefaultValueUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

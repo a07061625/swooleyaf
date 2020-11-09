@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\PSR12\Tests\Files;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class FileHeaderUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class FileHeaderUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -25,21 +27,21 @@ class FileHeaderUnitTest extends AbstractSniffUnitTest
      *
      * @return array<int, int>
      */
-    public function getErrorList($testFile='')
+    public function getErrorList($testFile = '')
     {
         switch ($testFile) {
         case 'FileHeaderUnitTest.2.inc':
             return [
-                1  => 1,
-                6  => 1,
-                7  => 1,
+                1 => 1,
+                6 => 1,
+                7 => 1,
                 18 => 1,
                 20 => 1,
                 24 => 1,
             ];
         case 'FileHeaderUnitTest.3.inc':
             return [
-                9  => 1,
+                9 => 1,
                 18 => 1,
             ];
         case 'FileHeaderUnitTest.4.inc':
@@ -60,9 +62,9 @@ class FileHeaderUnitTest extends AbstractSniffUnitTest
         default:
             return [];
         }//end switch
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -75,8 +77,7 @@ class FileHeaderUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

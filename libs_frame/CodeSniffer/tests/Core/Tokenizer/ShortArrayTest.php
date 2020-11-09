@@ -11,36 +11,36 @@ namespace PHP_CodeSniffer\Tests\Core\Tokenizer;
 
 use PHP_CodeSniffer\Tests\Core\AbstractMethodUnitTest;
 
-class ShortArrayTest extends AbstractMethodUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class ShortArrayTest extends AbstractMethodUnitTest
 {
-
-
     /**
      * Test that real square brackets are still tokenized as square brackets.
      *
      * @param string $testMarker The comment which prefaces the target token in the test file.
      *
      * @dataProvider dataSquareBrackets
-     * @covers       PHP_CodeSniffer\Tokenizers\PHP::processAdditional
-     *
-     * @return void
+     * @covers       \PHP_CodeSniffer\Tokenizers\PHP::processAdditional
      */
     public function testSquareBrackets($testMarker)
     {
         $tokens = self::$phpcsFile->getTokens();
 
         $opener = $this->getTargetToken($testMarker, [T_OPEN_SQUARE_BRACKET, T_OPEN_SHORT_ARRAY]);
-        $this->assertSame(T_OPEN_SQUARE_BRACKET, $tokens[$opener]['code']);
-        $this->assertSame('T_OPEN_SQUARE_BRACKET', $tokens[$opener]['type']);
+        static::assertSame(T_OPEN_SQUARE_BRACKET, $tokens[$opener]['code']);
+        static::assertSame('T_OPEN_SQUARE_BRACKET', $tokens[$opener]['type']);
 
-        if (isset($tokens[$opener]['bracket_closer']) === true) {
+        if (true === isset($tokens[$opener]['bracket_closer'])) {
             $closer = $tokens[$opener]['bracket_closer'];
-            $this->assertSame(T_CLOSE_SQUARE_BRACKET, $tokens[$closer]['code']);
-            $this->assertSame('T_CLOSE_SQUARE_BRACKET', $tokens[$closer]['type']);
+            static::assertSame(T_CLOSE_SQUARE_BRACKET, $tokens[$closer]['code']);
+            static::assertSame('T_CLOSE_SQUARE_BRACKET', $tokens[$closer]['type']);
         }
+    }
 
-    }//end testSquareBrackets()
-
+    //end testSquareBrackets()
 
     /**
      * Data provider.
@@ -75,9 +75,9 @@ class ShortArrayTest extends AbstractMethodUnitTest
             ['/* testNullsafeMethodCallDereferencing */'],
             ['/* testLiveCoding */'],
         ];
+    }
 
-    }//end dataSquareBrackets()
-
+    //end dataSquareBrackets()
 
     /**
      * Test that short arrays and short lists are still tokenized as short arrays.
@@ -85,26 +85,24 @@ class ShortArrayTest extends AbstractMethodUnitTest
      * @param string $testMarker The comment which prefaces the target token in the test file.
      *
      * @dataProvider dataShortArrays
-     * @covers       PHP_CodeSniffer\Tokenizers\PHP::processAdditional
-     *
-     * @return void
+     * @covers       \PHP_CodeSniffer\Tokenizers\PHP::processAdditional
      */
     public function testShortArrays($testMarker)
     {
         $tokens = self::$phpcsFile->getTokens();
 
         $opener = $this->getTargetToken($testMarker, [T_OPEN_SQUARE_BRACKET, T_OPEN_SHORT_ARRAY]);
-        $this->assertSame(T_OPEN_SHORT_ARRAY, $tokens[$opener]['code']);
-        $this->assertSame('T_OPEN_SHORT_ARRAY', $tokens[$opener]['type']);
+        static::assertSame(T_OPEN_SHORT_ARRAY, $tokens[$opener]['code']);
+        static::assertSame('T_OPEN_SHORT_ARRAY', $tokens[$opener]['type']);
 
-        if (isset($tokens[$opener]['bracket_closer']) === true) {
+        if (true === isset($tokens[$opener]['bracket_closer'])) {
             $closer = $tokens[$opener]['bracket_closer'];
-            $this->assertSame(T_CLOSE_SHORT_ARRAY, $tokens[$closer]['code']);
-            $this->assertSame('T_CLOSE_SHORT_ARRAY', $tokens[$closer]['type']);
+            static::assertSame(T_CLOSE_SHORT_ARRAY, $tokens[$closer]['code']);
+            static::assertSame('T_CLOSE_SHORT_ARRAY', $tokens[$closer]['type']);
         }
+    }
 
-    }//end testShortArrays()
-
+    //end testShortArrays()
 
     /**
      * Data provider.
@@ -124,8 +122,7 @@ class ShortArrayTest extends AbstractMethodUnitTest
             ['/* testNestedListDeclaration */'],
             ['/* testArrayWithinFunctionCall */'],
         ];
+    }
 
-    }//end dataShortArrays()
-
-
+    //end dataShortArrays()
 }//end class

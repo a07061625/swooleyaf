@@ -15,8 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class ClosingTagSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -25,9 +23,9 @@ class ClosingTagSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
@@ -43,31 +41,31 @@ class ClosingTagSniff implements Sniff
         $tokens = $phpcsFile->getTokens();
 
         // Make sure this file only contains PHP code.
-        for ($i = 0; $i < $phpcsFile->numTokens; $i++) {
-            if ($tokens[$i]['code'] === T_INLINE_HTML
-                && trim($tokens[$i]['content']) !== ''
+        for ($i = 0; $i < $phpcsFile->numTokens; ++$i) {
+            if (T_INLINE_HTML === $tokens[$i]['code']
+                && '' !== trim($tokens[$i]['content'])
             ) {
                 return $phpcsFile->numTokens;
             }
         }
 
         // Find the last non-empty token.
-        for ($last = ($phpcsFile->numTokens - 1); $last > 0; $last--) {
-            if (trim($tokens[$last]['content']) !== '') {
+        for ($last = ($phpcsFile->numTokens - 1); $last > 0; --$last) {
+            if ('' !== trim($tokens[$last]['content'])) {
                 break;
             }
         }
 
-        if ($tokens[$last]['code'] === T_CLOSE_TAG) {
+        if (T_CLOSE_TAG === $tokens[$last]['code']) {
             $error = 'A closing tag is not permitted at the end of a PHP file';
-            $fix   = $phpcsFile->addFixableError($error, $last, 'NotAllowed');
-            if ($fix === true) {
+            $fix = $phpcsFile->addFixableError($error, $last, 'NotAllowed');
+            if (true === $fix) {
                 $phpcsFile->fixer->beginChangeset();
                 $phpcsFile->fixer->replaceToken($last, $phpcsFile->eolChar);
                 $prev = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($last - 1), null, true);
-                if ($tokens[$prev]['code'] !== T_SEMICOLON
-                    && $tokens[$prev]['code'] !== T_CLOSE_CURLY_BRACKET
-                    && $tokens[$prev]['code'] !== T_OPEN_TAG
+                if (T_SEMICOLON !== $tokens[$prev]['code']
+                    && T_CLOSE_CURLY_BRACKET !== $tokens[$prev]['code']
+                    && T_OPEN_TAG !== $tokens[$prev]['code']
                 ) {
                     $phpcsFile->fixer->addContent($prev, ';');
                 }
@@ -82,8 +80,7 @@ class ClosingTagSniff implements Sniff
 
         // Ignore the rest of the file.
         return $phpcsFile->numTokens;
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

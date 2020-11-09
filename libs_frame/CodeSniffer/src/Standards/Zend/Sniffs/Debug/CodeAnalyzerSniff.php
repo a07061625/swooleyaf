@@ -10,15 +10,13 @@
 
 namespace PHP_CodeSniffer\Standards\Zend\Sniffs\Debug;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
-use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Config;
 use PHP_CodeSniffer\Exceptions\RuntimeException;
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 
 class CodeAnalyzerSniff implements Sniff
 {
-
-
     /**
      * Returns the token types that this sniff is interested in.
      *
@@ -27,9 +25,9 @@ class CodeAnalyzerSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes the tokens that this sniff is interested in.
@@ -39,12 +37,13 @@ class CodeAnalyzerSniff implements Sniff
      *                                               the token was found.
      *
      * @return int
+     *
      * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If ZendCodeAnalyzer could not be run.
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $analyzerPath = Config::getExecutablePath('zend_ca');
-        if ($analyzerPath === null) {
+        if (null === $analyzerPath) {
             return;
         }
 
@@ -53,7 +52,7 @@ class CodeAnalyzerSniff implements Sniff
         // In the command, 2>&1 is important because the code analyzer sends its
         // findings to stderr. $output normally contains only stdout, so using 2>&1
         // will pipe even stderr to stdout.
-        $cmd = escapeshellcmd($analyzerPath).' '.escapeshellarg($fileName).' 2>&1';
+        $cmd = escapeshellcmd($analyzerPath) . ' ' . escapeshellarg($fileName) . ' 2>&1';
 
         // There is the possibility to pass "--ide" as an option to the analyzer.
         // This would result in an output format which would be easier to parse.
@@ -64,23 +63,23 @@ class CodeAnalyzerSniff implements Sniff
         // Variable $exitCode is the last line of $output if no error occurs, on
         // error it is numeric. Try to handle various error conditions and
         // provide useful error reporting.
-        if (is_numeric($exitCode) === true && $exitCode > 0) {
-            if (is_array($output) === true) {
-                $msg = join('\n', $output);
+        if (true === is_numeric($exitCode) && $exitCode > 0) {
+            if (true === \is_array($output)) {
+                $msg = implode('\n', $output);
             }
 
-            throw new RuntimeException("Failed invoking ZendCodeAnalyzer, exitcode was [$exitCode], retval was [$retval], output was [$msg]");
+            throw new RuntimeException("Failed invoking ZendCodeAnalyzer, exitcode was [{$exitCode}], retval was [{$retval}], output was [{$msg}]");
         }
 
-        if (is_array($output) === true) {
+        if (true === \is_array($output)) {
             foreach ($output as $finding) {
                 // The first two lines of analyzer output contain
                 // something like this:
                 // > Zend Code Analyzer 1.2.2
                 // > Analyzing <filename>...
                 // So skip these...
-                $res = preg_match("/^.+\(line ([0-9]+)\):(.+)$/", $finding, $regs);
-                if (empty($regs) === true || $res === false) {
+                $res = preg_match('/^.+\\(line ([0-9]+)\\):(.+)$/', $finding, $regs);
+                if (true === empty($regs) || false === $res) {
                     continue;
                 }
 
@@ -89,9 +88,8 @@ class CodeAnalyzerSniff implements Sniff
         }
 
         // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
+        return $phpcsFile->numTokens + 1;
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

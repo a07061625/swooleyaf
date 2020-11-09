@@ -14,7 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class InlineHTMLSniff implements Sniff
 {
-
     /**
      * List of supported BOM definitions.
      *
@@ -23,11 +22,10 @@ class InlineHTMLSniff implements Sniff
      * @var array
      */
     protected $bomDefinitions = [
-        'UTF-8'       => 'efbbbf',
+        'UTF-8' => 'efbbbf',
         'UTF-16 (BE)' => 'feff',
         'UTF-16 (LE)' => 'fffe',
     ];
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -37,9 +35,9 @@ class InlineHTMLSniff implements Sniff
     public function register()
     {
         return [T_INLINE_HTML];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -48,23 +46,23 @@ class InlineHTMLSniff implements Sniff
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
      *
-     * @return int|null
+     * @return null|int
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         // Allow a byte-order mark.
         $tokens = $phpcsFile->getTokens();
         foreach ($this->bomDefinitions as $bomName => $expectedBomHex) {
-            $bomByteLength = (strlen($expectedBomHex) / 2);
-            $htmlBomHex    = bin2hex(substr($tokens[0]['content'], 0, $bomByteLength));
-            if ($htmlBomHex === $expectedBomHex && strlen($tokens[0]['content']) === $bomByteLength) {
+            $bomByteLength = (\strlen($expectedBomHex) / 2);
+            $htmlBomHex = bin2hex(substr($tokens[0]['content'], 0, $bomByteLength));
+            if ($htmlBomHex === $expectedBomHex && \strlen($tokens[0]['content']) === $bomByteLength) {
                 return;
             }
         }
 
         // Ignore shebang lines.
         $tokens = $phpcsFile->getTokens();
-        if (substr($tokens[$stackPtr]['content'], 0, 2) === '#!') {
+        if ('#!' === substr($tokens[$stackPtr]['content'], 0, 2)) {
             return;
         }
 
@@ -72,8 +70,7 @@ class InlineHTMLSniff implements Sniff
         $phpcsFile->addError($error, $stackPtr, 'Found');
 
         return $phpcsFile->numTokens;
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

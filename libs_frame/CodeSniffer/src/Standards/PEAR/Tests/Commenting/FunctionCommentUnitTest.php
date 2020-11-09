@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\PEAR\Tests\Commenting;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class FunctionCommentUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class FunctionCommentUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -26,15 +28,15 @@ class FunctionCommentUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
-            5   => 1,
-            10  => 1,
-            12  => 1,
-            13  => 1,
-            14  => 1,
-            15  => 1,
-            28  => 1,
-            76  => 1,
-            87  => 1,
+            5 => 1,
+            10 => 1,
+            12 => 1,
+            13 => 1,
+            14 => 1,
+            15 => 1,
+            28 => 1,
+            76 => 1,
+            87 => 1,
             103 => 1,
             109 => 1,
             112 => 1,
@@ -69,9 +71,9 @@ class FunctionCommentUnitTest extends AbstractSniffUnitTest
             363 => 1,
             364 => 1,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -84,8 +86,7 @@ class FunctionCommentUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

@@ -15,7 +15,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ByteOrderMarkSniff implements Sniff
 {
-
     /**
      * List of supported BOM definitions.
      *
@@ -24,11 +23,10 @@ class ByteOrderMarkSniff implements Sniff
      * @var array
      */
     protected $bomDefinitions = [
-        'UTF-8'       => 'efbbbf',
+        'UTF-8' => 'efbbbf',
         'UTF-16 (BE)' => 'feff',
         'UTF-16 (LE)' => 'fffe',
     ];
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -38,9 +36,9 @@ class ByteOrderMarkSniff implements Sniff
     public function register()
     {
         return [T_INLINE_HTML];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
@@ -48,33 +46,31 @@ class ByteOrderMarkSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         // The BOM will be the very first token in the file.
-        if ($stackPtr !== 0) {
+        if (0 !== $stackPtr) {
             return;
         }
 
         $tokens = $phpcsFile->getTokens();
 
         foreach ($this->bomDefinitions as $bomName => $expectedBomHex) {
-            $bomByteLength = (strlen($expectedBomHex) / 2);
-            $htmlBomHex    = bin2hex(substr($tokens[$stackPtr]['content'], 0, $bomByteLength));
+            $bomByteLength = (\strlen($expectedBomHex) / 2);
+            $htmlBomHex = bin2hex(substr($tokens[$stackPtr]['content'], 0, $bomByteLength));
             if ($htmlBomHex === $expectedBomHex) {
                 $errorData = [$bomName];
-                $error     = 'File contains %s byte order mark, which may corrupt your application';
+                $error = 'File contains %s byte order mark, which may corrupt your application';
                 $phpcsFile->addError($error, $stackPtr, 'Found', $errorData);
                 $phpcsFile->recordMetric($stackPtr, 'Using byte order mark', 'yes');
+
                 return;
             }
         }
 
         $phpcsFile->recordMetric($stackPtr, 'Using byte order mark', 'no');
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

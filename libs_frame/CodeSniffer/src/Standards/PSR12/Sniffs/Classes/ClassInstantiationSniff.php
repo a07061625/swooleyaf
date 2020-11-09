@@ -15,8 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class ClassInstantiationSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -25,9 +23,9 @@ class ClassInstantiationSniff implements Sniff
     public function register()
     {
         return [T_NEW];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -35,8 +33,6 @@ class ClassInstantiationSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
@@ -44,58 +40,59 @@ class ClassInstantiationSniff implements Sniff
 
         // Find the class name.
         $allowed = [
-            T_STRING                   => T_STRING,
-            T_NS_SEPARATOR             => T_NS_SEPARATOR,
-            T_SELF                     => T_SELF,
-            T_STATIC                   => T_STATIC,
-            T_VARIABLE                 => T_VARIABLE,
-            T_DOLLAR                   => T_DOLLAR,
-            T_OBJECT_OPERATOR          => T_OBJECT_OPERATOR,
+            T_STRING => T_STRING,
+            T_NS_SEPARATOR => T_NS_SEPARATOR,
+            T_SELF => T_SELF,
+            T_STATIC => T_STATIC,
+            T_VARIABLE => T_VARIABLE,
+            T_DOLLAR => T_DOLLAR,
+            T_OBJECT_OPERATOR => T_OBJECT_OPERATOR,
             T_NULLSAFE_OBJECT_OPERATOR => T_NULLSAFE_OBJECT_OPERATOR,
-            T_DOUBLE_COLON             => T_DOUBLE_COLON,
+            T_DOUBLE_COLON => T_DOUBLE_COLON,
         ];
 
         $allowed += Tokens::$emptyTokens;
 
         $classNameEnd = null;
-        for ($i = ($stackPtr + 1); $i < $phpcsFile->numTokens; $i++) {
-            if (isset($allowed[$tokens[$i]['code']]) === true) {
+        for ($i = ($stackPtr + 1); $i < $phpcsFile->numTokens; ++$i) {
+            if (true === isset($allowed[$tokens[$i]['code']])) {
                 continue;
             }
 
-            if ($tokens[$i]['code'] === T_OPEN_SQUARE_BRACKET
-                || $tokens[$i]['code'] === T_OPEN_CURLY_BRACKET
+            if (T_OPEN_SQUARE_BRACKET === $tokens[$i]['code']
+                || T_OPEN_CURLY_BRACKET === $tokens[$i]['code']
             ) {
                 $i = $tokens[$i]['bracket_closer'];
+
                 continue;
             }
 
             $classNameEnd = $i;
+
             break;
         }
 
-        if ($classNameEnd === null) {
+        if (null === $classNameEnd) {
             return;
         }
 
-        if ($tokens[$classNameEnd]['code'] === T_ANON_CLASS) {
+        if (T_ANON_CLASS === $tokens[$classNameEnd]['code']) {
             // Ignore anon classes.
             return;
         }
 
-        if ($tokens[$classNameEnd]['code'] === T_OPEN_PARENTHESIS) {
+        if (T_OPEN_PARENTHESIS === $tokens[$classNameEnd]['code']) {
             // Using parenthesis.
             return;
         }
 
         $error = 'Parentheses must be used when instantiating a new class';
-        $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'MissingParentheses');
-        if ($fix === true) {
+        $fix = $phpcsFile->addFixableError($error, $stackPtr, 'MissingParentheses');
+        if (true === $fix) {
             $prev = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($classNameEnd - 1), null, true);
             $phpcsFile->fixer->addContent($prev, '()');
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

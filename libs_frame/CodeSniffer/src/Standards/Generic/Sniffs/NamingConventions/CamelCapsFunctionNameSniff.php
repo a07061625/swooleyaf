@@ -16,6 +16,12 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class CamelCapsFunctionNameSniff extends AbstractScopeSniff
 {
+    /**
+     * If TRUE, the string must not have two capital letters next to each other.
+     *
+     * @var bool
+     */
+    public $strict = true;
 
     /**
      * A list of all PHP magic methods.
@@ -23,23 +29,23 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
      * @var array
      */
     protected $magicMethods = [
-        'construct'   => true,
-        'destruct'    => true,
-        'call'        => true,
-        'callstatic'  => true,
-        'get'         => true,
-        'set'         => true,
-        'isset'       => true,
-        'unset'       => true,
-        'sleep'       => true,
-        'wakeup'      => true,
-        'serialize'   => true,
+        'construct' => true,
+        'destruct' => true,
+        'call' => true,
+        'callstatic' => true,
+        'get' => true,
+        'set' => true,
+        'isset' => true,
+        'unset' => true,
+        'sleep' => true,
+        'wakeup' => true,
+        'serialize' => true,
         'unserialize' => true,
-        'tostring'    => true,
-        'invoke'      => true,
-        'set_state'   => true,
-        'clone'       => true,
-        'debuginfo'   => true,
+        'tostring' => true,
+        'invoke' => true,
+        'set_state' => true,
+        'clone' => true,
+        'debuginfo' => true,
     ];
 
     /**
@@ -50,18 +56,18 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
      * @var array
      */
     protected $methodsDoubleUnderscore = [
-        'dorequest'              => true,
-        'getcookies'             => true,
-        'getfunctions'           => true,
-        'getlastrequest'         => true,
-        'getlastrequestheaders'  => true,
-        'getlastresponse'        => true,
+        'dorequest' => true,
+        'getcookies' => true,
+        'getfunctions' => true,
+        'getlastrequest' => true,
+        'getlastrequestheaders' => true,
+        'getlastresponse' => true,
         'getlastresponseheaders' => true,
-        'gettypes'               => true,
-        'setcookie'              => true,
-        'setlocation'            => true,
-        'setsoapheaders'         => true,
-        'soapcall'               => true,
+        'gettypes' => true,
+        'setcookie' => true,
+        'setlocation' => true,
+        'setsoapheaders' => true,
+        'soapcall' => true,
     ];
 
     /**
@@ -72,22 +78,14 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
     protected $magicFunctions = ['autoload' => true];
 
     /**
-     * If TRUE, the string must not have two capital letters next to each other.
-     *
-     * @var boolean
-     */
-    public $strict = true;
-
-
-    /**
      * Constructs a Generic_Sniffs_NamingConventions_CamelCapsFunctionNameSniff.
      */
     public function __construct()
     {
         parent::__construct(Tokens::$ooScopeTokens, [T_FUNCTION], true);
+    }
 
-    }//end __construct()
-
+    //end __construct()
 
     /**
      * Processes the tokens within the scope.
@@ -96,8 +94,6 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
      * @param int                         $stackPtr  The position where this token was
      *                                               found.
      * @param int                         $currScope The position of the current scope.
-     *
-     * @return void
      */
     protected function processTokenWithinScope(File $phpcsFile, $stackPtr, $currScope)
     {
@@ -112,26 +108,26 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
         }
 
         $methodName = $phpcsFile->getDeclarationName($stackPtr);
-        if ($methodName === null) {
+        if (null === $methodName) {
             // Ignore closures.
             return;
         }
 
         $className = $phpcsFile->getDeclarationName($currScope);
-        if (isset($className) === false) {
+        if (false === isset($className)) {
             $className = '[Anonymous Class]';
         }
 
-        $errorData = [$className.'::'.$methodName];
+        $errorData = [$className . '::' . $methodName];
 
         $methodNameLc = strtolower($methodName);
-        $classNameLc  = strtolower($className);
+        $classNameLc = strtolower($className);
 
         // Is this a magic method. i.e., is prefixed with "__" ?
-        if (preg_match('|^__[^_]|', $methodName) !== 0) {
+        if (0 !== preg_match('|^__[^_]|', $methodName)) {
             $magicPart = substr($methodNameLc, 2);
-            if (isset($this->magicMethods[$magicPart]) === true
-                || isset($this->methodsDoubleUnderscore[$magicPart]) === true
+            if (true === isset($this->magicMethods[$magicPart])
+                || true === isset($this->methodsDoubleUnderscore[$magicPart])
             ) {
                 return;
             }
@@ -146,7 +142,7 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
         }
 
         // PHP4 destructors are allowed to break our rules.
-        if ($methodNameLc === '_'.$classNameLc) {
+        if ($methodNameLc === '_' . $classNameLc) {
             return;
         }
 
@@ -154,10 +150,10 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
         $methodName = ltrim($methodName, '_');
 
         $methodProps = $phpcsFile->getMethodProperties($stackPtr);
-        if (Common::isCamelCaps($methodName, false, true, $this->strict) === false) {
-            if ($methodProps['scope_specified'] === true) {
+        if (false === Common::isCamelCaps($methodName, false, true, $this->strict)) {
+            if (true === $methodProps['scope_specified']) {
                 $error = '%s method name "%s" is not in camel caps format';
-                $data  = [
+                $data = [
                     ucfirst($methodProps['scope']),
                     $errorData[0],
                 ];
@@ -168,13 +164,13 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
             }
 
             $phpcsFile->recordMetric($stackPtr, 'CamelCase method name', 'no');
+
             return;
-        } else {
-            $phpcsFile->recordMetric($stackPtr, 'CamelCase method name', 'yes');
         }
+        $phpcsFile->recordMetric($stackPtr, 'CamelCase method name', 'yes');
+    }
 
-    }//end processTokenWithinScope()
-
+    //end processTokenWithinScope()
 
     /**
      * Processes the tokens outside the scope.
@@ -182,13 +178,11 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being processed.
      * @param int                         $stackPtr  The position where this token was
      *                                               found.
-     *
-     * @return void
      */
     protected function processTokenOutsideScope(File $phpcsFile, $stackPtr)
     {
         $functionName = $phpcsFile->getDeclarationName($stackPtr);
-        if ($functionName === null) {
+        if (null === $functionName) {
             // Ignore closures.
             return;
         }
@@ -196,9 +190,9 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
         $errorData = [$functionName];
 
         // Is this a magic function. i.e., it is prefixed with "__".
-        if (preg_match('|^__[^_]|', $functionName) !== 0) {
+        if (0 !== preg_match('|^__[^_]|', $functionName)) {
             $magicPart = strtolower(substr($functionName, 2));
-            if (isset($this->magicFunctions[$magicPart]) === true) {
+            if (true === isset($this->magicFunctions[$magicPart])) {
                 return;
             }
 
@@ -209,15 +203,14 @@ class CamelCapsFunctionNameSniff extends AbstractScopeSniff
         // Ignore first underscore in functions prefixed with "_".
         $functionName = ltrim($functionName, '_');
 
-        if (Common::isCamelCaps($functionName, false, true, $this->strict) === false) {
+        if (false === Common::isCamelCaps($functionName, false, true, $this->strict)) {
             $error = 'Function name "%s" is not in camel caps format';
             $phpcsFile->addError($error, $stackPtr, 'NotCamelCaps', $errorData);
             $phpcsFile->recordMetric($stackPtr, 'CamelCase function name', 'no');
         } else {
             $phpcsFile->recordMetric($stackPtr, 'CamelCase method name', 'yes');
         }
+    }
 
-    }//end processTokenOutsideScope()
-
-
+    //end processTokenOutsideScope()
 }//end class

@@ -15,8 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class CallTimePassByReferenceSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -28,9 +26,9 @@ class CallTimePassByReferenceSniff implements Sniff
             T_STRING,
             T_VARIABLE,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -38,14 +36,12 @@ class CallTimePassByReferenceSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        $findTokens   = Tokens::$emptyTokens;
+        $findTokens = Tokens::$emptyTokens;
         $findTokens[] = T_BITWISE_AND;
 
         $prev = $phpcsFile->findPrevious($findTokens, ($stackPtr - 1), null, true);
@@ -55,49 +51,50 @@ class CallTimePassByReferenceSniff implements Sniff
         // "myFunction" is T_STRING but we should skip because it is not a
         // function or method *call*.
         $prevCode = $tokens[$prev]['code'];
-        if ($prevCode === T_FUNCTION || $prevCode === T_CLASS) {
+        if (T_FUNCTION === $prevCode || T_CLASS === $prevCode) {
             return;
         }
 
         // If the next non-whitespace token after the function or method call
         // is not an opening parenthesis then it cant really be a *call*.
         $functionName = $stackPtr;
-        $openBracket  = $phpcsFile->findNext(
+        $openBracket = $phpcsFile->findNext(
             Tokens::$emptyTokens,
             ($functionName + 1),
             null,
             true
         );
 
-        if ($tokens[$openBracket]['code'] !== T_OPEN_PARENTHESIS) {
+        if (T_OPEN_PARENTHESIS !== $tokens[$openBracket]['code']) {
             return;
         }
 
-        if (isset($tokens[$openBracket]['parenthesis_closer']) === false) {
+        if (false === isset($tokens[$openBracket]['parenthesis_closer'])) {
             return;
         }
 
         $closeBracket = $tokens[$openBracket]['parenthesis_closer'];
 
         $nextSeparator = $openBracket;
-        $find          = [
+        $find = [
             T_VARIABLE,
             T_OPEN_SHORT_ARRAY,
         ];
 
         while (($nextSeparator = $phpcsFile->findNext($find, ($nextSeparator + 1), $closeBracket)) !== false) {
-            if (isset($tokens[$nextSeparator]['nested_parenthesis']) === false) {
+            if (false === isset($tokens[$nextSeparator]['nested_parenthesis'])) {
                 continue;
             }
 
-            if ($tokens[$nextSeparator]['code'] === T_OPEN_SHORT_ARRAY) {
+            if (T_OPEN_SHORT_ARRAY === $tokens[$nextSeparator]['code']) {
                 $nextSeparator = $tokens[$nextSeparator]['bracket_closer'];
+
                 continue;
             }
 
             // Make sure the variable belongs directly to this function call
             // and is not inside a nested function call or array.
-            $brackets    = $tokens[$nextSeparator]['nested_parenthesis'];
+            $brackets = $tokens[$nextSeparator]['nested_parenthesis'];
             $lastBracket = array_pop($brackets);
             if ($lastBracket !== $closeBracket) {
                 continue;
@@ -110,8 +107,8 @@ class CallTimePassByReferenceSniff implements Sniff
                 true
             );
 
-            if ($tokens[$tokenBefore]['code'] === T_BITWISE_AND) {
-                if ($phpcsFile->isReference($tokenBefore) === false) {
+            if (T_BITWISE_AND === $tokens[$tokenBefore]['code']) {
+                if (false === $phpcsFile->isReference($tokenBefore)) {
                     continue;
                 }
 
@@ -125,7 +122,7 @@ class CallTimePassByReferenceSniff implements Sniff
                     true
                 );
 
-                if (isset(Tokens::$assignmentTokens[$tokens[$tokenBefore]['code']]) === true) {
+                if (true === isset(Tokens::$assignmentTokens[$tokens[$tokenBefore]['code']])) {
                     continue;
                 }
 
@@ -134,8 +131,7 @@ class CallTimePassByReferenceSniff implements Sniff
                 $phpcsFile->addError($error, $tokenBefore, 'NotAllowed');
             }//end if
         }//end while
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

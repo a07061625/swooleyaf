@@ -15,8 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class DisallowBooleanStatementSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -25,9 +23,9 @@ class DisallowBooleanStatementSniff implements Sniff
     public function register()
     {
         return Tokens::$booleanOperators;
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -35,15 +33,13 @@ class DisallowBooleanStatementSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        if (isset($tokens[$stackPtr]['nested_parenthesis']) === true) {
+        if (true === isset($tokens[$stackPtr]['nested_parenthesis'])) {
             foreach ($tokens[$stackPtr]['nested_parenthesis'] as $open => $close) {
-                if (isset($tokens[$open]['parenthesis_owner']) === true) {
+                if (true === isset($tokens[$open]['parenthesis_owner'])) {
                     // Any owner means we are not just a simple statement.
                     return;
                 }
@@ -52,8 +48,7 @@ class DisallowBooleanStatementSniff implements Sniff
 
         $error = 'Boolean operators are not allowed outside of control structure conditions';
         $phpcsFile->addError($error, $stackPtr, 'Found');
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

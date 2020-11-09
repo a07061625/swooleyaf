@@ -18,8 +18,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class NoSpaceAfterCastSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -28,9 +26,9 @@ class NoSpaceAfterCastSniff implements Sniff
     public function register()
     {
         return Tokens::$castTokens;
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -38,24 +36,21 @@ class NoSpaceAfterCastSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        if ($tokens[($stackPtr + 1)]['code'] !== T_WHITESPACE) {
+        if (T_WHITESPACE !== $tokens[($stackPtr + 1)]['code']) {
             return;
         }
 
         $error = 'A cast statement must not be followed by a space';
-        $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceFound');
-        if ($fix === true) {
+        $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceFound');
+        if (true === $fix) {
             $phpcsFile->fixer->replaceToken(($stackPtr + 1), '');
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ReturnTypeDeclarationSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -28,9 +26,9 @@ class ReturnTypeDeclarationSniff implements Sniff
             T_CLOSURE,
             T_FN,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test when one of its tokens is encountered.
@@ -38,46 +36,44 @@ class ReturnTypeDeclarationSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        if (isset($tokens[$stackPtr]['parenthesis_opener']) === false
-            || isset($tokens[$stackPtr]['parenthesis_closer']) === false
-            || $tokens[$stackPtr]['parenthesis_opener'] === null
-            || $tokens[$stackPtr]['parenthesis_closer'] === null
+        if (false === isset($tokens[$stackPtr]['parenthesis_opener'])
+            || false === isset($tokens[$stackPtr]['parenthesis_closer'])
+            || null === $tokens[$stackPtr]['parenthesis_opener']
+            || null === $tokens[$stackPtr]['parenthesis_closer']
         ) {
             return;
         }
 
         $methodProperties = $phpcsFile->getMethodProperties($stackPtr);
-        if ($methodProperties['return_type'] === '') {
+        if ('' === $methodProperties['return_type']) {
             return;
         }
 
         $returnType = $methodProperties['return_type_token'];
-        if ($methodProperties['nullable_return_type'] === true) {
+        if (true === $methodProperties['nullable_return_type']) {
             $returnType = $phpcsFile->findPrevious(T_NULLABLE, ($returnType - 1));
         }
 
-        if ($tokens[($returnType - 1)]['code'] !== T_WHITESPACE
-            || $tokens[($returnType - 1)]['content'] !== ' '
-            || $tokens[($returnType - 2)]['code'] !== T_COLON
+        if (T_WHITESPACE !== $tokens[($returnType - 1)]['code']
+            || ' ' !== $tokens[($returnType - 1)]['content']
+            || T_COLON !== $tokens[($returnType - 2)]['code']
         ) {
             $error = 'There must be a single space between the colon and type in a return type declaration';
-            if ($tokens[($returnType - 1)]['code'] === T_WHITESPACE
-                && $tokens[($returnType - 2)]['code'] === T_COLON
+            if (T_WHITESPACE === $tokens[($returnType - 1)]['code']
+                && T_COLON === $tokens[($returnType - 2)]['code']
             ) {
                 $fix = $phpcsFile->addFixableError($error, $returnType, 'SpaceBeforeReturnType');
-                if ($fix === true) {
+                if (true === $fix) {
                     $phpcsFile->fixer->replaceToken(($returnType - 1), ' ');
                 }
-            } else if ($tokens[($returnType - 1)]['code'] === T_COLON) {
+            } elseif (T_COLON === $tokens[($returnType - 1)]['code']) {
                 $fix = $phpcsFile->addFixableError($error, $returnType, 'SpaceBeforeReturnType');
-                if ($fix === true) {
+                if (true === $fix) {
                     $phpcsFile->fixer->addContentBefore($returnType, ' ');
                 }
             } else {
@@ -86,14 +82,14 @@ class ReturnTypeDeclarationSniff implements Sniff
         }
 
         $colon = $phpcsFile->findPrevious(T_COLON, $returnType);
-        if ($tokens[($colon - 1)]['code'] !== T_CLOSE_PARENTHESIS) {
+        if (T_CLOSE_PARENTHESIS !== $tokens[($colon - 1)]['code']) {
             $error = 'There must not be a space before the colon in a return type declaration';
-            $prev  = $phpcsFile->findPrevious(T_WHITESPACE, ($colon - 1), null, true);
-            if ($tokens[$prev]['code'] === T_CLOSE_PARENTHESIS) {
+            $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($colon - 1), null, true);
+            if (T_CLOSE_PARENTHESIS === $tokens[$prev]['code']) {
                 $fix = $phpcsFile->addFixableError($error, $colon, 'SpaceBeforeColon');
-                if ($fix === true) {
+                if (true === $fix) {
                     $phpcsFile->fixer->beginChangeset();
-                    for ($x = ($prev + 1); $x < $colon; $x++) {
+                    for ($x = ($prev + 1); $x < $colon; ++$x) {
                         $phpcsFile->fixer->replaceToken($x, '');
                     }
 
@@ -103,8 +99,7 @@ class ReturnTypeDeclarationSniff implements Sniff
                 $phpcsFile->addError($error, $colon, 'SpaceBeforeColon');
             }
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

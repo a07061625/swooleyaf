@@ -22,8 +22,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class UnusedFunctionParameterSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -36,9 +34,9 @@ class UnusedFunctionParameterSniff implements Sniff
             T_CLOSURE,
             T_FN,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -46,39 +44,37 @@ class UnusedFunctionParameterSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
+        $token = $tokens[$stackPtr];
 
         // Skip broken function declarations.
-        if (isset($token['scope_opener']) === false || isset($token['parenthesis_opener']) === false) {
+        if (false === isset($token['scope_opener']) || false === isset($token['parenthesis_opener'])) {
             return;
         }
 
-        $errorCode  = 'Found';
+        $errorCode = 'Found';
         $implements = false;
-        $extends    = false;
-        $classPtr   = $phpcsFile->getCondition($stackPtr, T_CLASS);
-        if ($classPtr !== false) {
+        $extends = false;
+        $classPtr = $phpcsFile->getCondition($stackPtr, T_CLASS);
+        if (false !== $classPtr) {
             $implements = $phpcsFile->findImplementedInterfaceNames($classPtr);
-            $extends    = $phpcsFile->findExtendedClassName($classPtr);
-            if ($extends !== false) {
+            $extends = $phpcsFile->findExtendedClassName($classPtr);
+            if (false !== $extends) {
                 $errorCode .= 'InExtendedClass';
-            } else if ($implements !== false) {
+            } elseif (false !== $implements) {
                 $errorCode .= 'InImplementedInterface';
             }
         }
 
-        $params       = [];
+        $params = [];
         $methodParams = $phpcsFile->getMethodParameters($stackPtr);
 
         // Skip when no parameters found.
-        $methodParamsCount = count($methodParams);
-        if ($methodParamsCount === 0) {
+        $methodParamsCount = \count($methodParams);
+        if (0 === $methodParamsCount) {
             return;
         }
 
@@ -87,47 +83,47 @@ class UnusedFunctionParameterSniff implements Sniff
         }
 
         $next = ++$token['scope_opener'];
-        $end  = --$token['scope_closer'];
+        $end = --$token['scope_closer'];
 
         $foundContent = false;
-        $validTokens  = [
-            T_HEREDOC              => T_HEREDOC,
-            T_NOWDOC               => T_NOWDOC,
-            T_END_HEREDOC          => T_END_HEREDOC,
-            T_END_NOWDOC           => T_END_NOWDOC,
+        $validTokens = [
+            T_HEREDOC => T_HEREDOC,
+            T_NOWDOC => T_NOWDOC,
+            T_END_HEREDOC => T_END_HEREDOC,
+            T_END_NOWDOC => T_END_NOWDOC,
             T_DOUBLE_QUOTED_STRING => T_DOUBLE_QUOTED_STRING,
         ];
         $validTokens += Tokens::$emptyTokens;
 
         for (; $next <= $end; ++$next) {
             $token = $tokens[$next];
-            $code  = $token['code'];
+            $code = $token['code'];
 
             // Ignorable tokens.
-            if (isset(Tokens::$emptyTokens[$code]) === true) {
+            if (true === isset(Tokens::$emptyTokens[$code])) {
                 continue;
             }
 
-            if ($foundContent === false) {
+            if (false === $foundContent) {
                 // A throw statement as the first content indicates an interface method.
-                if ($code === T_THROW && $implements !== false) {
+                if (T_THROW === $code && false !== $implements) {
                     return;
                 }
 
                 // A return statement as the first content indicates an interface method.
-                if ($code === T_RETURN) {
+                if (T_RETURN === $code) {
                     $tmp = $phpcsFile->findNext(Tokens::$emptyTokens, ($next + 1), null, true);
-                    if ($tmp === false && $implements !== false) {
+                    if (false === $tmp && false !== $implements) {
                         return;
                     }
 
                     // There is a return.
-                    if ($tokens[$tmp]['code'] === T_SEMICOLON && $implements !== false) {
+                    if (T_SEMICOLON === $tokens[$tmp]['code'] && false !== $implements) {
                         return;
                     }
 
                     $tmp = $phpcsFile->findNext(Tokens::$emptyTokens, ($tmp + 1), null, true);
-                    if ($tmp !== false && $tokens[$tmp]['code'] === T_SEMICOLON && $implements !== false) {
+                    if (false !== $tmp && T_SEMICOLON === $tokens[$tmp]['code'] && false !== $implements) {
                         // There is a return <token>.
                         return;
                     }
@@ -136,30 +132,30 @@ class UnusedFunctionParameterSniff implements Sniff
 
             $foundContent = true;
 
-            if ($code === T_VARIABLE && isset($params[$token['content']]) === true) {
+            if (T_VARIABLE === $code && true === isset($params[$token['content']])) {
                 unset($params[$token['content']]);
-            } else if ($code === T_DOLLAR) {
+            } elseif (T_DOLLAR === $code) {
                 $nextToken = $phpcsFile->findNext(T_WHITESPACE, ($next + 1), null, true);
-                if ($tokens[$nextToken]['code'] === T_OPEN_CURLY_BRACKET) {
+                if (T_OPEN_CURLY_BRACKET === $tokens[$nextToken]['code']) {
                     $nextToken = $phpcsFile->findNext(T_WHITESPACE, ($nextToken + 1), null, true);
-                    if ($tokens[$nextToken]['code'] === T_STRING) {
-                        $varContent = '$'.$tokens[$nextToken]['content'];
-                        if (isset($params[$varContent]) === true) {
+                    if (T_STRING === $tokens[$nextToken]['code']) {
+                        $varContent = '$' . $tokens[$nextToken]['content'];
+                        if (true === isset($params[$varContent])) {
                             unset($params[$varContent]);
                         }
                     }
                 }
-            } else if ($code === T_DOUBLE_QUOTED_STRING
-                || $code === T_START_HEREDOC
-                || $code === T_START_NOWDOC
+            } elseif (T_DOUBLE_QUOTED_STRING === $code
+                || T_START_HEREDOC === $code
+                || T_START_NOWDOC === $code
             ) {
                 // Tokenize strings that can contain variables.
                 // Make sure the string is re-joined if it occurs over multiple lines.
                 $content = $token['content'];
-                for ($i = ($next + 1); $i <= $end; $i++) {
-                    if (isset($validTokens[$tokens[$i]['code']]) === true) {
+                for ($i = ($next + 1); $i <= $end; ++$i) {
+                    if (true === isset($validTokens[$tokens[$i]['code']])) {
                         $content .= $tokens[$i]['content'];
-                        $next++;
+                        ++$next;
                     } else {
                         break;
                     }
@@ -167,29 +163,29 @@ class UnusedFunctionParameterSniff implements Sniff
 
                 $stringTokens = token_get_all(sprintf('<?php %s;?>', $content));
                 foreach ($stringTokens as $stringPtr => $stringToken) {
-                    if (is_array($stringToken) === false) {
+                    if (false === \is_array($stringToken)) {
                         continue;
                     }
 
                     $varContent = '';
-                    if ($stringToken[0] === T_DOLLAR_OPEN_CURLY_BRACES) {
-                        $varContent = '$'.$stringTokens[($stringPtr + 1)][1];
-                    } else if ($stringToken[0] === T_VARIABLE) {
+                    if (T_DOLLAR_OPEN_CURLY_BRACES === $stringToken[0]) {
+                        $varContent = '$' . $stringTokens[($stringPtr + 1)][1];
+                    } elseif (T_VARIABLE === $stringToken[0]) {
                         $varContent = $stringToken[1];
                     }
 
-                    if ($varContent !== '' && isset($params[$varContent]) === true) {
+                    if ('' !== $varContent && true === isset($params[$varContent])) {
                         unset($params[$varContent]);
                     }
                 }
             }//end if
         }//end for
 
-        if ($foundContent === true && count($params) > 0) {
+        if (true === $foundContent && \count($params) > 0) {
             $error = 'The method parameter %s is never used';
 
             // If there is only one parameter and it is unused, no need for additional errorcode toggling logic.
-            if ($methodParamsCount === 1) {
+            if (1 === $methodParamsCount) {
                 foreach ($params as $paramName => $position) {
                     $data = [$paramName];
                     $phpcsFile->addWarning($error, $position, $errorCode, $data);
@@ -199,29 +195,29 @@ class UnusedFunctionParameterSniff implements Sniff
             }
 
             $foundLastUsed = false;
-            $lastIndex     = ($methodParamsCount - 1);
-            $errorInfo     = [];
+            $lastIndex = ($methodParamsCount - 1);
+            $errorInfo = [];
             for ($i = $lastIndex; $i >= 0; --$i) {
-                if ($foundLastUsed !== false) {
-                    if (isset($params[$methodParams[$i]['name']]) === true) {
+                if (false !== $foundLastUsed) {
+                    if (true === isset($params[$methodParams[$i]['name']])) {
                         $errorInfo[$methodParams[$i]['name']] = [
-                            'position'  => $params[$methodParams[$i]['name']],
-                            'errorcode' => $errorCode.'BeforeLastUsed',
+                            'position' => $params[$methodParams[$i]['name']],
+                            'errorcode' => $errorCode . 'BeforeLastUsed',
                         ];
                     }
                 } else {
-                    if (isset($params[$methodParams[$i]['name']]) === false) {
+                    if (false === isset($params[$methodParams[$i]['name']])) {
                         $foundLastUsed = true;
                     } else {
                         $errorInfo[$methodParams[$i]['name']] = [
-                            'position'  => $params[$methodParams[$i]['name']],
-                            'errorcode' => $errorCode.'AfterLastUsed',
+                            'position' => $params[$methodParams[$i]['name']],
+                            'errorcode' => $errorCode . 'AfterLastUsed',
                         ];
                     }
                 }
             }
 
-            if (count($errorInfo) > 0) {
+            if (\count($errorInfo) > 0) {
                 $errorInfo = array_reverse($errorInfo);
                 foreach ($errorInfo as $paramName => $info) {
                     $data = [$paramName];
@@ -229,8 +225,7 @@ class UnusedFunctionParameterSniff implements Sniff
                 }
             }
         }//end if
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ValidDefaultValueSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -28,9 +26,9 @@ class ValidDefaultValueSniff implements Sniff
             T_CLOSURE,
             T_FN,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -38,8 +36,6 @@ class ValidDefaultValueSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
@@ -49,30 +45,30 @@ class ValidDefaultValueSniff implements Sniff
 
         $params = $phpcsFile->getMethodParameters($stackPtr);
         foreach ($params as $param) {
-            if ($param['variable_length'] === true) {
+            if (true === $param['variable_length']) {
                 continue;
             }
 
-            if (array_key_exists('default', $param) === true) {
+            if (true === \array_key_exists('default', $param)) {
                 $defaultFound = true;
                 // Check if the arg is type hinted and using NULL for the default.
                 // This does not make the argument optional - it just allows NULL
                 // to be passed in.
-                if ($param['type_hint'] !== '' && strtolower($param['default']) === 'null') {
+                if ('' !== $param['type_hint'] && 'null' === strtolower($param['default'])) {
                     $defaultFound = false;
                 }
 
                 continue;
             }
 
-            if ($defaultFound === true) {
+            if (true === $defaultFound) {
                 $error = 'Arguments with default values must be at the end of the argument list';
                 $phpcsFile->addError($error, $param['token'], 'NotAtEnd');
+
                 return;
             }
         }//end foreach
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

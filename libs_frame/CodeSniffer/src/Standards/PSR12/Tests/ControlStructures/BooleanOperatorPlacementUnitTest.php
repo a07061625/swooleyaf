@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\PSR12\Tests\ControlStructures;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class BooleanOperatorPlacementUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class BooleanOperatorPlacementUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -26,19 +28,19 @@ class BooleanOperatorPlacementUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
-            10  => 1,
-            16  => 1,
-            28  => 1,
-            34  => 1,
-            75  => 1,
-            81  => 1,
-            90  => 1,
-            98  => 1,
+            10 => 1,
+            16 => 1,
+            28 => 1,
+            34 => 1,
+            75 => 1,
+            81 => 1,
+            90 => 1,
+            98 => 1,
             104 => 1,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -51,8 +53,7 @@ class BooleanOperatorPlacementUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

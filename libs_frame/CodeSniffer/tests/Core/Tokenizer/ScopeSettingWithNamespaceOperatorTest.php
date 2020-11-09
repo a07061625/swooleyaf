@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Tests\Core\Tokenizer;
 
 use PHP_CodeSniffer\Tests\Core\AbstractMethodUnitTest;
 
-class ScopeSettingWithNamespaceOperatorTest extends AbstractMethodUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class ScopeSettingWithNamespaceOperatorTest extends AbstractMethodUnitTest
 {
-
-
     /**
      * Test that the scope opener/closers are set correctly when the namespace keyword is encountered as an operator.
      *
@@ -24,11 +26,9 @@ class ScopeSettingWithNamespaceOperatorTest extends AbstractMethodUnitTest
      * @param int|string[] $close      Optional. The token type for the scope closer.
      *
      * @dataProvider dataScopeSetting
-     * @covers       PHP_CodeSniffer\Tokenizers\Tokenizer::recurseScopeMap
-     *
-     * @return void
+     * @covers       \PHP_CodeSniffer\Tokenizers\Tokenizer::recurseScopeMap
      */
-    public function testScopeSetting($testMarker, $tokenTypes, $open=T_OPEN_CURLY_BRACKET, $close=T_CLOSE_CURLY_BRACKET)
+    public function testScopeSetting($testMarker, $tokenTypes, $open = T_OPEN_CURLY_BRACKET, $close = T_CLOSE_CURLY_BRACKET)
     {
         $tokens = self::$phpcsFile->getTokens();
 
@@ -36,23 +36,23 @@ class ScopeSettingWithNamespaceOperatorTest extends AbstractMethodUnitTest
         $opener = $this->getTargetToken($testMarker, $open);
         $closer = $this->getTargetToken($testMarker, $close);
 
-        $this->assertArrayHasKey('scope_opener', $tokens[$target], 'Scope opener missing');
-        $this->assertArrayHasKey('scope_closer', $tokens[$target], 'Scope closer missing');
-        $this->assertSame($opener, $tokens[$target]['scope_opener'], 'Scope opener not same');
-        $this->assertSame($closer, $tokens[$target]['scope_closer'], 'Scope closer not same');
+        static::assertArrayHasKey('scope_opener', $tokens[$target], 'Scope opener missing');
+        static::assertArrayHasKey('scope_closer', $tokens[$target], 'Scope closer missing');
+        static::assertSame($opener, $tokens[$target]['scope_opener'], 'Scope opener not same');
+        static::assertSame($closer, $tokens[$target]['scope_closer'], 'Scope closer not same');
 
-        $this->assertArrayHasKey('scope_opener', $tokens[$opener], 'Scope opener missing for open curly');
-        $this->assertArrayHasKey('scope_closer', $tokens[$opener], 'Scope closer missing for open curly');
-        $this->assertSame($opener, $tokens[$opener]['scope_opener'], 'Scope opener not same for open curly');
-        $this->assertSame($closer, $tokens[$opener]['scope_closer'], 'Scope closer not same for open curly');
+        static::assertArrayHasKey('scope_opener', $tokens[$opener], 'Scope opener missing for open curly');
+        static::assertArrayHasKey('scope_closer', $tokens[$opener], 'Scope closer missing for open curly');
+        static::assertSame($opener, $tokens[$opener]['scope_opener'], 'Scope opener not same for open curly');
+        static::assertSame($closer, $tokens[$opener]['scope_closer'], 'Scope closer not same for open curly');
 
-        $this->assertArrayHasKey('scope_opener', $tokens[$closer], 'Scope opener missing for close curly');
-        $this->assertArrayHasKey('scope_closer', $tokens[$closer], 'Scope closer missing for close curly');
-        $this->assertSame($opener, $tokens[$closer]['scope_opener'], 'Scope opener not same for close curly');
-        $this->assertSame($closer, $tokens[$closer]['scope_closer'], 'Scope closer not same for close curly');
+        static::assertArrayHasKey('scope_opener', $tokens[$closer], 'Scope opener missing for close curly');
+        static::assertArrayHasKey('scope_closer', $tokens[$closer], 'Scope closer missing for close curly');
+        static::assertSame($opener, $tokens[$closer]['scope_opener'], 'Scope opener not same for close curly');
+        static::assertSame($closer, $tokens[$closer]['scope_closer'], 'Scope closer not same for close curly');
+    }
 
-    }//end testScopeSetting()
-
+    //end testScopeSetting()
 
     /**
      * Data provider.
@@ -91,8 +91,7 @@ class ScopeSettingWithNamespaceOperatorTest extends AbstractMethodUnitTest
                 [T_SEMICOLON],
             ],
         ];
+    }
 
-    }//end dataScopeSetting()
-
-
+    //end dataScopeSetting()
 }//end class

@@ -14,7 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class LineEndingsSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
@@ -33,7 +32,6 @@ class LineEndingsSniff implements Sniff
      */
     public $eolChar = '\n';
 
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -42,9 +40,9 @@ class LineEndingsSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
@@ -65,26 +63,26 @@ class LineEndingsSniff implements Sniff
 
         if ($found === $this->eolChar) {
             // Ignore the rest of the file.
-            return ($phpcsFile->numTokens + 1);
+            return $phpcsFile->numTokens + 1;
         }
 
         // Check for single line files without an EOL. This is a very special
         // case and the EOL char is set to \n when this happens.
-        if ($found === '\n') {
-            $tokens    = $phpcsFile->getTokens();
+        if ('\n' === $found) {
+            $tokens = $phpcsFile->getTokens();
             $lastToken = ($phpcsFile->numTokens - 1);
-            if ($tokens[$lastToken]['line'] === 1
-                && $tokens[$lastToken]['content'] !== "\n"
+            if (1 === $tokens[$lastToken]['line']
+                && "\n" !== $tokens[$lastToken]['content']
             ) {
                 return;
             }
         }
 
-        $error    = 'End of line character is invalid; expected "%s" but found "%s"';
+        $error = 'End of line character is invalid; expected "%s" but found "%s"';
         $expected = $this->eolChar;
         $expected = str_replace("\n", '\n', $expected);
         $expected = str_replace("\r", '\r', $expected);
-        $data     = [
+        $data = [
             $expected,
             $found,
         ];
@@ -92,43 +90,47 @@ class LineEndingsSniff implements Sniff
         // Errors are always reported on line 1, no matter where the first PHP tag is.
         $fix = $phpcsFile->addFixableError($error, 0, 'InvalidEOLChar', $data);
 
-        if ($fix === true) {
+        if (true === $fix) {
             $tokens = $phpcsFile->getTokens();
             switch ($this->eolChar) {
             case '\n':
                 $eolChar = "\n";
+
                 break;
             case '\r':
                 $eolChar = "\r";
+
                 break;
             case '\r\n':
                 $eolChar = "\r\n";
+
                 break;
             default:
                 $eolChar = $this->eolChar;
+
                 break;
             }
 
-            for ($i = 0; $i < $phpcsFile->numTokens; $i++) {
-                if (isset($tokens[($i + 1)]) === true
+            for ($i = 0; $i < $phpcsFile->numTokens; ++$i) {
+                if (true === isset($tokens[($i + 1)])
                     && $tokens[($i + 1)]['line'] <= $tokens[$i]['line']
                 ) {
                     continue;
                 }
 
                 // Token is the last on a line.
-                if (isset($tokens[$i]['orig_content']) === true) {
+                if (true === isset($tokens[$i]['orig_content'])) {
                     $tokenContent = $tokens[$i]['orig_content'];
                 } else {
                     $tokenContent = $tokens[$i]['content'];
                 }
 
-                if ($tokenContent === '') {
+                if ('' === $tokenContent) {
                     // Special case for JS/CSS close tag.
                     continue;
                 }
 
-                $newContent  = rtrim($tokenContent, "\r\n");
+                $newContent = rtrim($tokenContent, "\r\n");
                 $newContent .= $eolChar;
                 if ($tokenContent !== $newContent) {
                     $phpcsFile->fixer->replaceToken($i, $newContent);
@@ -137,9 +139,8 @@ class LineEndingsSniff implements Sniff
         }//end if
 
         // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
+        return $phpcsFile->numTokens + 1;
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

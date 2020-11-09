@@ -11,31 +11,31 @@ namespace PHP_CodeSniffer\Tests\Core\Tokenizer;
 
 use PHP_CodeSniffer\Tests\Core\AbstractMethodUnitTest;
 
-class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
 {
-
-
     /**
      * Test that numbers using numeric seperators are tokenized correctly.
      *
      * @param array $testData The data required for the specific test case.
      *
      * @dataProvider dataTestBackfill
-     * @covers       PHP_CodeSniffer\Tokenizers\PHP::tokenize
-     *
-     * @return void
+     * @covers       \PHP_CodeSniffer\Tokenizers\PHP::tokenize
      */
     public function testBackfill($testData)
     {
         $tokens = self::$phpcsFile->getTokens();
         $number = $this->getTargetToken($testData['marker'], [T_LNUMBER, T_DNUMBER]);
 
-        $this->assertSame(constant($testData['type']), $tokens[$number]['code']);
-        $this->assertSame($testData['type'], $tokens[$number]['type']);
-        $this->assertSame($testData['value'], $tokens[$number]['content']);
+        static::assertSame(\constant($testData['type']), $tokens[$number]['code']);
+        static::assertSame($testData['type'], $tokens[$number]['type']);
+        static::assertSame($testData['value'], $tokens[$number]['content']);
+    }
 
-    }//end testBackfill()
-
+    //end testBackfill()
 
     /**
      * Data provider.
@@ -65,84 +65,84 @@ class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
             [
                 [
                     'marker' => '/* testSimpleLNumber */',
-                    'type'   => 'T_LNUMBER',
-                    'value'  => '1_000_000_000',
+                    'type' => 'T_LNUMBER',
+                    'value' => '1_000_000_000',
                 ],
             ],
             [
                 [
                     'marker' => '/* testSimpleDNumber */',
-                    'type'   => 'T_DNUMBER',
-                    'value'  => '107_925_284.88',
+                    'type' => 'T_DNUMBER',
+                    'value' => '107_925_284.88',
                 ],
             ],
             [
                 [
                     'marker' => '/* testFloat */',
-                    'type'   => 'T_DNUMBER',
-                    'value'  => '6.674_083e-11',
+                    'type' => 'T_DNUMBER',
+                    'value' => '6.674_083e-11',
                 ],
             ],
             [
                 [
                     'marker' => '/* testFloat2 */',
-                    'type'   => 'T_DNUMBER',
-                    'value'  => '6.674_083e+11',
+                    'type' => 'T_DNUMBER',
+                    'value' => '6.674_083e+11',
                 ],
             ],
             [
                 [
                     'marker' => '/* testFloat3 */',
-                    'type'   => 'T_DNUMBER',
-                    'value'  => '1_2.3_4e1_23',
+                    'type' => 'T_DNUMBER',
+                    'value' => '1_2.3_4e1_23',
                 ],
             ],
             [
                 [
                     'marker' => '/* testHex */',
-                    'type'   => $testHexType,
-                    'value'  => '0xCAFE_F00D',
+                    'type' => $testHexType,
+                    'value' => '0xCAFE_F00D',
                 ],
             ],
             [
                 [
                     'marker' => '/* testHexMultiple */',
-                    'type'   => $testHexMultipleType,
-                    'value'  => '0x42_72_6F_77_6E',
+                    'type' => $testHexMultipleType,
+                    'value' => '0x42_72_6F_77_6E',
                 ],
             ],
             [
                 [
                     'marker' => '/* testHexInt */',
-                    'type'   => 'T_LNUMBER',
-                    'value'  => '0x42_72_6F',
+                    'type' => 'T_LNUMBER',
+                    'value' => '0x42_72_6F',
                 ],
             ],
             [
                 [
                     'marker' => '/* testBinary */',
-                    'type'   => 'T_LNUMBER',
-                    'value'  => '0b0101_1111',
+                    'type' => 'T_LNUMBER',
+                    'value' => '0b0101_1111',
                 ],
             ],
             [
                 [
                     'marker' => '/* testOctal */',
-                    'type'   => 'T_LNUMBER',
-                    'value'  => '0137_041',
+                    'type' => 'T_LNUMBER',
+                    'value' => '0137_041',
                 ],
             ],
             [
                 [
                     'marker' => '/* testIntMoreThanMax */',
-                    'type'   => $testIntMoreThanMaxType,
-                    'value'  => '10_223_372_036_854_775_807',
+                    'type' => $testIntMoreThanMaxType,
+                    'value' => '10_223_372_036_854_775_807',
                 ],
             ],
         ];
+    }
 
-    }//end dataTestBackfill()
-
+    //end dataTestBackfill()
 
     /**
      * Test that numbers using numeric seperators which are considered parse errors and/or
@@ -152,9 +152,7 @@ class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
      * @param array  $expectedTokens The token type and content of the expected token sequence.
      *
      * @dataProvider dataNoBackfill
-     * @covers       PHP_CodeSniffer\Tokenizers\PHP::tokenize
-     *
-     * @return void
+     * @covers       \PHP_CodeSniffer\Tokenizers\PHP::tokenize
      */
     public function testNoBackfill($testMarker, $expectedTokens)
     {
@@ -163,12 +161,12 @@ class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
 
         foreach ($expectedTokens as $key => $expectedToken) {
             $i = ($number + $key);
-            $this->assertSame($expectedToken['code'], $tokens[$i]['code']);
-            $this->assertSame($expectedToken['content'], $tokens[$i]['content']);
+            static::assertSame($expectedToken['code'], $tokens[$i]['code']);
+            static::assertSame($expectedToken['content'], $tokens[$i]['content']);
         }
+    }
 
-    }//end testNoBackfill()
-
+    //end testNoBackfill()
 
     /**
      * Data provider.
@@ -184,11 +182,11 @@ class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
                 '/* testInvalid1 */',
                 [
                     [
-                        'code'    => T_LNUMBER,
+                        'code' => T_LNUMBER,
                         'content' => '100',
                     ],
                     [
-                        'code'    => T_STRING,
+                        'code' => T_STRING,
                         'content' => '_',
                     ],
                 ],
@@ -197,11 +195,11 @@ class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
                 '/* testInvalid2 */',
                 [
                     [
-                        'code'    => T_LNUMBER,
+                        'code' => T_LNUMBER,
                         'content' => '1',
                     ],
                     [
-                        'code'    => T_STRING,
+                        'code' => T_STRING,
                         'content' => '__1',
                     ],
                 ],
@@ -210,15 +208,15 @@ class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
                 '/* testInvalid3 */',
                 [
                     [
-                        'code'    => T_LNUMBER,
+                        'code' => T_LNUMBER,
                         'content' => '1',
                     ],
                     [
-                        'code'    => T_STRING,
+                        'code' => T_STRING,
                         'content' => '_',
                     ],
                     [
-                        'code'    => T_DNUMBER,
+                        'code' => T_DNUMBER,
                         'content' => '.0',
                     ],
                 ],
@@ -227,11 +225,11 @@ class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
                 '/* testInvalid4 */',
                 [
                     [
-                        'code'    => T_DNUMBER,
+                        'code' => T_DNUMBER,
                         'content' => '1.',
                     ],
                     [
-                        'code'    => T_STRING,
+                        'code' => T_STRING,
                         'content' => '_0',
                     ],
                 ],
@@ -240,11 +238,11 @@ class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
                 '/* testInvalid5 */',
                 [
                     [
-                        'code'    => T_LNUMBER,
+                        'code' => T_LNUMBER,
                         'content' => '0',
                     ],
                     [
-                        'code'    => T_STRING,
+                        'code' => T_STRING,
                         'content' => 'x_123',
                     ],
                 ],
@@ -253,11 +251,11 @@ class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
                 '/* testInvalid6 */',
                 [
                     [
-                        'code'    => T_LNUMBER,
+                        'code' => T_LNUMBER,
                         'content' => '0',
                     ],
                     [
-                        'code'    => T_STRING,
+                        'code' => T_STRING,
                         'content' => 'b_101',
                     ],
                 ],
@@ -266,11 +264,11 @@ class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
                 '/* testInvalid7 */',
                 [
                     [
-                        'code'    => T_LNUMBER,
+                        'code' => T_LNUMBER,
                         'content' => '1',
                     ],
                     [
-                        'code'    => T_STRING,
+                        'code' => T_STRING,
                         'content' => '_e2',
                     ],
                 ],
@@ -279,11 +277,11 @@ class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
                 '/* testInvalid8 */',
                 [
                     [
-                        'code'    => T_LNUMBER,
+                        'code' => T_LNUMBER,
                         'content' => '1',
                     ],
                     [
-                        'code'    => T_STRING,
+                        'code' => T_STRING,
                         'content' => 'e_2',
                     ],
                 ],
@@ -292,15 +290,15 @@ class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
                 '/* testInvalid9 */',
                 [
                     [
-                        'code'    => T_LNUMBER,
+                        'code' => T_LNUMBER,
                         'content' => '107_925_284',
                     ],
                     [
-                        'code'    => T_WHITESPACE,
+                        'code' => T_WHITESPACE,
                         'content' => ' ',
                     ],
                     [
-                        'code'    => T_DNUMBER,
+                        'code' => T_DNUMBER,
                         'content' => '.88',
                     ],
                 ],
@@ -309,15 +307,15 @@ class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
                 '/* testInvalid10 */',
                 [
                     [
-                        'code'    => T_LNUMBER,
+                        'code' => T_LNUMBER,
                         'content' => '107_925_284',
                     ],
                     [
-                        'code'    => T_COMMENT,
+                        'code' => T_COMMENT,
                         'content' => '/*comment*/',
                     ],
                     [
-                        'code'    => T_DNUMBER,
+                        'code' => T_DNUMBER,
                         'content' => '.88',
                     ],
                 ],
@@ -326,23 +324,23 @@ class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
                 '/* testCalc1 */',
                 [
                     [
-                        'code'    => T_LNUMBER,
+                        'code' => T_LNUMBER,
                         'content' => '667_083',
                     ],
                     [
-                        'code'    => T_WHITESPACE,
+                        'code' => T_WHITESPACE,
                         'content' => ' ',
                     ],
                     [
-                        'code'    => T_MINUS,
+                        'code' => T_MINUS,
                         'content' => '-',
                     ],
                     [
-                        'code'    => T_WHITESPACE,
+                        'code' => T_WHITESPACE,
                         'content' => ' ',
                     ],
                     [
-                        'code'    => T_LNUMBER,
+                        'code' => T_LNUMBER,
                         'content' => '11',
                     ],
                 ],
@@ -351,30 +349,29 @@ class BackfillNumericSeparatorTest extends AbstractMethodUnitTest
                 '/* test Calc2 */',
                 [
                     [
-                        'code'    => T_DNUMBER,
+                        'code' => T_DNUMBER,
                         'content' => '6.674_08e3',
                     ],
                     [
-                        'code'    => T_WHITESPACE,
+                        'code' => T_WHITESPACE,
                         'content' => ' ',
                     ],
                     [
-                        'code'    => T_PLUS,
+                        'code' => T_PLUS,
                         'content' => '+',
                     ],
                     [
-                        'code'    => T_WHITESPACE,
+                        'code' => T_WHITESPACE,
                         'content' => ' ',
                     ],
                     [
-                        'code'    => T_LNUMBER,
+                        'code' => T_LNUMBER,
                         'content' => '11',
                     ],
                 ],
             ],
         ];
+    }
 
-    }//end dataNoBackfill()
-
-
+    //end dataNoBackfill()
 }//end class
