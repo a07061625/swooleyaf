@@ -67,7 +67,7 @@ if ($i == 0) { $i = 1; } else { $i = 0; }
 
 if ($i == 0) {
     $i = 1;
-} elseif ($i == 2) {
+} else if ($i == 2) {
     $i = 0;
 }
 
@@ -77,7 +77,7 @@ if ($i == 0) {
     $i = 0;
 }
 
-if ($i == 0) { $i = 1; } elseif ($i == 2) { $i = 0; }
+if ($i == 0) { $i = 1; } else if ($i == 2) { $i = 0; }
 
 if ($i == 0) { // comments are allowed
     $i = 1;
@@ -289,6 +289,15 @@ if ($this) {
     if ($that)
         foo(${$a[$b]});
 }
+
+while ( $level-- ) ob_end_clean();
+
+while ( $level-- )
+	ob_end_clean();
+
+while ( $level-- ):
+	ob_end_clean();
+endwhile;
 
 // Intentional parse error. This should be the last test in the file.
 foreach

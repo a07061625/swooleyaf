@@ -621,7 +621,7 @@ public function usesCallable(callable $cb) {
  *                          to use for splitting strings.
  *
  * @return void
- * @throws SyException If something really bad
+ * @throws Exception If something really bad
  *                   happens while doing foo.
  */
 public function foo(array &$tokens, $tokenizer, $eolChar)

@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\CSS;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 
 class MissingColonSniff implements Sniff
 {
@@ -80,7 +80,7 @@ class MissingColonSniff implements Sniff
 
             if ($tokens[$i]['code'] === T_STRING) {
                 $foundString = $i;
-            } elseif ($tokens[$i]['code'] === T_COLON) {
+            } else if ($tokens[$i]['code'] === T_COLON) {
                 $foundColon = $i;
             }
         }//end for

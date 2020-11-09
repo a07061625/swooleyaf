@@ -70,18 +70,18 @@ $i = 0; }
 
 if ($i == 0) {
     $i = 1;
-} elseif ($i == 2) {
+} else if ($i == 2) {
     $i = 0;
 }
 
 if ($i == 0) {
     $i = 1;
-} elseif ($i == 2) {
+} else if ($i == 2) {
     $i = 0;
 }
 
 if ($i == 0) {
-$i = 1; } elseif ($i == 2) {
+$i = 1; } else if ($i == 2) {
 $i = 0; }
 
 if ($i == 0) { // comments are allowed
@@ -105,12 +105,12 @@ if ($i == 0) { /* this is ok */
 
 try {
     $code = 'this';
-} catch (SyException $e) {
+} catch (Exception $e) {
     // Caught!
 }
 
 try {
-$code = 'this'; } catch (SyException $e) {
+$code = 'this'; } catch (Exception $e) {
     // Caught!
 }
 
@@ -282,7 +282,7 @@ catch (CustomException $exception) {
     $x = 2;
 }
 // phpcs:ignore Standard.Category.Sniff
-catch (SyException $exception) {
+catch (Exception $exception) {
     $x = 2;
 } finally {
     $x = 3;
@@ -292,6 +292,15 @@ if ($this) {
     if ($that)
         foo(${$a[$b]});
 }
+
+while ( $level-- ) ob_end_clean();
+
+while ( $level-- )
+	ob_end_clean();
+
+while ( $level-- ):
+	ob_end_clean();
+endwhile;
 
 // Intentional parse error. This should be the last test in the file.
 foreach

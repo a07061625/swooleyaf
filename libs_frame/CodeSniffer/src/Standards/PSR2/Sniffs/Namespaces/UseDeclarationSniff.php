@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\PSR2\Sniffs\Namespaces;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class UseDeclarationSniff implements Sniff
@@ -75,6 +75,10 @@ class UseDeclarationSniff implements Sniff
                         break;
                     default:
                         $baseUse = 'use';
+                    }
+
+                    if ($tokens[($next + 1)]['code'] !== T_WHITESPACE) {
+                        $baseUse .= ' ';
                     }
 
                     $phpcsFile->fixer->replaceToken($next, ';'.$phpcsFile->eolChar.$baseUse);
@@ -167,13 +171,7 @@ class UseDeclarationSniff implements Sniff
 
         // Make sure this USE comes after the first namespace declaration.
         $prev = $phpcsFile->findPrevious(T_NAMESPACE, ($stackPtr - 1));
-        if ($prev !== false) {
-            $first = $phpcsFile->findNext(T_NAMESPACE, 1);
-            if ($prev !== $first) {
-                $error = 'USE declarations must go after the first namespace declaration';
-                $phpcsFile->addError($error, $stackPtr, 'UseAfterNamespace');
-            }
-        } else {
+        if ($prev === false) {
             $next = $phpcsFile->findNext(T_NAMESPACE, ($stackPtr + 1));
             if ($next !== false) {
                 $error = 'USE declarations must go after the namespace declaration';

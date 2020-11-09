@@ -13,13 +13,12 @@
 
 namespace PHP_CodeSniffer\Standards\Generic\Sniffs\CodeAnalysis;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class AssignmentInConditionSniff implements Sniff
 {
-
 
     /**
      * Assignment tokens to trigger on.
@@ -100,7 +99,7 @@ class AssignmentInConditionSniff implements Sniff
 
             $closer = $semicolon;
             unset($semicolon);
-        } elseif ($token['code'] === T_CASE) {
+        } else if ($token['code'] === T_CASE) {
             if (isset($token['scope_opener']) === false) {
                 return;
             }

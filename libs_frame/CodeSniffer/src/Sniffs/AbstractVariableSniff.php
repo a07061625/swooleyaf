@@ -21,7 +21,6 @@ use PHP_CodeSniffer\Util\Tokens;
 abstract class AbstractVariableSniff extends AbstractScopeSniff
 {
 
-
     /**
      * List of PHP Reserved variables.
      *
@@ -166,7 +165,7 @@ abstract class AbstractVariableSniff extends AbstractScopeSniff
         // These variables are not member vars.
         if ($tokens[$stackPtr]['code'] === T_VARIABLE) {
             return $this->processVariable($phpcsFile, $stackPtr);
-        } elseif ($tokens[$stackPtr]['code'] === T_DOUBLE_QUOTED_STRING
+        } else if ($tokens[$stackPtr]['code'] === T_DOUBLE_QUOTED_STRING
             || $tokens[$stackPtr]['code'] === T_HEREDOC
         ) {
             // Check to see if this string has a variable in it.

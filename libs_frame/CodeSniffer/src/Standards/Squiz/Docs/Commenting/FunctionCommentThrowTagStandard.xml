@@ -8,12 +8,12 @@
         <code title="Valid: @throws tag used.">
         <![CDATA[
 /**
- * <em>@throws SyException all the time</em>
+ * <em>@throws Exception all the time</em>
  * @return void
  */
 function foo()
 {
-    throw new SyException('Danger!');
+    throw new Exception('Danger!');
 }
 ]]>
         </code>
@@ -24,7 +24,7 @@ function foo()
  */
 function foo()
 {
-    throw new SyException('Danger!');
+    throw new Exception('Danger!');
 }
 ]]>
         </code>

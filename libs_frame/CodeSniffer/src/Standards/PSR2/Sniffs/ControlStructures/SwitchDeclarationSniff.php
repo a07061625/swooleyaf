@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\PSR2\Sniffs\ControlStructures;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class SwitchDeclarationSniff implements Sniff
@@ -152,7 +152,7 @@ class SwitchDeclarationSniff implements Sniff
                             $phpcsFile->fixer->replaceToken($nextCloser, trim($tokens[$nextCloser]['content']));
                         }
                     } else {
-                        $diff = ($caseAlignment + $this->indent - $tokens[$nextCloser]['column']);
+                        $diff = ($tokens[$nextCase]['column'] + $this->indent - $tokens[$nextCloser]['column']);
                         if ($diff !== 0) {
                             $error = 'Terminating statement must be indented to the same level as the CASE body';
                             $fix   = $phpcsFile->addFixableError($error, $nextCloser, 'BreakIndent');
@@ -208,7 +208,7 @@ class SwitchDeclarationSniff implements Sniff
      * @param int                         $stackPtr  The position to start looking at.
      * @param int                         $end       The position to stop looking at.
      *
-     * @return int | bool
+     * @return int|false
      */
     private function findNextCase($phpcsFile, $stackPtr, $end)
     {
@@ -280,7 +280,7 @@ class SwitchDeclarationSniff implements Sniff
                         }
 
                         return $this->findNestedTerminator($phpcsFile, ($scopeOpener + 1), $scopeCloser);
-                    } elseif ($tokens[$prevToken]['code'] === T_ELSEIF
+                    } else if ($tokens[$prevToken]['code'] === T_ELSEIF
                         || $tokens[$prevToken]['code'] === T_ELSE
                     ) {
                         // If we find a terminating statement within this block,
@@ -300,7 +300,7 @@ class SwitchDeclarationSniff implements Sniff
                 } while ($currentCloser !== false && $tokens[$currentCloser]['code'] === T_CLOSE_CURLY_BRACKET);
 
                 return true;
-            } elseif ($tokens[$lastToken]['code'] === T_SEMICOLON) {
+            } else if ($tokens[$lastToken]['code'] === T_SEMICOLON) {
                 // We found the last statement of the CASE. Now we want to
                 // check whether it is a terminating one.
                 $terminator = $phpcsFile->findStartOfStatement(($lastToken - 1));

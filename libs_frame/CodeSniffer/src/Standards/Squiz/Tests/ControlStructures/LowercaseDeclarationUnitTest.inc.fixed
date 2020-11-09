@@ -12,11 +12,11 @@ do {
 switch ($condition) {}
 
 if ($condition) {
-} elseif ($condition) {
+} else if ($condition) {
 } elseif ($condition) {
 } else {
 }
 
 try {
-} catch (SyException $e) {
+} catch (Exception $e) {
 }

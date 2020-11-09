@@ -26,8 +26,8 @@ class Test2
 
 function test2()
 {
-    if ($str[0]) {
-        $chr = $str[0]; }
+    if ($str{0}) {
+        $chr = $str{0}; }
 
 
     if (!class_exists($class_name)) {
@@ -40,7 +40,7 @@ function test2()
 foreach ($elements as $element) {
     if ($something) {
         // Do IF.
-    } elseif ($somethingElse) {
+    } else if ($somethingElse) {
         // Do ELSE.
     }
 }
@@ -51,7 +51,7 @@ case 1:
     default:
         if ($something) {
             echo $string{1};
-        } elseif ($else) {
+        } else if ($else) {
             switch ($else) {
             case 1:
                 // Do something.

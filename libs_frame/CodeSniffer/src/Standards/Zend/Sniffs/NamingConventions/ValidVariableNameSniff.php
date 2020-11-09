@@ -38,7 +38,9 @@ class ValidVariableNameSniff extends AbstractVariableSniff
         }
 
         $objOperator = $phpcsFile->findNext([T_WHITESPACE], ($stackPtr + 1), null, true);
-        if ($tokens[$objOperator]['code'] === T_OBJECT_OPERATOR) {
+        if ($tokens[$objOperator]['code'] === T_OBJECT_OPERATOR
+            || $tokens[$objOperator]['code'] === T_NULLSAFE_OBJECT_OPERATOR
+        ) {
             // Check to see if we are using a variable from an object.
             $var = $phpcsFile->findNext([T_WHITESPACE], ($objOperator + 1), null, true);
             if ($tokens[$var]['code'] === T_STRING) {
@@ -60,7 +62,7 @@ class ValidVariableNameSniff extends AbstractVariableSniff
                         $error = 'Variable "%s" is not in valid camel caps format';
                         $data  = [$originalVarName];
                         $phpcsFile->addError($error, $var, 'NotCamelCaps', $data);
-                    } elseif (preg_match('|\d|', $objVarName) === 1) {
+                    } else if (preg_match('|\d|', $objVarName) === 1) {
                         $warning = 'Variable "%s" contains numbers but this is discouraged';
                         $data    = [$originalVarName];
                         $phpcsFile->addWarning($warning, $stackPtr, 'ContainsNumbers', $data);
@@ -92,11 +94,12 @@ class ValidVariableNameSniff extends AbstractVariableSniff
             $error = 'Variable "%s" is not in valid camel caps format';
             $data  = [$originalVarName];
             $phpcsFile->addError($error, $stackPtr, 'NotCamelCaps', $data);
-        } elseif (preg_match('|\d|', $varName) === 1) {
+        } else if (preg_match('|\d|', $varName) === 1) {
             $warning = 'Variable "%s" contains numbers but this is discouraged';
             $data    = [$originalVarName];
             $phpcsFile->addWarning($warning, $stackPtr, 'ContainsNumbers', $data);
         }
+
     }//end processVariable()
 
 
@@ -115,7 +118,7 @@ class ValidVariableNameSniff extends AbstractVariableSniff
         $varName     = ltrim($tokens[$stackPtr]['content'], '$');
         $memberProps = $phpcsFile->getMemberProperties($stackPtr);
         if (empty($memberProps) === true) {
-            // SyException encountered.
+            // Exception encountered.
             return;
         }
 
@@ -146,11 +149,12 @@ class ValidVariableNameSniff extends AbstractVariableSniff
             $error = 'Member variable "%s" is not in valid camel caps format';
             $data  = [$varName];
             $phpcsFile->addError($error, $stackPtr, 'MemberVarNotCamelCaps', $data);
-        } elseif (preg_match('|\d|', $varName) === 1) {
+        } else if (preg_match('|\d|', $varName) === 1) {
             $warning = 'Member variable "%s" contains numbers but this is discouraged';
             $data    = [$varName];
             $phpcsFile->addWarning($warning, $stackPtr, 'MemberVarContainsNumbers', $data);
         }
+
     }//end processMemberVar()
 
 
@@ -178,12 +182,15 @@ class ValidVariableNameSniff extends AbstractVariableSniff
                     $error = 'Variable "%s" is not in valid camel caps format';
                     $data  = [$varName];
                     $phpcsFile->addError($error, $stackPtr, 'StringVarNotCamelCaps', $data);
-                } elseif (preg_match('|\d|', $varName) === 1) {
+                } else if (preg_match('|\d|', $varName) === 1) {
                     $warning = 'Variable "%s" contains numbers but this is discouraged';
                     $data    = [$varName];
                     $phpcsFile->addWarning($warning, $stackPtr, 'StringVarContainsNumbers', $data);
                 }
             }//end foreach
         }//end if
+
     }//end processVariableInString()
+
+
 }//end class

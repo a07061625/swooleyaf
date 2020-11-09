@@ -6,10 +6,12 @@
  * @copyright 2006-2015 Squiz Pty Ltd (ABN 77 084 670 600)
  * @license   https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
  */
+
 namespace PHP_CodeSniffer\Util;
 
 class Common
 {
+
     /**
      * An array of variable types for param/var we will check.
      *
@@ -27,10 +29,11 @@ class Common
         'callable',
     ];
 
+
     /**
      * Return TRUE if the path is a PHAR file.
      *
-     * @param string $path the path to use
+     * @param string $path The path to use.
      *
      * @return mixed
      */
@@ -41,14 +44,44 @@ class Common
         }
 
         return false;
+
     }//end isPharFile()
+
+
+    /**
+     * Checks if a file is readable.
+     *
+     * Addresses PHP bug related to reading files from network drives on Windows.
+     * e.g. when using WSL2.
+     *
+     * @param string $path The path to the file.
+     *
+     * @return boolean
+     */
+    public static function isReadable($path)
+    {
+        if (is_readable($path) === true) {
+            return true;
+        }
+
+        if (file_exists($path) === true && is_file($path) === true) {
+            $f = @fopen($path, 'rb');
+            if (fclose($f) === true) {
+                return true;
+            }
+        }
+
+        return false;
+
+    }//end isReadable()
+
 
     /**
      * CodeSniffer alternative for realpath.
      *
      * Allows for PHAR support.
      *
-     * @param string $path the path to use
+     * @param string $path The path to use.
      *
      * @return mixed
      */
@@ -58,7 +91,7 @@ class Common
         if (substr($path, 0, 2) === '~/') {
             $homeDir = getenv('HOME');
             if ($homeDir !== false) {
-                $path = $homeDir . substr($path, 1);
+                $path = $homeDir.substr($path, 1);
             }
         }
 
@@ -79,25 +112,27 @@ class Common
             return $path;
         }
 
-        $phar = \Phar::running(false);
-        $extra = str_replace('phar://' . $phar, '', $path);
-        $path = realpath($phar);
+        $phar  = \Phar::running(false);
+        $extra = str_replace('phar://'.$phar, '', $path);
+        $path  = realpath($phar);
         if ($path === false) {
             return false;
         }
 
-        $path = 'phar://' . $path . $extra;
+        $path = 'phar://'.$path.$extra;
         if (file_exists($path) === true) {
             return $path;
         }
 
         return false;
+
     }//end realpath()
+
 
     /**
      * Removes a base path from the front of a file path.
      *
-     * @param string $path     the path of the file
+     * @param string $path     The path of the file.
      * @param string $basepath The base path to remove. This should not end
      *                         with a directory separator.
      *
@@ -120,12 +155,14 @@ class Common
         }
 
         return $path;
+
     }//end stripBasepath()
+
 
     /**
      * Detects the EOL character being used in a string.
      *
-     * @param string $contents the contents to check
+     * @param string $contents The contents to check.
      *
      * @return string
      */
@@ -139,7 +176,9 @@ class Common
         }
 
         return $eolChar;
+
     }//end detectLineEndings()
+
 
     /**
      * Check if STDIN is a TTY.
@@ -163,24 +202,22 @@ class Common
         // If PHP has the POSIX extensions we will use them.
         if (function_exists('posix_isatty') === true) {
             $isTTY = (posix_isatty(STDIN) === true);
-
             return $isTTY;
         }
 
         // Next try is detecting whether we have `tty` installed and use that.
         if (defined('PHP_WINDOWS_VERSION_PLATFORM') === true) {
             $devnull = 'NUL';
-            $which = 'where';
+            $which   = 'where';
         } else {
             $devnull = '/dev/null';
-            $which = 'which';
+            $which   = 'which';
         }
 
         $tty = trim(shell_exec("$which tty 2> $devnull"));
         if (empty($tty) === false) {
             exec("tty -s 2> $devnull", $output, $returnValue);
             $isTTY = ($returnValue === 0);
-
             return $isTTY;
         }
 
@@ -189,30 +226,32 @@ class Common
         // This doesn't work on Mingw/Cygwin/... using Mintty but they
         // have `tty` installed.
         $type = [
-            'S_IFMT' => 0170000,
+            'S_IFMT'  => 0170000,
             'S_IFIFO' => 0010000,
         ];
 
-        $stat = fstat(STDIN);
-        $mode = ($stat['mode'] & $type['S_IFMT']);
+        $stat  = fstat(STDIN);
+        $mode  = ($stat['mode'] & $type['S_IFMT']);
         $isTTY = ($mode !== $type['S_IFIFO']);
 
         return $isTTY;
+
     }//end isStdinATTY()
+
 
     /**
      * Prepares token content for output to screen.
      *
      * Replaces invisible characters so they are visible. On non-Windows
-     * OSes it will also colour the invisible characters.
+     * operating systems it will also colour the invisible characters.
      *
-     * @param string   $content the content to prepare
+     * @param string   $content The content to prepare.
      * @param string[] $exclude A list of characters to leave invisible.
      *                          Can contain \r, \n, \t and a space.
      *
      * @return string
      */
-    public static function prepareForOutput($content, $exclude = [])
+    public static function prepareForOutput($content, $exclude=[])
     {
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             if (in_array("\r", $exclude, true) === false) {
@@ -245,12 +284,14 @@ class Common
         }//end if
 
         return $content;
+
     }//end prepareForOutput()
+
 
     /**
      * Returns true if the specified string is in the camel caps format.
      *
-     * @param string  $string      the string the verify
+     * @param string  $string      The string the verify.
      * @param boolean $classFormat If true, check to see if the string is in the
      *                             class format. Class format strings must start
      *                             with a capital letter and contain no
@@ -269,9 +310,9 @@ class Common
      */
     public static function isCamelCaps(
         $string,
-        $classFormat = false,
-        $public = true,
-        $strict = true
+        $classFormat=false,
+        $public=true,
+        $strict=true
     ) {
         // Check the first character first.
         if ($classFormat === false) {
@@ -303,16 +344,16 @@ class Common
 
         if ($strict === true) {
             // Check that there are not two capital letters next to each other.
-            $length = strlen($string);
+            $length          = strlen($string);
             $lastCharWasCaps = $classFormat;
 
             for ($i = 1; $i < $length; $i++) {
-                $ascii = ord($string{$i});
+                $ascii = ord($string[$i]);
                 if ($ascii >= 48 && $ascii <= 57) {
                     // The character is a number, so it cant be a capital.
                     $isCaps = false;
                 } else {
-                    if (strtoupper($string{$i}) === $string{$i}) {
+                    if (strtoupper($string[$i]) === $string[$i]) {
                         $isCaps = true;
                     } else {
                         $isCaps = false;
@@ -328,12 +369,14 @@ class Common
         }//end if
 
         return true;
+
     }//end isCamelCaps()
+
 
     /**
      * Returns true if the specified string is in the underscore caps format.
      *
-     * @param string $string the string to verify
+     * @param string $string The string to verify.
      *
      * @return boolean
      */
@@ -345,7 +388,7 @@ class Common
         }
 
         $validName = true;
-        $nameBits = explode('_', $string);
+        $nameBits  = explode('_', $string);
 
         if (preg_match('|^[A-Z]|', $string) === 0) {
             // Name does not begin with a capital letter.
@@ -358,14 +401,15 @@ class Common
 
                 if ($bit[0] !== strtoupper($bit[0])) {
                     $validName = false;
-
                     break;
                 }
             }
         }
 
         return $validName;
+
     }//end isUnderscoreName()
+
 
     /**
      * Returns a valid variable type for param/var tags.
@@ -373,7 +417,7 @@ class Common
      * If type is not one of the standard types, it must be a custom type.
      * Returns the correct type name suggestion if type name is invalid.
      *
-     * @param string $varType the variable type to process
+     * @param string $varType The variable type to process.
      *
      * @return string
      */
@@ -385,9 +429,9 @@ class Common
 
         if (in_array($varType, self::$allowedTypes, true) === true) {
             return $varType;
-        }
-        $lowerVarType = strtolower($varType);
-        switch ($lowerVarType) {
+        } else {
+            $lowerVarType = strtolower($varType);
+            switch ($lowerVarType) {
             case 'bool':
             case 'boolean':
                 return 'boolean';
@@ -403,47 +447,48 @@ class Common
                 return 'array';
             }//end switch
 
-        if (strpos($lowerVarType, 'array(') !== false) {
-            // Valid array declaration:
-            // array, array(type), array(type1 => type2).
-            $matches = [];
-            $pattern = '/^array\(\s*([^\s^=^>]*)(\s*=>\s*(.*))?\s*\)/i';
-            if (preg_match($pattern, $varType, $matches) !== 0) {
-                $type1 = '';
-                if (isset($matches[1]) === true) {
-                    $type1 = $matches[1];
-                }
+            if (strpos($lowerVarType, 'array(') !== false) {
+                // Valid array declaration:
+                // array, array(type), array(type1 => type2).
+                $matches = [];
+                $pattern = '/^array\(\s*([^\s^=^>]*)(\s*=>\s*(.*))?\s*\)/i';
+                if (preg_match($pattern, $varType, $matches) !== 0) {
+                    $type1 = '';
+                    if (isset($matches[1]) === true) {
+                        $type1 = $matches[1];
+                    }
 
-                $type2 = '';
-                if (isset($matches[3]) === true) {
-                    $type2 = $matches[3];
-                }
+                    $type2 = '';
+                    if (isset($matches[3]) === true) {
+                        $type2 = $matches[3];
+                    }
 
-                $type1 = self::suggestType($type1);
-                $type2 = self::suggestType($type2);
-                if ($type2 !== '') {
-                    $type2 = ' => ' . $type2;
-                }
+                    $type1 = self::suggestType($type1);
+                    $type2 = self::suggestType($type2);
+                    if ($type2 !== '') {
+                        $type2 = ' => '.$type2;
+                    }
 
-                return "array($type1$type2)";
-            }
+                    return "array($type1$type2)";
+                } else {
+                    return 'array';
+                }//end if
+            } else if (in_array($lowerVarType, self::$allowedTypes, true) === true) {
+                // A valid type, but not lower cased.
+                return $lowerVarType;
+            } else {
+                // Must be a custom type name.
+                return $varType;
+            }//end if
+        }//end if
 
-            return 'array';
-            //end if
-        } elseif (in_array($lowerVarType, self::$allowedTypes, true) === true) {
-            // A valid type, but not lower cased.
-            return $lowerVarType;
-        }
-        // Must be a custom type name.
-        return $varType;
-        //end if
-        //end if
     }//end suggestType()
+
 
     /**
      * Given a sniff class name, returns the code for the sniff.
      *
-     * @param string $sniffClass the fully qualified sniff class name
+     * @param string $sniffClass The fully qualified sniff class name.
      *
      * @return string
      */
@@ -463,15 +508,16 @@ class Common
         $category = array_pop($parts);
         $sniffDir = array_pop($parts);
         $standard = array_pop($parts);
-        $code = $standard . '.' . $category . '.' . $sniff;
-
+        $code     = $standard.'.'.$category.'.'.$sniff;
         return $code;
+
     }//end getSniffCode()
+
 
     /**
      * Removes project-specific information from a sniff class name.
      *
-     * @param string $sniffClass the fully qualified sniff class name
+     * @param string $sniffClass The fully qualified sniff class name.
      *
      * @return string
      */
@@ -485,7 +531,7 @@ class Common
             return $newName;
         }
 
-        $end = (strlen($newName) - $sniffPos + 1);
+        $end   = (strlen($newName) - $sniffPos + 1);
         $start = strrpos($newName, '\\', ($end * -1));
 
         if ($start === false) {
@@ -494,7 +540,9 @@ class Common
         }
 
         $newName = substr($newName, ($start + 1));
-
         return $newName;
+
     }//end cleanSniffClass()
+
+
 }//end class

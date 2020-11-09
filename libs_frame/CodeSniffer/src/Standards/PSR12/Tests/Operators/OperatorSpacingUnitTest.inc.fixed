@@ -46,3 +46,18 @@ $foo = $foo ?: 'bar';
 try {
 } catch (ExceptionType1 | ExceptionType2 $e) {
 }
+
+if (strpos($tokenContent, 'b"') === 0 && substr($tokenContent, -1) === '"') {}
+
+$oldConstructorPos = +1;
+return -$content;
+
+function name($a = -1) {}
+
+$a =& $ref;
+$a = [ 'a' => &$something ];
+
+$fn = fn(array &$one) => 1;
+$fn = fn(array & $one) => 1;
+
+$fn = static fn(DateTime $a, DateTime $b): int => -($a->getTimestamp() <=> $b->getTimestamp());

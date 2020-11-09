@@ -11,8 +11,8 @@
 
 namespace PHP_CodeSniffer;
 
-use PHP_CodeSniffer\Util;
 use PHP_CodeSniffer\Exceptions\RuntimeException;
+use PHP_CodeSniffer\Util;
 
 class Ruleset
 {
@@ -122,6 +122,7 @@ class Ruleset
      * @param \PHP_CodeSniffer\Config $config The config data for the run.
      *
      * @return void
+     * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If no sniffs were registered.
      */
     public function __construct(Config $config)
     {
@@ -304,7 +305,8 @@ class Ruleset
      *                            is only used for debug output.
      *
      * @return string[]
-     * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If the ruleset path is invalid.
+     * @throws \PHP_CodeSniffer\Exceptions\RuntimeException - If the ruleset path is invalid.
+     *                                                      - If a specified autoload file could not be found.
      */
     public function processRuleset($rulesetPath, $depth=0)
     {
@@ -347,18 +349,20 @@ class Ruleset
             $ownSniffs = $this->expandSniffDirectory($sniffDir, $depth);
         }
 
-        // Included custom autoloaders.
+        // Include custom autoloaders.
         foreach ($ruleset->{'autoload'} as $autoload) {
             if ($this->shouldProcessElement($autoload) === false) {
                 continue;
             }
 
             $autoloadPath = (string) $autoload;
-            if (is_file($autoloadPath) === false) {
-                $autoloadPath = Util\Common::realPath(dirname($rulesetPath).DIRECTORY_SEPARATOR.$autoloadPath);
-            }
 
-            if ($autoloadPath === false) {
+            // Try relative autoload paths first.
+            $relativePath = Util\Common::realPath(dirname($rulesetPath).DIRECTORY_SEPARATOR.$autoloadPath);
+
+            if ($relativePath !== false && is_file($relativePath) === true) {
+                $autoloadPath = $relativePath;
+            } else if (is_file($autoloadPath) === false) {
                 throw new RuntimeException('The specified autoload file "'.$autoload.'" does not exist');
             }
 
@@ -418,7 +422,7 @@ class Ruleset
                         echo str_repeat("\t", $depth);
                         echo "\t\t=> severity set to 5".PHP_EOL;
                     }
-                } elseif (empty($newSniffs) === false) {
+                } else if (empty($newSniffs) === false) {
                     $newSniff = $newSniffs[0];
                     if (in_array($newSniff, $ownSniffs, true) === false) {
                         // Including a sniff that hasn't been included higher up, but
@@ -737,7 +741,7 @@ class Ruleset
                     echo str_repeat("\t", $depth);
                     echo "\t\t=> ".Util\Common::stripBasepath($ref, $this->config->basepath).PHP_EOL;
                 }
-            } elseif (is_dir($ref) === false) {
+            } else if (is_dir($ref) === false) {
                 // Work out the sniff path.
                 $sepPos = strpos($ref, DIRECTORY_SEPARATOR);
                 if ($sepPos !== false) {
@@ -749,7 +753,7 @@ class Ruleset
                     if (count($parts) === 1) {
                         // A whole standard?
                         $path = '';
-                    } elseif (count($parts) === 2) {
+                    } else if (count($parts) === 2) {
                         // A directory of sniffs?
                         $path = DIRECTORY_SEPARATOR.'Sniffs'.DIRECTORY_SEPARATOR.$parts[1];
                     } else {
@@ -859,11 +863,20 @@ class Ruleset
         $ref  = (string) $rule['ref'];
         $todo = [$ref];
 
-        $parts = explode('.', $ref);
-        if (count($parts) <= 2) {
-            // We are processing a standard or a category of sniffs.
+        $parts      = explode('.', $ref);
+        $partsCount = count($parts);
+        if ($partsCount <= 2
+            || $partsCount > count(array_filter($parts))
+            || in_array($ref, $newSniffs) === true
+        ) {
+            // We are processing a standard, a category of sniffs or a relative path inclusion.
             foreach ($newSniffs as $sniffFile) {
-                $parts         = explode(DIRECTORY_SEPARATOR, $sniffFile);
+                $parts = explode(DIRECTORY_SEPARATOR, $sniffFile);
+                if (count($parts) === 1 && DIRECTORY_SEPARATOR === '\\') {
+                    // Path using forward slashes while running on Windows.
+                    $parts = explode('/', $sniffFile);
+                }
+
                 $sniffName     = array_pop($parts);
                 $sniffCategory = array_pop($parts);
                 array_pop($parts);
@@ -951,7 +964,7 @@ class Ruleset
                         $this->ruleset[$code] = [
                             'properties' => [],
                         ];
-                    } elseif (isset($this->ruleset[$code]['properties']) === false) {
+                    } else if (isset($this->ruleset[$code]['properties']) === false) {
                         $this->ruleset[$code]['properties'] = [];
                     }
 
@@ -1181,7 +1194,7 @@ class Ruleset
 
 
     /**
-     * Populates the array of PHP_CodeSniffer_Sniff's for this file.
+     * Populates the array of PHP_CodeSniffer_Sniff objects for this file.
      *
      * @return void
      * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If sniff registration fails.
@@ -1291,9 +1304,9 @@ class Ruleset
         // Special case for booleans.
         if ($value === 'true') {
             $value = true;
-        } elseif ($value === 'false') {
+        } else if ($value === 'false') {
             $value = false;
-        } elseif (substr($name, -2) === '[]') {
+        } else if (substr($name, -2) === '[]') {
             $name   = substr($name, 0, -2);
             $values = [];
             if ($value !== null) {

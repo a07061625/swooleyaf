@@ -84,12 +84,12 @@ class Markdown extends Generator
     protected function processSniff(\DOMNode $doc)
     {
         $title = $this->getTitle($doc);
-        echo "## $title".PHP_EOL;
+        echo PHP_EOL."## $title".PHP_EOL;
 
         foreach ($doc->childNodes as $node) {
             if ($node->nodeName === 'standard') {
                 $this->printTextBlock($node);
-            } elseif ($node->nodeName === 'code_comparison') {
+            } else if ($node->nodeName === 'code_comparison') {
                 $this->printCodeComparisonBlock($node);
             }
         }

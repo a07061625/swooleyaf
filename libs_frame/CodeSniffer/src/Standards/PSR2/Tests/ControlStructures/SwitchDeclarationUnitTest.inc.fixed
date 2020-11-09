@@ -53,7 +53,7 @@ while ($i < 10) {
 
 switch (true) {
     case is_resource($value):
-        throw new SyException('foo');
+        throw new Exception('foo');
     case is_object($value):
         return 'object';
 }
@@ -264,4 +264,23 @@ switch ($sContext)
     {
         do_something();
     }
+}
+
+$foo = $foo ?
+    function () {
+        switch ($a) {
+            case 'a':
+                break;
+        }
+    } :
+    null;
+
+switch ($foo) {
+case Foo::INTERFACE:
+    echo '1';
+    return self::INTERFACE;
+case Foo::TRAIT:
+case Foo::ARRAY:
+    echo '1';
+    return self::VALUE;
 }

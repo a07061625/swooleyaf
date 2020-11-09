@@ -9,9 +9,9 @@
 
 namespace PHP_CodeSniffer\Standards\PSR2\Sniffs\Classes;
 
+use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Standards\PEAR\Sniffs\Classes\ClassDeclarationSniff as PEARClassDeclarationSniff;
 use PHP_CodeSniffer\Util\Tokens;
-use PHP_CodeSniffer\Files\File;
 
 class ClassDeclarationSniff extends PEARClassDeclarationSniff
 {
@@ -87,7 +87,7 @@ class ClassDeclarationSniff extends PEARClassDeclarationSniff
                         $phpcsFile->fixer->replaceToken(($stackPtr - 1), ' ');
                     }
                 }
-            } elseif ($tokens[($stackPtr - 2)]['code'] === T_ABSTRACT
+            } else if ($tokens[($stackPtr - 2)]['code'] === T_ABSTRACT
                 || $tokens[($stackPtr - 2)]['code'] === T_FINAL
             ) {
                 $prevContent = strtolower($tokens[($stackPtr - 2)]['content']);
@@ -119,27 +119,53 @@ class ClassDeclarationSniff extends PEARClassDeclarationSniff
             break;
         }
 
-        $className = $phpcsFile->findNext(T_STRING, $stackPtr);
+        $className    = null;
+        $checkSpacing = true;
 
-        // Spacing of the keyword.
-        $gap = $tokens[($stackPtr + 1)]['content'];
-        if (strlen($gap) !== 1) {
-            $found = strlen($gap);
-            $error = 'Expected 1 space between %s keyword and %s name; %s found';
-            $data  = [
-                $stackPtrType,
-                $stackPtrType,
-                $found,
-            ];
-
-            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceAfterKeyword', $data);
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken(($stackPtr + 1), ' ');
+        if ($tokens[$stackPtr]['code'] !== T_ANON_CLASS) {
+            $className = $phpcsFile->findNext(T_STRING, $stackPtr);
+        } else {
+            // Ignore the spacing check if this is a simple anon class.
+            $next = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
+            if ($next === $tokens[$stackPtr]['scope_opener']
+                && $tokens[$next]['line'] > $tokens[$stackPtr]['line']
+            ) {
+                $checkSpacing = false;
             }
         }
 
+        if ($checkSpacing === true) {
+            // Spacing of the keyword.
+            if ($tokens[($stackPtr + 1)]['code'] !== T_WHITESPACE) {
+                $gap = 0;
+            } else if ($tokens[($stackPtr + 2)]['line'] !== $tokens[$stackPtr]['line']) {
+                $gap = 'newline';
+            } else {
+                $gap = $tokens[($stackPtr + 1)]['length'];
+            }
+
+            if ($gap !== 1) {
+                $error = 'Expected 1 space after %s keyword; %s found';
+                $data  = [
+                    $stackPtrType,
+                    $gap,
+                ];
+
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceAfterKeyword', $data);
+                if ($fix === true) {
+                    if ($gap === 0) {
+                        $phpcsFile->fixer->addContent($stackPtr, ' ');
+                    } else {
+                        $phpcsFile->fixer->replaceToken(($stackPtr + 1), ' ');
+                    }
+                }
+            }
+        }//end if
+
         // Check after the class/interface name.
-        if ($tokens[($className + 2)]['line'] === $tokens[$className]['line']) {
+        if ($className !== null
+            && $tokens[($className + 2)]['line'] === $tokens[$className]['line']
+        ) {
             $gap = $tokens[($className + 1)]['content'];
             if (strlen($gap) !== 1) {
                 $found = strlen($gap);
@@ -159,18 +185,29 @@ class ClassDeclarationSniff extends PEARClassDeclarationSniff
         $openingBrace = $tokens[$stackPtr]['scope_opener'];
 
         // Check positions of the extends and implements keywords.
+        $compareToken = $stackPtr;
+        $compareType  = 'name';
+        if ($tokens[$stackPtr]['code'] === T_ANON_CLASS) {
+            if (isset($tokens[$stackPtr]['parenthesis_opener']) === true) {
+                $compareToken = $tokens[$stackPtr]['parenthesis_closer'];
+                $compareType  = 'closing parenthesis';
+            } else {
+                $compareType = 'keyword';
+            }
+        }
+
         foreach (['extends', 'implements'] as $keywordType) {
-            $keyword = $phpcsFile->findNext(constant('T_'.strtoupper($keywordType)), ($stackPtr + 1), $openingBrace);
+            $keyword = $phpcsFile->findNext(constant('T_'.strtoupper($keywordType)), ($compareToken + 1), $openingBrace);
             if ($keyword !== false) {
-                if ($tokens[$keyword]['line'] !== $tokens[$stackPtr]['line']) {
-                    $error = 'The '.$keywordType.' keyword must be on the same line as the %s name';
+                if ($tokens[$keyword]['line'] !== $tokens[$compareToken]['line']) {
+                    $error = 'The '.$keywordType.' keyword must be on the same line as the %s '.$compareType;
                     $data  = [$stackPtrType];
                     $fix   = $phpcsFile->addFixableError($error, $keyword, ucfirst($keywordType).'Line', $data);
                     if ($fix === true) {
                         $phpcsFile->fixer->beginChangeset();
                         $comments = [];
 
-                        for ($i = ($stackPtr + 1); $i < $keyword; ++$i) {
+                        for ($i = ($compareToken + 1); $i < $keyword; ++$i) {
                             if ($tokens[$i]['code'] === T_COMMENT) {
                                 $comments[] = trim($tokens[$i]['content']);
                             }
@@ -182,7 +219,7 @@ class ClassDeclarationSniff extends PEARClassDeclarationSniff
                             }
                         }
 
-                        $phpcsFile->fixer->addContent($stackPtr, ' ');
+                        $phpcsFile->fixer->addContent($compareToken, ' ');
                         if (empty($comments) === false) {
                             $i = $keyword;
                             while ($tokens[($i + 1)]['line'] === $tokens[$keyword]['line']) {
@@ -238,8 +275,16 @@ class ClassDeclarationSniff extends PEARClassDeclarationSniff
             $keywordTokenType,
         ];
 
+        if ($className !== null) {
+            $start = $className;
+        } else if (isset($tokens[$stackPtr]['parenthesis_closer']) === true) {
+            $start = $tokens[$stackPtr]['parenthesis_closer'];
+        } else {
+            $start = $stackPtr;
+        }
+
         $classNames = [];
-        $nextClass  = $phpcsFile->findNext($find, ($className + 2), ($openingBrace - 1));
+        $nextClass  = $phpcsFile->findNext($find, ($start + 2), ($openingBrace - 1));
         while ($nextClass !== false) {
             $classNames[] = $nextClass;
             $nextClass    = $phpcsFile->findNext($find, ($nextClass + 1), ($openingBrace - 1));
@@ -293,7 +338,7 @@ class ClassDeclarationSniff extends PEARClassDeclarationSniff
                         $phpcsFile->fixer->addNewline($prev);
                         $phpcsFile->fixer->endChangeset();
                     }
-                } elseif ($tokens[$prev]['line'] !== ($tokens[$className]['line'] - 1)) {
+                } else if ($tokens[$prev]['line'] !== ($tokens[$className]['line'] - 1)) {
                     if ($keywordTokenType === T_EXTENDS) {
                         $error = 'Only one interface may be specified per line in a multi-line extends declaration';
                         $fix   = $phpcsFile->addFixableError($error, $className, 'ExtendsInterfaceSameLine');
@@ -341,7 +386,7 @@ class ClassDeclarationSniff extends PEARClassDeclarationSniff
                         }
                     }
                 }//end if
-            } elseif ($tokens[($className - 1)]['code'] !== T_NS_SEPARATOR
+            } else if ($tokens[($className - 1)]['code'] !== T_NS_SEPARATOR
                 || $tokens[($className - 2)]['code'] !== T_STRING
             ) {
                 // Not part of a longer fully qualified class name.
@@ -458,19 +503,23 @@ class ClassDeclarationSniff extends PEARClassDeclarationSniff
             }
         }//end if
 
-        // Check the closing brace is on it's own line, but allow
-        // for comments like "//end class".
-        $ignoreTokens   = Tokens::$phpcsCommentTokens;
-        $ignoreTokens[] = T_WHITESPACE;
-        $ignoreTokens[] = T_COMMENT;
-        $nextContent    = $phpcsFile->findNext($ignoreTokens, ($closeBrace + 1), null, true);
-        if ($tokens[$nextContent]['content'] !== $phpcsFile->eolChar
-            && $tokens[$nextContent]['line'] === $tokens[$closeBrace]['line']
-        ) {
-            $type  = strtolower($tokens[$stackPtr]['content']);
-            $error = 'Closing %s brace must be on a line by itself';
-            $data  = [$type];
-            $phpcsFile->addError($error, $closeBrace, 'CloseBraceSameLine', $data);
+        if ($tokens[$stackPtr]['code'] !== T_ANON_CLASS) {
+            // Check the closing brace is on it's own line, but allow
+            // for comments like "//end class".
+            $ignoreTokens   = Tokens::$phpcsCommentTokens;
+            $ignoreTokens[] = T_WHITESPACE;
+            $ignoreTokens[] = T_COMMENT;
+            $ignoreTokens[] = T_SEMICOLON;
+            $ignoreTokens[] = T_COMMA;
+            $nextContent    = $phpcsFile->findNext($ignoreTokens, ($closeBrace + 1), null, true);
+            if ($tokens[$nextContent]['content'] !== $phpcsFile->eolChar
+                && $tokens[$nextContent]['line'] === $tokens[$closeBrace]['line']
+            ) {
+                $type  = strtolower($tokens[$stackPtr]['content']);
+                $error = 'Closing %s brace must be on a line by itself';
+                $data  = [$type];
+                $phpcsFile->addError($error, $closeBrace, 'CloseBraceSameLine', $data);
+            }
         }
 
     }//end processClose()

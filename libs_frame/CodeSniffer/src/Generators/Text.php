@@ -31,7 +31,7 @@ class Text extends Generator
         foreach ($doc->childNodes as $node) {
             if ($node->nodeName === 'standard') {
                 $this->printTextBlock($node);
-            } elseif ($node->nodeName === 'code_comparison') {
+            } else if ($node->nodeName === 'code_comparison') {
                 $this->printCodeComparisonBlock($node);
             }
         }
@@ -75,18 +75,28 @@ class Text extends Generator
         $text = str_replace('<em>', '*', $text);
         $text = str_replace('</em>', '*', $text);
 
-        $lines    = [];
-        $tempLine = '';
-        $words    = explode(' ', $text);
+        $nodeLines = explode("\n", $text);
+        $lines     = [];
 
-        foreach ($words as $word) {
-            if (strlen($tempLine.$word) >= 99) {
-                if (strlen($tempLine.$word) === 99) {
-                    // Adding the extra space will push us to the edge
-                    // so we are done.
-                    $lines[]  = $tempLine.$word;
-                    $tempLine = '';
-                } elseif (strlen($tempLine.$word) === 100) {
+        foreach ($nodeLines as $currentLine) {
+            $currentLine = trim($currentLine);
+            if ($currentLine === '') {
+                // The text contained a blank line. Respect this.
+                $lines[] = '';
+                continue;
+            }
+
+            $tempLine = '';
+            $words    = explode(' ', $currentLine);
+
+            foreach ($words as $word) {
+                $currentLength = strlen($tempLine.$word);
+                if ($currentLength < 99) {
+                    $tempLine .= $word.' ';
+                    continue;
+                }
+
+                if ($currentLength === 99 || $currentLength === 100) {
                     // We are already at the edge, so we are done.
                     $lines[]  = $tempLine.$word;
                     $tempLine = '';
@@ -94,14 +104,12 @@ class Text extends Generator
                     $lines[]  = rtrim($tempLine);
                     $tempLine = $word.' ';
                 }
-            } else {
-                $tempLine .= $word.' ';
+            }//end foreach
+
+            if ($tempLine !== '') {
+                $lines[] = rtrim($tempLine);
             }
         }//end foreach
-
-        if ($tempLine !== '') {
-            $lines[] = rtrim($tempLine);
-        }
 
         echo implode(PHP_EOL, $lines).PHP_EOL.PHP_EOL;
 
@@ -132,13 +140,13 @@ class Text extends Generator
                     // so we are done.
                     $firstTitleLines[] = $tempTitle.$word;
                     $tempTitle         = '';
-                } elseif (strlen($tempTitle.$word) === 46) {
+                } else if (strlen($tempTitle.$word) === 46) {
                     // We are already at the edge, so we are done.
                     $firstTitleLines[] = $tempTitle.$word;
                     $tempTitle         = '';
                 } else {
                     $firstTitleLines[] = $tempTitle;
-                    $tempTitle         = $word;
+                    $tempTitle         = $word.' ';
                 }
             } else {
                 $tempTitle .= $word.' ';
@@ -167,13 +175,13 @@ class Text extends Generator
                     // so we are done.
                     $secondTitleLines[] = $tempTitle.$word;
                     $tempTitle          = '';
-                } elseif (strlen($tempTitle.$word) === 46) {
+                } else if (strlen($tempTitle.$word) === 46) {
                     // We are already at the edge, so we are done.
                     $secondTitleLines[] = $tempTitle.$word;
                     $tempTitle          = '';
                 } else {
                     $secondTitleLines[] = $tempTitle;
-                    $tempTitle          = $word;
+                    $tempTitle          = $word.' ';
                 }
             } else {
                 $tempTitle .= $word.' ';
@@ -231,9 +239,9 @@ class Text extends Generator
             }
 
             echo '| ';
-            echo $firstLineText.str_repeat(' ', (47 - strlen($firstLineText)));
+            echo $firstLineText.str_repeat(' ', max(0, (47 - strlen($firstLineText))));
             echo '| ';
-            echo $secondLineText.str_repeat(' ', (48 - strlen($secondLineText)));
+            echo $secondLineText.str_repeat(' ', max(0, (48 - strlen($secondLineText))));
             echo '|'.PHP_EOL;
         }//end for
 

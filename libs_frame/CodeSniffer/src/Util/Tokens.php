@@ -74,6 +74,8 @@ define('T_OPEN_USE_GROUP', 'PHPCS_T_OPEN_USE_GROUP');
 define('T_CLOSE_USE_GROUP', 'PHPCS_T_CLOSE_USE_GROUP');
 define('T_ZSR', 'PHPCS_T_ZSR');
 define('T_ZSR_EQUAL', 'PHPCS_T_ZSR_EQUAL');
+define('T_FN_ARROW', 'T_FN_ARROW');
+define('T_TYPE_UNION', 'T_TYPE_UNION');
 
 // Some PHP 5.5 tokens, replicated for lower versions.
 if (defined('T_FINALLY') === false) {
@@ -114,6 +116,32 @@ if (defined('T_YIELD_FROM') === false) {
     define('T_YIELD_FROM', 'PHPCS_T_YIELD_FROM');
 }
 
+// Some PHP 7.4 tokens, replicated for lower versions.
+if (defined('T_BAD_CHARACTER') === false) {
+    define('T_BAD_CHARACTER', 'PHPCS_T_BAD_CHARACTER');
+}
+
+if (defined('T_FN') === false) {
+    define('T_FN', 'PHPCS_T_FN');
+}
+
+// Some PHP 8.0 tokens, replicated for lower versions.
+if (defined('T_NULLSAFE_OBJECT_OPERATOR') === false) {
+    define('T_NULLSAFE_OBJECT_OPERATOR', 'PHPCS_T_NULLSAFE_OBJECT_OPERATOR');
+}
+
+if (defined('T_NAME_QUALIFIED') === false) {
+    define('T_NAME_QUALIFIED', 'PHPCS_T_NAME_QUALIFIED');
+}
+
+if (defined('T_NAME_FULLY_QUALIFIED') === false) {
+    define('T_NAME_FULLY_QUALIFIED', 'PHPCS_T_NAME_FULLY_QUALIFIED');
+}
+
+if (defined('T_NAME_RELATIVE') === false) {
+    define('T_NAME_RELATIVE', 'PHPCS_T_NAME_RELATIVE');
+}
+
 // Tokens used for parsing doc blocks.
 define('T_DOC_COMMENT_STAR', 'PHPCS_T_DOC_COMMENT_STAR');
 define('T_DOC_COMMENT_WHITESPACE', 'PHPCS_T_DOC_COMMENT_WHITESPACE');
@@ -135,7 +163,7 @@ final class Tokens
     /**
      * The token weightings.
      *
-     * @var array<int, int>
+     * @var array<int|string, int>
      */
     public static $weightings = [
         T_CLASS               => 1000,
@@ -216,7 +244,7 @@ final class Tokens
     /**
      * Tokens that represent assignments.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $assignmentTokens = [
         T_EQUAL          => T_EQUAL,
@@ -240,7 +268,7 @@ final class Tokens
     /**
      * Tokens that represent equality comparisons.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $equalityTokens = [
         T_IS_EQUAL            => T_IS_EQUAL,
@@ -254,7 +282,7 @@ final class Tokens
     /**
      * Tokens that represent comparison operator.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $comparisonTokens = [
         T_IS_EQUAL            => T_IS_EQUAL,
@@ -272,7 +300,7 @@ final class Tokens
     /**
      * Tokens that represent arithmetic operators.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $arithmeticTokens = [
         T_PLUS     => T_PLUS,
@@ -286,7 +314,7 @@ final class Tokens
     /**
      * Tokens that perform operations.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $operators = [
         T_MINUS       => T_MINUS,
@@ -307,7 +335,7 @@ final class Tokens
     /**
      * Tokens that perform boolean operations.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $booleanOperators = [
         T_BOOLEAN_AND => T_BOOLEAN_AND,
@@ -320,7 +348,7 @@ final class Tokens
     /**
      * Tokens that represent casting.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $castTokens = [
         T_INT_CAST    => T_INT_CAST,
@@ -336,27 +364,28 @@ final class Tokens
     /**
      * Token types that open parenthesis.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $parenthesisOpeners = [
-        T_ARRAY    => T_ARRAY,
-        T_LIST     => T_LIST,
-        T_FUNCTION => T_FUNCTION,
-        T_CLOSURE  => T_CLOSURE,
-        T_WHILE    => T_WHILE,
-        T_FOR      => T_FOR,
-        T_FOREACH  => T_FOREACH,
-        T_SWITCH   => T_SWITCH,
-        T_IF       => T_IF,
-        T_ELSEIF   => T_ELSEIF,
-        T_CATCH    => T_CATCH,
-        T_DECLARE  => T_DECLARE,
+        T_ARRAY      => T_ARRAY,
+        T_LIST       => T_LIST,
+        T_FUNCTION   => T_FUNCTION,
+        T_CLOSURE    => T_CLOSURE,
+        T_ANON_CLASS => T_ANON_CLASS,
+        T_WHILE      => T_WHILE,
+        T_FOR        => T_FOR,
+        T_FOREACH    => T_FOREACH,
+        T_SWITCH     => T_SWITCH,
+        T_IF         => T_IF,
+        T_ELSEIF     => T_ELSEIF,
+        T_CATCH      => T_CATCH,
+        T_DECLARE    => T_DECLARE,
     ];
 
     /**
      * Tokens that are allowed to open scopes.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $scopeOpeners = [
         T_CLASS      => T_CLASS,
@@ -388,7 +417,7 @@ final class Tokens
     /**
      * Tokens that represent scope modifiers.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $scopeModifiers = [
         T_PRIVATE   => T_PRIVATE,
@@ -399,7 +428,7 @@ final class Tokens
     /**
      * Tokens that can prefix a method name
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $methodPrefixes = [
         T_PRIVATE   => T_PRIVATE,
@@ -413,7 +442,7 @@ final class Tokens
     /**
      * Tokens that open code blocks.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $blockOpeners = [
         T_OPEN_CURLY_BRACKET  => T_OPEN_CURLY_BRACKET,
@@ -425,7 +454,7 @@ final class Tokens
     /**
      * Tokens that don't represent code.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $emptyTokens = [
         T_WHITESPACE             => T_WHITESPACE,
@@ -447,7 +476,7 @@ final class Tokens
     /**
      * Tokens that are comments.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $commentTokens = [
         T_COMMENT                => T_COMMENT,
@@ -468,7 +497,7 @@ final class Tokens
     /**
      * Tokens that are comments containing PHPCS instructions.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $phpcsCommentTokens = [
         T_PHPCS_ENABLE      => T_PHPCS_ENABLE,
@@ -483,7 +512,7 @@ final class Tokens
      *
      * Note that T_STRINGS are NOT represented in this list.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $stringTokens = [
         T_CONSTANT_ENCAPSED_STRING => T_CONSTANT_ENCAPSED_STRING,
@@ -493,7 +522,7 @@ final class Tokens
     /**
      * Tokens that represent text strings.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $textStringTokens = [
         T_CONSTANT_ENCAPSED_STRING => T_CONSTANT_ENCAPSED_STRING,
@@ -506,7 +535,7 @@ final class Tokens
     /**
      * Tokens that represent brackets and parenthesis.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $bracketTokens = [
         T_OPEN_CURLY_BRACKET   => T_OPEN_CURLY_BRACKET,
@@ -520,7 +549,7 @@ final class Tokens
     /**
      * Tokens that include files.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $includeTokens = [
         T_REQUIRE_ONCE => T_REQUIRE_ONCE,
@@ -532,7 +561,7 @@ final class Tokens
     /**
      * Tokens that make up a heredoc string.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $heredocTokens = [
         T_START_HEREDOC => T_START_HEREDOC,
@@ -549,7 +578,7 @@ final class Tokens
      * Mostly, these are just strings. But PHP tokenizes some language
      * constructs and functions using their own tokens.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $functionNameTokens = [
         T_STRING       => T_STRING,
@@ -569,13 +598,31 @@ final class Tokens
     /**
      * Tokens that open class and object scopes.
      *
-     * @var array<int, int>
+     * @var array<int|string, int|string>
      */
     public static $ooScopeTokens = [
         T_CLASS      => T_CLASS,
         T_ANON_CLASS => T_ANON_CLASS,
         T_INTERFACE  => T_INTERFACE,
         T_TRAIT      => T_TRAIT,
+    ];
+
+    /**
+     * Tokens representing PHP magic constants.
+     *
+     * @var array <int|string> => <int|string>
+     *
+     * @link https://www.php.net/language.constants.predefined PHP Manual on magic constants
+     */
+    public static $magicConstants = [
+        T_CLASS_C  => T_CLASS_C,
+        T_DIR      => T_DIR,
+        T_FILE     => T_FILE,
+        T_FUNC_C   => T_FUNC_C,
+        T_LINE     => T_LINE,
+        T_METHOD_C => T_METHOD_C,
+        T_NS_C     => T_NS_C,
+        T_TRAIT_C  => T_TRAIT_C,
     ];
 
 
@@ -612,10 +659,10 @@ final class Tokens
      *
      * Returns false if there are no weightings for any of the specified tokens.
      *
-     * @param array<int, int> $tokens The token types to get the highest weighted
-     *                                type for.
+     * @param array<int|string> $tokens The token types to get the highest weighted
+     *                                  type for.
      *
-     * @return int The highest weighted token.
+     * @return int|false The highest weighted token.
      */
     public static function getHighestWeightedToken(array $tokens)
     {

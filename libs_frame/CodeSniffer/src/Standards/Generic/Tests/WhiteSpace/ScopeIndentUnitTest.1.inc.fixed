@@ -76,7 +76,7 @@ class Test2
         // All ok.
         if (TRUE) {
             if (TRUE) {
-            } elseif (FALSE) {
+            } else if (FALSE) {
                 foreach ($tokens as $token) {
                     switch ($token) {
                         case '1':
@@ -228,7 +228,7 @@ function test()
 foreach ($elements as $element) {
     if ($something) {
         // Do IF.
-    } elseif ($somethingElse) {
+    } else if ($somethingElse) {
         // Do ELSE.
     }
 }
@@ -279,7 +279,7 @@ switch ($foo) {
             default:
                 if ($something) {
                     echo $string{1};
-                } elseif ($else) {
+                } else if ($else) {
                     switch ($else) {
                         default:
                     }
@@ -611,8 +611,8 @@ switch ($arg) {
         echo 'default';
 }
 
-if ($tokens[$stackPtr]['content'][0] === '#') {
-} elseif ($tokens[$stackPtr]['content'][0] === '/'
+if ($tokens[$stackPtr]['content']{0} === '#') {
+} else if ($tokens[$stackPtr]['content']{0} === '/'
     && $tokens[$stackPtr]['content']{1} === '/'
 ) {
 }
@@ -845,7 +845,7 @@ array(
 
 try {
     echo 'foo';
-} catch (\SyException $e) {
+} catch (\Exception $e) {
     echo 'catch';
 } finally {
     if (false) {
@@ -996,7 +996,7 @@ class Foo
 
 try {
     foo();
-} catch (\SyException $e) {
+} catch (\Exception $e) {
     $foo = function() {
         return 'foo';
     };
@@ -1007,7 +1007,7 @@ try {
 
 if ($foo) {
     foo();
-} elseif ($e) {
+} else if ($e) {
     $foo = function() {
         return 'foo';
     };
@@ -1405,7 +1405,69 @@ switch($foo)
         $value = 0;
 }
 
+switch ($x) {
+    case 'a':
+        switch ($y) {
+            case 'c':
+                return true;
+        }
+    case 'b':
+        switch ($z) {
+            case 'd':
+                return true;
+        }
+}
+
+$foo = [
+    [
+        'a' => [
+        ],
+        'b' => <<<'FOO'
+foo;
+FOO
+    ],
+    $a,
+];
+
+$query = Model::query()
+   ->when($a, function () {
+        static $b = '';
+   });
+
+$result = array_map(
+    static fn(int $number) : int => $number + 1,
+    $numbers
+);
+
+$a = $a === true ? [
+    'a' => 1,
+    ] : [
+    'a' => 100,
+];
+
+return [
+    Url::make('View Song', fn($song) => $song->url())
+        ->onlyOnDetail(),
+
+    new Panel('Information', [
+        Text::make('Title')
+    ]),
+];
+
+echo $string?->append('foo')
+            ?->outputUsing();
+
+// phpcs:set Generic.WhiteSpace.ScopeIndent exact true
+echo $string?->append('foo')
+            ?->outputUsing();
+// phpcs:set Generic.WhiteSpace.ScopeIndent exact false
+
+/* ADD NEW TESTS ABOVE THIS LINE AND MAKE SURE THAT THE 1 (space-based) AND 2 (tab-based) FILES ARE IN SYNC! */
 ?>
+
+     <?php if (true) : ?>
+         <span></span>
+     <?php endif ?>
 
 <?php
 if (true) {
@@ -1419,5 +1481,21 @@ $a = 1;
 $a = array(
     */
 );
+
+return [
+    'lor' =>
+        <<<'INTRO'
+        lorem ipsum
+        INTRO,
+    'em' => [
+        [
+            '',
+        ],
+    ],
+    'abc' => [
+        'a' => 'wop wop',
+        'b' => 'ola ola.',
+    ],
+];
 
 echo ""

@@ -9,13 +9,12 @@
 
 namespace PHP_CodeSniffer\Standards\Generic\Sniffs\Functions;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class OpeningFunctionBraceKernighanRitchieSniff implements Sniff
 {
-
 
     /**
      * Should this sniff check function braces?
@@ -160,7 +159,7 @@ class OpeningFunctionBraceKernighanRitchieSniff implements Sniff
 
         if ($tokens[($openingBrace - 1)]['code'] !== T_WHITESPACE) {
             $length = 0;
-        } elseif ($spacing === "\t") {
+        } else if ($spacing === "\t") {
             $length = '\t';
         } else {
             $length = strlen($spacing);

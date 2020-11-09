@@ -8,9 +8,9 @@ $result = myFunction($arg1, $arg2);
 $result = myFunction($arg1, $arg2, $arg3, $arg4, $arg5);
 $result = myFunction($arg1, $arg2, $arg3, $arg4, $arg5);
 $result = myFunction($arg1, $arg2 = array());
-$result = myFunction($arg1, $arg2 = array());
-$result = myFunction($arg1, $arg2 = array());
-$result = myFunction($arg1, $arg2 = array());
+$result = myFunction($arg1, $arg2 =array());
+$result = myFunction($arg1, $arg2= array());
+$result = myFunction($arg1, $arg2=array());
 
 $result = myFunction($arg1, 
                      $arg2 = array(), 
@@ -18,7 +18,7 @@ $result = myFunction($arg1,
                      $arg4, 
                      $arg5);
 
-throw new SyException("This is some massive string for a message",
+throw new Exception("This is some massive string for a message", 
                          $cause);
 
 // Function definitions are ignored
@@ -147,5 +147,5 @@ $foobar = functionCallAnonClassParam(
 			$foo = array(1,2,3);
 		}
 	},
-	$args = array(),
+	$args=array(),
 );

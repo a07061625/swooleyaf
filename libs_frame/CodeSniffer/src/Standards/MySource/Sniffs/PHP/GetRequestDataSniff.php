@@ -63,7 +63,7 @@ class GetRequestDataSniff implements Sniff
                     // We don't have nested classes.
                     break;
                 }
-            } elseif ($inClass === true && $tokens[$i]['code'] === T_FUNCTION) {
+            } else if ($inClass === true && $tokens[$i]['code'] === T_FUNCTION) {
                 $funcName = $phpcsFile->findNext(T_STRING, $i);
                 $funcName = $tokens[$funcName]['content'];
                 if (strtolower($funcName) === 'getrequestdata') {
