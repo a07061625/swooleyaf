@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Squiz\Tests\Functions;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class MultiLineFunctionDeclarationUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class MultiLineFunctionDeclarationUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -25,25 +27,25 @@ class MultiLineFunctionDeclarationUnitTest extends AbstractSniffUnitTest
      *
      * @return array<int, int>
      */
-    public function getErrorList($testFile='MultiLineFunctionDeclarationUnitTest.inc')
+    public function getErrorList($testFile = 'MultiLineFunctionDeclarationUnitTest.inc')
     {
-        if ($testFile === 'MultiLineFunctionDeclarationUnitTest.inc') {
+        if ('MultiLineFunctionDeclarationUnitTest.inc' === $testFile) {
             $errors = [
-                2   => 1,
-                3   => 1,
-                4   => 2,
-                5   => 1,
-                7   => 1,
-                11  => 1,
-                12  => 1,
-                13  => 1,
-                16  => 1,
-                36  => 1,
-                43  => 2,
-                48  => 1,
-                81  => 1,
-                82  => 2,
-                88  => 1,
+                2 => 1,
+                3 => 1,
+                4 => 2,
+                5 => 1,
+                7 => 1,
+                11 => 1,
+                12 => 1,
+                13 => 1,
+                16 => 1,
+                36 => 1,
+                43 => 2,
+                48 => 1,
+                81 => 1,
+                82 => 2,
+                88 => 1,
                 102 => 2,
                 137 => 1,
                 141 => 2,
@@ -59,11 +61,11 @@ class MultiLineFunctionDeclarationUnitTest extends AbstractSniffUnitTest
             ];
         } else {
             $errors = [
-                2  => 1,
-                3  => 1,
-                4  => 2,
-                5  => 1,
-                7  => 1,
+                2 => 1,
+                3 => 1,
+                4 => 2,
+                5 => 1,
+                7 => 1,
                 11 => 1,
                 12 => 1,
                 13 => 1,
@@ -77,9 +79,9 @@ class MultiLineFunctionDeclarationUnitTest extends AbstractSniffUnitTest
         }//end if
 
         return $errors;
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -92,8 +94,7 @@ class MultiLineFunctionDeclarationUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

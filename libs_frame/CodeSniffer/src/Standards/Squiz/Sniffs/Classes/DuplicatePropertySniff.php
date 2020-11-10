@@ -14,14 +14,12 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class DuplicatePropertySniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
      * @var array
      */
     public $supportedTokenizers = ['JS'];
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -31,9 +29,9 @@ class DuplicatePropertySniff implements Sniff
     public function register()
     {
         return [T_OBJECT];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -41,29 +39,27 @@ class DuplicatePropertySniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The current file being processed.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        $properties   = [];
+        $properties = [];
         $wantedTokens = [
             T_PROPERTY,
             T_OBJECT,
         ];
 
         $next = $phpcsFile->findNext($wantedTokens, ($stackPtr + 1), $tokens[$stackPtr]['bracket_closer']);
-        while ($next !== false && $next < $tokens[$stackPtr]['bracket_closer']) {
-            if ($tokens[$next]['code'] === T_OBJECT) {
+        while (false !== $next && $next < $tokens[$stackPtr]['bracket_closer']) {
+            if (T_OBJECT === $tokens[$next]['code']) {
                 // Skip nested objects.
                 $next = $tokens[$next]['bracket_closer'];
             } else {
                 $propName = $tokens[$next]['content'];
-                if (isset($properties[$propName]) === true) {
+                if (true === isset($properties[$propName])) {
                     $error = 'Duplicate property definition found for "%s"; previously defined on line %s';
-                    $data  = [
+                    $data = [
                         $propName,
                         $tokens[$properties[$propName]]['line'],
                     ];
@@ -75,8 +71,7 @@ class DuplicatePropertySniff implements Sniff
 
             $next = $phpcsFile->findNext($wantedTokens, ($next + 1), $tokens[$stackPtr]['bracket_closer']);
         }//end while
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

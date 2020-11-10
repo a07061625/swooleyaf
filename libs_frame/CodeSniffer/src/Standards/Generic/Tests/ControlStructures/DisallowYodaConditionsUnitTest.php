@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Generic\Tests\ControlStructures;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class DisallowYodaConditionsUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class DisallowYodaConditionsUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -26,27 +28,27 @@ class DisallowYodaConditionsUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
-            7   => 1,
-            8   => 1,
-            12  => 1,
-            13  => 2,
-            18  => 1,
-            19  => 1,
-            24  => 1,
-            25  => 1,
-            30  => 1,
-            31  => 1,
-            40  => 1,
-            47  => 1,
-            48  => 1,
-            50  => 1,
-            52  => 1,
-            57  => 1,
-            58  => 1,
-            62  => 1,
-            68  => 1,
-            97  => 3,
-            98  => 3,
+            7 => 1,
+            8 => 1,
+            12 => 1,
+            13 => 2,
+            18 => 1,
+            19 => 1,
+            24 => 1,
+            25 => 1,
+            30 => 1,
+            31 => 1,
+            40 => 1,
+            47 => 1,
+            48 => 1,
+            50 => 1,
+            52 => 1,
+            57 => 1,
+            58 => 1,
+            62 => 1,
+            68 => 1,
+            97 => 3,
+            98 => 3,
             105 => 1,
             128 => 1,
             129 => 2,
@@ -60,9 +62,9 @@ class DisallowYodaConditionsUnitTest extends AbstractSniffUnitTest
             156 => 1,
             160 => 1,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -75,8 +77,7 @@ class DisallowYodaConditionsUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

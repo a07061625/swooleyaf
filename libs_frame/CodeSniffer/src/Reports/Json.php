@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Files\File;
 
 class Json implements Report
 {
-
-
     /**
      * Generate a partial report for a single processed file.
      *
@@ -30,13 +28,13 @@ class Json implements Report
      *
      * @return bool
      */
-    public function generateFileReport($report, File $phpcsFile, $showSources=false, $width=80)
+    public function generateFileReport($report, File $phpcsFile, $showSources = false, $width = 80)
     {
         $filename = str_replace('\\', '\\\\', $report['filename']);
         $filename = str_replace('"', '\"', $filename);
         $filename = str_replace('/', '\/', $filename);
-        echo '"'.$filename.'":{';
-        echo '"errors":'.$report['errors'].',"warnings":'.$report['warnings'].',"messages":[';
+        echo '"' . $filename . '":{';
+        echo '"errors":' . $report['errors'] . ',"warnings":' . $report['warnings'] . ',"messages":[';
 
         $messages = '';
         foreach ($report['messages'] as $line => $lineErrors) {
@@ -47,16 +45,16 @@ class Json implements Report
                     $error['message'] = str_replace("\t", '\t', $error['message']);
 
                     $fixable = false;
-                    if ($error['fixable'] === true) {
+                    if (true === $error['fixable']) {
                         $fixable = true;
                     }
 
-                    $messagesObject          = (object) $error;
-                    $messagesObject->line    = $line;
-                    $messagesObject->column  = $column;
+                    $messagesObject = (object)$error;
+                    $messagesObject->line = $line;
+                    $messagesObject->column = $column;
                     $messagesObject->fixable = $fixable;
 
-                    $messages .= json_encode($messagesObject).",";
+                    $messages .= json_encode($messagesObject) . ',';
                 }
             }
         }//end foreach
@@ -65,9 +63,9 @@ class Json implements Report
         echo ']},';
 
         return true;
+    }
 
-    }//end generateFileReport()
-
+    //end generateFileReport()
 
     /**
      * Generates a JSON report.
@@ -82,8 +80,6 @@ class Json implements Report
      * @param int    $width         Maximum allowed line width.
      * @param bool   $interactive   Are we running in interactive mode?
      * @param bool   $toScreen      Is the report being printed to screen?
-     *
-     * @return void
      */
     public function generate(
         $cachedData,
@@ -91,16 +87,15 @@ class Json implements Report
         $totalErrors,
         $totalWarnings,
         $totalFixable,
-        $showSources=false,
-        $width=80,
-        $interactive=false,
-        $toScreen=true
+        $showSources = false,
+        $width = 80,
+        $interactive = false,
+        $toScreen = true
     ) {
-        echo '{"totals":{"errors":'.$totalErrors.',"warnings":'.$totalWarnings.',"fixable":'.$totalFixable.'},"files":{';
+        echo '{"totals":{"errors":' . $totalErrors . ',"warnings":' . $totalWarnings . ',"fixable":' . $totalFixable . '},"files":{';
         echo rtrim($cachedData, ',');
-        echo "}}".PHP_EOL;
+        echo '}}' . PHP_EOL;
+    }
 
-    }//end generate()
-
-
+    //end generate()
 }//end class

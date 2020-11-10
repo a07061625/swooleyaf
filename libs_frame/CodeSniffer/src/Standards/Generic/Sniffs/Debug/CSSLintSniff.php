@@ -15,14 +15,12 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class CSSLintSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
      * @var array
      */
     public $supportedTokenizers = ['CSS'];
-
 
     /**
      * Returns the token types that this sniff is interested in.
@@ -32,9 +30,9 @@ class CSSLintSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes the tokens that this sniff is interested in.
@@ -42,41 +40,39 @@ class CSSLintSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where the token was found.
      * @param int                         $stackPtr  The position in the stack where
      *                                               the token was found.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $csslintPath = Config::getExecutablePath('csslint');
-        if ($csslintPath === null) {
+        if (null === $csslintPath) {
             return;
         }
 
         $fileName = $phpcsFile->getFilename();
 
-        $cmd = escapeshellcmd($csslintPath).' '.escapeshellarg($fileName).' 2>&1';
+        $cmd = escapeshellcmd($csslintPath) . ' ' . escapeshellarg($fileName) . ' 2>&1';
         exec($cmd, $output, $retval);
 
-        if (is_array($output) === false) {
+        if (false === \is_array($output)) {
             return;
         }
 
-        $count = count($output);
+        $count = \count($output);
 
-        for ($i = 0; $i < $count; $i++) {
-            $matches    = [];
+        for ($i = 0; $i < $count; ++$i) {
+            $matches = [];
             $numMatches = preg_match(
                 '/(error|warning) at line (\d+)/',
                 $output[$i],
                 $matches
             );
 
-            if ($numMatches === 0) {
+            if (0 === $numMatches) {
                 continue;
             }
 
-            $line    = (int) $matches[2];
-            $message = 'csslint says: '.$output[($i + 1)];
+            $line = (int)$matches[2];
+            $message = 'csslint says: ' . $output[($i + 1)];
             // First line is message with error line and error code.
             // Second is error message.
             // Third is wrong line in file.
@@ -87,9 +83,8 @@ class CSSLintSniff implements Sniff
         }//end for
 
         // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
+        return $phpcsFile->numTokens + 1;
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

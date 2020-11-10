@@ -9,20 +9,18 @@
 
 namespace PHP_CodeSniffer\Standards\MySource\Sniffs\Objects;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class CreateWidgetTypeCallbackSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
      * @var array
      */
     public $supportedTokenizers = ['JS'];
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -32,9 +30,9 @@ class CreateWidgetTypeCallbackSniff implements Sniff
     public function register()
     {
         return [T_OBJECT];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -42,37 +40,35 @@ class CreateWidgetTypeCallbackSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
         $className = $phpcsFile->findPrevious(T_STRING, ($stackPtr - 1));
-        if (substr(strtolower($tokens[$className]['content']), -10) !== 'widgettype') {
+        if ('widgettype' !== substr(strtolower($tokens[$className]['content']), -10)) {
             return;
         }
 
         // Search for a create method.
         $create = $phpcsFile->findNext(T_PROPERTY, $stackPtr, $tokens[$stackPtr]['bracket_closer'], null, 'create');
-        if ($create === false) {
+        if (false === $create) {
             return;
         }
 
         $function = $phpcsFile->findNext([T_WHITESPACE, T_COLON], ($create + 1), null, true);
-        if ($tokens[$function]['code'] !== T_FUNCTION
-            && $tokens[$function]['code'] !== T_CLOSURE
+        if (T_FUNCTION !== $tokens[$function]['code']
+            && T_CLOSURE !== $tokens[$function]['code']
         ) {
             return;
         }
 
         $start = ($tokens[$function]['scope_opener'] + 1);
-        $end   = ($tokens[$function]['scope_closer'] - 1);
+        $end = ($tokens[$function]['scope_closer'] - 1);
 
         // Check that the first argument is called "callback".
         $arg = $phpcsFile->findNext(T_WHITESPACE, ($tokens[$function]['parenthesis_opener'] + 1), null, true);
-        if ($tokens[$arg]['content'] !== 'callback') {
+        if ('callback' !== $tokens[$arg]['content']) {
             $error = 'The first argument of the create() method of a widget type must be called "callback"';
             $phpcsFile->addError($error, $arg, 'FirstArgNotCallback');
         }
@@ -86,64 +82,67 @@ class CreateWidgetTypeCallbackSniff implements Sniff
             followed by a return statement or the end of the method.
         */
 
-        $foundCallback  = false;
+        $foundCallback = false;
         $passedCallback = false;
         $nestedFunction = null;
-        for ($i = $start; $i <= $end; $i++) {
+        for ($i = $start; $i <= $end; ++$i) {
             // Keep track of nested functions.
-            if ($nestedFunction !== null) {
+            if (null !== $nestedFunction) {
                 if ($i === $nestedFunction) {
                     $nestedFunction = null;
+
                     continue;
                 }
-            } else if (($tokens[$i]['code'] === T_FUNCTION
-                || $tokens[$i]['code'] === T_CLOSURE)
-                && isset($tokens[$i]['scope_closer']) === true
+            } elseif ((T_FUNCTION === $tokens[$i]['code']
+                || T_CLOSURE === $tokens[$i]['code'])
+                && true === isset($tokens[$i]['scope_closer'])
             ) {
                 $nestedFunction = $tokens[$i]['scope_closer'];
+
                 continue;
             }
 
-            if ($nestedFunction === null && $tokens[$i]['code'] === T_RETURN) {
+            if (null === $nestedFunction && T_RETURN === $tokens[$i]['code']) {
                 // Make sure return statements are not returning anything.
-                if ($tokens[($i + 1)]['code'] !== T_SEMICOLON) {
+                if (T_SEMICOLON !== $tokens[($i + 1)]['code']) {
                     $error = 'The create() method of a widget type must not return a value';
                     $phpcsFile->addError($error, $i, 'ReturnValue');
                 }
 
                 continue;
-            } else if ($tokens[$i]['code'] !== T_STRING
-                || $tokens[$i]['content'] !== 'callback'
+            }
+            if (T_STRING !== $tokens[$i]['code']
+                || 'callback' !== $tokens[$i]['content']
             ) {
                 continue;
             }
 
             // If this is the form "callback.call(" then it is a call
             // to the callback function.
-            if ($tokens[($i + 1)]['code'] !== T_OBJECT_OPERATOR
-                || $tokens[($i + 2)]['content'] !== 'call'
-                || $tokens[($i + 3)]['code'] !== T_OPEN_PARENTHESIS
+            if (T_OBJECT_OPERATOR !== $tokens[($i + 1)]['code']
+                || 'call' !== $tokens[($i + 2)]['content']
+                || T_OPEN_PARENTHESIS !== $tokens[($i + 3)]['code']
             ) {
                 // One last chance; this might be the callback function
                 // being passed to another function, like this
                 // "this.init(something, callback, something)".
-                if (isset($tokens[$i]['nested_parenthesis']) === false) {
+                if (false === isset($tokens[$i]['nested_parenthesis'])) {
                     continue;
                 }
 
                 // Just make sure those brackets don't belong to anyone,
                 // like an IF or FOR statement.
                 foreach ($tokens[$i]['nested_parenthesis'] as $bracket) {
-                    if (isset($tokens[$bracket]['parenthesis_owner']) === true) {
-                        continue(2);
+                    if (true === isset($tokens[$bracket]['parenthesis_owner'])) {
+                        continue 2;
                     }
                 }
 
                 // Note that we use this endBracket down further when checking
                 // for a RETURN statement.
                 $nestedParens = $tokens[$i]['nested_parenthesis'];
-                $endBracket   = end($nestedParens);
-                $bracket      = key($nestedParens);
+                $endBracket = end($nestedParens);
+                $bracket = key($nestedParens);
 
                 $prev = $phpcsFile->findPrevious(
                     Tokens::$emptyTokens,
@@ -152,7 +151,7 @@ class CreateWidgetTypeCallbackSniff implements Sniff
                     true
                 );
 
-                if ($tokens[$prev]['code'] !== T_STRING) {
+                if (T_STRING !== $tokens[$prev]['code']) {
                     // This is not a function passing the callback.
                     continue;
                 }
@@ -162,11 +161,11 @@ class CreateWidgetTypeCallbackSniff implements Sniff
 
             $foundCallback = true;
 
-            if ($passedCallback === false) {
+            if (false === $passedCallback) {
                 // The first argument must be "this" or "self".
                 $arg = $phpcsFile->findNext(T_WHITESPACE, ($i + 4), null, true);
-                if ($tokens[$arg]['content'] !== 'this'
-                    && $tokens[$arg]['content'] !== 'self'
+                if ('this' !== $tokens[$arg]['content']
+                    && 'self' !== $tokens[$arg]['content']
                 ) {
                     $error = 'The first argument passed to the callback function must be "this" or "self"';
                     $phpcsFile->addError($error, $arg, 'FirstArgNotSelf');
@@ -174,18 +173,18 @@ class CreateWidgetTypeCallbackSniff implements Sniff
             }
 
             // Now it must be followed by a return statement or the end of the function.
-            if ($passedCallback === false) {
+            if (false === $passedCallback) {
                 $endBracket = $tokens[($i + 3)]['parenthesis_closer'];
             }
 
-            for ($next = $endBracket; $next <= $end; $next++) {
+            for ($next = $endBracket; $next <= $end; ++$next) {
                 // Skip whitespace so we find the next content after the call.
-                if (isset(Tokens::$emptyTokens[$tokens[$next]['code']]) === true) {
+                if (true === isset(Tokens::$emptyTokens[$tokens[$next]['code']])) {
                     continue;
                 }
 
                 // Skip closing braces like END IF because it is not executable code.
-                if ($tokens[$next]['code'] === T_CLOSE_CURLY_BRACKET) {
+                if (T_CLOSE_CURLY_BRACKET === $tokens[$next]['code']) {
                     continue;
                 }
 
@@ -200,19 +199,18 @@ class CreateWidgetTypeCallbackSniff implements Sniff
             }
 
             if ($next !== $tokens[$function]['scope_closer']
-                && $tokens[$next]['code'] !== T_RETURN
+                && T_RETURN !== $tokens[$next]['code']
             ) {
                 $error = 'The call to the callback function must be followed by a return statement if it is not the last statement in the create() method';
                 $phpcsFile->addError($error, $i, 'NoReturn');
             }
         }//end for
 
-        if ($foundCallback === false) {
+        if (false === $foundCallback) {
             $error = 'The create() method of a widget type must call the callback function';
             $phpcsFile->addError($error, $create, 'CallbackNotCalled');
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

@@ -9,47 +9,46 @@
 
 namespace PHP_CodeSniffer\Filters;
 
-use PHP_CodeSniffer\Util;
-use PHP_CodeSniffer\Ruleset;
 use PHP_CodeSniffer\Config;
+use PHP_CodeSniffer\Ruleset;
+use PHP_CodeSniffer\Util;
 
 class Filter extends \RecursiveFilterIterator
 {
-
     /**
      * The top-level path we are filtering.
      *
      * @var string
      */
-    protected $basedir = null;
+    protected $basedir;
 
     /**
      * The config data for the run.
      *
      * @var \PHP_CodeSniffer\Config
      */
-    protected $config = null;
+    protected $config;
 
     /**
      * The ruleset used for the run.
      *
      * @var \PHP_CodeSniffer\Ruleset
      */
-    protected $ruleset = null;
+    protected $ruleset;
 
     /**
      * A list of ignore patterns that apply to directories only.
      *
      * @var array
      */
-    protected $ignoreDirPatterns = null;
+    protected $ignoreDirPatterns;
 
     /**
      * A list of ignore patterns that apply to files only.
      *
      * @var array
      */
-    protected $ignoreFilePatterns = null;
+    protected $ignoreFilePatterns;
 
     /**
      * A list of file paths we've already accepted.
@@ -60,7 +59,6 @@ class Filter extends \RecursiveFilterIterator
      */
     protected $acceptedPaths = [];
 
-
     /**
      * Constructs a filter.
      *
@@ -68,18 +66,16 @@ class Filter extends \RecursiveFilterIterator
      * @param string                   $basedir  The top-level path we are filtering.
      * @param \PHP_CodeSniffer\Config  $config   The config data for the run.
      * @param \PHP_CodeSniffer\Ruleset $ruleset  The ruleset used for the run.
-     *
-     * @return void
      */
     public function __construct($iterator, $basedir, Config $config, Ruleset $ruleset)
     {
         parent::__construct($iterator);
         $this->basedir = $basedir;
-        $this->config  = $config;
+        $this->config = $config;
         $this->ruleset = $ruleset;
+    }
 
-    }//end __construct()
-
+    //end __construct()
 
     /**
      * Check whether the current element of the iterator is acceptable.
@@ -94,33 +90,34 @@ class Filter extends \RecursiveFilterIterator
         $filePath = $this->current();
         $realPath = Util\Common::realpath($filePath);
 
-        if ($realPath !== false) {
+        if (false !== $realPath) {
             // It's a real path somewhere, so record it
             // to check for circular symlinks.
-            if (isset($this->acceptedPaths[$realPath]) === true) {
+            if (true === isset($this->acceptedPaths[$realPath])) {
                 // We've been here before.
                 return false;
             }
         }
 
         $filePath = $this->current();
-        if (is_dir($filePath) === true) {
-            if ($this->config->local === true) {
+        if (true === is_dir($filePath)) {
+            if (true === $this->config->local) {
                 return false;
             }
-        } else if ($this->shouldProcessFile($filePath) === false) {
+        } elseif (false === $this->shouldProcessFile($filePath)) {
             return false;
         }
 
-        if ($this->shouldIgnorePath($filePath) === true) {
+        if (true === $this->shouldIgnorePath($filePath)) {
             return false;
         }
 
         $this->acceptedPaths[$realPath] = true;
+
         return true;
+    }
 
-    }//end accept()
-
+    //end accept()
 
     /**
      * Returns an iterator for the current entry.
@@ -132,8 +129,8 @@ class Filter extends \RecursiveFilterIterator
      */
     public function getChildren()
     {
-        $filterClass = get_called_class();
-        $children    = new $filterClass(
+        $filterClass = static::class;
+        $children = new $filterClass(
             new \RecursiveDirectoryIterator($this->current(), (\RecursiveDirectoryIterator::SKIP_DOTS | \FilesystemIterator::FOLLOW_SYMLINKS)),
             $this->basedir,
             $this->config,
@@ -141,13 +138,14 @@ class Filter extends \RecursiveFilterIterator
         );
 
         // Set the ignore patterns so we don't have to generate them again.
-        $children->ignoreDirPatterns  = $this->ignoreDirPatterns;
+        $children->ignoreDirPatterns = $this->ignoreDirPatterns;
         $children->ignoreFilePatterns = $this->ignoreFilePatterns;
-        $children->acceptedPaths      = $this->acceptedPaths;
+        $children->acceptedPaths = $this->acceptedPaths;
+
         return $children;
+    }
 
-    }//end getChildren()
-
+    //end getChildren()
 
     /**
      * Checks filtering rules to see if a file should be checked.
@@ -163,9 +161,9 @@ class Filter extends \RecursiveFilterIterator
         // Check that the file's extension is one we are checking.
         // We are strict about checking the extension and we don't
         // let files through with no extension or that start with a dot.
-        $fileName  = basename($path);
+        $fileName = basename($path);
         $fileParts = explode('.', $fileName);
-        if ($fileParts[0] === $fileName || $fileParts[0] === '') {
+        if ($fileParts[0] === $fileName || '' === $fileParts[0]) {
             return false;
         }
 
@@ -179,14 +177,14 @@ class Filter extends \RecursiveFilterIterator
         }
 
         $matches = array_intersect_key($extensions, $this->config->extensions);
-        if (empty($matches) === true) {
+        if (true === empty($matches)) {
             return false;
         }
 
         return true;
+    }
 
-    }//end shouldProcessFile()
-
+    //end shouldProcessFile()
 
     /**
      * Checks filtering rules to see if a path should be ignored.
@@ -197,15 +195,15 @@ class Filter extends \RecursiveFilterIterator
      */
     protected function shouldIgnorePath($path)
     {
-        if ($this->ignoreFilePatterns === null) {
-            $this->ignoreDirPatterns  = [];
+        if (null === $this->ignoreFilePatterns) {
+            $this->ignoreDirPatterns = [];
             $this->ignoreFilePatterns = [];
 
-            $ignorePatterns        = $this->config->ignored;
+            $ignorePatterns = $this->config->ignored;
             $rulesetIgnorePatterns = $this->ruleset->getIgnorePatterns();
             foreach ($rulesetIgnorePatterns as $pattern => $type) {
                 // Ignore standard/sniff specific exclude rules.
-                if (is_array($type) === true) {
+                if (true === \is_array($type)) {
                     continue;
                 }
 
@@ -214,11 +212,11 @@ class Filter extends \RecursiveFilterIterator
 
             foreach ($ignorePatterns as $pattern => $type) {
                 // If the ignore pattern ends with /* then it is ignoring an entire directory.
-                if (substr($pattern, -2) === '/*') {
+                if ('/*' === substr($pattern, -2)) {
                     // Need to check this pattern for dirs as well as individual file paths.
                     $this->ignoreFilePatterns[$pattern] = $type;
 
-                    $pattern = substr($pattern, 0, -2).'(?=/|$)';
+                    $pattern = substr($pattern, 0, -2) . '(?=/|$)';
                     $this->ignoreDirPatterns[$pattern] = $type;
                 } else {
                     // This is a file-specific pattern, so only need to check this
@@ -229,12 +227,12 @@ class Filter extends \RecursiveFilterIterator
         }//end if
 
         $relativePath = $path;
-        if (strpos($path, $this->basedir) === 0) {
+        if (0 === strpos($path, $this->basedir)) {
             // The +1 cuts off the directory separator as well.
-            $relativePath = substr($path, (strlen($this->basedir) + 1));
+            $relativePath = substr($path, (\strlen($this->basedir) + 1));
         }
 
-        if (is_dir($path) === true) {
+        if (true === is_dir($path)) {
             $ignorePatterns = $this->ignoreDirPatterns;
         } else {
             $ignorePatterns = $this->ignoreFilePatterns;
@@ -243,40 +241,39 @@ class Filter extends \RecursiveFilterIterator
         foreach ($ignorePatterns as $pattern => $type) {
             // Maintains backwards compatibility in case the ignore pattern does
             // not have a relative/absolute value.
-            if (is_int($pattern) === true) {
+            if (true === \is_int($pattern)) {
                 $pattern = $type;
-                $type    = 'absolute';
+                $type = 'absolute';
             }
 
             $replacements = [
                 '\\,' => ',',
-                '*'   => '.*',
+                '*' => '.*',
             ];
 
             // We assume a / directory separator, as do the exclude rules
             // most developers write, so we need a special case for any system
             // that is different.
-            if (DIRECTORY_SEPARATOR === '\\') {
+            if (\DIRECTORY_SEPARATOR === '\\') {
                 $replacements['/'] = '\\\\';
             }
 
             $pattern = strtr($pattern, $replacements);
 
-            if ($type === 'relative') {
+            if ('relative' === $type) {
                 $testPath = $relativePath;
             } else {
                 $testPath = $path;
             }
 
-            $pattern = '`'.$pattern.'`i';
-            if (preg_match($pattern, $testPath) === 1) {
+            $pattern = '`' . $pattern . '`i';
+            if (1 === preg_match($pattern, $testPath)) {
                 return true;
             }
         }//end foreach
 
         return false;
+    }
 
-    }//end shouldIgnorePath()
-
-
+    //end shouldIgnorePath()
 }//end class

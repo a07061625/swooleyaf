@@ -11,30 +11,30 @@ namespace PHP_CodeSniffer\Tests\Core\Tokenizer;
 
 use PHP_CodeSniffer\Tests\Core\AbstractMethodUnitTest;
 
-class BitwiseOrTest extends AbstractMethodUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class BitwiseOrTest extends AbstractMethodUnitTest
 {
-
-
     /**
      * Test that non-union type bitwise or tokens are still tokenized as bitwise or.
      *
      * @param string $testMarker The comment which prefaces the target token in the test file.
      *
      * @dataProvider dataBitwiseOr
-     * @covers       PHP_CodeSniffer\Tokenizers\PHP::processAdditional
-     *
-     * @return void
+     * @covers       \PHP_CodeSniffer\Tokenizers\PHP::processAdditional
      */
     public function testBitwiseOr($testMarker)
     {
         $tokens = self::$phpcsFile->getTokens();
 
         $opener = $this->getTargetToken($testMarker, [T_BITWISE_OR, T_TYPE_UNION]);
-        $this->assertSame(T_BITWISE_OR, $tokens[$opener]['code']);
-        $this->assertSame('T_BITWISE_OR', $tokens[$opener]['type']);
+        static::assertSame(T_BITWISE_OR, $tokens[$opener]['code']);
+        static::assertSame('T_BITWISE_OR', $tokens[$opener]['type']);
+    }
 
-    }//end testBitwiseOr()
-
+    //end testBitwiseOr()
 
     /**
      * Data provider.
@@ -62,9 +62,9 @@ class BitwiseOrTest extends AbstractMethodUnitTest
             ['/* testBitwiseOrNonArrowFnFunctionCall */'],
             ['/* testLiveCoding */'],
         ];
+    }
 
-    }//end dataBitwiseOr()
-
+    //end dataBitwiseOr()
 
     /**
      * Test that bitwise or tokens when used as part of a union type are tokenized as `T_TYPE_UNION`.
@@ -72,20 +72,18 @@ class BitwiseOrTest extends AbstractMethodUnitTest
      * @param string $testMarker The comment which prefaces the target token in the test file.
      *
      * @dataProvider dataTypeUnion
-     * @covers       PHP_CodeSniffer\Tokenizers\PHP::processAdditional
-     *
-     * @return void
+     * @covers       \PHP_CodeSniffer\Tokenizers\PHP::processAdditional
      */
     public function testTypeUnion($testMarker)
     {
         $tokens = self::$phpcsFile->getTokens();
 
         $opener = $this->getTargetToken($testMarker, [T_BITWISE_OR, T_TYPE_UNION]);
-        $this->assertSame(T_TYPE_UNION, $tokens[$opener]['code']);
-        $this->assertSame('T_TYPE_UNION', $tokens[$opener]['type']);
+        static::assertSame(T_TYPE_UNION, $tokens[$opener]['code']);
+        static::assertSame('T_TYPE_UNION', $tokens[$opener]['type']);
+    }
 
-    }//end testTypeUnion()
-
+    //end testTypeUnion()
 
     /**
      * Data provider.
@@ -115,8 +113,7 @@ class BitwiseOrTest extends AbstractMethodUnitTest
             ['/* testTypeUnionArrowReturnType */'],
             ['/* testTypeUnionNonArrowFunctionDeclaration */'],
         ];
+    }
 
-    }//end dataTypeUnion()
-
-
+    //end dataTypeUnion()
 }//end class

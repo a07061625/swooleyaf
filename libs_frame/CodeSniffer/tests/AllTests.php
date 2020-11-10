@@ -9,7 +9,7 @@
 
 namespace PHP_CodeSniffer\Tests;
 
-if ($GLOBALS['PHP_CODESNIFFER_PEAR'] === false) {
+if (false === $GLOBALS['PHP_CODESNIFFER_PEAR']) {
     include_once 'Core/AllTests.php';
     include_once 'Standards/AllSniffs.php';
 } else {
@@ -22,23 +22,21 @@ if ($GLOBALS['PHP_CODESNIFFER_PEAR'] === false) {
 // older PHPUnit versions due to return type hints, so maintain
 // two different suite objects.
 $phpunit7 = false;
-if (class_exists('\PHPUnit\Runner\Version') === true) {
+if (true === class_exists('\PHPUnit\Runner\Version')) {
     $version = \PHPUnit\Runner\Version::id();
-    if ($version[0] === '7') {
+    if ('7' === $version[0]) {
         $phpunit7 = true;
     }
 }
 
-if ($phpunit7 === true) {
+if (true === $phpunit7) {
     include_once 'TestSuite7.php';
 } else {
     include_once 'TestSuite.php';
 }
 
-class PHP_CodeSniffer_AllTests
+class AllTests
 {
-
-
     /**
      * Add all PHP_CodeSniffer test suites into a single test suite.
      *
@@ -47,7 +45,7 @@ class PHP_CodeSniffer_AllTests
     public static function suite()
     {
         $GLOBALS['PHP_CODESNIFFER_STANDARD_DIRS'] = [];
-        $GLOBALS['PHP_CODESNIFFER_TEST_DIRS']     = [];
+        $GLOBALS['PHP_CODESNIFFER_TEST_DIRS'] = [];
 
         // Use a special PHP_CodeSniffer test suite so that we can
         // unset our autoload function after the run.
@@ -57,8 +55,7 @@ class PHP_CodeSniffer_AllTests
         $suite->addTest(Standards\AllSniffs::suite());
 
         return $suite;
+    }
 
-    }//end suite()
-
-
+    //end suite()
 }//end class

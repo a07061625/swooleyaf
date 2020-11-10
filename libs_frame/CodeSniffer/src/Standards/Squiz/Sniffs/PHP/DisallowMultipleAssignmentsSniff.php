@@ -15,8 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class DisallowMultipleAssignmentsSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -25,9 +23,9 @@ class DisallowMultipleAssignmentsSniff implements Sniff
     public function register()
     {
         return [T_EQUAL];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -35,8 +33,6 @@ class DisallowMultipleAssignmentsSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
@@ -44,7 +40,7 @@ class DisallowMultipleAssignmentsSniff implements Sniff
 
         // Ignore default value assignments in function definitions.
         $function = $phpcsFile->findPrevious([T_FUNCTION, T_CLOSURE], ($stackPtr - 1), null, false, null, true);
-        if ($function !== false) {
+        if (false !== $function) {
             $opener = $tokens[$function]['parenthesis_opener'];
             $closer = $tokens[$function]['parenthesis_closer'];
             if ($opener < $stackPtr && $closer > $stackPtr) {
@@ -53,11 +49,11 @@ class DisallowMultipleAssignmentsSniff implements Sniff
         }
 
         // Ignore assignments in WHILE loop conditions.
-        if (isset($tokens[$stackPtr]['nested_parenthesis']) === true) {
+        if (true === isset($tokens[$stackPtr]['nested_parenthesis'])) {
             $nested = $tokens[$stackPtr]['nested_parenthesis'];
             foreach ($nested as $opener => $closer) {
-                if (isset($tokens[$opener]['parenthesis_owner']) === true
-                    && $tokens[$tokens[$opener]['parenthesis_owner']]['code'] === T_WHILE
+                if (true === isset($tokens[$opener]['parenthesis_owner'])
+                    && T_WHILE === $tokens[$tokens[$opener]['parenthesis_owner']]['code']
                 ) {
                     return;
                 }
@@ -65,11 +61,11 @@ class DisallowMultipleAssignmentsSniff implements Sniff
         }
 
         // Ignore member var definitions.
-        if (empty($tokens[$stackPtr]['conditions']) === false) {
+        if (false === empty($tokens[$stackPtr]['conditions'])) {
             $conditions = $tokens[$stackPtr]['conditions'];
             end($conditions);
             $deepestScope = key($conditions);
-            if (isset(Tokens::$ooScopeTokens[$tokens[$deepestScope]['code']]) === true) {
+            if (true === isset(Tokens::$ooScopeTokens[$tokens[$deepestScope]['code']])) {
                 return;
             }
         }
@@ -82,25 +78,27 @@ class DisallowMultipleAssignmentsSniff implements Sniff
             or in the statement. If not, throw an error.
         */
 
-        for ($varToken = ($stackPtr - 1); $varToken >= 0; $varToken--) {
+        for ($varToken = ($stackPtr - 1); $varToken >= 0; --$varToken) {
             // Skip brackets.
-            if (isset($tokens[$varToken]['parenthesis_opener']) === true && $tokens[$varToken]['parenthesis_opener'] < $varToken) {
+            if (true === isset($tokens[$varToken]['parenthesis_opener']) && $tokens[$varToken]['parenthesis_opener'] < $varToken) {
                 $varToken = $tokens[$varToken]['parenthesis_opener'];
+
                 continue;
             }
 
-            if (isset($tokens[$varToken]['bracket_opener']) === true) {
+            if (true === isset($tokens[$varToken]['bracket_opener'])) {
                 $varToken = $tokens[$varToken]['bracket_opener'];
+
                 continue;
             }
 
-            if ($tokens[$varToken]['code'] === T_SEMICOLON) {
+            if (T_SEMICOLON === $tokens[$varToken]['code']) {
                 // We've reached the next statement, so we
                 // didn't find a variable.
                 return;
             }
 
-            if ($tokens[$varToken]['code'] === T_VARIABLE) {
+            if (T_VARIABLE === $tokens[$varToken]['code']) {
                 // We found our variable.
                 break;
             }
@@ -115,21 +113,21 @@ class DisallowMultipleAssignmentsSniff implements Sniff
 
         $allowed = Tokens::$emptyTokens;
 
-        $allowed[T_STRING]          = T_STRING;
-        $allowed[T_NS_SEPARATOR]    = T_NS_SEPARATOR;
-        $allowed[T_DOUBLE_COLON]    = T_DOUBLE_COLON;
+        $allowed[T_STRING] = T_STRING;
+        $allowed[T_NS_SEPARATOR] = T_NS_SEPARATOR;
+        $allowed[T_DOUBLE_COLON] = T_DOUBLE_COLON;
         $allowed[T_OBJECT_OPERATOR] = T_OBJECT_OPERATOR;
-        $allowed[T_ASPERAND]        = T_ASPERAND;
-        $allowed[T_DOLLAR]          = T_DOLLAR;
-        $allowed[T_SELF]            = T_SELF;
-        $allowed[T_PARENT]          = T_PARENT;
-        $allowed[T_STATIC]          = T_STATIC;
+        $allowed[T_ASPERAND] = T_ASPERAND;
+        $allowed[T_DOLLAR] = T_DOLLAR;
+        $allowed[T_SELF] = T_SELF;
+        $allowed[T_PARENT] = T_PARENT;
+        $allowed[T_STATIC] = T_STATIC;
 
         $varToken = $phpcsFile->findPrevious($allowed, ($varToken - 1), null, true);
 
         if ($varToken < $start
-            && $tokens[$varToken]['code'] !== T_OPEN_PARENTHESIS
-            && $tokens[$varToken]['code'] !== T_OPEN_SQUARE_BRACKET
+            && T_OPEN_PARENTHESIS !== $tokens[$varToken]['code']
+            && T_OPEN_SQUARE_BRACKET !== $tokens[$varToken]['code']
         ) {
             $varToken = $start;
         }
@@ -137,48 +135,48 @@ class DisallowMultipleAssignmentsSniff implements Sniff
         // Ignore the first part of FOR loops as we are allowed to
         // assign variables there even though the variable is not the
         // first thing on the line.
-        if ($tokens[$varToken]['code'] === T_OPEN_PARENTHESIS && isset($tokens[$varToken]['parenthesis_owner']) === true) {
+        if (T_OPEN_PARENTHESIS === $tokens[$varToken]['code'] && true === isset($tokens[$varToken]['parenthesis_owner'])) {
             $owner = $tokens[$varToken]['parenthesis_owner'];
-            if ($tokens[$owner]['code'] === T_FOR) {
+            if (T_FOR === $tokens[$owner]['code']) {
                 return;
             }
         }
 
-        if ($tokens[$varToken]['code'] === T_VARIABLE
-            || $tokens[$varToken]['code'] === T_OPEN_TAG
-            || $tokens[$varToken]['code'] === T_INLINE_THEN
-            || $tokens[$varToken]['code'] === T_INLINE_ELSE
-            || $tokens[$varToken]['code'] === T_SEMICOLON
-            || $tokens[$varToken]['code'] === T_CLOSE_PARENTHESIS
-            || isset($allowed[$tokens[$varToken]['code']]) === true
+        if (T_VARIABLE === $tokens[$varToken]['code']
+            || T_OPEN_TAG === $tokens[$varToken]['code']
+            || T_INLINE_THEN === $tokens[$varToken]['code']
+            || T_INLINE_ELSE === $tokens[$varToken]['code']
+            || T_SEMICOLON === $tokens[$varToken]['code']
+            || T_CLOSE_PARENTHESIS === $tokens[$varToken]['code']
+            || true === isset($allowed[$tokens[$varToken]['code']])
         ) {
             return;
         }
 
-        $error     = 'Assignments must be the first block of code on a line';
+        $error = 'Assignments must be the first block of code on a line';
         $errorCode = 'Found';
 
-        if (isset($nested) === true) {
+        if (true === isset($nested)) {
             $controlStructures = [
-                T_IF     => T_IF,
+                T_IF => T_IF,
                 T_ELSEIF => T_ELSEIF,
                 T_SWITCH => T_SWITCH,
-                T_CASE   => T_CASE,
-                T_FOR    => T_FOR,
+                T_CASE => T_CASE,
+                T_FOR => T_FOR,
             ];
             foreach ($nested as $opener => $closer) {
-                if (isset($tokens[$opener]['parenthesis_owner']) === true
-                    && isset($controlStructures[$tokens[$tokens[$opener]['parenthesis_owner']]['code']]) === true
+                if (true === isset($tokens[$opener]['parenthesis_owner'])
+                    && true === isset($controlStructures[$tokens[$tokens[$opener]['parenthesis_owner']]['code']])
                 ) {
                     $errorCode .= 'InControlStructure';
+
                     break;
                 }
             }
         }
 
         $phpcsFile->addError($error, $stackPtr, $errorCode);
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

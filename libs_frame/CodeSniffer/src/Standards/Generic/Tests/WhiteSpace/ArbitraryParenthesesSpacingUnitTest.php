@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Generic\Tests\WhiteSpace;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class ArbitraryParenthesesSpacingUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class ArbitraryParenthesesSpacingUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -26,18 +28,18 @@ class ArbitraryParenthesesSpacingUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
-            64  => 4,
-            66  => 1,
-            68  => 1,
-            69  => 1,
-            72  => 2,
-            73  => 2,
-            77  => 2,
-            81  => 4,
-            90  => 4,
-            94  => 1,
-            95  => 1,
-            97  => 1,
+            64 => 4,
+            66 => 1,
+            68 => 1,
+            69 => 1,
+            72 => 2,
+            73 => 2,
+            77 => 2,
+            81 => 4,
+            90 => 4,
+            94 => 1,
+            95 => 1,
+            97 => 1,
             100 => 2,
             101 => 2,
             104 => 2,
@@ -60,9 +62,9 @@ class ArbitraryParenthesesSpacingUnitTest extends AbstractSniffUnitTest
             164 => 1,
             165 => 1,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -78,8 +80,7 @@ class ArbitraryParenthesesSpacingUnitTest extends AbstractSniffUnitTest
             55 => 1,
             56 => 1,
         ];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

@@ -28,8 +28,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class UnnecessaryFinalModifierSniff implements Sniff
 {
-
-
     /**
      * Registers the tokens that this sniff wants to listen for.
      *
@@ -38,9 +36,9 @@ class UnnecessaryFinalModifierSniff implements Sniff
     public function register()
     {
         return [T_CLASS];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -48,16 +46,14 @@ class UnnecessaryFinalModifierSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
+        $token = $tokens[$stackPtr];
 
         // Skip for-statements without body.
-        if (isset($token['scope_opener']) === false) {
+        if (false === isset($token['scope_opener'])) {
             return;
         }
 
@@ -65,21 +61,20 @@ class UnnecessaryFinalModifierSniff implements Sniff
         $prev = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($stackPtr - 1), null, true);
 
         // Skip for non final class.
-        if ($prev === false || $tokens[$prev]['code'] !== T_FINAL) {
+        if (false === $prev || T_FINAL !== $tokens[$prev]['code']) {
             return;
         }
 
         $next = ++$token['scope_opener'];
-        $end  = --$token['scope_closer'];
+        $end = --$token['scope_closer'];
 
         for (; $next <= $end; ++$next) {
-            if ($tokens[$next]['code'] === T_FINAL) {
+            if (T_FINAL === $tokens[$next]['code']) {
                 $error = 'Unnecessary FINAL modifier in FINAL class';
                 $phpcsFile->addWarning($error, $next, 'Found');
             }
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

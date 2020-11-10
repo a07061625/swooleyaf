@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ShortFormTypeKeywordsSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -27,9 +25,9 @@ class ShortFormTypeKeywordsSniff implements Sniff
             T_BOOL_CAST,
             T_INT_CAST,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -37,30 +35,28 @@ class ShortFormTypeKeywordsSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
-        $tokens     = $phpcsFile->getTokens();
-        $typecast   = str_replace(' ', '', $tokens[$stackPtr]['content']);
-        $typecast   = str_replace("\t", '', $typecast);
-        $typecast   = trim($typecast, '()');
+        $tokens = $phpcsFile->getTokens();
+        $typecast = str_replace(' ', '', $tokens[$stackPtr]['content']);
+        $typecast = str_replace("\t", '', $typecast);
+        $typecast = trim($typecast, '()');
         $typecastLc = strtolower($typecast);
 
-        if (($tokens[$stackPtr]['code'] === T_BOOL_CAST
-            && $typecastLc === 'bool')
-            || ($tokens[$stackPtr]['code'] === T_INT_CAST
-            && $typecastLc === 'int')
+        if ((T_BOOL_CAST === $tokens[$stackPtr]['code']
+            && 'bool' === $typecastLc)
+            || (T_INT_CAST === $tokens[$stackPtr]['code']
+            && 'int' === $typecastLc)
         ) {
             return;
         }
 
         $error = 'Short form type keywords must be used. Found: %s';
-        $data  = [$tokens[$stackPtr]['content']];
-        $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'LongFound', $data);
-        if ($fix === true) {
-            if ($tokens[$stackPtr]['code'] === T_BOOL_CAST) {
+        $data = [$tokens[$stackPtr]['content']];
+        $fix = $phpcsFile->addFixableError($error, $stackPtr, 'LongFound', $data);
+        if (true === $fix) {
+            if (T_BOOL_CAST === $tokens[$stackPtr]['code']) {
                 $replacement = str_replace($typecast, 'bool', $tokens[$stackPtr]['content']);
             } else {
                 $replacement = str_replace($typecast, 'int', $tokens[$stackPtr]['content']);
@@ -68,8 +64,7 @@ class ShortFormTypeKeywordsSniff implements Sniff
 
             $phpcsFile->fixer->replaceToken($stackPtr, $replacement);
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\PSR2\Tests\Namespaces;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class UseDeclarationUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class UseDeclarationUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -25,16 +27,16 @@ class UseDeclarationUnitTest extends AbstractSniffUnitTest
      *
      * @return array<int, int>
      */
-    public function getErrorList($testFile='')
+    public function getErrorList($testFile = '')
     {
         switch ($testFile) {
         case 'UseDeclarationUnitTest.2.inc':
             return [
-                4  => 1,
-                5  => 1,
-                6  => 1,
-                7  => 1,
-                9  => 1,
+                4 => 1,
+                5 => 1,
+                6 => 1,
+                7 => 1,
+                9 => 1,
                 10 => 1,
                 11 => 1,
                 16 => 1,
@@ -46,9 +48,9 @@ class UseDeclarationUnitTest extends AbstractSniffUnitTest
             ];
         case 'UseDeclarationUnitTest.5.inc':
             return [
-                5  => 1,
-                6  => 1,
-                8  => 1,
+                5 => 1,
+                6 => 1,
+                8 => 1,
                 14 => 1,
                 17 => 1,
                 18 => 1,
@@ -75,9 +77,9 @@ class UseDeclarationUnitTest extends AbstractSniffUnitTest
         default:
             return [];
         }//end switch
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -90,8 +92,7 @@ class UseDeclarationUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

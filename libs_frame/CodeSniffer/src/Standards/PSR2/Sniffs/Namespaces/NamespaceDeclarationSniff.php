@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class NamespaceDeclarationSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -24,9 +22,9 @@ class NamespaceDeclarationSniff implements Sniff
     public function register()
     {
         return [T_NAMESPACE];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -34,15 +32,13 @@ class NamespaceDeclarationSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
         $end = $phpcsFile->findEndOfStatement($stackPtr);
-        for ($i = ($end + 1); $i < ($phpcsFile->numTokens - 1); $i++) {
+        for ($i = ($end + 1); $i < ($phpcsFile->numTokens - 1); ++$i) {
             if ($tokens[$i]['line'] === $tokens[$end]['line']) {
                 continue;
             }
@@ -53,12 +49,12 @@ class NamespaceDeclarationSniff implements Sniff
         // The $i var now points to the first token on the line after the
         // namespace declaration, which must be a blank line.
         $next = $phpcsFile->findNext(T_WHITESPACE, $i, $phpcsFile->numTokens, true);
-        if ($next === false) {
+        if (false === $next) {
             return;
         }
 
         $diff = ($tokens[$next]['line'] - $tokens[$i]['line']);
-        if ($diff === 1) {
+        if (1 === $diff) {
             return;
         }
 
@@ -67,14 +63,14 @@ class NamespaceDeclarationSniff implements Sniff
         }
 
         $error = 'There must be one blank line after the namespace declaration';
-        $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'BlankLineAfter');
+        $fix = $phpcsFile->addFixableError($error, $stackPtr, 'BlankLineAfter');
 
-        if ($fix === true) {
-            if ($diff === 0) {
+        if (true === $fix) {
+            if (0 === $diff) {
                 $phpcsFile->fixer->addNewlineBefore($i);
             } else {
                 $phpcsFile->fixer->beginChangeset();
-                for ($x = $i; $x < $next; $x++) {
+                for ($x = $i; $x < $next; ++$x) {
                     if ($tokens[$x]['line'] === $tokens[$next]['line']) {
                         break;
                     }
@@ -86,8 +82,7 @@ class NamespaceDeclarationSniff implements Sniff
                 $phpcsFile->fixer->endChangeset();
             }
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

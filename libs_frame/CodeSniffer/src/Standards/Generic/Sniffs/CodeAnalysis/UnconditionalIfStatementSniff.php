@@ -32,8 +32,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class UnconditionalIfStatementSniff implements Sniff
 {
-
-
     /**
      * Registers the tokens that this sniff wants to listen for.
      *
@@ -45,9 +43,9 @@ class UnconditionalIfStatementSniff implements Sniff
             T_IF,
             T_ELSEIF,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -55,39 +53,37 @@ class UnconditionalIfStatementSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
+        $token = $tokens[$stackPtr];
 
         // Skip if statement without body.
-        if (isset($token['parenthesis_opener']) === false) {
+        if (false === isset($token['parenthesis_opener'])) {
             return;
         }
 
         $next = ++$token['parenthesis_opener'];
-        $end  = --$token['parenthesis_closer'];
+        $end = --$token['parenthesis_closer'];
 
         $goodCondition = false;
         for (; $next <= $end; ++$next) {
             $code = $tokens[$next]['code'];
 
-            if (isset(Tokens::$emptyTokens[$code]) === true) {
+            if (true === isset(Tokens::$emptyTokens[$code])) {
                 continue;
-            } else if ($code !== T_TRUE && $code !== T_FALSE) {
+            }
+            if (T_TRUE !== $code && T_FALSE !== $code) {
                 $goodCondition = true;
             }
         }
 
-        if ($goodCondition === false) {
+        if (false === $goodCondition) {
             $error = 'Avoid IF statements that are always true or false';
             $phpcsFile->addWarning($error, $stackPtr, 'Found');
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

@@ -11,6 +11,12 @@ namespace PHP_CodeSniffer\Tests;
 
 class FileList
 {
+    /**
+     * Recursive directory iterator.
+     *
+     * @var \DirectoryIterator
+     */
+    public $fileIterator;
 
     /**
      * The path to the project root directory.
@@ -18,13 +24,6 @@ class FileList
      * @var string
      */
     protected $rootPath;
-
-    /**
-     * Recursive directory iterator.
-     *
-     * @var \DirectoryIterator
-     */
-    public $fileIterator;
 
     /**
      * Base regex to use if no filter regex is provided.
@@ -40,7 +39,6 @@ class FileList
      */
     private $baseRegex = '`^%s(?!\.git/)(?!(.*/)?\.+$)(?!.*\.(bak|orig)).*$`Dix';
 
-
     /**
      * Constructor.
      *
@@ -48,7 +46,7 @@ class FileList
      * @param string $rootPath  Path to the project root.
      * @param string $filter    PCRE regular expression to filter the file list with.
      */
-    public function __construct($directory, $rootPath='', $filter='')
+    public function __construct($directory, $rootPath = '', $filter = '')
     {
         $this->rootPath = $rootPath;
 
@@ -62,16 +60,16 @@ class FileList
             \RecursiveIteratorIterator::CATCH_GET_CHILD
         );
 
-        if ($filter === '') {
+        if ('' === $filter) {
             $filter = sprintf($this->baseRegex, preg_quote($this->rootPath));
         }
 
         $this->fileIterator = new \RegexIterator($flattened, $filter);
 
         return $this;
+    }
 
-    }//end __construct()
-
+    //end __construct()
 
     /**
      * Retrieve the filtered file list as an array.
@@ -87,8 +85,7 @@ class FileList
         }
 
         return $fileList;
+    }
 
-    }//end getList()
-
-
+    //end getList()
 }//end class

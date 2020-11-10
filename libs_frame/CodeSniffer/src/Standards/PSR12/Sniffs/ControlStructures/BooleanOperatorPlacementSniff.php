@@ -14,16 +14,14 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class BooleanOperatorPlacementSniff implements Sniff
 {
-
     /**
      * Used to restrict the placement of the boolean operator.
      *
      * Allowed value are "first" or "last".
      *
-     * @var string|null
+     * @var null|string
      */
-    public $allowOnly = null;
-
+    public $allowOnly;
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -38,9 +36,9 @@ class BooleanOperatorPlacementSniff implements Sniff
             T_SWITCH,
             T_ELSEIF,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -48,15 +46,13 @@ class BooleanOperatorPlacementSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        if (isset($tokens[$stackPtr]['parenthesis_opener']) === false
-            || isset($tokens[$stackPtr]['parenthesis_closer']) === false
+        if (false === isset($tokens[$stackPtr]['parenthesis_opener'])
+            || false === isset($tokens[$stackPtr]['parenthesis_closer'])
         ) {
             return;
         }
@@ -74,36 +70,36 @@ class BooleanOperatorPlacementSniff implements Sniff
             T_BOOLEAN_OR,
         ];
 
-        if ($this->allowOnly === 'first' || $this->allowOnly === 'last') {
+        if ('first' === $this->allowOnly || 'last' === $this->allowOnly) {
             $position = $this->allowOnly;
         } else {
             $position = null;
         }
 
-        $operator  = $parenOpener;
-        $error     = false;
+        $operator = $parenOpener;
+        $error = false;
         $operators = [];
 
         do {
             $operator = $phpcsFile->findNext($find, ($operator + 1), $parenCloser);
-            if ($operator === false) {
+            if (false === $operator) {
                 break;
             }
 
             $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($operator - 1), $parenOpener, true);
-            if ($prev === false) {
+            if (false === $prev) {
                 // Parse error.
                 return;
             }
 
             $next = $phpcsFile->findNext(T_WHITESPACE, ($operator + 1), $parenCloser, true);
-            if ($next === false) {
+            if (false === $next) {
                 // Parse error.
                 return;
             }
 
             $firstOnLine = false;
-            $lastOnLine  = false;
+            $lastOnLine = false;
 
             if ($tokens[$prev]['line'] < $tokens[$operator]['line']) {
                 // The boolean operator is the first content on the line.
@@ -115,7 +111,7 @@ class BooleanOperatorPlacementSniff implements Sniff
                 $lastOnLine = true;
             }
 
-            if ($firstOnLine === true && $lastOnLine === true) {
+            if (true === $firstOnLine && true === $lastOnLine) {
                 // The operator is the only content on the line.
                 // Don't record it because we can't determine
                 // placement information from looking at it.
@@ -124,49 +120,51 @@ class BooleanOperatorPlacementSniff implements Sniff
 
             $operators[] = $operator;
 
-            if ($firstOnLine === false && $lastOnLine === false) {
+            if (false === $firstOnLine && false === $lastOnLine) {
                 // It's in the middle of content, so we can't determine
                 // placement information from looking at it, but we may
                 // still need to process it.
                 continue;
             }
 
-            if ($firstOnLine === true) {
-                if ($position === null) {
+            if (true === $firstOnLine) {
+                if (null === $position) {
                     $position = 'first';
                 }
 
-                if ($position !== 'first') {
+                if ('first' !== $position) {
                     $error = true;
                 }
             } else {
-                if ($position === null) {
+                if (null === $position) {
                     $position = 'last';
                 }
 
-                if ($position !== 'last') {
+                if ('last' !== $position) {
                     $error = true;
                 }
             }
-        } while ($operator !== false);
+        } while (false !== $operator);
 
-        if ($error === false) {
+        if (false === $error) {
             return;
         }
 
         switch ($this->allowOnly) {
         case 'first':
             $error = 'Boolean operators between conditions must be at the beginning of the line';
+
             break;
         case 'last':
             $error = 'Boolean operators between conditions must be at the end of the line';
+
             break;
         default:
             $error = 'Boolean operators between conditions must be at the beginning or end of the line, but not both';
         }
 
         $fix = $phpcsFile->addFixableError($error, $stackPtr, 'FoundMixed');
-        if ($fix === false) {
+        if (false === $fix) {
             return;
         }
 
@@ -175,24 +173,24 @@ class BooleanOperatorPlacementSniff implements Sniff
             $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($operator - 1), $parenOpener, true);
             $next = $phpcsFile->findNext(T_WHITESPACE, ($operator + 1), $parenCloser, true);
 
-            if ($position === 'last') {
+            if ('last' === $position) {
                 if ($tokens[$next]['line'] === $tokens[$operator]['line']) {
                     if ($tokens[$prev]['line'] === $tokens[$operator]['line']) {
                         // Move the content after the operator to the next line.
-                        if ($tokens[($operator + 1)]['code'] === T_WHITESPACE) {
+                        if (T_WHITESPACE === $tokens[($operator + 1)]['code']) {
                             $phpcsFile->fixer->replaceToken(($operator + 1), '');
                         }
 
-                        $first   = $phpcsFile->findFirstOnLine(T_WHITESPACE, $operator, true);
+                        $first = $phpcsFile->findFirstOnLine(T_WHITESPACE, $operator, true);
                         $padding = str_repeat(' ', ($tokens[$first]['column'] - 1));
-                        $phpcsFile->fixer->addContent($operator, $phpcsFile->eolChar.$padding);
+                        $phpcsFile->fixer->addContent($operator, $phpcsFile->eolChar . $padding);
                     } else {
                         // Move the operator to the end of the previous line.
-                        if ($tokens[($operator + 1)]['code'] === T_WHITESPACE) {
+                        if (T_WHITESPACE === $tokens[($operator + 1)]['code']) {
                             $phpcsFile->fixer->replaceToken(($operator + 1), '');
                         }
 
-                        $phpcsFile->fixer->addContent($prev, ' '.$tokens[$operator]['content']);
+                        $phpcsFile->fixer->addContent($prev, ' ' . $tokens[$operator]['content']);
                         $phpcsFile->fixer->replaceToken($operator, '');
                     }
                 }//end if
@@ -200,20 +198,20 @@ class BooleanOperatorPlacementSniff implements Sniff
                 if ($tokens[$prev]['line'] === $tokens[$operator]['line']) {
                     if ($tokens[$next]['line'] === $tokens[$operator]['line']) {
                         // Move the operator, and the rest of the expression, to the next line.
-                        if ($tokens[($operator - 1)]['code'] === T_WHITESPACE) {
+                        if (T_WHITESPACE === $tokens[($operator - 1)]['code']) {
                             $phpcsFile->fixer->replaceToken(($operator - 1), '');
                         }
 
-                        $first   = $phpcsFile->findFirstOnLine(T_WHITESPACE, $operator, true);
+                        $first = $phpcsFile->findFirstOnLine(T_WHITESPACE, $operator, true);
                         $padding = str_repeat(' ', ($tokens[$first]['column'] - 1));
-                        $phpcsFile->fixer->addContentBefore($operator, $phpcsFile->eolChar.$padding);
+                        $phpcsFile->fixer->addContentBefore($operator, $phpcsFile->eolChar . $padding);
                     } else {
                         // Move the operator to the start of the next line.
-                        if ($tokens[($operator - 1)]['code'] === T_WHITESPACE) {
+                        if (T_WHITESPACE === $tokens[($operator - 1)]['code']) {
                             $phpcsFile->fixer->replaceToken(($operator - 1), '');
                         }
 
-                        $phpcsFile->fixer->addContentBefore($next, $tokens[$operator]['content'].' ');
+                        $phpcsFile->fixer->addContentBefore($next, $tokens[$operator]['content'] . ' ');
                         $phpcsFile->fixer->replaceToken($operator, '');
                     }
                 }//end if
@@ -221,8 +219,7 @@ class BooleanOperatorPlacementSniff implements Sniff
         }//end foreach
 
         $phpcsFile->fixer->endChangeset();
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

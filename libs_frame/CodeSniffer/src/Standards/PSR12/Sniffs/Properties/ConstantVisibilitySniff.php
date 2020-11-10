@@ -15,8 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class ConstantVisibilitySniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -25,9 +23,9 @@ class ConstantVisibilitySniff implements Sniff
     public function register()
     {
         return [T_CONST];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -35,27 +33,24 @@ class ConstantVisibilitySniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
         // Make sure this is a class constant.
-        if ($phpcsFile->hasCondition($stackPtr, Tokens::$ooScopeTokens) === false) {
+        if (false === $phpcsFile->hasCondition($stackPtr, Tokens::$ooScopeTokens)) {
             return;
         }
 
         $prev = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($stackPtr - 1), null, true);
-        if (isset(Tokens::$scopeModifiers[$tokens[$prev]['code']]) === true) {
+        if (true === isset(Tokens::$scopeModifiers[$tokens[$prev]['code']])) {
             return;
         }
 
         $error = 'Visibility must be declared on all constants if your project supports PHP 7.1 or later';
         $phpcsFile->addWarning($error, $stackPtr, 'NotFound');
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

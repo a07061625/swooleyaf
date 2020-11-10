@@ -9,13 +9,11 @@
 
 namespace PHP_CodeSniffer\Standards\MySource\Sniffs\Channels;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 
 class UnusedSystemSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -24,9 +22,9 @@ class UnusedSystemSniff implements Sniff
     public function register()
     {
         return [T_DOUBLE_COLON];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
@@ -34,8 +32,6 @@ class UnusedSystemSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
@@ -43,12 +39,12 @@ class UnusedSystemSniff implements Sniff
 
         // Check if this is a call to includeSystem, includeAsset or includeWidget.
         $methodName = strtolower($tokens[($stackPtr + 1)]['content']);
-        if ($methodName === 'includesystem'
-            || $methodName === 'includeasset'
-            || $methodName === 'includewidget'
+        if ('includesystem' === $methodName
+            || 'includeasset' === $methodName
+            || 'includewidget' === $methodName
         ) {
             $systemName = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 3), null, true);
-            if ($systemName === false || $tokens[$systemName]['code'] !== T_CONSTANT_ENCAPSED_STRING) {
+            if (false === $systemName || T_CONSTANT_ENCAPSED_STRING !== $tokens[$systemName]['code']) {
                 // Must be using a variable instead of a specific system name.
                 // We can't accurately check that.
                 return;
@@ -59,9 +55,9 @@ class UnusedSystemSniff implements Sniff
             return;
         }
 
-        if ($methodName === 'includeasset') {
+        if ('includeasset' === $methodName) {
             $systemName .= 'assettype';
-        } else if ($methodName === 'includewidget') {
+        } elseif ('includewidget' === $methodName) {
             $systemName .= 'widgettype';
         }
 
@@ -69,7 +65,7 @@ class UnusedSystemSniff implements Sniff
 
         // Now check if this system is used anywhere in this scope.
         $level = $tokens[$stackPtr]['level'];
-        for ($i = ($stackPtr + 1); $i < $phpcsFile->numTokens; $i++) {
+        for ($i = ($stackPtr + 1); $i < $phpcsFile->numTokens; ++$i) {
             if ($tokens[$i]['level'] < $level) {
                 // We have gone out of scope.
                 // If the original include was inside an IF statement that
@@ -79,11 +75,12 @@ class UnusedSystemSniff implements Sniff
                     // We are still in the base level, so this is the first
                     // time we have got here.
                     $conditions = array_keys($tokens[$stackPtr]['conditions']);
-                    if (empty($conditions) === false) {
+                    if (false === empty($conditions)) {
                         $cond = array_pop($conditions);
-                        if ($tokens[$cond]['code'] === T_IF) {
+                        if (T_IF === $tokens[$cond]['code']) {
                             $i = $tokens[$cond]['scope_closer'];
-                            $level--;
+                            --$level;
+
                             continue;
                         }
                     }
@@ -92,9 +89,9 @@ class UnusedSystemSniff implements Sniff
                 break;
             }//end if
 
-            if ($tokens[$i]['code'] !== T_DOUBLE_COLON
-                && $tokens[$i]['code'] !== T_EXTENDS
-                && $tokens[$i]['code'] !== T_IMPLEMENTS
+            if (T_DOUBLE_COLON !== $tokens[$i]['code']
+                && T_EXTENDS !== $tokens[$i]['code']
+                && T_IMPLEMENTS !== $tokens[$i]['code']
             ) {
                 continue;
             }
@@ -106,19 +103,21 @@ class UnusedSystemSniff implements Sniff
                     // The included system was used, so it is fine.
                     return;
                 }
+
                 break;
             case T_EXTENDS:
                 $classNameToken = $phpcsFile->findNext(T_STRING, ($i + 1));
-                $className      = strtolower($tokens[$classNameToken]['content']);
+                $className = strtolower($tokens[$classNameToken]['content']);
                 if ($className === $systemName) {
                     // The included system was used, so it is fine.
                     return;
                 }
+
                 break;
             case T_IMPLEMENTS:
                 $endImplements = $phpcsFile->findNext([T_EXTENDS, T_OPEN_CURLY_BRACKET], ($i + 1));
-                for ($x = ($i + 1); $x < $endImplements; $x++) {
-                    if ($tokens[$x]['code'] === T_STRING) {
+                for ($x = ($i + 1); $x < $endImplements; ++$x) {
+                    if (T_STRING === $tokens[$x]['code']) {
                         $className = strtolower($tokens[$x]['content']);
                         if ($className === $systemName) {
                             // The included system was used, so it is fine.
@@ -126,16 +125,16 @@ class UnusedSystemSniff implements Sniff
                         }
                     }
                 }
+
                 break;
             }//end switch
         }//end for
 
         // If we get to here, the system was not use.
         $error = 'Included system "%s" is never used';
-        $data  = [$systemName];
+        $data = [$systemName];
         $phpcsFile->addError($error, $stackPtr, 'Found', $data);
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

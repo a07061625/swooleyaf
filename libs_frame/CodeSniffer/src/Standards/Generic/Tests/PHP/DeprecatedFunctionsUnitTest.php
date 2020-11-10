@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Generic\Tests\PHP;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class DeprecatedFunctionsUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class DeprecatedFunctionsUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -27,18 +29,18 @@ class DeprecatedFunctionsUnitTest extends AbstractSniffUnitTest
     {
         $errors = [];
 
-        if (PHP_VERSION_ID >= 70200 && PHP_VERSION_ID < 80000) {
+        if (\PHP_VERSION_ID >= 70200 && \PHP_VERSION_ID < 80000) {
             $errors[3] = 1;
         }
 
-        if (PHP_VERSION_ID >= 70300 && PHP_VERSION_ID < 80000) {
+        if (\PHP_VERSION_ID >= 70300 && \PHP_VERSION_ID < 80000) {
             $errors[4] = 1;
         }
 
         return $errors;
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -51,8 +53,7 @@ class DeprecatedFunctionsUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

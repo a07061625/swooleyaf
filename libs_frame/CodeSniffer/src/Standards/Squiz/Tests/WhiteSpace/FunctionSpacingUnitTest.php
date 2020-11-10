@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Squiz\Tests\WhiteSpace;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class FunctionSpacingUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class FunctionSpacingUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -25,20 +27,20 @@ class FunctionSpacingUnitTest extends AbstractSniffUnitTest
      *
      * @return array<int, int>
      */
-    public function getErrorList($testFile='')
+    public function getErrorList($testFile = '')
     {
         switch ($testFile) {
         case 'FunctionSpacingUnitTest.1.inc':
             return [
-                26  => 1,
-                35  => 1,
-                44  => 1,
-                51  => 1,
-                55  => 1,
-                61  => 1,
-                64  => 1,
-                66  => 1,
-                81  => 1,
+                26 => 1,
+                35 => 1,
+                44 => 1,
+                51 => 1,
+                55 => 1,
+                61 => 1,
+                64 => 1,
+                66 => 1,
+                81 => 1,
                 100 => 1,
                 111 => 1,
                 113 => 1,
@@ -94,22 +96,18 @@ class FunctionSpacingUnitTest extends AbstractSniffUnitTest
 
         case 'FunctionSpacingUnitTest.2.inc':
             return [2 => 1];
-
         case 'FunctionSpacingUnitTest.3.inc':
             return [7 => 1];
-
         case 'FunctionSpacingUnitTest.5.inc':
             return [5 => 1];
-
         case 'FunctionSpacingUnitTest.6.inc':
             return [10 => 1];
-
         default:
             return [];
         }//end switch
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -122,8 +120,7 @@ class FunctionSpacingUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

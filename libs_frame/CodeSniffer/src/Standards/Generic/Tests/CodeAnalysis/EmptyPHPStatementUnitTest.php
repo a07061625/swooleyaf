@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Generic\Tests\CodeAnalysis;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class EmptyPHPStatementUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class EmptyPHPStatementUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -26,9 +28,9 @@ class EmptyPHPStatementUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -41,7 +43,7 @@ class EmptyPHPStatementUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [
-            9  => 1,
+            9 => 1,
             12 => 1,
             15 => 1,
             18 => 1,
@@ -61,8 +63,7 @@ class EmptyPHPStatementUnitTest extends AbstractSniffUnitTest
             72 => 1,
             80 => 1,
         ];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

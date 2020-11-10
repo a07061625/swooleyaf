@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Tests\Core\File;
 
 use PHP_CodeSniffer\Tests\Core\AbstractMethodUnitTest;
 
-class IsReferenceTest extends AbstractMethodUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class IsReferenceTest extends AbstractMethodUnitTest
 {
-
-
     /**
      * Test correctly identifying whether a "bitwise and" token is a reference or not.
      *
@@ -22,17 +24,15 @@ class IsReferenceTest extends AbstractMethodUnitTest
      * @param bool   $expected   Expected function output.
      *
      * @dataProvider dataIsReference
-     *
-     * @return void
      */
     public function testIsReference($identifier, $expected)
     {
         $bitwiseAnd = $this->getTargetToken($identifier, T_BITWISE_AND);
-        $result     = self::$phpcsFile->isReference($bitwiseAnd);
-        $this->assertSame($expected, $result);
+        $result = self::$phpcsFile->isReference($bitwiseAnd);
+        static::assertSame($expected, $result);
+    }
 
-    }//end testIsReference()
-
+    //end testIsReference()
 
     /**
      * Data provider for the IsReference test.
@@ -241,8 +241,7 @@ class IsReferenceTest extends AbstractMethodUnitTest
                 true,
             ],
         ];
+    }
 
-    }//end dataIsReference()
-
-
+    //end dataIsReference()
 }//end class

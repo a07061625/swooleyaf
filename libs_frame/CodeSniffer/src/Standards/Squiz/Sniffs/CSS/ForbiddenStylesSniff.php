@@ -14,7 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ForbiddenStylesSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
@@ -23,22 +22,29 @@ class ForbiddenStylesSniff implements Sniff
     public $supportedTokenizers = ['CSS'];
 
     /**
+     * If true, an error will be thrown; otherwise a warning.
+     *
+     * @var bool
+     */
+    public $error = true;
+
+    /**
      * A list of forbidden styles with their alternatives.
      *
      * The value is NULL if no alternative exists. i.e., the
      * style should just not be used.
      *
-     * @var array<string, string|null>
+     * @var array<string, null|string>
      */
     protected $forbiddenStyles = [
-        '-moz-border-radius'             => 'border-radius',
-        '-webkit-border-radius'          => 'border-radius',
-        '-moz-border-radius-topleft'     => 'border-top-left-radius',
-        '-moz-border-radius-topright'    => 'border-top-right-radius',
+        '-moz-border-radius' => 'border-radius',
+        '-webkit-border-radius' => 'border-radius',
+        '-moz-border-radius-topleft' => 'border-top-left-radius',
+        '-moz-border-radius-topright' => 'border-top-right-radius',
         '-moz-border-radius-bottomright' => 'border-bottom-right-radius',
-        '-moz-border-radius-bottomleft'  => 'border-bottom-left-radius',
-        '-moz-box-shadow'                => 'box-shadow',
-        '-webkit-box-shadow'             => 'box-shadow',
+        '-moz-border-radius-bottomleft' => 'border-bottom-left-radius',
+        '-moz-box-shadow' => 'box-shadow',
+        '-webkit-box-shadow' => 'box-shadow',
     ];
 
     /**
@@ -51,17 +57,9 @@ class ForbiddenStylesSniff implements Sniff
     /**
      * If true, forbidden styles will be considered regular expressions.
      *
-     * @var boolean
+     * @var bool
      */
     protected $patternMatch = false;
-
-    /**
-     * If true, an error will be thrown; otherwise a warning.
-     *
-     * @var boolean
-     */
-    public $error = true;
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -72,16 +70,16 @@ class ForbiddenStylesSniff implements Sniff
     {
         $this->forbiddenStyleNames = array_keys($this->forbiddenStyles);
 
-        if ($this->patternMatch === true) {
+        if (true === $this->patternMatch) {
             foreach ($this->forbiddenStyleNames as $i => $name) {
-                $this->forbiddenStyleNames[$i] = '/'.$name.'/i';
+                $this->forbiddenStyleNames[$i] = '/' . $name . '/i';
             }
         }
 
         return [T_STYLE];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -89,17 +87,15 @@ class ForbiddenStylesSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
-        $tokens  = $phpcsFile->getTokens();
-        $style   = strtolower($tokens[$stackPtr]['content']);
+        $tokens = $phpcsFile->getTokens();
+        $style = strtolower($tokens[$stackPtr]['content']);
         $pattern = null;
 
-        if ($this->patternMatch === true) {
-            $count   = 0;
+        if (true === $this->patternMatch) {
+            $count = 0;
             $pattern = preg_replace(
                 $this->forbiddenStyleNames,
                 $this->forbiddenStyleNames,
@@ -108,22 +104,22 @@ class ForbiddenStylesSniff implements Sniff
                 $count
             );
 
-            if ($count === 0) {
+            if (0 === $count) {
                 return;
             }
 
             // Remove the pattern delimiters and modifier.
             $pattern = substr($pattern, 1, -2);
         } else {
-            if (in_array($style, $this->forbiddenStyleNames, true) === false) {
+            if (false === \in_array($style, $this->forbiddenStyleNames, true)) {
                 return;
             }
         }//end if
 
         $this->addError($phpcsFile, $stackPtr, $style, $pattern);
+    }
 
-    }//end process()
-
+    //end process()
 
     /**
      * Generates the error or warning for this sniff.
@@ -133,45 +129,42 @@ class ForbiddenStylesSniff implements Sniff
      *                                               in the token array.
      * @param string                      $style     The name of the forbidden style.
      * @param string                      $pattern   The pattern used for the match.
-     *
-     * @return void
      */
-    protected function addError($phpcsFile, $stackPtr, $style, $pattern=null)
+    protected function addError($phpcsFile, $stackPtr, $style, $pattern = null)
     {
-        $data  = [$style];
+        $data = [$style];
         $error = 'The use of style %s is ';
-        if ($this->error === true) {
-            $type   = 'Found';
+        if (true === $this->error) {
+            $type = 'Found';
             $error .= 'forbidden';
         } else {
-            $type   = 'Discouraged';
+            $type = 'Discouraged';
             $error .= 'discouraged';
         }
 
-        if ($pattern === null) {
+        if (null === $pattern) {
             $pattern = $style;
         }
 
-        if ($this->forbiddenStyles[$pattern] !== null) {
+        if (null !== $this->forbiddenStyles[$pattern]) {
             $data[] = $this->forbiddenStyles[$pattern];
-            if ($this->error === true) {
-                $fix = $phpcsFile->addFixableError($error.'; use %s instead', $stackPtr, $type.'WithAlternative', $data);
+            if (true === $this->error) {
+                $fix = $phpcsFile->addFixableError($error . '; use %s instead', $stackPtr, $type . 'WithAlternative', $data);
             } else {
-                $fix = $phpcsFile->addFixableWarning($error.'; use %s instead', $stackPtr, $type.'WithAlternative', $data);
+                $fix = $phpcsFile->addFixableWarning($error . '; use %s instead', $stackPtr, $type . 'WithAlternative', $data);
             }
 
-            if ($fix === true) {
+            if (true === $fix) {
                 $phpcsFile->fixer->replaceToken($stackPtr, $this->forbiddenStyles[$pattern]);
             }
         } else {
-            if ($this->error === true) {
+            if (true === $this->error) {
                 $phpcsFile->addError($error, $stackPtr, $type, $data);
             } else {
                 $phpcsFile->addWarning($error, $stackPtr, $type, $data);
             }
         }
+    }
 
-    }//end addError()
-
-
+    //end addError()
 }//end class

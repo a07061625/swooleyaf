@@ -21,10 +21,12 @@ namespace PHP_CodeSniffer\Tests\Core\Tokenizer;
 
 use PHP_CodeSniffer\Tests\Core\AbstractMethodUnitTest;
 
-class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
 {
-
-
     /**
      * Test that identifier names are tokenized the same across PHP versions, based on the PHP 5/7 tokenization.
      *
@@ -32,25 +34,23 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
      * @param array  $expectedTokens The tokenization expected.
      *
      * @dataProvider dataIdentifierTokenization
-     * @covers       PHP_CodeSniffer\Tokenizers\PHP::tokenize
-     *
-     * @return void
+     * @covers       \PHP_CodeSniffer\Tokenizers\PHP::tokenize
      */
     public function testIdentifierTokenization($testMarker, $expectedTokens)
     {
-        $tokens     = self::$phpcsFile->getTokens();
-        $identifier = $this->getTargetToken($testMarker, constant($expectedTokens[0]['type']));
+        $tokens = self::$phpcsFile->getTokens();
+        $identifier = $this->getTargetToken($testMarker, \constant($expectedTokens[0]['type']));
 
         foreach ($expectedTokens as $key => $tokenInfo) {
-            $this->assertSame(constant($tokenInfo['type']), $tokens[$identifier]['code']);
-            $this->assertSame($tokenInfo['type'], $tokens[$identifier]['type']);
-            $this->assertSame($tokenInfo['content'], $tokens[$identifier]['content']);
+            static::assertSame(\constant($tokenInfo['type']), $tokens[$identifier]['code']);
+            static::assertSame($tokenInfo['type'], $tokens[$identifier]['type']);
+            static::assertSame($tokenInfo['content'], $tokens[$identifier]['content']);
 
             ++$identifier;
         }
+    }
 
-    }//end testIdentifierTokenization()
-
+    //end testIdentifierTokenization()
 
     /**
      * Data provider.
@@ -66,11 +66,11 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testNamespaceDeclaration */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Package',
                     ],
                     [
-                        'type'    => 'T_SEMICOLON',
+                        'type' => 'T_SEMICOLON',
                         'content' => ';',
                     ],
                 ],
@@ -79,27 +79,27 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testNamespaceDeclarationWithLevels */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Vendor',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'SubLevel',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Domain',
                     ],
                     [
-                        'type'    => 'T_SEMICOLON',
+                        'type' => 'T_SEMICOLON',
                         'content' => ';',
                     ],
                 ],
@@ -108,11 +108,11 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testUseStatement */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'ClassName',
                     ],
                     [
-                        'type'    => 'T_SEMICOLON',
+                        'type' => 'T_SEMICOLON',
                         'content' => ';',
                     ],
                 ],
@@ -121,27 +121,27 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testUseStatementWithLevels */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Vendor',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Level',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Domain',
                     ],
                     [
-                        'type'    => 'T_SEMICOLON',
+                        'type' => 'T_SEMICOLON',
                         'content' => ';',
                     ],
                 ],
@@ -150,19 +150,19 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testFunctionUseStatement */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'function',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'function_name',
                     ],
                     [
-                        'type'    => 'T_SEMICOLON',
+                        'type' => 'T_SEMICOLON',
                         'content' => ';',
                     ],
                 ],
@@ -171,35 +171,35 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testFunctionUseStatementWithLevels */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'function',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Vendor',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Level',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'function_in_ns',
                     ],
                     [
-                        'type'    => 'T_SEMICOLON',
+                        'type' => 'T_SEMICOLON',
                         'content' => ';',
                     ],
                 ],
@@ -208,19 +208,19 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testConstantUseStatement */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'const',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'CONSTANT_NAME',
                     ],
                     [
-                        'type'    => 'T_SEMICOLON',
+                        'type' => 'T_SEMICOLON',
                         'content' => ';',
                     ],
                 ],
@@ -229,35 +229,35 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testConstantUseStatementWithLevels */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'const',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Vendor',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Level',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'OTHER_CONSTANT',
                     ],
                     [
-                        'type'    => 'T_SEMICOLON',
+                        'type' => 'T_SEMICOLON',
                         'content' => ';',
                     ],
                 ],
@@ -266,11 +266,11 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testMultiUseUnqualified */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'UnqualifiedClassName',
                     ],
                     [
-                        'type'    => 'T_COMMA',
+                        'type' => 'T_COMMA',
                         'content' => ',',
                     ],
                 ],
@@ -279,19 +279,19 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testMultiUsePartiallyQualified */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Sublevel',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'PartiallyClassName',
                     ],
                     [
-                        'type'    => 'T_SEMICOLON',
+                        'type' => 'T_SEMICOLON',
                         'content' => ';',
                     ],
                 ],
@@ -300,194 +300,194 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testGroupUseStatement */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Vendor',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Level',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_OPEN_USE_GROUP',
+                        'type' => 'T_OPEN_USE_GROUP',
                         'content' => '{',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '    ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'AnotherDomain',
                     ],
                     [
-                        'type'    => 'T_COMMA',
+                        'type' => 'T_COMMA',
                         'content' => ',',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '    ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'function',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'function_grouped',
                     ],
                     [
-                        'type'    => 'T_COMMA',
+                        'type' => 'T_COMMA',
                         'content' => ',',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '    ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'const',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'CONSTANT_GROUPED',
                     ],
                     [
-                        'type'    => 'T_COMMA',
+                        'type' => 'T_COMMA',
                         'content' => ',',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '    ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Sub',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'YetAnotherDomain',
                     ],
                     [
-                        'type'    => 'T_COMMA',
+                        'type' => 'T_COMMA',
                         'content' => ',',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '    ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'function',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'SubLevelA',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'function_grouped_too',
                     ],
                     [
-                        'type'    => 'T_COMMA',
+                        'type' => 'T_COMMA',
                         'content' => ',',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '    ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'const',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'SubLevelB',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'CONSTANT_GROUPED_TOO',
                     ],
                     [
-                        'type'    => 'T_COMMA',
+                        'type' => 'T_COMMA',
                         'content' => ',',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_CLOSE_USE_GROUP',
+                        'type' => 'T_CLOSE_USE_GROUP',
                         'content' => '}',
                     ],
                     [
-                        'type'    => 'T_SEMICOLON',
+                        'type' => 'T_SEMICOLON',
                         'content' => ';',
                     ],
                 ],
@@ -496,11 +496,11 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testClassName */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'MyClass',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -510,31 +510,31 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testExtendedFQN */',
                 [
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Vendor',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Level',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'FQN',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -544,19 +544,19 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testImplementsRelative */',
                 [
                     [
-                        'type'    => 'T_NAMESPACE',
+                        'type' => 'T_NAMESPACE',
                         'content' => 'namespace',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Name',
                     ],
                     [
-                        'type'    => 'T_COMMA',
+                        'type' => 'T_COMMA',
                         'content' => ',',
                     ],
                 ],
@@ -565,23 +565,23 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testImplementsFQN */',
                 [
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Fully',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Qualified',
                     ],
                     [
-                        'type'    => 'T_COMMA',
+                        'type' => 'T_COMMA',
                         'content' => ',',
                     ],
                 ],
@@ -590,11 +590,11 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testImplementsUnqualified */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Unqualified',
                     ],
                     [
-                        'type'    => 'T_COMMA',
+                        'type' => 'T_COMMA',
                         'content' => ',',
                     ],
                 ],
@@ -603,27 +603,27 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testImplementsPartiallyQualified */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Sub',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Level',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Name',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
@@ -633,11 +633,11 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testFunctionName */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'function_name',
                     ],
                     [
-                        'type'    => 'T_OPEN_PARENTHESIS',
+                        'type' => 'T_OPEN_PARENTHESIS',
                         'content' => '(',
                     ],
                 ],
@@ -646,23 +646,23 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testTypeDeclarationRelative */',
                 [
                     [
-                        'type'    => 'T_NAMESPACE',
+                        'type' => 'T_NAMESPACE',
                         'content' => 'namespace',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Name',
                     ],
                     [
-                        'type'    => 'T_TYPE_UNION',
+                        'type' => 'T_TYPE_UNION',
                         'content' => '|',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'object',
                     ],
                 ],
@@ -671,31 +671,31 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testTypeDeclarationFQN */',
                 [
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Fully',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Qualified',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Name',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                 ],
@@ -704,15 +704,15 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testTypeDeclarationUnqualified */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Unqualified',
                     ],
                     [
-                        'type'    => 'T_TYPE_UNION',
+                        'type' => 'T_TYPE_UNION',
                         'content' => '|',
                     ],
                     [
-                        'type'    => 'T_FALSE',
+                        'type' => 'T_FALSE',
                         'content' => 'false',
                     ],
                 ],
@@ -721,23 +721,23 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testTypeDeclarationPartiallyQualified */',
                 [
                     [
-                        'type'    => 'T_NULLABLE',
+                        'type' => 'T_NULLABLE',
                         'content' => '?',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Sublevel',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Name',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                 ],
@@ -746,19 +746,19 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testReturnTypeFQN */',
                 [
                     [
-                        'type'    => 'T_NULLABLE',
+                        'type' => 'T_NULLABLE',
                         'content' => '?',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Name',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                 ],
@@ -767,19 +767,19 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testFunctionCallRelative */',
                 [
                     [
-                        'type'    => 'T_NAMESPACE',
+                        'type' => 'T_NAMESPACE',
                         'content' => 'NameSpace',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'function_name',
                     ],
                     [
-                        'type'    => 'T_OPEN_PARENTHESIS',
+                        'type' => 'T_OPEN_PARENTHESIS',
                         'content' => '(',
                     ],
                 ],
@@ -788,31 +788,31 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testFunctionCallFQN */',
                 [
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Vendor',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Package',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'function_name',
                     ],
                     [
-                        'type'    => 'T_OPEN_PARENTHESIS',
+                        'type' => 'T_OPEN_PARENTHESIS',
                         'content' => '(',
                     ],
                 ],
@@ -821,11 +821,11 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testFunctionCallUnqualified */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'function_name',
                     ],
                     [
-                        'type'    => 'T_OPEN_PARENTHESIS',
+                        'type' => 'T_OPEN_PARENTHESIS',
                         'content' => '(',
                     ],
                 ],
@@ -834,19 +834,19 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testFunctionPartiallyQualified */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Level',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'function_name',
                     ],
                     [
-                        'type'    => 'T_OPEN_PARENTHESIS',
+                        'type' => 'T_OPEN_PARENTHESIS',
                         'content' => '(',
                     ],
                 ],
@@ -855,27 +855,27 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testCatchRelative */',
                 [
                     [
-                        'type'    => 'T_NAMESPACE',
+                        'type' => 'T_NAMESPACE',
                         'content' => 'namespace',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'SubLevel',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Exception',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                 ],
@@ -884,15 +884,15 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testCatchFQN */',
                 [
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Exception',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                 ],
@@ -901,11 +901,11 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testCatchUnqualified */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Exception',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                 ],
@@ -914,19 +914,19 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testCatchPartiallyQualified */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Level',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Exception',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                 ],
@@ -935,19 +935,19 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testNewRelative */',
                 [
                     [
-                        'type'    => 'T_NAMESPACE',
+                        'type' => 'T_NAMESPACE',
                         'content' => 'namespace',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'ClassName',
                     ],
                     [
-                        'type'    => 'T_OPEN_PARENTHESIS',
+                        'type' => 'T_OPEN_PARENTHESIS',
                         'content' => '(',
                     ],
                 ],
@@ -956,23 +956,23 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testNewFQN */',
                 [
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Vendor',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'ClassName',
                     ],
                     [
-                        'type'    => 'T_OPEN_PARENTHESIS',
+                        'type' => 'T_OPEN_PARENTHESIS',
                         'content' => '(',
                     ],
                 ],
@@ -981,11 +981,11 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testNewUnqualified */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'ClassName',
                     ],
                     [
-                        'type'    => 'T_SEMICOLON',
+                        'type' => 'T_SEMICOLON',
                         'content' => ';',
                     ],
                 ],
@@ -994,19 +994,19 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testNewPartiallyQualified */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Level',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'ClassName',
                     ],
                     [
-                        'type'    => 'T_SEMICOLON',
+                        'type' => 'T_SEMICOLON',
                         'content' => ';',
                     ],
                 ],
@@ -1015,19 +1015,19 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testDoubleColonRelative */',
                 [
                     [
-                        'type'    => 'T_NAMESPACE',
+                        'type' => 'T_NAMESPACE',
                         'content' => 'namespace',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'ClassName',
                     ],
                     [
-                        'type'    => 'T_DOUBLE_COLON',
+                        'type' => 'T_DOUBLE_COLON',
                         'content' => '::',
                     ],
                 ],
@@ -1036,15 +1036,15 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testDoubleColonFQN */',
                 [
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'ClassName',
                     ],
                     [
-                        'type'    => 'T_DOUBLE_COLON',
+                        'type' => 'T_DOUBLE_COLON',
                         'content' => '::',
                     ],
                 ],
@@ -1053,11 +1053,11 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testDoubleColonUnqualified */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'ClassName',
                     ],
                     [
-                        'type'    => 'T_DOUBLE_COLON',
+                        'type' => 'T_DOUBLE_COLON',
                         'content' => '::',
                     ],
                 ],
@@ -1066,19 +1066,19 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testDoubleColonPartiallyQualified */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Level',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'ClassName',
                     ],
                     [
-                        'type'    => 'T_DOUBLE_COLON',
+                        'type' => 'T_DOUBLE_COLON',
                         'content' => '::',
                     ],
                 ],
@@ -1087,19 +1087,19 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testInstanceOfRelative */',
                 [
                     [
-                        'type'    => 'T_NAMESPACE',
+                        'type' => 'T_NAMESPACE',
                         'content' => 'namespace',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'ClassName',
                     ],
                     [
-                        'type'    => 'T_SEMICOLON',
+                        'type' => 'T_SEMICOLON',
                         'content' => ';',
                     ],
                 ],
@@ -1108,23 +1108,23 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testInstanceOfFQN */',
                 [
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Full',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'ClassName',
                     ],
                     [
-                        'type'    => 'T_CLOSE_PARENTHESIS',
+                        'type' => 'T_CLOSE_PARENTHESIS',
                         'content' => ')',
                     ],
                 ],
@@ -1133,11 +1133,11 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testInstanceOfUnqualified */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'ClassName',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                 ],
@@ -1146,19 +1146,19 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testInstanceOfPartiallyQualified */',
                 [
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Partially',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'ClassName',
                     ],
                     [
-                        'type'    => 'T_SEMICOLON',
+                        'type' => 'T_SEMICOLON',
                         'content' => ';',
                     ],
                 ],
@@ -1167,48 +1167,48 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testInvalidInPHP8Whitespace */',
                 [
                     [
-                        'type'    => 'T_NAMESPACE',
+                        'type' => 'T_NAMESPACE',
                         'content' => 'namespace',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Sublevel',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '          ',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => ' ',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'function_name',
                     ],
                     [
-                        'type'    => 'T_OPEN_PARENTHESIS',
+                        'type' => 'T_OPEN_PARENTHESIS',
                         'content' => '(',
                     ],
                 ],
@@ -1217,79 +1217,78 @@ class UndoNamespacedNameSingleTokenTest extends AbstractMethodUnitTest
                 '/* testInvalidInPHP8Comments */',
                 [
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Fully',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '    ',
                     ],
                     [
-                        'type'    => 'T_PHPCS_IGNORE',
+                        'type' => 'T_PHPCS_IGNORE',
                         'content' => '// phpcs:ignore Stnd.Cat.Sniff -- for reasons
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '    ',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Qualified',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '    ',
                     ],
                     [
-                        'type'    => 'T_COMMENT',
+                        'type' => 'T_COMMENT',
                         'content' => '/* comment */',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '    ',
                     ],
                     [
-                        'type'    => 'T_NS_SEPARATOR',
+                        'type' => 'T_NS_SEPARATOR',
                         'content' => '\\',
                     ],
                     [
-                        'type'    => 'T_STRING',
+                        'type' => 'T_STRING',
                         'content' => 'Name',
                     ],
                     [
-                        'type'    => 'T_WHITESPACE',
+                        'type' => 'T_WHITESPACE',
                         'content' => '
 ',
                     ],
                 ],
             ],
         ];
+    }
 
-    }//end dataIdentifierTokenization()
-
-
+    //end dataIdentifierTokenization()
 }//end class

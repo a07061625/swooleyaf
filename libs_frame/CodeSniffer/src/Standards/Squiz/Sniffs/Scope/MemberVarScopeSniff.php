@@ -14,64 +14,51 @@ use PHP_CodeSniffer\Sniffs\AbstractVariableSniff;
 
 class MemberVarScopeSniff extends AbstractVariableSniff
 {
-
-
     /**
      * Processes the function tokens within the class.
      *
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where this token was found.
      * @param int                         $stackPtr  The position where the token was found.
-     *
-     * @return void
      */
     protected function processMemberVar(File $phpcsFile, $stackPtr)
     {
-        $tokens     = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $properties = $phpcsFile->getMemberProperties($stackPtr);
 
-        if ($properties === [] || $properties['scope_specified'] !== false) {
+        if ([] === $properties || false !== $properties['scope_specified']) {
             return;
         }
 
         $error = 'Scope modifier not specified for member variable "%s"';
-        $data  = [$tokens[$stackPtr]['content']];
+        $data = [$tokens[$stackPtr]['content']];
         $phpcsFile->addError($error, $stackPtr, 'Missing', $data);
+    }
 
-    }//end processMemberVar()
-
+    //end processMemberVar()
 
     /**
      * Processes normal variables.
      *
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where this token was found.
      * @param int                         $stackPtr  The position where the token was found.
-     *
-     * @return void
      */
     protected function processVariable(File $phpcsFile, $stackPtr)
     {
-        /*
-            We don't care about normal variables.
-        */
+        // We don't care about normal variables.
+    }
 
-    }//end processVariable()
-
+    //end processVariable()
 
     /**
      * Processes variables in double quoted strings.
      *
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where this token was found.
      * @param int                         $stackPtr  The position where the token was found.
-     *
-     * @return void
      */
     protected function processVariableInString(File $phpcsFile, $stackPtr)
     {
-        /*
-            We don't care about normal variables.
-        */
+        // We don't care about normal variables.
+    }
 
-    }//end processVariableInString()
-
-
+    //end processVariableInString()
 }//end class

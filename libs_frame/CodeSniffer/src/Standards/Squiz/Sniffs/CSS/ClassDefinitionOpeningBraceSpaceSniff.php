@@ -15,14 +15,12 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class ClassDefinitionOpeningBraceSpaceSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
      * @var array
      */
     public $supportedTokenizers = ['CSS'];
-
 
     /**
      * Returns the token types that this sniff is interested in.
@@ -32,9 +30,9 @@ class ClassDefinitionOpeningBraceSpaceSniff implements Sniff
     public function register()
     {
         return [T_OPEN_CURLY_BRACKET];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes the tokens that this sniff is interested in.
@@ -42,40 +40,38 @@ class ClassDefinitionOpeningBraceSpaceSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where the token was found.
      * @param int                         $stackPtr  The position in the stack where
      *                                               the token was found.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
-        $tokens            = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $prevNonWhitespace = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
 
-        if ($prevNonWhitespace !== false) {
+        if (false !== $prevNonWhitespace) {
             $length = 0;
             if ($tokens[$stackPtr]['line'] !== $tokens[$prevNonWhitespace]['line']) {
                 $length = 'newline';
-            } else if ($tokens[($stackPtr - 1)]['code'] === T_WHITESPACE) {
-                if (strpos($tokens[($stackPtr - 1)]['content'], "\t") !== false) {
+            } elseif (T_WHITESPACE === $tokens[($stackPtr - 1)]['code']) {
+                if (false !== strpos($tokens[($stackPtr - 1)]['content'], "\t")) {
                     $length = 'tab';
                 } else {
                     $length = $tokens[($stackPtr - 1)]['length'];
                 }
             }
 
-            if ($length === 0) {
+            if (0 === $length) {
                 $error = 'Expected 1 space before opening brace of class definition; 0 found';
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoneBefore');
-                if ($fix === true) {
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NoneBefore');
+                if (true === $fix) {
                     $phpcsFile->fixer->addContentBefore($stackPtr, ' ');
                 }
-            } else if ($length !== 1) {
+            } elseif (1 !== $length) {
                 $error = 'Expected 1 space before opening brace of class definition; %s found';
-                $data  = [$length];
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Before', $data);
-                if ($fix === true) {
+                $data = [$length];
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Before', $data);
+                if (true === $fix) {
                     $phpcsFile->fixer->beginChangeset();
 
-                    for ($i = ($stackPtr - 1); $i > $prevNonWhitespace; $i--) {
+                    for ($i = ($stackPtr - 1); $i > $prevNonWhitespace; --$i) {
                         $phpcsFile->fixer->replaceToken($i, '');
                     }
 
@@ -86,26 +82,26 @@ class ClassDefinitionOpeningBraceSpaceSniff implements Sniff
         }//end if
 
         $nextNonEmpty = $phpcsFile->findNext(Tokens::$emptyTokens, ($stackPtr + 1), null, true);
-        if ($nextNonEmpty === false) {
+        if (false === $nextNonEmpty) {
             return;
         }
 
         if ($tokens[$nextNonEmpty]['line'] === $tokens[$stackPtr]['line']) {
             $error = 'Opening brace should be the last content on the line';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'ContentBefore');
-            if ($fix === true) {
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'ContentBefore');
+            if (true === $fix) {
                 $phpcsFile->fixer->beginChangeset();
                 $phpcsFile->fixer->addNewline($stackPtr);
 
                 // Remove potentially left over trailing whitespace.
-                if ($tokens[($stackPtr + 1)]['code'] === T_WHITESPACE) {
+                if (T_WHITESPACE === $tokens[($stackPtr + 1)]['code']) {
                     $phpcsFile->fixer->replaceToken(($stackPtr + 1), '');
                 }
 
                 $phpcsFile->fixer->endChangeset();
             }
         } else {
-            if (isset($tokens[$stackPtr]['bracket_closer']) === false) {
+            if (false === isset($tokens[$stackPtr]['bracket_closer'])) {
                 // Syntax error or live coding, bow out.
                 return;
             }
@@ -117,60 +113,59 @@ class ClassDefinitionOpeningBraceSpaceSniff implements Sniff
                 $tokens[$stackPtr]['bracket_closer']
             );
 
-            if ($found === false) {
+            if (false === $found) {
                 // Not nested.
                 return;
             }
 
             $lastOnLine = $stackPtr;
-            for ($lastOnLine; $lastOnLine < $tokens[$stackPtr]['bracket_closer']; $lastOnLine++) {
+            for ($lastOnLine; $lastOnLine < $tokens[$stackPtr]['bracket_closer']; ++$lastOnLine) {
                 if ($tokens[$lastOnLine]['line'] !== $tokens[($lastOnLine + 1)]['line']) {
                     break;
                 }
             }
 
             $nextNonWhiteSpace = $phpcsFile->findNext(T_WHITESPACE, ($lastOnLine + 1), null, true);
-            if ($nextNonWhiteSpace === false) {
+            if (false === $nextNonWhiteSpace) {
                 return;
             }
 
             $foundLines = ($tokens[$nextNonWhiteSpace]['line'] - $tokens[$stackPtr]['line'] - 1);
-            if ($foundLines !== 1) {
+            if (1 !== $foundLines) {
                 $error = 'Expected 1 blank line after opening brace of nesting class definition; %s found';
-                $data  = [max(0, $foundLines)];
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'AfterNesting', $data);
+                $data = [max(0, $foundLines)];
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'AfterNesting', $data);
 
-                if ($fix === true) {
+                if (true === $fix) {
                     $firstOnNextLine = $nextNonWhiteSpace;
-                    while ($tokens[$firstOnNextLine]['column'] !== 1) {
+                    while (1 !== $tokens[$firstOnNextLine]['column']) {
                         --$firstOnNextLine;
                     }
 
                     if ($found < 0) {
                         // First statement on same line as the opening brace.
-                        $phpcsFile->fixer->addContentBefore($nextNonWhiteSpace, $phpcsFile->eolChar.$phpcsFile->eolChar);
-                    } else if ($found === 0) {
+                        $phpcsFile->fixer->addContentBefore($nextNonWhiteSpace, $phpcsFile->eolChar . $phpcsFile->eolChar);
+                    } elseif (0 === $found) {
                         // Next statement on next line, no blank line.
                         $phpcsFile->fixer->addNewlineBefore($firstOnNextLine);
                     } else {
                         // Too many blank lines.
                         $phpcsFile->fixer->beginChangeset();
-                        for ($i = ($firstOnNextLine - 1); $i > $stackPtr; $i--) {
-                            if ($tokens[$i]['code'] !== T_WHITESPACE) {
+                        for ($i = ($firstOnNextLine - 1); $i > $stackPtr; --$i) {
+                            if (T_WHITESPACE !== $tokens[$i]['code']) {
                                 break;
                             }
 
                             $phpcsFile->fixer->replaceToken($i, '');
                         }
 
-                        $phpcsFile->fixer->addContentBefore($firstOnNextLine, $phpcsFile->eolChar.$phpcsFile->eolChar);
+                        $phpcsFile->fixer->addContentBefore($firstOnNextLine, $phpcsFile->eolChar . $phpcsFile->eolChar);
                         $phpcsFile->fixer->endChangeset();
                     }
                 }//end if
             }//end if
         }//end if
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

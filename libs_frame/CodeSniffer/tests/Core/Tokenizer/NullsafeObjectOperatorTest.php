@@ -12,9 +12,12 @@ namespace PHP_CodeSniffer\Tests\Core\Tokenizer;
 use PHP_CodeSniffer\Tests\Core\AbstractMethodUnitTest;
 use PHP_CodeSniffer\Util\Tokens;
 
-class NullsafeObjectOperatorTest extends AbstractMethodUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class NullsafeObjectOperatorTest extends AbstractMethodUnitTest
 {
-
     /**
      * Tokens to search for.
      *
@@ -26,24 +29,21 @@ class NullsafeObjectOperatorTest extends AbstractMethodUnitTest
         T_INLINE_THEN,
     ];
 
-
     /**
      * Test that a normal object operator is still tokenized as such.
      *
-     * @covers PHP_CodeSniffer\Tokenizers\PHP::tokenize
-     *
-     * @return void
+     * @covers \PHP_CodeSniffer\Tokenizers\PHP::tokenize
      */
     public function testObjectOperator()
     {
         $tokens = self::$phpcsFile->getTokens();
 
         $operator = $this->getTargetToken('/* testObjectOperator */', $this->find);
-        $this->assertSame(T_OBJECT_OPERATOR, $tokens[$operator]['code'], 'Failed asserting code is object operator');
-        $this->assertSame('T_OBJECT_OPERATOR', $tokens[$operator]['type'], 'Failed asserting type is object operator');
+        static::assertSame(T_OBJECT_OPERATOR, $tokens[$operator]['code'], 'Failed asserting code is object operator');
+        static::assertSame('T_OBJECT_OPERATOR', $tokens[$operator]['type'], 'Failed asserting type is object operator');
+    }
 
-    }//end testObjectOperator()
-
+    //end testObjectOperator()
 
     /**
      * Test that a nullsafe object operator is tokenized as such.
@@ -51,20 +51,18 @@ class NullsafeObjectOperatorTest extends AbstractMethodUnitTest
      * @param string $testMarker The comment which prefaces the target token in the test file.
      *
      * @dataProvider dataNullsafeObjectOperator
-     * @covers       PHP_CodeSniffer\Tokenizers\PHP::tokenize
-     *
-     * @return void
+     * @covers       \PHP_CodeSniffer\Tokenizers\PHP::tokenize
      */
     public function testNullsafeObjectOperator($testMarker)
     {
         $tokens = self::$phpcsFile->getTokens();
 
         $operator = $this->getTargetToken($testMarker, $this->find);
-        $this->assertSame(T_NULLSAFE_OBJECT_OPERATOR, $tokens[$operator]['code'], 'Failed asserting code is nullsafe object operator');
-        $this->assertSame('T_NULLSAFE_OBJECT_OPERATOR', $tokens[$operator]['type'], 'Failed asserting type is nullsafe object operator');
+        static::assertSame(T_NULLSAFE_OBJECT_OPERATOR, $tokens[$operator]['code'], 'Failed asserting code is nullsafe object operator');
+        static::assertSame('T_NULLSAFE_OBJECT_OPERATOR', $tokens[$operator]['type'], 'Failed asserting type is nullsafe object operator');
+    }
 
-    }//end testNullsafeObjectOperator()
-
+    //end testNullsafeObjectOperator()
 
     /**
      * Data provider.
@@ -79,9 +77,9 @@ class NullsafeObjectOperatorTest extends AbstractMethodUnitTest
             ['/* testNullsafeObjectOperator */'],
             ['/* testNullsafeObjectOperatorWriteContext */'],
         ];
+    }
 
-    }//end dataNullsafeObjectOperator()
-
+    //end dataNullsafeObjectOperator()
 
     /**
      * Test that a question mark not followed by an object operator is tokenized as T_TERNARY_THEN.
@@ -91,26 +89,24 @@ class NullsafeObjectOperatorTest extends AbstractMethodUnitTest
      *                                   as an object operator.
      *
      * @dataProvider dataTernaryThen
-     * @covers       PHP_CodeSniffer\Tokenizers\PHP::tokenize
-     *
-     * @return void
+     * @covers       \PHP_CodeSniffer\Tokenizers\PHP::tokenize
      */
-    public function testTernaryThen($testMarker, $testObjectOperator=false)
+    public function testTernaryThen($testMarker, $testObjectOperator = false)
     {
         $tokens = self::$phpcsFile->getTokens();
 
         $operator = $this->getTargetToken($testMarker, $this->find);
-        $this->assertSame(T_INLINE_THEN, $tokens[$operator]['code'], 'Failed asserting code is inline then');
-        $this->assertSame('T_INLINE_THEN', $tokens[$operator]['type'], 'Failed asserting type is inline then');
+        static::assertSame(T_INLINE_THEN, $tokens[$operator]['code'], 'Failed asserting code is inline then');
+        static::assertSame('T_INLINE_THEN', $tokens[$operator]['type'], 'Failed asserting type is inline then');
 
-        if ($testObjectOperator === true) {
+        if (true === $testObjectOperator) {
             $next = self::$phpcsFile->findNext(Tokens::$emptyTokens, ($operator + 1), null, true);
-            $this->assertSame(T_OBJECT_OPERATOR, $tokens[$next]['code'], 'Failed asserting code is object operator');
-            $this->assertSame('T_OBJECT_OPERATOR', $tokens[$next]['type'], 'Failed asserting type is object operator');
+            static::assertSame(T_OBJECT_OPERATOR, $tokens[$next]['code'], 'Failed asserting code is object operator');
+            static::assertSame('T_OBJECT_OPERATOR', $tokens[$next]['type'], 'Failed asserting type is object operator');
         }
+    }
 
-    }//end testTernaryThen()
-
+    //end testTernaryThen()
 
     /**
      * Data provider.
@@ -133,8 +129,7 @@ class NullsafeObjectOperatorTest extends AbstractMethodUnitTest
             ],
             ['/* testLiveCoding */'],
         ];
+    }
 
-    }//end dataTernaryThen()
-
-
+    //end dataTernaryThen()
 }//end class

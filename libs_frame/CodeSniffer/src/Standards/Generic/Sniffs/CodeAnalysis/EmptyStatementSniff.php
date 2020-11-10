@@ -29,8 +29,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class EmptyStatementSniff implements Sniff
 {
-
-
     /**
      * Registers the tokens that this sniff wants to listen for.
      *
@@ -51,9 +49,9 @@ class EmptyStatementSniff implements Sniff
             T_SWITCH,
             T_WHILE,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -61,16 +59,14 @@ class EmptyStatementSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
+        $token = $tokens[$stackPtr];
 
         // Skip statements without a body.
-        if (isset($token['scope_opener']) === false) {
+        if (false === isset($token['scope_opener'])) {
             return;
         }
 
@@ -81,16 +77,15 @@ class EmptyStatementSniff implements Sniff
             true
         );
 
-        if ($next !== false) {
+        if (false !== $next) {
             return;
         }
 
         // Get token identifier.
-        $name  = strtoupper($token['content']);
+        $name = strtoupper($token['content']);
         $error = 'Empty %s statement detected';
-        $phpcsFile->addError($error, $stackPtr, 'Detected'.ucfirst(strtolower($name)), [$name]);
+        $phpcsFile->addError($error, $stackPtr, 'Detected' . ucfirst(strtolower($name)), [$name]);
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

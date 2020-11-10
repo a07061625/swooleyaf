@@ -16,14 +16,12 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class SyntaxSniff implements Sniff
 {
-
     /**
      * The path to the PHP version we are checking with.
      *
      * @var string
      */
-    private $phpPath = null;
-
+    private $phpPath;
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -33,9 +31,9 @@ class SyntaxSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -43,29 +41,26 @@ class SyntaxSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
-        if ($this->phpPath === null) {
+        if (null === $this->phpPath) {
             $this->phpPath = Config::getExecutablePath('php');
         }
 
         $fileName = escapeshellarg($phpcsFile->getFilename());
-        $cmd      = escapeshellcmd($this->phpPath)." -l -d display_errors=1 -d error_prepend_string='' $fileName 2>&1";
-        $output   = shell_exec($cmd);
-        $matches  = [];
-        if (preg_match('/^.*error:(.*) in .* on line ([0-9]+)/m', trim($output), $matches) === 1) {
+        $cmd = escapeshellcmd($this->phpPath) . " -l -d display_errors=1 -d error_prepend_string='' {$fileName} 2>&1";
+        $output = shell_exec($cmd);
+        $matches = [];
+        if (1 === preg_match('/^.*error:(.*) in .* on line ([0-9]+)/m', trim($output), $matches)) {
             $error = trim($matches[1]);
-            $line  = (int) $matches[2];
-            $phpcsFile->addErrorOnLine("PHP syntax error: $error", $line, 'PHPSyntax');
+            $line = (int)$matches[2];
+            $phpcsFile->addErrorOnLine("PHP syntax error: {$error}", $line, 'PHPSyntax');
         }
 
         // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
+        return $phpcsFile->numTokens + 1;
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

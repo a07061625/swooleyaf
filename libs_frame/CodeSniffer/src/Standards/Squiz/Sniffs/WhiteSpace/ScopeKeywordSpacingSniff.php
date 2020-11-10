@@ -15,8 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class ScopeKeywordSpacingSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -24,12 +22,13 @@ class ScopeKeywordSpacingSniff implements Sniff
      */
     public function register()
     {
-        $register   = Tokens::$scopeModifiers;
+        $register = Tokens::$scopeModifiers;
         $register[] = T_STATIC;
+
         return $register;
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -37,42 +36,40 @@ class ScopeKeywordSpacingSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        if (isset($tokens[($stackPtr + 1)]) === false) {
+        if (false === isset($tokens[($stackPtr + 1)])) {
             return;
         }
 
         $prevToken = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($stackPtr - 1), null, true);
         $nextToken = $phpcsFile->findNext(Tokens::$emptyTokens, ($stackPtr + 1), null, true);
 
-        if ($tokens[$stackPtr]['code'] === T_STATIC
-            && (($nextToken === false || $tokens[$nextToken]['code'] === T_DOUBLE_COLON)
-            || $tokens[$prevToken]['code'] === T_NEW)
+        if (T_STATIC === $tokens[$stackPtr]['code']
+            && ((false === $nextToken || T_DOUBLE_COLON === $tokens[$nextToken]['code'])
+            || T_NEW === $tokens[$prevToken]['code'])
         ) {
             // Late static binding, e.g., static:: OR new static() usage or live coding.
             return;
         }
 
-        if ($tokens[$prevToken]['code'] === T_AS) {
+        if (T_AS === $tokens[$prevToken]['code']) {
             // Trait visibility change, e.g., "use HelloWorld { sayHello as private; }".
             return;
         }
 
-        if ($nextToken !== false && $tokens[$nextToken]['code'] === T_VARIABLE) {
+        if (false !== $nextToken && T_VARIABLE === $tokens[$nextToken]['code']) {
             $endOfStatement = $phpcsFile->findNext(T_SEMICOLON, ($nextToken + 1));
-            if ($endOfStatement === false) {
+            if (false === $endOfStatement) {
                 // Live coding.
                 return;
             }
 
             $multiProperty = $phpcsFile->findNext(T_VARIABLE, ($nextToken + 1), $endOfStatement);
-            if ($multiProperty !== false
+            if (false !== $multiProperty
                 && $tokens[$stackPtr]['line'] !== $tokens[$nextToken]['line']
                 && $tokens[$nextToken]['line'] !== $tokens[$endOfStatement]['line']
             ) {
@@ -81,7 +78,7 @@ class ScopeKeywordSpacingSniff implements Sniff
             }
         }
 
-        if ($tokens[($stackPtr + 1)]['code'] !== T_WHITESPACE) {
+        if (T_WHITESPACE !== $tokens[($stackPtr + 1)]['code']) {
             $spacing = 0;
         } else {
             if ($tokens[($stackPtr + 2)]['line'] !== $tokens[$stackPtr]['line']) {
@@ -91,22 +88,22 @@ class ScopeKeywordSpacingSniff implements Sniff
             }
         }
 
-        if ($spacing !== 1) {
+        if (1 !== $spacing) {
             $error = 'Scope keyword "%s" must be followed by a single space; found %s';
-            $data  = [
+            $data = [
                 $tokens[$stackPtr]['content'],
                 $spacing,
             ];
 
             $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Incorrect', $data);
-            if ($fix === true) {
-                if ($spacing === 0) {
+            if (true === $fix) {
+                if (0 === $spacing) {
                     $phpcsFile->fixer->addContent($stackPtr, ' ');
                 } else {
                     $phpcsFile->fixer->beginChangeset();
 
-                    for ($i = ($stackPtr + 2); $i < $phpcsFile->numTokens; $i++) {
-                        if (isset($tokens[$i]) === false || $tokens[$i]['code'] !== T_WHITESPACE) {
+                    for ($i = ($stackPtr + 2); $i < $phpcsFile->numTokens; ++$i) {
+                        if (false === isset($tokens[$i]) || T_WHITESPACE !== $tokens[$i]['code']) {
                             break;
                         }
 
@@ -118,8 +115,7 @@ class ScopeKeywordSpacingSniff implements Sniff
                 }
             }//end if
         }//end if
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

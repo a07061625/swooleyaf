@@ -14,7 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class FileCommentSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
@@ -25,7 +24,6 @@ class FileCommentSniff implements Sniff
         'JS',
     ];
 
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -34,9 +32,9 @@ class FileCommentSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -49,25 +47,28 @@ class FileCommentSniff implements Sniff
      */
     public function process(File $phpcsFile, $stackPtr)
     {
-        $tokens       = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $commentStart = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
 
-        if ($tokens[$commentStart]['code'] === T_COMMENT) {
+        if (T_COMMENT === $tokens[$commentStart]['code']) {
             $phpcsFile->addError('You must use "/**" style comments for a file comment', $commentStart, 'WrongStyle');
             $phpcsFile->recordMetric($stackPtr, 'File has doc comment', 'yes');
-            return ($phpcsFile->numTokens + 1);
-        } else if ($commentStart === false || $tokens[$commentStart]['code'] !== T_DOC_COMMENT_OPEN_TAG) {
+
+            return $phpcsFile->numTokens + 1;
+        }
+        if (false === $commentStart || T_DOC_COMMENT_OPEN_TAG !== $tokens[$commentStart]['code']) {
             $phpcsFile->addError('Missing file doc comment', $stackPtr, 'Missing');
             $phpcsFile->recordMetric($stackPtr, 'File has doc comment', 'no');
-            return ($phpcsFile->numTokens + 1);
+
+            return $phpcsFile->numTokens + 1;
         }
 
-        if (isset($tokens[$commentStart]['comment_closer']) === false
-            || ($tokens[$tokens[$commentStart]['comment_closer']]['content'] === ''
+        if (false === isset($tokens[$commentStart]['comment_closer'])
+            || ('' === $tokens[$tokens[$commentStart]['comment_closer']]['content']
             && $tokens[$commentStart]['comment_closer'] === ($phpcsFile->numTokens - 1))
         ) {
             // Don't process an unfinished file comment during live coding.
-            return ($phpcsFile->numTokens + 1);
+            return $phpcsFile->numTokens + 1;
         }
 
         $commentEnd = $tokens[$commentStart]['comment_closer'];
@@ -99,10 +100,11 @@ class FileCommentSniff implements Sniff
             T_REQUIRE_ONCE,
         ];
 
-        if (in_array($tokens[$nextToken]['code'], $ignore, true) === true) {
+        if (true === \in_array($tokens[$nextToken]['code'], $ignore, true)) {
             $phpcsFile->addError('Missing file doc comment', $stackPtr, 'Missing');
             $phpcsFile->recordMetric($stackPtr, 'File has doc comment', 'no');
-            return ($phpcsFile->numTokens + 1);
+
+            return $phpcsFile->numTokens + 1;
         }
 
         $phpcsFile->recordMetric($stackPtr, 'File has doc comment', 'yes');
@@ -122,58 +124,59 @@ class FileCommentSniff implements Sniff
 
         // Required tags in correct order.
         $required = [
-            '@package'    => true,
+            '@package' => true,
             '@subpackage' => true,
-            '@author'     => true,
-            '@copyright'  => true,
+            '@author' => true,
+            '@copyright' => true,
         ];
 
         $foundTags = [];
         foreach ($tokens[$commentStart]['comment_tags'] as $tag) {
-            $name       = $tokens[$tag]['content'];
+            $name = $tokens[$tag]['content'];
             $isRequired = isset($required[$name]);
 
-            if ($isRequired === true && in_array($name, $foundTags, true) === true) {
+            if (true === $isRequired && true === \in_array($name, $foundTags, true)) {
                 $error = 'Only one %s tag is allowed in a file comment';
-                $data  = [$name];
-                $phpcsFile->addError($error, $tag, 'Duplicate'.ucfirst(substr($name, 1)).'Tag', $data);
+                $data = [$name];
+                $phpcsFile->addError($error, $tag, 'Duplicate' . ucfirst(substr($name, 1)) . 'Tag', $data);
             }
 
             $foundTags[] = $name;
 
-            if ($isRequired === false) {
+            if (false === $isRequired) {
                 continue;
             }
 
             $string = $phpcsFile->findNext(T_DOC_COMMENT_STRING, $tag, $commentEnd);
-            if ($string === false || $tokens[$string]['line'] !== $tokens[$tag]['line']) {
+            if (false === $string || $tokens[$string]['line'] !== $tokens[$tag]['line']) {
                 $error = 'Content missing for %s tag in file comment';
-                $data  = [$name];
-                $phpcsFile->addError($error, $tag, 'Empty'.ucfirst(substr($name, 1)).'Tag', $data);
+                $data = [$name];
+                $phpcsFile->addError($error, $tag, 'Empty' . ucfirst(substr($name, 1)) . 'Tag', $data);
+
                 continue;
             }
 
-            if ($name === '@author') {
-                if ($tokens[$string]['content'] !== 'Squiz Pty Ltd <products@squiz.net>') {
+            if ('@author' === $name) {
+                if ('Squiz Pty Ltd <products@squiz.net>' !== $tokens[$string]['content']) {
                     $error = 'Expected "Squiz Pty Ltd <products@squiz.net>" for author tag';
-                    $fix   = $phpcsFile->addFixableError($error, $tag, 'IncorrectAuthor');
-                    if ($fix === true) {
+                    $fix = $phpcsFile->addFixableError($error, $tag, 'IncorrectAuthor');
+                    if (true === $fix) {
                         $expected = 'Squiz Pty Ltd <products@squiz.net>';
                         $phpcsFile->fixer->replaceToken($string, $expected);
                     }
                 }
-            } else if ($name === '@copyright') {
-                if (preg_match('/^([0-9]{4})(-[0-9]{4})? (Squiz Pty Ltd \(ABN 77 084 670 600\))$/', $tokens[$string]['content']) === 0) {
+            } elseif ('@copyright' === $name) {
+                if (0 === preg_match('/^([0-9]{4})(-[0-9]{4})? (Squiz Pty Ltd \(ABN 77 084 670 600\))$/', $tokens[$string]['content'])) {
                     $error = 'Expected "xxxx-xxxx Squiz Pty Ltd (ABN 77 084 670 600)" for copyright declaration';
-                    $fix   = $phpcsFile->addFixableError($error, $tag, 'IncorrectCopyright');
-                    if ($fix === true) {
+                    $fix = $phpcsFile->addFixableError($error, $tag, 'IncorrectCopyright');
+                    if (true === $fix) {
                         $matches = [];
                         preg_match('/^(([0-9]{4})(-[0-9]{4})?)?.*$/', $tokens[$string]['content'], $matches);
-                        if (isset($matches[1]) === false) {
+                        if (false === isset($matches[1])) {
                             $matches[1] = date('Y');
                         }
 
-                        $expected = $matches[1].' Squiz Pty Ltd (ABN 77 084 670 600)';
+                        $expected = $matches[1] . ' Squiz Pty Ltd (ABN 77 084 670 600)';
                         $phpcsFile->fixer->replaceToken($string, $expected);
                     }
                 }
@@ -183,32 +186,31 @@ class FileCommentSniff implements Sniff
         // Check if the tags are in the correct position.
         $pos = 0;
         foreach ($required as $tag => $true) {
-            if (in_array($tag, $foundTags, true) === false) {
+            if (false === \in_array($tag, $foundTags, true)) {
                 $error = 'Missing %s tag in file comment';
-                $data  = [$tag];
-                $phpcsFile->addError($error, $commentEnd, 'Missing'.ucfirst(substr($tag, 1)).'Tag', $data);
+                $data = [$tag];
+                $phpcsFile->addError($error, $commentEnd, 'Missing' . ucfirst(substr($tag, 1)) . 'Tag', $data);
             }
 
-            if (isset($foundTags[$pos]) === false) {
+            if (false === isset($foundTags[$pos])) {
                 break;
             }
 
             if ($foundTags[$pos] !== $tag) {
                 $error = 'The tag in position %s should be the %s tag';
-                $data  = [
+                $data = [
                     ($pos + 1),
                     $tag,
                 ];
-                $phpcsFile->addError($error, $tokens[$commentStart]['comment_tags'][$pos], ucfirst(substr($tag, 1)).'TagOrder', $data);
+                $phpcsFile->addError($error, $tokens[$commentStart]['comment_tags'][$pos], ucfirst(substr($tag, 1)) . 'TagOrder', $data);
             }
 
-            $pos++;
+            ++$pos;
         }//end foreach
 
         // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
+        return $phpcsFile->numTokens + 1;
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

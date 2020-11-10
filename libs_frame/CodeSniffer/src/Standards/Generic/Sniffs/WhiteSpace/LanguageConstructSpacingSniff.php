@@ -16,8 +16,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class LanguageConstructSpacingSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -40,9 +38,9 @@ class LanguageConstructSpacingSniff implements Sniff
             T_NAMESPACE,
             T_USE,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -50,66 +48,64 @@ class LanguageConstructSpacingSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
         $nextToken = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-        if ($nextToken === false) {
+        if (false === $nextToken) {
             // Skip when at end of file.
             return;
         }
 
-        if ($tokens[($stackPtr + 1)]['code'] === T_SEMICOLON) {
+        if (T_SEMICOLON === $tokens[($stackPtr + 1)]['code']) {
             // No content for this language construct.
             return;
         }
 
         $content = $tokens[$stackPtr]['content'];
-        if ($tokens[$stackPtr]['code'] === T_NAMESPACE) {
+        if (T_NAMESPACE === $tokens[$stackPtr]['code']) {
             $nextNonEmpty = $phpcsFile->findNext(Tokens::$emptyTokens, ($stackPtr + 1), null, true);
-            if ($nextNonEmpty !== false && $tokens[$nextNonEmpty]['code'] === T_NS_SEPARATOR) {
+            if (false !== $nextNonEmpty && T_NS_SEPARATOR === $tokens[$nextNonEmpty]['code']) {
                 // Namespace keyword used as operator, not as the language construct.
                 return;
             }
         }
 
-        if ($tokens[$stackPtr]['code'] === T_YIELD_FROM
-            && strtolower($content) !== 'yield from'
+        if (T_YIELD_FROM === $tokens[$stackPtr]['code']
+            && 'yield from' !== strtolower($content)
         ) {
-            if ($tokens[($stackPtr - 1)]['code'] === T_YIELD_FROM) {
+            if (T_YIELD_FROM === $tokens[($stackPtr - 1)]['code']) {
                 // A multi-line statements that has already been processed.
                 return;
             }
 
             $found = $content;
-            if ($tokens[($stackPtr + 1)]['code'] === T_YIELD_FROM) {
+            if (T_YIELD_FROM === $tokens[($stackPtr + 1)]['code']) {
                 // This yield from statement is split over multiple lines.
                 $i = ($stackPtr + 1);
                 do {
                     $found .= $tokens[$i]['content'];
-                    $i++;
-                } while ($tokens[$i]['code'] === T_YIELD_FROM);
+                    ++$i;
+                } while (T_YIELD_FROM === $tokens[$i]['code']);
             }
 
             $error = 'Language constructs must be followed by a single space; expected 1 space between YIELD FROM found "%s"';
-            $data  = [Common::prepareForOutput($found)];
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'IncorrectYieldFrom', $data);
-            if ($fix === true) {
+            $data = [Common::prepareForOutput($found)];
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'IncorrectYieldFrom', $data);
+            if (true === $fix) {
                 preg_match('/yield/i', $found, $yield);
                 preg_match('/from/i', $found, $from);
                 $phpcsFile->fixer->beginChangeset();
-                $phpcsFile->fixer->replaceToken($stackPtr, $yield[0].' '.$from[0]);
+                $phpcsFile->fixer->replaceToken($stackPtr, $yield[0] . ' ' . $from[0]);
 
-                if ($tokens[($stackPtr + 1)]['code'] === T_YIELD_FROM) {
+                if (T_YIELD_FROM === $tokens[($stackPtr + 1)]['code']) {
                     $i = ($stackPtr + 1);
                     do {
                         $phpcsFile->fixer->replaceToken($i, '');
-                        $i++;
-                    } while ($tokens[$i]['code'] === T_YIELD_FROM);
+                        ++$i;
+                    } while (T_YIELD_FROM === $tokens[$i]['code']);
                 }
 
                 $phpcsFile->fixer->endChangeset();
@@ -118,29 +114,28 @@ class LanguageConstructSpacingSniff implements Sniff
             return;
         }//end if
 
-        if ($tokens[($stackPtr + 1)]['code'] === T_WHITESPACE) {
+        if (T_WHITESPACE === $tokens[($stackPtr + 1)]['code']) {
             $content = $tokens[($stackPtr + 1)]['content'];
-            if ($content !== ' ') {
+            if (' ' !== $content) {
                 $error = 'Language constructs must be followed by a single space; expected 1 space but found "%s"';
-                $data  = [Common::prepareForOutput($content)];
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'IncorrectSingle', $data);
-                if ($fix === true) {
+                $data = [Common::prepareForOutput($content)];
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'IncorrectSingle', $data);
+                if (true === $fix) {
                     $phpcsFile->fixer->replaceToken(($stackPtr + 1), ' ');
                 }
             }
-        } else if ($tokens[($stackPtr + 1)]['code'] !== T_OPEN_PARENTHESIS) {
+        } elseif (T_OPEN_PARENTHESIS !== $tokens[($stackPtr + 1)]['code']) {
             $error = 'Language constructs must be followed by a single space; expected "%s" but found "%s"';
-            $data  = [
-                $tokens[$stackPtr]['content'].' '.$tokens[($stackPtr + 1)]['content'],
-                $tokens[$stackPtr]['content'].$tokens[($stackPtr + 1)]['content'],
+            $data = [
+                $tokens[$stackPtr]['content'] . ' ' . $tokens[($stackPtr + 1)]['content'],
+                $tokens[$stackPtr]['content'] . $tokens[($stackPtr + 1)]['content'],
             ];
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Incorrect', $data);
-            if ($fix === true) {
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Incorrect', $data);
+            if (true === $fix) {
                 $phpcsFile->fixer->addContent($stackPtr, ' ');
             }
         }//end if
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

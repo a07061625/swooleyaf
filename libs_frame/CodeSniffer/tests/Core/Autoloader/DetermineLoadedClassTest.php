@@ -11,108 +11,103 @@ namespace PHP_CodeSniffer\Tests\Core\Autoloader;
 
 use PHPUnit\Framework\TestCase;
 
-class DetermineLoadedClassTest extends TestCase
+/**
+ * @internal
+ * @coversNothing
+ */
+final class DetermineLoadedClassTest extends TestCase
 {
-
-
     /**
      * Load the test files.
-     *
-     * @return void
      */
     public static function setUpBeforeClass()
     {
-        include __DIR__.'/TestFiles/Sub/C.inc';
+        include __DIR__ . '/TestFiles/Sub/C.inc';
+    }
 
-    }//end setUpBeforeClass()
-
+    //end setUpBeforeClass()
 
     /**
      * Test for when class list is ordered.
-     *
-     * @return void
      */
     public function testOrdered()
     {
         $classesBeforeLoad = [
-            'classes'    => [],
+            'classes' => [],
             'interfaces' => [],
-            'traits'     => [],
+            'traits' => [],
         ];
 
         $classesAfterLoad = [
-            'classes'    => [
+            'classes' => [
                 'PHP_CodeSniffer\Tests\Core\Autoloader\A',
                 'PHP_CodeSniffer\Tests\Core\Autoloader\B',
                 'PHP_CodeSniffer\Tests\Core\Autoloader\C',
                 'PHP_CodeSniffer\Tests\Core\Autoloader\Sub\C',
             ],
             'interfaces' => [],
-            'traits'     => [],
+            'traits' => [],
         ];
 
         $className = \PHP_CodeSniffer\Autoload::determineLoadedClass($classesBeforeLoad, $classesAfterLoad);
-        $this->assertEquals('PHP_CodeSniffer\Tests\Core\Autoloader\Sub\C', $className);
+        static::assertSame('PHP_CodeSniffer\Tests\Core\Autoloader\Sub\C', $className);
+    }
 
-    }//end testOrdered()
-
+    //end testOrdered()
 
     /**
      * Test for when class list is out of order.
-     *
-     * @return void
      */
     public function testUnordered()
     {
         $classesBeforeLoad = [
-            'classes'    => [],
+            'classes' => [],
             'interfaces' => [],
-            'traits'     => [],
+            'traits' => [],
         ];
 
         $classesAfterLoad = [
-            'classes'    => [
+            'classes' => [
                 'PHP_CodeSniffer\Tests\Core\Autoloader\A',
                 'PHP_CodeSniffer\Tests\Core\Autoloader\Sub\C',
                 'PHP_CodeSniffer\Tests\Core\Autoloader\C',
                 'PHP_CodeSniffer\Tests\Core\Autoloader\B',
             ],
             'interfaces' => [],
-            'traits'     => [],
+            'traits' => [],
         ];
 
         $className = \PHP_CodeSniffer\Autoload::determineLoadedClass($classesBeforeLoad, $classesAfterLoad);
-        $this->assertEquals('PHP_CodeSniffer\Tests\Core\Autoloader\Sub\C', $className);
+        static::assertSame('PHP_CodeSniffer\Tests\Core\Autoloader\Sub\C', $className);
 
         $classesAfterLoad = [
-            'classes'    => [
+            'classes' => [
                 'PHP_CodeSniffer\Tests\Core\Autoloader\A',
                 'PHP_CodeSniffer\Tests\Core\Autoloader\C',
                 'PHP_CodeSniffer\Tests\Core\Autoloader\Sub\C',
                 'PHP_CodeSniffer\Tests\Core\Autoloader\B',
             ],
             'interfaces' => [],
-            'traits'     => [],
+            'traits' => [],
         ];
 
         $className = \PHP_CodeSniffer\Autoload::determineLoadedClass($classesBeforeLoad, $classesAfterLoad);
-        $this->assertEquals('PHP_CodeSniffer\Tests\Core\Autoloader\Sub\C', $className);
+        static::assertSame('PHP_CodeSniffer\Tests\Core\Autoloader\Sub\C', $className);
 
         $classesAfterLoad = [
-            'classes'    => [
+            'classes' => [
                 'PHP_CodeSniffer\Tests\Core\Autoloader\Sub\C',
                 'PHP_CodeSniffer\Tests\Core\Autoloader\A',
                 'PHP_CodeSniffer\Tests\Core\Autoloader\C',
                 'PHP_CodeSniffer\Tests\Core\Autoloader\B',
             ],
             'interfaces' => [],
-            'traits'     => [],
+            'traits' => [],
         ];
 
         $className = \PHP_CodeSniffer\Autoload::determineLoadedClass($classesBeforeLoad, $classesAfterLoad);
-        $this->assertEquals('PHP_CodeSniffer\Tests\Core\Autoloader\Sub\C', $className);
+        static::assertSame('PHP_CodeSniffer\Tests\Core\Autoloader\Sub\C', $className);
+    }
 
-    }//end testUnordered()
-
-
+    //end testUnordered()
 }//end class

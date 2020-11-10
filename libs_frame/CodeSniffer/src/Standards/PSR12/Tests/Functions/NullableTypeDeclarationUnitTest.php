@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\PSR12\Tests\Functions;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class NullableTypeDeclarationUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class NullableTypeDeclarationUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -42,9 +44,9 @@ class NullableTypeDeclarationUnitTest extends AbstractSniffUnitTest
             59 => 2,
             87 => 1,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -57,8 +59,7 @@ class NullableTypeDeclarationUnitTest extends AbstractSniffUnitTest
     protected function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

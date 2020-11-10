@@ -15,8 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class ObjectInstantiationSniff implements Sniff
 {
-
-
     /**
      * Registers the token types that this sniff wishes to listen to.
      *
@@ -25,9 +23,9 @@ class ObjectInstantiationSniff implements Sniff
     public function register()
     {
         return [T_NEW];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Process the tokens that this sniff is listening for.
@@ -35,33 +33,30 @@ class ObjectInstantiationSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where the token was found.
      * @param int                         $stackPtr  The position in the stack where
      *                                               the token was found.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        $allowedTokens   = Tokens::$emptyTokens;
+        $allowedTokens = Tokens::$emptyTokens;
         $allowedTokens[] = T_BITWISE_AND;
 
         $prev = $phpcsFile->findPrevious($allowedTokens, ($stackPtr - 1), null, true);
 
         $allowedTokens = [
-            T_EQUAL        => true,
+            T_EQUAL => true,
             T_DOUBLE_ARROW => true,
-            T_THROW        => true,
-            T_RETURN       => true,
-            T_INLINE_THEN  => true,
-            T_INLINE_ELSE  => true,
+            T_THROW => true,
+            T_RETURN => true,
+            T_INLINE_THEN => true,
+            T_INLINE_ELSE => true,
         ];
 
-        if (isset($allowedTokens[$tokens[$prev]['code']]) === false) {
+        if (false === isset($allowedTokens[$tokens[$prev]['code']])) {
             $error = 'New objects must be assigned to a variable';
             $phpcsFile->addError($error, $stackPtr, 'NotAssigned');
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

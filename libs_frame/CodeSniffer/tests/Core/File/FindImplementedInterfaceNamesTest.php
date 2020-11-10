@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Tests\Core\File;
 
 use PHP_CodeSniffer\Tests\Core\AbstractMethodUnitTest;
 
-class FindImplementedInterfaceNamesTest extends AbstractMethodUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class FindImplementedInterfaceNamesTest extends AbstractMethodUnitTest
 {
-
-
     /**
      * Test retrieving the name(s) of the interfaces being implemented by a class.
      *
@@ -22,17 +24,15 @@ class FindImplementedInterfaceNamesTest extends AbstractMethodUnitTest
      * @param bool   $expected   Expected function output.
      *
      * @dataProvider dataImplementedInterface
-     *
-     * @return void
      */
     public function testFindImplementedInterfaceNames($identifier, $expected)
     {
         $OOToken = $this->getTargetToken($identifier, [T_CLASS, T_ANON_CLASS, T_INTERFACE]);
-        $result  = self::$phpcsFile->findImplementedInterfaceNames($OOToken);
-        $this->assertSame($expected, $result);
+        $result = self::$phpcsFile->findImplementedInterfaceNames($OOToken);
+        static::assertSame($expected, $result);
+    }
 
-    }//end testFindImplementedInterfaceNames()
-
+    //end testFindImplementedInterfaceNames()
 
     /**
      * Data provider for the FindImplementedInterfaceNames test.
@@ -82,8 +82,7 @@ class FindImplementedInterfaceNamesTest extends AbstractMethodUnitTest
                 ],
             ],
         ];
+    }
 
-    }//end dataImplementedInterface()
-
-
+    //end dataImplementedInterface()
 }//end class

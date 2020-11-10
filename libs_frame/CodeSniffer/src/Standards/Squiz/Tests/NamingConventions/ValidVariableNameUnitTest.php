@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Squiz\Tests\NamingConventions;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class ValidVariableNameUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class ValidVariableNameUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -25,31 +27,31 @@ class ValidVariableNameUnitTest extends AbstractSniffUnitTest
      */
     public function getErrorList()
     {
-        $errors = [
-            3   => 1,
-            5   => 1,
-            10  => 1,
-            12  => 1,
-            15  => 1,
-            17  => 1,
-            20  => 1,
-            22  => 1,
-            25  => 1,
-            27  => 1,
-            31  => 1,
-            33  => 1,
-            36  => 1,
-            37  => 1,
-            39  => 1,
-            42  => 1,
-            44  => 1,
-            53  => 1,
-            58  => 1,
-            62  => 1,
-            63  => 1,
-            64  => 1,
-            67  => 1,
-            81  => 1,
+        return [
+            3 => 1,
+            5 => 1,
+            10 => 1,
+            12 => 1,
+            15 => 1,
+            17 => 1,
+            20 => 1,
+            22 => 1,
+            25 => 1,
+            27 => 1,
+            31 => 1,
+            33 => 1,
+            36 => 1,
+            37 => 1,
+            39 => 1,
+            42 => 1,
+            44 => 1,
+            53 => 1,
+            58 => 1,
+            62 => 1,
+            63 => 1,
+            64 => 1,
+            67 => 1,
+            81 => 1,
             106 => 1,
             107 => 2,
             108 => 1,
@@ -62,11 +64,9 @@ class ValidVariableNameUnitTest extends AbstractSniffUnitTest
             141 => 1,
             146 => 1,
         ];
+    }
 
-        return $errors;
-
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -79,8 +79,7 @@ class ValidVariableNameUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

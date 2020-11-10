@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\PEAR\Tests\Functions;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class FunctionCallSignatureUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class FunctionCallSignatureUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -25,15 +27,15 @@ class FunctionCallSignatureUnitTest extends AbstractSniffUnitTest
      *
      * @return array<int, int>
      */
-    public function getErrorList($testFile='FunctionCallSignatureUnitTest.inc')
+    public function getErrorList($testFile = 'FunctionCallSignatureUnitTest.inc')
     {
-        if ($testFile === 'FunctionCallSignatureUnitTest.js') {
+        if ('FunctionCallSignatureUnitTest.js' === $testFile) {
             return [
-                5  => 1,
-                6  => 2,
-                7  => 1,
-                8  => 1,
-                9  => 2,
+                5 => 1,
+                6 => 2,
+                7 => 1,
+                8 => 1,
+                9 => 2,
                 10 => 3,
                 17 => 1,
                 18 => 1,
@@ -51,23 +53,23 @@ class FunctionCallSignatureUnitTest extends AbstractSniffUnitTest
         }//end if
 
         return [
-            5   => 1,
-            6   => 2,
-            7   => 1,
-            8   => 1,
-            9   => 2,
-            10  => 3,
-            17  => 1,
-            18  => 1,
-            31  => 1,
-            34  => 1,
-            43  => 2,
-            57  => 1,
-            59  => 1,
-            63  => 1,
-            64  => 1,
-            82  => 1,
-            93  => 1,
+            5 => 1,
+            6 => 2,
+            7 => 1,
+            8 => 1,
+            9 => 2,
+            10 => 3,
+            17 => 1,
+            18 => 1,
+            31 => 1,
+            34 => 1,
+            43 => 2,
+            57 => 1,
+            59 => 1,
+            63 => 1,
+            64 => 1,
+            82 => 1,
+            93 => 1,
             100 => 1,
             106 => 2,
             119 => 1,
@@ -127,9 +129,9 @@ class FunctionCallSignatureUnitTest extends AbstractSniffUnitTest
             524 => 3,
             527 => 2,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -142,8 +144,7 @@ class FunctionCallSignatureUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

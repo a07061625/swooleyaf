@@ -15,21 +15,19 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class MemberVarSpacingSniff extends AbstractVariableSniff
 {
-
     /**
      * The number of blank lines between member vars.
      *
-     * @var integer
+     * @var int
      */
     public $spacing = 1;
 
     /**
      * The number of blank lines before the first member var.
      *
-     * @var integer
+     * @var int
      */
     public $spacingBeforeFirst = 1;
-
 
     /**
      * Processes the function tokens within the class.
@@ -37,7 +35,7 @@ class MemberVarSpacingSniff extends AbstractVariableSniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where this token was found.
      * @param int                         $stackPtr  The position where the token was found.
      *
-     * @return void|int Optionally returns a stack pointer. The sniff will not be
+     * @return int|void Optionally returns a stack pointer. The sniff will not be
      *                  called again on the current file until the returned stack
      *                  pointer is reached.
      */
@@ -45,22 +43,22 @@ class MemberVarSpacingSniff extends AbstractVariableSniff
     {
         $tokens = $phpcsFile->getTokens();
 
-        $validPrefixes   = Tokens::$methodPrefixes;
+        $validPrefixes = Tokens::$methodPrefixes;
         $validPrefixes[] = T_VAR;
 
         $startOfStatement = $phpcsFile->findPrevious($validPrefixes, ($stackPtr - 1), null, false, null, true);
-        if ($startOfStatement === false) {
+        if (false === $startOfStatement) {
             return;
         }
 
         $endOfStatement = $phpcsFile->findNext(T_SEMICOLON, ($stackPtr + 1), null, false, null, true);
 
-        $ignore   = $validPrefixes;
+        $ignore = $validPrefixes;
         $ignore[] = T_WHITESPACE;
 
         $start = $startOfStatement;
-        $prev  = $phpcsFile->findPrevious($ignore, ($startOfStatement - 1), null, true);
-        if (isset(Tokens::$commentTokens[$tokens[$prev]['code']]) === true) {
+        $prev = $phpcsFile->findPrevious($ignore, ($startOfStatement - 1), null, true);
+        if (true === isset(Tokens::$commentTokens[$tokens[$prev]['code']])) {
             // Assume the comment belongs to the member var if it is on a line by itself.
             $prevContent = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($prev - 1), null, true);
             if ($tokens[$prevContent]['line'] !== $tokens[$prev]['line']) {
@@ -68,17 +66,17 @@ class MemberVarSpacingSniff extends AbstractVariableSniff
                 $foundLines = ($tokens[$startOfStatement]['line'] - $tokens[$prev]['line'] - 1);
                 if ($foundLines > 0) {
                     $error = 'Expected 0 blank lines after member var comment; %s found';
-                    $data  = [$foundLines];
-                    $fix   = $phpcsFile->addFixableError($error, $prev, 'AfterComment', $data);
-                    if ($fix === true) {
+                    $data = [$foundLines];
+                    $fix = $phpcsFile->addFixableError($error, $prev, 'AfterComment', $data);
+                    if (true === $fix) {
                         $phpcsFile->fixer->beginChangeset();
                         // Inline comments have the newline included in the content but
                         // docblock do not.
-                        if ($tokens[$prev]['code'] === T_COMMENT) {
+                        if (T_COMMENT === $tokens[$prev]['code']) {
                             $phpcsFile->fixer->replaceToken($prev, rtrim($tokens[$prev]['content']));
                         }
 
-                        for ($i = ($prev + 1); $i <= $startOfStatement; $i++) {
+                        for ($i = ($prev + 1); $i <= $startOfStatement; ++$i) {
                             if ($tokens[$i]['line'] === $tokens[$startOfStatement]['line']) {
                                 break;
                             }
@@ -99,10 +97,10 @@ class MemberVarSpacingSniff extends AbstractVariableSniff
         if ($start === $startOfStatement) {
             // No comment found.
             $first = $phpcsFile->findFirstOnLine(Tokens::$emptyTokens, $start, true);
-            if ($first === false) {
+            if (false === $first) {
                 $first = $start;
             }
-        } else if ($tokens[$start]['code'] === T_DOC_COMMENT_CLOSE_TAG) {
+        } elseif (T_DOC_COMMENT_CLOSE_TAG === $tokens[$start]['code']) {
             $first = $tokens[$start]['comment_opener'];
         } else {
             $first = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($start - 1), null, true);
@@ -111,35 +109,35 @@ class MemberVarSpacingSniff extends AbstractVariableSniff
 
         // Determine if this is the first member var.
         $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($first - 1), null, true);
-        if ($tokens[$prev]['code'] === T_CLOSE_CURLY_BRACKET
-            && isset($tokens[$prev]['scope_condition']) === true
-            && $tokens[$tokens[$prev]['scope_condition']]['code'] === T_FUNCTION
+        if (T_CLOSE_CURLY_BRACKET === $tokens[$prev]['code']
+            && true === isset($tokens[$prev]['scope_condition'])
+            && T_FUNCTION === $tokens[$tokens[$prev]['scope_condition']]['code']
         ) {
             return;
         }
 
-        if ($tokens[$prev]['code'] === T_OPEN_CURLY_BRACKET
-            && isset(Tokens::$ooScopeTokens[$tokens[$tokens[$prev]['scope_condition']]['code']]) === true
+        if (T_OPEN_CURLY_BRACKET === $tokens[$prev]['code']
+            && true === isset(Tokens::$ooScopeTokens[$tokens[$tokens[$prev]['scope_condition']]['code']])
         ) {
-            $errorMsg  = 'Expected %s blank line(s) before first member var; %s found';
+            $errorMsg = 'Expected %s blank line(s) before first member var; %s found';
             $errorCode = 'FirstIncorrect';
-            $spacing   = (int) $this->spacingBeforeFirst;
+            $spacing = (int)$this->spacingBeforeFirst;
         } else {
-            $errorMsg  = 'Expected %s blank line(s) before member var; %s found';
+            $errorMsg = 'Expected %s blank line(s) before member var; %s found';
             $errorCode = 'Incorrect';
-            $spacing   = (int) $this->spacing;
+            $spacing = (int)$this->spacing;
         }
 
         $foundLines = ($tokens[$first]['line'] - $tokens[$prev]['line'] - 1);
 
-        if ($errorCode === 'FirstIncorrect') {
+        if ('FirstIncorrect' === $errorCode) {
             $phpcsFile->recordMetric($stackPtr, 'Member var spacing before first', $foundLines);
         } else {
             $phpcsFile->recordMetric($stackPtr, 'Member var spacing before', $foundLines);
         }
 
         if ($foundLines === $spacing) {
-            if ($endOfStatement !== false) {
+            if (false !== $endOfStatement) {
                 return $endOfStatement;
             }
 
@@ -152,15 +150,15 @@ class MemberVarSpacingSniff extends AbstractVariableSniff
         ];
 
         $fix = $phpcsFile->addFixableError($errorMsg, $startOfStatement, $errorCode, $data);
-        if ($fix === true) {
+        if (true === $fix) {
             $phpcsFile->fixer->beginChangeset();
-            for ($i = ($prev + 1); $i < $first; $i++) {
+            for ($i = ($prev + 1); $i < $first; ++$i) {
                 if ($tokens[$i]['line'] === $tokens[$prev]['line']) {
                     continue;
                 }
 
                 if ($tokens[$i]['line'] === $tokens[$first]['line']) {
-                    for ($x = 1; $x <= $spacing; $x++) {
+                    for ($x = 1; $x <= $spacing; ++$x) {
                         $phpcsFile->fixer->addNewlineBefore($i);
                     }
 
@@ -173,47 +171,36 @@ class MemberVarSpacingSniff extends AbstractVariableSniff
             $phpcsFile->fixer->endChangeset();
         }//end if
 
-        if ($endOfStatement !== false) {
+        if (false !== $endOfStatement) {
             return $endOfStatement;
         }
+    }
 
-        return;
-
-    }//end processMemberVar()
-
+    //end processMemberVar()
 
     /**
      * Processes normal variables.
      *
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where this token was found.
      * @param int                         $stackPtr  The position where the token was found.
-     *
-     * @return void
      */
     protected function processVariable(File $phpcsFile, $stackPtr)
     {
-        /*
-            We don't care about normal variables.
-        */
+        // We don't care about normal variables.
+    }
 
-    }//end processVariable()
-
+    //end processVariable()
 
     /**
      * Processes variables in double quoted strings.
      *
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where this token was found.
      * @param int                         $stackPtr  The position where the token was found.
-     *
-     * @return void
      */
     protected function processVariableInString(File $phpcsFile, $stackPtr)
     {
-        /*
-            We don't care about normal variables.
-        */
+        // We don't care about normal variables.
+    }
 
-    }//end processVariableInString()
-
-
+    //end processVariableInString()
 }//end class

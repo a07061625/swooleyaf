@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class InnerFunctionsSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -24,9 +22,9 @@ class InnerFunctionsSniff implements Sniff
     public function register()
     {
         return [T_FUNCTION];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -34,35 +32,32 @@ class InnerFunctionsSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
         $function = $phpcsFile->getCondition($stackPtr, T_FUNCTION);
-        if ($function === false) {
+        if (false === $function) {
             // Not a nested function.
             return;
         }
 
         $class = $phpcsFile->getCondition($stackPtr, T_ANON_CLASS, false);
-        if ($class !== false && $class > $function) {
+        if (false !== $class && $class > $function) {
             // Ignore methods in anon classes.
             return;
         }
 
         $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
-        if ($tokens[$prev]['code'] === T_EQUAL) {
+        if (T_EQUAL === $tokens[$prev]['code']) {
             // Ignore closures.
             return;
         }
 
         $error = 'The use of inner functions is forbidden';
         $phpcsFile->addError($error, $stackPtr, 'NotAllowed');
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

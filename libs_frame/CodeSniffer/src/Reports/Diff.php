@@ -13,8 +13,6 @@ use PHP_CodeSniffer\Files\File;
 
 class Diff implements Report
 {
-
-
     /**
      * Generate a partial report for a single processed file.
      *
@@ -29,21 +27,21 @@ class Diff implements Report
      *
      * @return bool
      */
-    public function generateFileReport($report, File $phpcsFile, $showSources=false, $width=80)
+    public function generateFileReport($report, File $phpcsFile, $showSources = false, $width = 80)
     {
         $errors = $phpcsFile->getFixableCount();
-        if ($errors === 0) {
+        if (0 === $errors) {
             return false;
         }
 
         $phpcsFile->disableCaching();
         $tokens = $phpcsFile->getTokens();
-        if (empty($tokens) === true) {
+        if (true === empty($tokens)) {
             if (PHP_CODESNIFFER_VERBOSITY === 1) {
                 $startTime = microtime(true);
-                echo 'DIFF report is parsing '.basename($report['filename']).' ';
-            } else if (PHP_CODESNIFFER_VERBOSITY > 1) {
-                echo 'DIFF report is forcing parse of '.$report['filename'].PHP_EOL;
+                echo 'DIFF report is parsing ' . basename($report['filename']) . ' ';
+            } elseif (PHP_CODESNIFFER_VERBOSITY > 1) {
+                echo 'DIFF report is forcing parse of ' . $report['filename'] . PHP_EOL;
             }
 
             $phpcsFile->parse();
@@ -55,7 +53,7 @@ class Diff implements Report
                     echo "DONE in {$timeTaken}ms";
                 } else {
                     $timeTaken = round(($timeTaken / 1000), 2);
-                    echo "DONE in $timeTaken secs";
+                    echo "DONE in {$timeTaken} secs";
                 }
 
                 echo PHP_EOL;
@@ -66,31 +64,32 @@ class Diff implements Report
 
         if (PHP_CODESNIFFER_VERBOSITY > 1) {
             ob_end_clean();
-            echo "\t*** START FILE FIXING ***".PHP_EOL;
+            echo "\t*** START FILE FIXING ***" . PHP_EOL;
         }
 
         $fixed = $phpcsFile->fixer->fixFile();
 
         if (PHP_CODESNIFFER_VERBOSITY > 1) {
-            echo "\t*** END FILE FIXING ***".PHP_EOL;
+            echo "\t*** END FILE FIXING ***" . PHP_EOL;
             ob_start();
         }
 
-        if ($fixed === false) {
+        if (false === $fixed) {
             return false;
         }
 
         $diff = $phpcsFile->fixer->generateDiff();
-        if ($diff === '') {
+        if ('' === $diff) {
             // Nothing to print.
             return false;
         }
 
-        echo $diff.PHP_EOL;
+        echo $diff . PHP_EOL;
+
         return true;
+    }
 
-    }//end generateFileReport()
-
+    //end generateFileReport()
 
     /**
      * Prints all errors and warnings for each file processed.
@@ -105,8 +104,6 @@ class Diff implements Report
      * @param int    $width         Maximum allowed line width.
      * @param bool   $interactive   Are we running in interactive mode?
      * @param bool   $toScreen      Is the report being printed to screen?
-     *
-     * @return void
      */
     public function generate(
         $cachedData,
@@ -114,17 +111,16 @@ class Diff implements Report
         $totalErrors,
         $totalWarnings,
         $totalFixable,
-        $showSources=false,
-        $width=80,
-        $interactive=false,
-        $toScreen=true
+        $showSources = false,
+        $width = 80,
+        $interactive = false,
+        $toScreen = true
     ) {
         echo $cachedData;
-        if ($toScreen === true && $cachedData !== '') {
+        if (true === $toScreen && '' !== $cachedData) {
             echo PHP_EOL;
         }
+    }
 
-    }//end generate()
-
-
+    //end generate()
 }//end class

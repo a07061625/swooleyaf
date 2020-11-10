@@ -15,14 +15,12 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class ClassDefinitionNameSpacingSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
      * @var array
      */
     public $supportedTokenizers = ['CSS'];
-
 
     /**
      * Returns the token types that this sniff is interested in.
@@ -32,9 +30,9 @@ class ClassDefinitionNameSpacingSniff implements Sniff
     public function register()
     {
         return [T_OPEN_CURLY_BRACKET];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes the tokens that this sniff is interested in.
@@ -42,44 +40,42 @@ class ClassDefinitionNameSpacingSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where the token was found.
      * @param int                         $stackPtr  The position in the stack where
      *                                               the token was found.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        if (isset($tokens[$stackPtr]['bracket_closer']) === false) {
+        if (false === isset($tokens[$stackPtr]['bracket_closer'])) {
             // Syntax error or live coding, bow out.
             return;
         }
 
         // Do not check nested style definitions as, for example, in @media style rules.
         $nested = $phpcsFile->findNext(T_OPEN_CURLY_BRACKET, ($stackPtr + 1), $tokens[$stackPtr]['bracket_closer']);
-        if ($nested !== false) {
+        if (false !== $nested) {
             return;
         }
 
         // Find the first blank line before this opening brace, unless we get
         // to another style definition, comment or the start of the file.
-        $endTokens  = [
-            T_OPEN_CURLY_BRACKET  => T_OPEN_CURLY_BRACKET,
+        $endTokens = [
+            T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET,
             T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
-            T_OPEN_TAG            => T_OPEN_TAG,
+            T_OPEN_TAG => T_OPEN_TAG,
         ];
         $endTokens += Tokens::$commentTokens;
 
         $prev = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($stackPtr - 1), null, true);
 
         $foundContent = false;
-        $currentLine  = $tokens[$prev]['line'];
-        for ($i = ($stackPtr - 1); $i >= 0; $i--) {
-            if (isset($endTokens[$tokens[$i]['code']]) === true) {
+        $currentLine = $tokens[$prev]['line'];
+        for ($i = ($stackPtr - 1); $i >= 0; --$i) {
+            if (true === isset($endTokens[$tokens[$i]['code']])) {
                 break;
             }
 
             if ($tokens[$i]['line'] === $currentLine) {
-                if ($tokens[$i]['code'] !== T_WHITESPACE) {
+                if (T_WHITESPACE !== $tokens[$i]['code']) {
                     $foundContent = true;
                 }
 
@@ -87,12 +83,12 @@ class ClassDefinitionNameSpacingSniff implements Sniff
             }
 
             // We changed lines.
-            if ($foundContent === false) {
+            if (false === $foundContent) {
                 // Before we throw an error, make sure we are not looking
                 // at a gap before the style definition.
                 $prev = $phpcsFile->findPrevious(T_WHITESPACE, $i, null, true);
-                if ($prev !== false
-                    && isset($endTokens[$tokens[$prev]['code']]) === false
+                if (false !== $prev
+                    && false === isset($endTokens[$tokens[$prev]['code']])
                 ) {
                     $error = 'Blank lines are not allowed between class names';
                     $phpcsFile->addError($error, ($i + 1), 'BlankLinesFound');
@@ -102,10 +98,9 @@ class ClassDefinitionNameSpacingSniff implements Sniff
             }
 
             $foundContent = false;
-            $currentLine  = $tokens[$i]['line'];
+            $currentLine = $tokens[$i]['line'];
         }//end for
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

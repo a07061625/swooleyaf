@@ -15,21 +15,19 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class ControlStructureSpacingSniff implements Sniff
 {
-
     /**
      * How many spaces should follow the opening bracket.
      *
-     * @var integer
+     * @var int
      */
     public $requiredSpacesAfterOpen = 0;
 
     /**
      * How many spaces should precede the closing bracket.
      *
-     * @var integer
+     * @var int
      */
     public $requiredSpacesBeforeClose = 0;
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -48,9 +46,9 @@ class ControlStructureSpacingSniff implements Sniff
             T_ELSEIF,
             T_CATCH,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -58,17 +56,15 @@ class ControlStructureSpacingSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
-        $this->requiredSpacesAfterOpen   = (int) $this->requiredSpacesAfterOpen;
-        $this->requiredSpacesBeforeClose = (int) $this->requiredSpacesBeforeClose;
+        $this->requiredSpacesAfterOpen = (int)$this->requiredSpacesAfterOpen;
+        $this->requiredSpacesBeforeClose = (int)$this->requiredSpacesBeforeClose;
         $tokens = $phpcsFile->getTokens();
 
-        if (isset($tokens[$stackPtr]['parenthesis_opener']) === false
-            || isset($tokens[$stackPtr]['parenthesis_closer']) === false
+        if (false === isset($tokens[$stackPtr]['parenthesis_opener'])
+            || false === isset($tokens[$stackPtr]['parenthesis_closer'])
         ) {
             return;
         }
@@ -76,10 +72,10 @@ class ControlStructureSpacingSniff implements Sniff
         $parenOpener = $tokens[$stackPtr]['parenthesis_opener'];
         $parenCloser = $tokens[$stackPtr]['parenthesis_closer'];
         $nextContent = $phpcsFile->findNext(T_WHITESPACE, ($parenOpener + 1), null, true);
-        if (in_array($tokens[$nextContent]['code'], Tokens::$commentTokens, true) === false) {
+        if (false === \in_array($tokens[$nextContent]['code'], Tokens::$commentTokens, true)) {
             $spaceAfterOpen = 0;
-            if ($tokens[($parenOpener + 1)]['code'] === T_WHITESPACE) {
-                if (strpos($tokens[($parenOpener + 1)]['content'], $phpcsFile->eolChar) !== false) {
+            if (T_WHITESPACE === $tokens[($parenOpener + 1)]['code']) {
+                if (false !== strpos($tokens[($parenOpener + 1)]['content'], $phpcsFile->eolChar)) {
                     $spaceAfterOpen = 'newline';
                 } else {
                     $spaceAfterOpen = $tokens[($parenOpener + 1)]['length'];
@@ -90,16 +86,16 @@ class ControlStructureSpacingSniff implements Sniff
 
             if ($spaceAfterOpen !== $this->requiredSpacesAfterOpen) {
                 $error = 'Expected %s spaces after opening bracket; %s found';
-                $data  = [
+                $data = [
                     $this->requiredSpacesAfterOpen,
                     $spaceAfterOpen,
                 ];
-                $fix   = $phpcsFile->addFixableError($error, ($parenOpener + 1), 'SpacingAfterOpenBrace', $data);
-                if ($fix === true) {
+                $fix = $phpcsFile->addFixableError($error, ($parenOpener + 1), 'SpacingAfterOpenBrace', $data);
+                if (true === $fix) {
                     $padding = str_repeat(' ', $this->requiredSpacesAfterOpen);
-                    if ($spaceAfterOpen === 0) {
+                    if (0 === $spaceAfterOpen) {
                         $phpcsFile->fixer->addContent($parenOpener, $padding);
-                    } else if ($spaceAfterOpen === 'newline') {
+                    } elseif ('newline' === $spaceAfterOpen) {
                         $phpcsFile->fixer->replaceToken(($parenOpener + 1), '');
                     } else {
                         $phpcsFile->fixer->replaceToken(($parenOpener + 1), $padding);
@@ -111,22 +107,22 @@ class ControlStructureSpacingSniff implements Sniff
         $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($parenCloser - 1), $parenOpener, true);
         if ($tokens[$prev]['line'] === $tokens[$parenCloser]['line']) {
             $spaceBeforeClose = 0;
-            if ($tokens[($parenCloser - 1)]['code'] === T_WHITESPACE) {
-                $spaceBeforeClose = strlen(ltrim($tokens[($parenCloser - 1)]['content'], $phpcsFile->eolChar));
+            if (T_WHITESPACE === $tokens[($parenCloser - 1)]['code']) {
+                $spaceBeforeClose = \strlen(ltrim($tokens[($parenCloser - 1)]['content'], $phpcsFile->eolChar));
             }
 
             $phpcsFile->recordMetric($stackPtr, 'Spaces before control structure close parenthesis', $spaceBeforeClose);
 
             if ($spaceBeforeClose !== $this->requiredSpacesBeforeClose) {
                 $error = 'Expected %s spaces before closing bracket; %s found';
-                $data  = [
+                $data = [
                     $this->requiredSpacesBeforeClose,
                     $spaceBeforeClose,
                 ];
-                $fix   = $phpcsFile->addFixableError($error, ($parenCloser - 1), 'SpaceBeforeCloseBrace', $data);
-                if ($fix === true) {
+                $fix = $phpcsFile->addFixableError($error, ($parenCloser - 1), 'SpaceBeforeCloseBrace', $data);
+                if (true === $fix) {
                     $padding = str_repeat(' ', $this->requiredSpacesBeforeClose);
-                    if ($spaceBeforeClose === 0) {
+                    if (0 === $spaceBeforeClose) {
                         $phpcsFile->fixer->addContentBefore($parenCloser, $padding);
                     } else {
                         $phpcsFile->fixer->replaceToken(($parenCloser - 1), $padding);
@@ -134,8 +130,7 @@ class ControlStructureSpacingSniff implements Sniff
                 }
             }
         }//end if
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

@@ -15,16 +15,12 @@ use PHP_CodeSniffer\Util\Common;
 
 class VariableCommentSniff extends AbstractVariableSniff
 {
-
-
     /**
      * Called to process class member vars.
      *
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function processMemberVar(File $phpcsFile, $stackPtr)
     {
@@ -42,16 +38,18 @@ class VariableCommentSniff extends AbstractVariableSniff
         ];
 
         $commentEnd = $phpcsFile->findPrevious($ignore, ($stackPtr - 1), null, true);
-        if ($commentEnd === false
-            || ($tokens[$commentEnd]['code'] !== T_DOC_COMMENT_CLOSE_TAG
-            && $tokens[$commentEnd]['code'] !== T_COMMENT)
+        if (false === $commentEnd
+            || (T_DOC_COMMENT_CLOSE_TAG !== $tokens[$commentEnd]['code']
+            && T_COMMENT !== $tokens[$commentEnd]['code'])
         ) {
             $phpcsFile->addError('Missing member variable doc comment', $stackPtr, 'Missing');
+
             return;
         }
 
-        if ($tokens[$commentEnd]['code'] === T_COMMENT) {
+        if (T_COMMENT === $tokens[$commentEnd]['code']) {
             $phpcsFile->addError('You must use "/**" style comments for a member variable comment', $stackPtr, 'WrongStyle');
+
             return;
         }
 
@@ -59,62 +57,64 @@ class VariableCommentSniff extends AbstractVariableSniff
 
         $foundVar = null;
         foreach ($tokens[$commentStart]['comment_tags'] as $tag) {
-            if ($tokens[$tag]['content'] === '@var') {
-                if ($foundVar !== null) {
+            if ('@var' === $tokens[$tag]['content']) {
+                if (null !== $foundVar) {
                     $error = 'Only one @var tag is allowed in a member variable comment';
                     $phpcsFile->addError($error, $tag, 'DuplicateVar');
                 } else {
                     $foundVar = $tag;
                 }
-            } else if ($tokens[$tag]['content'] === '@see') {
+            } elseif ('@see' === $tokens[$tag]['content']) {
                 // Make sure the tag isn't empty.
                 $string = $phpcsFile->findNext(T_DOC_COMMENT_STRING, $tag, $commentEnd);
-                if ($string === false || $tokens[$string]['line'] !== $tokens[$tag]['line']) {
+                if (false === $string || $tokens[$string]['line'] !== $tokens[$tag]['line']) {
                     $error = 'Content missing for @see tag in member variable comment';
                     $phpcsFile->addError($error, $tag, 'EmptySees');
                 }
             } else {
                 $error = '%s tag is not allowed in member variable comment';
-                $data  = [$tokens[$tag]['content']];
+                $data = [$tokens[$tag]['content']];
                 $phpcsFile->addWarning($error, $tag, 'TagNotAllowed', $data);
             }//end if
         }//end foreach
 
         // The @var tag is the only one we require.
-        if ($foundVar === null) {
+        if (null === $foundVar) {
             $error = 'Missing @var tag in member variable comment';
             $phpcsFile->addError($error, $commentEnd, 'MissingVar');
+
             return;
         }
 
         $firstTag = $tokens[$commentStart]['comment_tags'][0];
-        if ($foundVar !== null && $tokens[$firstTag]['content'] !== '@var') {
+        if (null !== $foundVar && '@var' !== $tokens[$firstTag]['content']) {
             $error = 'The @var tag must be the first tag in a member variable comment';
             $phpcsFile->addError($error, $foundVar, 'VarOrder');
         }
 
         // Make sure the tag isn't empty and has the correct padding.
         $string = $phpcsFile->findNext(T_DOC_COMMENT_STRING, $foundVar, $commentEnd);
-        if ($string === false || $tokens[$string]['line'] !== $tokens[$foundVar]['line']) {
+        if (false === $string || $tokens[$string]['line'] !== $tokens[$foundVar]['line']) {
             $error = 'Content missing for @var tag in member variable comment';
             $phpcsFile->addError($error, $foundVar, 'EmptyVar');
+
             return;
         }
 
-         // Support both a var type and a description.
+        // Support both a var type and a description.
         preg_match('`^((?:\|?(?:array\([^\)]*\)|[\\\\a-z0-9\[\]]+))*)( .*)?`i', $tokens[($foundVar + 2)]['content'], $varParts);
-        if (isset($varParts[1]) === false) {
+        if (false === isset($varParts[1])) {
             return;
         }
 
         $varType = $varParts[1];
 
         // Check var type (can be multiple, separated by '|').
-        $typeNames      = explode('|', $varType);
+        $typeNames = explode('|', $varType);
         $suggestedNames = [];
         foreach ($typeNames as $i => $typeName) {
             $suggestedName = Common::suggestType($typeName);
-            if (in_array($suggestedName, $suggestedNames, true) === false) {
+            if (false === \in_array($suggestedName, $suggestedNames, true)) {
                 $suggestedNames[] = $suggestedName;
             }
         }
@@ -122,14 +122,14 @@ class VariableCommentSniff extends AbstractVariableSniff
         $suggestedType = implode('|', $suggestedNames);
         if ($varType !== $suggestedType) {
             $error = 'Expected "%s" but found "%s" for @var tag in member variable comment';
-            $data  = [
+            $data = [
                 $suggestedType,
                 $varType,
             ];
-            $fix   = $phpcsFile->addFixableError($error, $foundVar, 'IncorrectVarType', $data);
-            if ($fix === true) {
+            $fix = $phpcsFile->addFixableError($error, $foundVar, 'IncorrectVarType', $data);
+            if (true === $fix) {
                 $replacement = $suggestedType;
-                if (empty($varParts[2]) === false) {
+                if (false === empty($varParts[2])) {
                     $replacement .= $varParts[2];
                 }
 
@@ -137,9 +137,9 @@ class VariableCommentSniff extends AbstractVariableSniff
                 unset($replacement);
             }
         }
+    }
 
-    }//end processMemberVar()
-
+    //end processMemberVar()
 
     /**
      * Called to process a normal variable.
@@ -149,14 +149,12 @@ class VariableCommentSniff extends AbstractVariableSniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The PHP_CodeSniffer file where this token was found.
      * @param int                         $stackPtr  The position where the double quoted
      *                                               string was found.
-     *
-     * @return void
      */
     protected function processVariable(File $phpcsFile, $stackPtr)
     {
+    }
 
-    }//end processVariable()
-
+    //end processVariable()
 
     /**
      * Called to process variables found in double quoted strings.
@@ -166,13 +164,10 @@ class VariableCommentSniff extends AbstractVariableSniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The PHP_CodeSniffer file where this token was found.
      * @param int                         $stackPtr  The position where the double quoted
      *                                               string was found.
-     *
-     * @return void
      */
     protected function processVariableInString(File $phpcsFile, $stackPtr)
     {
+    }
 
-    }//end processVariableInString()
-
-
+    //end processVariableInString()
 }//end class

@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ClosingPHPTagSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -24,9 +22,9 @@ class ClosingPHPTagSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
@@ -34,18 +32,15 @@ class ClosingPHPTagSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $closeTag = $phpcsFile->findNext(T_CLOSE_TAG, $stackPtr);
-        if ($closeTag === false) {
+        if (false === $closeTag) {
             $error = 'The PHP open tag does not have a corresponding PHP close tag';
             $phpcsFile->addError($error, $stackPtr, 'NotFound');
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

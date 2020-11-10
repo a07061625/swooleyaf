@@ -14,7 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class LongConditionClosingCommentSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
@@ -26,25 +25,10 @@ class LongConditionClosingCommentSniff implements Sniff
     ];
 
     /**
-     * The openers that we are interested in.
-     *
-     * @var integer[]
-     */
-    private static $openers = [
-        T_SWITCH,
-        T_IF,
-        T_FOR,
-        T_FOREACH,
-        T_WHILE,
-        T_TRY,
-        T_CASE,
-    ];
-
-    /**
      * The length that a code block must be before
      * requiring a closing comment.
      *
-     * @var integer
+     * @var int
      */
     public $lineLimit = 20;
 
@@ -57,6 +41,20 @@ class LongConditionClosingCommentSniff implements Sniff
      */
     public $commentFormat = '//end %s';
 
+    /**
+     * The openers that we are interested in.
+     *
+     * @var int[]
+     */
+    private static $openers = [
+        T_SWITCH,
+        T_IF,
+        T_FOR,
+        T_FOREACH,
+        T_WHILE,
+        T_TRY,
+        T_CASE,
+    ];
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -66,9 +64,9 @@ class LongConditionClosingCommentSniff implements Sniff
     public function register()
     {
         return [T_CLOSE_CURLY_BRACKET];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -76,32 +74,30 @@ class LongConditionClosingCommentSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        if (isset($tokens[$stackPtr]['scope_condition']) === false) {
+        if (false === isset($tokens[$stackPtr]['scope_condition'])) {
             // No scope condition. It is a function closer.
             return;
         }
 
         $startCondition = $tokens[$tokens[$stackPtr]['scope_condition']];
-        $startBrace     = $tokens[$tokens[$stackPtr]['scope_opener']];
-        $endBrace       = $tokens[$stackPtr];
+        $startBrace = $tokens[$tokens[$stackPtr]['scope_opener']];
+        $endBrace = $tokens[$stackPtr];
 
         // We are only interested in some code blocks.
-        if (in_array($startCondition['code'], self::$openers, true) === false) {
+        if (false === \in_array($startCondition['code'], self::$openers, true)) {
             return;
         }
 
-        if ($startCondition['code'] === T_IF) {
+        if (T_IF === $startCondition['code']) {
             // If this is actually an ELSE IF, skip it as the brace
             // will be checked by the original IF.
             $else = $phpcsFile->findPrevious(T_WHITESPACE, ($tokens[$stackPtr]['scope_condition'] - 1), null, true);
-            if ($tokens[$else]['code'] === T_ELSE) {
+            if (T_ELSE === $tokens[$else]['code']) {
                 return;
             }
 
@@ -109,21 +105,21 @@ class LongConditionClosingCommentSniff implements Sniff
             // "end if" rather than "end else" or "end elseif".
             do {
                 $nextToken = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-                if ($tokens[$nextToken]['code'] === T_ELSE || $tokens[$nextToken]['code'] === T_ELSEIF) {
+                if (T_ELSE === $tokens[$nextToken]['code'] || T_ELSEIF === $tokens[$nextToken]['code']) {
                     // Check for ELSE IF (2 tokens) as opposed to ELSEIF (1 token).
-                    if ($tokens[$nextToken]['code'] === T_ELSE
-                        && isset($tokens[$nextToken]['scope_closer']) === false
+                    if (T_ELSE === $tokens[$nextToken]['code']
+                        && false === isset($tokens[$nextToken]['scope_closer'])
                     ) {
                         $nextToken = $phpcsFile->findNext(T_WHITESPACE, ($nextToken + 1), null, true);
-                        if ($tokens[$nextToken]['code'] !== T_IF
-                            || isset($tokens[$nextToken]['scope_closer']) === false
+                        if (T_IF !== $tokens[$nextToken]['code']
+                            || false === isset($tokens[$nextToken]['scope_closer'])
                         ) {
                             // Not an ELSE IF or is an inline ELSE IF.
                             break;
                         }
                     }
 
-                    if (isset($tokens[$nextToken]['scope_closer']) === false) {
+                    if (false === isset($tokens[$nextToken]['scope_closer'])) {
                         // There isn't going to be anywhere to print the "end if" comment
                         // because there is no closer.
                         return;
@@ -135,15 +131,15 @@ class LongConditionClosingCommentSniff implements Sniff
                 } else {
                     break;
                 }//end if
-            } while (isset($tokens[$nextToken]['scope_closer']) === true);
+            } while (true === isset($tokens[$nextToken]['scope_closer']));
         }//end if
 
-        if ($startCondition['code'] === T_TRY) {
+        if (T_TRY === $startCondition['code']) {
             // TRY statements need to check until the end of all CATCH statements.
             do {
                 $nextToken = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-                if ($tokens[$nextToken]['code'] === T_CATCH
-                    || $tokens[$nextToken]['code'] === T_FINALLY
+                if (T_CATCH === $tokens[$nextToken]['code']
+                    || T_FINALLY === $tokens[$nextToken]['code']
                 ) {
                     // The end brace becomes the CATCH end brace.
                     $stackPtr = $tokens[$nextToken]['scope_closer'];
@@ -151,23 +147,23 @@ class LongConditionClosingCommentSniff implements Sniff
                 } else {
                     break;
                 }
-            } while (isset($tokens[$nextToken]['scope_closer']) === true);
+            } while (true === isset($tokens[$nextToken]['scope_closer']));
         }
 
         $lineDifference = ($endBrace['line'] - $startBrace['line']);
 
         $expected = sprintf($this->commentFormat, $startCondition['content']);
-        $comment  = $phpcsFile->findNext([T_COMMENT], $stackPtr, null, false);
+        $comment = $phpcsFile->findNext([T_COMMENT], $stackPtr, null, false);
 
-        if (($comment === false) || ($tokens[$comment]['line'] !== $endBrace['line'])) {
+        if ((false === $comment) || ($tokens[$comment]['line'] !== $endBrace['line'])) {
             if ($lineDifference >= $this->lineLimit) {
                 $error = 'End comment for long condition not found; expected "%s"';
-                $data  = [$expected];
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Missing', $data);
+                $data = [$expected];
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Missing', $data);
 
-                if ($fix === true) {
+                if (true === $fix) {
                     $next = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-                    if ($next !== false && $tokens[$next]['line'] === $tokens[$stackPtr]['line']) {
+                    if (false !== $next && $tokens[$next]['line'] === $tokens[$stackPtr]['line']) {
                         $expected .= $phpcsFile->eolChar;
                     }
 
@@ -180,27 +176,26 @@ class LongConditionClosingCommentSniff implements Sniff
 
         if (($comment - $stackPtr) !== 1) {
             $error = 'Space found before closing comment; expected "%s"';
-            $data  = [$expected];
+            $data = [$expected];
             $phpcsFile->addError($error, $stackPtr, 'SpacingBefore', $data);
         }
 
         if (trim($tokens[$comment]['content']) !== $expected) {
             $found = trim($tokens[$comment]['content']);
             $error = 'Incorrect closing comment; expected "%s" but found "%s"';
-            $data  = [
+            $data = [
                 $expected,
                 $found,
             ];
 
             $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Invalid', $data);
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken($comment, $expected.$phpcsFile->eolChar);
+            if (true === $fix) {
+                $phpcsFile->fixer->replaceToken($comment, $expected . $phpcsFile->eolChar);
             }
 
             return;
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class
