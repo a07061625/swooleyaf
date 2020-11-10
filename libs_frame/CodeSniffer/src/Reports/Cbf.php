@@ -19,8 +19,6 @@ use PHP_CodeSniffer\Util;
 
 class Cbf implements Report
 {
-
-
     /**
      * Generate a partial report for a single processed file.
      *
@@ -34,35 +32,37 @@ class Cbf implements Report
      * @param int                   $width       Maximum allowed line width.
      *
      * @return bool
+     *
      * @throws \PHP_CodeSniffer\Exceptions\DeepExitException
      */
-    public function generateFileReport($report, File $phpcsFile, $showSources=false, $width=80)
+    public function generateFileReport($report, File $phpcsFile, $showSources = false, $width = 80)
     {
         $errors = $phpcsFile->getFixableCount();
-        if ($errors !== 0) {
+        if (0 !== $errors) {
             if (PHP_CODESNIFFER_VERBOSITY > 0) {
                 ob_end_clean();
                 $startTime = microtime(true);
-                echo "\t=> Fixing file: $errors/$errors violations remaining";
+                echo "\t=> Fixing file: {$errors}/{$errors} violations remaining";
             }
 
             $fixed = $phpcsFile->fixer->fixFile();
         }
 
-        if ($phpcsFile->config->stdin === true) {
+        if (true === $phpcsFile->config->stdin) {
             // Replacing STDIN, so output current file to STDOUT
             // even if nothing was fixed. Exit here because we
             // can't process any more than 1 file in this setup.
             $fixedContent = $phpcsFile->fixer->getContents();
+
             throw new DeepExitException($fixedContent, 1);
         }
 
-        if ($errors === 0) {
+        if (0 === $errors) {
             return false;
         }
 
         if (PHP_CODESNIFFER_VERBOSITY > 0) {
-            if ($fixed === false) {
+            if (false === $fixed) {
                 echo 'ERROR';
             } else {
                 echo 'DONE';
@@ -71,20 +71,20 @@ class Cbf implements Report
             $timeTaken = ((microtime(true) - $startTime) * 1000);
             if ($timeTaken < 1000) {
                 $timeTaken = round($timeTaken);
-                echo " in {$timeTaken}ms".PHP_EOL;
+                echo " in {$timeTaken}ms" . PHP_EOL;
             } else {
                 $timeTaken = round(($timeTaken / 1000), 2);
-                echo " in $timeTaken secs".PHP_EOL;
+                echo " in {$timeTaken} secs" . PHP_EOL;
             }
         }
 
-        if ($fixed === true) {
+        if (true === $fixed) {
             // The filename in the report may be truncated due to a basepath setting
             // but we are using it for writing here and not display,
             // so find the correct path if basepath is in use.
-            $newFilename = $report['filename'].$phpcsFile->config->suffix;
-            if ($phpcsFile->config->basepath !== null) {
-                $newFilename = $phpcsFile->config->basepath.DIRECTORY_SEPARATOR.$newFilename;
+            $newFilename = $report['filename'] . $phpcsFile->config->suffix;
+            if (null !== $phpcsFile->config->basepath) {
+                $newFilename = $phpcsFile->config->basepath . \DIRECTORY_SEPARATOR . $newFilename;
             }
 
             $newContent = $phpcsFile->fixer->getContents();
@@ -92,9 +92,9 @@ class Cbf implements Report
 
             if (PHP_CODESNIFFER_VERBOSITY > 0) {
                 if ($newFilename === $report['filename']) {
-                    echo "\t=> File was overwritten".PHP_EOL;
+                    echo "\t=> File was overwritten" . PHP_EOL;
                 } else {
-                    echo "\t=> Fixed file written to ".basename($newFilename).PHP_EOL;
+                    echo "\t=> Fixed file written to " . basename($newFilename) . PHP_EOL;
                 }
             }
         }
@@ -103,16 +103,16 @@ class Cbf implements Report
             ob_start();
         }
 
-        $errorCount   = $phpcsFile->getErrorCount();
+        $errorCount = $phpcsFile->getErrorCount();
         $warningCount = $phpcsFile->getWarningCount();
         $fixableCount = $phpcsFile->getFixableCount();
-        $fixedCount   = ($errors - $fixableCount);
-        echo $report['filename'].">>$errorCount>>$warningCount>>$fixableCount>>$fixedCount".PHP_EOL;
+        $fixedCount = ($errors - $fixableCount);
+        echo $report['filename'] . ">>{$errorCount}>>{$warningCount}>>{$fixableCount}>>{$fixedCount}" . PHP_EOL;
 
         return $fixed;
+    }
 
-    }//end generateFileReport()
-
+    //end generateFileReport()
 
     /**
      * Prints a summary of fixed files.
@@ -127,8 +127,6 @@ class Cbf implements Report
      * @param int    $width         Maximum allowed line width.
      * @param bool   $interactive   Are we running in interactive mode?
      * @param bool   $toScreen      Is the report being printed to screen?
-     *
-     * @return void
      */
     public function generate(
         $cachedData,
@@ -136,33 +134,34 @@ class Cbf implements Report
         $totalErrors,
         $totalWarnings,
         $totalFixable,
-        $showSources=false,
-        $width=80,
-        $interactive=false,
-        $toScreen=true
+        $showSources = false,
+        $width = 80,
+        $interactive = false,
+        $toScreen = true
     ) {
         $lines = explode(PHP_EOL, $cachedData);
         array_pop($lines);
 
-        if (empty($lines) === true) {
-            echo PHP_EOL.'No fixable errors were found'.PHP_EOL;
+        if (true === empty($lines)) {
+            echo PHP_EOL . 'No fixable errors were found' . PHP_EOL;
+
             return;
         }
 
         $reportFiles = [];
-        $maxLength   = 0;
-        $totalFixed  = 0;
-        $failures    = 0;
+        $maxLength = 0;
+        $totalFixed = 0;
+        $failures = 0;
 
         foreach ($lines as $line) {
-            $parts   = explode('>>', $line);
-            $fileLen = strlen($parts[0]);
+            $parts = explode('>>', $line);
+            $fileLen = \strlen($parts[0]);
             $reportFiles[$parts[0]] = [
-                'errors'   => $parts[1],
+                'errors' => $parts[1],
                 'warnings' => $parts[2],
-                'fixable'  => $parts[3],
-                'fixed'    => $parts[4],
-                'strlen'   => $fileLen,
+                'fixable' => $parts[3],
+                'fixed' => $parts[4],
+                'strlen' => $fileLen,
             ];
 
             $maxLength = max($maxLength, $fileLen);
@@ -170,42 +169,43 @@ class Cbf implements Report
             $totalFixed += $parts[4];
 
             if ($parts[3] > 0) {
-                $failures++;
+                ++$failures;
             }
         }
 
         $width = min($width, ($maxLength + 21));
         $width = max($width, 70);
 
-        echo PHP_EOL."\033[1m".'PHPCBF RESULT SUMMARY'."\033[0m".PHP_EOL;
-        echo str_repeat('-', $width).PHP_EOL;
-        echo "\033[1m".'FILE'.str_repeat(' ', ($width - 20)).'FIXED  REMAINING'."\033[0m".PHP_EOL;
-        echo str_repeat('-', $width).PHP_EOL;
+        echo PHP_EOL . "\033[1m" . 'PHPCBF RESULT SUMMARY' . "\033[0m" . PHP_EOL;
+        echo str_repeat('-', $width) . PHP_EOL;
+        echo "\033[1m" . 'FILE' . str_repeat(' ', ($width - 20)) . 'FIXED  REMAINING' . "\033[0m" . PHP_EOL;
+        echo str_repeat('-', $width) . PHP_EOL;
 
         foreach ($reportFiles as $file => $data) {
             $padding = ($width - 18 - $data['strlen']);
             if ($padding < 0) {
-                $file    = '...'.substr($file, (($padding * -1) + 3));
+                $file = '...' . substr($file, (($padding * -1) + 3));
                 $padding = 0;
             }
 
-            echo $file.str_repeat(' ', $padding).'  ';
+            echo $file . str_repeat(' ', $padding) . '  ';
 
             if ($data['fixable'] > 0) {
-                echo "\033[31mFAILED TO FIX\033[0m".PHP_EOL;
+                echo "\033[31mFAILED TO FIX\033[0m" . PHP_EOL;
+
                 continue;
             }
 
             $remaining = ($data['errors'] + $data['warnings']);
 
-            if ($data['fixed'] !== 0) {
+            if (0 !== $data['fixed']) {
                 echo $data['fixed'];
-                echo str_repeat(' ', (7 - strlen((string) $data['fixed'])));
+                echo str_repeat(' ', (7 - \strlen((string)$data['fixed'])));
             } else {
                 echo '0      ';
             }
 
-            if ($remaining !== 0) {
+            if (0 !== $remaining) {
                 echo $remaining;
             } else {
                 echo '0';
@@ -214,37 +214,36 @@ class Cbf implements Report
             echo PHP_EOL;
         }//end foreach
 
-        echo str_repeat('-', $width).PHP_EOL;
-        echo "\033[1mA TOTAL OF $totalFixed ERROR";
-        if ($totalFixed !== 1) {
+        echo str_repeat('-', $width) . PHP_EOL;
+        echo "\033[1mA TOTAL OF {$totalFixed} ERROR";
+        if (1 !== $totalFixed) {
             echo 'S';
         }
 
-        $numFiles = count($reportFiles);
-        echo ' WERE FIXED IN '.$numFiles.' FILE';
-        if ($numFiles !== 1) {
+        $numFiles = \count($reportFiles);
+        echo ' WERE FIXED IN ' . $numFiles . ' FILE';
+        if (1 !== $numFiles) {
             echo 'S';
         }
 
         echo "\033[0m";
 
         if ($failures > 0) {
-            echo PHP_EOL.str_repeat('-', $width).PHP_EOL;
-            echo "\033[1mPHPCBF FAILED TO FIX $failures FILE";
-            if ($failures !== 1) {
+            echo PHP_EOL . str_repeat('-', $width) . PHP_EOL;
+            echo "\033[1mPHPCBF FAILED TO FIX {$failures} FILE";
+            if (1 !== $failures) {
                 echo 'S';
             }
 
             echo "\033[0m";
         }
 
-        echo PHP_EOL.str_repeat('-', $width).PHP_EOL.PHP_EOL;
+        echo PHP_EOL . str_repeat('-', $width) . PHP_EOL . PHP_EOL;
 
-        if ($toScreen === true && $interactive === false) {
+        if (true === $toScreen && false === $interactive) {
             Util\Timing::printRunTime();
         }
+    }
 
-    }//end generate()
-
-
+    //end generate()
 }//end class

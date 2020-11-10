@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class OneClassPerFileSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -24,9 +22,9 @@ class OneClassPerFileSniff implements Sniff
     public function register()
     {
         return [T_CLASS];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
@@ -34,18 +32,15 @@ class OneClassPerFileSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $nextClass = $phpcsFile->findNext($this->register(), ($stackPtr + 1));
-        if ($nextClass !== false) {
+        if (false !== $nextClass) {
             $error = 'Only one class is allowed in a file';
             $phpcsFile->addError($error, $nextClass, 'MultipleFound');
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

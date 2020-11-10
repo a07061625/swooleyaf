@@ -19,7 +19,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class AssignmentInConditionSniff implements Sniff
 {
-
     /**
      * Assignment tokens to trigger on.
      *
@@ -36,7 +35,6 @@ class AssignmentInConditionSniff implements Sniff
      */
     protected $conditionStartTokens = [];
 
-
     /**
      * Registers the tokens that this sniff wants to listen for.
      *
@@ -48,7 +46,7 @@ class AssignmentInConditionSniff implements Sniff
         unset($this->assignmentTokens[T_DOUBLE_ARROW]);
 
         $starters = Tokens::$booleanOperators;
-        $starters[T_SEMICOLON]        = T_SEMICOLON;
+        $starters[T_SEMICOLON] = T_SEMICOLON;
         $starters[T_OPEN_PARENTHESIS] = T_OPEN_PARENTHESIS;
 
         $this->conditionStartTokens = $starters;
@@ -61,9 +59,9 @@ class AssignmentInConditionSniff implements Sniff
             T_CASE,
             T_WHILE,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -71,43 +69,41 @@ class AssignmentInConditionSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
+        $token = $tokens[$stackPtr];
 
         // Find the condition opener/closer.
-        if ($token['code'] === T_FOR) {
-            if (isset($token['parenthesis_opener'], $token['parenthesis_closer']) === false) {
+        if (T_FOR === $token['code']) {
+            if (false === isset($token['parenthesis_opener'], $token['parenthesis_closer'])) {
                 return;
             }
 
             $semicolon = $phpcsFile->findNext(T_SEMICOLON, ($token['parenthesis_opener'] + 1), ($token['parenthesis_closer']));
-            if ($semicolon === false) {
+            if (false === $semicolon) {
                 return;
             }
 
             $opener = $semicolon;
 
             $semicolon = $phpcsFile->findNext(T_SEMICOLON, ($opener + 1), ($token['parenthesis_closer']));
-            if ($semicolon === false) {
+            if (false === $semicolon) {
                 return;
             }
 
             $closer = $semicolon;
             unset($semicolon);
-        } else if ($token['code'] === T_CASE) {
-            if (isset($token['scope_opener']) === false) {
+        } elseif (T_CASE === $token['code']) {
+            if (false === isset($token['scope_opener'])) {
                 return;
             }
 
             $opener = $stackPtr;
             $closer = $token['scope_opener'];
         } else {
-            if (isset($token['parenthesis_opener'], $token['parenthesis_closer']) === false) {
+            if (false === isset($token['parenthesis_opener'], $token['parenthesis_closer'])) {
                 return;
             }
 
@@ -119,38 +115,39 @@ class AssignmentInConditionSniff implements Sniff
 
         do {
             $hasAssignment = $phpcsFile->findNext($this->assignmentTokens, ($startPos + 1), $closer);
-            if ($hasAssignment === false) {
+            if (false === $hasAssignment) {
                 return;
             }
 
             // Examine whether the left side is a variable.
-            $hasVariable       = false;
-            $conditionStart    = $startPos;
+            $hasVariable = false;
+            $conditionStart = $startPos;
             $altConditionStart = $phpcsFile->findPrevious($this->conditionStartTokens, ($hasAssignment - 1), $startPos);
-            if ($altConditionStart !== false) {
+            if (false !== $altConditionStart) {
                 $conditionStart = $altConditionStart;
             }
 
-            for ($i = $hasAssignment; $i > $conditionStart; $i--) {
-                if (isset(Tokens::$emptyTokens[$tokens[$i]['code']]) === true) {
+            for ($i = $hasAssignment; $i > $conditionStart; --$i) {
+                if (true === isset(Tokens::$emptyTokens[$tokens[$i]['code']])) {
                     continue;
                 }
 
                 // If this is a variable or array, we've seen all we need to see.
-                if ($tokens[$i]['code'] === T_VARIABLE || $tokens[$i]['code'] === T_CLOSE_SQUARE_BRACKET) {
+                if (T_VARIABLE === $tokens[$i]['code'] || T_CLOSE_SQUARE_BRACKET === $tokens[$i]['code']) {
                     $hasVariable = true;
+
                     break;
                 }
 
                 // If this is a function call or something, we are OK.
-                if ($tokens[$i]['code'] === T_CLOSE_PARENTHESIS) {
+                if (T_CLOSE_PARENTHESIS === $tokens[$i]['code']) {
                     break;
                 }
             }
 
-            if ($hasVariable === true) {
+            if (true === $hasVariable) {
                 $errorCode = 'Found';
-                if ($token['code'] === T_WHILE) {
+                if (T_WHILE === $token['code']) {
                     $errorCode = 'FoundInWhileCondition';
                 }
 
@@ -163,8 +160,7 @@ class AssignmentInConditionSniff implements Sniff
 
             $startPos = $hasAssignment;
         } while ($startPos < $closer);
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

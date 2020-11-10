@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Squiz\Tests\WhiteSpace;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class ObjectOperatorSpacingUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class ObjectOperatorSpacingUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -26,12 +28,12 @@ class ObjectOperatorSpacingUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
-            3  => 1,
-            4  => 2,
-            5  => 1,
-            6  => 2,
-            8  => 1,
-            9  => 1,
+            3 => 1,
+            4 => 2,
+            5 => 1,
+            6 => 2,
+            8 => 1,
+            9 => 1,
             15 => 1,
             16 => 2,
             18 => 2,
@@ -46,9 +48,9 @@ class ObjectOperatorSpacingUnitTest extends AbstractSniffUnitTest
             51 => 1,
             52 => 2,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -61,8 +63,7 @@ class ObjectOperatorSpacingUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

@@ -15,7 +15,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ESLintSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
@@ -26,10 +25,9 @@ class ESLintSniff implements Sniff
     /**
      * ESLint configuration file path.
      *
-     * @var string|null Path to eslintrc. Null to autodetect.
+     * @var null|string Path to eslintrc. Null to autodetect.
      */
-    public $configFile = null;
-
+    public $configFile;
 
     /**
      * Returns the token types that this sniff is interested in.
@@ -39,9 +37,9 @@ class ESLintSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes the tokens that this sniff is interested in.
@@ -50,53 +48,52 @@ class ESLintSniff implements Sniff
      * @param int                         $stackPtr  The position in the stack where
      *                                               the token was found.
      *
-     * @return void
      * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If jshint.js could not be run
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $eslintPath = Config::getExecutablePath('eslint');
-        if ($eslintPath === null) {
+        if (null === $eslintPath) {
             return;
         }
 
         $filename = $phpcsFile->getFilename();
 
         $configFile = $this->configFile;
-        if (empty($configFile) === true) {
+        if (true === empty($configFile)) {
             // Attempt to autodetect.
             $candidates = glob('.eslintrc{.js,.yaml,.yml,.json}', GLOB_BRACE);
-            if (empty($candidates) === false) {
+            if (false === empty($candidates)) {
                 $configFile = $candidates[0];
             }
         }
 
         $eslintOptions = ['--format json'];
-        if (empty($configFile) === false) {
-            $eslintOptions[] = '--config '.escapeshellarg($configFile);
+        if (false === empty($configFile)) {
+            $eslintOptions[] = '--config ' . escapeshellarg($configFile);
         }
 
-        $cmd = escapeshellcmd(escapeshellarg($eslintPath).' '.implode(' ', $eslintOptions).' '.escapeshellarg($filename));
+        $cmd = escapeshellcmd(escapeshellarg($eslintPath) . ' ' . implode(' ', $eslintOptions) . ' ' . escapeshellarg($filename));
 
         // Execute!
         exec($cmd, $stdout, $code);
 
         if ($code <= 0) {
             // No errors, continue.
-            return ($phpcsFile->numTokens + 1);
+            return $phpcsFile->numTokens + 1;
         }
 
         $data = json_decode(implode("\n", $stdout));
-        if (json_last_error() !== JSON_ERROR_NONE) {
+        if (JSON_ERROR_NONE !== json_last_error()) {
             // Ignore any errors.
-            return ($phpcsFile->numTokens + 1);
+            return $phpcsFile->numTokens + 1;
         }
 
         // Data is a list of files, but we only pass a single one.
         $messages = $data[0]->messages;
         foreach ($messages as $error) {
-            $message = 'eslint says: '.$error->message;
-            if (empty($error->fatal) === false || $error->severity === 2) {
+            $message = 'eslint says: ' . $error->message;
+            if (false === empty($error->fatal) || 2 === $error->severity) {
                 $phpcsFile->addErrorOnLine($message, $error->line, 'ExternalTool');
             } else {
                 $phpcsFile->addWarningOnLine($message, $error->line, 'ExternalTool');
@@ -104,9 +101,8 @@ class ESLintSniff implements Sniff
         }
 
         // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
+        return $phpcsFile->numTokens + 1;
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

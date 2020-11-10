@@ -15,17 +15,15 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class MethodDeclarationSniff extends AbstractScopeSniff
 {
-
-
     /**
      * Constructs a Squiz_Sniffs_Scope_MethodScopeSniff.
      */
     public function __construct()
     {
         parent::__construct(Tokens::$ooScopeTokens, [T_FUNCTION]);
+    }
 
-    }//end __construct()
-
+    //end __construct()
 
     /**
      * Processes the function tokens within the class.
@@ -33,8 +31,6 @@ class MethodDeclarationSniff extends AbstractScopeSniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where this token was found.
      * @param int                         $stackPtr  The position where the token was found.
      * @param int                         $currScope The current scope opener token.
-     *
-     * @return void
      */
     protected function processTokenWithinScope(File $phpcsFile, $stackPtr, $currScope)
     {
@@ -49,21 +45,21 @@ class MethodDeclarationSniff extends AbstractScopeSniff
         }
 
         $methodName = $phpcsFile->getDeclarationName($stackPtr);
-        if ($methodName === null) {
+        if (null === $methodName) {
             // Ignore closures.
             return;
         }
 
-        if ($methodName[0] === '_' && isset($methodName[1]) === true && $methodName[1] !== '_') {
+        if ('_' === $methodName[0] && true === isset($methodName[1]) && '_' !== $methodName[1]) {
             $error = 'Method name "%s" should not be prefixed with an underscore to indicate visibility';
-            $data  = [$methodName];
+            $data = [$methodName];
             $phpcsFile->addWarning($error, $stackPtr, 'Underscore', $data);
         }
 
         $visibility = 0;
-        $static     = 0;
-        $abstract   = 0;
-        $final      = 0;
+        $static = 0;
+        $abstract = 0;
+        $final = 0;
 
         $find = (Tokens::$methodPrefixes + Tokens::$emptyTokens);
         $prev = $phpcsFile->findPrevious($find, ($stackPtr - 1), null, true);
@@ -73,65 +69,69 @@ class MethodDeclarationSniff extends AbstractScopeSniff
             switch ($tokens[$prefix]['code']) {
             case T_STATIC:
                 $static = $prefix;
+
                 break;
             case T_ABSTRACT:
                 $abstract = $prefix;
+
                 break;
             case T_FINAL:
                 $final = $prefix;
+
                 break;
             default:
                 $visibility = $prefix;
+
                 break;
             }
         }
 
         $fixes = [];
 
-        if ($visibility !== 0 && $final > $visibility) {
+        if (0 !== $visibility && $final > $visibility) {
             $error = 'The final declaration must precede the visibility declaration';
-            $fix   = $phpcsFile->addFixableError($error, $final, 'FinalAfterVisibility');
-            if ($fix === true) {
-                $fixes[$final]       = '';
+            $fix = $phpcsFile->addFixableError($error, $final, 'FinalAfterVisibility');
+            if (true === $fix) {
+                $fixes[$final] = '';
                 $fixes[($final + 1)] = '';
-                if (isset($fixes[$visibility]) === true) {
-                    $fixes[$visibility] = 'final '.$fixes[$visibility];
+                if (true === isset($fixes[$visibility])) {
+                    $fixes[$visibility] = 'final ' . $fixes[$visibility];
                 } else {
-                    $fixes[$visibility] = 'final '.$tokens[$visibility]['content'];
+                    $fixes[$visibility] = 'final ' . $tokens[$visibility]['content'];
                 }
             }
         }
 
-        if ($visibility !== 0 && $abstract > $visibility) {
+        if (0 !== $visibility && $abstract > $visibility) {
             $error = 'The abstract declaration must precede the visibility declaration';
-            $fix   = $phpcsFile->addFixableError($error, $abstract, 'AbstractAfterVisibility');
-            if ($fix === true) {
-                $fixes[$abstract]       = '';
+            $fix = $phpcsFile->addFixableError($error, $abstract, 'AbstractAfterVisibility');
+            if (true === $fix) {
+                $fixes[$abstract] = '';
                 $fixes[($abstract + 1)] = '';
-                if (isset($fixes[$visibility]) === true) {
-                    $fixes[$visibility] = 'abstract '.$fixes[$visibility];
+                if (true === isset($fixes[$visibility])) {
+                    $fixes[$visibility] = 'abstract ' . $fixes[$visibility];
                 } else {
-                    $fixes[$visibility] = 'abstract '.$tokens[$visibility]['content'];
+                    $fixes[$visibility] = 'abstract ' . $tokens[$visibility]['content'];
                 }
             }
         }
 
-        if ($static !== 0 && $static < $visibility) {
+        if (0 !== $static && $static < $visibility) {
             $error = 'The static declaration must come after the visibility declaration';
-            $fix   = $phpcsFile->addFixableError($error, $static, 'StaticBeforeVisibility');
-            if ($fix === true) {
-                $fixes[$static]       = '';
+            $fix = $phpcsFile->addFixableError($error, $static, 'StaticBeforeVisibility');
+            if (true === $fix) {
+                $fixes[$static] = '';
                 $fixes[($static + 1)] = '';
-                if (isset($fixes[$visibility]) === true) {
+                if (true === isset($fixes[$visibility])) {
                     $fixes[$visibility] .= ' static';
                 } else {
-                    $fixes[$visibility] = $tokens[$visibility]['content'].' static';
+                    $fixes[$visibility] = $tokens[$visibility]['content'] . ' static';
                 }
             }
         }
 
         // Batch all the fixes together to reduce the possibility of conflicts.
-        if (empty($fixes) === false) {
+        if (false === empty($fixes)) {
             $phpcsFile->fixer->beginChangeset();
             foreach ($fixes as $stackPtr => $content) {
                 $phpcsFile->fixer->replaceToken($stackPtr, $content);
@@ -139,9 +139,9 @@ class MethodDeclarationSniff extends AbstractScopeSniff
 
             $phpcsFile->fixer->endChangeset();
         }
+    }
 
-    }//end processTokenWithinScope()
-
+    //end processTokenWithinScope()
 
     /**
      * Processes a token that is found within the scope that this test is
@@ -150,13 +150,10 @@ class MethodDeclarationSniff extends AbstractScopeSniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where this token was found.
      * @param int                         $stackPtr  The position in the stack where this
      *                                               token was found.
-     *
-     * @return void
      */
     protected function processTokenOutsideScope(File $phpcsFile, $stackPtr)
     {
+    }
 
-    }//end processTokenOutsideScope()
-
-
+    //end processTokenOutsideScope()
 }//end class

@@ -13,9 +13,12 @@ use PHP_CodeSniffer\Config;
 use PHP_CodeSniffer\Ruleset;
 use PHPUnit\Framework\TestCase;
 
-class RuleInclusionAbsoluteWindowsTest extends TestCase
+/**
+ * @internal
+ * @coversNothing
+ */
+final class RuleInclusionAbsoluteWindowsTest extends TestCase
 {
-
     /**
      * The Ruleset object.
      *
@@ -37,83 +40,75 @@ class RuleInclusionAbsoluteWindowsTest extends TestCase
      */
     private $contents = '';
 
-
     /**
      * Initialize the config and ruleset objects.
-     *
-     * @return void
      */
-    public function setUp()
+    protected function setUp()
     {
-        if (DIRECTORY_SEPARATOR === '/') {
-            $this->markTestSkipped('Windows specific test');
+        if (\DIRECTORY_SEPARATOR === '/') {
+            static::markTestSkipped('Windows specific test');
         }
 
-        if ($GLOBALS['PHP_CODESNIFFER_PEAR'] === true) {
+        if (true === $GLOBALS['PHP_CODESNIFFER_PEAR']) {
             // PEAR installs test and sniff files into different locations
             // so these tests will not pass as they directly reference files
             // by relative location.
-            $this->markTestSkipped('Test cannot run from a PEAR install');
+            static::markTestSkipped('Test cannot run from a PEAR install');
         }
 
-        $this->standard = __DIR__.'/'.basename(__FILE__, '.php').'.xml';
-        $repoRootDir    = dirname(dirname(dirname(__DIR__)));
+        $this->standard = __DIR__ . '/' . basename(__FILE__, '.php') . '.xml';
+        $repoRootDir = \dirname(\dirname(\dirname(__DIR__)));
 
         // On-the-fly adjust the ruleset test file to be able to test sniffs included with absolute paths.
-        $contents       = file_get_contents($this->standard);
+        $contents = file_get_contents($this->standard);
         $this->contents = $contents;
 
         $adjusted = str_replace('%path_slash_back%', $repoRootDir, $contents);
 
-        if (file_put_contents($this->standard, $adjusted) === false) {
-            $this->markTestSkipped('On the fly ruleset adjustment failed');
+        if (false === file_put_contents($this->standard, $adjusted)) {
+            static::markTestSkipped('On the fly ruleset adjustment failed');
         }
 
         // Initialize the config and ruleset objects for the test.
-        $config        = new Config(["--standard={$this->standard}"]);
+        $config = new Config(["--standard={$this->standard}"]);
         $this->ruleset = new Ruleset($config);
+    }
 
-    }//end setUp()
-
+    //end setUp()
 
     /**
      * Reset ruleset file.
-     *
-     * @return void
      */
-    public function tearDown()
+    protected function tearDown()
     {
-        if (DIRECTORY_SEPARATOR !== '/') {
+        if (\DIRECTORY_SEPARATOR !== '/') {
             file_put_contents($this->standard, $this->contents);
         }
+    }
 
-    }//end tearDown()
-
+    //end tearDown()
 
     /**
      * Test that sniffs registed with a Windows absolute path are correctly recognized and that
      * properties are correctly set for them.
-     *
-     * @return void
      */
     public function testWindowsStylePathRuleInclusion()
     {
         // Test that the sniff is correctly registered.
-        $this->assertObjectHasAttribute('sniffCodes', $this->ruleset);
-        $this->assertCount(1, $this->ruleset->sniffCodes);
-        $this->assertArrayHasKey('Generic.Formatting.SpaceAfterCast', $this->ruleset->sniffCodes);
-        $this->assertSame(
+        static::assertObjectHasAttribute('sniffCodes', $this->ruleset);
+        static::assertCount(1, $this->ruleset->sniffCodes);
+        static::assertArrayHasKey('Generic.Formatting.SpaceAfterCast', $this->ruleset->sniffCodes);
+        static::assertSame(
             'PHP_CodeSniffer\Standards\Generic\Sniffs\Formatting\SpaceAfterCastSniff',
             $this->ruleset->sniffCodes['Generic.Formatting.SpaceAfterCast']
         );
 
         // Test that the sniff property is correctly set.
-        $this->assertSame(
+        static::assertSame(
             '10',
             $this->ruleset->sniffs['PHP_CodeSniffer\Standards\Generic\Sniffs\Formatting\SpaceAfterCastSniff']->spacing
         );
+    }
 
-    }//end testWindowsStylePathRuleInclusion()
-
-
+    //end testWindowsStylePathRuleInclusion()
 }//end class

@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class FunctionDuplicateArgumentSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -24,9 +22,9 @@ class FunctionDuplicateArgumentSniff implements Sniff
     public function register()
     {
         return [T_FUNCTION];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -34,31 +32,28 @@ class FunctionDuplicateArgumentSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        $openBracket  = $tokens[$stackPtr]['parenthesis_opener'];
+        $openBracket = $tokens[$stackPtr]['parenthesis_opener'];
         $closeBracket = $tokens[$stackPtr]['parenthesis_closer'];
 
         $foundVariables = [];
-        for ($i = ($openBracket + 1); $i < $closeBracket; $i++) {
-            if ($tokens[$i]['code'] === T_VARIABLE) {
+        for ($i = ($openBracket + 1); $i < $closeBracket; ++$i) {
+            if (T_VARIABLE === $tokens[$i]['code']) {
                 $variable = $tokens[$i]['content'];
-                if (in_array($variable, $foundVariables, true) === true) {
+                if (true === \in_array($variable, $foundVariables, true)) {
                     $error = 'Variable "%s" appears more than once in function declaration';
-                    $data  = [$variable];
+                    $data = [$variable];
                     $phpcsFile->addError($error, $i, 'Found', $data);
                 } else {
                     $foundVariables[] = $variable;
                 }
             }
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

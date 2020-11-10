@@ -14,7 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class PostStatementCommentSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
@@ -34,14 +33,13 @@ class PostStatementCommentSniff implements Sniff
      * @var array
      */
     private $controlStructureExceptions = [
-        T_IF      => true,
-        T_ELSEIF  => true,
-        T_SWITCH  => true,
-        T_WHILE   => true,
-        T_FOR     => true,
+        T_IF => true,
+        T_ELSEIF => true,
+        T_SWITCH => true,
+        T_WHILE => true,
+        T_FOR => true,
         T_FOREACH => true,
     ];
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -51,9 +49,9 @@ class PostStatementCommentSniff implements Sniff
     public function register()
     {
         return [T_COMMENT];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
@@ -61,47 +59,45 @@ class PostStatementCommentSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        if (substr($tokens[$stackPtr]['content'], 0, 2) !== '//') {
+        if ('//' !== substr($tokens[$stackPtr]['content'], 0, 2)) {
             return;
         }
 
         $commentLine = $tokens[$stackPtr]['line'];
         $lastContent = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
 
-        if ($lastContent === false
+        if (false === $lastContent
             || $tokens[$lastContent]['line'] !== $commentLine
-            || $tokens[$stackPtr]['column'] === 1
+            || 1 === $tokens[$stackPtr]['column']
         ) {
             return;
         }
 
-        if ($tokens[$lastContent]['code'] === T_CLOSE_CURLY_BRACKET) {
+        if (T_CLOSE_CURLY_BRACKET === $tokens[$lastContent]['code']) {
             return;
         }
 
         // Special case for JS files and PHP closures.
-        if ($tokens[$lastContent]['code'] === T_COMMA
-            || $tokens[$lastContent]['code'] === T_SEMICOLON
+        if (T_COMMA === $tokens[$lastContent]['code']
+            || T_SEMICOLON === $tokens[$lastContent]['code']
         ) {
             $lastContent = $phpcsFile->findPrevious(T_WHITESPACE, ($lastContent - 1), null, true);
-            if ($lastContent === false || $tokens[$lastContent]['code'] === T_CLOSE_CURLY_BRACKET) {
+            if (false === $lastContent || T_CLOSE_CURLY_BRACKET === $tokens[$lastContent]['code']) {
                 return;
             }
         }
 
         // Special case for (trailing) comments within multi-line control structures.
-        if (isset($tokens[$stackPtr]['nested_parenthesis']) === true) {
+        if (true === isset($tokens[$stackPtr]['nested_parenthesis'])) {
             $nestedParens = $tokens[$stackPtr]['nested_parenthesis'];
             foreach ($nestedParens as $open => $close) {
-                if (isset($tokens[$open]['parenthesis_owner']) === true
-                    && isset($this->controlStructureExceptions[$tokens[$tokens[$open]['parenthesis_owner']]['code']]) === true
+                if (true === isset($tokens[$open]['parenthesis_owner'])
+                    && true === isset($this->controlStructureExceptions[$tokens[$tokens[$open]['parenthesis_owner']]['code']])
                 ) {
                     return;
                 }
@@ -109,12 +105,11 @@ class PostStatementCommentSniff implements Sniff
         }
 
         $error = 'Comments may not appear after statements';
-        $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Found');
-        if ($fix === true) {
+        $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Found');
+        if (true === $fix) {
             $phpcsFile->fixer->addNewlineBefore($stackPtr);
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

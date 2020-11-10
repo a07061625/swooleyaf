@@ -23,8 +23,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class ClassCommentSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -33,9 +31,9 @@ class ClassCommentSniff implements Sniff
     public function register()
     {
         return [T_CLASS];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -43,29 +41,29 @@ class ClassCommentSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $find   = Tokens::$methodPrefixes;
+        $find = Tokens::$methodPrefixes;
         $find[] = T_WHITESPACE;
 
         $commentEnd = $phpcsFile->findPrevious($find, ($stackPtr - 1), null, true);
-        if ($tokens[$commentEnd]['code'] !== T_DOC_COMMENT_CLOSE_TAG
-            && $tokens[$commentEnd]['code'] !== T_COMMENT
+        if (T_DOC_COMMENT_CLOSE_TAG !== $tokens[$commentEnd]['code']
+            && T_COMMENT !== $tokens[$commentEnd]['code']
         ) {
             $class = $phpcsFile->getDeclarationName($stackPtr);
             $phpcsFile->addError('Missing doc comment for class %s', $stackPtr, 'Missing', [$class]);
             $phpcsFile->recordMetric($stackPtr, 'Class has doc comment', 'no');
+
             return;
         }
 
         $phpcsFile->recordMetric($stackPtr, 'Class has doc comment', 'yes');
 
-        if ($tokens[$commentEnd]['code'] === T_COMMENT) {
+        if (T_COMMENT === $tokens[$commentEnd]['code']) {
             $phpcsFile->addError('You must use "/**" style comments for a class comment', $stackPtr, 'WrongStyle');
+
             return;
         }
 
@@ -77,11 +75,10 @@ class ClassCommentSniff implements Sniff
         $commentStart = $tokens[$commentEnd]['comment_opener'];
         foreach ($tokens[$commentStart]['comment_tags'] as $tag) {
             $error = '%s tag is not allowed in class comment';
-            $data  = [$tokens[$tag]['content']];
+            $data = [$tokens[$tag]['content']];
             $phpcsFile->addWarning($error, $tag, 'TagNotAllowed', $data);
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

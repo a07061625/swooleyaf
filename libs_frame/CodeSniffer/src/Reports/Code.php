@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Util;
 
 class Code implements Report
 {
-
-
     /**
      * Generate a partial report for a single processed file.
      *
@@ -30,9 +28,9 @@ class Code implements Report
      *
      * @return bool
      */
-    public function generateFileReport($report, File $phpcsFile, $showSources=false, $width=80)
+    public function generateFileReport($report, File $phpcsFile, $showSources = false, $width = 80)
     {
-        if ($report['errors'] === 0 && $report['warnings'] === 0) {
+        if (0 === $report['errors'] && 0 === $report['warnings']) {
             // Nothing to print.
             return false;
         }
@@ -40,14 +38,14 @@ class Code implements Report
         // How many lines to show about and below the error line.
         $surroundingLines = 2;
 
-        $file   = $report['filename'];
+        $file = $report['filename'];
         $tokens = $phpcsFile->getTokens();
-        if (empty($tokens) === true) {
+        if (true === empty($tokens)) {
             if (PHP_CODESNIFFER_VERBOSITY === 1) {
                 $startTime = microtime(true);
-                echo 'CODE report is parsing '.basename($file).' ';
-            } else if (PHP_CODESNIFFER_VERBOSITY > 1) {
-                echo "CODE report is forcing parse of $file".PHP_EOL;
+                echo 'CODE report is parsing ' . basename($file) . ' ';
+            } elseif (PHP_CODESNIFFER_VERBOSITY > 1) {
+                echo "CODE report is forcing parse of {$file}" . PHP_EOL;
             }
 
             try {
@@ -64,7 +62,7 @@ class Code implements Report
                     echo "DONE in {$timeTaken}ms";
                 } else {
                     $timeTaken = round(($timeTaken / 1000), 2);
-                    echo "DONE in $timeTaken secs";
+                    echo "DONE in {$timeTaken} secs";
                 }
 
                 echo PHP_EOL;
@@ -75,18 +73,18 @@ class Code implements Report
 
         // Create an array that maps lines to the first token on the line.
         $lineTokens = [];
-        $lastLine   = 0;
-        $stackPtr   = 0;
+        $lastLine = 0;
+        $stackPtr = 0;
         foreach ($tokens as $stackPtr => $token) {
             if ($token['line'] !== $lastLine) {
                 if ($lastLine > 0) {
                     $lineTokens[$lastLine]['end'] = ($stackPtr - 1);
                 }
 
-                $lastLine++;
+                ++$lastLine;
                 $lineTokens[$lastLine] = [
                     'start' => $stackPtr,
-                    'end'   => null,
+                    'end' => null,
                 ];
             }
         }
@@ -98,19 +96,19 @@ class Code implements Report
 
         // Determine the longest code line we will be showing.
         $maxSnippetLength = 0;
-        $eolLen           = strlen($phpcsFile->eolChar);
+        $eolLen = \strlen($phpcsFile->eolChar);
         foreach ($report['messages'] as $line => $lineErrors) {
             $startLine = max(($line - $surroundingLines), 1);
-            $endLine   = min(($line + $surroundingLines), $lastLine);
+            $endLine = min(($line + $surroundingLines), $lastLine);
 
-            $maxLineNumLength = strlen($endLine);
+            $maxLineNumLength = \strlen($endLine);
 
-            for ($i = $startLine; $i <= $endLine; $i++) {
-                if ($i === 1) {
+            for ($i = $startLine; $i <= $endLine; ++$i) {
+                if (1 === $i) {
                     continue;
                 }
 
-                $lineLength       = ($tokens[($lineTokens[$i]['start'] - 1)]['column'] + $tokens[($lineTokens[$i]['start'] - 1)]['length'] - $eolLen);
+                $lineLength = ($tokens[($lineTokens[$i]['start'] - 1)]['column'] + $tokens[($lineTokens[$i]['start'] - 1)]['length'] - $eolLen);
                 $maxSnippetLength = max($lineLength, $maxSnippetLength);
             }
         }
@@ -122,9 +120,9 @@ class Code implements Report
         foreach ($report['messages'] as $line => $lineErrors) {
             foreach ($lineErrors as $column => $colErrors) {
                 foreach ($colErrors as $error) {
-                    $length = strlen($error['message']);
-                    if ($showSources === true) {
-                        $length += (strlen($error['source']) + 3);
+                    $length = \strlen($error['message']);
+                    if (true === $showSources) {
+                        $length += (\strlen($error['source']) + 3);
                     }
 
                     $maxErrorLength = max($maxErrorLength, ($length + 1));
@@ -139,93 +137,93 @@ class Code implements Report
             $typeLength = 5;
         }
 
-        $errorPadding  = str_repeat(' ', ($maxLineNumLength + 7));
+        $errorPadding = str_repeat(' ', ($maxLineNumLength + 7));
         $errorPadding .= str_repeat(' ', $typeLength);
         $errorPadding .= ' ';
         if ($report['fixable'] > 0) {
             $errorPadding .= '    ';
         }
 
-        $errorPaddingLength = strlen($errorPadding);
+        $errorPaddingLength = \strlen($errorPadding);
 
         // The maximum amount of space an error message can use.
         $maxErrorSpace = ($width - $errorPaddingLength);
-        if ($showSources === true) {
+        if (true === $showSources) {
             // Account for the chars used to print colors.
             $maxErrorSpace += 8;
         }
 
         // Figure out the max report width we need and can use.
-        $fileLength = strlen($file);
-        $maxWidth   = max(($fileLength + 6), ($maxErrorLength + $errorPaddingLength));
-        $width      = max(min($width, $maxWidth), $maxSnippetLength);
+        $fileLength = \strlen($file);
+        $maxWidth = max(($fileLength + 6), ($maxErrorLength + $errorPaddingLength));
+        $width = max(min($width, $maxWidth), $maxSnippetLength);
         if ($width < 70) {
             $width = 70;
         }
 
         // Print the file header.
-        echo PHP_EOL."\033[1mFILE: ";
+        echo PHP_EOL . "\033[1mFILE: ";
         if ($fileLength <= ($width - 6)) {
             echo $file;
         } else {
-            echo '...'.substr($file, ($fileLength - ($width - 6)));
+            echo '...' . substr($file, ($fileLength - ($width - 6)));
         }
 
-        echo "\033[0m".PHP_EOL;
-        echo str_repeat('-', $width).PHP_EOL;
+        echo "\033[0m" . PHP_EOL;
+        echo str_repeat('-', $width) . PHP_EOL;
 
-        echo "\033[1m".'FOUND '.$report['errors'].' ERROR';
-        if ($report['errors'] !== 1) {
+        echo "\033[1m" . 'FOUND ' . $report['errors'] . ' ERROR';
+        if (1 !== $report['errors']) {
             echo 'S';
         }
 
         if ($report['warnings'] > 0) {
-            echo ' AND '.$report['warnings'].' WARNING';
-            if ($report['warnings'] !== 1) {
+            echo ' AND ' . $report['warnings'] . ' WARNING';
+            if (1 !== $report['warnings']) {
                 echo 'S';
             }
         }
 
-        echo ' AFFECTING '.count($report['messages']).' LINE';
-        if (count($report['messages']) !== 1) {
+        echo ' AFFECTING ' . \count($report['messages']) . ' LINE';
+        if (1 !== \count($report['messages'])) {
             echo 'S';
         }
 
-        echo "\033[0m".PHP_EOL;
+        echo "\033[0m" . PHP_EOL;
 
         foreach ($report['messages'] as $line => $lineErrors) {
             $startLine = max(($line - $surroundingLines), 1);
-            $endLine   = min(($line + $surroundingLines), $lastLine);
+            $endLine = min(($line + $surroundingLines), $lastLine);
 
             $snippet = '';
-            if (isset($lineTokens[$startLine]) === true) {
-                for ($i = $lineTokens[$startLine]['start']; $i <= $lineTokens[$endLine]['end']; $i++) {
+            if (true === isset($lineTokens[$startLine])) {
+                for ($i = $lineTokens[$startLine]['start']; $i <= $lineTokens[$endLine]['end']; ++$i) {
                     $snippetLine = $tokens[$i]['line'];
                     if ($lineTokens[$snippetLine]['start'] === $i) {
                         // Starting a new line.
                         if ($snippetLine === $line) {
-                            $snippet .= "\033[1m".'>> ';
+                            $snippet .= "\033[1m" . '>> ';
                         } else {
                             $snippet .= '   ';
                         }
 
-                        $snippet .= str_repeat(' ', ($maxLineNumLength - strlen($snippetLine)));
-                        $snippet .= $snippetLine.':  ';
+                        $snippet .= str_repeat(' ', ($maxLineNumLength - \strlen($snippetLine)));
+                        $snippet .= $snippetLine . ':  ';
                         if ($snippetLine === $line) {
                             $snippet .= "\033[0m";
                         }
                     }
 
-                    if (isset($tokens[$i]['orig_content']) === true) {
+                    if (true === isset($tokens[$i]['orig_content'])) {
                         $tokenContent = $tokens[$i]['orig_content'];
                     } else {
                         $tokenContent = $tokens[$i]['content'];
                     }
 
-                    if (strpos($tokenContent, "\t") !== false) {
-                        $token            = $tokens[$i];
+                    if (false !== strpos($tokenContent, "\t")) {
+                        $token = $tokens[$i];
                         $token['content'] = $tokenContent;
-                        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                        if ('WIN' === strtoupper(substr(PHP_OS, 0, 3))) {
                             $tab = "\000";
                         } else {
                             $tab = "\033[30;1m»\033[0m";
@@ -239,35 +237,35 @@ class Code implements Report
                     $tokenContent = str_replace("\000", ' ', $tokenContent);
 
                     $underline = false;
-                    if ($snippetLine === $line && isset($lineErrors[$tokens[$i]['column']]) === true) {
+                    if ($snippetLine === $line && true === isset($lineErrors[$tokens[$i]['column']])) {
                         $underline = true;
                     }
 
                     // Underline invisible characters as well.
-                    if ($underline === true && trim($tokenContent) === '') {
-                        $snippet .= "\033[4m".' '."\033[0m".$tokenContent;
+                    if (true === $underline && '' === trim($tokenContent)) {
+                        $snippet .= "\033[4m" . ' ' . "\033[0m" . $tokenContent;
                     } else {
-                        if ($underline === true) {
+                        if (true === $underline) {
                             $snippet .= "\033[4m";
                         }
 
                         $snippet .= $tokenContent;
 
-                        if ($underline === true) {
+                        if (true === $underline) {
                             $snippet .= "\033[0m";
                         }
                     }
                 }//end for
             }//end if
 
-            echo str_repeat('-', $width).PHP_EOL;
+            echo str_repeat('-', $width) . PHP_EOL;
 
             foreach ($lineErrors as $column => $colErrors) {
                 foreach ($colErrors as $error) {
-                    $padding = ($maxLineNumLength - strlen($line));
-                    echo 'LINE '.str_repeat(' ', $padding).$line.': ';
+                    $padding = ($maxLineNumLength - \strlen($line));
+                    echo 'LINE ' . str_repeat(' ', $padding) . $line . ': ';
 
-                    if ($error['type'] === 'ERROR') {
+                    if ('ERROR' === $error['type']) {
                         echo "\033[31mERROR\033[0m";
                         if ($report['warnings'] > 0) {
                             echo '  ';
@@ -279,7 +277,7 @@ class Code implements Report
                     echo ' ';
                     if ($report['fixable'] > 0) {
                         echo '[';
-                        if ($error['fixable'] === true) {
+                        if (true === $error['fixable']) {
                             echo 'x';
                         } else {
                             echo ' ';
@@ -289,35 +287,35 @@ class Code implements Report
                     }
 
                     $message = $error['message'];
-                    $message = str_replace("\n", "\n".$errorPadding, $message);
-                    if ($showSources === true) {
-                        $message = "\033[1m".$message."\033[0m".' ('.$error['source'].')';
+                    $message = str_replace("\n", "\n" . $errorPadding, $message);
+                    if (true === $showSources) {
+                        $message = "\033[1m" . $message . "\033[0m" . ' (' . $error['source'] . ')';
                     }
 
                     $errorMsg = wordwrap(
                         $message,
                         $maxErrorSpace,
-                        PHP_EOL.$errorPadding
+                        PHP_EOL . $errorPadding
                     );
 
-                    echo $errorMsg.PHP_EOL;
+                    echo $errorMsg . PHP_EOL;
                 }//end foreach
             }//end foreach
 
-            echo str_repeat('-', $width).PHP_EOL;
-            echo rtrim($snippet).PHP_EOL;
+            echo str_repeat('-', $width) . PHP_EOL;
+            echo rtrim($snippet) . PHP_EOL;
         }//end foreach
 
-        echo str_repeat('-', $width).PHP_EOL;
+        echo str_repeat('-', $width) . PHP_EOL;
         if ($report['fixable'] > 0) {
-            echo "\033[1m".'PHPCBF CAN FIX THE '.$report['fixable'].' MARKED SNIFF VIOLATIONS AUTOMATICALLY'."\033[0m".PHP_EOL;
-            echo str_repeat('-', $width).PHP_EOL;
+            echo "\033[1m" . 'PHPCBF CAN FIX THE ' . $report['fixable'] . ' MARKED SNIFF VIOLATIONS AUTOMATICALLY' . "\033[0m" . PHP_EOL;
+            echo str_repeat('-', $width) . PHP_EOL;
         }
 
         return true;
+    }
 
-    }//end generateFileReport()
-
+    //end generateFileReport()
 
     /**
      * Prints all errors and warnings for each file processed.
@@ -332,8 +330,6 @@ class Code implements Report
      * @param int    $width         Maximum allowed line width.
      * @param bool   $interactive   Are we running in interactive mode?
      * @param bool   $toScreen      Is the report being printed to screen?
-     *
-     * @return void
      */
     public function generate(
         $cachedData,
@@ -341,22 +337,21 @@ class Code implements Report
         $totalErrors,
         $totalWarnings,
         $totalFixable,
-        $showSources=false,
-        $width=80,
-        $interactive=false,
-        $toScreen=true
+        $showSources = false,
+        $width = 80,
+        $interactive = false,
+        $toScreen = true
     ) {
-        if ($cachedData === '') {
+        if ('' === $cachedData) {
             return;
         }
 
         echo $cachedData;
 
-        if ($toScreen === true && $interactive === false) {
+        if (true === $toScreen && false === $interactive) {
             Util\Timing::printRunTime();
         }
+    }
 
-    }//end generate()
-
-
+    //end generate()
 }//end class

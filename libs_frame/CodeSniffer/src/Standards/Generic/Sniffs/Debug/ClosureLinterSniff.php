@@ -15,20 +15,19 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ClosureLinterSniff implements Sniff
 {
-
     /**
      * A list of error codes that should show errors.
      *
      * All other error codes will show warnings.
      *
-     * @var integer
+     * @var int
      */
     public $errorCodes = [];
 
     /**
      * A list of error codes to ignore.
      *
-     * @var integer
+     * @var int
      */
     public $ignoreCodes = [];
 
@@ -39,7 +38,6 @@ class ClosureLinterSniff implements Sniff
      */
     public $supportedTokenizers = ['JS'];
 
-
     /**
      * Returns the token types that this sniff is interested in.
      *
@@ -48,9 +46,9 @@ class ClosureLinterSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes the tokens that this sniff is interested in.
@@ -59,48 +57,47 @@ class ClosureLinterSniff implements Sniff
      * @param int                         $stackPtr  The position in the stack where
      *                                               the token was found.
      *
-     * @return void
      * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If jslint.js could not be run
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $lintPath = Config::getExecutablePath('gjslint');
-        if ($lintPath === null) {
+        if (null === $lintPath) {
             return;
         }
 
         $fileName = $phpcsFile->getFilename();
 
         $lintPath = escapeshellcmd($lintPath);
-        $cmd      = $lintPath.' --nosummary --notime --unix_mode '.escapeshellarg($fileName);
+        $cmd = $lintPath . ' --nosummary --notime --unix_mode ' . escapeshellarg($fileName);
         exec($cmd, $output, $retval);
 
-        if (is_array($output) === false) {
+        if (false === \is_array($output)) {
             return;
         }
 
         foreach ($output as $finding) {
-            $matches    = [];
+            $matches = [];
             $numMatches = preg_match('/^(.*):([0-9]+):\(.*?([0-9]+)\)(.*)$/', $finding, $matches);
-            if ($numMatches === 0) {
+            if (0 === $numMatches) {
                 continue;
             }
 
             // Skip error codes we are ignoring.
             $code = $matches[3];
-            if (in_array($code, $this->ignoreCodes) === true) {
+            if (true === \in_array($code, $this->ignoreCodes)) {
                 continue;
             }
 
-            $line  = (int) $matches[2];
+            $line = (int)$matches[2];
             $error = trim($matches[4]);
 
             $message = 'gjslint says: (%s) %s';
-            $data    = [
+            $data = [
                 $code,
                 $error,
             ];
-            if (in_array($code, $this->errorCodes) === true) {
+            if (true === \in_array($code, $this->errorCodes)) {
                 $phpcsFile->addErrorOnLine($message, $line, 'ExternalToolError', $data);
             } else {
                 $phpcsFile->addWarningOnLine($message, $line, 'ExternalTool', $data);
@@ -108,9 +105,8 @@ class ClosureLinterSniff implements Sniff
         }//end foreach
 
         // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
+        return $phpcsFile->numTokens + 1;
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

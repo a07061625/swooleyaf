@@ -15,8 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class CastSpacingSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -25,9 +23,9 @@ class CastSpacingSniff implements Sniff
     public function register()
     {
         return Tokens::$castTokens;
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -35,31 +33,28 @@ class CastSpacingSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        $content  = $tokens[$stackPtr]['content'];
+        $content = $tokens[$stackPtr]['content'];
         $expected = str_replace(' ', '', $content);
         $expected = str_replace("\t", '', $expected);
 
         if ($content !== $expected) {
             $error = 'Cast statements must not contain whitespace; expected "%s" but found "%s"';
-            $data  = [
+            $data = [
                 $expected,
                 $content,
             ];
 
             $fix = $phpcsFile->addFixableError($error, $stackPtr, 'ContainsWhiteSpace', $data);
-            if ($fix === true) {
+            if (true === $fix) {
                 $phpcsFile->fixer->replaceToken($stackPtr, $expected);
             }
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

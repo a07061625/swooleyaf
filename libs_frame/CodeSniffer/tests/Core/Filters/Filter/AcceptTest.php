@@ -15,9 +15,12 @@ use PHP_CodeSniffer\Filters\Filter;
 use PHP_CodeSniffer\Ruleset;
 use PHPUnit\Framework\TestCase;
 
-class AcceptTest extends TestCase
+/**
+ * @internal
+ * @coversNothing
+ */
+final class AcceptTest extends TestCase
 {
-
     /**
      * The Config object.
      *
@@ -32,42 +35,37 @@ class AcceptTest extends TestCase
      */
     protected static $ruleset;
 
-
-    /**
-     * Initialize the test.
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        if ($GLOBALS['PHP_CODESNIFFER_PEAR'] === true) {
-            // PEAR installs test and sniff files into different locations
-            // so these tests will not pass as they directly reference files
-            // by relative location.
-            $this->markTestSkipped('Test cannot run from a PEAR install');
-        }
-
-    }//end setUp()
-
-
     /**
      * Initialize the config and ruleset objects based on the `AcceptTest.xml` ruleset file.
-     *
-     * @return void
      */
     public static function setUpBeforeClass()
     {
-        if ($GLOBALS['PHP_CODESNIFFER_PEAR'] === true) {
+        if (true === $GLOBALS['PHP_CODESNIFFER_PEAR']) {
             // This test will be skipped.
             return;
         }
 
-        $standard      = __DIR__.'/'.basename(__FILE__, '.php').'.xml';
-        self::$config  = new Config(["--standard=$standard", "--ignore=*/somethingelse/*"]);
+        $standard = __DIR__ . '/' . basename(__FILE__, '.php') . '.xml';
+        self::$config = new Config(["--standard={$standard}", '--ignore=*/somethingelse/*']);
         self::$ruleset = new Ruleset(self::$config);
+    }
 
-    }//end setUpBeforeClass()
+    //end setUpBeforeClass()
 
+    /**
+     * Initialize the test.
+     */
+    protected function setUp()
+    {
+        if (true === $GLOBALS['PHP_CODESNIFFER_PEAR']) {
+            // PEAR installs test and sniff files into different locations
+            // so these tests will not pass as they directly reference files
+            // by relative location.
+            static::markTestSkipped('Test cannot run from a PEAR install');
+        }
+    }
+
+    //end setUp()
 
     /**
      * Test filtering a file list for excluded paths.
@@ -76,24 +74,22 @@ class AcceptTest extends TestCase
      * @param array $expectedOutput Expected filtering result.
      *
      * @dataProvider dataExcludePatterns
-     *
-     * @return void
      */
     public function testExcludePatterns($inputPaths, $expectedOutput)
     {
-        $fakeDI   = new \RecursiveArrayIterator($inputPaths);
-        $filter   = new Filter($fakeDI, '/', self::$config, self::$ruleset);
+        $fakeDI = new \RecursiveArrayIterator($inputPaths);
+        $filter = new Filter($fakeDI, '/', self::$config, self::$ruleset);
         $iterator = new \RecursiveIteratorIterator($filter);
-        $files    = [];
+        $files = [];
 
         foreach ($iterator as $file) {
             $files[] = $file;
         }
 
-        $this->assertEquals($expectedOutput, $files);
+        static::assertSame($expectedOutput, $files);
+    }
 
-    }//end testExcludePatterns()
-
+    //end testExcludePatterns()
 
     /**
      * Data provider.
@@ -136,7 +132,7 @@ class AcceptTest extends TestCase
         ];
 
         // Allow these tests to work on Windows as well.
-        if (DIRECTORY_SEPARATOR === '\\') {
+        if (\DIRECTORY_SEPARATOR === '\\') {
             foreach ($testCases as $key => $case) {
                 foreach ($case as $nr => $param) {
                     foreach ($param as $file => $value) {
@@ -147,8 +143,7 @@ class AcceptTest extends TestCase
         }
 
         return $testCases;
+    }
 
-    }//end dataExcludePatterns()
-
-
+    //end dataExcludePatterns()
 }//end class

@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class DisallowLongArraySyntaxSniff implements Sniff
 {
-
-
     /**
      * Registers the tokens that this sniff wants to listen for.
      *
@@ -24,9 +22,9 @@ class DisallowLongArraySyntaxSniff implements Sniff
     public function register()
     {
         return [T_ARRAY];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -34,8 +32,6 @@ class DisallowLongArraySyntaxSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
@@ -45,23 +41,24 @@ class DisallowLongArraySyntaxSniff implements Sniff
 
         $error = 'Short array syntax must be used to define arrays';
 
-        if (isset($tokens[$stackPtr]['parenthesis_opener']) === false
-            || isset($tokens[$stackPtr]['parenthesis_closer']) === false
+        if (false === isset($tokens[$stackPtr]['parenthesis_opener'])
+            || false === isset($tokens[$stackPtr]['parenthesis_closer'])
         ) {
             // Live coding/parse error, just show the error, don't try and fix it.
             $phpcsFile->addError($error, $stackPtr, 'Found');
+
             return;
         }
 
         $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Found');
 
-        if ($fix === true) {
+        if (true === $fix) {
             $opener = $tokens[$stackPtr]['parenthesis_opener'];
             $closer = $tokens[$stackPtr]['parenthesis_closer'];
 
             $phpcsFile->fixer->beginChangeset();
 
-            if ($opener === null) {
+            if (null === $opener) {
                 $phpcsFile->fixer->replaceToken($stackPtr, '[]');
             } else {
                 $phpcsFile->fixer->replaceToken($stackPtr, '');
@@ -71,8 +68,7 @@ class DisallowLongArraySyntaxSniff implements Sniff
 
             $phpcsFile->fixer->endChangeset();
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

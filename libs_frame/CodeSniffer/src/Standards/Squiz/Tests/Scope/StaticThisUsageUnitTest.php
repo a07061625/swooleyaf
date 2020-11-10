@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Squiz\Tests\Scope;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class StaticThisUsageUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class StaticThisUsageUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -26,9 +28,9 @@ class StaticThisUsageUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
-            7  => 1,
-            8  => 1,
-            9  => 1,
+            7 => 1,
+            8 => 1,
+            9 => 1,
             14 => 1,
             20 => 1,
             41 => 1,
@@ -39,9 +41,9 @@ class StaticThisUsageUnitTest extends AbstractSniffUnitTest
             84 => 1,
             99 => 1,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -54,8 +56,7 @@ class StaticThisUsageUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

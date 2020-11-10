@@ -14,7 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class EndFileNoNewlineSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
@@ -26,7 +25,6 @@ class EndFileNoNewlineSniff implements Sniff
         'CSS',
     ];
 
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -35,9 +33,9 @@ class EndFileNoNewlineSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
@@ -51,26 +49,26 @@ class EndFileNoNewlineSniff implements Sniff
     public function process(File $phpcsFile, $stackPtr)
     {
         // Skip to the end of the file.
-        $tokens   = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $stackPtr = ($phpcsFile->numTokens - 1);
 
-        if ($tokens[$stackPtr]['content'] === '') {
+        if ('' === $tokens[$stackPtr]['content']) {
             --$stackPtr;
         }
 
-        $eolCharLen = strlen($phpcsFile->eolChar);
-        $lastChars  = substr($tokens[$stackPtr]['content'], ($eolCharLen * -1));
+        $eolCharLen = \strlen($phpcsFile->eolChar);
+        $lastChars = substr($tokens[$stackPtr]['content'], ($eolCharLen * -1));
         if ($lastChars === $phpcsFile->eolChar) {
             $error = 'File must not end with a newline character';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Found');
-            if ($fix === true) {
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Found');
+            if (true === $fix) {
                 $phpcsFile->fixer->beginChangeset();
 
-                for ($i = $stackPtr; $i > 0; $i--) {
+                for ($i = $stackPtr; $i > 0; --$i) {
                     $newContent = rtrim($tokens[$i]['content'], $phpcsFile->eolChar);
                     $phpcsFile->fixer->replaceToken($i, $newContent);
 
-                    if ($newContent !== '') {
+                    if ('' !== $newContent) {
                         break;
                     }
                 }
@@ -80,9 +78,8 @@ class EndFileNoNewlineSniff implements Sniff
         }
 
         // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
+        return $phpcsFile->numTokens + 1;
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

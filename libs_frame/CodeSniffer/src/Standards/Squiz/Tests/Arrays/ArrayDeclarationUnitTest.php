@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Squiz\Tests\Arrays;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class ArrayDeclarationUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class ArrayDeclarationUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -25,46 +27,46 @@ class ArrayDeclarationUnitTest extends AbstractSniffUnitTest
      *
      * @return array<int, int>
      */
-    public function getErrorList($testFile='')
+    public function getErrorList($testFile = '')
     {
         switch ($testFile) {
         case 'ArrayDeclarationUnitTest.1.inc':
             return [
-                2   => 1,
-                8   => 2,
-                10  => 2,
-                22  => 1,
-                23  => 2,
-                24  => 2,
-                25  => 1,
-                31  => 2,
-                35  => 1,
-                36  => 2,
-                41  => 1,
-                46  => 1,
-                47  => 1,
-                50  => 1,
-                51  => 1,
-                53  => 1,
-                56  => 1,
-                58  => 1,
-                61  => 1,
-                62  => 1,
-                63  => 1,
-                64  => 1,
-                65  => 1,
-                66  => 3,
-                70  => 1,
-                76  => 2,
-                77  => 1,
-                78  => 7,
-                79  => 2,
-                81  => 2,
-                82  => 4,
-                87  => 1,
-                88  => 1,
-                92  => 1,
-                97  => 1,
+                2 => 1,
+                8 => 2,
+                10 => 2,
+                22 => 1,
+                23 => 2,
+                24 => 2,
+                25 => 1,
+                31 => 2,
+                35 => 1,
+                36 => 2,
+                41 => 1,
+                46 => 1,
+                47 => 1,
+                50 => 1,
+                51 => 1,
+                53 => 1,
+                56 => 1,
+                58 => 1,
+                61 => 1,
+                62 => 1,
+                63 => 1,
+                64 => 1,
+                65 => 1,
+                66 => 3,
+                70 => 1,
+                76 => 2,
+                77 => 1,
+                78 => 7,
+                79 => 2,
+                81 => 2,
+                82 => 4,
+                87 => 1,
+                88 => 1,
+                92 => 1,
+                97 => 1,
                 100 => 1,
                 101 => 1,
                 102 => 1,
@@ -127,35 +129,35 @@ class ArrayDeclarationUnitTest extends AbstractSniffUnitTest
             ];
         case 'ArrayDeclarationUnitTest.2.inc':
             return [
-                2   => 1,
-                10  => 1,
-                23  => 2,
-                24  => 2,
-                25  => 1,
-                31  => 2,
-                36  => 2,
-                41  => 1,
-                46  => 1,
-                47  => 1,
-                51  => 1,
-                53  => 1,
-                56  => 1,
-                61  => 1,
-                63  => 1,
-                64  => 1,
-                65  => 1,
-                66  => 2,
-                70  => 1,
-                76  => 1,
-                77  => 1,
-                78  => 7,
-                79  => 2,
-                81  => 2,
-                82  => 4,
-                87  => 1,
-                88  => 1,
-                92  => 1,
-                97  => 1,
+                2 => 1,
+                10 => 1,
+                23 => 2,
+                24 => 2,
+                25 => 1,
+                31 => 2,
+                36 => 2,
+                41 => 1,
+                46 => 1,
+                47 => 1,
+                51 => 1,
+                53 => 1,
+                56 => 1,
+                61 => 1,
+                63 => 1,
+                64 => 1,
+                65 => 1,
+                66 => 2,
+                70 => 1,
+                76 => 1,
+                77 => 1,
+                78 => 7,
+                79 => 2,
+                81 => 2,
+                82 => 4,
+                87 => 1,
+                88 => 1,
+                92 => 1,
+                97 => 1,
                 100 => 1,
                 101 => 1,
                 102 => 1,
@@ -214,9 +216,9 @@ class ArrayDeclarationUnitTest extends AbstractSniffUnitTest
         default:
             return [];
         }//end switch
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -229,8 +231,7 @@ class ArrayDeclarationUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

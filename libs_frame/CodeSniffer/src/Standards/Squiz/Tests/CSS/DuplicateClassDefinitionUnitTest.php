@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Squiz\Tests\CSS;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class DuplicateClassDefinitionUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class DuplicateClassDefinitionUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -26,15 +28,15 @@ class DuplicateClassDefinitionUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
-            9   => 1,
-            29  => 1,
-            57  => 1,
-            86  => 1,
+            9 => 1,
+            29 => 1,
+            57 => 1,
+            86 => 1,
             101 => 1,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -47,8 +49,7 @@ class DuplicateClassDefinitionUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

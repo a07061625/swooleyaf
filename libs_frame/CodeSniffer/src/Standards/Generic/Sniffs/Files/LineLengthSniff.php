@@ -19,11 +19,10 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class LineLengthSniff implements Sniff
 {
-
     /**
      * The limit that the length of a line should not exceed.
      *
-     * @var integer
+     * @var int
      */
     public $lineLimit = 80;
 
@@ -32,7 +31,7 @@ class LineLengthSniff implements Sniff
      *
      * Set to zero (0) to disable.
      *
-     * @var integer
+     * @var int
      */
     public $absoluteLineLimit = 100;
 
@@ -42,10 +41,9 @@ class LineLengthSniff implements Sniff
      * This has the effect of also ignoring all lines
      * that only contain comments.
      *
-     * @var boolean
+     * @var bool
      */
     public $ignoreComments = false;
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -55,9 +53,9 @@ class LineLengthSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -71,8 +69,8 @@ class LineLengthSniff implements Sniff
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        for ($i = 1; $i < $phpcsFile->numTokens; $i++) {
-            if ($tokens[$i]['column'] === 1) {
+        for ($i = 1; $i < $phpcsFile->numTokens; ++$i) {
+            if (1 === $tokens[$i]['column']) {
                 $this->checkLineLength($phpcsFile, $tokens, $i);
             }
         }
@@ -80,10 +78,10 @@ class LineLengthSniff implements Sniff
         $this->checkLineLength($phpcsFile, $tokens, $i);
 
         // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
+        return $phpcsFile->numTokens + 1;
+    }
 
-    }//end process()
-
+    //end process()
 
     /**
      * Checks if a line is too long.
@@ -91,37 +89,35 @@ class LineLengthSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param array                       $tokens    The token stack.
      * @param int                         $stackPtr  The first token on the next line.
-     *
-     * @return void
      */
     protected function checkLineLength($phpcsFile, $tokens, $stackPtr)
     {
         // The passed token is the first on the line.
-        $stackPtr--;
+        --$stackPtr;
 
-        if ($tokens[$stackPtr]['column'] === 1
-            && $tokens[$stackPtr]['length'] === 0
+        if (1 === $tokens[$stackPtr]['column']
+            && 0 === $tokens[$stackPtr]['length']
         ) {
             // Blank line.
             return;
         }
 
-        if ($tokens[$stackPtr]['column'] !== 1
+        if (1 !== $tokens[$stackPtr]['column']
             && $tokens[$stackPtr]['content'] === $phpcsFile->eolChar
         ) {
-            $stackPtr--;
+            --$stackPtr;
         }
 
         $onlyComment = false;
-        if (isset(Tokens::$commentTokens[$tokens[$stackPtr]['code']]) === true) {
+        if (true === isset(Tokens::$commentTokens[$tokens[$stackPtr]['code']])) {
             $prevNonWhiteSpace = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($stackPtr - 1), null, true);
             if ($tokens[$stackPtr]['line'] !== $tokens[$prevNonWhiteSpace]['line']) {
                 $onlyComment = true;
             }
         }
 
-        if ($onlyComment === true
-            && isset(Tokens::$phpcsCommentTokens[$tokens[$stackPtr]['code']]) === true
+        if (true === $onlyComment
+            && true === isset(Tokens::$phpcsCommentTokens[$tokens[$stackPtr]['code']])
         ) {
             // Ignore PHPCS annotation comments that are on a line by themselves.
             return;
@@ -129,11 +125,11 @@ class LineLengthSniff implements Sniff
 
         $lineLength = ($tokens[$stackPtr]['column'] + $tokens[$stackPtr]['length'] - 1);
 
-        if ($this->ignoreComments === true
-            && isset(Tokens::$commentTokens[$tokens[$stackPtr]['code']]) === true
+        if (true === $this->ignoreComments
+            && true === isset(Tokens::$commentTokens[$tokens[$stackPtr]['code']])
         ) {
             // Trailing comments are being ignored in line length calculations.
-            if ($onlyComment === true) {
+            if (true === $onlyComment) {
                 // The comment is the only thing on the line, so no need to check length.
                 return;
             }
@@ -144,28 +140,28 @@ class LineLengthSniff implements Sniff
         // Record metrics for common line length groupings.
         if ($lineLength <= 80) {
             $phpcsFile->recordMetric($stackPtr, 'Line length', '80 or less');
-        } else if ($lineLength <= 120) {
+        } elseif ($lineLength <= 120) {
             $phpcsFile->recordMetric($stackPtr, 'Line length', '81-120');
-        } else if ($lineLength <= 150) {
+        } elseif ($lineLength <= 150) {
             $phpcsFile->recordMetric($stackPtr, 'Line length', '121-150');
         } else {
             $phpcsFile->recordMetric($stackPtr, 'Line length', '151 or more');
         }
 
-        if ($onlyComment === true) {
+        if (true === $onlyComment) {
             // If this is a long comment, check if it can be broken up onto multiple lines.
             // Some comments contain unbreakable strings like URLs and so it makes sense
             // to ignore the line length in these cases if the URL would be longer than the max
             // line length once you indent it to the correct level.
             if ($lineLength > $this->lineLimit) {
-                $oldLength = strlen($tokens[$stackPtr]['content']);
-                $newLength = strlen(ltrim($tokens[$stackPtr]['content'], "/#\t "));
-                $indent    = (($tokens[$stackPtr]['column'] - 1) + ($oldLength - $newLength));
+                $oldLength = \strlen($tokens[$stackPtr]['content']);
+                $newLength = \strlen(ltrim($tokens[$stackPtr]['content'], "/#\t "));
+                $indent = (($tokens[$stackPtr]['column'] - 1) + ($oldLength - $newLength));
 
                 $nonBreakingLength = $tokens[$stackPtr]['length'];
 
                 $space = strrpos($tokens[$stackPtr]['content'], ' ');
-                if ($space !== false) {
+                if (false !== $space) {
                     $nonBreakingLength -= ($space + 1);
                 }
 
@@ -185,7 +181,7 @@ class LineLengthSniff implements Sniff
 
             $error = 'Line exceeds maximum limit of %s characters; contains %s characters';
             $phpcsFile->addError($error, $stackPtr, 'MaxExceeded', $data);
-        } else if ($lineLength > $this->lineLimit) {
+        } elseif ($lineLength > $this->lineLimit) {
             $data = [
                 $this->lineLimit,
                 $lineLength,
@@ -194,8 +190,7 @@ class LineLengthSniff implements Sniff
             $warning = 'Line exceeds %s characters; contains %s characters';
             $phpcsFile->addWarning($warning, $stackPtr, 'TooLong', $data);
         }
+    }
 
-    }//end checkLineLength()
-
-
+    //end checkLineLength()
 }//end class

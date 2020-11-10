@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class FileExtensionSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -24,9 +22,9 @@ class FileExtensionSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -39,30 +37,29 @@ class FileExtensionSniff implements Sniff
      */
     public function process(File $phpcsFile, $stackPtr)
     {
-        $tokens    = $phpcsFile->getTokens();
-        $fileName  = $phpcsFile->getFilename();
+        $tokens = $phpcsFile->getTokens();
+        $fileName = $phpcsFile->getFilename();
         $extension = substr($fileName, strrpos($fileName, '.'));
         $nextClass = $phpcsFile->findNext([T_CLASS, T_INTERFACE, T_TRAIT], $stackPtr);
 
-        if ($nextClass !== false) {
+        if (false !== $nextClass) {
             $phpcsFile->recordMetric($stackPtr, 'File extension for class files', $extension);
-            if ($extension === '.php') {
+            if ('.php' === $extension) {
                 $error = '%s found in ".php" file; use ".inc" extension instead';
-                $data  = [ucfirst($tokens[$nextClass]['content'])];
+                $data = [ucfirst($tokens[$nextClass]['content'])];
                 $phpcsFile->addError($error, $stackPtr, 'ClassFound', $data);
             }
         } else {
             $phpcsFile->recordMetric($stackPtr, 'File extension for non-class files', $extension);
-            if ($extension === '.inc') {
+            if ('.inc' === $extension) {
                 $error = 'No interface or class found in ".inc" file; use ".php" extension instead';
                 $phpcsFile->addError($error, $stackPtr, 'NoClass');
             }
         }
 
         // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
+        return $phpcsFile->numTokens + 1;
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

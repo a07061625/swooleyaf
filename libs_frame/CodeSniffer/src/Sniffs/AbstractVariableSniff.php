@@ -20,7 +20,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 abstract class AbstractVariableSniff extends AbstractScopeSniff
 {
-
     /**
      * List of PHP Reserved variables.
      *
@@ -29,20 +28,19 @@ abstract class AbstractVariableSniff extends AbstractScopeSniff
      * @var array
      */
     protected $phpReservedVars = [
-        '_SERVER'              => true,
-        '_GET'                 => true,
-        '_POST'                => true,
-        '_REQUEST'             => true,
-        '_SESSION'             => true,
-        '_ENV'                 => true,
-        '_COOKIE'              => true,
-        '_FILES'               => true,
-        'GLOBALS'              => true,
+        '_SERVER' => true,
+        '_GET' => true,
+        '_POST' => true,
+        '_REQUEST' => true,
+        '_SESSION' => true,
+        '_ENV' => true,
+        '_COOKIE' => true,
+        '_FILES' => true,
+        'GLOBALS' => true,
         'http_response_header' => true,
-        'HTTP_RAW_POST_DATA'   => true,
-        'php_errormsg'         => true,
+        'HTTP_RAW_POST_DATA' => true,
+        'php_errormsg' => true,
     ];
-
 
     /**
      * Constructs an AbstractVariableTest.
@@ -58,9 +56,9 @@ abstract class AbstractVariableSniff extends AbstractScopeSniff
         ];
 
         parent::__construct($scopes, $listen, true);
+    }
 
-    }//end __construct()
-
+    //end __construct()
 
     /**
      * Processes the token in the specified PHP_CodeSniffer\Files\File.
@@ -70,7 +68,7 @@ abstract class AbstractVariableSniff extends AbstractScopeSniff
      * @param int                         $stackPtr  The position where the token was found.
      * @param int                         $currScope The current scope opener token.
      *
-     * @return void|int Optionally returns a stack pointer. The sniff will not be
+     * @return int|void Optionally returns a stack pointer. The sniff will not be
      *                  called again on the current file until the returned stack
      *                  pointer is reached. Return ($phpcsFile->numTokens + 1) to skip
      *                  the rest of the file.
@@ -79,12 +77,12 @@ abstract class AbstractVariableSniff extends AbstractScopeSniff
     {
         $tokens = $phpcsFile->getTokens();
 
-        if ($tokens[$stackPtr]['code'] === T_DOUBLE_QUOTED_STRING
-            || $tokens[$stackPtr]['code'] === T_HEREDOC
+        if (T_DOUBLE_QUOTED_STRING === $tokens[$stackPtr]['code']
+            || T_HEREDOC === $tokens[$stackPtr]['code']
         ) {
             // Check to see if this string has a variable in it.
             $pattern = '|(?<!\\\\)(?:\\\\{2})*\${?[a-zA-Z0-9_]+}?|';
-            if (preg_match($pattern, $tokens[$stackPtr]['content']) !== 0) {
+            if (0 !== preg_match($pattern, $tokens[$stackPtr]['content'])) {
                 return $this->processVariableInString($phpcsFile, $stackPtr);
             }
 
@@ -97,11 +95,11 @@ abstract class AbstractVariableSniff extends AbstractScopeSniff
         $conditions = array_reverse($tokens[$stackPtr]['conditions'], true);
         $inFunction = false;
         foreach ($conditions as $scope => $code) {
-            if (isset(Tokens::$ooScopeTokens[$code]) === true) {
+            if (true === isset(Tokens::$ooScopeTokens[$code])) {
                 break;
             }
 
-            if ($code === T_FUNCTION || $code === T_CLOSURE) {
+            if (T_FUNCTION === $code || T_CLOSURE === $code) {
                 $inFunction = true;
             }
         }
@@ -115,13 +113,14 @@ abstract class AbstractVariableSniff extends AbstractScopeSniff
         }
 
         // Just make sure this isn't a variable in a function declaration.
-        if ($inFunction === false && isset($tokens[$stackPtr]['nested_parenthesis']) === true) {
+        if (false === $inFunction && true === isset($tokens[$stackPtr]['nested_parenthesis'])) {
             foreach ($tokens[$stackPtr]['nested_parenthesis'] as $opener => $closer) {
-                if (isset($tokens[$opener]['parenthesis_owner']) === false) {
+                if (false === isset($tokens[$opener]['parenthesis_owner'])) {
                     // Check if this is a USE statement for a closure.
                     $prev = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($opener - 1), null, true);
-                    if ($tokens[$prev]['code'] === T_USE) {
+                    if (T_USE === $tokens[$prev]['code']) {
                         $inFunction = true;
+
                         break;
                     }
 
@@ -129,23 +128,24 @@ abstract class AbstractVariableSniff extends AbstractScopeSniff
                 }
 
                 $owner = $tokens[$opener]['parenthesis_owner'];
-                if ($tokens[$owner]['code'] === T_FUNCTION
-                    || $tokens[$owner]['code'] === T_CLOSURE
+                if (T_FUNCTION === $tokens[$owner]['code']
+                    || T_CLOSURE === $tokens[$owner]['code']
                 ) {
                     $inFunction = true;
+
                     break;
                 }
             }
         }//end if
 
-        if ($inFunction === true) {
+        if (true === $inFunction) {
             return $this->processVariable($phpcsFile, $stackPtr);
-        } else {
-            return $this->processMemberVar($phpcsFile, $stackPtr);
         }
 
-    }//end processTokenWithinScope()
+        return $this->processMemberVar($phpcsFile, $stackPtr);
+    }
 
+    //end processTokenWithinScope()
 
     /**
      * Processes the token outside the scope in the file.
@@ -154,7 +154,7 @@ abstract class AbstractVariableSniff extends AbstractScopeSniff
      *                                               token was found.
      * @param int                         $stackPtr  The position where the token was found.
      *
-     * @return void|int Optionally returns a stack pointer. The sniff will not be
+     * @return int|void Optionally returns a stack pointer. The sniff will not be
      *                  called again on the current file until the returned stack
      *                  pointer is reached. Return ($phpcsFile->numTokens + 1) to skip
      *                  the rest of the file.
@@ -163,20 +163,21 @@ abstract class AbstractVariableSniff extends AbstractScopeSniff
     {
         $tokens = $phpcsFile->getTokens();
         // These variables are not member vars.
-        if ($tokens[$stackPtr]['code'] === T_VARIABLE) {
+        if (T_VARIABLE === $tokens[$stackPtr]['code']) {
             return $this->processVariable($phpcsFile, $stackPtr);
-        } else if ($tokens[$stackPtr]['code'] === T_DOUBLE_QUOTED_STRING
-            || $tokens[$stackPtr]['code'] === T_HEREDOC
+        }
+        if (T_DOUBLE_QUOTED_STRING === $tokens[$stackPtr]['code']
+            || T_HEREDOC === $tokens[$stackPtr]['code']
         ) {
             // Check to see if this string has a variable in it.
             $pattern = '|(?<!\\\\)(?:\\\\{2})*\${?[a-zA-Z0-9_]+}?|';
-            if (preg_match($pattern, $tokens[$stackPtr]['content']) !== 0) {
+            if (0 !== preg_match($pattern, $tokens[$stackPtr]['content'])) {
                 return $this->processVariableInString($phpcsFile, $stackPtr);
             }
         }
+    }
 
-    }//end processTokenOutsideScope()
-
+    //end processTokenOutsideScope()
 
     /**
      * Called to process class member vars.
@@ -185,13 +186,12 @@ abstract class AbstractVariableSniff extends AbstractScopeSniff
      *                                               token was found.
      * @param int                         $stackPtr  The position where the token was found.
      *
-     * @return void|int Optionally returns a stack pointer. The sniff will not be
+     * @return int|void Optionally returns a stack pointer. The sniff will not be
      *                  called again on the current file until the returned stack
      *                  pointer is reached. Return ($phpcsFile->numTokens + 1) to skip
      *                  the rest of the file.
      */
     abstract protected function processMemberVar(File $phpcsFile, $stackPtr);
-
 
     /**
      * Called to process normal member vars.
@@ -200,13 +200,12 @@ abstract class AbstractVariableSniff extends AbstractScopeSniff
      *                                               token was found.
      * @param int                         $stackPtr  The position where the token was found.
      *
-     * @return void|int Optionally returns a stack pointer. The sniff will not be
+     * @return int|void Optionally returns a stack pointer. The sniff will not be
      *                  called again on the current file until the returned stack
      *                  pointer is reached. Return ($phpcsFile->numTokens + 1) to skip
      *                  the rest of the file.
      */
     abstract protected function processVariable(File $phpcsFile, $stackPtr);
-
 
     /**
      * Called to process variables found in double quoted strings or heredocs.
@@ -219,12 +218,10 @@ abstract class AbstractVariableSniff extends AbstractScopeSniff
      * @param int                         $stackPtr  The position where the double quoted
      *                                               string was found.
      *
-     * @return void|int Optionally returns a stack pointer. The sniff will not be
+     * @return int|void Optionally returns a stack pointer. The sniff will not be
      *                  called again on the current file until the returned stack
      *                  pointer is reached. Return ($phpcsFile->numTokens + 1) to skip
      *                  the rest of the file.
      */
     abstract protected function processVariableInString(File $phpcsFile, $stackPtr);
-
-
 }//end class

@@ -14,7 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class DisallowSizeFunctionsInLoopsSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
@@ -34,11 +33,10 @@ class DisallowSizeFunctionsInLoopsSniff implements Sniff
         'PHP' => [
             'sizeof' => true,
             'strlen' => true,
-            'count'  => true,
+            'count' => true,
         ],
-        'JS'  => ['length' => true],
+        'JS' => ['length' => true],
     ];
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -51,9 +49,9 @@ class DisallowSizeFunctionsInLoopsSniff implements Sniff
             T_WHILE,
             T_FOR,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -61,42 +59,40 @@ class DisallowSizeFunctionsInLoopsSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
-        $tokens       = $phpcsFile->getTokens();
-        $tokenizer    = $phpcsFile->tokenizerType;
-        $openBracket  = $tokens[$stackPtr]['parenthesis_opener'];
+        $tokens = $phpcsFile->getTokens();
+        $tokenizer = $phpcsFile->tokenizerType;
+        $openBracket = $tokens[$stackPtr]['parenthesis_opener'];
         $closeBracket = $tokens[$stackPtr]['parenthesis_closer'];
 
-        if ($tokens[$stackPtr]['code'] === T_FOR) {
+        if (T_FOR === $tokens[$stackPtr]['code']) {
             // We only want to check the condition in FOR loops.
             $start = $phpcsFile->findNext(T_SEMICOLON, ($openBracket + 1));
-            $end   = $phpcsFile->findPrevious(T_SEMICOLON, ($closeBracket - 1));
+            $end = $phpcsFile->findPrevious(T_SEMICOLON, ($closeBracket - 1));
         } else {
             $start = $openBracket;
-            $end   = $closeBracket;
+            $end = $closeBracket;
         }
 
-        for ($i = ($start + 1); $i < $end; $i++) {
-            if ($tokens[$i]['code'] === T_STRING
-                && isset($this->forbiddenFunctions[$tokenizer][$tokens[$i]['content']]) === true
+        for ($i = ($start + 1); $i < $end; ++$i) {
+            if (T_STRING === $tokens[$i]['code']
+                && true === isset($this->forbiddenFunctions[$tokenizer][$tokens[$i]['content']])
             ) {
                 $functionName = $tokens[$i]['content'];
-                if ($tokenizer === 'JS') {
+                if ('JS' === $tokenizer) {
                     // Needs to be in the form object.function to be valid.
                     $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($i - 1), null, true);
-                    if ($prev === false || $tokens[$prev]['code'] !== T_OBJECT_OPERATOR) {
+                    if (false === $prev || T_OBJECT_OPERATOR !== $tokens[$prev]['code']) {
                         continue;
                     }
 
-                    $functionName = 'object.'.$functionName;
+                    $functionName = 'object.' . $functionName;
                 } else {
                     // Make sure it isn't a member var.
-                    if ($tokens[($i - 1)]['code'] === T_OBJECT_OPERATOR
-                        || $tokens[($i - 1)]['code'] === T_NULLSAFE_OBJECT_OPERATOR
+                    if (T_OBJECT_OPERATOR === $tokens[($i - 1)]['code']
+                        || T_NULLSAFE_OBJECT_OPERATOR === $tokens[($i - 1)]['code']
                     ) {
                         continue;
                     }
@@ -105,12 +101,11 @@ class DisallowSizeFunctionsInLoopsSniff implements Sniff
                 }
 
                 $error = 'The use of %s inside a loop condition is not allowed; assign the return value to a variable and use the variable in the loop condition instead';
-                $data  = [$functionName];
+                $data = [$functionName];
                 $phpcsFile->addError($error, $i, 'Found', $data);
             }//end if
         }//end for
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

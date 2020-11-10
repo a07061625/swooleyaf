@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\PSR12\Tests\ControlStructures;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class ControlStructureSpacingUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class ControlStructureSpacingUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -26,7 +28,7 @@ class ControlStructureSpacingUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
-            2  => 2,
+            2 => 2,
             16 => 1,
             17 => 1,
             18 => 1,
@@ -42,9 +44,9 @@ class ControlStructureSpacingUnitTest extends AbstractSniffUnitTest
             58 => 1,
             59 => 1,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -57,8 +59,7 @@ class ControlStructureSpacingUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

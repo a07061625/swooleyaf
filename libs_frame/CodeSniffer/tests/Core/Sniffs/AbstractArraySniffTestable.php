@@ -13,14 +13,12 @@ use PHP_CodeSniffer\Sniffs\AbstractArraySniff;
 
 class AbstractArraySniffTestable extends AbstractArraySniff
 {
-
     /**
      * The array indicies that were found during processing.
      *
      * @var array
      */
     public $indicies = [];
-
 
     /**
      * Processes a single-line array definition.
@@ -32,15 +30,13 @@ class AbstractArraySniffTestable extends AbstractArraySniff
      * @param int                         $arrayEnd   The token that ends the array definition.
      * @param array                       $indices    An array of token positions for the array keys,
      *                                                double arrows, and values.
-     *
-     * @return void
      */
     public function processSingleLineArray($phpcsFile, $stackPtr, $arrayStart, $arrayEnd, $indices)
     {
         $this->indicies = $indices;
+    }
 
-    }//end processSingleLineArray()
-
+    //end processSingleLineArray()
 
     /**
      * Processes a multi-line array definition.
@@ -52,14 +48,11 @@ class AbstractArraySniffTestable extends AbstractArraySniff
      * @param int                         $arrayEnd   The token that ends the array definition.
      * @param array                       $indices    An array of token positions for the array keys,
      *                                                double arrows, and values.
-     *
-     * @return void
      */
     public function processMultiLineArray($phpcsFile, $stackPtr, $arrayStart, $arrayEnd, $indices)
     {
         $this->indicies = $indices;
+    }
 
-    }//end processMultiLineArray()
-
-
+    //end processMultiLineArray()
 }//end class

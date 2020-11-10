@@ -15,14 +15,12 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class JSLintSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
      * @var array
      */
     public $supportedTokenizers = ['JS'];
-
 
     /**
      * Returns the token types that this sniff is interested in.
@@ -32,9 +30,9 @@ class JSLintSniff implements Sniff
     public function register()
     {
         return [T_OPEN_TAG];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes the tokens that this sniff is interested in.
@@ -43,43 +41,41 @@ class JSLintSniff implements Sniff
      * @param int                         $stackPtr  The position in the stack where
      *                                               the token was found.
      *
-     * @return void
      * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If jslint.js could not be run
      */
     public function process(File $phpcsFile, $stackPtr)
     {
-        $rhinoPath  = Config::getExecutablePath('jslint');
+        $rhinoPath = Config::getExecutablePath('jslint');
         $jslintPath = Config::getExecutablePath('jslint');
-        if ($rhinoPath === null || $jslintPath === null) {
+        if (null === $rhinoPath || null === $jslintPath) {
             return;
         }
 
         $fileName = $phpcsFile->getFilename();
 
-        $rhinoPath  = escapeshellcmd($rhinoPath);
+        $rhinoPath = escapeshellcmd($rhinoPath);
         $jslintPath = escapeshellcmd($jslintPath);
 
-        $cmd = "$rhinoPath \"$jslintPath\" ".escapeshellarg($fileName);
+        $cmd = "{$rhinoPath} \"{$jslintPath}\" " . escapeshellarg($fileName);
         exec($cmd, $output, $retval);
 
-        if (is_array($output) === true) {
+        if (true === \is_array($output)) {
             foreach ($output as $finding) {
-                $matches    = [];
+                $matches = [];
                 $numMatches = preg_match('/Lint at line ([0-9]+).*:(.*)$/', $finding, $matches);
-                if ($numMatches === 0) {
+                if (0 === $numMatches) {
                     continue;
                 }
 
-                $line    = (int) $matches[1];
-                $message = 'jslint says: '.trim($matches[2]);
+                $line = (int)$matches[1];
+                $message = 'jslint says: ' . trim($matches[2]);
                 $phpcsFile->addWarningOnLine($message, $line, 'ExternalTool');
             }
         }
 
         // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
+        return $phpcsFile->numTokens + 1;
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

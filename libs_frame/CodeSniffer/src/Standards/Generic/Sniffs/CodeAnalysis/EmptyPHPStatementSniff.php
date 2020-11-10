@@ -18,8 +18,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class EmptyPHPStatementSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -31,9 +29,9 @@ class EmptyPHPStatementSniff implements Sniff
             T_SEMICOLON,
             T_CLOSE_TAG,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -41,8 +39,6 @@ class EmptyPHPStatementSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
@@ -53,37 +49,37 @@ class EmptyPHPStatementSniff implements Sniff
         case 'T_SEMICOLON':
             $prevNonEmpty = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($stackPtr - 1), null, true);
 
-            if ($prevNonEmpty === false) {
+            if (false === $prevNonEmpty) {
                 return;
             }
 
-            if ($tokens[$prevNonEmpty]['code'] !== T_SEMICOLON
-                && $tokens[$prevNonEmpty]['code'] !== T_OPEN_TAG
-                && $tokens[$prevNonEmpty]['code'] !== T_OPEN_TAG_WITH_ECHO
+            if (T_SEMICOLON !== $tokens[$prevNonEmpty]['code']
+                && T_OPEN_TAG !== $tokens[$prevNonEmpty]['code']
+                && T_OPEN_TAG_WITH_ECHO !== $tokens[$prevNonEmpty]['code']
             ) {
-                if (isset($tokens[$prevNonEmpty]['scope_condition']) === false) {
+                if (false === isset($tokens[$prevNonEmpty]['scope_condition'])) {
                     return;
                 }
 
                 if ($tokens[$prevNonEmpty]['scope_opener'] !== $prevNonEmpty
-                    && $tokens[$prevNonEmpty]['code'] !== T_CLOSE_CURLY_BRACKET
+                    && T_CLOSE_CURLY_BRACKET !== $tokens[$prevNonEmpty]['code']
                 ) {
                     return;
                 }
 
                 $scopeOwner = $tokens[$tokens[$prevNonEmpty]['scope_condition']]['code'];
-                if ($scopeOwner === T_CLOSURE || $scopeOwner === T_ANON_CLASS) {
+                if (T_CLOSURE === $scopeOwner || T_ANON_CLASS === $scopeOwner) {
                     return;
                 }
 
                 // Else, it's something like `if (foo) {};` and the semi-colon is not needed.
             }
 
-            if (isset($tokens[$stackPtr]['nested_parenthesis']) === true) {
-                $nested     = $tokens[$stackPtr]['nested_parenthesis'];
+            if (true === isset($tokens[$stackPtr]['nested_parenthesis'])) {
+                $nested = $tokens[$stackPtr]['nested_parenthesis'];
                 $lastCloser = array_pop($nested);
-                if (isset($tokens[$lastCloser]['parenthesis_owner']) === true
-                    && $tokens[$tokens[$lastCloser]['parenthesis_owner']]['code'] === T_FOR
+                if (true === isset($tokens[$lastCloser]['parenthesis_owner'])
+                    && T_FOR === $tokens[$tokens[$lastCloser]['parenthesis_owner']]['code']
                 ) {
                     // Empty for() condition.
                     return;
@@ -95,24 +91,24 @@ class EmptyPHPStatementSniff implements Sniff
                 $stackPtr,
                 'SemicolonWithoutCodeDetected'
             );
-            if ($fix === true) {
+            if (true === $fix) {
                 $phpcsFile->fixer->beginChangeset();
 
-                if ($tokens[$prevNonEmpty]['code'] === T_OPEN_TAG
-                    || $tokens[$prevNonEmpty]['code'] === T_OPEN_TAG_WITH_ECHO
+                if (T_OPEN_TAG === $tokens[$prevNonEmpty]['code']
+                    || T_OPEN_TAG_WITH_ECHO === $tokens[$prevNonEmpty]['code']
                 ) {
                     // Check for superfluous whitespace after the semi-colon which will be
                     // removed as the `<?php ` open tag token already contains whitespace,
                     // either a space or a new line.
-                    if ($tokens[($stackPtr + 1)]['code'] === T_WHITESPACE) {
+                    if (T_WHITESPACE === $tokens[($stackPtr + 1)]['code']) {
                         $replacement = str_replace(' ', '', $tokens[($stackPtr + 1)]['content']);
                         $phpcsFile->fixer->replaceToken(($stackPtr + 1), $replacement);
                     }
                 }
 
-                for ($i = $stackPtr; $i > $prevNonEmpty; $i--) {
-                    if ($tokens[$i]['code'] !== T_SEMICOLON
-                        && $tokens[$i]['code'] !== T_WHITESPACE
+                for ($i = $stackPtr; $i > $prevNonEmpty; --$i) {
+                    if (T_SEMICOLON !== $tokens[$i]['code']
+                        && T_WHITESPACE !== $tokens[$i]['code']
                     ) {
                         break;
                     }
@@ -122,15 +118,15 @@ class EmptyPHPStatementSniff implements Sniff
 
                 $phpcsFile->fixer->endChangeset();
             }//end if
-            break;
 
+            break;
         // Detect `<?php ? >`.
         case 'T_CLOSE_TAG':
             $prevNonEmpty = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
 
-            if ($prevNonEmpty === false
-                || ($tokens[$prevNonEmpty]['code'] !== T_OPEN_TAG
-                && $tokens[$prevNonEmpty]['code'] !== T_OPEN_TAG_WITH_ECHO)
+            if (false === $prevNonEmpty
+                || (T_OPEN_TAG !== $tokens[$prevNonEmpty]['code']
+                && T_OPEN_TAG_WITH_ECHO !== $tokens[$prevNonEmpty]['code'])
             ) {
                 return;
             }
@@ -140,23 +136,22 @@ class EmptyPHPStatementSniff implements Sniff
                 $prevNonEmpty,
                 'EmptyPHPOpenCloseTagsDetected'
             );
-            if ($fix === true) {
+            if (true === $fix) {
                 $phpcsFile->fixer->beginChangeset();
 
-                for ($i = $prevNonEmpty; $i <= $stackPtr; $i++) {
+                for ($i = $prevNonEmpty; $i <= $stackPtr; ++$i) {
                     $phpcsFile->fixer->replaceToken($i, '');
                 }
 
                 $phpcsFile->fixer->endChangeset();
             }
-            break;
 
+            break;
         default:
             // Deliberately left empty.
             break;
         }//end switch
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

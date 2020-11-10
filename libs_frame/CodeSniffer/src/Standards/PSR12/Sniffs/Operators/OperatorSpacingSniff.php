@@ -15,8 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class OperatorSpacingSniff extends SquizOperatorSpacingSniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -26,19 +24,19 @@ class OperatorSpacingSniff extends SquizOperatorSpacingSniff
     {
         parent::register();
 
-        $targets   = Tokens::$comparisonTokens;
-        $targets  += Tokens::$operators;
-        $targets  += Tokens::$assignmentTokens;
-        $targets  += Tokens::$booleanOperators;
+        $targets = Tokens::$comparisonTokens;
+        $targets += Tokens::$operators;
+        $targets += Tokens::$assignmentTokens;
+        $targets += Tokens::$booleanOperators;
         $targets[] = T_INLINE_THEN;
         $targets[] = T_INLINE_ELSE;
         $targets[] = T_STRING_CONCAT;
         $targets[] = T_INSTANCEOF;
 
         return $targets;
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
@@ -46,40 +44,38 @@ class OperatorSpacingSniff extends SquizOperatorSpacingSniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The current file being checked.
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        if ($this->isOperator($phpcsFile, $stackPtr) === false) {
+        if (false === $this->isOperator($phpcsFile, $stackPtr)) {
             return;
         }
 
         $operator = $tokens[$stackPtr]['content'];
 
         $checkBefore = true;
-        $checkAfter  = true;
+        $checkAfter = true;
 
         // Skip short ternary.
-        if ($tokens[($stackPtr)]['code'] === T_INLINE_ELSE
-            && $tokens[($stackPtr - 1)]['code'] === T_INLINE_THEN
+        if (T_INLINE_ELSE === $tokens[($stackPtr)]['code']
+            && T_INLINE_THEN === $tokens[($stackPtr - 1)]['code']
         ) {
             $checkBefore = false;
         }
 
         // Skip operator with comment on previous line.
-        if ($tokens[($stackPtr - 1)]['code'] === T_COMMENT
+        if (T_COMMENT === $tokens[($stackPtr - 1)]['code']
             && $tokens[($stackPtr - 1)]['line'] < $tokens[$stackPtr]['line']
         ) {
             $checkBefore = false;
         }
 
-        if (isset($tokens[($stackPtr + 1)]) === true) {
+        if (true === isset($tokens[($stackPtr + 1)])) {
             // Skip short ternary.
-            if ($tokens[$stackPtr]['code'] === T_INLINE_THEN
-                && $tokens[($stackPtr + 1)]['code'] === T_INLINE_ELSE
+            if (T_INLINE_THEN === $tokens[$stackPtr]['code']
+                && T_INLINE_ELSE === $tokens[($stackPtr + 1)]['code']
             ) {
                 $checkAfter = false;
             }
@@ -88,25 +84,24 @@ class OperatorSpacingSniff extends SquizOperatorSpacingSniff
             $checkAfter = false;
         }
 
-        if ($checkBefore === true && $tokens[($stackPtr - 1)]['code'] !== T_WHITESPACE) {
+        if (true === $checkBefore && T_WHITESPACE !== $tokens[($stackPtr - 1)]['code']) {
             $error = 'Expected at least 1 space before "%s"; 0 found';
-            $data  = [$operator];
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceBefore', $data);
-            if ($fix === true) {
+            $data = [$operator];
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceBefore', $data);
+            if (true === $fix) {
                 $phpcsFile->fixer->addContentBefore($stackPtr, ' ');
             }
         }
 
-        if ($checkAfter === true && $tokens[($stackPtr + 1)]['code'] !== T_WHITESPACE) {
+        if (true === $checkAfter && T_WHITESPACE !== $tokens[($stackPtr + 1)]['code']) {
             $error = 'Expected at least 1 space after "%s"; 0 found';
-            $data  = [$operator];
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceAfter', $data);
-            if ($fix === true) {
+            $data = [$operator];
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceAfter', $data);
+            if (true === $fix) {
                 $phpcsFile->fixer->addContent($stackPtr, ' ');
             }
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

@@ -14,14 +14,12 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class PropertyLabelSpacingSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
      * @var array
      */
     public $supportedTokenizers = ['JS'];
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -34,9 +32,9 @@ class PropertyLabelSpacingSniff implements Sniff
             T_PROPERTY,
             T_LABEL,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -44,8 +42,6 @@ class PropertyLabelSpacingSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
@@ -55,25 +51,24 @@ class PropertyLabelSpacingSniff implements Sniff
 
         if ($colon !== ($stackPtr + 1)) {
             $error = 'There must be no space before the colon in a property/label declaration';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Before');
-            if ($fix === true) {
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Before');
+            if (true === $fix) {
                 $phpcsFile->fixer->replaceToken(($stackPtr + 1), '');
             }
         }
 
-        if ($tokens[($colon + 1)]['code'] !== T_WHITESPACE || $tokens[($colon + 1)]['content'] !== ' ') {
+        if (T_WHITESPACE !== $tokens[($colon + 1)]['code'] || ' ' !== $tokens[($colon + 1)]['content']) {
             $error = 'There must be a single space after the colon in a property/label declaration';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'After');
-            if ($fix === true) {
-                if ($tokens[($colon + 1)]['code'] === T_WHITESPACE) {
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'After');
+            if (true === $fix) {
+                if (T_WHITESPACE === $tokens[($colon + 1)]['code']) {
                     $phpcsFile->fixer->replaceToken(($colon + 1), ' ');
                 } else {
                     $phpcsFile->fixer->addContent($colon, ' ');
                 }
             }
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

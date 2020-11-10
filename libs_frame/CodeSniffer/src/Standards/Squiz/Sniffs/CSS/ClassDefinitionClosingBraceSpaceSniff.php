@@ -15,14 +15,12 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class ClassDefinitionClosingBraceSpaceSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
      * @var array
      */
     public $supportedTokenizers = ['CSS'];
-
 
     /**
      * Returns the token types that this sniff is interested in.
@@ -32,9 +30,9 @@ class ClassDefinitionClosingBraceSpaceSniff implements Sniff
     public function register()
     {
         return [T_CLOSE_CURLY_BRACKET];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes the tokens that this sniff is interested in.
@@ -42,20 +40,18 @@ class ClassDefinitionClosingBraceSpaceSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where the token was found.
      * @param int                         $stackPtr  The position in the stack where
      *                                               the token was found.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $next   = $stackPtr;
+        $next = $stackPtr;
         while (true) {
             $next = $phpcsFile->findNext(T_WHITESPACE, ($next + 1), null, true);
-            if ($next === false) {
+            if (false === $next) {
                 return;
             }
 
-            if (isset(Tokens::$emptyTokens[$tokens[$next]['code']]) === true
+            if (true === isset(Tokens::$emptyTokens[$tokens[$next]['code']])
                 && $tokens[$next]['line'] === $tokens[$stackPtr]['line']
             ) {
                 // Trailing comment.
@@ -65,37 +61,37 @@ class ClassDefinitionClosingBraceSpaceSniff implements Sniff
             break;
         }
 
-        if ($tokens[$next]['code'] !== T_CLOSE_TAG) {
+        if (T_CLOSE_TAG !== $tokens[$next]['code']) {
             $found = (($tokens[$next]['line'] - $tokens[$stackPtr]['line']) - 1);
-            if ($found !== 1) {
+            if (1 !== $found) {
                 $error = 'Expected one blank line after closing brace of class definition; %s found';
-                $data  = [max(0, $found)];
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingAfterClose', $data);
+                $data = [max(0, $found)];
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingAfterClose', $data);
 
-                if ($fix === true) {
+                if (true === $fix) {
                     $firstOnLine = $next;
-                    while ($tokens[$firstOnLine]['column'] !== 1) {
+                    while (1 !== $tokens[$firstOnLine]['column']) {
                         --$firstOnLine;
                     }
 
                     if ($found < 0) {
                         // Next statement on same line as the closing brace.
-                        $phpcsFile->fixer->addContentBefore($next, $phpcsFile->eolChar.$phpcsFile->eolChar);
-                    } else if ($found === 0) {
+                        $phpcsFile->fixer->addContentBefore($next, $phpcsFile->eolChar . $phpcsFile->eolChar);
+                    } elseif (0 === $found) {
                         // Next statement on next line, no blank line.
                         $phpcsFile->fixer->addContentBefore($firstOnLine, $phpcsFile->eolChar);
                     } else {
                         // Too many blank lines.
                         $phpcsFile->fixer->beginChangeset();
-                        for ($i = ($firstOnLine - 1); $i > $stackPtr; $i--) {
-                            if ($tokens[$i]['code'] !== T_WHITESPACE) {
+                        for ($i = ($firstOnLine - 1); $i > $stackPtr; --$i) {
+                            if (T_WHITESPACE !== $tokens[$i]['code']) {
                                 break;
                             }
 
                             $phpcsFile->fixer->replaceToken($i, '');
                         }
 
-                        $phpcsFile->fixer->addContentBefore($firstOnLine, $phpcsFile->eolChar.$phpcsFile->eolChar);
+                        $phpcsFile->fixer->addContentBefore($firstOnLine, $phpcsFile->eolChar . $phpcsFile->eolChar);
                         $phpcsFile->fixer->endChangeset();
                     }
                 }//end if
@@ -111,24 +107,23 @@ class ClassDefinitionClosingBraceSpaceSniff implements Sniff
             $tokens[$stackPtr]['bracket_opener']
         );
 
-        if ($found !== false) {
+        if (false !== $found) {
             return;
         }
 
         $prev = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($stackPtr - 1), null, true);
-        if ($prev === false) {
+        if (false === $prev) {
             return;
         }
 
         if ($tokens[$prev]['line'] === $tokens[$stackPtr]['line']) {
             $error = 'Closing brace of class definition must be on new line';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'ContentBeforeClose');
-            if ($fix === true) {
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'ContentBeforeClose');
+            if (true === $fix) {
                 $phpcsFile->fixer->addNewlineBefore($stackPtr);
             }
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

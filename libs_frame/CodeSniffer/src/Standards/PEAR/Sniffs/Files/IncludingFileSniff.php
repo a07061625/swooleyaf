@@ -17,8 +17,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class IncludingFileSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -32,9 +30,9 @@ class IncludingFileSniff implements Sniff
             T_REQUIRE,
             T_INCLUDE,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -42,22 +40,20 @@ class IncludingFileSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
         $nextToken = $phpcsFile->findNext(Tokens::$emptyTokens, ($stackPtr + 1), null, true);
-        if ($tokens[$nextToken]['code'] === T_OPEN_PARENTHESIS) {
+        if (T_OPEN_PARENTHESIS === $tokens[$nextToken]['code']) {
             $error = '"%s" is a statement not a function; no parentheses are required';
-            $data  = [$tokens[$stackPtr]['content']];
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'BracketsNotRequired', $data);
-            if ($fix === true) {
+            $data = [$tokens[$stackPtr]['content']];
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'BracketsNotRequired', $data);
+            if (true === $fix) {
                 $phpcsFile->fixer->beginChangeset();
                 $phpcsFile->fixer->replaceToken($tokens[$nextToken]['parenthesis_closer'], '');
-                if ($tokens[($nextToken - 1)]['code'] !== T_WHITESPACE) {
+                if (T_WHITESPACE !== $tokens[($nextToken - 1)]['code']) {
                     $phpcsFile->fixer->replaceToken($nextToken, ' ');
                 } else {
                     $phpcsFile->fixer->replaceToken($nextToken, '');
@@ -67,7 +63,7 @@ class IncludingFileSniff implements Sniff
             }
         }
 
-        if (count($tokens[$stackPtr]['conditions']) !== 0) {
+        if (0 !== \count($tokens[$stackPtr]['conditions'])) {
             $inCondition = true;
         } else {
             $inCondition = false;
@@ -76,9 +72,9 @@ class IncludingFileSniff implements Sniff
         // Check to see if this including statement is within the parenthesis
         // of a condition. If that's the case then we need to process it as being
         // within a condition, as they are checking the return value.
-        if (isset($tokens[$stackPtr]['nested_parenthesis']) === true) {
+        if (true === isset($tokens[$stackPtr]['nested_parenthesis'])) {
             foreach ($tokens[$stackPtr]['nested_parenthesis'] as $left => $right) {
-                if (isset($tokens[$left]['parenthesis_owner']) === true) {
+                if (true === isset($tokens[$left]['parenthesis_owner'])) {
                     $inCondition = true;
                 }
             }
@@ -88,49 +84,48 @@ class IncludingFileSniff implements Sniff
         // including call. If they are then they are probably checking it, so
         // it's conditional.
         $previous = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($stackPtr - 1), null, true);
-        if (isset(Tokens::$assignmentTokens[$tokens[$previous]['code']]) === true) {
+        if (true === isset(Tokens::$assignmentTokens[$tokens[$previous]['code']])) {
             // The have assigned the return value to it, so its conditional.
             $inCondition = true;
         }
 
         $tokenCode = $tokens[$stackPtr]['code'];
-        if ($inCondition === true) {
+        if (true === $inCondition) {
             // We are inside a conditional statement. We need an include_once.
-            if ($tokenCode === T_REQUIRE_ONCE) {
-                $error  = 'File is being conditionally included; ';
+            if (T_REQUIRE_ONCE === $tokenCode) {
+                $error = 'File is being conditionally included; ';
                 $error .= 'use "include_once" instead';
-                $fix    = $phpcsFile->addFixableError($error, $stackPtr, 'UseIncludeOnce');
-                if ($fix === true) {
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'UseIncludeOnce');
+                if (true === $fix) {
                     $phpcsFile->fixer->replaceToken($stackPtr, 'include_once');
                 }
-            } else if ($tokenCode === T_REQUIRE) {
-                $error  = 'File is being conditionally included; ';
+            } elseif (T_REQUIRE === $tokenCode) {
+                $error = 'File is being conditionally included; ';
                 $error .= 'use "include" instead';
-                $fix    = $phpcsFile->addFixableError($error, $stackPtr, 'UseInclude');
-                if ($fix === true) {
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'UseInclude');
+                if (true === $fix) {
                     $phpcsFile->fixer->replaceToken($stackPtr, 'include');
                 }
             }
         } else {
             // We are unconditionally including, we need a require_once.
-            if ($tokenCode === T_INCLUDE_ONCE) {
-                $error  = 'File is being unconditionally included; ';
+            if (T_INCLUDE_ONCE === $tokenCode) {
+                $error = 'File is being unconditionally included; ';
                 $error .= 'use "require_once" instead';
-                $fix    = $phpcsFile->addFixableError($error, $stackPtr, 'UseRequireOnce');
-                if ($fix === true) {
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'UseRequireOnce');
+                if (true === $fix) {
                     $phpcsFile->fixer->replaceToken($stackPtr, 'require_once');
                 }
-            } else if ($tokenCode === T_INCLUDE) {
-                $error  = 'File is being unconditionally included; ';
+            } elseif (T_INCLUDE === $tokenCode) {
+                $error = 'File is being unconditionally included; ';
                 $error .= 'use "require" instead';
-                $fix    = $phpcsFile->addFixableError($error, $stackPtr, 'UseRequire');
-                if ($fix === true) {
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'UseRequire');
+                if (true === $fix) {
                     $phpcsFile->fixer->replaceToken($stackPtr, 'require');
                 }
             }
         }//end if
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

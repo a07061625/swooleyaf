@@ -16,30 +16,29 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class ValidFunctionNameSniff extends AbstractScopeSniff
 {
-
     /**
      * A list of all PHP magic methods.
      *
      * @var array
      */
     protected $magicMethods = [
-        'construct'   => true,
-        'destruct'    => true,
-        'call'        => true,
-        'callstatic'  => true,
-        'get'         => true,
-        'set'         => true,
-        'isset'       => true,
-        'unset'       => true,
-        'sleep'       => true,
-        'wakeup'      => true,
-        'serialize'   => true,
+        'construct' => true,
+        'destruct' => true,
+        'call' => true,
+        'callstatic' => true,
+        'get' => true,
+        'set' => true,
+        'isset' => true,
+        'unset' => true,
+        'sleep' => true,
+        'wakeup' => true,
+        'serialize' => true,
         'unserialize' => true,
-        'tostring'    => true,
-        'invoke'      => true,
-        'set_state'   => true,
-        'clone'       => true,
-        'debuginfo'   => true,
+        'tostring' => true,
+        'invoke' => true,
+        'set_state' => true,
+        'clone' => true,
+        'debuginfo' => true,
     ];
 
     /**
@@ -49,16 +48,15 @@ class ValidFunctionNameSniff extends AbstractScopeSniff
      */
     protected $magicFunctions = ['autoload' => true];
 
-
     /**
      * Constructs a PEAR_Sniffs_NamingConventions_ValidFunctionNameSniff.
      */
     public function __construct()
     {
         parent::__construct(Tokens::$ooScopeTokens, [T_FUNCTION], true);
+    }
 
-    }//end __construct()
-
+    //end __construct()
 
     /**
      * Processes the tokens within the scope.
@@ -67,8 +65,6 @@ class ValidFunctionNameSniff extends AbstractScopeSniff
      * @param int                         $stackPtr  The position where this token was
      *                                               found.
      * @param int                         $currScope The position of the current scope.
-     *
-     * @return void
      */
     protected function processTokenWithinScope(File $phpcsFile, $stackPtr, $currScope)
     {
@@ -83,25 +79,25 @@ class ValidFunctionNameSniff extends AbstractScopeSniff
         }
 
         $methodName = $phpcsFile->getDeclarationName($stackPtr);
-        if ($methodName === null) {
+        if (null === $methodName) {
             // Ignore closures.
             return;
         }
 
         $className = $phpcsFile->getDeclarationName($currScope);
-        if (isset($className) === false) {
+        if (false === isset($className)) {
             $className = '[Anonymous Class]';
         }
 
-        $errorData = [$className.'::'.$methodName];
+        $errorData = [$className . '::' . $methodName];
 
         $methodNameLc = strtolower($methodName);
-        $classNameLc  = strtolower($className);
+        $classNameLc = strtolower($className);
 
         // Is this a magic method. i.e., is prefixed with "__" ?
-        if (preg_match('|^__[^_]|', $methodName) !== 0) {
+        if (0 !== preg_match('|^__[^_]|', $methodName)) {
             $magicPart = substr($methodNameLc, 2);
-            if (isset($this->magicMethods[$magicPart]) === true) {
+            if (true === isset($this->magicMethods[$magicPart])) {
                 return;
             }
 
@@ -115,23 +111,23 @@ class ValidFunctionNameSniff extends AbstractScopeSniff
         }
 
         // PHP4 destructors are allowed to break our rules.
-        if ($methodNameLc === '_'.$classNameLc) {
+        if ($methodNameLc === '_' . $classNameLc) {
             return;
         }
 
-        $methodProps    = $phpcsFile->getMethodProperties($stackPtr);
-        $scope          = $methodProps['scope'];
+        $methodProps = $phpcsFile->getMethodProperties($stackPtr);
+        $scope = $methodProps['scope'];
         $scopeSpecified = $methodProps['scope_specified'];
 
-        if ($methodProps['scope'] === 'private') {
+        if ('private' === $methodProps['scope']) {
             $isPublic = false;
         } else {
             $isPublic = true;
         }
 
         // If it's a private method, it must have an underscore on the front.
-        if ($isPublic === false) {
-            if ($methodName[0] !== '_') {
+        if (false === $isPublic) {
+            if ('_' !== $methodName[0]) {
                 $error = 'Private method name "%s" must be prefixed with an underscore';
                 $phpcsFile->addError($error, $stackPtr, 'PrivateNoUnderscore', $errorData);
                 $phpcsFile->recordMetric($stackPtr, 'Private method prefixed with underscore', 'no');
@@ -141,9 +137,9 @@ class ValidFunctionNameSniff extends AbstractScopeSniff
         }
 
         // If it's not a private method, it must not have an underscore on the front.
-        if ($isPublic === true && $scopeSpecified === true && $methodName[0] === '_') {
+        if (true === $isPublic && true === $scopeSpecified && '_' === $methodName[0]) {
             $error = '%s method name "%s" must not be prefixed with an underscore';
-            $data  = [
+            $data = [
                 ucfirst($scope),
                 $errorData[0],
             ];
@@ -152,10 +148,10 @@ class ValidFunctionNameSniff extends AbstractScopeSniff
 
         $testMethodName = ltrim($methodName, '_');
 
-        if (Common::isCamelCaps($testMethodName, false, true, false) === false) {
-            if ($scopeSpecified === true) {
+        if (false === Common::isCamelCaps($testMethodName, false, true, false)) {
+            if (true === $scopeSpecified) {
                 $error = '%s method name "%s" is not in camel caps format';
-                $data  = [
+                $data = [
                     ucfirst($scope),
                     $errorData[0],
                 ];
@@ -165,9 +161,9 @@ class ValidFunctionNameSniff extends AbstractScopeSniff
                 $phpcsFile->addError($error, $stackPtr, 'NotCamelCaps', $errorData);
             }
         }
+    }
 
-    }//end processTokenWithinScope()
-
+    //end processTokenWithinScope()
 
     /**
      * Processes the tokens outside the scope.
@@ -175,18 +171,16 @@ class ValidFunctionNameSniff extends AbstractScopeSniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being processed.
      * @param int                         $stackPtr  The position where this token was
      *                                               found.
-     *
-     * @return void
      */
     protected function processTokenOutsideScope(File $phpcsFile, $stackPtr)
     {
         $functionName = $phpcsFile->getDeclarationName($stackPtr);
-        if ($functionName === null) {
+        if (null === $functionName) {
             // Ignore closures.
             return;
         }
 
-        if (ltrim($functionName, '_') === '') {
+        if ('' === ltrim($functionName, '_')) {
             // Ignore special functions.
             return;
         }
@@ -194,9 +188,9 @@ class ValidFunctionNameSniff extends AbstractScopeSniff
         $errorData = [$functionName];
 
         // Is this a magic function. i.e., it is prefixed with "__".
-        if (preg_match('|^__[^_]|', $functionName) !== 0) {
+        if (0 !== preg_match('|^__[^_]|', $functionName)) {
             $magicPart = strtolower(substr($functionName, 2));
-            if (isset($this->magicFunctions[$magicPart]) === true) {
+            if (true === isset($this->magicFunctions[$magicPart])) {
                 return;
             }
 
@@ -206,12 +200,12 @@ class ValidFunctionNameSniff extends AbstractScopeSniff
 
         // Function names can be in two parts; the package name and
         // the function name.
-        $packagePart   = '';
+        $packagePart = '';
         $underscorePos = strrpos($functionName, '_');
-        if ($underscorePos === false) {
+        if (false === $underscorePos) {
             $camelCapsPart = $functionName;
         } else {
-            $packagePart   = substr($functionName, 0, $underscorePos);
+            $packagePart = substr($functionName, 0, $underscorePos);
             $camelCapsPart = substr($functionName, ($underscorePos + 1));
 
             // We don't care about _'s on the front.
@@ -219,8 +213,8 @@ class ValidFunctionNameSniff extends AbstractScopeSniff
         }
 
         // If it has a package part, make sure the first letter is a capital.
-        if ($packagePart !== '') {
-            if ($functionName[0] === '_') {
+        if ('' !== $packagePart) {
+            if ('_' === $functionName[0]) {
                 $error = 'Function name "%s" is invalid; only private methods should be prefixed with an underscore';
                 $phpcsFile->addError($error, $stackPtr, 'FunctionUnderscore', $errorData);
             }
@@ -232,23 +226,24 @@ class ValidFunctionNameSniff extends AbstractScopeSniff
         }
 
         // If it doesn't have a camel caps part, it's not valid.
-        if (trim($camelCapsPart) === '') {
+        if ('' === trim($camelCapsPart)) {
             $error = 'Function name "%s" is not valid; name appears incomplete';
             $phpcsFile->addError($error, $stackPtr, 'FunctionInvalid', $errorData);
+
             return;
         }
 
-        $validName        = true;
-        $newPackagePart   = $packagePart;
+        $validName = true;
+        $newPackagePart = $packagePart;
         $newCamelCapsPart = $camelCapsPart;
 
         // Every function must have a camel caps part, so check that first.
-        if (Common::isCamelCaps($camelCapsPart, false, true, false) === false) {
-            $validName        = false;
-            $newCamelCapsPart = strtolower($camelCapsPart[0]).substr($camelCapsPart, 1);
+        if (false === Common::isCamelCaps($camelCapsPart, false, true, false)) {
+            $validName = false;
+            $newCamelCapsPart = strtolower($camelCapsPart[0]) . substr($camelCapsPart, 1);
         }
 
-        if ($packagePart !== '') {
+        if ('' !== $packagePart) {
             // Check that each new word starts with a capital.
             $nameBits = explode('_', $packagePart);
             $nameBits = array_filter($nameBits);
@@ -256,29 +251,29 @@ class ValidFunctionNameSniff extends AbstractScopeSniff
                 if ($bit[0] !== strtoupper($bit[0])) {
                     $newPackagePart = '';
                     foreach ($nameBits as $bit) {
-                        $newPackagePart .= strtoupper($bit[0]).substr($bit, 1).'_';
+                        $newPackagePart .= strtoupper($bit[0]) . substr($bit, 1) . '_';
                     }
 
                     $validName = false;
+
                     break;
                 }
             }
         }
 
-        if ($validName === false) {
-            if ($newPackagePart === '') {
+        if (false === $validName) {
+            if ('' === $newPackagePart) {
                 $newName = $newCamelCapsPart;
             } else {
-                $newName = rtrim($newPackagePart, '_').'_'.$newCamelCapsPart;
+                $newName = rtrim($newPackagePart, '_') . '_' . $newCamelCapsPart;
             }
 
-            $error  = 'Function name "%s" is invalid; consider "%s" instead';
-            $data   = $errorData;
+            $error = 'Function name "%s" is invalid; consider "%s" instead';
+            $data = $errorData;
             $data[] = $newName;
             $phpcsFile->addError($error, $stackPtr, 'FunctionNameInvalid', $data);
         }
+    }
 
-    }//end processTokenOutsideScope()
-
-
+    //end processTokenOutsideScope()
 }//end class

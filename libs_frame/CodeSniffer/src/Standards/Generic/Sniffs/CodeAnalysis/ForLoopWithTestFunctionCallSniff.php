@@ -32,8 +32,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class ForLoopWithTestFunctionCallSniff implements Sniff
 {
-
-
     /**
      * Registers the tokens that this sniff wants to listen for.
      *
@@ -42,9 +40,9 @@ class ForLoopWithTestFunctionCallSniff implements Sniff
     public function register()
     {
         return [T_FOR];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -52,35 +50,35 @@ class ForLoopWithTestFunctionCallSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
+        $token = $tokens[$stackPtr];
 
         // Skip invalid statement.
-        if (isset($token['parenthesis_opener']) === false) {
+        if (false === isset($token['parenthesis_opener'])) {
             return;
         }
 
         $next = ++$token['parenthesis_opener'];
-        $end  = --$token['parenthesis_closer'];
+        $end = --$token['parenthesis_closer'];
 
         $position = 0;
 
         for (; $next <= $end; ++$next) {
             $code = $tokens[$next]['code'];
-            if ($code === T_SEMICOLON) {
+            if (T_SEMICOLON === $code) {
                 ++$position;
             }
 
             if ($position < 1) {
                 continue;
-            } else if ($position > 1) {
+            }
+            if ($position > 1) {
                 break;
-            } else if ($code !== T_VARIABLE && $code !== T_STRING) {
+            }
+            if (T_VARIABLE !== $code && T_STRING !== $code) {
                 continue;
             }
 
@@ -88,14 +86,14 @@ class ForLoopWithTestFunctionCallSniff implements Sniff
             // function call.
             $index = $phpcsFile->findNext(Tokens::$emptyTokens, ($next + 1), null, true);
 
-            if ($tokens[$index]['code'] === T_OPEN_PARENTHESIS) {
+            if (T_OPEN_PARENTHESIS === $tokens[$index]['code']) {
                 $error = 'Avoid function calls in a FOR loop test part';
                 $phpcsFile->addWarning($error, $stackPtr, 'NotAllowed');
+
                 break;
             }
         }//end for
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ElseIfDeclarationSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -27,9 +25,9 @@ class ElseIfDeclarationSniff implements Sniff
             T_ELSE,
             T_ELSEIF,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -37,36 +35,34 @@ class ElseIfDeclarationSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        if ($tokens[$stackPtr]['code'] === T_ELSEIF) {
+        if (T_ELSEIF === $tokens[$stackPtr]['code']) {
             $phpcsFile->recordMetric($stackPtr, 'Use of ELSE IF or ELSEIF', 'elseif');
+
             return;
         }
 
         $next = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-        if ($tokens[$next]['code'] === T_IF) {
+        if (T_IF === $tokens[$next]['code']) {
             $phpcsFile->recordMetric($stackPtr, 'Use of ELSE IF or ELSEIF', 'else if');
             $error = 'Usage of ELSE IF is discouraged; use ELSEIF instead';
-            $fix   = $phpcsFile->addFixableWarning($error, $stackPtr, 'NotAllowed');
+            $fix = $phpcsFile->addFixableWarning($error, $stackPtr, 'NotAllowed');
 
-            if ($fix === true) {
+            if (true === $fix) {
                 $phpcsFile->fixer->beginChangeset();
                 $phpcsFile->fixer->replaceToken($stackPtr, 'elseif');
-                for ($i = ($stackPtr + 1); $i <= $next; $i++) {
+                for ($i = ($stackPtr + 1); $i <= $next; ++$i) {
                     $phpcsFile->fixer->replaceToken($i, '');
                 }
 
                 $phpcsFile->fixer->endChangeset();
             }
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Squiz\Tests\WhiteSpace;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class MemberVarSpacingUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class MemberVarSpacingUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -26,15 +28,15 @@ class MemberVarSpacingUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
-            4   => 1,
-            7   => 1,
-            20  => 1,
-            30  => 1,
-            35  => 1,
-            44  => 1,
-            50  => 1,
-            73  => 1,
-            86  => 1,
+            4 => 1,
+            7 => 1,
+            20 => 1,
+            30 => 1,
+            35 => 1,
+            44 => 1,
+            50 => 1,
+            73 => 1,
+            86 => 1,
             106 => 1,
             115 => 1,
             150 => 1,
@@ -58,9 +60,9 @@ class MemberVarSpacingUnitTest extends AbstractSniffUnitTest
             292 => 1,
             333 => 1,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -73,8 +75,7 @@ class MemberVarSpacingUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class

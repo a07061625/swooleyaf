@@ -15,14 +15,12 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class FunctionCallSignatureSniff extends PEARFunctionCallSignatureSniff
 {
-
     /**
      * If TRUE, multiple arguments can be defined per line in a multi-line call.
      *
-     * @var boolean
+     * @var bool
      */
     public $allowMultipleArguments = false;
-
 
     /**
      * Processes single-line calls.
@@ -34,8 +32,6 @@ class FunctionCallSignatureSniff extends PEARFunctionCallSignatureSniff
      *                                                 in the stack passed in $tokens.
      * @param array                       $tokens      The stack of tokens that make up
      *                                                 the file.
-     *
-     * @return void
      */
     public function isMultiLineCall(File $phpcsFile, $stackPtr, $openBracket, $tokens)
     {
@@ -49,11 +45,11 @@ class FunctionCallSignatureSniff extends PEARFunctionCallSignatureSniff
         $closeBracket = $tokens[$openBracket]['parenthesis_closer'];
 
         $end = $phpcsFile->findEndOfStatement($openBracket + 1);
-        while ($tokens[$end]['code'] === T_COMMA) {
+        while (T_COMMA === $tokens[$end]['code']) {
             // If the next bit of code is not on the same line, this is a
             // multi-line function call.
             $next = $phpcsFile->findNext(Tokens::$emptyTokens, ($end + 1), $closeBracket, true);
-            if ($next === false) {
+            if (false === $next) {
                 return false;
             }
 
@@ -67,13 +63,12 @@ class FunctionCallSignatureSniff extends PEARFunctionCallSignatureSniff
         // We've reached the last argument, so see if the next content
         // (should be the close bracket) is also on the same line.
         $next = $phpcsFile->findNext(Tokens::$emptyTokens, ($end + 1), $closeBracket, true);
-        if ($next !== false && $tokens[$next]['line'] !== $tokens[$end]['line']) {
+        if (false !== $next && $tokens[$next]['line'] !== $tokens[$end]['line']) {
             return true;
         }
 
         return false;
+    }
 
-    }//end isMultiLineCall()
-
-
+    //end isMultiLineCall()
 }//end class

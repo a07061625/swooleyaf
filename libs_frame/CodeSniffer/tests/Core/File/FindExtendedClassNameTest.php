@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Tests\Core\File;
 
 use PHP_CodeSniffer\Tests\Core\AbstractMethodUnitTest;
 
-class FindExtendedClassNameTest extends AbstractMethodUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class FindExtendedClassNameTest extends AbstractMethodUnitTest
 {
-
-
     /**
      * Test retrieving the name of the class being extended by another class
      * (or interface).
@@ -23,17 +25,15 @@ class FindExtendedClassNameTest extends AbstractMethodUnitTest
      * @param bool   $expected   Expected function output.
      *
      * @dataProvider dataExtendedClass
-     *
-     * @return void
      */
     public function testFindExtendedClassName($identifier, $expected)
     {
         $OOToken = $this->getTargetToken($identifier, [T_CLASS, T_ANON_CLASS, T_INTERFACE]);
-        $result  = self::$phpcsFile->findExtendedClassName($OOToken);
-        $this->assertSame($expected, $result);
+        $result = self::$phpcsFile->findExtendedClassName($OOToken);
+        static::assertSame($expected, $result);
+    }
 
-    }//end testFindExtendedClassName()
-
+    //end testFindExtendedClassName()
 
     /**
      * Data provider for the FindExtendedClassName test.
@@ -86,8 +86,7 @@ class FindExtendedClassNameTest extends AbstractMethodUnitTest
                 'testFECNClass',
             ],
         ];
+    }
 
-    }//end dataExtendedClass()
-
-
+    //end dataExtendedClass()
 }//end class

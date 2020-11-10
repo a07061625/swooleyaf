@@ -14,8 +14,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ClassDeclarationSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -28,30 +26,28 @@ class ClassDeclarationSniff implements Sniff
             T_INTERFACE,
             T_TRAIT,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
      *
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
-     * @param integer                     $stackPtr  The position of the current token in
+     * @param int                         $stackPtr  The position of the current token in
      *                                               the token stack.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        if (isset($tokens[$stackPtr]['scope_closer']) === false) {
+        if (false === isset($tokens[$stackPtr]['scope_closer'])) {
             return;
         }
 
         $errorData = [strtolower($tokens[$stackPtr]['content'])];
 
         $nextClass = $phpcsFile->findNext([T_CLASS, T_INTERFACE, T_TRAIT], ($tokens[$stackPtr]['scope_closer'] + 1));
-        if ($nextClass !== false) {
+        if (false !== $nextClass) {
             $error = 'Each %s must be in a file by itself';
             $phpcsFile->addError($error, $nextClass, 'MultipleClasses', $errorData);
             $phpcsFile->recordMetric($stackPtr, 'One class per file', 'no');
@@ -60,15 +56,14 @@ class ClassDeclarationSniff implements Sniff
         }
 
         $namespace = $phpcsFile->findNext([T_NAMESPACE, T_CLASS, T_INTERFACE, T_TRAIT], 0);
-        if ($tokens[$namespace]['code'] !== T_NAMESPACE) {
+        if (T_NAMESPACE !== $tokens[$namespace]['code']) {
             $error = 'Each %s must be in a namespace of at least one level (a top-level vendor name)';
             $phpcsFile->addError($error, $stackPtr, 'MissingNamespace', $errorData);
             $phpcsFile->recordMetric($stackPtr, 'Class defined in namespace', 'no');
         } else {
             $phpcsFile->recordMetric($stackPtr, 'Class defined in namespace', 'yes');
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

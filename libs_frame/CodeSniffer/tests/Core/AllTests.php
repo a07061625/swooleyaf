@@ -11,24 +11,20 @@
 namespace PHP_CodeSniffer\Tests\Core;
 
 use PHP_CodeSniffer\Tests\FileList;
-use PHPUnit\TextUI\TestRunner;
 use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
 
 class AllTests
 {
-
-
     /**
      * Prepare the test runner.
-     *
-     * @return void
      */
     public static function main()
     {
         TestRunner::run(self::suite());
+    }
 
-    }//end main()
-
+    //end main()
 
     /**
      * Add all core unit tests into a test suite.
@@ -41,7 +37,7 @@ class AllTests
 
         $testFileIterator = new FileList(__DIR__, '', '`Test\.php$`Di');
         foreach ($testFileIterator->fileIterator as $file) {
-            if (strpos($file, 'AbstractMethodUnitTest.php') !== false) {
+            if (false !== strpos($file, 'AbstractMethodUnitTest.php')) {
                 continue;
             }
 
@@ -50,14 +46,13 @@ class AllTests
             $class = str_replace(__DIR__, '', $file);
             $class = str_replace('.php', '', $class);
             $class = str_replace('/', '\\', $class);
-            $class = 'PHP_CodeSniffer\Tests\Core'.$class;
+            $class = 'PHP_CodeSniffer\Tests\Core' . $class;
 
             $suite->addTestSuite($class);
         }
 
         return $suite;
+    }
 
-    }//end suite()
-
-
+    //end suite()
 }//end class

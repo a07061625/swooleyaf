@@ -10,13 +10,12 @@
 namespace PHP_CodeSniffer\Tests\Core;
 
 use PHP_CodeSniffer\Config;
-use PHP_CodeSniffer\Ruleset;
 use PHP_CodeSniffer\Files\DummyFile;
+use PHP_CodeSniffer\Ruleset;
 use PHPUnit\Framework\TestCase;
 
 abstract class AbstractMethodUnitTest extends TestCase
 {
-
     /**
      * The file extension of the test case file (without leading dot).
      *
@@ -34,48 +33,43 @@ abstract class AbstractMethodUnitTest extends TestCase
      */
     protected static $phpcsFile;
 
-
     /**
      * Initialize & tokenize \PHP_CodeSniffer\Files\File with code from the test case file.
      *
      * The test case file for a unit test class has to be in the same directory
      * directory and use the same file name as the test class, using the .inc extension.
-     *
-     * @return void
      */
     public static function setUpBeforeClass()
     {
-        $config            = new Config();
+        $config = new Config();
         $config->standards = ['PSR1'];
 
         $ruleset = new Ruleset($config);
 
         // Default to a file with the same name as the test class. Extension is property based.
-        $relativeCN     = str_replace(__NAMESPACE__, '', get_called_class());
-        $relativePath   = str_replace('\\', DIRECTORY_SEPARATOR, $relativeCN);
-        $pathToTestFile = realpath(__DIR__).$relativePath.'.'.static::$fileExtension;
+        $relativeCN = str_replace(__NAMESPACE__, '', static::class);
+        $relativePath = str_replace('\\', \DIRECTORY_SEPARATOR, $relativeCN);
+        $pathToTestFile = realpath(__DIR__) . $relativePath . '.' . static::$fileExtension;
 
         // Make sure the file gets parsed correctly based on the file type.
-        $contents  = 'phpcs_input_file: '.$pathToTestFile.PHP_EOL;
+        $contents = 'phpcs_input_file: ' . $pathToTestFile . PHP_EOL;
         $contents .= file_get_contents($pathToTestFile);
 
         self::$phpcsFile = new DummyFile($contents, $ruleset, $config);
         self::$phpcsFile->process();
+    }
 
-    }//end setUpBeforeClass()
-
+    //end setUpBeforeClass()
 
     /**
      * Clean up after finished test.
-     *
-     * @return void
      */
     public static function tearDownAfterClass()
     {
         self::$phpcsFile = null;
+    }
 
-    }//end tearDownAfterClass()
-
+    //end tearDownAfterClass()
 
     /**
      * Get the token pointer for a target token based on a specific comment found on the line before.
@@ -84,14 +78,14 @@ abstract class AbstractMethodUnitTest extends TestCase
      * distinguish between comments used *in* a test and test delimiters.
      *
      * @param string           $commentString The delimiter comment to look for.
-     * @param int|string|array $tokenType     The type of token(s) to look for.
+     * @param array|int|string $tokenType     The type of token(s) to look for.
      * @param string           $tokenContent  Optional. The token content for the target token.
      *
      * @return int
      */
-    public function getTargetToken($commentString, $tokenType, $tokenContent=null)
+    public function getTargetToken($commentString, $tokenType, $tokenContent = null)
     {
-        $start   = (self::$phpcsFile->numTokens - 1);
+        $start = (self::$phpcsFile->numTokens - 1);
         $comment = self::$phpcsFile->findPrevious(
             T_COMMENT,
             $start,
@@ -101,16 +95,17 @@ abstract class AbstractMethodUnitTest extends TestCase
         );
 
         $tokens = self::$phpcsFile->getTokens();
-        $end    = ($start + 1);
+        $end = ($start + 1);
 
         // Limit the token finding to between this and the next delimiter comment.
-        for ($i = ($comment + 1); $i < $end; $i++) {
-            if ($tokens[$i]['code'] !== T_COMMENT) {
+        for ($i = ($comment + 1); $i < $end; ++$i) {
+            if (T_COMMENT !== $tokens[$i]['code']) {
                 continue;
             }
 
-            if (stripos($tokens[$i]['content'], '/* test') === 0) {
+            if (0 === stripos($tokens[$i]['content'], '/* test')) {
                 $end = $i;
+
                 break;
             }
         }
@@ -123,18 +118,17 @@ abstract class AbstractMethodUnitTest extends TestCase
             $tokenContent
         );
 
-        if ($target === false) {
-            $msg = 'Failed to find test target token for comment string: '.$commentString;
-            if ($tokenContent !== null) {
-                $msg .= ' With token content: '.$tokenContent;
+        if (false === $target) {
+            $msg = 'Failed to find test target token for comment string: ' . $commentString;
+            if (null !== $tokenContent) {
+                $msg .= ' With token content: ' . $tokenContent;
             }
 
-            $this->assertFalse(true, $msg);
+            static::assertFalse(true, $msg);
         }
 
         return $target;
+    }
 
-    }//end getTargetToken()
-
-
+    //end getTargetToken()
 }//end class

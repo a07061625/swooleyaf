@@ -13,9 +13,12 @@ use PHP_CodeSniffer\Config;
 use PHP_CodeSniffer\Ruleset;
 use PHPUnit\Framework\TestCase;
 
-class RuleInclusionTest extends TestCase
+/**
+ * @internal
+ * @coversNothing
+ */
+final class RuleInclusionTest extends TestCase
 {
-
     /**
      * The Ruleset object.
      *
@@ -37,87 +40,78 @@ class RuleInclusionTest extends TestCase
      */
     private static $contents = '';
 
-
-    /**
-     * Initialize the test.
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        if ($GLOBALS['PHP_CODESNIFFER_PEAR'] === true) {
-            // PEAR installs test and sniff files into different locations
-            // so these tests will not pass as they directly reference files
-            // by relative location.
-            $this->markTestSkipped('Test cannot run from a PEAR install');
-        }
-
-    }//end setUp()
-
-
     /**
      * Initialize the config and ruleset objects based on the `RuleInclusionTest.xml` ruleset file.
-     *
-     * @return void
      */
     public static function setUpBeforeClass()
     {
-        if ($GLOBALS['PHP_CODESNIFFER_PEAR'] === true) {
+        if (true === $GLOBALS['PHP_CODESNIFFER_PEAR']) {
             // This test will be skipped.
             return;
         }
 
-        $standard       = __DIR__.'/'.basename(__FILE__, '.php').'.xml';
+        $standard = __DIR__ . '/' . basename(__FILE__, '.php') . '.xml';
         self::$standard = $standard;
 
         // On-the-fly adjust the ruleset test file to be able to test
         // sniffs included with relative paths.
-        $contents       = file_get_contents($standard);
+        $contents = file_get_contents($standard);
         self::$contents = $contents;
 
-        $repoRootDir = basename(dirname(dirname(dirname(__DIR__))));
+        $repoRootDir = basename(\dirname(\dirname(\dirname(__DIR__))));
 
         $newPath = $repoRootDir;
-        if (DIRECTORY_SEPARATOR === '\\') {
+        if (\DIRECTORY_SEPARATOR === '\\') {
             $newPath = str_replace('\\', '/', $repoRootDir);
         }
 
         $adjusted = str_replace('%path_root_dir%', $newPath, $contents);
 
-        if (file_put_contents($standard, $adjusted) === false) {
-            self::markTestSkipped('On the fly ruleset adjustment failed');
+        if (false === file_put_contents($standard, $adjusted)) {
+            static::markTestSkipped('On the fly ruleset adjustment failed');
         }
 
-        $config        = new Config(["--standard=$standard"]);
+        $config = new Config(["--standard={$standard}"]);
         self::$ruleset = new Ruleset($config);
+    }
 
-    }//end setUpBeforeClass()
+    //end setUpBeforeClass()
 
+    /**
+     * Initialize the test.
+     */
+    protected function setUp()
+    {
+        if (true === $GLOBALS['PHP_CODESNIFFER_PEAR']) {
+            // PEAR installs test and sniff files into different locations
+            // so these tests will not pass as they directly reference files
+            // by relative location.
+            static::markTestSkipped('Test cannot run from a PEAR install');
+        }
+    }
+
+    //end setUp()
 
     /**
      * Reset ruleset file.
-     *
-     * @return void
      */
-    public function tearDown()
+    protected function tearDown()
     {
         file_put_contents(self::$standard, self::$contents);
+    }
 
-    }//end tearDown()
-
+    //end tearDown()
 
     /**
      * Test that sniffs are registered.
-     *
-     * @return void
      */
     public function testHasSniffCodes()
     {
-        $this->assertObjectHasAttribute('sniffCodes', self::$ruleset);
-        $this->assertCount(14, self::$ruleset->sniffCodes);
+        static::assertObjectHasAttribute('sniffCodes', self::$ruleset);
+        static::assertCount(14, self::$ruleset->sniffCodes);
+    }
 
-    }//end testHasSniffCodes()
-
+    //end testHasSniffCodes()
 
     /**
      * Test that sniffs are correctly registered, independently on the syntax used to include the sniff.
@@ -126,16 +120,14 @@ class RuleInclusionTest extends TestCase
      * @param string $value Expected array value.
      *
      * @dataProvider dataRegisteredSniffCodes
-     *
-     * @return void
      */
     public function testRegisteredSniffCodes($key, $value)
     {
-        $this->assertArrayHasKey($key, self::$ruleset->sniffCodes);
-        $this->assertSame($value, self::$ruleset->sniffCodes[$key]);
+        static::assertArrayHasKey($key, self::$ruleset->sniffCodes);
+        static::assertSame($value, self::$ruleset->sniffCodes[$key]);
+    }
 
-    }//end testRegisteredSniffCodes()
-
+    //end testRegisteredSniffCodes()
 
     /**
      * Data provider.
@@ -204,9 +196,9 @@ class RuleInclusionTest extends TestCase
                 'PHP_CodeSniffer\Standards\Generic\Sniffs\Metrics\NestingLevelSniff',
             ],
         ];
+    }
 
-    }//end dataRegisteredSniffCodes()
-
+    //end dataRegisteredSniffCodes()
 
     /**
      * Test that setting properties for standards, categories, sniffs works for all supported rule
@@ -217,20 +209,18 @@ class RuleInclusionTest extends TestCase
      * @param mixed  $expectedValue The value expected for the property.
      *
      * @dataProvider dataSettingProperties
-     *
-     * @return void
      */
     public function testSettingProperties($sniffClass, $propertyName, $expectedValue)
     {
-        $this->assertObjectHasAttribute('sniffs', self::$ruleset);
-        $this->assertArrayHasKey($sniffClass, self::$ruleset->sniffs);
-        $this->assertObjectHasAttribute($propertyName, self::$ruleset->sniffs[$sniffClass]);
+        static::assertObjectHasAttribute('sniffs', self::$ruleset);
+        static::assertArrayHasKey($sniffClass, self::$ruleset->sniffs);
+        static::assertObjectHasAttribute($propertyName, self::$ruleset->sniffs[$sniffClass]);
 
-        $actualValue = self::$ruleset->sniffs[$sniffClass]->$propertyName;
-        $this->assertSame($expectedValue, $actualValue);
+        $actualValue = self::$ruleset->sniffs[$sniffClass]->{$propertyName};
+        static::assertSame($expectedValue, $actualValue);
+    }
 
-    }//end testSettingProperties()
-
+    //end testSettingProperties()
 
     /**
      * Data provider.
@@ -242,37 +232,37 @@ class RuleInclusionTest extends TestCase
     public function dataSettingProperties()
     {
         return [
-            'ClassDeclarationSniff'                           => [
+            'ClassDeclarationSniff' => [
                 'PHP_CodeSniffer\Standards\PSR1\Sniffs\Classes\ClassDeclarationSniff',
                 'setforallsniffs',
                 true,
             ],
-            'SideEffectsSniff'                                => [
+            'SideEffectsSniff' => [
                 'PHP_CodeSniffer\Standards\PSR1\Sniffs\Files\SideEffectsSniff',
                 'setforallsniffs',
                 true,
             ],
-            'ValidVariableNameSniff'                          => [
+            'ValidVariableNameSniff' => [
                 'PHP_CodeSniffer\Standards\Zend\Sniffs\NamingConventions\ValidVariableNameSniff',
                 'setforallincategory',
                 true,
             ],
-            'ArrayIndentSniff'                                => [
+            'ArrayIndentSniff' => [
                 'PHP_CodeSniffer\Standards\Generic\Sniffs\Arrays\ArrayIndentSniff',
                 'indent',
                 '2',
             ],
-            'LineLengthSniff'                                 => [
+            'LineLengthSniff' => [
                 'PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff',
                 'lineLimit',
                 '10',
             ],
-            'CamelCapsFunctionNameSniff'                      => [
+            'CamelCapsFunctionNameSniff' => [
                 'PHP_CodeSniffer\Standards\Generic\Sniffs\NamingConventions\CamelCapsFunctionNameSniff',
                 'strict',
                 false,
             ],
-            'NestingLevelSniff-nestingLevel'                  => [
+            'NestingLevelSniff-nestingLevel' => [
                 'PHP_CodeSniffer\Standards\Generic\Sniffs\Metrics\NestingLevelSniff',
                 'nestingLevel',
                 '2',
@@ -284,14 +274,13 @@ class RuleInclusionTest extends TestCase
             ],
 
             // Testing that setting a property at error code level does *not* work.
-            'CyclomaticComplexitySniff'                       => [
+            'CyclomaticComplexitySniff' => [
                 'PHP_CodeSniffer\Standards\Generic\Sniffs\Metrics\CyclomaticComplexitySniff',
                 'complexity',
                 10,
             ],
         ];
+    }
 
-    }//end dataSettingProperties()
-
-
+    //end dataSettingProperties()
 }//end class

@@ -15,7 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class IncrementDecrementSpacingSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
@@ -25,7 +24,6 @@ class IncrementDecrementSpacingSniff implements Sniff
         'PHP',
         'JS',
     ];
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -38,9 +36,9 @@ class IncrementDecrementSpacingSniff implements Sniff
             T_DEC,
             T_INC,
         ];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -48,35 +46,34 @@ class IncrementDecrementSpacingSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
         $tokenName = 'increment';
-        if ($tokens[$stackPtr]['code'] === T_DEC) {
+        if (T_DEC === $tokens[$stackPtr]['code']) {
             $tokenName = 'decrement';
         }
 
         // Is this a pre-increment/decrement ?
         $nextNonEmpty = $phpcsFile->findNext(Tokens::$emptyTokens, ($stackPtr + 1), null, true);
-        if ($nextNonEmpty !== false
-            && (($phpcsFile->tokenizerType === 'PHP' && $tokens[$nextNonEmpty]['code'] === T_VARIABLE)
-            || ($phpcsFile->tokenizerType === 'JS' && $tokens[$nextNonEmpty]['code'] === T_STRING))
+        if (false !== $nextNonEmpty
+            && (('PHP' === $phpcsFile->tokenizerType && T_VARIABLE === $tokens[$nextNonEmpty]['code'])
+            || ('JS' === $phpcsFile->tokenizerType && T_STRING === $tokens[$nextNonEmpty]['code']))
         ) {
             if ($nextNonEmpty === ($stackPtr + 1)) {
                 $phpcsFile->recordMetric($stackPtr, 'Spacing between in/decrementor and variable', 0);
+
                 return;
             }
 
-            $spaces            = 0;
-            $fixable           = true;
+            $spaces = 0;
+            $fixable = true;
             $nextNonWhitespace = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
             if ($nextNonWhitespace !== $nextNonEmpty) {
                 $fixable = false;
-                $spaces  = 'comment';
+                $spaces = 'comment';
             } else {
                 if ($tokens[$stackPtr]['line'] !== $tokens[$nextNonEmpty]['line']) {
                     $spaces = 'newline';
@@ -87,23 +84,24 @@ class IncrementDecrementSpacingSniff implements Sniff
 
             $phpcsFile->recordMetric($stackPtr, 'Spacing between in/decrementor and variable', $spaces);
 
-            $error     = 'Expected no spaces between the %s operator and %s; %s found';
-            $errorCode = 'SpaceAfter'.ucfirst($tokenName);
-            $data      = [
+            $error = 'Expected no spaces between the %s operator and %s; %s found';
+            $errorCode = 'SpaceAfter' . ucfirst($tokenName);
+            $data = [
                 $tokenName,
                 $tokens[$nextNonEmpty]['content'],
                 $spaces,
             ];
 
-            if ($fixable === false) {
+            if (false === $fixable) {
                 $phpcsFile->addError($error, $stackPtr, $errorCode, $data);
+
                 return;
             }
 
             $fix = $phpcsFile->addFixableError($error, $stackPtr, $errorCode, $data);
-            if ($fix === true) {
+            if (true === $fix) {
                 $phpcsFile->fixer->beginChangeset();
-                for ($i = ($stackPtr + 1); $i < $nextNonEmpty; $i++) {
+                for ($i = ($stackPtr + 1); $i < $nextNonEmpty; ++$i) {
                     $phpcsFile->fixer->replaceToken($i, '');
                 }
 
@@ -115,21 +113,22 @@ class IncrementDecrementSpacingSniff implements Sniff
 
         // Is this a post-increment/decrement ?
         $prevNonEmpty = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($stackPtr - 1), null, true);
-        if ($prevNonEmpty !== false
-            && (($phpcsFile->tokenizerType === 'PHP' && $tokens[$prevNonEmpty]['code'] === T_VARIABLE)
-            || ($phpcsFile->tokenizerType === 'JS' && $tokens[$prevNonEmpty]['code'] === T_STRING))
+        if (false !== $prevNonEmpty
+            && (('PHP' === $phpcsFile->tokenizerType && T_VARIABLE === $tokens[$prevNonEmpty]['code'])
+            || ('JS' === $phpcsFile->tokenizerType && T_STRING === $tokens[$prevNonEmpty]['code']))
         ) {
             if ($prevNonEmpty === ($stackPtr - 1)) {
                 $phpcsFile->recordMetric($stackPtr, 'Spacing between in/decrementor and variable', 0);
+
                 return;
             }
 
-            $spaces            = 0;
-            $fixable           = true;
+            $spaces = 0;
+            $fixable = true;
             $prevNonWhitespace = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
             if ($prevNonWhitespace !== $prevNonEmpty) {
                 $fixable = false;
-                $spaces  = 'comment';
+                $spaces = 'comment';
             } else {
                 if ($tokens[$stackPtr]['line'] !== $tokens[$nextNonEmpty]['line']) {
                     $spaces = 'newline';
@@ -140,31 +139,31 @@ class IncrementDecrementSpacingSniff implements Sniff
 
             $phpcsFile->recordMetric($stackPtr, 'Spacing between in/decrementor and variable', $spaces);
 
-            $error     = 'Expected no spaces between %s and the %s operator; %s found';
-            $errorCode = 'SpaceAfter'.ucfirst($tokenName);
-            $data      = [
+            $error = 'Expected no spaces between %s and the %s operator; %s found';
+            $errorCode = 'SpaceAfter' . ucfirst($tokenName);
+            $data = [
                 $tokens[$prevNonEmpty]['content'],
                 $tokenName,
                 $spaces,
             ];
 
-            if ($fixable === false) {
+            if (false === $fixable) {
                 $phpcsFile->addError($error, $stackPtr, $errorCode, $data);
+
                 return;
             }
 
             $fix = $phpcsFile->addFixableError($error, $stackPtr, $errorCode, $data);
-            if ($fix === true) {
+            if (true === $fix) {
                 $phpcsFile->fixer->beginChangeset();
-                for ($i = ($stackPtr - 1); $prevNonEmpty < $i; $i--) {
+                for ($i = ($stackPtr - 1); $prevNonEmpty < $i; --$i) {
                     $phpcsFile->fixer->replaceToken($i, '');
                 }
 
                 $phpcsFile->fixer->endChangeset();
             }
         }//end if
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

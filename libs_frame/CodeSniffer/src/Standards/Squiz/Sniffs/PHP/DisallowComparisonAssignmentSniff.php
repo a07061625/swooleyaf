@@ -15,8 +15,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class DisallowComparisonAssignmentSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -25,9 +23,9 @@ class DisallowComparisonAssignmentSniff implements Sniff
     public function register()
     {
         return [T_EQUAL];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -35,8 +33,6 @@ class DisallowComparisonAssignmentSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
@@ -44,7 +40,7 @@ class DisallowComparisonAssignmentSniff implements Sniff
 
         // Ignore default value assignments in function definitions.
         $function = $phpcsFile->findPrevious(T_FUNCTION, ($stackPtr - 1), null, false, null, true);
-        if ($function !== false) {
+        if (false !== $function) {
             $opener = $tokens[$function]['parenthesis_opener'];
             $closer = $tokens[$function]['parenthesis_closer'];
             if ($opener < $stackPtr && $closer > $stackPtr) {
@@ -62,7 +58,7 @@ class DisallowComparisonAssignmentSniff implements Sniff
             true
         );
 
-        if ($array !== false) {
+        if (false !== $array) {
             return;
         }
 
@@ -76,8 +72,8 @@ class DisallowComparisonAssignmentSniff implements Sniff
         ];
 
         $next = $phpcsFile->findNext($ignore, ($stackPtr + 1), null, true);
-        if ($tokens[$next]['code'] === T_OPEN_PARENTHESIS
-            && $tokens[($next - 1)]['code'] === T_STRING
+        if (T_OPEN_PARENTHESIS === $tokens[$next]['code']
+            && T_STRING === $tokens[($next - 1)]['code']
         ) {
             // Code will look like: $var = myFunction(
             // and will be ignored.
@@ -85,26 +81,27 @@ class DisallowComparisonAssignmentSniff implements Sniff
         }
 
         $endStatement = $phpcsFile->findEndOfStatement($stackPtr);
-        for ($i = ($stackPtr + 1); $i < $endStatement; $i++) {
-            if ((isset(Tokens::$comparisonTokens[$tokens[$i]['code']]) === true
-                && $tokens[$i]['code'] !== T_COALESCE)
-                || $tokens[$i]['code'] === T_INLINE_THEN
+        for ($i = ($stackPtr + 1); $i < $endStatement; ++$i) {
+            if ((true === isset(Tokens::$comparisonTokens[$tokens[$i]['code']])
+                && T_COALESCE !== $tokens[$i]['code'])
+                || T_INLINE_THEN === $tokens[$i]['code']
             ) {
                 $error = 'The value of a comparison must not be assigned to a variable';
                 $phpcsFile->addError($error, $stackPtr, 'AssignedComparison');
+
                 break;
             }
 
-            if (isset(Tokens::$booleanOperators[$tokens[$i]['code']]) === true
-                || $tokens[$i]['code'] === T_BOOLEAN_NOT
+            if (true === isset(Tokens::$booleanOperators[$tokens[$i]['code']])
+                || T_BOOLEAN_NOT === $tokens[$i]['code']
             ) {
                 $error = 'The value of a boolean operation must not be assigned to a variable';
                 $phpcsFile->addError($error, $stackPtr, 'AssignedBool');
+
                 break;
             }
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

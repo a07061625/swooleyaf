@@ -15,14 +15,12 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class EmptyStyleDefinitionSniff implements Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
      * @var array
      */
     public $supportedTokenizers = ['CSS'];
-
 
     /**
      * Returns the token types that this sniff is interested in.
@@ -32,9 +30,9 @@ class EmptyStyleDefinitionSniff implements Sniff
     public function register()
     {
         return [T_STYLE];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes the tokens that this sniff is interested in.
@@ -42,23 +40,20 @@ class EmptyStyleDefinitionSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where the token was found.
      * @param int                         $stackPtr  The position in the stack where
      *                                               the token was found.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        $ignore   = Tokens::$emptyTokens;
+        $ignore = Tokens::$emptyTokens;
         $ignore[] = T_COLON;
 
         $next = $phpcsFile->findNext($ignore, ($stackPtr + 1), null, true);
-        if ($next === false || $tokens[$next]['code'] === T_SEMICOLON || $tokens[$next]['line'] !== $tokens[$stackPtr]['line']) {
+        if (false === $next || T_SEMICOLON === $tokens[$next]['code'] || $tokens[$next]['line'] !== $tokens[$stackPtr]['line']) {
             $error = 'Style definition is empty';
             $phpcsFile->addError($error, $stackPtr, 'Found');
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

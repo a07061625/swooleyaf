@@ -11,9 +11,12 @@ namespace PHP_CodeSniffer\Tests\Core\Sniffs;
 
 use PHP_CodeSniffer\Tests\Core\AbstractMethodUnitTest;
 
-class AbstractArraySniffTest extends AbstractMethodUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class AbstractArraySniffTest extends AbstractMethodUnitTest
 {
-
     /**
      * The sniff objects we are testing.
      *
@@ -24,27 +27,22 @@ class AbstractArraySniffTest extends AbstractMethodUnitTest
      */
     protected static $sniff;
 
-
     /**
      * Initialize & tokenize \PHP_CodeSniffer\Files\File with code from the test case file.
      *
      * The test case file for a unit test class has to be in the same directory
      * directory and use the same file name as the test class, using the .inc extension.
-     *
-     * @return void
      */
     public static function setUpBeforeClass()
     {
         self::$sniff = new AbstractArraySniffTestable();
         parent::setUpBeforeClass();
+    }
 
-    }//end setUpBeforeClass()
-
+    //end setUpBeforeClass()
 
     /**
      * Test an array of simple values only.
-     *
-     * @return void
      */
     public function testSimpleValues()
     {
@@ -57,15 +55,13 @@ class AbstractArraySniffTest extends AbstractMethodUnitTest
             2 => ['value_start' => ($token + 5)],
         ];
 
-        $this->assertSame($expected, self::$sniff->indicies);
+        static::assertSame($expected, self::$sniff->indicies);
+    }
 
-    }//end testSimpleValues()
-
+    //end testSimpleValues()
 
     /**
      * Test an array of simple keys and values.
-     *
-     * @return void
      */
     public function testSimpleKeyValues()
     {
@@ -75,33 +71,31 @@ class AbstractArraySniffTest extends AbstractMethodUnitTest
         $expected = [
             0 => [
                 'index_start' => ($token + 1),
-                'index_end'   => ($token + 1),
-                'arrow'       => ($token + 2),
+                'index_end' => ($token + 1),
+                'arrow' => ($token + 2),
                 'value_start' => ($token + 3),
             ],
             1 => [
                 'index_start' => ($token + 5),
-                'index_end'   => ($token + 5),
-                'arrow'       => ($token + 6),
+                'index_end' => ($token + 5),
+                'arrow' => ($token + 6),
                 'value_start' => ($token + 7),
             ],
             2 => [
                 'index_start' => ($token + 9),
-                'index_end'   => ($token + 9),
-                'arrow'       => ($token + 10),
+                'index_end' => ($token + 9),
+                'arrow' => ($token + 10),
                 'value_start' => ($token + 11),
             ],
         ];
 
-        $this->assertSame($expected, self::$sniff->indicies);
+        static::assertSame($expected, self::$sniff->indicies);
+    }
 
-    }//end testSimpleKeyValues()
-
+    //end testSimpleKeyValues()
 
     /**
      * Test an array of simple keys and values.
-     *
-     * @return void
      */
     public function testMissingKeys()
     {
@@ -111,8 +105,8 @@ class AbstractArraySniffTest extends AbstractMethodUnitTest
         $expected = [
             0 => [
                 'index_start' => ($token + 1),
-                'index_end'   => ($token + 1),
-                'arrow'       => ($token + 2),
+                'index_end' => ($token + 1),
+                'arrow' => ($token + 2),
                 'value_start' => ($token + 3),
             ],
             1 => [
@@ -120,21 +114,19 @@ class AbstractArraySniffTest extends AbstractMethodUnitTest
             ],
             2 => [
                 'index_start' => ($token + 7),
-                'index_end'   => ($token + 7),
-                'arrow'       => ($token + 8),
+                'index_end' => ($token + 7),
+                'arrow' => ($token + 8),
                 'value_start' => ($token + 9),
             ],
         ];
 
-        $this->assertSame($expected, self::$sniff->indicies);
+        static::assertSame($expected, self::$sniff->indicies);
+    }
 
-    }//end testMissingKeys()
-
+    //end testMissingKeys()
 
     /**
      * Test an array with keys that span multiple tokens.
-     *
-     * @return void
      */
     public function testMultiTokenKeys()
     {
@@ -144,27 +136,25 @@ class AbstractArraySniffTest extends AbstractMethodUnitTest
         $expected = [
             0 => [
                 'index_start' => ($token + 4),
-                'index_end'   => ($token + 8),
-                'arrow'       => ($token + 10),
+                'index_end' => ($token + 8),
+                'arrow' => ($token + 10),
                 'value_start' => ($token + 12),
             ],
             1 => [
                 'index_start' => ($token + 16),
-                'index_end'   => ($token + 20),
-                'arrow'       => ($token + 22),
+                'index_end' => ($token + 20),
+                'arrow' => ($token + 22),
                 'value_start' => ($token + 24),
             ],
         ];
 
-        $this->assertSame($expected, self::$sniff->indicies);
+        static::assertSame($expected, self::$sniff->indicies);
+    }
 
-    }//end testMultiTokenKeys()
-
+    //end testMultiTokenKeys()
 
     /**
      * Test an array of simple keys and values.
-     *
-     * @return void
      */
     public function testMissingKeysCoalesceTernary()
     {
@@ -174,8 +164,8 @@ class AbstractArraySniffTest extends AbstractMethodUnitTest
         $expected = [
             0 => [
                 'index_start' => ($token + 3),
-                'index_end'   => ($token + 3),
-                'arrow'       => ($token + 5),
+                'index_end' => ($token + 3),
+                'arrow' => ($token + 5),
                 'value_start' => ($token + 7),
             ],
             1 => [
@@ -186,15 +176,13 @@ class AbstractArraySniffTest extends AbstractMethodUnitTest
             ],
         ];
 
-        $this->assertSame($expected, self::$sniff->indicies);
+        static::assertSame($expected, self::$sniff->indicies);
+    }
 
-    }//end testMissingKeysCoalesceTernary()
-
+    //end testMissingKeysCoalesceTernary()
 
     /**
      * Test an array of ternary values.
-     *
-     * @return void
      */
     public function testTernaryValues()
     {
@@ -204,33 +192,31 @@ class AbstractArraySniffTest extends AbstractMethodUnitTest
         $expected = [
             0 => [
                 'index_start' => ($token + 3),
-                'index_end'   => ($token + 3),
-                'arrow'       => ($token + 5),
+                'index_end' => ($token + 3),
+                'arrow' => ($token + 5),
                 'value_start' => ($token + 7),
             ],
             1 => [
                 'index_start' => ($token + 32),
-                'index_end'   => ($token + 32),
-                'arrow'       => ($token + 34),
+                'index_end' => ($token + 32),
+                'arrow' => ($token + 34),
                 'value_start' => ($token + 36),
             ],
             2 => [
                 'index_start' => ($token + 72),
-                'index_end'   => ($token + 72),
-                'arrow'       => ($token + 74),
+                'index_end' => ($token + 72),
+                'arrow' => ($token + 74),
                 'value_start' => ($token + 76),
             ],
         ];
 
-        $this->assertSame($expected, self::$sniff->indicies);
+        static::assertSame($expected, self::$sniff->indicies);
+    }
 
-    }//end testTernaryValues()
-
+    //end testTernaryValues()
 
     /**
      * Test an array of heredocs.
-     *
-     * @return void
      */
     public function testHeredocValues()
     {
@@ -246,15 +232,13 @@ class AbstractArraySniffTest extends AbstractMethodUnitTest
             ],
         ];
 
-        $this->assertSame($expected, self::$sniff->indicies);
+        static::assertSame($expected, self::$sniff->indicies);
+    }
 
-    }//end testHeredocValues()
-
+    //end testHeredocValues()
 
     /**
      * Test an array of with an arrow function as a value.
-     *
-     * @return void
      */
     public function testArrowFunctionValue()
     {
@@ -264,27 +248,26 @@ class AbstractArraySniffTest extends AbstractMethodUnitTest
         $expected = [
             0 => [
                 'index_start' => ($token + 4),
-                'index_end'   => ($token + 4),
-                'arrow'       => ($token + 6),
+                'index_end' => ($token + 4),
+                'arrow' => ($token + 6),
                 'value_start' => ($token + 8),
             ],
             1 => [
                 'index_start' => ($token + 12),
-                'index_end'   => ($token + 12),
-                'arrow'       => ($token + 14),
+                'index_end' => ($token + 12),
+                'arrow' => ($token + 14),
                 'value_start' => ($token + 16),
             ],
             2 => [
                 'index_start' => ($token + 34),
-                'index_end'   => ($token + 34),
-                'arrow'       => ($token + 36),
+                'index_end' => ($token + 34),
+                'arrow' => ($token + 36),
                 'value_start' => ($token + 38),
             ],
         ];
 
-        $this->assertSame($expected, self::$sniff->indicies);
+        static::assertSame($expected, self::$sniff->indicies);
+    }
 
-    }//end testArrowFunctionValue()
-
-
+    //end testArrowFunctionValue()
 }//end class

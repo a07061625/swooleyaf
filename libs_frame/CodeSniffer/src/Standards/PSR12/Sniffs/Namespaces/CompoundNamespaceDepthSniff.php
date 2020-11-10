@@ -14,14 +14,12 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class CompoundNamespaceDepthSniff implements Sniff
 {
-
     /**
      * The max depth for compound namespaces.
      *
-     * @var integer
+     * @var int
      */
     public $maxDepth = 2;
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -31,9 +29,9 @@ class CompoundNamespaceDepthSniff implements Sniff
     public function register()
     {
         return [T_OPEN_USE_GROUP];
+    }
 
-    }//end register()
-
+    //end register()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -41,40 +39,38 @@ class CompoundNamespaceDepthSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
-        $this->maxDepth = (int) $this->maxDepth;
+        $this->maxDepth = (int)$this->maxDepth;
 
         $tokens = $phpcsFile->getTokens();
 
         $end = $phpcsFile->findNext(T_CLOSE_USE_GROUP, ($stackPtr + 1));
-        if ($end === false) {
+        if (false === $end) {
             return;
         }
 
         $depth = 1;
-        for ($i = ($stackPtr + 1); $i <= $end; $i++) {
-            if ($tokens[$i]['code'] === T_NS_SEPARATOR) {
-                $depth++;
+        for ($i = ($stackPtr + 1); $i <= $end; ++$i) {
+            if (T_NS_SEPARATOR === $tokens[$i]['code']) {
+                ++$depth;
+
                 continue;
             }
 
-            if ($i === $end || $tokens[$i]['code'] === T_COMMA) {
+            if ($i === $end || T_COMMA === $tokens[$i]['code']) {
                 // End of a namespace.
                 if ($depth > $this->maxDepth) {
                     $error = 'Compound namespaces cannot have a depth more than %s';
-                    $data  = [$this->maxDepth];
+                    $data = [$this->maxDepth];
                     $phpcsFile->addError($error, $i, 'TooDeep', $data);
                 }
 
                 $depth = 1;
             }
         }
+    }
 
-    }//end process()
-
-
+    //end process()
 }//end class

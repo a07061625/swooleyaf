@@ -11,10 +11,12 @@ namespace PHP_CodeSniffer\Standards\Squiz\Tests\Operators;
 
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class IncrementDecrementUsageUnitTest extends AbstractSniffUnitTest
+/**
+ * @internal
+ * @coversNothing
+ */
+final class IncrementDecrementUsageUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -26,8 +28,8 @@ class IncrementDecrementUsageUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
-            2  => 1,
-            6  => 1,
+            2 => 1,
+            6 => 1,
             12 => 1,
             16 => 1,
             25 => 1,
@@ -38,9 +40,9 @@ class IncrementDecrementUsageUnitTest extends AbstractSniffUnitTest
             41 => 1,
             42 => 1,
         ];
+    }
 
-    }//end getErrorList()
-
+    //end getErrorList()
 
     /**
      * Returns the lines where warnings should occur.
@@ -53,8 +55,7 @@ class IncrementDecrementUsageUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
+    }
 
-    }//end getWarningList()
-
-
+    //end getWarningList()
 }//end class
