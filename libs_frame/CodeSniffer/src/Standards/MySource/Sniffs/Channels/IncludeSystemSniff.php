@@ -113,7 +113,7 @@ class IncludeSystemSniff extends AbstractScopeSniff
             if ($name !== false) {
                 $includedClasses[$name] = true;
                 // Special case for Widgets cause they are, well, special.
-            } elseif (strtolower($tokens[$i]['content']) === 'includewidget') {
+            } else if (strtolower($tokens[$i]['content']) === 'includewidget') {
                 $typeName = $phpcsFile->findNext(T_CONSTANT_ENCAPSED_STRING, ($i + 1));
                 $typeName = trim($tokens[$typeName]['content'], " '");
                 $includedClasses[strtolower($typeName).'widgettype'] = true;
@@ -242,7 +242,7 @@ class IncludeSystemSniff extends AbstractScopeSniff
         for ($i = 0; $i < $stackPtr; $i++) {
             // Skip classes and functions as will we never get
             // into their scopes when including this file, although
-            // we have a chance of getting into IF's, WHILE's etc.
+            // we have a chance of getting into IF, WHILE etc.
             if (($tokens[$i]['code'] === T_CLASS
                 || $tokens[$i]['code'] === T_INTERFACE
                 || $tokens[$i]['code'] === T_FUNCTION)
@@ -256,7 +256,7 @@ class IncludeSystemSniff extends AbstractScopeSniff
             if ($name !== false) {
                 $includedClasses[$name] = true;
                 // Special case for Widgets cause they are, well, special.
-            } elseif (strtolower($tokens[$i]['content']) === 'includewidget') {
+            } else if (strtolower($tokens[$i]['content']) === 'includewidget') {
                 $typeName = $phpcsFile->findNext(T_CONSTANT_ENCAPSED_STRING, ($i + 1));
                 $typeName = trim($tokens[$typeName]['content'], " '");
                 $includedClasses[strtolower($typeName).'widgettype'] = true;
@@ -294,11 +294,11 @@ class IncludeSystemSniff extends AbstractScopeSniff
             $systemName = $phpcsFile->findNext(T_CONSTANT_ENCAPSED_STRING, ($stackPtr + 1));
             $systemName = trim($tokens[$systemName]['content'], " '");
             return strtolower($systemName);
-        } elseif (strtolower($tokens[$stackPtr]['content']) === 'includeasset') {
+        } else if (strtolower($tokens[$stackPtr]['content']) === 'includeasset') {
             $typeName = $phpcsFile->findNext(T_CONSTANT_ENCAPSED_STRING, ($stackPtr + 1));
             $typeName = trim($tokens[$typeName]['content'], " '");
             return strtolower($typeName).'assettype';
-        } elseif (isset(Tokens::$includeTokens[$tokens[$stackPtr]['code']]) === true) {
+        } else if (isset(Tokens::$includeTokens[$tokens[$stackPtr]['code']]) === true) {
             $filePath = $phpcsFile->findNext(T_CONSTANT_ENCAPSED_STRING, ($stackPtr + 1));
             $filePath = $tokens[$filePath]['content'];
             $filePath = trim($filePath, " '");

@@ -6,13 +6,15 @@
  * @copyright 2006-2015 Squiz Pty Ltd (ABN 77 084 670 600)
  * @license   https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
  */
+
 namespace PHP_CodeSniffer\Standards\MySource\Sniffs\CSS;
 
-use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
 
 class BrowserSpecificStylesSniff implements Sniff
 {
+
     /**
      * A list of tokenizers this sniff supports.
      *
@@ -30,12 +32,13 @@ class BrowserSpecificStylesSniff implements Sniff
      * @var array
      */
     protected $specificStylesheets = [
-        'moz' => true,
-        'ie' => true,
-        'ie7' => true,
-        'ie8' => true,
+        'moz'    => true,
+        'ie'     => true,
+        'ie7'    => true,
+        'ie8'    => true,
         'webkit' => true,
     ];
+
 
     /**
      * Returns the token types that this sniff is interested in.
@@ -45,20 +48,23 @@ class BrowserSpecificStylesSniff implements Sniff
     public function register()
     {
         return [T_STYLE];
+
     }//end register()
+
 
     /**
      * Processes the tokens that this sniff is interested in.
      *
-     * @param \PHP_CodeSniffer\Files\File $phpcsFile the file where the token was found
-     * @param int                         $stackPtr  the position in the stack where
-     *                                               the token was found
+     * @param \PHP_CodeSniffer\Files\File $phpcsFile The file where the token was found.
+     * @param int                         $stackPtr  The position in the stack where
+     *                                               the token was found.
      *
+     * @return void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
         // Ignore files with browser-specific suffixes.
-        $filename = $phpcsFile->getFilename();
+        $filename  = $phpcsFile->getFilename();
         $breakChar = strrpos($filename, '_');
         if ($breakChar !== false && substr($filename, -4) === '.css') {
             $specific = substr($filename, ($breakChar + 1), -4);
@@ -67,12 +73,15 @@ class BrowserSpecificStylesSniff implements Sniff
             }
         }
 
-        $tokens = $phpcsFile->getTokens();
+        $tokens  = $phpcsFile->getTokens();
         $content = $tokens[$stackPtr]['content'];
 
         if ($content[0] === '-') {
             $error = 'Browser-specific styles are not allowed';
             $phpcsFile->addError($error, $stackPtr, 'ForbiddenStyle');
         }
+
     }//end process()
+
+
 }//end class

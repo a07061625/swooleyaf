@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\Classes;
 
-use PHP_CodeSniffer\Standards\PSR2\Sniffs\Classes\ClassDeclarationSniff as PSR2ClassDeclarationSniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Standards\PSR2\Sniffs\Classes\ClassDeclarationSniff as PSR2ClassDeclarationSniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class ClassDeclarationSniff extends PSR2ClassDeclarationSniff
@@ -144,7 +144,7 @@ class ClassDeclarationSniff extends PSR2ClassDeclarationSniff
                     $phpcsFile->fixer->addNewlineBefore($closeBrace);
                 }
             }
-        } elseif ($tokens[($closeBrace - 1)]['code'] === T_WHITESPACE) {
+        } else if ($tokens[($closeBrace - 1)]['code'] === T_WHITESPACE) {
             $prevContent = $tokens[($closeBrace - 1)]['content'];
             if ($prevContent !== $phpcsFile->eolChar) {
                 $blankSpace = substr($prevContent, strpos($prevContent, $phpcsFile->eolChar));
@@ -188,7 +188,7 @@ class ClassDeclarationSniff extends PSR2ClassDeclarationSniff
                     for ($i = ($closeBrace + 1); $i < $nextContent; $i++) {
                         if ($tokens[$i]['line'] <= ($tokens[$closeBrace]['line'] + 1)) {
                             continue;
-                        } elseif ($tokens[$i]['line'] === $tokens[$nextContent]['line']) {
+                        } else if ($tokens[$i]['line'] === $tokens[$nextContent]['line']) {
                             break;
                         }
 

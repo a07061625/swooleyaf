@@ -12,14 +12,14 @@
 
 namespace PHP_CodeSniffer;
 
-use PHP_CodeSniffer\Files\FileList;
-use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Exceptions\DeepExitException;
+use PHP_CodeSniffer\Exceptions\RuntimeException;
 use PHP_CodeSniffer\Files\DummyFile;
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Files\FileList;
 use PHP_CodeSniffer\Util\Cache;
 use PHP_CodeSniffer\Util\Common;
 use PHP_CodeSniffer\Util\Standards;
-use PHP_CodeSniffer\Exceptions\RuntimeException;
-use PHP_CodeSniffer\Exceptions\DeepExitException;
 
 class Runner
 {
@@ -135,13 +135,14 @@ class Runner
         if ($numErrors === 0) {
             // No errors found.
             return 0;
-        } elseif ($this->reporter->totalFixable === 0) {
+        } else if ($this->reporter->totalFixable === 0) {
             // Errors found, but none of them can be fixed by PHPCBF.
             return 1;
         } else {
             // Errors found, and some can be fixed by PHPCBF.
             return 2;
         }
+
     }//end runPHPCS()
 
 
@@ -224,6 +225,7 @@ class Runner
 
         // PHPCBF fixed some fixable errors, but others failed to fix.
         return 2;
+
     }//end runPHPCBF()
 
 
@@ -231,7 +233,7 @@ class Runner
      * Exits if the minimum requirements of PHP_CodeSniffer are not met.
      *
      * @return array
-     * @throws \PHP_CodeSniffer\Exceptions\DeepExitException
+     * @throws \PHP_CodeSniffer\Exceptions\DeepExitException If the requirements are not met.
      */
     public function checkRequirements()
     {
@@ -271,6 +273,7 @@ class Runner
             $error = sprintf($error, $required, $missing);
             throw new DeepExitException($error, 3);
         }
+
     }//end checkRequirements()
 
 
@@ -278,7 +281,7 @@ class Runner
      * Init the rulesets and other high-level settings.
      *
      * @return void
-     * @throws \PHP_CodeSniffer\Exceptions\DeepExitException
+     * @throws \PHP_CodeSniffer\Exceptions\DeepExitException If a referenced standard is not installed.
      */
     public function init()
     {
@@ -332,6 +335,7 @@ class Runner
             $error .= $this->config->printShortUsage(true);
             throw new DeepExitException($error, 3);
         }
+
     }//end init()
 
 
@@ -428,7 +432,7 @@ class Runner
                     }
 
                     $this->processFile($file);
-                } elseif (PHP_CODESNIFFER_VERBOSITY > 0) {
+                } else if (PHP_CODESNIFFER_VERBOSITY > 0) {
                     echo 'Skipping '.basename($file->path).PHP_EOL;
                 }
 
@@ -455,7 +459,7 @@ class Runner
                 $pid = pcntl_fork();
                 if ($pid === -1) {
                     throw new RuntimeException('Failed to create child process');
-                } elseif ($pid !== 0) {
+                } else if ($pid !== 0) {
                     $childProcs[] = [
                         'pid' => $pid,
                         'out' => $childOutFilename,
@@ -573,6 +577,7 @@ class Runner
         }
 
         return $return;
+
     }//end run()
 
 
@@ -599,6 +604,7 @@ class Runner
         }
 
         throw new RuntimeException("$message in $file on line $line");
+
     }//end handleErrors()
 
 
@@ -644,7 +650,7 @@ class Runner
             }
         } catch (\Exception $e) {
             $error = 'An error occurred during processing; checking has been aborted. The error message was: '.$e->getMessage();
-            $file->addErrorOnLine($error, 1, 'Internal.SyException');
+            $file->addErrorOnLine($error, 1, 'Internal.Exception');
         }//end try
 
         $this->reporter->cacheFileReport($file, $this->config);
@@ -690,6 +696,7 @@ class Runner
 
         // Clean up the file to save (a lot of) memory.
         $file->cleanUp();
+
     }//end processFile()
 
 
@@ -762,6 +769,7 @@ class Runner
         }//end while
 
         return $success;
+
     }//end processChildProcs()
 
 
@@ -806,7 +814,7 @@ class Runner
                     if ($this->config->colors === true) {
                         echo "\033[0m";
                     }
-                } elseif ($fixed > 0) {
+                } else if ($fixed > 0) {
                     if ($this->config->colors === true) {
                         echo "\033[32m";
                     }
@@ -839,7 +847,7 @@ class Runner
                     if ($this->config->colors === true) {
                         echo "\033[0m";
                     }
-                } elseif ($warnings > 0) {
+                } else if ($warnings > 0) {
                     if ($this->config->colors === true) {
                         if ($fixable > 0) {
                             echo "\033[32m";
@@ -866,10 +874,16 @@ class Runner
 
         $percent = round(($numProcessed / $numFiles) * 100);
         $padding = (strlen($numFiles) - strlen($numProcessed));
-        if ($numProcessed === $numFiles && $numFiles > $numPerLine) {
+        if ($numProcessed === $numFiles
+            && $numFiles > $numPerLine
+            && ($numProcessed % $numPerLine) !== 0
+        ) {
             $padding += ($numPerLine - ($numFiles - (floor($numFiles / $numPerLine) * $numPerLine)));
         }
 
         echo str_repeat(' ', $padding)." $numProcessed / $numFiles ($percent%)".PHP_EOL;
+
     }//end printProgress()
+
+
 }//end class

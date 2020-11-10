@@ -9,12 +9,11 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\ControlStructures;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ForEachLoopDeclarationSniff implements Sniff
 {
-
 
     /**
      * How many spaces should follow the opening bracket.
@@ -79,7 +78,7 @@ class ForEachLoopDeclarationSniff implements Sniff
             if ($fix === true) {
                 $phpcsFile->fixer->replaceToken(($openingBracket + 1), '');
             }
-        } elseif ($this->requiredSpacesAfterOpen > 0) {
+        } else if ($this->requiredSpacesAfterOpen > 0) {
             $spaceAfterOpen = 0;
             if ($tokens[($openingBracket + 1)]['code'] === T_WHITESPACE) {
                 $spaceAfterOpen = $tokens[($openingBracket + 1)]['length'];
@@ -109,7 +108,7 @@ class ForEachLoopDeclarationSniff implements Sniff
             if ($fix === true) {
                 $phpcsFile->fixer->replaceToken(($closingBracket - 1), '');
             }
-        } elseif ($this->requiredSpacesBeforeClose > 0) {
+        } else if ($this->requiredSpacesBeforeClose > 0) {
             $spaceBeforeClose = 0;
             if ($tokens[($closingBracket - 1)]['code'] === T_WHITESPACE) {
                 $spaceBeforeClose = $tokens[($closingBracket - 1)]['length'];

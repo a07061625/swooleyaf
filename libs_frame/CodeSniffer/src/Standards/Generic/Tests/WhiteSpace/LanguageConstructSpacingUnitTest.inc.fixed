@@ -36,10 +36,10 @@ yield from $test();
 yield from $test();
 yield From $test();
 
-throw new SyException();
-throw new SyException();
-throw new SyException();
-throw new SyException();
+throw new Exception();
+throw new Exception();
+throw new Exception();
+throw new Exception();
 
 namespace MyClass;
 namespace MyClass;

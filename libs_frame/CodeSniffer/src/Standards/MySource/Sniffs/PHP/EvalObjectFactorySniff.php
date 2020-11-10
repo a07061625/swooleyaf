@@ -56,7 +56,7 @@ class EvalObjectFactorySniff implements Sniff
         for ($i = ($openBracket + 1); $i < $closeBracket; $i++) {
             if (isset(Tokens::$stringTokens[$tokens[$i]['code']]) === true) {
                 $strings[$i] = $tokens[$i]['content'];
-            } elseif ($tokens[$i]['code'] === T_VARIABLE) {
+            } else if ($tokens[$i]['code'] === T_VARIABLE) {
                 $vars[$i] = $tokens[$i]['content'];
             }
         }
@@ -99,7 +99,7 @@ class EvalObjectFactorySniff implements Sniff
 
         foreach ($strings as $string) {
             // If the string has "new" in it, it is not allowed.
-            // We don't bother checking if the word "new" is echo'd
+            // We don't bother checking if the word "new" is printed to screen
             // because that is unlikely to happen. We assume the use
             // of "new" is for object instantiation.
             if (strstr($string, ' new ') !== false) {

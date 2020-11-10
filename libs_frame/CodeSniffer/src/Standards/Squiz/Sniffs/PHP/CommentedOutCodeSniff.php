@@ -9,10 +9,10 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\PHP;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
-use PHP_CodeSniffer\Files\File;
-use PHP_CodeSniffer\Util\Tokens;
 use PHP_CodeSniffer\Exceptions\TokenizerException;
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Util\Tokens;
 
 class CommentedOutCodeSniff implements Sniff
 {
@@ -247,7 +247,7 @@ class CommentedOutCodeSniff implements Sniff
             if (isset($emptyTokens[$stringTokens[$i]['code']]) === true) {
                 // Looks like comment.
                 $numComment++;
-            } elseif (isset(Tokens::$comparisonTokens[$stringTokens[$i]['code']]) === true
+            } else if (isset(Tokens::$comparisonTokens[$stringTokens[$i]['code']]) === true
                 || isset(Tokens::$arithmeticTokens[$stringTokens[$i]['code']]) === true
                 || $stringTokens[$i]['code'] === T_GOTO_LABEL
             ) {

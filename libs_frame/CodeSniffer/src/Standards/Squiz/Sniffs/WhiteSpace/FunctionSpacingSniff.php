@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class FunctionSpacingSniff implements Sniff
@@ -112,21 +112,27 @@ class FunctionSpacingSniff implements Sniff
         $isFirst = false;
         $isLast  = false;
 
-        $ignore = (Tokens::$emptyTokens + Tokens::$methodPrefixes);
+        $ignore = ([T_WHITESPACE => T_WHITESPACE] + Tokens::$methodPrefixes);
 
         $prev = $phpcsFile->findPrevious($ignore, ($stackPtr - 1), null, true);
-        if (isset($tokens[$prev]['scope_opener']) === true
-            && $tokens[$prev]['scope_opener'] === $prev
-            && isset(Tokens::$ooScopeTokens[$tokens[$tokens[$prev]['scope_condition']]['code']]) === true
-        ) {
+        if ($tokens[$prev]['code'] === T_DOC_COMMENT_CLOSE_TAG) {
+            // Skip past function docblocks.
+            $prev = $phpcsFile->findPrevious($ignore, ($tokens[$prev]['comment_opener'] - 1), null, true);
+        }
+
+        if ($tokens[$prev]['code'] === T_OPEN_CURLY_BRACKET) {
             $isFirst = true;
         }
 
         $next = $phpcsFile->findNext($ignore, ($closer + 1), null, true);
-        if (isset($tokens[$next]['scope_closer']) === true
-            && $tokens[$next]['scope_closer'] === $next
-            && isset(Tokens::$ooScopeTokens[$tokens[$tokens[$next]['scope_condition']]['code']]) === true
+        if (isset(Tokens::$emptyTokens[$tokens[$next]['code']]) === true
+            && $tokens[$next]['line'] === $tokens[$closer]['line']
         ) {
+            // Skip past "end" comments.
+            $next = $phpcsFile->findNext($ignore, ($next + 1), null, true);
+        }
+
+        if ($tokens[$next]['code'] === T_CLOSE_CURLY_BRACKET) {
             $isLast = true;
         }
 
@@ -167,6 +173,12 @@ class FunctionSpacingSniff implements Sniff
             }
         }
 
+        if ($isLast === true) {
+            $phpcsFile->recordMetric($stackPtr, 'Function spacing after last', $foundLines);
+        } else {
+            $phpcsFile->recordMetric($stackPtr, 'Function spacing after', $foundLines);
+        }
+
         if ($foundLines !== $requiredSpacing) {
             $error = 'Expected %s blank line';
             if ($requiredSpacing !== 1) {
@@ -202,12 +214,12 @@ class FunctionSpacingSniff implements Sniff
 
         $prevLineToken = null;
         for ($i = $stackPtr; $i >= 0; $i--) {
-            if (strpos($tokens[$i]['content'], $phpcsFile->eolChar) === false) {
+            if ($tokens[$i]['line'] === $tokens[$stackPtr]['line']) {
                 continue;
-            } else {
-                $prevLineToken = $i;
-                break;
             }
+
+            $prevLineToken = $i;
+            break;
         }
 
         if ($prevLineToken === null) {
@@ -220,6 +232,7 @@ class FunctionSpacingSniff implements Sniff
             $currentLine = $tokens[$stackPtr]['line'];
 
             $prevContent = $phpcsFile->findPrevious(T_WHITESPACE, $prevLineToken, null, true);
+
             if ($tokens[$prevContent]['code'] === T_COMMENT
                 || isset(Tokens::$phpcsCommentTokens[$tokens[$prevContent]['code']]) === true
             ) {
@@ -243,15 +256,24 @@ class FunctionSpacingSniff implements Sniff
             $prevLine   = ($tokens[$prevContent]['line'] - 1);
             $i          = ($stackPtr - 1);
             $foundLines = 0;
-            while ($currentLine !== $prevLine && $currentLine > 1 && $i > 0) {
-                if (isset($tokens[$i]['scope_condition']) === true) {
-                    $scopeCondition = $tokens[$i]['scope_condition'];
-                    if ($tokens[$scopeCondition]['code'] === T_FUNCTION) {
-                        // Found a previous function.
-                        return;
-                    }
-                } elseif ($tokens[$i]['code'] === T_FUNCTION) {
+
+            $stopAt = 0;
+            if (isset($tokens[$stackPtr]['conditions']) === true) {
+                $conditions = $tokens[$stackPtr]['conditions'];
+                $conditions = array_keys($conditions);
+                $stopAt     = array_pop($conditions);
+            }
+
+            while ($currentLine !== $prevLine && $currentLine > 1 && $i > $stopAt) {
+                if ($tokens[$i]['code'] === T_FUNCTION) {
                     // Found another interface or abstract function.
+                    return;
+                }
+
+                if ($tokens[$i]['code'] === T_CLOSE_CURLY_BRACKET
+                    && $tokens[$tokens[$i]['scope_condition']]['code'] === T_FUNCTION
+                ) {
+                    // Found a previous function.
                     return;
                 }
 
@@ -276,6 +298,10 @@ class FunctionSpacingSniff implements Sniff
         if ($isFirst === true) {
             $requiredSpacing = $this->spacingBeforeFirst;
             $errorCode       = 'BeforeFirst';
+
+            $phpcsFile->recordMetric($stackPtr, 'Function spacing before first', $foundLines);
+        } else {
+            $phpcsFile->recordMetric($stackPtr, 'Function spacing before', $foundLines);
         }
 
         if ($foundLines !== $requiredSpacing) {
@@ -304,6 +330,10 @@ class FunctionSpacingSniff implements Sniff
                     $nextContent = $phpcsFile->findNext(T_WHITESPACE, ($nextSpace + 1), null, true);
                     $phpcsFile->fixer->beginChangeset();
                     for ($i = $nextSpace; $i < $nextContent; $i++) {
+                        if ($tokens[$i]['line'] === $tokens[$prevContent]['line']) {
+                            continue;
+                        }
+
                         if ($tokens[$i]['line'] === $tokens[$nextContent]['line']) {
                             $phpcsFile->fixer->addContentBefore($i, str_repeat($phpcsFile->eolChar, $requiredSpacing));
                             break;
@@ -313,7 +343,7 @@ class FunctionSpacingSniff implements Sniff
                     }
 
                     $phpcsFile->fixer->endChangeset();
-                }
+                }//end if
             }//end if
         }//end if
 

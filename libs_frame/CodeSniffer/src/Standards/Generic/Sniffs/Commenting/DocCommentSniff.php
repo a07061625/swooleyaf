@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Generic\Sniffs\Commenting;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 
 class DocCommentSniff implements Sniff
 {
@@ -129,7 +129,7 @@ class DocCommentSniff implements Sniff
                     for ($i = $stackPtr; $i < $short; $i++) {
                         if ($tokens[$i]['line'] === $tokens[$stackPtr]['line']) {
                             continue;
-                        } elseif ($tokens[$i]['line'] === $tokens[$short]['line']) {
+                        } else if ($tokens[$i]['line'] === $tokens[$short]['line']) {
                             break;
                         }
 
@@ -170,7 +170,7 @@ class DocCommentSniff implements Sniff
                         for ($i = ($shortEnd + 1); $i < $long; $i++) {
                             if ($tokens[$i]['line'] === $tokens[$shortEnd]['line']) {
                                 continue;
-                            } elseif ($tokens[$i]['line'] === ($tokens[$long]['line'] - 1)) {
+                            } else if ($tokens[$i]['line'] === ($tokens[$long]['line'] - 1)) {
                                 break;
                             }
 

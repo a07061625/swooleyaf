@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\CSS;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class ClassDefinitionClosingBraceSpaceSniff implements Sniff
@@ -81,7 +81,7 @@ class ClassDefinitionClosingBraceSpaceSniff implements Sniff
                     if ($found < 0) {
                         // Next statement on same line as the closing brace.
                         $phpcsFile->fixer->addContentBefore($next, $phpcsFile->eolChar.$phpcsFile->eolChar);
-                    } elseif ($found === 0) {
+                    } else if ($found === 0) {
                         // Next statement on next line, no blank line.
                         $phpcsFile->fixer->addContentBefore($firstOnLine, $phpcsFile->eolChar);
                     } else {

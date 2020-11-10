@@ -2,8 +2,8 @@
 /**
  * Detects unnecessary overridden methods that simply call their parent.
  *
- * This rule is based on the PMD rule catalog. The Useless Overriding Method
- * sniff detects the use of methods that only call their parent classes's method
+ * This rule is based on the PMD rule catalogue. The Useless Overriding Method
+ * sniff detects the use of methods that only call their parent class's method
  * with the same name and arguments. These methods are not required.
  *
  * <code>
@@ -21,8 +21,8 @@
 
 namespace PHP_CodeSniffer\Standards\Generic\Sniffs\CodeAnalysis;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class UselessOverridingMethodSniff implements Sniff
@@ -77,7 +77,7 @@ class UselessOverridingMethodSniff implements Sniff
 
             if (isset(Tokens::$emptyTokens[$code]) === true) {
                 continue;
-            } elseif ($code === T_RETURN) {
+            } else if ($code === T_RETURN) {
                 continue;
             }
 
@@ -121,11 +121,11 @@ class UselessOverridingMethodSniff implements Sniff
 
             if ($code === T_OPEN_PARENTHESIS) {
                 ++$parenthesisCount;
-            } elseif ($code === T_CLOSE_PARENTHESIS) {
+            } else if ($code === T_CLOSE_PARENTHESIS) {
                 --$parenthesisCount;
-            } elseif ($parenthesisCount === 1 && $code === T_COMMA) {
+            } else if ($parenthesisCount === 1 && $code === T_COMMA) {
                 $parameters[] = '';
-            } elseif (isset(Tokens::$emptyTokens[$code]) === false) {
+            } else if (isset(Tokens::$emptyTokens[$code]) === false) {
                 $parameters[(count($parameters) - 1)] .= $tokens[$next]['content'];
             }
 

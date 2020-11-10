@@ -17,11 +17,11 @@ while (true) {
 
 if (one) {
 } else (two) {
-} elseif (three) {
+} else if (three) {
 }
 if (one) {
 } else (two) {
-} elseif (three) {
+} else if (three) {
 }
 
 switch (blah) {
@@ -86,7 +86,7 @@ var x = {
 
 if (one) {
 }
-// elseif something
+// else if something
 else if (two) {
 } // else do something
 else {

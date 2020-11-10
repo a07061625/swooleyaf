@@ -16,8 +16,8 @@
 
 namespace PHP_CodeSniffer\Standards\Generic\Sniffs\CodeAnalysis;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class UnusedFunctionParameterSniff implements Sniff
@@ -34,6 +34,7 @@ class UnusedFunctionParameterSniff implements Sniff
         return [
             T_FUNCTION,
             T_CLOSURE,
+            T_FN,
         ];
 
     }//end register()
@@ -67,7 +68,7 @@ class UnusedFunctionParameterSniff implements Sniff
             $extends    = $phpcsFile->findExtendedClassName($classPtr);
             if ($extends !== false) {
                 $errorCode .= 'InExtendedClass';
-            } elseif ($implements !== false) {
+            } else if ($implements !== false) {
                 $errorCode .= 'InImplementedInterface';
             }
         }
@@ -137,7 +138,7 @@ class UnusedFunctionParameterSniff implements Sniff
 
             if ($code === T_VARIABLE && isset($params[$token['content']]) === true) {
                 unset($params[$token['content']]);
-            } elseif ($code === T_DOLLAR) {
+            } else if ($code === T_DOLLAR) {
                 $nextToken = $phpcsFile->findNext(T_WHITESPACE, ($next + 1), null, true);
                 if ($tokens[$nextToken]['code'] === T_OPEN_CURLY_BRACKET) {
                     $nextToken = $phpcsFile->findNext(T_WHITESPACE, ($nextToken + 1), null, true);
@@ -148,7 +149,7 @@ class UnusedFunctionParameterSniff implements Sniff
                         }
                     }
                 }
-            } elseif ($code === T_DOUBLE_QUOTED_STRING
+            } else if ($code === T_DOUBLE_QUOTED_STRING
                 || $code === T_START_HEREDOC
                 || $code === T_START_NOWDOC
             ) {
@@ -173,7 +174,7 @@ class UnusedFunctionParameterSniff implements Sniff
                     $varContent = '';
                     if ($stringToken[0] === T_DOLLAR_OPEN_CURLY_BRACES) {
                         $varContent = '$'.$stringTokens[($stringPtr + 1)][1];
-                    } elseif ($stringToken[0] === T_VARIABLE) {
+                    } else if ($stringToken[0] === T_VARIABLE) {
                         $varContent = $stringToken[1];
                     }
 

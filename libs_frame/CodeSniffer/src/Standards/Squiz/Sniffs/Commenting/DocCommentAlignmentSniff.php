@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\Commenting;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class DocCommentAlignmentSniff implements Sniff
@@ -140,7 +140,7 @@ class DocCommentAlignmentSniff implements Sniff
                 if ($fix === true) {
                     $phpcsFile->fixer->addContent($i, ' ');
                 }
-            } elseif ($tokens[($i + 2)]['code'] === T_DOC_COMMENT_TAG
+            } else if ($tokens[($i + 2)]['code'] === T_DOC_COMMENT_TAG
                 && $tokens[($i + 1)]['content'] !== ' '
             ) {
                 $error = 'Expected 1 space after asterisk; %s found';

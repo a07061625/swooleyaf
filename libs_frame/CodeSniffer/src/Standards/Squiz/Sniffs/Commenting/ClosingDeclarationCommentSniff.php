@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\Commenting;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 
 class ClosingDeclarationCommentSniff implements Sniff
 {
@@ -67,7 +67,7 @@ class ClosingDeclarationCommentSniff implements Sniff
 
             $decName = $phpcsFile->getDeclarationName($stackPtr);
             $comment = '//end '.$decName.'()';
-        } elseif ($tokens[$stackPtr]['code'] === T_CLASS) {
+        } else if ($tokens[$stackPtr]['code'] === T_CLASS) {
             $comment = '//end class';
         } else {
             $comment = '//end interface';
