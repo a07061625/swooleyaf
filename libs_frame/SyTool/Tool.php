@@ -440,6 +440,7 @@ class Tool
      *   lower: 小写字母
      *   numlower: 数字,小写字母</pre>
      * @return string
+     * @throws \Exception
      */
     public static function createNonceStr(int $length, string $dataType = 'total') : string
     {
@@ -549,6 +550,7 @@ class Tool
      * @param string $url 请求地址
      * @param string $content 请求内容
      * @return bool|mixed
+     * @throws \SyException\Common\CheckException
      */
     public static function sendSyHttpTaskReq(string $url, string $content)
     {
@@ -855,5 +857,54 @@ class Tool
         $i18nKey = substr($tag, 5);
         $configKey = 'lang_' . $langType . '.' . SY_ENV . SY_PROJECT . '.' . $i18nKey;
         return self::getConfig($configKey, '', $i18nKey);
+    }
+
+    /**
+     * 检测IP是否合法
+     * @param string $ip
+     * @return bool
+     */
+    public static function checkIp(string $ip) : bool
+    {
+        return preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $ip) > 0;
+    }
+
+    /**
+     * 检测IP是否在某个网络内
+     * @param string $ip IP地址
+     * @param string $network 网络IP范围,支持固定IP和网段
+     * @return bool
+     */
+    public static function checkIpExist(string $ip, string $network) : bool
+    {
+        if (!self::checkIp($ip)) {
+            return false;
+        }
+
+        $networkArr = explode('/', $network);
+        if (!is_array($networkArr)) {
+            return false;
+        }
+        if (count($networkArr) > 2) {
+            return false;
+        }
+
+        $networkIp = $networkArr[0];
+        if (!self::checkIp($networkIp)) {
+            return false;
+        }
+
+        $networkMaskLength = isset($networkArr[1]) ? (int)$networkArr[1] : 32;
+        if (($networkMaskLength <= 0) || ($networkMaskLength > 32)) {
+            return false;
+        }
+
+        $ipNum = (double)ip2long($ip);
+        $networkIpStart = (double)ip2long($networkIp);
+        $networkIpEnd = $networkIpStart + pow(2, 32 - $networkMaskLength) -1;
+        if (($ipNum >= $networkIpStart) && ($ipNum <= $networkIpEnd)) {
+            return true;
+        }
+        return false;
     }
 }

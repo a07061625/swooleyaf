@@ -1,5 +1,6 @@
 .idea/
 .vscode/
+test/
 tipfile/*.txt
 pidfile/*.pid
 .php_cs.cache
