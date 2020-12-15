@@ -12,6 +12,7 @@ use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyException\Validator\ValidatorException;
 use SyTool\Tool;
+use SyTrait\Validators\RequestRateTrait;
 use Validator\BaseValidator;
 use Validator\ValidatorService;
 
@@ -22,6 +23,8 @@ use Validator\ValidatorService;
  */
 class StringRequestRate extends BaseValidator implements ValidatorService
 {
+    use RequestRateTrait;
+
     public function __construct()
     {
         parent::__construct();
@@ -42,11 +45,7 @@ class StringRequestRate extends BaseValidator implements ValidatorService
      */
     public function validator($data, $compareData) : string
     {
-        if (isset($_SERVER['HTTP_sy-client'])) {
-            $clientId = trim($_SERVER['HTTP_sy-client']);
-        } else {
-            $clientId = '';
-        }
+        $clientId = $this->getClientId();
         if (strlen($clientId) > 0) {
             $nowTime = Tool::getNowTime();
             $tag = ($nowTime - $nowTime % 3) . $clientId . $_SERVER['SYKEY-MC'] . $_SERVER['SYKEY-CA'];
