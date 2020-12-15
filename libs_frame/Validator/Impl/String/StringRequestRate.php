@@ -39,7 +39,6 @@ class StringRequestRate extends BaseValidator implements ValidatorService
     /**
      * @param string $data
      * @param int    $compareData
-     * @return string
      *
      * @throws \SyException\Validator\ValidatorException
      */
