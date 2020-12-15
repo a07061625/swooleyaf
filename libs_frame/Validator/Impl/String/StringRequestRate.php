@@ -5,6 +5,7 @@
  * Date: 2020/10/24 0024
  * Time: 21:48
  */
+
 namespace Validator\Impl\String;
 
 use DesignPatterns\Factories\CacheSimpleFactory;
@@ -39,14 +40,12 @@ class StringRequestRate extends BaseValidator implements ValidatorService
      * @param string $data
      * @param int    $compareData
      *
-     * @return string
-     *
      * @throws \SyException\Validator\ValidatorException
      */
-    public function validator($data, $compareData) : string
+    public function validator($data, $compareData): string
     {
         $clientId = $this->getClientId();
-        if (strlen($clientId) > 0) {
+        if (\strlen($clientId) > 0) {
             $nowTime = Tool::getNowTime();
             $tag = ($nowTime - $nowTime % 3) . $clientId . $_SERVER['SYKEY-MC'] . $_SERVER['SYKEY-CA'];
             $cacheKey = Project::REDIS_PREFIX_REQUEST_RATE . md5($tag);
