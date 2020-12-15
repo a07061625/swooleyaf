@@ -5,13 +5,14 @@
  * Date: 2017/3/2 0002
  * Time: 11:18
  */
+
 namespace SyTool;
 
+use DesignPatterns\Factories\CacheSimpleFactory;
 use Swoole\Client;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyConstant\SyInner;
-use DesignPatterns\Factories\CacheSimpleFactory;
 use SyException\Common\CheckException;
 use SyQr\PHPZxing\PHPZxingDecoder;
 use SyQr\PHPZxing\ZxingImage;
@@ -54,26 +55,29 @@ class Tool
 
     /**
      * 生成唯一ID
+     *
      * @param string $createType 生成类型,可选值:redis(默认) swoole
-     * @return string
      */
-    public static function createUniqueId(string $createType = 'redis') : string
+    public static function createUniqueId(string $createType = 'redis'): string
     {
-        if ($createType == 'redis') {
+        if ('redis' == $createType) {
             $num = CacheSimpleFactory::getRedisInstance()->incr(Project::DATA_KEY_CACHE_UNIQUE_ID);
+
             return date('YmdHis') . substr($num, -8);
-        } else {
-            $arr = BaseServer::getUniqueNum();
-            return $arr['token'] . date('YmdHis') . substr((string)$arr['unique_num'], -8);
         }
+        $arr = BaseServer::getUniqueNum();
+
+        return $arr['token'] . date('YmdHis') . substr((string)$arr['unique_num'], -8);
     }
 
     /**
      * 获取数组值
-     * @param array $array 数组
-     * @param string|int $key 键值
-     * @param object $default 默认值
-     * @param bool $isRecursion 是否递归查找,false:不递归 true:递归
+     *
+     * @param array      $array       数组
+     * @param int|string $key         键值
+     * @param object     $default     默认值
+     * @param bool       $isRecursion 是否递归查找,false:不递归 true:递归
+     *
      * @return mixed
      */
     public static function getArrayVal(array $array, $key, $default = null, bool $isRecursion = false)
@@ -86,7 +90,7 @@ class Tool
         $tempData = $array;
         unset($array);
         foreach ($keyArr as $eKey) {
-            if (is_array($tempData) && isset($tempData[$eKey])) {
+            if (\is_array($tempData) && isset($tempData[$eKey])) {
                 $tempData = $tempData[$eKey];
             } else {
                 return $default;
@@ -98,38 +102,41 @@ class Tool
 
     /**
      * 获取配置信息
-     * @param string $tag 配置标识
-     * @param string $field 字段名称
-     * @param mixed $default 默认值
+     *
+     * @param string $tag     配置标识
+     * @param string $field   字段名称
+     * @param mixed  $default 默认值
+     *
      * @return mixed
      */
     public static function getConfig(string $tag, string $field = '', $default = null)
     {
         $configs = \Yaconf::get($tag);
-        if (is_null($configs)) {
+        if (null === $configs) {
             return $default;
-        } elseif (is_array($configs) && (strlen($field) > 0)) {
-            return self::getArrayVal($configs, $field, $default);
-        } else {
-            return $configs;
         }
+        if (\is_array($configs) && (\strlen($field) > 0)) {
+            return self::getArrayVal($configs, $field, $default);
+        }
+
+        return $configs;
     }
 
     /**
      * array转xml
-     * @param array $dataArr
+     *
      * @param int $transferType 转换类型
-     * @return string
+     *
      * @throws \SyException\Common\CheckException
      */
-    public static function arrayToXml(array $dataArr, int $transferType = 1) : string
+    public static function arrayToXml(array $dataArr, int $transferType = 1): string
     {
-        if (count($dataArr) == 0) {
+        if (0 == \count($dataArr)) {
             throw new CheckException('数组为空', ErrorCode::COMMON_PARAM_ERROR);
         }
 
         $xml = '';
-        if ($transferType == 1) {
+        if (1 == $transferType) {
             $xml .= '<xml>';
             foreach ($dataArr as $key => $value) {
                 if (is_numeric($value)) {
@@ -139,7 +146,7 @@ class Tool
                 }
             }
             $xml .= '</xml>';
-        } elseif ($transferType == 2) {
+        } elseif (2 == $transferType) {
             foreach ($dataArr as $key => $value) {
                 $xml .= '<' . $key . '>' . $value . '</' . $key . '>';
             }
@@ -154,62 +161,72 @@ class Tool
 
     /**
      * xml转为array
-     * @param string $xml
+     *
      * @return array
+     *
      * @throws \SyException\Common\CheckException
      */
     public static function xmlToArray(string $xml)
     {
-        if (strlen($xml) == 0) {
+        if (0 == \strlen($xml)) {
             throw new CheckException('xml数据异常', ErrorCode::COMMON_PARAM_ERROR);
         }
 
         $element = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
         $jsonStr = self::jsonEncode($element);
+
         return self::jsonDecode($jsonStr);
     }
 
     /**
      * RSA签名
-     * @param string $data 待签名数据
+     *
+     * @param string $data          待签名数据
      * @param string $priKeyContent 私钥文件内容
+     *
      * @return string 签名结果
      */
-    public static function rsaSign(string $data, string $priKeyContent) : string
+    public static function rsaSign(string $data, string $priKeyContent): string
     {
         $priKey = openssl_get_privatekey($priKeyContent);
         openssl_sign($data, $sign, $priKey);
         openssl_free_key($priKey);
+
         return base64_encode($sign);
     }
 
     /**
      * RSA验签
-     * @param string $data 待签名数据
+     *
+     * @param string $data          待签名数据
      * @param string $pubKeyContent 公钥文件内容
-     * @param string $sign 要校对的的签名结果
-     * @return boolean 验证结果
+     * @param string $sign          要校对的的签名结果
+     *
+     * @return bool 验证结果
      */
-    public static function rsaVerify(string $data, string $pubKeyContent, string $sign) : bool
+    public static function rsaVerify(string $data, string $pubKeyContent, string $sign): bool
     {
         $pubKey = openssl_get_publickey($pubKeyContent);
-        $result = (boolean)openssl_verify($data, base64_decode($sign, true), $pubKey);
+        $result = (bool)openssl_verify($data, base64_decode($sign, true), $pubKey);
         openssl_free_key($pubKey);
+
         return $result;
     }
 
     /**
      * RSA加密
-     * @param string $data 待加密数据
+     *
+     * @param string $data       待加密数据
      * @param string $keyContent 密钥文件内容,根据模式不同设置公钥或私钥
-     * @param int $mode 模式 0:公钥加密 1:私钥加密
+     * @param int    $mode       模式 0:公钥加密 1:私钥加密
+     *
      * @return string
      */
     public static function rsaEncrypt(string $data, string $keyContent, int $mode = 0)
     {
         $dataArr = str_split($data, 117);
         $encryptArr = [];
-        if ($mode == 0) { //公钥加密
+        if (0 == $mode) { //公钥加密
             $key = openssl_get_publickey($keyContent);
             foreach ($dataArr as $eData) {
                 $eEncrypt = '';
@@ -231,19 +248,21 @@ class Tool
 
     /**
      * RSA解密
-     * @param string $data 待解密数据
+     *
+     * @param string $data       待解密数据
      * @param string $keyContent 密钥文件内容,根据模式不同设置公钥或私钥
-     * @param int $mode 模式 0:私钥解密 1:公钥解密
+     * @param int    $mode       模式 0:私钥解密 1:公钥解密
+     *
      * @return string
      */
     public static function rsaDecrypt(string $data, string $keyContent, int $mode = 0)
     {
         $decryptStr = '';
         $encryptData = base64_decode($data, true);
-        $length = strlen($encryptData) / 128;
-        if ($mode == 0) { //私钥解密
+        $length = \strlen($encryptData) / 128;
+        if (0 == $mode) { //私钥解密
             $key = openssl_get_privatekey($keyContent);
-            for ($i = 0; $i < $length; $i++) {
+            for ($i = 0; $i < $length; ++$i) {
                 $eDecrypt = '';
                 $eEncrypt = substr($encryptData, $i * 128, 128);
                 openssl_private_decrypt($eEncrypt, $eDecrypt, $key);
@@ -251,7 +270,7 @@ class Tool
             }
         } else { //公钥解密
             $key = openssl_get_publickey($keyContent);
-            for ($i = 0; $i < $length; $i++) {
+            for ($i = 0; $i < $length; ++$i) {
                 $eDecrypt = '';
                 $eEncrypt = substr($encryptData, $i * 128, 128);
                 openssl_public_decrypt($eEncrypt, $eDecrypt, $key);
@@ -265,32 +284,39 @@ class Tool
 
     /**
      * md5签名字符串
+     *
      * @param string $needStr 需要签名的字符串
-     * @param string $key 私钥
+     * @param string $key     私钥
+     *
      * @return string 签名结果
      */
-    public static function md5Sign(string $needStr, string $key) : string
+    public static function md5Sign(string $needStr, string $key): string
     {
         return md5($needStr . $key);
     }
 
     /**
      * md5验证签名
+     *
      * @param string $needStr 需要签名的字符串
-     * @param string $sign 签名结果
-     * @param string $key 私钥
-     * @return boolean 签名结果
+     * @param string $sign    签名结果
+     * @param string $key     私钥
+     *
+     * @return bool 签名结果
      */
-    public static function md5Verify(string $needStr, string $sign, string $key) : bool
+    public static function md5Verify(string $needStr, string $sign, string $key): bool
     {
         $nowSign = md5($needStr . $key);
+
         return $nowSign === $sign;
     }
 
     /**
      * 加密
+     *
      * @param string $content 待加密内容
-     * @param string $key 密钥
+     * @param string $key     密钥
+     *
      * @return string
      */
     public static function encrypt(string $content, string $key)
@@ -300,29 +326,35 @@ class Tool
             'iv' => $iv,
             'value' => openssl_encrypt($content, 'AES-256-CBC', $key, 0, $iv),
         ];
+
         return base64_encode(self::jsonEncode($data));
     }
 
     /**
      * 解密
+     *
      * @param string $content 密文
-     * @param string $key 密钥
+     * @param string $key     密钥
+     *
      * @return bool|string
      */
     public static function decrypt(string $content, string $key)
     {
         $data = self::jsonDecode(base64_decode($content));
-        if (is_array($data) && (!empty($data))) {
+        if (\is_array($data) && (!empty($data))) {
             return openssl_decrypt($data['value'], 'AES-256-CBC', $key, 0, $data['iv']);
         }
+
         return false;
     }
 
     /**
      * 获取命令行输入
-     * @param string|int $key 键名
-     * @param bool $isIndexKey 键名是否为索引 true:是索引 false:不是索引
-     * @param mixed $default 默认值
+     *
+     * @param int|string $key        键名
+     * @param bool       $isIndexKey 键名是否为索引 true:是索引 false:不是索引
+     * @param mixed      $default    默认值
+     *
      * @return mixed
      */
     public static function getClientOption($key, bool $isIndexKey = false, $default = null)
@@ -338,6 +370,7 @@ class Tool
             foreach ($argv as $eKey => $eVal) {
                 if (($key == $eVal) && isset($argv[$eKey + 1])) {
                     $option = $argv[$eKey + 1];
+
                     break;
                 }
             }
@@ -348,7 +381,9 @@ class Tool
 
     /**
      * 压缩数据
+     *
      * @param mixed $data 需要压缩的数据
+     *
      * @return bool|string
      */
     public static function pack($data)
@@ -358,22 +393,26 @@ class Tool
 
     /**
      * 解压数据
-     * @param string $data 压缩数据字符串
+     *
+     * @param string $data      压缩数据字符串
      * @param string $className 解压类型名称
+     *
      * @return mixed
      */
     public static function unpack(string $data, string $className = 'array')
     {
-        if ($className == 'array') {
+        if ('array' == $className) {
             return msgpack_unpack($data);
-        } else {
-            return msgpack_unpack($data, $className);
         }
+
+        return msgpack_unpack($data, $className);
     }
 
     /**
      * 序列化数据
+     *
      * @param mixed $data
+     *
      * @return string
      */
     public static function serialize($data)
@@ -383,73 +422,80 @@ class Tool
 
     /**
      * 反序列化数据
-     * @param string $str
-     * @param string $className
+     *
      * @return mixed
      */
     public static function unserialize(string $str, string $className = 'array')
     {
-        if ($className == 'array') {
+        if ('array' == $className) {
             return msgpack_unserialize($str);
-        } else {
-            return msgpack_unserialize($str, $className);
         }
+
+        return msgpack_unserialize($str, $className);
     }
 
     /**
      * 把数组转移成json字符串
+     *
      * @param array|object $arr
-     * @param int|string $options
+     * @param int|string   $options
+     *
      * @return bool|string
      */
     public static function jsonEncode($arr, $options = JSON_OBJECT_AS_ARRAY)
     {
-        if (is_array($arr) || is_object($arr)) {
+        if (\is_array($arr) || \is_object($arr)) {
             return json_encode($arr, $options);
         }
+
         return false;
     }
 
     /**
      * 解析json
-     * @param string $json
+     *
+     * @param string     $json
      * @param int|string $assoc
+     *
      * @return bool|mixed
      */
     public static function jsonDecode($json, $assoc = JSON_OBJECT_AS_ARRAY)
     {
-        if (is_string($json)) {
+        if (\is_string($json)) {
             return json_decode($json, $assoc);
         }
+
         return false;
     }
 
     /**
      * 生成随机字符串
-     * @param int $length 需要获取的随机字符串长度
+     *
+     * @param int    $length   需要获取的随机字符串长度
      * @param string $dataType 数据类型<pre>
-     *   total: 数字,大小写字母
-     *   lower: 小写字母
-     *   numlower: 数字,小写字母</pre>
-     * @return string
+     *                         total: 数字,大小写字母
+     *                         lower: 小写字母
+     *                         numlower: 数字,小写字母</pre>
      */
-    public static function createNonceStr(int $length, string $dataType = 'total') : string
+    public static function createNonceStr(int $length, string $dataType = 'total'): string
     {
         $resStr = '';
 
         switch ($dataType) {
             case 'lower':
-                for ($i = 0; $i < $length; $i++) {
+                for ($i = 0; $i < $length; ++$i) {
                     $resStr .= self::$lowerChars[random_int(0, 23)];
                 }
+
                 break;
             case 'numlower':
-                for ($i = 0; $i < $length; $i++) {
+                for ($i = 0; $i < $length; ++$i) {
                     $resStr .= self::$numLowerChars[random_int(0, 31)];
                 }
+
                 break;
             default:
-                for ($i = 0; $i < $length; $i++) {
+                for ($i = 0; $i < $length; ++$i) {
                     $resStr .= self::$totalChars[random_int(0, 56)];
                 }
         }
@@ -459,48 +505,56 @@ class Tool
 
     /**
      * 获取客户端IP
+     *
      * @param int $model 模式类型 1:从$_SERVER获取 2:从swoole_http_request中获取
+     *
      * @return bool|string
      */
     public static function getClientIP(int $model)
     {
-        if ($model == 1) {
+        if (1 == $model) {
             if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
                 $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+
                 return trim($ips[0]);
-            } elseif (isset($_SERVER['HTTP_X_REAL_IP'])) {
+            }
+            if (isset($_SERVER['HTTP_X_REAL_IP'])) {
                 return trim($_SERVER['HTTP_X_REAL_IP']);
-            } else {
-                return self::getArrayVal($_SERVER, 'REMOTE_ADDR', '');
-            }
-        } else {
-            $headers = Registry::get(SyInner::REGISTRY_NAME_REQUEST_HEADER);
-            $servers = Registry::get(SyInner::REGISTRY_NAME_REQUEST_SERVER);
-            if (($headers === false) || ($servers === false)) {
-                return false;
             }
 
-            if (isset($headers['x-forwarded-for'])) {
-                $ips = explode(',', $headers['x-forwarded-for']);
-                return trim($ips[0]);
-            }
-            if (isset($headers['x-real-ip'])) {
-                return trim($headers['x-real-ip']);
-            }
-            if (isset($headers['proxy_forwarded_for'])) {
-                $ips = explode(',', $headers['proxy_forwarded_for']);
-                return trim($ips[0]);
-            }
-
-            return trim(self::getArrayVal($servers, 'remote_addr', ''));
+            return self::getArrayVal($_SERVER, 'REMOTE_ADDR', '');
         }
+        $headers = Registry::get(SyInner::REGISTRY_NAME_REQUEST_HEADER);
+        $servers = Registry::get(SyInner::REGISTRY_NAME_REQUEST_SERVER);
+        if ((false === $headers) || (false === $servers)) {
+            return false;
+        }
+
+        if (isset($headers['x-forwarded-for'])) {
+            $ips = explode(',', $headers['x-forwarded-for']);
+
+            return trim($ips[0]);
+        }
+        if (isset($headers['x-real-ip'])) {
+            return trim($headers['x-real-ip']);
+        }
+        if (isset($headers['proxy_forwarded_for'])) {
+            $ips = explode(',', $headers['proxy_forwarded_for']);
+
+            return trim($ips[0]);
+        }
+
+        return trim(self::getArrayVal($servers, 'remote_addr', ''));
     }
 
     /**
      * 解压zip文件
+     *
      * @param string $file 文件,包括路径和名称
      * @param string $dist 解压目录
+     *
      * @return bool
+     *
      * @throws \Exception
      */
     public static function extractZip(string $file, string $dist)
@@ -510,16 +564,19 @@ class Tool
         try {
             if (!is_file($file)) {
                 throw new CheckException('解压对象不是文件', ErrorCode::COMMON_PARAM_ERROR);
-            } elseif (!is_readable($file)) {
+            }
+            if (!is_readable($file)) {
                 throw new CheckException('文件不可读', ErrorCode::COMMON_PARAM_ERROR);
-            } elseif (!is_dir($dist)) {
+            }
+            if (!is_dir($dist)) {
                 throw new CheckException('解压目录不存在', ErrorCode::COMMON_PARAM_ERROR);
-            } elseif (!is_writeable($dist)) {
+            }
+            if (!is_writable($dist)) {
                 throw new CheckException('解压目录不可写', ErrorCode::COMMON_PARAM_ERROR);
             }
 
             $zip = new \ZipArchive();
-            if ($zip->open($file) !== true) {
+            if (true !== $zip->open($file)) {
                 throw new CheckException('读取文件失败', ErrorCode::COMMON_PARAM_ERROR);
             }
             if (!$zip->extractTo($dist)) {
@@ -538,8 +595,10 @@ class Tool
 
     /**
      * 发送框架http任务请求
-     * @param string $url 请求地址
+     *
+     * @param string $url     请求地址
      * @param string $content 请求内容
+     *
      * @return bool|mixed
      */
     public static function sendSyHttpTaskReq(string $url, string $content)
@@ -554,14 +613,17 @@ class Tool
             CURLOPT_SSL_VERIFYHOST => false,
             CURLOPT_RETURNTRANSFER => true,
         ]);
-        return $sendRes['res_no'] == 0 ? $sendRes['res_content'] : false;
+
+        return 0 == $sendRes['res_no'] ? $sendRes['res_content'] : false;
     }
 
     /**
      * 发送框架RPC请求
-     * @param string $host 请求域名
-     * @param int $port 请求端口
+     *
+     * @param string $host    请求域名
+     * @param int    $port    请求端口
      * @param string $content 请求内容
+     *
      * @return bool
      */
     public static function sendSyRpcReq(string $host, int $port, string $content)
@@ -581,19 +643,24 @@ class Tool
         }
         if (!$client->send($content)) {
             $client->close();
+
             return false;
         }
 
         $res = @$client->recv();
         $client->close();
+
         return $res;
     }
 
     /**
      * 发送curl请求
-     * @param array $configs 配置数组
-     * @param int $rspHeaderType 响应头类型
+     *
+     * @param array $configs       配置数组
+     * @param int   $rspHeaderType 响应头类型
+     *
      * @return array
+     *
      * @throws \SyException\Common\CheckException
      */
     public static function sendCurlReq(array $configs, int $rspHeaderType = self::CURL_RSP_HEAD_TYPE_EMPTY)
@@ -603,7 +670,7 @@ class Tool
         }
 
         $url = $configs[CURLOPT_URL] ?? '';
-        if ((!is_string($url)) || (strlen($url) == 0)) {
+        if ((!\is_string($url)) || (0 == \strlen($url))) {
             throw new CheckException('请求地址不能为空', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -618,17 +685,17 @@ class Tool
             'res_content' => '',
         ];
 
-        if ($rspHeaderType == self::CURL_RSP_HEAD_TYPE_EMPTY) {
+        if (self::CURL_RSP_HEAD_TYPE_EMPTY == $rspHeaderType) {
             curl_setopt($ch, CURLOPT_HEADER, false);
             $resArr['res_content'] = curl_exec($ch);
             $resArr['res_no'] = curl_errno($ch);
             $resArr['res_msg'] = curl_error($ch);
-        } elseif ($rspHeaderType == self::CURL_RSP_HEAD_TYPE_HTTP) {
+        } elseif (self::CURL_RSP_HEAD_TYPE_HTTP == $rspHeaderType) {
             curl_setopt($ch, CURLOPT_HEADER, true);
             $rspContent = curl_exec($ch);
             $resArr['res_no'] = curl_errno($ch);
             $resArr['res_msg'] = curl_error($ch);
-            if ($resArr['res_no'] == 0) {
+            if (0 == $resArr['res_no']) {
                 $headSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
                 $resArr['res_code'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                 $resArr['res_content'] = substr($rspContent, $headSize);
@@ -657,6 +724,7 @@ class Tool
 
     /**
      * 获取当前时间戳
+     *
      * @return int
      */
     public static function getNowTime()
@@ -666,8 +734,7 @@ class Tool
 
     /**
      * 读取二维码图片
-     * @param string $qrPath
-     * @param string $javaPath
+     *
      * @return array
      */
     public static function readQrCode(string $qrPath, string $javaPath = '')
@@ -679,7 +746,7 @@ class Tool
         $decoder = new PHPZxingDecoder([
             'try_harder' => true,
         ]);
-        if (strlen($javaPath) > 0) {
+        if (\strlen($javaPath) > 0) {
             $decoder->setJavaPath($javaPath);
         }
 
@@ -709,23 +776,23 @@ class Tool
 
     /**
      * 填充补位需要加密的明文
+     *
      * @param string $text 需要加密的明文
-     * @return string
      */
-    public static function pkcs7Encode(string $text) : string
+    public static function pkcs7Encode(string $text): string
     {
         $blockSize = 32;
-        $textLength = strlen($text);
+        $textLength = \strlen($text);
         //计算需要填充的位数
         $addLength = $blockSize - ($textLength % $blockSize);
-        if ($addLength == 0) {
+        if (0 == $addLength) {
             $addLength = $blockSize;
         }
 
         //获得补位所用的字符
-        $needChr = chr($addLength);
+        $needChr = \chr($addLength);
         $tmp = '';
-        for ($i = 0; $i < $addLength; $i++) {
+        for ($i = 0; $i < $addLength; ++$i) {
             $tmp .= $needChr;
         }
 
@@ -734,42 +801,44 @@ class Tool
 
     /**
      * 补位删除解密后的明文
+     *
      * @param string $text 解密后的明文
-     * @return string
      */
-    public static function pkcs7Decode(string $text) : string
+    public static function pkcs7Decode(string $text): string
     {
-        $pad = ord(substr($text, -1));
+        $pad = \ord(substr($text, -1));
         if (($pad < 1) || ($pad > 32)) {
             $pad = 0;
         }
 
-        return substr($text, 0, (strlen($text) - $pad));
+        return substr($text, 0, (\strlen($text) - $pad));
     }
 
     /**
      * 处理yaf框架需要的URI
-     * @param string $uri
-     * @return string
      */
-    public static function handleYafUri(string &$uri) : string
+    public static function handleYafUri(string &$uri): string
     {
-        if ((strlen($uri) == 0) || ($uri == '/')) {
+        if ((0 == \strlen($uri)) || ('/' == $uri)) {
             $uri = '/';
+
             return '';
-        } elseif (substr($uri, 0, 1) != '/') {
+        }
+        if ('/' != substr($uri, 0, 1)) {
             return 'URI格式错误';
         }
-        if (substr($uri, -1) == '/') {
+        if ('/' == substr($uri, -1)) {
             $uri = substr($uri, 0, -1);
         }
 
         $tempArr = explode('/', $uri);
         if (!ctype_alnum($tempArr[1])) {
             return '模块不合法';
-        } elseif (isset($tempArr[2]) && !ctype_alnum($tempArr[2])) {
+        }
+        if (isset($tempArr[2]) && !ctype_alnum($tempArr[2])) {
             return '控制器名称不合法';
-        } elseif (isset($tempArr[3]) && !ctype_alnum($tempArr[3])) {
+        }
+        if (isset($tempArr[3]) && !ctype_alnum($tempArr[3])) {
             return '方法名称不合法';
         }
 
@@ -778,13 +847,11 @@ class Tool
 
     /**
      * 执行系统命令
-     * @param string $command
-     * @return array
      */
-    public static function execSystemCommand(string $command) : array
+    public static function execSystemCommand(string $command): array
     {
         $trueCommand = trim($command);
-        if (strlen($trueCommand) == 0) {
+        if (0 == \strlen($trueCommand)) {
             return [
                 'code' => 9999,
                 'msg' => '执行命令不能为空',
@@ -794,25 +861,27 @@ class Tool
         $code = 0;
         $output = [];
         $msg = exec($trueCommand, $output, $code);
-        if ($code == 0) {
+        if (0 == $code) {
             return [
                 'code' => 0,
                 'data' => $output,
             ];
-        } else {
-            return [
-                'code' => $code,
-                'msg' => $msg,
-            ];
         }
+
+        return [
+            'code' => $code,
+            'msg' => $msg,
+        ];
     }
 
     /**
      * 计算两个点之间的经纬度距离
+     *
      * @param float $lng1 起点经度
      * @param float $lat1 起点纬度
      * @param float $lng2 终点经度
      * @param float $lat2 终点纬度
+     *
      * @return int 距离,单位为米
      */
     public static function getDistance($lng1, $lat1, $lng2, $lat2)
@@ -825,53 +894,55 @@ class Tool
         $num1 = pow(sin(($radLat1 - $radLat2) / 2), 2);
         $num2 = pow(sin(($radLng1 - $radLng2) / 2), 2);
         $num3 = $num1 + cos($radLat1) * cos($radLat2) * $num2;
+
         return (int)(12756274 * asin(sqrt($num3)));
     }
 
     /**
      * 获取国际化文本
+     *
      * @param string $tag 国际化标识
+     *
      * @return string
      */
     public static function getI18nText(string $tag)
     {
-        if (substr($tag, 0, 5) != 'i18n.') {
+        if ('i18n.' != substr($tag, 0, 5)) {
             return $tag;
         }
 
         $langType = ProjectTool::getLanguageType();
         $i18nKey = substr($tag, 5);
         $configKey = 'lang_' . $langType . '.' . SY_ENV . SY_PROJECT . '.' . $i18nKey;
+
         return self::getConfig($configKey, '', $i18nKey);
     }
 
     /**
      * 检测IP是否合法
-     * @param string $ip
-     * @return bool
      */
-    public static function checkIp(string $ip) : bool
+    public static function checkIp(string $ip): bool
     {
         return preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $ip) > 0;
     }
 
     /**
      * 检测IP是否在某个网络内
-     * @param string $ip IP地址
+     *
+     * @param string $ip      IP地址
      * @param string $network 网络IP范围,支持固定IP和网段
-     * @return bool
      */
-    public static function checkIpExist(string $ip, string $network) : bool
+    public static function checkIpExist(string $ip, string $network): bool
     {
         if (!self::checkIp($ip)) {
             return false;
         }
 
         $networkArr = explode('/', $network);
-        if (!is_array($networkArr)) {
+        if (!\is_array($networkArr)) {
             return false;
         }
-        if (count($networkArr) > 2) {
+        if (\count($networkArr) > 2) {
             return false;
         }
 
@@ -885,12 +956,13 @@ class Tool
             return false;
         }
 
-        $ipNum = (double)ip2long($ip);
-        $networkIpStart = (double)ip2long($networkIp);
-        $networkIpEnd = $networkIpStart + pow(2, 32 - $networkMaskLength) -1;
+        $ipNum = (float)ip2long($ip);
+        $networkIpStart = (float)ip2long($networkIp);
+        $networkIpEnd = $networkIpStart + pow(2, 32 - $networkMaskLength) - 1;
         if (($ipNum >= $networkIpStart) && ($ipNum <= $networkIpEnd)) {
             return true;
         }
+
         return false;
     }
 }
