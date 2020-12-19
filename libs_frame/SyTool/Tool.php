@@ -5,6 +5,7 @@
  * Date: 2017/3/2 0002
  * Time: 11:18
  */
+
 namespace SyTool;
 
 use DesignPatterns\Factories\CacheSimpleFactory;
@@ -52,27 +53,29 @@ class Tool
 
     /**
      * 生成唯一ID
+     *
      * @param string $createType 生成类型,可选值:redis(默认) swoole
-     * @return string
      */
-    public static function createUniqueId(string $createType = 'redis') : string
+    public static function createUniqueId(string $createType = 'redis'): string
     {
         if ('redis' == $createType) {
             $num = CacheSimpleFactory::getRedisInstance()->incr(Project::DATA_KEY_CACHE_UNIQUE_ID);
 
-            return date('YmdHis') . substr($num, - 8);
+            return date('YmdHis') . substr($num, -8);
         }
         $arr = BaseServer::getUniqueNum();
 
-        return $arr['token'] . date('YmdHis') . substr((string)$arr['unique_num'], - 8);
+        return $arr['token'] . date('YmdHis') . substr((string)$arr['unique_num'], -8);
     }
 
     /**
      * 获取数组值
-     * @param array $array 数组
-     * @param int|string $key 键值
-     * @param object $default 默认值
-     * @param bool $isRecursion 是否递归查找,false:不递归 true:递归
+     *
+     * @param array      $array       数组
+     * @param int|string $key         键值
+     * @param object     $default     默认值
+     * @param bool       $isRecursion 是否递归查找,false:不递归 true:递归
+     *
      * @return mixed
      */
     public static function getArrayVal(array $array, $key, $default = null, bool $isRecursion = false)
@@ -97,9 +100,11 @@ class Tool
 
     /**
      * 获取配置信息
-     * @param string $tag 配置标识
-     * @param string $field 字段名称
-     * @param mixed $default 默认值
+     *
+     * @param string $tag     配置标识
+     * @param string $field   字段名称
+     * @param mixed  $default 默认值
+     *
      * @return mixed
      */
     public static function getConfig(string $tag, string $field = '', $default = null)
@@ -117,12 +122,12 @@ class Tool
 
     /**
      * array转xml
-     * @param array $dataArr
+     *
      * @param int $transferType 转换类型
-     * @return string
+     *
      * @throws \SyException\Common\CheckException
      */
-    public static function arrayToXml(array $dataArr, int $transferType = 1) : string
+    public static function arrayToXml(array $dataArr, int $transferType = 1): string
     {
         if (0 == \count($dataArr)) {
             throw new CheckException('数组为空', ErrorCode::COMMON_PARAM_ERROR);
@@ -154,8 +159,9 @@ class Tool
 
     /**
      * xml转为array
-     * @param string $xml
+     *
      * @return array
+     *
      * @throws \SyException\Common\CheckException
      */
     public static function xmlToArray(string $xml)
@@ -172,11 +178,13 @@ class Tool
 
     /**
      * RSA签名
-     * @param string $data 待签名数据
+     *
+     * @param string $data          待签名数据
      * @param string $priKeyContent 私钥文件内容
+     *
      * @return string 签名结果
      */
-    public static function rsaSign(string $data, string $priKeyContent) : string
+    public static function rsaSign(string $data, string $priKeyContent): string
     {
         $priKey = openssl_get_privatekey($priKeyContent);
         openssl_sign($data, $sign, $priKey);
@@ -187,12 +195,14 @@ class Tool
 
     /**
      * RSA验签
-     * @param string $data 待签名数据
+     *
+     * @param string $data          待签名数据
      * @param string $pubKeyContent 公钥文件内容
-     * @param string $sign 要校对的的签名结果
+     * @param string $sign          要校对的的签名结果
+     *
      * @return bool 验证结果
      */
-    public static function rsaVerify(string $data, string $pubKeyContent, string $sign) : bool
+    public static function rsaVerify(string $data, string $pubKeyContent, string $sign): bool
     {
         $pubKey = openssl_get_publickey($pubKeyContent);
         $result = (bool)openssl_verify($data, base64_decode($sign, true), $pubKey);
@@ -203,12 +213,12 @@ class Tool
 
     /**
      * RSA加密
-     * @param string $data 待加密数据
+     *
+     * @param string $data       待加密数据
      * @param string $keyContent 密钥文件内容,根据模式不同设置公钥或私钥
-     * @param int $mode 模式 0:公钥加密 1:私钥加密
-     * @return string
+     * @param int    $mode       模式 0:公钥加密 1:私钥加密
      */
-    public static function rsaEncrypt(string $data, string $keyContent, int $mode = 0) : string
+    public static function rsaEncrypt(string $data, string $keyContent, int $mode = 0): string
     {
         $dataArr = str_split($data, 117);
         $encryptArr = [];
@@ -234,19 +244,19 @@ class Tool
 
     /**
      * RSA解密
-     * @param string $data 待解密数据
+     *
+     * @param string $data       待解密数据
      * @param string $keyContent 密钥文件内容,根据模式不同设置公钥或私钥
-     * @param int $mode 模式 0:私钥解密 1:公钥解密
-     * @return string
+     * @param int    $mode       模式 0:私钥解密 1:公钥解密
      */
-    public static function rsaDecrypt(string $data, string $keyContent, int $mode = 0) : string
+    public static function rsaDecrypt(string $data, string $keyContent, int $mode = 0): string
     {
         $decryptStr = '';
         $encryptData = base64_decode($data, true);
         $length = \strlen($encryptData) / 128;
         if (0 == $mode) { //私钥解密
             $key = openssl_get_privatekey($keyContent);
-            for ($i = 0; $i < $length; ++ $i) {
+            for ($i = 0; $i < $length; ++$i) {
                 $eDecrypt = '';
                 $eEncrypt = substr($encryptData, $i * 128, 128);
                 openssl_private_decrypt($eEncrypt, $eDecrypt, $key);
@@ -254,7 +264,7 @@ class Tool
             }
         } else { //公钥解密
             $key = openssl_get_publickey($keyContent);
-            for ($i = 0; $i < $length; ++ $i) {
+            for ($i = 0; $i < $length; ++$i) {
                 $eDecrypt = '';
                 $eEncrypt = substr($encryptData, $i * 128, 128);
                 openssl_public_decrypt($eEncrypt, $eDecrypt, $key);
@@ -268,23 +278,27 @@ class Tool
 
     /**
      * md5签名字符串
+     *
      * @param string $needStr 需要签名的字符串
-     * @param string $key 私钥
+     * @param string $key     私钥
+     *
      * @return string 签名结果
      */
-    public static function md5Sign(string $needStr, string $key) : string
+    public static function md5Sign(string $needStr, string $key): string
     {
         return md5($needStr . $key);
     }
 
     /**
      * md5验证签名
+     *
      * @param string $needStr 需要签名的字符串
-     * @param string $sign 签名结果
-     * @param string $key 私钥
+     * @param string $sign    签名结果
+     * @param string $key     私钥
+     *
      * @return bool 签名结果
      */
-    public static function md5Verify(string $needStr, string $sign, string $key) : bool
+    public static function md5Verify(string $needStr, string $sign, string $key): bool
     {
         $nowSign = md5($needStr . $key);
 
@@ -293,12 +307,13 @@ class Tool
 
     /**
      * 加密
+     *
      * @param string $content 待加密内容
-     * @param string $key 密钥
-     * @return string
+     * @param string $key     密钥
+     *
      * @throws \Exception
      */
-    public static function encrypt(string $content, string $key) : string
+    public static function encrypt(string $content, string $key): string
     {
         $iv = self::createNonceStr(16);
         $data = [
@@ -311,8 +326,10 @@ class Tool
 
     /**
      * 解密
+     *
      * @param string $content 密文
-     * @param string $key 密钥
+     * @param string $key     密钥
+     *
      * @return bool|string
      */
     public static function decrypt(string $content, string $key)
@@ -327,9 +344,11 @@ class Tool
 
     /**
      * 获取命令行输入
-     * @param int|string $key 键名
-     * @param bool $isIndexKey 键名是否为索引 true:是索引 false:不是索引
-     * @param mixed $default 默认值
+     *
+     * @param int|string $key        键名
+     * @param bool       $isIndexKey 键名是否为索引 true:是索引 false:不是索引
+     * @param mixed      $default    默认值
+     *
      * @return mixed
      */
     public static function getClientOption($key, bool $isIndexKey = false, $default = null)
@@ -356,7 +375,9 @@ class Tool
 
     /**
      * 压缩数据
+     *
      * @param mixed $data 需要压缩的数据
+     *
      * @return bool|string
      */
     public static function pack($data)
@@ -366,8 +387,10 @@ class Tool
 
     /**
      * 解压数据
-     * @param string $data 压缩数据字符串
+     *
+     * @param string $data      压缩数据字符串
      * @param string $className 解压类型名称
+     *
      * @return mixed
      */
     public static function unpack(string $data, string $className = 'array')
@@ -381,7 +404,9 @@ class Tool
 
     /**
      * 序列化数据
+     *
      * @param mixed $data
+     *
      * @return string
      */
     public static function serialize($data)
@@ -391,8 +416,7 @@ class Tool
 
     /**
      * 反序列化数据
-     * @param string $str
-     * @param string $className
+     *
      * @return mixed
      */
     public static function unserialize(string $str, string $className = 'array')
@@ -406,8 +430,10 @@ class Tool
 
     /**
      * 把数组转移成json字符串
+     *
      * @param array|object $arr
-     * @param int|string $options
+     * @param int|string   $options
+     *
      * @return bool|string
      */
     public static function jsonEncode($arr, $options = JSON_OBJECT_AS_ARRAY)
@@ -421,8 +447,10 @@ class Tool
 
     /**
      * 解析json
-     * @param string $json
+     *
+     * @param string     $json
      * @param int|string $assoc
+     *
      * @return bool|mixed
      */
     public static function jsonDecode($json, $assoc = JSON_OBJECT_AS_ARRAY)
@@ -436,32 +464,33 @@ class Tool
 
     /**
      * 生成随机字符串
-     * @param int $length 需要获取的随机字符串长度
+     *
+     * @param int    $length   需要获取的随机字符串长度
      * @param string $dataType 数据类型<pre>
      *                         total: 数字,大小写字母
      *                         lower: 小写字母
      *                         numlower: 数字,小写字母</pre>
-     * @return string
+     *
      * @throws \Exception
      */
-    public static function createNonceStr(int $length, string $dataType = 'total') : string
+    public static function createNonceStr(int $length, string $dataType = 'total'): string
     {
         $resStr = '';
         switch ($dataType) {
             case 'lower':
-                for ($i = 0; $i < $length; ++ $i) {
+                for ($i = 0; $i < $length; ++$i) {
                     $resStr .= self::$lowerChars[random_int(0, 23)];
                 }
 
                 break;
             case 'numlower':
-                for ($i = 0; $i < $length; ++ $i) {
+                for ($i = 0; $i < $length; ++$i) {
                     $resStr .= self::$numLowerChars[random_int(0, 31)];
                 }
 
                 break;
             default:
-                for ($i = 0; $i < $length; ++ $i) {
+                for ($i = 0; $i < $length; ++$i) {
                     $resStr .= self::$totalChars[random_int(0, 56)];
                 }
         }
@@ -471,7 +500,9 @@ class Tool
 
     /**
      * 获取客户端IP
+     *
      * @param int $model 模式类型 1:从$_SERVER获取 2:从swoole_http_request中获取
+     *
      * @return bool|string
      */
     public static function getClientIP(int $model)
@@ -512,12 +543,13 @@ class Tool
 
     /**
      * 解压zip文件
+     *
      * @param string $file 文件,包括路径和名称
      * @param string $dist 解压目录
-     * @return bool
+     *
      * @throws \Exception
      */
-    public static function extractZip(string $file, string $dist) : bool
+    public static function extractZip(string $file, string $dist): bool
     {
         $zip = null;
 
@@ -555,9 +587,12 @@ class Tool
 
     /**
      * 发送框架http任务请求
-     * @param string $url 请求地址
+     *
+     * @param string $url     请求地址
      * @param string $content 请求内容
+     *
      * @return bool|mixed
+     *
      * @throws \SyException\Common\CheckException
      */
     public static function sendSyHttpTaskReq(string $url, string $content)
@@ -578,12 +613,12 @@ class Tool
 
     /**
      * 发送框架RPC请求
-     * @param string $host 请求域名
-     * @param int $port 请求端口
+     *
+     * @param string $host    请求域名
+     * @param int    $port    请求端口
      * @param string $content 请求内容
-     * @return bool
      */
-    public static function sendSyRpcReq(string $host, int $port, string $content) : bool
+    public static function sendSyRpcReq(string $host, int $port, string $content): bool
     {
         $client = new Client(SWOOLE_SOCK_TCP);
         $client->set([
@@ -612,12 +647,13 @@ class Tool
 
     /**
      * 发送curl请求
-     * @param array $configs 配置数组
-     * @param int $rspHeaderType 响应头类型
-     * @return array
+     *
+     * @param array $configs       配置数组
+     * @param int   $rspHeaderType 响应头类型
+     *
      * @throws \SyException\Common\CheckException
      */
-    public static function sendCurlReq(array $configs, int $rspHeaderType = self::CURL_RSP_HEAD_TYPE_EMPTY) : array
+    public static function sendCurlReq(array $configs, int $rspHeaderType = self::CURL_RSP_HEAD_TYPE_EMPTY): array
     {
         if (!isset(self::$totalCurlRspHeadType[$rspHeaderType])) {
             throw new CheckException('响应头类型不支持', ErrorCode::COMMON_PARAM_ERROR);
@@ -678,20 +714,16 @@ class Tool
 
     /**
      * 获取当前时间戳
-     * @return int
      */
-    public static function getNowTime() : int
+    public static function getNowTime(): int
     {
         return $_SERVER[SyInner::SERVER_DATA_KEY_TIMESTAMP] ?? time();
     }
 
     /**
      * 读取二维码图片
-     * @param string $qrPath
-     * @param string $javaPath
-     * @return array
      */
-    public static function readQrCode(string $qrPath, string $javaPath = '') : array
+    public static function readQrCode(string $qrPath, string $javaPath = ''): array
     {
         $resArr = [
             'code' => 0,
@@ -730,10 +762,10 @@ class Tool
 
     /**
      * 填充补位需要加密的明文
+     *
      * @param string $text 需要加密的明文
-     * @return string
      */
-    public static function pkcs7Encode(string $text) : string
+    public static function pkcs7Encode(string $text): string
     {
         $blockSize = 32;
         $textLength = \strlen($text);
@@ -746,7 +778,7 @@ class Tool
         //获得补位所用的字符
         $needChr = \chr($addLength);
         $tmp = '';
-        for ($i = 0; $i < $addLength; ++ $i) {
+        for ($i = 0; $i < $addLength; ++$i) {
             $tmp .= $needChr;
         }
 
@@ -755,12 +787,12 @@ class Tool
 
     /**
      * 补位删除解密后的明文
+     *
      * @param string $text 解密后的明文
-     * @return string
      */
-    public static function pkcs7Decode(string $text) : string
+    public static function pkcs7Decode(string $text): string
     {
-        $pad = \ord(substr($text, - 1));
+        $pad = \ord(substr($text, -1));
         if (($pad < 1) || ($pad > 32)) {
             $pad = 0;
         }
@@ -770,10 +802,8 @@ class Tool
 
     /**
      * 处理yaf框架需要的URI
-     * @param string $uri
-     * @return string
      */
-    public static function handleYafUri(string &$uri) : string
+    public static function handleYafUri(string &$uri): string
     {
         if ((0 == \strlen($uri)) || ('/' == $uri)) {
             $uri = '/';
@@ -783,8 +813,8 @@ class Tool
         if ('/' != substr($uri, 0, 1)) {
             return 'URI格式错误';
         }
-        if ('/' == substr($uri, - 1)) {
-            $uri = substr($uri, 0, - 1);
+        if ('/' == substr($uri, -1)) {
+            $uri = substr($uri, 0, -1);
         }
 
         $tempArr = explode('/', $uri);
@@ -803,10 +833,8 @@ class Tool
 
     /**
      * 执行系统命令
-     * @param string $command
-     * @return array
      */
-    public static function execSystemCommand(string $command) : array
+    public static function execSystemCommand(string $command): array
     {
         $trueCommand = trim($command);
         if (0 == \strlen($trueCommand)) {
@@ -834,13 +862,15 @@ class Tool
 
     /**
      * 计算两个点之间的经纬度距离
+     *
      * @param float $lng1 起点经度
      * @param float $lat1 起点纬度
      * @param float $lng2 终点经度
      * @param float $lat2 终点纬度
+     *
      * @return int 距离,单位为米
      */
-    public static function getDistance($lng1, $lat1, $lng2, $lat2) : int
+    public static function getDistance($lng1, $lat1, $lng2, $lat2): int
     {
         //将角度转为狐度
         $radLng1 = deg2rad($lng1);
@@ -856,7 +886,9 @@ class Tool
 
     /**
      * 获取国际化文本
+     *
      * @param string $tag 国际化标识
+     *
      * @return string
      */
     public static function getI18nText(string $tag)
@@ -874,21 +906,19 @@ class Tool
 
     /**
      * 检测IP是否合法
-     * @param string $ip
-     * @return bool
      */
-    public static function checkIp(string $ip) : bool
+    public static function checkIp(string $ip): bool
     {
         return preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $ip) > 0;
     }
 
     /**
      * 检测IP是否在某个网络内
-     * @param string $ip IP地址
+     *
+     * @param string $ip      IP地址
      * @param string $network 网络IP范围,支持固定IP和网段
-     * @return bool
      */
-    public static function checkIpExist(string $ip, string $network) : bool
+    public static function checkIpExist(string $ip, string $network): bool
     {
         if (!self::checkIp($ip)) {
             return false;
