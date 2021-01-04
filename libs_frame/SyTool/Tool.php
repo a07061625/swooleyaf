@@ -109,7 +109,7 @@ class Tool
      */
     public static function getConfig(string $tag, string $field = '', $default = null)
     {
-        $configs = \Yaconf::get($tag);
+        $configs = \Yaconf::get(SY_CONFIG_PREFIX . $tag);
         if (null === $configs) {
             return $default;
         }
