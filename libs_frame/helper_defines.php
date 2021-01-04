@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 date_default_timezone_set('PRC');
 define('SY_VERSION', '7.2.0');
 $syLogPath = ini_get('seaslog.default_basepath');
-if (substr($syLogPath, -1) == '/') {
+if ('/' == substr($syLogPath, -1)) {
     define('SY_LOG_PATH', $syLogPath . 'sy' . SY_PROJECT);
 } else {
     define('SY_LOG_PATH', $syLogPath . '/sy' . SY_PROJECT);
@@ -43,7 +43,8 @@ if (!defined('SY_EXPIRE_SESSION_JWT')) {
 }
 if (!is_int(SY_EXPIRE_SESSION_JWT)) {
     exit('jwt会话有效时间必须为整数' . PHP_EOL);
-} elseif (SY_EXPIRE_SESSION_JWT < 3600) {
+}
+if (SY_EXPIRE_SESSION_JWT < 3600) {
     exit('jwt会话有效时间必须不小于3600秒' . PHP_EOL);
 }
 //jwt会话刷新标识有效时间,单位为秒
