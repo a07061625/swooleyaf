@@ -30,9 +30,6 @@ final class Log
             case SEASLOG_DEBUG:
                 \SeasLog::debug($log);
                 break;
-            case SEASLOG_INFO:
-                \SeasLog::info($log);
-                break;
             case SEASLOG_WARNING:
                 \SeasLog::warning($log);
                 break;
