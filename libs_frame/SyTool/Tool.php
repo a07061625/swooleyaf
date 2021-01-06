@@ -447,18 +447,13 @@ class Tool
 
     /**
      * 解析json
-     *
+     * @param string $json
      * @param int|string $assoc
-     *
-     * @return bool|mixed
+     * @return mixed
      */
     public static function jsonDecode(string $json, $assoc = JSON_OBJECT_AS_ARRAY)
     {
-        if (\is_string($json)) {
-            return json_decode($json, $assoc);
-        }
-
-        return false;
+        return json_decode($json, $assoc);
     }
 
     /**
@@ -721,6 +716,9 @@ class Tool
 
     /**
      * 读取二维码图片
+     * @param string $qrPath
+     * @param string $javaPath
+     * @return array
      */
     public static function readQrCode(string $qrPath, string $javaPath = ''): array
     {
@@ -801,6 +799,8 @@ class Tool
 
     /**
      * 处理yaf框架需要的URI
+     * @param string $uri
+     * @return string
      */
     public static function handleYafUri(string &$uri): string
     {
