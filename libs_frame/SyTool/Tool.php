@@ -122,9 +122,9 @@ class Tool
 
     /**
      * array转xml
-     * @param array $dataArr
+     *
      * @param int $transferType 转换类型
-     * @return string
+     *
      * @throws \SyException\Common\CheckException
      */
     public static function arrayToXml(array $dataArr, int $transferType = 1): string
@@ -416,8 +416,7 @@ class Tool
 
     /**
      * 反序列化数据
-     * @param string $str
-     * @param string $className
+     *
      * @return mixed
      */
     public static function unserialize(string $str, string $className = 'array')
@@ -448,8 +447,9 @@ class Tool
 
     /**
      * 解析json
-     * @param string $json
+     *
      * @param int|string $assoc
+     *
      * @return mixed
      */
     public static function jsonDecode(string $json, $assoc = JSON_OBJECT_AS_ARRAY)
@@ -717,9 +717,6 @@ class Tool
 
     /**
      * 读取二维码图片
-     * @param string $qrPath
-     * @param string $javaPath
-     * @return array
      */
     public static function readQrCode(string $qrPath, string $javaPath = ''): array
     {
@@ -831,8 +828,6 @@ class Tool
 
     /**
      * 执行系统命令
-     * @param string $command
-     * @return array
      */
     public static function execSystemCommand(string $command): array
     {
@@ -906,8 +901,6 @@ class Tool
 
     /**
      * 检测IP是否合法
-     * @param string $ip
-     * @return bool
      */
     public static function checkIp(string $ip): bool
     {
