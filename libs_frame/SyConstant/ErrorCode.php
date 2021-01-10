@@ -286,6 +286,12 @@ class ErrorCode
     const OBJECT_STORAGE_KODO_POST_ERROR = 108432;
     const OBJECT_STORAGE_KODO_GET_ERROR = 108433;
 
+    //推广错误,取值范围:108600-108799
+    const PROMOTION_TBK_PARAM_ERROR = 108600;
+    const PROMOTION_TBK_REQ_ERROR = 108601;
+    const PROMOTION_JDK_PARAM_ERROR = 108610;
+    const PROMOTION_JDK_REQ_ERROR = 108611;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -477,6 +483,10 @@ class ErrorCode
         self::OBJECT_STORAGE_KODO_PARAM_ERROR => '七牛云对象存储参数出错',
         self::OBJECT_STORAGE_KODO_POST_ERROR => '七牛云对象存储POST请求出错',
         self::OBJECT_STORAGE_KODO_GET_ERROR => '七牛云对象存储GET请求出错',
+        self::PROMOTION_TBK_PARAM_ERROR => '淘宝客推广参数错误',
+        self::PROMOTION_TBK_REQ_ERROR => '淘宝客推广请求错误',
+        self::PROMOTION_JDK_PARAM_ERROR => '京东客推广参数错误',
+        self::PROMOTION_JDK_REQ_ERROR => '京东客推广请求错误',
     ];
 
     /**
