@@ -5,6 +5,7 @@
  * Date: 2021/1/12 0012
  * Time: 19:08
  */
+
 namespace SyPromotion\TBK\Traits;
 
 use SyConstant\ErrorCode;
@@ -12,6 +13,7 @@ use SyException\Promotion\TBKException;
 
 /**
  * Trait SetPageNo2Trait
+ *
  * @package SyPromotion\TBK\Traits
  */
 trait SetPageNo2Trait
