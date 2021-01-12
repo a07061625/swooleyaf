@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use SyPromotion\TBK\Traits\SetPageSizeTrait;
 
 /**
  * Class NewUserOrderGet
+ *
  * @package SyPromotion\TBK\Provider
  */
 class NewUserOrderGet extends BaseTBK
@@ -80,7 +82,6 @@ class NewUserOrderGet extends BaseTBK
     }
 
     /**
-     * @param int $startTime
      * @throws \SyException\Promotion\TBKException
      */
     public function setStartTime(int $startTime)
@@ -93,7 +94,6 @@ class NewUserOrderGet extends BaseTBK
     }
 
     /**
-     * @param int $endTime
      * @throws \SyException\Promotion\TBKException
      */
     public function setEndTime(int $endTime)
@@ -106,12 +106,11 @@ class NewUserOrderGet extends BaseTBK
     }
 
     /**
-     * @param string $activityId
      * @throws \SyException\Promotion\TBKException
      */
     public function setActivityId(string $activityId)
     {
-        if (strlen($activityId) > 0) {
+        if (\strlen($activityId) > 0) {
             $this->reqData['activity_id'] = $activityId;
         } else {
             throw new TBKException('活动id不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -119,7 +118,6 @@ class NewUserOrderGet extends BaseTBK
     }
 
     /**
-     * @param int $siteId
      * @throws \SyException\Promotion\TBKException
      */
     public function setSiteId(int $siteId)
@@ -131,7 +129,7 @@ class NewUserOrderGet extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['activity_id'])) {
             throw new TBKException('活动id不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

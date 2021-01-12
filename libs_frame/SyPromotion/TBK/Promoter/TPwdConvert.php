@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -15,6 +16,7 @@ use SyPromotion\TBK\Traits\SetDxTrait;
 
 /**
  * Class TPwdConvert
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class TPwdConvert extends BaseTBK
@@ -53,19 +55,18 @@ class TPwdConvert extends BaseTBK
     }
 
     /**
-     * @param string $passwordContent
      * @throws \SyException\Promotion\TBKException
      */
     public function setPasswordContent(string $passwordContent)
     {
-        if (strlen($passwordContent) > 0) {
+        if (\strlen($passwordContent) > 0) {
             $this->reqData['password_content'] = $passwordContent;
         } else {
             throw new TBKException('淘口令不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['password_content'])) {
             throw new TBKException('淘口令不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
