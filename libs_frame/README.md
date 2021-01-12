@@ -43,6 +43,7 @@
 - SyObjectStorage: 对象存储相关
 - SyPay: 支付相关
 - SyPrint: 打印相关
+- SyPromotion: 推广相关
 - SyQr: 二维码相关
 - SyReflection: 反射相关
 - SySCRM: 社会化客户管理相关
