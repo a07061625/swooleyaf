@@ -5,14 +5,12 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
-
 namespace SyPromotion\TBK\Provider;
 
 use SyPromotion\BaseTBK;
 
 /**
  * Class Demo
- *
  * @package SyPromotion\TBK\Provider
  */
 class Demo extends BaseTBK
@@ -27,7 +25,7 @@ class Demo extends BaseTBK
     {
     }
 
-    public function getDetail(): array
+    public function getDetail() : array
     {
         return $this->getContent();
     }
