@@ -484,6 +484,10 @@ class ErrorCode
         self::OBJECT_STORAGE_KODO_PARAM_ERROR => '七牛云对象存储参数出错',
         self::OBJECT_STORAGE_KODO_POST_ERROR => '七牛云对象存储POST请求出错',
         self::OBJECT_STORAGE_KODO_GET_ERROR => '七牛云对象存储GET请求出错',
+        self::PROMOTION_TBK_PARAM_ERROR => '淘宝客推广参数错误',
+        self::PROMOTION_TBK_REQ_ERROR => '淘宝客推广请求错误',
+        self::PROMOTION_JDK_PARAM_ERROR => '京东客推广参数错误',
+        self::PROMOTION_JDK_REQ_ERROR => '京东客推广请求错误',
     ];
 
     /**
