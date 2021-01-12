@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -19,6 +20,7 @@ use SyPromotion\TBK\Traits\SetSubPidTrait;
 
 /**
  * Class ItemShareConvert
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class ItemShareConvert extends BaseTBK
@@ -32,36 +34,43 @@ class ItemShareConvert extends BaseTBK
 
     /**
      * 返回字段列表
+     *
      * @var array
      */
     private $fields = [];
     /**
      * 商品ID列表
+     *
      * @var array
      */
     private $num_iids = [];
     /**
      * 三方pid
+     *
      * @var string
      */
     private $sub_pid = '';
     /**
      * 链接形式 1:PC 2:无线 默认１
+     *
      * @var int
      */
     private $platform = 0;
     /**
      * 广告位ID
+     *
      * @var int
      */
     private $adzone_id = 0;
     /**
      * 计划链接
+     *
      * @var string
      */
     private $dx = '';
     /**
      * 券id
+     *
      * @var string
      */
     private $coupon_id = '';
@@ -79,7 +88,6 @@ class ItemShareConvert extends BaseTBK
     }
 
     /**
-     * @param string $couponId
      * @throws \SyException\Promotion\TBKException
      */
     public function setCouponId(string $couponId)
@@ -91,7 +99,7 @@ class ItemShareConvert extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['fields'])) {
             throw new TBKException('返回字段列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

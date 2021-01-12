@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:38
  */
+
 namespace SyPromotion\TBK\Common;
 
 use SyConstant\ErrorCode;
@@ -13,27 +14,32 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class TPwdCreate
+ *
  * @package SyPromotion\TBK\Common
  */
 class TPwdCreate extends BaseTBK
 {
     /**
      * 淘宝用户ID
+     *
      * @var string
      */
     private $user_id = '';
     /**
      * 口令弹框内容
+     *
      * @var string
      */
     private $text = '';
     /**
      * 口令跳转目标页
+     *
      * @var string
      */
     private $url = '';
     /**
      * 口令弹框logo
+     *
      * @var string
      */
     private $logo = '';
@@ -49,7 +55,6 @@ class TPwdCreate extends BaseTBK
     }
 
     /**
-     * @param string $userId
      * @throws \SyException\Promotion\TBKException
      */
     public function setUserId(string $userId)
@@ -62,12 +67,11 @@ class TPwdCreate extends BaseTBK
     }
 
     /**
-     * @param string $text
      * @throws \SyException\Promotion\TBKException
      */
     public function setText(string $text)
     {
-        if (strlen($text) > 5) {
+        if (\strlen($text) > 5) {
             $this->reqData['text'] = $text;
         } else {
             throw new TBKException('弹框内容不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -75,7 +79,6 @@ class TPwdCreate extends BaseTBK
     }
 
     /**
-     * @param string $url
      * @throws \SyException\Promotion\TBKException
      */
     public function setUrl(string $url)
@@ -88,7 +91,6 @@ class TPwdCreate extends BaseTBK
     }
 
     /**
-     * @param string $logo
      * @throws \SyException\Promotion\TBKException
      */
     public function setLogo(string $logo)
@@ -100,7 +102,7 @@ class TPwdCreate extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['text'])) {
             throw new TBKException('弹框内容不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

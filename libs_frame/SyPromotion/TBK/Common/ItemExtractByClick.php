@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:38
  */
+
 namespace SyPromotion\TBK\Common;
 
 use SyConstant\ErrorCode;
@@ -13,12 +14,14 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class ItemExtractByClick
+ *
  * @package SyPromotion\TBK\Common
  */
 class ItemExtractByClick extends BaseTBK
 {
     /**
      * 推广链接
+     *
      * @var string
      */
     private $click_url = '';
@@ -34,7 +37,6 @@ class ItemExtractByClick extends BaseTBK
     }
 
     /**
-     * @param string $clickUrl
      * @throws \SyException\Promotion\TBKException
      */
     public function setClickUrl(string $clickUrl)
@@ -46,7 +48,7 @@ class ItemExtractByClick extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['click_url'])) {
             throw new TBKException('推广链接不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
