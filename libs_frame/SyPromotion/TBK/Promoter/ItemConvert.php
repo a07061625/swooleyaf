@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -19,6 +20,7 @@ use SyPromotion\TBK\Traits\SetUnidTrait;
 
 /**
  * Class ItemConvert
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class ItemConvert extends BaseTBK
@@ -32,31 +34,37 @@ class ItemConvert extends BaseTBK
 
     /**
      * 返回字段列表
+     *
      * @var array
      */
     private $fields = [];
     /**
      * 商品ID列表
+     *
      * @var array
      */
     private $num_iids = [];
     /**
      * 广告位ID
+     *
      * @var int
      */
     private $adzone_id = 0;
     /**
      * 链接形式 1:PC 2:无线 默认１
+     *
      * @var int
      */
     private $platform = 0;
     /**
      * 推广渠道
+     *
      * @var string
      */
     private $unid = '';
     /**
      * 计划链接
+     *
      * @var string
      */
     private $dx = '';
@@ -73,7 +81,7 @@ class ItemConvert extends BaseTBK
     {
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['fields'])) {
             throw new TBKException('返回字段列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

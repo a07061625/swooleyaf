@@ -5,6 +5,7 @@
  * Date: 2021/1/11 0011
  * Time: 20:29
  */
+
 namespace SyPromotion\TBK\Traits;
 
 use SyConstant\ErrorCode;
@@ -12,12 +13,12 @@ use SyException\Promotion\TBKException;
 
 /**
  * Trait SetPageNoTrait
+ *
  * @package SyPromotion\TBK\Traits
  */
 trait SetPageNoTrait
 {
     /**
-     * @param int $pageNo
      * @throws \SyException\Promotion\TBKException
      */
     public function setPageNo(int $pageNo)

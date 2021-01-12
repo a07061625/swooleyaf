@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use SyPromotion\TBK\Traits\SetPageSizeTrait;
 
 /**
  * Class RebateOrderGet
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class RebateOrderGet extends BaseTBK
@@ -26,26 +28,31 @@ class RebateOrderGet extends BaseTBK
 
     /**
      * 返回字段列表
+     *
      * @var array
      */
     private $fields = [];
     /**
      * 订单结算开始时间
+     *
      * @var int
      */
     private $start_time = 0;
     /**
      * 订单查询时间范围,单位:秒
+     *
      * @var int
      */
     private $span = 0;
     /**
      * 页数
+     *
      * @var int
      */
     private $page_no = 0;
     /**
      * 每页记录数
+     *
      * @var int
      */
     private $page_size = 0;
@@ -62,7 +69,6 @@ class RebateOrderGet extends BaseTBK
     }
 
     /**
-     * @param int $startTime
      * @throws \SyException\Promotion\TBKException
      */
     public function setStartTime(int $startTime)
@@ -75,7 +81,6 @@ class RebateOrderGet extends BaseTBK
     }
 
     /**
-     * @param int $span
      * @throws \SyException\Promotion\TBKException
      */
     public function setSpan(int $span)
@@ -87,7 +92,7 @@ class RebateOrderGet extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['fields'])) {
             throw new TBKException('返回字段列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

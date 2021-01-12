@@ -5,6 +5,7 @@
  * Date: 2021/1/11 0011
  * Time: 20:15
  */
+
 namespace SyPromotion\TBK\Traits;
 
 use SyConstant\ErrorCode;
@@ -12,12 +13,12 @@ use SyException\Promotion\TBKException;
 
 /**
  * Trait SetSubPidTrait
+ *
  * @package SyPromotion\TBK\Traits
  */
 trait SetSubPidTrait
 {
     /**
-     * @param string $subPid
      * @throws \SyException\Promotion\TBKException
      */
     public function setSubPid(string $subPid)

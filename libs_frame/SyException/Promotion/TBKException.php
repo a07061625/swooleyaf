@@ -5,6 +5,7 @@
  * Date: 17-3-31
  * Time: 上午11:14
  */
+
 namespace SyException\Promotion;
 
 use SyException\BaseException;

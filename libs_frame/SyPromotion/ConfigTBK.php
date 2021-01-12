@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 9:55
  */
+
 namespace SyPromotion;
 
 use SyConstant\ErrorCode;
@@ -12,17 +13,20 @@ use SyException\Promotion\TBKException;
 
 /**
  * Class ConfigTBK
+ *
  * @package SyPromotion
  */
 class ConfigTBK
 {
     /**
      * APP KEY
+     *
      * @var string
      */
     private $appKey = '';
     /**
      * APP 密钥
+     *
      * @var string
      */
     private $appSecret = '';
@@ -35,16 +39,12 @@ class ConfigTBK
     {
     }
 
-    /**
-     * @return string
-     */
-    public function getAppKey() : string
+    public function getAppKey(): string
     {
         return $this->appKey;
     }
 
     /**
-     * @param string $appKey
      * @throws \SyException\Promotion\TBKException
      */
     public function setAppKey(string $appKey)
@@ -56,16 +56,12 @@ class ConfigTBK
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getAppSecret() : string
+    public function getAppSecret(): string
     {
         return $this->appSecret;
     }
 
     /**
-     * @param string $appSecret
      * @throws \SyException\Promotion\TBKException
      */
     public function setAppSecret(string $appSecret)

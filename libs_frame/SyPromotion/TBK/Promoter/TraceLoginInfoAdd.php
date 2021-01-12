@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -15,6 +16,7 @@ use SyPromotion\TBK\Traits\SetUniqIdTrait;
 
 /**
  * Class TraceLoginInfoAdd
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class TraceLoginInfoAdd extends BaseTBK
@@ -24,21 +26,25 @@ class TraceLoginInfoAdd extends BaseTBK
 
     /**
      * 淘宝买家昵称
+     *
      * @var string
      */
     private $nick = '';
     /**
      * 买家无线设备唯一永久编号
+     *
      * @var string
      */
     private $uniq_id = '';
     /**
      * 登录时间,单位为毫秒
+     *
      * @var int
      */
     private $login_time = 0;
     /**
      * 平台类型 1:pc 2:mobile 3:TV
+     *
      * @var int
      */
     private $track_id_type = 0;
@@ -54,12 +60,11 @@ class TraceLoginInfoAdd extends BaseTBK
     }
 
     /**
-     * @param string $nick
      * @throws \SyException\Promotion\TBKException
      */
     public function setNick(string $nick)
     {
-        if (strlen($nick) > 0) {
+        if (\strlen($nick) > 0) {
             $this->reqData['nick'] = $nick;
         } else {
             throw new TBKException('买家昵称不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -67,7 +72,6 @@ class TraceLoginInfoAdd extends BaseTBK
     }
 
     /**
-     * @param int $loginTime
      * @throws \SyException\Promotion\TBKException
      */
     public function setLoginTime(int $loginTime)
@@ -79,7 +83,7 @@ class TraceLoginInfoAdd extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['nick'])) {
             throw new TBKException('买家昵称不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

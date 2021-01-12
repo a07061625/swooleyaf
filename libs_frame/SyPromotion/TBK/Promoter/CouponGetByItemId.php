@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -15,6 +16,7 @@ use SyPromotion\TBK\Traits\SetPlatformTrait;
 
 /**
  * Class CouponGetByItemId
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class CouponGetByItemId extends BaseTBK
@@ -24,16 +26,19 @@ class CouponGetByItemId extends BaseTBK
 
     /**
      * 链接形式 1:PC 2:无线 默认１
+     *
      * @var int
      */
     private $platform = 0;
     /**
      * 三方pid
+     *
      * @var string
      */
     private $pid = '';
     /**
      * 商品ID列表
+     *
      * @var array
      */
     private $num_iids = [];
@@ -49,7 +54,6 @@ class CouponGetByItemId extends BaseTBK
     }
 
     /**
-     * @param string $pid
      * @throws \SyException\Promotion\TBKException
      */
     public function setPid(string $pid)
@@ -61,7 +65,7 @@ class CouponGetByItemId extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['pid'])) {
             throw new TBKException('三方pid不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
