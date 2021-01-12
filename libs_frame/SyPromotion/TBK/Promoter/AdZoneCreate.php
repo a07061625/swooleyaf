@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -13,17 +14,20 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class AdZoneCreate
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class AdZoneCreate extends BaseTBK
 {
     /**
      * 网站ID
+     *
      * @var int
      */
     private $site_id = 0;
     /**
      * 广告位名称
+     *
      * @var string
      */
     private $adzone_name = '';
@@ -39,7 +43,6 @@ class AdZoneCreate extends BaseTBK
     }
 
     /**
-     * @param int $siteId
      * @throws \SyException\Promotion\TBKException
      */
     public function setSiteId(int $siteId)
@@ -52,12 +55,11 @@ class AdZoneCreate extends BaseTBK
     }
 
     /**
-     * @param string $adZoneName
      * @throws \SyException\Promotion\TBKException
      */
     public function setAdZoneName(string $adZoneName)
     {
-        $nameLength = strlen($adZoneName);
+        $nameLength = \strlen($adZoneName);
         if (($nameLength > 0) && ($nameLength <= 64)) {
             $this->reqData['adzone_name'] = $adZoneName;
         } else {
@@ -65,7 +67,7 @@ class AdZoneCreate extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['site_id'])) {
             throw new TBKException('网站ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

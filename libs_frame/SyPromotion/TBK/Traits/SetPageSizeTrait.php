@@ -5,6 +5,7 @@
  * Date: 2021/1/11 0011
  * Time: 20:29
  */
+
 namespace SyPromotion\TBK\Traits;
 
 use SyConstant\ErrorCode;
@@ -12,12 +13,12 @@ use SyException\Promotion\TBKException;
 
 /**
  * Trait SetPageSizeTrait
+ *
  * @package SyPromotion\TBK\Traits
  */
 trait SetPageSizeTrait
 {
     /**
-     * @param int $pageSize
      * @throws \SyException\Promotion\TBKException
      */
     public function setPageSize(int $pageSize)

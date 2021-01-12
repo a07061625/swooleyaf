@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:38
  */
+
 namespace SyPromotion\TBK\Common;
 
 use SyConstant\ErrorCode;
@@ -15,6 +16,7 @@ use SyPromotion\TBK\Traits\SetPlatformTrait;
 
 /**
  * Class ItemInfoGet
+ *
  * @package SyPromotion\TBK\Common
  */
 class ItemInfoGet extends BaseTBK
@@ -24,16 +26,19 @@ class ItemInfoGet extends BaseTBK
 
     /**
      * 商品ID列表
+     *
      * @var array
      */
     private $num_iids = [];
     /**
      * 链接形式 1:PC 2:无线 默认１
+     *
      * @var int
      */
     private $platform = 0;
     /**
      * ip地址
+     *
      * @var string
      */
     private $ip = '';
@@ -50,7 +55,6 @@ class ItemInfoGet extends BaseTBK
     }
 
     /**
-     * @param string $ip
      * @throws \SyException\Promotion\TBKException
      */
     public function setIp(string $ip)
@@ -62,7 +66,7 @@ class ItemInfoGet extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['num_iids'])) {
             throw new TBKException('商品ID列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
