@@ -30,7 +30,7 @@ class PromotionConfigSingleton
     /**
      * @return \DesignPatterns\Singletons\PromotionConfigSingleton
      */
-    public static function getInstance()
+    public static function getInstance() : PromotionConfigSingleton
     {
         if (is_null(self::$instance)) {
             self::$instance = new self();
