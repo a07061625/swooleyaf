@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:38
  */
+
 namespace SyPromotion\TBK\Common;
 
 use SyConstant\ErrorCode;
@@ -14,6 +15,7 @@ use SyTool\Tool;
 
 /**
  * Class TPwdMixCreate
+ *
  * @package SyPromotion\TBK\Common
  */
 class TPwdMixCreate extends BaseTBK
@@ -114,27 +116,23 @@ class TPwdMixCreate extends BaseTBK
     }
 
     /**
-     * @param string $password
      * @throws \SyException\Promotion\TBKException
      */
     public function setPassword(string $password)
     {
-        if (strlen($password) > 0) {
+        if (\strlen($password) > 0) {
             $this->reqData['password'] = $password;
         } else {
             throw new TBKException('口令文本不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    /**
-     * @param array $ext
-     */
     public function setExt(array $ext)
     {
         $this->ext = $ext;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['text'])) {
             throw new TBKException('弹框内容不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

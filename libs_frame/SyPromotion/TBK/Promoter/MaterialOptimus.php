@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use SyPromotion\TBK\Traits\SetPageSizeTrait;
 
 /**
  * Class MaterialOptimus
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class MaterialOptimus extends BaseTBK
@@ -104,7 +106,6 @@ class MaterialOptimus extends BaseTBK
     }
 
     /**
-     * @param int $materialId
      * @throws \SyException\Promotion\TBKException
      */
     public function setMaterialId(int $materialId)
@@ -117,24 +118,20 @@ class MaterialOptimus extends BaseTBK
     }
 
     /**
-     * @param string $deviceValue
      * @throws \SyException\Promotion\TBKException
      */
     public function setDeviceValue(string $deviceValue)
     {
-        if (strlen($deviceValue) > 0) {
+        if (\strlen($deviceValue) > 0) {
             $this->reqData['device_value'] = $deviceValue;
         } else {
             throw new TBKException('设备号加密值不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    /**
-     * @param string $deviceEncrypt
-     */
     public function setDeviceEncrypt(string $deviceEncrypt)
     {
-        if (strlen($deviceEncrypt) > 0) {
+        if (\strlen($deviceEncrypt) > 0) {
             $this->reqData['device_encrypt'] = $deviceEncrypt;
         } else {
             unset($this->reqData['device_encrypt']);
@@ -142,12 +139,11 @@ class MaterialOptimus extends BaseTBK
     }
 
     /**
-     * @param string $deviceType
      * @throws \SyException\Promotion\TBKException
      */
     public function setDeviceType(string $deviceType)
     {
-        if (in_array($deviceType, ['IMEI', 'IDFA', 'UTDID', 'OAID'])) {
+        if (\in_array($deviceType, ['IMEI', 'IDFA', 'UTDID', 'OAID'])) {
             $this->reqData['device_type'] = $deviceType;
         } else {
             throw new TBKException('设备号类型不支持', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -155,7 +151,6 @@ class MaterialOptimus extends BaseTBK
     }
 
     /**
-     * @param int $contentId
      * @throws \SyException\Promotion\TBKException
      */
     public function setContentId(int $contentId)
@@ -168,12 +163,11 @@ class MaterialOptimus extends BaseTBK
     }
 
     /**
-     * @param string $contentSource
      * @throws \SyException\Promotion\TBKException
      */
     public function setContentSource(string $contentSource)
     {
-        if (strlen($contentSource) > 0) {
+        if (\strlen($contentSource) > 0) {
             $this->reqData['content_source'] = $contentSource;
         } else {
             throw new TBKException('内容渠道信息不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -181,7 +175,6 @@ class MaterialOptimus extends BaseTBK
     }
 
     /**
-     * @param int $itemId
      * @throws \SyException\Promotion\TBKException
      */
     public function setItemId(int $itemId)
@@ -194,7 +187,6 @@ class MaterialOptimus extends BaseTBK
     }
 
     /**
-     * @param string $favoritesId
      * @throws \SyException\Promotion\TBKException
      */
     public function setFavoritesId(string $favoritesId)
@@ -206,7 +198,7 @@ class MaterialOptimus extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['adzone_id'])) {
             throw new TBKException('广告位ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

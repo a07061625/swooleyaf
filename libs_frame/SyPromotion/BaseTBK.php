@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:00
  */
+
 namespace SyPromotion;
 
 use DesignPatterns\Singletons\PromotionConfigSingleton;
@@ -12,6 +13,7 @@ use SyTaoBao\ServiceBase;
 
 /**
  * Class BaseTBK
+ *
  * @package SyPromotion
  */
 abstract class BaseTBK extends ServiceBase
