@@ -1,6 +1,6 @@
 <?php
 /**
- * 商品链接转换
+ * 转换商品三方分成链接
  * User: 姜伟
  * Date: 2021/1/10 0010
  * Time: 10:40
@@ -15,20 +15,20 @@ use SyPromotion\TBK\Traits\SetDxTrait;
 use SyPromotion\TBK\Traits\SetFieldsTrait;
 use SyPromotion\TBK\Traits\SetNumIidsTrait;
 use SyPromotion\TBK\Traits\SetPlatformTrait;
-use SyPromotion\TBK\Traits\SetUnidTrait;
+use SyPromotion\TBK\Traits\SetSubPidTrait;
 
 /**
- * Class ItemConvert
+ * Class ItemShareConvert
  * @package SyPromotion\TBK\Promoter
  */
-class ItemConvert extends BaseTBK
+class ItemShareConvert extends BaseTBK
 {
     use SetFieldsTrait;
     use SetNumIidsTrait;
-    use SetAdZoneIdTrait;
+    use SetSubPidTrait;
     use SetPlatformTrait;
+    use SetAdZoneIdTrait;
     use SetDxTrait;
-    use SetUnidTrait;
 
     /**
      * 返回字段列表
@@ -41,36 +41,54 @@ class ItemConvert extends BaseTBK
      */
     private $num_iids = [];
     /**
-     * 广告位ID
-     * @var int
+     * 三方pid
+     * @var string
      */
-    private $adzone_id = 0;
+    private $sub_pid = '';
     /**
      * 链接形式 1:PC 2:无线 默认１
      * @var int
      */
     private $platform = 0;
     /**
-     * 推广渠道
-     * @var string
+     * 广告位ID
+     * @var int
      */
-    private $unid = '';
+    private $adzone_id = 0;
     /**
      * 计划链接
      * @var string
      */
     private $dx = '';
+    /**
+     * 券id
+     * @var string
+     */
+    private $coupon_id = '';
 
     public function __construct()
     {
         parent::__construct();
-        $this->setMethod('taobao.tbk.item.convert');
+        $this->setMethod('taobao.tbk.item.share.convert');
         $this->reqData['platform'] = 1;
         $this->reqData['dx'] = '1';
     }
 
     private function __clone()
     {
+    }
+
+    /**
+     * @param string $couponId
+     * @throws \SyException\Promotion\TBKException
+     */
+    public function setCouponId(string $couponId)
+    {
+        if (ctype_alnum($couponId)) {
+            $this->reqData['coupon_id'] = $couponId;
+        } else {
+            throw new TBKException('券id不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
+        }
     }
 
     public function getDetail() : array
@@ -80,6 +98,9 @@ class ItemConvert extends BaseTBK
         }
         if (!isset($this->reqData['num_iids'])) {
             throw new TBKException('商品ID列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
+        }
+        if (!isset($this->reqData['sub_pid'])) {
+            throw new TBKException('三方pid不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
         if (!isset($this->reqData['adzone_id'])) {
             throw new TBKException('广告位ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

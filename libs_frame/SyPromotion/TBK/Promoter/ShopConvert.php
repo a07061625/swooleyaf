@@ -1,6 +1,6 @@
 <?php
 /**
- * 商品链接转换
+ * 转换店铺链接
  * User: 姜伟
  * Date: 2021/1/10 0010
  * Time: 10:40
@@ -11,23 +11,19 @@ use SyConstant\ErrorCode;
 use SyException\Promotion\TBKException;
 use SyPromotion\BaseTBK;
 use SyPromotion\TBK\Traits\SetAdZoneIdTrait;
-use SyPromotion\TBK\Traits\SetDxTrait;
 use SyPromotion\TBK\Traits\SetFieldsTrait;
-use SyPromotion\TBK\Traits\SetNumIidsTrait;
 use SyPromotion\TBK\Traits\SetPlatformTrait;
 use SyPromotion\TBK\Traits\SetUnidTrait;
 
 /**
- * Class ItemConvert
+ * Class ShopConvert
  * @package SyPromotion\TBK\Promoter
  */
-class ItemConvert extends BaseTBK
+class ShopConvert extends BaseTBK
 {
     use SetFieldsTrait;
-    use SetNumIidsTrait;
-    use SetAdZoneIdTrait;
     use SetPlatformTrait;
-    use SetDxTrait;
+    use SetAdZoneIdTrait;
     use SetUnidTrait;
 
     /**
@@ -36,41 +32,54 @@ class ItemConvert extends BaseTBK
      */
     private $fields = [];
     /**
-     * 商品ID列表
+     * 卖家ID列表
      * @var array
      */
-    private $num_iids = [];
-    /**
-     * 广告位ID
-     * @var int
-     */
-    private $adzone_id = 0;
+    private $user_ids = [];
     /**
      * 链接形式 1:PC 2:无线 默认１
      * @var int
      */
     private $platform = 0;
     /**
+     * 广告位ID
+     * @var int
+     */
+    private $adzone_id = 0;
+    /**
      * 推广渠道
      * @var string
      */
     private $unid = '';
-    /**
-     * 计划链接
-     * @var string
-     */
-    private $dx = '';
 
     public function __construct()
     {
         parent::__construct();
-        $this->setMethod('taobao.tbk.item.convert');
+        $this->setMethod('taobao.tbk.shop.convert');
         $this->reqData['platform'] = 1;
-        $this->reqData['dx'] = '1';
     }
 
     private function __clone()
     {
+    }
+
+    /**
+     * @param array $userIds
+     * @throws \SyException\Promotion\TBKException
+     */
+    public function setUserIds(array $userIds)
+    {
+        $userIdList = [];
+        foreach ($userIds as $eUserId) {
+            if (is_int($eUserId) && ($eUserId > 0)) {
+                $userIdList[$eUserId] = 1;
+            }
+        }
+        if (empty($userIdList)) {
+            throw new TBKException('卖家ID列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
+        }
+
+        $this->reqData['user_ids'] = implode(',', array_keys($userIdList));
     }
 
     public function getDetail() : array
@@ -78,8 +87,8 @@ class ItemConvert extends BaseTBK
         if (!isset($this->reqData['fields'])) {
             throw new TBKException('返回字段列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
-        if (!isset($this->reqData['num_iids'])) {
-            throw new TBKException('商品ID列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
+        if (!isset($this->reqData['user_ids'])) {
+            throw new TBKException('卖家ID列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
         if (!isset($this->reqData['adzone_id'])) {
             throw new TBKException('广告位ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

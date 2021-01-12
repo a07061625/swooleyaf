@@ -10,6 +10,8 @@ namespace SyPromotion\TBK\Promoter;
 use SyConstant\ErrorCode;
 use SyException\Promotion\TBKException;
 use SyPromotion\BaseTBK;
+use SyPromotion\TBK\Traits\SetTrackIdTypeTrait;
+use SyPromotion\TBK\Traits\SetUniqIdTrait;
 
 /**
  * Class TraceLoginInfoAdd
@@ -17,6 +19,9 @@ use SyPromotion\BaseTBK;
  */
 class TraceLoginInfoAdd extends BaseTBK
 {
+    use SetUniqIdTrait;
+    use SetTrackIdTypeTrait;
+
     /**
      * 淘宝买家昵称
      * @var string
@@ -62,19 +67,6 @@ class TraceLoginInfoAdd extends BaseTBK
     }
 
     /**
-     * @param string $uniqId
-     * @throws \SyException\Promotion\TBKException
-     */
-    public function setUniqId(string $uniqId)
-    {
-        if (strlen($uniqId) > 0) {
-            $this->reqData['uniq_id'] = $uniqId;
-        } else {
-            throw new TBKException('设备编号不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
-        }
-    }
-
-    /**
      * @param int $loginTime
      * @throws \SyException\Promotion\TBKException
      */
@@ -84,19 +76,6 @@ class TraceLoginInfoAdd extends BaseTBK
             $this->reqData['login_time'] = $loginTime * 1000;
         } else {
             throw new TBKException('登录时间不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
-        }
-    }
-
-    /**
-     * @param int $trackIdType
-     * @throws \SyException\Promotion\TBKException
-     */
-    public function setTrackIdType(int $trackIdType)
-    {
-        if (in_array($trackIdType, [1, 2, 3])) {
-            $this->reqData['track_id_type'] = $trackIdType;
-        } else {
-            throw new TBKException('平台类型不支持', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
