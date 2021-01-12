@@ -5,6 +5,7 @@
  * Date: 2019/6/18 0018
  * Time: 16:42
  */
+
 namespace DesignPatterns\Singletons;
 
 use SyPromotion\ConfigTBK;
@@ -17,11 +18,11 @@ class PromotionConfigSingleton
     /**
      * @var \SyPromotion\ConfigJDK
      */
-    private $jdkConfig = null;
+    private $jdkConfig;
     /**
      * @var \SyPromotion\ConfigTBK
      */
-    private $tbkConfig = null;
+    private $tbkConfig;
 
     private function __construct()
     {
@@ -30,9 +31,9 @@ class PromotionConfigSingleton
     /**
      * @return \DesignPatterns\Singletons\PromotionConfigSingleton
      */
-    public static function getInstance() : PromotionConfigSingleton
+    public static function getInstance(): self
     {
-        if (is_null(self::$instance)) {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
 
@@ -41,11 +42,12 @@ class PromotionConfigSingleton
 
     /**
      * @return \SyPromotion\ConfigTBK
+     *
      * @throws \SyException\Promotion\TBKException
      */
     public function getTBKConfig()
     {
-        if (is_null($this->tbkConfig)) {
+        if (null === $this->tbkConfig) {
             $configs = Tool::getConfig('promotion.' . SY_ENV . SY_PROJECT);
             $tbkConfig = new ConfigTBK();
             $tbkConfig->setAppKey((string)Tool::getArrayVal($configs, 'tbk.app.key', '', true));
