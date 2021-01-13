@@ -5,6 +5,7 @@
  * Date: 2021/1/13 0013
  * Time: 16:52
  */
+
 namespace SyPromotion\TBK\Traits;
 
 use SyConstant\ErrorCode;
@@ -12,12 +13,12 @@ use SyException\Promotion\TBKException;
 
 /**
  * Trait SetMaterialIdTrait
+ *
  * @package SyPromotion\TBK\Traits
  */
 trait SetMaterialIdTrait
 {
     /**
-     * @param int $materialId
      * @throws \SyException\Promotion\TBKException
      */
     public function setMaterialId(int $materialId)
