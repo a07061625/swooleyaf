@@ -1,12 +1,11 @@
 <?php
 /**
- * 获取指定物料信息和推广链接
+ * 物料精选
  * User: 姜伟
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
-
-namespace SyPromotion\TBK\Promoter;
+namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
 use SyException\Promotion\TBKException;
@@ -18,11 +17,11 @@ use SyPromotion\TBK\Traits\SetDeviceValueTrait;
 use SyPromotion\TBK\Traits\SetMaterialIdTrait;
 use SyPromotion\TBK\Traits\SetPageNo2Trait;
 use SyPromotion\TBK\Traits\SetPageSizeTrait;
+use SyPromotion\TBK\Traits\SetSiteIdTrait;
 
 /**
  * Class MaterialOptimus
- *
- * @package SyPromotion\TBK\Promoter
+ * @package SyPromotion\TBK\Provider
  */
 class MaterialOptimus extends BaseTBK
 {
@@ -30,6 +29,7 @@ class MaterialOptimus extends BaseTBK
     use SetPageSizeTrait;
     use SetAdZoneIdTrait;
     use SetMaterialIdTrait;
+    use SetSiteIdTrait;
     use SetDeviceValueTrait;
     use SetDeviceEncryptTrait;
     use SetDeviceTypeTrait;
@@ -58,6 +58,12 @@ class MaterialOptimus extends BaseTBK
      * @var int
      */
     private $material_id = 0;
+    /**
+     * 站点ID
+     *
+     * @var int
+     */
+    private $site_id = 0;
     /**
      * 设备号加密值
      *
@@ -94,17 +100,11 @@ class MaterialOptimus extends BaseTBK
      * @var int
      */
     private $item_id = 0;
-    /**
-     * 选品库投放ID
-     *
-     * @var string
-     */
-    private $favorites_id = '';
 
     public function __construct()
     {
         parent::__construct();
-        $this->setMethod('taobao.tbk.dg.optimus.material');
+        $this->setMethod('taobao.tbk.sc.optimus.material');
         $this->reqData['page_no'] = 1;
         $this->reqData['page_size'] = 20;
     }
@@ -149,25 +149,16 @@ class MaterialOptimus extends BaseTBK
         }
     }
 
-    /**
-     * @throws \SyException\Promotion\TBKException
-     */
-    public function setFavoritesId(string $favoritesId)
-    {
-        if (ctype_alnum($favoritesId)) {
-            $this->reqData['favorites_id'] = $favoritesId;
-        } else {
-            throw new TBKException('选品库投放ID不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
-        }
-    }
-
-    public function getDetail(): array
+    public function getDetail() : array
     {
         if (!isset($this->reqData['adzone_id'])) {
             throw new TBKException('广告位ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
         if (!isset($this->reqData['material_id'])) {
             throw new TBKException('物料ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
+        }
+        if (!isset($this->reqData['site_id'])) {
+            throw new TBKException('站点ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
 
         return $this->getContent();
