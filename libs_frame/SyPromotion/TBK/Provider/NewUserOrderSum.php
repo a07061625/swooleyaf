@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -17,6 +18,7 @@ use SyPromotion\TBK\Traits\SetSiteIdTrait;
 
 /**
  * Class NewUserOrderSum
+ *
  * @package SyPromotion\TBK\Provider
  */
 class NewUserOrderSum extends BaseTBK
@@ -76,12 +78,11 @@ class NewUserOrderSum extends BaseTBK
     }
 
     /**
-     * @param string $activityId
      * @throws \SyException\Promotion\TBKException
      */
     public function setActivityId(string $activityId)
     {
-        if (strlen($activityId) > 0) {
+        if (\strlen($activityId) > 0) {
             $this->reqData['activity_id'] = $activityId;
         } else {
             throw new TBKException('活动ID不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -89,19 +90,18 @@ class NewUserOrderSum extends BaseTBK
     }
 
     /**
-     * @param string $settleMonth
      * @throws \SyException\Promotion\TBKException
      */
     public function setSettleMonth(string $settleMonth)
     {
-        if (ctype_digit($settleMonth) && (strlen($settleMonth) == 6)) {
+        if (ctype_digit($settleMonth) && (6 == \strlen($settleMonth))) {
             $this->reqData['settle_month'] = $settleMonth;
         } else {
             throw new TBKException('结算月份不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['activity_id'])) {
             throw new TBKException('活动ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

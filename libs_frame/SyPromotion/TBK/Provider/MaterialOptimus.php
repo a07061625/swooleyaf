@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -21,6 +22,7 @@ use SyPromotion\TBK\Traits\SetSiteIdTrait;
 
 /**
  * Class MaterialOptimus
+ *
  * @package SyPromotion\TBK\Provider
  */
 class MaterialOptimus extends BaseTBK
@@ -149,7 +151,7 @@ class MaterialOptimus extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['adzone_id'])) {
             throw new TBKException('广告位ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

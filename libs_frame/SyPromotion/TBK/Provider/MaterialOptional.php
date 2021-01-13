@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -22,6 +23,7 @@ use SyPromotion\TBK\Traits\SetSiteIdTrait;
 
 /**
  * Class MaterialOptional
+ *
  * @package SyPromotion\TBK\Provider
  */
 class MaterialOptional extends BaseTBK
@@ -74,6 +76,7 @@ class MaterialOptional extends BaseTBK
     private $start_tk_rate = 0;
     /**
      * 最高折扣价
+     *
      * @var float
      */
     private $end_price = 0.0;
@@ -284,7 +287,6 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param int $startDsr
      * @throws \SyException\Promotion\TBKException
      */
     public function setStartDsr(int $startDsr)
@@ -297,7 +299,6 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param int $endTkRate
      * @throws \SyException\Promotion\TBKException
      */
     public function setEndTkRate(int $endTkRate)
@@ -310,7 +311,6 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param int $startTkRate
      * @throws \SyException\Promotion\TBKException
      */
     public function setStartTkRate(int $startTkRate)
@@ -323,7 +323,6 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param float $endPrice
      * @throws \SyException\Promotion\TBKException
      */
     public function setEndPrice(float $endPrice)
@@ -336,7 +335,6 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param float $startPrice
      * @throws \SyException\Promotion\TBKException
      */
     public function setStartPrice(float $startPrice)
@@ -348,33 +346,25 @@ class MaterialOptional extends BaseTBK
         }
     }
 
-    /**
-     * @param bool $isOverseas
-     */
     public function setIsOverseas(bool $isOverseas)
     {
         $this->reqData['is_overseas'] = $isOverseas;
     }
 
-    /**
-     * @param bool $isTmall
-     */
     public function setIsTmall(bool $isTmall)
     {
         $this->reqData['is_tmall'] = $isTmall;
     }
 
     /**
-     * @param string $sortField
-     * @param string $sortType
      * @throws \SyException\Promotion\TBKException
      */
     public function setSort(string $sortField, string $sortType)
     {
-        if (!in_array($sortField, ['total_sales', 'tk_rate', 'tk_total_sales', 'tk_total_commi', 'price'])) {
+        if (!\in_array($sortField, ['total_sales', 'tk_rate', 'tk_total_sales', 'tk_total_commi', 'price'])) {
             throw new TBKException('排序字段不支持', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
-        if (!in_array($sortType, ['asc', 'des'])) {
+        if (!\in_array($sortType, ['asc', 'des'])) {
             throw new TBKException('排序类型不支持', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
 
@@ -382,12 +372,11 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param string $itemLoc
      * @throws \SyException\Promotion\TBKException
      */
     public function setItemLoc(string $itemLoc)
     {
-        if (strlen($itemLoc) > 0) {
+        if (\strlen($itemLoc) > 0) {
             $this->reqData['itemloc'] = $itemLoc;
         } else {
             throw new TBKException('所在地不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -395,21 +384,21 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param array $cats
      * @throws \SyException\Promotion\TBKException
      */
     public function setCat(array $cats)
     {
         $catList = [];
         foreach ($cats as $eCat) {
-            if (is_int($eCat) && ($eCat > 0)) {
+            if (\is_int($eCat) && ($eCat > 0)) {
                 $catList[$eCat] = 1;
             }
         }
-        $catLength = count($catList);
-        if ($catLength == 0) {
+        $catLength = \count($catList);
+        if (0 == $catLength) {
             throw new TBKException('后台类目ID列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
-        } elseif ($catLength > 10) {
+        }
+        if ($catLength > 10) {
             throw new TBKException('后台类目ID列表不能超过10个', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
 
@@ -417,28 +406,23 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param string $keyword
      * @throws \SyException\Promotion\TBKException
      */
     public function setKeyword(string $keyword)
     {
-        if (strlen($keyword) > 0) {
+        if (\strlen($keyword) > 0) {
             $this->reqData['q'] = $keyword;
         } else {
             throw new TBKException('查询关键词不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    /**
-     * @param bool $hasCoupon
-     */
     public function setHasCoupon(bool $hasCoupon)
     {
         $this->reqData['has_coupon'] = $hasCoupon;
     }
 
     /**
-     * @param string $ip
      * @throws \SyException\Promotion\TBKException
      */
     public function setIp(string $ip)
@@ -450,53 +434,37 @@ class MaterialOptional extends BaseTBK
         }
     }
 
-    /**
-     * @param bool $includeRfdRate
-     */
     public function setIncludeRfdRate(bool $includeRfdRate)
     {
         $this->reqData['include_rfd_rate'] = $includeRfdRate;
     }
 
-    /**
-     * @param bool $includeGoodRate
-     */
     public function setIncludeGoodRate(bool $includeGoodRate)
     {
         $this->reqData['include_good_rate'] = $includeGoodRate;
     }
 
-    /**
-     * @param bool $includePayRate30
-     */
     public function setIncludePayRate30(bool $includePayRate30)
     {
         $this->reqData['include_pay_rate_30'] = $includePayRate30;
     }
 
-    /**
-     * @param bool $needPrepay
-     */
     public function setNeedPrepay(bool $needPrepay)
     {
         $this->reqData['need_prepay'] = $needPrepay;
     }
 
-    /**
-     * @param bool $needFreeShipment
-     */
     public function setNeedFreeShipment(bool $needFreeShipment)
     {
         $this->reqData['need_free_shipment'] = $needFreeShipment;
     }
 
     /**
-     * @param int $npxLevel
      * @throws \SyException\Promotion\TBKException
      */
     public function setNpxLevel(int $npxLevel)
     {
-        if (in_array($npxLevel, [1, 2, 3])) {
+        if (\in_array($npxLevel, [1, 2, 3])) {
             $this->reqData['npx_level'] = $npxLevel;
         } else {
             throw new TBKException('牛皮癣程度不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -504,7 +472,6 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param int $endKaTkRate
      * @throws \SyException\Promotion\TBKException
      */
     public function setEndKaTkRate(int $endKaTkRate)
@@ -517,7 +484,6 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param int $startKaTkRate
      * @throws \SyException\Promotion\TBKException
      */
     public function setStartKaTkRate(int $startKaTkRate)
@@ -530,7 +496,6 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param int $lockRateEndTime
      * @throws \SyException\Promotion\TBKException
      */
     public function setLockRateEndTime(int $lockRateEndTime)
@@ -543,7 +508,6 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param int $lockRateStartTime
      * @throws \SyException\Promotion\TBKException
      */
     public function setLockRateStartTime(int $lockRateStartTime)
@@ -556,21 +520,21 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param array $sellerIds
      * @throws \SyException\Promotion\TBKException
      */
     public function setSellerIds(array $sellerIds)
     {
         $sellerIdList = [];
         foreach ($sellerIds as $eSellerId) {
-            if (is_int($eSellerId) && ($eSellerId > 0)) {
+            if (\is_int($eSellerId) && ($eSellerId > 0)) {
                 $sellerIdList[$eSellerId] = 1;
             }
         }
-        $sellerLength = count($sellerIdList);
-        if ($sellerLength == 0) {
+        $sellerLength = \count($sellerIdList);
+        if (0 == $sellerLength) {
             throw new TBKException('商家ID列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
-        } elseif ($sellerLength > 100) {
+        }
+        if ($sellerLength > 100) {
             throw new TBKException('商家ID列表不能超过100个', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
 
@@ -578,7 +542,6 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param string $cityCode
      * @throws \SyException\Promotion\TBKException
      */
     public function setCityCode(string $cityCode)
@@ -591,12 +554,11 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param string $latitude
      * @throws \SyException\Promotion\TBKException
      */
     public function setLatitude(string $latitude)
     {
-        if (is_numeric($latitude) && ($latitude >= - 90) && ($latitude <= 90)) {
+        if (is_numeric($latitude) && ($latitude >= -90) && ($latitude <= 90)) {
             $this->reqData['latitude'] = $latitude;
         } else {
             throw new TBKException('纬度不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -604,12 +566,11 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param string $longitude
      * @throws \SyException\Promotion\TBKException
      */
     public function setLongitude(string $longitude)
     {
-        if (is_numeric($longitude) && ($longitude >= - 180) && ($longitude <= 180)) {
+        if (is_numeric($longitude) && ($longitude >= -180) && ($longitude <= 180)) {
             $this->reqData['longitude'] = $longitude;
         } else {
             throw new TBKException('经度不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -617,12 +578,11 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param string $relationId
      * @throws \SyException\Promotion\TBKException
      */
     public function setRelationId(string $relationId)
     {
-        if (strlen($relationId) > 0) {
+        if (\strlen($relationId) > 0) {
             $this->reqData['relation_id'] = $relationId;
         } else {
             throw new TBKException('渠道关系ID不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -630,12 +590,11 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param string $specialId
      * @throws \SyException\Promotion\TBKException
      */
     public function setSpecialId(string $specialId)
     {
-        if (strlen($specialId) > 0) {
+        if (\strlen($specialId) > 0) {
             $this->reqData['special_id'] = $specialId;
         } else {
             throw new TBKException('会员运营ID不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -643,19 +602,18 @@ class MaterialOptional extends BaseTBK
     }
 
     /**
-     * @param string $pageResultKey
      * @throws \SyException\Promotion\TBKException
      */
     public function setPageResultKey(string $pageResultKey)
     {
-        if (strlen($pageResultKey) > 0) {
+        if (\strlen($pageResultKey) > 0) {
             $this->reqData['page_result_key'] = $pageResultKey;
         } else {
             throw new TBKException('分页标识不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['adzone_id'])) {
             throw new TBKException('广告位ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
