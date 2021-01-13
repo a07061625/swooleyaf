@@ -5,10 +5,12 @@
  * Date: 2021/1/13 0013
  * Time: 16:49
  */
+
 namespace SyPromotion\TBK\Traits;
 
 /**
  * Trait SetDeviceEncryptTrait
+ *
  * @package SyPromotion\TBK\Traits
  */
 trait SetDeviceEncryptTrait

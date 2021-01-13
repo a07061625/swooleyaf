@@ -5,6 +5,7 @@
  * Date: 2021/1/13 0013
  * Time: 16:49
  */
+
 namespace SyPromotion\TBK\Traits;
 
 use SyConstant\ErrorCode;
@@ -12,6 +13,7 @@ use SyException\Promotion\TBKException;
 
 /**
  * Trait SetDeviceTypeTrait
+ *
  * @package SyPromotion\TBK\Traits
  */
 trait SetDeviceTypeTrait
