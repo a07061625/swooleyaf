@@ -11,6 +11,7 @@ namespace SyPromotion\TBK\Promoter;
 use SyConstant\ErrorCode;
 use SyException\Promotion\TBKException;
 use SyPromotion\BaseTBK;
+use SyPromotion\TBK\Traits\SetSiteIdTrait;
 
 /**
  * Class AdZoneCreate
@@ -19,6 +20,8 @@ use SyPromotion\BaseTBK;
  */
 class AdZoneCreate extends BaseTBK
 {
+    use SetSiteIdTrait;
+
     /**
      * 网站ID
      *
@@ -40,18 +43,6 @@ class AdZoneCreate extends BaseTBK
 
     private function __clone()
     {
-    }
-
-    /**
-     * @throws \SyException\Promotion\TBKException
-     */
-    public function setSiteId(int $siteId)
-    {
-        if ($siteId > 0) {
-            $this->reqData['site_id'] = $siteId;
-        } else {
-            throw new TBKException('网站ID不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
-        }
     }
 
     /**
