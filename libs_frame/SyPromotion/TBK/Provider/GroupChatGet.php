@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 查询手淘群
  * User: 姜伟
  * Date: 2021/1/10 0010
  * Time: 10:40
@@ -10,15 +10,15 @@ namespace SyPromotion\TBK\Provider;
 use SyPromotion\BaseTBK;
 
 /**
- * Class Demo
+ * Class GroupChatGet
  * @package SyPromotion\TBK\Provider
  */
-class Demo extends BaseTBK
+class GroupChatGet extends BaseTBK
 {
     public function __construct()
     {
         parent::__construct();
-        $this->setMethod('111111');
+        $this->setMethod('taobao.tbk.sc.groupchat.get');
     }
 
     private function __clone()
