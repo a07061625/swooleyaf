@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -14,6 +15,7 @@ use SyPromotion\TBK\Traits\SetAdZoneIdTrait;
 
 /**
  * Class VegasTljCreate
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class VegasTljCreate extends BaseTBK
@@ -118,12 +120,11 @@ class VegasTljCreate extends BaseTBK
     }
 
     /**
-     * @param string $campaignType
      * @throws \SyException\Promotion\TBKException
      */
     public function setCampaignType(string $campaignType)
     {
-        if (in_array($campaignType, ['DX', 'LINK_EVENT', 'MKT'])) {
+        if (\in_array($campaignType, ['DX', 'LINK_EVENT', 'MKT'])) {
             $this->reqData['campaign_type'] = $campaignType;
         } else {
             throw new TBKException('CPS佣金计划类型不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -131,7 +132,6 @@ class VegasTljCreate extends BaseTBK
     }
 
     /**
-     * @param int $itemId
      * @throws \SyException\Promotion\TBKException
      */
     public function setItemId(int $itemId)
@@ -144,7 +144,6 @@ class VegasTljCreate extends BaseTBK
     }
 
     /**
-     * @param int $totalNum
      * @throws \SyException\Promotion\TBKException
      */
     public function setTotalNum(int $totalNum)
@@ -157,12 +156,11 @@ class VegasTljCreate extends BaseTBK
     }
 
     /**
-     * @param string $name
      * @throws \SyException\Promotion\TBKException
      */
     public function setName(string $name)
     {
-        $nameLength = strlen($name);
+        $nameLength = \strlen($name);
         if (($nameLength > 0) && ($nameLength <= 10)) {
             $this->reqData['name'] = $name;
         } else {
@@ -171,7 +169,6 @@ class VegasTljCreate extends BaseTBK
     }
 
     /**
-     * @param int $userTotalWinNumLimit
      * @throws \SyException\Promotion\TBKException
      */
     public function setUserTotalWinNumLimit(int $userTotalWinNumLimit)
@@ -183,16 +180,12 @@ class VegasTljCreate extends BaseTBK
         }
     }
 
-    /**
-     * @param bool $securitySwitch
-     */
     public function setSecuritySwitch(bool $securitySwitch)
     {
         $this->reqData['security_switch'] = $securitySwitch;
     }
 
     /**
-     * @param int $perFace
      * @throws \SyException\Promotion\TBKException
      */
     public function setPerFace(int $perFace)
@@ -205,7 +198,6 @@ class VegasTljCreate extends BaseTBK
     }
 
     /**
-     * @param int $sendStartTime
      * @throws \SyException\Promotion\TBKException
      */
     public function setSendStartTime(int $sendStartTime)
@@ -218,7 +210,6 @@ class VegasTljCreate extends BaseTBK
     }
 
     /**
-     * @param int $sendEndTime
      * @throws \SyException\Promotion\TBKException
      */
     public function setSendEndTime(int $sendEndTime)
@@ -231,16 +222,14 @@ class VegasTljCreate extends BaseTBK
     }
 
     /**
-     * @param int $mode
-     * @param int $time
      * @throws \SyException\Promotion\TBKException
      */
     public function setUseEndTime(int $mode, int $time)
     {
-        if (($mode == 1) && ($time >= 1) && ($time <= 7)) {
+        if ((1 == $mode) && ($time >= 1) && ($time <= 7)) {
             $this->reqData['use_end_time'] = $time;
             $this->reqData['use_end_time_mode'] = $mode;
-        } elseif (($mode == 2) && ($time > 1262275200)) {
+        } elseif ((2 == $mode) && ($time > 1262275200)) {
             $this->reqData['use_end_time'] = date('Y-m-d', $time);
             $this->reqData['use_end_time_mode'] = $mode;
         } else {
@@ -249,7 +238,6 @@ class VegasTljCreate extends BaseTBK
     }
 
     /**
-     * @param int $useStartTime
      * @throws \SyException\Promotion\TBKException
      */
     public function setUseStartTime(int $useStartTime)
@@ -262,19 +250,18 @@ class VegasTljCreate extends BaseTBK
     }
 
     /**
-     * @param int $securityLevel
      * @throws \SyException\Promotion\TBKException
      */
     public function setSecurityLevel(int $securityLevel)
     {
-        if (in_array($securityLevel, [0, 1])) {
+        if (\in_array($securityLevel, [0, 1])) {
             $this->reqData['security_level'] = $securityLevel;
         } else {
             throw new TBKException('安全等级不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['adzone_id'])) {
             throw new TBKException('广告位id不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

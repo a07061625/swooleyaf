@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -14,12 +15,13 @@ use SyPromotion\TBK\Traits\SetAdZoneIdTrait;
 
 /**
  * Class LightShopTPwdParse
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class LightShopTPwdParse extends BaseTBK
 {
     use SetAdZoneIdTrait;
-    
+
     /**
      * 轻店铺淘口令
      *
@@ -50,12 +52,11 @@ class LightShopTPwdParse extends BaseTBK
     }
 
     /**
-     * @param string $taoPassword
      * @throws \SyException\Promotion\TBKException
      */
     public function setTaoPassword(string $taoPassword)
     {
-        if (strlen($taoPassword) > 0) {
+        if (\strlen($taoPassword) > 0) {
             $this->reqData['tao_password'] = $taoPassword;
         } else {
             throw new TBKException('轻店铺淘口令不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -63,7 +64,6 @@ class LightShopTPwdParse extends BaseTBK
     }
 
     /**
-     * @param string $mainPid
      * @throws \SyException\Promotion\TBKException
      */
     public function setMainPid(string $mainPid)
@@ -75,7 +75,7 @@ class LightShopTPwdParse extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['tao_password'])) {
             throw new TBKException('轻店铺淘口令不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
