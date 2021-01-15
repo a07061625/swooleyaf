@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -14,6 +15,7 @@ use SyPromotion\TBK\Traits\SetDxTrait;
 
 /**
  * Class GroupChatMessageSend
+ *
  * @package SyPromotion\TBK\Provider
  */
 class GroupChatMessageSend extends BaseTBK
@@ -74,7 +76,6 @@ class GroupChatMessageSend extends BaseTBK
     }
 
     /**
-     * @param string $pid
      * @throws \SyException\Promotion\TBKException
      */
     public function setPid(string $pid)
@@ -87,14 +88,13 @@ class GroupChatMessageSend extends BaseTBK
     }
 
     /**
-     * @param array $groupIds
      * @throws \SyException\Promotion\TBKException
      */
     public function setGroupIds(array $groupIds)
     {
         $groupIdList = [];
         foreach ($groupIds as $eGroupId) {
-            if (is_string($eGroupId) && (strlen($eGroupId) > 0)) {
+            if (\is_string($eGroupId) && (\strlen($eGroupId) > 0)) {
                 $groupIdList[$eGroupId] = 1;
             }
         }
@@ -106,7 +106,6 @@ class GroupChatMessageSend extends BaseTBK
     }
 
     /**
-     * @param int $itemId
      * @throws \SyException\Promotion\TBKException
      */
     public function setItemId(int $itemId)
@@ -119,12 +118,11 @@ class GroupChatMessageSend extends BaseTBK
     }
 
     /**
-     * @param string $activityId
      * @throws \SyException\Promotion\TBKException
      */
     public function setActivityId(string $activityId)
     {
-        if (strlen($activityId) > 0) {
+        if (\strlen($activityId) > 0) {
             $this->reqData['activity_id'] = $activityId;
         } else {
             throw new TBKException('券id不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -132,12 +130,11 @@ class GroupChatMessageSend extends BaseTBK
     }
 
     /**
-     * @param string $me
      * @throws \SyException\Promotion\TBKException
      */
     public function setMe(string $me)
     {
-        if (strlen($me) > 0) {
+        if (\strlen($me) > 0) {
             $this->reqData['me'] = $me;
         } else {
             throw new TBKException('加密e参数不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -145,19 +142,18 @@ class GroupChatMessageSend extends BaseTBK
     }
 
     /**
-     * @param string $text
      * @throws \SyException\Promotion\TBKException
      */
     public function setText(string $text)
     {
-        if (strlen($text) > 0) {
+        if (\strlen($text) > 0) {
             $this->reqData['text'] = $text;
         } else {
             throw new TBKException('消息文本不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['pid'])) {
             throw new TBKException('淘客pid不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

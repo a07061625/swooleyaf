@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -14,6 +15,7 @@ use SyTool\Tool;
 
 /**
  * Class PunishOrderGet
+ *
  * @package SyPromotion\TBK\Provider
  */
 class PunishOrderGet extends BaseTBK
@@ -40,14 +42,13 @@ class PunishOrderGet extends BaseTBK
     }
 
     /**
-     * @param array $afOrderOption
      * @throws \SyException\Promotion\TBKException
      */
     public function setAfOrderOption(array $afOrderOption)
     {
         $trueOption = [];
-        $siteId = is_int($afOrderOption['site_id']) ? $afOrderOption['site_id'] : 0;
-        if ($siteId != 0) {
+        $siteId = \is_int($afOrderOption['site_id']) ? $afOrderOption['site_id'] : 0;
+        if (0 != $siteId) {
             if ($siteId > 0) {
                 $trueOption['site_id'] = $siteId;
             } else {
@@ -55,8 +56,8 @@ class PunishOrderGet extends BaseTBK
             }
         }
 
-        $span = is_int($afOrderOption['span']) ? $afOrderOption['span'] : 0;
-        if ($span != 0) {
+        $span = \is_int($afOrderOption['span']) ? $afOrderOption['span'] : 0;
+        if (0 != $span) {
             if (($span > 0) && ($span <= 30)) {
                 $trueOption['span'] = $span;
             } else {
@@ -64,8 +65,8 @@ class PunishOrderGet extends BaseTBK
             }
         }
 
-        $relationId = is_int($afOrderOption['relation_id']) ? $afOrderOption['relation_id'] : 0;
-        if ($relationId != 0) {
+        $relationId = \is_int($afOrderOption['relation_id']) ? $afOrderOption['relation_id'] : 0;
+        if (0 != $relationId) {
             if ($relationId > 0) {
                 $trueOption['relation_id'] = $relationId;
             } else {
@@ -73,8 +74,8 @@ class PunishOrderGet extends BaseTBK
             }
         }
 
-        $tbTradeId = is_string($afOrderOption['tb_trade_id']) ? $afOrderOption['tb_trade_id'] : '';
-        if (strlen($tbTradeId) > 0) {
+        $tbTradeId = \is_string($afOrderOption['tb_trade_id']) ? $afOrderOption['tb_trade_id'] : '';
+        if (\strlen($tbTradeId) > 0) {
             if (ctype_digit($tbTradeId)) {
                 $trueOption['tb_trade_id'] = $tbTradeId;
             } else {
@@ -82,22 +83,22 @@ class PunishOrderGet extends BaseTBK
             }
         }
 
-        $pageSize = is_int($afOrderOption['page_size']) ? $afOrderOption['page_size'] : 20;
+        $pageSize = \is_int($afOrderOption['page_size']) ? $afOrderOption['page_size'] : 20;
         if (($pageSize > 0) && ($pageSize <= 100)) {
             $trueOption['page_size'] = $pageSize;
         } else {
             throw new TBKException('每页记录数不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
 
-        $pageNo = is_int($afOrderOption['page_no']) ? $afOrderOption['page_no'] : 1;
+        $pageNo = \is_int($afOrderOption['page_no']) ? $afOrderOption['page_no'] : 1;
         if ($pageNo > 0) {
             $trueOption['page_no'] = $pageNo;
         } else {
             throw new TBKException('页数不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
 
-        $startTime = is_int($afOrderOption['start_time']) ? $afOrderOption['start_time'] : 0;
-        if ($startTime != 0) {
+        $startTime = \is_int($afOrderOption['start_time']) ? $afOrderOption['start_time'] : 0;
+        if (0 != $startTime) {
             if ($startTime > 0) {
                 $trueOption['start_time'] = date('Y-m-d H:i:s', $startTime);
             } else {
@@ -105,8 +106,8 @@ class PunishOrderGet extends BaseTBK
             }
         }
 
-        $adZoneId = is_int($afOrderOption['adzone_id']) ? $afOrderOption['adzone_id'] : 0;
-        if ($adZoneId != 0) {
+        $adZoneId = \is_int($afOrderOption['adzone_id']) ? $afOrderOption['adzone_id'] : 0;
+        if (0 != $adZoneId) {
             if ($adZoneId > 0) {
                 $trueOption['adzone_id'] = $adZoneId;
             } else {
@@ -117,7 +118,7 @@ class PunishOrderGet extends BaseTBK
         $this->reqData['af_order_option'] = Tool::jsonEncode($trueOption, JSON_UNESCAPED_UNICODE);
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         return $this->getContent();
     }

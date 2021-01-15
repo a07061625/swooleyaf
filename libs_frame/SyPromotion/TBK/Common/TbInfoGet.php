@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:38
  */
+
 namespace SyPromotion\TBK\Common;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class TbInfoGet
+ *
  * @package SyPromotion\TBK\Common
  */
 class TbInfoGet extends BaseTBK
@@ -41,12 +43,11 @@ class TbInfoGet extends BaseTBK
     }
 
     /**
-     * @param string $platform
      * @throws \SyException\Promotion\TBKException
      */
     public function setPlatform(string $platform)
     {
-        if (in_array($platform, ['android', 'ios'])) {
+        if (\in_array($platform, ['android', 'ios'])) {
             $this->reqData['platform'] = $platform;
         } else {
             throw new TBKException('平台类型不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -54,19 +55,18 @@ class TbInfoGet extends BaseTBK
     }
 
     /**
-     * @param string $deviceId
      * @throws \SyException\Promotion\TBKException
      */
     public function setDeviceId(string $deviceId)
     {
-        if (strlen($deviceId) > 0) {
+        if (\strlen($deviceId) > 0) {
             $this->reqData['device_id'] = md5($deviceId);
         } else {
             throw new TBKException('设备ID不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['platform'])) {
             throw new TBKException('平台类型不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

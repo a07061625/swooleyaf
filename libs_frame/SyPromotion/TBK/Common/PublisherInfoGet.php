@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:38
  */
+
 namespace SyPromotion\TBK\Common;
 
 use SyConstant\ErrorCode;
@@ -15,13 +16,14 @@ use SyPromotion\TBK\Traits\SetPageSizeTrait;
 
 /**
  * Class PublisherInfoGet
+ *
  * @package SyPromotion\TBK\Common
  */
 class PublisherInfoGet extends BaseTBK
 {
     use SetPageNo2Trait;
     use SetPageSizeTrait;
-    
+
     /**
      * 类型 1:渠道信息 2:会员信息
      *
@@ -86,12 +88,11 @@ class PublisherInfoGet extends BaseTBK
     }
 
     /**
-     * @param int $infoType
      * @throws \SyException\Promotion\TBKException
      */
     public function setInfoType(int $infoType)
     {
-        if (in_array($infoType, [1, 2])) {
+        if (\in_array($infoType, [1, 2])) {
             $this->reqData['info_type'] = $infoType;
         } else {
             throw new TBKException('类型不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -99,7 +100,6 @@ class PublisherInfoGet extends BaseTBK
     }
 
     /**
-     * @param int $relationId
      * @throws \SyException\Promotion\TBKException
      */
     public function setRelationId(int $relationId)
@@ -112,12 +112,11 @@ class PublisherInfoGet extends BaseTBK
     }
 
     /**
-     * @param string $relationApp
      * @throws \SyException\Promotion\TBKException
      */
     public function setRelationApp(string $relationApp)
     {
-        if (in_array($relationApp, ['common', 'etao', 'minietao', 'offlineShop', 'offlinePerson'])) {
+        if (\in_array($relationApp, ['common', 'etao', 'minietao', 'offlineShop', 'offlinePerson'])) {
             $this->reqData['relation_app'] = $relationApp;
         } else {
             throw new TBKException('备案场景不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -125,12 +124,11 @@ class PublisherInfoGet extends BaseTBK
     }
 
     /**
-     * @param string $specialId
      * @throws \SyException\Promotion\TBKException
      */
     public function setSpecialId(string $specialId)
     {
-        if (strlen($specialId) > 0) {
+        if (\strlen($specialId) > 0) {
             $this->reqData['special_id'] = $specialId;
         } else {
             throw new TBKException('会员运营ID不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -138,12 +136,11 @@ class PublisherInfoGet extends BaseTBK
     }
 
     /**
-     * @param string $externalId
      * @throws \SyException\Promotion\TBKException
      */
     public function setExternalId(string $externalId)
     {
-        if (strlen($externalId) > 0) {
+        if (\strlen($externalId) > 0) {
             $this->reqData['external_id'] = $externalId;
         } else {
             throw new TBKException('外部用户标记不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -151,19 +148,18 @@ class PublisherInfoGet extends BaseTBK
     }
 
     /**
-     * @param int $externalType
      * @throws \SyException\Promotion\TBKException
      */
     public function setExternalType(int $externalType)
     {
-        if (in_array($externalType, [0, 1, 2, 3, 4, 5])) {
+        if (\in_array($externalType, [0, 1, 2, 3, 4, 5])) {
             $this->reqData['external_type'] = $externalType;
         } else {
             throw new TBKException('外部用户类型不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['info_type'])) {
             throw new TBKException('类型不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

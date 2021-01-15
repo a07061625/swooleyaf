@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:38
  */
+
 namespace SyPromotion\TBK\Common;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class TbkInfoGet
+ *
  * @package SyPromotion\TBK\Common
  */
 class TbkInfoGet extends BaseTBK
@@ -35,7 +37,6 @@ class TbkInfoGet extends BaseTBK
     }
 
     /**
-     * @param string $pid
      * @throws \SyException\Promotion\TBKException
      */
     public function setPid(string $pid)
@@ -47,7 +48,7 @@ class TbkInfoGet extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['pid'])) {
             throw new TBKException('pid不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
