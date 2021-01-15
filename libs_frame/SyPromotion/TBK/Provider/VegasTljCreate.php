@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -15,13 +16,14 @@ use SyPromotion\TBK\Traits\SetSiteIdTrait;
 
 /**
  * Class VegasTljCreate
+ *
  * @package SyPromotion\TBK\Provider
  */
 class VegasTljCreate extends BaseTBK
 {
     use SetAdZoneIdTrait;
     use SetSiteIdTrait;
-    
+
     /**
      * 广告位ID
      *
@@ -76,7 +78,6 @@ class VegasTljCreate extends BaseTBK
     }
 
     /**
-     * @param int $itemId
      * @throws \SyException\Promotion\TBKException
      */
     public function setItemId(int $itemId)
@@ -89,7 +90,6 @@ class VegasTljCreate extends BaseTBK
     }
 
     /**
-     * @param int $totalNum
      * @throws \SyException\Promotion\TBKException
      */
     public function setTotalNum(int $totalNum)
@@ -102,12 +102,11 @@ class VegasTljCreate extends BaseTBK
     }
 
     /**
-     * @param string $name
      * @throws \SyException\Promotion\TBKException
      */
     public function setName(string $name)
     {
-        $nameLength = strlen($name);
+        $nameLength = \strlen($name);
         if (($nameLength > 0) && ($nameLength <= 10)) {
             $this->reqData['name'] = $name;
         } else {
@@ -116,7 +115,6 @@ class VegasTljCreate extends BaseTBK
     }
 
     /**
-     * @param int $userTotalWinNumLimit
      * @throws \SyException\Promotion\TBKException
      */
     public function setUserTotalWinNumLimit(int $userTotalWinNumLimit)
@@ -129,7 +127,6 @@ class VegasTljCreate extends BaseTBK
     }
 
     /**
-     * @param int $perFace
      * @throws \SyException\Promotion\TBKException
      */
     public function setPerFace(int $perFace)
@@ -141,7 +138,7 @@ class VegasTljCreate extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['adzone_id'])) {
             throw new TBKException('广告位id不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

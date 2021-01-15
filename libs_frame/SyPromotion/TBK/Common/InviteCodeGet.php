@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:38
  */
+
 namespace SyPromotion\TBK\Common;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class InviteCodeGet
+ *
  * @package SyPromotion\TBK\Common
  */
 class InviteCodeGet extends BaseTBK
@@ -47,7 +49,6 @@ class InviteCodeGet extends BaseTBK
     }
 
     /**
-     * @param int $relationId
      * @throws \SyException\Promotion\TBKException
      */
     public function setRelationId(int $relationId)
@@ -60,12 +61,11 @@ class InviteCodeGet extends BaseTBK
     }
 
     /**
-     * @param string $relationApp
      * @throws \SyException\Promotion\TBKException
      */
     public function setRelationApp(string $relationApp)
     {
-        if (strlen($relationApp) > 0) {
+        if (\strlen($relationApp) > 0) {
             $this->reqData['relation_app'] = $relationApp;
         } else {
             throw new TBKException('备案场景不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -73,19 +73,18 @@ class InviteCodeGet extends BaseTBK
     }
 
     /**
-     * @param int $codeType
      * @throws \SyException\Promotion\TBKException
      */
     public function setCodeType(int $codeType)
     {
-        if (in_array($codeType, [1, 2, 3])) {
+        if (\in_array($codeType, [1, 2, 3])) {
             $this->reqData['code_type'] = $codeType;
         } else {
             throw new TBKException('邀请码类型不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['relation_app'])) {
             throw new TBKException('物料类型不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
