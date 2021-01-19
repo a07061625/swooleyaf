@@ -9,6 +9,7 @@
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Promotion\TBKException;
 use SyPromotion\BaseTBK;
 
@@ -89,7 +90,7 @@ class TextTPwdCreate extends BaseTBK
      */
     public function setUrl(string $url)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $url) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $url) > 0) {
             $this->reqData['url'] = $url;
         } else {
             throw new TBKException('跳转目标页不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -101,7 +102,7 @@ class TextTPwdCreate extends BaseTBK
      */
     public function setLogo(string $logo)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $logo) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $logo) > 0) {
             $this->reqData['logo'] = $logo;
         } else {
             throw new TBKException('弹框logo不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

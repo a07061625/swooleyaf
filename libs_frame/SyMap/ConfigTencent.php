@@ -8,6 +8,7 @@
 namespace SyMap;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Map\TencentMapException;
 
 class ConfigTencent
@@ -71,7 +72,7 @@ class ConfigTencent
      */
     public function setServerIp(string $serverIp)
     {
-        if (preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $serverIp) > 0) {
+        if (preg_match(ProjectBase::REGEX_IP, '.' . $serverIp) > 0) {
             $this->serverIp = $serverIp;
         } else {
             throw new TencentMapException('服务器IP不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
@@ -92,7 +93,7 @@ class ConfigTencent
      */
     public function setDomain(string $domain)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $domain) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $domain) > 0) {
             $this->domain = $domain;
         } else {
             throw new TencentMapException('域名不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);

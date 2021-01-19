@@ -9,6 +9,7 @@
 namespace SyPromotion\TBK\Kol;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Promotion\TBKException;
 use SyPromotion\BaseTBK;
 
@@ -66,7 +67,7 @@ class ShopManage extends BaseTBK
      */
     public function setBackgroundImage(string $backgroundImage)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $backgroundImage) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $backgroundImage) > 0) {
             $this->reqData['background_image'] = $backgroundImage;
         } else {
             throw new TBKException('店铺背景图不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -78,7 +79,7 @@ class ShopManage extends BaseTBK
      */
     public function setStoreIcon(string $storeIcon)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $storeIcon) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $storeIcon) > 0) {
             $this->reqData['store_icon'] = $storeIcon;
         } else {
             throw new TBKException('店铺图标不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -102,7 +103,7 @@ class ShopManage extends BaseTBK
      */
     public function setPid(string $pid)
     {
-        if (preg_match('/^mm(_\d{1,12}){3}$/', $pid) > 0) {
+        if (preg_match(ProjectBase::REGEX_PROMOTION_TBK_PID, $pid) > 0) {
             $this->reqData['pid'] = $pid;
         } else {
             throw new TBKException('达人pid不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

@@ -9,6 +9,7 @@ namespace SyLive\Tencent\Callback;
 
 use DesignPatterns\Singletons\LiveConfigSingleton;
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Live\TencentException;
 use SyLive\BaseTencent;
 
@@ -128,7 +129,7 @@ class TemplateModify extends BaseTencent
      */
     public function setStreamBeginNotifyUrl(string $streamBeginNotifyUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $streamBeginNotifyUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $streamBeginNotifyUrl) > 0) {
             $this->reqData['StreamBeginNotifyUrl'] = $streamBeginNotifyUrl;
         } else {
             throw new TencentException('开播回调URL不合法', ErrorCode::LIVE_TENCENT_PARAM_ERROR);
@@ -142,7 +143,7 @@ class TemplateModify extends BaseTencent
      */
     public function setStreamEndNotifyUrl(string $streamEndNotifyUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $streamEndNotifyUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $streamEndNotifyUrl) > 0) {
             $this->reqData['StreamEndNotifyUrl'] = $streamEndNotifyUrl;
         } else {
             throw new TencentException('断流回调URL不合法', ErrorCode::LIVE_TENCENT_PARAM_ERROR);
@@ -156,7 +157,7 @@ class TemplateModify extends BaseTencent
      */
     public function setRecordNotifyUrl(string $recordNotifyUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $recordNotifyUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $recordNotifyUrl) > 0) {
             $this->reqData['RecordNotifyUrl'] = $recordNotifyUrl;
         } else {
             throw new TencentException('录制回调URL不合法', ErrorCode::LIVE_TENCENT_PARAM_ERROR);
@@ -170,7 +171,7 @@ class TemplateModify extends BaseTencent
      */
     public function setSnapshotNotifyUrl(string $snapshotNotifyUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $snapshotNotifyUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $snapshotNotifyUrl) > 0) {
             $this->reqData['SnapshotNotifyUrl'] = $snapshotNotifyUrl;
         } else {
             throw new TencentException('截图回调URL不合法', ErrorCode::LIVE_TENCENT_PARAM_ERROR);
@@ -184,7 +185,7 @@ class TemplateModify extends BaseTencent
      */
     public function setPornCensorshipNotifyUrl(string $pornCensorshipNotifyUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $pornCensorshipNotifyUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $pornCensorshipNotifyUrl) > 0) {
             $this->reqData['PornCensorshipNotifyUrl'] = $pornCensorshipNotifyUrl;
         } else {
             throw new TencentException('鉴黄回调URL不合法', ErrorCode::LIVE_TENCENT_PARAM_ERROR);

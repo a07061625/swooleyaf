@@ -12,6 +12,7 @@ use DesignPatterns\Factories\CacheSimpleFactory;
 use Swoole\Client;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyConstant\SyInner;
 use SyException\Common\CheckException;
 use SyQr\PHPZxing\PHPZxingDecoder;
@@ -904,7 +905,7 @@ class Tool
      */
     public static function checkIp(string $ip): bool
     {
-        return preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $ip) > 0;
+        return preg_match(ProjectBase::REGEX_IP, '.' . $ip) > 0;
     }
 
     /**

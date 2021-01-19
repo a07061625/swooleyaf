@@ -8,6 +8,7 @@
 namespace SyPrint\FeYin;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\SyPrint\FeYinException;
 use SyPrint\PrintBaseFeYin;
 use SyPrint\PrintUtilBase;
@@ -67,7 +68,7 @@ class DeviceLogoSet extends PrintBaseFeYin
      */
     public function setPath(string $path)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $path) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $path) > 0) {
             $this->reqData['path'] = $path;
         } else {
             throw new FeYinException('LOGO图片链接不合法', ErrorCode::PRINT_PARAM_ERROR);

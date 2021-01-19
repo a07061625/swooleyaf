@@ -8,6 +8,7 @@
 namespace SyPay\Union\Channels\Traits;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Pay\UnionException;
 
 /**
@@ -24,7 +25,7 @@ trait FrontUrlTrait
      */
     public function setFrontUrl(string $frontUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $frontUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $frontUrl) > 0) {
             $this->reqData['frontUrl'] = $frontUrl;
         } else {
             throw new UnionException('前台通知地址不合法', ErrorCode::PAY_UNION_PARAM_ERROR);

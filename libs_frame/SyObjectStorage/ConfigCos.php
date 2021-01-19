@@ -9,6 +9,7 @@ namespace SyObjectStorage;
 
 use SyCloud\Tencent\ConfigTrait;
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\ObjectStorage\CosException;
 use SyTrait\SimpleConfigTrait;
 
@@ -114,7 +115,7 @@ class ConfigCos
      */
     public function setBucketDomain(string $bucketDomain)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $bucketDomain) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $bucketDomain) > 0) {
             $this->bucketDomain = $bucketDomain;
         } else {
             throw new CosException('桶域名不合法', ErrorCode::OBJECT_STORAGE_COS_PARAM_ERROR);

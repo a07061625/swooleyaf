@@ -8,6 +8,7 @@
 namespace Wx\Account\Menu;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use Wx\WxBaseAccount;
 
@@ -130,7 +131,7 @@ class Menu extends WxBaseAccount
      */
     public function setUrl(string $url)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $url) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $url) > 0) {
             $this->reqData['url'] = $url;
         } else {
             throw new WxException('网页链接不合法', ErrorCode::WX_PARAM_ERROR);

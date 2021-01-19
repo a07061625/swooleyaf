@@ -8,6 +8,7 @@
 namespace Wx\Account\User;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
@@ -45,7 +46,7 @@ class UserGetBlack extends WxBaseAccount
      */
     public function setBeginOpenid(string $beginOpenid)
     {
-        if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $beginOpenid) > 0) {
+        if (preg_match(ProjectBase::REGEX_WX_OPEN_ID, $beginOpenid) > 0) {
             $this->reqData['begin_openid'] = $beginOpenid;
         } else {
             throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);

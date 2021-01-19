@@ -9,6 +9,7 @@ namespace Wx\Payment\Way;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\Alone\JsConfig;
@@ -255,7 +256,7 @@ class UnifiedOrder extends WxBasePayment
      */
     public function setOpenid(string $openid)
     {
-        if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
+        if (preg_match(ProjectBase::REGEX_WX_OPEN_ID, $openid) > 0) {
             if ($this->merchantType == self::MERCHANT_TYPE_SELF) {
                 $this->reqData['openid'] = $openid;
             } else {
@@ -272,7 +273,7 @@ class UnifiedOrder extends WxBasePayment
      */
     public function setTerminalIp(string $ip)
     {
-        if (preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $ip) > 0) {
+        if (preg_match(ProjectBase::REGEX_IP, '.' . $ip) > 0) {
             $this->reqData['spbill_create_ip'] = $ip;
         } else {
             throw new WxException('终端IP不合法', ErrorCode::WX_PARAM_ERROR);

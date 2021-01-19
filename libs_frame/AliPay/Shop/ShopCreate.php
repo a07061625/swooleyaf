@@ -10,6 +10,7 @@ namespace AliPay\Shop;
 use AliPay\AliPayBase;
 use DesignPatterns\Singletons\AliPayConfigSingleton;
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\AliPay\AliPayShopException;
 
 class ShopCreate extends AliPayBase
@@ -446,7 +447,7 @@ class ShopCreate extends AliPayBase
      */
     public function addContactNumber(string $contactNumber)
     {
-        if (preg_match('/^[0-1\+\-]{5,15}$/', $contactNumber) > 0) {
+        if (preg_match(ProjectBase::REGEX_ALIPAY_SHOP_CONTACT, $contactNumber) > 0) {
             $this->contact_number[$contactNumber] = 1;
         } else {
             throw new AliPayShopException('门店电话号码不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -700,7 +701,7 @@ class ShopCreate extends AliPayBase
      */
     public function addOnlineUrl(string $onlineUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $onlineUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $onlineUrl) > 0) {
             $this->online_url[] = $onlineUrl;
         } else {
             throw new AliPayShopException('其他平台店铺链接url不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -714,7 +715,7 @@ class ShopCreate extends AliPayBase
      */
     public function setOperateNotifyUrl(string $operateNotifyUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $operateNotifyUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $operateNotifyUrl) > 0) {
             $this->biz_content['operate_notify_url'] = $operateNotifyUrl;
         } else {
             throw new AliPayShopException('审核状态消息推送地址不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);

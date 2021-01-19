@@ -9,6 +9,7 @@ namespace Wx\Corp\Agent;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseCorp;
@@ -166,7 +167,7 @@ class AgentSet extends WxBaseCorp
      */
     public function setHomeUrl(string $homeUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $homeUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $homeUrl) > 0) {
             $this->reqData['home_url'] = $homeUrl;
         } else {
             throw new WxException('应用主页url不合法', ErrorCode::WX_PARAM_ERROR);

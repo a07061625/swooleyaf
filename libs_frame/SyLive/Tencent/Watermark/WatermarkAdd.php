@@ -9,6 +9,7 @@ namespace SyLive\Tencent\Watermark;
 
 use DesignPatterns\Singletons\LiveConfigSingleton;
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Live\TencentException;
 use SyLive\BaseTencent;
 
@@ -75,7 +76,7 @@ class WatermarkAdd extends BaseTencent
      */
     public function setPictureUrl(string $pictureUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $pictureUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $pictureUrl) > 0) {
             $this->reqData['PictureUrl'] = $pictureUrl;
         } else {
             throw new TencentException('水印图片URL不合法', ErrorCode::LIVE_TENCENT_PARAM_ERROR);

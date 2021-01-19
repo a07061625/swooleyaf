@@ -9,6 +9,7 @@ namespace SyObjectStorage\Kodo\Object;
 
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\ObjectStorage\KodoException;
 use SyObjectStorage\BaseKodo;
 use SyTool\Tool;
@@ -225,7 +226,7 @@ class FileFetchAsync extends BaseKodo
      */
     public function setCallbackUrl(string $callbackUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $callbackUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $callbackUrl) > 0) {
             $this->reqData['callbackurl'] = $callbackUrl;
         } else {
             throw new KodoException('回调URL不合法', ErrorCode::OBJECT_STORAGE_KODO_PARAM_ERROR);

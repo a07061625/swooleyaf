@@ -9,6 +9,7 @@
 namespace SyPromotion\TBK\Traits;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Promotion\TBKException;
 
 /**
@@ -23,7 +24,7 @@ trait SetSubPidTrait
      */
     public function setSubPid(string $subPid)
     {
-        if (preg_match('/^mm(_\d{1,12}){3}$/', $subPid) > 0) {
+        if (preg_match(ProjectBase::REGEX_PROMOTION_TBK_PID, $subPid) > 0) {
             $this->reqData['sub_pid'] = $subPid;
         } else {
             throw new TBKException('三方pid不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

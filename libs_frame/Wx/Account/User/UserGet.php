@@ -8,6 +8,7 @@
 namespace Wx\Account\User;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
@@ -45,7 +46,7 @@ class UserGet extends WxBaseAccount
      */
     public function setNextOpenid(string $nextOpenid)
     {
-        if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $nextOpenid) > 0) {
+        if (preg_match(ProjectBase::REGEX_WX_OPEN_ID, $nextOpenid) > 0) {
             $this->reqData['next_openid'] = $nextOpenid;
         } else {
             throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);
