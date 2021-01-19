@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:38
  */
+
 namespace SyPromotion\TBK\Common;
 
 use SyConstant\ErrorCode;
@@ -14,6 +15,7 @@ use SyPromotion\TBK\Traits\SetPageSizeTrait;
 
 /**
  * Class UserQueryByCartCouponExpire
+ *
  * @package SyPromotion\TBK\Common
  */
 class UserQueryByCartCouponExpire extends BaseTBK
@@ -52,7 +54,6 @@ class UserQueryByCartCouponExpire extends BaseTBK
     }
 
     /**
-     * @param string $ruleId
      * @throws \SyException\Promotion\TBKException
      */
     public function setRuleId(string $ruleId)
@@ -65,7 +66,6 @@ class UserQueryByCartCouponExpire extends BaseTBK
     }
 
     /**
-     * @param int $pageNum
      * @throws \SyException\Promotion\TBKException
      */
     public function setPageNum(int $pageNum)
@@ -77,7 +77,7 @@ class UserQueryByCartCouponExpire extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['rule_id'])) {
             throw new TBKException('规则ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

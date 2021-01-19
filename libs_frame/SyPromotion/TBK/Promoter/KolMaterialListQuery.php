@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class KolMaterialListQuery
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class KolMaterialListQuery extends BaseTBK
@@ -41,12 +43,11 @@ class KolMaterialListQuery extends BaseTBK
     }
 
     /**
-     * @param string $extendInfo
      * @throws \SyException\Promotion\TBKException
      */
     public function setExtendInfo(string $extendInfo)
     {
-        if (strlen($extendInfo) > 0) {
+        if (\strlen($extendInfo) > 0) {
             $this->reqData['extend_info'] = $extendInfo;
         } else {
             throw new TBKException('预留参数不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -54,7 +55,6 @@ class KolMaterialListQuery extends BaseTBK
     }
 
     /**
-     * @param string $pid
      * @throws \SyException\Promotion\TBKException
      */
     public function setPid(string $pid)
@@ -66,7 +66,7 @@ class KolMaterialListQuery extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         return $this->getContent();
     }

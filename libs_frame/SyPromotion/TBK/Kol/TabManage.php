@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Kol;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class TabManage
+ *
  * @package SyPromotion\TBK\Kol
  */
 class TabManage extends BaseTBK
@@ -53,7 +55,6 @@ class TabManage extends BaseTBK
     }
 
     /**
-     * @param string $pid
      * @throws \SyException\Promotion\TBKException
      */
     public function setPid(string $pid)
@@ -66,12 +67,11 @@ class TabManage extends BaseTBK
     }
 
     /**
-     * @param string $tabName
      * @throws \SyException\Promotion\TBKException
      */
     public function setTabName(string $tabName)
     {
-        if (strlen($tabName) > 0) {
+        if (\strlen($tabName) > 0) {
             $this->reqData['tab_name'] = $tabName;
         } else {
             throw new TBKException('频道名称不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -79,18 +79,17 @@ class TabManage extends BaseTBK
     }
 
     /**
-     * @param array $itemList
      * @throws \SyException\Promotion\TBKException
      */
     public function setItemList(array $itemList)
     {
         $items = [];
         foreach ($itemList as $eItemId) {
-            if (is_int($eItemId) && ($eItemId > 0)) {
+            if (\is_int($eItemId) && ($eItemId > 0)) {
                 $items[$eItemId] = 1;
             }
         }
-        if (count($items) == 0) {
+        if (0 == \count($items)) {
             throw new TBKException('商品ID列表不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
 
@@ -98,19 +97,18 @@ class TabManage extends BaseTBK
     }
 
     /**
-     * @param string $operationTypeId
      * @throws \SyException\Promotion\TBKException
      */
     public function setOperationTypeId(string $operationTypeId)
     {
-        if (strlen($operationTypeId) > 0) {
+        if (\strlen($operationTypeId) > 0) {
             $this->reqData['operation_type_id'] = $operationTypeId;
         } else {
             throw new TBKException('操作类型不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['pid'])) {
             throw new TBKException('达人pid不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

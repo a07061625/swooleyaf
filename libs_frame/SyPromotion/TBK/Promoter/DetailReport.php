@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class DetailReport
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class DetailReport extends BaseTBK
@@ -35,7 +37,6 @@ class DetailReport extends BaseTBK
     }
 
     /**
-     * @param int $eventId
      * @throws \SyException\Promotion\TBKException
      */
     public function setEventId(int $eventId)
@@ -47,7 +48,7 @@ class DetailReport extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['event_id'])) {
             throw new TBKException('活动id不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

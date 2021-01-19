@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class LockInCheckGet
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class LockInCheckGet extends BaseTBK
@@ -59,12 +61,11 @@ class LockInCheckGet extends BaseTBK
     }
 
     /**
-     * @param string $deviceValue
      * @throws \SyException\Promotion\TBKException
      */
     public function setDeviceValue(string $deviceValue)
     {
-        if ((\strlen($deviceValue) == 32) && ctype_alnum($deviceValue)) {
+        if ((32 == \strlen($deviceValue)) && ctype_alnum($deviceValue)) {
             $this->reqData['device_value'] = $deviceValue;
         } else {
             throw new TBKException('加密值不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -72,12 +73,11 @@ class LockInCheckGet extends BaseTBK
     }
 
     /**
-     * @param string $deviceType
      * @throws \SyException\Promotion\TBKException
      */
     public function setDeviceType(string $deviceType)
     {
-        if (in_array($deviceType, ['IMEI', 'IDFA', 'OAID', '联系方式', 'ALIPAY_ID'])) {
+        if (\in_array($deviceType, ['IMEI', 'IDFA', 'OAID', '联系方式', 'ALIPAY_ID'])) {
             $this->reqData['device_type'] = $deviceType;
         } else {
             throw new TBKException('入参类型不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -85,7 +85,6 @@ class LockInCheckGet extends BaseTBK
     }
 
     /**
-     * @param string $itemId
      * @throws \SyException\Promotion\TBKException
      */
     public function setItemId(string $itemId)
@@ -98,12 +97,11 @@ class LockInCheckGet extends BaseTBK
     }
 
     /**
-     * @param string $specialId
      * @throws \SyException\Promotion\TBKException
      */
     public function setSpecialId(string $specialId)
     {
-        if (strlen($specialId) > 0) {
+        if (\strlen($specialId) > 0) {
             $this->reqData['special_id'] = $specialId;
         } else {
             throw new TBKException('会员运营ID不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -111,19 +109,18 @@ class LockInCheckGet extends BaseTBK
     }
 
     /**
-     * @param string $relationId
      * @throws \SyException\Promotion\TBKException
      */
     public function setRelationId(string $relationId)
     {
-        if (strlen($relationId) > 0) {
+        if (\strlen($relationId) > 0) {
             $this->reqData['relation_id'] = $relationId;
         } else {
             throw new TBKException('渠道关系ID不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['item_id'])) {
             throw new TBKException('商品ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

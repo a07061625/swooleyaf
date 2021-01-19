@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -15,6 +16,7 @@ use SyPromotion\TBK\Traits\SetSiteIdTrait;
 
 /**
  * Class LiveInfoGet
+ *
  * @package SyPromotion\TBK\Provider
  */
 class LiveInfoGet extends BaseTBK
@@ -92,21 +94,21 @@ class LiveInfoGet extends BaseTBK
     }
 
     /**
-     * @param array $liveIds
      * @throws \SyException\Promotion\TBKException
      */
     public function setLiveIds(array $liveIds)
     {
         $liveIdList = [];
         foreach ($liveIds as $eLiveId) {
-            if (is_int($eLiveId) && ($eLiveId > 0)) {
+            if (\is_int($eLiveId) && ($eLiveId > 0)) {
                 $liveIdList[$eLiveId] = 1;
             }
         }
-        $needNum = count($liveIdList);
-        if ($needNum == 0) {
+        $needNum = \count($liveIdList);
+        if (0 == $needNum) {
             throw new TBKException('直播间ID列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
-        } elseif ($needNum > 10) {
+        }
+        if ($needNum > 10) {
             throw new TBKException('直播间ID列表不能超过10个', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
 
@@ -114,7 +116,6 @@ class LiveInfoGet extends BaseTBK
     }
 
     /**
-     * @param int $relationId
      * @throws \SyException\Promotion\TBKException
      */
     public function setRelationId(int $relationId)
@@ -127,21 +128,21 @@ class LiveInfoGet extends BaseTBK
     }
 
     /**
-     * @param array $nicknames
      * @throws \SyException\Promotion\TBKException
      */
     public function setNicknames(array $nicknames)
     {
         $nicknameList = [];
         foreach ($nicknames as $eNickname) {
-            if (is_int($eNickname) && (strlen($eNickname) > 0)) {
+            if (\is_int($eNickname) && (\strlen($eNickname) > 0)) {
                 $nicknameList[$eNickname] = 1;
             }
         }
-        $needNum = count($nicknameList);
-        if ($needNum == 0) {
+        $needNum = \count($nicknameList);
+        if (0 == $needNum) {
             throw new TBKException('主播昵称列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
-        } elseif ($needNum > 5) {
+        }
+        if ($needNum > 5) {
             throw new TBKException('主播昵称列表不能超过5个', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
 
@@ -149,12 +150,11 @@ class LiveInfoGet extends BaseTBK
     }
 
     /**
-     * @param int $liveQueryType
      * @throws \SyException\Promotion\TBKException
      */
     public function setLiveQueryType(int $liveQueryType)
     {
-        if (in_array($liveQueryType, [1, 2])) {
+        if (\in_array($liveQueryType, [1, 2])) {
             $this->reqData['live_query_type'] = $liveQueryType;
         } else {
             throw new TBKException('直播间类型不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -162,7 +162,6 @@ class LiveInfoGet extends BaseTBK
     }
 
     /**
-     * @param int $pageSize
      * @throws \SyException\Promotion\TBKException
      */
     public function setPageSize(int $pageSize)
@@ -175,7 +174,6 @@ class LiveInfoGet extends BaseTBK
     }
 
     /**
-     * @param int $pageNum
      * @throws \SyException\Promotion\TBKException
      */
     public function setPageNum(int $pageNum)
@@ -188,14 +186,13 @@ class LiveInfoGet extends BaseTBK
     }
 
     /**
-     * @param array $roomStatus
      * @throws \SyException\Promotion\TBKException
      */
     public function setRoomStatus(array $roomStatus)
     {
         $roomStatusList = [];
         foreach ($roomStatus as $eStatus) {
-            if (is_int($eStatus) && in_array($eStatus, [0, 1, 2])) {
+            if (\is_int($eStatus) && \in_array($eStatus, [0, 1, 2])) {
                 $roomStatusList[$eStatus] = 1;
             }
         }
@@ -206,7 +203,7 @@ class LiveInfoGet extends BaseTBK
         $this->reqData['room_status'] = implode(',', array_keys($roomStatusList));
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['site_id'])) {
             throw new TBKException('网站ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

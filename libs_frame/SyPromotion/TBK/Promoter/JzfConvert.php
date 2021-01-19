@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -14,6 +15,7 @@ use SyPromotion\TBK\Traits\SetAdZoneIdTrait;
 
 /**
  * Class JzfConvert
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class JzfConvert extends BaseTBK
@@ -51,7 +53,6 @@ class JzfConvert extends BaseTBK
     }
 
     /**
-     * @param string $content
      * @throws \SyException\Promotion\TBKException
      */
     public function setContent(string $content)
@@ -64,19 +65,18 @@ class JzfConvert extends BaseTBK
     }
 
     /**
-     * @param int $type
      * @throws \SyException\Promotion\TBKException
      */
     public function setType(int $type)
     {
-        if (in_array($type, [1, 2])) {
+        if (\in_array($type, [1, 2])) {
             $this->reqData['type'] = $type;
         } else {
             throw new TBKException('类型不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['content'])) {
             throw new TBKException('内容不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

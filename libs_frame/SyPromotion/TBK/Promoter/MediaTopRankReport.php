@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class MediaTopRankReport
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class MediaTopRankReport extends BaseTBK
@@ -41,17 +43,17 @@ class MediaTopRankReport extends BaseTBK
     }
 
     /**
-     * @param int $rankStart
-     * @param int $rankEnd
      * @throws \SyException\Promotion\TBKException
      */
     public function setRank(int $rankStart, int $rankEnd)
     {
         if ($rankStart <= 0) {
             throw new TBKException('达人榜单范围起点不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
-        } elseif ($rankEnd <= 0) {
+        }
+        if ($rankEnd <= 0) {
             throw new TBKException('达人榜单范围终点不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
-        } elseif ($rankEnd < $rankStart) {
+        }
+        if ($rankEnd < $rankStart) {
             throw new TBKException('达人榜单范围终点不能小于起点', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
 
@@ -59,7 +61,7 @@ class MediaTopRankReport extends BaseTBK
         $this->reqData['rank_end'] = $rankEnd;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['rank_start'])) {
             throw new TBKException('达人榜单范围起点不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

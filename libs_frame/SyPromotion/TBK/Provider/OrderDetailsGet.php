@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class OrderDetailsGet
+ *
  * @package SyPromotion\TBK\Provider
  */
 class OrderDetailsGet extends BaseTBK
@@ -93,12 +95,11 @@ class OrderDetailsGet extends BaseTBK
     }
 
     /**
-     * @param int $queryType
      * @throws \SyException\Promotion\TBKException
      */
     public function setQueryType(int $queryType)
     {
-        if (in_array($queryType, [1, 2, 3])) {
+        if (\in_array($queryType, [1, 2, 3])) {
             $this->reqData['query_type'] = $queryType;
         } else {
             throw new TBKException('查询时间类型不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -106,12 +107,11 @@ class OrderDetailsGet extends BaseTBK
     }
 
     /**
-     * @param string $positionIndex
      * @throws \SyException\Promotion\TBKException
      */
     public function setPositionIndex(string $positionIndex)
     {
-        if (strlen($positionIndex) > 0) {
+        if (\strlen($positionIndex) > 0) {
             $this->reqData['position_index'] = $positionIndex;
         } else {
             throw new TBKException('位点不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -119,12 +119,11 @@ class OrderDetailsGet extends BaseTBK
     }
 
     /**
-     * @param int $memberType
      * @throws \SyException\Promotion\TBKException
      */
     public function setMemberType(int $memberType)
     {
-        if (in_array($memberType, [2, 3])) {
+        if (\in_array($memberType, [2, 3])) {
             $this->reqData['member_type'] = $memberType;
         } else {
             throw new TBKException('推广者角色类型不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -132,12 +131,11 @@ class OrderDetailsGet extends BaseTBK
     }
 
     /**
-     * @param int $tkStatus
      * @throws \SyException\Promotion\TBKException
      */
     public function setTkStatus(int $tkStatus)
     {
-        if (in_array($tkStatus, [12, 13, 14, 3])) {
+        if (\in_array($tkStatus, [12, 13, 14, 3])) {
             $this->reqData['tk_status'] = $tkStatus;
         } else {
             throw new TBKException('淘客订单状态不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -145,19 +143,20 @@ class OrderDetailsGet extends BaseTBK
     }
 
     /**
-     * @param int $startTime
-     * @param int $endTime
      * @throws \SyException\Promotion\TBKException
      */
     public function setTime(int $startTime, int $endTime)
     {
         if ($startTime <= 1262275200) {
             throw new TBKException('查询开始时间不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
-        } elseif ($endTime <= 1262275200) {
+        }
+        if ($endTime <= 1262275200) {
             throw new TBKException('查询结束时间不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
-        } elseif ($endTime < $startTime) {
+        }
+        if ($endTime < $startTime) {
             throw new TBKException('查询结束时间不能小于开始时间', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
-        } elseif (($endTime - $startTime) > 10800) {
+        }
+        if (($endTime - $startTime) > 10800) {
             throw new TBKException('查询结束时间不能超过开始时间3小时', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
         $this->reqData['start_time'] = date('Y-m-d H:i:s', $startTime);
@@ -165,12 +164,11 @@ class OrderDetailsGet extends BaseTBK
     }
 
     /**
-     * @param int $jumpType
      * @throws \SyException\Promotion\TBKException
      */
     public function setJumpType(int $jumpType)
     {
-        if (in_array($jumpType, [-1, 1])) {
+        if (\in_array($jumpType, [-1, 1])) {
             $this->reqData['jump_type'] = $jumpType;
         } else {
             throw new TBKException('跳转类型不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -178,19 +176,18 @@ class OrderDetailsGet extends BaseTBK
     }
 
     /**
-     * @param int $orderScene
      * @throws \SyException\Promotion\TBKException
      */
     public function setOrderScene(int $orderScene)
     {
-        if (in_array($orderScene, [1, 2, 3])) {
+        if (\in_array($orderScene, [1, 2, 3])) {
             $this->reqData['order_scene'] = $orderScene;
         } else {
             throw new TBKException('场景类型不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['start_time'])) {
             throw new TBKException('查询开始时间不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

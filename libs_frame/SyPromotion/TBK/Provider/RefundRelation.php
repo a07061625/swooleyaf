@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -14,6 +15,7 @@ use SyTool\Tool;
 
 /**
  * Class RefundRelation
+ *
  * @package SyPromotion\TBK\Provider
  */
 class RefundRelation extends BaseTBK
@@ -36,7 +38,6 @@ class RefundRelation extends BaseTBK
     }
 
     /**
-     * @param array $searchOption
      * @throws \SyException\Promotion\TBKException
      */
     public function setSearchOption(array $searchOption)
@@ -87,7 +88,7 @@ class RefundRelation extends BaseTBK
         $this->reqData['search_option'] = Tool::jsonEncode($trueOption, JSON_UNESCAPED_UNICODE);
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['search_option'])) {
             throw new TBKException('查询参数不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

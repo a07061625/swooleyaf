@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use SyPromotion\TBK\Traits\SetSiteIdTrait;
 
 /**
  * Class TPwdConvert
+ *
  * @package SyPromotion\TBK\Provider
  */
 class TPwdConvert extends BaseTBK
@@ -66,7 +68,6 @@ class TPwdConvert extends BaseTBK
     }
 
     /**
-     * @param string $passwordContent
      * @throws \SyException\Promotion\TBKException
      */
     public function setPasswordContent(string $passwordContent)
@@ -79,7 +80,6 @@ class TPwdConvert extends BaseTBK
     }
 
     /**
-     * @param int $uCrowdId
      * @throws \SyException\Promotion\TBKException
      */
     public function setUCrowdId(int $uCrowdId)
@@ -91,7 +91,7 @@ class TPwdConvert extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['password_content'])) {
             throw new TBKException('淘口令不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
