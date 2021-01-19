@@ -5,8 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
-
-namespace SyPromotion\TBK\Promoter;
+namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
 use SyException\Promotion\TBKException;
@@ -15,8 +14,7 @@ use SyTool\Tool;
 
 /**
  * Class RefundRelation
- *
- * @package SyPromotion\TBK\Promoter
+ * @package SyPromotion\TBK\Provider
  */
 class RefundRelation extends BaseTBK
 {
@@ -30,7 +28,7 @@ class RefundRelation extends BaseTBK
     public function __construct()
     {
         parent::__construct();
-        $this->setMethod('taobao.tbk.relation.refund');
+        $this->setMethod('taobao.tbk.sc.relation.refund');
     }
 
     private function __clone()
@@ -38,6 +36,7 @@ class RefundRelation extends BaseTBK
     }
 
     /**
+     * @param array $searchOption
      * @throws \SyException\Promotion\TBKException
      */
     public function setSearchOption(array $searchOption)
@@ -88,7 +87,7 @@ class RefundRelation extends BaseTBK
         $this->reqData['search_option'] = Tool::jsonEncode($trueOption, JSON_UNESCAPED_UNICODE);
     }
 
-    public function getDetail(): array
+    public function getDetail() : array
     {
         if (!isset($this->reqData['search_option'])) {
             throw new TBKException('查询参数不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
