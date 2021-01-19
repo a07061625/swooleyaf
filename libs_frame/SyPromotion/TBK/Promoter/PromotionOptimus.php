@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -14,6 +15,7 @@ use SyPromotion\TBK\Traits\SetAdZoneIdTrait;
 
 /**
  * Class PromotionOptimus
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class PromotionOptimus extends BaseTBK
@@ -58,7 +60,6 @@ class PromotionOptimus extends BaseTBK
     }
 
     /**
-     * @param int $pageNum
      * @throws \SyException\Promotion\TBKException
      */
     public function setPageNum(int $pageNum)
@@ -71,7 +72,6 @@ class PromotionOptimus extends BaseTBK
     }
 
     /**
-     * @param int $pageSize
      * @throws \SyException\Promotion\TBKException
      */
     public function setPageSize(int $pageSize)
@@ -84,7 +84,6 @@ class PromotionOptimus extends BaseTBK
     }
 
     /**
-     * @param int $promotionId
      * @throws \SyException\Promotion\TBKException
      */
     public function setPromotionId(int $promotionId)
@@ -96,7 +95,7 @@ class PromotionOptimus extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['adzone_id'])) {
             throw new TBKException('广告位ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

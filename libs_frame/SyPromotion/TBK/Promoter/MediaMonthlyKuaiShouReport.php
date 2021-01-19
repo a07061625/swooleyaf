@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -15,6 +16,7 @@ use SyPromotion\TBK\Traits\SetPageSizeTrait;
 
 /**
  * Class MediaMonthlyKuaiShouReport
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class MediaMonthlyKuaiShouReport extends BaseTBK
@@ -74,7 +76,6 @@ class MediaMonthlyKuaiShouReport extends BaseTBK
     }
 
     /**
-     * @param string $dimensions
      * @throws \SyException\Promotion\TBKException
      */
     public function setDimensions(string $dimensions)
@@ -87,7 +88,6 @@ class MediaMonthlyKuaiShouReport extends BaseTBK
     }
 
     /**
-     * @param string $filters
      * @throws \SyException\Promotion\TBKException
      */
     public function setFilters(string $filters)
@@ -99,7 +99,7 @@ class MediaMonthlyKuaiShouReport extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['filters'])) {
             throw new TBKException('查询条件不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

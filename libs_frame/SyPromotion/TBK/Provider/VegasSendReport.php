@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -15,13 +16,14 @@ use SyPromotion\TBK\Traits\SetPageSizeTrait;
 
 /**
  * Class VegasSendReport
+ *
  * @package SyPromotion\TBK\Provider
  */
 class VegasSendReport extends BaseTBK
 {
     use SetPageNo2Trait;
     use SetPageSizeTrait;
-    
+
     /**
      * 统计日期
      *
@@ -64,12 +66,11 @@ class VegasSendReport extends BaseTBK
     }
 
     /**
-     * @param string $bizDate
      * @throws \SyException\Promotion\TBKException
      */
     public function setBizDate(string $bizDate)
     {
-        if ((\strlen($bizDate) == 8) && ctype_digit($bizDate)) {
+        if ((8 == \strlen($bizDate)) && ctype_digit($bizDate)) {
             $this->reqData['biz_date'] = $bizDate;
         } else {
             throw new TBKException('统计日期不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -77,7 +78,6 @@ class VegasSendReport extends BaseTBK
     }
 
     /**
-     * @param int $relationId
      * @throws \SyException\Promotion\TBKException
      */
     public function setRelationId(int $relationId)
@@ -90,7 +90,6 @@ class VegasSendReport extends BaseTBK
     }
 
     /**
-     * @param int $activityId
      * @throws \SyException\Promotion\TBKException
      */
     public function setActivityId(int $activityId)
@@ -102,7 +101,7 @@ class VegasSendReport extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['biz_date'])) {
             throw new TBKException('统计日期不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

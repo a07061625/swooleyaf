@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Kol;
 
 use SyConstant\ErrorCode;
@@ -15,6 +16,7 @@ use SyPromotion\TBK\Traits\SetPageSizeTrait;
 
 /**
  * Class ReportQuery
+ *
  * @package SyPromotion\TBK\Kol
  */
 class ReportQuery extends BaseTBK
@@ -84,12 +86,11 @@ class ReportQuery extends BaseTBK
     }
 
     /**
-     * @param string $end
      * @throws \SyException\Promotion\TBKException
      */
     public function setEnd(string $end)
     {
-        if ((\strlen($end) == 8) && ctype_digit($end)) {
+        if ((8 == \strlen($end)) && ctype_digit($end)) {
             $this->reqData['end'] = $end;
         } else {
             throw new TBKException('结束日期不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -97,12 +98,11 @@ class ReportQuery extends BaseTBK
     }
 
     /**
-     * @param int $statisticType
      * @throws \SyException\Promotion\TBKException
      */
     public function setStatisticType(int $statisticType)
     {
-        if (in_array($statisticType, [1, 2])) {
+        if (\in_array($statisticType, [1, 2])) {
             $this->reqData['statistic_type'] = $statisticType;
         } else {
             throw new TBKException('统计维度不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -110,12 +110,11 @@ class ReportQuery extends BaseTBK
     }
 
     /**
-     * @param int $statisticSpan
      * @throws \SyException\Promotion\TBKException
      */
     public function setStatisticSpan(int $statisticSpan)
     {
-        if (in_array($statisticSpan, [1, 2, 3])) {
+        if (\in_array($statisticSpan, [1, 2, 3])) {
             $this->reqData['statistic_span'] = $statisticSpan;
         } else {
             throw new TBKException('时间跨度不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -123,12 +122,11 @@ class ReportQuery extends BaseTBK
     }
 
     /**
-     * @param string $operationTypeId
      * @throws \SyException\Promotion\TBKException
      */
     public function setOperationTypeId(string $operationTypeId)
     {
-        if (strlen($operationTypeId) > 0) {
+        if (\strlen($operationTypeId) > 0) {
             $this->reqData['operation_type_id'] = $operationTypeId;
         } else {
             throw new TBKException('报表类型id不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -136,12 +134,11 @@ class ReportQuery extends BaseTBK
     }
 
     /**
-     * @param string $start
      * @throws \SyException\Promotion\TBKException
      */
     public function setStart(string $start)
     {
-        if ((\strlen($start) == 8) && ctype_digit($start)) {
+        if ((8 == \strlen($start)) && ctype_digit($start)) {
             $this->reqData['start'] = $start;
         } else {
             throw new TBKException('开始日期不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -149,7 +146,6 @@ class ReportQuery extends BaseTBK
     }
 
     /**
-     * @param string $pid
      * @throws \SyException\Promotion\TBKException
      */
     public function setPid(string $pid)
@@ -161,7 +157,7 @@ class ReportQuery extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['operation_type_id'])) {
             throw new TBKException('报表类型id不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

@@ -6,6 +6,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -15,12 +16,14 @@ use SyTool\Tool;
 
 /**
  * Class MediaReliableGoods
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class MediaReliableGoods extends BaseTBK
 {
     /**
      * 同步好货列表
+     *
      * @var array
      */
     private $reliable_goods = [];
@@ -36,22 +39,22 @@ class MediaReliableGoods extends BaseTBK
     }
 
     /**
-     * @param array $reliableGoods
      * @throws \SyException\Promotion\TBKException
      */
     public function setReliableGoods(array $reliableGoods)
     {
-        $goodsNum = count($reliableGoods);
-        if ($goodsNum == 0) {
+        $goodsNum = \count($reliableGoods);
+        if (0 == $goodsNum) {
             throw new TBKException('同步好货列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
-        } elseif ($goodsNum > 10) {
+        }
+        if ($goodsNum > 10) {
             throw new TBKException('同步好货列表不能超过10个', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
 
         $this->reliable_goods = $reliableGoods;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (empty($this->reliable_goods)) {
             throw new TBKException('同步好货列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
