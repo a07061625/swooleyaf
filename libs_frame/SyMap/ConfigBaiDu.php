@@ -5,6 +5,7 @@
  * Date: 18-9-9
  * Time: 下午12:27
  */
+
 namespace SyMap;
 
 use SyConstant\ErrorCode;
@@ -15,11 +16,13 @@ class ConfigBaiDu
 {
     /**
      * 开发密钥
+     *
      * @var string
      */
     private $ak = '';
     /**
      * 服务器IP
+     *
      * @var string
      */
     private $serverIp = '';
@@ -32,37 +35,29 @@ class ConfigBaiDu
     {
     }
 
-    /**
-     * @return string
-     */
-    public function getAk() : string
+    public function getAk(): string
     {
         return $this->ak;
     }
 
     /**
-     * @param string $ak
      * @throws \SyException\Map\BaiduMapException
      */
     public function setAk(string $ak)
     {
-        if (ctype_alnum($ak) && (strlen($ak) == 32)) {
+        if (ctype_alnum($ak) && (32 == \strlen($ak))) {
             $this->ak = $ak;
         } else {
             throw new BaiduMapException('密钥不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getServerIp() : string
+    public function getServerIp(): string
     {
         return $this->serverIp;
     }
 
     /**
-     * @param string $serverIp
      * @throws \SyException\Map\BaiduMapException
      */
     public function setServerIp(string $serverIp)

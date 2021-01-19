@@ -5,6 +5,7 @@
  * Date: 2019/11/22 0022
  * Time: 12:37
  */
+
 namespace SyObjectStorage\Kodo\Object;
 
 use SyCloud\QiNiu\Util;
@@ -115,8 +116,6 @@ class FileFetchAsync extends BaseKodo
     }
 
     /**
-     * @param string $region
-     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setRegion(string $region)
@@ -130,8 +129,6 @@ class FileFetchAsync extends BaseKodo
     }
 
     /**
-     * @param array $urlList
-     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setUrl(array $urlList)
@@ -142,7 +139,7 @@ class FileFetchAsync extends BaseKodo
 
         $this->url = [];
         foreach ($urlList as $eUrl) {
-            if (is_string($eUrl) && (strlen($eUrl) > 0)) {
+            if (\is_string($eUrl) && (\strlen($eUrl) > 0)) {
                 $this->url[] = $eUrl;
             }
         }
@@ -150,8 +147,6 @@ class FileFetchAsync extends BaseKodo
     }
 
     /**
-     * @param string $bucket
-     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setBucket(string $bucket)
@@ -164,13 +159,11 @@ class FileFetchAsync extends BaseKodo
     }
 
     /**
-     * @param string $host
-     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setHost(string $host)
     {
-        if (strlen($host) > 0) {
+        if (\strlen($host) > 0) {
             $this->reqData['host'] = $host;
         } else {
             throw new KodoException('链接域名不合法', ErrorCode::OBJECT_STORAGE_KODO_PARAM_ERROR);
@@ -178,13 +171,11 @@ class FileFetchAsync extends BaseKodo
     }
 
     /**
-     * @param string $key
-     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setKey(string $key)
     {
-        if (strlen($key) > 0) {
+        if (\strlen($key) > 0) {
             $this->reqData['key'] = $key;
         } else {
             throw new KodoException('文件存储key不合法', ErrorCode::OBJECT_STORAGE_KODO_PARAM_ERROR);
@@ -192,13 +183,11 @@ class FileFetchAsync extends BaseKodo
     }
 
     /**
-     * @param string $md5
-     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setMd5(string $md5)
     {
-        if (ctype_alnum($md5) && (strlen($md5) == 32)) {
+        if (ctype_alnum($md5) && (32 == \strlen($md5))) {
             $this->reqData['md5'] = $md5;
         } else {
             throw new KodoException('文件md5不合法', ErrorCode::OBJECT_STORAGE_KODO_PARAM_ERROR);
@@ -206,13 +195,11 @@ class FileFetchAsync extends BaseKodo
     }
 
     /**
-     * @param string $etag
-     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setEtag(string $etag)
     {
-        if (strlen($etag) > 0) {
+        if (\strlen($etag) > 0) {
             $this->reqData['etag'] = $etag;
         } else {
             throw new KodoException('文件etag不合法', ErrorCode::OBJECT_STORAGE_KODO_PARAM_ERROR);
@@ -220,8 +207,6 @@ class FileFetchAsync extends BaseKodo
     }
 
     /**
-     * @param string $callbackUrl
-     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setCallbackUrl(string $callbackUrl)
@@ -234,8 +219,6 @@ class FileFetchAsync extends BaseKodo
     }
 
     /**
-     * @param array $callbackBody
-     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setCallbackBody(array $callbackBody)
@@ -248,13 +231,11 @@ class FileFetchAsync extends BaseKodo
     }
 
     /**
-     * @param string $callbackBodyType
-     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setCallbackBodyType(string $callbackBodyType)
     {
-        if (in_array($callbackBodyType, [self::CALLBACK_BODY_TYPE_FORM, self::CALLBACK_BODY_TYPE_JSON])) {
+        if (\in_array($callbackBodyType, [self::CALLBACK_BODY_TYPE_FORM, self::CALLBACK_BODY_TYPE_JSON])) {
             $this->reqData['callbackbodytype'] = $callbackBodyType;
         } else {
             throw new KodoException('回调Body内容类型不合法', ErrorCode::OBJECT_STORAGE_KODO_PARAM_ERROR);
@@ -262,13 +243,11 @@ class FileFetchAsync extends BaseKodo
     }
 
     /**
-     * @param string $callbackHost
-     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setCallbackHost(string $callbackHost)
     {
-        if (strlen($callbackHost) > 0) {
+        if (\strlen($callbackHost) > 0) {
             $this->reqData['callbackhost'] = $callbackHost;
         } else {
             throw new KodoException('回调域名不合法', ErrorCode::OBJECT_STORAGE_KODO_PARAM_ERROR);
@@ -276,30 +255,25 @@ class FileFetchAsync extends BaseKodo
     }
 
     /**
-     * @param int $fileType
-     *
      * @throws \SyException\ObjectStorage\KodoException
      */
     public function setFileType(int $fileType)
     {
-        if (in_array($fileType, [0, 1])) {
+        if (\in_array($fileType, [0, 1])) {
             $this->reqData['file_type'] = $fileType;
         } else {
             throw new KodoException('存储文件类型不合法', ErrorCode::OBJECT_STORAGE_KODO_PARAM_ERROR);
         }
     }
 
-    /**
-     * @param bool $ignoreSameKey
-     */
     public function setIgnoreSameKey(bool $ignoreSameKey)
     {
         $this->reqData['ignore_same_key'] = $ignoreSameKey;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
-        if (strlen($this->region) == 0) {
+        if (0 == \strlen($this->region)) {
             throw new KodoException('存储区域不能为空', ErrorCode::OBJECT_STORAGE_KODO_PARAM_ERROR);
         }
         if (empty($this->url)) {
@@ -312,7 +286,7 @@ class FileFetchAsync extends BaseKodo
             if (empty($this->callbackbody)) {
                 throw new KodoException('回调Body不能为空', ErrorCode::OBJECT_STORAGE_KODO_PARAM_ERROR);
             }
-            if ($this->reqData['callbackbodytype'] == self::CALLBACK_BODY_TYPE_FORM) {
+            if (self::CALLBACK_BODY_TYPE_FORM == $this->reqData['callbackbodytype']) {
                 $this->reqData['callbackbody'] = http_build_query($this->callbackbody);
             } else {
                 $this->reqData['callbackbody'] = Tool::jsonEncode($this->callbackbody, JSON_UNESCAPED_UNICODE);

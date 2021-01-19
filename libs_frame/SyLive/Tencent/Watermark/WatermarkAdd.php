@@ -5,6 +5,7 @@
  * Date: 2020/9/4 0004
  * Time: 8:34
  */
+
 namespace SyLive\Tencent\Watermark;
 
 use DesignPatterns\Singletons\LiveConfigSingleton;
@@ -70,8 +71,6 @@ class WatermarkAdd extends BaseTencent
     }
 
     /**
-     * @param string $pictureUrl
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setPictureUrl(string $pictureUrl)
@@ -84,13 +83,11 @@ class WatermarkAdd extends BaseTencent
     }
 
     /**
-     * @param string $watermarkName
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setWatermarkName(string $watermarkName)
     {
-        $length = strlen($watermarkName);
+        $length = \strlen($watermarkName);
         if (($length > 0) && ($length <= 16)) {
             $this->reqData['WatermarkName'] = $watermarkName;
         } else {
@@ -99,8 +96,6 @@ class WatermarkAdd extends BaseTencent
     }
 
     /**
-     * @param int $xPosition
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setXPosition(int $xPosition)
@@ -113,8 +108,6 @@ class WatermarkAdd extends BaseTencent
     }
 
     /**
-     * @param int $yPosition
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setYPosition(int $yPosition)
@@ -127,8 +120,6 @@ class WatermarkAdd extends BaseTencent
     }
 
     /**
-     * @param int $width
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setWidth(int $width)
@@ -141,8 +132,6 @@ class WatermarkAdd extends BaseTencent
     }
 
     /**
-     * @param int $height
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setHeight(int $height)
@@ -154,7 +143,7 @@ class WatermarkAdd extends BaseTencent
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['PictureUrl'])) {
             throw new TencentException('水印图片URL不能为空', ErrorCode::LIVE_TENCENT_PARAM_ERROR);

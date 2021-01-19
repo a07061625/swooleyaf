@@ -5,6 +5,7 @@
  * Date: 2018/9/10 0010
  * Time: 16:09
  */
+
 namespace SyMap\Tencent;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ class IpLocation extends MapBaseTencent
 {
     /**
      * IP
+     *
      * @var string
      */
     private $ip = '';
@@ -32,7 +34,6 @@ class IpLocation extends MapBaseTencent
     }
 
     /**
-     * @param string $ip
      * @throws \SyException\Map\TencentMapException
      */
     public function setIp(string $ip)
@@ -44,7 +45,7 @@ class IpLocation extends MapBaseTencent
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['ip'])) {
             throw new TencentMapException('ip不能为空', ErrorCode::MAP_TENCENT_PARAM_ERROR);

@@ -5,17 +5,19 @@
  * Date: 19-2-2
  * Time: 下午2:23
  */
+
 namespace DingDing\Corp\WorkRecord;
 
-use SyConstant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
+use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
 use SyException\DingDing\TalkException;
 use SyTool\Tool;
 
 /**
  * 发起待办
+ *
  * @package DingDing\Corp\WorkRecord
  */
 class WorkRecordAdd extends TalkBaseCorp
@@ -24,26 +26,31 @@ class WorkRecordAdd extends TalkBaseCorp
 
     /**
      * 用户ID
+     *
      * @var string
      */
     private $userid = '';
     /**
      * 待办时间
+     *
      * @var int
      */
     private $create_time = 0;
     /**
      * 标题
+     *
      * @var string
      */
     private $title = '';
     /**
      * 跳转链接
+     *
      * @var string
      */
     private $url = '';
     /**
      * 表单列表
+     *
      * @var array
      */
     private $formItemList = [];
@@ -61,7 +68,6 @@ class WorkRecordAdd extends TalkBaseCorp
     }
 
     /**
-     * @param string $userId
      * @throws \SyException\DingDing\TalkException
      */
     public function setUserId(string $userId)
@@ -74,7 +80,6 @@ class WorkRecordAdd extends TalkBaseCorp
     }
 
     /**
-     * @param int $createTime
      * @throws \SyException\DingDing\TalkException
      */
     public function setCreateTime(int $createTime)
@@ -87,12 +92,11 @@ class WorkRecordAdd extends TalkBaseCorp
     }
 
     /**
-     * @param string $title
      * @throws \SyException\DingDing\TalkException
      */
     public function setTitle(string $title)
     {
-        if (strlen($title) > 0) {
+        if (\strlen($title) > 0) {
             $this->reqData['title'] = $title;
         } else {
             throw new TalkException('标题不合法', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -100,7 +104,6 @@ class WorkRecordAdd extends TalkBaseCorp
     }
 
     /**
-     * @param string $url
      * @throws \SyException\DingDing\TalkException
      */
     public function setUrl(string $url)
@@ -113,7 +116,6 @@ class WorkRecordAdd extends TalkBaseCorp
     }
 
     /**
-     * @param array $formItem
      * @throws \SyException\DingDing\TalkException
      */
     public function addFormItem(array $formItem)
@@ -124,7 +126,7 @@ class WorkRecordAdd extends TalkBaseCorp
         $this->reqData['formItemList'][] = $formItem;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['userid'])) {
             throw new TalkException('用户ID不能为空', ErrorCode::DING_TALK_PARAM_ERROR);
@@ -146,6 +148,7 @@ class WorkRecordAdd extends TalkBaseCorp
             'access_token' => $this->getAccessToken($this->_tokenType, $this->_corpId, $this->_agentTag),
         ]);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
+
         return $this->sendRequest('POST');
     }
 }

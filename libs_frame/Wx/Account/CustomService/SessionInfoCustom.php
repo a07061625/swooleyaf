@@ -5,6 +5,7 @@
  * Date: 2018/12/20 0020
  * Time: 10:52
  */
+
 namespace Wx\Account\CustomService;
 
 use SyConstant\ErrorCode;
@@ -19,11 +20,13 @@ class SessionInfoCustom extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 用户openid
+     *
      * @var string
      */
     private $openid = '';
@@ -40,7 +43,6 @@ class SessionInfoCustom extends WxBaseAccount
     }
 
     /**
-     * @param string $openid
      * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
@@ -52,7 +54,7 @@ class SessionInfoCustom extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['openid'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);

@@ -5,10 +5,11 @@
  * Date: 2018/9/11 0011
  * Time: 17:46
  */
+
 namespace Wx\Payment\Company;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyLog\Log;
@@ -24,46 +25,55 @@ class Pay extends WxBasePayment
 
     /**
      * 商户号
+     *
      * @var string
      */
     private $mchid = '';
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
     /**
      * 商户订单号
+     *
      * @var string
      */
     private $partner_trade_no = '';
     /**
      * 用户openid
+     *
      * @var string
      */
     private $openid = '';
     /**
      * 校验用户姓名选项
+     *
      * @var string
      */
     private $check_name = '';
     /**
      * 收款用户姓名
+     *
      * @var string
      */
     private $re_user_name = '';
     /**
      * 金额
+     *
      * @var int
      */
     private $amount = 0;
     /**
      * 企业付款描述信息
+     *
      * @var string
      */
     private $desc = '';
     /**
      * Ip地址
+     *
      * @var string
      */
     private $spbill_create_ip = '';
@@ -86,12 +96,11 @@ class Pay extends WxBasePayment
     }
 
     /**
-     * @param string $outTradeNo
      * @throws \SyException\Wx\WxException
      */
     public function setOutTradeNo(string $outTradeNo)
     {
-        if (ctype_digit($outTradeNo) && (strlen($outTradeNo) <= 32)) {
+        if (ctype_digit($outTradeNo) && (\strlen($outTradeNo) <= 32)) {
             $this->reqData['partner_trade_no'] = $outTradeNo;
         } else {
             throw new WxException('商户单号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -99,7 +108,6 @@ class Pay extends WxBasePayment
     }
 
     /**
-     * @param string $openid
      * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
@@ -112,33 +120,28 @@ class Pay extends WxBasePayment
     }
 
     /**
-     * @param string $checkName
      * @throws \SyException\Wx\WxException
      */
     public function setCheckName(string $checkName)
     {
-        if ($checkName == self::CHECK_NAME_TYPE_NO) {
+        if (self::CHECK_NAME_TYPE_NO == $checkName) {
             $this->reqData['check_name'] = $checkName;
             unset($this->reqData['re_user_name']);
-        } elseif ($checkName == self::CHECK_NAME_TYPE_FORCE) {
+        } elseif (self::CHECK_NAME_TYPE_FORCE == $checkName) {
             $this->reqData['check_name'] = $checkName;
         } else {
             throw new WxException('校验用户姓名选项不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @param string $userName
-     */
     public function setReUserName(string $userName)
     {
-        if (($this->reqData['check_name'] == self::CHECK_NAME_TYPE_FORCE) && (strlen($userName) > 0)) {
+        if ((self::CHECK_NAME_TYPE_FORCE == $this->reqData['check_name']) && (\strlen($userName) > 0)) {
             $this->reqData['re_user_name'] = mb_substr($userName, 0, 32);
         }
     }
 
     /**
-     * @param int $amount
      * @throws \SyException\Wx\WxException
      */
     public function setAmount(int $amount)
@@ -151,19 +154,18 @@ class Pay extends WxBasePayment
     }
 
     /**
-     * @param string $desc
      * @throws \SyException\Wx\WxException
      */
     public function setDesc(string $desc)
     {
-        if (strlen($desc) > 0) {
+        if (\strlen($desc) > 0) {
             $this->reqData['desc'] = $desc;
         } else {
             throw new WxException('付款描述信息不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['partner_trade_no'])) {
             throw new WxException('商户单号不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -171,7 +173,7 @@ class Pay extends WxBasePayment
         if (!isset($this->reqData['openid'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        if (($this->reqData['check_name'] == 'FORCE_CHECK') && !isset($this->reqData['re_user_name'])) {
+        if (('FORCE_CHECK' == $this->reqData['check_name']) && !isset($this->reqData['re_user_name'])) {
             throw new WxException('收款用户姓名不能为空', ErrorCode::WX_PARAM_ERROR);
         }
         if (!isset($this->reqData['desc'])) {
@@ -203,11 +205,11 @@ class Pay extends WxBasePayment
         fclose($tmpKey);
         fclose($tmpCert);
         $sendData = Tool::xmlToArray($sendRes);
-        if ($sendData['return_code'] == 'FAIL') {
+        if ('FAIL' == $sendData['return_code']) {
             Log::error($sendData['return_msg'], ErrorCode::WX_PARAM_ERROR);
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } elseif ($sendData['result_code'] == 'FAIL') {
+        } elseif ('FAIL' == $sendData['result_code']) {
             Log::error($sendData['err_code'], ErrorCode::WX_PARAM_ERROR);
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];

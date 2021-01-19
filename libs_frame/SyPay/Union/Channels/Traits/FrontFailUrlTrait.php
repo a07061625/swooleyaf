@@ -5,6 +5,7 @@
  * Date: 2020/8/19 0019
  * Time: 11:26
  */
+
 namespace SyPay\Union\Channels\Traits;
 
 use SyConstant\ErrorCode;
@@ -19,8 +20,6 @@ use SyException\Pay\UnionException;
 trait FrontFailUrlTrait
 {
     /**
-     * @param string $frontFailUrl
-     *
      * @throws \SyException\Pay\UnionException
      */
     public function setFrontFailUrl(string $frontFailUrl)

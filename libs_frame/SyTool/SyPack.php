@@ -5,6 +5,7 @@
  * Date: 17-8-20
  * Time: 下午8:35
  */
+
 namespace SyTool;
 
 use SyConstant\ErrorCode;
@@ -25,21 +26,25 @@ class SyPack
 
     /**
      * 支持的命令数组
+     *
      * @var array
      */
     private $commandTypes = [];
     /**
      * 命令
+     *
      * @var string
      */
     private $command = '';
     /**
      * 数据
+     *
      * @var array
      */
     private $data = [];
     /**
      * 保留字段
+     *
      * @var string
      */
     private $extend = '';
@@ -73,88 +78,77 @@ class SyPack
         $this->data = [];
     }
 
-    /**
-     * @return string
-     */
-    public function getCommand() : string
+    public function getCommand(): string
     {
         return $this->command;
     }
 
-    /**
-     * @return array
-     */
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
 
     /**
-     * @param string $command
-     * @param array $data
      * @throws \SyException\Common\CheckException
      */
     public function setCommandAndData(string $command, array $data)
     {
         $funcName = Tool::getArrayVal($this->commandTypes, $command, null);
-        if (is_null($funcName)) {
+        if (null === $funcName) {
             throw new CheckException('命令不支持', ErrorCode::COMMON_PARAM_ERROR);
         }
 
-        $this->$funcName($data);
+        $this->{$funcName}($data);
         $this->command = $command;
     }
 
-    /**
-     * @return string
-     */
-    public function getExtend() : string
+    public function getExtend(): string
     {
         return $this->extend;
     }
 
     /**
      * 压缩数据
+     *
      * @return bool|string
      */
     public function packData()
     {
-        if (strlen($this->command) == 0) {
+        if (0 == \strlen($this->command)) {
             return false;
         }
 
         $dataStr = Tool::pack($this->data);
-        if ($dataStr === false) {
+        if (false === $dataStr) {
             return false;
         }
 
-        return pack('L2A4A4a*', 16, (strlen($dataStr) + 16), $this->command, $this->extend, $dataStr);
+        return pack('L2A4A4a*', 16, (\strlen($dataStr) + 16), $this->command, $this->extend, $dataStr);
     }
 
     /**
      * 解压数据
-     * @param string $dataStr
-     * @return bool
      */
-    public function unpackData(string $dataStr) : bool
+    public function unpackData(string $dataStr): bool
     {
-        if (strlen($dataStr) < 16) {
+        if (\strlen($dataStr) < 16) {
             return false;
         }
-        
+
         $unpackRes = unpack('Lk1/Lk2/A4k3/A4k4/a*k5', $dataStr);
         if (!isset($unpackRes['k5'])) {
             return false;
         }
 
         $data = Tool::unpack($unpackRes['k5']);
-        if ($data === false) {
+        if (false === $data) {
             return false;
         }
 
         $this->command = $unpackRes['k3'];
         $this->extend = $unpackRes['k4'];
         $this->data = $data;
+
         return true;
     }
 
@@ -176,28 +170,31 @@ class SyPack
     private function setDataSocketClientSendApiReq(array $data)
     {
         $module = Tool::getArrayVal($data, 'api_module', '');
-        if (!is_string($module)) {
+        if (!\is_string($module)) {
             throw new CheckException('模块名称必须是字符串', ErrorCode::COMMON_PARAM_ERROR);
-        } elseif (!in_array($module, Project::$totalModuleName, true)) {
+        }
+        if (!\in_array($module, Project::$totalModuleName, true)) {
             throw new CheckException('模块不支持', ErrorCode::COMMON_PARAM_ERROR);
         }
 
         $uri = Tool::getArrayVal($data, 'api_uri', '');
-        if (!is_string($uri)) {
+        if (!\is_string($uri)) {
             throw new CheckException('请求URI必须是字符串', ErrorCode::COMMON_PARAM_ERROR);
-        } elseif (preg_match(ProjectBase::REGEX_URI_YAF, $uri) == 0) {
+        }
+        if (0 == preg_match(ProjectBase::REGEX_URI_YAF, $uri)) {
             throw new CheckException('请求URI不合法', ErrorCode::COMMON_PARAM_ERROR);
         }
 
         $method = Tool::getArrayVal($data, 'api_method', '');
-        if (!is_string($method)) {
+        if (!\is_string($method)) {
             throw new CheckException('请求方式必须是字符串', ErrorCode::COMMON_PARAM_ERROR);
-        } elseif (!in_array($method, ['GET', 'POST'], true)) {
+        }
+        if (!\in_array($method, ['GET', 'POST'], true)) {
             throw new CheckException('请求方式不合法', ErrorCode::COMMON_PARAM_ERROR);
         }
 
         $params = Tool::getArrayVal($data, 'api_params', null);
-        if (!is_array($params)) {
+        if (!\is_array($params)) {
             throw new CheckException('请求数据必须是数组', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -212,19 +209,20 @@ class SyPack
     private function setDataSocketClientSendTaskReq(array $data)
     {
         $module = Tool::getArrayVal($data, 'task_module', '');
-        if (!is_string($module)) {
+        if (!\is_string($module)) {
             throw new CheckException('模块名称必须是字符串', ErrorCode::COMMON_PARAM_ERROR);
-        } elseif (!in_array($module, Project::$totalModuleName, true)) {
+        }
+        if (!\in_array($module, Project::$totalModuleName, true)) {
             throw new CheckException('模块不支持', ErrorCode::COMMON_PARAM_ERROR);
         }
 
         $taskCommand = Tool::getArrayVal($data, 'task_command', '');
-        if (!is_string($taskCommand)) {
+        if (!\is_string($taskCommand)) {
             throw new CheckException('任务命令必须是字符串', ErrorCode::COMMON_PARAM_ERROR);
         }
 
         $params = Tool::getArrayVal($data, 'task_params', null);
-        if (!is_array($params)) {
+        if (!\is_array($params)) {
             throw new CheckException('请求数据必须是数组', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -238,14 +236,15 @@ class SyPack
     private function setDataRpcClientSendApiReq(array $data)
     {
         $uri = Tool::getArrayVal($data, 'api_uri', '');
-        if (!is_string($uri)) {
+        if (!\is_string($uri)) {
             throw new CheckException('请求URI必须是字符串', ErrorCode::COMMON_PARAM_ERROR);
-        } elseif (preg_match(ProjectBase::REGEX_URI_YAF, $uri) == 0) {
+        }
+        if (0 == preg_match(ProjectBase::REGEX_URI_YAF, $uri)) {
             throw new CheckException('请求URI不合法', ErrorCode::COMMON_PARAM_ERROR);
         }
 
         $params = Tool::getArrayVal($data, 'api_params', null);
-        if (!is_array($params)) {
+        if (!\is_array($params)) {
             throw new CheckException('请求数据必须是数组', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -258,12 +257,12 @@ class SyPack
     private function setDataRpcClientSendTaskReq(array $data)
     {
         $taskCommand = Tool::getArrayVal($data, 'task_command', '');
-        if (!is_string($taskCommand)) {
+        if (!\is_string($taskCommand)) {
             throw new CheckException('任务命令必须是字符串', ErrorCode::COMMON_PARAM_ERROR);
         }
 
         $params = Tool::getArrayVal($data, 'task_params', null);
-        if (!is_array($params)) {
+        if (!\is_array($params)) {
             throw new CheckException('请求数据必须是数组', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -276,7 +275,7 @@ class SyPack
     private function setDataRpcServerSendRsp(array $data)
     {
         $rspData = Tool::getArrayVal($data, 'rsp_data', null);
-        if (!is_string($rspData)) {
+        if (!\is_string($rspData)) {
             throw new CheckException('响应数据必须是字符串', ErrorCode::COMMON_PARAM_ERROR);
         }
 

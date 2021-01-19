@@ -5,10 +5,11 @@
  * Date: 18-9-9
  * Time: 下午12:39
  */
+
 namespace SyMap;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\MapSingleton;
+use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
 use SyException\Map\BaiduMapException;
 
@@ -25,47 +26,56 @@ abstract class MapBaseBaiDu extends MapBase
     ];
     /**
      * 服务uri
+     *
      * @var string
      */
     protected $serviceUri = '';
 
     /**
      * 应用密钥
+     *
      * @var string
      */
     private $ak = '';
     /**
      * 服务端IP
+     *
      * @var string
      */
     private $serverIp = '';
     /**
      * 输出格式
+     *
      * @var string
      */
     private $output = '';
     /**
      * 服务域名
+     *
      * @var string
      */
     private $serviceDomain = '';
     /**
      * 校验类型
+     *
      * @var string
      */
     private $checkType = '';
     /**
      * 请求方式
+     *
      * @var string
      */
     private $reqMethod = '';
     /**
      * 用户签名
+     *
      * @var string
      */
     private $sk = '';
     /**
      * 请求引用地址
+     *
      * @var string
      */
     private $reqReferer = '';
@@ -82,7 +92,6 @@ abstract class MapBaseBaiDu extends MapBase
     }
 
     /**
-     * @param string $checkType
      * @throws \SyException\Map\BaiduMapException
      */
     public function setCheckType(string $checkType)
@@ -95,12 +104,11 @@ abstract class MapBaseBaiDu extends MapBase
     }
 
     /**
-     * @param string $reqMethod
      * @throws \SyException\Map\BaiduMapException
      */
     public function setReqMethod(string $reqMethod)
     {
-        if (in_array($reqMethod, ['GET', 'POST'], true)) {
+        if (\in_array($reqMethod, ['GET', 'POST'], true)) {
             $this->reqMethod = $reqMethod;
         } else {
             throw new BaiduMapException('请求方式不支持', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -108,12 +116,11 @@ abstract class MapBaseBaiDu extends MapBase
     }
 
     /**
-     * @param string $sk
      * @throws \SyException\Map\BaiduMapException
      */
     public function setSk(string $sk)
     {
-        if (ctype_alnum($sk) && (strlen($sk) == 32)) {
+        if (ctype_alnum($sk) && (32 == \strlen($sk))) {
             $this->sk = $sk;
         } else {
             throw new BaiduMapException('用户签名不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
@@ -121,7 +128,6 @@ abstract class MapBaseBaiDu extends MapBase
     }
 
     /**
-     * @param string $reqReferer
      * @throws \SyException\Map\BaiduMapException
      */
     public function setReqReferer(string $reqReferer)
@@ -138,7 +144,7 @@ abstract class MapBaseBaiDu extends MapBase
         return $this->serviceDomain . $this->serviceUri;
     }
 
-    protected function getContent() : array
+    protected function getContent(): array
     {
         $this->reqData['ak'] = $this->ak;
         $this->reqData['output'] = $this->output;
@@ -148,25 +154,28 @@ abstract class MapBaseBaiDu extends MapBase
                     'X-FORWARDED-FOR: ' . $this->serverIp,
                     'CLIENT-IP: ' . $this->serverIp,
                 ];
+
                 break;
             case self::CHECK_TYPE_SERVER_SN:
-                if (strlen($this->sk) == 0) {
+                if (0 == \strlen($this->sk)) {
                     throw new BaiduMapException('签名校验码不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
                 }
-                if ($this->reqMethod === 'POST') {
+                if ('POST' === $this->reqMethod) {
                     ksort($this->reqData);
                 }
 
                 $snStr = $this->serviceUri . '?' . http_build_query($this->reqData) . $this->sk;
                 $this->reqData['sn'] = md5(urlencode($snStr));
+
                 break;
             case self::CHECK_TYPE_BROWSE:
-                if (strlen($this->reqReferer) == 0) {
+                if (0 == \strlen($this->reqReferer)) {
                     throw new BaiduMapException('请求引用地址不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
                 }
 
                 $this->curlConfigs[CURLOPT_REFERER] = $this->reqReferer;
                 $this->curlConfigs[CURLOPT_USERAGENT] = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11';
+
                 break;
             default:
                 break;

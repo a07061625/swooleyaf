@@ -5,6 +5,7 @@
  * Date: 2018/9/12 0012
  * Time: 15:52
  */
+
 namespace Wx\Account\Menu;
 
 use SyConstant\ErrorCode;
@@ -29,36 +30,42 @@ class Menu extends WxBaseAccount
 
     /**
      * 菜单标题
+     *
      * @var string
      */
     private $name = '';
 
     /**
      * 子菜单
+     *
      * @var array
      */
     private $sub_button = [];
 
     /**
      * 响应动作类型
+     *
      * @var string
      */
     private $type = '';
 
     /**
      * 菜单KEY值，用于消息接口推送
+     *
      * @var string
      */
     private $key = '';
 
     /**
      * 网页链接，用户点击菜单可打开链接
+     *
      * @var string
      */
     private $url = '';
 
     /**
      * 媒体ID
+     *
      * @var string
      */
     private $media_id = '';
@@ -73,12 +80,11 @@ class Menu extends WxBaseAccount
     }
 
     /**
-     * @param string $name
      * @throws \SyException\Wx\WxException
      */
     public function setName(string $name)
     {
-        if (strlen($name) > 0) {
+        if (\strlen($name) > 0) {
             $this->reqData['name'] = mb_substr($name, 0, 5);
         } else {
             throw new WxException('菜单名称不合法', ErrorCode::WX_PARAM_ERROR);
@@ -86,7 +92,6 @@ class Menu extends WxBaseAccount
     }
 
     /**
-     * @param array $sub
      * @throws \SyException\Wx\WxException
      */
     public function addSub(array $sub)
@@ -95,7 +100,7 @@ class Menu extends WxBaseAccount
             throw new WxException('子菜单不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
-        if (count($this->sub_button) < 5) {
+        if (\count($this->sub_button) < 5) {
             $this->sub_button[] = $sub;
         } else {
             throw  new WxException('子菜单不能超过5个', ErrorCode::WX_PARAM_ERROR);
@@ -103,30 +108,25 @@ class Menu extends WxBaseAccount
     }
 
     /**
-     * @param string $type
      * @throws \SyException\Wx\WxException
      */
     public function setType(string $type)
     {
-        if (in_array($type, self::$typeList, true)) {
+        if (\in_array($type, self::$typeList, true)) {
             $this->reqData['type'] = $type;
         } else {
             throw  new WxException('响应动作类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @param string $key
-     */
     public function setKey(string $key)
     {
-        if (strlen($key) > 0) {
+        if (\strlen($key) > 0) {
             $this->reqData['key'] = substr($key, 0, 128);
         }
     }
 
     /**
-     * @param string $url
      * @throws \SyException\Wx\WxException
      */
     public function setUrl(string $url)
@@ -139,19 +139,18 @@ class Menu extends WxBaseAccount
     }
 
     /**
-     * @param string $mediaId
      * @throws \SyException\Wx\WxException
      */
     public function setMediaId(string $mediaId)
     {
-        if (strlen($mediaId) > 0) {
+        if (\strlen($mediaId) > 0) {
             $this->reqData['media_id'] = $mediaId;
         } else {
             throw new WxException('媒体ID不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['name'])) {
             throw new WxException('菜单名称不能为空', ErrorCode::WX_PARAM_ERROR);

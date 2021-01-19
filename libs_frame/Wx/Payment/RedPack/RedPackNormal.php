@@ -5,10 +5,11 @@
  * Date: 2018/9/11 0011
  * Time: 17:32
  */
+
 namespace Wx\Payment\RedPack;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
@@ -20,76 +21,91 @@ class RedPackNormal extends WxBasePayment
 {
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
     /**
      * 商户订单号
+     *
      * @var string
      */
     private $mch_billno = '';
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * 公众账号app id
+     *
      * @var string
      */
     private $wxappid = '';
     /**
      * 商户名称
+     *
      * @var string
      */
     private $send_name = '';
     /**
      * 用户openid
+     *
      * @var string
      */
     private $re_openid = '';
     /**
      * 付款金额
+     *
      * @var int
      */
     private $total_amount = 0;
     /**
      * 红包发放总人数
+     *
      * @var int
      */
     private $total_num = 0;
     /**
      * 红包祝福语
+     *
      * @var string
      */
     private $wishing = '';
     /**
      * Ip地址
+     *
      * @var string
      */
     private $client_ip = '';
     /**
      * 活动名称
+     *
      * @var string
      */
     private $act_name = '';
     /**
      * 备注
+     *
      * @var string
      */
     private $remark = '';
     /**
      * 场景id
+     *
      * @var string
      */
     private $scene_id = '';
     /**
      * 活动信息
+     *
      * @var string
      */
     private $risk_info = '';
     /**
      * 资金授权商户号
+     *
      * @var string
      */
     private $consume_mch_id = '';
@@ -123,12 +139,11 @@ class RedPackNormal extends WxBasePayment
     }
 
     /**
-     * @param string $mchBillNo
      * @throws \SyException\Wx\WxException
      */
     public function setMchBillNo(string $mchBillNo)
     {
-        if (ctype_alnum($mchBillNo) && (strlen($mchBillNo) <= 32)) {
+        if (ctype_alnum($mchBillNo) && (\strlen($mchBillNo) <= 32)) {
             $this->reqData['mch_billno'] = $mchBillNo;
         } else {
             throw new WxException('商户订单号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -136,12 +151,11 @@ class RedPackNormal extends WxBasePayment
     }
 
     /**
-     * @param string $sendName
      * @throws \SyException\Wx\WxException
      */
     public function setSendName(string $sendName)
     {
-        if (strlen($sendName) > 0) {
+        if (\strlen($sendName) > 0) {
             $this->reqData['send_name'] = mb_substr($sendName, 0, 16);
         } else {
             throw new WxException('商户名称不合法', ErrorCode::WX_PARAM_ERROR);
@@ -149,7 +163,6 @@ class RedPackNormal extends WxBasePayment
     }
 
     /**
-     * @param string $openid
      * @throws \SyException\Wx\WxException
      */
     public function setReOpenid(string $openid)
@@ -162,7 +175,6 @@ class RedPackNormal extends WxBasePayment
     }
 
     /**
-     * @param int $totalAmount
      * @throws \SyException\Wx\WxException
      */
     public function setTotalAmount(int $totalAmount)
@@ -175,7 +187,6 @@ class RedPackNormal extends WxBasePayment
     }
 
     /**
-     * @param int $totalNum
      * @throws \SyException\Wx\WxException
      */
     public function setTotalNum(int $totalNum)
@@ -188,12 +199,11 @@ class RedPackNormal extends WxBasePayment
     }
 
     /**
-     * @param string $wishing
      * @throws \SyException\Wx\WxException
      */
     public function setWishing(string $wishing)
     {
-        if (strlen($wishing) > 0) {
+        if (\strlen($wishing) > 0) {
             $this->reqData['wishing'] = mb_substr($wishing, 0, 64);
         } else {
             throw new WxException('红包祝福语不合法', ErrorCode::WX_PARAM_ERROR);
@@ -201,12 +211,11 @@ class RedPackNormal extends WxBasePayment
     }
 
     /**
-     * @param string $actName
      * @throws \SyException\Wx\WxException
      */
     public function setActName(string $actName)
     {
-        if (strlen($actName) > 0) {
+        if (\strlen($actName) > 0) {
             $this->reqData['act_name'] = mb_substr($actName, 0, 16);
         } else {
             throw new WxException('活动名称不合法', ErrorCode::WX_PARAM_ERROR);
@@ -214,12 +223,11 @@ class RedPackNormal extends WxBasePayment
     }
 
     /**
-     * @param string $remark
      * @throws \SyException\Wx\WxException
      */
     public function setRemark(string $remark)
     {
-        if (strlen($remark) > 0) {
+        if (\strlen($remark) > 0) {
             $this->reqData['remark'] = mb_substr($remark, 0, 128);
         } else {
             throw new WxException('备注不合法', ErrorCode::WX_PARAM_ERROR);
@@ -227,7 +235,6 @@ class RedPackNormal extends WxBasePayment
     }
 
     /**
-     * @param string $sceneId
      * @throws \SyException\Wx\WxException
      */
     public function setSceneId(string $sceneId)
@@ -239,37 +246,33 @@ class RedPackNormal extends WxBasePayment
         }
     }
 
-    /**
-     * @param array $riskInfo
-     */
     public function setRiskInfo(array $riskInfo)
     {
         $infoStr = '';
         foreach ($riskInfo as $key => $val) {
-            if (in_array($key, ['posttime','mobile','deviceid','clientversion',], true) && (strlen($val) > 0)) {
+            if (\in_array($key, ['posttime', 'mobile', 'deviceid', 'clientversion'], true) && (\strlen($val) > 0)) {
                 $infoStr .= '&' . $key . '=' . $val;
             }
         }
 
-        if (strlen($infoStr) > 0) {
+        if (\strlen($infoStr) > 0) {
             $this->reqData['risk_info'] = urlencode(substr($infoStr, 1));
         }
     }
 
     /**
-     * @param string $consumeMchId
      * @throws \SyException\Wx\WxException
      */
     public function setConsumeMchId(string $consumeMchId)
     {
-        if (ctype_alnum($consumeMchId) && (strlen($consumeMchId) <= 32)) {
+        if (ctype_alnum($consumeMchId) && (\strlen($consumeMchId) <= 32)) {
             $this->reqData['consume_mch_id'] = $consumeMchId;
         } else {
             throw new WxException('资金授权商户号不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['mch_billno'])) {
             throw new WxException('商户订单号不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -298,7 +301,7 @@ class RedPackNormal extends WxBasePayment
         $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['wxappid']);
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['wxappid']);
@@ -318,10 +321,10 @@ class RedPackNormal extends WxBasePayment
         fclose($tmpKey);
         fclose($tmpCert);
         $sendData = Tool::xmlToArray($sendRes);
-        if ($sendData['return_code'] == 'FAIL') {
+        if ('FAIL' == $sendData['return_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } elseif ($sendData['result_code'] == 'FAIL') {
+        } elseif ('FAIL' == $sendData['result_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {

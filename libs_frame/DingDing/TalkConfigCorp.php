@@ -5,6 +5,7 @@
  * Date: 2019/1/26 0026
  * Time: 11:26
  */
+
 namespace DingDing;
 
 use SyConstant\ErrorCode;
@@ -61,17 +62,12 @@ class TalkConfigCorp
     {
     }
 
-    /**
-     * @return string
-     */
-    public function getCorpId() : string
+    public function getCorpId(): string
     {
         return $this->corpId;
     }
 
     /**
-     * @param string $corpId
-     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setCorpId(string $corpId)
@@ -83,17 +79,12 @@ class TalkConfigCorp
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getSsoSecret() : string
+    public function getSsoSecret(): string
     {
         return $this->ssoSecret;
     }
 
     /**
-     * @param string $ssoSecret
-     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setSsoSecret(string $ssoSecret)
@@ -105,17 +96,12 @@ class TalkConfigCorp
         }
     }
 
-    /**
-     * @return array
-     */
-    public function getAgents() : array
+    public function getAgents(): array
     {
         return $this->agents;
     }
 
     /**
-     * @param string $agentTag
-     *
      * @return array
      *               返回数据结构:
      *               id: 应用ID
@@ -126,30 +112,22 @@ class TalkConfigCorp
      *               callback_tags: 监听事件类型列表
      *               callback_url: 回调地址
      */
-    public function getAgentInfo(string $agentTag) : array
+    public function getAgentInfo(string $agentTag): array
     {
         return $this->agents[$agentTag] ?? [];
     }
 
-    /**
-     * @param array $agents
-     */
     public function setAgents(array $agents)
     {
         $this->agents = $agents;
     }
 
-    /**
-     * @return string
-     */
-    public function getLoginAppId() : string
+    public function getLoginAppId(): string
     {
         return $this->loginAppId;
     }
 
     /**
-     * @param string $loginAppId
-     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setLoginAppId(string $loginAppId)
@@ -161,39 +139,29 @@ class TalkConfigCorp
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getLoginAppSecret() : string
+    public function getLoginAppSecret(): string
     {
         return $this->loginAppSecret;
     }
 
     /**
-     * @param string $loginAppSecret
-     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setLoginAppSecret(string $loginAppSecret)
     {
-        if (strlen($loginAppSecret) > 0) {
+        if (\strlen($loginAppSecret) > 0) {
             $this->loginAppSecret = $loginAppSecret;
         } else {
             throw new TalkException('登陆应用密钥不合法', ErrorCode::DING_TALK_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getLoginUrlCallback() : string
+    public function getLoginUrlCallback(): string
     {
         return $this->loginUrlCallback;
     }
 
     /**
-     * @param string $loginUrlCallback
-     *
      * @throws \SyException\DingDing\TalkException
      */
     public function setLoginUrlCallback(string $loginUrlCallback)

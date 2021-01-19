@@ -5,6 +5,7 @@
  * Date: 18-9-12
  * Time: 上午12:22
  */
+
 namespace Wx\Account\User;
 
 use SyConstant\ErrorCode;
@@ -12,18 +13,20 @@ use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
-use Wx\WxUtilBase;
 use Wx\WxUtilAlone;
+use Wx\WxUtilBase;
 
 class InfoSingle extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 用户openid
+     *
      * @var string
      */
     private $openid = '';
@@ -40,7 +43,6 @@ class InfoSingle extends WxBaseAccount
     }
 
     /**
-     * @param string $openid
      * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
@@ -52,14 +54,14 @@ class InfoSingle extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['openid'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appid) . '&openid=' . $this->reqData['openid'];

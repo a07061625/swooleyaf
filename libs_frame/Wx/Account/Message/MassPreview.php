@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
@@ -19,21 +20,25 @@ class MassPreview extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 消息类型
+     *
      * @var string
      */
     private $msgtype = '';
     /**
      * 用户openid
+     *
      * @var string
      */
     private $touser = '';
     /**
      * 公众号名称
+     *
      * @var string
      */
     private $towxname = '';
@@ -50,19 +55,20 @@ class MassPreview extends WxBaseAccount
     }
 
     /**
-     * @param string $type
-     * @param array $data
      * @throws \SyException\Wx\WxException
      */
     public function setMsgData(string $type, array $data)
     {
         if (!isset(self::$totalMessageType[$type])) {
             throw new WxException('消息类型不支持', ErrorCode::WX_PARAM_ERROR);
-        } elseif (!isset($data['data'])) {
+        }
+        if (!isset($data['data'])) {
             throw new WxException('消息数据必须设置', ErrorCode::WX_PARAM_ERROR);
-        } elseif (!is_array($data['data'])) {
+        }
+        if (!\is_array($data['data'])) {
             throw new WxException('消息数据不合法', ErrorCode::WX_PARAM_ERROR);
-        } elseif (empty($data['data'])) {
+        }
+        if (empty($data['data'])) {
             throw new WxException('消息数据不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
@@ -71,7 +77,6 @@ class MassPreview extends WxBaseAccount
     }
 
     /**
-     * @param string $openid
      * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
@@ -84,19 +89,18 @@ class MassPreview extends WxBaseAccount
     }
 
     /**
-     * @param string $wxName
      * @throws \SyException\Wx\WxException
      */
     public function setWxName(string $wxName)
     {
-        if (strlen($wxName) > 0) {
+        if (\strlen($wxName) > 0) {
             $this->reqData['towxname'] = $wxName;
         } else {
             throw new WxException('公众号名称不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['msgtype'])) {
             throw new WxException('消息类型不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -113,7 +117,7 @@ class MassPreview extends WxBaseAccount
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

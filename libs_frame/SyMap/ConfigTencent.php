@@ -5,6 +5,7 @@
  * Date: 18-9-9
  * Time: 下午12:28
  */
+
 namespace SyMap;
 
 use SyConstant\ErrorCode;
@@ -15,16 +16,19 @@ class ConfigTencent
 {
     /**
      * 开发密钥
+     *
      * @var string
      */
     private $key = '';
     /**
      * 服务器IP
+     *
      * @var string
      */
     private $serverIp = '';
     /**
      * 域名
+     *
      * @var string
      */
     private $domain = '';
@@ -37,16 +41,12 @@ class ConfigTencent
     {
     }
 
-    /**
-     * @return string
-     */
-    public function getKey() : string
+    public function getKey(): string
     {
         return $this->key;
     }
 
     /**
-     * @param string $key
      * @throws \SyException\Map\TencentMapException
      */
     public function setKey(string $key)
@@ -58,16 +58,12 @@ class ConfigTencent
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getServerIp() : string
+    public function getServerIp(): string
     {
         return $this->serverIp;
     }
 
     /**
-     * @param string $serverIp
      * @throws \SyException\Map\TencentMapException
      */
     public function setServerIp(string $serverIp)
@@ -79,16 +75,12 @@ class ConfigTencent
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getDomain() : string
+    public function getDomain(): string
     {
         return $this->domain;
     }
 
     /**
-     * @param string $domain
      * @throws \SyException\Map\TencentMapException
      */
     public function setDomain(string $domain)
