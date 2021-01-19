@@ -5,6 +5,7 @@
  * Date: 2020/9/4 0004
  * Time: 13:38
  */
+
 namespace SyObjectStorage;
 
 use SyCloud\Tencent\ConfigTrait;
@@ -56,17 +57,12 @@ class ConfigCos
     {
     }
 
-    /**
-     * @return string
-     */
-    public function getAppId() : string
+    public function getAppId(): string
     {
         return $this->appId;
     }
 
     /**
-     * @param string $appId
-     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setAppId(string $appId)
@@ -78,39 +74,29 @@ class ConfigCos
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getBucketName() : string
+    public function getBucketName(): string
     {
         return $this->bucketName;
     }
 
     /**
-     * @param string $bucketName
-     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setBucketName(string $bucketName)
     {
-        if (strlen($bucketName) > 0) {
+        if (\strlen($bucketName) > 0) {
             $this->bucketName = $bucketName;
         } else {
             throw new CosException('容器名称不合法', ErrorCode::OBJECT_STORAGE_COS_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getBucketDomain() : string
+    public function getBucketDomain(): string
     {
         return $this->bucketDomain;
     }
 
     /**
-     * @param string $bucketDomain
-     *
      * @throws \SyException\ObjectStorage\CosException
      */
     public function setBucketDomain(string $bucketDomain)
@@ -127,10 +113,7 @@ class ConfigCos
         $this->reqHost = $this->bucketName . '-' . $this->appId . '.cos.' . $this->regionId . '.myqcloud.com';
     }
 
-    /**
-     * @return string
-     */
-    public function getReqHost() : string
+    public function getReqHost(): string
     {
         return $this->reqHost;
     }

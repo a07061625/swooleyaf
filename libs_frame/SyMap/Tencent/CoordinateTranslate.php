@@ -5,6 +5,7 @@
  * Date: 2018/9/10 0010
  * Time: 15:58
  */
+
 namespace SyMap\Tencent;
 
 use SyConstant\ErrorCode;
@@ -32,11 +33,13 @@ class CoordinateTranslate extends MapBaseTencent
 
     /**
      * 源坐标数组
+     *
      * @var array
      */
     private $coords = [];
     /**
      * 源坐标类型
+     *
      * @var int
      */
     private $fromType = 0;
@@ -55,16 +58,15 @@ class CoordinateTranslate extends MapBaseTencent
 
     /**
      * 添加坐标
-     * @param string $lng
-     * @param string $lat
+     *
      * @throws \SyException\Map\TencentMapException
      */
     public function addCoordinate(string $lng, string $lat)
     {
-        if (preg_match(ProjectBase::REGEX_LOCATION_LNG, $lng) == 0) {
+        if (0 == preg_match(ProjectBase::REGEX_LOCATION_LNG, $lng)) {
             throw new TencentMapException('源坐标经度不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }
-        if (preg_match(ProjectBase::REGEX_LOCATION_LAT, $lat) == 0) {
+        if (0 == preg_match(ProjectBase::REGEX_LOCATION_LAT, $lat)) {
             throw new TencentMapException('源坐标纬度不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }
 
@@ -73,7 +75,6 @@ class CoordinateTranslate extends MapBaseTencent
     }
 
     /**
-     * @param int $fromType
      * @throws \SyException\Map\TencentMapException
      */
     public function setFromType(int $fromType)
@@ -85,7 +86,7 @@ class CoordinateTranslate extends MapBaseTencent
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (empty($this->coords)) {
             throw new TencentMapException('源坐标不能为空', ErrorCode::MAP_TENCENT_PARAM_ERROR);

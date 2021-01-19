@@ -5,6 +5,7 @@
  * Date: 2017/6/13 0013
  * Time: 19:01
  */
+
 namespace Wx;
 
 use SyConstant\ErrorCode;
@@ -90,17 +91,12 @@ class WxConfigCorp
     {
     }
 
-    /**
-     * @return string
-     */
-    public function getCorpId() : string
+    public function getCorpId(): string
     {
         return $this->corpId;
     }
 
     /**
-     * @param string $corpId
-     *
      * @throws \SyException\Wx\WxException
      */
     public function setCorpId(string $corpId)
@@ -112,46 +108,33 @@ class WxConfigCorp
         }
     }
 
-    /**
-     * @return array
-     */
-    public function getAgents() : array
+    public function getAgents(): array
     {
         return $this->agents;
     }
 
     /**
-     * @param string $agentTag
-     *
      * @return array
      *               返回数据结构:
      *               id: 应用ID
      *               secret: 应用密钥
      */
-    public function getAgentInfo(string $agentTag) : array
+    public function getAgentInfo(string $agentTag): array
     {
         return $this->agents[$agentTag] ?? [];
     }
 
-    /**
-     * @param array $agents
-     */
     public function setAgents(array $agents)
     {
         $this->agents = $agents;
     }
 
-    /**
-     * @return string
-     */
     public function getClientIp(): string
     {
         return $this->clientIp;
     }
 
     /**
-     * @param string $clientIp
-     *
      * @throws \SyException\WX\WxException
      */
     public function setClientIp(string $clientIp)
@@ -163,17 +146,12 @@ class WxConfigCorp
         }
     }
 
-    /**
-     * @return string
-     */
     public function getPayMchId(): string
     {
         return $this->payMchId;
     }
 
     /**
-     * @param string $payMchId
-     *
      * @throws \SyException\WX\WxException
      */
     public function setPayMchId(string $payMchId)
@@ -185,39 +163,29 @@ class WxConfigCorp
         }
     }
 
-    /**
-     * @return string
-     */
     public function getPayKey(): string
     {
         return $this->payKey;
     }
 
     /**
-     * @param string $payKey
-     *
      * @throws \SyException\WX\WxException
      */
     public function setPayKey(string $payKey)
     {
-        if (ctype_alnum($payKey) && (strlen($payKey) == 32)) {
+        if (ctype_alnum($payKey) && (32 == \strlen($payKey))) {
             $this->payKey = $payKey;
         } else {
             throw new WxException('支付密钥不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
     public function getPayNotifyUrl(): string
     {
         return $this->payNotifyUrl;
     }
 
     /**
-     * @param string $payNotifyUrl
-     *
      * @throws \SyException\WX\WxException
      */
     public function setPayNotifyUrl(string $payNotifyUrl)
@@ -229,17 +197,12 @@ class WxConfigCorp
         }
     }
 
-    /**
-     * @return string
-     */
     public function getPayAuthUrl(): string
     {
         return $this->payAuthUrl;
     }
 
     /**
-     * @param string $payAuthUrl
-     *
      * @throws \SyException\WX\WxException
      */
     public function setPayAuthUrl(string $payAuthUrl)
@@ -251,61 +214,46 @@ class WxConfigCorp
         }
     }
 
-    /**
-     * @return string
-     */
     public function getSslCert(): string
     {
         return $this->sslCert;
     }
 
     /**
-     * @param string $sslCert
-     *
      * @throws \SyException\WX\WxException
      */
     public function setSslCert(string $sslCert)
     {
-        if (strlen($sslCert) > 0) {
+        if (\strlen($sslCert) > 0) {
             $this->sslCert = $sslCert;
         } else {
             throw new WxException('cert证书不能为空', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
     public function getSslKey(): string
     {
         return $this->sslKey;
     }
 
     /**
-     * @param string $sslKey
-     *
      * @throws \SyException\WX\WxException
      */
     public function setSslKey(string $sslKey)
     {
-        if (strlen($sslKey) > 0) {
+        if (\strlen($sslKey) > 0) {
             $this->sslKey = $sslKey;
         } else {
             throw new WxException('key证书不能为空', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getUrlAuthLogin() : string
+    public function getUrlAuthLogin(): string
     {
         return $this->urlAuthLogin;
     }
 
     /**
-     * @param string $urlAuthLogin
-     *
      * @throws \SyException\Wx\WxException
      */
     public function setUrlAuthLogin(string $urlAuthLogin)

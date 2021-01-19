@@ -5,6 +5,7 @@
  * Date: 19-2-14
  * Time: 下午1:42
  */
+
 namespace SyMap\GaoDe;
 
 use SyConstant\ErrorCode;
@@ -14,12 +15,14 @@ use SyMap\MapBaseGaoDe;
 
 /**
  * IP定位
+ *
  * @package Map\GaoDe
  */
 class IpLocation extends MapBaseGaoDe
 {
     /**
      * IP
+     *
      * @var string
      */
     private $ip = '';
@@ -31,7 +34,6 @@ class IpLocation extends MapBaseGaoDe
     }
 
     /**
-     * @param string $ip
      * @throws \SyException\Map\GaoDeMapException
      */
     public function setIp(string $ip)
@@ -43,7 +45,7 @@ class IpLocation extends MapBaseGaoDe
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['ip'])) {
             throw new GaoDeMapException('ip不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);

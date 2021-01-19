@@ -5,6 +5,7 @@
  * Date: 2019/1/11 0011
  * Time: 8:14
  */
+
 namespace SyPrint\FeYin;
 
 use SyConstant\ErrorCode;
@@ -19,21 +20,25 @@ class DeviceLogoSet extends PrintBaseFeYin
 {
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 机器编号
+     *
      * @var string
      */
     private $device_no = '';
     /**
      * LOGO图片链接
+     *
      * @var string
      */
     private $path = '';
     /**
      * 图片灰度值
+     *
      * @var int
      */
     private $threshold = 0;
@@ -50,7 +55,6 @@ class DeviceLogoSet extends PrintBaseFeYin
     }
 
     /**
-     * @param string $deviceNo
      * @throws \SyException\SyPrint\FeYinException
      */
     public function setDeviceNo(string $deviceNo)
@@ -63,7 +67,6 @@ class DeviceLogoSet extends PrintBaseFeYin
     }
 
     /**
-     * @param string $path
      * @throws \SyException\SyPrint\FeYinException
      */
     public function setPath(string $path)
@@ -76,7 +79,6 @@ class DeviceLogoSet extends PrintBaseFeYin
     }
 
     /**
-     * @param int $threshold
      * @throws \SyException\SyPrint\FeYinException
      */
     public function setThreshold(int $threshold)
@@ -88,9 +90,9 @@ class DeviceLogoSet extends PrintBaseFeYin
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
-        if (strlen($this->device_no) == 0) {
+        if (0 == \strlen($this->device_no)) {
             throw new FeYinException('机器编号不能为空', ErrorCode::PRINT_PARAM_ERROR);
         }
         if (!isset($this->reqData['path'])) {
@@ -108,7 +110,7 @@ class DeviceLogoSet extends PrintBaseFeYin
         ];
         $sendRes = PrintUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::PRINT_POST_ERROR;

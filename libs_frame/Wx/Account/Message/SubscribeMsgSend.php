@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
@@ -19,41 +20,49 @@ class SubscribeMsgSend extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 用户openid
+     *
      * @var string
      */
     private $touser = '';
     /**
      * 模版ID
+     *
      * @var string
      */
     private $template_id = '';
     /**
      * 重定向地址
+     *
      * @var string
      */
     private $url = '';
     /**
      * 小程序跳转数据
+     *
      * @var array
      */
     private $miniprogram = [];
     /**
      * 订阅场景值
+     *
      * @var int
      */
     private $scene = 0;
     /**
      * 消息标题
+     *
      * @var string
      */
     private $title = '';
     /**
      * 消息内容
+     *
      * @var array
      */
     private $data = [];
@@ -70,7 +79,6 @@ class SubscribeMsgSend extends WxBaseAccount
     }
 
     /**
-     * @param string $openid
      * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
@@ -83,12 +91,11 @@ class SubscribeMsgSend extends WxBaseAccount
     }
 
     /**
-     * @param string $templateId
      * @throws \SyException\Wx\WxException
      */
     public function setTemplateId(string $templateId)
     {
-        if (strlen($templateId) > 0) {
+        if (\strlen($templateId) > 0) {
             $this->reqData['template_id'] = $templateId;
         } else {
             throw new WxException('模版ID不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -96,7 +103,6 @@ class SubscribeMsgSend extends WxBaseAccount
     }
 
     /**
-     * @param string $url
      * @throws \SyException\Wx\WxException
      */
     public function setUrl(string $url)
@@ -109,7 +115,6 @@ class SubscribeMsgSend extends WxBaseAccount
     }
 
     /**
-     * @param array $miniProgram
      * @throws \SyException\Wx\WxException
      */
     public function setMiniProgram(array $miniProgram)
@@ -121,7 +126,6 @@ class SubscribeMsgSend extends WxBaseAccount
     }
 
     /**
-     * @param int $scene
      * @throws \SyException\Wx\WxException
      */
     public function setScene(int $scene)
@@ -134,7 +138,6 @@ class SubscribeMsgSend extends WxBaseAccount
     }
 
     /**
-     * @param string $title
      * @throws \SyException\Wx\WxException
      */
     public function setTitle(string $title)
@@ -148,28 +151,28 @@ class SubscribeMsgSend extends WxBaseAccount
     }
 
     /**
-     * @param array $data
      * @throws \SyException\Wx\WxException
      */
     public function setData(array $data)
     {
-        $content = isset($data['value']) && is_string($data['value']) ? $data['value'] : '';
+        $content = isset($data['value']) && \is_string($data['value']) ? $data['value'] : '';
         $contentLength = mb_strlen($content);
-        if ($contentLength == 0) {
+        if (0 == $contentLength) {
             throw new WxException('消息内容不能为空', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($contentLength > 200) {
+        }
+        if ($contentLength > 200) {
             throw new WxException('消息内容不能超过200个字', ErrorCode::WX_PARAM_ERROR);
         }
 
         $this->reqData['data'] = [
             'content' => [
                 'value' => $content,
-                'color' => isset($data['color']) && is_string($data['color']) ? $data['color'] : '',
+                'color' => isset($data['color']) && \is_string($data['color']) ? $data['color'] : '',
             ],
         ];
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['touser'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -195,7 +198,7 @@ class SubscribeMsgSend extends WxBaseAccount
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

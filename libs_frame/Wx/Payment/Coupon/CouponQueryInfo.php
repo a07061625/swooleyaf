@@ -5,10 +5,11 @@
  * Date: 2018/12/12 0012
  * Time: 15:44
  */
+
 namespace Wx\Payment\Coupon;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
@@ -20,51 +21,61 @@ class CouponQueryInfo extends WxBasePayment
 {
     /**
      * 代金券id
+     *
      * @var string
      */
     private $coupon_id = '';
     /**
      * 用户openid
+     *
      * @var string
      */
     private $openid = '';
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * 批次号
+     *
      * @var string
      */
     private $stock_id = '';
     /**
      * 操作员
+     *
      * @var string
      */
     private $op_user_id = '';
     /**
      * 设备号
+     *
      * @var string
      */
     private $device_info = '';
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
     /**
      * 协议版本
+     *
      * @var string
      */
     private $version = '';
     /**
      * 协议类型
+     *
      * @var string
      */
     private $type = '';
@@ -87,7 +98,6 @@ class CouponQueryInfo extends WxBasePayment
     }
 
     /**
-     * @param string $couponId
      * @throws \SyException\Wx\WxException
      */
     public function setCouponId(string $couponId)
@@ -100,7 +110,6 @@ class CouponQueryInfo extends WxBasePayment
     }
 
     /**
-     * @param string $openid
      * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
@@ -113,12 +122,11 @@ class CouponQueryInfo extends WxBasePayment
     }
 
     /**
-     * @param string $stockId
      * @throws \SyException\Wx\WxException
      */
     public function setStockId(string $stockId)
     {
-        if (ctype_digit($stockId) && (strlen($stockId) <= 64)) {
+        if (ctype_digit($stockId) && (\strlen($stockId) <= 64)) {
             $this->reqData['stock_id'] = $stockId;
         } else {
             throw new WxException('批次号不合法', ErrorCode::WX_PARAM_ERROR);
@@ -126,7 +134,6 @@ class CouponQueryInfo extends WxBasePayment
     }
 
     /**
-     * @param string $opUserId
      * @throws \SyException\Wx\WxException
      */
     public function setOpUserId(string $opUserId)
@@ -138,17 +145,14 @@ class CouponQueryInfo extends WxBasePayment
         }
     }
 
-    /**
-     * @param string $deviceInfo
-     */
     public function setDeviceInfo(string $deviceInfo)
     {
-        if (strlen($deviceInfo) > 0) {
+        if (\strlen($deviceInfo) > 0) {
             $this->reqData['device_info'] = $deviceInfo;
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['coupon_id'])) {
             throw new WxException('代金券id不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -169,10 +173,10 @@ class CouponQueryInfo extends WxBasePayment
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::arrayToXml($this->reqData);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::xmlToArray($sendRes);
-        if ($sendData['return_code'] == 'FAIL') {
+        if ('FAIL' == $sendData['return_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } elseif ($sendData['result_code'] == 'FAIL') {
+        } elseif ('FAIL' == $sendData['result_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {

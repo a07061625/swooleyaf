@@ -5,6 +5,7 @@
  * Date: 2018/9/8 0008
  * Time: 15:51
  */
+
 namespace SySms;
 
 use SyConstant\ErrorCode;
@@ -16,16 +17,19 @@ class ConfigYun253
 {
     /**
      * APP KEY
+     *
      * @var string
      */
     private $appKey = '';
     /**
      * APP 密钥
+     *
      * @var string
      */
     private $appSecret = '';
     /**
      * APP短信下发链接
+     *
      * @var string
      */
     private $urlSmsSend = '';
@@ -43,16 +47,12 @@ class ConfigYun253
         return Tool::jsonEncode($this->getConfigs(), JSON_UNESCAPED_UNICODE);
     }
 
-    /**
-     * @return string
-     */
-    public function getAppKey() : string
+    public function getAppKey(): string
     {
         return $this->appKey;
     }
 
     /**
-     * @param string $appKey
      * @throws \SyException\Sms\Yun253Exception
      */
     public function setAppKey(string $appKey)
@@ -64,16 +64,12 @@ class ConfigYun253
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getAppSecret() : string
+    public function getAppSecret(): string
     {
         return $this->appSecret;
     }
 
     /**
-     * @param string $appSecret
      * @throws \SyException\Sms\Yun253Exception
      */
     public function setAppSecret(string $appSecret)
@@ -85,16 +81,12 @@ class ConfigYun253
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getUrlSmsSend() : string
+    public function getUrlSmsSend(): string
     {
         return $this->urlSmsSend;
     }
 
     /**
-     * @param string $urlSmsSend
      * @throws \SyException\Sms\Yun253Exception
      */
     public function setUrlSmsSend(string $urlSmsSend)
@@ -108,9 +100,8 @@ class ConfigYun253
 
     /**
      * 获取配置数组
-     * @return array
      */
-    public function getConfigs() : array
+    public function getConfigs(): array
     {
         return [
             'app.key' => $this->appKey,

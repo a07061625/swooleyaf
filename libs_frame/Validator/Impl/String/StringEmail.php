@@ -5,6 +5,7 @@
  * Date: 2017-3-26
  * Time: 1:09
  */
+
 namespace Validator\Impl\String;
 
 use SyConstant\Project;
@@ -24,18 +25,20 @@ class StringEmail extends BaseValidator implements ValidatorService
     {
     }
 
-    public function validator($data, $compareData) : string
+    public function validator($data, $compareData): string
     {
-        if ($data === null) {
+        if (null === $data) {
             return '';
         }
 
         $trueData = $this->verifyStringData($data);
-        if ($trueData === null) {
+        if (null === $trueData) {
             return '必须是字符串';
-        } elseif ((strlen($trueData) == 0) && !$compareData) {
+        }
+        if ((0 == \strlen($trueData)) && !$compareData) {
             return '';
-        } elseif (preg_match(ProjectBase::REGEX_EMAIL, $trueData) > 0) {
+        }
+        if (preg_match(ProjectBase::REGEX_EMAIL, $trueData) > 0) {
             return '';
         }
 

@@ -5,6 +5,7 @@
  * Date: 2018/9/6 0006
  * Time: 14:02
  */
+
 namespace AliPay;
 
 use SyConstant\ErrorCode;
@@ -93,61 +94,46 @@ class PayConfig
         return Tool::jsonEncode($this->getConfigs(), JSON_UNESCAPED_UNICODE);
     }
 
-    /**
-     * @return string
-     */
-    public function getAppId() : string
+    public function getAppId(): string
     {
         return $this->appId;
     }
 
     /**
-     * @param string $appId
-     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setAppId(string $appId)
     {
-        if (ctype_digit($appId) && (strlen($appId) == 16)) {
+        if (ctype_digit($appId) && (16 == \strlen($appId))) {
             $this->appId = $appId;
         } else {
             throw new AliPayPayException('app id不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
     public function getSellerId(): string
     {
         return $this->sellerId;
     }
 
     /**
-     * @param string $sellerId
-     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setSellerId(string $sellerId)
     {
-        if (ctype_digit($sellerId) && (strlen($sellerId) == 16) && (substr($sellerId, 0, 4) == '2088')) {
+        if (ctype_digit($sellerId) && (16 == \strlen($sellerId)) && ('2088' == substr($sellerId, 0, 4))) {
             $this->sellerId = $sellerId;
         } else {
             throw new AliPayPayException('卖家ID不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
     public function getUrlNotify(): string
     {
         return $this->urlNotify;
     }
 
     /**
-     * @param string $urlNotify
-     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setUrlNotify(string $urlNotify)
@@ -159,17 +145,12 @@ class PayConfig
         }
     }
 
-    /**
-     * @return string
-     */
     public function getUrlReturn(): string
     {
         return $this->urlReturn;
     }
 
     /**
-     * @param string $urlReturn
-     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setUrlReturn(string $urlReturn)
@@ -181,22 +162,17 @@ class PayConfig
         }
     }
 
-    /**
-     * @return string
-     */
     public function getPriRsaKey(): string
     {
         return $this->priRsaKey;
     }
 
     /**
-     * @param string $priRsaKey
-     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setPriRsaKey(string $priRsaKey)
     {
-        if (strlen($priRsaKey) >= 1024) {
+        if (\strlen($priRsaKey) >= 1024) {
             $this->priRsaKey = $priRsaKey;
             $this->priRsaKeyFull = '-----BEGIN RSA PRIVATE KEY-----' . PHP_EOL . wordwrap($priRsaKey, 64, "\n", true) . PHP_EOL . '-----END RSA PRIVATE KEY-----';
         } else {
@@ -204,52 +180,39 @@ class PayConfig
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getPriRsaKeyFull() : string
+    public function getPriRsaKeyFull(): string
     {
         return $this->priRsaKeyFull;
     }
 
-    /**
-     * @return string
-     */
     public function getPubRsaKey(): string
     {
         return $this->pubRsaKey;
     }
 
     /**
-     * @param string $pubRsaKey
-     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setPubRsaKey(string $pubRsaKey)
     {
-        if (strlen($pubRsaKey) >= 256) {
+        if (\strlen($pubRsaKey) >= 256) {
             $this->pubRsaKey = $pubRsaKey;
         } else {
             throw new AliPayPayException('rsa公钥不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
     public function getPubAliKey(): string
     {
         return $this->pubAliKey;
     }
 
     /**
-     * @param string $pubAliKey
-     *
      * @throws \SyException\AliPay\AliPayPayException
      */
     public function setPubAliKey(string $pubAliKey)
     {
-        if (strlen($pubAliKey) >= 256) {
+        if (\strlen($pubAliKey) >= 256) {
             $this->pubAliKey = $pubAliKey;
             $this->pubAliKeyFull = '-----BEGIN PUBLIC KEY-----' . PHP_EOL . wordwrap($pubAliKey, 64, "\n", true) . PHP_EOL . '-----END PUBLIC KEY-----';
         } else {
@@ -257,20 +220,15 @@ class PayConfig
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getPubAliKeyFull() : string
+    public function getPubAliKeyFull(): string
     {
         return $this->pubAliKeyFull;
     }
 
     /**
      * 获取配置数组
-     *
-     * @return array
      */
-    public function getConfigs() : array
+    public function getConfigs(): array
     {
         return [
             'appid' => $this->appId,

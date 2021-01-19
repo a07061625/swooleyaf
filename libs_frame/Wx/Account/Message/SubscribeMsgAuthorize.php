@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
@@ -17,31 +18,37 @@ class SubscribeMsgAuthorize extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 动作标识
+     *
      * @var string
      */
     private $action = '';
     /**
      * 订阅场景值
+     *
      * @var int
      */
     private $scene = 0;
     /**
      * 消息模板ID
+     *
      * @var string
      */
     private $template_id = '';
     /**
      * 重定向地址
+     *
      * @var string
      */
     private $redirect_url = '';
     /**
      * 防止跨站请求伪造攻击标识
+     *
      * @var string
      */
     private $reserved = '';
@@ -59,7 +66,6 @@ class SubscribeMsgAuthorize extends WxBaseAccount
     }
 
     /**
-     * @param int $scene
      * @throws \SyException\Wx\WxException
      */
     public function setScene(int $scene)
@@ -72,12 +78,11 @@ class SubscribeMsgAuthorize extends WxBaseAccount
     }
 
     /**
-     * @param string $templateId
      * @throws \SyException\Wx\WxException
      */
     public function setTemplateId(string $templateId)
     {
-        if (strlen($templateId) > 0) {
+        if (\strlen($templateId) > 0) {
             $this->reqData['template_id'] = $templateId;
         } else {
             throw new WxException('消息模板ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -85,7 +90,6 @@ class SubscribeMsgAuthorize extends WxBaseAccount
     }
 
     /**
-     * @param string $redirectUrl
      * @throws \SyException\Wx\WxException
      */
     public function setRedirectUrl(string $redirectUrl)
@@ -98,19 +102,18 @@ class SubscribeMsgAuthorize extends WxBaseAccount
     }
 
     /**
-     * @param string $reserved
      * @throws \SyException\Wx\WxException
      */
     public function setReserved(string $reserved)
     {
-        if (ctype_alnum($reserved) && (strlen($reserved) <= 128)) {
+        if (ctype_alnum($reserved) && (\strlen($reserved) <= 128)) {
             $this->reqData['reserved'] = $reserved;
         } else {
             throw new WxException('防止跨站请求伪造攻击标识不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['scene'])) {
             throw new WxException('订阅场景值不能为空', ErrorCode::WX_PARAM_ERROR);

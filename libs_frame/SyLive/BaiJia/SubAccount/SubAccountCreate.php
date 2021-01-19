@@ -5,6 +5,7 @@
  * Date: 2020/3/31 0031
  * Time: 13:42
  */
+
 namespace SyLive\BaiJia\SubAccount;
 
 use SyConstant\ErrorCode;
@@ -141,13 +142,11 @@ class SubAccountCreate extends BaseBaiJia
     }
 
     /**
-     * @param string $mobile
-     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setMobile(string $mobile)
     {
-        if (ctype_digit($mobile) && (strlen($mobile) == 11) && ($mobile[0] == '1')) {
+        if (ctype_digit($mobile) && (11 == \strlen($mobile)) && ('1' == $mobile[0])) {
             $this->reqData['mobile'] = $mobile;
         } else {
             throw new BaiJiaException('手机号不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
@@ -155,8 +154,6 @@ class SubAccountCreate extends BaseBaiJia
     }
 
     /**
-     * @param string $email
-     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setEmail(string $email)
@@ -169,13 +166,11 @@ class SubAccountCreate extends BaseBaiJia
     }
 
     /**
-     * @param string $password
-     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setPassword(string $password)
     {
-        $length = strlen($password);
+        $length = \strlen($password);
         if (($length >= 6) && ($length <= 18)) {
             $this->reqData['password'] = $password;
         } else {
@@ -184,14 +179,12 @@ class SubAccountCreate extends BaseBaiJia
     }
 
     /**
-     * @param string $contacts
-     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setContacts(string $contacts)
     {
         $trueContacts = trim($contacts);
-        if (strlen($trueContacts) > 0) {
+        if (\strlen($trueContacts) > 0) {
             $this->reqData['contacts'] = $trueContacts;
         } else {
             throw new BaiJiaException('联系人不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
@@ -199,14 +192,12 @@ class SubAccountCreate extends BaseBaiJia
     }
 
     /**
-     * @param string $company
-     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setCompany(string $company)
     {
         $trueCompany = trim($company);
-        if (strlen($trueCompany) > 0) {
+        if (\strlen($trueCompany) > 0) {
             $this->reqData['company'] = $trueCompany;
         } else {
             throw new BaiJiaException('公司名不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
@@ -214,13 +205,11 @@ class SubAccountCreate extends BaseBaiJia
     }
 
     /**
-     * @param int $liveOn
-     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setLiveOn(int $liveOn)
     {
-        if (in_array($liveOn, [0, 1])) {
+        if (\in_array($liveOn, [0, 1])) {
             $this->reqData['live_on'] = $liveOn;
         } else {
             throw new BaiJiaException('开通直播标识不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
@@ -228,13 +217,11 @@ class SubAccountCreate extends BaseBaiJia
     }
 
     /**
-     * @param int $videoOn
-     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setVideoOn(int $videoOn)
     {
-        if (in_array($videoOn, [0, 1])) {
+        if (\in_array($videoOn, [0, 1])) {
             $this->reqData['video_on'] = $videoOn;
         } else {
             throw new BaiJiaException('开通点播标识不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
@@ -242,9 +229,6 @@ class SubAccountCreate extends BaseBaiJia
     }
 
     /**
-     * @param int $effectTime
-     * @param int $expireTime
-     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setAccountTime(int $effectTime, int $expireTime)
@@ -252,9 +236,11 @@ class SubAccountCreate extends BaseBaiJia
         $nowTime = Tool::getNowTime();
         if ($effectTime <= 0) {
             throw new BaiJiaException('账号生效时间不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
-        } elseif ($effectTime >= $expireTime) {
+        }
+        if ($effectTime >= $expireTime) {
             throw new BaiJiaException('账号生效时间不能大于账号失效时间', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
-        } elseif ($expireTime <= $nowTime) {
+        }
+        if ($expireTime <= $nowTime) {
             throw new BaiJiaException('账号失效时间不能小于当前时间', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
         }
 
@@ -263,16 +249,14 @@ class SubAccountCreate extends BaseBaiJia
     }
 
     /**
-     * @param int $userLimit
-     * @param int $maxUserLimit
-     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setUserLimit(int $userLimit, int $maxUserLimit)
     {
         if ($userLimit <= 0) {
             throw new BaiJiaException('直播并发值不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
-        } elseif ($userLimit > $maxUserLimit) {
+        }
+        if ($userLimit > $maxUserLimit) {
             throw new BaiJiaException('直播并发值不能大于直播超额并发值', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
         }
 
@@ -281,16 +265,14 @@ class SubAccountCreate extends BaseBaiJia
     }
 
     /**
-     * @param int $userCount
-     * @param int $maxUserCount
-     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setUserCount(int $userCount, int $maxUserCount)
     {
         if ($userCount <= 0) {
             throw new BaiJiaException('直播人次/时长点数值不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
-        } elseif ($userCount > $maxUserCount) {
+        }
+        if ($userCount > $maxUserCount) {
             throw new BaiJiaException('直播人次/时长点数值不能大于直播超额人次/时长点数值', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
         }
 
@@ -299,8 +281,6 @@ class SubAccountCreate extends BaseBaiJia
     }
 
     /**
-     * @param int $liveMaxSpeakers
-     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setLiveMaxSpeakers(int $liveMaxSpeakers)
@@ -313,16 +293,14 @@ class SubAccountCreate extends BaseBaiJia
     }
 
     /**
-     * @param int $storageLimit
-     * @param int $maxStorageLimit
-     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setStorageLimit(int $storageLimit, int $maxStorageLimit)
     {
         if ($storageLimit <= 0) {
             throw new BaiJiaException('点播存储空间容量不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
-        } elseif ($storageLimit > $maxStorageLimit) {
+        }
+        if ($storageLimit > $maxStorageLimit) {
             throw new BaiJiaException('点播存储空间容量不能大于点播超额存储空间容量', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
         }
 
@@ -331,16 +309,14 @@ class SubAccountCreate extends BaseBaiJia
     }
 
     /**
-     * @param int $flowLimit
-     * @param int $maxFlowLimit
-     *
      * @throws \SyException\Live\BaiJiaException
      */
     public function setFlowLimit(int $flowLimit, int $maxFlowLimit)
     {
         if ($flowLimit <= 0) {
             throw new BaiJiaException('点播月流量不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
-        } elseif ($flowLimit > $maxFlowLimit) {
+        }
+        if ($flowLimit > $maxFlowLimit) {
             throw new BaiJiaException('点播月流量不能大于点播超额月流量', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
         }
 
@@ -348,7 +324,7 @@ class SubAccountCreate extends BaseBaiJia
         $this->reqData['max_flow_limit'] = $maxFlowLimit;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['mobile'])) {
             throw new BaiJiaException('手机号不能为空', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);

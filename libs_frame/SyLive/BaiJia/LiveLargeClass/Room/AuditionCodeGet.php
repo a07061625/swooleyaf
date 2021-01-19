@@ -5,37 +5,43 @@
  * Date: 2020/3/30 0030
  * Time: 8:26
  */
+
 namespace SyLive\BaiJia\LiveLargeClass\Room;
 
+use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
+use SyException\Live\BaiJiaException;
 use SyLive\BaseBaiJia;
 use SyLive\UtilBaiJia;
-use SyConstant\ErrorCode;
-use SyException\Live\BaiJiaException;
 
 /**
  * Class AuditionCodeGet
+ *
  * @package SyLive\BaiJia\LiveLargeClass\Room
  */
 class AuditionCodeGet extends BaseBaiJia
 {
     /**
      * 房间id
+     *
      * @var int
      */
     private $room_id = 0;
     /**
      * 用户ID列表
+     *
      * @var array
      */
     private $user_numbers = [];
     /**
      * 用户头像
+     *
      * @var string
      */
     private $user_avatar = '';
     /**
      * 试听时长,单位为秒
+     *
      * @var int
      */
     private $audition_length = 0;
@@ -52,7 +58,6 @@ class AuditionCodeGet extends BaseBaiJia
     }
 
     /**
-     * @param int $roomId
      * @throws \SyException\Live\BaiJiaException
      */
     public function setRoomId(int $roomId)
@@ -65,7 +70,6 @@ class AuditionCodeGet extends BaseBaiJia
     }
 
     /**
-     * @param int $userNumber
      * @throws \SyException\Live\BaiJiaException
      */
     public function addUserNumber(int $userNumber)
@@ -78,7 +82,6 @@ class AuditionCodeGet extends BaseBaiJia
     }
 
     /**
-     * @param string $userAvatar
      * @throws \SyException\Live\BaiJiaException
      */
     public function setUserAvatar(string $userAvatar)
@@ -91,7 +94,6 @@ class AuditionCodeGet extends BaseBaiJia
     }
 
     /**
-     * @param int $auditionLength
      * @throws \SyException\Live\BaiJiaException
      */
     public function setAuditionLength(int $auditionLength)
@@ -103,7 +105,7 @@ class AuditionCodeGet extends BaseBaiJia
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['room_id'])) {
             throw new BaiJiaException('房间ID不能为空', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);

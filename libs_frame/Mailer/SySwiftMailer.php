@@ -5,6 +5,7 @@
  * Date: 2017/6/30 0030
  * Time: 20:41
  */
+
 namespace Mailer;
 
 use DesignPatterns\Singletons\MailConfigSingleton;
@@ -18,11 +19,11 @@ class SySwiftMailer
     /**
      * @var \Swift_Mailer
      */
-    private $mailer = null;
+    private $mailer;
     /**
      * @var \Swift_Message
      */
-    private $message = null;
+    private $message;
 
     public function __construct(string $node)
     {
@@ -43,16 +44,16 @@ class SySwiftMailer
 
     /**
      * 设置发送者名称和邮箱
-     * @param string $email
-     * @param string $name
+     *
      * @throws \SyException\Mail\MailException
      */
     public function setSenderEmailAndName(string $email, string $name)
     {
         $trueName = trim($name);
-        if (strlen($trueName) == 0) {
+        if (0 == \strlen($trueName)) {
             throw new MailException('发送者名称不能为空', ErrorCode::MAIL_PARAM_ERROR);
-        } elseif (preg_match(ProjectBase::REGEX_EMAIL, $email) == 0) {
+        }
+        if (0 == preg_match(ProjectBase::REGEX_EMAIL, $email)) {
             throw new MailException('发送者邮箱不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -63,13 +64,12 @@ class SySwiftMailer
 
     /**
      * 添加接收者
-     * @param string $email
-     * @param string $name
+     *
      * @throws \SyException\Mail\MailException
      */
     public function addReceiver(string $email, string $name)
     {
-        if (preg_match(ProjectBase::REGEX_EMAIL, $email) == 0) {
+        if (0 == preg_match(ProjectBase::REGEX_EMAIL, $email)) {
             throw new MailException('接收者邮箱不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -78,13 +78,12 @@ class SySwiftMailer
 
     /**
      * 添加回复者
-     * @param string $email
-     * @param string $name
+     *
      * @throws \SyException\Mail\MailException
      */
     public function addReplier(string $email, string $name)
     {
-        if (preg_match(ProjectBase::REGEX_EMAIL, $email) == 0) {
+        if (0 == preg_match(ProjectBase::REGEX_EMAIL, $email)) {
             throw new MailException('回复者邮箱不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -93,13 +92,12 @@ class SySwiftMailer
 
     /**
      * 添加抄送者
-     * @param string $email
-     * @param string $name
+     *
      * @throws \SyException\Mail\MailException
      */
     public function addCC(string $email, string $name)
     {
-        if (preg_match(ProjectBase::REGEX_EMAIL, $email) == 0) {
+        if (0 == preg_match(ProjectBase::REGEX_EMAIL, $email)) {
             throw new MailException('抄送者邮箱不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -108,13 +106,12 @@ class SySwiftMailer
 
     /**
      * 添加密送者
-     * @param string $email
-     * @param string $name
+     *
      * @throws \SyException\Mail\MailException
      */
     public function addBCC(string $email, string $name)
     {
-        if (preg_match(ProjectBase::REGEX_EMAIL, $email) == 0) {
+        if (0 == preg_match(ProjectBase::REGEX_EMAIL, $email)) {
             throw new MailException('密送者邮箱不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -123,13 +120,13 @@ class SySwiftMailer
 
     /**
      * 设置邮件标题
-     * @param string $title
+     *
      * @throws \SyException\Mail\MailException
      */
     public function setTitle(string $title)
     {
         $trueTitle = trim($title);
-        if (strlen($trueTitle) == 0) {
+        if (0 == \strlen($trueTitle)) {
             throw new MailException('邮件标题不能为空', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -138,8 +135,6 @@ class SySwiftMailer
 
     /**
      * 设置邮件内容
-     * @param string $body
-     * @param string $format
      */
     public function setBody(string $body, string $format = 'text/html')
     {
@@ -148,8 +143,6 @@ class SySwiftMailer
 
     /**
      * 添加邮件备用内容
-     * @param string $alt
-     * @param string $format
      */
     public function addAltBody(string $alt, string $format = 'text/html')
     {
@@ -158,14 +151,15 @@ class SySwiftMailer
 
     /**
      * 添加附件
-     * @param string $attach
+     *
      * @throws \SyException\Mail\MailException
      */
     public function addAttachment(string $attach)
     {
         if (!is_file($attach)) {
             throw new MailException('附件必须是文件', ErrorCode::MAIL_PARAM_ERROR);
-        } elseif (!is_readable($attach)) {
+        }
+        if (!is_readable($attach)) {
             throw new MailException('附件不可读', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -174,6 +168,7 @@ class SySwiftMailer
 
     /**
      * 发送邮件
+     *
      * @return array
      */
     public function sendEmail()

@@ -5,10 +5,11 @@
  * Date: 2018/9/11 0011
  * Time: 11:21
  */
+
 namespace Wx\Alone;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
@@ -33,6 +34,7 @@ class JsConfig extends WxBaseAlone
     private $url = '';
     /**
      * 平台类型 shop：公众号 openshop：第三方平台代理公众号
+     *
      * @var string
      */
     private $platType = '';
@@ -52,9 +54,6 @@ class JsConfig extends WxBaseAlone
     {
     }
 
-    /**
-     * @param int $timestamp
-     */
     public function setTimestamp(int $timestamp)
     {
         if ($timestamp > 0) {
@@ -62,19 +61,15 @@ class JsConfig extends WxBaseAlone
         }
     }
 
-    /**
-     * @param string $nonceStr
-     */
     public function setNonceStr(string $nonceStr)
     {
-        $length = strlen($nonceStr);
+        $length = \strlen($nonceStr);
         if (ctype_alnum($nonceStr) && ($length >= 16) && ($length <= 32)) {
             $this->reqData['nonceStr'] = $nonceStr;
         }
     }
 
     /**
-     * @param string $url
      * @throws \SyException\Wx\WxException
      */
     public function setUrl(string $url)
@@ -88,23 +83,21 @@ class JsConfig extends WxBaseAlone
 
     /**
      * @param string $platType 平台类型 shop：公众号 openshop：第三方平台代理公众号
+     *
      * @throws \SyException\Wx\WxException
      */
     public function setPlatType(string $platType)
     {
-        if (in_array($platType, [WxUtilBase::PLAT_TYPE_SHOP, WxUtilBase::PLAT_TYPE_OPEN_SHOP], true)) {
+        if (\in_array($platType, [WxUtilBase::PLAT_TYPE_SHOP, WxUtilBase::PLAT_TYPE_OPEN_SHOP], true)) {
             $this->platType = $platType;
         } else {
             throw new WxException('平台类型不支持', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return array
-     */
-    public function getDetail() : array
+    public function getDetail(): array
     {
-        if ($this->platType == WxUtilBase::PLAT_TYPE_SHOP) { //公众号获取jsapi_ticket
+        if (WxUtilBase::PLAT_TYPE_SHOP == $this->platType) { //公众号获取jsapi_ticket
             $ticket = WxUtilAccount::getJsTicket($this->reqData['appId']);
         } else { //第三方平台获取jsapi_ticket
             $ticket = WxUtilOpenBase::getAuthorizerJsTicket($this->reqData['appId']);
@@ -112,6 +105,7 @@ class JsConfig extends WxBaseAlone
 
         $needStr = 'jsapi_ticket=' . $ticket . '&noncestr=' . $this->reqData['nonceStr'] . '&timestamp=' . $this->reqData['timestamp'] . '&url=' . $this->url;
         $this->reqData['signature'] = sha1($needStr);
+
         return $this->reqData;
     }
 }

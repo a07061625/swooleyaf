@@ -5,6 +5,7 @@
  * Date: 2018/12/13 0013
  * Time: 15:12
  */
+
 namespace Wx\Account\User;
 
 use SyConstant\ErrorCode;
@@ -19,16 +20,19 @@ class UserGetTag extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 标签ID
+     *
      * @var int
      */
     private $tagid = 0;
     /**
      * 第一个用户openid
+     *
      * @var string
      */
     private $next_openid = '';
@@ -46,7 +50,6 @@ class UserGetTag extends WxBaseAccount
     }
 
     /**
-     * @param int $tagId
      * @throws \SyException\Wx\WxException
      */
     public function setTagId(int $tagId)
@@ -59,7 +62,6 @@ class UserGetTag extends WxBaseAccount
     }
 
     /**
-     * @param string $nextOpenid
      * @throws \SyException\Wx\WxException
      */
     public function setNextOpenid(string $nextOpenid)
@@ -71,7 +73,7 @@ class UserGetTag extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['tagid'])) {
             throw new WxException('标签ID不能为空', ErrorCode::WX_PARAM_ERROR);

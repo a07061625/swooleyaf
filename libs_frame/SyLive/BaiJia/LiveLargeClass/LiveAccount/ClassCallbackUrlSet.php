@@ -5,22 +5,25 @@
  * Date: 2020/3/30 0030
  * Time: 11:50
  */
+
 namespace SyLive\BaiJia\LiveLargeClass\LiveAccount;
 
+use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
+use SyException\Live\BaiJiaException;
 use SyLive\BaseBaiJia;
 use SyLive\UtilBaiJia;
-use SyConstant\ErrorCode;
-use SyException\Live\BaiJiaException;
 
 /**
  * Class ClassCallbackUrlSet
+ *
  * @package SyLive\BaiJia\LiveLargeClass\LiveAccount
  */
 class ClassCallbackUrlSet extends BaseBaiJia
 {
     /**
      * 回调地址
+     *
      * @var string
      */
     private $url = '';
@@ -36,7 +39,6 @@ class ClassCallbackUrlSet extends BaseBaiJia
     }
 
     /**
-     * @param string $url
      * @throws \SyException\Live\BaiJiaException
      */
     public function setUrl(string $url)
@@ -48,7 +50,7 @@ class ClassCallbackUrlSet extends BaseBaiJia
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['url'])) {
             throw new BaiJiaException('回调地址不能为空', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);

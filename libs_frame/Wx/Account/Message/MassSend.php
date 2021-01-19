@@ -5,6 +5,7 @@
  * Date: 2018/12/22 0022
  * Time: 11:05
  */
+
 namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
@@ -19,16 +20,19 @@ class MassSend extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 消息类型
+     *
      * @var string
      */
     private $msgtype = '';
     /**
      * 用户openid列表
+     *
      * @var array
      */
     private $touser = [];
@@ -45,25 +49,26 @@ class MassSend extends WxBaseAccount
     }
 
     /**
-     * @param string $type
-     * @param array $data
      * @throws \SyException\Wx\WxException
      */
     public function setMsgData(string $type, array $data)
     {
         if (!isset(self::$totalMessageType[$type])) {
             throw new WxException('消息类型不支持', ErrorCode::WX_PARAM_ERROR);
-        } elseif (!isset($data['data'])) {
+        }
+        if (!isset($data['data'])) {
             throw new WxException('消息数据必须设置', ErrorCode::WX_PARAM_ERROR);
-        } elseif (!is_array($data['data'])) {
+        }
+        if (!\is_array($data['data'])) {
             throw new WxException('消息数据不合法', ErrorCode::WX_PARAM_ERROR);
-        } elseif (empty($data['data'])) {
+        }
+        if (empty($data['data'])) {
             throw new WxException('消息数据不能为空', ErrorCode::WX_PARAM_ERROR);
         }
 
-        if ($type == self::MESSAGE_TYPE_MPNEWS) {
+        if (self::MESSAGE_TYPE_MPNEWS == $type) {
             $ignoreReprint = isset($data['send_ignore_reprint']) && is_numeric($data['send_ignore_reprint']) ? (int)$data['send_ignore_reprint'] : 0;
-            if (!in_array($ignoreReprint, [0, 1], true)) {
+            if (!\in_array($ignoreReprint, [0, 1], true)) {
                 throw new WxException('转载群发标识不合法', ErrorCode::WX_PARAM_ERROR);
             }
 
@@ -74,20 +79,16 @@ class MassSend extends WxBaseAccount
         $this->reqData[$type] = $data['data'];
     }
 
-    /**
-     * @param array $openidList
-     */
     public function setOpenidList(array $openidList)
     {
         foreach ($openidList as $eOpenid) {
-            if (is_string($eOpenid) && (preg_match(ProjectBase::REGEX_WX_OPEN_ID, $eOpenid) > 0)) {
+            if (\is_string($eOpenid) && (preg_match(ProjectBase::REGEX_WX_OPEN_ID, $eOpenid) > 0)) {
                 $this->touser[$eOpenid] = 1;
             }
         }
     }
 
     /**
-     * @param string $openid
      * @throws \SyException\Wx\WxException
      */
     public function addOpenid(string $openid)
@@ -99,15 +100,16 @@ class MassSend extends WxBaseAccount
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['msgtype'])) {
             throw new WxException('消息类型不能为空', ErrorCode::WX_PARAM_ERROR);
         }
-        $openidNum = count($this->touser);
+        $openidNum = \count($this->touser);
         if ($openidNum < 2) {
             throw new WxException('用户openid列表不能少于2个', ErrorCode::WX_PARAM_ERROR);
-        } elseif ($openidNum > 10000) {
+        }
+        if ($openidNum > 10000) {
             throw new WxException('用户openid列表不能超过10000个', ErrorCode::WX_PARAM_ERROR);
         }
         $this->reqData['touser'] = array_keys($this->touser);
@@ -120,7 +122,7 @@ class MassSend extends WxBaseAccount
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

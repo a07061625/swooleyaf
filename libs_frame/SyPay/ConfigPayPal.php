@@ -5,6 +5,7 @@
  * Date: 2020/8/12 0012
  * Time: 13:38
  */
+
 namespace SyPay;
 
 use SyConstant\ErrorCode;
@@ -60,63 +61,48 @@ class ConfigPayPal
     {
     }
 
-    /**
-     * @return string
-     */
-    public function getClientId() : string
+    public function getClientId(): string
     {
         return $this->clientId;
     }
 
     /**
-     * @param string $clientId
-     *
      * @throws \SyException\Pay\PayPalException
      */
     public function setClientId(string $clientId)
     {
         $trueId = trim($clientId);
-        if (strlen($trueId) > 0) {
+        if (\strlen($trueId) > 0) {
             $this->clientId = $trueId;
         } else {
             throw new PayPalException('客户端ID不合法', ErrorCode::PAY_PAYPAL_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getClientSecret() : string
+    public function getClientSecret(): string
     {
         return $this->clientSecret;
     }
 
     /**
-     * @param string $clientSecret
-     *
      * @throws \SyException\Pay\PayPalException
      */
     public function setClientSecret(string $clientSecret)
     {
         $trueSecret = trim($clientSecret);
-        if (strlen($trueSecret) > 0) {
+        if (\strlen($trueSecret) > 0) {
             $this->clientSecret = $trueSecret;
         } else {
             throw new PayPalException('客户端密钥不合法', ErrorCode::PAY_PAYPAL_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getReturnUrl() : string
+    public function getReturnUrl(): string
     {
         return $this->returnUrl;
     }
 
     /**
-     * @param string $returnUrl
-     *
      * @throws \SyException\Pay\PayPalException
      */
     public function setReturnUrl(string $returnUrl)
@@ -128,17 +114,12 @@ class ConfigPayPal
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getCancelUrl() : string
+    public function getCancelUrl(): string
     {
         return $this->cancelUrl;
     }
 
     /**
-     * @param string $cancelUrl
-     *
      * @throws \SyException\Pay\PayPalException
      */
     public function setCancelUrl(string $cancelUrl)
@@ -150,23 +131,18 @@ class ConfigPayPal
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getNotifyWebHookId() : string
+    public function getNotifyWebHookId(): string
     {
         return $this->notifyWebHookId;
     }
 
     /**
-     * @param string $notifyWebHookId
-     *
      * @throws \SyException\Pay\PayPalException
      */
     public function setNotifyWebHookId(string $notifyWebHookId)
     {
         $trueId = trim($notifyWebHookId);
-        if (strlen($trueId) > 0) {
+        if (\strlen($trueId) > 0) {
             $this->notifyWebHookId = $trueId;
         } else {
             throw new PayPalException('支付异步通知网页ID不合法', ErrorCode::PAY_PAYPAL_PARAM_ERROR);
