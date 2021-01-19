@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -15,6 +16,7 @@ use SyPromotion\TBK\Traits\SetPageSizeTrait;
 
 /**
  * Class DetailSubReport
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class DetailSubReport extends BaseTBK
@@ -60,7 +62,6 @@ class DetailSubReport extends BaseTBK
     }
 
     /**
-     * @param int $eventId
      * @throws \SyException\Promotion\TBKException
      */
     public function setEventId(int $eventId)
@@ -73,19 +74,18 @@ class DetailSubReport extends BaseTBK
     }
 
     /**
-     * @param string $campaignCode
      * @throws \SyException\Promotion\TBKException
      */
     public function setCampaignCode(string $campaignCode)
     {
-        if (strlen($campaignCode) > 0) {
+        if (\strlen($campaignCode) > 0) {
             $this->reqData['campaign_code'] = $campaignCode;
         } else {
             throw new TBKException('策略名称不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['event_id'])) {
             throw new TBKException('活动id不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

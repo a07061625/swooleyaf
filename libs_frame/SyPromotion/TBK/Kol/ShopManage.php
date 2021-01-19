@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Kol;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class ShopManage
+ *
  * @package SyPromotion\TBK\Kol
  */
 class ShopManage extends BaseTBK
@@ -60,7 +62,6 @@ class ShopManage extends BaseTBK
     }
 
     /**
-     * @param string $backgroundImage
      * @throws \SyException\Promotion\TBKException
      */
     public function setBackgroundImage(string $backgroundImage)
@@ -73,7 +74,6 @@ class ShopManage extends BaseTBK
     }
 
     /**
-     * @param string $storeIcon
      * @throws \SyException\Promotion\TBKException
      */
     public function setStoreIcon(string $storeIcon)
@@ -86,12 +86,11 @@ class ShopManage extends BaseTBK
     }
 
     /**
-     * @param string $storeName
      * @throws \SyException\Promotion\TBKException
      */
     public function setStoreName(string $storeName)
     {
-        if (strlen($storeName) > 0) {
+        if (\strlen($storeName) > 0) {
             $this->reqData['store_name'] = $storeName;
         } else {
             throw new TBKException('店铺名称不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -99,7 +98,6 @@ class ShopManage extends BaseTBK
     }
 
     /**
-     * @param string $pid
      * @throws \SyException\Promotion\TBKException
      */
     public function setPid(string $pid)
@@ -111,7 +109,7 @@ class ShopManage extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['background_image'])) {
             throw new TBKException('店铺背景图不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

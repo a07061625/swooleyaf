@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class ThorCreativeLaunch
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class ThorCreativeLaunch extends BaseTBK
@@ -56,7 +58,6 @@ class ThorCreativeLaunch extends BaseTBK
     }
 
     /**
-     * @param string $id
      * @throws \SyException\Promotion\TBKException
      */
     public function setId(string $id)
@@ -69,7 +70,6 @@ class ThorCreativeLaunch extends BaseTBK
     }
 
     /**
-     * @param array $device
      * @throws \SyException\Promotion\TBKException
      */
     public function setDevice(array $device)
@@ -82,7 +82,6 @@ class ThorCreativeLaunch extends BaseTBK
     }
 
     /**
-     * @param string $adZoneId
      * @throws \SyException\Promotion\TBKException
      */
     public function setAdZoneId(string $adZoneId)
@@ -94,7 +93,7 @@ class ThorCreativeLaunch extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['req']['id'])) {
             throw new TBKException('请求ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

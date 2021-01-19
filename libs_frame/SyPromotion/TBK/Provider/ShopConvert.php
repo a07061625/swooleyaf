@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -18,6 +19,7 @@ use SyPromotion\TBK\Traits\SetUnidTrait;
 
 /**
  * Class ShopConvert
+ *
  * @package SyPromotion\TBK\Provider
  */
 class ShopConvert extends BaseTBK
@@ -77,7 +79,6 @@ class ShopConvert extends BaseTBK
     }
 
     /**
-     * @param array $userIds
      * @throws \SyException\Promotion\TBKException
      */
     public function setUserIds(array $userIds)
@@ -95,7 +96,7 @@ class ShopConvert extends BaseTBK
         $this->reqData['user_ids'] = implode(',', array_keys($userIdList));
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['site_id'])) {
             throw new TBKException('网站ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

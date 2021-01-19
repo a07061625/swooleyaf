@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class ItemRuleGet
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class ItemRuleGet extends BaseTBK
@@ -47,15 +49,14 @@ class ItemRuleGet extends BaseTBK
     }
 
     /**
-     * @param array $itemList
      * @throws \SyException\Promotion\TBKException
      */
     public function setItemList(array $itemList)
     {
         $trueItemList = [];
         foreach ($itemList as $eItem) {
-            $itemId = is_int($eItem['id']) && ($eItem['id'] > 0) ? $eItem['id'] : 0;
-            $itemInfo = is_array($eItem['info']) && !empty($eItem['info']) ? $eItem['info'] : [];
+            $itemId = \is_int($eItem['id']) && ($eItem['id'] > 0) ? $eItem['id'] : 0;
+            $itemInfo = \is_array($eItem['info']) && !empty($eItem['info']) ? $eItem['info'] : [];
             if (($itemId > 0) && !empty($itemInfo)) {
                 $trueItemList[$itemId] = $itemInfo;
             }
@@ -69,7 +70,6 @@ class ItemRuleGet extends BaseTBK
     }
 
     /**
-     * @param string $isvUserId
      * @throws \SyException\Promotion\TBKException
      */
     public function setIsvUserId(string $isvUserId)
@@ -81,7 +81,7 @@ class ItemRuleGet extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['itemIds'])) {
             throw new TBKException('商品ID列表不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

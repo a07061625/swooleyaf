@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -15,6 +16,7 @@ use SyPromotion\TBK\Traits\SetSiteIdTrait;
 
 /**
  * Class ActivityInfoGet
+ *
  * @package SyPromotion\TBK\Provider
  */
 class ActivityInfoGet extends BaseTBK
@@ -64,7 +66,6 @@ class ActivityInfoGet extends BaseTBK
     }
 
     /**
-     * @param int $relationId
      * @throws \SyException\Promotion\TBKException
      */
     public function setRelationId(int $relationId)
@@ -77,12 +78,11 @@ class ActivityInfoGet extends BaseTBK
     }
 
     /**
-     * @param string $activityMaterialId
      * @throws \SyException\Promotion\TBKException
      */
     public function setActivityMaterialId(string $activityMaterialId)
     {
-        if (strlen($activityMaterialId) > 0) {
+        if (\strlen($activityMaterialId) > 0) {
             $this->reqData['activity_material_id'] = $activityMaterialId;
         } else {
             throw new TBKException('官方活动会场ID不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -90,19 +90,18 @@ class ActivityInfoGet extends BaseTBK
     }
 
     /**
-     * @param string $unionId
      * @throws \SyException\Promotion\TBKException
      */
     public function setUnionId(string $unionId)
     {
-        if (strlen($unionId) > 0) {
+        if (\strlen($unionId) > 0) {
             $this->reqData['union_id'] = $unionId;
         } else {
             throw new TBKException('推广渠道不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['adzone_id'])) {
             throw new TBKException('广告位ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

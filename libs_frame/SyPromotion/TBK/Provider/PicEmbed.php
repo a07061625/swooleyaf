@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -15,6 +16,7 @@ use SyPromotion\TBK\Traits\SetSiteIdTrait;
 
 /**
  * Class PicEmbed
+ *
  * @package SyPromotion\TBK\Provider
  */
 class PicEmbed extends BaseTBK
@@ -64,7 +66,6 @@ class PicEmbed extends BaseTBK
     }
 
     /**
-     * @param int $itemId
      * @throws \SyException\Promotion\TBKException
      */
     public function setItemId(int $itemId)
@@ -77,7 +78,6 @@ class PicEmbed extends BaseTBK
     }
 
     /**
-     * @param string $picStream
      * @throws \SyException\Promotion\TBKException
      */
     public function setPicStream(string $picStream)
@@ -90,19 +90,18 @@ class PicEmbed extends BaseTBK
     }
 
     /**
-     * @param string $relationId
      * @throws \SyException\Promotion\TBKException
      */
     public function setRelationId(string $relationId)
     {
-        if (strlen($relationId) > 0) {
+        if (\strlen($relationId) > 0) {
             $this->reqData['relation_id'] = $relationId;
         } else {
             throw new TBKException('渠道管理ID不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['adzone_id'])) {
             throw new TBKException('广告位ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class RidReportGet
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class RidReportGet extends BaseTBK
@@ -42,7 +44,6 @@ class RidReportGet extends BaseTBK
     }
 
     /**
-     * @param string $bizDate
      * @throws \SyException\Promotion\TBKException
      */
     public function setBizDate(string $bizDate)
@@ -55,7 +56,6 @@ class RidReportGet extends BaseTBK
     }
 
     /**
-     * @param string $relationId
      * @throws \SyException\Promotion\TBKException
      */
     public function setRelationId(string $relationId)
@@ -67,7 +67,7 @@ class RidReportGet extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['search_option']['relation_id'])) {
             throw new TBKException('关系id不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

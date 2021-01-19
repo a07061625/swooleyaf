@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Provider;
 
 use SyConstant\ErrorCode;
@@ -15,6 +16,7 @@ use SyPromotion\TBK\Traits\SetSiteIdTrait;
 
 /**
  * Class PaiLiTaoWidgetConvert
+ *
  * @package SyPromotion\TBK\Provider
  */
 class PaiLiTaoWidgetConvert extends BaseTBK
@@ -59,7 +61,6 @@ class PaiLiTaoWidgetConvert extends BaseTBK
     }
 
     /**
-     * @param int $relationId
      * @throws \SyException\Promotion\TBKException
      */
     public function setRelationId(int $relationId)
@@ -72,19 +73,18 @@ class PaiLiTaoWidgetConvert extends BaseTBK
     }
 
     /**
-     * @param int $type
      * @throws \SyException\Promotion\TBKException
      */
     public function setType(int $type)
     {
-        if (in_array($type, [0, 1])) {
+        if (\in_array($type, [0, 1])) {
             $this->reqData['type'] = $type;
         } else {
             throw new TBKException('类型不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['adzone_id'])) {
             throw new TBKException('广告位ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

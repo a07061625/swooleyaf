@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class TextTPwdCreate
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class TextTPwdCreate extends BaseTBK
@@ -59,7 +61,6 @@ class TextTPwdCreate extends BaseTBK
     }
 
     /**
-     * @param string $userId
      * @throws \SyException\Promotion\TBKException
      */
     public function setUserId(string $userId)
@@ -72,12 +73,11 @@ class TextTPwdCreate extends BaseTBK
     }
 
     /**
-     * @param string $text
      * @throws \SyException\Promotion\TBKException
      */
     public function setText(string $text)
     {
-        if (strlen($text) >= 5) {
+        if (\strlen($text) >= 5) {
             $this->reqData['text'] = $text;
         } else {
             throw new TBKException('弹框内容不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
@@ -85,7 +85,6 @@ class TextTPwdCreate extends BaseTBK
     }
 
     /**
-     * @param string $url
      * @throws \SyException\Promotion\TBKException
      */
     public function setUrl(string $url)
@@ -98,7 +97,6 @@ class TextTPwdCreate extends BaseTBK
     }
 
     /**
-     * @param string $logo
      * @throws \SyException\Promotion\TBKException
      */
     public function setLogo(string $logo)
@@ -111,19 +109,18 @@ class TextTPwdCreate extends BaseTBK
     }
 
     /**
-     * @param string $passwordType
      * @throws \SyException\Promotion\TBKException
      */
     public function setPasswordType(string $passwordType)
     {
-        if (strlen($passwordType) > 0) {
+        if (\strlen($passwordType) > 0) {
             $this->reqData['password_type'] = $passwordType;
         } else {
             throw new TBKException('类型不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['url'])) {
             throw new TBKException('跳转目标页不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

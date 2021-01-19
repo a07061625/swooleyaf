@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyPromotion\BaseTBK;
 
 /**
  * Class MediaKolRealtimeSummary
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class MediaKolRealtimeSummary extends BaseTBK
@@ -47,7 +49,6 @@ class MediaKolRealtimeSummary extends BaseTBK
     }
 
     /**
-     * @param int $subAdZoneId
      * @throws \SyException\Promotion\TBKException
      */
     public function setSubAdzoneId(int $subAdZoneId)
@@ -60,7 +61,6 @@ class MediaKolRealtimeSummary extends BaseTBK
     }
 
     /**
-     * @param int $subSiteId
      * @throws \SyException\Promotion\TBKException
      */
     public function setSubSiteId(int $subSiteId)
@@ -73,7 +73,6 @@ class MediaKolRealtimeSummary extends BaseTBK
     }
 
     /**
-     * @param int $subPubId
      * @throws \SyException\Promotion\TBKException
      */
     public function setSubPubId(int $subPubId)
@@ -85,7 +84,7 @@ class MediaKolRealtimeSummary extends BaseTBK
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['sub_adzone_id'])) {
             throw new TBKException('广告位ID不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

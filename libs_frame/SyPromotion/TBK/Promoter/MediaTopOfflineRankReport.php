@@ -5,6 +5,7 @@
  * Date: 2021/1/10 0010
  * Time: 10:40
  */
+
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
@@ -14,12 +15,13 @@ use SyPromotion\TBK\Traits\SetPageSizeTrait;
 
 /**
  * Class MediaTopOfflineRankReport
+ *
  * @package SyPromotion\TBK\Promoter
  */
 class MediaTopOfflineRankReport extends BaseTBK
 {
     use SetPageSizeTrait;
-    
+
     /**
      * 广告位ID
      *
@@ -68,7 +70,6 @@ class MediaTopOfflineRankReport extends BaseTBK
     }
 
     /**
-     * @param int $subAdZoneId
      * @throws \SyException\Promotion\TBKException
      */
     public function setSubAdzoneId(int $subAdZoneId)
@@ -81,7 +82,6 @@ class MediaTopOfflineRankReport extends BaseTBK
     }
 
     /**
-     * @param int $subSiteId
      * @throws \SyException\Promotion\TBKException
      */
     public function setSubSiteId(int $subSiteId)
@@ -94,7 +94,6 @@ class MediaTopOfflineRankReport extends BaseTBK
     }
 
     /**
-     * @param int $subPubId
      * @throws \SyException\Promotion\TBKException
      */
     public function setSubPubId(int $subPubId)
@@ -107,7 +106,6 @@ class MediaTopOfflineRankReport extends BaseTBK
     }
 
     /**
-     * @param int $nextCursor
      * @throws \SyException\Promotion\TBKException
      */
     public function setNextCursor(int $nextCursor)
@@ -120,19 +118,18 @@ class MediaTopOfflineRankReport extends BaseTBK
     }
 
     /**
-     * @param string $ds
      * @throws \SyException\Promotion\TBKException
      */
     public function setDs(string $ds)
     {
-        if ((strlen($ds) == 8) && ctype_digit($ds)) {
+        if ((8 == \strlen($ds)) && ctype_digit($ds)) {
             $this->reqData['ds'] = $ds;
         } else {
             throw new TBKException('业务时间不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['ds'])) {
             throw new TBKException('业务时间不能为空', ErrorCode::PROMOTION_TBK_PARAM_ERROR);
