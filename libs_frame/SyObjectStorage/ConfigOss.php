@@ -5,6 +5,7 @@
  * Date: 2020/9/4 0004
  * Time: 13:38
  */
+
 namespace SyObjectStorage;
 
 use SyCloud\Ali\ConfigTrait;
@@ -62,43 +63,31 @@ class ConfigOss
     {
     }
 
-    /**
-     * @return string
-     */
-    public function getEndpoint() : string
+    public function getEndpoint(): string
     {
         return $this->endpoint;
     }
 
-    /**
-     * @return string
-     */
-    public function getEndpointDomain() : string
+    public function getEndpointDomain(): string
     {
         return $this->endpointDomain;
     }
 
-    /**
-     * @return string
-     */
-    public function getEndpointProtocol() : string
+    public function getEndpointProtocol(): string
     {
         return $this->endpointProtocol;
     }
 
     /**
-     * @param string $endpointProtocol
-     * @param string $endpointDomain
-     *
      * @throws \SyException\ObjectStorage\OssException
      */
     public function setEndpointProtocolAndDomain(string $endpointProtocol, string $endpointDomain)
     {
-        if (!in_array($endpointProtocol, ['http', 'https'])) {
+        if (!\in_array($endpointProtocol, ['http', 'https'])) {
             throw new OssException('终端节点协议不合法', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
         }
         $trueDomain = trim($endpointDomain);
-        if (strlen($trueDomain) == 0) {
+        if (0 == \strlen($trueDomain)) {
             throw new OssException('终端节点域名不合法', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
         }
         $this->endpointProtocol = $endpointProtocol;
@@ -106,39 +95,29 @@ class ConfigOss
         $this->endpoint = $endpointProtocol . '://' . $trueDomain;
     }
 
-    /**
-     * @return string
-     */
-    public function getBucketName() : string
+    public function getBucketName(): string
     {
         return $this->bucketName;
     }
 
     /**
-     * @param string $bucketName
-     *
      * @throws \SyException\ObjectStorage\OssException
      */
     public function setBucketName(string $bucketName)
     {
-        if (strlen($bucketName) > 0) {
+        if (\strlen($bucketName) > 0) {
             $this->bucketName = $bucketName;
         } else {
             throw new OssException('桶名称不合法', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getBucketDomain() : string
+    public function getBucketDomain(): string
     {
         return $this->bucketDomain;
     }
 
     /**
-     * @param string $bucketDomain
-     *
      * @throws \SyException\ObjectStorage\OssException
      */
     public function setBucketDomain(string $bucketDomain)

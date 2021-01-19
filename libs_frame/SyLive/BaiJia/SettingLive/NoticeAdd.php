@@ -5,27 +5,31 @@
  * Date: 2020/3/31 0031
  * Time: 8:53
  */
+
 namespace SyLive\BaiJia\SettingLive;
 
+use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
+use SyException\Live\BaiJiaException;
 use SyLive\BaseBaiJiaSetting;
 use SyLive\UtilBaiJia;
-use SyConstant\ErrorCode;
-use SyException\Live\BaiJiaException;
 
 /**
  * Class NoticeAdd
+ *
  * @package SyLive\BaiJia\SettingLive
  */
 class NoticeAdd extends BaseBaiJiaSetting
 {
     /**
      * 内容
+     *
      * @var string
      */
     private $content = '';
     /**
      * 链接
+     *
      * @var string
      */
     private $link = '';
@@ -41,13 +45,12 @@ class NoticeAdd extends BaseBaiJiaSetting
     }
 
     /**
-     * @param string $content
      * @throws \SyException\Live\BaiJiaException
      */
     public function setContent(string $content)
     {
         $trueContent = trim($content);
-        if (strlen($trueContent) > 0) {
+        if (\strlen($trueContent) > 0) {
             $this->reqData['content'] = $trueContent;
         } else {
             throw new BaiJiaException('内容不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);
@@ -55,7 +58,6 @@ class NoticeAdd extends BaseBaiJiaSetting
     }
 
     /**
-     * @param string $link
      * @throws \SyException\Live\BaiJiaException
      */
     public function setLink(string $link)
@@ -67,7 +69,7 @@ class NoticeAdd extends BaseBaiJiaSetting
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['content'])) {
             throw new BaiJiaException('内容不能为空', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);

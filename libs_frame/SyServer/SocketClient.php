@@ -5,6 +5,7 @@
  * Date: 2017/6/26 0026
  * Time: 20:28
  */
+
 namespace SyServer;
 
 use Swoole\Client;
@@ -24,35 +25,41 @@ class SocketClient
 
     /**
      * 客户端密钥
+     *
      * @var string
      */
     private $key = '';
     /**
      * 域名
+     *
      * @var string
      */
     private $host = '';
     /**
      * 端口
+     *
      * @var int
      */
     private $port = 0;
     /**
      * 请求uri
+     *
      * @var string
      */
     private $uri = '';
     /**
      * 来源地址
+     *
      * @var string
      */
     private $origin = '';
     /**
      * @var \Swoole\Client
      */
-    private $socket = null;
+    private $socket;
     /**
      * 缓冲数据
+     *
      * @var string
      */
     private $buffer = '';
@@ -63,28 +70,25 @@ class SocketClient
     /**
      * @var \SyTool\SyPack
      */
-    private $_syPack = null;
+    private $_syPack;
 
     /**
      * SocketClient constructor.
-     * @param string $host
-     * @param int    $port
-     * @param string $uri
-     * @param string $origin
+     *
      * @throws \SyException\Swoole\HttpServerException
      */
     public function __construct(string $host, int $port, string $uri = '/', string $origin = '')
     {
-        if (strlen(trim($host)) == 0) {
+        if (0 == \strlen(trim($host))) {
             throw new HttpServerException('域名不能为空', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
         if (($port <= 0) || ($port > 65535)) {
             throw new HttpServerException('端口不合法', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
-        if (preg_match('/^\/\S*$/', $uri) == 0) {
+        if (0 == preg_match('/^\/\S*$/', $uri)) {
             throw new HttpServerException('请求地址不合法', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
-        if ((strlen($origin) > 0) && (preg_match(ProjectBase::REGEX_URL_HTTP, $origin) == 0)) {
+        if ((\strlen($origin) > 0) && (0 == preg_match(ProjectBase::REGEX_URL_HTTP, $origin))) {
             throw new HttpServerException('来源地址不合法', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
 
@@ -118,9 +122,10 @@ class SocketClient
 
     /**
      * 发送消息
+     *
      * @param string $command 命令，4位的字符串
-     * @param array $data 数据
-     * @param bool $masked
+     * @param array  $data    数据
+     *
      * @return mixed
      */
     public function sendMessage(string $command, array $data, bool $masked = false)
@@ -129,12 +134,12 @@ class SocketClient
         $packData = $this->_syPack->packData();
         $this->_syPack->init();
 
-        if ($packData === false) {
+        if (false === $packData) {
             return false;
-        } else {
-            $message = Server::pack($packData, WEBSOCKET_OPCODE_BINARY, true, $masked);
-            return $this->send($message);
         }
+        $message = Server::pack($packData, WEBSOCKET_OPCODE_BINARY, true, $masked);
+
+        return $this->send($message);
     }
 
     /**
@@ -153,12 +158,13 @@ class SocketClient
 
     /**
      * 接收服务端数据
+     *
      * @return mixed
      */
     public function recv()
     {
         $data = $this->socket->recv();
-        if ($data === false) {
+        if (false === $data) {
             Log::log('socket client error:' . $this->socket->errMsg);
 
             return false;
@@ -168,14 +174,16 @@ class SocketClient
         $recvData = $this->parseData($this->buffer);
         if ($recvData) {
             $this->buffer = '';
+
             return $recvData;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**
      * 发送请求头
+     *
      * @return mixed
      */
     private function sendHeader()
@@ -189,18 +197,19 @@ class SocketClient
                   "Connection: Upgrade\r\n" .
                   "Sec-WebSocket-Protocol: wamp\r\n" .
                   "Sec-WebSocket-Version: 13\r\n\r\n";
+
         return $this->send($header);
     }
 
     /**
      * 发送数据
-     * @param string $data
+     *
      * @return mixed
      */
     private function send(string $data)
     {
         $sendRes = $this->socket->send($data);
-        if ($sendRes === false) {
+        if (false === $sendRes) {
             Log::error('socket client send data fail.' . PHP_EOL . 'errCode=' . $this->socket->errCode . '|data=' . $data);
         }
 
@@ -209,7 +218,7 @@ class SocketClient
 
     /**
      * Parse raw incoming data
-     * @param string $header
+     *
      * @return array
      */
     private function parseIncomingRaw(string $header)
@@ -240,8 +249,9 @@ class SocketClient
 
     /**
      * Parse received data
-     * @param string $response
+     *
      * @return mixed
+     *
      * @throws \SyException\Swoole\HttpServerException
      */
     private function parseData(string $response)
@@ -253,14 +263,15 @@ class SocketClient
             }
 
             $this->connected = true;
+
             return true;
         }
 
         $frame = Server::unpack($response);
         if ($frame) {
             return $frame->data;
-        } else {
-            throw new HttpServerException('解析数据出错', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
+
+        throw new HttpServerException('解析数据出错', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
     }
 }

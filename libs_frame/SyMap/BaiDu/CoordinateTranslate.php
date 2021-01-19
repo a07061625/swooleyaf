@@ -5,6 +5,7 @@
  * Date: 2018/9/10 0010
  * Time: 9:47
  */
+
 namespace SyMap\BaiDu;
 
 use SyConstant\ErrorCode;
@@ -36,16 +37,19 @@ class CoordinateTranslate extends MapBaseBaiDu
 
     /**
      * 源坐标数组
+     *
      * @var array
      */
     private $coords = [];
     /**
      * 源坐标类型
+     *
      * @var int
      */
     private $fromType = 0;
     /**
      * 目的坐标类型
+     *
      * @var int
      */
     private $toType = 0;
@@ -65,19 +69,18 @@ class CoordinateTranslate extends MapBaseBaiDu
 
     /**
      * 添加坐标
-     * @param string $lng
-     * @param string $lat
+     *
      * @throws \SyException\Map\BaiduMapException
      */
     public function addCoordinate(string $lng, string $lat)
     {
-        if (count($this->coords) >= 100) {
+        if (\count($this->coords) >= 100) {
             throw new BaiduMapException('源坐标数量超过限制', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
-        if (preg_match(ProjectBase::REGEX_LOCATION_LNG, $lng) == 0) {
+        if (0 == preg_match(ProjectBase::REGEX_LOCATION_LNG, $lng)) {
             throw new BaiduMapException('源坐标经度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
-        if (preg_match(ProjectBase::REGEX_LOCATION_LAT, $lat) == 0) {
+        if (0 == preg_match(ProjectBase::REGEX_LOCATION_LAT, $lat)) {
             throw new BaiduMapException('源坐标纬度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 
@@ -86,7 +89,6 @@ class CoordinateTranslate extends MapBaseBaiDu
     }
 
     /**
-     * @param int $fromType
      * @throws \SyException\Map\BaiduMapException
      */
     public function setFromType(int $fromType)
@@ -99,25 +101,25 @@ class CoordinateTranslate extends MapBaseBaiDu
     }
 
     /**
-     * @param int $toType
      * @throws \SyException\Map\BaiduMapException
      */
     public function setToType(int $toType)
     {
-        if (in_array($toType, [self::COORDINATE_TYPE_BD, self::COORDINATE_TYPE_BD_MS], true)) {
+        if (\in_array($toType, [self::COORDINATE_TYPE_BD, self::COORDINATE_TYPE_BD_MS], true)) {
             $this->reqData['to'] = $toType;
         } else {
             throw new BaiduMapException('目的坐标类型不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (empty($this->coords)) {
             throw new BaiduMapException('源坐标不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 
         $this->reqData['coords'] = implode(';', array_keys($this->coords));
+
         return $this->getContent();
     }
 }

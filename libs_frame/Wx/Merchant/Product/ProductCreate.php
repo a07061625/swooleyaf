@@ -5,6 +5,7 @@
  * Date: 2018/12/14 0014
  * Time: 16:01
  */
+
 namespace Wx\Merchant\Product;
 
 use SyConstant\ErrorCode;
@@ -19,61 +20,73 @@ class ProductCreate extends WxBaseMerchant
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 商品名称
+     *
      * @var string
      */
     private $name = '';
     /**
      * 商品分类id
+     *
      * @var array
      */
     private $category_id = [];
     /**
      * 商品主图
+     *
      * @var string
      */
     private $main_img = '';
     /**
      * 商品图片列表
+     *
      * @var array
      */
     private $img = [];
     /**
      * 商品详情列表
+     *
      * @var array
      */
     private $detail = [];
     /**
      * 商品属性列表
+     *
      * @var array
      */
     private $property = [];
     /**
      * 商品sku信息
+     *
      * @var array
      */
     private $sku_info = [];
     /**
      * 商品限购数量
+     *
      * @var int
      */
     private $buy_limit = 0;
     /**
      * 商品sku信息列表
+     *
      * @var array
      */
     private $sku_list = [];
     /**
      * 商品其他属性
+     *
      * @var array
      */
     private $attrext = [];
     /**
      * 运费信息
+     *
      * @var array
      */
     private $delivery_info = [];
@@ -91,32 +104,27 @@ class ProductCreate extends WxBaseMerchant
     }
 
     /**
-     * @param string $name
      * @throws \SyException\Wx\WxException
      */
     public function setName(string $name)
     {
-        if (strlen($name) > 0) {
+        if (\strlen($name) > 0) {
             $this->reqData['product_base']['name'] = $name;
         } else {
             throw new WxException('商品名称不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @param array $categoryIdList
-     */
     public function setCategoryId(array $categoryIdList)
     {
         foreach ($categoryIdList as $eCategoryId) {
-            if (is_int($eCategoryId) && ($eCategoryId > 0)) {
+            if (\is_int($eCategoryId) && ($eCategoryId > 0)) {
                 $this->category_id[$eCategoryId] = 1;
             }
         }
     }
 
     /**
-     * @param int $categoryId
      * @throws \SyException\Wx\WxException
      */
     public function addCategoryId(int $categoryId)
@@ -129,7 +137,6 @@ class ProductCreate extends WxBaseMerchant
     }
 
     /**
-     * @param string $mainImg
      * @throws \SyException\Wx\WxException
      */
     public function setMainImg(string $mainImg)
@@ -141,20 +148,16 @@ class ProductCreate extends WxBaseMerchant
         }
     }
 
-    /**
-     * @param array $imgList
-     */
     public function setImg(array $imgList)
     {
         foreach ($imgList as $eImage) {
-            if (is_string($eImage) && (preg_match(ProjectBase::REGEX_URL_HTTP, $eImage) > 0)) {
+            if (\is_string($eImage) && (preg_match(ProjectBase::REGEX_URL_HTTP, $eImage) > 0)) {
                 $this->img[] = $eImage;
             }
         }
     }
 
     /**
-     * @param string $img
      * @throws \SyException\Wx\WxException
      */
     public function addImg(string $img)
@@ -166,20 +169,16 @@ class ProductCreate extends WxBaseMerchant
         }
     }
 
-    /**
-     * @param array $detailList
-     */
     public function setDetail(array $detailList)
     {
         foreach ($detailList as $eDetail) {
-            if (is_array($eDetail) && (!empty($eDetail))) {
+            if (\is_array($eDetail) && (!empty($eDetail))) {
                 $this->detail[] = $eDetail;
             }
         }
     }
 
     /**
-     * @param array $detailInfo
      * @throws \SyException\Wx\WxException
      */
     public function addDetail(array $detailInfo)
@@ -190,20 +189,16 @@ class ProductCreate extends WxBaseMerchant
         $this->detail[] = $detailInfo;
     }
 
-    /**
-     * @param array $propertyList
-     */
     public function setProperty(array $propertyList)
     {
         foreach ($propertyList as $eProperty) {
-            if (is_array($eProperty) && (!empty($eProperty))) {
+            if (\is_array($eProperty) && (!empty($eProperty))) {
                 $this->property[] = $eProperty;
             }
         }
     }
 
     /**
-     * @param array $propertyInfo
      * @throws \SyException\Wx\WxException
      */
     public function addProperty(array $propertyInfo)
@@ -214,20 +209,16 @@ class ProductCreate extends WxBaseMerchant
         $this->property[] = $propertyInfo;
     }
 
-    /**
-     * @param array $skuInfoList
-     */
     public function setSkuInfo(array $skuInfoList)
     {
         foreach ($skuInfoList as $eSkuInfo) {
-            if (is_array($eSkuInfo) && (!empty($eSkuInfo))) {
+            if (\is_array($eSkuInfo) && (!empty($eSkuInfo))) {
                 $this->sku_info[] = $eSkuInfo;
             }
         }
     }
 
     /**
-     * @param array $skuInfo
      * @throws \SyException\Wx\WxException
      */
     public function addSkuInfo(array $skuInfo)
@@ -239,7 +230,6 @@ class ProductCreate extends WxBaseMerchant
     }
 
     /**
-     * @param int $buyLimit
      * @throws \SyException\Wx\WxException
      */
     public function setBuyLimit(int $buyLimit)
@@ -251,20 +241,16 @@ class ProductCreate extends WxBaseMerchant
         }
     }
 
-    /**
-     * @param array $skuList
-     */
     public function setSkuList(array $skuList)
     {
         foreach ($skuList as $eSku) {
-            if (is_array($eSku) && (!empty($eSku))) {
+            if (\is_array($eSku) && (!empty($eSku))) {
                 $this->sku_list[] = $eSku;
             }
         }
     }
 
     /**
-     * @param array $sku
      * @throws \SyException\Wx\WxException
      */
     public function addSkuList(array $sku)
@@ -276,7 +262,6 @@ class ProductCreate extends WxBaseMerchant
     }
 
     /**
-     * @param array $attrext
      * @throws \SyException\Wx\WxException
      */
     public function setAttrext(array $attrext)
@@ -288,7 +273,6 @@ class ProductCreate extends WxBaseMerchant
     }
 
     /**
-     * @param array $deliveryInfo
      * @throws \SyException\Wx\WxException
      */
     public function setDeliveryInfo(array $deliveryInfo)
@@ -299,7 +283,7 @@ class ProductCreate extends WxBaseMerchant
         $this->reqData['delivery_info'] = $deliveryInfo;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['product_base']['name'])) {
             throw new WxException('商品名称不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -341,7 +325,7 @@ class ProductCreate extends WxBaseMerchant
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

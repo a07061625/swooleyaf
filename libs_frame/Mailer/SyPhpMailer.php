@@ -5,14 +5,15 @@
  * Date: 2017/6/30 0030
  * Time: 20:40
  */
+
 namespace Mailer;
 
 use DesignPatterns\Singletons\MailConfigSingleton;
+use Mailer\PHP\PHPMailer;
 use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
 use SyException\Mail\MailException;
 use SyLog\Log;
-use Mailer\PHP\PHPMailer;
 
 class SyPhpMailer
 {
@@ -23,7 +24,7 @@ class SyPhpMailer
     /**
      * @var \Mailer\PHP\PHPMailer
      */
-    private $mailer = null;
+    private $mailer;
 
     public function __construct(string $node)
     {
@@ -48,12 +49,12 @@ class SyPhpMailer
 
     /**
      * 设置调试模式
-     * @param int $mode
+     *
      * @throws \SyException\Mail\MailException
      */
     public function setDebugMode(int $mode)
     {
-        if (in_array($mode, [self::SMTP_DEBUG_MODE_OFF, self::SMTP_DEBUG_MODE_CLIENT, self::SMTP_DEBUG_MODE_CLIENT_AND_SERVER], true)) {
+        if (\in_array($mode, [self::SMTP_DEBUG_MODE_OFF, self::SMTP_DEBUG_MODE_CLIENT, self::SMTP_DEBUG_MODE_CLIENT_AND_SERVER], true)) {
             $this->mailer->SMTPDebug = $mode;
         } else {
             throw new MailException('debug模式不合法', ErrorCode::MAIL_PARAM_ERROR);
@@ -62,13 +63,12 @@ class SyPhpMailer
 
     /**
      * 设置发送者名称和邮箱
-     * @param string $email
-     * @param string $name
+     *
      * @throws \SyException\Mail\MailException
      */
     public function setSenderNameAndEmail(string $email, string $name)
     {
-        if (preg_match(ProjectBase::REGEX_EMAIL, $email) == 0) {
+        if (0 == preg_match(ProjectBase::REGEX_EMAIL, $email)) {
             throw new MailException('发送者邮箱不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -77,13 +77,12 @@ class SyPhpMailer
 
     /**
      * 添加接收者
-     * @param string $email
-     * @param string $name
+     *
      * @throws \SyException\Mail\MailException
      */
     public function addReceiver(string $email, string $name)
     {
-        if (preg_match(ProjectBase::REGEX_EMAIL, $email) == 0) {
+        if (0 == preg_match(ProjectBase::REGEX_EMAIL, $email)) {
             throw new MailException('接收者邮箱不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -92,13 +91,12 @@ class SyPhpMailer
 
     /**
      * 添加回复者
-     * @param string $email
-     * @param string $name
+     *
      * @throws \SyException\Mail\MailException
      */
     public function addReplier(string $email, string $name)
     {
-        if (preg_match(ProjectBase::REGEX_EMAIL, $email) == 0) {
+        if (0 == preg_match(ProjectBase::REGEX_EMAIL, $email)) {
             throw new MailException('回复者邮箱不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -107,13 +105,12 @@ class SyPhpMailer
 
     /**
      * 添加抄送者
-     * @param string $email
-     * @param string $name
+     *
      * @throws \SyException\Mail\MailException
      */
     public function addCC(string $email, string $name)
     {
-        if (preg_match(ProjectBase::REGEX_EMAIL, $email) == 0) {
+        if (0 == preg_match(ProjectBase::REGEX_EMAIL, $email)) {
             throw new MailException('抄送者邮箱不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -122,13 +119,12 @@ class SyPhpMailer
 
     /**
      * 添加密送者
-     * @param string $email
-     * @param string $name
+     *
      * @throws \SyException\Mail\MailException
      */
     public function addBCC(string $email, string $name)
     {
-        if (preg_match(ProjectBase::REGEX_EMAIL, $email) == 0) {
+        if (0 == preg_match(ProjectBase::REGEX_EMAIL, $email)) {
             throw new MailException('密送者邮箱不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -137,13 +133,13 @@ class SyPhpMailer
 
     /**
      * 设置邮件标题
-     * @param string $title
+     *
      * @throws \SyException\Mail\MailException
      */
     public function setTitle(string $title)
     {
         $trueTitle = trim($title);
-        if (strlen($trueTitle) == 0) {
+        if (0 == \strlen($trueTitle)) {
             throw new MailException('邮件标题不能为空', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -152,7 +148,6 @@ class SyPhpMailer
 
     /**
      * 设置邮件内容
-     * @param string $body
      */
     public function setBody(string $body)
     {
@@ -161,7 +156,6 @@ class SyPhpMailer
 
     /**
      * 设置邮件备用内容，当不支持SMTP时候使用
-     * @param string $alt
      */
     public function setAltBody(string $alt)
     {
@@ -170,14 +164,15 @@ class SyPhpMailer
 
     /**
      * 添加附件
-     * @param string $attach
+     *
      * @throws \SyException\Mail\MailException
      */
     public function addAttachment(string $attach)
     {
         if (!is_file($attach)) {
             throw new MailException('附件必须是文件', ErrorCode::MAIL_PARAM_ERROR);
-        } elseif (!is_readable($attach)) {
+        }
+        if (!is_readable($attach)) {
             throw new MailException('附件不可读', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -186,6 +181,7 @@ class SyPhpMailer
 
     /**
      * 发送邮件
+     *
      * @return array
      */
     public function sendEmail()

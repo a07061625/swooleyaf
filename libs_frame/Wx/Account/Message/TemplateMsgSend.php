@@ -5,6 +5,7 @@
  * Date: 18-9-12
  * Time: 上午12:07
  */
+
 namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
@@ -12,38 +13,44 @@ use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
-use Wx\WxUtilBase;
 use Wx\WxUtilAlone;
+use Wx\WxUtilBase;
 
 class TemplateMsgSend extends WxBaseAccount
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 用户openid
+     *
      * @var string
      */
     private $openid = '';
     /**
      * 模版ID
+     *
      * @var string
      */
     private $template_id = '';
     /**
      * 重定向链接地址
+     *
      * @var string
      */
     private $redirect_url = '';
     /**
      * 小程序跳转数据
+     *
      * @var array
      */
     private $miniprogram = [];
     /**
      * 模版数据
+     *
      * @var array
      */
     private $template_data = [];
@@ -62,7 +69,6 @@ class TemplateMsgSend extends WxBaseAccount
     }
 
     /**
-     * @param string $openid
      * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
@@ -75,12 +81,11 @@ class TemplateMsgSend extends WxBaseAccount
     }
 
     /**
-     * @param string $templateId
      * @throws \SyException\Wx\WxException
      */
     public function setTemplateId(string $templateId)
     {
-        if (strlen($templateId) > 0) {
+        if (\strlen($templateId) > 0) {
             $this->reqData['template_id'] = $templateId;
         } else {
             throw new WxException('模版ID不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -88,7 +93,6 @@ class TemplateMsgSend extends WxBaseAccount
     }
 
     /**
-     * @param string $redirectUrl
      * @throws \SyException\Wx\WxException
      */
     public function setRedirectUrl(string $redirectUrl)
@@ -101,7 +105,6 @@ class TemplateMsgSend extends WxBaseAccount
     }
 
     /**
-     * @param array $miniProgram
      * @throws \SyException\Wx\WxException
      */
     public function setMiniProgram(array $miniProgram)
@@ -125,15 +128,13 @@ class TemplateMsgSend extends WxBaseAccount
      *         'color' => '#743A3A',
      *     ],
      * ]
-     *
-     *@param array $templateData
      */
     public function setTemplateData(array $templateData)
     {
         $this->reqData['data'] = $templateData;
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['touser'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -143,14 +144,14 @@ class TemplateMsgSend extends WxBaseAccount
         }
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appid);
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

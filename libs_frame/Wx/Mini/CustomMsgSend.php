@@ -5,6 +5,7 @@
  * Date: 18-9-12
  * Time: 下午11:14
  */
+
 namespace Wx\Mini;
 
 use SyConstant\ErrorCode;
@@ -12,8 +13,8 @@ use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseMini;
-use Wx\WxUtilBase;
 use Wx\WxUtilAlone;
+use Wx\WxUtilBase;
 use Wx\WxUtilOpenBase;
 
 class CustomMsgSend extends WxBaseMini
@@ -32,31 +33,37 @@ class CustomMsgSend extends WxBaseMini
 
     /**
      * 应用ID
+     *
      * @var string
      */
     private $appId = '';
     /**
      * 令牌
+     *
      * @var string
      */
     private $accessToken = '';
     /**
      * 用户openid
+     *
      * @var string
      */
     private $touser = '';
     /**
      * 消息类型
+     *
      * @var string
      */
     private $msgType = '';
     /**
      * 消息数据
+     *
      * @var array
      */
     private $msgData = [];
     /**
      * 平台类型
+     *
      * @var string
      */
     private $platType = '';
@@ -74,7 +81,6 @@ class CustomMsgSend extends WxBaseMini
     }
 
     /**
-     * @param string $openid
      * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
@@ -87,8 +93,6 @@ class CustomMsgSend extends WxBaseMini
     }
 
     /**
-     * @param string $msgType
-     * @param array $msgData
      * @throws \SyException\Wx\WxException
      */
     public function setMsgInfo(string $msgType, array $msgData)
@@ -104,19 +108,18 @@ class CustomMsgSend extends WxBaseMini
     }
 
     /**
-     * @param string $platType
      * @throws \SyException\Wx\WxException
      */
     public function setPlatType(string $platType)
     {
-        if (in_array($platType, [WxUtilBase::PLAT_TYPE_MINI, WxUtilBase::PLAT_TYPE_OPEN_MINI], true)) {
+        if (\in_array($platType, [WxUtilBase::PLAT_TYPE_MINI, WxUtilBase::PLAT_TYPE_OPEN_MINI], true)) {
             $this->platType = $platType;
         } else {
             throw new WxException('平台类型不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['touser'])) {
             throw new WxException('用户openid不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -129,7 +132,7 @@ class CustomMsgSend extends WxBaseMini
             'code' => 0,
         ];
 
-        if ($this->platType == WxUtilBase::PLAT_TYPE_MINI) {
+        if (WxUtilBase::PLAT_TYPE_MINI == $this->platType) {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilAlone::getAccessToken($this->appId);
         } else {
             $this->curlConfigs[CURLOPT_URL] = $this->serviceUrl . WxUtilOpenBase::getAuthorizerAccessToken($this->appId);
@@ -140,7 +143,7 @@ class CustomMsgSend extends WxBaseMini
         ];
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WXOPEN_POST_ERROR;

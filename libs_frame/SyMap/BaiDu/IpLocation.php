@@ -5,6 +5,7 @@
  * Date: 2018/9/10 0010
  * Time: 9:39
  */
+
 namespace SyMap\BaiDu;
 
 use SyConstant\ErrorCode;
@@ -20,11 +21,13 @@ class IpLocation extends MapBaseBaiDu
 
     /**
      * IP
+     *
      * @var string
      */
     private $ip = '';
     /**
      * 返回坐标类型
+     *
      * @var string
      */
     private $returnCoordType = '';
@@ -40,7 +43,6 @@ class IpLocation extends MapBaseBaiDu
     }
 
     /**
-     * @param string $ip
      * @throws \SyException\Map\BaiduMapException
      */
     public function setIp(string $ip)
@@ -53,19 +55,18 @@ class IpLocation extends MapBaseBaiDu
     }
 
     /**
-     * @param string $returnCoordType
      * @throws \SyException\Map\BaiduMapException
      */
     public function setReturnCoordType(string $returnCoordType)
     {
-        if (in_array($returnCoordType, [self::COORD_TYPE_BD_MC, self::COORD_TYPE_BD, self::COORD_TYPE_GCJ], true)) {
+        if (\in_array($returnCoordType, [self::COORD_TYPE_BD_MC, self::COORD_TYPE_BD, self::COORD_TYPE_GCJ], true)) {
             $this->reqData['coor'] = $returnCoordType;
         } else {
             throw new BaiduMapException('返回坐标类型不支持', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['ip'])) {
             throw new BaiduMapException('ip不能为空', ErrorCode::MAP_BAIDU_PARAM_ERROR);

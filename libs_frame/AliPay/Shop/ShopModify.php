@@ -5,6 +5,7 @@
  * Date: 2018/11/2 0002
  * Time: 9:04
  */
+
 namespace AliPay\Shop;
 
 use AliPay\AliPayBase;
@@ -258,13 +259,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $shopId
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setShopId(string $shopId)
     {
-        if (ctype_digit($shopId) && (strlen($shopId) <= 64)) {
+        if (ctype_digit($shopId) && (\strlen($shopId) <= 64)) {
             $this->biz_content['shop_id'] = $shopId;
         } else {
             throw new AliPayShopException('门店ID不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -272,13 +271,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $storeId
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setStoreId(string $storeId)
     {
-        if (ctype_alnum($storeId) && (strlen($storeId) <= 32)) {
+        if (ctype_alnum($storeId) && (\strlen($storeId) <= 32)) {
             $this->biz_content['store_id'] = $storeId;
         } else {
             throw new AliPayShopException('门店编号不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -286,14 +283,12 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $brandName
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBrandName(string $brandName)
     {
         $trueName = trim($brandName);
-        $length = strlen($trueName);
+        $length = \strlen($trueName);
         if (($length > 0) && ($length <= 512)) {
             $this->biz_content['brand_name'] = $trueName;
         } else {
@@ -302,13 +297,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $brandLogo
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBrandLogo(string $brandLogo)
     {
-        if (ctype_alnum($brandLogo) && (strlen($brandLogo) <= 512)) {
+        if (ctype_alnum($brandLogo) && (\strlen($brandLogo) <= 512)) {
             $this->biz_content['brand_logo'] = $brandLogo;
         } else {
             throw new AliPayShopException('品牌LOGO不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -316,14 +309,12 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $mainShopName
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setMainShopName(string $mainShopName)
     {
         $trueName = trim($mainShopName);
-        $length = strlen($trueName);
+        $length = \strlen($trueName);
         if (($length > 0) && ($length <= 20)) {
             $this->biz_content['main_shop_name'] = $trueName;
         } else {
@@ -332,14 +323,12 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $branchShopName
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBranchShopName(string $branchShopName)
     {
         $trueName = trim($branchShopName);
-        $length = strlen($trueName);
+        $length = \strlen($trueName);
         if (($length > 0) && ($length <= 20)) {
             $this->biz_content['branch_shop_name'] = $trueName;
         } else {
@@ -348,13 +337,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $provinceCode
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setProvinceCode(string $provinceCode)
     {
-        if (ctype_digit($provinceCode) && (strlen($provinceCode) <= 10)) {
+        if (ctype_digit($provinceCode) && (\strlen($provinceCode) <= 10)) {
             $this->biz_content['province_code'] = $provinceCode;
         } else {
             throw new AliPayShopException('省份编码不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -362,13 +349,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $cityCode
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setCityCode(string $cityCode)
     {
-        if (ctype_digit($cityCode) && (strlen($cityCode) <= 10)) {
+        if (ctype_digit($cityCode) && (\strlen($cityCode) <= 10)) {
             $this->biz_content['city_code'] = $cityCode;
         } else {
             throw new AliPayShopException('城市编码不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -376,13 +361,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $districtCode
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setDistrictCode(string $districtCode)
     {
-        if (ctype_digit($districtCode) && (strlen($districtCode) <= 10)) {
+        if (ctype_digit($districtCode) && (\strlen($districtCode) <= 10)) {
             $this->biz_content['district_code'] = $districtCode;
         } else {
             throw new AliPayShopException('区县编码不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -390,13 +373,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $address
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setAddress(string $address)
     {
-        $length = strlen($address);
+        $length = \strlen($address);
         if (($length >= 4) && ($length <= 50)) {
             $this->biz_content['address'] = $address;
         } else {
@@ -414,20 +395,26 @@ class ShopModify extends AliPayBase
     {
         if (!is_numeric($lng)) {
             throw new AliPayShopException('经度不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
-        } elseif ($lng < -180) {
+        }
+        if ($lng < -180) {
             throw new AliPayShopException('经度不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
-        } elseif ($lng > 180) {
+        }
+        if ($lng > 180) {
             throw new AliPayShopException('经度不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
-        } elseif (strlen($lng) > 15) {
+        }
+        if (\strlen($lng) > 15) {
             throw new AliPayShopException('经度不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
         }
         if (!is_numeric($lat)) {
             throw new AliPayShopException('纬度不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
-        } elseif ($lat < -90) {
+        }
+        if ($lat < -90) {
             throw new AliPayShopException('纬度不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
-        } elseif ($lat > 90) {
+        }
+        if ($lat > 90) {
             throw new AliPayShopException('纬度不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
-        } elseif (strlen($lat) > 15) {
+        }
+        if (\strlen($lat) > 15) {
             throw new AliPayShopException('纬度不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
         }
         $this->biz_content['longitude'] = trim($lng);
@@ -435,8 +422,6 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $contactNumber
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function addContactNumber(string $contactNumber)
@@ -449,13 +434,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $notifyMobile
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setNotifyMobile(string $notifyMobile)
     {
-        if (ctype_digit($notifyMobile) && (strlen($notifyMobile) == 11) && ($notifyMobile[0] == '1')) {
+        if (ctype_digit($notifyMobile) && (11 == \strlen($notifyMobile)) && ('1' == $notifyMobile[0])) {
             $this->biz_content['notify_mobile'] = $notifyMobile;
         } else {
             throw new AliPayShopException('店长电话号码不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -463,13 +446,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $mainImage
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setMainImage(string $mainImage)
     {
-        if (ctype_alnum($mainImage) && (strlen($mainImage) <= 512)) {
+        if (ctype_alnum($mainImage) && (\strlen($mainImage) <= 512)) {
             $this->biz_content['main_image'] = $mainImage;
         } else {
             throw new AliPayShopException('门店首图不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -477,13 +458,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $auditImage
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function addAuditImage(string $auditImage)
     {
-        if (ctype_alnum($auditImage) && (strlen($auditImage) <= 512)) {
+        if (ctype_alnum($auditImage) && (\strlen($auditImage) <= 512)) {
             $this->audit_images[] = $auditImage;
         } else {
             throw new AliPayShopException('审核图片不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -491,13 +470,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $businessTime
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBusinessTime(string $businessTime)
     {
-        $length = strlen($businessTime);
+        $length = \strlen($businessTime);
         if (($length > 0) && ($length <= 256)) {
             $this->biz_content['business_time'] = $businessTime;
         } else {
@@ -506,13 +483,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $wifi
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setWifi(string $wifi)
     {
-        if (in_array($wifi, ['T', 'F'], true)) {
+        if (\in_array($wifi, ['T', 'F'], true)) {
             $this->biz_content['wifi'] = $wifi;
         } else {
             throw new AliPayShopException('支持WIFI状态不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -520,13 +495,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $parking
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setParking(string $parking)
     {
-        if (in_array($parking, ['T', 'F'], true)) {
+        if (\in_array($parking, ['T', 'F'], true)) {
             $this->biz_content['parking'] = $parking;
         } else {
             throw new AliPayShopException('支持停车状态不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -534,13 +507,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $valueAdded
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setValueAdded(string $valueAdded)
     {
-        $length = strlen($valueAdded);
+        $length = \strlen($valueAdded);
         if (($length > 0) && ($length <= 256)) {
             $this->biz_content['value_added'] = $valueAdded;
         } else {
@@ -549,8 +520,6 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param int $avgPrice
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setAvgPrice(int $avgPrice)
@@ -563,13 +532,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $licence
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setLicence(string $licence)
     {
-        if (ctype_alnum($licence) && (strlen($licence) <= 512)) {
+        if (ctype_alnum($licence) && (\strlen($licence) <= 512)) {
             $this->biz_content['licence'] = $licence;
         } else {
             throw new AliPayShopException('营业执照图片不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -577,13 +544,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $licenceCode
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setLicenceCode(string $licenceCode)
     {
-        if (strlen($licenceCode) <= 255) {
+        if (\strlen($licenceCode) <= 255) {
             $this->biz_content['licence_code'] = $licenceCode;
         } else {
             throw new AliPayShopException('营业执照编号不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -591,13 +556,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $licenceName
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setLicenceName(string $licenceName)
     {
-        if (strlen($licenceName) <= 255) {
+        if (\strlen($licenceName) <= 255) {
             $this->biz_content['licence_name'] = $licenceName;
         } else {
             throw new AliPayShopException('营业执照名称不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -605,13 +568,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $licenceExpires
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setLicenceExpires(string $licenceExpires)
     {
-        if (strlen($licenceExpires) <= 64) {
+        if (\strlen($licenceExpires) <= 64) {
             $this->biz_content['licence_expires'] = $licenceExpires;
         } else {
             throw new AliPayShopException('营业执照过期时间不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -619,13 +580,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $businessCertificate
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBusinessCertificate(string $businessCertificate)
     {
-        if (ctype_alnum($businessCertificate) && (strlen($businessCertificate) <= 512)) {
+        if (ctype_alnum($businessCertificate) && (\strlen($businessCertificate) <= 512)) {
             $this->biz_content['business_certificate'] = $businessCertificate;
         } else {
             throw new AliPayShopException('许可证不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -633,13 +592,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $businessCertificateExpires
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBusinessCertificateExpires(string $businessCertificateExpires)
     {
-        if (strlen($businessCertificateExpires) <= 64) {
+        if (\strlen($businessCertificateExpires) <= 64) {
             $this->biz_content['business_certificate_expires'] = $businessCertificateExpires;
         } else {
             throw new AliPayShopException('许可证有效期不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -647,13 +604,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $authLetter
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setAuthLetter(string $authLetter)
     {
-        if (ctype_alnum($authLetter) && (strlen($authLetter) <= 512)) {
+        if (ctype_alnum($authLetter) && (\strlen($authLetter) <= 512)) {
             $this->biz_content['auth_letter'] = $authLetter;
         } else {
             throw new AliPayShopException('授权函不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -661,13 +616,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $isOperatingOnline
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setIsOperatingOnline(string $isOperatingOnline)
     {
-        if (in_array($isOperatingOnline, ['T', 'F'], true)) {
+        if (\in_array($isOperatingOnline, ['T', 'F'], true)) {
             $this->biz_content['is_operating_online'] = $isOperatingOnline;
         } else {
             throw new AliPayShopException('其他平台开店状态不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -675,8 +628,6 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $onlineUrl
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function addOnlineUrl(string $onlineUrl)
@@ -689,8 +640,6 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $operateNotifyUrl
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setOperateNotifyUrl(string $operateNotifyUrl)
@@ -703,8 +652,6 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $implementId
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function addImplementId(string $implementId)
@@ -717,13 +664,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $noSmoking
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setNoSmoking(string $noSmoking)
     {
-        if (in_array($noSmoking, ['T', 'F'], true)) {
+        if (\in_array($noSmoking, ['T', 'F'], true)) {
             $this->biz_content['no_smoking'] = $noSmoking;
         } else {
             throw new AliPayShopException('无烟区状态不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -731,13 +676,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $box
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setBox(string $box)
     {
-        if (in_array($box, ['T', 'F'], true)) {
+        if (\in_array($box, ['T', 'F'], true)) {
             $this->biz_content['box'] = $box;
         } else {
             throw new AliPayShopException('包厢状态不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -745,13 +688,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $requestId
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setRequestId(string $requestId)
     {
-        if (ctype_alnum($requestId) && (strlen($requestId) <= 64)) {
+        if (ctype_alnum($requestId) && (\strlen($requestId) <= 64)) {
             $this->biz_content['request_id'] = $requestId;
         } else {
             throw new AliPayShopException('请求ID不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -759,13 +700,11 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $otherAuthorization
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setOtherAuthorization(string $otherAuthorization)
     {
-        if (ctype_alnum($otherAuthorization) && (strlen($otherAuthorization) <= 500)) {
+        if (ctype_alnum($otherAuthorization) && (\strlen($otherAuthorization) <= 500)) {
             $this->biz_content['other_authorization'] = $otherAuthorization;
         } else {
             throw new AliPayShopException('其他资质不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
@@ -773,20 +712,18 @@ class ShopModify extends AliPayBase
     }
 
     /**
-     * @param string $opRole
-     *
      * @throws \SyException\AliPay\AliPayShopException
      */
     public function setOpRole(string $opRole)
     {
-        if (in_array($opRole, ['ISV', 'PROVIDER'], true)) {
+        if (\in_array($opRole, ['ISV', 'PROVIDER'], true)) {
             $this->biz_content['op_role'] = $opRole;
         } else {
             throw new AliPayShopException('操作人角色不合法', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->biz_content['shop_id'])) {
             throw new AliPayShopException('门店ID不能为空', ErrorCode::ALIPAY_SHOP_PARAM_ERROR);

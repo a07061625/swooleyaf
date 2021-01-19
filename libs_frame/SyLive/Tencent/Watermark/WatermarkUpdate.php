@@ -5,6 +5,7 @@
  * Date: 2020/9/4 0004
  * Time: 8:34
  */
+
 namespace SyLive\Tencent\Watermark;
 
 use DesignPatterns\Singletons\LiveConfigSingleton;
@@ -76,8 +77,6 @@ class WatermarkUpdate extends BaseTencent
     }
 
     /**
-     * @param int $watermarkId
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setWatermarkId(int $watermarkId)
@@ -90,8 +89,6 @@ class WatermarkUpdate extends BaseTencent
     }
 
     /**
-     * @param string $pictureUrl
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setPictureUrl(string $pictureUrl)
@@ -104,8 +101,6 @@ class WatermarkUpdate extends BaseTencent
     }
 
     /**
-     * @param int $xPosition
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setXPosition(int $xPosition)
@@ -118,8 +113,6 @@ class WatermarkUpdate extends BaseTencent
     }
 
     /**
-     * @param int $yPosition
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setYPosition(int $yPosition)
@@ -132,13 +125,11 @@ class WatermarkUpdate extends BaseTencent
     }
 
     /**
-     * @param string $watermarkName
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setWatermarkName(string $watermarkName)
     {
-        $length = strlen($watermarkName);
+        $length = \strlen($watermarkName);
         if (($length > 0) && ($length <= 16)) {
             $this->reqData['WatermarkName'] = $watermarkName;
         } else {
@@ -147,8 +138,6 @@ class WatermarkUpdate extends BaseTencent
     }
 
     /**
-     * @param int $width
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setWidth(int $width)
@@ -161,8 +150,6 @@ class WatermarkUpdate extends BaseTencent
     }
 
     /**
-     * @param int $height
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setHeight(int $height)
@@ -174,7 +161,7 @@ class WatermarkUpdate extends BaseTencent
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['WatermarkId'])) {
             throw new TencentException('水印ID不能为空', ErrorCode::LIVE_TENCENT_PARAM_ERROR);

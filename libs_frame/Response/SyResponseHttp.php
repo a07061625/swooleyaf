@@ -5,6 +5,7 @@
  * Date: 2017/8/23 0023
  * Time: 9:13
  */
+
 namespace Response;
 
 use SyConstant\ProjectBase;
@@ -16,6 +17,7 @@ class SyResponseHttp extends SyResponse
 
     /**
      * 重定向
+     *
      * @param string $url 重定向链接地址
      */
     public static function redirect(string $url)

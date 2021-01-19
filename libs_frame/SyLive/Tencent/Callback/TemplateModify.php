@@ -5,6 +5,7 @@
  * Date: 2020/9/3 0003
  * Time: 17:36
  */
+
 namespace SyLive\Tencent\Callback;
 
 use DesignPatterns\Singletons\LiveConfigSingleton;
@@ -86,8 +87,6 @@ class TemplateModify extends BaseTencent
     }
 
     /**
-     * @param int $templateId
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setTemplateId(int $templateId)
@@ -100,13 +99,11 @@ class TemplateModify extends BaseTencent
     }
 
     /**
-     * @param string $templateName
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setTemplateName(string $templateName)
     {
-        $length = strlen($templateName);
+        $length = \strlen($templateName);
         if (($length > 0) && ($length <= 255)) {
             $this->reqData['TemplateName'] = $templateName;
         } else {
@@ -114,17 +111,12 @@ class TemplateModify extends BaseTencent
         }
     }
 
-    /**
-     * @param string $description
-     */
     public function setDescription(string $description)
     {
         $this->reqData['Description'] = trim($description);
     }
 
     /**
-     * @param string $streamBeginNotifyUrl
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamBeginNotifyUrl(string $streamBeginNotifyUrl)
@@ -137,8 +129,6 @@ class TemplateModify extends BaseTencent
     }
 
     /**
-     * @param string $streamEndNotifyUrl
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setStreamEndNotifyUrl(string $streamEndNotifyUrl)
@@ -151,8 +141,6 @@ class TemplateModify extends BaseTencent
     }
 
     /**
-     * @param string $recordNotifyUrl
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setRecordNotifyUrl(string $recordNotifyUrl)
@@ -165,8 +153,6 @@ class TemplateModify extends BaseTencent
     }
 
     /**
-     * @param string $snapshotNotifyUrl
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setSnapshotNotifyUrl(string $snapshotNotifyUrl)
@@ -179,8 +165,6 @@ class TemplateModify extends BaseTencent
     }
 
     /**
-     * @param string $pornCensorshipNotifyUrl
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setPornCensorshipNotifyUrl(string $pornCensorshipNotifyUrl)
@@ -193,20 +177,18 @@ class TemplateModify extends BaseTencent
     }
 
     /**
-     * @param string $callbackKey
-     *
      * @throws \SyException\Live\TencentException
      */
     public function setCallbackKey(string $callbackKey)
     {
-        if (strlen($callbackKey) > 0) {
+        if (\strlen($callbackKey) > 0) {
             $this->reqData['CallbackKey'] = $callbackKey;
         } else {
             throw new TencentException('回调Key不合法', ErrorCode::LIVE_TENCENT_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['TemplateId'])) {
             throw new TencentException('模板ID不能为空', ErrorCode::LIVE_TENCENT_PARAM_ERROR);

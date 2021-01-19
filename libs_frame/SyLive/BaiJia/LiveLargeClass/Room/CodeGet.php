@@ -5,32 +5,37 @@
  * Date: 2020/3/30 0030
  * Time: 8:26
  */
+
 namespace SyLive\BaiJia\LiveLargeClass\Room;
 
+use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
+use SyException\Live\BaiJiaException;
 use SyLive\BaseBaiJia;
 use SyLive\UtilBaiJia;
-use SyConstant\ErrorCode;
-use SyException\Live\BaiJiaException;
 
 /**
  * Class CodeGet
+ *
  * @package SyLive\BaiJia\LiveLargeClass\Room
  */
 class CodeGet extends BaseBaiJia
 {
     /**
      * 房间id
+     *
      * @var int
      */
     private $room_id = 0;
     /**
      * 用户ID
+     *
      * @var int
      */
     private $user_number = 0;
     /**
      * 用户头像
+     *
      * @var string
      */
     private $user_avatar = '';
@@ -46,7 +51,6 @@ class CodeGet extends BaseBaiJia
     }
 
     /**
-     * @param int $roomId
      * @throws \SyException\Live\BaiJiaException
      */
     public function setRoomId(int $roomId)
@@ -59,7 +63,6 @@ class CodeGet extends BaseBaiJia
     }
 
     /**
-     * @param int $userNumber
      * @throws \SyException\Live\BaiJiaException
      */
     public function setUserNumber(int $userNumber)
@@ -72,7 +75,6 @@ class CodeGet extends BaseBaiJia
     }
 
     /**
-     * @param string $userAvatar
      * @throws \SyException\Live\BaiJiaException
      */
     public function setUserAvatar(string $userAvatar)
@@ -84,7 +86,7 @@ class CodeGet extends BaseBaiJia
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['room_id'])) {
             throw new BaiJiaException('房间ID不能为空', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);

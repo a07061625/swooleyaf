@@ -5,10 +5,11 @@
  * Date: 2018/12/12 0012
  * Time: 15:44
  */
+
 namespace Wx\Payment\Coupon;
 
-use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
@@ -20,56 +21,67 @@ class CouponSend extends WxBasePayment
 {
     /**
      * 代金券批次id
+     *
      * @var string
      */
     private $coupon_stock_id = '';
     /**
      * openid记录数
+     *
      * @var int
      */
     private $openid_count = 0;
     /**
      * 商户单据号
+     *
      * @var string
      */
     private $partner_trade_no = '';
     /**
      * 用户openid
+     *
      * @var string
      */
     private $openid = '';
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 商户号
+     *
      * @var string
      */
     private $mch_id = '';
     /**
      * 操作员
+     *
      * @var string
      */
     private $op_user_id = '';
     /**
      * 设备号
+     *
      * @var string
      */
     private $device_info = '';
     /**
      * 随机字符串
+     *
      * @var string
      */
     private $nonce_str = '';
     /**
      * 协议版本
+     *
      * @var string
      */
     private $version = '';
     /**
      * 协议类型
+     *
      * @var string
      */
     private $type = '';
@@ -93,12 +105,11 @@ class CouponSend extends WxBasePayment
     }
 
     /**
-     * @param string $couponStockId
      * @throws \SyException\Wx\WxException
      */
     public function setCouponStockId(string $couponStockId)
     {
-        if (ctype_digit($couponStockId) && (strlen($couponStockId) <= 64)) {
+        if (ctype_digit($couponStockId) && (\strlen($couponStockId) <= 64)) {
             $this->reqData['coupon_stock_id'] = $couponStockId;
         } else {
             throw new WxException('代金券批次id不合法', ErrorCode::WX_PARAM_ERROR);
@@ -106,7 +117,6 @@ class CouponSend extends WxBasePayment
     }
 
     /**
-     * @param string $partnerTradeNo
      * @throws \SyException\Wx\WxException
      */
     public function setPartnerTradeNo(string $partnerTradeNo)
@@ -119,7 +129,6 @@ class CouponSend extends WxBasePayment
     }
 
     /**
-     * @param string $openid
      * @throws \SyException\Wx\WxException
      */
     public function setOpenid(string $openid)
@@ -132,7 +141,6 @@ class CouponSend extends WxBasePayment
     }
 
     /**
-     * @param string $opUserId
      * @throws \SyException\Wx\WxException
      */
     public function setOpUserId(string $opUserId)
@@ -144,27 +152,21 @@ class CouponSend extends WxBasePayment
         }
     }
 
-    /**
-     * @param string $deviceInfo
-     */
     public function setDeviceInfo(string $deviceInfo)
     {
-        if (strlen($deviceInfo) > 0) {
+        if (\strlen($deviceInfo) > 0) {
             $this->reqData['device_info'] = $deviceInfo;
         }
     }
 
-    /**
-     * @param string $version
-     */
     public function setVersion(string $version)
     {
-        if (strlen($version) > 0) {
+        if (\strlen($version) > 0) {
             $this->reqData['version'] = $version;
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['coupon_stock_id'])) {
             throw new WxException('代金券批次id不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -178,7 +180,7 @@ class CouponSend extends WxBasePayment
         $this->reqData['sign'] = WxUtilAccount::createSign($this->reqData, $this->reqData['appid']);
 
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $accountConfig = WxConfigSingleton::getInstance()->getAccountConfig($this->reqData['appid']);
@@ -198,10 +200,10 @@ class CouponSend extends WxBasePayment
         fclose($tmpKey);
         fclose($tmpCert);
         $sendData = Tool::xmlToArray($sendRes);
-        if ($sendData['return_code'] == 'FAIL') {
+        if ('FAIL' == $sendData['return_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['return_msg'];
-        } elseif ($sendData['result_code'] == 'FAIL') {
+        } elseif ('FAIL' == $sendData['result_code']) {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;
             $resArr['message'] = $sendData['err_code_des'];
         } else {

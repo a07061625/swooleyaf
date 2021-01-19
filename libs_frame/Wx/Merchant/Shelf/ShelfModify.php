@@ -5,6 +5,7 @@
  * Date: 2018/12/14 0014
  * Time: 16:01
  */
+
 namespace Wx\Merchant\Shelf;
 
 use SyConstant\ErrorCode;
@@ -19,26 +20,31 @@ class ShelfModify extends WxBaseMerchant
 {
     /**
      * 公众号ID
+     *
      * @var string
      */
     private $appid = '';
     /**
      * 货架ID
+     *
      * @var int
      */
     private $shelf_id = 0;
     /**
      * 货架名称
+     *
      * @var string
      */
     private $shelf_name = '';
     /**
      * 货架招牌图片Url
+     *
      * @var string
      */
     private $shelf_banner = '';
     /**
      * 货架信息列表
+     *
      * @var array
      */
     private $shelf_data = [];
@@ -55,7 +61,6 @@ class ShelfModify extends WxBaseMerchant
     }
 
     /**
-     * @param int $shelfId
      * @throws \SyException\Wx\WxException
      */
     public function setShelfId(int $shelfId)
@@ -68,12 +73,11 @@ class ShelfModify extends WxBaseMerchant
     }
 
     /**
-     * @param string $shelfName
      * @throws \SyException\Wx\WxException
      */
     public function setShelfName(string $shelfName)
     {
-        if (strlen($shelfName) > 0) {
+        if (\strlen($shelfName) > 0) {
             $this->reqData['shelf_name'] = $shelfName;
         } else {
             throw new WxException('货架名称不合法', ErrorCode::WX_PARAM_ERROR);
@@ -81,7 +85,6 @@ class ShelfModify extends WxBaseMerchant
     }
 
     /**
-     * @param string $shelfBanner
      * @throws \SyException\Wx\WxException
      */
     public function setShelfBanner(string $shelfBanner)
@@ -93,34 +96,30 @@ class ShelfModify extends WxBaseMerchant
         }
     }
 
-    /**
-     * @param array $shelfData
-     */
     public function setShelfData(array $shelfData)
     {
         foreach ($shelfData as $eShelfInfo) {
-            if (isset($eShelfInfo['eid']) && is_int($eShelfInfo['eid']) && ($eShelfInfo['eid'] > 0)
-               && isset($eShelfInfo['group_infos']) && is_array($eShelfInfo['group_infos'])) {
+            if (isset($eShelfInfo['eid']) && \is_int($eShelfInfo['eid']) && ($eShelfInfo['eid'] > 0)
+               && isset($eShelfInfo['group_infos']) && \is_array($eShelfInfo['group_infos'])) {
                 $this->shelf_data[$eShelfInfo['eid']] = $eShelfInfo;
             }
         }
     }
 
     /**
-     * @param array $shelfInfo
      * @throws \SyException\Wx\WxException
      */
     public function addShelfInfo(array $shelfInfo)
     {
-        if (isset($shelfInfo['eid']) && is_int($shelfInfo['eid']) && ($shelfInfo['eid'] > 0)
-           && isset($shelfInfo['group_infos']) && is_array($shelfInfo['group_infos'])) {
+        if (isset($shelfInfo['eid']) && \is_int($shelfInfo['eid']) && ($shelfInfo['eid'] > 0)
+           && isset($shelfInfo['group_infos']) && \is_array($shelfInfo['group_infos'])) {
             $this->shelf_data[$shelfInfo['eid']] = $shelfInfo;
         } else {
             throw new WxException('货架信息不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['shelf_id'])) {
             throw new WxException('货架ID不能为空', ErrorCode::WX_PARAM_ERROR);
@@ -146,7 +145,7 @@ class ShelfModify extends WxBaseMerchant
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
         $sendRes = WxUtilBase::sendPostReq($this->curlConfigs);
         $sendData = Tool::jsonDecode($sendRes);
-        if ($sendData['errcode'] == 0) {
+        if (0 == $sendData['errcode']) {
             $resArr['data'] = $sendData;
         } else {
             $resArr['code'] = ErrorCode::WX_POST_ERROR;

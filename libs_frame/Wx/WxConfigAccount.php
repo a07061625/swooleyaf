@@ -5,6 +5,7 @@
  * Date: 2017/6/13 0013
  * Time: 19:01
  */
+
 namespace Wx;
 
 use SyConstant\ErrorCode;
@@ -129,17 +130,12 @@ class WxConfigAccount
         return Tool::jsonEncode($this->getConfigs(), JSON_UNESCAPED_UNICODE);
     }
 
-    /**
-     * @return string
-     */
     public function getClientIp(): string
     {
         return $this->clientIp;
     }
 
     /**
-     * @param string $clientIp
-     *
      * @throws \SyException\Wx\WxException
      */
     public function setClientIp(string $clientIp)
@@ -151,17 +147,12 @@ class WxConfigAccount
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getOriginId() : string
+    public function getOriginId(): string
     {
         return $this->originId;
     }
 
     /**
-     * @param string $originId
-     *
      * @throws \SyException\Wx\WxException
      */
     public function setOriginId(string $originId)
@@ -173,61 +164,46 @@ class WxConfigAccount
         }
     }
 
-    /**
-     * @return string
-     */
     public function getAppId(): string
     {
         return $this->appId;
     }
 
     /**
-     * @param string $appId
-     *
      * @throws \SyException\Wx\WxException
      */
     public function setAppId(string $appId)
     {
-        if (ctype_alnum($appId) && (strlen($appId) == 18)) {
+        if (ctype_alnum($appId) && (18 == \strlen($appId))) {
             $this->appId = $appId;
         } else {
             throw new WxException('app id不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
     public function getSecret(): string
     {
         return $this->secret;
     }
 
     /**
-     * @param string $secret
-     *
      * @throws \SyException\Wx\WxException
      */
     public function setSecret(string $secret)
     {
-        if (ctype_alnum($secret) && (strlen($secret) == 32)) {
+        if (ctype_alnum($secret) && (32 == \strlen($secret))) {
             $this->secret = $secret;
         } else {
             throw new WxException('secret不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
     public function getPayMchId(): string
     {
         return $this->payMchId;
     }
 
     /**
-     * @param string $payMchId
-     *
      * @throws \SyException\Wx\WxException
      */
     public function setPayMchId(string $payMchId)
@@ -239,39 +215,29 @@ class WxConfigAccount
         }
     }
 
-    /**
-     * @return string
-     */
     public function getPayKey(): string
     {
         return $this->payKey;
     }
 
     /**
-     * @param string $payKey
-     *
      * @throws \SyException\Wx\WxException
      */
     public function setPayKey(string $payKey)
     {
-        if (ctype_alnum($payKey) && (strlen($payKey) == 32)) {
+        if (ctype_alnum($payKey) && (32 == \strlen($payKey))) {
             $this->payKey = $payKey;
         } else {
             throw new WxException('支付密钥不合法', ErrorCode::WX_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return string
-     */
     public function getPayNotifyUrl(): string
     {
         return $this->payNotifyUrl;
     }
 
     /**
-     * @param string $payNotifyUrl
-     *
      * @throws \SyException\Wx\WxException
      */
     public function setPayNotifyUrl(string $payNotifyUrl)
@@ -283,17 +249,12 @@ class WxConfigAccount
         }
     }
 
-    /**
-     * @return string
-     */
     public function getPayAuthUrl(): string
     {
         return $this->payAuthUrl;
     }
 
     /**
-     * @param string $payAuthUrl
-     *
      * @throws \SyException\Wx\WxException
      */
     public function setPayAuthUrl(string $payAuthUrl)
@@ -305,49 +266,32 @@ class WxConfigAccount
         }
     }
 
-    /**
-     * @return string
-     */
     public function getSslCert(): string
     {
         return $this->sslCert;
     }
 
-    /**
-     * @param string $sslCert
-     */
     public function setSslCert(string $sslCert)
     {
         $this->sslCert = $sslCert;
     }
 
-    /**
-     * @return string
-     */
     public function getSslKey(): string
     {
         return $this->sslKey;
     }
 
-    /**
-     * @param string $sslKey
-     */
     public function setSslKey(string $sslKey)
     {
         $this->sslKey = $sslKey;
     }
 
-    /**
-     * @return string
-     */
-    public function getSslSerialNo() : string
+    public function getSslSerialNo(): string
     {
         return $this->sslSerialNo;
     }
 
     /**
-     * @param string $sslSerialNo
-     *
      * @throws \SyException\Wx\WxException
      */
     public function setSslSerialNo(string $sslSerialNo)
@@ -359,66 +303,47 @@ class WxConfigAccount
         }
     }
 
-    /**
-     * @return string
-     */
     public function getSslCompanyBank(): string
     {
         return $this->sslCompanyBank;
     }
 
-    /**
-     * @param string $sslCompanyBank
-     */
     public function setSslCompanyBank(string $sslCompanyBank)
     {
         $this->sslCompanyBank = $sslCompanyBank;
     }
 
-    /**
-     * @return array
-     */
-    public function getTemplates() : array
+    public function getTemplates(): array
     {
         return $this->templates;
     }
 
     /**
      * @param string $templateTag 模板标识
-     *
-     * @return string
      */
-    public function getTemplateId(string $templateTag) : string
+    public function getTemplateId(string $templateTag): string
     {
         return $this->templates[$templateTag] ?? '';
     }
 
-    /**
-     * @param array $templates
-     */
     public function setTemplates(array $templates)
     {
         $this->templates = $templates;
     }
 
-    /**
-     * @return string
-     */
-    public function getMerchantAppId() : string
+    public function getMerchantAppId(): string
     {
         return $this->merchantAppId;
     }
 
     /**
-     * @param string $merchantAppId
-     *
      * @throws \SyException\Wx\WxException
      */
     public function setMerchantAppId(string $merchantAppId)
     {
-        $length = strlen($merchantAppId);
+        $length = \strlen($merchantAppId);
         if ($length > 0) {
-            if ($length != 18) {
+            if (18 != $length) {
                 throw new WxException('服务商微信号不合法', ErrorCode::WX_PARAM_ERROR);
             }
             if (!ctype_alnum($merchantAppId)) {
@@ -430,10 +355,8 @@ class WxConfigAccount
 
     /**
      * 获取配置数组
-     *
-     * @return array
      */
-    public function getConfigs() : array
+    public function getConfigs(): array
     {
         return [
             'appid' => $this->appId,
