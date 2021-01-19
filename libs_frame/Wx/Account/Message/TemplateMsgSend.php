@@ -8,6 +8,7 @@
 namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
@@ -66,7 +67,7 @@ class TemplateMsgSend extends WxBaseAccount
      */
     public function setOpenid(string $openid)
     {
-        if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
+        if (preg_match(ProjectBase::REGEX_WX_OPEN_ID, $openid) > 0) {
             $this->reqData['touser'] = $openid;
         } else {
             throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);
@@ -92,7 +93,7 @@ class TemplateMsgSend extends WxBaseAccount
      */
     public function setRedirectUrl(string $redirectUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $redirectUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $redirectUrl) > 0) {
             $this->reqData['url'] = $redirectUrl;
         } else {
             throw new WxException('重定向链接不合法', ErrorCode::WX_PARAM_ERROR);

@@ -7,6 +7,7 @@
  */
 namespace Response;
 
+use SyConstant\ProjectBase;
 use SyTrait\SimpleTrait;
 
 class SyResponseHttp extends SyResponse
@@ -19,7 +20,7 @@ class SyResponseHttp extends SyResponse
      */
     public static function redirect(string $url)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $url) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $url) > 0) {
             self::headers([
                 'Location' => $url,
             ]);

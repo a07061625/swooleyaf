@@ -8,6 +8,7 @@
 namespace Wx;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use SyTrait\SimpleConfigTrait;
@@ -143,7 +144,7 @@ class WxConfigAccount
      */
     public function setClientIp(string $clientIp)
     {
-        if (preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $clientIp) > 0) {
+        if (preg_match(ProjectBase::REGEX_IP, '.' . $clientIp) > 0) {
             $this->clientIp = $clientIp;
         } else {
             throw new WxException('客户端IP不合法', ErrorCode::WX_PARAM_ERROR);
@@ -165,7 +166,7 @@ class WxConfigAccount
      */
     public function setOriginId(string $originId)
     {
-        if (preg_match('/^[0-9a-z_]{15}$/', $originId) > 0) {
+        if (preg_match(ProjectBase::REGEX_WX_ORIGIN_ID, $originId) > 0) {
             $this->originId = $originId;
         } else {
             throw new WxException('原始ID不合法', ErrorCode::WX_PARAM_ERROR);
@@ -275,7 +276,7 @@ class WxConfigAccount
      */
     public function setPayNotifyUrl(string $payNotifyUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $payNotifyUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $payNotifyUrl) > 0) {
             $this->payNotifyUrl = $payNotifyUrl;
         } else {
             throw new WxException('支付异步消息通知URL不合法', ErrorCode::WX_PARAM_ERROR);
@@ -297,7 +298,7 @@ class WxConfigAccount
      */
     public function setPayAuthUrl(string $payAuthUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $payAuthUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $payAuthUrl) > 0) {
             $this->payAuthUrl = $payAuthUrl;
         } else {
             throw new WxException('支付授权URL不合法', ErrorCode::WX_PARAM_ERROR);

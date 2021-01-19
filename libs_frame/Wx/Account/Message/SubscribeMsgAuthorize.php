@@ -8,6 +8,7 @@
 namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
@@ -89,7 +90,7 @@ class SubscribeMsgAuthorize extends WxBaseAccount
      */
     public function setRedirectUrl(string $redirectUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $redirectUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $redirectUrl) > 0) {
             $this->reqData['redirect_url'] = $redirectUrl;
         } else {
             throw new WxException('重定向地址不合法', ErrorCode::WX_PARAM_ERROR);

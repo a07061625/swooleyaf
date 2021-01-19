@@ -8,6 +8,7 @@
 namespace SySms;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Sms\Yun253Exception;
 use SyTool\Tool;
 
@@ -98,7 +99,7 @@ class ConfigYun253
      */
     public function setUrlSmsSend(string $urlSmsSend)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $urlSmsSend) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $urlSmsSend) > 0) {
             $this->urlSmsSend = $urlSmsSend;
         } else {
             throw new Yun253Exception('短信下发链接不合法', ErrorCode::SMS_PARAM_ERROR);

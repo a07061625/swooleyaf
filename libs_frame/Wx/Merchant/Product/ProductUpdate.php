@@ -8,6 +8,7 @@
 namespace Wx\Merchant\Product;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseMerchant;
@@ -151,7 +152,7 @@ class ProductUpdate extends WxBaseMerchant
      */
     public function setMainImg(string $mainImg)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $mainImg) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $mainImg) > 0) {
             $this->reqData['product_base']['main_img'] = $mainImg;
         } else {
             throw new WxException('商品主图不合法', ErrorCode::WX_PARAM_ERROR);
@@ -164,7 +165,7 @@ class ProductUpdate extends WxBaseMerchant
     public function setImg(array $imgList)
     {
         foreach ($imgList as $eImage) {
-            if (is_string($eImage) && (preg_match('/^(http|https)\:\/\/\S+$/', $eImage) > 0)) {
+            if (is_string($eImage) && (preg_match(ProjectBase::REGEX_URL_HTTP, $eImage) > 0)) {
                 $this->img[] = $eImage;
             }
         }
@@ -176,7 +177,7 @@ class ProductUpdate extends WxBaseMerchant
      */
     public function addImg(string $img)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $img) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $img) > 0) {
             $this->img[] = $img;
         } else {
             throw new WxException('商品图片不合法', ErrorCode::WX_PARAM_ERROR);

@@ -7,6 +7,7 @@
  */
 namespace SyLive\BaiJia\SettingLive;
 
+use SyConstant\ProjectBase;
 use SyLive\BaseBaiJiaSetting;
 use SyLive\UtilBaiJia;
 use SyConstant\ErrorCode;
@@ -59,7 +60,7 @@ class NoticeAdd extends BaseBaiJiaSetting
      */
     public function setLink(string $link)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $link) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $link) > 0) {
             $this->reqData['link'] = $link;
         } else {
             throw new BaiJiaException('链接不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);

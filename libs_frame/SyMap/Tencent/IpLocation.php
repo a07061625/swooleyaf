@@ -8,6 +8,7 @@
 namespace SyMap\Tencent;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Map\TencentMapException;
 use SyMap\MapBaseTencent;
 
@@ -36,7 +37,7 @@ class IpLocation extends MapBaseTencent
      */
     public function setIp(string $ip)
     {
-        if (preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $ip) > 0) {
+        if (preg_match(ProjectBase::REGEX_IP, '.' . $ip) > 0) {
             $this->reqData['ip'] = $ip;
         } else {
             throw new TencentMapException('ip不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);

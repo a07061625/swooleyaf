@@ -63,7 +63,7 @@ if ($proxyStatus > 0) {
     define('ALIOPEN_ENABLE_HTTP_PROXY', false);
 }
 $proxyIp = (string)SyTool\Tool::getArrayVal($aliOpenConfigs, 'aliopen.proxy.ip', '127.0.0.1', true);
-if (preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $proxyIp) > 0) {
+if (preg_match(\SyConstant\ProjectBase::REGEX_IP, '.' . $proxyIp) > 0) {
     define('ALIOPEN_HTTP_PROXY_IP', $proxyIp);
 } else {
     throw new \SyException\Common\CheckException('代理IP不合法', \SyConstant\ErrorCode::COMMON_SERVER_ERROR);

@@ -9,6 +9,7 @@ namespace Mailer;
 
 use DesignPatterns\Singletons\MailConfigSingleton;
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Mail\MailException;
 use SyLog\Log;
 use Mailer\PHP\PHPMailer;
@@ -67,7 +68,7 @@ class SyPhpMailer
      */
     public function setSenderNameAndEmail(string $email, string $name)
     {
-        if (preg_match('/^\w+([-+.]\w+)*\@\w+([-.]\w+)*\.\w+([-.]\w+)*$/', $email) == 0) {
+        if (preg_match(ProjectBase::REGEX_EMAIL, $email) == 0) {
             throw new MailException('发送者邮箱不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -82,7 +83,7 @@ class SyPhpMailer
      */
     public function addReceiver(string $email, string $name)
     {
-        if (preg_match('/^\w+([-+.]\w+)*\@\w+([-.]\w+)*\.\w+([-.]\w+)*$/', $email) == 0) {
+        if (preg_match(ProjectBase::REGEX_EMAIL, $email) == 0) {
             throw new MailException('接收者邮箱不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -97,7 +98,7 @@ class SyPhpMailer
      */
     public function addReplier(string $email, string $name)
     {
-        if (preg_match('/^\w+([-+.]\w+)*\@\w+([-.]\w+)*\.\w+([-.]\w+)*$/', $email) == 0) {
+        if (preg_match(ProjectBase::REGEX_EMAIL, $email) == 0) {
             throw new MailException('回复者邮箱不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -112,7 +113,7 @@ class SyPhpMailer
      */
     public function addCC(string $email, string $name)
     {
-        if (preg_match('/^\w+([-+.]\w+)*\@\w+([-.]\w+)*\.\w+([-.]\w+)*$/', $email) == 0) {
+        if (preg_match(ProjectBase::REGEX_EMAIL, $email) == 0) {
             throw new MailException('抄送者邮箱不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
 
@@ -127,7 +128,7 @@ class SyPhpMailer
      */
     public function addBCC(string $email, string $name)
     {
-        if (preg_match('/^\w+([-+.]\w+)*\@\w+([-.]\w+)*\.\w+([-.]\w+)*$/', $email) == 0) {
+        if (preg_match(ProjectBase::REGEX_EMAIL, $email) == 0) {
             throw new MailException('密送者邮箱不合法', ErrorCode::MAIL_PARAM_ERROR);
         }
 

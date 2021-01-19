@@ -8,6 +8,7 @@
 namespace Wx\Account\Message;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAccount;
@@ -79,7 +80,7 @@ class MassSend extends WxBaseAccount
     public function setOpenidList(array $openidList)
     {
         foreach ($openidList as $eOpenid) {
-            if (is_string($eOpenid) && (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $eOpenid) > 0)) {
+            if (is_string($eOpenid) && (preg_match(ProjectBase::REGEX_WX_OPEN_ID, $eOpenid) > 0)) {
                 $this->touser[$eOpenid] = 1;
             }
         }
@@ -91,7 +92,7 @@ class MassSend extends WxBaseAccount
      */
     public function addOpenid(string $openid)
     {
-        if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
+        if (preg_match(ProjectBase::REGEX_WX_OPEN_ID, $openid) > 0) {
             $this->touser[$openid] = 1;
         } else {
             throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);

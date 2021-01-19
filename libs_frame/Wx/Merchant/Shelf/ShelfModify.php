@@ -8,6 +8,7 @@
 namespace Wx\Merchant\Shelf;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseMerchant;
@@ -85,7 +86,7 @@ class ShelfModify extends WxBaseMerchant
      */
     public function setShelfBanner(string $shelfBanner)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $shelfBanner) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $shelfBanner) > 0) {
             $this->reqData['shelf_banner'] = $shelfBanner;
         } else {
             throw new WxException('货架招牌图片Url不合法', ErrorCode::WX_PARAM_ERROR);

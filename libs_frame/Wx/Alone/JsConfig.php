@@ -9,6 +9,7 @@ namespace Wx\Alone;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyTool\Tool;
 use Wx\WxBaseAlone;
@@ -78,7 +79,7 @@ class JsConfig extends WxBaseAlone
      */
     public function setUrl(string $url)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $url) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $url) > 0) {
             $this->url = $url;
         } else {
             throw new WxException('链接不合法', ErrorCode::WX_PARAM_ERROR);

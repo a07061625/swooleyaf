@@ -8,6 +8,7 @@
 namespace SyMap\Tencent;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Map\TencentMapException;
 use SyMap\MapBaseTencent;
 
@@ -60,10 +61,10 @@ class CoordinateTranslate extends MapBaseTencent
      */
     public function addCoordinate(string $lng, string $lat)
     {
-        if (preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng) == 0) {
+        if (preg_match(ProjectBase::REGEX_LOCATION_LNG, $lng) == 0) {
             throw new TencentMapException('源坐标经度不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }
-        if (preg_match('/^[\-]?(\d(\.\d+)?|[1-8]\d(\.\d+)?|90)$/', $lat) == 0) {
+        if (preg_match(ProjectBase::REGEX_LOCATION_LAT, $lat) == 0) {
             throw new TencentMapException('源坐标纬度不合法', ErrorCode::MAP_TENCENT_PARAM_ERROR);
         }
 

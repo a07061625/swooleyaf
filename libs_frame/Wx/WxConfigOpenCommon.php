@@ -8,6 +8,7 @@
 namespace Wx;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxOpenException;
 use SyTool\Tool;
 
@@ -280,7 +281,7 @@ class WxConfigOpenCommon
      */
     public function setUrlAuth(string $urlAuth)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $urlAuth) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $urlAuth) > 0) {
             $this->urlAuth = $urlAuth;
         } else {
             throw new WxOpenException('授权页面URL不合法', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -301,7 +302,7 @@ class WxConfigOpenCommon
      */
     public function setUrlAuthCallback(string $urlAuthCallback)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $urlAuthCallback) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $urlAuthCallback) > 0) {
             $this->urlAuthCallback = $urlAuthCallback;
         } else {
             throw new WxOpenException('授权页面回跳URL不合法', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -322,7 +323,7 @@ class WxConfigOpenCommon
      */
     public function setUrlMiniRebindAdmin(string $urlMiniRebindAdmin)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $urlMiniRebindAdmin) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $urlMiniRebindAdmin) > 0) {
             $this->urlMiniRebindAdmin = $urlMiniRebindAdmin;
         } else {
             throw new WxOpenException('换绑小程序管理员回跳URL不合法', ErrorCode::WXOPEN_PARAM_ERROR);
@@ -345,7 +346,7 @@ class WxConfigOpenCommon
     {
         if (strlen($urlMiniFastRegister) == 0) {
             $this->urlMiniFastRegister = '';
-        } elseif (preg_match('/^(http|https)\:\/\/\S+$/', $urlMiniFastRegister) > 0) {
+        } elseif (preg_match(ProjectBase::REGEX_URL_HTTP, $urlMiniFastRegister) > 0) {
             $this->urlMiniFastRegister = $urlMiniFastRegister;
         } else {
             throw new WxOpenException('快速注册小程序回跳地址不合法', ErrorCode::WXOPEN_PARAM_ERROR);
