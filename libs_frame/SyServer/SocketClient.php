@@ -11,6 +11,7 @@ use Swoole\Client;
 use Swoole\WebSocket\Server;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyException\Swoole\HttpServerException;
 use SyLog\Log;
 use SyTool\SyPack;
@@ -83,7 +84,7 @@ class SocketClient
         if (preg_match('/^\/\S*$/', $uri) == 0) {
             throw new HttpServerException('请求地址不合法', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
-        if ((strlen($origin) > 0) && (preg_match('/^(http|https)\:\/\/\S+$/', $origin) == 0)) {
+        if ((strlen($origin) > 0) && (preg_match(ProjectBase::REGEX_URL_HTTP, $origin) == 0)) {
             throw new HttpServerException('来源地址不合法', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
 

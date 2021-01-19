@@ -9,6 +9,7 @@ namespace SyMap;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\MapSingleton;
+use SyConstant\ProjectBase;
 use SyException\Map\BaiduMapException;
 
 abstract class MapBaseBaiDu extends MapBase
@@ -125,7 +126,7 @@ abstract class MapBaseBaiDu extends MapBase
      */
     public function setReqReferer(string $reqReferer)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $reqReferer) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $reqReferer) > 0) {
             $this->reqReferer = $reqReferer;
         } else {
             throw new BaiduMapException('请求引用地址不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);

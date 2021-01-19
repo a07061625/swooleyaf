@@ -7,6 +7,7 @@
  */
 namespace SyLive\BaiJia\LiveLargeClass\Room;
 
+use SyConstant\ProjectBase;
 use SyLive\BaseBaiJia;
 use SyLive\UtilBaiJia;
 use SyConstant\ErrorCode;
@@ -76,7 +77,7 @@ class CodeGet extends BaseBaiJia
      */
     public function setUserAvatar(string $userAvatar)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $userAvatar) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $userAvatar) > 0) {
             $this->reqData['user_avatar'] = $userAvatar;
         } else {
             throw new BaiJiaException('用户头像不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);

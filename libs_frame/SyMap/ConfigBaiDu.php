@@ -8,6 +8,7 @@
 namespace SyMap;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Map\BaiduMapException;
 
 class ConfigBaiDu
@@ -66,7 +67,7 @@ class ConfigBaiDu
      */
     public function setServerIp(string $serverIp)
     {
-        if (preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $serverIp) > 0) {
+        if (preg_match(ProjectBase::REGEX_IP, '.' . $serverIp) > 0) {
             $this->serverIp = $serverIp;
         } else {
             throw new BaiduMapException('服务器IP不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);

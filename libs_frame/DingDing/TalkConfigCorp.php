@@ -8,6 +8,7 @@
 namespace DingDing;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\DingDing\TalkException;
 use SyTrait\SimpleConfigTrait;
 
@@ -197,7 +198,7 @@ class TalkConfigCorp
      */
     public function setLoginUrlCallback(string $loginUrlCallback)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $loginUrlCallback) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $loginUrlCallback) > 0) {
             $this->loginUrlCallback = $loginUrlCallback;
         } else {
             throw new TalkException('登陆应用回调地址不合法', ErrorCode::DING_TALK_PARAM_ERROR);

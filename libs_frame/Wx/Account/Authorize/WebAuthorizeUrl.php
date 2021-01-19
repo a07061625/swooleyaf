@@ -8,6 +8,7 @@
 namespace Wx\Account\Authorize;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use Wx\WxBaseAccount;
 
@@ -48,7 +49,7 @@ class WebAuthorizeUrl extends WxBaseAccount
      */
     public function setRedirectUrl(string $redirectUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $redirectUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $redirectUrl) > 0) {
             $this->reqData['redirect_uri'] = $redirectUrl;
         } else {
             throw new WxException('重定向链接不合法', ErrorCode::WX_PARAM_ERROR);

@@ -8,6 +8,7 @@
 namespace SyPay;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Pay\PayPalException;
 use SyTrait\SimpleConfigTrait;
 
@@ -120,7 +121,7 @@ class ConfigPayPal
      */
     public function setReturnUrl(string $returnUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $returnUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $returnUrl) > 0) {
             $this->returnUrl = $returnUrl;
         } else {
             throw new PayPalException('支付成功回调地址不合法', ErrorCode::PAY_PAYPAL_PARAM_ERROR);
@@ -142,7 +143,7 @@ class ConfigPayPal
      */
     public function setCancelUrl(string $cancelUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $cancelUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $cancelUrl) > 0) {
             $this->cancelUrl = $cancelUrl;
         } else {
             throw new PayPalException('支付取消回调地址不合法', ErrorCode::PAY_PAYPAL_PARAM_ERROR);

@@ -7,6 +7,7 @@
  */
 namespace SyLive\BaiJia\LiveLargeClass\LiveAccount;
 
+use SyConstant\ProjectBase;
 use SyLive\BaseBaiJia;
 use SyLive\UtilBaiJia;
 use SyConstant\ErrorCode;
@@ -40,7 +41,7 @@ class ClassCallbackUrlSet extends BaseBaiJia
      */
     public function setUrl(string $url)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $url) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $url) > 0) {
             $this->reqData['url'] = $url;
         } else {
             throw new BaiJiaException('回调地址不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);

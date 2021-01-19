@@ -10,6 +10,7 @@ namespace DingDing\Corp\WorkRecord;
 use SyConstant\ErrorCode;
 use DingDing\TalkBaseCorp;
 use DingDing\TalkTraitCorp;
+use SyConstant\ProjectBase;
 use SyException\DingDing\TalkException;
 use SyTool\Tool;
 
@@ -104,7 +105,7 @@ class WorkRecordAdd extends TalkBaseCorp
      */
     public function setUrl(string $url)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $url) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $url) > 0) {
             $this->reqData['url'] = $url;
         } else {
             throw new TalkException('跳转链接不合法', ErrorCode::DING_TALK_PARAM_ERROR);

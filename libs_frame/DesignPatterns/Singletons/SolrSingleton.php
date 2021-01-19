@@ -8,6 +8,7 @@
 namespace DesignPatterns\Singletons;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Solr\SolrException;
 use SyLog\Log;
 use SyTool\Tool;
@@ -35,7 +36,7 @@ class SolrSingleton
         $configs = Tool::getConfig('solr.' . SY_ENV . SY_PROJECT);
 
         $connectUrl = (string)Tool::getArrayVal($configs, 'connect.url', '', true);
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $connectUrl) == 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $connectUrl) == 0) {
             throw new SolrException('服务地址不合法', ErrorCode::SOLR_PARAM_ERROR);
         }
 

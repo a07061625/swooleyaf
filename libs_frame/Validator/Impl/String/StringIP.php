@@ -8,6 +8,7 @@
 namespace Validator\Impl\String;
 
 use SyConstant\Project;
+use SyConstant\ProjectBase;
 use Validator\BaseValidator;
 use Validator\ValidatorService;
 
@@ -34,7 +35,7 @@ class StringIP extends BaseValidator implements ValidatorService
             return '必须是字符串';
         } elseif ((strlen($trueData) == 0) && !$compareData) {
             return '';
-        } elseif (preg_match('/^(\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){4}$/', '.' . $trueData) > 0) {
+        } elseif (preg_match(ProjectBase::REGEX_IP, '.' . $trueData) > 0) {
             return '';
         }
 

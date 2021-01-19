@@ -8,6 +8,7 @@
 namespace Wx;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 
 class WxConfigCorpProvider
@@ -201,7 +202,7 @@ class WxConfigCorpProvider
      */
     public function setUrlAuthSuite(string $urlAuthSuite)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $urlAuthSuite) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $urlAuthSuite) > 0) {
             $this->urlAuthSuite = $urlAuthSuite;
         } else {
             throw new WxException('套件授权地址不合法', ErrorCode::WX_PARAM_ERROR);
@@ -222,7 +223,7 @@ class WxConfigCorpProvider
      */
     public function setUrlAuthLogin(string $urlAuthLogin)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $urlAuthLogin) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $urlAuthLogin) > 0) {
             $this->urlAuthLogin = $urlAuthLogin;
         } else {
             throw new WxException('登录授权地址不合法', ErrorCode::WX_PARAM_ERROR);

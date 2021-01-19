@@ -9,6 +9,7 @@
 namespace SyPromotion\TBK\Common;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Promotion\TBKException;
 use SyPromotion\BaseTBK;
 
@@ -41,7 +42,7 @@ class ItemExtractByClick extends BaseTBK
      */
     public function setClickUrl(string $clickUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $clickUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $clickUrl) > 0) {
             $this->reqData['click_url'] = $clickUrl;
         } else {
             throw new TBKException('推广链接不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

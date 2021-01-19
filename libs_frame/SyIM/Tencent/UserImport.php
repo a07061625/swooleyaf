@@ -8,6 +8,7 @@
 namespace SyIM\Tencent;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\IM\TencentException;
 
 class UserImport
@@ -113,7 +114,7 @@ class UserImport
      */
     public function setHeadImage(string $headImage)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $headImage) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $headImage) > 0) {
             $this->headImage = $headImage;
         } else {
             throw new TencentException('用户头像不合法', ErrorCode::IM_PARAM_ERROR);

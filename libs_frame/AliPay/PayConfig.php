@@ -8,6 +8,7 @@
 namespace AliPay;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\AliPay\AliPayPayException;
 use SyTool\Tool;
 use SyTrait\SimpleConfigTrait;
@@ -151,7 +152,7 @@ class PayConfig
      */
     public function setUrlNotify(string $urlNotify)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $urlNotify) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $urlNotify) > 0) {
             $this->urlNotify = $urlNotify;
         } else {
             throw new AliPayPayException('异步消息通知URL不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);
@@ -173,7 +174,7 @@ class PayConfig
      */
     public function setUrlReturn(string $urlReturn)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $urlReturn) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $urlReturn) > 0) {
             $this->urlReturn = $urlReturn;
         } else {
             throw new AliPayPayException('同步消息通知URL不合法', ErrorCode::ALIPAY_PAY_PARAM_ERROR);

@@ -9,6 +9,7 @@ namespace SyTool;
 
 use SyConstant\ErrorCode;
 use SyConstant\Project;
+use SyConstant\ProjectBase;
 use SyException\Common\CheckException;
 
 class SyPack
@@ -184,7 +185,7 @@ class SyPack
         $uri = Tool::getArrayVal($data, 'api_uri', '');
         if (!is_string($uri)) {
             throw new CheckException('请求URI必须是字符串', ErrorCode::COMMON_PARAM_ERROR);
-        } elseif (preg_match('/^\/[0-9a-zA-Z\/]*$/', $uri) == 0) {
+        } elseif (preg_match(ProjectBase::REGEX_URI_YAF, $uri) == 0) {
             throw new CheckException('请求URI不合法', ErrorCode::COMMON_PARAM_ERROR);
         }
 
@@ -239,7 +240,7 @@ class SyPack
         $uri = Tool::getArrayVal($data, 'api_uri', '');
         if (!is_string($uri)) {
             throw new CheckException('请求URI必须是字符串', ErrorCode::COMMON_PARAM_ERROR);
-        } elseif (preg_match('/^\/[0-9a-zA-Z\/]*$/', $uri) == 0) {
+        } elseif (preg_match(ProjectBase::REGEX_URI_YAF, $uri) == 0) {
             throw new CheckException('请求URI不合法', ErrorCode::COMMON_PARAM_ERROR);
         }
 

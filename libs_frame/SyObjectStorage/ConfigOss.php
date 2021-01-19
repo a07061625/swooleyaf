@@ -9,6 +9,7 @@ namespace SyObjectStorage;
 
 use SyCloud\Ali\ConfigTrait;
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\ObjectStorage\OssException;
 use SyTrait\SimpleConfigTrait;
 
@@ -142,7 +143,7 @@ class ConfigOss
      */
     public function setBucketDomain(string $bucketDomain)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $bucketDomain) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $bucketDomain) > 0) {
             $this->bucketDomain = $bucketDomain;
         } else {
             throw new OssException('桶域名不合法', ErrorCode::OBJECT_STORAGE_OSS_PARAM_ERROR);

@@ -9,6 +9,7 @@ namespace SyObjectStorage\Kodo\Bucket;
 
 use SyCloud\QiNiu\Util;
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\ObjectStorage\KodoException;
 use SyObjectStorage\BaseKodo;
 
@@ -64,7 +65,7 @@ class ImageSet extends BaseKodo
      */
     public function setSrcSiteUrl(string $srcSiteUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $srcSiteUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $srcSiteUrl) > 0) {
             $this->srcSiteUrl = Util::safeBase64($srcSiteUrl);
         } else {
             throw new KodoException('访问域名不合法', ErrorCode::OBJECT_STORAGE_KODO_PARAM_ERROR);

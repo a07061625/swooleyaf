@@ -8,6 +8,7 @@
 namespace SyMap\BaiDu;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Map\BaiduMapException;
 use SyMap\MapBaseBaiDu;
 use SyTool\Tool;
@@ -285,10 +286,10 @@ class PlaceSearch extends MapBaseBaiDu
      */
     public function setAreaNearbyLngAndLat(string $lng, string $lat)
     {
-        if (preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng) == 0) {
+        if (preg_match(ProjectBase::REGEX_LOCATION_LNG, $lng) == 0) {
             throw new BaiduMapException('圆形范围搜索中心点经度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
-        if (preg_match('/^[\-]?(\d(\.\d+)?|[1-8]\d(\.\d+)?|90)$/', $lat) == 0) {
+        if (preg_match(ProjectBase::REGEX_LOCATION_LAT, $lat) == 0) {
             throw new BaiduMapException('圆形范围搜索中心点纬度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
 
@@ -318,16 +319,16 @@ class PlaceSearch extends MapBaseBaiDu
      */
     public function setAreaRectangLngAndLat(string $lng1, string $lat1, string $lng2, string $lat2)
     {
-        if (preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng1) == 0) {
+        if (preg_match(ProjectBase::REGEX_LOCATION_LNG, $lng1) == 0) {
             throw new BaiduMapException('矩形范围搜索西南角经度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
-        if (preg_match('/^[\-]?(\d(\.\d+)?|[1-8]\d(\.\d+)?|90)$/', $lat1) == 0) {
+        if (preg_match(ProjectBase::REGEX_LOCATION_LAT, $lat1) == 0) {
             throw new BaiduMapException('矩形范围搜索西南角纬度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
-        if (preg_match('/^[-]?(\d(\.\d+)?|[1-9]\d(\.\d+)?|1[0-7]\d(\.\d+)?|180)$/', $lng2) == 0) {
+        if (preg_match(ProjectBase::REGEX_LOCATION_LNG, $lng2) == 0) {
             throw new BaiduMapException('矩形范围搜索东北角经度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
-        if (preg_match('/^[\-]?(\d(\.\d+)?|[1-8]\d(\.\d+)?|90)$/', $lat2) == 0) {
+        if (preg_match(ProjectBase::REGEX_LOCATION_LAT, $lat2) == 0) {
             throw new BaiduMapException('矩形范围搜索东北角纬度不合法', ErrorCode::MAP_BAIDU_PARAM_ERROR);
         }
         if ((double)$lat1 >= (double)$lat2) {

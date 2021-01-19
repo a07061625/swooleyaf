@@ -8,6 +8,7 @@
 namespace AliPay;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\AliPay\AliPayPayException;
 use SyTool\Tool;
 
@@ -111,7 +112,7 @@ abstract class AliPayBase
      */
     public function setReturnUrl(string $returnUrl)
     {
-        if (preg_match('/^(http|https)\:\/\/\S+$/', $returnUrl) > 0) {
+        if (preg_match(ProjectBase::REGEX_URL_HTTP, $returnUrl) > 0) {
             $this->return_url = $this->return_baseurl . urlencode($returnUrl);
         } else {
             throw new AliPayPayException('同步通知地址不合法', ErrorCode::ALIPAY_PARAM_ERROR);

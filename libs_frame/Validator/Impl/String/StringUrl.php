@@ -8,6 +8,7 @@
 namespace Validator\Impl\String;
 
 use SyConstant\Project;
+use SyConstant\ProjectBase;
 use Validator\BaseValidator;
 use Validator\ValidatorService;
 
@@ -34,7 +35,7 @@ class StringUrl extends BaseValidator implements ValidatorService
             return '必须是字符串';
         } elseif ((strlen($trueData) == 0) && !$compareData) {
             return '';
-        } elseif (preg_match('/^(http|https|ftp)\:\/\/\S+$/', $trueData) > 0) {
+        } elseif (preg_match(ProjectBase::REGEX_URL, $trueData) > 0) {
             return '';
         }
 

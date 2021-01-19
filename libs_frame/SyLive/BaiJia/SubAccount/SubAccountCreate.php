@@ -8,6 +8,7 @@
 namespace SyLive\BaiJia\SubAccount;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Live\BaiJiaException;
 use SyLive\BaseBaiJia;
 use SyLive\UtilBaiJia;
@@ -160,7 +161,7 @@ class SubAccountCreate extends BaseBaiJia
      */
     public function setEmail(string $email)
     {
-        if (preg_match('/^\w+([-+.]\w+)*\@\w+([-.]\w+)*\.\w+([-.]\w+)*$/', $email) > 0) {
+        if (preg_match(ProjectBase::REGEX_EMAIL, $email) > 0) {
             $this->reqData['email'] = $email;
         } else {
             throw new BaiJiaException('邮箱不合法', ErrorCode::LIVE_BAIJIA_PARAM_ERROR);

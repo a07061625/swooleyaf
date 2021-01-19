@@ -9,6 +9,7 @@
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Promotion\TBKException;
 use SyPromotion\BaseTBK;
 use SyPromotion\TBK\Traits\SetNumIidsTrait;
@@ -58,7 +59,7 @@ class CouponGetByItemId extends BaseTBK
      */
     public function setPid(string $pid)
     {
-        if (preg_match('/^mm(_\d{1,12}){3}$/', $pid) > 0) {
+        if (preg_match(ProjectBase::REGEX_PROMOTION_TBK_PID, $pid) > 0) {
             $this->reqData['pid'] = $pid;
         } else {
             throw new TBKException('三方pid不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

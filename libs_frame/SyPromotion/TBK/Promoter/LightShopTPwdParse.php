@@ -9,6 +9,7 @@
 namespace SyPromotion\TBK\Promoter;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Promotion\TBKException;
 use SyPromotion\BaseTBK;
 use SyPromotion\TBK\Traits\SetAdZoneIdTrait;
@@ -68,7 +69,7 @@ class LightShopTPwdParse extends BaseTBK
      */
     public function setMainPid(string $mainPid)
     {
-        if (preg_match('/^mm(_\d{1,12}){3}$/', $mainPid) > 0) {
+        if (preg_match(ProjectBase::REGEX_PROMOTION_TBK_PID, $mainPid) > 0) {
             $this->reqData['main_pid'] = $mainPid;
         } else {
             throw new TBKException('达人pid不合法', ErrorCode::PROMOTION_TBK_PARAM_ERROR);

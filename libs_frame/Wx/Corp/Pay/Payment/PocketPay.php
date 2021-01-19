@@ -9,6 +9,7 @@ namespace Wx\Corp\Pay\Payment;
 
 use SyConstant\ErrorCode;
 use DesignPatterns\Singletons\WxConfigSingleton;
+use SyConstant\ProjectBase;
 use SyException\Wx\WxException;
 use SyLog\Log;
 use SyTool\Tool;
@@ -166,7 +167,7 @@ class PocketPay extends WxBaseCorp
      */
     public function setOpenid(string $openid)
     {
-        if (preg_match('/^[0-9a-zA-Z\-\_]{28}$/', $openid) > 0) {
+        if (preg_match(ProjectBase::REGEX_WX_OPEN_ID, $openid) > 0) {
             $this->reqData['openid'] = $openid;
         } else {
             throw new WxException('用户openid不合法', ErrorCode::WX_PARAM_ERROR);

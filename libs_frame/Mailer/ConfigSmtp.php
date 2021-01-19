@@ -8,6 +8,7 @@
 namespace Mailer;
 
 use SyConstant\ErrorCode;
+use SyConstant\ProjectBase;
 use SyException\Mail\MailException;
 
 class ConfigSmtp
@@ -98,7 +99,7 @@ class ConfigSmtp
      */
     public function setUser(string $user)
     {
-        if (preg_match('/^\w+([-+.]\w+)*\@\w+([-.]\w+)*\.\w+([-.]\w+)*$/', $user) > 0) {
+        if (preg_match(ProjectBase::REGEX_EMAIL, $user) > 0) {
             $this->user = $user;
         } else {
             throw new MailException('用户名不合法', ErrorCode::MAIL_PARAM_ERROR);
