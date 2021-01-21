@@ -204,6 +204,7 @@ class ProjectBase
     const TIME_EXPIRE_LOCAL_OBJECT_STORAGE_COS_CLEAR = 3600; //超时时间-本地对象存储腾讯云配置清理,单位为秒
     const TIME_EXPIRE_LOCAL_OBJECT_STORAGE_OSS_REFRESH = 600; //超时时间-本地对象存储阿里云配置更新,单位为秒
     const TIME_EXPIRE_LOCAL_OBJECT_STORAGE_OSS_CLEAR = 3600; //超时时间-本地对象存储阿里云配置清理,单位为秒
+    const TIME_EXPIRE_LOCAL_BLOOM_REFRESH = 3600; //超时时间-本地布隆过滤器更新,单位为秒
 
     //任务常量,4位字符串,数字和字母组成,纯数字的为框架内部任务,其他为自定义任务
     const TASK_TYPE_CLEAR_API_SIGN_CACHE = '0001'; //任务类型-清理api签名缓存
