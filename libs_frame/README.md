@@ -29,6 +29,7 @@
 - SyError: 框架错误处理
 - SyEventTask: 框架定时任务事件
 - SyException: 框架自定义异常
+- SyFilters: 过滤器相关
 - SyFrame: 框架架构相关
 - SyIM: 实时通讯相关
 - SyImage: 图片处理相关

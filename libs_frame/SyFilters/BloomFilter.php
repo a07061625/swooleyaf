@@ -6,7 +6,7 @@
  * Time: 8:48
  */
 
-namespace SyTool;
+namespace SyFilters;
 
 use SyConstant\ErrorCode;
 use SyException\Common\ErrorException;
@@ -14,22 +14,22 @@ use SyException\Common\ErrorException;
 /**
  * Class BloomFilter
  *
- * @package SyTool
+ * @package SyFilters
  */
-class BloomFilter
+abstract class BloomFilter
 {
     /**
      * bitmap对象
      *
      * @var \GMP
      */
-    private $bitmap;
+    protected $bitmap;
     /**
      * 数组元素最大个数
      *
      * @var int
      */
-    private $maxNum = 0;
+    protected $maxNum = 0;
 
     public function __construct(int $num)
     {
@@ -79,4 +79,9 @@ class BloomFilter
     {
         return crc32($key) % $this->maxNum;
     }
+
+    /**
+     * 刷新bitmap,用于进程重启,微服务情况下
+     */
+    abstract public function refreshBitmap();
 }
