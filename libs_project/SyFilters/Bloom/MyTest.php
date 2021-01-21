@@ -5,15 +5,20 @@
  * Date: 2021/1/21 0021
  * Time: 15:13
  */
+
 namespace SyFilters\Bloom;
 
 use SyFilters\BloomFilter;
 
 /**
  * Class MyTest
+ *
  * @package SyFilters\Bloom
+ *
+ * @internal
+ * @coversNothing
  */
-class MyTest extends BloomFilter
+final class MyTest extends BloomFilter
 {
     public function __construct(int $num)
     {
