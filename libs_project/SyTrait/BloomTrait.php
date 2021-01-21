@@ -8,7 +8,7 @@
 
 namespace SyTrait;
 
-use SyTool\BloomFilter;
+use SyFilters\Bloom\MyTest;
 
 /**
  * Trait BloomTrait
@@ -19,11 +19,9 @@ trait BloomTrait
 {
     /**
      * 初始化过滤器
-     *
-     * @throws \SyException\Common\ErrorException
      */
     private function initFilters()
     {
-        $this->filters['a01'] = new BloomFilter(100000);
+        $this->filters['a01'] = new MyTest(100000);
     }
 }
