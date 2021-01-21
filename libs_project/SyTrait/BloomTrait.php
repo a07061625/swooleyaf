@@ -5,18 +5,21 @@
  * Date: 2021/1/21 0021
  * Time: 10:16
  */
+
 namespace SyTrait;
 
 use SyTool\BloomFilter;
 
 /**
  * Trait BloomTrait
+ *
  * @package SyTrait
  */
 trait BloomTrait
 {
     /**
      * 初始化过滤器
+     *
      * @throws \SyException\Common\ErrorException
      */
     private function initFilters()

@@ -5,6 +5,7 @@
  * Date: 2021/1/21 0021
  * Time: 8:48
  */
+
 namespace SyTool;
 
 use SyConstant\ErrorCode;
@@ -12,17 +13,20 @@ use SyException\Common\ErrorException;
 
 /**
  * Class BloomFilter
+ *
  * @package SyTool
  */
 class BloomFilter
 {
     /**
      * bitmap对象
+     *
      * @var \GMP
      */
-    private $bitmap = null;
+    private $bitmap;
     /**
      * 数组元素最大个数
+     *
      * @var int
      */
     private $maxNum = 0;
@@ -43,17 +47,8 @@ class BloomFilter
     }
 
     /**
-     * 获取bitmap索引值
-     * @param string $key 键名
-     * @return int
-     */
-    private function getBitmapIndex(string $key) : int
-    {
-        return crc32($key) % $this->maxNum;
-    }
-
-    /**
      * 添加键名
+     *
      * @param string $key 键名
      */
     public function addKey(string $key)
@@ -64,13 +59,24 @@ class BloomFilter
 
     /**
      * 判断键名是否存在
+     *
      * @param string $key 键名
-     * @return bool
      */
-    public function existKey(string $key) : bool
+    public function existKey(string $key): bool
     {
         $index = $this->getBitmapIndex($key);
         $existIndex = gmp_scan1($this->bitmap, $index);
+
         return $existIndex == $index;
+    }
+
+    /**
+     * 获取bitmap索引值
+     *
+     * @param string $key 键名
+     */
+    private function getBitmapIndex(string $key): int
+    {
+        return crc32($key) % $this->maxNum;
     }
 }
