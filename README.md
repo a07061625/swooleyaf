@@ -250,3 +250,21 @@ nginx配置: <br/>
         }
         //通过msgData的msg_id和handlerRes,修改消息处理记录的处理结果
     }
+
+## 布隆过滤器
+### 初始化
+修改libs_project/SyTrait/BloomTrait的initFilters方法,可参考现有代码自行初始化好所有的过滤器
+
+### 添加数据到布隆过滤器
+    $cacheKey = 'test1234';
+    \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->set($cacheKey, 123);
+    \DesignPatterns\Singletons\BloomSingleton::getInstance()->addKey('a01', $cacheKey);
+
+### 使用布隆过滤器
+    $cacheKey = 'test1234';
+    $existTag = \DesignPatterns\Singletons\BloomSingleton::getInstance()->existKey('a01', $cacheKey);
+    if ($existTag) {
+        $cacheVal = \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->get($cacheKey);
+    } else {
+        echo '非法键名';
+    }
