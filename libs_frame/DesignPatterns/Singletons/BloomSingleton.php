@@ -31,6 +31,7 @@ class BloomSingleton
     private $filters = [];
     /**
      * 刷新时间戳
+     *
      * @var int
      */
     private $refreshTime = 0;
@@ -53,27 +54,6 @@ class BloomSingleton
     }
 
     /**
-     * 获取本地过滤器
-     * @param string $tag 过滤器标识
-     * @return \SyFilters\BloomFilter|null 过滤器
-     */
-    private function getLocalFilter(string $tag) : ?\SyFilters\BloomFilter
-    {
-        $nowTime = Tool::getNowTime();
-        if ($nowTime > $this->refreshTime) {
-            $nowFilters = [];
-            foreach ($this->filters as $eTag => $eFilter) {
-                $eFilter->refreshBitmap();
-                $nowFilters[$eTag] = $eFilter;
-            }
-            $this->filters = $nowFilters;
-            $this->refreshTime = $nowTime + Project::TIME_EXPIRE_LOCAL_BLOOM_REFRESH;
-        }
-
-        return Tool::getArrayVal($this->filters, $tag, null);
-    }
-
-    /**
      * 添加过滤器键名
      *
      * @param string $tag 过滤器标识
@@ -82,7 +62,7 @@ class BloomSingleton
     public function addKey(string $tag, string $key)
     {
         $filter = $this->getLocalFilter($tag);
-        if (!is_null($filter)) {
+        if (null !== $filter) {
             $filter->addKey($key);
         }
     }
@@ -96,10 +76,33 @@ class BloomSingleton
     public function existKey(string $tag, string $key): bool
     {
         $filter = $this->getLocalFilter($tag);
-        if (is_null($filter)) {
+        if (null === $filter) {
             return false;
         }
 
         return $filter->existKey($key);
+    }
+
+    /**
+     * 获取本地过滤器
+     *
+     * @param string $tag 过滤器标识
+     *
+     * @return null|\SyFilters\BloomFilter 过滤器
+     */
+    private function getLocalFilter(string $tag): ?\SyFilters\BloomFilter
+    {
+        $nowTime = Tool::getNowTime();
+        if ($nowTime > $this->refreshTime) {
+            $nowFilters = [];
+            foreach ($this->filters as $eTag => $eFilter) {
+                $eFilter->refreshBitmap();
+                $nowFilters[$eTag] = $eFilter;
+            }
+            $this->filters = $nowFilters;
+            $this->refreshTime = $nowTime + Project::TIME_EXPIRE_LOCAL_BLOOM_REFRESH;
+        }
+
+        return Tool::getArrayVal($this->filters, $tag, null);
     }
 }
