@@ -1,10 +1,10 @@
 <?php
-namespace Swoole\Http2;
+namespace Swoole\Server;
 
 /**
  * @since 4.6.2
  */
-class Request
+class Event
 {
 
 

@@ -1,10 +1,10 @@
 <?php
-namespace Swoole;
+namespace Swoole\Client;
 
 /**
  * @since 4.6.2
  */
-class Error extends \Error
+class Exception extends \Swoole\Exception
 {
 
 

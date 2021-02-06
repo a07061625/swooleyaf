@@ -2,128 +2,95 @@
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.5.2
+ * @since 4.6.2
  */
 class MySQL
 {
-    /**
-     * @return mixed
-     */
-    public function __construct()
-    {
-    }
+
 
     /**
      * @return mixed
      */
-    public function __destruct()
-    {
-    }
+    public function __construct(){}
 
     /**
      * @return mixed
      */
-    public function getDefer()
-    {
-    }
+    public function __destruct(){}
+
+    /**
+     * @return mixed
+     */
+    public function getDefer(){}
 
     /**
      * @param $defer[optional]
-     *
      * @return mixed
      */
-    public function setDefer($defer = null)
-    {
-    }
+    public function setDefer($defer=null){}
 
     /**
      * @param $server_config[optional]
-     *
      * @return mixed
      */
-    public function connect($server_config = null)
-    {
-    }
+    public function connect($server_config=null){}
 
     /**
      * @param $sql[required]
      * @param $timeout[optional]
-     *
      * @return mixed
      */
-    public function query($sql, $timeout = null)
-    {
-    }
+    public function query($sql, $timeout=null){}
 
     /**
      * @return mixed
      */
-    public function fetch()
-    {
-    }
+    public function fetch(){}
 
     /**
      * @return mixed
      */
-    public function fetchAll()
-    {
-    }
+    public function fetchAll(){}
 
     /**
      * @return mixed
      */
-    public function nextResult()
-    {
-    }
+    public function nextResult(){}
 
     /**
      * @param $query[required]
      * @param $timeout[optional]
-     *
      * @return mixed
      */
-    public function prepare($query, $timeout = null)
-    {
-    }
+    public function prepare($query, $timeout=null){}
 
     /**
      * @return mixed
      */
-    public function recv()
-    {
-    }
+    public function recv(){}
 
     /**
      * @param $timeout[optional]
-     *
      * @return mixed
      */
-    public function begin($timeout = null)
-    {
-    }
+    public function begin($timeout=null){}
 
     /**
      * @param $timeout[optional]
-     *
      * @return mixed
      */
-    public function commit($timeout = null)
-    {
-    }
+    public function commit($timeout=null){}
 
     /**
      * @param $timeout[optional]
-     *
      * @return mixed
      */
-    public function rollback($timeout = null)
-    {
-    }
+    public function rollback($timeout=null){}
 
     /**
      * @return mixed
      */
-    public function close()
-    {
-    }
+    public function close(){}
+
+
 }
