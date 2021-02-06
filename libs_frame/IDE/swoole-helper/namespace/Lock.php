@@ -1,4 +1,5 @@
 <?php
+
 namespace Swoole;
 
 /**
@@ -12,54 +13,71 @@ class Lock
     const RWLOCK = 1;
     const SPINLOCK = 5;
 
-
     /**
      * @param $type[optional]
      * @param $filename[optional]
+     *
      * @return mixed
      */
-    public function __construct($type=null, $filename=null){}
+    public function __construct($type = null, $filename = null)
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function __destruct(){}
+    public function __destruct()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function lock(){}
+    public function lock()
+    {
+    }
 
     /**
      * @param $timeout[optional]
+     *
      * @return mixed
      */
-    public function lockwait($timeout=null){}
+    public function lockwait($timeout = null)
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function trylock(){}
+    public function trylock()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function lock_read(){}
+    public function lock_read()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function trylock_read(){}
+    public function trylock_read()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function unlock(){}
+    public function unlock()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function destroy(){}
-
-
+    public function destroy()
+    {
+    }
 }

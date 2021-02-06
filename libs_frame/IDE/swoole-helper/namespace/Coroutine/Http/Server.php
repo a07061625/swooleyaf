@@ -1,4 +1,5 @@
 <?php
+
 namespace Swoole\Coroutine\Http;
 
 /**
@@ -6,49 +7,62 @@ namespace Swoole\Coroutine\Http;
  */
 class Server
 {
-
-
     /**
      * @param $host[required]
      * @param $port[optional]
      * @param $ssl[optional]
      * @param $reuse_port[optional]
+     *
      * @return mixed
      */
-    public function __construct($host, $port=null, $ssl=null, $reuse_port=null){}
+    public function __construct($host, $port = null, $ssl = null, $reuse_port = null)
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function __destruct(){}
+    public function __destruct()
+    {
+    }
 
     /**
      * @param $settings[required]
+     *
      * @return mixed
      */
-    public function set($settings){}
+    public function set($settings)
+    {
+    }
 
     /**
      * @param $pattern[required]
      * @param $callback[required]
+     *
      * @return mixed
      */
-    public function handle($pattern, $callback){}
+    public function handle($pattern, $callback)
+    {
+    }
 
     /**
      * @return mixed
      */
-    private function onAccept(){}
+    public function start()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function start(){}
+    public function shutdown()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function shutdown(){}
-
-
+    private function onAccept()
+    {
+    }
 }

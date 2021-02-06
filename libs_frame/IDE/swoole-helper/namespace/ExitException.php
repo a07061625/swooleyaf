@@ -1,4 +1,5 @@
 <?php
+
 namespace Swoole;
 
 /**
@@ -6,35 +7,42 @@ namespace Swoole;
  */
 class ExitException extends \Swoole\Exception
 {
-
-
-    /**
-     * @return mixed
-     */
-    public function getFlags(){}
-
-    /**
-     * @return mixed
-     */
-    public function getStatus(){}
-
     /**
      * @param $message[optional]
      * @param $code[optional]
      * @param $previous[optional]
+     *
      * @return mixed
      */
-    public function __construct($message=null, $code=null, $previous=null){}
+    public function __construct($message = null, $code = null, $previous = null)
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function __wakeup(){}
+    public function __wakeup()
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function __toString(){}
+    public function __toString()
+    {
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getFlags()
+    {
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+    }
 }

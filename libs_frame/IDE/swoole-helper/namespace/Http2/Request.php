@@ -1,4 +1,5 @@
 <?php
+
 namespace Swoole\Http2;
 
 /**
@@ -6,7 +7,4 @@ namespace Swoole\Http2;
  */
 class Request
 {
-
-
-
 }

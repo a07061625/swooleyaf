@@ -1,4 +1,5 @@
 <?php
+
 namespace Swoole\Server;
 
 /**
@@ -6,7 +7,4 @@ namespace Swoole\Server;
  */
 class TaskResult
 {
-
-
-
 }
