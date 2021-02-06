@@ -5,6 +5,7 @@
  * Date: 2017/8/19 0019
  * Time: 8:32
  */
+
 namespace SyServer;
 
 use DesignPatterns\Factories\CacheSimpleFactory;
@@ -39,7 +40,7 @@ abstract class BaseServer
     /**
      * 请求服务对象
      *
-     * @var \Swoole\WebSocket\Server|\Swoole\Server
+     * @var \Swoole\Server|\Swoole\WebSocket\Server
      */
     protected $_server;
     /**
@@ -124,13 +125,13 @@ abstract class BaseServer
         $this->checkSystemEnv();
         $this->_configs = Tool::getConfig('syserver.' . SY_ENV . SY_MODULE);
 
-        define('SY_SERVER_IP', $this->_configs['server']['host']);
-        define('SY_REQUEST_MAX_HANDLING', (int)$this->_configs['server']['request']['maxnum']['handling']);
+        \define('SY_SERVER_IP', $this->_configs['server']['host']);
+        \define('SY_REQUEST_MAX_HANDLING', (int)$this->_configs['server']['request']['maxnum']['handling']);
 
         //获取当前操作系统的用户
         $execUser = Tool::execSystemCommand('whoami');
         $systemUser = $execUser['data'][0];
-        define('SY_SYSTEM_USER', $systemUser);
+        \define('SY_SYSTEM_USER', $systemUser);
 
         $this->_configs['server']['port'] = $port;
         //关闭协程
@@ -168,9 +169,10 @@ abstract class BaseServer
         Dir::create(SY_ROOT . '/tipfile/');
         if (is_dir($this->_tipFile)) {
             exit('提示文件不能是文件夹' . PHP_EOL);
-        } elseif (!file_exists($this->_tipFile)) {
-            $tipFileObj = fopen($this->_tipFile, 'wb');
-            if (is_bool($tipFileObj)) {
+        }
+        if (!file_exists($this->_tipFile)) {
+            $tipFileObj = fopen($this->_tipFile, 'w');
+            if (\is_bool($tipFileObj)) {
                 exit('创建或打开提示文件失败' . PHP_EOL);
             }
             fwrite($tipFileObj, '');
@@ -191,25 +193,16 @@ abstract class BaseServer
     {
     }
 
-    /**
-     * @return string
-     */
-    public function getHost() : string
+    public function getHost(): string
     {
         return $this->_host;
     }
 
-    /**
-     * @return int
-     */
-    public function getPort() : int
+    public function getPort(): int
     {
         return $this->_port;
     }
 
-    /**
-     * @return string
-     */
     public static function getReqId(): string
     {
         if (ctype_alnum($_SERVER[Project::DATA_KEY_REQUEST_ID_SERVER])) {
@@ -229,8 +222,6 @@ abstract class BaseServer
 
     /**
      * 获取唯一数值
-     *
-     * @return array
      */
     public static function getUniqueNum(): array
     {
@@ -282,7 +273,7 @@ abstract class BaseServer
         if ($stopStatus && (SY_MODULE == Project::MODULE_NAME_API)) {
             $registerRes = [];
             $registerType = trim(Tool::getClientOption('-rt', false, ''));
-            if ($registerType == SyInner::SERVER_REGISTER_TYPE_NGINX) {
+            if (SyInner::SERVER_REGISTER_TYPE_NGINX == $registerType) {
                 $register = new Http();
                 $register->setHost($this->_host);
                 $register->setPort($this->_port);
@@ -290,7 +281,7 @@ abstract class BaseServer
             }
 
             if (!empty($registerRes)) {
-                if ($registerRes['code'] == 0) {
+                if (0 == $registerRes['code']) {
                     $tipStr = 'echo -e "\e[1;32m ' . $registerRes['data'] . ' \e[0m"';
                 } else {
                     $tipStr = 'echo -e "\e[1;31m ' . $registerRes['msg'] . ' \e[0m"';
@@ -309,21 +300,21 @@ abstract class BaseServer
         //清除僵尸进程
         $commandZombies = 'ps -A -o pid,ppid,stat,cmd|grep ' . SY_MODULE . '|awk \'{if(($3 == "Z") || ($3 == "z")) print $1}\'';
         $execRes = Tool::execSystemCommand($commandZombies);
-        if (($execRes['code'] == 0) && !empty($execRes['data'])) {
+        if ((0 == $execRes['code']) && !empty($execRes['data'])) {
             system('kill -9 ' . implode(' ', $execRes['data']));
         }
 
         //清除worker中断进程
         $commandWorkers = 'ps -A -o pid,ppid,stat,cmd|grep ' . SyInner::PROCESS_TYPE_WORKER . SY_MODULE . '|awk \'{if($2 == "1") print $1}\'';
         $execRes = Tool::execSystemCommand($commandWorkers);
-        if (($execRes['code'] == 0) && !empty($execRes['data'])) {
+        if ((0 == $execRes['code']) && !empty($execRes['data'])) {
             system('kill -9 ' . implode(' ', $execRes['data']));
         }
 
         //清除task中断进程
         $commandTasks = 'ps -A -o pid,ppid,stat,cmd|grep ' . SyInner::PROCESS_TYPE_TASK . SY_MODULE . '|awk \'{if($2 == "1") print $1}\'';
         $execRes = Tool::execSystemCommand($commandTasks);
-        if (($execRes['code'] == 0) && !empty($execRes['data'])) {
+        if ((0 == $execRes['code']) && !empty($execRes['data'])) {
             system('kill -9 ' . implode(' ', $execRes['data']));
         }
 
@@ -339,8 +330,8 @@ abstract class BaseServer
         $fileContent = file_get_contents($this->_tipFile);
         $startIndex = false;
         $command = 'echo -e "\e[1;31m ' . SY_MODULE . ' start status fail \e[0m"';
-        if (is_string($fileContent)) {
-            if (strlen($fileContent) > 0) {
+        if (\is_string($fileContent)) {
+            if (\strlen($fileContent) > 0) {
                 $startIndex = strpos($fileContent, 'success');
                 $command = 'echo -e "' . $fileContent . '"';
             }
@@ -348,10 +339,10 @@ abstract class BaseServer
         }
         system($command);
 
-        if ((is_int($startIndex)) && (SY_MODULE == Project::MODULE_NAME_API)) {
+        if ((\is_int($startIndex)) && (SY_MODULE == Project::MODULE_NAME_API)) {
             $registerRes = [];
             $registerType = trim(Tool::getClientOption('-rt', false, ''));
-            if ($registerType == SyInner::SERVER_REGISTER_TYPE_NGINX) {
+            if (SyInner::SERVER_REGISTER_TYPE_NGINX == $registerType) {
                 $register = new Http();
                 $register->setHost($this->_host);
                 $register->setPort($this->_port);
@@ -359,7 +350,7 @@ abstract class BaseServer
             }
 
             if (!empty($registerRes)) {
-                if ($registerRes['code'] == 0) {
+                if (0 == $registerRes['code']) {
                     $tipStr = 'echo -e "\e[1;32m ' . $registerRes['data'] . ' \e[0m"';
                 } else {
                     $tipStr = 'echo -e "\e[1;31m ' . $registerRes['msg'] . ' \e[0m"';
@@ -373,8 +364,6 @@ abstract class BaseServer
     /**
      * 启动主进程服务
      *
-     * @param \Swoole\Server $server
-     *
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Swoole\ServerException
      */
@@ -386,7 +375,7 @@ abstract class BaseServer
         $registryMap = $this->_taskEventContainer->getRegistryMap();
         foreach ($registryMap as $tag => $val) {
             $task = $this->_taskEventContainer->getObj($tag);
-            if (is_null($task)) {
+            if (null === $task) {
                 continue;
             }
 
@@ -396,12 +385,12 @@ abstract class BaseServer
             }
 
             $supportModules = $task->getSupportModules();
-            if ((count($supportModules) > 0) && (!isset($supportModules[SY_MODULE]))) {
+            if ((\count($supportModules) > 0) && (!isset($supportModules[SY_MODULE]))) {
                 continue;
             }
 
             $supportServerTypes = $task->getSupportServerTypes();
-            if ((count($supportServerTypes) > 0) && (!isset($supportServerTypes[SY_SERVER_TYPE]))) {
+            if ((\count($supportServerTypes) > 0) && (!isset($supportServerTypes[SY_SERVER_TYPE]))) {
                 continue;
             }
 
@@ -429,8 +418,7 @@ abstract class BaseServer
     /**
      * 启动工作进程
      *
-     * @param \Swoole\Server $server
-     * @param int            $workerId 进程编号
+     * @param int $workerId 进程编号
      */
     public function onWorkerStart(Server $server, $workerId)
     {
@@ -453,7 +441,7 @@ abstract class BaseServer
             @cli_set_process_title(SyInner::PROCESS_TYPE_WORKER . SY_MODULE . $this->_port);
         }
 
-        if ($workerId == 0) { //保证每一个服务只执行一次定时任务
+        if (0 == $workerId) { //保证每一个服务只执行一次定时任务
             $modules = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.modules');
             foreach (Project::$totalModuleBase as $eModuleName) {
                 $moduleData = Tool::getArrayVal($modules, $eModuleName, []);
@@ -471,8 +459,6 @@ abstract class BaseServer
 
     /**
      * 启动管理进程
-     *
-     * @param \Swoole\Server $server
      */
     public function onManagerStart(Server $server)
     {
@@ -481,8 +467,6 @@ abstract class BaseServer
 
     /**
      * 关闭服务
-     *
-     * @param \Swoole\Server $server
      */
     public function onShutdown(Server $server)
     {
@@ -491,9 +475,7 @@ abstract class BaseServer
     /**
      * 任务完成
      *
-     * @param \Swoole\Server $server
-     * @param int            $taskId
-     * @param string         $data
+     * @param int $taskId
      */
     public function onFinish(Server $server, $taskId, string $data)
     {
@@ -502,8 +484,7 @@ abstract class BaseServer
     /**
      * 工作进程退出
      *
-     * @param \Swoole\Server $server
-     * @param int            $workerId 工作进程ID
+     * @param int $workerId 工作进程ID
      */
     public function onWorkerExit(Server $server, int $workerId)
     {
@@ -521,11 +502,6 @@ abstract class BaseServer
 
     /**
      * 处理任务
-     *
-     * @param \Swoole\Server $server
-     * @param int            $taskId
-     * @param int            $fromId
-     * @param string         $data
      *
      * @throws \SyException\Mysql\MysqlException
      */
@@ -549,9 +525,9 @@ abstract class BaseServer
         $commandData = $this->_syPack->getData();
         $this->_syPack->init();
 
-        if (in_array($command, [
+        if (\in_array($command, [
             SyPack::COMMAND_TYPE_SOCKET_CLIENT_SEND_TASK_REQ,
-            SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ
+            SyPack::COMMAND_TYPE_RPC_CLIENT_SEND_TASK_REQ,
         ], true)) {
             $taskCommand = Tool::getArrayVal($commandData, 'task_command', '');
             $taskParams = Tool::getArrayVal($commandData, 'task_params', []);
@@ -563,19 +539,16 @@ abstract class BaseServer
     /**
      * 退出工作进程
      *
-     * @param \Swoole\Server $server
-     * @param int            $workerId
-     *
      * @return mixed
      */
     abstract public function onWorkerStop(Server $server, int $workerId);
+
     /**
      * 工作进程错误处理
      *
-     * @param \Swoole\Server $server
-     * @param int            $workId   进程编号
-     * @param int            $workPid  进程ID
-     * @param int            $exitCode 退出状态码
+     * @param int $workId   进程编号
+     * @param int $workPid  进程ID
+     * @param int $exitCode 退出状态码
      */
     abstract public function onWorkerError(Server $server, $workId, $workPid, $exitCode);
 
@@ -596,7 +569,7 @@ abstract class BaseServer
      * 记录耗时长的请求
      *
      * @param string       $uri       请求uri
-     * @param string|array $data      请求数据
+     * @param array|string $data      请求数据
      * @param int          $limitTime 限制时间,单位为毫秒
      */
     protected function reportLongTimeReq(string $uri, $data, int $limitTime)
@@ -605,7 +578,7 @@ abstract class BaseServer
         self::$_reqStartTime = 0;
         if ($handleTime > $limitTime) { //执行时间超过限制的请求记录到日志便于分析具体情况
             $content = 'handle req use time ' . $handleTime . ' ms,uri:' . $uri . ',data:';
-            if (is_string($data)) {
+            if (\is_string($data)) {
                 $content .= $data;
             } else {
                 $content .= Tool::jsonEncode($data, JSON_UNESCAPED_UNICODE);
@@ -617,10 +590,6 @@ abstract class BaseServer
 
     /**
      * 检测请求URI
-     *
-     * @param string $uri
-     *
-     * @return array
      */
     protected function checkRequestUri(string $uri): array
     {
@@ -631,7 +600,7 @@ abstract class BaseServer
         ];
 
         $uriRes = Tool::handleYafUri($nowUri);
-        if (strlen($uriRes) == 0) {
+        if (0 == \strlen($uriRes)) {
             $checkRes['uri'] = $nowUri;
         } else {
             $errRes = new Result();
@@ -646,16 +615,12 @@ abstract class BaseServer
     /**
      * 获取预处理函数
      *
-     * @param string $uri
-     * @param array  $frameMap
-     * @param array  $projectMap
-     *
      * @return bool|string
      */
     protected function getPreProcessFunction(string $uri, array $frameMap, array $projectMap)
     {
         $funcName = '';
-        if (strlen($uri) == 5) {
+        if (5 == \strlen($uri)) {
             $needTag = substr($uri, 1);
             $funcPrefix = '';
             if (ctype_digit($needTag)) {
@@ -665,7 +630,7 @@ abstract class BaseServer
                 $funcName = $projectMap[$uri] ?? '';
                 $funcPrefix = 'preProcessProject';
             }
-            if ((strlen($funcName) > 0) && (strpos($funcName, $funcPrefix) !== 0)) {
+            if ((\strlen($funcName) > 0) && (0 !== strpos($funcName, $funcPrefix))) {
                 $funcName = false;
             }
         }
@@ -675,8 +640,6 @@ abstract class BaseServer
 
     /**
      * 基础启动服务
-     *
-     * @param array $registerMap
      */
     protected function baseStart(array $registerMap)
     {
@@ -696,7 +659,7 @@ abstract class BaseServer
         @cli_set_process_title(SyInner::PROCESS_TYPE_MAIN . SY_MODULE . $this->_port);
 
         Dir::create(SY_ROOT . '/pidfile/');
-        if (file_put_contents($this->_pidFile, $server->master_pid) === false) {
+        if (false === file_put_contents($this->_pidFile, $server->master_pid)) {
             Log::error('write ' . SY_MODULE . ' pid file error');
         }
 
@@ -783,19 +746,17 @@ abstract class BaseServer
 
     /**
      * 设置服务端类型
-     *
-     * @param array $allowTypes
      */
     protected function setServerType(array $allowTypes)
     {
-        $projectLength = strlen(SY_PROJECT);
+        $projectLength = \strlen(SY_PROJECT);
         $serverType = Tool::getConfig('project.' . SY_ENV . SY_PROJECT . '.modules.' . substr(SY_MODULE, $projectLength) . '.type');
-        if (!in_array($serverType, $allowTypes, true)) {
+        if (!\in_array($serverType, $allowTypes, true)) {
             exit('服务端类型不支持' . PHP_EOL);
         }
-        define('SY_SERVER_TYPE', $serverType);
+        \define('SY_SERVER_TYPE', $serverType);
 
-        if ($serverType == SyInner::SERVER_TYPE_FRONT_GATE) {
+        if (SyInner::SERVER_TYPE_FRONT_GATE == $serverType) {
             $this->_configs['server']['cachenum']['wx'] = 1;
         } else {
             $this->_configs['server']['cachenum']['wx'] = (int)Tool::getArrayVal($this->_configs, 'server.cachenum.wx', 0, true);
@@ -810,24 +771,24 @@ abstract class BaseServer
         if (version_compare(PHP_VERSION, SyInner::VERSION_MIN_PHP, '<')) {
             exit('PHP版本必须大于等于' . SyInner::VERSION_MIN_PHP . PHP_EOL);
         }
-        if (!defined('SY_MODULE')) {
+        if (!\defined('SY_MODULE')) {
             exit('模块名称未定义' . PHP_EOL);
         }
-        if (!defined('SY_TOKEN')) {
+        if (!\defined('SY_TOKEN')) {
             exit('令牌未定义' . PHP_EOL);
         }
         if (!ctype_alnum(SY_TOKEN)) {
             exit('令牌不合法' . PHP_EOL);
         }
-        if (strlen(SY_TOKEN) != 8) {
+        if (8 != \strlen(SY_TOKEN)) {
             exit('令牌不合法' . PHP_EOL);
         }
-        if (!in_array(SY_ENV, SyInner::$totalEnvProject, true)) {
+        if (!\in_array(SY_ENV, SyInner::$totalEnvProject, true)) {
             exit('环境类型不合法' . PHP_EOL);
         }
 
         $os = php_uname('s');
-        if (!in_array($os, SyInner::$totalEnvSystem, true)) {
+        if (!\in_array($os, SyInner::$totalEnvSystem, true)) {
             exit('操作系统不支持' . PHP_EOL);
         }
 
@@ -846,7 +807,7 @@ abstract class BaseServer
             'runkit7',
         ];
         foreach ($extensionList as $extName) {
-            if (!extension_loaded($extName)) {
+            if (!\extension_loaded($extName)) {
                 exit('扩展' . $extName . '未加载' . PHP_EOL);
             }
         }
@@ -882,14 +843,14 @@ abstract class BaseServer
 
         foreach ($execRes['data'] as $eMac) {
             $macAddress = trim($eMac);
-            if (strlen($macAddress) == 17) {
+            if (17 == \strlen($macAddress)) {
                 self::$_uniqueToken = hash('crc32b', $macAddress . ':' . $this->_port);
 
                 break;
             }
         }
 
-        if (strlen(self::$_uniqueToken) == 0) {
+        if (0 == \strlen(self::$_uniqueToken)) {
             exit('生成唯一码失败' . PHP_EOL);
         }
     }

@@ -5,6 +5,7 @@
  * Date: 2017/8/19 0019
  * Time: 8:33
  */
+
 namespace SyServer;
 
 use Response\Result;
@@ -90,10 +91,9 @@ class RpcServer extends BaseServer
     /**
      * 处理请求
      *
-     * @param \Swoole\Server $server
-     * @param int            $fd         TCP客户端连接的唯一标识符
-     * @param int            $reactor_id Reactor线程ID
-     * @param string         $data       收到的数据内容
+     * @param int    $fd         TCP客户端连接的唯一标识符
+     * @param int    $reactor_id Reactor线程ID
+     * @param string $data       收到的数据内容
      */
     public function onReceive(Server $server, int $fd, int $reactor_id, string $data)
     {
@@ -113,8 +113,6 @@ class RpcServer extends BaseServer
 
     /**
      * 初始化请求数据
-     *
-     * @param array $data
      */
     private function initRequest(array $data)
     {
@@ -163,7 +161,7 @@ class RpcServer extends BaseServer
     private function handleApiReceive(array $data)
     {
         $uriCheckRes = $this->checkRequestUri($data['api_uri']);
-        if (strlen($uriCheckRes['error']) > 0) {
+        if (\strlen($uriCheckRes['error']) > 0) {
             return $uriCheckRes['error'];
         }
         $data['api_uri'] = $uriCheckRes['uri'];
@@ -177,9 +175,9 @@ class RpcServer extends BaseServer
         try {
             self::checkRequestCurrentLimit();
             $funcName = $this->getPreProcessFunction($data['api_uri'], $this->preProcessMapFrame, $this->preProcessMapProject);
-            if (is_string($funcName)) {
-                $result = strlen($funcName) == 0 ? $this->handleAppReqRpc($data) : $this->$funcName($data);
-                if (strlen($result) == 0) {
+            if (\is_string($funcName)) {
+                $result = 0 == \strlen($funcName) ? $this->handleAppReqRpc($data) : $this->{$funcName}($data);
+                if (0 == \strlen($result)) {
                     $error = new Result();
                     $error->setCodeMsg(ErrorCode::SWOOLE_SERVER_NO_RESPONSE_ERROR, '未设置响应数据');
                 }
@@ -197,7 +195,7 @@ class RpcServer extends BaseServer
             self::$_syServer->decr(self::$_serverToken, 'request_handling', 1);
             $this->clearRequest();
             $this->reportLongTimeReq($data['api_uri'], $data['api_params'], Project::TIME_EXPIRE_SWOOLE_CLIENT_RPC);
-            if (is_object($error)) {
+            if (\is_object($error)) {
                 $result = $error->getJson();
                 unset($error);
             }
@@ -248,9 +246,9 @@ class RpcServer extends BaseServer
 
         $resultArr = Tool::jsonDecode($result);
         $rspHeaders = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_HEADER);
-        $resultArr[Project::DATA_KEY_RESPONSE_CONTENT_HEADERS] = $rspHeaders !== false ? $rspHeaders : [];
+        $resultArr[Project::DATA_KEY_RESPONSE_CONTENT_HEADERS] = false !== $rspHeaders ? $rspHeaders : [];
         $rspCookies = Registry::get(SyInner::REGISTRY_NAME_RESPONSE_COOKIE);
-        $resultArr[Project::DATA_KEY_RESPONSE_CONTENT_COOKIES] = $rspCookies !== false ? $rspCookies : [];
+        $resultArr[Project::DATA_KEY_RESPONSE_CONTENT_COOKIES] = false !== $rspCookies ? $rspCookies : [];
 
         Registry::del(SyInner::REGISTRY_NAME_SERVICE_ERROR);
         Registry::del(SyInner::REGISTRY_NAME_RESPONSE_HEADER);
