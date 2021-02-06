@@ -1,19 +1,20 @@
 <?php
+
 namespace Swoole\Coroutine\Http2;
 
 /**
- * @since 4.5.2
+ * @since 4.6.2
  */
 class Client
 {
     /**
      * @param $host[required]
      * @param $port[optional]
-     * @param $ssl[optional]
+     * @param $open_ssl[optional]
      *
      * @return mixed
      */
-    public function __construct($host, $port = null, $ssl = null)
+    public function __construct($host, $port = null, $open_ssl = null)
     {
     }
 

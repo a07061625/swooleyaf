@@ -1,14 +1,15 @@
 <?php
+
 namespace Swoole;
 
 /**
- * @since 4.5.2
+ * @since 4.6.2
  */
 class Table
 {
     const TYPE_INT = 1;
-    const TYPE_STRING = 7;
-    const TYPE_FLOAT = 6;
+    const TYPE_STRING = 3;
+    const TYPE_FLOAT = 2;
 
     /**
      * @param $table_size[required]
@@ -86,6 +87,15 @@ class Table
      *
      * @return mixed
      */
+    public function delete($key)
+    {
+    }
+
+    /**
+     * @param $key[required]
+     *
+     * @return mixed
+     */
     public function exists($key)
     {
     }
@@ -118,6 +128,13 @@ class Table
      * @return mixed
      */
     public function decr($key, $column, $decrby = null)
+    {
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSize()
     {
     }
 

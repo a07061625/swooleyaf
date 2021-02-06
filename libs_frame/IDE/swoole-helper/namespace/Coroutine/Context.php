@@ -1,8 +1,9 @@
 <?php
+
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.5.2
+ * @since 4.6.2
  */
 class Context extends \ArrayObject
 {
@@ -17,6 +18,29 @@ class Context extends \ArrayObject
      * @return mixed
      */
     public function __construct($input = null, $flags = null, $iterator_class = null)
+    {
+    }
+
+    /**
+     * @param $serialized[required]
+     *
+     * @return mixed
+     */
+    public function __unserialize($serialized)
+    {
+    }
+
+    /**
+     * @return mixed
+     */
+    public function __serialize()
+    {
+    }
+
+    /**
+     * @return mixed
+     */
+    public function __debugInfo()
     {
     }
 
@@ -166,11 +190,11 @@ class Context extends \ArrayObject
     }
 
     /**
-     * @param $array[required]
+     * @param $input[required]
      *
      * @return mixed
      */
-    public function exchangeArray($array)
+    public function exchangeArray($input)
     {
     }
 

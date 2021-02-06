@@ -1,8 +1,9 @@
 <?php
+
 namespace Swoole\Http;
 
 /**
- * @since 4.5.2
+ * @since 4.6.2
  */
 class Response
 {
@@ -21,18 +22,9 @@ class Response
     }
 
     /**
-     * @param $name[required]
-     * @param $value[optional]
-     * @param $expires[optional]
-     * @param $path[optional]
-     * @param $domain[optional]
-     * @param $secure[optional]
-     * @param $httponly[optional]
-     * @param $samesite[optional]
-     *
      * @return mixed
      */
-    public function cookie($name, $value = null, $expires = null, $path = null, $domain = null, $secure = null, $httponly = null, $samesite = null)
+    public function isWritable()
     {
     }
 
@@ -45,10 +37,11 @@ class Response
      * @param $secure[optional]
      * @param $httponly[optional]
      * @param $samesite[optional]
+     * @param $priority[optional]
      *
      * @return mixed
      */
-    public function setCookie($name, $value = null, $expires = null, $path = null, $domain = null, $secure = null, $httponly = null, $samesite = null)
+    public function cookie($name, $value = null, $expires = null, $path = null, $domain = null, $secure = null, $httponly = null, $samesite = null, $priority = null)
     {
     }
 
@@ -61,10 +54,28 @@ class Response
      * @param $secure[optional]
      * @param $httponly[optional]
      * @param $samesite[optional]
+     * @param $priority[optional]
      *
      * @return mixed
      */
-    public function rawcookie($name, $value = null, $expires = null, $path = null, $domain = null, $secure = null, $httponly = null, $samesite = null)
+    public function setCookie($name, $value = null, $expires = null, $path = null, $domain = null, $secure = null, $httponly = null, $samesite = null, $priority = null)
+    {
+    }
+
+    /**
+     * @param $name[required]
+     * @param $value[optional]
+     * @param $expires[optional]
+     * @param $path[optional]
+     * @param $domain[optional]
+     * @param $secure[optional]
+     * @param $httponly[optional]
+     * @param $samesite[optional]
+     * @param $priority[optional]
+     *
+     * @return mixed
+     */
+    public function rawcookie($name, $value = null, $expires = null, $path = null, $domain = null, $secure = null, $httponly = null, $samesite = null, $priority = null)
     {
     }
 
@@ -91,22 +102,22 @@ class Response
     /**
      * @param $key[required]
      * @param $value[required]
-     * @param $ucwords[optional]
+     * @param $format[optional]
      *
      * @return mixed
      */
-    public function header($key, $value, $ucwords = null)
+    public function header($key, $value, $format = null)
     {
     }
 
     /**
      * @param $key[required]
      * @param $value[required]
-     * @param $ucwords[optional]
+     * @param $format[optional]
      *
      * @return mixed
      */
-    public function setHeader($key, $value, $ucwords = null)
+    public function setHeader($key, $value, $format = null)
     {
     }
 
@@ -124,6 +135,13 @@ class Response
      * @return mixed
      */
     public function ping()
+    {
+    }
+
+    /**
+     * @return mixed
+     */
+    public function goaway()
     {
     }
 

@@ -1,8 +1,9 @@
 <?php
+
 namespace Swoole;
 
 /**
- * @since 4.5.2
+ * @since 4.6.2
  */
 class Process
 {
@@ -86,7 +87,26 @@ class Process
      *
      * @return mixed
      */
-    public static function setaffinity($cpu_settings)
+    public static function setAffinity($cpu_settings)
+    {
+    }
+
+    /**
+     * @param $which[required]
+     * @param $priority[required]
+     *
+     * @return mixed
+     */
+    public function setPriority($which, $priority)
+    {
+    }
+
+    /**
+     * @param $which[required]
+     *
+     * @return mixed
+     */
+    public function getPriority($which)
     {
     }
 

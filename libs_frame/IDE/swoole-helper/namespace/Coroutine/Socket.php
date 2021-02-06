@@ -1,8 +1,9 @@
 <?php
+
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.5.2
+ * @since 4.6.2
  */
 class Socket
 {
@@ -83,6 +84,36 @@ class Socket
     }
 
     /**
+     * @param $length[optional]
+     * @param $timeout[optional]
+     *
+     * @return mixed
+     */
+    public function recvAll($length = null, $timeout = null)
+    {
+    }
+
+    /**
+     * @param $length[optional]
+     * @param $timeout[optional]
+     *
+     * @return mixed
+     */
+    public function recvLine($length = null, $timeout = null)
+    {
+    }
+
+    /**
+     * @param $length[optional]
+     * @param $timeout[optional]
+     *
+     * @return mixed
+     */
+    public function recvWithBuffer($length = null, $timeout = null)
+    {
+    }
+
+    /**
      * @param $timeout[optional]
      *
      * @return mixed
@@ -102,6 +133,46 @@ class Socket
     }
 
     /**
+     * @param $io_vector[required]
+     * @param $timeout[optional]
+     *
+     * @return mixed
+     */
+    public function readVector($io_vector, $timeout = null)
+    {
+    }
+
+    /**
+     * @param $io_vector[required]
+     * @param $timeout[optional]
+     *
+     * @return mixed
+     */
+    public function readVectorAll($io_vector, $timeout = null)
+    {
+    }
+
+    /**
+     * @param $io_vector[required]
+     * @param $timeout[optional]
+     *
+     * @return mixed
+     */
+    public function writeVector($io_vector, $timeout = null)
+    {
+    }
+
+    /**
+     * @param $io_vector[required]
+     * @param $timeout[optional]
+     *
+     * @return mixed
+     */
+    public function writeVectorAll($io_vector, $timeout = null)
+    {
+    }
+
+    /**
      * @param $filename[required]
      * @param $offset[optional]
      * @param $length[optional]
@@ -109,16 +180,6 @@ class Socket
      * @return mixed
      */
     public function sendFile($filename, $offset = null, $length = null)
-    {
-    }
-
-    /**
-     * @param $length[optional]
-     * @param $timeout[optional]
-     *
-     * @return mixed
-     */
-    public function recvAll($length = null, $timeout = null)
     {
     }
 

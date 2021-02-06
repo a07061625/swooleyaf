@@ -1,8 +1,9 @@
 <?php
+
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.5.2
+ * @since 4.6.2
  */
 class Iterator extends \ArrayIterator
 {
@@ -11,11 +12,34 @@ class Iterator extends \ArrayIterator
 
     /**
      * @param $array[optional]
-     * @param $ar_flags[optional]
+     * @param $flags[optional]
      *
      * @return mixed
      */
-    public function __construct($array = null, $ar_flags = null)
+    public function __construct($array = null, $flags = null)
+    {
+    }
+
+    /**
+     * @param $serialized[required]
+     *
+     * @return mixed
+     */
+    public function __unserialize($serialized)
+    {
+    }
+
+    /**
+     * @return mixed
+     */
+    public function __serialize()
+    {
+    }
+
+    /**
+     * @return mixed
+     */
+    public function __debugInfo()
     {
     }
 

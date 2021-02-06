@@ -1,8 +1,9 @@
 <?php
+
 namespace Swoole;
 
 /**
- * @since 4.5.2
+ * @since 4.6.2
  */
 class Server
 {
@@ -83,7 +84,6 @@ class Server
     }
 
     /**
-     *
      * 向客户端发送数据
      *
      *  * $data，发送的数据。TCP协议最大不得超过2M，UDP协议不得超过64K

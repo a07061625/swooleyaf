@@ -1,8 +1,9 @@
 <?php
+
 namespace Swoole\Redis;
 
 /**
- * @since 4.5.2
+ * @since 4.6.2
  */
 class Server extends \Swoole\Server
 {

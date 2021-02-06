@@ -1,8 +1,9 @@
 <?php
+
 namespace Swoole;
 
 /**
- * @since 4.5.2
+ * @since 4.6.2
  */
 class Coroutine
 {
@@ -31,6 +32,13 @@ class Coroutine
      * @return mixed
      */
     public static function set($options)
+    {
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getOptions()
     {
     }
 
@@ -113,6 +121,17 @@ class Coroutine
      * @return mixed
      */
     public static function getBackTrace($cid = null, $options = null, $limit = null)
+    {
+    }
+
+    /**
+     * @param $cid[optional]
+     * @param $options[optional]
+     * @param $limit[optional]
+     *
+     * @return mixed
+     */
+    public static function printBackTrace($cid = null, $options = null, $limit = null)
     {
     }
 
