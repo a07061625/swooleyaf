@@ -212,11 +212,17 @@ abstract class BaseServer
      */
     public static function getReqId(): string
     {
-        if (isset($_SERVER['SYREQ_ID'])) {
-            return $_SERVER['SYREQ_ID'];
+        if (ctype_alnum($_SERVER[Project::DATA_KEY_REQUEST_ID_SERVER])) {
+            return $_SERVER[Project::DATA_KEY_REQUEST_ID_SERVER];
         }
-        $reqId = hash('md4', Tool::getNowTime() . Tool::createNonceStr(8));
-        $_SERVER['SYREQ_ID'] = $reqId;
+
+        $headerKey = 'HTTP_' . Project::DATA_KEY_REQUEST_ID_HEADER;
+        if (ctype_alnum($_SERVER[$headerKey])) {
+            $reqId = $_SERVER[$headerKey];
+        } else {
+            $reqId = hash('md4', Tool::getNowTime() . Tool::createNonceStr(8));
+        }
+        $_SERVER[Project::DATA_KEY_REQUEST_ID_SERVER] = $reqId;
 
         return $reqId;
     }
