@@ -123,9 +123,12 @@ class RpcServer extends BaseServer
         $_COOKIE = [];
         $_FILES = [];
         $_SESSION = [];
-        $_SERVER['SYREQ_ID'] = $data['__req_id'] ?? hash('md4', Tool::getNowTime() . Tool::createNonceStr(8));
+        if (ctype_alnum($data['__req_id'])) {
+            $_SERVER[Project::DATA_KEY_REQUEST_ID_SERVER] = $data['__req_id'];
+        } else {
+            $_SERVER[Project::DATA_KEY_REQUEST_ID_SERVER] = hash('md4', Tool::getNowTime() . Tool::createNonceStr(8));
+        }
         unset($_POST[Project::DATA_KEY_SIGN_PARAMS], $_POST['__req_id']);
-        
 
         Registry::del(SyInner::REGISTRY_NAME_SERVICE_ERROR);
 
