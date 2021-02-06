@@ -58,6 +58,14 @@ class ProjectBase
      * 数据-键名-响应内容字符串字段,用于支付宝支付回调等需要返回字符串的需求
      */
     const DATA_KEY_RESPONSE_CONTENT_STRING = '_syresp_string';
+    /**
+     * 数据-键名-请求头请求ID字段
+     */
+    const DATA_KEY_REQUEST_ID_HEADER = 'sy-req-id';
+    /**
+     * 数据-键名-$_SERVER中请求ID字段
+     */
+    const DATA_KEY_REQUEST_ID_SERVER = 'SyReq-Id';
 
     /**
      * 公共-默认页数
