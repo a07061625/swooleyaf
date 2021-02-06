@@ -55,6 +55,11 @@ if (!defined('SY_TAOBAO_ENV')) {
     define('SY_TAOBAO_ENV', 'https://eco.taobao.com/router/rest');
 }
 
+//配置文件前缀
+if (!defined('SY_CONFIG_PREFIX')) {
+    define('SY_CONFIG_PREFIX', '');
+}
+
 $aliOpenConfigs = SyTool\Tool::getConfig('project.' . SY_ENV . SY_PROJECT);
 $proxyStatus = (int)SyTool\Tool::getArrayVal($aliOpenConfigs, 'aliopen.proxy.status', 0, true);
 if ($proxyStatus > 0) {
@@ -89,9 +94,4 @@ if (!defined('SY_HTTP_RSP_CODE_ERROR')) {
 //贝宝支付环境类型 product:正式环境 sandbox:沙箱环境
 if (!defined('SY_PAY_PAYPAL_ENV')) {
     define('SY_PAY_PAYPAL_ENV', 'product');
-}
-
-//配置文件前缀
-if (!defined('SY_CONFIG_PREFIX')) {
-    define('SY_CONFIG_PREFIX', '');
 }
