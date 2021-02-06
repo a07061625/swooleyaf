@@ -1,6 +1,6 @@
 <?php
 
-namespace Swoole\Coroutine\Http2\Client;
+namespace Swoole\Client;
 
 /**
  * @since 4.6.2

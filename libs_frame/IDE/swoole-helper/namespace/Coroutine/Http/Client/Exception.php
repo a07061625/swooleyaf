@@ -1,8 +1,9 @@
 <?php
+
 namespace Swoole\Coroutine\Http\Client;
 
 /**
- * @since 4.5.2
+ * @since 4.6.2
  */
 class Exception extends \Swoole\Exception
 {

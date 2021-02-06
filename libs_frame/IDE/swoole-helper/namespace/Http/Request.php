@@ -1,8 +1,9 @@
 <?php
+
 namespace Swoole\Http;
 
 /**
- * @since 4.5.2
+ * @since 4.6.2
  */
 class Request
 {
@@ -31,6 +32,38 @@ class Request
      * @return mixed
      */
     public function getData()
+    {
+    }
+
+    /**
+     * @param $options[optional]
+     *
+     * @return mixed
+     */
+    public static function create($options = null)
+    {
+    }
+
+    /**
+     * @param $data[required]
+     *
+     * @return mixed
+     */
+    public function parse($data)
+    {
+    }
+
+    /**
+     * @return mixed
+     */
+    public function isCompleted()
+    {
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMethod()
     {
     }
 }

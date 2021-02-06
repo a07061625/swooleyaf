@@ -1,8 +1,9 @@
 <?php
+
 namespace Swoole\Coroutine\Http;
 
 /**
- * @since 4.5.2
+ * @since 4.6.2
  */
 class Server
 {
@@ -47,13 +48,6 @@ class Server
     /**
      * @return mixed
      */
-    public function onAccept()
-    {
-    }
-
-    /**
-     * @return mixed
-     */
     public function start()
     {
     }
@@ -62,6 +56,13 @@ class Server
      * @return mixed
      */
     public function shutdown()
+    {
+    }
+
+    /**
+     * @return mixed
+     */
+    private function onAccept()
     {
     }
 }

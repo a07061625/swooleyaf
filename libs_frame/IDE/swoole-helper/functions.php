@@ -50,6 +50,27 @@ function swoole_coroutine_defer($callback)
 }
 
 /**
+ * @param $domain[required]
+ * @param $type[required]
+ * @param $protocol[required]
+ *
+ * @return mixed
+ */
+function swoole_coroutine_socketpair($domain, $type, $protocol)
+{
+}
+
+/**
+ * @param $count[optional]
+ * @param $sleep_time[optional]
+ *
+ * @return mixed
+ */
+function swoole_test_kernel_coroutine($count = null, $sleep_time = null)
+{
+}
+
+/**
  * @param $read_array[required]
  * @param $write_array[required]
  * @param $error_array[required]
@@ -101,6 +122,20 @@ function swoole_strerror($errno, $error_type = null)
 }
 
 function swoole_errno()
+{
+}
+
+function swoole_clear_error()
+{
+}
+
+/**
+ * @param $level[required]
+ * @param $msg[required]
+ *
+ * @return mixed
+ */
+function swoole_error_log($level, $msg)
 {
 }
 
@@ -170,7 +205,23 @@ function swoole_mime_type_exists($filename)
 {
 }
 
+function swoole_mime_type_list()
+{
+}
+
 function swoole_clear_dns_cache()
+{
+}
+
+/**
+ * @param $str[required]
+ * @param $offset[required]
+ * @param $length[optional]
+ * @param $options[optional]
+ *
+ * @return mixed
+ */
+function swoole_substr_unserialize($str, $offset, $length = null, $options = null)
 {
 }
 

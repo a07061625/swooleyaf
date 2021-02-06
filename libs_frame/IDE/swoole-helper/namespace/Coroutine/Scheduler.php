@@ -1,8 +1,9 @@
 <?php
+
 namespace Swoole\Coroutine;
 
 /**
- * @since 4.5.2
+ * @since 4.6.2
  */
 class Scheduler
 {
@@ -33,6 +34,13 @@ class Scheduler
      * @return mixed
      */
     public function set($settings)
+    {
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOptions()
     {
     }
 
