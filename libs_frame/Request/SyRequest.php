@@ -9,7 +9,6 @@ namespace Request;
 
 use Swoole\Client;
 use SyConstant\ErrorCode;
-use SyConstant\Project;
 use SyConstant\SyInner;
 use SyException\Swoole\ServerException;
 use SyLog\Log;
@@ -164,7 +163,7 @@ abstract class SyRequest
      * @param string $key 键名
      * @return bool true:存在 false:不存在
      */
-    public static function existParam(string $key)
+    public static function existParam(string $key) : bool
     {
         if ($key === null) {
             return false;
@@ -181,7 +180,6 @@ abstract class SyRequest
      * 发送同步请求
      * @param string $reqData 请求数据
      * @return bool|string
-     * @throws \SyException\Swoole\ServerException
      */
     protected function sendBaseSyncReq(string $reqData)
     {
