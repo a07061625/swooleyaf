@@ -75,7 +75,7 @@ abstract class ModuleRpc extends ModuleBase
      * @param string $uri 请求uri
      * @param array $params 请求参数数组
      * @param bool $async 是否异步 true:异步 false:同步
-     * @param callable $callback 回调函数
+     * @param callable|null $callback 回调函数
      * @return bool|string
      * @throws \SyException\Swoole\ServerException
      */
@@ -106,7 +106,7 @@ abstract class ModuleRpc extends ModuleBase
      * 发送TASK请求
      * @param string $command task任务命令
      * @param array $params 请求参数数组
-     * @param callable $callback 回调函数
+     * @param callable|null $callback 回调函数
      * @return bool|string
      * @throws \SyException\Swoole\ServerException
      */
@@ -141,7 +141,7 @@ abstract class ModuleRpc extends ModuleBase
      * 检测熔断器状态
      * @return string
      */
-    private function checkFuseState()
+    private function checkFuseState() : string
     {
         $checkRes = '';
         if ($this->fuseState == SyInner::FUSE_STATE_OPEN) {
