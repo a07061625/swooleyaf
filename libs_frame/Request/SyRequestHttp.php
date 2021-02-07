@@ -5,6 +5,7 @@
  * Date: 2017/8/22 0022
  * Time: 8:10
  */
+
 namespace Request;
 
 use Swoole\Coroutine;
@@ -17,6 +18,7 @@ class SyRequestHttp extends SyRequest
 {
     /**
      * 框架自定义http header名称
+     *
      * @var string
      */
     private $headerName = '';
@@ -40,11 +42,9 @@ class SyRequestHttp extends SyRequest
     }
 
     /**
-     * @param string $url
-     * @param callable|null $callback
      * @return bool|string
      */
-    public function sendGetReq(string $url, callable $callback = null)
+    public function sendGetReq(string $url, ?callable $callback = null)
     {
         $reqHeaderStr = HttpTool::getReqHeaderStr('GET', $url, [
             $this->headerName => SY_VERSION,
@@ -54,50 +54,48 @@ class SyRequestHttp extends SyRequest
 
         if ($this->_async) {
             return $this->sendAsyncReq($reqData, $callback);
-        } else {
-            return $this->sendSyncReq($reqData);
         }
+
+        return $this->sendSyncReq($reqData);
     }
 
     /**
-     * @param string $url
-     * @param array $params
-     * @param callable|null $callback
      * @return bool|string
      */
-    public function sendPostReq(string $url, array $params, callable $callback = null)
+    public function sendPostReq(string $url, array $params, ?callable $callback = null)
     {
         $body = empty($params) ? '' : http_build_query($params);
         $reqHeaderStr = HttpTool::getReqHeaderStr('POST', $url, [
             $this->headerName => SY_VERSION,
             'Content-Type' => 'application/x-www-form-urlencoded;charset=utf-8',
-            'Content-Length' => strlen($body),
+            'Content-Length' => \strlen($body),
         ]);
         $reqData = $reqHeaderStr . "\r\n" . $body;
 
         if ($this->_async) {
             return $this->sendAsyncReq($reqData, $callback);
-        } else {
-            return $this->sendSyncReq($reqData);
         }
+
+        return $this->sendSyncReq($reqData);
     }
 
     /**
      * 发送任务请求
-     * @param string $url 请求地址
+     *
+     * @param string $url      请求地址
      * @param string $packData 压缩后的数据字符串
-     * @param callable|null $callback
+     *
      * @return bool|string
      */
-    public function sendTaskReq(string $url, string $packData, callable $callback = null)
+    public function sendTaskReq(string $url, string $packData, ?callable $callback = null)
     {
         $body = http_build_query([
-            SyInner::SERVER_DATA_KEY_TASK => $packData
+            SyInner::SERVER_DATA_KEY_TASK => $packData,
         ]);
         $reqHeaderStr = HttpTool::getReqHeaderStr('POST', $url, [
             $this->headerName => SY_VERSION,
             'Content-Type' => 'application/x-www-form-urlencoded;charset=utf-8',
-            'Content-Length' => strlen($body),
+            'Content-Length' => \strlen($body),
         ]);
         $reqData = $reqHeaderStr . "\r\n" . $body;
 
@@ -106,27 +104,30 @@ class SyRequestHttp extends SyRequest
 
     /**
      * 发送同步请求
+     *
      * @param string $reqData 请求数据
+     *
      * @return bool|string
      */
     private function sendSyncReq(string $reqData)
     {
         $rspMsg = $this->sendBaseSyncReq($reqData);
-        if ($rspMsg === false) {
+        if (false === $rspMsg) {
             return false;
         }
 
         $rspData = HttpTool::parseResponse($rspMsg);
-        return $rspData === false ? false : $rspData['body'];
+
+        return false === $rspData ? false : $rspData['body'];
     }
 
     /**
      * 发送异步请求
-     * @param string $reqData 请求数据
-     * @param callable|null $callback 回调函数
-     * @return bool
+     *
+     * @param string        $reqData  请求数据
+     * @param null|callable $callback 回调函数
      */
-    private function sendAsyncReq(string $reqData, callable $callback = null) : bool
+    private function sendAsyncReq(string $reqData, ?callable $callback = null): bool
     {
         $asyncConfig = $this->getAsyncReqConfig();
         Coroutine::asyncReq(function (array $asyncConfig, string $reqData, ?callable $callback = null) {
@@ -142,17 +143,20 @@ class SyRequestHttp extends SyRequest
                           . ',error_msg:'
                           . socket_strerror($client->errCode);
                 Log::error($logStr);
+
                 return 1;
             }
             $client->send($reqData);
             $data = $client->recv();
             $client->close();
             $rspData = HttpTool::parseResponse($data);
-            if (is_callable($callback)) {
+            if (\is_callable($callback)) {
                 $callback($rspData['body']);
             }
+
             return 0;
         }, $asyncConfig, $reqData, $callback);
+
         return true;
     }
 }
