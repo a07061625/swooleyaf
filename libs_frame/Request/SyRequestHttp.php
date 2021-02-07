@@ -129,7 +129,7 @@ class SyRequestHttp extends SyRequest
     private function sendAsyncReq(string $reqData, callable $callback = null) : bool
     {
         $asyncConfig = $this->getAsyncReqConfig();
-        Coroutine::create(function (array $asyncConfig, string $reqData, ?callable $callback = null) {
+        Coroutine::asyncReq(function (array $asyncConfig, string $reqData, ?callable $callback = null) {
             $client = new Coroutine\Client(SWOOLE_SOCK_TCP);
             $client->set($asyncConfig['client']);
             if (!$client->connect($asyncConfig['request']['host'], $asyncConfig['request']['port'], $asyncConfig['request']['timeout'] / 1000)) {

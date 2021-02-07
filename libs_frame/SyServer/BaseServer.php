@@ -156,7 +156,7 @@ abstract class BaseServer
         $execRes = Tool::execSystemCommand('cat /proc/cpuinfo | grep "processor" | wc -l');
         $this->_configs['swoole']['reactor_num'] = (int)(2 * $execRes['data'][0]);
 
-        $taskNum = isset($this->_configs['swoole']['task_worker_num']) ? (int)$this->_configs['swoole']['task_worker_num'] : 0;
+        $taskNum = (int)($this->_configs['swoole']['task_worker_num'] ?? 0);
         if ($taskNum < 2) {
             exit('Task进程的数量必须大于等于2' . PHP_EOL);
         }
@@ -182,7 +182,8 @@ abstract class BaseServer
         $this->_taskEventContainer = new TaskContainer();
 
         //生成服务唯一标识
-        self::$_serverToken = hash('crc32b', $this->_configs['server']['host'] . ':' . $this->_configs['server']['port']);
+        $tokenStr = $this->_configs['server']['host'] . ':' . $this->_configs['server']['port'];
+        self::$_serverToken = hash('crc32b', $tokenStr);
         $this->createUniqueToken();
 
         //设置日志目录
@@ -298,21 +299,27 @@ abstract class BaseServer
     public function killZombies()
     {
         //清除僵尸进程
-        $commandZombies = 'ps -A -o pid,ppid,stat,cmd|grep ' . SY_MODULE . '|awk \'{if(($3 == "Z") || ($3 == "z")) print $1}\'';
+        $commandZombies = 'ps -A -o pid,ppid,stat,cmd|grep '
+                          . SY_MODULE
+                          . '|awk \'{if(($3 == "Z") || ($3 == "z")) print $1}\'';
         $execRes = Tool::execSystemCommand($commandZombies);
         if ((0 == $execRes['code']) && !empty($execRes['data'])) {
             system('kill -9 ' . implode(' ', $execRes['data']));
         }
 
         //清除worker中断进程
-        $commandWorkers = 'ps -A -o pid,ppid,stat,cmd|grep ' . SyInner::PROCESS_TYPE_WORKER . SY_MODULE . '|awk \'{if($2 == "1") print $1}\'';
+        $commandWorkers = 'ps -A -o pid,ppid,stat,cmd|grep '
+                          . SyInner::PROCESS_TYPE_WORKER . SY_MODULE
+                          . '|awk \'{if($2 == "1") print $1}\'';
         $execRes = Tool::execSystemCommand($commandWorkers);
         if ((0 == $execRes['code']) && !empty($execRes['data'])) {
             system('kill -9 ' . implode(' ', $execRes['data']));
         }
 
         //清除task中断进程
-        $commandTasks = 'ps -A -o pid,ppid,stat,cmd|grep ' . SyInner::PROCESS_TYPE_TASK . SY_MODULE . '|awk \'{if($2 == "1") print $1}\'';
+        $commandTasks = 'ps -A -o pid,ppid,stat,cmd|grep '
+                        . SyInner::PROCESS_TYPE_TASK . SY_MODULE
+                        . '|awk \'{if($2 == "1") print $1}\'';
         $execRes = Tool::execSystemCommand($commandTasks);
         if ((0 == $execRes['code']) && !empty($execRes['data'])) {
             system('kill -9 ' . implode(' ', $execRes['data']));
@@ -363,7 +370,7 @@ abstract class BaseServer
 
     /**
      * 启动主进程服务
-     *
+     * @param \Swoole\Server $server 服务进程
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Swoole\ServerException
      */
@@ -417,7 +424,7 @@ abstract class BaseServer
 
     /**
      * 启动工作进程
-     *
+     * @param \Swoole\Server $server 服务进程
      * @param int $workerId 进程编号
      */
     public function onWorkerStart(Server $server, $workerId)
@@ -459,6 +466,7 @@ abstract class BaseServer
 
     /**
      * 启动管理进程
+     * @param \Swoole\Server $server 服务进程
      */
     public function onManagerStart(Server $server)
     {
@@ -467,6 +475,7 @@ abstract class BaseServer
 
     /**
      * 关闭服务
+     * @param \Swoole\Server $server 服务进程
      */
     public function onShutdown(Server $server)
     {
@@ -474,8 +483,9 @@ abstract class BaseServer
 
     /**
      * 任务完成
-     *
+     * @param \Swoole\Server $server 服务进程
      * @param int $taskId
+     * @param string $data
      */
     public function onFinish(Server $server, $taskId, string $data)
     {
@@ -483,7 +493,7 @@ abstract class BaseServer
 
     /**
      * 工作进程退出
-     *
+     * @param \Swoole\Server $server 服务进程
      * @param int $workerId 工作进程ID
      */
     public function onWorkerExit(Server $server, int $workerId)
@@ -502,7 +512,10 @@ abstract class BaseServer
 
     /**
      * 处理任务
-     *
+     * @param \Swoole\Server $server 服务进程
+     * @param int $taskId 任务ID
+     * @param int $fromId 来源ID
+     * @param string $data 任务数据
      * @throws \SyException\Mysql\MysqlException
      */
     public function onTask(Server $server, int $taskId, int $fromId, string $data)
@@ -538,16 +551,17 @@ abstract class BaseServer
 
     /**
      * 退出工作进程
-     *
+     * @param \Swoole\Server $server 服务进程
+     * @param int $workerId 进程ID
      * @return mixed
      */
     abstract public function onWorkerStop(Server $server, int $workerId);
 
     /**
      * 工作进程错误处理
-     *
-     * @param int $workId   进程编号
-     * @param int $workPid  进程ID
+     * @param \Swoole\Server $server 服务进程
+     * @param int $workId 进程编号
+     * @param int $workPid 进程ID
      * @param int $exitCode 退出状态码
      */
     abstract public function onWorkerError(Server $server, $workId, $workPid, $exitCode);
@@ -590,6 +604,8 @@ abstract class BaseServer
 
     /**
      * 检测请求URI
+     * @param string $uri 请求URI
+     * @return array 检测结果
      */
     protected function checkRequestUri(string $uri): array
     {
@@ -614,8 +630,10 @@ abstract class BaseServer
 
     /**
      * 获取预处理函数
-     *
-     * @return bool|string
+     * @param string $uri uri
+     * @param array $frameMap 框架处理映射
+     * @param array $projectMap 项目处理映射
+     * @return bool|string 结果
      */
     protected function getPreProcessFunction(string $uri, array $frameMap, array $projectMap)
     {
@@ -640,6 +658,7 @@ abstract class BaseServer
 
     /**
      * 基础启动服务
+     * @param array $registerMap 注册列表
      */
     protected function baseStart(array $registerMap)
     {
@@ -716,19 +735,32 @@ abstract class BaseServer
 
         $errCode = $server->getLastError();
         if ($errCode > 0) {
-            Log::error('swoole work stop,workId=' . $workId . ',errorCode=' . $errCode . ',errorMsg=' . print_r(error_get_last(), true));
+            $logStr = 'swoole work stop,workId='
+                      . $workId
+                      . ',errorCode='
+                      . $errCode
+                      . ',errorMsg='
+                      . print_r(error_get_last(), true);
+            Log::error($logStr);
         }
     }
 
     protected function basicWorkError(Server $server, $workId, $workPid, $exitCode)
     {
         if ($exitCode > 0) {
-            $msg = 'swoole work error. work_id=' . $workId . '|work_pid=' . $workPid . '|exit_code=' . $exitCode . '|err_msg=' . $server->getLastError();
+            $msg = 'swoole work error. work_id='
+                   . $workId
+                   . '|work_pid='
+                   . $workPid
+                   . '|exit_code='
+                   . $exitCode
+                   . '|err_msg='
+                   . $server->getLastError();
             Log::error($msg);
         }
     }
 
-    protected function handleReqExceptionByFrame(\Throwable $e)
+    protected function handleReqExceptionByFrame(\Throwable $e) : Result
     {
         if (!($e instanceof ValidatorException)) {
             Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
@@ -746,6 +778,7 @@ abstract class BaseServer
 
     /**
      * 设置服务端类型
+     * @param array $allowTypes 支持类型列表
      */
     protected function setServerType(array $allowTypes)
     {
