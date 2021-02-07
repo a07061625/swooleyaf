@@ -40,7 +40,7 @@ abstract class BaseServer
     /**
      * 请求服务对象
      *
-     * @var \Swoole\WebSocket\Server|\Swoole\Server
+     * @var \Swoole\Server|\Swoole\WebSocket\Server
      */
     protected $_server;
     /**
@@ -80,7 +80,7 @@ abstract class BaseServer
      */
     protected $_configs = [];
     /**
-     * @var \SyTool\SyPack|null
+     * @var null|\SyTool\SyPack
      */
     protected $_syPack;
     /**
@@ -370,7 +370,9 @@ abstract class BaseServer
 
     /**
      * 启动主进程服务
+     *
      * @param \Swoole\Server $server 服务进程
+     *
      * @throws \SyException\Common\CheckException
      * @throws \SyException\Swoole\ServerException
      */
@@ -424,8 +426,9 @@ abstract class BaseServer
 
     /**
      * 启动工作进程
-     * @param \Swoole\Server $server 服务进程
-     * @param int $workerId 进程编号
+     *
+     * @param \Swoole\Server $server   服务进程
+     * @param int            $workerId 进程编号
      */
     public function onWorkerStart(Server $server, $workerId)
     {
@@ -466,6 +469,7 @@ abstract class BaseServer
 
     /**
      * 启动管理进程
+     *
      * @param \Swoole\Server $server 服务进程
      */
     public function onManagerStart(Server $server)
@@ -475,6 +479,7 @@ abstract class BaseServer
 
     /**
      * 关闭服务
+     *
      * @param \Swoole\Server $server 服务进程
      */
     public function onShutdown(Server $server)
@@ -483,9 +488,9 @@ abstract class BaseServer
 
     /**
      * 任务完成
+     *
      * @param \Swoole\Server $server 服务进程
-     * @param int $taskId
-     * @param string $data
+     * @param int            $taskId
      */
     public function onFinish(Server $server, $taskId, string $data)
     {
@@ -493,8 +498,9 @@ abstract class BaseServer
 
     /**
      * 工作进程退出
-     * @param \Swoole\Server $server 服务进程
-     * @param int $workerId 工作进程ID
+     *
+     * @param \Swoole\Server $server   服务进程
+     * @param int            $workerId 工作进程ID
      */
     public function onWorkerExit(Server $server, int $workerId)
     {
@@ -512,10 +518,12 @@ abstract class BaseServer
 
     /**
      * 处理任务
+     *
      * @param \Swoole\Server $server 服务进程
-     * @param int $taskId 任务ID
-     * @param int $fromId 来源ID
-     * @param string $data 任务数据
+     * @param int            $taskId 任务ID
+     * @param int            $fromId 来源ID
+     * @param string         $data   任务数据
+     *
      * @throws \SyException\Mysql\MysqlException
      */
     public function onTask(Server $server, int $taskId, int $fromId, string $data)
@@ -551,18 +559,21 @@ abstract class BaseServer
 
     /**
      * 退出工作进程
-     * @param \Swoole\Server $server 服务进程
-     * @param int $workerId 进程ID
+     *
+     * @param \Swoole\Server $server   服务进程
+     * @param int            $workerId 进程ID
+     *
      * @return mixed
      */
     abstract public function onWorkerStop(Server $server, int $workerId);
 
     /**
      * 工作进程错误处理
-     * @param \Swoole\Server $server 服务进程
-     * @param int $workId 进程编号
-     * @param int $workPid 进程ID
-     * @param int $exitCode 退出状态码
+     *
+     * @param \Swoole\Server $server   服务进程
+     * @param int            $workId   进程编号
+     * @param int            $workPid  进程ID
+     * @param int            $exitCode 退出状态码
      */
     abstract public function onWorkerError(Server $server, $workId, $workPid, $exitCode);
 
@@ -604,7 +615,9 @@ abstract class BaseServer
 
     /**
      * 检测请求URI
+     *
      * @param string $uri 请求URI
+     *
      * @return array 检测结果
      */
     protected function checkRequestUri(string $uri): array
@@ -630,9 +643,11 @@ abstract class BaseServer
 
     /**
      * 获取预处理函数
-     * @param string $uri uri
-     * @param array $frameMap 框架处理映射
-     * @param array $projectMap 项目处理映射
+     *
+     * @param string $uri        uri
+     * @param array  $frameMap   框架处理映射
+     * @param array  $projectMap 项目处理映射
+     *
      * @return bool|string 结果
      */
     protected function getPreProcessFunction(string $uri, array $frameMap, array $projectMap)
@@ -658,6 +673,7 @@ abstract class BaseServer
 
     /**
      * 基础启动服务
+     *
      * @param array $registerMap 注册列表
      */
     protected function baseStart(array $registerMap)
@@ -760,7 +776,7 @@ abstract class BaseServer
         }
     }
 
-    protected function handleReqExceptionByFrame(\Throwable $e) : Result
+    protected function handleReqExceptionByFrame(\Throwable $e): Result
     {
         if (!($e instanceof ValidatorException)) {
             Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
@@ -778,6 +794,7 @@ abstract class BaseServer
 
     /**
      * 设置服务端类型
+     *
      * @param array $allowTypes 支持类型列表
      */
     protected function setServerType(array $allowTypes)
