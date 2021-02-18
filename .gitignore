@@ -1,6 +1,8 @@
 .idea/
 .vscode/
 test/
+**/application/views/cache_compile/
+**/application/views/cache/
 tipfile/*.txt
 pidfile/*.pid
 .php_cs.cache
