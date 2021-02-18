@@ -5,11 +5,11 @@
  * Date: 2017/8/22 0022
  * Time: 8:09
  */
+
 namespace Request;
 
 use Swoole\Client;
 use SyConstant\ErrorCode;
-use SyConstant\Project;
 use SyConstant\SyInner;
 use SyException\Swoole\ServerException;
 use SyLog\Log;
@@ -19,26 +19,31 @@ abstract class SyRequest
 {
     /**
      * 请求主机地址
+     *
      * @var string
      */
     protected $_host = '';
     /**
      * 请求端口
+     *
      * @var int
      */
     protected $_port = 0;
     /**
      * 异步标识 true:异步 false:同步
+     *
      * @var bool
      */
     protected $_async = false;
     /**
      * 超时时间，单位为毫秒
+     *
      * @var int
      */
     protected $_timeout = 0;
     /**
      * 客户端配置数组
+     *
      * @var array
      */
     protected $_clientConfigs = [];
@@ -47,37 +52,29 @@ abstract class SyRequest
     {
     }
 
-    /**
-     * @return string
-     */
-    public function getHost() : string
+    public function getHost(): string
     {
         return $this->_host;
     }
 
     /**
-     * @param string $host
      * @throws \SyException\Swoole\ServerException
      */
     public function setHost(string $host)
     {
-        if (strlen($host) > 0) {
+        if (\strlen($host) > 0) {
             $this->_host = $host;
         } else {
             throw new ServerException('域名不合法', ErrorCode::SWOOLE_SERVER_PARAM_ERROR);
         }
     }
 
-    /**
-     * @return int
-     */
-    public function getPort() : int
+    public function getPort(): int
     {
         return $this->_port;
     }
 
     /**
-     * @param int $port
      * @throws \SyException\Swoole\ServerException
      */
     public function setPort(int $port)
@@ -89,32 +86,24 @@ abstract class SyRequest
         }
     }
 
-    /**
-     * @param bool $async
-     */
     public function setAsync(bool $async)
     {
         $this->_async = $async;
     }
 
-    /**
-     * @return bool
-     */
-    public function isAsync() : bool
+    public function isAsync(): bool
     {
         return $this->_async;
     }
 
-    /**
-     * @return int
-     */
-    public function getTimeout() : int
+    public function getTimeout(): int
     {
         return $this->_timeout;
     }
 
     /**
      * @param int $timeout 超时时间,单位为毫秒
+     *
      * @throws \SyException\Swoole\ServerException
      */
     public function setTimeout(int $timeout)
@@ -131,7 +120,7 @@ abstract class SyRequest
         $this->_host = '';
         $this->_async = false;
         $this->_timeout = 3000;
-        if ($protocol == 'http') {
+        if ('http' == $protocol) {
             $this->_port = 80;
         } else {
             $this->_port = 0;
@@ -140,13 +129,15 @@ abstract class SyRequest
 
     /**
      * 获取请求参数
-     * @param mixed $key 键名
+     *
+     * @param mixed $key     键名
      * @param mixed $default 默认值
+     *
      * @return array|mixed
      */
-    public static function getParams(string $key = null, $default = null)
+    public static function getParams(?string $key = null, $default = null)
     {
-        if ($key === null) {
+        if (null === $key) {
             $val = array_merge($_GET, $_POST);
         } elseif (isset($_GET[$key])) {
             $val = $_GET[$key];
@@ -161,33 +152,38 @@ abstract class SyRequest
 
     /**
      * 请求参数是否存在
+     *
      * @param string $key 键名
+     *
      * @return bool true:存在 false:不存在
      */
-    public static function existParam(string $key)
+    public static function existParam(string $key): bool
     {
-        if ($key === null) {
-            return false;
-        } elseif (isset($_GET[$key])) {
-            return true;
-        } elseif (isset($_POST[$key])) {
-            return true;
-        } else {
+        if (null === $key) {
             return false;
         }
+        if (isset($_GET[$key])) {
+            return true;
+        }
+        if (isset($_POST[$key])) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
      * 发送同步请求
+     *
      * @param string $reqData 请求数据
+     *
      * @return bool|string
-     * @throws \SyException\Swoole\ServerException
      */
     protected function sendBaseSyncReq(string $reqData)
     {
         $rspMsg = false;
         $connectTag = false;
-        $dataLength = strlen($reqData);
+        $dataLength = \strlen($reqData);
         //为了处理Resource temporarily unavailable [11]问题,循环三次发送
         $partMsg = ' sync address ' . $this->_host . ':' . $this->_port . ' fail';
         $loopNum = 3;
@@ -196,12 +192,13 @@ abstract class SyRequest
                 $client = new Client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_SYNC);
                 $client->set($this->_clientConfigs);
                 $client->connect($this->_host, $this->_port, $this->_timeout / 1000);
-                if ($client->errCode == 0) {
+                if (0 == $client->errCode) {
                     $connectTag = true;
                 } else {
                     $errMsg = 'connect' . $partMsg .
                               ',error_code:' . $client->errCode .
                               ',error_msg:' . socket_strerror($client->errCode);
+
                     throw new ServerException($errMsg, ErrorCode::SWOOLE_SERVER_REQUEST_FAIL);
                 }
 
@@ -210,10 +207,12 @@ abstract class SyRequest
                     $errMsg = 'send data to' . $partMsg .
                               ',error_code:' . $client->errCode .
                               ',error_msg:' . socket_strerror($client->errCode);
+
                     throw new ServerException($errMsg, ErrorCode::SWOOLE_SERVER_REQUEST_FAIL);
                 }
                 if ($sendLength != $dataLength) {
                     $errMsg = 'send data to' . $partMsg . ',error_msg: lose some data';
+
                     throw new ServerException($errMsg, ErrorCode::SWOOLE_SERVER_REQUEST_FAIL);
                 }
 
@@ -222,6 +221,7 @@ abstract class SyRequest
                     $errMsg = 'get response from' . $partMsg .
                               ',error_code:' . $client->errCode .
                               ',error_msg:' . socket_strerror($client->errCode);
+
                     throw new ServerException($errMsg, ErrorCode::SWOOLE_SERVER_REQUEST_FAIL);
                 }
             } catch (\Exception $e) {
@@ -234,11 +234,11 @@ abstract class SyRequest
                     $connectTag = false;
                 }
             }
-            if ($rspMsg !== false) {
+            if (false !== $rspMsg) {
                 break;
             }
 
-            $loopNum--;
+            --$loopNum;
         }
 
         return $rspMsg;
@@ -246,9 +246,8 @@ abstract class SyRequest
 
     /**
      * 获取异步请求配置
-     * @return array
      */
-    protected function getAsyncReqConfig() : array
+    protected function getAsyncReqConfig(): array
     {
         return [
             'request' => [
