@@ -1,4 +1,6 @@
 .idea/
+**/application/views/cache_compile/
+**/application/views/cache/
 tipfile/*.txt
 pidfile/*.pid
 .php_cs.cache
