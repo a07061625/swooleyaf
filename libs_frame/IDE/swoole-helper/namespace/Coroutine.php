@@ -13,7 +13,7 @@ class Coroutine
      *
      * @return mixed
      */
-    public static function create($func, $params = null)
+    public static function create($func, ...$params)
     {
     }
 
