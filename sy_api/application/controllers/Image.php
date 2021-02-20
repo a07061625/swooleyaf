@@ -62,7 +62,7 @@ class ImageController extends CommonController
      * @SyFilter-{"field": "session_id","explain": "令牌标识","type": "string","rules": {"required": 1,"min": 1,"max": 150}}
      * @SyFilter-{"field": "image_width","explain": "图片宽度","type": "int","rules": {"required": 1,"min": 50,"max": 150}}
      * @SyFilter-{"field": "image_height","explain": "图片高度","type": "int","rules": {"required": 1,"min": 20,"max": 80}}
-     * @apiSuccess {string} Body 图片字节流
+     * @apiSuccess {String} Body 图片字节流
      * @apiUse ResponseFail
      */
     public function createCodeImageAction()

@@ -21,10 +21,10 @@ class WxOpenController extends CommonController
      * @SyFilter-{"field": "msg_signature","explain": "消息签名","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "encrypt_type","explain": "加密方式","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "timestamp","explain": "时间戳","type": "string","rules": {"required": 1,"min": 1}}
-     * @apiSuccess WxOpenSuccess 请求失败
+     * @apiSuccess {String} WxOpenSuccess 请求失败
      * @apiSuccessExample success:
      *     success
-     * @apiSuccess WxOpenFail 请求失败
+     * @apiSuccess {String} WxOpenFail 请求失败
      * @apiSuccessExample fail:
      *     fail
      */
@@ -57,10 +57,10 @@ class WxOpenController extends CommonController
      * @SyFilter-{"field": "msg_signature","explain": "消息签名","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "encrypt_type","explain": "加密方式","type": "string","rules": {"required": 1,"min": 1}}
      * @SyFilter-{"field": "timestamp","explain": "时间戳","type": "string","rules": {"required": 1,"min": 1}}
-     * @apiSuccess WxOpenSuccess 请求失败
+     * @apiSuccess {String} WxOpenSuccess 请求失败
      * @apiSuccessExample success:
      *     <xml><ToUserName>fafasdf</ToUserName><Encrypt>dfdsfaf</Encrypt></xml>
-     * @apiSuccess WxOpenFail 请求失败
+     * @apiSuccess {String} WxOpenFail 请求失败
      * @apiSuccessExample fail:
      *     fail
      */

@@ -91,10 +91,10 @@ class PayController extends CommonController
      * @apiDescription 处理支付宝付款异步通知消息
      * @apiGroup Pay
      * @SyFilter-{"field": "__symanager","explain": "接口管理","type": "string","rules": {"sign": 0}}
-     * @apiSuccess HandleSuccess 处理成功
+     * @apiSuccess {String} HandleSuccess 处理成功
      * @apiSuccessExample success:
      *     success
-     * @apiSuccess HandleFail 处理失败
+     * @apiSuccess {String} HandleFail 处理失败
      * @apiSuccessExample fail:
      *     fail
      */
@@ -123,13 +123,13 @@ class PayController extends CommonController
      * @apiParam {string} url 同步回跳URL地址
      * @SyFilter-{"field": "__symanager","explain": "接口管理","type": "string","rules": {"sign": 0}}
      * @SyFilter-{"field": "url","explain": "同步回跳URL地址","type": "string","rules": {"required": 1,"url": 1}}
-     * @apiSuccess HandleSuccess 处理成功
+     * @apiSuccess {String} HandleSuccess 处理成功
      * @apiSuccessExample success:
      *     HTTP/1.1 302
      *     {
      *         "Location": "http://www.baidu.com"
      *     }
-     * @apiSuccess HandleFail 处理失败
+     * @apiSuccess {String} HandleFail 处理失败
      * @apiSuccessExample fail:
      *     跳转地址不正确
      */
@@ -151,10 +151,10 @@ class PayController extends CommonController
      * @apiDescription 处理支付宝退款异步通知消息
      * @apiGroup Pay
      * @SyFilter-{"field": "__symanager","explain": "接口管理","type": "string","rules": {"sign": 0}}
-     * @apiSuccess HandleSuccess 处理成功
+     * @apiSuccess {String} HandleSuccess 处理成功
      * @apiSuccessExample success:
      *     success
-     * @apiSuccess HandleFail 处理失败
+     * @apiSuccess {String} HandleFail 处理失败
      * @apiSuccessExample fail:
      *     fail
      */

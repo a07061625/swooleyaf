@@ -25,7 +25,7 @@ class ImageController extends CommonController
      * @SyFilter-{"field": "error_level","explain": "容错级别","type": "int","rules": {"min": 0,"max": 3}}
      * @SyFilter-{"field": "image_size","explain": "图片大小","type": "int","rules": {"min": 1,"max": 10}}
      * @SyFilter-{"field": "margin_size","explain": "外边框间隙","type": "int","rules": {"min": 0,"max": 200}}
-     * @apiSuccess {string} Body 图片字节流
+     * @apiSuccess {String} Body 图片字节流
      * @apiUse ResponseFail
      */
     public function createQrImageAction()
