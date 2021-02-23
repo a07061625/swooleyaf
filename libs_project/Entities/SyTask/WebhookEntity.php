@@ -1,4 +1,5 @@
 <?php
+
 namespace Entities\SyTask;
 
 use DB\Entities\MysqlEntity;
@@ -6,7 +7,6 @@ use DB\Entities\MysqlEntity;
 class WebhookEntity extends MysqlEntity
 {
     /**
-     *
      * @var int
      */
     public $id;

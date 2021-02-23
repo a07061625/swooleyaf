@@ -5,6 +5,7 @@
  * Date: 2018-3-10
  * Time: 21:47
  */
+
 namespace Factories;
 
 use Entities\SyTask\AliconfigPayEntity;
@@ -32,6 +33,7 @@ class SyTaskMysqlFactory
     {
         return new TaskBaseEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -41,6 +43,7 @@ class SyTaskMysqlFactory
     {
         return new TaskLogEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -50,6 +53,7 @@ class SyTaskMysqlFactory
     {
         return new WxopenAuthorizerEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -59,6 +63,7 @@ class SyTaskMysqlFactory
     {
         return new WxproviderCorpAuthorizerEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -68,6 +73,7 @@ class SyTaskMysqlFactory
     {
         return new WxconfigBaseEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -77,6 +83,7 @@ class SyTaskMysqlFactory
     {
         return new WxconfigAccountEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -86,6 +93,7 @@ class SyTaskMysqlFactory
     {
         return new WxconfigCorpEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -95,6 +103,7 @@ class SyTaskMysqlFactory
     {
         return new AliconfigPayEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -104,6 +113,7 @@ class SyTaskMysqlFactory
     {
         return new DingtalkConfigCorpEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
