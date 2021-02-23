@@ -11,16 +11,16 @@ use DB\Models\MysqlModel;
 
 class MysqlContainer extends BaseContainer
 {
-    public function __construct(string $dbName, string $tableName, string $primaryKey = 'id')
+    public function __construct(string $dbTag, string $tableName, string $primaryKey = 'id')
     {
         parent::__construct();
-        $this->_model = new MysqlModel($dbName, $tableName, $primaryKey);
+        $this->_model = new MysqlModel($dbTag, $tableName, $primaryKey);
     }
 
     /**
      * @return \DB\Models\MysqlModel
      */
-    public function getModel()
+    public function getModel() : MysqlModel
     {
         return $this->_model;
     }

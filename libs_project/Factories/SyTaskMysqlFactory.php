@@ -23,84 +23,84 @@ class SyTaskMysqlFactory
     use SimpleTrait;
 
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyTask\TaskBaseEntity
      */
-    public static function getTaskBaseEntity(string $dbName = '')
+    public static function getTaskBaseEntity(string $dbTag = '')
     {
-        return new TaskBaseEntity($dbName);
+        return new TaskBaseEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyTask\TaskLogEntity
      */
-    public static function getTaskLogEntity(string $dbName = '')
+    public static function getTaskLogEntity(string $dbTag = '')
     {
-        return new TaskLogEntity($dbName);
+        return new TaskLogEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyTask\WxopenAuthorizerEntity
      */
-    public static function getWxopenAuthorizerEntity(string $dbName = '')
+    public static function getWxopenAuthorizerEntity(string $dbTag = '')
     {
-        return new WxopenAuthorizerEntity($dbName);
+        return new WxopenAuthorizerEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyTask\WxproviderCorpAuthorizerEntity
      */
-    public static function getWxproviderCorpAuthorizerEntity(string $dbName = '')
+    public static function getWxproviderCorpAuthorizerEntity(string $dbTag = '')
     {
-        return new WxproviderCorpAuthorizerEntity($dbName);
+        return new WxproviderCorpAuthorizerEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyTask\WxconfigBaseEntity
      */
-    public static function getWxconfigBaseEntity(string $dbName = '')
+    public static function getWxconfigBaseEntity(string $dbTag = '')
     {
-        return new WxconfigBaseEntity($dbName);
+        return new WxconfigBaseEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyTask\WxconfigAccountEntity
      */
-    public static function getWxconfigShopEntity(string $dbName = '')
+    public static function getWxconfigShopEntity(string $dbTag = '')
     {
-        return new WxconfigAccountEntity($dbName);
+        return new WxconfigAccountEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyTask\WxconfigCorpEntity
      */
-    public static function getWxconfigCorpEntity(string $dbName = '')
+    public static function getWxconfigCorpEntity(string $dbTag = '')
     {
-        return new WxconfigCorpEntity($dbName);
+        return new WxconfigCorpEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyTask\AliconfigPayEntity
      */
-    public static function getAliconfigPayEntity(string $dbName = '')
+    public static function getAliconfigPayEntity(string $dbTag = '')
     {
-        return new AliconfigPayEntity($dbName);
+        return new AliconfigPayEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyTask\DingtalkConfigCorpEntity
      */
-    public static function getDingtalkConfigCorpEntity(string $dbName = '')
+    public static function getDingtalkConfigCorpEntity(string $dbTag = '')
     {
-        return new DingtalkConfigCorpEntity($dbName);
+        return new DingtalkConfigCorpEntity($dbTag);
     }
 }
