@@ -1,4 +1,5 @@
 <?php
+
 namespace Entities\SyBase;
 
 use DB\Entities\MysqlEntity;
@@ -6,7 +7,6 @@ use DB\Entities\MysqlEntity;
 class WxconfigBaseEntity extends MysqlEntity
 {
     /**
-     *
      * @var int
      */
     public $id;

@@ -5,6 +5,7 @@
  * Date: 2018-3-10
  * Time: 21:47
  */
+
 namespace Factories;
 
 use Entities\SyBase\AliconfigPayEntity;
@@ -51,6 +52,7 @@ class SyBaseMysqlFactory
     {
         return new AttachmentBaseEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -60,6 +62,7 @@ class SyBaseMysqlFactory
     {
         return new AttachmentReferEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -69,6 +72,7 @@ class SyBaseMysqlFactory
     {
         return new ImBaseEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -78,6 +82,7 @@ class SyBaseMysqlFactory
     {
         return new LogModuleEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -87,6 +92,7 @@ class SyBaseMysqlFactory
     {
         return new PayHistoryEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -96,6 +102,7 @@ class SyBaseMysqlFactory
     {
         return new PermissionBaseEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -105,6 +112,7 @@ class SyBaseMysqlFactory
     {
         return new RefundBaseEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -114,6 +122,7 @@ class SyBaseMysqlFactory
     {
         return new RefundHistoryEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -123,6 +132,7 @@ class SyBaseMysqlFactory
     {
         return new SmsRecordEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -132,6 +142,7 @@ class SyBaseMysqlFactory
     {
         return new TimedTaskEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -141,6 +152,7 @@ class SyBaseMysqlFactory
     {
         return new UserBaseEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -150,6 +162,7 @@ class SyBaseMysqlFactory
     {
         return new UserLoginHistoryEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -159,6 +172,7 @@ class SyBaseMysqlFactory
     {
         return new UserMoneyEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -168,6 +182,7 @@ class SyBaseMysqlFactory
     {
         return new UserMoneyHistoryEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -177,6 +192,7 @@ class SyBaseMysqlFactory
     {
         return new UserRoleEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -186,6 +202,7 @@ class SyBaseMysqlFactory
     {
         return new WithdrawBaseEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -195,6 +212,7 @@ class SyBaseMysqlFactory
     {
         return new WithdrawHistoryEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -204,6 +222,7 @@ class SyBaseMysqlFactory
     {
         return new WxopenAuthorizerEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -213,6 +232,7 @@ class SyBaseMysqlFactory
     {
         return new WxproviderCorpAuthorizerEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -222,6 +242,7 @@ class SyBaseMysqlFactory
     {
         return new RegionBaseEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -231,6 +252,7 @@ class SyBaseMysqlFactory
     {
         return new RoleBaseEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -240,6 +262,7 @@ class SyBaseMysqlFactory
     {
         return new RolePermissionEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -249,6 +272,7 @@ class SyBaseMysqlFactory
     {
         return new WxconfigBaseEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -258,6 +282,7 @@ class SyBaseMysqlFactory
     {
         return new WxconfigAccountEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -267,6 +292,7 @@ class SyBaseMysqlFactory
     {
         return new WxconfigMiniEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -276,6 +302,7 @@ class SyBaseMysqlFactory
     {
         return new WxconfigCorpEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -285,6 +312,7 @@ class SyBaseMysqlFactory
     {
         return new AliconfigPayEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *
@@ -294,6 +322,7 @@ class SyBaseMysqlFactory
     {
         return new DingtalkConfigCorpEntity($dbTag);
     }
+
     /**
      * @param string $dbTag 数据库标识
      *

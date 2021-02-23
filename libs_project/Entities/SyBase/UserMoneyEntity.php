@@ -1,4 +1,5 @@
 <?php
+
 namespace Entities\SyBase;
 
 use DB\Entities\MysqlEntity;
@@ -67,6 +68,7 @@ class UserMoneyEntity extends MysqlEntity
      * @var int
      */
     public $money_freeze = 0;
+
     public function __construct(string $dbTag = '')
     {
         $trueTag = isset($dbTag[0]) ? $dbTag : 'main';

@@ -1,4 +1,5 @@
 <?php
+
 namespace Entities\SyBase;
 
 use DB\Entities\MysqlEntity;
@@ -34,7 +35,7 @@ class WithdrawBaseEntity extends MysqlEntity
     /**
      * 系统提成比例,单位为%
      *
-     * @var double
+     * @var float
      */
     public $total_commission = 2;
 
@@ -128,6 +129,7 @@ class WithdrawBaseEntity extends MysqlEntity
      * @var int
      */
     public $updated = 0;
+
     public function __construct(string $dbTag = '')
     {
         $trueTag = isset($dbTag[0]) ? $dbTag : 'main';

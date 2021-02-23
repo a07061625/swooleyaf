@@ -1,4 +1,5 @@
 <?php
+
 namespace Entities\SyBase;
 
 use DB\Entities\MysqlEntity;
@@ -39,6 +40,7 @@ class AttachmentReferEntity extends MysqlEntity
      * @var int
      */
     public $created = 0;
+
     public function __construct(string $dbTag = '')
     {
         $trueTag = isset($dbTag[0]) ? $dbTag : 'main';

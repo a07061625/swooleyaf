@@ -5,6 +5,7 @@
  * Date: 2017/1/3 0003
  * Time: 12:18
  */
+
 namespace DesignPatterns\Singletons;
 
 use DB\Connectors\MysqlConnect;
@@ -17,6 +18,7 @@ class MysqlSingleton
 
     /**
      * 连接对象列表
+     *
      * @var array
      */
     private $connections = [];
@@ -28,9 +30,9 @@ class MysqlSingleton
     /**
      * @return \DesignPatterns\Singletons\MysqlSingleton
      */
-    public static function getInstance() : MysqlSingleton
+    public static function getInstance(): self
     {
-        if (is_null(self::$instance)) {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
 
@@ -39,32 +41,31 @@ class MysqlSingleton
 
     /**
      * @param string $dbTag 数据库标识
-     * @return \PDO
      */
-    public function getConn(string $dbTag) : \PDO
+    public function getConn(string $dbTag): \PDO
     {
         $conn = $this->getConnection($dbTag);
+
         return $conn->getConn();
     }
 
     /**
      * @param string $dbTag 数据库标识
-     * @return string
      */
-    public function getDbName(string $dbTag) : string
+    public function getDbName(string $dbTag): string
     {
         $conn = $this->getConnection($dbTag);
+
         return $conn->getDbName();
     }
 
     /**
      * @param string $dbTag 数据库标识
-     * @return \DB\Connectors\MysqlConnect|null
      */
-    public function getConnection(string $dbTag) : ?MysqlConnect
+    public function getConnection(string $dbTag): ?MysqlConnect
     {
         $conn = Tool::getArrayVal($this->connections, $dbTag, null);
-        if (is_null($conn)) {
+        if (null === $conn) {
             $conn = new MysqlConnect($dbTag);
             $this->connections[$dbTag] = $conn;
         }
@@ -74,36 +75,39 @@ class MysqlSingleton
 
     /**
      * 获取数据库的所有表名
+     *
      * @param string $dbTag 数据库标识
-     * @return array
      */
-    public function getDbTables(string $dbTag) : array
+    public function getDbTables(string $dbTag): array
     {
         $conn = $this->getConnection($dbTag);
+
         return $conn->getDbTables();
     }
 
     /**
      * 获取数据表的结构描述
-     * @param string $dbTag 数据库标识
+     *
+     * @param string $dbTag     数据库标识
      * @param string $tableName 表名
-     * @return array
      */
-    public function getTableFields(string $dbTag, string $tableName) : array
+    public function getTableFields(string $dbTag, string $tableName): array
     {
         $conn = $this->getConnection($dbTag);
+
         return $conn->getTableFields($tableName);
     }
 
     /**
      * 获取数据表的索引
-     * @param string $dbTag 数据库标识
+     *
+     * @param string $dbTag     数据库标识
      * @param string $tableName 表名
-     * @return array
      */
-    public function getTableIndex(string $dbTag, string $tableName) : array
+    public function getTableIndex(string $dbTag, string $tableName): array
     {
         $conn = $this->getConnection($dbTag);
+
         return $conn->getTableIndex($tableName);
     }
 

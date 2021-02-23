@@ -1,4 +1,5 @@
 <?php
+
 namespace Entities\SyBase;
 
 use DB\Entities\MysqlEntity;
@@ -6,7 +7,6 @@ use DB\Entities\MysqlEntity;
 class WxconfigMiniEntity extends MysqlEntity
 {
     /**
-     *
      * @var int
      */
     public $id;
@@ -94,6 +94,7 @@ class WxconfigMiniEntity extends MysqlEntity
      * @var int
      */
     public $updated = 0;
+
     public function __construct(string $dbTag = '')
     {
         $trueTag = isset($dbTag[0]) ? $dbTag : 'main';

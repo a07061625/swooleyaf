@@ -5,6 +5,7 @@
  * Date: 2017-3-5
  * Time: 15:26
  */
+
 namespace DB\Entities;
 
 use DB\Containers\MysqlContainer;
@@ -19,10 +20,7 @@ class MysqlEntity extends BaseEntity
         $this->_container->getModel()->setEntityProperties($this->getEntityProperties());
     }
 
-    /**
-     * @return \DB\Containers\MysqlContainer
-     */
-    public function getContainer() : MysqlContainer
+    public function getContainer(): MysqlContainer
     {
         return $this->_container;
     }

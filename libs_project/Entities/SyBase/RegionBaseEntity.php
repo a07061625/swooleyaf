@@ -1,4 +1,5 @@
 <?php
+
 namespace Entities\SyBase;
 
 use DB\Entities\MysqlEntity;
@@ -32,6 +33,7 @@ class RegionBaseEntity extends MysqlEntity
      * @var int
      */
     public $sort = 0;
+
     public function __construct(string $dbTag = '')
     {
         $trueTag = isset($dbTag[0]) ? $dbTag : 'main';
