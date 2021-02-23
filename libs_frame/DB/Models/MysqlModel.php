@@ -33,14 +33,16 @@ class MysqlModel extends BaseModel
     private $_entityProps = [];
     private $_fields = [];
 
-    public function __construct(string $dbName, string $tableName, string $primaryKey = 'id')
+    public function __construct(string $dbTag, string $tableName, string $primaryKey = 'id')
     {
-        $this->_dbConn = MysqlSingleton::getInstance()->getConn();
-        $this->_dbName = $dbName;
+        parent::__construct();
+        $conn = MysqlSingleton::getInstance()->getConnection($dbTag);
+        $this->_dbConn = $conn->getConn();
+        $this->_dbName = $conn->getDbName();
         $this->_tableName = $tableName;
         $this->_primaryKey = $primaryKey;
 
-        $this->_structure = new NotORM_Structure_Convention($primaryKey, '', $dbName . '.%s');
+        $this->_structure = new NotORM_Structure_Convention($primaryKey, '', $this->_dbName . '.%s');
         $this->_db = new NotORM($this->_dbConn, $this->_structure);
     }
 
@@ -56,15 +58,13 @@ class MysqlModel extends BaseModel
     /**
      * @return \PDO
      */
-    public function getDbConn()
+    public function getDbConn() : \PDO
     {
         return $this->_dbConn;
     }
 
     public function setDbName(string $dbName)
     {
-        MysqlSingleton::getInstance()->changeDb($dbName);
-        $this->_dbName = $dbName;
     }
 
     public function getDbTable() : string
@@ -75,7 +75,7 @@ class MysqlModel extends BaseModel
     /**
      * @return \DB\Models\NotORM\NotORM
      */
-    public function getOrmDb()
+    public function getOrmDb() : NotORM
     {
         return $this->_db;
     }
@@ -83,7 +83,7 @@ class MysqlModel extends BaseModel
     /**
      * @return \DB\Models\NotORM\NotORM_Result
      */
-    public function getOrmDbTable()
+    public function getOrmDbTable() : NotORM_Result
     {
         $tableName = $this->_tableName;
         return $this->_db->$tableName();

@@ -32,9 +32,9 @@ class RegionBaseEntity extends MysqlEntity
      * @var int
      */
     public $sort = 0;
-    public function __construct(string $dbName = '')
+    public function __construct(string $dbTag = '')
     {
-        $this->_dbName = isset($dbName[0]) ? $dbName : 'sy_base';
-        parent::__construct($this->_dbName, 'region_base', 'tag');
+        $trueTag = isset($dbTag[0]) ? $dbTag : 'main';
+        parent::__construct($trueTag, 'region_base', 'tag');
     }
 }

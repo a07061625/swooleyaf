@@ -43,264 +43,264 @@ class SyBaseMysqlFactory
     use SimpleTrait;
 
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\AttachmentBaseEntity
      */
-    public static function getAttachmentBaseEntity(string $dbName = '')
+    public static function getAttachmentBaseEntity(string $dbTag = '')
     {
-        return new AttachmentBaseEntity($dbName);
+        return new AttachmentBaseEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\AttachmentReferEntity
      */
-    public static function getAttachmentReferEntity(string $dbName = '')
+    public static function getAttachmentReferEntity(string $dbTag = '')
     {
-        return new AttachmentReferEntity($dbName);
+        return new AttachmentReferEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\ImBaseEntity
      */
-    public static function getImBaseEntity(string $dbName = '')
+    public static function getImBaseEntity(string $dbTag = '')
     {
-        return new ImBaseEntity($dbName);
+        return new ImBaseEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\LogModuleEntity
      */
-    public static function getLogModuleEntity(string $dbName = '')
+    public static function getLogModuleEntity(string $dbTag = '')
     {
-        return new LogModuleEntity($dbName);
+        return new LogModuleEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\PayHistoryEntity
      */
-    public static function getPayHistoryEntity(string $dbName = '')
+    public static function getPayHistoryEntity(string $dbTag = '')
     {
-        return new PayHistoryEntity($dbName);
+        return new PayHistoryEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\PermissionBaseEntity
      */
-    public static function getPermissionBaseEntity(string $dbName = '')
+    public static function getPermissionBaseEntity(string $dbTag = '')
     {
-        return new PermissionBaseEntity($dbName);
+        return new PermissionBaseEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\RefundBaseEntity
      */
-    public static function getRefundBaseEntity(string $dbName = '')
+    public static function getRefundBaseEntity(string $dbTag = '')
     {
-        return new RefundBaseEntity($dbName);
+        return new RefundBaseEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\RefundHistoryEntity
      */
-    public static function getRefundHistoryEntity(string $dbName = '')
+    public static function getRefundHistoryEntity(string $dbTag = '')
     {
-        return new RefundHistoryEntity($dbName);
+        return new RefundHistoryEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\SmsRecordEntity
      */
-    public static function getSmsRecordEntity(string $dbName = '')
+    public static function getSmsRecordEntity(string $dbTag = '')
     {
-        return new SmsRecordEntity($dbName);
+        return new SmsRecordEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\TimedTaskEntity
      */
-    public static function getTimedTaskEntity(string $dbName = '')
+    public static function getTimedTaskEntity(string $dbTag = '')
     {
-        return new TimedTaskEntity($dbName);
+        return new TimedTaskEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\UserBaseEntity
      */
-    public static function getUserBaseEntity(string $dbName = '')
+    public static function getUserBaseEntity(string $dbTag = '')
     {
-        return new UserBaseEntity($dbName);
+        return new UserBaseEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\UserLoginHistoryEntity
      */
-    public static function getUserLoginHistoryEntity(string $dbName = '')
+    public static function getUserLoginHistoryEntity(string $dbTag = '')
     {
-        return new UserLoginHistoryEntity($dbName);
+        return new UserLoginHistoryEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\UserMoneyEntity
      */
-    public static function getUserMoneyEntity(string $dbName = '')
+    public static function getUserMoneyEntity(string $dbTag = '')
     {
-        return new UserMoneyEntity($dbName);
+        return new UserMoneyEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\UserMoneyHistoryEntity
      */
-    public static function getUserMoneyHistoryEntity(string $dbName = '')
+    public static function getUserMoneyHistoryEntity(string $dbTag = '')
     {
-        return new UserMoneyHistoryEntity($dbName);
+        return new UserMoneyHistoryEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\UserRoleEntity
      */
-    public static function getUserRoleEntity(string $dbName = '')
+    public static function getUserRoleEntity(string $dbTag = '')
     {
-        return new UserRoleEntity($dbName);
+        return new UserRoleEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\WithdrawBaseEntity
      */
-    public static function getWithdrawBaseEntity(string $dbName = '')
+    public static function getWithdrawBaseEntity(string $dbTag = '')
     {
-        return new WithdrawBaseEntity($dbName);
+        return new WithdrawBaseEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\WithdrawHistoryEntity
      */
-    public static function getWithdrawHistoryEntity(string $dbName = '')
+    public static function getWithdrawHistoryEntity(string $dbTag = '')
     {
-        return new WithdrawHistoryEntity($dbName);
+        return new WithdrawHistoryEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\WxopenAuthorizerEntity
      */
-    public static function getWxopenAuthorizerEntity(string $dbName = '')
+    public static function getWxopenAuthorizerEntity(string $dbTag = '')
     {
-        return new WxopenAuthorizerEntity($dbName);
+        return new WxopenAuthorizerEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\WxproviderCorpAuthorizerEntity
      */
-    public static function getWxproviderCorpAuthorizerEntity(string $dbName = '')
+    public static function getWxproviderCorpAuthorizerEntity(string $dbTag = '')
     {
-        return new WxproviderCorpAuthorizerEntity($dbName);
+        return new WxproviderCorpAuthorizerEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\RegionBaseEntity
      */
-    public static function getRegionBaseEntity(string $dbName = '')
+    public static function getRegionBaseEntity(string $dbTag = '')
     {
-        return new RegionBaseEntity($dbName);
+        return new RegionBaseEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\RoleBaseEntity
      */
-    public static function getRoleBaseEntity(string $dbName = '')
+    public static function getRoleBaseEntity(string $dbTag = '')
     {
-        return new RoleBaseEntity($dbName);
+        return new RoleBaseEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\RolePermissionEntity
      */
-    public static function getRolePermissionEntity(string $dbName = '')
+    public static function getRolePermissionEntity(string $dbTag = '')
     {
-        return new RolePermissionEntity($dbName);
+        return new RolePermissionEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\WxconfigBaseEntity
      */
-    public static function getWxconfigBaseEntity(string $dbName = '')
+    public static function getWxconfigBaseEntity(string $dbTag = '')
     {
-        return new WxconfigBaseEntity($dbName);
+        return new WxconfigBaseEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\WxconfigAccountEntity
      */
-    public static function getWxconfigShopEntity(string $dbName = '')
+    public static function getWxconfigShopEntity(string $dbTag = '')
     {
-        return new WxconfigAccountEntity($dbName);
+        return new WxconfigAccountEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\WxconfigMiniEntity
      */
-    public static function getWxconfigMiniEntity(string $dbName = '')
+    public static function getWxconfigMiniEntity(string $dbTag = '')
     {
-        return new WxconfigMiniEntity($dbName);
+        return new WxconfigMiniEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\WxconfigCorpEntity
      */
-    public static function getWxconfigCorpEntity(string $dbName = '')
+    public static function getWxconfigCorpEntity(string $dbTag = '')
     {
-        return new WxconfigCorpEntity($dbName);
+        return new WxconfigCorpEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\AliconfigPayEntity
      */
-    public static function getAliconfigPayEntity(string $dbName = '')
+    public static function getAliconfigPayEntity(string $dbTag = '')
     {
-        return new AliconfigPayEntity($dbName);
+        return new AliconfigPayEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\DingtalkConfigCorpEntity
      */
-    public static function getDingtalkConfigCorpEntity(string $dbName = '')
+    public static function getDingtalkConfigCorpEntity(string $dbTag = '')
     {
-        return new DingtalkConfigCorpEntity($dbName);
+        return new DingtalkConfigCorpEntity($dbTag);
     }
     /**
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      *
      * @return \Entities\SyBase\SyTokenBaseEntity
      */
-    public static function getSyTokenBaseEntity(string $dbName = '')
+    public static function getSyTokenBaseEntity(string $dbTag = '')
     {
-        return new SyTokenBaseEntity($dbName);
+        return new SyTokenBaseEntity($dbTag);
     }
 }

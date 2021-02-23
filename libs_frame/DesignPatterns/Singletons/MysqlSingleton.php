@@ -7,9 +7,7 @@
  */
 namespace DesignPatterns\Singletons;
 
-use SyConstant\ErrorCode;
-use SyException\Mysql\MysqlException;
-use SyLog\Log;
+use DB\Connectors\MysqlConnect;
 use SyTool\Tool;
 use SyTrait\SingletonTrait;
 
@@ -18,45 +16,19 @@ class MysqlSingleton
     use SingletonTrait;
 
     /**
-     * 数据库名称
-     * @var string
-     */
-    private $dbName = '';
-    /**
-     * @var \PDO
-     */
-    private $conn = null;
-    /**
-     * 重连错误信息
+     * 连接对象列表
      * @var array
      */
-    private $reconnectMessages = [];
-    /**
-     * @var int
-     */
-    private $connTime = 0;
+    private $connections = [];
 
     private function __construct()
     {
-        $this->init();
-        $this->reconnectMessages = [
-            'server has gone away',
-            'no connection to the server',
-            'Lost connection',
-            'is dead or not enabled',
-            'Error while sending',
-            'server closed the connection',
-            'SSL connection has been closed',
-            'Error writing data to the connection',
-            'Resource deadlock avoided',
-            'failed with errno=32 Broken pipe',
-        ];
     }
 
     /**
      * @return \DesignPatterns\Singletons\MysqlSingleton
      */
-    public static function getInstance()
+    public static function getInstance() : MysqlSingleton
     {
         if (is_null(self::$instance)) {
             self::$instance = new self();
@@ -66,180 +38,82 @@ class MysqlSingleton
     }
 
     /**
+     * @param string $dbTag 数据库标识
      * @return \PDO
      */
-    public function getConn()
+    public function getConn(string $dbTag) : \PDO
     {
-        return $this->conn;
+        $conn = $this->getConnection($dbTag);
+        return $conn->getConn();
     }
 
     /**
+     * @param string $dbTag 数据库标识
      * @return string
      */
-    public function getDbName() : string
+    public function getDbName(string $dbTag) : string
     {
-        return $this->dbName;
+        $conn = $this->getConnection($dbTag);
+        return $conn->getDbName();
     }
 
     /**
-     * @param string $dbName
+     * @param string $dbTag 数据库标识
+     * @return \DB\Connectors\MysqlConnect|null
      */
-    public function setDbName(string $dbName)
+    public function getConnection(string $dbTag) : ?MysqlConnect
     {
-        $this->dbName = $dbName;
-    }
-
-    /**
-     * 切换数据库
-     * @param string $dbName 数据库名
-     */
-    public function changeDb(string $dbName)
-    {
-        if ((strlen($dbName) > 0) && ($this->dbName != $dbName)) {
-            $this->conn->exec('USE ' . $dbName);
-            $this->dbName = $dbName;
+        $conn = Tool::getArrayVal($this->connections, $dbTag, null);
+        if (is_null($conn)) {
+            $conn = new MysqlConnect($dbTag);
+            $this->connections[$dbTag] = $conn;
         }
-    }
 
-    /**
-     * 获取所有数据库
-     * @param bool $filter 是否过滤mysql配置数据库，true：过滤 false：不过滤
-     * @return array
-     */
-    public function getDbs(bool $filter) : array
-    {
-        $stmt = $this->conn->query('SHOW DATABASES');
-        $dbs = $stmt->fetchAll(\PDO::FETCH_COLUMN);
-        unset($stmt);
-        if ($filter) {
-            return array_diff($dbs, ['information_schema', 'performance_schema', 'mysql']);
-        } else {
-            return $dbs;
-        }
+        return $conn;
     }
 
     /**
      * 获取数据库的所有表名
-     * @param string $dbName 数据库名
+     * @param string $dbTag 数据库标识
      * @return array
      */
-    public function getDbTables(string $dbName = '') : array
+    public function getDbTables(string $dbTag) : array
     {
-        $this->changeDb($dbName);
-
-        $stmt = $this->conn->query('SHOW TABLES');
-        $tables = $stmt->fetchAll(\PDO::FETCH_COLUMN);
-        unset($stmt);
-
-        return $tables;
+        $conn = $this->getConnection($dbTag);
+        return $conn->getDbTables();
     }
 
     /**
      * 获取数据表的结构描述
+     * @param string $dbTag 数据库标识
      * @param string $tableName 表名
-     * @param string $dbName 数据库名
      * @return array
      */
-    public function getTableFields(string $tableName, string $dbName = '') : array
+    public function getTableFields(string $dbTag, string $tableName) : array
     {
-        $this->changeDb($dbName);
-
-        $stmt = $this->conn->query('SHOW FULL COLUMNS FROM ' . $tableName);
-        $fields = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        unset($stmt);
-
-        return $fields;
+        $conn = $this->getConnection($dbTag);
+        return $conn->getTableFields($tableName);
     }
 
     /**
      * 获取数据表的索引
+     * @param string $dbTag 数据库标识
      * @param string $tableName 表名
-     * @param string $dbName 数据库名
      * @return array
      */
-    public function getTableIndex(string $tableName, string $dbName = '') : array
+    public function getTableIndex(string $dbTag, string $tableName) : array
     {
-        $this->changeDb($dbName);
-
-        $stmt = $this->conn->query('SHOW INDEX FROM ' . $tableName);
-        $fields = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        unset($stmt);
-
-        return $fields;
+        $conn = $this->getConnection($dbTag);
+        return $conn->getTableIndex($tableName);
     }
 
     /**
      * 检测连接
-     * @throws \SyException\Mysql\MysqlException
      */
     public function reConnect()
     {
-        $nowTime = time();
-        if (is_null($this->conn)) {
-            $this->init();
-            return;
-        }
-        if (($nowTime - $this->connTime) < 30) {
-            return;
-        }
-
-        $checkRes = false;
-        try {
-            $this->conn->query('SELECT 1');
-            $checkRes = true;
-        } catch (\Exception $e) {
-            $errMsg = $e->getMessage();
-            $reconnectTag = false;
-            foreach ($this->reconnectMessages as $eMessage) {
-                if (stripos($errMsg, $eMessage) !== false) {
-                    $reconnectTag = true;
-                    break;
-                }
-            }
-
-            if ($reconnectTag) {
-                $this->init();
-            } else {
-                Log::error($errMsg, $e->getCode(), $e->getTraceAsString());
-                throw new MysqlException('MySQL连接出错', ErrorCode::MYSQL_CONNECTION_ERROR);
-            }
-        } finally {
-            if ($checkRes) {
-                $this->connTime = $nowTime;
-            }
-        }
-    }
-
-    /**
-     * @throws \SyException\Mysql\MysqlException
-     */
-    private function init()
-    {
-        $this->conn = null;
-        $configs = Tool::getConfig('mysql.' . SY_ENV . SY_PROJECT);
-
-        $host = Tool::getArrayVal($configs, 'host');
-        $port = Tool::getArrayVal($configs, 'port');
-        $db = Tool::getArrayVal($configs, 'db');
-        $pwd = Tool::getArrayVal($configs, 'password');
-        $user = Tool::getArrayVal($configs, 'user');
-        $charset = Tool::getArrayVal($configs, 'charset', 'utf8mb4');
-        $dsn = 'mysql:host=' . $host . ';port=' . $port . ';dbname=' . $db;
-
-        try {
-            $this->conn = new \PDO($dsn, $user, $pwd, [
-                \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-                \PDO::ATTR_PERSISTENT => true,
-                \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES ' . $charset,
-                \PDO::ATTR_TIMEOUT => 2,
-            ]);
-
-            $this->dbName = $db;
-            $this->connTime = Tool::getNowTime();
-        } catch (\Exception $e) {
-            Log::error($e->getMessage(), $e->getCode(), $e->getTraceAsString());
-
-            throw new MysqlException('MySQL连接出错', ErrorCode::MYSQL_CONNECTION_ERROR);
+        foreach ($this->connections as $tag => $connection) {
+            $connection->reConnect();
         }
     }
 }

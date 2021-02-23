@@ -38,9 +38,9 @@ class UserLoginHistoryEntity extends MysqlEntity
      * @var int
      */
     public $created = 0;
-    public function __construct(string $dbName = '')
+    public function __construct(string $dbTag = '')
     {
-        $this->_dbName = isset($dbName[0]) ? $dbName : 'sy_base';
-        parent::__construct($this->_dbName, 'user_login_history', 'id');
+        $trueTag = isset($dbTag[0]) ? $dbTag : 'main';
+        parent::__construct($trueTag, 'user_login_history', 'id');
     }
 }

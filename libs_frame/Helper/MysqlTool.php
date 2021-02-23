@@ -106,13 +106,13 @@ class MysqlTool
     {
         echo '显示帮助: /usr/local/php7/bin/php helper_mysql.php -h' . PHP_EOL;
         echo '生成数据库下所有的实体类: /usr/local/php7/bin/php helper_mysql.php entities -db xxx -path /xxx -namespace xxx -prefix xxx -suffix xxx' . PHP_EOL;
-        echo '    -db:必填 数据库名' . PHP_EOL;
+        echo '    -db:必填 数据库标识' . PHP_EOL;
         echo '    -path:必填 存放实体类文件的目录,从根目录/开始' . PHP_EOL;
         echo '    -namespace:选填 命名空间' . PHP_EOL;
         echo '    -prefix:选填 实体类文件前缀' . PHP_EOL;
         echo '    -suffix:选填 实体类文件后缀' . PHP_EOL;
         echo '生成数据库下指定的实体类: /usr/local/php7/bin/php helper_mysql.php entity -db xxx -table xxx -path /xxx -namespace xxx -prefix xxx -suffix xxx' . PHP_EOL;
-        echo '    -db:必填 数据库名' . PHP_EOL;
+        echo '    -db:必填 数据库标识' . PHP_EOL;
         echo '    -table:必填 表名' . PHP_EOL;
         echo '    -path:必填 存放实体类文件的目录,从根目录/开始' . PHP_EOL;
         echo '    -namespace:选填 命名空间' . PHP_EOL;
@@ -128,7 +128,7 @@ class MysqlTool
     private static function createDbEntities(array $configs)
     {
         if (!$configs['db']) {
-            exit('数据库名不能为空' . PHP_EOL);
+            exit('数据库标识不能为空' . PHP_EOL);
         }
 
         $tables = MysqlSingleton::getInstance()->getDbTables($configs['db']);
@@ -155,12 +155,12 @@ class MysqlTool
     private static function createDbEntity(array $configs)
     {
         if (!$configs['db']) {
-            exit('数据库名不能为空' . PHP_EOL);
+            exit('数据库标识不能为空' . PHP_EOL);
         } elseif (!$configs['table']) {
             exit('数据库表名不能为空' . PHP_EOL);
         }
 
-        $fields = MysqlSingleton::getInstance()->getTableFields($configs['table'], $configs['db']);
+        $fields = MysqlSingleton::getInstance()->getTableFields($configs['db'], $configs['table']);
 
         $fileName = $configs['prefix'] . self::transferName($configs['table']) . $configs['suffix'];
         $primaryKey = 'id';
@@ -179,7 +179,7 @@ class MysqlTool
                     $default = (int)$eField['Default'];
                 }
             } elseif (strpos($eField['Type'], 'float') !== false) {
-                $varType = 'double';
+                $varType = 'float';
                 if (is_null($eField['Default'])) {
                     if ($eField['Key'] == 'PRI') {
                         $primaryKey = $eField['Field'];
@@ -191,7 +191,7 @@ class MysqlTool
                     $default = (double)$eField['Default'];
                 }
             } elseif (strpos($eField['Type'], 'decimal') !== false) {
-                $varType = 'double';
+                $varType = 'float';
                 if (is_null($eField['Default'])) {
                     if ($eField['Key'] == 'PRI') {
                         $primaryKey = $eField['Field'];
@@ -203,7 +203,7 @@ class MysqlTool
                     $default = (double)$eField['Default'];
                 }
             } elseif (strpos($eField['Type'], 'double') !== false) {
-                $varType = 'double';
+                $varType = 'float';
                 if (is_null($eField['Default'])) {
                     if ($eField['Key'] == 'PRI') {
                         $primaryKey = $eField['Field'];
@@ -243,16 +243,17 @@ class MysqlTool
         if (strlen($configs['namespace']) > 0) {
             $content = '<?php' . PHP_EOL . 'namespace Entities\\' . $configs['namespace'] . ';' . PHP_EOL . PHP_EOL;
         } else {
-            $content = '<?php' . PHP_EOL . 'namespace Entities\\' . self::transferName($configs['db']) . ';' . PHP_EOL . PHP_EOL;
+            $dbName = MysqlSingleton::getInstance()->getDbName($configs['db']);
+            $content = '<?php' . PHP_EOL . 'namespace Entities\\' . self::transferName($dbName) . ';' . PHP_EOL . PHP_EOL;
         }
         $content .= 'use DB\\Entities\\MysqlEntity;' . PHP_EOL . PHP_EOL;
         $content .= 'class ' . $fileName . ' extends MysqlEntity' . PHP_EOL;
         $content .= '{' . PHP_EOL;
         $content .= $filedStr . PHP_EOL;
-        $content .= '    public function __construct(string $dbName = \'\')' . PHP_EOL;
+        $content .= '    public function __construct(string $dbTag = \'\')' . PHP_EOL;
         $content .= '    {' . PHP_EOL;
-        $content .= '        $this->_dbName = isset($dbName[0]) ? $dbName : \'' . $configs['db'] . '\';' . PHP_EOL;
-        $content .= '        parent::__construct($this->_dbName, \'' . $configs['table'] . '\', \'' . $primaryKey . '\');' . PHP_EOL;
+        $content .= '        $trueTag = isset($dbTag[0]) ? $dbTag : \'' . $configs['db'] . '\';' . PHP_EOL;
+        $content .= '        parent::__construct($trueTag, \'' . $configs['table'] . '\', \'' . $primaryKey . '\');' . PHP_EOL;
         $content .= '    }' . PHP_EOL;
         $content .= '}' . PHP_EOL;
 

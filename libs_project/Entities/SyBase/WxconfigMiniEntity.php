@@ -94,9 +94,9 @@ class WxconfigMiniEntity extends MysqlEntity
      * @var int
      */
     public $updated = 0;
-    public function __construct(string $dbName = '')
+    public function __construct(string $dbTag = '')
     {
-        $this->_dbName = isset($dbName[0]) ? $dbName : 'sy_base';
-        parent::__construct($this->_dbName, 'wxconfig_mini', 'id');
+        $trueTag = isset($dbTag[0]) ? $dbTag : 'main';
+        parent::__construct($trueTag, 'wxconfig_mini', 'id');
     }
 }
