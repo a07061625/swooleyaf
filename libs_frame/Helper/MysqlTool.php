@@ -5,6 +5,7 @@
  * Date: 2018/7/21 0021
  * Time: 9:13
  */
+
 namespace Helper;
 
 use DesignPatterns\Singletons\MysqlSingleton;
@@ -52,16 +53,16 @@ class MysqlTool
         $needStr1 = Tool::getClientOption('-path', false, '');
         $needStr2 = preg_replace([
             '/\s+/',
-            '/\/+/'
+            '/\/+/',
         ], [
             '',
             '/',
         ], $needStr1);
         $needStr3 = trim($needStr2);
-        $length = strlen($needStr3);
-        if ($length == 0) {
+        $length = \strlen($needStr3);
+        if (0 == $length) {
             $path = '';
-        } elseif (substr($needStr3, ($length - 1), 1) == '/') {
+        } elseif ('/' == substr($needStr3, ($length - 1), 1)) {
             $path = $needStr3;
         } else {
             $path = $needStr3 . '/';
@@ -73,7 +74,7 @@ class MysqlTool
     private static function handleNamespace()
     {
         $namespace = Tool::getClientOption('-namespace', false, '');
-        if ((strlen($namespace) > 0) && (!ctype_alnum($namespace))) {
+        if ((\strlen($namespace) > 0) && (!ctype_alnum($namespace))) {
             exit('命名空间不合法' . PHP_EOL);
         }
 
@@ -84,15 +85,13 @@ class MysqlTool
      * 转换表名或数据库名
      *
      * @param string $name 表名或数据库名
-     *
-     * @return string
      */
-    private static function transferName(string $name) : string
+    private static function transferName(string $name): string
     {
         $str1 = strtolower($name);
         $str2 = preg_replace([
             '/[^0-9a-z]+/',
-            '/\s+/'
+            '/\s+/',
         ], [
             ' ',
             ' ',
@@ -156,7 +155,8 @@ class MysqlTool
     {
         if (!$configs['db']) {
             exit('数据库标识不能为空' . PHP_EOL);
-        } elseif (!$configs['table']) {
+        }
+        if (!$configs['table']) {
             exit('数据库表名不能为空' . PHP_EOL);
         }
 
@@ -166,62 +166,62 @@ class MysqlTool
         $primaryKey = 'id';
         $filedStr = '';
         foreach ($fields as $eField) {
-            if (strpos($eField['Type'], 'int') !== false) {
+            if (false !== strpos($eField['Type'], 'int')) {
                 $varType = 'int';
-                if (is_null($eField['Default'])) {
-                    if ($eField['Key'] == 'PRI') {
+                if (null === $eField['Default']) {
+                    if ('PRI' == $eField['Key']) {
                         $primaryKey = $eField['Field'];
                         $default = 'null';
                     } else {
-                        $default = $eField['Null'] == 'NO' ? '0' : 'null';
+                        $default = 'NO' == $eField['Null'] ? '0' : 'null';
                     }
                 } else {
                     $default = (int)$eField['Default'];
                 }
-            } elseif (strpos($eField['Type'], 'float') !== false) {
+            } elseif (false !== strpos($eField['Type'], 'float')) {
                 $varType = 'float';
-                if (is_null($eField['Default'])) {
-                    if ($eField['Key'] == 'PRI') {
+                if (null === $eField['Default']) {
+                    if ('PRI' == $eField['Key']) {
                         $primaryKey = $eField['Field'];
                         $default = 'null';
                     } else {
-                        $default = $eField['Null'] == 'NO' ? '0.00' : 'null';
+                        $default = 'NO' == $eField['Null'] ? '0.00' : 'null';
                     }
                 } else {
-                    $default = (double)$eField['Default'];
+                    $default = (float)$eField['Default'];
                 }
-            } elseif (strpos($eField['Type'], 'decimal') !== false) {
+            } elseif (false !== strpos($eField['Type'], 'decimal')) {
                 $varType = 'float';
-                if (is_null($eField['Default'])) {
-                    if ($eField['Key'] == 'PRI') {
+                if (null === $eField['Default']) {
+                    if ('PRI' == $eField['Key']) {
                         $primaryKey = $eField['Field'];
                         $default = 'null';
                     } else {
-                        $default = $eField['Null'] == 'NO' ? '0.00' : 'null';
+                        $default = 'NO' == $eField['Null'] ? '0.00' : 'null';
                     }
                 } else {
-                    $default = (double)$eField['Default'];
+                    $default = (float)$eField['Default'];
                 }
-            } elseif (strpos($eField['Type'], 'double') !== false) {
+            } elseif (false !== strpos($eField['Type'], 'double')) {
                 $varType = 'float';
-                if (is_null($eField['Default'])) {
-                    if ($eField['Key'] == 'PRI') {
+                if (null === $eField['Default']) {
+                    if ('PRI' == $eField['Key']) {
                         $primaryKey = $eField['Field'];
                         $default = 'null';
                     } else {
-                        $default = $eField['Null'] == 'NO' ? '0.00' : 'null';
+                        $default = 'NO' == $eField['Null'] ? '0.00' : 'null';
                     }
                 } else {
-                    $default = (double)$eField['Default'];
+                    $default = (float)$eField['Default'];
                 }
             } else {
                 $varType = 'string';
-                if (is_null($eField['Default'])) {
-                    if ($eField['Key'] == 'PRI') {
+                if (null === $eField['Default']) {
+                    if ('PRI' == $eField['Key']) {
                         $primaryKey = $eField['Field'];
                         $default = 'null';
                     } else {
-                        $default = $eField['Null'] == 'NO' ? "''" : 'null';
+                        $default = 'NO' == $eField['Null'] ? "''" : 'null';
                     }
                 } else {
                     $default = "'" . $eField['Default'] . "'";
@@ -229,7 +229,7 @@ class MysqlTool
             }
 
             $tempComment = trim($eField['Comment']);
-            if (strlen($tempComment) > 0) {
+            if (\strlen($tempComment) > 0) {
                 $commentStr = ' ' . $tempComment;
             } else {
                 $commentStr = '';
@@ -240,7 +240,7 @@ class MysqlTool
             $filedStr .= '     */' . PHP_EOL;
             $filedStr .= '    public $' . $eField['Field'] . ' = ' . $default . ';' . PHP_EOL;
         }
-        if (strlen($configs['namespace']) > 0) {
+        if (\strlen($configs['namespace']) > 0) {
             $content = '<?php' . PHP_EOL . 'namespace Entities\\' . $configs['namespace'] . ';' . PHP_EOL . PHP_EOL;
         } else {
             $dbName = MysqlSingleton::getInstance()->getDbName($configs['db']);

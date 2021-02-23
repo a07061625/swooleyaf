@@ -5,6 +5,7 @@
  * Date: 2017-3-5
  * Time: 15:30
  */
+
 namespace Entities\SyTask;
 
 use DB\Entities\MysqlEntity;
@@ -101,6 +102,7 @@ class TaskBaseEntity extends MysqlEntity
      * @var int
      */
     public $updated = 0;
+
     public function __construct(string $dbTag = '')
     {
         $trueTag = isset($dbTag[0]) ? $dbTag : 'main';
