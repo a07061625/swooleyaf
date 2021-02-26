@@ -31,7 +31,7 @@ class MongoSingleton
 
     private function __construct()
     {
-        $configs = Tool::getConfig('mongo.' . SY_ENV . SY_PROJECT);
+        $configs = Tool::getConfig('db.' . SY_ENV . SY_PROJECT . '.mongo');
         $hostStr = '';
         foreach ($configs['hosts'] as $key => $host) {
             $port = isset($configs['ports'][$key]) ? $configs['ports'][$key] : 27017;
@@ -63,7 +63,7 @@ class MongoSingleton
     /**
      * @return \DesignPatterns\Singletons\MongoSingleton
      */
-    public static function getInstance()
+    public static function getInstance() : MongoSingleton
     {
         if (is_null(self::$instance)) {
             self::$instance = new self();
@@ -73,9 +73,9 @@ class MongoSingleton
     }
 
     /**
-     * @return Manager
+     * @return \MongoDB\Driver\Manager|null
      */
-    public function getConn()
+    public function getConn() : ?Manager
     {
         return $this->conn;
     }
@@ -83,6 +83,7 @@ class MongoSingleton
     /**
      * 切换数据库
      * @param string $dbName 数据库名称
+     * @throws \MongoDB\Driver\Exception\Exception
      * @throws \SyException\Mongo\MongoException
      */
     public function changeDb(string $dbName)

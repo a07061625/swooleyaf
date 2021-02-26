@@ -156,7 +156,7 @@ class MysqlConnect extends BaseConnect
     protected function initConn(): bool
     {
         $this->conn = null;
-        $configs = Tool::getConfig('mysql.' . SY_ENV . SY_PROJECT . '.' . $this->dbTag);
+        $configs = Tool::getConfig('db.' . SY_ENV . SY_PROJECT . '.mysql.' . $this->dbTag);
         $host = Tool::getArrayVal($configs, 'host');
         $port = Tool::getArrayVal($configs, 'port');
         $db = Tool::getArrayVal($configs, 'db');
