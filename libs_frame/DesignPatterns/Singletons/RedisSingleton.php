@@ -52,7 +52,7 @@ class RedisSingleton
     /**
      * @return \DesignPatterns\Singletons\RedisSingleton
      */
-    public static function getInstance()
+    public static function getInstance() : RedisSingleton
     {
         if (is_null(self::$instance)) {
             self::$instance = new self();
@@ -64,7 +64,7 @@ class RedisSingleton
     /**
      * @return \Redis
      */
-    public function getConn()
+    public function getConn() : ?\Redis
     {
         return $this->conn;
     }
@@ -163,6 +163,7 @@ class RedisSingleton
 
         $host = Tool::getArrayVal($configs, 'host');
         $port = Tool::getArrayVal($configs, 'port');
+        $user = Tool::getArrayVal($configs, 'user', '');
         $pwd = Tool::getArrayVal($configs, 'password', '');
         $dbIndex = (int)Tool::getArrayVal($configs, 'database_index', 0);
 
@@ -171,7 +172,12 @@ class RedisSingleton
             if (!$redis->connect($host, $port)) {
                 throw new RedisException('Redis连接出错', ErrorCode::REDIS_CONNECTION_ERROR);
             }
-            if ((strlen($pwd) > 0) && (!$redis->auth($pwd))) {
+            if (version_compare(SY_VERSION_REDIS, '6.0.0', '<')) {
+                $authRes = $redis->auth($pwd);
+            } else {
+                $authRes = $redis->auth(['user' => $user, 'pass' => $pwd]);
+            }
+            if (!$authRes) {
                 throw new RedisException('Redis鉴权失败', ErrorCode::REDIS_AUTH_ERROR);
             }
             if (!$redis->select($dbIndex)) {

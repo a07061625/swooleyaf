@@ -95,3 +95,8 @@ if (!defined('SY_HTTP_RSP_CODE_ERROR')) {
 if (!defined('SY_PAY_PAYPAL_ENV')) {
     define('SY_PAY_PAYPAL_ENV', 'product');
 }
+
+//redis服务版本号
+if (!defined('SY_VERSION_REDIS')) {
+    define('SY_VERSION_REDIS', '6.2.0');
+}
