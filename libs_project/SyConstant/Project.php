@@ -22,11 +22,11 @@ final class Project extends ProjectBase
     /**
      * redis-前缀-定时器队列
      */
-    const REDIS_PREFIX_TIMER_QUEUE = 'sy' . SY_PROJECT . 'a0000_';
+    const REDIS_PREFIX_TIMER_QUEUE = self::REDIS_PREFIX_COMMON . 'a0000_';
     /**
      * redis-前缀-定时器内容
      */
-    const REDIS_PREFIX_TIMER_CONTENT = 'sy' . SY_PROJECT . 'a0001_';
+    const REDIS_PREFIX_TIMER_CONTENT = self::REDIS_PREFIX_COMMON . 'a0001_';
 
     /**
      * 任务-状态-已删除
