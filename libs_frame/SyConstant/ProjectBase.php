@@ -78,117 +78,121 @@ class ProjectBase
 
     //REDIS常量 后五位全数字的前缀为框架内部前缀,微信:10000-14999 支付宝:15000-19999
     /**
+     * redis-前缀-公共部分
+     */
+    const REDIS_PREFIX_COMMON = 'sy' . SY_PROJECT;
+    /**
      * redis-前缀-session
      */
-    const REDIS_PREFIX_SESSION = 'sy' . SY_PROJECT . '00001_';
+    const REDIS_PREFIX_SESSION = self::REDIS_PREFIX_COMMON . '00001_';
     /**
      * redis-前缀-会话JWT更新
      */
-    const REDIS_PREFIX_SESSION_JWT_REFRESH = 'sy' . SY_PROJECT . '00002_';
+    const REDIS_PREFIX_SESSION_JWT_REFRESH = self::REDIS_PREFIX_COMMON . '00002_';
     /**
      * redis-前缀-唯一ID
      */
-    const REDIS_PREFIX_UNIQUE_ID = 'sy' . SY_PROJECT . '00003_';
+    const REDIS_PREFIX_UNIQUE_ID = self::REDIS_PREFIX_COMMON . '00003_';
     /**
      * redis-前缀-微信公众号
      */
-    const REDIS_PREFIX_WX_ACCOUNT = 'sy' . SY_PROJECT . '10000_';
+    const REDIS_PREFIX_WX_ACCOUNT = self::REDIS_PREFIX_COMMON . '10000_';
     /**
      * redis-前缀-微信开放平台账号
      */
-    const REDIS_PREFIX_WX_COMPONENT_ACCOUNT = 'sy' . SY_PROJECT . '10001_';
+    const REDIS_PREFIX_WX_COMPONENT_ACCOUNT = self::REDIS_PREFIX_COMMON . '10001_';
     /**
      * redis-前缀-微信开放平台授权公众号
      */
-    const REDIS_PREFIX_WX_COMPONENT_AUTHORIZER = 'sy' . SY_PROJECT . '10002_';
+    const REDIS_PREFIX_WX_COMPONENT_AUTHORIZER = self::REDIS_PREFIX_COMMON . '10002_';
     /**
      * redis-前缀-微信开放平台授权小程序代码保护密钥
      */
-    const REDIS_PREFIX_WX_COMPONENT_AUTHORIZER_CODE_SECRET = 'sy' . SY_PROJECT . '10003_';
+    const REDIS_PREFIX_WX_COMPONENT_AUTHORIZER_CODE_SECRET = self::REDIS_PREFIX_COMMON . '10003_';
     /**
      * redis-前缀-企业微信
      */
-    const REDIS_PREFIX_WX_CORP = 'sy' . SY_PROJECT . '10100_';
+    const REDIS_PREFIX_WX_CORP = self::REDIS_PREFIX_COMMON . '10100_';
     /**
      * redis-前缀-企业微信服务商账号
      */
-    const REDIS_PREFIX_WX_PROVIDER_CORP_ACCOUNT = 'sy' . SY_PROJECT . '10101_';
+    const REDIS_PREFIX_WX_PROVIDER_CORP_ACCOUNT = self::REDIS_PREFIX_COMMON . '10101_';
     /**
      * redis-前缀-企业微信服务商套件
      */
-    const REDIS_PREFIX_WX_PROVIDER_CORP_ACCOUNT_SUITE = 'sy' . SY_PROJECT . '10102_';
+    const REDIS_PREFIX_WX_PROVIDER_CORP_ACCOUNT_SUITE = self::REDIS_PREFIX_COMMON . '10102_';
     /**
      * redis-前缀-服务商授权企业微信
      */
-    const REDIS_PREFIX_WX_PROVIDER_CORP_AUTHORIZER = 'sy' . SY_PROJECT . '10103_';
+    const REDIS_PREFIX_WX_PROVIDER_CORP_AUTHORIZER = self::REDIS_PREFIX_COMMON . '10103_';
     /**
      * redis-前缀-消息队列
      */
-    const REDIS_PREFIX_MESSAGE_QUEUE = 'sy' . SY_PROJECT . '20000_';
+    const REDIS_PREFIX_MESSAGE_QUEUE = self::REDIS_PREFIX_COMMON . '20000_';
     /**
      * redis-前缀-kafka消息位移缓存
      */
-    const REDIS_PREFIX_MESSAGE_KAFKA_OFFSET = 'sy' . SY_PROJECT . '20001_';
+    const REDIS_PREFIX_MESSAGE_KAFKA_OFFSET = self::REDIS_PREFIX_COMMON . '20001_';
     /**
      * redis-前缀-飞印打印账号
      */
-    const REDIS_PREFIX_PRINT_FEYIN_ACCOUNT = 'sy' . SY_PROJECT . '20100_';
+    const REDIS_PREFIX_PRINT_FEYIN_ACCOUNT = self::REDIS_PREFIX_COMMON . '20100_';
     /**
      * redis-前缀-企业钉钉
      */
-    const REDIS_PREFIX_DINGTALK_CORP = 'sy' . SY_PROJECT . '20200_';
+    const REDIS_PREFIX_DINGTALK_CORP = self::REDIS_PREFIX_COMMON . '20200_';
     /**
      * redis-前缀-企业钉钉服务商账号
      */
-    const REDIS_PREFIX_DINGTALK_PROVIDER_ACCOUNT = 'sy' . SY_PROJECT . '20201_';
+    const REDIS_PREFIX_DINGTALK_PROVIDER_ACCOUNT = self::REDIS_PREFIX_COMMON . '20201_';
     /**
      * redis-前缀-企业钉钉服务商套件
      */
-    const REDIS_PREFIX_DINGTALK_PROVIDER_ACCOUNT_SUITE = 'sy' . SY_PROJECT . '20202_';
+    const REDIS_PREFIX_DINGTALK_PROVIDER_ACCOUNT_SUITE = self::REDIS_PREFIX_COMMON . '20202_';
     /**
      * redis-前缀-服务商授权企业钉钉
      */
-    const REDIS_PREFIX_DINGTALK_PROVIDER_AUTHORIZER = 'sy' . SY_PROJECT . '20203_';
+    const REDIS_PREFIX_DINGTALK_PROVIDER_AUTHORIZER = self::REDIS_PREFIX_COMMON . '20203_';
     /**
      * redis-前缀-极光推送推送唯一标识符
      */
-    const REDIS_PREFIX_JPUSH_APP_CID_PUSH = 'sy' . SY_PROJECT . '20300_';
+    const REDIS_PREFIX_JPUSH_APP_CID_PUSH = self::REDIS_PREFIX_COMMON . '20300_';
     /**
      * redis-前缀-极光推送定时任务唯一标识符
      */
-    const REDIS_PREFIX_JPUSH_APP_CID_SCHEDULE = 'sy' . SY_PROJECT . '20301_';
+    const REDIS_PREFIX_JPUSH_APP_CID_SCHEDULE = self::REDIS_PREFIX_COMMON . '20301_';
     /**
      * redis-前缀-代码WebHook队列
      */
-    const REDIS_PREFIX_CODE_WEBHOOK_QUEUE = 'sy' . SY_PROJECT . '20400_';
+    const REDIS_PREFIX_CODE_WEBHOOK_QUEUE = self::REDIS_PREFIX_COMMON . '20400_';
     /**
      * redis-前缀-代码WebHook状态
      */
-    const REDIS_PREFIX_CODE_WEBHOOK_STATUS = 'sy' . SY_PROJECT . '20401_';
+    const REDIS_PREFIX_CODE_WEBHOOK_STATUS = self::REDIS_PREFIX_COMMON . '20401_';
     /**
      * redis-前缀-代码WebHook命令
      */
-    const REDIS_PREFIX_CODE_WEBHOOK_COMMAND = 'sy' . SY_PROJECT . '20402_';
+    const REDIS_PREFIX_CODE_WEBHOOK_COMMAND = self::REDIS_PREFIX_COMMON . '20402_';
     /**
      * redis-前缀-代码WebHook信息
      */
-    const REDIS_PREFIX_CODE_WEBHOOK_INFO = 'sy' . SY_PROJECT . '20403_';
+    const REDIS_PREFIX_CODE_WEBHOOK_INFO = self::REDIS_PREFIX_COMMON . '20403_';
     /**
      * redis-前缀-百家云教育直播
      */
-    const REDIS_PREFIX_LIVE_EDUCATION_BJY = 'sy' . SY_PROJECT . '20500_';
+    const REDIS_PREFIX_LIVE_EDUCATION_BJY = self::REDIS_PREFIX_COMMON . '20500_';
     /**
      * redis-前缀-消息处理主题
      */
-    const REDIS_PREFIX_MESSAGE_HANDLER_TOPIC = 'sy' . SY_PROJECT . '20600_';
+    const REDIS_PREFIX_MESSAGE_HANDLER_TOPIC = self::REDIS_PREFIX_COMMON . '20600_';
     /**
      * redis-前缀-科大讯飞语音缓存
      */
-    const REDIS_PREFIX_VMS_XUNFEI = 'sy' . SY_PROJECT . '20700_';
+    const REDIS_PREFIX_VMS_XUNFEI = self::REDIS_PREFIX_COMMON . '20700_';
     /**
      * redis-前缀-请求频率缓存
      */
-    const REDIS_PREFIX_REQUEST_RATE = 'sy' . SY_PROJECT . '20800_';
+    const REDIS_PREFIX_REQUEST_RATE = self::REDIS_PREFIX_COMMON . '20800_';
 
     //YAC常量,以0000开头的前缀为框架内部前缀,并键名总长度不超过48个字符串
     /**

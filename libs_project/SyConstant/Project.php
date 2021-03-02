@@ -30,39 +30,39 @@ final class Project extends ProjectBase
     /**
      * redis-前缀-验证码图片
      */
-    const REDIS_PREFIX_CODE_IMAGE = 'sy' . SY_PROJECT . 'a0000_';
+    const REDIS_PREFIX_CODE_IMAGE = self::REDIS_PREFIX_COMMON . 'a0000_';
     /**
      * redis-前缀-图片缓存
      */
-    const REDIS_PREFIX_IMAGE_DATA = 'sy' . SY_PROJECT . 'a0001_';
+    const REDIS_PREFIX_IMAGE_DATA = self::REDIS_PREFIX_COMMON . 'a0001_';
     /**
      * redis-前缀-支付哈希
      */
-    const REDIS_PREFIX_PAY_HASH = 'sy' . SY_PROJECT . 'a00002_';
+    const REDIS_PREFIX_PAY_HASH = self::REDIS_PREFIX_COMMON . 'a00002_';
     /**
      * redis-前缀-微信扫码预支付
      */
-    const REDIS_PREFIX_WX_NATIVE_PRE = 'sy' . SY_PROJECT . 'a0003_';
+    const REDIS_PREFIX_WX_NATIVE_PRE = self::REDIS_PREFIX_COMMON . 'a0003_';
     /**
      * redis-前缀-im管理账号缓存
      */
-    const REDIS_PREFIX_IM_ADMIN = 'sy' . SY_PROJECT . 'a0004_';
+    const REDIS_PREFIX_IM_ADMIN = self::REDIS_PREFIX_COMMON . 'a0004_';
     /**
      * redis-前缀-角色权限
      */
-    const REDIS_PREFIX_PERMISSION_ROLE = 'sy' . SY_PROJECT . 'a0005_';
+    const REDIS_PREFIX_PERMISSION_ROLE = self::REDIS_PREFIX_COMMON . 'a0005_';
     /**
      * redis-前缀-用户权限
      */
-    const REDIS_PREFIX_PERMISSION_USER = 'sy' . SY_PROJECT . 'a0006_';
+    const REDIS_PREFIX_PERMISSION_USER = self::REDIS_PREFIX_COMMON . 'a0006_';
     /**
      * redis-前缀-地区缓存
      */
-    const REDIS_PREFIX_REGION_LIST = 'sy' . SY_PROJECT . 'a0007_';
+    const REDIS_PREFIX_REGION_LIST = self::REDIS_PREFIX_COMMON . 'a0007_';
     /**
      * redis-前缀-框架令牌缓存
      */
-    const REDIS_PREFIX_SY_TOKEN = 'sy' . SY_PROJECT . 'a0008_';
+    const REDIS_PREFIX_SY_TOKEN = self::REDIS_PREFIX_COMMON . 'a0008_';
 
     /**
      * 消息队列-主题-添加日志
