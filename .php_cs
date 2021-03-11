@@ -106,6 +106,8 @@ $fixers = [
     'unary_operator_spaces' => true, //一元运算符应放在其操作数旁边
     'whitespace_after_comma_in_array' => true, //在数组声明中,每个逗号后必须有一个空格
     'nullable_type_declaration_for_default_null_value' => true,
+    'multiline_whitespace_before_semicolons' => ['strategy' => 'no_multi_line',], //在结束分号之前禁止多行空格或将分号移动到新行
+    'space_after_semicolon' => ['remove_in_empty_for_expressions' => true,], //分号后修复空格
 ];
 
 return PhpCsFixer\Config::create()
