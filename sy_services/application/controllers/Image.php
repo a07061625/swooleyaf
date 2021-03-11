@@ -133,7 +133,6 @@ class ImageController extends CommonController
             $this->SyResult->setData([
                 'file_name' => $fileName,
             ]);
-            echo 111;
         }
 
         $this->sendRsp();
