@@ -14,6 +14,7 @@ class ImageController extends CommonController
 
     /**
      * 生成二维码图片
+     *
      * @api {get} /Index/Image/createQrImage 生成二维码图片
      * @apiDescription 生成二维码图片
      * @apiGroup Image
@@ -47,6 +48,7 @@ class ImageController extends CommonController
 
     /**
      * 生成微信小程序二维码图片
+     *
      * @api {get} /Index/Image/createQrImageWxMini 生成微信小程序二维码图片
      * @apiDescription 生成微信小程序二维码图片
      * @apiGroup Image
@@ -68,11 +70,11 @@ class ImageController extends CommonController
         $wxAppId = trim(\Request\SyRequest::getParams('wx_appid'));
         $pageUrl = trim(\Request\SyRequest::getParams('page_url'));
         $pageScene = trim(\Request\SyRequest::getParams('page_scene'));
-        if (strlen($wxAppId) == 0) {
+        if (0 == strlen($wxAppId)) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '小程序appid不能为空');
-        } elseif (strlen($pageUrl) == 0) {
+        } elseif (0 == strlen($pageUrl)) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '页面地址不能为空');
-        } elseif (strlen($pageScene) == 0) {
+        } elseif (0 == strlen($pageScene)) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_PARAM_ERROR, '页面场景不能为空');
         } else {
             $imageSize = (int)\Request\SyRequest::getParams('image_size', 430);
@@ -82,14 +84,14 @@ class ImageController extends CommonController
             $qrCode->setScene($pageScene);
             $qrCode->setAutoColor(false);
             $qrCode->setWidth($imageSize);
-            if ($hyaline == 1) {
+            if (1 == $hyaline) {
                 $qrCode->setIsHyaline(true);
             } else {
                 $qrCode->setIsHyaline(false);
             }
             $createRes = $qrCode->getDetail();
             unset($qrCode);
-            if ($createRes['code'] == 0) {
+            if (0 == $createRes['code']) {
                 $this->SyResult->setData($createRes['data']);
             } else {
                 $this->SyResult->setCodeMsg($createRes['code'], $createRes['message']);
@@ -101,6 +103,7 @@ class ImageController extends CommonController
 
     /**
      * 图片上传
+     *
      * @api {post} /Index/Image/uploadImage 图片上传
      * @apiDescription 图片上传
      * @apiGroup Image
@@ -120,7 +123,7 @@ class ImageController extends CommonController
     {
         $cacheKey = \SyConstant\Project::REDIS_PREFIX_IMAGE_DATA . \Request\SyRequest::getParams('_syfile_tag', '');
         $cacheData = \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->get($cacheKey);
-        if ($cacheData === false) {
+        if (false === $cacheData) {
             $this->SyResult->setCodeMsg(\SyConstant\ErrorCode::COMMON_SERVER_ERROR, '图片缓存内容不存在');
         } else {
             \DesignPatterns\Factories\CacheSimpleFactory::getRedisInstance()->del($cacheKey);
