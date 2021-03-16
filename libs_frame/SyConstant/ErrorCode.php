@@ -292,6 +292,10 @@ class ErrorCode
     const PROMOTION_JDK_PARAM_ERROR = 108610;
     const PROMOTION_JDK_REQ_ERROR = 108611;
 
+    //MQTT错误,取值范围:108800-108999
+    const MQTT_CONNECTION_ERROR = 108800;
+    const MQTT_AUTH_ERROR = 108801;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -487,6 +491,8 @@ class ErrorCode
         self::PROMOTION_TBK_REQ_ERROR => '淘宝客推广请求错误',
         self::PROMOTION_JDK_PARAM_ERROR => '京东客推广参数错误',
         self::PROMOTION_JDK_REQ_ERROR => '京东客推广请求错误',
+        self::MQTT_CONNECTION_ERROR => 'mqtt连接出错',
+        self::MQTT_AUTH_ERROR => 'mqtt鉴权失败',
     ];
 
     /**
