@@ -5,6 +5,7 @@
  * Date: 2021/3/11 0011
  * Time: 17:04
  */
+
 namespace DesignPatterns\Singletons;
 
 use SyMessageQueue\Mqtt\Connection;
@@ -12,6 +13,7 @@ use SyTrait\SingletonTrait;
 
 /**
  * Class MqttSingleton
+ *
  * @package DesignPatterns\Singletons
  */
 class MqttSingleton
@@ -21,7 +23,7 @@ class MqttSingleton
     /**
      * @var null|\SyMessageQueue\Mqtt\Connection
      */
-    private $conn = null;
+    private $conn;
 
     private function __construct(array $will)
     {
@@ -30,9 +32,10 @@ class MqttSingleton
 
     /**
      * @param array $will 延迟配置
+     *
      * @return \DesignPatterns\Singletons\MqttSingleton
      */
-    public static function getInstance(array $will = []) : self
+    public static function getInstance(array $will = []): self
     {
         if (null === self::$instance) {
             self::$instance = new self($will);
@@ -41,10 +44,7 @@ class MqttSingleton
         return self::$instance;
     }
 
-    /**
-     * @return \SyMessageQueue\Mqtt\Connection
-     */
-    public function getConn() : Connection
+    public function getConn(): Connection
     {
         return $this->conn;
     }
