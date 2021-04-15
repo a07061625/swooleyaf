@@ -297,6 +297,28 @@ class ErrorCode
     const MQTT_CONNECTION_ERROR = 108800;
     const MQTT_AUTH_ERROR = 108801;
 
+    //抖音错误,取值范围:109000-109100
+    const DOUYIN_PARAM_ERROR = 109000;
+    const DOUYIN_REQ_ERROR = 109001;
+    const DOUYIN_ACCOUNT_PARAM_ERROR = 109010;
+    const DOUYIN_ACCOUNT_REQ_ERROR = 109011;
+    const DOUYIN_DATA_PARAM_ERROR = 109015;
+    const DOUYIN_DATA_REQ_ERROR = 109016;
+    const DOUYIN_ENTERPRISE_PARAM_ERROR = 109020;
+    const DOUYIN_ENTERPRISE_REQ_ERROR = 109021;
+    const DOUYIN_INTERACTION_PARAM_ERROR = 109025;
+    const DOUYIN_INTERACTION_REQ_ERROR = 109026;
+    const DOUYIN_LIFE_SERVICE_PARAM_ERROR = 109030;
+    const DOUYIN_LIFE_SERVICE_REQ_ERROR = 109031;
+    const DOUYIN_SEARCH_PARAM_ERROR = 109035;
+    const DOUYIN_SEARCH_REQ_ERROR = 109036;
+    const DOUYIN_TOOL_PARAM_ERROR = 109040;
+    const DOUYIN_TOOL_REQ_ERROR = 109041;
+    const DOUYIN_USER_PARAM_ERROR = 109045;
+    const DOUYIN_USER_REQ_ERROR = 109046;
+    const DOUYIN_VIDEO_PARAM_ERROR = 109050;
+    const DOUYIN_VIDEO_REQ_ERROR = 109051;
+
     protected static $msgArr = [
         self::COMMON_SUCCESS => '成功',
         self::COMMON_PARAM_ERROR => '参数错误',
@@ -494,6 +516,26 @@ class ErrorCode
         self::PROMOTION_JDK_REQ_ERROR => '京东客推广请求错误',
         self::MQTT_CONNECTION_ERROR => 'mqtt连接出错',
         self::MQTT_AUTH_ERROR => 'mqtt鉴权失败',
+        self::DOUYIN_PARAM_ERROR => '抖音参数错误',
+        self::DOUYIN_REQ_ERROR => '抖音请求错误',
+        self::DOUYIN_ACCOUNT_PARAM_ERROR => '抖音帐号参数错误',
+        self::DOUYIN_ACCOUNT_REQ_ERROR => '抖音帐号请求错误',
+        self::DOUYIN_DATA_PARAM_ERROR => '抖音数据参数错误',
+        self::DOUYIN_DATA_REQ_ERROR => '抖音数据请求错误',
+        self::DOUYIN_ENTERPRISE_PARAM_ERROR => '抖音企业号参数错误',
+        self::DOUYIN_ENTERPRISE_REQ_ERROR => '抖音企业号请求错误',
+        self::DOUYIN_INTERACTION_PARAM_ERROR => '抖音互动参数错误',
+        self::DOUYIN_INTERACTION_REQ_ERROR => '抖音互动请求错误',
+        self::DOUYIN_LIFE_SERVICE_PARAM_ERROR => '抖音生活服务参数错误',
+        self::DOUYIN_LIFE_SERVICE_REQ_ERROR => '抖音生活服务请求错误',
+        self::DOUYIN_SEARCH_PARAM_ERROR => '抖音搜索参数错误',
+        self::DOUYIN_SEARCH_REQ_ERROR => '抖音搜索请求错误',
+        self::DOUYIN_TOOL_PARAM_ERROR => '抖音工具参数错误',
+        self::DOUYIN_TOOL_REQ_ERROR => '抖音工具请求错误',
+        self::DOUYIN_USER_PARAM_ERROR => '抖音用户参数错误',
+        self::DOUYIN_USER_REQ_ERROR => '抖音用户请求错误',
+        self::DOUYIN_VIDEO_PARAM_ERROR => '抖音视频参数错误',
+        self::DOUYIN_VIDEO_REQ_ERROR => '抖音视频请求错误',
     ];
 
     /**
