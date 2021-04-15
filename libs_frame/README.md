@@ -26,6 +26,7 @@
 - SyConstant: 常量
 - SyCredit: 积分相关
 - SyCurrency: 货币处理
+- SyDouYin: 抖音相关
 - SyError: 框架错误处理
 - SyEventTask: 框架定时任务事件
 - SyException: 框架自定义异常
