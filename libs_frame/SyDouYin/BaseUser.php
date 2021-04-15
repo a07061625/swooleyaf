@@ -15,8 +15,8 @@ namespace SyDouYin;
  */
 abstract class BaseUser extends Base
 {
-    public function __construct()
+    public function __construct(string $clientKey)
     {
-        parent::__construct();
+        parent::__construct($clientKey);
     }
 }
