@@ -11,7 +11,7 @@ namespace DesignPatterns\Singletons;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyDouYin\ConfigApp;
-use SyException\SyDouYin\DouYinException;
+use SyException\DouYin\DouYinException;
 use SyTool\Tool;
 use SyTrait\DouYinConfigTrait;
 use SyTrait\SingletonTrait;
@@ -82,7 +82,7 @@ class DouYinConfigSingleton
      *
      * @return \SyDouYin\ConfigApp 应用配置
      *
-     * @throws \SyException\SyDouYin\DouYinException
+     * @throws \SyException\DouYin\DouYinException
      */
     public function getAppConfig(string $clientKey): ConfigApp
     {

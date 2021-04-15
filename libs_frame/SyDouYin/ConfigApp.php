@@ -9,7 +9,7 @@
 namespace SyDouYin;
 
 use SyConstant\ErrorCode;
-use SyException\SyDouYin\DouYinException;
+use SyException\DouYin\DouYinException;
 use SyTrait\SimpleConfigTrait;
 
 /**
@@ -49,7 +49,7 @@ class ConfigApp
     }
 
     /**
-     * @throws \SyException\SyDouYin\DouYinException
+     * @throws \SyException\DouYin\DouYinException
      */
     public function setClientKey(string $clientKey)
     {
@@ -66,7 +66,7 @@ class ConfigApp
     }
 
     /**
-     * @throws \SyException\SyDouYin\DouYinException
+     * @throws \SyException\DouYin\DouYinException
      */
     public function setClientSecret(string $clientSecret)
     {
