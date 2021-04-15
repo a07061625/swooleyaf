@@ -5,6 +5,7 @@
  * Date: 2021/4/15 0015
  * Time: 14:00
  */
+
 namespace DesignPatterns\Singletons;
 
 use SyConstant\ErrorCode;
@@ -17,6 +18,7 @@ use SyTrait\SingletonTrait;
 
 /**
  * Class DouYinConfigSingleton
+ *
  * @package DesignPatterns\Singletons
  */
 class DouYinConfigSingleton
@@ -26,11 +28,13 @@ class DouYinConfigSingleton
 
     /**
      * 应用配置列表
+     *
      * @var array
      */
     private $appConfigs = [];
     /**
      * 应用配置清理时间戳
+     *
      * @var int
      */
     private $appClearTime = 0;
@@ -42,9 +46,9 @@ class DouYinConfigSingleton
     /**
      * @return \DesignPatterns\Singletons\DouYinConfigSingleton
      */
-    public static function getInstance() : DouYinConfigSingleton
+    public static function getInstance(): self
     {
-        if (is_null(self::$instance)) {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
 
@@ -53,15 +57,17 @@ class DouYinConfigSingleton
 
     /**
      * 获取所有的应用配置
+     *
      * @return array 应用配置列表
      */
-    public function getAppConfigs() : array
+    public function getAppConfigs(): array
     {
         return $this->appConfigs;
     }
 
     /**
      * 移除应用配置
+     *
      * @param string $clientKey 应用标识
      */
     public function removeAppConfig(string $clientKey)
@@ -70,11 +76,39 @@ class DouYinConfigSingleton
     }
 
     /**
-     * 获取本地应用配置
+     * 获取应用配置
+     *
      * @param string $clientKey 应用标识
-     * @return \SyDouYin\ConfigApp|null 应用配置
+     *
+     * @return \SyDouYin\ConfigApp 应用配置
+     *
+     * @throws \SyException\DouYin\DouYinException
      */
-    private function getLocalAppConfig(string $clientKey) : ?ConfigApp
+    public function getAppConfig(string $clientKey): ConfigApp
+    {
+        $nowTime = Tool::getNowTime();
+        $appConfig = $this->getLocalAppConfig($clientKey);
+        if (null === $appConfig) {
+            $appConfig = $this->refreshAppConfig($clientKey);
+        } elseif ($appConfig->getExpireTime() < $nowTime) {
+            $appConfig = $this->refreshAppConfig($clientKey);
+        }
+
+        if ($appConfig->isValid()) {
+            return $appConfig;
+        }
+
+        throw new DouYinException('应用配置不存在', ErrorCode::DOUYIN_PARAM_ERROR);
+    }
+
+    /**
+     * 获取本地应用配置
+     *
+     * @param string $clientKey 应用标识
+     *
+     * @return null|\SyDouYin\ConfigApp 应用配置
+     */
+    private function getLocalAppConfig(string $clientKey): ?ConfigApp
     {
         $nowTime = Tool::getNowTime();
         if ($this->appClearTime < $nowTime) {
@@ -92,28 +126,5 @@ class DouYinConfigSingleton
         }
 
         return Tool::getArrayVal($this->appConfigs, $clientKey, null);
-    }
-
-    /**
-     * 获取应用配置
-     * @param string $clientKey 应用标识
-     * @return \SyDouYin\ConfigApp 应用配置
-     * @throws \SyException\DouYin\DouYinException
-     */
-    public function getAppConfig(string $clientKey) : ConfigApp
-    {
-        $nowTime = Tool::getNowTime();
-        $appConfig = $this->getLocalAppConfig($clientKey);
-        if (is_null($appConfig)) {
-            $appConfig = $this->refreshAppConfig($clientKey);
-        } elseif ($appConfig->getExpireTime() < $nowTime) {
-            $appConfig = $this->refreshAppConfig($clientKey);
-        }
-
-        if ($appConfig->isValid()) {
-            return $appConfig;
-        } else {
-            throw new DouYinException('应用配置不存在', ErrorCode::DOUYIN_PARAM_ERROR);
-        }
     }
 }
