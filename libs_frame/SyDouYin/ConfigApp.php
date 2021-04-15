@@ -5,6 +5,7 @@
  * Date: 2021/4/14 0014
  * Time: 20:30
  */
+
 namespace SyDouYin;
 
 use SyConstant\ErrorCode;
@@ -13,6 +14,7 @@ use SyTrait\SimpleConfigTrait;
 
 /**
  * Class ConfigApp
+ *
  * @package SyDouYin
  */
 class ConfigApp
@@ -41,16 +43,12 @@ class ConfigApp
     {
     }
 
-    /**
-     * @return string
-     */
-    public function getClientKey() : string
+    public function getClientKey(): string
     {
         return $this->clientKey;
     }
 
     /**
-     * @param string $clientKey
      * @throws \SyException\SyDouYin\DouYinException
      */
     public function setClientKey(string $clientKey)
@@ -62,16 +60,12 @@ class ConfigApp
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getClientSecret() : string
+    public function getClientSecret(): string
     {
         return $this->clientSecret;
     }
 
     /**
-     * @param string $clientSecret
      * @throws \SyException\SyDouYin\DouYinException
      */
     public function setClientSecret(string $clientSecret)

@@ -5,12 +5,14 @@
  * Date: 2021/4/15 0015
  * Time: 13:39
  */
+
 namespace SyException\DouYin;
 
 use SyException\BaseException;
 
 /**
  * Class DouYinAccountException
+ *
  * @package SyException\DouYin
  */
 class DouYinAccountException extends BaseException
