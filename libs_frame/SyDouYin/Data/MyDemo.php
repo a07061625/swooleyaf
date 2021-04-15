@@ -5,6 +5,7 @@
  * Date: 2021/4/15 0015
  * Time: 17:12
  */
+
 namespace SyDouYin\Data;
 
 use SyDouYin\BaseData;
@@ -12,6 +13,7 @@ use SyDouYin\Util;
 
 /**
  * xxx
+ *
  * @package SyDouYin\Data
  */
 class MyDemo extends BaseData
@@ -27,7 +29,7 @@ class MyDemo extends BaseData
     {
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $this->getContent();
 
