@@ -5,6 +5,7 @@
  * Date: 2021/4/15 0015
  * Time: 17:12
  */
+
 namespace SyDouYin\Search;
 
 use SyDouYin\BaseSearch;
@@ -12,6 +13,7 @@ use SyDouYin\Util;
 
 /**
  * xxx
+ *
  * @package SyDouYin\Search
  */
 class MyDemo extends BaseSearch
@@ -27,7 +29,7 @@ class MyDemo extends BaseSearch
     {
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         $this->getContent();
 

@@ -17,6 +17,7 @@ abstract class Base
 {
     /**
      * 应用标识
+     *
      * @var string
      */
     protected $clientKey = '';
@@ -54,6 +55,8 @@ abstract class Base
         $this->clientKey = $clientKey;
     }
 
+    abstract public function getDetail(): array;
+
     protected function getContent()
     {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceHost . $this->serviceUri;
@@ -65,6 +68,4 @@ abstract class Base
             $this->curlConfigs[CURLOPT_TIMEOUT_MS] = 2000;
         }
     }
-
-    abstract public function getDetail(): array;
 }

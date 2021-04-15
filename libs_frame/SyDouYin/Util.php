@@ -12,6 +12,7 @@ use SyTool\Tool;
 
 /**
  * Class Util
+ *
  * @package SyDouYin
  */
 abstract class Util
@@ -37,15 +38,18 @@ abstract class Util
 
     /**
      * 发送服务请求
-     * @param \SyDouYin\Base $service 服务请求对象
-     * @param int $errorCode 异常错误码
+     *
+     * @param \SyDouYin\Base $service   服务请求对象
+     * @param int            $errorCode 异常错误码
+     *
      * @return array 请求结果
+     *
      * @throws \SyException\Common\CheckException
      */
-    public static function sendServiceRequest(Base $service, int $errorCode) : array
+    public static function sendServiceRequest(Base $service, int $errorCode): array
     {
         $resArr = [
-            'code' => 0
+            'code' => 0,
         ];
 
         $curlConfigs = $service->getDetail();
@@ -53,13 +57,14 @@ abstract class Util
         if ($sendRes['res_no'] > 0) {
             $resArr['code'] = $errorCode;
             $resArr['msg'] = $sendRes['res_msg'];
+
             return $resArr;
         }
 
         $rspData = Tool::jsonDecode($sendRes['res_content']);
         if (isset($rspData['data']['error_code'])) {
             $rspCode = (int)$rspData['data']['error_code'];
-            if ($rspCode == 0) {
+            if (0 == $rspCode) {
                 $resArr['data'] = $rspData;
             } else {
                 $resArr['code'] = $errorCode;

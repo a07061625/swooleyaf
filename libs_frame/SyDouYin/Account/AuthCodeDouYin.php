@@ -5,6 +5,7 @@
  * Date: 2021/4/15 0015
  * Time: 17:12
  */
+
 namespace SyDouYin\Account;
 
 use SyConstant\ErrorCode;
@@ -16,6 +17,7 @@ use SyTool\Tool;
 
 /**
  * 抖音获取授权临时票据
+ *
  * @package SyDouYin\Account
  */
 class AuthCodeDouYin extends BaseAccount
@@ -38,17 +40,18 @@ class AuthCodeDouYin extends BaseAccount
 
     /**
      * @param array $scopes 授权作用域列表
+     *
      * @throws \SyException\DouYin\DouYinAccountException
      */
     public function setScopes(array $scopes)
     {
         $trueScopes = [];
         foreach ($scopes as $eKey => $eVal) {
-            $trueKey = is_string($eKey) ? trim($eKey) : '';
-            if (strlen($trueKey) == 0) {
+            $trueKey = \is_string($eKey) ? trim($eKey) : '';
+            if (0 == \strlen($trueKey)) {
                 continue;
             }
-            if (!in_array($eVal, [0, 1], true)) {
+            if (!\in_array($eVal, [0, 1], true)) {
                 continue;
             }
             $trueScopes[$trueKey] = $eVal;
@@ -69,6 +72,7 @@ class AuthCodeDouYin extends BaseAccount
 
     /**
      * @param string $redirectUri 回调地址
+     *
      * @throws \SyException\DouYin\DouYinAccountException
      */
     public function setRedirectUri(string $redirectUri)
@@ -82,18 +86,19 @@ class AuthCodeDouYin extends BaseAccount
 
     /**
      * @param string $state 状态码
+     *
      * @throws \SyException\DouYin\DouYinAccountException
      */
     public function setState(string $state)
     {
-        if (strlen($state) > 0) {
+        if (\strlen($state) > 0) {
             $this->reqData['state'] = $state;
         } else {
             throw new DouYinAccountException('状态码不合法', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);
         }
     }
 
-    public function getDetail() : array
+    public function getDetail(): array
     {
         if (!isset($this->reqData['scope'])) {
             throw new DouYinAccountException('授权作用域不能为空', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);

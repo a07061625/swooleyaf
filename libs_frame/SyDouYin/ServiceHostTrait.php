@@ -5,6 +5,7 @@
  * Date: 2021/4/15 0015
  * Time: 15:49
  */
+
 namespace SyDouYin;
 
 use SyConstant\ErrorCode;
@@ -12,6 +13,7 @@ use SyException\DouYin\DouYinException;
 
 /**
  * Trait ServiceHostTrait
+ *
  * @package SyDouYin
  */
 trait ServiceHostTrait
