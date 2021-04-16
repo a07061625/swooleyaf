@@ -16,17 +16,17 @@ use SyException\DouYin\DouYinAccountException;
 use SyTool\Tool;
 
 /**
- * 抖音获取授权临时票据
+ * 头条获取授权临时票据
  *
  * @package SyDouYin\Account
  */
-class AuthCodeDouYin extends BaseAccount
+class AuthCodeTouTiao extends BaseAccount
 {
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
-        $this->serviceHost = Util::getServiceHost(Util::SERVICE_HOST_TYPE_DOUYIN);
-        $this->serviceUri = '/platform/oauth/connect/';
+        $this->serviceHost = Util::getServiceHost(Util::SERVICE_HOST_TYPE_TOUTIAO);
+        $this->serviceUri = '/oauth/authorize/';
         $this->reqData = [
             'client_key' => $this->clientKey,
             'response_type' => 'code',
@@ -40,34 +40,22 @@ class AuthCodeDouYin extends BaseAccount
 
     /**
      * @param array $scopes 授权作用域列表
-     *
      * @throws \SyException\DouYin\DouYinAccountException
      */
     public function setScopes(array $scopes)
     {
         $trueScopes = [];
-        foreach ($scopes as $eKey => $eVal) {
-            $trueKey = \is_string($eKey) ? trim($eKey) : '';
-            if (0 == \strlen($trueKey)) {
-                continue;
+        foreach ($scopes as $eScope) {
+            $trueScope = \is_string($eScope) ? trim($eScope) : '';
+            if (\strlen($trueScope) > 0) {
+                $trueScopes[$trueScope] = 1;
             }
-            if (!\in_array($eVal, [0, 1], true)) {
-                continue;
-            }
-            $trueScopes[$trueKey] = $eVal;
         }
         if (empty($trueScopes)) {
             throw new DouYinAccountException('授权作用域不能为空', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);
         }
 
-        $scopeStr1 = '';
-        $scopeStr2 = '';
-        foreach ($trueScopes as $key => $val) {
-            $scopeStr1 .= ',' . $key;
-            $scopeStr2 .= ',' . $key . ',' . $val;
-        }
-        $this->reqData['scope'] = substr($scopeStr1, 1);
-        $this->reqData['optionalScope'] = substr($scopeStr2, 1);
+        $this->reqData['scope'] = implode(',', array_keys($trueScopes));
     }
 
     /**

@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: 姜伟
  * Date: 2021/4/15 0015
- * Time: 15:50
+ * Time: 17:12
  */
 
 namespace SyDouYin\Account;
@@ -15,23 +15,23 @@ use SyDouYin\ServiceHostTrait;
 use SyException\DouYin\DouYinAccountException;
 
 /**
- * 获取用户授权第三方接口调用的凭证access_token；该接口适用于抖音/头条授权
+ * 获取接口调用的凭证client_access_token，主要用于调用不需要用户授权就可以调用的接口；该接口适用于抖音/头条授权
  *
  * @package SyDouYin\Account
  */
-class AccessToken extends BaseAccount
+class ClientToken extends BaseAccount
 {
     use ServiceHostTrait;
 
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
-        $this->serviceUri = '/oauth/access_token/';
+        $this->serviceUri = '/oauth/client_token/';
         $config = DouYinConfigSingleton::getInstance()->getAppConfig($clientKey);
         $this->reqData = [
             'client_key' => $config->getClientKey(),
             'client_secret' => $config->getClientSecret(),
-            'grant_type' => 'authorization_code',
+            'grant_type' => 'client_credential',
         ];
     }
 
@@ -39,27 +39,10 @@ class AccessToken extends BaseAccount
     {
     }
 
-    /**
-     * @param string $code 授权码
-     *
-     * @throws \SyException\DouYin\DouYinAccountException
-     */
-    public function setCode(string $code)
-    {
-        if (\strlen($code) > 0) {
-            $this->reqData['code'] = $code;
-        } else {
-            throw new DouYinAccountException('授权码不合法', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);
-        }
-    }
-
     public function getDetail(): array
     {
         if (strlen($this->serviceHost) == 0) {
             throw new DouYinAccountException('服务域名不能为空', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);
-        }
-        if (!isset($this->reqData['code'])) {
-            throw new DouYinAccountException('授权码不能为空', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);
         }
         $this->serviceUri .= '?' . http_build_query($this->reqData);
         $this->getContent();
