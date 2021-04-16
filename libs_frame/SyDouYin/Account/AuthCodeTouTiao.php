@@ -40,6 +40,7 @@ class AuthCodeTouTiao extends BaseAccount
 
     /**
      * @param array $scopes 授权作用域列表
+     *
      * @throws \SyException\DouYin\DouYinAccountException
      */
     public function setScopes(array $scopes)
