@@ -10,7 +10,6 @@ namespace SyDouYin\Account;
 
 use SyConstant\ErrorCode;
 use SyDouYin\BaseAccount;
-use SyDouYin\ServiceHostTrait;
 use SyException\DouYin\DouYinAccountException;
 
 /**
@@ -20,11 +19,10 @@ use SyException\DouYin\DouYinAccountException;
  */
 class AccessTokenRefresh extends BaseAccount
 {
-    use ServiceHostTrait;
-
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
+        $this->serviceHostStatus = true;
         $this->serviceUri = '/oauth/refresh_token/';
         $this->reqData = [
             'client_key' => $this->clientKey,
@@ -52,9 +50,6 @@ class AccessTokenRefresh extends BaseAccount
 
     public function getDetail(): array
     {
-        if (0 == \strlen($this->serviceHost)) {
-            throw new DouYinAccountException('服务域名不能为空', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);
-        }
         if (!isset($this->reqData['refresh_token'])) {
             throw new DouYinAccountException('刷新令牌不能为空', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);
         }
