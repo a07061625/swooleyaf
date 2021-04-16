@@ -96,6 +96,32 @@ abstract class Base
 
     abstract public function getDetail(): array;
 
+    /**
+     * 获取访问令牌
+     * @param string $openId 用户openid
+     * @param string $hostType 服务域名类型
+     * @return string 访问令牌
+     * @throws \SyException\Common\CheckException
+     * @throws \SyException\DouYin\DouYinAccountException
+     * @throws \SyException\DouYin\DouYinException
+     */
+    protected function getAccessToken(string $openId, string $hostType = '') : string
+    {
+        if (strlen($hostType) == 0) {
+            return Util::getAccessToken([
+                'client_key' => $this->clientKey,
+                'host_type' => $this->serviceHostType,
+                'open_id' => $openId,
+            ]);
+        } else {
+            return Util::getAccessToken([
+                'client_key' => $this->clientKey,
+                'host_type' => $hostType,
+                'open_id' => $openId,
+            ]);
+        }
+    }
+
     protected function getContent()
     {
         $this->curlConfigs[CURLOPT_URL] = $this->serviceHost . $this->serviceUri;

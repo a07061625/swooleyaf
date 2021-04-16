@@ -9,6 +9,7 @@
 namespace SyDouYin;
 
 use DesignPatterns\Factories\CacheSimpleFactory;
+use DesignPatterns\Singletons\DouYinConfigSingleton;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
 use SyDouYin\Account\AccessToken;
@@ -99,13 +100,11 @@ abstract class Util
     /**
      * 获取访问令牌
      *
-     * @param array $data 请求参数
-     *                    <pre>
+     * @param array $data 请求参数<pre>
      *                    client_key: 必填 string 应用标识
      *                    host_type: 必填 string 服务域名类型
      *                    open_id: 必填 string 用户openid
-     *                    auth_code: 选填 string 授权码
-     *                    </pre>
+     *                    auth_code: 选填 string 授权码</pre>
      *
      * @return string 访问令牌
      *
@@ -117,7 +116,12 @@ abstract class Util
     {
         $nowTime = Tool::getNowTime();
         $redisKey = self::getCacheKey($data['client_key'], $data['host_type'], $data['open_id']);
-        if (!\is_string($data['auth_code'])) {
+        if (\is_string($data['auth_code'])) {
+            $atObj = new AccessToken($data['client_key']);
+            $atObj->setServiceHost($data['host_type']);
+            $atObj->setCode($data['auth_code']);
+            $reqRes = self::sendServiceRequest($atObj, ErrorCode::DOUYIN_REQ_ERROR);
+        } else {
             $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
             if (isset($redisData['unique_key']) && ($redisData['unique_key'] == $redisKey)
                 && isset($redisData['at_expire']) && ($redisData['at_expire'] >= $nowTime)) {
@@ -136,11 +140,6 @@ abstract class Util
             $atrObj->setServiceHost($data['host_type']);
             $atrObj->setRefreshToken($refreshToken);
             $reqRes = self::sendServiceRequest($atrObj, ErrorCode::DOUYIN_REQ_ERROR);
-        } else {
-            $atObj = new AccessToken($data['client_key']);
-            $atObj->setServiceHost($data['host_type']);
-            $atObj->setCode($data['auth_code']);
-            $reqRes = self::sendServiceRequest($atObj, ErrorCode::DOUYIN_REQ_ERROR);
         }
 
         $originCode = isset($reqRes['data']['data']['error_code']) ? (int)['data']['data']['error_code'] : -1;
@@ -166,12 +165,10 @@ abstract class Util
     /**
      * 获取客户端令牌
      *
-     * @param array $data 请求参数
-     *                    <pre>
+     * @param array $data 请求参数<pre>
      *                    client_key: 必填 string 应用标识
      *                    host_type: 必填 string 服务域名类型
-     *                    open_id: 必填 string 用户openid
-     *                    </pre>
+     *                    open_id: 必填 string 用户openid</pre>
      *
      * @return string 客户端令牌
      *
@@ -217,5 +214,19 @@ abstract class Util
     private static function getCacheKey(string $clientKey, string $hostType, string $openId): string
     {
         return Project::REDIS_PREFIX_DOUYIN_APP . md5($clientKey . '_' . $hostType . '_' . $openId);
+    }
+
+    /**
+     * 解密手机号码数据
+     * @param string $clientKey 应用标识
+     * @param string $encryptedData 手机号码数据
+     * @return false|string 手机号码
+     * @throws \SyException\DouYin\DouYinException
+     */
+    public static function decryptMobile(string $clientKey, string $encryptedData)
+    {
+        $config = DouYinConfigSingleton::getInstance()->getAppConfig($clientKey);
+        $iv = substr($config->getClientSecret(), 0, 16);
+        return openssl_decrypt($encryptedData, 'aes-256-cbc', $config->getClientSecret(), 0, $iv);
     }
 }

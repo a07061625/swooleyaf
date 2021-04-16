@@ -13,16 +13,16 @@ use SyDouYin\BaseUser;
 use SyException\DouYin\DouYinUserException;
 
 /**
- * 获取用户最近的粉丝列表，不保证顺序；目前可查询的粉丝数上限5千
+ * 获取用户的关注列表
  *
  * @package SyDouYin\User
  */
-class FansList extends BaseUser
+class FollowingList extends BaseUser
 {
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
-        $this->serviceUri = '/fans/list/';
+        $this->serviceUri = '/following/list/';
         $this->reqData = [
             'cursor' => 0,
             'count' => 10,
