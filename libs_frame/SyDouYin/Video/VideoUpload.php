@@ -46,6 +46,7 @@ class VideoUpload extends BaseVideo
 
     /**
      * @param string $video 上传视频文件
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setVideo(string $video)
@@ -59,10 +60,10 @@ class VideoUpload extends BaseVideo
 
         $file = new \finfo(FILEINFO_MIME_TYPE);
         $mimeType = $file->file($video);
-        if (!is_string($mimeType)) {
+        if (!\is_string($mimeType)) {
             throw new DouYinVideoException('获取上传视频文件类型失败', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
-        if (substr($mimeType, 0, 6) != 'video/') {
+        if ('video/' != substr($mimeType, 0, 6)) {
             throw new DouYinVideoException('上传视频文件类型不支持', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
 
@@ -83,7 +84,7 @@ class VideoUpload extends BaseVideo
         unset($this->reqData['open_id']);
         $this->getContent();
         $this->curlConfigs[CURLOPT_HTTPHEADER] = [
-            'Content-Type: multipart/form-data'
+            'Content-Type: multipart/form-data',
         ];
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = $this->reqData;

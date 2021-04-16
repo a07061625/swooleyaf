@@ -53,7 +53,7 @@ class VideoPartInitTouTiao extends BaseVideo
         $this->serviceUri .= '?' . http_build_query($this->reqData);
         $this->getContent();
         $this->curlConfigs[CURLOPT_HTTPHEADER] = [
-            'Content-Type: application/json'
+            'Content-Type: application/json',
         ];
         $this->curlConfigs[CURLOPT_POST] = true;
         $this->curlConfigs[CURLOPT_POSTFIELDS] = '{}';

@@ -203,6 +203,24 @@ abstract class Util
     }
 
     /**
+     * 解密手机号码数据
+     *
+     * @param string $clientKey     应用标识
+     * @param string $encryptedData 手机号码数据
+     *
+     * @return false|string 手机号码
+     *
+     * @throws \SyException\DouYin\DouYinException
+     */
+    public static function decryptMobile(string $clientKey, string $encryptedData)
+    {
+        $config = DouYinConfigSingleton::getInstance()->getAppConfig($clientKey);
+        $iv = substr($config->getClientSecret(), 0, 16);
+
+        return openssl_decrypt($encryptedData, 'aes-256-cbc', $config->getClientSecret(), 0, $iv);
+    }
+
+    /**
      * 获取缓存键名
      *
      * @param string $clientKey 应用标识
@@ -214,19 +232,5 @@ abstract class Util
     private static function getCacheKey(string $clientKey, string $hostType, string $openId): string
     {
         return Project::REDIS_PREFIX_DOUYIN_APP . md5($clientKey . '_' . $hostType . '_' . $openId);
-    }
-
-    /**
-     * 解密手机号码数据
-     * @param string $clientKey 应用标识
-     * @param string $encryptedData 手机号码数据
-     * @return false|string 手机号码
-     * @throws \SyException\DouYin\DouYinException
-     */
-    public static function decryptMobile(string $clientKey, string $encryptedData)
-    {
-        $config = DouYinConfigSingleton::getInstance()->getAppConfig($clientKey);
-        $iv = substr($config->getClientSecret(), 0, 16);
-        return openssl_decrypt($encryptedData, 'aes-256-cbc', $config->getClientSecret(), 0, $iv);
     }
 }
