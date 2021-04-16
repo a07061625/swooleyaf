@@ -45,10 +45,12 @@ abstract class Util
 
     /**
      * 获取服务域名
+     *
      * @param string $type 域名类型
+     *
      * @return string 服务域名
      */
-    public static function getServiceHost(string $type) : string
+    public static function getServiceHost(string $type): string
     {
         return Tool::getArrayVal(self::$totalServiceHost, $type, '');
     }
@@ -96,15 +98,18 @@ abstract class Util
 
     /**
      * 获取访问令牌
+     *
      * @param string $clientKey 应用标识
-     * @param string $hostType 服务域名类型
-     * @param string $authCode 授权码
+     * @param string $hostType  服务域名类型
+     * @param string $authCode  授权码
+     *
      * @return array 获取结果
+     *
      * @throws \SyException\Common\CheckException
      * @throws \SyException\DouYin\DouYinAccountException
      * @throws \SyException\DouYin\DouYinException
      */
-    public static function getAccessToken(string $clientKey, string $hostType, string $authCode = '') : array
+    public static function getAccessToken(string $clientKey, string $hostType, string $authCode = ''): array
     {
         $nowTime = Tool::getNowTime();
         $atContent = $hostType . 'at_content';
@@ -112,7 +117,7 @@ abstract class Util
         $rtContent = $hostType . 'rt_content';
         $rtExpire = $hostType . 'rt_expire';
         $redisKey = Project::REDIS_PREFIX_DOUYIN_APP . $clientKey;
-        if (strlen($authCode) == 0) {
+        if (0 == \strlen($authCode)) {
             $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
             if (isset($redisData['unique_key']) && ($redisData['unique_key'] == $redisKey)
                 && isset($redisData[$atExpire]) && ($redisData[$atExpire] >= $nowTime)) {
@@ -125,7 +130,7 @@ abstract class Util
             if (isset($redisData[$rtExpire]) && ($redisData[$rtExpire] > $nowTime)) {
                 $refreshToken = $redisData[$rtContent];
             }
-            if (strlen($refreshToken) == 0) {
+            if (0 == \strlen($refreshToken)) {
                 throw new DouYinException('获取访问令牌失败', ErrorCode::DOUYIN_PARAM_ERROR);
             }
 
@@ -141,9 +146,10 @@ abstract class Util
         }
 
         $originCode = isset($reqRes['data']['data']['error_code']) ? (int)['data']['data']['error_code'] : -1;
-        if ($originCode == 10010) {
+        if (10010 == $originCode) {
             throw new DouYinException('刷新令牌已过期,请重新授权', ErrorCode::DOUYIN_REQ_ERROR);
-        } elseif (!in_array($originCode, [0, 10008, 2190008])) {
+        }
+        if (!\in_array($originCode, [0, 10008, 2190008])) {
             throw new DouYinException($reqRes['msg'], ErrorCode::DOUYIN_REQ_ERROR);
         }
 
@@ -165,13 +171,16 @@ abstract class Util
 
     /**
      * 获取客户端令牌
+     *
      * @param string $clientKey 应用标识
-     * @param string $hostType 服务域名类型
+     * @param string $hostType  服务域名类型
+     *
      * @return string 客户端令牌
+     *
      * @throws \SyException\Common\CheckException
      * @throws \SyException\DouYin\DouYinException
      */
-    public static function getClientToken(string $clientKey, string $hostType) : string
+    public static function getClientToken(string $clientKey, string $hostType): string
     {
         $nowTime = Tool::getNowTime();
         $ctContent = $hostType . 'ct_content';

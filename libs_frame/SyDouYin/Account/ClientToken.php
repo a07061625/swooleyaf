@@ -41,7 +41,7 @@ class ClientToken extends BaseAccount
 
     public function getDetail(): array
     {
-        if (strlen($this->serviceHost) == 0) {
+        if (0 == \strlen($this->serviceHost)) {
             throw new DouYinAccountException('服务域名不能为空', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);
         }
         $this->serviceUri .= '?' . http_build_query($this->reqData);

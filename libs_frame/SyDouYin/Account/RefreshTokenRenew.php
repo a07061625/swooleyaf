@@ -36,6 +36,7 @@ class RefreshTokenRenew extends BaseAccount
 
     /**
      * @param string $refreshToken 刷新令牌
+     *
      * @throws \SyException\DouYin\DouYinAccountException
      */
     public function setRefreshToken(string $refreshToken)
