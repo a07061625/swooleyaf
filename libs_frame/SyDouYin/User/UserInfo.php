@@ -33,11 +33,12 @@ class UserInfo extends BaseUser
 
     /**
      * @param string $openId 用户openid
+     *
      * @throws \SyException\DouYin\DouYinUserException
      */
     public function setOpenId(string $openId)
     {
-        if (strlen($openId) > 0) {
+        if (\strlen($openId) > 0) {
             $this->reqData['open_id'] = $openId;
         } else {
             throw new DouYinUserException('用户openid不合法', ErrorCode::DOUYIN_USER_PARAM_ERROR);

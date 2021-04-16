@@ -13,6 +13,7 @@ use SyException\DouYin\DouYinException;
 
 /**
  * Class Base
+ *
  * @package SyDouYin
  */
 abstract class Base
@@ -32,11 +33,13 @@ abstract class Base
     protected $serviceHost = '';
     /**
      * 服务域名类型
+     *
      * @var string
      */
     protected $serviceHostType = '';
     /**
      * 服务域名状态 true:允许修改 false:不允许修改
+     *
      * @var bool
      */
     protected $serviceHostStatus = true;
@@ -65,7 +68,7 @@ abstract class Base
     public function __construct(string $clientKey)
     {
         $this->clientKey = $clientKey;
-        if (strlen($this->serviceHost) == 0) {
+        if (0 == \strlen($this->serviceHost)) {
             $this->setServiceHost(Util::SERVICE_HOST_TYPE_DOUYIN);
         }
         $this->serviceHostStatus = false;
@@ -73,7 +76,9 @@ abstract class Base
 
     /**
      * 设置服务域名
+     *
      * @param string $type 域名类型
+     *
      * @throws \SyException\DouYin\DouYinException
      */
     public function setServiceHost(string $type)
