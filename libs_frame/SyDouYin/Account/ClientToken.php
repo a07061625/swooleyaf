@@ -9,10 +9,7 @@
 namespace SyDouYin\Account;
 
 use DesignPatterns\Singletons\DouYinConfigSingleton;
-use SyConstant\ErrorCode;
 use SyDouYin\BaseAccount;
-use SyDouYin\ServiceHostTrait;
-use SyException\DouYin\DouYinAccountException;
 
 /**
  * 获取接口调用的凭证client_access_token，主要用于调用不需要用户授权就可以调用的接口；该接口适用于抖音/头条授权
@@ -21,11 +18,10 @@ use SyException\DouYin\DouYinAccountException;
  */
 class ClientToken extends BaseAccount
 {
-    use ServiceHostTrait;
-
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
+        $this->serviceHostStatus = true;
         $this->serviceUri = '/oauth/client_token/';
         $config = DouYinConfigSingleton::getInstance()->getAppConfig($clientKey);
         $this->reqData = [
@@ -41,9 +37,6 @@ class ClientToken extends BaseAccount
 
     public function getDetail(): array
     {
-        if (0 == \strlen($this->serviceHost)) {
-            throw new DouYinAccountException('服务域名不能为空', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);
-        }
         $this->serviceUri .= '?' . http_build_query($this->reqData);
         $this->getContent();
 

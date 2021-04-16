@@ -11,7 +11,6 @@ namespace SyDouYin\Account;
 use SyConstant\ErrorCode;
 use SyConstant\ProjectBase;
 use SyDouYin\BaseAccount;
-use SyDouYin\Util;
 use SyException\DouYin\DouYinAccountException;
 use SyTool\Tool;
 
@@ -25,7 +24,6 @@ class AuthCodeDouYin extends BaseAccount
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
-        $this->serviceHost = Util::getServiceHost(Util::SERVICE_HOST_TYPE_DOUYIN);
         $this->serviceUri = '/platform/oauth/connect/';
         $this->reqData = [
             'client_key' => $this->clientKey,

@@ -10,7 +10,6 @@ namespace SyDouYin\Account;
 
 use SyConstant\ErrorCode;
 use SyDouYin\BaseAccount;
-use SyDouYin\Util;
 use SyException\DouYin\DouYinAccountException;
 
 /**
@@ -23,7 +22,6 @@ class RefreshTokenRenew extends BaseAccount
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
-        $this->serviceHost = Util::getServiceHost(Util::SERVICE_HOST_TYPE_DOUYIN);
         $this->serviceUri = '/oauth/renew_refresh_token/';
         $this->reqData = [
             'client_key' => $this->clientKey,
