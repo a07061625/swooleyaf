@@ -16,58 +16,27 @@ use SyException\DouYin\DouYinAccountException;
 use SyTool\Tool;
 
 /**
- * 抖音获取授权临时票据
+ * 抖音获取静默授权临时票据
  *
  * @package SyDouYin\Account
  */
-class AuthCodeDouYin extends BaseAccount
+class AuthCodeDouYinSilent extends BaseAccount
 {
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
         $this->serviceHost = Util::getServiceHost(Util::SERVICE_HOST_TYPE_DOUYIN);
-        $this->serviceUri = '/platform/oauth/connect/';
+        $this->serviceUri = '/oauth/authorize/v2/';
         $this->reqData = [
             'client_key' => $this->clientKey,
             'response_type' => 'code',
+            'scope' => 'login_id',
             'state' => Tool::createNonceStr(8, 'numlower'),
         ];
     }
 
     private function __clone()
     {
-    }
-
-    /**
-     * @param array $scopes 授权作用域列表
-     *
-     * @throws \SyException\DouYin\DouYinAccountException
-     */
-    public function setScopes(array $scopes)
-    {
-        $trueScopes = [];
-        foreach ($scopes as $eKey => $eVal) {
-            $trueKey = \is_string($eKey) ? trim($eKey) : '';
-            if (0 == \strlen($trueKey)) {
-                continue;
-            }
-            if (!\in_array($eVal, [0, 1], true)) {
-                continue;
-            }
-            $trueScopes[$trueKey] = $eVal;
-        }
-        if (empty($trueScopes)) {
-            throw new DouYinAccountException('授权作用域不能为空', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);
-        }
-
-        $scopeStr1 = '';
-        $scopeStr2 = '';
-        foreach ($trueScopes as $key => $val) {
-            $scopeStr1 .= ',' . $key;
-            $scopeStr2 .= ',' . $key . ',' . $val;
-        }
-        $this->reqData['scope'] = substr($scopeStr1, 1);
-        $this->reqData['optionalScope'] = substr($scopeStr2, 1);
     }
 
     /**
@@ -100,9 +69,6 @@ class AuthCodeDouYin extends BaseAccount
 
     public function getDetail(): array
     {
-        if (!isset($this->reqData['scope'])) {
-            throw new DouYinAccountException('授权作用域不能为空', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);
-        }
         if (!isset($this->reqData['redirect_uri'])) {
             throw new DouYinAccountException('回调地址不能为空', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);
         }
