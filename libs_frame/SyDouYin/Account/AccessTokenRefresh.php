@@ -38,6 +38,7 @@ class AccessTokenRefresh extends BaseAccount
 
     /**
      * @param string $refreshToken 刷新令牌
+     *
      * @throws \SyException\DouYin\DouYinAccountException
      */
     public function setRefreshToken(string $refreshToken)
@@ -51,7 +52,7 @@ class AccessTokenRefresh extends BaseAccount
 
     public function getDetail(): array
     {
-        if (strlen($this->serviceHost) == 0) {
+        if (0 == \strlen($this->serviceHost)) {
             throw new DouYinAccountException('服务域名不能为空', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);
         }
         if (!isset($this->reqData['refresh_token'])) {
