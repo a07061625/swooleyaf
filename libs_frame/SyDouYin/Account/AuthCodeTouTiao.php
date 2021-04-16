@@ -24,8 +24,8 @@ class AuthCodeTouTiao extends BaseAccount
 {
     public function __construct(string $clientKey)
     {
+        $this->setServiceHost(Util::SERVICE_HOST_TYPE_TOUTIAO);
         parent::__construct($clientKey);
-        $this->serviceHost = Util::getServiceHost(Util::SERVICE_HOST_TYPE_TOUTIAO);
         $this->serviceUri = '/oauth/authorize/';
         $this->reqData = [
             'client_key' => $this->clientKey,

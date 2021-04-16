@@ -9,7 +9,6 @@
 namespace SyDouYin\Video;
 
 use SyDouYin\BaseVideo;
-use SyDouYin\Util;
 
 /**
  * xxx
@@ -21,7 +20,6 @@ class MyDemo extends BaseVideo
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
-        $this->serviceHost = Util::getServiceHost(Util::SERVICE_HOST_TYPE_DOUYIN);
         $this->serviceUri = '/xxx';
     }
 

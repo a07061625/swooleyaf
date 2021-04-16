@@ -11,7 +11,6 @@ namespace SyDouYin\Account;
 use DesignPatterns\Singletons\DouYinConfigSingleton;
 use SyConstant\ErrorCode;
 use SyDouYin\BaseAccount;
-use SyDouYin\ServiceHostTrait;
 use SyException\DouYin\DouYinAccountException;
 
 /**
@@ -21,11 +20,10 @@ use SyException\DouYin\DouYinAccountException;
  */
 class AccessToken extends BaseAccount
 {
-    use ServiceHostTrait;
-
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
+        $this->serviceHostStatus = true;
         $this->serviceUri = '/oauth/access_token/';
         $config = DouYinConfigSingleton::getInstance()->getAppConfig($clientKey);
         $this->reqData = [
@@ -55,9 +53,6 @@ class AccessToken extends BaseAccount
 
     public function getDetail(): array
     {
-        if (0 == \strlen($this->serviceHost)) {
-            throw new DouYinAccountException('服务域名不能为空', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);
-        }
         if (!isset($this->reqData['code'])) {
             throw new DouYinAccountException('授权码不能为空', ErrorCode::DOUYIN_ACCOUNT_PARAM_ERROR);
         }
