@@ -97,27 +97,15 @@ abstract class Util
     }
 
     /**
-     * 获取缓存键名
-     * @param string $clientKey 应用标识
-     * @param string $hostType 服务域名类型
-     * @param string $openId 用户openid
-     * @return string 缓存键名
-     */
-    private static function getCacheKey(string $clientKey, string $hostType, string $openId) : string
-    {
-        return Project::REDIS_PREFIX_DOUYIN_APP . md5($clientKey . '_' . $hostType . '_' . $openId);
-    }
-
-    /**
      * 获取访问令牌
      *
      * @param array $data 请求参数
-     * <pre>
-     *   client_key: 必填 string 应用标识
-     *   host_type: 必填 string 服务域名类型
-     *   open_id: 必填 string 用户openid
-     *   auth_code: 选填 string 授权码
-     * </pre>
+     *                    <pre>
+     *                    client_key: 必填 string 应用标识
+     *                    host_type: 必填 string 服务域名类型
+     *                    open_id: 必填 string 用户openid
+     *                    auth_code: 选填 string 授权码
+     *                    </pre>
      *
      * @return string 访问令牌
      *
@@ -125,11 +113,11 @@ abstract class Util
      * @throws \SyException\DouYin\DouYinAccountException
      * @throws \SyException\DouYin\DouYinException
      */
-    public static function getAccessToken(array $data) : string
+    public static function getAccessToken(array $data): string
     {
         $nowTime = Tool::getNowTime();
         $redisKey = self::getCacheKey($data['client_key'], $data['host_type'], $data['open_id']);
-        if (!is_string($data['auth_code'])) {
+        if (!\is_string($data['auth_code'])) {
             $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
             if (isset($redisData['unique_key']) && ($redisData['unique_key'] == $redisKey)
                 && isset($redisData['at_expire']) && ($redisData['at_expire'] >= $nowTime)) {
@@ -179,11 +167,11 @@ abstract class Util
      * 获取客户端令牌
      *
      * @param array $data 请求参数
-     * <pre>
-     *   client_key: 必填 string 应用标识
-     *   host_type: 必填 string 服务域名类型
-     *   open_id: 必填 string 用户openid
-     * </pre>
+     *                    <pre>
+     *                    client_key: 必填 string 应用标识
+     *                    host_type: 必填 string 服务域名类型
+     *                    open_id: 必填 string 用户openid
+     *                    </pre>
      *
      * @return string 客户端令牌
      *
@@ -215,5 +203,19 @@ abstract class Util
         CacheSimpleFactory::getRedisInstance()->expire($redisKey, 86400);
 
         return $reqRes['data']['data']['access_token'];
+    }
+
+    /**
+     * 获取缓存键名
+     *
+     * @param string $clientKey 应用标识
+     * @param string $hostType  服务域名类型
+     * @param string $openId    用户openid
+     *
+     * @return string 缓存键名
+     */
+    private static function getCacheKey(string $clientKey, string $hostType, string $openId): string
+    {
+        return Project::REDIS_PREFIX_DOUYIN_APP . md5($clientKey . '_' . $hostType . '_' . $openId);
     }
 }
