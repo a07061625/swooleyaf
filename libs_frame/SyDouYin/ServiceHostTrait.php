@@ -20,8 +20,9 @@ trait ServiceHostTrait
 {
     public function setServiceHost(string $type)
     {
-        if (isset(Util::$totalServiceHost[$type])) {
-            $this->serviceHost = Util::$totalServiceHost[$type];
+        $host = Util::getServiceHost($type);
+        if (strlen($host) > 0) {
+            $this->serviceHost = $host;
         } else {
             throw new DouYinException('服务域名不支持', ErrorCode::DOUYIN_PARAM_ERROR);
         }

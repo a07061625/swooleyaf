@@ -21,7 +21,7 @@ class MyDemo extends BaseUser
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
-        $this->serviceHost = Util::SERVICE_HOST_TYPE_DOUYIN;
+        $this->serviceHost = Util::getServiceHost(Util::SERVICE_HOST_TYPE_DOUYIN);
         $this->serviceUri = '/xxx';
     }
 
