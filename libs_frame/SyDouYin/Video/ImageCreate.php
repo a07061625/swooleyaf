@@ -36,6 +36,7 @@ class ImageCreate extends BaseVideo
 
     /**
      * @param string $imageId 图片ID
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setImageId(string $imageId)
@@ -49,6 +50,7 @@ class ImageCreate extends BaseVideo
 
     /**
      * @param string $text 图片标题
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setText(string $text)
@@ -62,6 +64,7 @@ class ImageCreate extends BaseVideo
 
     /**
      * @param string $poiId 地理位置id
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setPoiId(string $poiId)
@@ -75,6 +78,7 @@ class ImageCreate extends BaseVideo
 
     /**
      * @param string $poiName 地理位置名称
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setPoiName(string $poiName)
@@ -88,6 +92,7 @@ class ImageCreate extends BaseVideo
 
     /**
      * @param string $microAppId 小程序id
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setMicroAppId(string $microAppId)
@@ -101,6 +106,7 @@ class ImageCreate extends BaseVideo
 
     /**
      * @param string $microAppTitle 小程序标题
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setMicroAppTitle(string $microAppTitle)
@@ -114,6 +120,7 @@ class ImageCreate extends BaseVideo
 
     /**
      * @param string $microAppUrl 小程序页面地址
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setMicroAppUrl(string $microAppUrl)
@@ -127,14 +134,15 @@ class ImageCreate extends BaseVideo
 
     /**
      * @param array $atUsers 通知用户列表
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setAtUsers(array $atUsers)
     {
         $trueUsers = [];
         foreach ($atUsers as $eUser) {
-            $openId = is_string($eUser) ? trim($eUser) : '';
-            if (strlen($openId) > 0) {
+            $openId = \is_string($eUser) ? trim($eUser) : '';
+            if (\strlen($openId) > 0) {
                 $trueUsers[$openId] = 1;
             }
         }

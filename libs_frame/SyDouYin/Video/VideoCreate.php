@@ -36,6 +36,7 @@ class VideoCreate extends BaseVideo
 
     /**
      * @param string $videoId 视频ID
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setVideoId(string $videoId)
@@ -49,6 +50,7 @@ class VideoCreate extends BaseVideo
 
     /**
      * @param string $text 视频标题
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setText(string $text)
@@ -62,6 +64,7 @@ class VideoCreate extends BaseVideo
 
     /**
      * @param string $poiId 地理位置id
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setPoiId(string $poiId)
@@ -75,6 +78,7 @@ class VideoCreate extends BaseVideo
 
     /**
      * @param string $poiName 地理位置名称
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setPoiName(string $poiName)
@@ -88,6 +92,7 @@ class VideoCreate extends BaseVideo
 
     /**
      * @param string $microAppId 小程序id
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setMicroAppId(string $microAppId)
@@ -101,6 +106,7 @@ class VideoCreate extends BaseVideo
 
     /**
      * @param string $microAppTitle 小程序标题
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setMicroAppTitle(string $microAppTitle)
@@ -114,6 +120,7 @@ class VideoCreate extends BaseVideo
 
     /**
      * @param string $microAppUrl 小程序页面地址
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setMicroAppUrl(string $microAppUrl)
@@ -127,6 +134,7 @@ class VideoCreate extends BaseVideo
 
     /**
      * @param string $articleId 文章ID
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setArticleId(string $articleId)
@@ -140,6 +148,7 @@ class VideoCreate extends BaseVideo
 
     /**
      * @param string $articleTitle 文章自定义标题
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setArticleTitle(string $articleTitle)
@@ -153,6 +162,7 @@ class VideoCreate extends BaseVideo
 
     /**
      * @param string $gameId 游戏id
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setGameId(string $gameId)
@@ -166,6 +176,7 @@ class VideoCreate extends BaseVideo
 
     /**
      * @param string $gameContent 游戏个性化参数
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setGameContent(string $gameContent)
@@ -179,6 +190,7 @@ class VideoCreate extends BaseVideo
 
     /**
      * @param float $coverTsp 视频封面帧时间点,单位:秒
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setCoverTsp(float $coverTsp)
@@ -192,14 +204,15 @@ class VideoCreate extends BaseVideo
 
     /**
      * @param array $atUsers 通知用户列表
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setAtUsers(array $atUsers)
     {
         $trueUsers = [];
         foreach ($atUsers as $eUser) {
-            $openId = is_string($eUser) ? trim($eUser) : '';
-            if (strlen($openId) > 0) {
+            $openId = \is_string($eUser) ? trim($eUser) : '';
+            if (\strlen($openId) > 0) {
                 $trueUsers[$openId] = 1;
             }
         }
@@ -212,6 +225,7 @@ class VideoCreate extends BaseVideo
 
     /**
      * @param string $customImageUrl 自定义封面图片url
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setCustomImageUrl(string $customImageUrl)

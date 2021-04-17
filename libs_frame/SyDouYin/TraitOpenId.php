@@ -5,6 +5,7 @@
  * Date: 2021/4/17 0017
  * Time: 9:35
  */
+
 namespace SyDouYin;
 
 use SyConstant\ErrorCode;
@@ -12,6 +13,7 @@ use SyException\DouYin\DouYinException;
 
 /**
  * Trait TraitOpenId
+ *
  * @package SyDouYin
  */
 trait TraitOpenId

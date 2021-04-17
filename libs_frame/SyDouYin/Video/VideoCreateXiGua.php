@@ -41,6 +41,7 @@ class VideoCreateXiGua extends BaseVideo
 
     /**
      * @param string $videoId 视频ID
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setVideoId(string $videoId)
@@ -54,6 +55,7 @@ class VideoCreateXiGua extends BaseVideo
 
     /**
      * @param string $text 视频标题
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setText(string $text)
@@ -71,6 +73,7 @@ class VideoCreateXiGua extends BaseVideo
 
     /**
      * @param string $abstract 视频简介
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setAbstract(string $abstract)
@@ -92,6 +95,7 @@ class VideoCreateXiGua extends BaseVideo
 
     /**
      * @param int $coverTsp 视频封面帧时间点,单位为毫秒
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setCoverTsp(int $coverTsp)

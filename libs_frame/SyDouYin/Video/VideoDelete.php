@@ -36,6 +36,7 @@ class VideoDelete extends BaseVideo
 
     /**
      * @param string $itemId 视频ID
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setVideoId(string $itemId)
