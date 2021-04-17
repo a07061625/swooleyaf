@@ -36,14 +36,15 @@ class VideoData extends BaseVideo
 
     /**
      * @param array $itemIds 视频ID列表
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setItemIds(array $itemIds)
     {
         $videoIdList = [];
         foreach ($itemIds as $eItemId) {
-            $videoId = is_string($eItemId) ? trim($eItemId) : '';
-            if (strlen($videoId) > 0) {
+            $videoId = \is_string($eItemId) ? trim($eItemId) : '';
+            if (\strlen($videoId) > 0) {
                 $videoIdList[$videoId] = 1;
             }
         }

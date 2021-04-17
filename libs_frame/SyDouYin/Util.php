@@ -167,13 +167,14 @@ abstract class Util
      * 获取客户端令牌
      *
      * @param string $clientKey 应用标识
-     * @param string $hostType 服务域名类型
+     * @param string $hostType  服务域名类型
+     *
      * @return string 客户端令牌
      *
      * @throws \SyException\Common\CheckException
      * @throws \SyException\DouYin\DouYinException
      */
-    public static function getClientToken(string $clientKey, string $hostType) : string
+    public static function getClientToken(string $clientKey, string $hostType): string
     {
         $nowTime = Tool::getNowTime();
         $redisKey = Project::REDIS_PREFIX_DOUYIN_CLIENT_TOKEN . $clientKey . '_' . $hostType;

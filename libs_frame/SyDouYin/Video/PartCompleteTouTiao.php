@@ -35,6 +35,7 @@ class PartCompleteTouTiao extends BaseVideo
 
     /**
      * @param string $uploadId 分片上传标记
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setUploadId(string $uploadId)
