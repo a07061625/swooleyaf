@@ -15,6 +15,7 @@ use SyConstant\Project;
 use SyDouYin\Account\AccessToken;
 use SyDouYin\Account\AccessTokenRefresh;
 use SyDouYin\Account\ClientToken;
+use SyDouYin\Tool\JsApiTicket;
 use SyException\DouYin\DouYinException;
 use SyTool\Tool;
 
@@ -125,7 +126,7 @@ abstract class Util
         } else {
             $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
             if (isset($redisData['unique_key']) && ($redisData['unique_key'] == $redisKey)
-                && isset($redisData['at_expire']) && ($redisData['at_expire'] >= $nowTime)) {
+                && ($redisData['at_expire'] >= $nowTime)) {
                 return $redisData['at_content'];
             }
 
@@ -180,8 +181,8 @@ abstract class Util
         $redisKey = Project::REDIS_PREFIX_DOUYIN_CLIENT_TOKEN . $clientKey . '_' . $hostType;
         $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
         if (isset($redisData['unique_key']) && ($redisData['unique_key'] == $redisKey)
-            && isset($redisData['ct_expire']) && ($redisData['ct_expire'] >= $nowTime)) {
-            return $redisData['ct_content'];
+            && ($redisData['expire'] >= $nowTime)) {
+            return $redisData['content'];
         }
 
         $ctObj = new ClientToken($clientKey);
@@ -193,12 +194,45 @@ abstract class Util
 
         CacheSimpleFactory::getRedisInstance()->hMSet($redisKey, [
             'unique_key' => $redisKey,
-            'ct_content' => $reqRes['data']['data']['access_token'],
-            'ct_expire' => (int)($nowTime + $reqRes['data']['data']['expires_in'] - 10),
+            'content' => $reqRes['data']['data']['access_token'],
+            'expire' => (int)($nowTime + $reqRes['data']['data']['expires_in'] - 10),
         ]);
         CacheSimpleFactory::getRedisInstance()->expire($redisKey, 8000);
 
         return $reqRes['data']['data']['access_token'];
+    }
+
+    /**
+     * 获取JS接口令牌
+     * @param string $clientKey 应用标识
+     * @return string JS接口令牌
+     * @throws \SyException\Common\CheckException
+     * @throws \SyException\DouYin\DouYinException
+     */
+    public static function getJsTicket(string $clientKey) : string
+    {
+        $nowTime = Tool::getNowTime();
+        $redisKey = Project::REDIS_PREFIX_DOUYIN_JSAPI_TICKET . $clientKey;
+        $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
+        if (isset($redisData['unique_key']) && ($redisData['unique_key'] == $redisKey)
+            && ($redisData['expire'] >= $nowTime)) {
+            return $redisData['content'];
+        }
+
+        $jtObj = new JsApiTicket($clientKey);
+        $reqRes = self::sendServiceRequest($jtObj, ErrorCode::DOUYIN_TOOL_REQ_ERROR);
+        if ($reqRes['code'] > 0) {
+            throw new DouYinException($reqRes['msg'], ErrorCode::DOUYIN_REQ_ERROR);
+        }
+
+        CacheSimpleFactory::getRedisInstance()->hMSet($redisKey, [
+            'unique_key' => $redisKey,
+            'content' => $reqRes['data']['data']['ticket'],
+            'expire' => (int)($nowTime + $reqRes['data']['data']['expires_in'] - 10),
+        ]);
+        CacheSimpleFactory::getRedisInstance()->expire($redisKey, 8000);
+
+        return $reqRes['data']['data']['ticket'];
     }
 
     /**
