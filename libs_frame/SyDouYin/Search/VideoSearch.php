@@ -67,11 +67,12 @@ class VideoSearch extends BaseSearch
 
     /**
      * @param string $keyword 关键词
+     *
      * @throws \SyException\DouYin\DouYinSearchException
      */
     public function setKeyword(string $keyword)
     {
-        if (strlen($keyword) > 0) {
+        if (\strlen($keyword) > 0) {
             $this->reqData['keyword'] = $keyword;
         } else {
             throw new DouYinSearchException('关键词不合法', ErrorCode::DOUYIN_SEARCH_PARAM_ERROR);

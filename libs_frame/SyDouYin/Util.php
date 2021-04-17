@@ -204,12 +204,15 @@ abstract class Util
 
     /**
      * 获取JS接口令牌
+     *
      * @param string $clientKey 应用标识
+     *
      * @return string JS接口令牌
+     *
      * @throws \SyException\Common\CheckException
      * @throws \SyException\DouYin\DouYinException
      */
-    public static function getJsTicket(string $clientKey) : string
+    public static function getJsTicket(string $clientKey): string
     {
         $nowTime = Tool::getNowTime();
         $redisKey = Project::REDIS_PREFIX_DOUYIN_JSAPI_TICKET . $clientKey;

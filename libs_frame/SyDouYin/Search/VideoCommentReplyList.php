@@ -64,11 +64,12 @@ class VideoCommentReplyList extends BaseSearch
 
     /**
      * @param string $secVideoId 加密视频id
+     *
      * @throws \SyException\DouYin\DouYinSearchException
      */
     public function setSecVideoId(string $secVideoId)
     {
-        if (strlen($secVideoId) > 0) {
+        if (\strlen($secVideoId) > 0) {
             $this->reqData['sec_item_id'] = $secVideoId;
         } else {
             throw new DouYinSearchException('加密视频id不合法', ErrorCode::DOUYIN_SEARCH_PARAM_ERROR);
@@ -77,11 +78,12 @@ class VideoCommentReplyList extends BaseSearch
 
     /**
      * @param string $commentId 评论id
+     *
      * @throws \SyException\DouYin\DouYinSearchException
      */
     public function setCommentId(string $commentId)
     {
-        if (strlen($commentId) > 0) {
+        if (\strlen($commentId) > 0) {
             $this->reqData['comment_id'] = $commentId;
         } else {
             throw new DouYinSearchException('评论id不合法', ErrorCode::DOUYIN_SEARCH_PARAM_ERROR);
