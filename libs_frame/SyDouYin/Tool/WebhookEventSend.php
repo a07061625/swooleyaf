@@ -33,6 +33,7 @@ class WebhookEventSend extends BaseTool
 
     /**
      * @param string $eventType 事件类型
+     *
      * @throws \SyException\DouYin\DouYinToolException
      */
     public function setEventType(string $eventType)
