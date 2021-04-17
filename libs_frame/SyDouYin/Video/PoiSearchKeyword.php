@@ -64,6 +64,7 @@ class PoiSearchKeyword extends BaseVideo
 
     /**
      * @param string $keyword 关键字
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setKeyword(string $keyword)
@@ -77,6 +78,7 @@ class PoiSearchKeyword extends BaseVideo
 
     /**
      * @param string $city 城市
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setCity(string $city)

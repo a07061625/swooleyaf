@@ -43,6 +43,7 @@ class VideoShareId extends BaseVideo
 
     /**
      * @param string $sourceStyleId 来源样式id
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setSourceStyleId(string $sourceStyleId)
@@ -56,6 +57,7 @@ class VideoShareId extends BaseVideo
 
     /**
      * @param string $defaultHashTag 分享默认标识
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setDefaultHashTag(string $defaultHashTag)
@@ -69,6 +71,7 @@ class VideoShareId extends BaseVideo
 
     /**
      * @param string $linkParam 来源url附加参数
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setLinkParam(string $linkParam)

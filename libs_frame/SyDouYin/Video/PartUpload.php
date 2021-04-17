@@ -35,6 +35,7 @@ class PartUpload extends BaseVideo
 
     /**
      * @param string $uploadId 分片上传标记
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setUploadId(string $uploadId)
@@ -48,6 +49,7 @@ class PartUpload extends BaseVideo
 
     /**
      * @param int $partNumber 分片位置
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setPartNumber(int $partNumber)
@@ -61,6 +63,7 @@ class PartUpload extends BaseVideo
 
     /**
      * @param string $partContent 分片上传内容
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setPartContent(string $partContent)

@@ -36,6 +36,7 @@ class VideoCreateTouTiao extends BaseVideo
 
     /**
      * @param string $videoId 视频ID
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setVideoId(string $videoId)
@@ -49,12 +50,13 @@ class VideoCreateTouTiao extends BaseVideo
 
     /**
      * @param string $text 视频标题
+     *
      * @throws \SyException\DouYin\DouYinVideoException
      */
     public function setText(string $text)
     {
-        $textLength = strlen($text);
-        if ($textLength == 0) {
+        $textLength = \strlen($text);
+        if (0 == $textLength) {
             throw new DouYinVideoException('视频标题不能为空', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
         if ($textLength > 30) {
