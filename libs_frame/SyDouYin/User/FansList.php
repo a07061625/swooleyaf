@@ -10,6 +10,8 @@ namespace SyDouYin\User;
 
 use SyConstant\ErrorCode;
 use SyDouYin\BaseUser;
+use SyDouYin\TraitOpenId;
+use SyDouYin\Util;
 use SyException\DouYin\DouYinUserException;
 
 /**
@@ -19,6 +21,8 @@ use SyException\DouYin\DouYinUserException;
  */
 class FansList extends BaseUser
 {
+    use TraitOpenId;
+
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
@@ -61,26 +65,16 @@ class FansList extends BaseUser
         }
     }
 
-    /**
-     * @param string $openId 用户openid
-     *
-     * @throws \SyException\DouYin\DouYinUserException
-     */
-    public function setOpenId(string $openId)
-    {
-        if (\strlen($openId) > 0) {
-            $this->reqData['open_id'] = $openId;
-        } else {
-            throw new DouYinUserException('用户openid不合法', ErrorCode::DOUYIN_USER_PARAM_ERROR);
-        }
-    }
-
     public function getDetail(): array
     {
         if (!isset($this->reqData['open_id'])) {
             throw new DouYinUserException('用户openid不能为空', ErrorCode::DOUYIN_USER_PARAM_ERROR);
         }
-        $this->reqData['access_token'] = $this->getAccessToken($this->reqData['open_id']);
+        $this->reqData['access_token'] = Util::getAccessToken([
+            'client_key' => $this->clientKey,
+            'host_type' => $this->serviceHostType,
+            'open_id' => $this->reqData['open_id'],
+        ]);
         $this->serviceUri .= '?' . http_build_query($this->reqData);
         $this->getContent();
 

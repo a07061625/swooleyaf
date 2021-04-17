@@ -194,9 +194,13 @@ class ProjectBase
      */
     const REDIS_PREFIX_REQUEST_RATE = self::REDIS_PREFIX_COMMON . '20800_';
     /**
-     * redis-前缀-抖音应用
+     * redis-前缀-抖音访问令牌
      */
-    const REDIS_PREFIX_DOUYIN_APP = self::REDIS_PREFIX_COMMON . '20900_';
+    const REDIS_PREFIX_DOUYIN_ACCESS_TOKEN = self::REDIS_PREFIX_COMMON . '20900_';
+    /**
+     * redis-前缀-抖音客户端令牌
+     */
+    const REDIS_PREFIX_DOUYIN_CLIENT_TOKEN = self::REDIS_PREFIX_COMMON . '20901_';
 
     //YAC常量,以0000开头的前缀为框架内部前缀,并键名总长度不超过48个字符串
     /**

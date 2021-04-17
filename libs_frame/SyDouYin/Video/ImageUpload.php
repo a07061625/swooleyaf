@@ -15,18 +15,18 @@ use SyDouYin\Util;
 use SyException\DouYin\DouYinVideoException;
 
 /**
- * 上传视频文件到文件服务器，获取视频文件video_id。该接口适用于抖音
+ * 上传图片到文件服务器，得到图片的唯一标志image_id。该接口适用于抖音
  *
  * @package SyDouYin\Video
  */
-class VideoUpload extends BaseVideo
+class ImageUpload extends BaseVideo
 {
     use TraitOpenId;
 
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
-        $this->serviceUri = '/video/upload/';
+        $this->serviceUri = '/image/upload/';
     }
 
     private function __clone()
@@ -34,30 +34,29 @@ class VideoUpload extends BaseVideo
     }
 
     /**
-     * @param string $video 上传视频文件
+     * @param string $image 上传图片文件
      *
      * @throws \SyException\DouYin\DouYinVideoException
      */
-    public function setVideo(string $video)
+    public function setImage(string $image)
     {
-        if (!is_file($video)) {
-            throw new DouYinVideoException('上传视频文件不合法', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
+        if (!is_file($image)) {
+            throw new DouYinVideoException('上传图片文件不合法', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
-        if (!is_readable($video)) {
-            throw new DouYinVideoException('上传视频文件不可读', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
+        if (!is_readable($image)) {
+            throw new DouYinVideoException('上传图片文件不可读', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
 
         $file = new \finfo(FILEINFO_MIME_TYPE);
-        $mimeType = $file->file($video);
+        $mimeType = $file->file($image);
         if (!\is_string($mimeType)) {
-            throw new DouYinVideoException('获取上传视频文件类型失败', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
+            throw new DouYinVideoException('获取上传图片文件类型失败', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
-        if ('video/' != substr($mimeType, 0, 6)) {
-            throw new DouYinVideoException('上传视频文件类型不支持', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
+        if ('image/' != substr($mimeType, 0, 6)) {
+            throw new DouYinVideoException('上传图片文件类型不支持', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
 
-        $this->reqData['video'] = new \CURLFile($video);
-        $this->reqData['Content-Type'] = $mimeType;
+        $this->reqData['image'] = new \CURLFile($image);
     }
 
     public function getDetail(): array
@@ -65,14 +64,14 @@ class VideoUpload extends BaseVideo
         if (!isset($this->reqData['open_id'])) {
             throw new DouYinVideoException('用户openid不能为空', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
-        if (!isset($this->reqData['video'])) {
-            throw new DouYinVideoException('上传视频文件不能为空', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
+        if (!isset($this->reqData['image'])) {
+            throw new DouYinVideoException('上传图片文件不能为空', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
         $this->serviceUri .= '?' . http_build_query([
             'open_id' => $this->reqData['open_id'],
             'access_token' => Util::getAccessToken([
                 'client_key' => $this->clientKey,
-                'host_type' => Util::SERVICE_HOST_TYPE_DOUYIN,
+                'host_type' => $this->serviceHostType,
                 'open_id' => $this->reqData['open_id'],
             ]),
         ]);

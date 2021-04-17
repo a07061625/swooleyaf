@@ -10,6 +10,7 @@ namespace SyDouYin\Video;
 
 use SyConstant\ErrorCode;
 use SyDouYin\BaseVideo;
+use SyDouYin\TraitOpenId;
 use SyDouYin\Util;
 use SyException\DouYin\DouYinVideoException;
 
@@ -20,6 +21,8 @@ use SyException\DouYin\DouYinVideoException;
  */
 class VideoUploadXiGua extends BaseVideo
 {
+    use TraitOpenId;
+
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
@@ -28,20 +31,6 @@ class VideoUploadXiGua extends BaseVideo
 
     private function __clone()
     {
-    }
-
-    /**
-     * @param string $openId 用户openid
-     *
-     * @throws \SyException\DouYin\DouYinVideoException
-     */
-    public function setOpenId(string $openId)
-    {
-        if (\strlen($openId) > 0) {
-            $this->reqData['open_id'] = $openId;
-        } else {
-            throw new DouYinVideoException('用户openid不合法', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
-        }
     }
 
     /**
@@ -79,8 +68,14 @@ class VideoUploadXiGua extends BaseVideo
         if (!isset($this->reqData['video'])) {
             throw new DouYinVideoException('上传视频文件不能为空', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
-        $this->serviceUri .= '?open_id=' . urlencode($this->reqData['open_id']);
-        $this->serviceUri .= '&access_token=' . urlencode($this->getAccessToken($this->reqData['open_id'], Util::SERVICE_HOST_TYPE_XIGUA));
+        $this->serviceUri .= '?' . http_build_query([
+            'open_id' => $this->reqData['open_id'],
+            'access_token' => Util::getAccessToken([
+                'client_key' => $this->clientKey,
+                'host_type' => Util::SERVICE_HOST_TYPE_XIGUA,
+                'open_id' => $this->reqData['open_id'],
+            ]),
+        ]);
         unset($this->reqData['open_id']);
         $this->getContent();
         $this->curlConfigs[CURLOPT_HTTPHEADER] = [

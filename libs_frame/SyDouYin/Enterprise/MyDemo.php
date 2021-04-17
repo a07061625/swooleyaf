@@ -8,7 +8,10 @@
 
 namespace SyDouYin\Enterprise;
 
+use SyConstant\ErrorCode;
 use SyDouYin\BaseEnterprise;
+use SyDouYin\TraitOpenId;
+use SyException\DouYin\DouYinEnterpriseException;
 
 /**
  * xxx
@@ -17,6 +20,8 @@ use SyDouYin\BaseEnterprise;
  */
 class MyDemo extends BaseEnterprise
 {
+    use TraitOpenId;
+
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
@@ -29,6 +34,10 @@ class MyDemo extends BaseEnterprise
 
     public function getDetail(): array
     {
+        if (!isset($this->reqData['open_id'])) {
+            throw new DouYinEnterpriseException('用户openid不能为空', ErrorCode::DOUYIN_ENTERPRISE_PARAM_ERROR);
+        }
+
         $this->getContent();
 
         return $this->curlConfigs;

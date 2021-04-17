@@ -8,7 +8,10 @@
 
 namespace SyDouYin\Data;
 
+use SyConstant\ErrorCode;
 use SyDouYin\BaseData;
+use SyDouYin\TraitOpenId;
+use SyException\DouYin\DouYinDataException;
 
 /**
  * xxx
@@ -17,6 +20,8 @@ use SyDouYin\BaseData;
  */
 class MyDemo extends BaseData
 {
+    use TraitOpenId;
+
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
@@ -29,6 +34,10 @@ class MyDemo extends BaseData
 
     public function getDetail(): array
     {
+        if (!isset($this->reqData['open_id'])) {
+            throw new DouYinDataException('用户openid不能为空', ErrorCode::DOUYIN_DATA_PARAM_ERROR);
+        }
+
         $this->getContent();
 
         return $this->curlConfigs;

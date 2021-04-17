@@ -10,20 +10,23 @@ namespace SyDouYin\Video;
 
 use SyConstant\ErrorCode;
 use SyDouYin\BaseVideo;
+use SyDouYin\TraitOpenId;
 use SyDouYin\Util;
 use SyException\DouYin\DouYinVideoException;
 
 /**
- * 初始化分片上传获取upload_id。该接口适用于头条
+ * 分片上传完成。该接口适用于抖音
  *
  * @package SyDouYin\Video
  */
-class VideoPartInitTouTiao extends BaseVideo
+class PartComplete extends BaseVideo
 {
+    use TraitOpenId;
+
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
-        $this->serviceUri = '/toutiao/video/part/init/';
+        $this->serviceUri = '/video/part/complete/';
     }
 
     private function __clone()
@@ -31,16 +34,15 @@ class VideoPartInitTouTiao extends BaseVideo
     }
 
     /**
-     * @param string $openId 用户openid
-     *
+     * @param string $uploadId 分片上传标记
      * @throws \SyException\DouYin\DouYinVideoException
      */
-    public function setOpenId(string $openId)
+    public function setUploadId(string $uploadId)
     {
-        if (\strlen($openId) > 0) {
-            $this->reqData['open_id'] = $openId;
+        if (\strlen($uploadId) > 0) {
+            $this->reqData['upload_id'] = $uploadId;
         } else {
-            throw new DouYinVideoException('用户openid不合法', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
+            throw new DouYinVideoException('分片上传标记不合法', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
     }
 
@@ -49,7 +51,14 @@ class VideoPartInitTouTiao extends BaseVideo
         if (!isset($this->reqData['open_id'])) {
             throw new DouYinVideoException('用户openid不能为空', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
-        $this->reqData['access_token'] = $this->getAccessToken($this->reqData['open_id'], Util::SERVICE_HOST_TYPE_TOUTIAO);
+        if (!isset($this->reqData['upload_id'])) {
+            throw new DouYinVideoException('分片上传标记不能为空', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
+        }
+        $this->reqData['access_token'] = Util::getAccessToken([
+            'client_key' => $this->clientKey,
+            'host_type' => Util::SERVICE_HOST_TYPE_DOUYIN,
+            'open_id' => $this->reqData['open_id'],
+        ]);
         $this->serviceUri .= '?' . http_build_query($this->reqData);
         $this->getContent();
         $this->curlConfigs[CURLOPT_HTTPHEADER] = [

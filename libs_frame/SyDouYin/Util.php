@@ -115,7 +115,8 @@ abstract class Util
     public static function getAccessToken(array $data): string
     {
         $nowTime = Tool::getNowTime();
-        $redisKey = self::getCacheKey($data['client_key'], $data['host_type'], $data['open_id']);
+        $redisKey = Project::REDIS_PREFIX_DOUYIN_ACCESS_TOKEN
+                    . hash('md4', $data['client_key'] . '_' . $data['host_type'] . '_' . $data['open_id']);
         if (\is_string($data['auth_code'])) {
             $atObj = new AccessToken($data['client_key']);
             $atObj->setServiceHost($data['host_type']);
@@ -165,28 +166,25 @@ abstract class Util
     /**
      * 获取客户端令牌
      *
-     * @param array $data 请求参数<pre>
-     *                    client_key: 必填 string 应用标识
-     *                    host_type: 必填 string 服务域名类型
-     *                    open_id: 必填 string 用户openid</pre>
-     *
+     * @param string $clientKey 应用标识
+     * @param string $hostType 服务域名类型
      * @return string 客户端令牌
      *
      * @throws \SyException\Common\CheckException
      * @throws \SyException\DouYin\DouYinException
      */
-    public static function getClientToken(array $data): string
+    public static function getClientToken(string $clientKey, string $hostType) : string
     {
         $nowTime = Tool::getNowTime();
-        $redisKey = self::getCacheKey($data['client_key'], $data['host_type'], $data['open_id']);
+        $redisKey = Project::REDIS_PREFIX_DOUYIN_CLIENT_TOKEN . $clientKey . '_' . $hostType;
         $redisData = CacheSimpleFactory::getRedisInstance()->hGetAll($redisKey);
         if (isset($redisData['unique_key']) && ($redisData['unique_key'] == $redisKey)
             && isset($redisData['ct_expire']) && ($redisData['ct_expire'] >= $nowTime)) {
             return $redisData['ct_content'];
         }
 
-        $ctObj = new ClientToken($data['client_key']);
-        $ctObj->setServiceHost($data['host_type']);
+        $ctObj = new ClientToken($clientKey);
+        $ctObj->setServiceHost($hostType);
         $reqRes = self::sendServiceRequest($ctObj, ErrorCode::DOUYIN_ACCOUNT_REQ_ERROR);
         if ($reqRes['code'] > 0) {
             throw new DouYinException($reqRes['msg'], ErrorCode::DOUYIN_REQ_ERROR);
@@ -197,7 +195,7 @@ abstract class Util
             'ct_content' => $reqRes['data']['data']['access_token'],
             'ct_expire' => (int)($nowTime + $reqRes['data']['data']['expires_in'] - 10),
         ]);
-        CacheSimpleFactory::getRedisInstance()->expire($redisKey, 86400);
+        CacheSimpleFactory::getRedisInstance()->expire($redisKey, 8000);
 
         return $reqRes['data']['data']['access_token'];
     }
@@ -218,19 +216,5 @@ abstract class Util
         $iv = substr($config->getClientSecret(), 0, 16);
 
         return openssl_decrypt($encryptedData, 'aes-256-cbc', $config->getClientSecret(), 0, $iv);
-    }
-
-    /**
-     * 获取缓存键名
-     *
-     * @param string $clientKey 应用标识
-     * @param string $hostType  服务域名类型
-     * @param string $openId    用户openid
-     *
-     * @return string 缓存键名
-     */
-    private static function getCacheKey(string $clientKey, string $hostType, string $openId): string
-    {
-        return Project::REDIS_PREFIX_DOUYIN_APP . md5($clientKey . '_' . $hostType . '_' . $openId);
     }
 }
