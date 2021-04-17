@@ -32,6 +32,7 @@ class MicAppLegal extends BaseTool
 
     /**
      * @param string $micAppId 小程序id
+     *
      * @throws \SyException\DouYin\DouYinToolException
      */
     public function setMicAppId(string $micAppId)
