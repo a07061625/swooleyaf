@@ -6,28 +6,27 @@
  * Time: 17:12
  */
 
-namespace SyDouYin\User;
+namespace SyDouYin\Video;
 
 use SyConstant\ErrorCode;
-use SyDouYin\BaseUser;
+use SyDouYin\BaseVideo;
 use SyDouYin\TraitOpenId;
 use SyDouYin\Util;
-use SyException\DouYin\DouYinUserException;
+use SyException\DouYin\DouYinVideoException;
 
 /**
- * 获取用户的抖音公开信息，包含昵称、头像、性别和地区；
+ * 初始化分片上传获取upload_id。该接口适用于头条
  *
- * @package SyDouYin\User
+ * @package SyDouYin\Video
  */
-class UserInfo extends BaseUser
+class PartInitTouTiao extends BaseVideo
 {
     use TraitOpenId;
 
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
-        $this->serviceHostStatus = true;
-        $this->serviceUri = '/oauth/userinfo/';
+        $this->serviceUri = '/toutiao/video/part/init/';
     }
 
     private function __clone()
@@ -37,15 +36,20 @@ class UserInfo extends BaseUser
     public function getDetail(): array
     {
         if (!isset($this->reqData['open_id'])) {
-            throw new DouYinUserException('用户openid不能为空', ErrorCode::DOUYIN_USER_PARAM_ERROR);
+            throw new DouYinVideoException('用户openid不能为空', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
         $this->reqData['access_token'] = Util::getAccessToken([
             'client_key' => $this->clientKey,
-            'host_type' => $this->serviceHostType,
+            'host_type' => Util::SERVICE_HOST_TYPE_TOUTIAO,
             'open_id' => $this->reqData['open_id'],
         ]);
         $this->serviceUri .= '?' . http_build_query($this->reqData);
         $this->getContent();
+        $this->curlConfigs[CURLOPT_HTTPHEADER] = [
+            'Content-Type: application/json',
+        ];
+        $this->curlConfigs[CURLOPT_POST] = true;
+        $this->curlConfigs[CURLOPT_POSTFIELDS] = '{}';
 
         return $this->curlConfigs;
     }

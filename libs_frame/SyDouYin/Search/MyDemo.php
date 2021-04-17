@@ -8,7 +8,10 @@
 
 namespace SyDouYin\Search;
 
+use SyConstant\ErrorCode;
 use SyDouYin\BaseSearch;
+use SyDouYin\TraitOpenId;
+use SyException\DouYin\DouYinSearchException;
 
 /**
  * xxx
@@ -17,6 +20,8 @@ use SyDouYin\BaseSearch;
  */
 class MyDemo extends BaseSearch
 {
+    use TraitOpenId;
+
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
@@ -29,6 +34,10 @@ class MyDemo extends BaseSearch
 
     public function getDetail(): array
     {
+        if (!isset($this->reqData['open_id'])) {
+            throw new DouYinSearchException('用户openid不能为空', ErrorCode::DOUYIN_SEARCH_PARAM_ERROR);
+        }
+
         $this->getContent();
 
         return $this->curlConfigs;
