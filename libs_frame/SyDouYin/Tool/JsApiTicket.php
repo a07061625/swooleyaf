@@ -8,24 +8,20 @@
 
 namespace SyDouYin\Tool;
 
-use SyConstant\ErrorCode;
 use SyDouYin\BaseTool;
-use SyDouYin\TraitOpenId;
-use SyException\DouYin\DouYinToolException;
+use SyDouYin\Util;
 
 /**
- * xxx
+ * 获取jsapi_ticket
  *
  * @package SyDouYin\Tool
  */
-class MyDemo extends BaseTool
+class JsApiTicket extends BaseTool
 {
-    use TraitOpenId;
-
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
-        $this->serviceUri = '/xxx';
+        $this->serviceUri = '/js/getticket/';
     }
 
     private function __clone()
@@ -34,10 +30,9 @@ class MyDemo extends BaseTool
 
     public function getDetail(): array
     {
-        if (!isset($this->reqData['open_id'])) {
-            throw new DouYinToolException('用户openid不能为空', ErrorCode::DOUYIN_TOOL_PARAM_ERROR);
-        }
-
+        $this->serviceUri .= '?' . http_build_query([
+            'access_token' => Util::getClientToken($this->clientKey, $this->serviceHostType),
+        ]);
         $this->getContent();
 
         return $this->curlConfigs;

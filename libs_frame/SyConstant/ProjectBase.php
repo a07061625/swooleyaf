@@ -201,6 +201,10 @@ class ProjectBase
      * redis-前缀-抖音客户端令牌
      */
     const REDIS_PREFIX_DOUYIN_CLIENT_TOKEN = self::REDIS_PREFIX_COMMON . '20901_';
+    /**
+     * redis-前缀-抖音JS接口令牌
+     */
+    const REDIS_PREFIX_DOUYIN_JSAPI_TICKET = self::REDIS_PREFIX_COMMON . '20902_';
 
     //YAC常量,以0000开头的前缀为框架内部前缀,并键名总长度不超过48个字符串
     /**
