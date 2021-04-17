@@ -8,7 +8,10 @@
 
 namespace SyDouYin\Tool;
 
+use SyConstant\ErrorCode;
 use SyDouYin\BaseTool;
+use SyDouYin\TraitOpenId;
+use SyException\DouYin\DouYinToolException;
 
 /**
  * xxx
@@ -17,6 +20,8 @@ use SyDouYin\BaseTool;
  */
 class MyDemo extends BaseTool
 {
+    use TraitOpenId;
+
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
@@ -29,6 +34,10 @@ class MyDemo extends BaseTool
 
     public function getDetail(): array
     {
+        if (!isset($this->reqData['open_id'])) {
+            throw new DouYinToolException('用户openid不能为空', ErrorCode::DOUYIN_TOOL_PARAM_ERROR);
+        }
+
         $this->getContent();
 
         return $this->curlConfigs;

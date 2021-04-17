@@ -8,7 +8,10 @@
 
 namespace SyDouYin\LifeService;
 
+use SyConstant\ErrorCode;
 use SyDouYin\BaseLifeService;
+use SyDouYin\TraitOpenId;
+use SyException\DouYin\DouYinLifeServiceException;
 
 /**
  * xxx
@@ -17,6 +20,8 @@ use SyDouYin\BaseLifeService;
  */
 class MyDemo extends BaseLifeService
 {
+    use TraitOpenId;
+
     public function __construct(string $clientKey)
     {
         parent::__construct($clientKey);
@@ -29,6 +34,10 @@ class MyDemo extends BaseLifeService
 
     public function getDetail(): array
     {
+        if (!isset($this->reqData['open_id'])) {
+            throw new DouYinLifeServiceException('用户openid不能为空', ErrorCode::DOUYIN_LIFE_SERVICE_PARAM_ERROR);
+        }
+
         $this->getContent();
 
         return $this->curlConfigs;
