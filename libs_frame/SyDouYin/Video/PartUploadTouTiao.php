@@ -62,17 +62,22 @@ class PartUploadTouTiao extends BaseVideo
     }
 
     /**
-     * @param string $partContent 分片上传内容
+     * @param string $content 分片上传内容
+     * @param string $contentType 上传内容类型
      *
      * @throws \SyException\DouYin\DouYinVideoException
      */
-    public function setPartContent(string $partContent)
+    public function setPartContent(string $content, string $contentType)
     {
-        if (\strlen($partContent) > 0) {
-            $this->reqData['video'] = $partContent;
-        } else {
+        if ('video/' != substr($contentType, 0, 6)) {
+            throw new DouYinVideoException('上传视频文件类型不支持', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
+        }
+        if (\strlen($content) == 0) {
             throw new DouYinVideoException('分片上传内容不合法', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
+
+        $this->reqData['video_content'] = $content;
+        $this->reqData['Content-Type'] = $contentType;
     }
 
     public function getDetail(): array
@@ -86,9 +91,17 @@ class PartUploadTouTiao extends BaseVideo
         if (!isset($this->reqData['part_number'])) {
             throw new DouYinVideoException('分片位置不能为空', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
-        if (!isset($this->reqData['video'])) {
+        if (!isset($this->reqData['video_content'])) {
             throw new DouYinVideoException('分片上传内容不能为空', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
+
+        $tmpFile = tmpfile();
+        fwrite($tmpFile, $this->reqData['video_content']);
+        $tmpFileData = stream_get_meta_data($tmpFile);
+        $this->reqData['video'] = new \CURLFile($tmpFileData['uri'], $this->reqData['Content-Type']);
+        fclose($tmpFile);
+        unset($this->reqData['video_content']);
+
         $this->serviceUri .= '?' . http_build_query([
             'open_id' => $this->reqData['open_id'],
             'access_token' => Util::getAccessToken([
