@@ -87,7 +87,7 @@ class ItemCommentList extends BaseInteraction
      */
     public function setSortType(string $sortType)
     {
-        if (in_array($sortType, ['time', 'time_asc'])) {
+        if (\in_array($sortType, ['time', 'time_asc'])) {
             $this->reqData['sort_type'] = $sortType;
         } else {
             throw new DouYinInteractionException('排序方式不合法', ErrorCode::DOUYIN_INTERACTION_PARAM_ERROR);
