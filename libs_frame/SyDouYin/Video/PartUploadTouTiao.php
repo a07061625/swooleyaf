@@ -62,7 +62,7 @@ class PartUploadTouTiao extends BaseVideo
     }
 
     /**
-     * @param string $content 分片上传内容
+     * @param string $content     分片上传内容
      * @param string $contentType 上传内容类型
      *
      * @throws \SyException\DouYin\DouYinVideoException
@@ -72,7 +72,7 @@ class PartUploadTouTiao extends BaseVideo
         if ('video/' != substr($contentType, 0, 6)) {
             throw new DouYinVideoException('上传视频文件类型不支持', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
-        if (\strlen($content) == 0) {
+        if (0 == \strlen($content)) {
             throw new DouYinVideoException('分片上传内容不合法', ErrorCode::DOUYIN_VIDEO_PARAM_ERROR);
         }
 

@@ -56,78 +56,19 @@ class EnterpriseMessageSend extends BaseInteraction
     }
 
     /**
-     * @param string $text 文字内容
-     * @throws \SyException\DouYin\DouYinInteractionException
-     */
-    private function setMessageText(string $text)
-    {
-        if (\strlen($text) > 0) {
-            $this->reqData['content'] = Tool::jsonEncode([
-                'text' => $text,
-            ], JSON_UNESCAPED_UNICODE);
-        } else {
-            throw new DouYinInteractionException('文字内容不合法', ErrorCode::DOUYIN_INTERACTION_PARAM_ERROR);
-        }
-    }
-
-    /**
-     * @param string $mediaId 素材id
-     * @throws \SyException\DouYin\DouYinInteractionException
-     */
-    private function setMessageImage(string $mediaId)
-    {
-        if (\strlen($mediaId) > 0) {
-            $this->reqData['content'] = Tool::jsonEncode([
-                'media_id' => $mediaId,
-            ], JSON_UNESCAPED_UNICODE);
-        } else {
-            throw new DouYinInteractionException('素材id不合法', ErrorCode::DOUYIN_INTERACTION_PARAM_ERROR);
-        }
-    }
-
-    /**
-     * @param string $itemId 视频id
-     * @throws \SyException\DouYin\DouYinInteractionException
-     */
-    private function setMessageVideo(string $itemId)
-    {
-        if (\strlen($itemId) > 0) {
-            $this->reqData['content'] = Tool::jsonEncode([
-                'item_id' => $itemId,
-            ], JSON_UNESCAPED_UNICODE);
-        } else {
-            throw new DouYinInteractionException('视频id不合法', ErrorCode::DOUYIN_INTERACTION_PARAM_ERROR);
-        }
-    }
-
-    /**
-     * @param string $cardId 卡片id
-     * @throws \SyException\DouYin\DouYinInteractionException
-     */
-    private function setMessageCard(string $cardId)
-    {
-        if (\strlen($cardId) > 0) {
-            $this->reqData['content'] = Tool::jsonEncode([
-                'card_id' => $cardId,
-            ], JSON_UNESCAPED_UNICODE);
-        } else {
-            throw new DouYinInteractionException('卡片id不合法', ErrorCode::DOUYIN_INTERACTION_PARAM_ERROR);
-        }
-    }
-
-    /**
-     * @param string $type 消息内容格式
+     * @param string $type    消息内容格式
      * @param string $content 消息内容
+     *
      * @throws \SyException\DouYin\DouYinInteractionException
      */
     public function setMessage(string $type, string $content)
     {
         $funcName = Tool::getArrayVal(self::$msgTypeMap, $type, null);
-        if (is_null($funcName)) {
+        if (null === $funcName) {
             throw new DouYinInteractionException('消息内容格式不支持', ErrorCode::DOUYIN_INTERACTION_PARAM_ERROR);
         }
 
-        $this->$funcName($content);
+        $this->{$funcName}($content);
         $this->reqData['message_type'] = $type;
     }
 
@@ -188,5 +129,69 @@ class EnterpriseMessageSend extends BaseInteraction
         $this->curlConfigs[CURLOPT_POSTFIELDS] = Tool::jsonEncode($this->reqData, JSON_UNESCAPED_UNICODE);
 
         return $this->curlConfigs;
+    }
+
+    /**
+     * @param string $text 文字内容
+     *
+     * @throws \SyException\DouYin\DouYinInteractionException
+     */
+    private function setMessageText(string $text)
+    {
+        if (\strlen($text) > 0) {
+            $this->reqData['content'] = Tool::jsonEncode([
+                'text' => $text,
+            ], JSON_UNESCAPED_UNICODE);
+        } else {
+            throw new DouYinInteractionException('文字内容不合法', ErrorCode::DOUYIN_INTERACTION_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @param string $mediaId 素材id
+     *
+     * @throws \SyException\DouYin\DouYinInteractionException
+     */
+    private function setMessageImage(string $mediaId)
+    {
+        if (\strlen($mediaId) > 0) {
+            $this->reqData['content'] = Tool::jsonEncode([
+                'media_id' => $mediaId,
+            ], JSON_UNESCAPED_UNICODE);
+        } else {
+            throw new DouYinInteractionException('素材id不合法', ErrorCode::DOUYIN_INTERACTION_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @param string $itemId 视频id
+     *
+     * @throws \SyException\DouYin\DouYinInteractionException
+     */
+    private function setMessageVideo(string $itemId)
+    {
+        if (\strlen($itemId) > 0) {
+            $this->reqData['content'] = Tool::jsonEncode([
+                'item_id' => $itemId,
+            ], JSON_UNESCAPED_UNICODE);
+        } else {
+            throw new DouYinInteractionException('视频id不合法', ErrorCode::DOUYIN_INTERACTION_PARAM_ERROR);
+        }
+    }
+
+    /**
+     * @param string $cardId 卡片id
+     *
+     * @throws \SyException\DouYin\DouYinInteractionException
+     */
+    private function setMessageCard(string $cardId)
+    {
+        if (\strlen($cardId) > 0) {
+            $this->reqData['content'] = Tool::jsonEncode([
+                'card_id' => $cardId,
+            ], JSON_UNESCAPED_UNICODE);
+        } else {
+            throw new DouYinInteractionException('卡片id不合法', ErrorCode::DOUYIN_INTERACTION_PARAM_ERROR);
+        }
     }
 }
