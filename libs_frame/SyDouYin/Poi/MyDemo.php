@@ -6,19 +6,19 @@
  * Time: 17:12
  */
 
-namespace SyDouYin\LifeService;
+namespace SyDouYin\Poi;
 
 use SyConstant\ErrorCode;
-use SyDouYin\BaseLifeService;
+use SyDouYin\BasePoi;
 use SyDouYin\TraitOpenId;
-use SyException\DouYin\DouYinLifeServiceException;
+use SyException\DouYin\DouYinPoiException;
 
 /**
  * xxx
  *
- * @package SyDouYin\LifeService
+ * @package SyDouYin\Poi
  */
-class MyDemo extends BaseLifeService
+class MyDemo extends BasePoi
 {
     use TraitOpenId;
 
@@ -35,7 +35,7 @@ class MyDemo extends BaseLifeService
     public function getDetail(): array
     {
         if (!isset($this->reqData['open_id'])) {
-            throw new DouYinLifeServiceException('用户openid不能为空', ErrorCode::DOUYIN_LIFE_SERVICE_PARAM_ERROR);
+            throw new DouYinPoiException('用户openid不能为空', ErrorCode::DOUYIN_POI_PARAM_ERROR);
         }
 
         $this->getContent();
