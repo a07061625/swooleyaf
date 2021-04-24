@@ -11,15 +11,15 @@ namespace SyException\DouYin;
 use SyException\BaseException;
 
 /**
- * Class DouYinLifeServiceException
+ * Class DouYinPoiException
  *
  * @package SyException\DouYin
  */
-class DouYinLifeServiceException extends BaseException
+class DouYinPoiException extends BaseException
 {
     public function __construct($message, $code)
     {
         parent::__construct($message, $code);
-        $this->tipName = '抖音生活服务异常';
+        $this->tipName = '抖音兴趣点异常';
     }
 }
