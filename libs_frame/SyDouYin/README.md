@@ -11,9 +11,9 @@
 
 # 使用
 ```
-$obj = new \SyDouYin\Account\AuthCodeDouYin('111111');
+$obj = new \SyDouYin\Oauth\AuthCodeDouYin('111111');
 $obj->setRedirectUri('http://www.baidu.com');
 //其它参数设置参考类实现
-$res = \SyDouYin\Util::sendServiceRequest($obj, \SyConstant\ErrorCode::DOUYIN_ACCOUNT_REQ_ERROR);
+$res = \SyDouYin\Util::sendServiceRequest($obj, \SyConstant\ErrorCode::DOUYIN_OAUTH_REQ_ERROR);
 print_r($res);
 ```
