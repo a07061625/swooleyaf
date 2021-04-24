@@ -72,7 +72,7 @@ class TagUserList extends BaseEnterprise
      */
     public function setTagId(string $tagId)
     {
-        if (strlen($tagId) > 0) {
+        if (\strlen($tagId) > 0) {
             $this->reqData['tag_id'] = $tagId;
         } else {
             throw new DouYinEnterpriseException('标签id不合法', ErrorCode::DOUYIN_ENTERPRISE_PARAM_ERROR);

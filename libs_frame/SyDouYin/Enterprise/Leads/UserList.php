@@ -68,7 +68,8 @@ class UserList extends BaseEnterprise
 
     /**
      * @param int $startTime 开始时间
-     * @param int $endTime 结束时间
+     * @param int $endTime   结束时间
+     *
      * @throws \SyException\DouYin\DouYinEnterpriseException
      */
     public function setTime(int $startTime, int $endTime)
@@ -91,7 +92,7 @@ class UserList extends BaseEnterprise
      */
     public function setLeadsLevel(int $leadsLevel)
     {
-        if (in_array($leadsLevel, [- 1, 0, 1, 2, 10])) {
+        if (\in_array($leadsLevel, [-1, 0, 1, 2, 10])) {
             $this->reqData['leads_level'] = $leadsLevel;
         } else {
             throw new DouYinEnterpriseException('用户状态不合法', ErrorCode::DOUYIN_ENTERPRISE_PARAM_ERROR);
@@ -105,7 +106,7 @@ class UserList extends BaseEnterprise
      */
     public function setActionType(int $actionType)
     {
-        if (in_array($actionType, [0, 1, 2, 3, 4, 5, 6])) {
+        if (\in_array($actionType, [0, 1, 2, 3, 4, 5, 6])) {
             $this->reqData['action_type'] = $actionType;
         } else {
             throw new DouYinEnterpriseException('动作类型不合法', ErrorCode::DOUYIN_ENTERPRISE_PARAM_ERROR);
