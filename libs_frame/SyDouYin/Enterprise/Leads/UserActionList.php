@@ -73,7 +73,7 @@ class UserActionList extends BaseEnterprise
      */
     public function setUserId(string $userId)
     {
-        if (strlen($userId) > 0) {
+        if (\strlen($userId) > 0) {
             $this->reqData['user_id'] = $userId;
         } else {
             throw new DouYinEnterpriseException('意向用户openid不合法', ErrorCode::DOUYIN_ENTERPRISE_PARAM_ERROR);
@@ -87,7 +87,7 @@ class UserActionList extends BaseEnterprise
      */
     public function setActionType(int $actionType)
     {
-        if (in_array($actionType, [0, 1, 2, 3, 4, 5, 6])) {
+        if (\in_array($actionType, [0, 1, 2, 3, 4, 5, 6])) {
             $this->reqData['action_type'] = $actionType;
         } else {
             throw new DouYinEnterpriseException('动作类型不合法', ErrorCode::DOUYIN_ENTERPRISE_PARAM_ERROR);

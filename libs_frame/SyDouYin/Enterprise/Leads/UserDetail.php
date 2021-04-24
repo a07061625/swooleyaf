@@ -40,7 +40,7 @@ class UserDetail extends BaseEnterprise
      */
     public function setUserId(string $userId)
     {
-        if (strlen($userId) > 0) {
+        if (\strlen($userId) > 0) {
             $this->reqData['user_id'] = $userId;
         } else {
             throw new DouYinEnterpriseException('意向用户openid不合法', ErrorCode::DOUYIN_ENTERPRISE_PARAM_ERROR);
