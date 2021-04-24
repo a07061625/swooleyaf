@@ -12,9 +12,9 @@ use DesignPatterns\Factories\CacheSimpleFactory;
 use DesignPatterns\Singletons\DouYinConfigSingleton;
 use SyConstant\ErrorCode;
 use SyConstant\Project;
-use SyDouYin\Account\AccessToken;
-use SyDouYin\Account\AccessTokenRefresh;
-use SyDouYin\Account\ClientToken;
+use SyDouYin\Oauth\AccessToken;
+use SyDouYin\Oauth\AccessTokenRefresh;
+use SyDouYin\Oauth\ClientToken;
 use SyDouYin\Tool\JsApiTicket;
 use SyException\DouYin\DouYinException;
 use SyTool\Tool;
@@ -110,7 +110,7 @@ abstract class Util
      * @return string 访问令牌
      *
      * @throws \SyException\Common\CheckException
-     * @throws \SyException\DouYin\DouYinAccountException
+     * @throws \SyException\DouYin\DouYinOauthException
      * @throws \SyException\DouYin\DouYinException
      */
     public static function getAccessToken(array $data): string
@@ -187,7 +187,7 @@ abstract class Util
 
         $ctObj = new ClientToken($clientKey);
         $ctObj->setServiceHost($hostType);
-        $reqRes = self::sendServiceRequest($ctObj, ErrorCode::DOUYIN_ACCOUNT_REQ_ERROR);
+        $reqRes = self::sendServiceRequest($ctObj, ErrorCode::DOUYIN_OAUTH_REQ_ERROR);
         if ($reqRes['code'] > 0) {
             throw new DouYinException($reqRes['msg'], ErrorCode::DOUYIN_REQ_ERROR);
         }
