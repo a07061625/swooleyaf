@@ -9,11 +9,11 @@
 namespace SyDouYin;
 
 /**
- * Class BaseLifeService
+ * Class BasePoi
  *
  * @package SyDouYin
  */
-abstract class BaseLifeService extends Base
+abstract class BasePoi extends Base
 {
     public function __construct(string $clientKey)
     {

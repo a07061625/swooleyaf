@@ -308,8 +308,8 @@ class ErrorCode
     const DOUYIN_ENTERPRISE_REQ_ERROR = 109021;
     const DOUYIN_IMAGE_PARAM_ERROR = 109025;
     const DOUYIN_IMAGE_REQ_ERROR = 109026;
-    const DOUYIN_LIFE_SERVICE_PARAM_ERROR = 109030;
-    const DOUYIN_LIFE_SERVICE_REQ_ERROR = 109031;
+    const DOUYIN_POI_PARAM_ERROR = 109030;
+    const DOUYIN_POI_REQ_ERROR = 109031;
     const DOUYIN_COMMENT_PARAM_ERROR = 109035;
     const DOUYIN_COMMENT_REQ_ERROR = 109036;
     const DOUYIN_TOOL_PARAM_ERROR = 109040;
@@ -526,8 +526,8 @@ class ErrorCode
         self::DOUYIN_ENTERPRISE_REQ_ERROR => '抖音企业号请求错误',
         self::DOUYIN_IMAGE_PARAM_ERROR => '抖音图片参数错误',
         self::DOUYIN_IMAGE_REQ_ERROR => '抖音图片请求错误',
-        self::DOUYIN_LIFE_SERVICE_PARAM_ERROR => '抖音生活服务参数错误',
-        self::DOUYIN_LIFE_SERVICE_REQ_ERROR => '抖音生活服务请求错误',
+        self::DOUYIN_POI_PARAM_ERROR => '抖音兴趣点参数错误',
+        self::DOUYIN_POI_REQ_ERROR => '抖音兴趣点请求错误',
         self::DOUYIN_COMMENT_PARAM_ERROR => '抖音搜索参数错误',
         self::DOUYIN_COMMENT_REQ_ERROR => '抖音搜索请求错误',
         self::DOUYIN_TOOL_PARAM_ERROR => '抖音工具参数错误',
