@@ -1018,20 +1018,22 @@ class Tool
 
     /**
      * 生成crc16校验码
+     *
      * @param string $data 待校验数据,二进制格式
+     *
      * @return string crc16校验码
      */
-    public static function createCrc16Code(string $data) : string
+    public static function createCrc16Code(string $data): string
     {
-        $dataLength = strlen($data);
+        $dataLength = \strlen($data);
         $crcHigh = 0xFF;
         $crcLow = 0xFF;
-        for ($i = 0; $i < $dataLength; $i ++) {
-            $index = $crcLow ^ ord(substr($data, $i, 1));
+        for ($i = 0; $i < $dataLength; ++$i ) {
+            $index = $crcLow ^ \ord(substr($data, $i, 1));
             $crcLow = $crcHigh ^ self::$crc16High[$index];
             $crcHigh = self::$crc16Low[$index];
         }
 
-        return (chr($crcLow) . chr($crcHigh));
+        return \chr($crcLow) . \chr($crcHigh);
     }
 }
