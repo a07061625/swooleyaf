@@ -841,10 +841,7 @@ class Tool
 
         //获得补位所用的字符
         $needChr = \chr($addLength);
-        $tmp = '';
-        for ($i = 0; $i < $addLength; ++$i) {
-            $tmp .= $needChr;
-        }
+        $tmp = str_repeat($needChr, $addLength);
 
         return $text . $tmp;
     }
