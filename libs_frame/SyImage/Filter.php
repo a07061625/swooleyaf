@@ -573,7 +573,7 @@ class Filter
         }
 
         $color = $configs['color'] ?? '000000';
-        if ((\strlen($color) > 0) && !ctype_alpha($color)) {
+        if ((\strlen($color) != 6) || !ctype_alpha($color)) {
             throw new ImageException('背景色不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
 
