@@ -350,9 +350,12 @@ class Filter
 
     /**
      * 等比例缩放,缩放后不填充背景
-     * @param int $width 宽度
+     *
+     * @param int $width  宽度
      * @param int $height 高度
+     *
      * @return $this
+     *
      * @throws \SyException\Image\ImageException
      */
     public function handleResizeFit(int $width, int $height)
@@ -368,9 +371,12 @@ class Filter
 
     /**
      * 固定尺寸缩放,可能导致图片变形
-     * @param int $width 宽度
+     *
+     * @param int $width  宽度
      * @param int $height 高度
+     *
      * @return $this
+     *
      * @throws \SyException\Image\ImageException
      */
     public function handleResizeExact(int $width, int $height)
@@ -386,9 +392,12 @@ class Filter
 
     /**
      * 居中剪裁,长边的大于指定值的部分居中剪裁掉,图片不会变形
-     * @param int $width 宽度
+     *
+     * @param int $width  宽度
      * @param int $height 高度
+     *
      * @return $this
+     *
      * @throws \SyException\Image\ImageException
      */
     public function handleResizeFill(int $width, int $height)
@@ -404,8 +413,11 @@ class Filter
 
     /**
      * 等宽缩放,等比缩放,高度不管
+     *
      * @param int $width 宽度
+     *
      * @return $this
+     *
      * @throws \SyException\Image\ImageException
      */
     public function handleResizeExactWidth(int $width)
@@ -421,8 +433,11 @@ class Filter
 
     /**
      * 等高缩放,等比缩放,宽度不管
+     *
      * @param int $height 高度
+     *
      * @return $this
+     *
      * @throws \SyException\Image\ImageException
      */
     public function handleResizeExactHeight(int $height)
