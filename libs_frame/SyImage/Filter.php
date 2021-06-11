@@ -350,73 +350,88 @@ class Filter
 
     /**
      * 等比例缩放,缩放后不填充背景
-     *
-     * @param int $width  宽度
+     * @param int $width 宽度
      * @param int $height 高度
-     *
      * @return $this
+     * @throws \SyException\Image\ImageException
      */
     public function handleResizeFit(int $width, int $height)
     {
-        $this->editor->resizeFit($this->image, $width, $height);
+        if (($width >= 10) && ($height >= 10)) {
+            $this->editor->resizeFit($this->image, $width, $height);
+        } else {
+            throw new ImageException('宽度或高度不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
+        }
 
         return $this;
     }
 
     /**
      * 固定尺寸缩放,可能导致图片变形
-     *
-     * @param int $width  宽度
+     * @param int $width 宽度
      * @param int $height 高度
-     *
      * @return $this
+     * @throws \SyException\Image\ImageException
      */
     public function handleResizeExact(int $width, int $height)
     {
-        $this->editor->resizeExact($this->image, $width, $height);
+        if (($width >= 10) && ($height >= 10)) {
+            $this->editor->resizeExact($this->image, $width, $height);
+        } else {
+            throw new ImageException('宽度或高度不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
+        }
 
         return $this;
     }
 
     /**
      * 居中剪裁,长边的大于指定值的部分居中剪裁掉,图片不会变形
-     *
-     * @param int $width  宽度
+     * @param int $width 宽度
      * @param int $height 高度
-     *
      * @return $this
+     * @throws \SyException\Image\ImageException
      */
     public function handleResizeFill(int $width, int $height)
     {
-        $this->editor->resizeFill($this->image, $width, $height);
+        if (($width >= 10) && ($height >= 10)) {
+            $this->editor->resizeFill($this->image, $width, $height);
+        } else {
+            throw new ImageException('宽度或高度不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
+        }
 
         return $this;
     }
 
     /**
      * 等宽缩放,等比缩放,高度不管
-     *
      * @param int $width 宽度
-     *
      * @return $this
+     * @throws \SyException\Image\ImageException
      */
     public function handleResizeExactWidth(int $width)
     {
-        $this->editor->resizeExactWidth($this->image, $width);
+        if ($width >= 10) {
+            $this->editor->resizeExactWidth($this->image, $width);
+        } else {
+            throw new ImageException('宽度不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
+        }
 
         return $this;
     }
 
     /**
      * 等高缩放,等比缩放,宽度不管
-     *
      * @param int $height 高度
-     *
      * @return $this
+     * @throws \SyException\Image\ImageException
      */
     public function handleResizeExactHeight(int $height)
     {
-        $this->editor->resizeExactHeight($this->image, $height);
+        if ($height >= 10) {
+            $this->editor->resizeExactHeight($this->image, $height);
+        } else {
+            throw new ImageException('高度不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
+        }
 
         return $this;
     }
