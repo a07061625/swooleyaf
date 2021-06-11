@@ -4,7 +4,7 @@ require_once __DIR__ . '/helper_load.php';
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImageBlur(\SyImage\Filter &$filter)
+function handleImageBlur(SyImage\Filter &$filter)
 {
     $blur = (int)\SyTool\Tool::getClientOption('-blur', false, 0);
     $filter->handleBlur($blur);
@@ -13,7 +13,7 @@ function handleImageBlur(\SyImage\Filter &$filter)
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImageBrightness(\SyImage\Filter &$filter)
+function handleImageBrightness(SyImage\Filter &$filter)
 {
     $brightness = (int)\SyTool\Tool::getClientOption('-brightness', false, 0);
     $filter->handleBrightness($brightness);
@@ -22,7 +22,7 @@ function handleImageBrightness(\SyImage\Filter &$filter)
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImageColorize(\SyImage\Filter &$filter)
+function handleImageColorize(SyImage\Filter &$filter)
 {
     $red = (int)\SyTool\Tool::getClientOption('-red', false, 0);
     $green = (int)\SyTool\Tool::getClientOption('-green', false, 0);
@@ -33,7 +33,7 @@ function handleImageColorize(\SyImage\Filter &$filter)
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImageContrast(\SyImage\Filter &$filter)
+function handleImageContrast(SyImage\Filter &$filter)
 {
     $contrast = (int)\SyTool\Tool::getClientOption('-contrast', false, 0);
     $filter->handleContrast($contrast);
@@ -42,7 +42,7 @@ function handleImageContrast(\SyImage\Filter &$filter)
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImageDither(\SyImage\Filter &$filter)
+function handleImageDither(SyImage\Filter &$filter)
 {
     $type = (string)\SyTool\Tool::getClientOption('-type', false, '');
     $filter->handleDither($type);
@@ -51,7 +51,7 @@ function handleImageDither(\SyImage\Filter &$filter)
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImageGamma(\SyImage\Filter &$filter)
+function handleImageGamma(SyImage\Filter &$filter)
 {
     $gamma = (float)\SyTool\Tool::getClientOption('-gamma', false, 1.0);
     $filter->handleGamma($gamma);
@@ -60,7 +60,7 @@ function handleImageGamma(\SyImage\Filter &$filter)
 /**
  * @throws \Exception
  */
-function handleImageGrayscale(\SyImage\Filter &$filter)
+function handleImageGrayscale(SyImage\Filter &$filter)
 {
     $filter->handleGrayscale();
 }
@@ -68,7 +68,7 @@ function handleImageGrayscale(\SyImage\Filter &$filter)
 /**
  * @throws \Exception
  */
-function handleImageInvert(\SyImage\Filter &$filter)
+function handleImageInvert(SyImage\Filter &$filter)
 {
     $filter->handleInvert();
 }
@@ -76,7 +76,7 @@ function handleImageInvert(\SyImage\Filter &$filter)
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImagePixelate(\SyImage\Filter &$filter)
+function handleImagePixelate(SyImage\Filter &$filter)
 {
     $pixel = (int)\SyTool\Tool::getClientOption('-pixel', false, 1);
     $filter->handlePixelate($pixel);
@@ -85,7 +85,7 @@ function handleImagePixelate(\SyImage\Filter &$filter)
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImageSharpen(\SyImage\Filter &$filter)
+function handleImageSharpen(SyImage\Filter &$filter)
 {
     $sharpen = (int)\SyTool\Tool::getClientOption('-sharpen', false, 1);
     $filter->handleSharpen($sharpen);
@@ -94,7 +94,7 @@ function handleImageSharpen(\SyImage\Filter &$filter)
 /**
  * @throws \Exception
  */
-function handleImageSobel(\SyImage\Filter &$filter)
+function handleImageSobel(SyImage\Filter &$filter)
 {
     $filter->handleSobel();
 }
@@ -102,7 +102,7 @@ function handleImageSobel(\SyImage\Filter &$filter)
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImageResizeFit(\SyImage\Filter &$filter)
+function handleImageResizeFit(SyImage\Filter &$filter)
 {
     $width = (int)\SyTool\Tool::getClientOption('-width', false, 0);
     $height = (int)\SyTool\Tool::getClientOption('-height', false, 0);
@@ -112,7 +112,7 @@ function handleImageResizeFit(\SyImage\Filter &$filter)
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImageResizeExact(\SyImage\Filter &$filter)
+function handleImageResizeExact(SyImage\Filter &$filter)
 {
     $width = (int)\SyTool\Tool::getClientOption('-width', false, 0);
     $height = (int)\SyTool\Tool::getClientOption('-height', false, 0);
@@ -122,7 +122,7 @@ function handleImageResizeExact(\SyImage\Filter &$filter)
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImageResizeFill(\SyImage\Filter &$filter)
+function handleImageResizeFill(SyImage\Filter &$filter)
 {
     $width = (int)\SyTool\Tool::getClientOption('-width', false, 0);
     $height = (int)\SyTool\Tool::getClientOption('-height', false, 0);
@@ -132,7 +132,7 @@ function handleImageResizeFill(\SyImage\Filter &$filter)
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImageResizeExactWidth(\SyImage\Filter &$filter)
+function handleImageResizeExactWidth(SyImage\Filter &$filter)
 {
     $width = (int)\SyTool\Tool::getClientOption('-width', false, 0);
     $filter->handleResizeExactWidth($width);
@@ -141,13 +141,13 @@ function handleImageResizeExactWidth(\SyImage\Filter &$filter)
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImageResizeExactHeight(\SyImage\Filter &$filter)
+function handleImageResizeExactHeight(SyImage\Filter &$filter)
 {
     $height = (int)\SyTool\Tool::getClientOption('-height', false, 0);
     $filter->handleResizeExactHeight($height);
 }
 
-function handleImageFlatten(\SyImage\Filter &$filter)
+function handleImageFlatten(SyImage\Filter &$filter)
 {
     $filter->handleFlatten();
 }
@@ -155,7 +155,7 @@ function handleImageFlatten(\SyImage\Filter &$filter)
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImageBlend(\SyImage\Filter &$filter)
+function handleImageBlend(SyImage\Filter &$filter)
 {
     $blend = (string)\SyTool\Tool::getClientOption('-blend', false, '');
     $filter->handleBlend($blend, [
@@ -170,7 +170,7 @@ function handleImageBlend(\SyImage\Filter &$filter)
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImageRotate(\SyImage\Filter &$filter)
+function handleImageRotate(SyImage\Filter &$filter)
 {
     $angle = (int)\SyTool\Tool::getClientOption('-angle', false, 0);
     $color = (string)\SyTool\Tool::getClientOption('-color', false, '');
@@ -180,7 +180,7 @@ function handleImageRotate(\SyImage\Filter &$filter)
 /**
  * @throws \SyException\Image\ImageException
  */
-function handleImageText(\SyImage\Filter &$filter)
+function handleImageText(SyImage\Filter &$filter)
 {
     $text = (string)\SyTool\Tool::getClientOption('-text', false, '');
     $filter->handleText($text, [
