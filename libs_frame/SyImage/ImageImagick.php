@@ -122,7 +122,7 @@ class ImageImagick extends ImageBase
 
         $water = new \Imagick($filePath);
         $water->stripImage();
-        $water->setImageOpacity($opacity);
+        $water->setImageAlpha($opacity);
 
         $draw = new \ImagickDraw();
         $draw->composite($water->getImageCompose(), $startX, $startY, $imageInfo[0], $imageInfo[1], $water);

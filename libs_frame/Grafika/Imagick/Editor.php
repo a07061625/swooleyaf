@@ -376,7 +376,7 @@ final class Editor implements EditorInterface
         $opacity = ($opacity > 1) ? 1 : $opacity;
         $opacity = ($opacity < 0) ? 0 : $opacity;
 
-        $image->getCore()->setImageOpacity($opacity);
+        $image->getCore()->setImageAlpha($opacity);
 
         return $this;
     }
