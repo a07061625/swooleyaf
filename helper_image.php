@@ -193,7 +193,7 @@ function handleImageText(SyImage\Filter &$filter)
     ]);
 }
 
-$handleType = \SyTool\Tool::getClientOption(0, true, '');
+$handleType = \SyTool\Tool::getClientOption(1, true, '');
 $funcName = 'handleImage' . $handleType;
 if (!function_exists($funcName)) {
     echo '处理类型不支持' . PHP_EOL;
