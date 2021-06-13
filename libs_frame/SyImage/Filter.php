@@ -551,7 +551,7 @@ class Filter
         if (($angle < 0) || ($angle > 359)) {
             throw new ImageException('角度不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
-        if ((\strlen($color) > 0) && !ctype_alpha($color)) {
+        if ((\strlen($color) > 0) && !ctype_alnum($color)) {
             throw new ImageException('背景色不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
 
@@ -603,7 +603,7 @@ class Filter
         }
 
         $color = $configs['color'] ?? '000000';
-        if ((6 != \strlen($color)) || !ctype_alpha($color)) {
+        if ((6 != \strlen($color)) || !ctype_alnum($color)) {
             throw new ImageException('背景色不合法', ErrorCode::IMAGE_UPLOAD_PARAM_ERROR);
         }
 
