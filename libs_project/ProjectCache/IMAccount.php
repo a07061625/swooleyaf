@@ -5,6 +5,7 @@
  * Date: 2018/7/18 0018
  * Time: 10:10
  */
+
 namespace ProjectCache;
 
 use DesignPatterns\Factories\CacheSimpleFactory;
@@ -48,7 +49,7 @@ class IMAccount
         CacheSimpleFactory::getRedisInstance()->del($redisKey);
     }
 
-    private static function getSignKey(string $appId, string $account) : string
+    private static function getSignKey(string $appId, string $account): string
     {
         return Project::REDIS_PREFIX_IM_ADMIN . $appId . '_' . $account;
     }
