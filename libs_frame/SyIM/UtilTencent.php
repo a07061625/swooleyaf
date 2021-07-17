@@ -5,6 +5,7 @@
  * Date: 2021/7/17 0017
  * Time: 8:42
  */
+
 namespace SyIM;
 
 use DesignPatterns\Singletons\IMConfigSingleton;
@@ -17,6 +18,7 @@ use SyTrait\SimpleTrait;
 
 /**
  * Class UtilTencent
+ *
  * @package SyIM
  */
 class UtilTencent
@@ -27,12 +29,13 @@ class UtilTencent
 
     /**
      * 生成签名
-     * @param string $appId 应用ID
+     *
+     * @param string $appId   应用ID
      * @param string $userTag 用户标识
-     * @return string
+     *
      * @throws \SyException\IM\TencentException
      */
-    public static function createSign(string $appId, string $userTag) : string
+    public static function createSign(string $appId, string $userTag): string
     {
         $output = [];
         $commandStatus = 0;
@@ -42,7 +45,7 @@ class UtilTencent
                    . ' ' . escapeshellarg($config->getAppId())
                    . ' ' . escapeshellarg($userTag);
         exec($command, $output, $commandStatus);
-        if ($commandStatus == -1) {
+        if (-1 == $commandStatus) {
             throw new TencentException('生成即时通讯签名失败', ErrorCode::IM_SIGN_ERROR);
         }
 
@@ -51,12 +54,15 @@ class UtilTencent
 
     /**
      * 发生服务请求
-     * @param string $appId 应用ID
-     * @param string $uri 请求URI,以/开头
-     * @param array $data 请求数据,具体格式请参考官方文档 https://cloud.tencent.com/document/product/269/1519
-     * @param string $successKey 响应成功获取的数据键名
-     * @param array $curlConfigs curl配置
+     *
+     * @param string $appId       应用ID
+     * @param string $uri         请求URI,以/开头
+     * @param array  $data        请求数据,具体格式请参考官方文档 https://cloud.tencent.com/document/product/269/1519
+     * @param string $successKey  响应成功获取的数据键名
+     * @param array  $curlConfigs curl配置
+     *
      * @return array 请求结果
+     *
      * @throws \Exception
      */
     public static function sendServiceRequest(
@@ -65,7 +71,7 @@ class UtilTencent
         array $data,
         string $successKey = '',
         array $curlConfigs = []
-    ) : array {
+    ): array {
         $resArr = [
             'code' => 0,
         ];
@@ -95,12 +101,13 @@ class UtilTencent
             Log::error('发送腾讯IM请求失败,错误码=' . $sendRes['res_no']);
             $resArr['code'] = ErrorCode::IM_POST_ERROR;
             $resArr['msg'] = '发送腾讯IM请求失败';
+
             return $resArr;
         }
         $sendData = Tool::jsonDecode($sendRes['res_no']);
-        if ($sendData['ActionStatus'] == self::RESP_SUCCESS) {
+        if (self::RESP_SUCCESS == $sendData['ActionStatus']) {
             unset($sendData['ActionStatus'], $sendData['ErrorCode'], $sendData['ErrorInfo']);
-            if ((strlen($successKey) > 0) && isset($sendData[$successKey])) {
+            if ((\strlen($successKey) > 0) && isset($sendData[$successKey])) {
                 $resArr['data'] = $sendData[$successKey];
             } else {
                 $resArr['data'] = $sendData;
