@@ -18,35 +18,38 @@ class IMAccount
 {
     use SimpleTrait;
 
-    public static function getAccountSign(string $account)
+    public static function getAccountSign(string $appId, string $account)
     {
-        $redisKey = self::getSignKey($account);
-        $accountSign = CacheSimpleFactory::getRedisInstance()->get($redisKey);
-        if ($accountSign === false) {
-            $imBase = SyBaseMysqlFactory::getImBaseEntity();
-            $ormResult1 = $imBase->getContainer()->getModel()->getOrmDbTable();
-            $ormResult1->where('`user_id`=?', [$account]);
-            $imBaseInfo = $imBase->getContainer()->getModel()->findOne($ormResult1);
-            if (empty($imBaseInfo)) {
-                throw new CheckException('实时通讯配置不存在', ErrorCode::COMMON_PARAM_ERROR);
-            }
-
-            CacheSimpleFactory::getRedisInstance()->set($redisKey, $imBaseInfo['sign'], 86400);
-            $accountSign = $imBaseInfo['sign'];
-            unset($ormResult1, $imBase);
+        $redisKey = self::getSignKey($appId, $account);
+        $redisData = CacheSimpleFactory::getRedisInstance()->get($redisKey);
+        if ($redisData['unique_key'] && ($redisData['unique_key'] == $redisKey)) {
+            return $redisData['sign'];
         }
 
-        return $accountSign;
+        $imBase = SyBaseMysqlFactory::getImBaseEntity();
+        $ormResult1 = $imBase->getContainer()->getModel()->getOrmDbTable();
+        $ormResult1->where('`app_id`=? AND `user_id`=?', [$appId, $account]);
+        $imBaseInfo = $imBase->getContainer()->getModel()->findOne($ormResult1);
+        if (empty($imBaseInfo)) {
+            throw new CheckException('实时通讯配置不存在', ErrorCode::COMMON_PARAM_ERROR);
+        }
+        CacheSimpleFactory::getRedisInstance()->hMSet($redisKey, [
+            'unique_key' => $redisKey,
+            'sign' => $imBaseInfo['sign'],
+        ]);
+        CacheSimpleFactory::getRedisInstance()->expire($redisKey, 86400);
+
+        return $imBaseInfo['sign'];
     }
 
-    public static function clearAccountSign(string $account)
+    public static function clearAccountSign(string $appId, string $account)
     {
-        $redisKey = self::getSignKey($account);
+        $redisKey = self::getSignKey($appId, $account);
         CacheSimpleFactory::getRedisInstance()->del($redisKey);
     }
 
-    private static function getSignKey(string $account)
+    private static function getSignKey(string $appId, string $account) : string
     {
-        return Project::REDIS_PREFIX_IM_ADMIN . $account;
+        return Project::REDIS_PREFIX_IM_ADMIN . $appId . '_' . $account;
     }
 }

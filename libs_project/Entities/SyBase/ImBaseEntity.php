@@ -12,6 +12,13 @@ class ImBaseEntity extends MysqlEntity
     public $id;
 
     /**
+     * 应用ID
+     *
+     * @var string
+     */
+    public $app_id = '';
+
+    /**
      * 用户ID
      *
      * @var string
