@@ -5,6 +5,7 @@
  * Date: 2018/6/29 0029
  * Time: 17:16
  */
+
 namespace DesignPatterns\Singletons;
 
 use SyConstant\ErrorCode;
@@ -19,9 +20,10 @@ class IMConfigSingleton
 
     /**
      * 腾讯配置
-     * @var array|null
+     *
+     * @var null|array
      */
-    private $tencentConfigs = null;
+    private $tencentConfigs;
 
     private function __construct()
     {
@@ -30,9 +32,9 @@ class IMConfigSingleton
     /**
      * @return \DesignPatterns\Singletons\IMConfigSingleton
      */
-    public static function getInstance() : IMConfigSingleton
+    public static function getInstance(): self
     {
-        if (is_null(self::$instance)) {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
 
@@ -41,12 +43,14 @@ class IMConfigSingleton
 
     /**
      * @param string $appId 应用ID
+     *
      * @return \SyIM\ConfigTencent 腾讯配置
+     *
      * @throws \SyException\IM\TencentException
      */
-    public function getTencentConfig(string $appId) : ConfigTencent
+    public function getTencentConfig(string $appId): ConfigTencent
     {
-        if (is_null($this->tencentConfigs)) {
+        if (null === $this->tencentConfigs) {
             $this->tencentConfigs = [];
             $configs = Tool::getConfig('im.' . SY_ENV . SY_PROJECT . '.tencent');
             foreach ($configs as $eConfig) {
@@ -63,19 +67,19 @@ class IMConfigSingleton
 
         if (isset($this->tencentConfigs[$appId])) {
             return $this->tencentConfigs[$appId];
-        } else {
-            throw new TencentException(ErrorCode::IM_PARAM_ERROR, '腾讯配置不存在');
         }
+
+        throw new TencentException(ErrorCode::IM_PARAM_ERROR, '腾讯配置不存在');
     }
 
-    public function getTencentConfigs() : array
+    public function getTencentConfigs(): array
     {
         return $this->tencentConfigs;
     }
 
     public function removeTencentConfig(string $appId)
     {
-        if (is_array($this->tencentConfigs)) {
+        if (\is_array($this->tencentConfigs)) {
             unset($this->tencentConfigs[$appId]);
         }
     }
