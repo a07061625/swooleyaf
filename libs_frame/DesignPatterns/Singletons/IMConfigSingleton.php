@@ -7,7 +7,9 @@
  */
 namespace DesignPatterns\Singletons;
 
-use SyIM\TencentConfig;
+use SyConstant\ErrorCode;
+use SyException\IM\TencentException;
+use SyIM\ConfigTencent;
 use SyTool\Tool;
 use SyTrait\SingletonTrait;
 
@@ -17,9 +19,9 @@ class IMConfigSingleton
 
     /**
      * 腾讯配置
-     * @var \SyIM\TencentConfig
+     * @var array|null
      */
-    private $tencentConfig = null;
+    private $tencentConfigs = null;
 
     private function __construct()
     {
@@ -28,7 +30,7 @@ class IMConfigSingleton
     /**
      * @return \DesignPatterns\Singletons\IMConfigSingleton
      */
-    public static function getInstance()
+    public static function getInstance() : IMConfigSingleton
     {
         if (is_null(self::$instance)) {
             self::$instance = new self();
@@ -38,21 +40,43 @@ class IMConfigSingleton
     }
 
     /**
-     * @return \SyIM\TencentConfig
+     * @param string $appId 应用ID
+     * @return \SyIM\ConfigTencent 腾讯配置
+     * @throws \SyException\IM\TencentException
      */
-    public function getTencentConfig()
+    public function getTencentConfig(string $appId) : ConfigTencent
     {
-        if (is_null($this->tencentConfig)) {
-            $configs = Tool::getConfig('im.' . SY_ENV . SY_PROJECT);
-            $tencentConfig = new TencentConfig();
-            $tencentConfig->setAppId((string)Tool::getArrayVal($configs, 'tencent.app.id', '', true));
-            $tencentConfig->setPrivateKey((string)Tool::getArrayVal($configs, 'tencent.private.key', '', true));
-            $tencentConfig->setCommandSign((string)Tool::getArrayVal($configs, 'tencent.command.sign', '', true));
-            $tencentConfig->setAccountAdmin((string)Tool::getArrayVal($configs, 'tencent.account.admin', '', true));
-            $tencentConfig->setAccountType((string)Tool::getArrayVal($configs, 'tencent.account.type', '', true));
-            $this->tencentConfig = $tencentConfig;
+        if (is_null($this->tencentConfigs)) {
+            $this->tencentConfigs = [];
+            $configs = Tool::getConfig('im.' . SY_ENV . SY_PROJECT . '.tencent');
+            foreach ($configs as $eConfig) {
+                $nowAppId = $eConfig['app_id'] ?? '';
+                $tencentConfig = new ConfigTencent();
+                $tencentConfig->setAppId($nowAppId);
+                $tencentConfig->setPrivateKey($eConfig['private_key'] ?? '');
+                $tencentConfig->setCommandSign($eConfig['command_sign'] ?? '');
+                $tencentConfig->setAccountAdmin($eConfig['account_admin'] ?? '');
+                $tencentConfig->setAccountType($eConfig['account_type'] ?? '');
+                $this->tencentConfigs[$nowAppId] = $tencentConfig;
+            }
         }
 
-        return $this->tencentConfig;
+        if (isset($this->tencentConfigs[$appId])) {
+            return $this->tencentConfigs[$appId];
+        } else {
+            throw new TencentException(ErrorCode::IM_PARAM_ERROR, '腾讯配置不存在');
+        }
+    }
+
+    public function getTencentConfigs() : array
+    {
+        return $this->tencentConfigs;
+    }
+
+    public function removeTencentConfig(string $appId)
+    {
+        if (is_array($this->tencentConfigs)) {
+            unset($this->tencentConfigs[$appId]);
+        }
     }
 }

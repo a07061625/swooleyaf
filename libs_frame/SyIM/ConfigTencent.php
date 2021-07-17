@@ -2,15 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: 姜伟
- * Date: 2018/7/7 0007
- * Time: 16:04
+ * Date: 2021/7/17 0017
+ * Time: 8:42
  */
 namespace SyIM;
 
 use SyConstant\ErrorCode;
 use SyException\IM\TencentException;
 
-class TencentConfig
+/**
+ * Class ConfigTencent
+ * @package SyIM
+ */
+class ConfigTencent
 {
     /**
      * 应用id
@@ -76,7 +80,7 @@ class TencentConfig
     }
 
     /**
-     * @param string $accountAdmin
+     * @param string $accountAdmin 管理员帐号
      * @throws \SyException\IM\TencentException
      */
     public function setAccountAdmin(string $accountAdmin)
@@ -97,7 +101,8 @@ class TencentConfig
     }
 
     /**
-     * @param string $accountType
+     * @param string $accountType 账号类型
+     * @throws \SyException\IM\TencentException
      */
     public function setAccountType(string $accountType)
     {
