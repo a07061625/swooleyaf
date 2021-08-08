@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace ClickHouseDB\Query\Expression;
 
@@ -18,12 +18,12 @@ class Raw implements Expression
         $this->expression = $expression;
     }
 
-    public function needsEncoding() : bool
+    public function needsEncoding(): bool
     {
         return false;
     }
 
-    public function getValue() : string
+    public function getValue(): string
     {
         return $this->expression;
     }

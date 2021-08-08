@@ -11,11 +11,13 @@ final class SyFrameLoader
     private $preHandleMap = [];
     /**
      * swift mailer未初始化标识 true：未初始化 false：已初始化
+     *
      * @var bool
      */
     private $swiftMailerStatus = true;
     /**
      * smarty未初始化标识 true：未初始化 false：已初始化
+     *
      * @var bool
      */
     private $smartyStatus = true;
@@ -25,21 +27,25 @@ final class SyFrameLoader
     private $smartyRootClasses = [];
     /**
      * fpdf未初始化标识 true：未初始化 false：已初始化
+     *
      * @var bool
      */
     private $fpdfStatus = true;
     /**
      * excel未初始化标识 true：未初始化 false：已初始化
+     *
      * @var bool
      */
     private $excelStatus = true;
     /**
      * aliOpenCore未初始化标识 true：未初始化 false：已初始化
+     *
      * @var bool
      */
     private $aliOpenCoreStatus = true;
     /**
      * pinyin未初始化标识 true：未初始化 false：已初始化
+     *
      * @var bool
      */
     private $pinYinStatus = true;
@@ -74,7 +80,7 @@ final class SyFrameLoader
      */
     public static function getInstance()
     {
-        if (is_null(self::$instance)) {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
 
@@ -83,28 +89,29 @@ final class SyFrameLoader
 
     /**
      * 加载文件
+     *
      * @param string $className 类名
-     * @return bool
      */
-    public function loadFile(string $className) : bool
+    public function loadFile(string $className): bool
     {
         $nameArr = explode('/', $className);
         $funcName = $this->preHandleMap[$nameArr[0]] ?? null;
-        if (is_null($funcName)) {
+        if (null === $funcName) {
             $nameArr = explode('_', $className);
             $funcName = $this->preHandleMap[$nameArr[0]] ?? null;
         }
 
-        $file = is_null($funcName) ? SY_FRAME_LIBS_ROOT . $className . '.php' : $this->$funcName($className);
+        $file = null === $funcName ? SY_FRAME_LIBS_ROOT . $className . '.php' : $this->{$funcName}($className);
         if (is_file($file) && is_readable($file)) {
             require_once $file;
+
             return true;
         }
 
         return false;
     }
 
-    private function preHandleFPdf(string $className) : string
+    private function preHandleFPdf(string $className): string
     {
         if ($this->fpdfStatus) {
             define('FPDF_VERSION', '1.81');
@@ -114,12 +121,12 @@ final class SyFrameLoader
         return SY_FRAME_LIBS_ROOT . $className . '.php';
     }
 
-    private function preHandleTwig(string $className) : string
+    private function preHandleTwig(string $className): string
     {
         return SY_FRAME_LIBS_ROOT . 'SyTemplate/' . $className . '.php';
     }
 
-    private function preHandleSwift(string $className) : string
+    private function preHandleSwift(string $className): string
     {
         if ($this->swiftMailerStatus) { //加载swift mailer依赖文件
             $this->swiftMailerStatus = false;
@@ -133,12 +140,12 @@ final class SyFrameLoader
         return SY_FRAME_LIBS_ROOT . 'Mailer/' . str_replace('_', '/', $className) . '.php';
     }
 
-    private function preHandleResque(string $className) : string
+    private function preHandleResque(string $className): string
     {
         return SY_FRAME_LIBS_ROOT . 'Queue/' . str_replace('_', '/', $className) . '.php';
     }
 
-    private function preHandleSmarty(string $className) : string
+    private function preHandleSmarty(string $className): string
     {
         if ($this->smartyStatus) {
             $smartyLibDir = SY_FRAME_LIBS_ROOT . 'SyTemplate/Smarty/libs/';
@@ -152,12 +159,12 @@ final class SyFrameLoader
         $lowerClassName = strtolower($className);
         if (isset($this->smartyRootClasses[$lowerClassName])) {
             return SMARTY_DIR . $this->smartyRootClasses[$lowerClassName];
-        } else {
-            return SMARTY_SYSPLUGINS_DIR . $lowerClassName . '.php';
         }
+
+        return SMARTY_SYSPLUGINS_DIR . $lowerClassName . '.php';
     }
 
-    private function preHandlePhpExcel(string $className) : string
+    private function preHandlePhpExcel(string $className): string
     {
         if ($this->excelStatus) {
             define('PHPEXCEL_ROOT', SY_FRAME_LIBS_ROOT . 'PhpOffice/');
@@ -190,7 +197,7 @@ final class SyFrameLoader
         return SY_FRAME_LIBS_ROOT . 'PhpOffice/' . str_replace('_', '/', $className) . '.php';
     }
 
-    private function preHandleAliOpen(string $className) : string
+    private function preHandleAliOpen(string $className): string
     {
         if ($this->aliOpenCoreStatus) {
             define('ALIOPEN_STS_PRODUCT_NAME', 'Sts');
@@ -218,7 +225,7 @@ final class SyFrameLoader
         return SY_FRAME_LIBS_ROOT . $className . '.php';
     }
 
-    private function preHandlePinYin(string $className) : string
+    private function preHandlePinYin(string $className): string
     {
         if ($this->pinYinStatus) {
             define('PINYIN_DEFAULT', 4096);
@@ -236,7 +243,7 @@ final class SyFrameLoader
         return SY_FRAME_LIBS_ROOT . 'SyTranslation/' . $className . '.php';
     }
 
-    private function preHandleClickHouse(string $className) : string
+    private function preHandleClickHouse(string $className): string
     {
         return SY_FRAME_LIBS_ROOT . 'SyDriver/' . $className . '.php';
     }
@@ -258,7 +265,7 @@ final class SyProjectLoader
      */
     public static function getInstance()
     {
-        if (is_null(self::$instance)) {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
 
@@ -267,14 +274,15 @@ final class SyProjectLoader
 
     /**
      * 加载文件
+     *
      * @param string $className 类名
-     * @return bool
      */
-    public function loadFile(string $className) : bool
+    public function loadFile(string $className): bool
     {
         $file = SY_PROJECT_LIBS_ROOT . $className . '.php';
         if (is_file($file) && is_readable($file)) {
             require_once $file;
+
             return true;
         }
 
@@ -284,7 +292,9 @@ final class SyProjectLoader
 
 /**
  * 基础公共类自动加载
+ *
  * @param string $className 类全名
+ *
  * @return bool
  */
 function syFrameAutoload(string $className)
@@ -296,12 +306,15 @@ function syFrameAutoload(string $className)
         '/',
         '',
     ], $className);
+
     return SyFrameLoader::getInstance()->loadFile($trueName);
 }
 
 /**
  * 项目公共类自动加载
+ *
  * @param string $className 类全名
+ *
  * @return bool
  */
 function syProjectAutoload(string $className)
@@ -313,6 +326,7 @@ function syProjectAutoload(string $className)
         '/',
         '',
     ], $className);
+
     return SyProjectLoader::getInstance()->loadFile($trueName);
 }
 

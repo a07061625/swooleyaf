@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace ClickHouseDB\Type;
 
@@ -15,6 +15,14 @@ final class UInt64 implements NumericType
     }
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->value;
+    }
+
+    /**
      * @return self
      */
     public static function fromString(string $uint64Value)
@@ -26,14 +34,6 @@ final class UInt64 implements NumericType
      * @return string
      */
     public function getValue()
-    {
-        return $this->value;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
     {
         return $this->value;
     }

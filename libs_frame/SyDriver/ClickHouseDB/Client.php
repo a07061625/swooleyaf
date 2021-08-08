@@ -1,8 +1,10 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace ClickHouseDB;
 
+use function array_keys;
+use function array_values;
 use ClickHouseDB\Exception\QueryException;
 use ClickHouseDB\Query\Degeneration;
 use ClickHouseDB\Query\Degeneration\Bindings;
@@ -12,26 +14,16 @@ use ClickHouseDB\Query\WriteToFile;
 use ClickHouseDB\Quote\FormatLine;
 use ClickHouseDB\Transport\Http;
 use ClickHouseDB\Transport\Stream;
-use function array_flip;
-use function array_keys;
-use function array_rand;
-use function array_values;
-use function count;
-use function date;
 use function implode;
-use function in_array;
-use function is_array;
-use function is_callable;
 use function is_file;
 use function is_readable;
-use function is_string;
 use function sprintf;
 use function stripos;
-use function strtotime;
 use function trim;
 
 /**
  * Class Client
+ *
  * @package ClickHouseDB
  */
 class Client
@@ -81,12 +73,13 @@ class Client
             throw  new \InvalidArgumentException('not set host');
         }
 
-        if (array_key_exists('auth_method', $connectParams)) {
-            if (false === in_array($connectParams['auth_method'], Http::AUTH_METHODS_LIST)) {
+        if (\array_key_exists('auth_method', $connectParams)) {
+            if (false === \in_array($connectParams['auth_method'], Http::AUTH_METHODS_LIST)) {
                 $errorMessage = sprintf(
                     'Invalid value for "auth_method" param. Should be one of [%s].',
                     json_encode(Http::AUTH_METHODS_LIST)
                 );
+
                 throw  new \InvalidArgumentException($errorMessage);
             }
 
@@ -256,9 +249,6 @@ class Client
         return $this->connectUsername;
     }
 
-    /**
-     * @return int
-     */
     public function getAuthMethod(): int
     {
         return $this->authMethod;
@@ -289,10 +279,9 @@ class Client
     }
 
     /**
-     * @param string|null $useSessionId
      * @return $this
      */
-    public function useSession(string $useSessionId = null)
+    public function useSession(?string $useSessionId = null)
     {
         if (!$this->settings()->getSessionId()) {
             if (!$useSessionId) {
@@ -301,6 +290,7 @@ class Client
                 $this->settings()->session_id($useSessionId);
             }
         }
+
         return $this;
     }
 
@@ -316,6 +306,7 @@ class Client
      * Query CREATE/DROP
      *
      * @param mixed[] $bindings
+     *
      * @return Statement
      */
     public function write(string $sql, array $bindings = [], bool $exception = true)
@@ -325,6 +316,7 @@ class Client
 
     /**
      * set db name
+     *
      * @return static
      */
     public function database(string $db)
@@ -384,15 +376,15 @@ class Client
 
     /**
      * @param mixed[] $bindings
+     *
      * @return Statement
      */
     public function select(
         string $sql,
         array $bindings = [],
-        WhereInFile $whereInFile = null,
-        WriteToFile $writeToFile = null
-    )
-    {
+        ?WhereInFile $whereInFile = null,
+        ?WriteToFile $writeToFile = null
+    ) {
         return $this->transport()->select($sql, $bindings, $whereInFile, $writeToFile);
     }
 
@@ -406,7 +398,6 @@ class Client
 
     public function maxTimeExecutionAllAsync()
     {
-
     }
 
     /**
@@ -414,7 +405,7 @@ class Client
      */
     public function progressFunction(callable $callback)
     {
-        if (!is_callable($callback)) {
+        if (!\is_callable($callback)) {
             throw new \InvalidArgumentException('Not is_callable progressFunction');
         }
 
@@ -432,15 +423,15 @@ class Client
      * prepare select
      *
      * @param mixed[] $bindings
+     *
      * @return Statement
      */
     public function selectAsync(
         string $sql,
         array $bindings = [],
-        WhereInFile $whereInFile = null,
-        WriteToFile $writeToFile = null
-    )
-    {
+        ?WhereInFile $whereInFile = null,
+        ?WriteToFile $writeToFile = null
+    ) {
         return $this->transport()->selectAsync($sql, $bindings, $whereInFile, $writeToFile);
     }
 
@@ -496,8 +487,8 @@ class Client
 
     /**
      * @param mixed[][] $values
-     * @param string[] $columns
-     * @return Statement
+     * @param string[]  $columns
+     *
      * @throws Exception\TransportException
      */
     public function insert(string $table, array $values, array $columns = []): Statement
@@ -506,12 +497,12 @@ class Client
             throw QueryException::cannotInsertEmptyValues();
         }
 
-        if (stripos($table, '`') === false && stripos($table, '.') === false) {
+        if (false === stripos($table, '`') && false === stripos($table, '.')) {
             $table = '`' . $table . '`'; //quote table name for dot names
         }
         $sql = 'INSERT INTO ' . $table;
 
-        if (count($columns) !== 0) {
+        if (0 !== \count($columns)) {
             $sql .= ' (`' . implode('`,`', $columns) . '`) ';
         }
 
@@ -526,15 +517,16 @@ class Client
     }
 
     /**
-     *       * Prepares the values to insert from the associative array.
-     *       * There may be one or more lines inserted, but then the keys inside the array list must match (including in the sequence)
-     *       *
-     *       * @param mixed[] $values - array column_name => value (if we insert one row) or array list column_name => value if we insert many lines
-     *       * @return mixed[][] - list of arrays - 0 => fields, 1 => list of value arrays for insertion
-     *       */
+     *       * Prepares the values to insert from the associative array.
+     *       * There may be one or more lines inserted, but then the keys inside the array list must match (including in the sequence)
+     *       *
+     *       * @param mixed[] $values - array column_name => value (if we insert one row) or array list column_name => value if we insert many lines
+     *
+     *       * @return mixed[][] - list of arrays - 0 => fields, 1 => list of value arrays for insertion
+     *       */
     public function prepareInsertAssocBulk(array $values)
     {
-        if (isset($values[0]) && is_array($values[0])) { //случай, когда много строк вставляется
+        if (isset($values[0]) && \is_array($values[0])) { //случай, когда много строк вставляется
             $preparedFields = array_keys($values[0]);
             $preparedValues = [];
             foreach ($values as $idx => $row) {
@@ -563,8 +555,9 @@ class Client
      * Inserts one or more rows from an associative array.
      * If there is a discrepancy between the keys of the value arrays (or their order) - throws an exception.
      *
-     * @param string $tableName - name table
-     * @param mixed[] $values - array column_name => value (if we insert one row) or array list column_name => value if we insert many lines
+     * @param string  $tableName - name table
+     * @param mixed[] $values    - array column_name => value (if we insert one row) or array list column_name => value if we insert many lines
+     *
      * @return Statement
      */
     public function insertAssocBulk(string $tableName, array $values)
@@ -578,7 +571,8 @@ class Client
      * insert TabSeparated files
      *
      * @param string|string[] $fileNames
-     * @param string[] $columns
+     * @param string[]        $columns
+     *
      * @return mixed
      */
     public function insertBatchTSVFiles(string $tableName, $fileNames, array $columns = [])
@@ -590,21 +584,23 @@ class Client
      * insert Batch Files
      *
      * @param string|string[] $fileNames
-     * @param string[] $columns
-     * @param string $format ['TabSeparated','TabSeparatedWithNames','CSV','CSVWithNames']
+     * @param string[]        $columns
+     * @param string          $format    ['TabSeparated','TabSeparatedWithNames','CSV','CSVWithNames']
+     *
      * @return Statement[]
+     *
      * @throws Exception\TransportException
      */
     public function insertBatchFiles(string $tableName, $fileNames, array $columns = [], string $format = 'CSV')
     {
-        if (is_string($fileNames)) {
+        if (\is_string($fileNames)) {
             $fileNames = [$fileNames];
         }
         if ($this->getCountPendingQueue() > 0) {
             throw new QueryException('Queue must be empty, before insertBatch, need executeAsync');
         }
 
-        if (!in_array($format, self::SUPPORTED_FORMATS, true)) {
+        if (!\in_array($format, self::SUPPORTED_FORMATS, true)) {
             throw new QueryException('Format not support in insertBatchFiles');
         }
 
@@ -642,7 +638,8 @@ class Client
      * insert Batch Stream
      *
      * @param string[] $columns
-     * @param string $format ['TabSeparated','TabSeparatedWithNames','CSV','CSVWithNames']
+     * @param string   $format  ['TabSeparated','TabSeparatedWithNames','CSV','CSVWithNames']
+     *
      * @return Transport\CurlerRequest
      */
     public function insertBatchStream(string $tableName, array $columns = [], string $format = 'CSV')
@@ -651,7 +648,7 @@ class Client
             throw new QueryException('Queue must be empty, before insertBatch, need executeAsync');
         }
 
-        if (!in_array($format, self::SUPPORTED_FORMATS, true)) {
+        if (!\in_array($format, self::SUPPORTED_FORMATS, true)) {
             throw new QueryException('Format not support in insertBatchFiles');
         }
 
@@ -668,7 +665,9 @@ class Client
      * stream Write
      *
      * @param string[] $bind
+     *
      * @return Statement
+     *
      * @throws Exception\TransportException
      */
     public function streamWrite(Stream $stream, string $sql, array $bind = [])
@@ -684,6 +683,7 @@ class Client
      * stream Read
      *
      * @param string[] $bind
+     *
      * @return Statement
      */
     public function streamRead(Stream $streamRead, string $sql, array $bind = [])
@@ -698,7 +698,8 @@ class Client
     /**
      * Size of database
      *
-     * @return mixed|null
+     * @return null|mixed
+     *
      * @throws \Exception
      */
     public function databaseSize()
@@ -720,6 +721,7 @@ class Client
      * Size of tables
      *
      * @return mixed
+     *
      * @throws \Exception
      */
     public function tableSize(string $tableName)
@@ -729,8 +731,6 @@ class Client
         if (isset($tables[$tableName])) {
             return $tables[$tableName];
         }
-
-        return null;
     }
 
     /**
@@ -747,12 +747,15 @@ class Client
      * Tables sizes
      *
      * @param bool $flatList
+     *
      * @return mixed[][]
+     *
      * @throws \Exception
      */
     public function tablesSize($flatList = false)
     {
-        $result = $this->select('
+        $result = $this->select(
+            '
         SELECT name as table,database,
             max(sizebytes) as sizebytes,
             max(size) as size,
@@ -773,7 +776,8 @@ class Client
             WHERE database=:database
             GROUP BY table,database
         ',
-            ['database' => $this->settings()->getDatabase()]);
+            ['database' => $this->settings()->getDatabase()]
+        );
 
         if ($flatList) {
             return $result->rows();
@@ -786,6 +790,7 @@ class Client
      * isExists
      *
      * @return array
+     *
      * @throws \Exception
      */
     public function isExists(string $database, string $table)
@@ -802,46 +807,53 @@ class Client
      * List of partitions
      *
      * @return mixed[][]
+     *
      * @throws \Exception
      */
-    public function partitions(string $table, int $limit = null, bool $active = null)
+    public function partitions(string $table, ?int $limit = null, ?bool $active = null)
     {
         $database = $this->settings()->getDatabase();
-        $whereActiveClause = $active === null ? '' : sprintf(' AND active = %s', (int)$active);
-        $limitClause = $limit !== null ? ' LIMIT ' . $limit : '';
+        $whereActiveClause = null === $active ? '' : sprintf(' AND active = %s', (int)$active);
+        $limitClause = null !== $limit ? ' LIMIT ' . $limit : '';
 
-        return $this->select(<<<CLICKHOUSE
+        return $this->select(
+            <<<CLICKHOUSE
 SELECT *
 FROM system.parts 
-WHERE like(table,'%$table%') AND database='$database'$whereActiveClause
-ORDER BY max_date $limitClause
+WHERE like(table,'%{$table}%') AND database='{$database}'{$whereActiveClause}
+ORDER BY max_date {$limitClause}
 CLICKHOUSE
         )->rowsAsTree('name');
     }
 
     /**
      * dropPartition
+     *
      * @return Statement
+     *
      * @deprecated
      */
     public function dropPartition(string $dataBaseTableName, string $partition_id)
     {
-
         $partition_id = trim($partition_id, '\'');
         $this->settings()->set('replication_alter_partitions_sync', 2);
-        $state = $this->write('ALTER TABLE {dataBaseTableName} DROP PARTITION :partion_id',
+
+        return $this->write(
+            'ALTER TABLE {dataBaseTableName} DROP PARTITION :partion_id',
             [
                 'dataBaseTableName' => $dataBaseTableName,
                 'partion_id' => $partition_id,
-            ]);
-
-        return $state;
+            ]
+        );
     }
 
     /**
      * Truncate ( drop all partitions )
+     *
      * @return array
+     *
      * @throws \Exception
+     *
      * @deprecated
      */
     public function truncateTable(string $tableName)
@@ -860,6 +872,7 @@ CLICKHOUSE
      * Returns the server's uptime in seconds.
      *
      * @return int
+     *
      * @throws Exception\TransportException
      * @throws \Exception
      */
@@ -880,13 +893,16 @@ CLICKHOUSE
      * Read system.settings table
      *
      * @return mixed[][]
+     *
      * @throws \Exception
      */
     public function getServerSystemSettings(string $like = '')
     {
         $l = [];
-        $list = $this->select('SELECT * FROM system.settings' . ($like ? ' WHERE name LIKE :like' : ''),
-            ['like' => '%' . $like . '%'])->rows();
+        $list = $this->select(
+            'SELECT * FROM system.settings' . ($like ? ' WHERE name LIKE :like' : ''),
+            ['like' => '%' . $like . '%']
+        )->rows();
         foreach ($list as $row) {
             if (isset($row['name'])) {
                 $n = $row['name'];
@@ -897,5 +913,4 @@ CLICKHOUSE
 
         return $l;
     }
-
 }

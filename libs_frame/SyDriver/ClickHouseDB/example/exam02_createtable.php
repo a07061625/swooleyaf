@@ -4,9 +4,7 @@ include_once __DIR__ . '/../include.php';
 
 $config = include_once __DIR__ . '/00_config_connect.php';
 
-
 $db = new ClickHouseDB\Client($config);
-
 
 // ---------------------------- Write ----------------------------
 echo "\n-----\ntry write:create_table\n";
@@ -17,7 +15,8 @@ echo 'Tables EXISTS: ' . json_encode($db->showTables()) . PHP_EOL;
 $db->write('DROP TABLE IF EXISTS summing_url_views');
 echo 'Tables EXISTS: ' . json_encode($db->showTables()) . PHP_EOL;
 
-$db->write('
+$db->write(
+    '
     CREATE TABLE IF NOT EXISTS summing_url_views (
         event_date Date DEFAULT toDate(event_time),
         event_time DateTime,
@@ -32,14 +31,13 @@ $db->write('
 );
 echo 'Table EXISTS: ' . json_encode($db->showTables()) . PHP_EOL;
 
-/*
-Table EXISTS: [{"name": "summing_url_views"}]
-*/
+// Table EXISTS: [{"name": "summing_url_views"}]
 
 //------------------------------------------------------------------------------
 echo "Insert\n";
 
-$stat = $db->insert('summing_url_views',
+$stat = $db->insert(
+    'summing_url_views',
     [
         [time(), 'HASH1', 2345, 22, 20, 2],
         [time(), 'HASH2', 2345, 12, 9, 3],
@@ -52,18 +50,12 @@ $stat = $db->insert('summing_url_views',
 echo "Insert Done\n";
 //------------------------------------------------------------------------------
 
-
-
 echo "Try select \n";
-
 
 $st = $db->select('SELECT * FROM summing_url_views LIMIT 2');
 
-
-
-
-echo "Count select rows:".$st->count()."\n";
-echo "Count all rows:".$st->countAll()."\n";
+echo 'Count select rows:' . $st->count() . "\n";
+echo 'Count all rows:' . $st->countAll() . "\n";
 echo "First row:\n";
 print_r($st->fetchOne());
 
@@ -73,23 +65,12 @@ print_r($st->extremesMin());
 echo "totals:\n";
 print_r($st->totals());
 
+$st = $db->select('SELECT event_date,url_hash,sum(views),avg(views) FROM summing_url_views WHERE site_id<3333 GROUP BY event_date,url_hash WITH TOTALS');
 
-
-$st=$db->select('SELECT event_date,url_hash,sum(views),avg(views) FROM summing_url_views WHERE site_id<3333 GROUP BY event_date,url_hash WITH TOTALS');
-
-
-
-
-echo "Count select rows:".$st->count()."\n";
-/*
-2
- */
-echo "Count all rows:".$st->countAll()."\n";
-/*
-false
- */
-
-
+echo 'Count select rows:' . $st->count() . "\n";
+// 2
+echo 'Count all rows:' . $st->countAll() . "\n";
+// false
 
 echo "First row:\n";
 print_r($st->fetchOne());
@@ -102,7 +83,6 @@ print_r($st->fetchOne());
 )
  */
 
-
 echo "totals:\n";
 print_r($st->totals());
 /*
@@ -114,7 +94,6 @@ print_r($st->totals());
 )
 
  */
-
 
 echo "Tree Path [event_date.url_hash]:\n";
 print_r($st->rowsAsTree('event_date.url_hash'));
@@ -139,8 +118,6 @@ print_r($st->rowsAsTree('event_date.url_hash'));
         )
 )
  */
-$db->write("DROP TABLE IF EXISTS summing_url_views");
-echo "Tables EXISTS:".json_encode($db->showTables())."\n";
-/*
-Tables EXISTS:[]
- */
+$db->write('DROP TABLE IF EXISTS summing_url_views');
+echo 'Tables EXISTS:' . json_encode($db->showTables()) . "\n";
+// Tables EXISTS:[]

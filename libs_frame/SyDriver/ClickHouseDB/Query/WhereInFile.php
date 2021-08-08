@@ -6,24 +6,21 @@ use ClickHouseDB\Exception\QueryException;
 
 class WhereInFile
 {
-    /**
-     *
-     */
-    const FORMAT_TabSeparated          = 'TabSeparated';
+    const FORMAT_TabSeparated = 'TabSeparated';
     const FORMAT_TabSeparatedWithNames = 'TabSeparatedWithNames';
-    const FORMAT_CSV                   = 'CSV';
+    const FORMAT_CSV = 'CSV';
 
     /**
      * @var array
      */
     private $_files = [];
 
-
     /**
      * WhereInFile constructor.
      */
-    public function __construct() {}
-
+    public function __construct()
+    {
+    }
 
     /**
      * @param string $file_name
@@ -38,9 +35,9 @@ class WhereInFile
         }
 
         $this->_files[$table_name] = [
-            'filename'  => $file_name,
+            'filename' => $file_name,
             'structure' => $structure,
-            'format'    => $format
+            'format' => $format,
         ];
     }
 
@@ -49,7 +46,7 @@ class WhereInFile
      */
     public function size()
     {
-        return sizeof($this->_files);
+        return count($this->_files);
     }
 
     /**
@@ -67,6 +64,7 @@ class WhereInFile
 
     /**
      * @param string $table
+     *
      * @return string
      */
     public function fetchStructure($table)
@@ -94,5 +92,4 @@ class WhereInFile
 
         return $out;
     }
-
 }
