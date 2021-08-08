@@ -9,7 +9,7 @@ class Settings
     /**
      * @var Http
      */
-    private $client = null;
+    private $client;
 
     /**
      * @var array
@@ -25,7 +25,6 @@ class Settings
 
     /**
      * Settings constructor.
-     * @param Http $client
      */
     public function __construct(Http $client)
     {
@@ -42,19 +41,22 @@ class Settings
     }
 
     /**
-     * @param string|int $key
+     * @param int|string $key
+     *
      * @return mixed
      */
     public function get($key)
     {
         if (!$this->is($key)) {
-            return null;
+            return;
         }
+
         return $this->settings[$key];
     }
 
     /**
-     * @param string|int $key
+     * @param int|string $key
+     *
      * @return bool
      */
     public function is($key)
@@ -62,15 +64,16 @@ class Settings
         return isset($this->settings[$key]);
     }
 
-
     /**
-     * @param string|int $key
-     * @param mixed $value
+     * @param int|string $key
+     * @param mixed      $value
+     *
      * @return $this
      */
     public function set($key, $value)
     {
         $this->settings[$key] = $value;
+
         return $this;
     }
 
@@ -84,11 +87,13 @@ class Settings
 
     /**
      * @param string $db
+     *
      * @return $this
      */
     public function database($db)
     {
         $this->set('database', $db);
+
         return $this;
     }
 
@@ -101,7 +106,7 @@ class Settings
     }
 
     /**
-     * @return mixed|null
+     * @return null|mixed
      */
     public function isEnableHttpCompression()
     {
@@ -110,18 +115,20 @@ class Settings
 
     /**
      * @param bool|int $flag
+     *
      * @return $this
      */
     public function enableHttpCompression($flag)
     {
-        $this->set('enable_http_compression', intval($flag));
+        $this->set('enable_http_compression', (int)$flag);
+
         return $this;
     }
-
 
     public function https($flag = true)
     {
         $this->set('https', $flag);
+
         return $this;
     }
 
@@ -130,54 +137,61 @@ class Settings
         return $this->get('https');
     }
 
-
     /**
-     * @param int|bool $flag
+     * @param bool|int $flag
+     *
      * @return $this
      */
     public function readonly($flag)
     {
         $this->set('readonly', $flag);
+
         return $this;
     }
 
     /**
      * @param string $session_id
+     *
      * @return $this
      */
     public function session_id($session_id)
     {
         $this->set('session_id', $session_id);
+
         return $this;
     }
 
     /**
-     * @return mixed|bool
+     * @return bool|mixed
      */
     public function getSessionId()
     {
         if (empty($this->settings['session_id'])) {
             return false;
         }
+
         return $this->get('session_id');
     }
 
     /**
-     * @return string|bool
+     * @return bool|string
      */
     public function makeSessionId()
     {
         $this->session_id(sha1(uniqid('', true)));
+
         return $this->getSessionId();
     }
 
     /**
-     * @param int|float $time
+     * @param float|int $time
+     *
      * @return $this
      */
     public function max_execution_time($time)
     {
         $this->set('max_execution_time', $time);
+
         return $this;
     }
 
@@ -191,6 +205,7 @@ class Settings
 
     /**
      * @param array $settings_array
+     *
      * @return $this
      */
     public function apply($settings_array)
@@ -203,7 +218,7 @@ class Settings
     }
 
     /**
-     * @param int|bool $flag
+     * @param bool|int $flag
      */
     public function setReadOnlyUser($flag)
     {
@@ -220,12 +235,13 @@ class Settings
 
     /**
      * @param string $name
-     * @return mixed|null
+     *
+     * @return null|mixed
      */
     public function getSetting($name)
     {
         if (!isset($this->settings[$name])) {
-            return null;
+            return;
         }
 
         return $this->get($name);

@@ -6,20 +6,17 @@ use ClickHouseDB\Exception\QueryException;
 
 class WriteToFile
 {
-    /**
-     *
-     */
-    const FORMAT_TabSeparated          = 'TabSeparated';
+    const FORMAT_TabSeparated = 'TabSeparated';
     const FORMAT_TabSeparatedWithNames = 'TabSeparatedWithNames';
-    const FORMAT_CSV                   = 'CSV';
-    const FORMAT_CSVWithNames          = 'CSVWithNames';
-    const FORMAT_JSONEACHROW           = 'JSONEachRow';
+    const FORMAT_CSV = 'CSV';
+    const FORMAT_CSVWithNames = 'CSVWithNames';
+    const FORMAT_JSONEACHROW = 'JSONEachRow';
 
     private $support_format = ['TabSeparated', 'TabSeparatedWithNames', 'CSV', 'CSVWithNames', 'JSONEachRow'];
     /**
      * @var string
      */
-    private $file_name = null;
+    private $file_name;
 
     /**
      * @var string
@@ -30,38 +27,33 @@ class WriteToFile
      * @var bool
      */
     private $gzip = false;
+
     /**
      * WriteToFile constructor.
-     * @param string $file_name
-     * @param bool $overwrite
-     * @param string|null $format
+     *
+     * @param string      $file_name
+     * @param bool        $overwrite
+     * @param null|string $format
      */
-    public function __construct($file_name, $overwrite = true, $format = null) {
-
-
-        if (!$file_name)
-        {
+    public function __construct($file_name, $overwrite = true, $format = null)
+    {
+        if (!$file_name) {
             throw new QueryException('Bad file path');
         }
 
-        if (is_file($file_name))
-        {
-            if (!$overwrite)
-            {
+        if (is_file($file_name)) {
+            if (!$overwrite) {
                 throw new QueryException('File exists: ' . $file_name);
             }
-            if (!unlink($file_name))
-            {
+            if (!unlink($file_name)) {
                 throw new QueryException('Can`t delete: ' . $file_name);
             }
         }
-        $dir = dirname($file_name);
-        if (!is_writable($dir))
-        {
+        $dir = \dirname($file_name);
+        if (!is_writable($dir)) {
             throw new QueryException('Can`t writable dir: ' . $dir);
         }
-        if (is_string($format))
-        {
+        if (\is_string($format)) {
             $this->setFormat($format);
         }
         $this->file_name = $file_name;
@@ -88,12 +80,12 @@ class WriteToFile
      */
     public function setFormat($format)
     {
-        if (!in_array($format, $this->support_format))
-        {
+        if (!\in_array($format, $this->support_format)) {
             throw new QueryException('Unsupport format: ' . $format);
         }
         $this->format = $format;
     }
+
     /**
      * @return int
      */
@@ -117,5 +109,4 @@ class WriteToFile
     {
         return $this->format;
     }
-
 }

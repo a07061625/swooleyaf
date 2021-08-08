@@ -1,14 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace ClickHouseDB\Query\Degeneration;
 
+use function array_map;
 use ClickHouseDB\Query\Degeneration;
 use ClickHouseDB\Quote\ValueFormatter;
-use function array_map;
 use function implode;
-use function is_array;
 
 class Bindings implements Degeneration
 {
@@ -17,9 +16,6 @@ class Bindings implements Degeneration
      */
     protected $bindings = [];
 
-    /**
-     * @param array $bindings
-     */
     public function bindParams(array $bindings)
     {
         $this->bindings = [];
@@ -42,14 +38,15 @@ class Bindings implements Degeneration
      * This is similar to [[bindValue()]] except that it binds multiple values at a time.
      *
      * @param string $sql
-     * @param array $binds
+     * @param array  $binds
      * @param string $pattern
+     *
      * @return string
      */
-    public function compile_binds($sql, $binds,$pattern)
+    public function compile_binds($sql, $binds, $pattern)
     {
-        return preg_replace_callback($pattern, function($m) use ($binds){
-            if(isset($binds[$m[1]])){ // If it exists in our array
+        return preg_replace_callback($pattern, function ($m) use ($binds) {
+            if (isset($binds[$m[1]])) { // If it exists in our array
                 return $binds[$m[1]]; // Then replace it from our array
             }
 
@@ -61,14 +58,15 @@ class Bindings implements Degeneration
      * Compile Bindings
      *
      * @param string $sql
+     *
      * @return mixed
      */
     public function process($sql)
     {
-        $bindFormatted=[];
-        $bindRaw=[];
+        $bindFormatted = [];
+        $bindRaw = [];
         foreach ($this->bindings as $key => $value) {
-            if (is_array($value)) {
+            if (\is_array($value)) {
                 $valueSet = implode(', ', $value);
 
                 $values = array_map(
@@ -80,27 +78,25 @@ class Bindings implements Degeneration
 
                 $formattedParameter = implode(',', $values);
             } else {
-                $valueSet           = $value;
+                $valueSet = $value;
                 $formattedParameter = ValueFormatter::formatValue($value);
             }
 
-            if ($formattedParameter !== null) {
-                $bindFormatted[$key]=$formattedParameter;
+            if (null !== $formattedParameter) {
+                $bindFormatted[$key] = $formattedParameter;
             }
 
-            if ($valueSet !== null) {
-                $bindRaw[$key]=$valueSet;
+            if (null !== $valueSet) {
+                $bindRaw[$key] = $valueSet;
             }
         }
 
-        for ($loop=0;$loop<2;$loop++)
-        {
+        for ($loop = 0; $loop < 2; ++$loop) {
             // dipping in binds
             // example ['A' => '{B}' , 'B'=>':C','C'=>123]
-            $sql=$this->compile_binds($sql,$bindRaw,'#{([\w+]+)}#');
+            $sql = $this->compile_binds($sql, $bindRaw, '#{([\w+]+)}#');
         }
-        $sql=$this->compile_binds($sql,$bindFormatted,'#:([\w+]+)#');
 
-        return $sql;
+        return $this->compile_binds($sql, $bindFormatted, '#:([\w+]+)#');
     }
 }

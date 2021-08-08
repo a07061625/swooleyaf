@@ -4,11 +4,9 @@ include_once __DIR__ . '/../include.php';
 
 $config = include_once __DIR__ . '/00_config_connect.php';
 
-
 $db = new ClickHouseDB\Client($config);
 
-
-$db->write("DROP TABLE IF EXISTS NestedNested_test");
+$db->write('DROP TABLE IF EXISTS NestedNested_test');
 
 $res = $db->write('
     CREATE TABLE IF NOT EXISTS NestedNested_test (
@@ -20,16 +18,15 @@ $res = $db->write('
 
 //------------------------------------------------------------------------------
 
-$XXX=['AAA'."'".'A',"BBBBB".'\\'];
+$XXX = ['AAA' . "'" . 'A', 'BBBBB' . '\\'];
 
 print_r($XXX);
 
 echo "Insert\n";
 $stat = $db->insert('NestedNested_test', [
-    ['HASH\1', [11,33],[3.2,2.1],$XXX],
-], ['s_key', 'topics.id','topics.ww','s_arr']);
+    ['HASH\1', [11, 33], [3.2, 2.1], $XXX],
+], ['s_key', 'topics.id', 'topics.ww', 's_arr']);
 echo "Insert Done\n";
 
 print_r($db->select('SELECT * FROM NestedNested_test')->rows());
 print_r($db->select('SELECT * FROM NestedNested_test ARRAY JOIN topics')->rows());
-

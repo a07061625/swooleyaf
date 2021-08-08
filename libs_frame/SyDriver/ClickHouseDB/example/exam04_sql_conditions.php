@@ -4,19 +4,17 @@ include_once __DIR__ . '/../include.php';
 
 $config = include_once __DIR__ . '/00_config_connect.php';
 
-
 $db = new ClickHouseDB\Client($config);
 
 $input_params = [
     'select_date' => ['2000-10-10', '2000-10-11', '2000-10-12'],
-    'limit'       => 5,
-    'from_table'  => 'table'
+    'limit' => 5,
+    'from_table' => 'table',
 ];
-
 
 $db->enableQueryConditions();
 
-$select='SELECT  {ifint lastdays}
+$select = 'SELECT  {ifint lastdays}
     
     event_date>=today()-{lastdays}
     
@@ -26,12 +24,9 @@ $select='SELECT  {ifint lastdays}
     
     {/if}';
 
-
 $statement = $db->selectAsync($select, $input_params);
 echo $statement->sql();
 echo "\n";
-
-
 
 $select = '
 SELECT * FROM {from_table}
@@ -60,18 +55,11 @@ FORMAT JSON
 
 $input_params['select_date'] = false;
 
-
 $statement = $db->selectAsync($select, $input_params);
 echo $statement->sql();
 echo "\n";
 
-
-
-
-
-
-
-$select="
+$select = '
 1: {if ll}NOT_SHOW{else}OK{/if}{if ll}NOT_SHOW{else}OK{/if}
 2: {if null}NOT_SHOW{else}OK{/if} 
 3: {if qwert}NOT_SHOW{/if}
@@ -131,7 +119,7 @@ SHOW
 
 
 {/if}
-";
+';
 
 //
 //$select='{ifint s_empty}NOT_SHOW{/if}
@@ -140,19 +128,19 @@ SHOW
 //
 //';
 
-$input_params=[
-  'lastdays'=>3,
-  'null'=>null,
-  'false'=>false,
-  'true'=>true,
-  'zero'=>0,
-  's_false'=>'false',
-  's_null'=>'null',
-  's_empty'=>'',
-  'int30'=>30,
-  'int1'=>1,
-  'str0'=>'0',
-  'str1'=>'1'
+$input_params = [
+    'lastdays' => 3,
+    'null' => null,
+    'false' => false,
+    'true' => true,
+    'zero' => 0,
+    's_false' => 'false',
+    's_null' => 'null',
+    's_empty' => '',
+    'int30' => 30,
+    'int1' => 1,
+    'str0' => '0',
+    'str1' => '1',
 ];
 $statement = $db->selectAsync($select, $input_params);
 echo "\n------------------------------------\n";

@@ -34,12 +34,12 @@ class CurlerResponse
      */
     public $_body;
 
-
     /**
      * Response constructor.
      */
-    public function __construct() {}
-
+    public function __construct()
+    {
+    }
 
     /**
      * @return int
@@ -115,6 +115,7 @@ class CurlerResponse
 
     /**
      * @param string $name
+     *
      * @return null|string
      */
     public function headers($name)
@@ -122,8 +123,6 @@ class CurlerResponse
         if (isset($this->_headers[$name])) {
             return $this->_headers[$name];
         }
-
-        return null;
     }
 
     /**
@@ -150,9 +149,6 @@ class CurlerResponse
         return $this->body();
     }
 
-    /**
-     *
-     */
     public function dump_json()
     {
         print_r($this->json());
@@ -161,15 +157,16 @@ class CurlerResponse
     public function getDetails(): array
     {
         return [
-            'body'    => $this->_body,
+            'body' => $this->_body,
             'headers' => $this->_headers,
-            'error'   => $this->error(),
-            'info'    => $this->_info,
+            'error' => $this->error(),
+            'info' => $this->_info,
         ];
     }
 
     /**
      * @param bool $result
+     *
      * @return string
      */
     public function dump($result = false)
@@ -191,26 +188,6 @@ class CurlerResponse
     }
 
     /**
-     * @param int $size
-     * @param string $unit
-     * @return string
-     */
-    private function humanFileSize($size, $unit = '')
-    {
-        if ((!$unit && $size >= 1 << 30) || $unit == 'GB') {
-            return number_format($size / (1 << 30), 2) . ' GB';
-        }
-        if ((!$unit && $size >= 1 << 20) || $unit == 'MB') {
-            return number_format($size / (1 << 20), 2) . ' MB';
-        }
-        if ((!$unit && $size >= 1 << 10) || $unit == 'KB') {
-            return number_format($size / (1 << 10), 2) . ' KB';
-        }
-
-        return number_format($size) . ' bytes';
-    }
-
-    /**
      * @return string
      */
     public function upload_content_length()
@@ -224,6 +201,7 @@ class CurlerResponse
     public function speed_upload()
     {
         $SPEED_UPLOAD = $this->_info['speed_upload'];
+
         return round(($SPEED_UPLOAD * 8) / (1000 * 1000), 2) . ' Mbps';
     }
 
@@ -233,6 +211,7 @@ class CurlerResponse
     public function speed_download()
     {
         $SPEED_UPLOAD = $this->_info['speed_download'];
+
         return round(($SPEED_UPLOAD * 8) / (1000 * 1000), 2) . ' Mbps';
     }
 
@@ -275,8 +254,10 @@ class CurlerResponse
     {
         return $this->_info;
     }
+
     /**
-     * @param string|null $key
+     * @param null|string $key
+     *
      * @return bool|mixed
      */
     public function json($key = null)
@@ -296,17 +277,40 @@ class CurlerResponse
 
     /**
      * @return mixed
+     *
+     * @param mixed $format
      */
     public function rawDataOrJson($format)
     {
         // JSONCompact // JSONEachRow
 
-        if (stripos($format, 'json') !== false)
-        {
-            if (stripos($format,'JSONEachRow')===false)
-            return $this->json();
+        if (false !== stripos($format, 'json')) {
+            if (false === stripos($format, 'JSONEachRow')) {
+                return $this->json();
+            }
         }
-        return $this->body();
 
+        return $this->body();
+    }
+
+    /**
+     * @param int    $size
+     * @param string $unit
+     *
+     * @return string
+     */
+    private function humanFileSize($size, $unit = '')
+    {
+        if ((!$unit && $size >= 1 << 30) || 'GB' == $unit) {
+            return number_format($size / (1 << 30), 2) . ' GB';
+        }
+        if ((!$unit && $size >= 1 << 20) || 'MB' == $unit) {
+            return number_format($size / (1 << 20), 2) . ' MB';
+        }
+        if ((!$unit && $size >= 1 << 10) || 'KB' == $unit) {
+            return number_format($size / (1 << 10), 2) . ' KB';
+        }
+
+        return number_format($size) . ' bytes';
     }
 }
