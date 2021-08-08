@@ -6,28 +6,21 @@ include_once __DIR__ . '/Helper.php';
 
 $config = include_once __DIR__ . '/00_config_connect.php';
 
-
 $db = new ClickHouseDB\Client($config);
-$_flag_create_table=false;
+$_flag_create_table = false;
 
+$db->write('DROP TABLE IF EXISTS summing_url_views_intHash32_site_id');
 
-$db->write("DROP TABLE IF EXISTS summing_url_views_intHash32_site_id");
+$size = $db->tableSize('summing_url_views_intHash32_site_id');
+echo 'Site table summing_url_views_intHash32_site_id : ' . (isset($size['size']) ? $size['size'] : 'false') . "\n";
 
-
-
-$size=$db->tableSize('summing_url_views_intHash32_site_id');
-echo "Site table summing_url_views_intHash32_site_id : ".(isset($size['size'])?$size['size']:'false')."\n";
-
-
-
-if (!isset($size['size'])) $_flag_create_table=true;
-
+if (!isset($size['size'])) {
+    $_flag_create_table = true;
+}
 
 if ($_flag_create_table) {
-
-
-    $db->write("DROP TABLE IF EXISTS summing_url_views_intHash32_site_id");
-    $re=$db->write('
+    $db->write('DROP TABLE IF EXISTS summing_url_views_intHash32_site_id');
+    $re = $db->write('
                 CREATE TABLE IF NOT EXISTS summing_url_views_intHash32_site_id (
                     event_date Date DEFAULT toDate(event_time),
                     event_time DateTime,
@@ -39,11 +32,10 @@ if ($_flag_create_table) {
                 ) 
                 ENGINE = SummingMergeTree(event_date, intHash32(event_time,site_id),(site_id, url_hash, event_time, event_date,intHash32(event_time,site_id)), 8192)
             ');
-    echo "Table EXISTS:" . print_r($db->showTables()) . "\n";
+    echo 'Table EXISTS:' . print_r($db->showTables()) . "\n";
     // ------------------------------------------------------------------------------------------------------
 
     echo "----------------------------------- CREATE big csv file -----------------------------------------------------------------\n";
-
 
     $file_data_names = [
         '/tmp/clickHouseDB_test.big.1.data',
@@ -53,9 +45,9 @@ if ($_flag_create_table) {
 
     $c = 0;
     foreach ($file_data_names as $file_name) {
-        $c++;
-        $shift_days=( -1* $c*3);
-        \ClickHouseDB\Example\Helper::makeSomeDataFileBig($file_name, 4 * $c,$shift_days);
+        ++$c;
+        $shift_days = (-1 * $c * 3);
+        \ClickHouseDB\Example\Helper::makeSomeDataFileBig($file_name, 4 * $c, $shift_days);
     }
 
     echo "----------------------------------------------------------------------------------------------------\n";
@@ -65,41 +57,31 @@ if ($_flag_create_table) {
     $time_start = microtime(true);
 
     $result_insert = $db->insertBatchFiles('summing_url_views_intHash32_site_id', $file_data_names, [
-        'event_time', 'url_hash', 'site_id', 'views', 'v_00', 'v_55'
+        'event_time', 'url_hash', 'site_id', 'views', 'v_00', 'v_55',
     ]);
 
-    echo "use time:" . round(microtime(true) - $time_start, 2) . "\n";
+    echo 'use time:' . round(microtime(true) - $time_start, 2) . "\n";
 
     foreach ($result_insert as $fileName => $state) {
-        echo "$fileName => " . json_encode($state->info_upload()) . "\n";
+        echo "{$fileName} => " . json_encode($state->info_upload()) . "\n";
     }
-
-
-
-
-
 }
 echo "------------------------------- COMPARE event_date ---------------------------------------------------------------------\n";
 
-$rows=($db->select('select event_date,sum(views) as v from summing_url_views_intHash32_site_id GROUP BY event_date ORDER BY event_date')->rowsAsTree('event_date'));
+$rows = ($db->select('select event_date,sum(views) as v from summing_url_views_intHash32_site_id GROUP BY event_date ORDER BY event_date')->rowsAsTree('event_date'));
 
-$samp=($db->select('select event_date,sum(views) as v from summing_url_views_intHash32_site_id SAMPLE 0.5 GROUP BY event_date ORDER BY event_date ')->rowsAsTree('event_date'));
+$samp = ($db->select('select event_date,sum(views) as v from summing_url_views_intHash32_site_id SAMPLE 0.5 GROUP BY event_date ORDER BY event_date ')->rowsAsTree('event_date'));
 
-
-foreach ($rows as $event_date=>$data)
-{
-    echo $event_date."\t".$data['v']."\t".(@$samp[$event_date]['v']*(1/0.5))."\n";
+foreach ($rows as $event_date => $data) {
+    echo $event_date . "\t" . $data['v'] . "\t" . (@$samp[$event_date]['v'] * (1 / 0.5)) . "\n";
 }
 
+$rows = ($db->select('select site_id,sum(views) as v from summing_url_views_intHash32_site_id GROUP BY site_id ORDER BY site_id')->rowsAsTree('site_id'));
 
-$rows=($db->select('select site_id,sum(views) as v from summing_url_views_intHash32_site_id GROUP BY site_id ORDER BY site_id')->rowsAsTree('site_id'));
+$samp = ($db->select('select site_id,(sum(views)) as v from summing_url_views_intHash32_site_id SAMPLE 0.5 GROUP BY site_id ORDER BY site_id ')->rowsAsTree('site_id'));
 
-$samp=($db->select('select site_id,(sum(views)) as v from summing_url_views_intHash32_site_id SAMPLE 0.5 GROUP BY site_id ORDER BY site_id ')->rowsAsTree('site_id'));
-
-
-foreach ($rows as $event_date=>$data)
-{
-    echo $event_date."\t".$data['v']."\t".intval(@$samp[$event_date]['v'])."\n";
+foreach ($rows as $event_date => $data) {
+    echo $event_date . "\t" . $data['v'] . "\t" . (int)(@$samp[$event_date]['v']) . "\n";
 }
 /*
 

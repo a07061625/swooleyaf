@@ -6,11 +6,9 @@ include_once __DIR__ . '/Helper.php';
 
 $config = include_once __DIR__ . '/00_config_connect.php';
 
-
 $db = new ClickHouseDB\Client($config);
 
-
-$db->write("DROP TABLE IF EXISTS summing_url_views");
+$db->write('DROP TABLE IF EXISTS summing_url_views');
 $db->write('
     CREATE TABLE IF NOT EXISTS summing_url_views (
         event_date Date DEFAULT toDate(event_time),
@@ -24,11 +22,10 @@ $db->write('
     ENGINE = SummingMergeTree(event_date, (site_id, url_hash, event_time, event_date), 8192)
 ');
 
-echo "Table EXISTS:" . json_encode($db->showTables()) . "\n";
+echo 'Table EXISTS:' . json_encode($db->showTables()) . "\n";
 // ------------------------------------------------------------------------------------------------------
 
 echo "----------------------------------- CREATE big csv file -----------------------------------------------------------------\n";
-
 
 $file_data_names = [
     '/tmp/clickHouseDB_test.b.1.data',
@@ -40,29 +37,27 @@ $file_data_names = [
 
 $c = 0;
 foreach ($file_data_names as $file_name) {
-    $c++;
+    ++$c;
     \ClickHouseDB\Example\Helper::makeSomeDataFileBig($file_name, 40 * $c);
 }
 
 echo "----------------------------------------------------------------------------------------------------\n";
 echo "insert ALL file async NO gzip:\n";
 
-
 $db->settings()->max_execution_time(200);
 $time_start = microtime(true);
 
 $result_insert = $db->insertBatchFiles('summing_url_views', $file_data_names, [
-    'event_time', 'url_hash', 'site_id', 'views', 'v_00', 'v_55'
+    'event_time', 'url_hash', 'site_id', 'views', 'v_00', 'v_55',
 ]);
 
-echo "use time:" . round(microtime(true) - $time_start, 2) . "\n";
+echo 'use time:' . round(microtime(true) - $time_start, 2) . "\n";
 
 foreach ($result_insert as $state) {
-    echo "Info : " . json_encode($state->info_upload()) . "\n";
+    echo 'Info : ' . json_encode($state->info_upload()) . "\n";
 }
 
 print_r($db->select('select sum(views) from summing_url_views')->rows());
-
 
 echo "--------------------------------------- enableHttpCompression -------------------------------------------------------------\n";
 echo "insert ALL file async + GZIP:\n";
@@ -71,17 +66,16 @@ $db->enableHttpCompression(true);
 $time_start = microtime(true);
 
 $result_insert = $db->insertBatchFiles('summing_url_views', $file_data_names, [
-    'event_time', 'url_hash', 'site_id', 'views', 'v_00', 'v_55'
+    'event_time', 'url_hash', 'site_id', 'views', 'v_00', 'v_55',
 ]);
 
-echo "use time:" . round(microtime(true) - $time_start, 2) . "\n";
+echo 'use time:' . round(microtime(true) - $time_start, 2) . "\n";
 
 foreach ($result_insert as $fileName => $state) {
-    echo "$fileName => " . json_encode($state->info_upload()) . "\n";
+    echo "{$fileName} => " . json_encode($state->info_upload()) . "\n";
 }
 
 print_r($db->select('select sum(views) from summing_url_views')->rows());
-
 
 echo "----------------------------------------------------------------------------------------------------\n";
 echo ">>> rm -f /tmp/clickHouseDB_test.b.*\n";

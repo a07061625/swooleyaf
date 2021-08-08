@@ -12,26 +12,15 @@ class Conditions implements Degeneration
      */
     protected $bindings = [];
 
-    /**
-     * @param array $bindings
-     */
-    public function bindParams(array $bindings)
-    {
-        foreach ($bindings as $column => $value) {
-            $this->bindings[$column] = $value;
-        }
-    }
-
-
-    static function __ifsets($matches, $markers)
+    public static function __ifsets($matches, $markers)
     {
         $content_false = '';
         $condition = '';
         $flag_else = '';
-//print_r($matches);
-        if (sizeof($matches) == 4) {
+        //print_r($matches);
+        if (4 == count($matches)) {
             list($condition, $preset, $variable, $content_true) = $matches;
-        } elseif (sizeof($matches) == 6) {
+        } elseif (6 == count($matches)) {
             list($condition, $preset, $variable, $content_true, $flag_else, $content_false) = $matches;
         } else {
             throw new QueryException('Error in parse Conditions' . json_encode($matches));
@@ -39,26 +28,26 @@ class Conditions implements Degeneration
         $variable = trim($variable);
         $preset = strtolower(trim($preset));
 
-        if ($preset == '') {
+        if ('' == $preset) {
             return (isset($markers[$variable]) && ($markers[$variable] || is_numeric($markers[$variable])))
                 ? $content_true
                 : $content_false;
         }
-        if ($preset == 'set') {
+        if ('set' == $preset) {
             return (isset($markers[$variable]) && !empty($markers[$variable])) ? $content_true : $content_false;
         }
-        if ($preset == 'bool') {
-            return (isset($markers[$variable]) && is_bool($markers[$variable]) && $markers[$variable] == true)
+        if ('bool' == $preset) {
+            return (isset($markers[$variable]) && \is_bool($markers[$variable]) && true == $markers[$variable])
                 ? $content_true
                 : $content_false;
         }
-        if ($preset == 'string') {
-            return (isset($markers[$variable]) && is_string($markers[$variable]) && strlen($markers[$variable]))
+        if ('string' == $preset) {
+            return (isset($markers[$variable]) && \is_string($markers[$variable]) && \strlen($markers[$variable]))
                 ? $content_true
                 : $content_false;
         }
-        if ($preset == 'int') {
-            return (isset($markers[$variable]) && intval($markers[$variable]) <> 0)
+        if ('int' == $preset) {
+            return (isset($markers[$variable]) && 0 != (int)($markers[$variable]))
                 ? $content_true
                 : $content_false;
         }
@@ -66,8 +55,16 @@ class Conditions implements Degeneration
         return '';
     }
 
+    public function bindParams(array $bindings)
+    {
+        foreach ($bindings as $column => $value) {
+            $this->bindings[$column] = $value;
+        }
+    }
+
     /**
      * @param string $sql
+     *
      * @return mixed
      */
     public function process($sql)
@@ -75,17 +72,10 @@ class Conditions implements Degeneration
         $markers = $this->bindings;
 
         // ------ if/else conditions & if[set|int]/else conditions -----
-        $sql = preg_replace_callback('#\{if(.{0,}?)\s+([^\}]+?)\}(.+?)(\{else\}([^\{]+?)?)?\s*\{\/if}#sui', function ($matches) use ($markers) {
+        return preg_replace_callback('#\{if(.{0,}?)\s+([^\}]+?)\}(.+?)(\{else\}([^\{]+?)?)?\s*\{\/if}#sui', function ($matches) use ($markers) {
             return self::__ifsets($matches, $markers);
-        }
-            , $sql);
-
-        return $sql;
-
-        /*
-         * $ifint var ELSE  {ENDIF}
-         *
-         */
+        }, $sql);
+        // $ifint var ELSE  {ENDIF}
 
         // stackoverflow
         // if(whatever) {  } else { adsffdsa } else if() { }
@@ -110,5 +100,4 @@ class Conditions implements Degeneration
         //        $sql = preg_replace_callback('#\{if(.{1,}?)\s(.+?)}(.+?)\{else}(.+?)\{/if}#sui', function($matches) use ($markers) {return  self::__ifsets($matches, $markers, true); }, $sql);
         //        $sql = preg_replace_callback('#\{if(.{1,}?)\s(.+?)}(.+?)\{/if}#sui', function($matches) use ($markers) { return self::__ifsets($matches, $markers, false); }, $sql);
     }
-
 }

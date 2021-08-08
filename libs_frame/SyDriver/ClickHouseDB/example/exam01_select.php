@@ -4,18 +4,16 @@ include_once __DIR__ . '/../include.php';
 
 $config = include_once __DIR__ . '/00_config_connect.php';
 
-
 $db = new ClickHouseDB\Client($config);
 //$db->verbose();
 $db->settings()->readonly(false);
-
 
 $result = $db->select(
     'SELECT 12 as {key} WHERE {key} = :value',
     ['key' => 'ping', 'value' => 12]
 );
 
-if ($result->fetchOne('ping') != 12) {
+if (12 != $result->fetchOne('ping')) {
     echo "Error : ? \n";
 }
 

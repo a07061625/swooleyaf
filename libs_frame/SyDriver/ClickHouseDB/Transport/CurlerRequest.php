@@ -10,10 +10,10 @@ class CurlerRequest
     /**
      * @var array
      */
-    public $extendinfo = array();
+    public $extendinfo = [];
 
     /**
-     * @var string|array
+     * @var array|string
      */
     private $parameters = '';
 
@@ -43,7 +43,7 @@ class CurlerRequest
     private $id;
 
     /**
-     * @var resource|null
+     * @var null|resource
      */
     private $handle;
 
@@ -76,7 +76,7 @@ class CurlerRequest
     /**
      * @var callable
      */
-    private $callback_function = null;
+    private $callback_function;
 
     /**
      * @var bool|resource
@@ -91,12 +91,12 @@ class CurlerRequest
     /**
      * @var resource
      */
-    private $resultFileHandle = null;
+    private $resultFileHandle;
 
     /**
      * @var string
      */
-    private $sslCa = null;
+    private $sslCa;
 
     /**
      * @param bool $id
@@ -109,30 +109,26 @@ class CurlerRequest
         $this->header('Expires', '0');
         $this->header('Pragma', 'no-cache');
 
-        $this->options = array(
+        $this->options = [
             CURLOPT_SSL_VERIFYHOST => 0,
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_TIMEOUT => 10,
             CURLOPT_CONNECTTIMEOUT => 5, // Количество секунд ожидания при попытке соединения
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_MAXREDIRS => 10,
-            CURLOPT_HEADER => TRUE,
-            CURLOPT_FOLLOWLOCATION => TRUE,
+            CURLOPT_HEADER => true,
+            CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_AUTOREFERER => 1, // при редиректе подставлять в «Referer:» значение из «Location:»
             CURLOPT_BINARYTRANSFER => 1, // передавать в binary-safe
-            CURLOPT_RETURNTRANSFER => TRUE,
+            CURLOPT_RETURNTRANSFER => true,
             CURLOPT_USERAGENT => 'smi2/PHPClickHouse/client',
-        );
+        ];
     }
 
-    /**
-     *
-     */
     public function __destruct()
     {
         $this->close();
     }
-
 
     public function close()
     {
@@ -147,7 +143,7 @@ class CurlerRequest
      */
     public function attachFiles($attachFiles)
     {
-        $this->header("Content-Type", "multipart/form-data");
+        $this->header('Content-Type', 'multipart/form-data');
 
         $out = [];
         foreach ($attachFiles as $post_name => $file_path) {
@@ -158,9 +154,9 @@ class CurlerRequest
         $this->parameters($out);
     }
 
-
     /**
      * @param bool $set
+     *
      * @return $this
      */
     public function id($set = false)
@@ -174,16 +170,19 @@ class CurlerRequest
 
     /**
      * @param array $params
+     *
      * @return $this
      */
     public function setRequestExtendedInfo($params)
     {
         $this->extendinfo = $params;
+
         return $this;
     }
 
     /**
-     * @param string|integer|null $key
+     * @param null|int|string $key
+     *
      * @return mixed
      */
     public function getRequestExtendedInfo($key = null)
@@ -205,19 +204,19 @@ class CurlerRequest
 
     /**
      * @param string $file_name
+     *
      * @return bool|resource
      */
     public function setInfile($file_name)
     {
         $this->header('Expect', '');
         $this->infile_handle = fopen($file_name, 'r');
-        if (is_resource($this->infile_handle)) {
-
+        if (\is_resource($this->infile_handle)) {
             if ($this->_httpCompression) {
                 $this->header('Content-Encoding', 'gzip');
                 $this->header('Content-Type', 'application/x-www-form-urlencoded');
 
-                stream_filter_append($this->infile_handle, 'zlib.deflate', STREAM_FILTER_READ, ["window" => 30]);
+                stream_filter_append($this->infile_handle, 'zlib.deflate', STREAM_FILTER_READ, ['window' => 30]);
 
                 $this->options[CURLOPT_SAFE_UPLOAD] = 1;
             } else {
@@ -269,9 +268,6 @@ class CurlerRequest
         $this->callback_functionName = $functionName;
     }
 
-    /**
-     *
-     */
     public function onCallback()
     {
         if ($this->callback_function) {
@@ -281,22 +277,23 @@ class CurlerRequest
 
         if ($this->callback_class && $this->callback_functionName) {
             $c = $this->callback_functionName;
-            $this->callback_class->$c($this);
+            $this->callback_class->{$c}($this);
         }
     }
 
     public function getDetails(): array
     {
         return [
-            'url'        => $this->url,
-            'method'     => $this->method,
+            'url' => $this->url,
+            'method' => $this->method,
             'parameters' => $this->parameters,
-            'headers'    => $this->headers,
+            'headers' => $this->headers,
         ];
     }
 
     /**
      * @param bool $result
+     *
      * @return string
      */
     public function dump($result = false)
@@ -313,6 +310,7 @@ class CurlerRequest
         }
 
         echo $message;
+
         return '';
     }
 
@@ -325,22 +323,12 @@ class CurlerRequest
     }
 
     /**
-     * @param integer $key
-     * @param mixed $value
-     * @return $this
-     */
-    private function option($key, $value)
-    {
-        $this->options[$key] = $value;
-        return $this;
-    }
-
-    /**
      * @return $this
      */
     public function persistent()
     {
         $this->_persistent = true;
+
         return $this;
     }
 
@@ -354,11 +342,12 @@ class CurlerRequest
 
     /**
      * @param int $sec
+     *
      * @return $this
      */
     public function keepAlive($sec = 60)
     {
-        $this->options[CURLOPT_FORBID_REUSE] = TRUE;
+        $this->options[CURLOPT_FORBID_REUSE] = true;
         $this->headers['Connection'] = 'Keep-Alive';
         $this->headers['Keep-Alive'] = $sec;
 
@@ -367,22 +356,26 @@ class CurlerRequest
 
     /**
      * @param bool $flag
+     *
      * @return $this
      */
     public function verbose($flag = true)
     {
         $this->options[CURLOPT_VERBOSE] = $flag;
+
         return $this;
     }
 
     /**
      * @param string $key
      * @param string $value
+     *
      * @return $this
      */
     public function header($key, $value)
     {
         $this->headers[$key] = $value;
+
         return $this;
     }
 
@@ -393,18 +386,21 @@ class CurlerRequest
     {
         $head = [];
         foreach ($this->headers as $key => $value) {
-            $head[] = sprintf("%s: %s", $key, $value);
+            $head[] = sprintf('%s: %s', $key, $value);
         }
+
         return $head;
     }
 
     /**
      * @param string $url
+     *
      * @return $this
      */
     public function url($url)
     {
         $this->url = $url;
+
         return $this;
     }
 
@@ -416,9 +412,9 @@ class CurlerRequest
         return $this->url;
     }
 
-
     /**
      * @param string $id
+     *
      * @return string
      */
     public function getUniqHash($id)
@@ -443,11 +439,13 @@ class CurlerRequest
     /**
      * @param string $username
      * @param string $password
+     *
      * @return $this
      */
     public function authByBasicAuth($username, $password)
     {
-        $this->options[CURLOPT_USERPWD] = sprintf("%s:%s", $username, $password);
+        $this->options[CURLOPT_USERPWD] = sprintf('%s:%s', $username, $password);
+
         return $this;
     }
 
@@ -455,16 +453,19 @@ class CurlerRequest
     {
         $this->headers['X-ClickHouse-User'] = $username;
         $this->headers['X-ClickHouse-Key'] = $password;
+
         return $this;
     }
 
     /**
      * @param array|string $data
+     *
      * @return $this
      */
     public function parameters($data)
     {
         $this->parameters = $data;
+
         return $this;
     }
 
@@ -472,11 +473,13 @@ class CurlerRequest
      * The number of seconds to wait when trying to connect. Use 0 for infinite waiting.
      *
      * @param int $seconds
+     *
      * @return $this
      */
     public function connectTimeOut($seconds = 1)
     {
         $this->options[CURLOPT_CONNECTTIMEOUT] = $seconds;
+
         return $this;
     }
 
@@ -484,51 +487,42 @@ class CurlerRequest
      * The maximum number of seconds (float) allowed to execute cURL functions.
      *
      * @param float $seconds
+     *
      * @return $this
      */
     public function timeOut($seconds = 10)
     {
-        return $this->timeOutMs(intval($seconds * 1000));
+        return $this->timeOutMs((int)($seconds * 1000));
     }
-
-    /**
-     * The maximum allowed number of milliseconds to perform cURL functions.
-     *
-     * @param int $ms millisecond
-     * @return $this
-     */
-    protected function timeOutMs($ms = 10000)
-    {
-        $this->options[CURLOPT_TIMEOUT_MS] = $ms;
-        return $this;
-    }
-
 
     /**
      * @param array|mixed $data
+     *
      * @return $this
+     *
      * @throws \ClickHouseDB\Exception\TransportException
      */
     public function parameters_json($data)
     {
+        $this->header('Content-Type', 'application/json, text/javascript; charset=utf-8');
+        $this->header('Accept', 'application/json, text/javascript, */*; q=0.01');
 
-        $this->header("Content-Type", "application/json, text/javascript; charset=utf-8");
-        $this->header("Accept", "application/json, text/javascript, */*; q=0.01");
-
-        if ($data === null) {
+        if (null === $data) {
             $this->parameters = '{}';
+
             return $this;
         }
 
-        if (is_string($data)) {
+        if (\is_string($data)) {
             $this->parameters = $data;
+
             return $this;
         }
 
         $this->parameters = json_encode($data);
 
         if (!$this->parameters && $data) {
-            throw new \ClickHouseDB\Exception\TransportException('Cant json_encode: ' . strval($data));
+            throw new \ClickHouseDB\Exception\TransportException('Cant json_encode: ' . (string)$data);
         }
 
         return $this;
@@ -547,21 +541,23 @@ class CurlerRequest
      */
     public function isResultFile()
     {
-        return ($this->resultFileHandle ? true : false);
+        return $this->resultFileHandle ? true : false;
     }
 
     /**
-     * @param resource $h resource
-     * @param bool $zlib
+     * @param resource $h    resource
+     * @param bool     $zlib
+     *
      * @return $this
      */
     public function setResultFileHandle($h, $zlib = false)
     {
         $this->resultFileHandle = $h;
         if ($zlib) {
-            $params = array('level' => 6, 'window' => 15, 'memory' => 9);
+            $params = ['level' => 6, 'window' => 15, 'memory' => 9];
             stream_filter_append($this->resultFileHandle, 'zlib.deflate', STREAM_FILTER_WRITE, $params);
         }
+
         return $this;
     }
 
@@ -600,12 +596,14 @@ class CurlerRequest
     /**
      * The number of seconds that DNS records are stored in memory. By default this parameter is 120 (2 minutes).
      *
-     * @param integer $set
+     * @param int $set
+     *
      * @return $this
      */
     public function setDnsCache($set)
     {
         $this->_dns_cache = $set;
+
         return $this;
     }
 
@@ -631,17 +629,8 @@ class CurlerRequest
     }
 
     /**
-     * @param string $method
-     * @return $this
-     */
-    private function execute($method)
-    {
-        $this->method = $method;
-        return $this;
-    }
-
-    /**
      * @return CurlerResponse
+     *
      * @throws \ClickHouseDB\Exception\TransportException
      */
     public function response()
@@ -655,7 +644,7 @@ class CurlerRequest
 
     public function isResponseExists(): bool
     {
-        return $this->response !== null;
+        return null !== $this->response;
     }
 
     public function setResponse(CurlerResponse $response): void
@@ -669,16 +658,16 @@ class CurlerRequest
     public function handle()
     {
         $this->prepareRequest();
+
         return $this->handle;
     }
 
     /**
-     * @param callable $callback
      * @throws \Exception
      */
     public function setFunctionProgress(callable $callback)
     {
-        if (!is_callable($callback)) {
+        if (!\is_callable($callback)) {
             throw new \Exception('setFunctionProgress not is_callable');
         }
 
@@ -686,6 +675,44 @@ class CurlerRequest
         $this->option(CURLOPT_PROGRESSFUNCTION, $callback); // version 5.5.0
     }
 
+    /**
+     * The maximum allowed number of milliseconds to perform cURL functions.
+     *
+     * @param int $ms millisecond
+     *
+     * @return $this
+     */
+    protected function timeOutMs($ms = 10000)
+    {
+        $this->options[CURLOPT_TIMEOUT_MS] = $ms;
+
+        return $this;
+    }
+
+    /**
+     * @param int   $key
+     * @param mixed $value
+     *
+     * @return $this
+     */
+    private function option($key, $value)
+    {
+        $this->options[$key] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $method
+     *
+     * @return $this
+     */
+    private function execute($method)
+    {
+        $this->method = $method;
+
+        return $this;
+    }
 
     /**
      * @return bool
@@ -703,13 +730,12 @@ class CurlerRequest
             $curl_opt[CURLOPT_SAFE_UPLOAD] = true;
         }
 
-
-        if (strtoupper($method) == 'GET') {
+        if ('GET' == strtoupper($method)) {
             $curl_opt[CURLOPT_HTTPGET] = true;
             $curl_opt[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
             $curl_opt[CURLOPT_POSTFIELDS] = false;
         } else {
-            if (strtoupper($method) === 'POST') {
+            if ('POST' === strtoupper($method)) {
                 $curl_opt[CURLOPT_POST] = true;
             }
 
@@ -718,8 +744,8 @@ class CurlerRequest
             if ($this->parameters) {
                 $curl_opt[CURLOPT_POSTFIELDS] = $this->parameters;
 
-                if (!is_array($this->parameters)) {
-                    $this->header('Content-Length', strlen($this->parameters));
+                if (!\is_array($this->parameters)) {
+                    $this->header('Content-Length', \strlen($this->parameters));
                 }
             }
         }
@@ -727,16 +753,15 @@ class CurlerRequest
         $curl_opt[CURLOPT_DNS_CACHE_TIMEOUT] = $this->getDnsCache();
         $curl_opt[CURLOPT_URL] = $this->url;
 
-        if (!empty($this->headers) && sizeof($this->headers)) {
-            $curl_opt[CURLOPT_HTTPHEADER] = array();
+        if (!empty($this->headers) && count($this->headers)) {
+            $curl_opt[CURLOPT_HTTPHEADER] = [];
 
             foreach ($this->headers as $key => $value) {
-                $curl_opt[CURLOPT_HTTPHEADER][] = sprintf("%s: %s", $key, $value);
+                $curl_opt[CURLOPT_HTTPHEADER][] = sprintf('%s: %s', $key, $value);
             }
         }
 
         if (!empty($curl_opt[CURLOPT_INFILE])) {
-
             $curl_opt[CURLOPT_PUT] = true;
         }
 
@@ -753,6 +778,7 @@ class CurlerRequest
             echo "\n-----------BODY REQUEST----------\n" . $curl_opt[CURLOPT_POSTFIELDS] . "\n------END--------\n";
         }
         curl_setopt_array($this->handle, $curl_opt);
+
         return true;
     }
 }
