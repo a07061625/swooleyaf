@@ -56,6 +56,7 @@ final class SyFrameLoader
             'PHPExcel' => 'preHandlePhpExcel',
             'AliOpen' => 'preHandleAliOpen',
             'PinYin' => 'preHandlePinYin',
+            'ClickHouseDB' => 'preHandleClickHouse',
         ];
 
         $this->smartyRootClasses = [
@@ -233,6 +234,11 @@ final class SyFrameLoader
         }
 
         return SY_FRAME_LIBS_ROOT . 'SyTranslation/' . $className . '.php';
+    }
+
+    private function preHandleClickHouse(string $className) : string
+    {
+        return SY_FRAME_LIBS_ROOT . 'SyDriver/' . $className . '.php';
     }
 }
 
