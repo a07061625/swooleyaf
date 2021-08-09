@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyInstanceSpec
+ *
  * @method string getResourceOwnerId()
  * @method string getCouponNo()
  * @method string getInstanceClass()
@@ -38,6 +39,7 @@ class ModifyInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +52,7 @@ class ModifyInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $couponNo
+     *
      * @return $this
      */
     public function setCouponNo($couponNo)
@@ -62,6 +65,7 @@ class ModifyInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceClass
+     *
      * @return $this
      */
     public function setInstanceClass($instanceClass)
@@ -74,6 +78,7 @@ class ModifyInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -86,6 +91,7 @@ class ModifyInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $effectiveTime
+     *
      * @return $this
      */
     public function setEffectiveTime($effectiveTime)
@@ -98,6 +104,7 @@ class ModifyInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $businessInfo
+     *
      * @return $this
      */
     public function setBusinessInfo($businessInfo)
@@ -110,6 +117,7 @@ class ModifyInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -122,6 +130,7 @@ class ModifyInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $fromApp
+     *
      * @return $this
      */
     public function setFromApp($fromApp)
@@ -134,6 +143,7 @@ class ModifyInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -146,6 +156,7 @@ class ModifyInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -158,6 +169,7 @@ class ModifyInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -170,6 +182,7 @@ class ModifyInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -182,6 +195,7 @@ class ModifyInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $forceUpgrade
+     *
      * @return $this
      */
     public function setForceUpgrade($forceUpgrade)
@@ -194,6 +208,7 @@ class ModifyInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $orderType
+     *
      * @return $this
      */
     public function setOrderType($orderType)

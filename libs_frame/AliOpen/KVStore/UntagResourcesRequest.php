@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UntagResources
+ *
  * @method string getResourceOwnerId()
  * @method string getAll()
  * @method array getResourceIds()
@@ -32,6 +33,7 @@ class UntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +46,7 @@ class UntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $all
+     *
      * @return $this
      */
     public function setAll($all)
@@ -55,7 +58,6 @@ class UntagResourcesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resourceId
      * @return $this
      */
     public function setResourceIds(array $resourceId)
@@ -70,6 +72,7 @@ class UntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -82,6 +85,7 @@ class UntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -94,6 +98,7 @@ class UntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -106,6 +111,7 @@ class UntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -117,7 +123,6 @@ class UntagResourcesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tagKey
      * @return $this
      */
     public function setTagKeys(array $tagKey)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListAliasesByKeyId
+ *
  * @method string getPageSize()
  * @method string getKeyId()
  * @method string getPageNumber()
@@ -31,6 +32,7 @@ class ListAliasesByKeyIdRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -43,6 +45,7 @@ class ListAliasesByKeyIdRequest extends RpcAcsRequest
 
     /**
      * @param string $keyId
+     *
      * @return $this
      */
     public function setKeyId($keyId)
@@ -55,6 +58,7 @@ class ListAliasesByKeyIdRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

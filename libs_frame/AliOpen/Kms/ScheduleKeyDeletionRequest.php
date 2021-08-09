@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ScheduleKeyDeletion
+ *
  * @method string getPendingWindowInDays()
  * @method string getKeyId()
  */
@@ -30,6 +31,7 @@ class ScheduleKeyDeletionRequest extends RpcAcsRequest
 
     /**
      * @param string $pendingWindowInDays
+     *
      * @return $this
      */
     public function setPendingWindowInDays($pendingWindowInDays)
@@ -42,6 +44,7 @@ class ScheduleKeyDeletionRequest extends RpcAcsRequest
 
     /**
      * @param string $keyId
+     *
      * @return $this
      */
     public function setKeyId($keyId)

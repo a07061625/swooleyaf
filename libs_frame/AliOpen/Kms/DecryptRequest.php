@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of Decrypt
+ *
  * @method string getEncryptionContext()
  * @method string getCiphertextBlob()
  */
@@ -30,6 +31,7 @@ class DecryptRequest extends RpcAcsRequest
 
     /**
      * @param string $encryptionContext
+     *
      * @return $this
      */
     public function setEncryptionContext($encryptionContext)
@@ -42,6 +44,7 @@ class DecryptRequest extends RpcAcsRequest
 
     /**
      * @param string $ciphertextBlob
+     *
      * @return $this
      */
     public function setCiphertextBlob($ciphertextBlob)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifySecurityGroupConfiguration
+ *
  * @method string getResourceOwnerId()
  * @method string getSecurityGroupId()
  * @method string getSecurityToken()
@@ -31,6 +32,7 @@ class ModifySecurityGroupConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +45,7 @@ class ModifySecurityGroupConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -55,6 +58,7 @@ class ModifySecurityGroupConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -67,6 +71,7 @@ class ModifySecurityGroupConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -79,6 +84,7 @@ class ModifySecurityGroupConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -91,6 +97,7 @@ class ModifySecurityGroupConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -103,6 +110,7 @@ class ModifySecurityGroupConfigurationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

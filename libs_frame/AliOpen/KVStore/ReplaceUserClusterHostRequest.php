@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ReplaceUserClusterHost
+ *
  * @method string getResourceOwnerId()
  * @method string getHostId()
  * @method string getSecurityToken()
@@ -33,6 +34,7 @@ class ReplaceUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +47,7 @@ class ReplaceUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $hostId
+     *
      * @return $this
      */
     public function setHostId($hostId)
@@ -57,6 +60,7 @@ class ReplaceUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -69,6 +73,7 @@ class ReplaceUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $engine
+     *
      * @return $this
      */
     public function setEngine($engine)
@@ -81,6 +86,7 @@ class ReplaceUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -93,6 +99,7 @@ class ReplaceUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -105,6 +112,7 @@ class ReplaceUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -117,6 +125,7 @@ class ReplaceUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +138,7 @@ class ReplaceUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)

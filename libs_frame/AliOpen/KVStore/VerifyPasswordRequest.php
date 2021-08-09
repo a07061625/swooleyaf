@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of VerifyPassword
+ *
  * @method string getResourceOwnerId()
  * @method string getPassword()
  * @method string getInstanceId()
@@ -31,6 +32,7 @@ class VerifyPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +45,7 @@ class VerifyPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -55,6 +58,7 @@ class VerifyPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -67,6 +71,7 @@ class VerifyPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -79,6 +84,7 @@ class VerifyPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -91,6 +97,7 @@ class VerifyPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -103,6 +110,7 @@ class VerifyPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

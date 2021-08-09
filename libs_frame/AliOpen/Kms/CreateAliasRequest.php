@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateAlias
+ *
  * @method string getAliasName()
  * @method string getKeyId()
  */
@@ -30,6 +31,7 @@ class CreateAliasRequest extends RpcAcsRequest
 
     /**
      * @param string $aliasName
+     *
      * @return $this
      */
     public function setAliasName($aliasName)
@@ -42,6 +44,7 @@ class CreateAliasRequest extends RpcAcsRequest
 
     /**
      * @param string $keyId
+     *
      * @return $this
      */
     public function setKeyId($keyId)

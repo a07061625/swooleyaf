@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of Encrypt
+ *
  * @method string getEncryptionContext()
  * @method string getKeyId()
  * @method string getPlaintext()
@@ -31,6 +32,7 @@ class EncryptRequest extends RpcAcsRequest
 
     /**
      * @param string $encryptionContext
+     *
      * @return $this
      */
     public function setEncryptionContext($encryptionContext)
@@ -43,6 +45,7 @@ class EncryptRequest extends RpcAcsRequest
 
     /**
      * @param string $keyId
+     *
      * @return $this
      */
     public function setKeyId($keyId)
@@ -55,6 +58,7 @@ class EncryptRequest extends RpcAcsRequest
 
     /**
      * @param string $plaintext
+     *
      * @return $this
      */
     public function setPlaintext($plaintext)

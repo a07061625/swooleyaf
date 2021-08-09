@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteAlias
+ *
  * @method string getAliasName()
  */
 class DeleteAliasRequest extends RpcAcsRequest
@@ -29,6 +30,7 @@ class DeleteAliasRequest extends RpcAcsRequest
 
     /**
      * @param string $aliasName
+     *
      * @return $this
      */
     public function setAliasName($aliasName)

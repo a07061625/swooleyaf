@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SwitchNetwork
+ *
  * @method string getResourceOwnerId()
  * @method string getSecurityToken()
  * @method string getClassicExpiredDays()
@@ -35,6 +36,7 @@ class SwitchNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +49,7 @@ class SwitchNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -59,6 +62,7 @@ class SwitchNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $classicExpiredDays
+     *
      * @return $this
      */
     public function setClassicExpiredDays($classicExpiredDays)
@@ -71,6 +75,7 @@ class SwitchNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -83,6 +88,7 @@ class SwitchNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -95,6 +101,7 @@ class SwitchNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -107,6 +114,7 @@ class SwitchNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -119,6 +127,7 @@ class SwitchNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -131,6 +140,7 @@ class SwitchNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $targetNetworkType
+     *
      * @return $this
      */
     public function setTargetNetworkType($targetNetworkType)
@@ -143,6 +153,7 @@ class SwitchNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $retainClassic
+     *
      * @return $this
      */
     public function setRetainClassic($retainClassic)
@@ -155,6 +166,7 @@ class SwitchNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)

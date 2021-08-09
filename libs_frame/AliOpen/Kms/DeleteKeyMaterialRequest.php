@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteKeyMaterial
+ *
  * @method string getKeyId()
  */
 class DeleteKeyMaterialRequest extends RpcAcsRequest
@@ -29,6 +30,7 @@ class DeleteKeyMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $keyId
+     *
      * @return $this
      */
     public function setKeyId($keyId)

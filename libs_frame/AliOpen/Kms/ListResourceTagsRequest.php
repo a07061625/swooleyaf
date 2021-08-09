@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListResourceTags
+ *
  * @method string getKeyId()
  */
 class ListResourceTagsRequest extends RpcAcsRequest
@@ -29,6 +30,7 @@ class ListResourceTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $keyId
+     *
      * @return $this
      */
     public function setKeyId($keyId)

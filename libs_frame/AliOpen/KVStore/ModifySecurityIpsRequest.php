@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifySecurityIps
+ *
  * @method string getResourceOwnerId()
  * @method string getSecurityIps()
  * @method string getSecurityIpGroupName()
@@ -34,6 +35,7 @@ class ModifySecurityIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +48,7 @@ class ModifySecurityIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $securityIps
+     *
      * @return $this
      */
     public function setSecurityIps($securityIps)
@@ -58,6 +61,7 @@ class ModifySecurityIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $securityIpGroupName
+     *
      * @return $this
      */
     public function setSecurityIpGroupName($securityIpGroupName)
@@ -70,6 +74,7 @@ class ModifySecurityIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -82,6 +87,7 @@ class ModifySecurityIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $modifyMode
+     *
      * @return $this
      */
     public function setModifyMode($modifyMode)
@@ -94,6 +100,7 @@ class ModifySecurityIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -106,6 +113,7 @@ class ModifySecurityIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -118,6 +126,7 @@ class ModifySecurityIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +139,7 @@ class ModifySecurityIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -142,6 +152,7 @@ class ModifySecurityIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $securityIpGroupAttribute
+     *
      * @return $this
      */
     public function setSecurityIpGroupAttribute($securityIpGroupAttribute)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ImportKeyMaterial
+ *
  * @method string getImportToken()
  * @method string getEncryptedKeyMaterial()
  * @method string getKeyMaterialExpireUnix()
@@ -32,6 +33,7 @@ class ImportKeyMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $importToken
+     *
      * @return $this
      */
     public function setImportToken($importToken)
@@ -44,6 +46,7 @@ class ImportKeyMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $encryptedKeyMaterial
+     *
      * @return $this
      */
     public function setEncryptedKeyMaterial($encryptedKeyMaterial)
@@ -56,6 +59,7 @@ class ImportKeyMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $keyMaterialExpireUnix
+     *
      * @return $this
      */
     public function setKeyMaterialExpireUnix($keyMaterialExpireUnix)
@@ -68,6 +72,7 @@ class ImportKeyMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $keyId
+     *
      * @return $this
      */
     public function setKeyId($keyId)

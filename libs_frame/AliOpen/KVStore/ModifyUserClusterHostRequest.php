@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyUserClusterHost
+ *
  * @method string getResourceOwnerId()
  * @method string getHostId()
  * @method string getSecurityToken()
@@ -34,6 +35,7 @@ class ModifyUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +48,7 @@ class ModifyUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $hostId
+     *
      * @return $this
      */
     public function setHostId($hostId)
@@ -58,6 +61,7 @@ class ModifyUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -70,6 +74,7 @@ class ModifyUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $allocationStatus
+     *
      * @return $this
      */
     public function setAllocationStatus($allocationStatus)
@@ -82,6 +87,7 @@ class ModifyUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $engine
+     *
      * @return $this
      */
     public function setEngine($engine)
@@ -94,6 +100,7 @@ class ModifyUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -106,6 +113,7 @@ class ModifyUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -118,6 +126,7 @@ class ModifyUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -130,6 +139,7 @@ class ModifyUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -142,6 +152,7 @@ class ModifyUserClusterHostRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)

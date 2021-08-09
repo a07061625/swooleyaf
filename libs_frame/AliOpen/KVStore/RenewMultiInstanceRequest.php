@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RenewMultiInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getPeriod()
  * @method string getAutoPay()
@@ -35,6 +36,7 @@ class RenewMultiInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +49,7 @@ class RenewMultiInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -59,6 +62,7 @@ class RenewMultiInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -71,6 +75,7 @@ class RenewMultiInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $fromApp
+     *
      * @return $this
      */
     public function setFromApp($fromApp)
@@ -83,6 +88,7 @@ class RenewMultiInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -95,6 +101,7 @@ class RenewMultiInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -107,6 +114,7 @@ class RenewMultiInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $couponNo
+     *
      * @return $this
      */
     public function setCouponNo($couponNo)
@@ -119,6 +127,7 @@ class RenewMultiInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -131,6 +140,7 @@ class RenewMultiInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -143,6 +153,7 @@ class RenewMultiInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceIds
+     *
      * @return $this
      */
     public function setInstanceIds($instanceIds)
@@ -155,6 +166,7 @@ class RenewMultiInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $businessInfo
+     *
      * @return $this
      */
     public function setBusinessInfo($businessInfo)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateKey
+ *
  * @method string getKeyUsage()
  * @method string getOrigin()
  * @method string getDescription()
@@ -31,6 +32,7 @@ class CreateKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $keyUsage
+     *
      * @return $this
      */
     public function setKeyUsage($keyUsage)
@@ -43,6 +45,7 @@ class CreateKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $origin
+     *
      * @return $this
      */
     public function setOrigin($origin)
@@ -55,6 +58,7 @@ class CreateKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)

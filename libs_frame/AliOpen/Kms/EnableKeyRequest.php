@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of EnableKey
+ *
  * @method string getKeyId()
  */
 class EnableKeyRequest extends RpcAcsRequest
@@ -29,6 +30,7 @@ class EnableKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $keyId
+     *
      * @return $this
      */
     public function setKeyId($keyId)

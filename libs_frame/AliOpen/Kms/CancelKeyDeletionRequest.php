@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CancelKeyDeletion
+ *
  * @method string getKeyId()
  */
 class CancelKeyDeletionRequest extends RpcAcsRequest
@@ -29,6 +30,7 @@ class CancelKeyDeletionRequest extends RpcAcsRequest
 
     /**
      * @param string $keyId
+     *
      * @return $this
      */
     public function setKeyId($keyId)

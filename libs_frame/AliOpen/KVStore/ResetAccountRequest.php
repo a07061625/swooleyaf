@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ResetAccount
+ *
  * @method string getResourceOwnerId()
  * @method string getAccountPassword()
  * @method string getInstanceId()
@@ -32,6 +33,7 @@ class ResetAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +46,7 @@ class ResetAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $accountPassword
+     *
      * @return $this
      */
     public function setAccountPassword($accountPassword)
@@ -56,6 +59,7 @@ class ResetAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -68,6 +72,7 @@ class ResetAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $accountName
+     *
      * @return $this
      */
     public function setAccountName($accountName)
@@ -80,6 +85,7 @@ class ResetAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -92,6 +98,7 @@ class ResetAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -104,6 +111,7 @@ class ResetAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -116,6 +124,7 @@ class ResetAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

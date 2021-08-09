@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GenerateDataKey
+ *
  * @method string getEncryptionContext()
  * @method string getKeyId()
  * @method string getKeySpec()
@@ -32,6 +33,7 @@ class GenerateDataKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $encryptionContext
+     *
      * @return $this
      */
     public function setEncryptionContext($encryptionContext)
@@ -44,6 +46,7 @@ class GenerateDataKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $keyId
+     *
      * @return $this
      */
     public function setKeyId($keyId)
@@ -56,6 +59,7 @@ class GenerateDataKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $keySpec
+     *
      * @return $this
      */
     public function setKeySpec($keySpec)
@@ -68,6 +72,7 @@ class GenerateDataKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $numberOfBytes
+     *
      * @return $this
      */
     public function setNumberOfBytes($numberOfBytes)

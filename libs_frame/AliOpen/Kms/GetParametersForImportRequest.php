@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetParametersForImport
+ *
  * @method string getKeyId()
  * @method string getWrappingAlgorithm()
  * @method string getWrappingKeySpec()
@@ -31,6 +32,7 @@ class GetParametersForImportRequest extends RpcAcsRequest
 
     /**
      * @param string $keyId
+     *
      * @return $this
      */
     public function setKeyId($keyId)
@@ -43,6 +45,7 @@ class GetParametersForImportRequest extends RpcAcsRequest
 
     /**
      * @param string $wrappingAlgorithm
+     *
      * @return $this
      */
     public function setWrappingAlgorithm($wrappingAlgorithm)
@@ -55,6 +58,7 @@ class GetParametersForImportRequest extends RpcAcsRequest
 
     /**
      * @param string $wrappingKeySpec
+     *
      * @return $this
      */
     public function setWrappingKeySpec($wrappingKeySpec)

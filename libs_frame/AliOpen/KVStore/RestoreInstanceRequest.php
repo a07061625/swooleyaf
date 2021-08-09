@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RestoreInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getSecurityToken()
  * @method string getRestoreTime()
@@ -33,6 +34,7 @@ class RestoreInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +47,7 @@ class RestoreInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -57,6 +60,7 @@ class RestoreInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTime
+     *
      * @return $this
      */
     public function setRestoreTime($restoreTime)
@@ -69,6 +73,7 @@ class RestoreInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -81,6 +86,7 @@ class RestoreInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -93,6 +99,7 @@ class RestoreInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $backupId
+     *
      * @return $this
      */
     public function setBackupId($backupId)
@@ -105,6 +112,7 @@ class RestoreInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -117,6 +125,7 @@ class RestoreInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreType
+     *
      * @return $this
      */
     public function setRestoreType($restoreType)
@@ -129,6 +138,7 @@ class RestoreInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
