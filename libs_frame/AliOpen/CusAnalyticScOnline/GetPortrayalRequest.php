@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CusAnalyticScOnline;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetPortrayal
  *
  * @method string getDate()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetPortrayalRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

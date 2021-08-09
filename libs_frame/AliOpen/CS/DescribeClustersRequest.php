@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeClusters
  *
  * @method string getclusterType()
@@ -13,7 +12,6 @@ use AliOpen\Core\RoaAcsRequest;
  */
 class DescribeClustersRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

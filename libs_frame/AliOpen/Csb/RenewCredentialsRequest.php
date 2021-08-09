@@ -17,20 +17,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class RenewCredentialsRequest extends RpcAcsRequest
 {
+    private $credentialId;
+
     public function __construct()
     {
-        parent::__construct("CSB", "2017-11-18", "RenewCredentials");
-        $this->setProtocol("https");
-        $this->setMethod("POST");
+        parent::__construct('CSB', '2017-11-18', 'RenewCredentials');
+        $this->setProtocol('https');
+        $this->setMethod('POST');
     }
-
-    private $credentialId;
 
     public function getCredentialId()
     {
@@ -40,6 +41,6 @@ class RenewCredentialsRequest extends RpcAcsRequest
     public function setCredentialId($credentialId)
     {
         $this->credentialId = $credentialId;
-        $this->queryParameters["CredentialId"] = $credentialId;
+        $this->queryParameters['CredentialId'] = $credentialId;
     }
 }

@@ -17,21 +17,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class CommitSuccessedServicesRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("CSB", "2017-11-18", "CommitSuccessedServices");
-        $this->setProtocol("https");
-        $this->setMethod("POST");
-    }
-
     private $csbName;
     private $services;
+
+    public function __construct()
+    {
+        parent::__construct('CSB', '2017-11-18', 'CommitSuccessedServices');
+        $this->setProtocol('https');
+        $this->setMethod('POST');
+    }
 
     public function getCsbName()
     {
@@ -41,7 +42,7 @@ class CommitSuccessedServicesRequest extends RpcAcsRequest
     public function setCsbName($csbName)
     {
         $this->csbName = $csbName;
-        $this->queryParameters["CsbName"] = $csbName;
+        $this->queryParameters['CsbName'] = $csbName;
     }
 
     public function getServices()

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CusAnalyticScOnline;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetAnalyzeCommodityData
  *
  * @method string getStoreId()
@@ -20,7 +19,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetAnalyzeCommodityDataRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

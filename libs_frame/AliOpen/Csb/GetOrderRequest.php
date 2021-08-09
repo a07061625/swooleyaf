@@ -17,20 +17,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class GetOrderRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("CSB", "2017-11-18", "GetOrder");
-        $this->setProtocol("https");
-    }
-
     private $orderId;
     private $serviceName;
+
+    public function __construct()
+    {
+        parent::__construct('CSB', '2017-11-18', 'GetOrder');
+        $this->setProtocol('https');
+    }
 
     public function getOrderId()
     {
@@ -40,7 +41,7 @@ class GetOrderRequest extends RpcAcsRequest
     public function setOrderId($orderId)
     {
         $this->orderId = $orderId;
-        $this->queryParameters["OrderId"] = $orderId;
+        $this->queryParameters['OrderId'] = $orderId;
     }
 
     public function getServiceName()
@@ -51,6 +52,6 @@ class GetOrderRequest extends RpcAcsRequest
     public function setServiceName($serviceName)
     {
         $this->serviceName = $serviceName;
-        $this->queryParameters["ServiceName"] = $serviceName;
+        $this->queryParameters['ServiceName'] = $serviceName;
     }
 }

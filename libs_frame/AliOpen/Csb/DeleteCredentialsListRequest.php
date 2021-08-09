@@ -17,22 +17,23 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class DeleteCredentialsListRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("CSB", "2017-11-18", "DeleteCredentialsList");
-        $this->setProtocol("https");
-        $this->setMethod("POST");
-    }
-
     private $data;
     private $ignoreDauth;
     private $force;
+
+    public function __construct()
+    {
+        parent::__construct('CSB', '2017-11-18', 'DeleteCredentialsList');
+        $this->setProtocol('https');
+        $this->setMethod('POST');
+    }
 
     public function getData()
     {
@@ -52,7 +53,7 @@ class DeleteCredentialsListRequest extends RpcAcsRequest
     public function setIgnoreDauth($ignoreDauth)
     {
         $this->ignoreDauth = $ignoreDauth;
-        $this->queryParameters["IgnoreDauth"] = $ignoreDauth;
+        $this->queryParameters['IgnoreDauth'] = $ignoreDauth;
     }
 
     public function getForce()
@@ -63,6 +64,6 @@ class DeleteCredentialsListRequest extends RpcAcsRequest
     public function setForce($force)
     {
         $this->force = $force;
-        $this->queryParameters["Force"] = $force;
+        $this->queryParameters['Force'] = $force;
     }
 }

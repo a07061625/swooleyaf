@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyBackupStrategy
+ *
  * @method string getBackupLogIntervalSeconds()
  * @method string getClientToken()
  * @method string getBackupPlanId()
@@ -30,6 +32,7 @@ class ModifyBackupStrategyRequest extends RpcAcsRequest
 
     /**
      * @param string $backupLogIntervalSeconds
+     *
      * @return $this
      */
     public function setBackupLogIntervalSeconds($backupLogIntervalSeconds)
@@ -42,6 +45,7 @@ class ModifyBackupStrategyRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -54,6 +58,7 @@ class ModifyBackupStrategyRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanId
+     *
      * @return $this
      */
     public function setBackupPlanId($backupPlanId)
@@ -66,6 +71,7 @@ class ModifyBackupStrategyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -78,6 +84,7 @@ class ModifyBackupStrategyRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPeriod
+     *
      * @return $this
      */
     public function setBackupPeriod($backupPeriod)
@@ -90,6 +97,7 @@ class ModifyBackupStrategyRequest extends RpcAcsRequest
 
     /**
      * @param string $backupStartTime
+     *
      * @return $this
      */
     public function setBackupStartTime($backupStartTime)
@@ -102,6 +110,7 @@ class ModifyBackupStrategyRequest extends RpcAcsRequest
 
     /**
      * @param string $backupStrategyType
+     *
      * @return $this
      */
     public function setBackupStrategyType($backupStrategyType)

@@ -17,22 +17,23 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class FindServiceStatisticalDataRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("CSB", "2017-11-18", "FindServiceStatisticalData");
-        $this->setProtocol("https");
-    }
-
     private $csbId;
     private $endTime;
     private $serviceName;
     private $startTime;
+
+    public function __construct()
+    {
+        parent::__construct('CSB', '2017-11-18', 'FindServiceStatisticalData');
+        $this->setProtocol('https');
+    }
 
     public function getCsbId()
     {
@@ -42,7 +43,7 @@ class FindServiceStatisticalDataRequest extends RpcAcsRequest
     public function setCsbId($csbId)
     {
         $this->csbId = $csbId;
-        $this->queryParameters["CsbId"] = $csbId;
+        $this->queryParameters['CsbId'] = $csbId;
     }
 
     public function getEndTime()
@@ -53,7 +54,7 @@ class FindServiceStatisticalDataRequest extends RpcAcsRequest
     public function setEndTime($endTime)
     {
         $this->endTime = $endTime;
-        $this->queryParameters["EndTime"] = $endTime;
+        $this->queryParameters['EndTime'] = $endTime;
     }
 
     public function getServiceName()
@@ -64,7 +65,7 @@ class FindServiceStatisticalDataRequest extends RpcAcsRequest
     public function setServiceName($serviceName)
     {
         $this->serviceName = $serviceName;
-        $this->queryParameters["ServiceName"] = $serviceName;
+        $this->queryParameters['ServiceName'] = $serviceName;
     }
 
     public function getStartTime()
@@ -75,6 +76,6 @@ class FindServiceStatisticalDataRequest extends RpcAcsRequest
     public function setStartTime($startTime)
     {
         $this->startTime = $startTime;
-        $this->queryParameters["StartTime"] = $startTime;
+        $this->queryParameters['StartTime'] = $startTime;
     }
 }

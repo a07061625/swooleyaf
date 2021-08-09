@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateRestoreTask
+ *
  * @method string getBackupGatewayId()
  * @method string getDestinationEndpointInstanceType()
  * @method string getClientToken()
@@ -45,6 +47,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $backupGatewayId
+     *
      * @return $this
      */
     public function setBackupGatewayId($backupGatewayId)
@@ -57,6 +60,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationEndpointInstanceType
+     *
      * @return $this
      */
     public function setDestinationEndpointInstanceType($destinationEndpointInstanceType)
@@ -69,6 +73,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -81,6 +86,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanId
+     *
      * @return $this
      */
     public function setBackupPlanId($backupPlanId)
@@ -93,6 +99,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationEndpointRegion
+     *
      * @return $this
      */
     public function setDestinationEndpointRegion($destinationEndpointRegion)
@@ -105,6 +112,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $crossRoleName
+     *
      * @return $this
      */
     public function setCrossRoleName($crossRoleName)
@@ -117,6 +125,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationEndpointUserName
+     *
      * @return $this
      */
     public function setDestinationEndpointUserName($destinationEndpointUserName)
@@ -129,6 +138,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreObjects
+     *
      * @return $this
      */
     public function setRestoreObjects($restoreObjects)
@@ -141,6 +151,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTaskName
+     *
      * @return $this
      */
     public function setRestoreTaskName($restoreTaskName)
@@ -153,6 +164,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreHome
+     *
      * @return $this
      */
     public function setRestoreHome($restoreHome)
@@ -165,6 +177,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationEndpointOracleSID
+     *
      * @return $this
      */
     public function setDestinationEndpointOracleSID($destinationEndpointOracleSID)
@@ -177,6 +190,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTime
+     *
      * @return $this
      */
     public function setRestoreTime($restoreTime)
@@ -189,6 +203,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $crossAliyunId
+     *
      * @return $this
      */
     public function setCrossAliyunId($crossAliyunId)
@@ -201,6 +216,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationEndpointInstanceID
+     *
      * @return $this
      */
     public function setDestinationEndpointInstanceID($destinationEndpointInstanceID)
@@ -213,6 +229,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationEndpointPort
+     *
      * @return $this
      */
     public function setDestinationEndpointPort($destinationEndpointPort)
@@ -225,6 +242,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $backupSetId
+     *
      * @return $this
      */
     public function setBackupSetId($backupSetId)
@@ -237,6 +255,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -249,6 +268,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreDir
+     *
      * @return $this
      */
     public function setRestoreDir($restoreDir)
@@ -261,6 +281,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationEndpointIP
+     *
      * @return $this
      */
     public function setDestinationEndpointIP($destinationEndpointIP)
@@ -273,6 +294,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationEndpointDatabaseName
+     *
      * @return $this
      */
     public function setDestinationEndpointDatabaseName($destinationEndpointDatabaseName)
@@ -285,6 +307,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $duplicateConflict
+     *
      * @return $this
      */
     public function setDuplicateConflict($duplicateConflict)
@@ -297,6 +320,7 @@ class CreateRestoreTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationEndpointPassword
+     *
      * @return $this
      */
     public function setDestinationEndpointPassword($destinationEndpointPassword)

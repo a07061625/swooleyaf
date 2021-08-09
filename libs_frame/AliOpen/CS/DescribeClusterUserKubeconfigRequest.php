@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeClusterUserKubeconfig
  *
  * @method string getPrivateIpAddress()
@@ -13,7 +12,6 @@ use AliOpen\Core\RoaAcsRequest;
  */
 class DescribeClusterUserKubeconfigRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

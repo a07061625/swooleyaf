@@ -17,23 +17,24 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class DeleteUnionCasServiceRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("CSB", "2017-11-18", "DeleteUnionCasService");
-        $this->setProtocol("https");
-        $this->setMethod("POST");
-    }
-
     private $leafOnly;
     private $casCsbName;
     private $srcUserId;
     private $casServiceId;
+
+    public function __construct()
+    {
+        parent::__construct('CSB', '2017-11-18', 'DeleteUnionCasService');
+        $this->setProtocol('https');
+        $this->setMethod('POST');
+    }
 
     public function getLeafOnly()
     {
@@ -43,7 +44,7 @@ class DeleteUnionCasServiceRequest extends RpcAcsRequest
     public function setLeafOnly($leafOnly)
     {
         $this->leafOnly = $leafOnly;
-        $this->queryParameters["LeafOnly"] = $leafOnly;
+        $this->queryParameters['LeafOnly'] = $leafOnly;
     }
 
     public function getCasCsbName()
@@ -54,7 +55,7 @@ class DeleteUnionCasServiceRequest extends RpcAcsRequest
     public function setCasCsbName($casCsbName)
     {
         $this->casCsbName = $casCsbName;
-        $this->queryParameters["CasCsbName"] = $casCsbName;
+        $this->queryParameters['CasCsbName'] = $casCsbName;
     }
 
     public function getSrcUserId()
@@ -65,7 +66,7 @@ class DeleteUnionCasServiceRequest extends RpcAcsRequest
     public function setSrcUserId($srcUserId)
     {
         $this->srcUserId = $srcUserId;
-        $this->queryParameters["SrcUserId"] = $srcUserId;
+        $this->queryParameters['SrcUserId'] = $srcUserId;
     }
 
     public function getCasServiceId()
@@ -76,6 +77,6 @@ class DeleteUnionCasServiceRequest extends RpcAcsRequest
     public function setCasServiceId($casServiceId)
     {
         $this->casServiceId = $casServiceId;
-        $this->queryParameters["CasServiceId"] = $casServiceId;
+        $this->queryParameters['CasServiceId'] = $casServiceId;
     }
 }

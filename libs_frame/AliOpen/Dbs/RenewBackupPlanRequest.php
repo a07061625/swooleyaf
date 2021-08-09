@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RenewBackupPlan
+ *
  * @method string getPeriod()
  * @method string getClientToken()
  * @method string getBackupPlanId()
@@ -28,6 +30,7 @@ class RenewBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -40,6 +43,7 @@ class RenewBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -52,6 +56,7 @@ class RenewBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanId
+     *
      * @return $this
      */
     public function setBackupPlanId($backupPlanId)
@@ -64,6 +69,7 @@ class RenewBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -76,6 +82,7 @@ class RenewBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $usedTime
+     *
      * @return $this
      */
     public function setUsedTime($usedTime)

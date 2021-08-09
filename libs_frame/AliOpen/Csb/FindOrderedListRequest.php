@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class FindOrderedListRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("CSB", "2017-11-18", "FindOrderedList");
-        $this->setProtocol("https");
-    }
-
     private $projectName;
     private $showDelOrder;
     private $csbId;
@@ -38,6 +33,12 @@ class FindOrderedListRequest extends RpcAcsRequest
     private $serviceId;
     private $status;
 
+    public function __construct()
+    {
+        parent::__construct('CSB', '2017-11-18', 'FindOrderedList');
+        $this->setProtocol('https');
+    }
+
     public function getProjectName()
     {
         return $this->projectName;
@@ -46,7 +47,7 @@ class FindOrderedListRequest extends RpcAcsRequest
     public function setProjectName($projectName)
     {
         $this->projectName = $projectName;
-        $this->queryParameters["ProjectName"] = $projectName;
+        $this->queryParameters['ProjectName'] = $projectName;
     }
 
     public function getShowDelOrder()
@@ -57,7 +58,7 @@ class FindOrderedListRequest extends RpcAcsRequest
     public function setShowDelOrder($showDelOrder)
     {
         $this->showDelOrder = $showDelOrder;
-        $this->queryParameters["ShowDelOrder"] = $showDelOrder;
+        $this->queryParameters['ShowDelOrder'] = $showDelOrder;
     }
 
     public function getCsbId()
@@ -68,7 +69,7 @@ class FindOrderedListRequest extends RpcAcsRequest
     public function setCsbId($csbId)
     {
         $this->csbId = $csbId;
-        $this->queryParameters["CsbId"] = $csbId;
+        $this->queryParameters['CsbId'] = $csbId;
     }
 
     public function getAlias()
@@ -79,7 +80,7 @@ class FindOrderedListRequest extends RpcAcsRequest
     public function setAlias($alias)
     {
         $this->alias = $alias;
-        $this->queryParameters["Alias"] = $alias;
+        $this->queryParameters['Alias'] = $alias;
     }
 
     public function getServiceName()
@@ -90,7 +91,7 @@ class FindOrderedListRequest extends RpcAcsRequest
     public function setServiceName($serviceName)
     {
         $this->serviceName = $serviceName;
-        $this->queryParameters["ServiceName"] = $serviceName;
+        $this->queryParameters['ServiceName'] = $serviceName;
     }
 
     public function getPageNum()
@@ -101,7 +102,7 @@ class FindOrderedListRequest extends RpcAcsRequest
     public function setPageNum($pageNum)
     {
         $this->pageNum = $pageNum;
-        $this->queryParameters["PageNum"] = $pageNum;
+        $this->queryParameters['PageNum'] = $pageNum;
     }
 
     public function getServiceId()
@@ -112,7 +113,7 @@ class FindOrderedListRequest extends RpcAcsRequest
     public function setServiceId($serviceId)
     {
         $this->serviceId = $serviceId;
-        $this->queryParameters["ServiceId"] = $serviceId;
+        $this->queryParameters['ServiceId'] = $serviceId;
     }
 
     public function getStatus()
@@ -123,6 +124,6 @@ class FindOrderedListRequest extends RpcAcsRequest
     public function setStatus($status)
     {
         $this->status = $status;
-        $this->queryParameters["Status"] = $status;
+        $this->queryParameters['Status'] = $status;
     }
 }

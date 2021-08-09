@@ -17,21 +17,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class UpdateServiceQPSRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("CSB", "2017-11-18", "UpdateServiceQPS");
-        $this->setProtocol("https");
-        $this->setMethod("POST");
-    }
-
     private $qps;
     private $serviceId;
+
+    public function __construct()
+    {
+        parent::__construct('CSB', '2017-11-18', 'UpdateServiceQPS');
+        $this->setProtocol('https');
+        $this->setMethod('POST');
+    }
 
     public function getQps()
     {
@@ -41,7 +42,7 @@ class UpdateServiceQPSRequest extends RpcAcsRequest
     public function setQps($qps)
     {
         $this->qps = $qps;
-        $this->queryParameters["Qps"] = $qps;
+        $this->queryParameters['Qps'] = $qps;
     }
 
     public function getServiceId()
@@ -52,6 +53,6 @@ class UpdateServiceQPSRequest extends RpcAcsRequest
     public function setServiceId($serviceId)
     {
         $this->serviceId = $serviceId;
-        $this->queryParameters["ServiceId"] = $serviceId;
+        $this->queryParameters['ServiceId'] = $serviceId;
     }
 }

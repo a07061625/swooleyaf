@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteClusterNodes
  *
  * @method string getClusterId()
  */
 class DeleteClusterNodesRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeFullBackupList
+ *
  * @method string getClientToken()
  * @method string getBackupPlanId()
  * @method string getBackupSetId()
@@ -30,6 +32,7 @@ class DescribeFullBackupListRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -42,6 +45,7 @@ class DescribeFullBackupListRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanId
+     *
      * @return $this
      */
     public function setBackupPlanId($backupPlanId)
@@ -54,6 +58,7 @@ class DescribeFullBackupListRequest extends RpcAcsRequest
 
     /**
      * @param string $backupSetId
+     *
      * @return $this
      */
     public function setBackupSetId($backupSetId)
@@ -66,6 +71,7 @@ class DescribeFullBackupListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -78,6 +84,7 @@ class DescribeFullBackupListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -90,6 +97,7 @@ class DescribeFullBackupListRequest extends RpcAcsRequest
 
     /**
      * @param string $showStorageType
+     *
      * @return $this
      */
     public function setShowStorageType($showStorageType)
@@ -102,6 +110,7 @@ class DescribeFullBackupListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)

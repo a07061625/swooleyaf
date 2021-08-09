@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateFullBackupSetDownload
+ *
  * @method string getClientToken()
  * @method string getBackupSetId()
  * @method string getOwnerId()
@@ -27,6 +29,7 @@ class CreateFullBackupSetDownloadRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -39,6 +42,7 @@ class CreateFullBackupSetDownloadRequest extends RpcAcsRequest
 
     /**
      * @param string $backupSetId
+     *
      * @return $this
      */
     public function setBackupSetId($backupSetId)
@@ -51,6 +55,7 @@ class CreateFullBackupSetDownloadRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -63,6 +68,7 @@ class CreateFullBackupSetDownloadRequest extends RpcAcsRequest
 
     /**
      * @param string $backupSetDataFormat
+     *
      * @return $this
      */
     public function setBackupSetDataFormat($backupSetDataFormat)

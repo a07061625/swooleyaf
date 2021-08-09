@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeEdgeClusterAttachScripts
  *
  * @method string getClusterId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RoaAcsRequest;
  */
 class DescribeEdgeClusterAttachScriptsRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateBackupPlan
+ *
  * @method string getDatabaseType()
  * @method string getClientToken()
  * @method string getInstanceClass()
@@ -37,6 +39,7 @@ class CreateBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $databaseType
+     *
      * @return $this
      */
     public function setDatabaseType($databaseType)
@@ -49,6 +52,7 @@ class CreateBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -61,6 +65,7 @@ class CreateBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceClass
+     *
      * @return $this
      */
     public function setInstanceClass($instanceClass)
@@ -73,6 +78,7 @@ class CreateBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $storageType
+     *
      * @return $this
      */
     public function setStorageType($storageType)
@@ -85,6 +91,7 @@ class CreateBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $databaseRegion
+     *
      * @return $this
      */
     public function setDatabaseRegion($databaseRegion)
@@ -97,6 +104,7 @@ class CreateBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -109,6 +117,7 @@ class CreateBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -121,6 +130,7 @@ class CreateBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $fromApp
+     *
      * @return $this
      */
     public function setFromApp($fromApp)
@@ -133,6 +143,7 @@ class CreateBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -145,6 +156,7 @@ class CreateBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $usedTime
+     *
      * @return $this
      */
     public function setUsedTime($usedTime)
@@ -157,6 +169,7 @@ class CreateBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupMethod
+     *
      * @return $this
      */
     public function setBackupMethod($backupMethod)
@@ -169,6 +182,7 @@ class CreateBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $storageRegion
+     *
      * @return $this
      */
     public function setStorageRegion($storageRegion)
@@ -181,6 +195,7 @@ class CreateBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)
@@ -193,6 +208,7 @@ class CreateBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)

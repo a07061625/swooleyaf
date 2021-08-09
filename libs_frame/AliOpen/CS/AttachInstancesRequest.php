@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of AttachInstances
  *
  * @method string getClusterId()
  */
 class AttachInstancesRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

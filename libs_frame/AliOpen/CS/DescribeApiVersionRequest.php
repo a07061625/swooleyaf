@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeApiVersion
- *
  */
 class DescribeApiVersionRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

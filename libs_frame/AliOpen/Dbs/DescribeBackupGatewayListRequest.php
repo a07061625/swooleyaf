@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeBackupGatewayList
+ *
  * @method string getIdentifier()
  * @method string getClientToken()
  * @method string getPageNum()
@@ -29,6 +31,7 @@ class DescribeBackupGatewayListRequest extends RpcAcsRequest
 
     /**
      * @param string $identifier
+     *
      * @return $this
      */
     public function setIdentifier($identifier)
@@ -41,6 +44,7 @@ class DescribeBackupGatewayListRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -53,6 +57,7 @@ class DescribeBackupGatewayListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -65,6 +70,7 @@ class DescribeBackupGatewayListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -77,6 +83,7 @@ class DescribeBackupGatewayListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -89,6 +96,7 @@ class DescribeBackupGatewayListRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)

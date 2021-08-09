@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of RevokeClusterToken
  *
  * @method string getToken()
  */
 class RevokeClusterTokenRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

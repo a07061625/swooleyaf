@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetDBListFromAgent
+ *
  * @method string getSourceEndpointRegion()
  * @method string getBackupGatewayId()
  * @method string getClientToken()
@@ -28,6 +30,7 @@ class GetDBListFromAgentRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointRegion
+     *
      * @return $this
      */
     public function setSourceEndpointRegion($sourceEndpointRegion)
@@ -40,6 +43,7 @@ class GetDBListFromAgentRequest extends RpcAcsRequest
 
     /**
      * @param string $backupGatewayId
+     *
      * @return $this
      */
     public function setBackupGatewayId($backupGatewayId)
@@ -52,6 +56,7 @@ class GetDBListFromAgentRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -64,6 +69,7 @@ class GetDBListFromAgentRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -76,6 +82,7 @@ class GetDBListFromAgentRequest extends RpcAcsRequest
 
     /**
      * @param string $taskId
+     *
      * @return $this
      */
     public function setTaskId($taskId)

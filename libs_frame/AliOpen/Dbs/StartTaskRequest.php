@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of StartTask
+ *
  * @method string getClientToken()
  * @method string getOwnerId()
  * @method string getTaskId()
@@ -26,6 +28,7 @@ class StartTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -38,6 +41,7 @@ class StartTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -50,6 +54,7 @@ class StartTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $taskId
+     *
      * @return $this
      */
     public function setTaskId($taskId)

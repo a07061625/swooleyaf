@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cvc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListUsers
  *
  * @method string getPageSize()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListUsersRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

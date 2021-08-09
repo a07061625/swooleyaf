@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CusAnalyticScOnline;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetSupportStore
- *
  */
 class GetSupportStoreRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

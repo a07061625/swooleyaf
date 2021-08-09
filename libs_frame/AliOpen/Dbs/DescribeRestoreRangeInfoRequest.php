@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeRestoreRangeInfo
+ *
  * @method string getBeginTimestampForRestore()
  * @method string getEndTimestampForRestore()
  * @method string getClientToken()
@@ -29,6 +31,7 @@ class DescribeRestoreRangeInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $beginTimestampForRestore
+     *
      * @return $this
      */
     public function setBeginTimestampForRestore($beginTimestampForRestore)
@@ -41,6 +44,7 @@ class DescribeRestoreRangeInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $endTimestampForRestore
+     *
      * @return $this
      */
     public function setEndTimestampForRestore($endTimestampForRestore)
@@ -53,6 +57,7 @@ class DescribeRestoreRangeInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -65,6 +70,7 @@ class DescribeRestoreRangeInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanId
+     *
      * @return $this
      */
     public function setBackupPlanId($backupPlanId)
@@ -77,6 +83,7 @@ class DescribeRestoreRangeInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,6 +96,7 @@ class DescribeRestoreRangeInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $recentlyRestore
+     *
      * @return $this
      */
     public function setRecentlyRestore($recentlyRestore)

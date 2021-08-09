@@ -17,24 +17,25 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class FindApprovalOrderListRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("CSB", "2017-11-18", "FindApprovalOrderList");
-        $this->setProtocol("https");
-    }
-
     private $projectName;
     private $alias;
     private $serviceName;
     private $pageNum;
     private $serviceId;
     private $onlyPending;
+
+    public function __construct()
+    {
+        parent::__construct('CSB', '2017-11-18', 'FindApprovalOrderList');
+        $this->setProtocol('https');
+    }
 
     public function getProjectName()
     {
@@ -44,7 +45,7 @@ class FindApprovalOrderListRequest extends RpcAcsRequest
     public function setProjectName($projectName)
     {
         $this->projectName = $projectName;
-        $this->queryParameters["ProjectName"] = $projectName;
+        $this->queryParameters['ProjectName'] = $projectName;
     }
 
     public function getAlias()
@@ -55,7 +56,7 @@ class FindApprovalOrderListRequest extends RpcAcsRequest
     public function setAlias($alias)
     {
         $this->alias = $alias;
-        $this->queryParameters["Alias"] = $alias;
+        $this->queryParameters['Alias'] = $alias;
     }
 
     public function getServiceName()
@@ -66,7 +67,7 @@ class FindApprovalOrderListRequest extends RpcAcsRequest
     public function setServiceName($serviceName)
     {
         $this->serviceName = $serviceName;
-        $this->queryParameters["ServiceName"] = $serviceName;
+        $this->queryParameters['ServiceName'] = $serviceName;
     }
 
     public function getPageNum()
@@ -77,7 +78,7 @@ class FindApprovalOrderListRequest extends RpcAcsRequest
     public function setPageNum($pageNum)
     {
         $this->pageNum = $pageNum;
-        $this->queryParameters["PageNum"] = $pageNum;
+        $this->queryParameters['PageNum'] = $pageNum;
     }
 
     public function getServiceId()
@@ -88,7 +89,7 @@ class FindApprovalOrderListRequest extends RpcAcsRequest
     public function setServiceId($serviceId)
     {
         $this->serviceId = $serviceId;
-        $this->queryParameters["ServiceId"] = $serviceId;
+        $this->queryParameters['ServiceId'] = $serviceId;
     }
 
     public function getOnlyPending()
@@ -99,6 +100,6 @@ class FindApprovalOrderListRequest extends RpcAcsRequest
     public function setOnlyPending($onlyPending)
     {
         $this->onlyPending = $onlyPending;
-        $this->queryParameters["OnlyPending"] = $onlyPending;
+        $this->queryParameters['OnlyPending'] = $onlyPending;
     }
 }

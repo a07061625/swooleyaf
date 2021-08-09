@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of CreateTriggerHook
- *
  */
 class CreateTriggerHookRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

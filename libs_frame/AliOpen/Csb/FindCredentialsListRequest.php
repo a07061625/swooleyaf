@@ -17,21 +17,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class FindCredentialsListRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("CSB", "2017-11-18", "FindCredentialsList");
-        $this->setProtocol("https");
-    }
-
     private $csbId;
     private $pageNum;
     private $groupName;
+
+    public function __construct()
+    {
+        parent::__construct('CSB', '2017-11-18', 'FindCredentialsList');
+        $this->setProtocol('https');
+    }
 
     public function getCsbId()
     {
@@ -41,7 +42,7 @@ class FindCredentialsListRequest extends RpcAcsRequest
     public function setCsbId($csbId)
     {
         $this->csbId = $csbId;
-        $this->queryParameters["CsbId"] = $csbId;
+        $this->queryParameters['CsbId'] = $csbId;
     }
 
     public function getPageNum()
@@ -52,7 +53,7 @@ class FindCredentialsListRequest extends RpcAcsRequest
     public function setPageNum($pageNum)
     {
         $this->pageNum = $pageNum;
-        $this->queryParameters["PageNum"] = $pageNum;
+        $this->queryParameters['PageNum'] = $pageNum;
     }
 
     public function getGroupName()
@@ -63,6 +64,6 @@ class FindCredentialsListRequest extends RpcAcsRequest
     public function setGroupName($groupName)
     {
         $this->groupName = $groupName;
-        $this->queryParameters["GroupName"] = $groupName;
+        $this->queryParameters['GroupName'] = $groupName;
     }
 }

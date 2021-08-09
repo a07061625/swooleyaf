@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CusAnalyticScOnline;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeActionData
  *
  * @method string getTsEnd()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeActionDataRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

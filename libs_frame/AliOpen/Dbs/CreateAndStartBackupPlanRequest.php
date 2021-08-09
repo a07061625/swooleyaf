@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateAndStartBackupPlan
+ *
  * @method string getDatabaseType()
  * @method string getBackupGatewayId()
  * @method string getSourceEndpointUserName()
@@ -64,6 +66,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $databaseType
+     *
      * @return $this
      */
     public function setDatabaseType($databaseType)
@@ -76,6 +79,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupGatewayId
+     *
      * @return $this
      */
     public function setBackupGatewayId($backupGatewayId)
@@ -88,6 +92,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointUserName
+     *
      * @return $this
      */
     public function setSourceEndpointUserName($sourceEndpointUserName)
@@ -100,6 +105,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $storageType
+     *
      * @return $this
      */
     public function setStorageType($storageType)
@@ -112,6 +118,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $databaseRegion
+     *
      * @return $this
      */
     public function setDatabaseRegion($databaseRegion)
@@ -124,6 +131,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupStartTime
+     *
      * @return $this
      */
     public function setBackupStartTime($backupStartTime)
@@ -136,6 +144,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointIP
+     *
      * @return $this
      */
     public function setSourceEndpointIP($sourceEndpointIP)
@@ -148,6 +157,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $crossRoleName
+     *
      * @return $this
      */
     public function setCrossRoleName($crossRoleName)
@@ -160,6 +170,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupStorageType
+     *
      * @return $this
      */
     public function setBackupStorageType($backupStorageType)
@@ -172,6 +183,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $duplicationArchivePeriod
+     *
      * @return $this
      */
     public function setDuplicationArchivePeriod($duplicationArchivePeriod)
@@ -184,6 +196,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -196,6 +209,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupLogIntervalSeconds
+     *
      * @return $this
      */
     public function setBackupLogIntervalSeconds($backupLogIntervalSeconds)
@@ -208,6 +222,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $fromApp
+     *
      * @return $this
      */
     public function setFromApp($fromApp)
@@ -220,6 +235,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointPassword
+     *
      * @return $this
      */
     public function setSourceEndpointPassword($sourceEndpointPassword)
@@ -232,6 +248,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -244,6 +261,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupMethod
+     *
      * @return $this
      */
     public function setBackupMethod($backupMethod)
@@ -256,6 +274,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupRetentionPeriod
+     *
      * @return $this
      */
     public function setBackupRetentionPeriod($backupRetentionPeriod)
@@ -268,6 +287,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPeriod
+     *
      * @return $this
      */
     public function setBackupPeriod($backupPeriod)
@@ -280,6 +300,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupSpeedLimit
+     *
      * @return $this
      */
     public function setBackupSpeedLimit($backupSpeedLimit)
@@ -292,6 +313,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointInstanceType
+     *
      * @return $this
      */
     public function setSourceEndpointInstanceType($sourceEndpointInstanceType)
@@ -304,6 +326,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanName
+     *
      * @return $this
      */
     public function setBackupPlanName($backupPlanName)
@@ -316,6 +339,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $oSSBucketName
+     *
      * @return $this
      */
     public function setOSSBucketName($oSSBucketName)
@@ -328,6 +352,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)
@@ -340,6 +365,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointRegion
+     *
      * @return $this
      */
     public function setSourceEndpointRegion($sourceEndpointRegion)
@@ -352,6 +378,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointInstanceID
+     *
      * @return $this
      */
     public function setSourceEndpointInstanceID($sourceEndpointInstanceID)
@@ -364,6 +391,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -376,6 +404,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanId
+     *
      * @return $this
      */
     public function setBackupPlanId($backupPlanId)
@@ -388,6 +417,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceClass
+     *
      * @return $this
      */
     public function setInstanceClass($instanceClass)
@@ -400,6 +430,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointDatabaseName
+     *
      * @return $this
      */
     public function setSourceEndpointDatabaseName($sourceEndpointDatabaseName)
@@ -412,6 +443,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $duplicationInfrequentAccessPeriod
+     *
      * @return $this
      */
     public function setDuplicationInfrequentAccessPeriod($duplicationInfrequentAccessPeriod)
@@ -424,6 +456,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -436,6 +469,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $enableBackupLog
+     *
      * @return $this
      */
     public function setEnableBackupLog($enableBackupLog)
@@ -448,6 +482,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $crossAliyunId
+     *
      * @return $this
      */
     public function setCrossAliyunId($crossAliyunId)
@@ -460,6 +495,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupObjects
+     *
      * @return $this
      */
     public function setBackupObjects($backupObjects)
@@ -472,6 +508,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupRateLimit
+     *
      * @return $this
      */
     public function setBackupRateLimit($backupRateLimit)
@@ -484,6 +521,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $usedTime
+     *
      * @return $this
      */
     public function setUsedTime($usedTime)
@@ -496,6 +534,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointPort
+     *
      * @return $this
      */
     public function setSourceEndpointPort($sourceEndpointPort)
@@ -508,6 +547,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $storageRegion
+     *
      * @return $this
      */
     public function setStorageRegion($storageRegion)
@@ -520,6 +560,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointOracleSID
+     *
      * @return $this
      */
     public function setSourceEndpointOracleSID($sourceEndpointOracleSID)
@@ -532,6 +573,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupStrategyType
+     *
      * @return $this
      */
     public function setBackupStrategyType($backupStrategyType)
@@ -544,6 +586,7 @@ class CreateAndStartBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)

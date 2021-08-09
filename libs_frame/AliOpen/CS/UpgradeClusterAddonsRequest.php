@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of UpgradeClusterAddons
  *
  * @method string getClusterId()
  */
 class UpgradeClusterAddonsRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

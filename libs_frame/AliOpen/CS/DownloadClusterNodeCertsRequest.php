@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of DownloadClusterNodeCerts
  *
  * @method string getNodeId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RoaAcsRequest;
  */
 class DownloadClusterNodeCertsRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

@@ -17,20 +17,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class FindProjectsNameListRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("CSB", "2017-11-18", "FindProjectsNameList");
-        $this->setProtocol("https");
-    }
-
     private $operationFlag;
     private $csbId;
+
+    public function __construct()
+    {
+        parent::__construct('CSB', '2017-11-18', 'FindProjectsNameList');
+        $this->setProtocol('https');
+    }
 
     public function getOperationFlag()
     {
@@ -40,7 +41,7 @@ class FindProjectsNameListRequest extends RpcAcsRequest
     public function setOperationFlag($operationFlag)
     {
         $this->operationFlag = $operationFlag;
-        $this->queryParameters["OperationFlag"] = $operationFlag;
+        $this->queryParameters['OperationFlag'] = $operationFlag;
     }
 
     public function getCsbId()
@@ -51,6 +52,6 @@ class FindProjectsNameListRequest extends RpcAcsRequest
     public function setCsbId($csbId)
     {
         $this->csbId = $csbId;
-        $this->queryParameters["CsbId"] = $csbId;
+        $this->queryParameters['CsbId'] = $csbId;
     }
 }

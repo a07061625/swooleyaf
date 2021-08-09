@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CusAnalyticScOnline;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetOverviewData
  *
  * @method string getDate()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetOverviewDataRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

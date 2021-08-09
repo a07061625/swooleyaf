@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of CreateClusterByResourcesGroup
  *
  * @method string getResourceGroupId()
  */
 class CreateClusterByResourcesGroupRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

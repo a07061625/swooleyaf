@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeJobErrorCode
+ *
  * @method string getClientToken()
  * @method string getLanguage()
  * @method string getOwnerId()
@@ -27,6 +29,7 @@ class DescribeJobErrorCodeRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -39,6 +42,7 @@ class DescribeJobErrorCodeRequest extends RpcAcsRequest
 
     /**
      * @param string $language
+     *
      * @return $this
      */
     public function setLanguage($language)
@@ -51,6 +55,7 @@ class DescribeJobErrorCodeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -63,6 +68,7 @@ class DescribeJobErrorCodeRequest extends RpcAcsRequest
 
     /**
      * @param string $taskId
+     *
      * @return $this
      */
     public function setTaskId($taskId)

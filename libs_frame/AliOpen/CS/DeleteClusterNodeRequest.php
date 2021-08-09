@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteClusterNode
  *
  * @method string getreleaseInstance()
@@ -15,7 +14,6 @@ use AliOpen\Core\RoaAcsRequest;
  */
 class DeleteClusterNodeRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

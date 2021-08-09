@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cvc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ActiveMeeting
  *
  * @method string getMeetingUUID()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ActiveMeetingRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

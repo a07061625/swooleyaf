@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyBackupSetDownloadRules
+ *
  * @method string getFullDataFormat()
  * @method string getBackupGatewayId()
  * @method string getClientToken()
@@ -33,6 +35,7 @@ class ModifyBackupSetDownloadRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $fullDataFormat
+     *
      * @return $this
      */
     public function setFullDataFormat($fullDataFormat)
@@ -45,6 +48,7 @@ class ModifyBackupSetDownloadRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $backupGatewayId
+     *
      * @return $this
      */
     public function setBackupGatewayId($backupGatewayId)
@@ -57,6 +61,7 @@ class ModifyBackupSetDownloadRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -69,6 +74,7 @@ class ModifyBackupSetDownloadRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $backupSetDownloadTargetType
+     *
      * @return $this
      */
     public function setBackupSetDownloadTargetType($backupSetDownloadTargetType)
@@ -81,6 +87,7 @@ class ModifyBackupSetDownloadRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanId
+     *
      * @return $this
      */
     public function setBackupPlanId($backupPlanId)
@@ -93,6 +100,7 @@ class ModifyBackupSetDownloadRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -105,6 +113,7 @@ class ModifyBackupSetDownloadRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $openAutoDownload
+     *
      * @return $this
      */
     public function setOpenAutoDownload($openAutoDownload)
@@ -117,6 +126,7 @@ class ModifyBackupSetDownloadRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $incrementDataFormat
+     *
      * @return $this
      */
     public function setIncrementDataFormat($incrementDataFormat)
@@ -129,6 +139,7 @@ class ModifyBackupSetDownloadRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $backupSetDownloadTargetTypeLocation
+     *
      * @return $this
      */
     public function setBackupSetDownloadTargetTypeLocation($backupSetDownloadTargetTypeLocation)
@@ -141,6 +152,7 @@ class ModifyBackupSetDownloadRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $backupSetDownloadDir
+     *
      * @return $this
      */
     public function setBackupSetDownloadDir($backupSetDownloadDir)

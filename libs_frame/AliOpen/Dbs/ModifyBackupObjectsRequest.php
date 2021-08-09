@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyBackupObjects
+ *
  * @method string getClientToken()
  * @method string getBackupPlanId()
  * @method string getBackupObjects()
@@ -27,6 +29,7 @@ class ModifyBackupObjectsRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -39,6 +42,7 @@ class ModifyBackupObjectsRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanId
+     *
      * @return $this
      */
     public function setBackupPlanId($backupPlanId)
@@ -51,6 +55,7 @@ class ModifyBackupObjectsRequest extends RpcAcsRequest
 
     /**
      * @param string $backupObjects
+     *
      * @return $this
      */
     public function setBackupObjects($backupObjects)
@@ -63,6 +68,7 @@ class ModifyBackupObjectsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

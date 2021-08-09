@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CusAnalyticScOnline;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetHeatMapData
  *
  * @method string getEMapName()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetHeatMapDataRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

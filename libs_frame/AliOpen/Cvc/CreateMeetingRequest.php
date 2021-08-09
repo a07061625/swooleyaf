@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cvc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateMeeting
  *
  * @method string getMeetingName()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateMeetingRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

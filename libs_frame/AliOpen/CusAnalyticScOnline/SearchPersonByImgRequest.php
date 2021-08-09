@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CusAnalyticScOnline;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SearchPersonByImg
  *
  * @method string getStoreId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SearchPersonByImgRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

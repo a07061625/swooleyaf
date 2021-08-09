@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeKubernetesVersionMetadata
  *
  * @method string getClusterType()
@@ -15,7 +14,6 @@ use AliOpen\Core\RoaAcsRequest;
  */
 class DescribeKubernetesVersionMetadataRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

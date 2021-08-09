@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyStorageStrategy
+ *
  * @method string getDuplicationArchivePeriod()
  * @method string getClientToken()
  * @method string getBackupPlanId()
@@ -29,6 +31,7 @@ class ModifyStorageStrategyRequest extends RpcAcsRequest
 
     /**
      * @param string $duplicationArchivePeriod
+     *
      * @return $this
      */
     public function setDuplicationArchivePeriod($duplicationArchivePeriod)
@@ -41,6 +44,7 @@ class ModifyStorageStrategyRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -53,6 +57,7 @@ class ModifyStorageStrategyRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanId
+     *
      * @return $this
      */
     public function setBackupPlanId($backupPlanId)
@@ -65,6 +70,7 @@ class ModifyStorageStrategyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -77,6 +83,7 @@ class ModifyStorageStrategyRequest extends RpcAcsRequest
 
     /**
      * @param string $backupRetentionPeriod
+     *
      * @return $this
      */
     public function setBackupRetentionPeriod($backupRetentionPeriod)
@@ -89,6 +96,7 @@ class ModifyStorageStrategyRequest extends RpcAcsRequest
 
     /**
      * @param string $duplicationInfrequentAccessPeriod
+     *
      * @return $this
      */
     public function setDuplicationInfrequentAccessPeriod($duplicationInfrequentAccessPeriod)

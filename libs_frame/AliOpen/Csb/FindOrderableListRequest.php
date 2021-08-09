@@ -17,23 +17,24 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class FindOrderableListRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("CSB", "2017-11-18", "FindOrderableList");
-        $this->setProtocol("https");
-    }
-
     private $projectName;
     private $csbId;
     private $alias;
     private $serviceName;
     private $pageNum;
+
+    public function __construct()
+    {
+        parent::__construct('CSB', '2017-11-18', 'FindOrderableList');
+        $this->setProtocol('https');
+    }
 
     public function getProjectName()
     {
@@ -43,7 +44,7 @@ class FindOrderableListRequest extends RpcAcsRequest
     public function setProjectName($projectName)
     {
         $this->projectName = $projectName;
-        $this->queryParameters["ProjectName"] = $projectName;
+        $this->queryParameters['ProjectName'] = $projectName;
     }
 
     public function getCsbId()
@@ -54,7 +55,7 @@ class FindOrderableListRequest extends RpcAcsRequest
     public function setCsbId($csbId)
     {
         $this->csbId = $csbId;
-        $this->queryParameters["CsbId"] = $csbId;
+        $this->queryParameters['CsbId'] = $csbId;
     }
 
     public function getAlias()
@@ -65,7 +66,7 @@ class FindOrderableListRequest extends RpcAcsRequest
     public function setAlias($alias)
     {
         $this->alias = $alias;
-        $this->queryParameters["Alias"] = $alias;
+        $this->queryParameters['Alias'] = $alias;
     }
 
     public function getServiceName()
@@ -76,7 +77,7 @@ class FindOrderableListRequest extends RpcAcsRequest
     public function setServiceName($serviceName)
     {
         $this->serviceName = $serviceName;
-        $this->queryParameters["ServiceName"] = $serviceName;
+        $this->queryParameters['ServiceName'] = $serviceName;
     }
 
     public function getPageNum()
@@ -87,6 +88,6 @@ class FindOrderableListRequest extends RpcAcsRequest
     public function setPageNum($pageNum)
     {
         $this->pageNum = $pageNum;
-        $this->queryParameters["PageNum"] = $pageNum;
+        $this->queryParameters['PageNum'] = $pageNum;
     }
 }

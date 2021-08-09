@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CusAnalyticScOnline;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetAnalyzePlaceData
  *
  * @method string getEndUVCount()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetAnalyzePlaceDataRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

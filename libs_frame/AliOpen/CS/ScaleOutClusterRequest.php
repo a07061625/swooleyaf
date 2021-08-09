@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of ScaleOutCluster
  *
  * @method string getClusterId()
  */
 class ScaleOutClusterRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

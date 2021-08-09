@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeClusterLogs
  *
  * @method string getClusterId()
  */
 class DescribeClusterLogsRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

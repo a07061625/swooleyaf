@@ -17,21 +17,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class DeleteProjectRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("CSB", "2017-11-18", "DeleteProject");
-        $this->setProtocol("https");
-        $this->setMethod("POST");
-    }
-
     private $csbId;
     private $projectId;
+
+    public function __construct()
+    {
+        parent::__construct('CSB', '2017-11-18', 'DeleteProject');
+        $this->setProtocol('https');
+        $this->setMethod('POST');
+    }
 
     public function getCsbId()
     {
@@ -41,7 +42,7 @@ class DeleteProjectRequest extends RpcAcsRequest
     public function setCsbId($csbId)
     {
         $this->csbId = $csbId;
-        $this->queryParameters["CsbId"] = $csbId;
+        $this->queryParameters['CsbId'] = $csbId;
     }
 
     public function getProjectId()
@@ -52,6 +53,6 @@ class DeleteProjectRequest extends RpcAcsRequest
     public function setProjectId($projectId)
     {
         $this->projectId = $projectId;
-        $this->queryParameters["ProjectId"] = $projectId;
+        $this->queryParameters['ProjectId'] = $projectId;
     }
 }

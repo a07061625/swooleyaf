@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\Cvc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListEvaluations
- *
  */
 class ListEvaluationsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

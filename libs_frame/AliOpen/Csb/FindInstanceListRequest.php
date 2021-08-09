@@ -17,21 +17,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class FindInstanceListRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("CSB", "2017-11-18", "FindInstanceList");
-    }
-
     private $searchTxt;
     private $csbId;
     private $pageNum;
     private $status;
+
+    public function __construct()
+    {
+        parent::__construct('CSB', '2017-11-18', 'FindInstanceList');
+    }
 
     public function getSearchTxt()
     {
@@ -41,7 +42,7 @@ class FindInstanceListRequest extends RpcAcsRequest
     public function setSearchTxt($searchTxt)
     {
         $this->searchTxt = $searchTxt;
-        $this->queryParameters["SearchTxt"] = $searchTxt;
+        $this->queryParameters['SearchTxt'] = $searchTxt;
     }
 
     public function getCsbId()
@@ -52,7 +53,7 @@ class FindInstanceListRequest extends RpcAcsRequest
     public function setCsbId($csbId)
     {
         $this->csbId = $csbId;
-        $this->queryParameters["CsbId"] = $csbId;
+        $this->queryParameters['CsbId'] = $csbId;
     }
 
     public function getPageNum()
@@ -63,7 +64,7 @@ class FindInstanceListRequest extends RpcAcsRequest
     public function setPageNum($pageNum)
     {
         $this->pageNum = $pageNum;
-        $this->queryParameters["PageNum"] = $pageNum;
+        $this->queryParameters['PageNum'] = $pageNum;
     }
 
     public function getStatus()
@@ -74,6 +75,6 @@ class FindInstanceListRequest extends RpcAcsRequest
     public function setStatus($status)
     {
         $this->status = $status;
-        $this->queryParameters["Status"] = $status;
+        $this->queryParameters['Status'] = $status;
     }
 }

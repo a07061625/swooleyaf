@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeBackupPlanList
+ *
  * @method string getClientToken()
  * @method string getBackupPlanId()
  * @method string getPageNum()
@@ -31,6 +33,7 @@ class DescribeBackupPlanListRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -43,6 +46,7 @@ class DescribeBackupPlanListRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanId
+     *
      * @return $this
      */
     public function setBackupPlanId($backupPlanId)
@@ -55,6 +59,7 @@ class DescribeBackupPlanListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -67,6 +72,7 @@ class DescribeBackupPlanListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -79,6 +85,7 @@ class DescribeBackupPlanListRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanStatus
+     *
      * @return $this
      */
     public function setBackupPlanStatus($backupPlanStatus)
@@ -91,6 +98,7 @@ class DescribeBackupPlanListRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanName
+     *
      * @return $this
      */
     public function setBackupPlanName($backupPlanName)
@@ -103,6 +111,7 @@ class DescribeBackupPlanListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -115,6 +124,7 @@ class DescribeBackupPlanListRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)

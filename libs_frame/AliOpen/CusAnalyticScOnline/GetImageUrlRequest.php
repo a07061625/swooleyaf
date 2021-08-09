@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CusAnalyticScOnline;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetImageUrl
  *
  * @method string getOriginUrls()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetImageUrlRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

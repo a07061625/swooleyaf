@@ -17,18 +17,19 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class GetInstanceRequest extends RpcAcsRequest
 {
+    private $csbId;
+
     public function __construct()
     {
-        parent::__construct("CSB", "2017-11-18", "GetInstance");
+        parent::__construct('CSB', '2017-11-18', 'GetInstance');
     }
-
-    private $csbId;
 
     public function getCsbId()
     {
@@ -38,6 +39,6 @@ class GetInstanceRequest extends RpcAcsRequest
     public function setCsbId($csbId)
     {
         $this->csbId = $csbId;
-        $this->queryParameters["CsbId"] = $csbId;
+        $this->queryParameters['CsbId'] = $csbId;
     }
 }

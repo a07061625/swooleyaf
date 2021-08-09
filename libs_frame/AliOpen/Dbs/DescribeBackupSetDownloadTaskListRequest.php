@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeBackupSetDownloadTaskList
+ *
  * @method string getClientToken()
  * @method string getBackupSetDownloadTaskId()
  * @method string getBackupPlanId()
@@ -29,6 +31,7 @@ class DescribeBackupSetDownloadTaskListRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -41,6 +44,7 @@ class DescribeBackupSetDownloadTaskListRequest extends RpcAcsRequest
 
     /**
      * @param string $backupSetDownloadTaskId
+     *
      * @return $this
      */
     public function setBackupSetDownloadTaskId($backupSetDownloadTaskId)
@@ -53,6 +57,7 @@ class DescribeBackupSetDownloadTaskListRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanId
+     *
      * @return $this
      */
     public function setBackupPlanId($backupPlanId)
@@ -65,6 +70,7 @@ class DescribeBackupSetDownloadTaskListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -77,6 +83,7 @@ class DescribeBackupSetDownloadTaskListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,6 +96,7 @@ class DescribeBackupSetDownloadTaskListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)

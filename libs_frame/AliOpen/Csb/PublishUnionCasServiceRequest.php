@@ -17,21 +17,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Csb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class PublishUnionCasServiceRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("CSB", "2017-11-18", "PublishUnionCasService");
-        $this->setProtocol("https");
-        $this->setMethod("POST");
-    }
-
     private $casCsbName;
     private $data;
+
+    public function __construct()
+    {
+        parent::__construct('CSB', '2017-11-18', 'PublishUnionCasService');
+        $this->setProtocol('https');
+        $this->setMethod('POST');
+    }
 
     public function getCasCsbName()
     {
@@ -41,7 +42,7 @@ class PublishUnionCasServiceRequest extends RpcAcsRequest
     public function setCasCsbName($casCsbName)
     {
         $this->casCsbName = $casCsbName;
-        $this->queryParameters["CasCsbName"] = $casCsbName;
+        $this->queryParameters['CasCsbName'] = $casCsbName;
     }
 
     public function getData()

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CusAnalyticScOnline;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListVisitors
  *
  * @method string getGender()
@@ -23,7 +22,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListVisitorsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

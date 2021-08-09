@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of PreCheckForCreateCluster
- *
  */
 class PreCheckForCreateClusterRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

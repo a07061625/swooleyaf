@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cvc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteMeeting
  *
  * @method string getMeetingUUID()
  */
 class DeleteMeetingRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cvc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateEvaluation
  *
  * @method string getCreateTime()
@@ -20,7 +19,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateEvaluationRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CusAnalyticScOnline;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetActionCursor
  *
  * @method string getStoreId()
  */
 class GetActionCursorRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

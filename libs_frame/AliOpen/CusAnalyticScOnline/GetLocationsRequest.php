@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CusAnalyticScOnline;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetLocations
  *
  * @method string getStoreId()
  */
 class GetLocationsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

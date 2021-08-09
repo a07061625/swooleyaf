@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cvc;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateUser
  *
  * @method string getCount()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateUserRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

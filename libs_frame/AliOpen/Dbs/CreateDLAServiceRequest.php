@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDLAService
+ *
  * @method string getClientToken()
  * @method string getAutoAdd()
  * @method string getBackupSetIds()
@@ -28,6 +30,7 @@ class CreateDLAServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -40,6 +43,7 @@ class CreateDLAServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $autoAdd
+     *
      * @return $this
      */
     public function setAutoAdd($autoAdd)
@@ -52,6 +56,7 @@ class CreateDLAServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $backupSetIds
+     *
      * @return $this
      */
     public function setBackupSetIds($backupSetIds)
@@ -64,6 +69,7 @@ class CreateDLAServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanId
+     *
      * @return $this
      */
     public function setBackupPlanId($backupPlanId)
@@ -76,6 +82,7 @@ class CreateDLAServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

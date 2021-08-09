@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeNodeCidrList
+ *
  * @method string getClientToken()
  * @method string getOwnerId()
  * @method string getRegion()
@@ -26,6 +28,7 @@ class DescribeNodeCidrListRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -38,6 +41,7 @@ class DescribeNodeCidrListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -50,6 +54,7 @@ class DescribeNodeCidrListRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)

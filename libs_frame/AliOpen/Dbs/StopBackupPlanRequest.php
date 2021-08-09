@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of StopBackupPlan
+ *
  * @method string getStopMethod()
  * @method string getClientToken()
  * @method string getBackupPlanId()
@@ -27,6 +29,7 @@ class StopBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $stopMethod
+     *
      * @return $this
      */
     public function setStopMethod($stopMethod)
@@ -39,6 +42,7 @@ class StopBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -51,6 +55,7 @@ class StopBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanId
+     *
      * @return $this
      */
     public function setBackupPlanId($backupPlanId)
@@ -63,6 +68,7 @@ class StopBackupPlanRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

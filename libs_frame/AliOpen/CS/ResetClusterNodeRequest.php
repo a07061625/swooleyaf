@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of ResetClusterNode
  *
  * @method string getInstanceId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RoaAcsRequest;
  */
 class ResetClusterNodeRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

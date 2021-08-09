@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of CheckAliyunCSServiceRole
- *
  */
 class CheckAliyunCSServiceRoleRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

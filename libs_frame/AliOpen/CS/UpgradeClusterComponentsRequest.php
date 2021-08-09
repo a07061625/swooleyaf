@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of UpgradeClusterComponents
  *
  * @method string getComponentId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RoaAcsRequest;
  */
 class UpgradeClusterComponentsRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

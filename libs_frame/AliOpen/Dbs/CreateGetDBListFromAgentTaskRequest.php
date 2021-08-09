@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateGetDBListFromAgentTask
+ *
  * @method string getSourceEndpointRegion()
  * @method string getBackupGatewayId()
  * @method string getDatabaseType()
@@ -30,6 +32,7 @@ class CreateGetDBListFromAgentTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointRegion
+     *
      * @return $this
      */
     public function setSourceEndpointRegion($sourceEndpointRegion)
@@ -42,6 +45,7 @@ class CreateGetDBListFromAgentTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $backupGatewayId
+     *
      * @return $this
      */
     public function setBackupGatewayId($backupGatewayId)
@@ -54,6 +58,7 @@ class CreateGetDBListFromAgentTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $databaseType
+     *
      * @return $this
      */
     public function setDatabaseType($databaseType)
@@ -66,6 +71,7 @@ class CreateGetDBListFromAgentTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -78,6 +84,7 @@ class CreateGetDBListFromAgentTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -90,6 +97,7 @@ class CreateGetDBListFromAgentTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointPort
+     *
      * @return $this
      */
     public function setSourceEndpointPort($sourceEndpointPort)
@@ -102,6 +110,7 @@ class CreateGetDBListFromAgentTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointIP
+     *
      * @return $this
      */
     public function setSourceEndpointIP($sourceEndpointIP)

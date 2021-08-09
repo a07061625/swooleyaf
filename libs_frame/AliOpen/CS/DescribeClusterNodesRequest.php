@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CS;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeClusterNodes
  *
  * @method string getpageSize()
@@ -14,7 +13,6 @@ use AliOpen\Core\RoaAcsRequest;
  */
 class DescribeClusterNodesRequest extends RoaAcsRequest
 {
-
     /**
      * @var string
      */

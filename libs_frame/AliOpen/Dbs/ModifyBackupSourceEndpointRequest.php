@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dbs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyBackupSourceEndpoint
+ *
  * @method string getSourceEndpointRegion()
  * @method string getBackupGatewayId()
  * @method string getSourceEndpointInstanceID()
@@ -39,6 +41,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointRegion
+     *
      * @return $this
      */
     public function setSourceEndpointRegion($sourceEndpointRegion)
@@ -51,6 +54,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $backupGatewayId
+     *
      * @return $this
      */
     public function setBackupGatewayId($backupGatewayId)
@@ -63,6 +67,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointInstanceID
+     *
      * @return $this
      */
     public function setSourceEndpointInstanceID($sourceEndpointInstanceID)
@@ -75,6 +80,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointUserName
+     *
      * @return $this
      */
     public function setSourceEndpointUserName($sourceEndpointUserName)
@@ -87,6 +93,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -99,6 +106,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPlanId
+     *
      * @return $this
      */
     public function setBackupPlanId($backupPlanId)
@@ -111,6 +119,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointDatabaseName
+     *
      * @return $this
      */
     public function setSourceEndpointDatabaseName($sourceEndpointDatabaseName)
@@ -123,6 +132,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointIP
+     *
      * @return $this
      */
     public function setSourceEndpointIP($sourceEndpointIP)
@@ -135,6 +145,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $crossRoleName
+     *
      * @return $this
      */
     public function setCrossRoleName($crossRoleName)
@@ -147,6 +158,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $crossAliyunId
+     *
      * @return $this
      */
     public function setCrossAliyunId($crossAliyunId)
@@ -159,6 +171,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointPassword
+     *
      * @return $this
      */
     public function setSourceEndpointPassword($sourceEndpointPassword)
@@ -171,6 +184,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $backupObjects
+     *
      * @return $this
      */
     public function setBackupObjects($backupObjects)
@@ -183,6 +197,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -195,6 +210,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointPort
+     *
      * @return $this
      */
     public function setSourceEndpointPort($sourceEndpointPort)
@@ -207,6 +223,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointInstanceType
+     *
      * @return $this
      */
     public function setSourceEndpointInstanceType($sourceEndpointInstanceType)
@@ -219,6 +236,7 @@ class ModifyBackupSourceEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceEndpointOracleSID
+     *
      * @return $this
      */
     public function setSourceEndpointOracleSID($sourceEndpointOracleSID)
