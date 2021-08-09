@@ -7,14 +7,7 @@ namespace SyObjectStorage\Oss\Model;
  */
 class LiveChannelConfig implements XmlConfig
 {
-    private $description;
-    private $status = "enabled";
-    private $type;
-    private $fragDuration = 5;
-    private $fragCount = 3;
-    private $playListName = "playlist.m3u8";
-
-    public function __construct($option = [])
+    public function __construct($option = array())
     {
         if (isset($option['description'])) {
             $this->description = $option['description'];
@@ -34,11 +27,6 @@ class LiveChannelConfig implements XmlConfig
         if (isset($option['playListName'])) {
             $this->playListName = $option['playListName'];
         }
-    }
-
-    public function __toString()
-    {
-        return $this->serializeToXml();
     }
 
     public function getDescription()
@@ -116,4 +104,16 @@ EOF;
 
         return $xml->asXML();
     }
+
+    public function __toString()
+    {
+        return $this->serializeToXml();
+    }
+    
+    private $description;
+    private $status = "enabled";
+    private $type;
+    private $fragDuration = 5;
+    private $fragCount = 3;
+    private $playListName = "playlist.m3u8";
 }

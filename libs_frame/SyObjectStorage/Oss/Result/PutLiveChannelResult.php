@@ -10,7 +10,6 @@ class PutLiveChannelResult extends Result
         $content = $this->rawResponse->body;
         $channel = new LiveChannelInfo();
         $channel->parseFromXml($content);
-
         return $channel;
     }
 }

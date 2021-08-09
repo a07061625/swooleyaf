@@ -8,17 +8,6 @@ namespace SyObjectStorage\Oss\Model;
  */
 class RefererConfig implements XmlConfig
 {
-    private $allowEmptyReferer = true;
-    private $refererList = [];
-
-    /**
-     * @return string
-     */
-    function __toString()
-    {
-        return $this->serializeToXml();
-    }
-
     /**
      * @param string $strXml
      * @return null
@@ -32,8 +21,7 @@ class RefererConfig implements XmlConfig
         if (!isset($xml->RefererList)) {
             return;
         }
-        $this->allowEmptyReferer =
-            (strval($xml->AllowEmptyReferer) === 'TRUE' || strval($xml->AllowEmptyReferer) === 'true') ? true : false;
+        $this->allowEmptyReferer = strval($xml->AllowEmptyReferer) === 'TRUE' || strval($xml->AllowEmptyReferer) === 'true';
 
         foreach ($xml->RefererList->Referer as $key => $refer) {
             $this->refererList[] = strval($refer);
@@ -58,6 +46,14 @@ class RefererConfig implements XmlConfig
         }
 
         return $xml->asXML();
+    }
+
+    /**
+     * @return string
+     */
+    function __toString()
+    {
+        return $this->serializeToXml();
     }
 
     /**
@@ -91,4 +87,7 @@ class RefererConfig implements XmlConfig
     {
         return $this->refererList;
     }
+
+    private $allowEmptyReferer = true;
+    private $refererList = [];
 }

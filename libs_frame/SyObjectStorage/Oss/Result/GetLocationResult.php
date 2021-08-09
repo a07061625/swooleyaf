@@ -13,7 +13,7 @@ class GetLocationResult extends Result
     /**
      * Parse data from response
      * @return string
-     * @throws \SyObjectStorage\Oss\Core\OssException
+     * @throws OssException
      */
     protected function parseDataFromResponse()
     {
@@ -21,8 +21,7 @@ class GetLocationResult extends Result
         if (empty($content)) {
             throw new OssException("body is null");
         }
-        $xml = simplexml_load_string($content);
 
-        return $xml;
+        return simplexml_load_string($content);
     }
 }

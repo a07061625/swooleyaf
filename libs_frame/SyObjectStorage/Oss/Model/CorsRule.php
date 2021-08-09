@@ -10,14 +10,9 @@ use SyObjectStorage\Oss\Core\OssException;
  */
 class CorsRule
 {
-    private $allowedHeaders = [];
-    private $allowedOrigins = [];
-    private $allowedMethods = [];
-    private $exposeHeaders = [];
-    private $maxAgeSeconds = null;
-
     /**
      * Add an allowedOrigin rule
+     *
      * @param string $allowedOrigin
      */
     public function addAllowedOrigin($allowedOrigin)
@@ -29,6 +24,7 @@ class CorsRule
 
     /**
      * Add an allowedMethod rule
+     *
      * @param string $allowedMethod
      */
     public function addAllowedMethod($allowedMethod)
@@ -40,6 +36,7 @@ class CorsRule
 
     /**
      * Add an allowedHeader rule
+     *
      * @param string $allowedHeader
      */
     public function addAllowedHeader($allowedHeader)
@@ -51,6 +48,7 @@ class CorsRule
 
     /**
      * Add an exposeHeader rule
+     *
      * @param string $exposeHeader
      */
     public function addExposeHeader($exposeHeader)
@@ -78,6 +76,7 @@ class CorsRule
 
     /**
      * Get the AllowedHeaders list
+     *
      * @return string[]
      */
     public function getAllowedHeaders()
@@ -87,6 +86,7 @@ class CorsRule
 
     /**
      * Get the AllowedOrigins list
+     *
      * @return string[]
      */
     public function getAllowedOrigins()
@@ -96,6 +96,7 @@ class CorsRule
 
     /**
      * Get the AllowedMethods list
+     *
      * @return string[]
      */
     public function getAllowedMethods()
@@ -105,6 +106,7 @@ class CorsRule
 
     /**
      * Get the ExposeHeaders list
+     *
      * @return string[]
      */
     public function getExposeHeaders()
@@ -114,8 +116,9 @@ class CorsRule
 
     /**
      * Serialize all the rules into the xml represented by parameter $xmlRule
+     *
      * @param \SimpleXMLElement $xmlRule
-     * @throws \SyObjectStorage\Oss\Core\OssException
+     * @throws OssException
      */
     public function appendToXml(&$xmlRule)
     {
@@ -136,4 +139,10 @@ class CorsRule
         }
         $xmlRule->addChild(CorsConfig::OSS_CORS_MAX_AGE_SECONDS, strval($this->maxAgeSeconds));
     }
+
+    private $allowedHeaders = array();
+    private $allowedOrigins = array();
+    private $allowedMethods = array();
+    private $exposeHeaders = array();
+    private $maxAgeSeconds = null;
 }

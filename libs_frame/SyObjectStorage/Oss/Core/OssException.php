@@ -3,18 +3,21 @@ namespace SyObjectStorage\Oss\Core;
 
 /**
  * Class OssException
+ *
  * This is the class that OSSClient is expected to thrown, which the caller needs to handle properly.
  * It has the OSS specific errors which is useful for troubleshooting.
+ *
  * @package SyObjectStorage\Oss\Core
  */
 class OssException extends \Exception
 {
-    private $details = [];
+    private $details = array();
 
     function __construct($details)
     {
         if (is_array($details)) {
-            $message = $details['code'] . ': ' . $details['message'] . ' RequestId: ' . $details['request-id'];
+            $message = $details['code'] . ': ' . $details['message']
+                     . ' RequestId: ' . $details['request-id'];
             parent::__construct($message);
             $this->details = $details;
         } else {

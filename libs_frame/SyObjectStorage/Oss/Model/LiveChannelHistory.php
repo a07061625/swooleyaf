@@ -1,8 +1,6 @@
 <?php
 namespace SyObjectStorage\Oss\Model;
 
-use SyObjectStorage\Oss\Core\OssException;
-
 /**
  * Class LiveChannelHistory
  * @package SyObjectStorage\Oss\Model
@@ -10,10 +8,6 @@ use SyObjectStorage\Oss\Core\OssException;
  */
 class LiveChannelHistory implements XmlConfig
 {
-    private $startTime;
-    private $endTime;
-    private $remoteAddr;
-
     public function __construct()
     {
     }
@@ -58,4 +52,8 @@ class LiveChannelHistory implements XmlConfig
     {
         throw new OssException("Not implemented.");
     }
+    
+    private $startTime;
+    private $endTime;
+    private $remoteAddr;
 }

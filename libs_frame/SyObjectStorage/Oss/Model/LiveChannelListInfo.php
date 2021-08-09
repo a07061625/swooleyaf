@@ -1,24 +1,16 @@
 <?php
 namespace SyObjectStorage\Oss\Model;
 
-use SyObjectStorage\Oss\Core\OssException;
-
 /**
  * Class LiveChannelListInfo
+ *
  * The data returned by ListBucketLiveChannels
+ *
  * @package SyObjectStorage\Oss\Model
  * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/GetBucket.html
  */
 class LiveChannelListInfo implements XmlConfig
 {
-    private $bucket = '';
-    private $prefix = '';
-    private $marker = '';
-    private $nextMarker = '';
-    private $maxKeys = 100;
-    private $isTruncated = 'false';
-    private $channelList = [];
-
     /**
      * @return string
      */
@@ -103,4 +95,12 @@ class LiveChannelListInfo implements XmlConfig
     {
         throw new OssException("Not implemented.");
     }
+    
+    private $bucket = '';
+    private $prefix = '';
+    private $marker = '';
+    private $nextMarker = '';
+    private $maxKeys = 100;
+    private $isTruncated = 'false';
+    private $channelList = array();
 }

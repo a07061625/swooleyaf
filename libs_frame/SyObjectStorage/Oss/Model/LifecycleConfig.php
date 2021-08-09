@@ -11,42 +11,25 @@ use SyObjectStorage\Oss\Core\OssException;
 class LifecycleConfig implements XmlConfig
 {
     /**
-     * @var LifecycleRule[]
-     */
-    private $rules;
-
-    /**
-     *  Serialize the object into xml string.
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->serializeToXml();
-    }
-
-    /**
      * Parse the xml into this object.
+     *
      * @param string $strXml
+     * @throws OssException
      * @return null
-     * @throws \SyObjectStorage\Oss\Core\OssException
      */
     public function parseFromXml($strXml)
     {
-        $this->rules = [];
+        $this->rules = array();
         $xml = simplexml_load_string($strXml);
-        if (!isset($xml->Rule)) {
-            return;
-        }
-        $this->rules = [];
+        if (!isset($xml->Rule)) return;
+        $this->rules = array();
         foreach ($xml->Rule as $rule) {
             $id = strval($rule->ID);
             $prefix = strval($rule->Prefix);
             $status = strval($rule->Status);
-            $actions = [];
+            $actions = array();
             foreach ($rule as $key => $value) {
-                if ($key === 'ID' || $key === 'Prefix' || $key === 'Status') {
-                    continue;
-                }
+                if ($key === 'ID' || $key === 'Prefix' || $key === 'Status') continue;
                 $action = $key;
                 $timeSpec = null;
                 $timeValue = null;
@@ -58,12 +41,13 @@ class LifecycleConfig implements XmlConfig
             }
             $this->rules[] = new LifecycleRule($id, $prefix, $status, $actions);
         }
-
         return;
     }
 
+
     /**
      * Serialize the object to xml
+     *
      * @return string
      */
     public function serializeToXml()
@@ -74,14 +58,15 @@ class LifecycleConfig implements XmlConfig
             $xmlRule = $xml->addChild('Rule');
             $rule->appendToXml($xmlRule);
         }
-
         return $xml->asXML();
     }
 
     /**
+     *
      * Add a LifecycleRule
+     *
      * @param LifecycleRule $lifecycleRule
-     * @throws \SyObjectStorage\Oss\Core\OssException
+     * @throws OssException
      */
     public function addRule($lifecycleRule)
     {
@@ -92,11 +77,29 @@ class LifecycleConfig implements XmlConfig
     }
 
     /**
+     *  Serialize the object into xml string.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->serializeToXml();
+    }
+
+    /**
      * Get all lifecycle rules.
+     *
      * @return LifecycleRule[]
      */
     public function getRules()
     {
         return $this->rules;
     }
+
+    /**
+     * @var LifecycleRule[]
+     */
+    private $rules;
 }
+
+

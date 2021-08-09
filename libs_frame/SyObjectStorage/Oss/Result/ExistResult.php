@@ -12,7 +12,7 @@ class ExistResult extends Result
      */
     protected function parseDataFromResponse()
     {
-        return intval($this->rawResponse->status) === 200 ? true : false;
+        return intval($this->rawResponse->status) === 200;
     }
 
     /**

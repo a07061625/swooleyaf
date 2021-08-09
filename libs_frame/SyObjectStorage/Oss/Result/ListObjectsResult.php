@@ -15,6 +15,7 @@ class ListObjectsResult extends Result
     /**
      * Parse the xml data returned by the ListObjects interface
      * return ObjectListInfo
+     * @throws \Exception
      */
     protected function parseDataFromResponse()
     {

@@ -13,7 +13,7 @@ class CallbackResult extends PutSetDeleteResult
         if ((int)(intval($status) / 100) == 2 && (int)(intval($status)) !== 203) {
             return true;
         }
-
         return false;
     }
+
 }

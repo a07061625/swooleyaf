@@ -13,7 +13,8 @@ class ListMultipartUploadResult extends Result
 {
     /**
      * Parse the return data from the ListMultipartUpload interface
-     * @return \SyObjectStorage\Oss\Model\ListMultipartUploadInfo
+     * @return ListMultipartUploadInfo
+     * @throws \SyObjectStorage\Oss\Core\OssException
      */
     protected function parseDataFromResponse()
     {
@@ -34,7 +35,7 @@ class ListMultipartUploadResult extends Result
         $prefix = OssUtil::decodeKey($prefix, $encodingType);
         $maxUploads = isset($xml->MaxUploads) ? intval($xml->MaxUploads) : 0;
         $isTruncated = isset($xml->IsTruncated) ? strval($xml->IsTruncated) : "";
-        $listUpload = [];
+        $listUpload = array();
 
         if (isset($xml->Upload)) {
             foreach ($xml->Upload as $upload) {
@@ -45,8 +46,8 @@ class ListMultipartUploadResult extends Result
                 $listUpload[] = new UploadInfo($key, $uploadId, $initiated);
             }
         }
-
-        return new ListMultipartUploadInfo($bucket, $keyMarker, $uploadIdMarker, $nextKeyMarker, $nextUploadIdMarker, $delimiter, $prefix,
-            $maxUploads, $isTruncated, $listUpload);
+        return new ListMultipartUploadInfo($bucket, $keyMarker, $uploadIdMarker,
+            $nextKeyMarker, $nextUploadIdMarker,
+            $delimiter, $prefix, $maxUploads, $isTruncated, $listUpload);
     }
 }

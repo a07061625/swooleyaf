@@ -8,13 +8,6 @@ namespace SyObjectStorage\Oss\Model;
  */
 class ListPartsInfo
 {
-    private $bucket = "";
-    private $key = "";
-    private $uploadId = "";
-    private $nextPartNumberMarker = 0;
-    private $maxParts = 0;
-    private $isTruncated = "";
-    private $listPart = [];
 
     /**
      * ListPartsInfo constructor.
@@ -92,4 +85,12 @@ class ListPartsInfo
     {
         return $this->listPart;
     }
+
+    private $bucket = "";
+    private $key = "";
+    private $uploadId = "";
+    private $nextPartNumberMarker = 0;
+    private $maxParts = 0;
+    private $isTruncated = "";
+    private $listPart = array();
 }

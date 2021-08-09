@@ -8,7 +8,7 @@ namespace SyObjectStorage\Oss\Result;
 class DeleteObjectsResult extends Result
 {
     /**
-     * @return array
+     * @return array()
      */
     protected function parseDataFromResponse()
     {

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AuthenticateSig
+ *
  * @method string getSig()
  * @method string getRemoteIp()
  * @method string getSourceIp()
@@ -30,6 +32,7 @@ class SigAuthenticateRequest extends RpcAcsRequest
 
     /**
      * @param string $sig
+     *
      * @return $this
      */
     public function setSig($sig)
@@ -42,6 +45,7 @@ class SigAuthenticateRequest extends RpcAcsRequest
 
     /**
      * @param string $remoteIp
+     *
      * @return $this
      */
     public function setRemoteIp($remoteIp)
@@ -54,6 +58,7 @@ class SigAuthenticateRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -66,6 +71,7 @@ class SigAuthenticateRequest extends RpcAcsRequest
 
     /**
      * @param string $appKey
+     *
      * @return $this
      */
     public function setAppKey($appKey)
@@ -78,6 +84,7 @@ class SigAuthenticateRequest extends RpcAcsRequest
 
     /**
      * @param string $sessionId
+     *
      * @return $this
      */
     public function setSessionId($sessionId)
@@ -90,6 +97,7 @@ class SigAuthenticateRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function setToken($token)
@@ -102,6 +110,7 @@ class SigAuthenticateRequest extends RpcAcsRequest
 
     /**
      * @param string $scene
+     *
      * @return $this
      */
     public function setScene($scene)

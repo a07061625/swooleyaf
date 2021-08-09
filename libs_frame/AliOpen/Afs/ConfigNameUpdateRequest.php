@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateConfigName
+ *
  * @method string getSourceIp()
  * @method string getConfigName()
  * @method string getRefExtId()
@@ -27,6 +29,7 @@ class ConfigNameUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -39,6 +42,7 @@ class ConfigNameUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $configName
+     *
      * @return $this
      */
     public function setConfigName($configName)
@@ -51,6 +55,7 @@ class ConfigNameUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $refExtId
+     *
      * @return $this
      */
     public function setRefExtId($refExtId)
@@ -63,6 +68,7 @@ class ConfigNameUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

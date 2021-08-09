@@ -8,10 +8,6 @@ namespace SyObjectStorage\Oss\Model;
  */
 class LifecycleAction
 {
-    private $action;
-    private $timeSpec;
-    private $timeValue;
-
     /**
      * LifecycleAction constructor.
      * @param string $action
@@ -75,6 +71,7 @@ class LifecycleAction
 
     /**
      * Use appendToXml to insert actions into xml.
+     *
      * @param \SimpleXMLElement $xmlRule
      */
     public function appendToXml(&$xmlRule)
@@ -82,4 +79,9 @@ class LifecycleAction
         $xmlAction = $xmlRule->addChild($this->action);
         $xmlAction->addChild($this->timeSpec, $this->timeValue);
     }
+
+    private $action;
+    private $timeSpec;
+    private $timeValue;
+
 }

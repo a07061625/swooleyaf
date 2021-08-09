@@ -11,6 +11,7 @@ class InitiateMultipartUploadResult extends Result
 {
     /**
      * Get uploadId in result and return
+     *
      * @throws OssException
      * @return string
      */

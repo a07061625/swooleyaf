@@ -9,8 +9,6 @@ use SyObjectStorage\Oss\Core\OssException;
  */
 class GetLiveChannelHistory implements XmlConfig
 {
-    private $liveRecordList = [];
-
     public function getLiveRecordList()
     {
         return $this->liveRecordList;
@@ -33,4 +31,6 @@ class GetLiveChannelHistory implements XmlConfig
     {
         throw new OssException("Not implemented.");
     }
+
+    private $liveRecordList = [];
 }

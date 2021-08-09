@@ -7,13 +7,9 @@ namespace SyObjectStorage\Oss\Model;
  */
 class PartInfo
 {
-    private $partNumber = 0;
-    private $lastModified = "";
-    private $eTag = "";
-    private $size = 0;
-
     /**
      * PartInfo constructor.
+     *
      * @param int $partNumber
      * @param string $lastModified
      * @param string $eTag
@@ -58,4 +54,9 @@ class PartInfo
     {
         return $this->size;
     }
+
+    private $partNumber = 0;
+    private $lastModified = "";
+    private $eTag = "";
+    private $size = 0;
 }

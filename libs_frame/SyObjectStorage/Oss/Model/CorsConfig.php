@@ -6,37 +6,22 @@ use SyObjectStorage\Oss\Core\OssException;
 /**
  * Class CorsConfig
  * @package SyObjectStorage\Oss\Model
+ *
  * @link http://help.aliyun.com/document_detail/oss/api-reference/cors/PutBucketcors.html
  */
 class CorsConfig implements XmlConfig
 {
-    const OSS_CORS_ALLOWED_ORIGIN = 'AllowedOrigin';
-    const OSS_CORS_ALLOWED_METHOD = 'AllowedMethod';
-    const OSS_CORS_ALLOWED_HEADER = 'AllowedHeader';
-    const OSS_CORS_EXPOSE_HEADER = 'ExposeHeader';
-    const OSS_CORS_MAX_AGE_SECONDS = 'MaxAgeSeconds';
-    const OSS_MAX_RULES = 10;
-    /**
-     * CorsRule list
-     * @var CorsRule[]
-     */
-    private $rules = [];
-
     /**
      * CorsConfig constructor.
      */
     public function __construct()
     {
-        $this->rules = [];
-    }
-
-    public function __toString()
-    {
-        return $this->serializeToXml();
+        $this->rules = array();
     }
 
     /**
      * Get CorsRule list
+     *
      * @return CorsRule[]
      */
     public function getRules()
@@ -44,10 +29,12 @@ class CorsConfig implements XmlConfig
         return $this->rules;
     }
 
+
     /**
      * Add a new CorsRule
+     *
      * @param CorsRule $rule
-     * @throws \SyObjectStorage\Oss\Core\OssException
+     * @throws OssException
      */
     public function addRule($rule)
     {
@@ -59,16 +46,15 @@ class CorsConfig implements XmlConfig
 
     /**
      * Parse CorsConfig from the xml.
+     *
      * @param string $strXml
+     * @throws OssException
      * @return null
-     * @throws \SyObjectStorage\Oss\Core\OssException
      */
     public function parseFromXml($strXml)
     {
         $xml = simplexml_load_string($strXml);
-        if (!isset($xml->CORSRule)) {
-            return;
-        }
+        if (!isset($xml->CORSRule)) return;
         foreach ($xml->CORSRule as $rule) {
             $corsRule = new CorsRule();
             foreach ($rule as $key => $value) {
@@ -86,12 +72,12 @@ class CorsConfig implements XmlConfig
             }
             $this->addRule($corsRule);
         }
-
         return;
     }
 
     /**
      * Serialize the object into xml string.
+     *
      * @return string
      */
     public function serializeToXml()
@@ -101,7 +87,25 @@ class CorsConfig implements XmlConfig
             $xmlRule = $xml->addChild('CORSRule');
             $rule->appendToXml($xmlRule);
         }
-
         return $xml->asXML();
     }
+
+    public function __toString()
+    {
+        return $this->serializeToXml();
+    }
+
+    const OSS_CORS_ALLOWED_ORIGIN = 'AllowedOrigin';
+    const OSS_CORS_ALLOWED_METHOD = 'AllowedMethod';
+    const OSS_CORS_ALLOWED_HEADER = 'AllowedHeader';
+    const OSS_CORS_EXPOSE_HEADER = 'ExposeHeader';
+    const OSS_CORS_MAX_AGE_SECONDS = 'MaxAgeSeconds';
+    const OSS_MAX_RULES = 10;
+
+    /**
+     * CorsRule list
+     *
+     * @var CorsRule[]
+     */
+    private $rules = array();
 }

@@ -8,12 +8,11 @@ namespace SyObjectStorage\Oss\Result;
 class PutSetDeleteResult extends Result
 {
     /**
-     * @return array
+     * @return array()
      */
     protected function parseDataFromResponse()
     {
-        $body = ['body' => $this->rawResponse->body];
-
+        $body = array('body' => $this->rawResponse->body);
         return array_merge($this->rawResponse->header, $body);
     }
 }

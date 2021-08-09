@@ -1,27 +1,19 @@
 <?php
 namespace SyObjectStorage\Oss\Model;
 
-use SyObjectStorage\Oss\Core\OssException;
-
 /**
  * Class LiveChannelInfo
  * @package SyObjectStorage\Oss\Model
+ *
  */
 class LiveChannelInfo implements XmlConfig
 {
-    private $name;
-    private $description;
-    private $publishUrls;
-    private $playUrls;
-    private $status;
-    private $lastModified;
-
     public function __construct($name = null, $description = null)
     {
         $this->name = $name;
         $this->description = $description;
-        $this->publishUrls = [];
-        $this->playUrls = [];
+        $this->publishUrls = array();
+        $this->playUrls = array();
     }
 
     public function getName()
@@ -105,4 +97,11 @@ class LiveChannelInfo implements XmlConfig
     {
         throw new OssException("Not implemented.");
     }
+    
+    private $name;
+    private $description;
+    private $publishUrls;
+    private $playUrls;
+    private $status;
+    private $lastModified;
 }

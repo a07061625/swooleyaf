@@ -6,19 +6,20 @@ use SyObjectStorage\Oss\Model\CorsConfig;
 class GetCorsResult extends Result
 {
     /**
-     * @return \SyObjectStorage\Oss\Model\CorsConfig
+     * @return CorsConfig
+     * @throws \SyObjectStorage\Oss\Core\OssException
      */
     protected function parseDataFromResponse()
     {
         $content = $this->rawResponse->body;
         $config = new CorsConfig();
         $config->parseFromXml($content);
-
         return $config;
     }
 
     /**
      * Check if the response is OK, according to the http status. [200-299]:OK, the Cors config could be got; [404]: not found--no Cors config.
+     *
      * @return bool
      */
     protected function isResponseOk()
@@ -27,7 +28,6 @@ class GetCorsResult extends Result
         if ((int)(intval($status) / 100) == 2 || (int)(intval($status)) === 404) {
             return true;
         }
-
         return false;
     }
 }

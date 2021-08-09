@@ -9,6 +9,7 @@ interface XmlConfig
 {
     /**
      * Interface method: Parse the object from the xml.
+     *
      * @param string $strXml
      * @return null
      */
@@ -16,6 +17,7 @@ interface XmlConfig
 
     /**
      * Interface method: Serialize the object into xml.
+     *
      * @return string
      */
     public function serializeToXml();

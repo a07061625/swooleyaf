@@ -5,13 +5,14 @@ use SyObjectStorage\Oss\Core\OssException;
 
 /**
  * The type of the return value of getBucketAcl, it wraps the data parsed from xml.
+ *
  * @package SyObjectStorage\Oss\Result
  */
 class AclResult extends Result
 {
     /**
      * @return string
-     * @throws \SyObjectStorage\Oss\Core\OssException
+     * @throws OssException
      */
     protected function parseDataFromResponse()
     {

@@ -12,19 +12,20 @@ class GetLifecycleResult extends Result
     /**
      * Parse the LifecycleConfig object from the response
      * @return LifecycleConfig
+     * @throws \SyObjectStorage\Oss\Core\OssException
      */
     protected function parseDataFromResponse()
     {
         $content = $this->rawResponse->body;
         $config = new LifecycleConfig();
         $config->parseFromXml($content);
-
         return $config;
     }
 
     /**
      * Check if the response is OK according to the http status.
      * [200-299]: OK, and the LifecycleConfig could be got; [404] The Life cycle config is not found.
+     *
      * @return bool
      */
     protected function isResponseOk()
@@ -33,7 +34,6 @@ class GetLifecycleResult extends Result
         if ((int)(intval($status) / 100) == 2 || (int)(intval($status)) === 404) {
             return true;
         }
-
         return false;
     }
 }

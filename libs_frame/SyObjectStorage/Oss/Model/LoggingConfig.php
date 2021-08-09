@@ -8,9 +8,6 @@ namespace SyObjectStorage\Oss\Model;
  */
 class LoggingConfig implements XmlConfig
 {
-    private $targetBucket = "";
-    private $targetPrefix = "";
-
     /**
      * LoggingConfig constructor.
      * @param null $targetBucket
@@ -23,23 +20,13 @@ class LoggingConfig implements XmlConfig
     }
 
     /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->serializeToXml();
-    }
-
-    /**
      * @param $strXml
      * @return null
      */
     public function parseFromXml($strXml)
     {
         $xml = simplexml_load_string($strXml);
-        if (!isset($xml->LoggingEnabled)) {
-            return;
-        }
+        if (!isset($xml->LoggingEnabled)) return;
         foreach ($xml->LoggingEnabled as $status) {
             foreach ($status as $key => $value) {
                 if ($key === 'TargetBucket') {
@@ -54,6 +41,7 @@ class LoggingConfig implements XmlConfig
 
     /**
      *  Serialize to xml string
+     *
      */
     public function serializeToXml()
     {
@@ -63,8 +51,15 @@ class LoggingConfig implements XmlConfig
             $loggingEnabled->addChild('TargetBucket', $this->targetBucket);
             $loggingEnabled->addChild('TargetPrefix', $this->targetPrefix);
         }
-
         return $xml->asXML();
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->serializeToXml();
     }
 
     /**
@@ -82,4 +77,8 @@ class LoggingConfig implements XmlConfig
     {
         return $this->targetPrefix;
     }
+
+    private $targetBucket = "";
+    private $targetPrefix = "";
+
 }

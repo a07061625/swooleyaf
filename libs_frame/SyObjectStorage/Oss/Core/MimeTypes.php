@@ -3,14 +3,17 @@ namespace SyObjectStorage\Oss\Core;
 
 /**
  * Class MimeTypes
+ *
  * The map of a file's extention name to its corresponding Content-Type value in the file upload request.
  * If the file extention name is not predefined in this class, getMimetype() returns null.
+ *
  * @package SyObjectStorage\Oss\Core
  */
 class MimeTypes
 {
     /**
      * Get the content-type value of http header from the file's extension name.
+     *
      * @param string $name Default file extension name.
      * @return string content-type
      */
@@ -27,7 +30,7 @@ class MimeTypes
         return null;
     }
 
-    private static $mime_types = [
+    private static $mime_types = array(
         'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         'xltx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.template',
         'potx' => 'application/vnd.openxmlformats-officedocument.presentationml.template',
@@ -255,5 +258,5 @@ class MimeTypes
         'xsl' => 'application/xml',
         'xslt' => 'application/xslt+xml',
         'xul' => 'application/vnd.mozilla.xul+xml',
-    ];
+    );
 }

@@ -8,14 +8,14 @@ namespace SyObjectStorage\Oss\Result;
 class CopyObjectResult extends Result
 {
     /**
-     * @return array
+     * @return array()
      */
     protected function parseDataFromResponse()
     {
         $body = $this->rawResponse->body;
-        $xml = simplexml_load_string($body);
-        $result = [];
-
+        $xml = simplexml_load_string($body); 
+        $result = array();
+        
         if (isset($xml->LastModified)) {
             $result[] = $xml->LastModified;
         }
@@ -23,6 +23,6 @@ class CopyObjectResult extends Result
             $result[] = $xml->ETag;
         }
 
-        return $result;
+        return array_merge($result, $this->rawResponse->header);
     }
 }

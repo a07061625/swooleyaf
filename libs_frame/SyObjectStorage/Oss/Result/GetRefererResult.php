@@ -11,6 +11,7 @@ class GetRefererResult extends Result
 {
     /**
      * Parse RefererConfig data
+     *
      * @return RefererConfig
      */
     protected function parseDataFromResponse()
@@ -18,13 +19,13 @@ class GetRefererResult extends Result
         $content = $this->rawResponse->body;
         $config = new RefererConfig();
         $config->parseFromXml($content);
-
         return $config;
     }
 
     /**
      * Judged according to the return HTTP status code, [200-299] that is OK, get the bucket configuration interface,
      * 404 is also considered a valid response
+     *
      * @return bool
      */
     protected function isResponseOk()
@@ -33,7 +34,6 @@ class GetRefererResult extends Result
         if ((int)(intval($status) / 100) == 2 || (int)(intval($status)) === 404) {
             return true;
         }
-
         return false;
     }
 }

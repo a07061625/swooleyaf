@@ -10,9 +10,6 @@ use SyObjectStorage\Oss\Core\OssException;
  */
 class WebsiteConfig implements XmlConfig
 {
-    private $indexDocument = "";
-    private $errorDocument = "";
-
     /**
      * WebsiteConfig constructor.
      * @param  string $indexDocument
@@ -41,6 +38,7 @@ class WebsiteConfig implements XmlConfig
 
     /**
      * Serialize the WebsiteConfig object into xml string.
+     *
      * @return string
      * @throws OssException
      */
@@ -51,7 +49,6 @@ class WebsiteConfig implements XmlConfig
         $error_document_part = $xml->addChild('ErrorDocument');
         $index_document_part->addChild('Suffix', $this->indexDocument);
         $error_document_part->addChild('Key', $this->errorDocument);
-
         return $xml->asXML();
     }
 
@@ -70,4 +67,7 @@ class WebsiteConfig implements XmlConfig
     {
         return $this->errorDocument;
     }
+
+    private $indexDocument = "";
+    private $errorDocument = "";
 }

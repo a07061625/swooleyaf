@@ -12,7 +12,7 @@ class UploadPartResult extends Result
     /**
      * 结果中part的ETag
      * @return string
-     * @throws \SyObjectStorage\Oss\Core\OssException
+     * @throws OssException
      */
     protected function parseDataFromResponse()
     {

@@ -7,27 +7,13 @@ use SyObjectStorage\Oss\Http\ResponseCore;
 /**
  * Class Result, The result class of The operation of the base class, different requests in dealing with the return of data have different logic,
  * The specific parsing logic postponed to subclass implementation
- * @package SyObjectStorage\Oss\Model
+ * @package SyObjectStorage\Oss\Result
  */
 abstract class Result
 {
     /**
-     * Indicate whether the request is successful
-     */
-    protected $isOk = false;
-    /**
-     * Data parsed by subclasses
-     */
-    protected $parsedData = null;
-    /**
-     * Store the original Response returned by the auth function
-     * @var ResponseCore
-     */
-    protected $rawResponse;
-
-    /**
      * Result constructor.
-     * @param $response \SyObjectStorage\Oss\Http\ResponseCore
+     * @param $response ResponseCore
      * @throws OssException
      */
     public function __construct($response)
@@ -156,10 +142,24 @@ abstract class Result
 
     /**
      * Return the original return data
-     * @return \SyObjectStorage\Oss\Http\ResponseCore
+     * @return ResponseCore
      */
     public function getRawResponse()
     {
         return $this->rawResponse;
     }
+
+    /**
+     * Indicate whether the request is successful
+     */
+    protected $isOk = false;
+    /**
+     * Data parsed by subclasses
+     */
+    protected $parsedData = null;
+    /**
+     * Store the original Response returned by the auth function
+     * @var ResponseCore
+     */
+    protected $rawResponse;
 }

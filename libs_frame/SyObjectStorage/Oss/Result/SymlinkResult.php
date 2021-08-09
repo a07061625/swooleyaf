@@ -1,7 +1,6 @@
 <?php
 namespace SyObjectStorage\Oss\Result;
 
-use SyObjectStorage\Oss\Core\OssException;
 use SyObjectStorage\Oss\OssClient;
 
 /**
@@ -11,7 +10,6 @@ class SymlinkResult extends Result
 {
     /**
      * @return string
-     * @throws \SyObjectStorage\Oss\Core\OssException
      */
     protected function parseDataFromResponse()
     {

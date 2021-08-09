@@ -12,6 +12,7 @@ class ListPartsResult extends Result
 {
     /**
      * Parse the xml data returned by the ListParts interface
+     *
      * @return ListPartsInfo
      */
     protected function parseDataFromResponse()
@@ -24,7 +25,7 @@ class ListPartsResult extends Result
         $nextPartNumberMarker = isset($xml->NextPartNumberMarker) ? intval($xml->NextPartNumberMarker) : "";
         $maxParts = isset($xml->MaxParts) ? intval($xml->MaxParts) : "";
         $isTruncated = isset($xml->IsTruncated) ? strval($xml->IsTruncated) : "";
-        $partList = [];
+        $partList = array();
         if (isset($xml->Part)) {
             foreach ($xml->Part as $part) {
                 $partNumber = isset($part->PartNumber) ? intval($part->PartNumber) : "";
@@ -34,7 +35,6 @@ class ListPartsResult extends Result
                 $partList[] = new PartInfo($partNumber, $lastModified, $eTag, $size);
             }
         }
-
         return new ListPartsInfo($bucket, $key, $uploadId, $nextPartNumberMarker, $maxParts, $isTruncated, $partList);
     }
 }
