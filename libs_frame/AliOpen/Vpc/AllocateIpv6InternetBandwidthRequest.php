@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AllocateIpv6InternetBandwidth
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getBandwidth()
@@ -33,6 +34,7 @@ class AllocateIpv6InternetBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +47,7 @@ class AllocateIpv6InternetBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -57,6 +60,7 @@ class AllocateIpv6InternetBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -69,6 +73,7 @@ class AllocateIpv6InternetBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -81,6 +86,7 @@ class AllocateIpv6InternetBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -93,6 +99,7 @@ class AllocateIpv6InternetBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -105,6 +112,7 @@ class AllocateIpv6InternetBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6AddressId
+     *
      * @return $this
      */
     public function setIpv6AddressId($ipv6AddressId)
@@ -117,6 +125,7 @@ class AllocateIpv6InternetBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $internetChargeType
+     *
      * @return $this
      */
     public function setInternetChargeType($internetChargeType)
@@ -129,6 +138,7 @@ class AllocateIpv6InternetBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6GatewayId
+     *
      * @return $this
      */
     public function setIpv6GatewayId($ipv6GatewayId)

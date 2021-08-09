@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyBgpGroupAttribute
+ *
  * @method string getAuthKey()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -35,6 +36,7 @@ class ModifyBgpGroupAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $authKey
+     *
      * @return $this
      */
     public function setAuthKey($authKey)
@@ -47,6 +49,7 @@ class ModifyBgpGroupAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +62,7 @@ class ModifyBgpGroupAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -71,6 +75,7 @@ class ModifyBgpGroupAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -83,6 +88,7 @@ class ModifyBgpGroupAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -95,6 +101,7 @@ class ModifyBgpGroupAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $bgpGroupId
+     *
      * @return $this
      */
     public function setBgpGroupId($bgpGroupId)
@@ -107,6 +114,7 @@ class ModifyBgpGroupAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -119,6 +127,7 @@ class ModifyBgpGroupAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -131,6 +140,7 @@ class ModifyBgpGroupAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $peerAsn
+     *
      * @return $this
      */
     public function setPeerAsn($peerAsn)
@@ -143,6 +153,7 @@ class ModifyBgpGroupAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $isFakeAsn
+     *
      * @return $this
      */
     public function setIsFakeAsn($isFakeAsn)
@@ -155,6 +166,7 @@ class ModifyBgpGroupAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

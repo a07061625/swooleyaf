@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateIPv6TranslatorEntry
+ *
  * @method string getBackendIpv4Port()
  * @method string getAclId()
  * @method string getResourceOwnerId()
@@ -39,6 +40,7 @@ class CreateIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $backendIpv4Port
+     *
      * @return $this
      */
     public function setBackendIpv4Port($backendIpv4Port)
@@ -51,6 +53,7 @@ class CreateIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $aclId
+     *
      * @return $this
      */
     public function setAclId($aclId)
@@ -63,6 +66,7 @@ class CreateIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -75,6 +79,7 @@ class CreateIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -87,6 +92,7 @@ class CreateIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $entryName
+     *
      * @return $this
      */
     public function setEntryName($entryName)
@@ -99,6 +105,7 @@ class CreateIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -111,6 +118,7 @@ class CreateIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -123,6 +131,7 @@ class CreateIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $aclStatus
+     *
      * @return $this
      */
     public function setAclStatus($aclStatus)
@@ -135,6 +144,7 @@ class CreateIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $entryBandwidth
+     *
      * @return $this
      */
     public function setEntryBandwidth($entryBandwidth)
@@ -147,6 +157,7 @@ class CreateIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $aclType
+     *
      * @return $this
      */
     public function setAclType($aclType)
@@ -159,6 +170,7 @@ class CreateIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $allocateIpv6Port
+     *
      * @return $this
      */
     public function setAllocateIpv6Port($allocateIpv6Port)
@@ -171,6 +183,7 @@ class CreateIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $entryDescription
+     *
      * @return $this
      */
     public function setEntryDescription($entryDescription)
@@ -183,6 +196,7 @@ class CreateIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $backendIpv4Addr
+     *
      * @return $this
      */
     public function setBackendIpv4Addr($backendIpv4Addr)
@@ -195,6 +209,7 @@ class CreateIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $transProtocol
+     *
      * @return $this
      */
     public function setTransProtocol($transProtocol)
@@ -207,6 +222,7 @@ class CreateIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6TranslatorId
+     *
      * @return $this
      */
     public function setIpv6TranslatorId($ipv6TranslatorId)

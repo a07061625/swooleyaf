@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVirtualBorderRouters
+ *
  * @method array getFilters()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -29,7 +30,6 @@ class DescribeVirtualBorderRoutersRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $filters
      * @return $this
      */
     public function setFilters(array $filters)
@@ -47,6 +47,7 @@ class DescribeVirtualBorderRoutersRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +60,7 @@ class DescribeVirtualBorderRoutersRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -71,6 +73,7 @@ class DescribeVirtualBorderRoutersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -83,6 +86,7 @@ class DescribeVirtualBorderRoutersRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -95,6 +99,7 @@ class DescribeVirtualBorderRoutersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

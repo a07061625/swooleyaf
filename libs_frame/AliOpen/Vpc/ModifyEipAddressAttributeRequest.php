@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyEipAddressAttribute
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getBandwidth()
@@ -32,6 +33,7 @@ class ModifyEipAddressAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +46,7 @@ class ModifyEipAddressAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -56,6 +59,7 @@ class ModifyEipAddressAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -68,6 +72,7 @@ class ModifyEipAddressAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -80,6 +85,7 @@ class ModifyEipAddressAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -92,6 +98,7 @@ class ModifyEipAddressAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -104,6 +111,7 @@ class ModifyEipAddressAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $allocationId
+     *
      * @return $this
      */
     public function setAllocationId($allocationId)
@@ -116,6 +124,7 @@ class ModifyEipAddressAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

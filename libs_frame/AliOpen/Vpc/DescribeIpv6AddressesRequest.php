@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeIpv6Addresses
+ *
  * @method string getResourceOwnerId()
  * @method string getIpv6InternetBandwidthId()
  * @method string getNetworkType()
@@ -39,6 +40,7 @@ class DescribeIpv6AddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +53,7 @@ class DescribeIpv6AddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6InternetBandwidthId
+     *
      * @return $this
      */
     public function setIpv6InternetBandwidthId($ipv6InternetBandwidthId)
@@ -63,6 +66,7 @@ class DescribeIpv6AddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -75,6 +79,7 @@ class DescribeIpv6AddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -87,6 +92,7 @@ class DescribeIpv6AddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $associatedInstanceType
+     *
      * @return $this
      */
     public function setAssociatedInstanceType($associatedInstanceType)
@@ -99,6 +105,7 @@ class DescribeIpv6AddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -111,6 +118,7 @@ class DescribeIpv6AddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -123,6 +131,7 @@ class DescribeIpv6AddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -135,6 +144,7 @@ class DescribeIpv6AddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -147,6 +157,7 @@ class DescribeIpv6AddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -159,6 +170,7 @@ class DescribeIpv6AddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6AddressId
+     *
      * @return $this
      */
     public function setIpv6AddressId($ipv6AddressId)
@@ -171,6 +183,7 @@ class DescribeIpv6AddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -183,6 +196,7 @@ class DescribeIpv6AddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -195,6 +209,7 @@ class DescribeIpv6AddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6Address
+     *
      * @return $this
      */
     public function setIpv6Address($ipv6Address)
@@ -207,6 +222,7 @@ class DescribeIpv6AddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $associatedInstanceId
+     *
      * @return $this
      */
     public function setAssociatedInstanceId($associatedInstanceId)

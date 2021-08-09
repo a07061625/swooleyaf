@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifySslVpnServer
+ *
  * @method string getCipher()
  * @method string getResourceOwnerId()
  * @method string getClientIpPool()
@@ -37,6 +38,7 @@ class ModifySslVpnServerRequest extends RpcAcsRequest
 
     /**
      * @param string $cipher
+     *
      * @return $this
      */
     public function setCipher($cipher)
@@ -49,6 +51,7 @@ class ModifySslVpnServerRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -61,6 +64,7 @@ class ModifySslVpnServerRequest extends RpcAcsRequest
 
     /**
      * @param string $clientIpPool
+     *
      * @return $this
      */
     public function setClientIpPool($clientIpPool)
@@ -73,6 +77,7 @@ class ModifySslVpnServerRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -85,6 +90,7 @@ class ModifySslVpnServerRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -97,6 +103,7 @@ class ModifySslVpnServerRequest extends RpcAcsRequest
 
     /**
      * @param string $compress
+     *
      * @return $this
      */
     public function setCompress($compress)
@@ -109,6 +116,7 @@ class ModifySslVpnServerRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -121,6 +129,7 @@ class ModifySslVpnServerRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -133,6 +142,7 @@ class ModifySslVpnServerRequest extends RpcAcsRequest
 
     /**
      * @param string $sslVpnServerId
+     *
      * @return $this
      */
     public function setSslVpnServerId($sslVpnServerId)
@@ -145,6 +155,7 @@ class ModifySslVpnServerRequest extends RpcAcsRequest
 
     /**
      * @param string $localSubnet
+     *
      * @return $this
      */
     public function setLocalSubnet($localSubnet)
@@ -157,6 +168,7 @@ class ModifySslVpnServerRequest extends RpcAcsRequest
 
     /**
      * @param string $port
+     *
      * @return $this
      */
     public function setPort($port)
@@ -169,6 +181,7 @@ class ModifySslVpnServerRequest extends RpcAcsRequest
 
     /**
      * @param string $proto
+     *
      * @return $this
      */
     public function setProto($proto)
@@ -181,6 +194,7 @@ class ModifySslVpnServerRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

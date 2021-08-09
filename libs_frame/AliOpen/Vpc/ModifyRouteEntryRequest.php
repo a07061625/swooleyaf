@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyRouteEntry
+ *
  * @method string getRouteEntryName()
  * @method string getRouteEntryId()
  * @method string getResourceOwnerAccount()
@@ -29,6 +30,7 @@ class ModifyRouteEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $routeEntryName
+     *
      * @return $this
      */
     public function setRouteEntryName($routeEntryName)
@@ -41,6 +43,7 @@ class ModifyRouteEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $routeEntryId
+     *
      * @return $this
      */
     public function setRouteEntryId($routeEntryId)
@@ -53,6 +56,7 @@ class ModifyRouteEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -65,6 +69,7 @@ class ModifyRouteEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -77,6 +82,7 @@ class ModifyRouteEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

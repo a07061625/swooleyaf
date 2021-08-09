@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAccessPoints
+ *
  * @method array getFilters()
  * @method string getResourceOwnerId()
  * @method string getHostOperator()
@@ -32,7 +33,6 @@ class DescribeAccessPointsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $filters
      * @return $this
      */
     public function setFilters(array $filters)
@@ -50,6 +50,7 @@ class DescribeAccessPointsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -62,6 +63,7 @@ class DescribeAccessPointsRequest extends RpcAcsRequest
 
     /**
      * @param string $hostOperator
+     *
      * @return $this
      */
     public function setHostOperator($hostOperator)
@@ -74,6 +76,7 @@ class DescribeAccessPointsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -86,6 +89,7 @@ class DescribeAccessPointsRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -98,6 +102,7 @@ class DescribeAccessPointsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -110,6 +115,7 @@ class DescribeAccessPointsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -122,6 +128,7 @@ class DescribeAccessPointsRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -134,6 +141,7 @@ class DescribeAccessPointsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

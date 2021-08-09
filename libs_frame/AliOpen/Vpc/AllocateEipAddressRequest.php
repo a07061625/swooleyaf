@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AllocateEipAddress
+ *
  * @method string getResourceOwnerId()
  * @method string getPeriod()
  * @method string getAutoPay()
@@ -38,6 +39,7 @@ class AllocateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +52,7 @@ class AllocateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -62,6 +65,7 @@ class AllocateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -74,6 +78,7 @@ class AllocateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -86,6 +91,7 @@ class AllocateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -98,6 +104,7 @@ class AllocateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -110,6 +117,7 @@ class AllocateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $iSP
+     *
      * @return $this
      */
     public function setISP($iSP)
@@ -122,6 +130,7 @@ class AllocateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -134,6 +143,7 @@ class AllocateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -146,6 +156,7 @@ class AllocateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -158,6 +169,7 @@ class AllocateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $internetChargeType
+     *
      * @return $this
      */
     public function setInternetChargeType($internetChargeType)
@@ -170,6 +182,7 @@ class AllocateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $netmode
+     *
      * @return $this
      */
     public function setNetmode($netmode)
@@ -182,6 +195,7 @@ class AllocateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $pricingCycle
+     *
      * @return $this
      */
     public function setPricingCycle($pricingCycle)
@@ -194,6 +208,7 @@ class AllocateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)

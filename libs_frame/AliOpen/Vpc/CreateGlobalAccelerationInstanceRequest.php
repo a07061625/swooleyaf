@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateGlobalAccelerationInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getBandwidthType()
  * @method string getResourceOwnerAccount()
@@ -35,6 +36,7 @@ class CreateGlobalAccelerationInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +49,7 @@ class CreateGlobalAccelerationInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidthType
+     *
      * @return $this
      */
     public function setBandwidthType($bandwidthType)
@@ -59,6 +62,7 @@ class CreateGlobalAccelerationInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -71,6 +75,7 @@ class CreateGlobalAccelerationInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceLocation
+     *
      * @return $this
      */
     public function setServiceLocation($serviceLocation)
@@ -83,6 +88,7 @@ class CreateGlobalAccelerationInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -95,6 +101,7 @@ class CreateGlobalAccelerationInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -107,6 +114,7 @@ class CreateGlobalAccelerationInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -119,6 +127,7 @@ class CreateGlobalAccelerationInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -131,6 +140,7 @@ class CreateGlobalAccelerationInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -143,6 +153,7 @@ class CreateGlobalAccelerationInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $internetChargeType
+     *
      * @return $this
      */
     public function setInternetChargeType($internetChargeType)
@@ -155,6 +166,7 @@ class CreateGlobalAccelerationInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

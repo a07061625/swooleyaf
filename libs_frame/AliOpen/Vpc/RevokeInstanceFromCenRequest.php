@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RevokeInstanceFromCen
+ *
  * @method string getResourceOwnerId()
  * @method string getInstanceId()
  * @method string getResourceOwnerAccount()
@@ -33,6 +34,7 @@ class RevokeInstanceFromCenRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +47,7 @@ class RevokeInstanceFromCenRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -57,6 +60,7 @@ class RevokeInstanceFromCenRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -69,6 +73,7 @@ class RevokeInstanceFromCenRequest extends RpcAcsRequest
 
     /**
      * @param string $cenId
+     *
      * @return $this
      */
     public function setCenId($cenId)
@@ -81,6 +86,7 @@ class RevokeInstanceFromCenRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -93,6 +99,7 @@ class RevokeInstanceFromCenRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -105,6 +112,7 @@ class RevokeInstanceFromCenRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -117,6 +125,7 @@ class RevokeInstanceFromCenRequest extends RpcAcsRequest
 
     /**
      * @param string $cenOwnerId
+     *
      * @return $this
      */
     public function setCenOwnerId($cenOwnerId)
@@ -129,6 +138,7 @@ class RevokeInstanceFromCenRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

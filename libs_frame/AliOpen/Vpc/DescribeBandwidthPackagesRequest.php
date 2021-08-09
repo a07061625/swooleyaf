@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeBandwidthPackages
+ *
  * @method string getResourceOwnerId()
  * @method string getBandwidthPackageId()
  * @method string getResourceOwnerAccount()
@@ -32,6 +33,7 @@ class DescribeBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +46,7 @@ class DescribeBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidthPackageId
+     *
      * @return $this
      */
     public function setBandwidthPackageId($bandwidthPackageId)
@@ -56,6 +59,7 @@ class DescribeBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -68,6 +72,7 @@ class DescribeBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -80,6 +85,7 @@ class DescribeBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -92,6 +98,7 @@ class DescribeBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $natGatewayId
+     *
      * @return $this
      */
     public function setNatGatewayId($natGatewayId)
@@ -104,6 +111,7 @@ class DescribeBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +124,7 @@ class DescribeBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

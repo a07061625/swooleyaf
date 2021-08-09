@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeFlowLogs
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceId()
  * @method string getProjectName()
@@ -39,6 +40,7 @@ class DescribeFlowLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +53,7 @@ class DescribeFlowLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceId
+     *
      * @return $this
      */
     public function setResourceId($resourceId)
@@ -63,6 +66,7 @@ class DescribeFlowLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $projectName
+     *
      * @return $this
      */
     public function setProjectName($projectName)
@@ -75,6 +79,7 @@ class DescribeFlowLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $logStoreName
+     *
      * @return $this
      */
     public function setLogStoreName($logStoreName)
@@ -87,6 +92,7 @@ class DescribeFlowLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -99,6 +105,7 @@ class DescribeFlowLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -111,6 +118,7 @@ class DescribeFlowLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -123,6 +131,7 @@ class DescribeFlowLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -135,6 +144,7 @@ class DescribeFlowLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -147,6 +157,7 @@ class DescribeFlowLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -159,6 +170,7 @@ class DescribeFlowLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -171,6 +183,7 @@ class DescribeFlowLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $trafficType
+     *
      * @return $this
      */
     public function setTrafficType($trafficType)
@@ -183,6 +196,7 @@ class DescribeFlowLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $flowLogId
+     *
      * @return $this
      */
     public function setFlowLogId($flowLogId)
@@ -195,6 +209,7 @@ class DescribeFlowLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $flowLogName
+     *
      * @return $this
      */
     public function setFlowLogName($flowLogName)
@@ -207,6 +222,7 @@ class DescribeFlowLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

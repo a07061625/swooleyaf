@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateConfig
+ *
  * @method string getCode()
  * @method string getSourceIp()
  * @method string getFeatureType()
@@ -31,6 +32,7 @@ class CreateConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $code
+     *
      * @return $this
      */
     public function setCode($code)
@@ -43,6 +45,7 @@ class CreateConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -55,6 +58,7 @@ class CreateConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -67,6 +71,7 @@ class CreateConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -79,6 +84,7 @@ class CreateConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $configList
+     *
      * @return $this
      */
     public function setConfigList($configList)
@@ -91,6 +97,7 @@ class CreateConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -103,6 +110,7 @@ class CreateConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $value
+     *
      * @return $this
      */
     public function setValue($value)

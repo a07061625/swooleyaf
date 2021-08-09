@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCommonBandwidthPackages
+ *
  * @method string getResourceGroupId()
  * @method string getResourceOwnerId()
  * @method string getBandwidthPackageId()
@@ -34,6 +35,7 @@ class DescribeCommonBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -46,6 +48,7 @@ class DescribeCommonBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -58,6 +61,7 @@ class DescribeCommonBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidthPackageId
+     *
      * @return $this
      */
     public function setBandwidthPackageId($bandwidthPackageId)
@@ -70,6 +74,7 @@ class DescribeCommonBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -82,6 +87,7 @@ class DescribeCommonBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -94,6 +100,7 @@ class DescribeCommonBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -106,6 +113,7 @@ class DescribeCommonBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -118,6 +126,7 @@ class DescribeCommonBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +139,7 @@ class DescribeCommonBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $includeReservationData
+     *
      * @return $this
      */
     public function setIncludeReservationData($includeReservationData)
@@ -142,6 +152,7 @@ class DescribeCommonBandwidthPackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

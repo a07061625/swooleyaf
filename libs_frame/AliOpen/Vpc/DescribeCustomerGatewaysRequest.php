@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCustomerGateways
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -31,6 +32,7 @@ class DescribeCustomerGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +45,7 @@ class DescribeCustomerGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -55,6 +58,7 @@ class DescribeCustomerGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -67,6 +71,7 @@ class DescribeCustomerGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -79,6 +84,7 @@ class DescribeCustomerGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -91,6 +97,7 @@ class DescribeCustomerGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $customerGatewayId
+     *
      * @return $this
      */
     public function setCustomerGatewayId($customerGatewayId)
@@ -103,6 +110,7 @@ class DescribeCustomerGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

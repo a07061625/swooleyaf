@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyVSwitchAttribute
+ *
  * @method string getVSwitchId()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -32,6 +33,7 @@ class ModifyVSwitchAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -44,6 +46,7 @@ class ModifyVSwitchAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -56,6 +59,7 @@ class ModifyVSwitchAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -68,6 +72,7 @@ class ModifyVSwitchAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchName
+     *
      * @return $this
      */
     public function setVSwitchName($vSwitchName)
@@ -80,6 +85,7 @@ class ModifyVSwitchAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -92,6 +98,7 @@ class ModifyVSwitchAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -104,6 +111,7 @@ class ModifyVSwitchAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +124,7 @@ class ModifyVSwitchAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6CidrBlock
+     *
      * @return $this
      */
     public function setIpv6CidrBlock($ipv6CidrBlock)

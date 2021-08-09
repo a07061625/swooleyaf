@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteBgpNetwork
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getClientToken()
@@ -31,6 +32,7 @@ class DeleteBgpNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +45,7 @@ class DeleteBgpNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -55,6 +58,7 @@ class DeleteBgpNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -67,6 +71,7 @@ class DeleteBgpNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $routerId
+     *
      * @return $this
      */
     public function setRouterId($routerId)
@@ -79,6 +84,7 @@ class DeleteBgpNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +97,7 @@ class DeleteBgpNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +110,7 @@ class DeleteBgpNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $dstCidrBlock
+     *
      * @return $this
      */
     public function setDstCidrBlock($dstCidrBlock)

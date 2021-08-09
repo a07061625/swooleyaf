@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UnassociatePhysicalConnectionFromVirtualBorderRouter
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getClientToken()
@@ -31,6 +32,7 @@ class UnassociatePhysicalConnectionFromVirtualBorderRouterRequest extends RpcAcs
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +45,7 @@ class UnassociatePhysicalConnectionFromVirtualBorderRouterRequest extends RpcAcs
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -55,6 +58,7 @@ class UnassociatePhysicalConnectionFromVirtualBorderRouterRequest extends RpcAcs
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -67,6 +71,7 @@ class UnassociatePhysicalConnectionFromVirtualBorderRouterRequest extends RpcAcs
 
     /**
      * @param string $physicalConnectionId
+     *
      * @return $this
      */
     public function setPhysicalConnectionId($physicalConnectionId)
@@ -79,6 +84,7 @@ class UnassociatePhysicalConnectionFromVirtualBorderRouterRequest extends RpcAcs
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +97,7 @@ class UnassociatePhysicalConnectionFromVirtualBorderRouterRequest extends RpcAcs
 
     /**
      * @param string $vbrId
+     *
      * @return $this
      */
     public function setVbrId($vbrId)
@@ -103,6 +110,7 @@ class UnassociatePhysicalConnectionFromVirtualBorderRouterRequest extends RpcAcs
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

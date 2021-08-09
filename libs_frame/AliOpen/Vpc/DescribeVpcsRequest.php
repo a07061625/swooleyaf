@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVpcs
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -35,6 +36,7 @@ class DescribeVpcsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +49,7 @@ class DescribeVpcsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -59,6 +62,7 @@ class DescribeVpcsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -71,6 +75,7 @@ class DescribeVpcsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -83,6 +88,7 @@ class DescribeVpcsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -95,6 +101,7 @@ class DescribeVpcsRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcName
+     *
      * @return $this
      */
     public function setVpcName($vpcName)
@@ -107,6 +114,7 @@ class DescribeVpcsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -119,6 +127,7 @@ class DescribeVpcsRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -131,6 +140,7 @@ class DescribeVpcsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -142,7 +152,6 @@ class DescribeVpcsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tags
      * @return $this
      */
     public function setTags(array $tags)
@@ -158,6 +167,7 @@ class DescribeVpcsRequest extends RpcAcsRequest
 
     /**
      * @param string $isDefault
+     *
      * @return $this
      */
     public function setIsDefault($isDefault)

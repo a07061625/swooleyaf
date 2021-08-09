@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeRouteTableList
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -37,6 +38,7 @@ class DescribeRouteTableListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -49,6 +51,7 @@ class DescribeRouteTableListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -61,6 +64,7 @@ class DescribeRouteTableListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -73,6 +77,7 @@ class DescribeRouteTableListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -85,6 +90,7 @@ class DescribeRouteTableListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -97,6 +103,7 @@ class DescribeRouteTableListRequest extends RpcAcsRequest
 
     /**
      * @param string $routerType
+     *
      * @return $this
      */
     public function setRouterType($routerType)
@@ -109,6 +116,7 @@ class DescribeRouteTableListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -121,6 +129,7 @@ class DescribeRouteTableListRequest extends RpcAcsRequest
 
     /**
      * @param string $routeTableName
+     *
      * @return $this
      */
     public function setRouteTableName($routeTableName)
@@ -133,6 +142,7 @@ class DescribeRouteTableListRequest extends RpcAcsRequest
 
     /**
      * @param string $routerId
+     *
      * @return $this
      */
     public function setRouterId($routerId)
@@ -145,6 +155,7 @@ class DescribeRouteTableListRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -157,6 +168,7 @@ class DescribeRouteTableListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -168,7 +180,6 @@ class DescribeRouteTableListRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tags
      * @return $this
      */
     public function setTags(array $tags)
@@ -184,6 +195,7 @@ class DescribeRouteTableListRequest extends RpcAcsRequest
 
     /**
      * @param string $routeTableId
+     *
      * @return $this
      */
     public function setRouteTableId($routeTableId)

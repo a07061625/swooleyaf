@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateVpnConnection
+ *
  * @method string getIkeConfig()
  * @method string getResourceOwnerId()
  * @method string getRemoteSubnet()
@@ -37,6 +38,7 @@ class CreateVpnConnectionRequest extends RpcAcsRequest
 
     /**
      * @param string $ikeConfig
+     *
      * @return $this
      */
     public function setIkeConfig($ikeConfig)
@@ -49,6 +51,7 @@ class CreateVpnConnectionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -61,6 +64,7 @@ class CreateVpnConnectionRequest extends RpcAcsRequest
 
     /**
      * @param string $remoteSubnet
+     *
      * @return $this
      */
     public function setRemoteSubnet($remoteSubnet)
@@ -73,6 +77,7 @@ class CreateVpnConnectionRequest extends RpcAcsRequest
 
     /**
      * @param string $effectImmediately
+     *
      * @return $this
      */
     public function setEffectImmediately($effectImmediately)
@@ -85,6 +90,7 @@ class CreateVpnConnectionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -97,6 +103,7 @@ class CreateVpnConnectionRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -109,6 +116,7 @@ class CreateVpnConnectionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -121,6 +129,7 @@ class CreateVpnConnectionRequest extends RpcAcsRequest
 
     /**
      * @param string $ipsecConfig
+     *
      * @return $this
      */
     public function setIpsecConfig($ipsecConfig)
@@ -133,6 +142,7 @@ class CreateVpnConnectionRequest extends RpcAcsRequest
 
     /**
      * @param string $vpnGatewayId
+     *
      * @return $this
      */
     public function setVpnGatewayId($vpnGatewayId)
@@ -145,6 +155,7 @@ class CreateVpnConnectionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -157,6 +168,7 @@ class CreateVpnConnectionRequest extends RpcAcsRequest
 
     /**
      * @param string $customerGatewayId
+     *
      * @return $this
      */
     public function setCustomerGatewayId($customerGatewayId)
@@ -169,6 +181,7 @@ class CreateVpnConnectionRequest extends RpcAcsRequest
 
     /**
      * @param string $localSubnet
+     *
      * @return $this
      */
     public function setLocalSubnet($localSubnet)
@@ -181,6 +194,7 @@ class CreateVpnConnectionRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

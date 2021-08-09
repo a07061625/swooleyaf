@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeConditions
+ *
  * @method string getProductCode()
  * @method string getSourceIp()
  * @method string getFeatureType()
@@ -30,6 +31,7 @@ class DescribeConditionsRequest extends RpcAcsRequest
 
     /**
      * @param string $productCode
+     *
      * @return $this
      */
     public function setProductCode($productCode)
@@ -42,6 +44,7 @@ class DescribeConditionsRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -54,6 +57,7 @@ class DescribeConditionsRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -66,6 +70,7 @@ class DescribeConditionsRequest extends RpcAcsRequest
 
     /**
      * @param string $searchType
+     *
      * @return $this
      */
     public function setSearchType($searchType)
@@ -78,6 +83,7 @@ class DescribeConditionsRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -90,6 +96,7 @@ class DescribeConditionsRequest extends RpcAcsRequest
 
     /**
      * @param string $queryType
+     *
      * @return $this
      */
     public function setQueryType($queryType)

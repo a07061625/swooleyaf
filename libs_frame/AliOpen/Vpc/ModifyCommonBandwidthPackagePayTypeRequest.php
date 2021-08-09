@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyCommonBandwidthPackagePayType
+ *
  * @method string getResourceOwnerId()
  * @method string getBandwidthPackageId()
  * @method string getAutoPay()
@@ -37,6 +38,7 @@ class ModifyCommonBandwidthPackagePayTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -49,6 +51,7 @@ class ModifyCommonBandwidthPackagePayTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidthPackageId
+     *
      * @return $this
      */
     public function setBandwidthPackageId($bandwidthPackageId)
@@ -61,6 +64,7 @@ class ModifyCommonBandwidthPackagePayTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -73,6 +77,7 @@ class ModifyCommonBandwidthPackagePayTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -85,6 +90,7 @@ class ModifyCommonBandwidthPackagePayTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -97,6 +103,7 @@ class ModifyCommonBandwidthPackagePayTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -109,6 +116,7 @@ class ModifyCommonBandwidthPackagePayTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -121,6 +129,7 @@ class ModifyCommonBandwidthPackagePayTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $duration
+     *
      * @return $this
      */
     public function setDuration($duration)
@@ -133,6 +142,7 @@ class ModifyCommonBandwidthPackagePayTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $kbpsBandwidth
+     *
      * @return $this
      */
     public function setKbpsBandwidth($kbpsBandwidth)
@@ -145,6 +155,7 @@ class ModifyCommonBandwidthPackagePayTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceUid
+     *
      * @return $this
      */
     public function setResourceUid($resourceUid)
@@ -157,6 +168,7 @@ class ModifyCommonBandwidthPackagePayTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceBid
+     *
      * @return $this
      */
     public function setResourceBid($resourceBid)
@@ -169,6 +181,7 @@ class ModifyCommonBandwidthPackagePayTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)
@@ -181,6 +194,7 @@ class ModifyCommonBandwidthPackagePayTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $pricingCycle
+     *
      * @return $this
      */
     public function setPricingCycle($pricingCycle)

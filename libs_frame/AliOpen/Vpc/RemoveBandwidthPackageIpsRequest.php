@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RemoveBandwidthPackageIps
+ *
  * @method array getRemovedIpAddressess()
  * @method string getResourceOwnerId()
  * @method string getBandwidthPackageId()
@@ -30,7 +31,6 @@ class RemoveBandwidthPackageIpsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $removedIpAddressess
      * @return $this
      */
     public function setRemovedIpAddressess(array $removedIpAddressess)
@@ -45,6 +45,7 @@ class RemoveBandwidthPackageIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +58,7 @@ class RemoveBandwidthPackageIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidthPackageId
+     *
      * @return $this
      */
     public function setBandwidthPackageId($bandwidthPackageId)
@@ -69,6 +71,7 @@ class RemoveBandwidthPackageIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -81,6 +84,7 @@ class RemoveBandwidthPackageIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -93,6 +97,7 @@ class RemoveBandwidthPackageIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -105,6 +110,7 @@ class RemoveBandwidthPackageIpsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

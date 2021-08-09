@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteIPv6TranslatorEntry
+ *
  * @method string getResourceOwnerId()
  * @method string getIpv6TranslatorEntryId()
  * @method string getResourceOwnerAccount()
@@ -31,6 +32,7 @@ class DeleteIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +45,7 @@ class DeleteIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6TranslatorEntryId
+     *
      * @return $this
      */
     public function setIpv6TranslatorEntryId($ipv6TranslatorEntryId)
@@ -55,6 +58,7 @@ class DeleteIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +71,7 @@ class DeleteIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -79,6 +84,7 @@ class DeleteIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +97,7 @@ class DeleteIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6TranslatorId
+     *
      * @return $this
      */
     public function setIpv6TranslatorId($ipv6TranslatorId)
@@ -103,6 +110,7 @@ class DeleteIPv6TranslatorEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeIpv6EgressOnlyRules
+ *
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
  * @method string getIpv6EgressOnlyRuleId()
@@ -35,6 +36,7 @@ class DescribeIpv6EgressOnlyRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +49,7 @@ class DescribeIpv6EgressOnlyRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -59,6 +62,7 @@ class DescribeIpv6EgressOnlyRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6EgressOnlyRuleId
+     *
      * @return $this
      */
     public function setIpv6EgressOnlyRuleId($ipv6EgressOnlyRuleId)
@@ -71,6 +75,7 @@ class DescribeIpv6EgressOnlyRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -83,6 +88,7 @@ class DescribeIpv6EgressOnlyRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -95,6 +101,7 @@ class DescribeIpv6EgressOnlyRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -107,6 +114,7 @@ class DescribeIpv6EgressOnlyRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -119,6 +127,7 @@ class DescribeIpv6EgressOnlyRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -131,6 +140,7 @@ class DescribeIpv6EgressOnlyRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -143,6 +153,7 @@ class DescribeIpv6EgressOnlyRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6GatewayId
+     *
      * @return $this
      */
     public function setIpv6GatewayId($ipv6GatewayId)
@@ -155,6 +166,7 @@ class DescribeIpv6EgressOnlyRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateVSwitch
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getClientToken()
@@ -35,6 +36,7 @@ class CreateVSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +49,7 @@ class CreateVSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -59,6 +62,7 @@ class CreateVSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -71,6 +75,7 @@ class CreateVSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -83,6 +88,7 @@ class CreateVSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -95,6 +101,7 @@ class CreateVSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -107,6 +114,7 @@ class CreateVSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6CidrBlock
+     *
      * @return $this
      */
     public function setIpv6CidrBlock($ipv6CidrBlock)
@@ -119,6 +127,7 @@ class CreateVSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -131,6 +140,7 @@ class CreateVSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchName
+     *
      * @return $this
      */
     public function setVSwitchName($vSwitchName)
@@ -143,6 +153,7 @@ class CreateVSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $cidrBlock
+     *
      * @return $this
      */
     public function setCidrBlock($cidrBlock)
@@ -155,6 +166,7 @@ class CreateVSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)

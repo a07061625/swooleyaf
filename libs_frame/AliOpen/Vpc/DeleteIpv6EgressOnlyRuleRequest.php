@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteIpv6EgressOnlyRule
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getIpv6EgressOnlyRuleId()
@@ -30,6 +31,7 @@ class DeleteIpv6EgressOnlyRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +44,7 @@ class DeleteIpv6EgressOnlyRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -54,6 +57,7 @@ class DeleteIpv6EgressOnlyRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6EgressOnlyRuleId
+     *
      * @return $this
      */
     public function setIpv6EgressOnlyRuleId($ipv6EgressOnlyRuleId)
@@ -66,6 +70,7 @@ class DeleteIpv6EgressOnlyRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -78,6 +83,7 @@ class DeleteIpv6EgressOnlyRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -90,6 +96,7 @@ class DeleteIpv6EgressOnlyRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDataTotalCount
+ *
  * @method string getProductCode()
  * @method string getInstanceId()
  * @method string getSourceIp()
@@ -30,6 +31,7 @@ class DescribeDataTotalCountRequest extends RpcAcsRequest
 
     /**
      * @param string $productCode
+     *
      * @return $this
      */
     public function setProductCode($productCode)
@@ -42,6 +44,7 @@ class DescribeDataTotalCountRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -54,6 +57,7 @@ class DescribeDataTotalCountRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -66,6 +70,7 @@ class DescribeDataTotalCountRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -78,6 +83,7 @@ class DescribeDataTotalCountRequest extends RpcAcsRequest
 
     /**
      * @param string $countType
+     *
      * @return $this
      */
     public function setCountType($countType)
@@ -90,6 +96,7 @@ class DescribeDataTotalCountRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeServerRelatedGlobalAccelerationInstances
+ *
  * @method string getResourceOwnerId()
  * @method string getServerType()
  * @method string getResourceOwnerAccount()
@@ -30,6 +31,7 @@ class DescribeServerRelatedGlobalAccelerationInstancesRequest extends RpcAcsRequ
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +44,7 @@ class DescribeServerRelatedGlobalAccelerationInstancesRequest extends RpcAcsRequ
 
     /**
      * @param string $serverType
+     *
      * @return $this
      */
     public function setServerType($serverType)
@@ -54,6 +57,7 @@ class DescribeServerRelatedGlobalAccelerationInstancesRequest extends RpcAcsRequ
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +70,7 @@ class DescribeServerRelatedGlobalAccelerationInstancesRequest extends RpcAcsRequ
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +83,7 @@ class DescribeServerRelatedGlobalAccelerationInstancesRequest extends RpcAcsRequ
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -90,6 +96,7 @@ class DescribeServerRelatedGlobalAccelerationInstancesRequest extends RpcAcsRequ
 
     /**
      * @param string $serverId
+     *
      * @return $this
      */
     public function setServerId($serverId)

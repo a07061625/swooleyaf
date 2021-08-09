@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeSnatTableEntries
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -36,6 +37,7 @@ class DescribeSnatTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +50,7 @@ class DescribeSnatTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -60,6 +63,7 @@ class DescribeSnatTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -72,6 +76,7 @@ class DescribeSnatTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceCIDR
+     *
      * @return $this
      */
     public function setSourceCIDR($sourceCIDR)
@@ -84,6 +89,7 @@ class DescribeSnatTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $snatTableId
+     *
      * @return $this
      */
     public function setSnatTableId($snatTableId)
@@ -96,6 +102,7 @@ class DescribeSnatTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -108,6 +115,7 @@ class DescribeSnatTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $snatIp
+     *
      * @return $this
      */
     public function setSnatIp($snatIp)
@@ -120,6 +128,7 @@ class DescribeSnatTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -132,6 +141,7 @@ class DescribeSnatTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceVSwitchId
+     *
      * @return $this
      */
     public function setSourceVSwitchId($sourceVSwitchId)
@@ -144,6 +154,7 @@ class DescribeSnatTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $snatEntryName
+     *
      * @return $this
      */
     public function setSnatEntryName($snatEntryName)
@@ -156,6 +167,7 @@ class DescribeSnatTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -168,6 +180,7 @@ class DescribeSnatTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $snatEntryId
+     *
      * @return $this
      */
     public function setSnatEntryId($snatEntryId)

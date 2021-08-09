@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AssociatePhysicalConnectionToVirtualBorderRouter
+ *
  * @method string getResourceOwnerId()
  * @method string getCircuitCode()
  * @method string getVlanId()
@@ -36,6 +37,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest extends RpcAcsRequ
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +50,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest extends RpcAcsRequ
 
     /**
      * @param string $circuitCode
+     *
      * @return $this
      */
     public function setCircuitCode($circuitCode)
@@ -60,6 +63,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest extends RpcAcsRequ
 
     /**
      * @param string $vlanId
+     *
      * @return $this
      */
     public function setVlanId($vlanId)
@@ -72,6 +76,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest extends RpcAcsRequ
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -84,6 +89,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest extends RpcAcsRequ
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -96,6 +102,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest extends RpcAcsRequ
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -108,6 +115,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest extends RpcAcsRequ
 
     /**
      * @param string $vbrId
+     *
      * @return $this
      */
     public function setVbrId($vbrId)
@@ -120,6 +128,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest extends RpcAcsRequ
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -132,6 +141,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest extends RpcAcsRequ
 
     /**
      * @param string $peerGatewayIp
+     *
      * @return $this
      */
     public function setPeerGatewayIp($peerGatewayIp)
@@ -144,6 +154,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest extends RpcAcsRequ
 
     /**
      * @param string $peeringSubnetMask
+     *
      * @return $this
      */
     public function setPeeringSubnetMask($peeringSubnetMask)
@@ -156,6 +167,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest extends RpcAcsRequ
 
     /**
      * @param string $physicalConnectionId
+     *
      * @return $this
      */
     public function setPhysicalConnectionId($physicalConnectionId)
@@ -168,6 +180,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest extends RpcAcsRequ
 
     /**
      * @param string $localGatewayIp
+     *
      * @return $this
      */
     public function setLocalGatewayIp($localGatewayIp)

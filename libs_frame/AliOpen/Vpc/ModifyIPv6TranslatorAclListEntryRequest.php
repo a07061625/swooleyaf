@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyIPv6TranslatorAclListEntry
+ *
  * @method string getAclId()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -31,6 +32,7 @@ class ModifyIPv6TranslatorAclListEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $aclId
+     *
      * @return $this
      */
     public function setAclId($aclId)
@@ -43,6 +45,7 @@ class ModifyIPv6TranslatorAclListEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -55,6 +58,7 @@ class ModifyIPv6TranslatorAclListEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +71,7 @@ class ModifyIPv6TranslatorAclListEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -79,6 +84,7 @@ class ModifyIPv6TranslatorAclListEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $aclEntryComment
+     *
      * @return $this
      */
     public function setAclEntryComment($aclEntryComment)
@@ -91,6 +97,7 @@ class ModifyIPv6TranslatorAclListEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +110,7 @@ class ModifyIPv6TranslatorAclListEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $aclEntryId
+     *
      * @return $this
      */
     public function setAclEntryId($aclEntryId)

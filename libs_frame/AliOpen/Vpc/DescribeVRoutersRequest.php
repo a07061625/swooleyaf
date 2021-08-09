@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVRouters
+ *
  * @method string getResourceOwnerId()
  * @method string getVRouterId()
  * @method string getResourceOwnerAccount()
@@ -31,6 +32,7 @@ class DescribeVRoutersRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +45,7 @@ class DescribeVRoutersRequest extends RpcAcsRequest
 
     /**
      * @param string $vRouterId
+     *
      * @return $this
      */
     public function setVRouterId($vRouterId)
@@ -55,6 +58,7 @@ class DescribeVRoutersRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +71,7 @@ class DescribeVRoutersRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -79,6 +84,7 @@ class DescribeVRoutersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -91,6 +97,7 @@ class DescribeVRoutersRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +110,7 @@ class DescribeVRoutersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

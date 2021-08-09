@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyVRouterAttribute
+ *
  * @method string getVRouterName()
  * @method string getResourceOwnerId()
  * @method string getVRouterId()
@@ -31,6 +32,7 @@ class ModifyVRouterAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $vRouterName
+     *
      * @return $this
      */
     public function setVRouterName($vRouterName)
@@ -43,6 +45,7 @@ class ModifyVRouterAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -55,6 +58,7 @@ class ModifyVRouterAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $vRouterId
+     *
      * @return $this
      */
     public function setVRouterId($vRouterId)
@@ -67,6 +71,7 @@ class ModifyVRouterAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +84,7 @@ class ModifyVRouterAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +97,7 @@ class ModifyVRouterAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -103,6 +110,7 @@ class ModifyVRouterAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

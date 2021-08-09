@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyIPv6TranslatorBandwidth
+ *
  * @method string getResourceOwnerId()
  * @method string getAutoPay()
  * @method string getResourceOwnerAccount()
@@ -32,6 +33,7 @@ class ModifyIPv6TranslatorBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +46,7 @@ class ModifyIPv6TranslatorBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -56,6 +59,7 @@ class ModifyIPv6TranslatorBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -68,6 +72,7 @@ class ModifyIPv6TranslatorBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -80,6 +85,7 @@ class ModifyIPv6TranslatorBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -92,6 +98,7 @@ class ModifyIPv6TranslatorBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +111,7 @@ class ModifyIPv6TranslatorBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6TranslatorId
+     *
      * @return $this
      */
     public function setIpv6TranslatorId($ipv6TranslatorId)
@@ -116,6 +124,7 @@ class ModifyIPv6TranslatorBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

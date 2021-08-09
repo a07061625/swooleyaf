@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeSslVpnServers
+ *
  * @method string getSslVpnServerId()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -33,6 +34,7 @@ class DescribeSslVpnServersRequest extends RpcAcsRequest
 
     /**
      * @param string $sslVpnServerId
+     *
      * @return $this
      */
     public function setSslVpnServerId($sslVpnServerId)
@@ -45,6 +47,7 @@ class DescribeSslVpnServersRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +60,7 @@ class DescribeSslVpnServersRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -69,6 +73,7 @@ class DescribeSslVpnServersRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -81,6 +86,7 @@ class DescribeSslVpnServersRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -93,6 +99,7 @@ class DescribeSslVpnServersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -105,6 +112,7 @@ class DescribeSslVpnServersRequest extends RpcAcsRequest
 
     /**
      * @param string $vpnGatewayId
+     *
      * @return $this
      */
     public function setVpnGatewayId($vpnGatewayId)
@@ -117,6 +125,7 @@ class DescribeSslVpnServersRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +138,7 @@ class DescribeSslVpnServersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateFlowLog
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceId()
  * @method string getProjectName()
@@ -35,6 +36,7 @@ class CreateFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +49,7 @@ class CreateFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceId
+     *
      * @return $this
      */
     public function setResourceId($resourceId)
@@ -59,6 +62,7 @@ class CreateFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $projectName
+     *
      * @return $this
      */
     public function setProjectName($projectName)
@@ -71,6 +75,7 @@ class CreateFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $logStoreName
+     *
      * @return $this
      */
     public function setLogStoreName($logStoreName)
@@ -83,6 +88,7 @@ class CreateFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -95,6 +101,7 @@ class CreateFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -107,6 +114,7 @@ class CreateFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -119,6 +127,7 @@ class CreateFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -131,6 +140,7 @@ class CreateFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -143,6 +153,7 @@ class CreateFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $trafficType
+     *
      * @return $this
      */
     public function setTrafficType($trafficType)
@@ -155,6 +166,7 @@ class CreateFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $flowLogName
+     *
      * @return $this
      */
     public function setFlowLogName($flowLogName)

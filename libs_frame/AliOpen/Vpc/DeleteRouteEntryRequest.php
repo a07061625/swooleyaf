@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteRouteEntry
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getRouteEntryId()
@@ -33,6 +34,7 @@ class DeleteRouteEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +47,7 @@ class DeleteRouteEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -57,6 +60,7 @@ class DeleteRouteEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $routeEntryId
+     *
      * @return $this
      */
     public function setRouteEntryId($routeEntryId)
@@ -69,6 +73,7 @@ class DeleteRouteEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationCidrBlock
+     *
      * @return $this
      */
     public function setDestinationCidrBlock($destinationCidrBlock)
@@ -81,6 +86,7 @@ class DeleteRouteEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -93,6 +99,7 @@ class DeleteRouteEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $nextHopId
+     *
      * @return $this
      */
     public function setNextHopId($nextHopId)
@@ -105,6 +112,7 @@ class DeleteRouteEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,7 +124,6 @@ class DeleteRouteEntryRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $nextHopLists
      * @return $this
      */
     public function setNextHopLists(array $nextHopLists)
@@ -132,6 +139,7 @@ class DeleteRouteEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $routeTableId
+     *
      * @return $this
      */
     public function setRouteTableId($routeTableId)

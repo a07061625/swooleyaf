@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribePackages
+ *
  * @method string getInstanceId()
  * @method string getSourceIp()
  * @method string getProductId()
@@ -36,6 +37,7 @@ class DescribePackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -48,6 +50,7 @@ class DescribePackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -60,6 +63,7 @@ class DescribePackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $productId
+     *
      * @return $this
      */
     public function setProductId($productId)
@@ -72,6 +76,7 @@ class DescribePackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -84,6 +89,7 @@ class DescribePackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -96,6 +102,7 @@ class DescribePackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -108,6 +115,7 @@ class DescribePackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -120,6 +128,7 @@ class DescribePackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $queryName
+     *
      * @return $this
      */
     public function setQueryName($queryName)
@@ -132,6 +141,7 @@ class DescribePackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $riskLevelId
+     *
      * @return $this
      */
     public function setRiskLevelId($riskLevelId)
@@ -144,6 +154,7 @@ class DescribePackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -156,6 +167,7 @@ class DescribePackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $ruleId
+     *
      * @return $this
      */
     public function setRuleId($ruleId)
@@ -168,6 +180,7 @@ class DescribePackagesRequest extends RpcAcsRequest
 
     /**
      * @param string $queryType
+     *
      * @return $this
      */
     public function setQueryType($queryType)

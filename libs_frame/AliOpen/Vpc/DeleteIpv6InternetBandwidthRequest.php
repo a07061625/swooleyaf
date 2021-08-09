@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteIpv6InternetBandwidth
+ *
  * @method string getResourceOwnerId()
  * @method string getIpv6InternetBandwidthId()
  * @method string getResourceOwnerAccount()
@@ -30,6 +31,7 @@ class DeleteIpv6InternetBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +44,7 @@ class DeleteIpv6InternetBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6InternetBandwidthId
+     *
      * @return $this
      */
     public function setIpv6InternetBandwidthId($ipv6InternetBandwidthId)
@@ -54,6 +57,7 @@ class DeleteIpv6InternetBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +70,7 @@ class DeleteIpv6InternetBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +83,7 @@ class DeleteIpv6InternetBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -90,6 +96,7 @@ class DeleteIpv6InternetBandwidthRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6AddressId
+     *
      * @return $this
      */
     public function setIpv6AddressId($ipv6AddressId)

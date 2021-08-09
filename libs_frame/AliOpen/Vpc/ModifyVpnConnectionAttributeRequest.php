@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyVpnConnectionAttribute
+ *
  * @method string getIkeConfig()
  * @method string getResourceOwnerId()
  * @method string getRemoteSubnet()
@@ -36,6 +37,7 @@ class ModifyVpnConnectionAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ikeConfig
+     *
      * @return $this
      */
     public function setIkeConfig($ikeConfig)
@@ -48,6 +50,7 @@ class ModifyVpnConnectionAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -60,6 +63,7 @@ class ModifyVpnConnectionAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $remoteSubnet
+     *
      * @return $this
      */
     public function setRemoteSubnet($remoteSubnet)
@@ -72,6 +76,7 @@ class ModifyVpnConnectionAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $effectImmediately
+     *
      * @return $this
      */
     public function setEffectImmediately($effectImmediately)
@@ -84,6 +89,7 @@ class ModifyVpnConnectionAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -96,6 +102,7 @@ class ModifyVpnConnectionAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -108,6 +115,7 @@ class ModifyVpnConnectionAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -120,6 +128,7 @@ class ModifyVpnConnectionAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ipsecConfig
+     *
      * @return $this
      */
     public function setIpsecConfig($ipsecConfig)
@@ -132,6 +141,7 @@ class ModifyVpnConnectionAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -144,6 +154,7 @@ class ModifyVpnConnectionAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $localSubnet
+     *
      * @return $this
      */
     public function setLocalSubnet($localSubnet)
@@ -156,6 +167,7 @@ class ModifyVpnConnectionAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $vpnConnectionId
+     *
      * @return $this
      */
     public function setVpnConnectionId($vpnConnectionId)
@@ -168,6 +180,7 @@ class ModifyVpnConnectionAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

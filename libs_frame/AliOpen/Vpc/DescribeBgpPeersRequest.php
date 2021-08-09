@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeBgpPeers
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getRouterId()
@@ -34,6 +35,7 @@ class DescribeBgpPeersRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +48,7 @@ class DescribeBgpPeersRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -58,6 +61,7 @@ class DescribeBgpPeersRequest extends RpcAcsRequest
 
     /**
      * @param string $routerId
+     *
      * @return $this
      */
     public function setRouterId($routerId)
@@ -70,6 +74,7 @@ class DescribeBgpPeersRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -82,6 +87,7 @@ class DescribeBgpPeersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -94,6 +100,7 @@ class DescribeBgpPeersRequest extends RpcAcsRequest
 
     /**
      * @param string $bgpGroupId
+     *
      * @return $this
      */
     public function setBgpGroupId($bgpGroupId)
@@ -106,6 +113,7 @@ class DescribeBgpPeersRequest extends RpcAcsRequest
 
     /**
      * @param string $bgpPeerId
+     *
      * @return $this
      */
     public function setBgpPeerId($bgpPeerId)
@@ -118,6 +126,7 @@ class DescribeBgpPeersRequest extends RpcAcsRequest
 
     /**
      * @param string $isDefault
+     *
      * @return $this
      */
     public function setIsDefault($isDefault)
@@ -130,6 +139,7 @@ class DescribeBgpPeersRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -142,6 +152,7 @@ class DescribeBgpPeersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

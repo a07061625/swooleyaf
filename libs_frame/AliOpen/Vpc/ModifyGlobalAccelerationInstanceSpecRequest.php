@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyGlobalAccelerationInstanceSpec
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getBandwidth()
@@ -30,6 +31,7 @@ class ModifyGlobalAccelerationInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +44,7 @@ class ModifyGlobalAccelerationInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -54,6 +57,7 @@ class ModifyGlobalAccelerationInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -66,6 +70,7 @@ class ModifyGlobalAccelerationInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +83,7 @@ class ModifyGlobalAccelerationInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -90,6 +96,7 @@ class ModifyGlobalAccelerationInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $globalAccelerationInstanceId
+     *
      * @return $this
      */
     public function setGlobalAccelerationInstanceId($globalAccelerationInstanceId)

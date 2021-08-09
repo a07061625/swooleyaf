@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeEventCounts
+ *
  * @method string getTypeCode()
  * @method string getSourceIp()
  * @method string getFeatureType()
@@ -30,6 +31,7 @@ class DescribeEventCountsRequest extends RpcAcsRequest
 
     /**
      * @param string $typeCode
+     *
      * @return $this
      */
     public function setTypeCode($typeCode)
@@ -42,6 +44,7 @@ class DescribeEventCountsRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -54,6 +57,7 @@ class DescribeEventCountsRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -66,6 +70,7 @@ class DescribeEventCountsRequest extends RpcAcsRequest
 
     /**
      * @param string $countType
+     *
      * @return $this
      */
     public function setCountType($countType)
@@ -78,6 +83,7 @@ class DescribeEventCountsRequest extends RpcAcsRequest
 
     /**
      * @param string $days
+     *
      * @return $this
      */
     public function setDays($days)
@@ -90,6 +96,7 @@ class DescribeEventCountsRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

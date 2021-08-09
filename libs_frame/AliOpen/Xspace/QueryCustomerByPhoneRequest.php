@@ -4,6 +4,7 @@ namespace AliOpen\Xspace;
 
 /**
  * Request of QueryCustomerByPhone
+ *
  * @method string getPhone()
  */
 class QueryCustomerByPhoneRequest extends RoaAcsRequest
@@ -27,6 +28,7 @@ class QueryCustomerByPhoneRequest extends RoaAcsRequest
 
     /**
      * @param string $phone
+     *
      * @return $this
      */
     public function setPhone($phone)

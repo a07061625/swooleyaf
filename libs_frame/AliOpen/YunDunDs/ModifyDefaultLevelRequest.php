@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDefaultLevel
+ *
  * @method string getSourceIp()
  * @method string getFeatureType()
  * @method string getDefaultId()
@@ -29,6 +30,7 @@ class ModifyDefaultLevelRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -41,6 +43,7 @@ class ModifyDefaultLevelRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -53,6 +56,7 @@ class ModifyDefaultLevelRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultId
+     *
      * @return $this
      */
     public function setDefaultId($defaultId)
@@ -65,6 +69,7 @@ class ModifyDefaultLevelRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -77,6 +82,7 @@ class ModifyDefaultLevelRequest extends RpcAcsRequest
 
     /**
      * @param string $sensitiveIds
+     *
      * @return $this
      */
     public function setSensitiveIds($sensitiveIds)

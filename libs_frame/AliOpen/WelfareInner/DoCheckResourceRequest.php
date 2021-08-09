@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DoCheckResource
+ *
  * @method string getCountry()
  * @method string getHid()
  * @method string getLevel()
@@ -38,6 +39,7 @@ class DoCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $country
+     *
      * @return $this
      */
     public function setCountry($country)
@@ -50,6 +52,7 @@ class DoCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $hid
+     *
      * @return $this
      */
     public function setHid($hid)
@@ -62,6 +65,7 @@ class DoCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $level
+     *
      * @return $this
      */
     public function setLevel($level)
@@ -74,6 +78,7 @@ class DoCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $invoker
+     *
      * @return $this
      */
     public function setInvoker($invoker)
@@ -86,6 +91,7 @@ class DoCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $message
+     *
      * @return $this
      */
     public function setMessage($message)
@@ -98,6 +104,7 @@ class DoCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $url
+     *
      * @return $this
      */
     public function setUrl($url)
@@ -110,6 +117,7 @@ class DoCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $success
+     *
      * @return $this
      */
     public function setSuccess($success)
@@ -122,6 +130,7 @@ class DoCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $interrupt
+     *
      * @return $this
      */
     public function setInterrupt($interrupt)
@@ -134,6 +143,7 @@ class DoCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $gmtWakeup
+     *
      * @return $this
      */
     public function setGmtWakeup($gmtWakeup)
@@ -146,6 +156,7 @@ class DoCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $pk
+     *
      * @return $this
      */
     public function setPk($pk)
@@ -158,6 +169,7 @@ class DoCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $bid
+     *
      * @return $this
      */
     public function setBid($bid)
@@ -170,6 +182,7 @@ class DoCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $prompt
+     *
      * @return $this
      */
     public function setPrompt($prompt)
@@ -182,6 +195,7 @@ class DoCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $taskExtraData
+     *
      * @return $this
      */
     public function setTaskExtraData($taskExtraData)
@@ -194,6 +208,7 @@ class DoCheckResourceRequest extends RpcAcsRequest
 
     /**
      * @param string $taskIdentifier
+     *
      * @return $this
      */
     public function setTaskIdentifier($taskIdentifier)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeEipAddresses
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getFilter2Value()
@@ -45,6 +46,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +59,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -69,6 +72,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $filter2Value
+     *
      * @return $this
      */
     public function setFilter2Value($filter2Value)
@@ -81,6 +85,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $iSP
+     *
      * @return $this
      */
     public function setISP($iSP)
@@ -93,6 +98,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -105,6 +111,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $allocationId
+     *
      * @return $this
      */
     public function setAllocationId($allocationId)
@@ -117,6 +124,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $filter1Value
+     *
      * @return $this
      */
     public function setFilter1Value($filter1Value)
@@ -129,6 +137,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $filter2Key
+     *
      * @return $this
      */
     public function setFilter2Key($filter2Key)
@@ -141,6 +150,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -153,6 +163,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $includeReservationData
+     *
      * @return $this
      */
     public function setIncludeReservationData($includeReservationData)
@@ -165,6 +176,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $eipAddress
+     *
      * @return $this
      */
     public function setEipAddress($eipAddress)
@@ -177,6 +189,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -189,6 +202,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -201,6 +215,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $lockReason
+     *
      * @return $this
      */
     public function setLockReason($lockReason)
@@ -213,6 +228,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $filter1Key
+     *
      * @return $this
      */
     public function setFilter1Key($filter1Key)
@@ -225,6 +241,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $associatedInstanceType
+     *
      * @return $this
      */
     public function setAssociatedInstanceType($associatedInstanceType)
@@ -237,6 +254,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -248,7 +266,6 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tags
      * @return $this
      */
     public function setTags(array $tags)
@@ -264,6 +281,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $chargeType
+     *
      * @return $this
      */
     public function setChargeType($chargeType)
@@ -276,6 +294,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $associatedInstanceId
+     *
      * @return $this
      */
     public function setAssociatedInstanceId($associatedInstanceId)
@@ -288,6 +307,7 @@ class DescribeEipAddressesRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

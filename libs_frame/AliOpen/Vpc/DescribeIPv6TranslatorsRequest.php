@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeIPv6Translators
+ *
  * @method string getBusinessStatus()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -38,6 +39,7 @@ class DescribeIPv6TranslatorsRequest extends RpcAcsRequest
 
     /**
      * @param string $businessStatus
+     *
      * @return $this
      */
     public function setBusinessStatus($businessStatus)
@@ -50,6 +52,7 @@ class DescribeIPv6TranslatorsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -62,6 +65,7 @@ class DescribeIPv6TranslatorsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -74,6 +78,7 @@ class DescribeIPv6TranslatorsRequest extends RpcAcsRequest
 
     /**
      * @param string $allocateIpv6Addr
+     *
      * @return $this
      */
     public function setAllocateIpv6Addr($allocateIpv6Addr)
@@ -86,6 +91,7 @@ class DescribeIPv6TranslatorsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -98,6 +104,7 @@ class DescribeIPv6TranslatorsRequest extends RpcAcsRequest
 
     /**
      * @param string $allocateIpv4Addr
+     *
      * @return $this
      */
     public function setAllocateIpv4Addr($allocateIpv4Addr)
@@ -110,6 +117,7 @@ class DescribeIPv6TranslatorsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -122,6 +130,7 @@ class DescribeIPv6TranslatorsRequest extends RpcAcsRequest
 
     /**
      * @param string $spec
+     *
      * @return $this
      */
     public function setSpec($spec)
@@ -134,6 +143,7 @@ class DescribeIPv6TranslatorsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -146,6 +156,7 @@ class DescribeIPv6TranslatorsRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -158,6 +169,7 @@ class DescribeIPv6TranslatorsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -170,6 +182,7 @@ class DescribeIPv6TranslatorsRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6TranslatorId
+     *
      * @return $this
      */
     public function setIpv6TranslatorId($ipv6TranslatorId)
@@ -182,6 +195,7 @@ class DescribeIPv6TranslatorsRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)
@@ -194,6 +208,7 @@ class DescribeIPv6TranslatorsRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

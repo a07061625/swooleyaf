@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeactiveFlowLog
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -29,6 +30,7 @@ class DeactiveFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +43,7 @@ class DeactiveFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -53,6 +56,7 @@ class DeactiveFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -65,6 +69,7 @@ class DeactiveFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -77,6 +82,7 @@ class DeactiveFlowLogRequest extends RpcAcsRequest
 
     /**
      * @param string $flowLogId
+     *
      * @return $this
      */
     public function setFlowLogId($flowLogId)

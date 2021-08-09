@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteRule
+ *
  * @method string getSourceIp()
  * @method string getFeatureType()
  * @method string getId()
@@ -28,6 +29,7 @@ class DeleteRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -40,6 +42,7 @@ class DeleteRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -52,6 +55,7 @@ class DeleteRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -64,6 +68,7 @@ class DeleteRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AssociateEipAddress
+ *
  * @method string getPrivateIpAddress()
  * @method string getResourceOwnerId()
  * @method string getInstanceId()
@@ -33,6 +34,7 @@ class AssociateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $privateIpAddress
+     *
      * @return $this
      */
     public function setPrivateIpAddress($privateIpAddress)
@@ -45,6 +47,7 @@ class AssociateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +60,7 @@ class AssociateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -69,6 +73,7 @@ class AssociateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -81,6 +86,7 @@ class AssociateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceRegionId
+     *
      * @return $this
      */
     public function setInstanceRegionId($instanceRegionId)
@@ -93,6 +99,7 @@ class AssociateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -105,6 +112,7 @@ class AssociateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -117,6 +125,7 @@ class AssociateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $allocationId
+     *
      * @return $this
      */
     public function setAllocationId($allocationId)
@@ -129,6 +138,7 @@ class AssociateEipAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

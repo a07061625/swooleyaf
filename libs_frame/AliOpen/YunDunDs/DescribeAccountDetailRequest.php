@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAccountDetail
+ *
  * @method string getSourceIp()
  * @method string getLang()
  * @method string getUserId()
@@ -28,6 +29,7 @@ class DescribeAccountDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -40,6 +42,7 @@ class DescribeAccountDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -52,6 +55,7 @@ class DescribeAccountDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $userId
+     *
      * @return $this
      */
     public function setUserId($userId)
@@ -64,6 +68,7 @@ class DescribeAccountDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $accountTypeId
+     *
      * @return $this
      */
     public function setAccountTypeId($accountTypeId)

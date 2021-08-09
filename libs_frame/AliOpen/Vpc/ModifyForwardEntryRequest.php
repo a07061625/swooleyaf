@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyForwardEntry
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getIpProtocol()
@@ -36,6 +37,7 @@ class ModifyForwardEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +50,7 @@ class ModifyForwardEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -60,6 +63,7 @@ class ModifyForwardEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ipProtocol
+     *
      * @return $this
      */
     public function setIpProtocol($ipProtocol)
@@ -72,6 +76,7 @@ class ModifyForwardEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $forwardEntryName
+     *
      * @return $this
      */
     public function setForwardEntryName($forwardEntryName)
@@ -84,6 +89,7 @@ class ModifyForwardEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -96,6 +102,7 @@ class ModifyForwardEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $forwardTableId
+     *
      * @return $this
      */
     public function setForwardTableId($forwardTableId)
@@ -108,6 +115,7 @@ class ModifyForwardEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -120,6 +128,7 @@ class ModifyForwardEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $internalIp
+     *
      * @return $this
      */
     public function setInternalIp($internalIp)
@@ -132,6 +141,7 @@ class ModifyForwardEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $forwardEntryId
+     *
      * @return $this
      */
     public function setForwardEntryId($forwardEntryId)
@@ -144,6 +154,7 @@ class ModifyForwardEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $internalPort
+     *
      * @return $this
      */
     public function setInternalPort($internalPort)
@@ -156,6 +167,7 @@ class ModifyForwardEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $externalIp
+     *
      * @return $this
      */
     public function setExternalIp($externalIp)
@@ -168,6 +180,7 @@ class ModifyForwardEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $externalPort
+     *
      * @return $this
      */
     public function setExternalPort($externalPort)

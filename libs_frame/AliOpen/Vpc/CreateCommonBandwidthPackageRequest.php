@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateCommonBandwidthPackage
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getClientToken()
@@ -37,6 +38,7 @@ class CreateCommonBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -49,6 +51,7 @@ class CreateCommonBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -61,6 +64,7 @@ class CreateCommonBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -73,6 +77,7 @@ class CreateCommonBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -85,6 +90,7 @@ class CreateCommonBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -97,6 +103,7 @@ class CreateCommonBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $iSP
+     *
      * @return $this
      */
     public function setISP($iSP)
@@ -109,6 +116,7 @@ class CreateCommonBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -121,6 +129,7 @@ class CreateCommonBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -133,6 +142,7 @@ class CreateCommonBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -145,6 +155,7 @@ class CreateCommonBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $zone
+     *
      * @return $this
      */
     public function setZone($zone)
@@ -157,6 +168,7 @@ class CreateCommonBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $internetChargeType
+     *
      * @return $this
      */
     public function setInternetChargeType($internetChargeType)
@@ -169,6 +181,7 @@ class CreateCommonBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -181,6 +194,7 @@ class CreateCommonBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $ratio
+     *
      * @return $this
      */
     public function setRatio($ratio)

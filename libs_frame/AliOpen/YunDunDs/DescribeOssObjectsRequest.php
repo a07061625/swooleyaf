@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeOssObjects
+ *
  * @method string getInstanceId()
  * @method string getSourceIp()
  * @method string getFeatureType()
@@ -34,6 +35,7 @@ class DescribeOssObjectsRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -46,6 +48,7 @@ class DescribeOssObjectsRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -58,6 +61,7 @@ class DescribeOssObjectsRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -70,6 +74,7 @@ class DescribeOssObjectsRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -82,6 +87,7 @@ class DescribeOssObjectsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -94,6 +100,7 @@ class DescribeOssObjectsRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -106,6 +113,7 @@ class DescribeOssObjectsRequest extends RpcAcsRequest
 
     /**
      * @param string $queryName
+     *
      * @return $this
      */
     public function setQueryName($queryName)
@@ -118,6 +126,7 @@ class DescribeOssObjectsRequest extends RpcAcsRequest
 
     /**
      * @param string $riskLevelId
+     *
      * @return $this
      */
     public function setRiskLevelId($riskLevelId)
@@ -130,6 +139,7 @@ class DescribeOssObjectsRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -142,6 +152,7 @@ class DescribeOssObjectsRequest extends RpcAcsRequest
 
     /**
      * @param string $ruleId
+     *
      * @return $this
      */
     public function setRuleId($ruleId)

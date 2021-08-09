@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateSslVpnClientCert
+ *
  * @method string getSslVpnServerId()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -31,6 +32,7 @@ class CreateSslVpnClientCertRequest extends RpcAcsRequest
 
     /**
      * @param string $sslVpnServerId
+     *
      * @return $this
      */
     public function setSslVpnServerId($sslVpnServerId)
@@ -43,6 +45,7 @@ class CreateSslVpnClientCertRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -55,6 +58,7 @@ class CreateSslVpnClientCertRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +71,7 @@ class CreateSslVpnClientCertRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -79,6 +84,7 @@ class CreateSslVpnClientCertRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +97,7 @@ class CreateSslVpnClientCertRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -103,6 +110,7 @@ class CreateSslVpnClientCertRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

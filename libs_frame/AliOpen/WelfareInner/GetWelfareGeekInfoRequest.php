@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetWelfareGeekInfo
+ *
  * @method string getAppName()
  * @method string getPk()
  */
@@ -26,6 +27,7 @@ class GetWelfareGeekInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $appName
+     *
      * @return $this
      */
     public function setAppName($appName)
@@ -38,6 +40,7 @@ class GetWelfareGeekInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $pk
+     *
      * @return $this
      */
     public function setPk($pk)

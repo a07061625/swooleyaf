@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeIPv6TranslatorEntries
+ *
  * @method string getBackendIpv4Port()
  * @method string getAclId()
  * @method string getResourceOwnerId()
@@ -42,6 +43,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $backendIpv4Port
+     *
      * @return $this
      */
     public function setBackendIpv4Port($backendIpv4Port)
@@ -54,6 +56,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $aclId
+     *
      * @return $this
      */
     public function setAclId($aclId)
@@ -66,6 +69,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -78,6 +82,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6TranslatorEntryId
+     *
      * @return $this
      */
     public function setIpv6TranslatorEntryId($ipv6TranslatorEntryId)
@@ -90,6 +95,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -102,6 +108,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $entryName
+     *
      * @return $this
      */
     public function setEntryName($entryName)
@@ -114,6 +121,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $allocateIpv6Addr
+     *
      * @return $this
      */
     public function setAllocateIpv6Addr($allocateIpv6Addr)
@@ -126,6 +134,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -138,6 +147,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -150,6 +160,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -162,6 +173,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $aclStatus
+     *
      * @return $this
      */
     public function setAclStatus($aclStatus)
@@ -174,6 +186,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -186,6 +199,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $aclType
+     *
      * @return $this
      */
     public function setAclType($aclType)
@@ -198,6 +212,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $allocateIpv6Port
+     *
      * @return $this
      */
     public function setAllocateIpv6Port($allocateIpv6Port)
@@ -210,6 +225,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -222,6 +238,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $backendIpv4Addr
+     *
      * @return $this
      */
     public function setBackendIpv4Addr($backendIpv4Addr)
@@ -234,6 +251,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $transProtocol
+     *
      * @return $this
      */
     public function setTransProtocol($transProtocol)
@@ -246,6 +264,7 @@ class DescribeIPv6TranslatorEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6TranslatorId
+     *
      * @return $this
      */
     public function setIpv6TranslatorId($ipv6TranslatorId)

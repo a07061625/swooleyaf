@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateIPv6Translator
+ *
  * @method string getResourceOwnerId()
  * @method string getAutoPay()
  * @method string getResourceOwnerAccount()
@@ -36,6 +37,7 @@ class CreateIPv6TranslatorRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +50,7 @@ class CreateIPv6TranslatorRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -60,6 +63,7 @@ class CreateIPv6TranslatorRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -72,6 +76,7 @@ class CreateIPv6TranslatorRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -84,6 +89,7 @@ class CreateIPv6TranslatorRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -96,6 +102,7 @@ class CreateIPv6TranslatorRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -108,6 +115,7 @@ class CreateIPv6TranslatorRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -120,6 +128,7 @@ class CreateIPv6TranslatorRequest extends RpcAcsRequest
 
     /**
      * @param string $spec
+     *
      * @return $this
      */
     public function setSpec($spec)
@@ -132,6 +141,7 @@ class CreateIPv6TranslatorRequest extends RpcAcsRequest
 
     /**
      * @param string $duration
+     *
      * @return $this
      */
     public function setDuration($duration)
@@ -144,6 +154,7 @@ class CreateIPv6TranslatorRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -156,6 +167,7 @@ class CreateIPv6TranslatorRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)
@@ -168,6 +180,7 @@ class CreateIPv6TranslatorRequest extends RpcAcsRequest
 
     /**
      * @param string $pricingCycle
+     *
      * @return $this
      */
     public function setPricingCycle($pricingCycle)

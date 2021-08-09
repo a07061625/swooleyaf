@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVSwitchAttributes
+ *
  * @method string getVSwitchId()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -29,6 +30,7 @@ class DescribeVSwitchAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -41,6 +43,7 @@ class DescribeVSwitchAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -53,6 +56,7 @@ class DescribeVSwitchAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -65,6 +69,7 @@ class DescribeVSwitchAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -77,6 +82,7 @@ class DescribeVSwitchAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

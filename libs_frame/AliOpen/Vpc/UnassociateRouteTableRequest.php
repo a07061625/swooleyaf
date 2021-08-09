@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UnassociateRouteTable
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getRouteTableId()
@@ -31,6 +32,7 @@ class UnassociateRouteTableRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +45,7 @@ class UnassociateRouteTableRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -55,6 +58,7 @@ class UnassociateRouteTableRequest extends RpcAcsRequest
 
     /**
      * @param string $routeTableId
+     *
      * @return $this
      */
     public function setRouteTableId($routeTableId)
@@ -67,6 +71,7 @@ class UnassociateRouteTableRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +84,7 @@ class UnassociateRouteTableRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +97,7 @@ class UnassociateRouteTableRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +110,7 @@ class UnassociateRouteTableRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)

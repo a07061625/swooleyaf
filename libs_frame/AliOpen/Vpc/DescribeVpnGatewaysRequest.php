@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVpnGateways
+ *
  * @method string getBusinessStatus()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -34,6 +35,7 @@ class DescribeVpnGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $businessStatus
+     *
      * @return $this
      */
     public function setBusinessStatus($businessStatus)
@@ -46,6 +48,7 @@ class DescribeVpnGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -58,6 +61,7 @@ class DescribeVpnGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -70,6 +74,7 @@ class DescribeVpnGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -82,6 +87,7 @@ class DescribeVpnGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -94,6 +100,7 @@ class DescribeVpnGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -106,6 +113,7 @@ class DescribeVpnGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $vpnGatewayId
+     *
      * @return $this
      */
     public function setVpnGatewayId($vpnGatewayId)
@@ -118,6 +126,7 @@ class DescribeVpnGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +139,7 @@ class DescribeVpnGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -142,6 +152,7 @@ class DescribeVpnGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

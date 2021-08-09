@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeIpv6Gateways
+ *
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
  * @method string getPageSize()
@@ -33,6 +34,7 @@ class DescribeIpv6GatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +47,7 @@ class DescribeIpv6GatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -57,6 +60,7 @@ class DescribeIpv6GatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -69,6 +73,7 @@ class DescribeIpv6GatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -81,6 +86,7 @@ class DescribeIpv6GatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -93,6 +99,7 @@ class DescribeIpv6GatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -105,6 +112,7 @@ class DescribeIpv6GatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -117,6 +125,7 @@ class DescribeIpv6GatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6GatewayId
+     *
      * @return $this
      */
     public function setIpv6GatewayId($ipv6GatewayId)
@@ -129,6 +138,7 @@ class DescribeIpv6GatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

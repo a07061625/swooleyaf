@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyRouterInterfaceAttribute
+ *
  * @method string getOppositeRouterId()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -37,6 +38,7 @@ class ModifyRouterInterfaceAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $oppositeRouterId
+     *
      * @return $this
      */
     public function setOppositeRouterId($oppositeRouterId)
@@ -49,6 +51,7 @@ class ModifyRouterInterfaceAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -61,6 +64,7 @@ class ModifyRouterInterfaceAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -73,6 +77,7 @@ class ModifyRouterInterfaceAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $deleteHealthCheckIp
+     *
      * @return $this
      */
     public function setDeleteHealthCheckIp($deleteHealthCheckIp)
@@ -85,6 +90,7 @@ class ModifyRouterInterfaceAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -97,6 +103,7 @@ class ModifyRouterInterfaceAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $healthCheckTargetIp
+     *
      * @return $this
      */
     public function setHealthCheckTargetIp($healthCheckTargetIp)
@@ -109,6 +116,7 @@ class ModifyRouterInterfaceAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -121,6 +129,7 @@ class ModifyRouterInterfaceAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $routerInterfaceId
+     *
      * @return $this
      */
     public function setRouterInterfaceId($routerInterfaceId)
@@ -133,6 +142,7 @@ class ModifyRouterInterfaceAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $oppositeInterfaceOwnerId
+     *
      * @return $this
      */
     public function setOppositeInterfaceOwnerId($oppositeInterfaceOwnerId)
@@ -145,6 +155,7 @@ class ModifyRouterInterfaceAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $healthCheckSourceIp
+     *
      * @return $this
      */
     public function setHealthCheckSourceIp($healthCheckSourceIp)
@@ -157,6 +168,7 @@ class ModifyRouterInterfaceAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -169,6 +181,7 @@ class ModifyRouterInterfaceAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $oppositeRouterType
+     *
      * @return $this
      */
     public function setOppositeRouterType($oppositeRouterType)
@@ -181,6 +194,7 @@ class ModifyRouterInterfaceAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $oppositeInterfaceId
+     *
      * @return $this
      */
     public function setOppositeInterfaceId($oppositeInterfaceId)

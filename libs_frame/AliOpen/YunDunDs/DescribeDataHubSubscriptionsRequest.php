@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDataHubSubscriptions
+ *
  * @method string getTopicId()
  * @method string getSourceIp()
  * @method string getFeatureType()
@@ -33,6 +34,7 @@ class DescribeDataHubSubscriptionsRequest extends RpcAcsRequest
 
     /**
      * @param string $topicId
+     *
      * @return $this
      */
     public function setTopicId($topicId)
@@ -45,6 +47,7 @@ class DescribeDataHubSubscriptionsRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -57,6 +60,7 @@ class DescribeDataHubSubscriptionsRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -69,6 +73,7 @@ class DescribeDataHubSubscriptionsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -81,6 +86,7 @@ class DescribeDataHubSubscriptionsRequest extends RpcAcsRequest
 
     /**
      * @param string $departId
+     *
      * @return $this
      */
     public function setDepartId($departId)
@@ -93,6 +99,7 @@ class DescribeDataHubSubscriptionsRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -105,6 +112,7 @@ class DescribeDataHubSubscriptionsRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -117,6 +125,7 @@ class DescribeDataHubSubscriptionsRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -129,6 +138,7 @@ class DescribeDataHubSubscriptionsRequest extends RpcAcsRequest
 
     /**
      * @param string $key
+     *
      * @return $this
      */
     public function setKey($key)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyIpv6GatewaySpec
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getSpec()
@@ -31,6 +32,7 @@ class ModifyIpv6GatewaySpecRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +45,7 @@ class ModifyIpv6GatewaySpecRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -55,6 +58,7 @@ class ModifyIpv6GatewaySpecRequest extends RpcAcsRequest
 
     /**
      * @param string $spec
+     *
      * @return $this
      */
     public function setSpec($spec)
@@ -67,6 +71,7 @@ class ModifyIpv6GatewaySpecRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +84,7 @@ class ModifyIpv6GatewaySpecRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +97,7 @@ class ModifyIpv6GatewaySpecRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +110,7 @@ class ModifyIpv6GatewaySpecRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6GatewayId
+     *
      * @return $this
      */
     public function setIpv6GatewayId($ipv6GatewayId)

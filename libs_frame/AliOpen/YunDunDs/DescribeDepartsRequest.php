@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDeparts
+ *
  * @method string getSourceIp()
  * @method string getFeatureType()
  * @method string getAccountType()
@@ -31,6 +32,7 @@ class DescribeDepartsRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -43,6 +45,7 @@ class DescribeDepartsRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -55,6 +58,7 @@ class DescribeDepartsRequest extends RpcAcsRequest
 
     /**
      * @param string $accountType
+     *
      * @return $this
      */
     public function setAccountType($accountType)
@@ -67,6 +71,7 @@ class DescribeDepartsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -79,6 +84,7 @@ class DescribeDepartsRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -91,6 +97,7 @@ class DescribeDepartsRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -103,6 +110,7 @@ class DescribeDepartsRequest extends RpcAcsRequest
 
     /**
      * @param string $key
+     *
      * @return $this
      */
     public function setKey($key)

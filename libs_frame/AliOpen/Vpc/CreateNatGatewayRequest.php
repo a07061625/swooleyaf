@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateNatGateway
+ *
  * @method string getResourceOwnerId()
  * @method string getAutoPay()
  * @method string getResourceOwnerAccount()
@@ -38,6 +39,7 @@ class CreateNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +52,7 @@ class CreateNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -62,6 +65,7 @@ class CreateNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -74,6 +78,7 @@ class CreateNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -86,6 +91,7 @@ class CreateNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -98,6 +104,7 @@ class CreateNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -110,6 +117,7 @@ class CreateNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -122,6 +130,7 @@ class CreateNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $spec
+     *
      * @return $this
      */
     public function setSpec($spec)
@@ -134,6 +143,7 @@ class CreateNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $duration
+     *
      * @return $this
      */
     public function setDuration($duration)
@@ -146,6 +156,7 @@ class CreateNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -158,6 +169,7 @@ class CreateNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -169,7 +181,6 @@ class CreateNatGatewayRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $bandwidthPackages
      * @return $this
      */
     public function setBandwidthPackages(array $bandwidthPackages)
@@ -188,6 +199,7 @@ class CreateNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)
@@ -200,6 +212,7 @@ class CreateNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $pricingCycle
+     *
      * @return $this
      */
     public function setPricingCycle($pricingCycle)

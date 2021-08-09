@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeForwardTableEntries
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getIpProtocol()
@@ -38,6 +39,7 @@ class DescribeForwardTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +52,7 @@ class DescribeForwardTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -62,6 +65,7 @@ class DescribeForwardTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $ipProtocol
+     *
      * @return $this
      */
     public function setIpProtocol($ipProtocol)
@@ -74,6 +78,7 @@ class DescribeForwardTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $forwardEntryName
+     *
      * @return $this
      */
     public function setForwardEntryName($forwardEntryName)
@@ -86,6 +91,7 @@ class DescribeForwardTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -98,6 +104,7 @@ class DescribeForwardTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $forwardTableId
+     *
      * @return $this
      */
     public function setForwardTableId($forwardTableId)
@@ -110,6 +117,7 @@ class DescribeForwardTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -122,6 +130,7 @@ class DescribeForwardTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $internalIp
+     *
      * @return $this
      */
     public function setInternalIp($internalIp)
@@ -134,6 +143,7 @@ class DescribeForwardTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -146,6 +156,7 @@ class DescribeForwardTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $forwardEntryId
+     *
      * @return $this
      */
     public function setForwardEntryId($forwardEntryId)
@@ -158,6 +169,7 @@ class DescribeForwardTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $internalPort
+     *
      * @return $this
      */
     public function setInternalPort($internalPort)
@@ -170,6 +182,7 @@ class DescribeForwardTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -182,6 +195,7 @@ class DescribeForwardTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $externalIp
+     *
      * @return $this
      */
     public function setExternalIp($externalIp)
@@ -194,6 +208,7 @@ class DescribeForwardTableEntriesRequest extends RpcAcsRequest
 
     /**
      * @param string $externalPort
+     *
      * @return $this
      */
     public function setExternalPort($externalPort)

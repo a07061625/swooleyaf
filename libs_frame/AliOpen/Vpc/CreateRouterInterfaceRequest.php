@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateRouterInterface
+ *
  * @method string getAccessPointId()
  * @method string getOppositeRouterId()
  * @method string getOppositeAccessPointId()
@@ -48,6 +49,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $accessPointId
+     *
      * @return $this
      */
     public function setAccessPointId($accessPointId)
@@ -60,6 +62,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $oppositeRouterId
+     *
      * @return $this
      */
     public function setOppositeRouterId($oppositeRouterId)
@@ -72,6 +75,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $oppositeAccessPointId
+     *
      * @return $this
      */
     public function setOppositeAccessPointId($oppositeAccessPointId)
@@ -84,6 +88,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -96,6 +101,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $role
+     *
      * @return $this
      */
     public function setRole($role)
@@ -108,6 +114,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -120,6 +127,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $healthCheckTargetIp
+     *
      * @return $this
      */
     public function setHealthCheckTargetIp($healthCheckTargetIp)
@@ -132,6 +140,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -144,6 +153,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $spec
+     *
      * @return $this
      */
     public function setSpec($spec)
@@ -156,6 +166,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $oppositeInterfaceId
+     *
      * @return $this
      */
     public function setOppositeInterfaceId($oppositeInterfaceId)
@@ -168,6 +179,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)
@@ -180,6 +192,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -192,6 +205,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -204,6 +218,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -216,6 +231,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $oppositeRegionId
+     *
      * @return $this
      */
     public function setOppositeRegionId($oppositeRegionId)
@@ -228,6 +244,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -240,6 +257,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -252,6 +270,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $oppositeInterfaceOwnerId
+     *
      * @return $this
      */
     public function setOppositeInterfaceOwnerId($oppositeInterfaceOwnerId)
@@ -264,6 +283,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $routerType
+     *
      * @return $this
      */
     public function setRouterType($routerType)
@@ -276,6 +296,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $healthCheckSourceIp
+     *
      * @return $this
      */
     public function setHealthCheckSourceIp($healthCheckSourceIp)
@@ -288,6 +309,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $routerId
+     *
      * @return $this
      */
     public function setRouterId($routerId)
@@ -300,6 +322,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $oppositeRouterType
+     *
      * @return $this
      */
     public function setOppositeRouterType($oppositeRouterType)
@@ -312,6 +335,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -324,6 +348,7 @@ class CreateRouterInterfaceRequest extends RpcAcsRequest
 
     /**
      * @param string $pricingCycle
+     *
      * @return $this
      */
     public function setPricingCycle($pricingCycle)

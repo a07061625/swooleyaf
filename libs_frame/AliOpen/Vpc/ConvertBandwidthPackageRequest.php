@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ConvertBandwidthPackage
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getBandwidthPackageId()
@@ -29,6 +30,7 @@ class ConvertBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +43,7 @@ class ConvertBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -53,6 +56,7 @@ class ConvertBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidthPackageId
+     *
      * @return $this
      */
     public function setBandwidthPackageId($bandwidthPackageId)
@@ -65,6 +69,7 @@ class ConvertBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -77,6 +82,7 @@ class ConvertBandwidthPackageRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

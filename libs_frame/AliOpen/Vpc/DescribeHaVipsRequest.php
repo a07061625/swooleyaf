@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeHaVips
+ *
  * @method array getFilters()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -30,7 +31,6 @@ class DescribeHaVipsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $filters
      * @return $this
      */
     public function setFilters(array $filters)
@@ -48,6 +48,7 @@ class DescribeHaVipsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -60,6 +61,7 @@ class DescribeHaVipsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -72,6 +74,7 @@ class DescribeHaVipsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -84,6 +87,7 @@ class DescribeHaVipsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -96,6 +100,7 @@ class DescribeHaVipsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -108,6 +113,7 @@ class DescribeHaVipsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVSwitches
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -38,6 +39,7 @@ class DescribeVSwitchesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +52,7 @@ class DescribeVSwitchesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -62,6 +65,7 @@ class DescribeVSwitchesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -74,6 +78,7 @@ class DescribeVSwitchesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -86,6 +91,7 @@ class DescribeVSwitchesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -98,6 +104,7 @@ class DescribeVSwitchesRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -110,6 +117,7 @@ class DescribeVSwitchesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -122,6 +130,7 @@ class DescribeVSwitchesRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -134,6 +143,7 @@ class DescribeVSwitchesRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchName
+     *
      * @return $this
      */
     public function setVSwitchName($vSwitchName)
@@ -146,6 +156,7 @@ class DescribeVSwitchesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -158,6 +169,7 @@ class DescribeVSwitchesRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -169,7 +181,6 @@ class DescribeVSwitchesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tags
      * @return $this
      */
     public function setTags(array $tags)
@@ -185,6 +196,7 @@ class DescribeVSwitchesRequest extends RpcAcsRequest
 
     /**
      * @param string $isDefault
+     *
      * @return $this
      */
     public function setIsDefault($isDefault)
@@ -197,6 +209,7 @@ class DescribeVSwitchesRequest extends RpcAcsRequest
 
     /**
      * @param string $routeTableId
+     *
      * @return $this
      */
     public function setRouteTableId($routeTableId)

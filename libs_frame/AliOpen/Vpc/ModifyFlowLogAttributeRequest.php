@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyFlowLogAttribute
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -31,6 +32,7 @@ class ModifyFlowLogAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +45,7 @@ class ModifyFlowLogAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -55,6 +58,7 @@ class ModifyFlowLogAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -67,6 +71,7 @@ class ModifyFlowLogAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -79,6 +84,7 @@ class ModifyFlowLogAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -91,6 +97,7 @@ class ModifyFlowLogAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $flowLogId
+     *
      * @return $this
      */
     public function setFlowLogId($flowLogId)
@@ -103,6 +110,7 @@ class ModifyFlowLogAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $flowLogName
+     *
      * @return $this
      */
     public function setFlowLogName($flowLogName)

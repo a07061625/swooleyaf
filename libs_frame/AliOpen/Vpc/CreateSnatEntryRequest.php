@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateSnatEntry
+ *
  * @method string getResourceOwnerId()
  * @method string getSourceVSwitchId()
  * @method string getResourceOwnerAccount()
@@ -33,6 +34,7 @@ class CreateSnatEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +47,7 @@ class CreateSnatEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceVSwitchId
+     *
      * @return $this
      */
     public function setSourceVSwitchId($sourceVSwitchId)
@@ -57,6 +60,7 @@ class CreateSnatEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -69,6 +73,7 @@ class CreateSnatEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -81,6 +86,7 @@ class CreateSnatEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $snatEntryName
+     *
      * @return $this
      */
     public function setSnatEntryName($snatEntryName)
@@ -93,6 +99,7 @@ class CreateSnatEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceCIDR
+     *
      * @return $this
      */
     public function setSourceCIDR($sourceCIDR)
@@ -105,6 +112,7 @@ class CreateSnatEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $snatTableId
+     *
      * @return $this
      */
     public function setSnatTableId($snatTableId)
@@ -117,6 +125,7 @@ class CreateSnatEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +138,7 @@ class CreateSnatEntryRequest extends RpcAcsRequest
 
     /**
      * @param string $snatIp
+     *
      * @return $this
      */
     public function setSnatIp($snatIp)

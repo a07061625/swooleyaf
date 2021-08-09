@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyRouteTableAttributes
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getBandwidth()
@@ -35,6 +36,7 @@ class ModifyRouteTableAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +49,7 @@ class ModifyRouteTableAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -59,6 +62,7 @@ class ModifyRouteTableAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -71,6 +75,7 @@ class ModifyRouteTableAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -83,6 +88,7 @@ class ModifyRouteTableAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -95,6 +101,7 @@ class ModifyRouteTableAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -107,6 +114,7 @@ class ModifyRouteTableAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $kbpsBandwidth
+     *
      * @return $this
      */
     public function setKbpsBandwidth($kbpsBandwidth)
@@ -119,6 +127,7 @@ class ModifyRouteTableAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $routeTableName
+     *
      * @return $this
      */
     public function setRouteTableName($routeTableName)
@@ -131,6 +140,7 @@ class ModifyRouteTableAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceUid
+     *
      * @return $this
      */
     public function setResourceUid($resourceUid)
@@ -143,6 +153,7 @@ class ModifyRouteTableAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceBid
+     *
      * @return $this
      */
     public function setResourceBid($resourceBid)
@@ -155,6 +166,7 @@ class ModifyRouteTableAttributesRequest extends RpcAcsRequest
 
     /**
      * @param string $routeTableId
+     *
      * @return $this
      */
     public function setRouteTableId($routeTableId)

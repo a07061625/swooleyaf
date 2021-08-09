@@ -6,6 +6,7 @@ use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of QueryCustomerById
+ *
  * @method string getId()
  */
 class QueryCustomerByIdRequest extends RoaAcsRequest
@@ -29,6 +30,7 @@ class QueryCustomerByIdRequest extends RoaAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)

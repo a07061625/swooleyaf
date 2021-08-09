@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyEventStatus
+ *
  * @method string getSourceIp()
  * @method string getBacked()
  * @method string getFeatureType()
@@ -31,6 +32,7 @@ class ModifyEventStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -43,6 +45,7 @@ class ModifyEventStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $backed
+     *
      * @return $this
      */
     public function setBacked($backed)
@@ -55,6 +58,7 @@ class ModifyEventStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -67,6 +71,7 @@ class ModifyEventStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $dealReason
+     *
      * @return $this
      */
     public function setDealReason($dealReason)
@@ -79,6 +84,7 @@ class ModifyEventStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -91,6 +97,7 @@ class ModifyEventStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -103,6 +110,7 @@ class ModifyEventStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

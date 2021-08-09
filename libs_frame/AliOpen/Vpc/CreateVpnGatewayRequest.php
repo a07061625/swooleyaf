@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateVpnGateway
+ *
  * @method string getResourceOwnerId()
  * @method string getPeriod()
  * @method string getAutoPay()
@@ -37,6 +38,7 @@ class CreateVpnGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -49,6 +51,7 @@ class CreateVpnGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -61,6 +64,7 @@ class CreateVpnGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -73,6 +77,7 @@ class CreateVpnGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -85,6 +90,7 @@ class CreateVpnGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -97,6 +103,7 @@ class CreateVpnGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $enableIpsec
+     *
      * @return $this
      */
     public function setEnableIpsec($enableIpsec)
@@ -109,6 +116,7 @@ class CreateVpnGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -121,6 +129,7 @@ class CreateVpnGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -133,6 +142,7 @@ class CreateVpnGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $enableSsl
+     *
      * @return $this
      */
     public function setEnableSsl($enableSsl)
@@ -145,6 +155,7 @@ class CreateVpnGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $sslConnections
+     *
      * @return $this
      */
     public function setSslConnections($sslConnections)
@@ -157,6 +168,7 @@ class CreateVpnGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -169,6 +181,7 @@ class CreateVpnGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -181,6 +194,7 @@ class CreateVpnGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)

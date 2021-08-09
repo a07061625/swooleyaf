@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDataHubTopics
+ *
  * @method string getSourceIp()
  * @method string getFeatureType()
  * @method string getPageSize()
@@ -32,6 +33,7 @@ class DescribeDataHubTopicsRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -44,6 +46,7 @@ class DescribeDataHubTopicsRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -56,6 +59,7 @@ class DescribeDataHubTopicsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -68,6 +72,7 @@ class DescribeDataHubTopicsRequest extends RpcAcsRequest
 
     /**
      * @param string $departId
+     *
      * @return $this
      */
     public function setDepartId($departId)
@@ -80,6 +85,7 @@ class DescribeDataHubTopicsRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -92,6 +98,7 @@ class DescribeDataHubTopicsRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -104,6 +111,7 @@ class DescribeDataHubTopicsRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -116,6 +124,7 @@ class DescribeDataHubTopicsRequest extends RpcAcsRequest
 
     /**
      * @param string $key
+     *
      * @return $this
      */
     public function setKey($key)

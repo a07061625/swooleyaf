@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateVpc
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getClientToken()
@@ -36,6 +37,7 @@ class CreateVpcRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +50,7 @@ class CreateVpcRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -60,6 +63,7 @@ class CreateVpcRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -72,6 +76,7 @@ class CreateVpcRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -84,6 +89,7 @@ class CreateVpcRequest extends RpcAcsRequest
 
     /**
      * @param string $enableIpv6
+     *
      * @return $this
      */
     public function setEnableIpv6($enableIpv6)
@@ -96,6 +102,7 @@ class CreateVpcRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -108,6 +115,7 @@ class CreateVpcRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -120,6 +128,7 @@ class CreateVpcRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6CidrBlock
+     *
      * @return $this
      */
     public function setIpv6CidrBlock($ipv6CidrBlock)
@@ -132,6 +141,7 @@ class CreateVpcRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcName
+     *
      * @return $this
      */
     public function setVpcName($vpcName)
@@ -144,6 +154,7 @@ class CreateVpcRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -156,6 +167,7 @@ class CreateVpcRequest extends RpcAcsRequest
 
     /**
      * @param string $cidrBlock
+     *
      * @return $this
      */
     public function setCidrBlock($cidrBlock)
@@ -168,6 +180,7 @@ class CreateVpcRequest extends RpcAcsRequest
 
     /**
      * @param string $userCidr
+     *
      * @return $this
      */
     public function setUserCidr($userCidr)

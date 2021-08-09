@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AssociateHaVip
+ *
  * @method string getHaVipId()
  * @method string getResourceOwnerId()
  * @method string getInstanceId()
@@ -31,6 +32,7 @@ class AssociateHaVipRequest extends RpcAcsRequest
 
     /**
      * @param string $haVipId
+     *
      * @return $this
      */
     public function setHaVipId($haVipId)
@@ -43,6 +45,7 @@ class AssociateHaVipRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -55,6 +58,7 @@ class AssociateHaVipRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -67,6 +71,7 @@ class AssociateHaVipRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +84,7 @@ class AssociateHaVipRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -91,6 +97,7 @@ class AssociateHaVipRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -103,6 +110,7 @@ class AssociateHaVipRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteNatGateway
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -30,6 +31,7 @@ class DeleteNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +44,7 @@ class DeleteNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -54,6 +57,7 @@ class DeleteNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -66,6 +70,7 @@ class DeleteNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $force
+     *
      * @return $this
      */
     public function setForce($force)
@@ -78,6 +83,7 @@ class DeleteNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $natGatewayId
+     *
      * @return $this
      */
     public function setNatGatewayId($natGatewayId)
@@ -90,6 +96,7 @@ class DeleteNatGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

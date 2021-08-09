@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyVpcAttribute
+ *
  * @method string getVpcName()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -33,6 +34,7 @@ class ModifyVpcAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcName
+     *
      * @return $this
      */
     public function setVpcName($vpcName)
@@ -45,6 +47,7 @@ class ModifyVpcAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +60,7 @@ class ModifyVpcAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -69,6 +73,7 @@ class ModifyVpcAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -81,6 +86,7 @@ class ModifyVpcAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -93,6 +99,7 @@ class ModifyVpcAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $cidrBlock
+     *
      * @return $this
      */
     public function setCidrBlock($cidrBlock)
@@ -105,6 +112,7 @@ class ModifyVpcAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $enableIPv6
+     *
      * @return $this
      */
     public function setEnableIPv6($enableIPv6)
@@ -117,6 +125,7 @@ class ModifyVpcAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -129,6 +138,7 @@ class ModifyVpcAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

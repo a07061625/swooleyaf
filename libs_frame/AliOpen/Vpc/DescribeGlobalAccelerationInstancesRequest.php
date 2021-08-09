@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeGlobalAccelerationInstances
+ *
  * @method string getIpAddress()
  * @method string getResourceOwnerId()
  * @method string getBandwidthType()
@@ -38,6 +39,7 @@ class DescribeGlobalAccelerationInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $ipAddress
+     *
      * @return $this
      */
     public function setIpAddress($ipAddress)
@@ -50,6 +52,7 @@ class DescribeGlobalAccelerationInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -62,6 +65,7 @@ class DescribeGlobalAccelerationInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidthType
+     *
      * @return $this
      */
     public function setBandwidthType($bandwidthType)
@@ -74,6 +78,7 @@ class DescribeGlobalAccelerationInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -86,6 +91,7 @@ class DescribeGlobalAccelerationInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceLocation
+     *
      * @return $this
      */
     public function setServiceLocation($serviceLocation)
@@ -98,6 +104,7 @@ class DescribeGlobalAccelerationInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -110,6 +117,7 @@ class DescribeGlobalAccelerationInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -122,6 +130,7 @@ class DescribeGlobalAccelerationInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $includeReservationData
+     *
      * @return $this
      */
     public function setIncludeReservationData($includeReservationData)
@@ -134,6 +143,7 @@ class DescribeGlobalAccelerationInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $globalAccelerationInstanceId
+     *
      * @return $this
      */
     public function setGlobalAccelerationInstanceId($globalAccelerationInstanceId)
@@ -146,6 +156,7 @@ class DescribeGlobalAccelerationInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $serverId
+     *
      * @return $this
      */
     public function setServerId($serverId)
@@ -158,6 +169,7 @@ class DescribeGlobalAccelerationInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -170,6 +182,7 @@ class DescribeGlobalAccelerationInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -182,6 +195,7 @@ class DescribeGlobalAccelerationInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -194,6 +208,7 @@ class DescribeGlobalAccelerationInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)
