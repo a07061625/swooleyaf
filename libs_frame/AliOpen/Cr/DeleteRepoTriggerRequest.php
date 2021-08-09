@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteRepoTrigger
  *
  * @method string getRepoId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteRepoTriggerRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of PutCustomMetric
  *
  * @method array getMetricLists()
  */
 class PutCustomMetricRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -32,8 +30,6 @@ class PutCustomMetricRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $metricList
-     *
      * @return $this
      */
     public function setMetricLists(array $metricList)

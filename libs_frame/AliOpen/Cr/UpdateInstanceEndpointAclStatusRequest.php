@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of UpdateInstanceEndpointAclStatus
  *
  * @method string getInstanceId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class UpdateInstanceEndpointAclStatusRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

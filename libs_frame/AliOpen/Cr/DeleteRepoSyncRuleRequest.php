@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteRepoSyncRule
  *
  * @method string getInstanceId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteRepoSyncRuleRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

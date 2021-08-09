@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeSiteMonitorQuota
- *
  */
 class DescribeSiteMonitorQuotaRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

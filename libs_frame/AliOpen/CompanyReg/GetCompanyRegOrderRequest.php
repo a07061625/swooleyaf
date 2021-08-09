@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CompanyReg;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetCompanyRegOrder
  *
  * @method string getActionTypes()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetCompanyRegOrderRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

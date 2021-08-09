@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeAlertHistoryList
  *
  * @method string getGroupId()
@@ -23,7 +22,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeAlertHistoryListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

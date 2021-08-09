@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteMonitorGroupInstances
  *
  * @method string getInstanceIdList()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteMonitorGroupInstancesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

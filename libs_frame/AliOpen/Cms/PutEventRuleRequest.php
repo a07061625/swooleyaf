@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of PutEventRule
  *
  * @method array getEventPatterns()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class PutEventRuleRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -37,8 +35,6 @@ class PutEventRuleRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $eventPattern
-     *
      * @return $this
      */
     public function setEventPatterns(array $eventPattern)

@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\Crm;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -10,7 +11,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class BatchGetAliyunIdByAliyunPkRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -30,8 +30,6 @@ class BatchGetAliyunIdByAliyunPkRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $pkLists
-     *
      * @return $this
      */
     public function setPkLists(array $pkLists)

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListUserVpc
  *
  * @method string getPageNo()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListUserVpcRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

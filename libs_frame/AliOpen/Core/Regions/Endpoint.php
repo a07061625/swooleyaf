@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core\Regions;
 
 /**
@@ -39,6 +40,7 @@ class Endpoint
 
     /**
      * AliOpen\Core\Regions\Endpoint constructor.
+     *
      * @param $name
      * @param $regionIds
      * @param $productDomains

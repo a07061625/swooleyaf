@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CompanyReg;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SubmitConsultation
  *
  * @method string getData()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SubmitConsultationRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

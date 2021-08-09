@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeContactGroupList
  *
  * @method string getPageSize()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeContactGroupListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

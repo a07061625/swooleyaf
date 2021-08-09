@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteInstanceVpcEndpointLinkedVpc
  *
  * @method string getVswitchId()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteInstanceVpcEndpointLinkedVpcRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

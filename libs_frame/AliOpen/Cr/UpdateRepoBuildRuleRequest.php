@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of UpdateRepoBuildRule
  *
  * @method string getRepoId()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class UpdateRepoBuildRuleRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

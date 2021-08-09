@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetRepoTagManifest
  *
  * @method string getRepoId()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetRepoTagManifestRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

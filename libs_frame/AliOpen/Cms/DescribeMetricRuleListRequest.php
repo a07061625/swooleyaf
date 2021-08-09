@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeMetricRuleList
  *
  * @method string getEnableState()
@@ -21,7 +20,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeMetricRuleListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteChartRelease
  *
  * @method string getRelease()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteChartReleaseRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

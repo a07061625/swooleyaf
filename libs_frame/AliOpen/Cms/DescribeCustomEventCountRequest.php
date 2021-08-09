@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeCustomEventCount
  *
  * @method string getEventId()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeCustomEventCountRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteContact
  *
  * @method string getContactName()
  */
 class DeleteContactRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

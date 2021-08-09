@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Core\Regions;
 
 use AliOpen\Core\Http\HttpHelper;
 
 /**
  * Class LocationService
+ *
  * @package AliOpen\Core\Regions
  */
 class LocationService
 {
-    /**
-     * @var \AliOpen\Core\Profile\IClientProfile
-     */
-    private $clientProfile;
     /**
      * @var array
      */
@@ -25,9 +23,14 @@ class LocationService
      * @var string
      */
     public static $serviceDomain = ALIOPEN_LOCATION_SERVICE_DOMAIN;
+    /**
+     * @var \AliOpen\Core\Profile\IClientProfile
+     */
+    private $clientProfile;
 
     /**
      * LocationService constructor.
+     *
      * @param $clientProfile
      */
     public function __construct($clientProfile)
@@ -40,14 +43,16 @@ class LocationService
      * @param $serviceCode
      * @param $endPointType
      * @param $product
-     * @return mixed|null
+     *
+     * @return null|mixed
+     *
      * @throws \AliOpen\Core\Exception\ClientException
      */
     public function findProductDomain($regionId, $serviceCode, $endPointType, $product)
     {
         $key = $regionId . '#' . $product;
         $domain = self::$cache[$key] ?? null;
-        if ($domain === null || $this->checkCacheIsExpire($key) == true) {
+        if (null === $domain || true == $this->checkCacheIsExpire($key)) {
             $domain = $this->findProductDomainFromLocationService($regionId, $serviceCode, $endPointType);
             self::$cache[$key] = $domain;
         }
@@ -78,12 +83,13 @@ class LocationService
 
     /**
      * @param $key
+     *
      * @return bool
      */
     private function checkCacheIsExpire($key)
     {
         $lastClearTime = isset(self::$lastClearTimePerProduct[$key]) ? self::$lastClearTimePerProduct[$key] : null;
-        if ($lastClearTime === null) {
+        if (null === $lastClearTime) {
             $lastClearTime = time();
             self::$lastClearTimePerProduct[$key] = $lastClearTime;
         }
@@ -105,7 +111,9 @@ class LocationService
      * @param $regionId
      * @param $serviceCode
      * @param $endPointType
-     * @return string|null
+     *
+     * @return null|string
+     *
      * @throws \AliOpen\Core\Exception\ClientException
      */
     private function findProductDomainFromLocationService($regionId, $serviceCode, $endPointType)
@@ -120,7 +128,7 @@ class LocationService
         $httpResponse = HttpHelper::curl($requestUrl, $request->getMethod(), null, $request->getHeaders());
 
         if (!$httpResponse->isSuccess()) {
-            return null;
+            return;
         }
 
         $respObj = json_decode($httpResponse->getBody());

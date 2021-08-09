@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetInstanceCount
- *
  */
 class GetInstanceCountRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

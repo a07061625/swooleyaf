@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListSourceCodeRepo
  *
  * @method string getCodeRepoType()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListSourceCodeRepoRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

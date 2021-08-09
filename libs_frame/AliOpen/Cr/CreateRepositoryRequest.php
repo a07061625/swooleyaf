@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateRepository
  *
  * @method string getRepoType()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateRepositoryRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

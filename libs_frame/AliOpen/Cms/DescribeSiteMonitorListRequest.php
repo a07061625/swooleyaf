@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeSiteMonitorList
  *
  * @method string getTaskType()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeSiteMonitorListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

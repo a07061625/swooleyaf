@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of InstallMonitoringAgent
  *
  * @method array getInstanceIdss()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class InstallMonitoringAgentRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -33,8 +31,6 @@ class InstallMonitoringAgentRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceIds
-     *
      * @return $this
      */
     public function setInstanceIdss(array $instanceIds)

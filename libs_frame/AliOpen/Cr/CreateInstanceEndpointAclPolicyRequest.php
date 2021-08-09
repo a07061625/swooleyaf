@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateInstanceEndpointAclPolicy
  *
  * @method string getEntry()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateInstanceEndpointAclPolicyRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

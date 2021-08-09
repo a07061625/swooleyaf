@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of PutMonitoringConfig
  *
  * @method string getEnableInstallAgentNewECS()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class PutMonitoringConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

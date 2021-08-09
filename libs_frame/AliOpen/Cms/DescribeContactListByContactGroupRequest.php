@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeContactListByContactGroup
  *
  * @method string getContactGroupName()
  */
 class DescribeContactListByContactGroupRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

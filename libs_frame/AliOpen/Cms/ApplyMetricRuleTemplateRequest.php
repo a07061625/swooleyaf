@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ApplyMetricRuleTemplate
  *
  * @method string getEnableStartTime()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ApplyMetricRuleTemplateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

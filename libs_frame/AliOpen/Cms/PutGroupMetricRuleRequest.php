@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of PutGroupMetricRule
  *
  * @method string getWebhook()
@@ -37,7 +36,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class PutGroupMetricRuleRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

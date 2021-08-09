@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeMonitorGroupNotifyPolicyList
  *
  * @method string getPolicyType()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeMonitorGroupNotifyPolicyListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

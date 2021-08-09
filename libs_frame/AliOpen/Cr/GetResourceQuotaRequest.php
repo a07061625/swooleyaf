@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetResourceQuota
  *
  * @method string getScopeId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetResourceQuotaRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

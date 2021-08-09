@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of UninstallMonitoringAgent
  *
  * @method string getInstanceId()
  */
 class UninstallMonitoringAgentRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

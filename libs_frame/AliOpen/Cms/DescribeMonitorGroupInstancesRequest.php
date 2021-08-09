@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeMonitorGroupInstances
  *
  * @method string getInstanceIds()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeMonitorGroupInstancesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

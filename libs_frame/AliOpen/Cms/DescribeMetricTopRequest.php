@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeMetricTop
  *
  * @method string getPeriod()
@@ -21,7 +20,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeMetricTopRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

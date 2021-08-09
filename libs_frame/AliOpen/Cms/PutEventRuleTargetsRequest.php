@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of PutEventRuleTargets
  *
  * @method array getWebhookParameterss()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class PutEventRuleTargetsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -37,8 +35,6 @@ class PutEventRuleTargetsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $webhookParameters
-     *
      * @return $this
      */
     public function setWebhookParameterss(array $webhookParameters)
@@ -55,8 +51,6 @@ class PutEventRuleTargetsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $contactParameters
-     *
      * @return $this
      */
     public function setContactParameterss(array $contactParameters)
@@ -72,8 +66,6 @@ class PutEventRuleTargetsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $slsParameters
-     *
      * @return $this
      */
     public function setSlsParameterss(array $slsParameters)
@@ -90,8 +82,6 @@ class PutEventRuleTargetsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $fcParameters
-     *
      * @return $this
      */
     public function setFcParameterss(array $fcParameters)
@@ -121,8 +111,6 @@ class PutEventRuleTargetsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $mnsParameters
-     *
      * @return $this
      */
     public function setMnsParameterss(array $mnsParameters)

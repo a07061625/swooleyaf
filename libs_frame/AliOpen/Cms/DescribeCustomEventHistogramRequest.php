@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeCustomEventHistogram
  *
  * @method string getEventId()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeCustomEventHistogramRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

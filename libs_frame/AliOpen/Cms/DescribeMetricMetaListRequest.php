@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeMetricMetaList
  *
  * @method string getNamespace()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeMetricMetaListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

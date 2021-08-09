@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\Core;
 
 /*
@@ -74,7 +75,7 @@ abstract class AcsRequest
      */
     protected $locationEndpointType;
     /**
-     * @var array The original parameters of the request object.
+     * @var array the original parameters of the request object
      */
     protected $requestParameters = [];
     /**
@@ -84,11 +85,12 @@ abstract class AcsRequest
 
     /**
      * AcsRequest constructor.
-     * @param string $product
-     * @param string $version
-     * @param string $actionName
-     * @param string|null $locationServiceCode
-     * @param string $locationEndpointType
+     *
+     * @param string      $product
+     * @param string      $version
+     * @param string      $actionName
+     * @param null|string $locationServiceCode
+     * @param string      $locationEndpointType
      */
     public function __construct($product, $version, $actionName, $locationServiceCode = null, $locationEndpointType = 'openAPI')
     {
@@ -101,9 +103,29 @@ abstract class AcsRequest
     }
 
     /**
+     * Magic method for get parameters.
+     *
+     * @param string $name
+     * @param mixed  $arguments
+     *
+     * @return $this
+     */
+    public function __call($name, $arguments)
+    {
+        if (false !== strpos($name, 'get', 0)) {
+            $parameterName = $this->propertyNameByMethodName($name);
+
+            return $this->requestParameters[$parameterName] ?? null;
+        }
+
+        return $this;
+    }
+
+    /**
      * @param $iSigner
      * @param $credential
      * @param $domain
+     *
      * @return mixed
      */
     abstract public function composeUrl($iSigner, $credential, $domain);
@@ -254,7 +276,7 @@ abstract class AcsRequest
 
     /**
      * @param string $headerKey
-     * @param mixed $headerValue
+     * @param mixed  $headerValue
      */
     public function addHeader($headerKey, $headerValue)
     {
@@ -278,36 +300,20 @@ abstract class AcsRequest
     }
 
     /**
-     * Magic method for get parameters.
-     * @param string $name
-     * @param mixed $arguments
-     * @return $this
-     */
-    public function __call($name, $arguments)
-    {
-        if (\strpos($name, 'get', 0) !== false) {
-            $parameterName = $this->propertyNameByMethodName($name);
-
-            return $this->requestParameters[$parameterName] ?? null;
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param string $methodName
-     * @return string
-     */
-    protected function propertyNameByMethodName($methodName)
-    {
-        return \mb_strcut($methodName, 3);
-    }
-
-    /**
      * @return string
      */
     public function stringToBeSigned()
     {
         return $this->stringToBeSigned;
+    }
+
+    /**
+     * @param string $methodName
+     *
+     * @return string
+     */
+    protected function propertyNameByMethodName($methodName)
+    {
+        return mb_strcut($methodName, 3);
     }
 }

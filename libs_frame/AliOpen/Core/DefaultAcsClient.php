@@ -17,18 +17,18 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core;
 
-use AliOpen\Core\Exception\ClientException;
 use AliOpen\Core\Auth\EcsRamRoleService;
-use AliOpen\Core\Regions\EndpointProvider;
+use AliOpen\Core\Auth\RamRoleArnService;
+use AliOpen\Core\Exception\ClientException;
+use AliOpen\Core\Exception\ServerException;
 use AliOpen\Core\Http\HttpHelper;
 use AliOpen\Core\Http\HttpResponse;
 use AliOpen\Core\Profile\IClientProfile;
-use AliOpen\Core\Auth\RamRoleArnService;
-use AliOpen\Core\Exception\ServerException;
+use AliOpen\Core\Regions\EndpointProvider;
 use AliOpen\Core\Regions\LocationService;
-use function count;
 
 /**
  * Class AliOpen\Core\DefaultAcsClient
@@ -58,6 +58,7 @@ class DefaultAcsClient implements IAcsClient
 
     /**
      * AliOpen\Core\DefaultAcsClient constructor.
+     *
      * @param $iClientProfile
      */
     public function __construct($iClientProfile)
@@ -78,8 +79,10 @@ class DefaultAcsClient implements IAcsClient
      * @param null $iSigner
      * @param null $credential
      * @param bool $autoRetry
-     * @param int $maxRetryNumber
+     * @param int  $maxRetryNumber
+     *
      * @return mixed|\SimpleXMLElement
+     *
      * @throws \AliOpen\Core\Exception\ClientException
      * @throws \AliOpen\Core\Exception\ServerException
      */
@@ -96,11 +99,31 @@ class DefaultAcsClient implements IAcsClient
 
     /**
      * @param AcsRequest $request
-     * @param null $iSigner
-     * @param null $credential
-     * @param bool $autoRetry
-     * @param int $maxRetryNumber
+     * @param null       $iSigner
+     * @param null       $credential
+     * @param bool       $autoRetry
+     * @param int        $maxRetryNumber
+     *
      * @return HttpResponse
+     *
+     * @throws \AliOpen\Core\Exception\ClientException
+     */
+    public function doAction($request, $iSigner = null, $credential = null, $autoRetry = true, $maxRetryNumber = 3)
+    {
+        trigger_error('doAction() is deprecated. Please use getAcsResponse() instead.', E_USER_NOTICE);
+
+        return $this->doActionImpl($request, $iSigner, $credential, $autoRetry, $maxRetryNumber);
+    }
+
+    /**
+     * @param AcsRequest $request
+     * @param null       $iSigner
+     * @param null       $credential
+     * @param bool       $autoRetry
+     * @param int        $maxRetryNumber
+     *
+     * @return HttpResponse
+     *
      * @throws ClientException
      */
     private function doActionImpl($request, $iSigner = null, $credential = null, $autoRetry = true, $maxRetryNumber = 3)
@@ -139,7 +162,7 @@ class DefaultAcsClient implements IAcsClient
                 $request->getProduct()
             );
         }
-        if ($domain == null) {
+        if (null == $domain) {
             $domain = EndpointProvider::findProductDomain($request->getRegionId(), $request->getProduct());
         }
 
@@ -152,7 +175,7 @@ class DefaultAcsClient implements IAcsClient
             throw new ClientException($requestUrl, 'URLTestFlagIsSet');
         }
 
-        if (count($request->getDomainParameter()) > 0) {
+        if (\count($request->getDomainParameter()) > 0) {
             $httpResponse = HttpHelper::curl($requestUrl, $request->getMethod(), $request->getDomainParameter(), $request->getHeaders());
         } else {
             $httpResponse = HttpHelper::curl($requestUrl, $request->getMethod(), $request->getContent(), $request->getHeaders());
@@ -162,35 +185,20 @@ class DefaultAcsClient implements IAcsClient
         while (500 <= $httpResponse->getStatus() && $autoRetry && $retryTimes < $maxRetryNumber) {
             $requestUrl = $request->composeUrl($iSigner, $credential, $domain);
 
-            if (count($request->getDomainParameter()) > 0) {
+            if (\count($request->getDomainParameter()) > 0) {
                 $httpResponse = HttpHelper::curl($requestUrl, $request->getMethod(), $request->getDomainParameter(), $request->getHeaders());
             } else {
                 $httpResponse = HttpHelper::curl($requestUrl, $request->getMethod(), $request->getContent(), $request->getHeaders());
             }
-            $retryTimes ++;
+            ++$retryTimes;
         }
 
         return $httpResponse;
     }
 
     /**
-     * @param AcsRequest $request
-     * @param null $iSigner
-     * @param null $credential
-     * @param bool $autoRetry
-     * @param int $maxRetryNumber
-     * @return HttpResponse
-     * @throws \AliOpen\Core\Exception\ClientException
-     */
-    public function doAction($request, $iSigner = null, $credential = null, $autoRetry = true, $maxRetryNumber = 3)
-    {
-        trigger_error('doAction() is deprecated. Please use getAcsResponse() instead.', E_USER_NOTICE);
-
-        return $this->doActionImpl($request, $iSigner, $credential, $autoRetry, $maxRetryNumber);
-    }
-
-    /**
      * @param $request
+     *
      * @return mixed
      */
     private function prepareRequest($request)
@@ -210,8 +218,8 @@ class DefaultAcsClient implements IAcsClient
 
     /**
      * @param object $respObject
-     * @param int $httpStatus
-     * @param AcsRequest $request
+     * @param int    $httpStatus
+     *
      * @throws ServerException
      */
     private function buildApiException($respObject, $httpStatus, AcsRequest $request)
@@ -238,8 +246,8 @@ class DefaultAcsClient implements IAcsClient
             $errorMessage = $respObject->errorMsg;
         }
 
-        if ($httpStatus === 400 && $errorCode === 'SignatureDoesNotMatch'
-            && strpos($errorMessage, $request->stringToBeSigned()) !== false) {
+        if (400 === $httpStatus && 'SignatureDoesNotMatch' === $errorCode
+            && false !== strpos($errorMessage, $request->stringToBeSigned())) {
             $errorCode = 'InvalidAccessKeySecret';
             $errorMessage = 'Specified Access Key Secret is not valid.';
         }
@@ -250,18 +258,19 @@ class DefaultAcsClient implements IAcsClient
     /**
      * @param $body
      * @param $format
+     *
      * @return mixed|\SimpleXMLElement
      */
     private function parseAcsResponse($body, $format)
     {
         if ('JSON' === $format) {
             return json_decode($body);
-        } elseif ('XML' === $format) {
+        }
+        if ('XML' === $format) {
             return @simplexml_load_string($body);
-        } elseif ('RAW' === $format) {
+        }
+        if ('RAW' === $format) {
             return $body;
         }
-
-        return null;
     }
 }

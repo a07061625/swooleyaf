@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CompanyReg;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListCompanyRegConsultations
  *
  * @method string getEndGmtCreate()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListCompanyRegConsultationsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

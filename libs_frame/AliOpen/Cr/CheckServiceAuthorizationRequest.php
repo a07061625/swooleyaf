@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CheckServiceAuthorization
- *
  */
 class CheckServiceAuthorizationRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetInstanceStorage
  *
  * @method string getInstanceId()
  */
 class GetInstanceStorageRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

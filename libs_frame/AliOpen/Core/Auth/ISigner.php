@@ -32,6 +32,7 @@ interface ISigner
     /**
      * @param $source
      * @param $accessSecret
+     *
      * @return mixed
      */
     public function signString($source, $accessSecret);

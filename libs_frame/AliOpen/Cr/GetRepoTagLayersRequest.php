@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetRepoTagLayers
  *
  * @method string getRepoId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetRepoTagLayersRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

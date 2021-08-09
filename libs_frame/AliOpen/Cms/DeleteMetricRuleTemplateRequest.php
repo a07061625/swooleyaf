@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteMetricRuleTemplate
  *
  * @method string getTemplateId()
  */
 class DeleteMetricRuleTemplateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

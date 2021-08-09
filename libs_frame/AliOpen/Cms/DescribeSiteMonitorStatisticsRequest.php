@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeSiteMonitorStatistics
  *
  * @method string getTimeRange()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeSiteMonitorStatisticsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateChartRepository
  *
  * @method string getRepoType()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateChartRepositoryRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

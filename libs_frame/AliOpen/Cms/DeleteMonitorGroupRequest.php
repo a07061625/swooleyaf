@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteMonitorGroup
  *
  * @method string getGroupId()
  */
 class DeleteMonitorGroupRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

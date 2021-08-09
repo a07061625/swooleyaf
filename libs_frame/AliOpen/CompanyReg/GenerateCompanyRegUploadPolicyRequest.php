@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CompanyReg;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GenerateCompanyRegUploadPolicy
  *
  * @method string getData()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GenerateCompanyRegUploadPolicyRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

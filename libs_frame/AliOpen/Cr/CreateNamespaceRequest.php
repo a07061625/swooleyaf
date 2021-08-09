@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateNamespace
  *
  * @method string getNamespaceName()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateNamespaceRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

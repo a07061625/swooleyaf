@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeSiteMonitorAttribute
  *
  * @method string getIncludeAlert()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeSiteMonitorAttributeRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ModifyMetricRuleTemplate
  *
  * @method string getName()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifyMetricRuleTemplateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -75,8 +73,6 @@ class ModifyMetricRuleTemplateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $alertTemplates
-     *
      * @return $this
      */
     public function setAlertTemplatess(array $alertTemplates)

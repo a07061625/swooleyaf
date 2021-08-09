@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ResetLoginPassword
  *
  * @method string getPassword()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ResetLoginPasswordRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeCustomEventAttribute
  *
  * @method string getEventId()
@@ -20,7 +19,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeCustomEventAttributeRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

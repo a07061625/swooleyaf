@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core\Regions;
 
 /**
@@ -35,6 +36,7 @@ class ProductDomain
 
     /**
      * AliOpen\Core\Regions\ProductDomain constructor.
+     *
      * @param string $product
      * @param string $domain
      */

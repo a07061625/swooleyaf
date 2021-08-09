@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ModifyMonitorGroupInstances
  *
  * @method array getInstancess()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifyMonitorGroupInstancesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -33,8 +31,6 @@ class ModifyMonitorGroupInstancesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instances
-     *
      * @return $this
      */
     public function setInstancess(array $instances)

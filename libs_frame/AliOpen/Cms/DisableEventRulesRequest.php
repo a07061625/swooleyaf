@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DisableEventRules
  *
  * @method array getRuleNamess()
  */
 class DisableEventRulesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -32,8 +30,6 @@ class DisableEventRulesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ruleNames
-     *
      * @return $this
      */
     public function setRuleNamess(array $ruleNames)

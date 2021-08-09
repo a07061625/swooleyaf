@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteInstanceEndpointAclPolicy
  *
  * @method string getEntry()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteInstanceEndpointAclPolicyRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListInstance
  *
  * @method string getInstanceStatus()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListInstanceRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of PutMonitorGroupDynamicRule
  *
  * @method array getGroupRuless()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class PutMonitorGroupDynamicRuleRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -33,8 +31,6 @@ class PutMonitorGroupDynamicRuleRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $groupRules
-     *
      * @return $this
      */
     public function setGroupRuless(array $groupRules)

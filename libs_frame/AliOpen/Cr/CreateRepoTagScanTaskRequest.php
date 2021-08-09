@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateRepoTagScanTask
  *
  * @method string getRepoId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateRepoTagScanTaskRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeMonitorGroups
  *
  * @method string getSelectContactGroups()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeMonitorGroupsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

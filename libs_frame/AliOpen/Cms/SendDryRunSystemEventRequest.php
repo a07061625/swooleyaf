@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SendDryRunSystemEvent
  *
  * @method string getProduct()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SendDryRunSystemEventRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

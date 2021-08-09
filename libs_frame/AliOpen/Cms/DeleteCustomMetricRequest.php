@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteCustomMetric
  *
  * @method string getGroupId()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteCustomMetricRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

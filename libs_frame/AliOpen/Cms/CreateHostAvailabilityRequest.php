@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateHostAvailability
  *
  * @method array getInstanceLists()
@@ -28,7 +27,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateHostAvailabilityRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -48,8 +46,6 @@ class CreateHostAvailabilityRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceList
-     *
      * @return $this
      */
     public function setInstanceLists(array $instanceList)
@@ -89,8 +85,6 @@ class CreateHostAvailabilityRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $alertConfigEscalationList
-     *
      * @return $this
      */
     public function setAlertConfigEscalationLists(array $alertConfigEscalationList)

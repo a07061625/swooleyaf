@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListRepoTagScanResult
  *
  * @method string getSeverity()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListRepoTagScanResultRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

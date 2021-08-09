@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DisableSiteMonitors
  *
  * @method string getTaskIds()
  */
 class DisableSiteMonitorsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

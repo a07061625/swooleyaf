@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetInstanceUsage
  *
  * @method string getInstanceId()
  */
 class GetInstanceUsageRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

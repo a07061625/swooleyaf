@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeMetricRuleTemplateAttribute
  *
  * @method string getName()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeMetricRuleTemplateAttributeRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

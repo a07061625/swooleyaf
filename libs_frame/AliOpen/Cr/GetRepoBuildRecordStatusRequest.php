@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetRepoBuildRecordStatus
  *
  * @method string getBuildRecordId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetRepoBuildRecordStatusRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

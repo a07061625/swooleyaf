@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeSystemEventMetaList
- *
  */
 class DescribeSystemEventMetaListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

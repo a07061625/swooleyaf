@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteEventRules
  *
  * @method array getRuleNamess()
  */
 class DeleteEventRulesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -32,8 +30,6 @@ class DeleteEventRulesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ruleNames
-     *
      * @return $this
      */
     public function setRuleNamess(array $ruleNames)

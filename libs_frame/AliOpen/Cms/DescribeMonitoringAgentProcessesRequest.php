@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeMonitoringAgentProcesses
  *
  * @method string getInstanceId()
  */
 class DescribeMonitoringAgentProcessesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

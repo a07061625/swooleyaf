@@ -17,14 +17,18 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core\Auth;
 
-use AliOpen\Core\Exception\ClientException;
 use AliOpen\Core\Http\HttpHelper;
 use AliOpen\Core\Profile\IClientProfile;
 
 class RamRoleArnService
 {
+    /**
+     * @var string
+     */
+    public static $serviceDomain = ALIOPEN_STS_DOMAIN;
     /**
      * @var IClientProfile
      */
@@ -32,18 +36,15 @@ class RamRoleArnService
     /**
      * @var null|string
      */
-    private $lastClearTime = null;
+    private $lastClearTime;
     /**
      * @var null|string
      */
-    private $sessionCredential = null;
-    /**
-     * @var string
-     */
-    public static $serviceDomain = ALIOPEN_STS_DOMAIN;
+    private $sessionCredential;
 
     /**
      * AliOpen\Core\Auth\RamRoleArnService constructor.
+     *
      * @param $clientProfile
      */
     public function __construct($clientProfile)
@@ -52,12 +53,13 @@ class RamRoleArnService
     }
 
     /**
-     * @return Credential|string|null
+     * @return null|Credential|string
+     *
      * @throws \AliOpen\Core\Exception\ClientException
      */
     public function getSessionCredential()
     {
-        if ($this->lastClearTime != null && $this->sessionCredential != null) {
+        if (null != $this->lastClearTime && null != $this->sessionCredential) {
             $now = time();
             $elapsedTime = $now - $this->lastClearTime;
             if ($elapsedTime <= ALIOPEN_ROLE_ARN_EXPIRE_TIME * 0.8) {
@@ -67,8 +69,8 @@ class RamRoleArnService
 
         $credential = $this->assumeRole();
 
-        if ($credential == null) {
-            return null;
+        if (null == $credential) {
+            return;
         }
 
         $this->sessionCredential = $credential;
@@ -78,7 +80,8 @@ class RamRoleArnService
     }
 
     /**
-     * @return Credential|null
+     * @return null|Credential
+     *
      * @throws \AliOpen\Core\Exception\ClientException
      */
     private function assumeRole()
@@ -94,7 +97,7 @@ class RamRoleArnService
         $httpResponse = HttpHelper::curl($requestUrl, $request->getMethod(), null, $request->getHeaders());
 
         if (!$httpResponse->isSuccess()) {
-            return null;
+            return;
         }
 
         $respObj = json_decode($httpResponse->getBody());

@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeEventRuleAttribute
  *
  * @method string getRuleName()
  */
 class DescribeEventRuleAttributeRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteSiteMonitors
  *
  * @method string getIsDeleteAlarms()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteSiteMonitorsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

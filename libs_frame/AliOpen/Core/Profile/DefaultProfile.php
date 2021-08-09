@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core\Profile;
 
 use AliOpen\Core\Auth\AbstractCredential;
@@ -76,10 +77,11 @@ class DefaultProfile implements IClientProfile
 
     /**
      * AliOpen\Core\Profile\DefaultProfile constructor.
+     *
      * @param        $regionId
      * @param        $credential
      * @param string $authType
-     * @param null $isigner
+     * @param null   $isigner
      */
     private function __construct($regionId, $credential, $authType = ALIOPEN_AUTH_TYPE_RAM_AK, $isigner = null)
     {
@@ -94,12 +96,13 @@ class DefaultProfile implements IClientProfile
      * @param      $accessKeyId
      * @param      $accessSecret
      * @param null $securityToken
+     *
      * @return DefaultProfile|IClientProfile
      */
     public static function getProfile($regionId, $accessKeyId, $accessSecret, $securityToken = null)
     {
         $credential = new Credential($accessKeyId, $accessSecret, $securityToken);
-        self::$profile = new DefaultProfile($regionId, $credential);
+        self::$profile = new self($regionId, $credential);
 
         return self::$profile;
     }
@@ -110,12 +113,13 @@ class DefaultProfile implements IClientProfile
      * @param $accessSecret
      * @param $roleArn
      * @param $roleSessionName
+     *
      * @return DefaultProfile|IClientProfile
      */
     public static function getRamRoleArnProfile($regionId, $accessKeyId, $accessSecret, $roleArn, $roleSessionName)
     {
         $credential = new RamRoleArnCredential($accessKeyId, $accessSecret, $roleArn, $roleSessionName);
-        self::$profile = new DefaultProfile($regionId, $credential, ALIOPEN_AUTH_TYPE_RAM_ROLE_ARN);
+        self::$profile = new self($regionId, $credential, ALIOPEN_AUTH_TYPE_RAM_ROLE_ARN);
 
         return self::$profile;
     }
@@ -123,12 +127,13 @@ class DefaultProfile implements IClientProfile
     /**
      * @param $regionId
      * @param $roleName
+     *
      * @return DefaultProfile|IClientProfile
      */
     public static function getEcsRamRoleProfile($regionId, $roleName)
     {
         $credential = new EcsRamRoleCredential($roleName);
-        self::$profile = new DefaultProfile($regionId, $credential, ALIOPEN_AUTH_TYPE_ECS_RAM_ROLE);
+        self::$profile = new self($regionId, $credential, ALIOPEN_AUTH_TYPE_ECS_RAM_ROLE);
 
         return self::$profile;
     }
@@ -136,18 +141,19 @@ class DefaultProfile implements IClientProfile
     /**
      * @param $regionId
      * @param $bearerToken
+     *
      * @return DefaultProfile|IClientProfile
      */
     public static function getBearerTokenProfile($regionId, $bearerToken)
     {
         $credential = new BearerTokenCredential($bearerToken);
-        self::$profile = new DefaultProfile($regionId, $credential, ALIOPEN_AUTH_TYPE_BEARER_TOKEN, new BearTokenSigner());
+        self::$profile = new self($regionId, $credential, ALIOPEN_AUTH_TYPE_BEARER_TOKEN, new BearTokenSigner());
 
         return self::$profile;
     }
 
     /**
-     * @return ISigner|ShaHmac1Signer|null
+     * @return null|ISigner|ShaHmac1Signer
      */
     public function getSigner()
     {
@@ -191,7 +197,7 @@ class DefaultProfile implements IClientProfile
      */
     public function isRamRoleArn()
     {
-        return self::$authType == ALIOPEN_AUTH_TYPE_RAM_ROLE_ARN;
+        return ALIOPEN_AUTH_TYPE_RAM_ROLE_ARN == self::$authType;
     }
 
     /**
@@ -199,7 +205,7 @@ class DefaultProfile implements IClientProfile
      */
     public function isEcsRamRole()
     {
-        return self::$authType == ALIOPEN_AUTH_TYPE_ECS_RAM_ROLE;
+        return ALIOPEN_AUTH_TYPE_ECS_RAM_ROLE == self::$authType;
     }
 
     /**
@@ -237,12 +243,13 @@ class DefaultProfile implements IClientProfile
 
     /**
      * @param $endpointName
+     *
      * @return mixed
      */
     public static function findEndpointByName($endpointName)
     {
-        if (self::$endpoints === null) {
-            return null;
+        if (null === self::$endpoints) {
+            return;
         }
 
         foreach (self::$endpoints as $key => $endpoint) {
@@ -250,8 +257,6 @@ class DefaultProfile implements IClientProfile
                 return $endpoint;
             }
         }
-
-        return null;
     }
 
     /**
@@ -269,15 +274,15 @@ class DefaultProfile implements IClientProfile
     }
 
     /**
-     * @param string $regionId
-     * @param string $product
-     * @param string $domain
+     * @param string   $regionId
+     * @param string   $product
+     * @param string   $domain
      * @param Endpoint $endpoint
      */
     private static function updateEndpoint($regionId, $product, $domain, $endpoint)
     {
         $regionIds = $endpoint->getRegionIds();
-        if (!in_array($regionId, $regionIds)) {
+        if (!\in_array($regionId, $regionIds)) {
             $regionIds[] = $regionId;
             $endpoint->setRegionIds($regionIds);
         }
@@ -294,7 +299,8 @@ class DefaultProfile implements IClientProfile
      * @param $productDomains
      * @param $product
      * @param $domain
-     * @return string|null
+     *
+     * @return null|string
      */
     private static function findProductDomainAndUpdate($productDomains, $product, $domain)
     {
@@ -305,7 +311,5 @@ class DefaultProfile implements IClientProfile
                 return $productDomain;
             }
         }
-
-        return null;
     }
 }

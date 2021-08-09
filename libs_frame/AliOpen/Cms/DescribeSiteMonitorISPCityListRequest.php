@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeSiteMonitorISPCityList
  *
  * @method string getCity()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeSiteMonitorISPCityListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateRepoSyncRule
  *
  * @method string getNamespaceName()
@@ -22,7 +21,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateRepoSyncRuleRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DisableHostAvailability
  *
  * @method array getIds()
  */
 class DisableHostAvailabilityRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -32,8 +30,6 @@ class DisableHostAvailabilityRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $id
-     *
      * @return $this
      */
     public function setIds(array $id)

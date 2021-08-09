@@ -29,6 +29,7 @@ class BearerTokenCredential extends AbstractCredential
 
     /**
      * AliOpen\Core\Auth\BearerTokenCredential constructor.
+     *
      * @param $bearerToken
      */
     public function __construct($bearerToken)
@@ -36,20 +37,12 @@ class BearerTokenCredential extends AbstractCredential
         $this->bearerToken = $bearerToken;
     }
 
-    /**
-     * @return null
-     */
     public function getAccessKeyId()
     {
-        return null;
     }
 
-    /**
-     * @return null
-     */
     public function getAccessSecret()
     {
-        return null;
     }
 
     /**
@@ -68,11 +61,7 @@ class BearerTokenCredential extends AbstractCredential
         $this->bearerToken = $bearerToken;
     }
 
-    /**
-     * @return null
-     */
     public function getSecurityToken()
     {
-        return null;
     }
 }

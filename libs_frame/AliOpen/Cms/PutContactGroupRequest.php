@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of PutContactGroup
  *
  * @method string getDescribe()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class PutContactGroupRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -60,8 +58,6 @@ class PutContactGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $contactNames
-     *
      * @return $this
      */
     public function setContactNamess(array $contactNames)

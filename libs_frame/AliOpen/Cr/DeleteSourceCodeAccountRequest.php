@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteSourceCodeAccount
  *
  * @method string getAccountId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteSourceCodeAccountRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

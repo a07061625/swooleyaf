@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteChartNamespace
  *
  * @method string getNamespaceName()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteChartNamespaceRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

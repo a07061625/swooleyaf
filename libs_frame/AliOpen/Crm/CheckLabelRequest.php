@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\Crm;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -12,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CheckLabelRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

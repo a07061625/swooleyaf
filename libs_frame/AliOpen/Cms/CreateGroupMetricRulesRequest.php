@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateGroupMetricRules
  *
  * @method string getGroupId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateGroupMetricRulesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -46,8 +44,6 @@ class CreateGroupMetricRulesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $groupMetricRules
-     *
      * @return $this
      */
     public function setGroupMetricRuless(array $groupMetricRules)

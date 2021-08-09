@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core\Exception;
 
 /**
@@ -35,6 +36,7 @@ class ServerException extends ClientException
 
     /**
      * AliOpen\Core\Exception\ServerException constructor.
+     *
      * @param $errorMessage
      * @param $errorCode
      * @param $httpStatus

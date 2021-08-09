@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeHostAvailabilityList
  *
  * @method string getGroupId()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeHostAvailabilityListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

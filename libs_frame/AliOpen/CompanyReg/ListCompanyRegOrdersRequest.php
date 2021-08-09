@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CompanyReg;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListCompanyRegOrders
  *
  * @method string getPageNum()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListCompanyRegOrdersRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

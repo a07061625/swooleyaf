@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeMonitoringAgentConfig
- *
  */
 class DescribeMonitoringAgentConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

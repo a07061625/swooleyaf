@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CompanyReg;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SubmitCommunicationNote
  *
  * @method string getNote()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SubmitCommunicationNoteRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

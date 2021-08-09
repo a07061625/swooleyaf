@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetAuthorizationToken
  *
  * @method string getInstanceId()
  */
 class GetAuthorizationTokenRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

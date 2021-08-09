@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListInstanceRegion
  *
  * @method string getLang()
  */
 class ListInstanceRegionRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

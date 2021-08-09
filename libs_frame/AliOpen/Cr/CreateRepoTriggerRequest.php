@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateRepoTrigger
  *
  * @method string getRepoId()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateRepoTriggerRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

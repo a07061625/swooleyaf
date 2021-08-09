@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\Crm;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -11,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class QueryBidUserCertifiedInfoRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListChartRepository
  *
  * @method string getInstanceId()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListChartRepositoryRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

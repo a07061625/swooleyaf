@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateSiteMonitor
  *
  * @method string getOptionsJson()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateSiteMonitorRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,16 +1,19 @@
 <?php
+
 namespace AliOpen\Core\Regions;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Class DescribeEndpointRequest
+ *
  * @package AliOpen\Core\Regions
  */
 class DescribeEndpointRequest extends RpcAcsRequest
 {
     /**
      * DescribeEndpointRequest constructor.
+     *
      * @param $id
      * @param $serviceCode
      * @param $endPointType

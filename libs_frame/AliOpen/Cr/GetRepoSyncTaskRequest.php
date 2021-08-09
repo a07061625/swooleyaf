@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetRepoSyncTask
  *
  * @method string getSyncTaskId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetRepoSyncTaskRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

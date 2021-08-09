@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetInstanceStorageInternetOut
  *
  * @method string getEndTime()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetInstanceStorageInternetOutRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

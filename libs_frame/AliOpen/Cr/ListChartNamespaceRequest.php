@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListChartNamespace
  *
  * @method string getNamespaceName()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListChartNamespaceRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

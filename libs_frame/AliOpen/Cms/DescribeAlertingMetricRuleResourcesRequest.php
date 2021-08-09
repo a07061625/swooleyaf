@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeAlertingMetricRuleResources
  *
  * @method string getGroupId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeAlertingMetricRuleResourcesRequest extends RpcAcsRequest
 {
-
     /**
      * Class constructor.
      */

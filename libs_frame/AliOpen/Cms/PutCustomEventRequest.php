@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of PutCustomEvent
  *
  * @method array getEventInfos()
  */
 class PutCustomEventRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -32,8 +30,6 @@ class PutCustomEventRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $eventInfo
-     *
      * @return $this
      */
     public function setEventInfos(array $eventInfo)

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteEventRuleTargets
  *
  * @method array getIdss()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteEventRuleTargetsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -33,8 +31,6 @@ class DeleteEventRuleTargetsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ids
-     *
      * @return $this
      */
     public function setIdss(array $ids)

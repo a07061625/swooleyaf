@@ -25,19 +25,13 @@ class BearTokenSigner implements ISigner
     /**
      * @param $source
      * @param $accessSecret
-     * @return null
      */
     public function signString($source, $accessSecret)
     {
-        return null;
     }
 
-    /**
-     * @return null
-     */
     public function getSignatureMethod()
     {
-        return null;
     }
 
     /**

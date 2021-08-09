@@ -5,6 +5,7 @@
  * Date: 2021/8/9 0009
  * Time: 12:40
  */
+
 namespace AliOpen\Core\Auth;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -13,6 +14,7 @@ class AssumeRoleRequest extends RpcAcsRequest
 {
     /**
      * AliOpen\Core\Auth\AssumeRoleRequest constructor.
+     *
      * @param $roleArn
      * @param $roleSessionName
      */

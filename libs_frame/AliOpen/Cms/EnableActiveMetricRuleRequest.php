@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of EnableActiveMetricRule
  *
  * @method string getProduct()
  */
 class EnableActiveMetricRuleRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeSystemEventCount
  *
  * @method string getProduct()
@@ -20,7 +19,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeSystemEventCountRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

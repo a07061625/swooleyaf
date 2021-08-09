@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeMonitorGroupCategories
  *
  * @method string getGroupId()
  */
 class DescribeMonitorGroupCategoriesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

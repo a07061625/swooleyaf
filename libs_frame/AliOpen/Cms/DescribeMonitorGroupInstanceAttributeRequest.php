@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeMonitorGroupInstanceAttribute
  *
  * @method string getTotal()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeMonitorGroupInstanceAttributeRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

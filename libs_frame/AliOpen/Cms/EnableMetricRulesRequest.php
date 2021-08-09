@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\Cms;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of EnableMetricRules
  *
  * @method array getRuleIds()
  */
 class EnableMetricRulesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -32,8 +30,6 @@ class EnableMetricRulesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ruleId
-     *
      * @return $this
      */
     public function setRuleIds(array $ruleId)

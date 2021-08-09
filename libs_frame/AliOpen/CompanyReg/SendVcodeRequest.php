@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CompanyReg;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SendVcode
  *
  * @method string getMobile()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SendVcodeRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\Cr;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateInstanceVpcEndpointLinkedVpc
  *
  * @method string getVswitchId()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateInstanceVpcEndpointLinkedVpcRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
