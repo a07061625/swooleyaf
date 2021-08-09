@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CheckResource
+ *
  * @method string getResourceOwnerId()
  * @method string getSpecifyCount()
  * @method string getEngineVersion()
@@ -34,6 +36,7 @@ class ResourceCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class ResourceCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $specifyCount
+     *
      * @return $this
      */
     public function setSpecifyCount($specifyCount)
@@ -58,6 +62,7 @@ class ResourceCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $engineVersion
+     *
      * @return $this
      */
     public function setEngineVersion($engineVersion)
@@ -70,6 +75,7 @@ class ResourceCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $engine
+     *
      * @return $this
      */
     public function setEngine($engine)
@@ -82,6 +88,7 @@ class ResourceCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceUseType
+     *
      * @return $this
      */
     public function setDBInstanceUseType($dBInstanceUseType)
@@ -94,6 +101,7 @@ class ResourceCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -106,6 +114,7 @@ class ResourceCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -118,6 +127,7 @@ class ResourceCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -130,6 +140,7 @@ class ResourceCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -142,6 +153,7 @@ class ResourceCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)
@@ -154,6 +166,7 @@ class ResourceCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)

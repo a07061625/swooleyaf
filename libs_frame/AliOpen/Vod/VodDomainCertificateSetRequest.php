@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetVodDomainCertificate
+ *
  * @method string getSSLProtocol()
  * @method string getSecurityToken()
  * @method string getSSLPri()
@@ -31,6 +33,7 @@ class VodDomainCertificateSetRequest extends RpcAcsRequest
 
     /**
      * @param string $sSLProtocol
+     *
      * @return $this
      */
     public function setSSLProtocol($sSLProtocol)
@@ -43,6 +46,7 @@ class VodDomainCertificateSetRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -55,6 +59,7 @@ class VodDomainCertificateSetRequest extends RpcAcsRequest
 
     /**
      * @param string $sSLPri
+     *
      * @return $this
      */
     public function setSSLPri($sSLPri)
@@ -67,6 +72,7 @@ class VodDomainCertificateSetRequest extends RpcAcsRequest
 
     /**
      * @param string $certName
+     *
      * @return $this
      */
     public function setCertName($certName)
@@ -79,6 +85,7 @@ class VodDomainCertificateSetRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -91,6 +98,7 @@ class VodDomainCertificateSetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class VodDomainCertificateSetRequest extends RpcAcsRequest
 
     /**
      * @param string $sSLPub
+     *
      * @return $this
      */
     public function setSSLPub($sSLPub)
@@ -115,6 +124,7 @@ class VodDomainCertificateSetRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)

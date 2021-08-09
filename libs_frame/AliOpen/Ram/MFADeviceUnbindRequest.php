@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UnbindMFADevice
+ *
  * @method string getUserName()
  */
 class MFADeviceUnbindRequest extends RpcAcsRequest
@@ -28,6 +30,7 @@ class MFADeviceUnbindRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

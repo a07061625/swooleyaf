@@ -1,45 +1,40 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class ObjectListInfo
+ *
  * The class of return value of ListObjects
+ *
  * @package SyObjectStorage\Oss\Model
- * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/GetBucket.html
+ *
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/bucket/GetBucket.html
  */
 class ObjectListInfo
 {
-    private $bucketName = "";
-    private $prefix = "";
-    private $marker = "";
-    private $nextMarker = "";
+    private $bucketName = '';
+    private $prefix = '';
+    private $marker = '';
+    private $nextMarker = '';
     private $maxKeys = 0;
-    private $delimiter = "";
-    private $isTruncated = null;
+    private $delimiter = '';
+    private $isTruncated;
     private $objectList = [];
     private $prefixList = [];
 
     /**
      * ObjectListInfo constructor.
+     *
      * @param string $bucketName
      * @param string $prefix
      * @param string $marker
      * @param string $nextMarker
      * @param string $maxKeys
      * @param string $delimiter
-     * @param null $isTruncated
-     * @param array $objectList
-     * @param array $prefixList
+     * @param null   $isTruncated
      */
-    public function __construct($bucketName,
-        $prefix,
-        $marker,
-        $nextMarker,
-        $maxKeys,
-        $delimiter,
-        $isTruncated,
-        array $objectList,
-        array $prefixList)
+    public function __construct($bucketName, $prefix, $marker, $nextMarker, $maxKeys, $delimiter, $isTruncated, array $objectList, array $prefixList)
     {
         $this->bucketName = $bucketName;
         $this->prefix = $prefix;
@@ -102,6 +97,7 @@ class ObjectListInfo
 
     /**
      * Get the ObjectInfo list.
+     *
      * @return ObjectInfo[]
      */
     public function getObjectList()
@@ -111,6 +107,7 @@ class ObjectListInfo
 
     /**
      * Get the PrefixInfo list
+     *
      * @return PrefixInfo[]
      */
     public function getPrefixList()

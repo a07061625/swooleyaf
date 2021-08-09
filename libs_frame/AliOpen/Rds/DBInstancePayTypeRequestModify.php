@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBInstancePayType
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getDBInstanceId()
@@ -36,6 +38,7 @@ class DBInstancePayTypeRequestModify extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +51,7 @@ class DBInstancePayTypeRequestModify extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -60,6 +64,7 @@ class DBInstancePayTypeRequestModify extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -72,6 +77,7 @@ class DBInstancePayTypeRequestModify extends RpcAcsRequest
 
     /**
      * @param string $businessInfo
+     *
      * @return $this
      */
     public function setBusinessInfo($businessInfo)
@@ -84,6 +90,7 @@ class DBInstancePayTypeRequestModify extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -96,6 +103,7 @@ class DBInstancePayTypeRequestModify extends RpcAcsRequest
 
     /**
      * @param string $agentId
+     *
      * @return $this
      */
     public function setAgentId($agentId)
@@ -108,6 +116,7 @@ class DBInstancePayTypeRequestModify extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -120,6 +129,7 @@ class DBInstancePayTypeRequestModify extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -132,6 +142,7 @@ class DBInstancePayTypeRequestModify extends RpcAcsRequest
 
     /**
      * @param string $resource
+     *
      * @return $this
      */
     public function setResource($resource)
@@ -144,6 +155,7 @@ class DBInstancePayTypeRequestModify extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -156,6 +168,7 @@ class DBInstancePayTypeRequestModify extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -168,6 +181,7 @@ class DBInstancePayTypeRequestModify extends RpcAcsRequest
 
     /**
      * @param string $usedTime
+     *
      * @return $this
      */
     public function setUsedTime($usedTime)
@@ -180,6 +194,7 @@ class DBInstancePayTypeRequestModify extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)

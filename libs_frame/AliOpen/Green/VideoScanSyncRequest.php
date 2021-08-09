@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of VideoSyncScan
+ *
  * @method string getClientInfo()
  */
 class VideoScanSyncRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class VideoScanSyncRequest extends RoaAcsRequest
 
     /**
      * @param string $clientInfo
+     *
      * @return $this
      */
     public function setClientInfo($clientInfo)

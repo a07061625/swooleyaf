@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AssignPrivateIpAddresses
+ *
  * @method string getResourceOwnerId()
  * @method string getSecondaryPrivateIpAddressCount()
  * @method string getResourceOwnerAccount()
@@ -30,6 +32,7 @@ class PrivateIpAddressesAssignRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class PrivateIpAddressesAssignRequest extends RpcAcsRequest
 
     /**
      * @param string $secondaryPrivateIpAddressCount
+     *
      * @return $this
      */
     public function setSecondaryPrivateIpAddressCount($secondaryPrivateIpAddressCount)
@@ -54,6 +58,7 @@ class PrivateIpAddressesAssignRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +71,7 @@ class PrivateIpAddressesAssignRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +84,7 @@ class PrivateIpAddressesAssignRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,7 +96,6 @@ class PrivateIpAddressesAssignRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $privateIpAddress
      * @return $this
      */
     public function setPrivateIpAddresss(array $privateIpAddress)
@@ -104,6 +110,7 @@ class PrivateIpAddressesAssignRequest extends RpcAcsRequest
 
     /**
      * @param string $networkInterfaceId
+     *
      * @return $this
      */
     public function setNetworkInterfaceId($networkInterfaceId)

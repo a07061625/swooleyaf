@@ -1,12 +1,15 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 use SyObjectStorage\Oss\Core\OssException;
 
 /**
  * Class CorsRule
+ *
  * @package SyObjectStorage\Oss\Model
- * @link http://help.aliyun.com/document_detail/oss/api-reference/cors/PutBucketcors.html
+ *
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/cors/PutBucketcors.html
  */
 class CorsRule
 {
@@ -14,10 +17,11 @@ class CorsRule
     private $allowedOrigins = [];
     private $allowedMethods = [];
     private $exposeHeaders = [];
-    private $maxAgeSeconds = null;
+    private $maxAgeSeconds;
 
     /**
      * Add an allowedOrigin rule
+     *
      * @param string $allowedOrigin
      */
     public function addAllowedOrigin($allowedOrigin)
@@ -29,6 +33,7 @@ class CorsRule
 
     /**
      * Add an allowedMethod rule
+     *
      * @param string $allowedMethod
      */
     public function addAllowedMethod($allowedMethod)
@@ -40,6 +45,7 @@ class CorsRule
 
     /**
      * Add an allowedHeader rule
+     *
      * @param string $allowedHeader
      */
     public function addAllowedHeader($allowedHeader)
@@ -51,6 +57,7 @@ class CorsRule
 
     /**
      * Add an exposeHeader rule
+     *
      * @param string $exposeHeader
      */
     public function addExposeHeader($exposeHeader)
@@ -78,6 +85,7 @@ class CorsRule
 
     /**
      * Get the AllowedHeaders list
+     *
      * @return string[]
      */
     public function getAllowedHeaders()
@@ -87,6 +95,7 @@ class CorsRule
 
     /**
      * Get the AllowedOrigins list
+     *
      * @return string[]
      */
     public function getAllowedOrigins()
@@ -96,6 +105,7 @@ class CorsRule
 
     /**
      * Get the AllowedMethods list
+     *
      * @return string[]
      */
     public function getAllowedMethods()
@@ -105,6 +115,7 @@ class CorsRule
 
     /**
      * Get the ExposeHeaders list
+     *
      * @return string[]
      */
     public function getExposeHeaders()
@@ -114,13 +125,15 @@ class CorsRule
 
     /**
      * Serialize all the rules into the xml represented by parameter $xmlRule
+     *
      * @param \SimpleXMLElement $xmlRule
-     * @throws \SyObjectStorage\Oss\Core\OssException
+     *
+     * @throws OssException
      */
     public function appendToXml(&$xmlRule)
     {
         if (!isset($this->maxAgeSeconds)) {
-            throw new OssException("maxAgeSeconds is not set in the Rule");
+            throw new OssException('maxAgeSeconds is not set in the Rule');
         }
         foreach ($this->allowedOrigins as $allowedOrigin) {
             $xmlRule->addChild(CorsConfig::OSS_CORS_ALLOWED_ORIGIN, $allowedOrigin);
@@ -134,6 +147,6 @@ class CorsRule
         foreach ($this->exposeHeaders as $exposeHeader) {
             $xmlRule->addChild(CorsConfig::OSS_CORS_EXPOSE_HEADER, $exposeHeader);
         }
-        $xmlRule->addChild(CorsConfig::OSS_CORS_MAX_AGE_SECONDS, strval($this->maxAgeSeconds));
+        $xmlRule->addChild(CorsConfig::OSS_CORS_MAX_AGE_SECONDS, (string)($this->maxAgeSeconds));
     }
 }

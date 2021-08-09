@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateUser
+ *
  * @method string getNewUserName()
  * @method string getNewDisplayName()
  * @method string getNewMobilePhone()
@@ -33,6 +35,7 @@ class UserUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $newUserName
+     *
      * @return $this
      */
     public function setNewUserName($newUserName)
@@ -45,6 +48,7 @@ class UserUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $newDisplayName
+     *
      * @return $this
      */
     public function setNewDisplayName($newDisplayName)
@@ -57,6 +61,7 @@ class UserUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $newMobilePhone
+     *
      * @return $this
      */
     public function setNewMobilePhone($newMobilePhone)
@@ -69,6 +74,7 @@ class UserUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $newComments
+     *
      * @return $this
      */
     public function setNewComments($newComments)
@@ -81,6 +87,7 @@ class UserUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $newEmail
+     *
      * @return $this
      */
     public function setNewEmail($newEmail)
@@ -93,6 +100,7 @@ class UserUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

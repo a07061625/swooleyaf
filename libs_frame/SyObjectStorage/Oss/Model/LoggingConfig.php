@@ -1,18 +1,22 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class LoggingConfig
+ *
  * @package SyObjectStorage\Oss\Model
- * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/PutBucketLogging.html
+ *
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/bucket/PutBucketLogging.html
  */
 class LoggingConfig implements XmlConfig
 {
-    private $targetBucket = "";
-    private $targetPrefix = "";
+    private $targetBucket = '';
+    private $targetPrefix = '';
 
     /**
      * LoggingConfig constructor.
+     *
      * @param null $targetBucket
      * @param null $targetPrefix
      */
@@ -32,7 +36,6 @@ class LoggingConfig implements XmlConfig
 
     /**
      * @param $strXml
-     * @return null
      */
     public function parseFromXml($strXml)
     {
@@ -42,12 +45,13 @@ class LoggingConfig implements XmlConfig
         }
         foreach ($xml->LoggingEnabled as $status) {
             foreach ($status as $key => $value) {
-                if ($key === 'TargetBucket') {
-                    $this->targetBucket = strval($value);
-                } elseif ($key === 'TargetPrefix') {
-                    $this->targetPrefix = strval($value);
+                if ('TargetBucket' === $key) {
+                    $this->targetBucket = (string)$value;
+                } elseif ('TargetPrefix' === $key) {
+                    $this->targetPrefix = (string)$value;
                 }
             }
+
             break;
         }
     }
@@ -58,7 +62,7 @@ class LoggingConfig implements XmlConfig
     public function serializeToXml()
     {
         $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><BucketLoggingStatus></BucketLoggingStatus>');
-        if (isset($this->targetBucket) && isset($this->targetPrefix)) {
+        if (isset($this->targetBucket, $this->targetPrefix)) {
             $loggingEnabled = $xml->addChild('LoggingEnabled');
             $loggingEnabled->addChild('TargetBucket', $this->targetBucket);
             $loggingEnabled->addChild('TargetPrefix', $this->targetPrefix);

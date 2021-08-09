@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteAccessGroup
+ *
  * @method string getAccessGroupName()
  */
 class AccessGroupDeleteRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class AccessGroupDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $accessGroupName
+     *
      * @return $this
      */
     public function setAccessGroupName($accessGroupName)

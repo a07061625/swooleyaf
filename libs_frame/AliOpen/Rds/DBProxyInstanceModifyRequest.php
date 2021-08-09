@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBProxyInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getEffectiveTime()
  * @method string getEffectiveSpecificTime()
@@ -31,6 +33,7 @@ class DBProxyInstanceModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class DBProxyInstanceModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $effectiveTime
+     *
      * @return $this
      */
     public function setEffectiveTime($effectiveTime)
@@ -55,6 +59,7 @@ class DBProxyInstanceModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $effectiveSpecificTime
+     *
      * @return $this
      */
     public function setEffectiveSpecificTime($effectiveSpecificTime)
@@ -67,6 +72,7 @@ class DBProxyInstanceModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -79,6 +85,7 @@ class DBProxyInstanceModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -91,6 +98,7 @@ class DBProxyInstanceModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class DBProxyInstanceModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBProxyInstanceNum
+     *
      * @return $this
      */
     public function setDBProxyInstanceNum($dBProxyInstanceNum)
@@ -115,6 +124,7 @@ class DBProxyInstanceModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBProxyInstanceType
+     *
      * @return $this
      */
     public function setDBProxyInstanceType($dBProxyInstanceType)

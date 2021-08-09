@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyImageSharePermission
+ *
  * @method string getResourceOwnerId()
  * @method string getImageId()
  * @method string getResourceOwnerAccount()
@@ -30,6 +32,7 @@ class ImageSharePermissionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class ImageSharePermissionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -54,6 +58,7 @@ class ImageSharePermissionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +71,7 @@ class ImageSharePermissionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +84,7 @@ class ImageSharePermissionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,7 +96,6 @@ class ImageSharePermissionModifyRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $addAccount
      * @return $this
      */
     public function setAddAccounts(array $addAccount)
@@ -103,7 +109,6 @@ class ImageSharePermissionModifyRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $removeAccount
      * @return $this
      */
     public function setRemoveAccounts(array $removeAccount)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAutoSnapshotPolicyEx
+ *
  * @method string getResourceOwnerId()
  * @method string getAutoSnapshotPolicyId()
  * @method string getPageNumber()
@@ -31,6 +33,7 @@ class AutoSnapshotPolicyExDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class AutoSnapshotPolicyExDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $autoSnapshotPolicyId
+     *
      * @return $this
      */
     public function setAutoSnapshotPolicyId($autoSnapshotPolicyId)
@@ -55,6 +59,7 @@ class AutoSnapshotPolicyExDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -67,6 +72,7 @@ class AutoSnapshotPolicyExDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -78,7 +84,6 @@ class AutoSnapshotPolicyExDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -94,6 +99,7 @@ class AutoSnapshotPolicyExDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -106,6 +112,7 @@ class AutoSnapshotPolicyExDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -118,6 +125,7 @@ class AutoSnapshotPolicyExDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

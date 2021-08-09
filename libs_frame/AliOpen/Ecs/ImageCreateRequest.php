@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateImage
+ *
  * @method array getDiskDeviceMappings()
  * @method string getResourceOwnerId()
  * @method string getSnapshotId()
@@ -38,7 +40,6 @@ class ImageCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $diskDeviceMapping
      * @return $this
      */
     public function setDiskDeviceMappings(array $diskDeviceMapping)
@@ -56,6 +57,7 @@ class ImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -68,6 +70,7 @@ class ImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotId
+     *
      * @return $this
      */
     public function setSnapshotId($snapshotId)
@@ -80,6 +83,7 @@ class ImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -92,6 +96,7 @@ class ImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -104,6 +109,7 @@ class ImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $platform
+     *
      * @return $this
      */
     public function setPlatform($platform)
@@ -116,6 +122,7 @@ class ImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -128,6 +135,7 @@ class ImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $imageName
+     *
      * @return $this
      */
     public function setImageName($imageName)
@@ -139,7 +147,6 @@ class ImageCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -155,6 +162,7 @@ class ImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $architecture
+     *
      * @return $this
      */
     public function setArchitecture($architecture)
@@ -167,6 +175,7 @@ class ImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -179,6 +188,7 @@ class ImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -191,6 +201,7 @@ class ImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -203,6 +214,7 @@ class ImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -215,6 +227,7 @@ class ImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $imageFamily
+     *
      * @return $this
      */
     public function setImageFamily($imageFamily)
@@ -227,6 +240,7 @@ class ImageCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $imageVersion
+     *
      * @return $this
      */
     public function setImageVersion($imageVersion)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBInstanceHAConfig
+ *
  * @method string getResourceOwnerId()
  * @method string getDbInstanceId()
  * @method string getHAMode()
@@ -30,6 +32,7 @@ class DBInstanceHAConfigModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class DBInstanceHAConfigModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dbInstanceId
+     *
      * @return $this
      */
     public function setDbInstanceId($dbInstanceId)
@@ -54,6 +58,7 @@ class DBInstanceHAConfigModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $hAMode
+     *
      * @return $this
      */
     public function setHAMode($hAMode)
@@ -66,6 +71,7 @@ class DBInstanceHAConfigModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -78,6 +84,7 @@ class DBInstanceHAConfigModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -90,6 +97,7 @@ class DBInstanceHAConfigModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $syncMode
+     *
      * @return $this
      */
     public function setSyncMode($syncMode)
@@ -102,6 +110,7 @@ class DBInstanceHAConfigModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsMqttQueryHistoryOnline
+ *
  * @method string getGroupId()
  * @method string getEndTime()
  * @method string getBeginTime()
@@ -27,6 +29,7 @@ class MqttQueryHistoryOnlineRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -39,6 +42,7 @@ class MqttQueryHistoryOnlineRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -51,6 +55,7 @@ class MqttQueryHistoryOnlineRequest extends RpcAcsRequest
 
     /**
      * @param string $beginTime
+     *
      * @return $this
      */
     public function setBeginTime($beginTime)
@@ -63,6 +68,7 @@ class MqttQueryHistoryOnlineRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

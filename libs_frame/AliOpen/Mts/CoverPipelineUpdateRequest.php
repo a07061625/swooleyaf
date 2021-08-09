@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateCoverPipeline
+ *
  * @method string getResourceOwnerId()
  * @method string getRole()
  * @method string getResourceOwnerAccount()
@@ -33,6 +35,7 @@ class CoverPipelineUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class CoverPipelineUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $role
+     *
      * @return $this
      */
     public function setRole($role)
@@ -57,6 +61,7 @@ class CoverPipelineUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -69,6 +74,7 @@ class CoverPipelineUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -81,6 +87,7 @@ class CoverPipelineUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -93,6 +100,7 @@ class CoverPipelineUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $state
+     *
      * @return $this
      */
     public function setState($state)
@@ -105,6 +113,7 @@ class CoverPipelineUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $notifyConfig
+     *
      * @return $this
      */
     public function setNotifyConfig($notifyConfig)
@@ -117,6 +126,7 @@ class CoverPipelineUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +139,7 @@ class CoverPipelineUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $priority
+     *
      * @return $this
      */
     public function setPriority($priority)
@@ -141,6 +152,7 @@ class CoverPipelineUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $pipelineId
+     *
      * @return $this
      */
     public function setPipelineId($pipelineId)

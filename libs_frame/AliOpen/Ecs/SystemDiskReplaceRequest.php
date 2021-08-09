@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ReplaceSystemDisk
+ *
  * @method string getResourceOwnerId()
  * @method string getImageId()
  * @method string getClientToken()
@@ -39,6 +41,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +54,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -63,6 +67,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -75,6 +80,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $securityEnhancementStrategy
+     *
      * @return $this
      */
     public function setSecurityEnhancementStrategy($securityEnhancementStrategy)
@@ -87,6 +93,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $keyPairName
+     *
      * @return $this
      */
     public function setKeyPairName($keyPairName)
@@ -99,6 +106,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $platform
+     *
      * @return $this
      */
     public function setPlatform($platform)
@@ -111,6 +119,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -123,6 +132,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $passwordInherit
+     *
      * @return $this
      */
     public function setPasswordInherit($passwordInherit)
@@ -135,6 +145,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $diskId
+     *
      * @return $this
      */
     public function setDiskId($diskId)
@@ -147,6 +158,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $architecture
+     *
      * @return $this
      */
     public function setArchitecture($architecture)
@@ -159,6 +171,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -171,6 +184,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -183,6 +197,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -195,6 +210,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -207,6 +223,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskSize
+     *
      * @return $this
      */
     public function setSystemDiskSize($systemDiskSize)
@@ -219,6 +236,7 @@ class SystemDiskReplaceRequest extends RpcAcsRequest
 
     /**
      * @param string $useAdditionalService
+     *
      * @return $this
      */
     public function setUseAdditionalService($useAdditionalService)

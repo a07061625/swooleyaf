@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RemoveTagsFromResource
+ *
  * @method string getTag4value()
  * @method string getResourceOwnerId()
  * @method string getTag2key()
@@ -41,6 +43,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $tag4value
+     *
      * @return $this
      */
     public function setTag4value($tag4value)
@@ -53,6 +56,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -65,6 +69,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $tag2key
+     *
      * @return $this
      */
     public function setTag2key($tag2key)
@@ -77,6 +82,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -89,6 +95,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $tag3key
+     *
      * @return $this
      */
     public function setTag3key($tag3key)
@@ -101,6 +108,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $tag1value
+     *
      * @return $this
      */
     public function setTag1value($tag1value)
@@ -113,6 +121,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -125,6 +134,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $tag3value
+     *
      * @return $this
      */
     public function setTag3value($tag3value)
@@ -137,6 +147,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -149,6 +160,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $tag5key
+     *
      * @return $this
      */
     public function setTag5key($tag5key)
@@ -161,6 +173,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -173,6 +186,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -185,6 +199,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -197,6 +212,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $tag5value
+     *
      * @return $this
      */
     public function setTag5value($tag5value)
@@ -209,6 +225,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $tags
+     *
      * @return $this
      */
     public function setTags($tags)
@@ -221,6 +238,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $tag1key
+     *
      * @return $this
      */
     public function setTag1key($tag1key)
@@ -233,6 +251,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $tag2value
+     *
      * @return $this
      */
     public function setTag2value($tag2value)
@@ -245,6 +264,7 @@ class ResourceTagsRemoveRequest extends RpcAcsRequest
 
     /**
      * @param string $tag4key
+     *
      * @return $this
      */
     public function setTag4key($tag4key)

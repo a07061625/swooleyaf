@@ -1,14 +1,16 @@
 <?php
+
 namespace SyObjectStorage\Oss\Result;
 
 /**
  * Class PutSetDeleteResult
+ *
  * @package SyObjectStorage\Oss\Result
  */
 class PutSetDeleteResult extends Result
 {
     /**
-     * @return array
+     * @return array()
      */
     protected function parseDataFromResponse()
     {

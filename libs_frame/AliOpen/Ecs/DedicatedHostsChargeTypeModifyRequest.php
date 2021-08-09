@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDedicatedHostsChargeType
+ *
  * @method string getDedicatedHostIds()
  * @method string getResourceOwnerId()
  * @method string getClientToken()
@@ -35,6 +37,7 @@ class DedicatedHostsChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostIds
+     *
      * @return $this
      */
     public function setDedicatedHostIds($dedicatedHostIds)
@@ -47,6 +50,7 @@ class DedicatedHostsChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +63,7 @@ class DedicatedHostsChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -71,6 +76,7 @@ class DedicatedHostsChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostChargeType
+     *
      * @return $this
      */
     public function setDedicatedHostChargeType($dedicatedHostChargeType)
@@ -83,6 +89,7 @@ class DedicatedHostsChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -95,6 +102,7 @@ class DedicatedHostsChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setDryRun($dryRun)
@@ -107,6 +115,7 @@ class DedicatedHostsChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -119,6 +128,7 @@ class DedicatedHostsChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -131,6 +141,7 @@ class DedicatedHostsChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -143,6 +154,7 @@ class DedicatedHostsChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -155,6 +167,7 @@ class DedicatedHostsChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $detailFee
+     *
      * @return $this
      */
     public function setDetailFee($detailFee)
@@ -167,6 +180,7 @@ class DedicatedHostsChargeTypeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $periodUnit
+     *
      * @return $this
      */
     public function setPeriodUnit($periodUnit)

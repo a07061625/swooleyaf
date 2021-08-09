@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBProxy
+ *
  * @method string getResourceOwnerId()
  * @method string getDBInstanceId()
  * @method string getResourceOwnerAccount()
@@ -32,6 +34,7 @@ class DBProxyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class DBProxyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -56,6 +60,7 @@ class DBProxyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -68,6 +73,7 @@ class DBProxyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -80,6 +86,7 @@ class DBProxyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBProxyInstanceNum
+     *
      * @return $this
      */
     public function setDBProxyInstanceNum($dBProxyInstanceNum)
@@ -92,6 +99,7 @@ class DBProxyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $configDBProxyService
+     *
      * @return $this
      */
     public function setConfigDBProxyService($configDBProxyService)
@@ -104,6 +112,7 @@ class DBProxyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -116,6 +125,7 @@ class DBProxyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $vPCId
+     *
      * @return $this
      */
     public function setVPCId($vPCId)
@@ -128,6 +138,7 @@ class DBProxyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceNetworkType
+     *
      * @return $this
      */
     public function setInstanceNetworkType($instanceNetworkType)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DeleteGroups
+ *
  * @method string getClientInfo()
  */
 class GroupsDeleteRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class GroupsDeleteRequest extends RoaAcsRequest
 
     /**
      * @param string $clientInfo
+     *
      * @return $this
      */
     public function setClientInfo($clientInfo)

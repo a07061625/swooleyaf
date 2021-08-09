@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetAccountAlias
+ *
  * @method string getAccountAlias()
  */
 class AccountAliasSetRequest extends RpcAcsRequest
@@ -28,6 +30,7 @@ class AccountAliasSetRequest extends RpcAcsRequest
 
     /**
      * @param string $accountAlias
+     *
      * @return $this
      */
     public function setAccountAlias($accountAlias)

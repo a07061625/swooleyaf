@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddVodTemplate
+ *
  * @method string getResourceOwnerId()
  * @method string getSubTemplateType()
  * @method string getTemplateConfig()
@@ -31,6 +33,7 @@ class VodTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class VodTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $subTemplateType
+     *
      * @return $this
      */
     public function setSubTemplateType($subTemplateType)
@@ -55,6 +59,7 @@ class VodTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $templateConfig
+     *
      * @return $this
      */
     public function setTemplateConfig($templateConfig)
@@ -67,6 +72,7 @@ class VodTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $templateType
+     *
      * @return $this
      */
     public function setTemplateType($templateType)
@@ -79,6 +85,7 @@ class VodTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -91,6 +98,7 @@ class VodTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class VodTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -115,6 +124,7 @@ class VodTemplateAddRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

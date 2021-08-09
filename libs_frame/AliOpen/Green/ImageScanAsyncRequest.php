@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of ImageAsyncScan
+ *
  * @method string getClientInfo()
  */
 class ImageScanAsyncRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class ImageScanAsyncRequest extends RoaAcsRequest
 
     /**
      * @param string $clientInfo
+     *
      * @return $this
      */
     public function setClientInfo($clientInfo)

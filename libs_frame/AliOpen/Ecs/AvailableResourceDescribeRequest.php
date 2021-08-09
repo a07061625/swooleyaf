@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAvailableResource
+ *
  * @method string getResourceOwnerId()
  * @method string getMemory()
  * @method string getIoOptimized()
@@ -42,6 +44,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +57,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $memory
+     *
      * @return $this
      */
     public function setMemory($memory)
@@ -66,6 +70,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setIoOptimized($ioOptimized)
@@ -78,6 +83,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDiskCategory
+     *
      * @return $this
      */
     public function setDataDiskCategory($dataDiskCategory)
@@ -90,6 +96,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $cores
+     *
      * @return $this
      */
     public function setCores($cores)
@@ -102,6 +109,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskCategory
+     *
      * @return $this
      */
     public function setSystemDiskCategory($systemDiskCategory)
@@ -114,6 +122,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $scope
+     *
      * @return $this
      */
     public function setScope($scope)
@@ -126,6 +135,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -138,6 +148,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $networkCategory
+     *
      * @return $this
      */
     public function setNetworkCategory($networkCategory)
@@ -150,6 +161,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)
@@ -162,6 +174,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -174,6 +187,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -186,6 +200,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostId
+     *
      * @return $this
      */
     public function setDedicatedHostId($dedicatedHostId)
@@ -198,6 +213,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -210,6 +226,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $spotDuration
+     *
      * @return $this
      */
     public function setSpotDuration($spotDuration)
@@ -222,6 +239,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -234,6 +252,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $spotStrategy
+     *
      * @return $this
      */
     public function setSpotStrategy($spotStrategy)
@@ -246,6 +265,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationResource
+     *
      * @return $this
      */
     public function setDestinationResource($destinationResource)
@@ -258,6 +278,7 @@ class AvailableResourceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyFleet
+ *
  * @method string getResourceOwnerId()
  * @method string getTerminateInstancesWithExpiration()
  * @method string getOnDemandTargetCapacity()
@@ -35,6 +37,7 @@ class FleetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class FleetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $terminateInstancesWithExpiration
+     *
      * @return $this
      */
     public function setTerminateInstancesWithExpiration($terminateInstancesWithExpiration)
@@ -59,6 +63,7 @@ class FleetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $onDemandTargetCapacity
+     *
      * @return $this
      */
     public function setOnDemandTargetCapacity($onDemandTargetCapacity)
@@ -71,6 +76,7 @@ class FleetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultTargetCapacityType
+     *
      * @return $this
      */
     public function setDefaultTargetCapacityType($defaultTargetCapacityType)
@@ -83,6 +89,7 @@ class FleetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $excessCapacityTerminationPolicy
+     *
      * @return $this
      */
     public function setExcessCapacityTerminationPolicy($excessCapacityTerminationPolicy)
@@ -95,6 +102,7 @@ class FleetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -107,6 +115,7 @@ class FleetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -119,6 +128,7 @@ class FleetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -131,6 +141,7 @@ class FleetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $fleetId
+     *
      * @return $this
      */
     public function setFleetId($fleetId)
@@ -143,6 +154,7 @@ class FleetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $totalTargetCapacity
+     *
      * @return $this
      */
     public function setTotalTargetCapacity($totalTargetCapacity)
@@ -155,6 +167,7 @@ class FleetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $spotTargetCapacity
+     *
      * @return $this
      */
     public function setSpotTargetCapacity($spotTargetCapacity)
@@ -167,6 +180,7 @@ class FleetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $maxSpotPrice
+     *
      * @return $this
      */
     public function setMaxSpotPrice($maxSpotPrice)

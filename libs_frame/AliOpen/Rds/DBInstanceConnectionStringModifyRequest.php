@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBInstanceConnectionString
+ *
  * @method string getResourceOwnerId()
  * @method string getConnectionStringPrefix()
  * @method string getDBInstanceId()
@@ -31,6 +33,7 @@ class DBInstanceConnectionStringModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class DBInstanceConnectionStringModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $connectionStringPrefix
+     *
      * @return $this
      */
     public function setConnectionStringPrefix($connectionStringPrefix)
@@ -55,6 +59,7 @@ class DBInstanceConnectionStringModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -67,6 +72,7 @@ class DBInstanceConnectionStringModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +85,7 @@ class DBInstanceConnectionStringModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +98,7 @@ class DBInstanceConnectionStringModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class DBInstanceConnectionStringModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $currentConnectionString
+     *
      * @return $this
      */
     public function setCurrentConnectionString($currentConnectionString)
@@ -115,6 +124,7 @@ class DBInstanceConnectionStringModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $port
+     *
      * @return $this
      */
     public function setPort($port)

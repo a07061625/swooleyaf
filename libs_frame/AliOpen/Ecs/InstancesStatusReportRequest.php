@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ReportInstancesStatus
+ *
  * @method string getReason()
  * @method string getResourceOwnerId()
  * @method string getDescription()
@@ -34,6 +36,7 @@ class InstancesStatusReportRequest extends RpcAcsRequest
 
     /**
      * @param string $reason
+     *
      * @return $this
      */
     public function setReason($reason)
@@ -46,6 +49,7 @@ class InstancesStatusReportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -58,6 +62,7 @@ class InstancesStatusReportRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -70,6 +75,7 @@ class InstancesStatusReportRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -81,7 +87,6 @@ class InstancesStatusReportRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $diskId
      * @return $this
      */
     public function setDiskIds(array $diskId)
@@ -96,6 +101,7 @@ class InstancesStatusReportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -108,6 +114,7 @@ class InstancesStatusReportRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -120,6 +127,7 @@ class InstancesStatusReportRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -132,6 +140,7 @@ class InstancesStatusReportRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -143,7 +152,6 @@ class InstancesStatusReportRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceId
      * @return $this
      */
     public function setInstanceIds(array $instanceId)
@@ -157,7 +165,6 @@ class InstancesStatusReportRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $device
      * @return $this
      */
     public function setDevices(array $device)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddUserToGroup
+ *
  * @method string getGroupName()
  * @method string getUserName()
  */
@@ -29,6 +31,7 @@ class GroupUserAddRequest extends RpcAcsRequest
 
     /**
      * @param string $groupName
+     *
      * @return $this
      */
     public function setGroupName($groupName)
@@ -41,6 +44,7 @@ class GroupUserAddRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

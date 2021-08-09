@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateMediaWorkflowTriggerMode
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -29,6 +31,7 @@ class MediaWorkflowTriggerModeUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class MediaWorkflowTriggerModeUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -53,6 +57,7 @@ class MediaWorkflowTriggerModeUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -65,6 +70,7 @@ class MediaWorkflowTriggerModeUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaWorkflowId
+     *
      * @return $this
      */
     public function setMediaWorkflowId($mediaWorkflowId)
@@ -77,6 +83,7 @@ class MediaWorkflowTriggerModeUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,6 +96,7 @@ class MediaWorkflowTriggerModeUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $triggerMode
+     *
      * @return $this
      */
     public function setTriggerMode($triggerMode)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsWarnCreate
+ *
  * @method string getLevel()
  * @method string getGroupId()
  * @method string getDelayTime()
@@ -32,6 +34,7 @@ class WarnCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $level
+     *
      * @return $this
      */
     public function setLevel($level)
@@ -44,6 +47,7 @@ class WarnCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -56,6 +60,7 @@ class WarnCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $delayTime
+     *
      * @return $this
      */
     public function setDelayTime($delayTime)
@@ -68,6 +73,7 @@ class WarnCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $threshold
+     *
      * @return $this
      */
     public function setThreshold($threshold)
@@ -80,6 +86,7 @@ class WarnCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $alertTime
+     *
      * @return $this
      */
     public function setAlertTime($alertTime)
@@ -92,6 +99,7 @@ class WarnCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -104,6 +112,7 @@ class WarnCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $blockTime
+     *
      * @return $this
      */
     public function setBlockTime($blockTime)
@@ -116,6 +125,7 @@ class WarnCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $topic
+     *
      * @return $this
      */
     public function setTopic($topic)
@@ -128,6 +138,7 @@ class WarnCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $contacts
+     *
      * @return $this
      */
     public function setContacts($contacts)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyAutoSnapshotPolicyEx
+ *
  * @method string getResourceOwnerId()
  * @method string getautoSnapshotPolicyId()
  * @method string gettimePoints()
@@ -31,6 +33,7 @@ class AutoSnapshotPolicyExModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class AutoSnapshotPolicyExModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $autoSnapshotPolicyId
+     *
      * @return $this
      */
     public function setautoSnapshotPolicyId($autoSnapshotPolicyId)
@@ -55,6 +59,7 @@ class AutoSnapshotPolicyExModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $timePoints
+     *
      * @return $this
      */
     public function settimePoints($timePoints)
@@ -67,6 +72,7 @@ class AutoSnapshotPolicyExModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $repeatWeekdays
+     *
      * @return $this
      */
     public function setrepeatWeekdays($repeatWeekdays)
@@ -79,6 +85,7 @@ class AutoSnapshotPolicyExModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -91,6 +98,7 @@ class AutoSnapshotPolicyExModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class AutoSnapshotPolicyExModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $autoSnapshotPolicyName
+     *
      * @return $this
      */
     public function setautoSnapshotPolicyName($autoSnapshotPolicyName)
@@ -115,6 +124,7 @@ class AutoSnapshotPolicyExModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $retentionDays
+     *
      * @return $this
      */
     public function setretentionDays($retentionDays)

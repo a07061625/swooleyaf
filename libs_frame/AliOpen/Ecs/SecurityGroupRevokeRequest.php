@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RevokeSecurityGroup
+ *
  * @method string getNicType()
  * @method string getResourceOwnerId()
  * @method string getSourcePortRange()
@@ -43,6 +45,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $nicType
+     *
      * @return $this
      */
     public function setNicType($nicType)
@@ -55,6 +58,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -67,6 +71,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourcePortRange
+     *
      * @return $this
      */
     public function setSourcePortRange($sourcePortRange)
@@ -79,6 +84,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -91,6 +97,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -103,6 +110,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -115,6 +123,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceGroupOwnerId
+     *
      * @return $this
      */
     public function setSourceGroupOwnerId($sourceGroupOwnerId)
@@ -127,6 +136,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceGroupOwnerAccount
+     *
      * @return $this
      */
     public function setSourceGroupOwnerAccount($sourceGroupOwnerAccount)
@@ -139,6 +149,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6DestCidrIp
+     *
      * @return $this
      */
     public function setIpv6DestCidrIp($ipv6DestCidrIp)
@@ -151,6 +162,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6SourceCidrIp
+     *
      * @return $this
      */
     public function setIpv6SourceCidrIp($ipv6SourceCidrIp)
@@ -163,6 +175,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $policy
+     *
      * @return $this
      */
     public function setPolicy($policy)
@@ -175,6 +188,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $portRange
+     *
      * @return $this
      */
     public function setPortRange($portRange)
@@ -187,6 +201,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -199,6 +214,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $ipProtocol
+     *
      * @return $this
      */
     public function setIpProtocol($ipProtocol)
@@ -211,6 +227,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -223,6 +240,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceCidrIp
+     *
      * @return $this
      */
     public function setSourceCidrIp($sourceCidrIp)
@@ -235,6 +253,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -247,6 +266,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $priority
+     *
      * @return $this
      */
     public function setPriority($priority)
@@ -259,6 +279,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $destCidrIp
+     *
      * @return $this
      */
     public function setDestCidrIp($destCidrIp)
@@ -271,6 +292,7 @@ class SecurityGroupRevokeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceGroupId
+     *
      * @return $this
      */
     public function setSourceGroupId($sourceGroupId)

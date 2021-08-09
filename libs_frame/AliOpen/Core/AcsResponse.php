@@ -17,8 +17,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core;
 
+/**
+ * Class AliOpen\Core\AcsResponse
+ */
 class AcsResponse
 {
     /**

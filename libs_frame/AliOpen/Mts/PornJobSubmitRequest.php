@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitPornJob
+ *
  * @method string getInput()
  * @method string getUserData()
  * @method string getResourceOwnerId()
@@ -31,6 +33,7 @@ class PornJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $input
+     *
      * @return $this
      */
     public function setInput($input)
@@ -43,6 +46,7 @@ class PornJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -55,6 +59,7 @@ class PornJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -67,6 +72,7 @@ class PornJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +85,7 @@ class PornJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +98,7 @@ class PornJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class PornJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $pornConfig
+     *
      * @return $this
      */
     public function setPornConfig($pornConfig)
@@ -115,6 +124,7 @@ class PornJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $pipelineId
+     *
      * @return $this
      */
     public function setPipelineId($pipelineId)

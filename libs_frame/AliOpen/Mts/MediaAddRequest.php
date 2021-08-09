@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddMedia
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -37,6 +39,7 @@ class MediaAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -49,6 +52,7 @@ class MediaAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -61,6 +65,7 @@ class MediaAddRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -73,6 +78,7 @@ class MediaAddRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -85,6 +91,7 @@ class MediaAddRequest extends RpcAcsRequest
 
     /**
      * @param string $overrideParams
+     *
      * @return $this
      */
     public function setOverrideParams($overrideParams)
@@ -97,6 +104,7 @@ class MediaAddRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -109,6 +117,7 @@ class MediaAddRequest extends RpcAcsRequest
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -121,6 +130,7 @@ class MediaAddRequest extends RpcAcsRequest
 
     /**
      * @param string $inputUnbind
+     *
      * @return $this
      */
     public function setInputUnbind($inputUnbind)
@@ -133,6 +143,7 @@ class MediaAddRequest extends RpcAcsRequest
 
     /**
      * @param string $tags
+     *
      * @return $this
      */
     public function setTags($tags)
@@ -145,6 +156,7 @@ class MediaAddRequest extends RpcAcsRequest
 
     /**
      * @param string $coverURL
+     *
      * @return $this
      */
     public function setCoverURL($coverURL)
@@ -157,6 +169,7 @@ class MediaAddRequest extends RpcAcsRequest
 
     /**
      * @param string $cateId
+     *
      * @return $this
      */
     public function setCateId($cateId)
@@ -169,6 +182,7 @@ class MediaAddRequest extends RpcAcsRequest
 
     /**
      * @param string $fileURL
+     *
      * @return $this
      */
     public function setFileURL($fileURL)
@@ -181,6 +195,7 @@ class MediaAddRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaWorkflowId
+     *
      * @return $this
      */
     public function setMediaWorkflowId($mediaWorkflowId)
@@ -193,6 +208,7 @@ class MediaAddRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaWorkflowUserData
+     *
      * @return $this
      */
     public function setMediaWorkflowUserData($mediaWorkflowUserData)

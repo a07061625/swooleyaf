@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateEditingProject
+ *
  * @method string getResourceOwnerId()
  * @method string getDescription()
  * @method string getTitle()
@@ -32,6 +34,7 @@ class EditingProjectUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class EditingProjectUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -56,6 +60,7 @@ class EditingProjectUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -68,6 +73,7 @@ class EditingProjectUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $coverURL
+     *
      * @return $this
      */
     public function setCoverURL($coverURL)
@@ -80,6 +86,7 @@ class EditingProjectUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $projectId
+     *
      * @return $this
      */
     public function setProjectId($projectId)
@@ -92,6 +99,7 @@ class EditingProjectUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -104,6 +112,7 @@ class EditingProjectUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -116,6 +125,7 @@ class EditingProjectUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -128,6 +138,7 @@ class EditingProjectUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $timeline
+     *
      * @return $this
      */
     public function setTimeline($timeline)

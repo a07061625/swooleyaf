@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateNetworkInterfacePermission
+ *
  * @method string getResourceOwnerId()
  * @method string getAccountId()
  * @method string getResourceOwnerAccount()
@@ -30,6 +32,7 @@ class NetworkInterfacePermissionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class NetworkInterfacePermissionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $accountId
+     *
      * @return $this
      */
     public function setAccountId($accountId)
@@ -54,6 +58,7 @@ class NetworkInterfacePermissionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +71,7 @@ class NetworkInterfacePermissionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +84,7 @@ class NetworkInterfacePermissionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $permission
+     *
      * @return $this
      */
     public function setPermission($permission)
@@ -90,6 +97,7 @@ class NetworkInterfacePermissionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -102,6 +110,7 @@ class NetworkInterfacePermissionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $networkInterfaceId
+     *
      * @return $this
      */
     public function setNetworkInterfaceId($networkInterfaceId)

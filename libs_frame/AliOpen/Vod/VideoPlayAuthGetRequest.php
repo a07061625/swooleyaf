@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetVideoPlayAuth
+ *
  * @method string getResourceOwnerId()
  * @method string getReAuthInfo()
  * @method string getPlayConfig()
@@ -30,6 +32,7 @@ class VideoPlayAuthGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class VideoPlayAuthGetRequest extends RpcAcsRequest
 
     /**
      * @param string $reAuthInfo
+     *
      * @return $this
      */
     public function setReAuthInfo($reAuthInfo)
@@ -54,6 +58,7 @@ class VideoPlayAuthGetRequest extends RpcAcsRequest
 
     /**
      * @param string $playConfig
+     *
      * @return $this
      */
     public function setPlayConfig($playConfig)
@@ -66,6 +71,7 @@ class VideoPlayAuthGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -78,6 +84,7 @@ class VideoPlayAuthGetRequest extends RpcAcsRequest
 
     /**
      * @param string $videoId
+     *
      * @return $this
      */
     public function setVideoId($videoId)
@@ -90,6 +97,7 @@ class VideoPlayAuthGetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -102,6 +110,7 @@ class VideoPlayAuthGetRequest extends RpcAcsRequest
 
     /**
      * @param string $authInfoTimeout
+     *
      * @return $this
      */
     public function setAuthInfoTimeout($authInfoTimeout)

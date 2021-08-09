@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdatePublicKey
+ *
  * @method string getUserPublicKeyId()
  * @method string getUserName()
  * @method string getStatus()
@@ -30,6 +32,7 @@ class PublicKeyUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $userPublicKeyId
+     *
      * @return $this
      */
     public function setUserPublicKeyId($userPublicKeyId)
@@ -42,6 +45,7 @@ class PublicKeyUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)
@@ -54,6 +58,7 @@ class PublicKeyUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

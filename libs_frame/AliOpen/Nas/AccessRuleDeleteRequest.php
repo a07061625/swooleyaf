@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteAccessRule
+ *
  * @method string getAccessGroupName()
  * @method string getAccessRuleId()
  */
@@ -25,6 +27,7 @@ class AccessRuleDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $accessGroupName
+     *
      * @return $this
      */
     public function setAccessGroupName($accessGroupName)
@@ -37,6 +40,7 @@ class AccessRuleDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $accessRuleId
+     *
      * @return $this
      */
     public function setAccessRuleId($accessRuleId)

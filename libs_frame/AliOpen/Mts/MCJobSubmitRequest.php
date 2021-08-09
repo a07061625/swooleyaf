@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitMCJob
+ *
  * @method string getUserData()
  * @method string getResourceOwnerId()
  * @method string getImages()
@@ -33,6 +35,7 @@ class MCJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -45,6 +48,7 @@ class MCJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +61,7 @@ class MCJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $images
+     *
      * @return $this
      */
     public function setImages($images)
@@ -69,6 +74,7 @@ class MCJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $texts
+     *
      * @return $this
      */
     public function setTexts($texts)
@@ -81,6 +87,7 @@ class MCJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -93,6 +100,7 @@ class MCJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -105,6 +113,7 @@ class MCJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $video
+     *
      * @return $this
      */
     public function setVideo($video)
@@ -117,6 +126,7 @@ class MCJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +139,7 @@ class MCJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $censorConfig
+     *
      * @return $this
      */
     public function setCensorConfig($censorConfig)
@@ -141,6 +152,7 @@ class MCJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $pipelineId
+     *
      * @return $this
      */
     public function setPipelineId($pipelineId)

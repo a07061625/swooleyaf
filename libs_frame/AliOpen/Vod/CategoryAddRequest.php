@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddCategory
+ *
  * @method string getResourceOwnerId()
  * @method string getType()
  * @method string getParentId()
@@ -29,6 +31,7 @@ class CategoryAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class CategoryAddRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -53,6 +57,7 @@ class CategoryAddRequest extends RpcAcsRequest
 
     /**
      * @param string $parentId
+     *
      * @return $this
      */
     public function setParentId($parentId)
@@ -65,6 +70,7 @@ class CategoryAddRequest extends RpcAcsRequest
 
     /**
      * @param string $cateName
+     *
      * @return $this
      */
     public function setCateName($cateName)
@@ -77,6 +83,7 @@ class CategoryAddRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -89,6 +96,7 @@ class CategoryAddRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

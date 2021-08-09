@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddVodDomain
+ *
  * @method string getSources()
  * @method string getSecurityToken()
  * @method string getScope()
@@ -30,6 +32,7 @@ class VodDomainAddRequest extends RpcAcsRequest
 
     /**
      * @param string $sources
+     *
      * @return $this
      */
     public function setSources($sources)
@@ -42,6 +45,7 @@ class VodDomainAddRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -54,6 +58,7 @@ class VodDomainAddRequest extends RpcAcsRequest
 
     /**
      * @param string $scope
+     *
      * @return $this
      */
     public function setScope($scope)
@@ -66,6 +71,7 @@ class VodDomainAddRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +84,7 @@ class VodDomainAddRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -90,6 +97,7 @@ class VodDomainAddRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -102,6 +110,7 @@ class VodDomainAddRequest extends RpcAcsRequest
 
     /**
      * @param string $checkUrl
+     *
      * @return $this
      */
     public function setCheckUrl($checkUrl)

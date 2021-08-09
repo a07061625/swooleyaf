@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDBProxyPerformance
+ *
  * @method string getResourceOwnerId()
  * @method string getMetricsName()
  * @method string getStartTime()
@@ -31,6 +33,7 @@ class DBProxyPerformanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class DBProxyPerformanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $metricsName
+     *
      * @return $this
      */
     public function setMetricsName($metricsName)
@@ -55,6 +59,7 @@ class DBProxyPerformanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -67,6 +72,7 @@ class DBProxyPerformanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -79,6 +85,7 @@ class DBProxyPerformanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -91,6 +98,7 @@ class DBProxyPerformanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -103,6 +111,7 @@ class DBProxyPerformanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -115,6 +124,7 @@ class DBProxyPerformanceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBProxyInstanceType
+     *
      * @return $this
      */
     public function setDBProxyInstanceType($dBProxyInstanceType)

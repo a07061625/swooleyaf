@@ -1,19 +1,23 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class UploadInfo
+ *
  * The return value of ListMultipartUpload
+ *
  * @package SyObjectStorage\Oss\Model
  */
 class UploadInfo
 {
-    private $key = "";
-    private $uploadId = "";
-    private $initiated = "";
+    private $key = '';
+    private $uploadId = '';
+    private $initiated = '';
 
     /**
      * UploadInfo constructor.
+     *
      * @param string $key
      * @param string $uploadId
      * @param string $initiated

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyInstanceCrossBackupPolicy
+ *
  * @method string getResourceOwnerId()
  * @method string getRetentType()
  * @method string getBackupEnabled()
@@ -37,6 +39,7 @@ class InstanceCrossBackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -49,6 +52,7 @@ class InstanceCrossBackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $retentType
+     *
      * @return $this
      */
     public function setRetentType($retentType)
@@ -61,6 +65,7 @@ class InstanceCrossBackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $backupEnabled
+     *
      * @return $this
      */
     public function setBackupEnabled($backupEnabled)
@@ -73,6 +78,7 @@ class InstanceCrossBackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $relService
+     *
      * @return $this
      */
     public function setRelService($relService)
@@ -85,6 +91,7 @@ class InstanceCrossBackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $storageType
+     *
      * @return $this
      */
     public function setStorageType($storageType)
@@ -97,18 +104,20 @@ class InstanceCrossBackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $endpoint
+     *
      * @return $this
      */
     public function setEndpoint($endpoint)
     {
-        $this->requestParameters['Endpoint'] = $endpoint;
-        $this->queryParameters['Endpoint'] = $endpoint;
+        $this->requestParameters['AliOpen\Core\Regions\Endpoint'] = $endpoint;
+        $this->queryParameters['AliOpen\Core\Regions\Endpoint'] = $endpoint;
 
         return $this;
     }
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -121,6 +130,7 @@ class InstanceCrossBackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $retention
+     *
      * @return $this
      */
     public function setRetention($retention)
@@ -133,6 +143,7 @@ class InstanceCrossBackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -145,6 +156,7 @@ class InstanceCrossBackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $crossBackupType
+     *
      * @return $this
      */
     public function setCrossBackupType($crossBackupType)
@@ -157,6 +169,7 @@ class InstanceCrossBackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $logBackupEnabled
+     *
      * @return $this
      */
     public function setLogBackupEnabled($logBackupEnabled)
@@ -169,6 +182,7 @@ class InstanceCrossBackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -181,6 +195,7 @@ class InstanceCrossBackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $crossBackupRegion
+     *
      * @return $this
      */
     public function setCrossBackupRegion($crossBackupRegion)
@@ -193,6 +208,7 @@ class InstanceCrossBackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $storageOwner
+     *
      * @return $this
      */
     public function setStorageOwner($storageOwner)

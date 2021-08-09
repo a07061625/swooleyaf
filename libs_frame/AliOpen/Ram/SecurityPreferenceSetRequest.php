@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetSecurityPreference
+ *
  * @method string getAllowUserToManageAccessKeys()
  * @method string getAllowUserToManageMFADevices()
  * @method string getAllowUserToManagePublicKeys()
@@ -34,6 +36,7 @@ class SecurityPreferenceSetRequest extends RpcAcsRequest
 
     /**
      * @param string $allowUserToManageAccessKeys
+     *
      * @return $this
      */
     public function setAllowUserToManageAccessKeys($allowUserToManageAccessKeys)
@@ -46,6 +49,7 @@ class SecurityPreferenceSetRequest extends RpcAcsRequest
 
     /**
      * @param string $allowUserToManageMFADevices
+     *
      * @return $this
      */
     public function setAllowUserToManageMFADevices($allowUserToManageMFADevices)
@@ -58,6 +62,7 @@ class SecurityPreferenceSetRequest extends RpcAcsRequest
 
     /**
      * @param string $allowUserToManagePublicKeys
+     *
      * @return $this
      */
     public function setAllowUserToManagePublicKeys($allowUserToManagePublicKeys)
@@ -70,6 +75,7 @@ class SecurityPreferenceSetRequest extends RpcAcsRequest
 
     /**
      * @param string $enableSaveMFATicket
+     *
      * @return $this
      */
     public function setEnableSaveMFATicket($enableSaveMFATicket)
@@ -82,6 +88,7 @@ class SecurityPreferenceSetRequest extends RpcAcsRequest
 
     /**
      * @param string $loginNetworkMasks
+     *
      * @return $this
      */
     public function setLoginNetworkMasks($loginNetworkMasks)
@@ -94,6 +101,7 @@ class SecurityPreferenceSetRequest extends RpcAcsRequest
 
     /**
      * @param string $allowUserToChangePassword
+     *
      * @return $this
      */
     public function setAllowUserToChangePassword($allowUserToChangePassword)
@@ -106,6 +114,7 @@ class SecurityPreferenceSetRequest extends RpcAcsRequest
 
     /**
      * @param string $loginSessionDuration
+     *
      * @return $this
      */
     public function setLoginSessionDuration($loginSessionDuration)

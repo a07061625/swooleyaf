@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsMqttGroupIdDelete
+ *
  * @method string getGroupId()
  * @method string getInstanceId()
  */
@@ -25,6 +27,7 @@ class MqttGroupIdDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -37,6 +40,7 @@ class MqttGroupIdDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

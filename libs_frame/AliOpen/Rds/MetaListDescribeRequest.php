@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeMetaList
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getPattern()
@@ -35,6 +37,7 @@ class MetaListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class MetaListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -59,6 +63,7 @@ class MetaListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pattern
+     *
      * @return $this
      */
     public function setPattern($pattern)
@@ -71,6 +76,7 @@ class MetaListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -83,6 +89,7 @@ class MetaListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -95,6 +102,7 @@ class MetaListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageIndex
+     *
      * @return $this
      */
     public function setPageIndex($pageIndex)
@@ -107,6 +115,7 @@ class MetaListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTime
+     *
      * @return $this
      */
     public function setRestoreTime($restoreTime)
@@ -119,6 +128,7 @@ class MetaListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -131,6 +141,7 @@ class MetaListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $backupSetID
+     *
      * @return $this
      */
     public function setBackupSetID($backupSetID)
@@ -143,6 +154,7 @@ class MetaListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -155,6 +167,7 @@ class MetaListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $getDbName
+     *
      * @return $this
      */
     public function setGetDbName($getDbName)
@@ -167,6 +180,7 @@ class MetaListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreType
+     *
      * @return $this
      */
     public function setRestoreType($restoreType)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeSecurityGroupReferences
+ *
  * @method string getResourceOwnerId()
  * @method array getSecurityGroupIds()
  * @method string getResourceOwnerAccount()
@@ -28,6 +30,7 @@ class SecurityGroupReferencesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -39,7 +42,6 @@ class SecurityGroupReferencesDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $securityGroupId
      * @return $this
      */
     public function setSecurityGroupIds(array $securityGroupId)
@@ -54,6 +56,7 @@ class SecurityGroupReferencesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +69,7 @@ class SecurityGroupReferencesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +82,7 @@ class SecurityGroupReferencesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

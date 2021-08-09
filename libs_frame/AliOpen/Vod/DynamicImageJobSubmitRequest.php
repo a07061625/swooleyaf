@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitDynamicImageJob
+ *
  * @method string getResourceOwnerId()
  * @method string getDynamicImageTemplateId()
  * @method string getResourceOwnerAccount()
@@ -29,6 +31,7 @@ class DynamicImageJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class DynamicImageJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $dynamicImageTemplateId
+     *
      * @return $this
      */
     public function setDynamicImageTemplateId($dynamicImageTemplateId)
@@ -53,6 +57,7 @@ class DynamicImageJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -65,6 +70,7 @@ class DynamicImageJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $videoId
+     *
      * @return $this
      */
     public function setVideoId($videoId)
@@ -77,6 +83,7 @@ class DynamicImageJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $overrideParams
+     *
      * @return $this
      */
     public function setOverrideParams($overrideParams)
@@ -89,6 +96,7 @@ class DynamicImageJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

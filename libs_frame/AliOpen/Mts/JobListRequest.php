@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListJob
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getNextPageToken()
@@ -33,6 +35,7 @@ class JobListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class JobListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -57,6 +61,7 @@ class JobListRequest extends RpcAcsRequest
 
     /**
      * @param string $nextPageToken
+     *
      * @return $this
      */
     public function setNextPageToken($nextPageToken)
@@ -69,6 +74,7 @@ class JobListRequest extends RpcAcsRequest
 
     /**
      * @param string $startOfJobCreatedTimeRange
+     *
      * @return $this
      */
     public function setStartOfJobCreatedTimeRange($startOfJobCreatedTimeRange)
@@ -81,6 +87,7 @@ class JobListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -93,6 +100,7 @@ class JobListRequest extends RpcAcsRequest
 
     /**
      * @param string $maximumPageSize
+     *
      * @return $this
      */
     public function setMaximumPageSize($maximumPageSize)
@@ -105,6 +113,7 @@ class JobListRequest extends RpcAcsRequest
 
     /**
      * @param string $state
+     *
      * @return $this
      */
     public function setState($state)
@@ -117,6 +126,7 @@ class JobListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +139,7 @@ class JobListRequest extends RpcAcsRequest
 
     /**
      * @param string $endOfJobCreatedTimeRange
+     *
      * @return $this
      */
     public function setEndOfJobCreatedTimeRange($endOfJobCreatedTimeRange)
@@ -141,6 +152,7 @@ class JobListRequest extends RpcAcsRequest
 
     /**
      * @param string $pipelineId
+     *
      * @return $this
      */
     public function setPipelineId($pipelineId)

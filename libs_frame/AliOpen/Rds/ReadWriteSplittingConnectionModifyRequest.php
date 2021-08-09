@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyReadWriteSplittingConnection
+ *
  * @method string getResourceOwnerId()
  * @method string getConnectionStringPrefix()
  * @method string getDistributionType()
@@ -33,6 +35,7 @@ class ReadWriteSplittingConnectionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class ReadWriteSplittingConnectionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $connectionStringPrefix
+     *
      * @return $this
      */
     public function setConnectionStringPrefix($connectionStringPrefix)
@@ -57,6 +61,7 @@ class ReadWriteSplittingConnectionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $distributionType
+     *
      * @return $this
      */
     public function setDistributionType($distributionType)
@@ -69,6 +74,7 @@ class ReadWriteSplittingConnectionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -81,6 +87,7 @@ class ReadWriteSplittingConnectionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -93,6 +100,7 @@ class ReadWriteSplittingConnectionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -105,6 +113,7 @@ class ReadWriteSplittingConnectionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $weight
+     *
      * @return $this
      */
     public function setWeight($weight)
@@ -117,6 +126,7 @@ class ReadWriteSplittingConnectionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +139,7 @@ class ReadWriteSplittingConnectionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $port
+     *
      * @return $this
      */
     public function setPort($port)
@@ -141,6 +152,7 @@ class ReadWriteSplittingConnectionModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $maxDelayTime
+     *
      * @return $this
      */
     public function setMaxDelayTime($maxDelayTime)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RunInstances
+ *
  * @method string getLaunchTemplateName()
  * @method string getResourceOwnerId()
  * @method string getUniqueSuffix()
@@ -96,6 +98,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $launchTemplateName
+     *
      * @return $this
      */
     public function setLaunchTemplateName($launchTemplateName)
@@ -108,6 +111,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -120,6 +124,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $uniqueSuffix
+     *
      * @return $this
      */
     public function setUniqueSuffix($uniqueSuffix)
@@ -132,6 +137,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $hpcClusterId
+     *
      * @return $this
      */
     public function setHpcClusterId($hpcClusterId)
@@ -144,6 +150,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $httpPutResponseHopLimit
+     *
      * @return $this
      */
     public function setHttpPutResponseHopLimit($httpPutResponseHopLimit)
@@ -156,6 +163,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $securityEnhancementStrategy
+     *
      * @return $this
      */
     public function setSecurityEnhancementStrategy($securityEnhancementStrategy)
@@ -168,6 +176,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $keyPairName
+     *
      * @return $this
      */
     public function setKeyPairName($keyPairName)
@@ -180,6 +189,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $minAmount
+     *
      * @return $this
      */
     public function setMinAmount($minAmount)
@@ -192,6 +202,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $spotPriceLimit
+     *
      * @return $this
      */
     public function setSpotPriceLimit($spotPriceLimit)
@@ -204,6 +215,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $deletionProtection
+     *
      * @return $this
      */
     public function setDeletionProtection($deletionProtection)
@@ -216,6 +228,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -228,6 +241,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $hostName
+     *
      * @return $this
      */
     public function setHostName($hostName)
@@ -240,6 +254,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -252,6 +267,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $storageSetPartitionNumber
+     *
      * @return $this
      */
     public function setStorageSetPartitionNumber($storageSetPartitionNumber)
@@ -263,7 +279,6 @@ class InstancesRunRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -279,6 +294,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskAutoSnapshotPolicyId
+     *
      * @return $this
      */
     public function setSystemDiskAutoSnapshotPolicyId($systemDiskAutoSnapshotPolicyId)
@@ -291,6 +307,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenewPeriod
+     *
      * @return $this
      */
     public function setAutoRenewPeriod($autoRenewPeriod)
@@ -303,6 +320,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $cpuOptionsCore
+     *
      * @return $this
      */
     public function setCpuOptionsCore($cpuOptionsCore)
@@ -315,6 +333,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -327,6 +346,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setDryRun($dryRun)
@@ -339,6 +359,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $launchTemplateId
+     *
      * @return $this
      */
     public function setLaunchTemplateId($launchTemplateId)
@@ -351,6 +372,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6AddressCount
+     *
      * @return $this
      */
     public function setIpv6AddressCount($ipv6AddressCount)
@@ -363,6 +385,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $cpuOptionsNuma
+     *
      * @return $this
      */
     public function setCpuOptionsNuma($cpuOptionsNuma)
@@ -375,6 +398,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -387,6 +411,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $capacityReservationPreference
+     *
      * @return $this
      */
     public function setCapacityReservationPreference($capacityReservationPreference)
@@ -399,6 +424,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -411,6 +437,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $spotStrategy
+     *
      * @return $this
      */
     public function setSpotStrategy($spotStrategy)
@@ -423,6 +450,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $privateIpAddress
+     *
      * @return $this
      */
     public function setPrivateIpAddress($privateIpAddress)
@@ -435,6 +463,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $periodUnit
+     *
      * @return $this
      */
     public function setPeriodUnit($periodUnit)
@@ -447,6 +476,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceName
+     *
      * @return $this
      */
     public function setInstanceName($instanceName)
@@ -459,6 +489,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenew
+     *
      * @return $this
      */
     public function setAutoRenew($autoRenew)
@@ -471,6 +502,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $internetChargeType
+     *
      * @return $this
      */
     public function setInternetChargeType($internetChargeType)
@@ -483,6 +515,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -494,7 +527,6 @@ class InstancesRunRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ipv6Address
      * @return $this
      */
     public function setIpv6Addresss(array $ipv6Address)
@@ -509,6 +541,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $internetMaxBandwidthIn
+     *
      * @return $this
      */
     public function setInternetMaxBandwidthIn($internetMaxBandwidthIn)
@@ -521,6 +554,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $affinity
+     *
      * @return $this
      */
     public function setAffinity($affinity)
@@ -533,6 +567,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -545,6 +580,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $spotInterruptionBehavior
+     *
      * @return $this
      */
     public function setSpotInterruptionBehavior($spotInterruptionBehavior)
@@ -557,6 +593,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -569,6 +606,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setIoOptimized($ioOptimized)
@@ -581,6 +619,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupId
+     *
      * @return $this
      */
     public function setSecurityGroupId($securityGroupId)
@@ -593,6 +632,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $internetMaxBandwidthOut
+     *
      * @return $this
      */
     public function setInternetMaxBandwidthOut($internetMaxBandwidthOut)
@@ -605,6 +645,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -617,6 +658,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $cpuOptionsThreadsPerCore
+     *
      * @return $this
      */
     public function setCpuOptionsThreadsPerCore($cpuOptionsThreadsPerCore)
@@ -629,6 +671,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskCategory
+     *
      * @return $this
      */
     public function setSystemDiskCategory($systemDiskCategory)
@@ -641,6 +684,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $capacityReservationId
+     *
      * @return $this
      */
     public function setCapacityReservationId($capacityReservationId)
@@ -653,6 +697,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskPerformanceLevel
+     *
      * @return $this
      */
     public function setSystemDiskPerformanceLevel($systemDiskPerformanceLevel)
@@ -665,6 +710,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -677,6 +723,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $passwordInherit
+     *
      * @return $this
      */
     public function setPasswordInherit($passwordInherit)
@@ -689,6 +736,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $httpEndpoint
+     *
      * @return $this
      */
     public function setHttpEndpoint($httpEndpoint)
@@ -701,6 +749,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -713,6 +762,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $hibernationConfigured
+     *
      * @return $this
      */
     public function setHibernationConfigured($hibernationConfigured)
@@ -725,6 +775,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)
@@ -736,7 +787,6 @@ class InstancesRunRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $networkInterface
      * @return $this
      */
     public function setNetworkInterfaces(array $networkInterface)
@@ -758,6 +808,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $deploymentSetId
+     *
      * @return $this
      */
     public function setDeploymentSetId($deploymentSetId)
@@ -770,6 +821,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $amount
+     *
      * @return $this
      */
     public function setAmount($amount)
@@ -782,6 +834,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -794,6 +847,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -806,6 +860,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $tenancy
+     *
      * @return $this
      */
     public function setTenancy($tenancy)
@@ -818,6 +873,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskDiskName
+     *
      * @return $this
      */
     public function setSystemDiskDiskName($systemDiskDiskName)
@@ -830,6 +886,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $ramRoleName
+     *
      * @return $this
      */
     public function setRamRoleName($ramRoleName)
@@ -842,6 +899,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $autoReleaseTime
+     *
      * @return $this
      */
     public function setAutoReleaseTime($autoReleaseTime)
@@ -854,6 +912,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostId
+     *
      * @return $this
      */
     public function setDedicatedHostId($dedicatedHostId)
@@ -866,6 +925,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $creditSpecification
+     *
      * @return $this
      */
     public function setCreditSpecification($creditSpecification)
@@ -877,7 +937,6 @@ class InstancesRunRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $securityGroupIds
      * @return $this
      */
     public function setSecurityGroupIdss(array $securityGroupIds)
@@ -892,6 +951,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $spotDuration
+     *
      * @return $this
      */
     public function setSpotDuration($spotDuration)
@@ -903,7 +963,6 @@ class InstancesRunRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $dataDisk
      * @return $this
      */
     public function setDataDisks(array $dataDisk)
@@ -929,6 +988,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $launchTemplateVersion
+     *
      * @return $this
      */
     public function setLaunchTemplateVersion($launchTemplateVersion)
@@ -941,6 +1001,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $storageSetId
+     *
      * @return $this
      */
     public function setStorageSetId($storageSetId)
@@ -953,6 +1014,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskSize
+     *
      * @return $this
      */
     public function setSystemDiskSize($systemDiskSize)
@@ -965,6 +1027,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $imageFamily
+     *
      * @return $this
      */
     public function setImageFamily($imageFamily)
@@ -977,6 +1040,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $httpTokens
+     *
      * @return $this
      */
     public function setHttpTokens($httpTokens)
@@ -989,6 +1053,7 @@ class InstancesRunRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskDescription
+     *
      * @return $this
      */
     public function setSystemDiskDescription($systemDiskDescription)

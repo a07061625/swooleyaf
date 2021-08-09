@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core\Auth;
 
 class BearTokenSigner implements ISigner
@@ -24,19 +25,13 @@ class BearTokenSigner implements ISigner
     /**
      * @param $source
      * @param $accessSecret
-     * @return null
      */
     public function signString($source, $accessSecret)
     {
-        return null;
     }
 
-    /**
-     * @return null
-     */
     public function getSignatureMethod()
     {
-        return null;
     }
 
     /**

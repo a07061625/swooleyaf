@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Dm;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -33,7 +34,7 @@ class SmsSingleSendRequest extends RpcAcsRequest
 
     public function __construct()
     {
-        parent::__construct("Dm", "2015-11-23", "SingleSendSms");
+        parent::__construct('Dm', '2015-11-23', 'SingleSendSms');
     }
 
     public function getOwnerId()
@@ -44,7 +45,7 @@ class SmsSingleSendRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
     public function getResourceOwnerAccount()
@@ -55,7 +56,7 @@ class SmsSingleSendRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getResourceOwnerId()
@@ -66,7 +67,7 @@ class SmsSingleSendRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getSignName()
@@ -77,7 +78,7 @@ class SmsSingleSendRequest extends RpcAcsRequest
     public function setSignName($signName)
     {
         $this->signName = $signName;
-        $this->queryParameters["SignName"] = $signName;
+        $this->queryParameters['SignName'] = $signName;
     }
 
     public function getTemplateCode()
@@ -88,7 +89,7 @@ class SmsSingleSendRequest extends RpcAcsRequest
     public function setTemplateCode($templateCode)
     {
         $this->templateCode = $templateCode;
-        $this->queryParameters["TemplateCode"] = $templateCode;
+        $this->queryParameters['TemplateCode'] = $templateCode;
     }
 
     public function getRecNum()
@@ -99,7 +100,7 @@ class SmsSingleSendRequest extends RpcAcsRequest
     public function setRecNum($recNum)
     {
         $this->recNum = $recNum;
-        $this->queryParameters["RecNum"] = $recNum;
+        $this->queryParameters['RecNum'] = $recNum;
     }
 
     public function getParamString()
@@ -110,6 +111,6 @@ class SmsSingleSendRequest extends RpcAcsRequest
     public function setParamString($paramString)
     {
         $this->paramString = $paramString;
-        $this->queryParameters["ParamString"] = $paramString;
+        $this->queryParameters['ParamString'] = $paramString;
     }
 }

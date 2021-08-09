@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetRole
+ *
  * @method string getRoleName()
  */
 class RoleGetRequest extends RpcAcsRequest
@@ -28,6 +30,7 @@ class RoleGetRequest extends RpcAcsRequest
 
     /**
      * @param string $roleName
+     *
      * @return $this
      */
     public function setRoleName($roleName)

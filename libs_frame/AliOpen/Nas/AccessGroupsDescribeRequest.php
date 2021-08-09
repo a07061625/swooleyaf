@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAccessGroups
+ *
  * @method string getPageSize()
  * @method string getAccessGroupName()
  * @method string getPageNumber()
@@ -26,6 +28,7 @@ class AccessGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -38,6 +41,7 @@ class AccessGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $accessGroupName
+     *
      * @return $this
      */
     public function setAccessGroupName($accessGroupName)
@@ -50,6 +54,7 @@ class AccessGroupsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

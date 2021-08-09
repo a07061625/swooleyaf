@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AssignIpv6Addresses
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getIpv6AddressCount()
@@ -30,6 +32,7 @@ class Ipv6AddressesAssignRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class Ipv6AddressesAssignRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -54,6 +58,7 @@ class Ipv6AddressesAssignRequest extends RpcAcsRequest
 
     /**
      * @param string $ipv6AddressCount
+     *
      * @return $this
      */
     public function setIpv6AddressCount($ipv6AddressCount)
@@ -66,6 +71,7 @@ class Ipv6AddressesAssignRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +84,7 @@ class Ipv6AddressesAssignRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -90,6 +97,7 @@ class Ipv6AddressesAssignRequest extends RpcAcsRequest
 
     /**
      * @param string $networkInterfaceId
+     *
      * @return $this
      */
     public function setNetworkInterfaceId($networkInterfaceId)
@@ -101,7 +109,6 @@ class Ipv6AddressesAssignRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ipv6Address
      * @return $this
      */
     public function setIpv6Addresss(array $ipv6Address)

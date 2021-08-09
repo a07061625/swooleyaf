@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDiagnosticReportList
+ *
  * @method string getDBInstanceId()
  */
 class DiagnosticReportListDescribeRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class DiagnosticReportListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)

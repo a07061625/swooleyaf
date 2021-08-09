@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MigrateToOtherZone
+ *
  * @method string getResourceOwnerId()
  * @method string getZoneIdSlave1()
  * @method string getZoneIdSlave2()
@@ -35,6 +37,7 @@ class OtherZoneMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class OtherZoneMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneIdSlave1
+     *
      * @return $this
      */
     public function setZoneIdSlave1($zoneIdSlave1)
@@ -59,6 +63,7 @@ class OtherZoneMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneIdSlave2
+     *
      * @return $this
      */
     public function setZoneIdSlave2($zoneIdSlave2)
@@ -71,6 +76,7 @@ class OtherZoneMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $effectiveTime
+     *
      * @return $this
      */
     public function setEffectiveTime($effectiveTime)
@@ -83,6 +89,7 @@ class OtherZoneMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -95,6 +102,7 @@ class OtherZoneMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -107,6 +115,7 @@ class OtherZoneMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -119,6 +128,7 @@ class OtherZoneMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -131,6 +141,7 @@ class OtherZoneMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -143,6 +154,7 @@ class OtherZoneMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $vPCId
+     *
      * @return $this
      */
     public function setVPCId($vPCId)
@@ -155,6 +167,7 @@ class OtherZoneMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -167,6 +180,7 @@ class OtherZoneMigrateRequest extends RpcAcsRequest
 
     /**
      * @param string $category
+     *
      * @return $this
      */
     public function setCategory($category)

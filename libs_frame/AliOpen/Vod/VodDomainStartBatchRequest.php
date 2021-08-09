@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BatchStartVodDomain
+ *
  * @method string getDomainNames()
  * @method string getOwnerId()
  * @method string getSecurityToken()
@@ -26,6 +28,7 @@ class VodDomainStartBatchRequest extends RpcAcsRequest
 
     /**
      * @param string $domainNames
+     *
      * @return $this
      */
     public function setDomainNames($domainNames)
@@ -38,6 +41,7 @@ class VodDomainStartBatchRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -50,6 +54,7 @@ class VodDomainStartBatchRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)

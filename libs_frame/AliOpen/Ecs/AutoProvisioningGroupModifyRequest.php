@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyAutoProvisioningGroup
+ *
  * @method string getResourceOwnerId()
  * @method string getTerminateInstancesWithExpiration()
  * @method string getDefaultTargetCapacityType()
@@ -36,6 +38,7 @@ class AutoProvisioningGroupModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +51,7 @@ class AutoProvisioningGroupModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $terminateInstancesWithExpiration
+     *
      * @return $this
      */
     public function setTerminateInstancesWithExpiration($terminateInstancesWithExpiration)
@@ -60,6 +64,7 @@ class AutoProvisioningGroupModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultTargetCapacityType
+     *
      * @return $this
      */
     public function setDefaultTargetCapacityType($defaultTargetCapacityType)
@@ -72,6 +77,7 @@ class AutoProvisioningGroupModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $excessCapacityTerminationPolicy
+     *
      * @return $this
      */
     public function setExcessCapacityTerminationPolicy($excessCapacityTerminationPolicy)
@@ -84,6 +90,7 @@ class AutoProvisioningGroupModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -96,6 +103,7 @@ class AutoProvisioningGroupModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -108,6 +116,7 @@ class AutoProvisioningGroupModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -120,6 +129,7 @@ class AutoProvisioningGroupModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $autoProvisioningGroupId
+     *
      * @return $this
      */
     public function setAutoProvisioningGroupId($autoProvisioningGroupId)
@@ -132,6 +142,7 @@ class AutoProvisioningGroupModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $payAsYouGoTargetCapacity
+     *
      * @return $this
      */
     public function setPayAsYouGoTargetCapacity($payAsYouGoTargetCapacity)
@@ -144,6 +155,7 @@ class AutoProvisioningGroupModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $totalTargetCapacity
+     *
      * @return $this
      */
     public function setTotalTargetCapacity($totalTargetCapacity)
@@ -156,6 +168,7 @@ class AutoProvisioningGroupModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $spotTargetCapacity
+     *
      * @return $this
      */
     public function setSpotTargetCapacity($spotTargetCapacity)
@@ -168,6 +181,7 @@ class AutoProvisioningGroupModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $maxSpotPrice
+     *
      * @return $this
      */
     public function setMaxSpotPrice($maxSpotPrice)
@@ -180,6 +194,7 @@ class AutoProvisioningGroupModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $autoProvisioningGroupName
+     *
      * @return $this
      */
     public function setAutoProvisioningGroupName($autoProvisioningGroupName)

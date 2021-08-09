@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CopyDatabaseBetweenInstances
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getResourceGroupId()
@@ -36,6 +38,7 @@ class DatabaseBetweenInstancesCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +51,7 @@ class DatabaseBetweenInstancesCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -60,6 +64,7 @@ class DatabaseBetweenInstancesCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -72,6 +77,7 @@ class DatabaseBetweenInstancesCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -84,6 +90,7 @@ class DatabaseBetweenInstancesCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTime
+     *
      * @return $this
      */
     public function setRestoreTime($restoreTime)
@@ -96,6 +103,7 @@ class DatabaseBetweenInstancesCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -108,6 +116,7 @@ class DatabaseBetweenInstancesCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $backupId
+     *
      * @return $this
      */
     public function setBackupId($backupId)
@@ -120,6 +129,7 @@ class DatabaseBetweenInstancesCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -132,6 +142,7 @@ class DatabaseBetweenInstancesCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -144,6 +155,7 @@ class DatabaseBetweenInstancesCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $syncUserPrivilege
+     *
      * @return $this
      */
     public function setSyncUserPrivilege($syncUserPrivilege)
@@ -156,6 +168,7 @@ class DatabaseBetweenInstancesCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $dbNames
+     *
      * @return $this
      */
     public function setDbNames($dbNames)
@@ -168,6 +181,7 @@ class DatabaseBetweenInstancesCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $targetDBInstanceId
+     *
      * @return $this
      */
     public function setTargetDBInstanceId($targetDBInstanceId)
@@ -180,6 +194,7 @@ class DatabaseBetweenInstancesCopyRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)

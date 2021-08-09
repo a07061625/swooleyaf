@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListPolicies
+ *
  * @method string getPolicyType()
  * @method string getMarker()
  * @method string getMaxItems()
@@ -30,6 +32,7 @@ class PoliciesListRequest extends RpcAcsRequest
 
     /**
      * @param string $policyType
+     *
      * @return $this
      */
     public function setPolicyType($policyType)
@@ -42,6 +45,7 @@ class PoliciesListRequest extends RpcAcsRequest
 
     /**
      * @param string $marker
+     *
      * @return $this
      */
     public function setMarker($marker)
@@ -54,6 +58,7 @@ class PoliciesListRequest extends RpcAcsRequest
 
     /**
      * @param string $maxItems
+     *
      * @return $this
      */
     public function setMaxItems($maxItems)

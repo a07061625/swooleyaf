@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsMessageGetByKey
+ *
  * @method string getInstanceId()
  * @method string getTopic()
  * @method string getKey()
@@ -26,6 +28,7 @@ class MessageGetByKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -38,6 +41,7 @@ class MessageGetByKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $topic
+     *
      * @return $this
      */
     public function setTopic($topic)
@@ -50,6 +54,7 @@ class MessageGetByKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $key
+     *
      * @return $this
      */
     public function setKey($key)

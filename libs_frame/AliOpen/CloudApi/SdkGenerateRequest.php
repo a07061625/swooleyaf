@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SdkGenerate
+ *
  * @method string getSecurityToken()
  * @method string getGroupId()
  * @method string getAppId()
@@ -22,11 +24,17 @@ class SdkGenerateRequest extends RpcAcsRequest
      */
     public function __construct()
     {
-        parent::__construct('CloudAPI', '2016-07-14', 'SdkGenerate', 'apigateway');
+        parent::__construct(
+            'CloudAPI',
+            '2016-07-14',
+            'SdkGenerate',
+            'apigateway'
+        );
     }
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -39,6 +47,7 @@ class SdkGenerateRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -51,6 +60,7 @@ class SdkGenerateRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -63,6 +73,7 @@ class SdkGenerateRequest extends RpcAcsRequest
 
     /**
      * @param string $language
+     *
      * @return $this
      */
     public function setLanguage($language)

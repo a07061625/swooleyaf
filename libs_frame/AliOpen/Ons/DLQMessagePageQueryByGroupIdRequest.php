@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsDLQMessagePageQueryByGroupId
+ *
  * @method string getGroupId()
  * @method string getEndTime()
  * @method string getBeginTime()
@@ -30,6 +32,7 @@ class DLQMessagePageQueryByGroupIdRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -42,6 +45,7 @@ class DLQMessagePageQueryByGroupIdRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -54,6 +58,7 @@ class DLQMessagePageQueryByGroupIdRequest extends RpcAcsRequest
 
     /**
      * @param string $beginTime
+     *
      * @return $this
      */
     public function setBeginTime($beginTime)
@@ -66,6 +71,7 @@ class DLQMessagePageQueryByGroupIdRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -78,6 +84,7 @@ class DLQMessagePageQueryByGroupIdRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -90,6 +97,7 @@ class DLQMessagePageQueryByGroupIdRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -102,6 +110,7 @@ class DLQMessagePageQueryByGroupIdRequest extends RpcAcsRequest
 
     /**
      * @param string $taskId
+     *
      * @return $this
      */
     public function setTaskId($taskId)

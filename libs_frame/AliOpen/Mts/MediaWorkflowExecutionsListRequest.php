@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListMediaWorkflowExecutions
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getInputFileURL()
@@ -32,6 +34,7 @@ class MediaWorkflowExecutionsListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class MediaWorkflowExecutionsListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -56,6 +60,7 @@ class MediaWorkflowExecutionsListRequest extends RpcAcsRequest
 
     /**
      * @param string $inputFileURL
+     *
      * @return $this
      */
     public function setInputFileURL($inputFileURL)
@@ -68,6 +73,7 @@ class MediaWorkflowExecutionsListRequest extends RpcAcsRequest
 
     /**
      * @param string $nextPageToken
+     *
      * @return $this
      */
     public function setNextPageToken($nextPageToken)
@@ -80,6 +86,7 @@ class MediaWorkflowExecutionsListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -92,6 +99,7 @@ class MediaWorkflowExecutionsListRequest extends RpcAcsRequest
 
     /**
      * @param string $maximumPageSize
+     *
      * @return $this
      */
     public function setMaximumPageSize($maximumPageSize)
@@ -104,6 +112,7 @@ class MediaWorkflowExecutionsListRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaWorkflowId
+     *
      * @return $this
      */
     public function setMediaWorkflowId($mediaWorkflowId)
@@ -116,6 +125,7 @@ class MediaWorkflowExecutionsListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -128,6 +138,7 @@ class MediaWorkflowExecutionsListRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaWorkflowName
+     *
      * @return $this
      */
     public function setMediaWorkflowName($mediaWorkflowName)

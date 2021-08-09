@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\Mts;
 
 /**
@@ -11,7 +12,6 @@ namespace AliOpen\Mts;
  */
 class PlayerAuthRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

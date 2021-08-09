@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeImages
+ *
  * @method string getActionType()
  * @method string getResourceOwnerId()
  * @method string getImageId()
@@ -47,6 +49,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $actionType
+     *
      * @return $this
      */
     public function setActionType($actionType)
@@ -59,6 +62,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -71,6 +75,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -83,6 +88,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotId
+     *
      * @return $this
      */
     public function setSnapshotId($snapshotId)
@@ -95,6 +101,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $usage
+     *
      * @return $this
      */
     public function setUsage($usage)
@@ -107,6 +114,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -119,6 +127,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $imageOwnerAlias
+     *
      * @return $this
      */
     public function setImageOwnerAlias($imageOwnerAlias)
@@ -131,6 +140,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -143,6 +153,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $isSupportIoOptimized
+     *
      * @return $this
      */
     public function setIsSupportIoOptimized($isSupportIoOptimized)
@@ -155,6 +166,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $imageName
+     *
      * @return $this
      */
     public function setImageName($imageName)
@@ -167,6 +179,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $isSupportCloudinit
+     *
      * @return $this
      */
     public function setIsSupportCloudinit($isSupportCloudinit)
@@ -179,6 +192,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -191,6 +205,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -202,7 +217,6 @@ class ImagesDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -218,6 +232,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $architecture
+     *
      * @return $this
      */
     public function setArchitecture($architecture)
@@ -230,6 +245,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dryRun
+     *
      * @return $this
      */
     public function setDryRun($dryRun)
@@ -242,6 +258,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -254,6 +271,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -266,6 +284,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $showExpired
+     *
      * @return $this
      */
     public function setShowExpired($showExpired)
@@ -278,6 +297,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $oSType
+     *
      * @return $this
      */
     public function setOSType($oSType)
@@ -290,6 +310,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -301,7 +322,6 @@ class ImagesDescribeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $filter
      * @return $this
      */
     public function setFilters(array $filter)
@@ -317,6 +337,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $imageFamily
+     *
      * @return $this
      */
     public function setImageFamily($imageFamily)
@@ -329,6 +350,7 @@ class ImagesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

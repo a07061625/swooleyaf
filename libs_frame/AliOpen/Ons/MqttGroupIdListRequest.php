@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsMqttGroupIdList
+ *
  * @method string getInstanceId()
  */
 class MqttGroupIdListRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class MqttGroupIdListRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

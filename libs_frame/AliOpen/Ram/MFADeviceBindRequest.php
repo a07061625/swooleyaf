@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BindMFADevice
+ *
  * @method string getSerialNumber()
  * @method string getAuthenticationCode2()
  * @method string getAuthenticationCode1()
@@ -31,6 +33,7 @@ class MFADeviceBindRequest extends RpcAcsRequest
 
     /**
      * @param string $serialNumber
+     *
      * @return $this
      */
     public function setSerialNumber($serialNumber)
@@ -43,6 +46,7 @@ class MFADeviceBindRequest extends RpcAcsRequest
 
     /**
      * @param string $authenticationCode2
+     *
      * @return $this
      */
     public function setAuthenticationCode2($authenticationCode2)
@@ -55,6 +59,7 @@ class MFADeviceBindRequest extends RpcAcsRequest
 
     /**
      * @param string $authenticationCode1
+     *
      * @return $this
      */
     public function setAuthenticationCode1($authenticationCode1)
@@ -67,6 +72,7 @@ class MFADeviceBindRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

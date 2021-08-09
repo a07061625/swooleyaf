@@ -17,8 +17,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core\Auth;
 
+use AliOpen\Core\Exception\ClientException;
 use AliOpen\Core\Http\HttpHelper;
 use AliOpen\Core\Profile\IClientProfile;
 
@@ -29,16 +31,17 @@ class EcsRamRoleService
      */
     private $clientProfile;
     /**
-     * @var string|null
+     * @var null|string
      */
-    private $lastClearTime = null;
+    private $lastClearTime;
     /**
-     * @var string|null
+     * @var null|string
      */
-    private $sessionCredential = null;
+    private $sessionCredential;
 
     /**
      * AliOpen\Core\Auth\EcsRamRoleService constructor.
+     *
      * @param $clientProfile
      */
     public function __construct($clientProfile)
@@ -47,12 +50,13 @@ class EcsRamRoleService
     }
 
     /**
-     * @return Credential|string|null
+     * @return null|Credential|string
+     *
      * @throws \AliOpen\Core\Exception\ClientException
      */
     public function getSessionCredential()
     {
-        if ($this->lastClearTime != null && $this->sessionCredential != null) {
+        if (null != $this->lastClearTime && null != $this->sessionCredential) {
             $now = time();
             $elapsedTime = $now - $this->lastClearTime;
             if ($elapsedTime <= ALIOPEN_ECS_ROLE_EXPIRE_TIME * 0.8) {
@@ -62,8 +66,8 @@ class EcsRamRoleService
 
         $credential = $this->assumeRole();
 
-        if ($credential == null) {
-            return null;
+        if (null == $credential) {
+            return;
         }
 
         $this->sessionCredential = $credential;
@@ -73,8 +77,9 @@ class EcsRamRoleService
     }
 
     /**
-     * @return Credential|null
-     * @throws \AliOpen\Core\Exception\ClientException
+     * @return null|Credential
+     *
+     * @throws ClientException
      */
     private function assumeRole()
     {
@@ -84,14 +89,14 @@ class EcsRamRoleService
 
         $httpResponse = HttpHelper::curl($requestUrl, 'GET', null, null);
         if (!$httpResponse->isSuccess()) {
-            return null;
+            return;
         }
 
         $respObj = json_decode($httpResponse->getBody());
 
         $code = $respObj->Code;
-        if ($code != 'Success') {
-            return null;
+        if ('Success' != $code) {
+            return;
         }
 
         $sessionAccessKeyId = $respObj->AccessKeyId;

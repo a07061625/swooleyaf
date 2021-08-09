@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyBackupPolicy
+ *
  * @method string getResourceOwnerId()
  * @method string getLocalLogRetentionHours()
  * @method string getLogBackupFrequency()
@@ -47,6 +49,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +62,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $localLogRetentionHours
+     *
      * @return $this
      */
     public function setLocalLogRetentionHours($localLogRetentionHours)
@@ -71,6 +75,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $logBackupFrequency
+     *
      * @return $this
      */
     public function setLogBackupFrequency($logBackupFrequency)
@@ -83,6 +88,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $archiveBackupKeepCount
+     *
      * @return $this
      */
     public function setArchiveBackupKeepCount($archiveBackupKeepCount)
@@ -95,6 +101,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $backupLog
+     *
      * @return $this
      */
     public function setBackupLog($backupLog)
@@ -107,6 +114,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $duplicationContent
+     *
      * @return $this
      */
     public function setDuplicationContent($duplicationContent)
@@ -119,6 +127,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $highSpaceUsageProtection
+     *
      * @return $this
      */
     public function setHighSpaceUsageProtection($highSpaceUsageProtection)
@@ -131,6 +140,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -143,6 +153,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $enableBackupLog
+     *
      * @return $this
      */
     public function setEnableBackupLog($enableBackupLog)
@@ -155,6 +166,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $backupPolicyMode
+     *
      * @return $this
      */
     public function setBackupPolicyMode($backupPolicyMode)
@@ -167,6 +179,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $preferredBackupPeriod
+     *
      * @return $this
      */
     public function setPreferredBackupPeriod($preferredBackupPeriod)
@@ -179,6 +192,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $releasedKeepPolicy
+     *
      * @return $this
      */
     public function setReleasedKeepPolicy($releasedKeepPolicy)
@@ -191,6 +205,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -203,6 +218,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -215,6 +231,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $compressType
+     *
      * @return $this
      */
     public function setCompressType($compressType)
@@ -227,6 +244,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $localLogRetentionSpace
+     *
      * @return $this
      */
     public function setLocalLogRetentionSpace($localLogRetentionSpace)
@@ -239,6 +257,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -251,6 +270,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $archiveBackupKeepPolicy
+     *
      * @return $this
      */
     public function setArchiveBackupKeepPolicy($archiveBackupKeepPolicy)
@@ -263,6 +283,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $duplication
+     *
      * @return $this
      */
     public function setDuplication($duplication)
@@ -275,6 +296,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $preferredBackupTime
+     *
      * @return $this
      */
     public function setPreferredBackupTime($preferredBackupTime)
@@ -287,6 +309,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $backupRetentionPeriod
+     *
      * @return $this
      */
     public function setBackupRetentionPeriod($backupRetentionPeriod)
@@ -299,6 +322,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $duplicationLocation
+     *
      * @return $this
      */
     public function setDuplicationLocation($duplicationLocation)
@@ -311,6 +335,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $archiveBackupRetentionPeriod
+     *
      * @return $this
      */
     public function setArchiveBackupRetentionPeriod($archiveBackupRetentionPeriod)
@@ -323,6 +348,7 @@ class BackupPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $logBackupRetentionPeriod
+     *
      * @return $this
      */
     public function setLogBackupRetentionPeriod($logBackupRetentionPeriod)

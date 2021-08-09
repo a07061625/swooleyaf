@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateVideoInfo
+ *
  * @method string getResourceOwnerId()
  * @method string getDescription()
  * @method string getTitle()
@@ -35,6 +37,7 @@ class VideoInfoUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class VideoInfoUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -59,6 +63,7 @@ class VideoInfoUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -71,6 +76,7 @@ class VideoInfoUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $coverURL
+     *
      * @return $this
      */
     public function setCoverURL($coverURL)
@@ -83,6 +89,7 @@ class VideoInfoUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $downloadSwitch
+     *
      * @return $this
      */
     public function setDownloadSwitch($downloadSwitch)
@@ -95,6 +102,7 @@ class VideoInfoUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $cateId
+     *
      * @return $this
      */
     public function setCateId($cateId)
@@ -107,6 +115,7 @@ class VideoInfoUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $customMediaInfo
+     *
      * @return $this
      */
     public function setCustomMediaInfo($customMediaInfo)
@@ -119,6 +128,7 @@ class VideoInfoUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -131,6 +141,7 @@ class VideoInfoUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $videoId
+     *
      * @return $this
      */
     public function setVideoId($videoId)
@@ -143,6 +154,7 @@ class VideoInfoUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -155,6 +167,7 @@ class VideoInfoUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $tags
+     *
      * @return $this
      */
     public function setTags($tags)
@@ -167,6 +180,7 @@ class VideoInfoUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

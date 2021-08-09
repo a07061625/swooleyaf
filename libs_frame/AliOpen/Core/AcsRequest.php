@@ -1,4 +1,7 @@
 <?php
+
+namespace AliOpen\Core;
+
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -17,8 +20,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-namespace AliOpen\Core;
 
+/**
+ * Class AcsRequest
+ */
 abstract class AcsRequest
 {
     /**
@@ -70,7 +75,7 @@ abstract class AcsRequest
      */
     protected $locationEndpointType;
     /**
-     * @var array The original parameters of the request object.
+     * @var array the original parameters of the request object
      */
     protected $requestParameters = [];
     /**
@@ -79,18 +84,15 @@ abstract class AcsRequest
     protected $stringToBeSigned = '';
 
     /**
-     * AliOpen\Core\AcsRequest constructor.
-     * @param string $product
-     * @param string $version
-     * @param string $actionName
-     * @param string|null $locationServiceCode
-     * @param string $locationEndpointType
+     * AcsRequest constructor.
+     *
+     * @param string      $product
+     * @param string      $version
+     * @param string      $actionName
+     * @param null|string $locationServiceCode
+     * @param string      $locationEndpointType
      */
-    public function __construct($product,
-        $version,
-        $actionName,
-        $locationServiceCode = null,
-        $locationEndpointType = 'openAPI')
+    public function __construct($product, $version, $actionName, $locationServiceCode = null, $locationEndpointType = 'openAPI')
     {
         $this->headers['x-sdk-client'] = 'php/2.0.0';
         $this->product = $product;
@@ -102,16 +104,18 @@ abstract class AcsRequest
 
     /**
      * Magic method for get parameters.
+     *
      * @param string $name
-     * @param mixed $arguments
+     * @param mixed  $arguments
+     *
      * @return $this
      */
     public function __call($name, $arguments)
     {
-        if (\strpos($name, 'get', 0) !== false) {
+        if (false !== strpos($name, 'get', 0)) {
             $parameterName = $this->propertyNameByMethodName($name);
 
-            return isset($this->requestParameters[$parameterName]) ? $this->requestParameters[$parameterName] : null;
+            return $this->requestParameters[$parameterName] ?? null;
         }
 
         return $this;
@@ -121,6 +125,7 @@ abstract class AcsRequest
      * @param $iSigner
      * @param $credential
      * @param $domain
+     *
      * @return mixed
      */
     abstract public function composeUrl($iSigner, $credential, $domain);
@@ -271,7 +276,7 @@ abstract class AcsRequest
 
     /**
      * @param string $headerKey
-     * @param mixed $headerValue
+     * @param mixed  $headerValue
      */
     public function addHeader($headerKey, $headerValue)
     {
@@ -295,19 +300,20 @@ abstract class AcsRequest
     }
 
     /**
-     * @param string $methodName
-     * @return string
-     */
-    protected function propertyNameByMethodName($methodName)
-    {
-        return \mb_strcut($methodName, 3);
-    }
-
-    /**
      * @return string
      */
     public function stringToBeSigned()
     {
         return $this->stringToBeSigned;
+    }
+
+    /**
+     * @param string $methodName
+     *
+     * @return string
+     */
+    protected function propertyNameByMethodName($methodName)
+    {
+        return mb_strcut($methodName, 3);
     }
 }

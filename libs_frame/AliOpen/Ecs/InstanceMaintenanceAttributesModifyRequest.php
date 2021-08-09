@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyInstanceMaintenanceAttributes
+ *
  * @method string getResourceOwnerId()
  * @method array getMaintenanceWindows()
  * @method string getActionOnMaintenance()
@@ -30,6 +32,7 @@ class InstanceMaintenanceAttributesModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,7 +44,6 @@ class InstanceMaintenanceAttributesModifyRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $maintenanceWindow
      * @return $this
      */
     public function setMaintenanceWindows(array $maintenanceWindow)
@@ -57,6 +59,7 @@ class InstanceMaintenanceAttributesModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $actionOnMaintenance
+     *
      * @return $this
      */
     public function setActionOnMaintenance($actionOnMaintenance)
@@ -69,6 +72,7 @@ class InstanceMaintenanceAttributesModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -81,6 +85,7 @@ class InstanceMaintenanceAttributesModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -93,6 +98,7 @@ class InstanceMaintenanceAttributesModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -104,7 +110,6 @@ class InstanceMaintenanceAttributesModifyRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceId
      * @return $this
      */
     public function setInstanceIds(array $instanceId)

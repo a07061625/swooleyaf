@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDBInstances
+ *
  * @method string getTag4value()
  * @method string getResourceOwnerId()
  * @method string getTag2key()
@@ -59,6 +61,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $tag4value
+     *
      * @return $this
      */
     public function setTag4value($tag4value)
@@ -71,6 +74,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -83,6 +87,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $tag2key
+     *
      * @return $this
      */
     public function setTag2key($tag2key)
@@ -95,6 +100,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $tag3key
+     *
      * @return $this
      */
     public function setTag3key($tag3key)
@@ -107,6 +113,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $engineVersion
+     *
      * @return $this
      */
     public function setEngineVersion($engineVersion)
@@ -119,6 +126,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $tag1value
+     *
      * @return $this
      */
     public function setTag1value($tag1value)
@@ -131,6 +139,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -143,6 +152,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -155,6 +165,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $tag5key
+     *
      * @return $this
      */
     public function setTag5key($tag5key)
@@ -167,6 +178,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -179,6 +191,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceType
+     *
      * @return $this
      */
     public function setDBInstanceType($dBInstanceType)
@@ -191,6 +204,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)
@@ -203,6 +217,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $tags
+     *
      * @return $this
      */
     public function setTags($tags)
@@ -215,6 +230,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -227,6 +243,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -239,6 +256,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $tag4key
+     *
      * @return $this
      */
     public function setTag4key($tag4key)
@@ -251,6 +269,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceNetworkType
+     *
      * @return $this
      */
     public function setInstanceNetworkType($instanceNetworkType)
@@ -263,6 +282,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $connectionMode
+     *
      * @return $this
      */
     public function setConnectionMode($connectionMode)
@@ -275,6 +295,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -287,6 +308,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $searchKey
+     *
      * @return $this
      */
     public function setSearchKey($searchKey)
@@ -299,6 +321,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -311,6 +334,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $expired
+     *
      * @return $this
      */
     public function setExpired($expired)
@@ -323,6 +347,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $engine
+     *
      * @return $this
      */
     public function setEngine($engine)
@@ -335,6 +360,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -347,6 +373,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStatus
+     *
      * @return $this
      */
     public function setDBInstanceStatus($dBInstanceStatus)
@@ -359,6 +386,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -371,6 +399,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostGroupId
+     *
      * @return $this
      */
     public function setDedicatedHostGroupId($dedicatedHostGroupId)
@@ -383,6 +412,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $tag3value
+     *
      * @return $this
      */
     public function setTag3value($tag3value)
@@ -395,6 +425,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -407,6 +438,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -419,6 +451,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dedicatedHostId
+     *
      * @return $this
      */
     public function setDedicatedHostId($dedicatedHostId)
@@ -431,6 +464,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $tag5value
+     *
      * @return $this
      */
     public function setTag5value($tag5value)
@@ -443,6 +477,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $tag1key
+     *
      * @return $this
      */
     public function setTag1key($tag1key)
@@ -455,6 +490,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -467,6 +503,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $tag2value
+     *
      * @return $this
      */
     public function setTag2value($tag2value)
@@ -479,6 +516,7 @@ class DBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)

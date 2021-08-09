@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeResourcesModification
+ *
  * @method string getResourceOwnerId()
  * @method string getMemory()
  * @method string getCores()
@@ -34,6 +36,7 @@ class ResourcesModificationDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class ResourcesModificationDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $memory
+     *
      * @return $this
      */
     public function setMemory($memory)
@@ -58,6 +62,7 @@ class ResourcesModificationDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $cores
+     *
      * @return $this
      */
     public function setCores($cores)
@@ -70,6 +75,7 @@ class ResourcesModificationDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $migrateAcrossZone
+     *
      * @return $this
      */
     public function setMigrateAcrossZone($migrateAcrossZone)
@@ -82,6 +88,7 @@ class ResourcesModificationDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -94,6 +101,7 @@ class ResourcesModificationDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceId
+     *
      * @return $this
      */
     public function setResourceId($resourceId)
@@ -106,6 +114,7 @@ class ResourcesModificationDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -118,6 +127,7 @@ class ResourcesModificationDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -130,6 +140,7 @@ class ResourcesModificationDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $operationType
+     *
      * @return $this
      */
     public function setOperationType($operationType)
@@ -142,6 +153,7 @@ class ResourcesModificationDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -154,6 +166,7 @@ class ResourcesModificationDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationResource
+     *
      * @return $this
      */
     public function setDestinationResource($destinationResource)

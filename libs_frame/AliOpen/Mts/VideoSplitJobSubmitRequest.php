@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitVideoSplitJob
+ *
  * @method string getInput()
  * @method string getVideoSplitConfig()
  * @method string getUserData()
@@ -31,6 +33,7 @@ class VideoSplitJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $input
+     *
      * @return $this
      */
     public function setInput($input)
@@ -43,6 +46,7 @@ class VideoSplitJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $videoSplitConfig
+     *
      * @return $this
      */
     public function setVideoSplitConfig($videoSplitConfig)
@@ -55,6 +59,7 @@ class VideoSplitJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -67,6 +72,7 @@ class VideoSplitJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -79,6 +85,7 @@ class VideoSplitJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -91,6 +98,7 @@ class VideoSplitJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -103,6 +111,7 @@ class VideoSplitJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -115,6 +124,7 @@ class VideoSplitJobSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $pipelineId
+     *
      * @return $this
      */
     public function setPipelineId($pipelineId)

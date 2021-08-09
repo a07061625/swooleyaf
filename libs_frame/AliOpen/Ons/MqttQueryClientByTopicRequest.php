@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsMqttQueryClientByTopic
+ *
  * @method string getParentTopic()
  * @method string getInstanceId()
  * @method string getSubTopic()
@@ -26,6 +28,7 @@ class MqttQueryClientByTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $parentTopic
+     *
      * @return $this
      */
     public function setParentTopic($parentTopic)
@@ -38,6 +41,7 @@ class MqttQueryClientByTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -50,6 +54,7 @@ class MqttQueryClientByTopicRequest extends RpcAcsRequest
 
     /**
      * @param string $subTopic
+     *
      * @return $this
      */
     public function setSubTopic($subTopic)

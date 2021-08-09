@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitJobs
+ *
  * @method string getOutputs()
  * @method string getInput()
  * @method string getOutputBucket()
@@ -32,6 +34,7 @@ class JobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $outputs
+     *
      * @return $this
      */
     public function setOutputs($outputs)
@@ -44,6 +47,7 @@ class JobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $input
+     *
      * @return $this
      */
     public function setInput($input)
@@ -56,6 +60,7 @@ class JobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $outputBucket
+     *
      * @return $this
      */
     public function setOutputBucket($outputBucket)
@@ -68,6 +73,7 @@ class JobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -80,6 +86,7 @@ class JobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -92,6 +99,7 @@ class JobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +112,7 @@ class JobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $outputLocation
+     *
      * @return $this
      */
     public function setOutputLocation($outputLocation)
@@ -116,6 +125,7 @@ class JobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -128,6 +138,7 @@ class JobsSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $pipelineId
+     *
      * @return $this
      */
     public function setPipelineId($pipelineId)

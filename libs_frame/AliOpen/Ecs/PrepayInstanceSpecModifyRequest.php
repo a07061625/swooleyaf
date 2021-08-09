@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyPrepayInstanceSpec
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getOperatorType()
@@ -37,6 +39,7 @@ class PrepayInstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -49,6 +52,7 @@ class PrepayInstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -61,6 +65,7 @@ class PrepayInstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $operatorType
+     *
      * @return $this
      */
     public function setOperatorType($operatorType)
@@ -73,6 +78,7 @@ class PrepayInstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskCategory
+     *
      * @return $this
      */
     public function setSystemDiskCategory($systemDiskCategory)
@@ -85,6 +91,7 @@ class PrepayInstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $rebootTime
+     *
      * @return $this
      */
     public function setRebootTime($rebootTime)
@@ -97,6 +104,7 @@ class PrepayInstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $migrateAcrossZone
+     *
      * @return $this
      */
     public function setMigrateAcrossZone($migrateAcrossZone)
@@ -109,6 +117,7 @@ class PrepayInstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -121,6 +130,7 @@ class PrepayInstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -133,6 +143,7 @@ class PrepayInstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $rebootWhenFinished
+     *
      * @return $this
      */
     public function setRebootWhenFinished($rebootWhenFinished)
@@ -145,6 +156,7 @@ class PrepayInstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -157,6 +169,7 @@ class PrepayInstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -169,6 +182,7 @@ class PrepayInstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -181,6 +195,7 @@ class PrepayInstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -193,6 +208,7 @@ class PrepayInstanceSpecModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

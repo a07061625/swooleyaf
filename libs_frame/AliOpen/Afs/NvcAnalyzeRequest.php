@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AnalyzeNvc
+ *
  * @method string getSourceIp()
  * @method string getData()
  * @method string getScoreJsonStr()
@@ -26,6 +28,7 @@ class NvcAnalyzeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -38,6 +41,7 @@ class NvcAnalyzeRequest extends RpcAcsRequest
 
     /**
      * @param string $data
+     *
      * @return $this
      */
     public function setData($data)
@@ -50,6 +54,7 @@ class NvcAnalyzeRequest extends RpcAcsRequest
 
     /**
      * @param string $scoreJsonStr
+     *
      * @return $this
      */
     public function setScoreJsonStr($scoreJsonStr)

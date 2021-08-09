@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of PreloadVodObjectCaches
+ *
  * @method string getObjectPath()
  * @method string getOwnerId()
  * @method string getSecurityToken()
@@ -26,6 +28,7 @@ class VodObjectCachesPreloadRequest extends RpcAcsRequest
 
     /**
      * @param string $objectPath
+     *
      * @return $this
      */
     public function setObjectPath($objectPath)
@@ -38,6 +41,7 @@ class VodObjectCachesPreloadRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -50,6 +54,7 @@ class VodObjectCachesPreloadRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)

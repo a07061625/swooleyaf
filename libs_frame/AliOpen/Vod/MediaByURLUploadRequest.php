@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UploadMediaByURL
+ *
  * @method string getResourceOwnerId()
  * @method string getMessageCallback()
  * @method string getStorageLocation()
@@ -35,6 +37,7 @@ class MediaByURLUploadRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class MediaByURLUploadRequest extends RpcAcsRequest
 
     /**
      * @param string $messageCallback
+     *
      * @return $this
      */
     public function setMessageCallback($messageCallback)
@@ -59,6 +63,7 @@ class MediaByURLUploadRequest extends RpcAcsRequest
 
     /**
      * @param string $storageLocation
+     *
      * @return $this
      */
     public function setStorageLocation($storageLocation)
@@ -71,6 +76,7 @@ class MediaByURLUploadRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -83,6 +89,7 @@ class MediaByURLUploadRequest extends RpcAcsRequest
 
     /**
      * @param string $workflowId
+     *
      * @return $this
      */
     public function setWorkflowId($workflowId)
@@ -95,6 +102,7 @@ class MediaByURLUploadRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -107,6 +115,7 @@ class MediaByURLUploadRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -119,6 +128,7 @@ class MediaByURLUploadRequest extends RpcAcsRequest
 
     /**
      * @param string $priority
+     *
      * @return $this
      */
     public function setPriority($priority)
@@ -131,6 +141,7 @@ class MediaByURLUploadRequest extends RpcAcsRequest
 
     /**
      * @param string $templateGroupId
+     *
      * @return $this
      */
     public function setTemplateGroupId($templateGroupId)
@@ -143,6 +154,7 @@ class MediaByURLUploadRequest extends RpcAcsRequest
 
     /**
      * @param string $uploadMetadatas
+     *
      * @return $this
      */
     public function setUploadMetadatas($uploadMetadatas)
@@ -155,6 +167,7 @@ class MediaByURLUploadRequest extends RpcAcsRequest
 
     /**
      * @param string $uploadURLs
+     *
      * @return $this
      */
     public function setUploadURLs($uploadURLs)
@@ -167,6 +180,7 @@ class MediaByURLUploadRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

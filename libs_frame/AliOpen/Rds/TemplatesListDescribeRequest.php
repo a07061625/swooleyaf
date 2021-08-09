@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeTemplatesList
+ *
  * @method string getResourceOwnerId()
  * @method string getStartTime()
  * @method string getSortKey()
@@ -41,6 +43,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -53,6 +56,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -65,6 +69,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $sortKey
+     *
      * @return $this
      */
     public function setSortKey($sortKey)
@@ -77,6 +82,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $minAvgScanRows
+     *
      * @return $this
      */
     public function setMinAvgScanRows($minAvgScanRows)
@@ -89,6 +95,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -101,6 +108,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumbers
+     *
      * @return $this
      */
     public function setPageNumbers($pageNumbers)
@@ -113,6 +121,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pagingId
+     *
      * @return $this
      */
     public function setPagingId($pagingId)
@@ -125,6 +134,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -137,6 +147,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $maxAvgScanRows
+     *
      * @return $this
      */
     public function setMaxAvgScanRows($maxAvgScanRows)
@@ -149,6 +160,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -161,6 +173,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $minAvgConsume
+     *
      * @return $this
      */
     public function setMinAvgConsume($minAvgConsume)
@@ -173,6 +186,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -185,6 +199,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $maxRecordsPerPage
+     *
      * @return $this
      */
     public function setMaxRecordsPerPage($maxRecordsPerPage)
@@ -197,6 +212,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -209,6 +225,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -221,6 +238,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $maxAvgConsume
+     *
      * @return $this
      */
     public function setMaxAvgConsume($maxAvgConsume)
@@ -233,6 +251,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $sqType
+     *
      * @return $this
      */
     public function setSqType($sqType)
@@ -245,6 +264,7 @@ class TemplatesListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $sortMethod
+     *
      * @return $this
      */
     public function setSortMethod($sortMethod)

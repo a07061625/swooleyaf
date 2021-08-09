@@ -1,4 +1,5 @@
 <?php
+
 namespace SyObjectStorage\Oss\Result;
 
 use SyObjectStorage\Oss\Model\CorsConfig;
@@ -6,7 +7,9 @@ use SyObjectStorage\Oss\Model\CorsConfig;
 class GetCorsResult extends Result
 {
     /**
-     * @return \SyObjectStorage\Oss\Model\CorsConfig
+     * @return CorsConfig
+     *
+     * @throws \SyObjectStorage\Oss\Core\OssException
      */
     protected function parseDataFromResponse()
     {
@@ -19,12 +22,13 @@ class GetCorsResult extends Result
 
     /**
      * Check if the response is OK, according to the http status. [200-299]:OK, the Cors config could be got; [404]: not found--no Cors config.
+     *
      * @return bool
      */
     protected function isResponseOk()
     {
         $status = $this->rawResponse->status;
-        if ((int)(intval($status) / 100) == 2 || (int)(intval($status)) === 404) {
+        if (2 == (int)((int)$status / 100) || 404 === (int)((int)$status)) {
             return true;
         }
 

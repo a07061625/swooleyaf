@@ -1,26 +1,30 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class ListMultipartUploadInfo
+ *
  * @package SyObjectStorage\Oss\Model
- * @link http://help.aliyun.com/document_detail/oss/api-reference/multipart-upload/ListMultipartUploads.html
+ *
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/multipart-upload/ListMultipartUploads.html
  */
 class ListMultipartUploadInfo
 {
-    private $bucket = "";
-    private $keyMarker = "";
-    private $uploadIdMarker = "";
-    private $nextKeyMarker = "";
-    private $nextUploadIdMarker = "";
-    private $delimiter = "";
-    private $prefix = "";
+    private $bucket = '';
+    private $keyMarker = '';
+    private $uploadIdMarker = '';
+    private $nextKeyMarker = '';
+    private $nextUploadIdMarker = '';
+    private $delimiter = '';
+    private $prefix = '';
     private $maxUploads = 0;
-    private $isTruncated = "false";
+    private $isTruncated = 'false';
     private $uploads = [];
 
     /**
      * ListMultipartUploadInfo constructor.
+     *
      * @param string $bucket
      * @param string $keyMarker
      * @param string $uploadIdMarker
@@ -28,20 +32,10 @@ class ListMultipartUploadInfo
      * @param string $nextUploadIdMarker
      * @param string $delimiter
      * @param string $prefix
-     * @param int $maxUploads
+     * @param int    $maxUploads
      * @param string $isTruncated
-     * @param array $uploads
      */
-    public function __construct($bucket,
-        $keyMarker,
-        $uploadIdMarker,
-        $nextKeyMarker,
-        $nextUploadIdMarker,
-        $delimiter,
-        $prefix,
-        $maxUploads,
-        $isTruncated,
-        array $uploads)
+    public function __construct($bucket, $keyMarker, $uploadIdMarker, $nextKeyMarker, $nextUploadIdMarker, $delimiter, $prefix, $maxUploads, $isTruncated, array $uploads)
     {
         $this->bucket = $bucket;
         $this->keyMarker = $keyMarker;
@@ -57,6 +51,7 @@ class ListMultipartUploadInfo
 
     /**
      * 得到bucket名称
+     *
      * @return string
      */
     public function getBucket()

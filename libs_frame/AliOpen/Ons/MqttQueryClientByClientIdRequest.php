@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsMqttQueryClientByClientId
+ *
  * @method string getClientId()
  * @method string getInstanceId()
  */
@@ -25,6 +27,7 @@ class MqttQueryClientByClientIdRequest extends RpcAcsRequest
 
     /**
      * @param string $clientId
+     *
      * @return $this
      */
     public function setClientId($clientId)
@@ -37,6 +40,7 @@ class MqttQueryClientByClientIdRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

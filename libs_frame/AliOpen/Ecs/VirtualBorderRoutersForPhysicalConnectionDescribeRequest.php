@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVirtualBorderRoutersForPhysicalConnection
+ *
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
  * @method string getPageSize()
@@ -30,6 +32,7 @@ class VirtualBorderRoutersForPhysicalConnectionDescribeRequest extends RpcAcsReq
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class VirtualBorderRoutersForPhysicalConnectionDescribeRequest extends RpcAcsReq
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -54,6 +58,7 @@ class VirtualBorderRoutersForPhysicalConnectionDescribeRequest extends RpcAcsReq
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -66,6 +71,7 @@ class VirtualBorderRoutersForPhysicalConnectionDescribeRequest extends RpcAcsReq
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -78,6 +84,7 @@ class VirtualBorderRoutersForPhysicalConnectionDescribeRequest extends RpcAcsReq
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -89,7 +96,6 @@ class VirtualBorderRoutersForPhysicalConnectionDescribeRequest extends RpcAcsReq
     }
 
     /**
-     * @param array $filter
      * @return $this
      */
     public function setFilters(array $filter)
@@ -107,6 +113,7 @@ class VirtualBorderRoutersForPhysicalConnectionDescribeRequest extends RpcAcsReq
 
     /**
      * @param string $physicalConnectionId
+     *
      * @return $this
      */
     public function setPhysicalConnectionId($physicalConnectionId)

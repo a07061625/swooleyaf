@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SwitchDBInstanceNetType
+ *
  * @method string getResourceOwnerId()
  * @method string getConnectionStringPrefix()
  * @method string getClientToken()
@@ -32,6 +34,7 @@ class DBInstanceNetTypeSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class DBInstanceNetTypeSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $connectionStringPrefix
+     *
      * @return $this
      */
     public function setConnectionStringPrefix($connectionStringPrefix)
@@ -56,6 +60,7 @@ class DBInstanceNetTypeSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -68,6 +73,7 @@ class DBInstanceNetTypeSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -80,6 +86,7 @@ class DBInstanceNetTypeSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -92,6 +99,7 @@ class DBInstanceNetTypeSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +112,7 @@ class DBInstanceNetTypeSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +125,7 @@ class DBInstanceNetTypeSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $connectionStringType
+     *
      * @return $this
      */
     public function setConnectionStringType($connectionStringType)
@@ -128,6 +138,7 @@ class DBInstanceNetTypeSwitchRequest extends RpcAcsRequest
 
     /**
      * @param string $port
+     *
      * @return $this
      */
     public function setPort($port)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribePrice
+ *
  * @method string getDataDisk3Size()
  * @method string getResourceOwnerId()
  * @method string getDataDisk3Category()
@@ -57,6 +59,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk3Size
+     *
      * @return $this
      */
     public function setDataDisk3Size($dataDisk3Size)
@@ -69,6 +72,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -81,6 +85,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk3Category
+     *
      * @return $this
      */
     public function setDataDisk3Category($dataDisk3Category)
@@ -93,6 +98,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk4Size
+     *
      * @return $this
      */
     public function setDataDisk4Size($dataDisk4Size)
@@ -105,6 +111,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $priceUnit
+     *
      * @return $this
      */
     public function setPriceUnit($priceUnit)
@@ -117,6 +124,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -129,6 +137,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk1PerformanceLevel
+     *
      * @return $this
      */
     public function setDataDisk1PerformanceLevel($dataDisk1PerformanceLevel)
@@ -141,6 +150,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -153,6 +163,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $internetChargeType
+     *
      * @return $this
      */
     public function setInternetChargeType($internetChargeType)
@@ -165,6 +176,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceNetworkType
+     *
      * @return $this
      */
     public function setInstanceNetworkType($instanceNetworkType)
@@ -177,6 +189,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceAmount
+     *
      * @return $this
      */
     public function setInstanceAmount($instanceAmount)
@@ -189,6 +202,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk3PerformanceLevel
+     *
      * @return $this
      */
     public function setDataDisk3PerformanceLevel($dataDisk3PerformanceLevel)
@@ -201,6 +215,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -213,6 +228,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ioOptimized
+     *
      * @return $this
      */
     public function setIoOptimized($ioOptimized)
@@ -225,6 +241,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $internetMaxBandwidthOut
+     *
      * @return $this
      */
     public function setInternetMaxBandwidthOut($internetMaxBandwidthOut)
@@ -237,6 +254,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskCategory
+     *
      * @return $this
      */
     public function setSystemDiskCategory($systemDiskCategory)
@@ -249,6 +267,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $platform
+     *
      * @return $this
      */
     public function setPlatform($platform)
@@ -261,6 +280,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $capacity
+     *
      * @return $this
      */
     public function setCapacity($capacity)
@@ -273,6 +293,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskPerformanceLevel
+     *
      * @return $this
      */
     public function setSystemDiskPerformanceLevel($systemDiskPerformanceLevel)
@@ -285,6 +306,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk4Category
+     *
      * @return $this
      */
     public function setDataDisk4Category($dataDisk4Category)
@@ -297,6 +319,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk4PerformanceLevel
+     *
      * @return $this
      */
     public function setDataDisk4PerformanceLevel($dataDisk4PerformanceLevel)
@@ -309,6 +332,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $scope
+     *
      * @return $this
      */
     public function setScope($scope)
@@ -321,6 +345,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -333,6 +358,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk2Category
+     *
      * @return $this
      */
     public function setDataDisk2Category($dataDisk2Category)
@@ -345,6 +371,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk1Size
+     *
      * @return $this
      */
     public function setDataDisk1Size($dataDisk1Size)
@@ -357,6 +384,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $amount
+     *
      * @return $this
      */
     public function setAmount($amount)
@@ -369,6 +397,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -381,6 +410,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -393,6 +423,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk2Size
+     *
      * @return $this
      */
     public function setDataDisk2Size($dataDisk2Size)
@@ -405,6 +436,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -417,6 +449,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk1Category
+     *
      * @return $this
      */
     public function setDataDisk1Category($dataDisk1Category)
@@ -429,6 +462,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDisk2PerformanceLevel
+     *
      * @return $this
      */
     public function setDataDisk2PerformanceLevel($dataDisk2PerformanceLevel)
@@ -441,6 +475,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskSize
+     *
      * @return $this
      */
     public function setSystemDiskSize($systemDiskSize)
@@ -453,6 +488,7 @@ class PriceDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $offeringType
+     *
      * @return $this
      */
     public function setOfferingType($offeringType)

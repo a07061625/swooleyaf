@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateAudit
+ *
  * @method string getAuditContent()
  */
 class AuditCreateRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class AuditCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $auditContent
+     *
      * @return $this
      */
     public function setAuditContent($auditContent)

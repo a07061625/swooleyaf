@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeEarlyWarning
+ *
  * @method string getSourceIp()
  */
 class EarlyWarningDescribeRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class EarlyWarningDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)

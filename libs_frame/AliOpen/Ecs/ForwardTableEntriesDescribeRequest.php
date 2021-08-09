@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeForwardTableEntries
+ *
  * @method string getResourceOwnerId()
  * @method string getForwardTableId()
  * @method string getPageNumber()
@@ -31,6 +33,7 @@ class ForwardTableEntriesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class ForwardTableEntriesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $forwardTableId
+     *
      * @return $this
      */
     public function setForwardTableId($forwardTableId)
@@ -55,6 +59,7 @@ class ForwardTableEntriesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -67,6 +72,7 @@ class ForwardTableEntriesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $forwardEntryId
+     *
      * @return $this
      */
     public function setForwardEntryId($forwardEntryId)
@@ -79,6 +85,7 @@ class ForwardTableEntriesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -91,6 +98,7 @@ class ForwardTableEntriesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -103,6 +111,7 @@ class ForwardTableEntriesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -115,6 +124,7 @@ class ForwardTableEntriesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

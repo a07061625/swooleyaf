@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateMigrateTaskForSQLServer
+ *
  * @method string getResourceOwnerId()
  * @method string getIsOnlineDB()
  * @method string getDBInstanceId()
@@ -31,6 +33,7 @@ class SQLServerMigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class SQLServerMigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $isOnlineDB
+     *
      * @return $this
      */
     public function setIsOnlineDB($isOnlineDB)
@@ -55,6 +59,7 @@ class SQLServerMigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -67,6 +72,7 @@ class SQLServerMigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $taskType
+     *
      * @return $this
      */
     public function setTaskType($taskType)
@@ -79,6 +85,7 @@ class SQLServerMigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -91,6 +98,7 @@ class SQLServerMigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +111,7 @@ class SQLServerMigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $oSSUrls
+     *
      * @return $this
      */
     public function setOSSUrls($oSSUrls)
@@ -115,6 +124,7 @@ class SQLServerMigrateTaskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $dBName
+     *
      * @return $this
      */
     public function setDBName($dBName)

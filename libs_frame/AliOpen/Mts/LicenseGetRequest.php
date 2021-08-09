@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetLicense
+ *
  * @method string getResourceOwnerId()
  * @method string getData()
  * @method string getResourceOwnerAccount()
@@ -32,6 +34,7 @@ class LicenseGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class LicenseGetRequest extends RpcAcsRequest
 
     /**
      * @param string $data
+     *
      * @return $this
      */
     public function setData($data)
@@ -56,6 +60,7 @@ class LicenseGetRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -68,6 +73,7 @@ class LicenseGetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -80,6 +86,7 @@ class LicenseGetRequest extends RpcAcsRequest
 
     /**
      * @param string $header
+     *
      * @return $this
      */
     public function setHeader($header)
@@ -92,6 +99,7 @@ class LicenseGetRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -104,6 +112,7 @@ class LicenseGetRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaId
+     *
      * @return $this
      */
     public function setMediaId($mediaId)
@@ -116,6 +125,7 @@ class LicenseGetRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -128,6 +138,7 @@ class LicenseGetRequest extends RpcAcsRequest
 
     /**
      * @param string $licenseUrl
+     *
      * @return $this
      */
     public function setLicenseUrl($licenseUrl)

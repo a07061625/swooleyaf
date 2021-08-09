@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyCollationTimeZone
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getTimezone()
@@ -29,6 +31,7 @@ class CollationTimeZoneModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +44,7 @@ class CollationTimeZoneModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -53,6 +57,7 @@ class CollationTimeZoneModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $timezone
+     *
      * @return $this
      */
     public function setTimezone($timezone)
@@ -65,6 +70,7 @@ class CollationTimeZoneModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -77,6 +83,7 @@ class CollationTimeZoneModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -89,6 +96,7 @@ class CollationTimeZoneModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $collation
+     *
      * @return $this
      */
     public function setCollation($collation)

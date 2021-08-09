@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyReservedInstanceAttribute
+ *
  * @method string getResourceOwnerId()
  * @method string getDescription()
  * @method string getResourceOwnerAccount()
@@ -30,6 +32,7 @@ class ReservedInstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class ReservedInstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -54,6 +58,7 @@ class ReservedInstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +71,7 @@ class ReservedInstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +84,7 @@ class ReservedInstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -90,6 +97,7 @@ class ReservedInstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $reservedInstanceId
+     *
      * @return $this
      */
     public function setReservedInstanceId($reservedInstanceId)
@@ -102,6 +110,7 @@ class ReservedInstanceAttributeModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $reservedInstanceName
+     *
      * @return $this
      */
     public function setReservedInstanceName($reservedInstanceName)

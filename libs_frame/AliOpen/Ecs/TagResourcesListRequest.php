@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListTagResources
+ *
  * @method string getResourceOwnerId()
  * @method string getNextToken()
  * @method array getTags()
@@ -32,6 +34,7 @@ class TagResourcesListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class TagResourcesListRequest extends RpcAcsRequest
 
     /**
      * @param string $nextToken
+     *
      * @return $this
      */
     public function setNextToken($nextToken)
@@ -55,7 +59,6 @@ class TagResourcesListRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -70,7 +73,6 @@ class TagResourcesListRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resourceId
      * @return $this
      */
     public function setResourceIds(array $resourceId)
@@ -85,6 +87,7 @@ class TagResourcesListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -97,6 +100,7 @@ class TagResourcesListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -109,6 +113,7 @@ class TagResourcesListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -120,7 +125,6 @@ class TagResourcesListRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tagFilter
      * @return $this
      */
     public function setTagFilters(array $tagFilter)
@@ -138,6 +142,7 @@ class TagResourcesListRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)

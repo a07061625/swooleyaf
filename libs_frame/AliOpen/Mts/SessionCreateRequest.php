@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateSession
+ *
  * @method string getResourceOwnerId()
  * @method string getSessionTime()
  * @method string getResourceOwnerAccount()
@@ -30,6 +32,7 @@ class SessionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class SessionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $sessionTime
+     *
      * @return $this
      */
     public function setSessionTime($sessionTime)
@@ -54,6 +58,7 @@ class SessionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +71,7 @@ class SessionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +84,7 @@ class SessionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $endUserId
+     *
      * @return $this
      */
     public function setEndUserId($endUserId)
@@ -90,6 +97,7 @@ class SessionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -102,6 +110,7 @@ class SessionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaId
+     *
      * @return $this
      */
     public function setMediaId($mediaId)

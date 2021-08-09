@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyAutoSnapshotPolicy
+ *
  * @method string getDataDiskPolicyEnabled()
  * @method string getResourceOwnerId()
  * @method string getDataDiskPolicyRetentionDays()
@@ -35,6 +37,7 @@ class AutoSnapshotPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDiskPolicyEnabled
+     *
      * @return $this
      */
     public function setDataDiskPolicyEnabled($dataDiskPolicyEnabled)
@@ -47,6 +50,7 @@ class AutoSnapshotPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +63,7 @@ class AutoSnapshotPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDiskPolicyRetentionDays
+     *
      * @return $this
      */
     public function setDataDiskPolicyRetentionDays($dataDiskPolicyRetentionDays)
@@ -71,6 +76,7 @@ class AutoSnapshotPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskPolicyRetentionLastWeek
+     *
      * @return $this
      */
     public function setSystemDiskPolicyRetentionLastWeek($systemDiskPolicyRetentionLastWeek)
@@ -83,6 +89,7 @@ class AutoSnapshotPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskPolicyRetentionDays
+     *
      * @return $this
      */
     public function setSystemDiskPolicyRetentionDays($systemDiskPolicyRetentionDays)
@@ -95,6 +102,7 @@ class AutoSnapshotPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDiskPolicyTimePeriod
+     *
      * @return $this
      */
     public function setDataDiskPolicyTimePeriod($dataDiskPolicyTimePeriod)
@@ -107,6 +115,7 @@ class AutoSnapshotPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -119,6 +128,7 @@ class AutoSnapshotPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -131,6 +141,7 @@ class AutoSnapshotPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskPolicyTimePeriod
+     *
      * @return $this
      */
     public function setSystemDiskPolicyTimePeriod($systemDiskPolicyTimePeriod)
@@ -143,6 +154,7 @@ class AutoSnapshotPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -155,6 +167,7 @@ class AutoSnapshotPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dataDiskPolicyRetentionLastWeek
+     *
      * @return $this
      */
     public function setDataDiskPolicyRetentionLastWeek($dataDiskPolicyRetentionLastWeek)
@@ -167,6 +180,7 @@ class AutoSnapshotPolicyModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $systemDiskPolicyEnabled
+     *
      * @return $this
      */
     public function setSystemDiskPolicyEnabled($systemDiskPolicyEnabled)

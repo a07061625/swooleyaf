@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core\Regions;
 
 use SyTool\Tool;
@@ -28,21 +29,16 @@ class EndpointProvider
      */
     private static $endpoints = [];
 
-    /**
-     * @param string $regionId
-     * @param string $product
-     * @return null
-     */
     public static function findProductDomain(string $regionId, string $product)
     {
         $endpoint = Tool::getArrayVal(self::$endpoints, $regionId, null);
-        if (is_null($endpoint)) {
+        if (null === $endpoint) {
             return;
         }
 
         $productDomains = $endpoint->getProductDomains();
         $productDomain = Tool::getArrayVal($productDomains, $product, null);
-        if (is_null($productDomain)) {
+        if (null === $productDomain) {
             return;
         }
 
@@ -57,9 +53,6 @@ class EndpointProvider
         return self::$endpoints;
     }
 
-    /**
-     * @param array $endpoints
-     */
     public static function setEndpoints(array $endpoints)
     {
         self::$endpoints = $endpoints;

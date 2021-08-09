@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateUploadVideo
+ *
  * @method string getResourceOwnerId()
  * @method string getTranscodeMode()
  * @method string getDescription()
@@ -41,6 +43,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -53,6 +56,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $transcodeMode
+     *
      * @return $this
      */
     public function setTranscodeMode($transcodeMode)
@@ -65,6 +69,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -77,6 +82,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $fileSize
+     *
      * @return $this
      */
     public function setFileSize($fileSize)
@@ -89,6 +95,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -101,6 +108,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $storageLocation
+     *
      * @return $this
      */
     public function setStorageLocation($storageLocation)
@@ -113,6 +121,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $coverURL
+     *
      * @return $this
      */
     public function setCoverURL($coverURL)
@@ -125,6 +134,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $userData
+     *
      * @return $this
      */
     public function setUserData($userData)
@@ -137,6 +147,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $cateId
+     *
      * @return $this
      */
     public function setCateId($cateId)
@@ -149,6 +160,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $workflowId
+     *
      * @return $this
      */
     public function setWorkflowId($workflowId)
@@ -161,6 +173,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $customMediaInfo
+     *
      * @return $this
      */
     public function setCustomMediaInfo($customMediaInfo)
@@ -173,6 +186,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -185,6 +199,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $iP
+     *
      * @return $this
      */
     public function setIP($iP)
@@ -197,6 +212,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -209,6 +225,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $tags
+     *
      * @return $this
      */
     public function setTags($tags)
@@ -221,6 +238,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $fileName
+     *
      * @return $this
      */
     public function setFileName($fileName)
@@ -233,6 +251,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $templateGroupId
+     *
      * @return $this
      */
     public function setTemplateGroupId($templateGroupId)
@@ -245,6 +264,7 @@ class UploadVideoCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

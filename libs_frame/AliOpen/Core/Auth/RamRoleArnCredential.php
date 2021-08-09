@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core\Auth;
 
 class RamRoleArnCredential extends AbstractCredential
@@ -40,6 +41,7 @@ class RamRoleArnCredential extends AbstractCredential
 
     /**
      * AliOpen\Core\Auth\RamRoleArnCredential constructor.
+     *
      * @param $accessKeyId
      * @param $accessSecret
      * @param $roleArn
@@ -117,11 +119,7 @@ class RamRoleArnCredential extends AbstractCredential
         $this->roleSessionName = $roleSessionName;
     }
 
-    /**
-     * @return null
-     */
     public function getSecurityToken()
     {
-        return null;
     }
 }

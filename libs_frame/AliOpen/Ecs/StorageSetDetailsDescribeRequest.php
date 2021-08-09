@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeStorageSetDetails
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getPageNumber()
@@ -33,6 +35,7 @@ class StorageSetDetailsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class StorageSetDetailsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -57,6 +61,7 @@ class StorageSetDetailsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -69,6 +74,7 @@ class StorageSetDetailsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -81,6 +87,7 @@ class StorageSetDetailsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $storageSetPartitionNumber
+     *
      * @return $this
      */
     public function setStorageSetPartitionNumber($storageSetPartitionNumber)
@@ -93,6 +100,7 @@ class StorageSetDetailsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $diskIds
+     *
      * @return $this
      */
     public function setDiskIds($diskIds)
@@ -105,6 +113,7 @@ class StorageSetDetailsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -117,6 +126,7 @@ class StorageSetDetailsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -129,6 +139,7 @@ class StorageSetDetailsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -141,6 +152,7 @@ class StorageSetDetailsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $storageSetId
+     *
      * @return $this
      */
     public function setStorageSetId($storageSetId)

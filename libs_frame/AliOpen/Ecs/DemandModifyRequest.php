@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDemand
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getStartTime()
@@ -39,6 +41,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +54,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -63,6 +67,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -75,6 +80,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $demandDescription
+     *
      * @return $this
      */
     public function setDemandDescription($demandDescription)
@@ -87,6 +93,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -99,6 +106,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceChargeType
+     *
      * @return $this
      */
     public function setInstanceChargeType($instanceChargeType)
@@ -111,6 +119,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $demandName
+     *
      * @return $this
      */
     public function setDemandName($demandName)
@@ -123,6 +132,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $amount
+     *
      * @return $this
      */
     public function setAmount($amount)
@@ -135,6 +145,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -147,6 +158,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -159,6 +171,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -171,6 +184,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -183,6 +197,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -195,6 +210,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $periodUnit
+     *
      * @return $this
      */
     public function setPeriodUnit($periodUnit)
@@ -207,6 +223,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $demandId
+     *
      * @return $this
      */
     public function setDemandId($demandId)
@@ -219,6 +236,7 @@ class DemandModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CloneParameterGroup
+ *
  * @method string getResourceOwnerId()
  * @method string getParameterGroupId()
  * @method string getResourceOwnerAccount()
@@ -30,6 +32,7 @@ class ParameterGroupCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class ParameterGroupCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $parameterGroupId
+     *
      * @return $this
      */
     public function setParameterGroupId($parameterGroupId)
@@ -54,6 +58,7 @@ class ParameterGroupCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +71,7 @@ class ParameterGroupCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -78,6 +84,7 @@ class ParameterGroupCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $targetRegionId
+     *
      * @return $this
      */
     public function setTargetRegionId($targetRegionId)
@@ -90,6 +97,7 @@ class ParameterGroupCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $parameterGroupName
+     *
      * @return $this
      */
     public function setParameterGroupName($parameterGroupName)
@@ -102,6 +110,7 @@ class ParameterGroupCloneRequest extends RpcAcsRequest
 
     /**
      * @param string $parameterGroupDesc
+     *
      * @return $this
      */
     public function setParameterGroupDesc($parameterGroupDesc)

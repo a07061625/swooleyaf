@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeSQLLogRecords
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getStartTime()
@@ -38,6 +40,7 @@ class SQLLogRecordsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +53,7 @@ class SQLLogRecordsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -62,6 +66,7 @@ class SQLLogRecordsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -74,6 +79,7 @@ class SQLLogRecordsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $queryKeywords
+     *
      * @return $this
      */
     public function setQueryKeywords($queryKeywords)
@@ -86,6 +92,7 @@ class SQLLogRecordsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -98,6 +105,7 @@ class SQLLogRecordsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $database
+     *
      * @return $this
      */
     public function setDatabase($database)
@@ -110,6 +118,7 @@ class SQLLogRecordsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -122,6 +131,7 @@ class SQLLogRecordsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -134,6 +144,7 @@ class SQLLogRecordsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $sQLId
+     *
      * @return $this
      */
     public function setSQLId($sQLId)
@@ -146,6 +157,7 @@ class SQLLogRecordsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -158,6 +170,7 @@ class SQLLogRecordsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -170,6 +183,7 @@ class SQLLogRecordsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -182,6 +196,7 @@ class SQLLogRecordsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -194,6 +209,7 @@ class SQLLogRecordsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $form
+     *
      * @return $this
      */
     public function setForm($form)
@@ -206,6 +222,7 @@ class SQLLogRecordsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $user
+     *
      * @return $this
      */
     public function setUser($user)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of UploadCredentials
+ *
  * @method string getClientInfo()
  */
 class CredentialsUploadRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class CredentialsUploadRequest extends RoaAcsRequest
 
     /**
      * @param string $clientInfo
+     *
      * @return $this
      */
     public function setClientInfo($clientInfo)

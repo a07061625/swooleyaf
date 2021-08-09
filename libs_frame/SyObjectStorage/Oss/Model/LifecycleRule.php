@@ -1,15 +1,19 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class LifecycleRule
+ *
  * @package SyObjectStorage\Oss\Model
- * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/PutBucketLifecycle.html
+ *
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/bucket/PutBucketLifecycle.html
  */
 class LifecycleRule
 {
     const LIFECYCLE_STATUS_ENABLED = 'Enabled';
     const LIFECYCLE_STATUS_DISABLED = 'Disabled';
+
     private $id;
     private $prefix;
     private $status;
@@ -17,9 +21,10 @@ class LifecycleRule
 
     /**
      * LifecycleRule constructor.
-     * @param string $id rule Id
-     * @param string $prefix File prefix
-     * @param string $status Rule status, which has the following valid values: [self::LIFECYCLE_STATUS_ENABLED, self::LIFECYCLE_STATUS_DISABLED]
+     *
+     * @param string            $id      rule Id
+     * @param string            $prefix  File prefix
+     * @param string            $status  Rule status, which has the following valid values: [self::LIFECYCLE_STATUS_ENABLED, self::LIFECYCLE_STATUS_DISABLED]
      * @param LifecycleAction[] $actions
      */
     public function __construct($id, $prefix, $status, $actions)
@@ -32,6 +37,7 @@ class LifecycleRule
 
     /**
      * Get Id
+     *
      * @return string
      */
     public function getId()
@@ -49,6 +55,7 @@ class LifecycleRule
 
     /**
      * Get a file prefix
+     *
      * @return string
      */
     public function getPrefix()
@@ -58,6 +65,7 @@ class LifecycleRule
 
     /**
      * Set a file prefix
+     *
      * @param string $prefix The file prefix
      */
     public function setPrefix($prefix)
@@ -67,6 +75,7 @@ class LifecycleRule
 
     /**
      * Get Lifecycle status
+     *
      * @return string
      */
     public function getStatus()
@@ -76,6 +85,7 @@ class LifecycleRule
 
     /**
      * Set Lifecycle status
+     *
      * @param string $status
      */
     public function setStatus($status)

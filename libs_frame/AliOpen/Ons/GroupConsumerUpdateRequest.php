@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ons;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OnsGroupConsumerUpdate
+ *
  * @method string getGroupId()
  * @method string getReadEnable()
  * @method string getInstanceId()
@@ -26,6 +28,7 @@ class GroupConsumerUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -38,6 +41,7 @@ class GroupConsumerUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $readEnable
+     *
      * @return $this
      */
     public function setReadEnable($readEnable)
@@ -50,6 +54,7 @@ class GroupConsumerUpdateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

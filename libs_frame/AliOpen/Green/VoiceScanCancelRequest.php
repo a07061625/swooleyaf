@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of VoiceCancelScan
+ *
  * @method string getClientInfo()
  */
 class VoiceScanCancelRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class VoiceScanCancelRequest extends RoaAcsRequest
 
     /**
      * @param string $clientInfo
+     *
      * @return $this
      */
     public function setClientInfo($clientInfo)

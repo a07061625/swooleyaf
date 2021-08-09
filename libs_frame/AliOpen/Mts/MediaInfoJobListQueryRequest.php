@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Mts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryMediaInfoJobList
+ *
  * @method string getResourceOwnerId()
  * @method string getMediaInfoJobIds()
  * @method string getResourceOwnerAccount()
@@ -28,6 +30,7 @@ class MediaInfoJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -40,6 +43,7 @@ class MediaInfoJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaInfoJobIds
+     *
      * @return $this
      */
     public function setMediaInfoJobIds($mediaInfoJobIds)
@@ -52,6 +56,7 @@ class MediaInfoJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -64,6 +69,7 @@ class MediaInfoJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -76,6 +82,7 @@ class MediaInfoJobListQueryRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

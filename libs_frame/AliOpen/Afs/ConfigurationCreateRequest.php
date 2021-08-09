@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Afs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateConfiguration
+ *
  * @method string getSourceIp()
  * @method string getConfigurationName()
  * @method string getMaxPV()
@@ -29,6 +31,7 @@ class ConfigurationCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -41,6 +44,7 @@ class ConfigurationCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $configurationName
+     *
      * @return $this
      */
     public function setConfigurationName($configurationName)
@@ -53,6 +57,7 @@ class ConfigurationCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $maxPV
+     *
      * @return $this
      */
     public function setMaxPV($maxPV)
@@ -65,6 +70,7 @@ class ConfigurationCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $configurationMethod
+     *
      * @return $this
      */
     public function setConfigurationMethod($configurationMethod)
@@ -77,6 +83,7 @@ class ConfigurationCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $applyType
+     *
      * @return $this
      */
     public function setApplyType($applyType)
@@ -89,6 +96,7 @@ class ConfigurationCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $scene
+     *
      * @return $this
      */
     public function setScene($scene)

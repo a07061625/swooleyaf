@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDBInstancesForClone
+ *
  * @method string getConnectionMode()
  * @method string getResourceOwnerId()
  * @method string getNodeType()
@@ -46,6 +48,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $connectionMode
+     *
      * @return $this
      */
     public function setConnectionMode($connectionMode)
@@ -58,6 +61,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -70,6 +74,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeType
+     *
      * @return $this
      */
     public function setNodeType($nodeType)
@@ -82,6 +87,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -94,6 +100,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $searchKey
+     *
      * @return $this
      */
     public function setSearchKey($searchKey)
@@ -106,6 +113,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $engineVersion
+     *
      * @return $this
      */
     public function setEngineVersion($engineVersion)
@@ -118,6 +126,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -130,6 +139,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $expired
+     *
      * @return $this
      */
     public function setExpired($expired)
@@ -142,6 +152,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $engine
+     *
      * @return $this
      */
     public function setEngine($engine)
@@ -154,6 +165,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -166,6 +178,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStatus
+     *
      * @return $this
      */
     public function setDBInstanceStatus($dBInstanceStatus)
@@ -178,6 +191,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -190,6 +204,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -202,6 +217,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -214,6 +230,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -226,6 +243,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -238,6 +256,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceType
+     *
      * @return $this
      */
     public function setDBInstanceType($dBInstanceType)
@@ -250,6 +269,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)
@@ -262,6 +282,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -274,6 +295,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -286,6 +308,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -298,6 +321,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)
@@ -310,6 +334,7 @@ class CloneDBInstancesDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceNetworkType
+     *
      * @return $this
      */
     public function setInstanceNetworkType($instanceNetworkType)

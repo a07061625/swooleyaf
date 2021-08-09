@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DeletePerson
+ *
  * @method string getClientInfo()
  */
 class PersonDeleteRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class PersonDeleteRequest extends RoaAcsRequest
 
     /**
      * @param string $clientInfo
+     *
      * @return $this
      */
     public function setClientInfo($clientInfo)

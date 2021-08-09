@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ImportKeyPair
+ *
  * @method string getResourceOwnerId()
  * @method string getKeyPairName()
  * @method string getResourceGroupId()
@@ -30,6 +32,7 @@ class KeyPairImportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class KeyPairImportRequest extends RpcAcsRequest
 
     /**
      * @param string $keyPairName
+     *
      * @return $this
      */
     public function setKeyPairName($keyPairName)
@@ -54,6 +58,7 @@ class KeyPairImportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -65,7 +70,6 @@ class KeyPairImportRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -81,6 +85,7 @@ class KeyPairImportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -93,6 +98,7 @@ class KeyPairImportRequest extends RpcAcsRequest
 
     /**
      * @param string $publicKeyBody
+     *
      * @return $this
      */
     public function setPublicKeyBody($publicKeyBody)
@@ -105,6 +111,7 @@ class KeyPairImportRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

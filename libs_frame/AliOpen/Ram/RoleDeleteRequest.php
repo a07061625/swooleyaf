@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteRole
+ *
  * @method string getRoleName()
  */
 class RoleDeleteRequest extends RpcAcsRequest
@@ -28,6 +30,7 @@ class RoleDeleteRequest extends RpcAcsRequest
 
     /**
      * @param string $roleName
+     *
      * @return $this
      */
     public function setRoleName($roleName)

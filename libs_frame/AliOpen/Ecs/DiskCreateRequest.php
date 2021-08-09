@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDisk
+ *
  * @method string getResourceOwnerId()
  * @method string getSnapshotId()
  * @method string getClientToken()
@@ -45,6 +47,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +60,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $snapshotId
+     *
      * @return $this
      */
     public function setSnapshotId($snapshotId)
@@ -69,6 +73,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -81,6 +86,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $encryptAlgorithm
+     *
      * @return $this
      */
     public function setEncryptAlgorithm($encryptAlgorithm)
@@ -93,6 +99,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -105,6 +112,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $diskName
+     *
      * @return $this
      */
     public function setDiskName($diskName)
@@ -117,6 +125,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -129,6 +138,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $diskCategory
+     *
      * @return $this
      */
     public function setDiskCategory($diskCategory)
@@ -141,6 +151,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $storageSetPartitionNumber
+     *
      * @return $this
      */
     public function setStorageSetPartitionNumber($storageSetPartitionNumber)
@@ -152,7 +163,6 @@ class DiskCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -167,7 +177,6 @@ class DiskCreateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $arn
      * @return $this
      */
     public function setArns(array $arn)
@@ -184,6 +193,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $advancedFeatures
+     *
      * @return $this
      */
     public function setAdvancedFeatures($advancedFeatures)
@@ -196,6 +206,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -208,6 +219,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $performanceLevel
+     *
      * @return $this
      */
     public function setPerformanceLevel($performanceLevel)
@@ -220,6 +232,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -232,6 +245,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -244,6 +258,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -256,6 +271,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $storageSetId
+     *
      * @return $this
      */
     public function setStorageSetId($storageSetId)
@@ -268,6 +284,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $size
+     *
      * @return $this
      */
     public function setSize($size)
@@ -280,6 +297,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $encrypted
+     *
      * @return $this
      */
     public function setEncrypted($encrypted)
@@ -292,6 +310,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -304,6 +323,7 @@ class DiskCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $kMSKeyId
+     *
      * @return $this
      */
     public function setKMSKeyId($kMSKeyId)

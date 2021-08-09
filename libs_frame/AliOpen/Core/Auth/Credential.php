@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Core\Auth;
 
 class Credential extends AbstractCredential
@@ -48,6 +49,7 @@ class Credential extends AbstractCredential
 
     /**
      * AliOpen\Core\Auth\Credential constructor.
+     *
      * @param $accessKeyId
      * @param $accessSecret
      * @param $securityToken
@@ -65,7 +67,7 @@ class Credential extends AbstractCredential
      */
     public function isExpired()
     {
-        if ($this->expiredDate == null) {
+        if (null == $this->expiredDate) {
             return false;
         }
         if (strtotime($this->expiredDate) > strtotime(date($this->dateTimeFormat))) {
@@ -93,6 +95,7 @@ class Credential extends AbstractCredential
 
     /**
      * @param $expiredHours
+     *
      * @return false|string
      */
     public function setExpiredDate($expiredHours)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateForwardEntry
+ *
  * @method string getResourceOwnerId()
  * @method string getForwardTableId()
  * @method string getInternalIp()
@@ -33,6 +35,7 @@ class ForwardEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class ForwardEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $forwardTableId
+     *
      * @return $this
      */
     public function setForwardTableId($forwardTableId)
@@ -57,6 +61,7 @@ class ForwardEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $internalIp
+     *
      * @return $this
      */
     public function setInternalIp($internalIp)
@@ -69,6 +74,7 @@ class ForwardEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $externalIp
+     *
      * @return $this
      */
     public function setExternalIp($externalIp)
@@ -81,6 +87,7 @@ class ForwardEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -93,6 +100,7 @@ class ForwardEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ipProtocol
+     *
      * @return $this
      */
     public function setIpProtocol($ipProtocol)
@@ -105,6 +113,7 @@ class ForwardEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -117,6 +126,7 @@ class ForwardEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +139,7 @@ class ForwardEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $internalPort
+     *
      * @return $this
      */
     public function setInternalPort($internalPort)
@@ -141,6 +152,7 @@ class ForwardEntryCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $externalPort
+     *
      * @return $this
      */
     public function setExternalPort($externalPort)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Green;
 
 use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DeleteSimilarityImage
+ *
  * @method string getClientInfo()
  */
 class SimilarityImageDeleteRequest extends RoaAcsRequest
@@ -28,6 +30,7 @@ class SimilarityImageDeleteRequest extends RoaAcsRequest
 
     /**
      * @param string $clientInfo
+     *
      * @return $this
      */
     public function setClientInfo($clientInfo)

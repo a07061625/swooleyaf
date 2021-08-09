@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDBInstancesByExpireTime
+ *
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
  * @method string getExpired()
@@ -33,6 +35,7 @@ class DBInstancesByExpireTimeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class DBInstancesByExpireTimeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -57,6 +61,7 @@ class DBInstancesByExpireTimeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $expired
+     *
      * @return $this
      */
     public function setExpired($expired)
@@ -69,6 +74,7 @@ class DBInstancesByExpireTimeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -81,6 +87,7 @@ class DBInstancesByExpireTimeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $expirePeriod
+     *
      * @return $this
      */
     public function setExpirePeriod($expirePeriod)
@@ -93,6 +100,7 @@ class DBInstancesByExpireTimeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyId
+     *
      * @return $this
      */
     public function setproxyId($proxyId)
@@ -105,6 +113,7 @@ class DBInstancesByExpireTimeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -117,6 +126,7 @@ class DBInstancesByExpireTimeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -129,6 +139,7 @@ class DBInstancesByExpireTimeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -141,6 +152,7 @@ class DBInstancesByExpireTimeDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $tags
+     *
      * @return $this
      */
     public function setTags($tags)

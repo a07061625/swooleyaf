@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AttachPolicyToRole
+ *
  * @method string getPolicyType()
  * @method string getRoleName()
  * @method string getPolicyName()
@@ -30,6 +32,7 @@ class RolePolicyAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $policyType
+     *
      * @return $this
      */
     public function setPolicyType($policyType)
@@ -42,6 +45,7 @@ class RolePolicyAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $roleName
+     *
      * @return $this
      */
     public function setRoleName($roleName)
@@ -54,6 +58,7 @@ class RolePolicyAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $policyName
+     *
      * @return $this
      */
     public function setPolicyName($policyName)

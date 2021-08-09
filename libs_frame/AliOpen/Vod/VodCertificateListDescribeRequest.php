@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVodCertificateList
+ *
  * @method string getDomainName()
  * @method string getOwnerId()
  * @method string getSecurityToken()
@@ -26,6 +28,7 @@ class VodCertificateListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -38,6 +41,7 @@ class VodCertificateListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -50,6 +54,7 @@ class VodCertificateListDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)

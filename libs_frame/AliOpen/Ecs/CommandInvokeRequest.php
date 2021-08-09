@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InvokeCommand
+ *
  * @method string getResourceOwnerId()
  * @method string getCommandId()
  * @method string getFrequency()
@@ -32,6 +34,7 @@ class CommandInvokeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class CommandInvokeRequest extends RpcAcsRequest
 
     /**
      * @param string $commandId
+     *
      * @return $this
      */
     public function setCommandId($commandId)
@@ -56,6 +60,7 @@ class CommandInvokeRequest extends RpcAcsRequest
 
     /**
      * @param string $frequency
+     *
      * @return $this
      */
     public function setFrequency($frequency)
@@ -68,6 +73,7 @@ class CommandInvokeRequest extends RpcAcsRequest
 
     /**
      * @param string $timed
+     *
      * @return $this
      */
     public function setTimed($timed)
@@ -80,6 +86,7 @@ class CommandInvokeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -92,6 +99,7 @@ class CommandInvokeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +112,7 @@ class CommandInvokeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -115,7 +124,6 @@ class CommandInvokeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $instanceId
      * @return $this
      */
     public function setInstanceIds(array $instanceId)
@@ -130,6 +138,7 @@ class CommandInvokeRequest extends RpcAcsRequest
 
     /**
      * @param string $parameters
+     *
      * @return $this
      */
     public function setParameters($parameters)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ram;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListUsersForGroup
+ *
  * @method string getMarker()
  * @method string getMaxItems()
  * @method string getGroupName()
@@ -30,6 +32,7 @@ class GroupUsersListRequest extends RpcAcsRequest
 
     /**
      * @param string $marker
+     *
      * @return $this
      */
     public function setMarker($marker)
@@ -42,6 +45,7 @@ class GroupUsersListRequest extends RpcAcsRequest
 
     /**
      * @param string $maxItems
+     *
      * @return $this
      */
     public function setMaxItems($maxItems)
@@ -54,6 +58,7 @@ class GroupUsersListRequest extends RpcAcsRequest
 
     /**
      * @param string $groupName
+     *
      * @return $this
      */
     public function setGroupName($groupName)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeFileSystems
+ *
  * @method string getPageSize()
  * @method string getPageNumber()
  * @method string getFileSystemId()
@@ -26,6 +28,7 @@ class FileSystemsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -38,6 +41,7 @@ class FileSystemsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -50,6 +54,7 @@ class FileSystemsDescribeRequest extends RpcAcsRequest
 
     /**
      * @param string $fileSystemId
+     *
      * @return $this
      */
     public function setFileSystemId($fileSystemId)

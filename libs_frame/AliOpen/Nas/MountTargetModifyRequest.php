@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Nas;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyMountTarget
+ *
  * @method string getMountTargetDomain()
  * @method string getAccessGroupName()
  * @method string getFileSystemId()
@@ -27,6 +29,7 @@ class MountTargetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $mountTargetDomain
+     *
      * @return $this
      */
     public function setMountTargetDomain($mountTargetDomain)
@@ -39,6 +42,7 @@ class MountTargetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $accessGroupName
+     *
      * @return $this
      */
     public function setAccessGroupName($accessGroupName)
@@ -51,6 +55,7 @@ class MountTargetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $fileSystemId
+     *
      * @return $this
      */
     public function setFileSystemId($fileSystemId)
@@ -63,6 +68,7 @@ class MountTargetModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

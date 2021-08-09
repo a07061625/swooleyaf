@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Rds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBProxyEndpoint
+ *
  * @method string getResourceOwnerId()
  * @method string getConfigDBProxyFeatures()
  * @method string getDBInstanceId()
@@ -32,6 +34,7 @@ class DBProxyEndpointModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class DBProxyEndpointModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $configDBProxyFeatures
+     *
      * @return $this
      */
     public function setConfigDBProxyFeatures($configDBProxyFeatures)
@@ -56,6 +60,7 @@ class DBProxyEndpointModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -68,6 +73,7 @@ class DBProxyEndpointModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $readOnlyInstanceWeight
+     *
      * @return $this
      */
     public function setReadOnlyInstanceWeight($readOnlyInstanceWeight)
@@ -80,6 +86,7 @@ class DBProxyEndpointModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $readOnlyInstanceMaxDelayTime
+     *
      * @return $this
      */
     public function setReadOnlyInstanceMaxDelayTime($readOnlyInstanceMaxDelayTime)
@@ -92,6 +99,7 @@ class DBProxyEndpointModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -104,6 +112,7 @@ class DBProxyEndpointModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +125,7 @@ class DBProxyEndpointModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBProxyEndpointId
+     *
      * @return $this
      */
     public function setDBProxyEndpointId($dBProxyEndpointId)
@@ -128,6 +138,7 @@ class DBProxyEndpointModifyRequest extends RpcAcsRequest
 
     /**
      * @param string $readOnlyInstanceDistributionType
+     *
      * @return $this
      */
     public function setReadOnlyInstanceDistributionType($readOnlyInstanceDistributionType)

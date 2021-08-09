@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of PurchaseReservedInstancesOffering
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getDescription()
@@ -39,6 +41,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +54,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -63,6 +67,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -75,6 +80,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $platform
+     *
      * @return $this
      */
     public function setPlatform($platform)
@@ -87,6 +93,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -99,6 +106,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $scope
+     *
      * @return $this
      */
     public function setScope($scope)
@@ -111,6 +119,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -123,6 +132,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -135,6 +145,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -147,6 +158,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -159,6 +171,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -171,6 +184,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $periodUnit
+     *
      * @return $this
      */
     public function setPeriodUnit($periodUnit)
@@ -183,6 +197,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $offeringType
+     *
      * @return $this
      */
     public function setOfferingType($offeringType)
@@ -195,6 +210,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -207,6 +223,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $reservedInstanceName
+     *
      * @return $this
      */
     public function setReservedInstanceName($reservedInstanceName)
@@ -219,6 +236,7 @@ class ReservedInstancesOfferingPurchaseRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceAmount
+     *
      * @return $this
      */
     public function setInstanceAmount($instanceAmount)

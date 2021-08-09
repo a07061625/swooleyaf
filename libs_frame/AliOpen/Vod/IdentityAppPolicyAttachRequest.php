@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AttachAppPolicyToIdentity
+ *
  * @method string getResourceOwnerId()
  * @method string getPolicyNames()
  * @method string getResourceRealOwnerId()
@@ -31,6 +33,7 @@ class IdentityAppPolicyAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class IdentityAppPolicyAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $policyNames
+     *
      * @return $this
      */
     public function setPolicyNames($policyNames)
@@ -55,6 +59,7 @@ class IdentityAppPolicyAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceRealOwnerId
+     *
      * @return $this
      */
     public function setResourceRealOwnerId($resourceRealOwnerId)
@@ -67,6 +72,7 @@ class IdentityAppPolicyAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $identityName
+     *
      * @return $this
      */
     public function setIdentityName($identityName)
@@ -79,6 +85,7 @@ class IdentityAppPolicyAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $identityType
+     *
      * @return $this
      */
     public function setIdentityType($identityType)
@@ -91,6 +98,7 @@ class IdentityAppPolicyAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -103,6 +111,7 @@ class IdentityAppPolicyAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -115,6 +124,7 @@ class IdentityAppPolicyAttachRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ExportImage
+ *
  * @method string getResourceOwnerId()
  * @method string getImageId()
  * @method string getImageFormat()
@@ -31,6 +33,7 @@ class ImageExportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class ImageExportRequest extends RpcAcsRequest
 
     /**
      * @param string $imageId
+     *
      * @return $this
      */
     public function setImageId($imageId)
@@ -55,6 +59,7 @@ class ImageExportRequest extends RpcAcsRequest
 
     /**
      * @param string $imageFormat
+     *
      * @return $this
      */
     public function setImageFormat($imageFormat)
@@ -67,6 +72,7 @@ class ImageExportRequest extends RpcAcsRequest
 
     /**
      * @param string $oSSBucket
+     *
      * @return $this
      */
     public function setOSSBucket($oSSBucket)
@@ -79,6 +85,7 @@ class ImageExportRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -91,6 +98,7 @@ class ImageExportRequest extends RpcAcsRequest
 
     /**
      * @param string $roleName
+     *
      * @return $this
      */
     public function setRoleName($roleName)
@@ -103,6 +111,7 @@ class ImageExportRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -115,6 +124,7 @@ class ImageExportRequest extends RpcAcsRequest
 
     /**
      * @param string $oSSPrefix
+     *
      * @return $this
      */
     public function setOSSPrefix($oSSPrefix)

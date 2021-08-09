@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Vod;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListAuditSecurityIp
+ *
  * @method string getSecurityGroupName()
  */
 class AuditSecurityIpListRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class AuditSecurityIpListRequest extends RpcAcsRequest
 
     /**
      * @param string $securityGroupName
+     *
      * @return $this
      */
     public function setSecurityGroupName($securityGroupName)

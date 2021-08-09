@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Ecs;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreatePhysicalConnection
+ *
  * @method string getAccessPointId()
  * @method string getResourceOwnerId()
  * @method string getPortType()
@@ -39,6 +41,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $accessPointId
+     *
      * @return $this
      */
     public function setAccessPointId($accessPointId)
@@ -51,6 +54,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -63,6 +67,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $portType
+     *
      * @return $this
      */
     public function setPortType($portType)
@@ -75,6 +80,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $circuitCode
+     *
      * @return $this
      */
     public function setCircuitCode($circuitCode)
@@ -87,6 +93,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -99,6 +106,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -111,6 +119,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -123,6 +132,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $userCidr
+     *
      * @return $this
      */
     public function setUserCidr($userCidr)
@@ -135,6 +145,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $redundantPhysicalConnectionId
+     *
      * @return $this
      */
     public function setRedundantPhysicalConnectionId($redundantPhysicalConnectionId)
@@ -147,6 +158,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $peerLocation
+     *
      * @return $this
      */
     public function setPeerLocation($peerLocation)
@@ -159,6 +171,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setbandwidth($bandwidth)
@@ -171,6 +184,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -183,6 +197,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -195,6 +210,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -207,6 +223,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $lineOperator
+     *
      * @return $this
      */
     public function setLineOperator($lineOperator)
@@ -219,6 +236,7 @@ class PhysicalConnectionCreateRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
