@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetTaskParam
+ *
  * @method string getOwnerId()
  * @method string getAppId()
  * @method string getTaskId()
@@ -27,6 +28,7 @@ class GetTaskParamRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -39,6 +41,7 @@ class GetTaskParamRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -51,6 +54,7 @@ class GetTaskParamRequest extends RpcAcsRequest
 
     /**
      * @param string $taskId
+     *
      * @return $this
      */
     public function setTaskId($taskId)

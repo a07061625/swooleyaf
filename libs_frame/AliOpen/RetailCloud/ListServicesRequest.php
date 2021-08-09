@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListServices
+ *
  * @method string getServiceType()
  * @method string getAppId()
  * @method string getName()
@@ -30,6 +31,7 @@ class ListServicesRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceType
+     *
      * @return $this
      */
     public function setServiceType($serviceType)
@@ -42,6 +44,7 @@ class ListServicesRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -54,6 +57,7 @@ class ListServicesRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -66,6 +70,7 @@ class ListServicesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -78,6 +83,7 @@ class ListServicesRequest extends RpcAcsRequest
 
     /**
      * @param string $envId
+     *
      * @return $this
      */
     public function setEnvId($envId)
@@ -90,6 +96,7 @@ class ListServicesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

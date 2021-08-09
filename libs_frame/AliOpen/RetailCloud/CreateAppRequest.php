@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateApp
+ *
  * @method string getBizTitle()
  * @method string getOperatingSystem()
  * @method string getDescription()
@@ -35,6 +36,7 @@ class CreateAppRequest extends RpcAcsRequest
 
     /**
      * @param string $bizTitle
+     *
      * @return $this
      */
     public function setBizTitle($bizTitle)
@@ -47,6 +49,7 @@ class CreateAppRequest extends RpcAcsRequest
 
     /**
      * @param string $operatingSystem
+     *
      * @return $this
      */
     public function setOperatingSystem($operatingSystem)
@@ -59,6 +62,7 @@ class CreateAppRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -71,6 +75,7 @@ class CreateAppRequest extends RpcAcsRequest
 
     /**
      * @param string $language
+     *
      * @return $this
      */
     public function setLanguage($language)
@@ -83,6 +88,7 @@ class CreateAppRequest extends RpcAcsRequest
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -94,7 +100,6 @@ class CreateAppRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $middleWareIdList
      * @return $this
      */
     public function setMiddleWareIdLists(array $middleWareIdList)
@@ -109,6 +114,7 @@ class CreateAppRequest extends RpcAcsRequest
 
     /**
      * @param string $stateType
+     *
      * @return $this
      */
     public function setStateType($stateType)
@@ -121,6 +127,7 @@ class CreateAppRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceType
+     *
      * @return $this
      */
     public function setServiceType($serviceType)
@@ -132,7 +139,6 @@ class CreateAppRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $userRoles
      * @return $this
      */
     public function setUserRoless(array $userRoles)
@@ -149,6 +155,7 @@ class CreateAppRequest extends RpcAcsRequest
 
     /**
      * @param string $bizCode
+     *
      * @return $this
      */
     public function setBizCode($bizCode)
@@ -161,6 +168,7 @@ class CreateAppRequest extends RpcAcsRequest
 
     /**
      * @param string $namespace
+     *
      * @return $this
      */
     public function setNamespace($namespace)

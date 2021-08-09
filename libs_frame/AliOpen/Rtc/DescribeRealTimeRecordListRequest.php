@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeRealTimeRecordList
+ *
  * @method string getEndTime()
  * @method string getStartTime()
  * @method string getOwnerId()
@@ -27,6 +28,7 @@ class DescribeRealTimeRecordListRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -39,6 +41,7 @@ class DescribeRealTimeRecordListRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -51,6 +54,7 @@ class DescribeRealTimeRecordListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

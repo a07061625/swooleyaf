@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateApp
+ *
  * @method string getBizTitle()
  * @method string getServiceType()
  * @method array getUserRoless()
@@ -32,6 +33,7 @@ class UpdateAppRequest extends RpcAcsRequest
 
     /**
      * @param string $bizTitle
+     *
      * @return $this
      */
     public function setBizTitle($bizTitle)
@@ -44,6 +46,7 @@ class UpdateAppRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceType
+     *
      * @return $this
      */
     public function setServiceType($serviceType)
@@ -55,7 +58,6 @@ class UpdateAppRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $userRoles
      * @return $this
      */
     public function setUserRoless(array $userRoles)
@@ -72,6 +74,7 @@ class UpdateAppRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -84,6 +87,7 @@ class UpdateAppRequest extends RpcAcsRequest
 
     /**
      * @param string $operatingSystem
+     *
      * @return $this
      */
     public function setOperatingSystem($operatingSystem)
@@ -96,6 +100,7 @@ class UpdateAppRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -108,6 +113,7 @@ class UpdateAppRequest extends RpcAcsRequest
 
     /**
      * @param string $language
+     *
      * @return $this
      */
     public function setLanguage($language)
@@ -119,7 +125,6 @@ class UpdateAppRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $middleWareIdList
      * @return $this
      */
     public function setMiddleWareIdLists(array $middleWareIdList)

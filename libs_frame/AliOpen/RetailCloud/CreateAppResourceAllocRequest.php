@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateAppResourceAlloc
+ *
  * @method string getAppId()
  * @method string getAppEnvId()
  * @method string getClusterId()
@@ -27,6 +28,7 @@ class CreateAppResourceAllocRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -39,6 +41,7 @@ class CreateAppResourceAllocRequest extends RpcAcsRequest
 
     /**
      * @param string $appEnvId
+     *
      * @return $this
      */
     public function setAppEnvId($appEnvId)
@@ -51,6 +54,7 @@ class CreateAppResourceAllocRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

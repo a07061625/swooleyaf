@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeRtcPeakUserCntData
+ *
  * @method string getStartTime()
  * @method string getServiceArea()
  * @method string getEndTime()
@@ -30,6 +31,7 @@ class DescribeRtcPeakUserCntDataRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -42,6 +44,7 @@ class DescribeRtcPeakUserCntDataRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceArea
+     *
      * @return $this
      */
     public function setServiceArea($serviceArea)
@@ -54,6 +57,7 @@ class DescribeRtcPeakUserCntDataRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -66,6 +70,7 @@ class DescribeRtcPeakUserCntDataRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -78,6 +83,7 @@ class DescribeRtcPeakUserCntDataRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -90,6 +96,7 @@ class DescribeRtcPeakUserCntDataRequest extends RpcAcsRequest
 
     /**
      * @param string $interval
+     *
      * @return $this
      */
     public function setInterval($interval)

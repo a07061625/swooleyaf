@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryClusterDetail
+ *
  * @method string getClusterInstanceId()
  */
 class QueryClusterDetailRequest extends RpcAcsRequest
@@ -20,6 +21,7 @@ class QueryClusterDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterInstanceId
+     *
      * @return $this
      */
     public function setClusterInstanceId($clusterInstanceId)

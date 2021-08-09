@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteConference
+ *
  * @method string getOwnerId()
  * @method string getConferenceId()
  * @method string getAppId()
@@ -27,6 +28,7 @@ class DeleteConferenceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -39,6 +41,7 @@ class DeleteConferenceRequest extends RpcAcsRequest
 
     /**
      * @param string $conferenceId
+     *
      * @return $this
      */
     public function setConferenceId($conferenceId)
@@ -51,6 +54,7 @@ class DeleteConferenceRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

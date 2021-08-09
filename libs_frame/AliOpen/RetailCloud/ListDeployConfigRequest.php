@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListDeployConfig
+ *
  * @method string getAppId()
  * @method string getEnvType()
  * @method string getName()
@@ -28,6 +29,7 @@ class ListDeployConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -40,6 +42,7 @@ class ListDeployConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $envType
+     *
      * @return $this
      */
     public function setEnvType($envType)
@@ -52,6 +55,7 @@ class ListDeployConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -64,6 +68,7 @@ class ListDeployConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)

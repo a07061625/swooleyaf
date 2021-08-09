@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyApp
+ *
  * @method string getOwnerId()
  * @method string getAppName()
  * @method string getAppId()
@@ -27,6 +28,7 @@ class ModifyAppRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -39,6 +41,7 @@ class ModifyAppRequest extends RpcAcsRequest
 
     /**
      * @param string $appName
+     *
      * @return $this
      */
     public function setAppName($appName)
@@ -51,6 +54,7 @@ class ModifyAppRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

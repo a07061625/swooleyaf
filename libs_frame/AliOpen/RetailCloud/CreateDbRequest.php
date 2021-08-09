@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDb
+ *
  * @method string getDbName()
  * @method string getDbInstanceId()
  * @method string getDbDescription()
@@ -28,6 +29,7 @@ class CreateDbRequest extends RpcAcsRequest
 
     /**
      * @param string $dbName
+     *
      * @return $this
      */
     public function setDbName($dbName)
@@ -40,6 +42,7 @@ class CreateDbRequest extends RpcAcsRequest
 
     /**
      * @param string $dbInstanceId
+     *
      * @return $this
      */
     public function setDbInstanceId($dbInstanceId)
@@ -52,6 +55,7 @@ class CreateDbRequest extends RpcAcsRequest
 
     /**
      * @param string $dbDescription
+     *
      * @return $this
      */
     public function setDbDescription($dbDescription)
@@ -64,6 +68,7 @@ class CreateDbRequest extends RpcAcsRequest
 
     /**
      * @param string $characterSetName
+     *
      * @return $this
      */
     public function setCharacterSetName($characterSetName)

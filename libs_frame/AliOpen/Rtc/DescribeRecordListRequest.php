@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeRecordList
+ *
  * @method string getSortType()
  * @method string getStartTime()
  * @method string getServiceArea()
@@ -34,6 +35,7 @@ class DescribeRecordListRequest extends RpcAcsRequest
 
     /**
      * @param string $sortType
+     *
      * @return $this
      */
     public function setSortType($sortType)
@@ -46,6 +48,7 @@ class DescribeRecordListRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -58,6 +61,7 @@ class DescribeRecordListRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceArea
+     *
      * @return $this
      */
     public function setServiceArea($serviceArea)
@@ -70,6 +74,7 @@ class DescribeRecordListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -82,6 +87,7 @@ class DescribeRecordListRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -94,6 +100,7 @@ class DescribeRecordListRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -106,6 +113,7 @@ class DescribeRecordListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -118,6 +126,7 @@ class DescribeRecordListRequest extends RpcAcsRequest
 
     /**
      * @param string $idType
+     *
      * @return $this
      */
     public function setIdType($idType)
@@ -130,6 +139,7 @@ class DescribeRecordListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNo
+     *
      * @return $this
      */
     public function setPageNo($pageNo)
@@ -142,6 +152,7 @@ class DescribeRecordListRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

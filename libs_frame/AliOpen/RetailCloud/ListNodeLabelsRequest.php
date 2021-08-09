@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListNodeLabels
+ *
  * @method string getLabelKey()
  * @method string getPageSize()
  * @method string getClusterId()
@@ -28,6 +29,7 @@ class ListNodeLabelsRequest extends RpcAcsRequest
 
     /**
      * @param string $labelKey
+     *
      * @return $this
      */
     public function setLabelKey($labelKey)
@@ -40,6 +42,7 @@ class ListNodeLabelsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -52,6 +55,7 @@ class ListNodeLabelsRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -64,6 +68,7 @@ class ListNodeLabelsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

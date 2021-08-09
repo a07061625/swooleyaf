@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribePodEvents
+ *
  * @method string getDeployOrderId()
  * @method string getAppInstId()
  */
@@ -26,6 +27,7 @@ class DescribePodEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $deployOrderId
+     *
      * @return $this
      */
     public function setDeployOrderId($deployOrderId)
@@ -38,6 +40,7 @@ class DescribePodEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $appInstId
+     *
      * @return $this
      */
     public function setAppInstId($appInstId)

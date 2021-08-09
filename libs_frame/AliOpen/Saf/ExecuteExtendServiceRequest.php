@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ExecuteExtendService
+ *
  * @method string getServiceParameters()
  * @method string getService()
  * @method string getRegion()
@@ -27,6 +28,7 @@ class ExecuteExtendServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceParameters
+     *
      * @return $this
      */
     public function setServiceParameters($serviceParameters)
@@ -39,6 +41,7 @@ class ExecuteExtendServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $service
+     *
      * @return $this
      */
     public function setService($service)
@@ -51,6 +54,7 @@ class ExecuteExtendServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)

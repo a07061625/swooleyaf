@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateEnvironment
+ *
  * @method string getEnvName()
  * @method string getReplicas()
  * @method string getAppId()
@@ -30,6 +31,7 @@ class CreateEnvironmentRequest extends RpcAcsRequest
 
     /**
      * @param string $envName
+     *
      * @return $this
      */
     public function setEnvName($envName)
@@ -42,6 +44,7 @@ class CreateEnvironmentRequest extends RpcAcsRequest
 
     /**
      * @param string $replicas
+     *
      * @return $this
      */
     public function setReplicas($replicas)
@@ -54,6 +57,7 @@ class CreateEnvironmentRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -66,6 +70,7 @@ class CreateEnvironmentRequest extends RpcAcsRequest
 
     /**
      * @param string $envType
+     *
      * @return $this
      */
     public function setEnvType($envType)
@@ -78,6 +83,7 @@ class CreateEnvironmentRequest extends RpcAcsRequest
 
     /**
      * @param string $appSchemaId
+     *
      * @return $this
      */
     public function setAppSchemaId($appSchemaId)
@@ -90,6 +96,7 @@ class CreateEnvironmentRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)

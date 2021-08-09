@@ -6,6 +6,7 @@ use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of WaitConditions
+ *
  * @method string getresource()
  * @method string getsignature()
  * @method string getstackid()
@@ -33,6 +34,7 @@ class WaitConditionsRequest extends RoaAcsRequest
 
     /**
      * @param string $resource
+     *
      * @return $this
      */
     public function setresource($resource)
@@ -45,6 +47,7 @@ class WaitConditionsRequest extends RoaAcsRequest
 
     /**
      * @param string $signature
+     *
      * @return $this
      */
     public function setsignature($signature)
@@ -57,6 +60,7 @@ class WaitConditionsRequest extends RoaAcsRequest
 
     /**
      * @param string $stackid
+     *
      * @return $this
      */
     public function setstackid($stackid)
@@ -69,6 +73,7 @@ class WaitConditionsRequest extends RoaAcsRequest
 
     /**
      * @param string $expire
+     *
      * @return $this
      */
     public function setexpire($expire)
@@ -81,6 +86,7 @@ class WaitConditionsRequest extends RoaAcsRequest
 
     /**
      * @param string $stackname
+     *
      * @return $this
      */
     public function setstackname($stackname)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteCluster
+ *
  * @method string getClusterInstanceId()
  */
 class DeleteClusterRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class DeleteClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterInstanceId
+     *
      * @return $this
      */
     public function setClusterInstanceId($clusterInstanceId)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyConference
+ *
  * @method string getStartTime()
  * @method string getType()
  * @method string getConferenceId()
@@ -31,6 +32,7 @@ class ModifyConferenceRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -43,6 +45,7 @@ class ModifyConferenceRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -55,6 +58,7 @@ class ModifyConferenceRequest extends RpcAcsRequest
 
     /**
      * @param string $conferenceId
+     *
      * @return $this
      */
     public function setConferenceId($conferenceId)
@@ -67,6 +71,7 @@ class ModifyConferenceRequest extends RpcAcsRequest
 
     /**
      * @param string $conferenceName
+     *
      * @return $this
      */
     public function setConferenceName($conferenceName)
@@ -79,6 +84,7 @@ class ModifyConferenceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -91,6 +97,7 @@ class ModifyConferenceRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -103,6 +110,7 @@ class ModifyConferenceRequest extends RpcAcsRequest
 
     /**
      * @param string $remindNotice
+     *
      * @return $this
      */
     public function setRemindNotice($remindNotice)

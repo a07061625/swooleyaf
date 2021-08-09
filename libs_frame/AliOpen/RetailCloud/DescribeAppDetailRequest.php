@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAppDetail
+ *
  * @method string getAppId()
  */
 class DescribeAppDetailRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class DescribeAppDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

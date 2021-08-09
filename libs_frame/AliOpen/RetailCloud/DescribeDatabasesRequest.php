@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDatabases
+ *
  * @method string getInstanceId()
  */
 class DescribeDatabasesRequest extends RpcAcsRequest
@@ -20,6 +21,7 @@ class DescribeDatabasesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

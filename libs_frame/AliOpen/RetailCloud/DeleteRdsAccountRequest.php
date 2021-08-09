@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteRdsAccount
+ *
  * @method string getAccountName()
  * @method string getDbInstanceId()
  */
@@ -26,6 +27,7 @@ class DeleteRdsAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $accountName
+     *
      * @return $this
      */
     public function setAccountName($accountName)
@@ -38,6 +40,7 @@ class DeleteRdsAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $dbInstanceId
+     *
      * @return $this
      */
     public function setDbInstanceId($dbInstanceId)

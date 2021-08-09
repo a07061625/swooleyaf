@@ -6,6 +6,7 @@ use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DescribeResourceTypes
+ *
  * @method string getSupportStatus()
  */
 class DescribeResourceTypesRequest extends RoaAcsRequest
@@ -25,6 +26,7 @@ class DescribeResourceTypesRequest extends RoaAcsRequest
 
     /**
      * @param string $supportStatus
+     *
      * @return $this
      */
     public function setSupportStatus($supportStatus)

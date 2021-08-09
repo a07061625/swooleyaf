@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteChannel
+ *
  * @method string getOwnerId()
  * @method string getAppId()
  * @method string getChannelId()
@@ -27,6 +28,7 @@ class DeleteChannelRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -39,6 +41,7 @@ class DeleteChannelRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -51,6 +54,7 @@ class DeleteChannelRequest extends RpcAcsRequest
 
     /**
      * @param string $channelId
+     *
      * @return $this
      */
     public function setChannelId($channelId)

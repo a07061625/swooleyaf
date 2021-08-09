@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteAppDetail
+ *
  * @method string getAppId()
  * @method string getForce()
  */
@@ -21,6 +22,7 @@ class DeleteAppDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -33,6 +35,7 @@ class DeleteAppDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $force
+     *
      * @return $this
      */
     public function setForce($force)

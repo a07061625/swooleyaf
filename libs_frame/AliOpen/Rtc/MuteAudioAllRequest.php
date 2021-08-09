@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MuteAudioAll
+ *
  * @method string getOwnerId()
  * @method string getParticipantId()
  * @method string getConferenceId()
@@ -28,6 +29,7 @@ class MuteAudioAllRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -40,6 +42,7 @@ class MuteAudioAllRequest extends RpcAcsRequest
 
     /**
      * @param string $participantId
+     *
      * @return $this
      */
     public function setParticipantId($participantId)
@@ -52,6 +55,7 @@ class MuteAudioAllRequest extends RpcAcsRequest
 
     /**
      * @param string $conferenceId
+     *
      * @return $this
      */
     public function setConferenceId($conferenceId)
@@ -64,6 +68,7 @@ class MuteAudioAllRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

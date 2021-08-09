@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetDeployPauseType
+ *
  * @method string getDeployPauseType()
  * @method string getDeployOrderId()
  */
@@ -26,6 +27,7 @@ class SetDeployPauseTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $deployPauseType
+     *
      * @return $this
      */
     public function setDeployPauseType($deployPauseType)
@@ -38,6 +40,7 @@ class SetDeployPauseTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $deployOrderId
+     *
      * @return $this
      */
     public function setDeployOrderId($deployOrderId)

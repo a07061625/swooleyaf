@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BatchAddServers
+ *
  * @method string getInstanceId()
  * @method string getVpcId()
  * @method string getSign()
@@ -27,6 +28,7 @@ class BatchAddServersRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -39,6 +41,7 @@ class BatchAddServersRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -51,6 +54,7 @@ class BatchAddServersRequest extends RpcAcsRequest
 
     /**
      * @param string $sign
+     *
      * @return $this
      */
     public function setSign($sign)

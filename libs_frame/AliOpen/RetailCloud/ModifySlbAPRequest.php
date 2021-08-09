@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifySlbAP
+ *
  * @method string getSslCertId()
  * @method string getEstablishedTimeout()
  * @method string getRealServerPort()
@@ -31,6 +32,7 @@ class ModifySlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $sslCertId
+     *
      * @return $this
      */
     public function setSslCertId($sslCertId)
@@ -43,6 +45,7 @@ class ModifySlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $establishedTimeout
+     *
      * @return $this
      */
     public function setEstablishedTimeout($establishedTimeout)
@@ -55,6 +58,7 @@ class ModifySlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $realServerPort
+     *
      * @return $this
      */
     public function setRealServerPort($realServerPort)
@@ -67,6 +71,7 @@ class ModifySlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $stickySession
+     *
      * @return $this
      */
     public function setStickySession($stickySession)
@@ -79,6 +84,7 @@ class ModifySlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $cookieTimeout
+     *
      * @return $this
      */
     public function setCookieTimeout($cookieTimeout)
@@ -91,6 +97,7 @@ class ModifySlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -103,6 +110,7 @@ class ModifySlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $slbAPId
+     *
      * @return $this
      */
     public function setSlbAPId($slbAPId)

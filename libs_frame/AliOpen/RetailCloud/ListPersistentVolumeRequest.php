@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListPersistentVolume
+ *
  * @method string getPageSize()
  * @method string getPageNumber()
  * @method string getClusterInstanceId()
@@ -27,6 +28,7 @@ class ListPersistentVolumeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -39,6 +41,7 @@ class ListPersistentVolumeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -51,6 +54,7 @@ class ListPersistentVolumeRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterInstanceId
+     *
      * @return $this
      */
     public function setClusterInstanceId($clusterInstanceId)

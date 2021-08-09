@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeployApp
+ *
  * @method string getDeployPacketId()
  * @method string getDeployPacketUrl()
  * @method string getTotalPartitions()
@@ -32,6 +33,7 @@ class DeployAppRequest extends RpcAcsRequest
 
     /**
      * @param string $deployPacketId
+     *
      * @return $this
      */
     public function setDeployPacketId($deployPacketId)
@@ -44,6 +46,7 @@ class DeployAppRequest extends RpcAcsRequest
 
     /**
      * @param string $deployPacketUrl
+     *
      * @return $this
      */
     public function setDeployPacketUrl($deployPacketUrl)
@@ -56,6 +59,7 @@ class DeployAppRequest extends RpcAcsRequest
 
     /**
      * @param string $totalPartitions
+     *
      * @return $this
      */
     public function setTotalPartitions($totalPartitions)
@@ -68,6 +72,7 @@ class DeployAppRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -80,6 +85,7 @@ class DeployAppRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -92,6 +98,7 @@ class DeployAppRequest extends RpcAcsRequest
 
     /**
      * @param string $envId
+     *
      * @return $this
      */
     public function setEnvId($envId)
@@ -104,6 +111,7 @@ class DeployAppRequest extends RpcAcsRequest
 
     /**
      * @param string $pauseType
+     *
      * @return $this
      */
     public function setPauseType($pauseType)
@@ -116,6 +124,7 @@ class DeployAppRequest extends RpcAcsRequest
 
     /**
      * @param string $armsFlag
+     *
      * @return $this
      */
     public function setArmsFlag($armsFlag)

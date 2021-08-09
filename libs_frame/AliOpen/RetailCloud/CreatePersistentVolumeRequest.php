@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreatePersistentVolume
+ *
  * @method string getReclaimPolicy()
  * @method string getNFSVersion()
  * @method string getAccessModes()
@@ -33,6 +34,7 @@ class CreatePersistentVolumeRequest extends RpcAcsRequest
 
     /**
      * @param string $reclaimPolicy
+     *
      * @return $this
      */
     public function setReclaimPolicy($reclaimPolicy)
@@ -45,6 +47,7 @@ class CreatePersistentVolumeRequest extends RpcAcsRequest
 
     /**
      * @param string $nFSVersion
+     *
      * @return $this
      */
     public function setNFSVersion($nFSVersion)
@@ -57,6 +60,7 @@ class CreatePersistentVolumeRequest extends RpcAcsRequest
 
     /**
      * @param string $accessModes
+     *
      * @return $this
      */
     public function setAccessModes($accessModes)
@@ -69,6 +73,7 @@ class CreatePersistentVolumeRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -81,6 +86,7 @@ class CreatePersistentVolumeRequest extends RpcAcsRequest
 
     /**
      * @param string $mountTargetDomain
+     *
      * @return $this
      */
     public function setMountTargetDomain($mountTargetDomain)
@@ -93,6 +99,7 @@ class CreatePersistentVolumeRequest extends RpcAcsRequest
 
     /**
      * @param string $mountDir
+     *
      * @return $this
      */
     public function setMountDir($mountDir)
@@ -105,6 +112,7 @@ class CreatePersistentVolumeRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterInstanceId
+     *
      * @return $this
      */
     public function setClusterInstanceId($clusterInstanceId)
@@ -117,6 +125,7 @@ class CreatePersistentVolumeRequest extends RpcAcsRequest
 
     /**
      * @param string $capacity
+     *
      * @return $this
      */
     public function setCapacity($capacity)
@@ -129,6 +138,7 @@ class CreatePersistentVolumeRequest extends RpcAcsRequest
 
     /**
      * @param string $storageClass
+     *
      * @return $this
      */
     public function setStorageClass($storageClass)

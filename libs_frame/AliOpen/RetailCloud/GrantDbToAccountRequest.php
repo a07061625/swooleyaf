@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GrantDbToAccount
+ *
  * @method string getAccountName()
  * @method string getDbName()
  * @method string getDbInstanceId()
@@ -28,6 +29,7 @@ class GrantDbToAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $accountName
+     *
      * @return $this
      */
     public function setAccountName($accountName)
@@ -40,6 +42,7 @@ class GrantDbToAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $dbName
+     *
      * @return $this
      */
     public function setDbName($dbName)
@@ -52,6 +55,7 @@ class GrantDbToAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $dbInstanceId
+     *
      * @return $this
      */
     public function setDbInstanceId($dbInstanceId)
@@ -64,6 +68,7 @@ class GrantDbToAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $accountPrivilege
+     *
      * @return $this
      */
     public function setAccountPrivilege($accountPrivilege)

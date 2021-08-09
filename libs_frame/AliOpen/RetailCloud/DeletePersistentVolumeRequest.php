@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeletePersistentVolume
+ *
  * @method string getPersistentVolumeName()
  * @method string getClusterInstanceId()
  */
@@ -26,6 +27,7 @@ class DeletePersistentVolumeRequest extends RpcAcsRequest
 
     /**
      * @param string $persistentVolumeName
+     *
      * @return $this
      */
     public function setPersistentVolumeName($persistentVolumeName)
@@ -38,6 +40,7 @@ class DeletePersistentVolumeRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterInstanceId
+     *
      * @return $this
      */
     public function setClusterInstanceId($clusterInstanceId)

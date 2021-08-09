@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeRealTimeRecordDetail
+ *
  * @method string getOwnerId()
  * @method string getRecordId()
  * @method string getAppId()
@@ -28,6 +29,7 @@ class DescribeRealTimeRecordDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -40,6 +42,7 @@ class DescribeRealTimeRecordDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $recordId
+     *
      * @return $this
      */
     public function setRecordId($recordId)
@@ -52,6 +55,7 @@ class DescribeRealTimeRecordDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -64,6 +68,7 @@ class DescribeRealTimeRecordDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $channelId
+     *
      * @return $this
      */
     public function setChannelId($channelId)

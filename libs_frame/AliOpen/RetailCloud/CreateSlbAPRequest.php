@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateSlbAP
+ *
  * @method string getSslCertId()
  * @method string getListenerPort()
  * @method string getProtocol()
@@ -34,6 +35,7 @@ class CreateSlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $sslCertId
+     *
      * @return $this
      */
     public function setSslCertId($sslCertId)
@@ -46,6 +48,7 @@ class CreateSlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $listenerPort
+     *
      * @return $this
      */
     public function setListenerPort($listenerPort)
@@ -58,6 +61,7 @@ class CreateSlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $protocol
+     *
      * @return $this
      */
     public function setProtocol($protocol)
@@ -70,6 +74,7 @@ class CreateSlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $establishedTimeout
+     *
      * @return $this
      */
     public function setEstablishedTimeout($establishedTimeout)
@@ -82,6 +87,7 @@ class CreateSlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $slbId
+     *
      * @return $this
      */
     public function setSlbId($slbId)
@@ -94,6 +100,7 @@ class CreateSlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $realServerPort
+     *
      * @return $this
      */
     public function setRealServerPort($realServerPort)
@@ -106,6 +113,7 @@ class CreateSlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $stickySession
+     *
      * @return $this
      */
     public function setStickySession($stickySession)
@@ -118,6 +126,7 @@ class CreateSlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $cookieTimeout
+     *
      * @return $this
      */
     public function setCookieTimeout($cookieTimeout)
@@ -130,6 +139,7 @@ class CreateSlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -142,6 +152,7 @@ class CreateSlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $envId
+     *
      * @return $this
      */
     public function setEnvId($envId)

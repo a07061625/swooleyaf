@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListPods
+ *
  * @method array getStatusLists()
  * @method string getDeployOrderId()
  * @method string getPageSize()
@@ -28,7 +29,6 @@ class ListPodsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $statusList
      * @return $this
      */
     public function setStatusLists(array $statusList)
@@ -43,6 +43,7 @@ class ListPodsRequest extends RpcAcsRequest
 
     /**
      * @param string $deployOrderId
+     *
      * @return $this
      */
     public function setDeployOrderId($deployOrderId)
@@ -55,6 +56,7 @@ class ListPodsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -67,6 +69,7 @@ class ListPodsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -78,7 +81,6 @@ class ListPodsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resultList
      * @return $this
      */
     public function setResultLists(array $resultList)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RemoveTerminals
+ *
  * @method array getTerminalIdss()
  * @method string getOwnerId()
  * @method string getAppId()
@@ -27,7 +28,6 @@ class RemoveTerminalsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $terminalIds
      * @return $this
      */
     public function setTerminalIdss(array $terminalIds)
@@ -42,6 +42,7 @@ class RemoveTerminalsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -54,6 +55,7 @@ class RemoveTerminalsRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -66,6 +68,7 @@ class RemoveTerminalsRequest extends RpcAcsRequest
 
     /**
      * @param string $channelId
+     *
      * @return $this
      */
     public function setChannelId($channelId)

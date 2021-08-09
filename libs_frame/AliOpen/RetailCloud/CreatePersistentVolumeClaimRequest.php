@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreatePersistentVolumeClaim
+ *
  * @method string getAccessModes()
  * @method string getAppId()
  * @method string getName()
@@ -30,6 +31,7 @@ class CreatePersistentVolumeClaimRequest extends RpcAcsRequest
 
     /**
      * @param string $accessModes
+     *
      * @return $this
      */
     public function setAccessModes($accessModes)
@@ -42,6 +44,7 @@ class CreatePersistentVolumeClaimRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -54,6 +57,7 @@ class CreatePersistentVolumeClaimRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -66,6 +70,7 @@ class CreatePersistentVolumeClaimRequest extends RpcAcsRequest
 
     /**
      * @param string $envId
+     *
      * @return $this
      */
     public function setEnvId($envId)
@@ -78,6 +83,7 @@ class CreatePersistentVolumeClaimRequest extends RpcAcsRequest
 
     /**
      * @param string $storageClass
+     *
      * @return $this
      */
     public function setStorageClass($storageClass)
@@ -90,6 +96,7 @@ class CreatePersistentVolumeClaimRequest extends RpcAcsRequest
 
     /**
      * @param string $capacity
+     *
      * @return $this
      */
     public function setCapacity($capacity)

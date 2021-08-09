@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ScaleApp
+ *
  * @method string getReplicas()
  * @method string getEnvId()
  */
@@ -26,6 +27,7 @@ class ScaleAppRequest extends RpcAcsRequest
 
     /**
      * @param string $replicas
+     *
      * @return $this
      */
     public function setReplicas($replicas)
@@ -38,6 +40,7 @@ class ScaleAppRequest extends RpcAcsRequest
 
     /**
      * @param string $envId
+     *
      * @return $this
      */
     public function setEnvId($envId)

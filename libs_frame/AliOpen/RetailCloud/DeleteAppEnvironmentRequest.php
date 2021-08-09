@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteAppEnvironment
+ *
  * @method string getAppId()
  * @method string getForce()
  * @method string getEnvId()
@@ -27,6 +28,7 @@ class DeleteAppEnvironmentRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -39,6 +41,7 @@ class DeleteAppEnvironmentRequest extends RpcAcsRequest
 
     /**
      * @param string $force
+     *
      * @return $this
      */
     public function setForce($force)
@@ -51,6 +54,7 @@ class DeleteAppEnvironmentRequest extends RpcAcsRequest
 
     /**
      * @param string $envId
+     *
      * @return $this
      */
     public function setEnvId($envId)

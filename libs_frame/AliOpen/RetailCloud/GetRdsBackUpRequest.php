@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetRdsBackUp
+ *
  * @method string getBackupId()
  * @method string getPageSize()
  * @method string getDbInstanceId()
@@ -29,6 +30,7 @@ class GetRdsBackUpRequest extends RpcAcsRequest
 
     /**
      * @param string $backupId
+     *
      * @return $this
      */
     public function setBackupId($backupId)
@@ -41,6 +43,7 @@ class GetRdsBackUpRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -53,6 +56,7 @@ class GetRdsBackUpRequest extends RpcAcsRequest
 
     /**
      * @param string $dbInstanceId
+     *
      * @return $this
      */
     public function setDbInstanceId($dbInstanceId)
@@ -65,6 +69,7 @@ class GetRdsBackUpRequest extends RpcAcsRequest
 
     /**
      * @param string $backupType
+     *
      * @return $this
      */
     public function setBackupType($backupType)
@@ -77,6 +82,7 @@ class GetRdsBackUpRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

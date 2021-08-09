@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RemoveParticipants
+ *
  * @method array getParticipantIdss()
  * @method string getOwnerId()
  * @method string getConferenceId()
@@ -27,7 +28,6 @@ class RemoveParticipantsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $participantIds
      * @return $this
      */
     public function setParticipantIdss(array $participantIds)
@@ -42,6 +42,7 @@ class RemoveParticipantsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -54,6 +55,7 @@ class RemoveParticipantsRequest extends RpcAcsRequest
 
     /**
      * @param string $conferenceId
+     *
      * @return $this
      */
     public function setConferenceId($conferenceId)
@@ -66,6 +68,7 @@ class RemoveParticipantsRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteNodeLabel
+ *
  * @method string getLabelKey()
  * @method string getLabelValue()
  * @method string getForce()
@@ -28,6 +29,7 @@ class DeleteNodeLabelRequest extends RpcAcsRequest
 
     /**
      * @param string $labelKey
+     *
      * @return $this
      */
     public function setLabelKey($labelKey)
@@ -40,6 +42,7 @@ class DeleteNodeLabelRequest extends RpcAcsRequest
 
     /**
      * @param string $labelValue
+     *
      * @return $this
      */
     public function setLabelValue($labelValue)
@@ -52,6 +55,7 @@ class DeleteNodeLabelRequest extends RpcAcsRequest
 
     /**
      * @param string $force
+     *
      * @return $this
      */
     public function setForce($force)
@@ -64,6 +68,7 @@ class DeleteNodeLabelRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

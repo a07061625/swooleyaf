@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteService
+ *
  * @method string getServiceId()
  */
 class DeleteServiceRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class DeleteServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceId
+     *
      * @return $this
      */
     public function setServiceId($serviceId)

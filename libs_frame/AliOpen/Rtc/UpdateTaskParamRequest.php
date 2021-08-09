@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateTaskParam
+ *
  * @method array getMixPaness()
  * @method string getTaskId()
  * @method string getOwnerId()
@@ -29,7 +30,6 @@ class UpdateTaskParamRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $mixPanes
      * @return $this
      */
     public function setMixPaness(array $mixPanes)
@@ -46,6 +46,7 @@ class UpdateTaskParamRequest extends RpcAcsRequest
 
     /**
      * @param string $taskId
+     *
      * @return $this
      */
     public function setTaskId($taskId)
@@ -58,6 +59,7 @@ class UpdateTaskParamRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -70,6 +72,7 @@ class UpdateTaskParamRequest extends RpcAcsRequest
 
     /**
      * @param string $templateId
+     *
      * @return $this
      */
     public function setTemplateId($templateId)
@@ -82,6 +85,7 @@ class UpdateTaskParamRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -94,6 +98,7 @@ class UpdateTaskParamRequest extends RpcAcsRequest
 
     /**
      * @param string $channelId
+     *
      * @return $this
      */
     public function setChannelId($channelId)

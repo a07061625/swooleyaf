@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateTemplate
+ *
  * @method string getServiceMode()
  * @method array getLiveConfigs()
  * @method string getMediaConfig()
@@ -34,6 +35,7 @@ class CreateTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceMode
+     *
      * @return $this
      */
     public function setServiceMode($serviceMode)
@@ -45,7 +47,6 @@ class CreateTemplateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $liveConfig
      * @return $this
      */
     public function setLiveConfigs(array $liveConfig)
@@ -61,6 +62,7 @@ class CreateTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaConfig
+     *
      * @return $this
      */
     public function setMediaConfig($mediaConfig)
@@ -73,6 +75,7 @@ class CreateTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $maxMixStreamCount
+     *
      * @return $this
      */
     public function setMaxMixStreamCount($maxMixStreamCount)
@@ -84,7 +87,6 @@ class CreateTemplateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $recordConfig
      * @return $this
      */
     public function setRecordConfigs(array $recordConfig)
@@ -103,6 +105,7 @@ class CreateTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -114,7 +117,6 @@ class CreateTemplateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $layOut
      * @return $this
      */
     public function setLayOuts(array $layOut)
@@ -131,6 +133,7 @@ class CreateTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -143,6 +146,7 @@ class CreateTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $callBack
+     *
      * @return $this
      */
     public function setCallBack($callBack)
@@ -155,6 +159,7 @@ class CreateTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $mixMode
+     *
      * @return $this
      */
     public function setMixMode($mixMode)

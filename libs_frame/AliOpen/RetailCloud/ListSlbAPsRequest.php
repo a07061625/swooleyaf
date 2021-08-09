@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListSlbAPs
+ *
  * @method array getProtocolLists()
  * @method string getSlbId()
  * @method string getAppId()
@@ -31,7 +32,6 @@ class ListSlbAPsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $protocolList
      * @return $this
      */
     public function setProtocolLists(array $protocolList)
@@ -46,6 +46,7 @@ class ListSlbAPsRequest extends RpcAcsRequest
 
     /**
      * @param string $slbId
+     *
      * @return $this
      */
     public function setSlbId($slbId)
@@ -58,6 +59,7 @@ class ListSlbAPsRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -70,6 +72,7 @@ class ListSlbAPsRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -82,6 +85,7 @@ class ListSlbAPsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -94,6 +98,7 @@ class ListSlbAPsRequest extends RpcAcsRequest
 
     /**
      * @param string $envId
+     *
      * @return $this
      */
     public function setEnvId($envId)
@@ -106,6 +111,7 @@ class ListSlbAPsRequest extends RpcAcsRequest
 
     /**
      * @param string $networkMode
+     *
      * @return $this
      */
     public function setNetworkMode($networkMode)
@@ -118,6 +124,7 @@ class ListSlbAPsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

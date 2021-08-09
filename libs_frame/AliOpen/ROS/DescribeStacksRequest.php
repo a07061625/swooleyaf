@@ -6,6 +6,7 @@ use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DescribeStacks
+ *
  * @method string getStackId()
  * @method string getName()
  * @method string getPageSize()
@@ -29,6 +30,7 @@ class DescribeStacksRequest extends RoaAcsRequest
 
     /**
      * @param string $stackId
+     *
      * @return $this
      */
     public function setStackId($stackId)
@@ -41,6 +43,7 @@ class DescribeStacksRequest extends RoaAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -53,6 +56,7 @@ class DescribeStacksRequest extends RoaAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -65,6 +69,7 @@ class DescribeStacksRequest extends RoaAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -77,6 +82,7 @@ class DescribeStacksRequest extends RoaAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeletePersistentVolumeClaim
+ *
  * @method string getPersistentVolumeClaimName()
  * @method string getAppId()
  * @method string getEnvId()
@@ -27,6 +28,7 @@ class DeletePersistentVolumeClaimRequest extends RpcAcsRequest
 
     /**
      * @param string $persistentVolumeClaimName
+     *
      * @return $this
      */
     public function setPersistentVolumeClaimName($persistentVolumeClaimName)
@@ -39,6 +41,7 @@ class DeletePersistentVolumeClaimRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -51,6 +54,7 @@ class DeletePersistentVolumeClaimRequest extends RpcAcsRequest
 
     /**
      * @param string $envId
+     *
      * @return $this
      */
     public function setEnvId($envId)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListDeployOrders
+ *
  * @method string getStartTimeGreaterThanOrEqualTo()
  * @method array getStatusLists()
  * @method string getEnvId()
@@ -44,6 +45,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $startTimeGreaterThanOrEqualTo
+     *
      * @return $this
      */
     public function setStartTimeGreaterThanOrEqualTo($startTimeGreaterThanOrEqualTo)
@@ -55,7 +57,6 @@ class ListDeployOrdersRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $statusList
      * @return $this
      */
     public function setStatusLists(array $statusList)
@@ -70,6 +71,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $envId
+     *
      * @return $this
      */
     public function setEnvId($envId)
@@ -82,6 +84,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $endTimeGreaterThan
+     *
      * @return $this
      */
     public function setEndTimeGreaterThan($endTimeGreaterThan)
@@ -94,6 +97,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -106,6 +110,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $pauseType
+     *
      * @return $this
      */
     public function setPauseType($pauseType)
@@ -117,7 +122,6 @@ class ListDeployOrdersRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resultList
      * @return $this
      */
     public function setResultLists(array $resultList)
@@ -132,6 +136,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $startTimeGreaterThan
+     *
      * @return $this
      */
     public function setStartTimeGreaterThan($startTimeGreaterThan)
@@ -144,6 +149,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $startTimeLessThan
+     *
      * @return $this
      */
     public function setStartTimeLessThan($startTimeLessThan)
@@ -156,6 +162,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $startTimeLessThanOrEqualTo
+     *
      * @return $this
      */
     public function setStartTimeLessThanOrEqualTo($startTimeLessThanOrEqualTo)
@@ -168,6 +175,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -180,6 +188,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $envType
+     *
      * @return $this
      */
     public function setEnvType($envType)
@@ -192,6 +201,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -204,6 +214,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $endTimeGreaterThanOrEqualTo
+     *
      * @return $this
      */
     public function setEndTimeGreaterThanOrEqualTo($endTimeGreaterThanOrEqualTo)
@@ -216,6 +227,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $endTimeLessThan
+     *
      * @return $this
      */
     public function setEndTimeLessThan($endTimeLessThan)
@@ -228,6 +240,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $endTimeLessThanOrEqualTo
+     *
      * @return $this
      */
     public function setEndTimeLessThanOrEqualTo($endTimeLessThanOrEqualTo)
@@ -240,6 +253,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $partitionType
+     *
      * @return $this
      */
     public function setPartitionType($partitionType)
@@ -252,6 +266,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $deployCategory
+     *
      * @return $this
      */
     public function setDeployCategory($deployCategory)
@@ -264,6 +279,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $deployType
+     *
      * @return $this
      */
     public function setDeployType($deployType)
@@ -276,6 +292,7 @@ class ListDeployOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

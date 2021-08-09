@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteSlbAP
+ *
  * @method string getSlbAPId()
  */
 class DeleteSlbAPRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class DeleteSlbAPRequest extends RpcAcsRequest
 
     /**
      * @param string $slbAPId
+     *
      * @return $this
      */
     public function setSlbAPId($slbAPId)

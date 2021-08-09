@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RemoveClusterNode
+ *
  * @method array getEcsInstanceIdLists()
  * @method string getClusterInstanceId()
  */
@@ -25,7 +26,6 @@ class RemoveClusterNodeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ecsInstanceIdList
      * @return $this
      */
     public function setEcsInstanceIdLists(array $ecsInstanceIdList)
@@ -40,6 +40,7 @@ class RemoveClusterNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterInstanceId
+     *
      * @return $this
      */
     public function setClusterInstanceId($clusterInstanceId)

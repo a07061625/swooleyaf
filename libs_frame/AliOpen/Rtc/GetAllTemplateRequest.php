@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetAllTemplate
+ *
  * @method string getOwnerId()
  * @method string getAppId()
  */
@@ -26,6 +27,7 @@ class GetAllTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -38,6 +40,7 @@ class GetAllTemplateRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)

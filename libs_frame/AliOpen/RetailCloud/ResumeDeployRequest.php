@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ResumeDeploy
+ *
  * @method string getDeployOrderId()
  */
 class ResumeDeployRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class ResumeDeployRequest extends RpcAcsRequest
 
     /**
      * @param string $deployOrderId
+     *
      * @return $this
      */
     public function setDeployOrderId($deployOrderId)

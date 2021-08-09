@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateNodeLabel
+ *
  * @method string getLabelKey()
  * @method string getLabelValue()
  * @method string getClusterId()
@@ -27,6 +28,7 @@ class CreateNodeLabelRequest extends RpcAcsRequest
 
     /**
      * @param string $labelKey
+     *
      * @return $this
      */
     public function setLabelKey($labelKey)
@@ -39,6 +41,7 @@ class CreateNodeLabelRequest extends RpcAcsRequest
 
     /**
      * @param string $labelValue
+     *
      * @return $this
      */
     public function setLabelValue($labelValue)
@@ -51,6 +54,7 @@ class CreateNodeLabelRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)

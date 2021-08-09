@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateCluster
+ *
  * @method string getBusinessCode()
  * @method string getCreateWithLogIntegration()
  * @method array getVswitchidss()
@@ -43,6 +44,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $businessCode
+     *
      * @return $this
      */
     public function setBusinessCode($businessCode)
@@ -55,6 +57,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $createWithLogIntegration
+     *
      * @return $this
      */
     public function setCreateWithLogIntegration($createWithLogIntegration)
@@ -66,7 +69,6 @@ class CreateClusterRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $vswitchids
      * @return $this
      */
     public function setVswitchidss(array $vswitchids)
@@ -81,6 +83,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $cloudMonitorFlags
+     *
      * @return $this
      */
     public function setCloudMonitorFlags($cloudMonitorFlags)
@@ -93,6 +96,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterEnvType
+     *
      * @return $this
      */
     public function setClusterEnvType($clusterEnvType)
@@ -105,6 +109,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $createWithArmsIntegration
+     *
      * @return $this
      */
     public function setCreateWithArmsIntegration($createWithArmsIntegration)
@@ -117,6 +122,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $keyPair
+     *
      * @return $this
      */
     public function setKeyPair($keyPair)
@@ -129,6 +135,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterTitle
+     *
      * @return $this
      */
     public function setClusterTitle($clusterTitle)
@@ -141,6 +148,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $podCIDR
+     *
      * @return $this
      */
     public function setPodCIDR($podCIDR)
@@ -153,6 +161,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -165,6 +174,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterType
+     *
      * @return $this
      */
     public function setClusterType($clusterType)
@@ -177,6 +187,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -189,6 +200,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $snatEntry
+     *
      * @return $this
      */
     public function setSnatEntry($snatEntry)
@@ -201,6 +213,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $netPlug
+     *
      * @return $this
      */
     public function setNetPlug($netPlug)
@@ -213,6 +226,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -225,6 +239,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $regionName
+     *
      * @return $this
      */
     public function setRegionName($regionName)
@@ -237,6 +252,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $privateZone
+     *
      * @return $this
      */
     public function setPrivateZone($privateZone)
@@ -249,6 +265,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceCIDR
+     *
      * @return $this
      */
     public function setServiceCIDR($serviceCIDR)
@@ -261,6 +278,7 @@ class CreateClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $publicSlb
+     *
      * @return $this
      */
     public function setPublicSlb($publicSlb)

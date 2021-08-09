@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteDatabase
+ *
  * @method string getDBName()
  * @method string getDBInstanceId()
  */
@@ -26,6 +27,7 @@ class DeleteDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $dBName
+     *
      * @return $this
      */
     public function setDBName($dBName)
@@ -38,6 +40,7 @@ class DeleteDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)

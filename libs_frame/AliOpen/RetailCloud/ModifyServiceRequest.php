@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyService
+ *
  * @method string getName()
  * @method array getPortMappingss()
  * @method string getServiceId()
@@ -27,6 +28,7 @@ class ModifyServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -38,7 +40,6 @@ class ModifyServiceRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $portMappings
      * @return $this
      */
     public function setPortMappingss(array $portMappings)
@@ -57,6 +58,7 @@ class ModifyServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceId
+     *
      * @return $this
      */
     public function setServiceId($serviceId)

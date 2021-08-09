@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddClusterNode
+ *
  * @method array getEcsInstanceIdLists()
  * @method string getClusterInstanceId()
  */
@@ -25,7 +26,6 @@ class AddClusterNodeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ecsInstanceIdList
      * @return $this
      */
     public function setEcsInstanceIdLists(array $ecsInstanceIdList)
@@ -40,6 +40,7 @@ class AddClusterNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterInstanceId
+     *
      * @return $this
      */
     public function setClusterInstanceId($clusterInstanceId)

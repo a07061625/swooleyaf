@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDeployConfig
+ *
  * @method string getCodePath()
  * @method array getConfigMapLists()
  * @method string getAppId()
@@ -33,6 +34,7 @@ class CreateDeployConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $codePath
+     *
      * @return $this
      */
     public function setCodePath($codePath)
@@ -44,7 +46,6 @@ class CreateDeployConfigRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $configMapList
      * @return $this
      */
     public function setConfigMapLists(array $configMapList)
@@ -59,6 +60,7 @@ class CreateDeployConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -71,6 +73,7 @@ class CreateDeployConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $configMap
+     *
      * @return $this
      */
     public function setConfigMap($configMap)
@@ -83,6 +86,7 @@ class CreateDeployConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $statefulSet
+     *
      * @return $this
      */
     public function setStatefulSet($statefulSet)
@@ -95,6 +99,7 @@ class CreateDeployConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $envType
+     *
      * @return $this
      */
     public function setEnvType($envType)
@@ -107,6 +112,7 @@ class CreateDeployConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -118,7 +124,6 @@ class CreateDeployConfigRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $secretList
      * @return $this
      */
     public function setSecretLists(array $secretList)
@@ -133,6 +138,7 @@ class CreateDeployConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $deployment
+     *
      * @return $this
      */
     public function setDeployment($deployment)

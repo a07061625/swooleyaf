@@ -6,6 +6,7 @@ use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of UpdateStack
+ *
  * @method string getStackId()
  * @method string getStackName()
  */
@@ -30,6 +31,7 @@ class UpdateStackRequest extends RoaAcsRequest
 
     /**
      * @param string $stackId
+     *
      * @return $this
      */
     public function setStackId($stackId)
@@ -42,6 +44,7 @@ class UpdateStackRequest extends RoaAcsRequest
 
     /**
      * @param string $stackName
+     *
      * @return $this
      */
     public function setStackName($stackName)

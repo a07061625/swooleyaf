@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListCluster
+ *
  * @method string getBusinessCode()
  * @method string getEnvType()
  * @method string getPageSize()
@@ -23,6 +24,7 @@ class ListClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $businessCode
+     *
      * @return $this
      */
     public function setBusinessCode($businessCode)
@@ -35,6 +37,7 @@ class ListClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $envType
+     *
      * @return $this
      */
     public function setEnvType($envType)
@@ -47,6 +50,7 @@ class ListClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -59,6 +63,7 @@ class ListClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)

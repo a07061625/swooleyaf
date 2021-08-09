@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateService
+ *
  * @method string getHeadless()
  * @method string getServiceType()
  * @method string getK8sServiceId()
@@ -30,6 +31,7 @@ class CreateServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $headless
+     *
      * @return $this
      */
     public function setHeadless($headless)
@@ -42,6 +44,7 @@ class CreateServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceType
+     *
      * @return $this
      */
     public function setServiceType($serviceType)
@@ -54,6 +57,7 @@ class CreateServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $k8sServiceId
+     *
      * @return $this
      */
     public function setK8sServiceId($k8sServiceId)
@@ -66,6 +70,7 @@ class CreateServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -77,7 +82,6 @@ class CreateServiceRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $portMappings
      * @return $this
      */
     public function setPortMappingss(array $portMappings)
@@ -96,6 +100,7 @@ class CreateServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $envId
+     *
      * @return $this
      */
     public function setEnvId($envId)

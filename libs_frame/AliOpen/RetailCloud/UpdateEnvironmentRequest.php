@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateEnvironment
+ *
  * @method string getReplicas()
  * @method string getAppId()
  * @method string getAppSchemaId()
@@ -28,6 +29,7 @@ class UpdateEnvironmentRequest extends RpcAcsRequest
 
     /**
      * @param string $replicas
+     *
      * @return $this
      */
     public function setReplicas($replicas)
@@ -40,6 +42,7 @@ class UpdateEnvironmentRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -52,6 +55,7 @@ class UpdateEnvironmentRequest extends RpcAcsRequest
 
     /**
      * @param string $appSchemaId
+     *
      * @return $this
      */
     public function setAppSchemaId($appSchemaId)
@@ -64,6 +68,7 @@ class UpdateEnvironmentRequest extends RpcAcsRequest
 
     /**
      * @param string $appEnvId
+     *
      * @return $this
      */
     public function setAppEnvId($appEnvId)

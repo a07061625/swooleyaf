@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAppResourceAlloc
+ *
  * @method string getAppEnvId()
  */
 class DescribeAppResourceAllocRequest extends RpcAcsRequest
@@ -20,6 +21,7 @@ class DescribeAppResourceAllocRequest extends RpcAcsRequest
 
     /**
      * @param string $appEnvId
+     *
      * @return $this
      */
     public function setAppEnvId($appEnvId)

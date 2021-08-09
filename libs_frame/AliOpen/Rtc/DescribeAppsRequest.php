@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeApps
+ *
  * @method string getPageNum()
  * @method string getPageSize()
  * @method string getOrder()
@@ -30,6 +31,7 @@ class DescribeAppsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -42,6 +44,7 @@ class DescribeAppsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -54,6 +57,7 @@ class DescribeAppsRequest extends RpcAcsRequest
 
     /**
      * @param string $order
+     *
      * @return $this
      */
     public function setOrder($order)
@@ -66,6 +70,7 @@ class DescribeAppsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -78,6 +83,7 @@ class DescribeAppsRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -90,6 +96,7 @@ class DescribeAppsRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

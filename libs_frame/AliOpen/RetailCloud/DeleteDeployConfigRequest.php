@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteDeployConfig
+ *
  * @method string getSchemaId()
  */
 class DeleteDeployConfigRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class DeleteDeployConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $schemaId
+     *
      * @return $this
      */
     public function setSchemaId($schemaId)

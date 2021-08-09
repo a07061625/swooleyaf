@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateChannelToken
+ *
  * @method string getSessionId()
  * @method string getUId()
  * @method string getOwnerId()
@@ -30,6 +31,7 @@ class CreateChannelTokenRequest extends RpcAcsRequest
 
     /**
      * @param string $sessionId
+     *
      * @return $this
      */
     public function setSessionId($sessionId)
@@ -42,6 +44,7 @@ class CreateChannelTokenRequest extends RpcAcsRequest
 
     /**
      * @param string $uId
+     *
      * @return $this
      */
     public function setUId($uId)
@@ -54,6 +57,7 @@ class CreateChannelTokenRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -66,6 +70,7 @@ class CreateChannelTokenRequest extends RpcAcsRequest
 
     /**
      * @param string $nonce
+     *
      * @return $this
      */
     public function setNonce($nonce)
@@ -78,6 +83,7 @@ class CreateChannelTokenRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -90,6 +96,7 @@ class CreateChannelTokenRequest extends RpcAcsRequest
 
     /**
      * @param string $channelId
+     *
      * @return $this
      */
     public function setChannelId($channelId)

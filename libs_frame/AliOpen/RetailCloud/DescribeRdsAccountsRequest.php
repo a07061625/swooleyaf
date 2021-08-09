@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeRdsAccounts
+ *
  * @method string getAccountName()
  * @method string getDbInstanceId()
  */
@@ -21,6 +22,7 @@ class DescribeRdsAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $accountName
+     *
      * @return $this
      */
     public function setAccountName($accountName)
@@ -33,6 +35,7 @@ class DescribeRdsAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $dbInstanceId
+     *
      * @return $this
      */
     public function setDbInstanceId($dbInstanceId)

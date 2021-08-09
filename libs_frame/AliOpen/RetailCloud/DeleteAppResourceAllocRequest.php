@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteAppResourceAlloc
+ *
  * @method string getAppEnvId()
  */
 class DeleteAppResourceAllocRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class DeleteAppResourceAllocRequest extends RpcAcsRequest
 
     /**
      * @param string $appEnvId
+     *
      * @return $this
      */
     public function setAppEnvId($appEnvId)

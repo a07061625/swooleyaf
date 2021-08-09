@@ -6,6 +6,7 @@ use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DescribeEvents
+ *
  * @method string getStackId()
  * @method string getPageSize()
  * @method string getStackName()
@@ -31,6 +32,7 @@ class DescribeEventsRequest extends RoaAcsRequest
 
     /**
      * @param string $stackId
+     *
      * @return $this
      */
     public function setStackId($stackId)
@@ -43,6 +45,7 @@ class DescribeEventsRequest extends RoaAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -55,6 +58,7 @@ class DescribeEventsRequest extends RoaAcsRequest
 
     /**
      * @param string $stackName
+     *
      * @return $this
      */
     public function setStackName($stackName)
@@ -67,6 +71,7 @@ class DescribeEventsRequest extends RoaAcsRequest
 
     /**
      * @param string $resourceName
+     *
      * @return $this
      */
     public function setResourceName($resourceName)
@@ -79,6 +84,7 @@ class DescribeEventsRequest extends RoaAcsRequest
 
     /**
      * @param string $resourceStatus
+     *
      * @return $this
      */
     public function setResourceStatus($resourceStatus)
@@ -91,6 +97,7 @@ class DescribeEventsRequest extends RoaAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -103,6 +110,7 @@ class DescribeEventsRequest extends RoaAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

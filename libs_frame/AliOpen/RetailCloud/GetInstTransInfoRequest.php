@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetInstTransInfo
+ *
  * @method string getaliyunUid()
  * @method string getaliyunEquipId()
  * @method string getaliyunCommodityCode()
@@ -27,6 +28,7 @@ class GetInstTransInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $aliyunUid
+     *
      * @return $this
      */
     public function setaliyunUid($aliyunUid)
@@ -39,6 +41,7 @@ class GetInstTransInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $aliyunEquipId
+     *
      * @return $this
      */
     public function setaliyunEquipId($aliyunEquipId)
@@ -51,6 +54,7 @@ class GetInstTransInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $aliyunCommodityCode
+     *
      * @return $this
      */
     public function setaliyunCommodityCode($aliyunCommodityCode)

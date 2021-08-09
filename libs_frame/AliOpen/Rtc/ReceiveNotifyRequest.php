@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ReceiveNotify
+ *
  * @method string getTraceId()
  * @method string getContent()
  * @method string getEvent()
@@ -30,6 +31,7 @@ class ReceiveNotifyRequest extends RpcAcsRequest
 
     /**
      * @param string $traceId
+     *
      * @return $this
      */
     public function setTraceId($traceId)
@@ -42,6 +44,7 @@ class ReceiveNotifyRequest extends RpcAcsRequest
 
     /**
      * @param string $content
+     *
      * @return $this
      */
     public function setContent($content)
@@ -54,6 +57,7 @@ class ReceiveNotifyRequest extends RpcAcsRequest
 
     /**
      * @param string $event
+     *
      * @return $this
      */
     public function setEvent($event)
@@ -66,6 +70,7 @@ class ReceiveNotifyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -78,6 +83,7 @@ class ReceiveNotifyRequest extends RpcAcsRequest
 
     /**
      * @param string $contentType
+     *
      * @return $this
      */
     public function setContentType($contentType)
@@ -90,6 +96,7 @@ class ReceiveNotifyRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)

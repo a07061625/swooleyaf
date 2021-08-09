@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeServiceDetail
+ *
  * @method string getServiceId()
  */
 class DescribeServiceDetailRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class DescribeServiceDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceId
+     *
      * @return $this
      */
     public function setServiceId($serviceId)

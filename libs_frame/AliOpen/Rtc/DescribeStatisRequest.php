@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeStatis
+ *
  * @method string getSortType()
  * @method string getStartTime()
  * @method string getDataType()
@@ -32,6 +33,7 @@ class DescribeStatisRequest extends RpcAcsRequest
 
     /**
      * @param string $sortType
+     *
      * @return $this
      */
     public function setSortType($sortType)
@@ -44,6 +46,7 @@ class DescribeStatisRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -56,6 +59,7 @@ class DescribeStatisRequest extends RpcAcsRequest
 
     /**
      * @param string $dataType
+     *
      * @return $this
      */
     public function setDataType($dataType)
@@ -68,6 +72,7 @@ class DescribeStatisRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceArea
+     *
      * @return $this
      */
     public function setServiceArea($serviceArea)
@@ -80,6 +85,7 @@ class DescribeStatisRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -92,6 +98,7 @@ class DescribeStatisRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -104,6 +111,7 @@ class DescribeStatisRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -116,6 +124,7 @@ class DescribeStatisRequest extends RpcAcsRequest
 
     /**
      * @param string $interval
+     *
      * @return $this
      */
     public function setInterval($interval)

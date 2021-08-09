@@ -6,6 +6,7 @@ use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DescribeResourceDetail
+ *
  * @method string getStackId()
  * @method string getStackName()
  * @method string getResourceName()
@@ -27,6 +28,7 @@ class DescribeResourceDetailRequest extends RoaAcsRequest
 
     /**
      * @param string $stackId
+     *
      * @return $this
      */
     public function setStackId($stackId)
@@ -39,6 +41,7 @@ class DescribeResourceDetailRequest extends RoaAcsRequest
 
     /**
      * @param string $stackName
+     *
      * @return $this
      */
     public function setStackName($stackName)
@@ -51,6 +54,7 @@ class DescribeResourceDetailRequest extends RoaAcsRequest
 
     /**
      * @param string $resourceName
+     *
      * @return $this
      */
     public function setResourceName($resourceName)

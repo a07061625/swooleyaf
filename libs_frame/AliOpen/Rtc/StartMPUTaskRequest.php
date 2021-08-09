@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of StartMPUTask
+ *
  * @method array getUserPaness()
  * @method string getBackgroundColor()
  * @method string getTaskProfile()
@@ -33,7 +34,6 @@ class StartMPUTaskRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $userPanes
      * @return $this
      */
     public function setUserPaness(array $userPanes)
@@ -50,6 +50,7 @@ class StartMPUTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $backgroundColor
+     *
      * @return $this
      */
     public function setBackgroundColor($backgroundColor)
@@ -62,6 +63,7 @@ class StartMPUTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $taskProfile
+     *
      * @return $this
      */
     public function setTaskProfile($taskProfile)
@@ -73,7 +75,6 @@ class StartMPUTaskRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $layoutIds
      * @return $this
      */
     public function setLayoutIdss(array $layoutIds)
@@ -88,6 +89,7 @@ class StartMPUTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $taskId
+     *
      * @return $this
      */
     public function setTaskId($taskId)
@@ -100,6 +102,7 @@ class StartMPUTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $streamURL
+     *
      * @return $this
      */
     public function setStreamURL($streamURL)
@@ -112,6 +115,7 @@ class StartMPUTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -124,6 +128,7 @@ class StartMPUTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -136,6 +141,7 @@ class StartMPUTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $mediaEncode
+     *
      * @return $this
      */
     public function setMediaEncode($mediaEncode)
@@ -148,6 +154,7 @@ class StartMPUTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $channelId
+     *
      * @return $this
      */
     public function setChannelId($channelId)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListAppResourceAllocs
+ *
  * @method string getAppId()
  * @method string getPageSize()
  * @method string getAppEnvId()
@@ -24,6 +25,7 @@ class ListAppResourceAllocsRequest extends RpcAcsRequest
 
     /**
      * @param string $appId
+     *
      * @return $this
      */
     public function setAppId($appId)
@@ -36,6 +38,7 @@ class ListAppResourceAllocsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -48,6 +51,7 @@ class ListAppResourceAllocsRequest extends RpcAcsRequest
 
     /**
      * @param string $appEnvId
+     *
      * @return $this
      */
     public function setAppEnvId($appEnvId)
@@ -60,6 +64,7 @@ class ListAppResourceAllocsRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterId
+     *
      * @return $this
      */
     public function setClusterId($clusterId)
@@ -72,6 +77,7 @@ class ListAppResourceAllocsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

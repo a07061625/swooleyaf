@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ResourceStatusNotify
+ *
  * @method string getdata()
  */
 class ResourceStatusNotifyRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class ResourceStatusNotifyRequest extends RpcAcsRequest
 
     /**
      * @param string $data
+     *
      * @return $this
      */
     public function setdata($data)

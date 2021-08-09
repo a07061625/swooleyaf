@@ -6,6 +6,7 @@ use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Request of DescribeResourceTypeDetail
+ *
  * @method string getTypeName()
  */
 class DescribeResourceTypeDetailRequest extends RoaAcsRequest
@@ -25,6 +26,7 @@ class DescribeResourceTypeDetailRequest extends RoaAcsRequest
 
     /**
      * @param string $typeName
+     *
      * @return $this
      */
     public function setTypeName($typeName)
