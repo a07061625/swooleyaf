@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of PutOssFile
  *
  * @method string getJsonData()
  */
 class PutOssFileRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

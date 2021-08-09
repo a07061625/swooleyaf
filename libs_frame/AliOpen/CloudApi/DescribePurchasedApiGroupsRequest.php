@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribePurchasedApiGroups
  *
  * @method string getPageNumber()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribePurchasedApiGroupsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

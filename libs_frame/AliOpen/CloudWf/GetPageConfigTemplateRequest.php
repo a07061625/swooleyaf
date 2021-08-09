@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of GetPageConfigTemplate
  *
  * @method string getId()
  */
 class GetPageConfigTemplateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

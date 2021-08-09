@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of UserDataCreate
  *
  * @method string getUploadFile()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class UserDataCreateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

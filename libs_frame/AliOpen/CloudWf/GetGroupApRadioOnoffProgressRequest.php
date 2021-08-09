@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetGroupApRadioOnoffProgress
  *
  * @method string getId()
  */
 class GetGroupApRadioOnoffProgressRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

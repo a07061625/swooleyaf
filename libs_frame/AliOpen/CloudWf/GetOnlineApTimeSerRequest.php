@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetOnlineApTimeSer
  *
  * @method string getZoomStart()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetOnlineApTimeSerRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

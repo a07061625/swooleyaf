@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeApiTrafficControls
  *
  * @method string getStageName()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeApiTrafficControlsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

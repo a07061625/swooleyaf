@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CloudPhoto;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -13,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetPhotosByMd5sRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -77,8 +77,6 @@ class GetPhotosByMd5sRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $md5s
-     *
      * @return $this
      */
     public function setMd5s(array $md5s)

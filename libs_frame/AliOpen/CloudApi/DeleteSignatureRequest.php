@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteSignature
  *
  * @method string getSignatureId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteSignatureRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

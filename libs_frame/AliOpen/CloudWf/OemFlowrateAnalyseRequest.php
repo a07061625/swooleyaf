@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of OemFlowrateAnalyse
  *
  * @method string getGsid()
  */
 class OemFlowrateAnalyseRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

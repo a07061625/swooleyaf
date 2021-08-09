@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetUpgradeAPGroupProgress
- *
  */
 class GetUpgradeAPGroupProgressRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

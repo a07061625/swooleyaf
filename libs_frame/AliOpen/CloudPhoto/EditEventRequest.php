@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CloudPhoto;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -21,7 +22,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class EditEventRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

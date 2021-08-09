@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ShopGroupCreate
  *
  * @method string getShopIds()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ShopGroupCreateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

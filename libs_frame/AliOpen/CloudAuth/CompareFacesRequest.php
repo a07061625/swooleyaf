@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudAuth;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CompareFaces
  *
  * @method string getSourceImageType()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CompareFacesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

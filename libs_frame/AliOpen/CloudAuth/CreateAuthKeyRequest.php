@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudAuth;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateAuthKey
  *
  * @method string getBizType()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateAuthKeyRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

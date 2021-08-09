@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of AreaInfo
  *
  * @method string getAid()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class AreaInfoRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

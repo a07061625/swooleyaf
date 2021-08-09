@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of SetScanMode
  *
  * @method string getOperation()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetScanModeRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -46,8 +44,6 @@ class SetScanModeRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $value
-     *
      * @return $this
      */
     public function setMacLists(array $value)

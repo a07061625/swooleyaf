@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of KickSta
  *
  * @method string getId()
  */
 class KickStaRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

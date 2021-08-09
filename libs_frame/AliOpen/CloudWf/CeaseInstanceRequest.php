@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of CeaseInstance
  *
  * @method string getTraceId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CeaseInstanceRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of UntagResources
  *
  * @method string getAll()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class UntagResourcesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -49,18 +47,16 @@ class UntagResourcesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resourceId
-     *
      * @return $this
      */
-	public function setResourceIds(array $resourceId)
-	{
-	    $this->requestParameters['ResourceIds'] = $resourceId;
-		foreach ($resourceId as $i => $iValue) {
-			$this->queryParameters['ResourceId.' . ($i + 1)] = $iValue;
-		}
+    public function setResourceIds(array $resourceId)
+    {
+        $this->requestParameters['ResourceIds'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
+            $this->queryParameters['ResourceId.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -90,17 +86,15 @@ class UntagResourcesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tagKey
-     *
      * @return $this
      */
-	public function setTagKeys(array $tagKey)
-	{
-	    $this->requestParameters['TagKeys'] = $tagKey;
-		foreach ($tagKey as $i => $iValue) {
-			$this->queryParameters['TagKey.' . ($i + 1)] = $iValue;
-		}
+    public function setTagKeys(array $tagKey)
+    {
+        $this->requestParameters['TagKeys'] = $tagKey;
+        foreach ($tagKey as $i => $iValue) {
+            $this->queryParameters['TagKey.' . ($i + 1)] = $iValue;
+        }
 
-		return $this;
+        return $this;
     }
 }

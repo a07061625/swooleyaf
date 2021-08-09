@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetCrowdList
  *
  * @method string getGsid()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetCrowdListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

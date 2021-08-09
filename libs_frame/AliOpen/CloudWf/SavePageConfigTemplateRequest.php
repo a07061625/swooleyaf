@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of SavePageConfigTemplate
  *
  * @method string getTempType()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SavePageConfigTemplateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

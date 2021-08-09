@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DelApPosition
  *
  * @method string getApAssetId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DelApPositionRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

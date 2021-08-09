@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListPageConfigTemplate
  *
  * @method string getLength()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListPageConfigTemplateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

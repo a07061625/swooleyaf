@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of UpgradeAPGroup
  *
  * @method array getIdss()
  */
 class UpgradeAPGroupRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -32,8 +30,6 @@ class UpgradeAPGroupRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $value
-     *
      * @return $this
      */
     public function setIdss(array $value)

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of UserDataShowList
  *
  * @method string getIid()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class UserDataShowListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

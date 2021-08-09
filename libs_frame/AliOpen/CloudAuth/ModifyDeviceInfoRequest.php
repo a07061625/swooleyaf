@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudAuth;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ModifyDeviceInfo
  *
  * @method string getUserDeviceId()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifyDeviceInfoRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

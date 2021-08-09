@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of InnerProduceCloudWF
  *
  * @method string getdata()
  */
 class InnerProduceCloudWFRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

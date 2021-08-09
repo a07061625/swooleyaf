@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of CheckUmengDataAnalysisPermission
- *
  */
 class CheckUmengDataAnalysisPermissionRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

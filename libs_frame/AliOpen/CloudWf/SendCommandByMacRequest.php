@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of SendCommandByMac
  *
  * @method array getMacLists()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SendCommandByMacRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -33,8 +31,6 @@ class SendCommandByMacRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $value
-     *
      * @return $this
      */
     public function setMacLists(array $value)

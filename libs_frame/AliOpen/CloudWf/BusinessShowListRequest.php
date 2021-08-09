@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of BusinessShowList
  *
  * @method string getPage()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class BusinessShowListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

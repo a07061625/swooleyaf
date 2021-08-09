@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudAuth;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeVerifySDK
  *
  * @method string getSourceIp()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeVerifySDKRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

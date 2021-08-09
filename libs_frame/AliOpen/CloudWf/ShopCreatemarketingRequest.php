@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ShopCreatemarketing
  *
  * @method string getEtime()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ShopCreatemarketingRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

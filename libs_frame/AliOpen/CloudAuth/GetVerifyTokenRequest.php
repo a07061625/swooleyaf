@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudAuth;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetVerifyToken
  *
  * @method string getUserData()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetVerifyTokenRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

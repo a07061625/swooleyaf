@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CloudPhoto;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -13,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListPhotoTagsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

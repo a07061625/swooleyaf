@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ProfileTag
  *
  * @method string getIdtype()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ProfileTagRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DeleteApiStageVariable
  *
  * @method string getGroupId()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteApiStageVariableRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

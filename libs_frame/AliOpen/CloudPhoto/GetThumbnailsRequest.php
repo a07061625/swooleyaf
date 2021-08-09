@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CloudPhoto;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -13,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetThumbnailsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -51,8 +51,6 @@ class GetThumbnailsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $photoIds
-     *
      * @return $this
      */
     public function setPhotoIds(array $photoIds)

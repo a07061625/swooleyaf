@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ExcelToJson
  *
  * @method string getUploadData()
  */
 class ExcelToJsonRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

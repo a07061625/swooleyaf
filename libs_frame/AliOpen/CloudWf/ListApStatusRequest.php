@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListApStatus
  *
  * @method string getOrderCol()
@@ -24,7 +23,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListApStatusRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

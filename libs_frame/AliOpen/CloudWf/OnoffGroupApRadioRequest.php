@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of OnoffGroupApRadio
  *
  * @method string getApgroupId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class OnoffGroupApRadioRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

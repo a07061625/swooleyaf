@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ResetAppSecret
  *
  * @method string getSecurityToken()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ResetAppSecretRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

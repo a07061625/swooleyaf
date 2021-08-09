@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudAuth;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SubmitVerification
  *
  * @method string getResourceOwnerId()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SubmitVerificationRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -80,8 +78,6 @@ class SubmitVerificationRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $material
-     *
      * @return $this
      */
     public function setMaterials(array $material)

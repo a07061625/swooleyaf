@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ApgroupBatchAddAp
  *
  * @method string getApAssetIds()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ApgroupBatchAddApRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

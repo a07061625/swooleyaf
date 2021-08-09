@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\ChatBot;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -12,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class QueryCoreWordsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

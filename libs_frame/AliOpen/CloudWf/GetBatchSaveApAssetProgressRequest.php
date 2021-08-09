@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of GetBatchSaveApAssetProgress
- *
  */
 class GetBatchSaveApAssetProgressRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

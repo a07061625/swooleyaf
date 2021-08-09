@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetDomainCertificate
  *
  * @method string getCertificatePrivateKey()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetDomainCertificateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

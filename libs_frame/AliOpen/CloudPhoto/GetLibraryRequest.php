@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CloudPhoto;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -11,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetLibraryRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

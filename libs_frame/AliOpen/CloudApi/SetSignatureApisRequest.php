@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetSignatureApis
  *
  * @method string getStageName()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetSignatureApisRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

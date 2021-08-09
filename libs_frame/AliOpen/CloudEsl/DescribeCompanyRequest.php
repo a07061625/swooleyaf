@@ -1,15 +1,14 @@
 <?php
+
 namespace AliOpen\CloudEsl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCompany
- *
  */
 class DescribeCompanyRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

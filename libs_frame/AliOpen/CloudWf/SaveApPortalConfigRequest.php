@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SaveApPortalConfig
  *
  * @method string getAuthKey()
@@ -20,7 +19,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SaveApPortalConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

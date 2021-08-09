@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CloudEsl;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -11,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteItemRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

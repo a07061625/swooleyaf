@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of RemoveVpcAccess
  *
  * @method string getInstanceId()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class RemoveVpcAccessRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

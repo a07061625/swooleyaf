@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CheckRootPermission
- *
  */
 class CheckRootPermissionRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

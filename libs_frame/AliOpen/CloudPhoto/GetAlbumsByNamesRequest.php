@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CloudPhoto;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -12,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetAlbumsByNamesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -50,8 +50,6 @@ class GetAlbumsByNamesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $names
-     *
      * @return $this
      */
     public function setNames(array $names)

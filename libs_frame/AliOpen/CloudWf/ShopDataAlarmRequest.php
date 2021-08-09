@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ShopDataAlarm
  *
  * @method string getWarnPhone()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ShopDataAlarmRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

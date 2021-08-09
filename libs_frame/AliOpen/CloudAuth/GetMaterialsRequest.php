@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudAuth;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetMaterials
  *
  * @method string getResourceOwnerId()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetMaterialsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

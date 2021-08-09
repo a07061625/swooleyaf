@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListApAssetCanBeAdded
  *
  * @method string getSearchName()
@@ -17,7 +16,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListApAssetCanBeAddedRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

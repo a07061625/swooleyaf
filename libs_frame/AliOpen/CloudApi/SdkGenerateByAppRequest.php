@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SdkGenerateByApp
  *
  * @method string getLanguage()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SdkGenerateByAppRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

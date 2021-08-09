@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListApPositionStatus
  *
  * @method string getJsonData()
  */
 class ListApPositionStatusRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetDeviceInfoByMac
  *
  * @method string getMac()
  */
 class GetDeviceInfoByMacRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

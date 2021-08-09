@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeviceUpdate
  *
  * @method string getDevicePosition()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeviceUpdateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

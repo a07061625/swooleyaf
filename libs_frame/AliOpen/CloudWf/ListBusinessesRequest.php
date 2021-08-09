@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListBusinesses
- *
  */
 class ListBusinessesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

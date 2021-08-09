@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of AddApgroupConfig
  *
  * @method string getParentApgroupId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class AddApgroupConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

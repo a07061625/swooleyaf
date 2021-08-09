@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetBindAp4Umeng
- *
  */
 class GetBindAp4UmengRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

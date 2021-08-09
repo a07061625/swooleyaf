@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of RemoveIpControlPolicyItem
  *
  * @method string getPolicyItemIds()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class RemoveIpControlPolicyItemRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

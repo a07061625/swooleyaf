@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of InnerCheckOrder
  *
  * @method string getdata()
  */
 class InnerCheckOrderRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

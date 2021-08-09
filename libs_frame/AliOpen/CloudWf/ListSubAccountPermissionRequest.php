@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListSubAccountPermission
  *
  * @method string getSearchUid()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListSubAccountPermissionRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

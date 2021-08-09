@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListApRadioStatus
  *
  * @method string getSearchDisabled()
@@ -21,7 +20,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListApRadioStatusRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of GetStaTop
  *
  * @method string getApgroupId()
  */
 class GetStaTopRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

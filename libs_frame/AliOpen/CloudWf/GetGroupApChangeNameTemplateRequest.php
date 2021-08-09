@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetGroupApChangeNameTemplate
- *
  */
 class GetGroupApChangeNameTemplateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

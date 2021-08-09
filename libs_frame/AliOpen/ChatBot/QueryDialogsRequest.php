@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\ChatBot;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -13,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class QueryDialogsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of AreaShowList
  *
  * @method string getPage()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class AreaShowListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

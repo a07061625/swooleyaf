@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CloudPhoto;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -12,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ReactivatePhotosRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -50,8 +50,6 @@ class ReactivatePhotosRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $photoIds
-     *
      * @return $this
      */
     public function setPhotoIds(array $photoIds)

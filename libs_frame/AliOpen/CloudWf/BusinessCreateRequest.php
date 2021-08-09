@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of BusinessCreate
  *
  * @method string getBusinessCity()
@@ -23,7 +22,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class BusinessCreateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

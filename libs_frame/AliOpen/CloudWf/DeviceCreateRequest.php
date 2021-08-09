@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DeviceCreate
  *
  * @method string getDeviceNum()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeviceCreateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CloudPhoto;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -13,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class MergeFacesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -77,8 +77,6 @@ class MergeFacesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $faceIds
-     *
      * @return $this
      */
     public function setFaceIds(array $faceIds)

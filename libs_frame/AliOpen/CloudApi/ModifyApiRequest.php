@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ModifyApi
  *
  * @method string getWebSocketApiType()
@@ -37,7 +36,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifyApiRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

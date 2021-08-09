@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateLogConfig
  *
  * @method string getSlsLogStore()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateLogConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

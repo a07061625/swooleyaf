@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ProfileConsume
  *
  * @method string getBeginDate()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ProfileConsumeRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

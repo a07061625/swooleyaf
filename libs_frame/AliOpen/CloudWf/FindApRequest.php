@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of FindAp
  *
  * @method string getId()
  */
 class FindApRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

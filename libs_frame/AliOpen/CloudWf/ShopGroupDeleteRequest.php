@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ShopGroupDelete
  *
  * @method string getGid()
  */
 class ShopGroupDeleteRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

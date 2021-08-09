@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ShopSetredress
  *
  * @method string getWorkday()
@@ -23,7 +22,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ShopSetredressRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

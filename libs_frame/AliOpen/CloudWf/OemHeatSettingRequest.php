@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of OemHeatSetting
  *
  * @method string getGsid()
  */
 class OemHeatSettingRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

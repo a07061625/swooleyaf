@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of SaveApgroupSsidConfig
  *
  * @method string getJsonData()
  */
 class SaveApgroupSsidConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

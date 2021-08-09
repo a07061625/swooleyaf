@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of SaveApRadioConfig
  *
  * @method string getRequireMode()
@@ -31,7 +30,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SaveApRadioConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

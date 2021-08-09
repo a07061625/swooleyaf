@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of AreaDelete
  *
  * @method string getAid()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class AreaDeleteRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

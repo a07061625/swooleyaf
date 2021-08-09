@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of GetProbeDataSubscriberConfig
  *
  * @method string getId()
  */
 class GetProbeDataSubscriberConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

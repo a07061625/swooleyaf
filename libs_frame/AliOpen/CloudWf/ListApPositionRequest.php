@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListApPosition
  *
  * @method string getMapId()
  */
 class ListApPositionRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

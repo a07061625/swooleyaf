@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteApgroupConfig
  *
  * @method string getId()
  */
 class DeleteApgroupConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

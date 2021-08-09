@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of UpLoadMap
  *
  * @method string getFileName()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class UpLoadMapRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

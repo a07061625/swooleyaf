@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeviceBatchCreate
  *
  * @method string getSn()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeviceBatchCreateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

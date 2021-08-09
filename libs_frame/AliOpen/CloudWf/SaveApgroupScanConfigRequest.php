@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SaveApgroupScanConfig
  *
  * @method string getJsonData()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SaveApgroupScanConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

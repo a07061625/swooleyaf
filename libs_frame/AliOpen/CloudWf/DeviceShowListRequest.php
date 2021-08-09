@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DeviceShowList
  *
  * @method string getDirc()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeviceShowListRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

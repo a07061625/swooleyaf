@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of KickAndClearPMKcache
  *
  * @method string getId()
  */
 class KickAndClearPMKcacheRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

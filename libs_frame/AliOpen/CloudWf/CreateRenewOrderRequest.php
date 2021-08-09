@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateRenewOrder
  *
  * @method string getTimeCycleNum()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateRenewOrderRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -46,8 +44,6 @@ class CreateRenewOrderRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $value
-     *
      * @return $this
      */
     public function setApLists(array $value)

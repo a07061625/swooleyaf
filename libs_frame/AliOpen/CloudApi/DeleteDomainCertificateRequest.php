@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteDomainCertificate
  *
  * @method string getGroupId()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteDomainCertificateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

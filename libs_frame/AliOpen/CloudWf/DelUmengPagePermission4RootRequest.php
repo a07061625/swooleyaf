@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DelUmengPagePermission4Root
  *
  * @method string getId()
  */
 class DelUmengPagePermission4RootRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

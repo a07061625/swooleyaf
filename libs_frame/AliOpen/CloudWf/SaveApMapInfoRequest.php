@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of SaveApMapInfo
  *
  * @method string getJsonData()
  */
 class SaveApMapInfoRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

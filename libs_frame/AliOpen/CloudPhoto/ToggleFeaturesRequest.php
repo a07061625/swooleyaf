@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CloudPhoto;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -12,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ToggleFeaturesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -37,8 +37,6 @@ class ToggleFeaturesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $disabledFeaturess
-     *
      * @return $this
      */
     public function setDisabledFeaturess(array $disabledFeaturess)
@@ -65,8 +63,6 @@ class ToggleFeaturesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $enabledFeaturess
-     *
      * @return $this
      */
     public function setEnabledFeaturess(array $enabledFeaturess)

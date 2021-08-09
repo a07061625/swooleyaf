@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CloudPhoto;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -14,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class TagPhotoRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -52,8 +52,6 @@ class TagPhotoRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $confidences
-     *
      * @return $this
      */
     public function setConfidences(array $confidences)
@@ -93,8 +91,6 @@ class TagPhotoRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tagKeys
-     *
      * @return $this
      */
     public function setTagKeys(array $tagKeys)

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of BusinessUpdate
  *
  * @method string getWarn()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class BusinessUpdateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

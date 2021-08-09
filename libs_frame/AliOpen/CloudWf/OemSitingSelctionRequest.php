@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of OemSitingSelction
  *
  * @method string getBid()
  */
 class OemSitingSelctionRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

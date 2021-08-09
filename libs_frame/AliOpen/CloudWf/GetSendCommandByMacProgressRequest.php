@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of GetSendCommandByMacProgress
- *
  */
 class GetSendCommandByMacProgressRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

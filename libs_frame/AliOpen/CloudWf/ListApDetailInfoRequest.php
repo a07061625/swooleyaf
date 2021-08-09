@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListApDetailInfo
  *
  * @method string getApAssetId()
  */
 class ListApDetailInfoRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

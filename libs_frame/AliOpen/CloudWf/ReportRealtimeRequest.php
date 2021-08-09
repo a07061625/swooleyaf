@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ReportRealtime
  *
  * @method string getAgsid()
  */
 class ReportRealtimeRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

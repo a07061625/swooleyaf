@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DeleteApRadioSsidConfig
  *
  * @method string getInstantlyEffective()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeleteApRadioSsidConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

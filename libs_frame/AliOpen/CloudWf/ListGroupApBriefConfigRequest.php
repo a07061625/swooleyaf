@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListGroupApBriefConfig
  *
  * @method string getOrderCol()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListGroupApBriefConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

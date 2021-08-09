@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetDailyStatistic
  *
  * @method string getApgroupId()
  */
 class GetDailyStatisticRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ShopDeletemarketing
  *
  * @method string getId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ShopDeletemarketingRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

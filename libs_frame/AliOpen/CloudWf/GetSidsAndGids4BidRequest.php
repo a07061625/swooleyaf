@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of GetSidsAndGids4Bid
  *
  * @method string getQueryType()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetSidsAndGids4BidRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

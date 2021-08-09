@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SaveProbeDataSubscriber
  *
  * @method string getApiUrl()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SaveProbeDataSubscriberRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -130,8 +128,6 @@ class SaveProbeDataSubscriberRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $value
-     *
      * @return $this
      */
     public function setResourceIdss(array $value)

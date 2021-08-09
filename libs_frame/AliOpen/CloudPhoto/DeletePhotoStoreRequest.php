@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CloudPhoto;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -10,7 +11,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DeletePhotoStoreRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SaveGroupApRadioConfig
  *
  * @method string getJsonData()
  */
 class SaveGroupApRadioConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of OemFlowrateOverview
  *
  * @method string getBid()
  */
 class OemFlowrateOverviewRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

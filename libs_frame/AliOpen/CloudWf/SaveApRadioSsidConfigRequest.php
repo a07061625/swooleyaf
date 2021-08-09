@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of SaveApRadioSsidConfig
  *
  * @method string getNasid()
@@ -54,7 +53,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SaveApRadioSsidConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

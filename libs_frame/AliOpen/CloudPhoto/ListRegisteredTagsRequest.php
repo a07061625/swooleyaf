@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CloudPhoto;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -11,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListRegisteredTagsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -49,8 +49,6 @@ class ListRegisteredTagsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $langs
-     *
      * @return $this
      */
     public function setLangs(array $langs)

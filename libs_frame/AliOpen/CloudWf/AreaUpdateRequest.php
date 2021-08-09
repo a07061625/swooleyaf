@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of AreaUpdate
  *
  * @method string getName()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class AreaUpdateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetTrafficControlApis
  *
  * @method string getTrafficControlId()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetTrafficControlApisRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

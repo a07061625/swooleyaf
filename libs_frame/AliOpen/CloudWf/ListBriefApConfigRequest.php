@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListBriefApConfig
  *
  * @method string getSearchScan()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListBriefApConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

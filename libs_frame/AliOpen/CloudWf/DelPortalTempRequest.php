@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DelPortalTemp
  *
  * @method string getId()
  */
 class DelPortalTempRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

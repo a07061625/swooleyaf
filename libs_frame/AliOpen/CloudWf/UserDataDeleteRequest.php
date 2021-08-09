@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of UserDataDelete
  *
  * @method string getIid()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class UserDataDeleteRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

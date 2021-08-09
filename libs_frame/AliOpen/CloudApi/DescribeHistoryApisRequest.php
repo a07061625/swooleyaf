@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeHistoryApis
  *
  * @method string getStageName()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeHistoryApisRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListConfigByAction
  *
  * @method string getSearchName()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListConfigByActionRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

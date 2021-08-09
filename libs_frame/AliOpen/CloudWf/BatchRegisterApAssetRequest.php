@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of BatchRegisterApAsset
  *
  * @method string getJsonData()
  */
 class BatchRegisterApAssetRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

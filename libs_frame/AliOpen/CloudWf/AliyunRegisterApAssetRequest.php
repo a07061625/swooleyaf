@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of AliyunRegisterApAsset
  *
  * @method string getApgroupId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class AliyunRegisterApAssetRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

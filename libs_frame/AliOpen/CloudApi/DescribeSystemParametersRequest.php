@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeSystemParameters
  *
  * @method string getSecurityToken()
  */
 class DescribeSystemParametersRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

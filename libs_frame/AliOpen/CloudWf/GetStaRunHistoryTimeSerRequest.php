@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetStaRunHistoryTimeSer
  *
  * @method string getId()
  */
 class GetStaRunHistoryTimeSerRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

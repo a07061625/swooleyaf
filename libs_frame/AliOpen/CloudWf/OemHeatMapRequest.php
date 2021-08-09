@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of OemHeatMap
  *
  * @method string getGsid()
  */
 class OemHeatMapRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

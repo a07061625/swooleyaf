@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeIpControlPolicyItems
  *
  * @method string getPageNumber()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeIpControlPolicyItemsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

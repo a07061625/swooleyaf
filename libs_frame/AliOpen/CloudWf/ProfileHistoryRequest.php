@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ProfileHistory
  *
  * @method string getIdtype()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ProfileHistoryRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

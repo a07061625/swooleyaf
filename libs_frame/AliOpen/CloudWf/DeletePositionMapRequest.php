@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of DeletePositionMap
  *
  * @method string getMapId()
  */
 class DeletePositionMapRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

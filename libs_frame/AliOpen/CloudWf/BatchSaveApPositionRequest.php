@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of BatchSaveApPosition
  *
  * @method string getJsonData()
  */
 class BatchSaveApPositionRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

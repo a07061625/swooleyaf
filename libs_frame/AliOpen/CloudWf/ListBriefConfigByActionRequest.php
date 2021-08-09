@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListBriefConfigByAction
  *
  * @method string getAncestorApgroupId()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListBriefConfigByActionRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

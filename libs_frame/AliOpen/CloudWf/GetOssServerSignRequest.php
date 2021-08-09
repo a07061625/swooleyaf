@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetOssServerSign
  *
  * @method string getDirType()
  */
 class GetOssServerSignRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\ChatBot;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -10,7 +11,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ActivatePerspectiveRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudAuth;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeDeviceInfo
  *
  * @method string getBizType()
@@ -21,7 +20,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeDeviceInfoRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

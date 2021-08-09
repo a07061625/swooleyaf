@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\ChatBot;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -17,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ChatRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -89,8 +89,6 @@ class ChatRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $perspectives
-     *
      * @return $this
      */
     public function setPerspectives(array $perspectives)

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of GetApRunHistoryTimeSer
  *
  * @method string getStart()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetApRunHistoryTimeSerRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

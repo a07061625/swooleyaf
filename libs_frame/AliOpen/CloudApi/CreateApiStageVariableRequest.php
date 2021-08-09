@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateApiStageVariable
  *
  * @method string getSupportRoute()
@@ -18,7 +17,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateApiStageVariableRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

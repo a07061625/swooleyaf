@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeApisBySignature
  *
  * @method string getSignatureId()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeApisBySignatureRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

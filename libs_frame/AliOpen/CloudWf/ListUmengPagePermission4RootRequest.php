@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListUmengPagePermission4Root
  *
  * @method string getOrderCol()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListUmengPagePermission4RootRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

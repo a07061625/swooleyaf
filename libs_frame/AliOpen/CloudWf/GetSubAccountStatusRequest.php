@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetSubAccountStatus
- *
  */
 class GetSubAccountStatusRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

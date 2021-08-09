@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ShopCreate
  *
  * @method string getShopCoordinate()
@@ -30,7 +29,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ShopCreateRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

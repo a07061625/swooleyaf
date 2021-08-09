@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudAuth;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DetectFaceAttributes
  *
  * @method string getMaxNumPhotosPerCategory()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DetectFaceAttributesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

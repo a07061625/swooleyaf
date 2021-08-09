@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribeDomainsResolution
  *
  * @method string getDomainNames()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeDomainsResolutionRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetUserUmengPagePermission
  *
  * @method string getBid()
  */
 class GetUserUmengPagePermissionRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

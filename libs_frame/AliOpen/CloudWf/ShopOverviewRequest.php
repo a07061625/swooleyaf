@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ShopOverview
  *
  * @method string getGsid()
  */
 class ShopOverviewRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of SaveStaStatus
  *
  * @method string getDescription()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SaveStaStatusRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

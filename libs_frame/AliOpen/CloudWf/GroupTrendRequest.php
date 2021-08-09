@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of GroupTrend
  *
  * @method string getGsid()
  */
 class GroupTrendRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of HeadquartersToolsCoincide
  *
  * @method string getBid()
  */
 class HeadquartersToolsCoincideRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

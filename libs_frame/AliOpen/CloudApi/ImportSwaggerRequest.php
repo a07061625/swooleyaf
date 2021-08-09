@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ImportSwagger
  *
  * @method string getDataFormat()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ImportSwaggerRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

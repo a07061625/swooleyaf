@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ModifySubAccountPermission
  *
  * @method array getShopGroupIdss()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifySubAccountPermissionRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -36,8 +34,6 @@ class ModifySubAccountPermissionRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $value
-     *
      * @return $this
      */
     public function setShopGroupIdss(array $value)
@@ -51,8 +47,6 @@ class ModifySubAccountPermissionRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $value
-     *
      * @return $this
      */
     public function setShopIdss(array $value)
@@ -92,8 +86,6 @@ class ModifySubAccountPermissionRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $value
-     *
      * @return $this
      */
     public function setBusinessIdss(array $value)

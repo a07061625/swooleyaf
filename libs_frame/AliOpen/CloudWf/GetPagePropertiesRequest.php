@@ -1,17 +1,14 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetPageProperties
- *
  */
 class GetPagePropertiesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

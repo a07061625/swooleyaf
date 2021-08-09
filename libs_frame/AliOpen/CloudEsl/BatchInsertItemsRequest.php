@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CloudEsl;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -11,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class BatchInsertItemsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -30,8 +30,6 @@ class BatchInsertItemsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $itemInfos
-     *
      * @return $this
      */
     public function setItemInfos(array $itemInfos)

@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of GetApDetailedStatus
  *
  * @method string getId()
  */
 class GetApDetailedStatusRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

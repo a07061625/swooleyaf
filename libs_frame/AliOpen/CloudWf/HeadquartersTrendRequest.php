@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of HeadquartersTrend
  *
  * @method string getBid()
  */
 class HeadquartersTrendRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

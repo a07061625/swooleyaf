@@ -1,15 +1,14 @@
 <?php
+
 namespace AliOpen\ChatBot;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryPerspectives
- *
  */
 class QueryPerspectivesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

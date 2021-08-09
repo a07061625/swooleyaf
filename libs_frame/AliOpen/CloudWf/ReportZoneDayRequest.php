@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ReportZoneDay
  *
  * @method string getBeginDate()
@@ -14,7 +13,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ReportZoneDayRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

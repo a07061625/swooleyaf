@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of CreateIpControl
  *
  * @method string getIpControlName()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class CreateIpControlRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -49,19 +47,17 @@ class CreateIpControlRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ipControlPolicys
-     *
      * @return $this
      */
-	public function setIpControlPolicyss(array $ipControlPolicys)
-	{
-	    $this->requestParameters['IpControlPolicyss'] = $ipControlPolicys;
-		foreach ($ipControlPolicys as $depth1 => $depth1Value) {
-			$this->queryParameters['IpControlPolicys.' . ($depth1 + 1) . '.AppId'] = $depth1Value['AppId'];
-			$this->queryParameters['IpControlPolicys.' . ($depth1 + 1) . '.CidrIp'] = $depth1Value['CidrIp'];
-		}
+    public function setIpControlPolicyss(array $ipControlPolicys)
+    {
+        $this->requestParameters['IpControlPolicyss'] = $ipControlPolicys;
+        foreach ($ipControlPolicys as $depth1 => $depth1Value) {
+            $this->queryParameters['IpControlPolicys.' . ($depth1 + 1) . '.AppId'] = $depth1Value['AppId'];
+            $this->queryParameters['IpControlPolicys.' . ($depth1 + 1) . '.CidrIp'] = $depth1Value['CidrIp'];
+        }
 
-		return $this;
+        return $this;
     }
 
     /**

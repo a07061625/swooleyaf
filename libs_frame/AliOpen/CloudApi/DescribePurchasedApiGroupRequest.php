@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of DescribePurchasedApiGroup
  *
  * @method string getGroupId()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribePurchasedApiGroupRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

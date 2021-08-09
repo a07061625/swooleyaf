@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListBusinessDetails
  *
  * @method string getOrderCol()
@@ -16,7 +15,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListBusinessDetailsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

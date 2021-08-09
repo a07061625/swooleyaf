@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SaveApgroupConfig
  *
  * @method string getCountry()
@@ -20,7 +19,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SaveApgroupConfigRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

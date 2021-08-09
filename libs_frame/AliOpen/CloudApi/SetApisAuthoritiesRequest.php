@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of SetApisAuthorities
  *
  * @method string getAuthVaildTime()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetApisAuthoritiesRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

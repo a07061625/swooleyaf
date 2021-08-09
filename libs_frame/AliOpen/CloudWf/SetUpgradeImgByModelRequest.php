@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of SetUpgradeImgByModel
  *
  * @method string getImgAddr()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class SetUpgradeImgByModelRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

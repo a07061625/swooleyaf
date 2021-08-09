@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ConfigAutoRenew
  *
  * @method string getOffsetDays()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ConfigAutoRenewRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
@@ -74,8 +72,6 @@ class ConfigAutoRenewRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $value
-     *
      * @return $this
      */
     public function setApLists(array $value)

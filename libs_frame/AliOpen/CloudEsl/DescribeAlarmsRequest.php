@@ -1,4 +1,5 @@
 <?php
+
 namespace AliOpen\CloudEsl;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -18,7 +19,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class DescribeAlarmsRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

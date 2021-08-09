@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ModifyIpControl
  *
  * @method string getIpControlName()
@@ -15,7 +14,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ModifyIpControlRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

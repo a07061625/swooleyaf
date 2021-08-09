@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of ListApAsset
  *
  * @method string getOrderCol()
@@ -19,7 +18,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListApAssetRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

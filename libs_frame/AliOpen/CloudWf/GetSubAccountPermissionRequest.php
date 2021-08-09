@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of GetSubAccountPermission
  *
  * @method string getId()
  */
 class GetSubAccountPermissionRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

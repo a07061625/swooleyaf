@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of GetApPortalBind
  *
  * @method string getConfigType()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class GetApPortalBindRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

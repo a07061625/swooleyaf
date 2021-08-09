@@ -1,18 +1,16 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- *
- *
  * Request of BatchChangeGroupApName
  *
  * @method string getJsonData()
  */
 class BatchChangeGroupApNameRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */

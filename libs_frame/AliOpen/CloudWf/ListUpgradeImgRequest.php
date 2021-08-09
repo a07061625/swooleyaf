@@ -1,11 +1,10 @@
 <?php
+
 namespace AliOpen\CloudWf;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
- * 
- *
  * Request of ListUpgradeImg
  *
  * @method string getLength()
@@ -13,7 +12,6 @@ use AliOpen\Core\RpcAcsRequest;
  */
 class ListUpgradeImgRequest extends RpcAcsRequest
 {
-
     /**
      * @var string
      */
