@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of FillLogistics
+ *
  * @method string getBizId()
  * @method string getLogistics()
  */
@@ -26,6 +27,7 @@ class FillLogisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -38,6 +40,7 @@ class FillLogisticsRequest extends RpcAcsRequest
 
     /**
      * @param string $logistics
+     *
      * @return $this
      */
     public function setLogistics($logistics)

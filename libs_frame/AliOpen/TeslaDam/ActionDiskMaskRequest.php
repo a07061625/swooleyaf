@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ActionDiskMask
+ *
  * @method string getOp()
  * @method string getDiskMount()
  * @method string getIp()
@@ -22,6 +23,7 @@ class ActionDiskMaskRequest extends RpcAcsRequest
 
     /**
      * @param string $op
+     *
      * @return $this
      */
     public function setOp($op)
@@ -34,6 +36,7 @@ class ActionDiskMaskRequest extends RpcAcsRequest
 
     /**
      * @param string $diskMount
+     *
      * @return $this
      */
     public function setDiskMount($diskMount)
@@ -46,6 +49,7 @@ class ActionDiskMaskRequest extends RpcAcsRequest
 
     /**
      * @param string $ip
+     *
      * @return $this
      */
     public function setIp($ip)

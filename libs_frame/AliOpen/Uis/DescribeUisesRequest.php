@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Uis;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class DescribeUisesRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Uis", "2018-08-21", "DescribeUises", "uis", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $resourceOwnerId;
     private $resourceOwnerAccount;
     private $ownerAccount;
@@ -38,6 +33,12 @@ class DescribeUisesRequest extends RpcAcsRequest
     private $ownerId;
     private $pageNumber;
 
+    public function __construct()
+    {
+        parent::__construct('Uis', '2018-08-21', 'DescribeUises', 'uis', 'openAPI');
+        $this->setMethod('POST');
+    }
+
     public function getResourceOwnerId()
     {
         return $this->resourceOwnerId;
@@ -46,7 +47,7 @@ class DescribeUisesRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getResourceOwnerAccount()
@@ -57,7 +58,7 @@ class DescribeUisesRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getOwnerAccount()
@@ -68,7 +69,7 @@ class DescribeUisesRequest extends RpcAcsRequest
     public function setOwnerAccount($ownerAccount)
     {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
     public function getUisId()
@@ -79,7 +80,7 @@ class DescribeUisesRequest extends RpcAcsRequest
     public function setUisId($uisId)
     {
         $this->uisId = $uisId;
-        $this->queryParameters["UisId"] = $uisId;
+        $this->queryParameters['UisId'] = $uisId;
     }
 
     public function getName()
@@ -90,7 +91,7 @@ class DescribeUisesRequest extends RpcAcsRequest
     public function setName($name)
     {
         $this->name = $name;
-        $this->queryParameters["Name"] = $name;
+        $this->queryParameters['Name'] = $name;
     }
 
     public function getPageSize()
@@ -101,7 +102,7 @@ class DescribeUisesRequest extends RpcAcsRequest
     public function setPageSize($pageSize)
     {
         $this->pageSize = $pageSize;
-        $this->queryParameters["PageSize"] = $pageSize;
+        $this->queryParameters['PageSize'] = $pageSize;
     }
 
     public function getOwnerId()
@@ -112,7 +113,7 @@ class DescribeUisesRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
     public function getPageNumber()
@@ -123,6 +124,6 @@ class DescribeUisesRequest extends RpcAcsRequest
     public function setPageNumber($pageNumber)
     {
         $this->pageNumber = $pageNumber;
-        $this->queryParameters["PageNumber"] = $pageNumber;
+        $this->queryParameters['PageNumber'] = $pageNumber;
     }
 }

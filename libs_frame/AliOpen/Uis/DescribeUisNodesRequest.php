@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Uis;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class DescribeUisNodesRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Uis", "2018-08-21", "DescribeUisNodes", "uis", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $resourceOwnerId;
     private $resourceOwnerAccount;
     private $clientToken;
@@ -41,6 +36,12 @@ class DescribeUisNodesRequest extends RpcAcsRequest
     private $pageSize;
     private $status;
 
+    public function __construct()
+    {
+        parent::__construct('Uis', '2018-08-21', 'DescribeUisNodes', 'uis', 'openAPI');
+        $this->setMethod('POST');
+    }
+
     public function getResourceOwnerId()
     {
         return $this->resourceOwnerId;
@@ -49,7 +50,7 @@ class DescribeUisNodesRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getResourceOwnerAccount()
@@ -60,7 +61,7 @@ class DescribeUisNodesRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getClientToken()
@@ -71,7 +72,7 @@ class DescribeUisNodesRequest extends RpcAcsRequest
     public function setClientToken($clientToken)
     {
         $this->clientToken = $clientToken;
-        $this->queryParameters["ClientToken"] = $clientToken;
+        $this->queryParameters['ClientToken'] = $clientToken;
     }
 
     public function getOwnerAccount()
@@ -82,7 +83,7 @@ class DescribeUisNodesRequest extends RpcAcsRequest
     public function setOwnerAccount($ownerAccount)
     {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
     public function getOwnerId()
@@ -93,7 +94,7 @@ class DescribeUisNodesRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
     public function getPageNumber()
@@ -104,7 +105,7 @@ class DescribeUisNodesRequest extends RpcAcsRequest
     public function setPageNumber($pageNumber)
     {
         $this->pageNumber = $pageNumber;
-        $this->queryParameters["PageNumber"] = $pageNumber;
+        $this->queryParameters['PageNumber'] = $pageNumber;
     }
 
     public function getUisNodeId()
@@ -115,7 +116,7 @@ class DescribeUisNodesRequest extends RpcAcsRequest
     public function setUisNodeId($uisNodeId)
     {
         $this->uisNodeId = $uisNodeId;
-        $this->queryParameters["UisNodeId"] = $uisNodeId;
+        $this->queryParameters['UisNodeId'] = $uisNodeId;
     }
 
     public function getUisId()
@@ -126,7 +127,7 @@ class DescribeUisNodesRequest extends RpcAcsRequest
     public function setUisId($uisId)
     {
         $this->uisId = $uisId;
-        $this->queryParameters["UisId"] = $uisId;
+        $this->queryParameters['UisId'] = $uisId;
     }
 
     public function getName()
@@ -137,7 +138,7 @@ class DescribeUisNodesRequest extends RpcAcsRequest
     public function setName($name)
     {
         $this->name = $name;
-        $this->queryParameters["Name"] = $name;
+        $this->queryParameters['Name'] = $name;
     }
 
     public function getPageSize()
@@ -148,7 +149,7 @@ class DescribeUisNodesRequest extends RpcAcsRequest
     public function setPageSize($pageSize)
     {
         $this->pageSize = $pageSize;
-        $this->queryParameters["PageSize"] = $pageSize;
+        $this->queryParameters['PageSize'] = $pageSize;
     }
 
     public function getStatus()
@@ -159,6 +160,6 @@ class DescribeUisNodesRequest extends RpcAcsRequest
     public function setStatus($status)
     {
         $this->status = $status;
-        $this->queryParameters["Status"] = $status;
+        $this->queryParameters['Status'] = $status;
     }
 }

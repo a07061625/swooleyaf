@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BatchGetPluginConfigInfo
+ *
  * @method string getPluginInfos()
  */
 class BatchGetPluginConfigInfoRequest extends RpcAcsRequest
@@ -20,6 +21,7 @@ class BatchGetPluginConfigInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $pluginInfos
+     *
      * @return $this
      */
     public function setPluginInfos($pluginInfos)

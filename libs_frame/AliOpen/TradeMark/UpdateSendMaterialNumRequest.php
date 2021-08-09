@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateSendMaterialNum
+ *
  * @method string getNum()
  * @method string getBizId()
  * @method string getOperateType()
@@ -27,6 +28,7 @@ class UpdateSendMaterialNumRequest extends RpcAcsRequest
 
     /**
      * @param string $num
+     *
      * @return $this
      */
     public function setNum($num)
@@ -39,6 +41,7 @@ class UpdateSendMaterialNumRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -51,6 +54,7 @@ class UpdateSendMaterialNumRequest extends RpcAcsRequest
 
     /**
      * @param string $operateType
+     *
      * @return $this
      */
     public function setOperateType($operateType)

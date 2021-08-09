@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Uis;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class ModifyUisNodeAttributeRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Uis", "2018-08-21", "ModifyUisNodeAttribute", "uis", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $resourceOwnerId;
     private $uisNodeBandwidth;
     private $uisNodeId;
@@ -39,6 +34,12 @@ class ModifyUisNodeAttributeRequest extends RpcAcsRequest
     private $description;
     private $ownerId;
 
+    public function __construct()
+    {
+        parent::__construct('Uis', '2018-08-21', 'ModifyUisNodeAttribute', 'uis', 'openAPI');
+        $this->setMethod('POST');
+    }
+
     public function getResourceOwnerId()
     {
         return $this->resourceOwnerId;
@@ -47,7 +48,7 @@ class ModifyUisNodeAttributeRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getUisNodeBandwidth()
@@ -58,7 +59,7 @@ class ModifyUisNodeAttributeRequest extends RpcAcsRequest
     public function setUisNodeBandwidth($uisNodeBandwidth)
     {
         $this->uisNodeBandwidth = $uisNodeBandwidth;
-        $this->queryParameters["UisNodeBandwidth"] = $uisNodeBandwidth;
+        $this->queryParameters['UisNodeBandwidth'] = $uisNodeBandwidth;
     }
 
     public function getUisNodeId()
@@ -69,7 +70,7 @@ class ModifyUisNodeAttributeRequest extends RpcAcsRequest
     public function setUisNodeId($uisNodeId)
     {
         $this->uisNodeId = $uisNodeId;
-        $this->queryParameters["UisNodeId"] = $uisNodeId;
+        $this->queryParameters['UisNodeId'] = $uisNodeId;
     }
 
     public function getResourceOwnerAccount()
@@ -80,7 +81,7 @@ class ModifyUisNodeAttributeRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getOwnerAccount()
@@ -91,7 +92,7 @@ class ModifyUisNodeAttributeRequest extends RpcAcsRequest
     public function setOwnerAccount($ownerAccount)
     {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
     public function getUisId()
@@ -102,7 +103,7 @@ class ModifyUisNodeAttributeRequest extends RpcAcsRequest
     public function setUisId($uisId)
     {
         $this->uisId = $uisId;
-        $this->queryParameters["UisId"] = $uisId;
+        $this->queryParameters['UisId'] = $uisId;
     }
 
     public function getName()
@@ -113,7 +114,7 @@ class ModifyUisNodeAttributeRequest extends RpcAcsRequest
     public function setName($name)
     {
         $this->name = $name;
-        $this->queryParameters["Name"] = $name;
+        $this->queryParameters['Name'] = $name;
     }
 
     public function getDescription()
@@ -124,7 +125,7 @@ class ModifyUisNodeAttributeRequest extends RpcAcsRequest
     public function setDescription($description)
     {
         $this->description = $description;
-        $this->queryParameters["Description"] = $description;
+        $this->queryParameters['Description'] = $description;
     }
 
     public function getOwnerId()
@@ -135,6 +136,6 @@ class ModifyUisNodeAttributeRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 }

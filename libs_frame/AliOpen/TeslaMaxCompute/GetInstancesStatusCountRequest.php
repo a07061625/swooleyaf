@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetInstancesStatusCount
+ *
  * @method string getCluster()
  * @method string getQuotaId()
  * @method string getRegion()
@@ -23,6 +24,7 @@ class GetInstancesStatusCountRequest extends RpcAcsRequest
 
     /**
      * @param string $cluster
+     *
      * @return $this
      */
     public function setCluster($cluster)
@@ -35,6 +37,7 @@ class GetInstancesStatusCountRequest extends RpcAcsRequest
 
     /**
      * @param string $quotaId
+     *
      * @return $this
      */
     public function setQuotaId($quotaId)
@@ -47,6 +50,7 @@ class GetInstancesStatusCountRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)
@@ -59,6 +63,7 @@ class GetInstancesStatusCountRequest extends RpcAcsRequest
 
     /**
      * @param string $quotaName
+     *
      * @return $this
      */
     public function setQuotaName($quotaName)

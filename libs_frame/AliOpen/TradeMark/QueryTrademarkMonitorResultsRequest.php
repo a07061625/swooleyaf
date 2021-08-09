@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryTrademarkMonitorResults
+ *
  * @method string getActionType()
  * @method string getTmName()
  * @method string getApplyYear()
@@ -33,6 +34,7 @@ class QueryTrademarkMonitorResultsRequest extends RpcAcsRequest
 
     /**
      * @param string $actionType
+     *
      * @return $this
      */
     public function setActionType($actionType)
@@ -45,6 +47,7 @@ class QueryTrademarkMonitorResultsRequest extends RpcAcsRequest
 
     /**
      * @param string $tmName
+     *
      * @return $this
      */
     public function setTmName($tmName)
@@ -57,6 +60,7 @@ class QueryTrademarkMonitorResultsRequest extends RpcAcsRequest
 
     /**
      * @param string $applyYear
+     *
      * @return $this
      */
     public function setApplyYear($applyYear)
@@ -69,6 +73,7 @@ class QueryTrademarkMonitorResultsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -81,6 +86,7 @@ class QueryTrademarkMonitorResultsRequest extends RpcAcsRequest
 
     /**
      * @param string $procedureStatus
+     *
      * @return $this
      */
     public function setProcedureStatus($procedureStatus)
@@ -93,6 +99,7 @@ class QueryTrademarkMonitorResultsRequest extends RpcAcsRequest
 
     /**
      * @param string $ruleId
+     *
      * @return $this
      */
     public function setRuleId($ruleId)
@@ -105,6 +112,7 @@ class QueryTrademarkMonitorResultsRequest extends RpcAcsRequest
 
     /**
      * @param string $classification
+     *
      * @return $this
      */
     public function setClassification($classification)
@@ -117,6 +125,7 @@ class QueryTrademarkMonitorResultsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -129,6 +138,7 @@ class QueryTrademarkMonitorResultsRequest extends RpcAcsRequest
 
     /**
      * @param string $registrationNumber
+     *
      * @return $this
      */
     public function setRegistrationNumber($registrationNumber)

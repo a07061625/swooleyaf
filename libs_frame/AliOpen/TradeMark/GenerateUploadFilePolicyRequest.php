@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GenerateUploadFilePolicy
+ *
  * @method string getFileType()
  * @method string getBizId()
  */
@@ -26,6 +27,7 @@ class GenerateUploadFilePolicyRequest extends RpcAcsRequest
 
     /**
      * @param string $fileType
+     *
      * @return $this
      */
     public function setFileType($fileType)
@@ -38,6 +40,7 @@ class GenerateUploadFilePolicyRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryCommunicationLogs
+ *
  * @method string getBizId()
  */
 class QueryCommunicationLogsRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class QueryCommunicationLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)

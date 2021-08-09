@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryMaterial
+ *
  * @method string getId()
  */
 class QueryMaterialRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class QueryMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)

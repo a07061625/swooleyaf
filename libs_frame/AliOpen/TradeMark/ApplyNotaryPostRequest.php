@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ApplyNotaryPost
+ *
  * @method string getReceiverName()
  * @method string getReceiverPhone()
  * @method string getNotaryOrderId()
@@ -28,6 +29,7 @@ class ApplyNotaryPostRequest extends RpcAcsRequest
 
     /**
      * @param string $receiverName
+     *
      * @return $this
      */
     public function setReceiverName($receiverName)
@@ -40,6 +42,7 @@ class ApplyNotaryPostRequest extends RpcAcsRequest
 
     /**
      * @param string $receiverPhone
+     *
      * @return $this
      */
     public function setReceiverPhone($receiverPhone)
@@ -52,6 +55,7 @@ class ApplyNotaryPostRequest extends RpcAcsRequest
 
     /**
      * @param string $notaryOrderId
+     *
      * @return $this
      */
     public function setNotaryOrderId($notaryOrderId)
@@ -64,6 +68,7 @@ class ApplyNotaryPostRequest extends RpcAcsRequest
 
     /**
      * @param string $receiverAddress
+     *
      * @return $this
      */
     public function setReceiverAddress($receiverAddress)

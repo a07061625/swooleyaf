@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryTrademarkMonitorRules
+ *
  * @method string getNotifyUpdate()
  * @method string getPageSize()
  * @method string getRuleName()
@@ -29,6 +30,7 @@ class QueryTrademarkMonitorRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $notifyUpdate
+     *
      * @return $this
      */
     public function setNotifyUpdate($notifyUpdate)
@@ -41,6 +43,7 @@ class QueryTrademarkMonitorRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -53,6 +56,7 @@ class QueryTrademarkMonitorRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $ruleName
+     *
      * @return $this
      */
     public function setRuleName($ruleName)
@@ -65,6 +69,7 @@ class QueryTrademarkMonitorRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -77,6 +82,7 @@ class QueryTrademarkMonitorRulesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)

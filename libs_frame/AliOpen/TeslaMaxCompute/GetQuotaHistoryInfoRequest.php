@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetQuotaHistoryInfo
+ *
  * @method string getCluster()
  * @method string getEndTime()
  * @method string getStartTime()
@@ -24,6 +25,7 @@ class GetQuotaHistoryInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $cluster
+     *
      * @return $this
      */
     public function setCluster($cluster)
@@ -36,6 +38,7 @@ class GetQuotaHistoryInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -48,6 +51,7 @@ class GetQuotaHistoryInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -60,6 +64,7 @@ class GetQuotaHistoryInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)
@@ -72,6 +77,7 @@ class GetQuotaHistoryInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $quotaName
+     *
      * @return $this
      */
     public function setQuotaName($quotaName)

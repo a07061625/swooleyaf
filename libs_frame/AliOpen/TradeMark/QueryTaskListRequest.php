@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryTaskList
+ *
  * @method string getBizType()
  */
 class QueryTaskListRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class QueryTaskListRequest extends RpcAcsRequest
 
     /**
      * @param string $bizType
+     *
      * @return $this
      */
     public function setBizType($bizType)

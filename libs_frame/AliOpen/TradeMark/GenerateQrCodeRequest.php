@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GenerateQrCode
+ *
  * @method string getOssKey()
  * @method string getFieldKey()
  * @method string getUuid()
@@ -27,6 +28,7 @@ class GenerateQrCodeRequest extends RpcAcsRequest
 
     /**
      * @param string $ossKey
+     *
      * @return $this
      */
     public function setOssKey($ossKey)
@@ -39,6 +41,7 @@ class GenerateQrCodeRequest extends RpcAcsRequest
 
     /**
      * @param string $fieldKey
+     *
      * @return $this
      */
     public function setFieldKey($fieldKey)
@@ -51,6 +54,7 @@ class GenerateQrCodeRequest extends RpcAcsRequest
 
     /**
      * @param string $uuid
+     *
      * @return $this
      */
     public function setUuid($uuid)

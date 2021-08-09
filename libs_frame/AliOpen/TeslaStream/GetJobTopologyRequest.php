@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetJobTopology
+ *
  * @method string getJobName()
  */
 class GetJobTopologyRequest extends RpcAcsRequest
@@ -20,6 +21,7 @@ class GetJobTopologyRequest extends RpcAcsRequest
 
     /**
      * @param string $jobName
+     *
      * @return $this
      */
     public function setJobName($jobName)

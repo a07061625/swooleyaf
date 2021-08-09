@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetQuotaInstance
+ *
  * @method string getCluster()
  * @method string getPageSize()
  * @method string getQuotaId()
@@ -26,6 +27,7 @@ class GetQuotaInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $cluster
+     *
      * @return $this
      */
     public function setCluster($cluster)
@@ -38,6 +40,7 @@ class GetQuotaInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -50,6 +53,7 @@ class GetQuotaInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $quotaId
+     *
      * @return $this
      */
     public function setQuotaId($quotaId)
@@ -62,6 +66,7 @@ class GetQuotaInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -74,6 +79,7 @@ class GetQuotaInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)
@@ -86,6 +92,7 @@ class GetQuotaInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $quotaName
+     *
      * @return $this
      */
     public function setQuotaName($quotaName)
@@ -98,6 +105,7 @@ class GetQuotaInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

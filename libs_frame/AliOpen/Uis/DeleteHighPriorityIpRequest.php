@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Uis;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class DeleteHighPriorityIpRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Uis", "2018-08-21", "DeleteHighPriorityIp", "uis", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $resourceOwnerId;
     private $resourceOwnerAccount;
     private $clientToken;
@@ -36,6 +31,12 @@ class DeleteHighPriorityIpRequest extends RpcAcsRequest
     private $highPriorityIp;
     private $uisId;
     private $ownerId;
+
+    public function __construct()
+    {
+        parent::__construct('Uis', '2018-08-21', 'DeleteHighPriorityIp', 'uis', 'openAPI');
+        $this->setMethod('POST');
+    }
 
     public function getResourceOwnerId()
     {
@@ -45,7 +46,7 @@ class DeleteHighPriorityIpRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getResourceOwnerAccount()
@@ -56,7 +57,7 @@ class DeleteHighPriorityIpRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getClientToken()
@@ -67,7 +68,7 @@ class DeleteHighPriorityIpRequest extends RpcAcsRequest
     public function setClientToken($clientToken)
     {
         $this->clientToken = $clientToken;
-        $this->queryParameters["ClientToken"] = $clientToken;
+        $this->queryParameters['ClientToken'] = $clientToken;
     }
 
     public function getOwnerAccount()
@@ -78,7 +79,7 @@ class DeleteHighPriorityIpRequest extends RpcAcsRequest
     public function setOwnerAccount($ownerAccount)
     {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
     public function getHighPriorityIp()
@@ -89,7 +90,7 @@ class DeleteHighPriorityIpRequest extends RpcAcsRequest
     public function setHighPriorityIp($highPriorityIp)
     {
         $this->highPriorityIp = $highPriorityIp;
-        $this->queryParameters["HighPriorityIp"] = $highPriorityIp;
+        $this->queryParameters['HighPriorityIp'] = $highPriorityIp;
     }
 
     public function getUisId()
@@ -100,7 +101,7 @@ class DeleteHighPriorityIpRequest extends RpcAcsRequest
     public function setUisId($uisId)
     {
         $this->uisId = $uisId;
-        $this->queryParameters["UisId"] = $uisId;
+        $this->queryParameters['UisId'] = $uisId;
     }
 
     public function getOwnerId()
@@ -111,6 +112,6 @@ class DeleteHighPriorityIpRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 }

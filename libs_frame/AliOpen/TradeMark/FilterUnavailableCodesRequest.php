@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of FilterUnavailableCodes
+ *
  * @method string getCodes()
  */
 class FilterUnavailableCodesRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class FilterUnavailableCodesRequest extends RpcAcsRequest
 
     /**
      * @param string $codes
+     *
      * @return $this
      */
     public function setCodes($codes)

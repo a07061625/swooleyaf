@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ActionDiskRma
+ *
  * @method string getDiskName()
  * @method string getExecutionId()
  * @method string getDiskSlot()
@@ -26,6 +27,7 @@ class ActionDiskRmaRequest extends RpcAcsRequest
 
     /**
      * @param string $diskName
+     *
      * @return $this
      */
     public function setDiskName($diskName)
@@ -38,6 +40,7 @@ class ActionDiskRmaRequest extends RpcAcsRequest
 
     /**
      * @param string $executionId
+     *
      * @return $this
      */
     public function setExecutionId($executionId)
@@ -50,6 +53,7 @@ class ActionDiskRmaRequest extends RpcAcsRequest
 
     /**
      * @param string $diskSlot
+     *
      * @return $this
      */
     public function setDiskSlot($diskSlot)
@@ -62,6 +66,7 @@ class ActionDiskRmaRequest extends RpcAcsRequest
 
     /**
      * @param string $hostname
+     *
      * @return $this
      */
     public function setHostname($hostname)
@@ -74,6 +79,7 @@ class ActionDiskRmaRequest extends RpcAcsRequest
 
     /**
      * @param string $diskMount
+     *
      * @return $this
      */
     public function setDiskMount($diskMount)
@@ -86,6 +92,7 @@ class ActionDiskRmaRequest extends RpcAcsRequest
 
     /**
      * @param string $diskReason
+     *
      * @return $this
      */
     public function setDiskReason($diskReason)
@@ -98,6 +105,7 @@ class ActionDiskRmaRequest extends RpcAcsRequest
 
     /**
      * @param string $diskSn
+     *
      * @return $this
      */
     public function setDiskSn($diskSn)

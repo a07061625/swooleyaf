@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeBusinessStatus
+ *
  * @method string getPassword()
  * @method string getcallerBid()
  */
@@ -26,6 +27,7 @@ class DescribeBusinessStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -38,6 +40,7 @@ class DescribeBusinessStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $callerBid
+     *
      * @return $this
      */
     public function setcallerBid($callerBid)

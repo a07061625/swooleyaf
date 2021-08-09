@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerUntagResources
+ *
  * @method string getResourceOwnerId()
  * @method string getTagOwnerUid()
  * @method string getDeleteAll()
@@ -37,6 +38,7 @@ class InnerUntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -49,6 +51,7 @@ class InnerUntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $tagOwnerUid
+     *
      * @return $this
      */
     public function setTagOwnerUid($tagOwnerUid)
@@ -61,6 +64,7 @@ class InnerUntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $deleteAll
+     *
      * @return $this
      */
     public function setDeleteAll($deleteAll)
@@ -73,6 +77,7 @@ class InnerUntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $scope
+     *
      * @return $this
      */
     public function setScope($scope)
@@ -85,6 +90,7 @@ class InnerUntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $tagOperator
+     *
      * @return $this
      */
     public function setTagOperator($tagOperator)
@@ -97,6 +103,7 @@ class InnerUntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $tagOwnerBid
+     *
      * @return $this
      */
     public function setTagOwnerBid($tagOwnerBid)
@@ -108,7 +115,6 @@ class InnerUntagResourcesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resourceIds
      * @return $this
      */
     public function setResourceIds(array $resourceIds)
@@ -123,6 +129,7 @@ class InnerUntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -135,6 +142,7 @@ class InnerUntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -147,6 +155,7 @@ class InnerUntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -159,6 +168,7 @@ class InnerUntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -170,7 +180,6 @@ class InnerUntagResourcesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tagKeys
      * @return $this
      */
     public function setTagKeys(array $tagKeys)
@@ -185,6 +194,7 @@ class InnerUntagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $category
+     *
      * @return $this
      */
     public function setCategory($category)

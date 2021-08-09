@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerFixRegion
+ *
  * @method string getResourceOwnerId()
  * @method string getFixRegionId()
  * @method string getTagOwnerUid()
@@ -34,6 +35,7 @@ class InnerFixRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +48,7 @@ class InnerFixRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $fixRegionId
+     *
      * @return $this
      */
     public function setFixRegionId($fixRegionId)
@@ -58,6 +61,7 @@ class InnerFixRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $tagOwnerUid
+     *
      * @return $this
      */
     public function setTagOwnerUid($tagOwnerUid)
@@ -70,6 +74,7 @@ class InnerFixRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceRelId
+     *
      * @return $this
      */
     public function setResourceRelId($resourceRelId)
@@ -82,6 +87,7 @@ class InnerFixRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $tagOwnerBid
+     *
      * @return $this
      */
     public function setTagOwnerBid($tagOwnerBid)
@@ -94,6 +100,7 @@ class InnerFixRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -106,6 +113,7 @@ class InnerFixRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -118,6 +126,7 @@ class InnerFixRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +139,7 @@ class InnerFixRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $tagValueId
+     *
      * @return $this
      */
     public function setTagValueId($tagValueId)
@@ -142,6 +152,7 @@ class InnerFixRegionRequest extends RpcAcsRequest
 
     /**
      * @param string $tagKeyId
+     *
      * @return $this
      */
     public function setTagKeyId($tagKeyId)

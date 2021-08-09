@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InnerTagResources
+ *
  * @method string getResourceOwnerId()
  * @method string getTagOwnerUid()
  * @method string getScope()
@@ -36,6 +37,7 @@ class InnerTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +50,7 @@ class InnerTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $tagOwnerUid
+     *
      * @return $this
      */
     public function setTagOwnerUid($tagOwnerUid)
@@ -60,6 +63,7 @@ class InnerTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $scope
+     *
      * @return $this
      */
     public function setScope($scope)
@@ -72,6 +76,7 @@ class InnerTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $tagOperator
+     *
      * @return $this
      */
     public function setTagOperator($tagOperator)
@@ -83,7 +88,6 @@ class InnerTagResourcesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tags
      * @return $this
      */
     public function setTags(array $tags)
@@ -99,6 +103,7 @@ class InnerTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $tagOwnerBid
+     *
      * @return $this
      */
     public function setTagOwnerBid($tagOwnerBid)
@@ -110,7 +115,6 @@ class InnerTagResourcesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resourceIds
      * @return $this
      */
     public function setResourceIds(array $resourceIds)
@@ -125,6 +129,7 @@ class InnerTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -137,6 +142,7 @@ class InnerTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -149,6 +155,7 @@ class InnerTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -161,6 +168,7 @@ class InnerTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -173,6 +181,7 @@ class InnerTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $category
+     *
      * @return $this
      */
     public function setCategory($category)

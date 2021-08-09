@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RefundProduce
+ *
  * @method string getBizId()
  */
 class RefundProduceRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class RefundProduceRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)

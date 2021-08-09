@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InsertTradeIntentionUser
+ *
  * @method string getMobile()
  * @method string getPartnerCode()
  * @method string getClassification()
@@ -31,6 +32,7 @@ class InsertTradeIntentionUserRequest extends RpcAcsRequest
 
     /**
      * @param string $mobile
+     *
      * @return $this
      */
     public function setMobile($mobile)
@@ -43,6 +45,7 @@ class InsertTradeIntentionUserRequest extends RpcAcsRequest
 
     /**
      * @param string $partnerCode
+     *
      * @return $this
      */
     public function setPartnerCode($partnerCode)
@@ -55,6 +58,7 @@ class InsertTradeIntentionUserRequest extends RpcAcsRequest
 
     /**
      * @param string $classification
+     *
      * @return $this
      */
     public function setClassification($classification)
@@ -67,6 +71,7 @@ class InsertTradeIntentionUserRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -79,6 +84,7 @@ class InsertTradeIntentionUserRequest extends RpcAcsRequest
 
     /**
      * @param string $registerNumber
+     *
      * @return $this
      */
     public function setRegisterNumber($registerNumber)
@@ -91,6 +97,7 @@ class InsertTradeIntentionUserRequest extends RpcAcsRequest
 
     /**
      * @param string $vcode
+     *
      * @return $this
      */
     public function setVcode($vcode)
@@ -103,6 +110,7 @@ class InsertTradeIntentionUserRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

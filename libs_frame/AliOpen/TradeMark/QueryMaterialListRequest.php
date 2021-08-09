@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryMaterialList
+ *
  * @method string getName()
  * @method string getPageSize()
  * @method string getCardNumber()
@@ -31,6 +32,7 @@ class QueryMaterialListRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -43,6 +45,7 @@ class QueryMaterialListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -55,6 +58,7 @@ class QueryMaterialListRequest extends RpcAcsRequest
 
     /**
      * @param string $cardNumber
+     *
      * @return $this
      */
     public function setCardNumber($cardNumber)
@@ -67,6 +71,7 @@ class QueryMaterialListRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -79,6 +84,7 @@ class QueryMaterialListRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)
@@ -91,6 +97,7 @@ class QueryMaterialListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -103,6 +110,7 @@ class QueryMaterialListRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

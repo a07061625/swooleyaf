@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetUserBusinessStatus
+ *
  * @method string getUid()
  * @method string getStatusValue()
  * @method string getService()
@@ -28,6 +29,7 @@ class SetUserBusinessStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $uid
+     *
      * @return $this
      */
     public function setUid($uid)
@@ -40,6 +42,7 @@ class SetUserBusinessStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $statusValue
+     *
      * @return $this
      */
     public function setStatusValue($statusValue)
@@ -52,6 +55,7 @@ class SetUserBusinessStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $service
+     *
      * @return $this
      */
     public function setService($service)
@@ -64,6 +68,7 @@ class SetUserBusinessStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $statusKey
+     *
      * @return $this
      */
     public function setStatusKey($statusKey)

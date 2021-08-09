@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DenySupplement
+ *
  * @method string getId()
  */
 class DenySupplementRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class DenySupplementRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)

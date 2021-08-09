@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BatchGetJobMetricInfo
+ *
  * @method string getJobInfos()
  */
 class BatchGetJobMetricInfoRequest extends RpcAcsRequest
@@ -20,6 +21,7 @@ class BatchGetJobMetricInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $jobInfos
+     *
      * @return $this
      */
     public function setJobInfos($jobInfos)

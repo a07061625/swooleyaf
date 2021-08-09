@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Uis;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class CreateUisConnectionRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Uis", "2018-08-21", "CreateUisConnection", "uis", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $resourceOwnerId;
     private $uisNodeId;
     private $resourceOwnerAccount;
@@ -40,6 +35,12 @@ class CreateUisConnectionRequest extends RpcAcsRequest
     private $ownerId;
     private $greConfig;
 
+    public function __construct()
+    {
+        parent::__construct('Uis', '2018-08-21', 'CreateUisConnection', 'uis', 'openAPI');
+        $this->setMethod('POST');
+    }
+
     public function getResourceOwnerId()
     {
         return $this->resourceOwnerId;
@@ -48,7 +49,7 @@ class CreateUisConnectionRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getUisNodeId()
@@ -59,7 +60,7 @@ class CreateUisConnectionRequest extends RpcAcsRequest
     public function setUisNodeId($uisNodeId)
     {
         $this->uisNodeId = $uisNodeId;
-        $this->queryParameters["UisNodeId"] = $uisNodeId;
+        $this->queryParameters['UisNodeId'] = $uisNodeId;
     }
 
     public function getResourceOwnerAccount()
@@ -70,7 +71,7 @@ class CreateUisConnectionRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getOwnerAccount()
@@ -81,7 +82,7 @@ class CreateUisConnectionRequest extends RpcAcsRequest
     public function setOwnerAccount($ownerAccount)
     {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
     public function getName()
@@ -92,7 +93,7 @@ class CreateUisConnectionRequest extends RpcAcsRequest
     public function setName($name)
     {
         $this->name = $name;
-        $this->queryParameters["Name"] = $name;
+        $this->queryParameters['Name'] = $name;
     }
 
     public function getDescription()
@@ -103,7 +104,7 @@ class CreateUisConnectionRequest extends RpcAcsRequest
     public function setDescription($description)
     {
         $this->description = $description;
-        $this->queryParameters["Description"] = $description;
+        $this->queryParameters['Description'] = $description;
     }
 
     public function getUisProtocol()
@@ -114,7 +115,7 @@ class CreateUisConnectionRequest extends RpcAcsRequest
     public function setUisProtocol($uisProtocol)
     {
         $this->uisProtocol = $uisProtocol;
-        $this->queryParameters["UisProtocol"] = $uisProtocol;
+        $this->queryParameters['UisProtocol'] = $uisProtocol;
     }
 
     public function getSslConfig()
@@ -125,7 +126,7 @@ class CreateUisConnectionRequest extends RpcAcsRequest
     public function setSslConfig($sslConfig)
     {
         $this->sslConfig = $sslConfig;
-        $this->queryParameters["SslConfig"] = $sslConfig;
+        $this->queryParameters['SslConfig'] = $sslConfig;
     }
 
     public function getOwnerId()
@@ -136,7 +137,7 @@ class CreateUisConnectionRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
     public function getGreConfig()
@@ -147,6 +148,6 @@ class CreateUisConnectionRequest extends RpcAcsRequest
     public function setGreConfig($greConfig)
     {
         $this->greConfig = $greConfig;
-        $this->queryParameters["GreConfig"] = $greConfig;
+        $this->queryParameters['GreConfig'] = $greConfig;
     }
 }

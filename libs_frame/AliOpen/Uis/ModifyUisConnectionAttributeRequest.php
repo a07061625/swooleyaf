@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Uis;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class ModifyUisConnectionAttributeRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Uis", "2018-08-21", "ModifyUisConnectionAttribute", "uis", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $resourceOwnerId;
     private $uisConnectionId;
     private $resourceOwnerAccount;
@@ -41,6 +36,12 @@ class ModifyUisConnectionAttributeRequest extends RpcAcsRequest
     private $uisProtocol;
     private $greConfig;
 
+    public function __construct()
+    {
+        parent::__construct('Uis', '2018-08-21', 'ModifyUisConnectionAttribute', 'uis', 'openAPI');
+        $this->setMethod('POST');
+    }
+
     public function getResourceOwnerId()
     {
         return $this->resourceOwnerId;
@@ -49,7 +50,7 @@ class ModifyUisConnectionAttributeRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getUisConnectionId()
@@ -60,7 +61,7 @@ class ModifyUisConnectionAttributeRequest extends RpcAcsRequest
     public function setUisConnectionId($uisConnectionId)
     {
         $this->uisConnectionId = $uisConnectionId;
-        $this->queryParameters["UisConnectionId"] = $uisConnectionId;
+        $this->queryParameters['UisConnectionId'] = $uisConnectionId;
     }
 
     public function getResourceOwnerAccount()
@@ -71,7 +72,7 @@ class ModifyUisConnectionAttributeRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getOwnerAccount()
@@ -82,7 +83,7 @@ class ModifyUisConnectionAttributeRequest extends RpcAcsRequest
     public function setOwnerAccount($ownerAccount)
     {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
     public function getDescription()
@@ -93,7 +94,7 @@ class ModifyUisConnectionAttributeRequest extends RpcAcsRequest
     public function setDescription($description)
     {
         $this->description = $description;
-        $this->queryParameters["Description"] = $description;
+        $this->queryParameters['Description'] = $description;
     }
 
     public function getSslConfig()
@@ -104,7 +105,7 @@ class ModifyUisConnectionAttributeRequest extends RpcAcsRequest
     public function setSslConfig($sslConfig)
     {
         $this->sslConfig = $sslConfig;
-        $this->queryParameters["SslConfig"] = $sslConfig;
+        $this->queryParameters['SslConfig'] = $sslConfig;
     }
 
     public function getOwnerId()
@@ -115,7 +116,7 @@ class ModifyUisConnectionAttributeRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
     public function getUisNodeId()
@@ -126,7 +127,7 @@ class ModifyUisConnectionAttributeRequest extends RpcAcsRequest
     public function setUisNodeId($uisNodeId)
     {
         $this->uisNodeId = $uisNodeId;
-        $this->queryParameters["UisNodeId"] = $uisNodeId;
+        $this->queryParameters['UisNodeId'] = $uisNodeId;
     }
 
     public function getName()
@@ -137,7 +138,7 @@ class ModifyUisConnectionAttributeRequest extends RpcAcsRequest
     public function setName($name)
     {
         $this->name = $name;
-        $this->queryParameters["Name"] = $name;
+        $this->queryParameters['Name'] = $name;
     }
 
     public function getUisProtocol()
@@ -148,7 +149,7 @@ class ModifyUisConnectionAttributeRequest extends RpcAcsRequest
     public function setUisProtocol($uisProtocol)
     {
         $this->uisProtocol = $uisProtocol;
-        $this->queryParameters["UisProtocol"] = $uisProtocol;
+        $this->queryParameters['UisProtocol'] = $uisProtocol;
     }
 
     public function getGreConfig()
@@ -159,6 +160,6 @@ class ModifyUisConnectionAttributeRequest extends RpcAcsRequest
     public function setGreConfig($greConfig)
     {
         $this->greConfig = $greConfig;
-        $this->queryParameters["GreConfig"] = $greConfig;
+        $this->queryParameters['GreConfig'] = $greConfig;
     }
 }

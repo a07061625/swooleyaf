@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateTrademarkOrder
+ *
  * @method string getTmName()
  * @method string getRealUserName()
  * @method string getOrderData()
@@ -44,6 +45,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $tmName
+     *
      * @return $this
      */
     public function setTmName($tmName)
@@ -56,6 +58,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $realUserName
+     *
      * @return $this
      */
     public function setRealUserName($realUserName)
@@ -68,6 +71,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $orderData
+     *
      * @return $this
      */
     public function setOrderData($orderData)
@@ -80,6 +84,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $channel
+     *
      * @return $this
      */
     public function setChannel($channel)
@@ -92,6 +97,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $partnerCode
+     *
      * @return $this
      */
     public function setPartnerCode($partnerCode)
@@ -104,6 +110,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $phoneNum
+     *
      * @return $this
      */
     public function setPhoneNum($phoneNum)
@@ -116,6 +123,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -128,6 +136,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $materialId
+     *
      * @return $this
      */
     public function setMaterialId($materialId)
@@ -140,6 +149,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $userId
+     *
      * @return $this
      */
     public function setUserId($userId)
@@ -152,6 +162,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $tmComment
+     *
      * @return $this
      */
     public function setTmComment($tmComment)
@@ -164,6 +175,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $registerName
+     *
      * @return $this
      */
     public function setRegisterName($registerName)
@@ -176,6 +188,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $tmNameType
+     *
      * @return $this
      */
     public function setTmNameType($tmNameType)
@@ -188,6 +201,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $tmIcon
+     *
      * @return $this
      */
     public function setTmIcon($tmIcon)
@@ -200,6 +214,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $uid
+     *
      * @return $this
      */
     public function setUid($uid)
@@ -212,6 +227,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $isBlackIcon
+     *
      * @return $this
      */
     public function setIsBlackIcon($isBlackIcon)
@@ -224,6 +240,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $renewInfoId
+     *
      * @return $this
      */
     public function setRenewInfoId($renewInfoId)
@@ -236,6 +253,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -248,6 +266,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $rootCode
+     *
      * @return $this
      */
     public function setRootCode($rootCode)
@@ -260,6 +279,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $loaOssKey
+     *
      * @return $this
      */
     public function setLoaOssKey($loaOssKey)
@@ -272,6 +292,7 @@ class CreateTrademarkOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $registerNumber
+     *
      * @return $this
      */
     public function setRegisterNumber($registerNumber)

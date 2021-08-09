@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryCredentialsInfo
+ *
  * @method string getOssKey()
  * @method string getMaterialType()
  * @method string getCompanyName()
@@ -27,6 +28,7 @@ class QueryCredentialsInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $ossKey
+     *
      * @return $this
      */
     public function setOssKey($ossKey)
@@ -39,6 +41,7 @@ class QueryCredentialsInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $materialType
+     *
      * @return $this
      */
     public function setMaterialType($materialType)
@@ -51,6 +54,7 @@ class QueryCredentialsInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $companyName
+     *
      * @return $this
      */
     public function setCompanyName($companyName)

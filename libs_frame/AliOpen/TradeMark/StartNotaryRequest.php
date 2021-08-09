@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of StartNotary
+ *
  * @method string getNotaryOrderId()
  */
 class StartNotaryRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class StartNotaryRequest extends RpcAcsRequest
 
     /**
      * @param string $notaryOrderId
+     *
      * @return $this
      */
     public function setNotaryOrderId($notaryOrderId)

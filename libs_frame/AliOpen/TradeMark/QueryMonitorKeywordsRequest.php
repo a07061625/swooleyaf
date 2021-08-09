@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryMonitorKeywords
+ *
  * @method array getKeywordss()
  * @method string getRuleType()
  */
@@ -25,7 +26,6 @@ class QueryMonitorKeywordsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $keywords
      * @return $this
      */
     public function setKeywordss(array $keywords)
@@ -40,6 +40,7 @@ class QueryMonitorKeywordsRequest extends RpcAcsRequest
 
     /**
      * @param string $ruleType
+     *
      * @return $this
      */
     public function setRuleType($ruleType)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListNotaryInfos
+ *
  * @method string getBizOrderNo()
  * @method string getNotaryType()
  * @method string getPageSize()
@@ -29,6 +30,7 @@ class ListNotaryInfosRequest extends RpcAcsRequest
 
     /**
      * @param string $bizOrderNo
+     *
      * @return $this
      */
     public function setBizOrderNo($bizOrderNo)
@@ -41,6 +43,7 @@ class ListNotaryInfosRequest extends RpcAcsRequest
 
     /**
      * @param string $notaryType
+     *
      * @return $this
      */
     public function setNotaryType($notaryType)
@@ -53,6 +56,7 @@ class ListNotaryInfosRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -65,6 +69,7 @@ class ListNotaryInfosRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -77,6 +82,7 @@ class ListNotaryInfosRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function setToken($token)

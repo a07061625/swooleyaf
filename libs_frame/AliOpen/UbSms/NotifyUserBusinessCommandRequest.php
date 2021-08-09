@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of NotifyUserBusinessCommand
+ *
  * @method string getUid()
  * @method string getPassword()
  * @method string getInstanceId()
@@ -31,6 +32,7 @@ class NotifyUserBusinessCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $uid
+     *
      * @return $this
      */
     public function setUid($uid)
@@ -43,6 +45,7 @@ class NotifyUserBusinessCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -55,6 +58,7 @@ class NotifyUserBusinessCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -67,6 +71,7 @@ class NotifyUserBusinessCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceCode
+     *
      * @return $this
      */
     public function setServiceCode($serviceCode)
@@ -79,6 +84,7 @@ class NotifyUserBusinessCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -91,6 +97,7 @@ class NotifyUserBusinessCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $cmd
+     *
      * @return $this
      */
     public function setCmd($cmd)
@@ -103,6 +110,7 @@ class NotifyUserBusinessCommandRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)

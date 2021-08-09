@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UploadNotaryData
+ *
  * @method string getUploadContext()
  * @method string getBizOrderNo()
  * @method string getNotaryType()
@@ -27,6 +28,7 @@ class UploadNotaryDataRequest extends RpcAcsRequest
 
     /**
      * @param string $uploadContext
+     *
      * @return $this
      */
     public function setUploadContext($uploadContext)
@@ -39,6 +41,7 @@ class UploadNotaryDataRequest extends RpcAcsRequest
 
     /**
      * @param string $bizOrderNo
+     *
      * @return $this
      */
     public function setBizOrderNo($bizOrderNo)
@@ -51,6 +54,7 @@ class UploadNotaryDataRequest extends RpcAcsRequest
 
     /**
      * @param string $notaryType
+     *
      * @return $this
      */
     public function setNotaryType($notaryType)

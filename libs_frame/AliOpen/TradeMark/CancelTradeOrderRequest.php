@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CancelTradeOrder
+ *
  * @method string getBizId()
  */
 class CancelTradeOrderRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class CancelTradeOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)

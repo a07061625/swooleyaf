@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Uis;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class CreateUisNodeRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Uis", "2018-08-21", "CreateUisNode", "uis", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $resourceOwnerId;
     private $uisNodeBandwidth;
     private $resourceOwnerAccount;
@@ -40,6 +35,12 @@ class CreateUisNodeRequest extends RpcAcsRequest
     private $ipAddrsNum;
     private $ownerId;
 
+    public function __construct()
+    {
+        parent::__construct('Uis', '2018-08-21', 'CreateUisNode', 'uis', 'openAPI');
+        $this->setMethod('POST');
+    }
+
     public function getResourceOwnerId()
     {
         return $this->resourceOwnerId;
@@ -48,7 +49,7 @@ class CreateUisNodeRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getUisNodeBandwidth()
@@ -59,7 +60,7 @@ class CreateUisNodeRequest extends RpcAcsRequest
     public function setUisNodeBandwidth($uisNodeBandwidth)
     {
         $this->uisNodeBandwidth = $uisNodeBandwidth;
-        $this->queryParameters["UisNodeBandwidth"] = $uisNodeBandwidth;
+        $this->queryParameters['UisNodeBandwidth'] = $uisNodeBandwidth;
     }
 
     public function getResourceOwnerAccount()
@@ -70,7 +71,7 @@ class CreateUisNodeRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getUisNodeAreaId()
@@ -81,7 +82,7 @@ class CreateUisNodeRequest extends RpcAcsRequest
     public function setUisNodeAreaId($uisNodeAreaId)
     {
         $this->uisNodeAreaId = $uisNodeAreaId;
-        $this->queryParameters["UisNodeAreaId"] = $uisNodeAreaId;
+        $this->queryParameters['UisNodeAreaId'] = $uisNodeAreaId;
     }
 
     public function getOwnerAccount()
@@ -92,7 +93,7 @@ class CreateUisNodeRequest extends RpcAcsRequest
     public function setOwnerAccount($ownerAccount)
     {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
     public function getUisId()
@@ -103,7 +104,7 @@ class CreateUisNodeRequest extends RpcAcsRequest
     public function setUisId($uisId)
     {
         $this->uisId = $uisId;
-        $this->queryParameters["UisId"] = $uisId;
+        $this->queryParameters['UisId'] = $uisId;
     }
 
     public function getName()
@@ -114,7 +115,7 @@ class CreateUisNodeRequest extends RpcAcsRequest
     public function setName($name)
     {
         $this->name = $name;
-        $this->queryParameters["Name"] = $name;
+        $this->queryParameters['Name'] = $name;
     }
 
     public function getDescription()
@@ -125,7 +126,7 @@ class CreateUisNodeRequest extends RpcAcsRequest
     public function setDescription($description)
     {
         $this->description = $description;
-        $this->queryParameters["Description"] = $description;
+        $this->queryParameters['Description'] = $description;
     }
 
     public function getIpAddrsNum()
@@ -136,7 +137,7 @@ class CreateUisNodeRequest extends RpcAcsRequest
     public function setIpAddrsNum($ipAddrsNum)
     {
         $this->ipAddrsNum = $ipAddrsNum;
-        $this->queryParameters["IpAddrsNum"] = $ipAddrsNum;
+        $this->queryParameters['IpAddrsNum'] = $ipAddrsNum;
     }
 
     public function getOwnerId()
@@ -147,6 +148,6 @@ class CreateUisNodeRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 }

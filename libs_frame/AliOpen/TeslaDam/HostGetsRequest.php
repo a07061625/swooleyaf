@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of HostGets
+ *
  * @method string getQuery()
  * @method string getEndTime()
  * @method string getStartTime()
@@ -23,6 +24,7 @@ class HostGetsRequest extends RpcAcsRequest
 
     /**
      * @param string $query
+     *
      * @return $this
      */
     public function setQuery($query)
@@ -35,6 +37,7 @@ class HostGetsRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -47,6 +50,7 @@ class HostGetsRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -59,6 +63,7 @@ class HostGetsRequest extends RpcAcsRequest
 
     /**
      * @param string $queryType
+     *
      * @return $this
      */
     public function setQueryType($queryType)

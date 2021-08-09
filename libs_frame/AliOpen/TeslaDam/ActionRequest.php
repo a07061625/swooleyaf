@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of Action
+ *
  * @method string getOrderId()
  * @method string getStepCode()
  */
@@ -21,6 +22,7 @@ class ActionRequest extends RpcAcsRequest
 
     /**
      * @param string $orderId
+     *
      * @return $this
      */
     public function setOrderId($orderId)
@@ -33,6 +35,7 @@ class ActionRequest extends RpcAcsRequest
 
     /**
      * @param string $stepCode
+     *
      * @return $this
      */
     public function setStepCode($stepCode)

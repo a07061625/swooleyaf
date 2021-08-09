@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryTradeMarkApplicationDetail
+ *
  * @method string getBizId()
  */
 class QueryTradeMarkApplicationDetailRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class QueryTradeMarkApplicationDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)

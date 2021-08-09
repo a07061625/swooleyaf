@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InsertRenewInfo
+ *
  * @method string getEngName()
  * @method string getAddress()
  * @method string getRegisterTime()
@@ -29,6 +30,7 @@ class InsertRenewInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $engName
+     *
      * @return $this
      */
     public function setEngName($engName)
@@ -41,6 +43,7 @@ class InsertRenewInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $address
+     *
      * @return $this
      */
     public function setAddress($address)
@@ -53,6 +56,7 @@ class InsertRenewInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $registerTime
+     *
      * @return $this
      */
     public function setRegisterTime($registerTime)
@@ -65,6 +69,7 @@ class InsertRenewInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $engAddress
+     *
      * @return $this
      */
     public function setEngAddress($engAddress)
@@ -77,6 +82,7 @@ class InsertRenewInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)

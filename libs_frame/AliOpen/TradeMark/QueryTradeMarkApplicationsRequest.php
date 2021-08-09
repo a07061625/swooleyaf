@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryTradeMarkApplications
+ *
  * @method string getTmName()
  * @method string getMaterialName()
  * @method string getOrderId()
@@ -35,6 +36,7 @@ class QueryTradeMarkApplicationsRequest extends RpcAcsRequest
 
     /**
      * @param string $tmName
+     *
      * @return $this
      */
     public function setTmName($tmName)
@@ -47,6 +49,7 @@ class QueryTradeMarkApplicationsRequest extends RpcAcsRequest
 
     /**
      * @param string $materialName
+     *
      * @return $this
      */
     public function setMaterialName($materialName)
@@ -59,6 +62,7 @@ class QueryTradeMarkApplicationsRequest extends RpcAcsRequest
 
     /**
      * @param string $orderId
+     *
      * @return $this
      */
     public function setOrderId($orderId)
@@ -71,6 +75,7 @@ class QueryTradeMarkApplicationsRequest extends RpcAcsRequest
 
     /**
      * @param string $supplementStatus
+     *
      * @return $this
      */
     public function setSupplementStatus($supplementStatus)
@@ -83,6 +88,7 @@ class QueryTradeMarkApplicationsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -95,6 +101,7 @@ class QueryTradeMarkApplicationsRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -107,6 +114,7 @@ class QueryTradeMarkApplicationsRequest extends RpcAcsRequest
 
     /**
      * @param string $tmNumber
+     *
      * @return $this
      */
     public function setTmNumber($tmNumber)
@@ -119,6 +127,7 @@ class QueryTradeMarkApplicationsRequest extends RpcAcsRequest
 
     /**
      * @param string $sortOrder
+     *
      * @return $this
      */
     public function setSortOrder($sortOrder)
@@ -131,6 +140,7 @@ class QueryTradeMarkApplicationsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -143,6 +153,7 @@ class QueryTradeMarkApplicationsRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -155,6 +166,7 @@ class QueryTradeMarkApplicationsRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

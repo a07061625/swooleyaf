@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CheckLoaFill
+ *
  * @method string getOssKey()
  * @method string getType()
  */
@@ -26,6 +27,7 @@ class CheckLoaFillRequest extends RpcAcsRequest
 
     /**
      * @param string $ossKey
+     *
      * @return $this
      */
     public function setOssKey($ossKey)
@@ -38,6 +40,7 @@ class CheckLoaFillRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)

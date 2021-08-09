@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitSupplement
+ *
  * @method string getUploadOssKeyList()
  * @method string getId()
  * @method string getContent()
@@ -27,6 +28,7 @@ class SubmitSupplementRequest extends RpcAcsRequest
 
     /**
      * @param string $uploadOssKeyList
+     *
      * @return $this
      */
     public function setUploadOssKeyList($uploadOssKeyList)
@@ -39,6 +41,7 @@ class SubmitSupplementRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -51,6 +54,7 @@ class SubmitSupplementRequest extends RpcAcsRequest
 
     /**
      * @param string $content
+     *
      * @return $this
      */
     public function setContent($content)

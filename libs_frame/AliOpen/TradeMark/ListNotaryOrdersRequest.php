@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListNotaryOrders
+ *
  * @method string getSortKeyType()
  * @method string getSortByType()
  * @method string getStartOrderDate()
@@ -34,6 +35,7 @@ class ListNotaryOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $sortKeyType
+     *
      * @return $this
      */
     public function setSortKeyType($sortKeyType)
@@ -46,6 +48,7 @@ class ListNotaryOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $sortByType
+     *
      * @return $this
      */
     public function setSortByType($sortByType)
@@ -58,6 +61,7 @@ class ListNotaryOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $startOrderDate
+     *
      * @return $this
      */
     public function setStartOrderDate($startOrderDate)
@@ -70,6 +74,7 @@ class ListNotaryOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -82,6 +87,7 @@ class ListNotaryOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -94,6 +100,7 @@ class ListNotaryOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $notaryType
+     *
      * @return $this
      */
     public function setNotaryType($notaryType)
@@ -106,6 +113,7 @@ class ListNotaryOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $endOrderDate
+     *
      * @return $this
      */
     public function setEndOrderDate($endOrderDate)
@@ -118,6 +126,7 @@ class ListNotaryOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $aliyunOrderId
+     *
      * @return $this
      */
     public function setAliyunOrderId($aliyunOrderId)
@@ -130,6 +139,7 @@ class ListNotaryOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -142,6 +152,7 @@ class ListNotaryOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $notaryStatus
+     *
      * @return $this
      */
     public function setNotaryStatus($notaryStatus)

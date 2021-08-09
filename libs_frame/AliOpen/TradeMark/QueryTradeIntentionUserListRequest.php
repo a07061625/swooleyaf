@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryTradeIntentionUserList
+ *
  * @method string getEnd()
  * @method string getBegin()
  */
@@ -26,6 +27,7 @@ class QueryTradeIntentionUserListRequest extends RpcAcsRequest
 
     /**
      * @param string $end
+     *
      * @return $this
      */
     public function setEnd($end)
@@ -38,6 +40,7 @@ class QueryTradeIntentionUserListRequest extends RpcAcsRequest
 
     /**
      * @param string $begin
+     *
      * @return $this
      */
     public function setBegin($begin)

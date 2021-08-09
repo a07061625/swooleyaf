@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of TagResourcesSystemTags
+ *
  * @method string getResourceOwnerId()
  * @method string getTagOwnerUid()
  * @method string getScope()
@@ -35,6 +36,7 @@ class TagResourcesSystemTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +49,7 @@ class TagResourcesSystemTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $tagOwnerUid
+     *
      * @return $this
      */
     public function setTagOwnerUid($tagOwnerUid)
@@ -59,6 +62,7 @@ class TagResourcesSystemTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $scope
+     *
      * @return $this
      */
     public function setScope($scope)
@@ -71,6 +75,7 @@ class TagResourcesSystemTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $tagOperator
+     *
      * @return $this
      */
     public function setTagOperator($tagOperator)
@@ -82,7 +87,6 @@ class TagResourcesSystemTagsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tags
      * @return $this
      */
     public function setTags(array $tags)
@@ -98,6 +102,7 @@ class TagResourcesSystemTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $tagOwnerBid
+     *
      * @return $this
      */
     public function setTagOwnerBid($tagOwnerBid)
@@ -109,7 +114,6 @@ class TagResourcesSystemTagsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resourceIds
      * @return $this
      */
     public function setResourceIds(array $resourceIds)
@@ -124,6 +128,7 @@ class TagResourcesSystemTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -136,6 +141,7 @@ class TagResourcesSystemTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -148,6 +154,7 @@ class TagResourcesSystemTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -160,6 +167,7 @@ class TagResourcesSystemTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)

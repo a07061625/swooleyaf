@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Uis;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class DeleteUisNodeIpRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Uis", "2018-08-21", "DeleteUisNodeIp", "uis", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $resourceOwnerId;
     private $uisNodeId;
     private $resourceOwnerAccount;
@@ -36,6 +31,12 @@ class DeleteUisNodeIpRequest extends RpcAcsRequest
     private $uisNodeIpAddress;
     private $ownerAccount;
     private $ownerId;
+
+    public function __construct()
+    {
+        parent::__construct('Uis', '2018-08-21', 'DeleteUisNodeIp', 'uis', 'openAPI');
+        $this->setMethod('POST');
+    }
 
     public function getResourceOwnerId()
     {
@@ -45,7 +46,7 @@ class DeleteUisNodeIpRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getUisNodeId()
@@ -56,7 +57,7 @@ class DeleteUisNodeIpRequest extends RpcAcsRequest
     public function setUisNodeId($uisNodeId)
     {
         $this->uisNodeId = $uisNodeId;
-        $this->queryParameters["UisNodeId"] = $uisNodeId;
+        $this->queryParameters['UisNodeId'] = $uisNodeId;
     }
 
     public function getResourceOwnerAccount()
@@ -67,7 +68,7 @@ class DeleteUisNodeIpRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getClientToken()
@@ -78,7 +79,7 @@ class DeleteUisNodeIpRequest extends RpcAcsRequest
     public function setClientToken($clientToken)
     {
         $this->clientToken = $clientToken;
-        $this->queryParameters["ClientToken"] = $clientToken;
+        $this->queryParameters['ClientToken'] = $clientToken;
     }
 
     public function getUisNodeIpAddress()
@@ -89,7 +90,7 @@ class DeleteUisNodeIpRequest extends RpcAcsRequest
     public function setUisNodeIpAddress($uisNodeIpAddress)
     {
         $this->uisNodeIpAddress = $uisNodeIpAddress;
-        $this->queryParameters["UisNodeIpAddress"] = $uisNodeIpAddress;
+        $this->queryParameters['UisNodeIpAddress'] = $uisNodeIpAddress;
     }
 
     public function getOwnerAccount()
@@ -100,7 +101,7 @@ class DeleteUisNodeIpRequest extends RpcAcsRequest
     public function setOwnerAccount($ownerAccount)
     {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
     public function getOwnerId()
@@ -111,6 +112,6 @@ class DeleteUisNodeIpRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 }

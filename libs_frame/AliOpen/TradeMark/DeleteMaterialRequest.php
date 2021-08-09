@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteMaterial
+ *
  * @method string getId()
  */
 class DeleteMaterialRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class DeleteMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)

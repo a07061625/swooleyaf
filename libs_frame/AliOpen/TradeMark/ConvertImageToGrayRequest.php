@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ConvertImageToGray
+ *
  * @method string getOssKey()
  */
 class ConvertImageToGrayRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class ConvertImageToGrayRequest extends RpcAcsRequest
 
     /**
      * @param string $ossKey
+     *
      * @return $this
      */
     public function setOssKey($ossKey)

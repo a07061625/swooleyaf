@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateTmMonitorRule
+ *
  * @method array getNotifyStatuss()
  * @method string getRuleName()
  * @method string getId()
@@ -26,7 +27,6 @@ class UpdateTmMonitorRuleRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $notifyStatus
      * @return $this
      */
     public function setNotifyStatuss(array $notifyStatus)
@@ -41,6 +41,7 @@ class UpdateTmMonitorRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ruleName
+     *
      * @return $this
      */
     public function setRuleName($ruleName)
@@ -53,6 +54,7 @@ class UpdateTmMonitorRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)

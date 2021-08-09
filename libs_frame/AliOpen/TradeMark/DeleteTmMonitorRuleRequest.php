@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteTmMonitorRule
+ *
  * @method string getId()
  */
 class DeleteTmMonitorRuleRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class DeleteTmMonitorRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)

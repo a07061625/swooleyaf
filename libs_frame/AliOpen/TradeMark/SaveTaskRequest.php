@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveTask
+ *
  * @method string getBizType()
  * @method string getRequest()
  */
@@ -26,6 +27,7 @@ class SaveTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $bizType
+     *
      * @return $this
      */
     public function setBizType($bizType)
@@ -38,6 +40,7 @@ class SaveTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $request
+     *
      * @return $this
      */
     public function setRequest($request)

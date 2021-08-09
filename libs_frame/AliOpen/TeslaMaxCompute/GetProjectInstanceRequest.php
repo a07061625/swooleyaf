@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetProjectInstance
+ *
  * @method string getPageSize()
  * @method string getProject()
  * @method string getPageNum()
@@ -24,6 +25,7 @@ class GetProjectInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -36,6 +38,7 @@ class GetProjectInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $project
+     *
      * @return $this
      */
     public function setProject($project)
@@ -48,6 +51,7 @@ class GetProjectInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -60,6 +64,7 @@ class GetProjectInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)
@@ -72,6 +77,7 @@ class GetProjectInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

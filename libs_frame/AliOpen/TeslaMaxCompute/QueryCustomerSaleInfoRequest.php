@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryCustomerSaleInfo
+ *
  * @method string getRegionName()
  */
 class QueryCustomerSaleInfoRequest extends RpcAcsRequest
@@ -20,6 +21,7 @@ class QueryCustomerSaleInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $regionName
+     *
      * @return $this
      */
     public function setRegionName($regionName)

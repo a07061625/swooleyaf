@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryTrademarkPrice
+ *
  * @method string getTmName()
  * @method string getTmIcon()
  * @method string getOrderData()
@@ -29,6 +30,7 @@ class QueryTrademarkPriceRequest extends RpcAcsRequest
 
     /**
      * @param string $tmName
+     *
      * @return $this
      */
     public function setTmName($tmName)
@@ -41,6 +43,7 @@ class QueryTrademarkPriceRequest extends RpcAcsRequest
 
     /**
      * @param string $tmIcon
+     *
      * @return $this
      */
     public function setTmIcon($tmIcon)
@@ -53,6 +56,7 @@ class QueryTrademarkPriceRequest extends RpcAcsRequest
 
     /**
      * @param string $orderData
+     *
      * @return $this
      */
     public function setOrderData($orderData)
@@ -65,6 +69,7 @@ class QueryTrademarkPriceRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -77,6 +82,7 @@ class QueryTrademarkPriceRequest extends RpcAcsRequest
 
     /**
      * @param string $userId
+     *
      * @return $this
      */
     public function setUserId($userId)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CombineLoa
+ *
  * @method string getTrademarkName()
  * @method string getMaterialName()
  * @method string getAddress()
@@ -30,6 +31,7 @@ class CombineLoaRequest extends RpcAcsRequest
 
     /**
      * @param string $trademarkName
+     *
      * @return $this
      */
     public function setTrademarkName($trademarkName)
@@ -42,6 +44,7 @@ class CombineLoaRequest extends RpcAcsRequest
 
     /**
      * @param string $materialName
+     *
      * @return $this
      */
     public function setMaterialName($materialName)
@@ -54,6 +57,7 @@ class CombineLoaRequest extends RpcAcsRequest
 
     /**
      * @param string $address
+     *
      * @return $this
      */
     public function setAddress($address)
@@ -66,6 +70,7 @@ class CombineLoaRequest extends RpcAcsRequest
 
     /**
      * @param string $nationality
+     *
      * @return $this
      */
     public function setNationality($nationality)
@@ -78,6 +83,7 @@ class CombineLoaRequest extends RpcAcsRequest
 
     /**
      * @param string $tmProduceType
+     *
      * @return $this
      */
     public function setTmProduceType($tmProduceType)
@@ -90,6 +96,7 @@ class CombineLoaRequest extends RpcAcsRequest
 
     /**
      * @param string $materialId
+     *
      * @return $this
      */
     public function setMaterialId($materialId)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InsertTmMonitorRule
+ *
  * @method string getStartApplyDate()
  * @method string getNotifyStatus()
  * @method string getRuleType()
@@ -32,6 +33,7 @@ class InsertTmMonitorRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $startApplyDate
+     *
      * @return $this
      */
     public function setStartApplyDate($startApplyDate)
@@ -44,6 +46,7 @@ class InsertTmMonitorRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $notifyStatus
+     *
      * @return $this
      */
     public function setNotifyStatus($notifyStatus)
@@ -56,6 +59,7 @@ class InsertTmMonitorRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ruleType
+     *
      * @return $this
      */
     public function setRuleType($ruleType)
@@ -68,6 +72,7 @@ class InsertTmMonitorRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ruleSource
+     *
      * @return $this
      */
     public function setRuleSource($ruleSource)
@@ -80,6 +85,7 @@ class InsertTmMonitorRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ruleName
+     *
      * @return $this
      */
     public function setRuleName($ruleName)
@@ -92,6 +98,7 @@ class InsertTmMonitorRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $endApplyDate
+     *
      * @return $this
      */
     public function setEndApplyDate($endApplyDate)
@@ -104,6 +111,7 @@ class InsertTmMonitorRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $classification
+     *
      * @return $this
      */
     public function setClassification($classification)
@@ -116,6 +124,7 @@ class InsertTmMonitorRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ruleKeyword
+     *
      * @return $this
      */
     public function setRuleKeyword($ruleKeyword)

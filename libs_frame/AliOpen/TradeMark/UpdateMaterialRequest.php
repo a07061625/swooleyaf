@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateMaterial
+ *
  * @method string getContactEmail()
  * @method string getContactAddress()
  * @method string getEAddress()
@@ -44,6 +45,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $contactEmail
+     *
      * @return $this
      */
     public function setContactEmail($contactEmail)
@@ -56,6 +58,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $contactAddress
+     *
      * @return $this
      */
     public function setContactAddress($contactAddress)
@@ -68,6 +71,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $eAddress
+     *
      * @return $this
      */
     public function setEAddress($eAddress)
@@ -80,6 +84,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $legalNoticeOssKey
+     *
      * @return $this
      */
     public function setLegalNoticeOssKey($legalNoticeOssKey)
@@ -92,6 +97,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $address
+     *
      * @return $this
      */
     public function setAddress($address)
@@ -104,6 +110,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $town
+     *
      * @return $this
      */
     public function setTown($town)
@@ -116,6 +123,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $contactNumber
+     *
      * @return $this
      */
     public function setContactNumber($contactNumber)
@@ -128,6 +136,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $city
+     *
      * @return $this
      */
     public function setCity($city)
@@ -140,6 +149,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $idCardOssKey
+     *
      * @return $this
      */
     public function setIdCardOssKey($idCardOssKey)
@@ -152,6 +162,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $contactName
+     *
      * @return $this
      */
     public function setContactName($contactName)
@@ -164,6 +175,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $passportOssKey
+     *
      * @return $this
      */
     public function setPassportOssKey($passportOssKey)
@@ -176,6 +188,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $contactZipcode
+     *
      * @return $this
      */
     public function setContactZipcode($contactZipcode)
@@ -188,6 +201,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $eName
+     *
      * @return $this
      */
     public function setEName($eName)
@@ -200,6 +214,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $province
+     *
      * @return $this
      */
     public function setProvince($province)
@@ -212,6 +227,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $businessLicenceOssKey
+     *
      * @return $this
      */
     public function setBusinessLicenceOssKey($businessLicenceOssKey)
@@ -224,6 +240,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -236,6 +253,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -248,6 +266,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $cardNumber
+     *
      * @return $this
      */
     public function setCardNumber($cardNumber)
@@ -260,6 +279,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $loaId
+     *
      * @return $this
      */
     public function setLoaId($loaId)
@@ -272,6 +292,7 @@ class UpdateMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $loaOssKey
+     *
      * @return $this
      */
     public function setLoaOssKey($loaOssKey)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BindMaterial
+ *
  * @method string getBizId()
  * @method string getMaterialId()
  * @method string getLoaOssKey()
@@ -27,6 +28,7 @@ class BindMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -39,6 +41,7 @@ class BindMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $materialId
+     *
      * @return $this
      */
     public function setMaterialId($materialId)
@@ -51,6 +54,7 @@ class BindMaterialRequest extends RpcAcsRequest
 
     /**
      * @param string $loaOssKey
+     *
      * @return $this
      */
     public function setLoaOssKey($loaOssKey)

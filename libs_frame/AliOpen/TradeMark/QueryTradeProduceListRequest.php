@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryTradeProduceList
+ *
  * @method string getBuyerStatus()
  * @method string getPageSize()
  * @method string getPreOrderId()
@@ -32,6 +33,7 @@ class QueryTradeProduceListRequest extends RpcAcsRequest
 
     /**
      * @param string $buyerStatus
+     *
      * @return $this
      */
     public function setBuyerStatus($buyerStatus)
@@ -44,6 +46,7 @@ class QueryTradeProduceListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -56,6 +59,7 @@ class QueryTradeProduceListRequest extends RpcAcsRequest
 
     /**
      * @param string $preOrderId
+     *
      * @return $this
      */
     public function setPreOrderId($preOrderId)
@@ -68,6 +72,7 @@ class QueryTradeProduceListRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -80,6 +85,7 @@ class QueryTradeProduceListRequest extends RpcAcsRequest
 
     /**
      * @param string $sortOrder
+     *
      * @return $this
      */
     public function setSortOrder($sortOrder)
@@ -92,6 +98,7 @@ class QueryTradeProduceListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -104,6 +111,7 @@ class QueryTradeProduceListRequest extends RpcAcsRequest
 
     /**
      * @param string $sortFiled
+     *
      * @return $this
      */
     public function setSortFiled($sortFiled)
@@ -116,6 +124,7 @@ class QueryTradeProduceListRequest extends RpcAcsRequest
 
     /**
      * @param string $registerNumber
+     *
      * @return $this
      */
     public function setRegisterNumber($registerNumber)
