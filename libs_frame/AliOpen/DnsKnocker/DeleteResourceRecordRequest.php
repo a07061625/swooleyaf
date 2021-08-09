@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DnsKnocker;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteResourceRecord
+ *
  * @method string getAccessID()
  * @method string getRRTTL()
  * @method string getAccessSecret()
@@ -33,6 +35,7 @@ class DeleteResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $accessID
+     *
      * @return $this
      */
     public function setAccessID($accessID)
@@ -45,6 +48,7 @@ class DeleteResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $rRTTL
+     *
      * @return $this
      */
     public function setRRTTL($rRTTL)
@@ -57,6 +61,7 @@ class DeleteResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $accessSecret
+     *
      * @return $this
      */
     public function setAccessSecret($accessSecret)
@@ -69,6 +74,7 @@ class DeleteResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $rRLine
+     *
      * @return $this
      */
     public function setRRLine($rRLine)
@@ -81,6 +87,7 @@ class DeleteResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -93,6 +100,7 @@ class DeleteResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $rRValue
+     *
      * @return $this
      */
     public function setRRValue($rRValue)
@@ -105,6 +113,7 @@ class DeleteResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneName
+     *
      * @return $this
      */
     public function setZoneName($zoneName)
@@ -117,6 +126,7 @@ class DeleteResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $transactionId
+     *
      * @return $this
      */
     public function setTransactionId($transactionId)
@@ -129,6 +139,7 @@ class DeleteResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $group
+     *
      * @return $this
      */
     public function setGroup($group)
@@ -141,6 +152,7 @@ class DeleteResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $rRType
+     *
      * @return $this
      */
     public function setRRType($rRType)

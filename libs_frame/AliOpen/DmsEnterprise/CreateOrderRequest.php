@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateOrder
+ *
  * @method string getPluginType()
  * @method string getComment()
  * @method string getTid()
@@ -28,6 +30,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $pluginType
+     *
      * @return $this
      */
     public function setPluginType($pluginType)
@@ -40,6 +43,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $comment
+     *
      * @return $this
      */
     public function setComment($comment)
@@ -52,6 +56,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)
@@ -64,6 +69,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $pluginParam
+     *
      * @return $this
      */
     public function setPluginParam($pluginParam)
@@ -76,6 +82,7 @@ class CreateOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $relatedUserList
+     *
      * @return $this
      */
     public function setRelatedUserList($relatedUserList)

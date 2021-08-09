@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetDatabase
+ *
  * @method string getSchemaName()
  * @method string getPort()
  * @method string getHost()
@@ -23,6 +25,7 @@ class GetDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $schemaName
+     *
      * @return $this
      */
     public function setSchemaName($schemaName)
@@ -35,6 +38,7 @@ class GetDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $port
+     *
      * @return $this
      */
     public function setPort($port)
@@ -47,6 +51,7 @@ class GetDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $host
+     *
      * @return $this
      */
     public function setHost($host)
@@ -59,6 +64,7 @@ class GetDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)
@@ -71,6 +77,7 @@ class GetDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $sid
+     *
      * @return $this
      */
     public function setSid($sid)

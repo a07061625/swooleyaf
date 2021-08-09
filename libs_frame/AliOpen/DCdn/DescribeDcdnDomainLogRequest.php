@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDcdnDomainLog
+ *
  * @method string getStartTime()
  * @method string getPageNumber()
  * @method string getPageSize()
@@ -29,6 +31,7 @@ class DescribeDcdnDomainLogRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -41,6 +44,7 @@ class DescribeDcdnDomainLogRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -53,6 +57,7 @@ class DescribeDcdnDomainLogRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -65,6 +70,7 @@ class DescribeDcdnDomainLogRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -77,6 +83,7 @@ class DescribeDcdnDomainLogRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -89,6 +96,7 @@ class DescribeDcdnDomainLogRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDBInstances
+ *
  * @method string getResourceOwnerId()
  * @method string getEngineVersion()
  * @method string getNetworkType()
@@ -46,6 +48,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -58,6 +61,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $engineVersion
+     *
      * @return $this
      */
     public function setEngineVersion($engineVersion)
@@ -70,6 +74,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -82,6 +87,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -94,6 +100,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $replicationFactor
+     *
      * @return $this
      */
     public function setReplicationFactor($replicationFactor)
@@ -106,6 +113,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $expired
+     *
      * @return $this
      */
     public function setExpired($expired)
@@ -118,6 +126,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -130,6 +139,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $engine
+     *
      * @return $this
      */
     public function setEngine($engine)
@@ -142,6 +152,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -154,6 +165,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -166,6 +178,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceDescription
+     *
      * @return $this
      */
     public function setDBInstanceDescription($dBInstanceDescription)
@@ -178,6 +191,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStatus
+     *
      * @return $this
      */
     public function setDBInstanceStatus($dBInstanceStatus)
@@ -189,7 +203,6 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -205,6 +218,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $expireTime
+     *
      * @return $this
      */
     public function setExpireTime($expireTime)
@@ -217,6 +231,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -229,6 +244,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -241,6 +257,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -253,6 +270,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceType
+     *
      * @return $this
      */
     public function setDBInstanceType($dBInstanceType)
@@ -265,6 +283,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)
@@ -277,6 +296,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -289,6 +309,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -301,6 +322,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -313,6 +335,7 @@ class DescribeDBInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $chargeType
+     *
      * @return $this
      */
     public function setChargeType($chargeType)

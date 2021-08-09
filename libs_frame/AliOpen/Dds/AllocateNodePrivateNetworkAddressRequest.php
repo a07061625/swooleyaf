@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AllocateNodePrivateNetworkAddress
+ *
  * @method string getResourceOwnerId()
  * @method string getAccountName()
  * @method string getSecurityToken()
@@ -33,6 +35,7 @@ class AllocateNodePrivateNetworkAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class AllocateNodePrivateNetworkAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $accountName
+     *
      * @return $this
      */
     public function setAccountName($accountName)
@@ -57,6 +61,7 @@ class AllocateNodePrivateNetworkAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -69,6 +74,7 @@ class AllocateNodePrivateNetworkAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -81,6 +87,7 @@ class AllocateNodePrivateNetworkAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeId
+     *
      * @return $this
      */
     public function setNodeId($nodeId)
@@ -93,6 +100,7 @@ class AllocateNodePrivateNetworkAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -105,6 +113,7 @@ class AllocateNodePrivateNetworkAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -117,6 +126,7 @@ class AllocateNodePrivateNetworkAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +139,7 @@ class AllocateNodePrivateNetworkAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $accountPassword
+     *
      * @return $this
      */
     public function setAccountPassword($accountPassword)
@@ -141,6 +152,7 @@ class AllocateNodePrivateNetworkAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)

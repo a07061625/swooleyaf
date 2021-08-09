@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SearchTable
+ *
  * @method string getSearchTarget()
  * @method string getPageSize()
  * @method string getEnvType()
@@ -25,6 +27,7 @@ class SearchTableRequest extends RpcAcsRequest
 
     /**
      * @param string $searchTarget
+     *
      * @return $this
      */
     public function setSearchTarget($searchTarget)
@@ -37,6 +40,7 @@ class SearchTableRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -49,6 +53,7 @@ class SearchTableRequest extends RpcAcsRequest
 
     /**
      * @param string $envType
+     *
      * @return $this
      */
     public function setEnvType($envType)
@@ -61,6 +66,7 @@ class SearchTableRequest extends RpcAcsRequest
 
     /**
      * @param string $searchKey
+     *
      * @return $this
      */
     public function setSearchKey($searchKey)
@@ -73,6 +79,7 @@ class SearchTableRequest extends RpcAcsRequest
 
     /**
      * @param string $searchRange
+     *
      * @return $this
      */
     public function setSearchRange($searchRange)
@@ -85,6 +92,7 @@ class SearchTableRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)
@@ -97,6 +105,7 @@ class SearchTableRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SearchDatabase
+ *
  * @method string getSearchKey()
  * @method string getSearchRange()
  * @method string getTid()
@@ -26,6 +28,7 @@ class SearchDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $searchKey
+     *
      * @return $this
      */
     public function setSearchKey($searchKey)
@@ -38,6 +41,7 @@ class SearchDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $searchRange
+     *
      * @return $this
      */
     public function setSearchRange($searchRange)
@@ -50,6 +54,7 @@ class SearchDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)
@@ -62,6 +67,7 @@ class SearchDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -74,6 +80,7 @@ class SearchDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $searchTarget
+     *
      * @return $this
      */
     public function setSearchTarget($searchTarget)
@@ -86,6 +93,7 @@ class SearchDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -98,6 +106,7 @@ class SearchDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $envType
+     *
      * @return $this
      */
     public function setEnvType($envType)
@@ -110,6 +119,7 @@ class SearchDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $dbType
+     *
      * @return $this
      */
     public function setDbType($dbType)

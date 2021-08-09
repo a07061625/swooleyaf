@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateDcdnIpaDomain
+ *
  * @method string getSources()
  * @method string getResourceGroupId()
  * @method string getSecurityToken()
@@ -29,6 +31,7 @@ class UpdateDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $sources
+     *
      * @return $this
      */
     public function setSources($sources)
@@ -41,6 +44,7 @@ class UpdateDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -53,6 +57,7 @@ class UpdateDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -65,6 +70,7 @@ class UpdateDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $topLevelDomain
+     *
      * @return $this
      */
     public function setTopLevelDomain($topLevelDomain)
@@ -77,6 +83,7 @@ class UpdateDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -89,6 +96,7 @@ class UpdateDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

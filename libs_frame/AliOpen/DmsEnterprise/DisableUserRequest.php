@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DisableUser
+ *
  * @method string getUid()
  * @method string getTid()
  */
@@ -25,6 +27,7 @@ class DisableUserRequest extends RpcAcsRequest
 
     /**
      * @param string $uid
+     *
      * @return $this
      */
     public function setUid($uid)
@@ -37,6 +40,7 @@ class DisableUserRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)

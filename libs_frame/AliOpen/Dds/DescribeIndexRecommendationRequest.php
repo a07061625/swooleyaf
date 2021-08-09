@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeIndexRecommendation
+ *
  * @method string getResourceOwnerId()
  * @method string getStartTime()
  * @method string getPageNumber()
@@ -38,6 +40,7 @@ class DescribeIndexRecommendationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +53,7 @@ class DescribeIndexRecommendationRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -62,6 +66,7 @@ class DescribeIndexRecommendationRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -74,6 +79,7 @@ class DescribeIndexRecommendationRequest extends RpcAcsRequest
 
     /**
      * @param string $database
+     *
      * @return $this
      */
     public function setDatabase($database)
@@ -86,6 +92,7 @@ class DescribeIndexRecommendationRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -98,6 +105,7 @@ class DescribeIndexRecommendationRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -110,6 +118,7 @@ class DescribeIndexRecommendationRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeId
+     *
      * @return $this
      */
     public function setNodeId($nodeId)
@@ -122,6 +131,7 @@ class DescribeIndexRecommendationRequest extends RpcAcsRequest
 
     /**
      * @param string $taskId
+     *
      * @return $this
      */
     public function setTaskId($taskId)
@@ -134,6 +144,7 @@ class DescribeIndexRecommendationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -146,6 +157,7 @@ class DescribeIndexRecommendationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -158,6 +170,7 @@ class DescribeIndexRecommendationRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -170,6 +183,7 @@ class DescribeIndexRecommendationRequest extends RpcAcsRequest
 
     /**
      * @param string $collection
+     *
      * @return $this
      */
     public function setCollection($collection)
@@ -182,6 +196,7 @@ class DescribeIndexRecommendationRequest extends RpcAcsRequest
 
     /**
      * @param string $operationType
+     *
      * @return $this
      */
     public function setOperationType($operationType)
@@ -194,6 +209,7 @@ class DescribeIndexRecommendationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -206,6 +222,7 @@ class DescribeIndexRecommendationRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)

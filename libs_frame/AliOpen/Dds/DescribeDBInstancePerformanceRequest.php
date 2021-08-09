@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDBInstancePerformance
+ *
  * @method string getResourceOwnerId()
  * @method string getRoleId()
  * @method string getStartTime()
@@ -35,6 +37,7 @@ class DescribeDBInstancePerformanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class DescribeDBInstancePerformanceRequest extends RpcAcsRequest
 
     /**
      * @param string $roleId
+     *
      * @return $this
      */
     public function setRoleId($roleId)
@@ -59,6 +63,7 @@ class DescribeDBInstancePerformanceRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -71,6 +76,7 @@ class DescribeDBInstancePerformanceRequest extends RpcAcsRequest
 
     /**
      * @param string $replicaSetRole
+     *
      * @return $this
      */
     public function setReplicaSetRole($replicaSetRole)
@@ -83,6 +89,7 @@ class DescribeDBInstancePerformanceRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -95,6 +102,7 @@ class DescribeDBInstancePerformanceRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -107,6 +115,7 @@ class DescribeDBInstancePerformanceRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeId
+     *
      * @return $this
      */
     public function setNodeId($nodeId)
@@ -119,6 +128,7 @@ class DescribeDBInstancePerformanceRequest extends RpcAcsRequest
 
     /**
      * @param string $key
+     *
      * @return $this
      */
     public function setKey($key)
@@ -131,6 +141,7 @@ class DescribeDBInstancePerformanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -143,6 +154,7 @@ class DescribeDBInstancePerformanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -155,6 +167,7 @@ class DescribeDBInstancePerformanceRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -167,6 +180,7 @@ class DescribeDBInstancePerformanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetUser
+ *
  * @method string getUid()
  * @method string getUserId()
  * @method string getTid()
@@ -21,6 +23,7 @@ class GetUserRequest extends RpcAcsRequest
 
     /**
      * @param string $uid
+     *
      * @return $this
      */
     public function setUid($uid)
@@ -33,6 +36,7 @@ class GetUserRequest extends RpcAcsRequest
 
     /**
      * @param string $userId
+     *
      * @return $this
      */
     public function setUserId($userId)
@@ -45,6 +49,7 @@ class GetUserRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)

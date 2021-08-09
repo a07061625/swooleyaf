@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetOwners
+ *
  * @method string getResourceId()
  * @method string getOwnerIds()
  * @method string getOwnerType()
@@ -27,6 +29,7 @@ class SetOwnersRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceId
+     *
      * @return $this
      */
     public function setResourceId($resourceId)
@@ -39,6 +42,7 @@ class SetOwnersRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerIds
+     *
      * @return $this
      */
     public function setOwnerIds($ownerIds)
@@ -51,6 +55,7 @@ class SetOwnersRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerType
+     *
      * @return $this
      */
     public function setOwnerType($ownerType)
@@ -63,6 +68,7 @@ class SetOwnersRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)

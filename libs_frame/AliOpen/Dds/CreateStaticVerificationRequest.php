@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateStaticVerification
+ *
  * @method string getResourceOwnerId()
  * @method string getSecurityToken()
  * @method string getResourceOwnerAccount()
@@ -31,6 +33,7 @@ class CreateStaticVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class CreateStaticVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -55,6 +59,7 @@ class CreateStaticVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +72,7 @@ class CreateStaticVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -79,6 +85,7 @@ class CreateStaticVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $replicaId
+     *
      * @return $this
      */
     public function setReplicaId($replicaId)
@@ -91,6 +98,7 @@ class CreateStaticVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationInstanceId
+     *
      * @return $this
      */
     public function setDestinationInstanceId($destinationInstanceId)
@@ -103,6 +111,7 @@ class CreateStaticVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceInstanceId
+     *
      * @return $this
      */
     public function setSourceInstanceId($sourceInstanceId)
@@ -115,6 +124,7 @@ class CreateStaticVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

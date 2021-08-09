@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DnsKnocker;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetDomain
+ *
  * @method string getAccessID()
  * @method string getAccessSecret()
  * @method string getDomainName()
@@ -28,6 +30,7 @@ class GetDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $accessID
+     *
      * @return $this
      */
     public function setAccessID($accessID)
@@ -40,6 +43,7 @@ class GetDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $accessSecret
+     *
      * @return $this
      */
     public function setAccessSecret($accessSecret)
@@ -52,6 +56,7 @@ class GetDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -64,6 +69,7 @@ class GetDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $domainLine
+     *
      * @return $this
      */
     public function setDomainLine($domainLine)
@@ -76,6 +82,7 @@ class GetDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $group
+     *
      * @return $this
      */
     public function setGroup($group)

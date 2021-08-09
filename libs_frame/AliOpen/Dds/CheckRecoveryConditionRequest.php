@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CheckRecoveryCondition
+ *
  * @method string getResourceOwnerId()
  * @method string getDatabaseNames()
  * @method string getSecurityToken()
@@ -32,6 +34,7 @@ class CheckRecoveryConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class CheckRecoveryConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $databaseNames
+     *
      * @return $this
      */
     public function setDatabaseNames($databaseNames)
@@ -56,6 +60,7 @@ class CheckRecoveryConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -68,6 +73,7 @@ class CheckRecoveryConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTime
+     *
      * @return $this
      */
     public function setRestoreTime($restoreTime)
@@ -80,6 +86,7 @@ class CheckRecoveryConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -92,6 +99,7 @@ class CheckRecoveryConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +112,7 @@ class CheckRecoveryConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $backupId
+     *
      * @return $this
      */
     public function setBackupId($backupId)
@@ -116,6 +125,7 @@ class CheckRecoveryConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceDBInstance
+     *
      * @return $this
      */
     public function setSourceDBInstance($sourceDBInstance)
@@ -128,6 +138,7 @@ class CheckRecoveryConditionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDcdnService
+ *
  * @method string getOwnerId()
  * @method string getSecurityToken()
  */
@@ -25,6 +27,7 @@ class DescribeDcdnServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -37,6 +40,7 @@ class DescribeDcdnServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)

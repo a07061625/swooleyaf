@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteDcdnIpaDomain
+ *
  * @method string getResourceGroupId()
  * @method string getSecurityToken()
  * @method string getOwnerAccount()
@@ -28,6 +30,7 @@ class DeleteDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -40,6 +43,7 @@ class DeleteDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -52,6 +56,7 @@ class DeleteDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -64,6 +69,7 @@ class DeleteDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -76,6 +82,7 @@ class DeleteDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

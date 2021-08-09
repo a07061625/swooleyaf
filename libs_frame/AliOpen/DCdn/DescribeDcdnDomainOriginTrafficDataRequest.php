@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDcdnDomainOriginTrafficData
+ *
  * @method string getStartTime()
  * @method string getDomainName()
  * @method string getEndTime()
@@ -28,6 +30,7 @@ class DescribeDcdnDomainOriginTrafficDataRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -40,6 +43,7 @@ class DescribeDcdnDomainOriginTrafficDataRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -52,6 +56,7 @@ class DescribeDcdnDomainOriginTrafficDataRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -64,6 +69,7 @@ class DescribeDcdnDomainOriginTrafficDataRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -76,6 +82,7 @@ class DescribeDcdnDomainOriginTrafficDataRequest extends RpcAcsRequest
 
     /**
      * @param string $interval
+     *
      * @return $this
      */
     public function setInterval($interval)

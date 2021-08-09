@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDcdnDomainRealTimeSrcBpsData
+ *
  * @method string getStartTime()
  * @method string getDomainName()
  * @method string getEndTime()
@@ -27,6 +29,7 @@ class DescribeDcdnDomainRealTimeSrcBpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -39,6 +42,7 @@ class DescribeDcdnDomainRealTimeSrcBpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -51,6 +55,7 @@ class DescribeDcdnDomainRealTimeSrcBpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -63,6 +68,7 @@ class DescribeDcdnDomainRealTimeSrcBpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

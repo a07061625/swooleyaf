@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddDcdnIpaDomain
+ *
  * @method string getSources()
  * @method string getResourceGroupId()
  * @method string getSecurityToken()
@@ -32,6 +34,7 @@ class AddDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $sources
+     *
      * @return $this
      */
     public function setSources($sources)
@@ -44,6 +47,7 @@ class AddDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -56,6 +60,7 @@ class AddDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -68,6 +73,7 @@ class AddDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $scope
+     *
      * @return $this
      */
     public function setScope($scope)
@@ -80,6 +86,7 @@ class AddDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $topLevelDomain
+     *
      * @return $this
      */
     public function setTopLevelDomain($topLevelDomain)
@@ -92,6 +99,7 @@ class AddDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +112,7 @@ class AddDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -116,6 +125,7 @@ class AddDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -128,6 +138,7 @@ class AddDcdnIpaDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $checkUrl
+     *
      * @return $this
      */
     public function setCheckUrl($checkUrl)

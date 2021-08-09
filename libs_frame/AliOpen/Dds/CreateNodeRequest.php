@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateNode
+ *
  * @method string getResourceOwnerId()
  * @method string getNodeType()
  * @method string getClientToken()
@@ -35,6 +37,7 @@ class CreateNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +50,7 @@ class CreateNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeType
+     *
      * @return $this
      */
     public function setNodeType($nodeType)
@@ -59,6 +63,7 @@ class CreateNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -71,6 +76,7 @@ class CreateNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeClass
+     *
      * @return $this
      */
     public function setNodeClass($nodeClass)
@@ -83,6 +89,7 @@ class CreateNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -95,6 +102,7 @@ class CreateNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -107,6 +115,7 @@ class CreateNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -119,6 +128,7 @@ class CreateNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $fromApp
+     *
      * @return $this
      */
     public function setFromApp($fromApp)
@@ -131,6 +141,7 @@ class CreateNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -143,6 +154,7 @@ class CreateNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeStorage
+     *
      * @return $this
      */
     public function setNodeStorage($nodeStorage)
@@ -155,6 +167,7 @@ class CreateNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -167,6 +180,7 @@ class CreateNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

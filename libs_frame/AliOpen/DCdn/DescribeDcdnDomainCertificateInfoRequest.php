@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDcdnDomainCertificateInfo
+ *
  * @method string getDomainName()
  * @method string getOwnerId()
  */
@@ -25,6 +27,7 @@ class DescribeDcdnDomainCertificateInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -37,6 +40,7 @@ class DescribeDcdnDomainCertificateInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

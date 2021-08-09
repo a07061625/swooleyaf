@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ApproveOrder
+ *
  * @method string getApprovalType()
  * @method string getTid()
  * @method string getWorkflowInstanceId()
@@ -26,6 +28,7 @@ class ApproveOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $approvalType
+     *
      * @return $this
      */
     public function setApprovalType($approvalType)
@@ -38,6 +41,7 @@ class ApproveOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)
@@ -50,6 +54,7 @@ class ApproveOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $workflowInstanceId
+     *
      * @return $this
      */
     public function setWorkflowInstanceId($workflowInstanceId)

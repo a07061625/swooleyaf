@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetDcdnDomainCertificate
+ *
  * @method string getSSLProtocol()
  * @method string getSecurityToken()
  * @method string getCertType()
@@ -33,6 +35,7 @@ class SetDcdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $sSLProtocol
+     *
      * @return $this
      */
     public function setSSLProtocol($sSLProtocol)
@@ -45,6 +48,7 @@ class SetDcdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -57,6 +61,7 @@ class SetDcdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $certType
+     *
      * @return $this
      */
     public function setCertType($certType)
@@ -69,6 +74,7 @@ class SetDcdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $sSLPri
+     *
      * @return $this
      */
     public function setSSLPri($sSLPri)
@@ -81,6 +87,7 @@ class SetDcdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $forceSet
+     *
      * @return $this
      */
     public function setForceSet($forceSet)
@@ -93,6 +100,7 @@ class SetDcdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $certName
+     *
      * @return $this
      */
     public function setCertName($certName)
@@ -105,6 +113,7 @@ class SetDcdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -117,6 +126,7 @@ class SetDcdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +139,7 @@ class SetDcdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $sSLPub
+     *
      * @return $this
      */
     public function setSSLPub($sSLPub)
@@ -141,6 +152,7 @@ class SetDcdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)

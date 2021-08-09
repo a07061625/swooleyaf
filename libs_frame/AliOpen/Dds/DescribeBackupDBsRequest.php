@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeBackupDBs
+ *
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
  * @method string getSecurityToken()
@@ -33,6 +35,7 @@ class DescribeBackupDBsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class DescribeBackupDBsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -57,6 +61,7 @@ class DescribeBackupDBsRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -69,6 +74,7 @@ class DescribeBackupDBsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -81,6 +87,7 @@ class DescribeBackupDBsRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTime
+     *
      * @return $this
      */
     public function setRestoreTime($restoreTime)
@@ -93,6 +100,7 @@ class DescribeBackupDBsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -105,6 +113,7 @@ class DescribeBackupDBsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -117,6 +126,7 @@ class DescribeBackupDBsRequest extends RpcAcsRequest
 
     /**
      * @param string $backupId
+     *
      * @return $this
      */
     public function setBackupId($backupId)
@@ -129,6 +139,7 @@ class DescribeBackupDBsRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceDBInstance
+     *
      * @return $this
      */
     public function setSourceDBInstance($sourceDBInstance)
@@ -141,6 +152,7 @@ class DescribeBackupDBsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListIndexes
+ *
  * @method string getTableId()
  * @method string getLogic()
  * @method string getTid()
@@ -21,6 +23,7 @@ class ListIndexesRequest extends RpcAcsRequest
 
     /**
      * @param string $tableId
+     *
      * @return $this
      */
     public function setTableId($tableId)
@@ -33,6 +36,7 @@ class ListIndexesRequest extends RpcAcsRequest
 
     /**
      * @param string $logic
+     *
      * @return $this
      */
     public function setLogic($logic)
@@ -45,6 +49,7 @@ class ListIndexesRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)

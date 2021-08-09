@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CheckCloudResourceAuthorized
+ *
  * @method string getResourceOwnerId()
  * @method string getSecurityToken()
  * @method string getDBInstanceId()
@@ -30,6 +32,7 @@ class CheckCloudResourceAuthorizedRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class CheckCloudResourceAuthorizedRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -54,6 +58,7 @@ class CheckCloudResourceAuthorizedRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -66,6 +71,7 @@ class CheckCloudResourceAuthorizedRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -78,6 +84,7 @@ class CheckCloudResourceAuthorizedRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -90,6 +97,7 @@ class CheckCloudResourceAuthorizedRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -102,6 +110,7 @@ class CheckCloudResourceAuthorizedRequest extends RpcAcsRequest
 
     /**
      * @param string $targetRegionId
+     *
      * @return $this
      */
     public function setTargetRegionId($targetRegionId)

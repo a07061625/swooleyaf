@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeInstanceAutoRenewalAttribute
+ *
  * @method string getResourceOwnerId()
  * @method string getPageNumber()
  * @method string getSecurityToken()
@@ -32,6 +34,7 @@ class DescribeInstanceAutoRenewalAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class DescribeInstanceAutoRenewalAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -56,6 +60,7 @@ class DescribeInstanceAutoRenewalAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -68,6 +73,7 @@ class DescribeInstanceAutoRenewalAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -80,6 +86,7 @@ class DescribeInstanceAutoRenewalAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -92,6 +99,7 @@ class DescribeInstanceAutoRenewalAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -104,6 +112,7 @@ class DescribeInstanceAutoRenewalAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -116,6 +125,7 @@ class DescribeInstanceAutoRenewalAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -128,6 +138,7 @@ class DescribeInstanceAutoRenewalAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceType
+     *
      * @return $this
      */
     public function setDBInstanceType($dBInstanceType)

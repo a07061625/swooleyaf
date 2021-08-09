@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDCdnDomainSchdmByProperty
+ *
  * @method string getProperty()
  * @method string getDomainName()
  * @method string getOwnerId()
@@ -26,6 +28,7 @@ class ModifyDCdnDomainSchdmByPropertyRequest extends RpcAcsRequest
 
     /**
      * @param string $property
+     *
      * @return $this
      */
     public function setProperty($property)
@@ -38,6 +41,7 @@ class ModifyDCdnDomainSchdmByPropertyRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -50,6 +54,7 @@ class ModifyDCdnDomainSchdmByPropertyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

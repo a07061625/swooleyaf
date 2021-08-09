@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SyncInstanceMeta
+ *
  * @method string getInstanceId()
  * @method string getIgnoreTable()
  * @method string getTid()
@@ -26,6 +28,7 @@ class SyncInstanceMetaRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -38,6 +41,7 @@ class SyncInstanceMetaRequest extends RpcAcsRequest
 
     /**
      * @param string $ignoreTable
+     *
      * @return $this
      */
     public function setIgnoreTable($ignoreTable)
@@ -50,6 +54,7 @@ class SyncInstanceMetaRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)

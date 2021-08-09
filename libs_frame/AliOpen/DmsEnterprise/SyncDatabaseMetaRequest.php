@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SyncDatabaseMeta
+ *
  * @method string getDbId()
  * @method string getLogic()
  * @method string getTid()
@@ -26,6 +28,7 @@ class SyncDatabaseMetaRequest extends RpcAcsRequest
 
     /**
      * @param string $dbId
+     *
      * @return $this
      */
     public function setDbId($dbId)
@@ -38,6 +41,7 @@ class SyncDatabaseMetaRequest extends RpcAcsRequest
 
     /**
      * @param string $logic
+     *
      * @return $this
      */
     public function setLogic($logic)
@@ -50,6 +54,7 @@ class SyncDatabaseMetaRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetOrderBaseInfo
+ *
  * @method string getOrderId()
  * @method string getTid()
  */
@@ -25,6 +27,7 @@ class GetOrderBaseInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $orderId
+     *
      * @return $this
      */
     public function setOrderId($orderId)
@@ -37,6 +40,7 @@ class GetOrderBaseInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)

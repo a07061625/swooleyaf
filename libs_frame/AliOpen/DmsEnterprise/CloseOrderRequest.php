@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CloseOrder
+ *
  * @method string getOrderId()
  * @method string getCloseReason()
  * @method string getTid()
@@ -26,6 +28,7 @@ class CloseOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $orderId
+     *
      * @return $this
      */
     public function setOrderId($orderId)
@@ -38,6 +41,7 @@ class CloseOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $closeReason
+     *
      * @return $this
      */
     public function setCloseReason($closeReason)
@@ -50,6 +54,7 @@ class CloseOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)

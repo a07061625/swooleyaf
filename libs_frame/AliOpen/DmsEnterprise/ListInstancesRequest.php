@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListInstances
+ *
  * @method string getSearchKey()
  * @method string getTid()
  * @method string getInstanceState()
@@ -27,6 +29,7 @@ class ListInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $searchKey
+     *
      * @return $this
      */
     public function setSearchKey($searchKey)
@@ -39,6 +42,7 @@ class ListInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)
@@ -51,6 +55,7 @@ class ListInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceState
+     *
      * @return $this
      */
     public function setInstanceState($instanceState)
@@ -63,6 +68,7 @@ class ListInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -75,6 +81,7 @@ class ListInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $netType
+     *
      * @return $this
      */
     public function setNetType($netType)
@@ -87,6 +94,7 @@ class ListInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $dbType
+     *
      * @return $this
      */
     public function setDbType($dbType)
@@ -99,6 +107,7 @@ class ListInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $envType
+     *
      * @return $this
      */
     public function setEnvType($envType)
@@ -111,6 +120,7 @@ class ListInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceSource
+     *
      * @return $this
      */
     public function setInstanceSource($instanceSource)
@@ -123,6 +133,7 @@ class ListInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)

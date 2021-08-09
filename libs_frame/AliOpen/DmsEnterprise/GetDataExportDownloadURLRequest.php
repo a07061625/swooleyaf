@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetDataExportDownloadURL
+ *
  * @method string getOrderId()
  * @method string getActionName()
  * @method string getTid()
@@ -26,6 +28,7 @@ class GetDataExportDownloadURLRequest extends RpcAcsRequest
 
     /**
      * @param string $orderId
+     *
      * @return $this
      */
     public function setOrderId($orderId)
@@ -38,6 +41,7 @@ class GetDataExportDownloadURLRequest extends RpcAcsRequest
 
     /**
      * @param string $actionName
+     *
      * @return $this
      */
     public function setActionName($actionName)
@@ -50,6 +54,7 @@ class GetDataExportDownloadURLRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)

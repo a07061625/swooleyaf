@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RegisterInstance
+ *
  * @method string getEcsRegion()
  * @method string getDdlOnline()
  * @method string getUseDsql()
@@ -44,6 +46,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsRegion
+     *
      * @return $this
      */
     public function setEcsRegion($ecsRegion)
@@ -56,6 +59,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ddlOnline
+     *
      * @return $this
      */
     public function setDdlOnline($ddlOnline)
@@ -68,6 +72,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $useDsql
+     *
      * @return $this
      */
     public function setUseDsql($useDsql)
@@ -80,6 +85,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -92,6 +98,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)
@@ -104,6 +111,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $sid
+     *
      * @return $this
      */
     public function setSid($sid)
@@ -116,6 +124,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $dataLinkName
+     *
      * @return $this
      */
     public function setDataLinkName($dataLinkName)
@@ -128,6 +137,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceSource
+     *
      * @return $this
      */
     public function setInstanceSource($instanceSource)
@@ -140,6 +150,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $envType
+     *
      * @return $this
      */
     public function setEnvType($envType)
@@ -152,6 +163,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $host
+     *
      * @return $this
      */
     public function setHost($host)
@@ -164,6 +176,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -176,6 +189,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $queryTimeout
+     *
      * @return $this
      */
     public function setQueryTimeout($queryTimeout)
@@ -188,6 +202,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ecsInstanceId
+     *
      * @return $this
      */
     public function setEcsInstanceId($ecsInstanceId)
@@ -200,6 +215,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $exportTimeout
+     *
      * @return $this
      */
     public function setExportTimeout($exportTimeout)
@@ -212,6 +228,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $databasePassword
+     *
      * @return $this
      */
     public function setDatabasePassword($databasePassword)
@@ -224,6 +241,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceAlias
+     *
      * @return $this
      */
     public function setInstanceAlias($instanceAlias)
@@ -236,6 +254,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $databaseUser
+     *
      * @return $this
      */
     public function setDatabaseUser($databaseUser)
@@ -248,6 +267,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $port
+     *
      * @return $this
      */
     public function setPort($port)
@@ -260,6 +280,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -272,6 +293,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $dbaUid
+     *
      * @return $this
      */
     public function setDbaUid($dbaUid)
@@ -284,6 +306,7 @@ class RegisterInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $safeRule
+     *
      * @return $this
      */
     public function setSafeRule($safeRule)

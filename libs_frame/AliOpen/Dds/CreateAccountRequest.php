@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateAccount
+ *
  * @method string getResourceOwnerId()
  * @method string getAccountPassword()
  * @method string getAccountName()
@@ -32,6 +34,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +47,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $accountPassword
+     *
      * @return $this
      */
     public function setAccountPassword($accountPassword)
@@ -56,6 +60,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $accountName
+     *
      * @return $this
      */
     public function setAccountName($accountName)
@@ -68,6 +73,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -80,6 +86,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -92,6 +99,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +112,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -116,6 +125,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -128,6 +138,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $accountDescription
+     *
      * @return $this
      */
     public function setAccountDescription($accountDescription)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListUserPermissions
+ *
  * @method string getUserId()
  * @method string getTid()
  * @method string getPageNumber()
@@ -27,6 +29,7 @@ class ListUserPermissionsRequest extends RpcAcsRequest
 
     /**
      * @param string $userId
+     *
      * @return $this
      */
     public function setUserId($userId)
@@ -39,6 +42,7 @@ class ListUserPermissionsRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)
@@ -51,6 +55,7 @@ class ListUserPermissionsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -63,6 +68,7 @@ class ListUserPermissionsRequest extends RpcAcsRequest
 
     /**
      * @param string $permType
+     *
      * @return $this
      */
     public function setPermType($permType)
@@ -75,6 +81,7 @@ class ListUserPermissionsRequest extends RpcAcsRequest
 
     /**
      * @param string $databaseName
+     *
      * @return $this
      */
     public function setDatabaseName($databaseName)
@@ -87,6 +94,7 @@ class ListUserPermissionsRequest extends RpcAcsRequest
 
     /**
      * @param string $envType
+     *
      * @return $this
      */
     public function setEnvType($envType)
@@ -99,6 +107,7 @@ class ListUserPermissionsRequest extends RpcAcsRequest
 
     /**
      * @param string $dbType
+     *
      * @return $this
      */
     public function setDbType($dbType)
@@ -111,6 +120,7 @@ class ListUserPermissionsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -123,6 +133,7 @@ class ListUserPermissionsRequest extends RpcAcsRequest
 
     /**
      * @param string $logic
+     *
      * @return $this
      */
     public function setLogic($logic)

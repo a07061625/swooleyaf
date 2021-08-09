@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDBInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getDBInstanceStorage()
  * @method string getCouponNo()
@@ -53,6 +55,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -65,6 +68,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorage
+     *
      * @return $this
      */
     public function setDBInstanceStorage($dBInstanceStorage)
@@ -77,6 +81,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $couponNo
+     *
      * @return $this
      */
     public function setCouponNo($couponNo)
@@ -89,6 +94,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $engineVersion
+     *
      * @return $this
      */
     public function setEngineVersion($engineVersion)
@@ -101,6 +107,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -113,6 +120,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -125,6 +133,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -137,6 +146,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceDescription
+     *
      * @return $this
      */
     public function setDBInstanceDescription($dBInstanceDescription)
@@ -149,6 +159,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $businessInfo
+     *
      * @return $this
      */
     public function setBusinessInfo($businessInfo)
@@ -161,6 +172,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -173,6 +185,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $backupId
+     *
      * @return $this
      */
     public function setBackupId($backupId)
@@ -185,6 +198,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -197,6 +211,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)
@@ -209,6 +224,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $securityIPList
+     *
      * @return $this
      */
     public function setSecurityIPList($securityIPList)
@@ -221,6 +237,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -233,6 +250,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenew
+     *
      * @return $this
      */
     public function setAutoRenew($autoRenew)
@@ -245,6 +263,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -257,6 +276,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -269,6 +289,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $readonlyReplicas
+     *
      * @return $this
      */
     public function setReadonlyReplicas($readonlyReplicas)
@@ -281,6 +302,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $replicationFactor
+     *
      * @return $this
      */
     public function setReplicationFactor($replicationFactor)
@@ -293,6 +315,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $storageEngine
+     *
      * @return $this
      */
     public function setStorageEngine($storageEngine)
@@ -305,6 +328,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $databaseNames
+     *
      * @return $this
      */
     public function setDatabaseNames($databaseNames)
@@ -317,6 +341,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $engine
+     *
      * @return $this
      */
     public function setEngine($engine)
@@ -329,6 +354,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTime
+     *
      * @return $this
      */
     public function setRestoreTime($restoreTime)
@@ -341,6 +367,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -353,6 +380,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $srcDBInstanceId
+     *
      * @return $this
      */
     public function setSrcDBInstanceId($srcDBInstanceId)
@@ -365,6 +393,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -377,6 +406,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $accountPassword
+     *
      * @return $this
      */
     public function setAccountPassword($accountPassword)
@@ -389,6 +419,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -401,6 +432,7 @@ class CreateDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $chargeType
+     *
      * @return $this
      */
     public function setChargeType($chargeType)

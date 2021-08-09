@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBInstanceSpec
+ *
  * @method string getResourceOwnerId()
  * @method string getDBInstanceStorage()
  * @method string getReadonlyReplicas()
@@ -39,6 +41,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +54,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceStorage
+     *
      * @return $this
      */
     public function setDBInstanceStorage($dBInstanceStorage)
@@ -63,6 +67,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $readonlyReplicas
+     *
      * @return $this
      */
     public function setReadonlyReplicas($readonlyReplicas)
@@ -75,6 +80,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $couponNo
+     *
      * @return $this
      */
     public function setCouponNo($couponNo)
@@ -87,6 +93,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $replicationFactor
+     *
      * @return $this
      */
     public function setReplicationFactor($replicationFactor)
@@ -99,6 +106,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -111,6 +119,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $effectiveTime
+     *
      * @return $this
      */
     public function setEffectiveTime($effectiveTime)
@@ -123,6 +132,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -135,6 +145,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $businessInfo
+     *
      * @return $this
      */
     public function setBusinessInfo($businessInfo)
@@ -147,6 +158,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -159,6 +171,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $fromApp
+     *
      * @return $this
      */
     public function setFromApp($fromApp)
@@ -171,6 +184,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -183,6 +197,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -195,6 +210,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -207,6 +223,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceClass
+     *
      * @return $this
      */
     public function setDBInstanceClass($dBInstanceClass)
@@ -219,6 +236,7 @@ class ModifyDBInstanceSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $orderType
+     *
      * @return $this
      */
     public function setOrderType($orderType)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreatePublishGroupTask
+ *
  * @method string getOrderId()
  * @method string getDbId()
  * @method string getPlanTime()
@@ -29,6 +31,7 @@ class CreatePublishGroupTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $orderId
+     *
      * @return $this
      */
     public function setOrderId($orderId)
@@ -41,6 +44,7 @@ class CreatePublishGroupTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $dbId
+     *
      * @return $this
      */
     public function setDbId($dbId)
@@ -53,6 +57,7 @@ class CreatePublishGroupTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $planTime
+     *
      * @return $this
      */
     public function setPlanTime($planTime)
@@ -65,6 +70,7 @@ class CreatePublishGroupTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $logic
+     *
      * @return $this
      */
     public function setLogic($logic)
@@ -77,6 +83,7 @@ class CreatePublishGroupTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)
@@ -89,6 +96,7 @@ class CreatePublishGroupTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $publishStrategy
+     *
      * @return $this
      */
     public function setPublishStrategy($publishStrategy)

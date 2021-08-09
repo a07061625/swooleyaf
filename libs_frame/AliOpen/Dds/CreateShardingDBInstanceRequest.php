@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateShardingDBInstance
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getEngineVersion()
@@ -47,6 +49,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +62,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -71,6 +75,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $engineVersion
+     *
      * @return $this
      */
     public function setEngineVersion($engineVersion)
@@ -83,6 +88,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -94,7 +100,6 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $replicaSet
      * @return $this
      */
     public function setReplicaSets(array $replicaSet)
@@ -110,6 +115,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $storageEngine
+     *
      * @return $this
      */
     public function setStorageEngine($storageEngine)
@@ -122,6 +128,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -134,6 +141,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $engine
+     *
      * @return $this
      */
     public function setEngine($engine)
@@ -146,6 +154,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceDescription
+     *
      * @return $this
      */
     public function setDBInstanceDescription($dBInstanceDescription)
@@ -158,6 +167,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -170,6 +180,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $restoreTime
+     *
      * @return $this
      */
     public function setRestoreTime($restoreTime)
@@ -182,6 +193,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -194,6 +206,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $srcDBInstanceId
+     *
      * @return $this
      */
     public function setSrcDBInstanceId($srcDBInstanceId)
@@ -206,6 +219,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -217,7 +231,6 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $configServer
      * @return $this
      */
     public function setConfigServers(array $configServer)
@@ -233,6 +246,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -244,7 +258,6 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $mongos
      * @return $this
      */
     public function setMongoss(array $mongos)
@@ -259,6 +272,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $securityIPList
+     *
      * @return $this
      */
     public function setSecurityIPList($securityIPList)
@@ -271,6 +285,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -283,6 +298,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $accountPassword
+     *
      * @return $this
      */
     public function setAccountPassword($accountPassword)
@@ -295,6 +311,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenew
+     *
      * @return $this
      */
     public function setAutoRenew($autoRenew)
@@ -307,6 +324,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -319,6 +337,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -331,6 +350,7 @@ class CreateShardingDBInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $chargeType
+     *
      * @return $this
      */
     public function setChargeType($chargeType)

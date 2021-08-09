@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDcdnHttpsDomainList
+ *
  * @method string getPageNumber()
  * @method string getPageSize()
  * @method string getKeyword()
@@ -27,6 +29,7 @@ class DescribeDcdnHttpsDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -39,6 +42,7 @@ class DescribeDcdnHttpsDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -51,6 +55,7 @@ class DescribeDcdnHttpsDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $keyword
+     *
      * @return $this
      */
     public function setKeyword($keyword)
@@ -63,6 +68,7 @@ class DescribeDcdnHttpsDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

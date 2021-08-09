@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBInstanceMaintainTime
+ *
  * @method string getResourceOwnerId()
  * @method string getSecurityToken()
  * @method string getMaintainStartTime()
@@ -31,6 +33,7 @@ class ModifyDBInstanceMaintainTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +46,7 @@ class ModifyDBInstanceMaintainTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -55,6 +59,7 @@ class ModifyDBInstanceMaintainTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $maintainStartTime
+     *
      * @return $this
      */
     public function setMaintainStartTime($maintainStartTime)
@@ -67,6 +72,7 @@ class ModifyDBInstanceMaintainTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -79,6 +85,7 @@ class ModifyDBInstanceMaintainTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -91,6 +98,7 @@ class ModifyDBInstanceMaintainTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -103,6 +111,7 @@ class ModifyDBInstanceMaintainTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -115,6 +124,7 @@ class ModifyDBInstanceMaintainTimeRequest extends RpcAcsRequest
 
     /**
      * @param string $maintainEndTime
+     *
      * @return $this
      */
     public function setMaintainEndTime($maintainEndTime)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyNodeSpec
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getNodeClass()
@@ -36,6 +38,7 @@ class ModifyNodeSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +51,7 @@ class ModifyNodeSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -60,6 +64,7 @@ class ModifyNodeSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeClass
+     *
      * @return $this
      */
     public function setNodeClass($nodeClass)
@@ -72,6 +77,7 @@ class ModifyNodeSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -84,6 +90,7 @@ class ModifyNodeSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $effectiveTime
+     *
      * @return $this
      */
     public function setEffectiveTime($effectiveTime)
@@ -96,6 +103,7 @@ class ModifyNodeSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -108,6 +116,7 @@ class ModifyNodeSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeId
+     *
      * @return $this
      */
     public function setNodeId($nodeId)
@@ -120,6 +129,7 @@ class ModifyNodeSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -132,6 +142,7 @@ class ModifyNodeSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $fromApp
+     *
      * @return $this
      */
     public function setFromApp($fromApp)
@@ -144,6 +155,7 @@ class ModifyNodeSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -156,6 +168,7 @@ class ModifyNodeSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $nodeStorage
+     *
      * @return $this
      */
     public function setNodeStorage($nodeStorage)
@@ -168,6 +181,7 @@ class ModifyNodeSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -180,6 +194,7 @@ class ModifyNodeSpecRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of PreloadDcdnObjectCaches
+ *
  * @method string getArea()
  * @method string getObjectPath()
  * @method string getOwnerId()
@@ -27,6 +29,7 @@ class PreloadDcdnObjectCachesRequest extends RpcAcsRequest
 
     /**
      * @param string $area
+     *
      * @return $this
      */
     public function setArea($area)
@@ -39,6 +42,7 @@ class PreloadDcdnObjectCachesRequest extends RpcAcsRequest
 
     /**
      * @param string $objectPath
+     *
      * @return $this
      */
     public function setObjectPath($objectPath)
@@ -51,6 +55,7 @@ class PreloadDcdnObjectCachesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -63,6 +68,7 @@ class PreloadDcdnObjectCachesRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)

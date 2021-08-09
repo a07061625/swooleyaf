@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetInstance
+ *
  * @method string getPort()
  * @method string getHost()
  * @method string getTid()
@@ -22,6 +24,7 @@ class GetInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $port
+     *
      * @return $this
      */
     public function setPort($port)
@@ -34,6 +37,7 @@ class GetInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $host
+     *
      * @return $this
      */
     public function setHost($host)
@@ -46,6 +50,7 @@ class GetInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)
@@ -58,6 +63,7 @@ class GetInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $sid
+     *
      * @return $this
      */
     public function setSid($sid)

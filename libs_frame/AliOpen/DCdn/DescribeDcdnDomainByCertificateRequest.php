@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDcdnDomainByCertificate
+ *
  * @method string getOwnerId()
  * @method string getSSLPub()
  */
@@ -25,6 +27,7 @@ class DescribeDcdnDomainByCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -37,6 +40,7 @@ class DescribeDcdnDomainByCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $sSLPub
+     *
      * @return $this
      */
     public function setSSLPub($sSLPub)

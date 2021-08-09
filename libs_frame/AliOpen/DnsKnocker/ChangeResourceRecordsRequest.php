@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DnsKnocker;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ChangeResourceRecords
+ *
  * @method string getAccessID()
  * @method string getAccessSecret()
  * @method string getTypes()
@@ -32,6 +34,7 @@ class ChangeResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $accessID
+     *
      * @return $this
      */
     public function setAccessID($accessID)
@@ -44,6 +47,7 @@ class ChangeResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $accessSecret
+     *
      * @return $this
      */
     public function setAccessSecret($accessSecret)
@@ -56,6 +60,7 @@ class ChangeResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $types
+     *
      * @return $this
      */
     public function setTypes($types)
@@ -68,6 +73,7 @@ class ChangeResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceRecords
+     *
      * @return $this
      */
     public function setResourceRecords($resourceRecords)
@@ -80,6 +86,7 @@ class ChangeResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $line
+     *
      * @return $this
      */
     public function setLine($line)
@@ -92,6 +99,7 @@ class ChangeResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -104,6 +112,7 @@ class ChangeResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneName
+     *
      * @return $this
      */
     public function setZoneName($zoneName)
@@ -116,6 +125,7 @@ class ChangeResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $transactionId
+     *
      * @return $this
      */
     public function setTransactionId($transactionId)
@@ -128,6 +138,7 @@ class ChangeResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $group
+     *
      * @return $this
      */
     public function setGroup($group)

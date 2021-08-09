@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DnsKnocker;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetResourceRecords
+ *
  * @method string getAccessID()
  * @method string getAccessSecret()
  * @method string getZone()
@@ -30,6 +32,7 @@ class GetResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $accessID
+     *
      * @return $this
      */
     public function setAccessID($accessID)
@@ -42,6 +45,7 @@ class GetResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $accessSecret
+     *
      * @return $this
      */
     public function setAccessSecret($accessSecret)
@@ -54,6 +58,7 @@ class GetResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $zone
+     *
      * @return $this
      */
     public function setZone($zone)
@@ -66,6 +71,7 @@ class GetResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -78,6 +84,7 @@ class GetResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $transactionId
+     *
      * @return $this
      */
     public function setTransactionId($transactionId)
@@ -90,6 +97,7 @@ class GetResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $domainLine
+     *
      * @return $this
      */
     public function setDomainLine($domainLine)
@@ -102,6 +110,7 @@ class GetResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $group
+     *
      * @return $this
      */
     public function setGroup($group)

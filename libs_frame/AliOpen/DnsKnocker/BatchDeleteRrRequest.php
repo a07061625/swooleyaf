@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DnsKnocker;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BatchDeleteRr
+ *
  * @method string getAccessID()
  * @method string getAccessSecret()
  * @method string getResourceRecords()
@@ -30,6 +32,7 @@ class BatchDeleteRrRequest extends RpcAcsRequest
 
     /**
      * @param string $accessID
+     *
      * @return $this
      */
     public function setAccessID($accessID)
@@ -42,6 +45,7 @@ class BatchDeleteRrRequest extends RpcAcsRequest
 
     /**
      * @param string $accessSecret
+     *
      * @return $this
      */
     public function setAccessSecret($accessSecret)
@@ -54,6 +58,7 @@ class BatchDeleteRrRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceRecords
+     *
      * @return $this
      */
     public function setResourceRecords($resourceRecords)
@@ -66,6 +71,7 @@ class BatchDeleteRrRequest extends RpcAcsRequest
 
     /**
      * @param string $line
+     *
      * @return $this
      */
     public function setLine($line)
@@ -78,6 +84,7 @@ class BatchDeleteRrRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneName
+     *
      * @return $this
      */
     public function setZoneName($zoneName)
@@ -90,6 +97,7 @@ class BatchDeleteRrRequest extends RpcAcsRequest
 
     /**
      * @param string $transactionId
+     *
      * @return $this
      */
     public function setTransactionId($transactionId)
@@ -102,6 +110,7 @@ class BatchDeleteRrRequest extends RpcAcsRequest
 
     /**
      * @param string $group
+     *
      * @return $this
      */
     public function setGroup($group)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DnsKnocker;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteResourceRecords
+ *
  * @method string getAccessID()
  * @method string getAccessSecret()
  * @method string getTypeList()
@@ -31,6 +33,7 @@ class DeleteResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $accessID
+     *
      * @return $this
      */
     public function setAccessID($accessID)
@@ -43,6 +46,7 @@ class DeleteResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $accessSecret
+     *
      * @return $this
      */
     public function setAccessSecret($accessSecret)
@@ -55,6 +59,7 @@ class DeleteResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $typeList
+     *
      * @return $this
      */
     public function setTypeList($typeList)
@@ -67,6 +72,7 @@ class DeleteResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $line
+     *
      * @return $this
      */
     public function setLine($line)
@@ -79,6 +85,7 @@ class DeleteResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -91,6 +98,7 @@ class DeleteResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneName
+     *
      * @return $this
      */
     public function setZoneName($zoneName)
@@ -103,6 +111,7 @@ class DeleteResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $transactionId
+     *
      * @return $this
      */
     public function setTransactionId($transactionId)
@@ -115,6 +124,7 @@ class DeleteResourceRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $group
+     *
      * @return $this
      */
     public function setGroup($group)

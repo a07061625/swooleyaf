@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyGuardDomainMode
+ *
  * @method string getDomainMode()
  * @method string getResourceOwnerId()
  * @method string getSecurityToken()
@@ -30,6 +32,7 @@ class ModifyGuardDomainModeRequest extends RpcAcsRequest
 
     /**
      * @param string $domainMode
+     *
      * @return $this
      */
     public function setDomainMode($domainMode)
@@ -42,6 +45,7 @@ class ModifyGuardDomainModeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +58,7 @@ class ModifyGuardDomainModeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -66,6 +71,7 @@ class ModifyGuardDomainModeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -78,6 +84,7 @@ class ModifyGuardDomainModeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -90,6 +97,7 @@ class ModifyGuardDomainModeRequest extends RpcAcsRequest
 
     /**
      * @param string $replicaId
+     *
      * @return $this
      */
     public function setReplicaId($replicaId)
@@ -102,6 +110,7 @@ class ModifyGuardDomainModeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

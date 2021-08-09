@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetOpLog
+ *
  * @method string getModule()
  * @method string getPageSize()
  * @method string getEndTime()
@@ -24,6 +26,7 @@ class GetOpLogRequest extends RpcAcsRequest
 
     /**
      * @param string $module
+     *
      * @return $this
      */
     public function setModule($module)
@@ -36,6 +39,7 @@ class GetOpLogRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -48,6 +52,7 @@ class GetOpLogRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -60,6 +65,7 @@ class GetOpLogRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -72,6 +78,7 @@ class GetOpLogRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)
@@ -84,6 +91,7 @@ class GetOpLogRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

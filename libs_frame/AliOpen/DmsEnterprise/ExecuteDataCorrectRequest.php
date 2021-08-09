@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ExecuteDataCorrect
+ *
  * @method string getActionDetail()
  * @method string getOrderId()
  * @method string getActionName()
@@ -27,6 +29,7 @@ class ExecuteDataCorrectRequest extends RpcAcsRequest
 
     /**
      * @param string $actionDetail
+     *
      * @return $this
      */
     public function setActionDetail($actionDetail)
@@ -39,6 +42,7 @@ class ExecuteDataCorrectRequest extends RpcAcsRequest
 
     /**
      * @param string $orderId
+     *
      * @return $this
      */
     public function setOrderId($orderId)
@@ -51,6 +55,7 @@ class ExecuteDataCorrectRequest extends RpcAcsRequest
 
     /**
      * @param string $actionName
+     *
      * @return $this
      */
     public function setActionName($actionName)
@@ -63,6 +68,7 @@ class ExecuteDataCorrectRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)

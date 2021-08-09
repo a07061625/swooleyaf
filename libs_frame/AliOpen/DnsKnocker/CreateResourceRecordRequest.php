@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DnsKnocker;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateResourceRecord
+ *
  * @method string getAccessID()
  * @method string getRrTTL()
  * @method string getAccessSecret()
@@ -33,6 +35,7 @@ class CreateResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $accessID
+     *
      * @return $this
      */
     public function setAccessID($accessID)
@@ -45,6 +48,7 @@ class CreateResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $rrTTL
+     *
      * @return $this
      */
     public function setRrTTL($rrTTL)
@@ -57,6 +61,7 @@ class CreateResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $accessSecret
+     *
      * @return $this
      */
     public function setAccessSecret($accessSecret)
@@ -69,6 +74,7 @@ class CreateResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $rrLine
+     *
      * @return $this
      */
     public function setRrLine($rrLine)
@@ -81,6 +87,7 @@ class CreateResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -93,6 +100,7 @@ class CreateResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $rrValue
+     *
      * @return $this
      */
     public function setRrValue($rrValue)
@@ -105,6 +113,7 @@ class CreateResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneName
+     *
      * @return $this
      */
     public function setZoneName($zoneName)
@@ -117,6 +126,7 @@ class CreateResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $transactionId
+     *
      * @return $this
      */
     public function setTransactionId($transactionId)
@@ -129,6 +139,7 @@ class CreateResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $group
+     *
      * @return $this
      */
     public function setGroup($group)
@@ -141,6 +152,7 @@ class CreateResourceRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $rrType
+     *
      * @return $this
      */
     public function setRrType($rrType)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListUsers
+ *
  * @method string getUserState()
  * @method string getRole()
  * @method string getPageSize()
@@ -24,6 +26,7 @@ class ListUsersRequest extends RpcAcsRequest
 
     /**
      * @param string $userState
+     *
      * @return $this
      */
     public function setUserState($userState)
@@ -36,6 +39,7 @@ class ListUsersRequest extends RpcAcsRequest
 
     /**
      * @param string $role
+     *
      * @return $this
      */
     public function setRole($role)
@@ -48,6 +52,7 @@ class ListUsersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -60,6 +65,7 @@ class ListUsersRequest extends RpcAcsRequest
 
     /**
      * @param string $searchKey
+     *
      * @return $this
      */
     public function setSearchKey($searchKey)
@@ -72,6 +78,7 @@ class ListUsersRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)
@@ -84,6 +91,7 @@ class ListUsersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

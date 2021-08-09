@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GrantUserPermission
+ *
  * @method string getPermTypes()
  * @method string getDsType()
  * @method string getExpireDate()
@@ -32,6 +34,7 @@ class GrantUserPermissionRequest extends RpcAcsRequest
 
     /**
      * @param string $permTypes
+     *
      * @return $this
      */
     public function setPermTypes($permTypes)
@@ -44,6 +47,7 @@ class GrantUserPermissionRequest extends RpcAcsRequest
 
     /**
      * @param string $dsType
+     *
      * @return $this
      */
     public function setDsType($dsType)
@@ -56,6 +60,7 @@ class GrantUserPermissionRequest extends RpcAcsRequest
 
     /**
      * @param string $expireDate
+     *
      * @return $this
      */
     public function setExpireDate($expireDate)
@@ -68,6 +73,7 @@ class GrantUserPermissionRequest extends RpcAcsRequest
 
     /**
      * @param string $userId
+     *
      * @return $this
      */
     public function setUserId($userId)
@@ -80,6 +86,7 @@ class GrantUserPermissionRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)
@@ -92,6 +99,7 @@ class GrantUserPermissionRequest extends RpcAcsRequest
 
     /**
      * @param string $dbId
+     *
      * @return $this
      */
     public function setDbId($dbId)
@@ -104,6 +112,7 @@ class GrantUserPermissionRequest extends RpcAcsRequest
 
     /**
      * @param string $tableId
+     *
      * @return $this
      */
     public function setTableId($tableId)
@@ -116,6 +125,7 @@ class GrantUserPermissionRequest extends RpcAcsRequest
 
     /**
      * @param string $logic
+     *
      * @return $this
      */
     public function setLogic($logic)
@@ -128,6 +138,7 @@ class GrantUserPermissionRequest extends RpcAcsRequest
 
     /**
      * @param string $tableName
+     *
      * @return $this
      */
     public function setTableName($tableName)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDcdnDomainRealTimeDetailData
+ *
  * @method string getLocationNameEn()
  * @method string getStartTime()
  * @method string getIspNameEn()
@@ -27,6 +29,7 @@ class DescribeDcdnDomainRealTimeDetailDataRequest extends RpcAcsRequest
 
     /**
      * @param string $locationNameEn
+     *
      * @return $this
      */
     public function setLocationNameEn($locationNameEn)
@@ -39,6 +42,7 @@ class DescribeDcdnDomainRealTimeDetailDataRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -51,6 +55,7 @@ class DescribeDcdnDomainRealTimeDetailDataRequest extends RpcAcsRequest
 
     /**
      * @param string $ispNameEn
+     *
      * @return $this
      */
     public function setIspNameEn($ispNameEn)
@@ -63,6 +68,7 @@ class DescribeDcdnDomainRealTimeDetailDataRequest extends RpcAcsRequest
 
     /**
      * @param string $merge
+     *
      * @return $this
      */
     public function setMerge($merge)
@@ -75,6 +81,7 @@ class DescribeDcdnDomainRealTimeDetailDataRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -87,6 +94,7 @@ class DescribeDcdnDomainRealTimeDetailDataRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -99,6 +107,7 @@ class DescribeDcdnDomainRealTimeDetailDataRequest extends RpcAcsRequest
 
     /**
      * @param string $mergeLocIsp
+     *
      * @return $this
      */
     public function setMergeLocIsp($mergeLocIsp)
@@ -111,6 +120,7 @@ class DescribeDcdnDomainRealTimeDetailDataRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -123,6 +133,7 @@ class DescribeDcdnDomainRealTimeDetailDataRequest extends RpcAcsRequest
 
     /**
      * @param string $field
+     *
      * @return $this
      */
     public function setField($field)

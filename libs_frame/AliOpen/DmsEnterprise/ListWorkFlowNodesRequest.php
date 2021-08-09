@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListWorkFlowNodes
+ *
  * @method string getSearchName()
  * @method string getTid()
  */
@@ -25,6 +27,7 @@ class ListWorkFlowNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $searchName
+     *
      * @return $this
      */
     public function setSearchName($searchName)
@@ -37,6 +40,7 @@ class ListWorkFlowNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)

@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Dm;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -35,7 +36,7 @@ class MailBatchSendRequest extends RpcAcsRequest
 
     public function __construct()
     {
-        parent::__construct("Dm", "2015-11-23", "BatchSendMail");
+        parent::__construct('Dm', '2015-11-23', 'BatchSendMail');
     }
 
     public function getClickTrace()
@@ -46,7 +47,7 @@ class MailBatchSendRequest extends RpcAcsRequest
     public function setClickTrace($clickTrace)
     {
         $this->clickTrace = $clickTrace;
-        $this->queryParameters["ClickTrace"] = $clickTrace;
+        $this->queryParameters['ClickTrace'] = $clickTrace;
     }
 
     public function getOwnerId()
@@ -57,7 +58,7 @@ class MailBatchSendRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
     public function getResourceOwnerAccount()
@@ -68,7 +69,7 @@ class MailBatchSendRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getResourceOwnerId()
@@ -79,7 +80,7 @@ class MailBatchSendRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getTemplateName()
@@ -90,7 +91,7 @@ class MailBatchSendRequest extends RpcAcsRequest
     public function setTemplateName($templateName)
     {
         $this->templateName = $templateName;
-        $this->queryParameters["TemplateName"] = $templateName;
+        $this->queryParameters['TemplateName'] = $templateName;
     }
 
     public function getAccountName()
@@ -101,7 +102,7 @@ class MailBatchSendRequest extends RpcAcsRequest
     public function setAccountName($accountName)
     {
         $this->accountName = $accountName;
-        $this->queryParameters["AccountName"] = $accountName;
+        $this->queryParameters['AccountName'] = $accountName;
     }
 
     public function getReceiversName()
@@ -112,7 +113,7 @@ class MailBatchSendRequest extends RpcAcsRequest
     public function setReceiversName($receiversName)
     {
         $this->receiversName = $receiversName;
-        $this->queryParameters["ReceiversName"] = $receiversName;
+        $this->queryParameters['ReceiversName'] = $receiversName;
     }
 
     public function getAddressType()
@@ -123,7 +124,7 @@ class MailBatchSendRequest extends RpcAcsRequest
     public function setAddressType($addressType)
     {
         $this->addressType = $addressType;
-        $this->queryParameters["AddressType"] = $addressType;
+        $this->queryParameters['AddressType'] = $addressType;
     }
 
     public function getTagName()
@@ -134,6 +135,6 @@ class MailBatchSendRequest extends RpcAcsRequest
     public function setTagName($tagName)
     {
         $this->tagName = $tagName;
-        $this->queryParameters["TagName"] = $tagName;
+        $this->queryParameters['TagName'] = $tagName;
     }
 }

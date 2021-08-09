@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBInstanceNetworkType
+ *
  * @method string getResourceOwnerId()
  * @method string getNetworkType()
  * @method string getSecurityToken()
@@ -34,6 +36,7 @@ class ModifyDBInstanceNetworkTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +49,7 @@ class ModifyDBInstanceNetworkTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -58,6 +62,7 @@ class ModifyDBInstanceNetworkTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -70,6 +75,7 @@ class ModifyDBInstanceNetworkTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $classicExpiredDays
+     *
      * @return $this
      */
     public function setClassicExpiredDays($classicExpiredDays)
@@ -82,6 +88,7 @@ class ModifyDBInstanceNetworkTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -94,6 +101,7 @@ class ModifyDBInstanceNetworkTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -106,6 +114,7 @@ class ModifyDBInstanceNetworkTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -118,6 +127,7 @@ class ModifyDBInstanceNetworkTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +140,7 @@ class ModifyDBInstanceNetworkTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -142,6 +153,7 @@ class ModifyDBInstanceNetworkTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $retainClassic
+     *
      * @return $this
      */
     public function setRetainClassic($retainClassic)
@@ -154,6 +166,7 @@ class ModifyDBInstanceNetworkTypeRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)

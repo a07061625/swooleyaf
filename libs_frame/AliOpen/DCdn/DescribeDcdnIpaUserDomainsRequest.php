@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDcdnIpaUserDomains
+ *
  * @method string getPageNumber()
  * @method string getCheckDomainShow()
  * @method string getResourceGroupId()
@@ -34,6 +36,7 @@ class DescribeDcdnIpaUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -46,6 +49,7 @@ class DescribeDcdnIpaUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $checkDomainShow
+     *
      * @return $this
      */
     public function setCheckDomainShow($checkDomainShow)
@@ -58,6 +62,7 @@ class DescribeDcdnIpaUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -70,6 +75,7 @@ class DescribeDcdnIpaUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -82,6 +88,7 @@ class DescribeDcdnIpaUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -94,6 +101,7 @@ class DescribeDcdnIpaUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $funcFilter
+     *
      * @return $this
      */
     public function setFuncFilter($funcFilter)
@@ -106,6 +114,7 @@ class DescribeDcdnIpaUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -118,6 +127,7 @@ class DescribeDcdnIpaUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +140,7 @@ class DescribeDcdnIpaUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $funcId
+     *
      * @return $this
      */
     public function setFuncId($funcId)
@@ -142,6 +153,7 @@ class DescribeDcdnIpaUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $domainStatus
+     *
      * @return $this
      */
     public function setDomainStatus($domainStatus)
@@ -154,6 +166,7 @@ class DescribeDcdnIpaUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $domainSearchType
+     *
      * @return $this
      */
     public function setDomainSearchType($domainSearchType)

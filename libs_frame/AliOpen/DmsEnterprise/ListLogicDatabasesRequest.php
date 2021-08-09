@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListLogicDatabases
+ *
  * @method string getPageSize()
  * @method string getTid()
  * @method string getPageNumber()
@@ -21,6 +23,7 @@ class ListLogicDatabasesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -33,6 +36,7 @@ class ListLogicDatabasesRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)
@@ -45,6 +49,7 @@ class ListLogicDatabasesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

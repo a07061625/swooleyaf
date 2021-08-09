@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeActiveOperationTask
+ *
  * @method string getResourceOwnerId()
  * @method string getTaskType()
  * @method string getResourceOwnerAccount()
@@ -33,6 +35,7 @@ class DescribeActiveOperationTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class DescribeActiveOperationTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $taskType
+     *
      * @return $this
      */
     public function setTaskType($taskType)
@@ -57,6 +61,7 @@ class DescribeActiveOperationTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -69,6 +74,7 @@ class DescribeActiveOperationTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -81,6 +87,7 @@ class DescribeActiveOperationTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -93,6 +100,7 @@ class DescribeActiveOperationTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -105,6 +113,7 @@ class DescribeActiveOperationTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $isHistory
+     *
      * @return $this
      */
     public function setIsHistory($isHistory)
@@ -117,6 +126,7 @@ class DescribeActiveOperationTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -129,6 +139,7 @@ class DescribeActiveOperationTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -141,6 +152,7 @@ class DescribeActiveOperationTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeReplicationGroup
+ *
  * @method string getDestinationInstanceIds()
  * @method string getResourceOwnerId()
  * @method string getSecurityToken()
@@ -31,6 +33,7 @@ class DescribeReplicationGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationInstanceIds
+     *
      * @return $this
      */
     public function setDestinationInstanceIds($destinationInstanceIds)
@@ -43,6 +46,7 @@ class DescribeReplicationGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -55,6 +59,7 @@ class DescribeReplicationGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -67,6 +72,7 @@ class DescribeReplicationGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +85,7 @@ class DescribeReplicationGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $replicationGroupId
+     *
      * @return $this
      */
     public function setReplicationGroupId($replicationGroupId)
@@ -91,6 +98,7 @@ class DescribeReplicationGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -103,6 +111,7 @@ class DescribeReplicationGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceInstanceId
+     *
      * @return $this
      */
     public function setSourceInstanceId($sourceInstanceId)
@@ -115,6 +124,7 @@ class DescribeReplicationGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

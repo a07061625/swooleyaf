@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetLogicDatabase
+ *
  * @method string getDbId()
  * @method string getTid()
  */
@@ -20,6 +22,7 @@ class GetLogicDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $dbId
+     *
      * @return $this
      */
     public function setDbId($dbId)
@@ -32,6 +35,7 @@ class GetLogicDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)

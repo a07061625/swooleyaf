@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RegisterUser
+ *
  * @method string getRoleNames()
  * @method string getUid()
  * @method string getUserNick()
@@ -28,6 +30,7 @@ class RegisterUserRequest extends RpcAcsRequest
 
     /**
      * @param string $roleNames
+     *
      * @return $this
      */
     public function setRoleNames($roleNames)
@@ -40,6 +43,7 @@ class RegisterUserRequest extends RpcAcsRequest
 
     /**
      * @param string $uid
+     *
      * @return $this
      */
     public function setUid($uid)
@@ -52,6 +56,7 @@ class RegisterUserRequest extends RpcAcsRequest
 
     /**
      * @param string $userNick
+     *
      * @return $this
      */
     public function setUserNick($userNick)
@@ -64,6 +69,7 @@ class RegisterUserRequest extends RpcAcsRequest
 
     /**
      * @param string $mobile
+     *
      * @return $this
      */
     public function setMobile($mobile)
@@ -76,6 +82,7 @@ class RegisterUserRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)

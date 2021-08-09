@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDcdnDomainTopReferVisit
+ *
  * @method string getDomainName()
  * @method string getStartTime()
  * @method string getOwnerId()
@@ -28,6 +30,7 @@ class DescribeDcdnDomainTopReferVisitRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -40,6 +43,7 @@ class DescribeDcdnDomainTopReferVisitRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -52,6 +56,7 @@ class DescribeDcdnDomainTopReferVisitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -64,6 +69,7 @@ class DescribeDcdnDomainTopReferVisitRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -76,6 +82,7 @@ class DescribeDcdnDomainTopReferVisitRequest extends RpcAcsRequest
 
     /**
      * @param string $sortBy
+     *
      * @return $this
      */
     public function setSortBy($sortBy)

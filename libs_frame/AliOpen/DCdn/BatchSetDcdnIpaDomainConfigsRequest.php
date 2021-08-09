@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DCdn;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BatchSetDcdnIpaDomainConfigs
+ *
  * @method string getFunctions()
  * @method string getDomainNames()
  * @method string getSecurityToken()
@@ -28,6 +30,7 @@ class BatchSetDcdnIpaDomainConfigsRequest extends RpcAcsRequest
 
     /**
      * @param string $functions
+     *
      * @return $this
      */
     public function setFunctions($functions)
@@ -40,6 +43,7 @@ class BatchSetDcdnIpaDomainConfigsRequest extends RpcAcsRequest
 
     /**
      * @param string $domainNames
+     *
      * @return $this
      */
     public function setDomainNames($domainNames)
@@ -52,6 +56,7 @@ class BatchSetDcdnIpaDomainConfigsRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -64,6 +69,7 @@ class BatchSetDcdnIpaDomainConfigsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -76,6 +82,7 @@ class BatchSetDcdnIpaDomainConfigsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

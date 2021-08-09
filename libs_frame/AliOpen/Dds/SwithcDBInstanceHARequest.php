@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Dds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SwithcDBInstanceHA
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -33,6 +35,7 @@ class SwithcDBInstanceHARequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +48,7 @@ class SwithcDBInstanceHARequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -57,6 +61,7 @@ class SwithcDBInstanceHARequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -69,6 +74,7 @@ class SwithcDBInstanceHARequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -81,6 +87,7 @@ class SwithcDBInstanceHARequest extends RpcAcsRequest
 
     /**
      * @param string $targetInstanceId
+     *
      * @return $this
      */
     public function setTargetInstanceId($targetInstanceId)
@@ -93,6 +100,7 @@ class SwithcDBInstanceHARequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -105,6 +113,7 @@ class SwithcDBInstanceHARequest extends RpcAcsRequest
 
     /**
      * @param string $switchType
+     *
      * @return $this
      */
     public function setSwitchType($switchType)
@@ -117,6 +126,7 @@ class SwithcDBInstanceHARequest extends RpcAcsRequest
 
     /**
      * @param string $dBInstanceId
+     *
      * @return $this
      */
     public function setDBInstanceId($dBInstanceId)
@@ -129,6 +139,7 @@ class SwithcDBInstanceHARequest extends RpcAcsRequest
 
     /**
      * @param string $sourceInstanceId
+     *
      * @return $this
      */
     public function setSourceInstanceId($sourceInstanceId)
@@ -141,6 +152,7 @@ class SwithcDBInstanceHARequest extends RpcAcsRequest
 
     /**
      * @param string $nodeId
+     *
      * @return $this
      */
     public function setNodeId($nodeId)

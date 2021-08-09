@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DmsEnterprise;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListOrders
+ *
  * @method string getOrderStatus()
  * @method string getSearchContent()
  * @method string getSearchDateType()
@@ -28,6 +30,7 @@ class ListOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $orderStatus
+     *
      * @return $this
      */
     public function setOrderStatus($orderStatus)
@@ -40,6 +43,7 @@ class ListOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $searchContent
+     *
      * @return $this
      */
     public function setSearchContent($searchContent)
@@ -52,6 +56,7 @@ class ListOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $searchDateType
+     *
      * @return $this
      */
     public function setSearchDateType($searchDateType)
@@ -64,6 +69,7 @@ class ListOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -76,6 +82,7 @@ class ListOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -88,6 +95,7 @@ class ListOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $tid
+     *
      * @return $this
      */
     public function setTid($tid)
@@ -100,6 +108,7 @@ class ListOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -112,6 +121,7 @@ class ListOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $pluginType
+     *
      * @return $this
      */
     public function setPluginType($pluginType)
@@ -124,6 +134,7 @@ class ListOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -136,6 +147,7 @@ class ListOrdersRequest extends RpcAcsRequest
 
     /**
      * @param string $orderResultType
+     *
      * @return $this
      */
     public function setOrderResultType($orderResultType)
