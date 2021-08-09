@@ -18,7 +18,7 @@
  * under the License.
  */
 
-namespace AliOpen\DyBaseApi\MNS;
+namespace AliOpen\DyBaseApi\Mns;
 
 class Constants
 {
