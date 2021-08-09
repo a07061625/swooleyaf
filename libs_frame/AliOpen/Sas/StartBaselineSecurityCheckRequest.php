@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of StartBaselineSecurityCheck
+ *
  * @method string getResourceOwnerId()
  * @method array getAssetss()
  * @method string getSourceIp()
@@ -30,6 +31,7 @@ class StartBaselineSecurityCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,7 +43,6 @@ class StartBaselineSecurityCheckRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $assets
      * @return $this
      */
     public function setAssetss(array $assets)
@@ -56,6 +57,7 @@ class StartBaselineSecurityCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -67,7 +69,6 @@ class StartBaselineSecurityCheckRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $itemIds
      * @return $this
      */
     public function setItemIdss(array $itemIds)
@@ -82,6 +83,7 @@ class StartBaselineSecurityCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -94,6 +96,7 @@ class StartBaselineSecurityCheckRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)

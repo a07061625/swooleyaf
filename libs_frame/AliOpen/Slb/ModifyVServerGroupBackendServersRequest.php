@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Slb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class ModifyVServerGroupBackendServersRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Slb", "2014-05-15", "ModifyVServerGroupBackendServers", "slb", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $access_key_id;
     private $vServerGroupId;
     private $resourceOwnerId;
@@ -39,6 +34,12 @@ class ModifyVServerGroupBackendServersRequest extends RpcAcsRequest
     private $ownerId;
     private $tags;
 
+    public function __construct()
+    {
+        parent::__construct('Slb', '2014-05-15', 'ModifyVServerGroupBackendServers', 'slb', 'openAPI');
+        $this->setMethod('POST');
+    }
+
     public function getaccess_key_id()
     {
         return $this->access_key_id;
@@ -47,7 +48,7 @@ class ModifyVServerGroupBackendServersRequest extends RpcAcsRequest
     public function setaccess_key_id($access_key_id)
     {
         $this->access_key_id = $access_key_id;
-        $this->queryParameters["access_key_id"] = $access_key_id;
+        $this->queryParameters['access_key_id'] = $access_key_id;
     }
 
     public function getVServerGroupId()
@@ -58,7 +59,7 @@ class ModifyVServerGroupBackendServersRequest extends RpcAcsRequest
     public function setVServerGroupId($vServerGroupId)
     {
         $this->vServerGroupId = $vServerGroupId;
-        $this->queryParameters["VServerGroupId"] = $vServerGroupId;
+        $this->queryParameters['VServerGroupId'] = $vServerGroupId;
     }
 
     public function getResourceOwnerId()
@@ -69,7 +70,7 @@ class ModifyVServerGroupBackendServersRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getOldBackendServers()
@@ -80,7 +81,7 @@ class ModifyVServerGroupBackendServersRequest extends RpcAcsRequest
     public function setOldBackendServers($oldBackendServers)
     {
         $this->oldBackendServers = $oldBackendServers;
-        $this->queryParameters["OldBackendServers"] = $oldBackendServers;
+        $this->queryParameters['OldBackendServers'] = $oldBackendServers;
     }
 
     public function getResourceOwnerAccount()
@@ -91,7 +92,7 @@ class ModifyVServerGroupBackendServersRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getNewBackendServers()
@@ -102,7 +103,7 @@ class ModifyVServerGroupBackendServersRequest extends RpcAcsRequest
     public function setNewBackendServers($newBackendServers)
     {
         $this->newBackendServers = $newBackendServers;
-        $this->queryParameters["NewBackendServers"] = $newBackendServers;
+        $this->queryParameters['NewBackendServers'] = $newBackendServers;
     }
 
     public function getOwnerAccount()
@@ -113,7 +114,7 @@ class ModifyVServerGroupBackendServersRequest extends RpcAcsRequest
     public function setOwnerAccount($ownerAccount)
     {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
     public function getOwnerId()
@@ -124,7 +125,7 @@ class ModifyVServerGroupBackendServersRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
     public function getTags()
@@ -135,6 +136,6 @@ class ModifyVServerGroupBackendServersRequest extends RpcAcsRequest
     public function setTags($tags)
     {
         $this->tags = $tags;
-        $this->queryParameters["Tags"] = $tags;
+        $this->queryParameters['Tags'] = $tags;
     }
 }

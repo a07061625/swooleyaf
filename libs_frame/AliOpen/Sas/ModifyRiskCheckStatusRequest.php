@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyRiskCheckStatus
+ *
  * @method string getItemId()
  * @method string getResourceOwnerId()
  * @method string getSourceIp()
@@ -30,6 +31,7 @@ class ModifyRiskCheckStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $itemId
+     *
      * @return $this
      */
     public function setItemId($itemId)
@@ -42,6 +44,7 @@ class ModifyRiskCheckStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +57,7 @@ class ModifyRiskCheckStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -66,6 +70,7 @@ class ModifyRiskCheckStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -78,6 +83,7 @@ class ModifyRiskCheckStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $taskId
+     *
      * @return $this
      */
     public function setTaskId($taskId)
@@ -90,6 +96,7 @@ class ModifyRiskCheckStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

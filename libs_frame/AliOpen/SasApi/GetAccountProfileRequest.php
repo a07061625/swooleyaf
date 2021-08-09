@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetAccountProfile
+ *
  * @method string getDeviceIdMd5()
  * @method string getCarrier()
  * @method string getOs()
@@ -36,6 +37,7 @@ class GetAccountProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $deviceIdMd5
+     *
      * @return $this
      */
     public function setDeviceIdMd5($deviceIdMd5)
@@ -48,6 +50,7 @@ class GetAccountProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $carrier
+     *
      * @return $this
      */
     public function setCarrier($carrier)
@@ -60,6 +63,7 @@ class GetAccountProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $os
+     *
      * @return $this
      */
     public function setOs($os)
@@ -72,6 +76,7 @@ class GetAccountProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $phone
+     *
      * @return $this
      */
     public function setPhone($phone)
@@ -84,6 +89,7 @@ class GetAccountProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $requestUrl
+     *
      * @return $this
      */
     public function setRequestUrl($requestUrl)
@@ -96,6 +102,7 @@ class GetAccountProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $ip
+     *
      * @return $this
      */
     public function setIp($ip)
@@ -108,6 +115,7 @@ class GetAccountProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $userAgent
+     *
      * @return $this
      */
     public function setUserAgent($userAgent)
@@ -120,6 +128,7 @@ class GetAccountProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $connectionType
+     *
      * @return $this
      */
     public function setConnectionType($connectionType)
@@ -132,6 +141,7 @@ class GetAccountProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $sensType
+     *
      * @return $this
      */
     public function setSensType($sensType)
@@ -144,6 +154,7 @@ class GetAccountProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $deviceType
+     *
      * @return $this
      */
     public function setDeviceType($deviceType)
@@ -156,6 +167,7 @@ class GetAccountProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $accessTimestamp
+     *
      * @return $this
      */
     public function setAccessTimestamp($accessTimestamp)
@@ -168,6 +180,7 @@ class GetAccountProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $businessType
+     *
      * @return $this
      */
     public function setBusinessType($businessType)

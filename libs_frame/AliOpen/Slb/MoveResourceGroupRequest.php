@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Slb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class MoveResourceGroupRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Slb", "2014-05-15", "MoveResourceGroup", "slb", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $access_key_id;
     private $resourceOwnerId;
     private $resourceId;
@@ -40,6 +35,12 @@ class MoveResourceGroupRequest extends RpcAcsRequest
     private $resourceGroupId;
     private $newResourceGroupId;
 
+    public function __construct()
+    {
+        parent::__construct('Slb', '2014-05-15', 'MoveResourceGroup', 'slb', 'openAPI');
+        $this->setMethod('POST');
+    }
+
     public function getaccess_key_id()
     {
         return $this->access_key_id;
@@ -48,7 +49,7 @@ class MoveResourceGroupRequest extends RpcAcsRequest
     public function setaccess_key_id($access_key_id)
     {
         $this->access_key_id = $access_key_id;
-        $this->queryParameters["access_key_id"] = $access_key_id;
+        $this->queryParameters['access_key_id'] = $access_key_id;
     }
 
     public function getResourceOwnerId()
@@ -59,7 +60,7 @@ class MoveResourceGroupRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getResourceId()
@@ -70,7 +71,7 @@ class MoveResourceGroupRequest extends RpcAcsRequest
     public function setResourceId($resourceId)
     {
         $this->resourceId = $resourceId;
-        $this->queryParameters["ResourceId"] = $resourceId;
+        $this->queryParameters['ResourceId'] = $resourceId;
     }
 
     public function getResourceOwnerAccount()
@@ -81,7 +82,7 @@ class MoveResourceGroupRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getOwnerAccount()
@@ -92,7 +93,7 @@ class MoveResourceGroupRequest extends RpcAcsRequest
     public function setOwnerAccount($ownerAccount)
     {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
     public function getOwnerId()
@@ -103,7 +104,7 @@ class MoveResourceGroupRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
     public function getResourceType()
@@ -114,7 +115,7 @@ class MoveResourceGroupRequest extends RpcAcsRequest
     public function setResourceType($resourceType)
     {
         $this->resourceType = $resourceType;
-        $this->queryParameters["ResourceType"] = $resourceType;
+        $this->queryParameters['ResourceType'] = $resourceType;
     }
 
     public function getTags()
@@ -125,7 +126,7 @@ class MoveResourceGroupRequest extends RpcAcsRequest
     public function setTags($tags)
     {
         $this->tags = $tags;
-        $this->queryParameters["Tags"] = $tags;
+        $this->queryParameters['Tags'] = $tags;
     }
 
     public function getResourceGroupId()
@@ -136,7 +137,7 @@ class MoveResourceGroupRequest extends RpcAcsRequest
     public function setResourceGroupId($resourceGroupId)
     {
         $this->resourceGroupId = $resourceGroupId;
-        $this->queryParameters["ResourceGroupId"] = $resourceGroupId;
+        $this->queryParameters['ResourceGroupId'] = $resourceGroupId;
     }
 
     public function getNewResourceGroupId()
@@ -147,6 +148,6 @@ class MoveResourceGroupRequest extends RpcAcsRequest
     public function setNewResourceGroupId($newResourceGroupId)
     {
         $this->newResourceGroupId = $newResourceGroupId;
-        $this->queryParameters["NewResourceGroupId"] = $newResourceGroupId;
+        $this->queryParameters['NewResourceGroupId'] = $newResourceGroupId;
     }
 }

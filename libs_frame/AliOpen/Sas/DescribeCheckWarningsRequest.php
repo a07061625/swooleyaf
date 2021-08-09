@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCheckWarnings
+ *
  * @method string getSourceIp()
  * @method string getPageSize()
  * @method string getCurrentPage()
@@ -30,6 +31,7 @@ class DescribeCheckWarningsRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -42,6 +44,7 @@ class DescribeCheckWarningsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -54,6 +57,7 @@ class DescribeCheckWarningsRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -66,6 +70,7 @@ class DescribeCheckWarningsRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -78,6 +83,7 @@ class DescribeCheckWarningsRequest extends RpcAcsRequest
 
     /**
      * @param string $riskId
+     *
      * @return $this
      */
     public function setRiskId($riskId)
@@ -90,6 +96,7 @@ class DescribeCheckWarningsRequest extends RpcAcsRequest
 
     /**
      * @param string $uuid
+     *
      * @return $this
      */
     public function setUuid($uuid)

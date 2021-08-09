@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateSmartAccessGateway
+ *
  * @method string getMaxBandWidth()
  * @method string getResourceOwnerId()
  * @method string getDescription()
@@ -51,6 +52,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $maxBandWidth
+     *
      * @return $this
      */
     public function setMaxBandWidth($maxBandWidth)
@@ -63,6 +65,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -75,6 +78,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -87,6 +91,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $receiverTown
+     *
      * @return $this
      */
     public function setReceiverTown($receiverTown)
@@ -99,6 +104,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $receiverDistrict
+     *
      * @return $this
      */
     public function setReceiverDistrict($receiverDistrict)
@@ -111,6 +117,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $userCount
+     *
      * @return $this
      */
     public function setUserCount($userCount)
@@ -123,6 +130,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $receiverAddress
+     *
      * @return $this
      */
     public function setReceiverAddress($receiverAddress)
@@ -135,6 +143,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -147,6 +156,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $buyerMessage
+     *
      * @return $this
      */
     public function setBuyerMessage($buyerMessage)
@@ -159,6 +169,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $hardWareSpec
+     *
      * @return $this
      */
     public function setHardWareSpec($hardWareSpec)
@@ -171,6 +182,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $receiverEmail
+     *
      * @return $this
      */
     public function setReceiverEmail($receiverEmail)
@@ -183,6 +195,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $receiverState
+     *
      * @return $this
      */
     public function setReceiverState($receiverState)
@@ -195,6 +208,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $receiverCity
+     *
      * @return $this
      */
     public function setReceiverCity($receiverCity)
@@ -207,6 +221,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -219,6 +234,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -231,6 +247,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $receiverMobile
+     *
      * @return $this
      */
     public function setReceiverMobile($receiverMobile)
@@ -243,6 +260,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -255,6 +273,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -267,6 +286,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -279,6 +299,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $receiverPhone
+     *
      * @return $this
      */
     public function setReceiverPhone($receiverPhone)
@@ -291,6 +312,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $receiverName
+     *
      * @return $this
      */
     public function setReceiverName($receiverName)
@@ -303,6 +325,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $haType
+     *
      * @return $this
      */
     public function setHaType($haType)
@@ -315,6 +338,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -327,6 +351,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $receiverCountry
+     *
      * @return $this
      */
     public function setReceiverCountry($receiverCountry)
@@ -339,6 +364,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $chargeType
+     *
      * @return $this
      */
     public function setChargeType($chargeType)
@@ -351,6 +377,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $dataPlan
+     *
      * @return $this
      */
     public function setDataPlan($dataPlan)
@@ -363,6 +390,7 @@ class CreateSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $receiverZip
+     *
      * @return $this
      */
     public function setReceiverZip($receiverZip)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDedicatedLineBackup
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -31,6 +32,7 @@ class CreateDedicatedLineBackupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +45,7 @@ class CreateDedicatedLineBackupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -55,6 +58,7 @@ class CreateDedicatedLineBackupRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -67,6 +71,7 @@ class CreateDedicatedLineBackupRequest extends RpcAcsRequest
 
     /**
      * @param string $smartAGId
+     *
      * @return $this
      */
     public function setSmartAGId($smartAGId)
@@ -79,6 +84,7 @@ class CreateDedicatedLineBackupRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -91,6 +97,7 @@ class CreateDedicatedLineBackupRequest extends RpcAcsRequest
 
     /**
      * @param string $vbrId
+     *
      * @return $this
      */
     public function setVbrId($vbrId)
@@ -103,6 +110,7 @@ class CreateDedicatedLineBackupRequest extends RpcAcsRequest
 
     /**
      * @param string $vbrRegionId
+     *
      * @return $this
      */
     public function setVbrRegionId($vbrRegionId)

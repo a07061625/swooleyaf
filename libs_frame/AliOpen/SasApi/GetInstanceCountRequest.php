@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetInstanceCount
+ *
  * @method string getOwnerId()
  */
 class GetInstanceCountRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class GetInstanceCountRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

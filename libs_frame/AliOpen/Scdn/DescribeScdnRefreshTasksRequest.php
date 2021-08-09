@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScdnRefreshTasks
+ *
  * @method string getObjectPath()
  * @method string getStartTime()
  * @method string getPageNumber()
@@ -36,6 +37,7 @@ class DescribeScdnRefreshTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $objectPath
+     *
      * @return $this
      */
     public function setObjectPath($objectPath)
@@ -48,6 +50,7 @@ class DescribeScdnRefreshTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -60,6 +63,7 @@ class DescribeScdnRefreshTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -72,6 +76,7 @@ class DescribeScdnRefreshTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -84,6 +89,7 @@ class DescribeScdnRefreshTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -96,6 +102,7 @@ class DescribeScdnRefreshTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -108,6 +115,7 @@ class DescribeScdnRefreshTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $objectType
+     *
      * @return $this
      */
     public function setObjectType($objectType)
@@ -120,6 +128,7 @@ class DescribeScdnRefreshTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $taskId
+     *
      * @return $this
      */
     public function setTaskId($taskId)
@@ -132,6 +141,7 @@ class DescribeScdnRefreshTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -144,6 +154,7 @@ class DescribeScdnRefreshTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -156,6 +167,7 @@ class DescribeScdnRefreshTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -168,6 +180,7 @@ class DescribeScdnRefreshTasksRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

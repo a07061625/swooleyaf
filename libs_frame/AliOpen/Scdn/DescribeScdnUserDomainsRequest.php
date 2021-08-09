@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScdnUserDomains
+ *
  * @method string getPageNumber()
  * @method string getCheckDomainShow()
  * @method string getResourceGroupId()
@@ -37,6 +38,7 @@ class DescribeScdnUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -49,6 +51,7 @@ class DescribeScdnUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $checkDomainShow
+     *
      * @return $this
      */
     public function setCheckDomainShow($checkDomainShow)
@@ -61,6 +64,7 @@ class DescribeScdnUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -73,6 +77,7 @@ class DescribeScdnUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -85,6 +90,7 @@ class DescribeScdnUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $changeEndTime
+     *
      * @return $this
      */
     public function setChangeEndTime($changeEndTime)
@@ -97,6 +103,7 @@ class DescribeScdnUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -109,6 +116,7 @@ class DescribeScdnUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $funcFilter
+     *
      * @return $this
      */
     public function setFuncFilter($funcFilter)
@@ -121,6 +129,7 @@ class DescribeScdnUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -133,6 +142,7 @@ class DescribeScdnUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -145,6 +155,7 @@ class DescribeScdnUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $funcId
+     *
      * @return $this
      */
     public function setFuncId($funcId)
@@ -157,6 +168,7 @@ class DescribeScdnUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $domainStatus
+     *
      * @return $this
      */
     public function setDomainStatus($domainStatus)
@@ -169,6 +181,7 @@ class DescribeScdnUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $domainSearchType
+     *
      * @return $this
      */
     public function setDomainSearchType($domainSearchType)
@@ -181,6 +194,7 @@ class DescribeScdnUserDomainsRequest extends RpcAcsRequest
 
     /**
      * @param string $changeStartTime
+     *
      * @return $this
      */
     public function setChangeStartTime($changeStartTime)

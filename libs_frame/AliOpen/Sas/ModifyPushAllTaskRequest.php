@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyPushAllTask
+ *
  * @method string getSourceIp()
  * @method string getTasks()
  * @method string getUuids()
@@ -27,6 +28,7 @@ class ModifyPushAllTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -39,6 +41,7 @@ class ModifyPushAllTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $tasks
+     *
      * @return $this
      */
     public function setTasks($tasks)
@@ -51,6 +54,7 @@ class ModifyPushAllTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $uuids
+     *
      * @return $this
      */
     public function setUuids($uuids)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeEvents
+ *
  * @method string getProductCode()
  * @method string getFeatureType()
  * @method string getEndTime()
@@ -39,6 +40,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $productCode
+     *
      * @return $this
      */
     public function setProductCode($productCode)
@@ -51,6 +53,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -63,6 +66,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -75,6 +79,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -87,6 +92,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -99,6 +105,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $userId
+     *
      * @return $this
      */
     public function setUserId($userId)
@@ -111,6 +118,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $typeCode
+     *
      * @return $this
      */
     public function setTypeCode($typeCode)
@@ -123,6 +131,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $subTypeCode
+     *
      * @return $this
      */
     public function setSubTypeCode($subTypeCode)
@@ -135,6 +144,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -147,6 +157,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $targetProductCode
+     *
      * @return $this
      */
     public function setTargetProductCode($targetProductCode)
@@ -159,6 +170,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -171,6 +183,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $departId
+     *
      * @return $this
      */
     public function setDepartId($departId)
@@ -183,6 +196,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -195,6 +209,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $dealUserId
+     *
      * @return $this
      */
     public function setDealUserId($dealUserId)
@@ -207,6 +222,7 @@ class DescribeEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScdnDomainLog
+ *
  * @method string getStartTime()
  * @method string getPageNumber()
  * @method string getPageSize()
@@ -30,6 +31,7 @@ class DescribeScdnDomainLogRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -42,6 +44,7 @@ class DescribeScdnDomainLogRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -54,6 +57,7 @@ class DescribeScdnDomainLogRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -66,6 +70,7 @@ class DescribeScdnDomainLogRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -78,6 +83,7 @@ class DescribeScdnDomainLogRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -90,6 +96,7 @@ class DescribeScdnDomainLogRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

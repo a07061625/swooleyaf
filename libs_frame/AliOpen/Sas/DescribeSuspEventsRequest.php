@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeSuspEvents
+ *
  * @method string getAlarmUniqueInfo()
  * @method string getSourceIp()
  * @method string getName()
@@ -35,6 +36,7 @@ class DescribeSuspEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $alarmUniqueInfo
+     *
      * @return $this
      */
     public function setAlarmUniqueInfo($alarmUniqueInfo)
@@ -47,6 +49,7 @@ class DescribeSuspEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -59,6 +62,7 @@ class DescribeSuspEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -71,6 +75,7 @@ class DescribeSuspEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -83,6 +88,7 @@ class DescribeSuspEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $dealed
+     *
      * @return $this
      */
     public function setDealed($dealed)
@@ -95,6 +101,7 @@ class DescribeSuspEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $remark
+     *
      * @return $this
      */
     public function setRemark($remark)
@@ -107,6 +114,7 @@ class DescribeSuspEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -119,6 +127,7 @@ class DescribeSuspEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $from
+     *
      * @return $this
      */
     public function setFrom($from)
@@ -131,6 +140,7 @@ class DescribeSuspEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -143,6 +153,7 @@ class DescribeSuspEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $levels
+     *
      * @return $this
      */
     public function setLevels($levels)
@@ -155,6 +166,7 @@ class DescribeSuspEventsRequest extends RpcAcsRequest
 
     /**
      * @param string $parentEventTypes
+     *
      * @return $this
      */
     public function setParentEventTypes($parentEventTypes)

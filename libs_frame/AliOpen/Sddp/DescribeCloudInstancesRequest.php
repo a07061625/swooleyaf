@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCloudInstances
+ *
  * @method string getSourceIp()
  * @method string getLang()
  * @method string getResourceType()
@@ -28,6 +29,7 @@ class DescribeCloudInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -40,6 +42,7 @@ class DescribeCloudInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -52,6 +55,7 @@ class DescribeCloudInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -64,6 +68,7 @@ class DescribeCloudInstancesRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceRegionId
+     *
      * @return $this
      */
     public function setServiceRegionId($serviceRegionId)

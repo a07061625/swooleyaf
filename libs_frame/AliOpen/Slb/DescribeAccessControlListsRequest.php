@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Slb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class DescribeAccessControlListsRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Slb", "2014-05-15", "DescribeAccessControlLists", "slb", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $access_key_id;
     private $resourceOwnerId;
     private $aclName;
@@ -39,6 +34,12 @@ class DescribeAccessControlListsRequest extends RpcAcsRequest
     private $pageNumber;
     private $tags;
 
+    public function __construct()
+    {
+        parent::__construct('Slb', '2014-05-15', 'DescribeAccessControlLists', 'slb', 'openAPI');
+        $this->setMethod('POST');
+    }
+
     public function getaccess_key_id()
     {
         return $this->access_key_id;
@@ -47,7 +48,7 @@ class DescribeAccessControlListsRequest extends RpcAcsRequest
     public function setaccess_key_id($access_key_id)
     {
         $this->access_key_id = $access_key_id;
-        $this->queryParameters["access_key_id"] = $access_key_id;
+        $this->queryParameters['access_key_id'] = $access_key_id;
     }
 
     public function getResourceOwnerId()
@@ -58,7 +59,7 @@ class DescribeAccessControlListsRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getAclName()
@@ -69,7 +70,7 @@ class DescribeAccessControlListsRequest extends RpcAcsRequest
     public function setAclName($aclName)
     {
         $this->aclName = $aclName;
-        $this->queryParameters["AclName"] = $aclName;
+        $this->queryParameters['AclName'] = $aclName;
     }
 
     public function getResourceOwnerAccount()
@@ -80,7 +81,7 @@ class DescribeAccessControlListsRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getOwnerAccount()
@@ -91,7 +92,7 @@ class DescribeAccessControlListsRequest extends RpcAcsRequest
     public function setOwnerAccount($ownerAccount)
     {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
     public function getPageSize()
@@ -102,7 +103,7 @@ class DescribeAccessControlListsRequest extends RpcAcsRequest
     public function setPageSize($pageSize)
     {
         $this->pageSize = $pageSize;
-        $this->queryParameters["PageSize"] = $pageSize;
+        $this->queryParameters['PageSize'] = $pageSize;
     }
 
     public function getOwnerId()
@@ -113,7 +114,7 @@ class DescribeAccessControlListsRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
     public function getPageNumber()
@@ -124,7 +125,7 @@ class DescribeAccessControlListsRequest extends RpcAcsRequest
     public function setPageNumber($pageNumber)
     {
         $this->pageNumber = $pageNumber;
-        $this->queryParameters["PageNumber"] = $pageNumber;
+        $this->queryParameters['PageNumber'] = $pageNumber;
     }
 
     public function getTags()
@@ -135,6 +136,6 @@ class DescribeAccessControlListsRequest extends RpcAcsRequest
     public function setTags($tags)
     {
         $this->tags = $tags;
-        $this->queryParameters["Tags"] = $tags;
+        $this->queryParameters['Tags'] = $tags;
     }
 }

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCloudConnectNetworks
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -33,6 +34,7 @@ class DescribeCloudConnectNetworksRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +47,7 @@ class DescribeCloudConnectNetworksRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -57,6 +60,7 @@ class DescribeCloudConnectNetworksRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -69,6 +73,7 @@ class DescribeCloudConnectNetworksRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -81,6 +86,7 @@ class DescribeCloudConnectNetworksRequest extends RpcAcsRequest
 
     /**
      * @param string $ccnId
+     *
      * @return $this
      */
     public function setCcnId($ccnId)
@@ -93,6 +99,7 @@ class DescribeCloudConnectNetworksRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -104,7 +111,6 @@ class DescribeCloudConnectNetworksRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -120,6 +126,7 @@ class DescribeCloudConnectNetworksRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -132,6 +139,7 @@ class DescribeCloudConnectNetworksRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)

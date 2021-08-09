@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAccountProfileByKey
+ *
  * @method string getSourceIp()
  * @method string getKeyword()
  */
@@ -26,6 +27,7 @@ class DescribeAccountProfileByKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -38,6 +40,7 @@ class DescribeAccountProfileByKeyRequest extends RpcAcsRequest
 
     /**
      * @param string $keyword
+     *
      * @return $this
      */
     public function setKeyword($keyword)

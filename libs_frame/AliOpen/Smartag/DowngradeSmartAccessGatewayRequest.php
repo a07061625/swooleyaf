@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DowngradeSmartAccessGateway
+ *
  * @method string getResourceOwnerId()
  * @method string getAutoPay()
  * @method string getBandWidthSpec()
@@ -33,6 +34,7 @@ class DowngradeSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +47,7 @@ class DowngradeSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -57,6 +60,7 @@ class DowngradeSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $bandWidthSpec
+     *
      * @return $this
      */
     public function setBandWidthSpec($bandWidthSpec)
@@ -69,6 +73,7 @@ class DowngradeSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -81,6 +86,7 @@ class DowngradeSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -93,6 +99,7 @@ class DowngradeSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $userCount
+     *
      * @return $this
      */
     public function setUserCount($userCount)
@@ -105,6 +112,7 @@ class DowngradeSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $smartAGId
+     *
      * @return $this
      */
     public function setSmartAGId($smartAGId)
@@ -117,6 +125,7 @@ class DowngradeSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +138,7 @@ class DowngradeSmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $dataPlan
+     *
      * @return $this
      */
     public function setDataPlan($dataPlan)

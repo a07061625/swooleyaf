@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RefreshScdnObjectCaches
+ *
  * @method string getObjectPath()
  * @method string getOwnerId()
  * @method string getSecurityToken()
@@ -28,6 +29,7 @@ class RefreshScdnObjectCachesRequest extends RpcAcsRequest
 
     /**
      * @param string $objectPath
+     *
      * @return $this
      */
     public function setObjectPath($objectPath)
@@ -40,6 +42,7 @@ class RefreshScdnObjectCachesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -52,6 +55,7 @@ class RefreshScdnObjectCachesRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -64,6 +68,7 @@ class RefreshScdnObjectCachesRequest extends RpcAcsRequest
 
     /**
      * @param string $objectType
+     *
      * @return $this
      */
     public function setObjectType($objectType)

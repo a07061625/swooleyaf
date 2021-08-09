@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeEmgVulGroup
+ *
  * @method string getSourceIp()
  * @method string getLang()
  */
@@ -26,6 +27,7 @@ class DescribeEmgVulGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -38,6 +40,7 @@ class DescribeEmgVulGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

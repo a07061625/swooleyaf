@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateSmartAccessGatewaySoftware
+ *
  * @method string getResourceOwnerId()
  * @method string getPeriod()
  * @method string getAutoPay()
@@ -33,6 +34,7 @@ class CreateSmartAccessGatewaySoftwareRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +47,7 @@ class CreateSmartAccessGatewaySoftwareRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -57,6 +60,7 @@ class CreateSmartAccessGatewaySoftwareRequest extends RpcAcsRequest
 
     /**
      * @param string $autoPay
+     *
      * @return $this
      */
     public function setAutoPay($autoPay)
@@ -69,6 +73,7 @@ class CreateSmartAccessGatewaySoftwareRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -81,6 +86,7 @@ class CreateSmartAccessGatewaySoftwareRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -93,6 +99,7 @@ class CreateSmartAccessGatewaySoftwareRequest extends RpcAcsRequest
 
     /**
      * @param string $userCount
+     *
      * @return $this
      */
     public function setUserCount($userCount)
@@ -105,6 +112,7 @@ class CreateSmartAccessGatewaySoftwareRequest extends RpcAcsRequest
 
     /**
      * @param string $chargeType
+     *
      * @return $this
      */
     public function setChargeType($chargeType)
@@ -117,6 +125,7 @@ class CreateSmartAccessGatewaySoftwareRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +138,7 @@ class CreateSmartAccessGatewaySoftwareRequest extends RpcAcsRequest
 
     /**
      * @param string $dataPlan
+     *
      * @return $this
      */
     public function setDataPlan($dataPlan)

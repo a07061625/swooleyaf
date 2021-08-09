@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScdnDomainCname
+ *
  * @method string getDomainName()
  * @method string getOwnerId()
  */
@@ -21,6 +22,7 @@ class DescribeScdnDomainCnameRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -33,6 +35,7 @@ class DescribeScdnDomainCnameRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

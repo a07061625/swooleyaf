@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetSagRouteableAddress
+ *
  * @method string getaccess_key_id()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -31,6 +32,7 @@ class SetSagRouteableAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $access_key_id
+     *
      * @return $this
      */
     public function setaccess_key_id($access_key_id)
@@ -43,6 +45,7 @@ class SetSagRouteableAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -55,6 +58,7 @@ class SetSagRouteableAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +71,7 @@ class SetSagRouteableAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $sagId
+     *
      * @return $this
      */
     public function setSagId($sagId)
@@ -79,6 +84,7 @@ class SetSagRouteableAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +97,7 @@ class SetSagRouteableAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +110,7 @@ class SetSagRouteableAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $routeableAddress
+     *
      * @return $this
      */
     public function setRouteableAddress($routeableAddress)

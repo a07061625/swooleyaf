@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVulDetails
+ *
  * @method string getAliasName()
  * @method string getSourceIp()
  * @method string getName()
@@ -29,6 +30,7 @@ class DescribeVulDetailsRequest extends RpcAcsRequest
 
     /**
      * @param string $aliasName
+     *
      * @return $this
      */
     public function setAliasName($aliasName)
@@ -41,6 +43,7 @@ class DescribeVulDetailsRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -53,6 +56,7 @@ class DescribeVulDetailsRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -65,6 +69,7 @@ class DescribeVulDetailsRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -77,6 +82,7 @@ class DescribeVulDetailsRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)

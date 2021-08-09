@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of MobileStartSpeedUp
+ *
  * @method string getDuration()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -33,6 +34,7 @@ class MobileStartSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $duration
+     *
      * @return $this
      */
     public function setDuration($duration)
@@ -45,6 +47,7 @@ class MobileStartSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +60,7 @@ class MobileStartSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -69,6 +73,7 @@ class MobileStartSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $ip
+     *
      * @return $this
      */
     public function setIp($ip)
@@ -81,6 +86,7 @@ class MobileStartSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $destinationIpAddress
+     *
      * @return $this
      */
     public function setDestinationIpAddress($destinationIpAddress)
@@ -93,6 +99,7 @@ class MobileStartSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $publicIp
+     *
      * @return $this
      */
     public function setPublicIp($publicIp)
@@ -105,6 +112,7 @@ class MobileStartSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $publicPort
+     *
      * @return $this
      */
     public function setPublicPort($publicPort)
@@ -117,6 +125,7 @@ class MobileStartSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +138,7 @@ class MobileStartSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $token
+     *
      * @return $this
      */
     public function setToken($token)

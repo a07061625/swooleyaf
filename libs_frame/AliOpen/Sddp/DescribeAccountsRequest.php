@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAccounts
+ *
  * @method string getProductCode()
  * @method string getLoginName()
  * @method string getFeatureType()
@@ -39,6 +40,7 @@ class DescribeAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $productCode
+     *
      * @return $this
      */
     public function setProductCode($productCode)
@@ -51,6 +53,7 @@ class DescribeAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $loginName
+     *
      * @return $this
      */
     public function setLoginName($loginName)
@@ -63,6 +66,7 @@ class DescribeAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -75,6 +79,7 @@ class DescribeAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $columnId
+     *
      * @return $this
      */
     public function setColumnId($columnId)
@@ -87,6 +92,7 @@ class DescribeAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $packageId
+     *
      * @return $this
      */
     public function setPackageId($packageId)
@@ -99,6 +105,7 @@ class DescribeAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -111,6 +118,7 @@ class DescribeAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -123,6 +131,7 @@ class DescribeAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -135,6 +144,7 @@ class DescribeAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -147,6 +157,7 @@ class DescribeAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $departId
+     *
      * @return $this
      */
     public function setDepartId($departId)
@@ -159,6 +170,7 @@ class DescribeAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $operationId
+     *
      * @return $this
      */
     public function setOperationId($operationId)
@@ -171,6 +183,7 @@ class DescribeAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $tableId
+     *
      * @return $this
      */
     public function setTableId($tableId)
@@ -183,6 +196,7 @@ class DescribeAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -195,6 +209,7 @@ class DescribeAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $key
+     *
      * @return $this
      */
     public function setKey($key)
@@ -207,6 +222,7 @@ class DescribeAccountsRequest extends RpcAcsRequest
 
     /**
      * @param string $queryType
+     *
      * @return $this
      */
     public function setQueryType($queryType)

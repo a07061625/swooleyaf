@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Slb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class ModifyLoadBalancerInternetSpecRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Slb", "2014-05-15", "ModifyLoadBalancerInternetSpec", "slb", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $access_key_id;
     private $resourceOwnerId;
     private $loadBalancerId;
@@ -40,6 +35,12 @@ class ModifyLoadBalancerInternetSpecRequest extends RpcAcsRequest
     private $ownerId;
     private $tags;
 
+    public function __construct()
+    {
+        parent::__construct('Slb', '2014-05-15', 'ModifyLoadBalancerInternetSpec', 'slb', 'openAPI');
+        $this->setMethod('POST');
+    }
+
     public function getaccess_key_id()
     {
         return $this->access_key_id;
@@ -48,7 +49,7 @@ class ModifyLoadBalancerInternetSpecRequest extends RpcAcsRequest
     public function setaccess_key_id($access_key_id)
     {
         $this->access_key_id = $access_key_id;
-        $this->queryParameters["access_key_id"] = $access_key_id;
+        $this->queryParameters['access_key_id'] = $access_key_id;
     }
 
     public function getResourceOwnerId()
@@ -59,7 +60,7 @@ class ModifyLoadBalancerInternetSpecRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getLoadBalancerId()
@@ -70,7 +71,7 @@ class ModifyLoadBalancerInternetSpecRequest extends RpcAcsRequest
     public function setLoadBalancerId($loadBalancerId)
     {
         $this->loadBalancerId = $loadBalancerId;
-        $this->queryParameters["LoadBalancerId"] = $loadBalancerId;
+        $this->queryParameters['LoadBalancerId'] = $loadBalancerId;
     }
 
     public function getAutoPay()
@@ -81,7 +82,7 @@ class ModifyLoadBalancerInternetSpecRequest extends RpcAcsRequest
     public function setAutoPay($autoPay)
     {
         $this->autoPay = $autoPay;
-        $this->queryParameters["AutoPay"] = $autoPay;
+        $this->queryParameters['AutoPay'] = $autoPay;
     }
 
     public function getResourceOwnerAccount()
@@ -92,7 +93,7 @@ class ModifyLoadBalancerInternetSpecRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getBandwidth()
@@ -103,7 +104,7 @@ class ModifyLoadBalancerInternetSpecRequest extends RpcAcsRequest
     public function setBandwidth($bandwidth)
     {
         $this->bandwidth = $bandwidth;
-        $this->queryParameters["Bandwidth"] = $bandwidth;
+        $this->queryParameters['Bandwidth'] = $bandwidth;
     }
 
     public function getInternetChargeType()
@@ -114,7 +115,7 @@ class ModifyLoadBalancerInternetSpecRequest extends RpcAcsRequest
     public function setInternetChargeType($internetChargeType)
     {
         $this->internetChargeType = $internetChargeType;
-        $this->queryParameters["InternetChargeType"] = $internetChargeType;
+        $this->queryParameters['InternetChargeType'] = $internetChargeType;
     }
 
     public function getOwnerAccount()
@@ -125,7 +126,7 @@ class ModifyLoadBalancerInternetSpecRequest extends RpcAcsRequest
     public function setOwnerAccount($ownerAccount)
     {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
     public function getOwnerId()
@@ -136,7 +137,7 @@ class ModifyLoadBalancerInternetSpecRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
     public function getTags()
@@ -147,6 +148,6 @@ class ModifyLoadBalancerInternetSpecRequest extends RpcAcsRequest
     public function setTags($tags)
     {
         $this->tags = $tags;
-        $this->queryParameters["Tags"] = $tags;
+        $this->queryParameters['Tags'] = $tags;
     }
 }

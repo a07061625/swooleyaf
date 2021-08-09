@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribePrivileges
+ *
  * @method string getAccountId()
  * @method string getUseAccountId()
  * @method string getDataTypeIds()
@@ -33,6 +34,7 @@ class DescribePrivilegesRequest extends RpcAcsRequest
 
     /**
      * @param string $accountId
+     *
      * @return $this
      */
     public function setAccountId($accountId)
@@ -45,6 +47,7 @@ class DescribePrivilegesRequest extends RpcAcsRequest
 
     /**
      * @param string $useAccountId
+     *
      * @return $this
      */
     public function setUseAccountId($useAccountId)
@@ -57,6 +60,7 @@ class DescribePrivilegesRequest extends RpcAcsRequest
 
     /**
      * @param string $dataTypeIds
+     *
      * @return $this
      */
     public function setDataTypeIds($dataTypeIds)
@@ -69,6 +73,7 @@ class DescribePrivilegesRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -81,6 +86,7 @@ class DescribePrivilegesRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -93,6 +99,7 @@ class DescribePrivilegesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -105,6 +112,7 @@ class DescribePrivilegesRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -117,6 +125,7 @@ class DescribePrivilegesRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -129,6 +138,7 @@ class DescribePrivilegesRequest extends RpcAcsRequest
 
     /**
      * @param string $key
+     *
      * @return $this
      */
     public function setKey($key)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UnicomOrderConfirm
+ *
  * @method string getTmsCode()
  * @method string getResourceOwnerId()
  * @method array getOrderItems()
@@ -34,6 +35,7 @@ class UnicomOrderConfirmRequest extends RpcAcsRequest
 
     /**
      * @param string $tmsCode
+     *
      * @return $this
      */
     public function setTmsCode($tmsCode)
@@ -46,6 +48,7 @@ class UnicomOrderConfirmRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,7 +60,6 @@ class UnicomOrderConfirmRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $orderItem
      * @return $this
      */
     public function setOrderItems(array $orderItem)
@@ -81,6 +83,7 @@ class UnicomOrderConfirmRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerUserId
+     *
      * @return $this
      */
     public function setOwnerUserId($ownerUserId)
@@ -93,6 +96,7 @@ class UnicomOrderConfirmRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -105,6 +109,7 @@ class UnicomOrderConfirmRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -117,6 +122,7 @@ class UnicomOrderConfirmRequest extends RpcAcsRequest
 
     /**
      * @param string $orderPostFee
+     *
      * @return $this
      */
     public function setOrderPostFee($orderPostFee)
@@ -129,6 +135,7 @@ class UnicomOrderConfirmRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -141,6 +148,7 @@ class UnicomOrderConfirmRequest extends RpcAcsRequest
 
     /**
      * @param string $tmsOrderCode
+     *
      * @return $this
      */
     public function setTmsOrderCode($tmsOrderCode)
@@ -153,6 +161,7 @@ class UnicomOrderConfirmRequest extends RpcAcsRequest
 
     /**
      * @param string $tradeId
+     *
      * @return $this
      */
     public function setTradeId($tradeId)

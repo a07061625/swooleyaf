@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeSuspEventDetail
+ *
  * @method string getSuspiciousEventId()
  * @method string getSourceIp()
  * @method string getFrom()
@@ -28,6 +29,7 @@ class DescribeSuspEventDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $suspiciousEventId
+     *
      * @return $this
      */
     public function setSuspiciousEventId($suspiciousEventId)
@@ -40,6 +42,7 @@ class DescribeSuspEventDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -52,6 +55,7 @@ class DescribeSuspEventDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $from
+     *
      * @return $this
      */
     public function setFrom($from)
@@ -64,6 +68,7 @@ class DescribeSuspEventDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

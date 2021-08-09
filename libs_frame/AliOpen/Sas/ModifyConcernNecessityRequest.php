@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyConcernNecessity
+ *
  * @method string getSourceIp()
  * @method string getLang()
  * @method string getConcernNecessity()
@@ -27,6 +28,7 @@ class ModifyConcernNecessityRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -39,6 +41,7 @@ class ModifyConcernNecessityRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -51,6 +54,7 @@ class ModifyConcernNecessityRequest extends RpcAcsRequest
 
     /**
      * @param string $concernNecessity
+     *
      * @return $this
      */
     public function setConcernNecessity($concernNecessity)

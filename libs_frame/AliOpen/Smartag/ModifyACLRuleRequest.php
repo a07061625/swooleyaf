@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyACLRule
+ *
  * @method string getAclId()
  * @method string getResourceOwnerId()
  * @method string getSourcePortRange()
@@ -39,6 +40,7 @@ class ModifyACLRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $aclId
+     *
      * @return $this
      */
     public function setAclId($aclId)
@@ -51,6 +53,7 @@ class ModifyACLRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -63,6 +66,7 @@ class ModifyACLRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $sourcePortRange
+     *
      * @return $this
      */
     public function setSourcePortRange($sourcePortRange)
@@ -75,6 +79,7 @@ class ModifyACLRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -87,6 +92,7 @@ class ModifyACLRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ipProtocol
+     *
      * @return $this
      */
     public function setIpProtocol($ipProtocol)
@@ -99,6 +105,7 @@ class ModifyACLRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -111,6 +118,7 @@ class ModifyACLRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceCidr
+     *
      * @return $this
      */
     public function setSourceCidr($sourceCidr)
@@ -123,6 +131,7 @@ class ModifyACLRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -135,6 +144,7 @@ class ModifyACLRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -147,6 +157,7 @@ class ModifyACLRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $priority
+     *
      * @return $this
      */
     public function setPriority($priority)
@@ -159,6 +170,7 @@ class ModifyACLRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $acrId
+     *
      * @return $this
      */
     public function setAcrId($acrId)
@@ -171,6 +183,7 @@ class ModifyACLRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $destCidr
+     *
      * @return $this
      */
     public function setDestCidr($destCidr)
@@ -183,6 +196,7 @@ class ModifyACLRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $destPortRange
+     *
      * @return $this
      */
     public function setDestPortRange($destPortRange)
@@ -195,6 +209,7 @@ class ModifyACLRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $direction
+     *
      * @return $this
      */
     public function setDirection($direction)
@@ -207,6 +222,7 @@ class ModifyACLRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $policy
+     *
      * @return $this
      */
     public function setPolicy($policy)

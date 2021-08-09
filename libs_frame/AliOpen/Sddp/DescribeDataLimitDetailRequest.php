@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDataLimitDetail
+ *
  * @method string getSourceIp()
  * @method string getid()
  * @method string getNetworkType()
@@ -28,6 +29,7 @@ class DescribeDataLimitDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -40,6 +42,7 @@ class DescribeDataLimitDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setid($id)
@@ -52,6 +55,7 @@ class DescribeDataLimitDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -64,6 +68,7 @@ class DescribeDataLimitDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetPhoneProfile
+ *
  * @method string getPhone()
  * @method string getSensType()
  * @method string getDataVersion()
@@ -28,6 +29,7 @@ class GetPhoneProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $phone
+     *
      * @return $this
      */
     public function setPhone($phone)
@@ -40,6 +42,7 @@ class GetPhoneProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $sensType
+     *
      * @return $this
      */
     public function setSensType($sensType)
@@ -52,6 +55,7 @@ class GetPhoneProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $dataVersion
+     *
      * @return $this
      */
     public function setDataVersion($dataVersion)
@@ -64,6 +68,7 @@ class GetPhoneProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $businessType
+     *
      * @return $this
      */
     public function setBusinessType($businessType)

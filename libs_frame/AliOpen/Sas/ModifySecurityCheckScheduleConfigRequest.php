@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifySecurityCheckScheduleConfig
+ *
  * @method string getResourceOwnerId()
  * @method string getSourceIp()
  * @method string getDaysOfWeek()
@@ -30,6 +31,7 @@ class ModifySecurityCheckScheduleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +44,7 @@ class ModifySecurityCheckScheduleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -54,6 +57,7 @@ class ModifySecurityCheckScheduleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $daysOfWeek
+     *
      * @return $this
      */
     public function setDaysOfWeek($daysOfWeek)
@@ -66,6 +70,7 @@ class ModifySecurityCheckScheduleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -78,6 +83,7 @@ class ModifySecurityCheckScheduleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -90,6 +96,7 @@ class ModifySecurityCheckScheduleConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Slb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class UploadServerCertificateRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Slb", "2014-05-15", "UploadServerCertificate", "slb", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $access_key_id;
     private $resourceOwnerId;
     private $serverCertificate;
@@ -42,6 +37,12 @@ class UploadServerCertificateRequest extends RpcAcsRequest
     private $resourceGroupId;
     private $serverCertificateName;
 
+    public function __construct()
+    {
+        parent::__construct('Slb', '2014-05-15', 'UploadServerCertificate', 'slb', 'openAPI');
+        $this->setMethod('POST');
+    }
+
     public function getaccess_key_id()
     {
         return $this->access_key_id;
@@ -50,7 +51,7 @@ class UploadServerCertificateRequest extends RpcAcsRequest
     public function setaccess_key_id($access_key_id)
     {
         $this->access_key_id = $access_key_id;
-        $this->queryParameters["access_key_id"] = $access_key_id;
+        $this->queryParameters['access_key_id'] = $access_key_id;
     }
 
     public function getResourceOwnerId()
@@ -61,7 +62,7 @@ class UploadServerCertificateRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getServerCertificate()
@@ -72,7 +73,7 @@ class UploadServerCertificateRequest extends RpcAcsRequest
     public function setServerCertificate($serverCertificate)
     {
         $this->serverCertificate = $serverCertificate;
-        $this->queryParameters["ServerCertificate"] = $serverCertificate;
+        $this->queryParameters['ServerCertificate'] = $serverCertificate;
     }
 
     public function getResourceOwnerAccount()
@@ -83,7 +84,7 @@ class UploadServerCertificateRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getOwnerAccount()
@@ -94,7 +95,7 @@ class UploadServerCertificateRequest extends RpcAcsRequest
     public function setOwnerAccount($ownerAccount)
     {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
     public function getAliCloudCertificateName()
@@ -105,7 +106,7 @@ class UploadServerCertificateRequest extends RpcAcsRequest
     public function setAliCloudCertificateName($aliCloudCertificateName)
     {
         $this->aliCloudCertificateName = $aliCloudCertificateName;
-        $this->queryParameters["AliCloudCertificateName"] = $aliCloudCertificateName;
+        $this->queryParameters['AliCloudCertificateName'] = $aliCloudCertificateName;
     }
 
     public function getAliCloudCertificateId()
@@ -116,7 +117,7 @@ class UploadServerCertificateRequest extends RpcAcsRequest
     public function setAliCloudCertificateId($aliCloudCertificateId)
     {
         $this->aliCloudCertificateId = $aliCloudCertificateId;
-        $this->queryParameters["AliCloudCertificateId"] = $aliCloudCertificateId;
+        $this->queryParameters['AliCloudCertificateId'] = $aliCloudCertificateId;
     }
 
     public function getOwnerId()
@@ -127,7 +128,7 @@ class UploadServerCertificateRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
     public function getTags()
@@ -138,7 +139,7 @@ class UploadServerCertificateRequest extends RpcAcsRequest
     public function setTags($tags)
     {
         $this->tags = $tags;
-        $this->queryParameters["Tags"] = $tags;
+        $this->queryParameters['Tags'] = $tags;
     }
 
     public function getPrivateKey()
@@ -149,7 +150,7 @@ class UploadServerCertificateRequest extends RpcAcsRequest
     public function setPrivateKey($privateKey)
     {
         $this->privateKey = $privateKey;
-        $this->queryParameters["PrivateKey"] = $privateKey;
+        $this->queryParameters['PrivateKey'] = $privateKey;
     }
 
     public function getResourceGroupId()
@@ -160,7 +161,7 @@ class UploadServerCertificateRequest extends RpcAcsRequest
     public function setResourceGroupId($resourceGroupId)
     {
         $this->resourceGroupId = $resourceGroupId;
-        $this->queryParameters["ResourceGroupId"] = $resourceGroupId;
+        $this->queryParameters['ResourceGroupId'] = $resourceGroupId;
     }
 
     public function getServerCertificateName()
@@ -171,6 +172,6 @@ class UploadServerCertificateRequest extends RpcAcsRequest
     public function setServerCertificateName($serverCertificateName)
     {
         $this->serverCertificateName = $serverCertificateName;
-        $this->queryParameters["ServerCertificateName"] = $serverCertificateName;
+        $this->queryParameters['ServerCertificateName'] = $serverCertificateName;
     }
 }

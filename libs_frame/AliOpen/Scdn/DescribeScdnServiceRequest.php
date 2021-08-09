@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScdnService
+ *
  * @method string getOwnerId()
  * @method string getSecurityToken()
  */
@@ -26,6 +27,7 @@ class DescribeScdnServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -38,6 +40,7 @@ class DescribeScdnServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)

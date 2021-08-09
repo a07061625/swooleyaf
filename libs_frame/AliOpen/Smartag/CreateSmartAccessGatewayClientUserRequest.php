@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateSmartAccessGatewayClientUser
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getBandwidth()
@@ -33,6 +34,7 @@ class CreateSmartAccessGatewayClientUserRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +47,7 @@ class CreateSmartAccessGatewayClientUserRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -57,6 +60,7 @@ class CreateSmartAccessGatewayClientUserRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -69,6 +73,7 @@ class CreateSmartAccessGatewayClientUserRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -81,6 +86,7 @@ class CreateSmartAccessGatewayClientUserRequest extends RpcAcsRequest
 
     /**
      * @param string $clientIp
+     *
      * @return $this
      */
     public function setClientIp($clientIp)
@@ -93,6 +99,7 @@ class CreateSmartAccessGatewayClientUserRequest extends RpcAcsRequest
 
     /**
      * @param string $smartAGId
+     *
      * @return $this
      */
     public function setSmartAGId($smartAGId)
@@ -105,6 +112,7 @@ class CreateSmartAccessGatewayClientUserRequest extends RpcAcsRequest
 
     /**
      * @param string $userMail
+     *
      * @return $this
      */
     public function setUserMail($userMail)
@@ -117,6 +125,7 @@ class CreateSmartAccessGatewayClientUserRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -129,6 +138,7 @@ class CreateSmartAccessGatewayClientUserRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

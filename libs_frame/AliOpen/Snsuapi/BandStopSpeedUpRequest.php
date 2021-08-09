@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BandStopSpeedUp
+ *
  * @method string getIpAddress()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -31,6 +32,7 @@ class BandStopSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $ipAddress
+     *
      * @return $this
      */
     public function setIpAddress($ipAddress)
@@ -43,6 +45,7 @@ class BandStopSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -55,6 +58,7 @@ class BandStopSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +71,7 @@ class BandStopSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $port
+     *
      * @return $this
      */
     public function setPort($port)
@@ -79,6 +84,7 @@ class BandStopSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $bandId
+     *
      * @return $this
      */
     public function setBandId($bandId)
@@ -91,6 +97,7 @@ class BandStopSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +110,7 @@ class BandStopSpeedUpRequest extends RpcAcsRequest
 
     /**
      * @param string $direction
+     *
      * @return $this
      */
     public function setDirection($direction)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeRiskCheckResult
+ *
  * @method string getResourceOwnerId()
  * @method string getSourceIp()
  * @method string getGroupId()
@@ -32,6 +33,7 @@ class DescribeRiskCheckResultRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +46,7 @@ class DescribeRiskCheckResultRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -56,6 +59,7 @@ class DescribeRiskCheckResultRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -68,6 +72,7 @@ class DescribeRiskCheckResultRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -80,6 +85,7 @@ class DescribeRiskCheckResultRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -92,6 +98,7 @@ class DescribeRiskCheckResultRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -104,6 +111,7 @@ class DescribeRiskCheckResultRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -116,6 +124,7 @@ class DescribeRiskCheckResultRequest extends RpcAcsRequest
 
     /**
      * @param string $riskLevel
+     *
      * @return $this
      */
     public function setRiskLevel($riskLevel)

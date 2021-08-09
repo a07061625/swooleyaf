@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCheckWarningDetail
+ *
  * @method string getSourceIp()
  * @method string getLang()
  * @method string getCheckWarningId()
@@ -27,6 +28,7 @@ class DescribeCheckWarningDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -39,6 +41,7 @@ class DescribeCheckWarningDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -51,6 +54,7 @@ class DescribeCheckWarningDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $checkWarningId
+     *
      * @return $this
      */
     public function setCheckWarningId($checkWarningId)

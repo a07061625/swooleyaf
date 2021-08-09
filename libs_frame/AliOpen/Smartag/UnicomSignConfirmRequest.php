@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UnicomSignConfirm
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -29,6 +30,7 @@ class UnicomSignConfirmRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +43,7 @@ class UnicomSignConfirmRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -53,6 +56,7 @@ class UnicomSignConfirmRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -64,7 +68,6 @@ class UnicomSignConfirmRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tmsOrder
      * @return $this
      */
     public function setTmsOrders(array $tmsOrder)
@@ -82,6 +85,7 @@ class UnicomSignConfirmRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

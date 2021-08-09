@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyOperateVul
+ *
  * @method string getReason()
  * @method string getSourceIp()
  * @method string getOperateType()
@@ -29,6 +30,7 @@ class ModifyOperateVulRequest extends RpcAcsRequest
 
     /**
      * @param string $reason
+     *
      * @return $this
      */
     public function setReason($reason)
@@ -41,6 +43,7 @@ class ModifyOperateVulRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -53,6 +56,7 @@ class ModifyOperateVulRequest extends RpcAcsRequest
 
     /**
      * @param string $operateType
+     *
      * @return $this
      */
     public function setOperateType($operateType)
@@ -65,6 +69,7 @@ class ModifyOperateVulRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -77,6 +82,7 @@ class ModifyOperateVulRequest extends RpcAcsRequest
 
     /**
      * @param string $info
+     *
      * @return $this
      */
     public function setInfo($info)

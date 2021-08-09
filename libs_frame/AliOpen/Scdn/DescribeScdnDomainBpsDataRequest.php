@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScdnDomainBpsData
+ *
  * @method string getLocationNameEn()
  * @method string getStartTime()
  * @method string getIspNameEn()
@@ -31,6 +32,7 @@ class DescribeScdnDomainBpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $locationNameEn
+     *
      * @return $this
      */
     public function setLocationNameEn($locationNameEn)
@@ -43,6 +45,7 @@ class DescribeScdnDomainBpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -55,6 +58,7 @@ class DescribeScdnDomainBpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $ispNameEn
+     *
      * @return $this
      */
     public function setIspNameEn($ispNameEn)
@@ -67,6 +71,7 @@ class DescribeScdnDomainBpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -79,6 +84,7 @@ class DescribeScdnDomainBpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -91,6 +97,7 @@ class DescribeScdnDomainBpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +110,7 @@ class DescribeScdnDomainBpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $interval
+     *
      * @return $this
      */
     public function setInterval($interval)

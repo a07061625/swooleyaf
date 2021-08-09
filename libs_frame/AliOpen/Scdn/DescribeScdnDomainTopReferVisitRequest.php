@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScdnDomainTopReferVisit
+ *
  * @method string getDomainName()
  * @method string getStartTime()
  * @method string getOwnerId()
@@ -29,6 +30,7 @@ class DescribeScdnDomainTopReferVisitRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -41,6 +43,7 @@ class DescribeScdnDomainTopReferVisitRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -53,6 +56,7 @@ class DescribeScdnDomainTopReferVisitRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -65,6 +69,7 @@ class DescribeScdnDomainTopReferVisitRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -77,6 +82,7 @@ class DescribeScdnDomainTopReferVisitRequest extends RpcAcsRequest
 
     /**
      * @param string $sortBy
+     *
      * @return $this
      */
     public function setSortBy($sortBy)

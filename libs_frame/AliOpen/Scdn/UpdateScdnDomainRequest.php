@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateScdnDomain
+ *
  * @method string getSources()
  * @method string getDomainName()
  * @method string getOwnerId()
@@ -29,6 +30,7 @@ class UpdateScdnDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $sources
+     *
      * @return $this
      */
     public function setSources($sources)
@@ -41,6 +43,7 @@ class UpdateScdnDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -53,6 +56,7 @@ class UpdateScdnDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -65,6 +69,7 @@ class UpdateScdnDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -77,6 +82,7 @@ class UpdateScdnDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)

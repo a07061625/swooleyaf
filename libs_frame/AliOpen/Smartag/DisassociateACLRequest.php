@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DisassociateACL
+ *
  * @method string getAclId()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -30,6 +31,7 @@ class DisassociateACLRequest extends RpcAcsRequest
 
     /**
      * @param string $aclId
+     *
      * @return $this
      */
     public function setAclId($aclId)
@@ -42,6 +44,7 @@ class DisassociateACLRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +57,7 @@ class DisassociateACLRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +70,7 @@ class DisassociateACLRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -78,6 +83,7 @@ class DisassociateACLRequest extends RpcAcsRequest
 
     /**
      * @param string $smartAGId
+     *
      * @return $this
      */
     public function setSmartAGId($smartAGId)
@@ -90,6 +96,7 @@ class DisassociateACLRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

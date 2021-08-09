@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeWarningMachines
+ *
  * @method string getSourceIp()
  * @method string getPageSize()
  * @method string getMachineName()
@@ -32,6 +33,7 @@ class DescribeWarningMachinesRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -44,6 +46,7 @@ class DescribeWarningMachinesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -56,6 +59,7 @@ class DescribeWarningMachinesRequest extends RpcAcsRequest
 
     /**
      * @param string $machineName
+     *
      * @return $this
      */
     public function setMachineName($machineName)
@@ -68,6 +72,7 @@ class DescribeWarningMachinesRequest extends RpcAcsRequest
 
     /**
      * @param string $strategyId
+     *
      * @return $this
      */
     public function setStrategyId($strategyId)
@@ -80,6 +85,7 @@ class DescribeWarningMachinesRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -92,6 +98,7 @@ class DescribeWarningMachinesRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -104,6 +111,7 @@ class DescribeWarningMachinesRequest extends RpcAcsRequest
 
     /**
      * @param string $riskId
+     *
      * @return $this
      */
     public function setRiskId($riskId)
@@ -116,6 +124,7 @@ class DescribeWarningMachinesRequest extends RpcAcsRequest
 
     /**
      * @param string $uuids
+     *
      * @return $this
      */
     public function setUuids($uuids)

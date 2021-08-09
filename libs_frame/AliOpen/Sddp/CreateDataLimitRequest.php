@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDataLimit
+ *
  * @method string getPassword()
  * @method string getSourceIp()
  * @method string getConnector()
@@ -33,6 +34,7 @@ class CreateDataLimitRequest extends RpcAcsRequest
 
     /**
      * @param string $password
+     *
      * @return $this
      */
     public function setPassword($password)
@@ -45,6 +47,7 @@ class CreateDataLimitRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -57,6 +60,7 @@ class CreateDataLimitRequest extends RpcAcsRequest
 
     /**
      * @param string $connector
+     *
      * @return $this
      */
     public function setConnector($connector)
@@ -69,6 +73,7 @@ class CreateDataLimitRequest extends RpcAcsRequest
 
     /**
      * @param string $dataLimitList
+     *
      * @return $this
      */
     public function setDataLimitList($dataLimitList)
@@ -81,6 +86,7 @@ class CreateDataLimitRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -93,6 +99,7 @@ class CreateDataLimitRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -105,6 +112,7 @@ class CreateDataLimitRequest extends RpcAcsRequest
 
     /**
      * @param string $serviceRegionId
+     *
      * @return $this
      */
     public function setServiceRegionId($serviceRegionId)
@@ -117,6 +125,7 @@ class CreateDataLimitRequest extends RpcAcsRequest
 
     /**
      * @param string $parentId
+     *
      * @return $this
      */
     public function setParentId($parentId)
@@ -129,6 +138,7 @@ class CreateDataLimitRequest extends RpcAcsRequest
 
     /**
      * @param string $userName
+     *
      * @return $this
      */
     public function setUserName($userName)

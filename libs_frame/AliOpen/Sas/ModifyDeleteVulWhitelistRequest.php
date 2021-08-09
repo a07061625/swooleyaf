@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDeleteVulWhitelist
+ *
  * @method string getSourceIp()
  * @method string getWhitelist()
  */
@@ -26,6 +27,7 @@ class ModifyDeleteVulWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -38,6 +40,7 @@ class ModifyDeleteVulWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $whitelist
+     *
      * @return $this
      */
     public function setWhitelist($whitelist)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScdnDomainRealTimeQpsData
+ *
  * @method string getLocationNameEn()
  * @method string getIspNameEn()
  * @method string getStartTime()
@@ -25,6 +26,7 @@ class DescribeScdnDomainRealTimeQpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $locationNameEn
+     *
      * @return $this
      */
     public function setLocationNameEn($locationNameEn)
@@ -37,6 +39,7 @@ class DescribeScdnDomainRealTimeQpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $ispNameEn
+     *
      * @return $this
      */
     public function setIspNameEn($ispNameEn)
@@ -49,6 +52,7 @@ class DescribeScdnDomainRealTimeQpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -61,6 +65,7 @@ class DescribeScdnDomainRealTimeQpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -73,6 +78,7 @@ class DescribeScdnDomainRealTimeQpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -85,6 +91,7 @@ class DescribeScdnDomainRealTimeQpsDataRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

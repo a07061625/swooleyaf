@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of OpenScdnService
+ *
  * @method string getStartDate()
  * @method string getCcProtection()
  * @method string getSecurityToken()
@@ -34,6 +35,7 @@ class OpenScdnServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $startDate
+     *
      * @return $this
      */
     public function setStartDate($startDate)
@@ -46,6 +48,7 @@ class OpenScdnServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $ccProtection
+     *
      * @return $this
      */
     public function setCcProtection($ccProtection)
@@ -58,6 +61,7 @@ class OpenScdnServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -70,6 +74,7 @@ class OpenScdnServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $protectType
+     *
      * @return $this
      */
     public function setProtectType($protectType)
@@ -82,6 +87,7 @@ class OpenScdnServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $dDoSBasic
+     *
      * @return $this
      */
     public function setDDoSBasic($dDoSBasic)
@@ -94,6 +100,7 @@ class OpenScdnServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $bandwidth
+     *
      * @return $this
      */
     public function setBandwidth($bandwidth)
@@ -106,6 +113,7 @@ class OpenScdnServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $domainCount
+     *
      * @return $this
      */
     public function setDomainCount($domainCount)
@@ -118,6 +126,7 @@ class OpenScdnServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +139,7 @@ class OpenScdnServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $endDate
+     *
      * @return $this
      */
     public function setEndDate($endDate)
@@ -142,6 +152,7 @@ class OpenScdnServiceRequest extends RpcAcsRequest
 
     /**
      * @param string $elasticProtection
+     *
      * @return $this
      */
     public function setElasticProtection($elasticProtection)

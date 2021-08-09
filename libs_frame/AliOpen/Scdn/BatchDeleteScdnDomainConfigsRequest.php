@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BatchDeleteScdnDomainConfigs
+ *
  * @method string getFunctionNames()
  * @method string getDomainNames()
  * @method string getOwnerAccount()
@@ -29,6 +30,7 @@ class BatchDeleteScdnDomainConfigsRequest extends RpcAcsRequest
 
     /**
      * @param string $functionNames
+     *
      * @return $this
      */
     public function setFunctionNames($functionNames)
@@ -41,6 +43,7 @@ class BatchDeleteScdnDomainConfigsRequest extends RpcAcsRequest
 
     /**
      * @param string $domainNames
+     *
      * @return $this
      */
     public function setDomainNames($domainNames)
@@ -53,6 +56,7 @@ class BatchDeleteScdnDomainConfigsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -65,6 +69,7 @@ class BatchDeleteScdnDomainConfigsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -77,6 +82,7 @@ class BatchDeleteScdnDomainConfigsRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)

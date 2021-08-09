@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyRule
+ *
  * @method string getSourceIp()
  * @method string getFeatureType()
  * @method string getName()
@@ -33,6 +34,7 @@ class ModifyRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -45,6 +47,7 @@ class ModifyRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $featureType
+     *
      * @return $this
      */
     public function setFeatureType($featureType)
@@ -57,6 +60,7 @@ class ModifyRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -69,6 +73,7 @@ class ModifyRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -81,6 +86,7 @@ class ModifyRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $riskLevelId
+     *
      * @return $this
      */
     public function setRiskLevelId($riskLevelId)
@@ -93,6 +99,7 @@ class ModifyRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -105,6 +112,7 @@ class ModifyRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $customType
+     *
      * @return $this
      */
     public function setCustomType($customType)
@@ -117,6 +125,7 @@ class ModifyRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $category
+     *
      * @return $this
      */
     public function setCategory($category)
@@ -129,6 +138,7 @@ class ModifyRuleRequest extends RpcAcsRequest
 
     /**
      * @param string $content
+     *
      * @return $this
      */
     public function setContent($content)

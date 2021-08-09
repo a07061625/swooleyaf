@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Slb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class ModifyLoadBalancerPayTypeRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Slb", "2014-05-15", "ModifyLoadBalancerPayType", "slb", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $access_key_id;
     private $resourceOwnerId;
     private $autoPay;
@@ -41,6 +36,12 @@ class ModifyLoadBalancerPayTypeRequest extends RpcAcsRequest
     private $payType;
     private $pricingCycle;
 
+    public function __construct()
+    {
+        parent::__construct('Slb', '2014-05-15', 'ModifyLoadBalancerPayType', 'slb', 'openAPI');
+        $this->setMethod('POST');
+    }
+
     public function getaccess_key_id()
     {
         return $this->access_key_id;
@@ -49,7 +50,7 @@ class ModifyLoadBalancerPayTypeRequest extends RpcAcsRequest
     public function setaccess_key_id($access_key_id)
     {
         $this->access_key_id = $access_key_id;
-        $this->queryParameters["access_key_id"] = $access_key_id;
+        $this->queryParameters['access_key_id'] = $access_key_id;
     }
 
     public function getResourceOwnerId()
@@ -60,7 +61,7 @@ class ModifyLoadBalancerPayTypeRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getAutoPay()
@@ -71,7 +72,7 @@ class ModifyLoadBalancerPayTypeRequest extends RpcAcsRequest
     public function setAutoPay($autoPay)
     {
         $this->autoPay = $autoPay;
-        $this->queryParameters["AutoPay"] = $autoPay;
+        $this->queryParameters['AutoPay'] = $autoPay;
     }
 
     public function getResourceOwnerAccount()
@@ -82,7 +83,7 @@ class ModifyLoadBalancerPayTypeRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getOwnerAccount()
@@ -93,7 +94,7 @@ class ModifyLoadBalancerPayTypeRequest extends RpcAcsRequest
     public function setOwnerAccount($ownerAccount)
     {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
     public function getOwnerId()
@@ -104,7 +105,7 @@ class ModifyLoadBalancerPayTypeRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
     public function getTags()
@@ -115,7 +116,7 @@ class ModifyLoadBalancerPayTypeRequest extends RpcAcsRequest
     public function setTags($tags)
     {
         $this->tags = $tags;
-        $this->queryParameters["Tags"] = $tags;
+        $this->queryParameters['Tags'] = $tags;
     }
 
     public function getDuration()
@@ -126,7 +127,7 @@ class ModifyLoadBalancerPayTypeRequest extends RpcAcsRequest
     public function setDuration($duration)
     {
         $this->duration = $duration;
-        $this->queryParameters["Duration"] = $duration;
+        $this->queryParameters['Duration'] = $duration;
     }
 
     public function getLoadBalancerId()
@@ -137,7 +138,7 @@ class ModifyLoadBalancerPayTypeRequest extends RpcAcsRequest
     public function setLoadBalancerId($loadBalancerId)
     {
         $this->loadBalancerId = $loadBalancerId;
-        $this->queryParameters["LoadBalancerId"] = $loadBalancerId;
+        $this->queryParameters['LoadBalancerId'] = $loadBalancerId;
     }
 
     public function getPayType()
@@ -148,7 +149,7 @@ class ModifyLoadBalancerPayTypeRequest extends RpcAcsRequest
     public function setPayType($payType)
     {
         $this->payType = $payType;
-        $this->queryParameters["PayType"] = $payType;
+        $this->queryParameters['PayType'] = $payType;
     }
 
     public function getPricingCycle()
@@ -159,6 +160,6 @@ class ModifyLoadBalancerPayTypeRequest extends RpcAcsRequest
     public function setPricingCycle($pricingCycle)
     {
         $this->pricingCycle = $pricingCycle;
-        $this->queryParameters["PricingCycle"] = $pricingCycle;
+        $this->queryParameters['PricingCycle'] = $pricingCycle;
     }
 }

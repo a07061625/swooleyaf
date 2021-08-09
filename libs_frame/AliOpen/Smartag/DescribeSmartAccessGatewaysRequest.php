@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeSmartAccessGateways
+ *
  * @method string getResourceOwnerId()
  * @method string getSerialNumber()
  * @method string getResourceOwnerAccount()
@@ -38,6 +39,7 @@ class DescribeSmartAccessGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +52,7 @@ class DescribeSmartAccessGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $serialNumber
+     *
      * @return $this
      */
     public function setSerialNumber($serialNumber)
@@ -62,6 +65,7 @@ class DescribeSmartAccessGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -74,6 +78,7 @@ class DescribeSmartAccessGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $aclIds
+     *
      * @return $this
      */
     public function setAclIds($aclIds)
@@ -86,6 +91,7 @@ class DescribeSmartAccessGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -98,6 +104,7 @@ class DescribeSmartAccessGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $associatedCcnId
+     *
      * @return $this
      */
     public function setAssociatedCcnId($associatedCcnId)
@@ -110,6 +117,7 @@ class DescribeSmartAccessGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -122,6 +130,7 @@ class DescribeSmartAccessGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $unboundAclIds
+     *
      * @return $this
      */
     public function setUnboundAclIds($unboundAclIds)
@@ -134,6 +143,7 @@ class DescribeSmartAccessGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -146,6 +156,7 @@ class DescribeSmartAccessGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -158,6 +169,7 @@ class DescribeSmartAccessGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -170,6 +182,7 @@ class DescribeSmartAccessGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $smartAGId
+     *
      * @return $this
      */
     public function setSmartAGId($smartAGId)
@@ -182,6 +195,7 @@ class DescribeSmartAccessGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceType
+     *
      * @return $this
      */
     public function setInstanceType($instanceType)
@@ -194,6 +208,7 @@ class DescribeSmartAccessGatewaysRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

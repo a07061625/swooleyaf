@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVulWhitelist
+ *
  * @method string getSourceIp()
  * @method string getPageSize()
  * @method string getCurrentPage()
@@ -27,6 +28,7 @@ class DescribeVulWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -39,6 +41,7 @@ class DescribeVulWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -51,6 +54,7 @@ class DescribeVulWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)

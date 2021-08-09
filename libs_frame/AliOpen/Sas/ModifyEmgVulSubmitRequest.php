@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyEmgVulSubmit
+ *
  * @method string getSourceIp()
  * @method string getName()
  * @method string getUserAgreement()
@@ -28,6 +29,7 @@ class ModifyEmgVulSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -40,6 +42,7 @@ class ModifyEmgVulSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -52,6 +55,7 @@ class ModifyEmgVulSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $userAgreement
+     *
      * @return $this
      */
     public function setUserAgreement($userAgreement)
@@ -64,6 +68,7 @@ class ModifyEmgVulSubmitRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

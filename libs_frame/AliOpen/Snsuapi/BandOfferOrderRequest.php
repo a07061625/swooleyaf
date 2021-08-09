@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BandOfferOrder
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getBandId()
@@ -29,6 +30,7 @@ class BandOfferOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +43,7 @@ class BandOfferOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -53,6 +56,7 @@ class BandOfferOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $bandId
+     *
      * @return $this
      */
     public function setBandId($bandId)
@@ -65,6 +69,7 @@ class BandOfferOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $offerId
+     *
      * @return $this
      */
     public function setOfferId($offerId)
@@ -77,6 +82,7 @@ class BandOfferOrderRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

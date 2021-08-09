@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyAutoDelConfig
+ *
  * @method string getSourceIp()
  * @method string getDays()
  */
@@ -26,6 +27,7 @@ class ModifyAutoDelConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -38,6 +40,7 @@ class ModifyAutoDelConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $days
+     *
      * @return $this
      */
     public function setDays($days)

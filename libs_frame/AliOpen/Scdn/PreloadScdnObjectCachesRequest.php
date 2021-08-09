@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of PreloadScdnObjectCaches
+ *
  * @method string getArea()
  * @method string getObjectPath()
  * @method string getOwnerId()
@@ -28,6 +29,7 @@ class PreloadScdnObjectCachesRequest extends RpcAcsRequest
 
     /**
      * @param string $area
+     *
      * @return $this
      */
     public function setArea($area)
@@ -40,6 +42,7 @@ class PreloadScdnObjectCachesRequest extends RpcAcsRequest
 
     /**
      * @param string $objectPath
+     *
      * @return $this
      */
     public function setObjectPath($objectPath)
@@ -52,6 +55,7 @@ class PreloadScdnObjectCachesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -64,6 +68,7 @@ class PreloadScdnObjectCachesRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)

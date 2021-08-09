@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAlarmEventList
+ *
  * @method string getAlarmEventName()
  * @method string getSourceIp()
  * @method string getPageSize()
@@ -34,6 +35,7 @@ class DescribeAlarmEventListRequest extends RpcAcsRequest
 
     /**
      * @param string $alarmEventName
+     *
      * @return $this
      */
     public function setAlarmEventName($alarmEventName)
@@ -46,6 +48,7 @@ class DescribeAlarmEventListRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -58,6 +61,7 @@ class DescribeAlarmEventListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -70,6 +74,7 @@ class DescribeAlarmEventListRequest extends RpcAcsRequest
 
     /**
      * @param string $alarmEventType
+     *
      * @return $this
      */
     public function setAlarmEventType($alarmEventType)
@@ -82,6 +87,7 @@ class DescribeAlarmEventListRequest extends RpcAcsRequest
 
     /**
      * @param string $dealed
+     *
      * @return $this
      */
     public function setDealed($dealed)
@@ -94,6 +100,7 @@ class DescribeAlarmEventListRequest extends RpcAcsRequest
 
     /**
      * @param string $from
+     *
      * @return $this
      */
     public function setFrom($from)
@@ -106,6 +113,7 @@ class DescribeAlarmEventListRequest extends RpcAcsRequest
 
     /**
      * @param string $remark
+     *
      * @return $this
      */
     public function setRemark($remark)
@@ -118,6 +126,7 @@ class DescribeAlarmEventListRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -130,6 +139,7 @@ class DescribeAlarmEventListRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -142,6 +152,7 @@ class DescribeAlarmEventListRequest extends RpcAcsRequest
 
     /**
      * @param string $levels
+     *
      * @return $this
      */
     public function setLevels($levels)

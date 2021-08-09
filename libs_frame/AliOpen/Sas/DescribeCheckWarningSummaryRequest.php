@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeCheckWarningSummary
+ *
  * @method string getRiskName()
  * @method string getSourceIp()
  * @method string getRiskStatus()
@@ -34,6 +35,7 @@ class DescribeCheckWarningSummaryRequest extends RpcAcsRequest
 
     /**
      * @param string $riskName
+     *
      * @return $this
      */
     public function setRiskName($riskName)
@@ -46,6 +48,7 @@ class DescribeCheckWarningSummaryRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -58,6 +61,7 @@ class DescribeCheckWarningSummaryRequest extends RpcAcsRequest
 
     /**
      * @param string $riskStatus
+     *
      * @return $this
      */
     public function setRiskStatus($riskStatus)
@@ -70,6 +74,7 @@ class DescribeCheckWarningSummaryRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -82,6 +87,7 @@ class DescribeCheckWarningSummaryRequest extends RpcAcsRequest
 
     /**
      * @param string $strategyId
+     *
      * @return $this
      */
     public function setStrategyId($strategyId)
@@ -94,6 +100,7 @@ class DescribeCheckWarningSummaryRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -106,6 +113,7 @@ class DescribeCheckWarningSummaryRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -118,6 +126,7 @@ class DescribeCheckWarningSummaryRequest extends RpcAcsRequest
 
     /**
      * @param string $typeName
+     *
      * @return $this
      */
     public function setTypeName($typeName)
@@ -130,6 +139,7 @@ class DescribeCheckWarningSummaryRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)
@@ -142,6 +152,7 @@ class DescribeCheckWarningSummaryRequest extends RpcAcsRequest
 
     /**
      * @param string $uuids
+     *
      * @return $this
      */
     public function setUuids($uuids)

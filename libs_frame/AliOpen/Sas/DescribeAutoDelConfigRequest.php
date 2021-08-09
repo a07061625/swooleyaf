@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeAutoDelConfig
+ *
  * @method string getSourceIp()
  */
 class DescribeAutoDelConfigRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class DescribeAutoDelConfigRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)

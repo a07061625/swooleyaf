@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeStratety
+ *
  * @method string getSourceIp()
  * @method string getStrategyIds()
  * @method string getLang()
@@ -27,6 +28,7 @@ class DescribeStratetyRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -39,6 +41,7 @@ class DescribeStratetyRequest extends RpcAcsRequest
 
     /**
      * @param string $strategyIds
+     *
      * @return $this
      */
     public function setStrategyIds($strategyIds)
@@ -51,6 +54,7 @@ class DescribeStratetyRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

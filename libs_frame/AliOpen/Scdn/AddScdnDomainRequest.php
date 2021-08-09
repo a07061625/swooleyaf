@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddScdnDomain
+ *
  * @method string getSources()
  * @method string getResourceGroupId()
  * @method string getSecurityToken()
@@ -32,6 +33,7 @@ class AddScdnDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $sources
+     *
      * @return $this
      */
     public function setSources($sources)
@@ -44,6 +46,7 @@ class AddScdnDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -56,6 +59,7 @@ class AddScdnDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -68,6 +72,7 @@ class AddScdnDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $scope
+     *
      * @return $this
      */
     public function setScope($scope)
@@ -80,6 +85,7 @@ class AddScdnDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -92,6 +98,7 @@ class AddScdnDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -104,6 +111,7 @@ class AddScdnDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +124,7 @@ class AddScdnDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $checkUrl
+     *
      * @return $this
      */
     public function setCheckUrl($checkUrl)

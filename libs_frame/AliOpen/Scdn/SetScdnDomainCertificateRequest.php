@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetScdnDomainCertificate
+ *
  * @method string getSSLProtocol()
  * @method string getSecurityToken()
  * @method string getCertType()
@@ -34,6 +35,7 @@ class SetScdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $sSLProtocol
+     *
      * @return $this
      */
     public function setSSLProtocol($sSLProtocol)
@@ -46,6 +48,7 @@ class SetScdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -58,6 +61,7 @@ class SetScdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $certType
+     *
      * @return $this
      */
     public function setCertType($certType)
@@ -70,6 +74,7 @@ class SetScdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $sSLPri
+     *
      * @return $this
      */
     public function setSSLPri($sSLPri)
@@ -82,6 +87,7 @@ class SetScdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $forceSet
+     *
      * @return $this
      */
     public function setForceSet($forceSet)
@@ -94,6 +100,7 @@ class SetScdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $certName
+     *
      * @return $this
      */
     public function setCertName($certName)
@@ -106,6 +113,7 @@ class SetScdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -118,6 +126,7 @@ class SetScdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +139,7 @@ class SetScdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $sSLPub
+     *
      * @return $this
      */
     public function setSSLPub($sSLPub)
@@ -142,6 +152,7 @@ class SetScdnDomainCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)

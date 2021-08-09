@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ClearSagRouteableAddress
+ *
  * @method string getaccess_key_id()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -30,6 +31,7 @@ class ClearSagRouteableAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $access_key_id
+     *
      * @return $this
      */
     public function setaccess_key_id($access_key_id)
@@ -42,6 +44,7 @@ class ClearSagRouteableAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +57,7 @@ class ClearSagRouteableAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +70,7 @@ class ClearSagRouteableAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $sagId
+     *
      * @return $this
      */
     public function setSagId($sagId)
@@ -78,6 +83,7 @@ class ClearSagRouteableAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -90,6 +96,7 @@ class ClearSagRouteableAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

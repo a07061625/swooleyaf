@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeThreatDistribute
+ *
  * @method string getEndDate()
  * @method string getSourceIp()
  * @method string getHitDay()
@@ -29,6 +30,7 @@ class DescribeThreatDistributeRequest extends RpcAcsRequest
 
     /**
      * @param string $endDate
+     *
      * @return $this
      */
     public function setEndDate($endDate)
@@ -41,6 +43,7 @@ class DescribeThreatDistributeRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -53,6 +56,7 @@ class DescribeThreatDistributeRequest extends RpcAcsRequest
 
     /**
      * @param string $hitDay
+     *
      * @return $this
      */
     public function setHitDay($hitDay)
@@ -65,6 +69,7 @@ class DescribeThreatDistributeRequest extends RpcAcsRequest
 
     /**
      * @param string $startDate
+     *
      * @return $this
      */
     public function setStartDate($startDate)
@@ -77,6 +82,7 @@ class DescribeThreatDistributeRequest extends RpcAcsRequest
 
     /**
      * @param string $apiType
+     *
      * @return $this
      */
     public function setApiType($apiType)

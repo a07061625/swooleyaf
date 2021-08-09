@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyCloudConnectNetwork
+ *
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
  * @method string getOwnerAccount()
@@ -33,6 +34,7 @@ class ModifyCloudConnectNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -45,6 +47,7 @@ class ModifyCloudConnectNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -57,6 +60,7 @@ class ModifyCloudConnectNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -69,6 +73,7 @@ class ModifyCloudConnectNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $ccnId
+     *
      * @return $this
      */
     public function setCcnId($ccnId)
@@ -81,6 +86,7 @@ class ModifyCloudConnectNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -93,6 +99,7 @@ class ModifyCloudConnectNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $cidrBlock
+     *
      * @return $this
      */
     public function setCidrBlock($cidrBlock)
@@ -105,6 +112,7 @@ class ModifyCloudConnectNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -117,6 +125,7 @@ class ModifyCloudConnectNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $snatCidrBlock
+     *
      * @return $this
      */
     public function setSnatCidrBlock($snatCidrBlock)
@@ -129,6 +138,7 @@ class ModifyCloudConnectNetworkRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeACLAttribute
+ *
  * @method string getAclId()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -33,6 +34,7 @@ class DescribeACLAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $aclId
+     *
      * @return $this
      */
     public function setAclId($aclId)
@@ -45,6 +47,7 @@ class DescribeACLAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +60,7 @@ class DescribeACLAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -69,6 +73,7 @@ class DescribeACLAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -81,6 +86,7 @@ class DescribeACLAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -93,6 +99,7 @@ class DescribeACLAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -105,6 +112,7 @@ class DescribeACLAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -117,6 +125,7 @@ class DescribeACLAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $direction
+     *
      * @return $this
      */
     public function setDirection($direction)
@@ -129,6 +138,7 @@ class DescribeACLAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $order
+     *
      * @return $this
      */
     public function setOrder($order)

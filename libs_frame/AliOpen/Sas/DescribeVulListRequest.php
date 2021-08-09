@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeVulList
+ *
  * @method string getAliasName()
  * @method string getSourceIp()
  * @method string getPageSize()
@@ -34,6 +35,7 @@ class DescribeVulListRequest extends RpcAcsRequest
 
     /**
      * @param string $aliasName
+     *
      * @return $this
      */
     public function setAliasName($aliasName)
@@ -46,6 +48,7 @@ class DescribeVulListRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -58,6 +61,7 @@ class DescribeVulListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -70,6 +74,7 @@ class DescribeVulListRequest extends RpcAcsRequest
 
     /**
      * @param string $remark
+     *
      * @return $this
      */
     public function setRemark($remark)
@@ -82,6 +87,7 @@ class DescribeVulListRequest extends RpcAcsRequest
 
     /**
      * @param string $dealed
+     *
      * @return $this
      */
     public function setDealed($dealed)
@@ -94,6 +100,7 @@ class DescribeVulListRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -106,6 +113,7 @@ class DescribeVulListRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -118,6 +126,7 @@ class DescribeVulListRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -130,6 +139,7 @@ class DescribeVulListRequest extends RpcAcsRequest
 
     /**
      * @param string $necessity
+     *
      * @return $this
      */
     public function setNecessity($necessity)
@@ -142,6 +152,7 @@ class DescribeVulListRequest extends RpcAcsRequest
 
     /**
      * @param string $uuids
+     *
      * @return $this
      */
     public function setUuids($uuids)

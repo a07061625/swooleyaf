@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Slb;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Slb", "2014-05-15", "SetLoadBalancerHTTPSListenerAttribute", "slb", "openAPI");
-        $this->setMethod("POST");
-    }
-
     private $access_key_id;
     private $resourceOwnerId;
     private $healthCheckTimeout;
@@ -69,6 +64,12 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     private $healthCheckHttpCode;
     private $vServerGroup;
 
+    public function __construct()
+    {
+        parent::__construct('Slb', '2014-05-15', 'SetLoadBalancerHTTPSListenerAttribute', 'slb', 'openAPI');
+        $this->setMethod('POST');
+    }
+
     public function getaccess_key_id()
     {
         return $this->access_key_id;
@@ -77,7 +78,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setaccess_key_id($access_key_id)
     {
         $this->access_key_id = $access_key_id;
-        $this->queryParameters["access_key_id"] = $access_key_id;
+        $this->queryParameters['access_key_id'] = $access_key_id;
     }
 
     public function getResourceOwnerId()
@@ -88,7 +89,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setResourceOwnerId($resourceOwnerId)
     {
         $this->resourceOwnerId = $resourceOwnerId;
-        $this->queryParameters["ResourceOwnerId"] = $resourceOwnerId;
+        $this->queryParameters['ResourceOwnerId'] = $resourceOwnerId;
     }
 
     public function getHealthCheckTimeout()
@@ -99,7 +100,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setHealthCheckTimeout($healthCheckTimeout)
     {
         $this->healthCheckTimeout = $healthCheckTimeout;
-        $this->queryParameters["HealthCheckTimeout"] = $healthCheckTimeout;
+        $this->queryParameters['HealthCheckTimeout'] = $healthCheckTimeout;
     }
 
     public function getXForwardedFor()
@@ -110,7 +111,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setXForwardedFor($xForwardedFor)
     {
         $this->xForwardedFor = $xForwardedFor;
-        $this->queryParameters["XForwardedFor"] = $xForwardedFor;
+        $this->queryParameters['XForwardedFor'] = $xForwardedFor;
     }
 
     public function getHealthCheckURI()
@@ -121,7 +122,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setHealthCheckURI($healthCheckURI)
     {
         $this->healthCheckURI = $healthCheckURI;
-        $this->queryParameters["HealthCheckURI"] = $healthCheckURI;
+        $this->queryParameters['HealthCheckURI'] = $healthCheckURI;
     }
 
     public function getUnhealthyThreshold()
@@ -132,7 +133,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setUnhealthyThreshold($unhealthyThreshold)
     {
         $this->unhealthyThreshold = $unhealthyThreshold;
-        $this->queryParameters["UnhealthyThreshold"] = $unhealthyThreshold;
+        $this->queryParameters['UnhealthyThreshold'] = $unhealthyThreshold;
     }
 
     public function getHealthyThreshold()
@@ -143,7 +144,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setHealthyThreshold($healthyThreshold)
     {
         $this->healthyThreshold = $healthyThreshold;
-        $this->queryParameters["HealthyThreshold"] = $healthyThreshold;
+        $this->queryParameters['HealthyThreshold'] = $healthyThreshold;
     }
 
     public function getAclStatus()
@@ -154,7 +155,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setAclStatus($aclStatus)
     {
         $this->aclStatus = $aclStatus;
-        $this->queryParameters["AclStatus"] = $aclStatus;
+        $this->queryParameters['AclStatus'] = $aclStatus;
     }
 
     public function getScheduler()
@@ -165,7 +166,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setScheduler($scheduler)
     {
         $this->scheduler = $scheduler;
-        $this->queryParameters["Scheduler"] = $scheduler;
+        $this->queryParameters['Scheduler'] = $scheduler;
     }
 
     public function getAclType()
@@ -176,7 +177,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setAclType($aclType)
     {
         $this->aclType = $aclType;
-        $this->queryParameters["AclType"] = $aclType;
+        $this->queryParameters['AclType'] = $aclType;
     }
 
     public function getHealthCheck()
@@ -187,7 +188,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setHealthCheck($healthCheck)
     {
         $this->healthCheck = $healthCheck;
-        $this->queryParameters["HealthCheck"] = $healthCheck;
+        $this->queryParameters['HealthCheck'] = $healthCheck;
     }
 
     public function getMaxConnection()
@@ -198,7 +199,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setMaxConnection($maxConnection)
     {
         $this->maxConnection = $maxConnection;
-        $this->queryParameters["MaxConnection"] = $maxConnection;
+        $this->queryParameters['MaxConnection'] = $maxConnection;
     }
 
     public function getCookieTimeout()
@@ -209,7 +210,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setCookieTimeout($cookieTimeout)
     {
         $this->cookieTimeout = $cookieTimeout;
-        $this->queryParameters["CookieTimeout"] = $cookieTimeout;
+        $this->queryParameters['CookieTimeout'] = $cookieTimeout;
     }
 
     public function getStickySessionType()
@@ -220,7 +221,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setStickySessionType($stickySessionType)
     {
         $this->stickySessionType = $stickySessionType;
-        $this->queryParameters["StickySessionType"] = $stickySessionType;
+        $this->queryParameters['StickySessionType'] = $stickySessionType;
     }
 
     public function getVpcIds()
@@ -231,7 +232,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setVpcIds($vpcIds)
     {
         $this->vpcIds = $vpcIds;
-        $this->queryParameters["VpcIds"] = $vpcIds;
+        $this->queryParameters['VpcIds'] = $vpcIds;
     }
 
     public function getVServerGroupId()
@@ -242,7 +243,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setVServerGroupId($vServerGroupId)
     {
         $this->vServerGroupId = $vServerGroupId;
-        $this->queryParameters["VServerGroupId"] = $vServerGroupId;
+        $this->queryParameters['VServerGroupId'] = $vServerGroupId;
     }
 
     public function getAclId()
@@ -253,7 +254,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setAclId($aclId)
     {
         $this->aclId = $aclId;
-        $this->queryParameters["AclId"] = $aclId;
+        $this->queryParameters['AclId'] = $aclId;
     }
 
     public function getListenerPort()
@@ -264,7 +265,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setListenerPort($listenerPort)
     {
         $this->listenerPort = $listenerPort;
-        $this->queryParameters["ListenerPort"] = $listenerPort;
+        $this->queryParameters['ListenerPort'] = $listenerPort;
     }
 
     public function getCookie()
@@ -275,7 +276,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setCookie($cookie)
     {
         $this->cookie = $cookie;
-        $this->queryParameters["Cookie"] = $cookie;
+        $this->queryParameters['Cookie'] = $cookie;
     }
 
     public function getResourceOwnerAccount()
@@ -286,7 +287,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setResourceOwnerAccount($resourceOwnerAccount)
     {
         $this->resourceOwnerAccount = $resourceOwnerAccount;
-        $this->queryParameters["ResourceOwnerAccount"] = $resourceOwnerAccount;
+        $this->queryParameters['ResourceOwnerAccount'] = $resourceOwnerAccount;
     }
 
     public function getBandwidth()
@@ -297,7 +298,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setBandwidth($bandwidth)
     {
         $this->bandwidth = $bandwidth;
-        $this->queryParameters["Bandwidth"] = $bandwidth;
+        $this->queryParameters['Bandwidth'] = $bandwidth;
     }
 
     public function getStickySession()
@@ -308,7 +309,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setStickySession($stickySession)
     {
         $this->stickySession = $stickySession;
-        $this->queryParameters["StickySession"] = $stickySession;
+        $this->queryParameters['StickySession'] = $stickySession;
     }
 
     public function getHealthCheckDomain()
@@ -319,7 +320,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setHealthCheckDomain($healthCheckDomain)
     {
         $this->healthCheckDomain = $healthCheckDomain;
-        $this->queryParameters["HealthCheckDomain"] = $healthCheckDomain;
+        $this->queryParameters['HealthCheckDomain'] = $healthCheckDomain;
     }
 
     public function getRequestTimeout()
@@ -330,7 +331,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setRequestTimeout($requestTimeout)
     {
         $this->requestTimeout = $requestTimeout;
-        $this->queryParameters["RequestTimeout"] = $requestTimeout;
+        $this->queryParameters['RequestTimeout'] = $requestTimeout;
     }
 
     public function getOwnerAccount()
@@ -341,7 +342,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setOwnerAccount($ownerAccount)
     {
         $this->ownerAccount = $ownerAccount;
-        $this->queryParameters["OwnerAccount"] = $ownerAccount;
+        $this->queryParameters['OwnerAccount'] = $ownerAccount;
     }
 
     public function getGzip()
@@ -352,7 +353,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setGzip($gzip)
     {
         $this->gzip = $gzip;
-        $this->queryParameters["Gzip"] = $gzip;
+        $this->queryParameters['Gzip'] = $gzip;
     }
 
     public function getOwnerId()
@@ -363,7 +364,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-        $this->queryParameters["OwnerId"] = $ownerId;
+        $this->queryParameters['OwnerId'] = $ownerId;
     }
 
     public function getServerCertificateId()
@@ -374,7 +375,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setServerCertificateId($serverCertificateId)
     {
         $this->serverCertificateId = $serverCertificateId;
-        $this->queryParameters["ServerCertificateId"] = $serverCertificateId;
+        $this->queryParameters['ServerCertificateId'] = $serverCertificateId;
     }
 
     public function getCACertificateId()
@@ -385,7 +386,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setCACertificateId($cACertificateId)
     {
         $this->cACertificateId = $cACertificateId;
-        $this->queryParameters["CACertificateId"] = $cACertificateId;
+        $this->queryParameters['CACertificateId'] = $cACertificateId;
     }
 
     public function getTags()
@@ -396,7 +397,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setTags($tags)
     {
         $this->tags = $tags;
-        $this->queryParameters["Tags"] = $tags;
+        $this->queryParameters['Tags'] = $tags;
     }
 
     public function getIdleTimeout()
@@ -407,7 +408,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setIdleTimeout($idleTimeout)
     {
         $this->idleTimeout = $idleTimeout;
-        $this->queryParameters["IdleTimeout"] = $idleTimeout;
+        $this->queryParameters['IdleTimeout'] = $idleTimeout;
     }
 
     public function getLoadBalancerId()
@@ -418,7 +419,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setLoadBalancerId($loadBalancerId)
     {
         $this->loadBalancerId = $loadBalancerId;
-        $this->queryParameters["LoadBalancerId"] = $loadBalancerId;
+        $this->queryParameters['LoadBalancerId'] = $loadBalancerId;
     }
 
     public function getXForwardedFor_SLBIP()
@@ -429,7 +430,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setXForwardedFor_SLBIP($xForwardedFor_SLBIP)
     {
         $this->xForwardedFor_SLBIP = $xForwardedFor_SLBIP;
-        $this->queryParameters["XForwardedFor_SLBIP"] = $xForwardedFor_SLBIP;
+        $this->queryParameters['XForwardedFor_SLBIP'] = $xForwardedFor_SLBIP;
     }
 
     public function getHealthCheckInterval()
@@ -440,7 +441,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setHealthCheckInterval($healthCheckInterval)
     {
         $this->healthCheckInterval = $healthCheckInterval;
-        $this->queryParameters["HealthCheckInterval"] = $healthCheckInterval;
+        $this->queryParameters['HealthCheckInterval'] = $healthCheckInterval;
     }
 
     public function getXForwardedFor_proto()
@@ -451,7 +452,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setXForwardedFor_proto($xForwardedFor_proto)
     {
         $this->xForwardedFor_proto = $xForwardedFor_proto;
-        $this->queryParameters["XForwardedFor_proto"] = $xForwardedFor_proto;
+        $this->queryParameters['XForwardedFor_proto'] = $xForwardedFor_proto;
     }
 
     public function getXForwardedFor_SLBID()
@@ -462,7 +463,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setXForwardedFor_SLBID($xForwardedFor_SLBID)
     {
         $this->xForwardedFor_SLBID = $xForwardedFor_SLBID;
-        $this->queryParameters["XForwardedFor_SLBID"] = $xForwardedFor_SLBID;
+        $this->queryParameters['XForwardedFor_SLBID'] = $xForwardedFor_SLBID;
     }
 
     public function getHealthCheckConnectPort()
@@ -473,7 +474,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setHealthCheckConnectPort($healthCheckConnectPort)
     {
         $this->healthCheckConnectPort = $healthCheckConnectPort;
-        $this->queryParameters["HealthCheckConnectPort"] = $healthCheckConnectPort;
+        $this->queryParameters['HealthCheckConnectPort'] = $healthCheckConnectPort;
     }
 
     public function getHealthCheckHttpCode()
@@ -484,7 +485,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setHealthCheckHttpCode($healthCheckHttpCode)
     {
         $this->healthCheckHttpCode = $healthCheckHttpCode;
-        $this->queryParameters["HealthCheckHttpCode"] = $healthCheckHttpCode;
+        $this->queryParameters['HealthCheckHttpCode'] = $healthCheckHttpCode;
     }
 
     public function getVServerGroup()
@@ -495,6 +496,6 @@ class SetLoadBalancerHTTPSListenerAttributeRequest extends RpcAcsRequest
     public function setVServerGroup($vServerGroup)
     {
         $this->vServerGroup = $vServerGroup;
-        $this->queryParameters["VServerGroup"] = $vServerGroup;
+        $this->queryParameters['VServerGroup'] = $vServerGroup;
     }
 }

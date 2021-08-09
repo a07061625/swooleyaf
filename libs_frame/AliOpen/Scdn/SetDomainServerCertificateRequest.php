@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetDomainServerCertificate
+ *
  * @method string getSSLProtocol()
  * @method string getSecurityToken()
  * @method string getSSLPri()
@@ -32,6 +33,7 @@ class SetDomainServerCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $sSLProtocol
+     *
      * @return $this
      */
     public function setSSLProtocol($sSLProtocol)
@@ -44,6 +46,7 @@ class SetDomainServerCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -56,6 +59,7 @@ class SetDomainServerCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $sSLPri
+     *
      * @return $this
      */
     public function setSSLPri($sSLPri)
@@ -68,6 +72,7 @@ class SetDomainServerCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $certName
+     *
      * @return $this
      */
     public function setCertName($certName)
@@ -80,6 +85,7 @@ class SetDomainServerCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -92,6 +98,7 @@ class SetDomainServerCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -104,6 +111,7 @@ class SetDomainServerCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $sSLPub
+     *
      * @return $this
      */
     public function setSSLPub($sSLPub)
@@ -116,6 +124,7 @@ class SetDomainServerCertificateRequest extends RpcAcsRequest
 
     /**
      * @param string $region
+     *
      * @return $this
      */
     public function setRegion($region)

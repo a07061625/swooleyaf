@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribePerDateData
+ *
  * @method string getSourceIp()
  * @method string getApiType()
  */
@@ -26,6 +27,7 @@ class DescribePerDateDataRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -38,6 +40,7 @@ class DescribePerDateDataRequest extends RpcAcsRequest
 
     /**
      * @param string $apiType
+     *
      * @return $this
      */
     public function setApiType($apiType)

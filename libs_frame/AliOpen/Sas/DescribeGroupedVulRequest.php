@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeGroupedVul
+ *
  * @method string getAliasName()
  * @method string getSourceIp()
  * @method string getPageSize()
@@ -33,6 +34,7 @@ class DescribeGroupedVulRequest extends RpcAcsRequest
 
     /**
      * @param string $aliasName
+     *
      * @return $this
      */
     public function setAliasName($aliasName)
@@ -45,6 +47,7 @@ class DescribeGroupedVulRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -57,6 +60,7 @@ class DescribeGroupedVulRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -69,6 +73,7 @@ class DescribeGroupedVulRequest extends RpcAcsRequest
 
     /**
      * @param string $dealed
+     *
      * @return $this
      */
     public function setDealed($dealed)
@@ -81,6 +86,7 @@ class DescribeGroupedVulRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -93,6 +99,7 @@ class DescribeGroupedVulRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -105,6 +112,7 @@ class DescribeGroupedVulRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -117,6 +125,7 @@ class DescribeGroupedVulRequest extends RpcAcsRequest
 
     /**
      * @param string $necessity
+     *
      * @return $this
      */
     public function setNecessity($necessity)
@@ -129,6 +138,7 @@ class DescribeGroupedVulRequest extends RpcAcsRequest
 
     /**
      * @param string $uuids
+     *
      * @return $this
      */
     public function setUuids($uuids)

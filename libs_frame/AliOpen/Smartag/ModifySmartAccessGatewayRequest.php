@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifySmartAccessGateway
+ *
  * @method array getSnatEntriess()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -34,7 +35,6 @@ class ModifySmartAccessGatewayRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $snatEntries
      * @return $this
      */
     public function setSnatEntriess(array $snatEntries)
@@ -50,6 +50,7 @@ class ModifySmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -62,6 +63,7 @@ class ModifySmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -74,6 +76,7 @@ class ModifySmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $city
+     *
      * @return $this
      */
     public function setCity($city)
@@ -86,6 +89,7 @@ class ModifySmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -98,6 +102,7 @@ class ModifySmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -110,6 +115,7 @@ class ModifySmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -122,6 +128,7 @@ class ModifySmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $securityLockThreshold
+     *
      * @return $this
      */
     public function setSecurityLockThreshold($securityLockThreshold)
@@ -134,6 +141,7 @@ class ModifySmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -146,6 +154,7 @@ class ModifySmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $cidrBlock
+     *
      * @return $this
      */
     public function setCidrBlock($cidrBlock)
@@ -158,6 +167,7 @@ class ModifySmartAccessGatewayRequest extends RpcAcsRequest
 
     /**
      * @param string $smartAGId
+     *
      * @return $this
      */
     public function setSmartAGId($smartAGId)

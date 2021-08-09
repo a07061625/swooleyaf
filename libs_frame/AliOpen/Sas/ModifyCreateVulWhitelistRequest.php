@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyCreateVulWhitelist
+ *
  * @method string getReason()
  * @method string getSourceIp()
  * @method string getWhitelist()
@@ -27,6 +28,7 @@ class ModifyCreateVulWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $reason
+     *
      * @return $this
      */
     public function setReason($reason)
@@ -39,6 +41,7 @@ class ModifyCreateVulWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -51,6 +54,7 @@ class ModifyCreateVulWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $whitelist
+     *
      * @return $this
      */
     public function setWhitelist($whitelist)

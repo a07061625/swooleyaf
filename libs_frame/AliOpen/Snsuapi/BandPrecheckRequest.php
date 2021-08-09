@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BandPrecheck
+ *
  * @method string getIpAddress()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -29,6 +30,7 @@ class BandPrecheckRequest extends RpcAcsRequest
 
     /**
      * @param string $ipAddress
+     *
      * @return $this
      */
     public function setIpAddress($ipAddress)
@@ -41,6 +43,7 @@ class BandPrecheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -53,6 +56,7 @@ class BandPrecheckRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -65,6 +69,7 @@ class BandPrecheckRequest extends RpcAcsRequest
 
     /**
      * @param string $port
+     *
      * @return $this
      */
     public function setPort($port)
@@ -77,6 +82,7 @@ class BandPrecheckRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

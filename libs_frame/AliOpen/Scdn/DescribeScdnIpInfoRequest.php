@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScdnIpInfo
+ *
  * @method string getSecurityToken()
  * @method string getIP()
  * @method string getOwnerId()
@@ -27,6 +28,7 @@ class DescribeScdnIpInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -39,6 +41,7 @@ class DescribeScdnIpInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $iP
+     *
      * @return $this
      */
     public function setIP($iP)
@@ -51,6 +54,7 @@ class DescribeScdnIpInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

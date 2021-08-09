@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateSAGLinkLevelHa
+ *
  * @method string getResourceOwnerId()
  * @method string getBackupLinkId()
  * @method string getResourceOwnerAccount()
@@ -34,6 +35,7 @@ class CreateSAGLinkLevelHaRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +48,7 @@ class CreateSAGLinkLevelHaRequest extends RpcAcsRequest
 
     /**
      * @param string $backupLinkId
+     *
      * @return $this
      */
     public function setBackupLinkId($backupLinkId)
@@ -58,6 +61,7 @@ class CreateSAGLinkLevelHaRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -70,6 +74,7 @@ class CreateSAGLinkLevelHaRequest extends RpcAcsRequest
 
     /**
      * @param string $haType
+     *
      * @return $this
      */
     public function setHaType($haType)
@@ -82,6 +87,7 @@ class CreateSAGLinkLevelHaRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -94,6 +100,7 @@ class CreateSAGLinkLevelHaRequest extends RpcAcsRequest
 
     /**
      * @param string $mainLinkRegionId
+     *
      * @return $this
      */
     public function setMainLinkRegionId($mainLinkRegionId)
@@ -106,6 +113,7 @@ class CreateSAGLinkLevelHaRequest extends RpcAcsRequest
 
     /**
      * @param string $smartAGId
+     *
      * @return $this
      */
     public function setSmartAGId($smartAGId)
@@ -118,6 +126,7 @@ class CreateSAGLinkLevelHaRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +139,7 @@ class CreateSAGLinkLevelHaRequest extends RpcAcsRequest
 
     /**
      * @param string $mainLinkId
+     *
      * @return $this
      */
     public function setMainLinkId($mainLinkId)
@@ -142,6 +152,7 @@ class CreateSAGLinkLevelHaRequest extends RpcAcsRequest
 
     /**
      * @param string $backupLinkRegionId
+     *
      * @return $this
      */
     public function setBackupLinkRegionId($backupLinkRegionId)

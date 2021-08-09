@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeStrategyExecDetail
+ *
  * @method string getSourceIp()
  * @method string getStrategyId()
  */
@@ -26,6 +27,7 @@ class DescribeStrategyExecDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -38,6 +40,7 @@ class DescribeStrategyExecDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $strategyId
+     *
      * @return $this
      */
     public function setStrategyId($strategyId)

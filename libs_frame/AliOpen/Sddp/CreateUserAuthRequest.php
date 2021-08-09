@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateUserAuth
+ *
  * @method string getAccountId()
  * @method string getSourceIp()
  * @method string getAccessKey()
@@ -29,6 +30,7 @@ class CreateUserAuthRequest extends RpcAcsRequest
 
     /**
      * @param string $accountId
+     *
      * @return $this
      */
     public function setAccountId($accountId)
@@ -41,6 +43,7 @@ class CreateUserAuthRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -53,6 +56,7 @@ class CreateUserAuthRequest extends RpcAcsRequest
 
     /**
      * @param string $accessKey
+     *
      * @return $this
      */
     public function setAccessKey($accessKey)
@@ -65,6 +69,7 @@ class CreateUserAuthRequest extends RpcAcsRequest
 
     /**
      * @param string $accessKeySecret
+     *
      * @return $this
      */
     public function setAccessKeySecret($accessKeySecret)
@@ -77,6 +82,7 @@ class CreateUserAuthRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

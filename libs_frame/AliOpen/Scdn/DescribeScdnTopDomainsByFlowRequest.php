@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeScdnTopDomainsByFlow
+ *
  * @method string getStartTime()
  * @method string getLimit()
  * @method string getProduct()
@@ -29,6 +30,7 @@ class DescribeScdnTopDomainsByFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -41,6 +43,7 @@ class DescribeScdnTopDomainsByFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $limit
+     *
      * @return $this
      */
     public function setLimit($limit)
@@ -53,6 +56,7 @@ class DescribeScdnTopDomainsByFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $product
+     *
      * @return $this
      */
     public function setProduct($product)
@@ -65,6 +69,7 @@ class DescribeScdnTopDomainsByFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -77,6 +82,7 @@ class DescribeScdnTopDomainsByFlowRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

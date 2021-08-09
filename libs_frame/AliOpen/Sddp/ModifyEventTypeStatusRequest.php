@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyEventTypeStatus
+ *
  * @method string getSubTypeIds()
  * @method string getSourceIp()
  * @method string getLang()
@@ -27,6 +28,7 @@ class ModifyEventTypeStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $subTypeIds
+     *
      * @return $this
      */
     public function setSubTypeIds($subTypeIds)
@@ -39,6 +41,7 @@ class ModifyEventTypeStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceIp
+     *
      * @return $this
      */
     public function setSourceIp($sourceIp)
@@ -51,6 +54,7 @@ class ModifyEventTypeStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
