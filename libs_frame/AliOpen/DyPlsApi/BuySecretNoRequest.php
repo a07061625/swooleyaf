@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DyPlsApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BuySecretNo
+ *
  * @method string getSpecId()
  * @method string getResourceOwnerId()
  * @method string getCity()
@@ -31,6 +33,7 @@ class BuySecretNoRequest extends RpcAcsRequest
 
     /**
      * @param string $specId
+     *
      * @return $this
      */
     public function setSpecId($specId)
@@ -43,6 +46,7 @@ class BuySecretNoRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -55,6 +59,7 @@ class BuySecretNoRequest extends RpcAcsRequest
 
     /**
      * @param string $city
+     *
      * @return $this
      */
     public function setCity($city)
@@ -67,6 +72,7 @@ class BuySecretNoRequest extends RpcAcsRequest
 
     /**
      * @param string $secretNo
+     *
      * @return $this
      */
     public function setSecretNo($secretNo)
@@ -79,6 +85,7 @@ class BuySecretNoRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -91,6 +98,7 @@ class BuySecretNoRequest extends RpcAcsRequest
 
     /**
      * @param string $displayPool
+     *
      * @return $this
      */
     public function setDisplayPool($displayPool)
@@ -103,6 +111,7 @@ class BuySecretNoRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -115,6 +124,7 @@ class BuySecretNoRequest extends RpcAcsRequest
 
     /**
      * @param string $poolKey
+     *
      * @return $this
      */
     public function setPoolKey($poolKey)

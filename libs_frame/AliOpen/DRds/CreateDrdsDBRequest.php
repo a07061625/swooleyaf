@@ -17,23 +17,24 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\DRds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class CreateDrdsDBRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Drds", "2017-10-16", "CreateDrdsDB");
-        $this->setMethod("POST");
-    }
-
     private $encode;
     private $password;
     private $dbName;
     private $rdsInstances;
     private $drdsInstanceId;
+
+    public function __construct()
+    {
+        parent::__construct('Drds', '2017-10-16', 'CreateDrdsDB');
+        $this->setMethod('POST');
+    }
 
     public function getEncode()
     {
@@ -43,7 +44,7 @@ class CreateDrdsDBRequest extends RpcAcsRequest
     public function setEncode($encode)
     {
         $this->encode = $encode;
-        $this->queryParameters["Encode"] = $encode;
+        $this->queryParameters['Encode'] = $encode;
     }
 
     public function getPassword()
@@ -54,7 +55,7 @@ class CreateDrdsDBRequest extends RpcAcsRequest
     public function setPassword($password)
     {
         $this->password = $password;
-        $this->queryParameters["Password"] = $password;
+        $this->queryParameters['Password'] = $password;
     }
 
     public function getDbName()
@@ -65,7 +66,7 @@ class CreateDrdsDBRequest extends RpcAcsRequest
     public function setDbName($dbName)
     {
         $this->dbName = $dbName;
-        $this->queryParameters["DbName"] = $dbName;
+        $this->queryParameters['DbName'] = $dbName;
     }
 
     public function getRdsInstances()
@@ -76,7 +77,7 @@ class CreateDrdsDBRequest extends RpcAcsRequest
     public function setRdsInstances($rdsInstances)
     {
         $this->rdsInstances = $rdsInstances;
-        $this->queryParameters["RdsInstances"] = $rdsInstances;
+        $this->queryParameters['RdsInstances'] = $rdsInstances;
     }
 
     public function getDrdsInstanceId()
@@ -87,6 +88,6 @@ class CreateDrdsDBRequest extends RpcAcsRequest
     public function setDrdsInstanceId($drdsInstanceId)
     {
         $this->drdsInstanceId = $drdsInstanceId;
-        $this->queryParameters["DrdsInstanceId"] = $drdsInstanceId;
+        $this->queryParameters['DrdsInstanceId'] = $drdsInstanceId;
     }
 }

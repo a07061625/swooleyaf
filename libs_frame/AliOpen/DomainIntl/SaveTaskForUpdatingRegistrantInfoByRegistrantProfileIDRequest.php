@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveTaskForUpdatingRegistrantInfoByRegistrantProfileID
+ *
  * @method string getUserClientIp()
  * @method string getRegistrantProfileId()
  * @method array getDomainNames()
@@ -28,6 +30,7 @@ class SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest extends RpcA
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -40,6 +43,7 @@ class SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest extends RpcA
 
     /**
      * @param string $registrantProfileId
+     *
      * @return $this
      */
     public function setRegistrantProfileId($registrantProfileId)
@@ -51,7 +55,6 @@ class SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest extends RpcA
     }
 
     /**
-     * @param array $domainName
      * @return $this
      */
     public function setDomainNames(array $domainName)
@@ -66,6 +69,7 @@ class SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest extends RpcA
 
     /**
      * @param string $transferOutProhibited
+     *
      * @return $this
      */
     public function setTransferOutProhibited($transferOutProhibited)
@@ -78,6 +82,7 @@ class SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest extends RpcA
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

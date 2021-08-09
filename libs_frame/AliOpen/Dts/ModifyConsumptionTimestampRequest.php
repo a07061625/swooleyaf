@@ -17,21 +17,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Dts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class ModifyConsumptionTimestampRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Dts", "2016-08-01", "ModifyConsumptionTimestamp");
-        $this->setMethod("POST");
-    }
-
     protected $subscriptionInstanceId;
     protected $consumptionTimestamp;
     protected $ownerId;
+
+    public function __construct()
+    {
+        parent::__construct('Dts', '2016-08-01', 'ModifyConsumptionTimestamp');
+        $this->setMethod('POST');
+    }
 
     public function getSubscriptionInstanceId()
     {

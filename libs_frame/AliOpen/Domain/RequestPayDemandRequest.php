@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Domain;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RequestPayDemand
+ *
  * @method string getPrice()
  * @method string getBizId()
  * @method string getDomainName()
@@ -28,6 +30,7 @@ class RequestPayDemandRequest extends RpcAcsRequest
 
     /**
      * @param string $price
+     *
      * @return $this
      */
     public function setPrice($price)
@@ -40,6 +43,7 @@ class RequestPayDemandRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -52,6 +56,7 @@ class RequestPayDemandRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -64,6 +69,7 @@ class RequestPayDemandRequest extends RpcAcsRequest
 
     /**
      * @param string $produceType
+     *
      * @return $this
      */
     public function setProduceType($produceType)
@@ -76,6 +82,7 @@ class RequestPayDemandRequest extends RpcAcsRequest
 
     /**
      * @param string $message
+     *
      * @return $this
      */
     public function setMessage($message)

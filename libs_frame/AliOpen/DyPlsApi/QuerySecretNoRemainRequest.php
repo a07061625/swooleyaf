@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DyPlsApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QuerySecretNoRemain
+ *
  * @method string getSpecId()
  * @method string getResourceOwnerId()
  * @method string getCity()
@@ -29,6 +31,7 @@ class QuerySecretNoRemainRequest extends RpcAcsRequest
 
     /**
      * @param string $specId
+     *
      * @return $this
      */
     public function setSpecId($specId)
@@ -41,6 +44,7 @@ class QuerySecretNoRemainRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -53,6 +57,7 @@ class QuerySecretNoRemainRequest extends RpcAcsRequest
 
     /**
      * @param string $city
+     *
      * @return $this
      */
     public function setCity($city)
@@ -65,6 +70,7 @@ class QuerySecretNoRemainRequest extends RpcAcsRequest
 
     /**
      * @param string $secretNo
+     *
      * @return $this
      */
     public function setSecretNo($secretNo)
@@ -77,6 +83,7 @@ class QuerySecretNoRemainRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -89,6 +96,7 @@ class QuerySecretNoRemainRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

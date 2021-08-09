@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveBatchTaskForTransferProhibitionLock
+ *
  * @method string getUserClientIp()
  * @method array getDomainNames()
  * @method string getLang()
@@ -27,6 +29,7 @@ class SaveBatchTaskForTransferProhibitionLockRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -38,7 +41,6 @@ class SaveBatchTaskForTransferProhibitionLockRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $domainName
      * @return $this
      */
     public function setDomainNames(array $domainName)
@@ -53,6 +55,7 @@ class SaveBatchTaskForTransferProhibitionLockRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -65,6 +68,7 @@ class SaveBatchTaskForTransferProhibitionLockRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

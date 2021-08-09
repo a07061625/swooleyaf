@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of PollTaskResult
+ *
  * @method string getInstanceId()
  * @method string getUserClientIp()
  * @method string getTaskNo()
@@ -31,6 +33,7 @@ class PollTaskResultRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -43,6 +46,7 @@ class PollTaskResultRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -55,6 +59,7 @@ class PollTaskResultRequest extends RpcAcsRequest
 
     /**
      * @param string $taskNo
+     *
      * @return $this
      */
     public function setTaskNo($taskNo)
@@ -67,6 +72,7 @@ class PollTaskResultRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -79,6 +85,7 @@ class PollTaskResultRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -91,6 +98,7 @@ class PollTaskResultRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -103,6 +111,7 @@ class PollTaskResultRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -115,6 +124,7 @@ class PollTaskResultRequest extends RpcAcsRequest
 
     /**
      * @param string $taskResultStatus
+     *
      * @return $this
      */
     public function setTaskResultStatus($taskResultStatus)

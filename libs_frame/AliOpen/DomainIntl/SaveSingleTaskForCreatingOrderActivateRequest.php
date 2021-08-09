@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveSingleTaskForCreatingOrderActivate
+ *
  * @method string getCountry()
  * @method string getSubscriptionDuration()
  * @method string getPermitPremiumActivation()
@@ -50,6 +52,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $country
+     *
      * @return $this
      */
     public function setCountry($country)
@@ -62,6 +65,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $subscriptionDuration
+     *
      * @return $this
      */
     public function setSubscriptionDuration($subscriptionDuration)
@@ -74,6 +78,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $permitPremiumActivation
+     *
      * @return $this
      */
     public function setPermitPremiumActivation($permitPremiumActivation)
@@ -86,6 +91,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $city
+     *
      * @return $this
      */
     public function setCity($city)
@@ -98,6 +104,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $dns2
+     *
      * @return $this
      */
     public function setDns2($dns2)
@@ -110,6 +117,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $dns1
+     *
      * @return $this
      */
     public function setDns1($dns1)
@@ -122,6 +130,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantProfileId
+     *
      * @return $this
      */
     public function setRegistrantProfileId($registrantProfileId)
@@ -134,6 +143,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $couponNo
+     *
      * @return $this
      */
     public function setCouponNo($couponNo)
@@ -146,6 +156,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $aliyunDns
+     *
      * @return $this
      */
     public function setAliyunDns($aliyunDns)
@@ -158,6 +169,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $telExt
+     *
      * @return $this
      */
     public function setTelExt($telExt)
@@ -170,6 +182,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $province
+     *
      * @return $this
      */
     public function setProvince($province)
@@ -182,6 +195,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $postalCode
+     *
      * @return $this
      */
     public function setPostalCode($postalCode)
@@ -194,6 +208,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -206,6 +221,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $email
+     *
      * @return $this
      */
     public function setEmail($email)
@@ -218,6 +234,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $address
+     *
      * @return $this
      */
     public function setAddress($address)
@@ -230,6 +247,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $telArea
+     *
      * @return $this
      */
     public function setTelArea($telArea)
@@ -242,6 +260,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -254,6 +273,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantType
+     *
      * @return $this
      */
     public function setRegistrantType($registrantType)
@@ -266,6 +286,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $telephone
+     *
      * @return $this
      */
     public function setTelephone($telephone)
@@ -278,6 +299,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $trademarkDomainActivation
+     *
      * @return $this
      */
     public function setTrademarkDomainActivation($trademarkDomainActivation)
@@ -290,6 +312,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $useCoupon
+     *
      * @return $this
      */
     public function setUseCoupon($useCoupon)
@@ -302,6 +325,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantOrganization
+     *
      * @return $this
      */
     public function setRegistrantOrganization($registrantOrganization)
@@ -314,6 +338,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $promotionNo
+     *
      * @return $this
      */
     public function setPromotionNo($promotionNo)
@@ -326,6 +351,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -338,6 +364,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $enableDomainProxy
+     *
      * @return $this
      */
     public function setEnableDomainProxy($enableDomainProxy)
@@ -350,6 +377,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantName
+     *
      * @return $this
      */
     public function setRegistrantName($registrantName)
@@ -362,6 +390,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $usePromotion
+     *
      * @return $this
      */
     public function setUsePromotion($usePromotion)

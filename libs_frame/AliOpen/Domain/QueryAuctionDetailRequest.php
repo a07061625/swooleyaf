@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Domain;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryAuctionDetail
+ *
  * @method string getAuctionId()
  */
 class QueryAuctionDetailRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class QueryAuctionDetailRequest extends RpcAcsRequest
 
     /**
      * @param string $auctionId
+     *
      * @return $this
      */
     public function setAuctionId($auctionId)

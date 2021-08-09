@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryRegistrantProfiles
+ *
  * @method string getRegistrantOrganization()
  * @method string getUserClientIp()
  * @method string getRegistrantProfileId()
@@ -34,6 +36,7 @@ class QueryRegistrantProfilesRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantOrganization
+     *
      * @return $this
      */
     public function setRegistrantOrganization($registrantOrganization)
@@ -46,6 +49,7 @@ class QueryRegistrantProfilesRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -58,6 +62,7 @@ class QueryRegistrantProfilesRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantProfileId
+     *
      * @return $this
      */
     public function setRegistrantProfileId($registrantProfileId)
@@ -70,6 +75,7 @@ class QueryRegistrantProfilesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -82,6 +88,7 @@ class QueryRegistrantProfilesRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantType
+     *
      * @return $this
      */
     public function setRegistrantType($registrantType)
@@ -94,6 +101,7 @@ class QueryRegistrantProfilesRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantProfileType
+     *
      * @return $this
      */
     public function setRegistrantProfileType($registrantProfileType)
@@ -106,6 +114,7 @@ class QueryRegistrantProfilesRequest extends RpcAcsRequest
 
     /**
      * @param string $realNameStatus
+     *
      * @return $this
      */
     public function setRealNameStatus($realNameStatus)
@@ -118,6 +127,7 @@ class QueryRegistrantProfilesRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -130,6 +140,7 @@ class QueryRegistrantProfilesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -142,6 +153,7 @@ class QueryRegistrantProfilesRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultRegistrantProfile
+     *
      * @return $this
      */
     public function setDefaultRegistrantProfile($defaultRegistrantProfile)
@@ -154,6 +166,7 @@ class QueryRegistrantProfilesRequest extends RpcAcsRequest
 
     /**
      * @param string $email
+     *
      * @return $this
      */
     public function setEmail($email)

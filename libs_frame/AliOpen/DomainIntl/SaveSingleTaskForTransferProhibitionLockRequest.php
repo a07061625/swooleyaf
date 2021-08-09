@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveSingleTaskForTransferProhibitionLock
+ *
  * @method string getUserClientIp()
  * @method string getDomainName()
  * @method string getLang()
@@ -27,6 +29,7 @@ class SaveSingleTaskForTransferProhibitionLockRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -39,6 +42,7 @@ class SaveSingleTaskForTransferProhibitionLockRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -51,6 +55,7 @@ class SaveSingleTaskForTransferProhibitionLockRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -63,6 +68,7 @@ class SaveSingleTaskForTransferProhibitionLockRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

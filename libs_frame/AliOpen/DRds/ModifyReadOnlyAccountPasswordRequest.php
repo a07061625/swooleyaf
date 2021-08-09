@@ -17,23 +17,24 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\DRds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class ModifyReadOnlyAccountPasswordRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Drds", "2017-10-16", "ModifyReadOnlyAccountPassword");
-        $this->setMethod("POST");
-    }
-
     private $newPasswd;
     private $dbName;
     private $accountName;
     private $originPassword;
     private $drdsInstanceId;
+
+    public function __construct()
+    {
+        parent::__construct('Drds', '2017-10-16', 'ModifyReadOnlyAccountPassword');
+        $this->setMethod('POST');
+    }
 
     public function getNewPasswd()
     {
@@ -43,7 +44,7 @@ class ModifyReadOnlyAccountPasswordRequest extends RpcAcsRequest
     public function setNewPasswd($newPasswd)
     {
         $this->newPasswd = $newPasswd;
-        $this->queryParameters["NewPasswd"] = $newPasswd;
+        $this->queryParameters['NewPasswd'] = $newPasswd;
     }
 
     public function getDbName()
@@ -54,7 +55,7 @@ class ModifyReadOnlyAccountPasswordRequest extends RpcAcsRequest
     public function setDbName($dbName)
     {
         $this->dbName = $dbName;
-        $this->queryParameters["DbName"] = $dbName;
+        $this->queryParameters['DbName'] = $dbName;
     }
 
     public function getAccountName()
@@ -65,7 +66,7 @@ class ModifyReadOnlyAccountPasswordRequest extends RpcAcsRequest
     public function setAccountName($accountName)
     {
         $this->accountName = $accountName;
-        $this->queryParameters["AccountName"] = $accountName;
+        $this->queryParameters['AccountName'] = $accountName;
     }
 
     public function getOriginPassword()
@@ -76,7 +77,7 @@ class ModifyReadOnlyAccountPasswordRequest extends RpcAcsRequest
     public function setOriginPassword($originPassword)
     {
         $this->originPassword = $originPassword;
-        $this->queryParameters["OriginPassword"] = $originPassword;
+        $this->queryParameters['OriginPassword'] = $originPassword;
     }
 
     public function getDrdsInstanceId()
@@ -87,6 +88,6 @@ class ModifyReadOnlyAccountPasswordRequest extends RpcAcsRequest
     public function setDrdsInstanceId($drdsInstanceId)
     {
         $this->drdsInstanceId = $drdsInstanceId;
-        $this->queryParameters["DrdsInstanceId"] = $drdsInstanceId;
+        $this->queryParameters['DrdsInstanceId'] = $drdsInstanceId;
     }
 }

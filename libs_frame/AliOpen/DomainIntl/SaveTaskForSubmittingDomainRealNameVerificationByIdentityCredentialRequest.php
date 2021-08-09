@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredential
+ *
  * @method string getIdentityCredentialType()
  * @method string getUserClientIp()
  * @method string getIdentityCredential()
@@ -29,6 +31,7 @@ class SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
 
     /**
      * @param string $identityCredentialType
+     *
      * @return $this
      */
     public function setIdentityCredentialType($identityCredentialType)
@@ -41,6 +44,7 @@ class SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -53,6 +57,7 @@ class SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
 
     /**
      * @param string $identityCredential
+     *
      * @return $this
      */
     public function setIdentityCredential($identityCredential)
@@ -64,7 +69,6 @@ class SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
     }
 
     /**
-     * @param array $domainName
      * @return $this
      */
     public function setDomainNames(array $domainName)
@@ -79,6 +83,7 @@ class SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -91,6 +96,7 @@ class SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
 
     /**
      * @param string $identityCredentialNo
+     *
      * @return $this
      */
     public function setIdentityCredentialNo($identityCredentialNo)

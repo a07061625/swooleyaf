@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Domain;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BidDomain
+ *
  * @method string getAuctionId()
  * @method string getMaxBid()
  * @method string getCurrency()
@@ -26,6 +28,7 @@ class BidDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $auctionId
+     *
      * @return $this
      */
     public function setAuctionId($auctionId)
@@ -38,6 +41,7 @@ class BidDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $maxBid
+     *
      * @return $this
      */
     public function setMaxBid($maxBid)
@@ -50,6 +54,7 @@ class BidDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $currency
+     *
      * @return $this
      */
     public function setCurrency($currency)

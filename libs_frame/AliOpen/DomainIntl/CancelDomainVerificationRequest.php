@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CancelDomainVerification
+ *
  * @method string getActionType()
  * @method string getInstanceId()
  * @method string getUserClientIp()
@@ -27,6 +29,7 @@ class CancelDomainVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $actionType
+     *
      * @return $this
      */
     public function setActionType($actionType)
@@ -39,6 +42,7 @@ class CancelDomainVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -51,6 +55,7 @@ class CancelDomainVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -63,6 +68,7 @@ class CancelDomainVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

@@ -17,20 +17,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Dts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class StartSubscriptionInstanceRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Dts", "2016-08-01", "StartSubscriptionInstance");
-        $this->setMethod("POST");
-    }
-
     protected $subscriptionInstanceId;
     protected $ownerId;
+
+    public function __construct()
+    {
+        parent::__construct('Dts', '2016-08-01', 'StartSubscriptionInstance');
+        $this->setMethod('POST');
+    }
 
     public function getSubscriptionInstanceId()
     {

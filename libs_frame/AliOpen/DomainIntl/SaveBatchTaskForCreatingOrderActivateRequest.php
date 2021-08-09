@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveBatchTaskForCreatingOrderActivate
+ *
  * @method array getOrderActivateParams()
  * @method string getPromotionNo()
  * @method string getUserClientIp()
@@ -29,7 +31,6 @@ class SaveBatchTaskForCreatingOrderActivateRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $orderActivateParam
      * @return $this
      */
     public function setOrderActivateParams(array $orderActivateParam)
@@ -67,6 +68,7 @@ class SaveBatchTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $promotionNo
+     *
      * @return $this
      */
     public function setPromotionNo($promotionNo)
@@ -79,6 +81,7 @@ class SaveBatchTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -91,6 +94,7 @@ class SaveBatchTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $couponNo
+     *
      * @return $this
      */
     public function setCouponNo($couponNo)
@@ -103,6 +107,7 @@ class SaveBatchTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $useCoupon
+     *
      * @return $this
      */
     public function setUseCoupon($useCoupon)
@@ -115,6 +120,7 @@ class SaveBatchTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -127,6 +133,7 @@ class SaveBatchTaskForCreatingOrderActivateRequest extends RpcAcsRequest
 
     /**
      * @param string $usePromotion
+     *
      * @return $this
      */
     public function setUsePromotion($usePromotion)

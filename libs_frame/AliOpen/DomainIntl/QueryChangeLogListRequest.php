@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryChangeLogList
+ *
  * @method string getEndDate()
  * @method string getUserClientIp()
  * @method string getDomainName()
@@ -30,6 +32,7 @@ class QueryChangeLogListRequest extends RpcAcsRequest
 
     /**
      * @param string $endDate
+     *
      * @return $this
      */
     public function setEndDate($endDate)
@@ -42,6 +45,7 @@ class QueryChangeLogListRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -54,6 +58,7 @@ class QueryChangeLogListRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -66,6 +71,7 @@ class QueryChangeLogListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -78,6 +84,7 @@ class QueryChangeLogListRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -90,6 +97,7 @@ class QueryChangeLogListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -102,6 +110,7 @@ class QueryChangeLogListRequest extends RpcAcsRequest
 
     /**
      * @param string $startDate
+     *
      * @return $this
      */
     public function setStartDate($startDate)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryTaskDetailList
+ *
  * @method string getTaskStatus()
  * @method string getInstanceId()
  * @method string getUserClientIp()
@@ -31,6 +33,7 @@ class QueryTaskDetailListRequest extends RpcAcsRequest
 
     /**
      * @param string $taskStatus
+     *
      * @return $this
      */
     public function setTaskStatus($taskStatus)
@@ -43,6 +46,7 @@ class QueryTaskDetailListRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -55,6 +59,7 @@ class QueryTaskDetailListRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -67,6 +72,7 @@ class QueryTaskDetailListRequest extends RpcAcsRequest
 
     /**
      * @param string $taskNo
+     *
      * @return $this
      */
     public function setTaskNo($taskNo)
@@ -79,6 +85,7 @@ class QueryTaskDetailListRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -91,6 +98,7 @@ class QueryTaskDetailListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -103,6 +111,7 @@ class QueryTaskDetailListRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -115,6 +124,7 @@ class QueryTaskDetailListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)

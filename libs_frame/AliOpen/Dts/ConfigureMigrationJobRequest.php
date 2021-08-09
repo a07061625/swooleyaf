@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Dts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class ConfigureMigrationJobRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Dts", "2016-08-01", "ConfigureMigrationJob");
-        $this->setMethod("POST");
-    }
-
     protected $sourceEndpointInstanceID;
     protected $checkpoint;
     protected $sourceEndpointEngineName;
@@ -59,6 +54,12 @@ class ConfigureMigrationJobRequest extends RpcAcsRequest
     protected $destinationEndpointIP;
     protected $migrationJobName;
     protected $destinationEndpointInstanceType;
+
+    public function __construct()
+    {
+        parent::__construct('Dts', '2016-08-01', 'ConfigureMigrationJob');
+        $this->setMethod('POST');
+    }
 
     public function getSourceEndpointInstanceID()
     {

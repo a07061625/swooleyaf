@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryTaskDetailHistory
+ *
  * @method string getTaskStatus()
  * @method string getUserClientIp()
  * @method string getTaskNo()
@@ -31,6 +33,7 @@ class QueryTaskDetailHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $taskStatus
+     *
      * @return $this
      */
     public function setTaskStatus($taskStatus)
@@ -43,6 +46,7 @@ class QueryTaskDetailHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -55,6 +59,7 @@ class QueryTaskDetailHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $taskNo
+     *
      * @return $this
      */
     public function setTaskNo($taskNo)
@@ -67,6 +72,7 @@ class QueryTaskDetailHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -79,6 +85,7 @@ class QueryTaskDetailHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -91,6 +98,7 @@ class QueryTaskDetailHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $taskDetailNoCursor
+     *
      * @return $this
      */
     public function setTaskDetailNoCursor($taskDetailNoCursor)
@@ -103,6 +111,7 @@ class QueryTaskDetailHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -115,6 +124,7 @@ class QueryTaskDetailHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $domainNameCursor
+     *
      * @return $this
      */
     public function setDomainNameCursor($domainNameCursor)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Domain;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ReserveDomain
+ *
  * @method array getChannelss()
  * @method string getDomainName()
  */
@@ -24,7 +26,6 @@ class ReserveDomainRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $channels
      * @return $this
      */
     public function setChannelss(array $channels)
@@ -39,6 +40,7 @@ class ReserveDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)

@@ -17,21 +17,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\DRds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class DescribeDrdsDBIpWhiteListRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Drds", "2017-10-16", "DescribeDrdsDBIpWhiteList");
-        $this->setMethod("POST");
-    }
-
     private $dbName;
     private $drdsInstanceId;
     private $groupName;
+
+    public function __construct()
+    {
+        parent::__construct('Drds', '2017-10-16', 'DescribeDrdsDBIpWhiteList');
+        $this->setMethod('POST');
+    }
 
     public function getDbName()
     {
@@ -41,7 +42,7 @@ class DescribeDrdsDBIpWhiteListRequest extends RpcAcsRequest
     public function setDbName($dbName)
     {
         $this->dbName = $dbName;
-        $this->queryParameters["DbName"] = $dbName;
+        $this->queryParameters['DbName'] = $dbName;
     }
 
     public function getDrdsInstanceId()
@@ -52,7 +53,7 @@ class DescribeDrdsDBIpWhiteListRequest extends RpcAcsRequest
     public function setDrdsInstanceId($drdsInstanceId)
     {
         $this->drdsInstanceId = $drdsInstanceId;
-        $this->queryParameters["DrdsInstanceId"] = $drdsInstanceId;
+        $this->queryParameters['DrdsInstanceId'] = $drdsInstanceId;
     }
 
     public function getGroupName()
@@ -63,6 +64,6 @@ class DescribeDrdsDBIpWhiteListRequest extends RpcAcsRequest
     public function setGroupName($groupName)
     {
         $this->groupName = $groupName;
-        $this->queryParameters["GroupName"] = $groupName;
+        $this->queryParameters['GroupName'] = $groupName;
     }
 }

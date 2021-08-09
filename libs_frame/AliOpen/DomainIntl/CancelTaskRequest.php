@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CancelTask
+ *
  * @method string getUserClientIp()
  * @method string getTaskNo()
  * @method string getLang()
@@ -26,6 +28,7 @@ class CancelTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -38,6 +41,7 @@ class CancelTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $taskNo
+     *
      * @return $this
      */
     public function setTaskNo($taskNo)
@@ -50,6 +54,7 @@ class CancelTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveSingleTaskForSaveArtExtension
+ *
  * @method string getReference()
  * @method string getFeatures()
  * @method string getInscriptionsAndMarkings()
@@ -35,6 +37,7 @@ class SaveSingleTaskForSaveArtExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $reference
+     *
      * @return $this
      */
     public function setReference($reference)
@@ -47,6 +50,7 @@ class SaveSingleTaskForSaveArtExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $features
+     *
      * @return $this
      */
     public function setFeatures($features)
@@ -59,6 +63,7 @@ class SaveSingleTaskForSaveArtExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $inscriptionsAndMarkings
+     *
      * @return $this
      */
     public function setInscriptionsAndMarkings($inscriptionsAndMarkings)
@@ -71,6 +76,7 @@ class SaveSingleTaskForSaveArtExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $subject
+     *
      * @return $this
      */
     public function setSubject($subject)
@@ -83,6 +89,7 @@ class SaveSingleTaskForSaveArtExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -95,6 +102,7 @@ class SaveSingleTaskForSaveArtExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $maker
+     *
      * @return $this
      */
     public function setMaker($maker)
@@ -107,6 +115,7 @@ class SaveSingleTaskForSaveArtExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $objectType
+     *
      * @return $this
      */
     public function setObjectType($objectType)
@@ -119,6 +128,7 @@ class SaveSingleTaskForSaveArtExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -131,6 +141,7 @@ class SaveSingleTaskForSaveArtExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -143,6 +154,7 @@ class SaveSingleTaskForSaveArtExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $materialsAndTechniques
+     *
      * @return $this
      */
     public function setMaterialsAndTechniques($materialsAndTechniques)
@@ -155,6 +167,7 @@ class SaveSingleTaskForSaveArtExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $dateOrPeriod
+     *
      * @return $this
      */
     public function setDateOrPeriod($dateOrPeriod)
@@ -167,6 +180,7 @@ class SaveSingleTaskForSaveArtExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $dimensions
+     *
      * @return $this
      */
     public function setDimensions($dimensions)

@@ -17,21 +17,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\DRds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class ModifyDrdsDBPasswdRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Drds", "2017-10-16", "ModifyDrdsDBPasswd");
-        $this->setMethod("POST");
-    }
-
     private $newPasswd;
     private $dbName;
     private $drdsInstanceId;
+
+    public function __construct()
+    {
+        parent::__construct('Drds', '2017-10-16', 'ModifyDrdsDBPasswd');
+        $this->setMethod('POST');
+    }
 
     public function getNewPasswd()
     {
@@ -41,7 +42,7 @@ class ModifyDrdsDBPasswdRequest extends RpcAcsRequest
     public function setNewPasswd($newPasswd)
     {
         $this->newPasswd = $newPasswd;
-        $this->queryParameters["NewPasswd"] = $newPasswd;
+        $this->queryParameters['NewPasswd'] = $newPasswd;
     }
 
     public function getDbName()
@@ -52,7 +53,7 @@ class ModifyDrdsDBPasswdRequest extends RpcAcsRequest
     public function setDbName($dbName)
     {
         $this->dbName = $dbName;
-        $this->queryParameters["DbName"] = $dbName;
+        $this->queryParameters['DbName'] = $dbName;
     }
 
     public function getDrdsInstanceId()
@@ -63,6 +64,6 @@ class ModifyDrdsDBPasswdRequest extends RpcAcsRequest
     public function setDrdsInstanceId($drdsInstanceId)
     {
         $this->drdsInstanceId = $drdsInstanceId;
-        $this->queryParameters["DrdsInstanceId"] = $drdsInstanceId;
+        $this->queryParameters['DrdsInstanceId'] = $drdsInstanceId;
     }
 }

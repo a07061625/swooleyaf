@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveBatchTaskForUpdatingContactInfo
+ *
  * @method string getContactType()
  * @method string getUserClientIp()
  * @method string getRegistrantProfileId()
@@ -29,6 +31,7 @@ class SaveBatchTaskForUpdatingContactInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $contactType
+     *
      * @return $this
      */
     public function setContactType($contactType)
@@ -41,6 +44,7 @@ class SaveBatchTaskForUpdatingContactInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -53,6 +57,7 @@ class SaveBatchTaskForUpdatingContactInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantProfileId
+     *
      * @return $this
      */
     public function setRegistrantProfileId($registrantProfileId)
@@ -64,7 +69,6 @@ class SaveBatchTaskForUpdatingContactInfoRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $domainName
      * @return $this
      */
     public function setDomainNames(array $domainName)
@@ -79,6 +83,7 @@ class SaveBatchTaskForUpdatingContactInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $addTransferLock
+     *
      * @return $this
      */
     public function setAddTransferLock($addTransferLock)
@@ -91,6 +96,7 @@ class SaveBatchTaskForUpdatingContactInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

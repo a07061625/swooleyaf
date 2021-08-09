@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\DRds;
 
 use AliOpen\Core\RpcAcsRequest;
@@ -25,7 +26,7 @@ class DescribeRegionsRequest extends RpcAcsRequest
 {
     public function __construct()
     {
-        parent::__construct("Drds", "2017-10-16", "DescribeRegions");
-        $this->setMethod("POST");
+        parent::__construct('Drds', '2017-10-16', 'DescribeRegions');
+        $this->setMethod('POST');
     }
 }

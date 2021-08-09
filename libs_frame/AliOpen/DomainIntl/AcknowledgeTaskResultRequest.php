@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AcknowledgeTaskResult
+ *
  * @method array getTaskDetailNos()
  * @method string getUserClientIp()
  * @method string getLang()
@@ -25,7 +27,6 @@ class AcknowledgeTaskResultRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $taskDetailNo
      * @return $this
      */
     public function setTaskDetailNos(array $taskDetailNo)
@@ -40,6 +41,7 @@ class AcknowledgeTaskResultRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -52,6 +54,7 @@ class AcknowledgeTaskResultRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

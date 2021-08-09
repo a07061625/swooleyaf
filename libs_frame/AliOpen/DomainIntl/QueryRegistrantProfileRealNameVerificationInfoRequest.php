@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryRegistrantProfileRealNameVerificationInfo
+ *
  * @method string getFetchImage()
  * @method string getUserClientIp()
  * @method string getRegistrantProfileId()
@@ -27,6 +29,7 @@ class QueryRegistrantProfileRealNameVerificationInfoRequest extends RpcAcsReques
 
     /**
      * @param string $fetchImage
+     *
      * @return $this
      */
     public function setFetchImage($fetchImage)
@@ -39,6 +42,7 @@ class QueryRegistrantProfileRealNameVerificationInfoRequest extends RpcAcsReques
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -51,6 +55,7 @@ class QueryRegistrantProfileRealNameVerificationInfoRequest extends RpcAcsReques
 
     /**
      * @param string $registrantProfileId
+     *
      * @return $this
      */
     public function setRegistrantProfileId($registrantProfileId)
@@ -63,6 +68,7 @@ class QueryRegistrantProfileRealNameVerificationInfoRequest extends RpcAcsReques
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

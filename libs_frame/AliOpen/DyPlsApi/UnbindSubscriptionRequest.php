@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DyPlsApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UnbindSubscription
+ *
  * @method string getResourceOwnerId()
  * @method string getProductType()
  * @method string getSubsId()
@@ -30,6 +32,7 @@ class UnbindSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +45,7 @@ class UnbindSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $productType
+     *
      * @return $this
      */
     public function setProductType($productType)
@@ -54,6 +58,7 @@ class UnbindSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $subsId
+     *
      * @return $this
      */
     public function setSubsId($subsId)
@@ -66,6 +71,7 @@ class UnbindSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $secretNo
+     *
      * @return $this
      */
     public function setSecretNo($secretNo)
@@ -78,6 +84,7 @@ class UnbindSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -90,6 +97,7 @@ class UnbindSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -102,6 +110,7 @@ class UnbindSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $poolKey
+     *
      * @return $this
      */
     public function setPoolKey($poolKey)

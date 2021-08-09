@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteRegistrantProfile
+ *
  * @method string getUserClientIp()
  * @method string getRegistrantProfileId()
  * @method string getLang()
@@ -26,6 +28,7 @@ class DeleteRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -38,6 +41,7 @@ class DeleteRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantProfileId
+     *
      * @return $this
      */
     public function setRegistrantProfileId($registrantProfileId)
@@ -50,6 +54,7 @@ class DeleteRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

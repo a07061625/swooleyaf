@@ -17,18 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\DRds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class CreateDrdsInstanceRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Drds", "2017-10-16", "CreateDrdsInstance");
-        $this->setMethod("POST");
-    }
-
     private $quantity;
     private $description;
     private $specification;
@@ -40,6 +35,12 @@ class CreateDrdsInstanceRequest extends RpcAcsRequest
     private $zoneId;
     private $payType;
 
+    public function __construct()
+    {
+        parent::__construct('Drds', '2017-10-16', 'CreateDrdsInstance');
+        $this->setMethod('POST');
+    }
+
     public function getQuantity()
     {
         return $this->quantity;
@@ -48,7 +49,7 @@ class CreateDrdsInstanceRequest extends RpcAcsRequest
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
-        $this->queryParameters["Quantity"] = $quantity;
+        $this->queryParameters['Quantity'] = $quantity;
     }
 
     public function getDescription()
@@ -59,7 +60,7 @@ class CreateDrdsInstanceRequest extends RpcAcsRequest
     public function setDescription($description)
     {
         $this->description = $description;
-        $this->queryParameters["Description"] = $description;
+        $this->queryParameters['Description'] = $description;
     }
 
     public function getSpecification()
@@ -70,7 +71,7 @@ class CreateDrdsInstanceRequest extends RpcAcsRequest
     public function setSpecification($specification)
     {
         $this->specification = $specification;
-        $this->queryParameters["Specification"] = $specification;
+        $this->queryParameters['Specification'] = $specification;
     }
 
     public function getType()
@@ -81,7 +82,7 @@ class CreateDrdsInstanceRequest extends RpcAcsRequest
     public function setType($type)
     {
         $this->type = $type;
-        $this->queryParameters["Type"] = $type;
+        $this->queryParameters['Type'] = $type;
     }
 
     public function getVswitchId()
@@ -92,7 +93,7 @@ class CreateDrdsInstanceRequest extends RpcAcsRequest
     public function setVswitchId($vswitchId)
     {
         $this->vswitchId = $vswitchId;
-        $this->queryParameters["VswitchId"] = $vswitchId;
+        $this->queryParameters['VswitchId'] = $vswitchId;
     }
 
     public function getisHa()
@@ -103,7 +104,7 @@ class CreateDrdsInstanceRequest extends RpcAcsRequest
     public function setisHa($isHa)
     {
         $this->isHa = $isHa;
-        $this->queryParameters["isHa"] = $isHa;
+        $this->queryParameters['isHa'] = $isHa;
     }
 
     public function getinstanceSeries()
@@ -114,7 +115,7 @@ class CreateDrdsInstanceRequest extends RpcAcsRequest
     public function setinstanceSeries($instanceSeries)
     {
         $this->instanceSeries = $instanceSeries;
-        $this->queryParameters["instanceSeries"] = $instanceSeries;
+        $this->queryParameters['instanceSeries'] = $instanceSeries;
     }
 
     public function getVpcId()
@@ -125,7 +126,7 @@ class CreateDrdsInstanceRequest extends RpcAcsRequest
     public function setVpcId($vpcId)
     {
         $this->vpcId = $vpcId;
-        $this->queryParameters["VpcId"] = $vpcId;
+        $this->queryParameters['VpcId'] = $vpcId;
     }
 
     public function getZoneId()
@@ -136,7 +137,7 @@ class CreateDrdsInstanceRequest extends RpcAcsRequest
     public function setZoneId($zoneId)
     {
         $this->zoneId = $zoneId;
-        $this->queryParameters["ZoneId"] = $zoneId;
+        $this->queryParameters['ZoneId'] = $zoneId;
     }
 
     public function getPayType()
@@ -147,6 +148,6 @@ class CreateDrdsInstanceRequest extends RpcAcsRequest
     public function setPayType($payType)
     {
         $this->payType = $payType;
-        $this->queryParameters["PayType"] = $payType;
+        $this->queryParameters['PayType'] = $payType;
     }
 }

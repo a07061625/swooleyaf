@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitEmailVerification
+ *
  * @method string getSendIfExist()
  * @method string getUserClientIp()
  * @method string getLang()
@@ -27,6 +29,7 @@ class SubmitEmailVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $sendIfExist
+     *
      * @return $this
      */
     public function setSendIfExist($sendIfExist)
@@ -39,6 +42,7 @@ class SubmitEmailVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -51,6 +55,7 @@ class SubmitEmailVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -63,6 +68,7 @@ class SubmitEmailVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $email
+     *
      * @return $this
      */
     public function setEmail($email)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of LookupTmchNotice
+ *
  * @method string getClaimKey()
  * @method string getUserClientIp()
  * @method string getLang()
@@ -26,6 +28,7 @@ class LookupTmchNoticeRequest extends RpcAcsRequest
 
     /**
      * @param string $claimKey
+     *
      * @return $this
      */
     public function setClaimKey($claimKey)
@@ -38,6 +41,7 @@ class LookupTmchNoticeRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -50,6 +54,7 @@ class LookupTmchNoticeRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

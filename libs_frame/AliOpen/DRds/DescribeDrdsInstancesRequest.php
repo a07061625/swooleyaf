@@ -17,19 +17,20 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\DRds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class DescribeDrdsInstancesRequest extends RpcAcsRequest
 {
+    private $type;
+
     public function __construct()
     {
-        parent::__construct("Drds", "2017-10-16", "DescribeDrdsInstances");
-        $this->setMethod("POST");
+        parent::__construct('Drds', '2017-10-16', 'DescribeDrdsInstances');
+        $this->setMethod('POST');
     }
-
-    private $type;
 
     public function getType()
     {
@@ -39,6 +40,6 @@ class DescribeDrdsInstancesRequest extends RpcAcsRequest
     public function setType($type)
     {
         $this->type = $type;
-        $this->queryParameters["Type"] = $type;
+        $this->queryParameters['Type'] = $type;
     }
 }

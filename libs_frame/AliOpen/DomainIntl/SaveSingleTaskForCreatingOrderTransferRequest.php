@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveSingleTaskForCreatingOrderTransfer
+ *
  * @method string getPermitPremiumTransfer()
  * @method string getPromotionNo()
  * @method string getAuthorizationCode()
@@ -33,6 +35,7 @@ class SaveSingleTaskForCreatingOrderTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $permitPremiumTransfer
+     *
      * @return $this
      */
     public function setPermitPremiumTransfer($permitPremiumTransfer)
@@ -45,6 +48,7 @@ class SaveSingleTaskForCreatingOrderTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $promotionNo
+     *
      * @return $this
      */
     public function setPromotionNo($promotionNo)
@@ -57,6 +61,7 @@ class SaveSingleTaskForCreatingOrderTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $authorizationCode
+     *
      * @return $this
      */
     public function setAuthorizationCode($authorizationCode)
@@ -69,6 +74,7 @@ class SaveSingleTaskForCreatingOrderTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -81,6 +87,7 @@ class SaveSingleTaskForCreatingOrderTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -93,6 +100,7 @@ class SaveSingleTaskForCreatingOrderTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantProfileId
+     *
      * @return $this
      */
     public function setRegistrantProfileId($registrantProfileId)
@@ -105,6 +113,7 @@ class SaveSingleTaskForCreatingOrderTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $couponNo
+     *
      * @return $this
      */
     public function setCouponNo($couponNo)
@@ -117,6 +126,7 @@ class SaveSingleTaskForCreatingOrderTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $useCoupon
+     *
      * @return $this
      */
     public function setUseCoupon($useCoupon)
@@ -129,6 +139,7 @@ class SaveSingleTaskForCreatingOrderTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -141,6 +152,7 @@ class SaveSingleTaskForCreatingOrderTransferRequest extends RpcAcsRequest
 
     /**
      * @param string $usePromotion
+     *
      * @return $this
      */
     public function setUsePromotion($usePromotion)

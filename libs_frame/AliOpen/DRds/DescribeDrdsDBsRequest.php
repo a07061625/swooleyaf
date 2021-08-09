@@ -17,19 +17,20 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\DRds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class DescribeDrdsDBsRequest extends RpcAcsRequest
 {
+    private $drdsInstanceId;
+
     public function __construct()
     {
-        parent::__construct("Drds", "2017-10-16", "DescribeDrdsDBs");
-        $this->setMethod("POST");
+        parent::__construct('Drds', '2017-10-16', 'DescribeDrdsDBs');
+        $this->setMethod('POST');
     }
-
-    private $drdsInstanceId;
 
     public function getDrdsInstanceId()
     {
@@ -39,6 +40,6 @@ class DescribeDrdsDBsRequest extends RpcAcsRequest
     public function setDrdsInstanceId($drdsInstanceId)
     {
         $this->drdsInstanceId = $drdsInstanceId;
-        $this->queryParameters["DrdsInstanceId"] = $drdsInstanceId;
+        $this->queryParameters['DrdsInstanceId'] = $drdsInstanceId;
     }
 }

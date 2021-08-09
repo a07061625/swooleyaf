@@ -17,22 +17,23 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Dts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class CreateMigrationJobRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Dts", "2016-08-01", "CreateMigrationJob");
-        $this->setMethod("POST");
-    }
-
     protected $clientToken;
     protected $region;
     protected $migrationJobClass;
     protected $ownerId;
+
+    public function __construct()
+    {
+        parent::__construct('Dts', '2016-08-01', 'CreateMigrationJob');
+        $this->setMethod('POST');
+    }
 
     public function getClientToken()
     {

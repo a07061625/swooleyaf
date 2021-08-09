@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryTransferInList
+ *
  * @method string getSubmissionStartDate()
  * @method string getUserClientIp()
  * @method string getSubmissionEndDate()
@@ -31,6 +33,7 @@ class QueryTransferInListRequest extends RpcAcsRequest
 
     /**
      * @param string $submissionStartDate
+     *
      * @return $this
      */
     public function setSubmissionStartDate($submissionStartDate)
@@ -43,6 +46,7 @@ class QueryTransferInListRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -55,6 +59,7 @@ class QueryTransferInListRequest extends RpcAcsRequest
 
     /**
      * @param string $submissionEndDate
+     *
      * @return $this
      */
     public function setSubmissionEndDate($submissionEndDate)
@@ -67,6 +72,7 @@ class QueryTransferInListRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -79,6 +85,7 @@ class QueryTransferInListRequest extends RpcAcsRequest
 
     /**
      * @param string $simpleTransferInStatus
+     *
      * @return $this
      */
     public function setSimpleTransferInStatus($simpleTransferInStatus)
@@ -91,6 +98,7 @@ class QueryTransferInListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -103,6 +111,7 @@ class QueryTransferInListRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -115,6 +124,7 @@ class QueryTransferInListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CheckDomain
+ *
  * @method string getFeeCurrency()
  * @method string getFeePeriod()
  * @method string getDomainName()
@@ -29,6 +31,7 @@ class CheckDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $feeCurrency
+     *
      * @return $this
      */
     public function setFeeCurrency($feeCurrency)
@@ -41,6 +44,7 @@ class CheckDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $feePeriod
+     *
      * @return $this
      */
     public function setFeePeriod($feePeriod)
@@ -53,6 +57,7 @@ class CheckDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -65,6 +70,7 @@ class CheckDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -77,6 +83,7 @@ class CheckDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $feeCommand
+     *
      * @return $this
      */
     public function setFeeCommand($feeCommand)
@@ -89,6 +96,7 @@ class CheckDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

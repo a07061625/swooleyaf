@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DyPlsApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateSubscription
+ *
  * @method string getResourceOwnerId()
  * @method string getCallDisplayType()
  * @method string getProductType()
@@ -40,6 +42,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -52,6 +55,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $callDisplayType
+     *
      * @return $this
      */
     public function setCallDisplayType($callDisplayType)
@@ -64,6 +68,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $productType
+     *
      * @return $this
      */
     public function setProductType($productType)
@@ -76,6 +81,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $subsId
+     *
      * @return $this
      */
     public function setSubsId($subsId)
@@ -88,6 +94,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $phoneNoX
+     *
      * @return $this
      */
     public function setPhoneNoX($phoneNoX)
@@ -100,6 +107,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $ringConfig
+     *
      * @return $this
      */
     public function setRingConfig($ringConfig)
@@ -112,6 +120,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $phoneNoB
+     *
      * @return $this
      */
     public function setPhoneNoB($phoneNoB)
@@ -124,6 +133,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $phoneNoA
+     *
      * @return $this
      */
     public function setPhoneNoA($phoneNoA)
@@ -136,6 +146,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -148,6 +159,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $groupId
+     *
      * @return $this
      */
     public function setGroupId($groupId)
@@ -160,6 +172,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -172,6 +185,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $poolKey
+     *
      * @return $this
      */
     public function setPoolKey($poolKey)
@@ -184,6 +198,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $expiration
+     *
      * @return $this
      */
     public function setExpiration($expiration)
@@ -196,6 +211,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $outId
+     *
      * @return $this
      */
     public function setOutId($outId)
@@ -208,6 +224,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $isRecordingEnabled
+     *
      * @return $this
      */
     public function setIsRecordingEnabled($isRecordingEnabled)
@@ -220,6 +237,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $operateType
+     *
      * @return $this
      */
     public function setOperateType($operateType)
@@ -232,6 +250,7 @@ class UpdateSubscriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $callRestrict
+     *
      * @return $this
      */
     public function setCallRestrict($callRestrict)

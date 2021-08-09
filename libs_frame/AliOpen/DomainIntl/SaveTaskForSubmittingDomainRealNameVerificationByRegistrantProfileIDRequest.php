@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileID
+ *
  * @method string getInstanceId()
  * @method string getUserClientIp()
  * @method string getDomainName()
@@ -28,6 +30,7 @@ class SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDReques
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -40,6 +43,7 @@ class SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDReques
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -52,6 +56,7 @@ class SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDReques
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -64,6 +69,7 @@ class SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDReques
 
     /**
      * @param string $registrantProfileId
+     *
      * @return $this
      */
     public function setRegistrantProfileId($registrantProfileId)
@@ -76,6 +82,7 @@ class SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDReques
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

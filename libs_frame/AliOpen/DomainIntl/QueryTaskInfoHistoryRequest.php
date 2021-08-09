@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryTaskInfoHistory
+ *
  * @method string getBeginCreateTime()
  * @method string getEndCreateTime()
  * @method string getTaskNoCursor()
@@ -30,6 +32,7 @@ class QueryTaskInfoHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $beginCreateTime
+     *
      * @return $this
      */
     public function setBeginCreateTime($beginCreateTime)
@@ -42,6 +45,7 @@ class QueryTaskInfoHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $endCreateTime
+     *
      * @return $this
      */
     public function setEndCreateTime($endCreateTime)
@@ -54,6 +58,7 @@ class QueryTaskInfoHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $taskNoCursor
+     *
      * @return $this
      */
     public function setTaskNoCursor($taskNoCursor)
@@ -66,6 +71,7 @@ class QueryTaskInfoHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -78,6 +84,7 @@ class QueryTaskInfoHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -90,6 +97,7 @@ class QueryTaskInfoHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -102,6 +110,7 @@ class QueryTaskInfoHistoryRequest extends RpcAcsRequest
 
     /**
      * @param string $createTimeCursor
+     *
      * @return $this
      */
     public function setCreateTimeCursor($createTimeCursor)

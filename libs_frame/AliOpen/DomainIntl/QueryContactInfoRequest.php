@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryContactInfo
+ *
  * @method string getContactType()
  * @method string getUserClientIp()
  * @method string getDomainName()
@@ -27,6 +29,7 @@ class QueryContactInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $contactType
+     *
      * @return $this
      */
     public function setContactType($contactType)
@@ -39,6 +42,7 @@ class QueryContactInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -51,6 +55,7 @@ class QueryContactInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -63,6 +68,7 @@ class QueryContactInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DyPlsApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BindAxnExtension
+ *
  * @method string getResourceOwnerId()
  * @method string getExtension()
  * @method string getCallDisplayType()
@@ -38,6 +40,7 @@ class BindAxnExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -50,6 +53,7 @@ class BindAxnExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $extension
+     *
      * @return $this
      */
     public function setExtension($extension)
@@ -62,6 +66,7 @@ class BindAxnExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $callDisplayType
+     *
      * @return $this
      */
     public function setCallDisplayType($callDisplayType)
@@ -74,6 +79,7 @@ class BindAxnExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $phoneNoX
+     *
      * @return $this
      */
     public function setPhoneNoX($phoneNoX)
@@ -86,6 +92,7 @@ class BindAxnExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $ringConfig
+     *
      * @return $this
      */
     public function setRingConfig($ringConfig)
@@ -98,6 +105,7 @@ class BindAxnExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $phoneNoB
+     *
      * @return $this
      */
     public function setPhoneNoB($phoneNoB)
@@ -110,6 +118,7 @@ class BindAxnExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $phoneNoA
+     *
      * @return $this
      */
     public function setPhoneNoA($phoneNoA)
@@ -122,6 +131,7 @@ class BindAxnExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $expectCity
+     *
      * @return $this
      */
     public function setExpectCity($expectCity)
@@ -134,6 +144,7 @@ class BindAxnExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -146,6 +157,7 @@ class BindAxnExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -158,6 +170,7 @@ class BindAxnExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $outOrderId
+     *
      * @return $this
      */
     public function setOutOrderId($outOrderId)
@@ -170,6 +183,7 @@ class BindAxnExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $poolKey
+     *
      * @return $this
      */
     public function setPoolKey($poolKey)
@@ -182,6 +196,7 @@ class BindAxnExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $expiration
+     *
      * @return $this
      */
     public function setExpiration($expiration)
@@ -194,6 +209,7 @@ class BindAxnExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $isRecordingEnabled
+     *
      * @return $this
      */
     public function setIsRecordingEnabled($isRecordingEnabled)
@@ -206,6 +222,7 @@ class BindAxnExtensionRequest extends RpcAcsRequest
 
     /**
      * @param string $outId
+     *
      * @return $this
      */
     public function setOutId($outId)

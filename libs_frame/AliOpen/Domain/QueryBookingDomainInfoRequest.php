@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Domain;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryBookingDomainInfo
+ *
  * @method string getDomainName()
  */
 class QueryBookingDomainInfoRequest extends RpcAcsRequest
@@ -24,6 +26,7 @@ class QueryBookingDomainInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)

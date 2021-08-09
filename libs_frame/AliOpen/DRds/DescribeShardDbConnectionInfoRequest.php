@@ -17,21 +17,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\DRds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class DescribeShardDbConnectionInfoRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Drds", "2017-10-16", "DescribeShardDbConnectionInfo");
-        $this->setMethod("POST");
-    }
-
     private $dbName;
     private $drdsInstanceId;
     private $subDbName;
+
+    public function __construct()
+    {
+        parent::__construct('Drds', '2017-10-16', 'DescribeShardDbConnectionInfo');
+        $this->setMethod('POST');
+    }
 
     public function getDbName()
     {
@@ -41,7 +42,7 @@ class DescribeShardDbConnectionInfoRequest extends RpcAcsRequest
     public function setDbName($dbName)
     {
         $this->dbName = $dbName;
-        $this->queryParameters["DbName"] = $dbName;
+        $this->queryParameters['DbName'] = $dbName;
     }
 
     public function getDrdsInstanceId()
@@ -52,7 +53,7 @@ class DescribeShardDbConnectionInfoRequest extends RpcAcsRequest
     public function setDrdsInstanceId($drdsInstanceId)
     {
         $this->drdsInstanceId = $drdsInstanceId;
-        $this->queryParameters["DrdsInstanceId"] = $drdsInstanceId;
+        $this->queryParameters['DrdsInstanceId'] = $drdsInstanceId;
     }
 
     public function getSubDbName()
@@ -63,6 +64,6 @@ class DescribeShardDbConnectionInfoRequest extends RpcAcsRequest
     public function setSubDbName($subDbName)
     {
         $this->subDbName = $subDbName;
-        $this->queryParameters["SubDbName"] = $subDbName;
+        $this->queryParameters['SubDbName'] = $subDbName;
     }
 }

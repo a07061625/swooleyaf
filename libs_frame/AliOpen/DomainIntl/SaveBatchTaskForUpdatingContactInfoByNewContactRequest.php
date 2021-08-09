@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveBatchTaskForUpdatingContactInfoByNewContact
+ *
  * @method string getCountry()
  * @method string getAddress()
  * @method string getTelArea()
@@ -39,6 +41,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
 
     /**
      * @param string $country
+     *
      * @return $this
      */
     public function setCountry($country)
@@ -51,6 +54,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
 
     /**
      * @param string $address
+     *
      * @return $this
      */
     public function setAddress($address)
@@ -63,6 +67,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
 
     /**
      * @param string $telArea
+     *
      * @return $this
      */
     public function setTelArea($telArea)
@@ -75,6 +80,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
 
     /**
      * @param string $contactType
+     *
      * @return $this
      */
     public function setContactType($contactType)
@@ -87,6 +93,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
 
     /**
      * @param string $city
+     *
      * @return $this
      */
     public function setCity($city)
@@ -98,7 +105,6 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
     }
 
     /**
-     * @param array $domainName
      * @return $this
      */
     public function setDomainNames(array $domainName)
@@ -113,6 +119,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
 
     /**
      * @param string $telephone
+     *
      * @return $this
      */
     public function setTelephone($telephone)
@@ -125,6 +132,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
 
     /**
      * @param string $transferOutProhibited
+     *
      * @return $this
      */
     public function setTransferOutProhibited($transferOutProhibited)
@@ -137,6 +145,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
 
     /**
      * @param string $registrantOrganization
+     *
      * @return $this
      */
     public function setRegistrantOrganization($registrantOrganization)
@@ -149,6 +158,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
 
     /**
      * @param string $telExt
+     *
      * @return $this
      */
     public function setTelExt($telExt)
@@ -161,6 +171,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
 
     /**
      * @param string $province
+     *
      * @return $this
      */
     public function setProvince($province)
@@ -173,6 +184,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
 
     /**
      * @param string $postalCode
+     *
      * @return $this
      */
     public function setPostalCode($postalCode)
@@ -185,6 +197,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -197,6 +210,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -209,6 +223,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
 
     /**
      * @param string $email
+     *
      * @return $this
      */
     public function setEmail($email)
@@ -221,6 +236,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest extends RpcAcsReque
 
     /**
      * @param string $registrantName
+     *
      * @return $this
      */
     public function setRegistrantName($registrantName)

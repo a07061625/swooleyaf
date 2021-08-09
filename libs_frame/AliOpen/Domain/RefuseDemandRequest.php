@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Domain;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RefuseDemand
+ *
  * @method string getBizId()
  * @method string getMessage()
  */
@@ -25,6 +27,7 @@ class RefuseDemandRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -37,6 +40,7 @@ class RefuseDemandRequest extends RpcAcsRequest
 
     /**
      * @param string $message
+     *
      * @return $this
      */
     public function setMessage($message)

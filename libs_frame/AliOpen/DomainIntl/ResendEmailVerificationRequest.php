@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ResendEmailVerification
+ *
  * @method string getUserClientIp()
  * @method string getLang()
  * @method string getEmail()
@@ -26,6 +28,7 @@ class ResendEmailVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -38,6 +41,7 @@ class ResendEmailVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -50,6 +54,7 @@ class ResendEmailVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $email
+     *
      * @return $this
      */
     public function setEmail($email)

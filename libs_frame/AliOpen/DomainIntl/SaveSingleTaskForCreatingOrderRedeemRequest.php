@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveSingleTaskForCreatingOrderRedeem
+ *
  * @method string getPromotionNo()
  * @method string getCurrentExpirationDate()
  * @method string getUserClientIp()
@@ -31,6 +33,7 @@ class SaveSingleTaskForCreatingOrderRedeemRequest extends RpcAcsRequest
 
     /**
      * @param string $promotionNo
+     *
      * @return $this
      */
     public function setPromotionNo($promotionNo)
@@ -43,6 +46,7 @@ class SaveSingleTaskForCreatingOrderRedeemRequest extends RpcAcsRequest
 
     /**
      * @param string $currentExpirationDate
+     *
      * @return $this
      */
     public function setCurrentExpirationDate($currentExpirationDate)
@@ -55,6 +59,7 @@ class SaveSingleTaskForCreatingOrderRedeemRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -67,6 +72,7 @@ class SaveSingleTaskForCreatingOrderRedeemRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -79,6 +85,7 @@ class SaveSingleTaskForCreatingOrderRedeemRequest extends RpcAcsRequest
 
     /**
      * @param string $couponNo
+     *
      * @return $this
      */
     public function setCouponNo($couponNo)
@@ -91,6 +98,7 @@ class SaveSingleTaskForCreatingOrderRedeemRequest extends RpcAcsRequest
 
     /**
      * @param string $useCoupon
+     *
      * @return $this
      */
     public function setUseCoupon($useCoupon)
@@ -103,6 +111,7 @@ class SaveSingleTaskForCreatingOrderRedeemRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -115,6 +124,7 @@ class SaveSingleTaskForCreatingOrderRedeemRequest extends RpcAcsRequest
 
     /**
      * @param string $usePromotion
+     *
      * @return $this
      */
     public function setUsePromotion($usePromotion)

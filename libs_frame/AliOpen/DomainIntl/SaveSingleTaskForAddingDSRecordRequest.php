@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveSingleTaskForAddingDSRecord
+ *
  * @method string getKeyTag()
  * @method string getDomainName()
  * @method string getUserClientIp()
@@ -30,6 +32,7 @@ class SaveSingleTaskForAddingDSRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $keyTag
+     *
      * @return $this
      */
     public function setKeyTag($keyTag)
@@ -42,6 +45,7 @@ class SaveSingleTaskForAddingDSRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -54,6 +58,7 @@ class SaveSingleTaskForAddingDSRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -66,6 +71,7 @@ class SaveSingleTaskForAddingDSRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $digestType
+     *
      * @return $this
      */
     public function setDigestType($digestType)
@@ -78,6 +84,7 @@ class SaveSingleTaskForAddingDSRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $digest
+     *
      * @return $this
      */
     public function setDigest($digest)
@@ -90,6 +97,7 @@ class SaveSingleTaskForAddingDSRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -102,6 +110,7 @@ class SaveSingleTaskForAddingDSRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $algorithm
+     *
      * @return $this
      */
     public function setAlgorithm($algorithm)

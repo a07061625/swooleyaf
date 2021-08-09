@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveSingleTaskForCreatingOrderRenew
+ *
  * @method string getSubscriptionDuration()
  * @method string getPromotionNo()
  * @method string getCurrentExpirationDate()
@@ -32,6 +34,7 @@ class SaveSingleTaskForCreatingOrderRenewRequest extends RpcAcsRequest
 
     /**
      * @param string $subscriptionDuration
+     *
      * @return $this
      */
     public function setSubscriptionDuration($subscriptionDuration)
@@ -44,6 +47,7 @@ class SaveSingleTaskForCreatingOrderRenewRequest extends RpcAcsRequest
 
     /**
      * @param string $promotionNo
+     *
      * @return $this
      */
     public function setPromotionNo($promotionNo)
@@ -56,6 +60,7 @@ class SaveSingleTaskForCreatingOrderRenewRequest extends RpcAcsRequest
 
     /**
      * @param string $currentExpirationDate
+     *
      * @return $this
      */
     public function setCurrentExpirationDate($currentExpirationDate)
@@ -68,6 +73,7 @@ class SaveSingleTaskForCreatingOrderRenewRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -80,6 +86,7 @@ class SaveSingleTaskForCreatingOrderRenewRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -92,6 +99,7 @@ class SaveSingleTaskForCreatingOrderRenewRequest extends RpcAcsRequest
 
     /**
      * @param string $couponNo
+     *
      * @return $this
      */
     public function setCouponNo($couponNo)
@@ -104,6 +112,7 @@ class SaveSingleTaskForCreatingOrderRenewRequest extends RpcAcsRequest
 
     /**
      * @param string $useCoupon
+     *
      * @return $this
      */
     public function setUseCoupon($useCoupon)
@@ -116,6 +125,7 @@ class SaveSingleTaskForCreatingOrderRenewRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -128,6 +138,7 @@ class SaveSingleTaskForCreatingOrderRenewRequest extends RpcAcsRequest
 
     /**
      * @param string $usePromotion
+     *
      * @return $this
      */
     public function setUsePromotion($usePromotion)

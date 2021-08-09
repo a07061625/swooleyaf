@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of TransferInReenterTransferAuthorizationCode
+ *
  * @method string getTransferAuthorizationCode()
  * @method string getDomainName()
  * @method string getUserClientIp()
@@ -27,6 +29,7 @@ class TransferInReenterTransferAuthorizationCodeRequest extends RpcAcsRequest
 
     /**
      * @param string $transferAuthorizationCode
+     *
      * @return $this
      */
     public function setTransferAuthorizationCode($transferAuthorizationCode)
@@ -39,6 +42,7 @@ class TransferInReenterTransferAuthorizationCodeRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -51,6 +55,7 @@ class TransferInReenterTransferAuthorizationCodeRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -63,6 +68,7 @@ class TransferInReenterTransferAuthorizationCodeRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

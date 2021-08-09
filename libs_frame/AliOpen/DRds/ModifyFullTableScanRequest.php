@@ -17,22 +17,23 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\DRds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class ModifyFullTableScanRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Drds", "2017-10-16", "ModifyFullTableScan");
-        $this->setMethod("POST");
-    }
-
     private $dbName;
     private $tableNames;
     private $drdsInstanceId;
     private $fullTableScan;
+
+    public function __construct()
+    {
+        parent::__construct('Drds', '2017-10-16', 'ModifyFullTableScan');
+        $this->setMethod('POST');
+    }
 
     public function getDbName()
     {
@@ -42,7 +43,7 @@ class ModifyFullTableScanRequest extends RpcAcsRequest
     public function setDbName($dbName)
     {
         $this->dbName = $dbName;
-        $this->queryParameters["DbName"] = $dbName;
+        $this->queryParameters['DbName'] = $dbName;
     }
 
     public function getTableNames()
@@ -53,7 +54,7 @@ class ModifyFullTableScanRequest extends RpcAcsRequest
     public function setTableNames($tableNames)
     {
         $this->tableNames = $tableNames;
-        $this->queryParameters["TableNames"] = $tableNames;
+        $this->queryParameters['TableNames'] = $tableNames;
     }
 
     public function getDrdsInstanceId()
@@ -64,7 +65,7 @@ class ModifyFullTableScanRequest extends RpcAcsRequest
     public function setDrdsInstanceId($drdsInstanceId)
     {
         $this->drdsInstanceId = $drdsInstanceId;
-        $this->queryParameters["DrdsInstanceId"] = $drdsInstanceId;
+        $this->queryParameters['DrdsInstanceId'] = $drdsInstanceId;
     }
 
     public function getFullTableScan()
@@ -75,6 +76,6 @@ class ModifyFullTableScanRequest extends RpcAcsRequest
     public function setFullTableScan($fullTableScan)
     {
         $this->fullTableScan = $fullTableScan;
-        $this->queryParameters["FullTableScan"] = $fullTableScan;
+        $this->queryParameters['FullTableScan'] = $fullTableScan;
     }
 }

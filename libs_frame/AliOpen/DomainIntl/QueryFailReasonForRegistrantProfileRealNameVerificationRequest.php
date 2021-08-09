@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryFailReasonForRegistrantProfileRealNameVerification
+ *
  * @method string getUserClientIp()
  * @method string getRegistrantProfileID()
  * @method string getLang()
@@ -26,6 +28,7 @@ class QueryFailReasonForRegistrantProfileRealNameVerificationRequest extends Rpc
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -38,6 +41,7 @@ class QueryFailReasonForRegistrantProfileRealNameVerificationRequest extends Rpc
 
     /**
      * @param string $registrantProfileID
+     *
      * @return $this
      */
     public function setRegistrantProfileID($registrantProfileID)
@@ -50,6 +54,7 @@ class QueryFailReasonForRegistrantProfileRealNameVerificationRequest extends Rpc
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

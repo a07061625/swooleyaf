@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryDomainList
+ *
  * @method string getEndExpirationDate()
  * @method string getProductDomainType()
  * @method string getOrderKeyType()
@@ -36,6 +38,7 @@ class QueryDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $endExpirationDate
+     *
      * @return $this
      */
     public function setEndExpirationDate($endExpirationDate)
@@ -48,6 +51,7 @@ class QueryDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $productDomainType
+     *
      * @return $this
      */
     public function setProductDomainType($productDomainType)
@@ -60,6 +64,7 @@ class QueryDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $orderKeyType
+     *
      * @return $this
      */
     public function setOrderKeyType($orderKeyType)
@@ -72,6 +77,7 @@ class QueryDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -84,6 +90,7 @@ class QueryDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $startExpirationDate
+     *
      * @return $this
      */
     public function setStartExpirationDate($startExpirationDate)
@@ -96,6 +103,7 @@ class QueryDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -108,6 +116,7 @@ class QueryDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $orderByType
+     *
      * @return $this
      */
     public function setOrderByType($orderByType)
@@ -120,6 +129,7 @@ class QueryDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $endRegistrationDate
+     *
      * @return $this
      */
     public function setEndRegistrationDate($endRegistrationDate)
@@ -132,6 +142,7 @@ class QueryDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -144,6 +155,7 @@ class QueryDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -156,6 +168,7 @@ class QueryDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -168,6 +181,7 @@ class QueryDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $queryType
+     *
      * @return $this
      */
     public function setQueryType($queryType)
@@ -180,6 +194,7 @@ class QueryDomainListRequest extends RpcAcsRequest
 
     /**
      * @param string $startRegistrationDate
+     *
      * @return $this
      */
     public function setStartRegistrationDate($startRegistrationDate)

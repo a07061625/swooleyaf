@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryTransferInByInstanceId
+ *
  * @method string getInstanceId()
  * @method string getUserClientIp()
  * @method string getLang()
@@ -26,6 +28,7 @@ class QueryTransferInByInstanceIdRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -38,6 +41,7 @@ class QueryTransferInByInstanceIdRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -50,6 +54,7 @@ class QueryTransferInByInstanceIdRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

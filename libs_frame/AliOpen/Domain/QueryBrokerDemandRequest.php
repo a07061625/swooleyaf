@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Domain;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryBrokerDemand
+ *
  * @method string getPageSize()
  * @method string getBizId()
  * @method string getCurrentPage()
@@ -27,6 +29,7 @@ class QueryBrokerDemandRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -39,6 +42,7 @@ class QueryBrokerDemandRequest extends RpcAcsRequest
 
     /**
      * @param string $bizId
+     *
      * @return $this
      */
     public function setBizId($bizId)
@@ -51,6 +55,7 @@ class QueryBrokerDemandRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)
@@ -63,6 +68,7 @@ class QueryBrokerDemandRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

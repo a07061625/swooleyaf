@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RegistrantProfileRealNameVerification
+ *
  * @method string getIdentityCredentialType()
  * @method string getUserClientIp()
  * @method string getRegistrantProfileID()
@@ -29,6 +31,7 @@ class RegistrantProfileRealNameVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $identityCredentialType
+     *
      * @return $this
      */
     public function setIdentityCredentialType($identityCredentialType)
@@ -41,6 +44,7 @@ class RegistrantProfileRealNameVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -53,6 +57,7 @@ class RegistrantProfileRealNameVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantProfileID
+     *
      * @return $this
      */
     public function setRegistrantProfileID($registrantProfileID)
@@ -65,6 +70,7 @@ class RegistrantProfileRealNameVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $identityCredential
+     *
      * @return $this
      */
     public function setIdentityCredential($identityCredential)
@@ -77,6 +83,7 @@ class RegistrantProfileRealNameVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -89,6 +96,7 @@ class RegistrantProfileRealNameVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $identityCredentialNo
+     *
      * @return $this
      */
     public function setIdentityCredentialNo($identityCredentialNo)

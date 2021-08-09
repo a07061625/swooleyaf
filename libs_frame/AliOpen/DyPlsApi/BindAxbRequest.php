@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DyPlsApi;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BindAxb
+ *
  * @method string getResourceOwnerId()
  * @method string getCallDisplayType()
  * @method string getPhoneNoX()
@@ -37,6 +39,7 @@ class BindAxbRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -49,6 +52,7 @@ class BindAxbRequest extends RpcAcsRequest
 
     /**
      * @param string $callDisplayType
+     *
      * @return $this
      */
     public function setCallDisplayType($callDisplayType)
@@ -61,6 +65,7 @@ class BindAxbRequest extends RpcAcsRequest
 
     /**
      * @param string $phoneNoX
+     *
      * @return $this
      */
     public function setPhoneNoX($phoneNoX)
@@ -73,6 +78,7 @@ class BindAxbRequest extends RpcAcsRequest
 
     /**
      * @param string $ringConfig
+     *
      * @return $this
      */
     public function setRingConfig($ringConfig)
@@ -85,6 +91,7 @@ class BindAxbRequest extends RpcAcsRequest
 
     /**
      * @param string $phoneNoB
+     *
      * @return $this
      */
     public function setPhoneNoB($phoneNoB)
@@ -97,6 +104,7 @@ class BindAxbRequest extends RpcAcsRequest
 
     /**
      * @param string $phoneNoA
+     *
      * @return $this
      */
     public function setPhoneNoA($phoneNoA)
@@ -109,6 +117,7 @@ class BindAxbRequest extends RpcAcsRequest
 
     /**
      * @param string $expectCity
+     *
      * @return $this
      */
     public function setExpectCity($expectCity)
@@ -121,6 +130,7 @@ class BindAxbRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -133,6 +143,7 @@ class BindAxbRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -145,6 +156,7 @@ class BindAxbRequest extends RpcAcsRequest
 
     /**
      * @param string $outOrderId
+     *
      * @return $this
      */
     public function setOutOrderId($outOrderId)
@@ -157,6 +169,7 @@ class BindAxbRequest extends RpcAcsRequest
 
     /**
      * @param string $poolKey
+     *
      * @return $this
      */
     public function setPoolKey($poolKey)
@@ -169,6 +182,7 @@ class BindAxbRequest extends RpcAcsRequest
 
     /**
      * @param string $expiration
+     *
      * @return $this
      */
     public function setExpiration($expiration)
@@ -181,6 +195,7 @@ class BindAxbRequest extends RpcAcsRequest
 
     /**
      * @param string $isRecordingEnabled
+     *
      * @return $this
      */
     public function setIsRecordingEnabled($isRecordingEnabled)
@@ -193,6 +208,7 @@ class BindAxbRequest extends RpcAcsRequest
 
     /**
      * @param string $outId
+     *
      * @return $this
      */
     public function setOutId($outId)

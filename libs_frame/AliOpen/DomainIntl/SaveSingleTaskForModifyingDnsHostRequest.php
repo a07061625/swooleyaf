@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveSingleTaskForModifyingDnsHost
+ *
  * @method string getInstanceId()
  * @method array getIps()
  * @method string getDnsName()
@@ -28,6 +30,7 @@ class SaveSingleTaskForModifyingDnsHostRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -39,7 +42,6 @@ class SaveSingleTaskForModifyingDnsHostRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $ip
      * @return $this
      */
     public function setIps(array $ip)
@@ -54,6 +56,7 @@ class SaveSingleTaskForModifyingDnsHostRequest extends RpcAcsRequest
 
     /**
      * @param string $dnsName
+     *
      * @return $this
      */
     public function setDnsName($dnsName)
@@ -66,6 +69,7 @@ class SaveSingleTaskForModifyingDnsHostRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -78,6 +82,7 @@ class SaveSingleTaskForModifyingDnsHostRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

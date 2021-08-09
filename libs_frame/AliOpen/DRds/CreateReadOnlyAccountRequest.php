@@ -17,21 +17,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\DRds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class CreateReadOnlyAccountRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Drds", "2017-10-16", "CreateReadOnlyAccount");
-        $this->setMethod("POST");
-    }
-
     private $password;
     private $dbName;
     private $drdsInstanceId;
+
+    public function __construct()
+    {
+        parent::__construct('Drds', '2017-10-16', 'CreateReadOnlyAccount');
+        $this->setMethod('POST');
+    }
 
     public function getpassword()
     {
@@ -41,7 +42,7 @@ class CreateReadOnlyAccountRequest extends RpcAcsRequest
     public function setpassword($password)
     {
         $this->password = $password;
-        $this->queryParameters["password"] = $password;
+        $this->queryParameters['password'] = $password;
     }
 
     public function getDbName()
@@ -52,7 +53,7 @@ class CreateReadOnlyAccountRequest extends RpcAcsRequest
     public function setDbName($dbName)
     {
         $this->dbName = $dbName;
-        $this->queryParameters["DbName"] = $dbName;
+        $this->queryParameters['DbName'] = $dbName;
     }
 
     public function getDrdsInstanceId()
@@ -63,6 +64,6 @@ class CreateReadOnlyAccountRequest extends RpcAcsRequest
     public function setDrdsInstanceId($drdsInstanceId)
     {
         $this->drdsInstanceId = $drdsInstanceId;
-        $this->queryParameters["DrdsInstanceId"] = $drdsInstanceId;
+        $this->queryParameters['DrdsInstanceId'] = $drdsInstanceId;
     }
 }

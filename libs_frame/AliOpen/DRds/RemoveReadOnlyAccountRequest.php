@@ -17,21 +17,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\DRds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class RemoveReadOnlyAccountRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Drds", "2017-10-16", "RemoveReadOnlyAccount");
-        $this->setMethod("POST");
-    }
-
     private $dbName;
     private $accountName;
     private $drdsInstanceId;
+
+    public function __construct()
+    {
+        parent::__construct('Drds', '2017-10-16', 'RemoveReadOnlyAccount');
+        $this->setMethod('POST');
+    }
 
     public function getDbName()
     {
@@ -41,7 +42,7 @@ class RemoveReadOnlyAccountRequest extends RpcAcsRequest
     public function setDbName($dbName)
     {
         $this->dbName = $dbName;
-        $this->queryParameters["DbName"] = $dbName;
+        $this->queryParameters['DbName'] = $dbName;
     }
 
     public function getAccountName()
@@ -52,7 +53,7 @@ class RemoveReadOnlyAccountRequest extends RpcAcsRequest
     public function setAccountName($accountName)
     {
         $this->accountName = $accountName;
-        $this->queryParameters["AccountName"] = $accountName;
+        $this->queryParameters['AccountName'] = $accountName;
     }
 
     public function getDrdsInstanceId()
@@ -63,6 +64,6 @@ class RemoveReadOnlyAccountRequest extends RpcAcsRequest
     public function setDrdsInstanceId($drdsInstanceId)
     {
         $this->drdsInstanceId = $drdsInstanceId;
-        $this->queryParameters["DrdsInstanceId"] = $drdsInstanceId;
+        $this->queryParameters['DrdsInstanceId'] = $drdsInstanceId;
     }
 }

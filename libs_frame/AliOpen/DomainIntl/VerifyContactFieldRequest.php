@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of VerifyContactField
+ *
  * @method string getCountry()
  * @method string getAddress()
  * @method string getTelArea()
@@ -38,6 +40,7 @@ class VerifyContactFieldRequest extends RpcAcsRequest
 
     /**
      * @param string $country
+     *
      * @return $this
      */
     public function setCountry($country)
@@ -50,6 +53,7 @@ class VerifyContactFieldRequest extends RpcAcsRequest
 
     /**
      * @param string $address
+     *
      * @return $this
      */
     public function setAddress($address)
@@ -62,6 +66,7 @@ class VerifyContactFieldRequest extends RpcAcsRequest
 
     /**
      * @param string $telArea
+     *
      * @return $this
      */
     public function setTelArea($telArea)
@@ -74,6 +79,7 @@ class VerifyContactFieldRequest extends RpcAcsRequest
 
     /**
      * @param string $city
+     *
      * @return $this
      */
     public function setCity($city)
@@ -86,6 +92,7 @@ class VerifyContactFieldRequest extends RpcAcsRequest
 
     /**
      * @param string $domainName
+     *
      * @return $this
      */
     public function setDomainName($domainName)
@@ -98,6 +105,7 @@ class VerifyContactFieldRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantType
+     *
      * @return $this
      */
     public function setRegistrantType($registrantType)
@@ -110,6 +118,7 @@ class VerifyContactFieldRequest extends RpcAcsRequest
 
     /**
      * @param string $telephone
+     *
      * @return $this
      */
     public function setTelephone($telephone)
@@ -122,6 +131,7 @@ class VerifyContactFieldRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantOrganization
+     *
      * @return $this
      */
     public function setRegistrantOrganization($registrantOrganization)
@@ -134,6 +144,7 @@ class VerifyContactFieldRequest extends RpcAcsRequest
 
     /**
      * @param string $telExt
+     *
      * @return $this
      */
     public function setTelExt($telExt)
@@ -146,6 +157,7 @@ class VerifyContactFieldRequest extends RpcAcsRequest
 
     /**
      * @param string $province
+     *
      * @return $this
      */
     public function setProvince($province)
@@ -158,6 +170,7 @@ class VerifyContactFieldRequest extends RpcAcsRequest
 
     /**
      * @param string $postalCode
+     *
      * @return $this
      */
     public function setPostalCode($postalCode)
@@ -170,6 +183,7 @@ class VerifyContactFieldRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -182,6 +196,7 @@ class VerifyContactFieldRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -194,6 +209,7 @@ class VerifyContactFieldRequest extends RpcAcsRequest
 
     /**
      * @param string $email
+     *
      * @return $this
      */
     public function setEmail($email)
@@ -206,6 +222,7 @@ class VerifyContactFieldRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantName
+     *
      * @return $this
      */
     public function setRegistrantName($registrantName)

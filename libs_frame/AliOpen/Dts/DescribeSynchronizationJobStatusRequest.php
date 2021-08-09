@@ -17,21 +17,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\Dts;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class DescribeSynchronizationJobStatusRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Dts", "2016-08-01", "DescribeSynchronizationJobStatus");
-        $this->setMethod("POST");
-    }
-
     protected $synchronizationJobId;
     protected $clientToken;
     protected $ownerId;
+
+    public function __construct()
+    {
+        parent::__construct('Dts', '2016-08-01', 'DescribeSynchronizationJobStatus');
+        $this->setMethod('POST');
+    }
 
     public function getSynchronizationJobId()
     {

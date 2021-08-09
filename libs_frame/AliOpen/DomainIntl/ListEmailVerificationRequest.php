@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListEmailVerification
+ *
  * @method string getBeginCreateTime()
  * @method string getEndCreateTime()
  * @method string getPageSize()
@@ -31,6 +33,7 @@ class ListEmailVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $beginCreateTime
+     *
      * @return $this
      */
     public function setBeginCreateTime($beginCreateTime)
@@ -43,6 +46,7 @@ class ListEmailVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $endCreateTime
+     *
      * @return $this
      */
     public function setEndCreateTime($endCreateTime)
@@ -55,6 +59,7 @@ class ListEmailVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -67,6 +72,7 @@ class ListEmailVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -79,6 +85,7 @@ class ListEmailVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -91,6 +98,7 @@ class ListEmailVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -103,6 +111,7 @@ class ListEmailVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $email
+     *
      * @return $this
      */
     public function setEmail($email)
@@ -115,6 +124,7 @@ class ListEmailVerificationRequest extends RpcAcsRequest
 
     /**
      * @param string $verificationStatus
+     *
      * @return $this
      */
     public function setVerificationStatus($verificationStatus)

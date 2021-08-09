@@ -17,21 +17,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\DRds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class QueryInstanceInfoByConnRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Drds", "2017-10-16", "QueryInstanceInfoByConn");
-        $this->setMethod("POST");
-    }
-
     private $port;
     private $host;
     private $userName;
+
+    public function __construct()
+    {
+        parent::__construct('Drds', '2017-10-16', 'QueryInstanceInfoByConn');
+        $this->setMethod('POST');
+    }
 
     public function getPort()
     {
@@ -41,7 +42,7 @@ class QueryInstanceInfoByConnRequest extends RpcAcsRequest
     public function setPort($port)
     {
         $this->port = $port;
-        $this->queryParameters["Port"] = $port;
+        $this->queryParameters['Port'] = $port;
     }
 
     public function getHost()
@@ -52,7 +53,7 @@ class QueryInstanceInfoByConnRequest extends RpcAcsRequest
     public function setHost($host)
     {
         $this->host = $host;
-        $this->queryParameters["Host"] = $host;
+        $this->queryParameters['Host'] = $host;
     }
 
     public function getUserName()
@@ -63,6 +64,6 @@ class QueryInstanceInfoByConnRequest extends RpcAcsRequest
     public function setUserName($userName)
     {
         $this->userName = $userName;
-        $this->queryParameters["UserName"] = $userName;
+        $this->queryParameters['UserName'] = $userName;
     }
 }

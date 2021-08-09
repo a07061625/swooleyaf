@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\Domain;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of QueryBidRecords
+ *
  * @method string getAuctionId()
  * @method string getPageSize()
  * @method string getCurrentPage()
@@ -26,6 +28,7 @@ class QueryBidRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $auctionId
+     *
      * @return $this
      */
     public function setAuctionId($auctionId)
@@ -38,6 +41,7 @@ class QueryBidRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -50,6 +54,7 @@ class QueryBidRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $currentPage
+     *
      * @return $this
      */
     public function setCurrentPage($currentPage)

@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveRegistrantProfile
+ *
  * @method string getCountry()
  * @method string getAddress()
  * @method string getTelArea()
@@ -40,6 +42,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $country
+     *
      * @return $this
      */
     public function setCountry($country)
@@ -52,6 +55,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $address
+     *
      * @return $this
      */
     public function setAddress($address)
@@ -64,6 +68,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $telArea
+     *
      * @return $this
      */
     public function setTelArea($telArea)
@@ -76,6 +81,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $city
+     *
      * @return $this
      */
     public function setCity($city)
@@ -88,6 +94,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantProfileId
+     *
      * @return $this
      */
     public function setRegistrantProfileId($registrantProfileId)
@@ -100,6 +107,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantType
+     *
      * @return $this
      */
     public function setRegistrantType($registrantType)
@@ -112,6 +120,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantProfileType
+     *
      * @return $this
      */
     public function setRegistrantProfileType($registrantProfileType)
@@ -124,6 +133,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $telephone
+     *
      * @return $this
      */
     public function setTelephone($telephone)
@@ -136,6 +146,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $defaultRegistrantProfile
+     *
      * @return $this
      */
     public function setDefaultRegistrantProfile($defaultRegistrantProfile)
@@ -148,6 +159,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantOrganization
+     *
      * @return $this
      */
     public function setRegistrantOrganization($registrantOrganization)
@@ -160,6 +172,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $telExt
+     *
      * @return $this
      */
     public function setTelExt($telExt)
@@ -172,6 +185,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $province
+     *
      * @return $this
      */
     public function setProvince($province)
@@ -184,6 +198,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $postalCode
+     *
      * @return $this
      */
     public function setPostalCode($postalCode)
@@ -196,6 +211,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -208,6 +224,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -220,6 +237,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $email
+     *
      * @return $this
      */
     public function setEmail($email)
@@ -232,6 +250,7 @@ class SaveRegistrantProfileRequest extends RpcAcsRequest
 
     /**
      * @param string $registrantName
+     *
      * @return $this
      */
     public function setRegistrantName($registrantName)

@@ -17,24 +17,25 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\DRds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class ModifyDrdsIpWhiteListRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Drds", "2017-10-16", "ModifyDrdsIpWhiteList");
-        $this->setMethod("POST");
-    }
-
     private $mode;
     private $dbName;
     private $groupAttribute;
     private $ipWhiteList;
     private $drdsInstanceId;
     private $groupName;
+
+    public function __construct()
+    {
+        parent::__construct('Drds', '2017-10-16', 'ModifyDrdsIpWhiteList');
+        $this->setMethod('POST');
+    }
 
     public function getMode()
     {
@@ -44,7 +45,7 @@ class ModifyDrdsIpWhiteListRequest extends RpcAcsRequest
     public function setMode($mode)
     {
         $this->mode = $mode;
-        $this->queryParameters["Mode"] = $mode;
+        $this->queryParameters['Mode'] = $mode;
     }
 
     public function getDbName()
@@ -55,7 +56,7 @@ class ModifyDrdsIpWhiteListRequest extends RpcAcsRequest
     public function setDbName($dbName)
     {
         $this->dbName = $dbName;
-        $this->queryParameters["DbName"] = $dbName;
+        $this->queryParameters['DbName'] = $dbName;
     }
 
     public function getGroupAttribute()
@@ -66,7 +67,7 @@ class ModifyDrdsIpWhiteListRequest extends RpcAcsRequest
     public function setGroupAttribute($groupAttribute)
     {
         $this->groupAttribute = $groupAttribute;
-        $this->queryParameters["GroupAttribute"] = $groupAttribute;
+        $this->queryParameters['GroupAttribute'] = $groupAttribute;
     }
 
     public function getIpWhiteList()
@@ -77,7 +78,7 @@ class ModifyDrdsIpWhiteListRequest extends RpcAcsRequest
     public function setIpWhiteList($ipWhiteList)
     {
         $this->ipWhiteList = $ipWhiteList;
-        $this->queryParameters["IpWhiteList"] = $ipWhiteList;
+        $this->queryParameters['IpWhiteList'] = $ipWhiteList;
     }
 
     public function getDrdsInstanceId()
@@ -88,7 +89,7 @@ class ModifyDrdsIpWhiteListRequest extends RpcAcsRequest
     public function setDrdsInstanceId($drdsInstanceId)
     {
         $this->drdsInstanceId = $drdsInstanceId;
-        $this->queryParameters["DrdsInstanceId"] = $drdsInstanceId;
+        $this->queryParameters['DrdsInstanceId'] = $drdsInstanceId;
     }
 
     public function getGroupName()
@@ -99,6 +100,6 @@ class ModifyDrdsIpWhiteListRequest extends RpcAcsRequest
     public function setGroupName($groupName)
     {
         $this->groupName = $groupName;
-        $this->queryParameters["GroupName"] = $groupName;
+        $this->queryParameters['GroupName'] = $groupName;
     }
 }

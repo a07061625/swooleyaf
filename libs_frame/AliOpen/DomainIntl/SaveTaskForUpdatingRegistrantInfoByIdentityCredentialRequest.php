@@ -1,10 +1,12 @@
 <?php
+
 namespace AliOpen\DomainIntl;
 
 use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SaveTaskForUpdatingRegistrantInfoByIdentityCredential
+ *
  * @method string getCountry()
  * @method string getIdentityCredentialType()
  * @method string getAddress()
@@ -42,6 +44,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $country
+     *
      * @return $this
      */
     public function setCountry($country)
@@ -54,6 +57,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $identityCredentialType
+     *
      * @return $this
      */
     public function setIdentityCredentialType($identityCredentialType)
@@ -66,6 +70,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $address
+     *
      * @return $this
      */
     public function setAddress($address)
@@ -78,6 +83,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $telArea
+     *
      * @return $this
      */
     public function setTelArea($telArea)
@@ -90,6 +96,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $city
+     *
      * @return $this
      */
     public function setCity($city)
@@ -102,6 +109,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $registrantType
+     *
      * @return $this
      */
     public function setRegistrantType($registrantType)
@@ -113,7 +121,6 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
     }
 
     /**
-     * @param array $domainName
      * @return $this
      */
     public function setDomainNames(array $domainName)
@@ -128,6 +135,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $identityCredential
+     *
      * @return $this
      */
     public function setIdentityCredential($identityCredential)
@@ -140,6 +148,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $telephone
+     *
      * @return $this
      */
     public function setTelephone($telephone)
@@ -152,6 +161,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $transferOutProhibited
+     *
      * @return $this
      */
     public function setTransferOutProhibited($transferOutProhibited)
@@ -164,6 +174,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $registrantOrganization
+     *
      * @return $this
      */
     public function setRegistrantOrganization($registrantOrganization)
@@ -176,6 +187,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $telExt
+     *
      * @return $this
      */
     public function setTelExt($telExt)
@@ -188,6 +200,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $province
+     *
      * @return $this
      */
     public function setProvince($province)
@@ -200,6 +213,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $postalCode
+     *
      * @return $this
      */
     public function setPostalCode($postalCode)
@@ -212,6 +226,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -224,6 +239,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -236,6 +252,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $identityCredentialNo
+     *
      * @return $this
      */
     public function setIdentityCredentialNo($identityCredentialNo)
@@ -248,6 +265,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $email
+     *
      * @return $this
      */
     public function setEmail($email)
@@ -260,6 +278,7 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest extends RpcAc
 
     /**
      * @param string $registrantName
+     *
      * @return $this
      */
     public function setRegistrantName($registrantName)

@@ -17,22 +17,23 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\DRds;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class ModifyRdsReadWeightRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("Drds", "2017-10-16", "ModifyRdsReadWeight");
-        $this->setMethod("POST");
-    }
-
     private $instanceNames;
     private $dbName;
     private $weights;
     private $drdsInstanceId;
+
+    public function __construct()
+    {
+        parent::__construct('Drds', '2017-10-16', 'ModifyRdsReadWeight');
+        $this->setMethod('POST');
+    }
 
     public function getInstanceNames()
     {
@@ -42,7 +43,7 @@ class ModifyRdsReadWeightRequest extends RpcAcsRequest
     public function setInstanceNames($instanceNames)
     {
         $this->instanceNames = $instanceNames;
-        $this->queryParameters["InstanceNames"] = $instanceNames;
+        $this->queryParameters['InstanceNames'] = $instanceNames;
     }
 
     public function getDbName()
@@ -53,7 +54,7 @@ class ModifyRdsReadWeightRequest extends RpcAcsRequest
     public function setDbName($dbName)
     {
         $this->dbName = $dbName;
-        $this->queryParameters["DbName"] = $dbName;
+        $this->queryParameters['DbName'] = $dbName;
     }
 
     public function getWeights()
@@ -64,7 +65,7 @@ class ModifyRdsReadWeightRequest extends RpcAcsRequest
     public function setWeights($weights)
     {
         $this->weights = $weights;
-        $this->queryParameters["Weights"] = $weights;
+        $this->queryParameters['Weights'] = $weights;
     }
 
     public function getDrdsInstanceId()
@@ -75,6 +76,6 @@ class ModifyRdsReadWeightRequest extends RpcAcsRequest
     public function setDrdsInstanceId($drdsInstanceId)
     {
         $this->drdsInstanceId = $drdsInstanceId;
-        $this->queryParameters["DrdsInstanceId"] = $drdsInstanceId;
+        $this->queryParameters['DrdsInstanceId'] = $drdsInstanceId;
     }
 }
