@@ -6,10 +6,13 @@ use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Class SentimentRequest
+ *
  * @author    Alibaba Cloud SDK <sdk-team@alibabacloud.com>
  * @copyright 2019 Alibaba Group
  * @license   http://www.apache.org/licenses/LICENSE-2.0  Apache License 2.0
- * @link      https://github.com/aliyun/aliyun-openapi-php-sdk
+ *
+ * @see      https://github.com/aliyun/aliyun-openapi-php-sdk
+ *
  * @method string getDomain()
  */
 class SentimentRequest extends RoaAcsRequest
@@ -33,6 +36,7 @@ class SentimentRequest extends RoaAcsRequest
 
     /**
      * @param string $domain
+     *
      * @return $this
      */
     public function setDomain($domain)

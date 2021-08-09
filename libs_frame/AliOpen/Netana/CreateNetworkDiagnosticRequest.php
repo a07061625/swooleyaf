@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateNetworkDiagnostic
+ *
  * @method string getResourceOwnerId()
  * @method string getRequestParams()
  * @method string getInstanceId()
@@ -34,6 +35,7 @@ class CreateNetworkDiagnosticRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +48,7 @@ class CreateNetworkDiagnosticRequest extends RpcAcsRequest
 
     /**
      * @param string $requestParams
+     *
      * @return $this
      */
     public function setRequestParams($requestParams)
@@ -58,6 +61,7 @@ class CreateNetworkDiagnosticRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -70,6 +74,7 @@ class CreateNetworkDiagnosticRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -82,6 +87,7 @@ class CreateNetworkDiagnosticRequest extends RpcAcsRequest
 
     /**
      * @param string $userRequestId
+     *
      * @return $this
      */
     public function setUserRequestId($userRequestId)
@@ -94,6 +100,7 @@ class CreateNetworkDiagnosticRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -106,6 +113,7 @@ class CreateNetworkDiagnosticRequest extends RpcAcsRequest
 
     /**
      * @param string $requestApiName
+     *
      * @return $this
      */
     public function setRequestApiName($requestApiName)
@@ -118,6 +126,7 @@ class CreateNetworkDiagnosticRequest extends RpcAcsRequest
 
     /**
      * @param string $errorCode
+     *
      * @return $this
      */
     public function setErrorCode($errorCode)
@@ -130,6 +139,7 @@ class CreateNetworkDiagnosticRequest extends RpcAcsRequest
 
     /**
      * @param string $productType
+     *
      * @return $this
      */
     public function setProductType($productType)
@@ -142,6 +152,7 @@ class CreateNetworkDiagnosticRequest extends RpcAcsRequest
 
     /**
      * @param string $responseParams
+     *
      * @return $this
      */
     public function setResponseParams($responseParams)

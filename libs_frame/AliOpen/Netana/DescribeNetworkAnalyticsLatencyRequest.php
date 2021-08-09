@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeNetworkAnalyticsLatency
+ *
  * @method string getCountry()
  * @method string getResourceOwnerId()
  * @method string getProduct()
@@ -39,6 +40,7 @@ class DescribeNetworkAnalyticsLatencyRequest extends RpcAcsRequest
 
     /**
      * @param string $country
+     *
      * @return $this
      */
     public function setCountry($country)
@@ -51,6 +53,7 @@ class DescribeNetworkAnalyticsLatencyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -63,6 +66,7 @@ class DescribeNetworkAnalyticsLatencyRequest extends RpcAcsRequest
 
     /**
      * @param string $product
+     *
      * @return $this
      */
     public function setProduct($product)
@@ -75,6 +79,7 @@ class DescribeNetworkAnalyticsLatencyRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -87,6 +92,7 @@ class DescribeNetworkAnalyticsLatencyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -99,6 +105,7 @@ class DescribeNetworkAnalyticsLatencyRequest extends RpcAcsRequest
 
     /**
      * @param string $ip
+     *
      * @return $this
      */
     public function setIp($ip)
@@ -111,6 +118,7 @@ class DescribeNetworkAnalyticsLatencyRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -123,6 +131,7 @@ class DescribeNetworkAnalyticsLatencyRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -135,6 +144,7 @@ class DescribeNetworkAnalyticsLatencyRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -147,6 +157,7 @@ class DescribeNetworkAnalyticsLatencyRequest extends RpcAcsRequest
 
     /**
      * @param string $carrier
+     *
      * @return $this
      */
     public function setCarrier($carrier)
@@ -159,6 +170,7 @@ class DescribeNetworkAnalyticsLatencyRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -171,6 +183,7 @@ class DescribeNetworkAnalyticsLatencyRequest extends RpcAcsRequest
 
     /**
      * @param string $province
+     *
      * @return $this
      */
     public function setProvince($province)
@@ -183,6 +196,7 @@ class DescribeNetworkAnalyticsLatencyRequest extends RpcAcsRequest
 
     /**
      * @param string $internetChargeType
+     *
      * @return $this
      */
     public function setInternetChargeType($internetChargeType)
@@ -195,6 +209,7 @@ class DescribeNetworkAnalyticsLatencyRequest extends RpcAcsRequest
 
     /**
      * @param string $grade
+     *
      * @return $this
      */
     public function setGrade($grade)
@@ -207,6 +222,7 @@ class DescribeNetworkAnalyticsLatencyRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeIpLocationAndIsp
+ *
  * @method string getIpAddress()
  * @method string getResourceOwnerId()
  * @method string getResourceOwnerAccount()
@@ -27,6 +28,7 @@ class DescribeIpLocationAndIspRequest extends RpcAcsRequest
 
     /**
      * @param string $ipAddress
+     *
      * @return $this
      */
     public function setIpAddress($ipAddress)
@@ -39,6 +41,7 @@ class DescribeIpLocationAndIspRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -51,6 +54,7 @@ class DescribeIpLocationAndIspRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)

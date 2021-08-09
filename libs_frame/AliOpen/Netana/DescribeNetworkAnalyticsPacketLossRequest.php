@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeNetworkAnalyticsPacketLoss
+ *
  * @method string getCountry()
  * @method string getResourceOwnerId()
  * @method string getProduct()
@@ -40,6 +41,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $country
+     *
      * @return $this
      */
     public function setCountry($country)
@@ -52,6 +54,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -64,6 +67,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $product
+     *
      * @return $this
      */
     public function setProduct($product)
@@ -76,6 +80,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -88,6 +93,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -100,6 +106,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $ip
+     *
      * @return $this
      */
     public function setIp($ip)
@@ -112,6 +119,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -124,6 +132,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -136,6 +145,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -148,6 +158,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $carrier
+     *
      * @return $this
      */
     public function setCarrier($carrier)
@@ -160,6 +171,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceId
+     *
      * @return $this
      */
     public function setInstanceId($instanceId)
@@ -172,6 +184,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $province
+     *
      * @return $this
      */
     public function setProvince($province)
@@ -184,6 +197,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $internetChargeType
+     *
      * @return $this
      */
     public function setInternetChargeType($internetChargeType)
@@ -196,6 +210,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $grade
+     *
      * @return $this
      */
     public function setGrade($grade)
@@ -208,6 +223,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -220,6 +236,7 @@ class DescribeNetworkAnalyticsPacketLossRequest extends RpcAcsRequest
 
     /**
      * @param string $direction
+     *
      * @return $this
      */
     public function setDirection($direction)

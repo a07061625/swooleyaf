@@ -17,20 +17,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\NlsFileTrans;
 
 use AliOpen\Core\RpcAcsRequest;
 
 class SubmitTaskRequest extends RpcAcsRequest
 {
-    public function __construct()
-    {
-        parent::__construct("nls-filetrans", "2018-08-17", "SubmitTask");
-        $this->setMethod("POST");
-    }
-
     private $task;
     private $debug;
+
+    public function __construct()
+    {
+        parent::__construct('nls-filetrans', '2018-08-17', 'SubmitTask');
+        $this->setMethod('POST');
+    }
 
     public function getTask()
     {
@@ -40,7 +41,7 @@ class SubmitTaskRequest extends RpcAcsRequest
     public function setTask($task)
     {
         $this->task = $task;
-        $this->queryParameters["Task"] = $task;
+        $this->queryParameters['Task'] = $task;
     }
 
     public function getDebug()
@@ -51,6 +52,6 @@ class SubmitTaskRequest extends RpcAcsRequest
     public function setDebug($debug)
     {
         $this->debug = $debug;
-        $this->queryParameters["Debug"] = $debug;
+        $this->queryParameters['Debug'] = $debug;
     }
 }

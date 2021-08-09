@@ -6,10 +6,13 @@ use AliOpen\Core\RoaAcsRequest;
 
 /**
  * Class KWERequest
+ *
  * @author    Alibaba Cloud SDK <sdk-team@alibabacloud.com>
  * @copyright 2019 Alibaba Group
  * @license   http://www.apache.org/licenses/LICENSE-2.0  Apache License 2.0
- * @link      https://github.com/aliyun/aliyun-openapi-php-sdk
+ *
+ * @see      https://github.com/aliyun/aliyun-openapi-php-sdk
+ *
  * @method string getDomain()
  */
 class KWERequest extends RoaAcsRequest
@@ -33,6 +36,7 @@ class KWERequest extends RoaAcsRequest
 
     /**
      * @param string $domain
+     *
      * @return $this
      */
     public function setDomain($domain)

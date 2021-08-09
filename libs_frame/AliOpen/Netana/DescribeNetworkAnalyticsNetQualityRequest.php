@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeNetworkAnalyticsNetQuality
+ *
  * @method string getCountry()
  * @method string getResourceOwnerId()
  * @method string getPeriod()
@@ -35,6 +36,7 @@ class DescribeNetworkAnalyticsNetQualityRequest extends RpcAcsRequest
 
     /**
      * @param string $country
+     *
      * @return $this
      */
     public function setCountry($country)
@@ -47,6 +49,7 @@ class DescribeNetworkAnalyticsNetQualityRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +62,7 @@ class DescribeNetworkAnalyticsNetQualityRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -71,6 +75,7 @@ class DescribeNetworkAnalyticsNetQualityRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -83,6 +88,7 @@ class DescribeNetworkAnalyticsNetQualityRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -95,6 +101,7 @@ class DescribeNetworkAnalyticsNetQualityRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -107,6 +114,7 @@ class DescribeNetworkAnalyticsNetQualityRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -119,6 +127,7 @@ class DescribeNetworkAnalyticsNetQualityRequest extends RpcAcsRequest
 
     /**
      * @param string $carrier
+     *
      * @return $this
      */
     public function setCarrier($carrier)
@@ -131,6 +140,7 @@ class DescribeNetworkAnalyticsNetQualityRequest extends RpcAcsRequest
 
     /**
      * @param string $province
+     *
      * @return $this
      */
     public function setProvince($province)
@@ -143,6 +153,7 @@ class DescribeNetworkAnalyticsNetQualityRequest extends RpcAcsRequest
 
     /**
      * @param string $grade
+     *
      * @return $this
      */
     public function setGrade($grade)
@@ -155,6 +166,7 @@ class DescribeNetworkAnalyticsNetQualityRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)

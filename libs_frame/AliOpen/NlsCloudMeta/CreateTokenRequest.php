@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace AliOpen\NlsCloudMeta;
 
 use AliOpen\Core\RoaAcsRequest;
@@ -25,8 +26,8 @@ class CreateTokenRequest extends RoaAcsRequest
 {
     public function __construct()
     {
-        parent::__construct("nls-cloud-meta", "2018-05-18", "CreateToken");
-        $this->setUriPattern("/pop/2018-05-18/tokens");
-        $this->setMethod("POST");
+        parent::__construct('nls-cloud-meta', '2018-05-18', 'CreateToken');
+        $this->setUriPattern('/pop/2018-05-18/tokens');
+        $this->setMethod('POST');
     }
 }

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateNetworkQuotaRequest
+ *
  * @method string getRequestReason()
  * @method string getResourceOwnerId()
  * @method string getProduct()
@@ -33,6 +34,7 @@ class CreateNetworkQuotaRequestRequest extends RpcAcsRequest
 
     /**
      * @param string $requestReason
+     *
      * @return $this
      */
     public function setRequestReason($requestReason)
@@ -45,6 +47,7 @@ class CreateNetworkQuotaRequestRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +60,7 @@ class CreateNetworkQuotaRequestRequest extends RpcAcsRequest
 
     /**
      * @param string $product
+     *
      * @return $this
      */
     public function setProduct($product)
@@ -69,6 +73,7 @@ class CreateNetworkQuotaRequestRequest extends RpcAcsRequest
 
     /**
      * @param string $quotaPublicityName
+     *
      * @return $this
      */
     public function setQuotaPublicityName($quotaPublicityName)
@@ -81,6 +86,7 @@ class CreateNetworkQuotaRequestRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -93,6 +99,7 @@ class CreateNetworkQuotaRequestRequest extends RpcAcsRequest
 
     /**
      * @param string $requestQuantity
+     *
      * @return $this
      */
     public function setRequestQuantity($requestQuantity)
@@ -105,6 +112,7 @@ class CreateNetworkQuotaRequestRequest extends RpcAcsRequest
 
     /**
      * @param string $mobilePhone
+     *
      * @return $this
      */
     public function setMobilePhone($mobilePhone)
@@ -117,6 +125,7 @@ class CreateNetworkQuotaRequestRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
@@ -129,6 +138,7 @@ class CreateNetworkQuotaRequestRequest extends RpcAcsRequest
 
     /**
      * @param string $email
+     *
      * @return $this
      */
     public function setEmail($email)

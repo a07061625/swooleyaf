@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeNetworkQuotas
+ *
  * @method string getResourceOwnerId()
  * @method string getProduct()
  * @method string getQuotaPublicityName()
@@ -29,6 +30,7 @@ class DescribeNetworkQuotasRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +43,7 @@ class DescribeNetworkQuotasRequest extends RpcAcsRequest
 
     /**
      * @param string $product
+     *
      * @return $this
      */
     public function setProduct($product)
@@ -53,6 +56,7 @@ class DescribeNetworkQuotasRequest extends RpcAcsRequest
 
     /**
      * @param string $quotaPublicityName
+     *
      * @return $this
      */
     public function setQuotaPublicityName($quotaPublicityName)
@@ -65,6 +69,7 @@ class DescribeNetworkQuotasRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -77,6 +82,7 @@ class DescribeNetworkQuotasRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)
