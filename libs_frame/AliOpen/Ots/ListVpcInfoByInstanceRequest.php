@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListVpcInfoByInstance
+ *
  * @method string getaccess_key_id()
  * @method string getResourceOwnerId()
  * @method string getInstanceName()
@@ -24,6 +25,7 @@ class ListVpcInfoByInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $access_key_id
+     *
      * @return $this
      */
     public function setaccess_key_id($access_key_id)
@@ -36,6 +38,7 @@ class ListVpcInfoByInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +51,7 @@ class ListVpcInfoByInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceName
+     *
      * @return $this
      */
     public function setInstanceName($instanceName)
@@ -60,6 +64,7 @@ class ListVpcInfoByInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -72,6 +77,7 @@ class ListVpcInfoByInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)

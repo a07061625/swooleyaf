@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListTags
+ *
  * @method string getaccess_key_id()
  * @method string getResourceOwnerId()
  * @method string getInstanceName()
@@ -30,6 +31,7 @@ class ListTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $access_key_id
+     *
      * @return $this
      */
     public function setaccess_key_id($access_key_id)
@@ -42,6 +44,7 @@ class ListTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -54,6 +57,7 @@ class ListTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceName
+     *
      * @return $this
      */
     public function setInstanceName($instanceName)
@@ -66,6 +70,7 @@ class ListTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -78,6 +83,7 @@ class ListTagsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNum
+     *
      * @return $this
      */
     public function setPageNum($pageNum)
@@ -89,7 +95,6 @@ class ListTagsRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $value
      * @return $this
      */
     public function setTagInfos(array $value)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyAccountPassword
+ *
  * @method string getResourceOwnerId()
  * @method string getAccountName()
  * @method string getNewAccountPassword()
@@ -31,6 +32,7 @@ class ModifyAccountPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +45,7 @@ class ModifyAccountPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $accountName
+     *
      * @return $this
      */
     public function setAccountName($accountName)
@@ -55,6 +58,7 @@ class ModifyAccountPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $newAccountPassword
+     *
      * @return $this
      */
     public function setNewAccountPassword($newAccountPassword)
@@ -67,6 +71,7 @@ class ModifyAccountPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -79,6 +84,7 @@ class ModifyAccountPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterId
+     *
      * @return $this
      */
     public function setDBClusterId($dBClusterId)
@@ -91,6 +97,7 @@ class ModifyAccountPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -103,6 +110,7 @@ class ModifyAccountPasswordRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

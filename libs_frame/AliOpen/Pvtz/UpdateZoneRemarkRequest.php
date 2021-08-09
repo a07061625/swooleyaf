@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateZoneRemark
+ *
  * @method string getRemark()
  * @method string getUserClientIp()
  * @method string getZoneId()
@@ -28,6 +29,7 @@ class UpdateZoneRemarkRequest extends RpcAcsRequest
 
     /**
      * @param string $remark
+     *
      * @return $this
      */
     public function setRemark($remark)
@@ -40,6 +42,7 @@ class UpdateZoneRemarkRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -52,6 +55,7 @@ class UpdateZoneRemarkRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -64,6 +68,7 @@ class UpdateZoneRemarkRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

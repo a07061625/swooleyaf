@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetAllowIP
+ *
  * @method string getUserID()
  * @method string getNetworkType()
  * @method string getAllowIP()
@@ -28,6 +29,7 @@ class SetAllowIPRequest extends RpcAcsRequest
 
     /**
      * @param string $userID
+     *
      * @return $this
      */
     public function setUserID($userID)
@@ -40,6 +42,7 @@ class SetAllowIPRequest extends RpcAcsRequest
 
     /**
      * @param string $networkType
+     *
      * @return $this
      */
     public function setNetworkType($networkType)
@@ -52,6 +55,7 @@ class SetAllowIPRequest extends RpcAcsRequest
 
     /**
      * @param string $allowIP
+     *
      * @return $this
      */
     public function setAllowIP($allowIP)
@@ -64,6 +68,7 @@ class SetAllowIPRequest extends RpcAcsRequest
 
     /**
      * @param string $append
+     *
      * @return $this
      */
     public function setAppend($append)

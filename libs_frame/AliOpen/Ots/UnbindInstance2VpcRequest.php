@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UnbindInstance2Vpc
+ *
  * @method string getaccess_key_id()
  * @method string getInstanceVpcName()
  * @method string getResourceOwnerId()
@@ -29,6 +30,7 @@ class UnbindInstance2VpcRequest extends RpcAcsRequest
 
     /**
      * @param string $access_key_id
+     *
      * @return $this
      */
     public function setaccess_key_id($access_key_id)
@@ -41,6 +43,7 @@ class UnbindInstance2VpcRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceVpcName
+     *
      * @return $this
      */
     public function setInstanceVpcName($instanceVpcName)
@@ -53,6 +56,7 @@ class UnbindInstance2VpcRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -65,6 +69,7 @@ class UnbindInstance2VpcRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceName
+     *
      * @return $this
      */
     public function setInstanceName($instanceName)
@@ -77,6 +82,7 @@ class UnbindInstance2VpcRequest extends RpcAcsRequest
 
     /**
      * @param string $regionNo
+     *
      * @return $this
      */
     public function setRegionNo($regionNo)

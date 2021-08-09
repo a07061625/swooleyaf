@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDBClusterEndpoint
+ *
  * @method string getAutoAddNewNodes()
  * @method string getResourceOwnerId()
  * @method string getClientToken()
@@ -35,6 +36,7 @@ class CreateDBClusterEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $autoAddNewNodes
+     *
      * @return $this
      */
     public function setAutoAddNewNodes($autoAddNewNodes)
@@ -47,6 +49,7 @@ class CreateDBClusterEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -59,6 +62,7 @@ class CreateDBClusterEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -71,6 +75,7 @@ class CreateDBClusterEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $readWriteMode
+     *
      * @return $this
      */
     public function setReadWriteMode($readWriteMode)
@@ -83,6 +88,7 @@ class CreateDBClusterEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $endpointType
+     *
      * @return $this
      */
     public function setEndpointType($endpointType)
@@ -95,6 +101,7 @@ class CreateDBClusterEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -107,6 +114,7 @@ class CreateDBClusterEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterId
+     *
      * @return $this
      */
     public function setDBClusterId($dBClusterId)
@@ -119,6 +127,7 @@ class CreateDBClusterEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -131,6 +140,7 @@ class CreateDBClusterEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $endpointConfig
+     *
      * @return $this
      */
     public function setEndpointConfig($endpointConfig)
@@ -143,6 +153,7 @@ class CreateDBClusterEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -155,6 +166,7 @@ class CreateDBClusterEndpointRequest extends RpcAcsRequest
 
     /**
      * @param string $nodes
+     *
      * @return $this
      */
     public function setNodes($nodes)

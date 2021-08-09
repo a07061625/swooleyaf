@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RevokeAccountPrivilege
+ *
  * @method string getResourceOwnerId()
  * @method string getAccountName()
  * @method string getResourceOwnerAccount()
@@ -31,6 +32,7 @@ class RevokeAccountPrivilegeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +45,7 @@ class RevokeAccountPrivilegeRequest extends RpcAcsRequest
 
     /**
      * @param string $accountName
+     *
      * @return $this
      */
     public function setAccountName($accountName)
@@ -55,6 +58,7 @@ class RevokeAccountPrivilegeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +71,7 @@ class RevokeAccountPrivilegeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterId
+     *
      * @return $this
      */
     public function setDBClusterId($dBClusterId)
@@ -79,6 +84,7 @@ class RevokeAccountPrivilegeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +97,7 @@ class RevokeAccountPrivilegeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +110,7 @@ class RevokeAccountPrivilegeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBName
+     *
      * @return $this
      */
     public function setDBName($dBName)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyBackupPolicy
+ *
  * @method string getResourceOwnerId()
  * @method string getPreferredBackupPeriod()
  * @method string getResourceOwnerAccount()
@@ -32,6 +33,7 @@ class ModifyBackupPolicyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +46,7 @@ class ModifyBackupPolicyRequest extends RpcAcsRequest
 
     /**
      * @param string $preferredBackupPeriod
+     *
      * @return $this
      */
     public function setPreferredBackupPeriod($preferredBackupPeriod)
@@ -56,6 +59,7 @@ class ModifyBackupPolicyRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -68,6 +72,7 @@ class ModifyBackupPolicyRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterId
+     *
      * @return $this
      */
     public function setDBClusterId($dBClusterId)
@@ -80,6 +85,7 @@ class ModifyBackupPolicyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -92,6 +98,7 @@ class ModifyBackupPolicyRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -104,6 +111,7 @@ class ModifyBackupPolicyRequest extends RpcAcsRequest
 
     /**
      * @param string $preferredBackupTime
+     *
      * @return $this
      */
     public function setPreferredBackupTime($preferredBackupTime)
@@ -116,6 +124,7 @@ class ModifyBackupPolicyRequest extends RpcAcsRequest
 
     /**
      * @param string $backupRetentionPeriod
+     *
      * @return $this
      */
     public function setBackupRetentionPeriod($backupRetentionPeriod)

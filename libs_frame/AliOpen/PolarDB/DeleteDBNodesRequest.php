@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteDBNodes
+ *
  * @method string getResourceOwnerId()
  * @method array getDBNodeIds()
  * @method string getClientToken()
@@ -31,6 +32,7 @@ class DeleteDBNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,7 +44,6 @@ class DeleteDBNodesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $dBNodeId
      * @return $this
      */
     public function setDBNodeIds(array $dBNodeId)
@@ -57,6 +58,7 @@ class DeleteDBNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -69,6 +71,7 @@ class DeleteDBNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -81,6 +84,7 @@ class DeleteDBNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterId
+     *
      * @return $this
      */
     public function setDBClusterId($dBClusterId)
@@ -93,6 +97,7 @@ class DeleteDBNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -105,6 +110,7 @@ class DeleteDBNodesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

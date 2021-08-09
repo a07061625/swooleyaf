@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDatabase
+ *
  * @method string getResourceOwnerId()
  * @method string getAccountPrivilege()
  * @method string getAccountName()
@@ -34,6 +35,7 @@ class CreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -46,6 +48,7 @@ class CreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $accountPrivilege
+     *
      * @return $this
      */
     public function setAccountPrivilege($accountPrivilege)
@@ -58,6 +61,7 @@ class CreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $accountName
+     *
      * @return $this
      */
     public function setAccountName($accountName)
@@ -70,6 +74,7 @@ class CreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $dBDescription
+     *
      * @return $this
      */
     public function setDBDescription($dBDescription)
@@ -82,6 +87,7 @@ class CreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -94,6 +100,7 @@ class CreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterId
+     *
      * @return $this
      */
     public function setDBClusterId($dBClusterId)
@@ -106,6 +113,7 @@ class CreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -118,6 +126,7 @@ class CreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -130,6 +139,7 @@ class CreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $dBName
+     *
      * @return $this
      */
     public function setDBName($dBName)
@@ -142,6 +152,7 @@ class CreateDatabaseRequest extends RpcAcsRequest
 
     /**
      * @param string $characterSetName
+     *
      * @return $this
      */
     public function setCharacterSetName($characterSetName)

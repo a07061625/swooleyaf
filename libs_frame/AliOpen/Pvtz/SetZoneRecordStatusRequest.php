@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SetZoneRecordStatus
+ *
  * @method string getRecordId()
  * @method string getUserClientIp()
  * @method string getLang()
@@ -28,6 +29,7 @@ class SetZoneRecordStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $recordId
+     *
      * @return $this
      */
     public function setRecordId($recordId)
@@ -40,6 +42,7 @@ class SetZoneRecordStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -52,6 +55,7 @@ class SetZoneRecordStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -64,6 +68,7 @@ class SetZoneRecordStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $status
+     *
      * @return $this
      */
     public function setStatus($status)

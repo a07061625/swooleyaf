@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeChangeLogs
+ *
  * @method string getStartTimestamp()
  * @method string getPageNumber()
  * @method string getEndTimestamp()
@@ -33,6 +34,7 @@ class DescribeChangeLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $startTimestamp
+     *
      * @return $this
      */
     public function setStartTimestamp($startTimestamp)
@@ -45,6 +47,7 @@ class DescribeChangeLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -57,6 +60,7 @@ class DescribeChangeLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $endTimestamp
+     *
      * @return $this
      */
     public function setEndTimestamp($endTimestamp)
@@ -69,6 +73,7 @@ class DescribeChangeLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $entityType
+     *
      * @return $this
      */
     public function setEntityType($entityType)
@@ -81,6 +86,7 @@ class DescribeChangeLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -93,6 +99,7 @@ class DescribeChangeLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -105,6 +112,7 @@ class DescribeChangeLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -117,6 +125,7 @@ class DescribeChangeLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $keyword
+     *
      * @return $this
      */
     public function setKeyword($keyword)
@@ -129,6 +138,7 @@ class DescribeChangeLogsRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

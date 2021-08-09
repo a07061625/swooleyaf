@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBClusterMigration
+ *
  * @method string getResourceOwnerId()
  * @method string getSecurityToken()
  * @method string getNewMasterInstanceId()
@@ -32,6 +33,7 @@ class ModifyDBClusterMigrationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +46,7 @@ class ModifyDBClusterMigrationRequest extends RpcAcsRequest
 
     /**
      * @param string $securityToken
+     *
      * @return $this
      */
     public function setSecurityToken($securityToken)
@@ -56,6 +59,7 @@ class ModifyDBClusterMigrationRequest extends RpcAcsRequest
 
     /**
      * @param string $newMasterInstanceId
+     *
      * @return $this
      */
     public function setNewMasterInstanceId($newMasterInstanceId)
@@ -68,6 +72,7 @@ class ModifyDBClusterMigrationRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -80,6 +85,7 @@ class ModifyDBClusterMigrationRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterId
+     *
      * @return $this
      */
     public function setDBClusterId($dBClusterId)
@@ -92,6 +98,7 @@ class ModifyDBClusterMigrationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +111,7 @@ class ModifyDBClusterMigrationRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceRDSDBInstanceId
+     *
      * @return $this
      */
     public function setSourceRDSDBInstanceId($sourceRDSDBInstanceId)
@@ -116,6 +124,7 @@ class ModifyDBClusterMigrationRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

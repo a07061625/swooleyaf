@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of UpdateRecordRemark
+ *
  * @method string getRemark()
  * @method string getRecordId()
  * @method string getUserClientIp()
@@ -28,6 +29,7 @@ class UpdateRecordRemarkRequest extends RpcAcsRequest
 
     /**
      * @param string $remark
+     *
      * @return $this
      */
     public function setRemark($remark)
@@ -40,6 +42,7 @@ class UpdateRecordRemarkRequest extends RpcAcsRequest
 
     /**
      * @param string $recordId
+     *
      * @return $this
      */
     public function setRecordId($recordId)
@@ -52,6 +55,7 @@ class UpdateRecordRemarkRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -64,6 +68,7 @@ class UpdateRecordRemarkRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDBClusterEndpoints
+ *
  * @method string getResourceOwnerId()
  * @method string getDBEndpointId()
  * @method string getResourceOwnerAccount()
@@ -30,6 +31,7 @@ class DescribeDBClusterEndpointsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -42,6 +44,7 @@ class DescribeDBClusterEndpointsRequest extends RpcAcsRequest
 
     /**
      * @param string $dBEndpointId
+     *
      * @return $this
      */
     public function setDBEndpointId($dBEndpointId)
@@ -54,6 +57,7 @@ class DescribeDBClusterEndpointsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -66,6 +70,7 @@ class DescribeDBClusterEndpointsRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterId
+     *
      * @return $this
      */
     public function setDBClusterId($dBClusterId)
@@ -78,6 +83,7 @@ class DescribeDBClusterEndpointsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -90,6 +96,7 @@ class DescribeDBClusterEndpointsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

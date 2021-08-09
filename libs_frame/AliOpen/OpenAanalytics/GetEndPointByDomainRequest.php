@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetEndPointByDomain
+ *
  * @method string getUserID()
  * @method string getDomainURL()
  */
@@ -26,6 +27,7 @@ class GetEndPointByDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $userID
+     *
      * @return $this
      */
     public function setUserID($userID)
@@ -38,6 +40,7 @@ class GetEndPointByDomainRequest extends RpcAcsRequest
 
     /**
      * @param string $domainURL
+     *
      * @return $this
      */
     public function setDomainURL($domainURL)

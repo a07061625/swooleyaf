@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBDescription
+ *
  * @method string getResourceOwnerId()
  * @method string getDBDescription()
  * @method string getResourceOwnerAccount()
@@ -31,6 +32,7 @@ class ModifyDBDescriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +45,7 @@ class ModifyDBDescriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $dBDescription
+     *
      * @return $this
      */
     public function setDBDescription($dBDescription)
@@ -55,6 +58,7 @@ class ModifyDBDescriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +71,7 @@ class ModifyDBDescriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterId
+     *
      * @return $this
      */
     public function setDBClusterId($dBClusterId)
@@ -79,6 +84,7 @@ class ModifyDBDescriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +97,7 @@ class ModifyDBDescriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +110,7 @@ class ModifyDBDescriptionRequest extends RpcAcsRequest
 
     /**
      * @param string $dBName
+     *
      * @return $this
      */
     public function setDBName($dBName)

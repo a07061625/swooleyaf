@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GrantAccountPrivilege
+ *
  * @method string getResourceOwnerId()
  * @method string getAccountPrivilege()
  * @method string getAccountName()
@@ -32,6 +33,7 @@ class GrantAccountPrivilegeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +46,7 @@ class GrantAccountPrivilegeRequest extends RpcAcsRequest
 
     /**
      * @param string $accountPrivilege
+     *
      * @return $this
      */
     public function setAccountPrivilege($accountPrivilege)
@@ -56,6 +59,7 @@ class GrantAccountPrivilegeRequest extends RpcAcsRequest
 
     /**
      * @param string $accountName
+     *
      * @return $this
      */
     public function setAccountName($accountName)
@@ -68,6 +72,7 @@ class GrantAccountPrivilegeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -80,6 +85,7 @@ class GrantAccountPrivilegeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterId
+     *
      * @return $this
      */
     public function setDBClusterId($dBClusterId)
@@ -92,6 +98,7 @@ class GrantAccountPrivilegeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +111,7 @@ class GrantAccountPrivilegeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +124,7 @@ class GrantAccountPrivilegeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBName
+     *
      * @return $this
      */
     public function setDBName($dBName)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddZone
+ *
  * @method string getProxyPattern()
  * @method string getZoneName()
  * @method string getResourceGroupId()
@@ -29,6 +30,7 @@ class AddZoneRequest extends RpcAcsRequest
 
     /**
      * @param string $proxyPattern
+     *
      * @return $this
      */
     public function setProxyPattern($proxyPattern)
@@ -41,6 +43,7 @@ class AddZoneRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneName
+     *
      * @return $this
      */
     public function setZoneName($zoneName)
@@ -53,6 +56,7 @@ class AddZoneRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -65,6 +69,7 @@ class AddZoneRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -77,6 +82,7 @@ class AddZoneRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

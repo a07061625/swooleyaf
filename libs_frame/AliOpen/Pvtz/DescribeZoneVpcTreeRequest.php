@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeZoneVpcTree
+ *
  * @method string getUserClientIp()
  * @method string getLang()
  */
@@ -26,6 +27,7 @@ class DescribeZoneVpcTreeRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -38,6 +40,7 @@ class DescribeZoneVpcTreeRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

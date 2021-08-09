@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of InsertInstance
+ *
  * @method string getaccess_key_id()
  * @method string getClusterType()
  * @method string getResourceOwnerId()
@@ -31,6 +32,7 @@ class InsertInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $access_key_id
+     *
      * @return $this
      */
     public function setaccess_key_id($access_key_id)
@@ -43,6 +45,7 @@ class InsertInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterType
+     *
      * @return $this
      */
     public function setClusterType($clusterType)
@@ -55,6 +58,7 @@ class InsertInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -67,6 +71,7 @@ class InsertInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $instanceName
+     *
      * @return $this
      */
     public function setInstanceName($instanceName)
@@ -79,6 +84,7 @@ class InsertInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -90,7 +96,6 @@ class InsertInstanceRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $value
      * @return $this
      */
     public function setTagInfos(array $value)
@@ -106,6 +111,7 @@ class InsertInstanceRequest extends RpcAcsRequest
 
     /**
      * @param string $network
+     *
      * @return $this
      */
     public function setNetwork($network)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeDBClusters
+ *
  * @method string getResourceOwnerId()
  * @method string getDBClusterDescription()
  * @method string getDBClusterStatus()
@@ -35,6 +36,7 @@ class DescribeDBClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +49,7 @@ class DescribeDBClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterDescription
+     *
      * @return $this
      */
     public function setDBClusterDescription($dBClusterDescription)
@@ -59,6 +62,7 @@ class DescribeDBClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterStatus
+     *
      * @return $this
      */
     public function setDBClusterStatus($dBClusterStatus)
@@ -71,6 +75,7 @@ class DescribeDBClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -83,6 +88,7 @@ class DescribeDBClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -94,7 +100,6 @@ class DescribeDBClustersRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -110,6 +115,7 @@ class DescribeDBClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -122,6 +128,7 @@ class DescribeDBClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -134,6 +141,7 @@ class DescribeDBClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -146,6 +154,7 @@ class DescribeDBClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $dBType
+     *
      * @return $this
      */
     public function setDBType($dBType)
@@ -158,6 +167,7 @@ class DescribeDBClustersRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterIds
+     *
      * @return $this
      */
     public function setDBClusterIds($dBClusterIds)

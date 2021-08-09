@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CloseProductAccount
+ *
  * @method string getProductCode()
  * @method string getProductAccessKey()
  * @method string getTargetUid()
@@ -28,6 +29,7 @@ class CloseProductAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $productCode
+     *
      * @return $this
      */
     public function setProductCode($productCode)
@@ -40,6 +42,7 @@ class CloseProductAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $productAccessKey
+     *
      * @return $this
      */
     public function setProductAccessKey($productAccessKey)
@@ -52,6 +55,7 @@ class CloseProductAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $targetUid
+     *
      * @return $this
      */
     public function setTargetUid($targetUid)
@@ -64,6 +68,7 @@ class CloseProductAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $targetArnRole
+     *
      * @return $this
      */
     public function setTargetArnRole($targetArnRole)

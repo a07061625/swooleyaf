@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeZones
+ *
  * @method string getQueryVpcId()
  * @method string getPageNumber()
  * @method string getResourceGroupId()
@@ -35,6 +36,7 @@ class DescribeZonesRequest extends RpcAcsRequest
 
     /**
      * @param string $queryVpcId
+     *
      * @return $this
      */
     public function setQueryVpcId($queryVpcId)
@@ -47,6 +49,7 @@ class DescribeZonesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -59,6 +62,7 @@ class DescribeZonesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceGroupId
+     *
      * @return $this
      */
     public function setResourceGroupId($resourceGroupId)
@@ -71,6 +75,7 @@ class DescribeZonesRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -83,6 +88,7 @@ class DescribeZonesRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -95,6 +101,7 @@ class DescribeZonesRequest extends RpcAcsRequest
 
     /**
      * @param string $keyword
+     *
      * @return $this
      */
     public function setKeyword($keyword)
@@ -107,6 +114,7 @@ class DescribeZonesRequest extends RpcAcsRequest
 
     /**
      * @param string $direction
+     *
      * @return $this
      */
     public function setDirection($direction)
@@ -119,6 +127,7 @@ class DescribeZonesRequest extends RpcAcsRequest
 
     /**
      * @param string $orderBy
+     *
      * @return $this
      */
     public function setOrderBy($orderBy)
@@ -131,6 +140,7 @@ class DescribeZonesRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -143,6 +153,7 @@ class DescribeZonesRequest extends RpcAcsRequest
 
     /**
      * @param string $searchMode
+     *
      * @return $this
      */
     public function setSearchMode($searchMode)
@@ -155,6 +166,7 @@ class DescribeZonesRequest extends RpcAcsRequest
 
     /**
      * @param string $queryRegionId
+     *
      * @return $this
      */
     public function setQueryRegionId($queryRegionId)

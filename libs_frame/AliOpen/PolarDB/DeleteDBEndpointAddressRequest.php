@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteDBEndpointAddress
+ *
  * @method string getResourceOwnerId()
  * @method string getDBEndpointId()
  * @method string getResourceOwnerAccount()
@@ -31,6 +32,7 @@ class DeleteDBEndpointAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -43,6 +45,7 @@ class DeleteDBEndpointAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $dBEndpointId
+     *
      * @return $this
      */
     public function setDBEndpointId($dBEndpointId)
@@ -55,6 +58,7 @@ class DeleteDBEndpointAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -67,6 +71,7 @@ class DeleteDBEndpointAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterId
+     *
      * @return $this
      */
     public function setDBClusterId($dBClusterId)
@@ -79,6 +84,7 @@ class DeleteDBEndpointAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -91,6 +97,7 @@ class DeleteDBEndpointAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -103,6 +110,7 @@ class DeleteDBEndpointAddressRequest extends RpcAcsRequest
 
     /**
      * @param string $netType
+     *
      * @return $this
      */
     public function setNetType($netType)

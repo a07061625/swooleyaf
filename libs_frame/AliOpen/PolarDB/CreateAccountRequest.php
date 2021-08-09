@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateAccount
+ *
  * @method string getResourceOwnerId()
  * @method string getAccountType()
  * @method string getAccountDescription()
@@ -35,6 +36,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -47,6 +49,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $accountType
+     *
      * @return $this
      */
     public function setAccountType($accountType)
@@ -59,6 +62,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $accountDescription
+     *
      * @return $this
      */
     public function setAccountDescription($accountDescription)
@@ -71,6 +75,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $accountPrivilege
+     *
      * @return $this
      */
     public function setAccountPrivilege($accountPrivilege)
@@ -83,6 +88,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $accountName
+     *
      * @return $this
      */
     public function setAccountName($accountName)
@@ -95,6 +101,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -107,6 +114,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterId
+     *
      * @return $this
      */
     public function setDBClusterId($dBClusterId)
@@ -119,6 +127,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -131,6 +140,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -143,6 +153,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $accountPassword
+     *
      * @return $this
      */
     public function setAccountPassword($accountPassword)
@@ -155,6 +166,7 @@ class CreateAccountRequest extends RpcAcsRequest
 
     /**
      * @param string $dBName
+     *
      * @return $this
      */
     public function setDBName($dBName)

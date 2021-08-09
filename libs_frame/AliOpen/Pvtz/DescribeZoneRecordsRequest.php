@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeZoneRecords
+ *
  * @method string getOrderBy()
  * @method string getPageNumber()
  * @method string getPageSize()
@@ -34,6 +35,7 @@ class DescribeZoneRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $orderBy
+     *
      * @return $this
      */
     public function setOrderBy($orderBy)
@@ -46,6 +48,7 @@ class DescribeZoneRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -58,6 +61,7 @@ class DescribeZoneRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -70,6 +74,7 @@ class DescribeZoneRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -82,6 +87,7 @@ class DescribeZoneRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -94,6 +100,7 @@ class DescribeZoneRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $searchMode
+     *
      * @return $this
      */
     public function setSearchMode($searchMode)
@@ -106,6 +113,7 @@ class DescribeZoneRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $tag
+     *
      * @return $this
      */
     public function setTag($tag)
@@ -118,6 +126,7 @@ class DescribeZoneRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -130,6 +139,7 @@ class DescribeZoneRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $keyword
+     *
      * @return $this
      */
     public function setKeyword($keyword)
@@ -142,6 +152,7 @@ class DescribeZoneRecordsRequest extends RpcAcsRequest
 
     /**
      * @param string $direction
+     *
      * @return $this
      */
     public function setDirection($direction)

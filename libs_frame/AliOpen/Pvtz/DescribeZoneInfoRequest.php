@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeZoneInfo
+ *
  * @method string getUserClientIp()
  * @method string getZoneId()
  * @method string getLang()
@@ -27,6 +28,7 @@ class DescribeZoneInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -39,6 +41,7 @@ class DescribeZoneInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -51,6 +54,7 @@ class DescribeZoneInfoRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

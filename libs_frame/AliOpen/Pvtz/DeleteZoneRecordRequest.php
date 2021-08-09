@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteZoneRecord
+ *
  * @method string getRecordId()
  * @method string getUserClientIp()
  * @method string getLang()
@@ -27,6 +28,7 @@ class DeleteZoneRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $recordId
+     *
      * @return $this
      */
     public function setRecordId($recordId)
@@ -39,6 +41,7 @@ class DeleteZoneRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -51,6 +54,7 @@ class DeleteZoneRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

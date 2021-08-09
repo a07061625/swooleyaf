@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyAutoRenewAttribute
+ *
  * @method string getResourceOwnerId()
  * @method string getDuration()
  * @method string getRenewalStatus()
@@ -32,6 +33,7 @@ class ModifyAutoRenewAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +46,7 @@ class ModifyAutoRenewAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $duration
+     *
      * @return $this
      */
     public function setDuration($duration)
@@ -56,6 +59,7 @@ class ModifyAutoRenewAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $renewalStatus
+     *
      * @return $this
      */
     public function setRenewalStatus($renewalStatus)
@@ -68,6 +72,7 @@ class ModifyAutoRenewAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -80,6 +85,7 @@ class ModifyAutoRenewAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -92,6 +98,7 @@ class ModifyAutoRenewAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -104,6 +111,7 @@ class ModifyAutoRenewAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $periodUnit
+     *
      * @return $this
      */
     public function setPeriodUnit($periodUnit)
@@ -116,6 +124,7 @@ class ModifyAutoRenewAttributeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterIds
+     *
      * @return $this
      */
     public function setDBClusterIds($dBClusterIds)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeBackups
+ *
  * @method string getResourceOwnerId()
  * @method string getStartTime()
  * @method string getPageNumber()
@@ -36,6 +37,7 @@ class DescribeBackupsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -48,6 +50,7 @@ class DescribeBackupsRequest extends RpcAcsRequest
 
     /**
      * @param string $startTime
+     *
      * @return $this
      */
     public function setStartTime($startTime)
@@ -60,6 +63,7 @@ class DescribeBackupsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageNumber
+     *
      * @return $this
      */
     public function setPageNumber($pageNumber)
@@ -72,6 +76,7 @@ class DescribeBackupsRequest extends RpcAcsRequest
 
     /**
      * @param string $pageSize
+     *
      * @return $this
      */
     public function setPageSize($pageSize)
@@ -84,6 +89,7 @@ class DescribeBackupsRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -96,6 +102,7 @@ class DescribeBackupsRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterId
+     *
      * @return $this
      */
     public function setDBClusterId($dBClusterId)
@@ -108,6 +115,7 @@ class DescribeBackupsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -120,6 +128,7 @@ class DescribeBackupsRequest extends RpcAcsRequest
 
     /**
      * @param string $backupId
+     *
      * @return $this
      */
     public function setBackupId($backupId)
@@ -132,6 +141,7 @@ class DescribeBackupsRequest extends RpcAcsRequest
 
     /**
      * @param string $endTime
+     *
      * @return $this
      */
     public function setEndTime($endTime)
@@ -144,6 +154,7 @@ class DescribeBackupsRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -156,6 +167,7 @@ class DescribeBackupsRequest extends RpcAcsRequest
 
     /**
      * @param string $backupStatus
+     *
      * @return $this
      */
     public function setBackupStatus($backupStatus)
@@ -168,6 +180,7 @@ class DescribeBackupsRequest extends RpcAcsRequest
 
     /**
      * @param string $backupMode
+     *
      * @return $this
      */
     public function setBackupMode($backupMode)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DeleteZone
+ *
  * @method string getUserClientIp()
  * @method string getZoneId()
  * @method string getLang()
@@ -27,6 +28,7 @@ class DeleteZoneRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -39,6 +41,7 @@ class DeleteZoneRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -51,6 +54,7 @@ class DeleteZoneRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

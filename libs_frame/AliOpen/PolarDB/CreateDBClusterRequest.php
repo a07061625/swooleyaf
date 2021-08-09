@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of CreateDBCluster
+ *
  * @method string getResourceOwnerId()
  * @method string getDBClusterDescription()
  * @method string getClientToken()
@@ -45,6 +46,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -57,6 +59,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterDescription
+     *
      * @return $this
      */
     public function setDBClusterDescription($dBClusterDescription)
@@ -69,6 +72,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -81,6 +85,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $clusterNetworkType
+     *
      * @return $this
      */
     public function setClusterNetworkType($clusterNetworkType)
@@ -93,6 +98,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $dBNodeClass
+     *
      * @return $this
      */
     public function setDBNodeClass($dBNodeClass)
@@ -105,6 +111,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $engine
+     *
      * @return $this
      */
     public function setEngine($engine)
@@ -117,6 +124,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $creationOption
+     *
      * @return $this
      */
     public function setCreationOption($creationOption)
@@ -129,6 +137,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $sourceResourceId
+     *
      * @return $this
      */
     public function setSourceResourceId($sourceResourceId)
@@ -141,6 +150,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $period
+     *
      * @return $this
      */
     public function setPeriod($period)
@@ -153,6 +163,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -165,6 +176,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -177,6 +189,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -189,6 +202,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $usedTime
+     *
      * @return $this
      */
     public function setUsedTime($usedTime)
@@ -201,6 +215,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $vSwitchId
+     *
      * @return $this
      */
     public function setVSwitchId($vSwitchId)
@@ -213,6 +228,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $autoRenew
+     *
      * @return $this
      */
     public function setAutoRenew($autoRenew)
@@ -225,6 +241,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $vPCId
+     *
      * @return $this
      */
     public function setVPCId($vPCId)
@@ -237,6 +254,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $dBType
+     *
      * @return $this
      */
     public function setDBType($dBType)
@@ -249,6 +267,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -261,6 +280,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $dBVersion
+     *
      * @return $this
      */
     public function setDBVersion($dBVersion)
@@ -273,6 +293,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $cloneDataPoint
+     *
      * @return $this
      */
     public function setCloneDataPoint($cloneDataPoint)
@@ -285,6 +306,7 @@ class CreateDBClusterRequest extends RpcAcsRequest
 
     /**
      * @param string $payType
+     *
      * @return $this
      */
     public function setPayType($payType)

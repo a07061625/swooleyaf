@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of RestartDBNode
+ *
  * @method string getResourceOwnerId()
  * @method string getDBNodeId()
  * @method string getResourceOwnerAccount()
@@ -29,6 +30,7 @@ class RestartDBNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -41,6 +43,7 @@ class RestartDBNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $dBNodeId
+     *
      * @return $this
      */
     public function setDBNodeId($dBNodeId)
@@ -53,6 +56,7 @@ class RestartDBNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -65,6 +69,7 @@ class RestartDBNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -77,6 +82,7 @@ class RestartDBNodeRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)

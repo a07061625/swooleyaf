@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ListTagResources
+ *
  * @method string getResourceOwnerId()
  * @method string getNextToken()
  * @method array getTags()
@@ -32,6 +33,7 @@ class ListTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +46,7 @@ class ListTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $nextToken
+     *
      * @return $this
      */
     public function setNextToken($nextToken)
@@ -55,7 +58,6 @@ class ListTagResourcesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $tag
      * @return $this
      */
     public function setTags(array $tag)
@@ -70,7 +72,6 @@ class ListTagResourcesRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $resourceId
      * @return $this
      */
     public function setResourceIds(array $resourceId)
@@ -85,6 +86,7 @@ class ListTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -97,6 +99,7 @@ class ListTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -109,6 +112,7 @@ class ListTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -121,6 +125,7 @@ class ListTagResourcesRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceType
+     *
      * @return $this
      */
     public function setResourceType($resourceType)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetUserGroup
+ *
  * @method string getResourceOwnerId()
  */
 class GetUserGroupRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class GetUserGroupRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)

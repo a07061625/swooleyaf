@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of BindZoneVpc
+ *
  * @method string getUserClientIp()
  * @method string getZoneId()
  * @method string getLang()
@@ -28,6 +29,7 @@ class BindZoneVpcRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -40,6 +42,7 @@ class BindZoneVpcRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -52,6 +55,7 @@ class BindZoneVpcRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -63,7 +67,6 @@ class BindZoneVpcRequest extends RpcAcsRequest
     }
 
     /**
-     * @param array $vpcs
      * @return $this
      */
     public function setVpcss(array $vpcs)

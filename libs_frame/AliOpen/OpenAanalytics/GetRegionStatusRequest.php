@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of GetRegionStatus
+ *
  * @method string getTargetUid()
  */
 class GetRegionStatusRequest extends RpcAcsRequest
@@ -25,6 +26,7 @@ class GetRegionStatusRequest extends RpcAcsRequest
 
     /**
      * @param string $targetUid
+     *
      * @return $this
      */
     public function setTargetUid($targetUid)

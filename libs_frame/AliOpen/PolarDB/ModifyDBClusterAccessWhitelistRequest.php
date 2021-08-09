@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBClusterAccessWhitelist
+ *
  * @method string getResourceOwnerId()
  * @method string getSecurityIps()
  * @method string getDBClusterIPArrayAttribute()
@@ -32,6 +33,7 @@ class ModifyDBClusterAccessWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +46,7 @@ class ModifyDBClusterAccessWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $securityIps
+     *
      * @return $this
      */
     public function setSecurityIps($securityIps)
@@ -56,6 +59,7 @@ class ModifyDBClusterAccessWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterIPArrayAttribute
+     *
      * @return $this
      */
     public function setDBClusterIPArrayAttribute($dBClusterIPArrayAttribute)
@@ -68,6 +72,7 @@ class ModifyDBClusterAccessWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -80,6 +85,7 @@ class ModifyDBClusterAccessWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterId
+     *
      * @return $this
      */
     public function setDBClusterId($dBClusterId)
@@ -92,6 +98,7 @@ class ModifyDBClusterAccessWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +111,7 @@ class ModifyDBClusterAccessWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +124,7 @@ class ModifyDBClusterAccessWhitelistRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterIPArrayName
+     *
      * @return $this
      */
     public function setDBClusterIPArrayName($dBClusterIPArrayName)

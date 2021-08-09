@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of ModifyDBNodeClass
+ *
  * @method string getResourceOwnerId()
  * @method string getClientToken()
  * @method string getDBNodeTargetClass()
@@ -32,6 +33,7 @@ class ModifyDBNodeClassRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -44,6 +46,7 @@ class ModifyDBNodeClassRequest extends RpcAcsRequest
 
     /**
      * @param string $clientToken
+     *
      * @return $this
      */
     public function setClientToken($clientToken)
@@ -56,6 +59,7 @@ class ModifyDBNodeClassRequest extends RpcAcsRequest
 
     /**
      * @param string $dBNodeTargetClass
+     *
      * @return $this
      */
     public function setDBNodeTargetClass($dBNodeTargetClass)
@@ -68,6 +72,7 @@ class ModifyDBNodeClassRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerAccount
+     *
      * @return $this
      */
     public function setResourceOwnerAccount($resourceOwnerAccount)
@@ -80,6 +85,7 @@ class ModifyDBNodeClassRequest extends RpcAcsRequest
 
     /**
      * @param string $dBClusterId
+     *
      * @return $this
      */
     public function setDBClusterId($dBClusterId)
@@ -92,6 +98,7 @@ class ModifyDBNodeClassRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerAccount
+     *
      * @return $this
      */
     public function setOwnerAccount($ownerAccount)
@@ -104,6 +111,7 @@ class ModifyDBNodeClassRequest extends RpcAcsRequest
 
     /**
      * @param string $ownerId
+     *
      * @return $this
      */
     public function setOwnerId($ownerId)
@@ -116,6 +124,7 @@ class ModifyDBNodeClassRequest extends RpcAcsRequest
 
     /**
      * @param string $modifyType
+     *
      * @return $this
      */
     public function setModifyType($modifyType)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of AddZoneRecord
+ *
  * @method string getRr()
  * @method string getType()
  * @method string getPriority()
@@ -32,6 +33,7 @@ class AddZoneRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $rr
+     *
      * @return $this
      */
     public function setRr($rr)
@@ -44,6 +46,7 @@ class AddZoneRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType($type)
@@ -56,6 +59,7 @@ class AddZoneRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $priority
+     *
      * @return $this
      */
     public function setPriority($priority)
@@ -68,6 +72,7 @@ class AddZoneRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $ttl
+     *
      * @return $this
      */
     public function setTtl($ttl)
@@ -80,6 +85,7 @@ class AddZoneRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -92,6 +98,7 @@ class AddZoneRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -104,6 +111,7 @@ class AddZoneRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)
@@ -116,6 +124,7 @@ class AddZoneRecordRequest extends RpcAcsRequest
 
     /**
      * @param string $value
+     *
      * @return $this
      */
     public function setValue($value)

@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeRequestGraph
+ *
  * @method string getStartTimestamp()
  * @method string getEndTimestamp()
  * @method string getVpcId()
@@ -30,6 +31,7 @@ class DescribeRequestGraphRequest extends RpcAcsRequest
 
     /**
      * @param string $startTimestamp
+     *
      * @return $this
      */
     public function setStartTimestamp($startTimestamp)
@@ -42,6 +44,7 @@ class DescribeRequestGraphRequest extends RpcAcsRequest
 
     /**
      * @param string $endTimestamp
+     *
      * @return $this
      */
     public function setEndTimestamp($endTimestamp)
@@ -54,6 +57,7 @@ class DescribeRequestGraphRequest extends RpcAcsRequest
 
     /**
      * @param string $vpcId
+     *
      * @return $this
      */
     public function setVpcId($vpcId)
@@ -66,6 +70,7 @@ class DescribeRequestGraphRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -78,6 +83,7 @@ class DescribeRequestGraphRequest extends RpcAcsRequest
 
     /**
      * @param string $zoneId
+     *
      * @return $this
      */
     public function setZoneId($zoneId)
@@ -90,6 +96,7 @@ class DescribeRequestGraphRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

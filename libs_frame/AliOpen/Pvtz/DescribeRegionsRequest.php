@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of DescribeRegions
+ *
  * @method string getAuthorizedUserId()
  * @method string getUserClientIp()
  * @method string getAcceptLanguage()
@@ -28,6 +29,7 @@ class DescribeRegionsRequest extends RpcAcsRequest
 
     /**
      * @param string $authorizedUserId
+     *
      * @return $this
      */
     public function setAuthorizedUserId($authorizedUserId)
@@ -40,6 +42,7 @@ class DescribeRegionsRequest extends RpcAcsRequest
 
     /**
      * @param string $userClientIp
+     *
      * @return $this
      */
     public function setUserClientIp($userClientIp)
@@ -52,6 +55,7 @@ class DescribeRegionsRequest extends RpcAcsRequest
 
     /**
      * @param string $acceptLanguage
+     *
      * @return $this
      */
     public function setAcceptLanguage($acceptLanguage)
@@ -64,6 +68,7 @@ class DescribeRegionsRequest extends RpcAcsRequest
 
     /**
      * @param string $lang
+     *
      * @return $this
      */
     public function setLang($lang)

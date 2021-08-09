@@ -6,6 +6,7 @@ use AliOpen\Core\RpcAcsRequest;
 
 /**
  * Request of SubmitPrecisionTask
+ *
  * @method string getResourceOwnerId()
  * @method string getJsonStr()
  */
@@ -26,6 +27,7 @@ class SubmitPrecisionTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $resourceOwnerId
+     *
      * @return $this
      */
     public function setResourceOwnerId($resourceOwnerId)
@@ -38,6 +40,7 @@ class SubmitPrecisionTaskRequest extends RpcAcsRequest
 
     /**
      * @param string $jsonStr
+     *
      * @return $this
      */
     public function setJsonStr($jsonStr)
