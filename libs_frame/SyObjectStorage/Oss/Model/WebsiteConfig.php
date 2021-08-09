@@ -1,21 +1,28 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 use SyObjectStorage\Oss\Core\OssException;
 
 /**
  * Class WebsiteConfig
+ *
  * @package SyObjectStorage\Oss\Model
- * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/PutBucketWebsite.html
+ *
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/bucket/PutBucketWebsite.html
  */
 class WebsiteConfig implements XmlConfig
 {
+    private $indexDocument = '';
+    private $errorDocument = '';
+
     /**
      * WebsiteConfig constructor.
-     * @param  string $indexDocument
-     * @param  string $errorDocument
+     *
+     * @param string $indexDocument
+     * @param string $errorDocument
      */
-    public function __construct($indexDocument = "", $errorDocument = "")
+    public function __construct($indexDocument = '', $errorDocument = '')
     {
         $this->indexDocument = $indexDocument;
         $this->errorDocument = $errorDocument;
@@ -23,16 +30,15 @@ class WebsiteConfig implements XmlConfig
 
     /**
      * @param string $strXml
-     * @return null
      */
     public function parseFromXml($strXml)
     {
         $xml = simplexml_load_string($strXml);
-        if (isset($xml->IndexDocument) && isset($xml->IndexDocument->Suffix)) {
-            $this->indexDocument = strval($xml->IndexDocument->Suffix);
+        if (isset($xml->IndexDocument, $xml->IndexDocument->Suffix)) {
+            $this->indexDocument = (string)($xml->IndexDocument->Suffix);
         }
-        if (isset($xml->ErrorDocument) && isset($xml->ErrorDocument->Key)) {
-            $this->errorDocument = strval($xml->ErrorDocument->Key);
+        if (isset($xml->ErrorDocument, $xml->ErrorDocument->Key)) {
+            $this->errorDocument = (string)($xml->ErrorDocument->Key);
         }
     }
 
@@ -40,6 +46,7 @@ class WebsiteConfig implements XmlConfig
      * Serialize the WebsiteConfig object into xml string.
      *
      * @return string
+     *
      * @throws OssException
      */
     public function serializeToXml()
@@ -49,6 +56,7 @@ class WebsiteConfig implements XmlConfig
         $error_document_part = $xml->addChild('ErrorDocument');
         $index_document_part->addChild('Suffix', $this->indexDocument);
         $error_document_part->addChild('Key', $this->errorDocument);
+
         return $xml->asXML();
     }
 
@@ -67,7 +75,4 @@ class WebsiteConfig implements XmlConfig
     {
         return $this->errorDocument;
     }
-
-    private $indexDocument = "";
-    private $errorDocument = "";
 }

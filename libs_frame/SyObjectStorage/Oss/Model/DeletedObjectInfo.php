@@ -1,12 +1,19 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class DeletedObjectInfo
+ *
  * @package SyObjectStorage\Oss\Model
  */
 class DeletedObjectInfo
 {
+    private $key = '';
+    private $versionId = '';
+    private $deleteMarker = '';
+    private $deleteMarkerVersionId = '';
+
     /**
      * DeletedObjectInfo constructor.
      *
@@ -38,7 +45,7 @@ class DeletedObjectInfo
     {
         return $this->versionId;
     }
-    
+
     /**
      * @return string
      */
@@ -54,9 +61,4 @@ class DeletedObjectInfo
     {
         return $this->deleteMarkerVersionId;
     }
-
-    private $key = "";
-    private $versionId = "";
-    private $deleteMarker = "";
-    private $deleteMarkerVersionId = "";
 }

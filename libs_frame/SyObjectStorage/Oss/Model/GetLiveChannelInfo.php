@@ -1,12 +1,21 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class GetLiveChannelInfo
+ *
  * @package SyObjectStorage\Oss\Model
  */
 class GetLiveChannelInfo implements XmlConfig
 {
+    private $description;
+    private $status;
+    private $type;
+    private $fragDuration;
+    private $fragCount;
+    private $playlistName;
+
     public function getDescription()
     {
         return $this->description;
@@ -21,17 +30,17 @@ class GetLiveChannelInfo implements XmlConfig
     {
         return $this->type;
     }
-  
+
     public function getFragDuration()
     {
         return $this->fragDuration;
     }
-   
+
     public function getFragCount()
     {
         return $this->fragCount;
     }
-   
+
     public function getPlayListName()
     {
         return $this->playlistName;
@@ -41,28 +50,21 @@ class GetLiveChannelInfo implements XmlConfig
     {
         $xml = simplexml_load_string($strXml);
 
-        $this->description = strval($xml->Description);
-        $this->status = strval($xml->Status);
+        $this->description = (string)($xml->Description);
+        $this->status = (string)($xml->Status);
 
         if (isset($xml->Target)) {
             foreach ($xml->Target as $target) {
-            $this->type = strval($target->Type);
-            $this->fragDuration = strval($target->FragDuration);
-            $this->fragCount = strval($target->FragCount);
-            $this->playlistName = strval($target->PlaylistName);
-           }
+                $this->type = (string)($target->Type);
+                $this->fragDuration = (string)($target->FragDuration);
+                $this->fragCount = (string)($target->FragCount);
+                $this->playlistName = (string)($target->PlaylistName);
+            }
         }
     }
 
     public function serializeToXml()
     {
-        throw new OssException("Not implemented.");
+        throw new OssException('Not implemented.');
     }
-    
-    private $description;
-    private $status;
-    private $type;
-    private $fragDuration;
-    private $fragCount;
-    private $playlistName;
 }

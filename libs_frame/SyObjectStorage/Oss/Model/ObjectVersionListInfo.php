@@ -1,4 +1,5 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
@@ -10,6 +11,19 @@ namespace SyObjectStorage\Oss\Model;
  */
 class ObjectVersionListInfo
 {
+    private $bucketName = '';
+    private $prefix = '';
+    private $keyMarker = '';
+    private $nextKeyMarker = '';
+    private $versionIdmarker = '';
+    private $nextVersionIdMarker = '';
+    private $maxKeys = 0;
+    private $delimiter = '';
+    private $isTruncated;
+    private $objectVersionList = [];
+    private $deleteMarkerList = [];
+    private $prefixList = [];
+
     /**
      * ObjectVersionListInfo constructor.
      *
@@ -21,14 +35,9 @@ class ObjectVersionListInfo
      * @param string $nextVersionIdMarker
      * @param string $maxKeys
      * @param string $delimiter
-     * @param null $isTruncated
-     * @param array $objectversionList
-     * @param array $deleteMarkerList
-     * @param array $prefixList
+     * @param null   $isTruncated
      */
-    public function __construct($bucketName, $prefix, $keyMarker, $nextKeyMarker, $versionIdMarker, $nextVersionIdMarker
-        , $maxKeys, $delimiter, $isTruncated
-        , array $objectversionList, array $deleteMarkerList, array $prefixList)
+    public function __construct($bucketName, $prefix, $keyMarker, $nextKeyMarker, $versionIdMarker, $nextVersionIdMarker, $maxKeys, $delimiter, $isTruncated, array $objectversionList, array $deleteMarkerList, array $prefixList)
     {
         $this->bucketName = $bucketName;
         $this->prefix = $prefix;
@@ -145,17 +154,4 @@ class ObjectVersionListInfo
     {
         return $this->prefixList;
     }
-
-    private $bucketName = "";
-    private $prefix = "";
-    private $keyMarker = "";
-    private $nextKeyMarker = "";
-    private $versionIdmarker = "";
-    private $nextVersionIdMarker = "";
-    private $maxKeys = 0;
-    private $delimiter = "";
-    private $isTruncated = null;
-    private $objectVersionList = array();
-    private $deleteMarkerList = array();
-    private $prefixList = array();
 }

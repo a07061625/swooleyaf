@@ -1,8 +1,10 @@
 <?php
+
 namespace SyObjectStorage\Oss\Result;
 
 /**
  * Class DeleteObjectsResult
+ *
  * @package SyObjectStorage\Oss\Result
  */
 class DeleteObjectsResult extends Result

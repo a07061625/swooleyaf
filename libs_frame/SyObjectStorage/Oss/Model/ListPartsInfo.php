@@ -1,23 +1,33 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class ListPartsInfo
+ *
  * @package SyObjectStorage\Oss\Model
- * @link http://help.aliyun.com/document_detail/oss/api-reference/multipart-upload/ListParts.html
+ *
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/multipart-upload/ListParts.html
  */
 class ListPartsInfo
 {
+    private $bucket = '';
+    private $key = '';
+    private $uploadId = '';
+    private $nextPartNumberMarker = 0;
+    private $maxParts = 0;
+    private $isTruncated = '';
+    private $listPart = [];
 
     /**
      * ListPartsInfo constructor.
+     *
      * @param string $bucket
      * @param string $key
      * @param string $uploadId
-     * @param int $nextPartNumberMarker
-     * @param int $maxParts
+     * @param int    $nextPartNumberMarker
+     * @param int    $maxParts
      * @param string $isTruncated
-     * @param array $listPart
      */
     public function __construct($bucket, $key, $uploadId, $nextPartNumberMarker, $maxParts, $isTruncated, array $listPart)
     {
@@ -85,12 +95,4 @@ class ListPartsInfo
     {
         return $this->listPart;
     }
-
-    private $bucket = "";
-    private $key = "";
-    private $uploadId = "";
-    private $nextPartNumberMarker = 0;
-    private $maxParts = 0;
-    private $isTruncated = "";
-    private $listPart = array();
 }

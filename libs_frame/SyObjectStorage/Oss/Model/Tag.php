@@ -1,12 +1,17 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class Tag
+ *
  * @package SyObjectStorage\Oss\Model
  */
 class Tag
 {
+    private $key = '';
+    private $value = '';
+
     /**
      * Tag constructor.
      *
@@ -34,7 +39,4 @@ class Tag
     {
         return $this->value;
     }
-
-    private $key = "";
-    private $value = "";
 }

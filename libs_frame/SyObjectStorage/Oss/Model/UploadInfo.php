@@ -1,4 +1,5 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
@@ -10,6 +11,10 @@ namespace SyObjectStorage\Oss\Model;
  */
 class UploadInfo
 {
+    private $key = '';
+    private $uploadId = '';
+    private $initiated = '';
+
     /**
      * UploadInfo constructor.
      *
@@ -47,8 +52,4 @@ class UploadInfo
     {
         return $this->initiated;
     }
-
-    private $key = "";
-    private $uploadId = "";
-    private $initiated = "";
 }

@@ -1,14 +1,19 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
- *
  * Class DeleteMarkerInfo
  *
  * @package SyObjectStorage\Oss\Model
  */
 class DeleteMarkerInfo
 {
+    private $key = '';
+    private $versionId = '';
+    private $lastModified = '';
+    private $isLatest = '';
+
     /**
      * DeleteMarkerInfo constructor.
      *
@@ -56,9 +61,4 @@ class DeleteMarkerInfo
     {
         return $this->isLatest;
     }
-
-    private $key = "";
-    private $versionId = "";
-    private $lastModified = "";
-    private $isLatest = "";
 }

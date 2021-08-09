@@ -1,13 +1,22 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class LiveChannelConfig
+ *
  * @package SyObjectStorage\Oss\Model
  */
 class LiveChannelConfig implements XmlConfig
 {
-    public function __construct($option = array())
+    private $description;
+    private $status = 'enabled';
+    private $type;
+    private $fragDuration = 5;
+    private $fragCount = 3;
+    private $playListName = 'playlist.m3u8';
+
+    public function __construct($option = [])
     {
         if (isset($option['description'])) {
             $this->description = $option['description'];
@@ -27,6 +36,11 @@ class LiveChannelConfig implements XmlConfig
         if (isset($option['playListName'])) {
             $this->playListName = $option['playListName'];
         }
+    }
+
+    public function __toString()
+    {
+        return $this->serializeToXml();
     }
 
     public function getDescription()
@@ -62,18 +76,18 @@ class LiveChannelConfig implements XmlConfig
     public function parseFromXml($strXml)
     {
         $xml = simplexml_load_string($strXml);
-        $this->description = strval($xml->Description);
-        $this->status = strval($xml->Status);
+        $this->description = (string)($xml->Description);
+        $this->status = (string)($xml->Status);
         $target = $xml->Target;
-        $this->type = strval($target->Type);
-        $this->fragDuration = intval($target->FragDuration);
-        $this->fragCount = intval($target->FragCount);
-        $this->playListName = strval($target->PlayListName);
+        $this->type = (string)($target->Type);
+        $this->fragDuration = (int)($target->FragDuration);
+        $this->fragCount = (int)($target->FragCount);
+        $this->playListName = (string)($target->PlayListName);
     }
 
     public function serializeToXml()
     {
-        $strXml = <<<EOF
+        $strXml = <<<'EOF'
 <?xml version="1.0" encoding="utf-8"?>
 <LiveChannelConfiguration>
 </LiveChannelConfiguration>
@@ -104,16 +118,4 @@ EOF;
 
         return $xml->asXML();
     }
-
-    public function __toString()
-    {
-        return $this->serializeToXml();
-    }
-    
-    private $description;
-    private $status = "enabled";
-    private $type;
-    private $fragDuration = 5;
-    private $fragCount = 3;
-    private $playListName = "playlist.m3u8";
 }

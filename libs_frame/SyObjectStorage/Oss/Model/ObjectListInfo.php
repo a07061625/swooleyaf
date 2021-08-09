@@ -1,4 +1,5 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
@@ -7,10 +8,21 @@ namespace SyObjectStorage\Oss\Model;
  * The class of return value of ListObjects
  *
  * @package SyObjectStorage\Oss\Model
- * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/GetBucket.html
+ *
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/bucket/GetBucket.html
  */
 class ObjectListInfo
 {
+    private $bucketName = '';
+    private $prefix = '';
+    private $marker = '';
+    private $nextMarker = '';
+    private $maxKeys = 0;
+    private $delimiter = '';
+    private $isTruncated;
+    private $objectList = [];
+    private $prefixList = [];
+
     /**
      * ObjectListInfo constructor.
      *
@@ -20,9 +32,7 @@ class ObjectListInfo
      * @param string $nextMarker
      * @param string $maxKeys
      * @param string $delimiter
-     * @param null $isTruncated
-     * @param array $objectList
-     * @param array $prefixList
+     * @param null   $isTruncated
      */
     public function __construct($bucketName, $prefix, $marker, $nextMarker, $maxKeys, $delimiter, $isTruncated, array $objectList, array $prefixList)
     {
@@ -112,14 +122,4 @@ class ObjectListInfo
     {
         return $this->nextMarker;
     }
-
-    private $bucketName = "";
-    private $prefix = "";
-    private $marker = "";
-    private $nextMarker = "";
-    private $maxKeys = 0;
-    private $delimiter = "";
-    private $isTruncated = null;
-    private $objectList = array();
-    private $prefixList = array();
 }

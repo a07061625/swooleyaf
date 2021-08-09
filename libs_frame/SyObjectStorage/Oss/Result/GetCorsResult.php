@@ -1,4 +1,5 @@
 <?php
+
 namespace SyObjectStorage\Oss\Result;
 
 use SyObjectStorage\Oss\Model\CorsConfig;
@@ -7,6 +8,7 @@ class GetCorsResult extends Result
 {
     /**
      * @return CorsConfig
+     *
      * @throws \SyObjectStorage\Oss\Core\OssException
      */
     protected function parseDataFromResponse()
@@ -14,6 +16,7 @@ class GetCorsResult extends Result
         $content = $this->rawResponse->body;
         $config = new CorsConfig();
         $config->parseFromXml($content);
+
         return $config;
     }
 
@@ -25,9 +28,10 @@ class GetCorsResult extends Result
     protected function isResponseOk()
     {
         $status = $this->rawResponse->status;
-        if ((int)(intval($status) / 100) == 2 || (int)(intval($status)) === 404) {
+        if (2 == (int)((int)$status / 100) || 404 === (int)((int)$status)) {
             return true;
         }
+
         return false;
     }
 }

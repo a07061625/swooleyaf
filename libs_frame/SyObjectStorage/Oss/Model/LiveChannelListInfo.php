@@ -1,4 +1,5 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
@@ -7,10 +8,19 @@ namespace SyObjectStorage\Oss\Model;
  * The data returned by ListBucketLiveChannels
  *
  * @package SyObjectStorage\Oss\Model
- * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/GetBucket.html
+ *
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/bucket/GetBucket.html
  */
 class LiveChannelListInfo implements XmlConfig
 {
+    private $bucket = '';
+    private $prefix = '';
+    private $marker = '';
+    private $nextMarker = '';
+    private $maxKeys = 100;
+    private $isTruncated = 'false';
+    private $channelList = [];
+
     /**
      * @return string
      */
@@ -76,11 +86,11 @@ class LiveChannelListInfo implements XmlConfig
     {
         $xml = simplexml_load_string($strXml);
 
-        $this->prefix = strval($xml->Prefix);
-        $this->marker = strval($xml->Marker);
-        $this->maxKeys = intval($xml->MaxKeys);
-        $this->isTruncated = (strval($xml->IsTruncated) == 'true');
-        $this->nextMarker = strval($xml->NextMarker);
+        $this->prefix = (string)($xml->Prefix);
+        $this->marker = (string)($xml->Marker);
+        $this->maxKeys = (int)($xml->MaxKeys);
+        $this->isTruncated = ('true' == (string)($xml->IsTruncated));
+        $this->nextMarker = (string)($xml->NextMarker);
 
         if (isset($xml->LiveChannel)) {
             foreach ($xml->LiveChannel as $chan) {
@@ -93,14 +103,6 @@ class LiveChannelListInfo implements XmlConfig
 
     public function serializeToXml()
     {
-        throw new OssException("Not implemented.");
+        throw new OssException('Not implemented.');
     }
-    
-    private $bucket = '';
-    private $prefix = '';
-    private $marker = '';
-    private $nextMarker = '';
-    private $maxKeys = 100;
-    private $isTruncated = 'false';
-    private $channelList = array();
 }

@@ -1,14 +1,40 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class LifecycleRule
+ *
  * @package SyObjectStorage\Oss\Model
  *
- * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/PutBucketLifecycle.html
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/bucket/PutBucketLifecycle.html
  */
 class LifecycleRule
 {
+    const LIFECYCLE_STATUS_ENABLED = 'Enabled';
+    const LIFECYCLE_STATUS_DISABLED = 'Disabled';
+
+    private $id;
+    private $prefix;
+    private $status;
+    private $actions = [];
+
+    /**
+     * LifecycleRule constructor.
+     *
+     * @param string            $id      rule Id
+     * @param string            $prefix  File prefix
+     * @param string            $status  Rule status, which has the following valid values: [self::LIFECYCLE_STATUS_ENABLED, self::LIFECYCLE_STATUS_DISABLED]
+     * @param LifecycleAction[] $actions
+     */
+    public function __construct($id, $prefix, $status, $actions)
+    {
+        $this->id = $id;
+        $this->prefix = $prefix;
+        $this->status = $status;
+        $this->actions = $actions;
+    }
+
     /**
      * Get Id
      *
@@ -68,7 +94,6 @@ class LifecycleRule
     }
 
     /**
-     *
      * @return LifecycleAction[]
      */
     public function getActions()
@@ -84,23 +109,6 @@ class LifecycleRule
         $this->actions = $actions;
     }
 
-
-    /**
-     * LifecycleRule constructor.
-     *
-     * @param string $id rule Id
-     * @param string $prefix File prefix
-     * @param string $status Rule status, which has the following valid values: [self::LIFECYCLE_STATUS_ENABLED, self::LIFECYCLE_STATUS_DISABLED]
-     * @param LifecycleAction[] $actions
-     */
-    public function __construct($id, $prefix, $status, $actions)
-    {
-        $this->id = $id;
-        $this->prefix = $prefix;
-        $this->status = $status;
-        $this->actions = $actions;
-    }
-
     /**
      * @param \SimpleXMLElement $xmlRule
      */
@@ -113,12 +121,4 @@ class LifecycleRule
             $action->appendToXml($xmlRule);
         }
     }
-
-    private $id;
-    private $prefix;
-    private $status;
-    private $actions = array();
-
-    const LIFECYCLE_STATUS_ENABLED = 'Enabled';
-    const LIFECYCLE_STATUS_DISABLED = 'Disabled';
 }

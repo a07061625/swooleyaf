@@ -1,4 +1,5 @@
 <?php
+
 namespace SyObjectStorage\Oss\Core;
 
 /**
@@ -11,11 +12,11 @@ namespace SyObjectStorage\Oss\Core;
  */
 class OssException extends \Exception
 {
-    private $details = array();
+    private $details = [];
 
-    function __construct($details)
+    public function __construct($details)
     {
-        if (is_array($details)) {
+        if (\is_array($details)) {
             $message = $details['code'] . ': ' . $details['message']
                      . ' RequestId: ' . $details['request-id'];
             parent::__construct($message);

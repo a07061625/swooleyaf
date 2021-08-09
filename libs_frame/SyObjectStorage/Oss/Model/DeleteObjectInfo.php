@@ -1,12 +1,17 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class DeleteObjectInfo
+ *
  * @package SyObjectStorage\Oss\Model
  */
 class DeleteObjectInfo
 {
+    private $key = '';
+    private $versionId = '';
+
     /**
      * DeleteObjectInfo constructor.
      *
@@ -34,7 +39,4 @@ class DeleteObjectInfo
     {
         return $this->versionId;
     }
-    
-    private $key = "";
-    private $versionId = "";
 }

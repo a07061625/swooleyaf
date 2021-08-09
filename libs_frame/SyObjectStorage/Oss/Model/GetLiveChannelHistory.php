@@ -1,14 +1,18 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 use SyObjectStorage\Oss\Core\OssException;
 
 /**
  * Class GetLiveChannelHistory
+ *
  * @package SyObjectStorage\Oss\Model
  */
 class GetLiveChannelHistory implements XmlConfig
 {
+    private $liveRecordList = [];
+
     public function getLiveRecordList()
     {
         return $this->liveRecordList;
@@ -29,8 +33,6 @@ class GetLiveChannelHistory implements XmlConfig
 
     public function serializeToXml()
     {
-        throw new OssException("Not implemented.");
+        throw new OssException('Not implemented.');
     }
-
-    private $liveRecordList = [];
 }

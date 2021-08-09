@@ -1,15 +1,23 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class LifecycleAction
+ *
  * @package SyObjectStorage\Oss\Model
- * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/PutBucketLifecycle.html
+ *
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/bucket/PutBucketLifecycle.html
  */
 class LifecycleAction
 {
+    private $action;
+    private $timeSpec;
+    private $timeValue;
+
     /**
      * LifecycleAction constructor.
+     *
      * @param string $action
      * @param string $timeSpec
      * @param string $timeValue
@@ -79,9 +87,4 @@ class LifecycleAction
         $xmlAction = $xmlRule->addChild($this->action);
         $xmlAction->addChild($this->timeSpec, $this->timeValue);
     }
-
-    private $action;
-    private $timeSpec;
-    private $timeValue;
-
 }

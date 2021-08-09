@@ -1,10 +1,13 @@
 <?php
+
 namespace SyObjectStorage\Oss\Result;
 
 /**
  * Class HeaderResult
+ *
  * @package SyObjectStorage\Oss\Result
- * @link https://docs.aliyun.com/?spm=5176.383663.13.7.HgUIqL#/pub/oss/api-reference/object&GetObjectMeta
+ *
+ * @see https://docs.aliyun.com/?spm=5176.383663.13.7.HgUIqL#/pub/oss/api-reference/object&GetObjectMeta
  */
 class HeaderResult extends Result
 {
@@ -15,6 +18,6 @@ class HeaderResult extends Result
      */
     protected function parseDataFromResponse()
     {
-        return empty($this->rawResponse->header) ? array() : $this->rawResponse->header;
+        return empty($this->rawResponse->header) ? [] : $this->rawResponse->header;
     }
 }

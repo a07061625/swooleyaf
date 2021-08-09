@@ -1,4 +1,5 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 use SyObjectStorage\Oss\Core\OssException;
@@ -7,10 +8,13 @@ use SyObjectStorage\Oss\Core\OssException;
  * Class StorageCapacityConfig
  *
  * @package SyObjectStorage\Oss\Model
- * @link http://docs.alibaba-inc.com/pages/viewpage.action?pageId=271614763
+ *
+ * @see http://docs.alibaba-inc.com/pages/viewpage.action?pageId=271614763
  */
 class StorageCapacityConfig implements XmlConfig
 {
+    private $storageCapacity = 0;
+
     /**
      * StorageCapacityConfig constructor.
      *
@@ -22,11 +26,23 @@ class StorageCapacityConfig implements XmlConfig
     }
 
     /**
+     * To string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->serializeToXml();
+    }
+
+    /**
      * Not implemented
+     *
+     * @param mixed $strXml
      */
     public function parseFromXml($strXml)
     {
-        throw new OssException("Not implemented.");
+        throw new OssException('Not implemented.');
     }
 
     /**
@@ -37,24 +53,15 @@ class StorageCapacityConfig implements XmlConfig
     public function serializeToXml()
     {
         $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><BucketUserQos></BucketUserQos>');
-        $xml->addChild('StorageCapacity', strval($this->storageCapacity));
-        return $xml->asXML();
-    }
+        $xml->addChild('StorageCapacity', (string)($this->storageCapacity));
 
-    /**
-     * To string
-     *
-     * @return string
-     */
-    function __toString()
-    {
-        return $this->serializeToXml();
+        return $xml->asXML();
     }
 
     /**
      * Set storage capacity
      *
-     * @param int $storageCapacity            
+     * @param int $storageCapacity
      */
     public function setStorageCapacity($storageCapacity)
     {
@@ -63,13 +70,11 @@ class StorageCapacityConfig implements XmlConfig
 
     /**
      * Get storage capacity
-     * 
+     *
      * @return int
      */
     public function getStorageCapacity()
     {
         return $this->storageCapacity;
     }
-
-    private $storageCapacity = 0;
 }

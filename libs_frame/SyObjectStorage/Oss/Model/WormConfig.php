@@ -1,35 +1,45 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 use SyObjectStorage\Oss\Core\OssException;
 
 /**
  * Class WormConfig
- * @package SyObjectStorage\Oss\Model
  *
+ * @package SyObjectStorage\Oss\Model
  */
 class WormConfig implements XmlConfig
 {
+    private $wormId = '';
+    private $state = '';
+    private $creationDate = '';
+    private $day = 0;
+
+    public function __toString()
+    {
+        return $this->serializeToXml();
+    }
+
     /**
      * Parse WormConfig from the xml.
      *
      * @param string $strXml
-     * @return null
      */
     public function parseFromXml($strXml)
     {
         $xml = simplexml_load_string($strXml);
         if (isset($xml->WormId)) {
-            $this->wormId = strval($xml->WormId);
+            $this->wormId = (string)($xml->WormId);
         }
         if (isset($xml->State)) {
-            $this->state = strval($xml->State);
+            $this->state = (string)($xml->State);
         }
         if (isset($xml->RetentionPeriodInDays)) {
-            $this->day = intval($xml->RetentionPeriodInDays);
+            $this->day = (int)($xml->RetentionPeriodInDays);
         }
         if (isset($xml->CreationDate)) {
-            $this->creationDate = strval($xml->CreationDate);
+            $this->creationDate = (string)($xml->CreationDate);
         }
     }
 
@@ -40,12 +50,7 @@ class WormConfig implements XmlConfig
      */
     public function serializeToXml()
     {
-        throw new OssException("Not implemented.");
-    }
-
-    public function __toString()
-    {
-        return $this->serializeToXml();
+        throw new OssException('Not implemented.');
     }
 
     /**
@@ -79,9 +84,4 @@ class WormConfig implements XmlConfig
     {
         return $this->creationDate;
     }
-
-    private $wormId = '';
-    private $state = '';
-    private $creationDate = '';
-    private $day = 0;
 }

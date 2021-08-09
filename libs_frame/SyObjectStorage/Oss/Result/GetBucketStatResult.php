@@ -1,10 +1,12 @@
 <?php
+
 namespace SyObjectStorage\Oss\Result;
 
 use SyObjectStorage\Oss\Model\BucketStat;
 
 /**
  * Class GetRefererResult
+ *
  * @package SyObjectStorage\Oss\Result
  */
 class GetBucketStatResult extends Result
@@ -19,6 +21,7 @@ class GetBucketStatResult extends Result
         $content = $this->rawResponse->body;
         $stat = new BucketStat();
         $stat->parseFromXml($content);
+
         return $stat;
     }
 }

@@ -1,18 +1,23 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 use SyObjectStorage\Oss\Core\OssException;
 
 /**
  * Class RequestPaymentConfig
+ *
  * @package SyObjectStorage\Oss\Model
  *
- * @link https://help.aliyun.com/document_detail/117914.htm
+ * @see https://help.aliyun.com/document_detail/117914.htm
  */
 class RequestPaymentConfig implements XmlConfig
 {
+    private $payer = '';
+
     /**
      * RequestPaymentConfig constructor.
+     *
      * @param null $payer
      */
     public function __construct($payer = null)
@@ -20,18 +25,23 @@ class RequestPaymentConfig implements XmlConfig
         $this->payer = $payer;
     }
 
+    public function __toString()
+    {
+        return $this->serializeToXml();
+    }
+
     /**
      * Parse ServerSideEncryptionConfig from the xml.
      *
      * @param string $strXml
+     *
      * @throws OssException
-     * @return null
      */
     public function parseFromXml($strXml)
     {
         $xml = simplexml_load_string($strXml);
         if (isset($xml->Payer)) {
-            $this->payer = strval($xml->Payer);
+            $this->payer = (string)($xml->Payer);
         }
     }
 
@@ -46,12 +56,8 @@ class RequestPaymentConfig implements XmlConfig
         if (isset($this->payer)) {
             $xml->addChild('Payer', $this->payer);
         }
-        return $xml->asXML();
-    }
 
-    public function __toString()
-    {
-        return $this->serializeToXml();
+        return $xml->asXML();
     }
 
     /**
@@ -61,6 +67,4 @@ class RequestPaymentConfig implements XmlConfig
     {
         return $this->payer;
     }
-
-    private $payer = "";
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace SyObjectStorage\Oss\Core;
 
 /**
@@ -11,26 +12,7 @@ namespace SyObjectStorage\Oss\Core;
  */
 class MimeTypes
 {
-    /**
-     * Get the content-type value of http header from the file's extension name.
-     *
-     * @param string $name Default file extension name.
-     * @return string content-type
-     */
-    public static function getMimetype($name)
-    {
-        $parts = explode('.', $name);
-        if (count($parts) > 1) {
-            $ext = strtolower(end($parts));
-            if (isset(self::$mime_types[$ext])) {
-                return self::$mime_types[$ext];
-            }
-        }
-
-        return null;
-    }
-
-    private static $mime_types = array(
+    private static $mime_types = [
         'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         'xltx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.template',
         'potx' => 'application/vnd.openxmlformats-officedocument.presentationml.template',
@@ -258,5 +240,23 @@ class MimeTypes
         'xsl' => 'application/xml',
         'xslt' => 'application/xslt+xml',
         'xul' => 'application/vnd.mozilla.xul+xml',
-    );
+    ];
+
+    /**
+     * Get the content-type value of http header from the file's extension name.
+     *
+     * @param string $name default file extension name
+     *
+     * @return string content-type
+     */
+    public static function getMimetype($name)
+    {
+        $parts = explode('.', $name);
+        if (\count($parts) > 1) {
+            $ext = strtolower(end($parts));
+            if (isset(self::$mime_types[$ext])) {
+                return self::$mime_types[$ext];
+            }
+        }
+    }
 }

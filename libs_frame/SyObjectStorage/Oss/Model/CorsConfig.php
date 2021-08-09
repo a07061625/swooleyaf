@@ -1,22 +1,43 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 use SyObjectStorage\Oss\Core\OssException;
 
 /**
  * Class CorsConfig
+ *
  * @package SyObjectStorage\Oss\Model
  *
- * @link http://help.aliyun.com/document_detail/oss/api-reference/cors/PutBucketcors.html
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/cors/PutBucketcors.html
  */
 class CorsConfig implements XmlConfig
 {
+    const OSS_CORS_ALLOWED_ORIGIN = 'AllowedOrigin';
+    const OSS_CORS_ALLOWED_METHOD = 'AllowedMethod';
+    const OSS_CORS_ALLOWED_HEADER = 'AllowedHeader';
+    const OSS_CORS_EXPOSE_HEADER = 'ExposeHeader';
+    const OSS_CORS_MAX_AGE_SECONDS = 'MaxAgeSeconds';
+    const OSS_MAX_RULES = 10;
+
+    /**
+     * CorsRule list
+     *
+     * @var CorsRule[]
+     */
+    private $rules = [];
+
     /**
      * CorsConfig constructor.
      */
     public function __construct()
     {
-        $this->rules = array();
+        $this->rules = [];
+    }
+
+    public function __toString()
+    {
+        return $this->serializeToXml();
     }
 
     /**
@@ -29,17 +50,17 @@ class CorsConfig implements XmlConfig
         return $this->rules;
     }
 
-
     /**
      * Add a new CorsRule
      *
      * @param CorsRule $rule
+     *
      * @throws OssException
      */
     public function addRule($rule)
     {
-        if (count($this->rules) >= self::OSS_MAX_RULES) {
-            throw new OssException("num of rules in the config exceeds self::OSS_MAX_RULES: " . strval(self::OSS_MAX_RULES));
+        if (\count($this->rules) >= self::OSS_MAX_RULES) {
+            throw new OssException('num of rules in the config exceeds self::OSS_MAX_RULES: ' . (string)(self::OSS_MAX_RULES));
         }
         $this->rules[] = $rule;
     }
@@ -48,31 +69,32 @@ class CorsConfig implements XmlConfig
      * Parse CorsConfig from the xml.
      *
      * @param string $strXml
+     *
      * @throws OssException
-     * @return null
      */
     public function parseFromXml($strXml)
     {
         $xml = simplexml_load_string($strXml);
-        if (!isset($xml->CORSRule)) return;
+        if (!isset($xml->CORSRule)) {
+            return;
+        }
         foreach ($xml->CORSRule as $rule) {
             $corsRule = new CorsRule();
             foreach ($rule as $key => $value) {
-                if ($key === self::OSS_CORS_ALLOWED_HEADER) {
-                    $corsRule->addAllowedHeader(strval($value));
-                } elseif ($key === self::OSS_CORS_ALLOWED_METHOD) {
-                    $corsRule->addAllowedMethod(strval($value));
-                } elseif ($key === self::OSS_CORS_ALLOWED_ORIGIN) {
-                    $corsRule->addAllowedOrigin(strval($value));
-                } elseif ($key === self::OSS_CORS_EXPOSE_HEADER) {
-                    $corsRule->addExposeHeader(strval($value));
-                } elseif ($key === self::OSS_CORS_MAX_AGE_SECONDS) {
-                    $corsRule->setMaxAgeSeconds(strval($value));
+                if (self::OSS_CORS_ALLOWED_HEADER === $key) {
+                    $corsRule->addAllowedHeader((string)$value);
+                } elseif (self::OSS_CORS_ALLOWED_METHOD === $key) {
+                    $corsRule->addAllowedMethod((string)$value);
+                } elseif (self::OSS_CORS_ALLOWED_ORIGIN === $key) {
+                    $corsRule->addAllowedOrigin((string)$value);
+                } elseif (self::OSS_CORS_EXPOSE_HEADER === $key) {
+                    $corsRule->addExposeHeader((string)$value);
+                } elseif (self::OSS_CORS_MAX_AGE_SECONDS === $key) {
+                    $corsRule->setMaxAgeSeconds((string)$value);
                 }
             }
             $this->addRule($corsRule);
         }
-        return;
     }
 
     /**
@@ -87,25 +109,7 @@ class CorsConfig implements XmlConfig
             $xmlRule = $xml->addChild('CORSRule');
             $rule->appendToXml($xmlRule);
         }
+
         return $xml->asXML();
     }
-
-    public function __toString()
-    {
-        return $this->serializeToXml();
-    }
-
-    const OSS_CORS_ALLOWED_ORIGIN = 'AllowedOrigin';
-    const OSS_CORS_ALLOWED_METHOD = 'AllowedMethod';
-    const OSS_CORS_ALLOWED_HEADER = 'AllowedHeader';
-    const OSS_CORS_EXPOSE_HEADER = 'ExposeHeader';
-    const OSS_CORS_MAX_AGE_SECONDS = 'MaxAgeSeconds';
-    const OSS_MAX_RULES = 10;
-
-    /**
-     * CorsRule list
-     *
-     * @var CorsRule[]
-     */
-    private $rules = array();
 }

@@ -1,14 +1,27 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class ListMultipartUploadInfo
+ *
  * @package SyObjectStorage\Oss\Model
  *
- * @link http://help.aliyun.com/document_detail/oss/api-reference/multipart-upload/ListMultipartUploads.html
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/multipart-upload/ListMultipartUploads.html
  */
 class ListMultipartUploadInfo
 {
+    private $bucket = '';
+    private $keyMarker = '';
+    private $uploadIdMarker = '';
+    private $nextKeyMarker = '';
+    private $nextUploadIdMarker = '';
+    private $delimiter = '';
+    private $prefix = '';
+    private $maxUploads = 0;
+    private $isTruncated = 'false';
+    private $uploads = [];
+
     /**
      * ListMultipartUploadInfo constructor.
      *
@@ -19,9 +32,8 @@ class ListMultipartUploadInfo
      * @param string $nextUploadIdMarker
      * @param string $delimiter
      * @param string $prefix
-     * @param int $maxUploads
+     * @param int    $maxUploads
      * @param string $isTruncated
-     * @param array $uploads
      */
     public function __construct($bucket, $keyMarker, $uploadIdMarker, $nextKeyMarker, $nextUploadIdMarker, $delimiter, $prefix, $maxUploads, $isTruncated, array $uploads)
     {
@@ -56,7 +68,6 @@ class ListMultipartUploadInfo
     }
 
     /**
-     *
      * @return string
      */
     public function getUploadIdMarker()
@@ -119,15 +130,4 @@ class ListMultipartUploadInfo
     {
         return $this->uploads;
     }
-
-    private $bucket = "";
-    private $keyMarker = "";
-    private $uploadIdMarker = "";
-    private $nextKeyMarker = "";
-    private $nextUploadIdMarker = "";
-    private $delimiter = "";
-    private $prefix = "";
-    private $maxUploads = 0;
-    private $isTruncated = "false";
-    private $uploads = array();
 }

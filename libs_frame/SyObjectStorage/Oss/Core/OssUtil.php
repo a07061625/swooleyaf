@@ -1,4 +1,5 @@
 <?php
+
 namespace SyObjectStorage\Oss\Core;
 
 /**
@@ -22,30 +23,34 @@ class OssUtil
      * Generate query params
      *
      * @param array $options: a key-value pair array.
+     *
      * @return string: the key-value list in the format such as key1=value1&key2=value2
      */
-    public static function toQueryString($options = array())
+    public static function toQueryString($options = [])
     {
-        $temp = array();
+        $temp = [];
         uksort($options, 'strnatcasecmp');
         foreach ($options as $key => $value) {
-            if (is_string($key) && !is_array($value)) {
+            if (\is_string($key) && !\is_array($value)) {
                 $temp[] = rawurlencode($key) . '=' . rawurlencode($value);
             }
         }
+
         return implode('&', $temp);
     }
 
     /**
-     * Html encoding '<', '>', '&', '\', '"' in subject parameter. 
+     * Html encoding '<', '>', '&', '\', '"' in subject parameter.
      *
      * @param string $subject
+     *
      * @return string
      */
     public static function sReplace($subject)
     {
-        $search = array('<', '>', '&', '\'', '"');
-        $replace = array('&lt;', '&gt;', '&amp;', '&apos;', '&quot;');
+        $search = ['<', '>', '&', '\'', '"'];
+        $replace = ['&lt;', '&gt;', '&amp;', '&apos;', '&quot;'];
+
         return str_replace($search, $replace, $subject);
     }
 
@@ -53,6 +58,7 @@ class OssUtil
      * Check whether the string includes any chinese character
      *
      * @param $str
+     *
      * @return int
      */
     public static function chkChinese($str)
@@ -64,24 +70,29 @@ class OssUtil
      * Checks if the string is encoded by GB2312.
      *
      * @param string $str
-     * @return boolean false UTF-8 encoding  TRUE GB2312 encoding
+     *
+     * @return bool false UTF-8 encoding  TRUE GB2312 encoding
      */
     public static function isGb2312($str)
     {
-        for ($i = 0; $i < strlen($str); $i++) {
-            $v = ord($str[$i]);
+        for ($i = 0; $i < \strlen($str); ++$i) {
+            $v = \ord($str[$i]);
             if ($v > 127) {
                 if (($v >= 228) && ($v <= 233)) {
-                    if (($i + 2) >= (strlen($str) - 1)) return true;  // not enough characters
-                    $v1 = ord($str[$i + 1]);
-                    $v2 = ord($str[$i + 2]);
-                    if (($v1 >= 128) && ($v1 <= 191) && ($v2 >= 128) && ($v2 <= 191))
-                        return false;
-                    else
+                    if (($i + 2) >= (\strlen($str) - 1)) {
                         return true;
+                    }  // not enough characters
+                    $v1 = \ord($str[$i + 1]);
+                    $v2 = \ord($str[$i + 2]);
+                    if (($v1 >= 128) && ($v1 <= 191) && ($v2 >= 128) && ($v2 <= 191)) {
+                        return false;
+                    }
+
+                    return true;
                 }
             }
         }
+
         return false;
     }
 
@@ -89,27 +100,31 @@ class OssUtil
      * Checks if the string is encoded by GBK
      *
      * @param string $str
-     * @param boolean $gbk
-     * @return boolean
+     * @param bool   $gbk
+     *
+     * @return bool
      */
     public static function checkChar($str, $gbk = true)
     {
-        for ($i = 0; $i < strlen($str); $i++) {
-            $v = ord($str[$i]);
+        for ($i = 0; $i < \strlen($str); ++$i) {
+            $v = \ord($str[$i]);
             if ($v > 127) {
                 if (($v >= 228) && ($v <= 233)) {
-                    if (($i + 2) >= (strlen($str) - 1)) return $gbk ? true : FALSE;  // not enough characters
-                    $v1 = ord($str[$i + 1]);
-                    $v2 = ord($str[$i + 2]);
+                    if (($i + 2) >= (\strlen($str) - 1)) {
+                        return $gbk ? true : false;
+                    }  // not enough characters
+                    $v1 = \ord($str[$i + 1]);
+                    $v2 = \ord($str[$i + 2]);
                     if ($gbk) {
-                        return (($v1 >= 128) && ($v1 <= 191) && ($v2 >= 128) && ($v2 <= 191)) ? FALSE : TRUE;//GBK
-                    } else {
-                        return (($v1 >= 128) && ($v1 <= 191) && ($v2 >= 128) && ($v2 <= 191)) ? TRUE : FALSE;
+                        return (($v1 >= 128) && ($v1 <= 191) && ($v2 >= 128) && ($v2 <= 191)) ? false : true; //GBK
                     }
+
+                    return (($v1 >= 128) && ($v1 <= 191) && ($v2 >= 128) && ($v2 <= 191)) ? true : false;
                 }
             }
         }
-        return $gbk ? TRUE : FALSE;
+
+        return $gbk ? true : false;
     }
 
     /**
@@ -120,7 +135,8 @@ class OssUtil
      * 3. Must be within a length from 3 to 63 bytes.
      *
      * @param string $bucket Bucket name
-     * @return boolean
+     *
+     * @return bool
      */
     public static function validateBucket($bucket)
     {
@@ -128,6 +144,7 @@ class OssUtil
         if (!preg_match($pattern, $bucket)) {
             return false;
         }
+
         return true;
     }
 
@@ -139,7 +156,8 @@ class OssUtil
      * 3. Must be encoded in UTF-8.
      *
      * @param string $object Object名称
-     * @return boolean
+     *
+     * @return bool
      */
     public static function validateObject($object)
     {
@@ -149,37 +167,39 @@ class OssUtil
         ) {
             return false;
         }
+
         return true;
     }
-
 
     /**
      * Checks if $str starts with $findMe
      *
      * @param string $str
      * @param string $findMe
+     *
      * @return bool
      */
     public static function startsWith($str, $findMe)
     {
-        if (strpos($str, $findMe) === 0) {
+        if (0 === strpos($str, $findMe)) {
             return true;
-        } else {
-            return false;
         }
-    }
 
+        return false;
+    }
 
     /**
      * Generate the xml message of createBucketXmlBody.
      *
      * @param string $storageClass
+     *
      * @return string
      */
     public static function createBucketXmlBody($storageClass)
     {
         $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><CreateBucketConfiguration></CreateBucketConfiguration>');
-        $xml->addChild('StorageClass',  $storageClass);
+        $xml->addChild('StorageClass', $storageClass);
+
         return $xml->asXML();
     }
 
@@ -187,14 +207,16 @@ class OssUtil
      * validate $options
      *
      * @param array $options
+     *
      * @throws OssException
-     * @return boolean
+     *
+     * @return bool
      */
     public static function validateOptions($options)
     {
         //$options
-        if ($options != NULL && !is_array($options)) {
-            throw new OssException ($options . ':' . 'option must be array');
+        if (null != $options && !\is_array($options)) {
+            throw new OssException($options . ':' . 'option must be array');
         }
     }
 
@@ -202,28 +224,31 @@ class OssUtil
      * check whether the Content is valid.
      *
      * @param $content string
+     *
      * @throws OssException
      */
     public static function validateContent($content)
     {
         if (empty($content)) {
-            throw new OssException("http body content is invalid");
+            throw new OssException('http body content is invalid');
         }
     }
 
     /**
      * Check if BUCKET/OBJECT/OBJECT GROUP is empty.
      *
-     * @param  string $name
-     * @param  string $errMsg
+     * @param string $name
+     * @param string $errMsg
+     *
      * @throws OssException
-     * @return void
      */
     public static function throwOssExceptionWithMessageIfEmpty($name, $errMsg)
     {
         if (empty($name)) {
-            if (is_string($name) && $name == '0')
+            if (\is_string($name) && '0' == $name) {
                 return;
+            }
+
             throw new OssException($errMsg);
         }
     }
@@ -237,16 +262,17 @@ class OssUtil
     public static function generateFile($filename, $size)
     {
         if (file_exists($filename) && $size == filesize($filename)) {
-            echo $filename . " already exists, no need to create again. ";
+            echo $filename . ' already exists, no need to create again. ';
+
             return;
         }
         $part_size = 1 * 1024 * 1024;
-        $fp = fopen($filename, "w");
-        $characters = <<<BBB
+        $fp = fopen($filename, 'w');
+        $characters = <<<'BBB'
 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 BBB;
 
-        $charactersLength = strlen($characters);
+        $charactersLength = \strlen($characters);
         if ($fp) {
             while ($size > 0) {
                 if ($size < $part_size) {
@@ -259,12 +285,13 @@ BBB;
                 $content = str_repeat($a, $write_size);
                 $flag = fwrite($fp, $content);
                 if (!$flag) {
-                    echo "write to " . $filename . " failed. <br>";
+                    echo 'write to ' . $filename . ' failed. <br>';
+
                     break;
                 }
             }
         } else {
-            echo "open " . $filename . " failed. <br>";
+            echo 'open ' . $filename . ' failed. <br>';
         }
         fclose($fp);
     }
@@ -275,11 +302,12 @@ BBB;
      * @param $filename
      * @param $from_pos
      * @param $to_pos
+     *
      * @return string
      */
     public static function getMd5SumForFile($filename, $from_pos, $to_pos)
     {
-        $content_md5 = "";
+        $content_md5 = '';
         if (($to_pos - $from_pos) > self::OSS_MAX_PART_SIZE) {
             return $content_md5;
         }
@@ -295,7 +323,7 @@ BBB;
             return $content_md5;
         }
 
-        if (false === $fh = fopen($filename, 'rb')) {
+        if (false === $fh = fopen($filename, 'r')) {
             return $content_md5;
         }
 
@@ -309,14 +337,13 @@ BBB;
             }
             if ($read_length <= 0) {
                 break;
-            } else {
-                $data .= fread($fh, $read_length);
-                $left_length = $left_length - $read_length;
             }
+            $data .= fread($fh, $read_length);
+            $left_length = $left_length - $read_length;
         }
         fclose($fh);
-        $content_md5 = base64_encode(md5($data, true));
-        return $content_md5;
+
+        return base64_encode(md5($data, true));
     }
 
     /**
@@ -326,15 +353,16 @@ BBB;
      */
     public static function isWin()
     {
-        return strtoupper(substr(PHP_OS, 0, 3)) == "WIN";
+        return 'WIN' == strtoupper(substr(PHP_OS, 0, 3));
     }
 
     /**
      * Encodes the file path from GBK to UTF-8.
-     * The default encoding in Windows is GBK. 
+     * The default encoding in Windows is GBK.
      * And if the file path is in Chinese, the file would not be found without the transcoding to UTF-8.
      *
      * @param $file_path
+     *
      * @return string
      */
     public static function encodePath($file_path)
@@ -342,6 +370,7 @@ BBB;
         if (self::chkChinese($file_path) && self::isWin()) {
             $file_path = iconv('utf-8', 'gbk', $file_path);
         }
+
         return $file_path;
     }
 
@@ -349,56 +378,58 @@ BBB;
      * Check if the endpoint is in the IPv4 format, such as xxx.xxx.xxx.xxx:port or xxx.xxx.xxx.xxx.
      *
      * @param string $endpoint The endpoint to check.
-     * @return boolean
+     *
+     * @return bool
      */
     public static function isIPFormat($endpoint)
     {
-        $ip_array = explode(":", $endpoint);
+        $ip_array = explode(':', $endpoint);
         $hostname = $ip_array[0];
         $ret = filter_var($hostname, FILTER_VALIDATE_IP);
         if (!$ret) {
             return false;
-        } else {
-            return true;
         }
+
+        return true;
     }
 
     /**
      * Get the host:port from endpoint.
      *
      * @param string $endpoint the endpoint.
-     * @return boolean
+     *
+     * @return bool
      */
     public static function getHostPortFromEndpoint($endpoint)
     {
         $str = $endpoint;
-        $pos = strpos($str, "://");
-        if ($pos !== false) {
-            $str = substr($str, $pos+3);
+        $pos = strpos($str, '://');
+        if (false !== $pos) {
+            $str = substr($str, $pos + 3);
         }
-    
+
         $pos = strpos($str, '#');
-        if ($pos !== false) {
+        if (false !== $pos) {
             $str = substr($str, 0, $pos);
         }
-    
+
         $pos = strpos($str, '?');
-        if ($pos !== false) {
+        if (false !== $pos) {
             $str = substr($str, 0, $pos);
         }
-    
+
         $pos = strpos($str, '/');
-        if ($pos !== false) {
+        if (false !== $pos) {
             $str = substr($str, 0, $pos);
         }
-    
+
         $pos = strpos($str, '@');
-        if ($pos !== false) {
-            $str = substr($str, $pos+1);
+        if (false !== $pos) {
+            $str = substr($str, $pos + 1);
         }
-       
+
         if (!preg_match('/^[\w.-]+(:[0-9]+)?$/', $str)) {
-            throw new OssException("endpoint is invalid:" . $endpoint);
+            throw new OssException('endpoint is invalid:' . $endpoint);
         }
 
         return $str;
@@ -408,7 +439,8 @@ BBB;
      * Generate the xml message of DeleteMultiObjects.
      *
      * @param string[] $objects
-     * @param bool $quiet
+     * @param bool     $quiet
+     *
      * @return string
      */
     public static function createDeleteObjectsXmlBody($objects, $quiet)
@@ -417,9 +449,10 @@ BBB;
         $xml->addChild('Quiet', $quiet);
         foreach ($objects as $object) {
             $sub_object = $xml->addChild('Object');
-            $object = OssUtil::sReplace($object);
+            $object = self::sReplace($object);
             $sub_object->addChild('Key', $object);
         }
+
         return $xml->asXML();
     }
 
@@ -427,7 +460,8 @@ BBB;
      * Generate the xml message of DeleteMultiObjects.
      *
      * @param DeleteObjectInfo[] $objects
-     * @param bool $quiet
+     * @param bool               $quiet
+     *
      * @return string
      */
     public static function createDeleteObjectVersionsXmlBody($objects, $quiet)
@@ -436,13 +470,14 @@ BBB;
         $xml->addChild('Quiet', $quiet);
         foreach ($objects as $object) {
             $sub_object = $xml->addChild('Object');
-            $key = OssUtil::sReplace($object->getKey());
+            $key = self::sReplace($object->getKey());
             $sub_object->addChild('Key', $key);
             $versionId = $object->getVersionId();
             if (!empty($versionId)) {
                 $sub_object->addChild('VersionId', $object->getVersionId());
             }
         }
+
         return $xml->asXML();
     }
 
@@ -450,6 +485,7 @@ BBB;
      * Generate the xml message of CompleteMultipartUpload.
      *
      * @param array[] $listParts
+     *
      * @return string
      */
     public static function createCompleteMultipartUploadXmlBody($listParts)
@@ -460,6 +496,7 @@ BBB;
             $part->addChild('PartNumber', $node['PartNumber']);
             $part->addChild('ETag', $node['ETag']);
         }
+
         return $xml->asXML();
     }
 
@@ -468,42 +505,46 @@ BBB;
      *
      * @param string $dir
      * @param string $exclude
-     * @param bool $recursive
+     * @param bool   $recursive
+     *
      * @return string[]
      */
-    public static function readDir($dir, $exclude = ".|..|.svn|.git", $recursive = false)
+    public static function readDir($dir, $exclude = '.|..|.svn|.git', $recursive = false)
     {
-        $file_list_array = array();
+        $file_list_array = [];
         $base_path = $dir;
-        $exclude_array = explode("|", $exclude);
-        $exclude_array = array_unique(array_merge($exclude_array, array('.', '..')));
+        $exclude_array = explode('|', $exclude);
+        $exclude_array = array_unique(array_merge($exclude_array, ['.', '..']));
 
         if ($recursive) {
             foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($dir)) as $new_file) {
-                if ($new_file->isDir()) continue;
+                if ($new_file->isDir()) {
+                    continue;
+                }
                 $object = str_replace($base_path, '', $new_file);
-                if (!in_array(strtolower($object), $exclude_array)) {
+                if (!\in_array(strtolower($object), $exclude_array)) {
                     $object = ltrim($object, '/');
                     if (is_file($new_file)) {
                         $key = md5($new_file . $object, false);
-                        $file_list_array[$key] = array('path' => $new_file, 'file' => $object,);
+                        $file_list_array[$key] = ['path' => $new_file, 'file' => $object];
                     }
                 }
             }
-        } else if ($handle = opendir($dir)) {
+        } elseif ($handle = opendir($dir)) {
             while (false !== ($file = readdir($handle))) {
-                if (!in_array(strtolower($file), $exclude_array)) {
+                if (!\in_array(strtolower($file), $exclude_array)) {
                     $new_file = $dir . '/' . $file;
                     $object = $file;
                     $object = ltrim($object, '/');
                     if (is_file($new_file)) {
                         $key = md5($new_file . $object, false);
-                        $file_list_array[$key] = array('path' => $new_file, 'file' => $object,);
+                        $file_list_array[$key] = ['path' => $new_file, 'file' => $object];
                     }
                 }
             }
             closedir($handle);
         }
+
         return $file_list_array;
     }
 
@@ -512,18 +553,19 @@ BBB;
      *
      * @param string $key
      * @param string $encoding
+     *
      * @return string
      */
     public static function decodeKey($key, $encoding)
     {
-        if ($encoding == "") {
+        if ('' == $encoding) {
             return $key;
         }
 
-        if ($encoding == "url") {
+        if ('url' == $encoding) {
             return rawurldecode($key);
-        } else {
-            throw new OssException("Unrecognized encoding type: " . $encoding);
         }
+
+        throw new OssException('Unrecognized encoding type: ' . $encoding);
     }
 }

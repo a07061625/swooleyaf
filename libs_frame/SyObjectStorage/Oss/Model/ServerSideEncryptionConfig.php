@@ -1,18 +1,24 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 use SyObjectStorage\Oss\Core\OssException;
 
 /**
  * Class ServerSideEncryptionConfig
+ *
  * @package SyObjectStorage\Oss\Model
  *
- * @link https://help.aliyun.com/document_detail/117914.htm
+ * @see https://help.aliyun.com/document_detail/117914.htm
  */
 class ServerSideEncryptionConfig implements XmlConfig
 {
+    private $sseAlgorithm = '';
+    private $kmsMasterKeyID = '';
+
     /**
      * ServerSideEncryptionConfig constructor.
+     *
      * @param null $sseAlgorithm
      * @param null $kmsMasterKeyID
      */
@@ -22,25 +28,33 @@ class ServerSideEncryptionConfig implements XmlConfig
         $this->kmsMasterKeyID = $kmsMasterKeyID;
     }
 
+    public function __toString()
+    {
+        return $this->serializeToXml();
+    }
+
     /**
      * Parse ServerSideEncryptionConfig from the xml.
      *
      * @param string $strXml
+     *
      * @throws OssException
-     * @return null
      */
     public function parseFromXml($strXml)
     {
         $xml = simplexml_load_string($strXml);
-        if (!isset($xml->ApplyServerSideEncryptionByDefault)) return;
+        if (!isset($xml->ApplyServerSideEncryptionByDefault)) {
+            return;
+        }
         foreach ($xml->ApplyServerSideEncryptionByDefault as $default) {
             foreach ($default as $key => $value) {
-                if ($key === 'SSEAlgorithm') {
-                    $this->sseAlgorithm = strval($value);
-                } elseif ($key === 'KMSMasterKeyID') {
-                    $this->kmsMasterKeyID = strval($value);
+                if ('SSEAlgorithm' === $key) {
+                    $this->sseAlgorithm = (string)$value;
+                } elseif ('KMSMasterKeyID' === $key) {
+                    $this->kmsMasterKeyID = (string)$value;
                 }
             }
+
             break;
         }
     }
@@ -60,12 +74,8 @@ class ServerSideEncryptionConfig implements XmlConfig
         if (isset($this->kmsMasterKeyID)) {
             $default->addChild('KMSMasterKeyID', $this->kmsMasterKeyID);
         }
-        return $xml->asXML();
-    }
 
-    public function __toString()
-    {
-        return $this->serializeToXml();
+        return $xml->asXML();
     }
 
     /**
@@ -83,7 +93,4 @@ class ServerSideEncryptionConfig implements XmlConfig
     {
         return $this->kmsMasterKeyID;
     }
-
-    private $sseAlgorithm = "";
-    private $kmsMasterKeyID = "";
 }

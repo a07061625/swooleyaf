@@ -1,4 +1,5 @@
 <?php
+
 namespace SyObjectStorage\Oss\Result;
 
 use SyObjectStorage\Oss\Core\OssException;
@@ -7,20 +8,23 @@ use SyObjectStorage\Oss\Model\BucketInfo;
 /**
  * Class GetBucketResult interface returns the result class, encapsulated
  * The returned xml data is parsed
+ *
  * @package SyObjectStorage\Oss\Result
  */
 class GetBucketInfoResult extends Result
 {
     /**
      * Parse data from response
+     *
      * @return string
+     *
      * @throws OssException
      */
     protected function parseDataFromResponse()
     {
         $content = $this->rawResponse->body;
         if (empty($content)) {
-            throw new OssException("body is null");
+            throw new OssException('body is null');
         }
         $xml = simplexml_load_string($content);
         if (isset($xml->Bucket)) {
@@ -28,8 +32,8 @@ class GetBucketInfoResult extends Result
             $info->parseFromXmlNode($xml->Bucket);
 
             return $info;
-        } else {
-            throw new OssException("xml format exception");
         }
+
+        throw new OssException('xml format exception');
     }
 }

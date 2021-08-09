@@ -1,13 +1,18 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
  * Class LiveChannelHistory
- * @package SyObjectStorage\Oss\Model
  *
+ * @package SyObjectStorage\Oss\Model
  */
 class LiveChannelHistory implements XmlConfig
 {
+    private $startTime;
+    private $endTime;
+    private $remoteAddr;
+
     public function __construct()
     {
     }
@@ -30,15 +35,15 @@ class LiveChannelHistory implements XmlConfig
     public function parseFromXmlNode($xml)
     {
         if (isset($xml->StartTime)) {
-            $this->startTime = strval($xml->StartTime);
+            $this->startTime = (string)($xml->StartTime);
         }
 
         if (isset($xml->EndTime)) {
-            $this->endTime = strval($xml->EndTime);
+            $this->endTime = (string)($xml->EndTime);
         }
 
         if (isset($xml->RemoteAddr)) {
-            $this->remoteAddr = strval($xml->RemoteAddr);
+            $this->remoteAddr = (string)($xml->RemoteAddr);
         }
     }
 
@@ -50,10 +55,6 @@ class LiveChannelHistory implements XmlConfig
 
     public function serializeToXml()
     {
-        throw new OssException("Not implemented.");
+        throw new OssException('Not implemented.');
     }
-    
-    private $startTime;
-    private $endTime;
-    private $remoteAddr;
 }

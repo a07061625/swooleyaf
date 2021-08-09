@@ -1,17 +1,21 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 use SyObjectStorage\Oss\Core\OssException;
 
 /**
  * Class VersioningConfig
- * @package SyObjectStorage\Oss\Model
  *
+ * @package SyObjectStorage\Oss\Model
  */
 class VersioningConfig implements XmlConfig
 {
+    private $status = '';
+
     /**
      * VersioningConfig constructor.
+     *
      * @param null $status
      */
     public function __construct($status = null)
@@ -19,18 +23,23 @@ class VersioningConfig implements XmlConfig
         $this->status = $status;
     }
 
+    public function __toString()
+    {
+        return $this->serializeToXml();
+    }
+
     /**
      * Parse VersioningConfig from the xml.
      *
      * @param string $strXml
+     *
      * @throws OssException
-     * @return null
      */
     public function parseFromXml($strXml)
     {
         $xml = simplexml_load_string($strXml);
         if (isset($xml->Status)) {
-            $this->status = strval($xml->Status);
+            $this->status = (string)($xml->Status);
         }
     }
 
@@ -45,12 +54,8 @@ class VersioningConfig implements XmlConfig
         if (isset($this->status)) {
             $xml->addChild('Status', $this->status);
         }
-        return $xml->asXML();
-    }
 
-    public function __toString()
-    {
-        return $this->serializeToXml();
+        return $xml->asXML();
     }
 
     /**
@@ -60,6 +65,4 @@ class VersioningConfig implements XmlConfig
     {
         return $this->status;
     }
-
-    private $status = "";
 }

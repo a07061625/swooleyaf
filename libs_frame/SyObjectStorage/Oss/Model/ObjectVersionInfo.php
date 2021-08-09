@@ -1,8 +1,8 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
- *
  * Class ObjectVersionInfo
  *
  * The element type of ObjectVersionListInfo, which is the return value type of listObjectVersions
@@ -15,6 +15,15 @@ namespace SyObjectStorage\Oss\Model;
  */
 class ObjectVersionInfo
 {
+    private $key = '';
+    private $versionId = '';
+    private $lastModified = '';
+    private $eTag = '';
+    private $type = '';
+    private $size = 0;
+    private $storageClass = '';
+    private $isLatest = '';
+
     /**
      * ObjectVersionInfo constructor.
      *
@@ -22,9 +31,10 @@ class ObjectVersionInfo
      * @param string $lastModified
      * @param string $eTag
      * @param string $type
-     * @param int $size
+     * @param int    $size
      * @param string $storageClass
      * @param string $isLatest
+     * @param mixed  $versionId
      */
     public function __construct($key, $versionId, $lastModified, $eTag, $type, $size, $storageClass, $isLatest)
     {
@@ -101,13 +111,4 @@ class ObjectVersionInfo
     {
         return $this->isLatest;
     }
-
-    private $key = "";
-    private $versionId = "";
-    private $lastModified = "";
-    private $eTag = "";
-    private $type = "";
-    private $size = 0;
-    private $storageClass = "";
-    private $isLatest = "";
 }

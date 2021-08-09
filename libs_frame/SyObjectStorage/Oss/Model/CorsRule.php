@@ -1,15 +1,24 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 use SyObjectStorage\Oss\Core\OssException;
 
 /**
  * Class CorsRule
+ *
  * @package SyObjectStorage\Oss\Model
- * @link http://help.aliyun.com/document_detail/oss/api-reference/cors/PutBucketcors.html
+ *
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/cors/PutBucketcors.html
  */
 class CorsRule
 {
+    private $allowedHeaders = [];
+    private $allowedOrigins = [];
+    private $allowedMethods = [];
+    private $exposeHeaders = [];
+    private $maxAgeSeconds;
+
     /**
      * Add an allowedOrigin rule
      *
@@ -118,12 +127,13 @@ class CorsRule
      * Serialize all the rules into the xml represented by parameter $xmlRule
      *
      * @param \SimpleXMLElement $xmlRule
+     *
      * @throws OssException
      */
     public function appendToXml(&$xmlRule)
     {
         if (!isset($this->maxAgeSeconds)) {
-            throw new OssException("maxAgeSeconds is not set in the Rule");
+            throw new OssException('maxAgeSeconds is not set in the Rule');
         }
         foreach ($this->allowedOrigins as $allowedOrigin) {
             $xmlRule->addChild(CorsConfig::OSS_CORS_ALLOWED_ORIGIN, $allowedOrigin);
@@ -137,12 +147,6 @@ class CorsRule
         foreach ($this->exposeHeaders as $exposeHeader) {
             $xmlRule->addChild(CorsConfig::OSS_CORS_EXPOSE_HEADER, $exposeHeader);
         }
-        $xmlRule->addChild(CorsConfig::OSS_CORS_MAX_AGE_SECONDS, strval($this->maxAgeSeconds));
+        $xmlRule->addChild(CorsConfig::OSS_CORS_MAX_AGE_SECONDS, (string)($this->maxAgeSeconds));
     }
-
-    private $allowedHeaders = array();
-    private $allowedOrigins = array();
-    private $allowedMethods = array();
-    private $exposeHeaders = array();
-    private $maxAgeSeconds = null;
 }

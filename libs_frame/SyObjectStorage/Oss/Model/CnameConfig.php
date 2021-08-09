@@ -1,24 +1,37 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 use SyObjectStorage\Oss\Core\OssException;
 
 /**
  * Class CnameConfig
+ *
  * @package SyObjectStorage\Oss\Model
  *
  * TODO: fix link
- * @link http://help.aliyun.com/document_detail/oss/api-reference/cors/PutBucketcors.html
+ *
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/cors/PutBucketcors.html
  */
 class CnameConfig implements XmlConfig
 {
+    const OSS_MAX_RULES = 10;
+
+    private $cnameList = [];
+
     public function __construct()
     {
-        $this->cnameList = array();
+        $this->cnameList = [];
+    }
+
+    public function __toString()
+    {
+        return $this->serializeToXml();
     }
 
     /**
      * @return array
+     *
      * @example
      *  array(2) {
      *    [0]=>
@@ -46,24 +59,26 @@ class CnameConfig implements XmlConfig
         return $this->cnameList;
     }
 
-
     public function addCname($cname)
     {
-        if (count($this->cnameList) >= self::OSS_MAX_RULES) {
+        if (\count($this->cnameList) >= self::OSS_MAX_RULES) {
             throw new OssException(
-                "num of cname in the config exceeds self::OSS_MAX_RULES: " . strval(self::OSS_MAX_RULES));
+                'num of cname in the config exceeds self::OSS_MAX_RULES: ' . (string)(self::OSS_MAX_RULES)
+            );
         }
-        $this->cnameList[] = array('Domain' => $cname);
+        $this->cnameList[] = ['Domain' => $cname];
     }
 
     public function parseFromXml($strXml)
     {
         $xml = simplexml_load_string($strXml);
-        if (!isset($xml->Cname)) return;
+        if (!isset($xml->Cname)) {
+            return;
+        }
         foreach ($xml->Cname as $entry) {
-            $cname = array();
+            $cname = [];
             foreach ($entry as $key => $value) {
-                $cname[strval($key)] = strval($value);
+                $cname[(string)$key] = (string)$value;
             }
             $this->cnameList[] = $cname;
         }
@@ -71,7 +86,7 @@ class CnameConfig implements XmlConfig
 
     public function serializeToXml()
     {
-        $strXml = <<<EOF
+        $strXml = <<<'EOF'
 <?xml version="1.0" encoding="utf-8"?>
 <BucketCnameConfiguration>
 </BucketCnameConfiguration>
@@ -83,15 +98,7 @@ EOF;
                 $node->addChild($key, $value);
             }
         }
+
         return $xml->asXML();
     }
-
-    public function __toString()
-    {
-        return $this->serializeToXml();
-    }
-
-    const OSS_MAX_RULES = 10;
-
-    private $cnameList = array();
 }

@@ -1,17 +1,21 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 use SyObjectStorage\Oss\Core\OssException;
 
 /**
  * Class InitiateWormConfig
- * @package SyObjectStorage\Oss\Model
  *
+ * @package SyObjectStorage\Oss\Model
  */
 class InitiateWormConfig implements XmlConfig
 {
+    private $day = 0;
+
     /**
      * InitiateWormConfig constructor.
+     *
      * @param null $day
      */
     public function __construct($day = null)
@@ -19,16 +23,21 @@ class InitiateWormConfig implements XmlConfig
         $this->day = $day;
     }
 
+    public function __toString()
+    {
+        return $this->serializeToXml();
+    }
+
     /**
      * Parse InitiateWormConfig from the xml.
      *
      * @param string $strXml
+     *
      * @throws OssException
-     * @return null
      */
     public function parseFromXml($strXml)
     {
-        throw new OssException("Not implemented.");
+        throw new OssException('Not implemented.');
     }
 
     /**
@@ -42,12 +51,8 @@ class InitiateWormConfig implements XmlConfig
         if (isset($this->day)) {
             $xml->addChild('RetentionPeriodInDays', $this->day);
         }
-        return $xml->asXML();
-    }
 
-    public function __toString()
-    {
-        return $this->serializeToXml();
+        return $xml->asXML();
     }
 
     /**
@@ -57,6 +62,4 @@ class InitiateWormConfig implements XmlConfig
     {
         return $this->day;
     }
-
-    private $day = 0;
 }

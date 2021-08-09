@@ -1,4 +1,5 @@
 <?php
+
 namespace SyObjectStorage\Oss\Model;
 
 /**
@@ -10,12 +11,16 @@ namespace SyObjectStorage\Oss\Model;
  * One is to get Prefix list【Can be understood as the corresponding file system directory list】
  *
  * @package SyObjectStorage\Oss\Model
- * @link http://help.aliyun.com/document_detail/oss/api-reference/bucket/GetBucket.html
+ *
+ * @see http://help.aliyun.com/document_detail/oss/api-reference/bucket/GetBucket.html
  */
 class PrefixInfo
 {
+    private $prefix;
+
     /**
      * PrefixInfo constructor.
+     *
      * @param string $prefix
      */
     public function __construct($prefix)
@@ -30,6 +35,4 @@ class PrefixInfo
     {
         return $this->prefix;
     }
-
-    private $prefix;
 }

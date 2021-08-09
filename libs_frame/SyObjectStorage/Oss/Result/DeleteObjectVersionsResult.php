@@ -1,4 +1,5 @@
 <?php
+
 namespace SyObjectStorage\Oss\Result;
 
 use SyObjectStorage\Oss\Core\OssUtil;
@@ -6,6 +7,7 @@ use SyObjectStorage\Oss\Model\DeletedObjectInfo;
 
 /**
  * Class DeleteObjectVersionsResult
+ *
  * @package SyObjectStorage\Oss\Result
  */
 class DeleteObjectVersionsResult extends Result
@@ -16,7 +18,7 @@ class DeleteObjectVersionsResult extends Result
     protected function parseDataFromResponse()
     {
         $xml = simplexml_load_string($this->rawResponse->body);
-        $encodingType = isset($xml->EncodingType) ? strval($xml->EncodingType) : "";
+        $encodingType = isset($xml->EncodingType) ? (string)($xml->EncodingType) : '';
 
         return $this->parseDeletedList($xml, $encodingType);
     }
@@ -26,11 +28,11 @@ class DeleteObjectVersionsResult extends Result
         $retList = [];
         if (isset($xml->Deleted)) {
             foreach ($xml->Deleted as $content) {
-                $key = isset($content->Key) ? strval($content->Key) : "";
+                $key = isset($content->Key) ? (string)($content->Key) : '';
                 $key = OssUtil::decodeKey($key, $encodingType);
-                $versionId = isset($content->VersionId) ? strval($content->VersionId) : "";
-                $deleteMarker = isset($content->DeleteMarker) ? strval($content->DeleteMarker) : "";
-                $deleteMarkerVersionId = isset($content->DeleteMarkerVersionId) ? strval($content->DeleteMarkerVersionId) : "";
+                $versionId = isset($content->VersionId) ? (string)($content->VersionId) : '';
+                $deleteMarker = isset($content->DeleteMarker) ? (string)($content->DeleteMarker) : '';
+                $deleteMarkerVersionId = isset($content->DeleteMarkerVersionId) ? (string)($content->DeleteMarkerVersionId) : '';
                 $retList[] = new DeletedObjectInfo($key, $versionId, $deleteMarker, $deleteMarkerVersionId);
             }
         }
